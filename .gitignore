@@ -1,0 +1,26 @@
+Debug*/
+Release*/
+build/
+*.app/
+.svn/
+*.perspectivev3
+*.pbxuser
+*.mode*
+*.xcworkspace
+xcuserdata/
+xcshareddata/
+
+.DS_Store
+
+#vs2010 stuff
+
+*.suo
+*.opensdf
+*.sdf
+*.exp
+*.lib
+*.exe
+*.ilk
+*.dll
+*.bak
+*.pdb
