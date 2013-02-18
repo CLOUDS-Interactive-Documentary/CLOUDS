@@ -26,7 +26,8 @@ class CloudsFCPParser {
     void setup(string directory);
     
     void refreshXML();
-    set<string>& getAllKeywords();
+    vector<string>& getAllKeywords();
+    int occurrencesOfKeyword(string keyword);
     
   protected:
     string xmlDirectory;
@@ -34,4 +35,9 @@ class CloudsFCPParser {
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
     vector<ClipMarker> markers;
     map<string, int> allKeywords;
+    vector<string> keywordVector;
+    
+    bool keywordsDirty;
+    void refreshKeywordVector();
+
 };

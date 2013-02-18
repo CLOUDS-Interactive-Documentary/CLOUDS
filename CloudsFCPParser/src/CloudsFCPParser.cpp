@@ -9,7 +9,7 @@
 #include "CloudsFCPParser.h"
 
 CloudsFCPParser::CloudsFCPParser(){
-    
+    keywordsDirty = false;
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -18,7 +18,7 @@ void CloudsFCPParser::setup(string directory){
     
     map<string, int>::iterator it;
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-        cout << it->first << ": " << it->second << endl;
+//        cout << it->first << ": " << it->second << endl;
     }
 }
 
@@ -40,13 +40,13 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
         int numSequences = fcpXML.getNumTags("sequence");
         for(int i = 0; i < numSequences; i++){
             string name = fcpXML.getAttribute("sequence", "id", "", i);
-            cout << "name is " << name << endl;
+//            cout << "name is " << name << endl;
             fcpXML.pushTag("sequence", i);
             fcpXML.pushTag("media");
             fcpXML.pushTag("video");
 
             int numTracks = fcpXML.getNumTags("track");
-            cout << "   found " << numTracks << " tracks" << endl;
+  //          cout << "   found " << numTracks << " tracks" << endl;
             for(int t = 0; t < numTracks; t++){
                 fcpXML.pushTag("track", t);
                 int numClipItems = fcpXML.getNumTags("clipitem");
@@ -90,21 +90,40 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
             cm.color.g = fcpXML.getValue("color:green", 0);
             cm.color.b = fcpXML.getValue("color:blue", 0);
             string keywordString = fcpXML.getValue("comment", "");
-            ofStringReplace(keywordString, "\n", "");
-            cm.keywords = ofSplitString(keywordString, ",");
+//            ofStringReplace(keywordString, "\n", "");
+//            ofStringReplace(keywordString, " ", "");
+//            ofStringReplace(keywordString, "    ", "");
+            cm.keywords = ofSplitString(keywordString, ",",true,true);
             for(int k = 0; k < cm.keywords.size(); k++){
                 
                 allKeywords[cm.keywords[k]]++ ;
             }
-            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
+//            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
             markers.push_back(cm);
         }
         fcpXML.popTag(); //marker
     }
+    keywordsDirty = true;
 }
 
-set<string>& CloudsFCPParser::getAllKeywords(){
-    
+vector<string>& CloudsFCPParser::getAllKeywords(){
+    if(keywordsDirty){
+        refreshKeywordVector();
+    }
+    return keywordVector;
+}
+
+int CloudsFCPParser::occurrencesOfKeyword(string keyword){
+    return allKeywords[keyword];
+}
+
+void CloudsFCPParser::refreshKeywordVector(){
+    keywordVector.clear();
+    map<string, int>::iterator it;
+    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
+        keywordVector.push_back(it->first);
+    }
+    keywordsDirty = false;
 }
 
 
