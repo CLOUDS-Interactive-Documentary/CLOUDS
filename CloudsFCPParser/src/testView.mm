@@ -67,7 +67,8 @@
 
 - (IBAction) refreshXML:(id)sender
 {
-    
+    parser.setup("xml");
+    [keywordTable reloadData];    
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView

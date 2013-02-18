@@ -420,6 +420,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -449,6 +450,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -535,6 +537,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParserDebug;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -621,6 +624,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParser;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
