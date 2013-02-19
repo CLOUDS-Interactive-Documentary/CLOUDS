@@ -95,8 +95,11 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 //            ofStringReplace(keywordString, "    ", "");
             cm.keywords = ofSplitString(keywordString, ",",true,true);
             for(int k = 0; k < cm.keywords.size(); k++){
-                
-                allKeywords[cm.keywords[k]]++ ;
+                if( cm.keywords[k].find("?") == string::npos &&
+                   cm.keywords[k].find("link:") == string::npos)
+                {
+                    allKeywords[cm.keywords[k]]++;
+                }
             }
 //            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
             markers.push_back(cm);
@@ -115,6 +118,11 @@ vector<string>& CloudsFCPParser::getAllKeywords(){
 
 int CloudsFCPParser::occurrencesOfKeyword(string keyword){
     return allKeywords[keyword];
+}
+
+
+vector<ClipMarker>& CloudsFCPParser::getAllClips(){
+    return markers;
 }
 
 void CloudsFCPParser::refreshKeywordVector(){

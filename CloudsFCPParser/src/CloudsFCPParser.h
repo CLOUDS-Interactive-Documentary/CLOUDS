@@ -27,6 +27,8 @@ class CloudsFCPParser {
     
     void refreshXML();
     vector<string>& getAllKeywords();
+    vector<ClipMarker>& getAllClips();
+    
     int occurrencesOfKeyword(string keyword);
     
   protected:

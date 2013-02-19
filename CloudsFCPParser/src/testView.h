@@ -4,9 +4,11 @@
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
 
-@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
+@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
     IBOutlet NSTableView* keywordTable;
+    IBOutlet NSTableView* linkTable;
     IBOutlet NSTokenField* currentKeywords;
+    IBOutlet NSTextField* linkText;
     
     CloudsFCPParser parser;
 }
@@ -34,7 +36,9 @@
 //- (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
 
-//- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+
+
+- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
 
 
 @end
