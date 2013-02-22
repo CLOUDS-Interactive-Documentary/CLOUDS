@@ -26,10 +26,13 @@ class CloudsFCPParser {
     void setup(string directory);
     
     void refreshXML();
+    void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<ClipMarker>& getAllClips();
+    vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
     
     int occurrencesOfKeyword(string keyword);
+    bool operator()(const string& a, const string& b);
     
   protected:
     string xmlDirectory;
@@ -38,8 +41,11 @@ class CloudsFCPParser {
     vector<ClipMarker> markers;
     map<string, int> allKeywords;
     vector<string> keywordVector;
-    
+
+
     bool keywordsDirty;
     void refreshKeywordVector();
-
+    bool sortedByOccurrence;
+//    bool keywordSort(const string& a, const string& b);
+    
 };

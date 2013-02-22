@@ -10,6 +10,7 @@
 
 CloudsFCPParser::CloudsFCPParser(){
     keywordsDirty = false;
+    sortedByOccurrence = false;
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -89,13 +90,13 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
             cm.color.r = fcpXML.getValue("color:red", 0);
             cm.color.g = fcpXML.getValue("color:green", 0);
             cm.color.b = fcpXML.getValue("color:blue", 0);
-            string keywordString = fcpXML.getValue("comment", "");
+            string keywordString = ofToLower( fcpXML.getValue("comment", "") );
 //            ofStringReplace(keywordString, "\n", "");
 //            ofStringReplace(keywordString, " ", "");
 //            ofStringReplace(keywordString, "    ", "");
             cm.keywords = ofSplitString(keywordString, ",",true,true);
             for(int k = 0; k < cm.keywords.size(); k++){
-                if( cm.keywords[k].find("?") == string::npos &&
+                if(cm.keywords[k].find("?") == string::npos &&
                    cm.keywords[k].find("link:") == string::npos)
                 {
                     allKeywords[cm.keywords[k]]++;
@@ -109,6 +110,13 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
     keywordsDirty = true;
 }
 
+void CloudsFCPParser::sortKeywordsByOccurrence(bool byOccurrence){
+    if(sortedByOccurrence != byOccurrence){
+        sortedByOccurrence = byOccurrence;
+        ofSort(keywordVector, *this);
+    }
+}
+
 vector<string>& CloudsFCPParser::getAllKeywords(){
     if(keywordsDirty){
         refreshKeywordVector();
@@ -120,9 +128,21 @@ int CloudsFCPParser::occurrencesOfKeyword(string keyword){
     return allKeywords[keyword];
 }
 
-
 vector<ClipMarker>& CloudsFCPParser::getAllClips(){
     return markers;
+}
+
+vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
+    vector<ClipMarker> filteredMarkers;
+    for(int c = 0; c < markers.size(); c++){
+        for(int i = 0; i < filter.size(); i++){
+            if(ofContains(markers[c].keywords, filter[i])){
+                filteredMarkers.push_back(markers[c]);
+                break;
+            }
+        }
+    }
+    return filteredMarkers;
 }
 
 void CloudsFCPParser::refreshKeywordVector(){
@@ -134,4 +154,11 @@ void CloudsFCPParser::refreshKeywordVector(){
     keywordsDirty = false;
 }
 
-
+bool CloudsFCPParser::operator()(const string& a, const string& b){
+    if(sortedByOccurrence){
+        return allKeywords[a] > allKeywords[b];
+    }
+    else{
+        return a < b;
+    }    
+}

@@ -4,12 +4,19 @@
 
 - (void)setup
 {
-    parser.setup("xml");
-    [keywordTable reloadData];
-    [linkTable reloadData];
+    [self refreshXML:self];
+    
+    
+    for (NSTableColumn *tableColumn in keywordTable.tableColumns ) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
+    for (NSTableColumn *tableColumn in linkTable.tableColumns ) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
     
     cout << "done parsing " << endl;
-    
 }
 
 - (void)update
@@ -69,7 +76,9 @@
 - (IBAction) refreshXML:(id)sender
 {
     parser.setup("xml");
-    [keywordTable reloadData];    
+    
+    [keywordTable reloadData];
+    [linkTable reloadData];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -79,7 +88,7 @@
         return (NSInteger)parser.getAllKeywords().size();
     }
     else{
-        return (NSInteger)parser.getAllClips().size();
+        return (NSInteger) (selectedKeywords.size() == 0) ? parser.getAllClips().size() : selectedClips.size();
     }
 }
 
@@ -88,7 +97,7 @@
     
     if(aTableView == keywordTable){
         string keyword = parser.getAllKeywords()[rowIndex];
-        if([@"quantity" isEqualToString:aTableColumn.identifier]){
+        if([@"occurrence" isEqualToString:aTableColumn.identifier]){
             return [NSNumber numberWithInt: parser.occurrencesOfKeyword(keyword)];
         }
         else{
@@ -96,7 +105,8 @@
         }
     }
     else{
-        ClipMarker& m = parser.getAllClips()[rowIndex];
+    
+        ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
         string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
         return [NSString stringWithUTF8String:linkString.c_str()];
     }
@@ -105,9 +115,25 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if(aNotification.object == keywordTable){
-        if(keywordTable.selectedRow < 0){
-            return;
+        selectedKeywords.clear();
+        selectedClips.clear();
+        if(keywordTable.selectedRow >= 0){
+        
+        
+            NSUInteger idx = [keywordTable.selectedRowIndexes firstIndex];
+            while (idx != NSNotFound) {
+                // do work with "idx"
+                selectedKeywords.push_back(parser.getAllKeywords()[idx]);
+                
+                // get the next index in the set
+                idx = [keywordTable.selectedRowIndexes indexGreaterThanIndex:idx];
+            }
+            selectedClips = parser.getClipsWithKeyword(selectedKeywords);
         }
+            
+        [linkTable reloadData];
+        
+        /*
         string selection = parser.getAllKeywords()[keywordTable.selectedRow] ;
         NSString* nsStringSelection = [NSString stringWithCString:selection.c_str()
                                                          encoding:NSUTF8StringEncoding];
@@ -115,12 +141,14 @@
         if(![self hasKeyword:nsStringSelection]){
             [currentKeywords setStringValue: [currentKeywords.stringValue stringByAppendingFormat:@", %@", nsStringSelection]];
         }
+        */
     }
     else{
         if(linkTable.selectedRow < 0){
             return;
         }
-        ClipMarker& m = parser.getAllClips()[linkTable.selectedRow];
+        //ClipMarker& m = parser.getAllClips()[linkTable.selectedRow];
+        ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[linkTable.selectedRow] : selectedClips[linkTable.selectedRow];
         string keywordList = "";
         currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
         linkText.stringValue = [NSString stringWithUTF8String:("link:" + m.person + " - " + m.name).c_str()];
@@ -156,4 +184,16 @@ completionsForSubstring:(NSString *)substring
     return NO;
 }
 
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors
+{
+    NSArray *newDescriptors = [tableView sortDescriptors];
+    NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
+    if(tableView == keywordTable){
+        parser.sortKeywordsByOccurrence( [ [[newDescriptors objectAtIndex:0] key]  isEqualToString:@"occurrence"] );
+    }
+    
+//    [results sortUsingDescriptors:newDescriptors];
+    //"results" is my NSMutableArray which is set to be the data source for the NSTableView object.
+    [tableView reloadData];
+}
 @end

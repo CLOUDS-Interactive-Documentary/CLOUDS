@@ -9,8 +9,10 @@
     IBOutlet NSTableView* linkTable;
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* linkText;
-    
+ 
     CloudsFCPParser parser;
+    vector<string> selectedKeywords;
+    vector<ClipMarker> selectedClips;
 }
 
 - (void)setup;
@@ -29,15 +31,10 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
-
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-
-//- (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
-
-
-
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 - (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
 
 
