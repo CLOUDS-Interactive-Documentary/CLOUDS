@@ -14,6 +14,7 @@
     CloudsFCPParser parser;
     CloudsFCPVisualizer visualizer;
     
+    bool updatePhysics;
     vector<string> selectedKeywords;
     vector<ClipMarker> selectedClips;
 }

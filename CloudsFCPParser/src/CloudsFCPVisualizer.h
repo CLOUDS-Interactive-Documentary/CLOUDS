@@ -18,9 +18,14 @@ class CloudsFCPVisualizer {
     
     void updatePhysics();
     void drawPhysics();
-  
+
+    void drawGrid();
+ 
+    map< pair<string,string>, int > sharedClips;
+    
     int width,height;
     msa::physics::World2D physics;
 
+    ofTrueTypeFont font;
 
 };

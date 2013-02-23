@@ -28,16 +28,16 @@ void CloudsFCPVisualizer::setupPhysics(){
         return;
     }
     
+    database->sortKeywordsByOccurrence(true);
     vector<string>& allKeywords = database->getAllKeywords();
     cout << " total of " << allKeywords.size() << endl;
     
     for(int i = 0; i < allKeywords.size(); i++){
         msa::physics::Particle2D *p = physics.makeParticle(ofVec2f(ofRandomWidth(), ofRandomHeight()));
         p->setMass(database->occurrencesOfKeyword(allKeywords[i]));
-    }
-    
-    for(int i = 0; i < allKeywords.size(); i++){
-        for(int j = i+1; j < allKeywords.size(); j++){
+        if(i == 0){
+            p->moveTo(ofVec2f(width/2,height/2));
+            p->makeFixed();
         }
     }
     
@@ -58,13 +58,15 @@ void CloudsFCPVisualizer::setupPhysics(){
             if(clipsInCommon > 1){
                 msa::physics::Particle2D *a = physics.getParticle(k);
                 msa::physics::Particle2D *b = physics.getParticle(i);
-                physics.makeSpring(a, b, .005 * clipsInCommon, 200 - clipsInCommon*2);
-                physics.makeAttraction(a, b, -.05);
+                physics.makeSpring(a, b, .05 * powf(clipsInCommon,2), 20 );
+                physics.makeAttraction(a, b, -50);
                 
                 //cout << allKeywords[k] << " and " << allKeywords[i] << " share " << clipsInCommon << " clips " << endl;
             }
         }
     }
+    
+    
 }
 
 void CloudsFCPVisualizer::updatePhysics(){
@@ -72,9 +74,12 @@ void CloudsFCPVisualizer::updatePhysics(){
 }
 
 void CloudsFCPVisualizer::drawPhysics(){
+    if(!font.isLoaded()){
+        font.loadFont("verdana.ttf", 8);
+    }
     
     ofPushStyle();
-    
+    vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
         
         msa::physics::Particle2D *a = physics.getParticle(i);
@@ -85,10 +90,15 @@ void CloudsFCPVisualizer::drawPhysics(){
         ofNoFill();
         ofSetColor(0, 50);
         ofCircle(a->getPosition(), ( a->getMass()+1));
+        
+        if(a->getMass() > 1){
+            ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
+            font.drawString(allKeywords[i], a->getPosition().x,a->getPosition().y);
+        }
     }
     
     
-    ofSetColor(0, 130, 200, 40);
+    ofSetColor(0, 130, 200, 200);
     for(int i = 0; i < physics.numberOfSprings(); i++){
         msa::physics::Spring2D* s = physics.getSpring(i);
         ofLine(s->getOneEnd()->getPosition(),
@@ -98,3 +108,70 @@ void CloudsFCPVisualizer::drawPhysics(){
     ofPopStyle();
 }
 
+
+
+void CloudsFCPVisualizer::setupGrid(){
+    
+    if(database == NULL){
+        return;
+    }
+    
+    database->sortKeywordsByOccurrence(true);
+    vector<string>& allKeywords = database->getAllKeywords();
+    vector<ClipMarker>& clips = database->getAllClips();
+    for(int k = 0; k < allKeywords.size(); k++){
+        
+        ofSetColor(255);
+        for(int c = 0; c < clips.size(); c++){
+            if( ofContains(clips[c].keywords, allKeywords[k]) ){
+                for(int i = k; i < allKeywords.size(); i++){
+                    if( ofContains(clips[c].keywords, allKeywords[i]) ){
+                        sharedClips[ make_pair(allKeywords[k], allKeywords[i]) ]++;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+void CloudsFCPVisualizer::drawGrid(){
+    
+    if(!font.isLoaded()){
+        font.loadFont("verdana.ttf", 8);
+    }
+    
+    ofPushStyle();
+    ofSetColor(255);
+    int size = 15;
+    int color = 40;
+    int leftX = 200;
+    int topY = 40;
+    vector<string>& allKeywords = database->getAllKeywords();
+    for(int y = 0; y < MIN(allKeywords.size(), 50); y++){
+        
+        ofSetColor(255);
+        font.drawString(allKeywords[y], leftX - font.stringWidth(allKeywords[y]), topY + y*size+size/2+4);
+        int x;
+        for(x = 0; x <= y; x++){
+            int connections = sharedClips[ make_pair(allKeywords[x], allKeywords[y]) ];
+            ofRectangle drawRect(leftX + x*size, topY + y*size, size, size);
+            if(connections > 0){
+                ofFill();
+                ofSetColor(ofColor::fromHsb(color, connections*40, connections*40));
+                ofRect(drawRect);
+                
+                ofSetColor(ofColor::fromHsb(255-color, 255, 255));
+                font.drawString(ofToString(connections), leftX + x*size + 2, topY + y*size+size/2+4);
+            }
+            else{
+                ofSetColor(255, 30);
+                ofNoFill();
+                ofRect(drawRect);
+            }
+        }
+        font.drawString(allKeywords[y], leftX + (x-1)*size + 2, topY + (y-1)*size+size/2+4);
+    }
+    
+    ofPopStyle();
+}

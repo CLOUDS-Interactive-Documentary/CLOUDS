@@ -7,7 +7,7 @@
     ofBackground(0);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
-    
+    updatePhysics = true;
     [self refreshXML:self];
     
     
@@ -21,17 +21,21 @@
     }
  
     visualizer.database = &parser;
+//    visualizer.setupGrid();
     visualizer.setupPhysics();
 }
 
 - (void)update
 {
-    visualizer.updatePhysics();
+    if(updatePhysics){
+        visualizer.updatePhysics();
+    }
 }
 
 - (void)draw
 {
     visualizer.drawPhysics();
+//    visualizer.drawGrid();
 }
 
 - (void)exit
@@ -41,7 +45,7 @@
 
 - (void)keyPressed:(int)key
 {
-	
+    if(key == ' ') updatePhysics = !updatePhysics;
 }
 
 - (void)keyReleased:(int)key
