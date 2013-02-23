@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
+#include "CloudsFCPVisualizer.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
     IBOutlet NSTableView* keywordTable;
@@ -11,6 +12,8 @@
     IBOutlet NSTextField* linkText;
  
     CloudsFCPParser parser;
+    CloudsFCPVisualizer visualizer;
+    
     vector<string> selectedKeywords;
     vector<ClipMarker> selectedClips;
 }

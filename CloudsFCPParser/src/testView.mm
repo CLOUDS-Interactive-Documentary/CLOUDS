@@ -4,6 +4,10 @@
 
 - (void)setup
 {
+    ofBackground(0);
+    ofEnableAlphaBlending();
+    ofEnableSmoothing();
+    
     [self refreshXML:self];
     
     
@@ -15,17 +19,19 @@
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
-    
-    cout << "done parsing " << endl;
+ 
+    visualizer.database = &parser;
+    visualizer.setupPhysics();
 }
 
 - (void)update
 {
+    visualizer.updatePhysics();
 }
 
 - (void)draw
 {
-
+    visualizer.drawPhysics();
 }
 
 - (void)exit
@@ -196,4 +202,5 @@ completionsForSubstring:(NSString *)substring
     //"results" is my NSMutableArray which is set to be the data source for the NSTableView object.
     [tableView reloadData];
 }
+
 @end

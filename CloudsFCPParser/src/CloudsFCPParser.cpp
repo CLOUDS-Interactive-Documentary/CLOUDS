@@ -51,7 +51,7 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
             for(int t = 0; t < numTracks; t++){
                 fcpXML.pushTag("track", t);
                 int numClipItems = fcpXML.getNumTags("clipitem");
-                cout << "   found " << numClipItems << " clips" << endl;
+//                cout << "   found " << numClipItems << " clips" << endl;
                 for(int c = 0; c < numClipItems; c++){
                     fcpXML.pushTag("clipitem", c);
                     parseClipItem(fcpXML, name);
@@ -91,9 +91,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
             cm.color.g = fcpXML.getValue("color:green", 0);
             cm.color.b = fcpXML.getValue("color:blue", 0);
             string keywordString = ofToLower( fcpXML.getValue("comment", "") );
-//            ofStringReplace(keywordString, "\n", "");
-//            ofStringReplace(keywordString, " ", "");
-//            ofStringReplace(keywordString, "    ", "");
+            ofStringReplace(keywordString, "\n", ",");
             cm.keywords = ofSplitString(keywordString, ",",true,true);
             for(int k = 0; k < cm.keywords.size(); k++){
                 if(cm.keywords[k].find("?") == string::npos &&
