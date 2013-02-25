@@ -22,7 +22,9 @@
  
     visualizer.database = &parser;
 //    visualizer.setupGrid();
-    visualizer.setupPhysics();
+    visualizer.setup();
+    visualizer.exportForGraphviz();
+//    visualizer.createIterativePhysics();
 }
 
 - (void)update
@@ -34,7 +36,7 @@
 
 - (void)draw
 {
-    visualizer.drawPhysics();
+//    visualizer.drawPhysics();
 //    visualizer.drawGrid();
 }
 

@@ -8,7 +8,26 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
     database = NULL;
 }
 
-void CloudsFCPVisualizer::setupPhysics(){
+void CloudsFCPVisualizer::setup(){
+    database->sortKeywordsByOccurrence(true);
+    vector<string>& allKeywords = database->getAllKeywords();
+    vector<ClipMarker>& clips = database->getAllClips();
+    for(int k = 0; k < allKeywords.size(); k++){
+        
+
+        for(int c = 0; c < clips.size(); c++){
+            if( ofContains(clips[c].keywords, allKeywords[k]) ){
+                for(int i = k+1; i < allKeywords.size(); i++){
+                    if( ofContains(clips[c].keywords, allKeywords[i]) ){
+                        sharedClips[ make_pair(allKeywords[k], allKeywords[i]) ]++;
+                    }
+                }
+            }
+        }
+    }
+}
+
+void CloudsFCPVisualizer::createClusterPhysics(){
 	physics.clear();
     
     width = ofGetWidth();
@@ -58,15 +77,22 @@ void CloudsFCPVisualizer::setupPhysics(){
             if(clipsInCommon > 1){
                 msa::physics::Particle2D *a = physics.getParticle(k);
                 msa::physics::Particle2D *b = physics.getParticle(i);
-                physics.makeSpring(a, b, .05 * powf(clipsInCommon,2), 20 );
+                physics.makeSpring(a, b, .005 * powf(clipsInCommon,2), 20 );
                 physics.makeAttraction(a, b, -50);
                 
                 //cout << allKeywords[k] << " and " << allKeywords[i] << " share " << clipsInCommon << " clips " << endl;
             }
         }
     }
-    
-    
+}
+
+
+
+void CloudsFCPVisualizer::createIterativePhysics(){
+    vector<string>& allKeywords = database->getAllKeywords();
+    for(int i = 0; i < allKeywords.size(); i++){
+        
+    }
 }
 
 void CloudsFCPVisualizer::updatePhysics(){
@@ -85,11 +111,11 @@ void CloudsFCPVisualizer::drawPhysics(){
         msa::physics::Particle2D *a = physics.getParticle(i);
         ofSetColor(255, 50);
         ofFill();
-        ofCircle(a->getPosition(), ( a->getMass()+1));
+        ofCircle(a->getPosition(), (a->getMass()+1));
         
         ofNoFill();
         ofSetColor(0, 50);
-        ofCircle(a->getPosition(), ( a->getMass()+1));
+        ofCircle(a->getPosition(), (a->getMass()+1));
         
         if(a->getMass() > 1){
             ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
@@ -108,32 +134,6 @@ void CloudsFCPVisualizer::drawPhysics(){
     ofPopStyle();
 }
 
-
-
-void CloudsFCPVisualizer::setupGrid(){
-    
-    if(database == NULL){
-        return;
-    }
-    
-    database->sortKeywordsByOccurrence(true);
-    vector<string>& allKeywords = database->getAllKeywords();
-    vector<ClipMarker>& clips = database->getAllClips();
-    for(int k = 0; k < allKeywords.size(); k++){
-        
-        ofSetColor(255);
-        for(int c = 0; c < clips.size(); c++){
-            if( ofContains(clips[c].keywords, allKeywords[k]) ){
-                for(int i = k; i < allKeywords.size(); i++){
-                    if( ofContains(clips[c].keywords, allKeywords[i]) ){
-                        sharedClips[ make_pair(allKeywords[k], allKeywords[i]) ]++;
-                    }
-                }
-            }
-        }
-    }
-
-}
 
 void CloudsFCPVisualizer::drawGrid(){
     
@@ -175,3 +175,20 @@ void CloudsFCPVisualizer::drawGrid(){
     
     ofPopStyle();
 }
+
+void CloudsFCPVisualizer::exportForGraphviz(){
+    
+    map<pair<string,string>, int>::iterator it;
+    ofBuffer dotFile;
+    dotFile.append("graph G { \n");
+    
+    for(it = sharedClips.begin(); it != sharedClips.end(); it++){
+        if(it->second > 2){
+            dotFile.append("    \"" + it->first.first + "\" -- \"" + it->first.second  + "\";\n");
+        }
+    }
+    
+    dotFile.append("}\n");
+    ofBufferToFile("clip_relationships.dot", dotFile);
+}
+

@@ -12,13 +12,17 @@ class CloudsFCPVisualizer {
   public:
     CloudsFCPVisualizer();
     CloudsFCPParser* database;
+    void setup();
     
-    void setupPhysics();
-    void setupGrid();
+    //void setupPhysics();
+    void createClusterPhysics();
+    void createIterativePhysics();
     
     void updatePhysics();
     void drawPhysics();
 
+    void exportForGraphviz();
+    
     void drawGrid();
  
     map< pair<string,string>, int > sharedClips;
