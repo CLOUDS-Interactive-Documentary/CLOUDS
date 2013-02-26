@@ -34,6 +34,74 @@ void CloudsFCPParser::refreshXML(){
     }
 }
 
+void CloudsFCPParser::parseLinks(string linkFile){
+
+    sourceLinks.clear();
+    
+    ofxXmlSettings linksXML;
+    if(linksXML.loadFile(linkFile)){
+        int numClips = linksXML.getNumTags("clip");
+        for(int i = 0; i < numClips; i++){
+            linksXML.pushTag("clip", i);
+            string clipName = linksXML.getValue("name", "");
+            int numLinks = linksXML.getNumTags("link");
+            for(int l = 0; l < numLinks; l++){
+                CloudsLink newLink;
+                linksXML.pushTag("link", l);
+                
+                newLink.sourceName = clipName;
+                newLink.targetName = linksXML.getValue("target", "");
+                newLink.startFrame = linksXML.getValue("startFrame", -1);
+                newLink.endFrame   = linksXML.getValue("endFrame", -1);
+                
+                linksXML.popTag(); //link
+                
+                sourceLinks[newLink.sourceName].push_back( newLink );
+            }
+            
+            linksXML.popTag(); //clip
+        }
+    }
+}
+
+void CloudsFCPParser::saveLinks(string linkFile){
+    ofxXmlSettings linksXML;
+    map<string, vector<CloudsLink> >::iterator it;
+    int numClips = 0;
+    for(it = sourceLinks.begin(); it != sourceLinks.end(); it++){
+        linksXML.addTag("clip");
+        linksXML.pushTag("clip", numClips++);
+        
+        linksXML.addValue("name", it->first);
+        //linksXML.addValue("meta", sourceLinks[it->first].getMetaInfo() );
+        vector<CloudsLink>& clipLinks = it->second;
+        for(int l = 0; l < clipLinks.size(); l++){
+            
+            linksXML.addTag("link");
+            linksXML.pushTag("link", l);
+
+            linksXML.addValue("target", clipLinks[l].targetName );
+            linksXML.addValue("startFrame", clipLinks[l].startFrame);
+            linksXML.addValue("endFrame", clipLinks[l].endFrame);
+            
+            linksXML.popTag(); //link!
+        }
+        
+        linksXML.popTag(); //clip
+    }
+    
+    linksXML.saveFile(linkFile);
+}
+
+void CloudsFCPParser::removeLink(string linkName, int linkIndex){
+    if(sourceLinks.find(linkName) != sourceLinks.end() && linkIndex < sourceLinks[linkName].size()){
+        sourceLinks[linkName].erase(sourceLinks[linkName].begin() + linkIndex);
+    }
+    else{
+        cout << "failed to remove link " << linkIndex << " from " << linkName << endl;
+    }
+}
+
 void CloudsFCPParser::addXMLFile(string xmlFile){
     ofxXmlSettings fcpXML;
     if(fcpXML.loadFile(xmlFile)){
@@ -73,8 +141,18 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
 }
 
 void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
+    string fileID = fcpXML.getAttribute("file", "id", "");
     string clipFileName = fcpXML.getValue("file:name", "");
     string clipFilePath = fcpXML.getValue("file:pathurl", "");
+    if(clipFileName != ""){
+        fileIdToName[fileID] = clipFileName;
+        fileIdToPath[fileID] = clipFilePath;
+    }
+    else{
+        clipFileName = fileIdToName[fileID];
+        clipFilePath = fileIdToPath[fileID];
+    }
+    ofStringReplace(clipFilePath, "file://localhost", "");
     int numMarkers = fcpXML.getNumTags("marker");
     for(int m = 0; m < numMarkers; m++){
         fcpXML.pushTag("marker", m);
@@ -130,6 +208,14 @@ int CloudsFCPParser::occurrencesOfKeyword(string keyword){
 
 vector<ClipMarker>& CloudsFCPParser::getAllClips(){
     return markers;
+}
+
+vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
+    return sourceLinks[clipName];
+}
+
+void CloudsFCPParser::addLink(CloudsLink& link){
+    sourceLinks[link.sourceName].push_back( link );
 }
 
 vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){

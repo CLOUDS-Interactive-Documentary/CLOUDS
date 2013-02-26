@@ -10,7 +10,10 @@
 #include "ofxXmlSettings.h"
 #include <set>
 
-typedef struct {
+
+class ClipMarker {
+  public:
+
     string name;
     string person;
     string clip;
@@ -19,12 +22,34 @@ typedef struct {
     int startFrame;
     int endFrame;
     vector<string> keywords;
-} ClipMarker;
+    
+    string getLinkName(){
+        return person + " - " + name;
+    }
+    
+    string getMetaInfo(){
+        return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "]";
+    }
+};
+
+typedef struct {
+    string sourceName;
+    string targetName;
+    int startFrame;
+    int endFrame;
+} CloudsLink;
 
 class CloudsFCPParser {
   public:
     CloudsFCPParser();
     void setup(string directory);
+    
+    void parseLinks(string linkFile);
+
+    vector<CloudsLink>& getLinksForClip(string clipName);
+    void addLink(CloudsLink& link);
+    void saveLinks(string linkFile);
+    void removeLink(string linkName, int linkIndex);
     
     void refreshXML();
     void sortKeywordsByOccurrence(bool byOccurrence);
@@ -39,11 +64,16 @@ class CloudsFCPParser {
     string xmlDirectory;
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
+
+    map<string, string> fileIdToPath;
+    map<string, string> fileIdToName;
+
     vector<ClipMarker> markers;
     map<string, int> allKeywords;
     vector<string> keywordVector;
 
-
+    map<string, vector<CloudsLink> > sourceLinks;
+    
     bool keywordsDirty;
     void refreshKeywordVector();
     bool sortedByOccurrence;

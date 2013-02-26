@@ -8,14 +8,17 @@
     ofEnableAlphaBlending();
     ofEnableSmoothing();
     updatePhysics = true;
-    [self refreshXML:self];
     
+    [self refreshXML:self];
+    clipEndFrame = 0;
+    clipLoaded = NO;
     
     for (NSTableColumn *tableColumn in keywordTable.tableColumns ) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
-    for (NSTableColumn *tableColumn in linkTable.tableColumns ) {
+    
+    for (NSTableColumn *tableColumn in clipTable.tableColumns ) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
@@ -25,6 +28,9 @@
     visualizer.setup();
     visualizer.exportForGraphviz();
 //    visualizer.createIterativePhysics();
+    //inpoint.setup();
+    //important file!
+
 }
 
 - (void)update
@@ -35,6 +41,10 @@
     
     if(preview.isLoaded()){
         preview.update();
+        if(preview.getCurrentFrame() >= clipEndFrame){
+
+            preview.stop();
+        }
     }
 }
 
@@ -55,24 +65,103 @@
 - (void)keyPressed:(int)key
 {
     //if(key == ' ') updatePhysics = !updatePhysics;
+    
     if(key == ' '){
-        if(linkTable.selectedRow >= 0){
-            ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[linkTable.selectedRow] : selectedClips[linkTable.selectedRow];
+        if(clipTable.selectedRow >= 0){
+            ClipMarker& clip = [self selectedClip];
             
-            if( m.filePath != "" && ofFile(m.filePath).exists() ){
-                if(preview.loadMovie(m.filePath)){
-                    preview.setFrame(m.startFrame);
-                    preview.play();
-                }
-                else{
-                    NSLog(@"movie failed %s", m.filePath.c_str());
-                }
+            preview.stop();
+            if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
+                preview.setFrame(clip.startFrame);
+                preview.play();
             }
-            else{
-                NSLog(@"movie path does not exist %s", m.filePath.c_str());
+            else {
+                preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
+                preview.play();
+                
+                NSLog(@"movie load failed %s", clip.filePath.c_str());
             }
+                
+            clipLoaded = YES;
+            currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.name.c_str()];
+            
+            currentClipLinks = parser.getLinksForClip(clip.getLinkName());
+            
+            cout << "current clips is  of size " << currentClipLinks.size() << endl;
+            currentPlayingClip = clip;
+            
+            clipEndFrame = clip.endFrame;
+            
+            [linkTable reloadData];
+
+//
+//                }
+//                else{
+//                    NSLog(@"movie load failed %s", clip.filePath.c_str());
+//                }
+//            }
+//            else{
+//                preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
+//                preview.play();
+//                currentClipLabel.stringValue = @"Fake Movie";
+//                //currentPlayingClip.name = "FakeMovie";
+//                currentPlayingClip = clip;
+//                clipEndFrame = 100;
+//                clipLoaded = YES;
+//                
+//                
+//                NSLog(@"movie path does not exist %s", clip.filePath.c_str());
+//            }
         }
     }
+    
+}
+
+- (IBAction) createLink:(id)sender
+{
+    NSLog(@"creating link");
+    if(clipLoaded && clipTable.selectedRow >= 0){
+        NSLog(@"clip is loaded and row is selected");
+        ClipMarker& clip = [self selectedClip];
+        if(clip.getLinkName() != currentPlayingClip.getLinkName()){
+            
+            NSLog(@"creating lip for %s + %s", clip.getLinkName().c_str(), currentPlayingClip.getLinkName().c_str());
+            
+            CloudsLink l;
+            l.sourceName = currentPlayingClip.getLinkName();
+            l.targetName = clip.getLinkName();
+            l.startFrame = -1;
+            l.endFrame = -1;
+            
+            //TODO figure out frame numbers;
+            parser.addLink(l);
+            currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
+            cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
+            [linkTable reloadData];
+        }
+    }
+}
+
+- (IBAction) saveLinks:(id)sender
+{
+    parser.saveLinks("clouds_link_db.xml");
+}
+
+- (IBAction) deleteLink:(id)sender
+{
+    if(linkTable.selectedRow >= 0){
+        cout << "removing link " << linkTable.selectedRow << " from " << currentPlayingClip.getLinkName() << endl;
+        parser.removeLink(currentPlayingClip.getLinkName(), linkTable.selectedRow);
+        currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
+        
+        [linkTable reloadData];
+    }
+        
+}
+
+- (ClipMarker&) selectedClip
+{
+    return (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
 }
 
 - (void)keyReleased:(int)key
@@ -113,9 +202,11 @@
 - (IBAction) refreshXML:(id)sender
 {
     parser.setup("xml");
+    parser.parseLinks("clouds_link_db.xml");
     
     [keywordTable reloadData];
-    [linkTable reloadData];
+    [clipTable reloadData];
+    
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -124,8 +215,11 @@
     if(aTableView == keywordTable){
         return (NSInteger)parser.getAllKeywords().size();
     }
-    else{
+    else if(aTableView == clipTable){
         return (NSInteger) (selectedKeywords.size() == 0) ? parser.getAllClips().size() : selectedClips.size();
+    }
+    else if(aTableView == linkTable){
+        return currentClipLinks.size();
     }
 }
 
@@ -141,11 +235,19 @@
             return [NSString stringWithCString:keyword.c_str() encoding:NSUTF8StringEncoding];
         }
     }
-    else{
-    
+    else if(aTableView == clipTable){
         ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
+        //ClipMarker& m = [self selectedClip];
+        
         string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
         return [NSString stringWithUTF8String:linkString.c_str()];
+    }
+    else if(aTableView == linkTable){
+        string clipTableEntry = currentClipLinks[rowIndex].targetName;
+        if(currentClipLinks[rowIndex].startFrame != -1 && currentClipLinks[rowIndex].endFrame != -1){
+            clipTableEntry += "[" + ofToString(currentClipLinks[rowIndex].startFrame) + " - " + ofToString(currentClipLinks[rowIndex].endFrame) + "]";
+        }
+        return [NSString stringWithUTF8String:clipTableEntry.c_str()];
     }
 }
 
@@ -155,7 +257,6 @@
         selectedKeywords.clear();
         selectedClips.clear();
         if(keywordTable.selectedRow >= 0){
-        
         
             NSUInteger idx = [keywordTable.selectedRowIndexes firstIndex];
             while (idx != NSNotFound) {
@@ -168,7 +269,7 @@
             selectedClips = parser.getClipsWithKeyword(selectedKeywords);
         }
             
-        [linkTable reloadData];
+        [clipTable reloadData];
         
         /*
         string selection = parser.getAllKeywords()[keywordTable.selectedRow] ;
@@ -180,15 +281,34 @@
         }
         */
     }
-    else{
+    else if(aNotification.object == clipTable){
+        if(clipTable.selectedRow < 0){
+            return;
+        }
+
+        //ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+        ClipMarker& m = [self selectedClip];
+        
+        string keywordList = "";
+        currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
+        //linkText.stringValue = [NSString stringWithUTF8String:("link:" + m.person + " - " + m.name).c_str()];
+        linkText.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
+    }
+    else if(aNotification.object == linkTable){
         if(linkTable.selectedRow < 0){
             return;
         }
-        //ClipMarker& m = parser.getAllClips()[linkTable.selectedRow];
-        ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[linkTable.selectedRow] : selectedClips[linkTable.selectedRow];
-        string keywordList = "";
-        currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
-        linkText.stringValue = [NSString stringWithUTF8String:("link:" + m.person + " - " + m.name).c_str()];
+        
+        vector<ClipMarker>& searchClips = (selectedKeywords.size() == 0) ? parser.getAllClips() : selectedClips;
+        //ClipMarker& m = [self selectedClip];
+        string targetClip = currentClipLinks[ linkTable.selectedRow ].targetName;
+        for(int i = 0; i < searchClips.size(); i++){
+            if(searchClips[i].name == targetClip){
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
+                [clipTable selectRowIndexes:indexSet byExtendingSelection:NO];
+                break;
+            }
+        }
     }
 }
 
@@ -197,6 +317,7 @@ completionsForSubstring:(NSString *)substring
            indexOfToken:(NSInteger)tokenIndex
     indexOfSelectedItem:(NSInteger *)selectedIndex
 {
+    
 //    cout << "asking for completions..." << endl;
     NSMutableArray* completions = [NSMutableArray array];
     for(int i = 0; i < parser.getAllKeywords().size(); i++){
@@ -205,6 +326,7 @@ completionsForSubstring:(NSString *)substring
             [completions addObject:stringKeyword];
         }
     }
+    
 //    cout << "found " << completions.count << endl;
     return completions;
 }
