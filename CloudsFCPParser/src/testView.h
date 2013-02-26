@@ -17,6 +17,8 @@
     bool updatePhysics;
     vector<string> selectedKeywords;
     vector<ClipMarker> selectedClips;
+    
+    ofVideoPlayer preview;
 }
 
 - (void)setup;

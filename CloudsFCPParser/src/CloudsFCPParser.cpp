@@ -73,7 +73,8 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
 }
 
 void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
-    string clipFileName = fcpXML.getValue("name", "");
+    string clipFileName = fcpXML.getValue("file:name", "");
+    string clipFilePath = fcpXML.getValue("file:pathurl", "");
     int numMarkers = fcpXML.getNumTags("marker");
     for(int m = 0; m < numMarkers; m++){
         fcpXML.pushTag("marker", m);
@@ -87,6 +88,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
             cm.name = fcpXML.getValue("name", "");
             cm.person = currentName;
             cm.clip = clipFileName;
+            cm.filePath = clipFilePath;
             cm.color.r = fcpXML.getValue("color:red", 0);
             cm.color.g = fcpXML.getValue("color:green", 0);
             cm.color.b = fcpXML.getValue("color:blue", 0);

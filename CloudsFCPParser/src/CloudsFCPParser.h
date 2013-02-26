@@ -14,6 +14,7 @@ typedef struct {
     string name;
     string person;
     string clip;
+    string filePath;
     ofColor color;
     int startFrame;
     int endFrame;

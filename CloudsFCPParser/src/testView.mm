@@ -32,12 +32,19 @@
     if(updatePhysics){
         visualizer.updatePhysics();
     }
+    
+    if(preview.isLoaded()){
+        preview.update();
+    }
 }
 
 - (void)draw
 {
 //    visualizer.drawPhysics();
 //    visualizer.drawGrid();
+    if(preview.isLoaded() && preview.isPlaying()){
+        preview.draw(0, 0, 1280, 720);
+    }
 }
 
 - (void)exit
@@ -47,7 +54,25 @@
 
 - (void)keyPressed:(int)key
 {
-    if(key == ' ') updatePhysics = !updatePhysics;
+    //if(key == ' ') updatePhysics = !updatePhysics;
+    if(key == ' '){
+        if(linkTable.selectedRow >= 0){
+            ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[linkTable.selectedRow] : selectedClips[linkTable.selectedRow];
+            
+            if( m.filePath != "" && ofFile(m.filePath).exists() ){
+                if(preview.loadMovie(m.filePath)){
+                    preview.setFrame(m.startFrame);
+                    preview.play();
+                }
+                else{
+                    NSLog(@"movie failed %s", m.filePath.c_str());
+                }
+            }
+            else{
+                NSLog(@"movie path does not exist %s", m.filePath.c_str());
+            }
+        }
+    }
 }
 
 - (void)keyReleased:(int)key
