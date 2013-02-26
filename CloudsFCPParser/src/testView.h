@@ -31,14 +31,18 @@
 
 }
 
+
+
 - (void)setup;
 - (void)update;
 - (void)draw;
 - (void)exit;
 
+
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) createLink:(id)sender;
+- (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) deleteLink:(id)sender;
 
@@ -49,6 +53,8 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 - (ClipMarker&) selectedClip;
 

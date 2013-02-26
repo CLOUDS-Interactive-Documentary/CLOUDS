@@ -23,6 +23,7 @@
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
  
+    [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
     visualizer.database = &parser;
 //    visualizer.setupGrid();
     visualizer.setup();
@@ -52,7 +53,7 @@
 {
 //    visualizer.drawPhysics();
 //    visualizer.drawGrid();
-    if(preview.isLoaded() && preview.isPlaying()){
+    if(preview.isLoaded()){
         preview.draw(0, 0, 1280, 720);
     }
 }
@@ -67,54 +68,8 @@
     //if(key == ' ') updatePhysics = !updatePhysics;
     
     if(key == ' '){
-        if(clipTable.selectedRow >= 0){
-            ClipMarker& clip = [self selectedClip];
-            
-            preview.stop();
-            if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
-                preview.setFrame(clip.startFrame);
-                preview.play();
-            }
-            else {
-                preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
-                preview.play();
-                
-                NSLog(@"movie load failed %s", clip.filePath.c_str());
-            }
-                
-            clipLoaded = YES;
-            currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.name.c_str()];
-            
-            currentClipLinks = parser.getLinksForClip(clip.getLinkName());
-            
-            cout << "current clips is  of size " << currentClipLinks.size() << endl;
-            currentPlayingClip = clip;
-            
-            clipEndFrame = clip.endFrame;
-            
-            [linkTable reloadData];
-
-//
-//                }
-//                else{
-//                    NSLog(@"movie load failed %s", clip.filePath.c_str());
-//                }
-//            }
-//            else{
-//                preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
-//                preview.play();
-//                currentClipLabel.stringValue = @"Fake Movie";
-//                //currentPlayingClip.name = "FakeMovie";
-//                currentPlayingClip = clip;
-//                clipEndFrame = 100;
-//                clipLoaded = YES;
-//                
-//                
-//                NSLog(@"movie path does not exist %s", clip.filePath.c_str());
-//            }
-        }
+        [self playDoubleClickedRow: self];
     }
-    
 }
 
 - (IBAction) createLink:(id)sender
@@ -136,7 +91,9 @@
             //TODO figure out frame numbers;
             parser.addLink(l);
             currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
+            
             cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
+            
             [linkTable reloadData];
         }
     }
@@ -145,6 +102,49 @@
 - (IBAction) saveLinks:(id)sender
 {
     parser.saveLinks("clouds_link_db.xml");
+}
+
+- (IBAction) playDoubleClickedRow:(id)sender
+{
+    if(clipTable.selectedRow >= 0){
+        ClipMarker& clip = [self selectedClip];
+        
+
+        if(currentPlayingClip.getLinkName() == clip.getLinkName()){
+            if(preview.isPlaying()){
+                preview.stop();
+            }
+            else{
+                preview.play();
+            }
+            return;
+        }
+        
+        if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
+            preview.setFrame(clip.startFrame);
+            preview.play();
+        }
+        else {
+            preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
+            preview.play();
+            
+            NSLog(@"movie load failed %s", clip.filePath.c_str());
+        }
+        
+        clipLoaded = YES;
+        currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
+        
+        currentClipLinks = parser.getLinksForClip(clip.getLinkName());
+        
+        cout << "current clips is  of size " << currentClipLinks.size() << endl;
+        currentPlayingClip = clip;
+        
+        clipEndFrame = clip.endFrame;
+        
+        [linkTable reloadData];
+        
+    }
+    
 }
 
 - (IBAction) deleteLink:(id)sender
@@ -356,4 +356,8 @@ completionsForSubstring:(NSString *)substring
     [tableView reloadData];
 }
 
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+    return NO;
+}
 @end
