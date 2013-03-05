@@ -9,12 +9,14 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 }
 
 void CloudsFCPVisualizer::setup(){
+	
+	ofRegisterMouseEvents(this);
+    ofRegisterKeyEvents(this);
+
     database->sortKeywordsByOccurrence(true);
     vector<string>& allKeywords = database->getAllKeywords();
     vector<ClipMarker>& clips = database->getAllClips();
     for(int k = 0; k < allKeywords.size(); k++){
-        
-
         for(int c = 0; c < clips.size(); c++){
             if( ofContains(clips[c].keywords, allKeywords[k]) ){
                 for(int i = k+1; i < allKeywords.size(); i++){
@@ -27,7 +29,7 @@ void CloudsFCPVisualizer::setup(){
     }
 }
 
-void CloudsFCPVisualizer::createClusterPhysics(){
+void CloudsFCPVisualizer::setupPhysics(){
 	physics.clear();
     
     width = ofGetWidth();
@@ -38,7 +40,13 @@ void CloudsFCPVisualizer::createClusterPhysics(){
 	physics.setWorldSize(ofVec2f(0,0), ofVec2f(width,height));
 	physics.setSectorCount(1);
     physics.setDrag(0.94f);
-	physics.setDrag(1);		// FIXTHIS
+	physics.setDrag(.8);		// FIXTHIS
+
+	
+}
+
+void CloudsFCPVisualizer::createClusterPhysics(){
+	
     
     
     //make a particle for each keyword
@@ -86,8 +94,6 @@ void CloudsFCPVisualizer::createClusterPhysics(){
     }
 }
 
-
-
 void CloudsFCPVisualizer::createIterativePhysics(){
     vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < allKeywords.size(); i++){
@@ -95,15 +101,61 @@ void CloudsFCPVisualizer::createIterativePhysics(){
     }
 }
 
+void CloudsFCPVisualizer::addTagToPhysics(string tag){
+	vector<ClipMarker> relatedClips = database->getClipsWithKeyword(tag);
+	//make a particle for the seed
+	msa::physics::Particle2D *p = physics.makeParticle(ofVec2f(width/2, height/2));
+	p->setMass(database->occurrencesOfKeyword(tag));
+	p->makeFixed();
+	cout << "adding tag " << tag << endl;
+	set<string> related = database->getRelatedKeywords(tag);
+	set<string>::iterator it;
+	vector<msa::physics::Particle2D*> newParticles;
+	newParticles.push_back(p);
+	particleName[p] = tag;
+	
+	for(it = related.begin(); it != related.end(); it++){
+
+		msa::physics::Particle2D *a = physics.makeParticle(ofVec2f(width/2 + ofRandom(-5,5),
+																   height/2 + ofRandom(-5,5)));
+		a->setMass(database->occurrencesOfKeyword(*it));
+
+		
+		//a->setMass(3);
+		int clipsInCommon = database->getNumberOfSharedClips(tag,*it);
+		//		physics.makeSpring(a, p, .005 * powf(clipsInCommon,2), 20 );
+		physics.makeSpring(a, p, .1, 5 );
+
+		particleName[a] = *it;
+		newParticles.push_back(a);
+		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
+	}
+	
+	for(int i = 0; i < newParticles.size(); i++){
+		for(int j = 0; j < newParticles.size(); j++){
+			if(j != i){
+				physics.makeAttraction(newParticles[i], newParticles[j], -25);
+			}
+		}
+	}
+	
+	//add sub attractions
+}
+
 void CloudsFCPVisualizer::updatePhysics(){
     physics.update();
 }
 
 void CloudsFCPVisualizer::drawPhysics(){
+	
+	if(database == NULL){
+		return;
+	}
+	
     if(!font.isLoaded()){
         font.loadFont("verdana.ttf", 8);
     }
-    
+
     ofPushStyle();
     vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
@@ -117,13 +169,14 @@ void CloudsFCPVisualizer::drawPhysics(){
         ofSetColor(0, 50);
         ofCircle(a->getPosition(), (a->getMass()+1));
         
-        if(a->getMass() > 1){
+//        if(a->getMass() > 1){
+//		cout << "position? " << a->getPosition() << endl;
+		
             ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
-            font.drawString(allKeywords[i], a->getPosition().x,a->getPosition().y);
-        }
+            font.drawString(particleName[a], a->getPosition().x,a->getPosition().y);
+//        }
     }
-    
-    
+
     ofSetColor(0, 130, 200, 200);
     for(int i = 0; i < physics.numberOfSprings(); i++){
         msa::physics::Spring2D* s = physics.getSpring(i);
@@ -192,3 +245,24 @@ void CloudsFCPVisualizer::exportForGraphviz(){
     ofBufferToFile("clip_relationships.dot", dotFile);
 }
 
+void CloudsFCPVisualizer::mousePressed(ofMouseEventArgs& args){
+	
+}
+
+void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
+}
+
+void CloudsFCPVisualizer::mouseDragged(ofMouseEventArgs& args){
+	
+}
+
+void CloudsFCPVisualizer::mouseReleased(ofMouseEventArgs& args){
+	
+}
+
+void CloudsFCPVisualizer::keyPressed(ofKeyEventArgs& args){
+	
+}
+void CloudsFCPVisualizer::keyReleased(ofKeyEventArgs& args){
+	
+}

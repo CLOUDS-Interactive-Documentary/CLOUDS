@@ -218,6 +218,12 @@ void CloudsFCPParser::addLink(CloudsLink& link){
     sourceLinks[link.sourceName].push_back( link );
 }
 
+vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(string filterWord){
+	vector<string> filter;
+	filter.push_back(filterWord);
+	return getClipsWithKeyword(filter);
+}
+
 vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
     vector<ClipMarker> filteredMarkers;
     for(int c = 0; c < markers.size(); c++){
@@ -230,6 +236,32 @@ vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
     }
     return filteredMarkers;
 }
+
+set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
+	set<string> relatedKeywords;
+	vector<ClipMarker> relatedClips = getClipsWithKeyword(filterWord);
+	for(int i = 0; i < relatedClips.size(); i++){
+		vector<string>& keys = relatedClips[i].keywords;
+		//copy(keys.begin(), keys.end(), std::inserter(relatedKeywords, relatedKeywords.end()));
+		for(int k = 0; k < keys.size(); k++){
+			relatedKeywords.insert(keys[k]);
+		}
+	}
+	return relatedKeywords;
+}
+
+int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
+	int clipsInCommon = 0;
+	for(int i = 0; i < markers.size(); i++){
+		if(ofContains(markers[i].keywords, keywordA) &&
+		   ofContains(markers[i].keywords, keywordB))
+		{
+			clipsInCommon++;
+		}
+	}
+	return clipsInCommon;
+}
+
 
 void CloudsFCPParser::refreshKeywordVector(){
     keywordVector.clear();

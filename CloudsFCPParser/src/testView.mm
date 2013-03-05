@@ -26,9 +26,14 @@
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
     visualizer.database = &parser;
 //    visualizer.setupGrid();
+	
     visualizer.setup();
-    visualizer.exportForGraphviz();
-//    visualizer.createIterativePhysics();
+    //visualizer.exportForGraphviz();
+	
+	visualizer.setupPhysics();
+    visualizer.createIterativePhysics();
+	visualizer.addTagToPhysics("people");
+	
     //inpoint.setup();
     //important file!
 
@@ -51,7 +56,7 @@
 
 - (void)draw
 {
-//    visualizer.drawPhysics();
+    visualizer.drawPhysics();
 //    visualizer.drawGrid();
     if(preview.isLoaded()){
         preview.draw(0, 0, 1280, 720);

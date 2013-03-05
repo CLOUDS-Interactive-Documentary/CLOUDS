@@ -47,8 +47,6 @@
 		E7DA110116DC267100DA505A /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA0FCE16DC266F00DA505A /* libsndfile.a */; };
 		E7DA110216DC267100DA505A /* libsndfile-1.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA0FD016DC266F00DA505A /* libsndfile-1.lib */; };
 		E7DA110316DC267200DA505A /* libsndfile-1.dll in Resources */ = {isa = PBXBuildFile; fileRef = E7DA0FD216DC266F00DA505A /* libsndfile-1.dll */; };
-		E7DA110416DC267200DA505A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7DA0FD316DC266F00DA505A /* README.md */; };
-		E7DA110516DC267200DA505A /* README_JP.md in Resources */ = {isa = PBXBuildFile; fileRef = E7DA0FD416DC266F00DA505A /* README_JP.md */; };
 		E7DA110616DC267200DA505A /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FD716DC267000DA505A /* ofxHotKeys_impl_linux.cpp */; };
 		E7DA110716DC267200DA505A /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FD816DC267000DA505A /* ofxHotKeys_impl_mac.mm */; };
 		E7DA110816DC267200DA505A /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FD916DC267000DA505A /* ofxHotKeys_impl_win.cpp */; };
@@ -78,7 +76,6 @@
 		E7DA112016DC267200DA505A /* ofxTLVideoThumb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA100916DC267000DA505A /* ofxTLVideoThumb.cpp */; };
 		E7DA112116DC267200DA505A /* ofxTLVideoTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA100B16DC267000DA505A /* ofxTLVideoTrack.cpp */; };
 		E7DA112216DC267200DA505A /* ofxTLZoomer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA100D16DC267000DA505A /* ofxTLZoomer.cpp */; };
-		E7DA112316DC267200DA505A /* vc2010_build_event_command.txt in Resources */ = {isa = PBXBuildFile; fileRef = E7DA100F16DC267000DA505A /* vc2010_build_event_command.txt */; };
 		E7DA115416DC26A000DA505A /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA114716DC269F00DA505A /* ofxTimecode.cpp */; };
 		E7DA119E16DC26A700DA505A /* easing_terms_of_use.html in Resources */ = {isa = PBXBuildFile; fileRef = E7DA117016DC26A600DA505A /* easing_terms_of_use.html */; };
 		E7DA119F16DC26A700DA505A /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA117116DC26A600DA505A /* ofxEasing.cpp */; };
@@ -216,8 +213,6 @@
 		E7DA0FCE16DC266F00DA505A /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
 		E7DA0FD016DC266F00DA505A /* libsndfile-1.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsndfile-1.lib"; sourceTree = "<group>"; };
 		E7DA0FD216DC266F00DA505A /* libsndfile-1.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libsndfile-1.dll"; sourceTree = "<group>"; };
-		E7DA0FD316DC266F00DA505A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		E7DA0FD416DC266F00DA505A /* README_JP.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_JP.md; sourceTree = "<group>"; };
 		E7DA0FD616DC267000DA505A /* ofxHotKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHotKeys.h; sourceTree = "<group>"; };
 		E7DA0FD716DC267000DA505A /* ofxHotKeys_impl_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxHotKeys_impl_linux.cpp; sourceTree = "<group>"; };
 		E7DA0FD816DC267000DA505A /* ofxHotKeys_impl_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxHotKeys_impl_mac.mm; sourceTree = "<group>"; };
@@ -275,7 +270,6 @@
 		E7DA100C16DC267000DA505A /* ofxTLVideoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLVideoTrack.h; sourceTree = "<group>"; };
 		E7DA100D16DC267000DA505A /* ofxTLZoomer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLZoomer.cpp; sourceTree = "<group>"; };
 		E7DA100E16DC267000DA505A /* ofxTLZoomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLZoomer.h; sourceTree = "<group>"; };
-		E7DA100F16DC267000DA505A /* vc2010_build_event_command.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vc2010_build_event_command.txt; sourceTree = "<group>"; };
 		E7DA114716DC269F00DA505A /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		E7DA114816DC269F00DA505A /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E7DA117016DC26A600DA505A /* easing_terms_of_use.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
@@ -579,10 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				E7DA0FAB16DC266F00DA505A /* libs */,
-				E7DA0FD316DC266F00DA505A /* README.md */,
-				E7DA0FD416DC266F00DA505A /* README_JP.md */,
 				E7DA0FD516DC266F00DA505A /* src */,
-				E7DA100F16DC267000DA505A /* vc2010_build_event_command.txt */,
 			);
 			name = ofxTimeline;
 			path = ../../../addons/ofxTimeline;
@@ -1021,9 +1012,6 @@
 				E774701016D83DA8001038F9 /* license.md in Resources */,
 				E774701116D83DA8001038F9 /* README.md in Resources */,
 				E7DA110316DC267200DA505A /* libsndfile-1.dll in Resources */,
-				E7DA110416DC267200DA505A /* README.md in Resources */,
-				E7DA110516DC267200DA505A /* README_JP.md in Resources */,
-				E7DA112316DC267200DA505A /* vc2010_build_event_command.txt in Resources */,
 				E7DA119E16DC26A700DA505A /* easing_terms_of_use.html in Resources */,
 				E7DA11F516DC26BF00DA505A /* .gitignore in Resources */,
 			);

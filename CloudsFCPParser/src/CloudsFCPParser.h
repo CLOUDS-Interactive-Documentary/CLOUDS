@@ -55,8 +55,11 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<ClipMarker>& getAllClips();
+	vector<ClipMarker> getClipsWithKeyword(string filterWord);
     vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
-    
+    set<string> getRelatedKeywords(string filterWord);
+	int getNumberOfSharedClips(string keywordA, string keywordB);
+	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
