@@ -22,7 +22,7 @@ class ClipMarker {
     int startFrame;
     int endFrame;
     vector<string> keywords;
-    
+
     string getLinkName(){
         return person + " - " + name;
     }
@@ -63,6 +63,10 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
+	float springTension;
+	float springLength;
+	float massMultiplier;
+	
   protected:
     string xmlDirectory;
     void addXMLFile(string xmlFile);
@@ -80,6 +84,7 @@ class CloudsFCPParser {
     bool keywordsDirty;
     void refreshKeywordVector();
     bool sortedByOccurrence;
+
 //    bool keywordSort(const string& a, const string& b);
     
 };

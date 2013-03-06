@@ -5,6 +5,7 @@
 #include "CloudsFCPParser.h"
 #include "CloudsFCPVisualizer.h"
 #include "ofxTimeline.h"
+#include "ofxUI.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
     IBOutlet NSTableView* keywordTable;
@@ -29,15 +30,16 @@
     ofVideoPlayer preview;
     ofxTimeline inpoint;
 
+	float physSpringTension;
+	float physSpringLength;
+	ofxUICanvas* gui;
+
 }
-
-
 
 - (void)setup;
 - (void)update;
 - (void)draw;
 - (void)exit;
-
 
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;

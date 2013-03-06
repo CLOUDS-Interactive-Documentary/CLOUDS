@@ -31,17 +31,19 @@
     //visualizer.exportForGraphviz();
 	
 	visualizer.setupPhysics();
-    visualizer.createIterativePhysics();
-	visualizer.addTagToPhysics("people");
+	visualizer.addTagToPhysics("design");
 	
     //inpoint.setup();
     //important file!
-
+	
+	gui = new ofxUICanvas(0,0,200, ofGetHeight());
+	
 }
 
 - (void)update
 {
     if(updatePhysics){
+		
         visualizer.updatePhysics();
     }
     

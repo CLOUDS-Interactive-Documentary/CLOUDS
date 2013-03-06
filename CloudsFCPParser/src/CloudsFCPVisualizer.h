@@ -5,8 +5,9 @@
 #include "CloudsFCPParser.h"
 
 typedef struct {
-    
-} ClipLink;
+    msa::physics::Particle2D* particle;
+	string keyword;
+} Node;
 
 class CloudsFCPVisualizer {
   public:
@@ -16,7 +17,6 @@ class CloudsFCPVisualizer {
     
     void setupPhysics();
     void createClusterPhysics();
-    void createIterativePhysics();
     
     void updatePhysics();
     void drawPhysics();
@@ -42,6 +42,26 @@ class CloudsFCPVisualizer {
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);
 
-	bool iterativePhysics;
 	map<msa::physics::Particle2D*, string> particleName;
+	msa::physics::Particle2D* centerNode;
+ 
+	void windowResized(ofResizeEventArgs& args);
+	
+
+  protected:
+
+	ofColor hoverColor;
+	ofColor selectedColor;
+	ofColor nodeColor;
+	ofColor lineColor;
+	
+    msa::physics::Particle2D* selectedParticle;
+    msa::physics::Particle2D* hoverParticle;
+	msa::physics::Particle2D* particleNearPoint(ofVec2f point);
+	msa::physics::Spring2D* springNearPoint(ofVec2f point);
+	
+	float minRadius, maxRadius;
+	float minMass, maxMass;
+	float radiusForNode(float mass);
+	
 };

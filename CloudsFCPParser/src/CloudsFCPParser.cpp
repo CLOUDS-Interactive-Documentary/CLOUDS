@@ -11,6 +11,8 @@
 CloudsFCPParser::CloudsFCPParser(){
     keywordsDirty = false;
     sortedByOccurrence = false;
+	massMultiplier = 1.0;
+
 }
 
 void CloudsFCPParser::setup(string directory){
