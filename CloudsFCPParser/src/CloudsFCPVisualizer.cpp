@@ -3,6 +3,7 @@
 
 #define	SPRING_MIN_STRENGTH		0.005
 #define SPRING_MAX_STRENGTH		0.1
+#include "ofxTween.h"
 
 CloudsFCPVisualizer::CloudsFCPVisualizer(){
     database = NULL;
@@ -13,18 +14,21 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	maxRadius = 50;
 	minMass = 1;
 	maxMass = 0;
+	cursorRadius = 10;
 	
-	hoverColor = ofColor(255, 200, 10);
-	selectedColor = ofColor(175,255, 10);
-	nodeColor = ofColor(255, 50);
-	lineColor = ofColor(0, 130, 200, 200);
+	hoverColor = ofColor::fromHex(0xe81c0c);
+	selectedColor = ofColor::fromHex(0xff530d);
+	nodeColor = ofColor::fromHex(0xe8c57a);
+	lineColor = ofColor::fromHex(0x1baa8f);
+	
 }
 
 void CloudsFCPVisualizer::setup(){
 	
 	ofRegisterMouseEvents(this);
     ofRegisterKeyEvents(this);
-
+	ofSetCircleResolution(200);
+	
     database->sortKeywordsByOccurrence(true);
     vector<string>& allKeywords = database->getAllKeywords();
     vector<ClipMarker>& clips = database->getAllClips();
@@ -51,41 +55,66 @@ void CloudsFCPVisualizer::setupPhysics(){
     
 	physics.setWorldSize(ofVec2f(0,0), ofVec2f(width,height));
 	physics.setSectorCount(1);
-    physics.setDrag(0.94f);
-	physics.setDrag(.6);		// FIXTHIS
+    physics.setDrag(0.1f);
+	physics.setDrag(.6);
 }
 
 void CloudsFCPVisualizer::addTagToPhysics(string tag){
+	
+	vector<msa::physics::Particle2D*> newParticles;
 	vector<ClipMarker> relatedClips = database->getClipsWithKeyword(tag);
-	//make a particle for the seed
-	msa::physics::Particle2D *p = physics.makeParticle(ofVec2f(width/2, height/2));
-	p->setMass(database->occurrencesOfKeyword(tag));
-	p->makeFixed();
+	msa::physics::Particle2D * p;
+	if(hasParticle(tag)){
+		p = particlesByTag[tag];
+	}
+	else{
+		//make a particle for the seed
+		p = physics.makeParticle(ofVec2f(width/2, height/2));
+		p->setMass(database->occurrencesOfKeyword(tag));
+		p->makeFixed();
+		newParticles.push_back(p);
+		particleName[p] = tag;
+		particlesByTag[tag] = p;
+	}
+	
+	int particleStartIndex = physics.numberOfParticles();
 	cout << "adding tag " << tag << endl;
 	set<string> related = database->getRelatedKeywords(tag);
 	set<string>::iterator it;
-	vector<msa::physics::Particle2D*> newParticles;
-	newParticles.push_back(p);
-	particleName[p] = tag;
-	
 	for(it = related.begin(); it != related.end(); it++){
-
-		msa::physics::Particle2D *a = physics.makeParticle(ofVec2f(width/2 + ofRandom(-5,5),
-																   height/2 + ofRandom(-5,5)));
-		
-		int mass = database->occurrencesOfKeyword(*it);
-		a->setMass(mass);
-		maxMass = MAX(maxMass, mass);
+		msa::physics::Particle2D* a;
+		if(hasParticle(*it)){
+			a = particlesByTag[*it];
+		}
+		else {
+			a = physics.makeParticle(p->getPosition() + ofVec2f(ofRandom(-5,5),ofRandom(-5,5)) );
+			int mass = database->occurrencesOfKeyword(*it);
+			a->setMass(mass);
+			maxMass = MAX(maxMass, mass);
+			particleName[a] = *it;
+			particlesByTag[*it] = a;
+			newParticles.push_back(a);
+		}
 		
 		int clipsInCommon = database->getNumberOfSharedClips(tag,*it);
-		//use clips in common to weight the lines
-		physics.makeSpring(a, p, .1, 5 );
-
-		particleName[a] = *it;
-		newParticles.push_back(a);
+		if(springs.find( make_pair(a, p) ) == springs.end() &&
+		   springs.find( make_pair(p, a) ) == springs.end() ){
+			//use clips in common to weight the lines
+			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .1, 10 );
+			springs.insert( make_pair(a, p) );
+			clipsInSpring[ newSpring ] = clipsInCommon;
+		}
 		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
 	}
 	
+	//repel existing particles
+	for(int i = 0; i < newParticles.size(); i++){
+		for(int j = 0; j < particleStartIndex; j++){
+			physics.makeAttraction(newParticles[i], physics.getParticle(j), -20);
+		}
+	}
+	
+	//repel eachother
 	for(int i = 0; i < newParticles.size(); i++){
 		for(int j = 0; j < newParticles.size(); j++){
 			if(j != i){
@@ -97,8 +126,16 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	centerNode = p;
 }
 
+bool CloudsFCPVisualizer::hasParticle(string tagName){
+	return particlesByTag.find(tagName) != particlesByTag.end();
+}
+
 void CloudsFCPVisualizer::updatePhysics(){
     physics.update();
+	totalRectangle = ofRectangle();
+	for(int i = 0; i < physics.numberOfParticles(); i++){
+		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());
+	}
 }
 
 void CloudsFCPVisualizer::drawPhysics(){
@@ -111,7 +148,25 @@ void CloudsFCPVisualizer::drawPhysics(){
         font.loadFont("verdana.ttf", 8);
     }
 
+	ofPushMatrix();
+	ofRectangle screenRect(0,0,width,height);
+	float scaleAmount = MAX(screenRect.width/totalRectangle.width,
+							screenRect.height/totalRectangle.height);
+	ofScale(scaleAmount,scaleAmount);
+	ofTranslate(totalRectangle.x, totalRectangle.y);
+	
     ofPushStyle();
+    for(int i = 0; i < physics.numberOfSprings(); i++){
+
+        msa::physics::Spring2D* s = physics.getSpring(i);
+		int numClips = clipsInSpring[s];
+		
+		ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
+		ofSetLineWidth(.5 + numClips/2.0);
+        ofLine(s->getOneEnd()->getPosition(),
+               s->getTheOtherEnd()->getPosition());
+    }
+	
     vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
         
@@ -134,34 +189,47 @@ void CloudsFCPVisualizer::drawPhysics(){
         ofNoFill();
         ofCircle(a->getPosition(), radius);
         
-        if(a->getMass() > 1){
-            ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
+        if(a->getMass() > 1 || a == selectedParticle || a == hoverParticle){
+            //ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
+			ofSetColor(ofColor(20, a->getMass()*5 + 150) );
             font.drawString(particleName[a], a->getPosition().x,a->getPosition().y);
-        }
+      }
+		
+		if(a == selectedParticle || a == hoverParticle){
+			ofxEasingCubic cub;
+			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
+			ofSetColor(hoverColor, (1-alpha)*200);
+			ofCircle(a->getPosition(), ofxTween::map(alpha, 0, 1.0, radius, radius+10, true, cub) );
+			//ofCircle(a->getPosition(), radius + 10);
+		}
     }
 
-    ofSetColor(lineColor);
-    for(int i = 0; i < physics.numberOfSprings(); i++){
-        msa::physics::Spring2D* s = physics.getSpring(i);
-        ofLine(s->getOneEnd()->getPosition(),
-               s->getTheOtherEnd()->getPosition());
-    }
     
-	ofCircle(ofGetMouseX(), ofGetMouseY(), 10);
+	ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
 	
     ofPopStyle();
+	ofPopMatrix();
 }
 
 msa::physics::Particle2D* CloudsFCPVisualizer::particleNearPoint(ofVec2f point){
 	
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		float particleRadiusSquared = powf(radiusForNode( physics.getParticle(i)->getMass() ), 2);
-		if(point.squareDistance( physics.getParticle(i)->getPosition()) < particleRadiusSquared){
+		if(point.squareDistance( physics.getParticle(i)->getPosition()) < (particleRadiusSquared + cursorRadius*cursorRadius) ){
 			return physics.getParticle(i);
 		}
 	}
 	
 	return NULL;
+}
+
+void CloudsFCPVisualizer::clear(){
+	particleName.clear();
+	particlesByTag.clear();
+	springs.clear();
+	
+	centerNode = NULL;
+	physics.clear();
 }
 
 msa::physics::Spring2D* CloudsFCPVisualizer::springNearPoint(ofVec2f point){
@@ -190,7 +258,11 @@ void CloudsFCPVisualizer::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsFCPVisualizer::keyPressed(ofKeyEventArgs& args){
-	
+	if(args.key == OF_KEY_RETURN){
+		if(selectedParticle != NULL){
+			addTagToPhysics( particleName[selectedParticle] );
+		}
+	}
 }
 
 void CloudsFCPVisualizer::keyReleased(ofKeyEventArgs& args){

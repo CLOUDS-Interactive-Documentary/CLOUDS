@@ -4,9 +4,11 @@
 
 - (void)setup
 {
-    ofBackground(0);
+    ofBackground(230);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
+	ofSetFrameRate(30);
+	
     updatePhysics = true;
     
     [self refreshXML:self];
@@ -25,25 +27,35 @@
  
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
     visualizer.database = &parser;
-//    visualizer.setupGrid();
 	
-    visualizer.setup();
+	//visualizer.setupGrid();
     //visualizer.exportForGraphviz();
 	
+    visualizer.setup();
 	visualizer.setupPhysics();
-	visualizer.addTagToPhysics("design");
+	visualizer.addTagToPhysics("play");
 	
     //inpoint.setup();
     //important file!
+	//gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
-	gui = new ofxUICanvas(0,0,200, ofGetHeight());
-	
+	for(int i = 0; i < parser.getAllKeywords().size(); i++){
+		cout << parser.getAllKeywords()[ i ] << " " << parser.occurrencesOfKeyword( parser.getAllKeywords()[ i ]) << endl;
+	}
+}
+
+- (IBAction) regenerateGraph:(id)sender
+{
+	string seedKeywordString = [seedKeyword.stringValue UTF8String];
+	if(seedKeywordString != ""){
+		visualizer.clear();
+		visualizer.addTagToPhysics(seedKeywordString);
+	}
 }
 
 - (void)update
 {
     if(updatePhysics){
-		
         visualizer.updatePhysics();
     }
     
@@ -95,13 +107,16 @@
             l.startFrame = -1;
             l.endFrame = -1;
             
-            //TODO figure out frame numbers;
+            //TODO figure out frame numbers
             parser.addLink(l);
             currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
             
             cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
             
             [linkTable reloadData];
+			
+			//save
+			[self saveLinks:self];
         }
     }
 }
@@ -116,7 +131,6 @@
     if(clipTable.selectedRow >= 0){
         ClipMarker& clip = [self selectedClip];
         
-
         if(currentPlayingClip.getLinkName() == clip.getLinkName()){
             if(preview.isPlaying()){
                 preview.stop();
@@ -143,7 +157,7 @@
         
         currentClipLinks = parser.getLinksForClip(clip.getLinkName());
         
-        cout << "current clips is  of size " << currentClipLinks.size() << endl;
+        cout << "current clips is of size " << currentClipLinks.size() << endl;
         currentPlayingClip = clip;
         
         clipEndFrame = clip.endFrame;

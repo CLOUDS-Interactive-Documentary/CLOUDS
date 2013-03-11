@@ -15,7 +15,9 @@
     
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* linkText;
- 
+	
+	IBOutlet NSTextField* seedKeyword;
+	
     CloudsFCPParser parser;
     CloudsFCPVisualizer visualizer;
     
@@ -47,6 +49,8 @@
 - (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) deleteLink:(id)sender;
+- (IBAction) regenerateGraph:(id)sender;
+
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
