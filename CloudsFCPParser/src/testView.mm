@@ -261,7 +261,6 @@
 		}
 		else {
 			//ClipMarker& m = [self selectedClip];
-
 			string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
 			return [NSString stringWithUTF8String:linkString.c_str()];
 		}

@@ -126,7 +126,7 @@ bool CloudsFCPParser::keywordsShareLink(string keyA, string keyB){
 	vector<ClipMarker> clips = getClipsWithKeyword(keywordFilter);
 	for(int i = 0; i < clips.size(); i++){
 		for(int j = i+1; j < clips.size(); j++){
-			if(clipsShareLink(clips[i].name, clips[j].name)){
+			if(clipsShareLink(clips[i].getLinkName(), clips[j].getLinkName())){
 				return true;
 			}
 		}

@@ -79,6 +79,9 @@ class CloudsFCPVisualizer {
     msa::physics::Particle2D* selectedParticle;
     msa::physics::Particle2D* hoverParticle;
 	msa::physics::Particle2D* particleNearPoint(ofVec2f point);
+	
+	msa::physics::Spring2D* selectedSpring;
+	msa::physics::Spring2D* hoverSpring;
 	msa::physics::Spring2D* springNearPoint(ofVec2f point);
 	
 	float cursorRadius;

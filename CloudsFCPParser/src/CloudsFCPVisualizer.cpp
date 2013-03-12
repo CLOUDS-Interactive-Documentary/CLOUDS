@@ -5,11 +5,35 @@
 #define SPRING_MAX_STRENGTH		0.1
 #include "ofxTween.h"
 
+static bool DistancePointLine( ofVec3f p, ofVec3f a, ofVec3f b, float& distance )
+{
+    float lineMagnitudeSqr = a.distanceSquared( b );
+	float u;
+    u = (( ( p.x - a.x ) * ( b.x - a.x ) ) +
+		 ( ( p.y - a.y ) * ( b.y - a.y ) ) +
+		 ( ( p.z - a.z ) * ( b.z - a.z ) ) ) / lineMagnitudeSqr;
+	
+    if( u < 0.0f || u > 1.0f )
+        return false;   // closest point does not fall within the line segment
+	
+	ofVec3f intersection = a + u * (b - a);
+//    intersection.X = a.X + U * ( b.X - a.X );
+//    intersection.Y = a.Y + U * ( b.Y - a.Y );
+//    intersection.Z = a.Z + U * ( b.Z - a.Z );
+	
+    distance = p.distance(intersection);
+	
+    return true;
+}
+
 CloudsFCPVisualizer::CloudsFCPVisualizer(){
     database = NULL;
 	selectedParticle = NULL;
 	hoverParticle = NULL;
 	
+	selectedSpring = NULL;
+	hoverSpring = NULL;
+
 	minRadius = 2;
 	maxRadius = 50;
 	minMass = 1;
@@ -23,6 +47,16 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	
 	currentScale = 1.0;
 	currentTop = ofVec2f(0,0);
+}
+
+void CloudsFCPVisualizer::clear(){
+	particleName.clear();
+	particlesByTag.clear();
+	springs.clear();
+	linkSprings.clear();
+	
+	centerNode = NULL;
+	physics.clear();
 }
 
 void CloudsFCPVisualizer::setup(){
@@ -105,11 +139,13 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .1, 10 );
 			springs.insert( make_pair(a, p) );
 			clipsInSpring[ newSpring ] = clipsInCommon;
+			cout << "Trying to find link spring between " << tag << " and " << *it << endl;
 			if( database->keywordsShareLink(tag, *it) ){
+				cout << "-->!!link exists!" << endl;
 				linkSprings.insert(newSpring);
 			}
 		}
-		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
+//		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
 	}
 	
 	//repel existing particles
@@ -171,19 +207,32 @@ void CloudsFCPVisualizer::drawPhysics(){
 		ofPushStyle();
         msa::physics::Spring2D* s = physics.getSpring(i);
 		int numClips = clipsInSpring[s];
+		
+		if(s == hoverSpring || s == selectedSpring){
+			ofxEasingCubic cub;
+			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
+			ofSetColor(s == hoverSpring ? hoverColor : selectedColor, (1-alpha)*200);
+			ofSetLineWidth(.5 + ofxTween::map(alpha, 0, 1.0, 1.0, 3.0, true, cub));
+			ofLine(s->getOneEnd()->getPosition(),
+				   s->getTheOtherEnd()->getPosition());
+		}
+
 		if(linkSprings.find(s) != linkSprings.end()){
 			ofSetColor(selectedColor, ofMap(numClips, 1, 10, 50, 255));
+			ofSetLineWidth(.5 + numClips/2.0);
 		}
 		else{
 			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
+			ofSetLineWidth(.5 + numClips/2.0);
+			
 		}
-		ofSetLineWidth(.5 + numClips/2.0);
         ofLine(s->getOneEnd()->getPosition(),
                s->getTheOtherEnd()->getPosition());
+		
+		
 		ofPopStyle();
     }
 	
-
     for(int i = 0; i < physics.numberOfParticles(); i++){
         
         msa::physics::Particle2D *a = physics.getParticle(i);
@@ -212,7 +261,6 @@ void CloudsFCPVisualizer::drawPhysics(){
 			//ofCircle(a->getPosition(), radius + 10);
 		}
     }
-
     
 	//ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
 	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
@@ -230,7 +278,6 @@ void CloudsFCPVisualizer::drawPhysics(){
 			font.drawString(particleName[a], textPosition.x,textPosition.y);
 		}
 	}
-
 }
 
 ofVec2f CloudsFCPVisualizer::graphPointForScreenPoint(ofVec2f screenPoint){
@@ -249,24 +296,26 @@ msa::physics::Particle2D* CloudsFCPVisualizer::particleNearPoint(ofVec2f point){
 			return physics.getParticle(i);
 		}
 	}
-	
 	return NULL;
-}
-
-void CloudsFCPVisualizer::clear(){
-	particleName.clear();
-	particlesByTag.clear();
-	springs.clear();
-	linkSprings.clear();
-	
-	centerNode = NULL;
-	physics.clear();
 }
 
 msa::physics::Spring2D* CloudsFCPVisualizer::springNearPoint(ofVec2f point){
-	//TODO: get springs!
+
+	for(int i = 0; i < physics.numberOfSprings(); i++){
+		msa::physics::Spring2D* spring = physics.getSpring( i );
+		ofVec3f p = ofVec3f(point.x, point.y, 0);
+		ofVec3f a = ofVec3f(physics.getSpring( i )->getOneEnd()->getPosition().x,
+							physics.getSpring( i )->getOneEnd()->getPosition().y,0);
+		ofVec3f b = ofVec3f(physics.getSpring( i )->getTheOtherEnd()->getPosition().x,
+							physics.getSpring( i )->getTheOtherEnd()->getPosition().y,0);
+		float distance;
+		if( DistancePointLine(p, a, b, distance) && distance < cursorRadius){
+			return spring;
+		}
+	}
 	return NULL;
 }
+
 float CloudsFCPVisualizer::radiusForNode( float mass ){
 	return ofMap(mass, minMass, maxMass, minRadius, maxRadius);
 }
@@ -274,10 +323,13 @@ float CloudsFCPVisualizer::radiusForNode( float mass ){
 void CloudsFCPVisualizer::mousePressed(ofMouseEventArgs& args){
 //	centerNode->moveTo(ofVec2f(args.x,args.y));
 	selectedParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+	selectedSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 }
 
 void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
 	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+	hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+
 }
 
 void CloudsFCPVisualizer::mouseDragged(ofMouseEventArgs& args){
