@@ -197,23 +197,29 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         if(comment != "" && cm.endFrame - cm.startFrame > 1 && cm.endFrame > 0){
             cm.name = fcpXML.getValue("name", "");
             cm.person = currentName;
-            cm.clip = clipFileName;
-            cm.filePath = clipFilePath;
-            cm.color.r = fcpXML.getValue("color:red", 0);
-            cm.color.g = fcpXML.getValue("color:green", 0);
-            cm.color.b = fcpXML.getValue("color:blue", 0);
-            string keywordString = ofToLower( fcpXML.getValue("comment", "") );
-            ofStringReplace(keywordString, "\n", ",");
-            cm.keywords = ofSplitString(keywordString, ",",true,true);
-            for(int k = 0; k < cm.keywords.size(); k++){
-                if(cm.keywords[k].find("?") == string::npos &&
-                   cm.keywords[k].find("link:") == string::npos)
-                {
-                    allKeywords[cm.keywords[k]]++;
-                }
-            }
-//            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
-            markers.push_back(cm);
+			if( markerLinkNames.find(cm.getLinkName()) != markerLinkNames.end() ){
+				ofLogError() << "DUPLICATE CLIP " << cm.getLinkName() << endl;
+			}
+			else{
+				markerLinkNames.insert( cm.getLinkName() );
+				cm.clip = clipFileName;
+				cm.filePath = clipFilePath;
+				cm.color.r = fcpXML.getValue("color:red", 0);
+				cm.color.g = fcpXML.getValue("color:green", 0);
+				cm.color.b = fcpXML.getValue("color:blue", 0);
+				string keywordString = ofToLower( fcpXML.getValue("comment", "") );
+				ofStringReplace(keywordString, "\n", ",");
+				cm.keywords = ofSplitString(keywordString, ",",true,true);
+				for(int k = 0; k < cm.keywords.size(); k++){
+					if(cm.keywords[k].find("?") == string::npos &&
+					   cm.keywords[k].find("link:") == string::npos)
+					{
+						allKeywords[cm.keywords[k]]++;
+					}
+				}
+	//            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
+				markers.push_back(cm);
+			}
         }
         fcpXML.popTag(); //marker
     }
@@ -258,9 +264,12 @@ vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(string filterWord){
 
 vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
     vector<ClipMarker> filteredMarkers;
+	set<string> includedClips;
     for(int c = 0; c < markers.size(); c++){
         for(int i = 0; i < filter.size(); i++){
-            if(ofContains(markers[c].keywords, filter[i])){
+            if(ofContains(markers[c].keywords, filter[i]) &&
+			   includedClips.find(markers[c].getLinkName()) == includedClips.end()){
+				includedClips.insert(markers[c].getLinkName());
                 filteredMarkers.push_back(markers[c]);
                 break;
             }
@@ -281,6 +290,20 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	return relatedKeywords;
 }
 
+vector<ClipMarker> CloudsFCPParser::getSharedClips(string keywordA, string keywordB){
+	vector<ClipMarker> sharedClips;
+//	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
+	for(int i = 0; i < markers.size(); i++){
+		if(ofContains(markers[i].keywords, keywordA) &&
+		   ofContains(markers[i].keywords, keywordB))
+		{
+//			cout << "	Adding Clip " << markers[i].getLinkName() << " marker " << i << endl;
+			sharedClips.push_back(markers[i]);
+		}
+	}
+	return sharedClips;
+}
+
 int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 	int clipsInCommon = 0;
 	for(int i = 0; i < markers.size(); i++){
@@ -292,7 +315,6 @@ int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 	}
 	return clipsInCommon;
 }
-
 
 void CloudsFCPParser::refreshKeywordVector(){
     keywordVector.clear();

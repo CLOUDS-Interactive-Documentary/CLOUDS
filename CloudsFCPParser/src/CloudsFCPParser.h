@@ -61,7 +61,7 @@ class CloudsFCPParser {
 	//true if A and B have clips that link to one another
 	bool keywordsShareLink(string keyA, string keyB);
 	
-#pragma mark Keywods
+#pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<ClipMarker>& getAllClips();
@@ -69,6 +69,7 @@ class CloudsFCPParser {
     vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
     set<string> getRelatedKeywords(string filterWord);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
+	vector<ClipMarker> getSharedClips(string keywordA, string keywordB);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
@@ -80,17 +81,16 @@ class CloudsFCPParser {
 
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-
     vector<ClipMarker> markers;
+	set<string> markerLinkNames;
+
     map<string, int> allKeywords;
     vector<string> keywordVector;
 
     map<string, vector<CloudsLink> > sourceLinks;
-    
+
     bool keywordsDirty;
     void refreshKeywordVector();
     bool sortedByOccurrence;
-
-//    bool keywordSort(const string& a, const string& b);
     
 };

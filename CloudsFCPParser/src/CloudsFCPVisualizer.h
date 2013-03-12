@@ -65,9 +65,12 @@ class CloudsFCPVisualizer {
 	ofRectangle totalRectangle;
 	float currentScale;
 	ofVec2f currentTop;
+
+	string selectionTitle;
+	vector<ClipMarker> selectedClips;
+	vector<CloudsLink> selectedLinks;
 	
   protected:
-
 	ofColor hoverColor;
 	ofColor selectedColor;
 	ofColor nodeColor;

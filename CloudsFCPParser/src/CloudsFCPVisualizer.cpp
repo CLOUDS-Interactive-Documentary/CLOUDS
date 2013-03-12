@@ -177,7 +177,7 @@ void CloudsFCPVisualizer::updatePhysics(){
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());
 	}
-	totalRectangle.scaleFromCenter(1.2);
+	totalRectangle.scaleFromCenter(1.2, 1.5);
 }
 
 void CloudsFCPVisualizer::drawPhysics(){
@@ -193,12 +193,15 @@ void CloudsFCPVisualizer::drawPhysics(){
 	ofPushMatrix();
 	
 	ofRectangle screenRect(0,0,width,height);
+	
 	float scaleAmount = MIN(screenRect.width/totalRectangle.width,
 							screenRect.height/totalRectangle.height);
 	
 	currentScale += (scaleAmount-currentScale)*.1;
-	currentTop += (totalRectangle.getTopLeft()-currentTop)*.1;
+	ofVec2f topCenter = totalRectangle.getTopRight().getInterpolated(totalRectangle.getTopLeft(), .5);
+	currentTop += (topCenter-currentTop)*.1;
 	
+	ofTranslate(ofGetWidth()/2, 0);
 	ofScale(currentScale,currentScale);
 	ofTranslate(-currentTop);
 	
@@ -265,7 +268,6 @@ void CloudsFCPVisualizer::drawPhysics(){
 	//ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
 	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
 	
-    ofPopStyle();
 	ofPopMatrix();
 	vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
@@ -278,14 +280,25 @@ void CloudsFCPVisualizer::drawPhysics(){
 			font.drawString(particleName[a], textPosition.x,textPosition.y);
 		}
 	}
+	
+	string allSelectedClips = selectionTitle + "\n";
+	for(int i = 0; i < selectedClips.size(); i++){
+		allSelectedClips += selectedClips[i].getLinkName() + "\n";
+	}
+	
+	ofSetColor(25, 230);
+	font.drawString(allSelectedClips, 20, 20);
+	
+	ofPopStyle();
+
 }
 
 ofVec2f CloudsFCPVisualizer::graphPointForScreenPoint(ofVec2f screenPoint){
-	return (screenPoint / currentScale) + currentTop;
+	return ( (screenPoint - ofVec2f(ofGetWidth()/2, 0)) / currentScale) + currentTop;
 }
 
 ofVec2f CloudsFCPVisualizer::screenPointForGraphPoint(ofVec2f graphPoint){
-	return (graphPoint - currentTop) * currentScale;
+	return (graphPoint - currentTop) * currentScale + ofVec2f(ofGetWidth()/2, 0);
 }
 
 msa::physics::Particle2D* CloudsFCPVisualizer::particleNearPoint(ofVec2f point){
@@ -321,15 +334,43 @@ float CloudsFCPVisualizer::radiusForNode( float mass ){
 }
 
 void CloudsFCPVisualizer::mousePressed(ofMouseEventArgs& args){
-//	centerNode->moveTo(ofVec2f(args.x,args.y));
+
+	selectedSpring = NULL;
 	selectedParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
-	selectedSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+	if(selectedParticle == NULL){
+		selectedSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+	}
 }
 
 void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
+	hoverSpring = NULL;
+	selectedLinks.clear();
+	selectedClips.clear();
+	selectionTitle = "";
 	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
-	hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
-
+	if(hoverParticle != NULL){
+		selectionTitle = "Clips with " + particleName[ hoverParticle ];
+		selectedClips = database->getClipsWithKeyword( particleName[ hoverParticle ] );
+	}
+	else{
+		hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+		if(hoverSpring != NULL){
+			string keyA = particleName[ hoverSpring->getOneEnd() ];
+			string keyB = particleName[ hoverSpring->getTheOtherEnd() ];
+			selectionTitle = "Clips sharing " + keyA + " and " + keyB;
+			selectedClips = database->getSharedClips(keyA,keyB);
+		}
+		else if(selectedParticle != NULL){
+			selectionTitle = "Clips with " + particleName[ selectedParticle ];
+			selectedClips = database->getClipsWithKeyword( particleName[ selectedParticle ] );		
+		}
+		else if(selectedSpring != NULL){
+			string keyA = particleName[ selectedSpring->getOneEnd() ];
+			string keyB = particleName[ selectedSpring->getTheOtherEnd() ];
+			selectionTitle = "Clips sharing " + keyA + " and " + keyB;
+			selectedClips = database->getSharedClips(keyA,keyB);	
+		}
+	}
 }
 
 void CloudsFCPVisualizer::mouseDragged(ofMouseEventArgs& args){
