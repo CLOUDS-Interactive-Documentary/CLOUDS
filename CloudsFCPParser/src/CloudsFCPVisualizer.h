@@ -54,6 +54,7 @@ class CloudsFCPVisualizer {
 	
 	set< pair<msa::physics::Particle2D*,msa::physics::Particle2D*> > springs;
 	map< msa::physics::Spring2D*, int> clipsInSpring;
+	set< msa::physics::Spring2D*> linkSprings;
 	
 	msa::physics::Particle2D* centerNode;
 	

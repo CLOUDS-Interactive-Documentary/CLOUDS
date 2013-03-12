@@ -163,9 +163,7 @@
         clipEndFrame = clip.endFrame;
         
         [linkTable reloadData];
-        
     }
-    
 }
 
 - (IBAction) deleteLink:(id)sender
@@ -177,7 +175,6 @@
         
         [linkTable reloadData];
     }
-        
 }
 
 - (ClipMarker&) selectedClip
@@ -257,11 +254,17 @@
         }
     }
     else if(aTableView == clipTable){
-        ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
-        //ClipMarker& m = [self selectedClip];
-        
-        string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
-        return [NSString stringWithUTF8String:linkString.c_str()];
+		ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
+//		NSLog(@"Identifer is %@", aTableColumn.identifier);
+		if([@"Links" isEqualToString:aTableColumn.identifier]){
+			return [NSNumber numberWithInt: parser.getLinksForClip( m.getLinkName() ).size()];
+		}
+		else {
+			//ClipMarker& m = [self selectedClip];
+
+			string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
+			return [NSString stringWithUTF8String:linkString.c_str()];
+		}
     }
     else if(aTableView == linkTable){
         string clipTableEntry = currentClipLinks[rowIndex].targetName;

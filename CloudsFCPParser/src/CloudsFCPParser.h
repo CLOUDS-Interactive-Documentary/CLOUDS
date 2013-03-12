@@ -43,15 +43,25 @@ class CloudsFCPParser {
   public:
     CloudsFCPParser();
     void setup(string directory);
-    
-    void parseLinks(string linkFile);
+    void refreshXML();
 
+#pragma mark sLinks
+	//MANAGE
+    void parseLinks(string linkFile);
     vector<CloudsLink>& getLinksForClip(string clipName);
     void addLink(CloudsLink& link);
     void saveLinks(string linkFile);
     void removeLink(string linkName, int linkIndex);
-    
-    void refreshXML();
+	
+	//QUERIES
+	//true if A links to B
+    bool clipLinksTo(string clipNameA, string clipNameB);
+	//true if A links to B or B links to A
+	bool clipsShareLink(string clipNameA, string clipNameB);
+	//true if A and B have clips that link to one another
+	bool keywordsShareLink(string keyA, string keyB);
+	
+#pragma mark Keywods
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<ClipMarker>& getAllClips();
@@ -63,10 +73,6 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
-	float springTension;
-	float springLength;
-	float massMultiplier;
-	
   protected:
     string xmlDirectory;
     void addXMLFile(string xmlFile);

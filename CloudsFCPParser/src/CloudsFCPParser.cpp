@@ -11,8 +11,6 @@
 CloudsFCPParser::CloudsFCPParser(){
     keywordsDirty = false;
     sortedByOccurrence = false;
-	massMultiplier = 1.0;
-
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -102,6 +100,38 @@ void CloudsFCPParser::removeLink(string linkName, int linkIndex){
     else{
         cout << "failed to remove link " << linkIndex << " from " << linkName << endl;
     }
+}
+
+bool CloudsFCPParser::clipsShareLink(string clipNameA, string clipNameB){
+	return clipLinksTo(clipNameA, clipNameB) || clipLinksTo(clipNameB, clipNameA);
+}
+
+bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB){
+	if(sourceLinks.find(clipNameA) != sourceLinks.end()){
+		vector<CloudsLink>& links = sourceLinks[ clipNameA ];
+		for(int i = 0; i < links.size(); i++){
+			if(links[ i ].targetName == clipNameB){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool CloudsFCPParser::keywordsShareLink(string keyA, string keyB){
+	vector<string> keywordFilter;
+	keywordFilter.push_back(keyA);
+	keywordFilter.push_back(keyB);
+	
+	vector<ClipMarker> clips = getClipsWithKeyword(keywordFilter);
+	for(int i = 0; i < clips.size(); i++){
+		for(int j = i+1; j < clips.size(); j++){
+			if(clipsShareLink(clips[i].name, clips[j].name)){
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 void CloudsFCPParser::addXMLFile(string xmlFile){
@@ -244,7 +274,6 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	vector<ClipMarker> relatedClips = getClipsWithKeyword(filterWord);
 	for(int i = 0; i < relatedClips.size(); i++){
 		vector<string>& keys = relatedClips[i].keywords;
-		//copy(keys.begin(), keys.end(), std::inserter(relatedKeywords, relatedKeywords.end()));
 		for(int k = 0; k < keys.size(); k++){
 			relatedKeywords.insert(keys[k]);
 		}

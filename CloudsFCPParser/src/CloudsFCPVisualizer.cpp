@@ -105,6 +105,9 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .1, 10 );
 			springs.insert( make_pair(a, p) );
 			clipsInSpring[ newSpring ] = clipsInCommon;
+			if( database->keywordsShareLink(tag, *it) ){
+				linkSprings.insert(newSpring);
+			}
 		}
 		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
 	}
@@ -152,10 +155,6 @@ void CloudsFCPVisualizer::drawPhysics(){
     }
 
 	ofPushMatrix();
-	ofNoFill();
-	ofSetColor(255, 0, 0);
-//	ofRect(totalRectangle);
-	ofFill();
 	
 	ofRectangle screenRect(0,0,width,height);
 	float scaleAmount = MIN(screenRect.width/totalRectangle.width,
@@ -163,8 +162,6 @@ void CloudsFCPVisualizer::drawPhysics(){
 	
 	currentScale += (scaleAmount-currentScale)*.1;
 	currentTop += (totalRectangle.getTopLeft()-currentTop)*.1;
-//	currentScale = scaleAmount;
-//	currentTop = screenRect.getTopLeft();
 	
 	ofScale(currentScale,currentScale);
 	ofTranslate(-currentTop);
@@ -174,8 +171,12 @@ void CloudsFCPVisualizer::drawPhysics(){
 		ofPushStyle();
         msa::physics::Spring2D* s = physics.getSpring(i);
 		int numClips = clipsInSpring[s];
-		
-		ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
+		if(linkSprings.find(s) != linkSprings.end()){
+			ofSetColor(selectedColor, ofMap(numClips, 1, 10, 50, 255));
+		}
+		else{
+			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
+		}
 		ofSetLineWidth(.5 + numClips/2.0);
         ofLine(s->getOneEnd()->getPosition(),
                s->getTheOtherEnd()->getPosition());
@@ -256,6 +257,7 @@ void CloudsFCPVisualizer::clear(){
 	particleName.clear();
 	particlesByTag.clear();
 	springs.clear();
+	linkSprings.clear();
 	
 	centerNode = NULL;
 	physics.clear();
@@ -320,7 +322,7 @@ void CloudsFCPVisualizer::createClusterPhysics(){
     
     for(int i = 0; i < allKeywords.size(); i++){
         msa::physics::Particle2D *p = physics.makeParticle(ofVec2f(ofRandomWidth(), ofRandomHeight()));
-        p->setMass(database->occurrencesOfKeyword(allKeywords[i]));
+        p->setMass(database->occurrencesOfKeyword(allKeywords[i])*10);
         if(i == 0){
             p->moveTo(ofVec2f(width/2,height/2));
             p->makeFixed();
