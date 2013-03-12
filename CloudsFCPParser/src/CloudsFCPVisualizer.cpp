@@ -21,6 +21,8 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	nodeColor = ofColor::fromHex(0xe8c57a);
 	lineColor = ofColor::fromHex(0x1baa8f);
 	
+	currentScale = 1.0;
+	currentTop = ofVec2f(0,0);
 }
 
 void CloudsFCPVisualizer::setup(){
@@ -122,7 +124,7 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			}
 		}
 	}
-	
+
 	centerNode = p;
 }
 
@@ -132,10 +134,11 @@ bool CloudsFCPVisualizer::hasParticle(string tagName){
 
 void CloudsFCPVisualizer::updatePhysics(){
     physics.update();
-	totalRectangle = ofRectangle();
+	totalRectangle = ofRectangle(physics.getParticle(0)->getPosition(), 0,0);
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());
 	}
+	totalRectangle.scaleFromCenter(1.2);
 }
 
 void CloudsFCPVisualizer::drawPhysics(){
@@ -149,15 +152,26 @@ void CloudsFCPVisualizer::drawPhysics(){
     }
 
 	ofPushMatrix();
+	ofNoFill();
+	ofSetColor(255, 0, 0);
+//	ofRect(totalRectangle);
+	ofFill();
+	
 	ofRectangle screenRect(0,0,width,height);
-	float scaleAmount = MAX(screenRect.width/totalRectangle.width,
+	float scaleAmount = MIN(screenRect.width/totalRectangle.width,
 							screenRect.height/totalRectangle.height);
-	ofScale(scaleAmount,scaleAmount);
-	ofTranslate(totalRectangle.x, totalRectangle.y);
+	
+	currentScale += (scaleAmount-currentScale)*.1;
+	currentTop += (totalRectangle.getTopLeft()-currentTop)*.1;
+//	currentScale = scaleAmount;
+//	currentTop = screenRect.getTopLeft();
+	
+	ofScale(currentScale,currentScale);
+	ofTranslate(-currentTop);
 	
     ofPushStyle();
     for(int i = 0; i < physics.numberOfSprings(); i++){
-
+		ofPushStyle();
         msa::physics::Spring2D* s = physics.getSpring(i);
 		int numClips = clipsInSpring[s];
 		
@@ -165,12 +179,12 @@ void CloudsFCPVisualizer::drawPhysics(){
 		ofSetLineWidth(.5 + numClips/2.0);
         ofLine(s->getOneEnd()->getPosition(),
                s->getTheOtherEnd()->getPosition());
+		ofPopStyle();
     }
 	
-    vector<string>& allKeywords = database->getAllKeywords();
+
     for(int i = 0; i < physics.numberOfParticles(); i++){
         
-
         msa::physics::Particle2D *a = physics.getParticle(i);
 		float radius = radiusForNode(a->getMass());
 		
@@ -189,12 +203,6 @@ void CloudsFCPVisualizer::drawPhysics(){
         ofNoFill();
         ofCircle(a->getPosition(), radius);
         
-        if(a->getMass() > 1 || a == selectedParticle || a == hoverParticle){
-            //ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
-			ofSetColor(ofColor(20, a->getMass()*5 + 150) );
-            font.drawString(particleName[a], a->getPosition().x,a->getPosition().y);
-      }
-		
 		if(a == selectedParticle || a == hoverParticle){
 			ofxEasingCubic cub;
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
@@ -205,10 +213,31 @@ void CloudsFCPVisualizer::drawPhysics(){
     }
 
     
-	ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
+	//ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
+	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
 	
     ofPopStyle();
 	ofPopMatrix();
+	vector<string>& allKeywords = database->getAllKeywords();
+    for(int i = 0; i < physics.numberOfParticles(); i++){
+		msa::physics::Particle2D *a = physics.getParticle(i);
+		if(a->getMass() > 1 || a == selectedParticle || a == hoverParticle){
+			//ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
+			//ofSetColor(ofColor(20, a->getMass()*5 + 150) );
+			ofSetColor(75);
+			ofVec2f textPosition = screenPointForGraphPoint(a->getPosition());
+			font.drawString(particleName[a], textPosition.x,textPosition.y);
+		}
+	}
+
+}
+
+ofVec2f CloudsFCPVisualizer::graphPointForScreenPoint(ofVec2f screenPoint){
+	return (screenPoint / currentScale) + currentTop;
+}
+
+ofVec2f CloudsFCPVisualizer::screenPointForGraphPoint(ofVec2f graphPoint){
+	return (graphPoint - currentTop) * currentScale;
 }
 
 msa::physics::Particle2D* CloudsFCPVisualizer::particleNearPoint(ofVec2f point){
@@ -242,11 +271,11 @@ float CloudsFCPVisualizer::radiusForNode( float mass ){
 
 void CloudsFCPVisualizer::mousePressed(ofMouseEventArgs& args){
 //	centerNode->moveTo(ofVec2f(args.x,args.y));
-	selectedParticle = particleNearPoint( ofVec2f(args.x,args.y) );
+	selectedParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 }
 
 void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
-	hoverParticle = particleNearPoint(ofVec2f(args.x,args.y));
+	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 }
 
 void CloudsFCPVisualizer::mouseDragged(ofMouseEventArgs& args){

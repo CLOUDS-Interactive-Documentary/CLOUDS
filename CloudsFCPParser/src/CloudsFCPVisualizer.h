@@ -62,6 +62,8 @@ class CloudsFCPVisualizer {
 	void clear();
 	
 	ofRectangle totalRectangle;
+	float currentScale;
+	ofVec2f currentTop;
 	
   protected:
 
@@ -69,6 +71,9 @@ class CloudsFCPVisualizer {
 	ofColor selectedColor;
 	ofColor nodeColor;
 	ofColor lineColor;
+	
+	ofVec2f graphPointForScreenPoint(ofVec2f screenPoint);
+	ofVec2f screenPointForGraphPoint(ofVec2f graphPoint);
 	
     msa::physics::Particle2D* selectedParticle;
     msa::physics::Particle2D* hoverParticle;

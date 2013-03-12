@@ -4,7 +4,7 @@
 
 - (void)setup
 {
-    ofBackground(230);
+    ofBackground(220);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
 	ofSetFrameRate(30);
