@@ -89,7 +89,7 @@ void CloudsFCPVisualizer::setupPhysics(){
     
     cout << "width and height " << width << " " << height << endl;
     
-	physics.setWorldSize(ofVec2f(0,0), ofVec2f(width,height));
+	physics.setWorldSize(ofVec2f(0,0), ofVec2f(width*10,height*10));
 	physics.setSectorCount(1);
     physics.setDrag(0.1f);
 	physics.setDrag(.6);
@@ -118,6 +118,16 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	set<string> related = database->getRelatedKeywords(tag);
 	set<string>::iterator it;
 	for(it = related.begin(); it != related.end(); it++){
+		int clipsInCommon = database->getNumberOfSharedClips(tag,*it);
+		int occurrences = database->occurrencesOfKeyword(*it);
+		if(occurrences == 1){
+			continue;
+		}
+			
+//		if(clipsInCommon == 1){
+//			continue;
+//		}
+		
 		msa::physics::Particle2D* a;
 		if(hasParticle(*it)){
 			a = particlesByTag[*it];
@@ -132,11 +142,11 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			newParticles.push_back(a);
 		}
 		
-		int clipsInCommon = database->getNumberOfSharedClips(tag,*it);
+		
 		if(springs.find( make_pair(a, p) ) == springs.end() &&
 		   springs.find( make_pair(p, a) ) == springs.end() ){
 			//use clips in common to weight the lines
-			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .1, 10 );
+			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
 			springs.insert( make_pair(a, p) );
 			clipsInSpring[ newSpring ] = clipsInCommon;
 			cout << "Trying to find link spring between " << tag << " and " << *it << endl;
@@ -250,6 +260,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 		else{
 			ofSetColor(nodeColor);
 		}
+		
         ofFill();
         ofCircle(a->getPosition(), radius);
         
@@ -261,14 +272,12 @@ void CloudsFCPVisualizer::drawPhysics(){
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
 			ofSetColor(hoverColor, (1-alpha)*200);
 			ofCircle(a->getPosition(), ofxTween::map(alpha, 0, 1.0, radius, radius+10, true, cub) );
-			//ofCircle(a->getPosition(), radius + 10);
 		}
     }
-    
-	//ofCircle(ofGetMouseX(), ofGetMouseY(), cursorRadius);
+
 	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
-	
 	ofPopMatrix();
+	
 	vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
 		msa::physics::Particle2D *a = physics.getParticle(i);

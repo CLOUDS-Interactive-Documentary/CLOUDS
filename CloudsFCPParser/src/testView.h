@@ -50,7 +50,7 @@
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) deleteLink:(id)sender;
 - (IBAction) regenerateGraph:(id)sender;
-
+- (IBAction) unloadVideo:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

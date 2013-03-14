@@ -53,6 +53,11 @@
 	}
 }
 
+- (IBAction) unloadVideo:(id)sender
+{
+	preview.stop();
+}
+
 - (void)update
 {
     if(updatePhysics){
@@ -62,7 +67,6 @@
     if(preview.isLoaded()){
         preview.update();
         if(preview.getCurrentFrame() >= clipEndFrame){
-
             preview.stop();
         }
     }
@@ -72,7 +76,7 @@
 {
     visualizer.drawPhysics();
 //    visualizer.drawGrid();
-    if(preview.isLoaded()){
+    if(preview.isLoaded() && preview.isPlaying()){
         preview.draw(0, 0, 1280, 720);
     }
 }
