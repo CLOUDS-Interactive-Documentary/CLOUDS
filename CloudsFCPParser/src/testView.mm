@@ -1,6 +1,9 @@
 #import "testView.h"
+#import "ViewerApp.h"
 
 @implementation testView
+@synthesize clipEndFrame;
+@synthesize preview;
 
 - (void)setup
 {
@@ -64,21 +67,12 @@
         visualizer.updatePhysics();
     }
     
-    if(preview.isLoaded()){
-        preview.update();
-        if(preview.getCurrentFrame() >= clipEndFrame){
-            preview.stop();
-        }
-    }
 }
 
 - (void)draw
 {
     visualizer.drawPhysics();
 //    visualizer.drawGrid();
-    if(preview.isLoaded() && preview.isPlaying()){
-        preview.draw(0, 0, 1280, 720);
-    }
 }
 
 - (void)exit
@@ -132,7 +126,7 @@
 
 - (IBAction) playDoubleClickedRow:(id)sender
 {
-    if(clipTable.selectedRow >= 0){
+	if(clipTable.selectedRow >= 0){
         ClipMarker& clip = [self selectedClip];
         
         if(currentPlayingClip.getLinkName() == clip.getLinkName()){
@@ -145,6 +139,9 @@
             return;
         }
         
+		preview.stop();
+		
+		ofSleepMillis(500);
         if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
             preview.setFrame(clip.startFrame);
             preview.play();

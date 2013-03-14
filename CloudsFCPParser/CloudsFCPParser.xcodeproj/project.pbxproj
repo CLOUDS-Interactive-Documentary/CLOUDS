@@ -38,6 +38,7 @@
 		E774701116D83DA8001038F9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7746FD216D83DA8001038F9 /* README.md */; };
 		E774701216D83DA8001038F9 /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7746FD816D83DA8001038F9 /* MSACoreGL.cpp */; };
 		E774701916D83DA8001038F9 /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7746FEA16D83DA8001038F9 /* MSAObjCPointer.cpp */; };
+		E7B28C2516F28B1A008F0765 /* ViewerApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7B28C2416F28B1A008F0765 /* ViewerApp.mm */; };
 		E7DA10FB16DC267100DA505A /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FB216DC266F00DA505A /* kiss_fft.c */; };
 		E7DA10FC16DC267100DA505A /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FB316DC266F00DA505A /* kiss_fftr.c */; };
 		E7DA10FD16DC267100DA505A /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DA0FB616DC266F00DA505A /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -232,6 +233,8 @@
 		E774700C16D83DA8001038F9 /* MSAPhysicsSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSector.h; sourceTree = "<group>"; };
 		E774700D16D83DA8001038F9 /* MSAPhysicsSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSpring.h; sourceTree = "<group>"; };
 		E774700E16D83DA8001038F9 /* MSAPhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsWorld.h; sourceTree = "<group>"; };
+		E7B28C2316F28B1A008F0765 /* ViewerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerApp.h; sourceTree = "<group>"; };
+		E7B28C2416F28B1A008F0765 /* ViewerApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewerApp.mm; sourceTree = "<group>"; };
 		E7DA0FAE16DC266F00DA505A /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
 		E7DA0FAF16DC266F00DA505A /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
 		E7DA0FB116DC266F00DA505A /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 			children = (
 				609133851652CB3E00B523AD /* testView.h */,
 				609133861652CB3E00B523AD /* testView.mm */,
+				E7B28C2316F28B1A008F0765 /* ViewerApp.h */,
+				E7B28C2416F28B1A008F0765 /* ViewerApp.mm */,
 				609133791652C9C900B523AD /* AppDelegate.h */,
 				6091337A1652C9C900B523AD /* AppDelegate.m */,
 				6091337B1652C9C900B523AD /* main.m */,
@@ -1197,6 +1202,7 @@
 				E7DA11AB16DC26A700DA505A /* ofxTween.cpp in Sources */,
 				E7DA11F416DC26BF00DA505A /* ofxMSATimer.cpp in Sources */,
 				E7DA11FC16DC26BF00DA505A /* ofxTextInputField.cpp in Sources */,
+				E7B28C2516F28B1A008F0765 /* ViewerApp.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

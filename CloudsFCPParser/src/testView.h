@@ -7,6 +7,7 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 
+@class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
@@ -18,6 +19,8 @@
 	
 	IBOutlet NSTextField* seedKeyword;
 	
+	IBOutlet ViewerApp* viewerApp;
+	
     CloudsFCPParser parser;
     CloudsFCPVisualizer visualizer;
     
@@ -25,6 +28,7 @@
     vector<string> selectedKeywords;
     ClipMarker currentPlayingClip;
     BOOL clipLoaded;
+	
     vector<ClipMarker> selectedClips;
     vector<CloudsLink> currentClipLinks;
 
@@ -37,6 +41,9 @@
 	ofxUICanvas* gui;
 
 }
+
+@property(nonatomic,readonly) int clipEndFrame;
+@property(nonatomic,readonly) ofVideoPlayer& preview;
 
 - (void)setup;
 - (void)update;
