@@ -12,7 +12,8 @@
 #include "ofxCocoaGLView.h"
 #include "testView.h"
 
-@interface ViewerApp : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
+@interface ViewerApp : ofxCocoaGLView
+{
 	IBOutlet testView* mainview;
 }
 
@@ -20,6 +21,10 @@
 - (void)update;
 - (void)draw;
 - (void)exit;
+
+- (IBAction) togglePlay:(id)sender;
+- (IBAction) next:(id)sender;
+- (IBAction) prev:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

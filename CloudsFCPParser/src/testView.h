@@ -12,6 +12,8 @@
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
     IBOutlet NSTableView* linkTable;
+	IBOutlet NSTableView* playlistTable;
+
     IBOutlet NSTextField* currentClipLabel;
     
     IBOutlet NSTokenField* currentKeywords;
@@ -36,10 +38,7 @@
     ofVideoPlayer preview;
     ofxTimeline inpoint;
 
-	float physSpringTension;
-	float physSpringLength;
 	ofxUICanvas* gui;
-
 }
 
 @property(nonatomic,readonly) int clipEndFrame;

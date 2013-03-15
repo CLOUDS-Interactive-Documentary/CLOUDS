@@ -15,6 +15,28 @@
 	
 }
 
+- (IBAction) togglePlay:(id)sender
+{
+	if(mainview.preview.isLoaded()){
+		if(mainview.preview.isPlaying()){
+			mainview.preview.stop();
+		}
+		else{
+			mainview.preview.play();
+		}
+	}
+}
+
+- (IBAction) next:(id)sender
+{
+	
+}
+
+- (IBAction) prev:(id)sender
+{
+	
+}
+
 - (void)update
 {
 	if(mainview == NULL) return;
