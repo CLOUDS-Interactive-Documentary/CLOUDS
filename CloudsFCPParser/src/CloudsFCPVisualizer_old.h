@@ -39,9 +39,7 @@ class CloudsFCPVisualizer {
     ofTrueTypeFont font;
     ofTrueTypeFont largFont;
 	
-	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void addLinksToPhysics(ClipMarker& m);
 	
     void mousePressed(ofMouseEventArgs& args);
     void mouseMoved(ofMouseEventArgs& args);
@@ -51,23 +49,12 @@ class CloudsFCPVisualizer {
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);
 
-	map<msa::physics::Particle2D*, ClipMarker> particleToClip;
 	map<msa::physics::Particle2D*, string> particleName;
 	map<string, msa::physics::Particle2D*> particlesByTag;
 	
-	map< pair<msa::physics::Particle2D*,msa::physics::Particle2D*>, msa::physics::Spring2D*> springs;
-	map< msa::physics::Spring2D*, vector<string> > keywordsInSpring;
+	set< pair<msa::physics::Particle2D*,msa::physics::Particle2D*> > springs;
+	map< msa::physics::Spring2D*, int> clipsInSpring;
 	set< msa::physics::Spring2D*> linkSprings;
-	
-	vector< ClipMarker > currentOptionClips;
-	vector< msa::physics::Particle2D* > currentOptionParticles;
-	vector< string > pathByClip;
-	vector< msa::physics::Particle2D* > pathByParticles;
-	
-	string currentTopic;
-//	set<string> allTags;
-//	vector<string, float> tagRadius;
-//	vector<string, ofVec2f> tagCenter;
 	
 	msa::physics::Particle2D* centerNode;
 	
