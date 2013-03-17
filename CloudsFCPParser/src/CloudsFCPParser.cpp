@@ -226,6 +226,15 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
     keywordsDirty = true;
 }
 
+ClipMarker CloudsFCPParser::getClipWithLinkName( string linkname ){
+	for(int i = 0; i < markers.size(); i++){
+		if(markers[i].getLinkName() == linkname){
+			return markers[i];
+		}
+	}
+	return ClipMarker();
+}
+
 void CloudsFCPParser::sortKeywordsByOccurrence(bool byOccurrence){
     if(sortedByOccurrence != byOccurrence){
         sortedByOccurrence = byOccurrence;
@@ -246,6 +255,10 @@ int CloudsFCPParser::occurrencesOfKeyword(string keyword){
 
 vector<ClipMarker>& CloudsFCPParser::getAllClips(){
     return markers;
+}
+
+vector<CloudsLink>& CloudsFCPParser::getLinksForClip(ClipMarker& clip){
+    return sourceLinks[clip.getLinkName()];
 }
 
 vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
@@ -314,6 +327,16 @@ int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 		}
 	}
 	return clipsInCommon;
+}
+
+vector<string> CloudsFCPParser::getSharedKeywords(ClipMarker& a, ClipMarker& b){
+	vector<string> sharedKeywords;
+	for(int i = 0; i < a.keywords.size(); i++){
+		if(ofContains(b.keywords, a.keywords[i])){
+			sharedKeywords.push_back(a.keywords[i]);
+		}
+	}
+	return sharedKeywords;
 }
 
 void CloudsFCPParser::refreshKeywordVector(){

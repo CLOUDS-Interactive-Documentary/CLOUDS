@@ -36,24 +36,33 @@
 	
     visualizer.setup();
 	visualizer.setupPhysics();
-	visualizer.addTagToPhysics("play");
-	
+	//visualizer.addTagToPhysics("technological progress");
+	visualizer.addLinksToPhysics(parser.getAllClips()[0]);
+	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
     //important file!
 	//gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
-	for(int i = 0; i < parser.getAllKeywords().size(); i++){
-		cout << parser.getAllKeywords()[ i ] << " " << parser.occurrencesOfKeyword( parser.getAllKeywords()[ i ]) << endl;
-	}
+//	for(int i = 0; i < parser.getAllKeywords().size(); i++){
+//		cout << parser.getAllKeywords()[ i ] << " " << parser.occurrencesOfKeyword( parser.getAllKeywords()[ i ]) << endl;
+//	}
 }
 
 - (IBAction) regenerateGraph:(id)sender
 {
+	/*
 	string seedKeywordString = [seedKeyword.stringValue UTF8String];
 	if(seedKeywordString != ""){
 		visualizer.clear();
 		visualizer.addTagToPhysics(seedKeywordString);
 	}
+	 */
+	if(clipTable.selectedRow >= 0){
+		visualizer.clear();
+		ClipMarker& clip = [self selectedClip];
+		visualizer.addLinksToPhysics(clip);
+	}
+
 }
 
 - (IBAction) unloadVideo:(id)sender

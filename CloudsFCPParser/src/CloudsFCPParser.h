@@ -44,10 +44,13 @@ class CloudsFCPParser {
     CloudsFCPParser();
     void setup(string directory);
     void refreshXML();
-
-#pragma mark sLinks
+#pragma mark Clips
+	ClipMarker getClipWithLinkName( string linkname );
+	
+#pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
+	vector<CloudsLink>& getLinksForClip(ClipMarker& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
     void addLink(CloudsLink& link);
     void saveLinks(string linkFile);
@@ -68,7 +71,9 @@ class CloudsFCPParser {
 	vector<ClipMarker> getClipsWithKeyword(string filterWord);
     vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
     set<string> getRelatedKeywords(string filterWord);
+	vector<string> getSharedKeywords(ClipMarker& a, ClipMarker& b);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
+	
 	vector<ClipMarker> getSharedClips(string keywordA, string keywordB);
 	
     int occurrencesOfKeyword(string keyword);

@@ -494,10 +494,10 @@
 				6091337A1652C9C900B523AD /* AppDelegate.m */,
 				6091337B1652C9C900B523AD /* main.m */,
 				6091337C1652C9C900B523AD /* MainMenu.xib */,
-				E704E37116C0B02300B0DC72 /* CloudsFCPParser.h */,
-				E704E37016C0B02300B0DC72 /* CloudsFCPParser.cpp */,
 				E7746DFB16D81F0C001038F9 /* CloudsFCPVisualizer.h */,
 				E7746DFA16D81F0C001038F9 /* CloudsFCPVisualizer.cpp */,
+				E704E37116C0B02300B0DC72 /* CloudsFCPParser.h */,
+				E704E37016C0B02300B0DC72 /* CloudsFCPParser.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
