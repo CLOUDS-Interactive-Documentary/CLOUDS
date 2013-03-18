@@ -64,6 +64,7 @@ void CloudsFCPVisualizer::clear(){
 	pathByClip.clear();
 	pathByParticles.clear();
 
+	pathChanged = true;
 	centerNode = NULL;
 	physics.clear();
 }
@@ -288,13 +289,23 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 }
 
 void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
-	
+
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = m.getLinkName();
 	vector<ClipMarker> related = database->getClipsWithKeyword(m.keywords);
 	
+	if(currentTopic == "" && particlesByTag.find( mainLinkName ) != particlesByTag.end() ){
+		msa::physics::Particle2D* current = particlesByTag[ mainLinkName ];
+		vector<string> traversedTopics = keywordsInSpring[ springs[make_pair(centerNode,current)] ];
+		if(traversedTopics.size() != 0){
+			currentTopic = traversedTopics[ ofRandom(traversedTopics.size()) ];
+		}
+		cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
+	}
+	
 	if(!ofContains(m.keywords, currentTopic)){
+		cout << m.getLinkName() << " did not contain topic " << currentTopic << " resetting" << endl;
 		currentTopic = "";
 	}
 	
@@ -683,13 +694,6 @@ void CloudsFCPVisualizer::keyPressed(ofKeyEventArgs& args){
 	if(args.key == OF_KEY_RETURN){
 		if(selectedParticle != NULL){
 			//addTagToPhysics( particleName[selectedParticle] );
-			if(currentTopic == ""){
-				vector<string>& traversedTopics = keywordsInSpring[ springs[make_pair(centerNode,selectedParticle)] ];
-				if(traversedTopics.size() != 0){
-					currentTopic = traversedTopics[ ofRandom(traversedTopics.size()) ];
-				}
-				cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
-			}
 			addLinksToPhysics( particleToClip[selectedParticle] );
 			
 		}

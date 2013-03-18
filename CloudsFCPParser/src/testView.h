@@ -6,6 +6,7 @@
 #include "CloudsFCPVisualizer.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
+#include "CloudsStoryEngine.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
@@ -25,7 +26,8 @@
 	
     CloudsFCPParser parser;
     CloudsFCPVisualizer visualizer;
-    
+    CloudsStoryEngine storyEngine;
+	
     bool updatePhysics;
     vector<string> selectedKeywords;
     ClipMarker currentPlayingClip;
@@ -34,15 +36,21 @@
     vector<ClipMarker> selectedClips;
     vector<CloudsLink> currentClipLinks;
 
+	bool playingPlaylist;
+	int currentPlaylistIndex;
+	
     int clipEndFrame;
     ofVideoPlayer preview;
     ofxTimeline inpoint;
 
 	ofxUICanvas* gui;
+	
+	float timeOfNextStory;
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
+@property(nonatomic,readonly) bool playingPlaylist;
 
 - (void)setup;
 - (void)update;
@@ -58,6 +66,10 @@
 - (IBAction) regenerateGraph:(id)sender;
 - (IBAction) unloadVideo:(id)sender;
 
+- (IBAction) nextOnPlaylist:(id)sender;
+- (IBAction) prevOnPlaylist:(id)sender;
+- (IBAction) playCurrentPlaylist:(id)sender;
+
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
 - (void)mouseMoved:(NSPoint)p;
@@ -69,6 +81,7 @@
 - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 - (ClipMarker&) selectedClip;
+- (ClipMarker&) selectedClipFromPlaylist;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

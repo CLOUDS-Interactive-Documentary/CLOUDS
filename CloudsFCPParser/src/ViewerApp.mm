@@ -45,6 +45,9 @@
         mainview.preview.update();
         if(mainview.preview.getCurrentFrame() >= mainview.clipEndFrame){
             mainview.preview.stop();
+			if(mainview.playingPlaylist){
+				[mainview nextOnPlaylist:self];
+			}
         }
     }
 }

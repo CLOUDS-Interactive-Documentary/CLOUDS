@@ -4,6 +4,7 @@
 @implementation testView
 @synthesize clipEndFrame;
 @synthesize preview;
+@synthesize playingPlaylist;
 
 - (void)setup
 {
@@ -11,6 +12,10 @@
     ofEnableAlphaBlending();
     ofEnableSmoothing();
 	ofSetFrameRate(30);
+	
+	playingPlaylist = false;
+	currentPlaylistIndex = 0;
+	timeOfNextStory = 10;
 	
     updatePhysics = true;
     
@@ -29,7 +34,11 @@
     }
  
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
+	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
+	
     visualizer.database = &parser;
+	storyEngine.setup();
+	storyEngine.visualizer = &visualizer;
 	
 	//visualizer.setupGrid();
     //visualizer.exportForGraphviz();
@@ -54,12 +63,35 @@
 		visualizer.addTagToPhysics(seedKeywordString);
 	}
 	 */
+	
 	if(clipTable.selectedRow >= 0){
 		visualizer.clear();
 		ClipMarker& clip = [self selectedClip];
 		visualizer.addLinksToPhysics(clip);
 	}
+}
 
+- (IBAction) nextOnPlaylist:(id)sender
+{
+	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
+	   [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
+				  byExtendingSelection:NO];
+		[self playCurrentPlaylist:playlistTable];
+	}
+}
+
+- (IBAction) prevOnPlaylist:(id)sender
+{
+	if(playlistTable.selectedRow >= 0){
+		[playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow-1]
+				   byExtendingSelection:NO];
+		[self playCurrentPlaylist:playlistTable];
+	}
+}
+
+- (IBAction) playCurrentPlaylist:(id)sender
+{
+	[self playDoubleClickedRow:playlistTable];
 }
 
 - (IBAction) unloadVideo:(id)sender
@@ -72,6 +104,12 @@
     if(updatePhysics){
         visualizer.updatePhysics();
     }
+	
+	if(ofGetElapsedTimef() > timeOfNextStory){
+		timeOfNextStory = ofGetElapsedTimef() + 1.5;
+		storyEngine.selectNewClip();
+	}
+	
     if(visualizer.getPathChanged()){
 		[playlistTable reloadData];
 	}
@@ -93,7 +131,7 @@
     //if(key == ' ') updatePhysics = !updatePhysics;
     
     if(key == ' '){
-        [self playDoubleClickedRow: self];
+        [self playDoubleClickedRow: clipTable];
     }
 }
 
@@ -134,45 +172,55 @@
 
 - (IBAction) playDoubleClickedRow:(id)sender
 {
-	if(clipTable.selectedRow >= 0){
-        ClipMarker& clip = [self selectedClip];
-        
-        if(currentPlayingClip.getLinkName() == clip.getLinkName()){
-            if(preview.isPlaying()){
-                preview.stop();
-            }
-            else{
-                preview.play();
-            }
-            return;
-        }
-        
-		preview.stop();
+	ClipMarker clip;
+	if(sender == clipTable && clipTable.selectedRow >= 0){
+        clip = [self selectedClip];
+		playingPlaylist = false;
+	}
+	else if(sender == playlistTable && playlistTable.selectedRow >= 0){
+		clip = [self selectedClipFromPlaylist];
+		playingPlaylist = true;
+	}
+	else{
+		//bail!
+		return;
+	}
+	
+	if(currentPlayingClip.getLinkName() == clip.getLinkName()){
+		if(preview.isPlaying()){
+			preview.stop();
+		}
+		else{
+			preview.play();
+		}
+		return;
+	}
+	
+	preview.stop();
+	
+	ofSleepMillis(500);
+	if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
+		preview.setFrame(clip.startFrame);
+		preview.play();
+	}
+	else {
+		preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
+		preview.play();
 		
-		ofSleepMillis(500);
-        if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
-            preview.setFrame(clip.startFrame);
-            preview.play();
-        }
-        else {
-            preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
-            preview.play();
-            
-            NSLog(@"movie load failed %s", clip.filePath.c_str());
-        }
-        
-        clipLoaded = YES;
-        currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
-        
-        currentClipLinks = parser.getLinksForClip(clip.getLinkName());
-        
-        cout << "current clips is of size " << currentClipLinks.size() << endl;
-        currentPlayingClip = clip;
-        
-        clipEndFrame = clip.endFrame;
-        
-        [linkTable reloadData];
-    }
+		NSLog(@"movie load failed %s", clip.filePath.c_str());
+	}
+	
+	clipLoaded = YES;
+	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
+	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
+	
+	cout << "current clips is of size " << currentClipLinks.size() << endl;
+	currentPlayingClip = clip;
+	
+	clipEndFrame = clip.endFrame;
+	
+	[linkTable reloadData];
+
 }
 
 - (IBAction) deleteLink:(id)sender
@@ -189,6 +237,11 @@
 - (ClipMarker&) selectedClip
 {
     return (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+}
+
+- (ClipMarker&) selectedClipFromPlaylist
+{
+	return visualizer.pathByClip[ playlistTable.selectedRow ];
 }
 
 - (void)keyReleased:(int)key
