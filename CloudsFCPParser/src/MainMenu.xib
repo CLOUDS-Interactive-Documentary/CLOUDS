@@ -1307,7 +1307,7 @@
 											</object>
 											<array class="NSMutableArray" key="NSTableColumns">
 												<object class="NSTableColumn" id="772431932">
-													<double key="NSWidth">116</double>
+													<double key="NSWidth">210.62890625</double>
 													<double key="NSMinWidth">40</double>
 													<double key="NSMaxWidth">1000</double>
 													<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1336,7 +1336,7 @@
 													<reference key="NSTableView" ref="446758951"/>
 												</object>
 												<object class="NSTableColumn" id="726993322">
-													<double key="NSWidth">171</double>
+													<double key="NSWidth">76</double>
 													<double key="NSMinWidth">40</double>
 													<double key="NSMaxWidth">1000</double>
 													<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1454,7 +1454,7 @@
 							<string key="NSFrame">{{1072, 17}, {86, 32}}</string>
 							<reference key="NSSuperview" ref="538310713"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSNextKeyView" ref="37548519"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="674035139">
@@ -1504,6 +1504,7 @@
 							<string key="NSFrame">{{1176, 17}, {93, 32}}</string>
 							<reference key="NSSuperview" ref="538310713"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="40445488">
@@ -2653,7 +2654,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">802</int>
+			<int key="maxID">803</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2680,61 +2681,21 @@
 					<string key="className">ViewerApp</string>
 					<string key="superclassName">ofxCocoaGLView</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="createLink:">id</string>
-						<string key="deleteLink:">id</string>
 						<string key="next:">id</string>
-						<string key="playDoubleClickedRow:">id</string>
 						<string key="prev:">id</string>
-						<string key="refreshXML:">id</string>
-						<string key="regenerateGraph:">id</string>
-						<string key="saveLinks:">id</string>
-						<string key="setXMLFolder:">id</string>
 						<string key="togglePlay:">id</string>
-						<string key="unloadVideo:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="createLink:">
-							<string key="name">createLink:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="deleteLink:">
-							<string key="name">deleteLink:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="next:">
 							<string key="name">next:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="playDoubleClickedRow:">
-							<string key="name">playDoubleClickedRow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="prev:">
 							<string key="name">prev:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="refreshXML:">
-							<string key="name">refreshXML:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="regenerateGraph:">
-							<string key="name">regenerateGraph:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveLinks:">
-							<string key="name">saveLinks:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="setXMLFolder:">
-							<string key="name">setXMLFolder:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="togglePlay:">
 							<string key="name">togglePlay:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="unloadVideo:">
-							<string key="name">unloadVideo:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

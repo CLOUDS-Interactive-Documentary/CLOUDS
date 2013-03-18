@@ -61,10 +61,11 @@ class CloudsFCPVisualizer {
 	
 	vector< ClipMarker > currentOptionClips;
 	vector< msa::physics::Particle2D* > currentOptionParticles;
-	vector< string > pathByClip;
+	vector< ClipMarker > pathByClip;
 	vector< msa::physics::Particle2D* > pathByParticles;
 	
 	string currentTopic;
+	
 //	set<string> allTags;
 //	vector<string, float> tagRadius;
 //	vector<string, ofVec2f> tagCenter;
@@ -82,6 +83,9 @@ class CloudsFCPVisualizer {
 	string selectionTitle;
 	vector<ClipMarker> selectedClips;
 	vector<CloudsLink> selectedLinks;
+	
+//	ofEvent< vector<ClipMarker>& > clipEvent;
+	bool getPathChanged();
 	
   protected:
 	ofColor hoverColor;
@@ -104,6 +108,7 @@ class CloudsFCPVisualizer {
 	float minRadius, maxRadius;
 	float minMass, maxMass;
 	float radiusForNode(float mass);
-	
+
+	bool pathChanged;
 	bool hasParticle(string tagName);
 };

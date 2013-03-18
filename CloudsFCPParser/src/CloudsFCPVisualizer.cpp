@@ -30,7 +30,7 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
     database = NULL;
 	selectedParticle = NULL;
 	hoverParticle = NULL;
-	
+	pathChanged = false;
 	selectedSpring = NULL;
 	hoverSpring = NULL;
 
@@ -298,6 +298,14 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 		currentTopic = "";
 	}
 	
+	if(particlesByTag.find(m.getLinkName()) != particlesByTag.end() &&
+	   ofContains(pathByParticles, particlesByTag[m.getLinkName()] ))
+	{
+		cout << "re adding " << m.getLinkName() << endl;
+		return;
+	}
+	pathChanged = true;
+	
 	msa::physics::Particle2D* p;
 	if(hasParticle( mainLinkName )){
 		p = particlesByTag[ mainLinkName];
@@ -314,7 +322,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 	}
 	
 	centerNode = p;
-	pathByClip.push_back(m.getLinkName());
+	pathByClip.push_back(m);
 	pathByParticles.push_back(p);
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
@@ -322,7 +330,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 		ClipMarker& relatedClip = related[i];
 		string clipName = relatedClip.getLinkName();
 		
-		if(relatedClip.person == m.person || ofContains(pathByClip, clipName)){
+		if(relatedClip.person == m.person){
 			continue;
 		}
 	
@@ -333,6 +341,9 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 		msa::physics::Particle2D* a;
 		if(hasParticle(clipName)){
 			a = particlesByTag[clipName];
+			if(ofContains(pathByParticles, a)){
+				continue;
+			}
 		}
 		else{
 			//make a particle for the seed
@@ -424,6 +435,12 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 	}	
 }
 
+bool CloudsFCPVisualizer::getPathChanged(){
+	bool t = pathChanged;
+	pathChanged = false;
+	return t;
+}
+
 bool CloudsFCPVisualizer::hasParticle(string tagName){
 	return particlesByTag.find(tagName) != particlesByTag.end();
 }
@@ -508,6 +525,9 @@ void CloudsFCPVisualizer::drawPhysics(){
 		}
 		else if(ofContains(currentOptionParticles, a)){
 			ofSetColor(nodeColor);
+		}
+		else if(ofContains(pathByParticles, a)){
+			ofSetColor(ofColor::dodgerBlue);
 		}
 		else if(a == centerNode){
 			ofSetColor(hoverColor);

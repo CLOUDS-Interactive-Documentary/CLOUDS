@@ -38,14 +38,11 @@
 	visualizer.setupPhysics();
 	//visualizer.addTagToPhysics("technological progress");
 	visualizer.addLinksToPhysics(parser.getAllClips()[0]);
+	
 	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
     //important file!
 	//gui = new ofxUICanvas(0,0,200,ofGetHeight());
-	
-//	for(int i = 0; i < parser.getAllKeywords().size(); i++){
-//		cout << parser.getAllKeywords()[ i ] << " " << parser.occurrencesOfKeyword( parser.getAllKeywords()[ i ]) << endl;
-//	}
 }
 
 - (IBAction) regenerateGraph:(id)sender
@@ -75,7 +72,9 @@
     if(updatePhysics){
         visualizer.updatePhysics();
     }
-    
+    if(visualizer.getPathChanged()){
+		[playlistTable reloadData];
+	}
 }
 
 - (void)draw
@@ -249,6 +248,9 @@
     else if(aTableView == linkTable){
         return currentClipLinks.size();
     }
+	else if(aTableView == playlistTable){
+		return visualizer.pathByClip.size();
+	}
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
@@ -282,6 +284,9 @@
         }
         return [NSString stringWithUTF8String:clipTableEntry.c_str()];
     }
+	else if(aTableView == playlistTable){
+		return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];
+	}
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
