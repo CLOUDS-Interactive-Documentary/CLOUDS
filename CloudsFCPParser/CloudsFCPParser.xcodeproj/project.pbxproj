@@ -32,6 +32,7 @@
 		E704E38716C0B2C400B0DC72 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38116C0B2C400B0DC72 /* tinyxmlerror.cpp */; };
 		E704E38816C0B2C400B0DC72 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38216C0B2C400B0DC72 /* tinyxmlparser.cpp */; };
 		E704E38916C0B2C400B0DC72 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38416C0B2C400B0DC72 /* ofxXmlSettings.cpp */; };
+		E7432D18170B5D7700C554EC /* CloudsD3Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7432D16170B5D7600C554EC /* CloudsD3Exporter.cpp */; };
 		E755E13816F6A1070086B5CE /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E755E13616F6A1060086B5CE /* CloudsStoryEngine.cpp */; };
 		E7746DFC16D81F0C001038F9 /* CloudsFCPVisualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7746DFA16D81F0C001038F9 /* CloudsFCPVisualizer.cpp */; };
 		E774700F16D83DA8001038F9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E7746FD016D83DA8001038F9 /* .gitignore */; };
@@ -166,6 +167,8 @@
 		E704E38216C0B2C400B0DC72 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E704E38416C0B2C400B0DC72 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E704E38516C0B2C400B0DC72 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		E7432D16170B5D7600C554EC /* CloudsD3Exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsD3Exporter.cpp; sourceTree = "<group>"; };
+		E7432D17170B5D7600C554EC /* CloudsD3Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsD3Exporter.h; sourceTree = "<group>"; };
 		E750BEC216E67F570088F1E4 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E750BEC316E67F570088F1E4 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
 		E750BEC416E67F570088F1E4 /* ofxUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				E7746DFA16D81F0C001038F9 /* CloudsFCPVisualizer.cpp */,
 				E704E37116C0B02300B0DC72 /* CloudsFCPParser.h */,
 				E704E37016C0B02300B0DC72 /* CloudsFCPParser.cpp */,
+				E7432D17170B5D7600C554EC /* CloudsD3Exporter.h */,
+				E7432D16170B5D7600C554EC /* CloudsD3Exporter.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1209,6 +1214,7 @@
 				E7DA11FC16DC26BF00DA505A /* ofxTextInputField.cpp in Sources */,
 				E7B28C2516F28B1A008F0765 /* ViewerApp.mm in Sources */,
 				E755E13816F6A1070086B5CE /* CloudsStoryEngine.cpp in Sources */,
+				E7432D18170B5D7700C554EC /* CloudsD3Exporter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

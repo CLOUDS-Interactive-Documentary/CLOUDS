@@ -48,6 +48,11 @@
 	//visualizer.addTagToPhysics("technological progress");
 	visualizer.addLinksToPhysics(parser.getAllClips()[0]);
 	
+	
+	// Create a matrix for D3 chord visualization
+	CloudsD3Exporter d3Exporter;
+	d3Exporter.saveChordMatrix(parser);
+	
 	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
     //important file!

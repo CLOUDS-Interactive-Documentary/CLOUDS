@@ -4,6 +4,7 @@
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
 #include "CloudsFCPVisualizer.h"
+#include "CloudsD3Exporter.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
