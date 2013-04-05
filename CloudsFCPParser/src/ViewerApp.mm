@@ -39,17 +39,7 @@
 
 - (void)update
 {
-	if(mainview == NULL) return;
 	
-    if(mainview.preview.isLoaded()){
-        mainview.preview.update();
-        if(mainview.preview.getCurrentFrame() >= mainview.clipEndFrame){
-            mainview.preview.stop();
-			if(mainview.playingPlaylist){
-				[mainview nextOnPlaylist:self];
-			}
-        }
-    }
 }
 
 - (void)draw

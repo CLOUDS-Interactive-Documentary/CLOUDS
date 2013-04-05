@@ -45,7 +45,7 @@
     ofxTimeline inpoint;
 
 	ofxUICanvas* gui;
-	
+	bool autoProgressStory;
 	float timeOfNextStory;
 }
 

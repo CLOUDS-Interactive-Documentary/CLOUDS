@@ -13,6 +13,8 @@
     ofEnableSmoothing();
 	ofSetFrameRate(30);
 	
+	autoProgressStory = false;
+	
 	playingPlaylist = false;
 	currentPlaylistIndex = 0;
 	timeOfNextStory = 10;
@@ -50,8 +52,8 @@
 	
 	
 	// Create a matrix for D3 chord visualization
-	CloudsD3Exporter d3Exporter;
-	d3Exporter.saveChordMatrix(parser);
+//	CloudsD3Exporter d3Exporter;
+//	d3Exporter.saveChordMatrix(parser);
 	
 	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
@@ -110,11 +112,24 @@
         visualizer.updatePhysics();
     }
 	
-	if(ofGetElapsedTimef() > timeOfNextStory){
-		timeOfNextStory = ofGetElapsedTimef() + 1.5;
-		storyEngine.selectNewClip();
+	if(autoProgressStory){
+		if(ofGetElapsedTimef() > timeOfNextStory){
+			timeOfNextStory = ofGetElapsedTimef() + 1.5;
+			storyEngine.selectNewClip();
+			[self nextOnPlaylist:self];
+		}
 	}
-	
+	else {
+		if(preview.isLoaded()){
+			preview.update();
+			if(preview.getCurrentFrame() >= clipEndFrame){
+				preview.stop();
+				storyEngine.selectNewClip();
+				[self nextOnPlaylist:self];
+			}
+		}
+	}
+
     if(visualizer.getPathChanged()){
 		[playlistTable reloadData];
 	}
@@ -203,29 +218,27 @@
 	
 	preview.stop();
 	
-	ofSleepMillis(500);
+	ofSleepMillis(250);
 	if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
 		preview.setFrame(clip.startFrame);
-		preview.play();
 	}
 	else {
 		preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
-		preview.play();
-		
 		NSLog(@"movie load failed %s", clip.filePath.c_str());
 	}
+	preview.play();
 	
 	clipLoaded = YES;
 	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
 	
 	cout << "current clips is of size " << currentClipLinks.size() << endl;
+	
 	currentPlayingClip = clip;
 	
 	clipEndFrame = clip.endFrame;
 	
 	[linkTable reloadData];
-
 }
 
 - (IBAction) deleteLink:(id)sender

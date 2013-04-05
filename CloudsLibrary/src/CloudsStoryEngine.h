@@ -14,7 +14,11 @@ class CloudsStoryEngine {
 	void setup();
 
 	void selectNewClip();
-
-
+	
+  protected:
+	
+	string currentTopic;
+	int timesOnTopic;
+	
 	
 };
