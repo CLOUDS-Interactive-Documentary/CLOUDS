@@ -8,6 +8,7 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
+#include "CloudsVisualizer.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
@@ -26,6 +27,7 @@
 	IBOutlet ViewerApp* viewerApp;
 	
     CloudsFCPParser parser;
+	ofVideoPlayer preview;
     CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	
@@ -41,8 +43,8 @@
 	int currentPlaylistIndex;
 	
     int clipEndFrame;
-    ofVideoPlayer preview;
     ofxTimeline inpoint;
+
 
 	ofxUICanvas* gui;
 	bool autoProgressStory;
@@ -66,10 +68,10 @@
 - (IBAction) deleteLink:(id)sender;
 - (IBAction) regenerateGraph:(id)sender;
 - (IBAction) unloadVideo:(id)sender;
-
 - (IBAction) nextOnPlaylist:(id)sender;
 - (IBAction) prevOnPlaylist:(id)sender;
 - (IBAction) playCurrentPlaylist:(id)sender;
+- (IBAction) addClip:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

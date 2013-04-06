@@ -141,6 +141,9 @@ void CloudsFCPVisualizer::addAllClipsWithAttraction(){
 
 void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	
+	
+	//NEW WAY PER CLIP NAVIGATOR
+
 	cout << "NEW PHYSICS adding tag " << tag << endl;
 	
 	vector<msa::physics::Particle2D*> newParticles;
@@ -206,9 +209,11 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			physics.makeAttraction(newParticles[i], newParticles[j], -20);
 		}
 	}
-	
 
-	/*
+/*
+	vector<msa::physics::Particle2D *> newParticles;
+	
+	//OLD WAY PER TAG NAVIGATOR
 	msa::physics::Particle2D * p;
 	if(hasParticle(tag)){
 		p = particlesByTag[tag];
@@ -285,7 +290,8 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	}
 
 	centerNode = p;
-	 */
+*/
+	
 }
 
 void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
@@ -304,10 +310,10 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 		cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
 	}
 	
-	if(!ofContains(m.keywords, currentTopic)){
-		cout << m.getLinkName() << " did not contain topic " << currentTopic << " resetting" << endl;
-		currentTopic = "";
-	}
+//	if(!ofContains(m.keywords, currentTopic)){
+//		cout << m.getLinkName() << " did not contain topic " << currentTopic << " resetting" << endl;
+//		currentTopic = "";
+//	}
 	
 	if(particlesByTag.find(m.getLinkName()) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[m.getLinkName()] ))
@@ -337,17 +343,19 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 	pathByParticles.push_back(p);
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
+	
 	for(int i = 0; i < related.size(); i++){
 		ClipMarker& relatedClip = related[i];
 		string clipName = relatedClip.getLinkName();
-		
-		if(relatedClip.person == m.person){
-			continue;
-		}
+
+		//moved to story engine
+//		if(relatedClip.person == m.person){
+//			continue;
+//		}
 	
-		if(currentTopic != "" && !ofContains(relatedClip.keywords, currentTopic) ){
-			continue;
-		}
+//		if(currentTopic != "" && !ofContains(relatedClip.keywords, currentTopic) ){
+//			continue;
+//		}
 	
 		msa::physics::Particle2D* a;
 		if(hasParticle(clipName)){

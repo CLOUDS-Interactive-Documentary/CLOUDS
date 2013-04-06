@@ -35,12 +35,14 @@
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
  
+
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	
     visualizer.database = &parser;
 	storyEngine.setup();
 	storyEngine.visualizer = &visualizer;
+	storyEngine.maxTimesOnTopic = 4;
 	
 	//visualizer.setupGrid();
     //visualizer.exportForGraphviz();
@@ -63,6 +65,7 @@
 
 - (IBAction) regenerateGraph:(id)sender
 {
+
 	/*
 	string seedKeywordString = [seedKeyword.stringValue UTF8String];
 	if(seedKeywordString != ""){
@@ -101,6 +104,13 @@
 	[self playDoubleClickedRow:playlistTable];
 }
 
+- (IBAction) addClip:(id)sender
+{
+	storyEngine.selectNewClip();
+	[playlistTable reloadData];
+
+}
+
 - (IBAction) unloadVideo:(id)sender
 {
 	preview.stop();
@@ -112,6 +122,7 @@
         visualizer.updatePhysics();
     }
 	
+	//auto progressive story just gooes from one clip to the next
 	if(autoProgressStory){
 		if(ofGetElapsedTimef() > timeOfNextStory){
 			timeOfNextStory = ofGetElapsedTimef() + 1.5;
@@ -119,16 +130,16 @@
 			[self nextOnPlaylist:self];
 		}
 	}
-	else {
-		if(preview.isLoaded()){
-			preview.update();
-			if(preview.getCurrentFrame() >= clipEndFrame){
-				preview.stop();
-				storyEngine.selectNewClip();
-				[self nextOnPlaylist:self];
-			}
+	//most of the time we want to wait for a clip to finish or be interrupted by user interaction
+	else if(preview.isLoaded()) {
+		preview.update();
+		if(preview.getCurrentFrame() >= clipEndFrame){
+			preview.stop();
+			storyEngine.selectNewClip();
+			[self nextOnPlaylist:self];
 		}
 	}
+
 
     if(visualizer.getPathChanged()){
 		[playlistTable reloadData];
@@ -219,13 +230,24 @@
 	preview.stop();
 	
 	ofSleepMillis(250);
-	if( clip.filePath != "" && ofFile(clip.filePath).exists() && preview.loadMovie(clip.filePath)){
-		preview.setFrame(clip.startFrame);
+	string clipFilePath = clip.filePath;
+	if(clip.filePath == ""){
+		return;
 	}
-	else {
-		preview.loadMovie("/Users/focus/Desktop/CMUDemo/TAKE_02_25_14_49_09/color/MVI_7394.MOV");
-		NSLog(@"movie load failed %s", clip.filePath.c_str());
+	
+	if( !ofFile(clipFilePath).exists() ){
+		cout << "Switched clip from " << clipFilePath;
+		ofStringReplace(clipFilePath, "Nebula_backup", "Seance");		
+		ofStringReplace(clipFilePath, "Nebula", "Seance");
+		cout << " to " << clipFilePath << endl;
 	}
+		
+	if( !preview.loadMovie(clipFilePath) ){
+		ofLogError("Clip " + clipFilePath + " failed to load.");
+		return;
+	}
+		
+	preview.setFrame(clip.startFrame);
 	preview.play();
 	
 	clipLoaded = YES;
