@@ -352,7 +352,6 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 //		if(relatedClip.person == m.person){
 //			continue;
 //		}
-	
 //		if(currentTopic != "" && !ofContains(relatedClip.keywords, currentTopic) ){
 //			continue;
 //		}
@@ -466,6 +465,11 @@ bool CloudsFCPVisualizer::hasParticle(string tagName){
 
 void CloudsFCPVisualizer::updatePhysics(){
     physics.update();
+	
+	if(physics.numberOfParticles() == 0){
+		return;
+	}
+	
 	totalRectangle = ofRectangle(physics.getParticle(0)->getPosition(), 0,0);
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());

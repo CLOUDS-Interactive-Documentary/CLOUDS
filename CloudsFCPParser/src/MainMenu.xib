@@ -454,7 +454,6 @@
 							<string key="NSFrame">{{323, 13}, {153, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="349317529">
@@ -1377,7 +1376,7 @@
 							<string key="NSFrame">{{1042, 17}, {66, 32}}</string>
 							<reference key="NSSuperview" ref="538310713"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="509382314"/>
+							<reference key="NSNextKeyView" ref="404394265"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="674035139">
@@ -1427,7 +1426,6 @@
 							<string key="NSFrame">{{1194, 17}, {70, 32}}</string>
 							<reference key="NSSuperview" ref="538310713"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="40445488">
@@ -1446,7 +1444,7 @@
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
-						<object class="NSButton" id="509382314">
+						<object class="NSButton" id="404394265">
 							<reference key="NSNextResponder" ref="538310713"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{1108, 17}, {86, 32}}</string>
@@ -1455,13 +1453,13 @@
 							<reference key="NSNextKeyView" ref="37548519"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="514584605">
+							<object class="NSButtonCell" key="NSCell" id="217059099">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">add clip</string>
 								<reference key="NSSupport" ref="803814002"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="509382314"/>
+								<reference key="NSControlView" ref="404394265"/>
 								<int key="NSButtonFlags">-2038284288</int>
 								<int key="NSButtonFlags2">129</int>
 								<string key="NSAlternateContents"/>
@@ -1783,11 +1781,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">playCurrentPlaylist:</string>
+						<string key="label">addClip:</string>
 						<reference key="source" ref="765817303"/>
-						<reference key="destination" ref="509382314"/>
+						<reference key="destination" ref="404394265"/>
 					</object>
-					<int key="connectionID">810</int>
+					<int key="connectionID">811</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2388,7 +2386,7 @@
 							<reference ref="37548519"/>
 							<reference ref="99256891"/>
 							<reference ref="62647540"/>
-							<reference ref="509382314"/>
+							<reference ref="404394265"/>
 						</array>
 						<reference key="parent" ref="501269403"/>
 					</object>
@@ -2485,16 +2483,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">808</int>
-						<reference key="object" ref="509382314"/>
+						<reference key="object" ref="404394265"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="514584605"/>
+							<reference ref="217059099"/>
 						</array>
 						<reference key="parent" ref="538310713"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">809</int>
-						<reference key="object" ref="514584605"/>
-						<reference key="parent" ref="509382314"/>
+						<reference key="object" ref="217059099"/>
+						<reference key="parent" ref="404394265"/>
 					</object>
 				</array>
 			</object>
@@ -2610,7 +2608,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">810</int>
+			<int key="maxID">811</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2683,6 +2681,7 @@
 					<string key="className">testView</string>
 					<string key="superclassName">ofxCocoaGLView</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addClip:">id</string>
 						<string key="createLink:">id</string>
 						<string key="deleteLink:">id</string>
 						<string key="nextOnPlaylist:">id</string>
@@ -2696,6 +2695,10 @@
 						<string key="unloadVideo:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addClip:">
+							<string key="name">addClip:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="createLink:">
 							<string key="name">createLink:</string>
 							<string key="candidateClassName">id</string>

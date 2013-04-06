@@ -8,6 +8,8 @@
 
 - (void)setup
 {
+	ofSeedRandom();
+	
     ofBackground(220);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
@@ -35,23 +37,33 @@
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
  
-
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	
-    visualizer.database = &parser;
+	visualizer.database = &parser;
+    visualizer.setup();
+	visualizer.setupPhysics();
+
 	storyEngine.setup();
 	storyEngine.visualizer = &visualizer;
+	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 4;
+	
+	float randomClip = ofRandom(parser.getAllClips().size() );
+	
+	cout << "seeding random " << randomClip << "/" << parser.getAllClips().size() << endl;
+	
+	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
+	[playlistTable reloadData];
+	[playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:0]
+			   byExtendingSelection:NO];
+	
+	[self playCurrentPlaylist:self];
 	
 	//visualizer.setupGrid();
     //visualizer.exportForGraphviz();
-	
-    visualizer.setup();
-	visualizer.setupPhysics();
 	//visualizer.addTagToPhysics("technological progress");
-	visualizer.addLinksToPhysics(parser.getAllClips()[0]);
-	
+	//visualizer.addLinksToPhysics(parser.getAllClips()[0]);
 	
 	// Create a matrix for D3 chord visualization
 //	CloudsD3Exporter d3Exporter;
@@ -73,17 +85,28 @@
 		visualizer.addTagToPhysics(seedKeywordString);
 	}
 	 */
-	
+		
 	if(clipTable.selectedRow >= 0){
 		visualizer.clear();
 		ClipMarker& clip = [self selectedClip];
-		visualizer.addLinksToPhysics(clip);
+		//visualizer.addLinksToPhysics(clip);
+		//TODO: selected topic
+		storyEngine.seedWithClip(clip);
+		[self playCurrentPlaylist:self];
 	}
 }
 
 - (IBAction) nextOnPlaylist:(id)sender
 {
-	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
+//	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
+	if(playlistTable.selectedRow == storyEngine.history.size()-1){
+		if(!storyEngine.selectNewClip()){
+			ofLogError("No more clips!");
+			return;
+		}
+	}
+	
+	if(playlistTable.selectedRow < storyEngine.history.size()){
 	   [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
 				  byExtendingSelection:NO];
 		[self playCurrentPlaylist:playlistTable];
@@ -108,7 +131,6 @@
 {
 	storyEngine.selectNewClip();
 	[playlistTable reloadData];
-
 }
 
 - (IBAction) unloadVideo:(id)sender
@@ -254,7 +276,7 @@
 	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
 	
-	cout << "current clips is of size " << currentClipLinks.size() << endl;
+	cout << "current clips has " << currentClipLinks.size() << " links" << endl;
 	
 	currentPlayingClip = clip;
 	
@@ -281,7 +303,8 @@
 
 - (ClipMarker&) selectedClipFromPlaylist
 {
-	return visualizer.pathByClip[ playlistTable.selectedRow ];
+	//return visualizer.pathByClip[ playlistTable.selectedRow ];
+	return storyEngine.history[ playlistTable.selectedRow ];
 }
 
 - (void)keyReleased:(int)key
@@ -342,7 +365,8 @@
         return currentClipLinks.size();
     }
 	else if(aTableView == playlistTable){
-		return visualizer.pathByClip.size();
+		//return visualizer.pathByClip.size();
+		return storyEngine.history.size();
 	}
 }
 
@@ -378,7 +402,9 @@
         return [NSString stringWithUTF8String:clipTableEntry.c_str()];
     }
 	else if(aTableView == playlistTable){
-		return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];
+		//return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];
+		return [NSString stringWithUTF8String: storyEngine.history[rowIndex].getLinkName().c_str()];
+		
 	}
 }
 
