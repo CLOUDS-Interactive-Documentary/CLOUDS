@@ -133,38 +133,6 @@ bool CloudsStoryEngine::selectNewClip(){
 		return false;
 	}
 	
-	int totalPoints = 0;
-	vector< pair<int, ClipMarker> > clipScores;
-	for(int i = 0; i < nextClips.size(); i++){
-		ClipMarker& m = nextClips[ i ];
-		int score = scoreForClip( m );
-		if(score != 0){
-			clipScores.push_back( make_pair(totalPoints, m) );
-			totalPoints += score;
-		}
-	}
-	
-	if(printDecisions){
-		cout << "VALID CLIPS:" << endl;
-		for(int i = 0; i < clipScores.size(); i++){
-			cout << "	" << clipScores[i].second.getLinkName() << endl;
-		}
-	}
-	
-	//if no clips were valid, return false
-	if(totalPoints == 0) {
-		// if we are at a dead end because of the lack of clips,
-		// recurse the call with an open topic
-		// May still be dead from exhausted clips or topics on the same node
-		if(!freeTopic){
-			freeTopic = true;
-			return selectNewClip();
-		}
-		
-		ofLogError("Dead end found at clip " + currentClip.getLinkName());
-		return false;
-	}
-
 	//Do a weighted selection based on the random value
 	int randomOption = ofRandom(totalPoints);
 	int selection;
@@ -184,19 +152,16 @@ bool CloudsStoryEngine::selectNewClip(){
 	return true;
 }
 
-void CloudsStoryEngine::populateNextClips(){
+bool CloudsStoryEngine::populateNextClips(){
 	
-	// TODO: remove existing clips
-	// 
 	
 	//get all the adjascent clips, assign weights to them and select
-	nextClips = network->getClipsWithKeyword(currentClip.keywords);
+	vector<ClipMarker> nextClips = network->getClipsWithKeyword(currentClip.keywords);
 	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
 	
 	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
 	
-	visualizer->addLinksToPhysics(currentClip, nextClips, links);
-	
+	//
 	for(int i = 0; i < links.size(); i++){
 		nextClips.push_back( network->getClipWithLinkName(links[i].targetName) );
 	}
@@ -209,7 +174,46 @@ void CloudsStoryEngine::populateNextClips(){
 //		}
 //	}
 	
+	totalPoints = 0;
+	clipScores.clear();
+	validNextClips.clear();
+	for(int i = 0; i < nextClips.size(); i++){
+		ClipMarker& m = nextClips[ i ];
+		int score = scoreForClip( m );
+		if(score != 0){
+			clipScores.push_back( make_pair(totalPoints, m) );
+			validNextClips.push_back( m );
+			totalPoints += score;
+		}
+	}
 	
+	if(printDecisions){
+		cout << "VALID CLIPS:" << endl;
+		for(int i = 0; i < clipScores.size(); i++){
+			cout << "	" << clipScores[i].second.getLinkName() << endl;
+
+		}
+	}
+	
+	//if no clips were valid, return false
+	if(totalPoints == 0) {
+		cout << "DEAD END ENCOUNTRED, FREEING TOPIC" << endl;
+		// if we are at a dead end because of the lack of clips,
+		// recurse the call with an open topic
+		// May still be dead from exhausted clips or topics on the same node
+		if(!freeTopic){
+			freeTopic = true;
+			return populateNextClips();
+		}
+		
+		ofLogError("Dead end found at clip " + currentClip.getLinkName());
+		return false;
+	}
+	
+	
+	visualizer->addLinksToPhysics(currentClip, validNextClips);
+	
+	return true;
 }
 
 // nice reference on picking random weighted objcts
