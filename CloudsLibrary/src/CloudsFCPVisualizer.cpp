@@ -139,183 +139,12 @@ void CloudsFCPVisualizer::addAllClipsWithAttraction(){
 	}
 }
 
-void CloudsFCPVisualizer::addTagToPhysics(string tag){
-	
-	
-	//NEW WAY PER CLIP NAVIGATOR
-
-	cout << "NEW PHYSICS adding tag " << tag << endl;
-	
-	vector<msa::physics::Particle2D*> newParticles;
-	vector<ClipMarker> relatedClips = database->getClipsWithKeyword(tag);
-	int particleStartIndex = physics.numberOfParticles();
-	
-	for(int c = 0; c < relatedClips.size(); c++){
-
-		string clipName = relatedClips[c].getLinkName();
-		
-		cout << "NEW PHYSICS adding clip " << clipName << endl;
-
-		msa::physics::Particle2D* p;
-		if(hasParticle(clipName)){
-			p = particlesByTag[clipName];
-		}
-		else{
-			//make a particle for the seed
-			p = physics.makeParticle(ofVec2f(width/2 - c, height/2 + c));
-			//p->setMass(database->occurrencesOfKeyword(tag));
-			p->setMass(1);
-//			p->makeFixed();
-			newParticles.push_back(p);
-			particleName[p] = clipName;
-			particlesByTag[clipName] = p;
-			particleToClip[p] = relatedClips[c];
-			if(physics.numberOfParticles() == 1){
-				p->makeFixed();
-			}
-		}
-
-		//connect to new particles
-		for(int n = 0; n < newParticles.size(); n++){
-			msa::physics::Particle2D * a = newParticles[n];
-			if(a != p && springs.find( make_pair(a, p) ) == springs.end() &&
-						 springs.find( make_pair(p, a) ) == springs.end() )
-			{
-				   //use clips in common to weight the lines
-					msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
-					springs[ make_pair(a, p) ] = newSpring;
-			}
-				
-//				clipsInSpring[ newSpring ] = clipsInCommon;
-//				if( database->keywordsShareLink(tag, *it) ){
-//					cout << "-->!!link exists!" << endl;
-//					linkSprings.insert(newSpring);
-//				}
-			
-		}
-	}
-	
-	cout << "at the end there are " << physics.numberOfParticles() << " paricles and " << physics.numberOfSprings() << " springs" << endl;
-	//repel existing particles
-	for(int i = 0; i < newParticles.size(); i++){
-		for(int j = 0; j < particleStartIndex; j++){
-			physics.makeAttraction(newParticles[i], physics.getParticle(j), -20);
-		}
-	}
-	
-	//repel eachother
-	for(int i = 0; i < newParticles.size(); i++){
-		for(int j = i+1; j < newParticles.size(); j++){
-			physics.makeAttraction(newParticles[i], newParticles[j], -20);
-		}
-	}
-
-/*
-	vector<msa::physics::Particle2D *> newParticles;
-	
-	//OLD WAY PER TAG NAVIGATOR
-	msa::physics::Particle2D * p;
-	if(hasParticle(tag)){
-		p = particlesByTag[tag];
-	}
-	else{
-		//make a particle for the seed
-		p = physics.makeParticle(ofVec2f(width/2, height/2));
-		p->setMass(database->occurrencesOfKeyword(tag));
-		p->makeFixed();
-		newParticles.push_back(p);
-		particleName[p] = tag;
-		particlesByTag[tag] = p;
-	}
-	
-	int particleStartIndex = physics.numberOfParticles();
-	cout << "adding tag " << tag << endl;
-	set<string> related = database->getRelatedKeywords(tag);
-	set<string>::iterator it;
-	for(it = related.begin(); it != related.end(); it++){
-		int clipsInCommon = database->getNumberOfSharedClips(tag,*it);
-		int occurrences = database->occurrencesOfKeyword(*it);
-		if(occurrences == 1){
-			continue;
-		}
-			
-//		if(clipsInCommon == 1){
-//			continue;
-//		}
-		
-		msa::physics::Particle2D* a;
-		if(hasParticle(*it)){
-			a = particlesByTag[*it];
-		}
-		else {
-			a = physics.makeParticle(p->getPosition() + ofVec2f(ofRandom(-5,5),ofRandom(-5,5)) );
-			int mass = database->occurrencesOfKeyword(*it);
-			a->setMass(mass);
-			maxMass = MAX(maxMass, mass);
-			particleName[a] = *it;
-			particlesByTag[*it] = a;
-			newParticles.push_back(a);
-		}
-		
-		
-		if(springs.find( make_pair(a, p) ) == springs.end() &&
-		   springs.find( make_pair(p, a) ) == springs.end() ){
-			//use clips in common to weight the lines
-			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
-			springs.insert( make_pair(a, p) );
-			clipsInSpring[ newSpring ] = clipsInCommon;
-			cout << "Trying to find link spring between " << tag << " and " << *it << endl;
-			if( database->keywordsShareLink(tag, *it) ){
-				cout << "-->!!link exists!" << endl;
-				linkSprings.insert(newSpring);
-			}
-		}
-//		cout << "	added tag " << *it << " with " << clipsInCommon << " shared clips " << endl;
-	}
-	
-	//repel existing particles
-	for(int i = 0; i < newParticles.size(); i++){
-		for(int j = 0; j < particleStartIndex; j++){
-			physics.makeAttraction(newParticles[i], physics.getParticle(j), -20);
-		}
-	}
-	
-	//repel eachother
-	for(int i = 0; i < newParticles.size(); i++){
-		for(int j = 0; j < newParticles.size(); j++){
-			if(j != i){
-				physics.makeAttraction(newParticles[i], newParticles[j], -20);
-			}
-		}
-	}
-
-	centerNode = p;
-*/
-	
-}
-
 void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarker>& connections)
 {
 
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = center.getLinkName();
-	
-//	vector<ClipMarker> related = database->getClipsWithKeyword(m.keywords);
-	
-//	if(particlesByTag.find( mainLinkName ) != particlesByTag.end() ){
-//		msa::physics::Particle2D* current = particlesByTag[ mainLinkName ];
-//		vector<string> traversedTopics = keywordsInSpring[ springs[make_pair(centerNode,current)] ];
-//		if(traversedTopics.size() != 0){
-//			currentTopic = traversedTopics[ ofRandom(traversedTopics.size()) ];
-//		}
-//		cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
-//	}
-	
-//	if(!ofContains(m.keywords, currentTopic)){
-//		cout << m.getLinkName() << " did not contain topic " << currentTopic << " resetting" << endl;
-//		currentTopic = "";
-//	}
 	
 	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
@@ -404,56 +233,6 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 			}
 		}
 	}
-
-//	for(int i = 0; i < links.size(); i++){
-//		ClipMarker clip = database->getClipWithLinkName( links[i].targetName );
-//		string clipName = clip.getLinkName();
-//		msa::physics::Particle2D* a;
-//		if(hasParticle(clipName)){
-//			a = particlesByTag[clipName];
-//		}
-//		else{
-//			//make a particle for the seed
-//			a = physics.makeParticle(p->getPosition() + ofVec2f(ofRandom(-5,5), ofRandom(-5,5)));
-//			int mass = clip.keywords.size();
-//			a->setMass(mass);
-//			maxMass = MAX(maxMass, mass);
-//			newParticles.push_back(a);
-//			particleName[a] = clipName;
-//			particlesByTag[clipName] = a;
-//			particleToClip[a] = clip;
-//		}
-//		
-//		currentOptionClips.push_back(clip);
-//		currentOptionParticles.push_back(a);
-//		
-//		if(springs.find( make_pair(a, p) ) == springs.end() &&
-//		   springs.find( make_pair(p, a) ) == springs.end() ){
-//			//use clips in common to weight the lines
-//			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
-//			springs[ make_pair(p,a) ] = newSpring;
-//			keywordsInSpring[ newSpring ] = database->getSharedKeywords(center, clip);
-//			linkSprings.insert(newSpring);
-//		}
-//		else {
-//			if(springs.find( make_pair(a, p) ) != springs.end()) linkSprings.insert(springs[ make_pair(a, p)]);
-//			else if(springs.find( make_pair(p, a) ) != springs.end()) linkSprings.insert(springs[ make_pair(p, a)]);
-//		}
-//	}
-//	
-//	for(int i = 0; i < newParticles.size(); i++){
-//		vector<string>& tags = particleToClip[ newParticles[i] ].keywords;
-//		for(int i = 0; i < tags.size(); i++){
-//			allTags.insert(tags[i]);
-//		}
-//	}	
-//	set<string>::iterator it;
-//	for( it = allTags.begin(); it != allTags.end(); it++){
-//		for(int)
-//		tagRadius[*it]
-//	}
-	
-
 }
 
 bool CloudsFCPVisualizer::getPathChanged(){
@@ -696,13 +475,7 @@ void CloudsFCPVisualizer::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsFCPVisualizer::keyPressed(ofKeyEventArgs& args){
-//	if(args.key == OF_KEY_RETURN){
-//		if(selectedParticle != NULL){
-//			//addTagToPhysics( particleName[selectedParticle] );
-//			addLinksToPhysics( particleToClip[selectedParticle] );
-//			
-//		}
-//	}
+
 }
 
 void CloudsFCPVisualizer::keyReleased(ofKeyEventArgs& args){
@@ -820,4 +593,77 @@ void CloudsFCPVisualizer::exportForGraphviz(){
     
     dotFile.append("}\n");
     ofBufferToFile("clip_relationships.dot", dotFile);
+}
+
+
+void CloudsFCPVisualizer::addTagToPhysics(string tag){
+	
+	
+	//NEW WAY PER CLIP NAVIGATOR
+	
+	cout << "NEW PHYSICS adding tag " << tag << endl;
+	
+	vector<msa::physics::Particle2D*> newParticles;
+	vector<ClipMarker> relatedClips = database->getClipsWithKeyword(tag);
+	int particleStartIndex = physics.numberOfParticles();
+	
+	for(int c = 0; c < relatedClips.size(); c++){
+		
+		string clipName = relatedClips[c].getLinkName();
+		
+		cout << "NEW PHYSICS adding clip " << clipName << endl;
+		
+		msa::physics::Particle2D* p;
+		if(hasParticle(clipName)){
+			p = particlesByTag[clipName];
+		}
+		else{
+			//make a particle for the seed
+			p = physics.makeParticle(ofVec2f(width/2 - c, height/2 + c));
+			//p->setMass(database->occurrencesOfKeyword(tag));
+			p->setMass(1);
+			//			p->makeFixed();
+			newParticles.push_back(p);
+			particleName[p] = clipName;
+			particlesByTag[clipName] = p;
+			particleToClip[p] = relatedClips[c];
+			if(physics.numberOfParticles() == 1){
+				p->makeFixed();
+			}
+		}
+		
+		//connect to new particles
+		for(int n = 0; n < newParticles.size(); n++){
+			msa::physics::Particle2D * a = newParticles[n];
+			if(a != p && springs.find( make_pair(a, p) ) == springs.end() &&
+			   springs.find( make_pair(p, a) ) == springs.end() )
+			{
+				//use clips in common to weight the lines
+				msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
+				springs[ make_pair(a, p) ] = newSpring;
+			}
+			
+			//				clipsInSpring[ newSpring ] = clipsInCommon;
+			//				if( database->keywordsShareLink(tag, *it) ){
+			//					cout << "-->!!link exists!" << endl;
+			//					linkSprings.insert(newSpring);
+			//				}
+			
+		}
+	}
+	
+	cout << "at the end there are " << physics.numberOfParticles() << " paricles and " << physics.numberOfSprings() << " springs" << endl;
+	//repel existing particles
+	for(int i = 0; i < newParticles.size(); i++){
+		for(int j = 0; j < particleStartIndex; j++){
+			physics.makeAttraction(newParticles[i], physics.getParticle(j), -20);
+		}
+	}
+	
+	//repel eachother
+	for(int i = 0; i < newParticles.size(); i++){
+		for(int j = i+1; j < newParticles.size(); j++){
+			physics.makeAttraction(newParticles[i], newParticles[j], -20);
+		}
+	}
 }

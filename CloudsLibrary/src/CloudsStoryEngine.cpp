@@ -29,6 +29,7 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	clipHistory.clear();
 	topicHistory.clear();
 	peopleVisited.clear();
+	visualizer->clear();
 	
 	freeTopic = true;
 	
@@ -75,8 +76,6 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
 
 	populateNextClips();
-	
-//	visualizer->addLinksToPhysics( clip );
 }
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
@@ -86,21 +85,14 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	bool topicSwitched = false;
 	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << " with " << topics.size() << " options " << endl;;
 	if(topics.size() > 0){
-		timesOnTopic = 0;
-		freeTopic = false;
 		for(int i = 0; i < topics.size(); i++){
-			int historyBack = MIN(topicHistory.size(), topicTimeoutPeriod);
-			list<string>::iterator it = topicHistory.end();
-			advance(it, -5);
-			
-			list<string>::iterator findIter = find(it, topicHistory.end(), topics[i] );
-			if(findIter == topicHistory.end() ){
+			if( !ofContains(topicHistory, topics[i]) ){
 				currentTopic = topics[ i ];
 				topicSwitched = true;
 				break;
 			}
 			else{
-				cout << "	TOPIC SWITCH: ALREADY VISITED " << *findIter << endl;
+				cout << "	TOPIC SWITCH: ALREADY VISITED " << topics[i] << endl;
 			}
 		}
 		
@@ -111,6 +103,8 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	}
 	
 	if(topicSwitched){
+		timesOnTopic = 0;
+		freeTopic = false;
 		cout << "	TOPIC SWITCH TO " << currentTopic << endl;
 	}
 	else{
@@ -134,6 +128,14 @@ bool CloudsStoryEngine::selectNewClip(){
 	}
 	
 	//Do a weighted selection based on the random value
+	
+	int randomClip = ofRandom( validNextClips.size() );
+	cout << "SELECTED CLIP:" << randomClip << "/" << validNextClips.size() << " "
+		 << validNextClips[randomClip].getLinkName() << endl;
+
+	loadClip( validNextClips[randomClip] );
+	
+	/*
 	int randomOption = ofRandom(totalPoints);
 	int selection;
 	for(selection = 1; selection < clipScores.size(); selection++){
@@ -142,18 +144,17 @@ bool CloudsStoryEngine::selectNewClip(){
 		}
 	}
 	selection--;
-
-	cout << "SELECTED CLIP:" << selection << "/" << clipScores.size() << " "
-		 << clipScores[selection].second.getLinkName() << endl;
+	*/
+//	cout << "SELECTED CLIP:" << selection << "/" << clipScores.size() << " "
+//		 << clipScores[selection].second.getLinkName() << endl;
 	
 	//load the given clip
-	loadClip( clipScores[selection].second );
+	//loadClip( clipScores[selection].second );
 	
 	return true;
 }
 
 bool CloudsStoryEngine::populateNextClips(){
-	
 	
 	//get all the adjascent clips, assign weights to them and select
 	vector<ClipMarker> nextClips = network->getClipsWithKeyword(currentClip.keywords);
@@ -161,7 +162,6 @@ bool CloudsStoryEngine::populateNextClips(){
 	
 	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
 	
-	//
 	for(int i = 0; i < links.size(); i++){
 		nextClips.push_back( network->getClipWithLinkName(links[i].targetName) );
 	}
@@ -175,23 +175,18 @@ bool CloudsStoryEngine::populateNextClips(){
 //	}
 	
 	totalPoints = 0;
-	clipScores.clear();
+	//clipScores.clear();
+	vector< pair<int, ClipMarker> > clipScores;
 	validNextClips.clear();
+	int topScore = 0;
 	for(int i = 0; i < nextClips.size(); i++){
 		ClipMarker& m = nextClips[ i ];
 		int score = scoreForClip( m );
 		if(score != 0){
-			clipScores.push_back( make_pair(totalPoints, m) );
-			validNextClips.push_back( m );
+			//clipScores.push_back( make_pair(totalPoints, m) );
+			clipScores.push_back( make_pair(score, m) );
 			totalPoints += score;
-		}
-	}
-	
-	if(printDecisions){
-		cout << "VALID CLIPS:" << endl;
-		for(int i = 0; i < clipScores.size(); i++){
-			cout << "	" << clipScores[i].second.getLinkName() << endl;
-
+			if(score > topScore) topScore = score;
 		}
 	}
 	
@@ -210,7 +205,19 @@ bool CloudsStoryEngine::populateNextClips(){
 		return false;
 	}
 	
+	for(int i = 0; i < clipScores.size(); i++){
+		if(clipScores[i].first == topScore){
+			validNextClips.push_back( clipScores[i].second);
+		}
+	}
 	
+	if(printDecisions){
+		cout << "VALID CLIPS WITH SCORE " << topScore << endl;
+		for(int i = 0; i < validNextClips.size(); i++){
+			cout << "	" << validNextClips[i].getLinkName() << endl;
+		}
+	}
+
 	visualizer->addLinksToPhysics(currentClip, validNextClips);
 	
 	return true;
@@ -226,8 +233,14 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 		return 0;
 	}
 	
-	if(!freeTopic && !ofContains(clip.keywords, currentTopic) ){
+	
+	bool containsCurrentTopic = ofContains(clip.keywords, currentTopic);
+	if(!freeTopic && !containsCurrentTopic){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
+		return 0;
+	}
+	else if(freeTopic && containsCurrentTopic){
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same topic as before " << currentTopic << endl;
 		return 0;
 	}
 
@@ -236,24 +249,28 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": already visited" << endl;
 		return 0;
 	}
-	
+		
 	int occurrences = occurrencesOfPerson(clip.person, 20);
 	if(occurrences > 5){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": person appeared more than 4 times in the last 20 clips" << endl;
 		return 0;
 	}
+	
 	//Base score
 	int score = 10;
+	int topicsInCommon = network->getSharedKeywords(currentClip, clip).size();
+	score += (topicsInCommon-1)*10;
+
 	bool link = network->clipLinksTo(currentClip.getLinkName(), clip.getLinkName()) ;
 	//If this clip is a link weight it highly
 	if( link ){
-		score = 30;
+		score += 20;
 	}
 
 	//penalize for the person occurring
 	score -= occurrences*2;
 	
-	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << endl;
+	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
 	
 	return MAX(score, 0);
 }

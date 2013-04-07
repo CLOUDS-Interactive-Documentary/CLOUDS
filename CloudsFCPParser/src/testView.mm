@@ -60,6 +60,9 @@
 	
 	[self playCurrentPlaylist:self];
 	
+	
+	cout << ofToString(parser.percentOfClipsLinked(), 4) << " percent clips linked!" << endl;
+	
 	//visualizer.setupGrid();
     //visualizer.exportForGraphviz();
 	//visualizer.addTagToPhysics("technological progress");

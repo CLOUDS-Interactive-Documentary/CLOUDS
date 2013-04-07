@@ -39,12 +39,12 @@ class CloudsStoryEngine {
 	int totalFramesWatched;
 	
 	float totalPoints;
-	vector< pair<int, ClipMarker> > clipScores;
+//	vector< pair<int, ClipMarker> > clipScores;
 	vector<ClipMarker> validNextClips;
 	bool populateNextClips();
 	
 	vector<ClipMarker> clipHistory;
-	list<string> topicHistory;
+	vector<string> topicHistory;
 	map<string, int> peopleVisited;
 	
 	string currentTopic;

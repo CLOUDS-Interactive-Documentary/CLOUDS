@@ -59,12 +59,16 @@ class CloudsFCPParser {
     void removeLink(string linkName, int linkIndex);
 	
 	//QUERIES
+	//true if A has any out going links at all
+	bool clipHasLink(string clipName);
 	//true if A links to B
     bool clipLinksTo(string clipNameA, string clipNameB);
 	//true if A links to B or B links to A
 	bool clipsShareLink(string clipNameA, string clipNameB);
 	//true if A and B have clips that link to one another
 	bool keywordsShareLink(string keyA, string keyB);
+	
+	float percentOfClipsLinked();
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
