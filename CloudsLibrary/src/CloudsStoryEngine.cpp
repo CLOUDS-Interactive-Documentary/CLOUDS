@@ -48,7 +48,7 @@ vector<ClipMarker>& CloudsStoryEngine::getClipHistory(){
 }
 
 string CloudsStoryEngine::getCurrentTopic(){
-	return currentTopic;
+	return currentTopic + (freeTopic ? "(FREE}" : "");
 }
 
 int CloudsStoryEngine::getTimesOnTopic(){
@@ -64,7 +64,7 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	hasclip = true;
 	
 	timesOnTopic++;
-	if(timesOnTopic > maxTimesOnTopic){
+	if(timesOnTopic >= maxTimesOnTopic){
 		freeTopic = true;
 	}
 	

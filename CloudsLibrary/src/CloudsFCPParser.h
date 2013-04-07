@@ -12,12 +12,14 @@
 
 
 class ClipMarker {
+	
   public:
-
+	
     string name;
     string person;
     string clip;
     string filePath;
+	string fcpFileId;
     ofColor color;
     int startFrame;
     int endFrame;
@@ -28,7 +30,7 @@ class ClipMarker {
     }
     
     string getMetaInfo(){
-        return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "]";
+        return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "] fcp id: " + fcpFileId;
     }
 };
 

@@ -197,13 +197,16 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         if(comment != "" && cm.endFrame - cm.startFrame > 1 && cm.endFrame > 0){
             cm.name = fcpXML.getValue("name", "");
             cm.person = currentName;
+			cm.fcpFileId = fileID;
+			cm.clip = clipFileName;
+			cm.filePath = clipFilePath;
+			
 			if( markerLinkNames.find(cm.getLinkName()) != markerLinkNames.end() ){
-				ofLogError() << "DUPLICATE CLIP " << cm.getLinkName() << endl;
+				ofLogError() << "DUPLICATE CLIP " << cm.getLinkName() << " " << cm.getMetaInfo();
+				ofLogError() << "	EXISTING CLIP INFO " << getClipWithLinkName(cm.getLinkName()).getMetaInfo();
 			}
 			else{
 				markerLinkNames.insert( cm.getLinkName() );
-				cm.clip = clipFileName;
-				cm.filePath = clipFilePath;
 				cm.color.r = fcpXML.getValue("color:red", 0);
 				cm.color.g = fcpXML.getValue("color:green", 0);
 				cm.color.b = fcpXML.getValue("color:blue", 0);

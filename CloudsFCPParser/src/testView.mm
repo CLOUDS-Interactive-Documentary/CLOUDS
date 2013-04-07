@@ -163,7 +163,6 @@
 		}
 	}
 
-
     if(visualizer.getPathChanged()){
 		[playlistTable reloadData];
 	}
@@ -174,9 +173,14 @@
     visualizer.drawPhysics();
 
 	string debug = "";
-	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " " + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + "\n";
-	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size() ) + "\n";
-
+	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " (" + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + ")\n";
+	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size()  ) + "\n";
+	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
+	
+	ofPushStyle();
+	ofSetColor(40);
+	ofDrawBitmapString(debug, 30,30);
+	ofPopStyle();
 }
 
 - (void)exit
