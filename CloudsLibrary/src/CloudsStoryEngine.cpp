@@ -34,11 +34,12 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed, string topic){
 
 void CloudsStoryEngine::loadClip(ClipMarker& clip){
 
-	hasclip = true;
 
-	if(freeTopic || currentTopic == ""){
-		chooseNewTopic();
+
+	if(hasclip && (freeTopic || currentTopic == "") ){
+		chooseNewTopic(clip);
 	}
+	hasclip = true;
 	
 	timesOnTopic++;
 	if(timesOnTopic > maxTimesOnTopic){
@@ -131,13 +132,21 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 		timesOnTopic = 0;
 		freeTopic = false;
 		for(int i = 0; i < topics.size(); i++){
-			if( topicsVisited.find( topics[i] ) == topicsVisited.end() ){
+			int historyBack = MIN(topicHistory.size(), topicTimeoutPeriod);
+			list<string>::iterator it = topicHistory.end();
+			advance(it, -5);
+			
+			list<string>::iterator findIter = find(it, topicHistory.end(), topics[i] );
+			if(findIter == topicHistory.end() ){
 				currentTopic = topics[ i ];
 				break;
 			}
+			else{
+				cout << "ALREADY VISITED " << *findIter << endl;
+			}
 		}
 		
-		topicsVisited.insert(currentTopic);
+		topicHistory.push_back(currentTopic);
 	}
 	
 	cout << " TO " << currentTopic << endl;

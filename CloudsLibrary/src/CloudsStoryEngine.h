@@ -23,15 +23,18 @@ class CloudsStoryEngine {
 	
 	float totalSecondsWatched();
 	
+	//after this many times the topic becomes available again
+	int topicTimeoutPeriod;
+	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
 	
   protected:
-	set<string> topicsVisited;
-	
 	bool hasclip;
-
 	ClipMarker currentClip;
+	
+	list<string> topicHistory;
+	map<string, int> peopleVisited;
 	
 	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic
