@@ -12,12 +12,14 @@ class CloudsStoryEngine {
 	
 	CloudsFCPVisualizer* visualizer;
 	CloudsFCPParser* network;
-	vector<ClipMarker> history;
 	
 	void setup();
 
-	void seedWithClip(ClipMarker& seed, string topic = "");
+	void seedWithClip(ClipMarker& seed);
 	bool selectNewClip();
+	
+	ClipMarker& getCurrentClip();
+	vector<ClipMarker>& getClipHistory();
 	
 	bool historyContainsClip(ClipMarker& m);
 	
@@ -33,6 +35,7 @@ class CloudsStoryEngine {
 	bool hasclip;
 	ClipMarker currentClip;
 	
+	vector<ClipMarker> clipHistory;
 	list<string> topicHistory;
 	map<string, int> peopleVisited;
 	

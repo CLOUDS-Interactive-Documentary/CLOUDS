@@ -23,22 +23,33 @@ void CloudsStoryEngine::setup(){
 	
 }
 
-void CloudsStoryEngine::seedWithClip(ClipMarker& seed, string topic){
+void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
+	
+	
+	clipHistory.clear();
+	topicHistory.clear();
+	peopleVisited.clear();
 	
 	freeTopic = true;
-	history.clear();
-	currentTopic = topic;
+	
 	loadClip( seed );
 	
 }
 
+ClipMarker& CloudsStoryEngine::getCurrentClip(){
+	return currentClip;
+}
+
+vector<ClipMarker>& CloudsStoryEngine::getClipHistory(){
+	return clipHistory;
+}
+
 void CloudsStoryEngine::loadClip(ClipMarker& clip){
-
-
 
 	if(hasclip && (freeTopic || currentTopic == "") ){
 		chooseNewTopic(clip);
 	}
+	
 	hasclip = true;
 	
 	timesOnTopic++;
@@ -47,9 +58,50 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	}
 	
 	currentClip = clip;
-	history.push_back( clip );
+	clipHistory.push_back( clip );
+	peopleVisited[ clip.person ]++;
 	
 	//visualizer->addLinksToPhysics( clip );
+}
+
+
+void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
+	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
+	ofRandomize(topics);
+	
+	bool topicSwitched = false;
+	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << endl;;
+	if(topics.size() > 0){
+		timesOnTopic = 0;
+		freeTopic = false;
+		for(int i = 0; i < topics.size(); i++){
+			int historyBack = MIN(topicHistory.size(), topicTimeoutPeriod);
+			list<string>::iterator it = topicHistory.end();
+			advance(it, -5);
+			
+			list<string>::iterator findIter = find(it, topicHistory.end(), topics[i] );
+			if(findIter == topicHistory.end() ){
+				currentTopic = topics[ i ];
+				topicSwitched = true;
+				break;
+			}
+			else{
+				cout << "	TOPIC SWITCH: ALREADY VISITED " << *findIter << endl;
+			}
+		}
+		
+		topicHistory.push_back(currentTopic);
+	}
+	else{
+		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
+	}
+	
+	if(topicSwitched){
+		cout << "	TOPIC SWITCH TO " << currentTopic << endl;
+	}
+	else{
+		cout << "	FAILED TO SWITCH TOPIC " << currentTopic << endl;
+	}
 }
 
 bool CloudsStoryEngine::selectNewClip(){
@@ -85,7 +137,6 @@ bool CloudsStoryEngine::selectNewClip(){
 		ClipMarker& m = related[ i ];
 		int score = scoreForClip( m );
 		if(score != 0){
-			if(printDecisions) cout << "	Clip " << m.getLinkName() << " assigned score of " << score << endl;
 			clipScores.push_back( make_pair(totalPoints, m) );
 			totalPoints += score;
 		}
@@ -100,8 +151,19 @@ bool CloudsStoryEngine::selectNewClip(){
 	
 	//if no clips were valid, return false
 	if(totalPoints == 0){
-		ofLogError("Dead end found at clip " + currentClip.getLinkName());
-		return false;
+		
+		// if we are at a dead end because of the lack of clips,
+		// recurse the call with an open topic
+		// May still be dead from exhausted clips or topics on the same node
+		if(!freeTopic){
+			freeTopic = true;
+			return selectNewClip();
+		}
+		else{
+			ofLogError("Dead end found at clip " + currentClip.getLinkName());
+		}
+		
+		 false;
 	}
 
 	//Do a weighted selection based on the random value
@@ -123,65 +185,41 @@ bool CloudsStoryEngine::selectNewClip(){
 	return true;
 }
 
-void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
-	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
-	ofRandomize(topics);
-	
-	cout << "SWITCHED TOPIC FROM " << currentTopic;
-	if(topics.size() > 0){
-		timesOnTopic = 0;
-		freeTopic = false;
-		for(int i = 0; i < topics.size(); i++){
-			int historyBack = MIN(topicHistory.size(), topicTimeoutPeriod);
-			list<string>::iterator it = topicHistory.end();
-			advance(it, -5);
-			
-			list<string>::iterator findIter = find(it, topicHistory.end(), topics[i] );
-			if(findIter == topicHistory.end() ){
-				currentTopic = topics[ i ];
-				break;
-			}
-			else{
-				cout << "ALREADY VISITED " << *findIter << endl;
-			}
-		}
-		
-		topicHistory.push_back(currentTopic);
-	}
-	
-	cout << " TO " << currentTopic << endl;
-}
-
 // nice reference on picking random weighted objcts
 // http://www.perlmonks.org/?node_id=577433
 int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
+	
 	//rejection criteria
 	if(clip.person == currentClip.person){
-		if(printDecisions) cout << "	Clip " << clip.getLinkName() << " rejected: same person " << endl;
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same person" << endl;
 		return 0;
 	}
 	
 	if(!freeTopic && !ofContains(clip.keywords, currentTopic) ){
-		if(printDecisions) cout << "	Clip " << clip.getLinkName() << " rejected: not on topic " << currentTopic << endl;
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
 		return 0;
 	}
 
 	//reject any nodes we've seen already
 	if(historyContainsClip(clip)){
-		if(printDecisions) cout << "	Clip " << clip.getLinkName() << " rejected: already visited" << endl;
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": already visited" << endl;
 		return 0;
 	}
+	
+	int score = 10;
 	
 	//STUB
 	//
 	
-	return 10;
+	if(printDecisions) cout << "	ACCEPTED Clip " << clip.getLinkName() << " with score " << score << endl;
+	
+	return score;
 }
 
 bool CloudsStoryEngine::historyContainsClip(ClipMarker& m){
 	string clipLinkName = m.getLinkName();
-	for(int i = 0; i < history.size(); i++){
-		if(clipLinkName == history[i].getLinkName()){
+	for(int i = 0; i < clipHistory.size(); i++){
+		if(clipLinkName == clipHistory[i].getLinkName()){
 			return true;
 		}
 	}

@@ -100,15 +100,16 @@
 {
 //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
 	
-	if(playlistTable.selectedRow == storyEngine.history.size()-1){
+	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
 		if(!storyEngine.selectNewClip()){
 			ofLogError("No more clips!");
+			storyEngine.seedWithClip( storyEngine.getCurrentClip() );
 			return;
 		}
 		[playlistTable reloadData];
 	}
 	
-	if(playlistTable.selectedRow < storyEngine.history.size()){
+	if(playlistTable.selectedRow < storyEngine.getClipHistory().size()){
 	   [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
 				  byExtendingSelection:NO];
 		[self playCurrentPlaylist:playlistTable];
@@ -150,8 +151,6 @@
 	if(autoProgressStory){
 		if(ofGetElapsedTimef() > timeOfNextStory){
 			timeOfNextStory = ofGetElapsedTimef() + 1.5;
-			storyEngine.selectNewClip();
-			[playlistTable reloadData];
 			[self nextOnPlaylist:self];
 		}
 	}
@@ -260,10 +259,10 @@
 	}
 	
 	if( !ofFile(clipFilePath).exists() ){
-		cout << "Switched clip from " << clipFilePath;
+//		cout << "Switched clip from " << clipFilePath;
 		ofStringReplace(clipFilePath, "Nebula_backup", "Seance");		
 		ofStringReplace(clipFilePath, "Nebula", "Seance");
-		cout << " to " << clipFilePath << endl;
+//		cout << " to " << clipFilePath << endl;
 	}
 		
 	if( !preview.loadMovie(clipFilePath) ){
@@ -306,7 +305,7 @@
 - (ClipMarker&) selectedClipFromPlaylist
 {
 	//return visualizer.pathByClip[ playlistTable.selectedRow ];
-	return storyEngine.history[ playlistTable.selectedRow ];
+	return storyEngine.getClipHistory()[ playlistTable.selectedRow ];
 }
 
 - (void)keyReleased:(int)key
@@ -368,7 +367,7 @@
     }
 	else if(aTableView == playlistTable){
 		//return visualizer.pathByClip.size();
-		return storyEngine.history.size();
+		return storyEngine.getClipHistory().size();
 	}
 }
 
@@ -405,7 +404,7 @@
     }
 	else if(aTableView == playlistTable){
 		//return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];
-		return [NSString stringWithUTF8String: storyEngine.history[rowIndex].getLinkName().c_str()];
+		return [NSString stringWithUTF8String: storyEngine.getClipHistory()[rowIndex].getLinkName().c_str()];
 		
 	}
 }
