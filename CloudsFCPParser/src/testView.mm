@@ -99,11 +99,13 @@
 - (IBAction) nextOnPlaylist:(id)sender
 {
 //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
+	
 	if(playlistTable.selectedRow == storyEngine.history.size()-1){
 		if(!storyEngine.selectNewClip()){
 			ofLogError("No more clips!");
 			return;
 		}
+		[playlistTable reloadData];
 	}
 	
 	if(playlistTable.selectedRow < storyEngine.history.size()){
@@ -149,6 +151,7 @@
 		if(ofGetElapsedTimef() > timeOfNextStory){
 			timeOfNextStory = ofGetElapsedTimef() + 1.5;
 			storyEngine.selectNewClip();
+			[playlistTable reloadData];
 			[self nextOnPlaylist:self];
 		}
 	}
@@ -157,7 +160,6 @@
 		preview.update();
 		if(preview.getCurrentFrame() >= clipEndFrame){
 			preview.stop();
-			storyEngine.selectNewClip();
 			[self nextOnPlaylist:self];
 		}
 	}

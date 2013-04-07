@@ -383,7 +383,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 			//use clips in common to weight the lines
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
 			springs[ make_pair(p, a) ] = newSpring;
-			keywordsInSpring[ newSpring ] = database->getSharedKeywords(m, relatedClip);			
+			keywordsInSpring[ newSpring ] = database->getSharedKeywords(m, relatedClip);
 		}
 	}
 	

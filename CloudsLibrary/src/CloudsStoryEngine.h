@@ -19,21 +19,25 @@ class CloudsStoryEngine {
 	void seedWithClip(ClipMarker& seed, string topic = "");
 	bool selectNewClip();
 	
+	bool historyContainsClip(ClipMarker& m);
+	
+	float totalSecondsWatched();
+	
 	int maxTimesOnTopic;
 	bool printDecisions;
 	
   protected:
 	set<string> topicsVisited;
 	
-	
 	bool hasclip;
+
 	ClipMarker currentClip;
 	
-	string currentPerson;
 	string currentTopic;
-	int timesOnTopic;
+	int timesOnTopic; //how many times have we heard about this specific topic
+	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
 	int scoreForClip(ClipMarker& clip);
 	void loadClip(ClipMarker& clip);
-	
+	void chooseNewTopic(ClipMarker& clip);
 };
