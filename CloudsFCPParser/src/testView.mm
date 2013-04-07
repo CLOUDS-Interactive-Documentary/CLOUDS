@@ -172,7 +172,11 @@
 - (void)draw
 {
     visualizer.drawPhysics();
-//    visualizer.drawGrid();
+
+	string debug = "";
+	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " " + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + "\n";
+	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size() ) + "\n";
+
 }
 
 - (void)exit
@@ -277,7 +281,7 @@
 	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
 	
-	cout << "current clips has " << currentClipLinks.size() << " links" << endl;
+//	cout << "current clips has " << currentClipLinks.size() << " links" << endl;
 	
 	currentPlayingClip = clip;
 	

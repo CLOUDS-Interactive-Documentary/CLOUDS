@@ -599,19 +599,9 @@ void CloudsFCPVisualizer::drawPhysics(){
 			ofSetColor(30);
 			font.drawString(keywordString, middle.x, middle.y);
 		}
-
 	}
-	
-	string allSelectedClips = "CurrentTopic: " + currentTopic + "\n" + selectionTitle + "\n";
-	for(int i = 0; i < selectedClips.size(); i++){
-		allSelectedClips += selectedClips[i].getLinkName() + "\n";
-	}
-	
-	ofSetColor(25, 230);
-	font.drawString(allSelectedClips, 20, 20);
 	
 	ofPopStyle();
-
 }
 
 ofVec2f CloudsFCPVisualizer::graphPointForScreenPoint(ofVec2f screenPoint){

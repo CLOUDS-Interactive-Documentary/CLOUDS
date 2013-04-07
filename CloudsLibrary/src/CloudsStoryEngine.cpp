@@ -13,6 +13,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	network = NULL;
 	hasclip = false;
 	printDecisions = true;
+	totalFramesWatched = 0;
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -25,7 +26,6 @@ void CloudsStoryEngine::setup(){
 
 void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	
-	
 	clipHistory.clear();
 	topicHistory.clear();
 	peopleVisited.clear();
@@ -36,12 +36,23 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	
 }
 
+float CloudsStoryEngine::getTotalSecondsWatched(){
+	return totalFramesWatched / 30.0;
+}
 ClipMarker& CloudsStoryEngine::getCurrentClip(){
 	return currentClip;
 }
 
 vector<ClipMarker>& CloudsStoryEngine::getClipHistory(){
 	return clipHistory;
+}
+
+string CloudsStoryEngine::getCurrentTopic(){
+	return currentTopic;
+}
+
+int CloudsStoryEngine::getTimesOnTopic(){
+	return timesOnTopic;
 }
 
 void CloudsStoryEngine::loadClip(ClipMarker& clip){
@@ -61,16 +72,17 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	clipHistory.push_back( clip );
 	peopleVisited[ clip.person ]++;
 	
+	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
+	
 	//visualizer->addLinksToPhysics( clip );
 }
-
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
 	ofRandomize(topics);
 	
 	bool topicSwitched = false;
-	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << endl;;
+	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << " with " << topics.size() << " options " << endl;;
 	if(topics.size() > 0){
 		timesOnTopic = 0;
 		freeTopic = false;
@@ -130,7 +142,13 @@ bool CloudsStoryEngine::selectNewClip(){
 //		}
 //	}
 
-	cout << "RELATED CLIPS TO: " << currentTopic << " ASSIGNING VALUES:" << endl;
+	cout << "RELATED CLIPS TO: " << currentTopic << " " << related.size() << " ASSIGNING VALUES:" << endl;
+	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
+	
+	for(int i = 0; i < links.size(); i++){
+		related.push_back( network->getClipWithLinkName(links[i].targetName) );
+	}
+	
 	int totalPoints = 0;
 	vector< pair<int, ClipMarker> > clipScores;
 	for(int i = 0; i < related.size(); i++){
@@ -159,11 +177,9 @@ bool CloudsStoryEngine::selectNewClip(){
 			freeTopic = true;
 			return selectNewClip();
 		}
-		else{
-			ofLogError("Dead end found at clip " + currentClip.getLinkName());
-		}
 		
-		 false;
+		ofLogError("Dead end found at clip " + currentClip.getLinkName());
+		return false;
 	}
 
 	//Do a weighted selection based on the random value
@@ -186,7 +202,7 @@ bool CloudsStoryEngine::selectNewClip(){
 }
 
 // nice reference on picking random weighted objcts
-// http://www.perlmonks.org/?node_id=577433
+// http://www.perlmonks.org/?node_id=577433	
 int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 	
 	//rejection criteria
@@ -206,14 +222,25 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 		return 0;
 	}
 	
+	int occurrences = occurrencesOfPerson(clip.person, 20);
+	if(occurrences > 5){
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": person appeared more than 4 times in the last 20 clips" << endl;
+		return 0;
+	}
+	//Base score
 	int score = 10;
+	bool link = network->clipLinksTo(currentClip.getLinkName(), clip.getLinkName()) ;
+	//If this clip is a link weight it highly
+	if( link ){
+		score = 30;
+	}
+
+	//penalize for the person occurring
+	score -= occurrences*2;
 	
-	//STUB
-	//
+	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << endl;
 	
-	if(printDecisions) cout << "	ACCEPTED Clip " << clip.getLinkName() << " with score " << score << endl;
-	
-	return score;
+	return MAX(score, 0);
 }
 
 bool CloudsStoryEngine::historyContainsClip(ClipMarker& m){
@@ -224,4 +251,17 @@ bool CloudsStoryEngine::historyContainsClip(ClipMarker& m){
 		}
 	}
 	return false;
+}
+
+int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack){
+	int occurrences = 0;
+	int startPoint = clipHistory.size() - MIN(stepsBack, clipHistory.size() );
+//	cout << "finding occurrences ... " << person << " " << clipHistory.size() << " steps back " << stepsBack << " start point " << startPoint << "/" << clipHistory.size() << endl;
+	for(int i = startPoint; i < clipHistory.size(); i++){
+//		cout << "COMPARING " << clipHistory[i].person << " to " << person << endl;
+		if(clipHistory[i].person == person){
+			occurrences++;
+		}
+	}
+	return occurrences;
 }

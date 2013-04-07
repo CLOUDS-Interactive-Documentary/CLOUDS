@@ -20,13 +20,15 @@ class CloudsStoryEngine {
 	
 	ClipMarker& getCurrentClip();
 	vector<ClipMarker>& getClipHistory();
-	
+	string getCurrentTopic();
+	float getTotalSecondsWatched();
+
 	bool historyContainsClip(ClipMarker& m);
-	
-	float totalSecondsWatched();
-	
+		
 	//after this many times the topic becomes available again
 	int topicTimeoutPeriod;
+	int getTimesOnTopic();
+	
 	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
@@ -34,6 +36,7 @@ class CloudsStoryEngine {
   protected:
 	bool hasclip;
 	ClipMarker currentClip;
+	int totalFramesWatched;
 	
 	vector<ClipMarker> clipHistory;
 	list<string> topicHistory;
@@ -46,4 +49,6 @@ class CloudsStoryEngine {
 	int scoreForClip(ClipMarker& clip);
 	void loadClip(ClipMarker& clip);
 	void chooseNewTopic(ClipMarker& clip);
+	int occurrencesOfPerson(string person, int stepsBack);
+
 };
