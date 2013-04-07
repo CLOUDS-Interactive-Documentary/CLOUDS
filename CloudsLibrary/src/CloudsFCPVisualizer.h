@@ -41,7 +41,9 @@ class CloudsFCPVisualizer {
 	
 	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void addLinksToPhysics(ClipMarker& m);
+	void addLinksToPhysics(ClipMarker& center,
+						   vector<ClipMarker>& connections,
+						   vector<CloudsLink>& links);
 	
     void mousePressed(ofMouseEventArgs& args);
     void mouseMoved(ofMouseEventArgs& args);

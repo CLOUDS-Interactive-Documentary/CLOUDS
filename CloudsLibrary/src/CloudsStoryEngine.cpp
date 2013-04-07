@@ -32,13 +32,13 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	
 	freeTopic = true;
 	
-	loadClip( seed );
-	
+	loadClip( seed );	
 }
 
 float CloudsStoryEngine::getTotalSecondsWatched(){
 	return totalFramesWatched / 30.0;
 }
+
 ClipMarker& CloudsStoryEngine::getCurrentClip(){
 	return currentClip;
 }
@@ -48,7 +48,7 @@ vector<ClipMarker>& CloudsStoryEngine::getClipHistory(){
 }
 
 string CloudsStoryEngine::getCurrentTopic(){
-	return currentTopic + (freeTopic ? "(FREE}" : "");
+	return currentTopic + (freeTopic ? "(FREE)" : "");
 }
 
 int CloudsStoryEngine::getTimesOnTopic(){
@@ -73,8 +73,10 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	peopleVisited[ clip.person ]++;
 	
 	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
+
+	populateNextClips();
 	
-	//visualizer->addLinksToPhysics( clip );
+//	visualizer->addLinksToPhysics( clip );
 }
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
@@ -125,34 +127,16 @@ bool CloudsStoryEngine::selectNewClip(){
 	}
 	
 	//We need a clip to be able to select a new one.
-	//call SeedWithClip() before calling selectNewClip()
+	//call seedWithClip() before calling selectNewClip()
 	if(!hasclip){
 		ofLogError("Cannot select new clip without a seed");
 		return false;
 	}
 	
-	//get all the adjascent clips, assign weights to them and select
-	vector<ClipMarker> related = network->getClipsWithKeyword(currentClip.keywords);
-	
-//	if(printDecisions){
-//		cout << "REALTED CLIPS:" << endl;
-//		for(int i = 0; i < related.size(); i++){
-//			cout << "	\"" << related[i].getLinkName() << "\""
-//				 << " Topics: [" << ofJoinString(related[i].keywords, ",") << "]" << endl;
-//		}
-//	}
-
-	cout << "RELATED CLIPS TO: " << currentTopic << " " << related.size() << " ASSIGNING VALUES:" << endl;
-	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
-	
-	for(int i = 0; i < links.size(); i++){
-		related.push_back( network->getClipWithLinkName(links[i].targetName) );
-	}
-	
 	int totalPoints = 0;
 	vector< pair<int, ClipMarker> > clipScores;
-	for(int i = 0; i < related.size(); i++){
-		ClipMarker& m = related[ i ];
+	for(int i = 0; i < nextClips.size(); i++){
+		ClipMarker& m = nextClips[ i ];
 		int score = scoreForClip( m );
 		if(score != 0){
 			clipScores.push_back( make_pair(totalPoints, m) );
@@ -168,8 +152,7 @@ bool CloudsStoryEngine::selectNewClip(){
 	}
 	
 	//if no clips were valid, return false
-	if(totalPoints == 0){
-		
+	if(totalPoints == 0) {
 		// if we are at a dead end because of the lack of clips,
 		// recurse the call with an open topic
 		// May still be dead from exhausted clips or topics on the same node
@@ -199,6 +182,34 @@ bool CloudsStoryEngine::selectNewClip(){
 	loadClip( clipScores[selection].second );
 	
 	return true;
+}
+
+void CloudsStoryEngine::populateNextClips(){
+	
+	// TODO: remove existing clips
+	// 
+	
+	//get all the adjascent clips, assign weights to them and select
+	nextClips = network->getClipsWithKeyword(currentClip.keywords);
+	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
+	
+	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
+	
+	visualizer->addLinksToPhysics(currentClip, nextClips, links);
+	
+	for(int i = 0; i < links.size(); i++){
+		nextClips.push_back( network->getClipWithLinkName(links[i].targetName) );
+	}
+	
+//	if(printDecisions){
+//		cout << "REALTED CLIPS:" << endl;
+//		for(int i = 0; i < related.size(); i++){
+//			cout << "	\"" << related[i].getLinkName() << "\""
+//				 << " Topics: [" << ofJoinString(related[i].keywords, ",") << "]" << endl;
+//		}
+//	}
+	
+	
 }
 
 // nice reference on picking random weighted objcts

@@ -8,7 +8,6 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
-#include "CloudsVisualizer.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {

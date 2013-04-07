@@ -38,6 +38,9 @@ class CloudsStoryEngine {
 	ClipMarker currentClip;
 	int totalFramesWatched;
 	
+	vector<ClipMarker> nextClips;
+	void populateNextClips();
+	
 	vector<ClipMarker> clipHistory;
 	list<string> topicHistory;
 	map<string, int> peopleVisited;

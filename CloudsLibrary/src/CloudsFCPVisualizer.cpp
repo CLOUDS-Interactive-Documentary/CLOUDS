@@ -294,31 +294,35 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	
 }
 
-void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
+void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
+											vector<ClipMarker>& connections,
+											vector<CloudsLink>& links)
+{
 
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
-	string mainLinkName = m.getLinkName();
-	vector<ClipMarker> related = database->getClipsWithKeyword(m.keywords);
+	string mainLinkName = center.getLinkName();
 	
-	if(currentTopic == "" && particlesByTag.find( mainLinkName ) != particlesByTag.end() ){
-		msa::physics::Particle2D* current = particlesByTag[ mainLinkName ];
-		vector<string> traversedTopics = keywordsInSpring[ springs[make_pair(centerNode,current)] ];
-		if(traversedTopics.size() != 0){
-			currentTopic = traversedTopics[ ofRandom(traversedTopics.size()) ];
-		}
-		cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
-	}
+//	vector<ClipMarker> related = database->getClipsWithKeyword(m.keywords);
+	
+//	if(particlesByTag.find( mainLinkName ) != particlesByTag.end() ){
+//		msa::physics::Particle2D* current = particlesByTag[ mainLinkName ];
+//		vector<string> traversedTopics = keywordsInSpring[ springs[make_pair(centerNode,current)] ];
+//		if(traversedTopics.size() != 0){
+//			currentTopic = traversedTopics[ ofRandom(traversedTopics.size()) ];
+//		}
+//		cout << "Traversed over " << traversedTopics.size() << " NEW TOPIC SELECTED: " << currentTopic << endl;
+//	}
 	
 //	if(!ofContains(m.keywords, currentTopic)){
 //		cout << m.getLinkName() << " did not contain topic " << currentTopic << " resetting" << endl;
 //		currentTopic = "";
 //	}
 	
-	if(particlesByTag.find(m.getLinkName()) != particlesByTag.end() &&
-	   ofContains(pathByParticles, particlesByTag[m.getLinkName()] ))
+	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
+	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
 	{
-		cout << "re adding " << m.getLinkName() << endl;
+		cout << "re adding " << center.getLinkName() << endl;
 		return;
 	}
 	pathChanged = true;
@@ -330,32 +334,24 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 	else{
 		p = physics.makeParticle(ofVec2f(width/2, height/2));
 		p->makeFixed();
-		p->setMass(m.keywords.size());
+		p->setMass(center.keywords.size());
 		
 		newParticles.push_back(p);
 		particleName[p] = mainLinkName;
 		particlesByTag[mainLinkName] = p;
-		particleToClip[p] = m;
+		particleToClip[p] = center;
 	}
 	
 	centerNode = p;
-	pathByClip.push_back(m);
+	pathByClip.push_back(center);
 	pathByParticles.push_back(p);
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
 	
-	for(int i = 0; i < related.size(); i++){
-		ClipMarker& relatedClip = related[i];
+	for(int i = 0; i < connections.size(); i++){
+		ClipMarker& relatedClip = connections[i];
 		string clipName = relatedClip.getLinkName();
 
-		//moved to story engine
-//		if(relatedClip.person == m.person){
-//			continue;
-//		}
-//		if(currentTopic != "" && !ofContains(relatedClip.keywords, currentTopic) ){
-//			continue;
-//		}
-	
 		msa::physics::Particle2D* a;
 		if(hasParticle(clipName)){
 			a = particlesByTag[clipName];
@@ -383,11 +379,11 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 			//use clips in common to weight the lines
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
 			springs[ make_pair(p, a) ] = newSpring;
-			keywordsInSpring[ newSpring ] = database->getSharedKeywords(m, relatedClip);
+			keywordsInSpring[ newSpring ] = database->getSharedKeywords(center, relatedClip);
 		}
 	}
 	
-	vector<CloudsLink>& links = database->getLinksForClip(m);
+
 	for(int i = 0; i < links.size(); i++){
 		ClipMarker clip = database->getClipWithLinkName( links[i].targetName );
 		string clipName = clip.getLinkName();
@@ -415,7 +411,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& m){
 			//use clips in common to weight the lines
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
 			springs[ make_pair(p,a) ] = newSpring;
-			keywordsInSpring[ newSpring ] = database->getSharedKeywords(m, clip);
+			keywordsInSpring[ newSpring ] = database->getSharedKeywords(center, clip);
 			linkSprings.insert(newSpring);
 		}
 		else {
@@ -693,13 +689,13 @@ void CloudsFCPVisualizer::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsFCPVisualizer::keyPressed(ofKeyEventArgs& args){
-	if(args.key == OF_KEY_RETURN){
-		if(selectedParticle != NULL){
-			//addTagToPhysics( particleName[selectedParticle] );
-			addLinksToPhysics( particleToClip[selectedParticle] );
-			
-		}
-	}
+//	if(args.key == OF_KEY_RETURN){
+//		if(selectedParticle != NULL){
+//			//addTagToPhysics( particleName[selectedParticle] );
+//			addLinksToPhysics( particleToClip[selectedParticle] );
+//			
+//		}
+//	}
 }
 
 void CloudsFCPVisualizer::keyReleased(ofKeyEventArgs& args){
