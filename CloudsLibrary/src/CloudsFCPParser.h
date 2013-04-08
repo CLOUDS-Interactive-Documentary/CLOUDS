@@ -55,14 +55,17 @@ class CloudsFCPParser {
 	vector<CloudsLink>& getLinksForClip(ClipMarker& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
     void addLink(CloudsLink& link);
-    void saveLinks(string linkFile);
     void removeLink(string linkName, int linkIndex);
+	void removeLink(string linkName, string targetName);
+	void saveLinks(string linkFile);
 	
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(string clipName);
 	//true if A links to B
     bool clipLinksTo(string clipNameA, string clipNameB);
+	//true if A links to B or B links to A and the index of the link
+	bool clipLinksTo(string clipNameA, string clipNameB, int& index);
 	//true if A links to B or B links to A
 	bool clipsShareLink(string clipNameA, string clipNameB);
 	//true if A and B have clips that link to one another

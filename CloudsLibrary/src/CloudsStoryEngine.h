@@ -32,6 +32,7 @@ class CloudsStoryEngine {
 	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
+	bool atDeadEnd();
 	
   protected:
 	bool hasclip;

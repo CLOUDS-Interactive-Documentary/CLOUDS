@@ -71,6 +71,9 @@
 - (IBAction) prevOnPlaylist:(id)sender;
 - (IBAction) playCurrentPlaylist:(id)sender;
 - (IBAction) addClip:(id)sender;
+- (IBAction) removeLink:(id)sender;
+
+- (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

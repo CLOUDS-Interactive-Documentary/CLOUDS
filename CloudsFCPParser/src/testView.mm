@@ -55,8 +55,6 @@
 	
 	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
 	[playlistTable reloadData];
-	[playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:0]
-			   byExtendingSelection:NO];
 	
 	[self playCurrentPlaylist:self];
 	
@@ -88,7 +86,12 @@
 		visualizer.addTagToPhysics(seedKeywordString);
 	}
 	 */
-		
+	preview.stop();
+	
+	if(playlistTable.selectedRow >= 0){
+		[playlistTable deselectAll:self];
+	}
+	
 	if(clipTable.selectedRow >= 0){
 		visualizer.clear();
 		ClipMarker& clip = [self selectedClip];
@@ -105,12 +108,12 @@
 	
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
 		if(!storyEngine.selectNewClip()){
-			ofLogError("No more clips!");
-			storyEngine.seedWithClip( storyEngine.getCurrentClip() );
+			//storyEngine.seedWithClip( storyEngine.getCurrentClip() );
 			return;
 		}
 		[playlistTable reloadData];
 	}
+	
 	
 	if(playlistTable.selectedRow < storyEngine.getClipHistory().size()){
 	   [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
@@ -130,6 +133,11 @@
 
 - (IBAction) playCurrentPlaylist:(id)sender
 {
+	if(playlistTable.selectedRow < 0){
+		[playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:0]
+				   byExtendingSelection:NO];
+	}
+	
 	[self playDoubleClickedRow:playlistTable];
 }
 
@@ -198,36 +206,87 @@
     if(key == ' '){
         [self playDoubleClickedRow: clipTable];
     }
+	
 }
 
 - (IBAction) createLink:(id)sender
 {
-    NSLog(@"creating link");
-    if(clipLoaded && clipTable.selectedRow >= 0){
-        NSLog(@"clip is loaded and row is selected");
-        ClipMarker& clip = [self selectedClip];
-        if(clip.getLinkName() != currentPlayingClip.getLinkName()){
-            
-            NSLog(@"creating lip for %s + %s", clip.getLinkName().c_str(), currentPlayingClip.getLinkName().c_str());
-            
-            CloudsLink l;
-            l.sourceName = currentPlayingClip.getLinkName();
-            l.targetName = clip.getLinkName();
-            l.startFrame = -1;
-            l.endFrame = -1;
-            
-            //TODO figure out frame numbers
-            parser.addLink(l);
-            currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
-            
-            cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
-            
-            [linkTable reloadData];
-			
-			//save
-			[self saveLinks:self];
-        }
+    NSLog(@"creating link. edge selected? %@", visualizer.isEdgeSelected() ? @"YES" : @"NO" );
+	
+	if(visualizer.isEdgeSelected() && !visualizer.isSelectedEdgeLink() ){
+		
+		NSLog(@"Edge is selected!!");
+		
+		[self linkClip:visualizer.getEdgeSource() toClip:visualizer.getEdgeDestination() ];
+		visualizer.linkedEdge();
+		
+		[clipTable reloadData];
+		[linkTable reloadData];
+
+	}
+	else if(clipLoaded && clipTable.selectedRow >= 0){
+		
+		NSLog(@"clip is loaded and row is selected");
+		
+		[self linkClip:currentPlayingClip toClip:[self selectedClip] ];
+		
+		currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
+
+		[clipTable reloadData];
+		[linkTable reloadData];
+
+		cout << "after creating link the current clip has " << currentClipLinks.size() << endl;		
+	}
+	
+}
+
+
+//CONFUSING!
+- (IBAction) deleteLink:(id)sender
+{
+    if(linkTable.selectedRow >= 0){
+        cout << "removing link " << linkTable.selectedRow << " from " << currentPlayingClip.getLinkName() << endl;
+        parser.removeLink(currentPlayingClip.getLinkName(), linkTable.selectedRow);
+        currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
+        
+        [linkTable reloadData];
+		[self saveLinks:self];
     }
+}
+
+- (IBAction) removeLink:(id)sender
+{
+	if(	visualizer.isSelectedEdgeLink() ){
+		cout << "removing link!" << endl;
+		parser.removeLink(visualizer.getEdgeSource().getLinkName(),
+						  visualizer.getEdgeDestination().getLinkName() );
+		
+		visualizer.unlinkEdge();
+		[self saveLinks:self];
+	}
+}
+
+- (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target
+{
+	if(source.getLinkName() != target.getLinkName()){
+		
+		NSLog(@"creating link for %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+		
+		CloudsLink l;
+		l.sourceName = source.getLinkName();
+		l.targetName = target.getLinkName();
+		l.startFrame = -1;
+		l.endFrame = -1;
+		
+		//TODO figure out frame numbers
+		parser.addLink(l);
+		
+		//save
+		[self saveLinks:self];
+	}
+	else{
+		NSLog(@"failed clip for %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+	}
 }
 
 - (IBAction) saveLinks:(id)sender
@@ -297,16 +356,6 @@
 	[linkTable reloadData];
 }
 
-- (IBAction) deleteLink:(id)sender
-{
-    if(linkTable.selectedRow >= 0){
-        cout << "removing link " << linkTable.selectedRow << " from " << currentPlayingClip.getLinkName() << endl;
-        parser.removeLink(currentPlayingClip.getLinkName(), linkTable.selectedRow);
-        currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
-        
-        [linkTable reloadData];
-    }
-}
 
 - (ClipMarker&) selectedClip
 {

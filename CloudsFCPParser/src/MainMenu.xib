@@ -243,6 +243,15 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
+								<object class="NSMenuItem" id="331051616">
+									<reference key="NSMenu" ref="835318025"/>
+									<string key="NSTitle">Remove Link</string>
+									<string key="NSKeyEquiv">L</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
 								<object class="NSMenuItem" id="612988118">
 									<reference key="NSMenu" ref="835318025"/>
 									<string key="NSTitle">Save</string>
@@ -1788,6 +1797,14 @@
 					<int key="connectionID">811</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">removeLink:</string>
+						<reference key="source" ref="765817303"/>
+						<reference key="destination" ref="331051616"/>
+					</object>
+					<int key="connectionID">814</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">mainview</string>
 						<reference key="source" ref="231954789"/>
@@ -1957,6 +1974,7 @@
 							<reference ref="150891889"/>
 							<reference ref="539426578"/>
 							<reference ref="612988118"/>
+							<reference ref="331051616"/>
 						</array>
 						<reference key="parent" ref="713487014"/>
 					</object>
@@ -2494,6 +2512,11 @@
 						<reference key="object" ref="217059099"/>
 						<reference key="parent" ref="404394265"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">812</int>
+						<reference key="object" ref="331051616"/>
+						<reference key="parent" ref="835318025"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2602,13 +2625,14 @@
 				<string key="799.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="808.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="809.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="812.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">811</int>
+			<int key="maxID">814</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2690,6 +2714,7 @@
 						<string key="prevOnPlaylist:">id</string>
 						<string key="refreshXML:">id</string>
 						<string key="regenerateGraph:">id</string>
+						<string key="removeLink:">id</string>
 						<string key="saveLinks:">id</string>
 						<string key="setXMLFolder:">id</string>
 						<string key="unloadVideo:">id</string>
@@ -2729,6 +2754,10 @@
 						</object>
 						<object class="IBActionInfo" key="regenerateGraph:">
 							<string key="name">regenerateGraph:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeLink:">
+							<string key="name">removeLink:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="saveLinks:">

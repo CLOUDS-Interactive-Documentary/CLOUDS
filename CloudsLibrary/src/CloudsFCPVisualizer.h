@@ -58,6 +58,7 @@ class CloudsFCPVisualizer {
 	map< pair<msa::physics::Particle2D*,msa::physics::Particle2D*>, msa::physics::Spring2D*> springs;
 	map< msa::physics::Spring2D*, vector<string> > keywordsInSpring;
 	set< msa::physics::Spring2D*> linkSprings;
+	map< msa::physics::Particle2D*, int> particleBirthOrder;
 	
 	vector< ClipMarker > currentOptionClips;
 	vector< msa::physics::Particle2D* > currentOptionParticles;
@@ -82,9 +83,14 @@ class CloudsFCPVisualizer {
 
 	string selectionTitle;
 	vector<ClipMarker> selectedClips;
-	vector<CloudsLink> selectedLinks;
 	
-//	ofEvent< vector<ClipMarker>& > clipEvent;
+	bool isEdgeSelected();
+	bool isSelectedEdgeLink();
+	ClipMarker getEdgeSource();
+	ClipMarker getEdgeDestination();
+	void linkedEdge();
+	void unlinkEdge();
+	
 	bool getPathChanged();
 	
   protected:

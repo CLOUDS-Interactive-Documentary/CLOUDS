@@ -31,6 +31,7 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	peopleVisited.clear();
 	visualizer->clear();
 	
+	hasclip = false;
 	freeTopic = true;
 	
 	loadClip( seed );	
@@ -80,28 +81,27 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
-	ofRandomize(topics);
+	if(topics.size() == 0){
+		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
+		return;
+	}
 	
+	ofRandomize(topics);
 	bool topicSwitched = false;
 	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << " with " << topics.size() << " options " << endl;;
-	if(topics.size() > 0){
-		for(int i = 0; i < topics.size(); i++){
-			if( !ofContains(topicHistory, topics[i]) ){
-				currentTopic = topics[ i ];
-				topicSwitched = true;
-				break;
-			}
-			else{
-				cout << "	TOPIC SWITCH: ALREADY VISITED " << topics[i] << endl;
-			}
+	
+	for(int i = 0; i < topics.size(); i++){
+		if( !ofContains(topicHistory, topics[i]) ){
+			currentTopic = topics[ i ];
+			topicSwitched = true;
+			break;
 		}
-		
-		topicHistory.push_back(currentTopic);
-	}
-	else{
-		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
+		else{
+			cout << "	TOPIC SWITCH: ALREADY VISITED " << topics[i] << endl;
+		}
 	}
 	
+	topicHistory.push_back(currentTopic);
 	if(topicSwitched){
 		timesOnTopic = 0;
 		freeTopic = false;
@@ -124,6 +124,10 @@ bool CloudsStoryEngine::selectNewClip(){
 	//call seedWithClip() before calling selectNewClip()
 	if(!hasclip){
 		ofLogError("Cannot select new clip without a seed");
+		return false;
+	}
+	
+	if(atDeadEnd()){
 		return false;
 	}
 	
@@ -196,11 +200,14 @@ bool CloudsStoryEngine::populateNextClips(){
 		// if we are at a dead end because of the lack of clips,
 		// recurse the call with an open topic
 		// May still be dead from exhausted clips or topics on the same node
+		
+		/*
 		if(!freeTopic){
 			freeTopic = true;
 			return populateNextClips();
 		}
-		
+		*/
+		visualizer->addLinksToPhysics(currentClip, validNextClips);
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());
 		return false;
 	}
@@ -219,7 +226,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	}
 
 	visualizer->addLinksToPhysics(currentClip, validNextClips);
-	
+
 	return true;
 }
 
@@ -251,7 +258,7 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 	}
 		
 	int occurrences = occurrencesOfPerson(clip.person, 20);
-	if(occurrences > 5){
+	if(occurrences > 4){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": person appeared more than 4 times in the last 20 clips" << endl;
 		return 0;
 	}
@@ -268,11 +275,15 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 	}
 
 	//penalize for the person occurring
-	score -= occurrences*2;
+	score -= occurrences*4;
 	
 	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
 	
 	return MAX(score, 0);
+}
+
+bool CloudsStoryEngine::atDeadEnd(){
+	return validNextClips.size() == 0;
 }
 
 bool CloudsStoryEngine::historyContainsClip(ClipMarker& m){

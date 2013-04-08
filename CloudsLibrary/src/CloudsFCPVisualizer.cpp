@@ -57,7 +57,8 @@ void CloudsFCPVisualizer::clear(){
 	springs.clear();
 	linkSprings.clear();
 	keywordsInSpring.clear();
-
+	particleBirthOrder.clear();
+	
 	currentTopic = "";
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
@@ -167,6 +168,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		particleName[p] = mainLinkName;
 		particlesByTag[mainLinkName] = p;
 		particleToClip[p] = center;
+		particleBirthOrder[p] = physics.numberOfParticles();
 	}
 	
 	centerNode = p;
@@ -189,6 +191,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		else{
 			//make a particle for the seed
 			a = physics.makeParticle(p->getPosition() + ofVec2f(ofRandom(-5,5), ofRandom(-5,5)));
+			particleBirthOrder[a] = physics.numberOfParticles();
 			int mass = relatedClip.keywords.size();
 			a->setMass(mass);
 			maxMass = MAX(maxMass, mass);
@@ -239,6 +242,44 @@ bool CloudsFCPVisualizer::getPathChanged(){
 	bool t = pathChanged;
 	pathChanged = false;
 	return t;
+}
+
+bool CloudsFCPVisualizer::isEdgeSelected(){
+	return selectedSpring != NULL;
+}
+
+bool CloudsFCPVisualizer::isSelectedEdgeLink(){
+	return isEdgeSelected() && linkSprings.find(selectedSpring) != linkSprings.end();
+}
+
+ClipMarker CloudsFCPVisualizer::getEdgeSource(){
+	if( isEdgeSelected() ){
+		cout << "birth order " << particleBirthOrder[ selectedSpring->getOneEnd() ] << " " << particleBirthOrder[ selectedSpring->getTheOtherEnd() ] << endl;
+		return (particleBirthOrder[ selectedSpring->getOneEnd() ] < particleBirthOrder[ selectedSpring->getTheOtherEnd() ] ?
+				particleToClip[ selectedSpring->getOneEnd() ] : particleToClip[ selectedSpring->getTheOtherEnd() ]);
+	}
+	return ClipMarker();
+}
+
+ClipMarker CloudsFCPVisualizer::getEdgeDestination(){
+	if( isEdgeSelected() ){
+		cout << "birth order " << particleBirthOrder[ selectedSpring->getOneEnd() ] << " " << particleBirthOrder[ selectedSpring->getTheOtherEnd() ] << endl;		
+		return (particleBirthOrder[ selectedSpring->getOneEnd() ] > particleBirthOrder[ selectedSpring->getTheOtherEnd() ] ?
+				particleToClip[ selectedSpring->getOneEnd() ] : particleToClip[ selectedSpring->getTheOtherEnd() ]);
+	}
+	return ClipMarker();
+}
+
+void CloudsFCPVisualizer::linkedEdge(){
+	if(isEdgeSelected()){
+		linkSprings.insert(selectedSpring);
+	}
+}
+
+void CloudsFCPVisualizer::unlinkEdge(){
+	if(isSelectedEdgeLink()){
+		linkSprings.erase( linkSprings.find(selectedSpring) );
+	}
 }
 
 bool CloudsFCPVisualizer::hasParticle(string tagName){
@@ -437,13 +478,21 @@ void CloudsFCPVisualizer::mousePressed(ofMouseEventArgs& args){
 
 void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
 	hoverSpring = NULL;
-	selectedLinks.clear();
-	selectedClips.clear();
-	selectionTitle = "";
 	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 	if(hoverParticle != NULL){
 		selectionTitle = "Clips with " + particleName[ hoverParticle ];
-		selectedClips = database->getClipsWithKeyword( particleName[ hoverParticle ] );
+	}
+	else{
+		hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+	}
+	
+	/*
+	selectionTitle = "";
+	selectedClips.clear();
+
+	if(hoverParticle != NULL){
+		selectionTitle = "Clips with " + particleName[ hoverParticle ];
+//		selectedClips = database->getClipsWithKeyword( particleName[ hoverParticle ] );
 	}
 	else{
 		hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
@@ -451,19 +500,20 @@ void CloudsFCPVisualizer::mouseMoved(ofMouseEventArgs& args){
 			string keyA = particleName[ hoverSpring->getOneEnd() ];
 			string keyB = particleName[ hoverSpring->getTheOtherEnd() ];
 			selectionTitle = "Clips sharing " + keyA + " and " + keyB;
-			selectedClips = database->getSharedClips(keyA,keyB);
+//			selectedClips = database->getSharedClips(keyA,keyB);
 		}
 		else if(selectedParticle != NULL){
 			selectionTitle = "Clips with " + particleName[ selectedParticle ];
-			selectedClips = database->getClipsWithKeyword( particleName[ selectedParticle ] );		
+//			selectedClips = database->getClipsWithKeyword( particleName[ selectedParticle ] );
 		}
 		else if(selectedSpring != NULL){
 			string keyA = particleName[ selectedSpring->getOneEnd() ];
 			string keyB = particleName[ selectedSpring->getTheOtherEnd() ];
 			selectionTitle = "Clips sharing " + keyA + " and " + keyB;
-			selectedClips = database->getSharedClips(keyA,keyB);	
+//			selectedClips = database->getSharedClips(keyA,keyB);
 		}
 	}
+	*/
 }
 
 void CloudsFCPVisualizer::mouseDragged(ofMouseEventArgs& args){

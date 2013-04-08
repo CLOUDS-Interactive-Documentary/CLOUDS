@@ -102,6 +102,16 @@ void CloudsFCPParser::removeLink(string linkName, int linkIndex){
     }
 }
 
+void CloudsFCPParser::removeLink(string linkName, string targetName){
+	int linkIndex;
+	if(clipLinksTo(linkName, targetName, linkIndex)){
+		sourceLinks[linkName].erase(sourceLinks[linkName].begin() + linkIndex);
+    }
+    else{
+        cout << "failed to remove link " << linkIndex << " from " << linkName << endl;
+    }
+}
+
 bool CloudsFCPParser::clipHasLink(string clipName){
 	return sourceLinks.find(clipName) != sourceLinks.end();
 }
@@ -110,11 +120,17 @@ bool CloudsFCPParser::clipsShareLink(string clipNameA, string clipNameB){
 	return clipLinksTo(clipNameA, clipNameB) || clipLinksTo(clipNameB, clipNameA);
 }
 
-bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB){
-	if(clipHasLink(clipNameA)){
+bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB) {
+	int deadIndex;
+	return clipLinksTo(clipNameA, clipNameB, deadIndex);
+}
+	   
+bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB, int& index){
+	if(clipHasLink(clipNameA)) {
 		vector<CloudsLink>& links = sourceLinks[ clipNameA ];
 		for(int i = 0; i < links.size(); i++){
 			if(links[ i ].targetName == clipNameB){
+				index = i;
 				return true;
 			}
 		}
@@ -284,7 +300,9 @@ vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
 }
 
 void CloudsFCPParser::addLink(CloudsLink& link){
-    sourceLinks[link.sourceName].push_back( link );
+	if( !clipLinksTo(link.sourceName, link.targetName) ){
+		sourceLinks[link.sourceName].push_back( link );
+	}
 }
 
 vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(string filterWord){
