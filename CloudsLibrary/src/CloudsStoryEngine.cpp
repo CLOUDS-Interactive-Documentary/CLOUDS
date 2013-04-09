@@ -80,7 +80,13 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 }
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
+	
+	
+	//TO CHOOSE A NEW TOPIC WE WANT TO FIND THE MOST "SIMILAR" TOPIC
+	//this means the topic that shares the highest percent of clips with the current topic
+	//This will prioritize
 	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
+	
 	if(topics.size() == 0){
 		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
 		return;
@@ -201,12 +207,12 @@ bool CloudsStoryEngine::populateNextClips(){
 		// recurse the call with an open topic
 		// May still be dead from exhausted clips or topics on the same node
 		
-		/*
+
 		if(!freeTopic){
 			freeTopic = true;
 			return populateNextClips();
 		}
-		*/
+
 		
 		visualizer->addLinksToPhysics(currentClip, validNextClips);
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxUI.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -17,11 +18,15 @@ class testApp : public ofBaseApp{
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-	
+	void exit();
+		
 	int width, height;
 	ofVboMesh mesh;
 	vector<int> startIndeces;
 
+	
+	void regenerateParticles();
+	
 	ofEasyCam cam;
 	
 	ofImage speedTexture;
@@ -36,5 +41,15 @@ class testApp : public ofBaseApp{
 	
 	ofFbo fbo;
 	
+	float pathDeviation;
+	
+	float speed;
+	float scale;
+	float pointSize;
+	float deviation;
+	float colorflip;
+	
 	bool debug;
+	bool regenerate;
+	ofxUICanvas* gui;
 };

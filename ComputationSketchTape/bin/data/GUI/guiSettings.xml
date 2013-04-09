@@ -1,0 +1,30 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>0.511627913</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>scale</Name>
+    <Value>5.029069901</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>point size</Name>
+    <Value>15.790697098</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>path deviation</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>path color flip chance</Name>
+    <Value>0.691860437</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>path deviation chance</Name>
+    <Value>0.137209311</Value>
+</Widget>

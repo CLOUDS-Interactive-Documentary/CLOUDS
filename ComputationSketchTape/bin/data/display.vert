@@ -2,11 +2,11 @@
 uniform sampler2DRect image;
 uniform sampler2DRect shift;
 uniform float height;
-
+uniform float deviation;
 void main(void)
 {
-	//.. and passes the  texture coordinates along to the fragment shader
-	gl_TexCoord[0] = gl_MultiTexCoord0;
+	// passes the  texture coordinates along to the fragment shader
+	//gl_TexCoord[0] = gl_MultiTexCoord0;
 
 	float offset = texture2DRect(image, vec2(gl_Vertex.x, 1.0)).r;
 	
@@ -16,7 +16,7 @@ void main(void)
 					gl_Vertex.z,
 					gl_Vertex.w);
 
-	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * 750.;
+	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * deviation;
 	
 	gl_Position = gl_ModelViewProjectionMatrix * pos;
 	
