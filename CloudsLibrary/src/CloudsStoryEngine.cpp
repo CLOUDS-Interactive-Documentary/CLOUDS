@@ -207,6 +207,7 @@ bool CloudsStoryEngine::populateNextClips(){
 			return populateNextClips();
 		}
 		*/
+		
 		visualizer->addLinksToPhysics(currentClip, validNextClips);
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());
 		return false;
@@ -268,7 +269,7 @@ int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
 	int topicsInCommon = network->getSharedKeywords(currentClip, clip).size();
 	score += (topicsInCommon-1)*10;
 
-	bool link = network->clipLinksTo(currentClip.getLinkName(), clip.getLinkName()) ;
+	bool link = network->clipLinksTo( currentClip.getLinkName(), clip.getLinkName() );
 	//If this clip is a link weight it highly
 	if( link ){
 		score += 20;
