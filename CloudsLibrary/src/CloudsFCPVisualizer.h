@@ -64,6 +64,7 @@ class CloudsFCPVisualizer {
 	vector< msa::physics::Particle2D* > currentOptionParticles;
 	vector< ClipMarker > pathByClip;
 	vector< msa::physics::Particle2D* > pathByParticles;
+	vector< msa::physics::Spring2D* > pathBySprings;
 	
 	string currentTopic;
 	
@@ -94,10 +95,15 @@ class CloudsFCPVisualizer {
 	bool getPathChanged();
 	
   protected:
+	
+	ofColor visitedColor;
+	ofColor abandonedColor;
 	ofColor hoverColor;
 	ofColor selectedColor;
 	ofColor nodeColor;
+	ofColor currentNodeColor;
 	ofColor lineColor;
+	ofColor traceColor;
 	
 	ofVec2f graphPointForScreenPoint(ofVec2f screenPoint);
 	ofVec2f screenPointForGraphPoint(ofVec2f graphPoint);

@@ -40,17 +40,22 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	maxMass = 0;
 	cursorRadius = 10;
 	
-	hoverColor = ofColor::fromHex(0xe81c0c);
+	hoverColor = ofColor::fromHex(0xfc790c);
 	selectedColor = ofColor::fromHex(0xff530d);
-	nodeColor = ofColor::fromHex(0xe8c57a);
+	nodeColor = ofColor::fromHex(0xacd75c);
 	lineColor = ofColor::fromHex(0x1baa8f);
+	visitedColor = ofColor::fromHex(0x73bbc4);
 	
+	abandonedColor = ofColor::fromHex(0x434343);
+	traceColor = ofColor::fromHex(0xfc790c);
+
 	currentScale = 1.0;
 	currentTop = ofVec2f(0,0);
 	
 }
 
 void CloudsFCPVisualizer::clear(){
+	
 	particleName.clear();
 	particlesByTag.clear();
 	particleToClip.clear();
@@ -64,7 +69,8 @@ void CloudsFCPVisualizer::clear(){
 	currentOptionParticles.clear();
 	pathByClip.clear();
 	pathByParticles.clear();
-
+	pathBySprings.clear();
+	
 	pathChanged = true;
 	centerNode = NULL;
 	physics.clear();
@@ -171,9 +177,12 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		particleBirthOrder[p] = physics.numberOfParticles();
 	}
 	
+	msa::physics::Particle2D* oldCenter = centerNode;
+	
 	centerNode = p;
 	pathByClip.push_back(center);
 	pathByParticles.push_back(p);
+
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
 	
@@ -236,6 +245,11 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 			}
 		}
 	}
+	
+	if(oldCenter != NULL){
+		pathBySprings.push_back( springs[make_pair(oldCenter, centerNode)] );
+	}
+
 }
 
 bool CloudsFCPVisualizer::getPathChanged(){
@@ -363,20 +377,21 @@ void CloudsFCPVisualizer::drawPhysics(){
         msa::physics::Particle2D *a = physics.getParticle(i);
 		float radius = radiusForNode(a->getMass());
 		
+		
 		if(a == selectedParticle){
 			ofSetColor(selectedColor);
 		}
 		else if(a == hoverParticle){
 			ofSetColor(hoverColor);
 		}
+		else if(a == centerNode){
+			ofSetColor(hoverColor);
+		}
 		else if(ofContains(currentOptionParticles, a)){
 			ofSetColor(nodeColor);
 		}
 		else if(ofContains(pathByParticles, a)){
-			ofSetColor(ofColor::dodgerBlue);
-		}
-		else if(a == centerNode){
-			ofSetColor(hoverColor);
+			ofSetColor(visitedColor);
 		}
 		else {
 			ofSetColor(nodeColor.getBrightness()/2., 30);
@@ -396,6 +411,17 @@ void CloudsFCPVisualizer::drawPhysics(){
 		}
     }
 
+	ofPushStyle();
+	ofSetColor(traceColor);
+	for(int i = 0; i < pathBySprings.size(); i++){
+		ofVec2f pos1 = pathBySprings[i]->getOneEnd()->getPosition();
+		ofVec2f pos2 = pathBySprings[i]->getTheOtherEnd()->getPosition();
+		ofVec2f middle = pos1.getInterpolated(pos2, .5);
+		ofLine(pos1, pos2);
+
+	}
+			   ofPopStyle();
+			   
 	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
 	ofPopMatrix();
 	

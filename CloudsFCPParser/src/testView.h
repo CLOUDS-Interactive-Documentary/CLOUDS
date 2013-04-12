@@ -43,7 +43,7 @@
 	
     int clipEndFrame;
     ofxTimeline inpoint;
-
+	ofTrueTypeFont font;
 
 	ofxUICanvas* gui;
 	bool autoProgressStory;

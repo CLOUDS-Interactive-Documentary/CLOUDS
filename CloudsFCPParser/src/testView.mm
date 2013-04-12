@@ -58,6 +58,7 @@
 	
 	[self playCurrentPlaylist:self];
 	
+	font.loadFont("mplus-1c-regular.ttf", 15);
 	
 	cout << ofToString(parser.percentOfClipsLinked(), 4) << " percent clips linked!" << endl;
 	
@@ -181,6 +182,9 @@
 
 - (void)draw
 {
+	
+	ofBackgroundGradient(ofColor::black, ofColor::darkGray*.3,OF_GRADIENT_LINEAR);
+	
     visualizer.drawPhysics();
 
 	string debug = "";
@@ -189,8 +193,8 @@
 	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
 	
 	ofPushStyle();
-	ofSetColor(40);
-	ofDrawBitmapString(debug, 30,30);
+	ofSetColor(210);
+	font.drawString(debug, 30,30);
 	ofPopStyle();
 }
 
@@ -239,7 +243,6 @@
 	}
 	
 }
-
 
 //CONFUSING!
 - (IBAction) deleteLink:(id)sender

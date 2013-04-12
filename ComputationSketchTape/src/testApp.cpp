@@ -95,6 +95,7 @@ void testApp::regenerateParticles(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+	printf("%c",int(205.5 + ofRandomuf()*.5) );
 	
 	if(regenerate){
 		regenerateParticles();
