@@ -94,6 +94,11 @@ class CloudsFCPVisualizer {
 	
 	bool getPathChanged();
 	
+	float springStrength;
+	float restLength;
+	float repulsionForce;
+	float minRadius, maxRadius;
+
   protected:
 	
 	ofColor visitedColor;
@@ -116,8 +121,8 @@ class CloudsFCPVisualizer {
 	msa::physics::Spring2D* hoverSpring;
 	msa::physics::Spring2D* springNearPoint(ofVec2f point);
 	
+	
 	float cursorRadius;
-	float minRadius, maxRadius;
 	float minMass, maxMass;
 	float radiusForNode(float mass);
 

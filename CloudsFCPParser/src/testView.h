@@ -73,6 +73,8 @@
 - (IBAction) addClip:(id)sender;
 - (IBAction) removeLink:(id)sender;
 
+- (void) exit;
+
 - (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target;
 
 - (void)keyPressed:(int)key;

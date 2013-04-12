@@ -15,11 +15,11 @@
     ofEnableSmoothing();
 	ofSetFrameRate(30);
 	
-	autoProgressStory = false;
+	autoProgressStory = true;
 	
 	playingPlaylist = false;
 	currentPlaylistIndex = 0;
-	timeOfNextStory = 10;
+	timeOfNextStory = 7;
 	
     updatePhysics = true;
     
@@ -58,7 +58,7 @@
 	
 	[self playCurrentPlaylist:self];
 	
-	font.loadFont("mplus-1c-regular.ttf", 15);
+	font.loadFont("mplus-1c-regular.ttf", 12);
 	
 	cout << ofToString(parser.percentOfClipsLinked(), 4) << " percent clips linked!" << endl;
 	
@@ -74,12 +74,22 @@
 	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
     //important file!
-	//gui = new ofxUICanvas(0,0,200,ofGetHeight());
+
+	
+	gui = new ofxUICanvas(0,0,200,ofGetHeight());
+	gui->addSlider("spring strength", 0.001, .5, &visualizer.springStrength);
+	gui->addSlider("spring rest length", 1, 50, &visualizer.restLength);
+	gui->addSlider("node repulsion", 1, 50, &visualizer.repulsionForce);
+	gui->addSlider("node size min", .5, 100, &visualizer.minRadius);
+	gui->addSlider("node size max", .5, 100, &visualizer.maxRadius);
+	
+	gui->loadSettings("settings.xml");
+	gui->disable();
 }
 
 - (IBAction) regenerateGraph:(id)sender
 {
-
+	timeOfNextStory = ofGetElapsedTimef() + 5;
 	/*
 	string seedKeywordString = [seedKeyword.stringValue UTF8String];
 	if(seedKeywordString != ""){
@@ -162,7 +172,7 @@
 	//auto progressive story just gooes from one clip to the next
 	if(autoProgressStory){
 		if(ofGetElapsedTimef() > timeOfNextStory){
-			timeOfNextStory = ofGetElapsedTimef() + 1.5;
+			timeOfNextStory = ofGetElapsedTimef() + .5;
 			[self nextOnPlaylist:self];
 		}
 	}
@@ -183,7 +193,9 @@
 - (void)draw
 {
 	
-	ofBackgroundGradient(ofColor::black, ofColor::darkGray*.3,OF_GRADIENT_LINEAR);
+	ofBackgroundGradient(ofColor::black,
+						 ofColor::darkGray*.15,
+						 OF_GRADIENT_LINEAR);
 	
     visualizer.drawPhysics();
 
@@ -198,9 +210,10 @@
 	ofPopStyle();
 }
 
-- (void)exit
+- (void) exit
 {
-	
+	NSLog(@"exit!!");
+	gui->saveSettings("settings.xml");
 }
 
 - (void)keyPressed:(int)key
@@ -211,6 +224,14 @@
         [self playDoubleClickedRow: clipTable];
     }
 	
+	if(key == 'h'){
+		cout << "toggling vis" << endl;
+		
+		gui->disable();
+	}
+	if(key == 's'){
+		gui->enable();
+	}
 }
 
 - (IBAction) createLink:(id)sender
@@ -313,7 +334,7 @@
 		return;
 	}
 	
-	if(currentPlayingClip.getLinkName() == clip.getLinkName()){
+	if(currentPlayingClip.getLinkName() == clip.getLinkName() && !autoProgressStory){
 		if(preview.isPlaying()){
 			preview.stop();
 		}
@@ -327,7 +348,7 @@
 	
 	ofSleepMillis(250);
 	string clipFilePath = clip.filePath;
-	if(clip.filePath == ""){
+	if(clip.filePath == "" || autoProgressStory){
 		return;
 	}
 	
@@ -398,7 +419,9 @@
 
 - (void)windowResized:(NSSize)size
 {
-	
+	visualizer.physics.setWorldMax(ofVec2f(size.width, size.height));
+	visualizer.width  = size.width;
+	visualizer.height = size.height;
 }
 
 - (IBAction) setXMLFolder:(id)sender

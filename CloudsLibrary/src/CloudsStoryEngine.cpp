@@ -90,6 +90,7 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	//this means the topic that shares the highest percent of clips with the current topic
 	//This will prioritize
 	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
+	//vector<string> topics = upcomingClip.keywords;
 	bool topicSwitched = false;
 
 	if(topics.size() == 0){
@@ -191,7 +192,14 @@ bool CloudsStoryEngine::selectNewClip(){
 bool CloudsStoryEngine::populateNextClips(){
 	
 	//get all the adjascent clips, assign weights to them and select
-	vector<ClipMarker> nextClips = network->getClipsWithKeyword(currentClip.keywords);
+	vector<ClipMarker> nextClips;
+	if(freeTopic){
+		nextClips = network->getClipsWithKeyword(currentClip.keywords);
+	}
+	else{
+		nextClips = network->getClipsWithKeyword(currentTopic);	
+	}
+	
 	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
 	
 	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
