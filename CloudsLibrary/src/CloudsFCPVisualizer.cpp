@@ -40,15 +40,24 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	maxMass = 0;
 	cursorRadius = 10;
 	
+	/*
+	 BRIGHT
 	hoverColor = ofColor::fromHex(0xfc790c);
 	selectedColor = ofColor::fromHex(0xff530d);
 	nodeColor = ofColor::fromHex(0xacd75c);
 	lineColor = ofColor::fromHex(0x1baa8f);
 	visitedColor = ofColor::fromHex(0x73bbc4);
-	
 	abandonedColor = ofColor::fromHex(0x434343);
-	traceColor = ofColor::fromHex(0xfc790c);
-
+	traceColor = ofColor::fromHex(0xe57417);
+	 */
+	hoverColor = ofColor::fromHex(0xc965e2);
+	selectedColor = ofColor::fromHex(0xe79301);
+	nodeColor = ofColor::fromHex(0x4e7ac7);
+	lineColor = ofColor::fromHex(0xadd5f7);
+	visitedColor = ofColor::fromHex(0x9947ad);
+	abandonedColor = ofColor::fromHex(0x16193b);
+	traceColor = ofColor::fromHex(0xd0e9ff);
+	
 	currentScale = 1.0;
 	currentTop = ofVec2f(0,0);
 	
@@ -321,7 +330,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 	}
 	
     if(!font.isLoaded()){
-        font.loadFont("verdana.ttf", 8);
+        font.loadFont("mplus-1c-regular.ttf", 12);
     }
 
 	ofPushMatrix();
@@ -362,8 +371,8 @@ void CloudsFCPVisualizer::drawPhysics(){
 		else{
 			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
 			ofSetLineWidth(.5 + numClips/2.0);
-			
 		}
+		
         ofVec2f pos1 = s->getOneEnd()->getPosition();
 		ofVec2f pos2 = s->getTheOtherEnd()->getPosition();
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
@@ -371,6 +380,8 @@ void CloudsFCPVisualizer::drawPhysics(){
 		
 		ofPopStyle();
     }
+	
+	ofSetLineWidth(2);
 	
     for(int i = 0; i < physics.numberOfParticles(); i++){
         
@@ -382,7 +393,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 			ofSetColor(selectedColor);
 		}
 		else if(a == hoverParticle){
-			ofSetColor(hoverColor);
+			ofSetColor(selectedColor);
 		}
 		else if(a == centerNode){
 			ofSetColor(hoverColor);
@@ -396,6 +407,8 @@ void CloudsFCPVisualizer::drawPhysics(){
 		else {
 			ofSetColor(nodeColor.getBrightness()/2., 30);
 		}
+		
+		ofSetColor(ofGetStyle().color, 180);
 		
         ofFill();
         ofCircle(a->getPosition(), radius);
@@ -418,9 +431,8 @@ void CloudsFCPVisualizer::drawPhysics(){
 		ofVec2f pos2 = pathBySprings[i]->getTheOtherEnd()->getPosition();
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
-
 	}
-			   ofPopStyle();
+	ofPopStyle();
 			   
 	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
 	ofPopMatrix();
@@ -431,7 +443,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 		if( a == selectedParticle || a == hoverParticle){
 			//ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
 			//ofSetColor(ofColor(20, a->getMass()*5 + 150) );
-			ofSetColor(75);
+			ofSetColor(190);
 			ofVec2f textPosition = screenPointForGraphPoint(a->getPosition());
 			font.drawString(particleName[a], textPosition.x,textPosition.y);
 		}
@@ -445,7 +457,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 			ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
 			string keywordString = ofJoinString(keywordsInSpring[s], "\n");
 			
-			ofSetColor(30);
+			ofSetColor(220);
 			font.drawString(keywordString, middle.x, middle.y);
 		}
 	}

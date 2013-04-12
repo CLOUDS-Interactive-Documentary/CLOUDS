@@ -305,6 +305,16 @@ void CloudsFCPParser::addLink(CloudsLink& link){
 	}
 }
 
+int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
+	int keywordsFound = 0;
+    for(int c = 0; c < markers.size(); c++){
+		if( ofContains(markers[c].keywords, filterWord) ){
+			keywordsFound++;
+		}
+	}
+	return keywordsFound;
+}
+
 vector<ClipMarker> CloudsFCPParser::getClipsWithKeyword(string filterWord){
 	vector<string> filter;
 	filter.push_back(filterWord);

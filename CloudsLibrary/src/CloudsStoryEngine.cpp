@@ -32,7 +32,11 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	visualizer->clear();
 	
 	hasclip = false;
-	freeTopic = true;
+	freeTopic = false;
+	
+	//freeTopic = true;
+	currentTopic = seed.keywords[ ofRandom(seed.keywords.size()) ];
+	//select a random topic from the clip
 	
 	loadClip( seed );	
 }
@@ -59,16 +63,17 @@ int CloudsStoryEngine::getTimesOnTopic(){
 
 void CloudsStoryEngine::loadClip(ClipMarker& clip){
 
-	if(hasclip && (freeTopic || currentTopic == "") ){
-		chooseNewTopic(clip);
-	}
-	
 	hasclip = true;
 	
 	timesOnTopic++;
 	if(timesOnTopic >= maxTimesOnTopic){
 		freeTopic = true;
 	}
+
+	if(hasclip && (freeTopic || currentTopic == "") ){
+		chooseNewTopic(clip);
+	}
+	
 	
 	currentClip = clip;
 	clipHistory.push_back( clip );
@@ -81,21 +86,40 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 
 void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	
-	
 	//TO CHOOSE A NEW TOPIC WE WANT TO FIND THE MOST "SIMILAR" TOPIC
 	//this means the topic that shares the highest percent of clips with the current topic
 	//This will prioritize
 	vector<string> topics = network->getSharedKeywords(currentClip, upcomingClip);
-	
+	bool topicSwitched = false;
+
 	if(topics.size() == 0){
 		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
 		return;
 	}
+
+	cout << "Switching topic from " << currentTopic << " with " << topics.size() << " shared topics" << endl;
+	string winningTopic = "";
+	float highScore = 0;
+	for(int i = 0; i < topics.size(); i++){
+		if(ofContains(topicHistory, topics[i])){
+			continue;
+		}
+		int sharedClips = network->getNumberOfSharedClips(currentTopic,topics[i]);
+		int totalClips = network->getNumberOfClipsWithKeyword(topics[i]);
+		float score = 1.0 * sharedClips / totalClips;
+		cout << "TOPIC " << topics[i] << " SCORE " << score << " : " << sharedClips << "/" << totalClips << endl;
+		if(highScore <= score){
+			currentTopic = topics[i];
+			highScore = score;
+			topicSwitched = true;
+		}
+	}
 	
-	ofRandomize(topics);
+	/*
+	//old way
+	//ofRandomize(topics);
 	bool topicSwitched = false;
 	cout << "TOPIC SWITCH: SWITCHING FROM " << currentTopic << " with " << topics.size() << " options " << endl;;
-	
 	for(int i = 0; i < topics.size(); i++){
 		if( !ofContains(topicHistory, topics[i]) ){
 			currentTopic = topics[ i ];
@@ -106,6 +130,7 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 			cout << "	TOPIC SWITCH: ALREADY VISITED " << topics[i] << endl;
 		}
 	}
+	*/
 	
 	topicHistory.push_back(currentTopic);
 	if(topicSwitched){
@@ -138,7 +163,6 @@ bool CloudsStoryEngine::selectNewClip(){
 	}
 	
 	//Do a weighted selection based on the random value
-	
 	int randomClip = ofRandom( validNextClips.size() );
 	cout << "SELECTED CLIP:" << randomClip << "/" << validNextClips.size() << " "
 		 << validNextClips[randomClip].getLinkName() << endl;
@@ -188,6 +212,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	//clipScores.clear();
 	vector< pair<int, ClipMarker> > clipScores;
 	validNextClips.clear();
+	vector<ClipMarker> allNextClips;
 	int topScore = 0;
 	for(int i = 0; i < nextClips.size(); i++){
 		ClipMarker& m = nextClips[ i ];
@@ -197,28 +222,29 @@ bool CloudsStoryEngine::populateNextClips(){
 			clipScores.push_back( make_pair(score, m) );
 			totalPoints += score;
 			if(score > topScore) topScore = score;
+			allNextClips.push_back(m);
 		}
 	}
 	
 	//if no clips were valid, return false
 	if(totalPoints == 0) {
 		cout << "DEAD END ENCOUNTRED, FREEING TOPIC" << endl;
+		
 		// if we are at a dead end because of the lack of clips,
 		// recurse the call with an open topic
 		// May still be dead from exhausted clips or topics on the same node
 		
-
 		if(!freeTopic){
 			freeTopic = true;
 			return populateNextClips();
 		}
 
-		
 		visualizer->addLinksToPhysics(currentClip, validNextClips);
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());
 		return false;
 	}
 	
+//	nextClipTopScore = topScore;
 	for(int i = 0; i < clipScores.size(); i++){
 		if(clipScores[i].first == topScore){
 			validNextClips.push_back( clipScores[i].second);
@@ -232,7 +258,7 @@ bool CloudsStoryEngine::populateNextClips(){
 		}
 	}
 
-	visualizer->addLinksToPhysics(currentClip, validNextClips);
+	visualizer->addLinksToPhysics(currentClip, allNextClips);
 
 	return true;
 }

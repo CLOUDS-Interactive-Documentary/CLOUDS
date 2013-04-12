@@ -41,6 +41,7 @@ class CloudsStoryEngine {
 	
 	float totalPoints;
 //	vector< pair<int, ClipMarker> > clipScores;
+	int nextClipTopScore;
 	vector<ClipMarker> validNextClips;
 	bool populateNextClips();
 	
