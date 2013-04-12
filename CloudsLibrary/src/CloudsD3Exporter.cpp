@@ -41,7 +41,21 @@ void CloudsD3Exporter::saveChordMatrix(CloudsFCPParser& database){
 	
 	ofBufferToFile("D3matrix.json", buf);
 	ofBufferToFile("D3keywords.csv", csvBuffer);
-	
-	
+}
+
+void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
+	ofBuffer csvBuffer;
+	csvBuffer.append("source,target\n");
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		ClipMarker& mark = parser.getAllClips()[i];
+		string name = mark.getLinkName();
+		vector<ClipMarker> links = parser.getClipsWithKeyword(mark.keywords);
+		for(int j = 0; j < links.size(); j++){
+			if(name != links[j].getLinkName()){
+				csvBuffer.append(name + "," + links[j].getLinkName() + "\n");
+			}
+		}
+	}
+	ofBufferToFile("gephi_edges.csv", csvBuffer);
 	
 }

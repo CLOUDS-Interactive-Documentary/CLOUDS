@@ -9,5 +9,5 @@ class CloudsD3Exporter {
 
 	// Create a matrix for D3 chord visualization
 	void saveChordMatrix(CloudsFCPParser& parse);
-	
+	void saveGephiCSV(CloudsFCPParser& parser);
 };
