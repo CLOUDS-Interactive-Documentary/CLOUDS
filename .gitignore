@@ -7,6 +7,7 @@ build/
 *.pbxuser
 *.mode*
 *.xcworkspace
+*.mov
 xcuserdata/
 xcshareddata/
 
