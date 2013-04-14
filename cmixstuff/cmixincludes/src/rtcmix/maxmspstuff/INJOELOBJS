@@ -1,2 +1,0 @@
-INJOELOBJS = ../../insts/joel/jfuncs/jfuncs.o \
-../../insts/joel/tuning/tuning.o

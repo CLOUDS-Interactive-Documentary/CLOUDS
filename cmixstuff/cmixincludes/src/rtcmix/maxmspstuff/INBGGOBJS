@@ -1,6 +1,0 @@
-INBGGOBJS = ../../insts/bgg/GVERB/GVERB.o \
-../../insts/bgg/GVERB/gverbdsp.o \
-../../insts/bgg/HALFWAVE/HALFWAVE.o \
-../../insts/bgg/PFSCHED/PFSCHED.o \
-../../insts/bgg/SYNC/SYNC.o \
-../../insts/bgg/VWAVE/VWAVE.o
