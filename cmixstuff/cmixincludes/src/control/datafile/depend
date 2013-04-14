@@ -1,0 +1,58 @@
+DataFileReaderPField.o: DataFileReaderPField.cpp DataFileReaderPField.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/PField.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/RefCounted.h \
+  /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h \
+  /usr/include/sys/cdefs.h /usr/include/machine/_types.h \
+  /usr/include/i386/_types.h ../../rtcmix/DataFile.h \
+  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/Ougens.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oallpass.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oallpassi.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oallpass.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Obalance.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Orms.h \
+  /usr/include/math.h /usr/include/architecture/i386/math.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oonepole.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Obucket.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ocomb.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ocombi.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ocomb.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Odcblock.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Odelay.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Odelayi.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Odelay.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Odistort.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oequalizer.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Offt.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oonepole.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ooscil.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ooscili.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Orand.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Oreson.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Orms.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ortgetin.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/../genlib/Ostrum.h
+glue.o: glue.cpp /usr/include/stdlib.h /usr/include/Availability.h \
+  /usr/include/AvailabilityInternal.h /usr/include/_types.h \
+  /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/_types.h /usr/include/i386/_types.h \
+  /usr/include/sys/wait.h /usr/include/sys/signal.h \
+  /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h \
+  /usr/include/i386/signal.h /usr/include/i386/_structs.h \
+  /usr/include/sys/_structs.h /usr/include/machine/_structs.h \
+  /usr/include/mach/i386/_structs.h /usr/include/sys/resource.h \
+  /usr/include/machine/endian.h /usr/include/i386/endian.h \
+  /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h \
+  /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
+  /usr/include/machine/types.h /usr/include/i386/types.h \
+  /usr/include/i386/_types.h /usr/include/stdio.h /usr/include/string.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/rtcmix_types.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/PField.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/RefCounted.h \
+  DataFileReaderPField.h ../../rtcmix/DataFile.h \
+  /usr/llvm-gcc-4.2/bin/../lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/ugens.h \
+  /usr/include/sys/types.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/rt_types.h \
+  /Users/lukedubois/Documents/CLIENTS/CLOUDS/RTcmix-all-020513/include/spray.h \
+  ../../rtcmix/utils.h ../../rtcmix/rtcmix_types.h /usr/include/assert.h

@@ -1,0 +1,63 @@
+This directory contains the stuff that glues RTcmix and Perl
+together.  The result is a Perl extension, called "RT", that
+can be used in a Perl script to call RTcmix functions.  But
+this works only if the Perl interpreter is embedded in RTcmix.
+(The code to do that is in Minc/parse_with_perl.c.)  This 
+functionality is available if you enable PERL_SUPPORT in
+makefile.conf.
+
+To use Perl with RTcmix, write a Perl script with the following
+statement at the top:
+
+   use RT;
+
+Then use any Perl statements and any of the function calls you
+would use in an RTcmix Minc script.  Run the script with PCMIX
+(instead of CMIX).
+
+---
+
+Some problems we used to have with the Perl extension have been
+solved by Doug Scott's revision using the Perl AUTOLOAD mechanism.
+
+Now, whenever a PCMIX script uses a function name unknown to Perl,
+Perl will pass the function and its arguments to RTcmix.  If it's
+unknown to RTcmix, then RTcmix will give its usual error message
+about it and continue processing the script.
+
+This means that any RTcmix functions loaded into a script (with
+the load command) will work, even if these belong to an instrument
+not part of the distribution source tree.
+
+---
+
+Some Minc functions have the same names as internal Perl functions.
+In general, Perl versions take precedence over RTcmix versions, with
+the following exceptions:
+
+   srand()
+   rand()
+   reset()
+
+If your script uses these names, you'll get the RTcmix versions.
+If you want to use the Perl versions, you must use the CORE::
+prefix, like this:
+
+   CORE::srand(4);
+   $foo = CORE::rand(99);
+
+If you want to use the other RTcmix functions whose names collide
+with Perl ones, then you must use the RT:: prefix., like this:
+
+   RT::print($foo);
+
+The only such functions that you could possibly care about are
+print, splice and open.  But who wouldn't want to use the Perl
+print instead of the RTcmix one?
+
+
+[-JGG 29-Jul-00, 4-Feb-01, 6-Aug-02]
+
+John Gibson
+Douglas Scott
+

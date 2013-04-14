@@ -1,0 +1,5 @@
+.cvsignore
+depend
+conf.tab.cpp
+conf.tab.hpp
+lex.conf.c
