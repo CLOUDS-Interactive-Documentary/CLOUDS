@@ -65,9 +65,7 @@ void testApp::update(){
     renderer.simplify = ofVec2f(xsimplify,ysimplify);
     renderer.bFlipTexture = flipTexture;
     
-    if(player.isFrameNew()){
-        renderer.update();
-    }
+    renderer.update();
 }
 
 //--------------------------------------------------------------

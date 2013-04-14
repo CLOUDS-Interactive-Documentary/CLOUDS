@@ -155,13 +155,8 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 void CloudsRGBDCombinedRender::setTexture(ofBaseHasTexture& _tex){
     tex = &_tex;
     
-    //colorScale.x = float(_tex.getTextureReference().getWidth()) / float(colorRect.width);
-    //colorScale.y = float(_tex.getTextureReference().getHeight()-depthRect.height) / float(colorRect.height);
-    colorScale.x = 1280.0 / 1920.0;
-    colorScale.y = 720.0 / 1080.0;
-    
-    //cout << "ColorScale: " << colorScale << endl;
-    //cout << "ColorRect: " << colorRect.width << "x"<< colorRect.height << endl;
+    colorScale.x = float(_tex.getTextureReference().getWidth()) / float(colorRect.width);
+    colorScale.y = float(_tex.getTextureReference().getHeight()-depthRect.height) / float(colorRect.height);
 }
 
 void CloudsRGBDCombinedRender::reloadShader(){
