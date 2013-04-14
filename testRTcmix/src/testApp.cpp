@@ -22,7 +22,7 @@ void testApp::setup(){
     // start CMIX engine
     rrr = new RTcmix(44100.0, 2);
     sleep(1); // might not be necessary
-    rrr->printOff(); // kill console printing of CMIX commands
+    //rrr->printOff(); // kill console printing of CMIX commands
     
     // load dynamic libraries
     rrr->cmd("load", 1, wtc);
