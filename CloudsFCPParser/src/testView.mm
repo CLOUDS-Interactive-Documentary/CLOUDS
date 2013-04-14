@@ -2,6 +2,7 @@
 #import "ViewerApp.h"
 
 @implementation testView
+@synthesize movieFileMissing;
 @synthesize clipEndFrame;
 @synthesize preview;
 @synthesize playingPlaylist;
@@ -15,7 +16,8 @@
     ofEnableSmoothing();
 	ofSetFrameRate(30);
 	
-	autoProgressStory = true;
+	movieFileMissing = false;
+	autoProgressStory = false;
 	
 	playingPlaylist = false;
 	currentPlaylistIndex = 0;
@@ -115,18 +117,28 @@
 	}
 }
 
+- (float) clipPercentComplete
+{
+
+	if(movieFileMissing){
+		return (ofGetElapsedTimef() - storyStartTime) / (timeOfNextStory - storyStartTime);
+	}
+	else if(preview.isLoaded() && preview.isPlaying()){
+		return (1.0*preview.getCurrentFrame() - currentPlayingClip.startFrame) / (currentPlayingClip.endFrame - currentPlayingClip.startFrame);
+	}
+	return 0;
+}
+
 - (IBAction) nextOnPlaylist:(id)sender
 {
 //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
 	
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
 		if(!storyEngine.selectNewClip()){
-			//storyEngine.seedWithClip( storyEngine.getCurrentClip() );
 			return;
 		}
 		[playlistTable reloadData];
 	}
-	
 	
 	if(playlistTable.selectedRow < storyEngine.getClipHistory().size()){
 	   [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
@@ -171,6 +183,11 @@
         visualizer.updatePhysics();
     }
 	
+	if(movieFileMissing){
+		if(ofGetElapsedTimef() > timeOfNextStory){
+			[self nextOnPlaylist:self];
+		}
+	}
 	//auto progressive story just gooes from one clip to the next
 	if(autoProgressStory){
 		if(ofGetElapsedTimef() > timeOfNextStory){
@@ -348,26 +365,34 @@
 	
 	preview.stop();
 	
-	ofSleepMillis(250);
 	string clipFilePath = clip.filePath;
 	if(clip.filePath == "" || autoProgressStory){
 		return;
 	}
 	
+	ofSleepMillis(250);
 	if( !ofFile(clipFilePath).exists() ){
 //		cout << "Switched clip from " << clipFilePath;
 		ofStringReplace(clipFilePath, "Nebula_backup", "Seance");		
 		ofStringReplace(clipFilePath, "Nebula", "Seance");
 //		cout << " to " << clipFilePath << endl;
 	}
+//	if( !ofFile(clipFilePath).exists()){
+//		movieFileMissing = true;
+//		ofLogError("Clip " + clipFilePath + " missing! Movies flagged as missing" );
+//	}
+//	else{
 		
-	if( !preview.loadMovie(clipFilePath) ){
-		ofLogError("Clip " + clipFilePath + " failed to load.");
-		return;
-	}
-		
-	preview.setFrame(clip.startFrame);
-	preview.play();
+		if( preview.loadMovie(clipFilePath) ){
+			movieFileMissing = false;
+		}
+		else{
+			ofLogError("Clip " + clipFilePath + " failed to load.");
+			return;
+		}
+//	}
+	
+	
 	
 	clipLoaded = YES;
 	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
@@ -378,10 +403,19 @@
 	currentPlayingClip = clip;
 	
 	clipEndFrame = clip.endFrame;
-	
-	[linkTable reloadData];
-}
 
+	if(movieFileMissing){
+		storyStartTime = ofGetElapsedTimef();
+		timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
+	}
+	else{
+		preview.setFrame(clip.startFrame);
+		preview.play();
+	}
+
+	[linkTable reloadData];
+
+}
 
 - (ClipMarker&) selectedClip
 {

@@ -48,9 +48,19 @@
 	
 	ofCircle(mouseX, mouseY, 30);
 	
+	if(mainview.movieFileMissing){
+		movieNotFound.draw(0,0,960,540);
+		
+		ofDrawBitmapString("MOVIE MISSING", 10, 10);
+	}
+	
     if(mainview.preview.isLoaded() && mainview.preview.isPlaying()){
         mainview.preview.draw(0, 0, 960, 540);
     }
+	
+	ofSetColor(0xc965e2, 50);
+	float percentDone = [mainview clipPercentComplete];
+	ofRect(0, ofGetHeight()-10, 540, 10);
 }
 
 - (void)exit

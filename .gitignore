@@ -7,6 +7,7 @@ build/
 *.pbxuser
 *.mode*
 *.xcworkspace
+*.mov
 xcuserdata/
 xcshareddata/
 
@@ -24,3 +25,7 @@ xcshareddata/
 *.dll
 *.bak
 *.pdb
+
+/testRTcmix/bin/data/shlib/*
+
+cmixstuff
