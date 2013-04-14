@@ -26,5 +26,6 @@ xcshareddata/
 *.bak
 *.pdb
 
-shlibs/
+/testRTcmix/bin/data/shlib/*
+
 cmixstuff
