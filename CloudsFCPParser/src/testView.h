@@ -49,9 +49,14 @@
 	ofxUICanvas* gui;
 	bool autoProgressStory;
 	float timeOfNextStory;
+	float storyStartTime;
+	
+	bool movieFileMissing;
+	
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
+@property(nonatomic,readonly) bool movieFileMissing;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
 @property(nonatomic,readonly) bool playingPlaylist;
 
@@ -74,7 +79,7 @@
 - (IBAction) addClip:(id)sender;
 - (IBAction) removeLink:(id)sender;
 
-- (void) exit;
+- (float) clipPercentComplete;
 
 - (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target;
 

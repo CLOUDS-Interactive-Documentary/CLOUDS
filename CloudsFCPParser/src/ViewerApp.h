@@ -15,6 +15,7 @@
 @interface ViewerApp : ofxCocoaGLView
 {
 	IBOutlet testView* mainview;
+	ofImage movieNotFound;
 }
 
 - (void)setup;
