@@ -25,3 +25,6 @@ xcshareddata/
 *.dll
 *.bak
 *.pdb
+
+shlibs/
+cmixstuff
