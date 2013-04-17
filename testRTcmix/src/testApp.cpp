@@ -48,7 +48,7 @@ void testApp::setup(){
 
     // setup video
     vidPlayer.loadMovie("foo.mov");
-    //vidPlayer.setVolume(0);
+
 	vidPlayer.play();
     viddur = vidPlayer.getDuration();
 
@@ -73,6 +73,7 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     vidPlayer.update();
+	vidPlayer.setVolume(sin(ofGetElapsedTimef()*5.0)*.5 + .5);
 }
 
 //--------------------------------------------------------------

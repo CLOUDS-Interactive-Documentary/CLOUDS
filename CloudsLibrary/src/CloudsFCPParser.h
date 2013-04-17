@@ -46,6 +46,7 @@ class CloudsFCPParser {
     CloudsFCPParser();
     void setup(string directory);
     void refreshXML();
+	
 #pragma mark Clips
 	ClipMarker getClipWithLinkName( string linkname );
 	
@@ -73,6 +74,11 @@ class CloudsFCPParser {
 	
 	float percentOfClipsLinked();
 	
+#pragma mark Liking
+	void suppressConnection(ClipMarker& a, ClipMarker& b);
+	void unsuppressConnection(ClipMarker& a, ClipMarker& b);
+	bool isConnectionSuppressed(ClipMarker& a, ClipMarker& b);
+	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
@@ -81,6 +87,7 @@ class CloudsFCPParser {
 	vector<ClipMarker> getClipsWithKeyword(string filterWord);
     vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
     set<string> getRelatedKeywords(string filterWord);
+	int getNumberOfSharedKeywords(ClipMarker& a, ClipMarker& b);
 	vector<string> getSharedKeywords(ClipMarker& a, ClipMarker& b);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
@@ -103,7 +110,8 @@ class CloudsFCPParser {
     vector<string> keywordVector;
 
     map<string, vector<CloudsLink> > sourceLinks;
-
+	map<string, vector<string> > sourceSupression;
+	
     bool keywordsDirty;
     void refreshKeywordVector();
     bool sortedByOccurrence;

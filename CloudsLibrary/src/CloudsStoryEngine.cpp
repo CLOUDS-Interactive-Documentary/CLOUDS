@@ -221,6 +221,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	vector< pair<int, ClipMarker> > clipScores;
 	validNextClips.clear();
 	vector<ClipMarker> allNextClips;
+	vector<float> allNextScores;
 	int topScore = 0;
 	for(int i = 0; i < nextClips.size(); i++){
 		ClipMarker& m = nextClips[ i ];
@@ -231,6 +232,7 @@ bool CloudsStoryEngine::populateNextClips(){
 			totalPoints += score;
 			if(score > topScore) topScore = score;
 			allNextClips.push_back(m);
+			allNextScores.push_back(score);
 		}
 	}
 	
@@ -247,7 +249,7 @@ bool CloudsStoryEngine::populateNextClips(){
 			return populateNextClips();
 		}
 
-		visualizer->addLinksToPhysics(currentClip, validNextClips);
+		visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());
 		return false;
 	}
@@ -266,7 +268,7 @@ bool CloudsStoryEngine::populateNextClips(){
 		}
 	}
 
-	visualizer->addLinksToPhysics(currentClip, allNextClips);
+	visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
 
 	return true;
 }

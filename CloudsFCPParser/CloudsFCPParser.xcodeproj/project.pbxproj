@@ -563,10 +563,10 @@
 				E7432D88170F42CE00C554EC /* CloudsStoryEngine.cpp */,
 				E7432D85170F42CE00C554EC /* CloudsFCPVisualizer.h */,
 				E7432D84170F42CE00C554EC /* CloudsFCPVisualizer.cpp */,
+				E7485408171A048E007B9793 /* CloudsPlaybackController.h */,
+				E7485407171A048E007B9793 /* CloudsPlaybackController.cpp */,
 				E7432D81170F42CE00C554EC /* CloudsD3Exporter.h */,
 				E7432D80170F42CE00C554EC /* CloudsD3Exporter.cpp */,
-				E7485407171A048E007B9793 /* CloudsPlaybackController.cpp */,
-				E7485408171A048E007B9793 /* CloudsPlaybackController.h */,
 			);
 			path = src;
 			sourceTree = "<group>";

@@ -52,7 +52,7 @@
 	float storyStartTime;
 	
 	bool movieFileMissing;
-	
+	bool onPlaylist;
 }
 
 @property(nonatomic,readonly) int clipEndFrame;

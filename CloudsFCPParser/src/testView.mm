@@ -18,6 +18,7 @@
 	
 	movieFileMissing = false;
 	autoProgressStory = false;
+	onPlaylist = false;
 	
 	playingPlaylist = false;
 	currentPlaylistIndex = 0;
@@ -50,6 +51,7 @@
 	storyEngine.visualizer = &visualizer;
 	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 4;
+	
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 	
@@ -88,7 +90,7 @@
 	gui->loadSettings("settings.xml");
 	gui->disable();
 	
-	exporter.saveGephiCSV(parser);
+	//exporter.saveGephiCSV(parser);
 }
 
 - (IBAction) regenerateGraph:(id)sender
@@ -132,7 +134,7 @@
 - (IBAction) nextOnPlaylist:(id)sender
 {
 //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
-	
+
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
 		if(!storyEngine.selectNewClip()){
 			return;
@@ -158,12 +160,14 @@
 
 - (IBAction) playCurrentPlaylist:(id)sender
 {
+
 	if(playlistTable.selectedRow < 0){
 		[playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:0]
 				   byExtendingSelection:NO];
 	}
 	
 	[self playDoubleClickedRow:playlistTable];
+	onPlaylist = true;
 }
 
 - (IBAction) addClip:(id)sender
@@ -200,7 +204,9 @@
 		preview.update();
 		if(preview.getCurrentFrame() >= clipEndFrame){
 			preview.stop();
-			[self nextOnPlaylist:self];
+			if(onPlaylist){
+				[self nextOnPlaylist:self];
+			}
 		}
 	}
 
@@ -245,7 +251,6 @@
 	
 	if(key == 'h'){
 		cout << "toggling vis" << endl;
-		
 		gui->disable();
 	}
 	if(key == 's'){
@@ -339,6 +344,9 @@
 
 - (IBAction) playDoubleClickedRow:(id)sender
 {
+	
+	onPlaylist = false; //will get set to true again if we are coming from a playlist
+	
 	ClipMarker clip;
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];

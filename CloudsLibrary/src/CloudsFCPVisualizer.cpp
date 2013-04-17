@@ -38,6 +38,8 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	maxRadius = 50;
 	minMass = 1;
 	maxMass = 0;
+	minScore = 0;
+	maxScore = 1;
 	cursorRadius = 10;
 
 	/*
@@ -83,6 +85,7 @@ void CloudsFCPVisualizer::clear(){
 	pathByClip.clear();
 	pathByParticles.clear();
 	pathBySprings.clear();
+	springScores.clear();
 	
 	pathChanged = true;
 	centerNode = NULL;
@@ -122,11 +125,12 @@ void CloudsFCPVisualizer::setupPhysics(){
 	physics.setWorldSize(ofVec2f(0,0), ofVec2f(width*10,height*10));
 	physics.setSectorCount(1);
     physics.setDrag(0.1f);
-//	physics.setDrag(.);
 }
 
 
-void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarker>& connections)
+void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
+											vector<ClipMarker>& connections,
+											vector<float>& scores)
 {
 
 	vector<msa::physics::Particle2D*> newParticles;
@@ -139,7 +143,13 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		cout << "re adding " << center.getLinkName() << endl;
 		return;
 	}
+	
 	pathChanged = true;
+	
+	for(int i = 0; i < scores.size(); i++){
+		maxScore = MAX(maxScore, scores[i]);
+		minScore = MIN(minScore, scores[i]);
+	}
 	
 	msa::physics::Particle2D* p;
 	if(hasParticle( mainLinkName )){
@@ -198,6 +208,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		   springs.find( make_pair(p, a) ) == springs.end() ){
 			//use clips in common to weight the lines
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, springStrength, restLength );
+			springScores[newSpring] = scores[i];
 			springs[ make_pair(p, a) ] = newSpring;
 			keywordsInSpring[ newSpring ] = database->getSharedKeywords(center, relatedClip);
 			if(isLink){
@@ -231,7 +242,6 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center, vector<ClipMarke
 		pathSpring->setRestLength(restLength*3);
 		pathBySprings.push_back( pathSpring );
 	}
-
 }
 
 bool CloudsFCPVisualizer::getPathChanged(){
@@ -338,12 +348,12 @@ void CloudsFCPVisualizer::drawPhysics(){
 
 		if(linkSprings.find(s) != linkSprings.end()){
 //			ofSetColor(selectedColor, ofMap(numClips*2, 1, 10, 50, 255));
-			ofSetColor(nodeColor, 128);
-			ofSetLineWidth(2.5);
+			ofSetColor(hoverColor, 128);
+			ofSetLineWidth(4);
 		}
 		else{
 			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
-			ofSetLineWidth(.5 + numClips/2.0);
+			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, .1, 5) );
 		}
 		
         ofVec2f pos1 = s->getOneEnd()->getPosition();
@@ -428,7 +438,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 			ofVec2f pos1 = s->getOneEnd()->getPosition();
 			ofVec2f pos2 = s->getTheOtherEnd()->getPosition();
 			ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
-			string keywordString = ofJoinString(keywordsInSpring[s], "\n");
+			string keywordString = "Score: " + ofToString(springScores[s],2) + "\n" + ofJoinString(keywordsInSpring[s], "\n");
 			
 			ofSetColor(220);
 			font.drawString(keywordString, middle.x, middle.y);

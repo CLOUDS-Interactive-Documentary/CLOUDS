@@ -24,8 +24,6 @@
 - (void)exit;
 
 - (IBAction) togglePlay:(id)sender;
-- (IBAction) next:(id)sender;
-- (IBAction) prev:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

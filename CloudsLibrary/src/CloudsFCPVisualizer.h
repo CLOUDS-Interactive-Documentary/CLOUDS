@@ -41,7 +41,7 @@ class CloudsFCPVisualizer {
 	
 	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void addLinksToPhysics(ClipMarker& center, vector<ClipMarker>& connections);
+	void addLinksToPhysics(ClipMarker& center, vector<ClipMarker>& connections, vector<float>& scores);
 	
     void mousePressed(ofMouseEventArgs& args);
     void mouseMoved(ofMouseEventArgs& args);
@@ -65,6 +65,7 @@ class CloudsFCPVisualizer {
 	vector< ClipMarker > pathByClip;
 	vector< msa::physics::Particle2D* > pathByParticles;
 	vector< msa::physics::Spring2D* > pathBySprings;
+	map< msa::physics::Spring2D*, float > springScores;
 	
 	string currentTopic;
 	
@@ -124,6 +125,7 @@ class CloudsFCPVisualizer {
 	
 	float cursorRadius;
 	float minMass, maxMass;
+	float minScore, maxScore;
 	float radiusForNode(float mass);
 
 	bool pathChanged;
