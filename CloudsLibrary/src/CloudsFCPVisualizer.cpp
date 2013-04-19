@@ -78,6 +78,7 @@ void CloudsFCPVisualizer::clear(){
 	linkSprings.clear();
 	keywordsInSpring.clear();
 	particleBirthOrder.clear();
+	dampendPositions.clear();
 	
 	currentTopic = "";
 	currentOptionClips.clear();
@@ -86,6 +87,8 @@ void CloudsFCPVisualizer::clear(){
 	pathByParticles.clear();
 	pathBySprings.clear();
 	springScores.clear();
+	
+	clipLog.clear();
 	
 	pathChanged = true;
 	centerNode = NULL;
@@ -136,6 +139,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = center.getLinkName();
+	clipLog.push_back(mainLinkName);
 	
 	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
@@ -157,6 +161,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
 	}
 	else{
 		p = physics.makeParticle(ofVec2f(width/2, height/2));
+		dampendPositions[p] = p->getPosition();
 		p->makeFixed();
 		p->setMass(center.keywords.size());
 		
@@ -189,6 +194,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
 		else{
 			//make a particle for the seed
 			a = physics.makeParticle(p->getPosition() + ofVec2f(ofRandom(-2,2), ofRandom(-2,2)));
+			dampendPositions[a] = p->getPosition();
 			particleBirthOrder[a] = physics.numberOfParticles();
 			int mass = relatedClip.keywords.size();
 			a->setMass(mass);
@@ -299,6 +305,11 @@ void CloudsFCPVisualizer::updatePhysics(){
 		return;
 	}
 	
+	for(int i = 0; i < physics.numberOfParticles(); i++){
+		msa::physics::Particle2D* p = physics.getParticle(i);
+		dampendPositions[ p ] += ( p->getPosition() - dampendPositions[ p ])*.05;
+	}
+	
 	totalRectangle = ofRectangle(physics.getParticle(0)->getPosition(), 0,0);
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());
@@ -313,7 +324,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 	}
 	
     if(!font.isLoaded()){
-        font.loadFont("mplus-1c-regular.ttf", 12);
+        font.loadFont("mplus-1c-regular.ttf", 15);
     }
 
 	ofPushMatrix();
@@ -353,11 +364,11 @@ void CloudsFCPVisualizer::drawPhysics(){
 		}
 		else{
 			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
-			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, .1, 5) );
+			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, 2, 5) );
 		}
 		
-        ofVec2f pos1 = s->getOneEnd()->getPosition();
-		ofVec2f pos2 = s->getTheOtherEnd()->getPosition();
+        ofVec2f pos1 = dampendPositions[ s->getOneEnd()  ];
+		ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
 		
@@ -394,24 +405,24 @@ void CloudsFCPVisualizer::drawPhysics(){
 		ofSetColor(ofGetStyle().color, 180);
 		
         ofFill();
-        ofCircle(a->getPosition(), radius);
+        ofCircle(dampendPositions[a], radius);
         
         ofNoFill();
-        ofCircle(a->getPosition(), radius);
+        ofCircle(dampendPositions[a], radius);
         
 		if(a == selectedParticle || a == hoverParticle || a == centerNode){
 			ofxEasingCubic cub;
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
 			ofSetColor(hoverColor, (1-alpha)*200);
-			ofCircle(a->getPosition(), ofxTween::map(alpha, 0, 1.0, radius, radius+10, true, cub) );
+			ofCircle(dampendPositions[a], ofxTween::map(alpha, 0, 1.0, radius, radius+10, true, cub) );
 		}
     }
 
 	ofPushStyle();
-	ofSetColor(traceColor, 180);
+	ofSetColor(traceColor, 80);
 	for(int i = 0; i < pathBySprings.size(); i++){
-		ofVec2f pos1 = pathBySprings[i]->getOneEnd()->getPosition();
-		ofVec2f pos2 = pathBySprings[i]->getTheOtherEnd()->getPosition();
+		ofVec2f pos1 = dampendPositions[ pathBySprings[i]->getOneEnd() ];
+		ofVec2f pos2 = dampendPositions[ pathBySprings[i]->getTheOtherEnd() ];
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
 	}
@@ -435,14 +446,20 @@ void CloudsFCPVisualizer::drawPhysics(){
 	for(int i = 0; i < physics.numberOfSprings(); i++){
 		msa::physics::Spring2D* s = physics.getSpring(i);
 		if(s == selectedSpring || s == hoverSpring){
-			ofVec2f pos1 = s->getOneEnd()->getPosition();
-			ofVec2f pos2 = s->getTheOtherEnd()->getPosition();
+			ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
+			ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
 			ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
 			string keywordString = "Score: " + ofToString(springScores[s],2) + "\n" + ofJoinString(keywordsInSpring[s], "\n");
 			
 			ofSetColor(220);
 			font.drawString(keywordString, middle.x, middle.y);
 		}
+	}
+	
+	for(int i = 0; i < clipLog.size(); i++){
+		float drawHeight = ofGetHeight() - font.getLineHeight() * (i+2);
+		ofSetColor(255, ofMap(i,2, 6, 255, 0, true));
+		font.drawString(clipLog[clipLog.size() - i - 1], 30, drawHeight - 30);
 	}
 	
 	ofPopStyle();
@@ -556,7 +573,7 @@ void CloudsFCPVisualizer::keyReleased(ofKeyEventArgs& args){
 void CloudsFCPVisualizer::windowResized(ofResizeEventArgs& args){
 	width  = args.width;
 	height = args.height;
-	physics.setWorldMax(ofVec2f(width,height));
+	physics.setWorldMax(ofVec2f(width*10,height*10));
 }
 
 
@@ -698,6 +715,8 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			particleName[p] = clipName;
 			particlesByTag[clipName] = p;
 			particleToClip[p] = relatedClips[c];
+			dampendPositions[p] = p->getPosition();
+			
 			if(physics.numberOfParticles() == 1){
 //				p->makeFixed();
 			}
@@ -710,7 +729,7 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 			   springs.find( make_pair(p, a) ) == springs.end() )
 			{
 				//use clips in common to weight the lines
-				msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .05, 20 );
+				msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, .02, 20 );
 				springs[ make_pair(a, p) ] = newSpring;
 			}
 			

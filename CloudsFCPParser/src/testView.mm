@@ -50,7 +50,7 @@
 	storyEngine.setup();
 	storyEngine.visualizer = &visualizer;
 	storyEngine.network = &parser;
-	storyEngine.maxTimesOnTopic = 4;
+	storyEngine.maxTimesOnTopic = 2;
 	
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
@@ -217,10 +217,12 @@
 
 - (void)draw
 {
+
+	ofBackground(0);
 	
-	ofBackgroundGradient(ofColor::black,
-						 ofColor::darkGray*.15,
-						 OF_GRADIENT_LINEAR);
+//	ofBackgroundGradient(ofColor::black,
+//						 ofColor::darkGray*.15,
+//						 OF_GRADIENT_LINEAR);
 	
     visualizer.drawPhysics();
 

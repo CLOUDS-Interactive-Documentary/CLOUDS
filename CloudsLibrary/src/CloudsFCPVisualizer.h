@@ -66,7 +66,8 @@ class CloudsFCPVisualizer {
 	vector< msa::physics::Particle2D* > pathByParticles;
 	vector< msa::physics::Spring2D* > pathBySprings;
 	map< msa::physics::Spring2D*, float > springScores;
-	
+	vector<string> clipLog;
+
 	string currentTopic;
 	
 //	set<string> allTags;
@@ -122,6 +123,7 @@ class CloudsFCPVisualizer {
 	msa::physics::Spring2D* hoverSpring;
 	msa::physics::Spring2D* springNearPoint(ofVec2f point);
 	
+	map< msa::physics::Particle2D*, ofVec2f > dampendPositions;
 	
 	float cursorRadius;
 	float minMass, maxMass;
