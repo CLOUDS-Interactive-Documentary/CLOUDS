@@ -8,31 +8,8 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#include "CloudsClip.h"
 #include <set>
-
-
-class ClipMarker {
-	
-  public:
-	
-    string name;
-    string person;
-    string clip;
-    string filePath;
-	string fcpFileId;
-    ofColor color;
-    int startFrame;
-    int endFrame;
-    vector<string> keywords;
-
-    string getLinkName(){
-        return person + " - " + name;
-    }
-    
-    string getMetaInfo(){
-        return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "] fcp id: " + fcpFileId;
-    }
-};
 
 typedef struct {
     string sourceName;
@@ -48,12 +25,12 @@ class CloudsFCPParser {
     void refreshXML();
 	
 #pragma mark Clips
-	ClipMarker getClipWithLinkName( string linkname );
+	CloudsClip getClipWithLinkName( string linkname );
 	
 #pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
-	vector<CloudsLink>& getLinksForClip(ClipMarker& clip);
+	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
     void addLink(CloudsLink& link);
     void removeLink(string linkName, int linkIndex);
@@ -75,23 +52,23 @@ class CloudsFCPParser {
 	float percentOfClipsLinked();
 	
 #pragma mark Liking
-	void suppressConnection(ClipMarker& a, ClipMarker& b);
-	void unsuppressConnection(ClipMarker& a, ClipMarker& b);
-	bool isConnectionSuppressed(ClipMarker& a, ClipMarker& b);
+	void suppressConnection(CloudsClip& a, CloudsClip& b);
+	void unsuppressConnection(CloudsClip& a, CloudsClip& b);
+	bool isConnectionSuppressed(CloudsClip& a, CloudsClip& b);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
-    vector<ClipMarker>& getAllClips();
+    vector<CloudsClip>& getAllClips();
 	int getNumberOfClipsWithKeyword(string filterWord);
-	vector<ClipMarker> getClipsWithKeyword(string filterWord);
-    vector<ClipMarker> getClipsWithKeyword(const vector<string>& filter);
+	vector<CloudsClip> getClipsWithKeyword(string filterWord);
+    vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
     set<string> getRelatedKeywords(string filterWord);
-	int getNumberOfSharedKeywords(ClipMarker& a, ClipMarker& b);
-	vector<string> getSharedKeywords(ClipMarker& a, ClipMarker& b);
+	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
+	vector<string> getSharedKeywords(CloudsClip& a, CloudsClip& b);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
-	vector<ClipMarker> getSharedClips(string keywordA, string keywordB);
+	vector<CloudsClip> getSharedClips(string keywordA, string keywordB);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
@@ -103,7 +80,7 @@ class CloudsFCPParser {
 
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-    vector<ClipMarker> markers;
+    vector<CloudsClip> markers;
 	set<string> markerLinkNames;
 
     map<string, int> allKeywords;

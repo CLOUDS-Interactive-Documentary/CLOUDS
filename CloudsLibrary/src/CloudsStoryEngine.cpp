@@ -8,8 +8,9 @@
 
 #include "CloudsStoryEngine.h"
 
+
 CloudsStoryEngine::CloudsStoryEngine(){
-	visualizer = NULL;
+//	visualizer = NULL;
 	network = NULL;
 	hasclip = false;
 	printDecisions = true;
@@ -24,12 +25,14 @@ void CloudsStoryEngine::setup(){
 	
 }
 
-void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
+void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	
 	clipHistory.clear();
 	topicHistory.clear();
 	peopleVisited.clear();
-	visualizer->clear();
+	allNextClips.clear();
+	
+	//visualizer->clear();
 	
 	hasclip = false;
 	freeTopic = false;
@@ -38,6 +41,11 @@ void CloudsStoryEngine::seedWithClip(ClipMarker& seed){
 	currentTopic = seed.keywords[ ofRandom(seed.keywords.size()) ];
 	//select a random topic from the clip
 	
+	CloudsStoryEventArgs args;
+	args.currentTopic = currentTopic;
+	args.chosenClip = &seed;
+	args.clipOptions = &allNextClips;
+	
 	loadClip( seed );	
 }
 
@@ -45,23 +53,23 @@ float CloudsStoryEngine::getTotalSecondsWatched(){
 	return totalFramesWatched / 30.0;
 }
 
-ClipMarker& CloudsStoryEngine::getCurrentClip(){
+CloudsClip& CloudsStoryEngine::getCurrentClip(){
 	return currentClip;
 }
 
-vector<ClipMarker>& CloudsStoryEngine::getClipHistory(){
+vector<CloudsClip>& CloudsStoryEngine::getClipHistory(){
 	return clipHistory;
 }
 
 string CloudsStoryEngine::getCurrentTopic(){
-	return currentTopic + (freeTopic ? "(FREE)" : "");
+	return currentTopic + (freeTopic ? " (FREE)" : "");
 }
 
 int CloudsStoryEngine::getTimesOnTopic(){
 	return timesOnTopic;
 }
 
-void CloudsStoryEngine::loadClip(ClipMarker& clip){
+void CloudsStoryEngine::loadClip(CloudsClip& clip){
 
 	hasclip = true;
 	
@@ -84,7 +92,7 @@ void CloudsStoryEngine::loadClip(ClipMarker& clip){
 	populateNextClips();
 }
 
-void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
+void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 	
 	//TO CHOOSE A NEW TOPIC WE WANT TO FIND THE MOST "SIMILAR" TOPIC
 	//this means the topic that shares the highest percent of clips with the current topic
@@ -102,9 +110,11 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	string winningTopic = "";
 	float highScore = 0;
 	for(int i = 0; i < topics.size(); i++){
+		
 		if(ofContains(topicHistory, topics[i])){
 			continue;
 		}
+		
 		int sharedClips = network->getNumberOfSharedClips(currentTopic,topics[i]);
 		int totalClips = network->getNumberOfClipsWithKeyword(topics[i]);
 		float score = 1.0 * sharedClips / totalClips;
@@ -144,10 +154,11 @@ void CloudsStoryEngine::chooseNewTopic(ClipMarker& upcomingClip){
 	}
 }
 
+
 bool CloudsStoryEngine::selectNewClip(){
 	
 	//CHECK PRECONDITION
-	if(visualizer == NULL || network == NULL){
+	if(network == NULL){
 		ofLogError("Clouds Visualizer or Database is null! exiting select clip");
 		return false;
 	}
@@ -192,7 +203,7 @@ bool CloudsStoryEngine::selectNewClip(){
 bool CloudsStoryEngine::populateNextClips(){
 	
 	//get all the adjascent clips, assign weights to them and select
-	vector<ClipMarker> nextClips;
+	vector<CloudsClip> nextClips;
 	if(freeTopic){
 		nextClips = network->getClipsWithKeyword(currentClip.keywords);
 	}
@@ -217,22 +228,22 @@ bool CloudsStoryEngine::populateNextClips(){
 //	}
 	
 	totalPoints = 0;
-	//clipScores.clear();
-	vector< pair<int, ClipMarker> > clipScores;
+
 	validNextClips.clear();
-	vector<ClipMarker> allNextClips;
-	vector<float> allNextScores;
+	allNextClips.clear();
+
 	int topScore = 0;
 	for(int i = 0; i < nextClips.size(); i++){
-		ClipMarker& m = nextClips[ i ];
+		CloudsClip& m = nextClips[ i ];
 		int score = scoreForClip( m );
 		if(score != 0){
 			//clipScores.push_back( make_pair(totalPoints, m) );
-			clipScores.push_back( make_pair(score, m) );
+//			clipScores.push_back( make_pair(score, m) );
 			totalPoints += score;
 			if(score > topScore) topScore = score;
+			m.currentScore = score;
 			allNextClips.push_back(m);
-			allNextScores.push_back(score);
+//			allNextScores.push_back(score);
 		}
 	}
 	
@@ -248,16 +259,23 @@ bool CloudsStoryEngine::populateNextClips(){
 			freeTopic = true;
 			return populateNextClips();
 		}
-
-		visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
+		
+		CloudsStoryEventArgs args;
+		args.currentTopic = currentTopic;
+		args.chosenClip = &currentClip;
+		args.clipOptions = &allNextClips;
+		ofNotifyEvent(events.clipChanged, args, this);
+		
+		//visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
+		
 		ofLogError("Dead end found at clip " + currentClip.getLinkName());
 		return false;
 	}
 	
 //	nextClipTopScore = topScore;
-	for(int i = 0; i < clipScores.size(); i++){
-		if(clipScores[i].first == topScore){
-			validNextClips.push_back( clipScores[i].second);
+	for(int i = 0; i < allNextClips.size(); i++){
+		if(allNextClips[i].currentScore == topScore){
+			validNextClips.push_back( allNextClips[i] );
 		}
 	}
 	
@@ -268,21 +286,23 @@ bool CloudsStoryEngine::populateNextClips(){
 		}
 	}
 
-	visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
+	//visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
+	CloudsStoryEventArgs args;
+	args.currentTopic = currentTopic;
+	args.chosenClip = &currentClip;
+	args.clipOptions = &allNextClips;
+	ofNotifyEvent(events.clipChanged, args, this);
 
 	return true;
 }
 
-// nice reference on picking random weighted objcts
-// http://www.perlmonks.org/?node_id=577433	
-int CloudsStoryEngine::scoreForClip(ClipMarker& clip){
+int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	
 	//rejection criteria
 	if(clip.person == currentClip.person){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same person" << endl;
 		return 0;
 	}
-	
 	
 	bool containsCurrentTopic = ofContains(clip.keywords, currentTopic);
 	if(!freeTopic && !containsCurrentTopic){
@@ -329,7 +349,7 @@ bool CloudsStoryEngine::atDeadEnd(){
 	return validNextClips.size() == 0;
 }
 
-bool CloudsStoryEngine::historyContainsClip(ClipMarker& m){
+bool CloudsStoryEngine::historyContainsClip(CloudsClip& m){
 	string clipLinkName = m.getLinkName();
 	for(int i = 0; i < clipHistory.size(); i++){
 		if(clipLinkName == clipHistory[i].getLinkName()){
@@ -350,4 +370,8 @@ int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack){
 		}
 	}
 	return occurrences;
+}
+
+CloudsEvents& CloudsStoryEngine::getEvents(){
+	return events;
 }

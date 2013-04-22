@@ -2,28 +2,28 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsFCPVisualizer.h"
 #include "CloudsFCPParser.h"
+#include "CloudsEvents.h"
 
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();
 	~CloudsStoryEngine();
 	
-	CloudsFCPVisualizer* visualizer;
+	//CloudsFCPVisualizer* visualizer;
 	CloudsFCPParser* network;
 	
 	void setup();
 
-	void seedWithClip(ClipMarker& seed);
+	void seedWithClip(CloudsClip& seed);
 	bool selectNewClip();
 	
-	ClipMarker& getCurrentClip();
-	vector<ClipMarker>& getClipHistory();
+	CloudsClip& getCurrentClip();
+	vector<CloudsClip>& getClipHistory();
 	string getCurrentTopic();
 	float getTotalSecondsWatched();
 
-	bool historyContainsClip(ClipMarker& m);
+	bool historyContainsClip(CloudsClip& m);
 		
 	//after this many times the topic becomes available again
 	int topicTimeoutPeriod;
@@ -34,18 +34,24 @@ class CloudsStoryEngine {
 	bool printDecisions;
 	bool atDeadEnd();
 	
+	CloudsEvents& getEvents();
+	
   protected:
+	
+	CloudsEvents events;
+	
 	bool hasclip;
-	ClipMarker currentClip;
+	CloudsClip currentClip;
 	int totalFramesWatched;
 	
 	float totalPoints;
-//	vector< pair<int, ClipMarker> > clipScores;
+//	vector< pair<int, CloudsClip> > clipScores;
 	int nextClipTopScore;
-	vector<ClipMarker> validNextClips;
+	vector<CloudsClip> validNextClips;
+	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
 	
-	vector<ClipMarker> clipHistory;
+	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;
 	
@@ -53,9 +59,9 @@ class CloudsStoryEngine {
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
-	int scoreForClip(ClipMarker& clip);
-	void loadClip(ClipMarker& clip);
-	void chooseNewTopic(ClipMarker& clip);
+	int scoreForClip(CloudsClip& clip);
+	void loadClip(CloudsClip& clip);
+	void chooseNewTopic(CloudsClip& clip);
 	int occurrencesOfPerson(string person, int stepsBack);
 
 };

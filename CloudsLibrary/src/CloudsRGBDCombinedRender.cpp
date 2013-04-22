@@ -251,13 +251,12 @@ void CloudsRGBDCombinedRender::update(){
 		setSimplification(ofVec2f(1.0, 1.0));
 	}
     
-    setSimplification(ofVec2f(1.0, 1.0));
+    //setSimplification(ofVec2f(1.0, 1.0));
 }
 
 void CloudsRGBDCombinedRender::drawMesh(){
 	draw(OF_MESH_FILL);
 }
-
 void CloudsRGBDCombinedRender::drawPointCloud(){
 	draw(OF_MESH_POINTS);
 }

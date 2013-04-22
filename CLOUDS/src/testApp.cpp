@@ -2,7 +2,18 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	parser.setup("../../../CloudsLibrary/data/fcpxml/");
+    parser.parseLinks("../../../CloudsLibrary/data/clouds_link_db.xml");
 
+	storyEngine.setup();
+	storyEngine.network = &parser;
+	storyEngine.maxTimesOnTopic = 2;
+	
+	player.setup(storyEngine);
+	
+	float randomClip = ofRandom(parser.getAllClips().size() );
+	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
+	
 }
 
 //--------------------------------------------------------------

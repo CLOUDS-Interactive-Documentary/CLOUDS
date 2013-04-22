@@ -477,8 +477,10 @@
 
 - (IBAction) refreshXML:(id)sender
 {
-    parser.setup("xml");
-    parser.parseLinks("clouds_link_db.xml");
+//    parser.setup("xml");
+//    parser.parseLinks("clouds_link_db.xml");
+	parser.setup("../../../CloudsLibrary/data/fcpxml/");
+    parser.parseLinks("../../../CloudsLibrary/data/clouds_link_db.xml");
     
     [keywordTable reloadData];
     [clipTable reloadData];
