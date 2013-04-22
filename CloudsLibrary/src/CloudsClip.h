@@ -15,8 +15,6 @@ class CloudsClip {
     string sourceVideoFilePath;
 	
 	bool hasCombinedVideo;
-	string combinedVideoFilePath;
-	string combinedVideoCalibrationXml;
     ofColor color;
 	
 	float currentScore;
@@ -27,4 +25,14 @@ class CloudsClip {
 	
     string getLinkName();
 	string getMetaInfo();
+
+	//these are filenames
+	string getCombinedMovieFile();
+	string getCombinedCalibrationXML();
+	
+	//these are complete file paths, absolute directories
+	//this is set by the FCP database parser when the directory is set
+	string combinedVideoFilePath;
+	string combinedVideoCalibrationXml;
+	
 };

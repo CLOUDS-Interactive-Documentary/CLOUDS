@@ -22,3 +22,15 @@ string CloudsClip::getLinkName(){
 string CloudsClip::getMetaInfo(){
 	return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "] fcp id: " + fcpFileId;
 }
+
+string CloudsClip::getCombinedMovieFile(){
+	string nameNoSpaces = name;
+	ofStringReplace(nameNoSpaces, " ", "_");
+	return person + "_" + nameNoSpaces + ".mov";
+}
+
+string CloudsClip::getCombinedCalibrationXML(){
+	string nameNoSpaces = name;
+	ofStringReplace(nameNoSpaces, " ", "_");
+	return person + "_" + nameNoSpaces + ".xml";
+}

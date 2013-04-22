@@ -47,9 +47,9 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 	ofBuffer csvBuffer;
 	csvBuffer.append("source,target\n");
 	for(int i = 0; i < parser.getAllClips().size(); i++){
-		ClipMarker& mark = parser.getAllClips()[i];
+		CloudsClip& mark = parser.getAllClips()[i];
 		string name = mark.getLinkName();
-		vector<ClipMarker> links = parser.getClipsWithKeyword(mark.keywords);
+		vector<CloudsClip> links = parser.getClipsWithKeyword(mark.keywords);
 		for(int j = 0; j < links.size(); j++){
 			if(name != links[j].getLinkName() &&
 			   mark.person != links[j].person &&

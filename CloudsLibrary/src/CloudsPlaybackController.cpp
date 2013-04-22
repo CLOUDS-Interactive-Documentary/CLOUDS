@@ -49,6 +49,10 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	player.play();
 }
 
+void CloudsPlaybackController::update(){
+		
+}
+
 void CloudsPlaybackController::draw(){
 	if(player.isPlaying()){
 		if(playingCombinedVideo){

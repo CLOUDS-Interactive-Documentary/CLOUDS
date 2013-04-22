@@ -11,7 +11,7 @@ typedef struct {
 
 typedef struct {
 	msa::physics::Spring2D* spring;
-	vector<ClipMarker> clips;
+	vector<CloudsClip> clips;
 } Edge;
 
 class CloudsFCPVisualizer {
@@ -41,7 +41,7 @@ class CloudsFCPVisualizer {
 	
 	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void addLinksToPhysics(ClipMarker& center, vector<ClipMarker>& connections, vector<float>& scores);
+	void addLinksToPhysics(CloudsClip& center, vector<CloudsClip>& connections, vector<float>& scores);
 	
     void mousePressed(ofMouseEventArgs& args);
     void mouseMoved(ofMouseEventArgs& args);
@@ -51,7 +51,7 @@ class CloudsFCPVisualizer {
     void keyPressed(ofKeyEventArgs& args);
     void keyReleased(ofKeyEventArgs& args);
 
-	map<msa::physics::Particle2D*, ClipMarker> particleToClip;
+	map<msa::physics::Particle2D*, CloudsClip> particleToClip;
 	map<msa::physics::Particle2D*, string> particleName;
 	map<string, msa::physics::Particle2D*> particlesByTag;
 	
@@ -60,9 +60,9 @@ class CloudsFCPVisualizer {
 	set< msa::physics::Spring2D*> linkSprings;
 	map< msa::physics::Particle2D*, int> particleBirthOrder;
 	
-	vector< ClipMarker > currentOptionClips;
+	vector< CloudsClip > currentOptionClips;
 	vector< msa::physics::Particle2D* > currentOptionParticles;
-	vector< ClipMarker > pathByClip;
+	vector< CloudsClip > pathByClip;
 	vector< msa::physics::Particle2D* > pathByParticles;
 	vector< msa::physics::Spring2D* > pathBySprings;
 	map< msa::physics::Spring2D*, float > springScores;
@@ -85,12 +85,12 @@ class CloudsFCPVisualizer {
 	ofVec2f currentTop;
 
 	string selectionTitle;
-	vector<ClipMarker> selectedClips;
+	vector<CloudsClip> selectedClips;
 	
 	bool isEdgeSelected();
 	bool isSelectedEdgeLink();
-	ClipMarker getEdgeSource();
-	ClipMarker getEdgeDestination();
+	CloudsClip getEdgeSource();
+	CloudsClip getEdgeDestination();
 	void linkedEdge();
 	void unlinkEdge();
 	

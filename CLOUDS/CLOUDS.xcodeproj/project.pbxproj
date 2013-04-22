@@ -24,7 +24,6 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E745F6DC1720FE0E00B86D7E /* CloudsD3Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6CD1720FE0E00B86D7E /* CloudsD3Exporter.cpp */; };
 		E745F6DD1720FE0E00B86D7E /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6CF1720FE0E00B86D7E /* CloudsFCPParser.cpp */; };
 		E745F6DF1720FE0E00B86D7E /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6D31720FE0E00B86D7E /* CloudsPlaybackController.cpp */; };
 		E745F6E11720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6D71720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp */; };
@@ -33,6 +32,7 @@
 		E745F6ED1720FE9400B86D7E /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E71720FE9400B86D7E /* tinyxmlerror.cpp */; };
 		E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E81720FE9400B86D7E /* tinyxmlparser.cpp */; };
 		E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */; };
+		E745F6F3172101F600B86D7E /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6F1172101F600B86D7E /* CloudsClip.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
@@ -80,7 +80,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -91,22 +91,23 @@
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E745F6C91720FE0E00B86D7E /* CLOUDS_rectified_4_7_13.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CLOUDS_rectified_4_7_13.xml; sourceTree = "<group>"; };
-		E745F6CD1720FE0E00B86D7E /* CloudsD3Exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsD3Exporter.cpp; sourceTree = "<group>"; };
-		E745F6CE1720FE0E00B86D7E /* CloudsD3Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsD3Exporter.h; sourceTree = "<group>"; };
-		E745F6CF1720FE0E00B86D7E /* CloudsFCPParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsFCPParser.cpp; sourceTree = "<group>"; };
-		E745F6D01720FE0E00B86D7E /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsFCPParser.h; sourceTree = "<group>"; };
+		E745F6CF1720FE0E00B86D7E /* CloudsFCPParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CloudsFCPParser.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		E745F6D01720FE0E00B86D7E /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CloudsFCPParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E745F6D31720FE0E00B86D7E /* CloudsPlaybackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPlaybackController.cpp; sourceTree = "<group>"; };
 		E745F6D41720FE0E00B86D7E /* CloudsPlaybackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPlaybackController.h; sourceTree = "<group>"; };
 		E745F6D71720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
 		E745F6D81720FE0E00B86D7E /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
-		E745F6D91720FE0E00B86D7E /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
-		E745F6DA1720FE0E00B86D7E /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
+		E745F6D91720FE0E00B86D7E /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		E745F6DA1720FE0E00B86D7E /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CloudsStoryEngine.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E745F6E51720FE9400B86D7E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E745F6E61720FE9400B86D7E /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		E745F6E71720FE9400B86D7E /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		E745F6E81720FE9400B86D7E /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E745F6EB1720FE9400B86D7E /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		E745F6F01720FF8A00B86D7E /* CloudsEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
+		E745F6F1172101F600B86D7E /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
+		E745F6F2172101F600B86D7E /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
@@ -205,7 +206,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,16 +258,17 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E745F6CD1720FE0E00B86D7E /* CloudsD3Exporter.cpp */,
-				E745F6CE1720FE0E00B86D7E /* CloudsD3Exporter.h */,
-				E745F6CF1720FE0E00B86D7E /* CloudsFCPParser.cpp */,
-				E745F6D01720FE0E00B86D7E /* CloudsFCPParser.h */,
-				E745F6D31720FE0E00B86D7E /* CloudsPlaybackController.cpp */,
-				E745F6D41720FE0E00B86D7E /* CloudsPlaybackController.h */,
-				E745F6D71720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp */,
-				E745F6D81720FE0E00B86D7E /* CloudsRGBDCombinedRender.h */,
-				E745F6D91720FE0E00B86D7E /* CloudsStoryEngine.cpp */,
+				E745F6F01720FF8A00B86D7E /* CloudsEvents.h */,
+				E745F6F2172101F600B86D7E /* CloudsClip.h */,
+				E745F6F1172101F600B86D7E /* CloudsClip.cpp */,
 				E745F6DA1720FE0E00B86D7E /* CloudsStoryEngine.h */,
+				E745F6D91720FE0E00B86D7E /* CloudsStoryEngine.cpp */,
+				E745F6D01720FE0E00B86D7E /* CloudsFCPParser.h */,
+				E745F6CF1720FE0E00B86D7E /* CloudsFCPParser.cpp */,
+				E745F6D41720FE0E00B86D7E /* CloudsPlaybackController.h */,
+				E745F6D31720FE0E00B86D7E /* CloudsPlaybackController.cpp */,
+				E745F6D81720FE0E00B86D7E /* CloudsRGBDCombinedRender.h */,
+				E745F6D71720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -320,7 +322,7 @@
 			);
 			name = CLOUDS;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -387,7 +389,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				E745F6DC1720FE0E00B86D7E /* CloudsD3Exporter.cpp in Sources */,
 				E745F6DD1720FE0E00B86D7E /* CloudsFCPParser.cpp in Sources */,
 				E745F6DF1720FE0E00B86D7E /* CloudsPlaybackController.cpp in Sources */,
 				E745F6E11720FE0E00B86D7E /* CloudsRGBDCombinedRender.cpp in Sources */,
@@ -396,6 +397,7 @@
 				E745F6ED1720FE9400B86D7E /* tinyxmlerror.cpp in Sources */,
 				E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */,
 				E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */,
+				E745F6F3172101F600B86D7E /* CloudsClip.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

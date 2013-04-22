@@ -33,10 +33,10 @@
 	
     bool updatePhysics;
     vector<string> selectedKeywords;
-    ClipMarker currentPlayingClip;
+    CloudsClip currentPlayingClip;
     BOOL clipLoaded;
 	
-    vector<ClipMarker> selectedClips;
+    vector<CloudsClip> selectedClips;
     vector<CloudsLink> currentClipLinks;
 
 	bool playingPlaylist;
@@ -81,7 +81,7 @@
 
 - (float) clipPercentComplete;
 
-- (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target;
+- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
@@ -93,8 +93,8 @@
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
-- (ClipMarker&) selectedClip;
-- (ClipMarker&) selectedClipFromPlaylist;
+- (CloudsClip&) selectedClip;
+- (CloudsClip&) selectedClipFromPlaylist;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

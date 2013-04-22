@@ -1,5 +1,6 @@
 #import "testView.h"
 #import "ViewerApp.h"
+#include "CloudsClip.h"
 
 @implementation testView
 @synthesize movieFileMissing;
@@ -48,7 +49,7 @@
 	visualizer.setupPhysics();
 
 	storyEngine.setup();
-	storyEngine.visualizer = &visualizer;
+//	storyEngine.visualizer = &visualizer;
 	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 2;
 	
@@ -111,7 +112,7 @@
 	
 	if(clipTable.selectedRow >= 0){
 		visualizer.clear();
-		ClipMarker& clip = [self selectedClip];
+		CloudsClip& clip = [self selectedClip];
 		//visualizer.addLinksToPhysics(clip);
 		//TODO: selected topic
 		storyEngine.seedWithClip(clip);
@@ -316,7 +317,7 @@
 	}
 }
 
-- (void) linkClip:(ClipMarker) source toClip:(ClipMarker) target
+- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target
 {
 	if(source.getLinkName() != target.getLinkName()){
 		
@@ -349,7 +350,7 @@
 	
 	onPlaylist = false; //will get set to true again if we are coming from a playlist
 	
-	ClipMarker clip;
+	CloudsClip clip;
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];
 		playingPlaylist = false;
@@ -375,8 +376,8 @@
 	
 	preview.stop();
 	
-	string clipFilePath = clip.filePath;
-	if(clip.filePath == "" || autoProgressStory){
+	string clipFilePath = clip.sourceVideoFilePath;
+	if(clipFilePath  == "" || autoProgressStory){
 		return;
 	}
 	
@@ -427,12 +428,12 @@
 
 }
 
-- (ClipMarker&) selectedClip
+- (CloudsClip&) selectedClip
 {
     return (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
 }
 
-- (ClipMarker&) selectedClipFromPlaylist
+- (CloudsClip&) selectedClipFromPlaylist
 {
 	//return visualizer.pathByClip[ playlistTable.selectedRow ];
 	return storyEngine.getClipHistory()[ playlistTable.selectedRow ];
@@ -518,13 +519,13 @@
         }
     }
     else if(aTableView == clipTable){
-		ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
+		CloudsClip& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
 //		NSLog(@"Identifer is %@", aTableColumn.identifier);
 		if([@"Links" isEqualToString:aTableColumn.identifier]){
 			return [NSNumber numberWithInt: parser.getLinksForClip( m.getLinkName() ).size()];
 		}
 		else {
-			//ClipMarker& m = [self selectedClip];
+			//CloudsClip& m = [self selectedClip];
 			string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
 			return [NSString stringWithUTF8String:linkString.c_str()];
 		}
@@ -578,8 +579,8 @@
             return;
         }
 
-        //ClipMarker& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
-        ClipMarker& m = [self selectedClip];
+        //CloudsClip& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+        CloudsClip& m = [self selectedClip];
         
         string keywordList = "";
         currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
@@ -591,8 +592,8 @@
             return;
         }
         
-        vector<ClipMarker>& searchClips = (selectedKeywords.size() == 0) ? parser.getAllClips() : selectedClips;
-        //ClipMarker& m = [self selectedClip];
+        vector<CloudsClip>& searchClips = (selectedKeywords.size() == 0) ? parser.getAllClips() : selectedClips;
+        //CloudsClip& m = [self selectedClip];
         string targetClip = currentClipLinks[ linkTable.selectedRow ].targetName;
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){

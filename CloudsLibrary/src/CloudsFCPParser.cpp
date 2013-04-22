@@ -244,7 +244,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 					}
 				}
 	//            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
-				markers.push_back(cm);
+				allClips.push_back(cm);
 			}
         }
         fcpXML.popTag(); //marker
@@ -252,10 +252,21 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
     keywordsDirty = true;
 }
 
+void CloudsFCPParser::setCombinedVideoDirectory(string directory){
+	combinedVideoDirectory = directory;
+
+	for(int i = 0; i < allClips.size(); i++){
+		allClips[i].hasCombinedVideo = false;
+		allClips[i].combinedVideoFilePath = directory + "/" + allClips[i].getCombinedMovieFile();
+		allClips[i].combinedVideoCalibrationXml = directory + "/" + allClips[i].getCombinedCalibrationXML();
+		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoFilePath).exists() && ofFile(allClips[i].combinedVideoCalibrationXml).exists();
+	}
+}	
+
 CloudsClip CloudsFCPParser::getClipWithLinkName( string linkname ){
-	for(int i = 0; i < markers.size(); i++){
-		if(markers[i].getLinkName() == linkname){
-			return markers[i];
+	for(int i = 0; i < allClips.size(); i++){
+		if(allClips[i].getLinkName() == linkname){
+			return allClips[i];
 		}
 	}
 	return CloudsClip();
@@ -270,13 +281,13 @@ void CloudsFCPParser::sortKeywordsByOccurrence(bool byOccurrence){
 
 float CloudsFCPParser::percentOfClipsLinked(){
 	int clipsLinked = 0;
-	for(int i = 0; i < markers.size(); i++){
-		if(clipHasLink( markers[i].getLinkName() )){
+	for(int i = 0; i < allClips.size(); i++){
+		if(clipHasLink( allClips[i].getLinkName() )){
 			clipsLinked++;
 		}
 	}
 	
-	return (1.0*clipsLinked)/markers.size();
+	return (1.0*clipsLinked)/allClips.size();
 }
 
 void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
@@ -303,7 +314,7 @@ int CloudsFCPParser::occurrencesOfKeyword(string keyword){
 }
 
 vector<CloudsClip>& CloudsFCPParser::getAllClips(){
-    return markers;
+    return allClips;
 }
 
 vector<CloudsLink>& CloudsFCPParser::getLinksForClip(CloudsClip& clip){
@@ -322,8 +333,8 @@ void CloudsFCPParser::addLink(CloudsLink& link){
 
 int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
 	int keywordsFound = 0;
-    for(int c = 0; c < markers.size(); c++){
-		if( ofContains(markers[c].keywords, filterWord) ){
+    for(int c = 0; c < allClips.size(); c++){
+		if( ofContains(allClips[c].keywords, filterWord) ){
 			keywordsFound++;
 		}
 	}
@@ -339,12 +350,12 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord){
 vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
     vector<CloudsClip> filteredMarkers;
 	set<string> includedClips;
-    for(int c = 0; c < markers.size(); c++){
+    for(int c = 0; c < allClips.size(); c++){
         for(int i = 0; i < filter.size(); i++){
-            if(ofContains(markers[c].keywords, filter[i]) &&
-			   includedClips.find(markers[c].getLinkName()) == includedClips.end()){
-				includedClips.insert(markers[c].getLinkName());
-                filteredMarkers.push_back(markers[c]);
+            if(ofContains(allClips[c].keywords, filter[i]) &&
+			   includedClips.find(allClips[c].getLinkName()) == includedClips.end()){
+				includedClips.insert(allClips[c].getLinkName());
+                filteredMarkers.push_back(allClips[c]);
                 break;
             }
         }
@@ -367,12 +378,12 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywordB){
 	vector<CloudsClip> sharedClips;
 //	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
-	for(int i = 0; i < markers.size(); i++){
-		if(ofContains(markers[i].keywords, keywordA) &&
-		   ofContains(markers[i].keywords, keywordB))
+	for(int i = 0; i < allClips.size(); i++){
+		if(ofContains(allClips[i].keywords, keywordA) &&
+		   ofContains(allClips[i].keywords, keywordB))
 		{
 //			cout << "	Adding Clip " << markers[i].getLinkName() << " marker " << i << endl;
-			sharedClips.push_back(markers[i]);
+			sharedClips.push_back(allClips[i]);
 		}
 	}
 	return sharedClips;
@@ -380,9 +391,9 @@ vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywo
 
 int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 	int clipsInCommon = 0;
-	for(int i = 0; i < markers.size(); i++){
-		if(ofContains(markers[i].keywords, keywordA) &&
-		   ofContains(markers[i].keywords, keywordB))
+	for(int i = 0; i < allClips.size(); i++){
+		if(ofContains(allClips[i].keywords, keywordA) &&
+		   ofContains(allClips[i].keywords, keywordB))
 		{
 			clipsInCommon++;
 		}

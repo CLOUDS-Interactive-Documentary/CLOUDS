@@ -103,7 +103,7 @@ void CloudsFCPVisualizer::setup(){
 	
     database->sortKeywordsByOccurrence(true);
     vector<string>& allKeywords = database->getAllKeywords();
-    vector<ClipMarker>& clips = database->getAllClips();
+    vector<CloudsClip>& clips = database->getAllClips();
     for(int k = 0; k < allKeywords.size(); k++){
         for(int c = 0; c < clips.size(); c++){
             if( ofContains(clips[c].keywords, allKeywords[k]) ){
@@ -131,8 +131,8 @@ void CloudsFCPVisualizer::setupPhysics(){
 }
 
 
-void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
-											vector<ClipMarker>& connections,
+void CloudsFCPVisualizer::addLinksToPhysics(CloudsClip& center,
+											vector<CloudsClip>& connections,
 											vector<float>& scores)
 {
 
@@ -181,7 +181,7 @@ void CloudsFCPVisualizer::addLinksToPhysics(ClipMarker& center,
 	currentOptionParticles.clear();
 	
 	for(int i = 0; i < connections.size(); i++){
-		ClipMarker& relatedClip = connections[i];
+		CloudsClip& relatedClip = connections[i];
 		string clipName = relatedClip.getLinkName();
 
 		msa::physics::Particle2D* a;
@@ -264,22 +264,22 @@ bool CloudsFCPVisualizer::isSelectedEdgeLink(){
 	return isEdgeSelected() && linkSprings.find(selectedSpring) != linkSprings.end();
 }
 
-ClipMarker CloudsFCPVisualizer::getEdgeSource(){
+CloudsClip CloudsFCPVisualizer::getEdgeSource(){
 	if( isEdgeSelected() ){
 		cout << "birth order " << particleBirthOrder[ selectedSpring->getOneEnd() ] << " " << particleBirthOrder[ selectedSpring->getTheOtherEnd() ] << endl;
 		return (particleBirthOrder[ selectedSpring->getOneEnd() ] < particleBirthOrder[ selectedSpring->getTheOtherEnd() ] ?
 				particleToClip[ selectedSpring->getOneEnd() ] : particleToClip[ selectedSpring->getTheOtherEnd() ]);
 	}
-	return ClipMarker();
+	return CloudsClip();
 }
 
-ClipMarker CloudsFCPVisualizer::getEdgeDestination(){
+CloudsClip CloudsFCPVisualizer::getEdgeDestination(){
 	if( isEdgeSelected() ){
 		cout << "birth order " << particleBirthOrder[ selectedSpring->getOneEnd() ] << " " << particleBirthOrder[ selectedSpring->getTheOtherEnd() ] << endl;		
 		return (particleBirthOrder[ selectedSpring->getOneEnd() ] > particleBirthOrder[ selectedSpring->getTheOtherEnd() ] ?
 				particleToClip[ selectedSpring->getOneEnd() ] : particleToClip[ selectedSpring->getTheOtherEnd() ]);
 	}
-	return ClipMarker();
+	return CloudsClip();
 }
 
 void CloudsFCPVisualizer::linkedEdge(){
@@ -599,7 +599,7 @@ void CloudsFCPVisualizer::createClusterPhysics(){
         }
     }
     
-    vector<ClipMarker>& clips = database->getAllClips();
+    vector<CloudsClip>& clips = database->getAllClips();
     for(int k = 0; k < allKeywords.size(); k++){
 		
         for(int i = k+1; i < allKeywords.size(); i++){
@@ -692,7 +692,7 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 	cout << "NEW PHYSICS adding tag " << tag << endl;
 	
 	vector<msa::physics::Particle2D*> newParticles;
-	vector<ClipMarker> relatedClips = database->getClipsWithKeyword(tag);
+	vector<CloudsClip> relatedClips = database->getClipsWithKeyword(tag);
 	int particleStartIndex = physics.numberOfParticles();
 	
 	for(int c = 0; c < relatedClips.size(); c++){
@@ -760,10 +760,10 @@ void CloudsFCPVisualizer::addTagToPhysics(string tag){
 
 
 void CloudsFCPVisualizer::addAllClipsWithAttraction(){
-	vector<ClipMarker>& clips = database->getAllClips();
+	vector<CloudsClip>& clips = database->getAllClips();
 	for(int i = 0; i < clips.size(); i++){
 		
-		ClipMarker& clip = clips[i];
+		CloudsClip& clip = clips[i];
 		string clipName = clips[i].getLinkName();
 		
 		msa::physics::Particle2D* p;
@@ -776,10 +776,10 @@ void CloudsFCPVisualizer::addAllClipsWithAttraction(){
 	}
 	
 	for(int i = 0; i < clips.size(); i++){
-		ClipMarker& clip1 = clips[i];
+		CloudsClip& clip1 = clips[i];
 		msa::physics::Particle2D* a = particlesByTag[ clip1.getLinkName() ];
 		for(int j = i+1; j < clips.size(); j++){
-			ClipMarker& clip2 = clips[j];
+			CloudsClip& clip2 = clips[j];
 			msa::physics::Particle2D* b = particlesByTag[ clip2.getLinkName() ];
 			
 			int sharedKeywords = database->getSharedKeywords(clip1, clip2).size();

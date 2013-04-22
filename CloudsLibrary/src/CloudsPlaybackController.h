@@ -13,6 +13,7 @@ class CloudsPlaybackController {
 
 	void setup(CloudsStoryEngine& storyEngine);
 	
+	void update();
 	void draw();
 	
   protected:

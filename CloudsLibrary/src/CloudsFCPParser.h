@@ -23,7 +23,8 @@ class CloudsFCPParser {
     CloudsFCPParser();
     void setup(string directory);
     void refreshXML();
-	
+	void setCombinedVideoDirectory(string directory);
+
 #pragma mark Clips
 	CloudsClip getClipWithLinkName( string linkname );
 	
@@ -73,14 +74,22 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
+	
   protected:
     string xmlDirectory;
+    string combinedVideoDirectory;
+	
+	bool keywordsDirty;
+    void refreshKeywordVector();
+    
+	bool sortedByOccurrence;
+	
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
 
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-    vector<CloudsClip> markers;
+    vector<CloudsClip> allClips;
 	set<string> markerLinkNames;
 
     map<string, int> allKeywords;
@@ -89,8 +98,5 @@ class CloudsFCPParser {
     map<string, vector<CloudsLink> > sourceLinks;
 	map<string, vector<string> > sourceSupression;
 	
-    bool keywordsDirty;
-    void refreshKeywordVector();
-    bool sortedByOccurrence;
-    
+
 };
