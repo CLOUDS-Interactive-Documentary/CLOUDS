@@ -4,7 +4,6 @@
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
 	playingCombinedVideo = false;
-	currentClip = NULL;
 }
 
 CloudsPlaybackController::~CloudsPlaybackController(){
@@ -47,10 +46,16 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	player.setFrame(clip.startFrame);
 	player.play();
+	
+	currentClip = clip;
 }
 
 void CloudsPlaybackController::update(){
-		
+	if(player.isPlaying()){
+		if(player.getCurrentFrame() >= currentClip.endFrame){
+			storyEngine->selectNewClip();
+		}
+	}
 }
 
 void CloudsPlaybackController::draw(){

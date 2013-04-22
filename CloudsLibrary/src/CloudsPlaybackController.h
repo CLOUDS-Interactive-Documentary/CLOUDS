@@ -21,7 +21,7 @@ class CloudsPlaybackController {
 	ofVideoPlayer player;
 	CloudsStoryEngine* storyEngine;
 	CloudsRGBDCombinedRender renderer;
-	CloudsClip* currentClip;
+	CloudsClip currentClip;
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);

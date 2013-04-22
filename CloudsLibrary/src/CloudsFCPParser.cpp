@@ -45,6 +45,11 @@ void CloudsFCPParser::parseLinks(string linkFile){
             linksXML.pushTag("clip", i);
             string clipName = linksXML.getValue("name", "");
             int numLinks = linksXML.getNumTags("link");
+			if(numLinks == 0){
+				cout << "clip " << clipName << " had no links!" << endl;
+				continue;
+			}
+			
             for(int l = 0; l < numLinks; l++){
                 CloudsLink newLink;
                 linksXML.pushTag("link", l);

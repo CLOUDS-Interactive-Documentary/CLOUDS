@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	parser.setup("../../../CloudsLibrary/data/fcpxml/");
-    parser.parseLinks("../../../CloudsLibrary/data/clouds_link_db.xml");
+    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
 
 	storyEngine.setup();
 	storyEngine.network = &parser;
@@ -18,12 +18,14 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+	player.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
+	
+	player.draw();
+	
 }
 
 //--------------------------------------------------------------

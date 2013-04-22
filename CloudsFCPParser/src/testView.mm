@@ -52,7 +52,6 @@
 	visualizer.setupPhysics();
 
 	storyEngine.setup();
-//	storyEngine.visualizer = &visualizer;
 	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 2;
 	
@@ -345,7 +344,7 @@
 
 - (IBAction) saveLinks:(id)sender
 {
-    parser.saveLinks("clouds_link_db.xml");
+    parser.saveLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
 }
 
 - (IBAction) playDoubleClickedRow:(id)sender
@@ -483,8 +482,9 @@
 {
 //    parser.setup("xml");
 //    parser.parseLinks("clouds_link_db.xml");
+	
 	parser.setup("../../../CloudsLibrary/data/fcpxml/");
-    parser.parseLinks("../../../CloudsLibrary/data/clouds_link_db.xml");
+    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
     [keywordTable reloadData];
     [clipTable reloadData];
