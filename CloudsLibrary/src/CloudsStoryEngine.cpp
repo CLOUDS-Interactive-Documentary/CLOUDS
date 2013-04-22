@@ -41,10 +41,11 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	currentTopic = seed.keywords[ ofRandom(seed.keywords.size()) ];
 	//select a random topic from the clip
 	
-	CloudsStoryEventArgs args;
-	args.currentTopic = currentTopic;
-	args.chosenClip = &seed;
-	args.clipOptions = &allNextClips;
+	CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
+	ofNotifyEvent(events.storyBegan,args);
+//	args.currentTopic = currentTopic;
+//	args.chosenClip = &seed;
+//	args.clipOptions = &allNextClips;
 	
 	loadClip( seed );	
 }
@@ -260,10 +261,10 @@ bool CloudsStoryEngine::populateNextClips(){
 			return populateNextClips();
 		}
 		
-		CloudsStoryEventArgs args;
-		args.currentTopic = currentTopic;
-		args.chosenClip = &currentClip;
-		args.clipOptions = &allNextClips;
+		CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
+//		args.currentTopic = currentTopic;
+//		args.chosenClip = &currentClip;
+//		args.clipOptions = &allNextClips;
 		ofNotifyEvent(events.clipChanged, args, this);
 		
 		//visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
@@ -287,10 +288,11 @@ bool CloudsStoryEngine::populateNextClips(){
 	}
 
 	//visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
-	CloudsStoryEventArgs args;
-	args.currentTopic = currentTopic;
-	args.chosenClip = &currentClip;
-	args.clipOptions = &allNextClips;
+//	CloudsStoryEventArgs args;
+//	args.currentTopic = currentTopic;
+//	args.chosenClip = &currentClip;
+//	args.clipOptions = &allNextClips;
+	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
 	ofNotifyEvent(events.clipChanged, args, this);
 
 	return true;

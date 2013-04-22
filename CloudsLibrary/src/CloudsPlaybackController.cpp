@@ -25,11 +25,11 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 }
 
 void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
-	playClip(*args.chosenClip);
+	playClip(args.chosenClip);
 }
 
 void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
-	playClip(*args.chosenClip);	
+	playClip(args.chosenClip);	
 }
 
 void CloudsPlaybackController::playClip(CloudsClip& clip){

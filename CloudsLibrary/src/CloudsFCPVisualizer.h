@@ -3,6 +3,7 @@
 #include "MSAPhysics2D.h"
 #include "ofMain.h"
 #include "CloudsFCPParser.h"
+#include "CloudsEvents.h"
 
 typedef struct {
     msa::physics::Particle2D* particle;
@@ -17,9 +18,8 @@ typedef struct {
 class CloudsFCPVisualizer {
   public:
     CloudsFCPVisualizer();
-    CloudsFCPParser* database;
 	
-    void setup();
+    void setup(CloudsFCPParser& database);
     
     void setupPhysics();
     void createClusterPhysics();
@@ -41,7 +41,9 @@ class CloudsFCPVisualizer {
 	
 	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void addLinksToPhysics(CloudsClip& center, vector<CloudsClip>& connections, vector<float>& scores);
+	void clipChanged(CloudsStoryEventArgs& clips);
+	
+	//void addLinksToPhysics(CloudsClip& center, vector<CloudsClip>& connections, vector<float>& scores);
 	
     void mousePressed(ofMouseEventArgs& args);
     void mouseMoved(ofMouseEventArgs& args);
@@ -78,6 +80,7 @@ class CloudsFCPVisualizer {
 	
 	void windowResized(ofResizeEventArgs& args);
 	
+	void storyBegan(CloudsStoryEventArgs& clips);
 	void clear();
 	
 	ofRectangle totalRectangle;
@@ -103,6 +106,8 @@ class CloudsFCPVisualizer {
 
   protected:
 	
+	CloudsFCPParser* database;
+
 	ofColor visitedColor;
 	ofColor abandonedColor;
 	ofColor hoverColor;

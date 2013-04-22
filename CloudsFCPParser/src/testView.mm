@@ -44,8 +44,11 @@
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	
-	visualizer.database = &parser;
-    visualizer.setup();
+//	visualizer.database = &parser;
+    visualizer.setup(parser);
+	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
+	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsFCPVisualizer::clipChanged);
+	
 	visualizer.setupPhysics();
 
 	storyEngine.setup();

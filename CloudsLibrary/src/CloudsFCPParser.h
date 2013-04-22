@@ -74,7 +74,6 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
-	
   protected:
     string xmlDirectory;
     string combinedVideoDirectory;

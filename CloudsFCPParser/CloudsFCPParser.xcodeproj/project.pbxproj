@@ -360,6 +360,7 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7E28DDE1724FAB10079019C /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7E28DDF1724FAB10079019C /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
+		E7E28DE1172585A70079019C /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -560,8 +561,9 @@
 		E7432D7F170F42CE00C554EC /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E28DDE1724FAB10079019C /* CloudsClip.cpp */,
+				E7E28DE1172585A70079019C /* CloudsEvents.h */,
 				E7E28DDF1724FAB10079019C /* CloudsClip.h */,
+				E7E28DDE1724FAB10079019C /* CloudsClip.cpp */,
 				E7432D83170F42CE00C554EC /* CloudsFCPParser.h */,
 				E7432D82170F42CE00C554EC /* CloudsFCPParser.cpp */,
 				E7432D89170F42CE00C554EC /* CloudsStoryEngine.h */,

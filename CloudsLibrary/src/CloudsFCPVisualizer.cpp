@@ -69,6 +69,10 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	repulsionForce = 20;
 }
 
+void CloudsFCPVisualizer::storyBegan(CloudsStoryEventArgs& clips){
+	clear();
+}
+
 void CloudsFCPVisualizer::clear(){
 	
 	particleName.clear();
@@ -95,7 +99,9 @@ void CloudsFCPVisualizer::clear(){
 	physics.clear();
 }
 
-void CloudsFCPVisualizer::setup(){
+void CloudsFCPVisualizer::setup(CloudsFCPParser& dbref){
+
+	this->database = &dbref;
 	
 	ofRegisterMouseEvents(this);
     ofRegisterKeyEvents(this);
@@ -131,28 +137,31 @@ void CloudsFCPVisualizer::setupPhysics(){
 }
 
 
-void CloudsFCPVisualizer::addLinksToPhysics(CloudsClip& center,
-											vector<CloudsClip>& connections,
-											vector<float>& scores)
-{
+//void CloudsFCPVisualizer::addLinksToPhysics(CloudsClip& center,
+//											vector<CloudsClip>& connections,
+//											vector<float>& scores)
+//{
+
+void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
 
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
-	string mainLinkName = center.getLinkName();
+	string mainLinkName = args.chosenClip.getLinkName();
 	clipLog.push_back(mainLinkName);
 	
 	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
 	{
-		cout << "re adding " << center.getLinkName() << endl;
+		cout << "re adding " << args.chosenClip.getLinkName() << endl;
 		return;
 	}
 	
 	pathChanged = true;
 	
-	for(int i = 0; i < scores.size(); i++){
-		maxScore = MAX(maxScore, scores[i]);
-		minScore = MIN(minScore, scores[i]);
+	//for(int i = 0; i < scores.size(); i++){
+	for(int i = 0; i < args.clipOptions.size(); i++){
+		maxScore = MAX(maxScore, args.clipOptions[i].currentScore);
+		minScore = MIN(minScore, args.clipOptions[i].currentScore);
 	}
 	
 	msa::physics::Particle2D* p;
@@ -163,25 +172,25 @@ void CloudsFCPVisualizer::addLinksToPhysics(CloudsClip& center,
 		p = physics.makeParticle(ofVec2f(width/2, height/2));
 		dampendPositions[p] = p->getPosition();
 		p->makeFixed();
-		p->setMass(center.keywords.size());
+		p->setMass(args.chosenClip.keywords.size());
 		
 		newParticles.push_back(p);
 		particleName[p] = mainLinkName;
 		particlesByTag[mainLinkName] = p;
-		particleToClip[p] = center;
+		particleToClip[p] = args.chosenClip;
 		particleBirthOrder[p] = physics.numberOfParticles();
 	}
 	
 	msa::physics::Particle2D* oldCenter = centerNode;
 	centerNode = p;
-	pathByClip.push_back(center);
+	pathByClip.push_back(args.chosenClip);
 	pathByParticles.push_back(p);
 
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
 	
-	for(int i = 0; i < connections.size(); i++){
-		CloudsClip& relatedClip = connections[i];
+	for(int i = 0; i < args.clipOptions.size(); i++){
+		CloudsClip& relatedClip = args.clipOptions[i];
 		string clipName = relatedClip.getLinkName();
 
 		msa::physics::Particle2D* a;
@@ -214,9 +223,9 @@ void CloudsFCPVisualizer::addLinksToPhysics(CloudsClip& center,
 		   springs.find( make_pair(p, a) ) == springs.end() ){
 			//use clips in common to weight the lines
 			msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, springStrength, restLength );
-			springScores[newSpring] = scores[i];
+			springScores[newSpring] = args.clipOptions[i].currentScore;
 			springs[ make_pair(p, a) ] = newSpring;
-			keywordsInSpring[ newSpring ] = database->getSharedKeywords(center, relatedClip);
+			keywordsInSpring[ newSpring ] = database->getSharedKeywords(args.chosenClip, relatedClip);
 			if(isLink){
 				linkSprings.insert(newSpring);
 			}

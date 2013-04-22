@@ -6,9 +6,15 @@
 
 class CloudsStoryEventArgs : public ofEventArgs {
   public:
+	CloudsStoryEventArgs(CloudsClip& chosenClip, vector<CloudsClip>& clipOptions, string currentTopic)
+		: chosenClip(chosenClip), clipOptions(clipOptions), currentTopic(currentTopic)
+	{
+		//
+	}
+	
+	CloudsClip& chosenClip;
+	vector<CloudsClip>& clipOptions;
 	string currentTopic;
-	CloudsClip* chosenClip;
-	vector<CloudsClip>* clipOptions;
 };
 
 class CloudsEvents {
