@@ -68,6 +68,7 @@
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) createLink:(id)sender;
+- (IBAction) suppressLink:(id)sender;
 - (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) deleteLink:(id)sender;
@@ -78,10 +79,15 @@
 - (IBAction) playCurrentPlaylist:(id)sender;
 - (IBAction) addClip:(id)sender;
 - (IBAction) removeLink:(id)sender;
+- (IBAction) unsuppressLink:(id)sender;
+
+- (IBAction) linkLast:(id)sender;
+- (IBAction) suppressLast:(id)sender;
 
 - (float) clipPercentComplete;
 
 - (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
+- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

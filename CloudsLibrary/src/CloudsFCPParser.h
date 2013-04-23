@@ -9,14 +9,12 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 #include "CloudsClip.h"
+#include "CloudsLink.h"
+
 #include <set>
 
-typedef struct {
-    string sourceName;
-    string targetName;
-    int startFrame;
-    int endFrame;
-} CloudsLink;
+//typedef struct {
+//} CloudsLink;
 
 class CloudsFCPParser {
   public:
@@ -33,13 +31,19 @@ class CloudsFCPParser {
     void parseLinks(string linkFile);
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
+	
     void addLink(CloudsLink& link);
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
-	
+
+	void suppressConnection(CloudsLink& link);
+    void unsuppressConnection(string linkName, int linkIndex);
+	void unsuppressConnection(string linkName, string targetName);
+
 	//QUERIES
 	//true if A has any out going links at all
+	bool clipHasLink(CloudsClip& clip);
 	bool clipHasLink(string clipName);
 	//true if A links to B
     bool clipLinksTo(string clipNameA, string clipNameB);
@@ -50,12 +54,16 @@ class CloudsFCPParser {
 	//true if A and B have clips that link to one another
 	bool keywordsShareLink(string keyA, string keyB);
 	
+	//are there any clips that this suppresses?
+	bool clipHasSuppressions(CloudsClip& clip);
+	bool clipHasSuppressions(string clipName);
+	
+	//are we suppressing this connection?
+	bool linkIsSuppressed(string clipNameA, string clipNameB);
+	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);
+	
 	float percentOfClipsLinked();
 	
-#pragma mark Liking
-	void suppressConnection(CloudsClip& a, CloudsClip& b);
-	void unsuppressConnection(CloudsClip& a, CloudsClip& b);
-	bool isConnectionSuppressed(CloudsClip& a, CloudsClip& b);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
@@ -94,7 +102,8 @@ class CloudsFCPParser {
     map<string, int> allKeywords;
     vector<string> keywordVector;
 
-    map<string, vector<CloudsLink> > sourceLinks;
+    map<string, vector<CloudsLink> > linkedConnections;
+	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
 	
 

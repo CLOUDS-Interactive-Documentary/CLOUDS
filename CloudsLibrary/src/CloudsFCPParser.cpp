@@ -34,9 +34,10 @@ void CloudsFCPParser::refreshXML(){
     }
 }
 
+
 void CloudsFCPParser::parseLinks(string linkFile){
 
-    sourceLinks.clear();
+    linkedConnections.clear();
     
     ofxXmlSettings linksXML;
     if(linksXML.loadFile(linkFile)){
@@ -45,65 +46,126 @@ void CloudsFCPParser::parseLinks(string linkFile){
             linksXML.pushTag("clip", i);
             string clipName = linksXML.getValue("name", "");
             int numLinks = linksXML.getNumTags("link");
-			if(numLinks == 0){
-				cout << "clip " << clipName << " had no links!" << endl;
-				continue;
+			if(numLinks > 0){
+//				cout << "clip " << clipName << " had no links!" << endl;
+				for(int l = 0; l < numLinks; l++){
+					CloudsLink newLink;
+					linksXML.pushTag("link", l);
+					
+					newLink.sourceName = clipName;
+					newLink.targetName = linksXML.getValue("target", "");
+					newLink.startFrame = linksXML.getValue("startFrame", -1);
+					newLink.endFrame   = linksXML.getValue("endFrame", -1);
+					
+					linksXML.popTag(); //link
+					
+					linkedConnections[newLink.sourceName].push_back( newLink );
+				}
 			}
 			
-            for(int l = 0; l < numLinks; l++){
-                CloudsLink newLink;
-                linksXML.pushTag("link", l);
-                
-                newLink.sourceName = clipName;
-                newLink.targetName = linksXML.getValue("target", "");
-                newLink.startFrame = linksXML.getValue("startFrame", -1);
-                newLink.endFrame   = linksXML.getValue("endFrame", -1);
-                
-                linksXML.popTag(); //link
-                
-                sourceLinks[newLink.sourceName].push_back( newLink );
-            }
-            
+			int numSuppressed = linksXML.getValue("suppress", 0);
+			if(numSuppressed > 0){
+				for(int l = 0; l < numSuppressed; l++){
+					CloudsLink newLink;
+					linksXML.pushTag("suppress", l);
+					
+					newLink.sourceName = clipName;
+					newLink.targetName = linksXML.getValue("target", "");
+					newLink.startFrame = linksXML.getValue("startFrame", -1);
+					newLink.endFrame   = linksXML.getValue("endFrame", -1);
+					
+					linksXML.popTag(); //link
+					
+					linkedConnections[newLink.sourceName].push_back( newLink );
+				}
+			}
+			
             linksXML.popTag(); //clip
         }
     }
 }
 
+
 void CloudsFCPParser::saveLinks(string linkFile){
     ofxXmlSettings linksXML;
     map<string, vector<CloudsLink> >::iterator it;
     int numClips = 0;
-    for(it = sourceLinks.begin(); it != sourceLinks.end(); it++){
-        vector<CloudsLink>& clipLinks = it->second;
-		if(clipLinks.size() == 0){
-			continue;
-		}
-        linksXML.addTag("clip");
-        linksXML.pushTag("clip", numClips++);
-        
-        linksXML.addValue("name", it->first);
-        //linksXML.addValue("meta", sourceLinks[it->first].getMetaInfo() );
-        for(int l = 0; l < clipLinks.size(); l++){
-            
-            linksXML.addTag("link");
-            linksXML.pushTag("link", l);
+	
+	for(int i = 0; i < allClips.size(); i++){
+		string clipName = allClips[i].getLinkName();
+		
+		bool hasLink = clipHasLink( allClips[i]);
+		
+		bool hasSuppressed = clipHasSuppressions( allClips[i] );
+		
+		if(hasLink || hasSuppressed){
+			
+			linksXML.addTag("clip");
+			linksXML.pushTag("clip", numClips++);
+			
+			linksXML.addValue("name", clipName);
 
-            linksXML.addValue("target", clipLinks[l].targetName );
-            linksXML.addValue("startFrame", clipLinks[l].startFrame);
-            linksXML.addValue("endFrame", clipLinks[l].endFrame);
-            
-            linksXML.popTag(); //link!
-        }
-        
-        linksXML.popTag(); //clip
-    }
+			if(hasLink){
+				vector<CloudsLink>& clipLinks = linkedConnections[clipName];
+
+				for(int l = 0; l < clipLinks.size(); l++){
+					linksXML.addTag("link");
+					linksXML.pushTag("link", l);
+					linksXML.addValue("target", clipLinks[l].targetName );
+					linksXML.addValue("startFrame", clipLinks[l].startFrame);
+					linksXML.addValue("endFrame", clipLinks[l].endFrame);
+					linksXML.popTag(); //link!
+				}
+			}
+			
+			if(hasSuppressed){
+				vector<CloudsLink>& suppressed = suppressedConnections[clipName];
+				for(int l = 0; l < suppressed.size(); l++){
+					linksXML.addTag("suppress");
+					linksXML.pushTag("suppress", l);
+					linksXML.addValue("target", suppressed[l].targetName );
+					linksXML.addValue("startFrame", suppressed[l].startFrame);
+					linksXML.addValue("endFrame", suppressed[l].endFrame);
+					linksXML.popTag(); //suppress!
+				}
+			}
+			
+			linksXML.popTag();
+		}
+	}
+	
+//    for(it = linkedConnections.begin(); it != linkedConnections.end(); it++){
+//        vector<CloudsLink>& clipLinks = it->second;
+//		if(clipLinks.size() == 0){
+//			continue;
+//		}
+//        linksXML.addTag("clip");
+//        linksXML.pushTag("clip", numClips++);
+//        
+//        linksXML.addValue("name", it->first);
+//
+//        for(int l = 0; l < clipLinks.size(); l++){
+//            
+//            linksXML.addTag("link");
+//            linksXML.pushTag("link", l);
+//			
+//            linksXML.addValue("target", clipLinks[l].targetName );
+//            linksXML.addValue("startFrame", clipLinks[l].startFrame);
+//            linksXML.addValue("endFrame", clipLinks[l].endFrame);
+//			
+//            linksXML.popTag(); //link!
+//        }
+//        
+//        linksXML.popTag(); //clip
+//    }
     
     linksXML.saveFile(linkFile);
 }
 
 void CloudsFCPParser::removeLink(string linkName, int linkIndex){
-    if(sourceLinks.find(linkName) != sourceLinks.end() && linkIndex < sourceLinks[linkName].size()){
-        sourceLinks[linkName].erase(sourceLinks[linkName].begin() + linkIndex);
+    if(linkedConnections.find(linkName) != linkedConnections.end() && linkIndex < linkedConnections[linkName].size()){
+		cout << "removed link " << linkIndex << " from " << linkName << endl;
+        linkedConnections[linkName].erase(linkedConnections[linkName].begin() + linkIndex);
     }
     else{
         cout << "failed to remove link " << linkIndex << " from " << linkName << endl;
@@ -113,15 +175,43 @@ void CloudsFCPParser::removeLink(string linkName, int linkIndex){
 void CloudsFCPParser::removeLink(string linkName, string targetName){
 	int linkIndex;
 	if(clipLinksTo(linkName, targetName, linkIndex)){
-		sourceLinks[linkName].erase(sourceLinks[linkName].begin() + linkIndex);
+		cout << "removed link " << targetName << " from " << linkName << endl;
+		linkedConnections[linkName].erase(linkedConnections[linkName].begin() + linkIndex);
     }
     else{
-        cout << "failed to remove link " << linkIndex << " from " << linkName << endl;
+        cout << "failed to remove link " << targetName << " from " << linkName << endl;
     }
 }
 
+void CloudsFCPParser::suppressConnection(CloudsLink& link){
+	if(!linkIsSuppressed(link.sourceName, link.targetName)){
+		cout << "Suppressed connection " << link.sourceName << " >> " << link.targetName << endl;
+		suppressedConnections[link.sourceName].push_back(link);
+	}
+}
+
+void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
+	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
+		cout << "Unsuppressed connection " << linkName << " >> " << linkIndex << endl;
+		suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
+	}
+}
+
+void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
+	if(clipHasSuppressions(linkName)){
+		int linkIndex;
+		if(linkIsSuppressed(linkName, targetName,linkIndex)){
+			cout << "Unsuppressed connection " << linkName << " >> " << targetName << endl;
+			suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
+		}
+	}
+}
+
+bool CloudsFCPParser::clipHasLink(CloudsClip& clip){
+	return clipHasLink(clip.getLinkName());
+}
 bool CloudsFCPParser::clipHasLink(string clipName){
-	return sourceLinks.find(clipName) != sourceLinks.end();
+	return linkedConnections.find(clipName) != linkedConnections.end() && linkedConnections[clipName].size() > 0;
 }
 
 bool CloudsFCPParser::clipsShareLink(string clipNameA, string clipNameB){
@@ -135,9 +225,34 @@ bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB) {
 	   
 bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB, int& index){
 	if(clipHasLink(clipNameA)) {
-		vector<CloudsLink>& links = sourceLinks[ clipNameA ];
+		vector<CloudsLink>& links = linkedConnections[ clipNameA ];
 		for(int i = 0; i < links.size(); i++){
 			if(links[ i ].targetName == clipNameB){
+				index = i;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool CloudsFCPParser::clipHasSuppressions(CloudsClip& clip){
+	return clipHasSuppressions(clip.getLinkName());
+}
+bool CloudsFCPParser::clipHasSuppressions(string clipName){
+	return suppressedConnections.find(clipName) != suppressedConnections.end() && suppressedConnections[clipName].size() > 0;
+}
+
+bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB){
+	int deadIndex;
+	return linkIsSuppressed(clipNameA, clipNameB, deadIndex);
+}
+
+bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB, int& index){
+	if(clipHasSuppressions(clipNameA)){
+		vector<CloudsLink>& suppressions = suppressedConnections[clipNameA];
+		for(int i = 0; i < suppressions.size(); i++){
+			if(suppressions[i].targetName == clipNameB){
 				index = i;
 				return true;
 			}
@@ -295,17 +410,17 @@ float CloudsFCPParser::percentOfClipsLinked(){
 	return (1.0*clipsLinked)/allClips.size();
 }
 
-void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
-	
-}
-
-void CloudsFCPParser::unsuppressConnection(CloudsClip& a, CloudsClip& b){
-	
-}
-
-bool CloudsFCPParser::isConnectionSuppressed(CloudsClip& a, CloudsClip& b){
-	
-}
+//void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
+//	
+//}
+//
+//void CloudsFCPParser::unsuppressConnection(CloudsClip& a, CloudsClip& b){
+//	
+//}
+//
+//bool CloudsFCPParser::isConnectionSuppressed(CloudsClip& a, CloudsClip& b){
+//	
+//}
 
 vector<string>& CloudsFCPParser::getAllKeywords(){
     if(keywordsDirty){
@@ -323,16 +438,16 @@ vector<CloudsClip>& CloudsFCPParser::getAllClips(){
 }
 
 vector<CloudsLink>& CloudsFCPParser::getLinksForClip(CloudsClip& clip){
-    return sourceLinks[clip.getLinkName()];
+    return linkedConnections[clip.getLinkName()];
 }
 
 vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
-    return sourceLinks[clipName];
+    return linkedConnections[clipName];
 }
 
 void CloudsFCPParser::addLink(CloudsLink& link){
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
-		sourceLinks[link.sourceName].push_back( link );
+		linkedConnections[link.sourceName].push_back( link );
 	}
 }
 

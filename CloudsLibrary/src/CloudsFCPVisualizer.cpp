@@ -60,6 +60,7 @@ CloudsFCPVisualizer::CloudsFCPVisualizer(){
 	visitedColor = ofColor::fromHex(0x9947ad);
 	abandonedColor = ofColor::fromHex(0x373d52);
 	traceColor = ofColor::fromHex(0xd0e9ff);
+	suppressedColor = ofColor::fromHex(0xb14444);
 	
 	currentScale = 1.0;
 	currentTop = ofVec2f(0,0);
@@ -80,6 +81,8 @@ void CloudsFCPVisualizer::clear(){
 	particleToClip.clear();
 	springs.clear();
 	linkSprings.clear();
+	suppressedSprings.clear();
+	
 	keywordsInSpring.clear();
 	particleBirthOrder.clear();
 	dampendPositions.clear();
@@ -215,6 +218,10 @@ void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
 		}
 		
 		bool isLink = database->clipLinksTo(mainLinkName, clipName);
+		bool isSuppressed = database->linkIsSuppressed(mainLinkName, clipName);
+		if(isLink && isSuppressed){
+			ofSystemAlertDialog("Clips " + mainLinkName + " " + clipName + " are both linked and suppressed!");
+		}
 		
 		currentOptionClips.push_back(relatedClip);
 		currentOptionParticles.push_back(a);
@@ -229,10 +236,17 @@ void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
 			if(isLink){
 				linkSprings.insert(newSpring);
 			}
+			else if(isSuppressed){
+				suppressedSprings.insert(newSpring);
+			}
 		}
 		else if(isLink) {
 			if(springs.find( make_pair(a, p) ) != springs.end()) linkSprings.insert(springs[ make_pair(a, p)]);
 			else if(springs.find( make_pair(p, a) ) != springs.end()) linkSprings.insert(springs[ make_pair(p, a)]);
+		}
+		else if(isSuppressed){
+			if(springs.find( make_pair(a, p) ) != springs.end()) suppressedSprings.insert(springs[ make_pair(a, p)]);
+			else if(springs.find( make_pair(p, a) ) != springs.end()) suppressedSprings.insert(springs[ make_pair(p, a)]);			
 		}
 	}
 
@@ -292,7 +306,7 @@ CloudsClip CloudsFCPVisualizer::getEdgeDestination(){
 }
 
 void CloudsFCPVisualizer::linkedEdge(){
-	if(isEdgeSelected()){
+	if(isEdgeSelected() && !isSelectedEdgeSuppressed()){
 		linkSprings.insert(selectedSpring);
 	}
 }
@@ -303,11 +317,60 @@ void CloudsFCPVisualizer::unlinkEdge(){
 	}
 }
 
+bool CloudsFCPVisualizer::isSelectedEdgeSuppressed(){
+	return isEdgeSelected() && suppressedSprings.find(selectedSpring) != suppressedSprings.end();
+}
+
+void CloudsFCPVisualizer::suppressEdge(){
+	if(isEdgeSelected() && !isSelectedEdgeLink()){
+		suppressedSprings.insert(selectedSpring);
+	}
+}
+
+void CloudsFCPVisualizer::unsuppressEdge(){
+	if(isSelectedEdgeSuppressed()){
+		suppressedSprings.erase( suppressedSprings.find(selectedSpring) );
+	}
+}
+
 bool CloudsFCPVisualizer::hasParticle(string tagName){
 	return particlesByTag.find(tagName) != particlesByTag.end();
 }
 
+void CloudsFCPVisualizer::linkPathEdge(int pathIndex){
+	if(pathIndex < pathBySprings.size()){
+		if(linkSprings.find(pathBySprings[pathIndex]) == linkSprings.end()){
+			linkSprings.insert(pathBySprings[pathIndex]);
+		}
+		else{
+			linkSprings.erase(pathBySprings[pathIndex]);
+		}
+	}
+}
+
+void CloudsFCPVisualizer::suppressPathEdge(int pathIndex){
+	if(pathIndex < pathBySprings.size()){
+		if(suppressedSprings.find(pathBySprings[pathIndex]) == suppressedSprings.end()){
+			cout << "SUPRRESSED CONNECTION in VISUALZIER" << endl;
+			suppressedSprings.insert(pathBySprings[pathIndex]);
+		}
+		else{
+			cout << "REMOVING SUPPRESSION in VISUALZIER!" << endl;
+			suppressedSprings.erase(pathBySprings[pathIndex]);
+		}
+	}
+}
+
+void CloudsFCPVisualizer::linkLastEdge(){
+	linkPathEdge(pathBySprings.size()-1);	
+}
+
+void CloudsFCPVisualizer::suppressLastEdge(){
+	suppressPathEdge(pathBySprings.size()-1);	
+}
+
 void CloudsFCPVisualizer::updatePhysics(){
+	
     physics.update();
 	
 	if(physics.numberOfParticles() == 0){
@@ -362,13 +425,15 @@ void CloudsFCPVisualizer::drawPhysics(){
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
 			ofSetColor(s == hoverSpring ? hoverColor : selectedColor, (1-alpha)*200);
 			ofSetLineWidth(.5 + ofxTween::map(alpha, 0, 1.0, 1.0, 3.0, true, cub));
-			ofLine(s->getOneEnd()->getPosition(),
-				   s->getTheOtherEnd()->getPosition());
+			ofLine(dampendPositions[s->getOneEnd()], dampendPositions[s->getTheOtherEnd()] );
 		}
 
 		if(linkSprings.find(s) != linkSprings.end()){
-//			ofSetColor(selectedColor, ofMap(numClips*2, 1, 10, 50, 255));
 			ofSetColor(hoverColor, 128);
+			ofSetLineWidth(4);
+		}
+		else if(suppressedSprings.find(s) != suppressedSprings.end()){
+			ofSetColor(suppressedColor, 128);
 			ofSetLineWidth(4);
 		}
 		else{
@@ -376,7 +441,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, 2, 5) );
 		}
 		
-        ofVec2f pos1 = dampendPositions[ s->getOneEnd()  ];
+        ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
 		ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
@@ -486,7 +551,7 @@ msa::physics::Particle2D* CloudsFCPVisualizer::particleNearPoint(ofVec2f point){
 	
 	for(int i = 0; i < physics.numberOfParticles(); i++){
 		float particleRadiusSquared = powf(radiusForNode( physics.getParticle(i)->getMass() ), 2);
-		if(point.squareDistance( physics.getParticle(i)->getPosition()) < (particleRadiusSquared + cursorRadius*cursorRadius) ){
+		if(point.squareDistance( dampendPositions[ physics.getParticle(i) ] ) < (particleRadiusSquared + cursorRadius*cursorRadius) ){
 			return physics.getParticle(i);
 		}
 	}
@@ -498,10 +563,10 @@ msa::physics::Spring2D* CloudsFCPVisualizer::springNearPoint(ofVec2f point){
 	for(int i = 0; i < physics.numberOfSprings(); i++){
 		msa::physics::Spring2D* spring = physics.getSpring( i );
 		ofVec3f p = ofVec3f(point.x, point.y, 0);
-		ofVec3f a = ofVec3f(physics.getSpring( i )->getOneEnd()->getPosition().x,
-							physics.getSpring( i )->getOneEnd()->getPosition().y,0);
-		ofVec3f b = ofVec3f(physics.getSpring( i )->getTheOtherEnd()->getPosition().x,
-							physics.getSpring( i )->getTheOtherEnd()->getPosition().y,0);
+		ofVec3f a = ofVec3f(dampendPositions[ physics.getSpring( i )->getOneEnd()].x,
+							dampendPositions[ physics.getSpring( i )->getOneEnd()].y,0);
+		ofVec3f b = ofVec3f(dampendPositions[ physics.getSpring( i )->getTheOtherEnd()].x,
+							dampendPositions[ physics.getSpring( i )->getTheOtherEnd()].y,0);
 		float distance;
 		if( DistancePointLine(p, a, b, distance) && distance < cursorRadius){
 			return spring;

@@ -51,7 +51,7 @@
 	ofPushStyle();
 	ofSetColor(0xc965e2, 150);
 	float percentDone = [mainview clipPercentComplete];
-	ofRect(0, ofGetHeight()-10, 540*percentDone, 10);
+	ofRect(0, ofGetHeight()-10, 960*percentDone, 10);
 	ofPopStyle();
 }
 

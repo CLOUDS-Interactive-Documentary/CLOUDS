@@ -291,10 +291,9 @@
 
 		cout << "after creating link the current clip has " << currentClipLinks.size() << endl;		
 	}
-	
 }
 
-//CONFUSING!
+//CONFUSING: delete link is called from the link table, remove link called from the graph
 - (IBAction) deleteLink:(id)sender
 {
     if(linkTable.selectedRow >= 0){
@@ -316,6 +315,39 @@
 		
 		visualizer.unlinkEdge();
 		[self saveLinks:self];
+	}
+}
+
+
+- (IBAction) suppressLink:(id)sender
+{
+	if(visualizer.isEdgeSelected()){
+		if( visualizer.isSelectedEdgeLink() ){
+			parser.removeLink(visualizer.getEdgeSource().getLinkName(),
+							  visualizer.getEdgeDestination().getLinkName() );
+		}
+		
+		NSLog(@"Edge is selected!!");
+		
+		[self suppressLink:visualizer.getEdgeSource() toClip:visualizer.getEdgeDestination() ];
+		visualizer.suppressEdge();
+		
+		[clipTable reloadData];
+		[linkTable reloadData];
+		
+	}
+}
+
+- (IBAction) unsuppressLink:(id)sender
+{
+	if(	visualizer.isSelectedEdgeSuppressed() ){
+		cout << "removing suppression!" << endl;
+		parser.unsuppressConnection(visualizer.getEdgeSource().getLinkName(),
+									visualizer.getEdgeDestination().getLinkName());
+		
+		visualizer.unsuppressEdge();
+		[self saveLinks:self];
+
 	}
 }
 
@@ -342,9 +374,68 @@
 	}
 }
 
+- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target
+{
+	if(source.getLinkName() != target.getLinkName()){
+		
+		NSLog(@"suppressing link between %s + %s", source.getLinkName().c_str(), target.getLinkName().c_str());
+		
+		CloudsLink l;
+		l.sourceName = source.getLinkName();
+		l.targetName = target.getLinkName();
+		l.startFrame = -1;
+		l.endFrame = -1;
+
+		parser.suppressConnection(l);
+
+		[self saveLinks:self];
+	}
+}
+
+- (IBAction) linkLast:(id)sender
+{
+	if(playlistTable.numberOfRows > 1){
+		CloudsClip& a = storyEngine.getClipHistory()[ playlistTable.selectedRow-1 ];
+		CloudsClip& b = storyEngine.getClipHistory()[ playlistTable.selectedRow ];
+		if(!parser.clipLinksTo(a.getLinkName(), b.getLinkName())){
+			[self linkClip:a toClip:b];
+		}
+		else{
+			parser.removeLink(a.getLinkName(), b.getLinkName());
+		}
+		visualizer.linkPathEdge(playlistTable.selectedRow-1);
+		[self saveLinks:self];
+	}
+	
+}
+
+- (IBAction) suppressLast:(id)sender
+{
+	if(playlistTable.numberOfRows > 1){
+		CloudsClip& a = storyEngine.getClipHistory()[ playlistTable.selectedRow-1 ];
+		CloudsClip& b = storyEngine.getClipHistory()[ playlistTable.selectedRow ];
+
+		if(!parser.linkIsSuppressed(a.getLinkName(), b.getLinkName())){
+			cout << "link is not currently suppressed, suppressing!" << endl;
+			[self suppressLink:a toClip:b];
+		}
+		else{
+			cout << "link is suppressed -- getting rid of it!" << endl;
+			parser.unsuppressConnection(a.getLinkName(), b.getLinkName());
+		}
+		visualizer.suppressPathEdge(playlistTable.selectedRow-1);
+		[self saveLinks:self];
+	}
+}
+
 - (IBAction) saveLinks:(id)sender
 {
-    parser.saveLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+	if(ofDirectory("../../../CloudsLibrary/data/links/").exists()){
+		parser.saveLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+	}
+	else{
+		parser.saveLinks("clouds_link_db.xml");
+	}
 }
 
 - (IBAction) playDoubleClickedRow:(id)sender
@@ -483,10 +574,19 @@
 //    parser.setup("xml");
 //    parser.parseLinks("clouds_link_db.xml");
 	
-	parser.setup("../../../CloudsLibrary/data/fcpxml/");
-    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+	if(ofDirectory("../../../CloudsLibrary/data").exists()){
+		parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+		parser.setup("../../../CloudsLibrary/data/fcpxml/");
+	}
+	else{
+		cout << "SETTING UP IN DATA DIRECTORY" << endl;
+		parser.parseLinks("clouds_link_db.xml");
+		parser.setup("xml");
+	}
+
+//    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
-    [keywordTable reloadData];
+    [keywordTable reloadData];	
     [clipTable reloadData];
     
 }

@@ -60,6 +60,7 @@ class CloudsFCPVisualizer {
 	map< pair<msa::physics::Particle2D*,msa::physics::Particle2D*>, msa::physics::Spring2D*> springs;
 	map< msa::physics::Spring2D*, vector<string> > keywordsInSpring;
 	set< msa::physics::Spring2D*> linkSprings;
+	set< msa::physics::Spring2D*> suppressedSprings;
 	map< msa::physics::Particle2D*, int> particleBirthOrder;
 	
 	vector< CloudsClip > currentOptionClips;
@@ -92,11 +93,22 @@ class CloudsFCPVisualizer {
 	
 	bool isEdgeSelected();
 	bool isSelectedEdgeLink();
+	
 	CloudsClip getEdgeSource();
 	CloudsClip getEdgeDestination();
 	void linkedEdge();
 	void unlinkEdge();
 	
+	bool isSelectedEdgeSuppressed();
+	void suppressEdge();
+	void unsuppressEdge();
+	
+	void linkLastEdge();
+	void suppressLastEdge();
+
+	void linkPathEdge(int pathIndex);
+	void suppressPathEdge(int pathIndex);
+
 	bool getPathChanged();
 	
 	float springStrength;
@@ -116,6 +128,7 @@ class CloudsFCPVisualizer {
 	ofColor currentNodeColor;
 	ofColor lineColor;
 	ofColor traceColor;
+	ofColor suppressedColor;
 	
 	ofVec2f graphPointForScreenPoint(ofVec2f screenPoint);
 	ofVec2f screenPointForGraphPoint(ofVec2f graphPoint);

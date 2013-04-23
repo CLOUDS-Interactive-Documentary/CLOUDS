@@ -328,6 +328,11 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 		return 0;
 	}
 	
+	if(network->linkIsSuppressed(currentClip.getLinkName(), clip.getLinkName())) {
+		if(printDecisions) cout << "	REJECTED clip " << clip.getLinkName() << ": link is suppressed" << endl;
+		return 1;
+	}
+	
 	//Base score
 	int score = 10;
 	int topicsInCommon = network->getSharedKeywords(currentClip, clip).size();

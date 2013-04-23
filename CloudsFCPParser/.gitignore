@@ -11,3 +11,5 @@ build
 xcuserdata
 DerivedData
 project.xcworkspace
+
+*.zip
