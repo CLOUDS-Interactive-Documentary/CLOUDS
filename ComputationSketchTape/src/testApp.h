@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
+#include "CloudsVisualSystemComputationTicker.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,36 +21,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	int width, height;
-	ofVboMesh mesh;
-	vector<int> startIndeces;
-
-	
-	void regenerateParticles();
-	
-	ofEasyCam cam;
-	
-	ofImage speedTexture;
-	ofImage shiftTexture;
-	
-	void reloadShaders();
-	ofShader updateShader;
-	ofShader drawShader;
-
-	ofVboMesh offsetMesh;
-	ofFbo sourceOffset,targetOffset;
-	
-	ofFbo fbo;
-	
-	float pathDeviation;
-	
-	float speed;
-	float scale;
-	float pointSize;
-	float deviation;
-	float colorflip;
-	
-	bool debug;
-	bool regenerate;
-	ofxUICanvas* gui;
+	CloudsVisualSystemComputationTicker computation;
 };

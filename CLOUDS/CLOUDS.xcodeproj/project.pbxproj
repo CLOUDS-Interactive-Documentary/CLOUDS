@@ -308,12 +308,12 @@
 		E7637D511734DE75008ADC62 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7637D541734DE75008ADC62 /* CloudsVisualization.cpp */,
 				E7637D551734DE75008ADC62 /* CloudsVisualization.h */,
-				E7637D561734DE75008ADC62 /* CloudsVisualizationStandin.cpp */,
+				E7637D541734DE75008ADC62 /* CloudsVisualization.cpp */,
 				E7637D571734DE75008ADC62 /* CloudsVisualizationStandin.h */,
-				E7637D581734DE75008ADC62 /* CloudsVisualSystemComputationTicker.cpp */,
+				E7637D561734DE75008ADC62 /* CloudsVisualizationStandin.cpp */,
 				E7637D591734DE75008ADC62 /* CloudsVisualSystemComputationTicker.h */,
+				E7637D581734DE75008ADC62 /* CloudsVisualSystemComputationTicker.cpp */,
 			);
 			path = VisualSystems;
 			sourceTree = "<group>";

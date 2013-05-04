@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	parser.setup("../../../CloudsLibrary/data/fcpxml/");
-    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+	parser.setup("../../../CloudsData//fcpxml/");
+    parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 
 	storyEngine.setup();
 	storyEngine.network = &parser;
