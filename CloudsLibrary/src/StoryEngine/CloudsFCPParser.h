@@ -10,11 +10,7 @@
 #include "ofxXmlSettings.h"
 #include "CloudsClip.h"
 #include "CloudsLink.h"
-
 #include <set>
-
-//typedef struct {
-//} CloudsLink;
 
 class CloudsFCPParser {
   public:

@@ -1,17 +1,32 @@
+
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "CloudsVisualSystem.h"
+#include <set>
 
-/** 
- * COMPUTATION visual system
- * shows ticker tape strands running in fields
- * that can be zoomed in and diverted
- */
 
-class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
+class CloudsFakeVS {
   public:
+	vector<string> keywords;
+	string name;
+	string filePath;
+	ofImage image;
+	ofVideoPlayer player;
+	void draw(){
+		if(image.isAllocated()){
+			image.draw(0,0);
+		}
+		else if(player.isLoaded()){
+			player.draw(0,0);
+		}
+	}
+};
+
+class CloudsVisualSystemStandin : public CloudsVisualSystem {
+  public:
+	
+	CloudsVisualSystemStandin();
 	
 	virtual void setup();
 	
@@ -30,43 +45,21 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
 	virtual void mouseMoved(ofMouseEventArgs & args);
 	virtual void mousePressed(ofMouseEventArgs & args);
 	virtual void mouseReleased(ofMouseEventArgs & args);
-		
+	
 	//application exit, clean up and don't crash
 	virtual void exit(ofEventArgs & args);
+
 	
   protected:
-
-	//called when showing the visual system, and to end it
+	
 	virtual void begin();
 	virtual void end();
 
-	int width, height;
-	ofVboMesh mesh;
-	vector<int> startIndeces;
-
-	void regenerateParticles();
-		
-	ofImage speedTexture;
-	ofImage shiftTexture;
+	bool systemSelected;
+	CloudsFakeVS* currentVisualSystem;
+	vector<CloudsFakeVS> fakeVisualSystems;
+	set<string> allKeywords;
+	map<string, vector<CloudsFakeVS> > keywordToSystems;
 	
-	void reloadShaders();
-	ofShader updateShader;
-	ofShader drawShader;
 	
-	ofVboMesh offsetMesh;
-	ofFbo sourceOffset,targetOffset;
-	
-	ofFbo fbo;
-	
-	float pathDeviation;
-	
-	float speed;
-	float scale;
-	float pointSize;
-	float deviation;
-	float colorflip;
-	
-	bool debug;
-	bool regenerate;
-	ofxUICanvas* gui;
 };

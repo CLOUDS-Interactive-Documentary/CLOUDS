@@ -1,8 +1,21 @@
 
 #include "CloudsVisualSystemComputationTicker.h"
 
-void CloudsVisualSystemComputationTicker::setup(){
 
+//--------------------------------------------------------------
+bool CloudsVisualSystemComputationTicker::isReleventToKeyword(string keyword){
+	if(keyword == "computation"){
+		return true;
+	}
+}
+
+//--------------------------------------------------------------
+string CloudsVisualSystemComputationTicker::getSystemName(){
+	return "Ticker Tape";
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::setup(){
 	
 	int buttonWidth = 180;
 	int buttonHeight = 30;
@@ -225,10 +238,6 @@ void CloudsVisualSystemComputationTicker::keyPressed(ofKeyEventArgs & args){
 }
 
 void CloudsVisualSystemComputationTicker::keyReleased(ofKeyEventArgs & args){
-	
-}
-
-bool CloudsVisualSystemComputationTicker::isReleventToKeyword(string keyword){
 	
 }
 

@@ -1,10 +1,3 @@
-//
-//  CloudsVisualization.cpp
-//  CLOUDS
-//
-//  Created by James George on 4/23/13.
-//
-//
 
 #include "CloudsVisualSystem.h"
 
@@ -57,4 +50,12 @@ float CloudsVisualSystem::getSecondsRemaining(){
 
 void CloudsVisualSystem::setSecondsRemaining(float seconds){
 	secondsRemaining = seconds;
+}
+
+void CloudsVisualSystem::setCurrentKeyword(string keyword){
+	currentKeyword = keyword;
+}
+
+string CloudsVisualSystem::getCurrentKeyword(){
+	return currentKeyword;
 }

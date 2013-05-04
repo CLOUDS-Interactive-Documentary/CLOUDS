@@ -1,6 +1,10 @@
 #pragma once
 
+
+
+
 #include "ofMain.h"
+
 
 /**
  * The CLOUDS Visual System super class
@@ -9,6 +13,11 @@
  * It works pretty much the same as testApp, with the addition of a few
  * methods for interacting with play time duration, on screen start and stop, and accessing CLOUDS global state
  */
+
+//TODO: timing, fading, drawing helpers like 2d/3d camera
+//TODO: 'preset' variables and state design
+//TODO: debug mode vs persentation mode
+
 class CloudsVisualSystem {
   public:
 	CloudsVisualSystem();
@@ -49,12 +58,22 @@ class CloudsVisualSystem {
 	virtual void begin() = 0;
 	virtual void end() = 0;
 	
+	virtual string getSystemName() = 0;
+	
+	//SET and CALLED FROM CONTROLLER
+	
 	//how much time left to show this visual system?
 	//once seconds is set to zero the end() event will be called by the controller
 	float getSecondsRemaining();
 	void setSecondsRemaining(float seconds);
 	
+	//set before calling begin so the class can react to the topic
+	void setCurrentKeyword(string keyword);
+	string getCurrentKeyword();
+	
   protected:
+
+	string currentKeyword;
 
 	bool isPlaying;
 	float secondsRemaining;
