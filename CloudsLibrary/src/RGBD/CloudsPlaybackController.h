@@ -44,12 +44,11 @@ class CloudsPlaybackController {
 	CloudsRGBDCombinedRender renderer;
 	CloudsClip currentClip;
 	
+	bool playingCombinedVideo;
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
 	void clipChanged(CloudsStoryEventArgs& args);
-
 	void playClip(CloudsClip& clip);
-	
 	
 	//VISUAL SYSTEMS
 	//
@@ -62,6 +61,5 @@ class CloudsPlaybackController {
 	
 	//MEDIA/INTERNAL
 	string relinkMovieFilepath(string filePath);
-	
-	bool playingCombinedVideo;
+
 };

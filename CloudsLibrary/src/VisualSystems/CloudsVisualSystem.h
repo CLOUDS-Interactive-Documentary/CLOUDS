@@ -54,9 +54,6 @@ class CloudsVisualSystem {
 	void playSystem();
 	void stopSystem();
 	
-	//called when showing the visual system, and to end it
-	virtual void begin() = 0;
-	virtual void end() = 0;
 	
 	virtual string getSystemName() = 0;
 	
@@ -72,6 +69,10 @@ class CloudsVisualSystem {
 	string getCurrentKeyword();
 	
   protected:
+
+	//called when showing the visual system, and to end it
+	virtual void begin() = 0;
+	virtual void end() = 0;
 
 	string currentKeyword;
 

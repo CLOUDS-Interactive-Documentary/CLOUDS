@@ -141,7 +141,6 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	visualSystems.push_back(computation);
 	visualSystems.push_back(standIn);
-
 }
 
 void CloudsPlaybackController::showVisualSystem(){
@@ -158,7 +157,6 @@ void CloudsPlaybackController::showVisualSystem(){
 			showingVisualSystem = true;
 			currentVisualSystem->setCurrentKeyword(storyEngine->getCurrentTopic());
 			currentVisualSystem->playSystem();
-			
 			break;
 		}
 	}
@@ -168,7 +166,8 @@ void CloudsPlaybackController::showVisualSystem(){
 void CloudsPlaybackController::hideVisualSystem(){
 	if(currentVisualSystem != NULL){
 		showingVisualSystem = false;
-		currentVisualSystem->end();
+		//TODO time delay!
+		currentVisualSystem->stopSystem();
 	}
 }
 
