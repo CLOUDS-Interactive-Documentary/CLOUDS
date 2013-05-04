@@ -29,5 +29,7 @@ class CloudsPlaybackController {
 
 	void playClip(CloudsClip& clip);
 	
+	string relinkMovieFilepath(string filePath);
+	
 	bool playingCombinedVideo;
 };

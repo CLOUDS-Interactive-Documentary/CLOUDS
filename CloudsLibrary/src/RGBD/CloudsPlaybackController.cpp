@@ -9,8 +9,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 CloudsPlaybackController::~CloudsPlaybackController(){
 	if(eventsRegistered){
 		eventsRegistered = false;
-		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
+//		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
+//		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
 	}
 }
 
@@ -32,16 +32,17 @@ void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
 }
 
 void CloudsPlaybackController::playClip(CloudsClip& clip){
+	
 	if(clip.hasCombinedVideo){
-		if(player.loadMovie(clip.combinedVideoFilePath)){
+		if(player.loadMovie(relinkMovieFilepath(clip.combinedVideoFilePath))){
 			playingCombinedVideo = true;
-			renderer.setup(clip.combinedVideoCalibrationXml);
+			renderer.setup(relinkMovieFilepath(clip.combinedVideoCalibrationXml));
 			renderer.setTexture(player);
 		}
 	}
 	else{
 		playingCombinedVideo = false;
-		player.loadMovie(clip.sourceVideoFilePath);
+		player.loadMovie( relinkMovieFilepath(clip.sourceVideoFilePath) );
 	}
 	
 	player.setFrame(clip.startFrame);
@@ -51,6 +52,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 }
 
 void CloudsPlaybackController::update(){
+	player.update();
 	if(player.isPlaying()){
 		if(player.getCurrentFrame() >= currentClip.endFrame){
 			storyEngine->selectNewClip();
@@ -69,3 +71,13 @@ void CloudsPlaybackController::draw(){
 	}
 }
 
+string CloudsPlaybackController::relinkMovieFilepath(string filePath){
+	
+	if( !ofFile(filePath).exists() ){
+		//		cout << "Switched clip from " << clipFilePath;
+		ofStringReplace(filePath, "Nebula_backup", "Seance");
+		ofStringReplace(filePath, "Nebula", "Seance");
+		//		cout << " to " << clipFilePath << endl;
+	}
+	return filePath;
+}

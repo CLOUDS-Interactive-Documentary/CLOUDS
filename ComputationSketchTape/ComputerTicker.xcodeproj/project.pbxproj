@@ -35,6 +35,8 @@
 		E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7E95E841733624100294C72 /* CloudsVisualization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualization.cpp */; };
+		E7E95E881733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,10 @@
 		E7846FBC1714899C00705E7A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7E95E761733624100294C72 /* CloudsVisualization.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualization.cpp; sourceTree = "<group>"; };
+		E7E95E771733624100294C72 /* CloudsVisualization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualization.h; sourceTree = "<group>"; };
+		E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemComputationTicker.cpp; sourceTree = "<group>"; };
+		E7E95E871733631A00294C72 /* CloudsVisualSystemComputationTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemComputationTicker.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +181,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E7846FB41714899C00705E7A /* ofxXmlSettings */,
 				E7846DB71714887800705E7A /* ofxUI */,
 			);
@@ -359,6 +366,34 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E7E95E5D1733624100294C72 /* src */,
+			);
+			name = CloudsLibrary;
+			path = ../CloudsLibrary;
+			sourceTree = "<group>";
+		};
+		E7E95E5D1733624100294C72 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7E95E731733624100294C72 /* VisualSystems */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7E95E731733624100294C72 /* VisualSystems */ = {
+			isa = PBXGroup;
+			children = (
+				E7E95E771733624100294C72 /* CloudsVisualization.h */,
+				E7E95E761733624100294C72 /* CloudsVisualization.cpp */,
+				E7E95E871733631A00294C72 /* CloudsVisualSystemComputationTicker.h */,
+				E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */,
+			);
+			path = VisualSystems;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -453,6 +488,8 @@
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
+				E7E95E841733624100294C72 /* CloudsVisualization.cpp in Sources */,
+				E7E95E881733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -430,8 +430,8 @@
 
 - (IBAction) saveLinks:(id)sender
 {
-	if(ofDirectory("../../../CloudsLibrary/data/links/").exists()){
-		parser.saveLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
+	if(ofDirectory("../../../CloudsData/links/").exists()){
+		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
 	}
 	else{
 		parser.saveLinks("clouds_link_db.xml");
@@ -574,9 +574,9 @@
 //    parser.setup("xml");
 //    parser.parseLinks("clouds_link_db.xml");
 	
-	if(ofDirectory("../../../CloudsLibrary/data").exists()){
-		parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
-		parser.setup("../../../CloudsLibrary/data/fcpxml/");
+	if(ofDirectory("../../../CloudsData/").exists()){
+		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+		parser.setup("../../../CloudsData/fcpxml/");
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
