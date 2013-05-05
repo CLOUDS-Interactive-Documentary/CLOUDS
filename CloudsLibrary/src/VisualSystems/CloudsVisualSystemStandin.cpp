@@ -8,6 +8,7 @@
 
 #include "CloudsVisualSystemStandin.h"
 #include "ofxXmlSettings.h"
+#include "CloudsStoryEngine.h"
 
 CloudsVisualSystemStandin::CloudsVisualSystemStandin(){
 	systemSelected = false;
@@ -56,11 +57,17 @@ void CloudsVisualSystemStandin::setup(){
 			keywordToSystems[ cvs.keywords[i] ].push_back( cvs );
 		}
 		allKeywords.insert(cvs.keywords.begin(),cvs.keywords.end());
-		
 		settings.popTag();
 	}
 	
+	//copy keyword set into relevant keywords
+	copy(allKeywords.begin(), allKeywords.end(), inserter(relevantKeywords, relevantKeywords.begin()));
+	
 	cout << "found " << allKeywords.size() << " keywords for " << fakeVisualSystems.size() << " visual systems" << endl;
+	
+	cout << "relevantKeywords keywords: " << endl;
+	for(int i = 0; i < relevantKeywords.size(); i++) cout << relevantKeywords[i] << " rel" << endl;
+	
 }
 
 void CloudsVisualSystemStandin::begin(){

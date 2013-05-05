@@ -16,7 +16,7 @@ CloudsFCPParser::CloudsFCPParser(){
 void CloudsFCPParser::setup(string directory){
     xmlDirectory = directory;
     refreshXML();
-    
+	
     map<string, int>::iterator it;
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
 //        cout << it->first << ": " << it->second << endl;
@@ -33,7 +33,6 @@ void CloudsFCPParser::refreshXML(){
         }
     }
 }
-
 
 void CloudsFCPParser::parseLinks(string linkFile){
 
@@ -313,6 +312,8 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
     else{
         ofLogError("CloudsFCPParser::addXMLFile -- file parse failed " + xmlFile);
     }
+	
+	
 }
 
 void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
@@ -409,6 +410,83 @@ float CloudsFCPParser::percentOfClipsLinked(){
 	
 	return (1.0*clipsLinked)/allClips.size();
 }
+
+void CloudsFCPParser::populateKeyThemes(){
+	keyThemes.clear();
+	
+	keyThemes.insert("computation");
+	keyThemes.insert("simulation");
+	keyThemes.insert("form");
+	keyThemes.insert("physics");
+	keyThemes.insert("biology");
+	keyThemes.insert("vision");
+	keyThemes.insert("people");
+	keyThemes.insert("social networks");
+	keyThemes.insert("toolkit");
+
+	populateKeyThemes(keyThemes);
+}
+
+void CloudsFCPParser::populateKeyThemes(set<string>& themes){
+	
+	keyThemes = themes;
+	
+	//search through all tags to find the shortest path to key
+	tagToKeyTheme.clear();
+	
+	getAllKeywords();
+	
+	for(int i = 0; i < keywordVector.size(); i++){
+
+		string closestKeyword = closestKeyThemeToTag(keywordVector[i]);
+		tagToKeyTheme[ keywordVector[i] ] = closestKeyword;
+		cout << "Closest key theme to '" << keywordVector[i] << "' is '" << closestKeyword << "'" << endl;
+	}
+}
+
+string CloudsFCPParser::closestKeyThemeToTag(string searchTag){
+	
+	vector<string> keys;
+	set<string> usedKeys;
+	keys.push_back(searchTag);
+	
+	while(!keys.empty()){
+		//get one key
+		string key = keys[0];
+		keys.erase(keys.begin());
+		
+		//if it's in the key themes you found it
+		if(keyThemes.find(key) != keyThemes.end()){
+			return key;
+		}
+		//otherwise add it to the used bin
+		usedKeys.insert(key);
+		
+		//and all the related keys that we haven't traversed yet
+		set<string> tokens = getRelatedKeywords(key);
+		set<string>::iterator it;
+		for( it = tokens.begin(); it != tokens.end(); it++ ){
+			if(usedKeys.find(*it) == usedKeys.end() && !ofContains(keys, *it)){
+				keys.push_back(*it);
+			}
+		}
+		
+		//and search the oldest in the queue on the next iteration...
+	}
+	
+	//didn't find a match!
+	return "";
+}
+
+
+string CloudsFCPParser::getKeyThemeForTag(string tag){
+	if(tagToKeyTheme.find(tag) == tagToKeyTheme.end()){
+		ofLogError() << "couldn't find key theme for tag " << tag;
+		return "";
+	}
+	return tagToKeyTheme[ tag ];
+}
+
 
 //void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
 //	

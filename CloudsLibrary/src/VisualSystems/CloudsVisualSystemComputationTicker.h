@@ -14,8 +14,6 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
   public:
 	
 	virtual void setup();
-	
-	virtual bool isReleventToKeyword(string keyword);
 	virtual string getSystemName();
 	
 	//these events are registered only when running the simulation

@@ -27,7 +27,7 @@ class CloudsVisualSystem {
 	//for example, if I'm the "computation" visual system, I'll return true to
 	//a set of keywords related to computation. It's helpful to store this
 	//in an XML file and load it on set up.
-	virtual bool isReleventToKeyword(string keyword);
+	bool isReleventToKeyword(string keyword);
 	
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes
@@ -54,7 +54,6 @@ class CloudsVisualSystem {
 	void playSystem();
 	void stopSystem();
 	
-	
 	virtual string getSystemName() = 0;
 	
 	//SET and CALLED FROM CONTROLLER
@@ -63,19 +62,32 @@ class CloudsVisualSystem {
 	//once seconds is set to zero the end() event will be called by the controller
 	float getSecondsRemaining();
 	void setSecondsRemaining(float seconds);
-	
-	//set before calling begin so the class can react to the topic
-	void setCurrentKeyword(string keyword);
+		
+	//this will always match what you offered
+	void setCurrentKeyword(string theme);
 	string getCurrentKeyword();
 	
+	//set before calling begin so the class can react to the topic
+	void setCurrentTopic(string keyword);
+	string getCurrentTopic();
+
+	vector<string>& getRelevantKeywords();
   protected:
 
 	//called when showing the visual system, and to end it
 	virtual void begin() = 0;
 	virtual void end() = 0;
 
+	//the sub class must populate this in setup() if it's to be called
+	vector<string> relevantKeywords;
+	
+	//these variables are set by the playback controller when displaying
+	
+	//keyword is the topic of conversation
+	string currentTopic;
+	//theme is the topic chosen
 	string currentKeyword;
-
+	
 	bool isPlaying;
 	float secondsRemaining;
 };

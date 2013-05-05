@@ -60,6 +60,11 @@ class CloudsFCPParser {
 	
 	float percentOfClipsLinked();
 	
+	//create a list that maps all of the tags back to closest key theme
+	void populateKeyThemes();
+	void populateKeyThemes(set<string>& keyThemes);
+
+	string getKeyThemeForTag(string tag);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
@@ -78,6 +83,9 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     
+#pragma mark key themes
+	string closestKeyThemeToTag(string searchTag);
+	
   protected:
     string xmlDirectory;
     string combinedVideoDirectory;
@@ -89,7 +97,7 @@ class CloudsFCPParser {
 	
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
-
+	
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
     vector<CloudsClip> allClips;
@@ -102,5 +110,7 @@ class CloudsFCPParser {
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
 	
+	set<string> keyThemes;
+	map<string,string> tagToKeyTheme;
 
 };

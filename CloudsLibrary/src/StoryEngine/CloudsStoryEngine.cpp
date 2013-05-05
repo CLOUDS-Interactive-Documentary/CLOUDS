@@ -154,6 +154,7 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 	else{
 		cout << "	FAILED TO SWITCH TOPIC " << currentTopic << endl;
 	}
+
 }
 
 

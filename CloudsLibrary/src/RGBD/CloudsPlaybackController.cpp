@@ -146,6 +146,21 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	visualSystems.push_back(computation);
 	visualSystems.push_back(standIn);
+
+	set<string> keyThemes;
+	vector<string>& standinKeys = standIn->getRelevantKeywords();
+	vector<string>& computationKeys =computation->getRelevantKeywords();
+
+	for(int i = 0; i < visualSystems.size(); i++){
+		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
+		for(int k = 0; k < keys.size(); k++){
+			keyThemes.insert( keys[k] );
+		}
+	}
+	
+	storyEngine->network->populateKeyThemes(keyThemes);
+	
+	//keyThemes.insert(.begin(), standIn->getRelevantKeywords().end());
 }
 
 void CloudsPlaybackController::showVisualSystem(){
@@ -156,17 +171,30 @@ void CloudsPlaybackController::showVisualSystem(){
 	
 	for(int i = 0; i < visualSystems.size(); i++){
 
-		if(visualSystems[i]->isReleventToKeyword(storyEngine->getCurrentTopic())){
+		//get the visual system that is closest to this tag
+		string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
+		
+		if(visualSystems[i]->isReleventToKeyword(keyTheme)){
 			currentVisualSystem = visualSystems[i];
-			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << endl;
+						
 			showingVisualSystem = true;
-			currentVisualSystem->setCurrentKeyword(storyEngine->getCurrentTopic());
+			currentVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());
+			currentVisualSystem->setCurrentKeyword(keyTheme);
 			currentVisualSystem->playSystem();
+			
+			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << " and key theme " << keyTheme << endl;
+			
 			return;
 		}
 	}
 	
-	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic();
+	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic() << " picking random"<<endl;
+	//pick a random one
+	currentVisualSystem = visualSystems[ int(ofRandom(visualSystems.size())) ];
+	showingVisualSystem = true;
+	currentVisualSystem->setCurrentKeyword(storyEngine->getCurrentTopic());
+	currentVisualSystem->playSystem();
+	
 }
 
 //--------------------------------------------------------------------

@@ -10,7 +10,7 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 }
 
 bool CloudsVisualSystem::isReleventToKeyword(string keyword){
-	return false;
+	return ofContains(relevantKeywords, keyword);
 }
 
 void CloudsVisualSystem::setup(){
@@ -59,3 +59,16 @@ void CloudsVisualSystem::setCurrentKeyword(string keyword){
 string CloudsVisualSystem::getCurrentKeyword(){
 	return currentKeyword;
 }
+
+void CloudsVisualSystem::setCurrentTopic(string topic){
+	currentTopic = topic;
+}
+
+string CloudsVisualSystem::getCurrentTopic(){
+	return currentTopic;
+}
+
+vector<string>& CloudsVisualSystem::getRelevantKeywords(){
+	return relevantKeywords;
+}
+

@@ -3,13 +3,6 @@
 
 
 //--------------------------------------------------------------
-bool CloudsVisualSystemComputationTicker::isReleventToKeyword(string keyword){
-	if(keyword == "computation"){
-		return true;
-	}
-}
-
-//--------------------------------------------------------------
 string CloudsVisualSystemComputationTicker::getSystemName(){
 	return "Ticker Tape";
 }
@@ -57,7 +50,11 @@ void CloudsVisualSystemComputationTicker::setup(){
 	offsetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	
 	reloadShaders();
-
+	
+	relevantKeywords.push_back("computer");
+	relevantKeywords.push_back("computation");
+	relevantKeywords.push_back("computational art");
+	relevantKeywords.push_back("computational power");
 }
 
 //--------------------------------------------------------------

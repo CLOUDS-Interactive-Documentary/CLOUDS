@@ -5,6 +5,12 @@
 #include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
 
+
+/**
+ * The Clouds story engine generates sequences of clips
+ * based on the keyword connectivity and rules.
+ * It has state history for each story sequence
+ */
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();
@@ -35,7 +41,7 @@ class CloudsStoryEngine {
 	bool atDeadEnd();
 	
 	CloudsEvents& getEvents();
-	
+
   protected:
 	
 	CloudsEvents events;
@@ -50,6 +56,7 @@ class CloudsStoryEngine {
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
+	
 	
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;
