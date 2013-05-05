@@ -39,6 +39,8 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
+		populateVisualSystems();
+		
 		eventsRegistered = true;
 	}
 }
@@ -139,6 +141,9 @@ void CloudsPlaybackController::populateVisualSystems(){
 	CloudsVisualSystemStandin* standIn = new CloudsVisualSystemStandin();
 	CloudsVisualSystemComputationTicker* computation = new CloudsVisualSystemComputationTicker();
 	
+	standIn->setup();
+	computation->setup();
+	
 	visualSystems.push_back(computation);
 	visualSystems.push_back(standIn);
 }
@@ -157,9 +162,11 @@ void CloudsPlaybackController::showVisualSystem(){
 			showingVisualSystem = true;
 			currentVisualSystem->setCurrentKeyword(storyEngine->getCurrentTopic());
 			currentVisualSystem->playSystem();
-			break;
+			return;
 		}
 	}
+	
+	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic();
 }
 
 //--------------------------------------------------------------------

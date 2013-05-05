@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	parser.setup("../../../CloudsData//fcpxml/");
+	parser.setup("../../../CloudsData/fcpxml/");
     parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 
 	storyEngine.setup();

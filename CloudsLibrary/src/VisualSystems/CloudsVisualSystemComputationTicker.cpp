@@ -29,7 +29,6 @@ void CloudsVisualSystemComputationTicker::setup(){
 	gui->addLabel("generator params");
 	gui->addSlider("path color flip chance", 0, 1.0, &colorflip);
 	gui->addSlider("path deviation chance", 0, .2, &pathDeviation);
-	
 	gui->addLabelButton("regenerate particles", &regenerate);
 	
 	gui->loadSettings("GUI/guiSettings.xml");

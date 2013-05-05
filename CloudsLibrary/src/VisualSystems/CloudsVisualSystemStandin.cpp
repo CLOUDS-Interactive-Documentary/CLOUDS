@@ -22,25 +22,39 @@ void CloudsVisualSystemStandin::setup(){
 	
 	//pasre the XML file to get videos
 	ofxXmlSettings settings;
-	settings.loadFile("../../CloudsData/visualsystems.xml");
-	int numSystems = settings.getNumTags("visualsystem");
+	if(!settings.loadFile("../../../CloudsData/visualsystems/visualsystems.xml")){
+		ofLogError() << "failed to load stand in visual systems";
+		return;
+	}
+	settings.pushTag("broll");
+	
+	int numSystems = settings.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
-		settings.pushTag("visualsystem", i);
+		settings.pushTag("system", i);
 		CloudsFakeVS cvs;
 		cvs.name = settings.getValue("name", "no-name");
-		cvs.keywords = ofSplitString(settings.getValue("keywords", ""), ",", true, true) ;
-		cvs.filePath = settings.getValue("filePath", "");
+		cvs.keywords = ofSplitString(settings.getValue("tag", ""), ",", true, true) ;
+		cvs.filePath = settings.getValue("filename", "");
 		if(cvs.filePath != ""){
+			
+			cout << "	added system " << cvs.name << endl;
+
  			string fileType = ofToLower( ofFilePath::getFileExt(cvs.filePath));
 			if(fileType == "png" || fileType == "jpg"){
-				cvs.image.loadImage(cvs.filePath);
+				cvs.image.loadImage("../../../CloudsData/visualsystems/"+cvs.filePath);
 			}
 			else if(fileType == "mov" || fileType == "mp4"){
-				cvs.player.loadMovie(cvs.filePath);
+				cvs.player.loadMovie("../../../CloudsData/visualsystems/"+cvs.filePath);
+			}
+			else{
+				cout << "	no asset for system " << cvs.name << endl;
 			}
 		}
 		
 		fakeVisualSystems.push_back(cvs);
+		for(int i = 0; i < cvs.keywords.size(); i++){
+			keywordToSystems[ cvs.keywords[i] ].push_back( cvs );
+		}
 		allKeywords.insert(cvs.keywords.begin(),cvs.keywords.end());
 		
 		settings.popTag();
@@ -57,7 +71,6 @@ void CloudsVisualSystemStandin::begin(){
 	}
 	
 	systemSelected = true;
-
 	currentVisualSystem = &systems[int(ofRandom( systems.size() ))];
 	if(currentVisualSystem->player.isLoaded()){
 		currentVisualSystem->player.setLoopState(OF_LOOP_NORMAL);

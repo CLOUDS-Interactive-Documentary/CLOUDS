@@ -43,6 +43,7 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	
 	CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
 	ofNotifyEvent(events.storyBegan,args);
+	
 //	args.currentTopic = currentTopic;
 //	args.chosenClip = &seed;
 //	args.clipOptions = &allNextClips;
