@@ -7,6 +7,11 @@
 #include "CloudsRGBDCombinedRender.h"
 #include "CloudsVisualSystem.h"
 
+#include "ofxRGBDPlayer.h"
+#include "ofxRGBDGPURenderer.h"
+
+#include "ofxGameCamera.h"
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
@@ -35,14 +40,20 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
+	
   protected:
 
-	//POINTCLOUD STUFF
+	//A ROLL STUFF
 	//
-	ofVideoPlayer player;
+
+	ofxGameCamera camera;
 	CloudsStoryEngine* storyEngine;
-	CloudsRGBDCombinedRender renderer;
 	CloudsClip currentClip;
+	
+	//RGBD STUFF
+	CloudsRGBDCombinedRender combinedRenderer;
+	ofxRGBDGPURenderer rgbdRenderer;
+	ofxRGBDPlayer rgbdPlayer;
 	
 	bool playingCombinedVideo;
 	bool eventsRegistered;

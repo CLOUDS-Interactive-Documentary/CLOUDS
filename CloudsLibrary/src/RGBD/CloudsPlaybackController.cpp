@@ -30,6 +30,10 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
+		camera.setup();
+		camera.autosavePosition = true;
+		camera.loadCameraPosition();
+		
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
@@ -42,11 +46,15 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		populateVisualSystems();
 		
 		eventsRegistered = true;
+
+		rgbdRenderer.setShaderPath("shaders/rgbdtwostreams");
 	}
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
+	
+	//TEMPORARY SWITCH!!
 	if(args.key == 'v'){
 		if(showingVisualSystem){
 			hideVisualSystem();
@@ -55,6 +63,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			showVisualSystem();
 		}
 	}
+	
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -79,9 +88,14 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(){
-	player.update();
-	if(player.isPlaying()){
-		if(player.getCurrentFrame() >= currentClip.endFrame){
+//player.update();
+	if(rgbdPlayer.isLoaded()){
+		rgbdPlayer.update();
+		rgbdRenderer.update();
+	}
+	
+	if(rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
+		if(rgbdPlayer.getVideoPlayer()->getCurrentFrame() >= currentClip.endFrame){
 			storyEngine->selectNewClip();
 		}
 	}
@@ -91,13 +105,15 @@ void CloudsPlaybackController::update(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(){
 	
-	if(!showingVisualSystem && player.isPlaying()){
+	if(!showingVisualSystem && rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
+		camera.begin();
 		if(playingCombinedVideo){
-			renderer.drawPointCloud();
+			combinedRenderer.drawPointCloud();
 		}
 		else {
-			player.draw(0,0,960,540);
+			rgbdRenderer.drawPointCloud();
 		}
+		camera.end();
 	}
 }
 
@@ -116,19 +132,38 @@ void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	if(clip.hasCombinedVideo){
-		if(player.loadMovie(relinkMovieFilepath(clip.combinedVideoFilePath))){
-			playingCombinedVideo = true;
-			renderer.setup(relinkMovieFilepath(clip.combinedVideoCalibrationXml));
-			renderer.setTexture(player);
-		}
+//		if(player.loadMovie(relinkMovieFilepath(clip.combinedVideoFilePath))){
+//			playingCombinedVideo = true;
+//			renderer.setup(relinkMovieFilepath(clip.combinedVideoCalibrationXml));
+//			renderer.setTexture(player);
+//		}
 	}
 	else{
+		if(rgbdPlayer.isLoaded()){
+			rgbdPlayer.getVideoPlayer()->stop();
+		}
 		playingCombinedVideo = false;
-		player.loadMovie( relinkMovieFilepath(clip.sourceVideoFilePath) );
+		ofxRGBDScene scene;
+		string sceneFolder = ofFilePath::getEnclosingDirectory( //scene
+										ofFilePath::getEnclosingDirectory( //color
+													relinkMovieFilepath(clip.sourceVideoFilePath)));
+		scene.loadFromFolder(sceneFolder);
+
+		if(scene.valid()){
+			
+			rgbdPlayer.setup(scene);
+			rgbdPlayer.getVideoPlayer()->setFrame(clip.startFrame);
+			rgbdPlayer.getVideoPlayer()->play();
+			
+			rgbdRenderer.setup(scene.calibrationFolder);
+			rgbdRenderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
+			rgbdRenderer.setDepthImage(rgbdPlayer.getDepthPixels());
+			
+		}
+		else{
+			ofLogError() << "RGBD LOAD : folder " << sceneFolder << " is not valid" << endl;
+		}
 	}
-	
-	player.setFrame(clip.startFrame);
-	player.play();
 	
 	currentClip = clip;
 }
@@ -149,7 +184,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 
 	set<string> keyThemes;
 	vector<string>& standinKeys = standIn->getRelevantKeywords();
-	vector<string>& computationKeys =computation->getRelevantKeywords();
+	vector<string>& computationKeys = computation->getRelevantKeywords();
 
 	for(int i = 0; i < visualSystems.size(); i++){
 		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
@@ -218,5 +253,3 @@ string CloudsPlaybackController::relinkMovieFilepath(string filePath){
 	}
 	return filePath;
 }
-
-

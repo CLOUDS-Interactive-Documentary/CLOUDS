@@ -2,12 +2,17 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	
+	ofSetVerticalSync(true);
+	ofSetFrameRate(60);
+	ofBackground(0);
+	
 	parser.setup("../../../CloudsData/fcpxml/");
     parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 
 	storyEngine.setup();
 	storyEngine.network = &parser;
-	storyEngine.maxTimesOnTopic = 2;
+	storyEngine.maxTimesOnTopic = 4;
 	
 	player.setup(storyEngine);
 	
