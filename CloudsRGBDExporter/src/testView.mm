@@ -4,7 +4,7 @@
 
 - (void)setup
 {
-    [freeText setStringValue:@"some effing text bra"];
+
 }
 
 - (void)update

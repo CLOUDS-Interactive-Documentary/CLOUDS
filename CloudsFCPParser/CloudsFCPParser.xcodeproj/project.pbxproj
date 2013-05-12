@@ -31,6 +31,21 @@
 		E704E38716C0B2C400B0DC72 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38116C0B2C400B0DC72 /* tinyxmlerror.cpp */; };
 		E704E38816C0B2C400B0DC72 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38216C0B2C400B0DC72 /* tinyxmlparser.cpp */; };
 		E704E38916C0B2C400B0DC72 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704E38416C0B2C400B0DC72 /* ofxXmlSettings.cpp */; };
+		E731DED8174030DF006B9650 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E731DE57174030DF006B9650 /* README.md */; };
+		E731DEDA174030DF006B9650 /* ofxDepthHoleFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE5B174030DF006B9650 /* ofxDepthHoleFiller.cpp */; };
+		E731DEDB174030DF006B9650 /* ofxDepthImageCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE5D174030DF006B9650 /* ofxDepthImageCompressor.cpp */; };
+		E731DEDC174030DF006B9650 /* ofxDepthImageProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE5F174030DF006B9650 /* ofxDepthImageProvider.cpp */; };
+		E731DEDD174030DF006B9650 /* ofxDepthImageRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE61174030DF006B9650 /* ofxDepthImageRecorder.cpp */; };
+		E731DEDE174030DF006B9650 /* ofxDepthImageSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE63174030DF006B9650 /* ofxDepthImageSequence.cpp */; };
+		E731DEDF174030DF006B9650 /* ofxRGBDCombinedVideoExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE65174030DF006B9650 /* ofxRGBDCombinedVideoExporter.cpp */; };
+		E731DEE0174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE67174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.cpp */; };
+		E731DEE1174030DF006B9650 /* ofxRGBDCPURenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE69174030DF006B9650 /* ofxRGBDCPURenderer.cpp */; };
+		E731DEE2174030DF006B9650 /* ofxRGBDepthCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE6B174030DF006B9650 /* ofxRGBDepthCalibration.cpp */; };
+		E731DEE3174030DF006B9650 /* ofxRGBDGPURenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE6D174030DF006B9650 /* ofxRGBDGPURenderer.cpp */; };
+		E731DEE4174030DF006B9650 /* ofxRGBDPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE6F174030DF006B9650 /* ofxRGBDPlayer.cpp */; };
+		E731DEE5174030DF006B9650 /* ofxRGBDRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE71174030DF006B9650 /* ofxRGBDRenderer.cpp */; };
+		E731DEE6174030DF006B9650 /* ofxRGBDScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE73174030DF006B9650 /* ofxRGBDScene.cpp */; };
+		E731DEE7174030DF006B9650 /* ofxRGBDVideoDepthSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731DE75174030DF006B9650 /* ofxRGBDVideoDepthSequence.cpp */; };
 		E7637D811734DEF7008ADC62 /* CloudsD3Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D6A1734DEF7008ADC62 /* CloudsD3Exporter.cpp */; };
 		E7637D821734DEF7008ADC62 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */; };
 		E7637D831734DEF7008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */; };
@@ -166,6 +181,35 @@
 		E704E38216C0B2C400B0DC72 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E704E38416C0B2C400B0DC72 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E704E38516C0B2C400B0DC72 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		E731DE57174030DF006B9650 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E731DE5B174030DF006B9650 /* ofxDepthHoleFiller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthHoleFiller.cpp; sourceTree = "<group>"; };
+		E731DE5C174030DF006B9650 /* ofxDepthHoleFiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthHoleFiller.h; sourceTree = "<group>"; };
+		E731DE5D174030DF006B9650 /* ofxDepthImageCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthImageCompressor.cpp; sourceTree = "<group>"; };
+		E731DE5E174030DF006B9650 /* ofxDepthImageCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthImageCompressor.h; sourceTree = "<group>"; };
+		E731DE5F174030DF006B9650 /* ofxDepthImageProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthImageProvider.cpp; sourceTree = "<group>"; };
+		E731DE60174030DF006B9650 /* ofxDepthImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthImageProvider.h; sourceTree = "<group>"; };
+		E731DE61174030DF006B9650 /* ofxDepthImageRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthImageRecorder.cpp; sourceTree = "<group>"; };
+		E731DE62174030DF006B9650 /* ofxDepthImageRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthImageRecorder.h; sourceTree = "<group>"; };
+		E731DE63174030DF006B9650 /* ofxDepthImageSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthImageSequence.cpp; sourceTree = "<group>"; };
+		E731DE64174030DF006B9650 /* ofxDepthImageSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthImageSequence.h; sourceTree = "<group>"; };
+		E731DE65174030DF006B9650 /* ofxRGBDCombinedVideoExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDCombinedVideoExporter.cpp; sourceTree = "<group>"; };
+		E731DE66174030DF006B9650 /* ofxRGBDCombinedVideoExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDCombinedVideoExporter.h; sourceTree = "<group>"; };
+		E731DE67174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDCombinedVideoRenderer.cpp; sourceTree = "<group>"; };
+		E731DE68174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDCombinedVideoRenderer.h; sourceTree = "<group>"; };
+		E731DE69174030DF006B9650 /* ofxRGBDCPURenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDCPURenderer.cpp; sourceTree = "<group>"; };
+		E731DE6A174030DF006B9650 /* ofxRGBDCPURenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDCPURenderer.h; sourceTree = "<group>"; };
+		E731DE6B174030DF006B9650 /* ofxRGBDepthCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDepthCalibration.cpp; sourceTree = "<group>"; };
+		E731DE6C174030DF006B9650 /* ofxRGBDepthCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDepthCalibration.h; sourceTree = "<group>"; };
+		E731DE6D174030DF006B9650 /* ofxRGBDGPURenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDGPURenderer.cpp; sourceTree = "<group>"; };
+		E731DE6E174030DF006B9650 /* ofxRGBDGPURenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDGPURenderer.h; sourceTree = "<group>"; };
+		E731DE6F174030DF006B9650 /* ofxRGBDPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDPlayer.cpp; sourceTree = "<group>"; };
+		E731DE70174030DF006B9650 /* ofxRGBDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDPlayer.h; sourceTree = "<group>"; };
+		E731DE71174030DF006B9650 /* ofxRGBDRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDRenderer.cpp; sourceTree = "<group>"; };
+		E731DE72174030DF006B9650 /* ofxRGBDRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDRenderer.h; sourceTree = "<group>"; };
+		E731DE73174030DF006B9650 /* ofxRGBDScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDScene.cpp; sourceTree = "<group>"; };
+		E731DE74174030DF006B9650 /* ofxRGBDScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDScene.h; sourceTree = "<group>"; };
+		E731DE75174030DF006B9650 /* ofxRGBDVideoDepthSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRGBDVideoDepthSequence.cpp; sourceTree = "<group>"; };
+		E731DE76174030DF006B9650 /* ofxRGBDVideoDepthSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRGBDVideoDepthSequence.h; sourceTree = "<group>"; };
 		E750BEC216E67F570088F1E4 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E750BEC316E67F570088F1E4 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
 		E750BEC416E67F570088F1E4 /* ofxUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -418,6 +462,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E731DDAF174030DC006B9650 /* ofxRGBDepth */,
 				E750BD4716E67F560088F1E4 /* ofxUI */,
 				E7DA11B216DC26BE00DA505A /* ofxMSATimer */,
 				E7DA11CA16DC26BE00DA505A /* ofxRange */,
@@ -545,6 +590,51 @@
 			children = (
 				E704E38416C0B2C400B0DC72 /* ofxXmlSettings.cpp */,
 				E704E38516C0B2C400B0DC72 /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E731DDAF174030DC006B9650 /* ofxRGBDepth */ = {
+			isa = PBXGroup;
+			children = (
+				E731DE57174030DF006B9650 /* README.md */,
+				E731DE58174030DF006B9650 /* src */,
+			);
+			name = ofxRGBDepth;
+			path = ../../../../../../of_v0.7.4_osx_release/addons/ofxRGBDepth;
+			sourceTree = "<group>";
+		};
+		E731DE58174030DF006B9650 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E731DE5B174030DF006B9650 /* ofxDepthHoleFiller.cpp */,
+				E731DE5C174030DF006B9650 /* ofxDepthHoleFiller.h */,
+				E731DE5D174030DF006B9650 /* ofxDepthImageCompressor.cpp */,
+				E731DE5E174030DF006B9650 /* ofxDepthImageCompressor.h */,
+				E731DE5F174030DF006B9650 /* ofxDepthImageProvider.cpp */,
+				E731DE60174030DF006B9650 /* ofxDepthImageProvider.h */,
+				E731DE61174030DF006B9650 /* ofxDepthImageRecorder.cpp */,
+				E731DE62174030DF006B9650 /* ofxDepthImageRecorder.h */,
+				E731DE63174030DF006B9650 /* ofxDepthImageSequence.cpp */,
+				E731DE64174030DF006B9650 /* ofxDepthImageSequence.h */,
+				E731DE65174030DF006B9650 /* ofxRGBDCombinedVideoExporter.cpp */,
+				E731DE66174030DF006B9650 /* ofxRGBDCombinedVideoExporter.h */,
+				E731DE67174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.cpp */,
+				E731DE68174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.h */,
+				E731DE69174030DF006B9650 /* ofxRGBDCPURenderer.cpp */,
+				E731DE6A174030DF006B9650 /* ofxRGBDCPURenderer.h */,
+				E731DE6B174030DF006B9650 /* ofxRGBDepthCalibration.cpp */,
+				E731DE6C174030DF006B9650 /* ofxRGBDepthCalibration.h */,
+				E731DE6D174030DF006B9650 /* ofxRGBDGPURenderer.cpp */,
+				E731DE6E174030DF006B9650 /* ofxRGBDGPURenderer.h */,
+				E731DE6F174030DF006B9650 /* ofxRGBDPlayer.cpp */,
+				E731DE70174030DF006B9650 /* ofxRGBDPlayer.h */,
+				E731DE71174030DF006B9650 /* ofxRGBDRenderer.cpp */,
+				E731DE72174030DF006B9650 /* ofxRGBDRenderer.h */,
+				E731DE73174030DF006B9650 /* ofxRGBDScene.cpp */,
+				E731DE74174030DF006B9650 /* ofxRGBDScene.h */,
+				E731DE75174030DF006B9650 /* ofxRGBDVideoDepthSequence.cpp */,
+				E731DE76174030DF006B9650 /* ofxRGBDVideoDepthSequence.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1167,6 +1257,7 @@
 				E774701116D83DA8001038F9 /* README.md in Resources */,
 				E7DA110316DC267200DA505A /* libsndfile-1.dll in Resources */,
 				E7DA119E16DC26A700DA505A /* easing_terms_of_use.html in Resources */,
+				E731DED8174030DF006B9650 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1258,6 +1349,20 @@
 				E7637D841734DEF7008ADC62 /* CloudsFCPVisualizer.cpp in Sources */,
 				E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */,
 				E7637D861734DEF7008ADC62 /* CloudsStoryEngine.cpp in Sources */,
+				E731DEDA174030DF006B9650 /* ofxDepthHoleFiller.cpp in Sources */,
+				E731DEDB174030DF006B9650 /* ofxDepthImageCompressor.cpp in Sources */,
+				E731DEDC174030DF006B9650 /* ofxDepthImageProvider.cpp in Sources */,
+				E731DEDD174030DF006B9650 /* ofxDepthImageRecorder.cpp in Sources */,
+				E731DEDE174030DF006B9650 /* ofxDepthImageSequence.cpp in Sources */,
+				E731DEDF174030DF006B9650 /* ofxRGBDCombinedVideoExporter.cpp in Sources */,
+				E731DEE0174030DF006B9650 /* ofxRGBDCombinedVideoRenderer.cpp in Sources */,
+				E731DEE1174030DF006B9650 /* ofxRGBDCPURenderer.cpp in Sources */,
+				E731DEE2174030DF006B9650 /* ofxRGBDepthCalibration.cpp in Sources */,
+				E731DEE3174030DF006B9650 /* ofxRGBDGPURenderer.cpp in Sources */,
+				E731DEE4174030DF006B9650 /* ofxRGBDPlayer.cpp in Sources */,
+				E731DEE5174030DF006B9650 /* ofxRGBDRenderer.cpp in Sources */,
+				E731DEE6174030DF006B9650 /* ofxRGBDScene.cpp in Sources */,
+				E731DEE7174030DF006B9650 /* ofxRGBDVideoDepthSequence.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1418,12 +1523,14 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../../../../of_v0.7.4_osx_release/addons/ofxPCL/libs/pcl/lib/osx\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParserDebug;
 				WRAPPER_EXTENSION = app;
@@ -1514,12 +1621,14 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../../../../of_v0.7.4_osx_release/addons/ofxPCL/libs/pcl/lib/osx\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParser;
 				WRAPPER_EXTENSION = app;

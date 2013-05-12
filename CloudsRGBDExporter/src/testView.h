@@ -2,10 +2,18 @@
 
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
+#include "CloudsFCPParser.h"
+#include "ofxRGBDGPURenderer.h"
+#include "ofxRGBDPlayer.h"
 
 @interface testView : ofxCocoaGLView {
-    IBOutlet NSTokenField* tokenList;
-    IBOutlet NSTextField* freeText;
+	
+	IBOutlet NSTableView* clipTable;
+	
+	CloudsFCPParser parser;
+	ofxRGBDPlayer player;
+	ofxRGBDGPURenderer renderer;
+	
 }
 
 - (void)setup;
@@ -20,5 +28,6 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
+
 
 @end
