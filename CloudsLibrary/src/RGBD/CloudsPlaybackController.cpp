@@ -48,6 +48,9 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		eventsRegistered = true;
 
 		rgbdRenderer.setShaderPath("shaders/rgbdtwostreams");
+		
+		playerControls = new ofxUICanvas(0,0,200,500);
+		//playerControls->addSlider("", <#float _min#>, <#float _max#>, <#float _value#>)
 	}
 }
 
@@ -88,7 +91,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(){
-//player.update();
+
 	if(rgbdPlayer.isLoaded()){
 		rgbdPlayer.update();
 		rgbdRenderer.update();

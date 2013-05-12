@@ -16,7 +16,6 @@ void main()
 
     if(useTexture == 1){
         vec4 col = texture2DRect(colorTex, gl_TexCoord[0].st);
-		//enable visualize texture coordinates
 		//col = vec4(gl_TexCoord[0].s / dim.x, gl_TexCoord[0].t / dim.y, 0.0, 1.0);
         gl_FragColor = col * gl_Color;
     }
@@ -24,6 +23,6 @@ void main()
         gl_FragColor = vec4(0);
     }
 	
-	//enable visualize clipping values
+    //gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     //gl_FragColor = vec4(VZPositionValid0);
 }

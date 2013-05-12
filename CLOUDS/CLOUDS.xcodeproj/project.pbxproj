@@ -229,6 +229,7 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E779BF3D173EE013006357EF /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BF39173EE013006357EF /* ofxGameCamera.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 /* End PBXBuildFile section */
@@ -708,6 +709,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E779BF39173EE013006357EF /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
+		E779BF3A173EE013006357EF /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -866,6 +869,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E779BF24173EE013006357EF /* ofxGameCamera */,
 				E779BE5A173D60A2006357EF /* ofxTextInputField */,
 				E779BE43173D6082006357EF /* ofxTimecode */,
 				E779BE3F173D6074006357EF /* ofxRange */,
@@ -1951,6 +1955,24 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E779BF24173EE013006357EF /* ofxGameCamera */ = {
+			isa = PBXGroup;
+			children = (
+				E779BF38173EE013006357EF /* src */,
+			);
+			name = ofxGameCamera;
+			path = ../../../../../../of_v0.7.4_osx_release/addons/ofxGameCamera;
+			sourceTree = "<group>";
+		};
+		E779BF38173EE013006357EF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E779BF39173EE013006357EF /* ofxGameCamera.cpp */,
+				E779BF3A173EE013006357EF /* ofxGameCamera.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2118,6 +2140,7 @@
 				E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */,
 				E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */,
 				E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */,
+				E779BF3D173EE013006357EF /* ofxGameCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

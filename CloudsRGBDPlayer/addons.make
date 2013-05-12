@@ -1,3 +1,0 @@
-ofxGameCamera
-ofxGui
-ofxXmlSettings

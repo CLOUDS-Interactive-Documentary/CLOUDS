@@ -25,6 +25,7 @@ void CloudsVisualSystemComputationTicker::setup(){
 	gui->addLabelButton("regenerate particles", &regenerate);
 	
 	gui->loadSettings("GUI/guiSettings.xml");
+
 	regenerateParticles();
 	
 	//ALLOCATE BUFFERS

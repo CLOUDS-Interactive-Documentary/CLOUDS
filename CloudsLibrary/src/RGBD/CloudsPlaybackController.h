@@ -11,6 +11,7 @@
 #include "ofxRGBDGPURenderer.h"
 
 #include "ofxGameCamera.h"
+#include "ofxUI.h"
 
 /**
  * This class controls playback of RGBD sequences
@@ -40,6 +41,7 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
+	ofxUICanvas* playerControls;
 	
   protected:
 
