@@ -6,14 +6,13 @@
 #include "ofxRGBDGPURenderer.h"
 #include "ofxRGBDPlayer.h"
 
-@interface testView : ofxCocoaGLView {
+@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
 	IBOutlet NSTableView* clipTable;
 	
 	CloudsFCPParser parser;
 	ofxRGBDPlayer player;
 	ofxRGBDGPURenderer renderer;
-	
 }
 
 - (void)setup;
@@ -29,5 +28,7 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 @end

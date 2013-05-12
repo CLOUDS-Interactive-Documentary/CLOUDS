@@ -1680,11 +1680,13 @@
 					"$(OFXCV_HEADERS)/**",
 					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -1715,11 +1717,13 @@
 					"$(OFXCV_HEADERS)/**",
 					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
 					"-mtune=native",
 				);
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
