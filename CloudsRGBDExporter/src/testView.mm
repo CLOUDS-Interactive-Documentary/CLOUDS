@@ -31,7 +31,11 @@
 	progressBars[5] = clipProgress6;
 	progressBars[6] = clipProgress7;
 	progressBars[7] = clipProgress8;
+
+	renderer.setShaderPath("../../../CloudsData/shaders/unproject");
 	
+	
+	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
 }
 
 - (void)update
@@ -76,6 +80,15 @@
 - (void)draw
 {
 
+}
+
+
+- (void) loadClipForAlignment:(id)sender
+{
+	CloudsClip clip;
+	if(sender == clipTable && clipTable.selectedRow >= 0){
+//		clip = clipTable.selectedRow;
+	}
 }
 
 - (IBAction) exportSelection:(id)sender
@@ -144,7 +157,12 @@
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 
-	return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+	if([@"clip" isEqualToString:aTableColumn.identifier]){
+		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+	}
+	else{
+		return @"NO";
+	}
 	
 //	string keyword = parser.getAllKeywords()[rowIndex];
 //	

@@ -18,8 +18,7 @@ class CloudsClipExportManager : public ofThread {
 	bool setExportDirectory(string directory);
 
   protected:
-
-
+	
 	CloudsClip currentClip;
 	ofxRGBDCPURenderer renderer;
 	ofxRGBDPlayer rgbdPlayer;

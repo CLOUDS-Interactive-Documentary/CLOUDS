@@ -45,7 +45,6 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.nearClip = exporter.minDepth = currentClip.minDepth;
 	renderer.farClip = exporter.maxDepth = currentClip.maxDepth;
 	
-	
 	startThread(true, false);
 }
 

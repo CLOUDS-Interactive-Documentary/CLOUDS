@@ -6,6 +6,8 @@
 #include "ofxRGBDGPURenderer.h"
 #include "ofxRGBDPlayer.h"
 #include "CloudsClipExportManager.h"
+#include "ofxGameCamera.h"
+
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
@@ -34,6 +36,7 @@
 	vector<CloudsClip> selectedClips;
 
 	int currentClipIndex;
+
 }
 
 - (void)setup;
@@ -48,6 +51,8 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
+
+- (void)loadClipForAlignment:(id)sender;
 
 - (IBAction) exportSelection:(id)sender;
 - (IBAction) cancelExport:(id)sender;
