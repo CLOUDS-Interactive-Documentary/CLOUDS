@@ -149,7 +149,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 		ofxRGBDScene scene;
 		string sceneFolder = ofFilePath::getEnclosingDirectory( //scene
 										ofFilePath::getEnclosingDirectory( //color
-													relinkMovieFilepath(clip.sourceVideoFilePath)));
+																		  CloudsClip::relinkFilePath(clip.sourceVideoFilePath)));
 		scene.loadFromFolder(sceneFolder);
 
 		if(scene.valid()){
@@ -244,15 +244,3 @@ void CloudsPlaybackController::hideVisualSystem(){
 	}
 }
 
-#pragma util
-//--------------------------------------------------------------------
-string CloudsPlaybackController::relinkMovieFilepath(string filePath){
-	
-	if( !ofFile(filePath).exists() ){
-		//		cout << "Switched clip from " << clipFilePath;
-		ofStringReplace(filePath, "Nebula_backup", "Seance");
-		ofStringReplace(filePath, "Nebula", "Seance");
-		//		cout << " to " << clipFilePath << endl;
-	}
-	return filePath;
-}

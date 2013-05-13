@@ -11,8 +11,6 @@
 
 #include "ofMain.h"
 
-#include "ofxPCL.h"
-
 #include "ofxXmlSettings.h"
 
 #include "ofxRGBDPlayer.h"
@@ -25,10 +23,13 @@ public:
 	CloudsRGBDCombinedExporter();
 	~CloudsRGBDCombinedExporter();
     
+	void writeMetaFile(string outputDirectory);
+	
 	void setRenderer(ofxRGBDCPURenderer* renderer);
 	void setPlayer(ofxRGBDPlayer* player);
 	
 	void render(string outputPath, string clipName);
+	void renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* renderer, ofPixelsRef videoPixels, int frameNum);
 	
 	ofIntRange inoutPoint;
 	float minDepth;
@@ -37,7 +38,6 @@ public:
 protected:
     
 	ofColor getColorForZDepth(unsigned short z);
-	void writeMetaFile(string outputDirectory);
 	
 	ofxRGBDCPURenderer* renderer;  // It has a mesh, call .getReducedMesh();
 	ofxRGBDPlayer*      player;

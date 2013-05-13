@@ -5,6 +5,7 @@
 #include "CloudsFCPParser.h"
 #include "ofxRGBDGPURenderer.h"
 #include "ofxRGBDPlayer.h"
+#include "CloudsClipExportManager.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
@@ -13,6 +14,11 @@
 	CloudsFCPParser parser;
 	ofxRGBDPlayer player;
 	ofxRGBDGPURenderer renderer;
+	vector<CloudsClipExportManager*> exportManagers;
+	
+	bool exporting;
+	vector<CloudsClip> selectedClips;
+
 }
 
 - (void)setup;
@@ -27,6 +33,8 @@
 - (void)mousePressed:(NSPoint)p button:(int)button;
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
+
+- (IBAction) exportSelection:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

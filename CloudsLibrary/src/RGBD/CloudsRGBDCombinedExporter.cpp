@@ -1,5 +1,10 @@
 #include "CloudsRGBDCombinedExporter.h"
 
+#undef Nil
+#include "ofxPCL.h"
+#define Nil NULL
+
+
 CloudsRGBDCombinedExporter::CloudsRGBDCombinedExporter(){
 	minDepth = 0;
 	maxDepth = 0;
@@ -21,105 +26,6 @@ void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
 
 void CloudsRGBDCombinedExporter::setPlayer(ofxRGBDPlayer* player){
 	this->player = player;
-}
-
-void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
-	
-	if(player == NULL){
-		ofLogError("CloudsRGBDCombinedExporter::render -- player is null");
-		return;
-	}
-    
-	if(renderer == NULL){
-		ofLogError("CloudsRGBDCombinedExporter::render -- renderer is null");
-		return;
-	}
-    
-	writeMetaFile(outputPath);
-	
-	outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
-	
-    int counter = 1;
-	for(int i = inoutPoint.min; i < inoutPoint.max; i++){
-		
-		//COPY video pixels into buffer
-		ofPixels temp = player->getVideoPlayer()->getPixelsRef();
-		temp.resize(videoRectangle.width, videoRectangle.height);
-		temp.pasteInto(outputImage, 0, 0);
-        
-		ofShortPixels& p = player->getDepthPixels();
-        ofRectangle depthBox;
-        depthBox.x = 0;
-        depthBox.y = videoRectangle.getHeight();
-        depthBox.width = p.getWidth();
-        depthBox.height = p.getHeight();
-        
-		for(int y = 0; y < depthBox.height; y++){
-			for(int x = 0; x < depthBox.width; x++){
-				outputImage.setColor(x + depthBox.x,
-                                     y + depthBox.y,
-                                     getColorForZDepth(p.getPixels()[ p.getPixelIndex(x, y)] ));
-			}
-		}
-		
-        //  Update the mesh
-        //
-        renderer->update();
-        renderer->farClip;
-        //  Process Normals on PCL
-        //
-        ofxPCL::PointCloud pc;
-        ofxPCL::convert( renderer->getReducedMesh(false), pc);
-        
-        ofxPCL::PointNormalPointCloud pc_n;
-        ofxPCL::normalEstimation(pc, pc_n );
-        
-        
-        //  Make a new mesh with that information
-        //
-        ofMesh mesh = ofxPCL::toOF(pc_n);
-        //memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
-        cout << "normals generated, building image for " << renderer->validVertIndices.size() << " verts " << endl;
-        
-        //  Define the are where the normals will be;
-        //
-        ofRectangle normalsBox;
-        normalsBox.x = p.getWidth();
-        normalsBox.y = videoRectangle.getHeight();
-        normalsBox.width = p.getWidth();
-        normalsBox.height = p.getHeight();
-        
-        //  Clean this area
-        //
-        for(int y = 0; y < normalsBox.height; y++){
-			for(int x = 0; x < normalsBox.width; x++){
-				outputImage.setColor(x + normalsBox.x,
-                                     y + normalsBox.y,
-                                     ofColor(0) );
-			}
-		}
-        
-        //  Use the new mesh and the valid verteces ( from the original ) to make an image
-        //
-        for(int i = 0; i < renderer->validVertIndices.size(); i++){
-            ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
-            pair<int,int> pixelCoord = renderer->getPixelLocationForIndex( renderer->validVertIndices[i]  );
-            outputImage.setColor(640 + pixelCoord.first,
-                                 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
-        }
-        
-		char filename[1024];
-		sprintf(filename, "%s/%s%05d.png", outputPath.c_str(), clipName.c_str(), player->getVideoPlayer()->getCurrentFrame());
-		ofSaveImage(outputImage, filename);
-		
-		player->getVideoPlayer()->nextFrame();
-		player->getVideoPlayer()->update();
-		player->update();
-        
-        counter++;
-	}
-    
-    
 }
 
 void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory){
@@ -175,9 +81,117 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory){
 	calibration.addValue("minDepth", minDepth);
 	calibration.addValue("maxDepth", maxDepth);
 	
-	//calibration.save(outputDirectory + "/_calibration.xml");
 	calibration.saveFile(outputDirectory + "/_calibration.xml");
+}
+
+void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 	
+	if(player == NULL){
+		ofLogError("CloudsRGBDCombinedExporter::render -- player is null");
+		return;
+	}
+    
+	if(renderer == NULL){
+		ofLogError("CloudsRGBDCombinedExporter::render -- renderer is null");
+		return;
+	}
+    
+	writeMetaFile(outputPath);
+	
+    int counter = 1;
+	for(int i = inoutPoint.min; i < inoutPoint.max; i++){
+		//  Update the mesh
+		//
+		renderer->update();
+		renderer->farClip;
+
+		renderFrame(outputPath, clipName, renderer, player->getVideoPlayer()->getPixelsRef(), player->getVideoPlayer()->getCurrentFrame());
+		
+		player->getVideoPlayer()->nextFrame();
+		player->getVideoPlayer()->update();
+		player->update();
+        
+        counter++;
+	}
+}
+
+void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* rgbdRenderer, ofPixelsRef videoPixels, int frameNum){
+
+
+	if(!outputImage.isAllocated() ||
+	   outputImage.getWidth() != videoRectangle.getWidth() ||
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
+	{
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
+	}
+
+	//COPY video pixels into buffer
+	ofPixels temp = videoPixels;
+	temp.resize(videoRectangle.width, videoRectangle.height);
+	temp.pasteInto(outputImage, 0, 0);
+	
+	ofShortPixels& p = rgbdRenderer->getDepthImage();
+	ofRectangle depthBox;
+	depthBox.x = 0;
+	depthBox.y = videoRectangle.getHeight();
+	depthBox.width = p.getWidth();
+	depthBox.height = p.getHeight();
+	
+	for(int y = 0; y < depthBox.height; y++){
+		for(int x = 0; x < depthBox.width; x++){
+			outputImage.setColor(x + depthBox.x,
+								 y + depthBox.y,
+								 getColorForZDepth(p.getPixels()[ p.getPixelIndex(x, y)] ));
+		}
+	}
+	
+	//  Process Normals on PCL
+	//
+	ofxPCL::PointCloud pc;
+	ofxPCL::convert( rgbdRenderer->getReducedMesh(false), pc);
+	
+	ofxPCL::PointNormalPointCloud pc_n;
+	ofxPCL::normalEstimation(pc, pc_n );
+	
+	
+	//  Make a new mesh with that information
+	//
+	ofMesh mesh = ofxPCL::toOF(pc_n);
+	//memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
+	cout << "normals generated, building image for " << rgbdRenderer->validVertIndices.size() << " verts " << endl;
+	
+	//  Define the are where the normals will be;
+	//
+	ofRectangle normalsBox;
+	normalsBox.x = p.getWidth();
+	normalsBox.y = videoRectangle.getHeight();
+	normalsBox.width = p.getWidth();
+	normalsBox.height = p.getHeight();
+	
+	//  Clean this area
+	//
+	//TODO: paste in blank pixels?
+	for(int y = 0; y < normalsBox.height; y++){
+		for(int x = 0; x < normalsBox.width; x++){
+			outputImage.setColor(x + normalsBox.x,
+								 y + normalsBox.y,
+								 ofColor(0) );
+		}
+	}
+	
+	//  Use the new mesh and the valid verteces ( from the original ) to make an image
+	//
+	for(int i = 0; i < rgbdRenderer->validVertIndices.size(); i++){
+		ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
+		pair<int,int> pixelCoord = rgbdRenderer->getPixelLocationForIndex( rgbdRenderer->validVertIndices[i]  );
+		outputImage.setColor(640 + pixelCoord.first,
+							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
+	}
+	
+	char filename[1024];
+	sprintf(filename, "%s/%s%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
+	ofSaveImage(outputImage, filename);
+
 }
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z){
