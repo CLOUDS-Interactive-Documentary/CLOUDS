@@ -42,8 +42,9 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
 	
-	exporter.minDepth = currentClip.minDepth;
-	exporter.maxDepth = currentClip.maxDepth;
+	renderer.nearClip = exporter.minDepth = currentClip.minDepth;
+	renderer.farClip = exporter.maxDepth = currentClip.maxDepth;
+	
 	
 	startThread(true, false);
 }
@@ -54,17 +55,18 @@ bool CloudsClipExportManager::isDone(){
 
 float CloudsClipExportManager::percentComplete(){
 	if(done) return 0;
-	return 1.0 * currentFrame / (currentClip.endFrame - currentClip.startFrame);
+	return 1.0 * (currentFrame - currentClip.startFrame) / (currentClip.endFrame - currentClip.startFrame);
 }
 
 void CloudsClipExportManager::threadedFunction(){
-	
-	
+		
 	string outputDirectory = exportDirectory + currentClip.getCombinedPNGExportFolder();
 	ofDirectory dir(outputDirectory);
 	if(!dir.exists()){
 		dir.create();
 	}
+	
+	exporter.writeMetaFile(outputDirectory, &renderer);
 	
 	while( isThreadRunning() && currentFrame <= currentClip.endFrame ){
 		

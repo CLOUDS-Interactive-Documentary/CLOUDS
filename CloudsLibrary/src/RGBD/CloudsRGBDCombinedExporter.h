@@ -23,7 +23,7 @@ public:
 	CloudsRGBDCombinedExporter();
 	~CloudsRGBDCombinedExporter();
     
-	void writeMetaFile(string outputDirectory);
+	void writeMetaFile(string outputDirectory, ofxRGBDCPURenderer* renderer);
 	
 	void setRenderer(ofxRGBDCPURenderer* renderer);
 	void setPlayer(ofxRGBDPlayer* player);

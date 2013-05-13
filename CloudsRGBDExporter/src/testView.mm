@@ -22,21 +22,54 @@
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( "/Volumes/Seance/MediaPackages/_exports/" );
 	}
+	
+	progressBars[0] = clipProgress1;
+	progressBars[1] = clipProgress2;
+	progressBars[2] = clipProgress3;
+	progressBars[3] = clipProgress4;
+	progressBars[4] = clipProgress5;
+	progressBars[5] = clipProgress6;
+	progressBars[6] = clipProgress7;
+	progressBars[7] = clipProgress8;
+	
 }
 
 - (void)update
 {
-
+	
+	if(startExport){
+		[self cancelExport:self];
+		
+		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
+		while (idx != NSNotFound) {
+			// do work with "idx"
+			selectedClips.push_back(parser.getAllClips()[idx]);
+			
+			// get the next index in the set
+			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
+		}
+		
+		exporting = selectedClips.size() > 0;
+		[totalProgress setMinValue: 0.0];
+		[totalProgress setMaxValue: 1.0*selectedClips.size()];
+		
+		cout << "exporting " << selectedClips.size() << endl;
+		
+		startExport = false;
+	}
+	
 	if(exporting){
 		for(int i = 0; i < exportManagers.size(); i++){
-			if(selectedClips.size() > 0  && exportManagers[i]->isDone()){
-				cout << "EXPORTING CLIP " << selectedClips[0].getLinkName() << endl;;
-				exportManagers[i]->exportClip(selectedClips[0]);
-				selectedClips.erase(selectedClips.begin());
+			if(currentClipIndex < selectedClips.size()  && exportManagers[i]->isDone()){
+				cout << "EXPORTING CLIP " << selectedClips[currentClipIndex].getLinkName() << endl;;
+				exportManagers[i]->exportClip(selectedClips[currentClipIndex]);
+				currentClipIndex++;
+				return;
 			}
 			
-//			cout << "EXPORTER " << i << " IS " << exportManagers[i]->percentComplete() << endl;
+			[ progressBars[i] setDoubleValue: exportManagers[i]->percentComplete() ];
 		}
+		[totalProgress setDoubleValue: currentClipIndex];	
 	}
 }
 
@@ -47,28 +80,20 @@
 
 - (IBAction) exportSelection:(id)sender
 {
+	startExport = true;
+}
+
+- (IBAction) cancelExport:(id)sender
+{
+	currentClipIndex = 0;
 	
-	cout << "export called!?!?" << endl;
-	if(exporting){
-		for(int i = 0; i < exportManagers.size(); i++){
-			cout << "STOPPING THREAD " << i << endl;
-			exportManagers[i]->waitForThread(true);
-		}
+	for(int i = 0; i < exportManagers.size(); i++){
+		cout << "STOPPING THREAD " << i << endl;
+		exportManagers[i]->waitForThread(true);
 	}
 	
 	selectedClips.clear();
-
-	NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
-	while (idx != NSNotFound) {
-		// do work with "idx"
-		selectedClips.push_back(parser.getAllClips()[idx]);
-		
-		// get the next index in the set
-		idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
-	}
-	
-	exporting = selectedClips.size() > 0;
-	cout << "exporting " << selectedClips.size() << endl;
+	exporting = false;
 }
 
 - (void)exit

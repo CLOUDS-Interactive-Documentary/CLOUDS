@@ -28,7 +28,7 @@ void CloudsRGBDCombinedExporter::setPlayer(ofxRGBDPlayer* player){
 	this->player = player;
 }
 
-void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory){
+void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCPURenderer* renderer){
 	//write calibration into an xml file
     
 	ofxXmlSettings calibration;
@@ -96,7 +96,7 @@ void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 		return;
 	}
     
-	writeMetaFile(outputPath);
+	writeMetaFile(outputPath, renderer);
 	
     int counter = 1;
 	for(int i = inoutPoint.min; i < inoutPoint.max; i++){
@@ -157,8 +157,8 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	//  Make a new mesh with that information
 	//
 	ofMesh mesh = ofxPCL::toOF(pc_n);
-	//memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
-	cout << "normals generated, building image for " << rgbdRenderer->validVertIndices.size() << " verts " << endl;
+//	memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
+//	cout << "normals generated, building image for " << rgbdRenderer->validVertIndices.size() << " verts " << endl;
 	
 	//  Define the are where the normals will be;
 	//
@@ -189,7 +189,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	}
 	
 	char filename[1024];
-	sprintf(filename, "%s/%s%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
+	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
 	ofSaveImage(outputImage, filename);
 
 }
