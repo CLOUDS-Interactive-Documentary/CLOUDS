@@ -32,16 +32,15 @@ public:
 	void renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* renderer, ofPixelsRef videoPixels, int frameNum);
 	
 	ofIntRange inoutPoint;
-	float minDepth;
-	float maxDepth;
     
 protected:
     
-	ofColor getColorForZDepth(unsigned short z);
+	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
 	
 	ofxRGBDCPURenderer* renderer;  // It has a mesh, call .getReducedMesh();
 	ofxRGBDPlayer*      player;
-	
+	float minDepth;
+	float maxDepth;
 	ofRectangle videoRectangle;
 	ofPixels    outputImage;
 };

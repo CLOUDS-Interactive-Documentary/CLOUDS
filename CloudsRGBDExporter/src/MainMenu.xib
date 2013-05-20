@@ -250,7 +250,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {640, 480}}</string>
+				<string key="NSWindowRect">{{335, 390}, {1101, 544}}</string>
 				<int key="NSWTFlags">1685585920</int>
 				<string key="NSWindowTitle"/>
 				<string key="NSWindowClass">NSWindow</string>
@@ -263,10 +263,9 @@
 						<object class="NSOpenGLView" id="712021889">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">274</int>
-							<string key="NSFrameSize">{640, 480}</string>
+							<string key="NSFrameSize">{1101, 544}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:24</string>
 							<object class="NSOpenGLPixelFormat" key="NSPixelFormat">
 								<object class="NSMutableData" key="NSPixelAttributes">
@@ -275,7 +274,7 @@
 							</object>
 						</object>
 					</array>
-					<string key="NSFrameSize">{640, 480}</string>
+					<string key="NSFrameSize">{1101, 544}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="712021889"/>
@@ -398,7 +397,6 @@
 													</object>
 													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
-													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="190682966"/>
 												</object>
 												<object class="NSTableColumn" id="368918939">
@@ -433,7 +431,6 @@
 													</object>
 													<int key="NSResizingMask">3</int>
 													<bool key="NSIsResizeable">YES</bool>
-													<bool key="NSIsEditable">YES</bool>
 													<reference key="NSTableView" ref="190682966"/>
 												</object>
 											</array>
@@ -534,7 +531,7 @@
 						<object class="NSButton" id="356271755">
 							<reference key="NSNextResponder" ref="598658964"/>
 							<int key="NSvFlags">289</int>
-							<string key="NSFrame">{{20, 17}, {128, 62}}</string>
+							<string key="NSFrame">{{20, 58}, {128, 23}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="154283235"/>
@@ -543,7 +540,7 @@
 							<object class="NSButtonCell" key="NSCell" id="965349773">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Export Selection</string>
+								<string key="NSContents">Align Clip</string>
 								<reference key="NSSupport" ref="266645352"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="356271755"/>
@@ -562,7 +559,7 @@
 							<string key="NSFrame">{{156, 59}, {796, 20}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="111860759"/>
+							<reference key="NSNextKeyView" ref="1007764142"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16397</int>
@@ -658,11 +655,35 @@
 							<string key="NSFrame">{{759, 20}, {193, 12}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16653</int>
 							<double key="NSMaxValue">1</double>
+						</object>
+						<object class="NSButton" id="1007764142">
+							<reference key="NSNextResponder" ref="598658964"/>
+							<int key="NSvFlags">289</int>
+							<string key="NSFrame">{{20, 19}, {128, 23}}</string>
+							<reference key="NSSuperview" ref="598658964"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="111860759"/>
+							<string key="NSReuseIdentifierKey">_NS:22</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="760169283">
+								<int key="NSCellFlags">-2080374784</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents">Export Selection</string>
+								<reference key="NSSupport" ref="266645352"/>
+								<string key="NSCellIdentifier">_NS:22</string>
+								<reference key="NSControlView" ref="1007764142"/>
+								<int key="NSButtonFlags">-2033434624</int>
+								<int key="NSButtonFlags2">162</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">400</int>
+								<int key="NSPeriodicInterval">75</int>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 					</array>
 					<string key="NSFrameSize">{972, 427}</string>
@@ -763,22 +784,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">clipTable</string>
-						<reference key="source" ref="712021889"/>
-						<reference key="destination" ref="190682966"/>
-					</object>
-					<int key="connectionID">596</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">exportSelection:</string>
-						<reference key="source" ref="712021889"/>
-						<reference key="destination" ref="356271755"/>
-					</object>
-					<int key="connectionID">604</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">totalProgress</string>
 						<reference key="source" ref="712021889"/>
 						<reference key="destination" ref="154283235"/>
@@ -848,6 +853,30 @@
 						<reference key="destination" ref="366866519"/>
 					</object>
 					<int key="connectionID">629</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clipTable</string>
+						<reference key="source" ref="712021889"/>
+						<reference key="destination" ref="190682966"/>
+					</object>
+					<int key="connectionID">637</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">exportSelection:</string>
+						<reference key="source" ref="712021889"/>
+						<reference key="destination" ref="1007764142"/>
+					</object>
+					<int key="connectionID">640</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">loadClipForAlignment:</string>
+						<reference key="source" ref="712021889"/>
+						<reference key="destination" ref="356271755"/>
+					</object>
+					<int key="connectionID">641</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1086,11 +1115,12 @@
 							<reference ref="941250250"/>
 							<reference ref="369741711"/>
 							<reference ref="1070800743"/>
-							<reference ref="356271755"/>
 							<reference ref="366866519"/>
 							<reference ref="79990080"/>
 							<reference ref="816412118"/>
 							<reference ref="424004041"/>
+							<reference ref="356271755"/>
+							<reference ref="1007764142"/>
 						</array>
 						<reference key="parent" ref="136731224"/>
 					</object>
@@ -1218,6 +1248,19 @@
 						<reference key="object" ref="324321574"/>
 						<reference key="parent" ref="368918939"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">638</int>
+						<reference key="object" ref="1007764142"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="760169283"/>
+						</array>
+						<reference key="parent" ref="598658964"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">639</int>
+						<reference key="object" ref="760169283"/>
+						<reference key="parent" ref="1007764142"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1277,13 +1320,15 @@
 				<string key="630.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="635.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="636.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="638.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="639.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">636</int>
+			<int key="maxID">641</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1320,6 +1365,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="cancelExport:">id</string>
 						<string key="exportSelection:">id</string>
+						<string key="loadClipForAlignment:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="cancelExport:">
@@ -1328,6 +1374,10 @@
 						</object>
 						<object class="IBActionInfo" key="exportSelection:">
 							<string key="name">exportSelection:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="loadClipForAlignment:">
+							<string key="name">loadClipForAlignment:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

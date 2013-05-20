@@ -25,6 +25,7 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 
 	currentClip = clip;
 	
+	
 	done = false;
 	currentFrame = clip.startFrame;
 	
@@ -39,11 +40,16 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.setup(rgbdPlayer.getScene().calibrationFolder);
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
 	renderer.setDepthImage(rgbdPlayer.getDepthPixels());
-	
+
+	currentClip.loadAdjustmentFromXML();
+	renderer.nearClip = currentClip.minDepth;
+	renderer.farClip = currentClip.maxDepth;
+	renderer.colorMatrixTranslate = currentClip.adjustTranslate;
+	renderer.colorMatrixRotate = currentClip.adjustRotate;
+	renderer.scale = currentClip.adjustScale;
+
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
 	
-	renderer.nearClip = exporter.minDepth = currentClip.minDepth;
-	renderer.farClip = exporter.maxDepth = currentClip.maxDepth;
 	
 	startThread(true, false);
 }
@@ -71,9 +77,8 @@ void CloudsClipExportManager::threadedFunction(){
 		
 		rgbdPlayer.update();
 		renderer.update();
-		
-		exporter.renderFrame(outputDirectory, currentClip.getLinkName(), &renderer, rgbdPlayer.getVideoPlayer()->getPixelsRef(), currentFrame);
-		cout << "Saving frame to " << outputDirectory << endl;
+		exporter.renderFrame(outputDirectory, currentClip.getID(), &renderer, rgbdPlayer.getVideoPlayer()->getPixelsRef(), currentFrame);
+
 		rgbdPlayer.getVideoPlayer()->nextFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
 		

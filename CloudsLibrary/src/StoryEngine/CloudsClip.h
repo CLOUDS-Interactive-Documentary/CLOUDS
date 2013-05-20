@@ -2,6 +2,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxXmlSettings.h"
 
 class CloudsClip {
   public:
@@ -24,10 +25,6 @@ class CloudsClip {
     int startFrame;
     int endFrame;
 	
-	//adjustment parameters
-	float minDepth;
-	float maxDepth;
-	
     vector<string> keywords;
 	
     string getLinkName();
@@ -36,15 +33,27 @@ class CloudsClip {
 	string getSceneFolder();
 	
 	//these are filenames
+	string getID();
 	string getCombinedPNGExportFolder();
-	
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
+
 	
 	//these are complete file paths, absolute directories
 	//this is set by the FCP database parser when the directory is set
 	string combinedVideoFilePath;
 	string combinedVideoCalibrationXml;
 	
+	string getAdjustmentXML();
+	void loadAdjustmentFromXML();
+	void saveAdjustmentToXML();
+	void addAdjustmentToXML(ofxXmlSettings adjustment);
+	
+	//adjustment parameters
+	float minDepth;
+	float maxDepth;
+	ofVec3f adjustTranslate;
+	ofVec3f adjustRotate;
+	ofVec3f adjustScale;
 	
 };

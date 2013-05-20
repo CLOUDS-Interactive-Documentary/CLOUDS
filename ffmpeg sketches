@@ -1,0 +1,8 @@
+#!/bin/bash
+
+EXTRACT AUDIO
+ffmpeg -i MVI_3814.mov -ss 143 -t 12 -ac 2 -ar 44100 -vn Binx_actually_interesting.wav
+
+BUILD IMAGE SEQUENCE TO PRO RES
+ffmpeg -start_number 2284 -f image2 -r 23.98 -i Binx - actually interesting_.%05d.png -codec:v prores -profile:v 2 -r 23.976 Binx_actually_interesting.mov
+

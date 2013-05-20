@@ -7,7 +7,7 @@
 #include "ofxRGBDPlayer.h"
 #include "CloudsClipExportManager.h"
 #include "ofxGameCamera.h"
-
+#include "ofxUI.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
@@ -25,6 +25,7 @@
 
 	NSProgressIndicator* progressBars[8];
 	
+	ofxGameCamera cam;
 	CloudsFCPParser parser;
 	ofxRGBDPlayer player;
 	ofxRGBDGPURenderer renderer;
@@ -32,12 +33,27 @@
 	
 	bool exporting;
 	bool startExport;
+	bool saveAlignment;
+	bool resetCamera;
 	
 	vector<CloudsClip> selectedClips;
 
+	ofxUICanvas* gui;
+	
 	int currentClipIndex;
+	
+	//correction variables, loaded for each clip
+	ofVec3f translate;
+	ofVec3f rotate;
+	ofVec2f scale;
+	float minDepth;
+	float maxDepth;
+	ofRectangle camRect;
 
+	CloudsClip loadedClip;
 }
+
+@property (assign) IBOutlet NSTableView *clipTable;
 
 - (void)setup;
 - (void)update;
@@ -52,8 +68,7 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
-- (void)loadClipForAlignment:(id)sender;
-
+- (IBAction)loadClipForAlignment:(id)sender;
 - (IBAction) exportSelection:(id)sender;
 - (IBAction) cancelExport:(id)sender;
 

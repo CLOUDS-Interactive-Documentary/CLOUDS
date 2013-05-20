@@ -6,8 +6,6 @@
 
 
 CloudsRGBDCombinedExporter::CloudsRGBDCombinedExporter(){
-	minDepth = 0;
-	maxDepth = 0;
     
 	renderer = NULL;
 	player = NULL;
@@ -78,8 +76,40 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	
 	calibration.popTag();//extrinsics
 	
-	calibration.addValue("minDepth", minDepth);
-	calibration.addValue("maxDepth", maxDepth);
+	calibration.addTag("adjustment");
+	calibration.pushTag("adjustment");
+	
+	
+	calibration.addTag("translate");
+	calibration.pushTag("translate");
+	calibration.addValue("x", renderer->colorMatrixTranslate.x);
+	calibration.addValue("y", renderer->colorMatrixTranslate.y);
+	calibration.addValue("z", renderer->colorMatrixTranslate.z);
+	calibration.popTag();
+	
+	calibration.addTag("rotate");
+	calibration.pushTag("rotate");
+	calibration.addValue("x", renderer->colorMatrixRotate.x);
+	calibration.addValue("y", renderer->colorMatrixRotate.y);
+	calibration.addValue("z", renderer->colorMatrixRotate.z);
+	calibration.popTag();
+	
+	calibration.addTag("scale");
+	calibration.pushTag("scale");
+	calibration.addValue("x", renderer->scale.x);
+	calibration.addValue("y", renderer->scale.y);
+	calibration.popTag();
+	
+	calibration.addTag("depth");
+	calibration.pushTag("depth");
+	calibration.addValue("min", renderer->nearClip);
+	calibration.addValue("max", renderer->farClip);
+	calibration.popTag();
+	
+	calibration.popTag();
+		
+	
+	calibration.popTag();//adjustment
 	
 	calibration.saveFile(outputDirectory + "/_calibration.xml");
 }
@@ -141,7 +171,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		for(int x = 0; x < depthBox.width; x++){
 			outputImage.setColor(x + depthBox.x,
 								 y + depthBox.y,
-								 getColorForZDepth(p.getPixels()[ p.getPixelIndex(x, y)] ));
+								 getColorForZDepth(p.getPixels()[ p.getPixelIndex(x, y)], rgbdRenderer->nearClip, rgbdRenderer->farClip));
 		}
 	}
 	
@@ -190,11 +220,12 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
+	cout << "Saving filename " << filename << endl;
 	ofSaveImage(outputImage, filename);
 
 }
 
-ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z){
+ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){
 	if(z > maxDepth || z < minDepth){
 		return ofColor(0,0,0);
 	}
