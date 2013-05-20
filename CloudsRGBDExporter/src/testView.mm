@@ -22,7 +22,7 @@
     
     [clipTable reloadData];
 
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( "/Volumes/Seance/MediaPackages/_exports/" );
 	}
@@ -155,7 +155,7 @@
 	ofPopMatrix();
 	
 	ofPushMatrix();
-	ofSetHexColor(0x69aade);
+	ofSetHexColor(0xFFFFFF - 0x69aade);
 	ofTranslate(0, 0, maxDepth);
 	ofDrawPlane(0, 0, 800, 800);
 	ofPopMatrix();
