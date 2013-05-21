@@ -1,4 +1,12 @@
 <clip>
+    <name>Aaron - Tailored Stories</name>
+    <suppress>
+        <target>Binx - tools for storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+</clip>
+<clip>
     <name>Binx - actually interesting</name>
     <link>
         <target>Jer - Thought it was boring</target>
@@ -15,23 +23,23 @@
     </link>
 </clip>
 <clip>
-    <name>Binx - digestibility</name>
+    <name>Binx - frustrated about visualization</name>
     <link>
-        <target>Jer - Good at understanding complexity</target>
+        <target>Maeda - people are best communicators</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Binx - tools for storytelling</name>
+    <link>
+        <target>Julia - work in context</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
 </clip>
 <clip>
     <name>Binx - meaningful shape1</name>
-    <link>
-        <target>Jer - open paths</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Binx - making a map</name>
     <link>
         <target>Jer - open paths</target>
         <startFrame>-1</startFrame>
@@ -50,6 +58,11 @@
     <name>Binx - programming is a superpower</name>
     <link>
         <target>Binx - changing the world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Philip - with programming you can do whatever</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -76,14 +89,17 @@
     </link>
 </clip>
 <clip>
-    <name>Binx - changing the world</name>
+    <name>Binx - technoutopian</name>
     <link>
-        <target>Golan - Anxious about the future</target>
+        <target>Julian - toolkit culture</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Binx - changing the world</name>
     <link>
-        <target>Golan - staring down the barrel</target>
+        <target>Golan - Anxious about the future</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -261,11 +277,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-</clip>
-<clip>
-    <name>Casey - Infrastructures should be open</name>
     <link>
-        <target>Shiffman - sharing</target>
+        <target>Karsten - Educational tools</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -418,6 +431,43 @@
     </link>
 </clip>
 <clip>
+    <name>Chris - Eyewriter</name>
+    <link>
+        <target>Kyle_MC - Eyewriter</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Eyewriter touchstone</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Diederick - painting like coding</name>
+    <link>
+        <target>Zach - hide the tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Diederick - open frameworks</name>
+    <link>
+        <target>Zach - at a festival</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Elliot_UK - tree sculpture</name>
+    <link>
+        <target>Theo - inspired by nature</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Golan - useless, whimsical</name>
     <link>
         <target>Kyle_MC - programmers vs artists</target>
@@ -460,6 +510,22 @@
     </link>
     <link>
         <target>Shantell - Kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Golan - why major in art</name>
+    <link>
+        <target>Regine - making a living</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Golan - make a mark</name>
+    <link>
+        <target>Karsten - immediate feedback</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -609,6 +675,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Paola - Moma games</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Golan - STUDIO art and code</name>
@@ -706,14 +777,17 @@
     </link>
 </clip>
 <clip>
-    <name>Greg - human augmentation</name>
+    <name>Golan_AMA - machines and human intelligence</name>
     <link>
-        <target>Golan - jolted into the NOW</target>
+        <target>Joel - Bicycles for the Mind</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Greg - human augmentation</name>
     <link>
-        <target>Joel - Bicycles for the Mind</target>
+        <target>Golan - jolted into the NOW</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -730,11 +804,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Jer - Data ownership</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Greg - engage with research</name>
     <link>
         <target>Theo - open frameworks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Critical engineering</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -787,9 +871,22 @@
     </link>
 </clip>
 <clip>
+    <name>Jer - Eyewriter touchstone</name>
+    <link>
+        <target>JTNimoy - relating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Jer - data visualization</name>
     <link>
         <target>Golan - listening post</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Binx - digestibility</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -797,12 +894,12 @@
 <clip>
     <name>Jer - Good at understanding complexity</name>
     <link>
-        <target>Maeda - simplicity and complexity</target>
+        <target>Binx - digestibility</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Binx - digestibility</target>
+        <target>Maeda - people are best communicators</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -831,6 +928,19 @@
     </link>
     <link>
         <target>Marcus - simulation to stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Jer - lives being documented through data</name>
+    <link>
+        <target>Greg - the &quot;Like&quot; button cascade</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - Keytweeter</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -899,9 +1009,14 @@
     </link>
 </clip>
 <clip>
-    <name>Jer - Post-capitalism</name>
+    <name>Joel - Bicycles for the Mind</name>
     <link>
-        <target>Marius - We&apos;ve embraced Dystopia</target>
+        <target>Philip - build the whole universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - human augmentation</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -920,9 +1035,41 @@
     </link>
 </clip>
 <clip>
+    <name>Joel - advertising</name>
+    <link>
+        <target>Jer - Software1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Joel - first mover</name>
+    <link>
+        <target>Zach - less demo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>JTNimoy - Describe the Kinect</name>
+    <link>
+        <target>Greg - cameras scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>JTNimoy - increased the bandwidth</name>
     <link>
         <target>Greg - visual effects</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>JTNimoy - performance1</name>
+    <link>
+        <target>Kyle_MC - imagining your pointcloud</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -955,8 +1102,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>JTNimoy - originality</name>
     <link>
-        <target>Philip - image is in your brain</target>
+        <target>Lindsay - collective creativity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -965,6 +1115,14 @@
     <name>JTNimoy - relating</name>
     <link>
         <target>Binx - tool for others</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>JTNimoy - corporate</name>
+    <link>
+        <target>Jer - Post-capitalism</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -999,6 +1157,14 @@
     </link>
 </clip>
 <clip>
+    <name>Julia - Who owns the internet?</name>
+    <link>
+        <target>Julian - I love networks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Julia - work in context</name>
     <link>
         <target>Golan - staring down the barrel</target>
@@ -1023,6 +1189,14 @@
     </link>
 </clip>
 <clip>
+    <name>Julia - toward greater generosity</name>
+    <link>
+        <target>Jer - Thanks</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Julia - better tools</name>
     <link>
         <target>Kyle_MC - Transparent Tech</target>
@@ -1039,6 +1213,24 @@
     <name>Julia - need for collaboration</name>
     <link>
         <target>Kyle_MC - Transparent tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Julian - Critical engineering</name>
+    <link>
+        <target>Paola - code changes your thinking</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Greg - engage with research</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - art versus engineering</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1176,6 +1368,46 @@
     </link>
 </clip>
 <clip>
+    <name>Karsten - 256 bytes part 1</name>
+    <link>
+        <target>Paola - bach mozart coders</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Karsten - physical feedback</name>
+    <link>
+        <target>Marius - reach your visual cortex</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - RGBD</name>
+    <link>
+        <target>Greg - camera scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - interactivity 2</name>
+    <link>
+        <target>Karolina - uncanny/sniff</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - coding 2</name>
+    <link>
+        <target>Shiffman - building a universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Kyle_MC - Hackers and artists</name>
     <link>
         <target>Javier - hackers</target>
@@ -1195,14 +1427,6 @@
     <name>Kyle_MC - Transparent Tech</name>
     <link>
         <target>Greg - engage with research</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Kyle_MC - Transparent tech</name>
-    <link>
-        <target>Casey - Infrastructures should be open</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1239,17 +1463,30 @@
     </link>
 </clip>
 <clip>
+    <name>Lindsay - collective creativity</name>
+    <link>
+        <target>Karsten - memes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Lindsay - memes 2</name>
+    <link>
+        <target>Elliot_UK - Laying claim on ideas</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Maeda - a computer is a clock</name>
     <link>
         <target>Shiffman - offers me a way to think</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-</clip>
-<clip>
-    <name>Maeda - Marker 4</name>
     <link>
-        <target>Shantell - Kids</target>
+        <target>Joel - Bicycles for the Mind</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1300,6 +1537,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Binx - frustrated about visualization</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Maeda - Isn&apos;t it supposed to be new?</name>
@@ -1319,22 +1561,12 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Marius - New Aesthetic</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marcus - simulation to stories</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marcus - audience</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Marcus - scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - Style diffuses</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1398,14 +1630,6 @@
     <name>Maeda - mentors</name>
     <link>
         <target>Golan - Kyle</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Maeda - I can still draw</name>
-    <link>
-        <target>Shantell - drawing with the computer</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1618,7 +1842,7 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Marius - parameter space</target>
+        <target>Karolina - system metaphor</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1700,16 +1924,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>JTNimoy - performance1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Marcus - economics question</name>
     <link>
         <target>Jer - Post-capitalism</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Jer - post-capitalism2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1752,6 +1976,11 @@
     <name>Marcus - lego bricks</name>
     <link>
         <target>Shiffman - Games</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Vera - Playing with a system</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1815,11 +2044,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>JTNimoy - Cortex</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Marius - Machines change the way we see</name>
     <link>
-        <target>Greg - human augmentation</target>
+        <target>Julian - Critical engineering</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1849,6 +2083,11 @@
     </link>
     <link>
         <target>Kyle_MC - We don&apos;t understand the thing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Ray Bradbury story</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1886,11 +2125,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
-        <target>Marcus - lego bricks</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
 </clip>
 <clip>
     <name>Marius - new tools change perception</name>
@@ -1901,6 +2135,19 @@
     </link>
     <link>
         <target>Julia - what is it doing to us</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Nervous_Jesse - understanding to control 3</name>
+    <link>
+        <target>Elliot_UK - limitation 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1934,11 +2181,6 @@
 <clip>
     <name>Nervous_Jessica - MIT beginning</name>
     <link>
-        <target>Maeda - Aesthetics and Computation group</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Casey - Programming at 26</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -1948,6 +2190,11 @@
     <name>Nervous_Jessica - Can&apos;t draw</name>
     <link>
         <target>Casey - Programming at 26</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - take the line further</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2055,6 +2302,45 @@
     </link>
 </clip>
 <clip>
+    <name>Nervous_Jessica - Why is it beautiful</name>
+    <link>
+        <target>Regine - aesthetic experience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Paola - the tribe</name>
+    <link>
+        <target>Jer - Desire to get together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - geek culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - people like myself</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - Strange cultures</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Paola - Moma games</name>
+    <link>
+        <target>Karsten - atari emulation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Paola - should be useful</name>
     <link>
         <target>Golan - why make art</target>
@@ -2110,6 +2396,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Paola - tranny designers</name>
@@ -2162,6 +2453,14 @@
     <name>Philip - get an idea</name>
     <link>
         <target>Golan - make a mark</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Philip - with programming you can do whatever</name>
+    <link>
+        <target>Kyle_CH - coding is 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2253,9 +2552,9 @@
     </link>
 </clip>
 <clip>
-    <name>Regine - twitter, future</name>
+    <name>Regine - making a living</name>
     <link>
-        <target>Golan - staring down the barrel</target>
+        <target>JTNimoy - corporate</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2269,6 +2568,14 @@
     </link>
 </clip>
 <clip>
+    <name>Regine - virtual</name>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Regine - ineffectual art</name>
     <link>
         <target>Binx - changing the world</target>
@@ -2277,14 +2584,6 @@
     </link>
     <link>
         <target>Paola - should be useful</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Regine - not everyone wants that</name>
-    <link>
-        <target>Shantell - Coding gesturally</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2335,6 +2634,14 @@
     </link>
     <link>
         <target>Golan - playable image</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Shantell - every line is a mistake</name>
+    <link>
+        <target>Nervous_Jessica - Can&apos;t draw</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2437,6 +2744,14 @@
     </link>
 </clip>
 <clip>
+    <name>Shiffman - Marker 8</name>
+    <link>
+        <target>Kyle_CH - modeling consciousness 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Shiffman - Nature of code p. 2</name>
     <link>
         <target>Karolina - stasis</target>
@@ -2448,11 +2763,6 @@
     <name>Shiffman - Games</name>
     <link>
         <target>Nervous_Jessica - Marker 7</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marcus - Sims</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2542,14 +2852,14 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-</clip>
-<clip>
-    <name>Shiffman - what do you archive?</name>
     <link>
-        <target>Golan - keeping you stuff working</target>
+        <target>Philip - if I had Processing in school</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Shiffman - what do you archive?</name>
     <link>
         <target>JTNimoy - data loss</target>
         <startFrame>-1</startFrame>
@@ -2583,6 +2893,14 @@
     </link>
 </clip>
 <clip>
+    <name>Sophy - everyday media</name>
+    <link>
+        <target>Theo - hide the technology,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Sophy - nonlinearity</name>
     <link>
         <target>Karolina - Journey</target>
@@ -2596,6 +2914,11 @@
     </link>
     <link>
         <target>Vera - Energy Flow1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - imagining your pointcloud</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2661,6 +2984,14 @@
     <name>Theo - Kids interacting</name>
     <link>
         <target>Shantell - Kids</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Theo - learning</name>
+    <link>
+        <target>Zach - action script</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2842,6 +3173,14 @@
     </link>
 </clip>
 <clip>
+    <name>Zach - at a festival</name>
+    <link>
+        <target>Karsten - becoming insular</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Zach - debugging</name>
     <link>
         <target>Shiffman - offers me a way to think</target>
@@ -2894,14 +3233,6 @@
     </link>
     <link>
         <target>Paola - Portal</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Zach - hide the tech</name>
-    <link>
-        <target>Kyle_MC - New Aesthetic p 2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2962,6 +3293,11 @@
     </link>
     <link>
         <target>Marius - Techno-rococo</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - first mover</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
