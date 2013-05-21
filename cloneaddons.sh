@@ -17,6 +17,7 @@ fi
 
 ${PREFIX}rezaali/ofxUI
 ${PREFIX}satoruhiga/ofxCocoaGLView
+${PREFIX}satoruhiga/ofxPCL
 ${PREFIX}memo/ofxMSAObjCPointer
 ${PREFIX}memo/ofxMSACore
 
