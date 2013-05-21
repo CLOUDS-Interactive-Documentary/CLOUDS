@@ -42,4 +42,12 @@ Nervous Jessica -- Marker 2 is the same as Nervous
 Casey - Group Teaching
 Greg - "Cameras scaling up" and "Camera scaling up" DUPLICATE
 
+NON PAIRINGS:
+/Volumes/Nebula/MediaPackages/CloudsBeta_MediaPackages/Regine05/
+/Volumes/Nebula/MediaPackages/EyeoMediaBin/Theo04/
+
+
+NOT IN SYNC
+/Volumes/Nebula/MediaPackages/EyeoMediaBin/Theo02/pairings.xml
+
 need better criteria for "exhausting" a topic, more than number of clips

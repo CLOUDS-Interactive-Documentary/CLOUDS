@@ -21,10 +21,10 @@
 	//    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
     [clipTable reloadData];
-
+    exportFolder = "/Volumes/Nebula/MediaPackages/_exports/";
 	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
-		exportManagers[i]->setExportDirectory( "/Volumes/Seance/MediaPackages/_exports/" );
+        exportManagers[i]->setExportDirectory(exportFolder);
 	}
 	
 	progressBars[0] = clipProgress1;
@@ -56,7 +56,6 @@
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
-
 }
 
 - (void)update
@@ -64,7 +63,7 @@
 	
 	if(startExport){
 		[self cancelExport:self];
-		
+    
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			// do work with "idx"
@@ -80,6 +79,13 @@
 		
 		cout << "exporting " << selectedClips.size() << endl;
 		
+        ofBuffer encodingScript;
+        encodingScript.append("#!/bin/bash");
+        for(int i = 0; i < selectedClips.size(); i++){
+            encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
+        }
+        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
+        
 		startExport = false;
 	}
 	
