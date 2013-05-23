@@ -1285,7 +1285,7 @@
 					"$(OFXCV_HEADERS)",
 					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1322,7 +1322,7 @@
 					"$(OFXCV_HEADERS)",
 					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",

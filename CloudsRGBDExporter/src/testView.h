@@ -34,6 +34,7 @@
 	bool exporting;
 	bool startExport;
 	bool saveAlignment;
+	bool pause;
 	bool resetCamera;
 	
 	vector<CloudsClip> selectedClips;
