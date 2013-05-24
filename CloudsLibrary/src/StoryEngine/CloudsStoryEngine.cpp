@@ -14,6 +14,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	network = NULL;
 	hasclip = false;
 	printDecisions = true;
+	combinedClipsOnly = false;
 	totalFramesWatched = 0;
 }
 
@@ -302,7 +303,13 @@ bool CloudsStoryEngine::populateNextClips(){
 
 int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	
-	//rejection criteria
+	//rejection criteria -- flat out reject clips on some basis
+	
+	if(combinedClipsOnly && !clip.hasCombinedVideo){
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": no combined video file" << endl;
+		return 0;
+	}
+		
 	if(clip.person == currentClip.person){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same person" << endl;
 		return 0;

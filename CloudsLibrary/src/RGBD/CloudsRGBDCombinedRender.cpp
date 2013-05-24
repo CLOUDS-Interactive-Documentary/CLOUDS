@@ -30,15 +30,15 @@ CloudsRGBDCombinedRender::~CloudsRGBDCombinedRender(){
 }
 
 //--------------------------------------------------------------- SET
-bool CloudsRGBDCombinedRender::setup(string videoPath){
+bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath){
 	ofxXmlSettings XML;
     
-//    if ( XML.loadFile(videoPath +"/_calibration.xml" ) ){
-	string XMLPath = ofFilePath::removeExt(videoPath) + ".xml";
-	if ( !XML.loadFile(XMLPath)){
-		ofLogError() << "CloudsRGBDCombinedRender::setup -- XML Path " << XMLPath << " failed to load";
+
+	if ( !XML.loadFile(calibrationXMLPath)){
+		ofLogError() << "CloudsRGBDCombinedRender::setup -- XML Path " << calibrationXMLPath << " failed to load";
 		return false;		
 	}
+	
 	colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
 	colorPrincipalPoint.y = XML.getValue("colorIntrinsics:ppy", 546.945983887);
 	colorFOV.x = XML.getValue("colorIntrinsics:fovx", 923.500793457);
@@ -113,7 +113,7 @@ bool CloudsRGBDCombinedRender::setup(string videoPath){
 	
     colorScale.x = float(player.getWidth()) / float(colorRect.width);
     colorScale.y = float(player.getHeight() - depthRect.height) / float(colorRect.height);
-
+	
     return true;
 }
 
@@ -233,6 +233,10 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 	ofPopMatrix();
 }
 
+ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
+	return player;
+}
+
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
     //  Texture
@@ -288,7 +292,17 @@ void CloudsRGBDCombinedRender::update(){
 		setSimplification(ofVec2f(1.0, 1.0));
 	}
     
-    //setSimplification(ofVec2f(1.0, 1.0));
+	if(player.isLoaded()){
+		player.update();
+	}
+}
+
+bool CloudsRGBDCombinedRender::isPlaying(){
+	return player.isLoaded() && player.isPlaying();
+}
+
+bool CloudsRGBDCombinedRender::isDone(){
+	return player.isLoaded() && !player.isPlaying();
 }
 
 void CloudsRGBDCombinedRender::drawMesh(){

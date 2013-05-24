@@ -6,7 +6,6 @@
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
-	playingCombinedVideo = false;
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
 }
@@ -47,7 +46,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		
 		eventsRegistered = true;
 
-		rgbdRenderer.setShaderPath("shaders/rgbdtwostreams");
+		combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
 		
 //		playerControls = new ofxUICanvas(0,0,200,500);
 
@@ -66,7 +65,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			showVisualSystem();
 		}
 	}
-	
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -92,30 +90,19 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(){
 
-	if(rgbdPlayer.isLoaded()){
-		rgbdPlayer.update();
-		rgbdRenderer.update();
-	}
+	combinedRenderer.update();
 	
-	if(rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
-		if(rgbdPlayer.getVideoPlayer()->getCurrentFrame() >= currentClip.endFrame){
-			storyEngine->selectNewClip();
-		}
+	if(combinedRenderer.isDone()){
+		storyEngine->selectNewClip();
 	}
 }
-
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(){
 	
-	if(!showingVisualSystem && rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
+	if(!showingVisualSystem && combinedRenderer.isPlaying()){
 		camera.begin();
-		if(playingCombinedVideo){
-			combinedRenderer.drawPointCloud();
-		}
-		else {
-			rgbdRenderer.drawPointCloud();
-		}
+		combinedRenderer.drawPointCloud();
 		camera.end();
 	}
 }
@@ -135,40 +122,17 @@ void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	if(clip.hasCombinedVideo){
-//		if(player.loadMovie(relinkMovieFilepath(clip.combinedVideoFilePath))){
-//			playingCombinedVideo = true;
-//			renderer.setup(relinkMovieFilepath(clip.combinedVideoCalibrationXml));
-//			renderer.setTexture(player);
-//		}
-	}
-	else{
-		if(rgbdPlayer.isLoaded()){
-			rgbdPlayer.getVideoPlayer()->stop();
-		}
-		playingCombinedVideo = false;
-		ofxRGBDScene scene;
-		string sceneFolder = ofFilePath::getEnclosingDirectory( //scene
-										ofFilePath::getEnclosingDirectory( //color
-																		  CloudsClip::relinkFilePath(clip.sourceVideoFilePath)));
-		scene.loadFromFolder(sceneFolder);
-
-		if(scene.valid()){
-			
-			rgbdPlayer.setup(scene);
-			rgbdPlayer.getVideoPlayer()->setFrame(clip.startFrame);
-			rgbdPlayer.getVideoPlayer()->play();
-			
-			rgbdRenderer.setup(scene.calibrationFolder);
-			rgbdRenderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
-			rgbdRenderer.setDepthImage(rgbdPlayer.getDepthPixels());
-			
+		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+			combinedRenderer.getPlayer().play();
+			currentClip = clip;
 		}
 		else{
-			ofLogError() << "RGBD LOAD : folder " << sceneFolder << " is not valid" << endl;
+			ofLogError() << "RGBD LOAD : folder " << clip.getCombinedMovieFile() << " is not valid" << endl;
 		}
 	}
-	
-	currentClip = clip;
+	else {
+		ofLogError() << "RGBD LOAD : clip " << clip.getLinkName() << " doesn't have combined video" << endl;
+	}
 }
 
 

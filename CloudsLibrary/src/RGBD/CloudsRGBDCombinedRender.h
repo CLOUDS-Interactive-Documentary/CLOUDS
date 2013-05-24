@@ -20,7 +20,7 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath);
+	bool setup(string videoPath, string calibrationXMLPath);
 //    void setTexture(ofBaseHasTexture& _tex);
 	void setShaderPath(string _shaderPath);
 	void reloadShader();
@@ -36,6 +36,12 @@ public:
     //
     void update();
     
+	//  CYCLE
+	//
+	
+	bool isPlaying();
+	bool isDone();
+	
     //  DRAW
     //
     void drawMesh();
@@ -43,6 +49,8 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
     
+	ofVideoPlayer& getPlayer();
+	
 	// Move in 3D Space
     ofVec3f worldPosition;
 	ofVec3f worldRotation;

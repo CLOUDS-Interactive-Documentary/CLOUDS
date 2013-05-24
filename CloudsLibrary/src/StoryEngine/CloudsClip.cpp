@@ -43,9 +43,7 @@ string CloudsClip::getCombinedMovieFile(){
 }
 
 string CloudsClip::getCombinedCalibrationXML(){
-	string nameNoSpaces = name;
-	ofStringReplace(nameNoSpaces, " ", "_");
-	return person + "_" + nameNoSpaces + ".xml";
+	return getID() + ".xml";
 }
 
 string CloudsClip::getFFMpegLine(string _exportFolder){

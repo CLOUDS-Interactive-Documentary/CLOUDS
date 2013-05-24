@@ -54,10 +54,8 @@ class CloudsPlaybackController {
 	
 	//RGBD STUFF
 	CloudsRGBDCombinedRender combinedRenderer;
-//	ofxRGBDGPURenderer rgbdRenderer;
-//	ofxRGBDPlayer rgbdPlayer;
+	string combinedMoviesFolder;
 	
-	bool playingCombinedVideo;
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
 	void clipChanged(CloudsStoryEventArgs& args);

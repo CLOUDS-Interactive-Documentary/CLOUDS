@@ -40,6 +40,9 @@ class CloudsStoryEngine {
 	bool printDecisions;
 	bool atDeadEnd();
 	
+	//for use in the main clouds repository
+	bool combinedClipsOnly;
+	
 	CloudsEvents& getEvents();
 
   protected:

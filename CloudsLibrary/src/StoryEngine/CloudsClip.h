@@ -17,7 +17,7 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	
-	bool hasCombinedVideo;
+
     ofColor color;
 	
 	float currentScore;
@@ -39,10 +39,9 @@ class CloudsClip {
 	string getCombinedCalibrationXML();
     string getFFMpegLine(string _exportFolder);
 	
-	//these are complete file paths, absolute directories
-	//this is set by the FCP database parser when the directory is set
-	string combinedVideoFilePath;
-	string combinedVideoCalibrationXml;
+	bool hasCombinedVideo;
+	string combinedVideoPath;
+	string combinedCalibrationXMLPath;
 	
 	string getAdjustmentXML();
 	void loadAdjustmentFromXML();

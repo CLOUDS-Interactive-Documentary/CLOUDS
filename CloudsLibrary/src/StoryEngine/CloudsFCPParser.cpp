@@ -375,12 +375,15 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	combinedVideoDirectory = directory;
-
+	cout << "Seting combined directory to " << directory << endl;
 	for(int i = 0; i < allClips.size(); i++){
 		allClips[i].hasCombinedVideo = false;
-		allClips[i].combinedVideoFilePath = directory + "/" + allClips[i].getCombinedMovieFile();
-		allClips[i].combinedVideoCalibrationXml = directory + "/" + allClips[i].getCombinedCalibrationXML();
-		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoFilePath).exists() && ofFile(allClips[i].combinedVideoCalibrationXml).exists();
+		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
+		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
+		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+		if(allClips[i].hasCombinedVideo){
+			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
+		}
 	}
 }	
 
