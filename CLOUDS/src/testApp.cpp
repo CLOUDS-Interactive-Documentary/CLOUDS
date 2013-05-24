@@ -9,15 +9,17 @@ void testApp::setup(){
 	
 	parser.setup("../../../CloudsData/fcpxml/");
     parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-
+	parser.setCombinedVideoDirectory("/Users/focus/Desktop/RGBD_Compiled");
+	
 	storyEngine.setup();
 	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 4;
+	storyEngine.combinedClipsOnly = true;
 	
 	player.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
-	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
+	storyEngine.seedWithClip( parser.getRandomClip(true) );
 	
 }
 

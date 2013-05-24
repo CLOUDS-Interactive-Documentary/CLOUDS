@@ -2,7 +2,6 @@
 #extension GL_ARB_texture_rectangle : enable
 
 uniform sampler2DRect texture;
-uniform vec2 textureSize;
 varying vec3 normal;
 
 varying float VZPositionValid0;

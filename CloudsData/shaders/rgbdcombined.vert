@@ -19,8 +19,8 @@ uniform vec2 colorPP;
 uniform vec3 dK;
 uniform vec2 dP;
 
-uniform mat3 colorRotate;
-uniform vec3 colorTranslate;
+uniform mat4 extrinsics;
+uniform vec2 scale;
 
 //DEPTH 
 uniform vec4 depthRect;
@@ -36,9 +36,6 @@ uniform vec2  simplify;
 uniform float farClip;
 uniform float nearClip;
 uniform float edgeClip;
-
-uniform vec2 shift;
-uniform vec2 scale;
 
 varying float VZPositionValid0;
 varying vec3 normal;
@@ -101,10 +98,6 @@ void main(void){
     vec2  normalPos = gl_Vertex.xy + normalRect.xy;
     normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
     
-    //gl_Normal = normal;
-    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = gl_Color;
-    
     float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0) );
     float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y) );
     float left  = depthValueFromSample( depthPos + vec2(-simplify.x,0.0) );
@@ -139,7 +132,7 @@ void main(void){
 
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
-    vec3 projection = colorRotate * pos.xyz + colorTranslate + vec3(shift * colorRect.zw / colorScale,0);
+    vec4 projection = extrinsics * pos;
 
     if(projection.z != 0.0) {
         vec2 xyp = projection.xy / projection.z;
@@ -153,4 +146,8 @@ void main(void){
 
         gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0;
 	}
+	
+    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
+    gl_FrontColor = gl_Color;
+	
 }
