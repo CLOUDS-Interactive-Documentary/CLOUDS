@@ -50,12 +50,13 @@ NON PAIRINGS:
 /Volumes/Nebula/MediaPackages/CloudsBeta_MediaPackages/Regine04/ 
 /Volumes/Nebula/MediaPackages/CloudsBeta_MediaPackages/Regine05/
 /Volumes/Nebula/MediaPackages/EyeoMediaBin/Theo04/
-
+/Volumes/Nebula/MediaPackages/JohnMaeda/depthframes/
 
 NOT IN SYNC
 /Volumes/Nebula/MediaPackages/EyeoMediaBin/Theo02/pairings.xml
 /Volumes/Nebula/MediaPackages/CloudsBeta_MediaPackages/Phillip01/adjustment.xml
 /Volumes/Nebula/MediaPackages/EyeoMediaBin/Paola02/adjustment.xml
 /Volumes/Nebula/MediaPackages/CloudsBeta_MediaPackages/Marcus00/adjustment.xml
+/Volumes/Nebula/MediaPackages/ITPClouds/Lindsay04/
 
 need better criteria for "exhausting" a topic, more than number of clips
