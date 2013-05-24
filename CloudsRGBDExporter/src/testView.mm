@@ -8,7 +8,10 @@
 	
 	ofBackground(22);
 	
+	cout << "PARSING LINKS" << endl;
 	if(ofDirectory("../../../CloudsData/").exists()){
+		
+		cout << "Found link in correct directory" << endl;
 		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 		parser.setup("../../../CloudsData/fcpxml/");
 	}
@@ -22,9 +25,10 @@
     
     [clipTable reloadData];
     exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports");
+    
 	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
-        exportManagers[i]->setExportDirectory(exportFolder);
+		exportManagers[i]->setExportDirectory( CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/") );
 	}
 	
 	progressBars[0] = clipProgress1;
@@ -61,6 +65,8 @@
 - (void)update
 {
 	
+	cout << "UPDATING" << endl;
+	
 	if(startExport){
 		[self cancelExport:self];
     
@@ -85,7 +91,7 @@
             encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
         }
 //        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
-        ofBufferToFile("/Users/Patricio/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
+        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
         selectedClips.clear();
 		startExport = false;
 	}
@@ -114,6 +120,14 @@
 	}
 	
 	player.update();
+	if(player.isLoaded()){
+		if(player.getVideoPlayer()->isPlaying() && pause){
+			player.getVideoPlayer()->stop();
+		}
+		else if(!player.getVideoPlayer()->isPlaying() && !pause){
+			player.getVideoPlayer()->play();
+		}
+	}
 	if(player.isLoaded() &&
 	  (player.isFrameNew() ||
 	   renderer.nearClip != minDepth ||
@@ -140,6 +154,8 @@
 
 - (void)draw
 {
+	cout << "DRAWING" << endl;
+	
 	ofPushStyle();
 	camRect = ofRectangle (200,0,ofGetWidth()-200,ofGetHeight());
 	ofSetColor(0);

@@ -155,6 +155,7 @@ string CloudsClip::relinkFilePath(string filePath){
 		//		cout << "Switched clip from " << clipFilePath;
 		ofStringReplace(filePath, "Nebula_backup", "Seance");
 		ofStringReplace(filePath, "Nebula", "Seance");
+
 		//		cout << " to " << clipFilePath << endl;
 	}
 	return filePath;
