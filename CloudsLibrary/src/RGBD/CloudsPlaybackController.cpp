@@ -65,6 +65,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			showVisualSystem();
 		}
 	}
+	
+	if(args.key == 'R'){
+		combinedRenderer.reloadShader();
+	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -127,14 +131,13 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 			currentClip = clip;
 		}
 		else{
-			ofLogError() << "RGBD LOAD : folder " << clip.getCombinedMovieFile() << " is not valid" << endl;
+			ofLogError() << "RGBD LOAD : folder " << clip.combinedVideoPath << " is not valid" << endl;
 		}
 	}
 	else {
 		ofLogError() << "RGBD LOAD : clip " << clip.getLinkName() << " doesn't have combined video" << endl;
 	}
 }
-
 
 #pragma visual systems
 //--------------------------------------------------------------------

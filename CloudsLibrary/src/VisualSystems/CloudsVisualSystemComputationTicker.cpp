@@ -24,6 +24,8 @@ void CloudsVisualSystemComputationTicker::setup(){
 	gui->addSlider("path deviation chance", 0, .2, &pathDeviation);
 	gui->addLabelButton("regenerate particles", &regenerate);
 	
+	gui->disable();
+	
 	gui->loadSettings("GUI/guiSettings.xml");
 
 	regenerateParticles();
@@ -67,11 +69,13 @@ void CloudsVisualSystemComputationTicker::begin(){
 	targetOffset.begin();
 	ofClear(0);
 	targetOffset.end();
+	
+	gui->enable();
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemComputationTicker::end(){
-	
+	gui->disable();
 }
 
 //--------------------------------------------------------------

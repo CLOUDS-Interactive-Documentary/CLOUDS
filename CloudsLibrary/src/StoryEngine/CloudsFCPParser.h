@@ -70,6 +70,8 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
+	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false);
+	
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
@@ -105,12 +107,13 @@ class CloudsFCPParser {
 
     map<string, int> allKeywords;
     vector<string> keywordVector;
-
+	vector<int> hasCombinedVideoIndeces;
+	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
 	
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
-
+	CloudsClip dummyClip; // for failed reference returns
 };

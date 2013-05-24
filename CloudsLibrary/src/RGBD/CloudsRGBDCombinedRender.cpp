@@ -14,7 +14,7 @@ CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
     
     setShaderPath("shaders/rgbdcombined");
     
-    simplify.set(1.0f,1.0f);
+    simplify.set(0,0);
     
 	nearClip    = 1.0f;
 	edgeClip    = 50.0f;

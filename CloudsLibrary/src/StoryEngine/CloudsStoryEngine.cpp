@@ -291,10 +291,6 @@ bool CloudsStoryEngine::populateNextClips(){
 	}
 
 	//visualizer->addLinksToPhysics(currentClip, allNextClips, allNextScores);
-//	CloudsStoryEventArgs args;
-//	args.currentTopic = currentTopic;
-//	args.chosenClip = &currentClip;
-//	args.clipOptions = &allNextClips;
 	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
 	ofNotifyEvent(events.clipChanged, args, this);
 
