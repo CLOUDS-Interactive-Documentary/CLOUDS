@@ -21,9 +21,12 @@ public:
     //  SET
     //
 	bool setup(string videoPath);
-    void setTexture(ofBaseHasTexture& _tex);
+//    void setTexture(ofBaseHasTexture& _tex);
 	void setShaderPath(string _shaderPath);
+	void reloadShader();
     
+	void setSimplification(ofVec2f _simplification);
+	
     //  Use these to project and draw textured custom geometry
     //
 	bool bindRenderer();
@@ -40,36 +43,39 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
     
-    void reloadShader();
-    
+	// Move in 3D Space
     ofVec3f worldPosition;
 	ofVec3f worldRotation;
-    
-    ofVec2f shift;
-	ofVec2f scale;
-    
-    //  Geometry
-    //
-    ofVec2f simplify;
+	
+	// Fix extrinsics
+	ofVec3f adjustTranslate;
+	ofVec3f adjustRotate;
+    ofVec2f adjustScale;
     
     float edgeClip;
 	float farClip;
 	float nearClip;
-    
+	
     bool bFlipTexture;
     bool bMirror;
     
 protected:
     
+
     void setupProjectionUniforms();
-    void setSimplification(ofVec2f _simplification);
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
     
-    ofBaseHasTexture *tex;
+	
+	ofVideoPlayer player;
+//    ofBaseHasTexture *tex;
+	
 	ofShader shader;
     string shaderPath;
     
-    ofMesh mesh;
+	// GEOMETRY
+	//
+    ofVboMesh mesh;
+    ofVec2f simplify;
     
     //  RGB
     //
@@ -78,8 +84,9 @@ protected:
 	ofVec2f     colorPrincipalPoint;
 	ofVec2f     colorFOV;
     
-    float       depthToRGBRotation[9];
-	ofVec3f     depthToRGBTranslation;
+    //float       depthToRGBRotation[9];
+//	ofVec3f     depthToRGBTranslation;
+	ofMatrix4x4 extrinsics;
 	ofVec3f     distortionK;
 	ofVec2f     distortionP;
     

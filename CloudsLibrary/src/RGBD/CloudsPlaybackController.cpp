@@ -49,8 +49,8 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 
 		rgbdRenderer.setShaderPath("shaders/rgbdtwostreams");
 		
-		playerControls = new ofxUICanvas(0,0,200,500);
-		//playerControls->addSlider("", <#float _min#>, <#float _max#>, <#float _value#>)
+//		playerControls = new ofxUICanvas(0,0,200,500);
+
 	}
 }
 

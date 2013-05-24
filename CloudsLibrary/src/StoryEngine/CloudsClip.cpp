@@ -39,9 +39,7 @@ string CloudsClip::getCombinedPNGExportFolder(){
 }
 
 string CloudsClip::getCombinedMovieFile(){
-	string nameNoSpaces = name;
-	ofStringReplace(nameNoSpaces, " ", "_");
-	return person + "_" + nameNoSpaces + ".mov";
+	return getID() + ".mov";
 }
 
 string CloudsClip::getCombinedCalibrationXML(){

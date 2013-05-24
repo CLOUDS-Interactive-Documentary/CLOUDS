@@ -188,7 +188,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	
 	//  Make a new mesh with that information
 	//
-	ofMesh mesh = ofxPCL::toOF(pc_n);
+	mesh = ofxPCL::toOF(pc_n);
 //	memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
 //	cout << "normals generated, building image for " << rgbdRenderer->validVertIndices.size() << " verts " << endl;
 	

@@ -7,8 +7,8 @@
 #include "CloudsRGBDCombinedRender.h"
 #include "CloudsVisualSystem.h"
 
-#include "ofxRGBDPlayer.h"
-#include "ofxRGBDGPURenderer.h"
+//#include "ofxRGBDPlayer.h"
+//#include "ofxRGBDGPURenderer.h"
 
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
@@ -54,8 +54,8 @@ class CloudsPlaybackController {
 	
 	//RGBD STUFF
 	CloudsRGBDCombinedRender combinedRenderer;
-	ofxRGBDGPURenderer rgbdRenderer;
-	ofxRGBDPlayer rgbdPlayer;
+//	ofxRGBDGPURenderer rgbdRenderer;
+//	ofxRGBDPlayer rgbdPlayer;
 	
 	bool playingCombinedVideo;
 	bool eventsRegistered;
