@@ -28,6 +28,8 @@
 	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/") );
+
+
 	}
 	
 	progressBars[0] = clipProgress1;
@@ -59,8 +61,6 @@
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
-
-	cout << "SETUP CAMERA" << endl;
 }
 
 - (void)update
@@ -70,7 +70,7 @@
 	
 	if(startExport){
 		[self cancelExport:self];
-		
+    
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			// do work with "idx"
@@ -86,6 +86,13 @@
 		
 		cout << "exporting " << selectedClips.size() << endl;
 		
+        ofBuffer encodingScript;
+        encodingScript.append("#!/bin/bash");
+        for(int i = 0; i < selectedClips.size(); i++){
+            encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
+        }
+        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
+        
 		startExport = false;
 	}
 	

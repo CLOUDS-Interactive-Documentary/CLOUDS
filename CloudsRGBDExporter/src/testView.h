@@ -43,6 +43,8 @@
 	
 	int currentClipIndex;
 	
+    string  exportFolder;
+    
 	//correction variables, loaded for each clip
 	ofVec3f translate;
 	ofVec3f rotate;

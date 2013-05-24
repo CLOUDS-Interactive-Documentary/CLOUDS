@@ -178,7 +178,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	//  Process Normals on PCL
 	//
 	ofxPCL::PointCloud pc;
-	ofxPCL::convert( rgbdRenderer->getReducedMesh(false), pc);
+	ofMesh mesh;
+	rgbdRenderer->getReducedMesh(mesh, false);
+	ofxPCL::convert(mesh, pc);
 	
 	ofxPCL::PointNormalPointCloud pc_n;
 	ofxPCL::normalEstimation(pc, pc_n );

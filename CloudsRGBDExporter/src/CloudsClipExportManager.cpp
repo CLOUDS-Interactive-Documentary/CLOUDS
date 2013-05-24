@@ -25,7 +25,6 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 
 	currentClip = clip;
 	
-	
 	done = false;
 	currentFrame = clip.startFrame;
 	
@@ -49,7 +48,6 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.scale = currentClip.adjustScale;
 
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
-	
 	
 	startThread(true, false);
 }

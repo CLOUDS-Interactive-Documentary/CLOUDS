@@ -15,11 +15,11 @@ else
 	echo "Cloning writable"
 fi
 
-https://github.com/rezaali/ofxUI
-https://github.com/satoruhiga/ofxCocoaGLView
-https://github.com/memo/ofxMSAPhysics.git
-https://github.com/memo/ofxMSAObjCPointer
-https://github.com/memo/ofxMSACore
+${PREFIX}rezaali/ofxUI
+${PREFIX}satoruhiga/ofxCocoaGLView
+${PREFIX}satoruhiga/ofxPCL
+${PREFIX}memo/ofxMSAObjCPointer
+${PREFIX}memo/ofxMSACore
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
