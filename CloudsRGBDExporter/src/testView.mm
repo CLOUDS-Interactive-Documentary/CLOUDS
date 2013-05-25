@@ -24,12 +24,11 @@
 	//    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
     [clipTable reloadData];
-
+    exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports");
+    
 	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/") );
-
-
 	}
 	
 	progressBars[0] = clipProgress1;
@@ -80,7 +79,7 @@
 			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
-		exporting = selectedClips.size() > 0;
+//		exporting = selectedClips.size() > 0;
 		[totalProgress setMinValue: 0.0];
 		[totalProgress setMaxValue: 1.0*selectedClips.size()];
 		
@@ -91,8 +90,9 @@
         for(int i = 0; i < selectedClips.size(); i++){
             encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
         }
-        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
-        
+//        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
+        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
+        selectedClips.clear();
 		startExport = false;
 	}
 	
