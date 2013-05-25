@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemLSys.h"
+#include "CloudsVisualSystemLSystems.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,5 +20,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystemLSys lsys;
+	CloudsVisualSystemLSystems computation;
 };

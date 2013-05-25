@@ -2,12 +2,15 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	ofEnableSmoothing();
-    ofSetVerticalSync(true);
 	
-	lsys.setup();
-	lsys.playSystem();
+	ofSetVerticalSync(true);
+	
+	computation.setup();
+	
+	computation.playSystem();
+	
 }
+
 
 //--------------------------------------------------------------
 void testApp::update(){
