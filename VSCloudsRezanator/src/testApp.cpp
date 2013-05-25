@@ -4,38 +4,32 @@
 void testApp::setup(){
 	
 	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
-	ofBackground(0);
 	
-	parser.setup("../../../CloudsData/fcpxml/");
-    parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-	parser.setCombinedVideoDirectory("/Volumes/Macintosh HD/CloudsVideos");
+	computation.setup();
 	
-	storyEngine.setup();
-	storyEngine.network = &parser;
-	storyEngine.maxTimesOnTopic = 4;
-	storyEngine.combinedClipsOnly = true;
-	
-	player.setup(storyEngine);
-	
-	float randomClip = ofRandom(parser.getAllClips().size() );
-	storyEngine.seedWithClip( parser.getRandomClip(true) );
+	computation.playSystem();
 	
 }
+
 
 //--------------------------------------------------------------
 void testApp::update(){
-	player.update();
+
 }
+
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	player.draw();
+	
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
+}
+
+//--------------------------------------------------------------
+void testApp::exit(){
 }
 
 //--------------------------------------------------------------
