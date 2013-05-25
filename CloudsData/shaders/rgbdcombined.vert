@@ -134,6 +134,7 @@ void main(void){
     //
     vec4 projection = extrinsics * pos;
 
+
     if(projection.z != 0.0) {
         vec2 xyp = projection.xy / projection.z;
         float r2 = pow(xyp.x, 2.0) + pow(xyp.y, 2.0);
@@ -144,7 +145,8 @@ void main(void){
         xypp.y = xyp.y * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + dP.x * (r2 + 2.0*pow(xyp.y, 2.0) ) + 2.0*dP.y*xyp.x*xyp.y;
         vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
 
-        gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0;
+        //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0;
+		gl_TexCoord[0].xy = uv;
 	}
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;

@@ -69,6 +69,10 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		combinedRenderer.reloadShader();
 	}
+	
+	if(args.key == OF_KEY_RIGHT){
+		storyEngine->selectNewClip();
+	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){

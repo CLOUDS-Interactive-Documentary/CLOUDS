@@ -65,7 +65,7 @@
 	
 	[self playCurrentPlaylist:self];
 	
-	font.loadFont("mplus-1c-regular.ttf", 12);
+	font.loadFont("materiapro_light.ttf", 12);
 	
 	cout << ofToString(parser.percentOfClipsLinked(), 4) << " percent clips linked!" << endl;
 	

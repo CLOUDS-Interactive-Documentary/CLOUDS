@@ -75,6 +75,8 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	
 	extrinsics = ofMatrix4x4(mat4x4);
 	
+	cout << "extrinsic matrix" << extrinsics << endl;
+	
 	//adjustment
 	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
 	adjustTranslate.y = XML.getValue("adjustment:translate:y", 0.0);
@@ -102,9 +104,11 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	normalRect.width = 640.0;
 	normalRect.height = 480.0;
 	
-	nearClip    = XML.getValue("adjustment:minDepth", 1.0f);
-	farClip     = XML.getValue("adjustment:maxDepth", 6000.0f);
-
+	nearClip    = XML.getValue("adjustment:depth:min", 1.0f);
+	farClip     = XML.getValue("adjustment:depth:max", 6000.0f);
+	
+	cout << "near clip " << nearClip << " far clip " << farClip << endl;
+	
     //TODO make asynchronous
 	if(!player.loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDCombinedRender::setup -- Movie path " << videoPath << " failed to load";
@@ -174,7 +178,6 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	for (float y = 0; y < depthRect.height; y += simplify.y){
 		for (float x = 0; x < depthRect.width; x += simplify.x){
             mesh.addColor(ofFloatColor(1.0,1.0,1.0,1.0));
-            //            mesh.addNormal( ofVec3f(1.0,1.0,1.0) );
             mesh.addVertex( ofVec3f(x, y,0));
             mesh.addTexCoord(ofVec2f(x,y));
 		}
@@ -208,7 +211,6 @@ bool CloudsRGBDCombinedRender::bindRenderer(){
 	ofRotate(worldRotation.y,0,1,0);
 	ofRotate(worldRotation.z,0,0,1);
     
-    
 	shader.begin();
 	glActiveTexture(GL_TEXTURE1);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -239,12 +241,13 @@ ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
 
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
-    //  Texture
-    //
+	
 	if(!player.isLoaded() || !player.isPlaying()){
 		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
 		return;
 	}
+	
+	player.setLoopState(OF_LOOP_NONE);
 	
     shader.setUniformTexture("texture", player, 0);
     shader.setUniform2f("textureSize",  player.getWidth(), player.getHeight());
@@ -259,12 +262,12 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
 //    glUniformMatrix3fv( glGetUniformLocation(shader.getProgram(), "colorRotate"), 1, GL_FALSE,depthToRGBRotation);
 //    shader.setUniform3f("colorTranslate", depthToRGBTranslation.x,depthToRGBTranslation.y,depthToRGBTranslation.z);
-	ofMatrix4x4 modMat;
-	modMat.rotate(adjustRotate.x, 0, 1, 0);
-	modMat.rotate(adjustRotate.y, 1, 0, 0);
-	modMat.translate(adjustTranslate.x, adjustTranslate.y, adjustTranslate.z);
+	ofMatrix4x4 adjustmentMatrix;
+	adjustmentMatrix.rotate(adjustRotate.x, 0, 1, 0);
+	adjustmentMatrix.rotate(adjustRotate.y, 1, 0, 0);
+	adjustmentMatrix.translate(adjustTranslate.x, adjustTranslate.y, adjustTranslate.z);
 
-	shader.setUniformMatrix4f( "extrinsics", (extrinsics * modMat) );
+	shader.setUniformMatrix4f( "extrinsics", extrinsics * adjustmentMatrix );
     
     shader.setUniform4f("depthRect", depthRect.x, depthRect.y, depthRect.width, depthRect.height);
 	shader.setUniform2f("depthPP", depthPrincipalPoint.x, depthPrincipalPoint.y);

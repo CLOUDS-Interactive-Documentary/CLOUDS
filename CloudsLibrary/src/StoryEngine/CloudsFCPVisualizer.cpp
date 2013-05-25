@@ -396,7 +396,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 	}
 	
     if(!font.isLoaded()){
-        font.loadFont("mplus-1c-regular.ttf", 15);
+        font.loadFont("materiapro_light.ttf", 15);
     }
 
 	ofPushMatrix();
@@ -702,7 +702,7 @@ void CloudsFCPVisualizer::createClusterPhysics(){
 void CloudsFCPVisualizer::drawGrid(){
     
     if(!font.isLoaded()){
-        font.loadFont("verdana.ttf", 8);
+        font.loadFont("materiapro_light.ttf", 8);
     }
     
     ofPushStyle();
