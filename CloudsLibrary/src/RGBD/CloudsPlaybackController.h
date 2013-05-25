@@ -38,7 +38,7 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-	ofxUICanvas* playerControls;
+
 	
   protected:
 
@@ -62,12 +62,35 @@ class CloudsPlaybackController {
 	//
 	bool showingVisualSystem;
 	vector<CloudsVisualSystem*> visualSystems;
+	map<string, CloudsVisualSystem*> nameToVisualSystem;
+	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
+	//this instantiates and registers all the visual systems, called once at setup
 	void populateVisualSystems();
+	//call once for each new system you instantiate
+	void registerVisualSystem(CloudsVisualSystem* system);
+	CloudsVisualSystem* visualSystemWithName(string systemName);
+	
+	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem();
+	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
+	//remove the current visual system
 	void hideVisualSystem();
 	
 	//MEDIA/INTERNAL
+	//
 	string relinkMovieFilepath(string filePath);
 
+	//GUI
+	//
+	ofxUICanvas* visualSystemControls;
+	ofxUIRadio *visualSystemRadio;
+	
+	ofxUICanvas* keyThemesPanel;
+	ofxUIRadio *keyThemesRadio;
+	ofxUIButton *playButton;
+	
+	float timeToTest;
+	bool triggerVisualSystem;
+	void guiEvent(ofxUIEventArgs &e);
 };

@@ -89,8 +89,8 @@ void CloudsVisualSystemComputationTicker::reloadShaders(){
 	ofClear(0);
 	targetOffset.end();
 	
-	drawShader.load("display");
-	updateShader.load("update");
+	drawShader.load("../../../CloudsData/shaders/VisualSystems/ComputationTicker/display");
+	updateShader.load("../../../CloudsData/shaders/VisualSystems/ComputationTicker/update");
 }
 
 //--------------------------------------------------------------
@@ -151,13 +151,14 @@ void CloudsVisualSystemComputationTicker::update(ofEventArgs & args){
 	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
 	updateShader.setUniformTexture("speed", speedTexture.getTextureReference(), 1);
 	updateShader.setUniform1f("speedMultiplier", powf(speed, 2.0));
-	
+
 	offsetMesh.draw();
 	
 	updateShader.end();
 	sourceOffset.end();
 	
 	ofPopStyle();
+	
 	
 	swap(sourceOffset,targetOffset);
 }
@@ -166,7 +167,9 @@ void CloudsVisualSystemComputationTicker::update(ofEventArgs & args){
 void CloudsVisualSystemComputationTicker::draw(ofEventArgs & args){
 	
 	
-	ofRectangle screenRect(200,0,ofGetWidth(), ofGetHeight());
+	ofPushStyle();
+	
+	ofRectangle screenRect(0,0,ofGetWidth(), ofGetHeight());
 	ofRectangle videoRect(0,0,fbo.getWidth(), fbo.getHeight());
 	videoRect.scaleTo(screenRect);
 	
@@ -205,10 +208,11 @@ void CloudsVisualSystemComputationTicker::draw(ofEventArgs & args){
 		fbo.getTextureReference().draw(videoRect);
 	}
 	
-	ofPushStyle();
-	ofDrawBitmapString(ofToString( ofGetFrameRate(),2 ), ofGetWidth() - 100, 20);
+//	ofPushStyle();
+//	ofDrawBitmapString(ofToString( ofGetFrameRate(),2 ), ofGetWidth() - 100, 20);
+//	ofPopStyle();
+
 	ofPopStyle();
-	
 }
 
 void CloudsVisualSystemComputationTicker::mouseDragged(ofMouseEventArgs & args){
