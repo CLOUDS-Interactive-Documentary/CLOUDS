@@ -82,7 +82,6 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 {
-    cout << "Exiting" << endl; 
     delete bgColor;
     delete bgColor2;
     
@@ -119,6 +118,7 @@ void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 void CloudsVisualSystemRezanator::begin()
 {
     loadGUIS();
+    hideGUIS();
     showGUIS();
     cam.enableMouseInput();
     for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
@@ -1123,7 +1123,6 @@ void CloudsVisualSystemRezanator::showGUIS()
 {
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
-        cout << (*it)->getName() << " " << (*it)->isEnabled() << endl;
         (*it)->enable();
     }
 }
@@ -1161,7 +1160,7 @@ void CloudsVisualSystemRezanator::drawDebug()
 {
     if(bDebug)
     {
-        float color = 255; 
+        float color = 255-bgBri->getPos();
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         drawGrid(-debugGridSize,-debugGridSize,debugGridSize*2,debugGridSize*2, color);
         drawAxis(debugGridSize, color);
@@ -1251,15 +1250,14 @@ void CloudsVisualSystemRezanator::drawBackground()
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
         ofPushMatrix();
-        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
-        
-        ofDisableLighting();
-        ofSetSmoothLighting(true);
-        glNormal3f(0,0,1);
         if(camFOV > 60)
         {
             ofBackground(*bgColor2);
-        }
+        }        
+        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
+        ofDisableLighting();
+        ofSetSmoothLighting(true);
+        glNormal3f(0,0,1);
         ofLayerGradient(*bgColor, *bgColor2);
         ofPopMatrix();
         selfDrawBackground();
