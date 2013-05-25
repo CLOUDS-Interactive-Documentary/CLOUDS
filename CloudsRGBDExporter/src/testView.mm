@@ -65,8 +65,6 @@
 - (void)update
 {
 	
-	cout << "UPDATING" << endl;
-	
 	if(startExport){
 		[self cancelExport:self];
     
@@ -154,7 +152,6 @@
 
 - (void)draw
 {
-	cout << "DRAWING" << endl;
 	
 	ofPushStyle();
 	camRect = ofRectangle (200,0,ofGetWidth()-200,ofGetHeight());

@@ -635,8 +635,8 @@
 		E7637D6C1734DEF7008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
+				E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */,
 				E7637D6F1734DEF7008ADC62 /* CloudsEvents.h */,
 				E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D711734DEF7008ADC62 /* CloudsFCPParser.h */,
