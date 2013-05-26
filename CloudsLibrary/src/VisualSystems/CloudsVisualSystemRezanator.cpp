@@ -27,6 +27,8 @@ void CloudsVisualSystemRezanator::setup()
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
+	
+	hideGUIS();
 }
 
 void CloudsVisualSystemRezanator::update(ofEventArgs & args)

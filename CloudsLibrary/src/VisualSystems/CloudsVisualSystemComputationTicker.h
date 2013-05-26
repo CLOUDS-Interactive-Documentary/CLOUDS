@@ -18,7 +18,6 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystemRezanator {
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -62,9 +61,7 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystemRezanator {
 	
 	ofVboMesh offsetMesh;
 	ofFbo sourceOffset,targetOffset;
-	
-	ofFbo fbo;
-	
+		
 	float pathDeviation;
 	
 	float speed;
