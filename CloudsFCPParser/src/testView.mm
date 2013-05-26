@@ -93,7 +93,7 @@
 	gui->loadSettings("settings.xml");
 	gui->disable();
 	
-	//exporter.saveGephiCSV(parser);
+	exporter.saveGephiCSV(parser);
 }
 
 - (IBAction) regenerateGraph:(id)sender
