@@ -27,7 +27,7 @@ void CloudsVisualSystemAmber::selfSetup()
     }
     
     glow = new ofImage();
-    glow->loadImage("images/glow.png");
+    glow->loadImage(getDataPath()+"images/glow.png");
     particleAlpha = 200;
     
     electro = new ofxElectroStaticBehavior();
@@ -153,6 +153,7 @@ void CloudsVisualSystemAmber::selfSceneTransformation()
 void CloudsVisualSystemAmber::selfDraw()
 {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
     ps->draw();
 }
 
@@ -234,7 +235,7 @@ void CloudsVisualSystemAmber::selfSetupRenderGui()
 {
     rdrGui->addToggle("ADDITIVE BLENDING", renderer->getAdditiveBlendingPtr());
     rdrGui->addSlider("POINTSIZE", 0.0, 10.0, renderer->getPointSizePtr());
-//    rdrGui->addSlider("COLOR PALETTE", 0.0, colorPalletes->getCount(), 0.0)->setIncrement(1.0);
+    rdrGui->addSlider("COLOR PALETTE", 0.0, colorPalletes->getCount(), 0.0)->setIncrement(1.0);
     rdrGui->addSlider("ALPHA", 0.0, 255.0, &particleAlpha);
 }
 
@@ -249,19 +250,19 @@ void CloudsVisualSystemAmber::guiRenderEvent(ofxUIEventArgs &e)
             it->setColorAlpha(particleAlpha);
         }
     }
-//    else if(name == "COLOR PALETTE")
-//    {
-//        ofxUISlider *s = (ofxUISlider *) e.widget;
-//        ofxColorPalette *colors = colorPalletes->getPalletePointer(s->getScaledValue());
-//        vector<ofxRParticle> *particles = ps->getParticlesPtr();
-//        int index = 0;
-//        for(vector<ofxRParticle>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
-//        {
-//            it->setColor(colors->getColor(index));
-//            it->setColorAlpha(particleAlpha);
-//            index++;
-//        }
-//    }
+    else if(name == "COLOR PALETTE")
+    {
+        ofxUISlider *s = (ofxUISlider *) e.widget;
+        ofxColorPalette *colors = colorPalletes->getPalletePointer(s->getScaledValue());
+        vector<ofxRParticle> *particles = ps->getParticlesPtr();
+        int index = 0;
+        for(vector<ofxRParticle>::iterator it = (*particles).begin(); it != (*particles).end(); it++)
+        {
+            it->setColor(colors->getColor(index));
+            it->setColorAlpha(particleAlpha);
+            index++;
+        }
+    }
 }
 
 void CloudsVisualSystemAmber::setupSphereGui(ofxUISuperCanvas *g, ofxSphericalAttractionBehavior *s, string _name, string _settings)
@@ -285,7 +286,6 @@ void CloudsVisualSystemAmber::setupSphereGui(ofxUISuperCanvas *g, ofxSphericalAt
     g->add2DPad("S POSITION", ofVec3f(-debugGridSize, debugGridSize), ofVec3f(-debugGridSize, debugGridSize), s->getPositionPtr());
     
     g->autoSizeToFitWidgets();
-    guis.push_back(g);
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiSphereEvent);
     guis.push_back(g);
 }

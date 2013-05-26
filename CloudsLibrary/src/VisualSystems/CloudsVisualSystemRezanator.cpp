@@ -7,6 +7,11 @@ string CloudsVisualSystemRezanator::getVisualSystemDataPath()
     return "../../../CloudsData/visualsystems/"+getSystemName()+"/";
 }
 
+string CloudsVisualSystemRezanator::getDataPath()
+{
+    return "../../../CloudsData/"; 
+}
+
 void CloudsVisualSystemRezanator::setup()
 {
     ofAddListener(ofEvents().exit, this, &CloudsVisualSystemRezanator::exit);
@@ -87,6 +92,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 {
+    delete colorPalletes; 
     delete bgColor;
     delete bgColor2;
     
@@ -361,6 +367,7 @@ void CloudsVisualSystemRezanator::mouseReleased(ofMouseEventArgs & args)
 
 void CloudsVisualSystemRezanator::setupAppParams()
 {
+	colorPalletes = new ofxColorPalettes(getDataPath()+"colors/");
     ofSetSphereResolution(30);
     bRenderSystem = true;
     bUpdateSystem = true;

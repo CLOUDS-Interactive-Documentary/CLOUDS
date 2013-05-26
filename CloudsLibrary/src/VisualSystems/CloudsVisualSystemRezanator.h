@@ -3,15 +3,19 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "ofxGenerative.h"
+#include "ofxColorPalettes.h"
 #include "ofxExtras.h"
 #include "CloudsVisualSystem.h"
 #include "ofxCameraSaveLoad.h"
+
 
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:
 
     //Data Folder Path
     string getVisualSystemDataPath();
+    string getDataPath();
+    
 	vector<string> getPresets();
 	
 	//Core Functions
@@ -142,7 +146,6 @@ protected:
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;
 
-
     //Background Props
     float bgAspectRatio;    
     int gradientMode;
@@ -191,5 +194,7 @@ protected:
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
     ofx1DExtruder *zRot;
-
+    
+    //COLORS
+    ofxColorPalettes *colorPalletes;
 };
