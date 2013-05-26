@@ -149,10 +149,16 @@ string CloudsClip::relinkFilePath(string filePath){
 	
 	if( !ofFile(filePath).exists() ){
 		//		cout << "Switched clip from " << clipFilePath;
-		ofStringReplace(filePath, "Nebula_backup", "Seance");
-		ofStringReplace(filePath, "Nebula", "Seance");
+        if(ofFile::doesFileExist("/Volumes/Seance/")){
+            ofStringReplace(filePath, "Nebula_backup", "Seance");
+            ofStringReplace(filePath, "Nebula", "Seance");
+        }
+        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
+            ofStringReplace(filePath, "Nebula_backup", "Nebula_helper");
+            ofStringReplace(filePath, "Nebula", "Nebula_helper");
+        }
 
-		//		cout << " to " << clipFilePath << endl;
+//		cout << " to " << clipFilePath << endl;
 	}
 	return filePath;
 }

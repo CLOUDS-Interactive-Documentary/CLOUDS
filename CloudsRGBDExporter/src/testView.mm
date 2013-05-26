@@ -25,10 +25,10 @@
     
     [clipTable reloadData];
     exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports");
-    
-	for(int i = 0; i < 4; i++){
+    cout << "Relinked Export Folder "<< exportFolder << endl;
+	for(int i = 0; i < 8; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
-		exportManagers[i]->setExportDirectory( CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/") );
+		exportManagers[i]->setExportDirectory( exportFolder );
 	}
 	
 	progressBars[0] = clipProgress1;
@@ -80,7 +80,7 @@
 			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
 		
-//		exporting = selectedClips.size() > 0;
+		exporting = selectedClips.size() > 0;
 		[totalProgress setMinValue: 0.0];
 		[totalProgress setMaxValue: 1.0*selectedClips.size()];
 		
@@ -93,11 +93,12 @@
         }
 //        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
         ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
-        selectedClips.clear();
+//        selectedClips.clear();
 		startExport = false;
 	}
 	
 	if(exporting){
+        cout << "exporting!" << endl;
 		for(int i = 0; i < exportManagers.size(); i++){
 			if(currentClipIndex < selectedClips.size()  && exportManagers[i]->isDone()){
 				cout << "EXPORTING CLIP " << selectedClips[currentClipIndex].getLinkName() << endl;;
@@ -155,7 +156,7 @@
 - (void)draw
 {
 
-	framebuffer.begin();
+//	framebuffer.begin();
 	ofClear(0);
 	
 	ofPushStyle();
@@ -190,9 +191,9 @@
 	glDisable(GL_DEPTH_TEST);
 	
 	ofPopStyle();
-	framebuffer.end();
+//	framebuffer.end();
 	
-	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
+//	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
 }
 
 - (void) loadClipForAlignment:(id)sender
