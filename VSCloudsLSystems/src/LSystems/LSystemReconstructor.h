@@ -35,6 +35,9 @@ public:
     ofMesh  mesh;
     ofPolyline activeNodes;
     
+    float tNoise;
+    float aNoise;
+    float bornRandom;
     float speed;
     
 private:

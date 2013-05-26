@@ -2,13 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
 	ofSetVerticalSync(true);
 	
-	computation.setup();
-	
-	computation.playSystem();
-	
+	lSystem.setup();
+	lSystem.playSystem();
 }
 
 

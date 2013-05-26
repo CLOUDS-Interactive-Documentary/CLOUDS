@@ -49,6 +49,9 @@ public:
 protected:
     void reBuildLSys();
     
+    ofTexture   dot;
+    ofShader    shader;
+    
     LSystemReconstructor lsysr;
     string  axiom;
     string  rule1;
@@ -57,5 +60,5 @@ protected:
     float   globalScale;
     float   lsysScale;
     float   lsysDepth;
-
+    float   dotSize;
 };
