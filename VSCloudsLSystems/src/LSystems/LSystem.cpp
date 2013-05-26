@@ -158,14 +158,14 @@ void LSystem::compute_figure(char *rule, int d){
                 
                 /* Calculate where we should step. */
                 
-                if ( utime == 0.0){
+//                if ( utime == 0.0){
                     sPos.x = pos.x + sin( a + unoise * (ofNoise(pos.x*0.01)-0.5)*2.0) * s;
                     sPos.y = pos.y + -cos( a + unoise * (ofNoise(pos.y*0.01)-0.5)*2.0) * s;
-                } else {
-                    float time = ofGetElapsedTimef() * utime;
-                    sPos.x = pos.x + sin( a + unoise * (ofNoise(time,pos.x*0.01)-0.5)*2.0) * s;
-                    sPos.y = pos.y + -cos( a + unoise * (ofNoise(time,pos.y*0.01)-0.5)*2.0) * s;
-                }
+//                } else {
+//                    float time = ofGetElapsedTimef() * utime;
+//                    sPos.x = pos.x + sin( a + unoise * (ofNoise(time,pos.x*0.01)-0.5)*2.0) * s;
+//                    sPos.y = pos.y + -cos( a + unoise * (ofNoise(time,pos.y*0.01)-0.5)*2.0) * s;
+//                }
                 
                 /* We need to plot any 'f' or '|' commands ... */
                 if(rule[i] == 'f' || rule[i] == '|') {

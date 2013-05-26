@@ -421,6 +421,7 @@ void CloudsVisualSystemRezanator::setupCoreGuis()
     setupCameraGui();
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1");
+	setupPresetGui();
 }
 
 void CloudsVisualSystemRezanator::setupGui()
@@ -452,10 +453,24 @@ void CloudsVisualSystemRezanator::setupGui()
     guis.push_back(gui);
 }
 
+vector<string> CloudsVisualSystemRezanator::getPresets(){
+	vector<string> presets;
+	ofDirectory presetsFolder = ofDirectory(getVisualSystemDataPath());
+	if(presetsFolder.exists()){
+		presetsFolder.listDir();
+		for(int i = 0; i < presetsFolder.size(); i++){
+			if(presetsFolder.getFile(i).isDirectory() && presetsFolder.getName(i) != "Working"){
+				presets.push_back(presetsFolder.getName(i));
+			}
+		}
+	}
+	return presets;
+}
+
 void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
-    
+    cout << "name:" << name << endl;
     if(name == "SAVE")
     {
         ofxUIButton *b = (ofxUIButton *) e.widget;
@@ -486,6 +501,7 @@ void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
             }
         }
     }
+
     selfGuiEvent(e);
 }
 
@@ -842,6 +858,35 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
     }
 }
 
+void CloudsVisualSystemRezanator::setupPresetGui()
+{
+	presetGui = new ofxUISuperCanvas("PRESETS");
+	presetGui->setName("PRESETS");
+	presetGui->copyCanvasStyle(gui);
+    presetGui->copyCanvasProperties(gui);
+
+	vector<string> presets = getPresets();
+	presetRadio = presetGui->addRadio("PRESETS", presets);
+	
+	presetGui->setWidgetFontSize(OFX_UI_FONT_SMALL); 
+	
+	presetGui->autoSizeToFitWidgets();
+    ofAddListener(presetGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiPresetEvent);
+    guis.push_back(presetGui);
+}
+
+void CloudsVisualSystemRezanator::guiPresetEvent(ofxUIEventArgs &e)
+{
+	if(e.widget->getParent()->getName() == "PRESETS")
+	{
+		ofxUIToggle *t = (ofxUIToggle *) e.widget;
+		if(t->getValue())
+		{
+			loadPresetGUIS(getVisualSystemDataPath() + e.widget->getName());
+		}
+	}
+}
+
 void CloudsVisualSystemRezanator::setupMaterial(string name, ofMaterial *m)
 {
     materials[name] = m;
@@ -1134,13 +1179,21 @@ void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
     if(!dir.doesDirectoryExist(presetDirectory))
     {
         dir.createDirectory(presetDirectory);
+
+		for(int i = 0; i < guis.size(); i++){
+			if(guis[i] == presetGui) guis.erase(guis.begin() + i);
+		}
+		ofVec2f presetPosition = ofVec2f(presetGui->getRect()->x,presetGui->getRect()->y);
+		delete presetGui;
+		setupPresetGui();
+		presetGui->setPosition(presetPosition.x, presetPosition.y);
     }
     
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");    
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/ofEasyCamSettings");    
 }
 
 void CloudsVisualSystemRezanator::deleteGUIS()
