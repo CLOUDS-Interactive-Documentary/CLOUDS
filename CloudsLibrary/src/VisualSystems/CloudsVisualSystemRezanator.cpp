@@ -1201,7 +1201,7 @@ void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
     {
         guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/ofEasyCamSettings");
+    ofxSaveCamera(cam, getVisualSystemDataPath()+presetName+"/"+"ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::deleteGUIS()
