@@ -169,9 +169,9 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
 
 void LSystemReconstructor::addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofFloatColor &Bc){
 
-    
     ofPoint dir = B - A;
     dir.normalize();
+    up.rotate(1, dir);
     
     ofPoint normal = dir.getCrossed(up);
     
