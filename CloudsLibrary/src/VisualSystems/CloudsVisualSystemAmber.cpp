@@ -37,9 +37,7 @@ void CloudsVisualSystemAmber::selfSetup()
     perlin = new ofxPerlinBehavior();
     damper = new ofxDamperBehavior();
     distort = new ofxDistorterBehavior();
-    buffer = new ofxBufferEffectorBehavior();
-    //        buffer->setBuffer(audioInMix, bufferSize);
-    
+    buffer = new ofxBufferEffectorBehavior();    
     buffer->setBuffer(bufferData, bufferSize);
     
     glowRenderer = new ofxRParticleGlowieRenderer();
