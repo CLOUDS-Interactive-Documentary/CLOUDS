@@ -73,7 +73,9 @@ public:
     
     //UI Helpers
     void loadGUIS();
+    void loadPresetGUIS(string presetName); 
     void saveGUIS();
+    void savePresetGUIS(string presetName); 
     void showGUIS();
     void hideGUIS();
     void toggleGUIS();
@@ -125,7 +127,7 @@ public:
 protected:
 
     //UI
-    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *gui; 
     ofxUISuperCanvas *sysGui;
     ofxUISuperCanvas *rdrGui;
     ofxUISuperCanvas *bgGui;
