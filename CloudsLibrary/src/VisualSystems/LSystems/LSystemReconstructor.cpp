@@ -10,6 +10,9 @@
 LSystemReconstructor::LSystemReconstructor(){
     bGrow = false;
     speed = 1.0;
+    aNoise = 0.7;
+    tNoise = 0.1;
+    bornRandom = 2.0;
     mesh.setMode(OF_PRIMITIVE_LINES);
 }
 
@@ -17,8 +20,8 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
     clear();
     nodes.clear();
     
-    _lsys.unoise = 0.5;
-//    _lsys.utime = 0.0;
+    _lsys.unoise = aNoise;
+    _lsys.utime = tNoise;
     _lsys.make(_deep);
     
     if (_lsys.mesh.getVertices().size() > 2){
@@ -111,14 +114,6 @@ void LSystemReconstructor::update(){
 
 void LSystemReconstructor::draw(){
     mesh.draw();
-    
-    ofPushStyle();
-    ofSetColor(255,100);
-    for(int i = 0; i < activeNodes.size(); i++){
-        ofPoint pos = activeNodes.getVertices()[i];
-        ofDrawSphere(pos, ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.7 );
-    }
-    ofPopStyle();
 }
 
 void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _speed){
@@ -126,13 +121,11 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
     int totalPoints = getOutline()[_index].size();
     int drawPoints = 0;
     
-    ofFloatColor color = ofFloatColor(1.0,0.0,0.0);
-    float hue = 0.0;
-    
     for (int k = 0 ; k < totalPoints-1; k++){
         float thisTime = _speed*(float)k;
         float nextTime = _speed*((float)k+1.0f);;
-        
+        ofFloatColor color = ofFloatColor(1.0, 1.0-(((float)k)/((float)totalPoints))*0.8 );
+                
         if ( k == totalPoints-1){
             nextTime = thisTime;
         }
@@ -151,26 +144,18 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             
             activeNodes.addVertex(pos);
             
-            hue = (float)(k)/(float)totalPoints;
-            color.setHue(hue);
             mesh.addColor(color);
             mesh.addVertex(getOutline()[ _index ][k]);
             
-            hue = (float)(k+1)/(float)totalPoints;
-            color.setHue(hue);
             mesh.addColor(color);
             mesh.addVertex(pos);
             
         } else if ( _relativeTime > thisTime ){
             ofPoint pos = getOutline()[ _index ][k];
             
-            hue = (float)k/(float)totalPoints;
-            color.setHue(hue);
             mesh.addColor(color);
             mesh.addVertex(pos);
             
-            hue = (float)(k+1)/(float)totalPoints;
-            color.setHue(hue);
             mesh.addColor(color);
             mesh.addVertex(getOutline()[ _index ][k+1]);
             
@@ -179,7 +164,7 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             int index = isNode(pos);
             if (index != -1){
                 if ( nodes[index].startTime == -1.0 ){
-                    nodes[index].startTime = time+ofRandom(2.0f)*_speed;
+                    nodes[index].startTime = time+ofRandom(bornRandom)*_speed;
                 }
             }
             

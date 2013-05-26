@@ -1281,6 +1281,9 @@ void CloudsVisualSystemRezanator::billBoard(ofVec3f globalCamPosition, ofVec3f g
     float theta = objectLookAt.angle(objToCam);
     ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
     axisOfRotation.normalize();
+    glRotatef(-zRot->getPos(), 0.0, 0.0, 1.0);
+    glRotatef(-yRot->getPos(), 0.0, 1.0, 0.0);
+    glRotatef(-xRot->getPos(), 1.0, 0.0, 0.0);    
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
 
