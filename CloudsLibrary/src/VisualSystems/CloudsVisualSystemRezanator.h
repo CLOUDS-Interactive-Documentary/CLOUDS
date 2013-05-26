@@ -12,7 +12,8 @@ public:
 
     //Data Folder Path
     string getVisualSystemDataPath();
-
+	vector<string> getPresets();
+	
 	//Core Functions
     void setup();               //setup*Params -> selfSetup -> setupCoreGuis -> selfSetupGuis (Extra Guis if Needed)
     void update(ofEventArgs & args);
@@ -58,6 +59,9 @@ public:
     void setupCameraGui();
     void guiCameraEvent(ofxUIEventArgs &e);
 
+	void setupPresetGui();
+	void guiPresetEvent(ofxUIEventArgs &e);
+	
     void setupMaterial(string name, ofMaterial *m);
     void guiMaterialEvent(ofxUIEventArgs &e);
 
@@ -91,7 +95,7 @@ public:
     void drawNormalizedTexturedQuad();
     void drawBackground();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
-    
+	
     //Rezanator SubClasses Override These Methods:
 	virtual string getSystemName();
 
@@ -133,6 +137,8 @@ protected:
     ofxUISuperCanvas *bgGui;
     ofxUISuperCanvas *lgtGui;
     ofxUISuperCanvas *camGui;
+    ofxUISuperCanvas *presetGui;
+	
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;
 
@@ -152,7 +158,8 @@ protected:
     ofxUISlider *hueSlider;
     ofxUISlider *satSlider;
     ofxUISlider *briSlider;
-
+	ofxUIRadio *presetRadio;
+	
     //ANIMATORS
     vector<ofx1DExtruder *> extruders;
 
