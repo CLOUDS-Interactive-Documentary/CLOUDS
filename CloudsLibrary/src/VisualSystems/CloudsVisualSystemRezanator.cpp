@@ -1177,7 +1177,7 @@ void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
             guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
         }
     }
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");
+    ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
