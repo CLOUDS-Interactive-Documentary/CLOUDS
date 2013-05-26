@@ -18,6 +18,12 @@ void CloudsVisualSystemRezanator::setup()
         dir.createDirectory(directoryName);
     }
     
+    string workingDirectoryName = directoryName+"Working/";
+    if(!dir.doesDirectoryExist(workingDirectoryName))
+    {
+        dir.createDirectory(workingDirectoryName);
+    }    
+    
     string snapsDirectory = "snapshots";
     if(!dir.doesDirectoryExist(snapsDirectory))
     {
