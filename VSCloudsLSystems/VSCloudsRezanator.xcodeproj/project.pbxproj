@@ -274,7 +274,8 @@
 				3D5B917E17517E8700F558AC /* LSystemReconstructor.h */,
 				3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */,
 			);
-			path = LSystems;
+			name = LSystems;
+			path = ../../CloudsLibrary/src/VisualSystems/LSystems;
 			sourceTree = "<group>";
 		};
 		3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */ = {
