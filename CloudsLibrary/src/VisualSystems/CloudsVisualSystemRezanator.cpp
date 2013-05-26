@@ -861,14 +861,21 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemRezanator::setupPresetGui()
 {
 	presetGui = new ofxUISuperCanvas("PRESETS");
-	presetGui->setName("PRESETS");
+	presetGui->setName("Presets");
 	presetGui->copyCanvasStyle(gui);
     presetGui->copyCanvasProperties(gui);
+    presetGui->addSpacer();
+    
+    vector<string> empty; empty.clear();
+	presetRadio = presetGui->addRadio("PRESETS", empty);
 
-	vector<string> presets = getPresets();
-	presetRadio = presetGui->addRadio("PRESETS", presets);
-	
-	presetGui->setWidgetFontSize(OFX_UI_FONT_SMALL); 
+	presetGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    vector<string> presets = getPresets();
+    for(vector<string>::iterator it = presets.begin(); it != presets.end(); ++it)
+    {
+        ofxUIToggle *t = presetGui->addToggle((*it), false);
+        presetRadio->addToggle(t);
+    }
 	
 	presetGui->autoSizeToFitWidgets();
     ofAddListener(presetGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiPresetEvent);
@@ -877,14 +884,11 @@ void CloudsVisualSystemRezanator::setupPresetGui()
 
 void CloudsVisualSystemRezanator::guiPresetEvent(ofxUIEventArgs &e)
 {
-	if(e.widget->getParent()->getName() == "PRESETS")
-	{
-		ofxUIToggle *t = (ofxUIToggle *) e.widget;
-		if(t->getValue())
-		{
-			loadPresetGUIS(getVisualSystemDataPath() + e.widget->getName());
-		}
-	}
+    ofxUIToggle *t = (ofxUIToggle *) e.widget;
+    if(t->getValue())
+    {
+        loadPresetGUIS(getVisualSystemDataPath() + e.widget->getName());
+    }
 }
 
 void CloudsVisualSystemRezanator::setupMaterial(string name, ofMaterial *m)
@@ -1167,7 +1171,10 @@ void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
+        if(guis[i]->getName() != "Presets")
+        {
+            guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
+        }
     }
     ofxLoadCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");
 }
@@ -1179,21 +1186,15 @@ void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
     if(!dir.doesDirectoryExist(presetDirectory))
     {
         dir.createDirectory(presetDirectory);
-
-		for(int i = 0; i < guis.size(); i++){
-			if(guis[i] == presetGui) guis.erase(guis.begin() + i);
-		}
-		ofVec2f presetPosition = ofVec2f(presetGui->getRect()->x,presetGui->getRect()->y);
-		delete presetGui;
-		setupPresetGui();
-		presetGui->setPosition(presetPosition.x, presetPosition.y);
+        presetRadio->addToggle(presetGui->addToggle(presetName, true));
+        presetGui->autoSizeToFitWidgets();
     }
     
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/ofEasyCamSettings");    
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::deleteGUIS()
