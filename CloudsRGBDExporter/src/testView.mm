@@ -49,8 +49,8 @@
 	gui->addSlider("max depth", 900, 3000, &maxDepth);
 	gui->addSlider("x texture translate", -20, 20, &translate.x);
 	gui->addSlider("y texture translate", -20, 20, &translate.y);
-	gui->addSlider("x texture rotate", -20, 20, &rotate.x);
-	gui->addSlider("y texture rotate", -20, 20, &rotate.y);
+	gui->addSlider("x texture rotate", -5, 5, &rotate.x);
+	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
 	gui->addToggle("pause", &pause);
