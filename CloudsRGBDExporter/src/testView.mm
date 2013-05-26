@@ -53,6 +53,7 @@
 	gui->addSlider("y texture rotate", -20, 20, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
+	gui->addToggle("pause", &pause);
 	gui->addButton("Save Alignment", &saveAlignment);
 	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
