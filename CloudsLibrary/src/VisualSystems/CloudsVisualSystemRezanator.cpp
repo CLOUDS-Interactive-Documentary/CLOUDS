@@ -1099,18 +1099,18 @@ void CloudsVisualSystemRezanator::loadGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->loadSettings(getVisualSystemDataPath()+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->loadSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->saveSettings(getVisualSystemDataPath()+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->saveSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
