@@ -60,6 +60,8 @@
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
+	
+	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 }
 
 - (void)update
@@ -134,7 +136,6 @@
 	   renderer.colorMatrixTranslate != translate ||
 	   renderer.scale != scale))
 	{
-
 		loadedClip.minDepth = renderer.nearClip = minDepth;
 		loadedClip.maxDepth = renderer.farClip = maxDepth;
 		loadedClip.adjustRotate = renderer.colorMatrixRotate = rotate;
@@ -152,6 +153,9 @@
 
 - (void)draw
 {
+
+	framebuffer.begin();
+	ofClear(0);
 	
 	ofPushStyle();
 	camRect = ofRectangle (200,0,ofGetWidth()-200,ofGetHeight());
@@ -185,6 +189,9 @@
 	glDisable(GL_DEPTH_TEST);
 	
 	ofPopStyle();
+	framebuffer.end();
+	
+	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
 }
 
 - (void) loadClipForAlignment:(id)sender

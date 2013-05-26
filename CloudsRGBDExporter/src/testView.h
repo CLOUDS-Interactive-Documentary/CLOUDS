@@ -37,6 +37,7 @@
 	bool pause;
 	bool resetCamera;
 	
+	ofFbo framebuffer;
 	vector<CloudsClip> selectedClips;
 
 	ofxUICanvas* gui;
