@@ -121,7 +121,8 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
     int totalPoints = getOutline()[_index].size();
     int drawPoints = 0;
     
-    for (int k = 0 ; k < totalPoints-1; k++){
+    up = ofPoint(0,0,1);
+    for (int k = 0 ; k < totalPoints-1; k++){                  
         float thisTime = _speed*(float)k;
         float nextTime = _speed*((float)k+1.0f);;
         ofFloatColor color = ofFloatColor(1.0, 1.0-(((float)k)/((float)totalPoints))*0.8 );
@@ -144,20 +145,12 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             
             activeNodes.addVertex(pos);
             
-            mesh.addColor(color);
-            mesh.addVertex(getOutline()[ _index ][k]);
-            
-            mesh.addColor(color);
-            mesh.addVertex(pos);
+            addLine(getOutline()[ _index ][k],color,pos,color);
             
         } else if ( _relativeTime > thisTime ){
             ofPoint pos = getOutline()[ _index ][k];
             
-            mesh.addColor(color);
-            mesh.addVertex(pos);
-            
-            mesh.addColor(color);
-            mesh.addVertex(getOutline()[ _index ][k+1]);
+            addLine(pos,color,getOutline()[ _index ][k+1],color);
             
             //  check if pass over a node
             //
@@ -172,6 +165,23 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             break;
         }
     }
+}
+
+void LSystemReconstructor::addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofFloatColor &Bc){
+
+    
+    ofPoint dir = B - A;
+    dir.normalize();
+    
+    ofPoint normal = dir.getCrossed(up);
+    
+    mesh.addColor(Ac);
+    mesh.addNormal(normal);
+    mesh.addVertex(A);
+    
+    mesh.addColor(Bc);
+    mesh.addNormal(normal);
+    mesh.addVertex(B);
 }
 
 int LSystemReconstructor::isNode(ofPoint &_pnt){

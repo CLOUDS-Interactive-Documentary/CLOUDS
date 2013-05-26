@@ -43,9 +43,12 @@ public:
 private:
     void    addNode(ofPoint &_pnt);
     int     isNode(ofPoint &_pnt);
+    
     void    renderBranch(int _index, float _relativeTime, float _speed);
+    void    addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofFloatColor &Bc);
     
     vector<LNode> nodes;
+    ofPoint up;
     
     float   time, lastTime;
     float   pct;

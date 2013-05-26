@@ -15,7 +15,8 @@ string CloudsVisualSystemLSystems::getSystemName()
 
 void CloudsVisualSystemLSystems::selfSetup()
 {
-//    ofDisableArbTex();
+    objectLookAt = ofVec3f(0,0,1);
+    
     shader.load("shader");
     ofLoadImage(dot, "dot.png");
     
@@ -74,50 +75,48 @@ void CloudsVisualSystemLSystems::selfSceneTransformation()
 
 void CloudsVisualSystemLSystems::selfDraw()
 {
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     mat->begin();
     ofPushMatrix();
-//    ofRotate(90, 1.0, 0.0, 0.0);
 
-//    ofMesh nodes;
-//    nodes.setMode(OF_PRIMITIVE_POINTS);
+    glDepthMask(GL_FALSE);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
     for(int i = 0; i < lsysr.activeNodes.size(); i++){
         ofPoint pos = lsysr.activeNodes.getVertices()[i];
         float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.7;
         
         ofPushMatrix();
         ofSetRectMode(OF_RECTMODE_CENTER);
-        
-        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
-        ofSetColor(255, 0, 0);
-        dot.draw(0, 0, 100, 100);
+        ofTranslate(pos); 
+        billBoard();
+        ofSetColor(255, 255*intensity);
+        dot.draw(0, 0, intensity*dotSize, intensity*dotSize);
         ofSetRectMode(OF_RECTMODE_CORNER);
         ofPopMatrix();
         
-//        nodes.addNormal(ofPoint(intensity,intensity,intensity));
-//        nodes.addColor(ofFloatColor(1.0,intensity));
-//        nodes.addVertex(pos);
     }
-    
-//    glDepthMask(GL_FALSE);
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
-//	ofEnablePointSprites();
-//    shader.begin();
-//    shader.setUniform1f("dotSize",dotSize);
-//    shader.setUniformTexture("tex", dot,0);
-//    nodes.draw();
-//    shader.end();
-//    ofDisablePointSprites();
-//	ofDisableBlendMode();
-//    glDepthMask(GL_TRUE);
-    
     ofSetColor(255);
     lsysr.draw();
     
+    glDepthMask(GL_TRUE);
+    ofEnableAlphaBlending();
+    
     ofPopMatrix();
     mat->end();
+}
+
+void CloudsVisualSystemLSystems::billBoard()
+{
+    ofVec3f objToCam = cam.getGlobalPosition();
+    objToCam.normalize();
+    float theta = objectLookAt.angle(objToCam);
+    ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
+    axisOfRotation.normalize();
     
-    
+    glRotatef(-zRot->getPos(), 0.0, 0.0, 1.0);
+    glRotatef(-yRot->getPos(), 0.0, 1.0, 0.0);
+    glRotatef(-xRot->getPos(), 1.0, 0.0, 0.0);
+    glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);    
 }
 
 void CloudsVisualSystemLSystems::selfExit()

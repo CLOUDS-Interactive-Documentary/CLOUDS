@@ -46,7 +46,12 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+    void billBoard(); 
+    
 protected:
+    
+    ofVec3f objectLookAt;
+    
     void reBuildLSys();
     
     ofTexture   dot;
