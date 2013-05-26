@@ -4,6 +4,8 @@
 //#include "CloudsVisualSystemStandin.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
+#include "CloudsVisualSystemComputationTicker.h"
+#include "CloudsVisualSystemLSystems.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
@@ -156,7 +158,8 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	registerVisualSystem( new CloudsVisualSystemRezanator() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-
+	registerVisualSystem( new CloudsVisualSystemLSystems() );
+	
 	set<string> keyThemes;
 	for(int i = 0; i < visualSystems.size(); i++){
 		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
@@ -266,7 +269,7 @@ void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
     
-    cout << "WIDGET NAME: " << name << endl;
+//    cout << "WIDGET NAME: " << name << endl;
     
     if(e.widget->getParent() == visualSystemRadio){
 		if(visualSystemRadio->getActive() != NULL){
@@ -277,7 +280,11 @@ void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
 					delete keyThemesPanel;
 				}
 				keyThemesPanel = new ofxUICanvas(0, visualSystemControls->getRect()->getMaxY(), 0, 0);
-				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", system->getRelevantKeywords(), OFX_UI_ORIENTATION_VERTICAL, 16, 16);
+				vector<string>& relevantKeys = system->getRelevantKeywords();
+				if(relevantKeys.size() == 0){
+					relevantKeys.push_back("no-key");
+				}
+				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", relevantKeys, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
 				
 				keyThemesPanel->setTheme(OFX_UI_THEME_COOLCLAY);
 				playButton = keyThemesPanel->addButton("Test System", &triggerVisualSystem);

@@ -130,6 +130,9 @@
 		E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330691751D446006706ED /* ofxVerletSolver.cpp */; };
 		E7D330B91751D4C1006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7D330BF1751D55E006706ED /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330BD1751D55E006706ED /* CloudsVisualSystemRezanator.cpp */; };
+		E7D330C91751DDE2006706ED /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330C51751DDE2006706ED /* LSystem.cpp */; };
+		E7D330CA1751DDE2006706ED /* LSystemReconstructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330C71751DDE2006706ED /* LSystemReconstructor.cpp */; };
+		E7D330CD1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330CB1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 /* End PBXBuildFile section */
@@ -550,6 +553,12 @@
 		E7D330B61751D4C1006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7D330BD1751D55E006706ED /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
 		E7D330BE1751D55E006706ED /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
+		E7D330C51751DDE2006706ED /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
+		E7D330C61751DDE2006706ED /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
+		E7D330C71751DDE2006706ED /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
+		E7D330C81751DDE2006706ED /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
+		E7D330CB1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemLSystems.cpp; path = ../CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
+		E7D330CC1751DDEF006706ED /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemLSystems.h; path = ../CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -785,6 +794,7 @@
 		E7637D511734DE75008ADC62 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7D330C41751DDE2006706ED /* LSystems */,
 				E7637D8D17359C55008ADC62 /* CloudsVisualSystem.h */,
 				E7637D8C17359C55008ADC62 /* CloudsVisualSystem.cpp */,
 				E7D330BE1751D55E006706ED /* CloudsVisualSystemRezanator.h */,
@@ -1643,6 +1653,19 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7D330C41751DDE2006706ED /* LSystems */ = {
+			isa = PBXGroup;
+			children = (
+				E7D330CC1751DDEF006706ED /* CloudsVisualSystemLSystems.h */,
+				E7D330CB1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp */,
+				E7D330C51751DDE2006706ED /* LSystem.cpp */,
+				E7D330C61751DDE2006706ED /* LSystem.h */,
+				E7D330C71751DDE2006706ED /* LSystemReconstructor.cpp */,
+				E7D330C81751DDE2006706ED /* LSystemReconstructor.h */,
+			);
+			path = LSystems;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1832,6 +1855,9 @@
 				E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */,
 				E7D330B91751D4C1006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7D330BF1751D55E006706ED /* CloudsVisualSystemRezanator.cpp in Sources */,
+				E7D330C91751DDE2006706ED /* LSystem.cpp in Sources */,
+				E7D330CA1751DDE2006706ED /* LSystemReconstructor.cpp in Sources */,
+				E7D330CD1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
