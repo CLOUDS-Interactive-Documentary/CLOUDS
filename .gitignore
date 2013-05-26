@@ -32,7 +32,7 @@ graphviz/
 *.pdb
 
 /testRTcmix/bin/data/shlib/*
-
+Working/
 
 #PCL stuff
 pcl/
