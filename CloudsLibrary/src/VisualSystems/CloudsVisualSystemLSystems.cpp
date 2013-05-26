@@ -15,7 +15,14 @@ string CloudsVisualSystemLSystems::getSystemName()
 
 void CloudsVisualSystemLSystems::selfSetup()
 {
+//    ofDisableArbTex();
+    shader.load("shader");
+    ofLoadImage(dot, "dot.png");
     
+    angle = 5;
+    axiom = "B";
+    rule1 = "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB";
+    rule2 = "F=FF";
 }
 
 void CloudsVisualSystemLSystems::selfSetupGuis()
@@ -69,17 +76,48 @@ void CloudsVisualSystemLSystems::selfDraw()
 {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     mat->begin();
-//    ofSetColor(ofColor(255));
-//    ofFill();
-//    ofDrawSphere(100);
-
     ofPushMatrix();
-    ofRotate(90, 1.0, 0.0, 0.0);
+//    ofRotate(90, 1.0, 0.0, 0.0);
+
+//    ofMesh nodes;
+//    nodes.setMode(OF_PRIMITIVE_POINTS);
+    for(int i = 0; i < lsysr.activeNodes.size(); i++){
+        ofPoint pos = lsysr.activeNodes.getVertices()[i];
+        float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.7;
+        
+        ofPushMatrix();
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        
+        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
+        ofSetColor(255, 0, 0);
+        dot.draw(0, 0, 100, 100);
+        ofSetRectMode(OF_RECTMODE_CORNER);
+        ofPopMatrix();
+        
+//        nodes.addNormal(ofPoint(intensity,intensity,intensity));
+//        nodes.addColor(ofFloatColor(1.0,intensity));
+//        nodes.addVertex(pos);
+    }
+    
+//    glDepthMask(GL_FALSE);
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+//	ofEnablePointSprites();
+//    shader.begin();
+//    shader.setUniform1f("dotSize",dotSize);
+//    shader.setUniformTexture("tex", dot,0);
+//    nodes.draw();
+//    shader.end();
+//    ofDisablePointSprites();
+//	ofDisableBlendMode();
+//    glDepthMask(GL_TRUE);
+    
     ofSetColor(255);
     lsysr.draw();
-    ofPopMatrix();
     
+    ofPopMatrix();
     mat->end();
+    
+    
 }
 
 void CloudsVisualSystemLSystems::selfExit()
@@ -140,20 +178,20 @@ void CloudsVisualSystemLSystems::selfGuiEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystemLSystems::selfSetupSystemGui()
 {
-    sysGui->addLabel("LSystem");
-    ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B");
+    ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B", OFX_UI_FONT_SMALL);
     uiAxiom->setAutoClear(false);
-    ofxUITextInput *uiRule1 = sysGui->addTextInput("Rule1", "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB");
+    ofxUITextInput *uiRule1 = sysGui->addTextInput("Rule1", "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB", OFX_UI_FONT_SMALL);
     uiRule1->setAutoClear(false);
-    ofxUITextInput *uiRule2 = sysGui->addTextInput("Rule2", "F=FF");
+    ofxUITextInput *uiRule2 = sysGui->addTextInput("Rule2", "F=FF", OFX_UI_FONT_SMALL);
     uiRule2->setAutoClear(false); 
     sysGui->addSlider("Angle", 0, 90, &angle);
     sysGui->addSlider("Scale", 0.5, 2, &lsysScale);
-    sysGui->addSlider("Depth", 1, 5, &lsysDepth);
-    
-    sysGui->addLabel("Growing");
+    sysGui->addSlider("Depth", 1, 10, &lsysDepth);
+    sysGui->addSlider("aNoise", 0.0, 2.0, &lsysr.aNoise);
+    sysGui->addSlider("tNoise", 0.0, 1.0, &lsysr.tNoise);
     sysGui->addSlider("Speed", 0.0, 10, &lsysr.speed);
-    
+    sysGui->addSlider("bornTime", 0.0, 2, &lsysr.bornRandom);
+    sysGui->addSlider("dotSize", 0.0, 100.0, &dotSize);
     sysGui->addButton("REGENERATE", true);
     
     axiom = uiAxiom->getTextString();

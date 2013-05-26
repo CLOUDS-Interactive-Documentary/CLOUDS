@@ -7,9 +7,12 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	
-	parser.setup("../../../CloudsData/fcpxml/");
-    parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-	parser.setCombinedVideoDirectory("/Volumes/Macintosh HD/CloudsVideos");
+	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
+    parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
+	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
+		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+	}
+	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	storyEngine.setup();
 	storyEngine.network = &parser;

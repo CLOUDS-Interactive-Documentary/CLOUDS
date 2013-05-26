@@ -9,6 +9,16 @@ CloudsVisualSystem::~CloudsVisualSystem(){
 	
 }
 
+string CloudsVisualSystem::getVisualSystemDataPath()
+{
+    return "../../../CloudsData/visualsystems/"+getSystemName()+"/";
+}
+
+string CloudsVisualSystem::getDataPath()
+{
+    return "../../../CloudsData/";
+}
+
 bool CloudsVisualSystem::isReleventToKeyword(string keyword){
 	return ofContains(relevantKeywords, keyword);
 }

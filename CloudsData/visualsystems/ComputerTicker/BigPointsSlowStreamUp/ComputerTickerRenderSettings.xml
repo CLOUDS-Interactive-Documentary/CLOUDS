@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1150.088867188</XPosition>
+    <YPosition>549.779541016</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>point size</Name>
+    <Value>13.166833878</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>scale</Name>
+    <Value>1.838424683</Value>
+</Widget>

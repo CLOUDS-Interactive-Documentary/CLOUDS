@@ -93,6 +93,10 @@
 		3D5B917C17517E8700F558AC /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
 		3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
 		3D5B917E17517E8700F558AC /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
+		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
+		3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
 		4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
 		4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -270,7 +274,28 @@
 				3D5B917E17517E8700F558AC /* LSystemReconstructor.h */,
 				3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */,
 			);
-			path = LSystems;
+			name = LSystems;
+			path = ../../CloudsLibrary/src/VisualSystems/LSystems;
+			sourceTree = "<group>";
+		};
+		3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */ = {
+			isa = PBXGroup;
+			children = (
+				3D5B91B01751CF3E00F558AC /* .gitignore */,
+				3D5B91B11751CF3E00F558AC /* README.md */,
+				3D5B91B21751CF3E00F558AC /* src */,
+			);
+			name = ofxColorPalettes;
+			path = ../../../addons/ofxColorPalettes;
+			sourceTree = "<group>";
+		};
+		3D5B91B21751CF3E00F558AC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */,
+				3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		4695E24A17512ACD003001E2 /* ofxUI */ = {
@@ -411,6 +436,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */,
 				4695E2C717513D99003001E2 /* ofxCameraSaveLoad */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				4695E2C117512F28003001E2 /* ofxExtras */,

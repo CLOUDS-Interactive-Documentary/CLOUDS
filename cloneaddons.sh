@@ -17,6 +17,8 @@ fi
 
 #private, must be read
 git clone git@github.com:rezaali/ofxExtras
+git clone https://github.com/rezaali/ofxUI
+git clone git@github.com:rezaali/ofxColorPalettes
 
 git clone satoruhiga/ofxCocoaGLView
 git clone satoruhiga/ofxPCL
@@ -25,7 +27,7 @@ git clone memo/ofxMSACore
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 
 ${PREFIX}rezaali/ofxGenerative
-git clone rezaali/ofxUI
+
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween

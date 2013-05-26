@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>12.000000000</XPosition>
+    <YPosition>8.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER</Name>
+    <Value>1</Value>
+</Widget>
