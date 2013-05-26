@@ -15,13 +15,3 @@
     <Name>RENDER</Name>
     <Value>1</Value>
 </Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>AVAUTO</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>USE TOUCHES</Name>
-    <Value>1</Value>
-</Widget>

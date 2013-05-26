@@ -18,6 +18,12 @@ void CloudsVisualSystemRezanator::setup()
         dir.createDirectory(directoryName);
     }
     
+    string snapsDirectory = "snapshots";
+    if(!dir.doesDirectoryExist(snapsDirectory))
+    {
+        dir.createDirectory(snapsDirectory);
+    }
+
     setupAppParams();
     setupDebugParams();
     setupCameraParams();
@@ -30,21 +36,14 @@ void CloudsVisualSystemRezanator::setup()
 
 void CloudsVisualSystemRezanator::update(ofEventArgs & args)
 {
-    if(bAutoMode)
-    {
-        selfAutoMode();
-    }
-    
-    for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
-    {
-        (*it)->update();
-    }
-        
-    bgColor->setHsb(bgHue->getPos(), bgSat->getPos(), bgBri->getPos(), 255);
-    bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
-    
     if(bUpdateSystem)
     {
+        for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
+        {
+            (*it)->update();
+        }
+        bgColor->setHsb(bgHue->getPos(), bgSat->getPos(), bgBri->getPos(), 255);
+        bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
         selfUpdate();
     }
 }
@@ -173,8 +172,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             
         case 'u':
         {
-            bUpdateSystem = !bUpdateSystem;
-            bAutoMode = !bAutoMode;
+            bUpdateSystem = !bUpdateSystem; 
         }
             break;
             
@@ -360,8 +358,6 @@ void CloudsVisualSystemRezanator::setupAppParams()
     ofSetSphereResolution(60);
     bRenderSystem = true;
     bUpdateSystem = true;
-    bAutoMode = false;
-    bUseTouches = true;
 }
 
 void CloudsVisualSystemRezanator::setupDebugParams()
@@ -437,17 +433,12 @@ void CloudsVisualSystemRezanator::setupGui()
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     ofxUIButton *loadbtn = gui->addButton("LOAD", false);
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    gui->addToggle("UPDATE", &bUpdateSystem);
+    ofxUIButton *updatebtn = gui->addToggle("UPDATE", &bUpdateSystem);
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     ofxUIButton *renderbtn = gui->addToggle("RENDER", &bRenderSystem);
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    gui->addToggle("AVAUTO", &bAutoMode);
-    gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    ofxUIButton *touchesbtn = gui->addToggle("USE TOUCHES", &bUseTouches);
-    gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    gui->addWidgetNorthOf(renderbtn, "USE TOUCHES", true);
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
-    gui->setPlacer(touchesbtn);
+    gui->setPlacer(updatebtn);
     gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
@@ -1307,11 +1298,6 @@ void CloudsVisualSystemRezanator::selfSetup()
 }
 
 void CloudsVisualSystemRezanator::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemRezanator::selfAutoMode()
 {
     
 }

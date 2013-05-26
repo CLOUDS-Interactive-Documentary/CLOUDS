@@ -96,7 +96,6 @@ public:
     virtual void selfSetup();
     virtual void selfSetupGuis(); 
     
-    virtual void selfAutoMode();
     virtual void selfUpdate();
     virtual void selfDrawBackground();
     virtual void selfDrawDebug();
@@ -172,8 +171,6 @@ protected:
     //APP
     bool bRenderSystem;
     bool bUpdateSystem;
-    bool bAutoMode;
-    bool bUseTouches;
     bool bDebug;
     float debugGridSize;
 
