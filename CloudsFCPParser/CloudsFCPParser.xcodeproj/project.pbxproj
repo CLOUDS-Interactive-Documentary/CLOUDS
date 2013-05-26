@@ -626,8 +626,8 @@
 		E7637D691734DEF7008ADC62 /* Exporters */ = {
 			isa = PBXGroup;
 			children = (
-				E7637D6A1734DEF7008ADC62 /* CloudsD3Exporter.cpp */,
 				E7637D6B1734DEF7008ADC62 /* CloudsD3Exporter.h */,
+				E7637D6A1734DEF7008ADC62 /* CloudsD3Exporter.cpp */,
 			);
 			path = Exporters;
 			sourceTree = "<group>";
