@@ -8,6 +8,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCameraSaveLoad.h"
 
+#include "ofxTimeline.h"
 
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:
@@ -70,7 +71,9 @@ public:
     void setupBeamLight(string name);
     void setupGenericLightProperties(ofxUISuperCanvas *g, ofxLight *l);
     void guiLightEvent(ofxUIEventArgs &e);
-        
+	
+	void setupTimeline();
+	
     //Lighting Helpers
     void lightsBegin();
     void lightsEnd();
@@ -138,6 +141,22 @@ protected:
     ofxUISuperCanvas *lgtGui;
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
+	
+	ofxTimeline timeline;
+//	map<ofxUIWidget*, ofxTLTrack*>	
+//	void bindWidgetToTimeline(ofxUIWidget* widget){
+//		switch (widget->getKind()) {
+//			case OFX_UI_WIDGET_SLIDER_H:
+//			case OFX_UI_WIDGET_SLIDER_W:
+//				//set page to panel
+//				//if not there, creat
+//				timeline.addCurves(widget->getName());
+//				break;
+//				
+//			default:
+//				break;
+//		}
+//	}
 	
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;

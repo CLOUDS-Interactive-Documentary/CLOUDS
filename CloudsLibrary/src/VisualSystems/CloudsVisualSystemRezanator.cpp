@@ -29,6 +29,9 @@ void CloudsVisualSystemRezanator::setup()
     selfSetupGuis();
 	
 	hideGUIS();
+	
+	setupTimeline();
+
 }
 
 void CloudsVisualSystemRezanator::update(ofEventArgs & args)
@@ -43,6 +46,11 @@ void CloudsVisualSystemRezanator::update(ofEventArgs & args)
         bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
         selfUpdate();
     }
+	
+	if(!ofGetMousePressed()){
+		timeline.setOffset(ofVec2f(15, ofGetHeight() - timeline.getHeight() - 15 ));
+		timeline.setWidth(ofGetWidth() - 30);
+	}
 }
 
 void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
@@ -74,6 +82,8 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     }
     
     ofPopStyle();
+	
+	timeline.draw();
 }
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
@@ -342,6 +352,10 @@ void CloudsVisualSystemRezanator::mousePressed(ofMouseEventArgs & args)
             return;
         }
     }
+	
+	if(timeline.getDrawRect().inside(args.x,args.y)){
+		cam.disableMouseInput();
+	}
     selfMousePressed(args);
 }
 
@@ -1115,6 +1129,16 @@ void CloudsVisualSystemRezanator::setupGenericLightProperties(ofxUISuperCanvas *
 void CloudsVisualSystemRezanator::guiLightEvent(ofxUIEventArgs &e)
 {
     
+}
+
+
+void CloudsVisualSystemRezanator::setupTimeline()
+{
+	timeline.setup();
+	timeline.setDurationInFrames(1000);
+	timeline.setLoopType(OF_LOOP_NORMAL);
+	timeline.addCurves("No Curves!", "SomeXMLFile.xml", ofRange(-10, 10), 2);
+	
 }
 
 void CloudsVisualSystemRezanator::lightsBegin()
