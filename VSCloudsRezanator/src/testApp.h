@@ -21,6 +21,6 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystemAmber computation;
-//	CloudsVisualSystemRezanator computation;
+//	CloudsVisualSystemAmber computation;
+	CloudsVisualSystemRezanator computation;
 };
