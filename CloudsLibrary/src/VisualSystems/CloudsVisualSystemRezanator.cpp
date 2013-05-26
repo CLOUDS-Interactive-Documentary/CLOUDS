@@ -361,7 +361,7 @@ void CloudsVisualSystemRezanator::mouseReleased(ofMouseEventArgs & args)
 
 void CloudsVisualSystemRezanator::setupAppParams()
 {
-    ofSetSphereResolution(60);
+    ofSetSphereResolution(30);
     bRenderSystem = true;
     bUpdateSystem = true;
 }
@@ -445,7 +445,7 @@ void CloudsVisualSystemRezanator::setupGui()
     gui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui->addWidgetNorthOf(loadbtn, "RENDER", true);
     gui->setPlacer(updatebtn);
-    gui->addSpacer();
+    gui->addSpacer();    
     selfSetupGui();
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiEvent);
@@ -718,8 +718,7 @@ void CloudsVisualSystemRezanator::setupCameraGui()
     camGui->addSlider("FOV", 0, 180, &camFOV);
     camGui->addSlider("ROT-X", 0, 360.0, xRot->getPosPtr())->setIncrement(1.0);
     camGui->addSlider("ROT-Y", 0, 360.0, yRot->getPosPtr())->setIncrement(1.0);
-    camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
-    
+    camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);    
     
     camGui->addSpacer();
     vector<string> views;
@@ -1330,7 +1329,6 @@ void CloudsVisualSystemRezanator::ofLayerGradient(const ofColor& start, const of
 }
 
 //Grab These Methods
-
 string CloudsVisualSystemRezanator::getSystemName()
 {
 	return "Rezanator";
