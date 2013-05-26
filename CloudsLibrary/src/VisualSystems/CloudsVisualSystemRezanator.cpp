@@ -29,12 +29,6 @@ void CloudsVisualSystemRezanator::setup()
         dir.createDirectory(workingDirectoryName);
     }    
     
-    string snapsDirectory = "snapshots";
-    if(!dir.doesDirectoryExist(snapsDirectory))
-    {
-        dir.createDirectory(snapsDirectory);
-    }
-
     setupAppParams();
     setupDebugParams();
     setupCameraParams();
@@ -192,7 +186,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
         {
             ofImage img;
             img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
-            img.saveImage("snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
+            img.saveImage(getDataPath()+"snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
         }
             break;
             
