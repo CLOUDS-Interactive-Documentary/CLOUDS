@@ -63,7 +63,7 @@ class CloudsVisualSystem {
 	float getSecondsRemaining();
 	void setSecondsRemaining(float seconds);
 		
-	//this will always match what you offered
+	//this will always match what you offered in relevant keywords
 	void setCurrentKeyword(string theme);
 	string getCurrentKeyword();
 	

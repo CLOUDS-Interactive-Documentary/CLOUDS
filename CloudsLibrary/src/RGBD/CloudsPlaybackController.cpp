@@ -4,7 +4,6 @@
 //#include "CloudsVisualSystemStandin.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
-#include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsVisualSystemLSystems.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
@@ -181,9 +180,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 		
 	visualSystemControls = new ofxUICanvas();
 	visualSystemControls->addWidgetDown(new ofxUILabel("VISUAL SYSTEMS:", OFX_UI_FONT_MEDIUM));
-
 	visualSystemRadio = visualSystemControls->addRadio("VISUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
-    visualSystemControls->addWidgetDown(visualSystemRadio);
 	visualSystemControls->addSlider("Test Duration (S)", 2, 60*5, &timeToTest);
     visualSystemControls->setTheme(OFX_UI_THEME_COOLCLAY);
     visualSystemControls->autoSizeToFitWidgets();
