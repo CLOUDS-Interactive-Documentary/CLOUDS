@@ -17,7 +17,10 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
     clear();
     nodes.clear();
     
+    _lsys.unoise = 0.5;
+//    _lsys.utime = 0.0;
     _lsys.make(_deep);
+    
     if (_lsys.mesh.getVertices().size() > 2){
         lineTo(_lsys.mesh.getVertices()[0]);
         addNode(_lsys.mesh.getVertices()[0]);
@@ -109,10 +112,13 @@ void LSystemReconstructor::update(){
 void LSystemReconstructor::draw(){
     mesh.draw();
     
+    ofPushStyle();
+    ofSetColor(255,100);
     for(int i = 0; i < activeNodes.size(); i++){
-        ofNoFill();
-        ofCircle(activeNodes.getVertices()[i], 1);
+        ofPoint pos = activeNodes.getVertices()[i];
+        ofDrawSphere(pos, ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.7 );
     }
+    ofPopStyle();
 }
 
 void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _speed){

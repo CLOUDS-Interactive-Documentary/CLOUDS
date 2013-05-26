@@ -74,6 +74,7 @@ void CloudsVisualSystemLSystems::selfDraw()
 //    ofDrawSphere(100);
 
     ofPushMatrix();
+    ofRotate(90, 1.0, 0.0, 0.0);
     ofSetColor(255);
     lsysr.draw();
     ofPopMatrix();
@@ -148,19 +149,18 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui()
     uiRule2->setAutoClear(false); 
     sysGui->addSlider("Angle", 0, 90, &angle);
     sysGui->addSlider("Scale", 0.5, 2, &lsysScale);
-    sysGui->addSlider("Depth", 1, 8, &lsysDepth);
+    sysGui->addSlider("Depth", 1, 5, &lsysDepth);
     
     sysGui->addLabel("Growing");
     sysGui->addSlider("Speed", 0.0, 10, &lsysr.speed);
     
-//    sysGui->disable();
-//    sysGui->loadSettings("GUI/guiSettings.xml");
+    sysGui->addButton("REGENERATE", true);
     
     axiom = uiAxiom->getTextString();
     rule1 = uiRule1->getTextString();
     rule2 = uiRule2->getTextString();
     
-//    reBuildLSys();
+    reBuildLSys();
 }
 
 void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e)
@@ -177,6 +177,8 @@ void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e)
     } else if ( name == "Rule2"){
         ofxUITextInput *uiRule2 = (ofxUITextInput *) e.widget;
         rule2 = uiRule2->getTextString();
+    } else if ( name == "REGENERATE"){
+        lsysr.stop();
     }
     
     reBuildLSys();

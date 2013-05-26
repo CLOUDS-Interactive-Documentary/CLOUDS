@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>998.000061035</XPosition>
-    <YPosition>617.000000000</YPosition>
+    <XPosition>1218.000000000</XPosition>
+    <YPosition>296.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
@@ -68,5 +68,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>0.200000003</Value>
+    <Value>0.000000000</Value>
 </Widget>
