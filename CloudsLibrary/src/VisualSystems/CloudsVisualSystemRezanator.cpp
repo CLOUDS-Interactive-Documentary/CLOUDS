@@ -2,16 +2,6 @@
 
 #define REZANATOR_GUI_ALPHA_MULTIPLIER 4
 
-string CloudsVisualSystemRezanator::getVisualSystemDataPath()
-{
-    return "../../../CloudsData/visualsystems/"+getSystemName()+"/";
-}
-
-string CloudsVisualSystemRezanator::getDataPath()
-{
-    return "../../../CloudsData/"; 
-}
-
 void CloudsVisualSystemRezanator::setup()
 {
     ofAddListener(ofEvents().exit, this, &CloudsVisualSystemRezanator::exit);

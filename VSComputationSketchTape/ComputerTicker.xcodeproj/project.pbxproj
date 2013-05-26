@@ -33,6 +33,24 @@
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
 		E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB91714899C00705E7A /* tinyxmlparser.cpp */; };
 		E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */; };
+		E7D32F631751B48C006706ED /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */; };
+		E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F6C1751C625006706ED /* ofxBehavior.cpp */; };
+		E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F701751C625006706ED /* ofxBufferEffectorBehavior.cpp */; };
+		E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F731751C625006706ED /* ofxDamperBehavior.cpp */; };
+		E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F751751C625006706ED /* ofxDistorterBehavior.cpp */; };
+		E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F771751C625006706ED /* ofxElectroStaticBehavior.cpp */; };
+		E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F791751C625006706ED /* ofxField2D.cpp */; };
+		E7D32FA61751C626006706ED /* ofxHomingBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F801751C625006706ED /* ofxHomingBehavior.cpp */; };
+		E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F851751C625006706ED /* ofxPerlinBehavior.cpp */; };
+		E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F891751C625006706ED /* ofxRParticle.cpp */; };
+		E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F8C1751C625006706ED /* ofxRParticleGlowieRenderer.cpp */; };
+		E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F8E1751C625006706ED /* ofxRParticleRenderer.cpp */; };
+		E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F901751C625006706ED /* ofxRParticleSystem.cpp */; };
+		E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F941751C625006706ED /* ofxSolver.cpp */; };
+		E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F961751C625006706ED /* ofxSphericalAttractionBehavior.cpp */; };
+		E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F9B1751C626006706ED /* ofxSwarmBehavior.cpp */; };
+		E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F9E1751C626006706ED /* ofxVerletSolver.cpp */; };
+		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */; };
@@ -142,6 +160,67 @@
 		E7846FB91714899C00705E7A /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E7846FBC1714899C00705E7A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
+		E7D32F621751B48C006706ED /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
+		E7D32F6B1751C625006706ED /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
+		E7D32F6C1751C625006706ED /* ofxBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F6D1751C625006706ED /* ofxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBehavior.h; sourceTree = "<group>"; };
+		E7D32F6E1751C625006706ED /* ofxBoidParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBoidParticle.h; sourceTree = "<group>"; };
+		E7D32F6F1751C625006706ED /* ofxBoidSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBoidSystem.h; sourceTree = "<group>"; };
+		E7D32F701751C625006706ED /* ofxBufferEffectorBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBufferEffectorBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F711751C625006706ED /* ofxBufferEffectorBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBufferEffectorBehavior.h; sourceTree = "<group>"; };
+		E7D32F721751C625006706ED /* ofxCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCircle.h; sourceTree = "<group>"; };
+		E7D32F731751C625006706ED /* ofxDamperBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDamperBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F741751C625006706ED /* ofxDamperBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDamperBehavior.h; sourceTree = "<group>"; };
+		E7D32F751751C625006706ED /* ofxDistorterBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDistorterBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F761751C625006706ED /* ofxDistorterBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDistorterBehavior.h; sourceTree = "<group>"; };
+		E7D32F771751C625006706ED /* ofxElectroStaticBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxElectroStaticBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F781751C625006706ED /* ofxElectroStaticBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxElectroStaticBehavior.h; sourceTree = "<group>"; };
+		E7D32F791751C625006706ED /* ofxField2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxField2D.cpp; sourceTree = "<group>"; };
+		E7D32F7A1751C625006706ED /* ofxField2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxField2D.h; sourceTree = "<group>"; };
+		E7D32F7B1751C625006706ED /* ofxFieldAgitator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFieldAgitator.h; sourceTree = "<group>"; };
+		E7D32F7C1751C625006706ED /* ofxGenerative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGenerative.h; sourceTree = "<group>"; };
+		E7D32F7D1751C625006706ED /* ofxGenericShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGenericShape.h; sourceTree = "<group>"; };
+		E7D32F7E1751C625006706ED /* ofxHOCParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHOCParticle.h; sourceTree = "<group>"; };
+		E7D32F7F1751C625006706ED /* ofxHOCParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHOCParticleSystem.h; sourceTree = "<group>"; };
+		E7D32F801751C625006706ED /* ofxHomingBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxHomingBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F811751C625006706ED /* ofxHomingBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHomingBehavior.h; sourceTree = "<group>"; };
+		E7D32F821751C625006706ED /* ofxParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticle.h; sourceTree = "<group>"; };
+		E7D32F831751C625006706ED /* ofxParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticleSystem.h; sourceTree = "<group>"; };
+		E7D32F841751C625006706ED /* ofxParticleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticleTouch.h; sourceTree = "<group>"; };
+		E7D32F851751C625006706ED /* ofxPerlinBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPerlinBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F861751C625006706ED /* ofxPerlinBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPerlinBehavior.h; sourceTree = "<group>"; };
+		E7D32F871751C625006706ED /* ofxRezaParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRezaParticle.h; sourceTree = "<group>"; };
+		E7D32F881751C625006706ED /* ofxRezaParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRezaParticleSystem.h; sourceTree = "<group>"; };
+		E7D32F891751C625006706ED /* ofxRParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticle.cpp; sourceTree = "<group>"; };
+		E7D32F8A1751C625006706ED /* ofxRParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticle.h; sourceTree = "<group>"; };
+		E7D32F8B1751C625006706ED /* ofxRParticleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleData.h; sourceTree = "<group>"; };
+		E7D32F8C1751C625006706ED /* ofxRParticleGlowieRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleGlowieRenderer.cpp; sourceTree = "<group>"; };
+		E7D32F8D1751C625006706ED /* ofxRParticleGlowieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleGlowieRenderer.h; sourceTree = "<group>"; };
+		E7D32F8E1751C625006706ED /* ofxRParticleRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleRenderer.cpp; sourceTree = "<group>"; };
+		E7D32F8F1751C625006706ED /* ofxRParticleRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleRenderer.h; sourceTree = "<group>"; };
+		E7D32F901751C625006706ED /* ofxRParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleSystem.cpp; sourceTree = "<group>"; };
+		E7D32F911751C625006706ED /* ofxRParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleSystem.h; sourceTree = "<group>"; };
+		E7D32F921751C625006706ED /* ofxSmartParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSmartParticle.h; sourceTree = "<group>"; };
+		E7D32F931751C625006706ED /* ofxSmartParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSmartParticleSystem.h; sourceTree = "<group>"; };
+		E7D32F941751C625006706ED /* ofxSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSolver.cpp; sourceTree = "<group>"; };
+		E7D32F951751C625006706ED /* ofxSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSolver.h; sourceTree = "<group>"; };
+		E7D32F961751C625006706ED /* ofxSphericalAttractionBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSphericalAttractionBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F971751C625006706ED /* ofxSphericalAttractionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSphericalAttractionBehavior.h; sourceTree = "<group>"; };
+		E7D32F981751C625006706ED /* ofxSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpring.h; sourceTree = "<group>"; };
+		E7D32F991751C625006706ED /* ofxSpringSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpringSystem.h; sourceTree = "<group>"; };
+		E7D32F9A1751C626006706ED /* ofxSuperShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSuperShape.h; sourceTree = "<group>"; };
+		E7D32F9B1751C626006706ED /* ofxSwarmBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSwarmBehavior.cpp; sourceTree = "<group>"; };
+		E7D32F9C1751C626006706ED /* ofxSwarmBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSwarmBehavior.h; sourceTree = "<group>"; };
+		E7D32F9D1751C626006706ED /* ofxTrailParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrailParticle.h; sourceTree = "<group>"; };
+		E7D32F9E1751C626006706ED /* ofxVerletSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVerletSolver.cpp; sourceTree = "<group>"; };
+		E7D32F9F1751C626006706ED /* ofxVerletSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVerletSolver.h; sourceTree = "<group>"; };
+		E7D3300E1751C669006706ED /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
+		E7D3300F1751C669006706ED /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
+		E7D330141751C689006706ED /* ofxExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
+		E7D330151751C689006706ED /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
+		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
@@ -181,6 +260,10 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7D330161751C69E006706ED /* ofxCameraSaveLoad */,
+				E7D330101751C689006706ED /* ofxExtras */,
+				E7D3300A1751C668006706ED /* ofxColorPalettes */,
+				E7D32F671751C625006706ED /* ofxGenerative */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E7846FB41714899C00705E7A /* ofxXmlSettings */,
 				E7846DB71714887800705E7A /* ofxUI */,
@@ -366,6 +449,129 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7D32F671751C625006706ED /* ofxGenerative */ = {
+			isa = PBXGroup;
+			children = (
+				E7D32F6A1751C625006706ED /* src */,
+			);
+			name = ofxGenerative;
+			path = ../../../addons/ofxGenerative;
+			sourceTree = "<group>";
+		};
+		E7D32F6A1751C625006706ED /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7D32F6B1751C625006706ED /* ofx1DExtruder.h */,
+				E7D32F6C1751C625006706ED /* ofxBehavior.cpp */,
+				E7D32F6D1751C625006706ED /* ofxBehavior.h */,
+				E7D32F6E1751C625006706ED /* ofxBoidParticle.h */,
+				E7D32F6F1751C625006706ED /* ofxBoidSystem.h */,
+				E7D32F701751C625006706ED /* ofxBufferEffectorBehavior.cpp */,
+				E7D32F711751C625006706ED /* ofxBufferEffectorBehavior.h */,
+				E7D32F721751C625006706ED /* ofxCircle.h */,
+				E7D32F731751C625006706ED /* ofxDamperBehavior.cpp */,
+				E7D32F741751C625006706ED /* ofxDamperBehavior.h */,
+				E7D32F751751C625006706ED /* ofxDistorterBehavior.cpp */,
+				E7D32F761751C625006706ED /* ofxDistorterBehavior.h */,
+				E7D32F771751C625006706ED /* ofxElectroStaticBehavior.cpp */,
+				E7D32F781751C625006706ED /* ofxElectroStaticBehavior.h */,
+				E7D32F791751C625006706ED /* ofxField2D.cpp */,
+				E7D32F7A1751C625006706ED /* ofxField2D.h */,
+				E7D32F7B1751C625006706ED /* ofxFieldAgitator.h */,
+				E7D32F7C1751C625006706ED /* ofxGenerative.h */,
+				E7D32F7D1751C625006706ED /* ofxGenericShape.h */,
+				E7D32F7E1751C625006706ED /* ofxHOCParticle.h */,
+				E7D32F7F1751C625006706ED /* ofxHOCParticleSystem.h */,
+				E7D32F801751C625006706ED /* ofxHomingBehavior.cpp */,
+				E7D32F811751C625006706ED /* ofxHomingBehavior.h */,
+				E7D32F821751C625006706ED /* ofxParticle.h */,
+				E7D32F831751C625006706ED /* ofxParticleSystem.h */,
+				E7D32F841751C625006706ED /* ofxParticleTouch.h */,
+				E7D32F851751C625006706ED /* ofxPerlinBehavior.cpp */,
+				E7D32F861751C625006706ED /* ofxPerlinBehavior.h */,
+				E7D32F871751C625006706ED /* ofxRezaParticle.h */,
+				E7D32F881751C625006706ED /* ofxRezaParticleSystem.h */,
+				E7D32F891751C625006706ED /* ofxRParticle.cpp */,
+				E7D32F8A1751C625006706ED /* ofxRParticle.h */,
+				E7D32F8B1751C625006706ED /* ofxRParticleData.h */,
+				E7D32F8C1751C625006706ED /* ofxRParticleGlowieRenderer.cpp */,
+				E7D32F8D1751C625006706ED /* ofxRParticleGlowieRenderer.h */,
+				E7D32F8E1751C625006706ED /* ofxRParticleRenderer.cpp */,
+				E7D32F8F1751C625006706ED /* ofxRParticleRenderer.h */,
+				E7D32F901751C625006706ED /* ofxRParticleSystem.cpp */,
+				E7D32F911751C625006706ED /* ofxRParticleSystem.h */,
+				E7D32F921751C625006706ED /* ofxSmartParticle.h */,
+				E7D32F931751C625006706ED /* ofxSmartParticleSystem.h */,
+				E7D32F941751C625006706ED /* ofxSolver.cpp */,
+				E7D32F951751C625006706ED /* ofxSolver.h */,
+				E7D32F961751C625006706ED /* ofxSphericalAttractionBehavior.cpp */,
+				E7D32F971751C625006706ED /* ofxSphericalAttractionBehavior.h */,
+				E7D32F981751C625006706ED /* ofxSpring.h */,
+				E7D32F991751C625006706ED /* ofxSpringSystem.h */,
+				E7D32F9A1751C626006706ED /* ofxSuperShape.h */,
+				E7D32F9B1751C626006706ED /* ofxSwarmBehavior.cpp */,
+				E7D32F9C1751C626006706ED /* ofxSwarmBehavior.h */,
+				E7D32F9D1751C626006706ED /* ofxTrailParticle.h */,
+				E7D32F9E1751C626006706ED /* ofxVerletSolver.cpp */,
+				E7D32F9F1751C626006706ED /* ofxVerletSolver.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7D3300A1751C668006706ED /* ofxColorPalettes */ = {
+			isa = PBXGroup;
+			children = (
+				E7D3300D1751C669006706ED /* src */,
+			);
+			name = ofxColorPalettes;
+			path = ../../../addons/ofxColorPalettes;
+			sourceTree = "<group>";
+		};
+		E7D3300D1751C669006706ED /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7D3300E1751C669006706ED /* ofxColorPalette.h */,
+				E7D3300F1751C669006706ED /* ofxColorPalettes.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7D330101751C689006706ED /* ofxExtras */ = {
+			isa = PBXGroup;
+			children = (
+				E7D330131751C689006706ED /* src */,
+			);
+			name = ofxExtras;
+			path = ../../../addons/ofxExtras;
+			sourceTree = "<group>";
+		};
+		E7D330131751C689006706ED /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7D330141751C689006706ED /* ofxExtras.h */,
+				E7D330151751C689006706ED /* ofxLight.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7D330161751C69E006706ED /* ofxCameraSaveLoad */ = {
+			isa = PBXGroup;
+			children = (
+				E7D330281751C69E006706ED /* src */,
+			);
+			name = ofxCameraSaveLoad;
+			path = ../../../addons/ofxCameraSaveLoad;
+			sourceTree = "<group>";
+		};
+		E7D330281751C69E006706ED /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */,
+				E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +594,8 @@
 			children = (
 				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
 				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
+				E7D32F621751B48C006706ED /* CloudsVisualSystemRezanator.h */,
+				E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */,
 				E7E95E871733631A00294C72 /* CloudsVisualSystemComputationTicker.h */,
 				E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */,
 			);
@@ -490,6 +698,24 @@
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */,
 				E7E95E881733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp in Sources */,
+				E7D32F631751B48C006706ED /* CloudsVisualSystemRezanator.cpp in Sources */,
+				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
+				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
+				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
+				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
+				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
+				E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */,
+				E7D32FA61751C626006706ED /* ofxHomingBehavior.cpp in Sources */,
+				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
+				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
+				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
+				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
+				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
+				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
+				E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */,
+				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

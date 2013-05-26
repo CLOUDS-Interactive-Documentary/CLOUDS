@@ -12,13 +12,16 @@
  */
 
 //TODO: timing, fading, drawing helpers like 2d/3d camera
-//TODO: 'preset' variables and state design
-//TODO: debug mode vs persentation mode
 
 class CloudsVisualSystem {
   public:
+	   
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
+	
+	//Data Folder Path
+    string getVisualSystemDataPath();
+    static string getDataPath();
 	
 	//return TRUE for keywords that would allow this system to be shown
 	//for example, if I'm the "computation" visual system, I'll return true to

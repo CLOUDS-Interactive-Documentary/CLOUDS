@@ -1,7 +1,8 @@
 
 #include "CloudsPlaybackController.h"
 
-#include "CloudsVisualSystemStandin.h"
+//#include "CloudsVisualSystemStandin.h"
+#include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
@@ -153,7 +154,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	ofLogVerbose() << "Populating visual systems";
 	
-	registerVisualSystem( new CloudsVisualSystemStandin() );
+	registerVisualSystem( new CloudsVisualSystemRezanator() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 
 	set<string> keyThemes;
@@ -164,7 +165,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 		}
 	}
 	
-	storyEngine->network->populateKeyThemes(keyThemes);
+//	storyEngine->network->populateKeyThemes(keyThemes);
 	
 	//create the drop down
     vector<string> names;

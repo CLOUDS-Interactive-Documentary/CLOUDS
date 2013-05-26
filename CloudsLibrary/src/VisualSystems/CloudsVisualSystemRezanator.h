@@ -12,10 +12,6 @@
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:
 
-    //Data Folder Path
-    string getVisualSystemDataPath();
-    string getDataPath();
-    
 	vector<string> getPresets();
 	
 	//Core Functions
