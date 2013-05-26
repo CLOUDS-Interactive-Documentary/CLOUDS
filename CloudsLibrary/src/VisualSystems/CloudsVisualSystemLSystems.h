@@ -55,7 +55,6 @@ protected:
     void reBuildLSys();
     
     ofTexture   dot;
-    ofShader    shader;
     
     LSystemReconstructor lsysr;
     string  axiom;
