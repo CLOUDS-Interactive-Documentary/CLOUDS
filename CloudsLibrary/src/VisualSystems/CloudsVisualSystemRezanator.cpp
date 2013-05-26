@@ -6,6 +6,8 @@ void CloudsVisualSystemRezanator::setup()
 {
     ofAddListener(ofEvents().exit, this, &CloudsVisualSystemRezanator::exit);
     
+	currentCamera = &cam;
+	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath();
     if(!dir.doesDirectoryExist(directoryName))
@@ -58,7 +60,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
-        cam.begin();
+        currentCamera->begin();
         
         drawBackground();
         
@@ -78,7 +80,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         
         lightsEnd();
         
-        cam.end();
+        currentCamera->end();
     }
     
     ofPopStyle();
@@ -1259,6 +1261,10 @@ void CloudsVisualSystemRezanator::toggleGuiAndPosition(ofxUISuperCanvas *g)
     {
         g->setMinified(true);
     }
+}
+
+void CloudsVisualSystemRezanator::setCurrentCamera(ofCamera& swappedInCam){
+	currentCamera = &swappedInCam;
 }
 
 void CloudsVisualSystemRezanator::drawDebug()

@@ -73,7 +73,7 @@ public:
     void guiLightEvent(ofxUIEventArgs &e);
 	
 	void setupTimeline();
-	
+
     //Lighting Helpers
     void lightsBegin();
     void lightsEnd();
@@ -89,6 +89,8 @@ public:
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
     
+	void setCurrentCamera(ofCamera& cam);
+
     //Drawing Helpers
     void drawDebug();
     void drawAxis(float size, float color);
@@ -205,6 +207,7 @@ protected:
     float camDistance;
     float camFOV;
     ofxViewType view;
+	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;

@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
+#include "ofxGameCamera.h"
 
 class CloudsIntroSequence : public CloudsVisualSystemRezanator {
   public:
@@ -45,6 +46,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
     virtual void guiRenderEvent(ofxUIEventArgs &e);
 
   protected:
-	
+	ofMesh tunnelMesh;
+	ofxGameCamera camera;
 	
 };
