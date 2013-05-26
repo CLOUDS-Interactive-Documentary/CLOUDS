@@ -4,7 +4,7 @@
 
 string CloudsVisualSystemRezanator::getVisualSystemDataPath()
 {
-    return "VisualSystems/"+getSystemName()+"/";
+    return "../../../CloudsData/visualsystems/"+getSystemName()+"/";
 }
 
 void CloudsVisualSystemRezanator::setup()
@@ -12,11 +12,17 @@ void CloudsVisualSystemRezanator::setup()
     ofAddListener(ofEvents().exit, this, &CloudsVisualSystemRezanator::exit);
     
     ofDirectory dir;
-    string directoryName = "VisualSystems/"+getSystemName();
+    string directoryName = getVisualSystemDataPath();
     if(!dir.doesDirectoryExist(directoryName))
     {
         dir.createDirectory(directoryName);
     }
+    
+    string workingDirectoryName = directoryName+"Working/";
+    if(!dir.doesDirectoryExist(workingDirectoryName))
+    {
+        dir.createDirectory(workingDirectoryName);
+    }    
     
     string snapsDirectory = "snapshots";
     if(!dir.doesDirectoryExist(snapsDirectory))
@@ -455,7 +461,14 @@ void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
         ofxUIButton *b = (ofxUIButton *) e.widget;
         if(b->getValue())
         {
-            saveGUIS();
+            string presetName = ofSystemTextBoxDialog("Save Preset As");
+            if(presetName.length())
+            {
+                savePresetGUIS(presetName); 
+            }
+            else{
+                saveGUIS();
+            }
         }
     }
     else if(name == "LOAD")
@@ -463,7 +476,14 @@ void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
         ofxUIButton *b = (ofxUIButton *) e.widget;
         if(b->getValue())
         {
-            loadGUIS();
+            ofFileDialogResult result = ofSystemLoadDialog("Load Visual System Preset Folder", true, getVisualSystemDataPath());
+            if(result.bSuccess && result.fileName.length())
+            {
+                loadPresetGUIS(result.filePath);
+            }
+            else{
+                loadGUIS();
+            }
         }
     }
     selfGuiEvent(e);
@@ -1085,19 +1105,43 @@ void CloudsVisualSystemRezanator::loadGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->loadSettings("VisualSystems/"+getSystemName()+"/"+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->loadSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxLoadCamera(cam, "VisualSystems/"+getSystemName()+"/"+"ofEasyCamSettings");
-    
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
 }
 
 void CloudsVisualSystemRezanator::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->saveSettings("VisualSystems/"+getSystemName()+"/"+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->saveSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, "VisualSystems/"+getSystemName()+"/"+"ofEasyCamSettings");
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
+}
+
+void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
+{
+    for(int i = 0; i < guis.size(); i++)
+    {
+        guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
+    }
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");
+}
+
+void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
+{
+    ofDirectory dir;
+    string presetDirectory = getVisualSystemDataPath()+presetName+"/";
+    if(!dir.doesDirectoryExist(presetDirectory))
+    {
+        dir.createDirectory(presetDirectory);
+    }
+    
+    for(int i = 0; i < guis.size(); i++)
+    {
+        guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
+    }
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"ofEasyCamSettings");    
 }
 
 void CloudsVisualSystemRezanator::deleteGUIS()
@@ -1379,14 +1423,13 @@ void CloudsVisualSystemRezanator::selfMouseReleased(ofMouseEventArgs& data)
 
 void CloudsVisualSystemRezanator::selfSetupGui()
 {
-    
+
 }
 
 void CloudsVisualSystemRezanator::selfGuiEvent(ofxUIEventArgs &e)
 {
     
 }
-
 
 void CloudsVisualSystemRezanator::selfSetupSystemGui()
 {

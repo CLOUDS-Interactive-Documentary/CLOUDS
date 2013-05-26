@@ -32,7 +32,8 @@ graphviz/
 *.pdb
 
 /testRTcmix/bin/data/shlib/*
-
+Working/
+standinassets/
 
 #PCL stuff
 pcl/

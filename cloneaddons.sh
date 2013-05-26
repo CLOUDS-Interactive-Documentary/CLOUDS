@@ -15,12 +15,17 @@ else
 	echo "Cloning writable"
 fi
 
-${PREFIX}rezaali/ofxUI
-${PREFIX}satoruhiga/ofxCocoaGLView
-${PREFIX}satoruhiga/ofxPCL
-${PREFIX}memo/ofxMSAObjCPointer
-${PREFIX}memo/ofxMSACore
+#private, must be read
+git clone git@github.com:rezaali/ofxExtras
 
+git clone satoruhiga/ofxCocoaGLView
+git clone satoruhiga/ofxPCL
+git clone memo/ofxMSAObjCPointer
+git clone memo/ofxMSACore
+git clone https://github.com/roymacdonald/ofxCameraSaveLoad
+
+${PREFIX}rezaali/ofxGenerative
+git clone rezaali/ofxUI
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
@@ -34,8 +39,3 @@ ${PREFIX}obviousjim/ofxMSATimer
 ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
 ${PREFIX}obviousjim/ofxObjLoader		
-
-# you also need to replace ofxOpenCv/libs/opencv with this link:
-# https://github.com/kylemcdonald/ofxCv/downloads
-# opencv-2.3.-osx.zip — OpenCV 2.3 library 
-#=======
