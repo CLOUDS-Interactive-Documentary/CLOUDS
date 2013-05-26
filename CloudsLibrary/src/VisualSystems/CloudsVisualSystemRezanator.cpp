@@ -27,15 +27,20 @@ void CloudsVisualSystemRezanator::setup()
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
-	
-	hideGUIS();
-	
-	setupTimeline();
 
+	setupTimeline();
+    setupTimelineGui();
+    
+	hideGUIS();
 }
 
 void CloudsVisualSystemRezanator::update(ofEventArgs & args)
 {
+    if(bEnableTimeline)
+    {
+        updateTimelineUIParams();
+    }
+    
     if(bUpdateSystem)
     {
         for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
@@ -46,10 +51,12 @@ void CloudsVisualSystemRezanator::update(ofEventArgs & args)
         bgColor2->setHsb(bgHue2->getPos(), bgSat2->getPos(), bgBri2->getPos(), 255);
         selfUpdate();
     }
-	
-	if(!ofGetMousePressed()){
-		timeline.setOffset(ofVec2f(15, ofGetHeight() - timeline.getHeight() - 15 ));
-		timeline.setWidth(ofGetWidth() - 30);
+
+	//Make this happen only when the timeline is modified by the user or when a new track is added. 
+	if(!ofGetMousePressed())
+    {
+		timeline.setOffset(ofVec2f(4, ofGetHeight() - timeline.getHeight() - 4 ));
+		timeline.setWidth(ofGetWidth() - 8);
 	}
 }
 
@@ -125,7 +132,6 @@ void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 void CloudsVisualSystemRezanator::begin()
 {
     loadGUIS();
-    hideGUIS();
     showGUIS();
     cam.enableMouseInput();
     for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
@@ -156,7 +162,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             return;
         }
     }
-    
+
     switch (args.key)
     {
         case '1':
@@ -223,7 +229,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
                 {
                     (*it)->getRect()->setX(last->getRect()->getX());
                     (*it)->getRect()->setY(last->getRect()->getY()+last->getRect()->getHeight()+1);
-                    if((*it)->getRect()->getY()+(*it)->getRect()->getHeight() > ofGetHeight())
+                    if((*it)->getRect()->getY()+(*it)->getRect()->getHeight() > ofGetHeight()-timeline.getHeight())
                     {
                         (*it)->getRect()->setX(last->getRect()->getX()+last->getRect()->getWidth()+1);
                         (*it)->getRect()->setY(1);
@@ -418,6 +424,13 @@ void CloudsVisualSystemRezanator::setupMaterialParams()
     mat = new ofMaterial();
 }
 
+void CloudsVisualSystemRezanator::setupTimeLineParams()
+{
+    timelineDuration = 1000;
+    bEnableTimeline = false;
+    bEnableTimelineTrackCreation = false;
+}
+
 void CloudsVisualSystemRezanator::setupCoreGuis()
 {
     setupGui();
@@ -428,7 +441,7 @@ void CloudsVisualSystemRezanator::setupCoreGuis()
     setupCameraGui();
     setupMaterial("MATERIAL 1", mat);
     setupPointLight("POINT LIGHT 1");
-	setupPresetGui();
+    setupPresetGui();    
 }
 
 void CloudsVisualSystemRezanator::setupGui()
@@ -477,7 +490,6 @@ vector<string> CloudsVisualSystemRezanator::getPresets(){
 void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
-    cout << "name:" << name << endl;
     if(name == "SAVE")
     {
         ofxUIButton *b = (ofxUIButton *) e.widget;
@@ -1131,14 +1143,194 @@ void CloudsVisualSystemRezanator::guiLightEvent(ofxUIEventArgs &e)
     
 }
 
-
 void CloudsVisualSystemRezanator::setupTimeline()
 {
 	timeline.setup();
 	timeline.setDurationInFrames(1000);
 	timeline.setLoopType(OF_LOOP_NORMAL);
-	timeline.addCurves("No Curves!", "SomeXMLFile.xml", ofRange(-10, 10), 2);
-	
+    ofAddListener(timeline.events().bangFired, this, &CloudsVisualSystemRezanator::timelineBangEvent);
+}
+
+void CloudsVisualSystemRezanator::timelineBangEvent(ofxTLBangEventArgs& args)
+{
+    if(bEnableTimeline)
+    {
+        map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.find((ofxTLBangs *)args.track);
+        if(it != tlButtonMap.end())
+        {
+            ofxUIButton *b = it->second;            
+            b->setValue(!b->getValue());
+            b->triggerSelf();
+            b->setValue(!b->getValue());
+        }
+    }
+}
+
+void CloudsVisualSystemRezanator::setupTimelineGui()
+{
+    tlGui = new ofxUISuperCanvas("TIMELINE", gui);
+    tlGui->copyCanvasStyle(gui);
+    tlGui->copyCanvasProperties(gui);
+    tlGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
+    tlGui->setName("TimelineSettings");
+    tlGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+        
+    ofxUIToggle *toggle = tlGui->addToggle("ENABLE", &bEnableTimeline);
+    toggle->setLabelPosition(OFX_UI_WIDGET_POSITION_LEFT);
+    tlGui->resetPlacer();
+    tlGui->addWidgetDown(toggle, OFX_UI_ALIGN_RIGHT, true);
+    tlGui->addWidgetToHeader(toggle);
+    tlGui->addSpacer();
+    
+    tlGui->addNumberDialer("DURATION", 0.0, 10000, &timelineDuration, 0.0)->setDisplayLabel(true);
+    
+    tlGui->addToggle("MAP", &bEnableTimelineTrackCreation);
+    
+    selfSetupTimelineGui();
+    tlGui->autoSizeToFitWidgets();
+    ofAddListener(tlGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiTimelineEvent);
+    guis.push_back(tlGui);
+}
+
+void CloudsVisualSystemRezanator::guiTimelineEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+    if(name == "DURATION")
+    {        
+        timeline.setDurationInFrames(floor(timelineDuration));
+    }
+    else if(name == "MAP")
+    {
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        setTimelineTrackCreation(t->getValue());
+    }
+    else if(name == "ENABLE")
+    {
+        if(bEnableTimeline)
+        {
+            if(bEnableTimelineTrackCreation)
+            {
+                setTimelineTrackCreation(false);
+            }
+        }
+    }
+}
+
+void CloudsVisualSystemRezanator::setTimelineTrackCreation(bool state)
+{
+    bEnableTimelineTrackCreation = state;
+    if(bEnableTimelineTrackCreation)
+    {
+        bEnableTimeline = false;
+        for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
+        {
+            if((*it)->getName() != "TimelineSettings")
+            {
+                ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystemRezanator::guiAllEvents);
+            }
+        }
+    }
+    else
+    {
+        for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
+        {
+            if((*it)->getName() != "TimelineSettings")
+            {
+                ofRemoveListener((*it)->newGUIEvent,this,&CloudsVisualSystemRezanator::guiAllEvents);
+            }
+        }
+    }    
+}
+
+void CloudsVisualSystemRezanator::guiAllEvents(ofxUIEventArgs &e)
+{
+    //All GUIS except for the Timeline UI will send events to this function
+    if(bEnableTimelineTrackCreation)
+    {
+        bindWidgetToTimeline(e.widget);
+        setTimelineTrackCreation(false); 
+    }
+}
+
+void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
+{        
+    switch (widget->getKind())
+    {
+        case OFX_UI_WIDGET_BUTTON:
+        case OFX_UI_WIDGET_LABELBUTTON:
+        case OFX_UI_WIDGET_IMAGEBUTTON:
+        case OFX_UI_WIDGET_MULTIIMAGEBUTTON:
+        {
+            ofxUIButton *b = (ofxUIButton *) widget;
+            tlButtonMap[timeline.addBangs(widget->getName())] = b;
+        }
+            break;
+            
+        case OFX_UI_WIDGET_TOGGLE:
+        case OFX_UI_WIDGET_LABELTOGGLE:
+        case OFX_UI_WIDGET_IMAGETOGGLE:
+        case OFX_UI_WIDGET_MULTIIMAGETOGGLE:
+        {
+            ofxUIToggle *t = (ofxUIToggle *) widget;
+            tlToggleMap[t] = timeline.addSwitches(widget->getName());
+        }
+            break;
+            
+        case OFX_UI_WIDGET_NUMBERDIALER:
+        {
+            ofxUINumberDialer *nd = (ofxUINumberDialer *) widget;
+            tlDialerMap[nd] = timeline.addCurves(widget->getName(), ofRange(nd->getMin(), nd->getMax()), nd->getValue());
+        }
+            break;
+            
+        case OFX_UI_WIDGET_BILABELSLIDER:
+        case OFX_UI_WIDGET_CIRCLESLIDER:
+        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
+        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
+        case OFX_UI_WIDGET_IMAGESLIDER_H:
+        case OFX_UI_WIDGET_IMAGESLIDER_V:
+        case OFX_UI_WIDGET_ROTARYSLIDER:
+        case OFX_UI_WIDGET_MINIMALSLIDER:
+        case OFX_UI_WIDGET_SLIDER_H:
+        case OFX_UI_WIDGET_SLIDER_V:
+        {
+            ofxUISlider *s = (ofxUISlider *) widget;
+            tlSliderMap[s] = timeline.addCurves(widget->getName(), ofRange(s->getMin(), s->getMax()), s->getValue());
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+void CloudsVisualSystemRezanator::updateTimelineUIParams()
+{
+    for(map<ofxUIToggle*, ofxTLSwitches*>::iterator it = tlToggleMap.begin(); it != tlToggleMap.end(); ++it)
+    {
+        ofxUIToggle *t = it->first;
+        ofxTLSwitches *tls = it->second;
+        if(tls->isOn() != t->getValue())
+        {
+            t->setValue(tls->isOn());
+            t->triggerSelf();
+        }
+    }
+    
+    for(map<ofxUISlider*, ofxTLCurves*>::iterator it = tlSliderMap.begin(); it != tlSliderMap.end(); ++it)
+    {
+        ofxUISlider *s = it->first;
+        ofxTLCurves *tlc = it->second;
+        s->setValue(tlc->getValue());
+        s->triggerSelf();
+    }
+    
+    for(map<ofxUINumberDialer*, ofxTLCurves*>::iterator it = tlDialerMap.begin(); it != tlDialerMap.end(); ++it)
+    {
+        ofxUINumberDialer *nd = it->first;
+        ofxTLCurves *tlc = it->second;
+        nd->setValue(tlc->getValue());
+        nd->triggerSelf();
+    }
 }
 
 void CloudsVisualSystemRezanator::lightsBegin()
@@ -1516,6 +1708,16 @@ void CloudsVisualSystemRezanator::selfSetupRenderGui()
 }
 
 void CloudsVisualSystemRezanator::guiRenderEvent(ofxUIEventArgs &e)
+{
+    
+}
+
+void CloudsVisualSystemRezanator::selfSetupTimelineGui()
+{
+    
+}
+
+void CloudsVisualSystemRezanator::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
 }
