@@ -171,7 +171,7 @@ void LSystemReconstructor::addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofF
 
     ofPoint dir = B - A;
     dir.normalize();
-    up.rotate(1, dir);
+    up.rotate(10, dir);
     
     ofPoint normal = dir.getCrossed(up);
     

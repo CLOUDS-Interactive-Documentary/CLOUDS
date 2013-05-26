@@ -17,7 +17,6 @@ void CloudsVisualSystemLSystems::selfSetup()
 {
     objectLookAt = ofVec3f(0,0,1);
     
-    shader.load("shader");
     ofLoadImage(dot, getDataPath()+"images/dot.png");
     
     angle = 5;
