@@ -6,7 +6,7 @@ uniform float maxDistance;
 
 uniform float noiseAmplitude;
 uniform float noiseDensity;
-uniform float noiseSpeed;
+uniform float noisePosition;
 
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -135,9 +135,10 @@ void main(void)
 	// passes the  texture coordinates along to the fragment shader
 	//gl_TexCoord[0] = gl_MultiTexCoord0;
 	
-	vec3 noiseDistort = vec3(snoise(vec4(gl_Vertex.xyz * noiseDensity, .0)),
-							 snoise(vec4(gl_Vertex.yzx * noiseDensity, .0)),
-							 snoise(vec4(gl_Vertex.zxy * noiseDensity, .0)));
+	vec3 noiseDistort = vec3(snoise(vec4(gl_Vertex.xyz / noiseDensity, noisePosition)),
+							 snoise(vec4(gl_Vertex.yzx / noiseDensity, noisePosition)),
+							 0);
+							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
 	
 	vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
 //	pos = gl_Vertex;
@@ -149,5 +150,5 @@ void main(void)
 							minPointSize, maxPointSize);
 	
 	//pass color info along
-	gl_FrontColor = gl_Color;
+	gl_FrontColor = gl_Color * clamp(map(pow(gl_Position.z,1.5), minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
 }

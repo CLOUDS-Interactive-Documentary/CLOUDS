@@ -76,7 +76,8 @@ void CloudsIntroSequence::selfDrawBackground(){
 
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
 	tunnelShader.setUniform1f("noiseDensity", perlinDensity);
-
+	tunnelShader.setUniform1f("noisePosition", ofGetElapsedTimef());
+	
 	tunnelMesh.drawVertices();
 	
 	tunnelShader.end();
