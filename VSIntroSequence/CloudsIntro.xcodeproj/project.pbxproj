@@ -80,6 +80,7 @@
 		E71184141752A2DC00C189BF /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71184101752A2DC00C189BF /* ofxGameCamera.cpp */; };
 		E711841B1752B1ED00C189BF /* IntroTunnel.frag in Sources */ = {isa = PBXBuildFile; fileRef = E71184191752B1ED00C189BF /* IntroTunnel.frag */; };
 		E711841C1752B1ED00C189BF /* IntroTunnel.vert in Sources */ = {isa = PBXBuildFile; fileRef = E711841A1752B1ED00C189BF /* IntroTunnel.vert */; };
+		E71184241753065F00C189BF /* BarrelChromaAb.fs in Sources */ = {isa = PBXBuildFile; fileRef = E71184231753065F00C189BF /* BarrelChromaAb.fs */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -274,6 +275,7 @@
 		E71184111752A2DC00C189BF /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		E71184191752B1ED00C189BF /* IntroTunnel.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroTunnel.frag; sourceTree = "<group>"; };
 		E711841A1752B1ED00C189BF /* IntroTunnel.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroTunnel.vert; sourceTree = "<group>"; };
+		E71184231753065F00C189BF /* BarrelChromaAb.fs */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = BarrelChromaAb.fs; path = ../../../CloudsData/shaders/BarrelChromaAb.fs; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -885,6 +887,7 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				E71184231753065F00C189BF /* BarrelChromaAb.fs */,
 				E71184181752B1ED00C189BF /* Intro */,
 			);
 			name = data;
@@ -1295,6 +1298,7 @@
 				E71184141752A2DC00C189BF /* ofxGameCamera.cpp in Sources */,
 				E711841B1752B1ED00C189BF /* IntroTunnel.frag in Sources */,
 				E711841C1752B1ED00C189BF /* IntroTunnel.vert in Sources */,
+				E71184241753065F00C189BF /* BarrelChromaAb.fs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
