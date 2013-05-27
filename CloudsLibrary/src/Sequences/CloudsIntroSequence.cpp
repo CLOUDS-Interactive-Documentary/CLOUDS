@@ -31,11 +31,13 @@ void CloudsIntroSequence::selfSetup(){
 	
 	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_supertight.obj", tunnelMesh);
 
+	
 	reloadShaders();
 }
 
 void CloudsIntroSequence::reloadShaders(){
 	tunnelShader.load(getDataPath() + "shaders/Intro/IntroTunnel");
+	chroma.load("",getDataPath() + "shaders/BarrelChromaAb.fs");
 }
 
 void CloudsIntroSequence::selfSetupGuis(){
@@ -44,18 +46,23 @@ void CloudsIntroSequence::selfSetupGuis(){
 }
 
 void CloudsIntroSequence::selfUpdate(){
+	
+	if(!fullscreenFbo.isAllocated() ||
+	   fullscreenFbo.getWidth() != ofGetWidth() ||
+	   fullscreenFbo.getHeight() != ofGetHeight())
+	{
+		fullscreenFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+	}
+	
 	camera.applyRotation = camera.applyTranslation = !cursorIsOverGUI();
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
+	fullscreenFbo.begin();
 	
-}
-
-void CloudsIntroSequence::selfDrawDebug(){
-
-}
-
-void CloudsIntroSequence::selfDraw(){
+	camera.begin();
+	
+	ofClear(0);
 	
 	ofEnableSmoothing();
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
@@ -70,6 +77,27 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelMesh.drawVertices();
 	
 	tunnelShader.end();
+	
+	fullscreenFbo.end();
+	
+	camera.end();
+	
+	chroma.begin();
+	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
+	chroma.setUniform1f("max_distort", maxChromaDistort);
+	fullscreenFbo.draw(0,ofGetHeight(),ofGetWidth(),-ofGetHeight());
+	chroma.end();
+}
+
+void CloudsIntroSequence::selfDrawDebug(){
+
+}
+
+void CloudsIntroSequence::selfDraw(){
+	
+
+	
+	
 }
 
 void CloudsIntroSequence::selfExit(){
@@ -124,6 +152,8 @@ void CloudsIntroSequence::selfSetupRenderGui(){
 	gui->addSlider("Max Point Size", 0, 7, &pointSize.max);
 	gui->addSlider("Min Distance", 0, 5000, &distanceRange.min);
 	gui->addSlider("Max Distance", 0, 10000, &distanceRange.max);
+
+	gui->addSlider("Chroma Max Distort", 0, 10, &maxChromaDistort);
 	
 	gui->addSlider("Perlin Amplitude", 0, 100, &perlinAmplitude);
 	gui->addSlider("Perlin Density", 0, 10, &perlinDensity);
