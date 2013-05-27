@@ -6,6 +6,8 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
+	ofToggleFullscreen();
+	
 	
 	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
     parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
