@@ -188,7 +188,7 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui()
     sysGui->addSlider("aNoise", 0.0, 2.0, &lsysr.aNoise);
     sysGui->addSlider("tNoise", 0.0, 1.0, &lsysr.tNoise);
     sysGui->addSlider("Speed", 0.0, 10, &lsysr.speed);
-    sysGui->addSlider("bornTime", 0.0, 2, &lsysr.bornRandom);
+    sysGui->addSlider("bornTime", 0.0, 10.0, &lsysr.bornRandom);
     sysGui->addSlider("dotSize", 0.0, 100.0, &dotSize);
     sysGui->addButton("REGENERATE", true);
     

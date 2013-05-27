@@ -1,17 +1,16 @@
 //
-//  CloudsVisualSystemLSys.h
-//  VSLSys
+//  CloudsVisualSystemVoro.h
 //
-//  Created by Patricio Gonzalez Vivo on 5/25/13.
+//  Created by Patricio Gonzalez Vivo on 5/27/13.
 //
 //
 
 #pragma once
 
 #include "CloudsVisualSystemRezanator.h"
-#include "LSystemReconstructor.h"
+#include "VoroParticle.h"
 
-class CloudsVisualSystemLSystems : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVoro : public CloudsVisualSystemRezanator {
 public:
     
     string getSystemName();
@@ -32,7 +31,7 @@ public:
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(ofMouseEventArgs& da  ta);
+    void selfMouseDragged(ofMouseEventArgs& data);
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
@@ -46,23 +45,12 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
-    void billBoard(); 
+    void billBoard();
     
 protected:
+    vector <VoroParticle *> seedParticles;
     
-    ofVec3f objectLookAt;
-    
-    void reBuildLSys();
-    
-    ofTexture   dot;
-    
-    LSystemReconstructor lsysr;
-    string  axiom;
-    string  rule1;
-    string  rule2;
-    float   angle;
-    float   globalScale;
-    float   lsysScale;
-    float   lsysDepth;
-    float   dotSize;
+    float   bornRate;
+    float   MaxNumOfParticles;
+    int     fps;
 };

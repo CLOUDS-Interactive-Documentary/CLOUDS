@@ -160,7 +160,7 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             int index = isNode(pos);
             if (index != -1){
                 if ( nodes[index].startTime == -1.0 ){
-                    nodes[index].startTime = time+ofRandom(bornRandom)*_speed;
+                    nodes[index].startTime = time+bornRandom*_speed;
                 }
             }
             
