@@ -56,6 +56,7 @@ protected:
     ofShader grayscottShader;
     ofFbo    grayscottFbo[2];
     int      nPingPong;
+    bool     bCleanGrayscott;
     
     ofShader maskShader;
     ofFbo   maskFbo;

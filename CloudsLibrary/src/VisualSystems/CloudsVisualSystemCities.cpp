@@ -210,7 +210,18 @@ void CloudsVisualSystemCities::selfUpdate()
     if(name == "Grayscott"){
         nPingPong = (nPingPong+1)%2;
         
+        if (bCleanGrayscott){
+            grayscottFbo[(nPingPong+1)%2].begin();
+            ofClear(0,0);
+            grayscottFbo[(nPingPong+1)%2].end();
+        }
+        
         grayscottFbo[nPingPong%2].begin();
+        if (bCleanGrayscott){
+            ofClear(0,0);
+            bCleanGrayscott = false;
+        }
+        
         grayscottShader.begin();
         grayscottShader.setUniformTexture("backbuffer", grayscottFbo[(nPingPong+1)%2], 1);
         grayscottShader.setUniformTexture("tex0", noiseFbo, 2);
@@ -359,8 +370,9 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
     sysGui->addLabel("GrayScott");
     sysGui->addSlider("Feed", 0.0, 0.2, &grayscottFade);
-    sysGui->addLabel("Mask");
+    sysGui->addButton("clean", &bCleanGrayscott);
     
+    sysGui->addLabel("Mask");
     vector<string> list;
     list.push_back("Noise");
     list.push_back("Grayscott");
