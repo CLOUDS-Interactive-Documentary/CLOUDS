@@ -17,7 +17,7 @@ struct LNode : public ofPoint {
     vector<int> branchesIndex;
 };
 
-class LSystemReconstructor : public ofPath {
+class LSystemReconstructor {
 public:
     LSystemReconstructor();
     
@@ -41,14 +41,15 @@ public:
     float speed;
     
 private:
+    vector<ofPolyline>  lines;
+    vector<LNode> nodes;
+    
+    void    lineTo(ofPoint &_pnt);
     void    addNode(ofPoint &_pnt);
     int     isNode(ofPoint &_pnt);
     
     void    renderBranch(int _index, float _relativeTime, float _speed);
-    void    addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofFloatColor &Bc);
-    
-    vector<LNode> nodes;
-    ofPoint up;
+    void    addLineToMesh(ofMesh &_mesh, ofPoint &A, ofPoint &B, ofFloatColor &c);
     
     float   time, lastTime;
     float   pct;
