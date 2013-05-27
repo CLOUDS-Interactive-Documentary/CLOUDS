@@ -21,6 +21,8 @@ void CloudsVisualSystemCities::selfSetup()
     noiseShader.load("", getDataPath()+"shaders/noise.fs");
     grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
     maskShader.load("", getDataPath()+"shaders/cMask.fs");
+    
+    makeGrid(100, 10);
 }
 
 void CloudsVisualSystemCities::selfSetupGuis()
