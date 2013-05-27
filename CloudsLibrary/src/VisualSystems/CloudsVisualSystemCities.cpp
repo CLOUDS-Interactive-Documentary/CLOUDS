@@ -16,8 +16,10 @@ void CloudsVisualSystemCities::selfSetup()
 {
     size = 100;
     nGrains = 10;
+    nPingPong = 0;
     
     noiseShader.load("", getDataPath()+"shaders/noise.fs");
+    grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
     maskShader.load("", getDataPath()+"shaders/cMask.fs");
 }
 
@@ -155,11 +157,18 @@ void CloudsVisualSystemCities::makeGrid(float _size, int _nGrains)
     generateCube(cubeSize, cubeSize, cubeSize);
     glEndList();
     
-    int textureSize= nGrains*2;
+    int textureSize = nGrains*2;
     noiseFbo.allocate(textureSize,textureSize);
     noiseFbo.begin();
     ofClear(0);
     noiseFbo.end();
+    
+    for(int i = 0; i < 2; i++){
+        grayscottFbo[i].allocate(textureSize, textureSize);
+        grayscottFbo[i].begin();
+        ofClear(0);
+        grayscottFbo[i].end();
+    }
     
     maskFbo.allocate(textureSize, textureSize);
     maskFbo.begin();
@@ -190,13 +199,60 @@ void CloudsVisualSystemCities::selfUpdate()
     noiseShader.end();
     noiseFbo.end();
     
+    ofxUIDropDownList *drop = (ofxUIDropDownList *) sysGui->getWidget("Texture");
+    vector<ofxUIWidget *> selected = drop->getSelected();
+    string name = "";
+    if (selected.size()>0){
+        ofxUIToggle * wSelected =  (ofxUIToggle *) selected[0];
+        name = wSelected->getName();
+    }
+    
+    if(name == "Grayscott"){
+        nPingPong = (nPingPong+1)%2;
+        
+        if (bCleanGrayscott){
+            grayscottFbo[(nPingPong+1)%2].begin();
+            ofClear(0,0);
+            grayscottFbo[(nPingPong+1)%2].end();
+        }
+        
+        grayscottFbo[nPingPong%2].begin();
+        if (bCleanGrayscott){
+            ofClear(0,0);
+            bCleanGrayscott = false;
+        }
+        
+        grayscottShader.begin();
+        grayscottShader.setUniformTexture("backbuffer", grayscottFbo[(nPingPong+1)%2], 1);
+        grayscottShader.setUniformTexture("tex0", noiseFbo, 2);
+        grayscottShader.setUniform1f("diffU", 0.25);
+        grayscottShader.setUniform1f("diffV", 0.04);
+        grayscottShader.setUniform1f("k", 0.047);
+        grayscottShader.setUniform1f("f", 0.2);
+        grayscottShader.setUniform1f("time", ofGetElapsedTimef());
+        grayscottShader.setUniform1f("fade", grayscottFade);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
+        glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
+        glTexCoord2f(width, height); glVertex3f(width, height, 0);
+        glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+        glEnd();
+        grayscottShader.end();
+        grayscottFbo[nPingPong%2].end();
+    }
+    
     maskFbo.begin();
     ofClear(0);
     maskShader.begin();
     maskShader.setUniform2f("resolution", maskFbo.getWidth(), maskFbo.getHeight());
     maskShader.setUniform1f("size", maskSize);
     maskShader.setUniform1f("curve",maskCurve);
-    noiseFbo.draw(0, 0);
+    
+    if(name == "Grayscott"){
+        grayscottFbo[nPingPong%2].draw(0, 0);
+    } else {
+        noiseFbo.draw(0, 0);
+    }
     maskShader.end();
     maskFbo.end();
     
@@ -221,7 +277,7 @@ void CloudsVisualSystemCities::selfDraw()
     for(int x = 0; x < nGrains; x++){
         for(int y = 0; y < nGrains; y++){
 
-            float value = heightPixels.getColor(x*jump,y*jump).r;
+            float value = heightPixels.getColor(x*jump,y*jump).b;
             
             ofPushMatrix();
             ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
@@ -241,6 +297,8 @@ void CloudsVisualSystemCities::selfDraw()
     
     ofPopMatrix();
     mat->end();
+    
+//    grayscottFbo[nPingPong%2].draw(0, 0);
 
 }
 
@@ -310,7 +368,16 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     sysGui->addLabel("Noise");
     sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
     sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
+    sysGui->addLabel("GrayScott");
+    sysGui->addSlider("Feed", 0.0, 0.2, &grayscottFade);
+    sysGui->addButton("clean", &bCleanGrayscott);
+    
     sysGui->addLabel("Mask");
+    vector<string> list;
+    list.push_back("Noise");
+    list.push_back("Grayscott");
+    sysGui->addDropDownList("Texture", list);
+    
     sysGui->addSlider("maskSize", 1.0, 2.0, &maskSize);
     sysGui->addSlider("maskCurve", 0.0, 1.0, &maskCurve);
     sysGui->addLabel("Blocks");
@@ -324,7 +391,10 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 
 void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)
 {
-    makeGrid(size, nGrains);
+    string name = e.widget->getName();
+    if (name == "Grid_size" || name == "Blocks_number"){
+        makeGrid(size, nGrains);
+    }
 }
 
 void CloudsVisualSystemCities::selfSetupRenderGui()
