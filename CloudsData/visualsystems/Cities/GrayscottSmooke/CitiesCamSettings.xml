@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1214.000000000</XPosition>
-    <YPosition>61.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>444.000000000</XPosition>
+    <YPosition>30.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>113.300491333</Value>
+    <Value>467.980285645</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

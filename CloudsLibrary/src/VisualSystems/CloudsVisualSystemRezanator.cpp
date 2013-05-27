@@ -19,13 +19,15 @@ void CloudsVisualSystemRezanator::setup()
     if(!dir.doesDirectoryExist(workingDirectoryName))
     {
         dir.createDirectory(workingDirectoryName);
-    }    
+    }
     
     setupAppParams();
     setupDebugParams();
     setupCameraParams();
     setupLightingParams();
     setupMaterialParams();
+    setupTimeLineParams();
+    
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
@@ -57,8 +59,8 @@ void CloudsVisualSystemRezanator::update(ofEventArgs & args)
 	//Make this happen only when the timeline is modified by the user or when a new track is added. 
 	if(!ofGetMousePressed())
     {
-		timeline.setOffset(ofVec2f(4, ofGetHeight() - timeline.getHeight() - 4 ));
-		timeline.setWidth(ofGetWidth() - 8);
+		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
+		timeline->setWidth(ofGetWidth() - 8);
 	}
 }
 
@@ -92,7 +94,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     
     ofPopStyle();
 	
-	timeline.draw();
+	timeline->draw();
 }
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
@@ -123,8 +125,9 @@ void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
         delete m;
     }
     materials.clear();
-    
     materialGuis.clear();
+    
+    delete timeline;
     
     selfExit();
     
@@ -234,7 +237,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
                 {
                     (*it)->getRect()->setX(last->getRect()->getX());
                     (*it)->getRect()->setY(last->getRect()->getY()+last->getRect()->getHeight()+1);
-                    if((*it)->getRect()->getY()+(*it)->getRect()->getHeight() > ofGetHeight()-timeline.getHeight())
+                    if((*it)->getRect()->getY()+(*it)->getRect()->getHeight() > ofGetHeight()-timeline->getHeight())
                     {
                         (*it)->getRect()->setX(last->getRect()->getX()+last->getRect()->getWidth()+1);
                         (*it)->getRect()->setY(1);
@@ -358,25 +361,11 @@ void CloudsVisualSystemRezanator::mousePressed(ofMouseEventArgs & args)
 	if(cursorIsOverGUI()){
 		cam.disableMouseInput();
 	}
-	
-//    for(int i = 0; i < guis.size(); i++)
-//    {
-//        if(guis[i]->isHit(args.x, args.y))
-//        {
-//
-//            return;
-//        }
-//    }
-//	
-//	if(timeline.getDrawRect().inside(args.x,args.y)){
-//		cam.disableMouseInput();
-//	}
-//	
     selfMousePressed(args);
 }
 
 bool CloudsVisualSystemRezanator::cursorIsOverGUI(){
-	if(timeline.getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
+	if(timeline->getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
 		return true;
 	}
 
@@ -453,6 +442,8 @@ void CloudsVisualSystemRezanator::setupMaterialParams()
 
 void CloudsVisualSystemRezanator::setupTimeLineParams()
 {
+    bShowTimeline = true;
+    bDeleteTimelineTrack = false;    
     timelineDuration = 1000;
     bEnableTimeline = false;
     bEnableTimelineTrackCreation = false;
@@ -498,15 +489,19 @@ void CloudsVisualSystemRezanator::setupGui()
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiEvent);
     guis.push_back(gui);
+    guimap[gui->getName()] = gui;
 }
 
-vector<string> CloudsVisualSystemRezanator::getPresets(){
+vector<string> CloudsVisualSystemRezanator::getPresets()
+{
 	vector<string> presets;
 	ofDirectory presetsFolder = ofDirectory(getVisualSystemDataPath());
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
 		for(int i = 0; i < presetsFolder.size(); i++){
-			if(presetsFolder.getFile(i).isDirectory() && presetsFolder.getName(i) != "Working"){
+			if(presetsFolder.getFile(i).isDirectory() &&
+               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working")
+            {
 				presets.push_back(presetsFolder.getName(i));
 			}
 		}
@@ -571,6 +566,7 @@ void CloudsVisualSystemRezanator::setupSystemGui()
     sysGui->autoSizeToFitWidgets();
     ofAddListener(sysGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiSystemEvent);
     guis.push_back(sysGui);
+    guimap[sysGui->getName()] = sysGui;
 }
 
 void CloudsVisualSystemRezanator::setupRenderGui()
@@ -588,6 +584,7 @@ void CloudsVisualSystemRezanator::setupRenderGui()
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiRenderEvent);
     guis.push_back(rdrGui);
+    guimap[rdrGui->getName()] = rdrGui;
 }
 
 void CloudsVisualSystemRezanator::setupBackgroundGui()
@@ -651,6 +648,7 @@ void CloudsVisualSystemRezanator::setupBackgroundGui()
     bgGui->autoSizeToFitWidgets();
     ofAddListener(bgGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiBackgroundEvent);
     guis.push_back(bgGui);
+    guimap[bgGui->getName()] = bgGui;
 }
 
 void CloudsVisualSystemRezanator::guiBackgroundEvent(ofxUIEventArgs &e)
@@ -741,6 +739,7 @@ void CloudsVisualSystemRezanator::setupLightingGui()
     lgtGui->autoSizeToFitWidgets();
     ofAddListener(lgtGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiLightingEvent);
     guis.push_back(lgtGui);
+    guimap[lgtGui->getName()] = lgtGui;
 }
 
 void CloudsVisualSystemRezanator::guiLightingEvent(ofxUIEventArgs &e)
@@ -798,6 +797,7 @@ void CloudsVisualSystemRezanator::setupCameraGui()
     camGui->autoSizeToFitWidgets();
     ofAddListener(camGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiCameraEvent);
     guis.push_back(camGui);
+    guimap[camGui->getName()] = camGui;
 }
 
 void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
@@ -909,6 +909,7 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemRezanator::setupPresetGui()
 {
 	presetGui = new ofxUISuperCanvas("PRESETS");
+    presetGui->setTriggerWidgetsUponLoad(false);
 	presetGui->setName("Presets");
 	presetGui->copyCanvasStyle(gui);
     presetGui->copyCanvasProperties(gui);
@@ -928,6 +929,7 @@ void CloudsVisualSystemRezanator::setupPresetGui()
 	presetGui->autoSizeToFitWidgets();
     ofAddListener(presetGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiPresetEvent);
     guis.push_back(presetGui);
+    guimap[presetGui->getName()] = presetGui;
 }
 
 void CloudsVisualSystemRezanator::guiPresetEvent(ofxUIEventArgs &e)
@@ -992,6 +994,7 @@ void CloudsVisualSystemRezanator::setupMaterial(string name, ofMaterial *m)
     
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemRezanator::guiMaterialEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemRezanator::guiMaterialEvent(ofxUIEventArgs &e)
@@ -1026,6 +1029,7 @@ void CloudsVisualSystemRezanator::setupPointLight(string name)
     
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemRezanator::guiLightEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemRezanator::setupSpotLight(string name)
@@ -1059,6 +1063,7 @@ void CloudsVisualSystemRezanator::setupSpotLight(string name)
     
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemRezanator::guiLightEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemRezanator::setupBeamLight(string name)
@@ -1088,6 +1093,7 @@ void CloudsVisualSystemRezanator::setupBeamLight(string name)
     
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemRezanator::guiLightEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemRezanator::setupGenericLightProperties(ofxUISuperCanvas *g, ofxLight *l)
@@ -1174,10 +1180,21 @@ void CloudsVisualSystemRezanator::guiLightEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystemRezanator::setupTimeline()
 {
-	timeline.setup();
-	timeline.setDurationInFrames(1000);
-	timeline.setLoopType(OF_LOOP_NORMAL);
-    ofAddListener(timeline.events().bangFired, this, &CloudsVisualSystemRezanator::timelineBangEvent);
+    timeline = new ofxTimeline();
+	timeline->setup();
+    timeline->setMinimalHeaders(true);
+	timeline->setDurationInFrames(1000);
+	timeline->setLoopType(OF_LOOP_NORMAL);
+
+    ofDirectory dir;
+    string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
+    if(!dir.doesDirectoryExist(workingDirectoryName))
+    {
+        dir.createDirectory(workingDirectoryName);
+    }
+    
+    timeline->setWorkingFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    ofAddListener(timeline->events().bangFired, this, &CloudsVisualSystemRezanator::timelineBangEvent);
 }
 
 void CloudsVisualSystemRezanator::timelineBangEvent(ofxTLBangEventArgs& args)
@@ -1213,12 +1230,16 @@ void CloudsVisualSystemRezanator::setupTimelineGui()
     
     tlGui->addNumberDialer("DURATION", 0.0, 10000, &timelineDuration, 0.0)->setDisplayLabel(true);
     
-    tlGui->addToggle("MAP", &bEnableTimelineTrackCreation);
+    tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
+    tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
+    
+    tlGui->addToggle("SHOW/HIDE", &bShowTimeline); 
     
     selfSetupTimelineGui();
     tlGui->autoSizeToFitWidgets();
     ofAddListener(tlGui->newGUIEvent,this,&CloudsVisualSystemRezanator::guiTimelineEvent);
     guis.push_back(tlGui);
+    guimap[tlGui->getName()] = tlGui;
 }
 
 void CloudsVisualSystemRezanator::guiTimelineEvent(ofxUIEventArgs &e)
@@ -1226,12 +1247,26 @@ void CloudsVisualSystemRezanator::guiTimelineEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     if(name == "DURATION")
     {        
-        timeline.setDurationInFrames(floor(timelineDuration));
+        timeline->setDurationInFrames(floor(timelineDuration));
     }
-    else if(name == "MAP")
+    else if(name == "ANIMATE")
     {
         ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue())
+        {
+            setTimelineTrackDeletion(false);
+        }        
         setTimelineTrackCreation(t->getValue());
+    }
+    else if(name == "DELETE")
+    {
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue())
+        {
+            setTimelineTrackCreation(false);
+        }        
+        setTimelineTrackDeletion(t->getValue());
+        
     }
     else if(name == "ENABLE")
     {
@@ -1240,6 +1275,47 @@ void CloudsVisualSystemRezanator::guiTimelineEvent(ofxUIEventArgs &e)
             if(bEnableTimelineTrackCreation)
             {
                 setTimelineTrackCreation(false);
+            }
+            if(bDeleteTimelineTrack)
+            {
+                setTimelineTrackDeletion(false);
+            }
+        }
+    }
+    else if(name == "SHOW/HIDE")
+    {
+        if(bShowTimeline)
+        {
+            timeline->show();
+        }
+        else
+        {
+            timeline->hide();
+        }
+    }
+}
+
+void CloudsVisualSystemRezanator::setTimelineTrackDeletion(bool state)
+{
+    bDeleteTimelineTrack = state;
+    if(bDeleteTimelineTrack)
+    {        
+        bEnableTimeline = false;
+        for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
+        {
+            if((*it)->getName() != "TimelineSettings")
+            {
+                ofAddListener((*it)->newGUIEvent,this,&CloudsVisualSystemRezanator::guiAllEvents);
+            }
+        }
+    }
+    else
+    {
+        for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
+        {
+            if((*it)->getName() != "TimelineSettings")
+            {
+                ofRemoveListener((*it)->newGUIEvent,this,&CloudsVisualSystemRezanator::guiAllEvents);
             }
         }
     }
@@ -1277,12 +1353,23 @@ void CloudsVisualSystemRezanator::guiAllEvents(ofxUIEventArgs &e)
     if(bEnableTimelineTrackCreation)
     {
         bindWidgetToTimeline(e.widget);
-        setTimelineTrackCreation(false); 
+        setTimelineTrackCreation(false);
+    }
+    
+    if(bDeleteTimelineTrack)
+    {
+        unBindWidgetFromTimeline(e.widget);
+        setTimelineTrackDeletion(false); 
     }
 }
 
 void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
-{        
+{
+    if(timeline->hasTrack(widget->getName()))
+    {
+        return; 
+    }
+    
     switch (widget->getKind())
     {
         case OFX_UI_WIDGET_BUTTON:
@@ -1291,7 +1378,7 @@ void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
         case OFX_UI_WIDGET_MULTIIMAGEBUTTON:
         {
             ofxUIButton *b = (ofxUIButton *) widget;
-            tlButtonMap[timeline.addBangs(widget->getName())] = b;
+            tlButtonMap[timeline->addBangs(widget->getName())] = b;
         }
             break;
             
@@ -1301,14 +1388,14 @@ void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
         case OFX_UI_WIDGET_MULTIIMAGETOGGLE:
         {
             ofxUIToggle *t = (ofxUIToggle *) widget;
-            tlToggleMap[t] = timeline.addSwitches(widget->getName());
+            tlToggleMap[t] = timeline->addSwitches(widget->getName());
         }
             break;
             
         case OFX_UI_WIDGET_NUMBERDIALER:
         {
             ofxUINumberDialer *nd = (ofxUINumberDialer *) widget;
-            tlDialerMap[nd] = timeline.addCurves(widget->getName(), ofRange(nd->getMin(), nd->getMax()), nd->getValue());
+            tlDialerMap[nd] = timeline->addCurves(widget->getName(), ofRange(nd->getMin(), nd->getMax()), nd->getValue());
         }
             break;
             
@@ -1324,12 +1411,88 @@ void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
         case OFX_UI_WIDGET_SLIDER_V:
         {
             ofxUISlider *s = (ofxUISlider *) widget;
-            tlSliderMap[s] = timeline.addCurves(widget->getName(), ofRange(s->getMin(), s->getMax()), s->getValue());
+            tlSliderMap[s] = timeline->addCurves(widget->getName(), ofRange(s->getMin(), s->getMax()), s->getValue());
         }
             break;
         default:
             break;
     }
+}
+
+void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
+{
+    if(!timeline->hasTrack(widget->getName()))
+    {
+        return;
+    }
+        
+    switch (widget->getKind())
+    {
+        case OFX_UI_WIDGET_BUTTON:
+        case OFX_UI_WIDGET_LABELBUTTON:
+        case OFX_UI_WIDGET_IMAGEBUTTON:
+        case OFX_UI_WIDGET_MULTIIMAGEBUTTON:
+        {
+            ofxTLBangs *track = (ofxTLBangs *) timeline->getTrack(widget->getName());
+            map<ofxTLBangs *, ofxUIButton *>::iterator it = tlButtonMap.find(track);
+            
+            if(it != tlButtonMap.end())
+            {
+                tlButtonMap.erase(it); 
+            }
+        }
+            break;
+            
+        case OFX_UI_WIDGET_TOGGLE:
+        case OFX_UI_WIDGET_LABELTOGGLE:
+        case OFX_UI_WIDGET_IMAGETOGGLE:
+        case OFX_UI_WIDGET_MULTIIMAGETOGGLE:
+        {
+            ofxUIToggle *t = (ofxUIToggle *) widget;        
+            map<ofxUIToggle *, ofxTLSwitches *>::iterator it = tlToggleMap.find(t);
+            
+            if(it != tlToggleMap.end())
+            {
+                tlToggleMap.erase(it);
+            }
+        }
+            break;
+            
+        case OFX_UI_WIDGET_NUMBERDIALER:
+        {
+            ofxUINumberDialer *nd = (ofxUINumberDialer *) widget;
+            map<ofxUINumberDialer *, ofxTLCurves *>::iterator it = tlDialerMap.find(nd);
+            if(it != tlDialerMap.end())
+            {
+                tlDialerMap.erase(it);
+            }
+        }
+            break;
+            
+        case OFX_UI_WIDGET_BILABELSLIDER:
+        case OFX_UI_WIDGET_CIRCLESLIDER:
+        case OFX_UI_WIDGET_MULTIIMAGESLIDER_H:
+        case OFX_UI_WIDGET_MULTIIMAGESLIDER_V:
+        case OFX_UI_WIDGET_IMAGESLIDER_H:
+        case OFX_UI_WIDGET_IMAGESLIDER_V:
+        case OFX_UI_WIDGET_ROTARYSLIDER:
+        case OFX_UI_WIDGET_MINIMALSLIDER:
+        case OFX_UI_WIDGET_SLIDER_H:
+        case OFX_UI_WIDGET_SLIDER_V:
+        {
+            ofxUISlider *s = (ofxUISlider *) widget;
+            map<ofxUISlider *, ofxTLCurves *>::iterator it = tlSliderMap.find(s);
+            if(it != tlSliderMap.end())
+            {
+                tlSliderMap.erase(it);
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    
+    timeline->removeTrack(widget->getName());
 }
 
 void CloudsVisualSystemRezanator::updateTimelineUIParams()
@@ -1393,28 +1556,39 @@ void CloudsVisualSystemRezanator::loadGUIS()
     {
         guis[i]->loadSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
+    cam.reset(); 
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
+    timeline->reset();    
+    loadTimelineUIMappings(getVisualSystemDataPath()+"Working/"+getSystemName()+"UITimelineMappings.xml");
+    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Working/Timeline/"); 
 }
 
 void CloudsVisualSystemRezanator::saveGUIS()
-{
+{    
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->saveSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
+    
+    saveTimelineUIMappings(getVisualSystemDataPath()+"Working/"+getSystemName()+"UITimelineMappings.xml");
+    
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }
 
 void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        if(guis[i]->getName() != "Presets")
-        {
-            guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
-        }
+        guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");
+    cam.reset();
+    ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");    
+    
+    timeline->reset();
+    loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
+    timeline->loadTracksFromFolder(presetPath+"/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }
 
 void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
@@ -1433,6 +1607,9 @@ void CloudsVisualSystemRezanator::savePresetGUIS(string presetName)
         guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+presetName+"/"+"ofEasyCamSettings");
+    saveTimelineUIMappings(getVisualSystemDataPath()+presetName+"/"+getSystemName()+"UITimelineMappings.xml");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+presetName+"/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");    
 }
 
 void CloudsVisualSystemRezanator::deleteGUIS()
@@ -1753,4 +1930,262 @@ void CloudsVisualSystemRezanator::selfSetupTimelineGui()
 void CloudsVisualSystemRezanator::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
+}
+
+void CloudsVisualSystemRezanator::saveTimelineUIMappings(string path)
+{
+    if(ofFile::doesFileExist(path))
+    {
+        cout << "DELETING OLD MAPPING FILE" << endl;
+        ofFile::removeFile(path);
+    }
+    cout << "TIMELINE UI MAPPER SAVING" << endl;    
+    ofxXmlSettings *XML = new ofxXmlSettings(path);
+    XML->clear();
+    
+    int mapIndex = XML->addTag("Map");
+    XML->pushTag("Map", mapIndex);
+
+    int bangsIndex = XML->addTag("Bangs");
+    if(XML->pushTag("Bangs", bangsIndex))
+    {
+        for(map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.begin(); it != tlButtonMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->second->getName(), 0);
+                    XML->setValue("WidgetID", it->second->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->second->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }                
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }        
+        }        
+        XML->popTag();
+    }    
+    
+    int switchesIndex = XML->addTag("Switches");
+    if(XML->pushTag("Switches", switchesIndex))
+    {
+        for(map<ofxUIToggle*, ofxTLSwitches*>::iterator it = tlToggleMap.begin(); it != tlToggleMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    int sliderCurvesIndex = XML->addTag("SliderCurves");
+    if(XML->pushTag("SliderCurves", sliderCurvesIndex))
+    {        
+        for(map<ofxUISlider*, ofxTLCurves*>::iterator it = tlSliderMap.begin(); it != tlSliderMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+
+    int numberDialerCurvesIndex = XML->addTag("NumberDialerCurves");
+    if(XML->pushTag("NumberDialerCurves", numberDialerCurvesIndex))
+    {
+        for(map<ofxUINumberDialer*, ofxTLCurves*>::iterator it = tlDialerMap.begin(); it != tlDialerMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    XML->popTag();
+    XML->saveFile(path);
+    delete XML;
+}
+
+void CloudsVisualSystemRezanator::loadTimelineUIMappings(string path)
+{
+    tlButtonMap.clear();
+    tlToggleMap.clear();
+    tlSliderMap.clear();
+    tlDialerMap.clear();
+
+    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
+    ofxXmlSettings *XML = new ofxXmlSettings();
+    XML->loadFile(path);
+    if(XML->pushTag("Map", 0))
+    {
+        if(XML->pushTag("Bangs", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIButton *b = (ofxUIButton *) it->second->getWidget(widgetname, widgetID);
+                            if(b != NULL)
+                            {
+                                tlButtonMap[timeline->addBangs(b->getName())] = b;
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        
+        if(XML->pushTag("Switches", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");            
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIToggle *t = (ofxUIToggle *) it->second->getWidget(widgetname, widgetID);
+                            if(t != NULL)
+                            {
+                                tlToggleMap[t] = timeline->addSwitches(t->getName());
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }        
+        
+        if(XML->pushTag("SliderCurves", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");            
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUISlider *s = (ofxUISlider *) it->second->getWidget(widgetname, widgetID);
+                            if(s != NULL)
+                            {
+                                tlSliderMap[s] = timeline->addCurves(s->getName(), ofRange(s->getMin(), s->getMax()), s->getValue());
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        
+        if(XML->pushTag("NumberDialerCurves", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");            
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUINumberDialer *nd = (ofxUINumberDialer *) it->second->getWidget(widgetname, widgetID);                                            
+                            if(nd != NULL)
+                            {
+                                tlDialerMap[nd] = timeline->addCurves(nd->getName(), ofRange(nd->getMin(), nd->getMax()), nd->getValue());
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }        
+        XML->popTag();
+    }
 }

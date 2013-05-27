@@ -78,8 +78,11 @@ public:
     void setupTimelineGui();
     void guiTimelineEvent(ofxUIEventArgs &e);
     void setTimelineTrackCreation(bool state);
+    void setTimelineTrackDeletion(bool state);
     void guiAllEvents(ofxUIEventArgs &e);
     void updateTimelineUIParams(); 
+    void saveTimelineUIMappings(string path);
+    void loadTimelineUIMappings(string path);
     
     //Lighting Helpers
     void lightsBegin();
@@ -214,7 +217,8 @@ protected:
     
     //TIMELINE
 	void bindWidgetToTimeline(ofxUIWidget* widget);
-    ofxTimeline timeline;
+    void unBindWidgetFromTimeline(ofxUIWidget* widget); 
+    ofxTimeline *timeline;
     
     map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
     map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
@@ -223,5 +227,7 @@ protected:
     
     float timelineDuration; 
     bool bEnableTimeline;
-    bool bEnableTimelineTrackCreation; 
+    bool bDeleteTimelineTrack;
+    bool bShowTimeline;
+    bool bEnableTimelineTrackCreation;
 };
