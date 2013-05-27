@@ -73,7 +73,10 @@ void CloudsIntroSequence::selfDrawBackground(){
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
 	tunnelShader.setUniform1f("maxDistance", distanceRange.max);
-	
+
+	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
+	tunnelShader.setUniform1f("noiseDensity", perlinDensity);
+
 	tunnelMesh.drawVertices();
 	
 	tunnelShader.end();
@@ -87,6 +90,7 @@ void CloudsIntroSequence::selfDrawBackground(){
 	chroma.setUniform1f("max_distort", maxChromaDistort);
 	fullscreenFbo.draw(0,ofGetHeight(),ofGetWidth(),-ofGetHeight());
 	chroma.end();
+
 }
 
 void CloudsIntroSequence::selfDrawDebug(){
