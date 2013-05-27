@@ -6,6 +6,8 @@ void CloudsVisualSystemRezanator::setup()
 {
     ofAddListener(ofEvents().exit, this, &CloudsVisualSystemRezanator::exit);
     
+	currentCamera = &cam;
+	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath();
     if(!dir.doesDirectoryExist(directoryName))
@@ -67,7 +69,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
-        cam.begin();
+        currentCamera->begin();
         
         drawBackground();
         
@@ -87,7 +89,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         
         lightsEnd();
         
-        cam.end();
+        currentCamera->end();
     }
     
     ofPopStyle();
@@ -197,6 +199,9 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
         {
             ofImage img;
             img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
+			if( !ofDirectory(getDataPath()+"snapshots/").exists() ){
+				ofDirectory(getDataPath()+"snapshots/").create();
+			}
             img.saveImage(getDataPath()+"snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
         }
             break;
@@ -353,19 +358,27 @@ void CloudsVisualSystemRezanator::mouseMoved(ofMouseEventArgs& data)
 
 void CloudsVisualSystemRezanator::mousePressed(ofMouseEventArgs & args)
 {
-    for(int i = 0; i < guis.size(); i++)
-    {
-        if(guis[i]->isHit(args.x, args.y))
-        {
-            cam.disableMouseInput();
-            return;
-        }
-    }
-	
-	if(timeline->getDrawRect().inside(args.x,args.y)){
+	if(cursorIsOverGUI()){
 		cam.disableMouseInput();
 	}
     selfMousePressed(args);
+}
+
+bool CloudsVisualSystemRezanator::cursorIsOverGUI(){
+	if(timeline->getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
+		return true;
+	}
+
+    for(int i = 0; i < guis.size(); i++)
+    {
+
+		if(guis[i]->isHit(ofGetMouseX(), ofGetMouseY()))
+		{
+			cam.disableMouseInput();
+			return true;
+		}
+	}
+	return false;
 }
 
 void CloudsVisualSystemRezanator::mouseReleased(ofMouseEventArgs & args)
@@ -793,10 +806,12 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
     if(name == "DIST")
     {
         cam.setDistance(camDistance);
+//		currentCamera->setDistance(camDistance);
     }
     else if(name == "FOV")
     {
-        cam.setFov(camFOV);
+		currentCamera->setFov(camFOV);
+//        cam.setFov(camFOV);
     }
     else if(name == "ROT-X")
     {
@@ -1642,6 +1657,10 @@ void CloudsVisualSystemRezanator::toggleGuiAndPosition(ofxUISuperCanvas *g)
     {
         g->setMinified(true);
     }
+}
+
+void CloudsVisualSystemRezanator::setCurrentCamera(ofCamera& swappedInCam){
+	currentCamera = &swappedInCam;
 }
 
 void CloudsVisualSystemRezanator::drawDebug()

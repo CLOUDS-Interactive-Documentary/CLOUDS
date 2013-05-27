@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
+#include "ofxGameCamera.h"
 
 class CloudsIntroSequence : public CloudsVisualSystemRezanator {
   public:
@@ -46,5 +47,25 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 
   protected:
 	
+	ofFbo fullscreenFbo;
+	
+	void reloadShaders();
+	
+	ofMesh tunnelMesh;
+	ofMesh blocksMesh;
+	
+	ofxGameCamera camera;
+	
+	ofShader tunnelShader;
+	ofShader chroma;
+	
+	ofRange pointSize;	
+	ofRange distanceRange;
+	
+
+	float maxChromaDistort;
+	float perlinAmplitude;
+	float perlinDensity;
+	float perlinSpeed;
 	
 };
