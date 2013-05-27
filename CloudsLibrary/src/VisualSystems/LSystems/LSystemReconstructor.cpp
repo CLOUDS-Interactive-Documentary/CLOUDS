@@ -51,7 +51,8 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
 void LSystemReconstructor::addNode(ofPoint &_pnt){
     for (int i = nodes.size()-1; i >=0; i--) {
         if ( nodes[i] == _pnt ){
-            nodes[i].branchesIndex.push_back( getSubPaths().size()-1 );
+//            nodes[i].branchesIndex.push_back( getSubPaths().size()-1 );
+            nodes[i].branchesIndex.push_back( getOutline().size()-1 );
             return;
         }
     }
@@ -59,7 +60,8 @@ void LSystemReconstructor::addNode(ofPoint &_pnt){
     LNode node;
     node.set(_pnt);
     node.startTime = -1.0;
-    node.branchesIndex.push_back( getSubPaths().size()-1 );
+    node.branchesIndex.push_back( getOutline().size()-1 );
+//    node.branchesIndex.push_back( getSubPaths().size()-1 );
     nodes.push_back( node );
 }
 
