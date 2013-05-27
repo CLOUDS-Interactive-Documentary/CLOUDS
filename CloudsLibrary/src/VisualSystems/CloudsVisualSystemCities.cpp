@@ -199,15 +199,7 @@ void CloudsVisualSystemCities::selfUpdate()
     noiseShader.end();
     noiseFbo.end();
     
-    ofxUIDropDownList *drop = (ofxUIDropDownList *) sysGui->getWidget("Texture");
-    vector<ofxUIWidget *> selected = drop->getSelected();
-    string name = "";
-    if (selected.size()>0){
-        ofxUIToggle * wSelected =  (ofxUIToggle *) selected[0];
-        name = wSelected->getName();
-    }
-    
-    if(name == "Grayscott"){
+    if(bGrayscott){
         nPingPong = (nPingPong+1)%2;
         
         if (bCleanGrayscott){
@@ -248,7 +240,7 @@ void CloudsVisualSystemCities::selfUpdate()
     maskShader.setUniform1f("size", maskSize);
     maskShader.setUniform1f("curve",maskCurve);
     
-    if(name == "Grayscott"){
+    if(bGrayscott){
         grayscottFbo[nPingPong%2].draw(0, 0);
     } else {
         noiseFbo.draw(0, 0);
@@ -374,25 +366,18 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     sysGui->addSlider("Min_Size", 0.0, 1.0, &minSize);
     sysGui->addSlider("Min_Alpha", 0.0, 1.0, &minAlpha);
     
-    
     sysGui->addLabel("Noise");
     sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
     sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
+    
     sysGui->addLabel("GrayScott");
     sysGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
+    sysGui->addToggle("enable", &bGrayscott);
     sysGui->addButton("clean", &bCleanGrayscott);
     
     sysGui->addLabel("Mask");
     sysGui->addSlider("maskSize", 1.0, 2.0, &maskSize);
     sysGui->addSlider("maskCurve", 0.0, 1.0, &maskCurve);
-    
-    vector<string> list;
-    list.push_back("Noise");
-    list.push_back("Grayscott");
-    sysGui->addDropDownList("Texture", list);
-    
-    
-    
 }
 
 void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)

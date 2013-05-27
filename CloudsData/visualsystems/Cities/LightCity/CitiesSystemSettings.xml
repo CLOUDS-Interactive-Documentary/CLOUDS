@@ -12,26 +12,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>noise_zoom</Name>
-    <Value>5.418719292</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>noise_speed</Name>
-    <Value>4.605911255</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>maskSize</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>maskCurve</Name>
-    <Value>0.325123161</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>Grid_size</Name>
     <Value>100.000000000</Value>
 </Widget>
@@ -42,13 +22,18 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>Max_Height</Name>
+    <Value>59.522171021</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>Min_Dist</Name>
-    <Value>0.482758611</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Min_Size</Name>
-    <Value>1.349753737</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -57,6 +42,31 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Max_Height</Name>
-    <Value>59.522167206</Value>
+    <Name>noise_zoom</Name>
+    <Value>5.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_speed</Name>
+    <Value>4.605911255</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Feed</Name>
+    <Value>0.044334974</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>enable</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskSize</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskCurve</Name>
+    <Value>0.325123161</Value>
 </Widget>

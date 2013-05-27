@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Height</Name>
-    <Value>73.665023804</Value>
+    <Value>18.226600647</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,40 +33,40 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Min_Size</Name>
-    <Value>0.000000000</Value>
+    <Value>0.448275864</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Min_Alpha</Name>
-    <Value>0.103448279</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>14.285715103</Value>
+    <Value>10.837438583</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>3.990147591</Value>
+    <Value>0.714285731</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.000000000</Value>
+    <Value>0.013300492</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>enable</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maskSize</Name>
-    <Value>1.226601005</Value>
+    <Value>1.300492644</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maskCurve</Name>
-    <Value>0.433497548</Value>
+    <Value>0.635468006</Value>
 </Widget>

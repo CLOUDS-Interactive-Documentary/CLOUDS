@@ -1,1 +1,8 @@
-<positions></positions>
+<positions>
+    <element name="Feed">
+        <x>4.000000000</x>
+        <y>836.000000000</y>
+        <width>1432.000000000</width>
+        <height>40.000000000</height>
+    </element>
+</positions>
