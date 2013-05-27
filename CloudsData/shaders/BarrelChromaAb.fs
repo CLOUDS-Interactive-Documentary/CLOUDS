@@ -1,10 +1,6 @@
 uniform sampler2DRect tex0;
 uniform vec2 resolution;
-uniform vec2 texRes;
-uniform float zoom;
 uniform float max_distort;
-uniform float offsetX;
-uniform float offsetY;
 
 vec2 barrelDistortion(vec2 coord, float amt) {
 	vec2 cc = coord - 0.5;
@@ -38,6 +34,10 @@ const int num_iter = 12;
 const float reci_num_iter_f = 1.0 / float(num_iter);
 
 void main(){	
+	float offsetX = 0.0;
+ 	float offsetY = 0.0;
+ 	float zoom = 1.0;
+
 	vec2 st = gl_FragCoord.xy/resolution.xy;// * vec2(1,-1);
 	vec2 uv = (st*zoom);
 	vec2 offset = vec2(offsetX,offsetY);
