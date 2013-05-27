@@ -190,6 +190,9 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
         {
             ofImage img;
             img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
+			if( !ofDirectory(getDataPath()+"snapshots/").exists() ){
+				ofDirectory(getDataPath()+"snapshots/").create();
+			}
             img.saveImage(getDataPath()+"snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
         }
             break;

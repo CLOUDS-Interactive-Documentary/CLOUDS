@@ -46,7 +46,22 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
     virtual void guiRenderEvent(ofxUIEventArgs &e);
 
   protected:
+	
+	void reloadShaders();
+	
 	ofMesh tunnelMesh;
+	ofMesh blocksMesh;
 	ofxGameCamera camera;
+	
+	ofShader tunnelShader;
+	
+	ofRange pointSize;
+	
+	float minPointSize;
+	float maxPointSize;
+	
+	float perlinAmplitude;
+	float perlinDensity;
+	float perlinSpeed;
 	
 };

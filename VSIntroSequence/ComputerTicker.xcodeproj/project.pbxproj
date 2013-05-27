@@ -78,11 +78,9 @@
 		E71183F11752978900C189BF /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71183DE1752978900C189BF /* ofxEasingSine.cpp */; };
 		E71183F21752978900C189BF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71183E01752978900C189BF /* ofxTween.cpp */; };
 		E71184141752A2DC00C189BF /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71184101752A2DC00C189BF /* ofxGameCamera.cpp */; };
+		E711841B1752B1ED00C189BF /* IntroTunnel.frag in Sources */ = {isa = PBXBuildFile; fileRef = E71184191752B1ED00C189BF /* IntroTunnel.frag */; };
+		E711841C1752B1ED00C189BF /* IntroTunnel.vert in Sources */ = {isa = PBXBuildFile; fileRef = E711841A1752B1ED00C189BF /* IntroTunnel.vert */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
-		E7846DAC1713A5C900705E7A /* display.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7846DA81713A5C900705E7A /* display.frag */; };
-		E7846DAD1713A5C900705E7A /* display.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7846DA91713A5C900705E7A /* display.vert */; };
-		E7846DAE1713A5C900705E7A /* update.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7846DAA1713A5C900705E7A /* update.frag */; };
-		E7846DAF1713A5C900705E7A /* update.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7846DAB1713A5C900705E7A /* update.vert */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
 		E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB91714899C00705E7A /* tinyxmlparser.cpp */; };
@@ -274,11 +272,9 @@
 		E71183E11752978900C189BF /* ofxTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween.h; sourceTree = "<group>"; };
 		E71184101752A2DC00C189BF /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		E71184111752A2DC00C189BF /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		E71184191752B1ED00C189BF /* IntroTunnel.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroTunnel.frag; sourceTree = "<group>"; };
+		E711841A1752B1ED00C189BF /* IntroTunnel.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroTunnel.vert; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		E7846DA81713A5C900705E7A /* display.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = display.frag; sourceTree = "<group>"; };
-		E7846DA91713A5C900705E7A /* display.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = display.vert; sourceTree = "<group>"; };
-		E7846DAA1713A5C900705E7A /* update.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = update.frag; sourceTree = "<group>"; };
-		E7846DAB1713A5C900705E7A /* update.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = update.vert; sourceTree = "<group>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
 		E7846F431714887E00705E7A /* ofxUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -876,13 +872,20 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E71184181752B1ED00C189BF /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				E711841A1752B1ED00C189BF /* IntroTunnel.vert */,
+				E71184191752B1ED00C189BF /* IntroTunnel.frag */,
+			);
+			name = Intro;
+			path = ../../../CloudsData/shaders/Intro;
+			sourceTree = "<group>";
+		};
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				E7846DA91713A5C900705E7A /* display.vert */,
-				E7846DA81713A5C900705E7A /* display.frag */,
-				E7846DAB1713A5C900705E7A /* update.vert */,
-				E7846DAA1713A5C900705E7A /* update.frag */,
+				E71184181752B1ED00C189BF /* Intro */,
 			);
 			name = data;
 			path = bin/data;
@@ -1214,10 +1217,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				E7846DAC1713A5C900705E7A /* display.frag in Sources */,
-				E7846DAD1713A5C900705E7A /* display.vert in Sources */,
-				E7846DAE1713A5C900705E7A /* update.frag in Sources */,
-				E7846DAF1713A5C900705E7A /* update.vert in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
@@ -1294,6 +1293,8 @@
 				E71183F11752978900C189BF /* ofxEasingSine.cpp in Sources */,
 				E71183F21752978900C189BF /* ofxTween.cpp in Sources */,
 				E71184141752A2DC00C189BF /* ofxGameCamera.cpp in Sources */,
+				E711841B1752B1ED00C189BF /* IntroTunnel.frag in Sources */,
+				E711841C1752B1ED00C189BF /* IntroTunnel.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
