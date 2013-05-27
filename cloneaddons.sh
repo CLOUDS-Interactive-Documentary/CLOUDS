@@ -19,12 +19,15 @@ fi
 git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
 git clone git@github.com:rezaali/ofxColorPalettes
+git clone git@github.com:obviousjim/ofxOcean
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
 git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
 git clone https://github.com/memo/ofxMSACore
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
+
+
 
 ${PREFIX}rezaali/ofxGenerative
 
