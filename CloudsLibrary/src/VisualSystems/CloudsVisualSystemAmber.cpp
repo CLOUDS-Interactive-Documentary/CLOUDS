@@ -20,22 +20,9 @@ void CloudsVisualSystemAmber::selfSetup()
     billboards.getVertices().resize(NUM_BILLBOARDS);
 	billboards.getColors().resize(NUM_BILLBOARDS);
 	billboards.getNormals().resize(NUM_BILLBOARDS,ofVec3f(0));
-
-    for (int i=0; i<NUM_BILLBOARDS; i++)
-    {				
-        billboardVels[i].set(ofRandomf(), -1.0, ofRandomf());
-		billboards.getVertices()[i].set(ofRandom(-100, 100),
-                                        ofRandom(-100, 100),
-                                        ofRandom(-100, 100));
 		
-		billboards.getColors()[i].set(ofColor::fromHsb(ofRandom(96, 160), 255, 255));
-	    billboardSizeTarget[i] = ofRandom(40, 64);
-	}
-	
-	
 	billboards.setUsage( GL_DYNAMIC_DRAW );
 	billboards.setMode(OF_PRIMITIVE_POINTS);
-
     
     noiseScaleX = 1.0;
     noiseScaleY = 1.0;
@@ -87,7 +74,7 @@ void CloudsVisualSystemAmber::selfSetup()
     
     electro->setParticlesPtr(ps->getParticlesPtr());
     
-    debugGridSize = 10;
+    debugGridSize = 19;
     float width = debugGridSize;
     float height = width;
     float depth = height;
@@ -111,6 +98,17 @@ void CloudsVisualSystemAmber::selfSetup()
             }
         }
     }
+    
+    vector<ofxRParticle>* particles = ps->getParticlesPtr();
+    i = 0;    
+    for (vector<ofxRParticle>::iterator it = particles->begin(); it != particles->end(); ++it)
+    {
+		billboards.getVertices()[i] = it->getPos();
+		billboards.getColors()[i] = it->getColor();
+	    billboardSizeTarget[i] = it->getRadius();
+    	billboards.setNormal(i,ofVec3f(it->getRadius(),0,0));        
+        i++;
+	}
 }
 
 void CloudsVisualSystemAmber::selfSetupGuis()
@@ -133,23 +131,17 @@ void CloudsVisualSystemAmber::selfUpdate()
         bufferData[i] = ofSignedNoise(time*noiseScaleX, i*noiseScaleY);
     }
     
-//    ps->update();
+    ps->update();
     
-    float t = (ofGetElapsedTimef()) * 0.9f;
-	float div = 250.0;
-	
-	for (int i=0; i<NUM_BILLBOARDS; i++) {
-		
-		// noise
-		ofVec3f vec(ofSignedNoise(t, billboards.getVertex(i).y/div, billboards.getVertex(i).z/div),
-                    ofSignedNoise(billboards.getVertex(i).x/div, t, billboards.getVertex(i).z/div),
-                    ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t));
-		
-		vec *= 10 * ofGetLastFrameTime();
-		billboardVels[i] += vec;
-		billboards.getVertices()[i] += billboardVels[i];
-		billboardVels[i] *= 0.94f;
-    	billboards.setNormal(i,ofVec3f(12 + billboardSizeTarget[i] * ofNoise(t+i),0,0));
+    vector<ofxRParticle>* particles = ps->getParticlesPtr();
+    int i = 0;
+    for (vector<ofxRParticle>::iterator it = particles->begin(); it != particles->end(); ++it)
+    {
+		billboards.getVertices()[i] = it->getPos();
+		billboards.getColors()[i] = it->getColor();
+	    billboardSizeTarget[i] = it->getRadius();
+    	billboards.setNormal(i,ofVec3f(it->getRadius(),0,0));        
+        i++;
 	}
 }
 
