@@ -2,6 +2,8 @@
 
 #include "CloudsVisualSystemRezanator.h"
 
+#define NUM_BILLBOARDS 1000
+
 class CloudsVisualSystemAmber : public CloudsVisualSystemRezanator
 {
 public:
@@ -63,6 +65,10 @@ protected:
     ofxUISuperCanvas *bufferGui;
     ofxUISuperCanvas *electroGui;
     
+    ofVec3f billboardVels[NUM_BILLBOARDS];
+    float billboardSizeTarget[NUM_BILLBOARDS];
+    ofVboMesh billboards;
+    ofShader *billboardShader;
     ofImage *glow;
     
     float *bufferData;
