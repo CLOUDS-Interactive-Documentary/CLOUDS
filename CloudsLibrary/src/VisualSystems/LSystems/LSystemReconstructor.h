@@ -17,7 +17,7 @@ struct LNode : public ofPoint {
     vector<int> branchesIndex;
 };
 
-class LSystemReconstructor {//: public ofPath {
+class LSystemReconstructor {
 public:
     LSystemReconstructor();
     
