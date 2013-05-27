@@ -16,6 +16,27 @@ string CloudsVisualSystemAmber::getSystemName()
 
 void CloudsVisualSystemAmber::selfSetup()
 {
+    
+    billboards.getVertices().resize(NUM_BILLBOARDS);
+	billboards.getColors().resize(NUM_BILLBOARDS);
+	billboards.getNormals().resize(NUM_BILLBOARDS,ofVec3f(0));
+
+    for (int i=0; i<NUM_BILLBOARDS; i++)
+    {				
+        billboardVels[i].set(ofRandomf(), -1.0, ofRandomf());
+		billboards.getVertices()[i].set(ofRandom(-100, 100),
+                                        ofRandom(-100, 100),
+                                        ofRandom(-100, 100));
+		
+		billboards.getColors()[i].set(ofColor::fromHsb(ofRandom(96, 160), 255, 255));
+	    billboardSizeTarget[i] = ofRandom(40, 64);
+	}
+	
+	
+	billboards.setUsage( GL_DYNAMIC_DRAW );
+	billboards.setMode(OF_PRIMITIVE_POINTS);
+
+    
     noiseScaleX = 1.0;
     noiseScaleY = 1.0;
     bufferSize = 256;
@@ -26,6 +47,10 @@ void CloudsVisualSystemAmber::selfSetup()
         bufferData[i] = 0.0;
     }
     
+    billboardShader = new ofShader();
+    billboardShader->load(getDataPath()+"shaders/VisualSystems/"+getSystemName()+"/Billboard");
+    
+    ofDisableArbTex();
     glow = new ofImage();
     glow->loadImage(getDataPath()+"images/glow.png");
     particleAlpha = 200;
@@ -62,7 +87,7 @@ void CloudsVisualSystemAmber::selfSetup()
     
     electro->setParticlesPtr(ps->getParticlesPtr());
     
-    debugGridSize = 8;
+    debugGridSize = 10;
     float width = debugGridSize;
     float height = width;
     float depth = height;
@@ -108,7 +133,24 @@ void CloudsVisualSystemAmber::selfUpdate()
         bufferData[i] = ofSignedNoise(time*noiseScaleX, i*noiseScaleY);
     }
     
-    ps->update();
+//    ps->update();
+    
+    float t = (ofGetElapsedTimef()) * 0.9f;
+	float div = 250.0;
+	
+	for (int i=0; i<NUM_BILLBOARDS; i++) {
+		
+		// noise
+		ofVec3f vec(ofSignedNoise(t, billboards.getVertex(i).y/div, billboards.getVertex(i).z/div),
+                    ofSignedNoise(billboards.getVertex(i).x/div, t, billboards.getVertex(i).z/div),
+                    ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t));
+		
+		vec *= 10 * ofGetLastFrameTime();
+		billboardVels[i] += vec;
+		billboards.getVertices()[i] += billboardVels[i];
+		billboardVels[i] *= 0.94f;
+    	billboards.setNormal(i,ofVec3f(12 + billboardSizeTarget[i] * ofNoise(t+i),0,0));
+	}
 }
 
 void CloudsVisualSystemAmber::selfDrawBackground()
@@ -150,13 +192,26 @@ void CloudsVisualSystemAmber::selfSceneTransformation()
 
 void CloudsVisualSystemAmber::selfDraw()
 {
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    glDisable(GL_DEPTH_TEST);
+//    ps->draw();
     
-    ps->draw();
+    // bind the shader so that wee can change the
+	// size of the points via the vert shader
+	billboardShader->begin();
+	ofEnablePointSprites();
+	glow->getTextureReference().bind();
+	billboards.draw();
+	glow->getTextureReference().unbind();
+	ofDisablePointSprites();	
+	billboardShader->end();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 }
 
 void CloudsVisualSystemAmber::selfExit()
 {
+    delete billboardShader; 
     delete glow;
     delete ps;    
 }

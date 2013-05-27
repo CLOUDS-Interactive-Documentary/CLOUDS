@@ -8,6 +8,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCameraSaveLoad.h"
 
+#include "ofxTimeline.h"
 
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:
@@ -35,11 +36,12 @@ public:
 	void mouseReleased(ofMouseEventArgs & args);
         
     //Core Param Setup
-    void setupAppParams(); 
+    void setupAppParams();
     void setupDebugParams();
     void setupCameraParams();
     void setupLightingParams();
     void setupMaterialParams();
+    void setupTimeLineParams();
 
     //Core UI[S]    
     void setupCoreGuis();
@@ -49,7 +51,7 @@ public:
     
     void setupSystemGui();    
     void setupRenderGui();
-    
+        
     void setupBackgroundGui();
     void guiBackgroundEvent(ofxUIEventArgs &e);
     
@@ -70,7 +72,15 @@ public:
     void setupBeamLight(string name);
     void setupGenericLightProperties(ofxUISuperCanvas *g, ofxLight *l);
     void guiLightEvent(ofxUIEventArgs &e);
-        
+	
+    void setupTimeline();
+    void timelineBangEvent(ofxTLBangEventArgs& args); 
+    void setupTimelineGui();
+    void guiTimelineEvent(ofxUIEventArgs &e);
+    void setTimelineTrackCreation(bool state);
+    void guiAllEvents(ofxUIEventArgs &e);
+    void updateTimelineUIParams(); 
+    
     //Lighting Helpers
     void lightsBegin();
     void lightsEnd();
@@ -86,6 +96,9 @@ public:
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
     
+	void setCurrentCamera(ofCamera& cam);
+	bool cursorIsOverGUI();
+	
     //Drawing Helpers
     void drawDebug();
     void drawAxis(float size, float color);
@@ -127,7 +140,10 @@ public:
     
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
-        
+    
+    virtual void selfSetupTimelineGui();
+    virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);    
+
 protected:
 
     //UI
@@ -138,7 +154,8 @@ protected:
     ofxUISuperCanvas *lgtGui;
     ofxUISuperCanvas *camGui;
     ofxUISuperCanvas *presetGui;
-	
+    ofxUISuperCanvas *tlGui;
+		
     vector<ofxUISuperCanvas *> guis;
     map<string, ofxUICanvas *> guimap;
 
@@ -186,6 +203,7 @@ protected:
     float camDistance;
     float camFOV;
     ofxViewType view;
+	ofCamera* currentCamera;
     ofEasyCam cam;
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
@@ -193,4 +211,17 @@ protected:
     
     //COLORS
     ofxColorPalettes *colorPalletes;
+    
+    //TIMELINE
+	void bindWidgetToTimeline(ofxUIWidget* widget);
+    ofxTimeline timeline;
+    
+    map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
+    map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
+    map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
+    map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
+    
+    float timelineDuration; 
+    bool bEnableTimeline;
+    bool bEnableTimelineTrackCreation; 
 };
