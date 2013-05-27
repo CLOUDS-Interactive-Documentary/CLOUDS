@@ -32,7 +32,7 @@ public:
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(ofMouseEventArgs& data);
+    void selfMouseDragged(ofMouseEventArgs& da  ta);
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
