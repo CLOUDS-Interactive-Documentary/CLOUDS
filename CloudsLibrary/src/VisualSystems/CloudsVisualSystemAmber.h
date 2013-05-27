@@ -2,7 +2,7 @@
 
 #include "CloudsVisualSystemRezanator.h"
 
-#define NUM_BILLBOARDS 1000
+#define NUM_BILLBOARDS 8000
 
 class CloudsVisualSystemAmber : public CloudsVisualSystemRezanator
 {
