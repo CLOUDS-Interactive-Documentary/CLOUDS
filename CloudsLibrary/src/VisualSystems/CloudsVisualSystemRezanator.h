@@ -97,7 +97,8 @@ public:
     void deleteGUIS();
     
 	void setCurrentCamera(ofCamera& cam);
-
+	bool cursorIsOverGUI();
+	
     //Drawing Helpers
     void drawDebug();
     void drawAxis(float size, float color);

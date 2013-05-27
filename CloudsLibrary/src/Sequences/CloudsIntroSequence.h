@@ -55,11 +55,10 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofShader tunnelShader;
 	
-	ofRange pointSize;
+	ofRange pointSize;	
+	ofRange distanceRange;
 	
-	float minPointSize;
-	float maxPointSize;
-	
+
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;

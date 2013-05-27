@@ -5,6 +5,10 @@ uniform float maxPointSize;
 uniform float minDistance;
 uniform float maxDistance;
 
+float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
+	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
+}
+
 void main(void)
 {
 	// passes the  texture coordinates along to the fragment shader
@@ -15,8 +19,11 @@ void main(void)
 //	pos.x += (texture2DRect(shift, vec2(gl_Vertex.x, pos.y)).r - .5) * deviation;
 	
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
-	gl_PointSize = minPointSize;
 	
+	//START NOISE ---------------------------
+	gl_PointSize = clamp(map(pow(gl_Position.z,1.5), maxDistance, minDistance, minPointSize, maxPointSize),
+							minPointSize, maxPointSize);
+//	gl_PointSize = maxPointSize;
 	//pass color info along
 	gl_FrontColor = gl_Color;
 }

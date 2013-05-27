@@ -355,19 +355,41 @@ void CloudsVisualSystemRezanator::mouseMoved(ofMouseEventArgs& data)
 
 void CloudsVisualSystemRezanator::mousePressed(ofMouseEventArgs & args)
 {
-    for(int i = 0; i < guis.size(); i++)
-    {
-        if(guis[i]->isHit(args.x, args.y))
-        {
-            cam.disableMouseInput();
-            return;
-        }
-    }
-	
-	if(timeline.getDrawRect().inside(args.x,args.y)){
+	if(cursorIsOverGUI()){
 		cam.disableMouseInput();
 	}
+	
+//    for(int i = 0; i < guis.size(); i++)
+//    {
+//        if(guis[i]->isHit(args.x, args.y))
+//        {
+//
+//            return;
+//        }
+//    }
+//	
+//	if(timeline.getDrawRect().inside(args.x,args.y)){
+//		cam.disableMouseInput();
+//	}
+//	
     selfMousePressed(args);
+}
+
+bool CloudsVisualSystemRezanator::cursorIsOverGUI(){
+	if(timeline.getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
+		return true;
+	}
+
+    for(int i = 0; i < guis.size(); i++)
+    {
+
+		if(guis[i]->isHit(ofGetMouseX(), ofGetMouseY()))
+		{
+			cam.disableMouseInput();
+			return true;
+		}
+	}
+	return false;
 }
 
 void CloudsVisualSystemRezanator::mouseReleased(ofMouseEventArgs & args)
@@ -784,10 +806,12 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
     if(name == "DIST")
     {
         cam.setDistance(camDistance);
+//		currentCamera->setDistance(camDistance);
     }
     else if(name == "FOV")
     {
-        cam.setFov(camFOV);
+		currentCamera->setFov(camFOV);
+//        cam.setFov(camFOV);
     }
     else if(name == "ROT-X")
     {
