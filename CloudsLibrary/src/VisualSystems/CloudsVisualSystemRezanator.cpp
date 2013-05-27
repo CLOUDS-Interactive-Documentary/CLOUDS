@@ -194,7 +194,14 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             bUpdateSystem = !bUpdateSystem; 
         }
             break;
-            
+
+        case ' ':
+        {
+            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(true);
+            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf(); 
+        }
+            break;
+
         case '`':
         {
             ofImage img;
