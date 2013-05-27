@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_zoom</Name>
+    <Value>82.266006470</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_speed</Name>
+    <Value>0.394088656</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskSize</Name>
+    <Value>1.438423634</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskCurve</Name>
+    <Value>0.379310340</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Grid_size</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blocks_number</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Dist</Name>
+    <Value>0.724137902</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Size</Name>
+    <Value>1.280788183</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Height</Name>
+    <Value>15.630541801</Value>
+</Widget>
