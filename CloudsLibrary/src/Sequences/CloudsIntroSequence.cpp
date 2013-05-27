@@ -100,8 +100,6 @@ void CloudsIntroSequence::selfDrawDebug(){
 
 void CloudsIntroSequence::selfDraw(){
 	
-
-	
 	
 }
 

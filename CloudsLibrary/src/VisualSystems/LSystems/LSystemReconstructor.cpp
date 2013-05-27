@@ -17,7 +17,9 @@ LSystemReconstructor::LSystemReconstructor(){
 }
 
 void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
-    clear();
+    lines.clear();
+    lines.push_back(ofPolyline());
+    
     nodes.clear();
     
     _lsys.unoise = aNoise;
@@ -33,14 +35,12 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
                 lineTo(_lsys.mesh.getVertices()[i]);
             } else {
                 if ( _lsys.mesh.getVertices()[i] != _lsys.mesh.getVertices()[i-1]){
-                    newSubPath();
+                    lines.push_back(ofPolyline());
                     lineTo(_lsys.mesh.getVertices()[i]);
                     addNode(_lsys.mesh.getVertices()[i]);
                 }
             }
         }
-        
-        setFilled(false);
     }
     
     if (nodes.size() > 0){
@@ -48,11 +48,14 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
     }
 }
 
+void LSystemReconstructor::lineTo(ofPoint &_pnt){
+    lines[ lines.size()-1 ].addVertex(_pnt);
+}
+
 void LSystemReconstructor::addNode(ofPoint &_pnt){
     for (int i = nodes.size()-1; i >=0; i--) {
         if ( nodes[i] == _pnt ){
-//            nodes[i].branchesIndex.push_back( getSubPaths().size()-1 );
-            nodes[i].branchesIndex.push_back( getOutline().size()-1 );
+            nodes[i].branchesIndex.push_back( lines.size()-1 );
             return;
         }
     }
@@ -60,8 +63,7 @@ void LSystemReconstructor::addNode(ofPoint &_pnt){
     LNode node;
     node.set(_pnt);
     node.startTime = -1.0;
-    node.branchesIndex.push_back( getOutline().size()-1 );
-//    node.branchesIndex.push_back( getSubPaths().size()-1 );
+    node.branchesIndex.push_back( lines.size()-1 );
     nodes.push_back( node );
 }
 
@@ -120,10 +122,9 @@ void LSystemReconstructor::draw(){
 
 void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _speed){
     
-    int totalPoints = getOutline()[_index].size();
+    int totalPoints = lines[_index].size();
     int drawPoints = 0;
     
-    up = ofPoint(0,0,1);
     for (int k = 0 ; k < totalPoints-1; k++){                  
         float thisTime = _speed*(float)k;
         float nextTime = _speed*((float)k+1.0f);;
@@ -138,8 +139,8 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             float whole = nextTime - thisTime;
             float pct = part / whole;
             
-            ofPoint A = getOutline()[ _index ][k];
-            ofPoint B = getOutline()[ _index ][k+1];
+            ofPoint A = lines[ _index ][k];
+            ofPoint B = lines[ _index ][k+1];
             
             // figure out where we are between a and b
             //
@@ -147,12 +148,12 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             
             activeNodes.addVertex(pos);
             
-            addLine(getOutline()[ _index ][k],color,pos,color);
+            addLineToMesh( mesh, lines[ _index ][k], pos, color);
             
         } else if ( _relativeTime > thisTime ){
-            ofPoint pos = getOutline()[ _index ][k];
+            ofPoint pos = lines[ _index ][k];
             
-            addLine(pos,color,getOutline()[ _index ][k+1],color);
+            addLineToMesh( mesh, pos, lines[ _index ][k+1], color);
             
             //  check if pass over a node
             //
@@ -169,20 +170,10 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
     }
 }
 
-void LSystemReconstructor::addLine(ofPoint &A, ofFloatColor &Ac, ofPoint &B, ofFloatColor &Bc){
-
-    ofPoint dir = B - A;
-    dir.normalize();
-    up.rotate(10, dir);
-    
-    ofPoint normal = dir.getCrossed(up);
-    
-    mesh.addColor(Ac);
-    mesh.addNormal(normal);
+void LSystemReconstructor::addLineToMesh(ofMesh &_mesh, ofPoint &A, ofPoint &B, ofFloatColor &c){
+    mesh.addColor(c);
     mesh.addVertex(A);
-    
-    mesh.addColor(Bc);
-    mesh.addNormal(normal);
+    mesh.addColor(c);
     mesh.addVertex(B);
 }
 
