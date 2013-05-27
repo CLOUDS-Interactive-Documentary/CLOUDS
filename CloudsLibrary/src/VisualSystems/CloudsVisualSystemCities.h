@@ -53,14 +53,30 @@ protected:
     ofShader noiseShader;
     ofFbo    noiseFbo;
     
+    ofShader grayscottShader;
+    ofFbo    grayscottFbo[2];
+    int      nPingPong;
+    
     ofShader maskShader;
     ofFbo   maskFbo;
     
     GLuint  cube;
     
-    float   size, nGrains, grainResolution;
+    //  Noise
+    //
     float   noiseSpeed,noiseZoom;
+    
+    //  GrayScott
+    //
+    float   grayscottFade;
+    
+    //  Mask
+    //
     float   maskSize,maskCurve;
+    
+    //  Blocks
+    //
+    float   size, nGrains, grainResolution;
     float   minSize,maxHeight,minAlpha,minDist;
     
 };
