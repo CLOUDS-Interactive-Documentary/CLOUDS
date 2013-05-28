@@ -144,6 +144,7 @@ public:
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
     
+    virtual void selfSetupTimeline(); 
     virtual void selfSetupTimelineGui();
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);    
 
@@ -217,6 +218,7 @@ protected:
     ofxColorPalettes *colorPalletes;
     
     //TIMELINE
+    void resetTimeline(); 
 	void bindWidgetToTimeline(ofxUIWidget* widget);
     void unBindWidgetFromTimeline(ofxUIWidget* widget); 
     ofxTimeline *timeline;

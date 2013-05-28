@@ -194,7 +194,14 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             bUpdateSystem = !bUpdateSystem; 
         }
             break;
-            
+
+        case ' ':
+        {
+            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
+            ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
+        }
+            break;
+
         case '`':
         {
             ofImage img;
@@ -1194,7 +1201,8 @@ void CloudsVisualSystemRezanator::setupTimeline()
     timeline->setMinimalHeaders(true);
 	timeline->setDurationInFrames(1000);
 	timeline->setLoopType(OF_LOOP_NORMAL);
-
+    timeline->setPageName(ofToUpper(getSystemName()));
+    
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
     if(!dir.doesDirectoryExist(workingDirectoryName))
@@ -1204,6 +1212,15 @@ void CloudsVisualSystemRezanator::setupTimeline()
     
     timeline->setWorkingFolder(getVisualSystemDataPath()+"Working/Timeline/");
     ofAddListener(timeline->events().bangFired, this, &CloudsVisualSystemRezanator::timelineBangEvent);
+    
+    selfSetupTimeline(); 
+}
+
+void CloudsVisualSystemRezanator::resetTimeline()
+{
+    timeline->reset();
+    timeline->setPageName(ofToUpper(getSystemName()));
+    selfSetupTimeline();     
 }
 
 void CloudsVisualSystemRezanator::timelineBangEvent(ofxTLBangEventArgs& args)
@@ -1374,9 +1391,26 @@ void CloudsVisualSystemRezanator::guiAllEvents(ofxUIEventArgs &e)
 
 void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
 {
-    if(timeline->hasTrack(widget->getName()))
+    string parentName = ((ofxUISuperCanvas *) widget->getCanvasParent())->getCanvasTitle()->getLabel();
+    timeline->addPage(parentName, true);
+    
+    vector<ofxTLPage *> pages = timeline->getPages();
+    
+    ofxTLPage * currentPage = NULL;
+    for(vector<ofxTLPage *>::iterator it = pages.begin(); it != pages.end(); ++it)
     {
-        return; 
+        if((*it)->getName() == parentName)
+        {
+            currentPage = (*it);
+        }
+    }
+
+    if(currentPage != NULL)
+    {
+        if(currentPage->getTrack(widget->getName()) != NULL)
+        {
+            return;
+        }
     }
     
     switch (widget->getKind())
@@ -1430,11 +1464,16 @@ void CloudsVisualSystemRezanator::bindWidgetToTimeline(ofxUIWidget* widget)
 
 void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
 {
+    string parentName = ((ofxUISuperCanvas *) widget->getCanvasParent())->getCanvasTitle()->getLabel();
+    timeline->setCurrentPage(parentName);
+    
     if(!timeline->hasTrack(widget->getName()))
     {
         return;
     }
-        
+    
+    
+    
     switch (widget->getKind())
     {
         case OFX_UI_WIDGET_BUTTON:
@@ -1447,6 +1486,7 @@ void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
             
             if(it != tlButtonMap.end())
             {
+                timeline->removeTrack(it->first);
                 tlButtonMap.erase(it); 
             }
         }
@@ -1462,6 +1502,7 @@ void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
             
             if(it != tlToggleMap.end())
             {
+                timeline->removeTrack(it->second);
                 tlToggleMap.erase(it);
             }
         }
@@ -1473,6 +1514,7 @@ void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
             map<ofxUINumberDialer *, ofxTLCurves *>::iterator it = tlDialerMap.find(nd);
             if(it != tlDialerMap.end())
             {
+                timeline->removeTrack(it->second);                
                 tlDialerMap.erase(it);
             }
         }
@@ -1493,6 +1535,7 @@ void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
             map<ofxUISlider *, ofxTLCurves *>::iterator it = tlSliderMap.find(s);
             if(it != tlSliderMap.end())
             {
+                timeline->removeTrack(it->second);                
                 tlSliderMap.erase(it);
             }
         }
@@ -1500,8 +1543,6 @@ void CloudsVisualSystemRezanator::unBindWidgetFromTimeline(ofxUIWidget* widget)
         default:
             break;
     }
-    
-    timeline->removeTrack(widget->getName());
 }
 
 void CloudsVisualSystemRezanator::updateTimelineUIParams()
@@ -1531,6 +1572,264 @@ void CloudsVisualSystemRezanator::updateTimelineUIParams()
         ofxTLCurves *tlc = it->second;
         nd->setValue(tlc->getValue());
         nd->triggerSelf();
+    }
+}
+
+void CloudsVisualSystemRezanator::saveTimelineUIMappings(string path)
+{
+    if(ofFile::doesFileExist(path))
+    {
+        cout << "DELETING OLD MAPPING FILE" << endl;
+        ofFile::removeFile(path);
+    }
+    cout << "TIMELINE UI MAPPER SAVING" << endl;
+    ofxXmlSettings *XML = new ofxXmlSettings(path);
+    XML->clear();
+    
+    int mapIndex = XML->addTag("Map");
+    XML->pushTag("Map", mapIndex);
+    
+    int bangsIndex = XML->addTag("Bangs");
+    if(XML->pushTag("Bangs", bangsIndex))
+    {
+        for(map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.begin(); it != tlButtonMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->second->getName(), 0);
+                    XML->setValue("WidgetID", it->second->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->second->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    int switchesIndex = XML->addTag("Switches");
+    if(XML->pushTag("Switches", switchesIndex))
+    {
+        for(map<ofxUIToggle*, ofxTLSwitches*>::iterator it = tlToggleMap.begin(); it != tlToggleMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    int sliderCurvesIndex = XML->addTag("SliderCurves");
+    if(XML->pushTag("SliderCurves", sliderCurvesIndex))
+    {
+        for(map<ofxUISlider*, ofxTLCurves*>::iterator it = tlSliderMap.begin(); it != tlSliderMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    int numberDialerCurvesIndex = XML->addTag("NumberDialerCurves");
+    if(XML->pushTag("NumberDialerCurves", numberDialerCurvesIndex))
+    {
+        for(map<ofxUINumberDialer*, ofxTLCurves*>::iterator it = tlDialerMap.begin(); it != tlDialerMap.end(); ++it)
+        {
+            int index = XML->addTag("Mapping");
+            if(XML->pushTag("Mapping", index))
+            {
+                int wIndex = XML->addTag("Widget");
+                if(XML->pushTag("Widget", wIndex))
+                {
+                    XML->setValue("WidgetName", it->first->getName(), 0);
+                    XML->setValue("WidgetID", it->first->getID(), 0);
+                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
+                    XML->popTag();
+                }
+                int tlIndex = XML->addTag("Track");
+                if(XML->pushTag("Track", tlIndex))
+                {
+                    XML->popTag();
+                }
+                XML->popTag();
+            }
+        }
+        XML->popTag();
+    }
+    
+    XML->popTag();
+    XML->saveFile(path);
+    delete XML;
+}
+
+void CloudsVisualSystemRezanator::loadTimelineUIMappings(string path)
+{
+    tlButtonMap.clear();
+    tlToggleMap.clear();
+    tlSliderMap.clear();
+    tlDialerMap.clear();
+    
+    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
+    ofxXmlSettings *XML = new ofxXmlSettings();
+    XML->loadFile(path);
+    if(XML->pushTag("Map", 0))
+    {
+        if(XML->pushTag("Bangs", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIWidget *w = it->second->getWidget(widgetname, widgetID);
+                            if(w != NULL)
+                            {
+                                bindWidgetToTimeline(w);
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        
+        if(XML->pushTag("Switches", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIWidget *w = it->second->getWidget(widgetname, widgetID);
+                            if(w != NULL)
+                            {
+                                bindWidgetToTimeline(w);
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        
+        if(XML->pushTag("SliderCurves", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIWidget *w = it->second->getWidget(widgetname, widgetID);
+                            if(w != NULL)
+                            {
+                                bindWidgetToTimeline(w);
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        
+        if(XML->pushTag("NumberDialerCurves", 0))
+        {
+            int widgetTags = XML->getNumTags("Mapping");
+            for(int i = 0; i < widgetTags; i++)
+            {
+                if(XML->pushTag("Mapping", i))
+                {
+                    if(XML->pushTag("Widget", 0))
+                    {
+                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
+                        int widgetID = XML->getValue("WidgetID", -1, 0);
+                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
+                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
+                        if(it != guimap.end())
+                        {
+                            ofxUIWidget *w = it->second->getWidget(widgetname, widgetID);
+                            if(w != NULL)
+                            {
+                                bindWidgetToTimeline(w);
+                            }
+                        }
+                        XML->popTag();
+                    }
+                    XML->popTag();
+                }
+            }
+            XML->popTag();
+        }
+        XML->popTag();
     }
 }
 
@@ -1567,7 +1866,7 @@ void CloudsVisualSystemRezanator::loadGUIS()
     }
     cam.reset(); 
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
-    timeline->reset();    
+    resetTimeline();
     loadTimelineUIMappings(getVisualSystemDataPath()+"Working/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Working/Timeline/"); 
 }
@@ -1594,7 +1893,7 @@ void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
     cam.reset();
     ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");    
     
-    timeline->reset();
+    resetTimeline(); 
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
@@ -1931,6 +2230,11 @@ void CloudsVisualSystemRezanator::guiRenderEvent(ofxUIEventArgs &e)
     
 }
 
+void CloudsVisualSystemRezanator::selfSetupTimeline()
+{
+    
+}
+
 void CloudsVisualSystemRezanator::selfSetupTimelineGui()
 {
     
@@ -1939,262 +2243,4 @@ void CloudsVisualSystemRezanator::selfSetupTimelineGui()
 void CloudsVisualSystemRezanator::selfTimelineGuiEvent(ofxUIEventArgs &e)
 {
     
-}
-
-void CloudsVisualSystemRezanator::saveTimelineUIMappings(string path)
-{
-    if(ofFile::doesFileExist(path))
-    {
-        cout << "DELETING OLD MAPPING FILE" << endl;
-        ofFile::removeFile(path);
-    }
-    cout << "TIMELINE UI MAPPER SAVING" << endl;    
-    ofxXmlSettings *XML = new ofxXmlSettings(path);
-    XML->clear();
-    
-    int mapIndex = XML->addTag("Map");
-    XML->pushTag("Map", mapIndex);
-
-    int bangsIndex = XML->addTag("Bangs");
-    if(XML->pushTag("Bangs", bangsIndex))
-    {
-        for(map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.begin(); it != tlButtonMap.end(); ++it)
-        {
-            int index = XML->addTag("Mapping");
-            if(XML->pushTag("Mapping", index))
-            {
-                int wIndex = XML->addTag("Widget");
-                if(XML->pushTag("Widget", wIndex))
-                {
-                    XML->setValue("WidgetName", it->second->getName(), 0);
-                    XML->setValue("WidgetID", it->second->getID(), 0);
-                    XML->setValue("WidgetCanvasParent", it->second->getCanvasParent()->getName(), 0);
-                    XML->popTag();
-                }                
-                int tlIndex = XML->addTag("Track");
-                if(XML->pushTag("Track", tlIndex))
-                {
-                    XML->popTag();
-                }
-                XML->popTag();
-            }        
-        }        
-        XML->popTag();
-    }    
-    
-    int switchesIndex = XML->addTag("Switches");
-    if(XML->pushTag("Switches", switchesIndex))
-    {
-        for(map<ofxUIToggle*, ofxTLSwitches*>::iterator it = tlToggleMap.begin(); it != tlToggleMap.end(); ++it)
-        {
-            int index = XML->addTag("Mapping");
-            if(XML->pushTag("Mapping", index))
-            {
-                int wIndex = XML->addTag("Widget");
-                if(XML->pushTag("Widget", wIndex))
-                {
-                    XML->setValue("WidgetName", it->first->getName(), 0);
-                    XML->setValue("WidgetID", it->first->getID(), 0);
-                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
-                    XML->popTag();
-                }
-                int tlIndex = XML->addTag("Track");
-                if(XML->pushTag("Track", tlIndex))
-                {
-                    XML->popTag();
-                }
-                XML->popTag();
-            }
-        }
-        XML->popTag();
-    }
-    
-    int sliderCurvesIndex = XML->addTag("SliderCurves");
-    if(XML->pushTag("SliderCurves", sliderCurvesIndex))
-    {        
-        for(map<ofxUISlider*, ofxTLCurves*>::iterator it = tlSliderMap.begin(); it != tlSliderMap.end(); ++it)
-        {
-            int index = XML->addTag("Mapping");
-            if(XML->pushTag("Mapping", index))
-            {
-                int wIndex = XML->addTag("Widget");
-                if(XML->pushTag("Widget", wIndex))
-                {
-                    XML->setValue("WidgetName", it->first->getName(), 0);
-                    XML->setValue("WidgetID", it->first->getID(), 0);
-                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
-                    XML->popTag();
-                }
-                int tlIndex = XML->addTag("Track");
-                if(XML->pushTag("Track", tlIndex))
-                {
-                    XML->popTag();
-                }
-                XML->popTag();
-            }
-        }
-        XML->popTag();
-    }
-
-    int numberDialerCurvesIndex = XML->addTag("NumberDialerCurves");
-    if(XML->pushTag("NumberDialerCurves", numberDialerCurvesIndex))
-    {
-        for(map<ofxUINumberDialer*, ofxTLCurves*>::iterator it = tlDialerMap.begin(); it != tlDialerMap.end(); ++it)
-        {
-            int index = XML->addTag("Mapping");
-            if(XML->pushTag("Mapping", index))
-            {
-                int wIndex = XML->addTag("Widget");
-                if(XML->pushTag("Widget", wIndex))
-                {
-                    XML->setValue("WidgetName", it->first->getName(), 0);
-                    XML->setValue("WidgetID", it->first->getID(), 0);
-                    XML->setValue("WidgetCanvasParent", it->first->getCanvasParent()->getName(), 0);
-                    XML->popTag();
-                }
-                int tlIndex = XML->addTag("Track");
-                if(XML->pushTag("Track", tlIndex))
-                {
-                    XML->popTag();
-                }
-                XML->popTag();
-            }
-        }
-        XML->popTag();
-    }
-    
-    XML->popTag();
-    XML->saveFile(path);
-    delete XML;
-}
-
-void CloudsVisualSystemRezanator::loadTimelineUIMappings(string path)
-{
-    tlButtonMap.clear();
-    tlToggleMap.clear();
-    tlSliderMap.clear();
-    tlDialerMap.clear();
-
-    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
-    ofxXmlSettings *XML = new ofxXmlSettings();
-    XML->loadFile(path);
-    if(XML->pushTag("Map", 0))
-    {
-        if(XML->pushTag("Bangs", 0))
-        {
-            int widgetTags = XML->getNumTags("Mapping");
-            for(int i = 0; i < widgetTags; i++)
-            {
-                if(XML->pushTag("Mapping", i))
-                {
-                    if(XML->pushTag("Widget", 0))
-                    {
-                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
-                        int widgetID = XML->getValue("WidgetID", -1, 0);
-                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
-                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
-                        if(it != guimap.end())
-                        {
-                            ofxUIButton *b = (ofxUIButton *) it->second->getWidget(widgetname, widgetID);
-                            if(b != NULL)
-                            {
-                                tlButtonMap[timeline->addBangs(b->getName())] = b;
-                            }
-                        }
-                        XML->popTag();
-                    }
-                    XML->popTag();
-                }
-            }
-            XML->popTag();
-        }
-        
-        if(XML->pushTag("Switches", 0))
-        {
-            int widgetTags = XML->getNumTags("Mapping");            
-            for(int i = 0; i < widgetTags; i++)
-            {
-                if(XML->pushTag("Mapping", i))
-                {
-                    if(XML->pushTag("Widget", 0))
-                    {
-                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
-                        int widgetID = XML->getValue("WidgetID", -1, 0);
-                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
-                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
-                        if(it != guimap.end())
-                        {
-                            ofxUIToggle *t = (ofxUIToggle *) it->second->getWidget(widgetname, widgetID);
-                            if(t != NULL)
-                            {
-                                tlToggleMap[t] = timeline->addSwitches(t->getName());
-                            }
-                        }
-                        XML->popTag();
-                    }
-                    XML->popTag();
-                }
-            }
-            XML->popTag();
-        }        
-        
-        if(XML->pushTag("SliderCurves", 0))
-        {
-            int widgetTags = XML->getNumTags("Mapping");            
-            for(int i = 0; i < widgetTags; i++)
-            {
-                if(XML->pushTag("Mapping", i))
-                {
-                    if(XML->pushTag("Widget", 0))
-                    {
-                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
-                        int widgetID = XML->getValue("WidgetID", -1, 0);
-                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
-                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
-                        if(it != guimap.end())
-                        {
-                            ofxUISlider *s = (ofxUISlider *) it->second->getWidget(widgetname, widgetID);
-                            if(s != NULL)
-                            {
-                                tlSliderMap[s] = timeline->addCurves(s->getName(), ofRange(s->getMin(), s->getMax()), s->getValue());
-                            }
-                        }
-                        XML->popTag();
-                    }
-                    XML->popTag();
-                }
-            }
-            XML->popTag();
-        }
-        
-        if(XML->pushTag("NumberDialerCurves", 0))
-        {
-            int widgetTags = XML->getNumTags("Mapping");            
-            for(int i = 0; i < widgetTags; i++)
-            {
-                if(XML->pushTag("Mapping", i))
-                {
-                    if(XML->pushTag("Widget", 0))
-                    {
-                        string widgetname = XML->getValue("WidgetName", "NULL", 0);
-                        int widgetID = XML->getValue("WidgetID", -1, 0);
-                        string widgetCanvasParent = XML->getValue("WidgetCanvasParent", "NULL", 0);
-                        map<string, ofxUICanvas *>::iterator it = guimap.find(widgetCanvasParent);
-                        if(it != guimap.end())
-                        {
-                            ofxUINumberDialer *nd = (ofxUINumberDialer *) it->second->getWidget(widgetname, widgetID);                                            
-                            if(nd != NULL)
-                            {
-                                tlDialerMap[nd] = timeline->addCurves(nd->getName(), ofRange(nd->getMin(), nd->getMax()), nd->getValue());
-                            }
-                        }
-                        XML->popTag();
-                    }
-                    XML->popTag();
-                }
-            }
-            XML->popTag();
-        }        
-        XML->popTag();
-    }
 }

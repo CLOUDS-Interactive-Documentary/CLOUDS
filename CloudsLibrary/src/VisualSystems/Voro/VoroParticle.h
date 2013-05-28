@@ -11,7 +11,6 @@ public:
     void    init( ofPoint _pos, ofPoint _vel);
     
     void    addForce( ofPoint &_force );
-    
     void    addRepulsionForce(ofPoint p, float radius, float scale);
     void    addAttractionForce(ofPoint p, float radius, float scale);
     void    addRepulsionForce(VoroParticle *p, float scale);
@@ -24,14 +23,14 @@ public:
     void    bounceOffWalls();
     
     void    update();
+    
     void    draw();
-	
-    ofFloatColor color;
+    void    draw(ofImage &img);
+    void    drawSphere();
     
     ofPoint vel;
     ofPoint acc;
-    
-    float   trailLength;
+
     float   damping;
     float   size;
 };
