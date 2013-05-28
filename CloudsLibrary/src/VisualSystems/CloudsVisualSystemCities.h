@@ -55,6 +55,8 @@ protected:
     
     ofShader grayscottShader;
     ofFbo    grayscottFbo[2];
+    float    diffU,diffV,k,f;
+    float    grayscottLoops;
     int      nPingPong;
     bool     bCleanGrayscott;
     bool     bGrayscott;
@@ -80,5 +82,6 @@ protected:
     //
     float   size, nGrains, grainResolution;
     float   minSize,maxHeight,minAlpha,minDist;
+    bool    bDrawPoints;
     
 };
