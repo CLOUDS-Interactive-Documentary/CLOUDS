@@ -3,7 +3,7 @@
     <Name>DistortSettings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>1177.000000000</XPosition>
-    <YPosition>-12.000000000</YPosition>
+    <YPosition>29.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DISTORT POWER</Name>
-    <Value>1.000000000</Value>
+    <Value>0.743842363</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DISTORT RADIUS</Name>
-    <Value>53.566501617</Value>
+    <Value>45.639999390</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>DISTORT EXP</Name>
-    <Value>1.886699438</Value>
+    <Value>2.949999809</Value>
 </Widget>
 <Widget>
     <Kind>11</Kind>
