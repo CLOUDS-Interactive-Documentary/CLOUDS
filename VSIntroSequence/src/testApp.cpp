@@ -6,7 +6,6 @@ void testApp::setup(){
 	
 	ofxTimeline::removeCocoaMenusFromGlut("CLOUDS");
 	ofSetVerticalSync(true);
-
 	ofToggleFullscreen();
 	
 	intro.setup();

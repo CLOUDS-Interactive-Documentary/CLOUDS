@@ -29,13 +29,13 @@ void CloudsIntroSequence::selfSetup(){
 
 	setCurrentCamera(camera);
 	
-	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_supertight.obj", tunnelMesh);
-
-	cloudsType.loadFont(getDataPath() + "/font/materiapro_light.ttf", 20);
-	int fontsize = 120;
-    int depth = 50;
-
-	cloudsTypeMesh.init("materiapro_light.ttf", fontsize, depth, "CLOUDS");
+	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_tight.obj", tunnelMesh);
+//	cloudsType.loadFont(getDataPath() + "/font/materiapro_light.ttf", 20);
+	
+//	int fontsize = 20;
+//    int depth = 50;
+	currentFontExtrusion = -1;
+	currentFontSize = -1;
 	
 	reloadShaders();
 }
@@ -60,12 +60,23 @@ void CloudsIntroSequence::selfUpdate(){
 	}
 	
 	camera.applyRotation = camera.applyTranslation = !cursorIsOverGUI();
+	
+	if(currentFontSize != fontSize ||
+	   currentFontExtrusion != fontExtrusion)
+	{
+		currentFontSize = fontSize;
+		currentFontExtrusion = fontExtrusion;
+		cloudsTypeMesh.init(getDataPath() + "/font/materiapro_light.ttf", currentFontSize, currentFontExtrusion, "CLOUDS");
+	}
+
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
 	fullscreenFbo.begin();
 	
 	camera.begin();
+	
+	glEnable(GL_DEPTH_TEST);
 	
 	ofClear(0);
 	
@@ -75,15 +86,13 @@ void CloudsIntroSequence::selfDrawBackground(){
 	ofPushMatrix();
 	
 	ofRotate(180, 0, 0, 1);
-	ofRotate(180, 0, 1, 0);
 	
-	ofTranslate(-cloudsType.stringWidth("CLOUDS")/2.0,
-				cloudsType.stringHeight("CLOUDS")/2.0);
+	ofTranslate(-cloudsTypeMesh.getWidth()/2.0*fontScale, cloudsTypeMesh.getHeight()/2.0*fontScale);
+	ofScale(fontScale, fontScale, fontScale);
 	
-	//cloudsType.drawString("CLOUDS",0,0);
-
+	ofSetColor(255);
 	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
-		cloudsTypeMesh.letters[i].front.drawWireframe();
+		cloudsTypeMesh.letters[i].front.drawFaces();
 	}
 	
 	ofPopMatrix();
@@ -163,12 +172,20 @@ void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfSetupSystemGui(){
 	sysGui->addButton("RELOAD SHADER", false);
+	sysGui->addButton("RESET GAME CAMERA", false);
 }
 
 void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "RELOAD SHADER" && ((ofxUIButton*)e.widget)->getValue()){
 		cout << "Loaded shader" << endl;
 		reloadShaders();
+	}
+	else if(e.widget->getName() == "RESET GAME CAMERA" && ((ofxUIButton*)e.widget)->getValue()){
+		camera.setPosition(0, 0, 0);
+		camera.setOrientation(ofQuaternion());
+		camera.rotate(180, ofVec3f(0,1,0));
+		camera.setAnglesFromOrientation();
+
 	}
 }
 
@@ -185,6 +202,9 @@ void CloudsIntroSequence::selfSetupRenderGui(){
 	gui->addSlider("Perlin Density", 0, 10, &perlinDensity);
 	gui->addSlider("Perlin Speed", 0, 1, &perlinSpeed);
 	
+	gui->addSlider("Font Size", 1, 10, &fontSize);
+	gui->addSlider("Font Extrusion", 0, 10, &fontExtrusion);
+	gui->addSlider("Font Scale", .1, 10, &fontScale);
 }
 
 void CloudsIntroSequence::guiRenderEvent(ofxUIEventArgs &e){

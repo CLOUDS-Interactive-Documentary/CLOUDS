@@ -30,6 +30,7 @@ git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 
 
 ${PREFIX}rezaali/ofxGenerative
+${PREFIX}obviousjim/ofxExtrudedText
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange

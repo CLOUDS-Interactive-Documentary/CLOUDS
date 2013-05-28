@@ -50,6 +50,12 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofFbo fullscreenFbo;
 	
+	float fontSize;
+	float fontExtrusion;
+	float fontScale;
+	
+	float currentFontSize;
+	float currentFontExtrusion;
 	
 	void reloadShaders();
 	
@@ -63,7 +69,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
-
+	
 	void drawCloudsType();
 
 	float maxChromaDistort;
