@@ -216,14 +216,15 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
         case 'h':
         {
             toggleGUIS();
-            if(bShowTimeline)
-            {
-                timeline->hide();
-            }
-            else{
-                timeline->show();
-            }
-            bShowTimeline = !bShowTimeline;            
+			timeline->toggleShow();
+//            if(bShowTimeline)
+//            {
+//                timeline->hide();
+//            }
+//            else{
+//                timeline->show();
+//            }
+//            bShowTimeline = !bShowTimeline;            
         }
             break;
             

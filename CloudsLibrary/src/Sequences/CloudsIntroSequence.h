@@ -50,11 +50,20 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofFbo fullscreenFbo;
 	
+	float fontSize;
+	float fontExtrusion;
+	float fontScale;
 	
+	float currentFontSize;
+	float currentFontExtrusion;
+	
+	float perlinOffset;
+	float wireframeAlpha;
 	void reloadShaders();
 	
-	ofMesh tunnelMesh;
 	ofMesh blocksMesh;
+	ofMesh tunnelMeshTight;
+	ofMesh tunnelMeshLoose;
 	
 	ofxGameCamera camera;
 	
@@ -63,7 +72,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
-
+	
 	void drawCloudsType();
 
 	float maxChromaDistort;
@@ -72,5 +81,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	float perlinSpeed;
 	
 	ofxExtrudedText cloudsTypeMesh;
-	ofTrueTypeFont cloudsType;
+	ofMesh thickTypeMesh;
+	ofMesh thinTypeMesh;
+
 };
