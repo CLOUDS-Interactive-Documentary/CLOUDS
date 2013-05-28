@@ -41,3 +41,6 @@ pcl/
 CloudsMovieDirectory.txt
 snapshots/
 _gameCameraPosition.xml
+timeline*_Page_One_trackPositions.xml
+timeline*.xml
+*trackPositions.xml

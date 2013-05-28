@@ -31,6 +31,11 @@ void CloudsIntroSequence::selfSetup(){
 	
 	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_supertight.obj", tunnelMesh);
 
+	cloudsType.loadFont(getDataPath() + "/font/materiapro_light.ttf", 20);
+	int fontsize = 120;
+    int depth = 50;
+
+	cloudsTypeMesh.init("materiapro_light.ttf", fontsize, depth, "CLOUDS");
 	
 	reloadShaders();
 }
@@ -67,6 +72,21 @@ void CloudsIntroSequence::selfDrawBackground(){
 	ofEnableSmoothing();
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 	glEnable(GL_POINT_SMOOTH);
+	ofPushMatrix();
+	
+	ofRotate(180, 0, 0, 1);
+	ofRotate(180, 0, 1, 0);
+	
+	ofTranslate(-cloudsType.stringWidth("CLOUDS")/2.0,
+				cloudsType.stringHeight("CLOUDS")/2.0);
+	
+	//cloudsType.drawString("CLOUDS",0,0);
+
+	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
+		cloudsTypeMesh.letters[i].front.drawWireframe();
+	}
+	
+	ofPopMatrix();
 	
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
@@ -94,12 +114,15 @@ void CloudsIntroSequence::selfDrawBackground(){
 
 }
 
+void CloudsIntroSequence::drawCloudsType(){
+	
+}
+
 void CloudsIntroSequence::selfDrawDebug(){
 
 }
 
 void CloudsIntroSequence::selfDraw(){
-	
 	
 }
 

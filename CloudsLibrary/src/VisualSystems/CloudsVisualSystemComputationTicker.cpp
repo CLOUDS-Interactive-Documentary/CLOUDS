@@ -40,8 +40,6 @@ void CloudsVisualSystemComputationTicker::selfSetup(){
 	regenerate = true;
 	
 	//choose a random preset
-	vector<string> presets = getPresets();
-	loadPresetGUIS(getVisualSystemDataPath() + presets[ ofRandom( presets.size() ) ]);
 }
 
 
@@ -189,6 +187,11 @@ void CloudsVisualSystemComputationTicker::selfBegin(){
 	targetOffset.end();
 	
 	
+	vector<string> presets = getPresets();
+	if(presets.size() > 0){
+		loadPresetGUIS(getVisualSystemDataPath() + presets[ ofRandom( presets.size() ) ]);
+	}
+
 }
 
 void CloudsVisualSystemComputationTicker::selfEnd(){
