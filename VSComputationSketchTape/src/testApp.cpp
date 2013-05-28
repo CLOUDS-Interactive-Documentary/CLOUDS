@@ -9,6 +9,7 @@ void testApp::setup(){
 	
 	computation.playSystem();
 	
+	ofToggleFullscreen();
 }
 
 
