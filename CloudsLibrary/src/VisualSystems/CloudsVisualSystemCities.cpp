@@ -285,8 +285,12 @@ void CloudsVisualSystemCities::selfDraw()
                 
                 float value = heightPixels.getColor(x*jump,y*jump).b;
                 
+                points.addVertex(ofPoint(x*grainResolution-grainResolution*0.5,
+                                         y*grainResolution-grainResolution*0.5,maxHeight*value*grainResolution) );
                 points.addVertex(ofPoint(x*grainResolution,y*grainResolution,maxHeight*value*grainResolution) );
-                                 
+                points.addVertex(ofPoint(x*grainResolution,y*grainResolution,maxHeight*value*grainResolution) );
+                points.addVertex(ofPoint(x*grainResolution,y*grainResolution,maxHeight*value*grainResolution) );
+                
                 ofPushMatrix();
                 ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
             }
