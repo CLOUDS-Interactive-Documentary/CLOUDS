@@ -7,10 +7,8 @@ VoroParticle::VoroParticle(){
     vel.set(ofRandom(-10,10), ofRandom(-10,10));
     acc.set(0,0,0);
     
-    trailLength = ofRandom(50,100);
 	damping = 0.07f;
-    
-    color.set(1.0);
+    size = 1.0;
 }
 
 void VoroParticle::init( ofPoint _pos, ofPoint _vel){
@@ -31,68 +29,18 @@ void VoroParticle::update(){
     *this += vel;
     
     acc *= 0;
-    
-    //    if (vel.length() > 0.1){
-    //        trail.push_back(*this);
-    //    }
-    //
-    //    if( trail.size() > 50){
-    //        trail.erase(trail.begin());
-    //    }
-    
 }
 
 //------------------------------------------------------------
 void VoroParticle::draw(){
-    
-    /*
-     ofMesh mesh;
-     mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-     for (int i = 0; i < trail.size(); i++){
-     
-     int i_m_1 = MAX(i-1,0);
-     int i_p_1 = MIN(i+1, trail.size()-1);
-     
-     ofPoint pta = trail[i_m_1];
-     ofPoint ptb = trail[i];
-     ofPoint ptc = trail[i_p_1];
-     
-     ofPoint diff = ptc - pta;
-     float angle = atan2(diff.y, diff.x);
-     angle += PI/2;
-     
-     float width = size*0.8 + diff.length()*0.2;
-     
-     ofPoint offsetA;
-     offsetA.x = ptb.x + width * cos(angle);
-     offsetA.y = ptb.y + width * sin(angle);
-     offsetA.z = 0.0;
-     
-     ofPoint offsetB;
-     offsetB.x = ptb.x - width * cos(angle);
-     offsetB.y = ptb.y - width * sin(angle);
-     offsetB.z = 0.0;
-     
-     //  Map the position on the array with the alpha to geting alfa gradient
-     //
-     float alpha = ofMap(i+1, 1,trail.size(), 0.0, 1.0);
-     
-     mesh.addColor(ofFloatColor( color, alpha) );
-     mesh.addVertex(offsetA);
-     mesh.addColor(ofFloatColor( color, alpha) );
-     mesh.addVertex(offsetB);
-     }
-     
-     // draw the mesh
-     //
-     ofSetColor( 255 );
-     ofFill();
-     mesh.draw();
-     */
-    
-    
-    //    ofSetColor(color);
     ofCircle(*this, size);
+}
+
+void VoroParticle::drawSphere(){
+    ofPushMatrix();
+    ofTranslate(*this);
+    ofDrawSphere(size);
+    ofPopMatrix();
 }
 
 void VoroParticle::infinitWalls(){
@@ -208,9 +156,10 @@ void VoroParticle::addRepulsionForce(VoroParticle *p, float scale){
 	
 	// ----------- (2) calculate the difference & length
 	
-	ofVec2f diff	= (*this) - posOfForce;
+	ofPoint diff	= (*this) - posOfForce;
 	float length	= diff.length();
     float radius    = size*2.f + p->size*2.f;
+    radius*=2.0;
 	
 	// ----------- (3) check close enough
 	

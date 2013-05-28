@@ -9,6 +9,7 @@
 
 #include "CloudsVisualSystemRezanator.h"
 #include "VoroParticle.h"
+#include "Voro.h"
 
 class CloudsVisualSystemVoro : public CloudsVisualSystemRezanator {
 public:
@@ -49,8 +50,28 @@ public:
     
 protected:
     vector <VoroParticle *> seedParticles;
+    vector<ofMesh>  cellMeshes;
     
-    float   bornRate;
-    float   MaxNumOfParticles;
+    ofTexture dot;
+    ofVec3f objectLookAt;
+    
+    float   atractionPct,repulsionPct;
+    float   bornRate, growRate;
+    float   MaxNumOfParticles, MaxSize;
+    float   initialForce;
+    float   zMove;
     int     fps;
+    bool    bClear;
+    bool    bDrawParticles;
+    bool    bDrawGlow;
+    
+    float   containerSize;
+    float   containerHeight;
+    float   cellsAlpha;
+    bool    containerPeriodic;
+    bool    bSphere;
+    bool    bCyllinder;
+    bool    bDrawVoronoi;
+    bool    bDrawVoronoiWireFrames;
+    
 };
