@@ -140,12 +140,13 @@ public:
 
     virtual void selfSetupSystemGui();
     virtual void guiSystemEvent(ofxUIEventArgs &e);
-    
+
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
     
     virtual void selfSetupTimelineGui();
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);    
+
 
 protected:
 

@@ -22,6 +22,8 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 void CloudsIntroSequence::selfSetup(){
+
+	perlinOffset = 0;
 	
 	camera.setup();
 	camera.autosavePosition = true;
@@ -29,11 +31,16 @@ void CloudsIntroSequence::selfSetup(){
 
 	setCurrentCamera(camera);
 	
-	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_tight.obj", tunnelMesh);
-//	cloudsType.loadFont(getDataPath() + "/font/materiapro_light.ttf", 20);
+	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
+	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
 	
-//	int fontsize = 20;
-//    int depth = 50;
+//	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
+	
+	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
+//	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
+	thinTypeMesh.load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.ply");
+	thinTypeMesh.clearColors();
+	
 	currentFontExtrusion = -1;
 	currentFontSize = -1;
 	
@@ -48,6 +55,7 @@ void CloudsIntroSequence::reloadShaders(){
 void CloudsIntroSequence::selfSetupGuis(){
 	
 	camGui->addSlider("Camera Speed", 0, 5, &camera.speed);
+	sysGui->addButton("RESET GAME CAMERA", false);
 }
 
 void CloudsIntroSequence::selfUpdate(){
@@ -83,19 +91,27 @@ void CloudsIntroSequence::selfDrawBackground(){
 	ofEnableSmoothing();
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 	glEnable(GL_POINT_SMOOTH);
+	
 	ofPushMatrix();
 	
-	ofRotate(180, 0, 0, 1);
-	
-	ofTranslate(-cloudsTypeMesh.getWidth()/2.0*fontScale, cloudsTypeMesh.getHeight()/2.0*fontScale);
+	ofRotate(180, 0, 1, 0);
 	ofScale(fontScale, fontScale, fontScale);
+//	ofSetColor(255);
+//	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
+//		cloudsTypeMesh.letters[i].front.drawFaces();
+//	}
 	
-	ofSetColor(255);
-	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
-		cloudsTypeMesh.letters[i].front.drawFaces();
-	}
-	
+	thinTypeMesh.draw();
+
+	//DRAW MESH
+//	thickTypeMesh.drawWireframe();
+//	ofEnableAlphaBlending();
+//	ofSetColor(255, 100);
+//	thickTypeMesh.draw();
+
 	ofPopMatrix();
+	
+	ofPushStyle();
 	
 	tunnelShader.begin();
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
@@ -105,15 +121,24 @@ void CloudsIntroSequence::selfDrawBackground(){
 
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
 	tunnelShader.setUniform1f("noiseDensity", perlinDensity);
-	tunnelShader.setUniform1f("noisePosition", ofGetElapsedTimef());
+	perlinOffset += perlinSpeed;
+	tunnelShader.setUniform1f("noisePosition", perlinOffset);
 	
-	tunnelMesh.drawVertices();
+//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	
+	ofSetColor(255);
+	tunnelMeshTight.drawVertices();
+	
+	ofSetColor(255*wireframeAlpha);
+	tunnelMeshLoose.drawWireframe();
 	
 	tunnelShader.end();
+	ofPopStyle();
 	
 	fullscreenFbo.end();
 	
 	camera.end();
+	
 	
 	chroma.begin();
 	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
@@ -172,7 +197,7 @@ void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfSetupSystemGui(){
 	sysGui->addButton("RELOAD SHADER", false);
-	sysGui->addButton("RESET GAME CAMERA", false);
+
 }
 
 void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
@@ -191,20 +216,22 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 
 void CloudsIntroSequence::selfSetupRenderGui(){
 	
-	gui->addSlider("Min Point Size", 0, 7, &pointSize.min);
-	gui->addSlider("Max Point Size", 0, 7, &pointSize.max);
-	gui->addSlider("Min Distance", 0, 5000, &distanceRange.min);
-	gui->addSlider("Max Distance", 0, 10000, &distanceRange.max);
+	rdrGui->addSlider("Min Point Size", 0, 7, &pointSize.min);
+	rdrGui->addSlider("Max Point Size", 0, 7, &pointSize.max);
+	rdrGui->addSlider("Min Distance", 0, 5000, &distanceRange.min);
+	rdrGui->addSlider("Max Distance", 0, 10000, &distanceRange.max);
 
-	gui->addSlider("Chroma Max Distort", 0, 10, &maxChromaDistort);
+	rdrGui->addSlider("Chroma Max Distort", 0, 10, &maxChromaDistort);
 	
-	gui->addSlider("Perlin Amplitude", 0, 100, &perlinAmplitude);
-	gui->addSlider("Perlin Density", 0, 10, &perlinDensity);
-	gui->addSlider("Perlin Speed", 0, 1, &perlinSpeed);
+	rdrGui->addSlider("Perlin Amplitude", 0, 10, &perlinAmplitude);
+	rdrGui->addSlider("Perlin Density", 0, 50, &perlinDensity);
+	rdrGui->addSlider("Perlin Speed", 0, .3, &perlinSpeed);
 	
-	gui->addSlider("Font Size", 1, 10, &fontSize);
-	gui->addSlider("Font Extrusion", 0, 10, &fontExtrusion);
-	gui->addSlider("Font Scale", .1, 10, &fontScale);
+//	rdrGui->addSlider("Font Size", 1, 10, &fontSize);
+//	rdrGui->addSlider("Font Extrusion", 0, 10, &fontExtrusion);
+	rdrGui->addSlider("Font Scale", .1, 10, &fontScale);
+	
+	rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &wireframeAlpha);
 }
 
 void CloudsIntroSequence::guiRenderEvent(ofxUIEventArgs &e){

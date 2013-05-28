@@ -57,10 +57,13 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	float currentFontSize;
 	float currentFontExtrusion;
 	
+	float perlinOffset;
+	float wireframeAlpha;
 	void reloadShaders();
 	
-	ofMesh tunnelMesh;
 	ofMesh blocksMesh;
+	ofMesh tunnelMeshTight;
+	ofMesh tunnelMeshLoose;
 	
 	ofxGameCamera camera;
 	
@@ -78,5 +81,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	float perlinSpeed;
 	
 	ofxExtrudedText cloudsTypeMesh;
-	ofTrueTypeFont cloudsType;
+	ofMesh thickTypeMesh;
+	ofMesh thinTypeMesh;
+
 };

@@ -130,13 +130,14 @@ float snoise(vec4 v)
 	
 }
 
+const float epsilon = 1e-6;
 void main(void)
 {
 	// passes the  texture coordinates along to the fragment shader
 	//gl_TexCoord[0] = gl_MultiTexCoord0;
 	
-	vec3 noiseDistort = vec3(snoise(vec4(gl_Vertex.xyz / noiseDensity, noisePosition)),
-							 snoise(vec4(gl_Vertex.yzx / noiseDensity, noisePosition)),
+	vec3 noiseDistort = vec3(snoise(vec4(gl_Vertex.xyz / max(noiseDensity,epsilon), noisePosition)),
+							 snoise(vec4(gl_Vertex.yzx / max(noiseDensity,epsilon), noisePosition)),
 							 0);
 							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
 	
