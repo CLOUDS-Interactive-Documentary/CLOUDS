@@ -42,7 +42,7 @@ void CloudsVisualSystemAmber::selfSetup()
     glow->loadImage(getDataPath()+"images/glow.png");
     particleAlpha = 200;
     
-    electro = new ofxElectroStaticBehavior();
+//    electro = new ofxElectroStaticBehavior();
     sphere = new ofxSphericalAttractionBehavior();
     sphere1 = new ofxSphericalAttractionBehavior();
     homing = new ofxHomingBehavior();
@@ -69,10 +69,10 @@ void CloudsVisualSystemAmber::selfSetup()
     ps->addBehavior(perlin);
     ps->addBehavior(damper);
     ps->addBehavior(distort);
-    ps->addBehavior(electro);
+//    ps->addBehavior(electro);
     ps->addBehavior(buffer);
     
-    electro->setParticlesPtr(ps->getParticlesPtr());
+//    electro->setParticlesPtr(ps->getParticlesPtr());
     
     debugGridSize = 19;
     float width = debugGridSize;
@@ -119,8 +119,8 @@ void CloudsVisualSystemAmber::selfSetupGuis()
     setupPerlinGui(perlinGui);
     setupDamperGui(damperGui);
     setupDistortGui(distortGui);
-    setupElectroGui(electroGui);
-    setupBufferGui(bufferGui);   
+//    setupElectroGui(electroGui);
+    setupBufferGui(bufferGui);
 }
 
 void CloudsVisualSystemAmber::selfUpdate()
@@ -333,6 +333,7 @@ void CloudsVisualSystemAmber::setupSphereGui(ofxUISuperCanvas *g, ofxSphericalAt
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiSphereEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 
@@ -367,6 +368,7 @@ void CloudsVisualSystemAmber::setupHomingGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiHomingEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiHomingEvent(ofxUIEventArgs &e)
@@ -395,6 +397,7 @@ void CloudsVisualSystemAmber::setupPerlinGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiPerlinEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiPerlinEvent(ofxUIEventArgs &e)
@@ -424,6 +427,7 @@ void CloudsVisualSystemAmber::setupDamperGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiDamperEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiDamperEvent(ofxUIEventArgs &e)
@@ -455,6 +459,7 @@ void CloudsVisualSystemAmber::setupDistortGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiDistortEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiDistortEvent(ofxUIEventArgs &e)
@@ -483,6 +488,7 @@ void CloudsVisualSystemAmber::setupElectroGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiElectroEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiElectroEvent(ofxUIEventArgs &e)
@@ -514,6 +520,7 @@ void CloudsVisualSystemAmber::setupBufferGui(ofxUISuperCanvas *g)
     g->autoSizeToFitWidgets();
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystemAmber::guiBufferEvent);
     guis.push_back(g);
+    guimap[g->getName()] = g;
 }
 
 void CloudsVisualSystemAmber::guiBufferEvent(ofxUIEventArgs &e)
