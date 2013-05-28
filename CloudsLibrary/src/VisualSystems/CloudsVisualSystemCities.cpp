@@ -18,6 +18,12 @@ void CloudsVisualSystemCities::selfSetup()
     nGrains = 10;
     nPingPong = 0;
     
+    grayscottLoops = 10;
+    diffU=0.25;
+    diffV=0.04;
+    k=0.047;
+    f=0.2;
+    
     noiseShader.load("", getDataPath()+"shaders/noise.fs");
     grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
     maskShader.load("", getDataPath()+"shaders/cMask.fs");
@@ -202,37 +208,39 @@ void CloudsVisualSystemCities::selfUpdate()
     noiseFbo.end();
     
     if(bGrayscott){
-        nPingPong = (nPingPong+1)%2;
         
         if (bCleanGrayscott){
-            grayscottFbo[(nPingPong+1)%2].begin();
-            ofClear(0,0);
-            grayscottFbo[(nPingPong+1)%2].end();
-        }
-        
-        grayscottFbo[nPingPong%2].begin();
-        if (bCleanGrayscott){
-            ofClear(0,0);
+            for (int i = 0; i < 2; i++) {
+                grayscottFbo[i].begin();
+                ofClear(0);
+                grayscottFbo[i].end();
+            }
             bCleanGrayscott = false;
         }
         
-        grayscottShader.begin();
-        grayscottShader.setUniformTexture("backbuffer", grayscottFbo[(nPingPong+1)%2], 1);
-        grayscottShader.setUniformTexture("tex0", noiseFbo, 2);
-        grayscottShader.setUniform1f("diffU", 0.25);
-        grayscottShader.setUniform1f("diffV", 0.04);
-        grayscottShader.setUniform1f("k", 0.047);
-        grayscottShader.setUniform1f("f", 0.2);
-        grayscottShader.setUniform1f("time", ofGetElapsedTimef());
-        grayscottShader.setUniform1f("fade", grayscottFade);
-        glBegin(GL_QUADS);
-        glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
-        glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
-        glTexCoord2f(width, height); glVertex3f(width, height, 0);
-        glTexCoord2f(0,height);  glVertex3f(0,height, 0);
-        glEnd();
-        grayscottShader.end();
-        grayscottFbo[nPingPong%2].end();
+        for (int i = 0; i < grayscottLoops; i++) {
+            nPingPong = (nPingPong+1)%2;
+            
+            grayscottFbo[nPingPong%2].begin();
+            grayscottShader.begin();
+            grayscottShader.setUniformTexture("backbuffer", grayscottFbo[(nPingPong+1)%2], 1);
+            grayscottShader.setUniformTexture("tex0", noiseFbo, 2);
+            grayscottShader.setUniform1f("diffU", diffU);
+            grayscottShader.setUniform1f("diffV", diffV);
+            grayscottShader.setUniform1f("k", k);
+            grayscottShader.setUniform1f("f", f);
+            grayscottShader.setUniform1f("time", ofGetElapsedTimef());
+            grayscottShader.setUniform1f("fade", grayscottFade);
+            glBegin(GL_QUADS);
+            glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
+            glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
+            glTexCoord2f(width, height); glVertex3f(width, height, 0);
+            glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+            glEnd();
+            grayscottShader.end();
+            grayscottFbo[nPingPong%2].end();
+            
+        }
     }
     
     maskFbo.begin();
@@ -268,22 +276,42 @@ void CloudsVisualSystemCities::selfDraw()
     
     int jump = heightPixels.getWidth()/nGrains;
     
-    for(int x = 0; x < nGrains; x++){
-        for(int y = 0; y < nGrains; y++){
-
-            float value = heightPixels.getColor(x*jump,y*jump).b;
-            
-            ofPushMatrix();
-            ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
-            
-            if ( value > 0.0){
-                ofSetColor(255, MAX(minAlpha*255,55+value*200.0) );
-                ofScale((1.0*(1.0-minDist))-(value*minSize),
-                        (1.0*(1.0-minDist))-(value*minSize),
-                        maxHeight*value);
-                glCallList(cube);
+    if (bDrawPoints){
+        ofMesh points;
+        points.setMode(OF_PRIMITIVE_POINTS);
+        
+        for(int x = 0; x < nGrains; x++){
+            for(int y = 0; y < nGrains; y++){
+                
+                float value = heightPixels.getColor(x*jump,y*jump).b;
+                
+                points.addVertex(ofPoint(x*grainResolution,y*grainResolution,maxHeight*value*grainResolution) );
+                                 
+                ofPushMatrix();
+                ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
             }
-            ofPopMatrix();
+        }
+        
+        points.draw();
+    } else {
+        for(int x = 0; x < nGrains; x++){
+            for(int y = 0; y < nGrains; y++){
+                
+                float value = heightPixels.getColor(x*jump,y*jump).b;
+                
+                ofPushMatrix();
+                ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
+                
+                if ( value > 0.0){
+                    ofSetColor(255, MAX(minAlpha*255,55+value*200.0) );
+                    ofScale((1.0*(1.0-minDist))-(value*minSize),
+                            (1.0*(1.0-minDist))-(value*minSize),
+                            maxHeight*value);
+                    
+                    glCallList(cube);
+                }
+                ofPopMatrix();
+            }
         }
     }
     
@@ -291,8 +319,6 @@ void CloudsVisualSystemCities::selfDraw()
     
     ofPopMatrix();
     mat->end();
-    
-//    grayscottFbo[nPingPong%2].draw(0, 0);
 
 }
 
@@ -363,6 +389,7 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     sysGui->addSlider("Grid_size", 10, 200, &size);
     sysGui->addSlider("Blocks_number", 1, 100, &nGrains);
     sysGui->addSlider("Max_Height", 0, 100, &maxHeight);
+    sysGui->addToggle("Points", &bDrawPoints);
     
     sysGui->addSlider("Min_Dist", 0.0, 0.5, &minDist);
     sysGui->addSlider("Min_Size", 0.0, 1.0, &minSize);
@@ -374,6 +401,12 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     
     sysGui->addLabel("GrayScott");
     sysGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
+    sysGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
+    sysGui->addSlider("DiffV", 0.0, 1.0, &diffV);
+    sysGui->addSlider("DiffU", 0.0, 1.0, &diffU);
+    sysGui->addSlider("k", 0.0, 1.0, &k);
+    sysGui->addSlider("t", 0.0, 1.0, &f);
+    
     sysGui->addToggle("enable", &bGrayscott);
     sysGui->addButton("clean", &bCleanGrayscott);
     
