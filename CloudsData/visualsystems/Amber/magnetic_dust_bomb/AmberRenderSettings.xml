@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>238.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ADDITIVE BLENDING</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINTSIZE</Name>
+    <Value>1.133004904</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR PALETTE</Name>
+    <Value>70.344825745</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ALPHA</Name>
+    <Value>195.960586548</Value>
+</Widget>
