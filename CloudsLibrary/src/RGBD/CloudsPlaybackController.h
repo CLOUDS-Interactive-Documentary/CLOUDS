@@ -10,6 +10,8 @@
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
 
+#include "CloudsVisualSystemRGBD.h"
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
@@ -38,8 +40,6 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-
-	
   protected:
 
 	//A ROLL STUFF
@@ -51,6 +51,7 @@ class CloudsPlaybackController {
 	
 	//RGBD STUFF
 	CloudsRGBDCombinedRender combinedRenderer;
+	CloudsVisualSystemRGBD rgbdVisualSystem;
 	string combinedMoviesFolder;
 	
 	bool eventsRegistered;
@@ -83,13 +84,17 @@ class CloudsPlaybackController {
 
 	//GUI
 	//
-	ofxUICanvas* visualSystemControls;
+	ofxUISuperCanvas* visualSystemControls;
+	
+	//WIDGETS
 	ofxUIRadio *visualSystemRadio;
 	
 	ofxUICanvas* keyThemesPanel;
 	ofxUIRadio *keyThemesRadio;
 	ofxUIButton *playButton;
 	
+	
+		
 	float timeToTest;
 	bool triggerVisualSystem;
 	void guiEvent(ofxUIEventArgs &e);

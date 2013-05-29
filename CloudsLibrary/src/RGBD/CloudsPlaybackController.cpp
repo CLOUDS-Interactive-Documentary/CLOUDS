@@ -105,6 +105,7 @@ void CloudsPlaybackController::update(){
 	combinedRenderer.update();
 	
 	if(combinedRenderer.isDone()){
+		rgbdVisualSystem.speakerEnded();
 		storyEngine->selectNewClip();
 	}
 	
@@ -113,16 +114,21 @@ void CloudsPlaybackController::update(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(){
 	
-	if(!showingVisualSystem && combinedRenderer.isPlaying()){
-		camera.begin();
-		combinedRenderer.drawPointCloud();
-		camera.end();
-	}
+//	if(!showingVisualSystem && combinedRenderer.isPlaying()){
+//		camera.begin();
+//		combinedRenderer.drawPointCloud();
+//		camera.end();
+//	}
 }
 
 #pragma story engine
 //--------------------------------------------------------------------
 void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
+	
+	rgbdVisualSystem.setup();
+	rgbdVisualSystem.setRenderer(combinedRenderer);
+	rgbdVisualSystem.playSystem();
+	
 	playClip(args.chosenClip);
 }
 
@@ -137,6 +143,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	if(clip.hasCombinedVideo){
 		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 			combinedRenderer.getPlayer().play();
+			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
 			currentClip = clip;
 		}
 		else{
@@ -147,7 +154,6 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 		ofLogError() << "RGBD LOAD : clip " << clip.getLinkName() << " doesn't have combined video" << endl;
 	}
 }
-
 
 #pragma visual systems
 //--------------------------------------------------------------------
@@ -178,7 +184,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
 	float length = 320;
 		
-	visualSystemControls = new ofxUICanvas();
+	visualSystemControls = new ofxUISuperCanvas("VISUAL SYSTEMS");
 	visualSystemControls->addWidgetDown(new ofxUILabel("VISUAL SYSTEMS:", OFX_UI_FONT_MEDIUM));
 	visualSystemRadio = visualSystemControls->addRadio("VISUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
 	visualSystemControls->addSlider("Test Duration (S)", 2, 60*5, &timeToTest);
@@ -208,7 +214,6 @@ void CloudsPlaybackController::showVisualSystem(){
 		
 		if(visualSystems[i]->isReleventToKeyword(keyTheme)){
 			showVisualSystem(visualSystems[i], keyTheme);
-			
 			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << " and key theme " << keyTheme << endl;
 			return;
 		}

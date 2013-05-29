@@ -149,7 +149,7 @@ public:
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);    
 
 
-protected:
+  protected:
 
     //UI
     ofxUISuperCanvas *gui; 

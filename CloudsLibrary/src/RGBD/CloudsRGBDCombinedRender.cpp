@@ -32,7 +32,6 @@ CloudsRGBDCombinedRender::~CloudsRGBDCombinedRender(){
 //--------------------------------------------------------------- SET
 bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath){
 	ofxXmlSettings XML;
-    
 
 	if ( !XML.loadFile(calibrationXMLPath)){
 		ofLogError() << "CloudsRGBDCombinedRender::setup -- XML Path " << calibrationXMLPath << " failed to load";
@@ -235,9 +234,6 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 	ofPopMatrix();
 }
 
-ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
-	return player;
-}
 
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
@@ -289,11 +285,15 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 //    shader.setUniform2f("scale", scale.x, scale.y);
 }
 
+ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
+	return player;
+}
+
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-    if(simplify == ofVec2f(0,0)){
-		setSimplification(ofVec2f(1.0, 1.0));
-	}
+//    if(simplify == ofVec2f(0,0)){
+//		setSimplification(ofVec2f(1.0, 1.0));
+//	}
     
 	if(player.isLoaded()){
 		player.update();

@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-	computation.setup();
-	computation.playSystem();
+	amber.setup();
+	amber.playSystem();
 }
 
 //--------------------------------------------------------------

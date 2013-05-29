@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-
+#include "CloudsRGBDCombinedRender.h"
 
 /**
  * The CLOUDS Visual System super class
@@ -11,13 +11,15 @@
  * methods for interacting with play time duration, on screen start and stop, and accessing CLOUDS global state
  */
 
-//TODO: timing, fading, drawing helpers like 2d/3d camera
+//TODO: fading, info routing
 
 class CloudsVisualSystem {
   public:
 	   
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
+	
+	virtual string getSystemName() = 0;
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
@@ -54,7 +56,16 @@ class CloudsVisualSystem {
 	void playSystem();
 	void stopSystem();
 	
-	virtual string getSystemName() = 0;
+	void setRenderer(CloudsRGBDCombinedRender& newRenderer);
+	
+
+	void setupSpeaker(string speakerFirstName,
+					  string speakerLastName,
+					  string quoteName);
+	
+	void speakerEnded();
+	
+	
 	
 	//SET and CALLED FROM CONTROLLER
 	
@@ -71,7 +82,9 @@ class CloudsVisualSystem {
 	void setCurrentTopic(string keyword);
 	string getCurrentTopic();
 
+
 	vector<string>& getRelevantKeywords();
+	
   protected:
 
 	//called when showing the visual system, and to end it
@@ -80,8 +93,18 @@ class CloudsVisualSystem {
 
 	//the sub class must populate this in setup() if it's to be called
 	vector<string> relevantKeywords;
-	
+
 	//these variables are set by the playback controller when displaying
+	
+	//ways to interact with the pointcloud data
+	CloudsRGBDCombinedRender* sharedRenderer;
+	//set to true if the pointcloud renderer has valid speaker
+	bool hasSpeaker;
+	
+	//speaker and quote info, constantly updated
+	string speakerFirstName;
+	string speakerLastName;
+	string quoteName;
 	
 	//keyword is the topic of conversation
 	string currentTopic;

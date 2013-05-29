@@ -67,15 +67,12 @@ public:
     bool bFlipTexture;
     bool bMirror;
     
-protected:
-    
-
+  protected:
     void setupProjectionUniforms();
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
-    
-	
+    	
 	ofVideoPlayer player;
-//    ofBaseHasTexture *tex;
+
 	
 	ofShader shader;
     string shaderPath;
