@@ -51,11 +51,18 @@ class _C:public CloudsVisualSystemRezanator{
     ofxUISlider *axonThicknessSlider;
     ofxUISlider *alphaSlider;
     ofxUISlider *swaySlider;
+    ofxUISlider *nodeMaxSlider;
+    ofxUIButton *resetButton;
+    ofxUISlider *rootCountSlider;
 	float rotation;
 	vector<jtn::TreeNode*> rootNodes;
 	static float dotSize;
     static float axonThickness;
     static float alpha;
     static float sway;
+    static int nodeMax;
+    static int rootCount;
+    void selfGuiEvent(ofxUIEventArgs &e);
+    void reset();
 };
 
