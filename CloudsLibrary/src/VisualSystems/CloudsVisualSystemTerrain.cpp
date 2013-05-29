@@ -36,8 +36,8 @@ void CloudsVisualSystemTerrain::selfSetup()
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
     sysGui->addLabel("Noise");
-    sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
-    sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
+    sysGui->addSlider("noise_zoom", 0.0, 10.0, &noiseZoom);
+    sysGui->addSlider("noise_speed", 0.0, 2.0, &noiseSpeed);
     
     sysGui->addLabel("GrayScott");
     sysGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
@@ -49,17 +49,17 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     sysGui->addToggle("enable", &bGrayscott);
     sysGui->addButton("clean", &bCleanGrayscott);
     
-    sysGui->addLabel("Terrai");
+    sysGui->addLabel("Terrain");
     sysGui->addSlider("Terrain_Size", 10, 200, &size);
-    sysGui->addSlider("Terrain_Altitud", 0, 30, &terrainHeight);
+    sysGui->addSlider("Terrain_Altitud", 0, 2, &terrainHeight);
     sysGui->addSlider("Terrain_Resolution", 1, 10, &terrainResolution);
 }
 
 void CloudsVisualSystemTerrain::selfSetupRenderGui()
 {
-    rdrGui->addSlider("Point Size", 0, 7, &pointSize);
-    rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &pointsAlpha);
-    rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &wireframeAlpha);
+    rdrGui->addSlider("Points Alpha", 0, 1.0, &pointsAlpha);
+    rdrGui->addSlider("V Wireframe Alpha", 0, 1.0, &terrainVerticalAlpha);
+    rdrGui->addSlider("H Wireframe Alpha", 0, 1.0, &terrainHorizontalAlpha);
 }
 
 void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
@@ -120,35 +120,42 @@ void CloudsVisualSystemTerrain::makeMesh(ofTexture &_heightMap){
 	int width = size;
     int height = size;
     
-    if (terrainSimple){
-        vector<ofVec3f> vertices;
-        vector<ofIndexType> indices;
-        
-        for(int y = 0; y < height - skip; y += skip) {
-            for(int x = 0; x < width - skip; x += skip) {
-                
-            }
-        }
-    } else {
-        ofFloatPixels heightMap;
-        heightMap.allocate(_heightMap.getWidth(),
-                           _heightMap.getHeight(),
-                           OF_PIXELS_RGBA);
-        _heightMap.readToPixels(heightMap);
-        
-        terrainMesh.setMode(OF_PRIMITIVE_TRIANGLES);
-        for(int y = 0; y < height - skip; y += skip) {
-            for(int x = 0; x < width - skip; x += skip) {
-                ofVec3f nw = getVertexFromTexture(heightMap, x, y);
-                ofVec3f ne = getVertexFromTexture(heightMap, x + skip, y);
-                ofVec3f sw = getVertexFromTexture(heightMap, x, y + skip);
-                ofVec3f se = getVertexFromTexture(heightMap, x + skip, y + skip);
-                
-                addFace(terrainMesh, nw, ne, se, sw);
-            }
+
+    ofFloatPixels heightMap;
+    heightMap.allocate(_heightMap.getWidth(),
+                       _heightMap.getHeight(),
+                       OF_PIXELS_RGBA);
+    _heightMap.readToPixels(heightMap);
+    
+    terrainMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    for(int y = 0; y < height - skip; y += skip) {
+        for(int x = 0; x < width - skip; x += skip) {
+            ofVec3f nw = getVertexFromTexture(heightMap, x, y);
+            ofVec3f ne = getVertexFromTexture(heightMap, x + skip, y);
+            ofVec3f sw = getVertexFromTexture(heightMap, x, y + skip);
+            ofVec3f se = getVertexFromTexture(heightMap, x + skip, y + skip);
+            
+            addFace(terrainMesh, nw, ne, se, sw);
         }
     }
     
+    terrainVertical.clear();
+    terrainVertical.setMode(OF_PRIMITIVE_LINES);
+    for(int y = 0; y < height-skip; y += skip) {
+        for(int x = 0; x < width-skip; x += skip) {
+            terrainVertical.addVertex(ofPoint(x, y));
+            terrainVertical.addVertex(ofPoint(x+skip, y+skip));
+        }
+    }
+    
+    terrainHorizontal.clear();
+    terrainHorizontal.setMode(OF_PRIMITIVE_LINES);
+    for(int y = 0; y < height-skip; y += skip) {
+        for(int x = 0; x < width-skip; x += skip) {
+            terrainHorizontal.addVertex(ofPoint(x, y+skip));
+            terrainHorizontal.addVertex(ofPoint(x+skip, y));
+        }
+    }
 }
 
 void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
@@ -338,20 +345,22 @@ void CloudsVisualSystemTerrain::selfDraw()
     }
     terrainShader.setUniformTexture("normalTex", normalsFbo, 1);
     terrainShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
-    terrainShader.setUniform1f("terrainHeight", terrainHeight);
-    terrainShader.setUniform1f("pointSize", pointSize);
-
+    terrainShader.setUniform1f("terrainHeight", (0.15*size)*terrainHeight);
+    
     if ( pointsAlpha>0.0){
-        ofSetColor(255*pointsAlpha);
+        ofSetColor(255);
         terrainMesh.drawVertices();
 	}
     
-    if ( wireframeAlpha>0.0){
-        ofSetColor(255*wireframeAlpha);
-        terrainMesh.drawWireframe();
+    if ( terrainHorizontalAlpha>0.0){
+        ofSetColor(255*terrainHorizontalAlpha);
+        terrainHorizontal.drawWireframe();
     }
     
-//    terrainMesh.draw();
+    if ( terrainVerticalAlpha>0.0){
+        ofSetColor(255*terrainVerticalAlpha);
+        terrainVertical.drawWireframe();
+    }
     
     terrainShader.end();
     glDisable(GL_DEPTH_TEST);
