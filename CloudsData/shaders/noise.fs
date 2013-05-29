@@ -1,5 +1,4 @@
 uniform vec2 resolution;
-uniform vec2 mouse;
 uniform float time;
 uniform float zoom;
 
@@ -45,7 +44,7 @@ float pattern(  vec2 p, out vec2 q, out vec2 r ){
 void main() {
 	vec2 q;
 	vec2 r;
-	vec2 c = zoom*gl_FragCoord.xy/ resolution.xy;
+	vec2 c = zoom*((gl_FragCoord.xy-resolution.xy*vec2(0.5))/resolution.xy);
 	float f = pattern(c,q,r);
 	gl_FragColor =  vec4(vec3(f),1.0);
 }

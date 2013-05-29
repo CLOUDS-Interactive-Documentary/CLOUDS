@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>104.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Axiom</Name>
+    <Value>B&#x1B;</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Rule1</Name>
+    <Value>B=F[3+B][2-B]--F&#x1B;B</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Rule2</Name>
+    <Value>F=FF</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Angle</Name>
+    <Value>9.310344696</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>1.179802895</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Depth</Name>
+    <Value>3.778325081</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Speed</Name>
+    <Value>0.837438405</Value>
+</Widget>

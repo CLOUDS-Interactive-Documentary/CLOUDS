@@ -284,15 +284,22 @@ void CloudsVisualSystemCities::selfDraw()
             for(int y = 0; y < nGrains; y++){
                 
                 float value = heightPixels.getColor(x*jump,y*jump).b;
-                
-                points.addVertex(ofPoint(x*grainResolution,y*grainResolution,maxHeight*value*grainResolution) );
-                                 
-                ofPushMatrix();
-                ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
+                if ( value > 0.0){
+                    
+                    float size = grainResolution*(1.0*(1.0-minDist))-(value*minSize);
+                    points.addVertex(ofPoint(x*grainResolution-size*0.5,
+                                             y*grainResolution-size*0.5,maxHeight*value*grainResolution) );
+                    points.addVertex(ofPoint(x*grainResolution+size*0.5,
+                                             y*grainResolution-size*0.5,maxHeight*value*grainResolution) );
+                    points.addVertex(ofPoint(x*grainResolution+size*0.5,
+                                             y*grainResolution+size*0.5,maxHeight*value*grainResolution) );
+                    points.addVertex(ofPoint(x*grainResolution-size*0.5,
+                                             y*grainResolution+size*0.5,maxHeight*value*grainResolution) );
+                }
             }
         }
         
-        points.draw();
+        points.drawVertices();
     } else {
         for(int x = 0; x < nGrains; x++){
             for(int y = 0; y < nGrains; y++){
