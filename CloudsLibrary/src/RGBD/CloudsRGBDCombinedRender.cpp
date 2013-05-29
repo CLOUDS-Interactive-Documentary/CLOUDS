@@ -205,10 +205,6 @@ bool CloudsRGBDCombinedRender::bindRenderer(){
 	ofRotate(worldRotation.z,0,0,1);
     
 	shader.begin();
-//	glActiveTexture(GL_TEXTURE1);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-//	glActiveTexture(GL_TEXTURE0);
     
 	setupProjectionUniforms();
 	

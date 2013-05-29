@@ -45,23 +45,34 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
     void guiRenderEvent(ofxUIEventArgs &e);
 	
   protected:
-	
+		
+	ofMesh horizontalScanLines;
+	ofMesh verticalScanLines;
+	ofMesh pointGrid;
+	ofMesh randomPoints;
+
 	float pointcloudScale;
 	float pointcloudOffsetZ;
-	
+
 	ofVec2f scanlineSimplify;
+	
+	bool refreshPointcloud;
+	float pointSizeMin;
+	float pointSizeMax;
+	
+	float pointVerticalSpace;
+	float pointHorizontalSpace;
+	void generatePointGrid();
+	
+	float numRandomPoints;
+	void generateRandomPoints();
 	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;
 	float verticalScanlineThickness;
 	float horizontalScanlineAlpha;
 	float horizontalScanlineThickness;
-	
-	
 	void generateScanlines();
-	ofMesh horizontalScanLines;
-	ofMesh verticalScanLines;
 	
-	ofMesh randomPoints;
 	
 };

@@ -9,25 +9,59 @@ string CloudsVisualSystemRGBD::getSystemName(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 
-	for(int y = 0; y < 480; y++){
-		for(int x = 0; x < 640; x++){
-			randomPoints.addVertex(ofVec3f(x,y,0));
-		}
-	}
-
+	generatePointGrid();
 	generateScanlines();
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	if(refreshScanlineMesh){
 		generateScanlines();
 	}
+	if(refreshPointcloud){
+		generatePointGrid();
+	}
+	if(numRandomPoints != randomPoints.getNumVertices()){
+		generateRandomPoints();
+	}
 }
 
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::generatePointGrid(){
+	
+	pointGrid.clear();
+	
+	pointVerticalSpace = MAX(pointVerticalSpace, 1);
+	pointHorizontalSpace = MAX(pointHorizontalSpace, 1);
+	for(float y = 0; y < 480; y+= pointVerticalSpace){
+		for(float x = 0; x < 640; x+= pointHorizontalSpace){
+			pointGrid.addVertex(ofVec3f(x,y,0));
+		}
+	}
+	pointGrid.setMode(OF_PRIMITIVE_POINTS);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::generateRandomPoints(){
+	if(numRandomPoints == 0){
+		randomPoints.clear();
+	}
+	else if(numRandomPoints < randomPoints.getNumVertices() ){
+		randomPoints.getVertices().erase(randomPoints.getVertices().begin(), randomPoints.getVertices().begin() + (randomPoints.getNumVertices() - numRandomPoints) );
+	}
+	while(numRandomPoints > randomPoints.getNumVertices()){
+		randomPoints.addVertex( ofVec3f(ofRandom(640),ofRandom(480),0) );
+	}
+	
+	randomPoints.setMode(OF_PRIMITIVE_POINTS);
+}
+
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::generateScanlines(){
 
 	verticalScanLines.clear();
@@ -52,8 +86,8 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 		}
 	}
 
-	verticalScanLines.setMode(OF_PRIMITIVE_LINES);
-	horizontalScanLines.setMode(OF_PRIMITIVE_LINES);
+	verticalScanLines.setMode( OF_PRIMITIVE_LINES );
+	horizontalScanLines.setMode( OF_PRIMITIVE_LINES );
 	
 	if(sharedRenderer != NULL){
 		sharedRenderer->setSimplification(scanlineSimplify);
@@ -79,41 +113,46 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	if(sharedRenderer != NULL && hasSpeaker){
+		
 		ofPushStyle();
 		ofPushMatrix();
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
 		
-		//Enable smooth lines and additive blending
-		
-
+		//Enable smooth lines and screen blending
 		glDisable(GL_DEPTH_TEST);
-		ofEnableSmoothing();
+		
+		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 		glEnable(GL_POINT_SMOOTH);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-
+		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+		glEnable(GL_LINE_SMOOTH);
+		
+		ofEnableAlphaBlending();
+		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		
 		//move the pointcloud
 		ofTranslate(0,0,pointcloudOffsetZ);
-		ofScale(pointcloudScale, pointcloudScale,pointcloudScale);
+		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
 
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
 		sharedRenderer->bindRenderer();
 		
 		//draw the points
-		randomPoints.drawVertices();
-				
+		glPointSize(pointSizeMin);
+		randomPoints.draw();
+		pointGrid.draw();
+		
 		//draw the lines
 		ofSetLineWidth(verticalScanlineThickness);
-		ofSetColor(255, 255*verticalScanlineAlpha);
+		ofSetColor(255*verticalScanlineAlpha, 255*verticalScanlineAlpha);
 		verticalScanLines.draw();
 		
-		ofSetColor(255, 255*horizontalScanlineAlpha);
+		ofSetColor(255*verticalScanlineAlpha, 255*verticalScanlineAlpha);
 		ofSetLineWidth(horizontalScanlineThickness);
 		horizontalScanLines.draw();
 		
 		sharedRenderer->unbindRenderer();
-		
-		//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 		
 		glPopAttrib();
 		
@@ -184,9 +223,17 @@ void CloudsVisualSystemRGBD::guiSystemEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 	
-	rdrGui->addSlider("POINTCLOUD SCALE", .001,  0.5, &pointcloudScale);
-	rdrGui->addSlider("POINTCLOUD OFFSET",   0, -100, &pointcloudOffsetZ);
+	rdrGui->addSlider("CLOUD SCALE", .001,  0.5, &pointcloudScale);
+	rdrGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
 
+	rdrGui->addSlider("POINTSIZE MIN", 0, 3, &pointSizeMin);
+	rdrGui->addSlider("POINTSIZE MAX", 0, 3, &pointSizeMax);
+
+	rdrGui->addSlider("POINTGRID VERTICAL SPACE", 1, 10, &pointVerticalSpace);
+	rdrGui->addSlider("POINTGRID HORIZONTAL SPACE", 1, 10, &pointHorizontalSpace);
+
+	rdrGui->addSlider("NUM RANDOM POINTS", 0, 50000.0f, &numRandomPoints);
+	
 	rdrGui->addSlider("VERTICAL LINE SPACE", .5, 12, &scanlineSimplify.x);
 	rdrGui->addSlider("HORIZONTAL LINE SPACE", .5, 12, &scanlineSimplify.y);
 	
@@ -195,7 +242,7 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 
 	rdrGui->addSlider("VERTICAL LINE THICKNESS", 0, 2.0, &verticalScanlineThickness);
 	rdrGui->addSlider("HORIZONTAL LINE THICKNESS", 0, 2.0, &horizontalScanlineThickness);
-
+	
 }
 
 //--------------------------------------------------------------
@@ -208,6 +255,12 @@ void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
 	}
 	else if(e.widget->getName() == "HORIZONTAL LINE SPACE"){
 		refreshScanlineMesh = true;
+	}
+	else if(e.widget->getName() == "POINTGRID VERTICAL SPACE"){
+		refreshPointcloud = true;
+	}
+	else if(e.widget->getName() == "POINTGRID HORIZONTAL SPACE"){
+		refreshPointcloud = true;
 	}
 }
 
