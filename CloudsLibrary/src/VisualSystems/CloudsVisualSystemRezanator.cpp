@@ -69,6 +69,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
+
         currentCamera->begin();
         
         drawBackground();
@@ -390,7 +391,6 @@ bool CloudsVisualSystemRezanator::cursorIsOverGUI(){
 
 		if(guis[i]->isHit(ofGetMouseX(), ofGetMouseY()))
 		{
-			cam.disableMouseInput();
 			return true;
 		}
 	}
@@ -425,9 +425,9 @@ void CloudsVisualSystemRezanator::setupCameraParams()
     camDistance = 200;
     cam.setDistance(camDistance);
     cam.setFov(camFOV);
-    cam.setForceAspectRatio(true);
-    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
-    cam.setAspectRatio(bgAspectRatio);
+//    cam.setForceAspectRatio(true);
+//    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
+//	cam.setAspectRatio(bgAspectRatio);
     xRot = new ofx1DExtruder(0);
     yRot = new ofx1DExtruder(0);
     zRot = new ofx1DExtruder(0);
@@ -1975,11 +1975,13 @@ void CloudsVisualSystemRezanator::drawDebug()
 {
     if(bDebug)
     {
+		ofPushStyle();
         float color = 255-bgBri->getPos();
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         drawGrid(-debugGridSize,-debugGridSize,debugGridSize*2,debugGridSize*2, color);
         drawAxis(debugGridSize, color);
         selfDrawDebug();
+		ofPopStyle();
     }
 }
 

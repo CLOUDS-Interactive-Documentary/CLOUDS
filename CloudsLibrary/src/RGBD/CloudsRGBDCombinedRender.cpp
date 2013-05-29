@@ -137,6 +137,7 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	
 	simplify = _simplification;
 	
+	/*
 	mesh.clearIndices();
 	int x = 0;
 	int y = 0;
@@ -183,21 +184,14 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	}
     
 	bMeshGenerated = true;
+	 */
 }
-
-//void CloudsRGBDCombinedRender::setTexture(ofBaseHasTexture& _tex){
-//    tex = &_tex;
-//    
-//    colorScale.x = float(_tex.getTextureReference().getWidth()) / float(colorRect.width);
-//    colorScale.y = float(_tex.getTextureReference().getHeight()-depthRect.height) / float(colorRect.height);
-//}
 
 void CloudsRGBDCombinedRender::reloadShader(){
 	shader.load( shaderPath );
 }
 
 //--------------------------------------------------------------- BINDERS
-
 bool CloudsRGBDCombinedRender::bindRenderer(){
     ofPushMatrix();
 	
@@ -211,10 +205,6 @@ bool CloudsRGBDCombinedRender::bindRenderer(){
 	ofRotate(worldRotation.z,0,0,1);
     
 	shader.begin();
-	glActiveTexture(GL_TEXTURE1);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glActiveTexture(GL_TEXTURE0);
     
 	setupProjectionUniforms();
 	
@@ -256,8 +246,6 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     shader.setUniform3f("dK", distortionK.x, distortionK.y, distortionK.z);
     shader.setUniform2f("dP", distortionP.x, distortionP.y);
     
-//    glUniformMatrix3fv( glGetUniformLocation(shader.getProgram(), "colorRotate"), 1, GL_FALSE,depthToRGBRotation);
-//    shader.setUniform3f("colorTranslate", depthToRGBTranslation.x,depthToRGBTranslation.y,depthToRGBTranslation.z);
 	ofMatrix4x4 adjustmentMatrix;
 	adjustmentMatrix.rotate(adjustRotate.x, 0, 1, 0);
 	adjustmentMatrix.rotate(adjustRotate.y, 1, 0, 0);
@@ -290,10 +278,12 @@ ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
 }
 
 //--------------------------------------------------------------- ACTIONS
+ofShader& CloudsRGBDCombinedRender::getShader(){
+	return shader;
+}
+
+//--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-//    if(simplify == ofVec2f(0,0)){
-//		setSimplification(ofVec2f(1.0, 1.0));
-//	}
     
 	if(player.isLoaded()){
 		player.update();

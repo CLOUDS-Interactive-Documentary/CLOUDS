@@ -11,16 +11,20 @@ float _C::dotSize = 0.1;
 float _C::axonThickness = 0;
 float _C::alpha = 0;
 float _C::sway = 0;
+int _C::nodeMax = 0;
+int _C::rootCount = 4;
 
-string _C::getSystemName(){
-  return "Collab1";
-}
-
-void _C::selfSetup(){
-	rotation = 0;
+void _C::reset(){
     
-    int stepsTheta = 4;
-    int stepsPhi = 4;
+    vector<_N*>::iterator it;
+    for( it=_N::all.begin() ; it!=_N::all.end() ; it++){
+        delete *it;
+    }
+    _N::all.clear();
+    rootNodes.clear();
+	
+    int stepsTheta = sqrt(rootCount);
+    int stepsPhi = sqrt(rootCount);
     float incTheta = (PI*2)/(float)stepsTheta;
     float incPhi = (PI)/(float)stepsPhi;
     for(int j=0;j<stepsPhi+1;j++){
@@ -39,7 +43,24 @@ void _C::selfSetup(){
             rootNodes.push_back(n);
         }
     }
+   
+}
 
+void _C::selfGuiEvent(ofxUIEventArgs &e){
+    if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
+        reset();
+    }
+}
+
+string _C::getSystemName(){
+  return "Collab1";
+}
+
+void _C::selfSetup(){
+    rotation = 0;
+    
+    reset();
+    
 }
 
 void _C::selfSetupGuis(){
@@ -49,6 +70,9 @@ void _C::selfSetupGuis(){
     axonThicknessSlider = gui->addSlider("Axon Thickness",0, 10, 5);
     alphaSlider = gui->addSlider("Alpha",0, 1, 0.5);
     swaySlider = gui->addSlider("Sway",0, 10, 5);
+    nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
+    resetButton = gui->addButton("Reset", false, 64,64);
+    rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
 }
 
 void _C::selfUpdate(){
@@ -64,6 +88,8 @@ void _C::selfUpdate(){
 	dotSize = dotSizeSlider->getScaledValue();
     alpha = alphaSlider->getScaledValue();
     sway = swaySlider->getScaledValue();
+    nodeMax = nodeMaxSlider->getScaledValue();
+    rootCount = rootCountSlider->getScaledValue();
 }
 
 void _C::selfDrawBackground(){
@@ -107,8 +133,6 @@ void _C::selfDraw(){
 
 
 	ofPopMatrix();
-
-    cout << _N::terminals.size() << endl;
 	
 }
 
@@ -127,9 +151,9 @@ void _N::update(){
     
     ofPoint temp(future);
     temp += ofPoint(
-                    ofNoise( n * 0.1 , 4000 , generation * 0.1 ) * 10,
-                    ofNoise( n * 0.1 , 5000 , generation * 0.1) * 10,
-                    ofNoise( n * 0.1 , 6000 , generation * 0.1) * 10
+                    ofSignedNoise( n * 0.01 , 4000 , generation * 0.1 ) * 1,
+                    ofSignedNoise( n * 0.01 , 5000 , generation * 0.1) * 1,
+                    ofSignedNoise( n * 0.01 , 6000 , generation * 0.1) * 1
     );
 	x += (temp.x - x)*0.1;
 	y += (temp.y - y)*0.1;
@@ -142,7 +166,7 @@ void _N::update(){
 		(*it)->update();
 	}
 	
-	if( _N::all.size() < 10000
+	if( _N::all.size() < _C::nodeMax
 			&& (
 		 (ofRandomuf() < 0.1 && children.size()==0)
 		 ||
@@ -150,7 +174,7 @@ void _N::update(){
 		 ||
 		 (ofRandomuf() < 0.0001 && children.size()>1)
          ||
-         (generation == 40)
+         (generation == 50)
                     )
 		 ){
 
@@ -163,7 +187,7 @@ void _N::update(){
 			n->future.z = n->z = z + direction.z;
 		}else{
 			
-			ofPoint v = (this->future) + ((this->future) - (*parent)).normalize()*1;
+			ofPoint v = (this->future) + ((this->future) - (*parent)).normalize()*2;
 			
 			v = v.getRotated(rot.x , ofVec3f(1,0,0));
 			v = v.getRotated(rot.y , ofVec3f(0,1,0));
@@ -182,7 +206,7 @@ void _N::update(){
 			n->rot.z = rot.z;
 			
 			float s = ofRandomf();
-            if(generation==41)s=10;
+            if(generation==51)s=10;
 			n->rot += ofPoint(ofRandomf(),ofRandomf(),ofRandomf())*s;
 			n->rot += (ofPoint() - n->rot) * 0.5;
 			

@@ -49,6 +49,10 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterMouseEvents(this);
 		
 		populateVisualSystems();
+
+		rgbdVisualSystem.setRenderer(combinedRenderer);
+		rgbdVisualSystem.setup();
+		
 		
 		eventsRegistered = true;
 
@@ -119,14 +123,13 @@ void CloudsPlaybackController::draw(){
 //		combinedRenderer.drawPointCloud();
 //		camera.end();
 //	}
+	
 }
 
 #pragma story engine
 //--------------------------------------------------------------------
 void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
 	
-	rgbdVisualSystem.setup();
-	rgbdVisualSystem.setRenderer(combinedRenderer);
 	rgbdVisualSystem.playSystem();
 	
 	playClip(args.chosenClip);
@@ -232,6 +235,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystem* nextVisualSy
 		hideVisualSystem();
 	}
 
+	rgbdVisualSystem.stopSystem();
+	
 	nextVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());
 	nextVisualSystem->setCurrentKeyword(keyTheme);
 	nextVisualSystem->playSystem();
@@ -240,7 +245,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystem* nextVisualSy
 	showingVisualSystem = true;
 	
 	visualSystemControls->disable();
-	keyThemesPanel->disable();
+	if(keyThemesPanel != NULL) keyThemesPanel->disable();
 
 }
 
@@ -253,7 +258,8 @@ void CloudsPlaybackController::hideVisualSystem(){
 		
 		visualSystemControls->enable();
 		if(keyThemesPanel != NULL) keyThemesPanel->enable();
-
+		
+		rgbdVisualSystem.playSystem();
 	}
 }
 
