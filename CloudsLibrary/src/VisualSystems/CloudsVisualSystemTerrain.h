@@ -91,13 +91,13 @@ protected:
     void        makeMesh(ofTexture &_heightMap);
     ofShader    terrainShader;
     ofVboMesh   terrainMesh;
+    ofMesh      terrainVertical;
+    ofMesh      terrainHorizontal;
+    float       terrainVerticalAlpha;
+    float       terrainHorizontalAlpha;
     float       terrainResolution;
-    float       terrainAlpha;
-    bool        terrainSimple;
-    
-    float       pointSize;
     float       pointsAlpha;
-    float       wireframeAlpha;
+    bool        terrainSimple;
     
     float       size;
     
