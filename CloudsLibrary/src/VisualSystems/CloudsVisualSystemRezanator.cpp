@@ -70,7 +70,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     if(bRenderSystem)
     {
 
-        currentCamera->begin(ofRectangle(0,0,ofGetWidth(),ofGetHeight()));
+        currentCamera->begin();
         
         drawBackground();
         
@@ -1975,11 +1975,13 @@ void CloudsVisualSystemRezanator::drawDebug()
 {
     if(bDebug)
     {
+		ofPushStyle();
         float color = 255-bgBri->getPos();
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         drawGrid(-debugGridSize,-debugGridSize,debugGridSize*2,debugGridSize*2, color);
         drawAxis(debugGridSize, color);
         selfDrawDebug();
+		ofPopStyle();
     }
 }
 

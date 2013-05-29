@@ -46,7 +46,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
 	
   protected:
 	
-
 	float pointcloudScale;
 	float pointcloudOffsetZ;
 	

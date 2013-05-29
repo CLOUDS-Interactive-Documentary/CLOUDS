@@ -81,17 +81,19 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	if(sharedRenderer != NULL && hasSpeaker){
 		ofPushStyle();
 		ofPushMatrix();
-		
-		glDisable(GL_DEPTH_TEST);
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
 		
 		//Enable smooth lines and additive blending
 		
+
+		glDisable(GL_DEPTH_TEST);
+		ofEnableSmoothing();
+		glEnable(GL_POINT_SMOOTH);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+
 		//move the pointcloud
 		ofTranslate(0,0,pointcloudOffsetZ);
 		ofScale(pointcloudScale, pointcloudScale,pointcloudScale);
-
-		ofEnableSmoothing();
-		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
@@ -102,16 +104,18 @@ void CloudsVisualSystemRGBD::selfDraw(){
 				
 		//draw the lines
 		ofSetLineWidth(verticalScanlineThickness);
-		ofSetColor(255*verticalScanlineAlpha);
+		ofSetColor(255, 255*verticalScanlineAlpha);
 		verticalScanLines.draw();
 		
+		ofSetColor(255, 255*horizontalScanlineAlpha);
 		ofSetLineWidth(horizontalScanlineThickness);
 		horizontalScanLines.draw();
-		ofSetColor(255*horizontalScanlineAlpha);
 		
 		sharedRenderer->unbindRenderer();
 		
-		ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+		//ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+		
+		glPopAttrib();
 		
 		ofPopMatrix();
 		ofPopStyle();
