@@ -5,8 +5,8 @@ uniform sampler2DRect depthTex;
 uniform sampler2DRect normalTex;
 uniform vec2  resolution;
 uniform float terrainHeight;
+uniform float pointSize;
 
-///MAIN ---------------------------
 void main(void)
 {
     //align to texture
@@ -20,6 +20,7 @@ void main(void)
 
 	vec4 pos = vec4(st.x-resolution.x*0.5, st.y-resolution.y*0.5, depth*terrainHeight, 1.0);
 
+    // gl_PointSize = pointSize;
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;
 }

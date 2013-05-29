@@ -18,18 +18,19 @@ void CloudsVisualSystemTerrain::selfSetup()
     nPingPong = 0;
     
     grayscottLoops = 10;
+    terrainResolution = 1.0;
     diffU=0.25;
     diffV=0.04;
     k=0.047;
     f=0.2;
     
-    terrainResoultion = 2.0;
     setResolution(200, 200);
     
     noiseShader.load("", getDataPath()+"shaders/noise.fs");
     grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
     normalsShader.load("", getDataPath()+"shaders/normals.fs");
-    extrusionShader.load(getDataPath()+"shaders/extrusion.vert",getDataPath()+"shaders/extrusion.frag");
+    
+    terrainShader.load(getDataPath()+"shaders/terrain.vert",getDataPath()+"shaders/terrain.frag");
 }
 
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
@@ -51,14 +52,21 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
     sysGui->addLabel("Terrai");
     sysGui->addSlider("Terrain_Size", 10, 200, &size);
     sysGui->addSlider("Terrain_Altitud", 0, 30, &terrainHeight);
-    sysGui->addSlider("Terrain_Resolution", 1, 10, &terrainResoultion);
+    sysGui->addSlider("Terrain_Resolution", 1, 10, &terrainResolution);
+}
+
+void CloudsVisualSystemTerrain::selfSetupRenderGui()
+{
+    rdrGui->addSlider("Point Size", 0, 7, &pointSize);
+    rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &pointsAlpha);
+    rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &wireframeAlpha);
 }
 
 void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
     
-    if ( name == "Terrain_Size" |name == "Terrain_Width" || name == "Terrain_Height"){
+    if ( name == "Terrain_Size" |name == "Terrain_Width" || name == "Terrain_Height" || name == "Terrain_Resolution"){
         setResolution(size, size);
     }
 }
@@ -80,7 +88,7 @@ void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
 }
 
 //-------------------------------------------------------------- LOOP
-void addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c) {
+void addFace(ofVboMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c) {
 	ofVec3f normal = ((b - a).cross(c - a)).normalize();
 	mesh.addNormal(normal);
 	mesh.addVertex(a);
@@ -94,7 +102,7 @@ void addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c) {
 }
 
 //--------------------------------------------------------------
-void addFace(ofMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c, ofVec3f d) {
+void addFace(ofVboMesh& mesh, ofVec3f a, ofVec3f b, ofVec3f c, ofVec3f d) {
 	addFace(mesh, a, b, c);
 	addFace(mesh, a, c, d);
 }
@@ -107,41 +115,50 @@ ofVec3f getVertexFromTexture(ofFloatPixels& _pixels, int x, int y) {
 void CloudsVisualSystemTerrain::makeMesh(ofTexture &_heightMap){
     
     terrainMesh.clear();
-    terrainMesh.setMode(OF_PRIMITIVE_TRIANGLES);
-	int skip = (int)terrainResoultion;
-	int width = _heightMap.getWidth();
-    int height = _heightMap.getHeight();
     
-    //  texture -> pixels
-    //
-    ofFloatPixels heightMap;
-    heightMap.allocate(_heightMap.getWidth(),
-                       _heightMap.getHeight(),
-                       OF_PIXELS_RGBA);
-    _heightMap.readToPixels(heightMap);
+	int skip = terrainResolution;
+	int width = size;
+    int height = size;
     
-	for(int y = 0; y < height - skip; y += skip) {
-		for(int x = 0; x < width - skip; x += skip) {
-			ofVec3f nw = getVertexFromTexture(heightMap, x, y);
-			ofVec3f ne = getVertexFromTexture(heightMap, x + skip, y);
-			ofVec3f sw = getVertexFromTexture(heightMap, x, y + skip);
-			ofVec3f se = getVertexFromTexture(heightMap, x + skip, y + skip);
-			
-			addFace(terrainMesh, nw, ne, se, sw);
-		}
-	}
+    if (terrainSimple){
+        vector<ofVec3f> vertices;
+        vector<ofIndexType> indices;
+        
+        for(int y = 0; y < height - skip; y += skip) {
+            for(int x = 0; x < width - skip; x += skip) {
+                
+            }
+        }
+    } else {
+        ofFloatPixels heightMap;
+        heightMap.allocate(_heightMap.getWidth(),
+                           _heightMap.getHeight(),
+                           OF_PIXELS_RGBA);
+        _heightMap.readToPixels(heightMap);
+        
+        terrainMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+        for(int y = 0; y < height - skip; y += skip) {
+            for(int x = 0; x < width - skip; x += skip) {
+                ofVec3f nw = getVertexFromTexture(heightMap, x, y);
+                ofVec3f ne = getVertexFromTexture(heightMap, x + skip, y);
+                ofVec3f sw = getVertexFromTexture(heightMap, x, y + skip);
+                ofVec3f se = getVertexFromTexture(heightMap, x + skip, y + skip);
+                
+                addFace(terrainMesh, nw, ne, se, sw);
+            }
+        }
+    }
     
 }
 
-
-void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ) {
+void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
     
     //  Set VARIABLES
     //
     int width = _heightMap.getWidth();
     int height = _heightMap.getHeight();
     
-    float flResolution = (int)terrainResoultion;
+    float flResolution = (int)terrainResolution;
     float flHeightScale = terrainHeight;
     float textureScale = 1.0;
     nVertexCount = (int) ( width * height * 6 / ( flResolution * flResolution ) );
@@ -159,14 +176,6 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ) {
                        OF_PIXELS_RGBA);
     _heightMap.readToPixels(heightMap);
     
-    //  texture -> normals
-    //
-    normalsFbo.begin();
-    normalsShader.begin();
-    _heightMap.draw(0,0);
-    normalsShader.end();
-    normalsFbo.end();
-    
     //  normals -> pixels;
     //
     ofFloatPixels normalMap;
@@ -174,7 +183,7 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ) {
                        normalsFbo.getHeight(),
                        OF_PIXELS_RGBA);
     normalsFbo.getTextureReference().readToPixels(normalMap);
-
+    
     //  Construct the VBO
     //
     int nIndex = 0;
@@ -187,13 +196,13 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ) {
                 //
                 float flX = (float) nX + ( ( nTri == 1 || nTri == 2 || nTri == 5 ) ? flResolution : 0.0f );
                 float flY = (float) nY + ( ( nTri == 2 || nTri == 4 || nTri == 5 ) ? flResolution : 0.0f );
-                        
+                
                 // Set The Data, Using PtHeight To Obtain The Y Value
                 //
                 pVertices[nIndex].x = flX - ( width * 0.5 );
                 pVertices[nIndex].y = flY - ( height * 0.5 );
                 pVertices[nIndex].z = heightMap.getColor((int)flX, (int)flY).r * flHeightScale;
-                        
+                
                 // 3	0 --- 1		nTri reference
                 // | \	  \	  |
                 // |   \	\ |
@@ -284,14 +293,8 @@ void CloudsVisualSystemTerrain::selfUpdate()
         }
     }
     
-    //  Make the Terrain
+    //  Normals;
     //
-//    if(bGrayscott){
-//        makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
-//    } else {
-//        makeTerrain(noiseFbo.getTextureReference());
-//    }
-    
     normalsFbo.begin();
     normalsShader.begin();
     if(bGrayscott){
@@ -327,19 +330,31 @@ void CloudsVisualSystemTerrain::selfDraw()
     mat->begin();
     
     glEnable(GL_DEPTH_TEST);
-    extrusionShader.begin();
+    terrainShader.begin();
     if(bGrayscott){
-        extrusionShader.setUniformTexture("depthTex", grayscottFbo[nPingPong%2], 0);
+        terrainShader.setUniformTexture("depthTex", grayscottFbo[nPingPong%2], 0);
     } else {
-        extrusionShader.setUniformTexture("depthTex", noiseFbo, 0);
+        terrainShader.setUniformTexture("depthTex", noiseFbo, 0);
     }
-    extrusionShader.setUniformTexture("normalTex", normalsFbo, 1);
-    extrusionShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
-    extrusionShader.setUniform1f("terrainHeight", terrainHeight);
-    terrainMesh.draw();
-    extrusionShader.end();
-    glDisable(GL_DEPTH_TEST);
+    terrainShader.setUniformTexture("normalTex", normalsFbo, 1);
+    terrainShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
+    terrainShader.setUniform1f("terrainHeight", terrainHeight);
+    terrainShader.setUniform1f("pointSize", pointSize);
+
+    if ( pointsAlpha>0.0){
+        ofSetColor(255*pointsAlpha);
+        terrainMesh.drawVertices();
+	}
     
+    if ( wireframeAlpha>0.0){
+        ofSetColor(255*wireframeAlpha);
+        terrainMesh.drawWireframe();
+    }
+    
+//    terrainMesh.draw();
+    
+    terrainShader.end();
+    glDisable(GL_DEPTH_TEST);
     mat->end();
 }
 
@@ -425,11 +440,6 @@ void CloudsVisualSystemTerrain::selfSetupGui()
 }
 
 void CloudsVisualSystemTerrain::selfGuiEvent(ofxUIEventArgs &e)
-{
-    
-}
-
-void CloudsVisualSystemTerrain::selfSetupRenderGui()
 {
     
 }

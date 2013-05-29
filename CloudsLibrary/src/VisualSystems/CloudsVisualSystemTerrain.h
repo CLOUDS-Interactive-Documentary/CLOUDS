@@ -85,14 +85,20 @@ protected:
     ofVec3f*    pVertices;          // Vertex Data
     ofVec2f*    pTexCoords;         // Texture Coordinates
 	int         nVertexCount;       // Vertex Count
-    float       terrainResoultion;
     
     //  ofMesh Terrain
     //
     void        makeMesh(ofTexture &_heightMap);
-    ofShader    extrusionShader;
-    ofMesh      terrainMesh;
+    ofShader    terrainShader;
+    ofVboMesh   terrainMesh;
+    float       terrainResolution;
+    float       terrainAlpha;
+    bool        terrainSimple;
     
-    float   size;
+    float       pointSize;
+    float       pointsAlpha;
+    float       wireframeAlpha;
+    
+    float       size;
     
 };
