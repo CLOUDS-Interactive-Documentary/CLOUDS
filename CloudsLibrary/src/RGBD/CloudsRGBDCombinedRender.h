@@ -50,6 +50,7 @@ public:
 	void draw(ofPolyRenderMode drawMode);
     
 	ofVideoPlayer& getPlayer();
+	ofShader& getShader();
 	
 	// Move in 3D Space
     ofVec3f worldPosition;
@@ -73,7 +74,6 @@ public:
     	
 	ofVideoPlayer player;
 
-	
 	ofShader shader;
     string shaderPath;
     

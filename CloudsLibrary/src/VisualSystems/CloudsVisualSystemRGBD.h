@@ -46,7 +46,23 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
 	
   protected:
 	
+
+	float pointcloudScale;
+	float pointcloudOffsetZ;
+	
+	ofVec2f scanlineSimplify;
+	
+	bool refreshScanlineMesh;
+	float verticalScanlineAlpha;
+	float verticalScanlineThickness;
+	float horizontalScanlineAlpha;
+	float horizontalScanlineThickness;
+	
+	
+	void generateScanlines();
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
+	
 	ofMesh randomPoints;
+	
 };

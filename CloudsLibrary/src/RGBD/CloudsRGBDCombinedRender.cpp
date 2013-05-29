@@ -137,6 +137,7 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	
 	simplify = _simplification;
 	
+	/*
 	mesh.clearIndices();
 	int x = 0;
 	int y = 0;
@@ -183,21 +184,14 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	}
     
 	bMeshGenerated = true;
+	 */
 }
-
-//void CloudsRGBDCombinedRender::setTexture(ofBaseHasTexture& _tex){
-//    tex = &_tex;
-//    
-//    colorScale.x = float(_tex.getTextureReference().getWidth()) / float(colorRect.width);
-//    colorScale.y = float(_tex.getTextureReference().getHeight()-depthRect.height) / float(colorRect.height);
-//}
 
 void CloudsRGBDCombinedRender::reloadShader(){
 	shader.load( shaderPath );
 }
 
 //--------------------------------------------------------------- BINDERS
-
 bool CloudsRGBDCombinedRender::bindRenderer(){
     ofPushMatrix();
 	
@@ -290,10 +284,12 @@ ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
 }
 
 //--------------------------------------------------------------- ACTIONS
+ofShader& CloudsRGBDCombinedRender::getShader(){
+	return shader;
+}
+
+//--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-//    if(simplify == ofVec2f(0,0)){
-//		setSimplification(ofVec2f(1.0, 1.0));
-//	}
     
 	if(player.isLoaded()){
 		player.update();
