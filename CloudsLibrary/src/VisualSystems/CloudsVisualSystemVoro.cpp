@@ -52,38 +52,38 @@ void CloudsVisualSystemVoro::selfSceneTransformation()
 
 void CloudsVisualSystemVoro::selfUpdate()
 {
+    
+    //  Born & Death
+    //
     if (bClear){
         for (int i = seedParticles.size()-1; i >= 0; i--){
             delete seedParticles[i];
             seedParticles.erase(seedParticles.begin()+i);
         }
+    } else {
+        //  Born seed particles
+        //
+        if ( fps%(int)(60/bornRate)==0 ){
+            VoroParticle *seed = new VoroParticle();
+            seed->init(ofPoint(0,0),
+                       ofPoint(ofNoise(ofGetElapsedTimef()*0.1, fps*0.03)*2.0-1.0,
+                               ofNoise(ofGetElapsedTimef()*0.05, fps*0.07)*2.0-1.0,
+                               (ofNoise(ofGetElapsedTimef()*0.01, fps*0.003)-0.5)*zMove)*initialForce );
+            seed->size = 0.1;
+            seedParticles.push_back(seed);
+        }
+        
+        //  Kill particles
+        //
+        while (seedParticles.size()>=MaxNumOfParticles) {
+            delete seedParticles[0];
+            seedParticles.erase(seedParticles.begin());
+        }
     }
     
-    //  Born seed particles
-    //
-    if ( fps%(int)(60/bornRate)==0 ){
-        VoroParticle *seed = new VoroParticle();
-        seed->init(ofPoint(0,0),
-                   ofPoint(ofNoise(ofGetElapsedTimef()*0.1, fps*0.03)*2.0-1.0,
-                           ofNoise(ofGetElapsedTimef()*0.05, fps*0.07)*2.0-1.0,
-                           (ofNoise(ofGetElapsedTimef()*0.01, fps*0.003)-0.5)*zMove)*initialForce );
-        seed->size = 0.1;
-        seedParticles.push_back(seed);
-    }
-    
-    //  Kill particles
-    //
-    while (seedParticles.size()>=MaxNumOfParticles) {
-        delete seedParticles[0];
-        seedParticles.erase(seedParticles.begin());
-    }
-    
-    //  Sort seed particles:
-    //
-//	sort( seedParticles.begin(), seedParticles.end(), comparisonFunction );
-	
     //  Compute seed particles
     //
+//    sort( seedParticles.begin(), seedParticles.end(), comparisonFunction );
     for (int i = 0; i < seedParticles.size(); i++){
 		for (int j = 0; j < i; j++){
 //            if ( fabs(seedParticles[j]->x - seedParticles[i]->x) >	50.0) break;
@@ -92,25 +92,24 @@ void CloudsVisualSystemVoro::selfUpdate()
 	}
     
     for (int i = seedParticles.size()-1; i >=0 ; i--){
-        
-        
         if(seedParticles[i]->size < MaxSize){
             seedParticles[i]->size += growRate;
         }
-        
         seedParticles[i]->addAttractionForce( ofPoint(0,0) ,200,atractionPct);
         seedParticles[i]->update();
 	}
     
+    //  Compute Voronoi
+    //
     if(bDrawVoronoiWireFrames || bDrawVoronoi){
+        
         cellMeshes.clear();
-        bool con_periodic = ofGetKeyPressed();// false;
         container con(-containerSize,containerSize,
                       -containerSize,containerSize,
                       -containerHeight,containerHeight,
-                      10,10,1,
+                      1,1,1,
                       containerPeriodic,containerPeriodic,containerPeriodic,
-                      8);
+                      1);
         
         if (bSphere){
             wall_sphere sph(0, 0, 0, containerSize);
@@ -147,6 +146,9 @@ void CloudsVisualSystemVoro::selfDraw()
         ofEnableBlendMode(OF_BLENDMODE_ADD);
     }
     
+    ofMesh particles;
+    particles.setMode(OF_PRIMITIVE_POINTS);
+    
     if (bDrawParticles){
         for (int i = 0; i < seedParticles.size(); i++){
             
@@ -161,31 +163,36 @@ void CloudsVisualSystemVoro::selfDraw()
                 ofSetColor(255, 255*(seedParticles[i]->size/MaxSize));
                 dot.draw(0,
                          0,
-                         seedParticles[i]->size,
-                         seedParticles[i]->size);
+                         seedParticles[i]->size*glowSize,
+                         seedParticles[i]->size*glowSize);
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 ofPopMatrix();
             } else {
-                ofSetColor(255,255,0);
-                seedParticles[i]->drawSphere();
+//                ofSetColor(255,255,0);
+//                seedParticles[i]->drawSphere();
+                particles.addVertex( *seedParticles[i] );
             }
         }
     }
-    
+
     if (bDrawGlow){
         glDepthMask(GL_TRUE);
         ofEnableAlphaBlending();
+    } else {
+        particles.draw();
     }
     
     if(bDrawVoronoiWireFrames || bDrawVoronoi){
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(255,cellsAlpha*255.0);
+            
             if(bDrawVoronoi){
+                ofSetColor(155,cellsAlpha*100.0);
                 cellMeshes[i].drawFaces();
             }
             
             if(bDrawVoronoiWireFrames){
-                ofSetColor(155,cellsAlpha*100.0);
+                ofSetColor(155,cellsWireAlpha*100.0);
                 cellMeshes[i].drawWireframe();
             }
         }
@@ -280,6 +287,7 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
     sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
     sysGui->addToggle("Glow",& bDrawGlow);
+    sysGui->addSlider("Glow_Size", 0.0, 1.0, &glowSize);
     sysGui->addToggle("DrawParticles", &bDrawParticles);
     sysGui->addButton("Clear", &bClear);
     
@@ -291,6 +299,7 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addToggle("Sphere", &bSphere);
     sysGui->addSlider("Cell_Alpha", 0.0, 1.0, &cellsAlpha);
     sysGui->addToggle("DrawVoronoi", &bDrawVoronoi);
+    sysGui->addSlider("Cell_Wires_Alpha", 0.0, 1.0, &cellsWireAlpha);
     sysGui->addToggle("DrawVoronoiWires", &bDrawVoronoiWireFrames);
 }
 

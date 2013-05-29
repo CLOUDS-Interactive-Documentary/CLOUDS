@@ -55,19 +55,23 @@ protected:
     ofTexture dot;
     ofVec3f objectLookAt;
     
+    //  Particle System
+    //
     float   atractionPct,repulsionPct;
     float   bornRate, growRate;
     float   MaxNumOfParticles, MaxSize;
     float   initialForce;
     float   zMove;
     int     fps;
-    bool    bClear;
-    bool    bDrawParticles;
+    bool    bClear,bDrawParticles;
+    float   glowSize;
     bool    bDrawGlow;
     
-    float   containerSize;
-    float   containerHeight;
+    //  Voronoi
+    //
+    float   containerSize,containerHeight;
     float   cellsAlpha;
+    float   cellsWireAlpha;
     bool    containerPeriodic;
     bool    bSphere;
     bool    bCyllinder;

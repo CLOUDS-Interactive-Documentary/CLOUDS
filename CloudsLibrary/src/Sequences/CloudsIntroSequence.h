@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "ofxGameCamera.h"
-#include "ofxExtrudedText.h"
+//#include "ofxExtrudedText.h"
 
 class CloudsIntroSequence : public CloudsVisualSystemRezanator {
   public:
@@ -80,7 +80,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	float perlinDensity;
 	float perlinSpeed;
 	
-	ofxExtrudedText cloudsTypeMesh;
+//	ofxExtrudedText cloudsTypeMesh;
 	ofMesh thickTypeMesh;
 	ofMesh thinTypeMesh;
 

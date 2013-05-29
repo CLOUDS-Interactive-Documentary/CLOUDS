@@ -82,7 +82,7 @@ void CloudsVisualSystemLSystems::selfDraw()
     
     for(int i = 0; i < lsysr.activeNodes.size(); i++){
         ofPoint pos = lsysr.activeNodes.getVertices()[i];
-        float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.7;
+        float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.5;
         
         ofPushMatrix();
         ofSetRectMode(OF_RECTMODE_CENTER);

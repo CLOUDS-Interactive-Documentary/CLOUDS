@@ -74,7 +74,7 @@ void CloudsIntroSequence::selfUpdate(){
 	{
 		currentFontSize = fontSize;
 		currentFontExtrusion = fontExtrusion;
-		cloudsTypeMesh.init(getDataPath() + "/font/materiapro_light.ttf", currentFontSize, currentFontExtrusion, "CLOUDS");
+//		cloudsTypeMesh.init(getDataPath() + "/font/materiapro_light.ttf", currentFontSize, currentFontExtrusion, "CLOUDS");
 	}
 
 }
