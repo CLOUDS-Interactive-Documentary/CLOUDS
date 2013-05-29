@@ -12,51 +12,6 @@ string CloudsVisualSystemCities::getSystemName()
 	return "Cities";
 }
 
-void CloudsVisualSystemCities::selfSetup()
-{
-    size = 100;
-    nGrains = 10;
-    nPingPong = 0;
-    
-    grayscottLoops = 10;
-    diffU=0.25;
-    diffV=0.04;
-    k=0.047;
-    f=0.2;
-    
-    noiseShader.load("", getDataPath()+"shaders/noise.fs");
-    grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
-    maskShader.load("", getDataPath()+"shaders/cMask.fs");
-    
-    makeGrid(100, 10);
-}
-
-void CloudsVisualSystemCities::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemCities::selfAutoMode()
-{
-    
-}
-
-
-void CloudsVisualSystemCities::selfDrawBackground()
-{
-    
-}
-
-void CloudsVisualSystemCities::selfDrawDebug()
-{
-    
-}
-
-void CloudsVisualSystemCities::selfSceneTransformation()
-{
-    
-}
-
 void generateCube(float sizeX, float sizeY, float sizeZ)
 {
     ofPushMatrix();
@@ -153,24 +108,119 @@ void generateCube(float sizeX, float sizeY, float sizeZ)
     ofPopMatrix();
 }
 
-void CloudsVisualSystemCities::makeGrid(float _size, int _nGrains)
+void CloudsVisualSystemCities::selfSetup()
+{
+    size = 100;
+    resolution = 1;
+    blockSize = 1;
+
+    //  Noise
+    //
+    noiseShader.load("", getDataPath()+"shaders/Cities/noise.fs");
+    
+    //  GrayScott
+    //
+    grayscottShader.load("", getDataPath()+"shaders/Cities/grayscott.fs");
+    grayscottLoops = 10;
+    nPingPong = 0;
+    diffU=0.25;
+    diffV=0.04;
+    k=0.047;
+    f=0.2;
+    
+    //  Mask
+    //
+    maskShader.load("", getDataPath()+"shaders/Cities/cMask.fs");
+    
+    //  Blocks
+    //
+    
+    //  WireFrames
+    //
+    extrudeShader.load(getDataPath()+"shaders/Cities/extrude");
+    
+    //  Points
+    //
+    
+    makeGrid(100, 10);
+}
+
+void CloudsVisualSystemCities::selfSetupSystemGui()
+{
+    
+    sysGui->addLabel("Noise");
+    sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
+    sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
+    
+    sysGui->addLabel("GrayScott");
+    sysGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
+    sysGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
+//    sysGui->addSlider("DiffV", 0.0, 1.0, &diffV);
+//    sysGui->addSlider("DiffU", 0.0, 1.0, &diffU);
+//    sysGui->addSlider("k", 0.0, 1.0, &k);
+//    sysGui->addSlider("t", 0.0, 1.0, &f);
+    
+    sysGui->addToggle("enable", &bGrayscott);
+    sysGui->addButton("clean", &bCleanGrayscott);
+    
+    sysGui->addLabel("Mask");
+    sysGui->addSlider("maskSize", 1.0, 2.0, &maskSize);
+    sysGui->addSlider("maskCurve", 0.0, 1.0, &maskCurve);
+}
+
+void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
+{
+    
+}
+
+void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)
+{
+
+}
+
+void CloudsVisualSystemCities::guiRenderEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+    if (name == "Size" || name == "Resolution"){
+        makeGrid(size, resolution);
+    }
+}
+
+void CloudsVisualSystemCities::selfSetupRenderGui()
+{
+    rdrGui->addSlider("Size", 10, 200, &size);
+    rdrGui->addSlider("Resolution", 1, 100, &resolution);
+    rdrGui->addSlider("Height", 0, 100, &height);
+    
+    rdrGui->addLabel("Blocks");
+    rdrGui->addSlider("Min_Dist", 0.0, 0.5, &blocksMinDist);
+    rdrGui->addSlider("Min_Size", 0.0, 1.0, &blocksMinSize);
+    rdrGui->addSlider("Blocks_Alpha", 0.0, 1.0, &blocksAlpha);
+    
+    rdrGui->addLabel("WireFrame & Points");
+    rdrGui->addSlider("heightScale", 0.0, 5.0, &meshScale);
+    rdrGui->addSlider("heightHeight", 0.0, 5.0, &meshHeight);
+    rdrGui->addSlider("WireFrame_Alpha",0.0, 1.0, &wireFramesAlpha);
+    rdrGui->addSlider("PointsSize",0.0, 1.0, &pointsSize);
+}
+
+void CloudsVisualSystemCities::makeGrid(float _size, int _resolution)
 {
     size = _size;
-    nGrains = _nGrains;
-    grainResolution = size/nGrains;
+    resolution = _resolution;
+    blockSize = size/resolution;
+
     
-    cube = glGenLists(1);
-    float cubeSize = grainResolution*0.5;
-    glNewList(cube, GL_COMPILE);
-    generateCube(cubeSize, cubeSize, cubeSize);
-    glEndList();
-    
-    int textureSize = nGrains*2;
+    //  Noise Texture
+    //
+    int textureSize = resolution*2;
     noiseFbo.allocate(textureSize,textureSize);
     noiseFbo.begin();
     ofClear(0);
     noiseFbo.end();
     
+    //  Grayscott PingPong
+    //
     for(int i = 0; i < 2; i++){
         grayscottFbo[i].allocate(textureSize, textureSize);
         grayscottFbo[i].begin();
@@ -178,10 +228,42 @@ void CloudsVisualSystemCities::makeGrid(float _size, int _nGrains)
         grayscottFbo[i].end();
     }
     
+    //  Mask FBO
+    //
     maskFbo.allocate(textureSize, textureSize);
     maskFbo.begin();
     ofClear(0);
     maskFbo.end();
+    
+    //  Generate Blocks
+    //
+    cube = glGenLists(1);
+    float cubeSize = blockSize*0.5;
+    glNewList(cube, GL_COMPILE);
+    generateCube(cubeSize, cubeSize, cubeSize);
+    glEndList();
+    
+    //  Wireframe && Points Mesh
+    //
+    meshWires.clear();
+    meshWires.setMode(OF_PRIMITIVE_LINES);
+    
+    meshPoints.clear();
+    meshPoints.setMode(OF_PRIMITIVE_POINTS);
+    
+    int step = 1;
+    for(int y = 0; y < textureSize; y +=step) {
+        for(int x = 0; x < textureSize; x +=step) {
+            
+            meshPoints.addVertex(ofPoint(x,y));
+            
+            if ( x < textureSize-step ){
+                meshWires.addVertex(ofPoint(x, y));
+                meshWires.addVertex(ofPoint(x+1, y));
+            }
+            
+        }
+    }
 }
 
 void CloudsVisualSystemCities::selfUpdate()
@@ -190,25 +272,24 @@ void CloudsVisualSystemCities::selfUpdate()
     
     ofSetColor(255);
     
-    int width = noiseFbo.getWidth();
-    int height = noiseFbo.getHeight();
+    int texWidth = noiseFbo.getWidth();
+    int texHeight = noiseFbo.getHeight();
     noiseFbo.begin();
     ofClear(0);
     noiseShader.begin();
-    noiseShader.setUniform2f("resolution", width,height);
+    noiseShader.setUniform2f("resolution", texWidth,texHeight);
     noiseShader.setUniform1f("time", ofGetElapsedTimef()*noiseSpeed);
     noiseShader.setUniform1f("zoom", noiseZoom);
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
-    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
-    glTexCoord2f(width, height); glVertex3f(width, height, 0);
-    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+    glTexCoord2f(texWidth, 0); glVertex3f(texWidth, 0, 0);
+    glTexCoord2f(texWidth, texHeight); glVertex3f(texWidth, texHeight, 0);
+    glTexCoord2f(0,texHeight);  glVertex3f(0,texHeight, 0);
     glEnd();
     noiseShader.end();
     noiseFbo.end();
     
     if(bGrayscott){
-        
         if (bCleanGrayscott){
             for (int i = 0; i < 2; i++) {
                 grayscottFbo[i].begin();
@@ -233,20 +314,19 @@ void CloudsVisualSystemCities::selfUpdate()
             grayscottShader.setUniform1f("fade", grayscottFade);
             glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
-            glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
-            glTexCoord2f(width, height); glVertex3f(width, height, 0);
-            glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+            glTexCoord2f(texWidth, 0); glVertex3f(texWidth, 0, 0);
+            glTexCoord2f(texWidth, texHeight); glVertex3f(texWidth, texHeight, 0);
+            glTexCoord2f(0,texHeight);  glVertex3f(0,texHeight, 0);
             glEnd();
             grayscottShader.end();
             grayscottFbo[nPingPong%2].end();
-            
         }
     }
     
     maskFbo.begin();
     ofClear(0);
     maskShader.begin();
-    maskShader.setUniform2f("resolution", maskFbo.getWidth(), maskFbo.getHeight());
+    maskShader.setUniform2f("resolution", texWidth, texHeight);
     maskShader.setUniform1f("size", maskSize);
     maskShader.setUniform1f("curve",maskCurve);
     
@@ -274,62 +354,93 @@ void CloudsVisualSystemCities::selfDraw()
     ofFloatPixels heightPixels;
     maskFbo.getTextureReference().readToPixels(heightPixels);
     
-    int jump = heightPixels.getWidth()/nGrains;
-    
-    if (bDrawPoints){
-        ofMesh points;
-        points.setMode(OF_PRIMITIVE_POINTS);
-        
-        for(int x = 0; x < nGrains; x++){
-            for(int y = 0; y < nGrains; y++){
+    int jump = heightPixels.getWidth()/resolution;
+    for(int x = 0; x < resolution; x++){
+        for(int y = 0; y < resolution; y++){
+            
+            float value = heightPixels.getColor(x*jump,y*jump).b;
+            
+            ofPushMatrix();
+            ofTranslate(x*blockSize,y*blockSize, height*value*0.5*blockSize );
+            
+            if ( value > 0.0){
+                ofSetColor(255, MAX(blocksAlpha*255,55+value*200.0) );
+                ofScale((1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
+                        (1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
+                        height*value);
                 
-                float value = heightPixels.getColor(x*jump,y*jump).b;
-                if ( value > 0.0){
-                    
-                    float size = grainResolution*(1.0*(1.0-minDist))-(value*minSize);
-                    points.addVertex(ofPoint(x*grainResolution-size*0.5,
-                                             y*grainResolution-size*0.5,maxHeight*value*grainResolution) );
-                    points.addVertex(ofPoint(x*grainResolution+size*0.5,
-                                             y*grainResolution-size*0.5,maxHeight*value*grainResolution) );
-                    points.addVertex(ofPoint(x*grainResolution+size*0.5,
-                                             y*grainResolution+size*0.5,maxHeight*value*grainResolution) );
-                    points.addVertex(ofPoint(x*grainResolution-size*0.5,
-                                             y*grainResolution+size*0.5,maxHeight*value*grainResolution) );
-                }
+                glCallList(cube);
             }
-        }
-        
-        points.drawVertices();
-    } else {
-        for(int x = 0; x < nGrains; x++){
-            for(int y = 0; y < nGrains; y++){
-                
-                float value = heightPixels.getColor(x*jump,y*jump).b;
-                
-                ofPushMatrix();
-                ofTranslate(x*grainResolution,y*grainResolution, maxHeight*value*0.5*grainResolution );
-                
-                if ( value > 0.0){
-                    ofSetColor(255, MAX(minAlpha*255,55+value*200.0) );
-                    ofScale((1.0*(1.0-minDist))-(value*minSize),
-                            (1.0*(1.0-minDist))-(value*minSize),
-                            maxHeight*value);
-                    
-                    glCallList(cube);
-                }
-                ofPopMatrix();
-            }
+            ofPopMatrix();
         }
     }
+    ofPopMatrix();
     
+    
+    if (wireFramesAlpha > 0.0 || pointsSize > 0.0 ){
+        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+        glEnable(GL_POINT_SMOOTH);
+        ofPushMatrix();
+        float scale = ((size/resolution)*0.5)*meshScale;
+        ofScale(scale, scale, scale);
+        
+        extrudeShader.begin();
+        extrudeShader.setUniformTexture("depthTex", maskFbo, 0);
+        extrudeShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
+        extrudeShader.setUniform1f("height", height*meshHeight*2.0);
+        extrudeShader.setUniform1f("alpha", MAX(wireFramesAlpha,pointsSize));
+        extrudeShader.setUniform1f("pointSize", pointsSize*3.0);
+        
+        if ( pointsSize>0.0){
+            ofSetColor(255);
+            meshPoints.drawVertices();
+        }
+    
+        if ( wireFramesAlpha>0.0){
+            ofSetColor(255,255*wireFramesAlpha);
+            meshWires.drawWireframe();
+        }
+        extrudeShader.end();
+        
+        ofPopMatrix();
+        glDisable(GL_POINT_SMOOTH);
+        glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+    }
+
     glDisable(GL_DEPTH_TEST);
     
-    ofPopMatrix();
+   
     mat->end();
 
 }
 
 void CloudsVisualSystemCities::billBoard()
+{
+    
+}
+
+void CloudsVisualSystemCities::selfSetupGuis()
+{
+    
+}
+
+void CloudsVisualSystemCities::selfAutoMode()
+{
+    
+}
+
+
+void CloudsVisualSystemCities::selfDrawBackground()
+{
+    
+}
+
+void CloudsVisualSystemCities::selfDrawDebug()
+{
+    
+}
+
+void CloudsVisualSystemCities::selfSceneTransformation()
 {
     
 }
@@ -380,62 +491,6 @@ void CloudsVisualSystemCities::selfMouseReleased(ofMouseEventArgs& data)
 }
 
 void CloudsVisualSystemCities::selfSetupGui()
-{
-    
-}
-
-void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
-{
-    
-}
-
-
-void CloudsVisualSystemCities::selfSetupSystemGui()
-{
-    sysGui->addLabel("Blocks");
-    sysGui->addSlider("Grid_size", 10, 200, &size);
-    sysGui->addSlider("Blocks_number", 1, 100, &nGrains);
-    sysGui->addSlider("Max_Height", 0, 100, &maxHeight);
-    sysGui->addToggle("Points", &bDrawPoints);
-    
-    sysGui->addSlider("Min_Dist", 0.0, 0.5, &minDist);
-    sysGui->addSlider("Min_Size", 0.0, 1.0, &minSize);
-    sysGui->addSlider("Min_Alpha", 0.0, 1.0, &minAlpha);
-    
-    sysGui->addLabel("Noise");
-    sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
-    sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
-    
-    sysGui->addLabel("GrayScott");
-    sysGui->addSlider("Feed", 0.0, 0.1, &grayscottFade);
-    sysGui->addSlider("Loops", 1.0, 25, &grayscottLoops);
-    sysGui->addSlider("DiffV", 0.0, 1.0, &diffV);
-    sysGui->addSlider("DiffU", 0.0, 1.0, &diffU);
-    sysGui->addSlider("k", 0.0, 1.0, &k);
-    sysGui->addSlider("t", 0.0, 1.0, &f);
-    
-    sysGui->addToggle("enable", &bGrayscott);
-    sysGui->addButton("clean", &bCleanGrayscott);
-    
-    sysGui->addLabel("Mask");
-    sysGui->addSlider("maskSize", 1.0, 2.0, &maskSize);
-    sysGui->addSlider("maskCurve", 0.0, 1.0, &maskCurve);
-}
-
-void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-    if (name == "Grid_size" || name == "Blocks_number"){
-        makeGrid(size, nGrains);
-    }
-}
-
-void CloudsVisualSystemCities::selfSetupRenderGui()
-{
-    
-}
-
-void CloudsVisualSystemCities::guiRenderEvent(ofxUIEventArgs &e)
 {
     
 }
