@@ -18,6 +18,70 @@
             </Widget>
             <Track></Track>
         </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ROT-Z</WidgetName>
+                <WidgetID>13</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>ALPHA</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>VELLIMIT</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DISTORT RADIUS</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>DistortSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>DISTORT EXP</WidgetName>
+                <WidgetID>9</WidgetID>
+                <WidgetCanvasParent>DistortSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>SPHERE RADIUS</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>SphereSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>HOMING POWER</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>HomingSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>PERLIN POWER</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>PerlinSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
     </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>
