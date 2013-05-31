@@ -32,10 +32,11 @@ uniform vec4 normalRect;
 
 //GEOMETRY
 uniform vec2  simplify;
-
+uniform float flowPosition;
 uniform float farClip;
 uniform float nearClip;
 uniform float edgeClip;
+
 
 varying float VZPositionValid0;
 varying vec3 normal;
@@ -87,25 +88,28 @@ float depthValueFromSample( vec2 depthPos){
 }
 
 void main(void){
-    vec2  depthPos = gl_Vertex.xy + depthRect.xy;
+	vec2 samplePos = vec2(gl_Vertex.x, + mod(gl_Vertex.y + flowPosition, depthRect.w));
+    vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
-    
-    vec4 pos = vec4((gl_Vertex.x - depthPP.x) * depth / depthFOV.x,
-                    (gl_Vertex.y - depthPP.y) * depth / depthFOV.y,
+	
+	
+    vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
+                    (samplePos.y - depthPP.y) * depth / depthFOV.y,
                     depth,
                     1.0);
     
     vec2  normalPos = gl_Vertex.xy + normalRect.xy;
     normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
     
-    float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0) );
-    float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y) );
+    float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0)  );
+    float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y)  );
     float left  = depthValueFromSample( depthPos + vec2(-simplify.x,0.0) );
     float up    = depthValueFromSample( depthPos + vec2(0.0,-simplify.y) );
     float bl    = depthValueFromSample( vec2(floor(depthPos.x - simplify.x),floor( depthPos.y + simplify.y)) );
     float ur    = depthValueFromSample( vec2(floor(depthPos.x  + simplify.x),floor(depthPos.y - simplify.y)) );
     
-   VZPositionValid0 =  (depth < farClip &&
+	
+    VZPositionValid0 =  (depth < farClip &&
                         right < farClip &&
                         down < farClip &&
                         left < farClip &&

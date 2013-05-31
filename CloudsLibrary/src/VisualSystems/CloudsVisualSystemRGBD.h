@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "CloudsVisualSystemRezanator.h"
+#include "ParticleConnectionGenerator.h"
 
 /** 
  * COMPUTATION visual system
@@ -45,24 +46,35 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
     void guiRenderEvent(ofxUIEventArgs &e);
 	
   protected:
-		
+			
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;
 	ofMesh randomPoints;
+	ParticleConnectionGenerator connectionGenerator;
 
 	float pointcloudScale;
 	float pointcloudOffsetZ;
 
 	ofVec2f scanlineSimplify;
 	
+	bool drawPoints;
+	
 	bool refreshPointcloud;
 	float pointSizeMin;
 	float pointSizeMax;
 	
+	float pointGridAlpha;
+	float randomPointAlpha;
+
+	bool drawScanlines;
 	float pointVerticalSpace;
 	float pointHorizontalSpace;
 	void generatePointGrid();
+
+
+	float cloudFlow;
+	float currentFlowPosition;
 	
 	float numRandomPoints;
 	void generateRandomPoints();

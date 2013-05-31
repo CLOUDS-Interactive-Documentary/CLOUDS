@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D5B917117517E1300F558AC /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B916F17517E1300F558AC /* CloudsVisualSystemLSystems.cpp */; };
+		3D5B917F17517E8700F558AC /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B917B17517E8700F558AC /* LSystem.cpp */; };
+		3D5B918017517E8700F558AC /* LSystemReconstructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */; };
 		3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
 		3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
 		3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -78,8 +81,6 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
-		8104879817540B830062BE0E /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8104879617540B830062BE0E /* CloudsVisualSystemCollaboration1.cpp */; };
-		81C663511755D2A6009A0FE4 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6634F1755D2A6009A0FE4 /* CloudsRGBDCombinedRender.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -104,6 +105,7 @@
 		E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7E3C41B1759230F00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C4191759230F00511BB0 /* CloudsRGBDCombinedRender.cpp */; };
 		E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */; };
 		E7E95E881733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */; };
 /* End PBXBuildFile section */
@@ -139,6 +141,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D5B916F17517E1300F558AC /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
+		3D5B917017517E1300F558AC /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
+		3D5B917B17517E8700F558AC /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
+		3D5B917C17517E8700F558AC /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
+		3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
+		3D5B917E17517E8700F558AC /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -369,10 +377,6 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
-		8104879617540B830062BE0E /* CloudsVisualSystemCollaboration1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCollaboration1.cpp; sourceTree = "<group>"; };
-		8104879717540B830062BE0E /* CloudsVisualSystemCollaboration1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCollaboration1.h; sourceTree = "<group>"; };
-		81C6634F1755D2A6009A0FE4 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCombinedRender.cpp; path = RGBD/CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		81C663501755D2A6009A0FE4 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -384,7 +388,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* VSCloudsRezanatorDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCloudsRezanatorDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* VSCloudsLSystemDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCloudsLSystemDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -403,6 +407,8 @@
 		E7846FBC1714899C00705E7A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7E3C4191759230F00511BB0 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCombinedRender.cpp; path = src/RGBD/CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
+		E7E3C41A1759230F00511BB0 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = src/RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
 		E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E7E95E771733624100294C72 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7E95E861733631A00294C72 /* CloudsVisualSystemComputationTicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemComputationTicker.cpp; sourceTree = "<group>"; };
@@ -442,6 +448,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D5B917A17517E8700F558AC /* LSystems */ = {
+			isa = PBXGroup;
+			children = (
+				3D5B917C17517E8700F558AC /* LSystem.h */,
+				3D5B917B17517E8700F558AC /* LSystem.cpp */,
+				3D5B917E17517E8700F558AC /* LSystemReconstructor.h */,
+				3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */,
+			);
+			name = LSystems;
+			path = ../../CloudsLibrary/src/VisualSystems/LSystems;
+			sourceTree = "<group>";
+		};
 		3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1050,7 +1068,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* VSCloudsRezanatorDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* VSCloudsLSystemDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1060,6 +1078,7 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				3D5B917A17517E8700F558AC /* LSystems */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1106,6 +1125,8 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7E3C4191759230F00511BB0 /* CloudsRGBDCombinedRender.cpp */,
+				E7E3C41A1759230F00511BB0 /* CloudsRGBDCombinedRender.h */,
 				E7E95E5D1733624100294C72 /* src */,
 			);
 			name = CloudsLibrary;
@@ -1115,8 +1136,6 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				81C6634F1755D2A6009A0FE4 /* CloudsRGBDCombinedRender.cpp */,
-				81C663501755D2A6009A0FE4 /* CloudsRGBDCombinedRender.h */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);
 			path = src;
@@ -1125,8 +1144,8 @@
 		E7E95E731733624100294C72 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				8104879617540B830062BE0E /* CloudsVisualSystemCollaboration1.cpp */,
-				8104879717540B830062BE0E /* CloudsVisualSystemCollaboration1.h */,
+				3D5B917017517E1300F558AC /* CloudsVisualSystemLSystems.h */,
+				3D5B916F17517E1300F558AC /* CloudsVisualSystemLSystems.cpp */,
 				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
 				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
 				E7E95E871733631A00294C72 /* CloudsVisualSystemComputationTicker.h */,
@@ -1140,9 +1159,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* VSCloudsRezanator */ = {
+		E4B69B5A0A3A1756003C02F2 /* VSCloudsLSystem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsRezanator" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsLSystem" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1154,9 +1173,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = VSCloudsRezanator;
+			name = VSCloudsLSystem;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* VSCloudsRezanatorDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* VSCloudsLSystemDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1164,7 +1183,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsRezanator" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsLSystem" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1185,7 +1204,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* VSCloudsRezanator */,
+				E4B69B5A0A3A1756003C02F2 /* VSCloudsLSystem */,
 			);
 		};
 /* End PBXProject section */
@@ -1247,6 +1266,9 @@
 				4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */,
 				4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */,
 				4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */,
+				3D5B917117517E1300F558AC /* CloudsVisualSystemLSystems.cpp in Sources */,
+				3D5B917F17517E8700F558AC /* LSystem.cpp in Sources */,
+				3D5B918017517E8700F558AC /* LSystemReconstructor.cpp in Sources */,
 				3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */,
 				3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */,
 				3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
@@ -1295,8 +1317,7 @@
 				3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */,
 				3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */,
 				3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */,
-				8104879817540B830062BE0E /* CloudsVisualSystemCollaboration1.cpp in Sources */,
-				81C663511755D2A6009A0FE4 /* CloudsRGBDCombinedRender.cpp in Sources */,
+				E7E3C41B1759230F00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1463,25 +1484,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSCloudsRezanatorDebug;
+				PRODUCT_NAME = VSCloudsLSystemDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1570,25 +1581,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/openal/libs/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SYSTEM_APPS_DIR)/openFrameworks-develop/addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSCloudsRezanator;
+				PRODUCT_NAME = VSCloudsLSystem;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1596,7 +1597,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsRezanator" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsLSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1605,7 +1606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsRezanator" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsLSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

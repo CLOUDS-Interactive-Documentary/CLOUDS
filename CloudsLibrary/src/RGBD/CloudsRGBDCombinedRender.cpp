@@ -251,7 +251,7 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 	adjustmentMatrix.rotate(adjustRotate.y, 1, 0, 0);
 	adjustmentMatrix.translate(adjustTranslate.x, adjustTranslate.y, adjustTranslate.z);
 
-	shader.setUniformMatrix4f( "extrinsics", extrinsics * adjustmentMatrix );
+	shader.setUniformMatrix4f("extrinsics", extrinsics * adjustmentMatrix );
     
     shader.setUniform4f("depthRect", depthRect.x, depthRect.y, depthRect.width, depthRect.height);
 	shader.setUniform2f("depthPP", depthPrincipalPoint.x, depthPrincipalPoint.y);
@@ -259,6 +259,7 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
     shader.setUniform4f("normalRect", normalRect.x, normalRect.y, normalRect.width, normalRect.height);
     
+	shader.setUniform1f("flowPosition", flowPosition);
     shader.setUniform2f("simplify", simplify.x,simplify.y);
 	shader.setUniform1f("farClip", farClip);
     shader.setUniform1f("nearClip", nearClip);

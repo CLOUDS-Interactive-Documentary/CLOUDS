@@ -117,6 +117,9 @@
 		E7D2FEA21755A2F50083EB8E /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FE951755A2F50083EB8E /* VoroParticle.cpp */; };
 		E7D2FEAA1755A3090083EB8E /* CloudsVisualSystemAmber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEA51755A3080083EB8E /* CloudsVisualSystemAmber.cpp */; };
 		E7D2FEAB1755A3090083EB8E /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEA71755A3090083EB8E /* CloudsVisualSystemCities.cpp */; };
+		E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */; };
+		E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */; };
+		E7D2FECE17572B2C0083EB8E /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FECA17572B2C0083EB8E /* ParticleConnector.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
 		E7D3306C1751D446006706ED /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303B1751D446006706ED /* ofxBufferEffectorBehavior.cpp */; };
 		E7D3306D1751D446006706ED /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303E1751D446006706ED /* ofxDamperBehavior.cpp */; };
@@ -509,6 +512,12 @@
 		E7D2FEA61755A3090083EB8E /* CloudsVisualSystemAmber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAmber.h; sourceTree = "<group>"; };
 		E7D2FEA71755A3090083EB8E /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
 		E7D2FEA81755A3090083EB8E /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
+		E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
+		E7D2FEC717572B2C0083EB8E /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
+		E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
+		E7D2FEC917572B2C0083EB8E /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
+		E7D2FECA17572B2C0083EB8E /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
+		E7D2FECB17572B2C0083EB8E /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
 		E7D330361751D446006706ED /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
 		E7D330371751D446006706ED /* ofxBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBehavior.cpp; sourceTree = "<group>"; };
 		E7D330381751D446006706ED /* ofxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBehavior.h; sourceTree = "<group>"; };
@@ -812,6 +821,7 @@
 		E7637D511734DE75008ADC62 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7D2FEC517572B2C0083EB8E /* ConnectorParticles */,
 				E7D2FEA61755A3090083EB8E /* CloudsVisualSystemAmber.h */,
 				E7D2FEA51755A3080083EB8E /* CloudsVisualSystemAmber.cpp */,
 				E7D2FEA81755A3090083EB8E /* CloudsVisualSystemCities.h */,
@@ -1544,6 +1554,19 @@
 			path = "voro++";
 			sourceTree = "<group>";
 		};
+		E7D2FEC517572B2C0083EB8E /* ConnectorParticles */ = {
+			isa = PBXGroup;
+			children = (
+				E7D2FEC717572B2C0083EB8E /* ParticleConnection.h */,
+				E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */,
+				E7D2FEC917572B2C0083EB8E /* ParticleConnectionGenerator.h */,
+				E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */,
+				E7D2FECB17572B2C0083EB8E /* ParticleConnector.h */,
+				E7D2FECA17572B2C0083EB8E /* ParticleConnector.cpp */,
+			);
+			path = ConnectorParticles;
+			sourceTree = "<group>";
+		};
 		E7D330321751D446006706ED /* ofxGenerative */ = {
 			isa = PBXGroup;
 			children = (
@@ -1879,6 +1902,9 @@
 				E7D2FEA21755A2F50083EB8E /* VoroParticle.cpp in Sources */,
 				E7D2FEAA1755A3090083EB8E /* CloudsVisualSystemAmber.cpp in Sources */,
 				E7D2FEAB1755A3090083EB8E /* CloudsVisualSystemCities.cpp in Sources */,
+				E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */,
+				E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */,
+				E7D2FECE17572B2C0083EB8E /* ParticleConnector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

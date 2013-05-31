@@ -61,6 +61,7 @@ public:
 	ofVec3f adjustRotate;
     ofVec2f adjustScale;
     
+	float flowPosition;
     float edgeClip;
 	float farClip;
 	float nearClip;
