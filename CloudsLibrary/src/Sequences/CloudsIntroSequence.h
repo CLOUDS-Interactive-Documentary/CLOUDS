@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "ofxGameCamera.h"
-#include "ofxExtrudedText.h"
+//#include "ofxExtrudedText.h"
 
 class CloudsIntroSequence : public CloudsVisualSystemRezanator {
   public:
@@ -50,11 +50,20 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofFbo fullscreenFbo;
 	
+	float fontSize;
+	float fontExtrusion;
+	float fontScale;
 	
+	float currentFontSize;
+	float currentFontExtrusion;
+	
+	float perlinOffset;
+	float wireframeAlpha;
 	void reloadShaders();
 	
-	ofMesh tunnelMesh;
 	ofMesh blocksMesh;
+	ofMesh tunnelMeshTight;
+	ofMesh tunnelMeshLoose;
 	
 	ofxGameCamera camera;
 	
@@ -63,7 +72,7 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	
 	ofRange pointSize;	
 	ofRange distanceRange;
-
+	
 	void drawCloudsType();
 
 	float maxChromaDistort;
@@ -71,6 +80,8 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
 	float perlinDensity;
 	float perlinSpeed;
 	
-	ofxExtrudedText cloudsTypeMesh;
-	ofTrueTypeFont cloudsType;
+//	ofxExtrudedText cloudsTypeMesh;
+	ofMesh thickTypeMesh;
+	ofMesh thinTypeMesh;
+
 };

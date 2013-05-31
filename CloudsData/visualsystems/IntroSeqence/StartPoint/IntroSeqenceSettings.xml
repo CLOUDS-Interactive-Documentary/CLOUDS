@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min Point Size</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Point Size</Name>
+    <Value>3.586206913</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min Distance</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Distance</Name>
+    <Value>4285.714355469</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Chroma Max Distort</Name>
+    <Value>0.394088656</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Amplitude</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Density</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Speed</Name>
+    <Value>0.059113301</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Font Size</Name>
+    <Value>3.307881832</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Font Extrusion</Name>
+    <Value>5.517241478</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Font Scale</Name>
+    <Value>1.465517163</Value>
+</Widget>

@@ -48,37 +48,46 @@ public:
     void billBoard();
     
 protected:
-    void    makeGrid(float _size, int _nGrains);
+    void    makeGrid(float _size, int _resolution);
+    float   size, resolution, height;
     
+    //  Noise
+    //
     ofShader noiseShader;
     ofFbo    noiseFbo;
+    float    noiseSpeed,noiseZoom;
     
+    //  GrayScot
+    //
     ofShader grayscottShader;
     ofFbo    grayscottFbo[2];
+    float    diffU,diffV,k,f;
+    float    grayscottLoops;
+    float    grayscottFade;
     int      nPingPong;
     bool     bCleanGrayscott;
     bool     bGrayscott;
     
-    ofShader maskShader;
-    ofFbo   maskFbo;
-    
-    GLuint  cube;
-    
-    //  Noise
-    //
-    float   noiseSpeed,noiseZoom;
-    
-    //  GrayScott
-    //
-    float   grayscottFade;
-    
     //  Mask
     //
+    ofShader maskShader;
+    ofFbo    maskFbo;
     float   maskSize,maskCurve;
     
     //  Blocks
     //
-    float   size, nGrains, grainResolution;
-    float   minSize,maxHeight,minAlpha,minDist;
+    float   blocksMinSize,blocksMinDist,blocksAlpha;
+    float   blockSize;
+    GLuint  cube;
+    
+    //  WireFrames && Points
+    //
+    ofVboMesh meshPoints;
+    ofVboMesh meshWires;
+    ofShader extrudeShader;
+    float   meshHeight;
+    float   meshScale;
+    float   wireFramesAlpha;
+    float   pointsSize;
     
 };

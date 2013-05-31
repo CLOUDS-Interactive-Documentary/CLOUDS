@@ -2,24 +2,9 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1219.000000000</XPosition>
-    <YPosition>311.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CityRef</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CloudCity</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>GrayScott</Name>
-    <Value>0</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GrayScottCity</Name>
@@ -27,12 +12,7 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>JM_1</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>JM_2</Name>
+    <Name>GrayscottSmooke</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -44,4 +24,9 @@
     <Kind>2</Kind>
     <Name>SmookyCity</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SmookyGrayScott</Name>
+    <Value>0</Value>
 </Widget>

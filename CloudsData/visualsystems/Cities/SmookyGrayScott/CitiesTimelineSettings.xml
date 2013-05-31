@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TimelineSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1218.000000000</XPosition>
-    <YPosition>672.000000000</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -17,6 +17,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MAP</Name>
+    <Name>ANIMATE</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DELETE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SHOW/HIDE</Name>
+    <Value>1</Value>
 </Widget>

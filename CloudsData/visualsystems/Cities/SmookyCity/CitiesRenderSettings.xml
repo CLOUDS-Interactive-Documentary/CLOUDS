@@ -2,6 +2,56 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1222.000000000</XPosition>
-    <YPosition>260.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>422.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Size</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Resolution</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height</Name>
+    <Value>20.689655304</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Dist</Name>
+    <Value>0.231527090</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min_Size</Name>
+    <Value>0.083743840</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Blocks_Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>heightScale</Name>
+    <Value>1.006157875</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>heightHeight</Name>
+    <Value>1.033743739</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WireFrame_Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PointsSize</Name>
+    <Value>0.000000000</Value>
+</Widget>

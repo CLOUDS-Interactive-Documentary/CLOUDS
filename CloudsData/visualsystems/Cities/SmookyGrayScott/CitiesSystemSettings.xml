@@ -12,36 +12,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Grid_size</Name>
-    <Value>200.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Blocks_number</Name>
-    <Value>100.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Max_Height</Name>
-    <Value>73.665023804</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Min_Dist</Name>
-    <Value>0.435960591</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Min_Size</Name>
-    <Value>0.068965517</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Min_Alpha</Name>
-    <Value>0.103448279</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>noise_zoom</Name>
     <Value>14.285715103</Value>
 </Widget>
@@ -54,6 +24,11 @@
     <Kind>4</Kind>
     <Name>Feed</Name>
     <Value>0.017241379</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loops</Name>
+    <Value>5.137930870</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

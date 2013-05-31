@@ -50,6 +50,7 @@ public:
 	void draw(ofPolyRenderMode drawMode);
     
 	ofVideoPlayer& getPlayer();
+	ofShader& getShader();
 	
 	// Move in 3D Space
     ofVec3f worldPosition;
@@ -67,16 +68,12 @@ public:
     bool bFlipTexture;
     bool bMirror;
     
-protected:
-    
-
+  protected:
     void setupProjectionUniforms();
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
-    
-	
+    	
 	ofVideoPlayer player;
-//    ofBaseHasTexture *tex;
-	
+
 	ofShader shader;
     string shaderPath;
     

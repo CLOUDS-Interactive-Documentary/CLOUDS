@@ -140,7 +140,7 @@ public:
 
     virtual void selfSetupSystemGui();
     virtual void guiSystemEvent(ofxUIEventArgs &e);
-    
+
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
     
@@ -148,7 +148,8 @@ public:
     virtual void selfSetupTimelineGui();
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);    
 
-protected:
+
+  protected:
 
     //UI
     ofxUISuperCanvas *gui; 

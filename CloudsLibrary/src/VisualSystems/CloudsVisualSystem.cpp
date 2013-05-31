@@ -3,6 +3,7 @@
 
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
+	sharedRenderer = false;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -82,3 +83,21 @@ vector<string>& CloudsVisualSystem::getRelevantKeywords(){
 	return relevantKeywords;
 }
 
+void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
+	sharedRenderer = &newRenderer;
+}
+
+void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
+									  string speakerLastName,
+									  string quoteName)
+{
+	this->speakerFirstName = speakerFirstName;
+	this->speakerLastName = speakerLastName;
+	this->quoteName = quoteName;
+	hasSpeaker = true;
+	
+}
+
+void CloudsVisualSystem::speakerEnded(){
+	hasSpeaker = false;
+}
