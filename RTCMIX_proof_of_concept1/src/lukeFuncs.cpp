@@ -54,7 +54,8 @@ void INPUTSOUND(string file)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "rtinput(\"./data/%s\")", (char*)file.c_str());
+    //bx = snprintf(thebuf, 256, "rtinput(\"./data/%s\")", (char*)file.c_str());
+	bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)file.c_str());
     parse_score(thebuf, bx);
     
 }

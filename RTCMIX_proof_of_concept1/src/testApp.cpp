@@ -79,7 +79,7 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
             WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "thewave", "theamp");
             STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
         }
-        INPUTSOUND("SJ.aif"); // load up steve jobs, poor guy
+        INPUTSOUND(ofToDataPath("SJ.aif")); // load up steve jobs, poor guy
     }
     
     // not using right now
