@@ -11,8 +11,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	currentFlowPosition = 0;
 	generatePointGrid();
 	generateScanlines();
-	connectionGenerator.numParticles = 400;
-	connectionGenerator.setMinDistance(20);
+	connectionGenerator.numParticles = 200;
+	connectionGenerator.setMinDistance(40);
 	connectionGenerator.setup();
 }
 
@@ -35,7 +35,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	currentFlowPosition += cloudFlow;
 	sharedRenderer->flowPosition = currentFlowPosition;
 	
-	connectionGenerator.update();
+	//connectionGenerator.update();
 }
 
 //--------------------------------------------------------------
