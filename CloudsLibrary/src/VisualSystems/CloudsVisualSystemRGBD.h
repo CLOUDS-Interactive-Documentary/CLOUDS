@@ -72,7 +72,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
 	float pointHorizontalSpace;
 	void generatePointGrid();
 
-
+	bool drawMesh;
+	float meshAlpha;
+	
 	float cloudFlow;
 	float currentFlowPosition;
 	

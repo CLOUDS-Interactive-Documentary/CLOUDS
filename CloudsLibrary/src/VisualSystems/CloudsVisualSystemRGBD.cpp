@@ -9,6 +9,9 @@ string CloudsVisualSystemRGBD::getSystemName(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	currentFlowPosition = 0;
+	
+	drawMesh = false;
+	
 	generatePointGrid();
 	generateScanlines();
 	connectionGenerator.numParticles = 200;
@@ -50,7 +53,41 @@ void CloudsVisualSystemRGBD::generatePointGrid(){
 			pointGrid.addVertex(ofVec3f(x,y,0));
 		}
 	}
-	pointGrid.setMode(OF_PRIMITIVE_POINTS);
+	
+	pointGrid.clearIndices();
+	int x = 0;
+	int y = 0;
+	
+	int gw = ceil(640 / pointHorizontalSpace);
+	int w = gw*pointHorizontalSpace;
+	int h = 480;
+	
+	for (float ystep = 0; ystep < h-pointVerticalSpace; ystep += pointVerticalSpace){
+		for (float xstep = 0; xstep < w-pointHorizontalSpace; xstep += pointHorizontalSpace){
+			ofIndexType a,b,c;
+			
+			a = x+y*gw;
+			b = (x+1)+y*gw;
+			c = x+(y+1)*gw;
+			pointGrid.addIndex(a);
+			pointGrid.addIndex(b);
+			pointGrid.addIndex(c);
+            
+			a = (x+1)+(y+1)*gw;
+			b = x+(y+1)*gw;
+			c = (x+1)+(y)*gw;
+			pointGrid.addIndex(a);
+			pointGrid.addIndex(b);
+			pointGrid.addIndex(c);
+			
+			x++;
+		}
+		
+		y++;
+		x = 0;
+	}
+
+//	pointGrid.setMode(OF_PRIMITIVE_POINTS);
 }
 
 //--------------------------------------------------------------
@@ -92,7 +129,7 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 	for (float ystep = 0; ystep <= height-scanlineSimplify.y; ystep += scanlineSimplify.y){
 		for (float xstep = 0; xstep <= width-scanlineSimplify.x; xstep += scanlineSimplify.x){
 			
-			float ystepOffset = ofRandom(-scanlineSimplify.y/2,scanlineSimplify.y/2);
+			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
 			
 			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
 			horizontalScanLines.addVertex( ofVec3f(xstep, ystep+ystepOffset, 0) );
@@ -104,13 +141,6 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 
 	verticalScanLines.setMode( OF_PRIMITIVE_LINES );
 	horizontalScanLines.setMode( OF_PRIMITIVE_LINES );
-	
-	if(sharedRenderer != NULL){
-		sharedRenderer->setSimplification(scanlineSimplify);
-	}
-	else{
-		ofLogError() << "CloudsVisualSystemRGBD::generateScanlines -- renderer not set up!";
-	}
 	
 	refreshScanlineMesh = false;
 }
@@ -135,13 +165,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
 		
 		//Enable smooth lines and screen blending
-		glDisable(GL_DEPTH_TEST);
-		
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
+		
 		
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -150,9 +179,25 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofTranslate(0,0,pointcloudOffsetZ);
 		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
 		
+		sharedRenderer->bindRenderer();
+		
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
-		sharedRenderer->bindRenderer();
+		if(drawMesh){
+			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
+			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
+			glEnable(GL_DEPTH_TEST);
+			glDepthFunc(GL_LEQUAL);
+			glEnable(GL_CULL_FACE);
+			glCullFace(GL_FRONT);
+			ofSetColor(255*meshAlpha);
+			pointGrid.draw();
+			ofTranslate(0,0,-3);
+		}
+//		else{
+			glDisable(GL_DEPTH_TEST);
+			glDepthFunc(GL_LESS);
+//		}
 		
 		sharedRenderer->getShader().setUniform1f("flowPosition", currentFlowPosition);
 
@@ -162,23 +207,22 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			ofSetColor(255*randomPointAlpha);
 			randomPoints.draw();
 			ofSetColor(255*pointGridAlpha);
-			pointGrid.draw();
+			pointGrid.drawVertices();
 		}
 		
-		
+		sharedRenderer->setSimplification(scanlineSimplify);
+
+		//draw the lines
 		if(drawScanlines){
-			
-			//draw the lines
-			ofSetLineWidth(verticalScanlineThickness);
-			ofSetColor(255*verticalScanlineAlpha);
-			verticalScanLines.draw();
-			
-			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
 			
 			ofSetColor(255*horizontalScanlineAlpha);
 			ofSetLineWidth(horizontalScanlineThickness);
 			horizontalScanLines.draw();
-			
+
+			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
+			ofSetLineWidth(verticalScanlineThickness);
+			ofSetColor(255*verticalScanlineAlpha);
+			verticalScanLines.draw();
 		
 		}
 		
@@ -259,6 +303,10 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 	rdrGui->addSlider("CLOUD SCALE", .001,  0.5, &pointcloudScale);
 	rdrGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
 
+	rdrGui->addLabel("MESH");
+	rdrGui->addToggle("DRAW MESH", &drawMesh);
+	rdrGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
+	
 	rdrGui->addLabel("POINTS");
 	rdrGui->addToggle("DRAW POINTS", &drawPoints);
 	rdrGui->addSlider("POINTSIZE MAX", 0, 3, &pointSizeMax);

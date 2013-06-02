@@ -137,7 +137,7 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	
 	simplify = _simplification;
 	
-	/*
+/*
 	mesh.clearIndices();
 	int x = 0;
 	int y = 0;
@@ -184,7 +184,11 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	}
     
 	bMeshGenerated = true;
-	 */
+*/
+	
+	if(bRendererBound){
+		shader.setUniform2f("simplify", simplify.x,simplify.y);
+	}
 }
 
 void CloudsRGBDCombinedRender::reloadShader(){
