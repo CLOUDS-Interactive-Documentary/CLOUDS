@@ -5,11 +5,12 @@
 void testApp::setup(){
     
     // OF shit
-    ofBackground(0,0,0);
+    theFont.loadFont(ofToDataPath("Times New Roman.ttf"), 32);
+    ofBackground(0,0,0,255);
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
     ofEnableAlphaBlending();
-    ofSetBackgroundAuto(true);
+    ofSetBackgroundAuto(false);
     
     
     // RTcmix audio stuff
@@ -49,9 +50,41 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    // draw some lines
+    // which routine?
+    quadrant = returnQuadrant(ofGetMouseX(), ofGetMouseY());
+    
+    // get mouse scalars
+    if(quadrant%2==0) sx = ofMap(ofGetMouseX(), 0, ofGetWidth()/2, 0., 1.);
+    else sx = ofMap(ofGetMouseX(), ofGetWidth()/2, ofGetWidth(), 0., 1.);
+    if(quadrant/2==0) sy = ofMap(ofGetMouseY(), 0, ofGetHeight()/2, 0., 1.);
+    else sy = ofMap(ofGetMouseY(), ofGetHeight()/2, ofGetHeight(), 0., 1.);
+    // ...and scaled delta...
+    delta = sqrt((osx-sx)*(osx-sx) + (osy-sy)*(osy-sy));
+    osx = sx;
+    osy = sy;
+
+
+    // DRAW SOME STUFF
+    
+    // low background erase
+    ofSetColor(0,0,0,10);
+    ofRect(0,0,ofGetWidth(),ofGetHeight());
+
+    // words
+    ofSetColor(255,255,255,10);
+    theFont.drawString("waves", (ofGetWidth()*0.25)-theFont.stringWidth("waves")/2.0,ofGetHeight()*0.25);    
+    theFont.drawString("strum", (ofGetWidth()*0.75)-theFont.stringWidth("strum")/2.0,ofGetHeight()*0.25);    
+    theFont.drawString("mallet", (ofGetWidth()*0.25)-theFont.stringWidth("mallet")/2.0,ofGetHeight()*0.75);    
+    theFont.drawString("talk", (ofGetWidth()*0.75)-theFont.stringWidth("talk")/2.0,ofGetHeight()*0.75);    
+
+    // lines and circles
+    if(quadrant==0) ofSetColor(255, 0, 0, 60);
+    else if(quadrant==1) ofSetColor(0, 255, 0, 60);
+    else if(quadrant==2) ofSetColor(50, 50, 255, 60);
+    else if(quadrant==3) ofSetColor(255,255,0, 60);
     ofLine(0, ofGetHeight()/2, ofGetWidth(),ofGetHeight()/2);
     ofLine(ofGetWidth()/2, 0, ofGetWidth()/2,ofGetHeight());
+    ofCircle(ofGetMouseX(), ofGetMouseY(), delta*10.);
 
 }
 
@@ -79,12 +112,13 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
             WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "thewave", "theamp");
             STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
         }
-        INPUTSOUND(ofToDataPath("SJ.aif")); // load up steve jobs, poor guy
+        INPUTSOUND("SJ.aif"); // load up steve jobs, poor guy
     }
     
     // not using right now
     if (check_bang() == 1) {
-        if(DEBUG) std::cout << "BANG: " << ofGetElapsedTimef() << std::endl;
+        allownote = 1;
+        if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 }
 
@@ -107,28 +141,18 @@ void testApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 
-    float sx, sy, delta, t, beatoffset;
+    float t, beatoffset;
     
-    int q = returnQuadrant(ofGetMouseX(), ofGetMouseY()); // which routine?
-
-    // get mouse scalars
-    if(q%2==0) sx = ofMap(ofGetMouseX(), 0, ofGetWidth()/2, 0., 1.);
-    else sx = ofMap(ofGetMouseX(), ofGetWidth()/2, ofGetWidth(), 0., 1.);
-    if(q/2==0) sy = ofMap(ofGetMouseY(), 0, ofGetHeight()/2, 0., 1.);
-    else sy = ofMap(ofGetMouseY(), ofGetHeight()/2, ofGetHeight(), 0., 1.);
-    // ...and scaled delta...
-    delta = sqrt((osx-sx)*(osx-sx) + (osy-sy)*(osy-sy));
-    osx = sx;
-    osy = sy;
-    // ...and some timing shit...
+    // some timing shit...
     t = ofGetElapsedTimef();
     float tempo = 0.1;
+    float del1, del2;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
     
-    switch (q) {
+    switch (quadrant) {
         case 0:
             // pretty waves
-            WAVETABLE(0., 3., 0.01, mtof(scale(int((1.0-sy)*36.)+40., 2)), sy, "themellowwave", "themellowamp");
+            WAVETABLE(0., 3., 0.05, mtof(scale(int((1.0-sy)*36.)+40., 2)), sy, "themellowwave", "themellowamp");
             break;
         case 1:
             // plucky
@@ -138,9 +162,15 @@ void testApp::mouseDragged(int x, int y, int button){
             // only in mousePressed(), sorry
             break;
         case 3:
-            // steve jobs
-            if(delta>0.1) STEREO(0+beatoffset, sy, ofMap(delta, 0., 1., 0.0, tempo), 0.5, sx);
-            if(DEBUG) cout << beatoffset << endl;
+            // steve jobs in a beat
+            del1 = tempo*4./(float(round(sx*8.0+1.0))/8.0);
+            del2 = tempo*4./(float(round((1.0-sx)*8.0+1.0))/8.0);
+            SCHEDULEBANG(beatoffset);
+            if(allownote==1) {
+                PANECHO(0+beatoffset, sy, ofMap(delta, 0., 1., 0.0, tempo), 0.7, del1, del2, 0.4, 10.);
+                allownote=0;
+            }
+            if(DEBUG) cout << beatoffset << " " << del1 << " " << del2 << endl;
             break;            
         default:
             break;
@@ -150,20 +180,9 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     
-    float sx, sy, delta, t, beatoffset;
+    float t, beatoffset;
 
-    int q = returnQuadrant(ofGetMouseX(), ofGetMouseY()); // which routine?
-    
-    // get mouse scalars
-    if(q%2==0) sx = ofMap(ofGetMouseX(), 0, ofGetWidth()/2, 0., 1.);
-    else sx = ofMap(ofGetMouseX(), ofGetWidth()/2, ofGetWidth(), 0., 1.);
-    if(q/2==0) sy = ofMap(ofGetMouseY(), 0, ofGetHeight()/2, 0., 1.);
-    else sy = ofMap(ofGetMouseY(), ofGetHeight()/2, ofGetHeight(), 0., 1.);
-    // ...and scaled delta...
-    delta = sqrt((osx-sx)*(osx-sx) + (osy-sy)*(osy-sy));
-    osx = sx;
-    osy = sy;
-    // ...and some timing shit...
+    // some timing shit...
     t = ofGetElapsedTimef();
     float tempo = 0.125;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
@@ -171,14 +190,16 @@ void testApp::mousePressed(int x, int y, int button){
     int bpattern[] = {1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,1,1};
     
 
-    switch (q) {
+    switch (quadrant) {
         case 0:
             // fast attack waves
             WAVETABLE(0., 0.1, 0.2, mtof(scale(int((1.0-sy)*36.)+28., 2)), sy, "thewave", "theamp");
             break;
         case 1:
-            // loud low pluck
-            STRUM(0., 1.0, 0.3, mtof(scale(int((1.0-sy)*36.)+38., 5)), 1.0, 1., sx);
+            // plucks
+            STRUM(0., 1.0, 0.3, mtof(scale(int((1.0-sy)*36.)+50., 5)), 1.0, 1., sx);
+            STRUM(0.125, 1.0, 0.2, mtof(scale(int((1.0-sy)*36.)+50.+4., 5)), ofMap(delta, 0., 1., 5., 0.1), 1., sx);
+            STRUM(0.25, 1.0, 0.2, mtof(scale(int((1.0-sy)*36.)+50.+7., 5)), ofMap(delta, 0., 1., 5., 0.1), 1., sx);
             break;
         case 2:
             // beats
@@ -188,7 +209,6 @@ void testApp::mousePressed(int x, int y, int button){
             MMODALBAR(i*tempo+beatoffset, 1., 0.2, mtof(scale(int((1.0-sy)*36.)+40., 2)), ofMap(i,0,31,0.1,0.9), sy, int(ofRandom(8)));
                 }
             }
-            if(DEBUG) std::cout << "BANG: " << ofGetElapsedTimef() << std::endl;
             if(DEBUG) cout << sx << " " << sy << " " << delta << endl;
             break;
         case 3:

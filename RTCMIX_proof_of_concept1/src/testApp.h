@@ -30,7 +30,11 @@ class testApp : public ofBaseApp{
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
     
+    ofTrueTypeFont theFont;
     int first_vec;
     int osx, osy;
+    int quadrant;
+    float sx, sy, delta;
+    float allownote;
 
 };

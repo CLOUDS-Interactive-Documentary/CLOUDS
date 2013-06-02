@@ -1,6 +1,6 @@
 //
 //  lukeFuncs.h
-//  testRTcmix3
+//  RTCMIX proof of concept
 //
 //  Created by Roger DuBois on 5/28/13.
 //  Copyright (c) 2013 Polytechnic Institute of NYU. All rights reserved.
@@ -12,7 +12,7 @@
 #include "ofMain.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define DEBUG true
+#define DEBUG false
 
 // BGG rtcmix stuff
 extern "C" {
@@ -37,6 +37,7 @@ void STRUM(double outskip, double dur, double amp, double freq, double squish, d
 void REVERB(double time);
 void INPUTSOUND(string file);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan);
-void scheduleBang(double time);
+void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
+void SCHEDULEBANG(double time);
 
 #endif

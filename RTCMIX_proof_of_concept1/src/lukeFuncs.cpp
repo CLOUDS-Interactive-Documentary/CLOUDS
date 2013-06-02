@@ -1,6 +1,6 @@
 //
 //  lukeFuncs.cpp
-//  testRTcmix3
+//  RTCMIX proof of concept
 //
 //  Created by Roger DuBois on 5/28/13.
 //  Copyright (c) 2013 Polytechnic Institute of NYU. All rights reserved.
@@ -19,11 +19,13 @@ void RTcmixInit()
     thewave = maketable(\"wave\", 1000, 1.0, 0.7, 0.3, 0.3, 0.1, 0.1) \
     themellowamp = maketable(\"line\", 1000, 0.0, 0.0, 1.0, 1.0, 2.0, 0.0) \
     themellowwave = maketable(\"wave\", 1000, 1.0, 0.3, 0.2, 0.1, 0.05) \
-    thestereoamp = maketable(\"line\", 1000, 0.0, 0.0, 1.0, 1.0, 200.0, 1., 205.0, 0.0) \
+    thestereoamp = maketable(\"line\", 1000, 0.0, 0.0, 50.0, 1.0, 200.0, 1., 250.0, 0.0) \
     bus_config(\"WAVETABLE\", \"aux 0-1 out\") \
     bus_config(\"STRUM2\", \"aux 0-1 out\") \
+    bus_config(\"STEREO\", \"in 0\", \"aux 0-1 out\") \
     bus_config(\"MMODALBAR\", \"aux 0-1 out\") \
     bus_config(\"GVERB\", \"aux 0-1 in\", \"out 0-1\") \
+    bus_config(\"PANECHO\", \"in 0\", \"out 0-1\") \
     ";
 
     parse_score((char*)thescore.c_str(), thescore.length());
@@ -41,7 +43,7 @@ void REVERB(double time)
 }
 
 // schedules a bang flag to be set for a callback
-void scheduleBang(double time)
+void SCHEDULEBANG(double time)
 {
     char thebuf [256];
     int bx;
@@ -52,10 +54,10 @@ void scheduleBang(double time)
 // sets up rtinput() for a signal processing routine that requires an audio file
 void INPUTSOUND(string file)
 {
+    string fullfile = ofToDataPath(file);
     char thebuf [256];
     int bx;
-    //bx = snprintf(thebuf, 256, "rtinput(\"./data/%s\")", (char*)file.c_str());
-	bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)file.c_str());
+    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)fullfile.c_str());
     parse_score(thebuf, bx);
     
 }
@@ -69,6 +71,16 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan)
     parse_score(thebuf, bx);
     
 }
+
+void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "PANECHO(%f, %f*DUR(), %f, %f*thestereoamp, %f, %f, %f, %f)", outskip, inskip, dur, amp, leftdelay, rightdelay, feedback, ringdown);
+    parse_score(thebuf, bx);
+    
+}
+
 
 // basic wavetable interface
 void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope)
