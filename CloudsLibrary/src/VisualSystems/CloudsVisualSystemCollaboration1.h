@@ -44,7 +44,9 @@ class _C:public CloudsVisualSystemRezanator{
     void selfUpdate();
     void selfDrawBackground();
     void selfDraw();
-	void selfSetupGuis(); 
+	void selfSetupGuis();
+    
+    
 	ofxUISlider *spinSlider;
 	ofxUISlider *dotSizeSlider;
     ofxUISlider *nucleusSize;
@@ -52,8 +54,14 @@ class _C:public CloudsVisualSystemRezanator{
     ofxUISlider *alphaSlider;
     ofxUISlider *swaySlider;
     ofxUISlider *nodeMaxSlider;
-    ofxUIButton *resetButton;
     ofxUISlider *rootCountSlider;
+    ofxUISlider *danceAmpSlider;
+    ofxUISlider *danceFreqSlider;
+    ofxUISlider *danceOffsetSlider;
+
+    
+    ofxUIButton *resetButton;
+    ofxUIButton *saveButton;
 	float rotation;
 	vector<jtn::TreeNode*> rootNodes;
 	static float dotSize;
@@ -62,7 +70,11 @@ class _C:public CloudsVisualSystemRezanator{
     static float sway;
     static int nodeMax;
     static int rootCount;
+    static float danceAmp;
+    static float danceFreq;
+    static float danceOffset;
     void selfGuiEvent(ofxUIEventArgs &e);
     void reset();
+    void writeToDisk(string dirname);
 };
 

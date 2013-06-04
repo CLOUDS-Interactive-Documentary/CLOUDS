@@ -13,8 +13,13 @@ float _C::alpha = 0;
 float _C::sway = 0;
 int _C::nodeMax = 0;
 int _C::rootCount = 4;
+float _C::danceAmp = 0;
+float _C::danceFreq = 0;
+float _C::danceOffset = 0;
 
 void _C::reset(){
+    
+    
     
     vector<_N*>::iterator it;
     for( it=_N::all.begin() ; it!=_N::all.end() ; it++){
@@ -43,12 +48,13 @@ void _C::reset(){
             rootNodes.push_back(n);
         }
     }
-   
 }
 
 void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
+    }else if(e.widget->getName()=="Freeze Tree To Disk" && ofGetMousePressed()){
+        
     }
 }
 
@@ -56,11 +62,14 @@ string _C::getSystemName(){
   return "Collab1";
 }
 
+void _C::writeToDisk(string dirname){
+    ofstream outfile((dirname + "/hansolo.carbonite").c_str());
+    outfile << "hi there";
+}
+
 void _C::selfSetup(){
     rotation = 0;
-    
     reset();
-    
 }
 
 void _C::selfSetupGuis(){
@@ -73,23 +82,32 @@ void _C::selfSetupGuis(){
     nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
     resetButton = gui->addButton("Reset", false, 64,64);
     rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
+    danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
+    danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
+    danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
+    saveButton = gui->addButton("Freeze Tree To Disk", false, 32,32);
 }
 
 void _C::selfUpdate(){
 	
-	rotation += spinSlider->getScaledValue();
-	_N::terminals.clear();
-    
+    rotation += spinSlider->getScaledValue();
+
+    _N::terminals.clear();
     vector<_N*>::iterator it;
     for(it=rootNodes.begin();it!=rootNodes.end();it++){
         (*it)->update();
     }
+
 	axonThickness = axonThicknessSlider->getScaledValue();
 	dotSize = dotSizeSlider->getScaledValue();
     alpha = alphaSlider->getScaledValue();
     sway = swaySlider->getScaledValue();
     nodeMax = nodeMaxSlider->getScaledValue();
     rootCount = rootCountSlider->getScaledValue();
+    danceAmp = danceAmpSlider->getScaledValue();
+    danceFreq = danceFreqSlider->getScaledValue();
+    danceOffset = danceOffsetSlider->getScaledValue();
+    
 }
 
 void _C::selfDrawBackground(){
@@ -147,14 +165,20 @@ int _N::maxDepth = 0;
 
 void _N::update(){
 
+    
+    
     int n = ofGetFrameNum();
     
     ofPoint temp(future);
+    
     temp += ofPoint(
-                    ofSignedNoise( n * 0.01 , 4000 , generation * 0.1 ) * 1,
-                    ofSignedNoise( n * 0.01 , 5000 , generation * 0.1) * 1,
-                    ofSignedNoise( n * 0.01 , 6000 , generation * 0.1) * 1
-    );
+                    ofSignedNoise( n * _C::danceFreq , future.x  * _C::danceFreq , generation * _C::danceOffset ),
+                    ofSignedNoise( n * _C::danceFreq , future.y * _C::danceFreq , generation * _C::danceOffset ),
+                    ofSignedNoise( n * _C::danceFreq , future.z  * _C::danceFreq, generation * _C::danceOffset )
+                    ) * _C::danceAmp;
+     
+    
+    
 	x += (temp.x - x)*0.1;
 	y += (temp.y - y)*0.1;
 	z += (temp.z - z)*0.1;
