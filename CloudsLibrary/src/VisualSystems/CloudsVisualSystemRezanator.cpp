@@ -427,7 +427,7 @@ void CloudsVisualSystemRezanator::setupCameraParams()
     cam.setFov(camFOV);
 //    cam.setForceAspectRatio(true);
 //    bgAspectRatio = (float)ofGetWidth()/(float)ofGetHeight();
-//	cam.setAspectRatio(bgAspectRatio);
+//    cam.setAspectRatio(bgAspectRatio);
     xRot = new ofx1DExtruder(0);
     yRot = new ofx1DExtruder(0);
     zRot = new ofx1DExtruder(0);
