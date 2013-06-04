@@ -62,7 +62,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	
 	ofVboMesh mesh;
 	World3D physics;
-	
+	map<Particle3D*, ofIndexType> particleToMeshIndex;
 	vector< vector<Particle3D*> > particles;
 	
 };
