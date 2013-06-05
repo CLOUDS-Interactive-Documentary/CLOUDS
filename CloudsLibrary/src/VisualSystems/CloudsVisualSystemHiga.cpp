@@ -26,7 +26,27 @@ void CloudsVisualSystemHiga::selfSetup(){
 }
 
 void CloudsVisualSystemHiga::selfSetupGuis(){
-
+	
+    customGui = new ofxUISuperCanvas("EXAMPLE CUSTOM", gui);
+    customGui->copyCanvasStyle(gui);
+    customGui->copyCanvasProperties(gui);
+    customGui->setName("ExampleCustom");
+    customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//EXAMPLES
+//	customGui->addButton("REGENERATE", &shouldRegenerateMesh);
+//	
+	customGui->addSlider("EXAMPLE", 10, 1000, &exampleSlider);
+//	customGui->addSlider("CLOTH HEIGHT", 10, 1000, &hieght);
+//	
+//	customGui->addSlider("GRID SIZE", 10, 100, &gridSize);
+//	
+//	customGui->addSlider("SPRING STRENGTH", .001, 1.0, &springStrength);
+	
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHiga::selfGuiEvent);
+	
+    guis.push_back(customGui);
+    guimap[customGui->getName()] = customGui;
 }
 
 

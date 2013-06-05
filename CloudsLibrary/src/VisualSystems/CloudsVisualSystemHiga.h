@@ -43,5 +43,8 @@ class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
 	void guiRenderEvent(ofxUIEventArgs &e);
 	
 	vector<ofNode> testNodeExamples;
+
+	ofxUISuperCanvas* customGui;
+	float exampleSlider;
 };
 

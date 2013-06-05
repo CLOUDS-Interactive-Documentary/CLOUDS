@@ -1,0 +1,15 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>EXAMPLE</WidgetName>
+                <WidgetID>2</WidgetID>
+                <WidgetCanvasParent>ExampleCustom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>
