@@ -50,11 +50,15 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
  
   protected:
 	
+	
+	ofxUISuperCanvas* clothGui;
+	
 	float clothWidth;
 	float clothHeight;
-	int gridSizeX;
-	int gridSizeY;
 	
+	float gridSize;
+	
+	bool shouldRegenerateMesh;
 	void generateMesh();
 	
 	float springStrength;
@@ -65,4 +69,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	map<Particle3D*, ofIndexType> particleToMeshIndex;
 	vector< vector<Particle3D*> > particles;
 	
+	//color generators
+	vector<ofColor> initColors();
+	vector<ofColor> colors;
+
 };
