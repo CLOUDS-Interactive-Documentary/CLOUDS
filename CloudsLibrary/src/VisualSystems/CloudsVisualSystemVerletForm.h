@@ -50,6 +50,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
  
   protected:
 	
+	bool doRegenerateMesh;
 	
 	ofxUISuperCanvas* clothGui;
 	
@@ -63,8 +64,9 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	
 	float springStrength;
 	float springDampening;
+	float springExtend;
 	
-	ofVboMesh mesh;
+	ofVboMesh* mesh;
 	World3D physics;
 	map<Particle3D*, ofIndexType> particleToMeshIndex;
 	vector< vector<Particle3D*> > particles;

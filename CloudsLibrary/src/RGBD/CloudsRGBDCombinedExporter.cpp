@@ -147,7 +147,10 @@ void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 
 void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* rgbdRenderer, ofPixelsRef videoPixels, int frameNum){
 
-
+	if(videoPixels.getWidth() != faceFBO.getWidth() || videoPixels.getHeight() != faceFBO.getHeight()){
+		
+	}
+	
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
 	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
@@ -213,18 +216,97 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
+	
 	for(int i = 0; i < rgbdRenderer->validVertIndices.size(); i++){
 		ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
 		pair<int,int> pixelCoord = rgbdRenderer->getPixelLocationForIndex( rgbdRenderer->validVertIndices[i]  );
 		outputImage.setColor(640 + pixelCoord.first,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
+	/*
+	
+	//face extract
+	bool foundFace = tracker.update(toCv(videoPixels));
+	if(foundFace){
+		ofPolyline leftEye = tracker.getImageFeature(ofxFaceTracker::LEFT_EYE);
+		ofPolyline rightEye = tracker.getImageFeature(ofxFaceTracker::RIGHT_EYE);
+		ofPolyline faceOutline = tracker.getImageFeature(ofxFaceTracker::FACE_OUTLINE);
+		
+		if(!inFace && foundFirstFace){
+			
+			ofPolyline interpLeftEye;
+			ofPolyline interpRightEye;
+			ofPolyline interpFace;
+			
+			for(int i = lastFrameFound+1; i < frameNum; i++){
+				float delta = ofMap(i, lastFrameFound, frameNum, 0, 1.0);
+				
+				//LOAD IMAGE
+				char filename[1024];
+				sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), i);
+				ofPixels pix;
+				if(!ofLoadImage(pix, filename)){
+					ofLogError() << "Retro face fail -- Couldn't load image " << filename << endl;
+					continue;
+				}
+				
+				interpolatePolyLine(lastLeftEye, leftEye, interpLeftEye, delta);
+				interpolatePolyLine(lastRightEye, rightEye, interpRightEye, delta);
+				interpolatePolyLine(lastFace, faceOutline, interpFace, delta);
+				
+				//ADD FACE
+				addFaceToPixels
+				//SAVE IMAGE AGAIN
+				
+				//renderOutlinesToFBO(interpLeftEye, interpRightEye, interpFace);
+				saveImage(outputPath, i);
+			}
+		}
+		
+		foundFirstFace = true;
+		
+		lastLeftEye = leftEye;
+		lastRightEye = rightEye;
+		lastFace = faceOutline;
+	}
+	*/
 	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
 	cout << "Saving filename " << filename << endl;
 	ofSaveImage(outputImage, filename);
+}
 
+void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixelsRef& pixels, ofRectangle targetRect, ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline){
+
+	faceFBO.begin();
+	ofClear(0,0,0,0);
+	
+	ofPushStyle();
+	
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
+	ofSetColor(0,0,255,255);
+	ofBeginShape();
+	ofVertices(faceOutline.getVertices());
+	ofEndShape();
+	
+	ofSetColor(255,0,0,255);
+	ofBeginShape();
+	ofVertices(leftEye.getVertices());
+	ofEndShape();
+	
+	ofSetColor(255,0,0,255);
+	ofBeginShape();
+	ofVertices(rightEye.getVertices());
+	ofEndShape();
+	
+	ofPopStyle();
+	
+	faceFBO.end();
+	
+	ofPixels facePixels;
+	
 }
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){

@@ -156,7 +156,7 @@
 - (void)draw
 {
 
-//	framebuffer.begin();
+	framebuffer.begin();
 	ofClear(0);
 	
 	ofPushStyle();
@@ -191,9 +191,9 @@
 	glDisable(GL_DEPTH_TEST);
 	
 	ofPopStyle();
-//	framebuffer.end();
+	framebuffer.end();
 	
-//	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
+	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
 }
 
 - (void) loadClipForAlignment:(id)sender
