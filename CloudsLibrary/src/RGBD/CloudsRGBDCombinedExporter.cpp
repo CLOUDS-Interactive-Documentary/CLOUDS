@@ -9,12 +9,20 @@ CloudsRGBDCombinedExporter::CloudsRGBDCombinedExporter(){
     
 	renderer = NULL;
 	player = NULL;
-    
+	
 	videoRectangle = ofRectangle(0,0,1280,720);
 }
 
 CloudsRGBDCombinedExporter::~CloudsRGBDCombinedExporter(){
 	
+}
+
+void CloudsRGBDCombinedExporter::prepare(){
+	foundFirstFace = false;
+	lastFaceFrameFound = 0;
+	inFace = false;
+	tracker.setup();
+
 }
 
 void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
@@ -147,15 +155,12 @@ void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 
 void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* rgbdRenderer, ofPixelsRef videoPixels, int frameNum){
 
-	if(videoPixels.getWidth() != faceFBO.getWidth() || videoPixels.getHeight() != faceFBO.getHeight()){
-		
-	}
-	
+
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
-	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480 + 360)
 	{
-		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
 	}
 
 	//COPY video pixels into buffer
@@ -188,7 +193,6 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofxPCL::PointNormalPointCloud pc_n;
 	ofxPCL::normalEstimation(pc, pc_n );
 	
-	
 	//  Make a new mesh with that information
 	//
 	mesh = ofxPCL::toOF(pc_n);
@@ -214,6 +218,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		}
 	}
 	
+	
+	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
+	
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
 	
@@ -223,10 +230,21 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		outputImage.setColor(640 + pixelCoord.first,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
-	/*
+	
+	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
+		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+	}
+	
+	if(!cairoRenderer.getImageSurfacePixels().isAllocated() ||
+	   cairoRenderer.getImageSurfacePixels().getWidth() !=  videoPixels.getWidth() ||
+	   cairoRenderer.getImageSurfacePixels().getHeight() !=  videoPixels.getHeight())
+	{
+	   cairoRenderer.setupMemoryOnly(ofCairoRenderer::IMAGE, false, false, ofRectangle(0,0,videoPixels.getWidth(), videoPixels.getHeight()) );
+	}
 	
 	//face extract
-	bool foundFace = tracker.update(toCv(videoPixels));
+	bool foundFace = tracker.update(ofxCv::toCv(videoPixels));
+	//bool foundFace = false;
 	if(foundFace){
 		ofPolyline leftEye = tracker.getImageFeature(ofxFaceTracker::LEFT_EYE);
 		ofPolyline rightEye = tracker.getImageFeature(ofxFaceTracker::RIGHT_EYE);
@@ -238,8 +256,8 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 			ofPolyline interpRightEye;
 			ofPolyline interpFace;
 			
-			for(int i = lastFrameFound+1; i < frameNum; i++){
-				float delta = ofMap(i, lastFrameFound, frameNum, 0, 1.0);
+			for(int i = lastFaceFrameFound + 1; i < frameNum; i++){
+				float delta = ofMap(i, lastFaceFrameFound, frameNum, 0, 1.0);
 				
 				//LOAD IMAGE
 				char filename[1024];
@@ -255,21 +273,31 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				interpolatePolyLine(lastFace, faceOutline, interpFace, delta);
 				
 				//ADD FACE
-				addFaceToPixels
-				//SAVE IMAGE AGAIN
+				addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
+								interpLeftEye, interpRightEye, interpFace);
 				
-				//renderOutlinesToFBO(interpLeftEye, interpRightEye, interpFace);
-				saveImage(outputPath, i);
+				cout << "RE-SAVING filename with face " << filename << endl;
+				//SAVE IMAGE AGAIN
+				ofSaveImage(pix, filename);
 			}
 		}
 		
 		foundFirstFace = true;
+		inFace = true;
 		
 		lastLeftEye = leftEye;
 		lastRightEye = rightEye;
 		lastFace = faceOutline;
+
+		addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
+						leftEye, rightEye, faceOutline);
+
+		lastFaceFrameFound = frameNum;
 	}
-	*/
+	else{
+		ofLogError() << " NO FACE FOUND FOR CLIP " << clipName << " FRAME " << ofToString(frameNum);
+		inFace = false;
+	}
 	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
@@ -277,36 +305,41 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofSaveImage(outputImage, filename);
 }
 
-void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixelsRef& pixels, ofRectangle targetRect, ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline){
+void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta){
+    if(a.getVertices().size() != b.getVertices().size()){
+        ofLogError("Polylines did not match in size");
+        return;
+    }
+    
+    out.clear();
+    
+    for(int i = 0; i < a.getVertices().size(); i++){
+        out.addVertex( a.getVertices()[i].getInterpolated(b.getVertices()[i], delta) );
+    }
+}
 
-	faceFBO.begin();
-	ofClear(0,0,0,0);
+
+void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
+												 ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline){
+
+	ofPath faceShape;
+	for(int i = 0; i < faceOutline.getVertices().size(); i++){
+		faceShape.lineTo(faceOutline.getVertices()[i]);
+	}
+	faceShape.close();
+	faceShape.setFillColor(ofColor(0,0,255));
+	cairoRenderer.setupGraphicDefaults();
+	cairoRenderer.background(0);
+	cairoRenderer.setColor(0, 0, 255);
+	cairoRenderer.draw(faceShape);
+	cairoRenderer.flush();
 	
-	ofPushStyle();
-	
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	
-	ofSetColor(0,0,255,255);
-	ofBeginShape();
-	ofVertices(faceOutline.getVertices());
-	ofEndShape();
-	
-	ofSetColor(255,0,0,255);
-	ofBeginShape();
-	ofVertices(leftEye.getVertices());
-	ofEndShape();
-	
-	ofSetColor(255,0,0,255);
-	ofBeginShape();
-	ofVertices(rightEye.getVertices());
-	ofEndShape();
-	
-	ofPopStyle();
-	
-	faceFBO.end();
-	
-	ofPixels facePixels;
-	
+	ofPixels resized = cairoRenderer.getImageSurfacePixels();
+	resized.setImageType(OF_IMAGE_COLOR);
+	resized.resize(target.getWidth(), target.getHeight());
+//	cout << "pasting image of size " << resized.getWidth() << " " << resized.getHeight() << " into " << target.x << " " << target.y <<  endl;
+//	cout << "Target image size is " << targetPixels.getWidth() << " " << targetPixels.getHeight() << endl;
+	resized.pasteInto(targetPixels, target.x, target.y);
 }
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){

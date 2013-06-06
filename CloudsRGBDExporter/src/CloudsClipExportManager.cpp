@@ -35,6 +35,7 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load movie";
 	}
+	
 	renderer.cacheValidVertices = true;
 	renderer.setup(rgbdPlayer.getScene().calibrationFolder);
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
@@ -48,6 +49,10 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.scale = currentClip.adjustScale;
 
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
+	
+	exporter.prepare();
+	
+	cout << "STARTING CLIP EXPORT " << endl;
 	
 	startThread(true, false);
 }
@@ -69,9 +74,10 @@ void CloudsClipExportManager::threadedFunction(){
 		dir.create();
 	}
 	
-	exporter.writeMetaFile(outputDirectory, &renderer);
-	
+	bool completedClip = false;
 	while( isThreadRunning() && currentFrame <= currentClip.endFrame ){
+		
+		cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
 		rgbdPlayer.update();
 		renderer.update();
@@ -80,7 +86,14 @@ void CloudsClipExportManager::threadedFunction(){
 		rgbdPlayer.getVideoPlayer()->nextFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
 		
+		if(currentFrame > currentClip.endFrame){
+			completedClip = true;
+		}
 		ofSleepMillis(10);
+	}
+	
+	if(completedClip){
+		exporter.writeMetaFile(outputDirectory, &renderer);
 	}
 	
 	done = true;

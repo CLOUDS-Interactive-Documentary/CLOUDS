@@ -73,8 +73,8 @@
 - (void)windowResized:(NSSize)size;
 
 - (IBAction)loadClipForAlignment:(id)sender;
-- (IBAction) exportSelection:(id)sender;
-- (IBAction) cancelExport:(id)sender;
+- (IBAction)exportSelection:(id)sender;
+- (IBAction)cancelExport:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

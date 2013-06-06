@@ -30,10 +30,12 @@ class CloudsRGBDCombinedExporter {
 	void setRenderer(ofxRGBDCPURenderer* renderer);
 	void setPlayer(ofxRGBDPlayer* player);
 	
+	void prepare();
+	
 	void render(string outputPath, string clipName);
 	void renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* renderer, ofPixelsRef videoPixels, int frameNum);
 
-	//ofxFaceTracker tracker;
+	ofxFaceTracker tracker;
 	ofxCv::FlowPyrLK pyrLk;
 	
 	ofIntRange inoutPoint;
@@ -41,11 +43,10 @@ class CloudsRGBDCombinedExporter {
 protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
-	void addFaceToPixels(ofPixelsRef& pixels, ofRectangle targetRect, ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline);
+	void interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta);
+	void addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
+						 ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline);
 	
-	ofPixels normalImage;
-	ofPixels faceAndFlowImage;
-						 
 	ofxRGBDCPURenderer* renderer;  // It has a mesh, call .getReducedMesh();
 	ofxRGBDPlayer* player;
 	float minDepth;
@@ -58,10 +59,14 @@ protected:
     ofPolyline lastLeftEye;
     ofPolyline lastFace;
 	
-	ofFbo faceFBO;
+	//for offscreen
+	ofCairoRenderer cairoRenderer;
+
+//	ofFbo faceFBO; //draw target for face frame
+	ofPixels faceFrame; //copy to destination
 	bool inFace;
 	bool foundFirstFace;
-	int lastFrameFound;
+	int lastFaceFrameFound;
 };
 
 #endif

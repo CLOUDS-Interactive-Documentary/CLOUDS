@@ -98,7 +98,6 @@
 	}
 	
 	if(exporting){
-        cout << "exporting!" << endl;
 		for(int i = 0; i < exportManagers.size(); i++){
 			if(currentClipIndex < selectedClips.size()  && exportManagers[i]->isDone()){
 				cout << "EXPORTING CLIP " << selectedClips[currentClipIndex].getLinkName() << endl;;
@@ -233,8 +232,12 @@
 	for(int i = 0; i < exportManagers.size(); i++){
 		cout << "STOPPING THREAD " << i << endl;
 		exportManagers[i]->waitForThread(true);
+		[progressBars[i] setDoubleValue:0 ];
 	}
 	
+	[totalProgress setDoubleValue:0];
+
+
 	selectedClips.clear();
 	exporting = false;
 }

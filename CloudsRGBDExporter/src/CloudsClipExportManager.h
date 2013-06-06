@@ -27,6 +27,7 @@ class CloudsClipExportManager : public ofThread {
 	string exportDirectory;
 	
 	bool done;
+
 	int currentFrame;
 	
 	void threadedFunction();
