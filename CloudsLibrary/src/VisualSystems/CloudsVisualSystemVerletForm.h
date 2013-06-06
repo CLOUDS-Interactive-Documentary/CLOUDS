@@ -73,6 +73,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	map<Particle3D*, vector<ofIndexType> > particleToMeshIndices;
 	
 	
+	void updateNormals();
+	
 	vector< vector<Particle3D*> > particles;
 	
 	//color generators

@@ -154,12 +154,10 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 			baseMesh.addIndex(a);
 			baseMesh.addIndex(b);
 			baseMesh.addIndex(c);
-			
 		}
 	}
 	
 	//now we split it up and add colors	for(int)
-	
 	for(int i = 0; i < baseMesh.getNumIndices(); i+=3){
 		
 		particleToMeshIndices[ meshIndexToParticle[ baseMesh.getIndex(i+0) ] ].push_back(mesh.getNumVertices()+0);
@@ -174,17 +172,22 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 		mesh.addColor(colors[ int(ofNoise(mesh.getVertices()[i+1].x+100, mesh.getVertices()[i+1].z+100) * (colors.size()-1)) ]);
 		mesh.addColor(colors[ int(ofNoise(mesh.getVertices()[i+2].x+200, mesh.getVertices()[i+2].z+200) * (colors.size()-1)) ]);
 
+		mesh.addNormal(ofVec3f(0,1,0));
+		mesh.addNormal(ofVec3f(0,1,0));
+		mesh.addNormal(ofVec3f(0,1,0));
+		
 		mesh.addIndex(i+0);
 		mesh.addIndex(i+1);
 		mesh.addIndex(i+2);
-
 	}
+	
+	updateNormals();
 	
 	int numConnectionsPerEdge = gridSize/2;
 	for(int i = 0; i < numConnectionsPerEdge; i++){
 		
 		int xIndex = ofRandom(gridSize);
-		int yIndex =  0; //ofRandom(gridSize);
+		int yIndex = 0; //ofRandom(gridSize);
 		
 		particles[xIndex][yIndex]->moveTo( particles[xIndex][yIndex]->getPosition() + ofVec3f(0, ofRandom(-50, 50), 0) );
 		particles[xIndex][yIndex]->makeFixed();
@@ -214,7 +217,6 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 		particles[xIndex][yIndex]->moveTo( particles[xIndex][yIndex]->getPosition() + ofVec3f(0, ofRandom(-50, 50), 0) );
 		particles[xIndex][yIndex]->makeFixed();
 	}
-	
 
 	for(int i = 0; i < 3; i ++){
 		particles[ofRandom(gridSize)][ofRandom(gridSize)]->makeFixed();
@@ -229,7 +231,6 @@ void CloudsVisualSystemVerletForm::selfSetupGuis(){
     clothGui->setName("ClothSettings");
     clothGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	clothGui->addLabel("CLOTH");
 	clothGui->addSlider("CLOTH WIDTH", 10, 1000, &clothWidth);
 	clothGui->addSlider("CLOTH HEIGHT", 10, 1000, &clothHeight);
 	clothGui->addSlider("GRID SIZE", 10, 100, &gridSize);
@@ -266,6 +267,23 @@ void CloudsVisualSystemVerletForm::selfUpdate(){
 			mesh.getVertices()[ particleToMeshIndices[ particle ][j] ].set(particle->getPosition());
 		}
 	}
+	
+	updateNormals();
+}
+
+void CloudsVisualSystemVerletForm::updateNormals(){
+	for(int i = 0; i < mesh.getNumIndices(); i += 3){
+		
+		ofVec3f& a = mesh.getVertices()[ mesh.getIndex(i+0) ];
+		ofVec3f& b = mesh.getVertices()[ mesh.getIndex(i+1) ];
+		ofVec3f& c = mesh.getVertices()[ mesh.getIndex(i+2) ];
+		
+		ofVec3f normal = (b-a).getCrossed(c-a).normalized();
+		
+		mesh.setNormal(i+0, normal);
+		mesh.setNormal(i+1, normal);
+		mesh.setNormal(i+2, normal);
+	}
 }
 
 void CloudsVisualSystemVerletForm::selfDrawBackground(){	 
@@ -285,8 +303,11 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 	ofEnableAlphaBlending();
 	
 	
+//	glLightModelf(<#GLenum pname#>, <#GLfloat param#>)
 	//glShadeModel(GL_FLAT);
 	
+	//update normals
+
 	mesh.draw();
 	
 	
