@@ -66,13 +66,18 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	float springDampening;
 	float springExtend;
 	
-	ofVboMesh* mesh;
+	ofVboMesh mesh;
 	World3D physics;
 	map<Particle3D*, ofIndexType> particleToMeshIndex;
+	map<ofIndexType, Particle3D*> meshIndexToParticle;
+	map<Particle3D*, vector<ofIndexType> > particleToMeshIndices;
+	
+	
 	vector< vector<Particle3D*> > particles;
 	
 	//color generators
 	vector<ofColor> initColors();
 	vector<ofColor> colors;
 
+	ofPixels colorPalettes;
 };
