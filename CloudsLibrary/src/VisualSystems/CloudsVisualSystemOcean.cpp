@@ -13,7 +13,6 @@ CloudsVisualSystemOcean::CloudsVisualSystemOcean(){
     oceanTileSizeX = 200;
     oceanTileSizeY = 200;
 	
-	
 }
 
 string CloudsVisualSystemOcean::getSystemName(){
@@ -22,6 +21,13 @@ string CloudsVisualSystemOcean::getSystemName(){
 
 void CloudsVisualSystemOcean::selfSetup(){
 	
+	ocean.size = ofVec3f(oceanTileSizeX, 1.0, oceanTileSizeY);
+    ocean.windSpeed = 32;
+    ocean.setup();
+
+	renderer.shaderLocation = "";
+	renderer.setup(&ocean, 9, 9);
+	
 }
 
 void CloudsVisualSystemOcean::selfSetupGuis(){
@@ -29,6 +35,13 @@ void CloudsVisualSystemOcean::selfSetupGuis(){
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
+    ocean.waveSpeed = 15;
+    ocean.waveScale = 10;
+    ocean.choppyScale = 7;
+	
+	ocean.setFrameNum(ofGetFrameNum());
+    ocean.update();
+	renderer.update();
 	
 }
 
@@ -45,7 +58,8 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemOcean::selfDraw(){
-	
+	renderer.drawWireframe();
+
 }
 
 void CloudsVisualSystemOcean::selfExit(){
