@@ -18,6 +18,10 @@ fi
 #private, must be read
 git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
+cd ofxUI
+git checkout develop
+cd ..
+
 git clone git@github.com:rezaali/ofxColorPalettes
 git clone git@github.com:obviousjim/ofxOcean
 
@@ -26,7 +30,6 @@ git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
 git clone https://github.com/memo/ofxMSACore
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
-
 
 
 ${PREFIX}rezaali/ofxGenerative
@@ -38,10 +41,18 @@ ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
 ${PREFIX}Flightphase/ofxTextInputField
 ${PREFIX}obviousjim/ofxRGBDepth
+cd ofxRGBDepth
+git checkout develop
+cd ..
+
 ${PREFIX}obviousjim/ofxCv
 ${PREFIX}obviousjim/ofxKinect
 ${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer
 ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
+cd ofxTimeline
+git checkout develop
+cd ..
+
 ${PREFIX}obviousjim/ofxObjLoader		
