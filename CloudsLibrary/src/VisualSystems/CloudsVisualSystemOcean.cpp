@@ -20,25 +20,47 @@ string CloudsVisualSystemOcean::getSystemName(){
 }
 
 void CloudsVisualSystemOcean::selfSetup(){
+	generateOcean();
 	
-	ocean.size = ofVec3f(oceanTileSizeX, 1.0, oceanTileSizeY);
-    ocean.windSpeed = 32;
-    ocean.setup();
+}
 
+void CloudsVisualSystemOcean::generateOcean(){
+	ocean.size = ofVec3f(int(oceanTileSizeX), 1.0, int(oceanTileSizeY));
+    ocean.windSpeed = windSpeed;
+    ocean.setup();
+	
 	renderer.shaderLocation = "";
 	renderer.setup(&ocean, 9, 9);
-	
+
 }
 
 void CloudsVisualSystemOcean::selfSetupGuis(){
 	
+	oceanGui = new ofxUISuperCanvas("OCEAN", gui);
+    oceanGui->copyCanvasStyle(gui);
+    oceanGui->copyCanvasProperties(gui);
+	
+    oceanGui->setName("OceanSettings");
+    oceanGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	oceanGui->addSlider("OCEAN SIZE X", 10, 1000, &oceanTileSizeX);
+	oceanGui->addSlider("OCEAN SIZE Y", 10, 1000, &oceanTileSizeY);
+	oceanGui->addSlider("WIND SPEED Y", 2, 1000, &windSpeed);
+	
+	oceanGui->addButton("REGENERATE", &shouldRegenerateOcean);
+	
+	oceanGui->addSlider("WAVE SPEED", 1, 10, &ocean.waveSpeed);
+	oceanGui->addSlider("WAVE SCALE", 0, 100.0, &ocean.waveScale);
+	oceanGui->addSlider("WAVE CHOPPINESS", 0, 20, &ocean.choppyScale);
+		
+	ofAddListener(oceanGui->newGUIEvent, this, &CloudsVisualSystemOcean::selfGuiEvent);
+	
+    guis.push_back(oceanGui);
+    guimap[oceanGui->getName()] = oceanGui;
 }
 
 void CloudsVisualSystemOcean::selfUpdate(){
-    ocean.waveSpeed = 15;
-    ocean.waveScale = 10;
-    ocean.choppyScale = 7;
-	
+
 	ocean.setFrameNum(ofGetFrameNum());
     ocean.update();
 	renderer.update();
@@ -103,6 +125,9 @@ void CloudsVisualSystemOcean::selfSetupGui(){
 }
 
 void CloudsVisualSystemOcean::selfGuiEvent(ofxUIEventArgs &e){
+	if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
+		generateOcean();
+	}
 	
 }
 

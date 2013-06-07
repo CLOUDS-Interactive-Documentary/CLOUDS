@@ -46,15 +46,17 @@ class CloudsVisualSystemOcean : public CloudsVisualSystemRezanator {
 	ofxOcean ocean;
 	ofxOceanRenderer renderer;
 
+	bool shouldRegenerateOcean;
+	void generateOcean();
+	
+	ofxUISuperCanvas* oceanGui;
+	
 	//Generator variables
 	float windSpeed;
-    int oceanTileSizeX;
-    int oceanTileSizeY;
+    float oceanTileSizeX;
+    float oceanTileSizeY;
 
 	
-	float targetChoppy;
-	float targetHeight;
-	float targetSpeed;
 	
 	float waveScale;
 	float choppyScale;

@@ -374,7 +374,7 @@ void CloudsVisualSystemVerletForm::selfSetupGui(){
 }
 
 void CloudsVisualSystemVerletForm::selfGuiEvent(ofxUIEventArgs &e){
-	cout << "GUI EVENT " << e.widget->getName() << endl;
+
 	if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		generateMesh();
 	}
