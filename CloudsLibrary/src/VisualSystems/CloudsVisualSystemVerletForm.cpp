@@ -218,7 +218,7 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 		particles[xIndex][yIndex]->makeFixed();
 	}
 
-	for(int i = 0; i < 3; i ++){
+	for(int i = 0; i < 10; i ++){
 		particles[ofRandom(gridSize)][ofRandom(gridSize)]->makeFixed();
 	}
 }

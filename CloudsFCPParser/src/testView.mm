@@ -577,6 +577,7 @@
 	if(ofDirectory("../../../CloudsData/").exists()){
 		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 		parser.setup("../../../CloudsData/fcpxml/");
+
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
@@ -642,8 +643,7 @@
     }
 	else if(aTableView == playlistTable){
 		//return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];
-		return [NSString stringWithUTF8String: storyEngine.getClipHistory()[rowIndex].getLinkName().c_str()];
-		
+		return [NSString stringWithUTF8String: storyEngine.getClipHistory()[rowIndex].getLinkName().c_str()];		
 	}
 }
 

@@ -36,7 +36,6 @@ class CloudsRGBDCombinedExporter {
 	void renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* renderer, ofPixelsRef videoPixels, int frameNum);
 
 	ofxFaceTracker tracker;
-	ofxCv::FlowPyrLK pyrLk;
 	
 	ofIntRange inoutPoint;
     
@@ -58,6 +57,8 @@ protected:
 	ofPolyline lastRightEye;
     ofPolyline lastLeftEye;
     ofPolyline lastFace;
+	
+	ofPixels lastVideoFrame;
 	
 	//for offscreen
 	ofCairoRenderer cairoRenderer;

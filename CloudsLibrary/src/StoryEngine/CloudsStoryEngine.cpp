@@ -316,6 +316,7 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
 		return 0;
 	}
+	//maybe a bug... 
 	else if(freeTopic && containsCurrentTopic){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same topic as before " << currentTopic << endl;
 		return 0;
@@ -335,7 +336,7 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	
 	if(network->linkIsSuppressed(currentClip.getLinkName(), clip.getLinkName())) {
 		if(printDecisions) cout << "	REJECTED clip " << clip.getLinkName() << ": link is suppressed" << endl;
-		return 1;
+		return 0;
 	}
 	
 	//Base score

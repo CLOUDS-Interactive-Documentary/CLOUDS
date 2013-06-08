@@ -21,6 +21,9 @@ void CloudsRGBDCombinedExporter::prepare(){
 	foundFirstFace = false;
 	lastFaceFrameFound = 0;
 	inFace = false;
+	
+	lastVideoFrame.clear();
+	
 	tracker.setup();
 
 }
@@ -163,10 +166,11 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
 	}
 
+
 	//COPY video pixels into buffer
-	ofPixels temp = videoPixels;
-	temp.resize(videoRectangle.width, videoRectangle.height);
-	temp.pasteInto(outputImage, 0, 0);
+	ofPixels resizedVideoPixels = videoPixels;
+	resizedVideoPixels.resize(videoRectangle.width, videoRectangle.height,OF_INTERPOLATE_BICUBIC);
+	resizedVideoPixels.pasteInto(outputImage, 0, 0);
 	
 	ofShortPixels& p = rgbdRenderer->getDepthImage();
 	ofRectangle depthBox;
@@ -242,7 +246,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	   cairoRenderer.setupMemoryOnly(ofCairoRenderer::IMAGE, false, false, ofRectangle(0,0,videoPixels.getWidth(), videoPixels.getHeight()) );
 	}
 	
+	//////////////////
 	//face extract
+	//////////////////
 	bool foundFace = tracker.update(ofxCv::toCv(videoPixels));
 	//bool foundFace = false;
 	if(foundFace){
@@ -291,8 +297,31 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 		addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
 						leftEye, rightEye, faceOutline);
-
 		lastFaceFrameFound = frameNum;
+		
+		//////////
+		// DIFFERENCE MATTE
+		/////////
+		
+		ofPixels thisFrameGray = resizedVideoPixels;
+		thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
+		thisFrameGray.resize(faceTargetRectangle.width, faceTargetRectangle.height);
+		if(lastVideoFrame.isAllocated()){
+			cv::Mat thisFrameMat = ofxCv::toCv( thisFrameGray );
+			cv::Mat lastFrameMat = ofxCv::toCv( lastVideoFrame );
+			
+			ofPixels frameDifference;
+			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_GRAYSCALE);
+			cv::Mat frameDifferenceMat = ofxCv::toCv(frameDifference);
+			cv::absdiff(thisFrameMat, lastFrameMat, frameDifferenceMat);
+			
+			for(int i = 0; i < thisFrameGray.getWidth()*thisFrameGray.getHeight()){
+			}
+			}
+		}
+		
+		lastVideoFrame = thisFrameGray;
+
 	}
 	else{
 		ofLogError() << " NO FACE FOUND FOR CLIP " << clipName << " FRAME " << ofToString(frameNum);
@@ -336,7 +365,7 @@ void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixelsRef& targetPixels, ofPi
 	
 	ofPixels resized = cairoRenderer.getImageSurfacePixels();
 	resized.setImageType(OF_IMAGE_COLOR);
-	resized.resize(target.getWidth(), target.getHeight());
+	resized.resize(target.getWidth(), target.getHeight(), OF_INTERPOLATE_BICUBIC);
 //	cout << "pasting image of size " << resized.getWidth() << " " << resized.getHeight() << " into " << target.x << " " << target.y <<  endl;
 //	cout << "Target image size is " << targetPixels.getWidth() << " " << targetPixels.getHeight() << endl;
 	resized.pasteInto(targetPixels, target.x, target.y);
