@@ -223,8 +223,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	}
 	
 	
-	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
-	
+		
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
 	
@@ -235,32 +234,96 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
 	
+	// Copy in face info
+	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
 	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
 		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
+
+//	if(!frameMetaPixels.isAllocated() ||
+//	   frameMetaPixels.getWidth() !=  videoPixels.getWidth() ||
+//	   frameMetaPixels.getHeight() !=  videoPixels.getHeight())
+//	{
+//		frameMetaPixels.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+//	}
 	
-	if(!cairoRenderer.getImageSurfacePixels().isAllocated() ||
-	   cairoRenderer.getImageSurfacePixels().getWidth() !=  videoPixels.getWidth() ||
-	   cairoRenderer.getImageSurfacePixels().getHeight() !=  videoPixels.getHeight())
-	{
-	   cairoRenderer.setupMemoryOnly(ofCairoRenderer::IMAGE, false, false, ofRectangle(0,0,videoPixels.getWidth(), videoPixels.getHeight()) );
+//	if(!cairoRenderer.getImageSurfacePixels().isAllocated() ||
+//	   cairoRenderer.getImageSurfacePixels().getWidth() !=  videoPixels.getWidth() ||
+//	   cairoRenderer.getImageSurfacePixels().getHeight() !=  videoPixels.getHeight())
+//	{
+//	   cairoRenderer.setupMemoryOnly(ofCairoRenderer::IMAGE, false, false, ofRectangle(0,0,videoPixels.getWidth(), videoPixels.getHeight()) );
+//	}
+//	
+//	cairoRenderer.setupGraphicDefaults();
+//	cairoRenderer.background(0);
+
+	contours.setThreshold(40);
+	contours.setMinArea(50*50);
+	contours.findContours(videoPixels);
+	
+	if(contours.size() > 0){
+//		cairoRenderer.setColor(255, 0, 0);
+//		cairoRenderer.setFillMode(OF_FILLED);
+//		cairoRenderer.drawRectangle(0, 0, 0, videoPixels.getWidth(), videoPixels.getHeight());
+		
+		
+//		for (int i = 0; i < contours.size(); i++){
+//			ofPath contourPath;
+//			for(int p = 0; p < contours.getPolyline(i).getVertices().size(); p++){
+//				contourPath.lineTo(contours.getPolyline(i).getVertices()[p]);
+//			}
+//			contourPath.close();
+//			
+//			cairoRenderer.setColor(ofColor::white);
+//			contourPath.setFillColor(ofColor::white);
+//			cairoRenderer.draw(contourPath);
+////			cout << "FOUND CONTOUR size " << contours.getPolyline(i).getArea() << endl;
+//		}
+		
+		
+		for (int i = 0; i < contours.size(); i++){
+			cv::Mat dstMat = ofxCv::toCv(faceFrame);
+			const cv::Point* ppt[1] = { &(contours.getContour(i)[0]) };
+			int npt[] = { contours.getContour(i).size() };
+			dstMat.setTo(cv::Scalar(0));
+			cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,255));
+		}
+
+		
+//		char filename[1024];
+//		ofPixels resized = cairoRenderer.getImageSurfacePixels();
+//		resized.setImageType(OF_IMAGE_COLOR);
+//		sprintf(filename, "%s/__contour_%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
+//		cout << "Saving contour filename " << filename << endl;
+//		ofSaveImage(polyPixels, filename);
+		
+
+//		resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
+//		resized.pasteInto(outputImage, faceTargetRectangle.x, faceTargetRectangle.y);
+		
+		
+	}
+	else{
+		cout << "NO CONTOURS FOUND" << endl;
 	}
 	
 	//////////////////
 	//face extract
 	//////////////////
 	bool foundFace = tracker.update(ofxCv::toCv(videoPixels));
-	//bool foundFace = false;
+	//foundFace = false;
 	if(foundFace){
 		ofPolyline leftEye = tracker.getImageFeature(ofxFaceTracker::LEFT_EYE);
 		ofPolyline rightEye = tracker.getImageFeature(ofxFaceTracker::RIGHT_EYE);
 		ofPolyline faceOutline = tracker.getImageFeature(ofxFaceTracker::FACE_OUTLINE);
+		ofPolyline mouthOutline = tracker.getImageFeature(ofxFaceTracker::OUTER_MOUTH);
 		
 		if(!inFace && foundFirstFace){
 			
 			ofPolyline interpLeftEye;
 			ofPolyline interpRightEye;
 			ofPolyline interpFace;
+			ofPolyline interpMouth;
 			
 			for(int i = lastFaceFrameFound + 1; i < frameNum; i++){
 				float delta = ofMap(i, lastFaceFrameFound, frameNum, 0, 1.0);
@@ -277,10 +340,11 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				interpolatePolyLine(lastLeftEye, leftEye, interpLeftEye, delta);
 				interpolatePolyLine(lastRightEye, rightEye, interpRightEye, delta);
 				interpolatePolyLine(lastFace, faceOutline, interpFace, delta);
+				interpolatePolyLine(lastMouth, mouthOutline, interpMouth, delta);
 				
 				//ADD FACE
 				addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
-								interpLeftEye, interpRightEye, interpFace);
+								interpLeftEye, interpRightEye, interpFace, interpMouth);
 				
 				cout << "RE-SAVING filename with face " << filename << endl;
 				//SAVE IMAGE AGAIN
@@ -294,40 +358,61 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		lastLeftEye = leftEye;
 		lastRightEye = rightEye;
 		lastFace = faceOutline;
-
+		
 		addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
-						leftEye, rightEye, faceOutline);
+						leftEye, rightEye, faceOutline, mouthOutline);
+		
 		lastFaceFrameFound = frameNum;
-		
-		//////////
-		// DIFFERENCE MATTE
-		/////////
-		
-		ofPixels thisFrameGray = resizedVideoPixels;
-		thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
-		thisFrameGray.resize(faceTargetRectangle.width, faceTargetRectangle.height);
-		if(lastVideoFrame.isAllocated()){
-			cv::Mat thisFrameMat = ofxCv::toCv( thisFrameGray );
-			cv::Mat lastFrameMat = ofxCv::toCv( lastVideoFrame );
-			
-			ofPixels frameDifference;
-			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_GRAYSCALE);
-			cv::Mat frameDifferenceMat = ofxCv::toCv(frameDifference);
-			cv::absdiff(thisFrameMat, lastFrameMat, frameDifferenceMat);
-			
-			for(int i = 0; i < thisFrameGray.getWidth()*thisFrameGray.getHeight()){
-			}
-			}
-		}
-		
-		lastVideoFrame = thisFrameGray;
 
 	}
 	else{
 		ofLogError() << " NO FACE FOUND FOR CLIP " << clipName << " FRAME " << ofToString(frameNum);
 		inFace = false;
 	}
+		
+	//////////
+	// DIFFERENCE MATTE
+	/////////
+	ofPixels thisFrameGray = resizedVideoPixels;
+	thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
+	thisFrameGray.resize(faceTargetRectangle.width, faceTargetRectangle.height);
+	if(lastVideoFrame.isAllocated()){
+		cv::Mat thisFrameMat = ofxCv::toCv( thisFrameGray );
+		cv::Mat lastFrameMat = ofxCv::toCv( lastVideoFrame );
+		
+		if(!frameDifference.isAllocated() ||
+		   thisFrameGray.getWidth() != frameDifference.getWidth() ||
+		   thisFrameGray.getHeight() != frameDifference.getHeight() )
+		{
+			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_GRAYSCALE);
+		}
+		
+		cv::Mat frameDifferenceMat = ofxCv::toCv(frameDifference);
+		cv::absdiff(thisFrameMat, lastFrameMat, frameDifferenceMat);
+		
+		/*
+		int maxDifference = 0;
+		int dstPixelIndex;
+		
+		unsigned char* src = frameDifference.getPixels();
+		for(int y = 0; y < thisFrameGray.getHeight(); y++){
+			for(int x = 0; x < thisFrameGray.getWidth(); x++){
+				//int srcPixelIndex = (y*thisFrameGray.getWidth() + x);
+				dstPixelIndex = (outputImage.getWidth()*(y + videoRectangle.height + 480) + videoRectangle.width/2 + x) * 3;
+				//add frame difference to the green channel
+				maxDifference = MAX(*src, maxDifference);
+				//outputImage.getPixels()[ dstPixelIndex ] = *(src++);
+				outputImage.getPixels()[ dstPixelIndex ] = 255;
+			}
+		}
+		*/
+		
+		frameDifference.pasteInto(outputImage,videoRectangle.width/2,
+								  videoRectangle.height + 480);
+//		cout << "adding difference matte, max difference " << maxDifference << endl;
+	}
 	
+	lastVideoFrame = thisFrameGray;
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
 	cout << "Saving filename " << filename << endl;
@@ -347,28 +432,111 @@ void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& 
     }
 }
 
-
 void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
-												 ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline){
+												 ofPolyline& leftEye, ofPolyline& rightEye,
+												 ofPolyline& faceOutline,ofPolyline& mouthOutline){
 
+	
+
+	//create cv point vectors
+	vector<cv::Point> facePoints, leftEyePoints, rightEyePoints, mouthPoints;
+	for(int i = 0; i < faceOutline.getVertices().size(); i++){
+		facePoints.push_back(cv::Point(faceOutline.getVertices()[i].x,
+									   faceOutline.getVertices()[i].y));
+	}
+	for(int i = 0; i < leftEye.getVertices().size(); i++){
+		leftEyePoints.push_back(cv::Point(leftEye.getVertices()[i].x,
+										  leftEye.getVertices()[i].y));
+	}
+	for(int i = 0; i < rightEye.getVertices().size(); i++){
+		rightEyePoints.push_back(cv::Point(rightEye.getVertices()[i].x,
+										   rightEye.getVertices()[i].y));
+	}
+	for(int i = 0; i < mouthOutline.getVertices().size(); i++){
+		mouthPoints.push_back(cv::Point(mouthOutline.getVertices()[i].x,
+										mouthOutline.getVertices()[i].y));
+	}
+
+	//fill in all the polgons
+	cv::Mat dstMat = ofxCv::toCv(faceFrame);
+	const cv::Point* ppt[1];
+	int npt[1];
+	
+	ppt[0] =  &(facePoints[0]);
+	npt[0] = faceOutline.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(0,255,0));
+
+	ppt[0] =  &(leftEyePoints[0]);
+	npt[0] = leftEyePoints.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,0,0));
+
+	ppt[0] = &(rightEyePoints[0]);
+	npt[0] = rightEyePoints.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,0,0));
+
+	ppt[0] = &(mouthPoints[0]);
+	npt[0] = mouthPoints.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(0,0,255));
+
+	//copy and paste the pixels into the buffer
+	ofPixels resized = tempPixels;
+	resized.resize(target.getWidth(), target.getHeight(), OF_INTERPOLATE_BICUBIC);
+	resized.pasteInto(targetPixels, target.x, target.y);
+
+	/*
 	ofPath faceShape;
 	for(int i = 0; i < faceOutline.getVertices().size(); i++){
 		faceShape.lineTo(faceOutline.getVertices()[i]);
 	}
 	faceShape.close();
-	faceShape.setFillColor(ofColor(0,0,255));
-	cairoRenderer.setupGraphicDefaults();
-	cairoRenderer.background(0);
-	cairoRenderer.setColor(0, 0, 255);
+	
+	ofPath leftEyeShape;
+	for(int i = 0; i < leftEye.getVertices().size(); i++){
+		leftEyeShape.lineTo(leftEye.getVertices()[i]);
+	}
+	leftEyeShape.close();
+	
+	ofPath rightEyeShape;
+	for(int i = 0; i < rightEye.getVertices().size(); i++){
+		rightEyeShape.lineTo(rightEye.getVertices()[i]);
+	}
+	rightEyeShape.close();
+	
+	ofPath mouthShape;
+	for(int i = 0; i < mouthOutline.getVertices().size(); i++){
+		mouthShape.lineTo(mouthOutline.getVertices()[i]);
+	}
+	mouthShape.close();
+	
+	
+	ofColor faceColor = ofColor::fromHsb(255/3, 255,255);
+	ofColor eyeColor = ofColor::fromHsb(2*255/3, 255,255);
+	ofColor mouthColor = ofColor::fromHsb(3*255/3, 255,255);
+
+	cairoRenderer.setColor(faceColor);
+	faceShape.setFillColor(faceColor);
 	cairoRenderer.draw(faceShape);
+
+	cairoRenderer.setColor(eyeColor);
+	leftEyeShape.setFillColor(eyeColor);
+	rightEyeShape.setFillColor(eyeColor);
+	cairoRenderer.draw(leftEyeShape);
+	cairoRenderer.draw(rightEyeShape);
+	
+	cairoRenderer.setColor(mouthColor);
+	mouthShape.setFillColor(mouthColor);
+	cairoRenderer.draw(mouthShape);
+		
 	cairoRenderer.flush();
 	
 	ofPixels resized = cairoRenderer.getImageSurfacePixels();
 	resized.setImageType(OF_IMAGE_COLOR);
 	resized.resize(target.getWidth(), target.getHeight(), OF_INTERPOLATE_BICUBIC);
-//	cout << "pasting image of size " << resized.getWidth() << " " << resized.getHeight() << " into " << target.x << " " << target.y <<  endl;
-//	cout << "Target image size is " << targetPixels.getWidth() << " " << targetPixels.getHeight() << endl;
 	resized.pasteInto(targetPixels, target.x, target.y);
+
+	cout << "pasting image of size " << resized.getWidth() << " " << resized.getHeight() << " into " << target.x << " " << target.y <<  endl;
+	cout << "Target image size is " << targetPixels.getWidth() << " " << targetPixels.getHeight() << endl;
+	*/
 }
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){

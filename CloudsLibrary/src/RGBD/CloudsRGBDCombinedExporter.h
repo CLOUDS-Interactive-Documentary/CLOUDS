@@ -39,12 +39,14 @@ class CloudsRGBDCombinedExporter {
 	
 	ofIntRange inoutPoint;
     
+	ofxCv::ContourFinder contours;
 protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
 	void interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta);
 	void addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
-						 ofPolyline& leftEye, ofPolyline& rightEye, ofPolyline& faceOutline);
+						 ofPolyline& leftEye, ofPolyline& rightEye,
+						 ofPolyline& faceOutline, ofPolyline& mouthOutline);
 	
 	ofxRGBDCPURenderer* renderer;  // It has a mesh, call .getReducedMesh();
 	ofxRGBDPlayer* player;
@@ -57,12 +59,16 @@ protected:
 	ofPolyline lastRightEye;
     ofPolyline lastLeftEye;
     ofPolyline lastFace;
+	ofPolyline lastMouth;
 	
 	ofPixels lastVideoFrame;
-	
+	ofPixels frameDifference;
+	ofPixels frameMetaPixels;
 	//for offscreen
 	ofCairoRenderer cairoRenderer;
+	
 
+	
 //	ofFbo faceFBO; //draw target for face frame
 	ofPixels faceFrame; //copy to destination
 	bool inFace;
