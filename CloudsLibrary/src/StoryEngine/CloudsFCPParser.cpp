@@ -19,7 +19,7 @@ void CloudsFCPParser::setup(string directory){
 	
     map<string, int>::iterator it;
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-//        cout << it->first << ": " << it->second << endl;
+        //        cout << it->first << ": " << it->second << endl;
     }
 }
 
@@ -34,8 +34,93 @@ void CloudsFCPParser::refreshXML(){
     }
 }
 
-void CloudsFCPParser::parseLinks(string linkFile){
+void CloudsFCPParser::parseClusterMap(string mapFile){
+    float maxCx=0;
+    float maxCy=0;
+    float minCx=-1;
+    float minCy=-1;
+    float maxR=0;
+    float minR=80;
+    ofxXmlSettings mapsXML;
+    if(mapsXML.loadFile(mapFile)){
+        mapsXML.pushTag("svg");
+        
+        int numClips = mapsXML.getNumTags("g");
+        
+        mapsXML.pushTag("g",1);
+        int numCircles = mapsXML.getNumTags("circle");
+        map<string, vector<CloudsLink> >::iterator it;
+        for(int i = 0; i < allClips.size(); i++){
+          //  cout<<allClips[i].getID()<<endl;
+            for(int j=0; j<numCircles;j++){
+                string circleName;
+                
+                circleName = mapsXML.getAttribute("circle", "class",circleName, j);
+                if (circleName == allClips[i].getID()) {
+                 
+                    allClips[i].cluster.Id = allClips[i].getID();
+                    
+                    string color ;
+                    color= mapsXML.getAttribute("circle","fill",color,j);
+                    color.erase(color.begin()); //remove #
+                    unsigned int colorHex;
+                    std::stringstream ss;
+                    ss << std::hex << color;
+                    ss >> colorHex;
+                    
+                    allClips[i].cluster.Color.setHex(colorHex);
+                    
+                    string radius;
+                    radius = mapsXML.getAttribute("circle", "r", radius,j);
+                    float r = ofToFloat(radius);
+                    float mapr = ofMap(r, 50, 400, 0, 1);
+                    allClips[i].cluster.Radius = mapr;
+                    if(allClips[i].cluster.Radius>maxR){
+                        maxR =allClips[i].cluster.Radius;
+                    }
+                    if(allClips[i].cluster.Radius<minR){
+                        minR =allClips[i].cluster.Radius;
+                    }
 
+                    
+                    string cx;
+                    cx = mapsXML.getAttribute("circle", "cx", cx,j);
+                    float x =ofToFloat(cx);
+                    float mapx = ofMap(x, -24218, 25781, 0, 1);
+                    allClips[i].cluster.Centre.x = mapx;
+                    if(allClips[i].cluster.Centre.x>maxCx){
+                        maxCx =allClips[i].cluster.Centre.x;
+                    }
+                    if(allClips[i].cluster.Centre.x<minCx){
+                        minCx =allClips[i].cluster.Centre.x;
+                    }
+                    string cy;
+                    cy = mapsXML.getAttribute("circle", "cy", cy,j);
+                    float y =ofToFloat(cy);
+                    float mapy = ofMap(y, -25781, 24218, 0, 1);
+                    allClips[i].cluster.Centre.y = mapy;
+                    if(allClips[i].cluster.Centre.y>maxCy){
+                        maxCy =allClips[i].cluster.Centre.y;
+                    }
+                    if(allClips[i].cluster.Centre.y<minCy){
+                        minCy =allClips[i].cluster.Centre.y;
+                    }
+
+                }   
+            }
+        }
+        cout<<minR<<","<<maxR<<endl;
+        //        cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
+        mapsXML.popTag();//g
+        mapsXML.popTag(); //svg
+    }
+}
+
+
+
+
+void CloudsFCPParser::parseLinks(string linkFile){
+    
     linkedConnections.clear();
     
     ofxXmlSettings linksXML;
@@ -46,7 +131,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
             string clipName = linksXML.getValue("name", "");
             int numLinks = linksXML.getNumTags("link");
 			if(numLinks > 0){
-//				cout << "clip " << clipName << " had no links!" << endl;
+                //				cout << "clip " << clipName << " had no links!" << endl;
 				for(int l = 0; l < numLinks; l++){
 					CloudsLink newLink;
 					linksXML.pushTag("link", l);
@@ -103,10 +188,10 @@ void CloudsFCPParser::saveLinks(string linkFile){
 			linksXML.pushTag("clip", numClips++);
 			
 			linksXML.addValue("name", clipName);
-
+            
 			if(hasLink){
 				vector<CloudsLink>& clipLinks = linkedConnections[clipName];
-
+                
 				for(int l = 0; l < clipLinks.size(); l++){
 					linksXML.addTag("link");
 					linksXML.pushTag("link", l);
@@ -133,30 +218,30 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		}
 	}
 	
-//    for(it = linkedConnections.begin(); it != linkedConnections.end(); it++){
-//        vector<CloudsLink>& clipLinks = it->second;
-//		if(clipLinks.size() == 0){
-//			continue;
-//		}
-//        linksXML.addTag("clip");
-//        linksXML.pushTag("clip", numClips++);
-//        
-//        linksXML.addValue("name", it->first);
-//
-//        for(int l = 0; l < clipLinks.size(); l++){
-//            
-//            linksXML.addTag("link");
-//            linksXML.pushTag("link", l);
-//			
-//            linksXML.addValue("target", clipLinks[l].targetName );
-//            linksXML.addValue("startFrame", clipLinks[l].startFrame);
-//            linksXML.addValue("endFrame", clipLinks[l].endFrame);
-//			
-//            linksXML.popTag(); //link!
-//        }
-//        
-//        linksXML.popTag(); //clip
-//    }
+    //    for(it = linkedConnections.begin(); it != linkedConnections.end(); it++){
+    //        vector<CloudsLink>& clipLinks = it->second;
+    //		if(clipLinks.size() == 0){
+    //			continue;
+    //		}
+    //        linksXML.addTag("clip");
+    //        linksXML.pushTag("clip", numClips++);
+    //
+    //        linksXML.addValue("name", it->first);
+    //
+    //        for(int l = 0; l < clipLinks.size(); l++){
+    //
+    //            linksXML.addTag("link");
+    //            linksXML.pushTag("link", l);
+    //
+    //            linksXML.addValue("target", clipLinks[l].targetName );
+    //            linksXML.addValue("startFrame", clipLinks[l].startFrame);
+    //            linksXML.addValue("endFrame", clipLinks[l].endFrame);
+    //
+    //            linksXML.popTag(); //link!
+    //        }
+    //
+    //        linksXML.popTag(); //clip
+    //    }
     
     linksXML.saveFile(linkFile);
 }
@@ -221,7 +306,7 @@ bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB) {
 	int deadIndex;
 	return clipLinksTo(clipNameA, clipNameB, deadIndex);
 }
-	   
+
 bool CloudsFCPParser::clipLinksTo(string clipNameA, string clipNameB, int& index){
 	if(clipHasLink(clipNameA)) {
 		vector<CloudsLink>& links = linkedConnections[ clipNameA ];
@@ -283,17 +368,17 @@ void CloudsFCPParser::addXMLFile(string xmlFile){
         int numSequences = fcpXML.getNumTags("sequence");
         for(int i = 0; i < numSequences; i++){
             string name = fcpXML.getAttribute("sequence", "id", "", i);
-//            cout << "name is " << name << endl;
+            //            cout << "name is " << name << endl;
             fcpXML.pushTag("sequence", i);
             fcpXML.pushTag("media");
             fcpXML.pushTag("video");
-
+            
             int numTracks = fcpXML.getNumTags("track");
-  //          cout << "   found " << numTracks << " tracks" << endl;
+            //          cout << "   found " << numTracks << " tracks" << endl;
             for(int t = 0; t < numTracks; t++){
                 fcpXML.pushTag("track", t);
                 int numClipItems = fcpXML.getNumTags("clipitem");
-//                cout << "   found " << numClipItems << " clips" << endl;
+                //                cout << "   found " << numClipItems << " clips" << endl;
                 for(int c = 0; c < numClipItems; c++){
                     fcpXML.pushTag("clipitem", c);
                     parseClipItem(fcpXML, name);
@@ -364,7 +449,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 						allKeywords[cm.keywords[k]]++;
 					}
 				}
-	//            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
+                //            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
 				allClips.push_back(cm);
 			}
         }
@@ -442,7 +527,7 @@ void CloudsFCPParser::populateKeyThemes(){
 	keyThemes.insert("people");
 	keyThemes.insert("social networks");
 	keyThemes.insert("toolkit");
-
+    
 	populateKeyThemes(keyThemes);
 }
 
@@ -456,7 +541,7 @@ void CloudsFCPParser::populateKeyThemes(set<string>& themes){
 	getAllKeywords();
 	
 	for(int i = 0; i < keywordVector.size(); i++){
-
+        
 		string closestKeyword = closestKeyThemeToTag(keywordVector[i]);
 		tagToKeyTheme[ keywordVector[i] ] = closestKeyword;
 		cout << "Closest key theme to '" << keywordVector[i] << "' is '" << closestKeyword << "'" << endl;
@@ -508,15 +593,15 @@ string CloudsFCPParser::getKeyThemeForTag(string tag){
 
 
 //void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
-//	
+//
 //}
 //
 //void CloudsFCPParser::unsuppressConnection(CloudsClip& a, CloudsClip& b){
-//	
+//
 //}
 //
 //bool CloudsFCPParser::isConnectionSuppressed(CloudsClip& a, CloudsClip& b){
-//	
+//
 //}
 
 vector<string>& CloudsFCPParser::getAllKeywords(){
@@ -594,12 +679,12 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 
 vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywordB){
 	vector<CloudsClip> sharedClips;
-//	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
+    //	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
 	for(int i = 0; i < allClips.size(); i++){
 		if(ofContains(allClips[i].keywords, keywordA) &&
 		   ofContains(allClips[i].keywords, keywordB))
 		{
-//			cout << "	Adding Clip " << markers[i].getLinkName() << " marker " << i << endl;
+            //			cout << "	Adding Clip " << markers[i].getLinkName() << " marker " << i << endl;
 			sharedClips.push_back(allClips[i]);
 		}
 	}
@@ -655,5 +740,11 @@ bool CloudsFCPParser::operator()(const string& a, const string& b){
     }
     else{
         return a < b;
-    }    
+    }
 }
+
+vector<string> CloudsFCPParser::getClustersForPerson(string personName){
+    
+}
+
+

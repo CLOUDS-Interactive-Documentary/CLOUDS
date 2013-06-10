@@ -18,13 +18,14 @@ class CloudsFCPParser {
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
-
+    vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
 	CloudsClip getClipWithLinkName( string linkname );
 	
 #pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
+    void parseClusterMap(string mapFile);
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	
@@ -84,7 +85,7 @@ class CloudsFCPParser {
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
-    
+    vector<CloudsClip> allClips;  
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
@@ -102,7 +103,7 @@ class CloudsFCPParser {
 	
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-    vector<CloudsClip> allClips;
+  //  vector<CloudsClip> allClips;
 	set<string> markerLinkNames;
 
     map<string, int> allKeywords;
@@ -112,7 +113,7 @@ class CloudsFCPParser {
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
-	
+
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
 	CloudsClip dummyClip; // for failed reference returns

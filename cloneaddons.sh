@@ -30,7 +30,8 @@ git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
 git clone https://github.com/memo/ofxMSACore
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
-
+git clone https://github.com/memo/ofxMSAPhysics
+git clone https://github.com/memo/ofxMSAObjCPointer
 
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxExtrudedText

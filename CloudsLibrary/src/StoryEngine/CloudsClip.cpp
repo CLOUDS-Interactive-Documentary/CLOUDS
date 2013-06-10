@@ -144,6 +144,7 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
+
 //--------------------------------------------------------------------
 string CloudsClip::relinkFilePath(string filePath){
 	
