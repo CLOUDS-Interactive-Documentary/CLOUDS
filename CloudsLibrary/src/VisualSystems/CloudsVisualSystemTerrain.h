@@ -50,16 +50,16 @@ public:
 protected:
     void     setResolution( int _width, int _height );
     
-    // Noise;
+    // Noise
     //
-    ofShader noiseShader;
-    ofFbo    noiseFbo;
-    float    noiseZoom;
+    ofShader    noiseShader;
+    ofFbo       noiseFbo;
+    float       noiseZoom;
     
     //  Normals
     //
-    ofShader normalsShader;
-    ofFbo    normalsFbo;
+    ofShader    normalsShader;
+    ofFbo       normalsFbo;
     
     //  Terrain
     //
@@ -80,6 +80,9 @@ protected:
     ofShader patternShader;
     ofFbo    patternFbo;
     float    patternScale;
+    float    stripeAlpha;
+    float    hexAlpha;
+    float    dotsAlpha;
     
     //  Camera
     //
