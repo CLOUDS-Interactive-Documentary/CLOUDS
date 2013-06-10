@@ -17,12 +17,23 @@ CloudsClip::CloudsClip(){
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
+
+    
 }
 
 string CloudsClip::getLinkName(){
 	return person + " - " + name;
 }
 
+string CloudsClip::getStartingQuestion(){
+    return startingQuestion;
+}
+void CloudsClip::setStartingQuestion(string question){
+    startingQuestion = question;
+}
+bool CloudsClip::hasStartingQuestion(){
+    return !startingQuestion.empty();
+}
 string CloudsClip::getMetaInfo(){
 	return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "] fcp id: " + fcpFileId;
 }
@@ -34,8 +45,8 @@ string CloudsClip::getID(){
 }
 
 string CloudsClip::getCombinedPNGExportFolder(){
-//	string nameNoSpaces = name;
-//	ofStringReplace(nameNoSpaces, " ", "_");
+    //	string nameNoSpaces = name;
+    //	ofStringReplace(nameNoSpaces, " ", "_");
 	return getID() + "/";
 }
 
@@ -66,7 +77,7 @@ string CloudsClip::getFFMpegLine(string _exportFolder){
     pipeline2 << " -i \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
     pipeline2 << " -i \"" << dstSound << "\" -acodec copy ";
     pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << _exportFolder << "/" << getCombinedMovieFile() << "\"";
-
+    
     
     stringstream pipeline3;
     pipeline3 << "cp \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
@@ -80,7 +91,7 @@ string CloudsClip::getAdjustmentXML(){
 }
 
 void CloudsClip::loadAdjustmentFromXML(){
-
+    
 	if(adjustmentLoaded){
 		return;
 	}
@@ -151,6 +162,7 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
+
 //--------------------------------------------------------------------
 string CloudsClip::relinkFilePath(string filePath){
 	
@@ -164,8 +176,8 @@ string CloudsClip::relinkFilePath(string filePath){
             ofStringReplace(filePath, "Nebula_backup", "Nebula_helper");
             ofStringReplace(filePath, "Nebula", "Nebula_helper");
         }
-
-//		cout << " to " << clipFilePath << endl;
+        
+        //		cout << " to " << clipFilePath << endl;
 	}
 	return filePath;
 }

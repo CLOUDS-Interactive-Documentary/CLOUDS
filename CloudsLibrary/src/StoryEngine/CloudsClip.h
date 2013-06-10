@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#include "ClusterData.h"
 
 class CloudsClip {
   public:
@@ -16,12 +17,14 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	
-
-    ofColor color;
-	
-	float currentScore;
-	
+	ofColor color;
+    string startingQuestion;
+    //svg data
+    ClusterData cluster;
+	map<string, ofColor> clusterColors;
+    
+    
+    float currentScore;
     int startFrame;
     int endFrame;
 	
@@ -29,9 +32,10 @@ class CloudsClip {
 	
     string getLinkName();
 	string getMetaInfo();
-
+    string getStartingQuestion();
 	string getSceneFolder();
-	
+	void setStartingQuestion(string question);
+    bool hasStartingQuestion();
 	//these are filenames
 	string getID();
 	string getCombinedPNGExportFolder();

@@ -1,10 +1,6 @@
 <clip>
-    <name>Aaron - Tailored Stories</name>
-    <suppress>
-        <target>Binx - tools for storytelling</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
+    <name>Aaron - global communication</name>
+    <startingQuestion>this is a test</startingQuestion>
 </clip>
 <clip>
     <name>Binx - actually interesting</name>
