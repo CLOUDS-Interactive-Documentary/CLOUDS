@@ -84,6 +84,7 @@
 - (IBAction) addClip:(id)sender;
 - (IBAction) removeLink:(id)sender;
 - (IBAction) unsuppressLink:(id)sender;
+- (IBAction) suppressLinkModifier:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
