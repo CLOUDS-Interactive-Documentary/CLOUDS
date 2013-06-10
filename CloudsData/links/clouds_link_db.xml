@@ -1404,6 +1404,14 @@
     </link>
 </clip>
 <clip>
+    <name>Kyle_MC - blank expression</name>
+    <suppress>
+        <target>Aaron - individualization + emotion</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+</clip>
+<clip>
     <name>Kyle_MC - Hackers and artists</name>
     <link>
         <target>Javier - hackers</target>

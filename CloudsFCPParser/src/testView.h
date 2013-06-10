@@ -41,6 +41,7 @@
 	
     vector<CloudsClip> selectedClips;
     vector<CloudsLink> currentClipLinks;
+    vector<CloudsLink> currentSuppressedLinks;
 
 	bool playingPlaylist;
 	int currentPlaylistIndex;

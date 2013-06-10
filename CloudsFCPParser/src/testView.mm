@@ -191,7 +191,7 @@
     }
 	
 	if(movieFileMissing){
-		if(ofGetElapsedTimef() > timeOfNextStory){
+		if(ofGetElapsedTimef() > timeOfNextStory && onPlaylist){
 			[self nextOnPlaylist:self];
 		}
 	}
@@ -507,7 +507,8 @@
 	clipLoaded = YES;
 	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
-	
+	currentSuppressedLinks = parser.getSuppressionsForClip(clip.getLinkName());
+    
 //	cout << "current clips has " << currentClipLinks.size() << " links" << endl;
 	
 	currentPlayingClip = clip;
@@ -515,8 +516,8 @@
 	clipEndFrame = clip.endFrame;
 
 	if(movieFileMissing){
-//		storyStartTime = ofGetElapsedTimef();
-//		timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
+		storyStartTime = ofGetElapsedTimef();
+		timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
 	}
 	else{
 		preview.setFrame(clip.startFrame);
@@ -524,6 +525,7 @@
 	}
 
 	[linkTable reloadData];
+    [suppressedTable reloadData];
 
 }
 
@@ -610,7 +612,9 @@
     else if(aTableView == linkTable){
         return currentClipLinks.size();
     }
-
+    else if(aTableView == suppressedTable){
+        return currentSuppressedLinks.size();
+    }
 	else if(aTableView == playlistTable){
 		//return visualizer.pathByClip.size();
 		return storyEngine.getClipHistory().size();
@@ -647,6 +651,13 @@
             clipTableEntry += "[" + ofToString(currentClipLinks[rowIndex].startFrame) + " - " + ofToString(currentClipLinks[rowIndex].endFrame) + "]";
         }
         return [NSString stringWithUTF8String:clipTableEntry.c_str()];
+    }
+    else if(aTableView == suppressedTable){
+        string suppressedTableEntry = currentSuppressedLinks[rowIndex].targetName;
+        if(currentSuppressedLinks[rowIndex].startFrame != -1 && currentSuppressedLinks[rowIndex].endFrame!= -1){
+            suppressedTableEntry += "[" + ofToString(currentSuppressedLinks[rowIndex].startFrame) + " - " + ofToString(currentSuppressedLinks[rowIndex].endFrame) + "]";
+        }
+        return [NSString stringWithUTF8String:suppressedTableEntry.c_str()];
     }
 	else if(aTableView == playlistTable){
 		//return [NSString stringWithUTF8String: visualizer.pathByClip[rowIndex].getLinkName().c_str()];

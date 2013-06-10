@@ -122,7 +122,7 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
 void CloudsFCPParser::parseLinks(string linkFile){
     
     linkedConnections.clear();
-    
+    int totalLinks =0;
     ofxXmlSettings linksXML;
     if(linksXML.loadFile(linkFile)){
         int numClips = linksXML.getNumTags("clip");
@@ -148,7 +148,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				}
 			}
 			
-			int numSuppressed = linksXML.getValue("suppress", 0);
+			int numSuppressed = linksXML.getNumTags("suppress");
 			if(numSuppressed > 0){
 				for(int l = 0; l < numSuppressed; l++){
 					CloudsLink newLink;
@@ -160,20 +160,22 @@ void CloudsFCPParser::parseLinks(string linkFile){
 					newLink.endFrame   = linksXML.getValue("endFrame", -1);
 					
 					linksXML.popTag(); //link
-					
+                    totalLinks++;
+                    cout<<"suppressed"<<newLink.targetName<<" for "<<clipName<<endl;
 					suppressedConnections[newLink.sourceName].push_back( newLink );
 				}
-			}
-            if(startQuestion>0){
+			}        
+            if(startQuestion>0){ 
                 string question = linksXML.getValue("startingQuestion", "");
                 CloudsClip& c =  getClipWithLinkName(clipName);
                 c.setStartingQuestion(question);
-                cout<<c.name <<" has question: "<<c.getStartingQuestion();
+                cout<<c.name <<" has question: "<<c.getStartingQuestion()<<endl;
             }
 			
             linksXML.popTag(); //clip
         }
     }
+    cout<<"total Suppressions:"<<totalLinks<<endl;
 }
 
 
