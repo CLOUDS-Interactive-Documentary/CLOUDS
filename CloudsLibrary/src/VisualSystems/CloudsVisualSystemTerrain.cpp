@@ -31,7 +31,6 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
     sysGui->addLabel("Noise");
     sysGui->addSlider("noise_zoom", 0.0, 10.0, &noiseZoom);
-    sysGui->addSlider("noise_speed", 0.0, 2.0, &noiseSpeed);
     
     sysGui->addLabel("Terrain");
     sysGui->addSlider("Terrain_Size", 10, 200, &size);
@@ -51,6 +50,8 @@ void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
     if ( name == "Terrain_Size" |name == "Terrain_Width" || name == "Terrain_Height" || name == "Terrain_Resolution"){
         setResolution(size, size);
     }
+    
+    bChange = true;
 }
 
 void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
@@ -62,9 +63,24 @@ void CloudsVisualSystemTerrain::setResolution( int _width, int _height ){
     patternFbo.allocate(width*patternScale, height*patternScale);
 }
 
+void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
+    if (args.key == OF_KEY_UP){
+        camPosition.y += 1;
+    } else if (args.key == OF_KEY_DOWN){
+        camPosition.y -= 1;
+    } else if (args.key == OF_KEY_LEFT){
+        camPosition.x += 1;
+    } else if (args.key == OF_KEY_RIGHT){
+        camPosition.x -= 1;
+    }
+    
+    bChange = true;
+}
+
 void CloudsVisualSystemTerrain::selfUpdate()
 {
-    if ( noiseSpeed != 0.0 || bChange){
+    
+    if ( bChange ){
     
         //  NOISE
         //
@@ -74,7 +90,7 @@ void CloudsVisualSystemTerrain::selfUpdate()
         ofClear(0);
         noiseShader.begin();
         noiseShader.setUniform2f("resolution", width,height);
-        noiseShader.setUniform1f("time", ofGetElapsedTimef()*noiseSpeed);
+        noiseShader.setUniform2f("position", camPosition.x, camPosition.y);
         noiseShader.setUniform1f("zoom", noiseZoom);
         glBegin(GL_QUADS);
         glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
@@ -102,9 +118,7 @@ void CloudsVisualSystemTerrain::selfUpdate()
         patternShader.begin();
         patternShader.setUniformTexture("tex0", noiseFbo, 0);
         patternShader.setUniform1f("textureScale", patternScale);
-        patternShader.setUniform1f("time", ofGetElapsedTimef());
-        patternShader.setUniform1f("speed", 0.1);
-        patternShader.setUniform1f("scale", 0.49);
+        patternShader.setUniform1f("scale", 0.48);
         patternShader.setUniform1f("pointsGap", 10.0);
         patternShader.setUniform1f("pointsAlpha", 0.5);
         
@@ -156,7 +170,7 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
     normalsFbo.getTextureReference().readToPixels(normalMap);
     
     camAltitud = ofLerp( camAltitud, heightMap.getColor(width*0.5, height*0.5).r * flHeightScale + 7, 0.1);
-//    cam.setPosition(0, camAltitud, 0);
+    cam.setPosition(0, camAltitud, 0);
     
     //  Construct the VBO
     //
@@ -276,11 +290,6 @@ void CloudsVisualSystemTerrain::selfBegin()
 }
 
 void CloudsVisualSystemTerrain::selfEnd()
-{
-    
-}
-
-void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args)
 {
     
 }

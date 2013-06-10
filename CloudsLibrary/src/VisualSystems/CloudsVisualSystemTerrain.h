@@ -54,7 +54,7 @@ protected:
     //
     ofShader noiseShader;
     ofFbo    noiseFbo;
-    float    noiseSpeed,noiseZoom;
+    float    noiseZoom;
     
     //  Normals
     //
@@ -83,5 +83,6 @@ protected:
     
     //  Camera
     //
+    ofVec2f     camPosition;
     float       camAltitud;
 };

@@ -1,5 +1,5 @@
 uniform vec2 resolution;
-uniform float time;
+uniform vec2 position;
 uniform float zoom;
 
 float rand(vec2 co){
@@ -34,17 +34,17 @@ vec2 cMul(vec2 a, vec2 b) {
 }
 
 float pattern(  vec2 p, out vec2 q, out vec2 r ){
-	q.x = fbm( p  +0.1*time);
+	q.x = fbm( p  +0.1);
 	q.y = fbm( p + vec2(1.0));
-	r.x = fbm( p +1.0*q + vec2(1.7,9.2)+0.15*time );
-	r.y = fbm( p+ 1.0*q + vec2(8.3,2.8)+0.126*time);
-	return fbm(p +1.0*r + 0.0* time);
+	r.x = fbm( p +1.0*q + vec2(1.7,9.2)+0.15);
+	r.y = fbm( p+ 1.0*q + vec2(8.3,2.8)+0.126);
+	return fbm(p +1.0*r + 0.0);
 }
 
 void main() {
 	vec2 q;
 	vec2 r;
-	vec2 c = zoom*((gl_FragCoord.xy-resolution.xy*vec2(0.5))/resolution.xy);
+	vec2 c = zoom*( (gl_FragCoord.xy-resolution.xy*vec2(0.5)+position) /resolution.xy);
 	float f = pattern(c,q,r);
 	gl_FragColor =  vec4(vec3(f),1.0);
 }

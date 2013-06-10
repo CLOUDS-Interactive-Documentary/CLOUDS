@@ -1,7 +1,5 @@
 uniform sampler2DRect tex0;
 uniform float textureScale;
-uniform float time;
-uniform float speed;
 uniform float scale;
 uniform float pointsGap;
 uniform float pointsAlpha;
@@ -19,14 +17,14 @@ void main() {
 
 	float deep = 1.0 - texture2DRect(tex0,position/textureScale).r;
 
-  	float stripe = (mod((position.x+position.y) + (time * speed), scale) > scale / 2. ) ? 1.0 : 0.0;
+  	float stripe = (mod((position.x+position.y), scale*2.0) > scale / 1. ) ? 1.0 : 0.0;
 
-	vec2  p   = ( position )*scale*0.01;
-	float r   = .05;
-	float hexagram = smoothstep(0., r, hex(p));
+	// vec2  p   = ( position )*scale*0.01;
+	// float r   = .05;
+	// float hexagram = smoothstep(0., r, hex(p));
 
 	if (deep > 0.0){
-		gl_FragColor = vec4( stripe); //1.0 - hexagram, 
+		gl_FragColor = vec4(vec3(stripe),1.); //1.0 - hexagram, 
 	} else {
 		gl_FragColor = vec4( 0.0);
 	}
