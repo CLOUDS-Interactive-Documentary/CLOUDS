@@ -165,10 +165,9 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
     int height = _heightMap.getHeight();
     
     float flResolution = (int)terrainResolution;
-    float flHeightScale = terrainHeight;
+    float flHeightScale = terrainHeight*50;
     float textureScale = 1.0;
     nVertexCount = (int) ( width * height * 6 / ( flResolution * flResolution ) );
-    cout << nVertexCount << endl;
     
     pVertices	= new ofVec3f[nVertexCount];		// Allocate Vertex Data
     pTexCoords	= new ofVec2f[nVertexCount];		// Allocate Tex Coord Data
@@ -189,6 +188,8 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
                        normalsFbo.getHeight(),
                        OF_PIXELS_RGBA);
     normalsFbo.getTextureReference().readToPixels(normalMap);
+    
+    camAltitud = ofLerp( camAltitud, heightMap.getColor(width*0.5, height*0.5).r * flHeightScale + 7, 0.1);
     
     //  Construct the VBO
     //
@@ -310,6 +311,15 @@ void CloudsVisualSystemTerrain::selfUpdate()
     }
     normalsShader.end();
     normalsFbo.end();
+    
+    if(bGrayscott){
+        makeTerrain(grayscottFbo[nPingPong%2].getTextureReference());
+    } else {
+        makeTerrain(noiseFbo.getTextureReference());
+    }
+    
+    cam.setPosition(0, 0, camAltitud);
+    
 }
 
 void CloudsVisualSystemTerrain::drawVboTerrain(){
@@ -321,6 +331,8 @@ void CloudsVisualSystemTerrain::drawVboTerrain(){
         noiseFbo.getTextureReference().bind();
     }
     ofSetColor(255);
+    glEnable(GL_SMOOTH);
+	glShadeModel(GL_SMOOTH);
 	terrainVbo.draw(GL_TRIANGLES , 0, nVertexCount);
     if(bGrayscott){
         grayscottFbo[nPingPong%2].getTextureReference().unbind();
@@ -334,34 +346,38 @@ void CloudsVisualSystemTerrain::drawVboTerrain(){
 void CloudsVisualSystemTerrain::selfDraw()
 {
     mat->begin();
-    
     glEnable(GL_DEPTH_TEST);
-    terrainShader.begin();
-    if(bGrayscott){
-        terrainShader.setUniformTexture("depthTex", grayscottFbo[nPingPong%2], 0);
-    } else {
-        terrainShader.setUniformTexture("depthTex", noiseFbo, 0);
-    }
-    terrainShader.setUniformTexture("normalTex", normalsFbo, 1);
-    terrainShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
-    terrainShader.setUniform1f("terrainHeight", (0.15*size)*terrainHeight);
     
-    if ( pointsAlpha>0.0){
-        ofSetColor(255);
-        terrainMesh.drawVertices();
-	}
+    drawVboTerrain();
     
-    if ( terrainHorizontalAlpha>0.0){
-        ofSetColor(255*terrainHorizontalAlpha);
-        terrainHorizontal.drawWireframe();
-    }
+//    terrainShader.begin();
+//    if(bGrayscott){
+//        terrainShader.setUniformTexture("depthTex", grayscottFbo[nPingPong%2], 0);
+//    } else {
+//        terrainShader.setUniformTexture("depthTex", noiseFbo, 0);
+//    }
+//    terrainShader.setUniformTexture("normalTex", normalsFbo, 1);
+//    terrainShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
+//    terrainShader.setUniform1f("terrainHeight", (0.15*size)*terrainHeight);
+//    
+//    if ( pointsAlpha>0.0){
+//        ofSetColor(255);
+//        terrainMesh.drawVertices();
+//	}
+//    
+//    if ( terrainHorizontalAlpha>0.0){
+//        ofSetColor(255*terrainHorizontalAlpha);
+//        terrainHorizontal.drawWireframe();
+//    }
+//    
+//    if ( terrainVerticalAlpha>0.0){
+//        ofSetColor(255*terrainVerticalAlpha);
+//        terrainVertical.drawWireframe();
+//    }
+//    
+//    terrainShader.end();
     
-    if ( terrainVerticalAlpha>0.0){
-        ofSetColor(255*terrainVerticalAlpha);
-        terrainVertical.drawWireframe();
-    }
     
-    terrainShader.end();
     glDisable(GL_DEPTH_TEST);
     mat->end();
 }
