@@ -488,26 +488,20 @@
 	
 	ofSleepMillis(250);
 	if( !ofFile(clipFilePath).exists() ){
-//		cout << "Switched clip from " << clipFilePath;
+
 		ofStringReplace(clipFilePath, "Nebula_backup", "Seance");		
 		ofStringReplace(clipFilePath, "Nebula", "Seance");
-//		cout << " to " << clipFilePath << endl;
+
 	}
-//	if( !ofFile(clipFilePath).exists()){
-//		movieFileMissing = true;
-//		ofLogError("Clip " + clipFilePath + " missing! Movies flagged as missing" );
-//	}
-//	else{
 		
-		if( preview.loadMovie(clipFilePath) ){
-			movieFileMissing = false;
-		}
-		else{
-			ofLogError("Clip " + clipFilePath + " failed to load.");
-			return;
-		}
-//	}
-	
+	if( preview.loadMovie(clipFilePath) ){
+		movieFileMissing = false;
+	}
+	else{
+		ofLogError() << "Clip " << clipFilePath << " failed to load.";
+		movieFileMissing = true;
+//		return;
+	}
 	
 	
 	clipLoaded = YES;
@@ -521,8 +515,8 @@
 	clipEndFrame = clip.endFrame;
 
 	if(movieFileMissing){
-		storyStartTime = ofGetElapsedTimef();
-		timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
+//		storyStartTime = ofGetElapsedTimef();
+//		timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
 	}
 	else{
 		preview.setFrame(clip.startFrame);
