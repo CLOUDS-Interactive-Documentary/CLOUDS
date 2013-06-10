@@ -18,6 +18,7 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	ofColor color;
+    string startingQuestion;
     //svg data
     ClusterData cluster;
 	map<string, ofColor> clusterColors;
@@ -31,9 +32,10 @@ class CloudsClip {
 	
     string getLinkName();
 	string getMetaInfo();
-
+    string getStartingQuestion();
 	string getSceneFolder();
-	
+	void setStartingQuestion(string question);
+    bool hasStartingQuestion();
 	//these are filenames
 	string getID();
 	string getCombinedPNGExportFolder();

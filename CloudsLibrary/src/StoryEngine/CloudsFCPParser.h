@@ -20,8 +20,8 @@ class CloudsFCPParser {
 	void setCombinedVideoDirectory(string directory);
     vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
-	CloudsClip getClipWithLinkName( string linkname );
-	
+	CloudsClip& getClipWithLinkName( string linkname );
+
 #pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
@@ -55,6 +55,10 @@ class CloudsFCPParser {
 	bool clipHasSuppressions(CloudsClip& clip);
 	bool clipHasSuppressions(string clipName);
 	
+    //are there any starting Questions?
+    bool clipHasStartingQuestions(CloudsClip& clip);
+    bool clipHasStartingQuestions(string clipName);
+    
 	//are we suppressing this connection?
 	bool linkIsSuppressed(string clipNameA, string clipNameB);
 	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);

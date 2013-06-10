@@ -23,6 +23,8 @@
 	
 	IBOutlet NSTextField* seedKeyword;
 	
+    IBOutlet NSTextField* startQuestion;
+    
 	IBOutlet ViewerApp* viewerApp;
 	
     CloudsFCPParser parser;
@@ -83,6 +85,8 @@
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
+
+- (IBAction) setStartText:(id)sender;
 
 - (float) clipPercentComplete;
 

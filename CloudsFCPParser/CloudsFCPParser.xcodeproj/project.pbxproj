@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -134,6 +135,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18142706176629ED00C2B5FE /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
+		18142707176629EE00C2B5FE /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -635,6 +638,8 @@
 		E7637D6C1734DEF7008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				18142706176629ED00C2B5FE /* ClusterData.cpp */,
+				18142707176629EE00C2B5FE /* ClusterData.h */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
 				E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */,
 				E7637D6F1734DEF7008ADC62 /* CloudsEvents.h */,
@@ -1258,6 +1263,7 @@
 				E7637D841734DEF7008ADC62 /* CloudsFCPVisualizer.cpp in Sources */,
 				E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */,
 				E7637D861734DEF7008ADC62 /* CloudsStoryEngine.cpp in Sources */,
+				18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

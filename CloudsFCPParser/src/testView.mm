@@ -75,8 +75,8 @@
 	//visualizer.addLinksToPhysics(parser.getAllClips()[0]);
 	
 	// Create a matrix for D3 chord visualization
-//	CloudsD3Exporter d3Exporter;
-//	d3Exporter.saveChordMatrix(parser);
+    //CloudsD3Exporter d3Exporter;
+    //d3Exporter.saveChordMatrix(parser);
 	
 	//visualizer.addAllClipsWithAttraction();
     //inpoint.setup();
@@ -428,6 +428,18 @@
 	}
 }
 
+- (IBAction) setStartText:(id)sender{
+    //button pressed
+   CloudsClip& m = [self selectedClip];
+   string q =   std::string([startQuestion.stringValue UTF8String]);
+
+    m.setStartingQuestion(q );
+    cout<<"Set the question for clip"<<m.getLinkName()<<"::"<<m.getStartingQuestion()<<endl;
+    //get the txt from textfield, get currently select clip, and set it
+    
+    
+}
+
 - (IBAction) saveLinks:(id)sender
 {
 	if(ofDirectory("../../../CloudsData/links/").exists()){
@@ -575,14 +587,14 @@
 //    parser.parseLinks("clouds_link_db.xml");
 	
 	if(ofDirectory("../../../CloudsData/").exists()){
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 		parser.setup("../../../CloudsData/fcpxml/");
+		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.parseLinks("clouds_link_db.xml");
 		parser.setup("xml");
+		parser.parseLinks("clouds_link_db.xml");
 	}
 
 //    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
@@ -689,6 +701,8 @@
         currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
         //linkText.stringValue = [NSString stringWithUTF8String:("link:" + m.person + " - " + m.name).c_str()];
         linkText.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
+        
+        startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
     }
     else if(aNotification.object == linkTable){
         if(linkTable.selectedRow < 0){

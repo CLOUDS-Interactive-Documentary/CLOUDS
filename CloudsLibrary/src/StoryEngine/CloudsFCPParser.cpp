@@ -130,6 +130,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
             linksXML.pushTag("clip", i);
             string clipName = linksXML.getValue("name", "");
             int numLinks = linksXML.getNumTags("link");
+            int startQuestion = linksXML.getNumTags("startingQuestion");
 			if(numLinks > 0){
                 //				cout << "clip " << clipName << " had no links!" << endl;
 				for(int l = 0; l < numLinks; l++){
@@ -160,9 +161,15 @@ void CloudsFCPParser::parseLinks(string linkFile){
 					
 					linksXML.popTag(); //link
 					
-					linkedConnections[newLink.sourceName].push_back( newLink );
+					suppressedConnections[newLink.sourceName].push_back( newLink );
 				}
 			}
+            if(startQuestion>0){
+                string question = linksXML.getValue("startingQuestion", "");
+                CloudsClip& c =  getClipWithLinkName(clipName);
+                c.setStartingQuestion(question);
+                cout<<c.name <<" has question: "<<c.getStartingQuestion();
+            }
 			
             linksXML.popTag(); //clip
         }
@@ -181,8 +188,10 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		bool hasLink = clipHasLink( allClips[i]);
 		
 		bool hasSuppressed = clipHasSuppressions( allClips[i] );
+        
+        bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
 		
-		if(hasLink || hasSuppressed){
+        if(hasLink || hasSuppressed||hasStartingQuestion){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);
@@ -213,35 +222,17 @@ void CloudsFCPParser::saveLinks(string linkFile){
 					linksXML.popTag(); //suppress!
 				}
 			}
+            
+            if(hasStartingQuestion){
+                string startQuestion = allClips[i].getStartingQuestion();
+                linksXML.addValue("startingQuestion", startQuestion);
+            }
 			
+
 			linksXML.popTag();
 		}
 	}
 	
-    //    for(it = linkedConnections.begin(); it != linkedConnections.end(); it++){
-    //        vector<CloudsLink>& clipLinks = it->second;
-    //		if(clipLinks.size() == 0){
-    //			continue;
-    //		}
-    //        linksXML.addTag("clip");
-    //        linksXML.pushTag("clip", numClips++);
-    //
-    //        linksXML.addValue("name", it->first);
-    //
-    //        for(int l = 0; l < clipLinks.size(); l++){
-    //
-    //            linksXML.addTag("link");
-    //            linksXML.pushTag("link", l);
-    //
-    //            linksXML.addValue("target", clipLinks[l].targetName );
-    //            linksXML.addValue("startFrame", clipLinks[l].startFrame);
-    //            linksXML.addValue("endFrame", clipLinks[l].endFrame);
-    //
-    //            linksXML.popTag(); //link!
-    //        }
-    //
-    //        linksXML.popTag(); //clip
-    //    }
     
     linksXML.saveFile(linkFile);
 }
@@ -325,6 +316,15 @@ bool CloudsFCPParser::clipHasSuppressions(CloudsClip& clip){
 }
 bool CloudsFCPParser::clipHasSuppressions(string clipName){
 	return suppressedConnections.find(clipName) != suppressedConnections.end() && suppressedConnections[clipName].size() > 0;
+}
+
+bool CloudsFCPParser::clipHasStartingQuestions(CloudsClip& clip){
+    return clip.hasStartingQuestion();
+}
+
+bool CloudsFCPParser::clipHasStartingQuestions(string clipName){
+    CloudsClip& c = getClipWithLinkName(clipName);
+    return clipHasStartingQuestions(c);
 }
 
 bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB){
@@ -488,13 +488,14 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile){
 }
 
 
-CloudsClip CloudsFCPParser::getClipWithLinkName( string linkname ){
+CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
 	for(int i = 0; i < allClips.size(); i++){
 		if(allClips[i].getLinkName() == linkname){
 			return allClips[i];
 		}
 	}
-	return CloudsClip();
+    ofLogError() << "No clip found " << linkname << ". Returning dummy video!";
+	return dummyClip;
 }
 
 void CloudsFCPParser::sortKeywordsByOccurrence(bool byOccurrence){
