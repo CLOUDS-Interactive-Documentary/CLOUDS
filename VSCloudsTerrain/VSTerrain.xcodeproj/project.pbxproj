@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D03B1AD175548B6009CF17D /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1AB175548B6009CF17D /* CloudsVisualSystemTerrain.cpp */; };
 		3D03B1C81755A1AE009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1C41755A1AE009CF17D /* CloudsRGBDCombinedRender.cpp */; };
-		3D03B1CB1755A408009CF17D /* terrain.frag in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1C91755A408009CF17D /* terrain.frag */; };
-		3D03B1CC1755A408009CF17D /* terrain.vert in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1CA1755A408009CF17D /* terrain.vert */; };
 		3D5B93651753046A00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F11753046A00F558AC /* kiss_fft.c */; };
 		3D5B93661753046A00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F21753046A00F558AC /* kiss_fftr.c */; };
 		3D5B93671753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F51753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -145,8 +143,6 @@
 		3D03B1AC175548B6009CF17D /* CloudsVisualSystemTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTerrain.h; sourceTree = "<group>"; };
 		3D03B1C41755A1AE009CF17D /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
 		3D03B1C51755A1AE009CF17D /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
-		3D03B1C91755A408009CF17D /* terrain.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = terrain.frag; path = ../../CloudsData/shaders/terrain.frag; sourceTree = "<group>"; };
-		3D03B1CA1755A408009CF17D /* terrain.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = terrain.vert; path = ../../CloudsData/shaders/terrain.vert; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -1073,8 +1069,6 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
-				3D03B1C91755A408009CF17D /* terrain.frag */,
-				3D03B1CA1755A408009CF17D /* terrain.vert */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1310,8 +1304,6 @@
 				3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */,
 				3D03B1AD175548B6009CF17D /* CloudsVisualSystemTerrain.cpp in Sources */,
 				3D03B1C81755A1AE009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */,
-				3D03B1CB1755A408009CF17D /* terrain.frag in Sources */,
-				3D03B1CC1755A408009CF17D /* terrain.vert in Sources */,
 				E77695541759591600D2D95A /* CloudsRGBDCombinedRender.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -116,11 +116,11 @@ void CloudsVisualSystemCities::selfSetup()
 
     //  Noise
     //
-    noiseShader.load("", getDataPath()+"shaders/Cities/noise.fs");
+    noiseShader.load("", getDataPath()+"shaders/VisualSystems/Cities/noise.fs");
     
     //  GrayScott
     //
-    grayscottShader.load("", getDataPath()+"shaders/Cities/grayscott.fs");
+    grayscottShader.load("", getDataPath()+"shaders/VisualSystems/Cities/grayscott.fs");
     grayscottLoops = 10;
     nPingPong = 0;
     diffU=0.25;
@@ -130,14 +130,14 @@ void CloudsVisualSystemCities::selfSetup()
     
     //  Mask
     //
-    maskShader.load("", getDataPath()+"shaders/Cities/cMask.fs");
+    maskShader.load("", getDataPath()+"shaders/VisualSystems/Cities/cMask.fs");
     
     //  Blocks
     //
     
     //  WireFrames
     //
-    extrudeShader.load(getDataPath()+"shaders/Cities/extrude");
+    extrudeShader.load(getDataPath()+"shaders/VisualSystems/Cities/extrude");
     
     //  Points
     //

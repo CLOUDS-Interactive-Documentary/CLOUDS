@@ -7,6 +7,11 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>City_ZoomOut</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>CityTree</Name>
     <Value>1</Value>
 </Widget>
@@ -22,11 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SimpleTree</Name>
+    <Name>mycelium_1</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>TronTree</Name>
+    <Name>mycelium_2</Name>
     <Value>0</Value>
 </Widget>

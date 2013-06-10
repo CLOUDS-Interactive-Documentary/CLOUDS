@@ -26,11 +26,10 @@ void CloudsVisualSystemTerrain::selfSetup()
     
     setResolution(200, 200);
     
-    noiseShader.load("", getDataPath()+"shaders/noise.fs");
-    grayscottShader.load("", getDataPath()+"shaders/grayscott.fs");
-    normalsShader.load("", getDataPath()+"shaders/normals.fs");
-    
-    terrainShader.load(getDataPath()+"shaders/terrain.vert",getDataPath()+"shaders/terrain.frag");
+    noiseShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/noise.fs");
+    grayscottShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/grayscott.fs");
+    normalsShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/normals.fs");
+    terrainShader.load(getDataPath()+"shaders/VisualSystems/Terrain/terrain");
 }
 
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
