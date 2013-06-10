@@ -28,7 +28,9 @@ class CloudsFCPParser {
     void parseClusterMap(string mapFile);
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
-	
+	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
+    vector<CloudsLink>& getSuppressionsForClip(string clipName);
+    
     void addLink(CloudsLink& link);
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);

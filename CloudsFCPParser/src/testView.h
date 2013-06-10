@@ -14,6 +14,7 @@
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
     IBOutlet NSTableView* linkTable;
+    IBOutlet NSTableView* suppressedTable;
 	IBOutlet NSTableView* playlistTable;
 
     IBOutlet NSTextField* currentClipLabel;

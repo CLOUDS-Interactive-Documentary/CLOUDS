@@ -634,6 +634,13 @@ void CloudsFCPParser::addLink(CloudsLink& link){
 	}
 }
 
+vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(CloudsClip& clip){
+    return suppressedConnections[clip.getLinkName()];
+}
+vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(string clipName){
+    return suppressedConnections[clipName];
+}
+
 int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
 	int keywordsFound = 0;
     for(int c = 0; c < allClips.size(); c++){

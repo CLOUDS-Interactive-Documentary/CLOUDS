@@ -616,6 +616,7 @@
     else if(aTableView == linkTable){
         return currentClipLinks.size();
     }
+
 	else if(aTableView == playlistTable){
 		//return visualizer.pathByClip.size();
 		return storyEngine.getClipHistory().size();
@@ -699,9 +700,9 @@
         
         string keywordList = "";
         currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
-        //linkText.stringValue = [NSString stringWithUTF8String:("link:" + m.person + " - " + m.name).c_str()];
+
         linkText.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
-        
+//        suppressedTable.stringValue = [NSString stringWithUTF8String:parser.]
         startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
     }
     else if(aNotification.object == linkTable){
@@ -719,6 +720,16 @@
                 break;
             }
         }
+    }
+    else if(aNotification.object == suppressedTable){
+        if(suppressedTable.selectedRow<0){
+            return;
+        }
+        
+        CloudsClip& m = [self selectedClip];
+        
+            
+        
     }
 }
 
