@@ -55,6 +55,17 @@
 	ofRectangle camRect;
 
 	CloudsClip loadedClip;
+	
+	bool showHistogram;
+	bool calculatedHistogram;
+	ofPolyline histogram;
+	
+	int maxOccurrences;
+	unsigned minSequenceDepth;
+	unsigned maxSequenceDepth;
+	bool useLog;
+	map<unsigned short, int> hist;
+	
 }
 
 @property (assign) IBOutlet NSTableView *clipTable;
@@ -78,5 +89,7 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+
+- (void)calculateHistogram;
 
 @end

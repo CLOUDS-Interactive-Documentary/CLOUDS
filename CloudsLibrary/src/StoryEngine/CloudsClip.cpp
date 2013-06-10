@@ -14,6 +14,7 @@ CloudsClip::CloudsClip(){
 	startFrame = 0;
     endFrame = 0;
 	hasCombinedVideo = false;
+	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
 }
@@ -79,6 +80,10 @@ string CloudsClip::getAdjustmentXML(){
 }
 
 void CloudsClip::loadAdjustmentFromXML(){
+
+	if(adjustmentLoaded){
+		return;
+	}
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
 		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
@@ -96,7 +101,9 @@ void CloudsClip::loadAdjustmentFromXML(){
 	adjustScale.y = adjustmentSettings.getValue("adjustment:scale:y", 1.);
 	
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
-	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);	
+	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
+	
+	adjustmentLoaded = true;
 }
 
 void CloudsClip::saveAdjustmentToXML(){

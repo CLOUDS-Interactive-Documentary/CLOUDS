@@ -74,7 +74,9 @@ protected:
     
     //  Terrain
     //
+    float       terrainResolution;
     float       terrainHeight;
+    float       size;
     
     //  VBO Terrain
     //
@@ -95,10 +97,10 @@ protected:
     ofMesh      terrainHorizontal;
     float       terrainVerticalAlpha;
     float       terrainHorizontalAlpha;
-    float       terrainResolution;
     float       pointsAlpha;
     bool        terrainSimple;
     
-    float       size;
-    
+    //  Camera
+    //
+    float       camAltitud;
 };

@@ -7,6 +7,8 @@
 {
 	
 	ofBackground(22);
+	minSequenceDepth = 100;
+	maxSequenceDepth = 200;
 	
 	cout << "PARSING LINKS" << endl;
 	if(ofDirectory("../../../CloudsData/").exists()){
@@ -45,8 +47,8 @@
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
 	gui->addButton("Reset Camera", &resetCamera);
-	gui->addSlider("min depth", 0, 1000, &minDepth);
-	gui->addSlider("max depth", 900, 3000, &maxDepth);
+	gui->addSlider("min depth", 300, 1000, &minDepth);
+	gui->addSlider("max depth", 900, 1500, &maxDepth);
 	gui->addSlider("x texture translate", -20, 20, &translate.x);
 	gui->addSlider("y texture translate", -20, 20, &translate.y);
 	gui->addSlider("x texture rotate", -5, 5, &rotate.x);
@@ -54,6 +56,9 @@
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
 	gui->addToggle("pause", &pause);
+	gui->addToggle("Show Histogram", &showHistogram);
+	gui->addToggle("Show Log Histogram", &useLog);
+	
 	gui->addButton("Save Alignment", &saveAlignment);
 	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
@@ -187,12 +192,43 @@
 	
 	cam.end();
 	
+	
 	glDisable(GL_DEPTH_TEST);
 	
 	ofPopStyle();
 	framebuffer.end();
 	
 	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
+		
+	if(showHistogram){
+		if(!calculatedHistogram){
+			[self calculateHistogram];
+		}
+		ofPolyline histLine;
+		map<unsigned short, int>::iterator histit;
+		
+		for(histit = hist.begin(); histit != hist.end(); histit++){
+			if(useLog){
+				histLine.addVertex(ofVec2f(ofMap(histit->first, minSequenceDepth, maxSequenceDepth, 200, ofGetWidth(), true),
+										   ofMap(log(histit->second), 0, log(maxOccurrences), ofGetHeight(), ofGetHeight()-300,true)));
+			}
+			else{
+				histLine.addVertex(ofVec2f(ofMap(histit->first, minSequenceDepth, maxSequenceDepth, 200, ofGetWidth(), true),
+										   ofMap((histit->second), 0, (maxOccurrences), ofGetHeight(), ofGetHeight()-300,true)));
+			}
+		}
+		
+		ofSetColor( ofColor::greenYellow );
+		float minDepthLine = ofMap(minDepth, minSequenceDepth, maxSequenceDepth, 200, ofGetWidth(), true);
+		float maxDepthLine = ofMap(maxDepth, minSequenceDepth, maxSequenceDepth, 200, ofGetWidth(), true);
+		ofSetColor( ofColor::rosyBrown );
+		
+		ofLine(minDepthLine, ofGetHeight()-300, minDepthLine, ofGetHeight());
+		ofLine(maxDepthLine, ofGetHeight()-300, maxDepthLine, ofGetHeight());
+		ofSetColor(255);
+		histLine.draw();
+	}
+
 }
 
 - (void) loadClipForAlignment:(id)sender
@@ -202,6 +238,10 @@
 		cout << "loadedd clip at row " << clipTable.selectedRow << endl;
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
 		if(player.setup(clip.getSceneFolder())){
+			showHistogram = false;
+			calculatedHistogram = false;
+			histogram.clear();
+			
 			renderer.setup(player.getScene().calibrationFolder);
 			renderer.setRGBTexture(*player.getVideoPlayer());
 			renderer.setDepthImage(player.getDepthPixels());
@@ -262,6 +302,13 @@
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
 	}
+	
+	if(key == 'H'){
+		if(!calculatedHistogram){
+			[self calculateHistogram];
+		}
+		showHistogram = !showHistogram;
+	}
 }
 
 - (void)keyReleased:(int)key
@@ -299,16 +346,77 @@
 	return parser.getAllClips().size();
 }
 
+- (void)calculateHistogram
+{
+	int skipPixels = 4;
+	int skipFrames = 2;
+	ofShortPixels pixels;
+	
+	hist.clear();
+	
+//	int firstFrame = player.getDepthSequence()->getCurrentFrame();
+	player.getVideoPlayer()->setFrame( loadedClip.startFrame );
+	player.update();
+	unsigned long startTime = player.getVideoPlayer()->getPosition() * player.getVideoPlayer()->getDuration() * 1000;
+	player.getVideoPlayer()->setFrame( loadedClip.endFrame );
+	player.update();
+	unsigned long endTime = player.getVideoPlayer()->getPosition() * player.getVideoPlayer()->getDuration() * 1000;
+	
+	int firstFrame = player.getDepthSequence()->frameForTime( startTime );
+	int lastFrame  = player.getDepthSequence()->frameForTime( endTime );
+	
+	cout << "calculating from time " << startTime << " to " << endTime << "; frame " << firstFrame << " " << lastFrame << endl;
+	for(int i = firstFrame; i < lastFrame; i += skipFrames){
+		player.getDepthSequence()->getPixelsAtFrame(i, pixels);
+		for(int p = 0; p < pixels.getWidth()*pixels.getHeight(); p += skipPixels){
+			if(pixels.getPixels()[p] != 0){
+				hist[ pixels.getPixels()[p] ]++;
+			}
+		}
+	}
+	
+	maxOccurrences = 0;
+	minSequenceDepth = 1343;
+	maxSequenceDepth = 1343;
+	
+	map<unsigned short, int>::iterator histit;
+	for(histit = hist.begin(); histit != hist.end(); histit++){
+		maxOccurrences = MAX(maxOccurrences,histit->second);
+		minSequenceDepth = MIN(histit->first, minSequenceDepth);
+		maxSequenceDepth = MAX(histit->first, maxSequenceDepth);
+	}
+	
+	cout << "depth range [" << minSequenceDepth << " " << maxSequenceDepth << "] max occurrence is " << maxOccurrences << endl;
+	calculatedHistogram = true;
+}
+
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 
 	if([@"clip" isEqualToString:aTableColumn.identifier]){
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
 	}
-	else{
+	else if([@"align" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getAdjustmentXML()) ? @"YES" : @"NO";
 	}
-	
+	else if([@"file" isEqualToString:aTableColumn.identifier]){
+		return [NSString stringWithUTF8String: ofFilePath::getBaseName( parser.getAllClips()[rowIndex].sourceVideoFilePath ).c_str() ];
+	}
+	else if([@"depth" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		clip.loadAdjustmentFromXML();
+		return [NSString stringWithUTF8String: ("[" + ofToString(clip.minDepth, 1) + " - " + ofToString(clip.maxDepth, 1) + "]" ).c_str() ];
+	}
+	else if([@"pairings" isEqualToString:aTableColumn.identifier]){
+		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
+	}
+	else if([@"exported" isEqualToString:aTableColumn.identifier]){
+		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()) ? @"YES" : @"NO";
+	}
+	else{
+		return @"IDENTIFER ERROR";
+	}
+
 //	string keyword = parser.getAllKeywords()[rowIndex];
 //	
 //	if([@"occurrence" isEqualToString:aTableColumn.identifier]){

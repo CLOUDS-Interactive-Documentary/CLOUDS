@@ -57,4 +57,5 @@ class CloudsClip {
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
 	
+	bool adjustmentLoaded;
 };
