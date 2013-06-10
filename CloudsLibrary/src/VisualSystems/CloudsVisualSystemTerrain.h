@@ -56,17 +56,6 @@ protected:
     ofFbo    noiseFbo;
     float    noiseSpeed,noiseZoom;
     
-    // GraysCott
-    //
-    ofShader grayscottShader;
-    ofFbo    grayscottFbo[2];
-    float    diffU,diffV,k,f;
-    float    grayscottLoops;
-    int      nPingPong;
-    bool     bCleanGrayscott;
-    bool     bGrayscott;
-    float    grayscottFade;
-    
     //  Normals
     //
     ofShader normalsShader;
@@ -78,27 +67,19 @@ protected:
     float       terrainHeight;
     float       size;
     
-    //  VBO Terrain
-    //
     void        makeTerrain( ofTexture &_heightMap );
-    void        drawVboTerrain();
     ofVbo       terrainVbo;
 	ofVec3f*    pNormals;
     ofVec3f*    pVertices;          // Vertex Data
     ofVec2f*    pTexCoords;         // Texture Coordinates
 	int         nVertexCount;       // Vertex Count
+    bool        bChange;
     
-    //  ofMesh Terrain
+    //  Texture
     //
-    void        makeMesh(ofTexture &_heightMap);
-    ofShader    terrainShader;
-    ofVboMesh   terrainMesh;
-    ofMesh      terrainVertical;
-    ofMesh      terrainHorizontal;
-    float       terrainVerticalAlpha;
-    float       terrainHorizontalAlpha;
-    float       pointsAlpha;
-    bool        terrainSimple;
+    ofShader patternShader;
+    ofFbo    patternFbo;
+    float    patternScale;
     
     //  Camera
     //
