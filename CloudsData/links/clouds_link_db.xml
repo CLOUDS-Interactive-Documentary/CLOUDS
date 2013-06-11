@@ -53,12 +53,12 @@
 <clip>
     <name>Binx - programming is a superpower</name>
     <link>
-        <target>Binx - changing the world</target>
+        <target>Philip - with programming you can do whatever</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Philip - with programming you can do whatever</target>
+        <target>Binx - changing the world</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -95,15 +95,15 @@
 <clip>
     <name>Binx - changing the world</name>
     <link>
-        <target>Golan - Anxious about the future</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Vera - Energy Flow2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Golan - Anxious about the future</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Binx - art and culture</name>
@@ -116,12 +116,12 @@
 <clip>
     <name>Binx - hybridity</name>
     <link>
-        <target>Golan - hybridity</target>
+        <target>Golan - hybridity2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Golan - hybridity2</target>
+        <target>Golan - hybridity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -133,24 +133,24 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
+    <suppress>
         <target>Paola - tranny designers</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
+    </suppress>
 </clip>
 <clip>
     <name>Binx - tools for storytelling2</name>
-    <link>
-        <target>Golan - listening post</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
     <link>
         <target>Vera - Accessibility through strories</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Golan - listening post</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Binx - work for hire</name>
@@ -167,6 +167,14 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Casey - Processing, what is it?</name>
+    <suppress>
+        <target>Philip - toxi&apos;s physics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - Sketching with code</name>
@@ -236,11 +244,6 @@
 <clip>
     <name>Casey - Birth of processing</name>
     <link>
-        <target>Jer - Making a tool</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Shiffman - sharing</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -260,6 +263,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Jer - Making a tool</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - Design by numbers to processing</name>
@@ -286,11 +294,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
+    <suppress>
         <target>JTNimoy - one of us</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - Style diffuses</name>
@@ -1138,11 +1146,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
+    <suppress>
         <target>Maeda - People</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
+    </suppress>
 </clip>
 <clip>
     <name>Julia - what is it doing to us</name>
@@ -1402,6 +1410,19 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Kyle_MC - blank expression</name>
+    <link>
+        <target>Shiffman - building a universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Aaron - individualization + emotion</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Kyle_MC - Hackers and artists</name>

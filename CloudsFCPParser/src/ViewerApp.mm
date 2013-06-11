@@ -40,7 +40,7 @@
 	ofCircle(mouseX, mouseY, 30);
 	
 	if(mainview.movieFileMissing){
-		movieNotFound.draw(0,0,960,540);
+		//movieNotFound.draw(0,0,960,540);
 		
 		ofDrawBitmapString("MOVIE MISSING", 10, 10);
 	}
