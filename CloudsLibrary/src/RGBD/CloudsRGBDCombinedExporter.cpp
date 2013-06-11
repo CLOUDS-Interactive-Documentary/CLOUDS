@@ -240,46 +240,11 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
 
-//	if(!frameMetaPixels.isAllocated() ||
-//	   frameMetaPixels.getWidth() !=  videoPixels.getWidth() ||
-//	   frameMetaPixels.getHeight() !=  videoPixels.getHeight())
-//	{
-//		frameMetaPixels.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
-//	}
-	
-//	if(!cairoRenderer.getImageSurfacePixels().isAllocated() ||
-//	   cairoRenderer.getImageSurfacePixels().getWidth() !=  videoPixels.getWidth() ||
-//	   cairoRenderer.getImageSurfacePixels().getHeight() !=  videoPixels.getHeight())
-//	{
-//	   cairoRenderer.setupMemoryOnly(ofCairoRenderer::IMAGE, false, false, ofRectangle(0,0,videoPixels.getWidth(), videoPixels.getHeight()) );
-//	}
-//	
-//	cairoRenderer.setupGraphicDefaults();
-//	cairoRenderer.background(0);
-
 	contours.setThreshold(40);
 	contours.setMinArea(50*50);
 	contours.findContours(videoPixels);
 	
 	if(contours.size() > 0){
-//		cairoRenderer.setColor(255, 0, 0);
-//		cairoRenderer.setFillMode(OF_FILLED);
-//		cairoRenderer.drawRectangle(0, 0, 0, videoPixels.getWidth(), videoPixels.getHeight());
-		
-		
-//		for (int i = 0; i < contours.size(); i++){
-//			ofPath contourPath;
-//			for(int p = 0; p < contours.getPolyline(i).getVertices().size(); p++){
-//				contourPath.lineTo(contours.getPolyline(i).getVertices()[p]);
-//			}
-//			contourPath.close();
-//			
-//			cairoRenderer.setColor(ofColor::white);
-//			contourPath.setFillColor(ofColor::white);
-//			cairoRenderer.draw(contourPath);
-////			cout << "FOUND CONTOUR size " << contours.getPolyline(i).getArea() << endl;
-//		}
-		
 		
 		for (int i = 0; i < contours.size(); i++){
 			cv::Mat dstMat = ofxCv::toCv(faceFrame);
@@ -288,20 +253,6 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 			dstMat.setTo(cv::Scalar(0));
 			cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,255));
 		}
-
-		
-//		char filename[1024];
-//		ofPixels resized = cairoRenderer.getImageSurfacePixels();
-//		resized.setImageType(OF_IMAGE_COLOR);
-//		sprintf(filename, "%s/__contour_%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
-//		cout << "Saving contour filename " << filename << endl;
-//		ofSaveImage(polyPixels, filename);
-		
-
-//		resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
-//		resized.pasteInto(outputImage, faceTargetRectangle.x, faceTargetRectangle.y);
-		
-		
 	}
 	else{
 		cout << "NO CONTOURS FOUND" << endl;
@@ -358,6 +309,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		lastLeftEye = leftEye;
 		lastRightEye = rightEye;
 		lastFace = faceOutline;
+		lastMouth = mouthOutline;
 		
 		addFaceToPixels(outputImage, faceFrame, faceTargetRectangle,
 						leftEye, rightEye, faceOutline, mouthOutline);
@@ -374,7 +326,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	// DIFFERENCE MATTE
 	/////////
 	ofPixels thisFrameGray = resizedVideoPixels;
-	thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
+//	thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
 	thisFrameGray.resize(faceTargetRectangle.width, faceTargetRectangle.height);
 	if(lastVideoFrame.isAllocated()){
 		cv::Mat thisFrameMat = ofxCv::toCv( thisFrameGray );
@@ -384,35 +336,18 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		   thisFrameGray.getWidth() != frameDifference.getWidth() ||
 		   thisFrameGray.getHeight() != frameDifference.getHeight() )
 		{
-			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_GRAYSCALE);
+			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_COLOR);
 		}
 		
 		cv::Mat frameDifferenceMat = ofxCv::toCv(frameDifference);
 		cv::absdiff(thisFrameMat, lastFrameMat, frameDifferenceMat);
-		
-		/*
-		int maxDifference = 0;
-		int dstPixelIndex;
-		
-		unsigned char* src = frameDifference.getPixels();
-		for(int y = 0; y < thisFrameGray.getHeight(); y++){
-			for(int x = 0; x < thisFrameGray.getWidth(); x++){
-				//int srcPixelIndex = (y*thisFrameGray.getWidth() + x);
-				dstPixelIndex = (outputImage.getWidth()*(y + videoRectangle.height + 480) + videoRectangle.width/2 + x) * 3;
-				//add frame difference to the green channel
-				maxDifference = MAX(*src, maxDifference);
-				//outputImage.getPixels()[ dstPixelIndex ] = *(src++);
-				outputImage.getPixels()[ dstPixelIndex ] = 255;
-			}
-		}
-		*/
-		
+
 		frameDifference.pasteInto(outputImage,videoRectangle.width/2,
 								  videoRectangle.height + 480);
-//		cout << "adding difference matte, max difference " << maxDifference << endl;
 	}
 	
 	lastVideoFrame = thisFrameGray;
+	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
 	cout << "Saving filename " << filename << endl;

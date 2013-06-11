@@ -64,10 +64,6 @@ protected:
 	ofPixels lastVideoFrame;
 	ofPixels frameDifference;
 	ofPixels frameMetaPixels;
-	//for offscreen
-	ofCairoRenderer cairoRenderer;
-	
-
 	
 //	ofFbo faceFBO; //draw target for face frame
 	ofPixels faceFrame; //copy to destination
