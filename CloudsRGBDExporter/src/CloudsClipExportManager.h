@@ -19,10 +19,14 @@ class CloudsClipExportManager : public ofThread {
 
   protected:
 	
+	void medianFilter();
+	
 	CloudsClip currentClip;
 	ofxRGBDCPURenderer renderer;
 	ofxRGBDPlayer rgbdPlayer;
 	CloudsRGBDCombinedExporter exporter;
+	
+	ofShortPixels medianPixels;
 	
 	string exportDirectory;
 	
