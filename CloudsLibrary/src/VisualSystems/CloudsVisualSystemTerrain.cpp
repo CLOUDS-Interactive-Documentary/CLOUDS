@@ -22,7 +22,11 @@ void CloudsVisualSystemTerrain::selfSetup()
     normalsShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/normals.fs");
     patternShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/pattern.fs");
     
-    patternScale = 20.0;
+    patternScale = 50.0;
+    
+    stripeAlpha = 1.0;
+    hexAlpha = 1.0;
+    dotsAlpha = 1.0;
     
     bChange = true;
 }
@@ -40,7 +44,10 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 
 void CloudsVisualSystemTerrain::selfSetupRenderGui()
 {
-
+    rdrGui->addLabel("Patern");
+    rdrGui->addSlider("Hex", 0.0, 1.0, &hexAlpha);
+    rdrGui->addSlider("Stripes", 0.0, 1.0, &stripeAlpha);
+    rdrGui->addSlider("Dots", 0.0, 1.0, &dotsAlpha);
 }
 
 void CloudsVisualSystemTerrain::guiSystemEvent(ofxUIEventArgs &e)
@@ -92,6 +99,7 @@ void CloudsVisualSystemTerrain::selfUpdate()
         noiseShader.setUniform2f("resolution", width,height);
         noiseShader.setUniform2f("position", camPosition.x, camPosition.y);
         noiseShader.setUniform1f("zoom", noiseZoom);
+        noiseShader.setUniform1f("time", 1.0);
         glBegin(GL_QUADS);
         glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
         glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
@@ -119,8 +127,12 @@ void CloudsVisualSystemTerrain::selfUpdate()
         patternShader.setUniformTexture("tex0", noiseFbo, 0);
         patternShader.setUniform1f("textureScale", patternScale);
         patternShader.setUniform1f("scale", 0.48);
+        
+        patternShader.setUniform1f("hexAlpha", hexAlpha);
+        patternShader.setUniform1f("stripeAlpha", stripeAlpha);
+        
         patternShader.setUniform1f("pointsGap", 10.0);
-        patternShader.setUniform1f("pointsAlpha", 0.5);
+        patternShader.setUniform1f("pointsAlpha", dotsAlpha);
         
         glBegin(GL_QUADS);
         glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
@@ -170,7 +182,7 @@ void CloudsVisualSystemTerrain::makeTerrain( ofTexture &_heightMap ){
     normalsFbo.getTextureReference().readToPixels(normalMap);
     
     camAltitud = ofLerp( camAltitud, heightMap.getColor(width*0.5, height*0.5).r * flHeightScale + 7, 0.1);
-    cam.setPosition(0, camAltitud, 0);
+//    cam.setPosition(0, camAltitud, 0);
     
     //  Construct the VBO
     //
@@ -331,5 +343,5 @@ void CloudsVisualSystemTerrain::selfGuiEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystemTerrain::guiRenderEvent(ofxUIEventArgs &e)
 {
-    
+    bChange = true;
 }
