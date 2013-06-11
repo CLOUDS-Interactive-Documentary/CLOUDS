@@ -33,6 +33,8 @@
     CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
+    
+   // ofVideoPlayer
 	
     bool updatePhysics;
     vector<string> selectedKeywords;
@@ -57,12 +59,13 @@
 	
 	bool movieFileMissing;
 	bool onPlaylist;
+    
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
 @property(nonatomic,readonly) bool movieFileMissing;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
-@property(nonatomic,readonly) bool playingPlaylist;
+//@property(nonatomic,readonly) bool playingPlaylist;
 
 - (void)setup;
 - (void)update;
@@ -85,6 +88,9 @@
 - (IBAction) removeLink:(id)sender;
 - (IBAction) unsuppressLink:(id)sender;
 - (IBAction) suppressLinkModifier:(id)sender;
+- (IBAction) previewLinks:(id)sender;
+- (IBAction) previewSuppressed:(id)sender;
+- (IBAction) stopPreview:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
@@ -108,6 +114,8 @@
 
 - (CloudsClip&) selectedClip;
 - (CloudsClip&) selectedClipFromPlaylist;
+
+- (void)playClip:(CloudsClip&)clip;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
