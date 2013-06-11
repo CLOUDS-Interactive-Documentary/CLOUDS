@@ -60,6 +60,10 @@
 	bool calculatedHistogram;
 	ofPolyline histogram;
 	
+	float contourThreshold;
+	float minBlobSize;
+	bool selectColor;
+	
 	int maxOccurrences;
 	unsigned minSequenceDepth;
 	unsigned maxSequenceDepth;

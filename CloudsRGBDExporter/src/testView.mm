@@ -55,7 +55,12 @@
 	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
+	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
+	gui->addSlider("min blob size", 0, 200, &minBlobSize);
+	gui->addToggle("select color", &selectColor);
+	
 	gui->addToggle("pause", &pause);
+	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
 	
@@ -235,7 +240,7 @@
 {
 
 	if(clipTable.selectedRow >= 0){
-		cout << "loadedd clip at row " << clipTable.selectedRow << endl;
+
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
 		if(player.setup(clip.getSceneFolder())){
 			showHistogram = false;
