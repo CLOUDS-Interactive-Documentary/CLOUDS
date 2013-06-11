@@ -25,7 +25,9 @@
 	IBOutlet NSTextField* seedKeyword;
 	
     IBOutlet NSTextField* startQuestion;
-    
+	IBOutlet NSButton* showOnlyQuestions;
+
+
 	IBOutlet ViewerApp* viewerApp;
 	
     CloudsFCPParser parser;
@@ -34,7 +36,6 @@
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
-   // ofVideoPlayer
 	
     bool updatePhysics;
     vector<string> selectedKeywords;
@@ -60,6 +61,7 @@
 	bool movieFileMissing;
 	bool onPlaylist;
     
+
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
@@ -91,6 +93,7 @@
 - (IBAction) previewLinks:(id)sender;
 - (IBAction) previewSuppressed:(id)sender;
 - (IBAction) stopPreview:(id)sender;
+- (IBAction) showQuestiosnChanged:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;

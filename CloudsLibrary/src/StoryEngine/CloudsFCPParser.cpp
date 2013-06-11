@@ -116,9 +116,6 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
     }
 }
 
-
-
-
 void CloudsFCPParser::parseLinks(string linkFile){
     
     linkedConnections.clear();
@@ -193,7 +190,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
         
         bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
 		
-        if(hasLink || hasSuppressed||hasStartingQuestion){
+        if(hasLink || hasSuppressed || hasStartingQuestion){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);

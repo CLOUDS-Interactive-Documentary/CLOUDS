@@ -48,6 +48,7 @@
     if(mainview.preview.isLoaded() && mainview.preview.isPlaying()){
         mainview.preview.draw(0, 0, 960, 540);
     }
+	
 	ofPushStyle();
 	ofSetColor(0xc965e2, 150);
 	float percentDone = [mainview clipPercentComplete];
