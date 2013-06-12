@@ -145,7 +145,7 @@ void CloudsVisualSystemComputationTicker::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemComputationTicker::selfDraw(){
-		
+	
 	drawShader.begin();
 	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
 	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 1);
@@ -153,6 +153,7 @@ void CloudsVisualSystemComputationTicker::selfDraw(){
 	drawShader.setUniform1f("deviation", deviation);
 	
 	ofPushStyle();
+	ofEnableAlphaBlending();	
 	glPushAttrib(GL_POINT_BIT);
 	
 	ofPushMatrix();
@@ -165,11 +166,14 @@ void CloudsVisualSystemComputationTicker::selfDraw(){
 	
 	mesh.draw();
 	
-	glPopAttrib();
 	ofPopMatrix();
+	
+	glPopAttrib();
 	ofPopStyle();
 	
 	drawShader.end();
+	
+	
 	
 }
 
