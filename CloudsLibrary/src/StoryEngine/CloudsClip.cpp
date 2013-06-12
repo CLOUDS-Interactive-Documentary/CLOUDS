@@ -26,7 +26,7 @@ string CloudsClip::getLinkName(){
 }
 
 string CloudsClip::getStartingQuestion(){
-    if(startingQuestion.length()<=0){
+    if(startingQuestion.empty()){
         return "-";
     }
     else{
