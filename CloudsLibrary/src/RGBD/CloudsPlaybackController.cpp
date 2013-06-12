@@ -1,10 +1,14 @@
 
 #include "CloudsPlaybackController.h"
 
-//#include "CloudsVisualSystemStandin.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsVisualSystemLSystems.h"
+#include "CloudsVisualSystemVoro.h"
+#include "CloudsVisualSystemVerletForm.h"
+#include "CloudsVisualSystemCities.h"
+#include "CloudsVisualSystemAmber.h"
+#include "CloudsVisualSystemCollaboration1.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
@@ -164,9 +168,10 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	ofLogVerbose() << "Populating visual systems";
 	
-	registerVisualSystem( new CloudsVisualSystemRezanator() );
+	//registerVisualSystem( new CloudsVisualSystemRezanator() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
+	registerVisualSystem( new CloudsVisualSystemVoro() );
 	
 	set<string> keyThemes;
 	for(int i = 0; i < visualSystems.size(); i++){
