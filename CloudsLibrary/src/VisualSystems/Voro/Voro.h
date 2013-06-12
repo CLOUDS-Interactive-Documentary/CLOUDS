@@ -11,7 +11,7 @@
 #include "ofMain.h"
 
 #include "voro++.h"
-using namespace voro;
+
 
 //  cell (voronoicell) wrappers
 //

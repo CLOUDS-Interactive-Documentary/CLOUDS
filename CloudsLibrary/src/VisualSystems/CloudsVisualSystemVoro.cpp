@@ -104,24 +104,24 @@ void CloudsVisualSystemVoro::selfUpdate()
     if(bDrawVoronoiWireFrames || bDrawVoronoi){
         
         cellMeshes.clear();
-        container con(-containerSize,containerSize,
+		voro::container con(-containerSize,containerSize,
                       -containerSize,containerSize,
                       -containerHeight,containerHeight,
                       1,1,1,
                       containerPeriodic,containerPeriodic,containerPeriodic,
                       1);
         
-        if (bSphere){
-            wall_sphere sph(0, 0, 0, containerSize);
-            con.add_wall(sph);
-            bCyllinder = false;
-        }
-        
-        if (bCyllinder){
-            wall_cylinder cyl(0,0,0,0,0,0, containerSize);
-            con.add_wall(cyl);
-            bSphere = false;
-        }
+//        if (bSphere){
+//            voro::wall_sphere sph(0, 0, 0, containerSize);
+//            con.add_wall(sph);
+//            bCyllinder = false;
+//        }
+//        
+//        if (bCyllinder){
+//			voro::wall_cylinder cyl(0,0,0,0,0,0, containerSize);
+//            con.add_wall(cyl);
+//            bSphere = false;
+//        }
         
         for(int i = 0; i < seedParticles.size(); i++){
             con.put(i, seedParticles[i]->x, seedParticles[i]->y, seedParticles[i]->z);

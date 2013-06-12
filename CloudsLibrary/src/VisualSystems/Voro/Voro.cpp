@@ -8,6 +8,8 @@
 
 #include "Voro.h"
 
+using namespace voro;
+
 float getCellRadius(voro::voronoicell &_c){
     return pow(3* _c.volume()/4*PI,1.0/3.0);
 };
