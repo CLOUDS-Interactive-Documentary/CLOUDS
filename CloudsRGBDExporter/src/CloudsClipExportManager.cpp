@@ -66,14 +66,18 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	medianPixels.allocate(rgbdPlayer.getDepthPixels().getWidth(), rgbdPlayer.getDepthPixels().getHeight(), OF_IMAGE_GRAYSCALE);
 	renderer.setDepthImage(medianPixels);
 
-	currentClip.loadAdjustmentFromXML();
+	currentClip.loadAdjustmentFromXML(true);
 	renderer.nearClip = currentClip.minDepth;
 	renderer.farClip = currentClip.maxDepth;
 	renderer.colorMatrixTranslate = currentClip.adjustTranslate;
 	renderer.colorMatrixRotate = currentClip.adjustRotate;
 	renderer.scale = currentClip.adjustScale;
-
+	
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
+	
+	exporter.minBlobSize = currentClip.contourMinBlobSize;
+	exporter.targetColor = currentClip.contourTargetColor;
+	exporter.contourThreshold = currentClip.contourTargetThreshold;
 	
 	exporter.prepare();
 	
@@ -102,7 +106,6 @@ void CloudsClipExportManager::medianFilter(){
 	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+0, pixels[2]);
 	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+1, pixels[3]);
 	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+2, pixels[4]);
-	
 	
 	for(int i = 0; i < pixels[0].getWidth()*pixels[0].getHeight(); i++){
 		for(int p = 0; p < 5; p++){

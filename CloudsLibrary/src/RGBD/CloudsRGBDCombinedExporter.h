@@ -39,6 +39,9 @@ class CloudsRGBDCombinedExporter {
 	
 	ofIntRange inoutPoint;
     
+	ofColor targetColor;
+	float contourThreshold;
+	float minBlobSize;
 	ofxCv::ContourFinder contours;
 protected:
     

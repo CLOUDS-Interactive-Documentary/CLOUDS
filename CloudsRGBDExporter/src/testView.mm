@@ -9,22 +9,23 @@
 	ofBackground(22);
 	minSequenceDepth = 100;
 	maxSequenceDepth = 200;
-	
+	contourThreshold = 100;
+	minBlobSize = 0;
+	selectColor = false;
+
 	cout << "PARSING LINKS" << endl;
 	if(ofDirectory("../../../CloudsData/").exists()){
 		
 		cout << "Found link in correct directory" << endl;
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 		parser.setup("../../../CloudsData/fcpxml/");
+		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.parseLinks("clouds_link_db.xml");
 		parser.setup("xml");
+		parser.parseLinks("clouds_link_db.xml");
 	}
-	
-	//    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
-    
+
     [clipTable reloadData];
     exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports");
     cout << "Relinked Export Folder "<< exportFolder << endl;
@@ -47,6 +48,7 @@
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
 	gui->addButton("Reset Camera", &resetCamera);
+	gui->addSlider("Clip Position", 0, 1.0, &clipPosition);
 	gui->addSlider("min depth", 300, 1000, &minDepth);
 	gui->addSlider("max depth", 900, 1500, &maxDepth);
 	gui->addSlider("x texture translate", -20, 20, &translate.x);
@@ -56,14 +58,14 @@
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
 	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
-	gui->addSlider("min blob size", 0, 200, &minBlobSize);
+	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
 	gui->addToggle("select color", &selectColor);
 	
 	gui->addToggle("pause", &pause);
 	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
-	
+
 	gui->addButton("Save Alignment", &saveAlignment);
 	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
@@ -73,6 +75,8 @@
 	cam.loadCameraPosition();
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	
+	cout << "Finished setup" << endl;
 }
 
 - (void)update
@@ -129,16 +133,36 @@
 		cam.rotate(180, ofVec3f(0,1,0));
 		cam.setAnglesFromOrientation();	
 	}
-	
+
 	player.update();
 	if(player.isLoaded()){
+		
 		if(player.getVideoPlayer()->isPlaying() && pause){
 			player.getVideoPlayer()->stop();
 		}
 		else if(!player.getVideoPlayer()->isPlaying() && !pause){
 			player.getVideoPlayer()->play();
 		}
+		
+		if(pause){
+			if(abs(clipPosition - player.getVideoPlayer()->getPosition()) > .0001){
+				player.getVideoPlayer()->setPosition(clipPosition);
+			}
+		}
+		else{
+			clipPosition = player.getVideoPlayer()->getPosition();
+		}
+		
+//		cout << "Finding contour on image size " << player.getVideoPlayer()->getWidth() << " " << player.getVideoPlayer()->getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
+		contours.setMinArea(minBlobSize);
+		contours.setThreshold(contourThreshold);
+		contours.setTargetColor(targetColor);
+		contours.findContours(*player.getVideoPlayer());
+		loadedClip.contourMinBlobSize = minBlobSize;
+		loadedClip.contourTargetColor = targetColor;
+		loadedClip.contourTargetThreshold = contourThreshold;
 	}
+
 	if(player.isLoaded() &&
 	  (player.isFrameNew() ||
 	   renderer.nearClip != minDepth ||
@@ -165,46 +189,56 @@
 - (void)draw
 {
 
-	framebuffer.begin();
-	ofClear(0);
-	
-	ofPushStyle();
-	camRect = ofRectangle (200,0,ofGetWidth()-200,ofGetHeight());
-	ofSetColor(0);
-	ofRect(camRect);
-	
-	glEnable(GL_DEPTH_TEST);
-	cam.begin(camRect);
-	ofSetColor(255);
-	if(player.isLoaded()){
-		renderer.drawMesh();
+	if(selectColor){
+		if(player.isLoaded()){
+			ofPushMatrix();
+			ofTranslate(200,0);
+			player.getVideoPlayer()->draw(0,0);
+			contours.draw();
+			ofPopMatrix();
+		}	
+	}
+	else {
+		framebuffer.begin();
+		ofClear(0);
+		
+		ofPushStyle();
+		camRect = ofRectangle (200,0,ofGetWidth()-200,ofGetHeight());
+		ofSetColor(0);
+		ofRect(camRect);
+		
+		glEnable(GL_DEPTH_TEST);
+		cam.begin(camRect);
+		ofSetColor(255);
+		if(player.isLoaded()){
+			renderer.drawMesh();
+		}
+		
+		glEnable(GL_DEPTH_TEST);
+		
+		ofNoFill();
+		ofPushMatrix();
+		ofSetHexColor(0x69aade);
+		ofTranslate(0, 0, minDepth);
+		ofDrawPlane(0, 0, 800, 800);
+		ofPopMatrix();
+		
+		ofPushMatrix();
+		ofSetHexColor(0xFFFFFF - 0x69aade);
+		ofTranslate(0, 0, maxDepth);
+		ofDrawPlane(0, 0, 800, 800);
+		ofPopMatrix();
+		
+		cam.end();
+		
+		glDisable(GL_DEPTH_TEST);
+		
+		ofPopStyle();
+		framebuffer.end();
+		
+		framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
 	}
 	
-	glEnable(GL_DEPTH_TEST);
-	
-	ofNoFill();
-	ofPushMatrix();
-	ofSetHexColor(0x69aade);
-	ofTranslate(0, 0, minDepth);
-	ofDrawPlane(0, 0, 800, 800);
-	ofPopMatrix();
-	
-	ofPushMatrix();
-	ofSetHexColor(0xFFFFFF - 0x69aade);
-	ofTranslate(0, 0, maxDepth);
-	ofDrawPlane(0, 0, 800, 800);
-	ofPopMatrix();
-	
-	cam.end();
-	
-	
-	glDisable(GL_DEPTH_TEST);
-	
-	ofPopStyle();
-	framebuffer.end();
-	
-	framebuffer.getTextureReference().draw(0,ofGetHeight(), ofGetWidth(), -ofGetHeight());
-		
 	if(showHistogram){
 		if(!calculatedHistogram){
 			[self calculateHistogram];
@@ -233,7 +267,12 @@
 		ofSetColor(255);
 		histLine.draw();
 	}
-
+	
+	//draw color
+	ofPushStyle();
+	ofSetColor(targetColor);
+	ofRect(ofGetWidth()-100,100,50,50);
+	ofPopStyle();
 }
 
 - (void) loadClipForAlignment:(id)sender
@@ -253,13 +292,18 @@
 			player.getVideoPlayer()->setFrame( clip.startFrame );
 		
 			loadedClip = clip;
-			loadedClip.loadAdjustmentFromXML();
+			loadedClip.loadAdjustmentFromXML(true);
 			translate = loadedClip.adjustTranslate;
 			rotate = loadedClip.adjustRotate;
 			scale = loadedClip.adjustScale;
 			minDepth = loadedClip.minDepth;
 			maxDepth = loadedClip.maxDepth;
 			
+			minBlobSize = loadedClip.contourMinBlobSize;
+			targetColor = loadedClip.contourTargetColor;
+			contourThreshold = loadedClip.contourTargetThreshold;
+			contours.setTargetColor(targetColor);
+
 			player.play();
 		}
 	}
@@ -333,7 +377,10 @@
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-	
+	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
+		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
+		contours.setTargetColor(targetColor);
+	}
 }
 
 - (void)mouseReleased:(NSPoint)p button:(int)button
@@ -343,7 +390,8 @@
 
 - (void)windowResized:(NSSize)size
 {
-	
+	framebuffer.allocate(size.width, size.height, GL_RGB, 4);
+
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
