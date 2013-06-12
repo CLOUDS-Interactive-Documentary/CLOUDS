@@ -28,7 +28,7 @@ void main() {
 	float hexagram = smoothstep(0., r, hex(p));
 
 	if (deep > 0.01){
-		gl_FragColor  = vec4(vec3(1.0 - hexagram), hexAlpha ); 
+		gl_FragColor  = vec4( 1.0 - hexagram ); 
 		gl_FragColor  = mix(gl_FragColor,vec4(stripe), stripeAlpha ); 
 	} else {
 		gl_FragColor  = vec4(vec3(1.0 - hexagram),deep*100.0*hexAlpha); 

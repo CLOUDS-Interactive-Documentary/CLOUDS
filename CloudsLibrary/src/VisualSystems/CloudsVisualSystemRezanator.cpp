@@ -76,6 +76,8 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         
         currentCamera->begin();
         
+        //  TEMPORAL FIX
+        //
 //        drawBackground();
         
         ofRotateX(xRot->getPos());
@@ -2070,8 +2072,11 @@ void CloudsVisualSystemRezanator::drawBackground()
 {
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
-        ofBackgroundGradient(*bgColor, *bgColor2,OF_GRADIENT_CIRCULAR);
         
+        //  TEMPORAL FIX
+        //
+        ofBackgroundGradient(*bgColor, *bgColor2,OF_GRADIENT_CIRCULAR);
+    
         //  Sorry Reza this is a quick and durty fix
         //
 //        ofPushMatrix();
