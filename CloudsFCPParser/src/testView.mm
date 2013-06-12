@@ -207,13 +207,15 @@
 	if(showOnlyQuestions.state == NSOnState){
 		[keywordTable selectRowIndexes:nil
 				  byExtendingSelection:NO];
-		selectedKeywords.clear();
+        selectedKeywords.clear();
 		selectedClips.clear();
 		for(int i = 0; i < parser.getAllClips().size(); i++ ){
 			if(parser.getAllClips()[i].hasStartingQuestion()){
+                cout<<"Question Loop: "<<parser.getAllClips()[i].getLinkName()<<endl;
 				selectedClips.push_back( parser.getAllClips()[i] );
 			}
 		}
+
 	}
 	else{
 		selectedKeywords.clear();
@@ -612,10 +614,11 @@
 - (IBAction) setStartText:(id)sender{
     //button pressed
     CloudsClip& m = [self selectedClip];
+    CloudsClip& n = parser.getClipWithLinkName(m.getLinkName());
     string q =   std::string([startQuestion.stringValue UTF8String]);
     
-    m.setStartingQuestion(q );
-    cout<<"Set the question for clip"<<m.getLinkName()<<"::"<<m.getStartingQuestion()<<endl;
+    n.setStartingQuestion(q);
+    cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
     //get the txt from textfield, get currently select clip, and set it
     
     
@@ -765,7 +768,10 @@
 
 - (CloudsClip&) selectedClip
 {
-    return (selectedClips.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+    CloudsClip& c = (selectedClips.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+    
+    cout<<"Selected clip "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
+    return c;
 }
 
 - (CloudsClip&) selectedClipFromPlaylist
@@ -869,6 +875,7 @@
     }
     else if(aTableView == clipTable){
 		CloudsClip& m = (selectedClips.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
+//        cout<<"Selected Clips size: "<<selectedClips.size()<<endl;
         //		NSLog(@"Identifer is %@", aTableColumn.identifier);
 		if([@"Links" isEqualToString:aTableColumn.identifier]){
 			return [NSNumber numberWithInt: parser.getLinksForClip( m.getLinkName() ).size()];
@@ -912,8 +919,11 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if(aNotification.object == keywordTable && showOnlyQuestions.state ==  NSOffState){
+    
+
         selectedKeywords.clear();
         selectedClips.clear();
+     
         if(keywordTable.selectedRow >= 0){
             
             NSUInteger idx = [keywordTable.selectedRowIndexes firstIndex];
@@ -965,8 +975,7 @@
             return;
         }
         
-        CloudsClip& m = [self selectedClip];
-        
+              
         
     }
 }
