@@ -876,6 +876,13 @@
         else if([@"Suppressions" isEqualToString:aTableColumn.identifier]){
             return [NSNumber numberWithInt:parser.getSuppressionsForClip(m.getLinkName()).size()];
         }
+        else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
+            //return [NSNumber numberWithInt:parser.getSuppressionsForClip(m.getLinkName()).size()];
+            //string
+            string s = m.getStartingQuestion();
+            //cout<<"Starting: "<<s<<endl;
+            return [NSString stringWithUTF8String:s.c_str()];
+        }
 		else {
 			//CloudsClip& m = [self selectedClip];
 			string linkString = m.person + " - " + m.name + " - " + m.clip + ": [" + ofToString(m.startFrame) + "," + ofToString(m.endFrame) + "]";
