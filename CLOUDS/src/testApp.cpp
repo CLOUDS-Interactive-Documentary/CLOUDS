@@ -24,6 +24,7 @@ void testApp::setup(){
 	player.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
+
 	storyEngine.seedWithClip( parser.getRandomClip(true) );
 	
 }
