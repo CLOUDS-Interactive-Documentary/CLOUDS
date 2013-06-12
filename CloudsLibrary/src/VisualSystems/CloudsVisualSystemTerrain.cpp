@@ -18,7 +18,8 @@ void CloudsVisualSystemTerrain::selfSetup()
     terrainResolution = 1.0;
     setResolution(200, 200);
     
-    noiseShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/noise.fs");
+//    noiseShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/noise.fs");
+    noiseShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/mNoise.fs");
     normalsShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/normals.fs");
     patternShader.load("", getDataPath()+"shaders/VisualSystems/Terrain/pattern.fs");
     
@@ -28,6 +29,8 @@ void CloudsVisualSystemTerrain::selfSetup()
     hexAlpha = 1.0;
     dotsAlpha = 1.0;
     
+    noiseSpeed = 0.0;
+    
     bChange = true;
 }
 
@@ -35,6 +38,7 @@ void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
     sysGui->addLabel("Noise");
     sysGui->addSlider("noise_zoom", 0.0, 10.0, &noiseZoom);
+    sysGui->addSlider("noise_speed", 0.0, 1.0, &noiseSpeed);
     
     sysGui->addLabel("Terrain");
     sysGui->addSlider("Terrain_Size", 10, 200, &size);
@@ -87,7 +91,7 @@ void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemTerrain::selfUpdate()
 {
     
-    if ( bChange ){
+    if ( bChange || noiseSpeed > 0.0`){
     
         //  NOISE
         //
@@ -99,7 +103,7 @@ void CloudsVisualSystemTerrain::selfUpdate()
         noiseShader.setUniform2f("resolution", width,height);
         noiseShader.setUniform2f("position", camPosition.x, camPosition.y);
         noiseShader.setUniform1f("zoom", noiseZoom);
-        noiseShader.setUniform1f("time", 1.0);
+        noiseShader.setUniform1f("time", ofGetElapsedTimef()*noiseSpeed);
         glBegin(GL_QUADS);
         glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
         glTexCoord2f(width, 0); glVertex3f(width, 0, 0);

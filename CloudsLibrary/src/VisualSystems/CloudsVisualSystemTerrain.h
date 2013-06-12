@@ -55,6 +55,7 @@ protected:
     ofShader    noiseShader;
     ofFbo       noiseFbo;
     float       noiseZoom;
+    float       noiseSpeed;
     
     //  Normals
     //

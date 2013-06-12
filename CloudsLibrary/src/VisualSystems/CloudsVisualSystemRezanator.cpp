@@ -69,10 +69,16 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
-
+        
+        //  TEMPORAL FIX
+        //
+        drawBackground();
+        
         currentCamera->begin();
         
-        drawBackground();
+        //  TEMPORAL FIX
+        //
+//        drawBackground();
         
         ofRotateX(xRot->getPos());
         ofRotateY(yRot->getPos());
@@ -2066,17 +2072,25 @@ void CloudsVisualSystemRezanator::drawBackground()
 {
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
-        ofPushMatrix();
-        if(camFOV > 60)
-        {
-            ofBackground(*bgColor2);
-        }        
-        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
-        ofDisableLighting();
-        ofSetSmoothLighting(true);
-        glNormal3f(0,0,1);
-        ofLayerGradient(*bgColor, *bgColor2);
-        ofPopMatrix();
+        
+        //  TEMPORAL FIX
+        //
+        ofBackgroundGradient(*bgColor, *bgColor2,OF_GRADIENT_CIRCULAR);
+    
+        //  Sorry Reza this is a quick and durty fix
+        //
+//        ofPushMatrix();
+//        if(camFOV > 60)
+//        {
+//            ofBackground(*bgColor2);
+//        }        
+//        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
+//        ofDisableLighting();
+//        ofSetSmoothLighting(true);
+//        glNormal3f(0,0,1);
+//        ofLayerGradient(*bgColor, *bgColor2);
+//        ofPopMatrix();
+        
         selfDrawBackground();
     }
     else
