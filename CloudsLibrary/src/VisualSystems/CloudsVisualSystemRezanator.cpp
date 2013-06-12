@@ -70,13 +70,13 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     if(bRenderSystem)
     {
         
-        //  TEMPORAL FIX
+        //  TEMPORARY FIX
         //
         drawBackground();
         
         currentCamera->begin();
         
-        //  TEMPORAL FIX
+        //  TEMPORARY FIX
         //
 //        drawBackground();
         
@@ -88,12 +88,16 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         
         glEnable(GL_DEPTH_TEST);
         
+		ofPushStyle();
         drawDebug();
+        ofPopStyle();
         
         lightsBegin();
         
+		ofPushStyle();
         selfDraw();
-        
+        ofPopStyle();
+		
         lightsEnd();
         
         currentCamera->end();
@@ -2070,12 +2074,17 @@ void CloudsVisualSystemRezanator::drawNormalizedTexturedQuad()
 
 void CloudsVisualSystemRezanator::drawBackground()
 {
+	ofPushStyle();
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
         
         //  TEMPORAL FIX
         //
-        ofBackgroundGradient(*bgColor, *bgColor2,OF_GRADIENT_CIRCULAR);
+//		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
+
+		ofSetSmoothLighting(true);
+        ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
+		ofPopStyle();
     
         //  Sorry Reza this is a quick and durty fix
         //
@@ -2098,6 +2107,7 @@ void CloudsVisualSystemRezanator::drawBackground()
         ofSetSmoothLighting(false);
         ofBackground(*bgColor);
     }
+	ofPopStyle();	
 }
 
 void CloudsVisualSystemRezanator::ofLayerGradient(const ofColor& start, const ofColor& end)
