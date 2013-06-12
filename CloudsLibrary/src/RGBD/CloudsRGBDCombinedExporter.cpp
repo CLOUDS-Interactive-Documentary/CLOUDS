@@ -22,10 +22,16 @@ void CloudsRGBDCombinedExporter::prepare(){
 	lastFaceFrameFound = 0;
 	inFace = false;
 	
+	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
+
+	
 	lastVideoFrame.clear();
 	
 	tracker.setup();
-
+	
+	contours.setMinArea(minBlobSize);
+	contours.setThreshold(contourThreshold);
+	contours.setTargetColor(targetColor);
 }
 
 void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
@@ -89,7 +95,6 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	
 	calibration.addTag("adjustment");
 	calibration.pushTag("adjustment");
-	
 	
 	calibration.addTag("translate");
 	calibration.pushTag("translate");
@@ -240,17 +245,20 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
 
-	contours.setThreshold(40);
-	contours.setMinArea(50*50);
-	contours.findContours(videoPixels);
+	contours.setMinArea(minBlobSize);
+	contours.setThreshold(contourThreshold);
+	contours.setTargetColor(targetColor);
 	
+//	cout << "Finding contour on image size " << videoPixels.getWidth() << " " << videoPixels.getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
+	
+	contours.findContours(videoPixels);
 	if(contours.size() > 0){
+		cv::Mat dstMat = ofxCv::toCv(faceFrame);
+		dstMat.setTo(cv::Scalar(0));
 		
 		for (int i = 0; i < contours.size(); i++){
-			cv::Mat dstMat = ofxCv::toCv(faceFrame);
 			const cv::Point* ppt[1] = { &(contours.getContour(i)[0]) };
 			int npt[] = { contours.getContour(i).size() };
-			dstMat.setTo(cv::Scalar(0));
 			cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,255));
 		}
 	}
