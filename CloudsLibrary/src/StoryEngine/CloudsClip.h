@@ -17,8 +17,9 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	ofColor color;
+	ofColor color; //clip marker color
     string startingQuestion;
+	
     //svg data
     ClusterData cluster;
 	map<string, ofColor> clusterColors;
@@ -36,7 +37,7 @@ class CloudsClip {
 	string getSceneFolder();
 	void setStartingQuestion(string question);
     bool hasStartingQuestion();
-	//these are filenames
+	
 	string getID();
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
@@ -47,8 +48,9 @@ class CloudsClip {
 	string combinedVideoPath;
 	string combinedCalibrationXMLPath;
 	
+	//adjustment paramters set by the exporter
 	string getAdjustmentXML();
-	void loadAdjustmentFromXML();
+	void loadAdjustmentFromXML(bool forceReload = false);
 	void saveAdjustmentToXML();
 	void addAdjustmentToXML(ofxXmlSettings adjustment);
 	
@@ -58,6 +60,11 @@ class CloudsClip {
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
+
+	//contour parameters
+	ofColor contourTargetColor;
+	float contourTargetThreshold;
+	float contourMinBlobSize;
 	
 	bool adjustmentLoaded;
 };

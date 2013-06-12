@@ -90,11 +90,12 @@ string CloudsClip::getAdjustmentXML(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory( ofFilePath::removeExt(relinkFilePath(sourceVideoFilePath)) )) + "adjustment.xml";
 }
 
-void CloudsClip::loadAdjustmentFromXML(){
+void CloudsClip::loadAdjustmentFromXML(bool forceReload){
     
-	if(adjustmentLoaded){
+	if(adjustmentLoaded && !forceReload){
 		return;
 	}
+	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
 		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
@@ -113,6 +114,15 @@ void CloudsClip::loadAdjustmentFromXML(){
 	
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
+	
+	contourTargetColor = ofColor(adjustmentSettings.getValue("adjustment:extraction:colorr", 255),
+								 adjustmentSettings.getValue("adjustment:extraction:colorg", 255),
+								 adjustmentSettings.getValue("adjustment:extraction:colorb", 255));
+	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+	
+	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
+	
+	cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
 }
@@ -148,7 +158,19 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("min", minDepth);
 	alignmentSettings.addValue("max", maxDepth);
 	alignmentSettings.popTag();
+
+	alignmentSettings.addTag("extraction");
+	alignmentSettings.pushTag("extraction");
+	alignmentSettings.addValue("colorr", contourTargetColor.r);
+	alignmentSettings.addValue("colorg", contourTargetColor.g);
+	alignmentSettings.addValue("colorb", contourTargetColor.b);
+	alignmentSettings.addValue("threshold", contourTargetThreshold);
+	alignmentSettings.addValue("blobsize", contourMinBlobSize);
 	
+	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	
+	alignmentSettings.popTag();
+
 	alignmentSettings.popTag();
 	
 	alignmentSettings.saveFile(getAdjustmentXML());

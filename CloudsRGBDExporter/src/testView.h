@@ -8,6 +8,7 @@
 #include "CloudsClipExportManager.h"
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
+#include "ofxCv.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
@@ -60,9 +61,14 @@
 	bool calculatedHistogram;
 	ofPolyline histogram;
 	
+	ofxCv::ContourFinder contours;
 	float contourThreshold;
 	float minBlobSize;
 	bool selectColor;
+	ofColor targetColor;
+	
+	//0 - 1 clip position
+	float clipPosition;
 	
 	int maxOccurrences;
 	unsigned minSequenceDepth;
