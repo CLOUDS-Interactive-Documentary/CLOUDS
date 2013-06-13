@@ -206,7 +206,7 @@ void testApp::mousePressed(int x, int y, int button){
             for(int i = 0;i<32;i++)
             {
                 if(bpattern[i]==1) {
-            MMODALBAR(i*tempo+beatoffset, 1., 0.2, mtof(scale(int((1.0-sy)*36.)+40., 2)), ofMap(i,0,31,0.1,0.9), sy, int(ofRandom(8)));
+            MMODALBAR(i*tempo+beatoffset, 1., 0.2, mtof(scale(int((1.0-sy)*36.)+40., 2)), ofMap(i,0,31,0.1,0.9), sx, int(ofRandom(8)));
                 }
             }
             if(DEBUG) cout << sx << " " << sy << " " << delta << endl;
