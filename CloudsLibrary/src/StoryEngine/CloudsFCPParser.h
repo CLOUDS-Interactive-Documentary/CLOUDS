@@ -91,7 +91,7 @@ class CloudsFCPParser {
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
-    vector<CloudsClip> allClips;  
+
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
@@ -109,9 +109,11 @@ class CloudsFCPParser {
 	
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-  //  vector<CloudsClip> allClips;
 	set<string> markerLinkNames;
 
+    vector<CloudsClip> allClips;
+    map<string, int> clipIndex;
+    
     map<string, int> allKeywords;
     vector<string> keywordVector;
 	vector<int> hasCombinedVideoIndeces;

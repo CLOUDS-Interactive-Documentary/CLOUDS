@@ -25,6 +25,20 @@ void CloudsFCPParser::setup(string directory){
 
 void CloudsFCPParser::refreshXML(){
     ofDirectory dir;
+    allClips.clear();
+    
+    fileIdToPath.clear();
+    fileIdToName.clear();
+    clipIndex.clear();
+    keywordVector.clear();
+	hasCombinedVideoIndeces.clear();
+	
+    linkedConnections.clear();
+    suppressedConnections.clear();
+    sourceSupression.clear();
+    keyThemes.clear();
+    tagToKeyTheme.clear();
+    
     dir.allowExt("xml");
     dir.listDir(xmlDirectory);
     if( dir.numFiles() > 0 ){
@@ -41,7 +55,9 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
     float minCy=-1;
     float maxR=0;
     float minR=80;
+    
     ofxXmlSettings mapsXML;
+    
     if(mapsXML.loadFile(mapFile)){
         mapsXML.pushTag("svg");
         
@@ -50,68 +66,56 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
         mapsXML.pushTag("g",1);
         int numCircles = mapsXML.getNumTags("circle");
         map<string, vector<CloudsLink> >::iterator it;
+        for(int j=0; j<numCircles;j++){
+            string circleName;
+            circleName = mapsXML.getAttribute("circle", "class",circleName, j);
+            
+            if(clipIndex.find(circleName) == clipIndex.end()){
+                ofLogError() << "Clip " << circleName << " not found in cluster map";
+                continue;
+            }
+            
+            CloudsClip& clip = allClips[ clipIndex[circleName] ];
+            clip.cluster.Id = clip.getID();
+            
+            string color ;
+            color= mapsXML.getAttribute("circle","fill",color,j);
+            color.erase(color.begin()); //remove #
+            unsigned int colorHex;
+            std::stringstream ss;
+            ss << std::hex << color;
+            ss >> colorHex;
+            
+            clip.cluster.Color.setHex(colorHex);
+            
+            string radius;
+            radius = mapsXML.getAttribute("circle", "r", radius,j);
+            clip.cluster.Radius = ofToFloat(radius);
+            maxR = MAX(maxR,clip.cluster.Radius);
+            minR = MIN(minR,clip.cluster.Radius);
+            
+            string cx,cy;
+            cx = mapsXML.getAttribute("circle", "cx", cx,j);
+            cy = mapsXML.getAttribute("circle", "cy", cy,j);
+            clip.cluster.Centre = ofVec2f(ofToFloat(cx),ofToFloat(cy));
+            
+            maxCx = MAX(maxCx,clip.cluster.Centre.x);
+            minCx = MIN(minCx,clip.cluster.Centre.x);
+            maxCy = MAX(maxCy,clip.cluster.Centre.y);
+            minCy = MIN(minCy,clip.cluster.Centre.y);
+        }
+
         for(int i = 0; i < allClips.size(); i++){
-          //  cout<<allClips[i].getID()<<endl;
-            for(int j=0; j<numCircles;j++){
-                string circleName;
-                
-                circleName = mapsXML.getAttribute("circle", "class",circleName, j);
-                if (circleName == allClips[i].getID()) {
-                 
-                    allClips[i].cluster.Id = allClips[i].getID();
-                    
-                    string color ;
-                    color= mapsXML.getAttribute("circle","fill",color,j);
-                    color.erase(color.begin()); //remove #
-                    unsigned int colorHex;
-                    std::stringstream ss;
-                    ss << std::hex << color;
-                    ss >> colorHex;
-                    
-                    allClips[i].cluster.Color.setHex(colorHex);
-                    
-                    string radius;
-                    radius = mapsXML.getAttribute("circle", "r", radius,j);
-                    float r = ofToFloat(radius);
-                    float mapr = ofMap(r, 50, 400, 0, 1);
-                    allClips[i].cluster.Radius = mapr;
-                    if(allClips[i].cluster.Radius>maxR){
-                        maxR =allClips[i].cluster.Radius;
-                    }
-                    if(allClips[i].cluster.Radius<minR){
-                        minR =allClips[i].cluster.Radius;
-                    }
-
-                    
-                    string cx;
-                    cx = mapsXML.getAttribute("circle", "cx", cx,j);
-                    float x =ofToFloat(cx);
-                    float mapx = ofMap(x, -24218, 25781, 0, 1);
-                    allClips[i].cluster.Centre.x = mapx;
-                    if(allClips[i].cluster.Centre.x>maxCx){
-                        maxCx =allClips[i].cluster.Centre.x;
-                    }
-                    if(allClips[i].cluster.Centre.x<minCx){
-                        minCx =allClips[i].cluster.Centre.x;
-                    }
-                    string cy;
-                    cy = mapsXML.getAttribute("circle", "cy", cy,j);
-                    float y =ofToFloat(cy);
-                    float mapy = ofMap(y, -25781, 24218, 0, 1);
-                    allClips[i].cluster.Centre.y = mapy;
-                    if(allClips[i].cluster.Centre.y>maxCy){
-                        maxCy =allClips[i].cluster.Centre.y;
-                    }
-                    if(allClips[i].cluster.Centre.y<minCy){
-                        minCy =allClips[i].cluster.Centre.y;
-                    }
-
-                }   
+            if(allClips[i].cluster.Id != ""){
+                allClips[i].cluster.Centre.x = ofMap(allClips[i].cluster.Centre.x, minCx, maxCx, 0, 1);
+                allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.Centre.y, minCy, maxCy, 0, 1);
+                allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
             }
         }
-        cout<<minR<<","<<maxR<<endl;
+//        cout<<minR<<","<<maxR<<endl;
         //        cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
         mapsXML.popTag();//g
+        
         mapsXML.popTag(); //svg
     }
 }
@@ -449,6 +453,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 					}
 				}
                 //            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
+                clipIndex[cm.getID()] = allClips.size();;
 				allClips.push_back(cm);
 			}
         }

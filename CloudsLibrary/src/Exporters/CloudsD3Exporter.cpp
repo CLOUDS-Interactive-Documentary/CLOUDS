@@ -66,7 +66,7 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 		vector<CloudsLink>& links = parser.getLinksForClip(clipA);
 		for(int i = 0; i < links.size(); i++){
 			csvBuffer.append(nameA + "," + links[i].targetName + "\n");
-			cout << "	Added LINK to CSV " << (nameA + "," + links[i].targetName + "\n") << endl;
+//			cout << "	Added LINK to CSV " << (nameA + "," + links[i].targetName + "\n") << endl;
 		}
 		
 	}

@@ -97,7 +97,7 @@
 	gui->addSlider("node size max", .5, 100, &visualizer.maxRadius);
 	
 	gui->loadSettings("settings.xml");
-	gui->disable();
+//	gui->disable();
 	
 	exporter.saveGephiCSV(parser);
  

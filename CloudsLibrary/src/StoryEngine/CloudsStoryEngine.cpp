@@ -305,7 +305,12 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": no combined video file" << endl;
 		return 0;
 	}
-		
+    
+    if(clip.cluster.Id == ""){
+		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": disconnect from cluster map =(" << endl;        
+        return 0;
+    }
+    
 	if(clip.person == currentClip.person){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same person" << endl;
 		return 0;

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
+		1814270D1768C2F100C2B5FE /* CloudsClusterVisualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */; };
+		181427101769376D00C2B5FE /* ParticleEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270E1769376B00C2B5FE /* ParticleEdge.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -137,6 +139,10 @@
 /* Begin PBXFileReference section */
 		18142706176629ED00C2B5FE /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		18142707176629EE00C2B5FE /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
+		1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterVisualizer.cpp; sourceTree = "<group>"; };
+		1814270C1768C2F100C2B5FE /* CloudsClusterVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterVisualizer.h; sourceTree = "<group>"; };
+		1814270E1769376B00C2B5FE /* ParticleEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEdge.cpp; sourceTree = "<group>"; };
+		1814270F1769376C00C2B5FE /* ParticleEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEdge.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -651,6 +657,10 @@
 				E7637D751734DEF7008ADC62 /* CloudsLink.h */,
 				E7637D761734DEF7008ADC62 /* CloudsStoryEngine.cpp */,
 				E7637D771734DEF7008ADC62 /* CloudsStoryEngine.h */,
+				1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */,
+				1814270C1768C2F100C2B5FE /* CloudsClusterVisualizer.h */,
+				1814270E1769376B00C2B5FE /* ParticleEdge.cpp */,
+				1814270F1769376C00C2B5FE /* ParticleEdge.h */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -1264,6 +1274,8 @@
 				E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */,
 				E7637D861734DEF7008ADC62 /* CloudsStoryEngine.cpp in Sources */,
 				18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */,
+				1814270D1768C2F100C2B5FE /* CloudsClusterVisualizer.cpp in Sources */,
+				181427101769376D00C2B5FE /* ParticleEdge.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
