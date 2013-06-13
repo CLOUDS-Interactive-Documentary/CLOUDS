@@ -2177,7 +2177,7 @@ void CloudsVisualSystemRezanator::selfDraw()
     mat->begin();
     ofSetColor(ofColor(255));
     ofFill();
-    ofDrawSphere(100); 
+//    ofDrawSphere(100); 
     mat->end();
 }
 

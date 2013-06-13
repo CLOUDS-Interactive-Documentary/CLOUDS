@@ -39,7 +39,7 @@ void VoroParticle::draw(){
 void VoroParticle::drawSphere(){
     ofPushMatrix();
     ofTranslate(*this);
-    ofDrawSphere(size);
+//    ofDrawSphere(size);
     ofPopMatrix();
 }
 

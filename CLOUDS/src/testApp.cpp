@@ -25,8 +25,8 @@ void testApp::setup(){
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 
-	//storyEngine.seedWithClip( parser.getRandomClip(true) );
-	storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
+	storyEngine.seedWithClip( parser.getRandomClip(true) );
+	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 	
 }
 
