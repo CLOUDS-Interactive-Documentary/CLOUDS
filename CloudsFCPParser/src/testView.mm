@@ -49,8 +49,11 @@
 	
     //	visualizer.database = &parser;
     visualizer.setup(parser);
-	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
-	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsFCPVisualizer::clipChanged);
+    //SURYA MOD:
+	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsClusterVisualiser::storyBegan);
+	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsClusterVisualiser::clipChanged);
+//	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
+//	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsFCPVisualizer::clipChanged);
 	
 	visualizer.setupPhysics();
     

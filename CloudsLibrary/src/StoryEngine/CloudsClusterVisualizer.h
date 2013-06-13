@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __CloudsFCPParser__CouldsClusterVisualizer__
-#define __CloudsFCPParser__CouldsClusterVisualizer__
+#ifndef __CloudsFCPParser__CloudsClusterVisualizer__
+#define __CloudsFCPParser__CloudsClusterVisualizer__
 
 #include <iostream>
 //#include "ofxXmlSettings.h"
@@ -18,17 +18,9 @@
 #include "ofMain.h"
 #include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
+#include "ParticleEdge.h"
 
-//typedef struct {
-//    msa::physics::Particle2D* particle;
-//	string keyword;
-//} Node;
-//
-//typedef struct {
-//	msa::physics::Spring2D* spring;
-//	vector<CloudsClip> clips;
-//} Edge;
-//
+
 class CloudsClusterVisualiser {
 public:
     CloudsClusterVisualiser();
@@ -84,6 +76,14 @@ public:
     vector< msa::physics::Spring2D* > pathBySprings;
     map< msa::physics::Spring2D*, float > springScores;
     vector<string> clipLog;
+    
+    map<ParticleEdge*, float> edgeScores;
+    map<pair<msa::physics::Particle2D*,msa::physics::Particle2D*>,ParticleEdge*> edgePairs;
+    vector<ParticleEdge*> edges;
+    map<ParticleEdge*,vector<string> > keywordsinEdges;
+    set<ParticleEdge*> linkEdges;
+    set<ParticleEdge*> suppressedEdges;
+    vector<ParticleEdge*> pathByEdges;
     
     string currentTopic;
     
@@ -155,8 +155,12 @@ protected:
     msa::physics::Spring2D* hoverSpring;
     msa::physics::Spring2D* springNearPoint(ofVec2f point);
     
-    map< msa::physics::Particle2D*, ofVec2f > dampendPositions;
+    ParticleEdge* selectedEdge;
+    ParticleEdge* hoverEdge;
+    ParticleEdge* edgeNearPoint(ofVec2f point);
     
+    map< msa::physics::Particle2D*, ofVec2f > dampendPositions;
+    map<ParticleEdge*,ofVec2f> dampenedEdgePositions;
     float cursorRadius;
     float minMass, maxMass;
     float minScore, maxScore;

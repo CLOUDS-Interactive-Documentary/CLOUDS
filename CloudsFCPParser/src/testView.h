@@ -4,6 +4,7 @@
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
 #include "CloudsFCPVisualizer.h"
+#include "CloudsClusterVisualizer.h"
 #include "CloudsD3Exporter.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
@@ -18,7 +19,7 @@
 	IBOutlet NSTableView* playlistTable;
 
     IBOutlet NSTextField* currentClipLabel;
-    
+     
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* linkText;
 	
@@ -32,7 +33,8 @@
 	
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    CloudsFCPVisualizer visualizer;
+    CloudsClusterVisualiser visualizer;
+//    CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     

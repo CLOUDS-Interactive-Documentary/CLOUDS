@@ -6,7 +6,7 @@
 //
 //
 
-#include "CouldsClusterVisualizer.h"
+#include "CloudsClusterVisualizer.h"
 #define	SPRING_MIN_STRENGTH		0.005
 #define SPRING_MAX_STRENGTH		0.1
 #include "ofxTween.h"
@@ -84,7 +84,15 @@ void CloudsClusterVisualiser::storyBegan(CloudsStoryEventArgs& clips){
 	clear();
 }
 void CloudsClusterVisualiser::clear(){
-	
+	edges.clear();
+    linkEdges.clear();
+    keywordsinEdges.clear();
+    suppressedEdges.clear();
+    pathByEdges.clear();
+    edgeScores.clear();
+    edgePairs.clear();
+    
+    
 	particleName.clear();
 	particlesByTag.clear();
 	particleToClip.clear();
@@ -153,7 +161,7 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 	int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = args.chosenClip.getLinkName();
 	clipLog.push_back(mainLinkName);
-	
+	edges.clear(); 
 	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
 	{
@@ -183,7 +191,7 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		p->makeFixed();
 		
         //SURYA MOD: Setting mass based on the radius of the circle
-        p->setMass(args.chosenClip.cluster.Radius*5);
+        p->setMass(args.chosenClip.cluster.Radius*10);
         //p->setMass(args.chosenClip.keywords.size());
 		
 		newParticles.push_back(p);
@@ -222,7 +230,7 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 			dampendPositions[a] =  a->getPosition();//p->getPosition();
 			particleBirthOrder[a] = physics.numberOfParticles();
 			//SURYA MOD:
-            int mass = relatedClip.cluster.Radius;
+            int mass = relatedClip.cluster.Radius*5;
             //int mass = relatedClip.keywords.size();
 			a->setMass(mass);
 			maxMass = MAX(maxMass, mass);
@@ -241,51 +249,58 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		currentOptionClips.push_back(relatedClip);
 		currentOptionParticles.push_back(a);
         
-		if(springs.find( make_pair(a, p) ) == springs.end() &&
-		   springs.find( make_pair(p, a) ) == springs.end() ){
+		if(edgePairs.find( make_pair(a, p) ) == edgePairs.end() &&
+		   edgePairs.find( make_pair(p, a) ) == edgePairs.end() ){
+//		if(springs.find( make_pair(a, p) ) == springs.end() &&
+//		   springs.find( make_pair(p, a) ) == springs.end() ){
 			//use clips in common to weight the lines
             float length = ofDist(p->getPosition().x, p->getPosition().y, a->getPosition().x, a->getPosition().y);
             //SURYA MOD:
             msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, springStrength, length );
             //          msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, springStrength, restLength );
-			springScores[newSpring] = args.clipOptions[i].currentScore;
+            ParticleEdge* e = new ParticleEdge(p,a,length);
+            edgeScores[e] =args.clipOptions[i].currentScore;
+            edgePairs[make_pair(p, a)]= e;
+            edges.push_back(e);
+            keywordsinEdges[e] = database->getSharedKeywords(args.chosenClip, relatedClip);
+			
+            springScores[newSpring] = args.clipOptions[i].currentScore;
 			springs[ make_pair(p, a) ] = newSpring;
 			keywordsInSpring[ newSpring ] = database->getSharedKeywords(args.chosenClip, relatedClip);
 			if(isLink){
 				linkSprings.insert(newSpring);
+                linkEdges.insert(e);
 			}
 			else if(isSuppressed){
 				suppressedSprings.insert(newSpring);
+                suppressedEdges.insert(e);
 			}
 		}
 		else if(isLink) {
 			if(springs.find( make_pair(a, p) ) != springs.end()) linkSprings.insert(springs[ make_pair(a, p)]);
 			else if(springs.find( make_pair(p, a) ) != springs.end()) linkSprings.insert(springs[ make_pair(p, a)]);
+		
+            if(edgePairs.find( make_pair(a, p) ) != edgePairs.end()) linkEdges.insert(edgePairs[ make_pair(a, p)]);
+			else if(edgePairs.find( make_pair(p, a) ) != edgePairs.end()) linkEdges.insert(edgePairs[ make_pair(p, a)]);
 		}
 		else if(isSuppressed){
 			if(springs.find( make_pair(a, p) ) != springs.end()) suppressedSprings.insert(springs[ make_pair(a, p)]);
 			else if(springs.find( make_pair(p, a) ) != springs.end()) suppressedSprings.insert(springs[ make_pair(p, a)]);
+            
+            if(edgePairs.find( make_pair(a, p) ) != edgePairs.end()) suppressedEdges.insert(edgePairs[ make_pair(a, p)]);
+			else if(edgePairs.find( make_pair(p, a) ) != edgePairs.end()) suppressedEdges.insert(edgePairs[ make_pair(p, a)]);
+            
 		}
 	}
     
-    //	//repel existing particles
-    //	for(int i = 0; i < newParticles.size(); i++){
-    //		for(int j = 0; j < particleStartIndex; j++){
-    //			physics.makeAttraction(newParticles[i], physics.getParticle(j), -repulsionForce);
-    //		}
-    //	}
-    //
-    //	//repel eachother
-    //	for(int i = 0; i < newParticles.size(); i++){
-    //		for(int j = 0; j < newParticles.size(); j++){
-    //			if(j != i){
-    //				physics.makeAttraction(newParticles[i], newParticles[j], -repulsionForce);
-    //			}
-    //		}
-    //	}
-	
+
 	if(oldCenter != NULL){
 		msa::physics::Spring2D* pathSpring = springs[make_pair(oldCenter, centerNode)];
+        ParticleEdge* pathEdge = edgePairs[make_pair(oldCenter, centerNode)];
+        
+        pathEdge->setLength(ofDist(oldCenter->getPosition().x, oldCenter->getPosition().y, centerNode->getPosition().x, centerNode->getPosition().y));
+        pathByEdges.push_back(pathEdge);
+        
 		pathSpring->setRestLength(restLength*3);
 		pathBySprings.push_back( pathSpring );
 	}
@@ -388,7 +403,7 @@ void CloudsClusterVisualiser::linkLastEdge(){
 
 void CloudsClusterVisualiser::updatePhysics(){
 	
-    physics.update();
+ //   physics.update();
 	
 	if(physics.numberOfParticles() == 0){
 		return;
@@ -431,43 +446,72 @@ void CloudsClusterVisualiser::drawPhysics(){
 	ofScale(currentScale,currentScale);
 	ofTranslate(-currentTop);
     for(int i=0; i<database->allClips.size();i++){
-        ofSetColor(database->allClips[i].cluster.Color);
-        ofCircle(database->allClips[i].cluster.Centre.x*width,database->allClips[i].cluster.Centre.y*height,database->allClips[i].cluster.Radius*2);
+        ofSetColor(128);
+        //ofSetColor(database->allClips[i].cluster.Color);
+        ofCircle(database->allClips[i].cluster.Centre.x*width,database->allClips[i].cluster.Centre.y*height,database->allClips[i].cluster.Radius*10);
         
     }
     ofPushStyle();
-    for(int i = 0; i < physics.numberOfSprings(); i++){
-		ofPushStyle();
-        msa::physics::Spring2D* s = physics.getSpring(i);
-		int numClips = keywordsInSpring[s].size();
+//    for(int i = 0; i < physics.numberOfSprings(); i++){
+//		ofPushStyle();
+//        msa::physics::Spring2D* s = physics.getSpring(i);
+//		int numClips = keywordsInSpring[s].size();
+//        
+//		if(s == hoverSpring || s == selectedSpring){
+//			ofxEasingCubic cub;
+//			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
+//			ofSetColor(s == hoverSpring ? hoverColor : selectedColor, (1-alpha)*200);
+//			ofSetLineWidth(.5 + ofxTween::map(alpha, 0, 1.0, 1.0, 3.0, true, cub));
+//			ofLine(dampendPositions[s->getOneEnd()], dampendPositions[s->getTheOtherEnd()] );
+//		}
+//        
+//		if(linkSprings.find(s) != linkSprings.end()){
+//			ofSetColor(hoverColor, 128);
+//			ofSetLineWidth(4);
+//		}
+//		else if(suppressedSprings.find(s) != suppressedSprings.end()){
+//			ofSetColor(suppressedColor, 128);
+//			ofSetLineWidth(4);
+//		}
+//		else{
+//			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
+//			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, 2, 5) );
+//		}
+//		
+//        ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
+//		ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
+//		ofVec2f middle = pos1.getInterpolated(pos2, .5);
+//		ofLine(pos1, pos2);
+//		
+//		ofPopStyle();
+//    }
+    
+    for(int i=0;i<edges.size();i++){
+        ofPushStyle();
+        ParticleEdge* e = edges[i];
+        int numClips = keywordsinEdges[e].size();
         
-		if(s == hoverSpring || s == selectedSpring){
+        if(e == hoverEdge | e == selectedEdge ){
 			ofxEasingCubic cub;
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
-			ofSetColor(s == hoverSpring ? hoverColor : selectedColor, (1-alpha)*200);
+            ofSetColor(e == hoverEdge ? hoverColor : selectedColor, (1-alpha)*200);
 			ofSetLineWidth(.5 + ofxTween::map(alpha, 0, 1.0, 1.0, 3.0, true, cub));
-			ofLine(dampendPositions[s->getOneEnd()], dampendPositions[s->getTheOtherEnd()] );
-		}
+			ofLine(dampendPositions[e->p], dampendPositions[e->a] );
+        }
         
-		if(linkSprings.find(s) != linkSprings.end()){
-			ofSetColor(hoverColor, 128);
-			ofSetLineWidth(4);
-		}
-		else if(suppressedSprings.find(s) != suppressedSprings.end()){
-			ofSetColor(suppressedColor, 128);
-			ofSetLineWidth(4);
-		}
-		else{
-			ofSetColor(lineColor, ofMap(numClips, 1, 10, 50, 255));
-			ofSetLineWidth( ofMap(springScores[s], minScore, maxScore, 2, 5) );
-		}
-		
-        ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
-		ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
+        if(linkEdges.find(e)!=linkEdges.end()){
+            ofSetColor(hoverColor,128);
+            ofSetLineWidth(4);
+        }
+        else if(suppressedEdges.find(e) != suppressedEdges.end()){
+            ofSetColor(suppressedColor,128);
+            ofSetLineWidth(4);
+        }
+        ofVec2f pos1 = dampendPositions[e->a ];
+		ofVec2f pos2 = dampendPositions[ e->p ];
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
-		
-		ofPopStyle();
+        ofPopStyle();
     }
 	
 	ofSetLineWidth(2);
@@ -482,22 +526,23 @@ void CloudsClusterVisualiser::drawPhysics(){
 			ofSetColor(selectedColor);
 		}
 		else if(a == hoverParticle){
-          //  ofSetColor(c.cluster.Color);
-			ofSetColor(selectedColor);
+            ofSetColor(c.cluster.Color);
+		//	ofSetColor(selectedColor);
 		}
 		else if(a == centerNode){
-			//ofSetColor(c.cluster.Color);
-            ofSetColor(hoverColor);
+			ofSetColor(c.cluster.Color);
+          //  ofSetColor(hoverColor);
 		}
 		else if(ofContains(currentOptionParticles, a)){
-			ofSetColor(nodeColor);
-            //ofSetColor(c.cluster.Color);
+		//	ofSetColor(nodeColor);
+         ofSetColor(c.cluster.Color);
 		}
 		else if(ofContains(pathByParticles, a)){
 			ofSetColor(visitedColor);
 		}
 		else {
 			ofSetColor(abandonedColor);
+          //  ofSetColor(c.cluster.Color);
 		}
 		
 		ofSetColor(ofGetStyle().color, 180);
@@ -518,9 +563,15 @@ void CloudsClusterVisualiser::drawPhysics(){
     
 	ofPushStyle();
 	ofSetColor(traceColor, 80);
-	for(int i = 0; i < pathBySprings.size(); i++){
-		ofVec2f pos1 = dampendPositions[ pathBySprings[i]->getOneEnd() ];
-		ofVec2f pos2 = dampendPositions[ pathBySprings[i]->getTheOtherEnd() ];
+//	for(int i = 0; i < pathBySprings.size(); i++){
+//		ofVec2f pos1 = dampendPositions[ pathBySprings[i]->getOneEnd() ];
+//		ofVec2f pos2 = dampendPositions[ pathBySprings[i]->getTheOtherEnd() ];
+//		ofVec2f middle = pos1.getInterpolated(pos2, .5);
+//		ofLine(pos1, pos2);
+//	}
+    for(int i = 0; i < pathByEdges.size(); i++){
+		ofVec2f pos1 = dampendPositions[ pathByEdges[i]->p ];
+		ofVec2f pos2 = dampendPositions[ pathByEdges[i]->a ];
 		ofVec2f middle = pos1.getInterpolated(pos2, .5);
 		ofLine(pos1, pos2);
 	}
@@ -541,19 +592,32 @@ void CloudsClusterVisualiser::drawPhysics(){
 		}
 	}
 	
-	for(int i = 0; i < physics.numberOfSprings(); i++){
-		msa::physics::Spring2D* s = physics.getSpring(i);
-		if(s == selectedSpring || s == hoverSpring){
-			ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
-			ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
-			ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
-			string keywordString = "Score: " + ofToString(springScores[s],2) + "\n" + ofJoinString(keywordsInSpring[s], "\n");
+//	for(int i = 0; i < physics.numberOfSprings(); i++){
+//		msa::physics::Spring2D* s = physics.getSpring(i);
+//		if(s == selectedSpring || s == hoverSpring){
+//			ofVec2f pos1 = dampendPositions[ s->getOneEnd() ];
+//			ofVec2f pos2 = dampendPositions[ s->getTheOtherEnd() ];
+//			ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
+//			string keywordString = "Score: " + ofToString(springScores[s],2) + "\n" + ofJoinString(keywordsInSpring[s], "\n");
+//			
+//			ofSetColor(220);
+//			font.drawString(keywordString, middle.x, middle.y);
+//		}
+//	}
+	
+    for(int i=0;i<edges.size();i++){
+        ParticleEdge* e =edges[i];
+        if(e==selectedEdge||e==hoverEdge){
+            ofVec2f pos1 = dampendPositions[e->p];
+            ofVec2f pos2 = dampendPositions[e->a];
+            ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
+			string keywordString = "Score: " + ofToString(edgeScores[e],2) + "\n" + ofJoinString(keywordsinEdges[e], "\n");
 			
 			ofSetColor(220);
 			font.drawString(keywordString, middle.x, middle.y);
-		}
-	}
-	
+            
+        }
+    }
 	for(int i = 0; i < clipLog.size(); i++){
 		float drawHeight = ofGetHeight() - font.getLineHeight() * (i+2);
 		ofSetColor(255, ofMap(i,2, 6, 255, 0, true));
@@ -600,6 +664,22 @@ msa::physics::Spring2D* CloudsClusterVisualiser::springNearPoint(ofVec2f point){
 	return NULL;
 }
 
+ParticleEdge* CloudsClusterVisualiser:: edgeNearPoint(ofVec2f point){
+    for(int i =0; i<edges.size();i++){
+        ParticleEdge* edge = edges[i];
+        ofVec3f p  = ofVec3f(point.x, point.y,0);
+        ofVec3f a = ofVec3f(dampendPositions[edge->a].x,dampendPositions[edge->a].y,0);
+        ofVec3f b = ofVec3f(dampendPositions[edge->p].x,dampendPositions[edge->p].y,0);
+        float distance;
+        if( DistancePointLine(p, a, b, distance) && distance < cursorRadius){
+            return edge;
+        }
+    }
+
+    return NULL;
+    
+}
+
 float CloudsClusterVisualiser::radiusForNode( float mass ){
 	return ofMap(mass, minMass, maxMass, minRadius, maxRadius);
 }
@@ -608,20 +688,25 @@ float CloudsClusterVisualiser::radiusForNode( float mass ){
 void CloudsClusterVisualiser::mousePressed(ofMouseEventArgs& args){
     
 	selectedSpring = NULL;
+    selectedEdge = NULL;
 	selectedParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 	if(selectedParticle == NULL){
 		selectedSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+        selectedEdge = edgeNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 	}
 }
 
 void CloudsClusterVisualiser::mouseMoved(ofMouseEventArgs& args){
 	hoverSpring = NULL;
+    hoverEdge = NULL;
 	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+
 	if(hoverParticle != NULL){
 		selectionTitle = "Clips with " + particleName[ hoverParticle ];
 	}
 	else{
 		hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+        hoverEdge = edgeNearPoint(graphPointForScreenPoint(ofVec2f(args.x, args.y)));
 	}
 	
     
