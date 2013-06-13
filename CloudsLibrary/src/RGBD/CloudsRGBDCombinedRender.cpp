@@ -115,8 +115,20 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	}
 	
     colorScale.x = float(player.getWidth()) / float(colorRect.width);
-    colorScale.y = float(player.getHeight() - depthRect.height) / float(colorRect.height);
-	
+	if(player.getHeight() > 1200){
+		useFaces = true;
+		colorScale.y = float(player.getHeight() - (depthRect.height + 360) ) / float(colorRect.height);
+	}
+	else{
+		useFaces = false;
+		colorScale.y = float(player.getHeight() - (depthRect.height) ) / float(colorRect.height);
+	}
+
+	//this describes the face features: eyes, mouth, and skin
+	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
+	//this describes the change each frame
+	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
+
     return true;
 }
 
@@ -231,7 +243,6 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
-	
 	if(!player.isLoaded() || !player.isPlaying()){
 		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
 		return;
@@ -262,7 +273,10 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 	shader.setUniform2f("depthFOV", depthFOV.x, depthFOV.y);
     
     shader.setUniform4f("normalRect", normalRect.x, normalRect.y, normalRect.width, normalRect.height);
-    
+    shader.setUniform4f("faceFeatureRect", faceFeatureRect.x, faceFeatureRect.y, faceFeatureRect.width, faceFeatureRect.height);
+    shader.setUniform4f("deltaChangeRect", deltaChangeRect.x, deltaChangeRect.y, deltaChangeRect.width, deltaChangeRect.height);
+
+	shader.setUniform1i("useFaces", useFaces ? 1 : 0);
 	shader.setUniform1f("flowPosition", flowPosition);
     shader.setUniform2f("simplify", simplify.x,simplify.y);
 	shader.setUniform1f("farClip", farClip);

@@ -37,9 +37,15 @@ uniform float farClip;
 uniform float nearClip;
 uniform float edgeClip;
 
+uniform int useFaces;
+//FACE FEATURE
+uniform vec4 faceFeatureRect;
+uniform vec4 deltaChangeRect;
 
-varying float VZPositionValid0;
+varying float positionValid;
 varying vec3 normal;
+varying vec4 faceFeatureSample;
+varying vec4 deltaChangeSample;
 
 const float epsilon = 1e-6;
 
@@ -88,17 +94,20 @@ float depthValueFromSample( vec2 depthPos){
 }
 
 void main(void){
+	
+	// Here we get the position, and account for the vertex position flowing
 	vec2 samplePos = vec2(gl_Vertex.x, + mod(gl_Vertex.y + flowPosition, depthRect.w));
     vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
 	
-	
+	// Reconstruct the 3D point position
     vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
                     (samplePos.y - depthPP.y) * depth / depthFOV.y,
                     depth,
                     1.0);
     
-    vec2  normalPos = gl_Vertex.xy + normalRect.xy;
+	//extract the normal and pass it along to the fragment shader
+    vec2  normalPos = samplePos + normalRect.xy;
     normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
     
     float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0)  );
@@ -108,8 +117,7 @@ void main(void){
     float bl    = depthValueFromSample( vec2(floor(depthPos.x - simplify.x),floor( depthPos.y + simplify.y)) );
     float ur    = depthValueFromSample( vec2(floor(depthPos.x  + simplify.x),floor(depthPos.y - simplify.y)) );
     
-	
-    VZPositionValid0 =  (depth < farClip &&
+    positionValid = (depth < farClip &&
                         right < farClip &&
                         down < farClip &&
                         left < farClip &&
@@ -133,11 +141,9 @@ void main(void){
                         abs(bl - depth) < edgeClip
 						) ? 1.0 : 0.0;
     
-
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
     vec4 projection = extrinsics * pos;
-
 
     if(projection.z != 0.0) {
         vec2 xyp = projection.xy / projection.z;
@@ -153,7 +159,25 @@ void main(void){
 		gl_TexCoord[0].xy = uv;
 	}
 	
+	// now that we have the texture coordinate we can sample the face feature and movement map which correlate to the video texture
+
+
+	if(useFaces == 1){
+		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
+		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
+		faceFeatureSample = texture2DRect(texture, faceFeaturePos);
+		
+		//extract the delta video change
+		vec2 deltaChangeScale = deltaChangeRect.zw / colorRect.zw / colorScale;
+		vec2 deltaChangePos = deltaChangeRect.xy + gl_TexCoord[0].xy * deltaChangeScale;
+		deltaChangeSample = texture2DRect(texture, deltaChangePos);
+	}
+	else {
+		faceFeatureSample = vec4(0.);
+		deltaChangeSample = vec4(0.);
+		
+	}
+		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;
-	
 }

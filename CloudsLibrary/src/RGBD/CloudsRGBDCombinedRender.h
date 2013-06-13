@@ -90,8 +90,6 @@ public:
 	ofVec2f     colorPrincipalPoint;
 	ofVec2f     colorFOV;
     
-    //float       depthToRGBRotation[9];
-//	ofVec3f     depthToRGBTranslation;
 	ofMatrix4x4 extrinsics;
 	ofVec3f     distortionK;
 	ofVec2f     distortionP;
@@ -102,10 +100,17 @@ public:
     ofVec2f     depthPrincipalPoint;
 	ofVec2f     depthFOV;
     
-    //  Normals
+    //  Normals, Face Features, and Delta Movement
     //
+	//surface normal
     ofRectangle normalRect;
-    
+	//describes facial features
+	ofRectangle faceFeatureRect;
+	//this describes the change each frame
+	ofRectangle deltaChangeRect;
+	
+	bool useFaces;
+	
     bool bRendererBound;
     bool bMeshGenerated;
     

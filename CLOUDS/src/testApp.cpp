@@ -25,7 +25,8 @@ void testApp::setup(){
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 
-	storyEngine.seedWithClip( parser.getRandomClip(true) );
+	//storyEngine.seedWithClip( parser.getRandomClip(true) );
+	storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 	
 }
 
@@ -41,7 +42,9 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	if(key == '1'){
+		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
+	}
 }
 
 //--------------------------------------------------------------
