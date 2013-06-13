@@ -117,6 +117,9 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
+		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
+		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
 		E7D2FE75175592560083EB8E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */; };
 		E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */; };
 		E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */; };
@@ -540,6 +543,11 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
+		E7BAFBD2176A43780097AC71 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
+		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
+		E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
+		E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
 		E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7D2FE74175592550083EB8E /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
 		E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
@@ -645,6 +653,7 @@
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E779BAD3173D4E18006357EF /* opencv.a in Frameworks */,
 				E779BD9E173D4EFE006357EF /* libsndfile.a in Frameworks */,
+				E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +807,7 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7BAFBD0176A43780097AC71 /* Sound */,
 				E7637D5E1734DE8A008ADC62 /* RGBD */,
 				E7637D511734DE75008ADC62 /* VisualSystems */,
 				E7637D401734DE68008ADC62 /* StoryEngine */,
@@ -1664,6 +1674,66 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7BAFBD0176A43780097AC71 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE3176A4BE20097AC71 /* RTCMix */,
+				E7BAFBD2176A43780097AC71 /* CloudsSound.h */,
+				E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		E7BAFBE3176A4BE20097AC71 /* RTCMix */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE4176A4BE20097AC71 /* libs */,
+				E7BAFBE9176A4BE20097AC71 /* src */,
+			);
+			path = RTCMix;
+			sourceTree = "<group>";
+		};
+		E7BAFBE4176A4BE20097AC71 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE5176A4BE20097AC71 /* include */,
+				E7BAFBE6176A4BE20097AC71 /* lib */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E7BAFBE5176A4BE20097AC71 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E7BAFBE6176A4BE20097AC71 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE7176A4BE20097AC71 /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E7BAFBE7176A4BE20097AC71 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE8176A4BE20097AC71 /* librtcmix.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		E7BAFBE9176A4BE20097AC71 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */,
+				E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7D2FEC517572B2C0083EB8E /* ConnectorParticles */ = {
 			isa = PBXGroup;
 			children = (
@@ -2016,6 +2086,8 @@
 				E74CE8A91768EEB400083C4C /* wall.cpp in Sources */,
 				E74CE8AA1768EEB400083C4C /* Voro.cpp in Sources */,
 				E74CE8AB1768EEB400083C4C /* VoroParticle.cpp in Sources */,
+				E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */,
+				E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2194,7 +2266,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				PREBINDING = NO;
@@ -2295,7 +2369,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				PREBINDING = NO;

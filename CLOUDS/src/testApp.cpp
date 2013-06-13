@@ -8,7 +8,6 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-	
 	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
     parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
 	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
@@ -22,6 +21,7 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = true;
 	
 	player.setup(storyEngine);
+	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 
@@ -33,11 +33,13 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 	player.update();
+	sound.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	player.draw();
+	sound.drawDebug();
 }
 
 //--------------------------------------------------------------
@@ -45,6 +47,19 @@ void testApp::keyPressed(int key){
 	if(key == '1'){
 		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
 	}
+}
+
+//--------------------------------------------------------------
+void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+	
+	ofAudioEventArgs args;
+	args.buffer = output;
+	args.bufferSize = bufferSize;
+	args.nChannels = nChannels;
+	
+	ofNotifyEvent(ofEvents().audioRequested, args, this);
+
+	sound.audioRequested(args);
 }
 
 //--------------------------------------------------------------

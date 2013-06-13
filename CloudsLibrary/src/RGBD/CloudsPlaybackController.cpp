@@ -110,6 +110,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(){
 
+	
 	combinedRenderer.update();
 	
 	if(combinedRenderer.isDone()){
@@ -141,7 +142,8 @@ void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
-	playClip(args.chosenClip);	
+	playClip(args.chosenClip);
+
 }
 
 //--------------------------------------------------------------------

@@ -108,6 +108,12 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	
 	cout << "near clip " << nearClip << " far clip " << farClip << endl;
 	
+	//TODO automatically
+	//this describes the face features: eyes, mouth, and skin
+	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
+	//this describes the change each frame
+	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
+
     //TODO make asynchronous
 	if(!player.loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDCombinedRender::setup -- Movie path " << videoPath << " failed to load";
@@ -117,17 +123,12 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
     colorScale.x = float(player.getWidth()) / float(colorRect.width);
 	if(player.getHeight() > 1200){
 		useFaces = true;
-		colorScale.y = float(player.getHeight() - (depthRect.height + 360) ) / float(colorRect.height);
+		colorScale.y = float(player.getHeight() - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
 	}
 	else{
 		useFaces = false;
 		colorScale.y = float(player.getHeight() - (depthRect.height) ) / float(colorRect.height);
 	}
-
-	//this describes the face features: eyes, mouth, and skin
-	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
-	//this describes the change each frame
-	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
 
     return true;
 }
@@ -303,7 +304,7 @@ ofShader& CloudsRGBDCombinedRender::getShader(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-    
+	player.setVolume(.5);
 	if(player.isLoaded()){
 		player.update();
 	}

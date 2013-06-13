@@ -184,20 +184,35 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
 		if(drawMesh){
+
 			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
+			sharedRenderer->getShader().setUniform1f("eyeMultiplier", eyeMultiplier);
+			sharedRenderer->getShader().setUniform1f("mouthMultiplier", mouthMultiplier);
+			sharedRenderer->getShader().setUniform1f("skinMultiplier", skinMultiplier);
+			sharedRenderer->getShader().setUniform1f("baseMultiplier", meshAlpha);
+			
 			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
+			
+			ofPushStyle();
 			glEnable(GL_DEPTH_TEST);
 			glDepthFunc(GL_LEQUAL);
 			glEnable(GL_CULL_FACE);
 			glCullFace(GL_FRONT);
-			ofSetColor(255*meshAlpha);
+//			ofDisableAlphaBlending();
 			pointGrid.draw();
 			ofTranslate(0,0,-3);
+			
+			ofPopStyle();
+			
+			sharedRenderer->getShader().setUniform1f("eyeMultiplier", 0);
+			sharedRenderer->getShader().setUniform1f("mouthMultiplier", 0);
+			sharedRenderer->getShader().setUniform1f("skinMultiplier", 0);
+			sharedRenderer->getShader().setUniform1f("baseMultiplier", 1.0);
+			
 		}
-//		else{
-			glDisable(GL_DEPTH_TEST);
-			glDepthFunc(GL_LESS);
-//		}
+		
+		glDisable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);
 		
 		sharedRenderer->getShader().setUniform1f("flowPosition", currentFlowPosition);
 
@@ -306,6 +321,9 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 	rdrGui->addLabel("MESH");
 	rdrGui->addToggle("DRAW MESH", &drawMesh);
 	rdrGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
+	rdrGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
+	rdrGui->addSlider("MOUTH MULTIPLIER", 0, 1.0f, &mouthMultiplier);
+	rdrGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
 	
 	rdrGui->addLabel("POINTS");
 	rdrGui->addToggle("DRAW POINTS", &drawPoints);
@@ -336,7 +354,7 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
 	
-	cout << "GUI EVENT WITH WIDGET " << e.widget->getName();
+//	cout << "GUI EVENT WITH WIDGET " << e.widget->getName();
 	
 	if(e.widget->getName() == "VERTICAL LINE SPACE"){
 		refreshScanlineMesh = true;
