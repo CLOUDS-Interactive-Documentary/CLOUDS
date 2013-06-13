@@ -47,9 +47,13 @@ public:
     
 protected:
     void loadPath(vector<ofPolyline> &_path, string _file);
+    void loadPoints(vector<ofPoint> &_points, string _file);
     
     vector<ofPolyline> coast;
     vector<ofPolyline> borders;
     vector<ofPolyline> rivers;
     
+    vector<ofPoint>    points;
+    
+    float pointNoisePeaks;
 };

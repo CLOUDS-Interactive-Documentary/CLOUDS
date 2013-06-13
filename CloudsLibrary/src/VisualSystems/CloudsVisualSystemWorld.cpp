@@ -19,6 +19,7 @@ void CloudsVisualSystemWorld::selfSetup()
     loadPath( coast, "simple-coast.txt");
     loadPath( borders, "simple-borders.txt");
     loadPath( rivers, "simple-rivers.txt");
+    loadPoints( points, "airports.txt");
 }
 
 void CloudsVisualSystemWorld::loadPath(vector<ofPolyline> &_path, string _file){
@@ -52,9 +53,32 @@ void CloudsVisualSystemWorld::loadPath(vector<ofPolyline> &_path, string _file){
     }
 }
 
+void CloudsVisualSystemWorld::loadPoints(vector<ofPoint> &_points, string _file){
+    ofVec3f center = ofVec3f(0,0,-300);
+    
+    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    
+    while(!buffer.isLastLine()) {
+        string temp = buffer.getNextLine();
+        
+        if(temp.length() != 0) {
+            vector<string> values = ofSplitString(temp, "|");
+            
+            ofQuaternion latRot, longRot;
+            latRot.makeRotate( ofToFloat(values[5]), 1, 0, 0);
+            longRot.makeRotate( ofToFloat(values[6]), 0, 1, 0);
+            
+            ofVec3f worldPoint = latRot * longRot * center;
+            
+            _points.push_back(worldPoint);
+        }
+    }
+}
+
 void CloudsVisualSystemWorld::selfSetupSystemGui()
 {
-
+    sysGui->addSlider("pointsNoisePeaks", 0.0, 100, &pointNoisePeaks);
 }
 
 void CloudsVisualSystemWorld::selfSetupRenderGui()
@@ -96,7 +120,7 @@ void CloudsVisualSystemWorld::selfDraw()
     
     ofNoFill();
     ofSetColor(255,20);
-	ofDrawSphere(0, 0, 300);
+	ofDrawSphere(0, 0, 295);
     
     ofSetLineWidth(1.5);
     ofSetColor(255);
@@ -111,10 +135,23 @@ void CloudsVisualSystemWorld::selfDraw()
     }
     
     ofSetLineWidth(0.2);
-    ofSetColor(0,70,100);
+    ofSetColor(0,140,200);
     for(int i = 0; i < rivers.size(); i++){
         rivers[i].draw();
     }
+    
+    ofSetColor(230,255,0);
+    ofRectMode(OF_RECTMODE_CENTER);
+    for(int i = 0; i < points.size(); i++){
+        ofPoint tail = points[i];
+        ofPoint head = points[i] - ofPoint(0,0,0);
+        head.normalize();
+        ofPoint noise = tail*ofGetElapsedTimef()*0.001;
+        head *= ofNoise( sin(noise.x),noise.y,noise.z*0.1)*pointNoisePeaks;
+        ofLine(tail, tail+head);
+    }
+    ofRectMode(OF_RECTMODE_CORNER);
+    
     
     ofPopStyle();
     ofPopMatrix();
