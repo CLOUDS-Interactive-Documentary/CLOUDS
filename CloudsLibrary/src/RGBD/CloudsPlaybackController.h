@@ -78,10 +78,6 @@ class CloudsPlaybackController {
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	//MEDIA/INTERNAL
-	//
-	string relinkMovieFilepath(string filePath);
-
 	//GUI
 	//
 	ofxUISuperCanvas* visualSystemControls;

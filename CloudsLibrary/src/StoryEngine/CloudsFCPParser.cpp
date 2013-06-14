@@ -474,7 +474,7 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
 		if(allClips[i].hasCombinedVideo){
 			hasCombinedVideoIndeces.push_back(i);
-			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
+//			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
 }
