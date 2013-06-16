@@ -106,9 +106,9 @@ void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
-	cout << args.chosenClip.cluster.Centre << endl;
-	cout << args.chosenClip.cluster.Centre << endl;
-	cout << args.chosenClip.cluster.Color << endl;
+	cout << "SOUND >> " << storyEngine->getCurrentTopic() << endl;
+	cout << "SOUND >> " << args.chosenClip.cluster.Centre << endl;
+	cout << "SOUND >> " << args.chosenClip.cluster.Color << endl;
 }
 
 //--------------------------------------------------------------------
