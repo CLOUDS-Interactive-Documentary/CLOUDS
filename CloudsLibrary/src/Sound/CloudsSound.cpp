@@ -112,7 +112,7 @@ void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
     }
     cout << endl;
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
-	cout << "SOUND:color >> " << args.chosenClip.cluster.Color << endl;
+	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << endl;
 	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
 
 	float t, beatoffset;
@@ -178,7 +178,7 @@ void CloudsSound::mouseDragged(ofMouseEventArgs & args){
     float tempo = 0.1;
     float del1, del2;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
-    
+    /*
     switch (quadrant) {
         case 0:
             // pretty waves
@@ -205,6 +205,7 @@ void CloudsSound::mouseDragged(ofMouseEventArgs & args){
         default:
             break;
     }
+     */
 }
 
 void CloudsSound::mouseMoved(ofMouseEventArgs & args){
@@ -219,7 +220,7 @@ void CloudsSound::mousePressed(ofMouseEventArgs & args){
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
     int bpattern[] = {1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,1,1};
-    
+    /*
     switch (quadrant) {
         case 0:
             // fast attack waves
@@ -247,6 +248,7 @@ void CloudsSound::mousePressed(ofMouseEventArgs & args){
         default:
             break;
     }
+     */
 
 }
 
