@@ -6,10 +6,17 @@ Particle::Particle(){
     vel.set(ofRandom(-10,10), ofRandom(-10,10));
     acc.set(0,0,0);
     
-    size = 5;
+    size = 0.1;
 	damping = 0.07f;
     
+    bSingle = false;
+    
     trail.setMode(OF_PRIMITIVE_LINE_STRIP);
+}
+
+void Particle::init(ofPoint _pos, ofPoint _vel){
+    this->set(_pos);
+    vel.set(_vel);
 }
 
 //------------------------------------------------------------
@@ -18,9 +25,20 @@ void Particle::addForce(ofPoint _force){
 }
 
 //------------------------------------------------------------
+void Particle::addNoise(float _angle, float _turbulence){
+    
+    float angle = ofSignedNoise( x * 0.005f, y * 0.005f) * _angle;
+    
+    ofPoint noiseVector( cos( angle ), sin( angle ) );
+    
+    acc += noiseVector * _turbulence;
+}
+
+//------------------------------------------------------------
 void Particle::update(){
 	
     if (bFixed == false){
+        
         vel += acc;
         vel *= 1.0f - damping;
         *this += vel;
@@ -28,10 +46,11 @@ void Particle::update(){
         pPoint newPoint;
         newPoint.pos = *this;
         newPoint.color = color;
-        newPoint.color.a = ofMap( vel.length(), 0.0,80.0, 1.0 ,0.0, true );
+        if (!bSingle){
+            newPoint.color.a = ofMap( vel.length(), 0.0,80.0, 1.0 ,0.0, true );
+        }
         
         tail.push_back(newPoint);
-        
         if (tail.size() > 2){
             tail.erase(tail.begin());
         }
@@ -48,7 +67,10 @@ void Particle::update(){
 }
 
 void Particle::draw(){
+    ofPushStyle();
+    ofSetColor(color);
     ofCircle(*this, size);
+    ofPopStyle();
 }
 
 //------------------------------------------------------------

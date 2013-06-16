@@ -11,8 +11,6 @@
 #include "CloudsVisualSystemRezanator.h"
 
 #include "Brush.h"
-#include "ColorPalette.h"
-#include "Button.h"
 
 class CloudsVisualSystemPaintBrush : public CloudsVisualSystemRezanator {
 public:
@@ -52,9 +50,9 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    
-    void showPalette(int &_n );
-    void cleanCanvas(int &_n );
+    ofFbo               canvas;
+    Brush               brush;
+    vector<Particle>    particles;
     
     float   brushWidth;
     float   brushNumber;
@@ -62,20 +60,14 @@ protected:
     float   brushK;
     float   brushRepRad;
     float   brushRepPct;
+    
     float   lineWidth;
+    
     float   colorLerp;
     float   colorRandom;
     
-    Brush           brush;
-    ofFbo           canvas;
-    
-    ColorPalette    palette;
-    
-    SimpleBtn       paletteBtn;
-    SimpleBtn       cleanBtn;
-    
-    int             iconSize;
-    
-    bool            bDebug;
-    
+    float   particlesThreshold;
+    float   particlesTurbulence;
+    float   particlesAlpha;
+
 };
