@@ -19,7 +19,8 @@ void CloudsVisualSystemWorld::selfSetup()
     loadPath( coast, "simple-coast.txt");
     loadPath( borders, "simple-borders.txt");
     loadPath( rivers, "simple-rivers.txt");
-    loadPoints( points, "airports.txt");
+//    loadPoints( points, "airports.txt");
+    loadPoints( points, "simple-cities.txt");
 }
 
 void CloudsVisualSystemWorld::loadPath(vector<ofPolyline> &_path, string _file){
@@ -66,8 +67,8 @@ void CloudsVisualSystemWorld::loadPoints(vector<ofPoint> &_points, string _file)
             vector<string> values = ofSplitString(temp, "|");
             
             ofQuaternion latRot, longRot;
-            latRot.makeRotate( ofToFloat(values[5]), 1, 0, 0);
-            longRot.makeRotate( ofToFloat(values[6]), 0, 1, 0);
+            latRot.makeRotate( ofToFloat(values[1]), 1, 0, 0);
+            longRot.makeRotate( ofToFloat(values[2]), 0, 1, 0);
             
             ofVec3f worldPoint = latRot * longRot * center;
             
@@ -78,7 +79,7 @@ void CloudsVisualSystemWorld::loadPoints(vector<ofPoint> &_points, string _file)
 
 void CloudsVisualSystemWorld::selfSetupSystemGui()
 {
-    sysGui->addSlider("pointsNoisePeaks", 0.0, 100, &pointNoisePeaks);
+    sysGui->addSlider("pointsNoisePeaks", 0.0, 500, &pointNoisePeaks);
 }
 
 void CloudsVisualSystemWorld::selfSetupRenderGui()
@@ -123,8 +124,8 @@ void CloudsVisualSystemWorld::selfDraw()
 	ofDrawSphere(0, 0, 295);
     
     ofSetLineWidth(1.5);
-    ofSetColor(255);
     for(int i = 0; i < coast.size(); i++){
+        ofSetColor(255);
         coast[i].draw();
     }
     

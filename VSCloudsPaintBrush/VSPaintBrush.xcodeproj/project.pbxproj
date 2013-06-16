@@ -63,8 +63,6 @@
 		3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94361753049600F558AC /* ofxMSATimer.cpp */; };
 		3DCACC6E176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC6C176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.cpp */; };
 		3DCACC7A176A309D000696C6 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC70176A309D000696C6 /* Brush.cpp */; };
-		3DCACC7B176A309D000696C6 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC72176A309D000696C6 /* Button.cpp */; };
-		3DCACC7C176A309D000696C6 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC74176A309D000696C6 /* ColorPalette.cpp */; };
 		3DCACC7D176A309D000696C6 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC76176A309D000696C6 /* Particle.cpp */; };
 		3DCACC7E176A309D000696C6 /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC78176A309D000696C6 /* Spring.cpp */; };
 		4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */; };
@@ -275,10 +273,6 @@
 		3DCACC6D176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
 		3DCACC70176A309D000696C6 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
 		3DCACC71176A309D000696C6 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
-		3DCACC72176A309D000696C6 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
-		3DCACC73176A309D000696C6 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
-		3DCACC74176A309D000696C6 /* ColorPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPalette.cpp; sourceTree = "<group>"; };
-		3DCACC75176A309D000696C6 /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
 		3DCACC76176A309D000696C6 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		3DCACC77176A309D000696C6 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		3DCACC78176A309D000696C6 /* Spring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spring.cpp; sourceTree = "<group>"; };
@@ -868,10 +862,6 @@
 			children = (
 				3DCACC70176A309D000696C6 /* Brush.cpp */,
 				3DCACC71176A309D000696C6 /* Brush.h */,
-				3DCACC72176A309D000696C6 /* Button.cpp */,
-				3DCACC73176A309D000696C6 /* Button.h */,
-				3DCACC74176A309D000696C6 /* ColorPalette.cpp */,
-				3DCACC75176A309D000696C6 /* ColorPalette.h */,
 				3DCACC76176A309D000696C6 /* Particle.cpp */,
 				3DCACC77176A309D000696C6 /* Particle.h */,
 				3DCACC78176A309D000696C6 /* Spring.cpp */,
@@ -1339,8 +1329,6 @@
 				E77695541759591600D2D95A /* CloudsRGBDCombinedRender.cpp in Sources */,
 				3DCACC6E176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				3DCACC7A176A309D000696C6 /* Brush.cpp in Sources */,
-				3DCACC7B176A309D000696C6 /* Button.cpp in Sources */,
-				3DCACC7C176A309D000696C6 /* ColorPalette.cpp in Sources */,
 				3DCACC7D176A309D000696C6 /* Particle.cpp in Sources */,
 				3DCACC7E176A309D000696C6 /* Spring.cpp in Sources */,
 			);

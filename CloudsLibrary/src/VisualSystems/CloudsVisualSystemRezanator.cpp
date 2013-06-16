@@ -1720,7 +1720,7 @@ void CloudsVisualSystemRezanator::loadTimelineUIMappings(string path)
     tlSliderMap.clear();
     tlDialerMap.clear();
     
-    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
+//    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
     ofxXmlSettings *XML = new ofxXmlSettings();
     XML->loadFile(path);
     if(XML->pushTag("Map", 0))

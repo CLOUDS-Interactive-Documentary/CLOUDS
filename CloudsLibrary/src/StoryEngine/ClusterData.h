@@ -18,6 +18,7 @@ public:
 	ClusterData();
 	
     string Id;
+	string hexColor;
     ofColor Color;
 	int FillOpacity;
     float Radius;

@@ -25,6 +25,9 @@ public:
     void    setBrushWidth(float _width);
     void    setLineWidth(float _width);
     void    pickColorFrom(ofTexture &Text, float _lerpAmount, float _randAmount);
+    void    setColor( ofFloatColor &_color, float _lerpAmount, float _randAmount);
+    
+    void    addParticles( vector<Particle> &particles, float _threshold, float _alpha );
     
     void    set(int _x, int _y);
     void    set(ofPoint _pos);

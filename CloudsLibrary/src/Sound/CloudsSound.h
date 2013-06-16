@@ -28,8 +28,9 @@ class CloudsSound {
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
-	void playClip(CloudsClip& clip);
+	void clipEnded(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
 	
 	CloudsStoryEngine* storyEngine;
 	

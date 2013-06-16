@@ -13,7 +13,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	
 	if(!eventsRegistered){
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipChanged, this, &CloudsSound::clipChanged);
+		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsSound::clipBegan);
+		ofAddListener(storyEngine.getEvents().clipEnded, this, &CloudsSound::clipEnded);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofRegisterKeyEvents(this);
@@ -61,7 +62,9 @@ void CloudsSound::exit(ofEventArgs & args){
 		eventsRegistered = false;
 		
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsSound::clipChanged);
+		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsSound::clipBegan);
+		ofRemoveListener(storyEngine->getEvents().clipEnded, this, &CloudsSound::clipEnded);
+		
 		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofUnregisterMouseEvents(this);
@@ -96,11 +99,11 @@ void CloudsSound::drawDebug(){
 
 //--------------------------------------------------------------------
 void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
-	
+	//Happens at the very beginning of a sequence
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
+void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
 	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
 	cout << "SOUND: keywords >> ";
     for(int i=0;i<args.chosenClip.keywords.size();i++)
@@ -110,10 +113,10 @@ void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
     cout << endl;
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
 	cout << "SOUND:color >> " << args.chosenClip.cluster.Color << endl;
-	cout << "SOUND:duration >> " << (args.chosenClip.endFrame-args.chosenClip.startFrame)/23.976 << endl;
+	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
 
 	float t, beatoffset;
-    float musicdur = (float)(args.chosenClip.endFrame-args.chosenClip.startFrame)/23.976;
+    float musicdur = args.chosenClip.getDuration();
 	
     // some timing shit...
     t = ofGetElapsedTimef();
@@ -142,22 +145,30 @@ void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
         WAVETABLE(i, ofRandom(3., 10.), 0.025, mtof(scale(notes[pick]+55., 2))*0.99, ofRandom(0.,1.), "themellowwave", "themellowamp");
     }
     
-
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::playClip(CloudsClip& clip){
+void CloudsSound::clipEnded(CloudsStoryEventArgs& args){
+	//happens when a clip is over
+	cout << "there will be a pause for: " << args.timeUntilNextClip << " seconds" << endl;
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::storyEnded(CloudsStoryEventArgs& args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::keyPressed(ofKeyEventArgs & args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::mouseDragged(ofMouseEventArgs & args){
 	
     float t, beatoffset;
