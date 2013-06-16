@@ -244,7 +244,7 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
-	if(!player.isLoaded() || !player.isPlaying()){
+	if(!player.isLoaded()){
 		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
 		return;
 	}
@@ -304,7 +304,7 @@ ofShader& CloudsRGBDCombinedRender::getShader(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-	player.setVolume(.5);
+	player.setVolume(1.0);
 	if(player.isLoaded()){
 		player.update();
 	}

@@ -77,6 +77,9 @@ void CloudsSound::update(){
 //--------------------------------------------------------------------
 void CloudsSound::drawDebug(){
 	
+	ofPushStyle();
+	
+	
     // which routine?
     quadrant = returnQuadrant(ofGetMouseX(), ofGetMouseY());
     
@@ -112,6 +115,8 @@ void CloudsSound::drawDebug(){
     ofLine(0, ofGetHeight()/2, ofGetWidth(),ofGetHeight()/2);
     ofLine(ofGetWidth()/2, 0, ofGetWidth()/2,ofGetHeight());
     ofCircle(ofGetMouseX(), ofGetMouseY(), delta*10.);
+	
+	ofPopStyle();
 }
 
 //--------------------------------------------------------------------

@@ -58,8 +58,6 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 	args.nChannels = nChannels;
 	
 	ofNotifyEvent(ofEvents().audioRequested, args, this);
-
-	sound.audioRequested(args);
 }
 
 //--------------------------------------------------------------

@@ -120,6 +120,7 @@
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
+		E7BAFC1E176BB9400097AC71 /* CloudsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */; };
 		E7D2FE75175592560083EB8E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */; };
 		E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */; };
 		E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */; };
@@ -548,6 +549,8 @@
 		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
+		E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCamera.cpp; sourceTree = "<group>"; };
+		E7BAFC1D176BB9400097AC71 /* CloudsCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCamera.h; sourceTree = "<group>"; };
 		E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7D2FE74175592550083EB8E /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
 		E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
@@ -962,8 +965,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E74CE8241768DDCE00083C4C /* ClusterData.h */,
+				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E7637D421734DE68008ADC62 /* CloudsClip.h */,
 				E7637D411734DE68008ADC62 /* CloudsClip.cpp */,
 				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
@@ -973,6 +976,8 @@
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
 				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
+				E7BAFC1D176BB9400097AC71 /* CloudsCamera.h */,
+				E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -2088,6 +2093,7 @@
 				E74CE8AB1768EEB400083C4C /* VoroParticle.cpp in Sources */,
 				E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */,
 				E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */,
+				E7BAFC1E176BB9400097AC71 /* CloudsCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
