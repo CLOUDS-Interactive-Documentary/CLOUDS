@@ -140,17 +140,19 @@ void CloudsVisualSystemWorld::selfDraw()
         rivers[i].draw();
     }
     
-    ofSetColor(230,255,0);
-    ofRectMode(OF_RECTMODE_CENTER);
+    ofSetColor(255);
+    ofColor color = ofColor(255,0,0);
     for(int i = 0; i < points.size(); i++){
         ofPoint tail = points[i];
         ofPoint head = points[i] - ofPoint(0,0,0);
         head.normalize();
-        ofPoint noise = tail*ofGetElapsedTimef()*0.001;
-        head *= ofNoise( sin(noise.x),noise.y,noise.z*0.1)*pointNoisePeaks;
+        ofPoint pos = tail*ofGetElapsedTimef()*0.001;
+        float noise = powf(pointNoisePeaks,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
+        head *= noise;
+        color.setHue(ofMap(noise,0,pointNoisePeaks,20,50));
+        ofSetColor(color);
         ofLine(tail, tail+head);
     }
-    ofRectMode(OF_RECTMODE_CORNER);
     
     
     ofPopStyle();
