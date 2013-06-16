@@ -10,9 +10,12 @@ void testApp::setup(){
 	
 	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
     parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
+    parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
+    
 	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
+
 	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	storyEngine.setup();
