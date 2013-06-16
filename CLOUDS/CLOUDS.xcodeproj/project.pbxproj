@@ -1733,8 +1733,8 @@
 		E7BAFBE9176A4BE20097AC71 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */,
 				E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */,
+				E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";

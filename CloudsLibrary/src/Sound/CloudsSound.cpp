@@ -126,7 +126,9 @@ void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
-	
+	cout << args.chosenClip.cluster.Centre << endl;
+	cout << args.chosenClip.cluster.Centre << endl;
+	cout << args.chosenClip.cluster.Color << endl;
 }
 
 //--------------------------------------------------------------------
