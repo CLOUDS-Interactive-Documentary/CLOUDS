@@ -78,8 +78,6 @@ void CloudsSound::update(){
 void CloudsSound::drawDebug(){
 	
 	ofPushStyle();
-	
-	
     // which routine?
     quadrant = returnQuadrant(ofGetMouseX(), ofGetMouseY());
     
@@ -93,9 +91,6 @@ void CloudsSound::drawDebug(){
     osx = sx;
     osy = sy;
 	
-	
-    // DRAW SOME STUFF
-	
 	ofPopStyle();
 }
 
@@ -106,9 +101,48 @@ void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
-	cout << "SOUND >> " << storyEngine->getCurrentTopic() << endl;
-	cout << "SOUND >> " << args.chosenClip.cluster.Centre << endl;
-	cout << "SOUND >> " << args.chosenClip.cluster.Color << endl;
+	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
+	cout << "SOUND: keywords >> ";
+    for(int i=0;i<args.chosenClip.keywords.size();i++)
+    {
+        cout << i << ": " << args.chosenClip.keywords[i] << " ";
+    }
+    cout << endl;
+	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
+	cout << "SOUND:color >> " << args.chosenClip.cluster.Color << endl;
+	cout << "SOUND:duration >> " << (args.chosenClip.endFrame-args.chosenClip.startFrame)/23.976 << endl;
+
+	float t, beatoffset;
+    float musicdur = (float)(args.chosenClip.endFrame-args.chosenClip.startFrame)/23.976;
+	
+    // some timing shit...
+    t = ofGetElapsedTimef();
+    float tempo = 0.125;
+    int bcount = 0;
+    beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
+	
+    int bpattern[] = {1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0};
+    int notes[] = {0, 3, 5, 7, 0, 7, 9, 10, 9, 10, 12, 3, 15, 12, 19, 14};
+    
+    // beats
+    for(float i = 0;i<musicdur;i+=tempo)
+    {
+        if(bpattern[bcount]==1) {
+            
+            float t_amp = 1.0-fabs((i/musicdur)-0.5)*2.;
+            
+            MMODALBAR(i, 1., t_amp*0.2, mtof(scale(int(ofRandom(0.,36.)+40.), 2)), ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8)));
+        }
+        bcount = (bcount+1)%(sizeof(bpattern)/sizeof(bpattern[0]));
+    }
+    for(float i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+    {
+        int pick = (int)ofRandom(0, sizeof(notes)/sizeof(notes[0]));
+            WAVETABLE(i, ofRandom(3., 10.), 0.025, mtof(scale(notes[pick]+55., 2)), ofRandom(0.,1.), "themellowwave", "themellowamp");
+        WAVETABLE(i, ofRandom(3., 10.), 0.025, mtof(scale(notes[pick]+55., 2))*0.99, ofRandom(0.,1.), "themellowwave", "themellowamp");
+    }
+    
+
 }
 
 //--------------------------------------------------------------------
@@ -241,6 +275,9 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
 void CloudsSound::mouseReleased(ofMouseEventArgs & args){
 	
 }
+
+
+// UTILITY STUFF (non-sound):
 
 // utility routine to find where we are clicking
 int CloudsSound::returnQuadrant(int x, int y)
