@@ -59,8 +59,8 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		
 		eventsRegistered = true;
 
-		combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
-
+		//combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
+		combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
 	}
 }
 
@@ -82,7 +82,14 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == OF_KEY_RIGHT){
-		storyEngine->selectNewClip();
+		storyEngine->playNextClip();
+//		if(storyEngine->isWaiting()){
+//
+//		}
+//		else{
+//			
+//		}
+//		combinedRenderer.getPlayer().stop();
 	}
 }
 

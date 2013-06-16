@@ -105,6 +105,33 @@ void Brush::pickColorFrom(ofTexture &_tex, float _lerpAmount, float _randAmount)
     }
 }
 
+void Brush::setColor( ofFloatColor &_color, float _lerpAmount, float _randAmount){
+    for(int i = 0; i < Bs.size(); i++){
+        
+        Bs[i]->color.lerp( _color, _lerpAmount * _color.a);
+        Bs[i]->color.setHue( Bs[i]->color.getHue() + ofRandom(-_randAmount,_randAmount) );
+        colors[i].set(Bs[i]->color);
+        colors[i].a = 1.0;
+    }
+}
+
+void Brush::addParticles( vector<Particle> &particles, float _threshold, float _alpha ){
+    
+    for(int i = ofRandom(Bs.size()-1); i < Bs.size(); i++){
+        if ( Bs[i]->getVel().length() > _threshold ){
+            Particle newParticle;
+            newParticle.init(*Bs[i], Bs[i]->getVel());
+            newParticle.color = Bs[i]->color;
+            newParticle.color.a = _alpha;
+            newParticle.size = ofRandom(0.5, 1.0);
+            newParticle.damping = ofRandom(0.1,0.7);
+            newParticle.bSingle = true;
+            
+            particles.push_back( newParticle );
+        }
+    }
+}
+
 void Brush::begin(){
     
     if (!bDown){

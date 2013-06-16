@@ -21,8 +21,8 @@ class CloudsStoryEngine {
 	void setup();
 
 	void seedWithClip(CloudsClip& seed);
-	bool selectNewClip();
-	bool clipEnded();
+	bool playNextClip(); //you can use this to skip if it's waiting
+	bool clipEnded(); //call this when the clip is done!
 	
 	void update(ofEventArgs& args);
 	
@@ -63,7 +63,7 @@ class CloudsStoryEngine {
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
-	
+
 	bool waitingForNextClip;
 	float nextClipTime;
 	

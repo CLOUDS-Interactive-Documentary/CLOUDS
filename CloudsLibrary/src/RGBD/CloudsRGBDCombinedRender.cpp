@@ -80,7 +80,7 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	
 	extrinsics = ofMatrix4x4(mat4x4);
 	
-	cout << "extrinsic matrix: " << endl << extrinsics << endl;
+//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
 	
 	//adjustment
 	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);

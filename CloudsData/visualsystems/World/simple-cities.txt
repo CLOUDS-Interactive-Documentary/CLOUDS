@@ -1,0 +1,808 @@
+Oranjestad|12.53|-70.03
+Sint Nicolaas|12.42|-69.91
+Chârîkâr|35.02|69.17
+Kâbul(Kabul)|34.53|69.17
+Mazâr-e Sharîf|36.7|67.1
+Qandahâr|31.61|65.69
+Benguela|-12.58|13.4
+Huambo|-12.76|15.73
+Lobito|-12.36|13.53
+Luanda|-8.82|13.24
+South Hill|18.2|-63.09
+The Valley|18.22|-63.05
+Durrës|41.33|19.45
+Elbasan|41.12|20.09
+Shkodër|42.07|19.51
+Tiranë(Tirana)|41.33|19.82
+Kralendijk|12.15|-68.28
+Oranjestad|17.49|-62.98
+Philipsburg|18.03|-63.06
+Willemstad|12.1|-68.93
+Abû Zabi|24.48|54.37
+Dubayy(Dubai)|25.27|55.33
+al-'Ayn|24.23|55.74
+ash-Shâriqah|25.37|55.41
+Buenos Aires|-34.61|-58.37
+Abovyan|40.27|44.62
+Gyumri|40.78|43.83
+Vanadzor|40.8|44.49
+Yerevan|40.17|44.52
+Leone|-14.34|-170.78
+Nu'uuli|-14.33|-170.7
+Pago Pago|-14.24|-170.72
+Tafuna|-14.37|-170.69
+Presidente Eduardo Frei - permanent station of Chile|-62.21|-58.97
+Progress - permanent station of Russia|-69.38|76.38
+Amundsen Scott - permanent station of the US|-90|0
+MacMurdo - permanent station of the US|-77.85|166.67
+All Saints|17.05|-61.8
+Carlisle|17.02|-61.84
+Saint John's|17.11|-61.85
+Willikies|17.09|-61.7
+Sydney|-33.87|151.21
+Brisbane|-27.46|153.02
+Melbourne|-37.81|144.96
+Perth|-31.96|115.84
+Graz|47.08|15.42
+Linz|48.31|14.29
+Salzburg|47.81|13.04
+Wien(Vienna)|48.22|16.37
+Baki(Baku)|40.39|49.86
+Gäncä|40.68|46.35
+Mingäçevir|40.77|47.04
+Sumqayit|40.59|49.64
+Bujumbura|-3.37|29.35
+Gitega|-3.43|29.93
+Muhinga|-2.86|30.32
+Ngozi|-2.91|29.82
+Antwerpen|51.22|4.42
+Brussel|50.84|4.35
+Charleroi|50.42|4.45
+Gent|51.04|3.72
+Cotonou|6.36|2.44
+Djougou|9.7|1.68
+Parakou|9.34|2.62
+Porto Novo|6.48|2.63
+Banfora|10.63|-4.76
+Bobo Dioulasso|11.18|-4.29
+Koudougou|12.25|-2.37
+Ouagadougou|12.37|-1.53
+Dhâka|23.7|90.39
+Burgas|42.51|27.47
+Plovdiv|42.15|24.75
+Sofia|42.69|23.31
+Varna|43.21|27.9
+'Îsâ|26.17|50.55
+al-Manâmah(Al Manamah)|26.21|50.58
+al-Muharraq|26.26|50.62
+ar-Rifa'a|26.12|50.54
+Coopers Town|26.87|-77.52
+Freeport|26.54|-78.64
+Nassau|25.06|-77.33
+West End|26.68|-78.97
+Banja Luka|44.78|17.18
+Sarajevo|43.87|18.42
+Tuzla|44.55|18.67
+Zenica|44.2|17.91
+Homjel'|52.43|30.99
+Mahiljov|53.9|30.33
+Minsk|53.91|27.55
+Vicebsk|55.19|30.18
+Belize|17.5|-88.19
+Dangriga|16.97|-88.22
+Orange Walk|18.09|-88.56
+San Ignacio|17.16|-89.06
+Hamilton|32.3|-64.79
+Saint George|32.37|-64.67
+Cochabamba|-17.38|-66.17
+El Alto|-16.5|-68.17
+La Paz|-16.5|-68.17
+Santa Cruz|-17.77|-63.21
+São Paulo|-23.53|-46.63
+Rio de Janeiro|-22.91|-43.2
+Bridgetown|13.1|-59.62
+Bulkeley|13.12|-59.54
+Crane|13.11|-59.45
+Oistins|13.07|-59.55
+Bandar Seri Begawan|4.93|114.95
+Kuala Belait|4.59|114.18
+Pekan Tutong|4.81|114.64
+Seria|4.61|114.28
+Phuntsholing|26.85|89.38
+Punakha|27.78|89.9
+Samdrup Jongkhar|26.88|91.5
+Timphu|27.48|89.7
+Francistown|-21.17|27.5
+Gaborone|-24.65|25.91
+Molepolole|-24.4|25.51
+Selebi Phikwe|-21.98|27.83
+Bangui|4.36|18.56
+Berbérati|4.25|15.78
+Bouar|5.93|15.59
+Carnot|4.93|15.87
+Calgary|51.05|-114.06
+Winnipeg|49.88|-97.17
+Toronto|43.65|-79.38
+Montréal|45.52|-73.57
+Basel|47.57|7.58
+Bern|46.95|7.44
+Genève|46.21|6.133
+Zürich|47.38|8.54
+Concepción|-36.83|-73.05
+Santiago|-33.46|-70.64
+Viña del Mar|-33.01|-71.55
+Beijing|39.93|116.4
+Shanghai|31.23|121.47
+Xianggang(Hong Kong)|22.27|114.14
+Abidjan|5.33|-4.03
+Bouaké|7.69|-5.03
+Daloa|6.89|-6.45
+Yamoussoukro|6.82|-5.28
+Douala|4.06|9.71
+Garoua|9.3|13.39
+Maroua|10.58|14.33
+Yaoundé|3.87|11.52
+Kinshasa|-4.31|15.32
+Mbuji-Mayi|-6.13|23.59
+Lubumbashi|-11.66|27.48
+Brazzaville|-4.25|15.26
+Loubomo|-4.18|12.67
+Nkayi|-4.18|13.28
+Pointe Noire|-4.77|11.87
+Amuri|-18.87|-159.77
+Avarua|-21.2|-159.77
+Mangaia|-21.92|-157.92
+Omoka|-9|-158.07
+Bogotá|4.63|-74.09
+Domoni|-12.25|44.53
+Mitsamiouli|-11.4|43.28
+Moroni|-11.74|43.23
+Mutsamudu|-12.15|44.41
+Mindelo|16.89|-24.99
+Pedra Badejo|15.13|-23.54
+Praia|14.93|-23.54
+Santa Maria|16.6|-22.92
+Alajuela|10.02|-84.23
+Limón|9.99|-83.04
+Puntarenas|9.98|-84.84
+San José|9.93|-84.08
+Camagüey|21.4|-77.91
+Holguín|20.89|-76.25
+La Habana|23.13|-82.39
+Santiago de Cuba|20.01|-75.82
+The Settlement|-10.23|105.65
+Bodden Town|19.28|-81.26
+George Town|19.28|-81.39
+West Bay|19.38|-81.42
+Larnaka|34.92|33.63
+Lefkosa|35.18|33.37
+Lefkosia|35.16|33.38
+Strovolos|35.15|33.35
+Brno|49.2|16.61
+Ostrava|49.83|18.27
+Plzen|49.75|13.37
+Praha|50.08|14.43
+Berlin|52.52|13.38
+Hamburg|53.55|10
+Köln|50.95|6.97
+München|48.14|11.58
+'Ali Sabîh|11.16|42.71
+Dikhil|11.11|42.37
+Jibûti(Djibouti)|11.56|43.15
+Tajûrah|11.79|42.89
+Grand Bay|15.23|-61.32
+Marigot|15.53|-61.29
+Portsmouth|15.57|-61.46
+Roseau|15.3|-61.39
+Aalborg|57.03|9.93
+København|55.68|12.57
+Odense|55.4|10.38
+Århus|56.16|10.21
+La Romana|18.43|-68.97
+San Pedro de Macorís|18.46|-69.31
+Santiago|19.48|-70.69
+Santo Domingo|18.48|-69.91
+Bâtnah|35.57|6.17
+Qustantînah(Constantine)|36.36|6.6
+Wahrân|35.7|-0.62
+al-Jazâ'ir(Alger)|36.77|3.04
+Cuenca|-2.9|-79.01
+Guayaquil|-2.21|-79.9
+Machala|-3.26|-79.96
+Quito|-0.19|-78.5
+al-Qahira(Cairo)|30.06|31.25
+Keren|15.68|38.45
+Mitsiwa|15.61|39.44
+Âsmara|15.33|38.94
+Âsseb|13.01|42.74
+Bû Jaydûr|26.13|-14.48
+ad-Dakhlah|23.71|-15.93
+al-'Ayûn|27.16|-13.2
+as-Samârah|26.74|-11.67
+Barcelona|41.4|2.17
+Madrid|40.42|-3.71
+Sevilla|37.4|-5.98
+Valencia|39.48|-0.39
+La Laguna|28.48|-16.32
+Las Palmas|28.1|-15.43
+Santa Cruz de Tenerife|28.47|-16.25
+Telde|28|-15.42
+Narva|59.38|28.19
+Pärnu|58.38|24.51
+Tallinn|59.44|24.74
+Tartu|58.38|26.71
+Dirê Dawa|9.59|41.86
+Gondar|12.61|37.46
+Nazrêt|8.55|39.27
+Âddîs Âbebâ(Addis Abeba)|9.03|38.74
+Espoo|60.21|24.66
+Helsinki|60.17|24.94
+Tampere|61.52|23.76
+Vantaa|60.29|25.04
+Labasa|-16.47|179.38
+Lautoka|-17.61|177.45
+Nadi|-17.8|177.42
+Suva|-18.13|178.43
+Goose Green|-51.83|-58.98
+Port Howard|-51.62|-59.52
+Port Stanley|-51.7|-57.82
+Lyon|45.76|4.83
+Marseille|43.31|5.37
+Paris|48.86|2.34
+Midvags|62.04|-7.21
+Runavik|62.12|-6.72
+Tvøroyri|61.55|-6.81
+Tórshavn|62.03|-6.8
+Kolonia|6.95|158.21
+Palikir|6.92|158.16
+Tol|7.53|151.62
+Weno|7.46|151.84
+Libreville|0.39|9.45
+Masuku|-1.63|13.6
+Oyem|1.6|11.57
+Port-Gentil|-0.72|8.78
+London|51.52|-0.1
+Saint Peter Port|49.45|-2.53
+Saint Helier|49.19|-2.11
+Douglas|54.15|-4.48
+Batumi|41.65|41.65
+Kutaisi|42.26|42.72
+Rustavi|41.55|45.03
+Tbilisi|41.72|44.79
+Accra|5.56|-0.2
+Kumasi|6.69|-1.63
+Tamale|9.4|-0.84
+Tema|5.64|0
+Gibraltar|36.14|-5.365
+Conakry|9.55|-13.67
+Kankan|10.39|-9.31
+Labé|11.32|-12.3
+Mamou|10.38|-12.1
+Baie-Mahault|16.26|-61.59
+Le Gosier|16.22|-61.49
+Les Abymes|16.29|-61.49
+Point-à-Pitre|16.25|-61.54
+Bakau|13.49|-16.69
+Banjul|13.46|-16.6
+Brikama|13.28|-16.66
+Serekunda|13.45|-16.68
+Bafatá|12.17|-14.69
+Bissau|11.87|-15.6
+Bolama|11.59|-15.49
+Gabú|12.28|-14.24
+Bata|1.87|9.76
+Ela Nguema|3.75|8.78
+Malabo|3.74|8.79
+Mbini|1.58|9.61
+Athína(Athens)|37.98|23.72
+Peiraías|37.94|23.64
+Pátra|38.24|21.73
+Thessaloníki|40.64|22.95
+Gouyave|12.17|-61.73
+Grenville|12.13|-61.62
+Saint George's|12.06|-61.74
+Victoria|12.19|-61.7
+Aasiaat|68.71|-52.85
+Ilulissat|69.21|-51.11
+Nuuk(Godthåb)|64.18|-51.73
+Sisimiut|66.93|-53.68
+Guatemala|14.63|-90.55
+Mixco|14.64|-90.6
+Quezaltenango|14.84|-91.53
+Villa Nueva|14.53|-90.59
+Anderson Air Force Base|13.56|144.93
+Apra Harbor|13.43|144.67
+Mangilao|13.44|144.8
+Tamuning|13.48|144.78
+Corriverton|5.9|-57.17
+Georgetown|6.79|-58.16
+Linden|5.99|-58.27
+New Amsterdam|6.25|-57.53
+El Progreso|15.4|-87.82
+La Ceiba|15.78|-86.79
+San Pedro Sula|15.47|-88.03
+Tegucigalpa|14.09|-87.22
+Osijek|45.55|18.68
+Rijeka|45.33|14.44
+Split|43.51|16.45
+Zagreb|45.8|15.97
+Cap-Haïtien|19.76|-72.2
+Carrefour|18.53|-72.42
+Delmas|18.55|-72.28
+Port-au-Prince|18.54|-72.34
+Budapest|47.51|19.08
+Debrecen|47.54|21.63
+Miskolc|48.1|20.79
+Szeged|46.26|20.16
+Jakarta|-6.18|106.83
+Mumbai(Bombay)|18.96|72.82
+Cork|51.9|-8.47
+Dublin|53.33|-6.25
+Galway|53.28|-9.06
+Limerick|52.67|-8.63
+Tehrân|35.67|51.43
+Baghdâd|33.33|44.44
+al-Mawsil|36.34|43.14
+Akureyri|65.69|-18.12
+Hafnarfjörður|64.06|-21.95
+Kópavogur|64.12|-21.92
+Reykjavík|64.14|-21.92
+Khefa|32.82|34.99
+Rishon Le Ziyyon|31.96|34.8
+Tel Aviv-Yafo|32.07|34.77
+Yerushalayim(Jerusalem)|31.78|35.22
+Milano|45.48|9.19
+Napoli|40.85|14.27
+Roma|41.89|12.5
+Torino|45.08|7.68
+Kingston|17.99|-76.8
+Montego Bay|18.47|-77.92
+Portmore|17.95|-76.88
+Spanish Town|18|-76.95
+'Ammân|31.95|35.93
+Irbid|32.55|35.85
+ar-Rusayfah|32.02|36.02
+az-Zarqâ|32.07|36.1
+Tôkyô(Tokyo)|35.67|139.77
+Karaganda|49.88|73.16
+Simkent(Shimkent)|42.32|69.59
+Almaty(Alma Ata)|43.32|76.92
+Semey(Semipalatinsk)|50.43|80.27
+Kisumu|-0.09|34.75
+Mombasa|-4.04|39.66
+Nairobi|-1.29|36.82
+Nakuru|-0.28|36.07
+Bishkek|42.87|74.57
+Jalal-Abad|40.94|73
+Karabalta|42.83|73.89
+Osh|40.54|72.79
+Batdâmbâng|13.11|103.21
+Phnum Pénh|11.57|104.92
+Preah Seihânu|10.61|103.53
+Siemreap|13.37|103.86
+Bairiki|1.33|172.99
+Bikenibeu|1.36|173.11
+Butaritari|3.08|172.79
+Taburao|1.81|173.04
+Basseterre|17.3|-62.73
+Cayon|17.35|-62.73
+Charlestown|17.15|-62.63
+Sandy Point|17.35|-62.84
+Seoul|37.56|126.99
+Prishtina|42.65|21.17
+Hawallî|29.35|47.98
+Jalîb ash-Shuyûh|29.27|47.94
+al-Kuwayt(Kuwait City)|29.33|47.98
+as-Sâlimîyah|29.33|48.06
+Luang Prabang|19.89|102.14
+Pakxe|15.12|105.8
+Savannakhet|16.57|104.75
+Viangchan|17.97|102.61
+Bayrût(Beirut)|33.88|35.5
+Saydâ(Saida)|33.57|35.39
+Sûr|33.28|35.21
+Tarâbulus ash-Sham(Tripoli)|34.43|35.87
+Buchanan|5.88|-10.05
+Monrovia|6.31|-10.8
+Yekepa|7.58|-8.53
+Zwedru|6.07|-8.13
+Banghâzî|32.12|20.07
+Misrâtah|32.38|15.09
+Tarâbulus(Tripoli)|32.87|13.18
+al-Khums|32.655|14.26
+Castries|14.03|-60.98
+Choiseul|13.77|-61.05
+Micoud|13.82|-60.9
+Vieux Fort|13.73|-60.95
+Balzers|47.08|9.51
+Schaan|47.17|9.51
+Triesen|47.11|9.53
+Vaduz|47.14|9.53
+Dehiwala-Mount Lavinia|6.85|79.87
+Kolamba(Colombo)|6.93|79.85
+Moratuwa|6.81|79.88
+Yâpanaya|9.67|80.01
+Mafeteng|-29.83|27.25
+Maputsoa|-28.88|27.9
+Maseru|-29.31|27.49
+Teyateyaneng|-29.15|27.74
+Kaunas|54.9|23.91
+Klaipeda|55.71|21.13
+Shiauliai|55.93|23.32
+Vilniaus(Vilnius)|54.7|25.27
+Differdange|49.53|5.89
+Dudelange|49.48|6.08
+Esch-sur-Alzette|49.5|5.98
+Luxembourg|49.62|6.12
+Daugavpils|55.88|26.51
+Jelgava|56.65|23.71
+Liepâja|56.51|21.01
+Rîga|56.97|24.13
+Fâs(Fes)|34.05|-5
+Marrâkush(Marrakech)|31.63|-8
+ad-Dâr-al-Baydâ(Casablanca)|33.6|-7.62
+ar-Ribât(Rabat)|34.02|-6.84
+Fontvieille|43.73|7.41
+La Condamine|43.74|7.41
+Monaco-Ville|43.74|7.42
+Monte Carlo|43.75|7.42
+Balti|47.76|27.91
+Chisinau|47.03|28.83
+Tighina|46.83|29.48
+Tiraspol'|46.85|29.63
+Antananarivo|-18.89|47.51
+Antsirabé|-19.87|47.03
+Fianarantsoa|-21.45|47.07
+Toamasina|-18.15|49.4
+Fuvahmulah|-0.3|73.43
+Hithadhoo|-0.59|73.08
+Kulhudhuffushi|6.62|73.05
+Malé|4.17|73.5
+Ciudad de México|19.42|-99.15
+Ebeye|8.77|167.73
+Jaluit|5.79|169.61
+Rita|7.12|171.06
+Bitola|41.04|21.34
+Kumanovo|42.14|21.71
+Prilep|41.36|21.56
+Skopje|42|21.47
+Bamako|12.65|-7.99
+Mopti|14.49|-4.18
+Sikasso|11.32|-5.68
+Ségou|13.44|-6.26
+Birkirkara|35.9|14.46
+Mosta|35.91|14.43
+Qormi|35.89|14.46
+Zabbar|35.88|14.54
+Bago|17.33|96.5
+Mandalay|21.98|96.09
+Mawlamyine|16.49|97.63
+Yangon(Rangoon)|16.79|96.15
+Cojbalsan|48.06|114.5
+Darhan|46.63|109.4
+Ulaanbaatar|47.93|106.91
+Èrdènèt|49.03|104.08
+Chalan Kanoa|15.15|145.7
+Garapan|15.21|145.73
+Koblerville|15.12|145.71
+San Antonio|15.13|145.69
+Beira|-19.83|34.84
+Maputo|-25.95|32.57
+Matola|-25.97|32.46
+Nampula|-15.13|39.24
+Kayhaydi|16.15|-13.5
+Kîfah|16.62|-11.4
+Nawadhîbu|20.96|-17.04
+Nawâkshût(Nouakchott)|18.09|-15.98
+Plymouth|16.73|-62.23
+Beau Bassin-Rose Hill|-20.23|57.46
+Curepipe|-20.31|57.51
+Port Louis|-20.17|57.51
+Vacoas-Phoenix|-20.3|57.48
+Blantyre|-15.79|34.99
+Lilongwe|-13.97|33.8
+Mzuzu|-11.46|34.02
+Zomba|-15.39|35.31
+Ipoh|4.6|101.07
+Johor Bahru|1.48|103.75
+Klang|3.04|101.45
+Kuala Lumpur|3.16|101.71
+Oshakati|-17.78|15.69
+Rehoboth|-23.32|17.08
+Rundu|-17.92|19.75
+Windhoek|-22.56|17.09
+Dumbéa|-22.17|166.44
+Mont-Doré|-22.28|166.58
+Nouméa|-22.27|166.44
+Wé|-20.91|167.24
+Agadez|17|7.98
+Maradi|13.49|7.1
+Niamey|13.52|2.12
+Zinder|13.8|8.99
+Kingston|-29.03|168.05
+Lagos|6.45|3.47
+Chinandega|12.63|-87.13
+León|12.43|-86.89
+Managua|12.15|-86.27
+Masaya|11.98|-86.1
+Alofi|-19.05|-169.92
+'s-Gravenhage(The Hague)|52.08|4.28
+Amsterdam|52.37|4.89
+Rotterdam|51.93|4.48
+Utrecht|52.1|5.11
+Bergen|60.38|5.34
+Oslo|59.91|10.75
+Stavanger|58.97|5.71
+Trondheim|63.44|10.4
+Birâtnagar|26.46|87.28
+Kathmandu|27.71|85.31
+Lalitpur|27.68|85.32
+Pokharâ|28.22|83.99
+Yaren|-0.548|166.913
+Auckland|-36.85|174.76
+Christchurch|-43.53|172.64
+Manukau|-37|174.88
+North Shore|-36.8|174.75
+Bawshar|23.53|58.39
+Masqat(Muscat)|23.61|58.54
+Salâlah|17.02|54.09
+as-Sîb|23.67|58.19
+Karâchi|24.86|67.01
+Lahore|31.56|74.35
+Arraiján|8.92|-79.72
+David|8.44|-82.43
+Panamá(Panama City)|8.97|-79.53
+San Miguelito|9.03|-79.5
+Adamstown|-25.05|-130.1
+Lima|-12.07|-77.05
+Manila|14.62|120.97
+Airai|7.36|134.55
+Kloulklubed|7.04|134.26
+Koror|7.35|134.51
+Meyungs|7.35|134.47
+Lae|-6.72|146.99
+Madang|-5.23|145.79
+Port Moresby|-9.48|147.18
+Wewak|-3.56|143.62
+Kraków|50.06|19.96
+Lódz|51.77|19.46
+Warszawa(Warsaw)|52.26|21.02
+Wroclaw|51.11|17.03
+Bayamón|18.35|-66.17
+Carolina|18.34|-65.95
+Ponce|18.02|-66.6
+San Juan|18.44|-66.13
+Chengjin|41.78|129.78
+Hamheung|39.92|127.54
+Pyengyang|39.02|125.75
+Pyongyang|39.02|125.75
+Amadora|38.75|-9.24
+Lisboa|38.72|-9.14
+Porto|41.15|-8.62
+Funchal|32.65|-16.9
+Asunción|-25.3|-57.63
+Ciudad del Este|-25.42|-54.63
+Lambaré|-25.33|-57.64
+San Lorenzo|-25.34|-57.52
+Gazzah|31.53|34.44
+Jabâliyâh|31.35|34.29
+al-Khalîl|31.54|35.09
+al-Quds|31.78|35.24
+Faaa|-17.54|-149.61
+Papeete|-17.52|-149.58
+Pirae|-17.51|-149.54
+Punaauia|-17.62|-149.61
+Umm Salal|25.42|51.4
+ad-Dawhah|25.3|51.51
+al-Wakrah|25.18|51.61
+ar-Rayyân|25.32|51.37
+Le Tampon|-21.27|55.53
+Saint-Denis|-20.87|55.46
+Saint-Paul|-21|55.27
+Saint-Pierre|-21.32|55.47
+Bucuresti|44.44|26.1
+Constanta|44.18|28.63
+Galati|45.44|28.04
+Iasi|47.17|27.57
+Moskva(Moscow)|55.75|37.62
+Sankt Peterburg(Saint Petersburg)|59.93|30.32
+Novosibirsk|55.02|82.93
+Butare|-2.59|29.73
+Gisenyi|-1.69|29.26
+Kigali|-1.94|30.06
+Ruhengeri|-1.5|29.63
+Jiddah|21.5|39.17
+ad-Dammâm|26.43|50.1
+ar-Riyâd(Riyadh)|24.65|46.77
+al-Khartûm(Khartoum)|15.58|32.52
+Dakar|14.72|-17.48
+Kaolack|14.15|-16.1
+Thiès|14.81|-16.93
+Ziguinchor|12.59|-16.29
+Singapore|1.3|103.85
+Grytviken|-54.24|-36.51
+Edingburgh|-37.06|-12.295
+Georgetown|-7.95|-14.44
+Gough Island|-40.35|-9.95
+Jamestown|-15.92|-5.71
+Auki|-8.76|160.7
+Gizo|-8.1|156.85
+Honiara|-9.43|159.91
+Lata|-10.71|165.83
+Bo|7.97|-11.74
+Freetown|8.49|-13.24
+Kenema|7.88|-11.19
+Koidu|8.44|-10.85
+Mejicanos|13.73|-89.2
+San Salvador|13.69|-89.19
+Santa Ana|14|-89.54
+Soyapango|13.7|-89.16
+Borgo Maggiore|43.93|12.45
+Domagnano|43.95|12.47
+San Marino|43.94|12.43
+Serravalle|43.95|12.49
+Berbera|10.44|45
+Hargeysa|9.56|44.06
+Kismâyo|-0.35|42.53
+Muqdîsho(Mogadisho)|2.05|45.33
+Miquelon|47.1|-56.4
+Saint-Pierre|46.8|-56.2
+Santana|1.67|7.43
+Santo Amaro|0.37|6.7
+São Tomé|0.37|6.68
+Trinidade|0.3|6.68
+Albina|5.5|-54.08
+Nieuw Amsterdam|5.91|-55.07
+Nieuw Nickerie|5.95|-56.99
+Paramaribo|5.85|-55.2
+Bratislava|48.16|17.13
+Koshice|48.73|21.26
+Preshov|48.99|21.24
+Zhilina|49.22|18.74
+Celje|46.24|15.27
+Kranj|46.25|14.36
+Ljubljana|46.06|14.51
+Maribor|46.55|15.64
+Göteborg|57.72|12.01
+Malmö|55.61|13.02
+Stockholm|59.33|18.07
+Uppsala|59.86|17.64
+Big Bend|-26.81|31.94
+Lobamba|-26.46|31.2
+Manzini|-26.49|31.38
+Mbabane|-26.32|31.14
+Anse Boileau|-4.72|55.48
+Anse Royal|-4.73|55.52
+Victoria|-4.62|55.45
+Dimashq(Damascus)|33.5|36.32
+Halab|36.23|37.17
+Hims|34.73|36.72
+Alfred-Faure|-46.43|51.845
+Martin-de-Viviès|-37.83|77.57
+Port-aux-Français|-49.35|70.26
+Cockburn Harbour|21.5|-71.52
+Cockburn Town|21.48|-71.15
+Abéché|13.84|20.83
+Moundou|8.55|16.09
+N'Djaména|12.11|15.05
+Sarh|9.15|18.39
+Bassar|9.26|0.79
+Kpalimé|6.9|0.63
+Lomé|6.17|1.35
+Sokodé|8.99|1.15
+Krung Thep|13.73|100.5
+Nonthaburi|13.8|100.18
+Samut Prakan|13.61|100.61
+Udon Thani|17.41|102.79
+Dushanbe|38.57|68.78
+Khujand|40.29|69.62
+Kulob|37.92|69.78
+Qurgonteppa|37.84|68.77
+Atafu|-8.57|-172.5
+Fakaofo|-9.39|-171.19
+Nukunonu|-9.16|-171.87
+Ashgabat|37.95|58.38
+Chärjew|39.1|63.57
+Dashhowuz|41.85|59.96
+Mary|37.59|61.82
+Baucau|-8.46|126.46
+Dili|-8.57|125.58
+Manatuto|-8.52|126.01
+Suai|-9.32|125.25
+Haveloloto|-21.15|-175.22
+Neiafu|-18.64|-173.99
+Nuku'alofa|-21.14|-175.22
+Vaini|-21.2|-175.2
+Arima|10.64|-61.28
+Point Fortin|10.16|-61.68
+Port of Spain|10.66|-61.51
+San Fernando|10.25|-61.46
+Aryanah|36.88|10.18
+Safâqis(Sfax)|34.75|10.72
+Sûsah(Sousse)|35.84|10.62
+Tûnis(Tunis)|36.84|10.22
+Ankara|39.93|32.85
+Bursa|40.2|29.08
+Istanbul|41.01|28.96
+Izmir|38.43|27.15
+Asau|-7.5|178.67
+Kua|-6.12|177.3
+Lolua|-5.67|176.13
+Vaiaku|-8.52|179.19
+Kaohsiung|22.63|120.27
+Taichung|24.15|120.68
+Tainan|23|120.19
+Taipei|25.02|121.45
+Dar es Salaam|-6.82|39.28
+Morogoro|-6.82|37.66
+Mwanza|-2.52|32.89
+Zanzibar|-6.16|39.2
+Jinja|0.44|33.2
+Kampala|0.32|32.58
+Masaka|-0.33|31.73
+Mbale|1.09|34.17
+Kharkiv|49.98|36.22
+Kharkov|49.98|36.22
+Kiev|50.44|30.52
+Kyyiv|50.44|30.52
+Las Piedras|-34.69|-56.23
+Montevideo|-34.87|-56.17
+Paysandú|-32.33|-58.08
+Salto|-31.4|-57.96
+Los Angeles|34.11|-118.41
+Chicago|41.84|-87.68
+New York|40.67|-73.94
+Houston|29.77|-95.39
+Andijon|40.79|72.34
+Namangan|41|71.67
+Samarkand|39.66|66.95
+Toskent(Tashkent)|41.31|69.3
+Vatican|41.9|12.46
+Biabou|13.2|-61.13
+Dovers|12.88|-61.18
+Kingstown|13.16|-61.23
+Layou|13.2|-61.27
+Barquisimeto|10.05|-69.3
+Caracas|10.54|-66.93
+Maracaibo|10.73|-71.66
+Valencia|10.23|-67.98
+Road Town|18.43|-64.63
+Settlement|18.73|-64.32
+Spanish Town|18.45|-64.44
+Anna's Retreat|18.34|-64.89
+Charlotte Amalie West|18.34|-64.96
+Charlotte Amalie|18.35|-64.94
+Frederiksted Southeast|17.71|-64.88
+Ha Noi|21.03|105.84
+Hai Phong|20.86|106.68
+Thanh Pho Ho Chi Minh(Ho Chi Minh City)|10.78|106.69
+Isangel|-19.53|169.28
+Luganville|-15.51|167.15
+Port Olry|-15.05|167.05
+Vila|-17.74|168.31
+Alo|-14.32|-178.12
+Matâ'Utu|-13.27|-176.15
+Singave|-14.3|-178.17
+Apia|-13.83|-171.76
+Falelatai|-13.92|-171.98
+Safotulafai|-13.67|-172.12
+Samamea|-13.9|-171.47
+'Adan|12.79|45.03
+San'â(Sanaa)|15.38|44.21
+al-Hudaydah|14.8|42.95
+at-Taziyah|13.6|44.04
+Beograd|44.83|20.5
+Nish|43.33|21.9
+Novi Sad|45.25|19.85
+Cape Town|-33.93|18.46
+Durban|-29.87|30.99
+Johannesburg|-26.19|28.04
+Pretoria|-25.73|28.22
+Kabwe|-14.44|28.45
+Kitwe|-12.81|28.22
+Lusaka|-15.42|28.29
+Ndola|-12.97|28.64
+Bulawayo|-20.17|28.58
+Chitungwiza|-18|31.1
+Harare|-17.82|31.05
+Mutare|-18.97|32.65

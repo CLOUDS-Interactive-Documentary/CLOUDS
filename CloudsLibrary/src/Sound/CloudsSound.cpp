@@ -98,26 +98,6 @@ void CloudsSound::drawDebug(){
 	
 	
     // DRAW SOME STUFF
-    
-    // low background erase
-    ofSetColor(0,0,0,10);
-    ofRect(0,0,ofGetWidth(),ofGetHeight());
-	
-    // words
-    ofSetColor(255,255,255,10);
-    theFont.drawString("waves", (ofGetWidth()*0.25)-theFont.stringWidth("waves")/2.0,ofGetHeight()*0.25);
-    theFont.drawString("strum", (ofGetWidth()*0.75)-theFont.stringWidth("strum")/2.0,ofGetHeight()*0.25);
-    theFont.drawString("mallet", (ofGetWidth()*0.25)-theFont.stringWidth("mallet")/2.0,ofGetHeight()*0.75);
-    theFont.drawString("talk", (ofGetWidth()*0.75)-theFont.stringWidth("talk")/2.0,ofGetHeight()*0.75);
-	
-    // lines and circles
-    if(quadrant==0) ofSetColor(255, 0, 0, 60);
-    else if(quadrant==1) ofSetColor(0, 255, 0, 60);
-    else if(quadrant==2) ofSetColor(50, 50, 255, 60);
-    else if(quadrant==3) ofSetColor(255,255,0, 60);
-    ofLine(0, ofGetHeight()/2, ofGetWidth(),ofGetHeight()/2);
-    ofLine(ofGetWidth()/2, 0, ofGetWidth()/2,ofGetHeight());
-    ofCircle(ofGetMouseX(), ofGetMouseY(), delta*10.);
 	
 	ofPopStyle();
 }
@@ -125,15 +105,14 @@ void CloudsSound::drawDebug(){
 //--------------------------------------------------------------------
 void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
 	//Happens at the very beginning of a sequence
-	
 }
 
 //--------------------------------------------------------------------
 void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
 	//Happens when a clip begins
-	cout << args.chosenClip.cluster.Centre << endl;
-	cout << args.chosenClip.cluster.Centre << endl;
-	cout << args.chosenClip.cluster.Color << endl;
+	cout << "SOUND >> " << storyEngine->getCurrentTopic() << endl;
+	cout << "SOUND >> " << args.chosenClip.cluster.Centre << endl;
+	cout << "SOUND >> " << args.chosenClip.cluster.Color << endl;
 
 	cout << "duration in seconds " << args.chosenClip.getDuration() << endl;
 }
@@ -278,7 +257,7 @@ void CloudsSound::mouseReleased(ofMouseEventArgs & args){
 	
 }
 
-// utility routine to fine where we are clicking
+// utility routine to find where we are clicking
 int CloudsSound::returnQuadrant(int x, int y)
 {
     int foo = 3;

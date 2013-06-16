@@ -34,8 +34,7 @@ void CloudsStoryEngine::setup(){
 
 void CloudsStoryEngine::update(ofEventArgs& args){
 	if(waitingForNextClip && nextClipTime < ofGetElapsedTimef()){
-		cout << "SELECTING NEW CLIP " << endl;
-		selectNewClip();
+		playNextClip();
 	}
 }
 
@@ -59,7 +58,7 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	loadClip( seed );	
 }
 
-bool CloudsStoryEngine::selectNewClip(){
+bool CloudsStoryEngine::playNextClip(){
 	
 	waitingForNextClip = false;
 	
@@ -70,7 +69,6 @@ bool CloudsStoryEngine::selectNewClip(){
 	}
 	
 	//We need a clip to be able to select a new one.
-	//call seedWithClip() before calling selectNewClip()
 	if(!hasclip){
 		ofLogError("Cannot select new clip without a seed");
 		return false;
@@ -84,15 +82,11 @@ bool CloudsStoryEngine::selectNewClip(){
 	int randomClip = ofRandom( validNextClips.size() );
 	cout << "SELECTED CLIP:" << randomClip << "/" << validNextClips.size();
 	cout << " " << validNextClips[randomClip].getLinkName() << endl;
-	
-//	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
-//	ofNotifyEvent(events.clipEnded, args, this);
 		
 	loadClip( validNextClips[randomClip] );
 
 	return true;
 }
-
 
 void CloudsStoryEngine::loadClip(CloudsClip& clip){
 
@@ -111,16 +105,16 @@ void CloudsStoryEngine::loadClip(CloudsClip& clip){
 	clipHistory.push_back( clip );
 	peopleVisited[ clip.person ]++;
 	
-	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
-	
 	populateNextClips();
 	
-	CloudsStoryEventArgs args(clip, allNextClips, currentTopic);
+	CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
 	ofNotifyEvent(events.clipBegan,args);
 }
 
 bool CloudsStoryEngine::clipEnded(){
 
+	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
+	
 	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
 	args.timeUntilNextClip = 5;
 	ofNotifyEvent(events.clipEnded, args, this);
@@ -131,7 +125,6 @@ bool CloudsStoryEngine::clipEnded(){
 		waitingForNextClip = true;
 		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
 	}
-	
 }
 
 void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){

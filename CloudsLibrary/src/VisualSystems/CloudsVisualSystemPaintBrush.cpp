@@ -15,26 +15,10 @@ string CloudsVisualSystemPaintBrush::getSystemName()
 
 void CloudsVisualSystemPaintBrush::selfSetup()
 {
-    iconSize = 100;
-    
     canvas.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     canvas.begin();
     ofClear(0,0);
     canvas.end();
-    
-    palette.path = getDataPath()+"visualsystems/PaintBrush/";
-    palette.setup();
-    palette.loadPalette(getDataPath()+"visualsystems/PaintBrush/settings.xml");
-    palette.setVisible(false);
-    
-    paletteBtn.set(0, 0, iconSize+30, iconSize+30);
-    paletteBtn.setImage(getDataPath()+"visualsystems/PaintBrush/icon_pallete.png");
-    ofAddListener( paletteBtn.clickPressed, this, &CloudsVisualSystemPaintBrush::showPalette );
-    cleanBtn.set(ofGetWidth()-iconSize,ofGetHeight()-iconSize,iconSize,iconSize);
-    ofAddListener( cleanBtn.clickPressed, this, &CloudsVisualSystemPaintBrush::cleanCanvas );
-    cleanBtn.setImage(getDataPath()+"visualsystems/PaintBrush/icon_close.png");
-    
-    bDebug  = false;
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
@@ -50,6 +34,10 @@ void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
     
     sysGui->addSlider("color_lerp",0.0, 1.0, &colorLerp);
     sysGui->addSlider("color_random", 0.0, 0.02, &colorRandom);
+    
+    sysGui->addSlider("particles_threshold", 5.0, 100.0, &particlesThreshold);
+    sysGui->addSlider("particles_turbulence", 0.0, 0.5, &particlesTurbulence);
+    sysGui->addSlider("particles_alpha", 0.0, 1.0, &particlesAlpha);
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupRenderGui()
@@ -69,25 +57,36 @@ void CloudsVisualSystemPaintBrush::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemPaintBrush::selfUpdate()
 {
     brush.update();
-    palette.update();
+    
+    if (brush.getVel().length() < particlesThreshold){
+        ofFloatColor color;
+        color.set(1, 0, 0);
+        color.setHue( abs( sin(ofGetElapsedTimef()*0.01) ) );
+        brush.setColor(color, colorLerp, colorRandom);
+    }
+    
+    brush.addParticles(particles, particlesThreshold, particlesAlpha);
     
     canvas.begin();
-    if ( palette.getVisible() ){
-        if ( ofGetMouseY() > palette.getY() ){
-            brush.draw();
-        }
-    } else {
-        brush.draw();
-    }
-    canvas.end();
     
-    if ( palette.getVisible() ){
-        if ( ofGetMouseY() < palette.getY() ){
-            palette.begin();
-            brush.draw();
-            palette.end();
+    
+    for(int i = particles.size()-1; i >= 0 ; i--){
+        
+        particles[i].addNoise(ofGetElapsedTimef(), particlesTurbulence);
+        particles[i].update();
+        
+        if (particles[i].getVel().length() < 1.0 ){
+            particles.erase(particles.begin()+i);
+        } else {
+            particles[i].draw();
+            particles[i].trail.draw();
         }
+        
     }
+    
+    brush.draw();
+    
+    canvas.end();
 }
 
 void CloudsVisualSystemPaintBrush::draw(ofEventArgs & args)
@@ -95,16 +94,9 @@ void CloudsVisualSystemPaintBrush::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
-        //  TEMPORAL FIX
-        //
         drawBackground();
         
         canvas.draw(0, 0);
-        
-        paletteBtn.draw();
-        cleanBtn.draw();
-        
-        palette.draw();
         
         if (bDebug){
             ofSetColor(255);
@@ -115,25 +107,9 @@ void CloudsVisualSystemPaintBrush::draw(ofEventArgs & args)
     
     ofPopStyle();
 	
-    cleanBtn.set(ofGetWidth()-iconSize,ofGetHeight()-iconSize,iconSize,iconSize);
-    
 //	timeline->draw();
 }
 
-void CloudsVisualSystemPaintBrush::showPalette(int &_n){
-    if (!palette.getVisible()){
-        palette.clear();
-        brush.clear();
-        palette.setVisible(true);
-    }
-}
-
-void CloudsVisualSystemPaintBrush::cleanCanvas(int &_n){
-    brush.clear();
-    canvas.begin();
-    ofClear(0,0);
-    canvas.end();
-}
 
 void CloudsVisualSystemPaintBrush::selfSetupGuis()
 {
@@ -178,15 +154,22 @@ void CloudsVisualSystemPaintBrush::selfEnd()
 
 void CloudsVisualSystemPaintBrush::selfKeyReleased(ofKeyEventArgs & args)
 {
-    
+    if (args.key == ' '){
+        brush.clear();
+        canvas.begin();
+        ofClear(0,0);
+        canvas.end();
+        particles.clear();
+    }
 }
 
 void CloudsVisualSystemPaintBrush::mouseDragged(ofMouseEventArgs& data)
 {
-    if ( palette.getVisible() ){
-        brush.pickColorFrom( palette.getTextureReference(),colorLerp,colorRandom );
-    }
     brush.set(data.x,data.y);
+    
+    //  If is slow take color?
+    //
+//    brush.pickColorFrom( canvas.getTextureReference(), 0.5, 0.25 );
 }
 
 void CloudsVisualSystemPaintBrush::mouseMoved(ofMouseEventArgs &args)
@@ -198,30 +181,17 @@ void CloudsVisualSystemPaintBrush::mousePressed(ofMouseEventArgs &args)
 {
     ofPoint mouse(args.x,args.y);
     
-    if ( !cleanBtn.checkOver(mouse) && !paletteBtn.checkOver(mouse)){
-        
-        if (palette.getVisible()){
-            if (  mouse.y > palette.getY() ){
-                brush.clear();
-                palette.setVisible(false);
-            }
-        }
-        
-        paletteBtn.checkOver(mouse);
-        cleanBtn.checkOver(mouse);
-        
-        brush.init(brushNumber);
-        brush.setBrushWidth(brushWidth);
-        brush.setLineWidth(lineWidth);
-        
-        brush.damp = brushDamp;
-        brush.k = brushK;
-        brush.repPct = brushRepPct;
-        brush.repRad = brushRepRad;
-        
-        brush.begin();
-        brush.set(mouse);
-    }
+    brush.init(brushNumber);
+    brush.setBrushWidth(brushWidth);
+    brush.setLineWidth(lineWidth);
+    
+    brush.damp = brushDamp;
+    brush.k = brushK;
+    brush.repPct = brushRepPct;
+    brush.repRad = brushRepRad;
+    
+    brush.begin();
+    brush.set(mouse);
 }
 
 void CloudsVisualSystemPaintBrush::mouseReleased(ofMouseEventArgs &args)

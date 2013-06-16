@@ -13,12 +13,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>brush_width</Name>
-    <Value>13.793103218</Value>
+    <Value>12.807882309</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>number_of_lines</Name>
-    <Value>45.655170441</Value>
+    <Value>30.448276520</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,10 +48,25 @@
 <Widget>
     <Kind>4</Kind>
     <Name>color_lerp</Name>
-    <Value>0.266009837</Value>
+    <Value>0.039408866</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>color_random</Name>
-    <Value>0.014285714</Value>
+    <Value>0.016847290</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particles_threshold</Name>
+    <Value>40.098522186</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particles_turbulence</Name>
+    <Value>0.044334974</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particles_alpha</Name>
+    <Value>0.596059084</Value>
 </Widget>
