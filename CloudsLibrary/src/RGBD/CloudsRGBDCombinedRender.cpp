@@ -109,11 +109,9 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	normalRect.width = 640.0;
 	normalRect.height = 480.0;
 	
-	minDepth = XML.getValue("adjustment:depth:min", 1.0f);
-	maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
-	
-	cout << "near clip " << nearClip << " far clip " << farClip << endl;
-	
+	nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
+	farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
+		
 	//TODO automatically
 	//this describes the face features: eyes, mouth, and skin
 	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);

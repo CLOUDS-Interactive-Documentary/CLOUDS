@@ -5,7 +5,6 @@
 #include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
 
-
 /**
  * The Clouds story engine generates sequences of clips
  * based on the keyword connectivity and rules.
@@ -23,6 +22,9 @@ class CloudsStoryEngine {
 
 	void seedWithClip(CloudsClip& seed);
 	bool selectNewClip();
+	bool clipEnded();
+	
+	void update(ofEventArgs& args);
 	
 	CloudsClip& getCurrentClip();
 	vector<CloudsClip>& getClipHistory();
@@ -43,23 +45,27 @@ class CloudsStoryEngine {
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
+	bool isWaiting();
+	
 	CloudsEvents& getEvents();
-
+	
   protected:
 	
 	CloudsEvents events;
+	bool isSetup;
 	
 	bool hasclip;
 	CloudsClip currentClip;
 	int totalFramesWatched;
 	
 	float totalPoints;
-//	vector< pair<int, CloudsClip> > clipScores;
 	int nextClipTopScore;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
 	
+	bool waitingForNextClip;
+	float nextClipTime;
 	
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;

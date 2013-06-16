@@ -56,7 +56,10 @@ class CloudsPlaybackController {
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void clipEnded(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
+	
 	void playClip(CloudsClip& clip);
 	
 	//VISUAL SYSTEMS

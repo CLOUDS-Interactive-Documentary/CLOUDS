@@ -13,7 +13,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	
 	if(!eventsRegistered){
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipChanged, this, &CloudsSound::clipChanged);
+		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsSound::clipBegan);
+		ofAddListener(storyEngine.getEvents().clipEnded, this, &CloudsSound::clipEnded);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofRegisterKeyEvents(this);
@@ -61,7 +62,9 @@ void CloudsSound::exit(ofEventArgs & args){
 		eventsRegistered = false;
 		
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsSound::clipChanged);
+		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsSound::clipBegan);
+		ofRemoveListener(storyEngine->getEvents().clipEnded, this, &CloudsSound::clipEnded);
+		
 		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
 		
 		ofUnregisterMouseEvents(this);
@@ -121,29 +124,42 @@ void CloudsSound::drawDebug(){
 
 //--------------------------------------------------------------------
 void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
+	//Happens at the very beginning of a sequence
 	
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::clipChanged(CloudsStoryEventArgs& args){
+void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
+	//Happens when a clip begins
 	cout << args.chosenClip.cluster.Centre << endl;
 	cout << args.chosenClip.cluster.Centre << endl;
 	cout << args.chosenClip.cluster.Color << endl;
+
+	cout << "duration in seconds " << args.chosenClip.getDuration() << endl;
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::playClip(CloudsClip& clip){
+void CloudsSound::clipEnded(CloudsStoryEventArgs& args){
+	//happens when a clip is over
+	cout << "there will be a pause for: " << args.timeUntilNextClip << " seconds" << endl;
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::storyEnded(CloudsStoryEventArgs& args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::keyPressed(ofKeyEventArgs & args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
 	
 }
 
+//--------------------------------------------------------------------
 void CloudsSound::mouseDragged(ofMouseEventArgs & args){
 	
     float t, beatoffset;
