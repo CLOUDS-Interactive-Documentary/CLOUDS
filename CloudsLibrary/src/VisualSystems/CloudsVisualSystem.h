@@ -23,7 +23,7 @@ class CloudsVisualSystem {
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
-    static string getDataPath();
+    string getDataPath();
 	
 	//return TRUE for keywords that would allow this system to be shown
 	//for example, if I'm the "computation" visual system, I'll return true to
@@ -86,7 +86,10 @@ class CloudsVisualSystem {
 	vector<string>& getRelevantKeywords();
 	
   protected:
-
+	
+	bool confirmedDataPath;
+	bool usingDevelopmentFolder;
+	
 	//called when showing the visual system, and to end it
 	virtual void begin() = 0;
 	virtual void end() = 0;

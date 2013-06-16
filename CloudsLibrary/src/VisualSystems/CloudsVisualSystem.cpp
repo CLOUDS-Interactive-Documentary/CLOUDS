@@ -4,20 +4,26 @@
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = false;
+	
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
 	
 }
 
-string CloudsVisualSystem::getVisualSystemDataPath()
-{
-    return "../../../CloudsData/visualsystems/"+getSystemName()+"/";
+string CloudsVisualSystem::getVisualSystemDataPath(){
+    return getDataPath() + "visualsystems/"+getSystemName()+"/";
 }
 
 string CloudsVisualSystem::getDataPath()
 {
-    return "../../../CloudsData/";
+	if(!confirmedDataPath){
+		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
+		if(!usingDevelopmentFolder){
+			ofDirectory("CloudsData/").create();
+		}
+	}
+    return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
 
 bool CloudsVisualSystem::isReleventToKeyword(string keyword){

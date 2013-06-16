@@ -101,6 +101,8 @@
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E3C41F1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C41D1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp */; };
 		E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */; };
+		E7F77729176E114E0096AEF7 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F77727176E114E0096AEF7 /* rgbdcombined.frag */; };
+		E7F7772A176E114E0096AEF7 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F77728176E114E0096AEF7 /* rgbdcombined.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +375,8 @@
 		E7E3C41E1759589C00511BB0 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
 		E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E7E95E771733624100294C72 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
+		E7F77727176E114E0096AEF7 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdcombined.frag; path = ../../../CloudsData/shaders/rgbdcombined.frag; sourceTree = "<group>"; };
+		E7F77728176E114E0096AEF7 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdcombined.vert; path = ../../../CloudsData/shaders/rgbdcombined.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,6 +511,8 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				E7F77727176E114E0096AEF7 /* rgbdcombined.frag */,
+				E7F77728176E114E0096AEF7 /* rgbdcombined.vert */,
 			);
 			name = data;
 			path = bin/data;
@@ -1198,6 +1204,8 @@
 				E7CF79101753FF32006B7D41 /* ofxTextInputField.cpp in Sources */,
 				E7E3C41F1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */,
 				E7BAFC1A176BB6B10097AC71 /* CloudsVisualSystemSeeingDark.cpp in Sources */,
+				E7F77729176E114E0096AEF7 /* rgbdcombined.frag in Sources */,
+				E7F7772A176E114E0096AEF7 /* rgbdcombined.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

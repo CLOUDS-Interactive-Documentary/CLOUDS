@@ -11,20 +11,20 @@ string CloudsVisualSystemSeeingDark::getSystemName(){
 
 
 void CloudsVisualSystemSeeingDark::selfSetup(){
-	renderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
+	renderer.setShaderPath(getDataPath() + "shaders/rgbdcombined");
 	generateScanlines();
 }
 
 void CloudsVisualSystemSeeingDark::loadMovieForComposition(string videoPath){
-//	if(timeline->getVideoTrack("Video")->load(videoPath)){
-//		fileNameInput->setTextString(videoPath);
-//	}
 
 	if(renderer.setup(videoPath, ofFilePath::removeExt(videoPath)+".xml")){
-		fileNameInput->setTextString(videoPath);
-		renderer.getPlayer().play();
+		fileNameInput->setTextString(ofFilePath::getFileName(videoPath));
+		timeline->getVideoTrack("Video")->setPlayer(renderer.getSharedPlayerPtr());
+		timeline->setTimecontrolTrack("Video");
+		timeline->setFrameRate(renderer.getPlayer().getTotalNumFrames() / renderer.getPlayer().getDuration());
+		timeline->setDurationInSeconds(renderer.getPlayer().getDuration());
+//		renderer.getPlayer().play();
 	}
-
 }
 
 void CloudsVisualSystemSeeingDark::selfSetupGuis(){
@@ -45,13 +45,14 @@ void CloudsVisualSystemSeeingDark::selfSetupGuis(){
 	composeGui->addSpacer();
 	composeGui->addSlider("NEAR PLANE", 100, 4000, &nearPlane);
 	composeGui->addSlider("FAR PLANE",  100, 4000, &farPlane);
+	composeGui->addSlider("SCALE",  0, .5, &scale);
 	composeGui->addSpacer();
-	composeGui->addSlider("OFFSET X COURSE", -1000, 1000, &centerOffsetCourse.x);
-	composeGui->addSlider("OFFSET Y COURSE", -1000, 1000, &centerOffsetCourse.y);
-	composeGui->addSlider("OFFSET Z COURSE", -1000, 1000, &centerOffsetCourse.z);
-	composeGui->addSlider("OFFSET X FINE", -100, 100, &centerOffsetFine.x);
-	composeGui->addSlider("OFFSET Y FINE", -100, 100, &centerOffsetFine.y);
-	composeGui->addSlider("OFFSET Z FINE", -100, 100, &centerOffsetFine.z);
+	composeGui->addSlider("OFFSET X COURSE", -100, 100, &centerOffsetCourse.x);
+	composeGui->addSlider("OFFSET Y COURSE", -100, 100, &centerOffsetCourse.y);
+	composeGui->addSlider("OFFSET Z COURSE", -100, 100, &centerOffsetCourse.z);
+	composeGui->addSlider("OFFSET X FINE", -10, 10, &centerOffsetFine.x);
+	composeGui->addSlider("OFFSET Y FINE", -10, 10, &centerOffsetFine.y);
+	composeGui->addSlider("OFFSET Z FINE", -10, 10, &centerOffsetFine.z);
 	composeGui->addSpacer();
 	composeGui->addSlider("VERTICAL LINE SPACE", .5, 12, &scanlineSimplify.x);
 	composeGui->addSlider("HORIZONTAL LINE SPACE", .5, 12, &scanlineSimplify.y);
@@ -85,13 +86,13 @@ void CloudsVisualSystemSeeingDark::generateScanlines(){
 	for (float ystep = 0; ystep <= height-scanlineSimplify.y; ystep += scanlineSimplify.y){
 		for (float xstep = 0; xstep <= width-scanlineSimplify.x; xstep += scanlineSimplify.x){
 			
-			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
+//			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
 			
 			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
-			horizontalScanLines.addVertex( ofVec3f(xstep, ystep+ystepOffset, 0) );
+			horizontalScanLines.addVertex( ofVec3f(xstep, ystep, 0) );
 			
 			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
-			horizontalScanLines.addVertex( ofVec3f(xstep+scanlineSimplify.x, ystep+ystepOffset, 0) );
+			horizontalScanLines.addVertex( ofVec3f(xstep+scanlineSimplify.x, ystep, 0) );
 		}
 	}
 	
@@ -104,6 +105,8 @@ void CloudsVisualSystemSeeingDark::generateScanlines(){
 
 void CloudsVisualSystemSeeingDark::selfUpdate(){
 	if(renderer.getPlayer().isLoaded()){
+		renderer.farClip = farPlane;
+		renderer.nearClip = nearPlane;
 		renderer.update();
 	}
 	if(refreshScanlineMesh){
@@ -116,7 +119,10 @@ void CloudsVisualSystemSeeingDark::selfDrawBackground(){
 }
 
 void CloudsVisualSystemSeeingDark::selfDrawDebug(){
-
+	ofPushStyle();
+	ofSetColor(255, 255, 0, 100);
+	ofDrawSphere(0, 0, 2);
+	ofPopStyle();
 }
 
 void CloudsVisualSystemSeeingDark::selfSceneTransformation(){
@@ -129,13 +135,14 @@ void CloudsVisualSystemSeeingDark::selfDraw(){
 		
 		ofPushMatrix();
 		
-		ofTranslate(0,0,-224);
-		ofScale(.25,.25,.25);
+		ofTranslate(centerOffsetCourse + centerOffsetFine);
+		ofScale(scale,scale,scale);
 		
 		renderer.setSimplification(scanlineSimplify);
 		renderer.bindRenderer();
 		
 		renderer.getShader().setUniform1f("flowPosition", 0);
+		renderer.getShader().setUniform1f("baseMultiplier", 1.0);
 		
 		ofSetColor(255);
 		ofSetLineWidth(2);
@@ -166,13 +173,12 @@ void CloudsVisualSystemSeeingDark::selfEnd(){
 
 
 void CloudsVisualSystemSeeingDark::selfKeyPressed(ofKeyEventArgs & args){
-
+	if(args.key == ' ' && renderer.getPlayer().isLoaded()) renderer.getPlayer().play();
 }
 
 void CloudsVisualSystemSeeingDark::selfKeyReleased(ofKeyEventArgs & args){
 
 }
-
 
 void CloudsVisualSystemSeeingDark::selfMouseDragged(ofMouseEventArgs& data){
 
@@ -202,10 +208,11 @@ void CloudsVisualSystemSeeingDark::selfGuiEvent(ofxUIEventArgs &e){
 		refreshScanlineMesh = true;
 	}
 	else if(e.widget->getName() == "LOAD" && ((ofxUIButton*)e.widget)->getValue()){
-		if(renderer.setup(fileNameInput->getTextString(),
-						  ofFilePath::removeExt(fileNameInput->getTextString())+".xml")){
-			renderer.getPlayer().play();
-		}
+		loadMovieForComposition( getVisualSystemDataPath() + "_videos/" + fileNameInput->getTextString() );
+//		if(renderer.setup(,
+//						  ofFilePath::removeExt(fileNameInput->getTextString())+".xml")){
+//			renderer.getPlayer().play();
+//		}
 	}
 }
 
@@ -217,7 +224,6 @@ void CloudsVisualSystemSeeingDark::selfSetupSystemGui(){
 void CloudsVisualSystemSeeingDark::guiSystemEvent(ofxUIEventArgs &e){
 
 }
-
 
 void CloudsVisualSystemSeeingDark::selfSetupRenderGui(){
 

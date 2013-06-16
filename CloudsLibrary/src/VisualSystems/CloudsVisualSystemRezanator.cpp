@@ -526,7 +526,8 @@ vector<string> CloudsVisualSystemRezanator::getPresets()
 		presetsFolder.listDir();
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
-               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working")
+               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
+			   presetsFolder.getName(i).at(0) != '_')
             {
 				presets.push_back(presetsFolder.getName(i));
 			}

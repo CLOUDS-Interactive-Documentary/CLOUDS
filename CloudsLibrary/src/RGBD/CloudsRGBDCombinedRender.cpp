@@ -12,6 +12,9 @@
 //---------------------------------------------------------------
 CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
     
+
+	player = ofPtr<ofVideoPlayer>( new ofVideoPlayer );
+
     setShaderPath("shaders/rgbdcombined");
     
     simplify.set(0,0);
@@ -20,6 +23,9 @@ CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
 	edgeClip    = 50.0f;
 	farClip     = 6000.0f;
     
+	minDepth = 400;
+	maxDepth = 2000;
+
     bMirror     = false;
     bFlipTexture = false;
     bRendererBound = false;
@@ -74,7 +80,7 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	
 	extrinsics = ofMatrix4x4(mat4x4);
 	
-	cout << "extrinsic matrix" << extrinsics << endl;
+	cout << "extrinsic matrix: " << endl << extrinsics << endl;
 	
 	//adjustment
 	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
@@ -103,8 +109,8 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	normalRect.width = 640.0;
 	normalRect.height = 480.0;
 	
-	nearClip    = XML.getValue("adjustment:depth:min", 1.0f);
-	farClip     = XML.getValue("adjustment:depth:max", 6000.0f);
+	minDepth = XML.getValue("adjustment:depth:min", 1.0f);
+	maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
 	
 	cout << "near clip " << nearClip << " far clip " << farClip << endl;
 	
@@ -115,19 +121,19 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
 
     //TODO make asynchronous
-	if(!player.loadMovie(videoPath)){
+	if(!player->loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDCombinedRender::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
 	
-    colorScale.x = float(player.getWidth()) / float(colorRect.width);
-	if(player.getHeight() > 1200){
+    colorScale.x = float(getPlayer().getWidth()) / float(colorRect.width);
+	if(getPlayer().getHeight() > 1200){
 		useFaces = true;
-		colorScale.y = float(player.getHeight() - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
+		colorScale.y = float(getPlayer().getHeight() - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
 	}
 	else{
 		useFaces = false;
-		colorScale.y = float(player.getHeight() - (depthRect.height) ) / float(colorRect.height);
+		colorScale.y = float(getPlayer().getHeight() - (depthRect.height) ) / float(colorRect.height);
 	}
 
     return true;
@@ -241,18 +247,17 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 	ofPopMatrix();
 }
 
-
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
-	if(!player.isLoaded()){
+	if(!getPlayer().isLoaded()){
 		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
 		return;
 	}
 	
-	player.setLoopState(OF_LOOP_NONE);
+	getPlayer().setLoopState(OF_LOOP_NONE);
 	
-    shader.setUniformTexture("texture", player, 0);
-    shader.setUniform2f("textureSize",  player.getWidth(), player.getHeight());
+    shader.setUniformTexture("texture", getPlayer(), 0);
+    shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
     shader.setUniform2f("colorScale", colorScale.x, colorScale.y);
@@ -283,7 +288,10 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 	shader.setUniform1f("farClip", farClip);
     shader.setUniform1f("nearClip", nearClip);
 	shader.setUniform1f("edgeClip", edgeClip);
-    
+
+	shader.setUniform1f("minDepth", minDepth);
+    shader.setUniform1f("maxDepth", maxDepth);
+
     //    cout << ( farClip - nearClip ) + nearClip << endl;
     //    cout << "FarClip: " << farClip << endl;
     //    cout << "nearClip: " << nearClip << endl;
@@ -293,7 +301,13 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 //    shader.setUniform2f("scale", scale.x, scale.y);
 }
 
+//--------------------------------------------------------------- ACTIONS
 ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
+	return *player;
+}
+
+//--------------------------------------------------------------- ACTIONS
+ofPtr<ofVideoPlayer> CloudsRGBDCombinedRender::getSharedPlayerPtr(){
 	return player;
 }
 
@@ -304,18 +318,18 @@ ofShader& CloudsRGBDCombinedRender::getShader(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-	player.setVolume(1.0);
-	if(player.isLoaded()){
-		player.update();
+	getPlayer().setVolume(1.0);
+	if(getPlayer().isLoaded()){
+		getPlayer().update();
 	}
 }
 
 bool CloudsRGBDCombinedRender::isPlaying(){
-	return player.isLoaded() && player.isPlaying();
+	return getPlayer().isLoaded() && getPlayer().isPlaying();
 }
 
 bool CloudsRGBDCombinedRender::isDone(){
-	return player.isLoaded() && !player.isPlaying();
+	return getPlayer().isLoaded() && !getPlayer().isPlaying();
 }
 
 void CloudsRGBDCombinedRender::drawMesh(){

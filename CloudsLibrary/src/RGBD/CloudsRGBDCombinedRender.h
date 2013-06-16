@@ -50,6 +50,8 @@ public:
 	void draw(ofPolyRenderMode drawMode);
     
 	ofVideoPlayer& getPlayer();
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+
 	ofShader& getShader();
 	
 	// Move in 3D Space
@@ -59,13 +61,16 @@ public:
 	// Fix extrinsics
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
-    ofVec2f adjustScale;
+	ofVec2f adjustScale;
     
+	float minDepth;
+	float maxDepth;
+	
 	float flowPosition;
     float edgeClip;
 	float farClip;
 	float nearClip;
-	
+
     bool bFlipTexture;
     bool bMirror;
     
@@ -73,7 +78,7 @@ public:
     void setupProjectionUniforms();
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
     	
-	ofVideoPlayer player;
+	ofPtr<ofVideoPlayer> player;
 
 	ofShader shader;
     string shaderPath;

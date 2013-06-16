@@ -37,6 +37,9 @@ uniform float farClip;
 uniform float nearClip;
 uniform float edgeClip;
 
+uniform float minDepth;
+uniform float maxDepth;
+
 uniform int useFaces;
 //FACE FEATURE
 uniform vec4 faceFeatureRect;
@@ -90,7 +93,7 @@ vec3 rgb2hsl( vec3 _input ){
 float depthValueFromSample( vec2 depthPos){
     vec2  halfvec = vec2(.5,.5);
     float depth = rgb2hsl( texture2DRect(texture, floor(depthPos) + halfvec ).xyz ).r;
-    return depth * ( farClip - nearClip ) + nearClip;
+    return depth * ( maxDepth - minDepth ) + minDepth;
 }
 
 void main(void){

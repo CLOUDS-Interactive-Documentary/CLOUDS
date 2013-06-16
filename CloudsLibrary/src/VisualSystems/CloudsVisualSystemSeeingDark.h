@@ -54,6 +54,7 @@ class CloudsVisualSystemSeeingDark : public CloudsVisualSystemRezanator {
 	bool clipLoaded;
 	float nearPlane;
 	float farPlane;
+	float scale;
 	
 	ofVec3f centerOffsetCourse;
 	ofVec3f centerOffsetFine;
