@@ -145,7 +145,7 @@ void CloudsFCPVisualizer::setupPhysics(){
 //											vector<float>& scores)
 //{
 
-void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
+void CloudsFCPVisualizer::clipBegan(CloudsStoryEventArgs& args){
 
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();

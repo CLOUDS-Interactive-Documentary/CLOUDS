@@ -178,7 +178,7 @@ void main(void){
 	else {
 		faceFeatureSample = vec4(0.);
 		deltaChangeSample = vec4(0.);
-		
+
 	}
 		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;

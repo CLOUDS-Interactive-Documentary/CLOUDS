@@ -17,6 +17,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	combinedClipsOnly = false;
 	totalFramesWatched = 0;
 	waitingForNextClip = false;
+	fixedClipDelay = 5;
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -116,7 +117,7 @@ bool CloudsStoryEngine::clipEnded(){
 	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
 	
 	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
-	args.timeUntilNextClip = 5;
+	args.timeUntilNextClip = getNextClipDelay();
 	ofNotifyEvent(events.clipEnded, args, this);
 	if(atDeadEnd()){
 		ofNotifyEvent(events.storyEnded, args, this);
@@ -170,7 +171,6 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 	else{
 		cout << "	FAILED TO SWITCH TOPIC " << currentTopic << endl;
 	}
-
 }
 
 bool CloudsStoryEngine::populateNextClips(){
@@ -335,6 +335,10 @@ string CloudsStoryEngine::getCurrentTopic(){
 
 int CloudsStoryEngine::getTimesOnTopic(){
 	return timesOnTopic;
+}
+
+float CloudsStoryEngine::getNextClipDelay(){
+	return fixedClipDelay;
 }
 
 bool CloudsStoryEngine::isWaiting(){

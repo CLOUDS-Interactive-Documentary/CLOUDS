@@ -49,6 +49,9 @@ class CloudsStoryEngine {
 	
 	CloudsEvents& getEvents();
 	
+	//TODO: make dynamic, will be improved
+	float fixedClipDelay;
+
   protected:
 	
 	CloudsEvents events;
@@ -64,9 +67,12 @@ class CloudsStoryEngine {
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
 
+	float getNextClipDelay();
 	bool waitingForNextClip;
 	float nextClipTime;
 	
+	
+
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;
