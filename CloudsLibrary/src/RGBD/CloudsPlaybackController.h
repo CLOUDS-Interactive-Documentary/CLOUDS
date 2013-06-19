@@ -56,7 +56,10 @@ class CloudsPlaybackController {
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void clipEnded(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
+	
 	void playClip(CloudsClip& clip);
 	
 	//VISUAL SYSTEMS
@@ -78,10 +81,6 @@ class CloudsPlaybackController {
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	//MEDIA/INTERNAL
-	//
-	string relinkMovieFilepath(string filePath);
-
 	//GUI
 	//
 	ofxUISuperCanvas* visualSystemControls;

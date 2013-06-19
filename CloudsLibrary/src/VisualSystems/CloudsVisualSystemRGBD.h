@@ -75,6 +75,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
 	bool drawMesh;
 	float meshAlpha;
 	
+	float eyeMultiplier;
+	float mouthMultiplier;
+	float skinMultiplier;
+	
 	float cloudFlow;
 	float currentFlowPosition;
 	

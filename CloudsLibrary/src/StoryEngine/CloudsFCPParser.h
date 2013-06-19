@@ -95,6 +95,8 @@ class CloudsFCPParser {
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
+	set<string> clusterMapColors;
+	
   protected:
     string xmlDirectory;
     string combinedVideoDirectory;

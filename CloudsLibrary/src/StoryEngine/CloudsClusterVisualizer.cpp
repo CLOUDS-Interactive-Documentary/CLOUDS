@@ -157,8 +157,10 @@ void CloudsClusterVisualiser::setupPhysics(){
     physics.setDrag(0.1f);
 }
 
-void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
+
+void CloudsClusterVisualiser::clipBegan(CloudsStoryEventArgs &args){
     zoomView =false;
+
     vector<msa::physics::Particle2D*> newParticles;
 	//int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = args.chosenClip.getLinkName();

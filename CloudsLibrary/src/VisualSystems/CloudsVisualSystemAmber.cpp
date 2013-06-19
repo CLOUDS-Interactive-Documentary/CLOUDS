@@ -157,7 +157,7 @@ void CloudsVisualSystemAmber::selfDrawDebug()
         ofNoFill();
         float color = 255-bgBri->getPos();
         ofSetColor(color, 100*sphere->getMagnitude());
-        ofDrawSphere(sphere->getPosition(), sphere->getRadius());
+//        ofDrawSphere(sphere->getPosition(), sphere->getRadius());
     }
     
     if(sphere1->isEnabled())
@@ -165,7 +165,7 @@ void CloudsVisualSystemAmber::selfDrawDebug()
         ofNoFill();
         float color = 255-bgBri->getPos();
         ofSetColor(color, 100*sphere1->getMagnitude());
-        ofDrawSphere(sphere1->getPosition(), sphere1->getRadius());
+//        ofDrawSphere(sphere1->getPosition(), sphere1->getRadius());
     }
     
     if(distort->isEnabled())
@@ -173,7 +173,7 @@ void CloudsVisualSystemAmber::selfDrawDebug()
         ofNoFill();
         float color = 255-bgBri->getPos();
         ofSetColor(color, 100*distort->getMagnitude());
-        ofDrawSphere(distort->getPosition(), distort->getRadius());
+//        ofDrawSphere(distort->getPosition(), distort->getRadius());
     }
 }
 

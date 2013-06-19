@@ -1076,8 +1076,8 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E776956217596ADC00D2D95A /* CloudsRGBDCombinedRender.cpp */,
 				E776956317596ADC00D2D95A /* CloudsRGBDCombinedRender.h */,
+				E776956217596ADC00D2D95A /* CloudsRGBDCombinedRender.cpp */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);
 			path = src;

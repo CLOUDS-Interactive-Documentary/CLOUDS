@@ -24,13 +24,13 @@ class CloudsClip {
     ClusterData cluster;
 	map<string, ofColor> clusterColors;
     
-    
     float currentScore;
     int startFrame;
     int endFrame;
-	
+
     vector<string> keywords;
 	
+	float getDuration();
     string getLinkName();
 	string getMetaInfo();
     string getStartingQuestion();

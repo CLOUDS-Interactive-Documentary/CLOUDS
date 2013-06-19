@@ -91,7 +91,7 @@ void CloudsVisualSystemTerrain::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemTerrain::selfUpdate()
 {
     
-    if ( bChange || noiseSpeed > 0.0`){
+    if ( bChange || noiseSpeed > 0.0){
     
         //  NOISE
         //

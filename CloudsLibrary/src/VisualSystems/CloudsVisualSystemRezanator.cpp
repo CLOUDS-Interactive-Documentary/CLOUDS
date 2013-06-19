@@ -526,7 +526,8 @@ vector<string> CloudsVisualSystemRezanator::getPresets()
 		presetsFolder.listDir();
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
-               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working")
+               ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
+			   presetsFolder.getName(i).at(0) != '_')
             {
 				presets.push_back(presetsFolder.getName(i));
 			}
@@ -1719,7 +1720,7 @@ void CloudsVisualSystemRezanator::loadTimelineUIMappings(string path)
     tlSliderMap.clear();
     tlDialerMap.clear();
     
-    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
+//    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
     ofxXmlSettings *XML = new ofxXmlSettings();
     XML->loadFile(path);
     if(XML->pushTag("Map", 0))
@@ -2177,7 +2178,7 @@ void CloudsVisualSystemRezanator::selfDraw()
     mat->begin();
     ofSetColor(ofColor(255));
     ofFill();
-    ofDrawSphere(100); 
+//    ofDrawSphere(100); 
     mat->end();
 }
 

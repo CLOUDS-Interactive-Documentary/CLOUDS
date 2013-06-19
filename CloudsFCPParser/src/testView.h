@@ -28,13 +28,11 @@
     IBOutlet NSTextField* startQuestion;
 	IBOutlet NSButton* showOnlyQuestions;
 
-
 	IBOutlet ViewerApp* viewerApp;
 	
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
     CloudsClusterVisualiser visualizer;
-//    CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
@@ -63,6 +61,7 @@
 	bool movieFileMissing;
 	bool onPlaylist;
     
+
 
 }
 

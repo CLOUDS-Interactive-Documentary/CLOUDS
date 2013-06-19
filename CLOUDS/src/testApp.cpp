@@ -8,12 +8,14 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-	
 	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
     parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
+    parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
+    
 	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
+
 	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	storyEngine.setup();
@@ -22,22 +24,25 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = true;
 	
 	player.setup(storyEngine);
+	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 
-	//storyEngine.seedWithClip( parser.getRandomClip(true) );
-	storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
+	storyEngine.seedWithClip( parser.getRandomClip(true) );
+	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	player.update();
+	sound.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	player.draw();
+	sound.drawDebug();
 }
 
 //--------------------------------------------------------------
@@ -45,6 +50,17 @@ void testApp::keyPressed(int key){
 	if(key == '1'){
 		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
 	}
+}
+
+//--------------------------------------------------------------
+void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+	
+	ofAudioEventArgs args;
+	args.buffer = output;
+	args.bufferSize = bufferSize;
+	args.nChannels = nChannels;
+	
+	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

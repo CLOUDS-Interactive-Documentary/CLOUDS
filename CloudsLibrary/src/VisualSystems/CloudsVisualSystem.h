@@ -65,8 +65,7 @@ class CloudsVisualSystem {
 	
 	void speakerEnded();
 	
-	
-	
+
 	//SET and CALLED FROM CONTROLLER
 	
 	//how much time left to show this visual system?
@@ -86,7 +85,7 @@ class CloudsVisualSystem {
 	vector<string>& getRelevantKeywords();
 	
   protected:
-
+		
 	//called when showing the visual system, and to end it
 	virtual void begin() = 0;
 	virtual void end() = 0;

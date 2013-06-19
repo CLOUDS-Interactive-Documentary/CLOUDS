@@ -78,16 +78,18 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
             CloudsClip& clip = allClips[ clipIndex[circleName] ];
             clip.cluster.Id = clip.getID();
             
-            string color ;
-            color= mapsXML.getAttribute("circle","fill",color,j);
-            color.erase(color.begin()); //remove #
+            
+            clip.cluster.hexColor = mapsXML.getAttribute("circle","fill",clip.cluster.hexColor,j);
+            clip.cluster.hexColor.erase(clip.cluster.hexColor.begin()); //remove #
             unsigned int colorHex;
             std::stringstream ss;
-            ss << std::hex << color;
+            ss << std::hex << clip.cluster.hexColor;
             ss >> colorHex;
             
             clip.cluster.Color.setHex(colorHex);
-            
+
+            clusterMapColors.insert(clip.cluster.hexColor);
+			
             string radius;
             radius = mapsXML.getAttribute("circle", "r", radius,j);
             clip.cluster.Radius = ofToFloat(radius);
@@ -112,8 +114,8 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
                 allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
             }
         }
-//        cout<<minR<<","<<maxR<<endl;
-        //        cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
+//		cout<<minR<<","<<maxR<<endl;
+//		cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
         mapsXML.popTag();//g
         
         mapsXML.popTag(); //svg
@@ -466,15 +468,17 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	hasCombinedVideoIndeces.clear();
 	combinedVideoDirectory = directory;
-	cout << "Setting combined directory to " << directory << endl;
+//	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
 		allClips[i].hasCombinedVideo = false;
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
 		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
+//        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+        
 		if(allClips[i].hasCombinedVideo){
 			hasCombinedVideoIndeces.push_back(i);
-			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
+//			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
 }

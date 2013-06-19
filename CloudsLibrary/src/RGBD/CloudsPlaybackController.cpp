@@ -24,7 +24,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
 		eventsRegistered = false;
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
+		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofUnregisterMouseEvents(this);
@@ -46,7 +46,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
+		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
 		ofAddListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofRegisterKeyEvents(this);
@@ -57,11 +57,10 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
 		
-		
 		eventsRegistered = true;
 
-		combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
-
+		//combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
+		combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
 	}
 }
 
@@ -83,7 +82,14 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == OF_KEY_RIGHT){
-		storyEngine->selectNewClip();
+		storyEngine->playNextClip();
+//		if(storyEngine->isWaiting()){
+//
+//		}
+//		else{
+//			
+//		}
+//		combinedRenderer.getPlayer().stop();
 	}
 }
 
@@ -110,11 +116,12 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(){
 
+	
 	combinedRenderer.update();
 	
-	if(combinedRenderer.isDone()){
+	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
 		rgbdVisualSystem.speakerEnded();
-		storyEngine->selectNewClip();
+		storyEngine->clipEnded();
 	}
 	
 }
@@ -140,8 +147,8 @@ void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
-	playClip(args.chosenClip);	
+void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
+	playClip(args.chosenClip);
 }
 
 //--------------------------------------------------------------------
@@ -219,13 +226,11 @@ void CloudsPlaybackController::showVisualSystem(){
 	string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
 
 	for(int i = 0; i < visualSystems.size(); i++){
-		
 		if(visualSystems[i]->isReleventToKeyword(keyTheme)){
 			showVisualSystem(visualSystems[i], keyTheme);
 			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << " and key theme " << keyTheme << endl;
 			return;
 		}
-
 	}
 	
 	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic() << " picking random"<<endl;

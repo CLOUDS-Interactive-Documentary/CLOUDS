@@ -117,9 +117,11 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
+		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
+		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
+		E7BAFC1E176BB9400097AC71 /* CloudsCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */; };
 		E7D2FE75175592560083EB8E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */; };
-		E7D2FEAA1755A3090083EB8E /* CloudsVisualSystemAmber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEA51755A3080083EB8E /* CloudsVisualSystemAmber.cpp */; };
-		E7D2FEAB1755A3090083EB8E /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEA71755A3090083EB8E /* CloudsVisualSystemCities.cpp */; };
 		E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */; };
 		E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */; };
 		E7D2FECE17572B2C0083EB8E /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D2FECA17572B2C0083EB8E /* ParticleConnector.cpp */; };
@@ -204,7 +206,6 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
-		E7134EB7174FF8AF00E013AA /* unproject.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.frag; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
 		E745F6E51720FE9400B86D7E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E745F6E61720FE9400B86D7E /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
@@ -542,12 +543,15 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
+		E7BAFBD2176A43780097AC71 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
+		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
+		E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
+		E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
+		E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCamera.cpp; sourceTree = "<group>"; };
+		E7BAFC1D176BB9400097AC71 /* CloudsCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCamera.h; sourceTree = "<group>"; };
 		E7D2FE73175592550083EB8E /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
 		E7D2FE74175592550083EB8E /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
-		E7D2FEA51755A3080083EB8E /* CloudsVisualSystemAmber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemAmber.cpp; sourceTree = "<group>"; };
-		E7D2FEA61755A3090083EB8E /* CloudsVisualSystemAmber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAmber.h; sourceTree = "<group>"; };
-		E7D2FEA71755A3090083EB8E /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
-		E7D2FEA81755A3090083EB8E /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
 		E7D2FEC617572B2C0083EB8E /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
 		E7D2FEC717572B2C0083EB8E /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
 		E7D2FEC817572B2C0083EB8E /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
@@ -651,6 +655,7 @@
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E779BAD3173D4E18006357EF /* opencv.a in Frameworks */,
 				E779BD9E173D4EFE006357EF /* libsndfile.a in Frameworks */,
+				E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +790,6 @@
 			children = (
 				E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */,
 				E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */,
-				E7134EB7174FF8AF00E013AA /* unproject.frag */,
 				E7134EB8174FF8AF00E013AA /* unproject.vert */,
 			);
 			name = shaders;
@@ -804,6 +808,7 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7BAFBD0176A43780097AC71 /* Sound */,
 				E7637D5E1734DE8A008ADC62 /* RGBD */,
 				E7637D511734DE75008ADC62 /* VisualSystems */,
 				E7637D401734DE68008ADC62 /* StoryEngine */,
@@ -958,8 +963,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E74CE8241768DDCE00083C4C /* ClusterData.h */,
+				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E7637D421734DE68008ADC62 /* CloudsClip.h */,
 				E7637D411734DE68008ADC62 /* CloudsClip.cpp */,
 				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
@@ -969,6 +974,8 @@
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
 				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
+				E7BAFC1D176BB9400097AC71 /* CloudsCamera.h */,
+				E7BAFC1C176BB9400097AC71 /* CloudsCamera.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -987,10 +994,6 @@
 				E74CE8301768ECEA00083C4C /* CloudsVisualSystemVoro.cpp */,
 				E74CE8311768ECEA00083C4C /* CloudsVisualSystemVoro.h */,
 				E7D2FEC517572B2C0083EB8E /* ConnectorParticles */,
-				E7D2FEA61755A3090083EB8E /* CloudsVisualSystemAmber.h */,
-				E7D2FEA51755A3080083EB8E /* CloudsVisualSystemAmber.cpp */,
-				E7D2FEA81755A3090083EB8E /* CloudsVisualSystemCities.h */,
-				E7D2FEA71755A3090083EB8E /* CloudsVisualSystemCities.cpp */,
 				E74CE8821768EEB400083C4C /* Voro */,
 				E7D330C41751DDE2006706ED /* LSystems */,
 				E7637D8D17359C55008ADC62 /* CloudsVisualSystem.h */,
@@ -1674,6 +1677,66 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7BAFBD0176A43780097AC71 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE3176A4BE20097AC71 /* RTCMix */,
+				E7BAFBD2176A43780097AC71 /* CloudsSound.h */,
+				E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		E7BAFBE3176A4BE20097AC71 /* RTCMix */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE4176A4BE20097AC71 /* libs */,
+				E7BAFBE9176A4BE20097AC71 /* src */,
+			);
+			path = RTCMix;
+			sourceTree = "<group>";
+		};
+		E7BAFBE4176A4BE20097AC71 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE5176A4BE20097AC71 /* include */,
+				E7BAFBE6176A4BE20097AC71 /* lib */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E7BAFBE5176A4BE20097AC71 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E7BAFBE6176A4BE20097AC71 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE7176A4BE20097AC71 /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E7BAFBE7176A4BE20097AC71 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBE8176A4BE20097AC71 /* librtcmix.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		E7BAFBE9176A4BE20097AC71 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */,
+				E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7D2FEC517572B2C0083EB8E /* ConnectorParticles */ = {
 			isa = PBXGroup;
 			children = (
@@ -2003,8 +2066,6 @@
 				E7D330CA1751DDE2006706ED /* LSystemReconstructor.cpp in Sources */,
 				E7D330CD1751DDEF006706ED /* CloudsVisualSystemLSystems.cpp in Sources */,
 				E7D2FE75175592560083EB8E /* CloudsVisualSystemRGBD.cpp in Sources */,
-				E7D2FEAA1755A3090083EB8E /* CloudsVisualSystemAmber.cpp in Sources */,
-				E7D2FEAB1755A3090083EB8E /* CloudsVisualSystemCities.cpp in Sources */,
 				E7D2FECC17572B2C0083EB8E /* ParticleConnection.cpp in Sources */,
 				E7D2FECD17572B2C0083EB8E /* ParticleConnectionGenerator.cpp in Sources */,
 				E7D2FECE17572B2C0083EB8E /* ParticleConnector.cpp in Sources */,
@@ -2028,6 +2089,9 @@
 				E74CE8A91768EEB400083C4C /* wall.cpp in Sources */,
 				E74CE8AA1768EEB400083C4C /* Voro.cpp in Sources */,
 				E74CE8AB1768EEB400083C4C /* VoroParticle.cpp in Sources */,
+				E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */,
+				E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */,
+				E7BAFC1E176BB9400097AC71 /* CloudsCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2206,20 +2270,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/ios\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/win_cb\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDSDebug;
 				WRAPPER_EXTENSION = app;
@@ -2318,20 +2373,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/ios\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/win_cb\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS;
 				WRAPPER_EXTENSION = app;

@@ -4,6 +4,7 @@
 #include "CloudsStoryEngine.h"
 #include "CloudsFCPParser.h"
 #include "CloudsPlaybackController.h"
+#include "CloudsSound.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -24,5 +25,8 @@ class testApp : public ofBaseApp{
 	CloudsFCPParser parser;
 	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
+	CloudsSound sound;
 	
+	
+	void audioRequested(float * output, int bufferSize, int nChannels);
 };
