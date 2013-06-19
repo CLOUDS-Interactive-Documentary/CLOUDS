@@ -6,7 +6,7 @@ static bool usingDevelopmentFolder = false;
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = false;
-	
+	sharedCamera = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -93,6 +93,10 @@ vector<string>& CloudsVisualSystem::getRelevantKeywords(){
 
 void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
 	sharedRenderer = &newRenderer;
+}
+
+void CloudsVisualSystem::setCamera(CloudsCamera& camera){
+	sharedCamera = &camera;
 }
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,

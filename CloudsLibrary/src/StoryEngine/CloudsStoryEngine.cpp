@@ -254,7 +254,6 @@ bool CloudsStoryEngine::populateNextClips(){
 int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	
 	//rejection criteria -- flat out reject clips on some basis
-	
 	if(combinedClipsOnly && !clip.hasCombinedVideo){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": no combined video file" << endl;
 		return 0;

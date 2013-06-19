@@ -9,6 +9,7 @@
 
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
+#include "CloudsCamera.h"
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -45,7 +46,9 @@ class CloudsPlaybackController {
 	//A ROLL STUFF
 	//
 
-	ofxGameCamera camera;
+//	ofxGameCamera camera;
+	CloudsCamera cloudsCam;
+	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	
@@ -93,7 +96,6 @@ class CloudsPlaybackController {
 	ofxUIButton *playButton;
 	
 	
-		
 	float timeToTest;
 	bool triggerVisualSystem;
 	void guiEvent(ofxUIEventArgs &e);

@@ -39,10 +39,13 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
-		camera.setup();
-		camera.autosavePosition = true;
-		camera.loadCameraPosition();
+//		camera.setup();
+//		camera.autosavePosition = true;
+//		camera.loadCameraPosition();
 		
+		cloudsCam.setup();
+		cloudsCam.lookTarget = ofVec3f(0,0,0);
+
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
@@ -55,6 +58,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		populateVisualSystems();
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
+		rgbdVisualSystem.setCamera(cloudsCam);
 		rgbdVisualSystem.setup();
 		
 		eventsRegistered = true;
@@ -83,13 +87,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
 	if(args.key == OF_KEY_RIGHT){
 		storyEngine->playNextClip();
-//		if(storyEngine->isWaiting()){
-//
-//		}
-//		else{
-//			
-//		}
-//		combinedRenderer.getPlayer().stop();
 	}
 }
 
@@ -214,7 +211,10 @@ void CloudsPlaybackController::registerVisualSystem(CloudsVisualSystem* system){
 	
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	
+
 	system->setup();
+	system->setCamera(cloudsCam);
+	
 	visualSystems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
 }

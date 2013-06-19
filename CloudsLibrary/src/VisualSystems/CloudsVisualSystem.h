@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsRGBDCombinedRender.h"
+#include "CloudsCamera.h"
 
 /**
  * The CLOUDS Visual System super class
@@ -57,7 +58,7 @@ class CloudsVisualSystem {
 	void stopSystem();
 	
 	void setRenderer(CloudsRGBDCombinedRender& newRenderer);
-	
+	void setCamera(CloudsCamera& camera);
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -81,7 +82,6 @@ class CloudsVisualSystem {
 	void setCurrentTopic(string keyword);
 	string getCurrentTopic();
 
-
 	vector<string>& getRelevantKeywords();
 	
   protected:
@@ -94,7 +94,7 @@ class CloudsVisualSystem {
 	vector<string> relevantKeywords;
 
 	//these variables are set by the playback controller when displaying
-	
+	CloudsCamera* sharedCamera;
 	//ways to interact with the pointcloud data
 	CloudsRGBDCombinedRender* sharedRenderer;
 	//set to true if the pointcloud renderer has valid speaker

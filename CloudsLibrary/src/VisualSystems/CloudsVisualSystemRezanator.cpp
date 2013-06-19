@@ -74,7 +74,12 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         //
         drawBackground();
         
-        currentCamera->begin();
+		if(camUseClouds && sharedCamera != NULL){
+			sharedCamera->begin();
+		}
+		else{
+			currentCamera->begin();
+		}
         
         //  TEMPORARY FIX
         //
@@ -100,7 +105,13 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 		
         lightsEnd();
         
-        currentCamera->end();
+		if(camUseClouds && sharedCamera != NULL){
+			sharedCamera->end();
+		}
+		else{
+			currentCamera->end();
+		}
+
     }
     
     ofPopStyle();
@@ -800,7 +811,8 @@ void CloudsVisualSystemRezanator::setupCameraGui()
     camGui->resetPlacer();
     camGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     camGui->addWidgetToHeader(button);
-    
+    camGui->addSpacer();
+    camGui->addToggle("USE CLOUDS CAM", &camUseClouds);
     camGui->addSpacer();
     camGui->addSlider("DIST", 0, 1000, &camDistance);
     camGui->addSlider("FOV", 0, 180, &camFOV);
@@ -837,8 +849,8 @@ void CloudsVisualSystemRezanator::guiCameraEvent(ofxUIEventArgs &e)
     }
     else if(name == "FOV")
     {
-		currentCamera->setFov(camFOV);
-//        cam.setFov(camFOV);
+//		currentCamera->setFov(camFOV);
+        cam.setFov(camFOV);
     }
     else if(name == "ROT-X")
     {
@@ -2178,7 +2190,6 @@ void CloudsVisualSystemRezanator::selfDraw()
     mat->begin();
     ofSetColor(ofColor(255));
     ofFill();
-//    ofDrawSphere(100); 
     mat->end();
 }
 

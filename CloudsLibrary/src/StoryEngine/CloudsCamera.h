@@ -4,8 +4,19 @@
 
 class CloudsCamera : public ofCamera {
   public:
+	
 	CloudsCamera();
 
-	ofNode targetNode;
+	void setup();
 	
+	void update(ofEventArgs& args);
+	
+	float sideDistance;
+	float frontDistance;
+	ofVec3f lookTarget;
+	
+  protected:
+	bool isSetup;
+
+
 };
