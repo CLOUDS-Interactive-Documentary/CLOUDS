@@ -492,9 +492,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile){
 		return allClips[ hasCombinedVideoIndeces[ofRandom(hasCombinedVideoIndeces.size())] ];
 	}
 	return allClips[ ofRandom(allClips.size())];
-	
 }
-
 
 CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
 	for(int i = 0; i < allClips.size(); i++){

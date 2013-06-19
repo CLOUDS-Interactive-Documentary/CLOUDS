@@ -30,5 +30,7 @@ class CloudsEvents {
 	ofEvent<CloudsStoryEventArgs> visualSystemBegan;
 	ofEvent<CloudsStoryEventArgs> visualSystemEnded;
 
+	ofEvent<CloudsStoryEventArgs> topicChanged;
+	
 };
 

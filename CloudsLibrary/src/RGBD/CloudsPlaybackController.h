@@ -62,6 +62,9 @@ class CloudsPlaybackController {
 	void clipBegan(CloudsStoryEventArgs& args);
 	void clipEnded(CloudsStoryEventArgs& args);
 	void storyEnded(CloudsStoryEventArgs& args);
+
+	void visualSystemBegan(CloudsStoryEventArgs& args);
+	void visualSystemEnded(CloudsStoryEventArgs& args);
 	
 	void playClip(CloudsClip& clip);
 	

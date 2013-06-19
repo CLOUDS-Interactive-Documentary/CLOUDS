@@ -67,12 +67,12 @@ class CloudsStoryEngine {
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
 
+	void checkVisualSystems();
+	
 	float getNextClipDelay();
 	bool waitingForNextClip;
 	float nextClipTime;
 	
-	
-
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;

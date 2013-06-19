@@ -24,6 +24,7 @@ string CloudsVisualSystem::getDataPath()
 		if(!usingDevelopmentFolder){
 			ofDirectory("CloudsData/").create();
 		}
+		confirmedDataPath = true;
 	}
     return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
@@ -38,6 +39,7 @@ void CloudsVisualSystem::setup(){
 
 void CloudsVisualSystem::playSystem(){
 	if(!isPlaying){
+		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);

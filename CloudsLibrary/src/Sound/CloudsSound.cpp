@@ -16,6 +16,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsSound::clipBegan);
 		ofAddListener(storyEngine.getEvents().clipEnded, this, &CloudsSound::clipEnded);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
+		ofAddListener(storyEngine.getEvents().topicChanged, this, &CloudsSound::topicChanged);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
@@ -64,6 +65,7 @@ void CloudsSound::exit(ofEventArgs & args){
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsSound::storyBegan);
 		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsSound::clipBegan);
 		ofRemoveListener(storyEngine->getEvents().clipEnded, this, &CloudsSound::clipEnded);
+		ofRemoveListener(storyEngine->getEvents().topicChanged, this, &CloudsSound::topicChanged);
 		
 		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
 		
@@ -151,6 +153,11 @@ void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
 void CloudsSound::clipEnded(CloudsStoryEventArgs& args){
 	//happens when a clip is over
 	cout << "there will be a pause for: " << args.timeUntilNextClip << " seconds" << endl;
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::topicChanged(CloudsStoryEventArgs& args){
+	
 }
 
 //--------------------------------------------------------------------

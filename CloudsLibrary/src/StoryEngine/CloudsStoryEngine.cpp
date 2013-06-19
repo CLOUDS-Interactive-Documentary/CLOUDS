@@ -18,6 +18,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	totalFramesWatched = 0;
 	waitingForNextClip = false;
 	fixedClipDelay = 5;
+	maxTimesOnTopic = 4;
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -102,6 +103,8 @@ void CloudsStoryEngine::loadClip(CloudsClip& clip){
 		chooseNewTopic(clip);
 	}
 	
+	checkVisualSystems();
+		
 	currentClip = clip;
 	clipHistory.push_back( clip );
 	peopleVisited[ clip.person ]++;
@@ -167,9 +170,25 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 		timesOnTopic = 0;
 		freeTopic = false;
 		cout << "	TOPIC SWITCH TO " << currentTopic << endl;
+		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		ofNotifyEvent(events.topicChanged, args);
+
 	}
 	else{
 		cout << "	FAILED TO SWITCH TOPIC " << currentTopic << endl;
+	}
+}
+
+void CloudsStoryEngine::checkVisualSystems(){
+	if(timesOnTopic == 2){
+		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		ofNotifyEvent(events.visualSystemBegan, args);
+		cout << "SHOW VISUAL SYSTEM!" << endl;
+	}
+	
+	if(timesOnTopic == maxTimesOnTopic - 1){
+		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		ofNotifyEvent(events.visualSystemEnded, args);
 	}
 }
 

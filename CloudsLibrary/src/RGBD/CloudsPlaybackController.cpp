@@ -25,6 +25,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		eventsRegistered = false;
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
 		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
+		ofRemoveListener(storyEngine->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofRemoveListener(storyEngine->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+		
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofUnregisterMouseEvents(this);
@@ -44,12 +47,15 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 //		camera.loadCameraPosition();
 		
 		cloudsCam.setup();
-		cloudsCam.lookTarget = ofVec3f(0,0,0);
+		cloudsCam.lookTarget = ofVec3f(0,25,0);
 
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
 		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
+		ofAddListener(storyEngine.getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofAddListener(storyEngine.getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+	
 		ofAddListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofRegisterKeyEvents(this);
@@ -70,16 +76,6 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
-	
-	//TEMPORARY SWITCH!!
-	if(args.key == 'v'){
-		if(showingVisualSystem){
-			hideVisualSystem();
-		}
-		else{
-			showVisualSystem();
-		}
-	}
 	
 	if(args.key == 'R'){
 		combinedRenderer.reloadShader();
@@ -149,6 +145,27 @@ void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::visualSystemBegan(CloudsStoryEventArgs& args){
+	if(!showingVisualSystem){
+		cout << "Received show visual system" << endl;
+		//showVisualSystem();
+	}
+	else{
+		ofLogError() << "Triggered visual system while still showing one";
+	}
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::visualSystemEnded(CloudsStoryEventArgs& args){
+	if(showingVisualSystem){
+		hideVisualSystem();
+	}
+	else{
+		ofLogError() << "Hiding visual system while none is showing";
+	}	
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	if(clip.hasCombinedVideo){
@@ -172,7 +189,6 @@ void CloudsPlaybackController::populateVisualSystems(){
 	
 	ofLogVerbose() << "Populating visual systems";
 	
-	//registerVisualSystem( new CloudsVisualSystemRezanator() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
 	registerVisualSystem( new CloudsVisualSystemVoro() );
@@ -198,7 +214,7 @@ void CloudsPlaybackController::populateVisualSystems(){
 		
 	visualSystemControls = new ofxUISuperCanvas("VISUAL SYSTEMS");
 	visualSystemControls->addWidgetDown(new ofxUILabel("VISUAL SYSTEMS:", OFX_UI_FONT_MEDIUM));
-	visualSystemRadio = visualSystemControls->addRadio("VISUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
+	visualSystemRadio = visualSystemControls->addRadio("VI	SUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
 	visualSystemControls->addSlider("Test Duration (S)", 2, 60*5, &timeToTest);
     visualSystemControls->setTheme(OFX_UI_THEME_COOLCLAY);
     visualSystemControls->autoSizeToFitWidgets();
@@ -222,6 +238,7 @@ void CloudsPlaybackController::registerVisualSystem(CloudsVisualSystem* system){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showVisualSystem(){
 
+	/*
 	//get the visual system that is closest to this tag
 	string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
 
@@ -236,7 +253,11 @@ void CloudsPlaybackController::showVisualSystem(){
 	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic() << " picking random"<<endl;
 
 	//pick a random one
-	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());	
+	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());
+	*/
+	
+	//For now show a random system!
+	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());		
 }
 
 //--------------------------------------------------------------------
@@ -245,6 +266,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystem* nextVisualSy
 		hideVisualSystem();
 	}
 
+	cout << "showing " << nextVisualSystem->getSystemName() << endl;
+	
 	rgbdVisualSystem.stopSystem();
 	
 	nextVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());

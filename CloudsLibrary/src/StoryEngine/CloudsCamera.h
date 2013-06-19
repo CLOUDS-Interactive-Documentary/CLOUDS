@@ -13,10 +13,11 @@ class CloudsCamera : public ofCamera {
 	
 	float sideDistance;
 	float frontDistance;
+	float sidePullback;
 	ofVec3f lookTarget;
+	ofVec3f driftPos;
 	
   protected:
 	bool isSetup;
-
 
 };

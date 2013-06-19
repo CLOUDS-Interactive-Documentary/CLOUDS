@@ -9,8 +9,9 @@
 #include "CloudsCamera.h"
 
 CloudsCamera::CloudsCamera(){
-	sideDistance = 200;
-	frontDistance = 100;
+	sideDistance = 150;
+	frontDistance = 200;
+	sidePullback = 50;
 	isSetup = false;
 }
 
@@ -23,8 +24,8 @@ void CloudsCamera::setup(){
 
 void CloudsCamera::update(ofEventArgs& args){
 	float percentOnCurve = ofMap(ofGetMouseX(), ofGetWidth()*.2, ofGetWidth()*.8, 0, 1, true);
-	ofVec3f sidePositionLeft = lookTarget + ofVec3f(-sideDistance,0,0);
-	ofVec3f sidePositionRight = lookTarget + ofVec3f(sideDistance,0,0);
+	ofVec3f sidePositionLeft = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
+	ofVec3f sidePositionRight = lookTarget + ofVec3f(sideDistance,0,sidePullback);
 	ofVec3f frontPosition = lookTarget + ofVec3f(0,0,-frontDistance);
 	ofVec3f position;
 	if(percentOnCurve > .5){
