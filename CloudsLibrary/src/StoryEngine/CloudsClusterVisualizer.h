@@ -102,6 +102,8 @@ public:
     float currentScale;
     ofVec2f currentTop;
     
+    ofRectangle zoomRectangle;
+    bool zoomView;
     string selectionTitle;
     vector<CloudsClip> selectedClips;
     
@@ -129,6 +131,7 @@ public:
     float restLength;
     float repulsionForce;
     float minRadius, maxRadius;
+    float zoom;
     
 protected:
     

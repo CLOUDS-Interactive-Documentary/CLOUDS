@@ -44,12 +44,12 @@ CloudsClusterVisualiser::CloudsClusterVisualiser(){
     
     minRadius = 2;
     maxRadius = 50;
-    minMass = 1;
-    maxMass = 0;
+    minMass = 0;
+    maxMass = 1;
     minScore = 0;
     maxScore = 1;
-    cursorRadius = 10;
-    
+    cursorRadius = 1;
+    zoom =1;
     /*
      BRIGHT
      hoverColor = ofColor::fromHex(0xfc790c);
@@ -117,6 +117,7 @@ void CloudsClusterVisualiser::clear(){
 	pathChanged = true;
 	centerNode = NULL;
 	physics.clear();
+    zoomView = false;
 }
 
 void CloudsClusterVisualiser::setup(CloudsFCPParser& dbref){
@@ -157,12 +158,13 @@ void CloudsClusterVisualiser::setupPhysics(){
 }
 
 void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
-    
+    zoomView =false;
     vector<msa::physics::Particle2D*> newParticles;
-	int particleStartIndex = physics.numberOfParticles();
+	//int particleStartIndex = physics.numberOfParticles();
 	string mainLinkName = args.chosenClip.getLinkName();
 	clipLog.push_back(mainLinkName);
-	edges.clear(); 
+	edges.clear();
+    
 	if( particlesByTag.find(mainLinkName) != particlesByTag.end() &&
 	   ofContains(pathByParticles, particlesByTag[mainLinkName] ))
 	{
@@ -172,7 +174,6 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 	
 	pathChanged = true;
 	
-	//for(int i = 0; i < scores.size(); i++){
 	for(int i = 0; i < args.clipOptions.size(); i++){
 		maxScore = MAX(maxScore, args.clipOptions[i].currentScore);
 		minScore = MIN(minScore, args.clipOptions[i].currentScore);
@@ -183,19 +184,14 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		p = particlesByTag[ mainLinkName];
 	}
 	else{
-        //SURYA MOD: Position based on cliup cluster location
         ofVec2f scaledPos = args.chosenClip.cluster.Centre;
         p = physics.makeParticle(scaledPos);
         cout << "POSITION " << scaledPos << " CLIP " << args.chosenClip.getLinkName() << endl;
-		//p = physics.makeParticle(ofVec2f(width/2, height/2));
         
         dampendPositions[p] = p->getPosition();
-//		p->makeFixed();
 		
-        //SURYA MOD: Setting mass based on the radius of the circle
         p->setMass(args.chosenClip.cluster.Radius*10);
-        //p->setMass(args.chosenClip.keywords.size());
-		
+		//p->setMass(args.chosenClip.cluster.Radius);
 		newParticles.push_back(p);
 		particleName[p] = mainLinkName;
 		particlesByTag[mainLinkName] = p;
@@ -210,7 +206,7 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
     
 	currentOptionClips.clear();
 	currentOptionParticles.clear();
-	
+	cout<<"Center Position changed: "<<centerNode->getPosition()<<endl;
 	for(int i = 0; i < args.clipOptions.size(); i++){
 		CloudsClip& relatedClip = args.clipOptions[i];
 		string clipName = relatedClip.getLinkName();
@@ -224,15 +220,15 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		}
 		else{
 			//make a particle for the seed
-//            ofVec2f optionPos = ofVec2f(relatedClip.cluster.Centre.x*width,relatedClip.cluster.Centre.y*height);
             ofVec2f optionPos = relatedClip.cluster.Centre;
             
             cout << "POSITION " << optionPos << " CLIP " << relatedClip.getLinkName() << endl;
-
+            
 			a = physics.makeParticle(optionPos);
 			dampendPositions[a] =  a->getPosition();
 			particleBirthOrder[a] = physics.numberOfParticles();
-            int mass = relatedClip.cluster.Radius*10;
+            ///            int mass = relatedClip.cluster.Radius*10;
+            int mass = relatedClip.cluster.Radius;
 			a->setMass(mass);
 			maxMass = MAX(maxMass, mass);
 			newParticles.push_back(a);
@@ -254,25 +250,13 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		   edgePairs.find( make_pair(p, a) ) == edgePairs.end() ){
 			//use clips in common to weight the lines
             float length = ofDist(p->getPosition().x, p->getPosition().y, a->getPosition().x, a->getPosition().y);
-            msa::physics::Spring2D* newSpring = physics.makeSpring(a, p, springStrength, length );
-
+            
             ParticleEdge* e = new ParticleEdge(p,a,length);
             edgeScores[e] =args.clipOptions[i].currentScore;
             edgePairs[make_pair(p, a)]= e;
             edges.push_back(e);
             keywordsinEdges[e] = database->getSharedKeywords(args.chosenClip, relatedClip);
-			
-            springScores[newSpring] = args.clipOptions[i].currentScore;
-			springs[ make_pair(p, a) ] = newSpring;
-			keywordsInSpring[ newSpring ] = database->getSharedKeywords(args.chosenClip, relatedClip);
-			if(isLink){
-				linkSprings.insert(newSpring);
-                linkEdges.insert(e);
-			}
-			else if(isSuppressed){
-				suppressedSprings.insert(newSpring);
-                suppressedEdges.insert(e);
-			}
+            
 		}
 		else if(isLink) {
             if(edgePairs.find( make_pair(a, p) ) != edgePairs.end()) linkEdges.insert(edgePairs[ make_pair(a, p)]);
@@ -285,7 +269,7 @@ void CloudsClusterVisualiser::clipChanged(CloudsStoryEventArgs &args){
 		}
 	}
     
-
+    
 	if(oldCenter != NULL){
         ParticleEdge* pathEdge = edgePairs[make_pair(oldCenter, centerNode)];
         pathEdge->setLength(ofDist(oldCenter->getPosition().x, oldCenter->getPosition().y, centerNode->getPosition().x, centerNode->getPosition().y));
@@ -397,12 +381,30 @@ void CloudsClusterVisualiser::updatePhysics(){
 		msa::physics::Particle2D* p = physics.getParticle(i);
 		dampendPositions[ p ] += ( p->getPosition() - dampendPositions[ p ])*.05;
 	}
-	
-	totalRectangle = ofRectangle(physics.getParticle(0)->getPosition(), 0,0);
+	//totalRectangle = ofRectangle(centerNode->getPosition(),0,0);
+    
+    totalRectangle = ofRectangle(physics.getParticle(0)->getPosition(), 0,0);
 	for(int i = 0; i < physics.numberOfParticles(); i++){
+        
 		totalRectangle.growToInclude(physics.getParticle(i)->getPosition());
 	}
 	totalRectangle.scaleFromCenter(1.2, 1.5);
+    
+    
+    zoomRectangle = ofRectangle(centerNode->getPosition(),0,0);
+    
+	for(int i = 0; i < physics.numberOfParticles(); i++){
+        float dist = ofDist(centerNode->getPosition().x,centerNode->getPosition().y,physics.getParticle(i)->getPosition().x,physics.getParticle(i)->getPosition().y);
+        
+        if(dist<zoom){
+            zoomRectangle.growToInclude(physics.getParticle(i)->getPosition());
+        }
+        
+		
+	}
+	zoomRectangle.scaleFromCenter(1.2, 1.5);
+    
+    
 }
 
 void CloudsClusterVisualiser::drawPhysics(){
@@ -418,17 +420,42 @@ void CloudsClusterVisualiser::drawPhysics(){
 	ofPushMatrix();
 	
 	ofRectangle screenRect(0,0,width,height);
-	
-	float scaleAmount = MIN(screenRect.width/totalRectangle.width,
-							screenRect.height/totalRectangle.height);
-	
-	currentScale += (scaleAmount-currentScale)*.1;
-	ofVec2f topCenter = totalRectangle.getTopRight().getInterpolated(totalRectangle.getTopLeft(), .5);
-	currentTop += (topCenter-currentTop)*.1;
-	
-	ofTranslate(ofGetWidth()/2, 0);
-	ofScale(currentScale,currentScale);
-	ofTranslate(-currentTop);
+    
+    //	float scaleAmount = MIN(screenRect.width/totalRectangle.width,
+    //							screenRect.height/totalRectangle.height);
+    //
+    //	currentScale += (scaleAmount-currentScale)*.1;
+    //	ofVec2f topCenter = totalRectangle.getTopRight().getInterpolated(totalRectangle.getTopLeft(), .5);
+    //	currentTop += (topCenter-currentTop)*.1;
+    //
+    //	ofTranslate(ofGetWidth()/2, 0);
+    //	ofScale(currentScale,currentScale);
+    //	ofTranslate(-currentTop);
+    //
+    if(zoomView){
+        float  scaleAmount = MIN(screenRect.width/zoomRectangle.width,
+                                 screenRect.height/zoomRectangle.height);
+        
+        currentScale += (scaleAmount-currentScale)*.1;
+        ofVec2f topCenter = zoomRectangle.getTopRight().getInterpolated(zoomRectangle.getTopLeft(), .5);
+        currentTop += (topCenter-currentTop)*.1;
+        
+        ofTranslate(ofGetWidth()/2, 0);
+        ofScale(currentScale,currentScale);
+        ofTranslate(-currentTop);
+    }
+    else{
+        float scaleAmount = MIN(screenRect.width/totalRectangle.width,
+                                screenRect.height/totalRectangle.height);
+        
+        currentScale += (scaleAmount-currentScale)*.1;
+        ofVec2f topCenter = totalRectangle.getTopRight().getInterpolated(totalRectangle.getTopLeft(), .5);
+        currentTop += (topCenter-currentTop)*.1;
+        
+        ofTranslate(ofGetWidth()/2, 0);
+        ofScale(currentScale,currentScale);
+        ofTranslate(-currentTop);
+    }
     
     for(int i=0; i<database->getAllClips().size();i++){
         ofSetColor(128);
@@ -438,7 +465,7 @@ void CloudsClusterVisualiser::drawPhysics(){
         
     }
     ofPushStyle();
-
+    
     for(int i=0;i<edges.size();i++){
         ofPushStyle();
         ParticleEdge* e = edges[i];
@@ -449,7 +476,7 @@ void CloudsClusterVisualiser::drawPhysics(){
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
             ofSetColor(e == hoverEdge ? hoverColor : selectedColor, (1-alpha)*200);
 			ofSetLineWidth(.5 + ofxTween::map(alpha, 0, 1.0, 1.0, 3.0, true, cub));
-			ofLine(dampendPositions[e->p], dampendPositions[e->a] );
+            ofLine(dampendPositions[e->p], dampendPositions[e->a] );
         }
         
         if(linkEdges.find(e)!=linkEdges.end()){
@@ -476,31 +503,32 @@ void CloudsClusterVisualiser::drawPhysics(){
         CloudsClip& c = particleToClip[a];
 		
 		if(a == selectedParticle){
-			ofSetColor(selectedColor);
+			ofSetColor(c.cluster.Color);
 		}
 		else if(a == hoverParticle){
             ofSetColor(c.cluster.Color);
-		//	ofSetColor(selectedColor);
+            //	ofSetColor(selectedColor);
 		}
 		else if(a == centerNode){
-			ofSetColor(c.cluster.Color);
-          //  ofSetColor(hoverColor);
+			ofSetColor(selectedColor);
+            //  ofSetColor(hoverColor);
 		}
 		else if(ofContains(currentOptionParticles, a)){
-		//	ofSetColor(nodeColor);
-         ofSetColor(c.cluster.Color);
+            ofSetColor(nodeColor);
+            //ofSetColor(c.cluster.Color);
 		}
 		else if(ofContains(pathByParticles, a)){
 			ofSetColor(visitedColor);
 		}
 		else {
-			ofSetColor(128);
-            ofSetColor(abandonedColor);
-          //  ofSetColor(c.cluster.Color);
+			ofSetColor(0,0);
+            //ofSetColor(abandonedColor);
+            //  ofSetColor(c.cluster.Color);
 		}
 		
 		ofSetColor(ofGetStyle().color, 180);
 		
+        
         ofFill();
         ofCircle(dampendPositions[a], radius);
         
@@ -511,10 +539,13 @@ void CloudsClusterVisualiser::drawPhysics(){
 			ofxEasingCubic cub;
 			float alpha = (ofGetElapsedTimeMillis() % 750) / 749.;
 			ofSetColor(hoverColor, (1-alpha)*200);
-			ofCircle(dampendPositions[a], ofxTween::map(alpha, 0, 1.0, radius, radius+10, true, cub) );
+            float rad = ofxTween::map(alpha, 0, 1, cursorRadius/currentScale, (cursorRadius/currentScale)+10, true, cub)/currentScale;
+            ofCircle(dampendPositions[a],rad );
+//            if(ofGetKeyPressed()){
+//                cout<<ofxTween::map(alpha, 0, 1, cursorRadius/currentScale, (cursorRadius/currentScale)+1, true, cub)<<endl;
+//            }
 		}
     }
-    
 	ofPushStyle();
 	ofSetColor(traceColor, 80);
     for(int i = 0; i < pathByEdges.size(); i++){
@@ -524,22 +555,22 @@ void CloudsClusterVisualiser::drawPhysics(){
 		ofLine(pos1, pos2);
 	}
 	ofPopStyle();
-    
-	ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius*currentScale);
+	ofPushStyle();
+	ofSetColor(255, 0, 0);
+    ofCircle( graphPointForScreenPoint( ofVec2f(ofGetMouseX(), ofGetMouseY() )),cursorRadius/currentScale);
+    ofPopStyle();
 	ofPopMatrix();
 	
 	vector<string>& allKeywords = database->getAllKeywords();
     for(int i = 0; i < physics.numberOfParticles(); i++){
 		msa::physics::Particle2D *a = physics.getParticle(i);
 		if( a == selectedParticle || a == hoverParticle){
-			//ofSetColor(ofColor::fromHsb(215, 255, 255, a->getMass()*5 + 150));
-			//ofSetColor(ofColor(20, a->getMass()*5 + 150) );
 			ofSetColor(190);
 			ofVec2f textPosition = screenPointForGraphPoint(a->getPosition());
 			font.drawString(particleName[a], textPosition.x,textPosition.y);
 		}
 	}
-	
+	ofPushStyle();
     for(int i=0;i<edges.size();i++){
         ParticleEdge* e =edges[i];
         if(e==selectedEdge||e==hoverEdge){
@@ -547,14 +578,16 @@ void CloudsClusterVisualiser::drawPhysics(){
             ofVec2f pos2 = dampendPositions[e->a];
             ofVec2f middle = screenPointForGraphPoint( pos1.getInterpolated(pos2, .5) );
 			string keywordString = "Score: " + ofToString(edgeScores[e],2) + "\n" + ofJoinString(keywordsinEdges[e], "\n");
-			
+            
 			ofSetColor(220);
-			font.drawString(keywordString, middle.x, middle.y);
+			font.drawString(keywordString, middle.x/currentScale, middle.y/currentScale);
+            
             
         }
     }
+    //cout<<"clipLog"<<endl;
 	for(int i = 0; i < clipLog.size(); i++){
-		float drawHeight = ofGetHeight() - font.getLineHeight() * (i+2);
+		float drawHeight = (ofGetHeight() - font.getLineHeight() * (i+2))/currentScale;
 		ofSetColor(255, ofMap(i,2, 6, 255, 0, true));
 		font.drawString(clipLog[clipLog.size() - i - 1], 30, drawHeight - 30);
 	}
@@ -564,40 +597,25 @@ void CloudsClusterVisualiser::drawPhysics(){
 
 
 ofVec2f CloudsClusterVisualiser::graphPointForScreenPoint(ofVec2f screenPoint){
-	return ( (screenPoint - ofVec2f(ofGetWidth()/2, 0)) / currentScale) + currentTop;
+	
+    return ( (screenPoint - ofVec2f(ofGetWidth()/2, 0)) / currentScale) + currentTop;
 }
 
 ofVec2f CloudsClusterVisualiser::screenPointForGraphPoint(ofVec2f graphPoint){
-	return (graphPoint - currentTop) * currentScale + ofVec2f(ofGetWidth()/2, 0);
+	return (graphPoint - currentTop) /currentScale + ofVec2f(ofGetWidth()/2, 0);
 }
 
 msa::physics::Particle2D* CloudsClusterVisualiser::particleNearPoint(ofVec2f point){
 	
 	for(int i = 0; i < physics.numberOfParticles(); i++){
   		float particleRadiusSquared = powf(radiusForNode( physics.getParticle(i)->getMass() ), 2);
-		if(point.squareDistance( dampendPositions[ physics.getParticle(i) ] ) < (particleRadiusSquared + cursorRadius*cursorRadius) ){
+		if(point.squareDistance( dampendPositions[ physics.getParticle(i) ] ) < (particleRadiusSquared + cursorRadius*cursorRadius/currentScale) ){
 			return physics.getParticle(i);
 		}
 	}
 	return NULL;
 }
 
-msa::physics::Spring2D* CloudsClusterVisualiser::springNearPoint(ofVec2f point){
-    
-	for(int i = 0; i < physics.numberOfSprings(); i++){
-		msa::physics::Spring2D* spring = physics.getSpring( i );
-		ofVec3f p = ofVec3f(point.x, point.y, 0);
-		ofVec3f a = ofVec3f(dampendPositions[ physics.getSpring( i )->getOneEnd()].x,
-							dampendPositions[ physics.getSpring( i )->getOneEnd()].y,0);
-		ofVec3f b = ofVec3f(dampendPositions[ physics.getSpring( i )->getTheOtherEnd()].x,
-							dampendPositions[ physics.getSpring( i )->getTheOtherEnd()].y,0);
-		float distance;
-		if( DistancePointLine(p, a, b, distance) && distance < cursorRadius){
-			return spring;
-		}
-	}
-	return NULL;
-}
 
 ParticleEdge* CloudsClusterVisualiser:: edgeNearPoint(ofVec2f point){
     for(int i =0; i<edges.size();i++){
@@ -606,16 +624,15 @@ ParticleEdge* CloudsClusterVisualiser:: edgeNearPoint(ofVec2f point){
         ofVec3f a = ofVec3f(dampendPositions[edge->a].x,dampendPositions[edge->a].y,0);
         ofVec3f b = ofVec3f(dampendPositions[edge->p].x,dampendPositions[edge->p].y,0);
         float distance;
-        if( DistancePointLine(p, a, b, distance) && distance < cursorRadius){
+        if( DistancePointLine(p, a, b, distance) && distance < cursorRadius/currentScale){
             return edge;
         }
     }
-
     return NULL;
-    
 }
 
 float CloudsClusterVisualiser::radiusForNode( float mass ){
+    //cout<<"radius for node"<<endl;
 	return ofMap(mass, minMass, maxMass, minRadius, maxRadius) / currentScale;
 }
 
@@ -625,8 +642,8 @@ void CloudsClusterVisualiser::mousePressed(ofMouseEventArgs& args){
 	selectedSpring = NULL;
     selectedEdge = NULL;
 	selectedParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
+    
 	if(selectedParticle == NULL){
-		selectedSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
         selectedEdge = edgeNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
 	}
 }
@@ -635,12 +652,11 @@ void CloudsClusterVisualiser::mouseMoved(ofMouseEventArgs& args){
 	hoverSpring = NULL;
     hoverEdge = NULL;
 	hoverParticle = particleNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
-
+    
 	if(hoverParticle != NULL){
 		selectionTitle = "Clips with " + particleName[ hoverParticle ];
 	}
 	else{
-		hoverSpring = springNearPoint( graphPointForScreenPoint( ofVec2f(args.x,args.y) ) );
         hoverEdge = edgeNearPoint(graphPointForScreenPoint(ofVec2f(args.x, args.y)));
 	}
 	
@@ -656,6 +672,13 @@ void CloudsClusterVisualiser::mouseReleased(ofMouseEventArgs& args){
 }
 
 void CloudsClusterVisualiser::keyPressed(ofKeyEventArgs& args){
+    cout<<"CURRENT NODE:"<<particleName[centerNode]<<endl;
+    if(args.key == 'z'){
+        zoomView = !zoomView;
+        cout<<"Zoom View: "<<zoomView<<endl;
+    }
+    
+    
     
 }
 
@@ -668,3 +691,46 @@ void CloudsClusterVisualiser::windowResized(ofResizeEventArgs& args){
 	height = args.height;
 	physics.setWorldMax(ofVec2f(width*10,height*10));
 }
+
+void CloudsClusterVisualiser::drawGrid(){
+    
+    if(!font.isLoaded()){
+        font.loadFont("materiapro_light.ttf", 8);
+    }
+    
+    ofPushStyle();
+    ofSetColor(255);
+    int size = 15;
+    int color = 40;
+    int leftX = 200;
+    int topY = 40;
+    vector<string>& allKeywords = database->getAllKeywords();
+    for(int y = 0; y < MIN(allKeywords.size(), 50); y++){
+        
+        ofSetColor(255);
+        font.drawString(allKeywords[y], leftX - font.stringWidth(allKeywords[y]), topY + y*size+size/2+4);
+        int x;
+        for(x = 0; x <= y; x++){
+            int connections = sharedClips[ make_pair(allKeywords[x], allKeywords[y]) ];
+            ofRectangle drawRect(leftX + x*size, topY + y*size, size, size);
+            if(connections > 0){
+                ofFill();
+                ofSetColor(ofColor::fromHsb(color, connections*40, connections*40));
+                ofRect(drawRect);
+                
+                ofSetColor(ofColor::fromHsb(255-color, 255, 255));
+                font.drawString(ofToString(connections), leftX + x*size + 2, topY + y*size+size/2+4);
+            }
+            else{
+                ofSetColor(255, 30);
+                ofNoFill();
+                ofRect(drawRect);
+            }
+        }
+		
+        font.drawString(allKeywords[y], leftX + (x-1)*size + 2, topY + (y-1)*size+size/2+4);
+    }
+    
+    ofPopStyle();
+}
+
