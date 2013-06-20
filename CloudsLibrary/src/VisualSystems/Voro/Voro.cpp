@@ -190,6 +190,64 @@ vector<ofPoint> getCellsCentroids(voro::container &_con){
     return centroids;
 }
 
+vector< vector<ofPoint> > getCellsVertices(voro::container &_con){
+    vector< vector<ofPoint> > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+    int i = 0;
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                vector< ofPoint > cell = getCellVerteces(c, ofPoint(pp[0],pp[1],pp[2]) );
+                cells.push_back( cell );
+                i++;
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
+}
+
+vector< ofPolyline > getCellsPolilines(voro::container &_con){
+    vector< ofPolyline > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+    int i = 0;
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                vector< ofPoint > vertices = getCellVerteces(c, ofPoint(pp[0],pp[1],pp[2]) );
+                ofPolyline cell;
+                
+                for(int j = 0; j < vertices.size(); j++){
+                    cell.addVertex(vertices[j]);
+                }
+                
+                cells.push_back( cell );
+                i++;
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
+}
+
 bool insideContainer(voro::container &_con, ofPoint _pos){
     return _con.point_inside(_pos.x, _pos.y, _pos.z);
 }

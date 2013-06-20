@@ -197,21 +197,21 @@ void wParticle::update(float _speed){
 	loc += vel;
     acc *= 0;
     
-    tail.push_back(loc);
-    while (tail.size() > 100) {
-        tail.erase(tail.begin());
-    }
+//    tail.push_back(loc);
+//    while (tail.size() > 100) {
+//        tail.erase(tail.begin());
+//    }
 }
 
 void wParticle::draw(){
-    glBegin(GL_POINTS);
+//    glBegin(GL_POINTS);
     glVertex3f(loc.x,loc.y,loc.z);
-    glEnd();
+//    glEnd();
     
-    ofNoFill();
-    ofBeginShape();
-    for(int i = 0; i < tail.size(); i++){
-        ofVertex(tail[i]);
-    }
-    ofEndShape();
+//    ofNoFill();
+//    ofBeginShape();
+//    for(int i = 0; i < tail.size(); i++){
+//        ofVertex(tail[i]);
+//    }
+//    ofEndShape();
 }
