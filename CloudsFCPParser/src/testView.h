@@ -34,7 +34,8 @@
 	
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    CloudsClusterVisualiser visualizer;
+    //CloudsClusterVisualiser visualizer;
+    CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     

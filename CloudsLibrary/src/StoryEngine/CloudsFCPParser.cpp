@@ -180,10 +180,16 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			
             if(startQuestion > 0){
                 string question = linksXML.getValue("startingQuestion", "");
-                CloudsClip& c =  getClipWithLinkName(clipName);
-                c.setStartingQuestion(question);
-                cout<<c.name <<" has question: "<<c.getStartingQuestion()<<endl;
-				questionIds.push_back( c.getID() );
+                bool hasQuestionClip;
+                CloudsClip& c =  getClipWithLinkName(clipName,hasQuestionClip);
+                if(hasQuestionClip){
+                    c.setStartingQuestion(question);
+                    questionIds.push_back( c.getID() );                    
+                    cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
+                }
+                else{
+                    ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
+                }
             }
 			
             linksXML.popTag(); //clip
@@ -448,7 +454,7 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 			
 			if( markerLinkNames.find(cm.getLinkName()) != markerLinkNames.end() ){
 				ofLogError() << "DUPLICATE CLIP " << cm.getLinkName() << " " << cm.getMetaInfo();
-				ofLogError() << "	EXISTING CLIP INFO " << getClipWithLinkName(cm.getLinkName()).getMetaInfo();
+				//ofLogError() << "	EXISTING CLIP INFO " << getClipWithLinkName(cm.getLinkName()).getMetaInfo();
 			}
 			else{
 				markerLinkNames.insert( cm.getLinkName() );
@@ -521,7 +527,9 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 			ofLogError("CloudsFCPParser::getRandomClip") << " has no questions";
 			return dummyClip;
 		}
-		return getClipWithID( questionIds[ ofRandom(questionIds.size())] );
+        CloudsClip& clip = getClipWithID( questionIds[ ofRandom(questionIds.size()) ] ) ;
+        cout << "has a question" << clip.getID() << endl;
+		return ( clip );
 	}
 	else {
 		return allClips[ ofRandom(allClips.size())];
@@ -529,14 +537,13 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 }
 
 CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
-	
-//	for(int i = 0; i < allClips.size(); i++){
-//		if(allClips[i].getLinkName() == linkname){
-//			return allClips[i];
-//		}
-//	}
+    bool dumb;
+    return getClipWithLinkName(linkname, dumb);
+}
 
-	if(clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end()){
+CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname, bool& found ){
+    found = clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end();
+	if(found){
 		return allClips[ clipLinkNameToIndex[linkname] ];
 	}
     ofLogError() << "No clip found with link name " << linkname << ". Returning dummy video!";
@@ -544,13 +551,19 @@ CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
 }
 
 CloudsClip& CloudsFCPParser::getClipWithID( string ID ){
-	if(clipIDToIndex.find(ID) == clipIDToIndex.end()){
-		return allClips[ clipLinkNameToIndex[ID] ];
+    bool dumb;
+    return getClipWithID(ID, dumb);
+}
+
+CloudsClip& CloudsFCPParser::getClipWithID( string ID, bool& foundClip ){
+    foundClip = clipIDToIndex.find(ID) != clipIDToIndex.end();
+	if(foundClip){
+		return allClips[ clipIDToIndex[ID] ];
 	}
     ofLogError() << "No clip found with ID " << ID << ". Returning dummy video!";
 	return dummyClip;
-	
 }
+
 void CloudsFCPParser::sortKeywordsByOccurrence(bool byOccurrence){
     if(sortedByOccurrence != byOccurrence){
         sortedByOccurrence = byOccurrence;
