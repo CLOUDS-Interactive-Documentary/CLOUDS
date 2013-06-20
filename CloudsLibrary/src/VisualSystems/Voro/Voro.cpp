@@ -201,11 +201,27 @@ vector< vector<ofPoint> > getCellsVertices(voro::container &_con){
         
         do {
             voro::voronoicell c;
+            
             if( !_con.compute_cell(c, vl) ) {
                 return cells;
             } else {
+                int k = 0;
                 double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
-                vector< ofPoint > cell = getCellVerteces(c, ofPoint(pp[0],pp[1],pp[2]) );
+                ofPoint pos = ofPoint(pp[0],pp[1],pp[2]);
+                
+                vector< ofPoint > cell;
+                
+                double *ptsp= c.pts;
+                vector<ofPoint> points;
+                for(int j = 0; j < c.p; j++){
+                    
+                    ofPoint newPoint;
+                    newPoint.x = pos.x + c.pts[2*k]*0.5;
+                    newPoint.y = pos.y + c.pts[2*k+1]*0.5;
+                    newPoint.z = pos.z + c.pts[2*k+2]*0.5;
+                    cell.push_back(newPoint);
+                }
+                
                 cells.push_back( cell );
                 i++;
             }
@@ -230,15 +246,26 @@ vector< ofPolyline > getCellsPolylines(voro::container &_con){
             if( !_con.compute_cell(c, vl) ) {
                 return cells;
             } else {
+                
+                int k = 0;
                 double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
-                vector< ofPoint > vertices = getCellVerteces(c, ofPoint(pp[0],pp[1],pp[2]) );
+                ofPoint pos = ofPoint(pp[0],pp[1],pp[2]);
+                
                 ofPolyline cell;
                 
-                for(int j = 0; j < vertices.size(); j++){
-                    cell.addVertex(vertices[j]);
+                double *ptsp= c.pts;
+                vector<ofPoint> points;
+                for(int j = 0; j < c.p; j++){
+                    
+                    ofPoint newPoint;
+                    newPoint.x = pos.x + c.pts[2*k]*0.5;
+                    newPoint.y = pos.y + c.pts[2*k+1]*0.5;
+                    newPoint.z = pos.z + c.pts[2*k+2]*0.5;
+                    cell.addVertex(newPoint);
                 }
                 
                 cells.push_back( cell );
+            
                 i++;
             }
             
