@@ -17,6 +17,11 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	connectionGenerator.numParticles = 200;
 	connectionGenerator.setMinDistance(40);
 	connectionGenerator.setup();
+	
+	cloudsCamera.setup();
+	cloudsCamera.lookTarget = ofVec3f(0,25,0);
+	setCurrentCamera(cloudsCamera);
+	
 }
 
 //--------------------------------------------------------------

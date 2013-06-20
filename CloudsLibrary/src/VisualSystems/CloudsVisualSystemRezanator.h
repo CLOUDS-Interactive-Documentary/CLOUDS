@@ -208,7 +208,6 @@ public:
     //CAM
     float camDistance;
     float camFOV;
-	bool camUseClouds;
     ofxViewType view;
 	ofCamera* currentCamera;
     ofEasyCam cam;

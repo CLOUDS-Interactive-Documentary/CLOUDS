@@ -2,10 +2,10 @@
 
 #include "ofMain.h"
 
-class CloudsCamera : public ofCamera {
+class CloudsRGBDCamera : public ofCamera {
   public:
 	
-	CloudsCamera();
+	CloudsRGBDCamera();
 
 	void setup();
 	

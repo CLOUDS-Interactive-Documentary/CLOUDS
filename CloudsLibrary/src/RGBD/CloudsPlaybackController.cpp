@@ -38,8 +38,6 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 //		camera.autosavePosition = true;
 //		camera.loadCameraPosition();
 		
-		cloudsCam.setup();
-		cloudsCam.lookTarget = ofVec3f(0,25,0);
 
 		this->storyEngine = &storyEngine;
 		
@@ -56,7 +54,6 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 //		populateVisualSystems();
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
-		rgbdVisualSystem.setCamera(cloudsCam);
 		rgbdVisualSystem.setup();
 		
 		eventsRegistered = true;

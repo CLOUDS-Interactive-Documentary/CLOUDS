@@ -9,7 +9,7 @@
 
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
-#include "CloudsCamera.h"
+//#include "CloudsCamera.h"
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -47,7 +47,7 @@ class CloudsPlaybackController {
 	//
 
 //	ofxGameCamera camera;
-	CloudsCamera cloudsCam;
+//	cloudsCamera cloudsCam;
 	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;

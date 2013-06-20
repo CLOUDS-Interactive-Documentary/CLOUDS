@@ -74,12 +74,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         //
         drawBackground();
         
-		if(camUseClouds && sharedCamera != NULL){
-			sharedCamera->begin();
-		}
-		else{
-			currentCamera->begin();
-		}
+		currentCamera->begin();
         
         //  TEMPORARY FIX
         //
@@ -105,12 +100,7 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 		
         lightsEnd();
         
-		if(camUseClouds && sharedCamera != NULL){
-			sharedCamera->end();
-		}
-		else{
-			currentCamera->end();
-		}
+		currentCamera->end();
 
     }
     
@@ -803,8 +793,6 @@ void CloudsVisualSystemRezanator::setupCameraGui()
     camGui->resetPlacer();
     camGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     camGui->addWidgetToHeader(button);
-    camGui->addSpacer();
-    camGui->addToggle("USE CLOUDS CAM", &camUseClouds);
     camGui->addSpacer();
     camGui->addSlider("DIST", 0, 1000, &camDistance);
     camGui->addSlider("FOV", 0, 180, &camFOV);
