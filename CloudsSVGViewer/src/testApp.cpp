@@ -35,45 +35,31 @@ void testApp::setup(){
     }
     
     keyWords = parser.getAllKeywords();
-}
 
-//--------------------------------------------------------------
-void testApp::update(){
-    
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
+    objectLookAt = ofVec3f(0,0,1);
     
     vector<string> cohesiveKeywords;
     vector<ofRectangle> rects;
     vector<float> clipSize;
     vector<float> densities;
     vector<float> avgDistances;
-    vector<float> maxDistances;
+    
     vector<float> minDistance;
     vector<float> sortedAvgDistance;
-    vector<float>medianValues;
-    vector<ofVec2f> centres;
-    
-    //draw svg
-    ofBackground(0);
-    for(int i=0; i<parser.getAllClips().size();i++){
-        ofSetColor(parser.getAllClips()[i].cluster.Color);
-        ofCircle(parser.getAllClips()[i].cluster.Centre.x*ofGetWidth(),
-                 parser.getAllClips()[i].cluster.Centre.y*ofGetHeight(),
-                 parser.getAllClips()[i].cluster.Radius*2);
-        
-        
-    }
-    
-    //cout << "START" << endl;
+    maxDistances.clear();
+    medianValues.clear();
+    centres.clear();
     float minCohesion=10;
     float maxCohesion=0;
-
+    
     for (int i=0; i<keyWords.size(); i++) {
+
+        
         float maxDistance = 0;
+        float minDistance = INT_MAX;
         ofVec2f centroid = ofVec2f(0,0);
+        ofColor cellColor = ofColor(255,0,0);
+        
         vector<CloudsClip> clips =  parser.getClipsWithKeyword(keyWords[i]);
         
         ofRectangle rect = ofRectangle(clips[0].cluster.Centre, 0 ,0);
@@ -83,14 +69,14 @@ void testApp::draw(){
                 rect.growToInclude(clips[j].cluster.Centre);
                 centroid += clips[j].cluster.Centre;
                 numClips++;
+                
             }
             else{
                 cout<<"clip ignored: "<< clips[j].getLinkName();
             }
-
+            
         }
-
-//        centroid /= clips.size();
+        
         centroid /= numClips;
         vector<float> distancesPerClip;
         float totalDistance = 0;
@@ -100,10 +86,17 @@ void testApp::draw(){
                 totalDistance += distance;
                 distancesPerClip.push_back(distance);
                 maxDistance = MAX(maxDistance,distance);
+                //minDistance = MIN(minDistance,distance);
+                if(distance<minDistance){
+                    minDistance = distance;
+                    cellColor = clips[k].cluster.Color;
+                }
             }
-
+            
         }
+        
 
+        
         float avgDistance = totalDistance / numClips;
         float density = rect.getArea()/numClips;
         
@@ -123,82 +116,88 @@ void testApp::draw(){
         if(maxDistance>0){
             maxCohesion = MAX(maxCohesion,c);
             minCohesion = MIN(minCohesion,c);
-            
-            //   cout<<minCohesion<<","<<clips.size()<<","<<maxDistance<<endl;
         }
         
-          //      cout<<numClips<<","<<clips.size()<<endl;
-        
-        if(medianValue / maxDistance < .35){
-            //     cout << "keyword " << keyWords[i] << "(" << parser.getNumberOfClipsWithKeyword(keyWords[i]) << ") has score " << medianValue / maxDistance << endl;
+        if(medianValue / maxDistance < .3){
             cohesiveKeywords.push_back(keyWords[i]);
+            cohesiveCells.push_back(ofPoint(centres[i].x,centres[i].y));
+            colors.push_back(cellColor);
         }
         
         
     }
-    
-    //    cout << "END" << endl << endl;
-    
-    for(int i=0; i<centres.size();i++){
+    MaxNumOfParticles = cohesiveCells.size();
+    particleIndex = 0;
+}
+
+//--------------------------------------------------------------
+void testApp::update(){
+
         
+//        cellMeshes.clear();
+    cells.clear();
+		voro::container con(0,ofGetWidth(),
+                            0,ofGetHeight(),
+                            -1,1,
+                            1,1,1,
+                            containerPeriodic,containerPeriodic,containerPeriodic,
+                            1);
         
-        if (medianValues[i] / maxDistances[i] < 1.*mouseX/ofGetWidth()) {
-            float cohesion = medianValues[i] / maxDistances[i];
-            float alpha = ofMap(cohesion, minCohesion, maxCohesion, 0, 128);
-            //cout<<minCohesion<<","<<maxCohesion<<endl;
-            //ofNoFill();
-            //  cout<<alpha<<endl;
-            // cout<<cohesion<<endl;
-            ofSetColor(255);
-            font.drawString(keyWords[i], centres[i].x*ofGetWidth(),centres[i].y*ofGetHeight());
-            //ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),
-             //        (medianValues[i])*ofGetHeight());
-            
-            
+        for(int i = 0; i < cohesiveCells.size(); i++){
+            con.put(i, cohesiveCells[i].x*ofGetWidth(), cohesiveCells[i].y*ofGetHeight(), 0);
         }
-        //float x = medianValues[i] / maxDistances[i] < ;
-        cout<<1.*mouseX/ofGetWidth()<<endl;
-        //        if(ofGetKeyPressed(32)){
-        //            vector<CloudsClip> cohesiveClips =  parser.getClipsWithKeyword(cohesiveKeywords);
-        //            vector<CloudsClip>& allClips = parser.getAllClips();
-        //            cout<<"% of clips: "<<((float)cohesiveClips.size()/(float)allClips.size())*100<<", % of keywords: "<<((float)cohesiveKeywords.size())/(float)keyWords.size()*100   <<endl;
-        //        }
+        
+//        cellMeshes = getCellsFromContainer(con);
+//    cout << cellMeshes.size() << endl;
+    cells = getCellsPolylines(con);
+
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
+    //draw svg
+    ofBackground(0);
+//    glEnable(GL_DEPTH_TEST);
+
+    for(int i=0; i<parser.getAllClips().size();i++){
+        ofSetColor(parser.getAllClips()[i].cluster.Color);
+        ofCircle(parser.getAllClips()[i].cluster.Centre.x*ofGetWidth(),
+                 parser.getAllClips()[i].cluster.Centre.y*ofGetHeight(),
+                 parser.getAllClips()[i].cluster.Radius*2);
+        
         
     }
+    
+    ofPushMatrix();
+      
+//        for(int i = 0; i < cellMeshes.size(); i++){
+//            ofSetColor(colors[i],50);
+//            cellMeshes[i].drawFaces();
+//        }
+    
+    for(int i = 0; i < cells.size(); i++){
+        ofSetColor(colors[i],50);
+        cells[i].draw();
+    }
+    
+    ofPopMatrix();
+//    for(int i=0; i<centres.size();i++){
+//        
+//        if (medianValues[i] / maxDistances[i] < 1.*mouseX/ofGetWidth()) {
+//            ofSetColor(255);
+//            font.drawString(keyWords[i], centres[i].x*ofGetWidth(),centres[i].y*ofGetHeight());
+//            //ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),
+//             //        (medianValues[i])*ofGetHeight());
+//            
+//        }
+//        cout<<1.*mouseX/ofGetWidth()<<endl;
+
+//    }
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    //    for(int i=0; i<parser.getAllClips().size();i++){
-    //
-    //        cout<<i<<"::"<<parser.getAllClips()[i].cluster.Color.getHex()<<endl;
-    //    }
-    //    for (int i=0; i<keyWords.size(); i++) {
-    //        vector<CloudsClip> clips =  parser.getClipsWithKeyword(keyWords[i]);
-    //        ofRectangle rect = ofRectangle(clips[0].cluster.Centre, 0 ,0);
-    //
-    //        for(int j = 0; j<clips.size();j++){
-    //            rect.growToInclude(clips[j].cluster.Centre);
-    //        }
-    //        float density=rect.getArea()/clips.size();
-    //        maxD = MAX(maxD,density);
-    //        minD = MIN(minD,density);
-    //        densities.push_back(density);
-    //
-    //    }
-    //    std::sort(densities.begin(), densities.end());
-    ////    cout<<maxD<<","<<minD<<","<<keyWords.size()<<","<<densities.size()<<endl;
-    //    for(int i=0;i<densities.size();i++){
-    //
-    //        cout<<"Node Density for "<< keyWords[i]<<" : "<<ofMap(densities[i], minD, maxD, 0, 1000)<<endl;
-    //
-    //
-    //    }
-    
-    //    for(int i =0;i<keyWords.size();i++){
-    //        cout<<keyWords[i]<<": "<<avgDistance[i]<<","<<clipSize[i]<<endl;
-    //    }
-    //
+
     if(key=='f'){
         ofToggleFullscreen();
         ofClear(0);

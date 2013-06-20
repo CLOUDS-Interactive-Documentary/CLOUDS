@@ -216,7 +216,7 @@ vector< vector<ofPoint> > getCellsVertices(voro::container &_con){
     return cells;
 }
 
-vector< ofPolyline > getCellsPolilines(voro::container &_con){
+vector< ofPolyline > getCellsPolylines(voro::container &_con){
     vector< ofPolyline > cells;
     
     ofPoint pos;
