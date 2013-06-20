@@ -1,14 +1,6 @@
 
 #include "CloudsPlaybackController.h"
 
-#include "CloudsVisualSystemRezanator.h"
-#include "CloudsVisualSystemComputationTicker.h"
-#include "CloudsVisualSystemLSystems.h"
-#include "CloudsVisualSystemVoro.h"
-#include "CloudsVisualSystemVerletForm.h"
-#include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemAmber.h"
-#include "CloudsVisualSystemCollaboration1.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
@@ -61,7 +53,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
-		populateVisualSystems();
+//		populateVisualSystems();
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setCamera(cloudsCam);
@@ -122,6 +114,8 @@ void CloudsPlaybackController::update(){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(){
 	
+	storyEngine->drawStoryEngineDebug();
+	
 //	if(!showingVisualSystem && combinedRenderer.isPlaying()){
 //		camera.begin();
 //		combinedRenderer.drawPointCloud();
@@ -145,10 +139,11 @@ void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemBegan(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
 		//showVisualSystem();
+		showVisualSystem(args.preset);
 	}
 	else{
 		ofLogError() << "Triggered visual system while still showing one";
@@ -156,7 +151,7 @@ void CloudsPlaybackController::visualSystemBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemEnded(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
 		hideVisualSystem();
 	}
@@ -183,58 +178,6 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	}
 }
 
-#pragma visual systems
-//--------------------------------------------------------------------
-void CloudsPlaybackController::populateVisualSystems(){
-	
-	ofLogVerbose() << "Populating visual systems";
-	
-	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-	registerVisualSystem( new CloudsVisualSystemLSystems() );
-	registerVisualSystem( new CloudsVisualSystemVoro() );
-	
-	set<string> keyThemes;
-	for(int i = 0; i < visualSystems.size(); i++){
-		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
-		for(int k = 0; k < keys.size(); k++){
-			keyThemes.insert( keys[k] );
-		}
-	}
-	
-//	storyEngine->network->populateKeyThemes(keyThemes);
-	
-	//create the drop down
-    vector<string> names;
-	for(int i = 0; i < visualSystems.size(); i++){
-		names.push_back(visualSystems[i]->getSystemName());
-	}
-	
-	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
-	float length = 320;
-		
-	visualSystemControls = new ofxUISuperCanvas("VISUAL SYSTEMS");
-	visualSystemControls->addWidgetDown(new ofxUILabel("VISUAL SYSTEMS:", OFX_UI_FONT_MEDIUM));
-	visualSystemRadio = visualSystemControls->addRadio("VI	SUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
-	visualSystemControls->addSlider("Test Duration (S)", 2, 60*5, &timeToTest);
-    visualSystemControls->setTheme(OFX_UI_THEME_COOLCLAY);
-    visualSystemControls->autoSizeToFitWidgets();
-	
-    ofAddListener(visualSystemControls->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
-}
-
-//--------------------------------------------------------------------
-void CloudsPlaybackController::registerVisualSystem(CloudsVisualSystem* system){
-	
-	ofLogVerbose() << "Registering system " << system->getSystemName();
-	
-
-	system->setup();
-	system->setCamera(cloudsCam);
-	
-	visualSystems.push_back( system );
-	nameToVisualSystem[system->getSystemName()] = system;
-}
-
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showVisualSystem(){
 
@@ -257,29 +200,26 @@ void CloudsPlaybackController::showVisualSystem(){
 	*/
 	
 	//For now show a random system!
-	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());		
+//	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());
+	
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme){
+void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
 	if(showingVisualSystem){
 		hideVisualSystem();
 	}
-
-	cout << "showing " << nextVisualSystem->getSystemName() << endl;
+	
+	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
 	
 	rgbdVisualSystem.stopSystem();
 	
-	nextVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());
-	nextVisualSystem->setCurrentKeyword(keyTheme);
-	nextVisualSystem->playSystem();
-
-	currentVisualSystem = nextVisualSystem;
-	showingVisualSystem = true;
+	nextVisualSystem.system->setCurrentTopic( storyEngine->getCurrentTopic() );
+	nextVisualSystem.system->playSystem();
+	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	
-	visualSystemControls->disable();
-	if(keyThemesPanel != NULL) keyThemesPanel->disable();
-
+	currentVisualSystem = nextVisualSystem.system;
+	showingVisualSystem = true;
 }
 
 //--------------------------------------------------------------------
@@ -289,57 +229,57 @@ void CloudsPlaybackController::hideVisualSystem(){
 		showingVisualSystem = false;
 		currentVisualSystem = NULL;
 		
-		visualSystemControls->enable();
-		if(keyThemesPanel != NULL) keyThemesPanel->enable();
+//		visualSystemControls->enable();
+//		if(keyThemesPanel != NULL) keyThemesPanel->enable();
 		
 		rgbdVisualSystem.playSystem();
 	}
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystem* CloudsPlaybackController::visualSystemWithName(string systemName){
-	if(nameToVisualSystem.find(systemName) != nameToVisualSystem.end()){
-		return nameToVisualSystem[systemName];
-	}
-	ofLogError() << "Could not find Visual System with name " << systemName;
-	return NULL;
-}
+//CloudsVisualSystem* CloudsPlaybackController::visualSystemWithName(string systemName){
+//	if(nameToVisualSystem.find(systemName) != nameToVisualSystem.end()){
+//		return nameToVisualSystem[systemName];
+//	}
+//	ofLogError() << "Could not find Visual System with name " << systemName;
+//	return NULL;
+//}
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-    
-//    cout << "WIDGET NAME: " << name << endl;
-    
-    if(e.widget->getParent() == visualSystemRadio){
-		if(visualSystemRadio->getActive() != NULL){
-						
-			CloudsVisualSystem* system = visualSystemWithName( name );
-			if(system != NULL){
-				if(keyThemesPanel != NULL){
-					delete keyThemesPanel;
-				}
-				keyThemesPanel = new ofxUICanvas(0, visualSystemControls->getRect()->getMaxY(), 0, 0);
-				vector<string>& relevantKeys = system->getRelevantKeywords();
-				if(relevantKeys.size() == 0){
-					relevantKeys.push_back("no-key");
-				}
-				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", relevantKeys, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
-				
-				keyThemesPanel->setTheme(OFX_UI_THEME_COOLCLAY);
-				playButton = keyThemesPanel->addButton("Test System", &triggerVisualSystem);
-			
-				keyThemesPanel->autoSizeToFitWidgets();
-				ofAddListener(keyThemesPanel->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
-			}
-		}
-    }
-	else if(e.widget == playButton && playButton->getValue() && !showingVisualSystem){
-		
-		cout << "Showing visual system!" << endl;
-		
-		showVisualSystem(visualSystemWithName(visualSystemRadio->getActive()->getName()),
-						 keyThemesRadio->getActive()->getName());
-	}
-}
+//void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
+//{
+//    string name = e.widget->getName();
+//    
+////    cout << "WIDGET NAME: " << name << endl;
+//    
+//    if(e.widget->getParent() == visualSystemRadio){
+//		if(visualSystemRadio->getActive() != NULL){
+//						
+//			CloudsVisualSystem* system = visualSystemWithName( name );
+//			if(system != NULL){
+//				if(keyThemesPanel != NULL){
+//					delete keyThemesPanel;
+//				}
+//				keyThemesPanel = new ofxUICanvas(0, visualSystemControls->getRect()->getMaxY(), 0, 0);
+//				vector<string>& relevantKeys = system->getRelevantKeywords();
+//				if(relevantKeys.size() == 0){
+//					relevantKeys.push_back("no-key");
+//				}
+//				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", relevantKeys, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
+//				
+//				keyThemesPanel->setTheme(OFX_UI_THEME_COOLCLAY);
+//				playButton = keyThemesPanel->addButton("Test System", &triggerVisualSystem);
+//			
+//				keyThemesPanel->autoSizeToFitWidgets();
+//				ofAddListener(keyThemesPanel->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
+//			}
+//		}
+//    }
+//	else if(e.widget == playButton && playButton->getValue() && !showingVisualSystem){
+//		
+//		cout << "Showing visual system!" << endl;
+//		
+//		showVisualSystem(visualSystemWithName(visualSystemRadio->getActive()->getName()),
+//						 keyThemesRadio->getActive()->getName());
+//	}
+//}

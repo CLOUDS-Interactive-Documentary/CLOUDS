@@ -106,16 +106,16 @@ void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
-	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
-	cout << "SOUND: keywords >> ";
-    for(int i=0;i<args.chosenClip.keywords.size();i++)
-    {
-        cout << i << ": " << args.chosenClip.keywords[i] << " ";
-    }
-    cout << endl;
-	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
-	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << endl;
-	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
+//	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
+//	cout << "SOUND: keywords >> ";
+//    for(int i=0;i<args.chosenClip.keywords.size();i++)
+//    {
+//        cout << i << ": " << args.chosenClip.keywords[i] << " ";
+//    }
+//    cout << endl;
+//	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
+//	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << endl;
+//	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
 
 	float t, beatoffset;
     float musicdur = args.chosenClip.getDuration();

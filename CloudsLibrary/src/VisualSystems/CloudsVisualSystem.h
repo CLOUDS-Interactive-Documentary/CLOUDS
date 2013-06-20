@@ -66,7 +66,10 @@ class CloudsVisualSystem {
 	
 	void speakerEnded();
 	
-
+	//REZA: Needs to be replaced by the Rezonator merge
+	virtual vector<string> getPresets() = 0;
+	virtual void loadPresetGUISFromName(string presetName) = 0;
+	
 	//SET and CALLED FROM CONTROLLER
 	
 	//how much time left to show this visual system?

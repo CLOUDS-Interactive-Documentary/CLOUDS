@@ -18,10 +18,15 @@ void testApp::setup(){
 
 	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
+	visualSystems.populateVisualSystems();
+	
 	storyEngine.setup();
 	storyEngine.network = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	
 	storyEngine.maxTimesOnTopic = 4;
 	storyEngine.combinedClipsOnly = true;
+	storyEngine.printDecisions = false;
 	
 	player.setup(storyEngine);
 	sound.setup(storyEngine);
@@ -30,7 +35,6 @@ void testApp::setup(){
 
 	storyEngine.seedWithClip( parser.getRandomClip(true) );
 	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
-	
 }
 
 //--------------------------------------------------------------

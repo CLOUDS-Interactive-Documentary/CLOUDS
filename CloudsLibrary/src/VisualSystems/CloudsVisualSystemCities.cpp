@@ -368,7 +368,7 @@ void CloudsVisualSystemCities::selfDraw()
                 ofScale((1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
                         (1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
                         height*value);
-                
+                //PATRICIO: seeing crashing here when called from CLOUDS thread
                 glCallList(cube);
             }
             ofPopMatrix();

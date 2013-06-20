@@ -11,12 +11,16 @@
 
 CloudsStoryEngine::CloudsStoryEngine(){
 	network = NULL;
+	visualSystems = NULL;
+
 	hasclip = false;
 	isSetup = false;
 	printDecisions = true;
 	combinedClipsOnly = false;
 	totalFramesWatched = 0;
 	waitingForNextClip = false;
+	watchingVisualSystem = false;
+	
 	fixedClipDelay = 5;
 	maxTimesOnTopic = 4;
 }
@@ -102,7 +106,7 @@ void CloudsStoryEngine::loadClip(CloudsClip& clip){
 	if(hasclip && (freeTopic || currentTopic == "") ){
 		chooseNewTopic(clip);
 	}
-	
+
 	checkVisualSystems();
 		
 	currentClip = clip;
@@ -170,6 +174,11 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 		timesOnTopic = 0;
 		freeTopic = false;
 		cout << "	TOPIC SWITCH TO " << currentTopic << endl;
+		if(watchingVisualSystem){
+			CloudsVisualSystemEventArgs args(currentVisualSystem);
+			ofNotifyEvent(events.visualSystemEnded, args);
+			watchingVisualSystem = false;
+		}
 		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
 		ofNotifyEvent(events.topicChanged, args);
 
@@ -180,14 +189,21 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 }
 
 void CloudsStoryEngine::checkVisualSystems(){
+	if(visualSystems == NULL){
+		return;
+	}
+	
 	if(timesOnTopic == 2){
-		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		CloudsVisualSystemPreset preset = visualSystems->getRandomVisualSystem();
+		CloudsVisualSystemEventArgs args(visualSystems->getRandomVisualSystem());
 		ofNotifyEvent(events.visualSystemBegan, args);
 		cout << "SHOW VISUAL SYSTEM!" << endl;
+		watchingVisualSystem = true;
 	}
 	
 	if(timesOnTopic == maxTimesOnTopic - 1){
-		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		watchingVisualSystem = false;
+		CloudsVisualSystemEventArgs args(currentVisualSystem);
 		ofNotifyEvent(events.visualSystemEnded, args);
 	}
 }
@@ -335,6 +351,17 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	return MAX(score, 0);
 }
 
+void CloudsStoryEngine::drawStoryEngineDebug(){
+	ofPushStyle();
+	ofSetColor(255);
+	string debugString = "";
+	debugString += "Current Clip:    " + currentClip.getLinkName() + "\n";
+	debugString += "Current Topic:   " + getCurrentTopic() + "\n";
+	debugString += "Times on Topic:  " + ofToString(timesOnTopic) + "/" + ofToString(maxTimesOnTopic) + "\n";
+	ofDrawBitmapString(debugString, 25,25);
+	ofPopStyle();
+}
+
 float CloudsStoryEngine::getTotalSecondsWatched(){
 	return totalFramesWatched / 23.976;
 }
@@ -348,7 +375,7 @@ vector<CloudsClip>& CloudsStoryEngine::getClipHistory(){
 }
 
 string CloudsStoryEngine::getCurrentTopic(){
-	return currentTopic + (freeTopic ? " (FREE)" : "");
+	return currentTopic;
 }
 
 int CloudsStoryEngine::getTimesOnTopic(){

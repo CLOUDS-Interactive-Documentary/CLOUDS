@@ -164,7 +164,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 					
 					linksXML.popTag(); //link
                     totalLinks++;
-                    cout<<"suppressed"<<newLink.targetName<<" for "<<clipName<<endl;
+//                    cout<<"suppressed"<<newLink.targetName<<" for "<<clipName<<endl;
 					suppressedConnections[newLink.sourceName].push_back( newLink );
 				}
 			}        

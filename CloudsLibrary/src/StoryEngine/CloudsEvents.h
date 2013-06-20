@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "CloudsClip.h"
+#include "CloudsVisualSystemPreset.h"
 
 class CloudsStoryEventArgs : public ofEventArgs {
   public:
@@ -19,6 +20,19 @@ class CloudsStoryEventArgs : public ofEventArgs {
 	float timeUntilNextClip;
 };
 
+class CloudsVisualSystemEventArgs : public ofEventArgs {
+  public:
+	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
+		: preset(preset)
+	{
+		duration = 0;
+	}
+
+	CloudsVisualSystemPreset& preset;
+	
+	float duration;
+};
+
 class CloudsEvents {
   public:
 	ofEvent<CloudsStoryEventArgs> storyBegan;
@@ -27,8 +41,8 @@ class CloudsEvents {
 	ofEvent<CloudsStoryEventArgs> clipBegan;
 	ofEvent<CloudsStoryEventArgs> clipEnded;
 
-	ofEvent<CloudsStoryEventArgs> visualSystemBegan;
-	ofEvent<CloudsStoryEventArgs> visualSystemEnded;
+	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
+	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
 	ofEvent<CloudsStoryEventArgs> topicChanged;
 	
