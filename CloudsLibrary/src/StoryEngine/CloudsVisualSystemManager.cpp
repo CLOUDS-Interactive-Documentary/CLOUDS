@@ -1,6 +1,7 @@
 
 #include "CloudsVisualSystemManager.h"
 
+#ifndef CLOUDS_NO_VS
 #include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsVisualSystemLSystems.h"
@@ -9,8 +10,8 @@
 #include "CloudsVisualSystemCities.h"
 #include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemCollaboration1.h"
-#include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemAmber.h"
+#endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
 
@@ -18,7 +19,7 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
-	
+#ifndef CLOUDS_NO_VS
 	nameToVisualSystem.clear();
 	systems.clear();
 	presets.clear();
@@ -32,11 +33,13 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );
+#endif
+    
 }
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
-	
+#ifndef CLOUDS_NO_VS	
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	
 	system->setup();
@@ -58,6 +61,7 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 		
 		presets.push_back(preset);
 	}
+   #endif
 }
 
 //--------------------------------------------------------------------

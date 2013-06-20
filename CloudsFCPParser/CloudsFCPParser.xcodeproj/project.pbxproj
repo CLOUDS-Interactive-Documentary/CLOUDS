@@ -10,6 +10,34 @@
 		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
 		1814270D1768C2F100C2B5FE /* CloudsClusterVisualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */; };
 		181427101769376D00C2B5FE /* ParticleEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270E1769376B00C2B5FE /* ParticleEdge.cpp */; };
+		18CCC2E41773B26A003436EC /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */; };
+		18CCC2E51773B26A003436EC /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */; };
+		18CCC3AC1773B4DF003436EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3741773B4DF003436EC /* .gitignore */; };
+		18CCC3AD1773B4DF003436EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3751773B4DF003436EC /* README.md */; };
+		18CCC3AE1773B4DF003436EC /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3781773B4DF003436EC /* ofxBehavior.cpp */; };
+		18CCC3AF1773B4DF003436EC /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC37C1773B4DF003436EC /* ofxBufferEffectorBehavior.cpp */; };
+		18CCC3B01773B4DF003436EC /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC37F1773B4DF003436EC /* ofxDamperBehavior.cpp */; };
+		18CCC3B11773B4DF003436EC /* ofxDistorterBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3811773B4DF003436EC /* ofxDistorterBehavior.cpp */; };
+		18CCC3B21773B4DF003436EC /* ofxElectroStaticBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3831773B4DF003436EC /* ofxElectroStaticBehavior.cpp */; };
+		18CCC3B31773B4DF003436EC /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3851773B4DF003436EC /* ofxField2D.cpp */; };
+		18CCC3B41773B4DF003436EC /* ofxHomingBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC38C1773B4DF003436EC /* ofxHomingBehavior.cpp */; };
+		18CCC3B51773B4DF003436EC /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3911773B4DF003436EC /* ofxPerlinBehavior.cpp */; };
+		18CCC3B61773B4DF003436EC /* ofxRParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3951773B4DF003436EC /* ofxRParticle.cpp */; };
+		18CCC3B71773B4DF003436EC /* ofxRParticleGlowieRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3981773B4DF003436EC /* ofxRParticleGlowieRenderer.cpp */; };
+		18CCC3B81773B4DF003436EC /* ofxRParticleRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC39A1773B4DF003436EC /* ofxRParticleRenderer.cpp */; };
+		18CCC3B91773B4DF003436EC /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC39C1773B4DF003436EC /* ofxRParticleSystem.cpp */; };
+		18CCC3BA1773B4DF003436EC /* ofxSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3A01773B4DF003436EC /* ofxSolver.cpp */; };
+		18CCC3BB1773B4DF003436EC /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3A21773B4DF003436EC /* ofxSphericalAttractionBehavior.cpp */; };
+		18CCC3BC1773B4DF003436EC /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3A71773B4DF003436EC /* ofxSwarmBehavior.cpp */; };
+		18CCC3BD1773B4DF003436EC /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3AA1773B4DF003436EC /* ofxVerletSolver.cpp */; };
+		18CCC3C41773B51A003436EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3BF1773B51A003436EC /* .gitignore */; };
+		18CCC3C51773B51A003436EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3C01773B51A003436EC /* README.md */; };
+		18CCC3E11773B539003436EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3C71773B538003436EC /* .gitignore */; };
+		18CCC3E71773B539003436EC /* license.md in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3D61773B539003436EC /* license.md */; };
+		18CCC3E81773B539003436EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3D71773B539003436EC /* README.md */; };
+		18CCC3E91773B539003436EC /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC3D91773B539003436EC /* ofxCameraSaveLoad.cpp */; };
+		18CCC3EA1773B539003436EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3DC1773B539003436EC /* .gitignore */; };
+		18CCC3EB1773B539003436EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18CCC3DD1773B539003436EC /* README.md */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -143,6 +171,79 @@
 		1814270C1768C2F100C2B5FE /* CloudsClusterVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterVisualizer.h; sourceTree = "<group>"; };
 		1814270E1769376B00C2B5FE /* ParticleEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEdge.cpp; sourceTree = "<group>"; };
 		1814270F1769376C00C2B5FE /* ParticleEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEdge.h; sourceTree = "<group>"; };
+		18CCC2E01773B238003436EC /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
+		18CCC2E21773B26A003436EC /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
+		18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
+		18CCC3741773B4DF003436EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18CCC3751773B4DF003436EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18CCC3771773B4DF003436EC /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
+		18CCC3781773B4DF003436EC /* ofxBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3791773B4DF003436EC /* ofxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBehavior.h; sourceTree = "<group>"; };
+		18CCC37A1773B4DF003436EC /* ofxBoidParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBoidParticle.h; sourceTree = "<group>"; };
+		18CCC37B1773B4DF003436EC /* ofxBoidSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBoidSystem.h; sourceTree = "<group>"; };
+		18CCC37C1773B4DF003436EC /* ofxBufferEffectorBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBufferEffectorBehavior.cpp; sourceTree = "<group>"; };
+		18CCC37D1773B4DF003436EC /* ofxBufferEffectorBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBufferEffectorBehavior.h; sourceTree = "<group>"; };
+		18CCC37E1773B4DF003436EC /* ofxCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCircle.h; sourceTree = "<group>"; };
+		18CCC37F1773B4DF003436EC /* ofxDamperBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDamperBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3801773B4DF003436EC /* ofxDamperBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDamperBehavior.h; sourceTree = "<group>"; };
+		18CCC3811773B4DF003436EC /* ofxDistorterBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDistorterBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3821773B4DF003436EC /* ofxDistorterBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDistorterBehavior.h; sourceTree = "<group>"; };
+		18CCC3831773B4DF003436EC /* ofxElectroStaticBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxElectroStaticBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3841773B4DF003436EC /* ofxElectroStaticBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxElectroStaticBehavior.h; sourceTree = "<group>"; };
+		18CCC3851773B4DF003436EC /* ofxField2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxField2D.cpp; sourceTree = "<group>"; };
+		18CCC3861773B4DF003436EC /* ofxField2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxField2D.h; sourceTree = "<group>"; };
+		18CCC3871773B4DF003436EC /* ofxFieldAgitator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFieldAgitator.h; sourceTree = "<group>"; };
+		18CCC3881773B4DF003436EC /* ofxGenerative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGenerative.h; sourceTree = "<group>"; };
+		18CCC3891773B4DF003436EC /* ofxGenericShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGenericShape.h; sourceTree = "<group>"; };
+		18CCC38A1773B4DF003436EC /* ofxHOCParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHOCParticle.h; sourceTree = "<group>"; };
+		18CCC38B1773B4DF003436EC /* ofxHOCParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHOCParticleSystem.h; sourceTree = "<group>"; };
+		18CCC38C1773B4DF003436EC /* ofxHomingBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxHomingBehavior.cpp; sourceTree = "<group>"; };
+		18CCC38D1773B4DF003436EC /* ofxHomingBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHomingBehavior.h; sourceTree = "<group>"; };
+		18CCC38E1773B4DF003436EC /* ofxParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticle.h; sourceTree = "<group>"; };
+		18CCC38F1773B4DF003436EC /* ofxParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticleSystem.h; sourceTree = "<group>"; };
+		18CCC3901773B4DF003436EC /* ofxParticleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxParticleTouch.h; sourceTree = "<group>"; };
+		18CCC3911773B4DF003436EC /* ofxPerlinBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPerlinBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3921773B4DF003436EC /* ofxPerlinBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPerlinBehavior.h; sourceTree = "<group>"; };
+		18CCC3931773B4DF003436EC /* ofxRezaParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRezaParticle.h; sourceTree = "<group>"; };
+		18CCC3941773B4DF003436EC /* ofxRezaParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRezaParticleSystem.h; sourceTree = "<group>"; };
+		18CCC3951773B4DF003436EC /* ofxRParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticle.cpp; sourceTree = "<group>"; };
+		18CCC3961773B4DF003436EC /* ofxRParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticle.h; sourceTree = "<group>"; };
+		18CCC3971773B4DF003436EC /* ofxRParticleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleData.h; sourceTree = "<group>"; };
+		18CCC3981773B4DF003436EC /* ofxRParticleGlowieRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleGlowieRenderer.cpp; sourceTree = "<group>"; };
+		18CCC3991773B4DF003436EC /* ofxRParticleGlowieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleGlowieRenderer.h; sourceTree = "<group>"; };
+		18CCC39A1773B4DF003436EC /* ofxRParticleRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleRenderer.cpp; sourceTree = "<group>"; };
+		18CCC39B1773B4DF003436EC /* ofxRParticleRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleRenderer.h; sourceTree = "<group>"; };
+		18CCC39C1773B4DF003436EC /* ofxRParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRParticleSystem.cpp; sourceTree = "<group>"; };
+		18CCC39D1773B4DF003436EC /* ofxRParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRParticleSystem.h; sourceTree = "<group>"; };
+		18CCC39E1773B4DF003436EC /* ofxSmartParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSmartParticle.h; sourceTree = "<group>"; };
+		18CCC39F1773B4DF003436EC /* ofxSmartParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSmartParticleSystem.h; sourceTree = "<group>"; };
+		18CCC3A01773B4DF003436EC /* ofxSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSolver.cpp; sourceTree = "<group>"; };
+		18CCC3A11773B4DF003436EC /* ofxSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSolver.h; sourceTree = "<group>"; };
+		18CCC3A21773B4DF003436EC /* ofxSphericalAttractionBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSphericalAttractionBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3A31773B4DF003436EC /* ofxSphericalAttractionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSphericalAttractionBehavior.h; sourceTree = "<group>"; };
+		18CCC3A41773B4DF003436EC /* ofxSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpring.h; sourceTree = "<group>"; };
+		18CCC3A51773B4DF003436EC /* ofxSpringSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpringSystem.h; sourceTree = "<group>"; };
+		18CCC3A61773B4DF003436EC /* ofxSuperShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSuperShape.h; sourceTree = "<group>"; };
+		18CCC3A71773B4DF003436EC /* ofxSwarmBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSwarmBehavior.cpp; sourceTree = "<group>"; };
+		18CCC3A81773B4DF003436EC /* ofxSwarmBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSwarmBehavior.h; sourceTree = "<group>"; };
+		18CCC3A91773B4DF003436EC /* ofxTrailParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrailParticle.h; sourceTree = "<group>"; };
+		18CCC3AA1773B4DF003436EC /* ofxVerletSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVerletSolver.cpp; sourceTree = "<group>"; };
+		18CCC3AB1773B4DF003436EC /* ofxVerletSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVerletSolver.h; sourceTree = "<group>"; };
+		18CCC3BF1773B51A003436EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18CCC3C01773B51A003436EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18CCC3C21773B51A003436EC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
+		18CCC3C31773B51A003436EC /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
+		18CCC3C71773B538003436EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18CCC3D61773B539003436EC /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		18CCC3D71773B539003436EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18CCC3D91773B539003436EC /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
+		18CCC3DA1773B539003436EC /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		18CCC3DC1773B539003436EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18CCC3DD1773B539003436EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		18CCC3DF1773B539003436EC /* ofxExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
+		18CCC3E01773B539003436EC /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		18E82CF11773B18A00C17B65 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -406,6 +507,146 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18CCC2DF1773B22D003436EC /* RGBD */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC2E01773B238003436EC /* CloudsRGBDCombinedRender.h */,
+			);
+			name = RGBD;
+			sourceTree = "<group>";
+		};
+		18CCC3731773B4DF003436EC /* ofxGenerative */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3741773B4DF003436EC /* .gitignore */,
+				18CCC3751773B4DF003436EC /* README.md */,
+				18CCC3761773B4DF003436EC /* src */,
+			);
+			name = ofxGenerative;
+			path = ../../../addons/ofxGenerative;
+			sourceTree = "<group>";
+		};
+		18CCC3761773B4DF003436EC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3771773B4DF003436EC /* ofx1DExtruder.h */,
+				18CCC3781773B4DF003436EC /* ofxBehavior.cpp */,
+				18CCC3791773B4DF003436EC /* ofxBehavior.h */,
+				18CCC37A1773B4DF003436EC /* ofxBoidParticle.h */,
+				18CCC37B1773B4DF003436EC /* ofxBoidSystem.h */,
+				18CCC37C1773B4DF003436EC /* ofxBufferEffectorBehavior.cpp */,
+				18CCC37D1773B4DF003436EC /* ofxBufferEffectorBehavior.h */,
+				18CCC37E1773B4DF003436EC /* ofxCircle.h */,
+				18CCC37F1773B4DF003436EC /* ofxDamperBehavior.cpp */,
+				18CCC3801773B4DF003436EC /* ofxDamperBehavior.h */,
+				18CCC3811773B4DF003436EC /* ofxDistorterBehavior.cpp */,
+				18CCC3821773B4DF003436EC /* ofxDistorterBehavior.h */,
+				18CCC3831773B4DF003436EC /* ofxElectroStaticBehavior.cpp */,
+				18CCC3841773B4DF003436EC /* ofxElectroStaticBehavior.h */,
+				18CCC3851773B4DF003436EC /* ofxField2D.cpp */,
+				18CCC3861773B4DF003436EC /* ofxField2D.h */,
+				18CCC3871773B4DF003436EC /* ofxFieldAgitator.h */,
+				18CCC3881773B4DF003436EC /* ofxGenerative.h */,
+				18CCC3891773B4DF003436EC /* ofxGenericShape.h */,
+				18CCC38A1773B4DF003436EC /* ofxHOCParticle.h */,
+				18CCC38B1773B4DF003436EC /* ofxHOCParticleSystem.h */,
+				18CCC38C1773B4DF003436EC /* ofxHomingBehavior.cpp */,
+				18CCC38D1773B4DF003436EC /* ofxHomingBehavior.h */,
+				18CCC38E1773B4DF003436EC /* ofxParticle.h */,
+				18CCC38F1773B4DF003436EC /* ofxParticleSystem.h */,
+				18CCC3901773B4DF003436EC /* ofxParticleTouch.h */,
+				18CCC3911773B4DF003436EC /* ofxPerlinBehavior.cpp */,
+				18CCC3921773B4DF003436EC /* ofxPerlinBehavior.h */,
+				18CCC3931773B4DF003436EC /* ofxRezaParticle.h */,
+				18CCC3941773B4DF003436EC /* ofxRezaParticleSystem.h */,
+				18CCC3951773B4DF003436EC /* ofxRParticle.cpp */,
+				18CCC3961773B4DF003436EC /* ofxRParticle.h */,
+				18CCC3971773B4DF003436EC /* ofxRParticleData.h */,
+				18CCC3981773B4DF003436EC /* ofxRParticleGlowieRenderer.cpp */,
+				18CCC3991773B4DF003436EC /* ofxRParticleGlowieRenderer.h */,
+				18CCC39A1773B4DF003436EC /* ofxRParticleRenderer.cpp */,
+				18CCC39B1773B4DF003436EC /* ofxRParticleRenderer.h */,
+				18CCC39C1773B4DF003436EC /* ofxRParticleSystem.cpp */,
+				18CCC39D1773B4DF003436EC /* ofxRParticleSystem.h */,
+				18CCC39E1773B4DF003436EC /* ofxSmartParticle.h */,
+				18CCC39F1773B4DF003436EC /* ofxSmartParticleSystem.h */,
+				18CCC3A01773B4DF003436EC /* ofxSolver.cpp */,
+				18CCC3A11773B4DF003436EC /* ofxSolver.h */,
+				18CCC3A21773B4DF003436EC /* ofxSphericalAttractionBehavior.cpp */,
+				18CCC3A31773B4DF003436EC /* ofxSphericalAttractionBehavior.h */,
+				18CCC3A41773B4DF003436EC /* ofxSpring.h */,
+				18CCC3A51773B4DF003436EC /* ofxSpringSystem.h */,
+				18CCC3A61773B4DF003436EC /* ofxSuperShape.h */,
+				18CCC3A71773B4DF003436EC /* ofxSwarmBehavior.cpp */,
+				18CCC3A81773B4DF003436EC /* ofxSwarmBehavior.h */,
+				18CCC3A91773B4DF003436EC /* ofxTrailParticle.h */,
+				18CCC3AA1773B4DF003436EC /* ofxVerletSolver.cpp */,
+				18CCC3AB1773B4DF003436EC /* ofxVerletSolver.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		18CCC3BE1773B51A003436EC /* ofxColorPalettes */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3BF1773B51A003436EC /* .gitignore */,
+				18CCC3C01773B51A003436EC /* README.md */,
+				18CCC3C11773B51A003436EC /* src */,
+			);
+			name = ofxColorPalettes;
+			path = ../../../addons/ofxColorPalettes;
+			sourceTree = "<group>";
+		};
+		18CCC3C11773B51A003436EC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3C21773B51A003436EC /* ofxColorPalette.h */,
+				18CCC3C31773B51A003436EC /* ofxColorPalettes.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		18CCC3C61773B538003436EC /* ofxCameraSaveLoad */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3C71773B538003436EC /* .gitignore */,
+				18CCC3D61773B539003436EC /* license.md */,
+				18CCC3D71773B539003436EC /* README.md */,
+				18CCC3D81773B539003436EC /* src */,
+			);
+			name = ofxCameraSaveLoad;
+			path = ../../../addons/ofxCameraSaveLoad;
+			sourceTree = "<group>";
+		};
+		18CCC3D81773B539003436EC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3D91773B539003436EC /* ofxCameraSaveLoad.cpp */,
+				18CCC3DA1773B539003436EC /* ofxCameraSaveLoad.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		18CCC3DB1773B539003436EC /* ofxExtras */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3DC1773B539003436EC /* .gitignore */,
+				18CCC3DD1773B539003436EC /* README.md */,
+				18CCC3DE1773B539003436EC /* src */,
+			);
+			name = ofxExtras;
+			path = ../../../addons/ofxExtras;
+			sourceTree = "<group>";
+		};
+		18CCC3DE1773B539003436EC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18CCC3DF1773B539003436EC /* ofxExtras.h */,
+				18CCC3E01773B539003436EC /* ofxLight.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		608B6AAE16A78AB800144EF4 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +668,10 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				18CCC3C61773B538003436EC /* ofxCameraSaveLoad */,
+				18CCC3DB1773B539003436EC /* ofxExtras */,
+				18CCC3BE1773B51A003436EC /* ofxColorPalettes */,
+				18CCC3731773B4DF003436EC /* ofxGenerative */,
 				E750BD4716E67F560088F1E4 /* ofxUI */,
 				E7DA11B216DC26BE00DA505A /* ofxMSATimer */,
 				E7DA11CA16DC26BE00DA505A /* ofxRange */,
@@ -570,6 +815,7 @@
 		E7432D7F170F42CE00C554EC /* src */ = {
 			isa = PBXGroup;
 			children = (
+				18CCC2DF1773B22D003436EC /* RGBD */,
 				E7637D691734DEF7008ADC62 /* Exporters */,
 				E7637D6C1734DEF7008ADC62 /* StoryEngine */,
 			);
@@ -644,6 +890,10 @@
 		E7637D6C1734DEF7008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */,
+				18CCC2E21773B26A003436EC /* CloudsVisualSystemManager.h */,
+				18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */,
+				18E82CF11773B18A00C17B65 /* CloudsVisualSystemPreset.h */,
 				18142706176629ED00C2B5FE /* ClusterData.cpp */,
 				18142707176629EE00C2B5FE /* ClusterData.h */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
@@ -1182,6 +1432,15 @@
 				E774701116D83DA8001038F9 /* README.md in Resources */,
 				E7DA110316DC267200DA505A /* libsndfile-1.dll in Resources */,
 				E7DA119E16DC26A700DA505A /* easing_terms_of_use.html in Resources */,
+				18CCC3AC1773B4DF003436EC /* .gitignore in Resources */,
+				18CCC3AD1773B4DF003436EC /* README.md in Resources */,
+				18CCC3C41773B51A003436EC /* .gitignore in Resources */,
+				18CCC3C51773B51A003436EC /* README.md in Resources */,
+				18CCC3E11773B539003436EC /* .gitignore in Resources */,
+				18CCC3E71773B539003436EC /* license.md in Resources */,
+				18CCC3E81773B539003436EC /* README.md in Resources */,
+				18CCC3EA1773B539003436EC /* .gitignore in Resources */,
+				18CCC3EB1773B539003436EC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,6 +1535,25 @@
 				18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */,
 				1814270D1768C2F100C2B5FE /* CloudsClusterVisualizer.cpp in Sources */,
 				181427101769376D00C2B5FE /* ParticleEdge.cpp in Sources */,
+				18CCC2E41773B26A003436EC /* CloudsVisualSystemManager.cpp in Sources */,
+				18CCC2E51773B26A003436EC /* CloudsVisualSystemPreset.cpp in Sources */,
+				18CCC3AE1773B4DF003436EC /* ofxBehavior.cpp in Sources */,
+				18CCC3AF1773B4DF003436EC /* ofxBufferEffectorBehavior.cpp in Sources */,
+				18CCC3B01773B4DF003436EC /* ofxDamperBehavior.cpp in Sources */,
+				18CCC3B11773B4DF003436EC /* ofxDistorterBehavior.cpp in Sources */,
+				18CCC3B21773B4DF003436EC /* ofxElectroStaticBehavior.cpp in Sources */,
+				18CCC3B31773B4DF003436EC /* ofxField2D.cpp in Sources */,
+				18CCC3B41773B4DF003436EC /* ofxHomingBehavior.cpp in Sources */,
+				18CCC3B51773B4DF003436EC /* ofxPerlinBehavior.cpp in Sources */,
+				18CCC3B61773B4DF003436EC /* ofxRParticle.cpp in Sources */,
+				18CCC3B71773B4DF003436EC /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				18CCC3B81773B4DF003436EC /* ofxRParticleRenderer.cpp in Sources */,
+				18CCC3B91773B4DF003436EC /* ofxRParticleSystem.cpp in Sources */,
+				18CCC3BA1773B4DF003436EC /* ofxSolver.cpp in Sources */,
+				18CCC3BB1773B4DF003436EC /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				18CCC3BC1773B4DF003436EC /* ofxSwarmBehavior.cpp in Sources */,
+				18CCC3BD1773B4DF003436EC /* ofxVerletSolver.cpp in Sources */,
+				18CCC3E91773B539003436EC /* ofxCameraSaveLoad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1366,6 +1644,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "CLOUDS_NO_VS=1";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1444,6 +1723,11 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../../../../of_v0.7.4_osx_release/addons/ofxPCL/libs/pcl/lib/osx\"";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParserDebug;
 				WRAPPER_EXTENSION = app;
@@ -1464,6 +1748,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "CLOUDS_NO_VS=1";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1542,6 +1827,11 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../../../../of_v0.7.4_osx_release/addons/ofxPCL/libs/pcl/lib/osx\"";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsFCPParser;
 				WRAPPER_EXTENSION = app;
