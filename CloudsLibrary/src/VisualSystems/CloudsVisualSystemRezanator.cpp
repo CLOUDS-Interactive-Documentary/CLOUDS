@@ -149,7 +149,11 @@ void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 void CloudsVisualSystemRezanator::begin()
 {
     loadGUIS();
-    showGUIS();
+	timeline->hide();
+	hideGUIS();
+	ofHideCursor();
+	
+//    showGUIS(); //remove this so the gui doesn't keep popping up
     cam.enableMouseInput();
     for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
     {
@@ -170,6 +174,19 @@ void CloudsVisualSystemRezanator::end()
     selfEnd();
 }
 
+void CloudsVisualSystemRezanator::toggleControls(){
+	
+	toggleGUIS();
+	timeline->toggleShow();
+	
+	if(timeline->getIsShowing()){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
+
+}
 void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
 {
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -227,8 +244,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             
         case 'h':
         {
-            toggleGUIS();
-			timeline->toggleShow();
+			toggleControls();
         }
             break;
             
@@ -2075,11 +2091,12 @@ void CloudsVisualSystemRezanator::drawNormalizedTexturedQuad()
 void CloudsVisualSystemRezanator::drawBackground()
 {
 	ofPushStyle();
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
+//	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	ofEnableAlphaBlending();
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
+	
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
         
@@ -2089,7 +2106,6 @@ void CloudsVisualSystemRezanator::drawBackground()
 		ofSetSmoothLighting(true);
 
         ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
-		ofPopStyle();
     
         //  Sorry Reza this is a quick and durty fix
         //
@@ -2112,8 +2128,8 @@ void CloudsVisualSystemRezanator::drawBackground()
         ofSetSmoothLighting(false);
         ofBackground(*bgColor);
     }
-	glPopAttrib();
-	ofPopStyle();	
+//	glPopAttrib();
+	ofPopStyle();
 }
 
 void CloudsVisualSystemRezanator::ofLayerGradient(const ofColor& start, const ofColor& end)

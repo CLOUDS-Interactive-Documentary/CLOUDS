@@ -15,6 +15,10 @@ CloudsPlaybackController::~CloudsPlaybackController(){
 void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
 		eventsRegistered = false;
+		
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
 		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
 		ofRemoveListener(storyEngine->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
@@ -25,20 +29,13 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		
-//		delete visualSystemControls;
-//		delete visualSystemDD;
-//		delete keyThemesDD;
 	}
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
-//		camera.setup();
-//		camera.autosavePosition = true;
-//		camera.loadCameraPosition();
 		
-
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
@@ -50,11 +47,12 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
-		
-//		populateVisualSystems();
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
+		
+		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
 		eventsRegistered = true;
 
@@ -96,8 +94,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::update(){
-
+void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
@@ -109,16 +106,10 @@ void CloudsPlaybackController::update(){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::draw(){
+void CloudsPlaybackController::draw(ofEventArgs & args){
 	
+	//glDisable(GL_DEPTH_TEST);
 	storyEngine->drawStoryEngineDebug();
-	
-//	if(!showingVisualSystem && combinedRenderer.isPlaying()){
-//		camera.begin();
-//		combinedRenderer.drawPointCloud();
-//		camera.end();
-//	}
-	
 }
 
 #pragma story engine
@@ -126,13 +117,18 @@ void CloudsPlaybackController::draw(){
 void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
 	
 	rgbdVisualSystem.playSystem();
-	
 	playClip(args.chosenClip);
+	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 	playClip(args.chosenClip);
+	
+	//this has to draw last
+	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }
 
 //--------------------------------------------------------------------

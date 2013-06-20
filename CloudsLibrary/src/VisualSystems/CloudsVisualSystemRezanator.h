@@ -101,6 +101,7 @@ public:
     void deleteGUIS();
     
 	void setCurrentCamera(ofCamera& cam);
+	void toggleControls();
 	bool cursorIsOverGUI();
 	
     //Drawing Helpers
