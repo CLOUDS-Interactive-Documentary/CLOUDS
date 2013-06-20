@@ -32,8 +32,9 @@ void testApp::setup(){
 	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
-
-	storyEngine.seedWithClip( parser.getRandomClip(true) );
+	CloudsClip& clip = parser.getRandomClip(true,true);
+	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+	storyEngine.seedWithClip( clip );
 	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 }
 

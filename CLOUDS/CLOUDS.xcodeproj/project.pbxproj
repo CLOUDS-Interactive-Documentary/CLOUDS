@@ -991,8 +991,6 @@
 			children = (
 				E7F777361772762F0096AEF7 /* CloudsVisualSystemPreset.h */,
 				E7F777351772762F0096AEF7 /* CloudsVisualSystemPreset.cpp */,
-				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
-				E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */,
 				E7637D8D17359C55008ADC62 /* CloudsVisualSystem.h */,
 				E7637D8C17359C55008ADC62 /* CloudsVisualSystem.cpp */,
 				E7D330BE1751D55E006706ED /* CloudsVisualSystemRezanator.h */,
@@ -1021,6 +1019,8 @@
 		E7637D5E1734DE8A008ADC62 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
+				E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
 				E7637D641734DE8A008ADC62 /* CloudsRGBDCombinedRender.h */,
