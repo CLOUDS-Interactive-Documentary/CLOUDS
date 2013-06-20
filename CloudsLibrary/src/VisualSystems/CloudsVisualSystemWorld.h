@@ -9,6 +9,7 @@
 #pragma once
 
 #include "CloudsVisualSystemRezanator.h"
+#include "wParticle.h"
 
 class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
 public:
@@ -46,14 +47,26 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    void loadPath(vector<ofPolyline> &_path, string _file);
+    void loadPath(vector< vector<ofPoint> > &_path, string _file);
     void loadPoints(vector<ofPoint> &_points, string _file);
+    void loadParticles( string _file );
     
-    vector<ofPolyline> coast;
-    vector<ofPolyline> borders;
-    vector<ofPolyline> rivers;
+    vector< vector<ofPoint> > coast;
+    vector< vector<ofPoint> > borders;
+    vector< vector<ofPoint> > rivers;
     
-    vector<ofPoint>    points;
+    vector<wParticle*> particles;
     
-    float pointNoisePeaks;
+    vector< ofPoint > points;
+    
+    ofPoint globalOffset;
+    
+    float   density;
+    float   gravity;
+    float   repulsion;
+    float   turbulence;
+    float   neigbordhood;
+    float   independence;
+    
+    float   pointNoisePeaks;
 };
