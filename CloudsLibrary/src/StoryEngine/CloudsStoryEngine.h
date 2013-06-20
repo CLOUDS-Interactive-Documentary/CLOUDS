@@ -2,8 +2,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
+
+#include "CloudsFCPParser.h"
+#include "CloudsVisualSystemManager.h"
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -15,8 +17,8 @@ class CloudsStoryEngine {
 	CloudsStoryEngine();
 	~CloudsStoryEngine();
 	
-	//CloudsFCPVisualizer* visualizer;
 	CloudsFCPParser* network;
+	CloudsVisualSystemManager* visualSystems;
 	
 	void setup();
 
@@ -51,7 +53,9 @@ class CloudsStoryEngine {
 	
 	//TODO: make dynamic, will be improved
 	float fixedClipDelay;
-
+	
+	void drawStoryEngineDebug();
+	
   protected:
 	
 	CloudsEvents events;
@@ -67,12 +71,16 @@ class CloudsStoryEngine {
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
 
+	void checkVisualSystems();
+	
 	float getNextClipDelay();
 	bool waitingForNextClip;
 	float nextClipTime;
 	
+	bool watchingVisualSystem;
+	float visualSystemEndTime;
+	CloudsVisualSystemPreset currentVisualSystem;
 	
-
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;

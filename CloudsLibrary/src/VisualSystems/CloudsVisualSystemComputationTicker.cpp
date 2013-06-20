@@ -189,13 +189,7 @@ void CloudsVisualSystemComputationTicker::selfBegin(){
 	targetOffset.begin();
 	ofClear(0);
 	targetOffset.end();
-	
-	
-	vector<string> presets = getPresets();
-	if(presets.size() > 0){
-		loadPresetGUIS(getVisualSystemDataPath() + presets[ ofRandom( presets.size() ) ]);
-	}
-
+		
 }
 
 void CloudsVisualSystemComputationTicker::selfEnd(){

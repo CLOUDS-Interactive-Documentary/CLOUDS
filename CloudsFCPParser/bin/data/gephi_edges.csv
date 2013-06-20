@@ -26,17 +26,25 @@ Aaron - story medium,Vera - Energy Flow2
 Aaron - story medium,Vera - having a protagonist
 Aaron - story medium,Vera - Accessibility through strories
 Aaron - global communication,Maeda - people are best communicators
+Aaron - global communication,Regine - Internet doesn't change things
+Aaron - global communication,Sophy - the Cloud
 Aaron - global interactions,Kyle_CH - coral reefs
 Aaron - different ways of communicating,Kyle_CH - coral reefs
+Aaron - different ways of communicating,Maeda - People you're meeting,
+Aaron - different ways of communicating,JTNimoy - relating
 Aaron - dreaming together,Golan_AMA - World becoming one mind
 Aaron - dreaming together,Julia - Who owns the internet?
 Aaron - dreaming together,Karsten - DarkNet
 Aaron - dreaming together,Philip - in touch all the time
 Aaron - dreaming together,Sophy - nanobots
 Aaron - dreaming together,Sophy - the Cloud
+Aaron - dreaming together,Elliot_UK - Ideaspace
 Aaron - exchange of ideas drives progress,Binx - technoutopian
 Aaron - exchange of ideas drives progress,Binx - changing the world
 Aaron - exchange of ideas drives progress,Marcus - Epic Games predictions
+Aaron - exchange of ideas drives progress,Elliot_UK - Ideaspace
+Aaron - exchange of ideas drives progress,Theo - newness
+Aaron - exchange of ideas drives progress,Julian - toolkit culture
 Aaron - autonomous storytellers,Greg - visual effects
 Aaron - autonomous storytellers,Karolina - Journey
 Aaron - autonomous storytellers,Kyle_CH - storytelling
@@ -58,9 +66,13 @@ Aaron - sheep market 2,Jer - post-capitalism2
 Aaron - sheep market 2,Marcus - economics question
 Aaron - data storytelling,Golan - listening post
 Aaron - data storytelling,Shantell - sharing
+Aaron - data storytelling,Jer - lives being documented through data
 Aaron - webGL,Kyle_CH - Avatars
 Aaron - lego creatures,Sophy - nanobots
 Aaron - lego creatures,Sophy - computer dream
+Aaron - lego creatures,Kyle_CH - MMORPGs
+Aaron - lego creatures,Kyle_CH - videogame world
+Aaron - lego creatures,Kyle_CH - Polygons
 Aaron - exquisite forest,Chris - remote collaboration
 Aaron - exquisite forest,Chris - ethic of sharing
 Aaron - exquisite forest,Golan - hackathons2
@@ -85,7 +97,16 @@ Aaron - exquisite forest 3,Vera - Energy Flow2
 Aaron - exquisite forest 3,Vera - having a protagonist
 Aaron - exquisite forest 3,Vera - Accessibility through strories
 Aaron - exquisite forest 3,Zach - drawn2
+Aaron - infinity,Kyle_CH - virtual space online
+Aaron - infinity,Kyle_CH - coral reefs
+Aaron - infinity,Nervous_Jesse - Time in the universe
 Aaron - code, story, communication,Zach - Time slows down
+Aaron - experience design,Paola - Portal
+Aaron - experience design,Jer - everyday experience
+Aaron - experience design,Golan - jolted into the NOW
+Aaron - experience design,Shantell - Future gesture
+Aaron - experience design,Sophy - everyday media
+Aaron - experience design,Theo - hide the technology,
 Aaron - progress,Julian - science fiction
 Aaron - progress,Kyle_CH - storytelling
 Aaron - progress,Kyle_CH - Cloud atlas
@@ -99,6 +120,8 @@ Aaron - recombination,Julian - toolkit culture
 Aaron - recombination,Lindsay - collective creativity
 Aaron - recombination,Lindsay - memes 2
 Aaron - recombination,Maeda - Isn't it supposed to be new?
+Aaron - recombination,Casey - Style diffuses
+Aaron - recombination,Karsten - dissemination
 Binx - actually interesting,Aaron - data experience
 Binx - actually interesting,Aaron - data storytelling
 Binx - actually interesting,Aaron - infinity
@@ -114,6 +137,8 @@ Binx - tool for others,Jer - everyday experience
 Binx - tool for others,Jer - active not interactive
 Binx - tool for others,Julia - what is it doing to us
 Binx - tool for others,Maeda - How do you relate to people?
+Binx - tool for others,Aaron - stories make our lives worth living
+Binx - tool for others,Aaron - code, story, communication
 Binx - trips,Golan - emotion
 Binx - trips,Golan - listening post
 Binx - trips,Golan - open data
@@ -193,7 +218,6 @@ Binx - ar&&code,Zach - drawing with Tayoon
 Binx - ar&&code,Theo - open frameworks
 Binx - programming is a superpower,Diederick - all programmers have that
 Binx - programming is a superpower,Philip - with programming you can do whatever
-Binx - programming is a superpower,Binx - changing the world
 Binx - tech fracturing,Casey - Programming at 26
 Binx - tech fracturing,Karsten - why don't we learn?
 Binx - tech fracturing,Philip - learn through programming
@@ -279,7 +303,9 @@ Binx - changing the world,Julia - power back to users
 Binx - changing the world,Karsten - solving complex problems
 Binx - changing the world,Marcus - Epic Games predictions
 Binx - changing the world,Marius - Thoroughly enjoying it at the moment
+Binx - changing the world,Golan - Anxious about the future
 Binx - changing the world,Vera - Energy Flow2
+Binx - changing the world,Julian - toolkit culture
 Binx - art and culture,Jer - spoken word
 Binx - art and culture,Julia - program or be programmed
 Binx - art and culture,Julia - toward greater generosity
@@ -312,9 +338,11 @@ Binx - there was no degree,Paola - the tribe
 Binx - there was no degree,Shiffman - Not a visual thinker
 Binx - there was no degree,Shiffman - advanced environment
 Binx - there was no degree,Maeda - not a big deal
+Binx - there was no degree,Paola - tranny designers
 Binx - tools for storytelling2,Jer - everyday experience
 Binx - tools for storytelling2,Jer - active not interactive
 Binx - tools for storytelling2,Julia - what is it doing to us
+Binx - tools for storytelling2,Golan - listening post
 Binx - tools for storytelling2,Vera - Accessibility through strories
 Binx - work for hire,Regine - making a living
 Binx - work for hire,Paola - designer of the future
@@ -324,12 +352,12 @@ Casey - beginnings,Golan - ACG
 Casey - beginnings,Paola - tranny designers
 Casey - beginnings,Nervous_Jessica - John Maeda
 Casey - Processing, what is it?,Karsten - processing
+Casey - Processing, what is it?,Philip - toxi's physics
 Casey - Sketching with code,Binx - hackathon
 Casey - Sketching with code,Binx - ar&&code
 Casey - Sketching with code,JTNimoy - thinking by doing
 Casey - Sketching with code,Philip - get an idea
 Casey - Sketching with code,Shantell - drawing with the computer
-Casey - Sketching with code,Shiffman - sketching with code
 Casey - tangle,JTNimoy - thinking by doing
 Casey - tangle,Paola - Thinking by doing
 Casey - tangle,Zach - drawing with Tayoon
@@ -343,7 +371,6 @@ Casey - Systems theory,Marcus - lego bricks
 Casey - Systems theory,Casey - emergence
 Casey - Systems theory,Shiffman - how far could we get?
 Casey - Systems theory,Golan - woah2
-Casey - Systems theory,Karolina - Everything
 Casey - Systems theory,Vera - Digital life forms
 Casey - emergence,Marcus - emergence
 Casey - emergence,Nervous_Jesse - organic process
@@ -352,6 +379,8 @@ Casey - emergence,Philip - toxi's physics
 Casey - emergence,Philip - couldn't do this with actual water
 Casey - emergence,Shiffman - nature of code p.2 shorter
 Casey - synthetic biology,Nervous_Jesse - Biology is messy
+Casey - Craig Venter,Nervous_Jessica - biocomputer
+Casey - Craig Venter,Nervous_Jesse - Biology is messy
 Casey - Birth of processing,Binx - there was no degree
 Casey - Birth of processing,Golan - administrating versus making
 Casey - Birth of processing,Jer - Toxi: gurus
@@ -362,11 +391,11 @@ Casey - Birth of processing,Philip - if I had Processing in school
 Casey - Birth of processing,Shiffman - Not a visual thinker
 Casey - Birth of processing,Shiffman - advanced environment
 Casey - Birth of processing,Zach - Open Frameworks 3
+Casey - Birth of processing,Jer - Making a tool
 Casey - Birth of processing,Shiffman - sharing
 Casey - Birth of processing,Shiffman - Open Source Contract
 Casey - Birth of processing,Maeda - Processing toolkit
 Casey - Birth of processing,Shiffman - Marker 4
-Casey - Design by numbers to processing,Philip - if I had Processing in school
 Casey - Design by numbers to processing,Shiffman - Not a visual thinker
 Casey - Design by numbers to processing,Casey - Birth of processing
 Casey - Design by numbers to processing,Maeda - Processing
@@ -430,11 +459,14 @@ Casey - group teaching,Zach - at a festival
 Casey - group teaching,Zach - printshop
 Casey - group teaching,Zach - emailing the communnity
 Casey - People would pop up,Marcus - new tricks
-Casey - Style diffuses,Lindsay - collective creativity
+Casey - People would pop up,JTNimoy - one of us
 Casey - Style diffuses,Marcus - visual culture evoling
 Casey - Style diffuses,Marcus - new tricks
 Casey - Style diffuses,JTNimoy - originality
 Casey - Style diffuses,Marcus - community styles
+Casey - Style diffuses,Aaron - exchange of ideas drives progress
+Casey - Style diffuses,Aaron - recombination
+Casey - Style diffuses,Lindsay - collective creativity
 Casey - Casey,Shantell - luck
 Casey - Casey,Shantell - Sharing creates luck
 Casey - branching off branching,JTNimoy - thinking by doing
@@ -450,7 +482,6 @@ Casey - Tree of Life,Karolina - interactive tableau
 Casey - Tree of Life,Jer - ambiguous narrative
 Casey - It's not cinema not a game,Karolina - Journey
 Casey - It's not cinema not a game,Shiffman - Games
-Casey - It's not cinema not a game,JTNimoy - increased the bandwidth
 Casey - It's not cinema not a game,Marcus - Sims
 Casey - It's not cinema not a game,Vera - Energy Flow1
 Casey - It's not cinema not a game,Sophy - nonlinearity
@@ -471,7 +502,6 @@ Casey - Programming at 26,Shiffman - Maybe I'd like that
 Casey - Programming at 26,Shiffman - mysterious box
 Casey - Programming at 26,Zach - action script
 Casey - Programming at 26,Zach - action script shorter
-Casey - Programming at 26,Golan - woah2
 Casey - Computer as collaborator,Karolina - Ocean as metaphor
 Casey - Computer as collaborator,Marcus - emergence
 Casey - Computer as collaborator,Marcus - Sims
@@ -537,6 +567,7 @@ Chris - ethic of sharing,Shiffman - Open Source Contract
 Chris - ethic of sharing,Zach - printshop
 Chris - ethic of sharing,Zach - decompiling
 Chris - interfaces,Julian - ideology of seamlessness
+Chris - interfaces,Maeda - thinking about interfaces
 Chris - Eyewriter,Kyle_MC - Eyewriter
 Chris - Eyewriter,Jer - Eyewriter touchstone
 Chris - not a gadget-person,Kyle_MC - devices
@@ -604,15 +635,17 @@ Elliot_UK - 2D vision in a 3D world,Philip - understanding through physics
 Elliot_UK - 2D vision in a 3D world,Philip - image is in your brain
 Elliot_UK - 2D vision in a 3D world,Sophy - made of photons
 Elliot_UK - Ideaspace,Julia - net friends
-Elliot_UK - Ideaspace,Lindsay - collective creativity
 Elliot_UK - Ideaspace,Lindsay - memes 2
-Elliot_UK - Laying claim on ideas,Aaron - recombination
-Elliot_UK - Laying claim on ideas,JTNimoy - originality
+Elliot_UK - Ideaspace,Aaron - exchange of ideas drives progress
+Elliot_UK - Ideaspace,Lindsay - collective creativity
 Elliot_UK - Laying claim on ideas,Julian - toolkit culture
 Elliot_UK - Laying claim on ideas,Lindsay - collective creativity
 Elliot_UK - Laying claim on ideas,Lindsay - memes 2
 Elliot_UK - Laying claim on ideas,Maeda - Isn't it supposed to be new?
 Elliot_UK - Laying claim on ideas,Maeda - Aesthetics and Computation group
+Elliot_UK - Laying claim on ideas,Aaron - recombination
+Elliot_UK - Laying claim on ideas,Joel - first mover
+Elliot_UK - Laying claim on ideas,Theo - newness
 Golan - useless, whimsical,Aaron - Google Data arts
 Golan - useless, whimsical,Kyle_MC - programmers vs artists
 Golan - wide open field,JTNimoy - corporate
@@ -709,7 +742,6 @@ Golan - would be boring,Nervous_Jesse - understanding to control 4
 Golan - would be boring,Shiffman - There's an element of surprise
 Golan - emotion,Binx - trips
 Golan - emotion,Julia - emotional
-Golan - listening post,Aaron - data storytelling
 Golan - listening post,Binx - actually interesting
 Golan - listening post,Binx - trips
 Golan - listening post,Binx - tools for storytelling
@@ -722,9 +754,9 @@ Golan - listening post,Julia - human in tech
 Golan - listening post,Karsten - database
 Golan - listening post,Zach - Time slows down
 Golan - listening post,Zach - drawn2
-Golan - listening post,Jer -
 Golan - listening post,Jer - lives being documented through data
 Golan - listening post,Jer - Thought it was boring
+Golan - listening post,Aaron - data storytelling
 Golan - hybridity,Paola - tranny designers
 Golan - hybridity2,Binx - there was no degree
 Golan - people like myself,Binx - Background
@@ -861,9 +893,9 @@ Golan - keeping you stuff working,Karsten - preserving history
 Golan - keeping you stuff working,Karsten - atari emulation
 Golan - keeping you stuff working,Kyle_CH - old server farms
 Golan - keeping you stuff working,Kyle_CH - erase distinctions
+Golan - keeping you stuff working,Paola - Moma games
 Golan - keeping you stuff working,Paola - museum collections
 Golan - keeping you stuff working,Shiffman - what do you archive?
-Golan - keeping you stuff working,Paola - Moma games
 Golan - administrating versus making,Casey - Birth of processing
 Golan - administrating versus making,Jer - Toxi: gurus
 Golan - administrating versus making,Maeda - Design by Numbers
@@ -995,13 +1027,13 @@ Greg - human augmentation,Golan - jolted into the NOW
 Greg - A.I.,Binx - technoutopian
 Greg - A.I.,Binx - changing the world
 Greg - A.I.,Golan_AMA - machines and human intelligence
-Greg - A.I.,Golan_AMA - singularity
 Greg - A.I.,Golan_AMA - World becoming one mind
 Greg - A.I.,JTNimoy - Comes from the human mind
 Greg - A.I.,JTNimoy - based on human mind
 Greg - A.I.,Kyle_MC - uncanny
 Greg - A.I.,Marcus - Epic Games predictions
 Greg - A.I.,Marius - Thoroughly enjoying it at the moment
+Greg - A.I.,Golan_AMA - singularity
 Greg - object oriented ontology 1,Julia - human in tech
 Greg - object oriented ontology 1,Marius - Aesthetic with no references,
 Greg - object oriented ontology 1,Marius - Machines change the way we see
@@ -1068,6 +1100,7 @@ Greg - community,Zach - at a festival
 Greg - community,Zach - printshop
 Greg - community,Zach - emailing the communnity
 Greg - community,Jer - fireflies
+Greg - community,Elliot_UK - Ideaspace
 Greg - visual effects,Aaron - mini-brains 2
 Greg - visual effects,Aaron - story medium
 Greg - visual effects,Aaron - autonomous storytellers
@@ -1150,10 +1183,10 @@ Jer - Pattern,Karsten - database
 Jer - Pattern,Marcus - emergence
 Jer - Pattern,Marcus - Sims
 Jer - Pattern,Marcus - energy flow_riot
-Jer - Pattern,Marcus - lego bricks
 Jer - Pattern,Nervous_Jessica - biocomputer
 Jer - Pattern,Shiffman - Games
 Jer - Pattern,Shiffman - nature of code p.2 shorter
+Jer - Pattern,Marcus - lego bricks
 Jer - data visualization,Binx - frustrated about visualization
 Jer - data visualization,Binx - field of data vis
 Jer - data visualization,Kyle_CH - don't underestimate traditional art
@@ -1173,6 +1206,7 @@ Jer - ambiguous narrative,Marcus - simulation to stories
 Jer - lives being documented through data,Kyle_CH - Future life storage
 Jer - lives being documented through data,Greg - the "Like" button cascade
 Jer - lives being documented through data,Kyle_MC - Keytweeter
+Jer - lives being documented through data,Aaron - data storytelling
 Jer - Marker 2,Greg - the "Like" button cascade
 Jer - Marker 2,Greg - Gaze tracking
 Jer - Marker 2,Julia - million facebook
@@ -1188,7 +1222,6 @@ Jer - Thought it was boring,Sophy - city
 Jer - Thought it was boring,Binx - actually interesting
 Jer - Thought it was boring,Binx - geodata
 Jer - open paths,Binx - meaningful shape1
-Jer - deciding not to record,Golan - open data
 Jer - storage,JTNimoy - based on human mind
 Jer - storage,Karsten - archiving
 Jer - storage,Karsten - preserving history
@@ -1322,6 +1355,7 @@ Joel - myth of art and technology,Karsten - parallel processing
 Joel - myth of art and technology,Paola - Integrating with technology
 Joel - first mover,Zach - less demo
 Joel - interactivity,Golan - instruments
+Joel - interactivity,Golan - what's an instrument?
 Joel - water colors and soccer balls,Regine - making a living
 Joel - water colors and soccer balls,Regine - adapting work for commercial contexts
 JTNimoy - Describe the Kinect,Kyle_CH - RGBD
@@ -1339,13 +1373,13 @@ JTNimoy - evolution,Karsten - demo scene 1
 JTNimoy - evolution,Karsten - atari emulation
 JTNimoy - evolution,Kyle_CH - Cory Arcangel
 JTNimoy - evolution,Kyle_CH - MMORPGs
-JTNimoy - I addicted myself,Marius - I hate the word nerd
 JTNimoy - I addicted myself,Zach - action script
 JTNimoy - I addicted myself,Zach - Fucking boring
+JTNimoy - I addicted myself,Marius - I hate the word nerd
 JTNimoy - be a robot,Kyle_CH - Modeling consciousness
 JTNimoy - Dream1,Shiffman - genetics short 2
-JTNimoy - Comes from the human mind,Greg - A.I.
 JTNimoy - Comes from the human mind,Karsten - culture and evolution
+JTNimoy - Comes from the human mind,Greg - A.I.
 JTNimoy - Unplugging,Kyle_MC - Julian Oliver
 JTNimoy - Unplugging,Nervous_Jesse - understanding to control 3
 JTNimoy - Unplugging,Nervous_Jesse - error
@@ -1514,9 +1548,9 @@ Julia - museum, emotion,Shiffman - sharing
 Julia - museum, emotion,Shiffman - Open Source Contract
 Julia - museum, emotion,Shiffman - problem solving
 Julia - museum, emotion,Vera - Energy Flow2
+Julia - museum, emotion,Maeda - People
 Julia - community,Diederick - open frameworks
 Julia - community,Golan - finding a community
-Julia - community,Jer - Desire to get together
 Julia - community,Karsten - becoming insular
 Julia - community,Lindsay - memes 2
 Julia - community,Marcus - community styles
@@ -1524,6 +1558,7 @@ Julia - community,Marcus - new tricks
 Julia - community,Vera - What I like about this field
 Julia - community,Zach - at a festival
 Julia - community,Zach - emailing the communnity
+Julia - community,Jer - Desire to get together
 Julia - tech to pop culture,JTNimoy - geek culture
 Julia - human in tech,Golan - listening post
 Julia - human in tech,Greg - object oriented ontology 1
@@ -1742,15 +1777,17 @@ Julian - Critical engineering,Paola - code changes your thinking
 Julian - Critical engineering,Greg - engage with research
 Julian - Critical engineering,Kyle_MC - art versus engineering
 Julian - Transparency,Kyle_MC - Anonymous
-Julian - ideology of seamlessness,Chris - interfaces
 Julian - ideology of seamlessness,Karsten - 256 bytes part 1
 Julian - ideology of seamlessness,Kyle_MC - Hackers
 Julian - ideology of seamlessness,Kyle_MC - Hackers and artists
 Julian - ideology of seamlessness,Kyle_MC - Anonymous
+Julian - ideology of seamlessness,Regine - elitist and their gadgets
+Julian - ideology of seamlessness,Chris - interfaces
 Julian - toolkit culture,Aaron - recombination
 Julian - toolkit culture,Elliot_UK - Laying claim on ideas
 Julian - toolkit culture,JTNimoy - originality
 Julian - toolkit culture,Maeda - Isn't it supposed to be new?
+Julian - toolkit culture,Binx - changing the world
 Julian - Ray Bradbury story,Marius - We've embraced Dystopia
 Julian - science fiction,Aaron - progress
 Julian - science fiction,Regine - imagining the future
@@ -1779,8 +1816,12 @@ Julian - city as operating system,Sophy - city
 Julian - city as operating system,Julia - what is it doing to us
 Julian - city as operating system,Jer - opportunistic sensors for apple
 Julian - city as operating system,Jer - Data ownership
+Julian - city as operating system,Kyle_CH - coral reefs
+Julian - city as operating system,Kyle_CH - RMB city
+Julian - city as operating system,Kyle_CH - MMORPGs
 Julian - Shapes the way we think,Javier - behavior change
 Julian - Shapes the way we think,Marius - Machines change the way we see
+Julian - Shapes the way we think,Joel - Bicycles for the Mind
 Julian - Transparency grenade,Javier - hacker critique
 Julian - Transparency grenade,Javier - Data ownership
 Julian - Transparency grenade,Jer - deciding not to record
@@ -1869,10 +1910,15 @@ Karsten - database,Golan - open data
 Karsten - database,Jer - Pattern
 Karsten - dissemination,Lindsay - collective creativity
 Karsten - dissemination,Maeda - Isn't it supposed to be new?
+Karsten - dissemination,Lindsay - memes 2
+Karsten - dissemination,Elliot_UK - Ideaspace
 Karsten - memes,Kyle_CH - mainstreaming of fring visual culture
-Karsten - memes,Lindsay - collective creativity
 Karsten - memes,Lindsay - memes 2
 Karsten - memes,Maeda - Isn't it supposed to be new?
+Karsten - memes,Casey - Style diffuses
+Karsten - memes,Lindsay - collective creativity
+Karsten - memes,Elliot_UK - Ideaspace
+Karsten - memes,Elliot_UK - Laying claim on ideas
 Karsten - Paul Burke,Binx - skillshare
 Karsten - Paul Burke,Binx - learning
 Karsten - Paul Burke,Binx - learning with others
@@ -1947,10 +1993,10 @@ Karsten - becoming insular,Zach - emailing the communnity
 Karsten - becoming insular,Zach - processing, publishing
 Karsten - east german hardware 1,JTNimoy - evolution
 Karsten - east german hardware 2,Binx - Background
-Karsten - east german hardware 2,JTNimoy - evolution
 Karsten - east german hardware 2,Shiffman - mysterious box
 Karsten - east german hardware 2,Theo - learning
 Karsten - east german hardware 2,Zach - action script
+Karsten - east german hardware 2,JTNimoy - evolution
 Karsten - demo scene 1,JTNimoy - evolution
 Karsten - 256 bytes part 1,Julian - ideology of seamlessness
 Karsten - 256 bytes part 1,Kyle_MC - Code as a tool
@@ -2022,6 +2068,7 @@ Karsten - DarkNet,Golan_AMA - World becoming one mind
 Karsten - DarkNet,Julia - Who owns the internet?
 Karsten - DarkNet,Philip - in touch all the time
 Karsten - DarkNet,Sophy - the Cloud
+Karsten - DarkNet,Kyle_CH - coral reefs
 Karsten - infinite conversation,Binx - face data
 Karsten - infinite conversation,Maeda - Clouds
 Karsten - new media,Golan - raytraced spheres
@@ -2040,10 +2087,12 @@ Karsten - obsolescence,Maeda - New media
 Karsten - obsolescence,Shiffman - what do you archive?
 Karsten - archiving,Golan - keeping you stuff working
 Karsten - archiving,Jer - storage
-Karsten - archiving,Kyle_CH - old server farms
 Karsten - archiving,Paola - Moma games
 Karsten - archiving,Paola - museum collections
 Karsten - archiving,Shiffman - what do you archive?
+Karsten - archiving,Kyle_CH - old server farms
+Karsten - archiving,Kyle_CH - Future life storage
+Karsten - archiving,Lindsay - death of technology
 Karsten - preserving history,Golan - keeping you stuff working
 Karsten - preserving history,Jer - storage
 Karsten - preserving history,Kyle_CH - old server farms
@@ -2102,11 +2151,22 @@ Kyle_CH - RGBD,Greg - camera scaling up
 Kyle_CH - Social media performance,Kyle_MC - socially acceptable
 Kyle_CH - Social media performance,Lindsay - meeting IRL
 Kyle_CH - Social media performance,Lindsay - online identity
+Kyle_CH - Social media performance,Sophy - avatar1
 Kyle_CH - Avatars,Aaron - webGL
+Kyle_CH - Avatars,Maeda - How do I balance these personas?
+Kyle_CH - Avatars,Sophy - avatar1
+Kyle_CH - Avatars,Lindsay - meeting IRL
 Kyle_CH - virtual and identity,Lindsay - meeting IRL
 Kyle_CH - virtual and identity,Lindsay - online identity
 Kyle_CH - RMB city,Elliot_UK - lightscape
 Kyle_CH - RMB city,Kyle_MC - Keytweeter
+Kyle_CH - RMB city,Sophy - city
+Kyle_CH - RMB city,Julian - city as operating system
+Kyle_CH - RMB city,Nervous_Jesse - Time in the universe
+Kyle_CH - RMB city,Aaron - infinity
+Kyle_CH - virtual space online,Jer - lives being documented through data
+Kyle_CH - virtual space online,Golan - keeping you stuff working
+Kyle_CH - virtual space online,Karsten - archiving
 Kyle_CH - coral reefs,Aaron - global interactions
 Kyle_CH - coral reefs,Aaron - different ways of communicating
 Kyle_CH - coral reefs,Julia - net friends
@@ -2127,6 +2187,7 @@ Kyle_CH - old server farms,Paola - museum collections
 Kyle_CH - old server farms,Shiffman - what do you archive?
 Kyle_CH - Cory Arcangel,JTNimoy - evolution
 Kyle_CH - MMORPGs,JTNimoy - evolution
+Kyle_CH - MMORPGs,Aaron - experience design
 Kyle_CH - mainstreaming of fring visual culture,Karsten - memes
 Kyle_CH - mainstreaming of fring visual culture,Lindsay - collective creativity
 Kyle_CH - fun accessible art,Julia - medium of our time
@@ -2196,6 +2257,8 @@ Kyle_CH - Future life storage,Paola - teleportation
 Kyle_CH - Future life storage,Regine - imagining the future
 Kyle_CH - Future life storage,Regine - teleportation
 Kyle_CH - Future life storage,Theo - crazy researcher
+Kyle_CH - Future life storage,Shiffman - what do you archive?
+Kyle_CH - Future life storage,Zach - Joshua Davis
 Kyle_CH - Modeling consciousness,Golan_AMA - singularity
 Kyle_CH - Modeling consciousness,JTNimoy - be a robot
 Kyle_CH - Modeling consciousness,Marcus - modeling consciousness
@@ -2225,7 +2288,6 @@ Kyle_MC - Keytweeter,Kyle_CH - RMB city
 Kyle_MC - socially acceptable,Kyle_CH - Social media performance
 Kyle_MC - socially acceptable,Lindsay - meeting IRL
 Kyle_MC - socially acceptable,Lindsay - online identity
-Kyle_MC - blank expression,Shiffman - building a universe
 Kyle_MC - Hackers,Julian - ideology of seamlessness
 Kyle_MC - Hackers and artists,Julian - ideology of seamlessness
 Kyle_MC - Hackers and artists,Javier - hackers
@@ -2235,6 +2297,9 @@ Kyle_MC - We don't understand the thing,Julia - better tools
 Kyle_MC - We don't understand the thing,Julia - power back to users
 Kyle_MC - We don't understand the thing,Karsten - power point vs programming
 Kyle_MC - We don't understand the thing,Julian - city as operating system
+Kyle_MC - We don't understand the thing,Marius - Machines change the way we see
+Kyle_MC - We don't understand the thing,Julian - Critical engineering
+Kyle_MC - We don't understand the thing,Julian - change the way we see tech
 Kyle_MC - Anonymous,Julia - Who owns the internet?
 Kyle_MC - Anonymous,Julian - Critical engineering
 Kyle_MC - Anonymous,Julian - Transparency
@@ -2293,21 +2358,22 @@ Lindsay - 319 scholes,Marcus - scaling up
 Lindsay - meeting IRL,Greg - the "Like" button cascade
 Lindsay - meeting IRL,JTNimoy - one of us
 Lindsay - meeting IRL,Julia - strength of weak ties
-Lindsay - meeting IRL,Julia - net friends
 Lindsay - meeting IRL,Kyle_CH - Social media performance
 Lindsay - meeting IRL,Kyle_CH - virtual and identity
 Lindsay - meeting IRL,Kyle_CH - coral reefs
 Lindsay - meeting IRL,Kyle_MC - socially acceptable
 Lindsay - meeting IRL,Paola - social media quicksand
-Lindsay - collective creativity,Aaron - recombination
+Lindsay - meeting IRL,Jer - Desire to get together
+Lindsay - meeting IRL,Julia - net friends
 Lindsay - collective creativity,Casey - Style diffuses
 Lindsay - collective creativity,Elliot_UK - Ideaspace
-Lindsay - collective creativity,Elliot_UK - Laying claim on ideas
 Lindsay - collective creativity,JTNimoy - originality
 Lindsay - collective creativity,Karsten - dissemination
 Lindsay - collective creativity,Kyle_CH - mainstreaming of fring visual culture
 Lindsay - collective creativity,Maeda - Isn't it supposed to be new?
 Lindsay - collective creativity,Karsten - memes
+Lindsay - collective creativity,Aaron - recombination
+Lindsay - collective creativity,Elliot_UK - Laying claim on ideas
 Lindsay - memes 2,Aaron - recombination
 Lindsay - memes 2,Binx - ar&&code
 Lindsay - memes 2,Binx - skillshare
@@ -2350,9 +2416,13 @@ Lindsay - online identity,Kyle_CH - Social media performance
 Lindsay - online identity,Kyle_CH - virtual and identity
 Lindsay - online identity,Kyle_MC - socially acceptable
 Lindsay - online identity,Paola - social media quicksand
+Lindsay - online identity,Kyle_CH - Avatars
 Lindsay - death of technology,Karsten - atari emulation
-Lindsay - death of technology,Kyle_CH - old server farms
 Lindsay - death of technology,Maeda - do not resuscitate
+Lindsay - death of technology,Karsten - archiving
+Lindsay - death of technology,Kyle_CH - old server farms
+Lindsay - death of technology,Kyle_CH - coral reefs
+Lindsay - death of technology,Kyle_CH - Future life storage
 Maeda - a computer is a clock,Shiffman - offers me a way to think
 Maeda - a computer is a clock,Joel - Bicycles for the Mind
 Maeda - do not resuscitate,Golan_AMA - first computer art
@@ -2373,6 +2443,7 @@ Maeda - playful systems,Theo - Kids interacting
 Maeda - playful systems,Theo - leaving a mark
 Maeda - playful systems,Vera - Playing with a system
 Maeda - reactive square,Golan - playable image
+Maeda - reactive square,Theo - funky forest
 Maeda - subversion,Zach - less demo
 Maeda - subversion,Zach - more poetry, less demo
 Maeda - Digital meets analog,Shantell - full circle
@@ -2935,6 +3006,8 @@ Marius - Predicting the internet,Jer - storage
 Marius - Predicting the internet,JTNimoy - based on human mind
 Marius - Predicting the internet,Julian - journey to the moon
 Marius - Predicting the internet,Regine - imagining the future
+Marius - Predicting the internet,Kyle_CH - MMORPGs
+Marius - Predicting the internet,Casey - I try not to be a futurist
 Marius - 3D printing,Elliot_UK - points in space
 Marius - 3D printing,Nervous_Jesse - making things
 Marius - 3D printing,Nervous_Jessica - Design process 2
@@ -2983,6 +3056,7 @@ Nervous_Jesse - our explorations are random,Marcus - emergence
 Nervous_Jesse - our explorations are random,Marius - gardening
 Nervous_Jesse - our explorations are random,Marius - constraining randomness
 Nervous_Jesse - our explorations are random,Philip - get an idea
+Nervous_Jesse - Time in the universe,Shiffman - million monkeys
 Nervous_Jesse - doing something new with a system,Shantell - drawing with computers
 Nervous_Jesse - theoretical,Shiffman - Desire for order
 Nervous_Jesse - we like things tidy,Shiffman - Desire for order
@@ -3052,6 +3126,8 @@ Nervous_Jessica - Design process,Marius - Marker 3
 Nervous_Jessica - Design process,Marius - 3D printing
 Nervous_Jessica - Marker 2,Marius - Marker 3
 Nervous_Jessica - Marker 2,Marius - 3D printing
+Nervous_Jessica - Growing buildings,Casey - What is emergence?
+Nervous_Jessica - Growing buildings,Marius - gardening
 Nervous_Jessica - knowing it's beautiful,Golan - easy beauty
 Nervous_Jessica - knowing it's beautiful,Golan_AMA - abstraction
 Nervous_Jessica - knowing it's beautiful,Julia - aesthetic value
@@ -3214,6 +3290,8 @@ Paola - code changes your thinking,Shiffman - Maybe I'd like that
 Paola - Portal,Karsten - 256 bytes part 1
 Paola - Portal,Karsten - code as way of knowing
 Paola - Portal,Zach - minecraft livecode
+Paola - Portal,Kyle_CH - videogame world
+Paola - Portal,Kyle_CH - MMORPGs
 Paola - bach mozart coders,Karsten - 256 bytes part 1
 Paola - bach mozart coders,Karsten - code as way of knowing
 Paola - bach mozart coders,Philip - bits and bytes
@@ -3662,6 +3740,11 @@ Shiffman - Games,Marcus - lego bricks
 Shiffman - Games,Nervous_Jessica - biocomputer
 Shiffman - Games,Nervous_Jessica - Marker 7
 Shiffman - Games,Marcus - Epic Games predictions
+Shiffman - Games,Zach - minecraft livecode
+Shiffman - Games,Kyle_CH - MMORPGs
+Shiffman - Games,Aaron - lego creatures
+Shiffman - Games,Aaron - webGL
+Shiffman - Games,Aaron - the best games are great stories
 Shiffman - building a universe,Casey - Developing a microworld
 Shiffman - building a universe,Kyle_CH - coding is 1
 Shiffman - building a universe,Kyle_CH - coding 2
@@ -3700,7 +3783,11 @@ Shiffman - how far could we get?,Theo - magic
 Shiffman - how far could we get?,Casey - What is emergence?
 Shiffman - how far could we get?,Philip - build the whole universe
 Shiffman - how far could we get?,Philip - limitations
+Shiffman - how far could we get?,Kyle_CH - nature is complex
+Shiffman - how far could we get?,Jer - Pattern
 Shiffman - million monkeys,Nervous_Jessica - Marker 7
+Shiffman - million monkeys,Nervous_Jesse - Time in the universe
+Shiffman - million monkeys,Aaron - infinity
 Shiffman - reality will only get you so far,Elliot_UK - lightscape
 Shiffman - reality will only get you so far,Karolina - uncanny/sniff
 Shiffman - reality will only get you so far,Kyle_CH - coding, magic
@@ -3819,7 +3906,6 @@ Shiffman - problem solving,Zach - printshop
 Shiffman - Desire for order,Nervous_Jesse - theoretical
 Shiffman - Desire for order,Nervous_Jesse - we like things tidy
 Shiffman - Desire for order,Nervous_Jesse - Biology is messy
-Shiffman - what do you archive?,Golan - keeping you stuff working
 Shiffman - what do you archive?,Golan - raytraced spheres
 Shiffman - what do you archive?,Golan_AMA - first computer art
 Shiffman - what do you archive?,Jer - storage
@@ -3832,6 +3918,7 @@ Shiffman - what do you archive?,Kyle_CH - old server farms
 Shiffman - what do you archive?,Paola - Moma games
 Shiffman - what do you archive?,Paola - museum collections
 Shiffman - what do you archive?,JTNimoy - data loss
+Shiffman - what do you archive?,Golan - keeping you stuff working
 Shiffman - mysterious box,Binx - tech fracturing
 Shiffman - mysterious box,Casey - Programming at 26
 Shiffman - mysterious box,Karsten - east german hardware 2
@@ -3876,6 +3963,9 @@ Shiffman - nature of code p.2 shorter,Marcus - simulation to stories
 Sophy - everyday media,Casey - branching off branching
 Sophy - everyday media,Theo - hide the technology,
 Sophy - avatar1,Marius - these things are in my head
+Sophy - avatar1,Kyle_CH - Avatars
+Sophy - avatar1,Kyle_CH - virtual and identity
+Sophy - avatar1,Lindsay - online identity
 Sophy - nanobots,Aaron - dreaming together
 Sophy - nanobots,Aaron - lego creatures
 Sophy - nanobots,Golan - kerrington
@@ -3897,11 +3987,17 @@ Sophy - Where's the best hamburger?,JTNimoy - immersion
 Sophy - Where's the best hamburger?,Maeda - Slurpies and pizza
 Sophy - Strange cultures,Paola - the tribe
 Sophy - Strange cultures,Paola - code is a language
+Sophy - Strange cultures,Kyle_CH - coral reefs
 Sophy - the Cloud,Aaron - dreaming together
 Sophy - the Cloud,Golan_AMA - World becoming one mind
 Sophy - the Cloud,Julia - Who owns the internet?
 Sophy - the Cloud,Karsten - DarkNet
 Sophy - the Cloud,Philip - in touch all the time
+Sophy - the Cloud,Kyle_CH - virtual space online
+Sophy - the Cloud,Kyle_MC - We don't understand the thing
+Sophy - the Cloud,Aaron - global communication
+Sophy - the Cloud,Aaron - different ways of communicating
+Sophy - the Cloud,Aaron - global interactions
 Sophy - Evolution,Elliot_UK - tree sculpture
 Sophy - Evolution,Joel - scale of universe
 Sophy - Evolution,Theo - evolution
@@ -3947,9 +4043,11 @@ Theo - newness,Marius - Living in a state of newness since age 10
 Theo - newness,Golan - raytraced spheres
 Theo - newness,Theo - new media and old media,
 Theo - newness,Maeda - old and new
+Theo - newness,Aaron - exchange of ideas drives progress
 Theo - 3D sensing,Kyle_MC - kinect 2
 Theo - hide the technology,,Diederick - don't like that kind of interaction
 Theo - hide the technology,,Golan - jolted into the NOW
+Theo - hide the technology,,Aaron - experience design
 Theo - open frameworks,Golan - limits to sharing
 Theo - open frameworks,Karsten - processing
 Theo - open frameworks,Karsten - toxiclibs
@@ -4308,6 +4406,9 @@ Zach - drawing with Tayoon,Shantell - meeting zach
 Zach - drawing with Tayoon,Shantell - work with zach
 Zach - drawing with Tayoon,Shantell - Live performance,
 Zach - drawing with Tayoon,Shiffman - offers me a way to think
+Zach - Joshua Davis,Shiffman - what do you archive?
+Zach - Joshua Davis,Jer - lives being documented through data
+Zach - Joshua Davis,Golan - keeping you stuff working
 Zach - processing, publishing,Karsten - processing
 Zach - processing, publishing,Karsten - becoming insular
 Zach - processing, publishing,Kyle_CH - history of computational art

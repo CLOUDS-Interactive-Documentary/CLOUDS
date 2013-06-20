@@ -11,8 +11,7 @@
 
 //---------------------------------------------------------------
 CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
-    
-
+	
 	player = ofPtr<ofVideoPlayer>( new ofVideoPlayer );
 
     setShaderPath("shaders/rgbdcombined");
