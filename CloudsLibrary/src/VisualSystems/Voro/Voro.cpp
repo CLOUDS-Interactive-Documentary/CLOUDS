@@ -190,6 +190,91 @@ vector<ofPoint> getCellsCentroids(voro::container &_con){
     return centroids;
 }
 
+vector< vector<ofPoint> > getCellsVertices(voro::container &_con){
+    vector< vector<ofPoint> > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+    int i = 0;
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                int k = 0;
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                ofPoint pos = ofPoint(pp[0],pp[1],pp[2]);
+                
+                vector< ofPoint > cell;
+                
+                double *ptsp= c.pts;
+                vector<ofPoint> points;
+                for(int j = 0; j < c.p; j++){
+                    
+                    ofPoint newPoint;
+                    newPoint.x = pos.x + c.pts[2*k]*0.5;
+                    newPoint.y = pos.y + c.pts[2*k+1]*0.5;
+                    newPoint.z = pos.z + c.pts[2*k+2]*0.5;
+                    cell.push_back(newPoint);
+                }
+                
+                cells.push_back( cell );
+                i++;
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
+}
+
+vector< ofPolyline > getCellsPolylines(voro::container &_con){
+    vector< ofPolyline > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+    int i = 0;
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                
+                int k = 0;
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                ofPoint pos = ofPoint(pp[0],pp[1],pp[2]);
+                
+                ofPolyline cell;
+                
+                double *ptsp= c.pts;
+                vector<ofPoint> points;
+                for(int j = 0; j < c.p; j++){
+                    
+                    ofPoint newPoint;
+                    newPoint.x = pos.x + c.pts[2*k]*0.5;
+                    newPoint.y = pos.y + c.pts[2*k+1]*0.5;
+                    newPoint.z = pos.z + c.pts[2*k+2]*0.5;
+                    cell.addVertex(newPoint);
+                }
+                
+                cells.push_back( cell );
+            
+                i++;
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
+}
+
 bool insideContainer(voro::container &_con, ofPoint _pos){
     return _con.point_inside(_pos.x, _pos.y, _pos.z);
 }

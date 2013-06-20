@@ -82,12 +82,12 @@ protected:
     
     //  WireFrames && Points
     //
-    ofVboMesh meshPoints;
-    ofVboMesh meshWires;
-    ofShader extrudeShader;
-    float   meshHeight;
-    float   meshScale;
-    float   wireFramesAlpha;
-    float   pointsSize;
+//    ofVboMesh meshPoints;
+//    ofVboMesh meshWires;
+//    ofShader extrudeShader;
+//    float   meshHeight;
+//    float   meshScale;
+//    float   wireFramesAlpha;
+//    float   pointsSize;
     
 };

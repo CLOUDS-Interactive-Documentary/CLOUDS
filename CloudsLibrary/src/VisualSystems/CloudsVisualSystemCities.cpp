@@ -137,7 +137,7 @@ void CloudsVisualSystemCities::selfSetup()
     
     //  WireFrames
     //
-    extrudeShader.load(getDataPath()+"shaders/VisualSystems/Cities/extrude");
+//    extrudeShader.load(getDataPath()+"shaders/VisualSystems/Cities/extrude");
     
     //  Points
     //
@@ -197,11 +197,11 @@ void CloudsVisualSystemCities::selfSetupRenderGui()
     rdrGui->addSlider("Min_Size", 0.0, 1.0, &blocksMinSize);
     rdrGui->addSlider("Blocks_Alpha", 0.0, 1.0, &blocksAlpha);
     
-    rdrGui->addLabel("WireFrame & Points");
-    rdrGui->addSlider("heightScale", 0.0, 5.0, &meshScale);
-    rdrGui->addSlider("heightHeight", 0.0, 5.0, &meshHeight);
-    rdrGui->addSlider("WireFrame_Alpha",0.0, 1.0, &wireFramesAlpha);
-    rdrGui->addSlider("PointsSize",0.0, 1.0, &pointsSize);
+//    rdrGui->addLabel("WireFrame & Points");
+//    rdrGui->addSlider("heightScale", 0.0, 5.0, &meshScale);
+//    rdrGui->addSlider("heightHeight", 0.0, 5.0, &meshHeight);
+//    rdrGui->addSlider("WireFrame_Alpha",0.0, 1.0, &wireFramesAlpha);
+//    rdrGui->addSlider("PointsSize",0.0, 1.0, &pointsSize);
 }
 
 void CloudsVisualSystemCities::makeGrid(float _size, int _resolution)
@@ -245,25 +245,25 @@ void CloudsVisualSystemCities::makeGrid(float _size, int _resolution)
     
     //  Wireframe && Points Mesh
     //
-    meshWires.clear();
-    meshWires.setMode(OF_PRIMITIVE_LINES);
-    
-    meshPoints.clear();
-    meshPoints.setMode(OF_PRIMITIVE_POINTS);
-    
-    int step = 1;
-    for(int y = 0; y < textureSize; y +=step) {
-        for(int x = 0; x < textureSize; x +=step) {
-            
-            meshPoints.addVertex(ofPoint(x,y));
-            
-            if ( x < textureSize-step ){
-                meshWires.addVertex(ofPoint(x, y));
-                meshWires.addVertex(ofPoint(x+1, y));
-            }
-            
-        }
-    }
+//    meshWires.clear();
+//    meshWires.setMode(OF_PRIMITIVE_LINES);
+//    
+//    meshPoints.clear();
+//    meshPoints.setMode(OF_PRIMITIVE_POINTS);
+//    
+//    int step = 1;
+//    for(int y = 0; y < textureSize; y +=step) {
+//        for(int x = 0; x < textureSize; x +=step) {
+//            
+//            meshPoints.addVertex(ofPoint(x,y));
+//            
+//            if ( x < textureSize-step ){
+//                meshWires.addVertex(ofPoint(x, y));
+//                meshWires.addVertex(ofPoint(x+1, y));
+//            }
+//            
+//        }
+//    }
 }
 
 void CloudsVisualSystemCities::selfUpdate()
@@ -377,35 +377,35 @@ void CloudsVisualSystemCities::selfDraw()
     ofPopMatrix();
     
     
-    if (wireFramesAlpha > 0.0 || pointsSize > 0.0 ){
-        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
-        glEnable(GL_POINT_SMOOTH);
-        ofPushMatrix();
-        float scale = ((size/resolution)*0.5)*meshScale;
-        ofScale(scale, scale, scale);
-        
-        extrudeShader.begin();
-        extrudeShader.setUniformTexture("depthTex", maskFbo, 0);
-        extrudeShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
-        extrudeShader.setUniform1f("height", height*meshHeight*2.0);
-        extrudeShader.setUniform1f("alpha", MAX(wireFramesAlpha,pointsSize));
-        extrudeShader.setUniform1f("pointSize", pointsSize*3.0);
-        
-        if ( pointsSize>0.0){
-            ofSetColor(255);
-            meshPoints.drawVertices();
-        }
-    
-        if ( wireFramesAlpha>0.0){
-            ofSetColor(255,255*wireFramesAlpha);
-            meshWires.drawWireframe();
-        }
-        extrudeShader.end();
-        
-        ofPopMatrix();
-        glDisable(GL_POINT_SMOOTH);
-        glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
-    }
+//    if (wireFramesAlpha > 0.0 || pointsSize > 0.0 ){
+//        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+//        glEnable(GL_POINT_SMOOTH);
+//        ofPushMatrix();
+//        float scale = ((size/resolution)*0.5)*meshScale;
+//        ofScale(scale, scale, scale);
+//        
+//        extrudeShader.begin();
+//        extrudeShader.setUniformTexture("depthTex", maskFbo, 0);
+//        extrudeShader.setUniform2f("resolution", noiseFbo.getWidth(), noiseFbo.getHeight());
+//        extrudeShader.setUniform1f("height", height*meshHeight*2.0);
+//        extrudeShader.setUniform1f("alpha", MAX(wireFramesAlpha,pointsSize));
+//        extrudeShader.setUniform1f("pointSize", pointsSize*3.0);
+//        
+//        if ( pointsSize>0.0){
+//            ofSetColor(255);
+//            meshPoints.drawVertices();
+//        }
+//    
+//        if ( wireFramesAlpha>0.0){
+//            ofSetColor(255,255*wireFramesAlpha);
+//            meshWires.drawWireframe();
+//        }
+//        extrudeShader.end();
+//        
+//        ofPopMatrix();
+//        glDisable(GL_POINT_SMOOTH);
+//        glDisable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+//    }
 
     glDisable(GL_DEPTH_TEST);
     

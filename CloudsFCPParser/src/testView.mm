@@ -95,6 +95,8 @@
 	gui->addSlider("node repulsion", 1, 50, &visualizer.repulsionForce);
 	gui->addSlider("node size min", .5, 100, &visualizer.minRadius);
 	gui->addSlider("node size max", .5, 100, &visualizer.maxRadius);
+    gui->addSlider("zoom", 0.1, 1, &visualizer.zoom);
+ //   gui->addSlider("current Scale", .5, 500, &visualizer.currentScale);
 	
 	gui->loadSettings("settings.xml");
 //	gui->disable();
