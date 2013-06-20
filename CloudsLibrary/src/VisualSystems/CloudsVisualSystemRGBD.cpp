@@ -168,6 +168,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofPushStyle();
 		ofPushMatrix();
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
+		glDisable(GL_LIGHTING);
 		
 		//Enable smooth lines and screen blending
 		glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
@@ -176,7 +177,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
 		
-		
+
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
 		
@@ -185,6 +186,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
 		
 		sharedRenderer->bindRenderer();
+		sharedRenderer->getShader().setUniform1f("baseMultiplier", 1.0);
 		
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud

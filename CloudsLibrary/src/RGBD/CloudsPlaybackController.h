@@ -81,8 +81,6 @@ class CloudsPlaybackController {
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	
-	float timeToTest;
-	bool triggerVisualSystem;
+//	bool triggerVisualSystem;
 	//void guiEvent(ofxUIEventArgs &e);
 };

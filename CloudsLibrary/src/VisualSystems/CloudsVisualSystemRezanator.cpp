@@ -104,9 +104,9 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 
     }
     
-    ofPopStyle();
-	
 	timeline->draw();
+	
+    ofPopStyle();
 }
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
@@ -2075,14 +2075,19 @@ void CloudsVisualSystemRezanator::drawNormalizedTexturedQuad()
 void CloudsVisualSystemRezanator::drawBackground()
 {
 	ofPushStyle();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
+	ofEnableAlphaBlending();
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
         
         //  TEMPORAL FIX
         //
 //		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
-
 		ofSetSmoothLighting(true);
+
         ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
 		ofPopStyle();
     
@@ -2107,6 +2112,7 @@ void CloudsVisualSystemRezanator::drawBackground()
         ofSetSmoothLighting(false);
         ofBackground(*bgColor);
     }
+	glPopAttrib();
 	ofPopStyle();	
 }
 

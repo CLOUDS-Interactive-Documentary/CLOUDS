@@ -29,6 +29,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
+	
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );
 }
@@ -44,8 +45,11 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	nameToVisualSystem[system->getSystemName()] = system;
 	
 	vector<string> systemPresets = system->getPresets();
+	if(systemPresets.size() == 0){
+		cout << "NO PRESETS for SYSTEM " <<  system->getSystemName() << endl;
+	}
+	
 	for(int i = 0; i < systemPresets.size(); i++){
-		
 		CloudsVisualSystemPreset preset;
 		preset.presetName = systemPresets[i];
 		preset.system = system;

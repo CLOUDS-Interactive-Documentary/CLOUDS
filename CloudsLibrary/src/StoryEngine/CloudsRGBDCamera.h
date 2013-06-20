@@ -15,7 +15,10 @@ class CloudsRGBDCamera : public ofCamera {
 	float frontDistance;
 	float sidePullback;
 	ofVec3f lookTarget;
+	
+	//DRIFT
 	ofVec3f driftPos;
+	float driftRadius;
 	
   protected:
 	bool isSetup;

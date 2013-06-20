@@ -98,7 +98,7 @@ class CloudsVisualSystem {
 	vector<string> relevantKeywords;
 
 	//these variables are set by the playback controller when displaying
-//	CloudsCamera* sharedCamera;
+
 	//ways to interact with the pointcloud data
 	CloudsRGBDCombinedRender* sharedRenderer;
 	//set to true if the pointcloud renderer has valid speaker
