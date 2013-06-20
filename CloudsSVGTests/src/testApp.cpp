@@ -13,7 +13,14 @@ void testApp::setup(){
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
 		parser.parseLinks("clouds_link_db.xml");
 		parser.setup("xml");
-	}}
+	}
+	
+	std::set<string>::iterator colorIt = parser.clusterMapColors.begin();
+	while(colorIt != parser.clusterMapColors.end()){
+		cout << *colorIt << endl;
+		colorIt++;
+	}
+}
 
 //--------------------------------------------------------------
 void testApp::update(){
@@ -24,9 +31,11 @@ void testApp::update(){
 void testApp::draw(){
 	//draw svg
     ofBackground(0);
-    for(int i=0; i<parser.allClips.size();i++){
-        ofSetColor(parser.allClips[i].cluster.Color);
-        ofCircle(parser.allClips[i].cluster.Centre.x*ofGetWidth(),parser.allClips[i].cluster.Centre.y*ofGetHeight(),parser.allClips[i].cluster.Radius*2);
+    for(int i=0; i<parser.getAllClips().size();i++){
+        ofSetColor(parser.getAllClips()[i].cluster.Color);
+        ofCircle(parser.getAllClips()[i].cluster.Centre.x*ofGetWidth(),
+				 parser.getAllClips()[i].cluster.Centre.y*ofGetHeight(),
+				 parser.getAllClips()[i].cluster.Radius*2);
         
     }
     //highlight people, topics, nodes
@@ -36,9 +45,9 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    for(int i=0; i<parser.allClips.size();i++){
+    for(int i=0; i<parser.getAllClips().size();i++){
     
-        cout<<i<<"::"<<parser.allClips[i].cluster.Color.getHex()<<endl;
+        cout<<i<<"::"<<parser.getAllClips()[i].cluster.Color.getHex()<<endl;
     }
 }
 

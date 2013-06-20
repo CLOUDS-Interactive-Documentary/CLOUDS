@@ -9,6 +9,7 @@
 
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
+//#include "CloudsCamera.h"
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -45,7 +46,9 @@ class CloudsPlaybackController {
 	//A ROLL STUFF
 	//
 
-	ofxGameCamera camera;
+//	ofxGameCamera camera;
+//	cloudsCamera cloudsCam;
+	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	
@@ -56,42 +59,28 @@ class CloudsPlaybackController {
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void clipEnded(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
+
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	
 	void playClip(CloudsClip& clip);
 	
 	//VISUAL SYSTEMS
 	//
 	bool showingVisualSystem;
-	vector<CloudsVisualSystem*> visualSystems;
-	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
-	//this instantiates and registers all the visual systems, called once at setup
-	void populateVisualSystems();
-	//call once for each new system you instantiate
-	void registerVisualSystem(CloudsVisualSystem* system);
-	CloudsVisualSystem* visualSystemWithName(string systemName);
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem();
-	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
+//	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
+	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	//GUI
-	//
-	ofxUISuperCanvas* visualSystemControls;
-	
-	//WIDGETS
-	ofxUIRadio *visualSystemRadio;
-	
-	ofxUICanvas* keyThemesPanel;
-	ofxUIRadio *keyThemesRadio;
-	ofxUIButton *playButton;
-	
-	
-		
-	float timeToTest;
-	bool triggerVisualSystem;
-	void guiEvent(ofxUIEventArgs &e);
+//	bool triggerVisualSystem;
+	//void guiEvent(ofxUIEventArgs &e);
 };

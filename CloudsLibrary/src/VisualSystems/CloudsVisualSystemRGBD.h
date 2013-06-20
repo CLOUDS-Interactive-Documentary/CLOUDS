@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "CloudsVisualSystemRezanator.h"
 #include "ParticleConnectionGenerator.h"
+#include "CloudsRGBDCamera.h"
 
 /** 
  * COMPUTATION visual system
@@ -44,9 +44,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-	
+
   protected:
-			
+	
+	CloudsRGBDCamera cloudsCamera;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;

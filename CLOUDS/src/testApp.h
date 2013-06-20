@@ -23,6 +23,7 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsFCPParser parser;
+	CloudsVisualSystemManager visualSystems;
 	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
 	CloudsSound sound;

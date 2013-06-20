@@ -25,14 +25,15 @@ class CloudsSound {
 	void audioRequested(ofAudioEventArgs& args);
 	
   protected:
+
+	CloudsStoryEngine* storyEngine;
 	
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
-	void playClip(CloudsClip& clip);
-	
-	CloudsStoryEngine* storyEngine;
-	
+	void clipEnded(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
+	void topicChanged(CloudsStoryEventArgs& args);
 	
 	// Luke's vars
 	// 

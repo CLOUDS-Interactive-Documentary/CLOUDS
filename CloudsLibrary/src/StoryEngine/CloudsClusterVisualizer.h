@@ -47,7 +47,7 @@ public:
     
     void addAllClipsWithAttraction();
     void addTagToPhysics(string tag);
-    void clipChanged(CloudsStoryEventArgs& args);
+    void clipBegan(CloudsStoryEventArgs& args);
     
     //void addLinksToPhysics(CloudsClip& center, vector<CloudsClip>& connections, vector<float>& scores);
     

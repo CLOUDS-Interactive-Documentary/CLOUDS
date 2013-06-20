@@ -21,6 +21,7 @@ class CloudsFCPParser {
     vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
 	CloudsClip& getClipWithLinkName( string linkname );
+	CloudsClip& getClipWithID( string ID );
 
 #pragma mark Links
 	//MANAGE
@@ -77,7 +78,8 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false);
+	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
+							  bool mustHaveQuestion = false);
 	
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
@@ -94,6 +96,8 @@ class CloudsFCPParser {
 
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
+	
+	set<string> clusterMapColors;
 	
   protected:
     string xmlDirectory;
@@ -112,11 +116,14 @@ class CloudsFCPParser {
 	set<string> markerLinkNames;
 
     vector<CloudsClip> allClips;
-    map<string, int> clipIndex;
+    map<string, int> clipIDToIndex;
+    map<string, int> clipLinkNameToIndex;
     
     map<string, int> allKeywords;
     vector<string> keywordVector;
 	vector<int> hasCombinedVideoIndeces;
+	vector<string> questionIds;
+	vector<int> hasCombinedVideoAndQuestionIndeces;
 	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;

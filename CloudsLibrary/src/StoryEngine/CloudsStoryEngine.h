@@ -2,9 +2,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
 
+#include "CloudsFCPParser.h"
+#include "CloudsVisualSystemManager.h"
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -16,13 +17,16 @@ class CloudsStoryEngine {
 	CloudsStoryEngine();
 	~CloudsStoryEngine();
 	
-	//CloudsFCPVisualizer* visualizer;
 	CloudsFCPParser* network;
+	CloudsVisualSystemManager* visualSystems;
 	
 	void setup();
 
 	void seedWithClip(CloudsClip& seed);
-	bool selectNewClip();
+	bool playNextClip(); //you can use this to skip if it's waiting
+	bool clipEnded(); //call this when the clip is done!
+	
+	void update(ofEventArgs& args);
 	
 	CloudsClip& getCurrentClip();
 	vector<CloudsClip>& getClipHistory();
@@ -43,23 +47,39 @@ class CloudsStoryEngine {
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
+	bool isWaiting();
+	
 	CloudsEvents& getEvents();
-
+	
+	//TODO: make dynamic, will be improved
+	float fixedClipDelay;
+	
+	void drawStoryEngineDebug();
+	
   protected:
 	
 	CloudsEvents events;
+	bool isSetup;
 	
 	bool hasclip;
 	CloudsClip currentClip;
 	int totalFramesWatched;
 	
 	float totalPoints;
-//	vector< pair<int, CloudsClip> > clipScores;
 	int nextClipTopScore;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	bool populateNextClips();
+
+	void checkVisualSystems();
 	
+	float getNextClipDelay();
+	bool waitingForNextClip;
+	float nextClipTime;
+	
+	bool watchingVisualSystem;
+	float visualSystemEndTime;
+	CloudsVisualSystemPreset currentVisualSystem;
 	
 	vector<CloudsClip> clipHistory;
 	vector<string> topicHistory;

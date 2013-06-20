@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsRGBDCombinedRender.h"
+//#include "CloudsCamera.h"
 
 /**
  * The CLOUDS Visual System super class
@@ -57,7 +58,7 @@ class CloudsVisualSystem {
 	void stopSystem();
 	
 	void setRenderer(CloudsRGBDCombinedRender& newRenderer);
-	
+
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -65,6 +66,10 @@ class CloudsVisualSystem {
 	
 	void speakerEnded();
 	
+	//REZA: Needs to be replaced by the Rezonator merge
+	virtual vector<string> getPresets() = 0;
+	virtual void loadPresetGUISFromName(string presetName) = 0;
+	virtual void setCurrentCamera(ofCamera& cam) = 0;
 
 	//SET and CALLED FROM CONTROLLER
 	
@@ -81,7 +86,6 @@ class CloudsVisualSystem {
 	void setCurrentTopic(string keyword);
 	string getCurrentTopic();
 
-
 	vector<string>& getRelevantKeywords();
 	
   protected:
@@ -94,7 +98,7 @@ class CloudsVisualSystem {
 	vector<string> relevantKeywords;
 
 	//these variables are set by the playback controller when displaying
-	
+
 	//ways to interact with the pointcloud data
 	CloudsRGBDCombinedRender* sharedRenderer;
 	//set to true if the pointcloud renderer has valid speaker

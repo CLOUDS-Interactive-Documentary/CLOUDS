@@ -6,7 +6,7 @@ static bool usingDevelopmentFolder = false;
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = false;
-	
+//	sharedCamera = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -24,6 +24,7 @@ string CloudsVisualSystem::getDataPath()
 		if(!usingDevelopmentFolder){
 			ofDirectory("CloudsData/").create();
 		}
+		confirmedDataPath = true;
 	}
     return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
@@ -38,6 +39,7 @@ void CloudsVisualSystem::setup(){
 
 void CloudsVisualSystem::playSystem(){
 	if(!isPlaying){
+		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
@@ -94,6 +96,10 @@ vector<string>& CloudsVisualSystem::getRelevantKeywords(){
 void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
 	sharedRenderer = &newRenderer;
 }
+
+//void CloudsVisualSystem::setCamera(CloudsCamera& camera){
+//	sharedCamera = &camera;
+//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,

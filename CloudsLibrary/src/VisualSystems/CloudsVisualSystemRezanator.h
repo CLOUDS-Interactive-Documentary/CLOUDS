@@ -90,7 +90,8 @@ public:
     
     //UI Helpers
     void loadGUIS();
-    void loadPresetGUIS(string presetName); 
+	void loadPresetGUISFromName(string presetName);
+    void loadPresetGUISFromPath(string presetPath);
     void saveGUIS();
     void savePresetGUIS(string presetName); 
     void showGUIS();
@@ -203,7 +204,7 @@ public:
     bool bUpdateSystem;
     bool bDebug;
     float debugGridSize;
-
+	
     //CAM
     float camDistance;
     float camFOV;

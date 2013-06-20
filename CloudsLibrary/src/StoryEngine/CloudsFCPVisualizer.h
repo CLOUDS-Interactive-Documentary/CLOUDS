@@ -43,7 +43,7 @@ class CloudsFCPVisualizer {
 	
 	void addAllClipsWithAttraction();
 	void addTagToPhysics(string tag);
-	void clipChanged(CloudsStoryEventArgs& clips);
+	void clipBegan(CloudsStoryEventArgs& clips);
 	
 	//void addLinksToPhysics(CloudsClip& center, vector<CloudsClip>& connections, vector<float>& scores);
 	

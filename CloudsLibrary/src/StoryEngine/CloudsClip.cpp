@@ -25,12 +25,16 @@ string CloudsClip::getLinkName(){
 	return person + " - " + name;
 }
 
+float CloudsClip::getDuration(){
+	return (endFrame - startFrame) / 23.976; //TODO: HigaSan was recorded @ 30.0, need to compensate
+}
+
 string CloudsClip::getStartingQuestion(){
     if(startingQuestion.empty()){
         return "-";
     }
     else{
-    return startingQuestion;
+		return startingQuestion;
     }
     
 }

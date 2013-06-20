@@ -51,7 +51,7 @@
     visualizer.setup(parser);
     //SURYA MOD:
 	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsClusterVisualiser::storyBegan);
-	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsClusterVisualiser::clipChanged);
+	ofAddListener(storyEngine.getEvents().clipBegan, &visualizer, &CloudsClusterVisualiser::clipBegan);
 //	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
 //	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsFCPVisualizer::clipChanged);
 	
@@ -60,7 +60,7 @@
 	storyEngine.setup();
 	storyEngine.network = &parser;
 	storyEngine.maxTimesOnTopic = 2;
-	
+	storyEngine.fixedClipDelay = .1;
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 	
@@ -272,7 +272,7 @@
     //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
     
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
-		if(!storyEngine.selectNewClip()){
+		if(!storyEngine.playNextClip()){
 			return;
 		}
 		[playlistTable reloadData];
@@ -308,7 +308,7 @@
 
 - (IBAction) addClip:(id)sender
 {
-	storyEngine.selectNewClip();
+	storyEngine.playNextClip();
 	[playlistTable reloadData];
 }
 
