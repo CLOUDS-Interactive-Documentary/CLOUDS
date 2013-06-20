@@ -4,12 +4,7 @@
 #include "CloudsVisualSystemRezanator.h"
 #include "ParticleConnectionGenerator.h"
 #include "CloudsRGBDCamera.h"
-
-/** 
- * COMPUTATION visual system
- * shows ticker tape strands running in fields
- * that can be zoomed in and diverted
- */
+#include "CloudsQuestion.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
   public:
@@ -54,6 +49,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
 	ofMesh randomPoints;
 	ParticleConnectionGenerator connectionGenerator;
 
+	vector<CloudsQuestion> questions;
+	
 	float pointcloudScale;
 	float pointcloudOffsetZ;
 

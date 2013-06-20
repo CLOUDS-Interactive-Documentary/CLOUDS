@@ -9,20 +9,34 @@
 #include "CloudsRGBDCamera.h"
 
 CloudsRGBDCamera::CloudsRGBDCamera(){
-	sideDistance = 150;
-	frontDistance = 200;
-	sidePullback = 50;
+	
+	sideDistance = 100;
+	frontDistance = 150;
+	sidePullback = -50;
+	liftAmount = 50;
+	liftRange = 25;
+	
 	isSetup = false;
+	damp = .1;
+
 }
 
 void CloudsRGBDCamera::setup(){
 	if(!isSetup){
 		isSetup = true;
+		setPositionFromMouse();
+		currentPosition = targetPosition;
+		
 		ofAddListener(ofEvents().update, this, &CloudsRGBDCamera::update);
 	}
 }
 
 void CloudsRGBDCamera::update(ofEventArgs& args){
+	setPositionFromMouse();
+}
+
+void CloudsRGBDCamera::setPositionFromMouse(){
+	
 	float percentOnCurve = ofMap(ofGetMouseX(), ofGetWidth()*.2, ofGetWidth()*.8, 0, 1, true);
 	ofVec3f sidePositionLeft = lookTarget + ofVec3f(-sideDistance,0,sidePullback);
 	ofVec3f sidePositionRight = lookTarget + ofVec3f(sideDistance,0,sidePullback);
@@ -35,7 +49,13 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 		position = sidePositionLeft.getInterpolated(frontPosition, ofMap(percentOnCurve, 0, .5, 0, 1.0) );
 	}
 	
-	setPosition(position);
+	float liftDrift = ofMap(ofGetMouseY(), ofGetHeight()*.2, ofGetHeight()*.8, -liftRange,liftRange, true);
+	position.y += ofMap(abs(.5 - percentOnCurve), 0, .5, (liftDrift + liftAmount), (liftDrift-liftAmount)*.25);
+	position.z -= MAX(liftDrift,0) * .5; // zoom in on mouse up
+	
+	targetPosition = position;
+	currentPosition += (targetPosition - currentPosition) * damp;
+	
+	setPosition(currentPosition);
 	lookAt(lookTarget);
 }
-

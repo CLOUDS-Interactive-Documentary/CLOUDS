@@ -173,8 +173,6 @@ void CloudsVisualSystemComputationTicker::selfDraw(){
 	
 	drawShader.end();
 	
-	
-	
 }
 
 void CloudsVisualSystemComputationTicker::selfExit(){
