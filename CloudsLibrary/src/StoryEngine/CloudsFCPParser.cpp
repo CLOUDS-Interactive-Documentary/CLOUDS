@@ -89,7 +89,9 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
             clip.cluster.Color.setHex(colorHex);
 
             clusterMapColors.insert(clip.cluster.hexColor);
-			
+//			if(clip.cluster.Color == ofColor(255)){
+//                cout<<clip.cluster.Id<<endl;
+//            }
             string radius;
             radius = mapsXML.getAttribute("circle", "r", radius,j);
             clip.cluster.Radius = ofToFloat(radius);
@@ -113,6 +115,10 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
                 allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.Centre.y, minCy, maxCy, 0, 1);
                 allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
             }
+//            else{
+//                cout<<"ERROR CLIP NOT FOUND IN MAP:"<<allClips[i].getLinkName()<<endl;
+//            }
+            
         }
 //		cout<<minR<<","<<maxR<<endl;
 //		cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;

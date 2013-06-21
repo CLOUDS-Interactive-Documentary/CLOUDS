@@ -11,16 +11,32 @@ class CloudsRGBDCamera : public ofCamera {
 	
 	void update(ofEventArgs& args);
 	
+	//position/movement params
 	float sideDistance;
 	float frontDistance;
 	float sidePullback;
-	ofVec3f lookTarget;
+
+	float liftAmount;
+	//y params range --
+	float liftRange;
+
 	
-	//DRIFT
+	//looking and dampening params
+	ofVec3f lookTarget;
+	ofVec3f targetPosition;
+	float damp;
+	
+	//perlin drift params
 	ofVec3f driftPos;
 	float driftRadius;
 	
+	//up vector drift
+	
   protected:
+	ofVec3f currentPosition;
+	
+	void setPositionFromMouse();
+	
 	bool isSetup;
-
+	bool isHovering;
 };

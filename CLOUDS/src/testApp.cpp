@@ -33,21 +33,27 @@ void testApp::setup(){
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 	CloudsClip& clip = parser.getRandomClip(true,true);
+	
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+	
 	storyEngine.seedWithClip( clip );
 	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	player.update();
+//	player.update();
 	sound.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	player.draw();
+
+//	cout << "APP DRAW" << endl;
+	
 	sound.drawDebug();
+	
+	//storyEngine.drawStoryEngineDebug();
 }
 
 //--------------------------------------------------------------

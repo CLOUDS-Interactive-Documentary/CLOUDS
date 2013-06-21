@@ -35,9 +35,36 @@ void testApp::setup(){
     }
     
     keyWords = parser.getAllKeywords();
-
-    objectLookAt = ofVec3f(0,0,1);
     
+
+    MaxNumOfParticles = cohesiveCells.size();
+    particleIndex = 0;
+}
+
+//--------------------------------------------------------------
+void testApp::update(){
+
+        
+//        cellMeshes.clear();
+    cellMeshes.clear();
+		voro::container con(0,ofGetWidth(),
+                            0,ofGetHeight(),
+                            -0.1,0.1,
+                            1,1,1,
+                            containerPeriodic,containerPeriodic,containerPeriodic,
+                            1);
+        
+        for(int i = 0; i < cohesiveCells.size(); i++){
+            con.put(i, cohesiveCells[i].x*ofGetWidth(), cohesiveCells[i].y*ofGetHeight(), 0);
+        }
+    cellMeshes = getCellsFromContainer(con);
+    cout << cellMeshes.size() << endl;
+ //   cells = getCellsPolylines(con);
+
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
     vector<string> cohesiveKeywords;
     vector<ofRectangle> rects;
     vector<float> clipSize;
@@ -51,9 +78,9 @@ void testApp::setup(){
     centres.clear();
     float minCohesion=10;
     float maxCohesion=0;
-    
+    ofBackground(0);
     for (int i=0; i<keyWords.size(); i++) {
-
+        
         
         float maxDistance = 0;
         float minDistance = INT_MAX;
@@ -72,7 +99,7 @@ void testApp::setup(){
                 
             }
             else{
-                cout<<"clip ignored: "<< clips[j].getLinkName();
+             //   cout<<"clip ignored: "<< clips[j].getLinkName()<<endl;
             }
             
         }
@@ -90,75 +117,63 @@ void testApp::setup(){
                 if(distance<minDistance){
                     minDistance = distance;
                     cellColor = clips[k].cluster.Color;
+                    
                 }
             }
             
+            
         }
-        
-
         
         float avgDistance = totalDistance / numClips;
         float density = rect.getArea()/numClips;
         
-        
+
+        if(distancesPerClip.begin() != distancesPerClip.end()){
         maxDistances.push_back(maxDistance);
         centres.push_back(centroid);
         clipSize.push_back(numClips);
         avgDistances.push_back(avgDistance);
         rects.push_back(rect);
-        
-        std::sort(distancesPerClip.begin(), distancesPerClip.end());
-        float medianValue = distancesPerClip[distancesPerClip.size()/2];
-        medianValues.push_back(medianValue);
-        
-        float c =0;
-        c =(float)medianValue / (float)maxDistance;
-        if(maxDistance>0){
-            maxCohesion = MAX(maxCohesion,c);
-            minCohesion = MIN(minCohesion,c);
+            std::sort(distancesPerClip.begin(), distancesPerClip.end());
+            float medianValue = distancesPerClip[distancesPerClip.size()/2];
+            medianValues.push_back(medianValue);
+            
+            float c =0;
+            c =(float)medianValue / (float)maxDistance;
+            if(maxDistance>0){
+                maxCohesion = MAX(maxCohesion,c);
+                minCohesion = MIN(minCohesion,c);
+            }
+            
+            if(medianValue / maxDistance < .35){
+                cohesiveKeywords.push_back(keyWords[i]);
+                cohesiveCells.push_back(ofPoint(centres[i].x,centres[i].y));
+                colors.push_back(cellColor);
+            }
+        }
+        else{
+//            cout<<"ignored distances per clip of size: "<<distancesPerClip.size()<<endl;
         }
         
-        if(medianValue / maxDistance < .3){
-            cohesiveKeywords.push_back(keyWords[i]);
-            cohesiveCells.push_back(ofPoint(centres[i].x,centres[i].y));
-            colors.push_back(cellColor);
-        }
         
         
     }
-    MaxNumOfParticles = cohesiveCells.size();
-    particleIndex = 0;
-}
-
-//--------------------------------------------------------------
-void testApp::update(){
-
-        
-//        cellMeshes.clear();
-    cells.clear();
-		voro::container con(0,ofGetWidth(),
-                            0,ofGetHeight(),
-                            -1,1,
-                            1,1,1,
-                            containerPeriodic,containerPeriodic,containerPeriodic,
-                            1);
-        
-        for(int i = 0; i < cohesiveCells.size(); i++){
-            con.put(i, cohesiveCells[i].x*ofGetWidth(), cohesiveCells[i].y*ofGetHeight(), 0);
-        }
-        
-//        cellMeshes = getCellsFromContainer(con);
-//    cout << cellMeshes.size() << endl;
-    cells = getCellsPolylines(con);
-
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
     //draw svg
-    ofBackground(0);
+//    ofBackground(0);
 //    glEnable(GL_DEPTH_TEST);
-
+//    ofPushMatrix();
+//    
+//    //        for(int i = 0; i < cellMeshes.size(); i++){
+//    //            ofSetColor(colors[i],50);
+//    //            cellMeshes[i].drawFaces();
+//    //        }
+//    
+//    for(int i = 0; i < cellMeshes.size(); i++){
+//        ofSetColor(colors[i],50);
+//        cellMeshes[i].draw();
+//    }
+//    
+//    ofPopMatrix();
     for(int i=0; i<parser.getAllClips().size();i++){
         ofSetColor(parser.getAllClips()[i].cluster.Color);
         ofCircle(parser.getAllClips()[i].cluster.Centre.x*ofGetWidth(),
@@ -168,31 +183,19 @@ void testApp::draw(){
         
     }
     
-    ofPushMatrix();
-      
-//        for(int i = 0; i < cellMeshes.size(); i++){
-//            ofSetColor(colors[i],50);
-//            cellMeshes[i].drawFaces();
-//        }
-    
-    for(int i = 0; i < cells.size(); i++){
-        ofSetColor(colors[i],50);
-        cells[i].draw();
-    }
-    
-    ofPopMatrix();
-//    for(int i=0; i<centres.size();i++){
-//        
-//        if (medianValues[i] / maxDistances[i] < 1.*mouseX/ofGetWidth()) {
-//            ofSetColor(255);
-//            font.drawString(keyWords[i], centres[i].x*ofGetWidth(),centres[i].y*ofGetHeight());
-//            //ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),
-//             //        (medianValues[i])*ofGetHeight());
-//            
-//        }
-//        cout<<1.*mouseX/ofGetWidth()<<endl;
 
-//    }
+    for(int i=0; i<centres.size();i++){
+    
+        if (medianValues[i] / maxDistances[i] < 1.*mouseX/ofGetWidth()) {
+            ofSetColor(255);
+            font.drawString(keyWords[i], centres[i].x*ofGetWidth(),centres[i].y*ofGetHeight());
+            //ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),
+             //        (medianValues[i])*ofGetHeight());
+            
+        }
+        cout<<1.*mouseX/ofGetWidth()<<endl;
+
+    }
 }
 
 //--------------------------------------------------------------

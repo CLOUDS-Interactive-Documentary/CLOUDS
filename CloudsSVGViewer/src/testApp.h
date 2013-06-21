@@ -36,7 +36,7 @@ protected:
     vector<float> maxDistances;
     vector<ofColor> colors;
     vector <VoroParticle *> seedParticles;
-//    vector<ofMesh>  cellMeshes;
+    vector<ofMesh>  cellMeshes;
     vector<ofPolyline> cells;
     vector<ofPoint> cohesiveCells;
     ofTexture dot;

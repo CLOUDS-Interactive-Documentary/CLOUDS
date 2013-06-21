@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystem.h"
+//#include "CloudsVisualSystem.h"
 #include "CloudsVisualSystemPreset.h"
 
 class CloudsVisualSystemManager {

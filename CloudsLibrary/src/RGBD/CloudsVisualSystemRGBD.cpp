@@ -163,7 +163,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemRGBD::selfDraw(){
+	
+	
 	if(sharedRenderer != NULL && hasSpeaker){
+
+//		cout << "RGBD DRAW" << endl;
 		
 		ofPushStyle();
 		ofPushMatrix();
@@ -254,7 +258,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		sharedRenderer->unbindRenderer();
 		
 		glPopAttrib();
-		
 		ofPopMatrix();
 		ofPopStyle();
 	}

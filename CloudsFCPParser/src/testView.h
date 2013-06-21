@@ -1,5 +1,7 @@
 #pragma once
 
+#define CLOUDS_NO_VS 1
+
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"

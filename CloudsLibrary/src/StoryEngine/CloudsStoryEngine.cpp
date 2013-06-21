@@ -353,12 +353,14 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 
 void CloudsStoryEngine::drawStoryEngineDebug(){
 	ofPushStyle();
+	
 	ofSetColor(255);
 	string debugString = "";
 	debugString += "Current Clip:    " + currentClip.getLinkName() + "\n";
 	debugString += "Current Topic:   " + getCurrentTopic() + "\n";
 	debugString += "Times on Topic:  " + ofToString(timesOnTopic) + "/" + ofToString(maxTimesOnTopic) + "\n";
-	ofDrawBitmapString(debugString, 25,25);
+	
+	ofDrawBitmapString(debugString,25,25);
 	ofPopStyle();
 }
 

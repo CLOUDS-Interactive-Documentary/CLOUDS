@@ -9,7 +9,7 @@
 #ifndef __CloudsFCPParser__CloudsClusterVisualizer__
 #define __CloudsFCPParser__CloudsClusterVisualizer__
 
-#include <iostream>
+
 //#include "ofxXmlSettings.h"
 //#include "CloudsClip.h"
 //#include "CloudsLink.h"

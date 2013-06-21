@@ -28,8 +28,8 @@ class CloudsPlaybackController {
 	
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
-	void update();
-	void draw();
+	void update(ofEventArgs& args);
+	void draw(ofEventArgs& args);
 	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
