@@ -13,8 +13,12 @@
 class Block : public ofRectangle {
 public:
     ofFloatColor    color;
-    char            value;
+    int             value;
+    float           border;
     bool            bSelected;
+    
+    bool operator > (Block &b){ return this->value > b.value; }    
+    bool operator < (Block &b){ return this->value < b.value; }
     
     void draw(){
         ofPushStyle();
@@ -25,9 +29,9 @@ public:
         
         ofNoFill();
         if (bSelected){
-            ofSetColor(0,70,200);
+            ofSetColor(21, 217, 203);
         } else {
-            ofSetColor(100,200);
+            ofSetColor(ofFloatColor(0.5,border));
         }
         ofRect(*this);
         
@@ -77,13 +81,24 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 private:
-    unsigned char * data;
     vector<Block> blocks;
     
-    void    generateBlocks( unsigned char * _data, int _nElements );
-
-    float   blockWidth, blockHeight, blockScale;
-    float   margin;
+    void    generateFromMemory();
+    void    unSelectAll();
+    void    swapBlocks(int _indexA, int _indexB);
     
-    int     blocksTotal;
+    void    applySort();
+    void    applyDeFrag();
+    void    applyRandomSort();
+    void    applyBiDirectionalSort();
+    
+    void    applyRandomMix();
+    
+    float   margin;
+    float   blockWidth, blockHeight, blockScale, blockAlpha;
+    float   randomSort, randomMix;
+    
+    bool    bSort;
+    bool    bDeFrag;
+    bool    bBiDirectionalSort;
 };

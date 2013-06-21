@@ -21,60 +21,68 @@ void CloudsVisualSystemMemory::selfSetup()
     blockScale = 1.0;
     blockWidth = 4;
     blockHeight = 8;
+    blockAlpha = 1.0;
     margin = 2;
-    blocksTotal = 10000;
     
-    data = new unsigned char[blocksTotal];
+    bSort = true;
+    bDeFrag = false;
+    bBiDirectionalSort = false;
     
-    generateBlocks(data,blocksTotal);
+    generateFromMemory();
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
 {
-    sysGui->addSlider("block_width", 0.001, 20, &blockWidth);
-    sysGui->addSlider("block_height", 0.001, 20, &blockHeight);
-    sysGui->addSlider("block_scale", 0.001, 10, &blockScale);
-    sysGui->addSlider("margin", 0.001, 10, &margin);
+    sysGui->addToggle("Sort", &bSort);
+    sysGui->addToggle("BiDirectionalSort", &bBiDirectionalSort);
+    
+    sysGui->addSlider("Random_Sort", 0.0, 1000, &randomSort);
+    sysGui->addSlider("Random_Mix", 0.0, 100, &randomMix);
+    
+    sysGui->addToggle("DeFrag", &bDeFrag);
 }
 
 void CloudsVisualSystemMemory::selfSetupRenderGui()
 {
+    rdrGui->addSlider("margin", 0.0, 10, &margin);
     
+    rdrGui->addSlider("block_width", 0.0, 20, &blockWidth);
+    rdrGui->addSlider("block_height", 0.0, 20, &blockHeight);
+    rdrGui->addSlider("block_scale", 0.5
+                      , 10, &blockScale);
+    rdrGui->addSlider("block_border", 0.0, 1.0, &blockAlpha);
 }
 
 void CloudsVisualSystemMemory::guiSystemEvent(ofxUIEventArgs &e)
 {
-    generateBlocks(data,blocksTotal);
+    
+}
+
+void CloudsVisualSystemMemory::guiRenderEvent(ofxUIEventArgs &e)
+{
+    generateFromMemory();
 }
 
 void CloudsVisualSystemMemory::selfKeyPressed(ofKeyEventArgs & args){
-    
+    generateFromMemory();
 }
 
-void CloudsVisualSystemMemory::selfUpdate()
-{
-    for(float i = 0; i < blocks.size()-1; i++){
-        if (int(blocks[i].value) > int(blocks[i+1].value)-127){
-            swap(blocks[i].value, blocks[i+1].value);
-            swap(blocks[i].color, blocks[i+1].color);
-            
-            blocks[i].bSelected = true;
-        } else {
-            blocks[i].bSelected = false;
-        }
-    }
-}
-
-void CloudsVisualSystemMemory::generateBlocks( unsigned char * _data, int _nElements ){
+void CloudsVisualSystemMemory::generateFromMemory(){
     
-    int xMargin = 10;//(blockWidth*blockScale*2.5)
-    int yMargin = 10;//(blockHeight*blockScale*1.5)
+    int blocksTotal = 10000*(10-blockScale);
+    unsigned char * data = new unsigned char[blocksTotal];
+    
+    int xMargin = 20;
+    int yMargin = 20;
     
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
     
-    int xBlocks = (float)width/((blockWidth+margin)*blockScale);
-    int yBlocks = (float)height/((blockHeight+margin)*blockScale);
+    float widthBlocks = blockWidth*blockScale;
+    float heightBlocks = blockHeight*blockScale;
+    
+    int xBlocks = (float)width/(widthBlocks+margin*blockScale);
+    int yBlocks = (float)height/(heightBlocks+margin*blockScale);
     
     blocks.clear();
     int index = 0;
@@ -86,16 +94,17 @@ void CloudsVisualSystemMemory::generateBlocks( unsigned char * _data, int _nElem
                 int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
                 int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
                 
-                if ( y > (ofGetHeight()+margin+blockHeight*blockScale))
+                if ( y > (ofGetHeight()+margin+heightBlocks))
                     break;
                 
                 Block block;
-                block.x = x;
-                block.y = y;
-                block.width = blockWidth*blockScale;
-                block.height = blockHeight*blockScale;
-                block.color = ofColor((unsigned char)_data[index]);
-                block.value = _data[index];
+                block.x = x+widthBlocks*0.5;
+                block.y = y+heightBlocks*0.5;
+                block.width = widthBlocks;
+                block.height = heightBlocks;
+                block.color = ofColor((unsigned char)data[index]);
+                block.border = blockAlpha;
+                block.value = (int)data[index];
                 block.bSelected = false;
                 
                 blocks.push_back(block);
@@ -107,6 +116,152 @@ void CloudsVisualSystemMemory::generateBlocks( unsigned char * _data, int _nElem
             index++;
         }
     }
+    
+    delete []data;
+}
+
+void CloudsVisualSystemMemory::unSelectAll(){
+    for(int i = 0; i < blocks.size(); i++){
+        blocks[i].bSelected = false;
+    }
+}
+
+
+void CloudsVisualSystemMemory::selfUpdate()
+{
+//    unSelectAll();
+    
+    if (bSort){
+        applySort();
+    }
+    
+    if (bBiDirectionalSort){
+        applyBiDirectionalSort();
+    }
+    
+    for(int i = 0; i < randomSort; i++){
+        applyRandomSort();
+    }
+    
+    for(int i = 0; i < randomMix; i++){
+        applyRandomMix();
+    }
+    
+    if (bDeFrag){
+        applyDeFrag();
+    }
+    
+}
+
+void CloudsVisualSystemMemory::applySort(){
+    for(float i = 0; i < blocks.size()-1; i++){
+        
+        if ( blocks[i] > blocks[i+1]){
+            swapBlocks(i, i+1);
+        } else {
+            blocks[i].bSelected = false;
+        }
+    }
+}
+
+void CloudsVisualSystemMemory::applyBiDirectionalSort()
+{
+    int left = 0;
+    int right = blocks.size()-1;
+    
+    int i, j;
+    while (left < right){
+        
+        for (int poz = left; poz < right; poz++){
+            if (blocks[poz] > blocks[poz+1]){
+                swapBlocks(poz, poz+1);
+            } else {
+                blocks[poz].bSelected = false;
+            }
+            right--;
+            
+            for (int pos = right; pos > left; pos--){
+                if (blocks[pos] < blocks[pos-1]){
+                    swapBlocks(pos, pos-1);
+                } else {
+                    blocks[pos].bSelected = false;
+                }
+                left++;
+            }
+        }
+    }
+}
+
+void CloudsVisualSystemMemory::applyRandomSort(){
+
+    int randomCell = int(ofRandom(blocks.size()-1));
+    
+    if (blocks[randomCell] > blocks[randomCell+1]) {
+        swapBlocks(randomCell, randomCell+1);
+    } else {
+        blocks[randomCell].bSelected = false;
+    }
+}
+
+void CloudsVisualSystemMemory::applyRandomMix(){
+    
+    swapBlocks(ofRandom(blocks.size()-1),
+               ofRandom(blocks.size()-1));
+
+}
+
+void CloudsVisualSystemMemory::applyDeFrag()
+{
+    //  Let's start in a random place
+    //
+    int startIndex = ofRandom(blocks.size()-2);
+    
+    //  Search for the first pair that are not sorted
+    //
+    for(float i = startIndex; i < blocks.size()-1; i++){
+        if ( blocks[i].value > blocks[i+1].value ){
+            blocks[i+1].bSelected = true;
+            startIndex = i+1;
+            break;
+        } else {
+            blocks[i].bSelected = false;
+        }
+    }
+    
+    //  Define the header and what to search for
+    //
+    int searchFor = blocks[ startIndex ].value;
+    int header = startIndex+1;
+    
+    //  Search for all the elements that have that value
+    //
+    vector< int > indexes;
+    for(float i = header; i < blocks.size(); i++){
+        if ( blocks[i].value == searchFor ){
+            blocks[i].bSelected = true;
+            indexes.push_back(i);
+        } else {
+            blocks[i].bSelected = false;
+        }
+    }
+    
+    //  Go one by one and put them continusly on right next to the beging of the header.
+    //
+    for (int i = 0; i < indexes.size(); i++){
+        if ( header < blocks.size() ){
+            swapBlocks( header, indexes[i]);
+            header++;
+        } else {
+            break;
+        }
+    }
+}
+
+void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB){
+    swap(blocks[_indexA].value, blocks[_indexB].value);
+    swap(blocks[_indexA].color, blocks[_indexB].color);
+    blocks[_indexA].bSelected = true;
+    blocks[_indexB].bSelected = true;
 }
 
 void CloudsVisualSystemMemory::draw(ofEventArgs & args)
@@ -116,6 +271,16 @@ void CloudsVisualSystemMemory::draw(ofEventArgs & args)
     {
         drawBackground();
         
+        ofNoFill();
+        ofSetColor(150);
+        ofSetLineWidth(0.5);
+        ofRect(14,14,ofGetWidth()-28,ofGetHeight()-28);
+        
+        ofSetColor(100);
+        ofSetLineWidth(1);
+        ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
+        
+        ofSetLineWidth(0.01);
         for (int i = 0; i < blocks.size(); i++) {
             blocks[i].draw();
         }
@@ -190,7 +355,7 @@ void CloudsVisualSystemMemory::mousePressed(ofMouseEventArgs &args)
 
 void CloudsVisualSystemMemory::mouseReleased(ofMouseEventArgs &args)
 {
-
+    
 }
 
 void CloudsVisualSystemMemory::selfSetupGui()
@@ -199,10 +364,6 @@ void CloudsVisualSystemMemory::selfSetupGui()
 }
 
 void CloudsVisualSystemMemory::selfGuiEvent(ofxUIEventArgs &e)
-{
-}
-
-void CloudsVisualSystemMemory::guiRenderEvent(ofxUIEventArgs &e)
 {
     
 }
