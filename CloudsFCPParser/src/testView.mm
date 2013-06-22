@@ -47,23 +47,24 @@
     //	visualizer.database = &parser;
     visualizer.setup(parser);
     //SURYA MOD:
-	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsClusterVisualiser::storyBegan);
-	ofAddListener(storyEngine.getEvents().clipBegan, &visualizer, &CloudsClusterVisualiser::clipBegan);
-//	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
-//	ofAddListener(storyEngine.getEvents().clipChanged, &visualizer, &CloudsFCPVisualizer::clipChanged);
+//	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsClusterVisualiser::storyBegan);
+//	ofAddListener(storyEngine.getEvents().clipBegan, &visualizer, &CloudsClusterVisualiser::clipBegan);
+	ofAddListener(storyEngine.getEvents().storyBegan, &visualizer, &CloudsFCPVisualizer::storyBegan);
+	ofAddListener(storyEngine.getEvents().clipBegan, &visualizer, &CloudsFCPVisualizer::clipBegan);
+//    ofAddListener(storyEngine.getEvents().clipEnded, &visualizer, &CloudsFCPVisualizer::clipEnded);
 	
 	visualizer.setupPhysics();
     
 	storyEngine.setup();
 	storyEngine.network = &parser;
-	storyEngine.maxTimesOnTopic = 2;
+	storyEngine.maxTimesOnTopic = 4;
 	storyEngine.fixedClipDelay = .1;
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 	
 	cout << "seeding random " << randomClip << "/" << parser.getAllClips().size() << endl;
 	
-	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
+	storyEngine.seedWithClip(parser.getRandomClip(false,true));
 	[playlistTable reloadData];
 	
 	[self playCurrentPlaylist:self];
@@ -92,7 +93,7 @@
 	gui->addSlider("node repulsion", 1, 50, &visualizer.repulsionForce);
 	gui->addSlider("node size min", .5, 100, &visualizer.minRadius);
 	gui->addSlider("node size max", .5, 100, &visualizer.maxRadius);
-    gui->addSlider("zoom", 0.1, 1, &visualizer.zoom);
+//    gui->addSlider("zoom", 0.1, 1, &visualizer.zoom);
  //   gui->addSlider("current Scale", .5, 500, &visualizer.currentScale);
 	
 	gui->loadSettings("settings.xml");
@@ -271,12 +272,15 @@
     //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
     
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
+
 		if(!storyEngine.playNextClip()){
 			return;
 		}
 		[playlistTable reloadData];
 	}
 	
+    
+    
 	if(playlistTable.selectedRow < storyEngine.getClipHistory().size()){
         [playlistTable selectRowIndexes:[[NSIndexSet alloc] initWithIndex:playlistTable.selectedRow+1]
                    byExtendingSelection:NO];
@@ -827,12 +831,14 @@
 	if(ofDirectory("../../../CloudsData/").exists()){
 		parser.setup("../../../CloudsData/fcpxml/");
 		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+        parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
         
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;
 		parser.setup("xml");
 		parser.parseLinks("clouds_link_db.xml");
+        parser.parseClusterMap("CLOUDS_test_5_26_13.SVG");        
 	}
     
     //    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");

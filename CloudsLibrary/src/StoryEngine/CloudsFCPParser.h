@@ -21,7 +21,9 @@ class CloudsFCPParser {
     vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
 	CloudsClip& getClipWithLinkName( string linkname );
+	CloudsClip& getClipWithLinkName( string linkname, bool& clipFound );
 	CloudsClip& getClipWithID( string ID );
+	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
 	//MANAGE
