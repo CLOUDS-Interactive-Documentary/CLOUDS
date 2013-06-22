@@ -43,7 +43,9 @@ class CloudsRGBDCombinedExporter {
 	float contourThreshold;
 	float minBlobSize;
 	ofxCv::ContourFinder contours;
-protected:
+	ofVec3f facePosition;
+	
+  protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
 	void interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta);

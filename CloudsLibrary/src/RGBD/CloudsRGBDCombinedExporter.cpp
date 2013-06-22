@@ -120,13 +120,16 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	calibration.pushTag("depth");
 	calibration.addValue("min", renderer->nearClip);
 	calibration.addValue("max", renderer->farClip);
-	calibration.popTag();
-	
-	calibration.popTag();
-		
+	calibration.popTag(); //depth
 	
 	calibration.popTag();//adjustment
 	
+	calibration.addTag("face");
+	calibration.pushTag("face");
+	calibration.addValue("x", facePosition.x);
+	calibration.addValue("y", facePosition.y);
+	calibration.addValue("z", facePosition.z);
+	calibration.popTag(); //face
 	calibration.saveFile(outputDirectory + "/_calibration.xml");
 }
 
@@ -142,7 +145,7 @@ void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 		return;
 	}
     
-	writeMetaFile(outputPath, renderer);
+	//writeMetaFile(outputPath, renderer);
 	
     int counter = 1;
 	for(int i = inoutPoint.min; i < inoutPoint.max; i++){
@@ -262,7 +265,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		}
 		
 		//Blur a wee bit
-		ofxCv::blur(faceFrame, 3);
+		ofxCv::blur(dstMat, 15);
 
 	}
 	else{
