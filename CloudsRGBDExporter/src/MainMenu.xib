@@ -257,7 +257,7 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSOpenGLView" id="712021889">
@@ -274,7 +274,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{1101, 544}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="712021889"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
@@ -302,7 +301,7 @@
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSScrollView" id="424004041">
 							<reference key="NSNextResponder" ref="598658964"/>
-							<int key="NSvFlags">286</int>
+							<int key="NSvFlags">274</int>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSClipView" id="262369202">
 									<reference key="NSNextResponder" ref="424004041"/>
@@ -314,7 +313,7 @@
 											<string key="NSFrameSize">{930, 303}</string>
 											<reference key="NSSuperview" ref="262369202"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="772005037"/>
+											<reference key="NSNextKeyView" ref="767853032"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -621,7 +620,7 @@
 							<string key="NSFrame">{{20, 86}, {932, 321}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="767853032"/>
+							<reference key="NSNextKeyView" ref="262369202"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="772005037"/>
@@ -661,7 +660,7 @@
 						</object>
 						<object class="NSProgressIndicator" id="154283235">
 							<reference key="NSNextResponder" ref="598658964"/>
-							<int key="NSvFlags">289</int>
+							<int key="NSvFlags">291</int>
 							<string key="NSFrame">{{156, 59}, {796, 20}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
@@ -761,7 +760,6 @@
 							<string key="NSFrame">{{759, 15}, {193, 12}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16653</int>
@@ -794,7 +792,7 @@
 						</object>
 						<object class="NSButton" id="119684117">
 							<reference key="NSNextResponder" ref="598658964"/>
-							<int key="NSvFlags">296</int>
+							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 10}, {128, 23}}</string>
 							<reference key="NSSuperview" ref="598658964"/>
 							<reference key="NSWindow"/>

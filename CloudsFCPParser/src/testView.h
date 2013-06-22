@@ -38,7 +38,6 @@
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
-	
     bool updatePhysics;
     vector<string> selectedKeywords;
     CloudsClip currentPlayingClip;
@@ -62,8 +61,6 @@
 	
 	bool movieFileMissing;
 	bool onPlaylist;
-    
-
 
 }
 
