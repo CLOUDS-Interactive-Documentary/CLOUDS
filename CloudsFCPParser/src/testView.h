@@ -14,6 +14,7 @@
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+	
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
     IBOutlet NSTableView* linkTable;
@@ -34,11 +35,11 @@
 	
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    CloudsClusterVisualiser visualizer;
+    //CloudsClusterVisualiser visualizer;
+    CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
-	
     bool updatePhysics;
     vector<string> selectedKeywords;
     CloudsClip currentPlayingClip;
@@ -62,8 +63,6 @@
 	
 	bool movieFileMissing;
 	bool onPlaylist;
-    
-
 
 }
 

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystem.h"
 
+class CloudsVisualSystem;
 class CloudsVisualSystemPreset {
   public:
 	CloudsVisualSystemPreset();

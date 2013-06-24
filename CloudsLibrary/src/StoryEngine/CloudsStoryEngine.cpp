@@ -81,6 +81,7 @@ bool CloudsStoryEngine::playNextClip(){
 	}
 	
 	if(atDeadEnd()){
+        ofLogError("CloudsStoryEngine::playNextClip") << " At dead end!";
 		return false;
 	}
 	

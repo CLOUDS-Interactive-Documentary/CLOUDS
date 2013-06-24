@@ -12,6 +12,7 @@
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
+	IBOutlet NSTextField* exportFolderField;
 	IBOutlet NSTableView* clipTable;
 
 	IBOutlet NSProgressIndicator* totalProgress;
@@ -30,6 +31,7 @@
 	CloudsFCPParser parser;
 	ofxRGBDPlayer player;
 	ofxRGBDGPURenderer renderer;
+	
 	vector<CloudsClipExportManager*> exportManagers;
 	
 	bool exporting;
@@ -65,7 +67,10 @@
 	float contourThreshold;
 	float minBlobSize;
 	bool selectColor;
+	bool selectFace;
 	ofColor targetColor;
+	ofVec2f facePosition;
+	ofxDepthImageCompressor compressor;
 	
 	//0 - 1 clip position
 	float clipPosition;
@@ -75,6 +80,7 @@
 	unsigned maxSequenceDepth;
 	bool useLog;
 	map<unsigned short, int> hist;
+
 	
 }
 

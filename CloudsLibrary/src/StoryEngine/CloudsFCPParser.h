@@ -14,14 +14,19 @@
 
 class CloudsFCPParser {
   public:
-    CloudsFCPParser();
+    
+	CloudsFCPParser();
+	
+	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
     vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
 	CloudsClip& getClipWithLinkName( string linkname );
+	CloudsClip& getClipWithLinkName( string linkname, bool& clipFound );
 	CloudsClip& getClipWithID( string ID );
+	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
 	//MANAGE

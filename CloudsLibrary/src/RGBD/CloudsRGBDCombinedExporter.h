@@ -43,12 +43,13 @@ class CloudsRGBDCombinedExporter {
 	float contourThreshold;
 	float minBlobSize;
 	ofxCv::ContourFinder contours;
-protected:
+	ofVec3f facePosition;
+	
+  protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
 	void interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta);
-	void addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
-						 ofPolyline& leftEye, ofPolyline& rightEye,
+	void addFaceToPixels(ofRectangle target, ofPolyline& leftEye, ofPolyline& rightEye,
 						 ofPolyline& faceOutline, ofPolyline& mouthOutline);
 	
 	ofxRGBDCPURenderer* renderer;  // It has a mesh, call .getReducedMesh();

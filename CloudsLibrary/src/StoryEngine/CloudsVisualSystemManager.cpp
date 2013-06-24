@@ -46,25 +46,41 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
+	refreshPresets();
 	
-	vector<string> systemPresets = system->getPresets();
-	if(systemPresets.size() == 0){
-		cout << "NO PRESETS for SYSTEM " <<  system->getSystemName() << endl;
-	}
-	
-	for(int i = 0; i < systemPresets.size(); i++){
-		CloudsVisualSystemPreset preset;
-		preset.presetName = systemPresets[i];
-		preset.system = system;
-		
-		//TODO: get keywords
-		
-		presets.push_back(preset);
-	}
-   #endif
+#endif
 }
 
 //--------------------------------------------------------------------
 CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
 	return presets[ ofRandom(presets.size()) ];
 }
+
+//--------------------------------------------------------------------
+const vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
+	return presets;
+}
+
+//--------------------------------------------------------------------
+void CloudsVisualSystemManager::refreshPresets(){
+#ifndef CLOUDS_NO_VS	
+	presets.clear();
+	for(int i = 0; i < systems.size(); i++){
+		vector<string> systemPresets = systems[i]->getPresets();
+		if(systemPresets.size() == 0){
+			cout << "NO PRESETS for SYSTEM " <<  systems[i]->getSystemName() << endl;
+		}
+
+		for(int p = 0; p < systemPresets.size(); p++){
+			CloudsVisualSystemPreset preset;
+			preset.presetName = systemPresets[p];
+			preset.system = systems[i];
+			
+			//TODO: get keywords
+			
+			presets.push_back(preset);
+		}
+	}
+   #endif
+}
+
