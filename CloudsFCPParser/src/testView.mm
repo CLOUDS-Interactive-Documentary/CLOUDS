@@ -7,9 +7,6 @@
 @synthesize movieFileMissing;
 @synthesize clipEndFrame;
 @synthesize preview;
-//@synthesize playingPlaylist;
-//@synthesize myString;
-
 
 - (void)setup
 {

@@ -7,7 +7,7 @@
 //
 
 #include "CloudsClip.h"
-
+#define FRAME_PADDING 24
 
 CloudsClip::CloudsClip(){
 	currentScore = 0;
@@ -36,8 +36,8 @@ string CloudsClip::getStartingQuestion(){
     else{
 		return startingQuestion;
     }
-    
 }
+
 void CloudsClip::setStartingQuestion(string question){
     startingQuestion = question;
 }
@@ -71,23 +71,22 @@ string CloudsClip::getCombinedCalibrationXML(){
 string CloudsClip::getFFMpegLine(string _exportFolder){
     
     float frameRate = 23.98;
-    float duration = ((float)(endFrame-startFrame))/frameRate;
+    float duration = ((float)( (endFrame-startFrame) + (FRAME_PADDING*2 - 1) ))/frameRate;
     
     string dstSound = _exportFolder + "/" +  getID()+".wav";
     
     stringstream pipeline1;
     pipeline1 << "ffmpeg -i \"" << relinkFilePath(sourceVideoFilePath) << "\"";
-    pipeline1 << " -ss " << ofToString((float)startFrame/(float)frameRate);
+    pipeline1 << " -ss " << ofToString((float)(startFrame-FRAME_PADDING+1)/(float)frameRate);
     pipeline1 << " -t " << ofToString(duration);
     pipeline1 << " -ac 2 -ar 44100 -vn \"" << dstSound <<"\"";
     
     stringstream pipeline2;
-    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame);
+    pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-FRAME_PADDING+1);
     pipeline2 << " -f image2 -r " << ofToString(frameRate);
     pipeline2 << " -i \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
     pipeline2 << " -i \"" << dstSound << "\" -acodec copy ";
     pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << _exportFolder << "/" << getCombinedMovieFile() << "\"";
-    
     
     stringstream pipeline3;
     pipeline3 << "cp \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
@@ -122,6 +121,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	adjustScale.x = adjustmentSettings.getValue("adjustment:scale:x", 1.);
 	adjustScale.y = adjustmentSettings.getValue("adjustment:scale:y", 1.);
 	
+
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
@@ -132,6 +132,10 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	
 	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
 	
+	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
+						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
+	
+						   
 	cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -176,18 +180,17 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("colorb", contourTargetColor.b);
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
+	alignmentSettings.addValue("faceu", faceCoord.x);
+	alignmentSettings.addValue("facev", faceCoord.y);
+	
 	
 	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
-	alignmentSettings.popTag();
+	alignmentSettings.popTag(); //extraction
 
-	alignmentSettings.popTag();
+	alignmentSettings.popTag(); //adjustment
 	
 	alignmentSettings.saveFile(getAdjustmentXML());
-}
-
-void CloudsClip::addAdjustmentToXML(ofxXmlSettings adjustment){
-	
 }
 
 string CloudsClip::getSceneFolder(){
