@@ -11,6 +11,7 @@
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
+	CloudsVisualSystem* currentVisualSystem;
 }
 
 - (void)setup;

@@ -5,6 +5,8 @@
 
 - (void)setup
 {
+	currentVisualSystem = NULL;
+	
 	parser.loadFromFiles();
 	
 	visualSystems.populateVisualSystems();
@@ -15,7 +17,7 @@
 
 - (void)update
 {
-	
+
 }
 
 - (void)draw
@@ -88,7 +90,15 @@
 
 - (void)playDoubleClickedRow:(id)sender
 {
+	if(currentVisualSystem != NULL){
+		currentVisualSystem->stopSystem();
+	}
+	currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
 	
+	currentVisualSystem->playSystem();
+	currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
+	
+
 }
 
 @end
