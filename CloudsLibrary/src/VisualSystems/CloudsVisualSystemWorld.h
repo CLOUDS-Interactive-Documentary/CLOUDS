@@ -47,26 +47,27 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    void loadPath(vector< vector<ofPoint> > &_path, string _file);
+    void loadPath(ofVboMesh &_vbo, string _file);
     void loadPoints(vector<ofPoint> &_points, string _file);
     void loadParticles( string _file );
     
-    vector< vector<ofPoint> > coast;
-    vector< vector<ofPoint> > borders;
-    vector< vector<ofPoint> > rivers;
-    
+    //  Globe
+    //
+    ofVboMesh   coastVbo;
+    ofVboMesh   riversVbo;
+
+    //  Spikes
+    //
     vector<wParticle*> particles;
-    
-    vector< ofPoint > points;
-    
-    ofPoint globalOffset;
-    
-    float   density;
-    float   gravity;
-    float   repulsion;
-    float   turbulence;
-    float   neigbordhood;
-    float   independence;
-    
     float   pointNoisePeaks;
+    
+    //  Flocking points
+    //
+    vector< ofPoint > points;
+    ofPoint globalOffset;
+    float   nMaxPoints;
+    float   density,gravity,repulsion;
+    float   turbulence,neigbordhood,independence;
+    
+    
 };

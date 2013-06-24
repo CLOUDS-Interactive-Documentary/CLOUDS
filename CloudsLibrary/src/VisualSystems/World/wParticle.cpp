@@ -18,6 +18,7 @@ wParticle::wParticle(){
 	
 	color.set(0,0,0);
     connect = NULL;
+    bTrail = NULL;
 }
 
 void wParticle::setLatLong(float _lat, float _long){
@@ -197,21 +198,43 @@ void wParticle::update(float _speed){
 	loc += vel;
     acc *= 0;
     
-//    tail.push_back(loc);
-//    while (tail.size() > 100) {
-//        tail.erase(tail.begin());
-//    }
+    if (bTrail){
+        tail.push_back(loc);
+        while (tail.size() > 100) {
+            tail.erase(tail.begin());
+        }
+    }
 }
 
 void wParticle::draw(){
-//    glBegin(GL_POINTS);
-    glVertex3f(loc.x,loc.y,loc.z);
-//    glEnd();
     
-//    ofNoFill();
-//    ofBeginShape();
-//    for(int i = 0; i < tail.size(); i++){
-//        ofVertex(tail[i]);
-//    }
-//    ofEndShape();
+    if (bTrail){
+        ofNoFill();
+        ofBeginShape();
+        for(int i = 0; i < tail.size(); i++){
+            ofVertex(tail[i]);
+        }
+        ofEndShape();
+        
+//        ofMesh mesh;
+//        mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+//        for (int i = 0; i < tail.size(); i++){
+//            float alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
+//            
+//            mesh.addColor(ofFloatColor( 1.0, alpha) );
+//            mesh.addVertex(tail[i]);
+//        }
+//        ofSetColor( 255 );
+//        ofFill();
+//        mesh.draw();
+        
+    } else {
+        glBegin(GL_POINTS);
+        glVertex3f(loc.x,loc.y,loc.z);
+        glEnd();
+    }
+    
+    if (connect != NULL){
+        ofLine(loc, connect->loc);
+    }
 }
