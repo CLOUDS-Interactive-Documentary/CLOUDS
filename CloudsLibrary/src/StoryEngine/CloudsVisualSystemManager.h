@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "CloudsVisualSystem.h"
 #include "CloudsVisualSystemPreset.h"
 
 class CloudsVisualSystemManager {
@@ -20,12 +19,13 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset& getRandomVisualSystem();
 	
 	CloudsVisualSystem* visualSystemWithName(string systemName);
+	const vector<CloudsVisualSystemPreset>& getPresets();
+	void refreshPresets();
 	
   protected:
 	
 	vector<CloudsVisualSystem*> systems;
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
-
 	vector<CloudsVisualSystemPreset> presets;
 	
 	//this instantiates and registers all the visual systems, called once at setup

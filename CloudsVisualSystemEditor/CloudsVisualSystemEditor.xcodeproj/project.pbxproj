@@ -1001,8 +1001,8 @@
 		E73769521778DC4500892646 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E73769551778DC4500892646 /* CloudsVisualSystem.cpp */,
 				E73769561778DC4500892646 /* CloudsVisualSystem.h */,
+				E73769551778DC4500892646 /* CloudsVisualSystem.cpp */,
 				E73769571778DC4500892646 /* CloudsVisualSystemAmber.cpp */,
 				E73769581778DC4500892646 /* CloudsVisualSystemAmber.h */,
 				E73769591778DC4500892646 /* CloudsVisualSystemCities.cpp */,
@@ -2552,6 +2552,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/ios\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsVisualSystemEditorDebug;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2666,6 +2667,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/ios\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsVisualSystemEditor;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,6 +14,7 @@
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+	
     IBOutlet NSTableView* keywordTable;
     IBOutlet NSTableView* clipTable;
     IBOutlet NSTableView* linkTable;

@@ -14,7 +14,10 @@
 
 class CloudsFCPParser {
   public:
-    CloudsFCPParser();
+    
+	CloudsFCPParser();
+	
+	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);

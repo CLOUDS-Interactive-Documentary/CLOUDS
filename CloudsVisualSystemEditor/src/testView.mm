@@ -1,14 +1,21 @@
 #import "testView.h"
+#include "CloudsVisualSystem.h"
 
 @implementation testView
 
 - (void)setup
 {
-    [freeText setStringValue:@"some effing text bra"];
+	parser.loadFromFiles();
+	
+	visualSystems.populateVisualSystems();
+
+	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
+	[presetTable reloadData];
 }
 
 - (void)update
 {
+	
 }
 
 - (void)draw
@@ -52,6 +59,34 @@
 }
 
 - (void)windowResized:(NSSize)size
+{
+	
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	return visualSystems.getPresets().size();
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
+	
+	if([@"preset" isEqualToString:aTableColumn.identifier]){
+		return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
+	}
+	else{
+		return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].system->getSystemName().c_str()];
+	}
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
+	
+}
+
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
+	
+}
+
+- (void)playDoubleClickedRow:(id)sender
 {
 	
 }

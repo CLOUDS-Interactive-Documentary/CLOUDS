@@ -13,6 +13,19 @@ CloudsFCPParser::CloudsFCPParser(){
     sortedByOccurrence = false;
 }
 
+void CloudsFCPParser::loadFromFiles(){
+	if(ofDirectory("../../../CloudsData/").exists()){
+		setup("../../../CloudsData/fcpxml/");
+		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+	}
+	else{
+		setup("xml");
+		parseLinks("clouds_link_db.xml");
+        parseClusterMap("CLOUDS_test_5_26_13.SVG");
+	}
+}
+
 void CloudsFCPParser::setup(string directory){
     xmlDirectory = directory;
     refreshXML();
