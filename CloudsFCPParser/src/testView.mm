@@ -34,18 +34,29 @@
     clipEndFrame = 0;
     clipLoaded = NO;
     
-    for (NSTableColumn *tableColumn in keywordTable.tableColumns ) {
+    for (NSTableColumn *tableColumn in keywordTableSource.tableColumns ) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
     
-    for (NSTableColumn *tableColumn in clipTable.tableColumns ) {
+    for (NSTableColumn *tableColumn in keywordTableTarget.tableColumns ) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
     
-    [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
+    for (NSTableColumn *tableColumn in clipTableSource.tableColumns ) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
+    
+    for (NSTableColumn *tableColumn in clipTableTarget.tableColumns ) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
+    
+    [clipTableSource setDoubleAction:@selector(playDoubleClickedRow:)];
 	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
+    [clipTableTarget setDoubleAction:@selector(playDoubleClickedRow:)];
 	
     //	visualizer.database = &parser;
     visualizer.setup(parser);
@@ -67,7 +78,7 @@
 	
 	cout << "seeding random " << randomClip << "/" << parser.getAllClips().size() << endl;
 	
-	storyEngine.seedWithClip(parser.getRandomClip(false,true));
+	//storyEngine.seedWithClip(parser.getRandomClip(false,true));
 	[playlistTable reloadData];
 	
 	[self playCurrentPlaylist:self];
@@ -100,7 +111,7 @@
  //   gui->addSlider("current Scale", .5, 500, &visualizer.currentScale);
 	
 	gui->loadSettings("settings.xml");
-//	gui->disable();
+	gui->disable();
 	
 	exporter.saveGephiCSV(parser);
  
@@ -211,25 +222,25 @@
 	cout << "CALLING SHOW QUESTIONS " << endl;
 	
 	if(showOnlyQuestions.state == NSOnState){
-		[keywordTable selectRowIndexes:nil
+		[keywordTableSource selectRowIndexes:nil
 				  byExtendingSelection:NO];
-        selectedKeywords.clear();
-		selectedClips.clear();
+        selectedKeywordsSource.clear();
+		selectedClipsSource.clear();
 		for(int i = 0; i < parser.getAllClips().size(); i++ ){
 			if(parser.getAllClips()[i].hasStartingQuestion()){
                 cout<<"Question Loop: "<<parser.getAllClips()[i].getLinkName()<<endl;
-				selectedClips.push_back( parser.getAllClips()[i] );
+				selectedClipsSource.push_back( parser.getAllClips()[i] );
 			}
 		}
 
 	}
 	else{
-		selectedKeywords.clear();
-		selectedClips.clear();
+		selectedKeywordsSource.clear();
+		selectedClipsSource.clear();
 	}
 	
-	[keywordTable reloadData];
-	[clipTable reloadData];
+	[keywordTableSource reloadData];
+	[clipTableSource reloadData];
 }
 	   
 - (IBAction) regenerateGraph:(id)sender
@@ -248,7 +259,7 @@
 		[playlistTable deselectAll:self];
 	}
 	
-	if(clipTable.selectedRow >= 0){
+	if(clipTableSource.selectedRow >= 0){
 		visualizer.clear();
 		CloudsClip& clip = [self selectedClip];
 		//visualizer.addLinksToPhysics(clip);
@@ -333,7 +344,7 @@
         cout<<"swapping link for suppression : clip " << linkSourceName << " going to " << linkTargetName << endl;
         parser.removeLink(linkSourceName, linkTargetName);
         
-        //        [clipTable.resignFirstResponder
+        //        [clipTableSource.resignFirstResponder
         
         [self suppressLink:parser.getClipWithLinkName(linkSourceName)
                     toClip:parser.getClipWithLinkName(linkTargetName) ];
@@ -343,7 +354,7 @@
         
         
         
-        [clipTable reloadData];
+        [clipTableSource reloadData];
         [linkTable reloadData];
         [suppressedTable reloadData];
         [self saveLinks:self];
@@ -362,7 +373,7 @@
         currentClipLinks = parser.getLinksForClip(suppressedSourceName);
         currentSuppressedLinks = parser.getSuppressionsForClip(suppressedSourceName);
         
-        [clipTable reloadData];
+        [clipTableSource reloadData];
         [linkTable reloadData];
         [suppressedTable reloadData];
         [self saveLinks:self];
@@ -426,7 +437,7 @@
 	ofPopStyle();
 }
 
-- (void) exit
+- (void) exit	
 {
 	NSLog(@"exit!!");
 	gui->saveSettings("settings.xml");
@@ -435,9 +446,8 @@
 - (void)keyPressed:(int)key
 {
     //if(key == ' ') updatePhysics = !updatePhysics;
-    
     if(key == ' '){
-        [self playDoubleClickedRow: clipTable];
+        [self playDoubleClickedRow: clipTableSource];
     }
 	
 	if(key == 'h'){
@@ -459,12 +469,11 @@
 		
 		[self linkClip:visualizer.getEdgeSource() toClip:visualizer.getEdgeDestination() ];
 		visualizer.linkedEdge();
-		
-		[clipTable reloadData];
+		[clipTableSource reloadData];
 		[linkTable reloadData];
         
 	}
-	else if(clipLoaded && clipTable.selectedRow >= 0){
+	else if(clipLoaded && clipTableSource.selectedRow >= 0){
 		
 		NSLog(@"clip is loaded and row is selected");
 		
@@ -472,7 +481,7 @@
 		
 		currentClipLinks = parser.getLinksForClip(currentPlayingClip.getLinkName());
         
-		[clipTable reloadData];
+		[clipTableSource reloadData];
 		[suppressedTable reloadData];
 		[linkTable reloadData];
         
@@ -490,7 +499,7 @@
 
         [linkTable reloadData];
 		[suppressedTable reloadData];
-		[clipTable reloadData];
+		[clipTableSource reloadData];
 		
 		
 		[self saveLinks:self];
@@ -523,7 +532,7 @@
 		[self suppressLink:visualizer.getEdgeSource() toClip:visualizer.getEdgeDestination() ];
 		visualizer.suppressEdge();
 		
-		[clipTable reloadData];
+		[clipTableSource reloadData];
 		[linkTable reloadData];
         [suppressedTable reloadData];
 		
@@ -649,7 +658,7 @@
 	onPlaylist = false; //will get set to true again if we are coming from a playlist
 	
 	CloudsClip clip;
-	if(sender == clipTable && clipTable.selectedRow >= 0){
+	if(sender == clipTableSource && clipTableSource.selectedRow >= 0){
         clip = [self selectedClip];
 //		playingPlaylist = false;
 	}
@@ -747,8 +756,9 @@
 	ofSleepMillis(250);
 	if( !ofFile(clipFilePath).exists() ){
         
-		ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
-		ofStringReplace(clipFilePath, "Nebula", "Seance");
+		//ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
+		//ofStringReplace(clipFilePath, "Nebula", "Seance");
+        ofStringReplace(clipFilePath, "Nebula", "Nebula_helper");
         
 	}
     
@@ -777,7 +787,7 @@
 
 - (CloudsClip&) selectedClip
 {
-    CloudsClip& c = (selectedClips.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+    CloudsClip& c = (selectedClipsSource.size() == 0) ? parser.getAllClips()[clipTableSource.selectedRow] : selectedClipsSource[clipTableSource.selectedRow];
     
     cout<<"Selected clip "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
     return c;
@@ -846,19 +856,19 @@
     
     //    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
-    [keywordTable reloadData];
-    [clipTable reloadData];
+    [keywordTableSource reloadData];
+    [clipTableSource reloadData];
     
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
     //   cout << "returning some rows " << (NSInteger)parser.getAllKeywords().size() << endl;
-    if(aTableView == keywordTable){
+    if(aTableView == keywordTableSource){
         return (NSInteger)parser.getAllKeywords().size();
     }
-    else if(aTableView == clipTable){
-        return (NSInteger) (selectedClips.size() == 0) ? parser.getAllClips().size() : selectedClips.size();
+    else if(aTableView == clipTableSource){
+        return (NSInteger) (selectedClipsSource.size() == 0) ? parser.getAllClips().size() : selectedClipsSource.size();
     }
     else if(aTableView == linkTable){
         return currentClipLinks.size();
@@ -875,7 +885,7 @@
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     
-    if(aTableView == keywordTable){
+    if(aTableView == keywordTableSource){
         string keyword = parser.getAllKeywords()[rowIndex];
         if([@"occurrence" isEqualToString:aTableColumn.identifier]){
             return [NSNumber numberWithInt: parser.occurrencesOfKeyword(keyword)];
@@ -884,8 +894,8 @@
             return [NSString stringWithCString:keyword.c_str() encoding:NSUTF8StringEncoding];
         }
     }
-    else if(aTableView == clipTable){
-		CloudsClip& m = (selectedClips.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClips[rowIndex];
+    else if(aTableView == clipTableSource){
+		CloudsClip& m = (selectedClipsSource.size() == 0) ? parser.getAllClips()[rowIndex] : selectedClipsSource[rowIndex];
 //        cout<<"Selected Clips size: "<<selectedClips.size()<<endl;
         //		NSLog(@"Identifer is %@", aTableColumn.identifier);
 		if([@"Links" isEqualToString:aTableColumn.identifier]){
@@ -908,11 +918,11 @@
 		}
     }
     else if(aTableView == linkTable){
-        string clipTableEntry = currentClipLinks[rowIndex].targetName;
+        string clipTableSourceEntry = currentClipLinks[rowIndex].targetName;
         if(currentClipLinks[rowIndex].startFrame != -1 && currentClipLinks[rowIndex].endFrame != -1){
-            clipTableEntry += "[" + ofToString(currentClipLinks[rowIndex].startFrame) + " - " + ofToString(currentClipLinks[rowIndex].endFrame) + "]";
+            clipTableSourceEntry += "[" + ofToString(currentClipLinks[rowIndex].startFrame) + " - " + ofToString(currentClipLinks[rowIndex].endFrame) + "]";
         }
-        return [NSString stringWithUTF8String:clipTableEntry.c_str()];
+        return [NSString stringWithUTF8String:clipTableSourceEntry.c_str()];
     }
     else if(aTableView == suppressedTable){
         string suppressedTableEntry = currentSuppressedLinks[rowIndex].targetName;
@@ -929,33 +939,33 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
-    if(aNotification.object == keywordTable && showOnlyQuestions.state ==  NSOffState){
+    if(aNotification.object == keywordTableSource && showOnlyQuestions.state ==  NSOffState){
     
 
-        selectedKeywords.clear();
-        selectedClips.clear();
+        selectedKeywordsSource.clear();
+        selectedClipsSource.clear();
      
-        if(keywordTable.selectedRow >= 0){
+        if(keywordTableSource.selectedRow >= 0){
             
-            NSUInteger idx = [keywordTable.selectedRowIndexes firstIndex];
+            NSUInteger idx = [keywordTableSource.selectedRowIndexes firstIndex];
             while (idx != NSNotFound) {
                 // do work with "idx"
-                selectedKeywords.push_back(parser.getAllKeywords()[idx]);
+                selectedKeywordsSource.push_back(parser.getAllKeywords()[idx]);
                 
                 // get the next index in the set
-                idx = [keywordTable.selectedRowIndexes indexGreaterThanIndex:idx];
+                idx = [keywordTableSource.selectedRowIndexes indexGreaterThanIndex:idx];
             }
-            selectedClips = parser.getClipsWithKeyword(selectedKeywords);
+            selectedClipsSource = parser.getClipsWithKeyword(selectedKeywordsSource);
         }
         
-        [clipTable reloadData];
+        [clipTableSource reloadData];
     }
-    else if(aNotification.object == clipTable){
-        if(clipTable.selectedRow < 0){
+    else if(aNotification.object == clipTableSource){
+        if(clipTableSource.selectedRow < 0){
             return;
         }
         
-        //CloudsClip& m = (selectedKeywords.size() == 0) ? parser.getAllClips()[clipTable.selectedRow] : selectedClips[clipTable.selectedRow];
+        //CloudsClip& m = (selectedKeywordsSource.size() == 0) ? parser.getAllClips()[clipTableSource.selectedRow] : selectedClipsSource[clipTableSource.selectedRow];
         CloudsClip& m = [self selectedClip];
         
         string keywordList = "";
@@ -970,13 +980,13 @@
             return;
         }
         
-        vector<CloudsClip>& searchClips = (selectedClips.size() == 0) ? parser.getAllClips() : selectedClips;
+        vector<CloudsClip>& searchClips = (selectedClipsSource.size() == 0) ? parser.getAllClips() : selectedClipsSource;
         //CloudsClip& m = [self selectedClip];
         string targetClip = currentClipLinks[ linkTable.selectedRow ].targetName;
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){
                 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
-                [clipTable selectRowIndexes:indexSet byExtendingSelection:NO];
+                [clipTableSource selectRowIndexes:indexSet byExtendingSelection:NO];
                 break;
             }
         }
@@ -1026,7 +1036,7 @@ completionsForSubstring:(NSString *)substring
 {
     NSArray *newDescriptors = [tableView sortDescriptors];
     NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
-    if(tableView == keywordTable){
+    if(tableView == keywordTableSource){
         parser.sortKeywordsByOccurrence( [ [[newDescriptors objectAtIndex:0] key]  isEqualToString:@"occurrence"] );
     }
     

@@ -14,12 +14,15 @@
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
-    IBOutlet NSTableView* keywordTable;
-    IBOutlet NSTableView* clipTable;
+    IBOutlet NSTableView* keywordTableSource;
+    IBOutlet NSTableView* clipTableSource;
     IBOutlet NSTableView* linkTable;
     IBOutlet NSTableView* suppressedTable;
 	IBOutlet NSTableView* playlistTable;
-
+    
+    IBOutlet NSTableView* clipTableTarget;
+    IBOutlet NSTableView* keywordTableTarget;
+    
     IBOutlet NSTextField* currentClipLabel;
      
     IBOutlet NSTokenField* currentKeywords;
@@ -34,18 +37,19 @@
 	
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    //CloudsClusterVisualiser visualizer;
     CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
 	
     bool updatePhysics;
-    vector<string> selectedKeywords;
+    vector<string> selectedKeywordsSource;
+    vector<string> selectedKeywordsTarget;
     CloudsClip currentPlayingClip;
     BOOL clipLoaded;
-	
-    vector<CloudsClip> selectedClips;
+
+    vector<CloudsClip> selectedClipsTarget;
+    vector<CloudsClip> selectedClipsSource;
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
 
