@@ -56,6 +56,9 @@ protected:
 	ofVboMesh particleMesh;
 	ofVboMesh lines;
 	int trailLength;
+	float generateTrailLength;
+	float generateMaxVerts;
+	float particlesPerFrame;
 	
 	void addParticle();
 	void initParticle(Particle& p);

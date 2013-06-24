@@ -1,9 +1,13 @@
 
 #include "CloudsVisualSystemVectorFlow.h"
 
+//TODO preallocate buffers
+
 //--------------------------------------------------------------
 CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	step = 50;
+	particlesPerFrame = 0;
+	
 }
 
 //--------------------------------------------------------------
@@ -13,17 +17,17 @@ string CloudsVisualSystemVectorFlow::getSystemName(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::initFlowField(){
-
+	maxVertices = generateMaxVerts;
+	trailLength = generateTrailLength;
 	width = ofGetWidth();
 	height = ofGetHeight();
-	trailLength = 10;
-	
+		
 	//gives our initial columns
 	cout << "creating " << width/int(step) << " " << height/int(step) << " lines" << endl;
 
+	particleMesh.clear();
+	particles.clear();
 	particleMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-
-	ofSetSmoothLighting(true);
 	
 	lines.clear();
 	lines.setMode(OF_PRIMITIVE_LINES);
@@ -31,17 +35,15 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 		for(int x = 0; x <= width/step; x++){
 			lines.addVertex( ofVec3f(x*step,y*step,0) );
 			lines.addVertex( ofVec3f(x*step,y*step,0) );
-			lines.addColor(ofColor::white);
-			lines.addColor(ofColor::white);
+			lines.addColor( ofColor::white );
+			lines.addColor( ofColor::white );
 		}
 	}
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetup(){
-
 	regenerateFlow = true;
-
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -56,11 +58,11 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
 
 	//UPDATE PARTICLES
-	for(int i = 0; i < 300/trailLength; i++){
+	for(int i = 0; i < particlesPerFrame; i++){
 		addParticle();
 	}
 
-	maxVertices = 50000;
+
 	for(int i = 0; i < particles.size(); i++){
 		Particle& cp = particles[i];
 		for(int t = trailLength; t > 0; t--){
@@ -78,13 +80,11 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 		
 		particleMesh.setVertex(cp.index, cp.pos); //set the fence post
 		particleMesh.setVertex(cp.index+1, cp.pos);
+		
 		ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 200, 200) ;
 		particleMesh.setColor(cp.index+1, magnitudeColor);
-		
-		
+	
 		particleMesh.setVertex(cp.index + trailLength+1, particleMesh.getVertices()[cp.index+trailLength]); //set the fence post
-//		particleMesh.setColor(cp.index + trailLength+1, particleMesh.getColors()[cp.index+trailLength]); //set the fence post
-		
 	}
 
 	ofRectangle screenRect(0,0,width,height);
@@ -135,8 +135,7 @@ void CloudsVisualSystemVectorFlow::addParticle(){
 
 	if(particleMesh.getVertices().size() < maxVertices){
 		
-		
-		cout << "allocating particles " << particleMesh.getVertices().size() << endl;
+		//cout << "allocating particles " << particleMesh.getVertices().size() << endl;
 		
 		Particle p;
 		p.dead = false;
@@ -203,13 +202,7 @@ void CloudsVisualSystemVectorFlow::selfExit(){
 }
 
 void CloudsVisualSystemVectorFlow::selfBegin(){
-//	sourceOffset.begin();
-//	ofClear(0);
-//	sourceOffset.end();
-//	
-//	targetOffset.begin();
-//	ofClear(0);
-//	targetOffset.end();
+
 }
 
 void CloudsVisualSystemVectorFlow::selfEnd(){
@@ -217,9 +210,7 @@ void CloudsVisualSystemVectorFlow::selfEnd(){
 }
 
 void CloudsVisualSystemVectorFlow::selfKeyPressed(ofKeyEventArgs & args){
-//	if(args.key == 'R'){
-//		reloadShaders();
-//	}
+
 }
 
 void CloudsVisualSystemVectorFlow::selfKeyReleased(ofKeyEventArgs & args){
@@ -258,10 +249,6 @@ void CloudsVisualSystemVectorFlow::selfGuiEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetupSystemGui(){
 	
-//	sysGui->addSlider("path color flip chance", 0, 1.0, &colorflip);
-//	sysGui->addSlider("path deviation", 0, 1000, &deviation);
-//	sysGui->addSlider("path deviation chance", 0, .2, &pathDeviation);
-//	sysGui->addLabelButton("regenerate particles", &regenerate);
 }
 
 //--------------------------------------------------------------
@@ -269,12 +256,18 @@ void CloudsVisualSystemVectorFlow::guiSystemEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
+	rdrGui->addSlider("maxVerts", 10000, 100000, &generateMaxVerts);
+	rdrGui->addSlider("trail length", 5, 100, &generateTrailLength);
 	rdrGui->addButton("regenerate", false);
+	
+	rdrGui->addSlider("birthrate", 0, 100, &particlesPerFrame);
+	
 	rdrGui->addSlider("step", 5, 100, &step);
 	rdrGui->addSlider("chaos", 5, 100, &chaos);
 	rdrGui->addSlider("speed", 0, .1, &speed);
 	rdrGui->addSlider("maxLength", 0, 100, &maxLength);
 	rdrGui->addSlider("fieldAlpha", 0, 1.0, &fieldAlpha);
+
 	
 //	rdrGui->addSlider("speed", 0., 2., &speed);
 //	rdrGui->addSlider("point size", 1., 25., &pointSize);
