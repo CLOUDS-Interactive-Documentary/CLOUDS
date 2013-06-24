@@ -101,9 +101,9 @@ string CloudsClip::getAdjustmentXML(){
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
     
-	if(adjustmentLoaded && !forceReload){
-		return;
-	}
+//	if(adjustmentLoaded && !forceReload){
+//		return;
+//	}
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
@@ -136,7 +136,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
 	
 						   
-	cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
 }
