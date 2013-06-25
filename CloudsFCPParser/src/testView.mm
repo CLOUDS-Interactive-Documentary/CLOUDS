@@ -508,7 +508,8 @@
 
 -(IBAction)suppressFromLeftToRight:(id)sender{
     if([linkerB isClipSelected]&&[linkerA isClipSelected]){
-        [self suppressLink:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+        [self suppressLink:[linkerA selectedClip]
+					toClip:[linkerB selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -516,7 +517,8 @@
 
 -(IBAction)suppressFromRighttoLeft:(id)sender{
     if([linkerA isClipSelected]&&[linkerB isClipSelected]){
-        [self suppressLink:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+        [self suppressLink:[linkerB selectedClip]
+					toClip:[linkerA selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -525,7 +527,8 @@
 }
 -(IBAction)linkFromLeftToRight:(id)sender{
     if([linkerB isClipSelected]&&[linkerA isClipSelected]){
-        [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+        [self linkClip:[linkerA selectedClip]
+				toClip:[linkerB selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -533,7 +536,8 @@
 
 -(IBAction)linkFromRightToLeft:(id)sender{
     if([linkerA isClipSelected]&&[linkerB isClipSelected]){
-        [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+        [self linkClip:[linkerB selectedClip]
+				toClip:[linkerA selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -550,6 +554,8 @@
 		l.targetName = target.getLinkName();
 		l.startFrame = -1;
 		l.endFrame = -1;
+		
+		parser.unsuppressConnection(l);
 		
 		//TODO figure out frame numbers
 		parser.addLink(l);
@@ -580,8 +586,8 @@
 	}
 }
 
-- (IBAction) linkLast:(id)sender
-{
+//- (IBAction) linkLast:(id)sender
+//{
 //	if(playlistTable.numberOfRows > 1){
 //		CloudsClip& a = storyEngine.getClipHistory()[ playlistTable.selectedRow-1 ];
 //		CloudsClip& b = storyEngine.getClipHistory()[ playlistTable.selectedRow ];
@@ -595,7 +601,7 @@
 //		[self saveLinks:self];
 //	}
 	
-}
+//}
 
 //- (IBAction) suppressLast:(id)sender
 //{

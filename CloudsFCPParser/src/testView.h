@@ -62,23 +62,19 @@
 	int currentPlaylistIndex;
 	
     int clipEndFrame;
-//    ofxTimeline inpoint;
-	ofTrueTypeFont font;
 
-//	ofxUICanvas* gui;
+	ofTrueTypeFont font;
 	bool autoProgressStory;
 	float timeOfNextStory;
 	float storyStartTime;
 	
 	bool movieFileMissing;
 	bool onPlaylist;
-
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
 @property(nonatomic,readonly) bool movieFileMissing;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
-//@property(nonatomic,readonly) bool playingPlaylist;
 
 - (void)setup;
 - (void)update;
@@ -88,10 +84,9 @@
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) createLink:(id)sender;
-//- (IBAction) suppressLink:(id)sender;
 - (IBAction) playDoubleClickedRow:(id)sender;
-- (IBAction) saveLinks:(id)sender;
-- (IBAction) deleteLink:(id)sender;
+//- (IBAction) saveLinks:(id)sender;
+//- (IBAction) deleteLink:(id)sender;
 //- (IBAction) regenerateGraph:(id)sender;
 - (IBAction) unloadVideo:(id)sender;
 //- (IBAction) nextOnPlaylist:(id)sender;
@@ -119,8 +114,8 @@
 
 - (float) clipPercentComplete;
 
-//- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
-//- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
+- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
+- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

@@ -186,7 +186,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 					
 					linksXML.popTag(); //link
                     totalLinks++;
-//                    cout<<"suppressed"<<newLink.targetName<<" for "<<clipName<<endl;
+
 					suppressedConnections[newLink.sourceName].push_back( newLink );
 				}
 			}
@@ -293,6 +293,25 @@ void CloudsFCPParser::removeLink(string linkName, string targetName){
     }
 }
 
+
+void CloudsFCPParser::suppressConnection(string sourceName, string targetName){
+	CloudsLink l;
+	l.sourceName = sourceName;
+	l.targetName = targetName;
+	l.startFrame = -1;
+	l.endFrame = -1;
+	suppressConnection(l);
+}
+
+void CloudsFCPParser::suppressConnection(CloudsClip& source, CloudsClip& target){
+	CloudsLink l;
+	l.sourceName = source.getLinkName();
+	l.targetName = target.getLinkName();
+	l.startFrame = -1;
+	l.endFrame = -1;
+	suppressConnection(l);
+}
+
 void CloudsFCPParser::suppressConnection(CloudsLink& link){
 	if(!linkIsSuppressed(link.sourceName, link.targetName)){
 		cout << "Suppressed connection " << link.sourceName << " >> " << link.targetName << endl;
@@ -315,6 +334,10 @@ void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
 			suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
 		}
 	}
+}
+
+void CloudsFCPParser::unsuppressConnection(CloudsLink& link){
+	unsuppressConnection(link.sourceName, link.targetName);
 }
 
 bool CloudsFCPParser::clipHasLink(CloudsClip& clip){
@@ -671,19 +694,6 @@ string CloudsFCPParser::getKeyThemeForTag(string tag){
 	return tagToKeyTheme[ tag ];
 }
 
-
-//void CloudsFCPParser::suppressConnection(CloudsClip& a, CloudsClip& b){
-//
-//}
-//
-//void CloudsFCPParser::unsuppressConnection(CloudsClip& a, CloudsClip& b){
-//
-//}
-//
-//bool CloudsFCPParser::isConnectionSuppressed(CloudsClip& a, CloudsClip& b){
-//
-//}
-
 vector<string>& CloudsFCPParser::getAllKeywords(){
     if(keywordsDirty){
         refreshKeywordVector();
@@ -707,6 +717,24 @@ vector<CloudsLink>& CloudsFCPParser::getLinksForClip(string clipName){
     return linkedConnections[clipName];
 }
 
+void CloudsFCPParser::addLink(string sourceName, string targetName){
+	CloudsLink l;
+	l.sourceName = sourceName;
+	l.targetName = targetName;
+	l.startFrame = -1;
+	l.endFrame = -1;
+	addLink(l);
+}
+
+void CloudsFCPParser::addLink(CloudsClip& source, CloudsClip& target){
+	CloudsLink l;
+	l.sourceName = source.getLinkName();
+	l.targetName = target.getLinkName();
+	l.startFrame = -1;
+	l.endFrame = -1;
+	addLink(l);
+}
+
 void CloudsFCPParser::addLink(CloudsLink& link){
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
 		linkedConnections[link.sourceName].push_back( link );
@@ -716,6 +744,7 @@ void CloudsFCPParser::addLink(CloudsLink& link){
 vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(CloudsClip& clip){
     return suppressedConnections[clip.getLinkName()];
 }
+
 vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(string clipName){
     return suppressedConnections[clipName];
 }
@@ -836,7 +865,7 @@ vector<CloudsClip> CloudsFCPParser::getMetaDataConnections(CloudsClip& source){
         if(nameA != nameB &&
            source.person != clipB.person &&
            !linkIsSuppressed(nameA, nameB) &&
-           !clipLinksTo(nameA, nameB) &&
+//           !clipLinksTo(nameA, nameB) &&
            getNumberOfSharedKeywords(source, clipB) > 1 )
         {
             clips.push_back(clipB);
