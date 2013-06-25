@@ -245,7 +245,6 @@
 		ofImage depthImage;
 		compressor.convertTo8BitImage(player.getDepthSequence()->getPixels(), depthImage);
 
-//		image.setFromPixels(player.getDepthSequence()->getPixels());
 		depthImage.draw(0,0);
 		
 		ofPushStyle();
@@ -277,14 +276,20 @@
 		ofNoFill();
 		ofPushMatrix();
 		ofSetHexColor(0x69aade);
-		ofTranslate(0, 0, minDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);      
+		ofTranslate(minDepth, 0, 0);
+
+//#if (OF_VERSION_PATCH > 4)
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);
 		ofPopMatrix();
 		
 		ofPushMatrix();
 		ofSetHexColor(0xFFFFFF - 0x69aade);
-		ofTranslate(0, 0, maxDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);
+		ofTranslate(maxDepth, 0, 0);
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);        
 		ofPopMatrix();
 		
 		cam.end();
