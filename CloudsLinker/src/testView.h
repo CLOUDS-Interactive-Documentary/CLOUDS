@@ -5,41 +5,12 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-//#include "CloudsFCPVisualizer.h"
-//#include "CloudsClusterVisualizer.h"
 #include "CloudsD3Exporter.h"
-//#include "ofxTimeline.h"
-//#include "ofxUI.h"
-//#include "CloudsStoryEngine.h"
 #include "ClipSelector.h"
 
 //@class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 
-    
-//    IBOutlet NSTableView* keywordTableSource;
-//    IBOutlet NSTableView* clipTableSource;
-//
-//    IBOutlet NSTableView* linkTable;
-//    IBOutlet NSTableView* suppressedTable;
-//	IBOutlet NSTableView* playlistTable;
-//    
-//    IBOutlet NSTableView* clipTableTarget;
-//    IBOutlet NSTableView* keywordTableTarget;
-//    
-//    IBOutlet NSTextField* currentClipLabel;
-//     
-//    IBOutlet NSTokenField* currentKeywordsSource;
-//    IBOutlet NSTokenField* currentKeywordsTarget;
-//    IBOutlet NSTextField* linkText;
-//	
-//	IBOutlet NSTextField* seedKeyword;
-//	
-//    IBOutlet NSTextField* startQuestion;
-//	IBOutlet NSButton* showOnlyQuestions;
-
-//	IBOutlet ViewerApp* viewerApp;
-    
     IBOutlet ClipSelector* linkerA;
     IBOutlet ClipSelector* linkerB;
     
@@ -85,14 +56,12 @@
 
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
-- (IBAction) createLink:(id)sender;
-//- (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) saveLinks:(id)sender;
 
 //- (IBAction) deleteLink:(id)sender;
 //- (IBAction) regenerateGraph:(id)sender;
 
-- (IBAction) unloadVideo:(id)sender;
+- (IBAction) togglePlay:(id)sender;
 //- (IBAction) nextOnPlaylist:(id)sender;
 //- (IBAction) prevOnPlaylist:(id)sender;
 //- (IBAction) playCurrentPlaylist:(id)sender;
@@ -102,14 +71,13 @@
 //- (IBAction) suppressLinkModifier:(id)sender;
 //- (IBAction) previewLinks:(id)sender;
 //- (IBAction) previewSuppressed:(id)sender;
-- (IBAction) stopPreview:(id)sender;
-//- (IBAction) showQuestiosnChanged:(id)sender;
+//- (IBAction) stopPreview:(id)sender;
 
 
--(IBAction)linkFromLeftToRight:(id)sender;
--(IBAction)linkFromRightToLeft:(id)sender;
--(IBAction)suppressFromLeftToRight:(id)sender;
--(IBAction)suppressFromRighttoLeft:(id)sender;
+- (IBAction)linkFromLeftToRight:(id)sender;
+- (IBAction)linkFromRightToLeft:(id)sender;
+- (IBAction)suppressFromLeftToRight:(id)sender;
+- (IBAction)suppressFromRighttoLeft:(id)sender;
 
 //- (IBAction) linkLast:(id)sender;
 //- (IBAction) suppressLast:(id)sender;

@@ -34,6 +34,8 @@
 //    [keywordTable setTarget:self];
 //    [keywordTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
+	[keywordTable reloadData];
+	
     [metaTable setTarget:self];
     [metaTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
@@ -198,7 +200,9 @@
 			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
 			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
 			
+			dontUpdateClips = true;
 			[self updateTables];
+			dontUpdateClips = false;
 		}
     }
     else if(aNotification.object == linkTable){
@@ -454,8 +458,7 @@ completionsForSubstring:(NSString *)substring
 	
 	[self updateSelectedClips];
 	
-    [keywordTable reloadData];
-	[clipTable reloadData];
+	if(!dontUpdateClips) [clipTable reloadData];
     [linkTable reloadData];
     [suppressedTable reloadData];
     [metaTable reloadData];

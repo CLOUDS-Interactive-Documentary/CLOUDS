@@ -274,9 +274,17 @@
 //	[playlistTable reloadData];
 }
 
-- (IBAction) unloadVideo:(id)sender
+
+- (IBAction) togglePlay:(id)sender
 {
-	preview.stop();
+	if(preview.isLoaded()){
+		if(preview.isPlaying()){
+			preview.stop();
+		}
+		else{
+			preview.play();
+		}
+	}
 }
 
 //- (IBAction)suppressLinkModifier:(id)sender
@@ -366,25 +374,16 @@
     
 	ofBackground(0);
 	
-    if(preview.isLoaded() && preview.isPlaying()){
-        preview.draw(0, 0, 960, 540);
+    if(preview.isLoaded()){
+		ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
+		ofRectangle videoRect(0,0,1920,1080);
+		videoRect.scaleTo(screenRect);
+		
+        preview.draw(videoRect);
+		
+		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.keywords, ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
     }
 	
-//    //	ofBackgroundGradient(ofColor::black,
-//    //						 ofColor::darkGray*.15,
-//    //						 OF_GRADIENT_LINEAR);
-//	
-////    visualizer.drawPhysics();
-//    
-////	string debug = "";
-////	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " (" + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + ")\n";
-////	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size()  ) + "\n";
-////	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
-//	
-//	ofPushStyle();
-//	ofSetColor(210);
-////	font.drawString(debug, 30,30);
-//	ofPopStyle();
 }
 
 - (void) exit
@@ -395,22 +394,13 @@
 
 - (void)keyPressed:(int)key
 {
-    //if(key == ' ') updatePhysics = !updatePhysics;
-//    if(key == ' '){
-//        [self playDoubleClickedRow: clipTableSource];
-//    }
 	
-//	if(key == 'h'){
-//		cout << "toggling vis" << endl;
-////		gui->disable();
-//	}
-//	if(key == 's'){
-////		gui->enable();
-//	}
+	[self togglePlay:self];
+	cout << "KEY " << key << endl;
 }
 
-- (IBAction) createLink:(id)sender
-{
+//- (IBAction) createLink:(id)sender
+//{
 //    NSLog(@"creating link. edge selected? %@", visualizer.isEdgeSelected() ? @"YES" : @"NO" );
 //	
 //	if(visualizer.isEdgeSelected() && !visualizer.isSelectedEdgeLink() ){
@@ -439,7 +429,7 @@
 //        
 //		cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
 //	}
-}
+//}
 
 //CONFUSING: delete link is called from the link table, remove link called from the graph
 //- (IBAction) deleteLink:(id)sender
@@ -727,7 +717,7 @@
 
 - (void) playClip:(CloudsClip&) clip
 {
-	onPlaylist = false; //will get set to true again if we are coming from a playlist
+//	onPlaylist = false; //will get set to true again if we are coming from a playlist
 	if(currentPlayingClip.getLinkName() == clip.getLinkName() && !autoProgressStory){
 		if(preview.isPlaying()){
 			preview.stop();

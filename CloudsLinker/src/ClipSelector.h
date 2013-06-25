@@ -35,6 +35,8 @@
 	
     CloudsFCPParser* parser;
     testView* testViewParent;
+	
+	BOOL dontUpdateClips;
 }
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
