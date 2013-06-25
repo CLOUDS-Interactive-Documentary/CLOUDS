@@ -800,7 +800,28 @@ int CloudsFCPParser::getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b){
 	return sharedKeywordCount;
 }
 
-//
+vector<CloudsClip> CloudsFCPParser::getMetaDataConnections(CloudsClip source){
+	vector<CloudsClip> clips;
+	for(int i = 0; i < getAllClips().size(); i++){
+		CloudsClip& clipA = getAllClips()[i];
+		string nameA = clipA.getLinkName();
+		vector<CloudsClip> connections = getClipsWithKeyword(clipA.keywords);
+		for(int j = 0; j < connections.size(); j++){
+			CloudsClip& clipB = connections[j];
+			string nameB = connections[j].getLinkName();
+			if(nameA != nameB &&
+			   clipA.person != clipB.person &&
+			   !linkIsSuppressed(nameA, nameB) &&
+			   !clipLinksTo(nameA, nameB) &&
+			   getNumberOfSharedKeywords(clipA, clipB) > 1 )
+			{
+				clips.push_back(clipB);
+			}
+		}
+	}
+	return clips;
+}
+
 //Return a vector of keywords shared by both clips
 vector<string> CloudsFCPParser::getSharedKeywords(CloudsClip& a, CloudsClip& b){
 	vector<string> sharedKeywords;
