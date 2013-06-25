@@ -20,6 +20,9 @@ class CloudsVisualSystem {
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
 	
+    
+    static ofFbo& getSharedRenderTarget();
+    
 	virtual string getSystemName() = 0;
 	
 	//Data Folder Path
@@ -90,6 +93,8 @@ class CloudsVisualSystem {
 	
   protected:
 		
+
+    
 	//called when showing the visual system, and to end it
 	virtual void begin() = 0;
 	virtual void end() = 0;
