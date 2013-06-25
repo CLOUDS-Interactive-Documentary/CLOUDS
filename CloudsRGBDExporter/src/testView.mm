@@ -1,5 +1,6 @@
 #import "testView.h"
 #include "ofxDepthImageCompressor.h"
+#include "ofxTimecode.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -92,12 +93,11 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 	
-	cout << "Finished setup" << endl;
+	cout << "Finished setup " << ofxTimecode::timecodeForSeconds(parser.getAllClipDuration()) << " seconds" << endl;
 }
 
 - (void)update
-{
-	
+{	
 	if(startExport){
 		[self cancelExport:self];
 		
