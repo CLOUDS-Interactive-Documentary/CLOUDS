@@ -16,7 +16,8 @@ class CloudsClipExportManager : public ofThread {
 	bool isDone();
 	float percentComplete();
 	bool setExportDirectory(string directory);
-
+	string alternativeVideoFolder;
+	int framesRemaining;
   protected:
 	
 	void medianFilter();

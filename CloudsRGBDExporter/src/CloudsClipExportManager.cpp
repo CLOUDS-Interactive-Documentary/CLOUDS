@@ -51,8 +51,8 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	
 	rgbdPlayer.setUseTexture(false);
 	
-	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << endl;
-	
+	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << " ALT FOLDER " << alternativeVideoFolder << endl;
+	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder );
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load scene";
 		done = true;

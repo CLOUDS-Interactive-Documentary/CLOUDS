@@ -42,7 +42,7 @@ class CloudsClip {
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
-    string getFFMpegLine(string _exportFolder);
+    string getFFMpegLine(string alternativeVideoPath, string exportFolder);
 	
 	bool hasCombinedVideo;
 	string combinedVideoPath;

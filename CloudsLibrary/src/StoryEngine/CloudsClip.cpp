@@ -68,15 +68,22 @@ string CloudsClip::getCombinedCalibrationXML(){
 	return getID() + ".xml";
 }
 
-string CloudsClip::getFFMpegLine(string _exportFolder){
+string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolder){
     
     float frameRate = 23.98;
-    float duration = ((float)( (endFrame-startFrame) + (FRAME_PADDING*2 - 1) ))/frameRate;
+    float duration = ((float)( (endFrame-startFrame) + (FRAME_PADDING*2 - 1) )) / frameRate;
     
-    string dstSound = _exportFolder + "/" +  getID()+".wav";
-    
+    string dstSound = exportFolder + "/" +  getID()+".wav";
+    string srcSound;
+	if(alternativeVideoPath == ""){
+		srcSound = alternativeVideoPath + ofFilePath::getBaseName(sourceVideoFilePath);
+	}
+	else{
+		srcSound = relinkFilePath(sourceVideoFilePath);
+	}
+	
     stringstream pipeline1;
-    pipeline1 << "ffmpeg -i \"" << relinkFilePath(sourceVideoFilePath) << "\"";
+    pipeline1 << "ffmpeg -i \"" << srcSound << "\"";
     pipeline1 << " -ss " << ofToString((float)(startFrame-FRAME_PADDING+1)/(float)frameRate);
     pipeline1 << " -t " << ofToString(duration);
     pipeline1 << " -ac 2 -ar 44100 -vn \"" << dstSound <<"\"";
@@ -84,13 +91,13 @@ string CloudsClip::getFFMpegLine(string _exportFolder){
     stringstream pipeline2;
     pipeline2 << "ffmpeg -start_number " << ofToString(startFrame-FRAME_PADDING+1);
     pipeline2 << " -f image2 -r " << ofToString(frameRate);
-    pipeline2 << " -i \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
+    pipeline2 << " -i \"" << exportFolder << "/" << getCombinedPNGExportFolder() << getID() << "_%05d.png\"";
     pipeline2 << " -i \"" << dstSound << "\" -acodec copy ";
-    pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << _exportFolder << "/" << getCombinedMovieFile() << "\"";
+    pipeline2 << " -codec:v libx264 -pix_fmt yuv420p -b 8000k -r 23.976 \"" << exportFolder << "/" << getCombinedMovieFile() << "\"";
     
     stringstream pipeline3;
-    pipeline3 << "cp \"" << _exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
-    pipeline3 << "\""<<_exportFolder << "/" << getCombinedCalibrationXML() << "\"";
+    pipeline3 << "cp \"" << exportFolder << "/" << getCombinedPNGExportFolder() << "_calibration.xml\" ";
+    pipeline3 << "\""<<exportFolder << "/" << getCombinedCalibrationXML() << "\"";
     
     return "\n" + pipeline1.str() + "\n" + pipeline2.str() + "\n" + pipeline3.str() + "\n";
 }

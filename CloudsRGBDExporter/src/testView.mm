@@ -27,12 +27,17 @@
 		parser.parseLinks("clouds_link_db.xml");
 	}
 	
+
 	exportFolder = ofBufferFromFile("SavedExportFolder.txt").getText();
+	colorReplacementFolder = ofBufferFromFile("ColorReplacementFolder.txt").getText();
+	
 	if(exportFolder == ""){
 		exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/");
 	}
 	
 	[exportFolderField setStringValue: [NSString stringWithUTF8String:exportFolder.c_str()] ];
+	[colorReplacementField setStringValue: [NSString stringWithUTF8String:colorReplacementFolder.c_str()] ];
+
     
 	[clipTable reloadData];
 	
@@ -95,9 +100,19 @@
 	if(startExport){
 		[self cancelExport:self];
 		
-		ofBuffer buf;
-		buf.append( [[exportFolderField stringValue] UTF8String] );
-		ofBufferToFile("SavedExportFolder.txt", buf);
+		colorReplacementFolder = string([[colorReplacementField stringValue] UTF8String]);
+		exportFolder = [[exportFolderField stringValue] UTF8String] ;
+		
+		ofBuffer savedExportBuf;
+		savedExportBuf.append( exportFolder );
+		ofBuffer savedColorBuf;
+		savedColorBuf.append( colorReplacementFolder );
+
+		ofBufferToFile("SavedExportFolder.txt", savedExportBuf);
+		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
+		for(int i = 0; i < exportManagers.size(); i++){
+			exportManagers[i]->alternativeVideoFolder = colorReplacementFolder;
+		}
 		
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
@@ -117,11 +132,11 @@
         ofBuffer encodingScript;
         encodingScript.append("#!/bin/bash");
         for(int i = 0; i < selectedClips.size(); i++){
-            encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
+            encodingScript.append( selectedClips[i].getFFMpegLine(colorReplacementFolder, exportFolder) );
         }
-//        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
-        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
-//        selectedClips.clear();
+        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
+//        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
+//        selectedClips.clear(); //STOP the export
 		startExport = false;
 	}
 	
@@ -436,7 +451,6 @@
 - (void)windowResized:(NSSize)size
 {
 	framebuffer.allocate(size.width, size.height, GL_RGB, 4);
-
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
