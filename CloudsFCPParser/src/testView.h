@@ -5,38 +5,38 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-#include "CloudsFCPVisualizer.h"
-#include "CloudsClusterVisualizer.h"
+//#include "CloudsFCPVisualizer.h"
+//#include "CloudsClusterVisualizer.h"
 #include "CloudsD3Exporter.h"
-#include "ofxTimeline.h"
-#include "ofxUI.h"
-#include "CloudsStoryEngine.h"
+//#include "ofxTimeline.h"
+//#include "ofxUI.h"
+//#include "CloudsStoryEngine.h"
 #include "ClipSelector.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 
     
-    IBOutlet NSTableView* keywordTableSource;
-    IBOutlet NSTableView* clipTableSource;
-
-    IBOutlet NSTableView* linkTable;
-    IBOutlet NSTableView* suppressedTable;
-	IBOutlet NSTableView* playlistTable;
-    
-    IBOutlet NSTableView* clipTableTarget;
-    IBOutlet NSTableView* keywordTableTarget;
-    
+//    IBOutlet NSTableView* keywordTableSource;
+//    IBOutlet NSTableView* clipTableSource;
+//
+//    IBOutlet NSTableView* linkTable;
+//    IBOutlet NSTableView* suppressedTable;
+//	IBOutlet NSTableView* playlistTable;
+//    
+//    IBOutlet NSTableView* clipTableTarget;
+//    IBOutlet NSTableView* keywordTableTarget;
+//    
     IBOutlet NSTextField* currentClipLabel;
-     
-    IBOutlet NSTokenField* currentKeywordsSource;
-    IBOutlet NSTokenField* currentKeywordsTarget;
-    IBOutlet NSTextField* linkText;
-	
-	IBOutlet NSTextField* seedKeyword;
-	
-    IBOutlet NSTextField* startQuestion;
-	IBOutlet NSButton* showOnlyQuestions;
+//     
+//    IBOutlet NSTokenField* currentKeywordsSource;
+//    IBOutlet NSTokenField* currentKeywordsTarget;
+//    IBOutlet NSTextField* linkText;
+//	
+//	IBOutlet NSTextField* seedKeyword;
+//	
+//    IBOutlet NSTextField* startQuestion;
+//	IBOutlet NSButton* showOnlyQuestions;
 
 	IBOutlet ViewerApp* viewerApp;
     
@@ -45,8 +45,8 @@
     
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    CloudsFCPVisualizer visualizer;
-    CloudsStoryEngine storyEngine;
+//    CloudsFCPVisualizer visualizer;
+//    CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
     bool updatePhysics;
@@ -64,10 +64,10 @@
 	int currentPlaylistIndex;
 	
     int clipEndFrame;
-    ofxTimeline inpoint;
+//    ofxTimeline inpoint;
 	ofTrueTypeFont font;
 
-	ofxUICanvas* gui;
+//	ofxUICanvas* gui;
 	bool autoProgressStory;
 	float timeOfNextStory;
 	float storyStartTime;
@@ -90,23 +90,23 @@
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) createLink:(id)sender;
-- (IBAction) suppressLink:(id)sender;
+//- (IBAction) suppressLink:(id)sender;
 - (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) deleteLink:(id)sender;
-- (IBAction) regenerateGraph:(id)sender;
+//- (IBAction) regenerateGraph:(id)sender;
 - (IBAction) unloadVideo:(id)sender;
-- (IBAction) nextOnPlaylist:(id)sender;
-- (IBAction) prevOnPlaylist:(id)sender;
-- (IBAction) playCurrentPlaylist:(id)sender;
-- (IBAction) addClip:(id)sender;
-- (IBAction) removeLink:(id)sender;
-- (IBAction) unsuppressLink:(id)sender;
-- (IBAction) suppressLinkModifier:(id)sender;
-- (IBAction) previewLinks:(id)sender;
-- (IBAction) previewSuppressed:(id)sender;
+//- (IBAction) nextOnPlaylist:(id)sender;
+//- (IBAction) prevOnPlaylist:(id)sender;
+//- (IBAction) playCurrentPlaylist:(id)sender;
+//- (IBAction) addClip:(id)sender;
+//- (IBAction) removeLink:(id)sender;
+//- (IBAction) unsuppressLink:(id)sender;
+//- (IBAction) suppressLinkModifier:(id)sender;
+//- (IBAction) previewLinks:(id)sender;
+//- (IBAction) previewSuppressed:(id)sender;
 - (IBAction) stopPreview:(id)sender;
-- (IBAction) showQuestiosnChanged:(id)sender;
+//- (IBAction) showQuestiosnChanged:(id)sender;
 
 
 -(IBAction)linkFromLeftToRight:(id)sender;
@@ -114,15 +114,15 @@
 -(IBAction)suppressFromLeftToRight:(id)sender;
 -(IBAction)suppressFromRighttoLeft:(id)sender;
 
-- (IBAction) linkLast:(id)sender;
-- (IBAction) suppressLast:(id)sender;
+//- (IBAction) linkLast:(id)sender;
+//- (IBAction) suppressLast:(id)sender;
 
-- (IBAction) setStartText:(id)sender;
+//- (IBAction) setStartText:(id)sender;
 
 - (float) clipPercentComplete;
 
-- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
-- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
+//- (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
+//- (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
@@ -132,18 +132,18 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
-- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+//- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 - (CloudsClip&) selectedClip;
 - (CloudsClip&) selectedClipFromPlaylist;
 
 - (void)playClip:(CloudsClip&)clip;
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
-- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
-- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
+//
+//- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+//- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+//- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
+//- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
+//- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
 
 
 @end

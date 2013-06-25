@@ -6,7 +6,11 @@
 //
 //
 
+#pragma once
 #import <Foundation/Foundation.h>
+//#import <Cocoa/Cocoa.h>
+
+//#include "ofMain.h"
 #include "CloudsFCPParser.h"
 @class testView;
 
@@ -32,9 +36,6 @@
     vector<CloudsClip> currentMetaLinks;
     CloudsFCPParser* parser;
     testView* testViewParent;
-    
-    
-    
 }
 
 - (void)setup;

@@ -42,7 +42,9 @@
 {
 	
 	CloudsClip clip;
+
     	cout<<"im in playDoubleClickedRow in ClipSelector"<<endl;
+    cout<<metaTable.selectedRow <<endl;
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];
         currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
@@ -54,12 +56,12 @@
 	}
     else if(sender == linkTable && linkTable.selectedRow >= 0){
       CloudsLink&  link = [self selectedLink];
-        clip = parser->getClipWithLinkName(link.sourceName);
+        clip = parser->getClipWithLinkName(link.targetName);
 	}
     else if(sender == suppressedTable && suppressedTable.selectedRow >= 0){
         CloudsLink&  link = [self selectedSuppression];
-
-        clip = parser->getClipWithLinkName(link.sourceName);
+        cout << "getting supressed " << link.sourceName << endl;
+        clip = parser->getClipWithLinkName(link.targetName);
 	}
     else if(sender == metaTable && metaTable.selectedRow >= 0){
         clip = [self selectedMeta];
@@ -124,6 +126,10 @@
             string s = m.getStartingQuestion();
             //cout<<"Starting: "<<s<<endl;
             return [NSString stringWithUTF8String:s.c_str()];
+        }
+        else if([@"Meta Links" isEqualToString:aTableColumn.identifier]){
+            return [NSNumber numberWithInt:parser->getNumMetaDataConnections(m)];
+
         }
 		else {
 			//CloudsClip& m = [self selectedClip];
@@ -252,7 +258,7 @@
 - (CloudsClip&) selectedMeta
 {
     if(currentMetaLinks.size() > 0){
-        CloudsClip& c=selectedClips[metaTable.selectedRow];
+        CloudsClip& c=currentMetaLinks[metaTable.selectedRow];
         cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
         return c;
     }
@@ -260,8 +266,8 @@
 - (CloudsLink&) selectedSuppression
 {
     if(currentSuppressedLinks.size() > 0){
-        CloudsLink& c=currentSuppressedLinks[suppressedTable.selectedRow];
-        cout<<"Selected clip from link table "<<c.sourceName<<endl;
+        CloudsLink& c = currentSuppressedLinks[suppressedTable.selectedRow];
+        cout<<"Selected clip from link table "<<c.targetName<<endl;
         return c;
     }
 }
@@ -269,7 +275,7 @@
 {
     if(currentClipLinks.size() > 0){
         CloudsLink& c=currentClipLinks[linkTable.selectedRow];
-        cout<<"Selected clip from link table "<<c.sourceName<<endl;
+        cout<<"Selected clip from link table "<<c.targetName<<endl;
         return c;
     }
 }
