@@ -35,9 +35,9 @@
     
 }
 
- -(void)setup;
+- (void)setup;
 - (void) playClip:(CloudsClip&) clip;
-
+- (void) updateTables;
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 

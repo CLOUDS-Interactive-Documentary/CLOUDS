@@ -399,5 +399,11 @@ completionsForSubstring:(NSString *)substring
 	[clipTable reloadData];
 }
 
+- (void) updateTables{
+    [keywordTable reloadData];
+	[clipTable reloadData];
+    [linkTable reloadData];
+    [suppressedTable reloadData];
+}
 
 @end

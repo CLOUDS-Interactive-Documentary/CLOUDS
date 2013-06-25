@@ -36,22 +36,22 @@
 //        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
 //        [tableColumn setSortDescriptorPrototype:sortDescriptor];
 //    }
-    
-    for (NSTableColumn *tableColumn in keywordTableTarget.tableColumns ) {
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
-        [tableColumn setSortDescriptorPrototype:sortDescriptor];
-    }
-    
-    for (NSTableColumn *tableColumn in clipTableSource.tableColumns ) {
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
-        [tableColumn setSortDescriptorPrototype:sortDescriptor];
-    }
-    
-    for (NSTableColumn *tableColumn in clipTableTarget.tableColumns ) {
-        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
-        [tableColumn setSortDescriptorPrototype:sortDescriptor];
-    }
-    
+//    
+//    for (NSTableColumn *tableColumn in keywordTableTarget.tableColumns ) {
+//        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+//        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+//    }
+//    
+//    for (NSTableColumn *tableColumn in clipTableSource.tableColumns ) {
+//        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+//        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+//    }
+//    
+//    for (NSTableColumn *tableColumn in clipTableTarget.tableColumns ) {
+//        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+//        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+//    }
+//    
 //    [clipTableSource setDoubleAction:@selector(playDoubleClickedRow:)];
 //	[playlistTable setDoubleAction:@selector(playDoubleClickedRow:)];
  //   [clipTableTarget setDoubleAction:@selector(playDoubleClickedRow:)];
@@ -129,43 +129,7 @@
         CloudsClip clip = parser.getClipWithLinkName(linkPreviewClip);
         
         [self playClip:clip];
-        
-        //        preview.stop();
-        //        ofSleepMillis(250);
-        
-        /*
-         string clipFilePath = clip.sourceVideoFilePath;
-         if(clipFilePath  == "" || autoProgressStory){
-         return;
-         }
-         
-         ofSleepMillis(250);
-         if( !ofFile(clipFilePath).exists() ){
-         
-         ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
-         ofStringReplace(clipFilePath, "Nebula", "Seance");
-         
-         }
-         
-         if( preview.loadMovie(clipFilePath) ){
-         movieFileMissing = false;
-         }
-         else{
-         ofLogError() << "Clip " << clipFilePath << " failed to load.";
-         movieFileMissing = true;
-         //		return;
-         }
-         
-         if(movieFileMissing){
-         storyStartTime = ofGetElapsedTimef();
-         timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
-         }
-         else{
-         preview.setFrame(clip.startFrame);
-         preview.play();
-         cout<<"playing linked clip: "<<clipFilePath<<endl;
-         }
-         */
+    
     }
 }
 
@@ -179,41 +143,6 @@
 		
         [self playClip:clip];
         
-        /*
-         preview.stop();
-         ofSleepMillis(250);
-         
-         string clipFilePath = clip.sourceVideoFilePath;
-         if(clipFilePath  == "" || autoProgressStory){
-         return;
-         }
-         
-         ofSleepMillis(250);
-         if( !ofFile(clipFilePath).exists() ){
-         
-         ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
-         ofStringReplace(clipFilePath, "Nebula", "Seance");
-         
-         }
-         if( preview.loadMovie(clipFilePath) ){
-         movieFileMissing = false;
-         }
-         else{
-         ofLogError() << "Clip " << clipFilePath << " failed to load.";
-         movieFileMissing = true;
-         //		return;
-         }
-         
-         if(movieFileMissing){
-         storyStartTime = ofGetElapsedTimef();
-         timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
-         }
-         else{
-         preview.setFrame(clip.startFrame);
-         preview.play();
-         cout<<"playing suppressed clip: "<<clipFilePath<<endl;
-         }
-         */
     }
     
 }
@@ -299,7 +228,6 @@
 
 - (IBAction) nextOnPlaylist:(id)sender
 {
-    //	if(playlistTable.selectedRow < visualizer.pathByClip.size()){
     
 	if(playlistTable.selectedRow == storyEngine.getClipHistory().size()-1){
         
@@ -395,8 +323,7 @@
         [suppressedTable reloadData];
         [self saveLinks:self];
     }
-    
-    //  cout<<"button pressed"<< linkTable.selectedRow<<"::"<<suppressedTable.selectedRow<<endl;
+
 }
 - (void)update
 {
@@ -572,7 +499,19 @@
         
 	}
 }
+-(IBAction)linkFromLeftToRight:(id)sender{
+    [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+    [linkerA updateTables];
+    [linkerB updateTables];
 
+}
+
+-(IBAction)linkFromRightToLeft:(id)sender{
+    [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+    [linkerA updateTables];
+    [linkerB updateTables];
+
+}
 - (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target
 {
 	if(source.getLinkName() != target.getLinkName()){

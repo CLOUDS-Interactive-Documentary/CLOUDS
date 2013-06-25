@@ -106,6 +106,10 @@
 - (IBAction) stopPreview:(id)sender;
 - (IBAction) showQuestiosnChanged:(id)sender;
 
+
+-(IBAction)linkFromLeftToRight:(id)sender;
+-(IBAction)linkFromRightToLeft:(id)sender;
+
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
 
