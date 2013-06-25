@@ -7,6 +7,7 @@
 //
 
 #import "ClipSelector.h"
+#import "testView.h"
 
 @implementation ClipSelector
 @synthesize parser;
@@ -31,6 +32,8 @@
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
     [clipTable reloadData];
     [keywordTable reloadData];
+    [metaTable reloadData];
+
     
 }
 //update tables
@@ -46,6 +49,7 @@
         currentSuppressedLinks = parser->getSuppressionsForClip(clip.getLinkName());
         [linkTable reloadData];
         [suppressedTable reloadData];
+        [metaTable reloadData];
 	}
 	else{
 		//bail!
@@ -56,7 +60,7 @@
     
     
 	
-
+    
     
 }
 
@@ -77,6 +81,9 @@
     else if(aTableView == suppressedTable){
         return currentSuppressedLinks.size();
     }
+    else if(aTableView == metaTable){
+        return currentMetaLinks.size();
+    }
 }
 
 
@@ -94,7 +101,7 @@
     }
     else if(aTableView == clipTable){
 		CloudsClip& m = (selectedClips.size() == 0) ? parser->getAllClips()[rowIndex] : selectedClips[rowIndex];
-
+        
 		if([@"Links" isEqualToString:aTableColumn.identifier]){
 			return [NSNumber numberWithInt: parser->getLinksForClip( m.getLinkName() ).size()];
 		}
@@ -114,13 +121,22 @@
 			return [NSString stringWithUTF8String:linkString.c_str()];
 		}
     }
-
+    
     else if(aTableView == linkTable){
         string clipTableSourceEntry = currentClipLinks[rowIndex].targetName;
         if(currentClipLinks[rowIndex].startFrame != -1 && currentClipLinks[rowIndex].endFrame != -1){
             clipTableSourceEntry += "[" + ofToString(currentClipLinks[rowIndex].startFrame) + " - " + ofToString(currentClipLinks[rowIndex].endFrame) + "]";
         }
         return [NSString stringWithUTF8String:clipTableSourceEntry.c_str()];
+    }
+    else if(aTableView == metaTable){
+
+        string metaTableSourceEntry = currentMetaLinks[rowIndex].getLinkName();
+//        cout<<metaTableSourceEntry<<endl;
+        if(currentMetaLinks[rowIndex].startFrame != -1 && currentMetaLinks[rowIndex].endFrame != -1){
+            metaTableSourceEntry += "[" + ofToString(currentMetaLinks[rowIndex].startFrame) + " - " + ofToString(currentMetaLinks[rowIndex].endFrame) + "]";
+        }
+        return [NSString stringWithUTF8String:metaTableSourceEntry.c_str()];
     }
     else if(aTableView == suppressedTable){
         string suppressedTableEntry = currentSuppressedLinks[rowIndex].targetName;
@@ -129,7 +145,7 @@
         }
         return [NSString stringWithUTF8String:suppressedTableEntry.c_str()];
     }
-\
+    
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
@@ -172,8 +188,10 @@
         currentClipLabel.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
         currentClipLinks = parser->getLinksForClip(m.getLinkName());
         currentSuppressedLinks = parser->getSuppressionsForClip(m.getLinkName());
+        currentMetaLinks = parser->getMetaDataConnections(m);
         [linkTable reloadData];
         [suppressedTable reloadData];
+        [metaTable reloadData];
     }
     else if(aNotification.object == linkTable){
         if(linkTable.selectedRow < 0){
@@ -191,6 +209,26 @@
             }
         }
     }
+    else if(aNotification.object == metaTable){
+        if(metaTable.selectedRow < 0){
+            return;
+        }
+        else {
+//            vector<CloudsClip> searchClips  = parser->getMetaDataConnections([self selectedClip]) ;
+//
+////            string targetClip = searchClips[ metaTable.selectedRow].targetName;
+//            for(int i = 0; i < searchClips.size(); i++){
+//                if(searchClips[i].getLinkName() == targetClip){
+//                    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
+//                    [clipTable selectRowIndexes:indexSet byExtendingSelection:NO];
+//                    break;
+//                }
+//            }
+        }
+        
+
+
+    }
     else if(aNotification.object == suppressedTable){
         if(suppressedTable.selectedRow<0){
             return;
@@ -200,7 +238,9 @@
         
     }
 }
-
+//CloudsClip clip;
+//clip = [self selectedClip];
+//vector<CloudsClip> clips = parser->getMetaDataConnections(clip);
 - (CloudsClip&) selectedClip
 {
     
@@ -212,13 +252,10 @@
     else{
         CloudsClip& c =parser->getAllClips()[clipTable.selectedRow] ;
         cout<<"Selected clip from all clips"<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
-
+        
         return c;
     }
-    
 
-
-    
 }
 
 
@@ -255,20 +292,21 @@ completionsForSubstring:(NSString *)substring
 
 - (IBAction) createLink:(id)sender
 {
-
-		
-		NSLog(@"clip is loaded and row is selected");
-		
-//		[testViewParent linkClip:testViewParent->currentPlayingClip toClip:[self selectedClip] ];
-//		testViewParent->
-//		currentClipLinks = parser->getLinksForClip(testViewParent->currentPlayingClip.getLinkName());
     
-		[clipTable reloadData];
-        [clipTable reloadData];
-		[suppressedTable reloadData];
-		[linkTable reloadData];
-        
-		cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
+    
+    NSLog(@"clip is loaded and row is selected");
+    
+    //		[testViewParent linkClip:testViewParent->currentPlayingClip toClip:[self selectedClip] ];
+    //		testViewParent->
+    //		currentClipLinks = parser->getLinksForClip(testViewParent->currentPlayingClip.getLinkName());
+    
+    [clipTable reloadData];
+    [clipTable reloadData];
+    [suppressedTable reloadData];
+    [linkTable reloadData];
+    [metaTable reloadData];
+    
+    cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
 	
 }
 
@@ -283,6 +321,7 @@ completionsForSubstring:(NSString *)substring
         [linkTable reloadData];
 		[suppressedTable reloadData];
         [clipTable reloadData];
+        [metaTable reloadData];
 		
 		
 		[self saveLinks:self];
@@ -339,7 +378,7 @@ completionsForSubstring:(NSString *)substring
         //        [clipTableSource.resignFirstResponder
         
         [testViewParent suppressLink:parser->getClipWithLinkName(linkSourceName)
-                    toClip:parser->getClipWithLinkName(linkTargetName) ];
+                              toClip:parser->getClipWithLinkName(linkTargetName) ];
         
         currentClipLinks = parser->getLinksForClip(linkSourceName);
         currentSuppressedLinks = parser->getSuppressionsForClip(linkSourceName);
@@ -360,7 +399,7 @@ completionsForSubstring:(NSString *)substring
         parser->unsuppressConnection(suppressedSourceName, suppressedTargetName);
         
         [testViewParent linkClip:parser->getClipWithLinkName(suppressedSourceName)
-                toClip:parser->getClipWithLinkName(suppressedTargetName) ];
+                          toClip:parser->getClipWithLinkName(suppressedTargetName) ];
         currentClipLinks = parser->getLinksForClip(suppressedSourceName);
         currentSuppressedLinks = parser->getSuppressionsForClip(suppressedSourceName);
         
@@ -379,7 +418,7 @@ completionsForSubstring:(NSString *)substring
 	
 	if(showOnlyQuestions.state == NSOnState){
 		[keywordTable selectRowIndexes:nil
-                        byExtendingSelection:NO];
+                  byExtendingSelection:NO];
         selectedKeywords.clear();
 		selectedClips.clear();
 		for(int i = 0; i < parser->getAllClips().size(); i++ ){
@@ -398,14 +437,22 @@ completionsForSubstring:(NSString *)substring
 	[keywordTable reloadData];
 	[clipTable reloadData];
 }
--(bool) isClipSelected{    
-    return  (selectedClips.size() > 0) ? true : false;
+-(bool) isClipSelected{
+    return  clipTable.selectedRow >= 0;
 }
+
 - (void) updateTables{
+    CloudsClip clip;
+    clip = [self selectedClip];
+    //  currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
+    currentClipLinks = parser->getLinksForClip(clip.getLinkName());
+    currentSuppressedLinks = parser->getSuppressionsForClip(clip.getLinkName());
+    currentMetaLinks = parser->getMetaDataConnections(clip);
     [keywordTable reloadData];
 	[clipTable reloadData];
     [linkTable reloadData];
     [suppressedTable reloadData];
+    [metaTable reloadData];
 }
 
 @end

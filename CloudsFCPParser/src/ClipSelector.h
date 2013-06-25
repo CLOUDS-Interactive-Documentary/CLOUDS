@@ -16,6 +16,7 @@
     IBOutlet NSTableView* clipTable;
     IBOutlet NSTableView* linkTable;
     IBOutlet NSTableView* suppressedTable;
+    IBOutlet NSTableView* metaTable;
     IBOutlet NSTokenField* currentKeywords;
 
     IBOutlet NSTextField* startQuestion;
@@ -28,6 +29,7 @@
     
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
+    vector<CloudsClip> currentMetaLinks;
     CloudsFCPParser* parser;
     testView* testViewParent;
     

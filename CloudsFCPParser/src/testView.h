@@ -111,6 +111,8 @@
 
 -(IBAction)linkFromLeftToRight:(id)sender;
 -(IBAction)linkFromRightToLeft:(id)sender;
+-(IBAction)suppressFromLeftToRight:(id)sender;
+-(IBAction)suppressFromRighttoLeft:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
