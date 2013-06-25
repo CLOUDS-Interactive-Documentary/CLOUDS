@@ -50,30 +50,43 @@ void wPoint::draw(){
         ofPoint toCenter = ofPoint(0,0,0)-*this;
         toCenter.normalize();
         ofPoint rippleCenter = *this + toCenter*rippleDeepnes*300;
-        float   rippleRadio = cos(ofMap(rippleDeepnes,0.0,1.0,PI/2.0,0.0))*300;
+        float   rippleRadio = cos( (1.0-rippleDeepnes)*HALF_PI )*300;
         
-        ofPushMatrix();
+        ofPoint objectLookAt = ofVec3f(0,0,1);
+        float theta = objectLookAt.angle(toCenter);
+        ofPoint rippleAngle = toCenter.crossed(objectLookAt);
+        rippleAngle.normalize();
+        
+        
         ofPushStyle();
-        ofSetLineWidth(1.5);
+        
+        
         ofSetColor(255, 0, 0);
        
+        //  Axis
+        //
         ofLine(*this,ofPoint(0,0,0));
 
+        //  City dot
+        //
+        ofPushMatrix();
         ofTranslate(*this);
-        toCenter.
-//        ofRotate( ofRadToDeg(longitud), 0, 1, 0);
-//        ofRotate( ofRadToDeg(latitud), 1, 0, 0);
-        
+        glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
         ofFill();
-        ofCircle(0,0,0, 10);
-        
-        ofTranslate(0, 0, rippleDeepnes*300);
-        
-        
-        ofNoFill();
-        ofCircle(0,0,0, rippleRadio);
-        
-        ofPopStyle();
+        ofCircle(0,0,0, 2);
         ofPopMatrix();
+        
+        //  Ripple
+        //
+        ofPushMatrix();
+        ofTranslate(rippleCenter);
+        glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
+        ofNoFill();
+        ofSetLineWidth(1.5);
+        ofCircle(0,0,0, rippleRadio);
+        ofPopMatrix();
+
+        ofPopStyle();
+        
     }
 }
