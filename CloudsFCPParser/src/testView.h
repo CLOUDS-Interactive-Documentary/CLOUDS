@@ -15,9 +15,11 @@
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+
     
     IBOutlet NSTableView* keywordTableSource;
     IBOutlet NSTableView* clipTableSource;
+
     IBOutlet NSTableView* linkTable;
     IBOutlet NSTableView* suppressedTable;
 	IBOutlet NSTableView* playlistTable;

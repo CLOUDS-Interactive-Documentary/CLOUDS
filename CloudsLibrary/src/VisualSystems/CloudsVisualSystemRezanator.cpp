@@ -2121,7 +2121,6 @@ void CloudsVisualSystemRezanator::drawBackground()
 //        ofLayerGradient(*bgColor, *bgColor2);
 //        ofPopMatrix();
         
-        selfDrawBackground();
     }
     else
     {
@@ -2129,7 +2128,11 @@ void CloudsVisualSystemRezanator::drawBackground()
         ofBackground(*bgColor);
     }
 //	glPopAttrib();
+
+	
 	ofPopStyle();
+	
+	selfDrawBackground();	
 }
 
 void CloudsVisualSystemRezanator::ofLayerGradient(const ofColor& start, const ofColor& end)

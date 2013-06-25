@@ -818,7 +818,6 @@
 		parser.setup("../../../CloudsData/fcpxml/");
 		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-        
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;

@@ -93,10 +93,16 @@ private:
     void    applyBiDirectionalSort();
     
     void    applyRandomMix();
+    void    applyRandomUp();
+    void    applyRandomDown();
     
     float   margin;
     float   blockWidth, blockHeight, blockScale, blockAlpha;
-    float   randomSort, randomMix;
+    float   randomSort, randomMix, randomUp, randomDown;
+    float   noiseLerp;
+    
+    int     xBlocks;
+    int     yBlocks;
     
     bool    bSort;
     bool    bDeFrag;

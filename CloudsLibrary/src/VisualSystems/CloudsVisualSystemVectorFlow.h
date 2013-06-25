@@ -1,27 +1,27 @@
-//
-//  CloudsVisualSystemWorld.h
-//  VSWorld
-//
-//  Created by Patricio Gonzalez Vivo on 6/13/13.
-//
-//
-
 #pragma once
 
+#include "ofMain.h"
+#include "ofxUI.h"
 #include "CloudsVisualSystemRezanator.h"
 
-#include "wPoint.h"
-#include "wParticle.h"
 
-class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
+typedef struct{
+	ofVec3f pos;
+	int index;
+	int frame;
+	bool dead;
+} Particle;
+
+class CloudsVisualSystemVectorFlow : public CloudsVisualSystemRezanator {
 public:
-    
-    string getSystemName();
+	
+	CloudsVisualSystemVectorFlow();
+	
+	string getSystemName();
     
     void selfSetup();
     void selfSetupGuis();
     
-    void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -47,29 +47,32 @@ public:
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-    
+	
 protected:
+	
+	vector<Particle> particles;
+	
+	int maxVertices;
+	ofVboMesh particleMesh;
+	ofVboMesh lines;
+	int trailLength;
+	float generateTrailLength;
+	float generateMaxVerts;
+	float particlesPerFrame;
+	
+	void addParticle();
+	void initParticle(Particle& p);
+	
+	ofVec3f getDirection(float x, float y);
+	float getMagnitude(float x, float y);
+	
+	void initFlowField();
+	bool regenerateFlow;
+	float step;
+	float chaos;
+	int width, height;
+	float speed;
+	float maxLength;
 
-    //  Globe
-    //
-    void        loadPath(ofVboMesh &_vbo, string _file);
-    ofVboMesh   coastVbo;
-    ofVboMesh   riversVbo;
-
-    //  Cities
-    //
-    void loadPoints(string _file);
-    vector< wPoint > worldPoints;
-    float   pointNoisePeaks;
-    
-    //  Flocking particles
-    //
-    void loadParticles( string _file );
-    vector<wParticle*> particles;
-    ofPoint globalOffset;
-    float   nMaxPoints;
-    float   density,gravity,repulsion;
-    float   turbulence,neigbordhood,independence;
-    
-    
+	float fieldAlpha;
 };

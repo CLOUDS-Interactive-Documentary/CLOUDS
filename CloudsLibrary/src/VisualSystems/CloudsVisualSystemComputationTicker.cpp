@@ -54,7 +54,7 @@ void CloudsVisualSystemComputationTicker::reloadShaders(){
 	ofClear(0);
 	targetOffset.end();
 	
-	drawShader.load( getDataPath() + "shaders/VisualSystems/ComputationTicker/display");
+	drawShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/display");
 	updateShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/update");
 }
 
@@ -116,6 +116,8 @@ void CloudsVisualSystemComputationTicker::selfUpdate(){
 	ofPushStyle();
 	
 	ofDisableAlphaBlending();
+	glDisable(GL_DEPTH_TEST);
+
 	sourceOffset.begin();
 	updateShader.begin();
 	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
