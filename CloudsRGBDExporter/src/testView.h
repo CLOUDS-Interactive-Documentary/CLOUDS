@@ -13,6 +13,8 @@
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
 	IBOutlet NSTextField* exportFolderField;
+	IBOutlet NSTextField* colorReplacementField;
+	
 	IBOutlet NSTableView* clipTable;
 
 	IBOutlet NSProgressIndicator* totalProgress;
@@ -47,8 +49,9 @@
 	
 	int currentClipIndex;
 	
-    string  exportFolder;
-    
+    string exportFolder;
+    string colorReplacementFolder;
+	
 	//correction variables, loaded for each clip
 	ofVec3f translate;
 	ofVec3f rotate;

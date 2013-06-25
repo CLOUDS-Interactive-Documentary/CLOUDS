@@ -11,6 +11,8 @@
 #include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemCollaboration1.h"
 #include "CloudsVisualSystemAmber.h"
+#include "CloudsVisualSystemVectorFlow.h"
+
 #endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
@@ -30,6 +32,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
+	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );
@@ -67,18 +70,24 @@ void CloudsVisualSystemManager::refreshPresets(){
 	presets.clear();
 	for(int i = 0; i < systems.size(); i++){
 		vector<string> systemPresets = systems[i]->getPresets();
+		
 		if(systemPresets.size() == 0){
 			cout << "NO PRESETS for SYSTEM " <<  systems[i]->getSystemName() << endl;
-		}
-
-		for(int p = 0; p < systemPresets.size(); p++){
 			CloudsVisualSystemPreset preset;
-			preset.presetName = systemPresets[p];
+			preset.presetName = "no-preset";
 			preset.system = systems[i];
-			
-			//TODO: get keywords
-			
 			presets.push_back(preset);
+		}
+		else {
+			for(int p = 0; p < systemPresets.size(); p++){
+				CloudsVisualSystemPreset preset;
+				preset.presetName = systemPresets[p];
+				preset.system = systems[i];
+				
+				//TODO: get keywords
+				
+				presets.push_back(preset);
+			}
 		}
 	}
    #endif
