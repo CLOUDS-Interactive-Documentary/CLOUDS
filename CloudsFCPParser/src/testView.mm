@@ -500,14 +500,14 @@
 	}
 }
 -(IBAction)linkFromLeftToRight:(id)sender{
-    [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+    [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
     [linkerA updateTables];
     [linkerB updateTables];
 
 }
 
 -(IBAction)linkFromRightToLeft:(id)sender{
-    [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+    [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
     [linkerA updateTables];
     [linkerB updateTables];
 
