@@ -32,6 +32,7 @@
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
     vector<CloudsClip> currentMetaLinks;
+	
     CloudsFCPParser* parser;
     testView* testViewParent;
 }
@@ -39,7 +40,7 @@
 @property(nonatomic, assign) testView* testViewParent;
 
 - (void) setup;
-- (void) playClip:(CloudsClip&) clip;
+//- (void) playClip:(CloudsClip&) clip;
 - (void) updateTables;
 - (void) updateSelectedClips;
 

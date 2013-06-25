@@ -31,15 +31,19 @@
     [clipTable setTarget:self];
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 		
-    [keywordTable setTarget:self];
-    [keywordTable setDoubleAction:@selector(playDoubleClickedRow:)];
+//    [keywordTable setTarget:self];
+//    [keywordTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
     [metaTable setTarget:self];
     [metaTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
+	[linkTable setTarget:self];
+    [linkTable setDoubleAction:@selector(playDoubleClickedRow:)];
+
     [suppressedTable setTarget:self];
     [suppressedTable setDoubleAction:@selector(playDoubleClickedRow:)];
-	
+
+
 	[self updateTables];
 }
 
@@ -173,6 +177,16 @@
         }
         return [NSString stringWithUTF8String:suppressedTableEntry.c_str()];
     }
+}
+
+- (BOOL) tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	return NO;
+}
+
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors
+{
+		//TODO:
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification

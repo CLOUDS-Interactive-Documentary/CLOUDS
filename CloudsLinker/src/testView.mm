@@ -1,5 +1,5 @@
 #import "testView.h"
-#import "ViewerApp.h"
+//#import "ViewerApp.h"
 #include "CloudsClip.h"
 
 @implementation testView

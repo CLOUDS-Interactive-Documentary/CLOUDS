@@ -13,7 +13,7 @@
 //#include "CloudsStoryEngine.h"
 #include "ClipSelector.h"
 
-@class ViewerApp;
+//@class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 
     
@@ -27,7 +27,7 @@
 //    IBOutlet NSTableView* clipTableTarget;
 //    IBOutlet NSTableView* keywordTableTarget;
 //    
-    IBOutlet NSTextField* currentClipLabel;
+//    IBOutlet NSTextField* currentClipLabel;
 //     
 //    IBOutlet NSTokenField* currentKeywordsSource;
 //    IBOutlet NSTokenField* currentKeywordsTarget;
@@ -38,7 +38,7 @@
 //    IBOutlet NSTextField* startQuestion;
 //	IBOutlet NSButton* showOnlyQuestions;
 
-	IBOutlet ViewerApp* viewerApp;
+//	IBOutlet ViewerApp* viewerApp;
     
     IBOutlet ClipSelector* linkerA;
     IBOutlet ClipSelector* linkerB;
