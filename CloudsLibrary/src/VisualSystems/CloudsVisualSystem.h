@@ -1,7 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-
+#include "CloudsRGBDCombinedRender.h"
+//#include "CloudsCamera.h"
 
 /**
  * The CLOUDS Visual System super class
@@ -11,14 +12,19 @@
  * methods for interacting with play time duration, on screen start and stop, and accessing CLOUDS global state
  */
 
-//TODO: timing, fading, drawing helpers like 2d/3d camera
-//TODO: 'preset' variables and state design
-//TODO: debug mode vs persentation mode
+//TODO: fading, info routing
 
 class CloudsVisualSystem {
   public:
+	   
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
+	
+	virtual string getSystemName() = 0;
+	
+	//Data Folder Path
+    string getVisualSystemDataPath();
+    static string getDataPath();
 	
 	//return TRUE for keywords that would allow this system to be shown
 	//for example, if I'm the "computation" visual system, I'll return true to
@@ -51,8 +57,20 @@ class CloudsVisualSystem {
 	void playSystem();
 	void stopSystem();
 	
-	virtual string getSystemName() = 0;
+	void setRenderer(CloudsRGBDCombinedRender& newRenderer);
+
+
+	void setupSpeaker(string speakerFirstName,
+					  string speakerLastName,
+					  string quoteName);
 	
+	void speakerEnded();
+	
+	//REZA: Needs to be replaced by the Rezonator merge
+	virtual vector<string> getPresets() = 0;
+	virtual void loadPresetGUISFromName(string presetName) = 0;
+	virtual void setCurrentCamera(ofCamera& cam) = 0;
+
 	//SET and CALLED FROM CONTROLLER
 	
 	//how much time left to show this visual system?
@@ -60,7 +78,7 @@ class CloudsVisualSystem {
 	float getSecondsRemaining();
 	void setSecondsRemaining(float seconds);
 		
-	//this will always match what you offered
+	//this will always match what you offered in relevant keywords
 	void setCurrentKeyword(string theme);
 	string getCurrentKeyword();
 	
@@ -69,16 +87,27 @@ class CloudsVisualSystem {
 	string getCurrentTopic();
 
 	vector<string>& getRelevantKeywords();
+	
   protected:
-
+		
 	//called when showing the visual system, and to end it
 	virtual void begin() = 0;
 	virtual void end() = 0;
 
 	//the sub class must populate this in setup() if it's to be called
 	vector<string> relevantKeywords;
-	
+
 	//these variables are set by the playback controller when displaying
+
+	//ways to interact with the pointcloud data
+	CloudsRGBDCombinedRender* sharedRenderer;
+	//set to true if the pointcloud renderer has valid speaker
+	bool hasSpeaker;
+	
+	//speaker and quote info, constantly updated
+	string speakerFirstName;
+	string speakerLastName;
+	string quoteName;
 	
 	//keyword is the topic of conversation
 	string currentTopic;

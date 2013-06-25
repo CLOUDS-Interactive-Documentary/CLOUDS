@@ -20,10 +20,13 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath);
-    void setTexture(ofBaseHasTexture& _tex);
+	bool setup(string videoPath, string calibrationXMLPath);
+//    void setTexture(ofBaseHasTexture& _tex);
 	void setShaderPath(string _shaderPath);
+	void reloadShader();
     
+	void setSimplification(ofVec2f _simplification);
+	
     //  Use these to project and draw textured custom geometry
     //
 	bool bindRenderer();
@@ -33,6 +36,12 @@ public:
     //
     void update();
     
+	//  CYCLE
+	//
+	
+	bool isPlaying();
+	bool isDone();
+	
     //  DRAW
     //
     void drawMesh();
@@ -40,36 +49,44 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
     
-    void reloadShader();
-    
+	ofVideoPlayer& getPlayer();
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+
+	ofShader& getShader();
+	
+	// Move in 3D Space
     ofVec3f worldPosition;
 	ofVec3f worldRotation;
+	
+	// Fix extrinsics
+	ofVec3f adjustTranslate;
+	ofVec3f adjustRotate;
+	ofVec2f adjustScale;
     
-    ofVec2f shift;
-	ofVec2f scale;
-    
-    //  Geometry
-    //
-    ofVec2f simplify;
-    
+	float minDepth;
+	float maxDepth;
+	
+	float flowPosition;
     float edgeClip;
 	float farClip;
 	float nearClip;
-    
+
     bool bFlipTexture;
     bool bMirror;
     
-protected:
-    
+  protected:
     void setupProjectionUniforms();
-    void setSimplification(ofVec2f _simplification);
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
-    
-    ofBaseHasTexture *tex;
+    	
+	ofPtr<ofVideoPlayer> player;
+
 	ofShader shader;
     string shaderPath;
     
-    ofMesh mesh;
+	// GEOMETRY
+	//
+    ofVboMesh mesh;
+    ofVec2f simplify;
     
     //  RGB
     //
@@ -78,8 +95,7 @@ protected:
 	ofVec2f     colorPrincipalPoint;
 	ofVec2f     colorFOV;
     
-    float       depthToRGBRotation[9];
-	ofVec3f     depthToRGBTranslation;
+	ofMatrix4x4 extrinsics;
 	ofVec3f     distortionK;
 	ofVec2f     distortionP;
     
@@ -89,10 +105,17 @@ protected:
     ofVec2f     depthPrincipalPoint;
 	ofVec2f     depthFOV;
     
-    //  Normals
+    //  Normals, Face Features, and Delta Movement
     //
+	//surface normal
     ofRectangle normalRect;
-    
+	//describes facial features
+	ofRectangle faceFeatureRect;
+	//this describes the change each frame
+	ofRectangle deltaChangeRect;
+	
+	bool useFaces;
+	
     bool bRendererBound;
     bool bMeshGenerated;
     

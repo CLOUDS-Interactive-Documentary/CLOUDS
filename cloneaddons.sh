@@ -15,11 +15,26 @@ else
 	echo "Cloning writable"
 fi
 
-${PREFIX}rezaali/ofxUI
-${PREFIX}satoruhiga/ofxCocoaGLView
-${PREFIX}satoruhiga/ofxPCL
-${PREFIX}memo/ofxMSAObjCPointer
-${PREFIX}memo/ofxMSACore
+#private, must be read
+git clone git@github.com:rezaali/ofxExtras
+git clone https://github.com/rezaali/ofxUI
+cd ofxUI
+git checkout develop
+cd ..
+
+git clone git@github.com:rezaali/ofxColorPalettes
+git clone git@github.com:obviousjim/ofxOcean
+
+git clone https://github.com/satoruhiga/ofxCocoaGLView
+git clone https://github.com/satoruhiga/ofxPCL
+git clone https://github.com/memo/ofxMSAObjCPointer
+git clone https://github.com/memo/ofxMSACore
+git clone https://github.com/roymacdonald/ofxCameraSaveLoad
+git clone https://github.com/memo/ofxMSAPhysics
+git clone https://github.com/memo/ofxMSAObjCPointer
+
+${PREFIX}rezaali/ofxGenerative
+${PREFIX}obviousjim/ofxExtrudedText
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
@@ -27,15 +42,18 @@ ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
 ${PREFIX}Flightphase/ofxTextInputField
 ${PREFIX}obviousjim/ofxRGBDepth
+cd ofxRGBDepth
+git checkout develop
+cd ..
+
 ${PREFIX}obviousjim/ofxCv
 ${PREFIX}obviousjim/ofxKinect
 ${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer
 ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
-${PREFIX}obviousjim/ofxObjLoader		
+cd ofxTimeline
+git checkout develop
+cd ..
 
-# you also need to replace ofxOpenCv/libs/opencv with this link:
-# https://github.com/kylemcdonald/ofxCv/downloads
-# opencv-2.3.-osx.zip — OpenCV 2.3 library 
-#=======
+${PREFIX}obviousjim/ofxObjLoader		

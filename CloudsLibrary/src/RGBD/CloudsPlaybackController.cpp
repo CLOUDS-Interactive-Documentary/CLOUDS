@@ -1,12 +1,9 @@
 
 #include "CloudsPlaybackController.h"
 
-#include "CloudsVisualSystemStandin.h"
-#include "CloudsVisualSystemComputationTicker.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
-	playingCombinedVideo = false;
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
 }
@@ -18,55 +15,62 @@ CloudsPlaybackController::~CloudsPlaybackController(){
 void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
 		eventsRegistered = false;
+		
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		
 		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
+		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
+		ofRemoveListener(storyEngine->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofRemoveListener(storyEngine->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+		
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
+		
 	}
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
-		camera.setup();
-		camera.autosavePosition = true;
-		camera.loadCameraPosition();
 		
 		this->storyEngine = &storyEngine;
 		
 		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipChanged, this, &CloudsPlaybackController::clipChanged);
+		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
+		ofAddListener(storyEngine.getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofAddListener(storyEngine.getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+	
 		ofAddListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
+
+		rgbdVisualSystem.setRenderer(combinedRenderer);
+		rgbdVisualSystem.setup();
 		
-		populateVisualSystems();
+		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
 		eventsRegistered = true;
 
-		rgbdRenderer.setShaderPath("shaders/rgbdtwostreams");
-		
-		playerControls = new ofxUICanvas(0,0,200,500);
-		//playerControls->addSlider("", <#float _min#>, <#float _max#>, <#float _value#>)
+		//combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
+		combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
 	}
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
-	//TEMPORARY SWITCH!!
-	if(args.key == 'v'){
-		if(showingVisualSystem){
-			hideVisualSystem();
-		}
-		else{
-			showVisualSystem();
-		}
+	if(args.key == 'R'){
+		combinedRenderer.reloadShader();
 	}
 	
+	if(args.key == OF_KEY_RIGHT){
+		storyEngine->playNextClip();
+	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -90,157 +94,185 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::update(){
-
-	if(rgbdPlayer.isLoaded()){
-		rgbdPlayer.update();
-		rgbdRenderer.update();
+void CloudsPlaybackController::update(ofEventArgs & args){
+	
+	combinedRenderer.update();
+	
+	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
+		rgbdVisualSystem.speakerEnded();
+		storyEngine->clipEnded();
 	}
 	
-	if(rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
-		if(rgbdPlayer.getVideoPlayer()->getCurrentFrame() >= currentClip.endFrame){
-			storyEngine->selectNewClip();
-		}
-	}
 }
 
-
 //--------------------------------------------------------------------
-void CloudsPlaybackController::draw(){
+void CloudsPlaybackController::draw(ofEventArgs & args){
 	
-	if(!showingVisualSystem && rgbdPlayer.isLoaded() && rgbdPlayer.getVideoPlayer()->isPlaying()){
-		camera.begin();
-		if(playingCombinedVideo){
-			combinedRenderer.drawPointCloud();
-		}
-		else {
-			rgbdRenderer.drawPointCloud();
-		}
-		camera.end();
-	}
+	//glDisable(GL_DEPTH_TEST);
+	storyEngine->drawStoryEngineDebug();
 }
 
 #pragma story engine
 //--------------------------------------------------------------------
 void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
+	
+	rgbdVisualSystem.playSystem();
 	playClip(args.chosenClip);
+	
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::clipChanged(CloudsStoryEventArgs& args){
-	playClip(args.chosenClip);	
+void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
+	playClip(args.chosenClip);
+	
+	//this has to draw last
+	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	if(!showingVisualSystem){
+		cout << "Received show visual system" << endl;
+		//showVisualSystem();
+		showVisualSystem(args.preset);
+	}
+	else{
+		ofLogError() << "Triggered visual system while still showing one";
+	}
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	if(showingVisualSystem){
+		hideVisualSystem();
+	}
+	else{
+		ofLogError() << "Hiding visual system while none is showing";
+	}	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 	
 	if(clip.hasCombinedVideo){
-//		if(player.loadMovie(relinkMovieFilepath(clip.combinedVideoFilePath))){
-//			playingCombinedVideo = true;
-//			renderer.setup(relinkMovieFilepath(clip.combinedVideoCalibrationXml));
-//			renderer.setTexture(player);
-//		}
-	}
-	else{
-		if(rgbdPlayer.isLoaded()){
-			rgbdPlayer.getVideoPlayer()->stop();
-		}
-		playingCombinedVideo = false;
-		ofxRGBDScene scene;
-		string sceneFolder = ofFilePath::getEnclosingDirectory( //scene
-										ofFilePath::getEnclosingDirectory( //color
-																		  CloudsClip::relinkFilePath(clip.sourceVideoFilePath)));
-		scene.loadFromFolder(sceneFolder);
-
-		if(scene.valid()){
-			
-			rgbdPlayer.setup(scene);
-			rgbdPlayer.getVideoPlayer()->setFrame(clip.startFrame);
-			rgbdPlayer.getVideoPlayer()->play();
-			
-			rgbdRenderer.setup(scene.calibrationFolder);
-			rgbdRenderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
-			rgbdRenderer.setDepthImage(rgbdPlayer.getDepthPixels());
-			
+		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+			combinedRenderer.getPlayer().play();
+			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+			currentClip = clip;
 		}
 		else{
-			ofLogError() << "RGBD LOAD : folder " << sceneFolder << " is not valid" << endl;
+			ofLogError() << "RGBD LOAD : folder " << clip.combinedVideoPath << " is not valid" << endl;
 		}
 	}
-	
-	currentClip = clip;
+	else {
+		ofLogError() << "RGBD LOAD : clip " << clip.getLinkName() << " doesn't have combined video" << endl;
+	}
 }
 
-
-#pragma visual systems
 //--------------------------------------------------------------------
-void CloudsPlaybackController::populateVisualSystems(){
-	
-	CloudsVisualSystemStandin* standIn = new CloudsVisualSystemStandin();
-	CloudsVisualSystemComputationTicker* computation = new CloudsVisualSystemComputationTicker();
-	
-	standIn->setup();
-	computation->setup();
-	
-	visualSystems.push_back(computation);
-	visualSystems.push_back(standIn);
-
-	set<string> keyThemes;
-	vector<string>& standinKeys = standIn->getRelevantKeywords();
-	vector<string>& computationKeys = computation->getRelevantKeywords();
-
-	for(int i = 0; i < visualSystems.size(); i++){
-		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
-		for(int k = 0; k < keys.size(); k++){
-			keyThemes.insert( keys[k] );
-		}
-	}
-	
-	storyEngine->network->populateKeyThemes(keyThemes);
-	
-	//keyThemes.insert(.begin(), standIn->getRelevantKeywords().end());
-}
-
 void CloudsPlaybackController::showVisualSystem(){
-	
-	if(showingVisualSystem){
-		hideVisualSystem();
-	}
-	
-	for(int i = 0; i < visualSystems.size(); i++){
 
-		//get the visual system that is closest to this tag
-		string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
-		
+	/*
+	//get the visual system that is closest to this tag
+	string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
+
+	for(int i = 0; i < visualSystems.size(); i++){
 		if(visualSystems[i]->isReleventToKeyword(keyTheme)){
-			currentVisualSystem = visualSystems[i];
-						
-			showingVisualSystem = true;
-			currentVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());
-			currentVisualSystem->setCurrentKeyword(keyTheme);
-			currentVisualSystem->playSystem();
-			
+			showVisualSystem(visualSystems[i], keyTheme);
 			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << " and key theme " << keyTheme << endl;
-			
 			return;
 		}
 	}
 	
 	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic() << " picking random"<<endl;
+
 	//pick a random one
-	currentVisualSystem = visualSystems[ int(ofRandom(visualSystems.size())) ];
-	showingVisualSystem = true;
-	currentVisualSystem->setCurrentKeyword(storyEngine->getCurrentTopic());
-	currentVisualSystem->playSystem();
+	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());
+	*/
+	
+	//For now show a random system!
+//	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());
 	
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
+	if(showingVisualSystem){
+		hideVisualSystem();
+	}
+	
+	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
+	
+	rgbdVisualSystem.stopSystem();
+	
+	nextVisualSystem.system->setCurrentTopic( storyEngine->getCurrentTopic() );
+	nextVisualSystem.system->playSystem();
+	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
+	
+	currentVisualSystem = nextVisualSystem.system;
+	showingVisualSystem = true;
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem(){
-	if(currentVisualSystem != NULL){
-		showingVisualSystem = false;
-		//TODO time delay!
+	if(showingVisualSystem && currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
+		showingVisualSystem = false;
+		currentVisualSystem = NULL;
+		
+//		visualSystemControls->enable();
+//		if(keyThemesPanel != NULL) keyThemesPanel->enable();
+		
+		rgbdVisualSystem.playSystem();
 	}
 }
 
+//--------------------------------------------------------------------
+//CloudsVisualSystem* CloudsPlaybackController::visualSystemWithName(string systemName){
+//	if(nameToVisualSystem.find(systemName) != nameToVisualSystem.end()){
+//		return nameToVisualSystem[systemName];
+//	}
+//	ofLogError() << "Could not find Visual System with name " << systemName;
+//	return NULL;
+//}
+
+//--------------------------------------------------------------------
+//void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
+//{
+//    string name = e.widget->getName();
+//    
+////    cout << "WIDGET NAME: " << name << endl;
+//    
+//    if(e.widget->getParent() == visualSystemRadio){
+//		if(visualSystemRadio->getActive() != NULL){
+//						
+//			CloudsVisualSystem* system = visualSystemWithName( name );
+//			if(system != NULL){
+//				if(keyThemesPanel != NULL){
+//					delete keyThemesPanel;
+//				}
+//				keyThemesPanel = new ofxUICanvas(0, visualSystemControls->getRect()->getMaxY(), 0, 0);
+//				vector<string>& relevantKeys = system->getRelevantKeywords();
+//				if(relevantKeys.size() == 0){
+//					relevantKeys.push_back("no-key");
+//				}
+//				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", relevantKeys, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
+//				
+//				keyThemesPanel->setTheme(OFX_UI_THEME_COOLCLAY);
+//				playButton = keyThemesPanel->addButton("Test System", &triggerVisualSystem);
+//			
+//				keyThemesPanel->autoSizeToFitWidgets();
+//				ofAddListener(keyThemesPanel->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
+//			}
+//		}
+//    }
+//	else if(e.widget == playButton && playButton->getValue() && !showingVisualSystem){
+//		
+//		cout << "Showing visual system!" << endl;
+//		
+//		showVisualSystem(visualSystemWithName(visualSystemRadio->getActive()->getName()),
+//						 keyThemesRadio->getActive()->getName());
+//	}
+//}

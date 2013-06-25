@@ -1,10 +1,159 @@
 <clip>
-    <name>Aaron - Tailored Stories</name>
+    <name>Aaron - global communication</name>
+    <link>
+        <target>Regine - Internet doesn&apos;t change things</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - the Cloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Aaron - different ways of communicating</name>
+    <link>
+        <target>Maeda - People you&apos;re meeting,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - relating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
-        <target>Binx - tools for storytelling</target>
+        <target>Binx - tool for others</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+</clip>
+<clip>
+    <name>Aaron - dreaming together</name>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Aaron - exchange of ideas drives progress</name>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - newness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - toolkit culture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Aaron - networked creativity</name>
+    <startingQuestion>How has the internet changed everything?</startingQuestion>
+</clip>
+<clip>
+    <name>Aaron - data storytelling</name>
+    <link>
+        <target>Jer - lives being documented through data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Aaron - lego creatures</name>
+    <link>
+        <target>Kyle_CH - MMORPGs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - videogame world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Polygons</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+</clip>
+<clip>
+    <name>Aaron - infinity</name>
+    <link>
+        <target>Kyle_CH - virtual space online</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - Time in the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Aaron - experience design</name>
+    <link>
+        <target>Paola - Portal</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - everyday experience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - jolted into the NOW</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Shantell - Future gesture</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - everyday media</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - hide the technology,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <startingQuestion>How has the internet changed everything?</startingQuestion>
+</clip>
+<clip>
+    <name>Aaron - recombination</name>
+    <link>
+        <target>Casey - Style diffuses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - dissemination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Binx - actually interesting</name>
@@ -18,6 +167,16 @@
     <name>Binx - tool for others</name>
     <link>
         <target>Maeda - How do you relate to people?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - stories make our lives worth living</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - code, story, communication</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -57,15 +216,15 @@
 <clip>
     <name>Binx - programming is a superpower</name>
     <link>
-        <target>Binx - changing the world</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Philip - with programming you can do whatever</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Binx - changing the world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Binx - learning with others</name>
@@ -105,6 +264,11 @@
     </link>
     <link>
         <target>Vera - Energy Flow2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - toolkit culture</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -173,14 +337,6 @@
     </link>
 </clip>
 <clip>
-    <name>Casey - Sketching with code</name>
-    <link>
-        <target>Shiffman - sketching with code</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
     <name>Casey - tangle</name>
     <link>
         <target>Nervous_Jesse - we like things tidy</target>
@@ -219,18 +375,32 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Karolina - Everything</target>
+        <target>Vera - Digital life forms</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Karolina - Everything</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <startingQuestion>How can simple rules have complex results?</startingQuestion>
+</clip>
+<clip>
+    <name>Casey - synthetic biology</name>
     <link>
-        <target>Vera - Digital life forms</target>
+        <target>Nervous_Jesse - Biology is messy</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
 </clip>
 <clip>
-    <name>Casey - synthetic biology</name>
+    <name>Casey - Craig Venter</name>
+    <link>
+        <target>Nervous_Jessica - biocomputer</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <link>
         <target>Nervous_Jesse - Biology is messy</target>
         <startFrame>-1</startFrame>
@@ -282,6 +452,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Philip - if I had Processing in school</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - People would pop up</name>
@@ -305,6 +480,21 @@
     </link>
     <link>
         <target>Marcus - community styles</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - exchange of ideas drives progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - recombination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - collective creativity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -343,11 +533,6 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>JTNimoy - increased the bandwidth</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Marcus - Sims</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -377,14 +562,19 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>JTNimoy - increased the bandwidth</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - Programming at 26</name>
-    <link>
+    <suppress>
         <target>Golan - woah2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
-    </link>
+    </suppress>
 </clip>
 <clip>
     <name>Casey - Computer as collaborator</name>
@@ -431,6 +621,27 @@
     </link>
 </clip>
 <clip>
+    <name>Chris - remote collaboration</name>
+    <startingQuestion>How has the internet changed everything?</startingQuestion>
+</clip>
+<clip>
+    <name>Chris - ethic of sharing</name>
+    <startingQuestion>How has the internet changed everything?</startingQuestion>
+</clip>
+<clip>
+    <name>Chris - interfaces</name>
+    <link>
+        <target>Julian - ideology of seamlessness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Maeda - thinking about interfaces</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Chris - Eyewriter</name>
     <link>
         <target>Kyle_MC - Eyewriter</target>
@@ -466,6 +677,42 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Elliot_UK - Ideaspace</name>
+    <link>
+        <target>Aaron - exchange of ideas drives progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - collective creativity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Elliot_UK - Laying claim on ideas</name>
+    <link>
+        <target>Aaron - recombination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - first mover</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Theo - newness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>JTNimoy - originality</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Golan - useless, whimsical</name>
@@ -569,11 +816,6 @@
 <clip>
     <name>Golan - listening post</name>
     <link>
-        <target>Jer -</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Jer - lives being documented through data</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -583,6 +825,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Aaron - data storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>-</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
 </clip>
 <clip>
     <name>Golan - hybridity</name>
@@ -672,11 +924,6 @@
     <name>Golan - keeping you stuff working</name>
     <link>
         <target>Shiffman - what do you archive?</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Paola - Moma games</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -785,9 +1032,25 @@
     </link>
 </clip>
 <clip>
+    <name>Golan_AMA - singularity</name>
+    <link>
+        <target>Marcus - Epic Games predictions</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Greg - human augmentation</name>
     <link>
         <target>Golan - jolted into the NOW</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Greg - A.I.</name>
+    <link>
+        <target>Golan_AMA - singularity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -843,6 +1106,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Greg - visual effects</name>
@@ -874,6 +1142,14 @@
     <name>Jer - Eyewriter touchstone</name>
     <link>
         <target>JTNimoy - relating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Jer - Pattern</name>
+    <link>
+        <target>Marcus - lego bricks</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -944,6 +1220,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Aaron - data storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Jer - Data ownership</name>
@@ -970,14 +1251,6 @@
     <name>Jer - open paths</name>
     <link>
         <target>Binx - meaningful shape1</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-</clip>
-<clip>
-    <name>Jer - deciding not to record</name>
-    <link>
-        <target>Golan - open data</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1051,6 +1324,14 @@
     </link>
 </clip>
 <clip>
+    <name>Joel - interactivity</name>
+    <link>
+        <target>Golan - what&apos;s an instrument?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>JTNimoy - Describe the Kinect</name>
     <link>
         <target>Greg - cameras scaling up</target>
@@ -1078,6 +1359,19 @@
     <name>JTNimoy - I addicted myself</name>
     <link>
         <target>Zach - Fucking boring</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - I hate the word nerd</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>JTNimoy - Comes from the human mind</name>
+    <link>
+        <target>Greg - A.I.</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1136,6 +1430,10 @@
     </link>
 </clip>
 <clip>
+    <name>JTNimoy - Pickle</name>
+    <startingQuestion>What does it feel like to program?</startingQuestion>
+</clip>
+<clip>
     <name>Julia - museum, emotion</name>
     <link>
         <target>Vera - Energy Flow2</target>
@@ -1144,6 +1442,14 @@
     </link>
     <link>
         <target>Maeda - People</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Julia - community</name>
+    <link>
+        <target>Jer - Desire to get together</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1236,6 +1542,31 @@
     </link>
 </clip>
 <clip>
+    <name>Julian - ideology of seamlessness</name>
+    <link>
+        <target>Regine - elitist and their gadgets</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Chris - interfaces</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Julian - toolkit culture</name>
+    <link>
+        <target>Binx - changing the world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Julian - I love networks</name>
+    <startingQuestion>How has the internet changed everything?</startingQuestion>
+</clip>
+<clip>
     <name>Julian - city as operating system</name>
     <link>
         <target>Julia - what is it doing to us</target>
@@ -1252,6 +1583,21 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - RMB city</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - MMORPGs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Julian - Shapes the way we think</name>
@@ -1262,6 +1608,11 @@
     </link>
     <link>
         <target>Marius - Machines change the way we see</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Joel - Bicycles for the Mind</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1312,6 +1663,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <startingQuestion>Where is it going?</startingQuestion>
 </clip>
 <clip>
     <name>Karolina - Ocean as metaphor</name>
@@ -1368,6 +1720,50 @@
     </link>
 </clip>
 <clip>
+    <name>Karsten - dissemination</name>
+    <link>
+        <target>Lindsay - memes 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Karsten - memes</name>
+    <link>
+        <target>Casey - Style diffuses</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - collective creativity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - Ideaspace</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - Laying claim on ideas</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Karsten - east german hardware 2</name>
+    <link>
+        <target>JTNimoy - evolution</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Karsten - 256 bytes part 1</name>
     <link>
         <target>Paola - bach mozart coders</target>
@@ -1384,9 +1780,127 @@
     </link>
 </clip>
 <clip>
+    <name>Karsten - DarkNet</name>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Karsten - infinite conversation</name>
+    <startingQuestion>What is Clouds?</startingQuestion>
+</clip>
+<clip>
+    <name>Karsten - archiving</name>
+    <link>
+        <target>Kyle_CH - old server farms</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Future life storage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - death of technology</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Kyle_CH - RGBD</name>
     <link>
         <target>Greg - camera scaling up</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - Social media performance</name>
+    <link>
+        <target>Lindsay - online identity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - avatar1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - Avatars</name>
+    <link>
+        <target>Maeda - How do I balance these personas?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Sophy - avatar1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - meeting IRL</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - virtual and identity</name>
+    <link>
+        <target>Lindsay - online identity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - RMB city</name>
+    <link>
+        <target>Sophy - city</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - city as operating system</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - Time in the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - infinity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - virtual space online</name>
+    <link>
+        <target>Jer - lives being documented through data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - keeping you stuff working</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Karsten - archiving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Kyle_CH - MMORPGs</name>
+    <link>
+        <target>Aaron - experience design</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1408,6 +1922,23 @@
     </link>
 </clip>
 <clip>
+    <name>Kyle_CH - coding, magic</name>
+    <startingQuestion>How do algorithms emerge into physical reality?</startingQuestion>
+</clip>
+<clip>
+    <name>Kyle_CH - Future life storage</name>
+    <link>
+        <target>Shiffman - what do you archive?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Zach - Joshua Davis</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Kyle_MC - Hackers and artists</name>
     <link>
         <target>Javier - hackers</target>
@@ -1419,6 +1950,21 @@
     <name>Kyle_MC - We don&apos;t understand the thing</name>
     <link>
         <target>Julian - city as operating system</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - Machines change the way we see</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - Critical engineering</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julian - change the way we see tech</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1463,9 +2009,32 @@
     </link>
 </clip>
 <clip>
+    <name>Lindsay - meeting IRL</name>
+    <link>
+        <target>Jer - Desire to get together</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - net friends</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Lindsay - collective creativity</name>
     <link>
         <target>Karsten - memes</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - recombination</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Elliot_UK - Laying claim on ideas</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1479,6 +2048,37 @@
     </link>
 </clip>
 <clip>
+    <name>Lindsay - online identity</name>
+    <link>
+        <target>Kyle_CH - Avatars</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Lindsay - death of technology</name>
+    <link>
+        <target>Karsten - archiving</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - old server farms</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - Future life storage</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Maeda - a computer is a clock</name>
     <link>
         <target>Shiffman - offers me a way to think</target>
@@ -1487,6 +2087,15 @@
     </link>
     <link>
         <target>Joel - Bicycles for the Mind</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <startingQuestion>What is a computer?</startingQuestion>
+</clip>
+<clip>
+    <name>Maeda - reactive square</name>
+    <link>
+        <target>Theo - funky forest</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -1986,6 +2595,10 @@
     </link>
 </clip>
 <clip>
+    <name>Marius - these things are in my head</name>
+    <startingQuestion>What compels you to make things?</startingQuestion>
+</clip>
+<clip>
     <name>Marius - gardening</name>
     <link>
         <target>Marcus - emergence</target>
@@ -2093,6 +2706,19 @@
     </link>
 </clip>
 <clip>
+    <name>Marius - Predicting the internet</name>
+    <link>
+        <target>Kyle_CH - MMORPGs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Casey - I try not to be a futurist</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Marius - Becoming mid-career</name>
     <link>
         <target>Golan - keeping you stuff working</target>
@@ -2148,6 +2774,14 @@
     <name>Nervous_Jesse - understanding to control 3</name>
     <link>
         <target>Elliot_UK - limitation 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Nervous_Jesse - Time in the universe</name>
+    <link>
+        <target>Shiffman - million monkeys</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2289,6 +2923,19 @@
     </link>
     <link>
         <target>Marcus - modeling consciousness</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Nervous_Jessica - Growing buildings</name>
+    <link>
+        <target>Casey - What is emergence?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Marius - gardening</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2440,6 +3087,16 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_CH - videogame world</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - MMORPGs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Philip - audiovisual gigs</name>
@@ -2511,6 +3168,10 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+</clip>
+<clip>
+    <name>Philip - changes your thinking</name>
+    <startingQuestion>How does programming change the way you think?</startingQuestion>
 </clip>
 <clip>
     <name>Philip - its a tool</name>
@@ -2678,6 +3339,10 @@
     </link>
 </clip>
 <clip>
+    <name>Shantell - sharing</name>
+    <startingQuestion>What is open source all about?</startingQuestion>
+</clip>
+<clip>
     <name>Shantell - doingwithothers</name>
     <link>
         <target>Marcus - community styles</target>
@@ -2771,6 +3436,31 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Zach - minecraft livecode</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - MMORPGs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - lego creatures</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - webGL</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - the best games are great stories</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Shiffman - programming the universe</name>
@@ -2812,11 +3502,31 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Kyle_CH - nature is complex</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - Pattern</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Shiffman - million monkeys</name>
     <link>
         <target>Nervous_Jessica - Marker 7</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Nervous_Jesse - Time in the universe</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - infinity</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -2865,6 +3575,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Golan - keeping you stuff working</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
 </clip>
 <clip>
     <name>Shiffman - offers me a way to think</name>
@@ -2901,6 +3616,24 @@
     </link>
 </clip>
 <clip>
+    <name>Sophy - avatar1</name>
+    <link>
+        <target>Kyle_CH - Avatars</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_CH - virtual and identity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lindsay - online identity</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
     <name>Sophy - nonlinearity</name>
     <link>
         <target>Karolina - Journey</target>
@@ -2919,6 +3652,42 @@
     </link>
     <link>
         <target>Kyle_MC - imagining your pointcloud</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Sophy - Strange cultures</name>
+    <link>
+        <target>Kyle_CH - coral reefs</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Sophy - the Cloud</name>
+    <link>
+        <target>Kyle_CH - virtual space online</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kyle_MC - We don&apos;t understand the thing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - global communication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - different ways of communicating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - global interactions</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -3015,6 +3784,19 @@
     </link>
     <link>
         <target>Maeda - old and new</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - exchange of ideas drives progress</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Theo - hide the technology,</name>
+    <link>
+        <target>Aaron - experience design</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -3238,6 +4020,10 @@
     </link>
 </clip>
 <clip>
+    <name>Zach - hide the tech</name>
+    <startingQuestion>Where&apos;s the human in technology?</startingQuestion>
+</clip>
+<clip>
     <name>Zach - less demo</name>
     <link>
         <target>Golan - this to that</target>
@@ -3270,6 +4056,24 @@
     <name>Zach - drawn2</name>
     <link>
         <target>Shantell - magic and tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+</clip>
+<clip>
+    <name>Zach - Joshua Davis</name>
+    <link>
+        <target>Shiffman - what do you archive?</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Jer - lives being documented through data</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - keeping you stuff working</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>

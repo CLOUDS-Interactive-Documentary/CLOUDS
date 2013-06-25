@@ -47,18 +47,30 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 	ofBuffer csvBuffer;
 	csvBuffer.append("source,target\n");
 	for(int i = 0; i < parser.getAllClips().size(); i++){
-		CloudsClip& mark = parser.getAllClips()[i];
-		string name = mark.getLinkName();
-		vector<CloudsClip> links = parser.getClipsWithKeyword(mark.keywords);
-		for(int j = 0; j < links.size(); j++){
-			if(name != links[j].getLinkName() &&
-			   mark.person != links[j].person &&
-			   parser.getNumberOfSharedKeywords(mark, links[j]) > 1 )
+		CloudsClip& clipA = parser.getAllClips()[i];
+		string nameA = clipA.getLinkName();
+		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.keywords);
+		for(int j = 0; j < connections.size(); j++){
+			CloudsClip& clipB = connections[j];
+			string nameB = connections[j].getLinkName();
+			if(nameA != nameB &&
+			   clipA.person != clipB.person &&
+			   !parser.linkIsSuppressed(nameA, nameB) &&
+			   !parser.clipLinksTo(nameA, nameB) &&
+			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1 )
 			{
-				csvBuffer.append(name + "," + links[j].getLinkName() + "\n");
+				csvBuffer.append(nameA + "," + nameB + "\n");
 			}
 		}
+		
+		vector<CloudsLink>& links = parser.getLinksForClip(clipA);
+		for(int i = 0; i < links.size(); i++){
+			csvBuffer.append(nameA + "," + links[i].targetName + "\n");
+//			cout << "	Added LINK to CSV " << (nameA + "," + links[i].targetName + "\n") << endl;
+		}
+		
 	}
 	ofBufferToFile("gephi_edges.csv", csvBuffer);
 	
 }
+

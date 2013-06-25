@@ -9,12 +9,29 @@ CloudsRGBDCombinedExporter::CloudsRGBDCombinedExporter(){
     
 	renderer = NULL;
 	player = NULL;
-    
+	
 	videoRectangle = ofRectangle(0,0,1280,720);
 }
 
 CloudsRGBDCombinedExporter::~CloudsRGBDCombinedExporter(){
 	
+}
+
+void CloudsRGBDCombinedExporter::prepare(){
+	foundFirstFace = false;
+	lastFaceFrameFound = 0;
+	inFace = false;
+	
+	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
+
+	
+	lastVideoFrame.clear();
+	
+	tracker.setup();
+	
+	contours.setMinArea(minBlobSize);
+	contours.setThreshold(contourThreshold);
+	contours.setTargetColor(targetColor);
 }
 
 void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
@@ -79,7 +96,6 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	calibration.addTag("adjustment");
 	calibration.pushTag("adjustment");
 	
-	
 	calibration.addTag("translate");
 	calibration.pushTag("translate");
 	calibration.addValue("x", renderer->colorMatrixTranslate.x);
@@ -104,13 +120,16 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	calibration.pushTag("depth");
 	calibration.addValue("min", renderer->nearClip);
 	calibration.addValue("max", renderer->farClip);
-	calibration.popTag();
-	
-	calibration.popTag();
-		
+	calibration.popTag(); //depth
 	
 	calibration.popTag();//adjustment
 	
+	calibration.addTag("face");
+	calibration.pushTag("face");
+	calibration.addValue("x", facePosition.x);
+	calibration.addValue("y", facePosition.y);
+	calibration.addValue("z", facePosition.z);
+	calibration.popTag(); //face
 	calibration.saveFile(outputDirectory + "/_calibration.xml");
 }
 
@@ -126,7 +145,7 @@ void CloudsRGBDCombinedExporter::render(string outputPath, string clipName){
 		return;
 	}
     
-	writeMetaFile(outputPath, renderer);
+	//writeMetaFile(outputPath, renderer);
 	
     int counter = 1;
 	for(int i = inoutPoint.min; i < inoutPoint.max; i++){
@@ -150,15 +169,15 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
-	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480 + 360)
 	{
-		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
 	}
 
 	//COPY video pixels into buffer
-	ofPixels temp = videoPixels;
-	temp.resize(videoRectangle.width, videoRectangle.height);
-	temp.pasteInto(outputImage, 0, 0);
+	ofPixels resizedVideoPixels = videoPixels;
+	resizedVideoPixels.resize(videoRectangle.width, videoRectangle.height,OF_INTERPOLATE_BICUBIC);
+	resizedVideoPixels.pasteInto(outputImage, 0, 0);
 	
 	ofShortPixels& p = rgbdRenderer->getDepthImage();
 	ofRectangle depthBox;
@@ -178,15 +197,16 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	//  Process Normals on PCL
 	//
 	ofxPCL::PointCloud pc;
-	ofxPCL::convert( rgbdRenderer->getReducedMesh(false), pc);
+	ofMesh mesh;
+	rgbdRenderer->getReducedMesh(mesh, false);
+	ofxPCL::convert(mesh, pc);
 	
 	ofxPCL::PointNormalPointCloud pc_n;
 	ofxPCL::normalEstimation(pc, pc_n );
 	
-	
 	//  Make a new mesh with that information
 	//
-	ofMesh mesh = ofxPCL::toOF(pc_n);
+	mesh = ofxPCL::toOF(pc_n);
 //	memset(outputImage.getPixels(), 0, outputImage.getWidth()*outputImage.getHeight()*3);
 //	cout << "normals generated, building image for " << rgbdRenderer->validVertIndices.size() << " verts " << endl;
 	
@@ -209,8 +229,11 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		}
 	}
 	
+	
+		
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
+	
 	for(int i = 0; i < rgbdRenderer->validVertIndices.size(); i++){
 		ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
 		pair<int,int> pixelCoord = rgbdRenderer->getPixelLocationForIndex( rgbdRenderer->validVertIndices[i]  );
@@ -218,10 +241,199 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
 	
+	// Copy in face info
+	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
+	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
+		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+	}
+
+	contours.setMinArea(minBlobSize);
+	contours.setThreshold(contourThreshold);
+	contours.setTargetColor(targetColor);
+	
+//	cout << "Finding contour on image size " << videoPixels.getWidth() << " " << videoPixels.getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
+	
+	contours.findContours(videoPixels);
+	if(contours.size() > 0){
+		cv::Mat dstMat = ofxCv::toCv(faceFrame);
+		dstMat.setTo(cv::Scalar(0));
+		
+		for (int i = 0; i < contours.size(); i++){
+			const cv::Point* ppt[1] = { &(contours.getContour(i)[0]) };
+			int npt[] = { contours.getContour(i).size() };
+			cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,0,0));
+		}
+		
+		//Blur a wee bit
+		ofxCv::blur(dstMat, 15);
+
+	}
+	else{
+		cout << "NO CONTOURS FOUND" << endl;
+	}
+	
+	//////////////////
+	//face extract
+	//////////////////
+	bool foundFace = tracker.update(ofxCv::toCv(videoPixels));
+	//foundFace = false;
+	if(foundFace){
+		ofPolyline leftEye = tracker.getImageFeature(ofxFaceTracker::LEFT_EYE);
+		ofPolyline rightEye = tracker.getImageFeature(ofxFaceTracker::RIGHT_EYE);
+		ofPolyline faceOutline = tracker.getImageFeature(ofxFaceTracker::FACE_OUTLINE);
+		ofPolyline mouthOutline = tracker.getImageFeature(ofxFaceTracker::OUTER_MOUTH);
+		
+		if(!inFace && foundFirstFace){
+			
+			ofPolyline interpLeftEye;
+			ofPolyline interpRightEye;
+			ofPolyline interpFace;
+			ofPolyline interpMouth;
+			
+			for(int i = lastFaceFrameFound + 1; i < frameNum; i++){
+				float delta = ofMap(i, lastFaceFrameFound, frameNum, 0, 1.0);
+				
+				//LOAD IMAGE
+				char filename[1024];
+				sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), i);
+				ofPixels pix;
+				if(!ofLoadImage(pix, filename)){
+					ofLogError() << "Retro face fail -- Couldn't load image " << filename << endl;
+					continue;
+				}
+				
+				interpolatePolyLine(lastLeftEye, leftEye, interpLeftEye, delta);
+				interpolatePolyLine(lastRightEye, rightEye, interpRightEye, delta);
+				interpolatePolyLine(lastFace, faceOutline, interpFace, delta);
+				interpolatePolyLine(lastMouth, mouthOutline, interpMouth, delta);
+				
+				//ADD FACE
+				addFaceToPixels(faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
+				
+				//copy and paste the pixels into the buffer
+				ofPixels resized = faceFrame;
+				resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
+				resized.pasteInto(pix, faceTargetRectangle.x, faceTargetRectangle.y);
+				
+				cout << "RE-SAVING filename with face " << filename << endl;
+				//SAVE IMAGE AGAIN
+				ofSaveImage(pix, filename);
+			}
+		}
+		
+		foundFirstFace = true;
+		inFace = true;
+		
+		lastLeftEye = leftEye;
+		lastRightEye = rightEye;
+		lastFace = faceOutline;
+		lastMouth = mouthOutline;
+		
+		addFaceToPixels(faceTargetRectangle, leftEye, rightEye, faceOutline, mouthOutline);
+		
+		lastFaceFrameFound = frameNum;
+
+	}
+	else{
+		ofLogError() << " NO FACE FOUND FOR CLIP " << clipName << " FRAME " << ofToString(frameNum);
+		inFace = false;
+	}
+
+	//copy and paste the pixels into the buffer
+	ofPixels resized = faceFrame;
+	resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
+	resized.pasteInto(outputImage, faceTargetRectangle.x, faceTargetRectangle.y);
+	
+	//////////
+	// DIFFERENCE MATTE
+	/////////
+	ofPixels thisFrameGray = resizedVideoPixels;
+//	thisFrameGray.setImageType(OF_IMAGE_GRAYSCALE);
+	thisFrameGray.resize(faceTargetRectangle.width, faceTargetRectangle.height);
+	if(lastVideoFrame.isAllocated()){
+		cv::Mat thisFrameMat = ofxCv::toCv( thisFrameGray );
+		cv::Mat lastFrameMat = ofxCv::toCv( lastVideoFrame );
+		
+		if(!frameDifference.isAllocated() ||
+		   thisFrameGray.getWidth() != frameDifference.getWidth() ||
+		   thisFrameGray.getHeight() != frameDifference.getHeight() )
+		{
+			frameDifference.allocate(thisFrameGray.getWidth(), thisFrameGray.getHeight(), OF_IMAGE_COLOR);
+		}
+		
+		cv::Mat frameDifferenceMat = ofxCv::toCv(frameDifference);
+		cv::absdiff(thisFrameMat, lastFrameMat, frameDifferenceMat);
+
+		frameDifference.pasteInto(outputImage,videoRectangle.width/2,
+								  videoRectangle.height + 480);
+	}
+	
+	lastVideoFrame = thisFrameGray;
+	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
 	cout << "Saving filename " << filename << endl;
 	ofSaveImage(outputImage, filename);
+}
+
+void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta){
+    if(a.getVertices().size() != b.getVertices().size()){
+        ofLogError("Polylines did not match in size");
+        return;
+    }
+    
+    out.clear();
+    
+    for(int i = 0; i < a.getVertices().size(); i++){
+        out.addVertex( a.getVertices()[i].getInterpolated(b.getVertices()[i], delta) );
+    }
+}
+
+void CloudsRGBDCombinedExporter::addFaceToPixels(ofRectangle target,
+												 ofPolyline& leftEye, ofPolyline& rightEye,
+												 ofPolyline& faceOutline,ofPolyline& mouthOutline){
+
+	
+
+	//create cv point vectors
+	vector<cv::Point> facePoints, leftEyePoints, rightEyePoints, mouthPoints;
+	for(int i = 0; i < faceOutline.getVertices().size(); i++){
+		facePoints.push_back(cv::Point(faceOutline.getVertices()[i].x,
+									   faceOutline.getVertices()[i].y));
+	}
+	for(int i = 0; i < leftEye.getVertices().size(); i++){
+		leftEyePoints.push_back(cv::Point(leftEye.getVertices()[i].x,
+										  leftEye.getVertices()[i].y));
+	}
+	for(int i = 0; i < rightEye.getVertices().size(); i++){
+		rightEyePoints.push_back(cv::Point(rightEye.getVertices()[i].x,
+										   rightEye.getVertices()[i].y));
+	}
+	for(int i = 0; i < mouthOutline.getVertices().size(); i++){
+		mouthPoints.push_back(cv::Point(mouthOutline.getVertices()[i].x,
+										mouthOutline.getVertices()[i].y));
+	}
+
+	//fill in all the polgons
+	cv::Mat dstMat = ofxCv::toCv(faceFrame);
+	const cv::Point* ppt[1];
+	int npt[1];
+	
+	ppt[0] =  &(facePoints[0]);
+	npt[0] = faceOutline.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,0));
+
+	ppt[0] =  &(leftEyePoints[0]);
+	npt[0] = leftEyePoints.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,255));
+
+	ppt[0] = &(rightEyePoints[0]);
+	npt[0] = rightEyePoints.size();
+	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(255,255,255));
+
+//	ppt[0] = &(mouthPoints[0]);
+//	npt[0] = mouthPoints.size();
+//	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(0,0,255));
 
 }
 

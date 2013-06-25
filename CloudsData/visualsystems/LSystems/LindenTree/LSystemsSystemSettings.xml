@@ -1,0 +1,67 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>9.000000000</XPosition>
+    <YPosition>92.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Axiom</Name>
+    <Value>B</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Rule1</Name>
+    <Value>B=F[5+B][7-B]-F[3+B][6-B]</Value>
+</Widget>
+<Widget>
+    <Kind>12</Kind>
+    <Name>Rule2</Name>
+    <Value>F=FF</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Angle</Name>
+    <Value>6.206896305</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Scale</Name>
+    <Value>0.899014771</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Depth</Name>
+    <Value>6.275862217</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>aNoise</Name>
+    <Value>0.108374387</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tNoise</Name>
+    <Value>0.024630541</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Speed</Name>
+    <Value>1.773398995</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>bornTime</Name>
+    <Value>1.349753737</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>dotSize</Name>
+    <Value>3.448275805</Value>
+</Widget>

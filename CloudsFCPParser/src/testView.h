@@ -1,43 +1,64 @@
 #pragma once
 
+#define CLOUDS_NO_VS 1
+
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
 #include "CloudsFCPVisualizer.h"
+#include "CloudsClusterVisualizer.h"
 #include "CloudsD3Exporter.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
+#include "ClipSelector.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
-    IBOutlet NSTableView* keywordTable;
-    IBOutlet NSTableView* clipTable;
-    IBOutlet NSTableView* linkTable;
-	IBOutlet NSTableView* playlistTable;
 
-    IBOutlet NSTextField* currentClipLabel;
     
-    IBOutlet NSTokenField* currentKeywords;
+    IBOutlet NSTableView* keywordTableSource;
+    IBOutlet NSTableView* clipTableSource;
+
+    IBOutlet NSTableView* linkTable;
+    IBOutlet NSTableView* suppressedTable;
+	IBOutlet NSTableView* playlistTable;
+    
+    IBOutlet NSTableView* clipTableTarget;
+    IBOutlet NSTableView* keywordTableTarget;
+    
+    IBOutlet NSTextField* currentClipLabel;
+     
+    IBOutlet NSTokenField* currentKeywordsSource;
+    IBOutlet NSTokenField* currentKeywordsTarget;
     IBOutlet NSTextField* linkText;
 	
 	IBOutlet NSTextField* seedKeyword;
 	
+    IBOutlet NSTextField* startQuestion;
+	IBOutlet NSButton* showOnlyQuestions;
+
 	IBOutlet ViewerApp* viewerApp;
-	
+    
+    IBOutlet ClipSelector* linkerA;
+    IBOutlet ClipSelector* linkerB;
+    
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
     CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
-	
+    
     bool updatePhysics;
-    vector<string> selectedKeywords;
+    vector<string> selectedKeywordsSource;
+    vector<string> selectedKeywordsTarget;
     CloudsClip currentPlayingClip;
     BOOL clipLoaded;
-	
-    vector<CloudsClip> selectedClips;
+
+    vector<CloudsClip> selectedClipsTarget;
+    vector<CloudsClip> selectedClipsSource;
     vector<CloudsLink> currentClipLinks;
+    vector<CloudsLink> currentSuppressedLinks;
 
 	bool playingPlaylist;
 	int currentPlaylistIndex;
@@ -53,12 +74,13 @@
 	
 	bool movieFileMissing;
 	bool onPlaylist;
+
 }
 
 @property(nonatomic,readonly) int clipEndFrame;
 @property(nonatomic,readonly) bool movieFileMissing;
 @property(nonatomic,readonly) ofVideoPlayer& preview;
-@property(nonatomic,readonly) bool playingPlaylist;
+//@property(nonatomic,readonly) bool playingPlaylist;
 
 - (void)setup;
 - (void)update;
@@ -80,9 +102,22 @@
 - (IBAction) addClip:(id)sender;
 - (IBAction) removeLink:(id)sender;
 - (IBAction) unsuppressLink:(id)sender;
+- (IBAction) suppressLinkModifier:(id)sender;
+- (IBAction) previewLinks:(id)sender;
+- (IBAction) previewSuppressed:(id)sender;
+- (IBAction) stopPreview:(id)sender;
+- (IBAction) showQuestiosnChanged:(id)sender;
+
+
+-(IBAction)linkFromLeftToRight:(id)sender;
+-(IBAction)linkFromRightToLeft:(id)sender;
+-(IBAction)suppressFromLeftToRight:(id)sender;
+-(IBAction)suppressFromRighttoLeft:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
+
+- (IBAction) setStartText:(id)sender;
 
 - (float) clipPercentComplete;
 
@@ -101,6 +136,8 @@
 
 - (CloudsClip&) selectedClip;
 - (CloudsClip&) selectedClipFromPlaylist;
+
+- (void)playClip:(CloudsClip&)clip;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

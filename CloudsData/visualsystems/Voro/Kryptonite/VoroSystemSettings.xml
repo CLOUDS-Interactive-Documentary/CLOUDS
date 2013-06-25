@@ -1,0 +1,107 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Number</Name>
+    <Value>195.320190430</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BornSecRate</Name>
+    <Value>2.365492582</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Size</Name>
+    <Value>3.660098553</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GrowRate</Name>
+    <Value>0.006403941</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>InitialForce</Name>
+    <Value>0.162561581</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z_Move</Name>
+    <Value>0.019704433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Atraction</Name>
+    <Value>0.054679807</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Repulsion</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawParticles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Container_Periodic</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Size</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Height</Name>
+    <Value>18.645318985</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cylinder</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Alpha</Name>
+    <Value>0.034482758</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawVoronoi</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Alpha</Name>
+    <Value>0.502463043</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DrawVoronoiWires</Name>
+    <Value>1</Value>
+</Widget>

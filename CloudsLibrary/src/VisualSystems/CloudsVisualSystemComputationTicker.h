@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "CloudsVisualSystem.h"
+#include "CloudsVisualSystemRezanator.h"
 
 /** 
  * COMPUTATION visual system
@@ -10,33 +10,41 @@
  * that can be zoomed in and diverted
  */
 
-class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
+class CloudsVisualSystemComputationTicker : public CloudsVisualSystemRezanator {
   public:
-	
-	virtual void setup();
-	virtual string getSystemName();
-	
-	//these events are registered only when running the simulation
-	virtual void update(ofEventArgs & args);
-	virtual void draw(ofEventArgs & args);
-	
-	//INTERACTION EVENTS -- registered only
-	virtual void keyPressed(ofKeyEventArgs & args);
-	virtual void keyReleased(ofKeyEventArgs & args);
-	
-	virtual void mouseDragged(ofMouseEventArgs & args);
-	virtual void mouseMoved(ofMouseEventArgs & args);
-	virtual void mousePressed(ofMouseEventArgs & args);
-	virtual void mouseReleased(ofMouseEventArgs & args);
-		
-	//application exit, clean up and don't crash
-	virtual void exit(ofEventArgs & args);
+
+	string getSystemName();
+    
+    void selfSetup();
+    void selfSetupGuis();
+    
+    void selfUpdate();
+    void selfDrawBackground();
+    void selfDrawDebug();
+    void selfSceneTransformation();
+    void selfDraw();
+    void selfExit();
+    void selfBegin();
+	void selfEnd();
+    
+    void selfKeyPressed(ofKeyEventArgs & args);
+    void selfKeyReleased(ofKeyEventArgs & args);
+    
+    void selfMouseDragged(ofMouseEventArgs& data);
+    void selfMouseMoved(ofMouseEventArgs& data);
+    void selfMousePressed(ofMouseEventArgs& data);
+    void selfMouseReleased(ofMouseEventArgs& data);
+    
+    void selfSetupGui();
+    void selfGuiEvent(ofxUIEventArgs &e);
+    
+    void selfSetupSystemGui();
+    void guiSystemEvent(ofxUIEventArgs &e);
+    
+    void selfSetupRenderGui();
+    void guiRenderEvent(ofxUIEventArgs &e);
 	
   protected:
-
-	//called when showing the visual system, and to end it
-	virtual void begin();
-	virtual void end();
 
 	int width, height;
 	ofVboMesh mesh;
@@ -53,9 +61,7 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
 	
 	ofVboMesh offsetMesh;
 	ofFbo sourceOffset,targetOffset;
-	
-	ofFbo fbo;
-	
+		
 	float pathDeviation;
 	
 	float speed;
@@ -66,5 +72,4 @@ class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
 	
 	bool debug;
 	bool regenerate;
-	ofxUICanvas* gui;
 };

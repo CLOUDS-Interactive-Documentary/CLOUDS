@@ -13,7 +13,7 @@ OFXPCL_HEADER_SEARCH_PATHS = $(OFXPCL_PATH)/libs/pcl/include/ $(OFXPCL_PATH)/lib
 
 OFXPCL_LD_RUNPATH_SEARCH_PATHS = @executable_path/../../../../../../../addons/ofxPCL/libs/pcl/lib/osx @executable_path/../../../data/pcl/lib
 
-OFXCV_HEADERS = $(OF_PATH)/addons/ofxCv/libs $(OF_PATH)/addons/ofxOpenCv/libs $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxCv/libs/ofxCv/include/ofxCv $(OF_PATH)/addons/ofxCv/libs/ofxCv/include/
+OFXCV_HEADERS = $(OF_PATH)/addons/ofxCv/libs $(OF_PATH)/addons/ofxOpenCv/libs $(OF_PATH)/addons/ofxOpenCv2.4/libs/opencv/include $(OF_PATH)/addons/ofxCv/libs/ofxCv/include/ofxCv $(OF_PATH)/addons/ofxCv/libs/ofxCv/include/
 
 LD_RUNPATH_SEARCH_PATHS = $(OFXPCL_LD_RUNPATH_SEARCH_PATHS)
 

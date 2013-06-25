@@ -6,34 +6,72 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
+	ofToggleFullscreen();
 	
-	parser.setup("../../../CloudsData/fcpxml/");
-    parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
+    parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
+    parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
+    
+	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
+		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+	}
 
+	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
+	
+	visualSystems.populateVisualSystems();
+	
 	storyEngine.setup();
 	storyEngine.network = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	
 	storyEngine.maxTimesOnTopic = 4;
+	storyEngine.combinedClipsOnly = true;
+	storyEngine.printDecisions = false;
 	
 	player.setup(storyEngine);
+	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
-	storyEngine.seedWithClip(parser.getAllClips()[ int(randomClip) ]);
+	CloudsClip& clip = parser.getRandomClip(true,true);
 	
+	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+	
+	storyEngine.seedWithClip( clip );
+	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	player.update();
+//	player.update();
+	sound.update();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	player.draw();
+
+//	cout << "APP DRAW" << endl;
+	
+	sound.drawDebug();
+	
+	//storyEngine.drawStoryEngineDebug();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+	if(key == '1'){
+		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
+	}
+}
 
+//--------------------------------------------------------------
+void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
+	
+	ofAudioEventArgs args;
+	args.buffer = output;
+	args.bufferSize = bufferSize;
+	args.nChannels = nChannels;
+	
+	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

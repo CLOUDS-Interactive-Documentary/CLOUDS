@@ -16,17 +16,23 @@ class CloudsClipExportManager : public ofThread {
 	bool isDone();
 	float percentComplete();
 	bool setExportDirectory(string directory);
-
+	string alternativeVideoFolder;
+	int framesRemaining;
   protected:
+	
+	void medianFilter();
 	
 	CloudsClip currentClip;
 	ofxRGBDCPURenderer renderer;
 	ofxRGBDPlayer rgbdPlayer;
 	CloudsRGBDCombinedExporter exporter;
 	
+	ofShortPixels medianPixels;
+	
 	string exportDirectory;
 	
 	bool done;
+
 	int currentFrame;
 	
 	void threadedFunction();

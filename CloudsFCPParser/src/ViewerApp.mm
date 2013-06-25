@@ -40,7 +40,7 @@
 	ofCircle(mouseX, mouseY, 30);
 	
 	if(mainview.movieFileMissing){
-		movieNotFound.draw(0,0,960,540);
+		//movieNotFound.draw(0,0,960,540);
 		
 		ofDrawBitmapString("MOVIE MISSING", 10, 10);
 	}
@@ -48,6 +48,7 @@
     if(mainview.preview.isLoaded() && mainview.preview.isPlaying()){
         mainview.preview.draw(0, 0, 960, 540);
     }
+	
 	ofPushStyle();
 	ofSetColor(0xc965e2, 150);
 	float percentDone = [mainview clipPercentComplete];

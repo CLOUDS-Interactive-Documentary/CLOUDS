@@ -1,35 +1,15 @@
 
 #include "CloudsVisualSystemComputationTicker.h"
 
-
 //--------------------------------------------------------------
 string CloudsVisualSystemComputationTicker::getSystemName(){
-	return "Ticker Tape";
+	return "ComputerTicker";
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemComputationTicker::setup(){
-	
-	int buttonWidth = 180;
-	int buttonHeight = 30;
-	gui = new ofxUICanvas(0,0,buttonWidth,ofGetHeight());
-	
-	gui->addLabel("animation params");
-	gui->addSlider("speed", 0., 2., &speed);
-	gui->addSlider("scale", 1., 10., &scale);
-	gui->addSlider("point size", 1., 25., &pointSize);
-	gui->addSlider("path deviation", 0, 1000, &deviation);
-	gui->addLabel("generator params");
-	gui->addSlider("path color flip chance", 0, 1.0, &colorflip);
-	gui->addSlider("path deviation chance", 0, .2, &pathDeviation);
-	gui->addLabelButton("regenerate particles", &regenerate);
-	
-	gui->loadSettings("GUI/guiSettings.xml");
-
+void CloudsVisualSystemComputationTicker::selfSetup(){
 	regenerateParticles();
 	
-	//ALLOCATE BUFFERS
-	fbo.allocate(width, height, GL_RGB);
 	speedTexture.allocate(width, 1, OF_IMAGE_COLOR);
 	for(int i = 0; i < width; i++){
 		speedTexture.setColor(i, 0, ofRandom(10,255) );
@@ -56,23 +36,12 @@ void CloudsVisualSystemComputationTicker::setup(){
 	relevantKeywords.push_back("computation");
 	relevantKeywords.push_back("computational art");
 	relevantKeywords.push_back("computational power");
+	
+	regenerate = true;
+	
+	//choose a random preset
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemComputationTicker::begin(){
-	sourceOffset.begin();
-	ofClear(0);
-	sourceOffset.end();
-	
-	targetOffset.begin();
-	ofClear(0);
-	targetOffset.end();
-}
-
-//--------------------------------------------------------------
-void CloudsVisualSystemComputationTicker::end(){
-	
-}
 
 //--------------------------------------------------------------
 void CloudsVisualSystemComputationTicker::reloadShaders(){
@@ -85,8 +54,8 @@ void CloudsVisualSystemComputationTicker::reloadShaders(){
 	ofClear(0);
 	targetOffset.end();
 	
-	drawShader.load("display");
-	updateShader.load("update");
+	drawShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/display");
+	updateShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/update");
 }
 
 //--------------------------------------------------------------
@@ -131,10 +100,15 @@ void CloudsVisualSystemComputationTicker::regenerateParticles(){
 	}
 	
 	shiftTexture.update();
+	regenerate = false;
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemComputationTicker::update(ofEventArgs & args){
+
+void CloudsVisualSystemComputationTicker::selfSetupGuis(){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfUpdate(){
 	if(regenerate){
 		regenerateParticles();
 	}
@@ -142,6 +116,8 @@ void CloudsVisualSystemComputationTicker::update(ofEventArgs & args){
 	ofPushStyle();
 	
 	ofDisableAlphaBlending();
+	glDisable(GL_DEPTH_TEST);
+
 	sourceOffset.begin();
 	updateShader.begin();
 	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
@@ -155,90 +131,130 @@ void CloudsVisualSystemComputationTicker::update(ofEventArgs & args){
 	
 	ofPopStyle();
 	
-	swap(sourceOffset,targetOffset);
+	swap(sourceOffset,targetOffset);	
+}
+
+void CloudsVisualSystemComputationTicker::selfDrawBackground(){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfDrawDebug(){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfSceneTransformation(){
+
+}
+
+void CloudsVisualSystemComputationTicker::selfDraw(){
+	
+	drawShader.begin();
+	drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
+	drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 1);
+	drawShader.setUniform1f("height", height);
+	drawShader.setUniform1f("deviation", deviation);
+	
+	ofPushStyle();
+	ofEnableAlphaBlending();	
+	glPushAttrib(GL_POINT_BIT);
+	
+	ofPushMatrix();
+	ofSetLineWidth(10);
+	glPointSize(pointSize);
+	float scaleexp = powf(scale,2);
+	ofTranslate(ofGetWidth()/2,ofGetHeight()/2 );
+	ofScale(scaleexp, scaleexp);
+	ofTranslate(-ofGetWidth()/2,-ofGetHeight()/2 );
+	
+	mesh.draw();
+	
+	ofPopMatrix();
+	
+	glPopAttrib();
+	ofPopStyle();
+	
+	drawShader.end();
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfExit(){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfBegin(){
+	sourceOffset.begin();
+	ofClear(0);
+	sourceOffset.end();
+	
+	targetOffset.begin();
+	ofClear(0);
+	targetOffset.end();
+		
+}
+
+void CloudsVisualSystemComputationTicker::selfEnd(){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfKeyPressed(ofKeyEventArgs & args){
+	if(args.key == 'R'){
+		reloadShaders();
+	}
+}
+
+void CloudsVisualSystemComputationTicker::selfKeyReleased(ofKeyEventArgs & args){
+	
+}
+
+void CloudsVisualSystemComputationTicker::selfMouseDragged(ofMouseEventArgs& data){
+	
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemComputationTicker::draw(ofEventArgs & args){
-	
-	
-	ofRectangle screenRect(200,0,ofGetWidth(), ofGetHeight());
-	ofRectangle videoRect(0,0,fbo.getWidth(), fbo.getHeight());
-	videoRect.scaleTo(screenRect);
-	
-	if(debug){
-		//speedTexture.getTextureReference().draw(videoRect);
-		targetOffset.getTextureReference().draw(videoRect);
-		//shiftTexture.draw(videoRect);
-	}
-	else {
-		fbo.begin();
-		ofClear(128);
-
-		drawShader.begin();
-		drawShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
-		drawShader.setUniformTexture("shift", shiftTexture.getTextureReference(), 1);
-		drawShader.setUniform1f("height", height);
-		drawShader.setUniform1f("deviation", deviation);
-		
-		ofPushMatrix();
-		ofSetLineWidth(10);
-		glPointSize(pointSize);
-		float scaleexp = powf(scale,2);
-		ofTranslate(ofGetWidth()/2,ofGetHeight()/2 );
-		ofScale(scaleexp, scaleexp);
-		ofTranslate(-ofGetWidth()/2,-ofGetHeight()/2 );
-		
-		mesh.draw();
-		
-		ofPopMatrix();
-		
-		drawShader.end();
-		
-		fbo.end();
-
-		
-		fbo.getTextureReference().draw(videoRect);
-	}
-	
-	ofPushStyle();
-	ofDrawBitmapString(ofToString( ofGetFrameRate(),2 ), ofGetWidth() - 100, 20);
-	ofPopStyle();
+void CloudsVisualSystemComputationTicker::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemComputationTicker::mouseDragged(ofMouseEventArgs & args){
-	
-}
-void CloudsVisualSystemComputationTicker::mouseMoved(ofMouseEventArgs & args){
-	
-}
-void CloudsVisualSystemComputationTicker::mousePressed(ofMouseEventArgs & args){
-	
-}
-void CloudsVisualSystemComputationTicker::mouseReleased(ofMouseEventArgs & args){
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::selfMousePressed(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemComputationTicker::keyPressed(ofKeyEventArgs & args){
-	if(args.key == 'r'){
-		reloadShaders();
-	}
-
-	if(args.key == 'D'){
-		debug = !debug;
-	}
-
-	if(args.key == 'f'){
-		ofToggleFullscreen();
-	}
-}
-
-void CloudsVisualSystemComputationTicker::keyReleased(ofKeyEventArgs & args){
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemComputationTicker::exit(ofEventArgs & args){
-	gui->saveSettings("GUI/guiSettings.xml");
-	delete gui;
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::selfSetupGui(){
+	
 }
+
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::selfGuiEvent(ofxUIEventArgs &e){
+	
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::selfSetupSystemGui(){
+	sysGui->addSlider("path color flip chance", 0, 1.0, &colorflip);
+	sysGui->addSlider("path deviation", 0, 1000, &deviation);
+	sysGui->addSlider("path deviation chance", 0, .2, &pathDeviation);
+	sysGui->addLabelButton("regenerate particles", &regenerate);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::guiSystemEvent(ofxUIEventArgs &e){
+}
+
+void CloudsVisualSystemComputationTicker::selfSetupRenderGui(){
+	rdrGui->addSlider("speed", 0., 2., &speed);
+	rdrGui->addSlider("point size", 1., 25., &pointSize);
+	rdrGui->addSlider("scale", 1., 10., &scale);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemComputationTicker::guiRenderEvent(ofxUIEventArgs &e){
+	
+}
+

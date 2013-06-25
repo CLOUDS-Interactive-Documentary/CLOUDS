@@ -1,12 +1,32 @@
 
 #include "CloudsVisualSystem.h"
+static bool confirmedDataPath = false;
+static bool usingDevelopmentFolder = false;
 
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
+	sharedRenderer = false;
+//	sharedCamera = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
 	
+}
+
+string CloudsVisualSystem::getVisualSystemDataPath(){
+    return getDataPath() + "visualsystems/"+getSystemName()+"/";
+}
+
+string CloudsVisualSystem::getDataPath()
+{
+	if(!confirmedDataPath){
+		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
+		if(!usingDevelopmentFolder){
+			ofDirectory("CloudsData/").create();
+		}
+		confirmedDataPath = true;
+	}
+    return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
 
 bool CloudsVisualSystem::isReleventToKeyword(string keyword){
@@ -19,6 +39,7 @@ void CloudsVisualSystem::setup(){
 
 void CloudsVisualSystem::playSystem(){
 	if(!isPlaying){
+		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
@@ -72,3 +93,25 @@ vector<string>& CloudsVisualSystem::getRelevantKeywords(){
 	return relevantKeywords;
 }
 
+void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
+	sharedRenderer = &newRenderer;
+}
+
+//void CloudsVisualSystem::setCamera(CloudsCamera& camera){
+//	sharedCamera = &camera;
+//}
+
+void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
+									  string speakerLastName,
+									  string quoteName)
+{
+	this->speakerFirstName = speakerFirstName;
+	this->speakerLastName = speakerLastName;
+	this->quoteName = quoteName;
+	hasSpeaker = true;
+	
+}
+
+void CloudsVisualSystem::speakerEnded(){
+	hasSpeaker = false;
+}

@@ -7,11 +7,11 @@
 #include "CloudsRGBDCombinedRender.h"
 #include "CloudsVisualSystem.h"
 
-#include "ofxRGBDPlayer.h"
-#include "ofxRGBDGPURenderer.h"
-
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
+//#include "CloudsCamera.h"
+
+#include "CloudsVisualSystemRGBD.h"
 
 /**
  * This class controls playback of RGBD sequences
@@ -28,8 +28,8 @@ class CloudsPlaybackController {
 	
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
-	void update();
-	void draw();
+	void update(ofEventArgs& args);
+	void draw(ofEventArgs& args);
 	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
@@ -41,38 +41,46 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-	ofxUICanvas* playerControls;
-	
   protected:
 
 	//A ROLL STUFF
 	//
 
-	ofxGameCamera camera;
+//	ofxGameCamera camera;
+//	cloudsCamera cloudsCam;
+	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	
 	//RGBD STUFF
 	CloudsRGBDCombinedRender combinedRenderer;
-	ofxRGBDGPURenderer rgbdRenderer;
-	ofxRGBDPlayer rgbdPlayer;
+	CloudsVisualSystemRGBD rgbdVisualSystem;
+	string combinedMoviesFolder;
 	
-	bool playingCombinedVideo;
 	bool eventsRegistered;
 	void storyBegan(CloudsStoryEventArgs& args);
-	void clipChanged(CloudsStoryEventArgs& args);
+	void clipBegan(CloudsStoryEventArgs& args);
+	void clipEnded(CloudsStoryEventArgs& args);
+	void storyEnded(CloudsStoryEventArgs& args);
+
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	
 	void playClip(CloudsClip& clip);
 	
 	//VISUAL SYSTEMS
 	//
 	bool showingVisualSystem;
-	vector<CloudsVisualSystem*> visualSystems;
+	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
-	void populateVisualSystems();
+	
+	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem();
+//	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
+	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
+	//remove the current visual system
 	void hideVisualSystem();
 	
-	//MEDIA/INTERNAL
-	string relinkMovieFilepath(string filePath);
-
+//	bool triggerVisualSystem;
+	//void guiEvent(ofxUIEventArgs &e);
 };

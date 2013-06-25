@@ -14,20 +14,29 @@
 
 class CloudsFCPParser {
   public:
-    CloudsFCPParser();
+    
+	CloudsFCPParser();
+	
+	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
-
+    vector<string> getClustersForPerson(string personName);
 #pragma mark Clips
-	CloudsClip getClipWithLinkName( string linkname );
-	
+	CloudsClip& getClipWithLinkName( string linkname );
+	CloudsClip& getClipWithLinkName( string linkname, bool& clipFound );
+	CloudsClip& getClipWithID( string ID );
+	CloudsClip& getClipWithID( string ID, bool& clipFound );
+
 #pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
+    void parseClusterMap(string mapFile);
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
-	
+	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
+    vector<CloudsLink>& getSuppressionsForClip(string clipName);
+    
     void addLink(CloudsLink& link);
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
@@ -54,6 +63,10 @@ class CloudsFCPParser {
 	bool clipHasSuppressions(CloudsClip& clip);
 	bool clipHasSuppressions(string clipName);
 	
+    //are there any starting Questions?
+    bool clipHasStartingQuestions(CloudsClip& clip);
+    bool clipHasStartingQuestions(string clipName);
+    
 	//are we suppressing this connection?
 	bool linkIsSuppressed(string clipNameA, string clipNameB);
 	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);
@@ -70,6 +83,9 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
+	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
+							  bool mustHaveQuestion = false);
+	
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
@@ -79,12 +95,16 @@ class CloudsFCPParser {
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
 	vector<CloudsClip> getSharedClips(string keywordA, string keywordB);
+	vector<CloudsClip> getMetaDataConnections(CloudsClip& source);
+	int getNumMetaDataConnections(CloudsClip& source);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
-    
+
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
+	
+	set<string> clusterMapColors;
 	
   protected:
     string xmlDirectory;
@@ -100,17 +120,23 @@ class CloudsFCPParser {
 	
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-    vector<CloudsClip> allClips;
 	set<string> markerLinkNames;
 
+    vector<CloudsClip> allClips;
+    map<string, int> clipIDToIndex;
+    map<string, int> clipLinkNameToIndex;
+    
     map<string, int> allKeywords;
     vector<string> keywordVector;
-
+	vector<int> hasCombinedVideoIndeces;
+	vector<string> questionIds;
+	vector<int> hasCombinedVideoAndQuestionIndeces;
+	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
-	
+
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
-
+	CloudsClip dummyClip; // for failed reference returns
 };

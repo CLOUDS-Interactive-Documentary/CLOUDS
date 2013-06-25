@@ -13,8 +13,13 @@ xcshareddata/
 
 .DS_Store
 
-#vs2010 stuff
+#Clouds specific stuff
+cmixstuff
+graphviz/
+*.zip
 
+
+#vs2010 stuff
 *.suo
 *.opensdf
 *.sdf
@@ -27,30 +32,17 @@ xcshareddata/
 *.pdb
 
 /testRTcmix/bin/data/shlib/*
+Working/
+standinassets/
 
-cmixstuff
+#PCL stuff
+pcl/
 
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libqhull.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_tracking.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_surface.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_segmentation.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_search.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_sample_consensus.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_registration.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_octree.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_keypoints.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_kdtree.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_io_ply.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_io.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_geometry.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_filters.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_features.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libpcl_common.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libflann_cpp.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libflann.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libboost_thread-mt.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libboost_system-mt.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libboost_iostreams-mt.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libboost_filesystem-mt.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/libboost_date_time-mt.dylib
-/CloudsRGBDExporter/bin/data/pcl/lib/osx/change_install_name.py
+CloudsMovieDirectory.txt
+snapshots/
+_gameCameraPosition.xml
+timeline*_Page_One_trackPositions.xml
+timeline*.xml
+*trackPositions.xml
+/CloudsRGBDExporter/bin/data/SavedExportFolder.txt
+/CloudsRGBDExporter/bin/data/ColorReplacementFolder.txt

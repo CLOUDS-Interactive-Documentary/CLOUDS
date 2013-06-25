@@ -11,17 +11,20 @@
 
 //---------------------------------------------------------------
 CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
-    
+	
+	player = ofPtr<ofVideoPlayer>( new ofVideoPlayer );
+
     setShaderPath("shaders/rgbdcombined");
     
-    shift.set(0.0f,0.0f);
-	scale.set(1.0f,1.0f);
-    simplify.set(0.0f,0.0f);
+    simplify.set(0,0);
     
 	nearClip    = 1.0f;
 	edgeClip    = 50.0f;
 	farClip     = 6000.0f;
     
+	minDepth = 400;
+	maxDepth = 2000;
+
     bMirror     = false;
     bFlipTexture = false;
     bRendererBound = false;
@@ -32,58 +35,105 @@ CloudsRGBDCombinedRender::~CloudsRGBDCombinedRender(){
 }
 
 //--------------------------------------------------------------- SET
-bool CloudsRGBDCombinedRender::setup(string videoPath){
+bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath){
 	ofxXmlSettings XML;
-    
-    if ( XML.loadFile(videoPath +"/_calibration.xml" ) ){
-        
-        colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
-        colorPrincipalPoint.y = XML.getValue("colorIntrinsics:ppy", 546.945983887);
-        colorFOV.x = XML.getValue("colorIntrinsics:fovx", 923.500793457);
-        colorFOV.y = XML.getValue("colorIntrinsics:fovy", 921.060791016);
-        colorRect.x = 0.0f;
-        colorRect.y = 0.0f;
-        colorRect.width = XML.getValue("colorIntrinsics:width", 1920.000000000);
-        colorRect.height = XML.getValue("colorIntrinsics:height", 1080.000000000);
-        
-        for (int i = 0; i < 9; i++) {
-            depthToRGBRotation[i] = XML.getValue("extrinsics:rotation:r"+ofToString(i), 1.0f);
-        }
-        
-        for (int i = 0; i < 3; i++) {
-            depthToRGBTranslation[i] = XML.getValue("extrinsics:translation:t"+ofToString(i), 1.0f);
-        }
-        
-        for (int i = 0; i < 3; i++) {
-            distortionK[i] = XML.getValue("colorIntrinsics:dK:k"+ofToString(i), 1.0f);
-        }
-        
-        for (int i = 0; i < 2; i++) {
-            distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
-        }
-        
-        depthPrincipalPoint.x = XML.getValue("depthIntrinsics:ppx", 320.0);
-        depthPrincipalPoint.y = XML.getValue("depthIntrinsics:ppy", 240.0);
-        depthFOV.x = XML.getValue("depthIntrinsics:fovx", 570.34);
-        depthFOV.y = XML.getValue("depthIntrinsics:fovy", 570.34);
-        
-        depthRect.x = 0.0;      //  TODO: do this atomatically
-        depthRect.y = 720.0;    //
-        depthRect.width = XML.getValue("depthIntrinsics:width", 640.0);
-        depthRect.height = XML.getValue("depthIntrinsics:height", 480.0);
-        
-        normalRect.x = 640.0;       //  TODO: do this atomatically
-        normalRect.y = 720.0;       //
-        normalRect.width = 640.0;
-        normalRect.height = 480.0;
-        
-        nearClip    = XML.getValue("minDepth", 1.0f);
-        farClip     = XML.getValue("maxDepth",6000.0f);
-        
-        return true;
-    }
-    
-    return false;
+
+	if ( !XML.loadFile(calibrationXMLPath)){
+		ofLogError() << "CloudsRGBDCombinedRender::setup -- XML Path " << calibrationXMLPath << " failed to load";
+		return false;		
+	}
+	
+	colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
+	colorPrincipalPoint.y = XML.getValue("colorIntrinsics:ppy", 546.945983887);
+	colorFOV.x = XML.getValue("colorIntrinsics:fovx", 923.500793457);
+	colorFOV.y = XML.getValue("colorIntrinsics:fovy", 921.060791016);
+	colorRect.x = 0.0f;
+	colorRect.y = 0.0f;
+	colorRect.width = XML.getValue("colorIntrinsics:width", 1920.000000000);
+	colorRect.height = XML.getValue("colorIntrinsics:height", 1080.000000000);
+	
+	float depthToRGBRotation[9];
+	float depthToRGBTranslation[3];
+	for (int i = 0; i < 9; i++) {
+		depthToRGBRotation[i] = XML.getValue("extrinsics:rotation:r"+ofToString(i), 1.0f);
+	}
+	
+	for (int i = 0; i < 3; i++) {
+		depthToRGBTranslation[i] = XML.getValue("extrinsics:translation:t"+ofToString(i), 1.0f);
+	}
+	
+	for (int i = 0; i < 3; i++) {
+		distortionK[i] = XML.getValue("colorIntrinsics:dK:k"+ofToString(i), 1.0f);
+	}
+	
+	for (int i = 0; i < 2; i++) {
+		distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
+	}
+	
+	float mat4x4[16] = {
+		depthToRGBRotation[0],depthToRGBRotation[1],depthToRGBRotation[2],0,
+		depthToRGBRotation[3],depthToRGBRotation[4],depthToRGBRotation[5],0,
+		depthToRGBRotation[6],depthToRGBRotation[7],depthToRGBRotation[8],0,
+		depthToRGBTranslation[0],depthToRGBTranslation[1],depthToRGBTranslation[2],1
+	};
+	
+	extrinsics = ofMatrix4x4(mat4x4);
+	
+//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
+	
+	//adjustment
+	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
+	adjustTranslate.y = XML.getValue("adjustment:translate:y", 0.0);
+	adjustTranslate.z = XML.getValue("adjustment:translate:z", 0.0);
+
+	adjustRotate.x = XML.getValue("adjustment:rotate:x", 0.0);
+	adjustRotate.y = XML.getValue("adjustment:rotate:y", 0.0);
+	adjustRotate.z = XML.getValue("adjustment:rotate:z", 0.0);
+
+	adjustScale.x = XML.getValue("adjustment:scale:x", 1.0);
+	adjustScale.y = XML.getValue("adjustment:scale:y", 1.0);
+	
+	depthPrincipalPoint.x = XML.getValue("depthIntrinsics:ppx", 320.0);
+	depthPrincipalPoint.y = XML.getValue("depthIntrinsics:ppy", 240.0);
+	depthFOV.x = XML.getValue("depthIntrinsics:fovx", 570.34);
+	depthFOV.y = XML.getValue("depthIntrinsics:fovy", 570.34);
+	
+	depthRect.x = 0.0;      //  TODO: do this automatically
+	depthRect.y = 720.0;    //
+	depthRect.width = XML.getValue("depthIntrinsics:width", 640.0);
+	depthRect.height = XML.getValue("depthIntrinsics:height", 480.0);
+	
+	normalRect.x = 640.0;       //  TODO: do this automatically
+	normalRect.y = 720.0;       //
+	normalRect.width = 640.0;
+	normalRect.height = 480.0;
+	
+	nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
+	farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
+		
+	//TODO automatically
+	//this describes the face features: eyes, mouth, and skin
+	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
+	//this describes the change each frame
+	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
+
+    //TODO make asynchronous
+	if(!player->loadMovie(videoPath)){
+		ofLogError() << "CloudsRGBDCombinedRender::setup -- Movie path " << videoPath << " failed to load";
+		return false;
+	}
+	
+    colorScale.x = float(getPlayer().getWidth()) / float(colorRect.width);
+	if(getPlayer().getHeight() > 1200){
+		useFaces = true;
+		colorScale.y = float(getPlayer().getHeight() - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
+	}
+	else{
+		useFaces = false;
+		colorScale.y = float(getPlayer().getHeight() - (depthRect.height) ) / float(colorRect.height);
+	}
+
+    return true;
 }
 
 void CloudsRGBDCombinedRender::setShaderPath(string _shaderPath){
@@ -103,6 +153,7 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	
 	simplify = _simplification;
 	
+/*
 	mesh.clearIndices();
 	int x = 0;
 	int y = 0;
@@ -143,20 +194,17 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	for (float y = 0; y < depthRect.height; y += simplify.y){
 		for (float x = 0; x < depthRect.width; x += simplify.x){
             mesh.addColor(ofFloatColor(1.0,1.0,1.0,1.0));
-            //            mesh.addNormal( ofVec3f(1.0,1.0,1.0) );
             mesh.addVertex( ofVec3f(x, y,0));
             mesh.addTexCoord(ofVec2f(x,y));
 		}
 	}
     
 	bMeshGenerated = true;
-}
-
-void CloudsRGBDCombinedRender::setTexture(ofBaseHasTexture& _tex){
-    tex = &_tex;
-    
-    colorScale.x = float(_tex.getTextureReference().getWidth()) / float(colorRect.width);
-    colorScale.y = float(_tex.getTextureReference().getHeight()-depthRect.height) / float(colorRect.height);
+*/
+	
+	if(bRendererBound){
+		shader.setUniform2f("simplify", simplify.x,simplify.y);
+	}
 }
 
 void CloudsRGBDCombinedRender::reloadShader(){
@@ -164,7 +212,6 @@ void CloudsRGBDCombinedRender::reloadShader(){
 }
 
 //--------------------------------------------------------------- BINDERS
-
 bool CloudsRGBDCombinedRender::bindRenderer(){
     ofPushMatrix();
 	
@@ -177,12 +224,7 @@ bool CloudsRGBDCombinedRender::bindRenderer(){
 	ofRotate(worldRotation.y,0,1,0);
 	ofRotate(worldRotation.z,0,0,1);
     
-    
 	shader.begin();
-	glActiveTexture(GL_TEXTURE1);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glActiveTexture(GL_TEXTURE0);
     
 	setupProjectionUniforms();
 	
@@ -204,11 +246,15 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 
 void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     
-    //  Texture
-    //
-    shader.setUniformTexture("texture", tex->getTextureReference(), 0);
-    shader.setUniform2f("textureSize",  tex->getTextureReference().getWidth(),
-                        tex->getTextureReference().getHeight());
+	if(!getPlayer().isLoaded()){
+		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
+		return;
+	}
+	
+	getPlayer().setLoopState(OF_LOOP_NONE);
+	
+    shader.setUniformTexture("texture", getPlayer(), 0);
+    shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
     shader.setUniform2f("colorScale", colorScale.x, colorScale.y);
@@ -218,40 +264,69 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
     shader.setUniform3f("dK", distortionK.x, distortionK.y, distortionK.z);
     shader.setUniform2f("dP", distortionP.x, distortionP.y);
     
-    glUniformMatrix3fv( glGetUniformLocation(shader.getProgram(), "colorRotate"), 1, GL_FALSE,depthToRGBRotation);
-    shader.setUniform3f("colorTranslate", depthToRGBTranslation.x,depthToRGBTranslation.y,depthToRGBTranslation.z);
-    
+	ofMatrix4x4 adjustmentMatrix;
+	adjustmentMatrix.rotate(adjustRotate.x, 0, 1, 0);
+	adjustmentMatrix.rotate(adjustRotate.y, 1, 0, 0);
+	adjustmentMatrix.translate(adjustTranslate.x, adjustTranslate.y, adjustTranslate.z);
+
+	shader.setUniformMatrix4f("extrinsics", extrinsics * adjustmentMatrix );
     
     shader.setUniform4f("depthRect", depthRect.x, depthRect.y, depthRect.width, depthRect.height);
 	shader.setUniform2f("depthPP", depthPrincipalPoint.x, depthPrincipalPoint.y);
 	shader.setUniform2f("depthFOV", depthFOV.x, depthFOV.y);
     
     shader.setUniform4f("normalRect", normalRect.x, normalRect.y, normalRect.width, normalRect.height);
-    
+    shader.setUniform4f("faceFeatureRect", faceFeatureRect.x, faceFeatureRect.y, faceFeatureRect.width, faceFeatureRect.height);
+    shader.setUniform4f("deltaChangeRect", deltaChangeRect.x, deltaChangeRect.y, deltaChangeRect.width, deltaChangeRect.height);
+
+	shader.setUniform1i("useFaces", useFaces ? 1 : 0);
+	shader.setUniform1f("flowPosition", flowPosition);
     shader.setUniform2f("simplify", simplify.x,simplify.y);
 	shader.setUniform1f("farClip", farClip);
     shader.setUniform1f("nearClip", nearClip);
 	shader.setUniform1f("edgeClip", edgeClip);
-    
+
+	shader.setUniform1f("minDepth", minDepth);
+    shader.setUniform1f("maxDepth", maxDepth);
+
     //    cout << ( farClip - nearClip ) + nearClip << endl;
     //    cout << "FarClip: " << farClip << endl;
     //    cout << "nearClip: " << nearClip << endl;
     //    cout << "edgeClip: " << edgeClip << endl;
     
-    shader.setUniform2f("shift", shift.x, shift.y);
-    shader.setUniform2f("scale", scale.x, scale.y);
+//    shader.setUniform2f("shift", shift.x, shift.y);
+//    shader.setUniform2f("scale", scale.x, scale.y);
 }
 
+//--------------------------------------------------------------- ACTIONS
+ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
+	return *player;
+}
 
+//--------------------------------------------------------------- ACTIONS
+ofPtr<ofVideoPlayer> CloudsRGBDCombinedRender::getSharedPlayerPtr(){
+	return player;
+}
 
+//--------------------------------------------------------------- ACTIONS
+ofShader& CloudsRGBDCombinedRender::getShader(){
+	return shader;
+}
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRender::update(){
-    if(simplify == ofVec2f(0,0)){
-		setSimplification(ofVec2f(1.0, 1.0));
+	getPlayer().setVolume(1.0);
+	if(getPlayer().isLoaded()){
+		getPlayer().update();
 	}
-    
-    //setSimplification(ofVec2f(1.0, 1.0));
+}
+
+bool CloudsRGBDCombinedRender::isPlaying(){
+	return getPlayer().isLoaded() && getPlayer().isPlaying();
+}
+
+bool CloudsRGBDCombinedRender::isDone(){
+	return getPlayer().isLoaded() && !getPlayer().isPlaying();
 }
 
 void CloudsRGBDCombinedRender::drawMesh(){

@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#include "ClusterData.h"
 
 class CloudsClip {
   public:
@@ -16,38 +17,41 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
+	ofColor color; //clip marker color
+    string startingQuestion;
 	
-	bool hasCombinedVideo;
-    ofColor color;
-	
-	float currentScore;
-	
+    //svg data
+    ClusterData cluster;
+	map<string, ofColor> clusterColors;
+    
+    float currentScore;
     int startFrame;
     int endFrame;
-	
+
     vector<string> keywords;
 	
+	float getDuration();
     string getLinkName();
 	string getMetaInfo();
-
+    string getStartingQuestion();
 	string getSceneFolder();
+	void setStartingQuestion(string question);
+    bool hasStartingQuestion();
 	
-	//these are filenames
 	string getID();
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
-    string getFFMpegLine(string _exportFolder);
+    string getFFMpegLine(string alternativeVideoPath, string exportFolder);
 	
-	//these are complete file paths, absolute directories
-	//this is set by the FCP database parser when the directory is set
-	string combinedVideoFilePath;
-	string combinedVideoCalibrationXml;
+	bool hasCombinedVideo;
+	string combinedVideoPath;
+	string combinedCalibrationXMLPath;
 	
+	//adjustment paramters set by the exporter
 	string getAdjustmentXML();
-	void loadAdjustmentFromXML();
+	void loadAdjustmentFromXML(bool forceReload = false);
 	void saveAdjustmentToXML();
-	void addAdjustmentToXML(ofxXmlSettings adjustment);
 	
 	//adjustment parameters
 	float minDepth;
@@ -55,5 +59,12 @@ class CloudsClip {
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
+	ofVec2f faceCoord;
 	
+	//contour parameters
+	ofColor contourTargetColor;
+	float contourTargetThreshold;
+	float contourMinBlobSize;
+	
+	bool adjustmentLoaded;
 };

@@ -145,7 +145,7 @@ void CloudsFCPVisualizer::setupPhysics(){
 //											vector<float>& scores)
 //{
 
-void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
+void CloudsFCPVisualizer::clipBegan(CloudsStoryEventArgs& args){
 
 	vector<msa::physics::Particle2D*> newParticles;
 	int particleStartIndex = physics.numberOfParticles();
@@ -217,12 +217,12 @@ void CloudsFCPVisualizer::clipChanged(CloudsStoryEventArgs& args){
 			particleToClip[a] = relatedClip;
 		}
 		
-		bool isLink = database->clipLinksTo(mainLinkName, clipName);
+        bool isLink = database->clipLinksTo(mainLinkName, clipName);
 		bool isSuppressed = database->linkIsSuppressed(mainLinkName, clipName);
 		if(isLink && isSuppressed){
 			ofSystemAlertDialog("Clips " + mainLinkName + " " + clipName + " are both linked and suppressed!");
 		}
-		
+        
 		currentOptionClips.push_back(relatedClip);
 		currentOptionParticles.push_back(a);
 
@@ -396,7 +396,7 @@ void CloudsFCPVisualizer::drawPhysics(){
 	}
 	
     if(!font.isLoaded()){
-        font.loadFont("mplus-1c-regular.ttf", 15);
+        font.loadFont("materiapro_light.ttf", 15);
     }
 
 	ofPushMatrix();
@@ -702,7 +702,7 @@ void CloudsFCPVisualizer::createClusterPhysics(){
 void CloudsFCPVisualizer::drawGrid(){
     
     if(!font.isLoaded()){
-        font.loadFont("verdana.ttf", 8);
+        font.loadFont("materiapro_light.ttf", 8);
     }
     
     ofPushStyle();
@@ -855,7 +855,7 @@ void CloudsFCPVisualizer::addAllClipsWithAttraction(){
 		for(int j = i+1; j < clips.size(); j++){
 			CloudsClip& clip2 = clips[j];
 			msa::physics::Particle2D* b = particlesByTag[ clip2.getLinkName() ];
-			
+
 			int sharedKeywords = database->getSharedKeywords(clip1, clip2).size();
 			if(sharedKeywords == 0){
 				physics.makeAttraction(a, b, -.002);

@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>211.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_zoom</Name>
+    <Value>56.650245667</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noise_speed</Name>
+    <Value>0.123152703</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Feed</Name>
+    <Value>0.033004925</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loops</Name>
+    <Value>3.246305466</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>enable</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskSize</Name>
+    <Value>1.438423634</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maskCurve</Name>
+    <Value>0.758620679</Value>
+</Widget>

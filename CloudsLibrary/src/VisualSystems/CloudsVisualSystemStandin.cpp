@@ -16,7 +16,7 @@ CloudsVisualSystemStandin::CloudsVisualSystemStandin(){
 }
 
 string CloudsVisualSystemStandin::getSystemName(){
-	return currentVisualSystem == NULL ? "no-system" : ("STAND IN: " +currentVisualSystem->name);
+	return "STAND IN SYSTEM";
 }
 
 void CloudsVisualSystemStandin::setup(){
