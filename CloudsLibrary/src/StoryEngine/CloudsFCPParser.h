@@ -95,8 +95,8 @@ class CloudsFCPParser {
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
 	vector<CloudsClip> getSharedClips(string keywordA, string keywordB);
-	vector<CloudsClip> getMetaDataConnections(CloudsClip source);
-	int getNumMetaDataConnections(CloudsClip source);
+	vector<CloudsClip> getMetaDataConnections(CloudsClip& source);
+	int getNumMetaDataConnections(CloudsClip& source);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
