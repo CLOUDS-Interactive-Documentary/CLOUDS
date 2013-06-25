@@ -15,13 +15,14 @@ string CloudsVisualSystemWorld::getSystemName()
 
 void CloudsVisualSystemWorld::selfSetup()
 {
+    ofSetCircleResolution(60);
 //    loadParticles("simple-rivers.txt");
     
     loadPath(coastVbo, "simple-coast.txt");
     loadPath(riversVbo, "simple-rivers.txt");
     
 //    loadPoints( points, "airports.txt");
-    loadPoints( points, "simple-cities.txt" );
+    loadPoints( "simple-cities.txt" );
     
     globalOffset.set(0,0,0);
     
@@ -111,9 +112,7 @@ void CloudsVisualSystemWorld::loadPath(ofVboMesh &_vbo, string _file){
     }
 }
 
-void CloudsVisualSystemWorld::loadPoints(vector<ofPoint> &_points, string _file){
-    ofVec3f center = ofVec3f(0,0,-300);
-    
+void CloudsVisualSystemWorld::loadPoints(string _file){
     string filePath = getDataPath()+"visualsystems/World/"+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
@@ -123,13 +122,11 @@ void CloudsVisualSystemWorld::loadPoints(vector<ofPoint> &_points, string _file)
         if(temp.length() != 0) {
             vector<string> values = ofSplitString(temp, "|");
             
-            ofQuaternion latRot, longRot;
-            latRot.makeRotate( ofToFloat(values[1]), 1, 0, 0);
-            longRot.makeRotate( ofToFloat(values[2]), 0, 1, 0);
+            wPoint worldPoint;
+            worldPoint.place(ofToFloat(values[1]),ofToFloat(values[2]));
+            worldPoint.noisePeaks = &pointNoisePeaks;
             
-            ofVec3f worldPoint = latRot * longRot * center;
-            
-            _points.push_back(worldPoint);
+            worldPoints.push_back(worldPoint);
         }
     }
 }
@@ -140,8 +137,8 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
     sysGui->addSlider("pointsNoisePeaks", 0.0, 500, &pointNoisePeaks);
     
     sysGui->addLabel("Flocking particles");
-    sysGui->addSlider("max_number", 0.0, 5000, &nMaxPoints);
-    sysGui->addSlider("density", 0.5, 1.0, &density);
+    sysGui->addSlider("max_number", 0.0, 1000, &nMaxPoints);
+    sysGui->addSlider("density", 0.9, 1.0, &density);
     sysGui->addSlider("gravity", 0.0, 1.0, &gravity);
     sysGui->addSlider("repulsion", 0.0, 1.0, &repulsion);
     sysGui->addSlider("turbulence", 0.0, 0.09, &turbulence);
@@ -169,11 +166,13 @@ void CloudsVisualSystemWorld::selfUpdate()
 {
     ofSetColor(255);
 
-    if ( (points.size() > 2) && (points.size() < nMaxPoints-2) ){
-        ofPoint randomPlace = points[ofRandom(points.size()-1)];
+    if ( (worldPoints.size() > 2) && (particles.size() < nMaxPoints-2) ){
+        int randomIndex = ofRandom(worldPoints.size()-1);
+        
         wParticle *newParticle = new wParticle();
-        newParticle->set( randomPlace.x, randomPlace.y, randomPlace.z);
+        newParticle->set( worldPoints[randomIndex] );
         newParticle->loc = *newParticle;
+        newParticle->color = worldPoints[randomIndex].color;
         newParticle->bTrail = true;
         particles.push_back(newParticle);
     }
@@ -193,6 +192,10 @@ void CloudsVisualSystemWorld::selfUpdate()
     globalOffset += ofPoint(turbulence/neigbordhood,
 							turbulence/neigbordhood,
 							turbulence/neigbordhood);
+    
+    for(int i = 0; i < worldPoints.size(); i++){
+        worldPoints[i].update();
+    }
 }
 
 void CloudsVisualSystemWorld::selfDraw()
@@ -212,7 +215,7 @@ void CloudsVisualSystemWorld::selfDraw()
     //
     ofFill();
     ofSetColor(20,20);
-	ofDrawSphere(0, 0, 290);
+//	ofDrawSphere(0, 0, 290);
     //
     ofNoFill();
     ofSetColor(255,20);
@@ -233,20 +236,12 @@ void CloudsVisualSystemWorld::selfDraw()
         particles[i]->draw();
     }
     
+    worldPoints[0].bRipple = true;
+    worldPoints[0].rippleDeepnes = abs(sin(ofGetElapsedTimef()*0.1));
     //  Spikes
     //
-    ofSetColor(255);
-    ofColor color = ofColor(255,0,0);
-    for(int i = 0; i < points.size(); i++){
-        ofPoint tail = points[i];
-        ofPoint head = points[i] - ofPoint(0,0,0);
-        head.normalize();
-        ofPoint pos = tail*ofGetElapsedTimef()*0.001;
-        float noise = powf(pointNoisePeaks,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
-        head *= noise;
-        color.setHue(ofMap(noise,0.001,pointNoisePeaks,20,50,true ));
-        ofSetColor(color);
-        ofLine(tail, tail+head);
+    for(int i = 0; i < worldPoints.size(); i++){
+        worldPoints[i].draw();
     }
     
     ofPopStyle();
