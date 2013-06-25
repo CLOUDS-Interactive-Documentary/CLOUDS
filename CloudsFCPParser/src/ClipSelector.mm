@@ -47,7 +47,7 @@
     cout<<metaTable.selectedRow <<endl;
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];
-        currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
+//        currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
         currentClipLinks = parser->getLinksForClip(clip.getLinkName());
         currentSuppressedLinks = parser->getSuppressionsForClip(clip.getLinkName());
         [linkTable reloadData];
@@ -198,10 +198,10 @@
         string keywordList = "";
         currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
         
-        linkText.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
+//        linkText.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
         //        suppressedTable.stringValue = [NSString stringWithUTF8String:parser.]
         startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
-        currentClipLabel.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
+//        currentClipLabel.stringValue = [NSString stringWithUTF8String:m.getLinkName().c_str()];
         currentClipLinks = parser->getLinksForClip(m.getLinkName());
         currentSuppressedLinks = parser->getSuppressionsForClip(m.getLinkName());
         currentMetaLinks = parser->getMetaDataConnections(m);

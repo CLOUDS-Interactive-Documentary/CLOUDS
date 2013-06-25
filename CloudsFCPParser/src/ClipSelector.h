@@ -24,8 +24,8 @@
     IBOutlet NSTokenField* currentKeywords;
 
     IBOutlet NSTextField* startQuestion;
-    IBOutlet NSTextField* currentClipLabel;
-    IBOutlet NSTextField* linkText;
+//    IBOutlet NSTextField* currentClipLabel;
+//    IBOutlet NSTextField* linkText;
     IBOutlet NSButton* showOnlyQuestions;
     
     vector<CloudsClip> selectedClips;
@@ -44,6 +44,7 @@
 - (CloudsLink&) selectedLink;
 - (CloudsLink&) selectedSuppression;
 - (CloudsClip&) selectedMeta;
+
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 

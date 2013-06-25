@@ -366,21 +366,25 @@
     
 	ofBackground(0);
 	
-    //	ofBackgroundGradient(ofColor::black,
-    //						 ofColor::darkGray*.15,
-    //						 OF_GRADIENT_LINEAR);
+    if(preview.isLoaded() && preview.isPlaying()){
+        preview.draw(0, 0, 960, 540);
+    }
 	
-//    visualizer.drawPhysics();
-    
-//	string debug = "";
-//	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " (" + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + ")\n";
-//	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size()  ) + "\n";
-//	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
-	
-	ofPushStyle();
-	ofSetColor(210);
-//	font.drawString(debug, 30,30);
-	ofPopStyle();
+//    //	ofBackgroundGradient(ofColor::black,
+//    //						 ofColor::darkGray*.15,
+//    //						 OF_GRADIENT_LINEAR);
+//	
+////    visualizer.drawPhysics();
+//    
+////	string debug = "";
+////	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " (" + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + ")\n";
+////	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size()  ) + "\n";
+////	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
+//	
+//	ofPushStyle();
+//	ofSetColor(210);
+////	font.drawString(debug, 30,30);
+//	ofPopStyle();
 }
 
 - (void) exit

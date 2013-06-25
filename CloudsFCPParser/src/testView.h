@@ -45,8 +45,6 @@
     
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-//    CloudsFCPVisualizer visualizer;
-//    CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
     bool updatePhysics;
