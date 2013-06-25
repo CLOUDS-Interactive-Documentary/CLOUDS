@@ -23,7 +23,10 @@ void CloudsVisualSystemMemory::selfSetup()
     blockHeight = 8;
     blockAlpha = 1.0;
     margin = 2;
-    
+    noiseLerp = 0;
+    randomUp = 0;
+    randomDown = 0;
+
     bSort = true;
     bDeFrag = false;
     bBiDirectionalSort = false;
@@ -33,13 +36,17 @@ void CloudsVisualSystemMemory::selfSetup()
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
 {
+    sysGui->addLabel("Order");
     sysGui->addToggle("Sort", &bSort);
     sysGui->addToggle("BiDirectionalSort", &bBiDirectionalSort);
-    
     sysGui->addSlider("Random_Sort", 0.0, 1000, &randomSort);
-    sysGui->addSlider("Random_Mix", 0.0, 100, &randomMix);
-    
     sysGui->addToggle("DeFrag", &bDeFrag);
+    
+    sysGui->addLabel("Chaos");
+    sysGui->addSlider("Random_Mix", 0.0, 100, &randomMix);
+    sysGui->addSlider("Random_Up", 0.0, 100, &randomUp);
+    sysGui->addSlider("Random_Down", 0.0, 100, &randomDown);
+    sysGui->addSlider("Noise_Lerp", 0.0, 1.0, &noiseLerp);
 }
 
 void CloudsVisualSystemMemory::selfSetupRenderGui()
@@ -81,8 +88,8 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     float widthBlocks = blockWidth*blockScale;
     float heightBlocks = blockHeight*blockScale;
     
-    int xBlocks = (float)width/(widthBlocks+margin*blockScale);
-    int yBlocks = (float)height/(heightBlocks+margin*blockScale);
+    xBlocks = (float)width/(widthBlocks+margin*blockScale);
+    yBlocks = (float)height/(heightBlocks+margin*blockScale);
     
     blocks.clear();
     int index = 0;
@@ -139,12 +146,35 @@ void CloudsVisualSystemMemory::selfUpdate()
         applyBiDirectionalSort();
     }
     
+    if (noiseLerp > 0.0){
+        int index = 0;
+        for(int x = 0; x < xBlocks; x++){
+            for(int y = 0; y < yBlocks; y++){
+                if ( index < blocks.size() ){
+                    blocks[index].color = ofFloatColor( ofLerp( blocks[index].color.getBrightness(), ofNoise(x,y,ofGetElapsedTimef()*0.1), noiseLerp) );
+                    blocks[index].value = blocks[index].color.getBrightness()*255;
+                    index++;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    
     for(int i = 0; i < randomSort; i++){
         applyRandomSort();
     }
     
     for(int i = 0; i < randomMix; i++){
         applyRandomMix();
+    }
+    
+    for(int i = 0; i < randomDown; i++){
+        applyRandomDown();
+    }
+    
+    for(int i = 0; i < randomUp; i++){
+        applyRandomUp();
     }
     
     if (bDeFrag){
@@ -208,6 +238,21 @@ void CloudsVisualSystemMemory::applyRandomMix(){
     swapBlocks(ofRandom(blocks.size()-1),
                ofRandom(blocks.size()-1));
 
+}
+
+void CloudsVisualSystemMemory::applyRandomUp(){
+    
+    int A = ofRandom(xBlocks,blocks.size()-1);
+    int B = A - xBlocks;
+    
+    swapBlocks(A,B);
+}
+
+void CloudsVisualSystemMemory::applyRandomDown(){
+    int A = ofRandom(0,blocks.size()-1-xBlocks);
+    int B = A + xBlocks;
+    
+    swapBlocks(A,B);
 }
 
 void CloudsVisualSystemMemory::applyDeFrag()
