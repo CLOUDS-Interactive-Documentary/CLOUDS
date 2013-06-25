@@ -81,13 +81,17 @@
 - (void)draw;
 - (void)exit;
 
+- (void) playClip:(CloudsClip&)clip;
+
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) createLink:(id)sender;
-- (IBAction) playDoubleClickedRow:(id)sender;
-//- (IBAction) saveLinks:(id)sender;
+//- (IBAction) playDoubleClickedRow:(id)sender;
+- (IBAction) saveLinks:(id)sender;
+
 //- (IBAction) deleteLink:(id)sender;
 //- (IBAction) regenerateGraph:(id)sender;
+
 - (IBAction) unloadVideo:(id)sender;
 //- (IBAction) nextOnPlaylist:(id)sender;
 //- (IBAction) prevOnPlaylist:(id)sender;
@@ -109,7 +113,6 @@
 
 //- (IBAction) linkLast:(id)sender;
 //- (IBAction) suppressLast:(id)sender;
-
 //- (IBAction) setStartText:(id)sender;
 
 - (float) clipPercentComplete;
@@ -127,11 +130,9 @@
 
 //- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
-- (CloudsClip&) selectedClip;
-- (CloudsClip&) selectedClipFromPlaylist;
+//- (CloudsClip&) selectedClip;
+//- (CloudsClip&) selectedClipFromPlaylist;
 
-- (void)playClip:(CloudsClip&)clip;
-//
 //- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 //- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 //- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;

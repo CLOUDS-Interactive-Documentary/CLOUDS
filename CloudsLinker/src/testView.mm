@@ -557,7 +557,6 @@
 		
 		parser.unsuppressConnection(l);
 		
-		//TODO figure out frame numbers
 		parser.addLink(l);
 		
 		//save
@@ -580,6 +579,8 @@
 		l.startFrame = -1;
 		l.endFrame = -1;
         
+		parser.removeLink(source.getLinkName(),target.getLinkName());
+		
 		parser.suppressConnection(l);
         
 		[self saveLinks:self];
@@ -645,11 +646,11 @@
 	}
 }
 
-- (IBAction) playDoubleClickedRow:(id)sender
-{
-	
-	onPlaylist = false; //will get set to true again if we are coming from a playlist
-	
+//- (IBAction) playDoubleClickedRow:(id)sender
+//{
+//	
+//	onPlaylist = false; //will get set to true again if we are coming from a playlist
+
 //	CloudsClip clip;
 //	if(sender == clipTableSource && clipTableSource.selectedRow >= 0){
 //        clip = [self selectedClip];
@@ -711,7 +712,7 @@
      }
      */
     
-   	clipLoaded = YES;
+//   	clipLoaded = YES;
 	
 //	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 //	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
@@ -721,8 +722,8 @@
     
 //	[linkTable reloadData];
 //    [suppressedTable reloadData];
-    
-}
+
+//}
 
 - (void) playClip:(CloudsClip&) clip
 {
@@ -773,13 +774,12 @@
 	}
 	
 	currentPlayingClip = clip;
-	clipEndFrame = clip.endFrame;
-	
+	clipEndFrame = clip.endFrame;	
 }
 
-- (CloudsClip&) selectedClip
-{
-    
+//- (CloudsClip&) selectedClip
+//{
+
 //    if(selectedClipsSource.size() > 0){
 //        CloudsClip& c=selectedClipsSource[clipTableSource.selectedRow];
 //        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
@@ -797,13 +797,13 @@
 //    }
     
     
-}
+//}
 
-- (CloudsClip&) selectedClipFromPlaylist
-{
+//- (CloudsClip&) selectedClipFromPlaylist
+//{
 	//return visualizer.pathByClip[ playlistTable.selectedRow ];
 //	return storyEngine.getClipHistory()[ playlistTable.selectedRow ];
-}
+//}
 
 - (void)keyReleased:(int)key
 {

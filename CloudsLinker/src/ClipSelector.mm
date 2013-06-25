@@ -50,12 +50,13 @@
 
 - (IBAction) saveLinks:(id)sender
 {
-	if(ofDirectory("../../../CloudsData/links/").exists()){
-		parser->saveLinks("../../../CloudsData/links/clouds_link_db.xml");
-	}
-	else{
-		parser->saveLinks("clouds_link_db.xml");
-	}
+//	if(ofDirectory("../../../CloudsData/links/").exists()){
+//		parser->saveLinks("../../../CloudsData/links/clouds_link_db.xml");
+//	}
+//	else{
+//		parser->saveLinks("clouds_link_db.xml");
+//	}
+	[testViewParent saveLinks:self];
 }
 
 - (IBAction) playDoubleClickedRow:(id)sender
@@ -65,14 +66,6 @@
 	
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];
-		
-//		currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
-//		currentClipLinks = parser->getLinksForClip(clip.getLinkName());
-//		currentSuppressedLinks = parser->getSuppressionsForClip(clip.getLinkName());
-//		
-//        [linkTable reloadData];
-//        [suppressedTable reloadData];
-//        [metaTable reloadData];
 	}
     else if(sender == linkTable && linkTable.selectedRow >= 0){
 		CloudsLink&  link = [self selectedLink];
