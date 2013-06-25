@@ -11,19 +11,26 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
+#include "ClipSelector.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
-	
-    IBOutlet NSTableView* keywordTable;
-    IBOutlet NSTableView* clipTable;
+
+    
+    IBOutlet NSTableView* keywordTableSource;
+    IBOutlet NSTableView* clipTableSource;
+
     IBOutlet NSTableView* linkTable;
     IBOutlet NSTableView* suppressedTable;
 	IBOutlet NSTableView* playlistTable;
-
+    
+    IBOutlet NSTableView* clipTableTarget;
+    IBOutlet NSTableView* keywordTableTarget;
+    
     IBOutlet NSTextField* currentClipLabel;
      
-    IBOutlet NSTokenField* currentKeywords;
+    IBOutlet NSTokenField* currentKeywordsSource;
+    IBOutlet NSTokenField* currentKeywordsTarget;
     IBOutlet NSTextField* linkText;
 	
 	IBOutlet NSTextField* seedKeyword;
@@ -32,20 +39,24 @@
 	IBOutlet NSButton* showOnlyQuestions;
 
 	IBOutlet ViewerApp* viewerApp;
-	
+    
+    IBOutlet ClipSelector* linkerA;
+    IBOutlet ClipSelector* linkerB;
+    
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-    //CloudsClusterVisualiser visualizer;
     CloudsFCPVisualizer visualizer;
     CloudsStoryEngine storyEngine;
 	CloudsD3Exporter exporter;
     
     bool updatePhysics;
-    vector<string> selectedKeywords;
+    vector<string> selectedKeywordsSource;
+    vector<string> selectedKeywordsTarget;
     CloudsClip currentPlayingClip;
     BOOL clipLoaded;
-	
-    vector<CloudsClip> selectedClips;
+
+    vector<CloudsClip> selectedClipsTarget;
+    vector<CloudsClip> selectedClipsSource;
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
 
@@ -96,6 +107,10 @@
 - (IBAction) previewSuppressed:(id)sender;
 - (IBAction) stopPreview:(id)sender;
 - (IBAction) showQuestiosnChanged:(id)sender;
+
+
+-(IBAction)linkFromLeftToRight:(id)sender;
+-(IBAction)linkFromRightToLeft:(id)sender;
 
 - (IBAction) linkLast:(id)sender;
 - (IBAction) suppressLast:(id)sender;
