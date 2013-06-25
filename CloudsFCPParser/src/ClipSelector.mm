@@ -398,7 +398,9 @@ completionsForSubstring:(NSString *)substring
 	[keywordTable reloadData];
 	[clipTable reloadData];
 }
-
+-(bool) isClipSelected{    
+    return  (selectedClips.size() > 0) ? true : false;
+}
 - (void) updateTables{
     [keywordTable reloadData];
 	[clipTable reloadData];

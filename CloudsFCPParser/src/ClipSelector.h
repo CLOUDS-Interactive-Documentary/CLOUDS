@@ -53,7 +53,7 @@
 - (IBAction)suppressLinkModifier:(id)sender;
 - (IBAction) showQuestiosnChanged:(id)sender;
 - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-
+-(bool) isClipSelected;
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;

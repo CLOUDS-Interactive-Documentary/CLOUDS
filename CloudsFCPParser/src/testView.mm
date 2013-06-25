@@ -500,16 +500,23 @@
 	}
 }
 -(IBAction)linkFromLeftToRight:(id)sender{
+    if([linkerA isClipSelected]&&[linkerB isClipSelected]){
     [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
-    [linkerA updateTables];
-    [linkerB updateTables];
+        [linkerA updateTables];
+        [linkerB updateTables];
+    }
+
+
 
 }
 
 -(IBAction)linkFromRightToLeft:(id)sender{
-    [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
-    [linkerA updateTables];
-    [linkerB updateTables];
+    if([linkerA isClipSelected]&&[linkerB isClipSelected]){
+        [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+        [linkerA updateTables];
+        [linkerB updateTables];
+    }
+
 
 }
 - (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target
