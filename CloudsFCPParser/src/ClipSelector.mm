@@ -42,6 +42,7 @@
 {
 	
 	CloudsClip clip;
+    	cout<<"im in playDoubleClickedRow in ClipSelector"<<endl;
 	if(sender == clipTable && clipTable.selectedRow >= 0){
         clip = [self selectedClip];
         currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
@@ -51,17 +52,26 @@
         [suppressedTable reloadData];
         [metaTable reloadData];
 	}
+    else if(sender == linkTable && linkTable.selectedRow >= 0){
+      CloudsLink&  link = [self selectedLink];
+        clip = parser->getClipWithLinkName(link.sourceName);
+	}
+    else if(sender == suppressedTable && suppressedTable.selectedRow >= 0){
+        CloudsLink&  link = [self selectedSuppression];
+
+        clip = parser->getClipWithLinkName(link.sourceName);
+	}
+    else if(sender == metaTable && metaTable.selectedRow >= 0){
+        clip = [self selectedMeta];
+
+	}
 	else{
 		//bail!
 		return;
 	}
-	cout<<"im in playDoubleClickedRow in ClipSelector"<<endl;
+
     [testViewParent playClip:clip];
-    
-    
-	
-    
-    
+
 }
 
 
@@ -238,12 +248,33 @@
         
     }
 }
-//CloudsClip clip;
-//clip = [self selectedClip];
-//vector<CloudsClip> clips = parser->getMetaDataConnections(clip);
+
+- (CloudsClip&) selectedMeta
+{
+    if(currentMetaLinks.size() > 0){
+        CloudsClip& c=selectedClips[metaTable.selectedRow];
+        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
+        return c;
+    }
+}
+- (CloudsLink&) selectedSuppression
+{
+    if(currentSuppressedLinks.size() > 0){
+        CloudsLink& c=currentSuppressedLinks[suppressedTable.selectedRow];
+        cout<<"Selected clip from link table "<<c.sourceName<<endl;
+        return c;
+    }
+}
+- (CloudsLink&) selectedLink
+{
+    if(currentClipLinks.size() > 0){
+        CloudsLink& c=currentClipLinks[linkTable.selectedRow];
+        cout<<"Selected clip from link table "<<c.sourceName<<endl;
+        return c;
+    }
+}
 - (CloudsClip&) selectedClip
 {
-    
     if(selectedClips.size() > 0){
         CloudsClip& c=selectedClips[clipTable.selectedRow];
         cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
@@ -252,10 +283,8 @@
     else{
         CloudsClip& c =parser->getAllClips()[clipTable.selectedRow] ;
         cout<<"Selected clip from all clips"<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
-        
         return c;
     }
-
 }
 
 

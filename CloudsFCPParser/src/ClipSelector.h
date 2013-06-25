@@ -40,6 +40,9 @@
 - (void)setup;
 - (void) playClip:(CloudsClip&) clip;
 - (void) updateTables;
+- (CloudsLink&) selectedLink;
+- (CloudsLink&) selectedSuppression;
+- (CloudsClip&) selectedMeta;
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 
