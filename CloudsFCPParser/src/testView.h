@@ -11,9 +11,11 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsStoryEngine.h"
+#include "ClipSelector.h"
 
 @class ViewerApp;
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+    
     IBOutlet NSTableView* keywordTableSource;
     IBOutlet NSTableView* clipTableSource;
     IBOutlet NSTableView* linkTable;
@@ -25,7 +27,8 @@
     
     IBOutlet NSTextField* currentClipLabel;
      
-    IBOutlet NSTokenField* currentKeywords;
+    IBOutlet NSTokenField* currentKeywordsSource;
+    IBOutlet NSTokenField* currentKeywordsTarget;
     IBOutlet NSTextField* linkText;
 	
 	IBOutlet NSTextField* seedKeyword;
@@ -34,7 +37,10 @@
 	IBOutlet NSButton* showOnlyQuestions;
 
 	IBOutlet ViewerApp* viewerApp;
-	
+    
+    IBOutlet ClipSelector* linkerA;
+    IBOutlet ClipSelector* linkerB;
+    
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
     CloudsFCPVisualizer visualizer;

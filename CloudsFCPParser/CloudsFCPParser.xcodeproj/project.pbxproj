@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1803F0491778CFD60093DD74 /* ClipSelector.mm */; };
 		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
 		1814270D1768C2F100C2B5FE /* CloudsClusterVisualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */; };
 		181427101769376D00C2B5FE /* ParticleEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1814270E1769376B00C2B5FE /* ParticleEdge.cpp */; };
@@ -165,6 +166,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1803F0481778CFD60093DD74 /* ClipSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipSelector.h; sourceTree = "<group>"; };
+		1803F0491778CFD60093DD74 /* ClipSelector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClipSelector.mm; sourceTree = "<group>"; };
 		18142706176629ED00C2B5FE /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		18142707176629EE00C2B5FE /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		1814270B1768C2F000C2B5FE /* CloudsClusterVisualizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterVisualizer.cpp; sourceTree = "<group>"; };
@@ -759,6 +762,8 @@
 				609133791652C9C900B523AD /* AppDelegate.h */,
 				6091337A1652C9C900B523AD /* AppDelegate.m */,
 				6091337B1652C9C900B523AD /* main.m */,
+				1803F0481778CFD60093DD74 /* ClipSelector.h */,
+				1803F0491778CFD60093DD74 /* ClipSelector.mm */,
 				6091337C1652C9C900B523AD /* MainMenu.xib */,
 			);
 			path = src;
@@ -1554,6 +1559,7 @@
 				18CCC3BC1773B4DF003436EC /* ofxSwarmBehavior.cpp in Sources */,
 				18CCC3BD1773B4DF003436EC /* ofxVerletSolver.cpp in Sources */,
 				18CCC3E91773B539003436EC /* ofxCameraSaveLoad.cpp in Sources */,
+				1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
