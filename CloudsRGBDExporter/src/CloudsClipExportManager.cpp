@@ -129,12 +129,12 @@ void CloudsClipExportManager::threadedFunction(){
 	}
 	
 	//TEMP
-	exporter.writeMetaFile(outputDirectory, &renderer);
+	//exporter.writeMetaFile(outputDirectory, &renderer);
 	
 	bool completedClip = false;
 	while( isThreadRunning() && currentFrame <= currentClip.endFrame + 24 ){ //24 frame handle
 		
-		cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
+		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
 		medianFilter();
 		

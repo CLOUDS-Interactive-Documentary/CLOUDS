@@ -72,6 +72,8 @@ class CloudsFCPParser {
 	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);
 	
 	float percentOfClipsLinked();
+	float getAllClipDuration();
+
 	
 	//create a list that maps all of the tags back to closest key theme
 	void populateKeyThemes();
