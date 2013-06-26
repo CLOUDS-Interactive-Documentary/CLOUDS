@@ -13,12 +13,12 @@ class wStar : public ofPoint {
 public:
 	wStar();
     
-    void    pair( ofVec2f _ra, ofVec2f _dec);
+    void    place( float _ra, float _dec );
    
 	void	draw();
     
     string  constName;
-    ofVec2f ra;     // analog to long, sideral hours (360° / 24h)
-    ofVec2f dec;    // analog to lat
     wStar   *connect;
+    
+    float   alpha;
 };

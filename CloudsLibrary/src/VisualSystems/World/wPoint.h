@@ -24,7 +24,11 @@ public:
     
     ofQuaternion latRot,longRot;
     float   latitud, longitud;
+    
+    float   noise;
+    float   nNoise;
     float   *noisePeaks;
+    float   *noiseThreshold;
     
     float   ripplePct;
     float   rippleScale;
