@@ -29,6 +29,8 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 	particles.clear();
 	particleMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
+    cout << "adding vertices" << endl;
+    
 	lines.clear();
 	lines.setMode(OF_PRIMITIVE_LINES);
 	for(int y = 0; y <= height/step; y++){
@@ -52,16 +54,21 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
 	
+    cout << "begin update" << endl;
+    
 	if(regenerateFlow){
 		regenerateFlow = false;
 		initFlowField();
 	}
+    
+    cout << "adding particles" << endl;
 
 	//UPDATE PARTICLES
 	for(int i = 0; i < particlesPerFrame; i++){
 		addParticle();
 	}
 
+    cout << "updating particle size " << particles.size() << endl;
 
 	for(int i = 0; i < particles.size(); i++){
 		Particle& cp = particles[i];
@@ -87,6 +94,8 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 		particleMesh.setVertex(cp.index + trailLength+1, particleMesh.getVertices()[cp.index+trailLength]); //set the fence post
 	}
 
+    cout << "detecting dead particles" << endl;
+    
 	ofRectangle screenRect(0,0,width,height);
 	for(int i = 0; i < particles.size(); i++){
 		Particle& cp = particles[i];
@@ -100,6 +109,7 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
 	
 	//UPDATE LINES
+    cout << "updating lines" << endl;
 	for(int i = 0; i < lines.getVertices().size(); i += 2){
 		ofVec3f& vert = lines.getVertices()[i];
 		float length = getMagnitude(vert.x, vert.y);
@@ -135,7 +145,7 @@ void CloudsVisualSystemVectorFlow::addParticle(){
 
 	if(particleMesh.getVertices().size() < maxVertices){
 		
-		//cout << "allocating particles " << particleMesh.getVertices().size() << endl;
+		cout << "allocating particles " << particleMesh.getVertices().size() << endl;
 		
 		Particle p;
 		p.dead = false;
@@ -160,6 +170,8 @@ void CloudsVisualSystemVectorFlow::addParticle(){
 		particleMesh.addNormal( ofVec3f(0,0,0) );
 		
 		particles.push_back(p);
+        
+        cout << "Finished particles" << endl;
 	}
 }
 
@@ -174,6 +186,9 @@ float CloudsVisualSystemVectorFlow::getMagnitude(float x, float y){
 }
 
 void CloudsVisualSystemVectorFlow::selfDrawBackground(){
+    
+    cout << "begin draw" << endl;
+    
 	ofPushStyle();
 	ofEnableAlphaBlending();
 	ofSetColor(255);
