@@ -53,8 +53,8 @@ protected:
 	vector<Particle> particles;
 	
 	int maxVertices;
-	ofVboMesh particleMesh;
-	ofVboMesh lines;
+	ofMesh particleMesh;
+	ofMesh lines;
 	int trailLength;
 	float generateTrailLength;
 	float generateMaxVerts;
