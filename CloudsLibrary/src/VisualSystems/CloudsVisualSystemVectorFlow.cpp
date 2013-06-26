@@ -45,7 +45,7 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetup(){
-	regenerateFlow = true;
+
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){
@@ -54,24 +54,26 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
 	
-    cout << "begin update" << endl;
+
     
 	if(regenerateFlow){
 		regenerateFlow = false;
 		initFlowField();
 	}
     
-    cout << "adding particles" << endl;
+
 
 	//UPDATE PARTICLES
 	for(int i = 0; i < particlesPerFrame; i++){
+
 		addParticle();
+
 	}
 
-    cout << "updating particle size " << particles.size() << endl;
+
 
 	for(int i = 0; i < particles.size(); i++){
-		Particle& cp = particles[i];
+		FlowParticle& cp = particles[i];
 		for(int t = trailLength; t > 0; t--){
 			ofIndexType targetIndex = cp.index + t + 1;
 			ofIndexType sourceIndex = cp.index + t;
@@ -94,11 +96,9 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 		particleMesh.setVertex(cp.index + trailLength+1, particleMesh.getVertices()[cp.index+trailLength]); //set the fence post
 	}
 
-    cout << "detecting dead particles" << endl;
-    
 	ofRectangle screenRect(0,0,width,height);
 	for(int i = 0; i < particles.size(); i++){
-		Particle& cp = particles[i];
+		FlowParticle& cp = particles[i];
 		cp.dead = true;
 		for(int v = cp.index+1; v <= cp.index+trailLength; v++){
 			ofVec3f& vert = particleMesh.getVertices()[v];
@@ -109,7 +109,7 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 	}
 	
 	//UPDATE LINES
-    cout << "updating lines" << endl;
+
 	for(int i = 0; i < lines.getVertices().size(); i += 2){
 		ofVec3f& vert = lines.getVertices()[i];
 		float length = getMagnitude(vert.x, vert.y);
@@ -121,10 +121,10 @@ void CloudsVisualSystemVectorFlow::selfUpdate(){
 }
 
 void CloudsVisualSystemVectorFlow::addParticle(){
-	
-	for(int i = 0; i < particles.size(); i++){
-		Particle& p = particles[i];
 		
+	for(int i = 0; i < particles.size(); i++){
+		FlowParticle& p = particles[i];
+
 		if(p.dead){
 			p.dead = false;
 			p.pos = ofVec3f( ofRandom(width), ofRandom(height), 0 );
@@ -145,13 +145,12 @@ void CloudsVisualSystemVectorFlow::addParticle(){
 
 	if(particleMesh.getVertices().size() < maxVertices){
 		
-		cout << "allocating particles " << particleMesh.getVertices().size() << endl;
+//		cout << "allocating particles " << particleMesh.getVertices().size() << " trail " << trailLength << " " << endl;
 		
-		Particle p;
-		p.dead = false;
+		FlowParticle p;
 		p.pos = ofVec3f( ofRandom(width), ofRandom(height), 0 );
 		p.index = particleMesh.getVertices().size();
-		
+
 		//alpha fence post begin
 		particleMesh.addVertex( p.pos ); //at p.index
 		particleMesh.addColor( ofFloatColor(0,0,0,0) );
@@ -168,11 +167,12 @@ void CloudsVisualSystemVectorFlow::addParticle(){
 		particleMesh.addVertex( p.pos ); //p.index+trailLength+1
 		particleMesh.addColor( ofFloatColor(0,0,0,0) );
 		particleMesh.addNormal( ofVec3f(0,0,0) );
+
 		
 		particles.push_back(p);
-        
-        cout << "Finished particles" << endl;
 	}
+	
+//	cout << "finished with particle add" << endl;
 }
 
 ofVec3f CloudsVisualSystemVectorFlow::getDirection(float x, float y){
@@ -186,8 +186,6 @@ float CloudsVisualSystemVectorFlow::getMagnitude(float x, float y){
 }
 
 void CloudsVisualSystemVectorFlow::selfDrawBackground(){
-    
-    cout << "begin draw" << endl;
     
 	ofPushStyle();
 	ofEnableAlphaBlending();
@@ -217,7 +215,7 @@ void CloudsVisualSystemVectorFlow::selfExit(){
 }
 
 void CloudsVisualSystemVectorFlow::selfBegin(){
-
+	regenerateFlow = true;
 }
 
 void CloudsVisualSystemVectorFlow::selfEnd(){
