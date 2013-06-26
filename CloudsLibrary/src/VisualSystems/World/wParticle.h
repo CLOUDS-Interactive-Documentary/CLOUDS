@@ -13,7 +13,7 @@ class wParticle : public ofPoint {
 public:
 	wParticle();
     
-    void    place(float _lat, float _long, float _deep = 300);
+    void    place(float _lat, float _long);
     
 	void	applyForce(ofPoint _force){acc += _force;};
 	void	applyGravityForce(float _pct);

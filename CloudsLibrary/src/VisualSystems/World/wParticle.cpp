@@ -21,12 +21,12 @@ wParticle::wParticle(){
     bTrail = NULL;
 }
 
-void wParticle::place(float _lat, float _long, float _deep){
+void wParticle::place(float _lat, float _long){
     ofQuaternion latRot, longRot;
     latRot.makeRotate( _lat, 1, 0, 0);
     longRot.makeRotate( _long, 0, 1, 0);
     
-    this->set(latRot * longRot * ofPoint(0,0,-_deep));
+    this->set(latRot * longRot * ofPoint(0,0,-300));
 }
 
 void wParticle::applyGravityForce(float _pct){
