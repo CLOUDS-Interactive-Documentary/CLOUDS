@@ -10,14 +10,24 @@
 	parser.loadFromFiles();
 	
 	visualSystems.populateVisualSystems();
-
+    [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
 }
 
 - (void)update
 {
+    if(shouldPlaySelectedRow){
+        if(currentVisualSystem != NULL){
+            currentVisualSystem->stopSystem();
+        }
+        currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
 
+        currentVisualSystem->playSystem();
+        currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
+        shouldPlaySelectedRow = false;     
+    }        
+    ofShowCursor();
 }
 
 - (void)draw
@@ -90,14 +100,8 @@
 
 - (void)playDoubleClickedRow:(id)sender
 {
-	if(currentVisualSystem != NULL){
-		currentVisualSystem->stopSystem();
-	}
-	currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
-	
-	currentVisualSystem->playSystem();
-	currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
-	
+    shouldPlaySelectedRow = true;
+    
 
 }
 
