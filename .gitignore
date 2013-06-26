@@ -45,3 +45,4 @@ timeline*_Page_One_trackPositions.xml
 timeline*.xml
 *trackPositions.xml
 /CloudsRGBDExporter/bin/data/SavedExportFolder.txt
+/CloudsRGBDExporter/bin/data/ColorReplacementFolder.txt

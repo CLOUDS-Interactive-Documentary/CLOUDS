@@ -2,11 +2,21 @@
 #include "CloudsVisualSystem.h"
 static bool confirmedDataPath = false;
 static bool usingDevelopmentFolder = false;
+static ofFbo sharedRenderTarget;
+
+ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
+    if(!sharedRenderTarget.isAllocated() ||
+       sharedRenderTarget.getWidth() != ofGetWidth() ||
+       sharedRenderTarget.getHeight() != ofGetHeight())
+    {
+        sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+    }
+    return sharedRenderTarget;
+}
 
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
-	sharedRenderer = false;
-//	sharedCamera = NULL;
+	sharedRenderer = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){

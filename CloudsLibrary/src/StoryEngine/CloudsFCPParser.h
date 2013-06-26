@@ -32,19 +32,26 @@ class CloudsFCPParser {
 	//MANAGE
     void parseLinks(string linkFile);
     void parseClusterMap(string mapFile);
+	
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
     vector<CloudsLink>& getSuppressionsForClip(string clipName);
-    
+
+	void addLink(string sourceName, string targetName);
+	void addLink(CloudsClip& source, CloudsClip& target);
     void addLink(CloudsLink& link);
+	
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
 
+	void suppressConnection(string sourceName, string targetName);
+	void suppressConnection(CloudsClip& source, CloudsClip& target);
 	void suppressConnection(CloudsLink& link);
     void unsuppressConnection(string linkName, int linkIndex);
 	void unsuppressConnection(string linkName, string targetName);
+	void unsuppressConnection(CloudsLink& link);
 
 	//QUERIES
 	//true if A has any out going links at all
@@ -72,6 +79,8 @@ class CloudsFCPParser {
 	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);
 	
 	float percentOfClipsLinked();
+	float getAllClipDuration();
+
 	
 	//create a list that maps all of the tags back to closest key theme
 	void populateKeyThemes();
@@ -95,6 +104,8 @@ class CloudsFCPParser {
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
 	vector<CloudsClip> getSharedClips(string keywordA, string keywordB);
+	vector<CloudsClip> getMetaDataConnections(CloudsClip& source);
+	int getNumMetaDataConnections(CloudsClip& source);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);

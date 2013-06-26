@@ -51,8 +51,8 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	
 	rgbdPlayer.setUseTexture(false);
 	
-	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << endl;
-	
+	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << " ALT FOLDER " << alternativeVideoFolder << endl;
+	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder );
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load scene";
 		done = true;
@@ -129,12 +129,12 @@ void CloudsClipExportManager::threadedFunction(){
 	}
 	
 	//TEMP
-	exporter.writeMetaFile(outputDirectory, &renderer);
+	//exporter.writeMetaFile(outputDirectory, &renderer);
 	
 	bool completedClip = false;
 	while( isThreadRunning() && currentFrame <= currentClip.endFrame + 24 ){ //24 frame handle
 		
-		cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
+		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
 		medianFilter();
 		

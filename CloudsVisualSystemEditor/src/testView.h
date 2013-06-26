@@ -8,7 +8,7 @@
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
 	IBOutlet NSTableView* presetTable;
-	
+	bool shouldPlaySelectedRow;
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
 	CloudsVisualSystem* currentVisualSystem;
