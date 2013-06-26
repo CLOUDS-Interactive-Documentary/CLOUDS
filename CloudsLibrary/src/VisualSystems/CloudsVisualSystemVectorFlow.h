@@ -5,12 +5,16 @@
 #include "CloudsVisualSystemRezanator.h"
 
 
-typedef struct{
+class FlowParticle {
+  public:
+	FlowParticle(){
+		index = 0;
+		dead = false;
+	}
 	ofVec3f pos;
 	int index;
-	int frame;
 	bool dead;
-} Particle;
+};
 
 class CloudsVisualSystemVectorFlow : public CloudsVisualSystemRezanator {
 public:
@@ -50,18 +54,17 @@ public:
 	
 protected:
 	
-	vector<Particle> particles;
+	vector<FlowParticle> particles;
 	
 	int maxVertices;
-	ofMesh particleMesh;
-	ofMesh lines;
+	ofVboMesh particleMesh;
+	ofVboMesh lines;
 	int trailLength;
 	float generateTrailLength;
 	float generateMaxVerts;
 	float particlesPerFrame;
 	
 	void addParticle();
-	void initParticle(Particle& p);
 	
 	ofVec3f getDirection(float x, float y);
 	float getMagnitude(float x, float y);
