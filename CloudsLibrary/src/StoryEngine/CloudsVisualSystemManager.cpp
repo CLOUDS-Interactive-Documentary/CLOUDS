@@ -12,6 +12,7 @@
 #include "CloudsVisualSystemCollaboration1.h"
 #include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemVectorFlow.h"
+#include "CloudsVisualSystemLaplacianTunnel.h"
 
 #endif
 
@@ -32,8 +33,8 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-//	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	
+	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
+	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );
 #endif
@@ -49,7 +50,8 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
-	refreshPresets();
+	
+	loadPresets();
 	
 #endif
 }
@@ -60,12 +62,12 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
 }
 
 //--------------------------------------------------------------------
-const vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
+vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::refreshPresets(){
+void CloudsVisualSystemManager::loadPresets(){
 #ifndef CLOUDS_NO_VS	
 	presets.clear();
 	for(int i = 0; i < systems.size(); i++){
@@ -90,6 +92,59 @@ void CloudsVisualSystemManager::refreshPresets(){
 			}
 		}
 	}
+	
+	keywords.clear();
+	ofxXmlSettings keywordXml;
+	keywordXml.loadFile( CloudsVisualSystem::getDataPath() + "/visualsystems/keywords.xml" );
+	int numSystems = keywordXml.getNumTags("system");
+	for(int i = 0; i < numSystems; i++){
+		string name = keywordXml.getAttribute("system", "name", "no-name", i);
+		keywordXml.pushTag( "system", i );
+		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
+		keywordXml.popTag(); //system
+	}
+	
    #endif
 }
+
+void CloudsVisualSystemManager::saveKeywords(){
+	map<string,vector<string> >::iterator it;
+	
+	ofxXmlSettings keywordXml;
+	int systemIndex = 0;
+	for(it = keywords.begin(); it != keywords.end(); it++){
+		string presetName = it->first;
+		string keywordString = ofJoinString(it->second, "|");
+		
+		cout << "saving " << presetName << " -> (" << keywordString << ")" << endl;
+		
+		keywordXml.addTag("system");
+		keywordXml.addAttribute("system", "name", presetName, systemIndex);
+		
+		keywordXml.pushTag("system",systemIndex);
+		keywordXml.addValue("keywords", keywordString);
+		keywordXml.popTag();
+		
+		systemIndex++;
+	}
+	
+	keywordXml.saveFile( CloudsVisualSystem::getDataPath() + "/visualsystems/keywords.xml" );
+}
+
+vector<string> CloudsVisualSystemManager::keywordsForPreset(int index){
+	return keywords[ presets[index].getID() ];
+}
+
+vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPreset& preset){
+	if(keywords.find( preset.getID() ) == keywords.end()){
+		ofLogError() << "no keywords found for preset " << preset.getID() << endl;
+	}
+	
+	return keywords[ preset.getID() ];
+}
+
+void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
+	keywords[ preset.getID() ] = newKeywords;
+}
+
 

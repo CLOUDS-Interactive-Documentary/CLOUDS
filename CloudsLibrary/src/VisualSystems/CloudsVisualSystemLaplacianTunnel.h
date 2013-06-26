@@ -1,14 +1,20 @@
+//
+//  CloudsVisualSystemNervousSystem.h
+//  CloudsVisualSystemEditor
+//
+//  Created by James George on 6/26/13.
+//
+//
 
 #pragma once
 
-#include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
 
-
-class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
- public:
-	CloudsVisualSystemHiga();
-
+class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystemRezanator {
+  public:
+	
+	CloudsVisualSystemLaplacianTunnel();
+	
 	string getSystemName();
 	
 	void selfSetup();
@@ -40,9 +46,20 @@ class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
 	
-	vector<ofNode> testNodeExamples;
-
 	ofxUISuperCanvas* customGui;
 	float exampleSlider;
+	
+  protected:
+	
+	int frameCount;
+	float startTime;
+	float fps;
+	
+	float numReplications;
+	float replicationOffset;
+	
+	vector<int> indexCount;
+	vector<ofVbo*> vbos;
+	
+	void clear();
 };
-
