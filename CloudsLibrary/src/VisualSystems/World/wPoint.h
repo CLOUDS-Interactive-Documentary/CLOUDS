@@ -20,12 +20,16 @@ public:
     void draw();
 
     ofColor color;
+    ofFloatColor rippleColor;
     
     ofQuaternion latRot,longRot;
-    float latitud, longitud;
-    float *noisePeaks;
-    float rippleDeepnes;
+    float   latitud, longitud;
+    float   *noisePeaks;
     
-    bool bRipple;
+    float   ripplePct;
+    float   rippleScale;
+    float   rippleDeepnes;
+    
+    bool    bRipple;
     
 };

@@ -71,5 +71,9 @@ protected:
     float   density,gravity,repulsion;
     float   turbulence,neigbordhood,independence;
     
+    //  Stars/constelations
+    //
+    void loadStarts( string _file);
+    vector< wParticle* > stars;
     
 };

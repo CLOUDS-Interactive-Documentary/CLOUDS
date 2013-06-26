@@ -10,7 +10,8 @@
 
 wPoint::wPoint(){
     color.set(255,0,0);
-    
+    rippleColor.set(1.0,0.0,0.0);
+    rippleScale = ofRandom(0.01,0.05);
     rippleDeepnes = 0;
     noisePeaks = NULL;
     bRipple = false;
@@ -29,6 +30,16 @@ void wPoint::place(float _lat, float _long){
 }
 
 void wPoint::update(){
+    if (bRipple){
+        if (ripplePct<1.0){
+            ripplePct += 0.01;
+        } else {
+            ripplePct = 0.0;
+            bRipple = false;
+        }
+    }
+    
+    rippleDeepnes = ripplePct*rippleScale;
 }
 
 void wPoint::draw(){
@@ -46,27 +57,25 @@ void wPoint::draw(){
     
     if (bRipple){
         
-
-        ofPoint toCenter = ofPoint(0,0,0)-*this;
-        toCenter.normalize();
-        ofPoint rippleCenter = *this + toCenter*rippleDeepnes*300;
-        float   rippleRadio = cos( (1.0-rippleDeepnes)*HALF_PI )*300;
+        //  Jen equation
+        //
+        float totalGlobeRadio = 300;
+        float rippleHeight = rippleDeepnes*totalGlobeRadio;
+        float rippleRadio = sqrt( 2*rippleHeight*totalGlobeRadio-powf(rippleHeight,2) );
         
+        ofPoint vectorToCenter = ofPoint(0,0,0)-*this;
+        vectorToCenter.normalize();
+        ofPoint rippleCenter = *this + vectorToCenter * rippleHeight;
+    
         ofPoint objectLookAt = ofVec3f(0,0,1);
-        float theta = objectLookAt.angle(toCenter);
-        ofPoint rippleAngle = toCenter.crossed(objectLookAt);
+        float theta = objectLookAt.angle(vectorToCenter);
+        ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
         rippleAngle.normalize();
         
-        
         ofPushStyle();
-        
-        
-        ofSetColor(255, 0, 0);
+        rippleColor.a = (1.0-ripplePct);
+        ofSetColor(rippleColor);
        
-        //  Axis
-        //
-        ofLine(*this,ofPoint(0,0,0));
-
         //  City dot
         //
         ofPushMatrix();

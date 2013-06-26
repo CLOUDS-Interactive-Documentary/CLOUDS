@@ -24,6 +24,7 @@ void CloudsVisualSystemWorld::selfSetup()
 //    loadPoints( points, "airports.txt");
     loadPoints( "simple-cities.txt" );
     
+    loadStarts( "constelations.txt" );
     globalOffset.set(0,0,0);
     
     nMaxPoints = 1000;
@@ -131,6 +132,34 @@ void CloudsVisualSystemWorld::loadPoints(string _file){
     }
 }
 
+void CloudsVisualSystemWorld::loadStarts( string _file){
+    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    
+    while(!buffer.isLastLine()) {
+        string temp = buffer.getNextLine();
+        
+        if(temp.length() != 0) {
+            vector<string> values = ofSplitString(temp, ",");
+            
+            wParticle *pA = new wParticle();
+            pA->place(ofToFloat(values[2])*(360/24)-180,
+                      ofToFloat(values[1]),
+                      6000);
+            
+            wParticle *pB = new wParticle();
+            pB->place(ofToFloat(values[4])*(360/24)-180,
+                      ofToFloat(values[3]),
+                      6000);
+            
+            pB->connect = pA;
+            
+            stars.push_back(pA);
+            stars.push_back(pB);
+        }
+    }
+}
+
 void CloudsVisualSystemWorld::selfSetupSystemGui()
 {
     sysGui->addLabel("Spikes");
@@ -215,7 +244,7 @@ void CloudsVisualSystemWorld::selfDraw()
     //
     ofFill();
     ofSetColor(20,20);
-//	ofDrawSphere(0, 0, 290);
+	ofDrawSphere(0, 0, 290);
     //
     ofNoFill();
     ofSetColor(255,20);
@@ -236,13 +265,21 @@ void CloudsVisualSystemWorld::selfDraw()
         particles[i]->draw();
     }
     
-    worldPoints[0].bRipple = true;
-    worldPoints[0].rippleDeepnes = abs(sin(ofGetElapsedTimef()*0.1));
+    int randomCity = ofRandom(worldPoints.size());
+    if ( !worldPoints[randomCity].bRipple){
+        worldPoints[randomCity].bRipple = true;
+    }
     //  Spikes
     //
     for(int i = 0; i < worldPoints.size(); i++){
         worldPoints[i].draw();
     }
+    
+    //  Stars
+    //
+//    for(int i = 0; i < stars.size(); i++){
+//        stars[i]->draw();
+//    }
     
     ofPopStyle();
     ofPopMatrix();
