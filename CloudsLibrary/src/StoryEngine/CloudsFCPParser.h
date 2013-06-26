@@ -32,19 +32,26 @@ class CloudsFCPParser {
 	//MANAGE
     void parseLinks(string linkFile);
     void parseClusterMap(string mapFile);
+	
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
     vector<CloudsLink>& getSuppressionsForClip(string clipName);
-    
+
+	void addLink(string sourceName, string targetName);
+	void addLink(CloudsClip& source, CloudsClip& target);
     void addLink(CloudsLink& link);
+	
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
 
+	void suppressConnection(string sourceName, string targetName);
+	void suppressConnection(CloudsClip& source, CloudsClip& target);
 	void suppressConnection(CloudsLink& link);
     void unsuppressConnection(string linkName, int linkIndex);
 	void unsuppressConnection(string linkName, string targetName);
+	void unsuppressConnection(CloudsLink& link);
 
 	//QUERIES
 	//true if A has any out going links at all

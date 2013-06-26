@@ -24,8 +24,6 @@
     IBOutlet NSTokenField* currentKeywords;
 
     IBOutlet NSTextField* startQuestion;
-    IBOutlet NSTextField* currentClipLabel;
-    IBOutlet NSTextField* linkText;
     IBOutlet NSButton* showOnlyQuestions;
     
     vector<CloudsClip> selectedClips;
@@ -34,32 +32,45 @@
     vector<CloudsLink> currentClipLinks;
     vector<CloudsLink> currentSuppressedLinks;
     vector<CloudsClip> currentMetaLinks;
+	
     CloudsFCPParser* parser;
     testView* testViewParent;
+	
+	BOOL dontUpdateClips;
 }
-
-- (void)setup;
-- (void) playClip:(CloudsClip&) clip;
-- (void) updateTables;
-- (CloudsLink&) selectedLink;
-- (CloudsLink&) selectedSuppression;
-- (CloudsClip&) selectedMeta;
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 
-- (IBAction) playDoubleClickedRow:(id)sender;
-- (IBAction) createLink:(id)sender;
-- (IBAction) suppressLink:(id)sender;
-- (CloudsClip&) selectedClip;
-- (IBAction) createLink:(id)sender;
-- (IBAction) deleteLink:(id)sender;
-- (void)keyPressed:(int)key;
--(IBAction)setStartText:(id)sender;
+- (void) setup;
+//- (void) playClip:(CloudsClip&) clip;
+- (void) updateTables;
+- (void) updateSelectedClips;
+
 - (IBAction) saveLinks:(id)sender;
-- (IBAction)suppressLinkModifier:(id)sender;
-- (IBAction) showQuestiosnChanged:(id)sender;
-- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
--(bool) isClipSelected;
+
+- (bool) isClipSelected;
+- (bool) isKeywordSelected;
+
+- (CloudsClip) selectedClip;
+- (CloudsLink&) selectedLink;
+- (CloudsLink&) selectedSuppression;
+- (CloudsClip&) selectedMeta;
+
+- (IBAction) playDoubleClickedRow:(id)sender;
+- (IBAction) setQuestionText:(id)sender;
+
+- (IBAction) linkFromMetaTable:(id)sender;
+- (IBAction) suppressFromMetaTable:(id)sender;
+
+- (IBAction) deleteLink:(id)sender;
+- (IBAction) deleteSupression:(id)sender;
+
+- (IBAction) suppressCurrentLink:(id)sender;
+- (IBAction) linkCurrentSuppression:(id)sender;
+- (IBAction) showQuestionsChanged:(id)sender;
+
+- (BOOL) tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;

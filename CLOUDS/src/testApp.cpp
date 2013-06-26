@@ -44,6 +44,7 @@ void testApp::setup(){
 void testApp::update(){
 //	player.update();
 	sound.update();
+	ofShowCursor();
 }
 
 //--------------------------------------------------------------

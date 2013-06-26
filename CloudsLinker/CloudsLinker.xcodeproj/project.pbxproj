@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1803F0491778CFD60093DD74 /* ClipSelector.mm */; };
 		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
-		18CCC2E41773B26A003436EC /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */; };
-		18CCC2E51773B26A003436EC /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -39,8 +37,6 @@
 		E7637D821734DEF7008ADC62 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */; };
 		E7637D831734DEF7008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */; };
 		E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D741734DEF7008ADC62 /* CloudsLink.cpp */; };
-		E7637D861734DEF7008ADC62 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D761734DEF7008ADC62 /* CloudsStoryEngine.cpp */; };
-		E7B28C2516F28B1A008F0765 /* ViewerApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7B28C2416F28B1A008F0765 /* ViewerApp.mm */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -81,11 +77,6 @@
 		1803F0491778CFD60093DD74 /* ClipSelector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClipSelector.mm; sourceTree = "<group>"; };
 		18142706176629ED00C2B5FE /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		18142707176629EE00C2B5FE /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
-		18CCC2E01773B238003436EC /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
-		18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
-		18CCC2E21773B26A003436EC /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
-		18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
-		18E82CF11773B18A00C17B65 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -122,15 +113,10 @@
 		E7637D6B1734DEF7008ADC62 /* CloudsD3Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsD3Exporter.h; sourceTree = "<group>"; };
 		E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7637D6E1734DEF7008ADC62 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
-		E7637D6F1734DEF7008ADC62 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsFCPParser.cpp; sourceTree = "<group>"; };
 		E7637D711734DEF7008ADC62 /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsFCPParser.h; sourceTree = "<group>"; };
 		E7637D741734DEF7008ADC62 /* CloudsLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsLink.cpp; sourceTree = "<group>"; };
 		E7637D751734DEF7008ADC62 /* CloudsLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLink.h; sourceTree = "<group>"; };
-		E7637D761734DEF7008ADC62 /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
-		E7637D771734DEF7008ADC62 /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
-		E7B28C2316F28B1A008F0765 /* ViewerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerApp.h; sourceTree = "<group>"; };
-		E7B28C2416F28B1A008F0765 /* ViewerApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewerApp.mm; sourceTree = "<group>"; };
 		E7DA11CD16DC26BE00DA505A /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
@@ -165,14 +151,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18CCC2DF1773B22D003436EC /* RGBD */ = {
-			isa = PBXGroup;
-			children = (
-				18CCC2E01773B238003436EC /* CloudsRGBDCombinedRender.h */,
-			);
-			name = RGBD;
-			sourceTree = "<group>";
-		};
 		608B6AAE16A78AB800144EF4 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,8 +245,6 @@
 			children = (
 				609133851652CB3E00B523AD /* testView.h */,
 				609133861652CB3E00B523AD /* testView.mm */,
-				E7B28C2316F28B1A008F0765 /* ViewerApp.h */,
-				E7B28C2416F28B1A008F0765 /* ViewerApp.mm */,
 				609133791652C9C900B523AD /* AppDelegate.h */,
 				6091337A1652C9C900B523AD /* AppDelegate.m */,
 				6091337B1652C9C900B523AD /* main.m */,
@@ -330,7 +306,6 @@
 		E7432D7F170F42CE00C554EC /* src */ = {
 			isa = PBXGroup;
 			children = (
-				18CCC2DF1773B22D003436EC /* RGBD */,
 				E7637D691734DEF7008ADC62 /* Exporters */,
 				E7637D6C1734DEF7008ADC62 /* StoryEngine */,
 			);
@@ -349,21 +324,14 @@
 		E7637D6C1734DEF7008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				18CCC2E11773B26A003436EC /* CloudsVisualSystemManager.cpp */,
-				18CCC2E21773B26A003436EC /* CloudsVisualSystemManager.h */,
-				18CCC2E31773B26A003436EC /* CloudsVisualSystemPreset.cpp */,
-				18E82CF11773B18A00C17B65 /* CloudsVisualSystemPreset.h */,
-				18142706176629ED00C2B5FE /* ClusterData.cpp */,
 				18142707176629EE00C2B5FE /* ClusterData.h */,
+				18142706176629ED00C2B5FE /* ClusterData.cpp */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
 				E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */,
-				E7637D6F1734DEF7008ADC62 /* CloudsEvents.h */,
 				E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D711734DEF7008ADC62 /* CloudsFCPParser.h */,
 				E7637D741734DEF7008ADC62 /* CloudsLink.cpp */,
 				E7637D751734DEF7008ADC62 /* CloudsLink.h */,
-				E7637D761734DEF7008ADC62 /* CloudsStoryEngine.cpp */,
-				E7637D771734DEF7008ADC62 /* CloudsStoryEngine.h */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -388,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* CloudsFCPParser */ = {
+		E4B69B5A0A3A1756003C02F2 /* CloudsLinker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CloudsFCPParser" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CloudsLinker" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -403,7 +371,7 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = CloudsFCPParser;
+			name = CloudsLinker;
 			productName = myOFApp;
 			productReference = E4B69B5B0A3A1756003C02F2 /* CloudsFCPParserDebug.app */;
 			productType = "com.apple.product-type.application";
@@ -413,7 +381,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsFCPParser" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsLinker" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -434,7 +402,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* CloudsFCPParser */,
+				E4B69B5A0A3A1756003C02F2 /* CloudsLinker */,
 			);
 		};
 /* End PBXProject section */
@@ -489,15 +457,11 @@
 				E704E38716C0B2C400B0DC72 /* tinyxmlerror.cpp in Sources */,
 				E704E38816C0B2C400B0DC72 /* tinyxmlparser.cpp in Sources */,
 				E704E38916C0B2C400B0DC72 /* ofxXmlSettings.cpp in Sources */,
-				E7B28C2516F28B1A008F0765 /* ViewerApp.mm in Sources */,
 				E7637D811734DEF7008ADC62 /* CloudsD3Exporter.cpp in Sources */,
 				E7637D821734DEF7008ADC62 /* CloudsClip.cpp in Sources */,
 				E7637D831734DEF7008ADC62 /* CloudsFCPParser.cpp in Sources */,
 				E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */,
-				E7637D861734DEF7008ADC62 /* CloudsStoryEngine.cpp in Sources */,
 				18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */,
-				18CCC2E41773B26A003436EC /* CloudsVisualSystemManager.cpp in Sources */,
-				18CCC2E51773B26A003436EC /* CloudsVisualSystemPreset.cpp in Sources */,
 				1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,7 +638,7 @@
 					"-mtune=native",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CloudsFCPParserDebug;
+				PRODUCT_NAME = CloudsLinkerDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -778,7 +742,7 @@
 					"-mtune=native",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CloudsFCPParser;
+				PRODUCT_NAME = CloudsLinker;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -786,7 +750,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsFCPParser" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CloudsLinker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -795,7 +759,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CloudsFCPParser" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CloudsLinker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

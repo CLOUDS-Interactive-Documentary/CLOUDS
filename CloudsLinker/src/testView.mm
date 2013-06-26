@@ -1,5 +1,5 @@
 #import "testView.h"
-#import "ViewerApp.h"
+//#import "ViewerApp.h"
 #include "CloudsClip.h"
 
 @implementation testView
@@ -274,9 +274,17 @@
 //	[playlistTable reloadData];
 }
 
-- (IBAction) unloadVideo:(id)sender
+
+- (IBAction) togglePlay:(id)sender
 {
-	preview.stop();
+	if(preview.isLoaded()){
+		if(preview.isPlaying()){
+			preview.stop();
+		}
+		else{
+			preview.play();
+		}
+	}
 }
 
 //- (IBAction)suppressLinkModifier:(id)sender
@@ -366,21 +374,16 @@
     
 	ofBackground(0);
 	
-    //	ofBackgroundGradient(ofColor::black,
-    //						 ofColor::darkGray*.15,
-    //						 OF_GRADIENT_LINEAR);
+    if(preview.isLoaded()){
+		ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
+		ofRectangle videoRect(0,0,1920,1080);
+		videoRect.scaleTo(screenRect);
+		
+        preview.draw(videoRect);
+		
+		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.keywords, ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
+    }
 	
-//    visualizer.drawPhysics();
-    
-//	string debug = "";
-//	debug += "Current Topic: " + storyEngine.getCurrentTopic() + " (" + ofToString(storyEngine.getTimesOnTopic()) + "/" + ofToString(storyEngine.maxTimesOnTopic) + ")\n";
-//	debug += "Watched " + ofxTimecode::timecodeForSeconds( storyEngine.getTotalSecondsWatched() ) + " from " + ofToString( storyEngine.getClipHistory().size()  ) + "\n";
-//	debug += "Covered " + ofToString( storyEngine.getClipHistory().size() ) + " / " + ofToString( parser.getAllClips().size() ) + "\n";
-	
-	ofPushStyle();
-	ofSetColor(210);
-//	font.drawString(debug, 30,30);
-	ofPopStyle();
 }
 
 - (void) exit
@@ -391,22 +394,13 @@
 
 - (void)keyPressed:(int)key
 {
-    //if(key == ' ') updatePhysics = !updatePhysics;
-//    if(key == ' '){
-//        [self playDoubleClickedRow: clipTableSource];
-//    }
 	
-//	if(key == 'h'){
-//		cout << "toggling vis" << endl;
-////		gui->disable();
-//	}
-//	if(key == 's'){
-////		gui->enable();
-//	}
+	[self togglePlay:self];
+	cout << "KEY " << key << endl;
 }
 
-- (IBAction) createLink:(id)sender
-{
+//- (IBAction) createLink:(id)sender
+//{
 //    NSLog(@"creating link. edge selected? %@", visualizer.isEdgeSelected() ? @"YES" : @"NO" );
 //	
 //	if(visualizer.isEdgeSelected() && !visualizer.isSelectedEdgeLink() ){
@@ -435,7 +429,7 @@
 //        
 //		cout << "after creating link the current clip has " << currentClipLinks.size() << endl;
 //	}
-}
+//}
 
 //CONFUSING: delete link is called from the link table, remove link called from the graph
 //- (IBAction) deleteLink:(id)sender
@@ -504,7 +498,8 @@
 
 -(IBAction)suppressFromLeftToRight:(id)sender{
     if([linkerB isClipSelected]&&[linkerA isClipSelected]){
-        [self suppressLink:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+        [self suppressLink:[linkerA selectedClip]
+					toClip:[linkerB selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -512,7 +507,8 @@
 
 -(IBAction)suppressFromRighttoLeft:(id)sender{
     if([linkerA isClipSelected]&&[linkerB isClipSelected]){
-        [self suppressLink:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+        [self suppressLink:[linkerB selectedClip]
+					toClip:[linkerA selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -521,7 +517,8 @@
 }
 -(IBAction)linkFromLeftToRight:(id)sender{
     if([linkerB isClipSelected]&&[linkerA isClipSelected]){
-        [self linkClip:[linkerA selectedClip] toClip:[linkerB selectedClip]];
+        [self linkClip:[linkerA selectedClip]
+				toClip:[linkerB selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -529,7 +526,8 @@
 
 -(IBAction)linkFromRightToLeft:(id)sender{
     if([linkerA isClipSelected]&&[linkerB isClipSelected]){
-        [self linkClip:[linkerB selectedClip] toClip:[linkerA selectedClip]];
+        [self linkClip:[linkerB selectedClip]
+				toClip:[linkerA selectedClip]];
         [linkerA updateTables];
         [linkerB updateTables];
     }
@@ -547,7 +545,8 @@
 		l.startFrame = -1;
 		l.endFrame = -1;
 		
-		//TODO figure out frame numbers
+		parser.unsuppressConnection(l);
+		
 		parser.addLink(l);
 		
 		//save
@@ -570,14 +569,16 @@
 		l.startFrame = -1;
 		l.endFrame = -1;
         
+		parser.removeLink(source.getLinkName(),target.getLinkName());
+		
 		parser.suppressConnection(l);
         
 		[self saveLinks:self];
 	}
 }
 
-- (IBAction) linkLast:(id)sender
-{
+//- (IBAction) linkLast:(id)sender
+//{
 //	if(playlistTable.numberOfRows > 1){
 //		CloudsClip& a = storyEngine.getClipHistory()[ playlistTable.selectedRow-1 ];
 //		CloudsClip& b = storyEngine.getClipHistory()[ playlistTable.selectedRow ];
@@ -591,7 +592,7 @@
 //		[self saveLinks:self];
 //	}
 	
-}
+//}
 
 //- (IBAction) suppressLast:(id)sender
 //{
@@ -635,11 +636,11 @@
 	}
 }
 
-- (IBAction) playDoubleClickedRow:(id)sender
-{
-	
-	onPlaylist = false; //will get set to true again if we are coming from a playlist
-	
+//- (IBAction) playDoubleClickedRow:(id)sender
+//{
+//	
+//	onPlaylist = false; //will get set to true again if we are coming from a playlist
+
 //	CloudsClip clip;
 //	if(sender == clipTableSource && clipTableSource.selectedRow >= 0){
 //        clip = [self selectedClip];
@@ -701,7 +702,7 @@
      }
      */
     
-   	clipLoaded = YES;
+//   	clipLoaded = YES;
 	
 //	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
 //	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
@@ -711,12 +712,12 @@
     
 //	[linkTable reloadData];
 //    [suppressedTable reloadData];
-    
-}
+
+//}
 
 - (void) playClip:(CloudsClip&) clip
 {
-	onPlaylist = false; //will get set to true again if we are coming from a playlist
+//	onPlaylist = false; //will get set to true again if we are coming from a playlist
 	if(currentPlayingClip.getLinkName() == clip.getLinkName() && !autoProgressStory){
 		if(preview.isPlaying()){
 			preview.stop();
@@ -763,13 +764,12 @@
 	}
 	
 	currentPlayingClip = clip;
-	clipEndFrame = clip.endFrame;
-	
+	clipEndFrame = clip.endFrame;	
 }
 
-- (CloudsClip&) selectedClip
-{
-    
+//- (CloudsClip&) selectedClip
+//{
+
 //    if(selectedClipsSource.size() > 0){
 //        CloudsClip& c=selectedClipsSource[clipTableSource.selectedRow];
 //        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
@@ -787,13 +787,13 @@
 //    }
     
     
-}
+//}
 
-- (CloudsClip&) selectedClipFromPlaylist
-{
+//- (CloudsClip&) selectedClipFromPlaylist
+//{
 	//return visualizer.pathByClip[ playlistTable.selectedRow ];
 //	return storyEngine.getClipHistory()[ playlistTable.selectedRow ];
-}
+//}
 
 - (void)keyReleased:(int)key
 {
