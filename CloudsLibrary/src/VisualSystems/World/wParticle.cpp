@@ -21,12 +21,12 @@ wParticle::wParticle(){
     bTrail = NULL;
 }
 
-void wParticle::setLatLong(float _lat, float _long){
+void wParticle::place(float _lat, float _long, float _deep){
     ofQuaternion latRot, longRot;
     latRot.makeRotate( _lat, 1, 0, 0);
     longRot.makeRotate( _long, 0, 1, 0);
     
-    this->set(latRot * longRot * ofPoint(0,0,-300));
+    this->set(latRot * longRot * ofPoint(0,0,-_deep));
 }
 
 void wParticle::applyGravityForce(float _pct){
@@ -224,11 +224,11 @@ void wParticle::draw(){
         for (int i = 0; i < tail.size(); i++){
             float alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
             
-            mesh.addColor(ofFloatColor( color, alpha) );
+            mesh.addColor(ofFloatColor( 1.0, alpha) );
             mesh.addVertex(tail[i]);
         }
-        ofSetColor( 255 );
         ofFill();
+        ofSetColor( 255 );
         mesh.draw();
         
     } else {
