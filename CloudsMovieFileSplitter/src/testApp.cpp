@@ -51,6 +51,8 @@ void testApp::setup(){
                         
                         stringstream ffmpegCommand;
                         ffmpegCommand<<"ffmpeg -i \""<<name<<".mov"<< "\""" -vcodec copy -acodec copy "<<"-ss "<<numOfSec<<" -t "<<durationInSecs<<" "<<clipFileName<<".mov"<<endl;
+                        
+                        cout<<ffmpegCommand.str()<<endl;
                     }
                     fcpXML.popTag(); //clipitem
                 }
