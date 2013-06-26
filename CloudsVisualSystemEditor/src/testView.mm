@@ -98,11 +98,40 @@
 	
 }
 
+- (NSArray *)tokenField:(NSTokenField *)tokenField
+completionsForSubstring:(NSString *)substring
+		   indexOfToken:(NSInteger)tokenIndex
+	indexOfSelectedItem:(NSInteger *)selectedIndex
+{
+    
+    //    cout << "asking for completions..." << endl;
+    NSMutableArray* completions = [NSMutableArray array];
+    for(int i = 0; i < parser.getAllKeywords().size(); i++){
+        NSString* stringKeyword = [NSString stringWithUTF8String:parser.getAllKeywords()[i].c_str()];
+        if([stringKeyword rangeOfString:substring].location == 0 &&
+		   ![self hasKeyword:stringKeyword])
+		{
+            [completions addObject:stringKeyword];
+        }
+    }
+    return completions;
+}
+
+- (BOOL) hasKeyword:(NSString*)keyword
+{
+    NSString* currentString = currentKeywords.stringValue;
+    NSArray* stringSet = [currentString componentsSeparatedByCharactersInSet: currentKeywords.tokenizingCharacterSet];
+    for( NSString* str in stringSet){
+        if([keyword isEqualToString:str]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)playDoubleClickedRow:(id)sender
 {
     shouldPlaySelectedRow = true;
-    
-
 }
 
 @end

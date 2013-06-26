@@ -32,7 +32,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
+//	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );

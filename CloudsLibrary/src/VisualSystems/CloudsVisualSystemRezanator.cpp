@@ -104,7 +104,12 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         
 		currentCamera->end();
         CloudsVisualSystem::getSharedRenderTarget().end();
-        CloudsVisualSystem::getSharedRenderTarget().draw(0,0);
+		
+		//TODO: add shader preprocess
+		
+        CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     }
     
 	timeline->draw();

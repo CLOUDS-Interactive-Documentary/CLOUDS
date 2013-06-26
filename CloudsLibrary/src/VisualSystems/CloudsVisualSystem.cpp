@@ -9,7 +9,7 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
        sharedRenderTarget.getWidth() != ofGetWidth() ||
        sharedRenderTarget.getHeight() != ofGetHeight())
     {
-        sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+        sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
     }
     return sharedRenderTarget;
 }

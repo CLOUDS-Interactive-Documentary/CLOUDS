@@ -5,9 +5,12 @@
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
 
-@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
+@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 	
 	IBOutlet NSTableView* presetTable;
+	
+	IBOutlet NSTokenField* currentKeywords;
+	
 	bool shouldPlaySelectedRow;
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
@@ -33,5 +36,12 @@
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 
 - (void)playDoubleClickedRow:(id)sender;
+
+- (NSArray *)tokenField:(NSTokenField *)tokenField
+completionsForSubstring:(NSString *)substring
+		   indexOfToken:(NSInteger)tokenIndex
+	indexOfSelectedItem:(NSInteger *)selectedIndex;
+
+- (BOOL) hasKeyword:(NSString*) keyword;
 
 @end

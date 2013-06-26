@@ -8,9 +8,6 @@
 
 #pragma once
 #import <Foundation/Foundation.h>
-//#import <Cocoa/Cocoa.h>
-
-//#include "ofMain.h"
 #include "CloudsFCPParser.h"
 @class testView;
 
@@ -38,6 +35,7 @@
 	
 	BOOL dontUpdateClips;
 }
+
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 
@@ -77,5 +75,6 @@
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 - (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
 
+- (BOOL) hasKeyword:(NSString*) keyword;
 
 @end
