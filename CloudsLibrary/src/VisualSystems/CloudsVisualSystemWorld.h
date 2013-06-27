@@ -53,20 +53,23 @@ protected:
 
     //  Globe
     //
-    void        loadPath(ofVboMesh &_vbo, string _file);
+    void        loadVbo(ofVboMesh &_vbo, string _file);
+    float       wireSphereScale, solidSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha;
+    float       coastAlpha, riversAlpha;
     ofVboMesh   coastVbo;
     ofVboMesh   riversVbo;
 
     //  Cities
     //
-    void loadPoints(string _file);
+    void loadWorldPoints(string _file);
     vector< wPoint > worldPoints;
     float   pointNoisePeaks;
     float   rippleThreshold;
     
     //  Flocking particles
     //
-    void loadParticles( string _file );
+//    void loadParticles( string _file );
     vector<wParticle*> particles;
     ofPoint globalOffset;
     float   nMaxPoints;

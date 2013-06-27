@@ -15,72 +15,110 @@ string CloudsVisualSystemWorld::getSystemName()
 
 void CloudsVisualSystemWorld::selfSetup()
 {
+    nMaxPoints = 1000;
+    pointNoisePeaks = 0.0;
+    rippleThreshold = 1.0;
+    initialForce = 1.0;
+    density = 0.9;
+    gravity = 1.0;
+    repulsion = 1.0;
+    turbulence = 1.0;
+    neigbordhood = 1.0;
+    independence = 1.0;
+    
+    coastAlpha = 0.3921;
+    riversAlpha = 0.3921;
+    
+    wireSphereScale = 0.9333;
+    solidSphereScale = 0.8666;
+    wireSphereAlpha = 0.0784;
+    solidSphereAlpha = 1.0;
+}
+
+void CloudsVisualSystemWorld::selfBegin()
+{
     ofSetCircleResolution(60);
     
     //  Load Globe paths
     //
-    loadPath(coastVbo, "simple-coast.txt");
-    loadPath(riversVbo, "simple-rivers.txt");
+    loadVbo(coastVbo, "simple-coast.txt");
+    loadVbo(riversVbo, "simple-rivers.txt");
     
     //  Load cities points
     //
-//    loadPoints( points, "airports.txt");
-    loadPoints( "simple-cities.txt" );
-    
-    //  Load particles
-    //
-//    loadParticles("simple-rivers.txt");
+    loadWorldPoints( "simple-cities.txt" );
     
     //  Load Stars
     //
     loadStarts( "constelations.txt" );
-    
+
     globalOffset.set(0,0,0);
-    nMaxPoints = 1000;
 }
 
-void CloudsVisualSystemWorld::loadParticles( string _file ){
-    ifstream fileIn;
-	
-    string filePath = getDataPath()+"visualsystems/World/"+_file;
-    ofBuffer buffer = ofBufferFromFile(filePath);
+void CloudsVisualSystemWorld::selfEnd()
+{
+    coastVbo.clear();
+    riversVbo.clear();
+    worldPoints.clear();
     
-    wParticle *lastParticle = NULL;
-    wParticle *newParticle = NULL;
+    for(int i = particles.size()-1; i >= 0; i--){
+        delete particles[i];
+        particles.erase(particles.begin()+i);
+    }
     
-    while(!buffer.isLastLine()) {
-        string temp = buffer.getNextLine();
-        
-        if(temp.length() != 0) {
-            
-            vector<string> values = ofSplitString(temp, " ");
-            
-            if ( values[0] == "segment"){
-                
-                newParticle = NULL;
-                lastParticle = NULL;
-                
-            } else {
-                
-                newParticle = new wParticle();
-                newParticle->set( ofPoint(ofToFloat(values[0]),
-                                          ofToFloat(values[1]),
-                                          ofToFloat(values[2]) ) );
-                newParticle->loc = *newParticle;
-                newParticle->bTrail = false;
-                
-                if ( lastParticle != NULL){
-                    newParticle->connect = lastParticle;
-                }
-                
-                particles.push_back(newParticle);
-                lastParticle = newParticle;
-            }
-        }
+    for(int i = stars.size()-1; i >= 0; i--){
+        delete stars[i];
+        stars.erase(stars.begin()+i);
     }
 }
 
-void CloudsVisualSystemWorld::loadPath(ofVboMesh &_vbo, string _file){
+void CloudsVisualSystemWorld::selfExit()
+{
+    
+}
+
+//void CloudsVisualSystemWorld::loadParticles( string _file ){
+//    ifstream fileIn;
+//	
+//    string filePath = getDataPath()+"visualsystems/World/"+_file;
+//    ofBuffer buffer = ofBufferFromFile(filePath);
+//    
+//    wParticle *lastParticle = NULL;
+//    wParticle *newParticle = NULL;
+//    
+//    while(!buffer.isLastLine()) {
+//        string temp = buffer.getNextLine();
+//        
+//        if(temp.length() != 0) {
+//            
+//            vector<string> values = ofSplitString(temp, " ");
+//            
+//            if ( values[0] == "segment"){
+//                
+//                newParticle = NULL;
+//                lastParticle = NULL;
+//                
+//            } else {
+//                
+//                newParticle = new wParticle();
+//                newParticle->set( ofPoint(ofToFloat(values[0]),
+//                                          ofToFloat(values[1]),
+//                                          ofToFloat(values[2]) ) );
+//                newParticle->loc = *newParticle;
+//                newParticle->bTrail = false;
+//                
+//                if ( lastParticle != NULL){
+//                    newParticle->connect = lastParticle;
+//                }
+//                
+//                particles.push_back(newParticle);
+//                lastParticle = newParticle;
+//            }
+//        }
+//    }
+//}
+
+void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
     _vbo.setMode(OF_PRIMITIVE_LINES);
     
     ifstream fileIn;
@@ -122,7 +160,7 @@ void CloudsVisualSystemWorld::loadPath(ofVboMesh &_vbo, string _file){
     }
 }
 
-void CloudsVisualSystemWorld::loadPoints(string _file){
+void CloudsVisualSystemWorld::loadWorldPoints(string _file){
     string filePath = getDataPath()+"visualsystems/World/"+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
@@ -189,7 +227,15 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
 
 void CloudsVisualSystemWorld::selfSetupRenderGui()
 {
-
+    rdrGui->addLabel("Scale");
+    rdrGui->addSlider("Solid_Sphere_Scale", 0.6, 1.0, &solidSphereScale);
+    rdrGui->addSlider("Wire_Sphere_Scale", 0.6, 1.0, &wireSphereScale);
+    
+    rdrGui->addLabel("Alphas");
+    rdrGui->addSlider("Solid_Sphere", 0.0, 1.0, &solidSphereAlpha);
+    rdrGui->addSlider("Wire_Sphere", 0.0, 1.0, &wireSphereAlpha);
+    rdrGui->addSlider("Rivers", 0.0, 1.0, &riversAlpha);
+    rdrGui->addSlider("Coast", 0.0, 1.0, &coastAlpha);
 }
 
 void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
@@ -262,27 +308,25 @@ void CloudsVisualSystemWorld::selfDraw()
     
     ofPushMatrix();
     ofPushStyle();
-    
     ofScale(0.3,0.3,0.3);
-    
     ofRotateY(ofGetFrameNum()*0.01);
     
     //  Render globe
     //
     ofFill();
-    ofSetColor(20);
-	ofDrawSphere(0, 0, 260);
+    ofSetColor(20,solidSphereAlpha*255.0);
+	ofDrawSphere(0, 0, solidSphereScale*300 );
     //
     ofNoFill();
-    ofSetColor(255,20);
-	ofDrawSphere(0, 0, 280);
+    ofSetColor(255,wireSphereAlpha*255.0);
+	ofDrawSphere(0, 0, wireSphereScale*300);
     //
     ofSetLineWidth(0.5);
-    ofSetColor(255,100);
+    ofSetColor(255,coastAlpha*255.0f);
     coastVbo.drawWireframe();
     //
     ofSetLineWidth(0.2);
-    ofSetColor(0,140,200,100);
+    ofSetColor(0,140,200,riversAlpha*255.0f);
     riversVbo.drawWireframe();
     ofSetColor(255,100);
     
@@ -292,10 +336,6 @@ void CloudsVisualSystemWorld::selfDraw()
         particles[i]->draw();
     }
     
-//    int randomCity = ofRandom(worldPoints.size());
-//    if ( !worldPoints[randomCity].bRipple){
-//        worldPoints[randomCity].bRipple = true;
-//    }
     //  Spikes
     //
     for(int i = 0; i < worldPoints.size(); i++){
@@ -339,21 +379,6 @@ void CloudsVisualSystemWorld::selfDrawDebug()
 }
 
 void CloudsVisualSystemWorld::selfSceneTransformation()
-{
-    
-}
-
-void CloudsVisualSystemWorld::selfExit()
-{
-    
-}
-
-void CloudsVisualSystemWorld::selfBegin()
-{
-    
-}
-
-void CloudsVisualSystemWorld::selfEnd()
 {
     
 }

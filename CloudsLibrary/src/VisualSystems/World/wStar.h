@@ -14,11 +14,8 @@ public:
 	wStar();
     
     void    place( float _ra, float _dec );
-   
 	void	draw();
     
     string  constName;
     wStar   *connect;
-    
-    float   alpha;
 };
