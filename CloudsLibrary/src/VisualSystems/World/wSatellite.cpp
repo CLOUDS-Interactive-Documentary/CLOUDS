@@ -9,7 +9,7 @@
 #include "wSatellite.h"
 
 wSatellite::wSatellite(){
-    lat = ofRandom(-180,180);
+    lat = ofRandom(-50,50);
     lon = ofRandom(-180,180);
 }
 
@@ -53,12 +53,10 @@ void wSatellite::draw(){
     angleToCenter.normalize();
     
     ofPushMatrix();
-    
     ofTranslate(*this);
     glRotatef(-theta, angleToCenter.x, angleToCenter.y, angleToCenter.z);
-    ofSetColor(100,100);
+    ofSetColor(200,200);
     ofFill();
     ofDrawBox(ofPoint(0,0,0), 1);
-    
     ofPopMatrix();
 }

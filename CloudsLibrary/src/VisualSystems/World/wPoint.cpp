@@ -42,7 +42,7 @@ void wPoint::update(){
     }
     
     if (bRipple){
-        if (ripplePct<3.0){
+        if (ripplePct<1.0){
             ripplePct += 0.01;
         } else {
             ripplePct = 0.0;

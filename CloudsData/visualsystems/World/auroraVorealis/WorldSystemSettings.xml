@@ -13,17 +13,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>noisePeaks</Name>
-    <Value>197.044326782</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>rippleThreshold</Name>
-    <Value>0.950738907</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>max_number</Name>
-    <Value>221.674880981</Value>
+    <Value>758.620666504</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -33,7 +33,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>density</Name>
-    <Value>0.862068951</Value>
+    <Value>0.967980266</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -63,10 +63,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Number_of_Satelites</Name>
-    <Value>26.108375549</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max_signals</Name>
-    <Value>216.748779297</Value>
+    <Value>0.000000000</Value>
 </Widget>

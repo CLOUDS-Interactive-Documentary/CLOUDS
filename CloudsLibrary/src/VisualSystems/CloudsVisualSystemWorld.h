@@ -12,6 +12,7 @@
 
 #include "wStar.h"
 #include "wPoint.h"
+#include "wSign.h"
 #include "wParticle.h"
 #include "wSatellite.h"
 
@@ -70,7 +71,6 @@ protected:
     
     //  Flocking particles
     //
-//    void loadParticles( string _file );
     vector<wParticle*> particles;
     ofPoint globalOffset;
     float   nMaxPoints;
@@ -88,5 +88,9 @@ protected:
     
     //  Satellites
     //
-    vector< wSatellite > satellites;
+    vector< wSatellite* > satellites;
+    vector< wSign > signs;
+    float   nMaxSigns;
+    float   nMaxSatellites;
+    
 };
