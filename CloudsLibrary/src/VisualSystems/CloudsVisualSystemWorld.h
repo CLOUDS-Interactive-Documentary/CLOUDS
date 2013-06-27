@@ -70,6 +70,7 @@ protected:
     vector<wParticle*> particles;
     ofPoint globalOffset;
     float   nMaxPoints;
+    float   initialForce;
     float   density,gravity,repulsion;
     float   turbulence,neigbordhood,independence;
     

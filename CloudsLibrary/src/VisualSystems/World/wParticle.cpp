@@ -1,6 +1,5 @@
 /*
- *  ofParticle.cpp
- *  kinectParticle
+ *  wParticle.cpp
  *
  *  Created by Patricio González Vivo on 24/01/11.
  *  Copyright 2011 PatricioGonzalezVivo.com. All rights reserved.
@@ -17,6 +16,13 @@ wParticle::wParticle(){
 	localOffset.set(ofRandom(1.0f),ofRandom(1.0f),ofRandom(1.0f));
 	
 	color.set(255,255,255);
+    
+    ripplePnt.set(0,0);
+    ripplePct = 0.0;
+    rippleScl = 0.05;
+    bDead = false;
+    bLanching = true;
+    
     connect = NULL;
     bTrail = NULL;
 }
@@ -27,6 +33,10 @@ void wParticle::place(float _lat, float _long){
     longRot.makeRotate( _long, 0, 1, 0);
     
     this->set(latRot * longRot * ofPoint(0,0,-300));
+}
+
+float wParticle::getAlitude(){
+    return loc.distance(ofPoint(0,0,0)) - 300;
 }
 
 void wParticle::applyGravityForce(float _pct){
@@ -193,11 +203,32 @@ void wParticle::applyFlockingForce(ofPoint * _offset, float _neighbordhood, floa
 }
 
 void wParticle::update(float _speed){
-	vel += acc;
-    vel *= _speed;
-	loc += vel;
-    acc *= 0;
+	
+    if (getAlitude() < 20 && ripplePct == 0.0){
+        
+        if (!bLanching){
+            ripplePct += 0.01;
+            ripplePnt = loc;
+        }
+        
+    } else {
+        bLanching = false;
+    }
     
+    if (ripplePct > 0.0 ){
+        
+        if (ripplePct < 3.0)
+            ripplePct += 0.01;
+        else
+            bDead = true;
+        
+    } else {
+        vel += acc;
+        vel *= _speed;
+        loc += vel;
+        acc *= 0;
+    }
+        
     if (bTrail){
         tail.push_back(loc);
         while (tail.size() > 100) {
@@ -240,6 +271,49 @@ void wParticle::draw(){
     if (connect != NULL){
         ofLine(loc, connect->loc);
     }
+    
+    if (ripplePct > 0.0 ){
+        drawRipple(ripplePct*0.3);
+        drawRipple(ripplePct*0.61);
+        drawRipple(ripplePct);
+    }
+    
+    ofPopStyle();
+}
+
+void wParticle::drawRipple( float _pct ){
+    //  Jen equation
+    //
+    float totalGlobeRadio = 100;
+    float rippleDps = _pct*rippleScl;
+    float rippleHeight = rippleDps*totalGlobeRadio;
+    float rippleRadio = sqrt( 2*rippleHeight*totalGlobeRadio-powf(rippleHeight,2) );
+    
+    ofPoint vectorToCenter = ofPoint(0,0,0)-ripplePnt;
+    vectorToCenter.normalize();
+    ofPoint rippleCenter = ripplePnt + vectorToCenter * rippleHeight;
+    
+    ofPoint objectLookAt = ofVec3f(0,0,1);
+    float theta = objectLookAt.angle(vectorToCenter);
+    ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
+    rippleAngle.normalize();
+    
+    ofPushStyle();
+    ofFloatColor rippleColor;
+    rippleColor.set(1.0);
+    rippleColor.a = (1.0-_pct)*0.2;
+    ofSetColor(rippleColor);
+    
+    //  Ripple
+    //
+    ofPushMatrix();
+    ofTranslate(rippleCenter);
+    glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
+    ofNoFill();
+    
+//    ofSetLineWidth(1.5);
+    ofCircle(0,0,0, rippleRadio);
+    ofPopMatrix();
     
     ofPopStyle();
 }

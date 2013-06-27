@@ -177,7 +177,8 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
     
     sysGui->addLabel("Flocking particles");
     sysGui->addSlider("max_number", 0.0, 1000, &nMaxPoints);
-    sysGui->addSlider("density", 0.9, 1.0, &density);
+    sysGui->addSlider("initialForce", 0.0, 10.0, &initialForce);
+    sysGui->addSlider("density", 0.5, 1.0, &density);
     sysGui->addSlider("gravity", 0.0, 1.0, &gravity);
     sysGui->addSlider("repulsion", 0.0, 1.0, &repulsion);
     sysGui->addSlider("turbulence", 0.0, 0.09, &turbulence);
@@ -205,27 +206,43 @@ void CloudsVisualSystemWorld::selfUpdate()
 {
     ofSetColor(255);
 
+    //  Insert Particles if it's need
+    //
     if ( (worldPoints.size() > 2) && (particles.size() < nMaxPoints-2) ){
         int randomIndex = ofRandom(worldPoints.size()-1);
         
         wParticle *newParticle = new wParticle();
-        newParticle->set( worldPoints[randomIndex] );
+        newParticle->set( worldPoints[randomIndex]*1.01 );
         newParticle->loc = *newParticle;
+        newParticle->vel = *newParticle - ofPoint(0,0,0);
+        newParticle->vel.normalize();
+        newParticle->vel *= initialForce;
+        
         newParticle->color = worldPoints[randomIndex].color;
         newParticle->bTrail = true;
         particles.push_back(newParticle);
     }
     
+    //  Delete if they are to much
+    //
     while (particles.size() > nMaxPoints) {
         delete particles[0];
         particles.erase(particles.begin());
     }
     
-    for(int i = 0; i < particles.size(); i++){
-        particles[i]->addRepulsionForce( ofPoint(0,0,0), 400, repulsion);
-        particles[i]->addAttractionForce( ofPoint(0,0,0), 1000, gravity);
-        particles[i]->applyFlockingForce(&globalOffset,neigbordhood,independence);
-        particles[i]->update(density);
+    //  Update
+    //
+    for(int i = particles.size()-1; i >= 0 ; i--){
+        
+        if ( particles[i]->bDead ){
+            delete particles[i];
+            particles.erase(particles.begin()+i);
+        } else {
+            particles[i]->addRepulsionForce( ofPoint(0,0,0), 500, repulsion);
+            particles[i]->addAttractionForce( ofPoint(0,0,0), 1000, gravity);
+            particles[i]->applyFlockingForce(&globalOffset,neigbordhood,independence);
+            particles[i]->update(density);
+        }
     }
     
     globalOffset += ofPoint(turbulence/neigbordhood,
@@ -253,19 +270,19 @@ void CloudsVisualSystemWorld::selfDraw()
     //  Render globe
     //
     ofFill();
-    ofSetColor(20,20);
-	ofDrawSphere(0, 0, 290);
+    ofSetColor(20);
+	ofDrawSphere(0, 0, 260);
     //
     ofNoFill();
     ofSetColor(255,20);
-	ofDrawSphere(0, 0, 295);
+	ofDrawSphere(0, 0, 280);
     //
-    ofSetLineWidth(1.5);
-    ofSetColor(255);
+    ofSetLineWidth(0.5);
+    ofSetColor(255,100);
     coastVbo.drawWireframe();
     //
     ofSetLineWidth(0.2);
-    ofSetColor(0,140,200);
+    ofSetColor(0,140,200,100);
     riversVbo.drawWireframe();
     ofSetColor(255,100);
     

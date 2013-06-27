@@ -1,27 +1,27 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>Presets</Name>
+    <Name>Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000045776</XPosition>
-    <YPosition>678.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Aura</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>flairs</Name>
+    <Name>UPDATE</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Peaks</Name>
+    <Name>RENDER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AVAUTO</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ripples</Name>
-    <Value>0</Value>
+    <Name>USE TOUCHES</Name>
+    <Value>1</Value>
 </Widget>

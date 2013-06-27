@@ -26,15 +26,14 @@ void wStar::place( float _ra, float _dec){
 void wStar::draw(){
     ofPushStyle();
     
-    ofSetColor(ofFloatColor(1.0,
-                            ofNoise(x,y,z*ofGetElapsedTimef()*0.001) ));
+    ofSetColor(ofFloatColor(1.0,ofNoise(x,y,z*ofGetElapsedTimef()*0.005)*1.5 ));
     glBegin(GL_POINTS);
     glVertex3f(x,y,z);
     glEnd();
     
     if (connect != NULL){
-        ofSetColor(ofFloatColor(0.8,0.2));
-        ofSetLineWidth(0.1);
+        ofSetColor(ofFloatColor(0.8,0.03));
+        ofSetLineWidth(2.0);
         ofLine(*this, *connect);
     }
     

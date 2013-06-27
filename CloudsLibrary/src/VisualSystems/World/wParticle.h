@@ -15,6 +15,8 @@ public:
     
     void    place(float _lat, float _long);
     
+    float   getAlitude();
+    
 	void	applyForce(ofPoint _force){acc += _force;};
 	void	applyGravityForce(float _pct);
     
@@ -24,9 +26,7 @@ public:
     void    addAttractionForce(wParticle *p, float radius, float scale);
     
 	void	applyFlockingForce(ofPoint *_offSet, float _neighbordhood, float _independece);
-    
-    ofPoint	steer(ofPoint _target, bool _slowdown);
-    
+
 	void	update(float _speed);
 	void	draw();
     
@@ -38,5 +38,15 @@ public:
 	ofPoint     localOffset;
 	ofColor     color;
     
+    ofPoint     ripplePnt;
+    float       ripplePct;
+    float       rippleScl;
+    
+    bool        bLanching;
     bool        bTrail;
+    bool        bDead;
+    
+private:
+    ofPoint	steer(ofPoint _target, bool _slowdown);
+    void drawRipple( float _pct );
 };
