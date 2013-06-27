@@ -4,10 +4,10 @@
 #include "ofMain.h"
 
 #include "ofxUI.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "CloudsRGBDCombinedRender.h"
 
-class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystem {
  public:
 	CloudsVisualSystemThingsInTheDark();
 

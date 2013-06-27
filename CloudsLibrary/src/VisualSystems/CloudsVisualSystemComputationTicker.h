@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 /** 
  * COMPUTATION visual system
@@ -10,7 +9,7 @@
  * that can be zoomed in and diverted
  */
 
-class CloudsVisualSystemComputationTicker : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemComputationTicker : public CloudsVisualSystem {
   public:
 
 	string getSystemName();

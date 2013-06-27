@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "VoroParticle.h"
 #include "Voro.h"
 
-class CloudsVisualSystemVoro : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVoro : public CloudsVisualSystem {
 public:
     
     string getSystemName();

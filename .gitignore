@@ -46,3 +46,4 @@ timeline*.xml
 *trackPositions.xml
 /CloudsRGBDExporter/bin/data/SavedExportFolder.txt
 /CloudsRGBDExporter/bin/data/ColorReplacementFolder.txt
+*.vbo

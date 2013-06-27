@@ -3,12 +3,12 @@
 
 #include "ofMain.h"
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "MSAPhysics3D.h"
 
 using namespace msa::physics;
 
-class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
   public:
 	
 	CloudsVisualSystemVerletForm();

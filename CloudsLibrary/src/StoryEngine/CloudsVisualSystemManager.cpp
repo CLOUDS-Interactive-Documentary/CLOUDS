@@ -2,7 +2,6 @@
 #include "CloudsVisualSystemManager.h"
 
 #ifndef CLOUDS_NO_VS
-#include "CloudsVisualSystemRezanator.h"
 #include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsVisualSystemLSystems.h"
 #include "CloudsVisualSystemVoro.h"
@@ -13,6 +12,7 @@
 #include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
+#include "CloudsVisualSystemHiga.h"
 
 #endif
 
@@ -35,7 +35,9 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );	
+	registerVisualSystem( new CloudsVisualSystemHiga() );
+	
 	//REZA: Adding this makes it so the pointclouds don't show..
 //	registerVisualSystem( new CloudsVisualSystemAmber() );
 #endif

@@ -31,12 +31,7 @@ void CloudsVisualSystemComputationTicker::selfSetup(){
 	offsetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	
 	reloadShaders();
-	
-	relevantKeywords.push_back("computer");
-	relevantKeywords.push_back("computation");
-	relevantKeywords.push_back("computational art");
-	relevantKeywords.push_back("computational power");
-	
+		
 	regenerate = true;
 	
 	//choose a random preset
