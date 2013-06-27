@@ -34,7 +34,6 @@ git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
 
 ${PREFIX}rezaali/ofxGenerative
-${PREFIX}obviousjim/ofxExtrudedText
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
@@ -50,8 +49,10 @@ ${PREFIX}obviousjim/ofxCv
 ${PREFIX}obviousjim/ofxKinect
 ${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer
+
 ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
+
 cd ofxTimeline
 git checkout develop
 cd ..

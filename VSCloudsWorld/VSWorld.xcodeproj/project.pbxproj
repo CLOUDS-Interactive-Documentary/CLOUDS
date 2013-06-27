@@ -59,6 +59,7 @@
 		3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94361753049600F558AC /* ofxMSATimer.cpp */; };
 		3DCACC86176A51F2000696C6 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */; };
 		3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40D99177905720030A5EE /* wPoint.cpp */; };
+		3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40DA4177A194E0030A5EE /* wStar.cpp */; };
 		3DEFE117176E7D8000139095 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE110176E7D8000139095 /* tinyxml.cpp */; };
 		3DEFE118176E7D8000139095 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE112176E7D8000139095 /* tinyxmlerror.cpp */; };
 		3DEFE119176E7D8000139095 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE113176E7D8000139095 /* tinyxmlparser.cpp */; };
@@ -263,6 +264,8 @@
 		3DCACC85176A51F2000696C6 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		3DD40D99177905720030A5EE /* wPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wPoint.cpp; sourceTree = "<group>"; };
 		3DD40D9A177905720030A5EE /* wPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wPoint.h; sourceTree = "<group>"; };
+		3DD40DA4177A194E0030A5EE /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
+		3DD40DA5177A194E0030A5EE /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		3DEFE110176E7D8000139095 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		3DEFE111176E7D8000139095 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		3DEFE112176E7D8000139095 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 				3DEFE120176E897F00139095 /* wParticle.h */,
 				3DD40D99177905720030A5EE /* wPoint.cpp */,
 				3DD40D9A177905720030A5EE /* wPoint.h */,
+				3DD40DA4177A194E0030A5EE /* wStar.cpp */,
+				3DD40DA5177A194E0030A5EE /* wStar.h */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -1271,6 +1276,7 @@
 				3DEFE11A176E7D8000139095 /* ofxXmlSettings.cpp in Sources */,
 				3DEFE121176E897F00139095 /* wParticle.cpp in Sources */,
 				3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */,
+				3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

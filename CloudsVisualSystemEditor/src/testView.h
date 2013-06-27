@@ -5,13 +5,20 @@
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
 
-@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
+@interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
 	
 	IBOutlet NSTableView* presetTable;
+	IBOutlet NSTableView* clipTable;
+	IBOutlet NSTokenField* currentKeywords;
+	
+	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
 	CloudsVisualSystem* currentVisualSystem;
+	CloudsVisualSystemPreset* selectedPreset;
+	vector<CloudsClip> associatedClips;
+	vector<string> associatedKeywords;
 }
 
 - (void)setup;
@@ -33,5 +40,16 @@
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
 
 - (void)playDoubleClickedRow:(id)sender;
+
+- (NSArray *)tokenField:(NSTokenField *)tokenField
+completionsForSubstring:(NSString *)substring
+		   indexOfToken:(NSInteger)tokenIndex
+	indexOfSelectedItem:(NSInteger *)selectedIndex;
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor;
+- (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index;
+- (void) updateAssociatedClips;
+- (BOOL) hasKeyword:(NSString*) keyword;
+- (vector<string>) entries:(vector<string>&)a sharedWith:(vector<string>&)b;
 
 @end

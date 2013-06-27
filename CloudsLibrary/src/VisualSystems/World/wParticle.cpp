@@ -21,7 +21,7 @@ wParticle::wParticle(){
     bTrail = NULL;
 }
 
-void wParticle::setLatLong(float _lat, float _long){
+void wParticle::place(float _lat, float _long){
     ofQuaternion latRot, longRot;
     latRot.makeRotate( _lat, 1, 0, 0);
     longRot.makeRotate( _long, 0, 1, 0);
@@ -224,11 +224,11 @@ void wParticle::draw(){
         for (int i = 0; i < tail.size(); i++){
             float alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
             
-            mesh.addColor(ofFloatColor( color, alpha) );
+            mesh.addColor(ofFloatColor( 1.0, alpha) );
             mesh.addVertex(tail[i]);
         }
-        ofSetColor( 255 );
         ofFill();
+        ofSetColor( 255 );
         mesh.draw();
         
     } else {

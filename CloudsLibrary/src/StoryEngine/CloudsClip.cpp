@@ -75,8 +75,8 @@ string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolde
     
     string dstSound = exportFolder + "/" +  getID()+".wav";
     string srcSound;
-	if(alternativeVideoPath == ""){
-		srcSound = alternativeVideoPath + ofFilePath::getBaseName(sourceVideoFilePath);
+	if(alternativeVideoPath != ""){
+		srcSound = alternativeVideoPath + ofFilePath::getFileName(sourceVideoFilePath);
 	}
 	else{
 		srcSound = relinkFilePath(sourceVideoFilePath);

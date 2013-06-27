@@ -16,16 +16,26 @@ string CloudsVisualSystemWorld::getSystemName()
 void CloudsVisualSystemWorld::selfSetup()
 {
     ofSetCircleResolution(60);
-//    loadParticles("simple-rivers.txt");
     
+    //  Load Globe paths
+    //
     loadPath(coastVbo, "simple-coast.txt");
     loadPath(riversVbo, "simple-rivers.txt");
     
+    //  Load cities points
+    //
 //    loadPoints( points, "airports.txt");
     loadPoints( "simple-cities.txt" );
     
-    globalOffset.set(0,0,0);
+    //  Load particles
+    //
+//    loadParticles("simple-rivers.txt");
     
+    //  Load Stars
+    //
+    loadStarts( "constelations.txt" );
+    
+    globalOffset.set(0,0,0);
     nMaxPoints = 1000;
 }
 
@@ -125,16 +135,45 @@ void CloudsVisualSystemWorld::loadPoints(string _file){
             wPoint worldPoint;
             worldPoint.place(ofToFloat(values[1]),ofToFloat(values[2]));
             worldPoint.noisePeaks = &pointNoisePeaks;
+            worldPoint.noiseThreshold = &rippleThreshold;
             
             worldPoints.push_back(worldPoint);
         }
     }
 }
 
+void CloudsVisualSystemWorld::loadStarts( string _file){
+    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    
+    while(!buffer.isLastLine()) {
+        string temp = buffer.getNextLine();
+        
+        if(temp.length() != 0) {
+            vector<string> values = ofSplitString(temp, ",");
+            
+            wStar *a = new wStar();
+            a->place(ofToFloat(values[2]),
+                      ofToFloat(values[1]) );
+            a->constName = values[0];
+            
+            wStar *b = new wStar();
+            b->place(ofToFloat(values[4]),
+                      ofToFloat(values[3]) );
+            b->constName = values[0];
+            b->connect = a;
+            
+            stars.push_back(a);
+            stars.push_back(b);
+        }
+    }
+}
+
 void CloudsVisualSystemWorld::selfSetupSystemGui()
 {
-    sysGui->addLabel("Spikes");
-    sysGui->addSlider("pointsNoisePeaks", 0.0, 500, &pointNoisePeaks);
+    sysGui->addLabel("Cities");
+    sysGui->addSlider("noisePeaks", 0.0, 500, &pointNoisePeaks);
+    sysGui->addSlider("rippleThreshold", 0.0, 1.0, &rippleThreshold);
     
     sysGui->addLabel("Flocking particles");
     sysGui->addSlider("max_number", 0.0, 1000, &nMaxPoints);
@@ -215,7 +254,7 @@ void CloudsVisualSystemWorld::selfDraw()
     //
     ofFill();
     ofSetColor(20,20);
-//	ofDrawSphere(0, 0, 290);
+	ofDrawSphere(0, 0, 290);
     //
     ofNoFill();
     ofSetColor(255,20);
@@ -236,8 +275,10 @@ void CloudsVisualSystemWorld::selfDraw()
         particles[i]->draw();
     }
     
-    worldPoints[0].bRipple = true;
-    worldPoints[0].rippleDeepnes = abs(sin(ofGetElapsedTimef()*0.1));
+//    int randomCity = ofRandom(worldPoints.size());
+//    if ( !worldPoints[randomCity].bRipple){
+//        worldPoints[randomCity].bRipple = true;
+//    }
     //  Spikes
     //
     for(int i = 0; i < worldPoints.size(); i++){
@@ -246,6 +287,12 @@ void CloudsVisualSystemWorld::selfDraw()
     
     ofPopStyle();
     ofPopMatrix();
+    
+    //  Stars
+    //
+    for(int i = 0; i < stars.size(); i++){
+        stars[i]->draw();
+    }
     
     glDisable(GL_NORMALIZE);
     glDisable(GL_DEPTH_TEST);

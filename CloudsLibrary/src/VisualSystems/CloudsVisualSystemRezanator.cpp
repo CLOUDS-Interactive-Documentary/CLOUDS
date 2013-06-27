@@ -69,6 +69,8 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
+        CloudsVisualSystem::getSharedRenderTarget().begin();
+        ofClear(0, 0, 0);
         
         //  TEMPORARY FIX
         //
@@ -101,7 +103,13 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
-
+        CloudsVisualSystem::getSharedRenderTarget().end();
+		
+		//TODO: add shader preprocess
+		
+        CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     }
     
 	timeline->draw();

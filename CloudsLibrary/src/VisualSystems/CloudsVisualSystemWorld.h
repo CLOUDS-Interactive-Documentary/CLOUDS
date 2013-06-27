@@ -10,6 +10,7 @@
 
 #include "CloudsVisualSystemRezanator.h"
 
+#include "wStar.h"
 #include "wPoint.h"
 #include "wParticle.h"
 
@@ -61,6 +62,7 @@ protected:
     void loadPoints(string _file);
     vector< wPoint > worldPoints;
     float   pointNoisePeaks;
+    float   rippleThreshold;
     
     //  Flocking particles
     //
@@ -71,5 +73,8 @@ protected:
     float   density,gravity,repulsion;
     float   turbulence,neigbordhood,independence;
     
-    
+    //  Stars/constelations
+    //
+    void loadStarts( string _file);
+    vector< wStar* > stars;
 };

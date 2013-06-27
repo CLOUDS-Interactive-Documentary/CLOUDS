@@ -1,5 +1,6 @@
 #import "testView.h"
 #include "ofxDepthImageCompressor.h"
+#include "ofxTimecode.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -14,19 +15,20 @@
 	minBlobSize = 0;
 	selectColor = false;
 
-	cout << "PARSING LINKS" << endl;
-	if(ofDirectory("../../../CloudsData/").exists()){
-		
-		cout << "Found link in correct directory" << endl;
-		parser.setup("../../../CloudsData/fcpxml/");
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-	}
-	else{
-		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.setup("xml");
-		parser.parseLinks("clouds_link_db.xml");
-	}
+//	cout << "PARSING LINKS" << endl;
+//	if(ofDirectory("../../../CloudsData/").exists()){
+//		
+//		cout << "Found link in correct directory" << endl;
+//		parser.setup("../../../CloudsData/fcpxml/");
+//		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+//	}
+//	else{
+//		cout << "SETTING UP IN DATA DIRECTORY" << endl;
+//		parser.setup("xml");
+//		parser.parseLinks("clouds_link_db.xml");
+//	}
 	
+	parser.loadFromFiles();
 
 	exportFolder = ofBufferFromFile("SavedExportFolder.txt").getText();
 	colorReplacementFolder = ofBufferFromFile("ColorReplacementFolder.txt").getText();
@@ -91,12 +93,11 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 	
-	cout << "Finished setup" << endl;
+	cout << "Finished setup " << ofxTimecode::timecodeForSeconds(parser.getAllClipDuration()) << " seconds" << endl;
 }
 
 - (void)update
-{
-	
+{	
 	if(startExport){
 		[self cancelExport:self];
 		
@@ -130,11 +131,19 @@
 		cout << "exporting " << selectedClips.size() << endl;
 		
         ofBuffer encodingScript;
-        encodingScript.append("#!/bin/bash");
+        encodingScript.append("#!/bin/bash\n");
+		for(int i = 0; i < selectedClips.size(); i++){
+			encodingScript.append("#" + selectedClips[i].getID() + "\n" );
+		}
         for(int i = 0; i < selectedClips.size(); i++){
             encodingScript.append( selectedClips[i].getFFMpegLine(colorReplacementFolder, exportFolder) );
         }
-        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
+		
+		char filename[512];
+		sprintf(filename, "%s/ffmpeg_encode_M.%02d_D.%02d_H%02d_M.%02d.sh",exportFolder.c_str(),ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
+		
+        ofBufferToFile(filename, encodingScript);
+		
 //        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
 //        selectedClips.clear(); //STOP the export
 		startExport = false;
@@ -236,7 +245,6 @@
 		ofImage depthImage;
 		compressor.convertTo8BitImage(player.getDepthSequence()->getPixels(), depthImage);
 
-//		image.setFromPixels(player.getDepthSequence()->getPixels());
 		depthImage.draw(0,0);
 		
 		ofPushStyle();
@@ -268,14 +276,20 @@
 		ofNoFill();
 		ofPushMatrix();
 		ofSetHexColor(0x69aade);
-		ofTranslate(0, 0, minDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);      
+		ofTranslate(minDepth, 0, 0);
+
+//#if (OF_VERSION_PATCH > 4)
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);
 		ofPopMatrix();
 		
 		ofPushMatrix();
 		ofSetHexColor(0xFFFFFF - 0x69aade);
-		ofTranslate(0, 0, maxDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);
+		ofTranslate(maxDepth, 0, 0);
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);        
 		ofPopMatrix();
 		
 		cam.end();
@@ -330,6 +344,8 @@
 	if(clipTable.selectedRow >= 0){
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
+		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]));
+		
 		if(player.setup(clip.getSceneFolder())){
 			showHistogram = false;
 			calculatedHistogram = false;

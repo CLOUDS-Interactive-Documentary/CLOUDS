@@ -37,13 +37,13 @@ void testApp::setup(){
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	storyEngine.seedWithClip( clip );
-	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 //	player.update();
 	sound.update();
+	ofShowCursor();
 }
 
 //--------------------------------------------------------------

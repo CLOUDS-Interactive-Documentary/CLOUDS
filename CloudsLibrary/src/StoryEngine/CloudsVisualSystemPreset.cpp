@@ -7,7 +7,12 @@
 //
 
 #include "CloudsVisualSystemPreset.h"
+#include "CloudsVisualSystem.h"
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	
+}
+
+string CloudsVisualSystemPreset::getID(){
+	return system->getSystemName() + "_" + presetName;
 }
