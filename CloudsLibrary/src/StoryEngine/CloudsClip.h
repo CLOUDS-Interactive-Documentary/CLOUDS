@@ -48,6 +48,8 @@ class CloudsClip {
 	string combinedVideoPath;
 	string combinedCalibrationXMLPath;
 	
+	string getRelinkedVideoFilePath();
+	
 	//adjustment paramters set by the exporter
 	string getAdjustmentXML();
 	void loadAdjustmentFromXML(bool forceReload = false);

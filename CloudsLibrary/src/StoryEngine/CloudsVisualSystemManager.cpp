@@ -44,7 +44,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
-#ifndef CLOUDS_NO_VS	
+#ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	
 	system->setup();
@@ -58,23 +58,8 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
-	return presets[ ofRandom(presets.size()) ];
-}
-
-//--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
-	return presets;
-}
-
-//--------------------------------------------------------------------
-string CloudsVisualSystemManager::getKeywordFilePath(){
-	return CloudsVisualSystem::getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
-}
-
-//--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
-#ifndef CLOUDS_NO_VS	
+#ifndef CLOUDS_NO_VS
 	presets.clear();
 	for(int i = 0; i < systems.size(); i++){
 		vector<string> systemPresets = systems[i]->getPresets();
@@ -91,9 +76,6 @@ void CloudsVisualSystemManager::loadPresets(){
 				CloudsVisualSystemPreset preset;
 				preset.presetName = systemPresets[p];
 				preset.system = systems[i];
-				
-				//TODO: get keywords
-				
 				presets.push_back(preset);
 			}
 		}
@@ -102,7 +84,7 @@ void CloudsVisualSystemManager::loadPresets(){
 	keywords.clear();
 	ofxXmlSettings keywordXml;
 	string keywordsFile = getKeywordFilePath();
-
+	
 	if(!keywordXml.loadFile( keywordsFile )){
 		ofSystemAlertDialog("UNABLE TO LOAD KEYWORD FILE! " + keywordsFile + " Do not proceed");
 		return;
@@ -116,9 +98,10 @@ void CloudsVisualSystemManager::loadPresets(){
 		keywordXml.popTag(); //system
 	}
 	
-   #endif
+#endif
 }
 
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::saveKeywords(){
 	
 	string keywordsFile = getKeywordFilePath();
@@ -160,10 +143,27 @@ void CloudsVisualSystemManager::saveKeywords(){
 	}
 }
 
+//--------------------------------------------------------------------
+CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
+	return presets[ ofRandom(presets.size()) ];
+}
+
+//--------------------------------------------------------------------
+vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
+	return presets;
+}
+
+//--------------------------------------------------------------------
+string CloudsVisualSystemManager::getKeywordFilePath(){
+	return CloudsVisualSystem::getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
+}
+
+//--------------------------------------------------------------------
 vector<string> CloudsVisualSystemManager::keywordsForPreset(int index){
 	return keywords[ presets[index].getID() ];
 }
 
+//--------------------------------------------------------------------
 vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPreset& preset){
 	if(keywords.find( preset.getID() ) == keywords.end()){
 		ofLogError() << "no keywords found for preset " << preset.getID() << endl;
@@ -172,6 +172,7 @@ vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPr
 	return keywords[ preset.getID() ];
 }
 
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
 	keywords[ preset.getID() ] = newKeywords;
 }
