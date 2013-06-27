@@ -8,13 +8,13 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "wStar.h"
 #include "wPoint.h"
 #include "wParticle.h"
 
-class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemWorld : public CloudsVisualSystem {
 public:
     
     string getSystemName();

@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "LSystemReconstructor.h"
 
-class CloudsVisualSystemLSystems : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemLSystems : public CloudsVisualSystem {
 public:
     
     string getSystemName();

@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 class Block : public ofRectangle {
 public:
@@ -43,7 +43,7 @@ public:
 };
 
 
-class CloudsVisualSystemMemory : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemMemory : public CloudsVisualSystem {
 public:
     
     string getSystemName();

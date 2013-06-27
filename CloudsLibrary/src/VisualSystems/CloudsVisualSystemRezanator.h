@@ -1,14 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
+//#include "ofxUI.h"
 #include "ofxGenerative.h"
 #include "ofxColorPalettes.h"
 #include "ofxExtras.h"
 #include "CloudsVisualSystem.h"
-#include "ofxCameraSaveLoad.h"
-
-#include "ofxTimeline.h"
+//#include "ofxCameraSaveLoad.h"
+//#include "ofxTimeline.h"
 
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:

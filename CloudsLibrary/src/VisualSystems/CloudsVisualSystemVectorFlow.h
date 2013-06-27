@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 
 class FlowParticle {
@@ -16,7 +16,7 @@ class FlowParticle {
 	bool dead;
 };
 
-class CloudsVisualSystemVectorFlow : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVectorFlow : public CloudsVisualSystem {
 public:
 	
 	CloudsVisualSystemVectorFlow();

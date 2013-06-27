@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
-class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
   public:
 	
 	CloudsVisualSystemLaplacianTunnel();

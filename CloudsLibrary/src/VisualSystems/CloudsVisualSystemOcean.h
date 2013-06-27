@@ -2,11 +2,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "ofxOcean.h"
 #include "ofxOceanRenderer.h"
 
-class CloudsVisualSystemOcean : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemOcean : public CloudsVisualSystem {
   public:
 	CloudsVisualSystemOcean();
 

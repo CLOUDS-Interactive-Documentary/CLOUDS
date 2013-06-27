@@ -53,8 +53,6 @@
 		E73769CE1778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769671778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp */; };
 		E73769CF1778DC4500892646 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */; };
 		E73769D01778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */; };
-		E73769D11778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */; };
-		E73769D21778DC4500892646 /* CloudsVisualSystemStandin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */; };
 		E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */; };
 		E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769731778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp */; };
 		E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */; };
@@ -306,14 +304,10 @@
 		E73769661778DC4500892646 /* CloudsVisualSystemOcean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOcean.h; sourceTree = "<group>"; };
 		E73769671778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
 		E73769681778DC4500892646 /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
-		E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
-		E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
+		E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemRezanator.cpp; path = VisualSystems/CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
+		E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemRezanator.h; path = VisualSystems/CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
 		E737696C1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
-		E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSpinningSquares.cpp; sourceTree = "<group>"; };
-		E737696E1778DC4500892646 /* CloudsVisualSystemSpinningSquares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSpinningSquares.h; sourceTree = "<group>"; };
-		E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemStandin.cpp; sourceTree = "<group>"; };
-		E73769701778DC4500892646 /* CloudsVisualSystemStandin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemStandin.h; sourceTree = "<group>"; };
 		E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTerrain.cpp; sourceTree = "<group>"; };
 		E73769721778DC4500892646 /* CloudsVisualSystemTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTerrain.h; sourceTree = "<group>"; };
 		E73769731778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVectorFlow.cpp; sourceTree = "<group>"; };
@@ -753,6 +747,7 @@
 		E73779AD1778E03200892646 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		E73779AE1778E03200892646 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		E73779AF1778E03200892646 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
 		E7C765AB177B51C700A58372 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7C765AC177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
@@ -943,6 +938,8 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */,
+				E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */,
 				E73769201778DC4500892646 /* RGBD */,
 				E737692B1778DC4500892646 /* Sequences */,
 				E737693A1778DC4500892646 /* StoryEngine */,
@@ -1026,14 +1023,8 @@
 				E73769661778DC4500892646 /* CloudsVisualSystemOcean.h */,
 				E73769671778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp */,
 				E73769681778DC4500892646 /* CloudsVisualSystemPaintBrush.h */,
-				E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */,
-				E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */,
 				E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */,
 				E737696C1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.h */,
-				E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */,
-				E737696E1778DC4500892646 /* CloudsVisualSystemSpinningSquares.h */,
-				E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */,
-				E73769701778DC4500892646 /* CloudsVisualSystemStandin.h */,
 				E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */,
 				E73769721778DC4500892646 /* CloudsVisualSystemTerrain.h */,
 				E73769731778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp */,
@@ -1044,6 +1035,7 @@
 				E73769781778DC4500892646 /* CloudsVisualSystemVoro.h */,
 				E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */,
 				E737697A1778DC4500892646 /* CloudsVisualSystemWorld.h */,
+				E7770408177CC422009CB7AD /* Replecator */,
 				E737697B1778DC4500892646 /* ConnectorParticles */,
 				E73769821778DC4500892646 /* LSystems */,
 				E73769871778DC4500892646 /* PaintBrush */,
@@ -2112,6 +2104,14 @@
 			path = ../../../../libs/kiss/src;
 			sourceTree = "<group>";
 		};
+		E7770408177CC422009CB7AD /* Replecator */ = {
+			isa = PBXGroup;
+			children = (
+				E7770409177CC422009CB7AD /* Replecator.h */,
+			);
+			path = Replecator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2239,8 +2239,6 @@
 				E73769CE1778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E73769CF1778DC4500892646 /* CloudsVisualSystemRezanator.cpp in Sources */,
 				E73769D01778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
-				E73769D11778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp in Sources */,
-				E73769D21778DC4500892646 /* CloudsVisualSystemStandin.cpp in Sources */,
 				E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */,
 				E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */,

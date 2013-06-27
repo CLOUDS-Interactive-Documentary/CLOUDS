@@ -1,10 +1,11 @@
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
+#include "ofxColorPalettes.h"
 
 #define NUM_BILLBOARDS 8000
 
-class CloudsVisualSystemAmber : public CloudsVisualSystemRezanator
+class CloudsVisualSystemAmber : public CloudsVisualSystem
 {
 public:
 	string getSystemName();
@@ -53,6 +54,10 @@ public:
     void setupBufferGui(ofxUISuperCanvas *g);
     void guiBufferEvent(ofxUIEventArgs &e); 
     
+	
+	//COLORS
+    ofxColorPalettes *colorPalletes;
+
 protected:
     
     float particleAlpha;

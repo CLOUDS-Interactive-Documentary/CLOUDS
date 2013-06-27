@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
-class CloudsVisualSystemCities : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemCities : public CloudsVisualSystem {
 public:
     
     string getSystemName();
