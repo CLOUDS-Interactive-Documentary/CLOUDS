@@ -33,7 +33,7 @@ void wStar::draw(){
     glEnd();
     
     if (connect != NULL){
-        ofSetColor(ofFloatColor(0.8,0.2));
+        ofSetColor(ofFloatColor(0.8,0.1));
         ofSetLineWidth(0.1);
         ofLine(*this, *connect);
     }
