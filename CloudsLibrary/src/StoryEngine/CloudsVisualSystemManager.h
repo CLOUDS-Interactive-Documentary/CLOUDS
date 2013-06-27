@@ -19,16 +19,17 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset& getRandomVisualSystem();
 	
 	CloudsVisualSystem* visualSystemWithName(string systemName);
-	const vector<CloudsVisualSystemPreset>& getPresets();
-	
-	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
-	vector<string> keywordsForPreset(CloudsVisualSystem* system, string presetName);
-	vector<string> keywordsForPreset(string systemName, string presetName);
+	vector<CloudsVisualSystemPreset>& getPresets();
 
+	vector<string> keywordsForPreset(int index);
+	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
+	vector<string> keywordsForPreset(string systemName, string presetName);
 	
-	void refreshPresets();
-	void savePresets();
+	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
+	void loadPresets();
+	
+	void loadKeywords();
 	void saveKeywords();
   protected:
 	
@@ -36,7 +37,11 @@ class CloudsVisualSystemManager {
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
 	
-	void loadKeywords();
+	string getKeywordFilePath();
+	
+	float lastBackupTime;
+	float backupTimeInterval;
+	map<string,vector<string> > keywords;
 	
 	//this instantiates and registers all the visual systems, called once at setup
 	void registerVisualSystem(CloudsVisualSystem* system);

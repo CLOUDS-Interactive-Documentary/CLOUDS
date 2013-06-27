@@ -636,85 +636,6 @@
 	}
 }
 
-//- (IBAction) playDoubleClickedRow:(id)sender
-//{
-//	
-//	onPlaylist = false; //will get set to true again if we are coming from a playlist
-
-//	CloudsClip clip;
-//	if(sender == clipTableSource && clipTableSource.selectedRow >= 0){
-//        clip = [self selectedClip];
-//        //		playingPlaylist = false;
-//	}
-//	else if(sender == playlistTable && playlistTable.selectedRow >= 0){
-//		clip = [self selectedClipFromPlaylist];
-//        //		playingPlaylist = true;
-//	}
-//	else{
-//		//bail!
-//		return;
-//	}
-	
-  //  [self playClip:clip];
-    
-    /*
-     if(currentPlayingClip.getLinkName() == clip.getLinkName() && !autoProgressStory){
-     if(preview.isPlaying()){
-     preview.stop();
-     }
-     else{
-     preview.play();
-     }
-     return;
-     }
-     
-     preview.stop();
-     
-     string clipFilePath = clip.sourceVideoFilePath;
-     if(clipFilePath  == "" || autoProgressStory){
-     return;
-     }
-     
-     ofSleepMillis(250);
-     if( !ofFile(clipFilePath).exists() ){
-     
-     ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
-     ofStringReplace(clipFilePath, "Nebula", "Seance");
-     
-     }
-     
-     if( preview.loadMovie(clipFilePath) ){
-     movieFileMissing = false;
-     }
-     else{
-     ofLogError() << "Clip " << clipFilePath << " failed to load.";
-     movieFileMissing = true;
-     //		return;
-     }
-     
-     if(movieFileMissing){
-     storyStartTime = ofGetElapsedTimef();
-     timeOfNextStory = storyStartTime + (clip.endFrame - clip.startFrame) / 24.0;
-     }
-     else{
-     preview.setFrame(clip.startFrame);
-     preview.play();
-     }
-     */
-    
-//   	clipLoaded = YES;
-	
-//	currentClipLabel.stringValue = [NSString stringWithUTF8String:clip.getLinkName().c_str()];
-//	currentClipLinks = parser.getLinksForClip(clip.getLinkName());
-//	currentSuppressedLinks = parser.getSuppressionsForClip(clip.getLinkName());
-    
-    //	cout << "current clips has " << currentClipLinks.size() << " links" << endl;
-    
-//	[linkTable reloadData];
-//    [suppressedTable reloadData];
-
-//}
-
 - (void) playClip:(CloudsClip&) clip
 {
 //	onPlaylist = false; //will get set to true again if we are coming from a playlist
@@ -737,12 +658,8 @@
 	}
 	
 	ofSleepMillis(250);
-	if( !ofFile(clipFilePath).exists() ){
-        
-		//ofStringReplace(clipFilePath, "Nebula_backup", "Seance");
-		//ofStringReplace(clipFilePath, "Nebula", "Seance");
+	if( !ofFile(clipFilePath).exists() ){        
         ofStringReplace(clipFilePath, "Nebula", "Nebula_helper");
-        
 	}
     
 	if( preview.loadMovie(clipFilePath) ){
@@ -766,34 +683,6 @@
 	currentPlayingClip = clip;
 	clipEndFrame = clip.endFrame;	
 }
-
-//- (CloudsClip&) selectedClip
-//{
-
-//    if(selectedClipsSource.size() > 0){
-//        CloudsClip& c=selectedClipsSource[clipTableSource.selectedRow];
-//        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
-//        return c;
-//    }
-//    else if(selectedClipsTarget.size() > 0){
-//        CloudsClip& c = selectedClipsTarget[clipTableSource.selectedRow];
-//        cout<<"Selected clip from target table"<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
-//        return c;
-//    }
-//    else{
-//        CloudsClip& c =parser.getAllClips()[clipTableSource.selectedRow] ;
-//        cout<<"Selected clip from all clips"<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
-//        return c;
-//    }
-    
-    
-//}
-
-//- (CloudsClip&) selectedClipFromPlaylist
-//{
-	//return visualizer.pathByClip[ playlistTable.selectedRow ];
-//	return storyEngine.getClipHistory()[ playlistTable.selectedRow ];
-//}
 
 - (void)keyReleased:(int)key
 {

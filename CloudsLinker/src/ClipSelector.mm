@@ -414,22 +414,7 @@ completionsForSubstring:(NSString *)substring
 
 - (IBAction) showQuestionsChanged:(id)sender
 {
-//	cout << "CALLING SHOW QUESTIONS " << endl;
 
-//	selectedKeywords.clear();
-//	selectedClips.clear();
-//
-//	if(showOnlyQuestions.state == NSOnState){
-//		[keywordTable selectRowIndexes:nil
-//                  byExtendingSelection:NO];
-//		
-//		for(int i = 0; i < parser->getAllClips().size(); i++ ){
-//			if(parser->getAllClips()[i].hasStartingQuestion()){
-//				selectedClips.push_back( parser->getAllClips()[i] );
-//			}
-//		}
-//	}
-	
 	[self updateTables];
 }
 

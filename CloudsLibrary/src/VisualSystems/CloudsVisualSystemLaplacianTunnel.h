@@ -1,16 +1,20 @@
+//
+//  CloudsVisualSystemNervousSystem.h
+//  CloudsVisualSystemEditor
+//
+//  Created by James George on 6/26/13.
+//
+//
 
 #pragma once
 
-#include "ofMain.h"
-
-#include "ofxUI.h"
 #include "CloudsVisualSystemRezanator.h"
-#include "CloudsRGBDCombinedRender.h"
 
-class CloudsVisualSystemSeeingDark : public CloudsVisualSystemRezanator {
- public:
-	CloudsVisualSystemSeeingDark();
-
+class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystemRezanator {
+  public:
+	
+	CloudsVisualSystemLaplacianTunnel();
+	
 	string getSystemName();
 	
 	void selfSetup();
@@ -42,32 +46,20 @@ class CloudsVisualSystemSeeingDark : public CloudsVisualSystemRezanator {
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
 	
-	void selfSetupTimeline();
+	ofxUISuperCanvas* customGui;
+	float exampleSlider;
 	
-	void loadMovieForComposition(string videoPath);
-
-	CloudsRGBDCombinedRender renderer;
+  protected:
 	
-	ofxUISuperCanvas* composeGui;
-	ofxUITextInput* fileNameInput;
+	int frameCount;
+	float startTime;
+	float fps;
 	
-	bool clipLoaded;
-	float nearPlane;
-	float farPlane;
-	float scale;
+	float numReplications;
+	float replicationOffset;
 	
-	ofVec3f centerOffsetCourse;
-	ofVec3f centerOffsetFine;
-	bool drawCenterDebug;
+	vector<int> indexCount;
+	vector<ofVbo*> vbos;
 	
-	bool beginning;
-	bool middle;
-	bool end;
-
-	ofVec2f scanlineSimplify;
-	ofVboMesh horizontalScanLines;
-	ofVboMesh verticalScanLines;
-	bool refreshScanlineMesh;
-	void generateScanlines();
+	void clear();
 };
-

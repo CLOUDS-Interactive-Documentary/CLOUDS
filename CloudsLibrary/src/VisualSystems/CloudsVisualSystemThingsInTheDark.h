@@ -2,13 +2,14 @@
 #pragma once
 
 #include "ofMain.h"
+
+#include "ofxUI.h"
 #include "CloudsVisualSystemRezanator.h"
+#include "CloudsRGBDCombinedRender.h"
 
-#include "Replecator.h"
-
-class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystemRezanator {
  public:
-	CloudsVisualSystemHiga();
+	CloudsVisualSystemThingsInTheDark();
 
 	string getSystemName();
 	
@@ -41,12 +42,32 @@ class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
 	
-	vector<ofNode> testNodeExamples;
+	void selfSetupTimeline();
+	
+	void loadMovieForComposition(string videoPath);
 
-	ofxUISuperCanvas *replecatorGui, *drawerGui;
+	CloudsRGBDCombinedRender renderer;
 	
-	Replecator repl;
+	ofxUISuperCanvas* composeGui;
+	ofxUITextInput* fileNameInput;
 	
-	bool regenerate;
+	bool clipLoaded;
+	float nearPlane;
+	float farPlane;
+	float scale;
+	
+	ofVec3f centerOffsetCourse;
+	ofVec3f centerOffsetFine;
+	bool drawCenterDebug;
+	
+	bool beginning;
+	bool middle;
+	bool end;
+
+	ofVec2f scanlineSimplify;
+	ofVboMesh horizontalScanLines;
+	ofVboMesh verticalScanLines;
+	bool refreshScanlineMesh;
+	void generateScanlines();
 };
 

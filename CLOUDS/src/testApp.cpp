@@ -32,7 +32,7 @@ void testApp::setup(){
 	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
-	CloudsClip& clip = parser.getRandomClip(true,true);
+	CloudsClip& clip = parser.getRandomClip(true,false);
 	
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
