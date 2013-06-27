@@ -1,5 +1,7 @@
 #include "testApp.h"
 #define FRAME_PADDING 24
+#include "ofxTimecode.h"
+
 //--------------------------------------------------------------
 void testApp::setup(){
     
@@ -48,9 +50,12 @@ void testApp::setup(){
                         //duration<<int(durationInSecs/3600)<<":"<<int((durationInSecs%3600)/60)<<":"<<durationInSecs%60<<"."<<remainingDurationFrames<<" ";
                         //timeCode<<int(numOfSec/3600)<<":"<<int((numOfSec%3600)/60)<<":"<<numOfSec%60<<"."<<remaingMs<<" ";
                         //cout<<"Clip id: "<<clipFileName<<", duration: "<<duration<<", startFrame:"<<startFrame<<", endFrame:"<<endFrame<<", timeCode: " <<timeCode.str()<<", duration: " <<duration.str()<< endl;
+                        ofxTimecode timeCode;
+                        timeCode.setFPS(23.98);
                         
+                        string startTimecode = timeCode.timecodeForFrame(startFrame, ".");
                         stringstream ffmpegCommand;
-                        ffmpegCommand<<"ffmpeg -i \""<<name<<".mov"<< "\""" -vcodec copy -acodec copy "<<"-ss "<<numOfSec<<" -t "<<durationInSecs<<" "<<clipFileName<<".mov"<<endl;
+                        ffmpegCommand<<"ffmpeg -i \""<<name<<".mov"<< "\""" -vcodec copy -acodec copy "<<"-ss "<<startTimecode<<" -t "<<durationInSecs<<" "<<clipFileName<<".mov"<<endl;
                         
                         cout<<ffmpegCommand.str()<<endl;
                     }

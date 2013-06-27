@@ -16,7 +16,7 @@ CloudsFCPParser::CloudsFCPParser(){
 }
 
 void CloudsFCPParser::loadFromFiles(){
-
+    
 	if(ofDirectory("../../../CloudsData/").exists()){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
@@ -103,11 +103,11 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
             ss >> colorHex;
             
             clip.cluster.Color.setHex(colorHex);
-
+            
             clusterMapColors.insert(clip.cluster.hexColor);
-//			if(clip.cluster.Color == ofColor(255)){
-//                cout<<clip.cluster.Id<<endl;
-//            }
+            //			if(clip.cluster.Color == ofColor(255)){
+            //                cout<<clip.cluster.Id<<endl;
+            //            }
             string radius;
             radius = mapsXML.getAttribute("circle", "r", radius,j);
             clip.cluster.Radius = ofToFloat(radius);
@@ -124,20 +124,20 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
             maxCy = MAX(maxCy,clip.cluster.Centre.y);
             minCy = MIN(minCy,clip.cluster.Centre.y);
         }
-
+        
         for(int i = 0; i < allClips.size(); i++){
             if(allClips[i].cluster.Id != ""){
                 allClips[i].cluster.Centre.x = ofMap(allClips[i].cluster.Centre.x, minCx, maxCx, 0, 1);
                 allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.Centre.y, minCy, maxCy, 0, 1);
                 allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
             }
-//            else{
-//                cout<<"ERROR CLIP NOT FOUND IN MAP:"<<allClips[i].getLinkName()<<endl;
-//            }
+            //            else{
+            //                cout<<"ERROR CLIP NOT FOUND IN MAP:"<<allClips[i].getLinkName()<<endl;
+            //            }
             
         }
-//		cout<<minR<<","<<maxR<<endl;
-//		cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
+        //		cout<<minR<<","<<maxR<<endl;
+        //		cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
         mapsXML.popTag();//g
         
         mapsXML.popTag(); //svg
@@ -182,7 +182,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			}
 		}
 		
-
+        
 		if(numSuppressed > 0){
 			for(int l = 0; l < numSuppressed; l++){
 				CloudsLink newLink;
@@ -194,8 +194,10 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				newLink.endFrame   = linksXML.getValue("endFrame", -1);
 				
 				linksXML.popTag();//suppress
-
+                
 				suppressedConnections[newLink.sourceName].push_back( newLink );
+                
+                
 			}
 		}
 		
@@ -205,7 +207,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			CloudsClip& c = getClipWithLinkName(clipName,hasQuestionClip);
 			if(hasQuestionClip){
 				c.setStartingQuestion(question);
-				questionIds.push_back( c.getID() );                    
+				questionIds.push_back( c.getID() );
 				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
 			}
 			else{
@@ -215,6 +217,11 @@ void CloudsFCPParser::parseLinks(string linkFile){
 		
 		linksXML.popTag(); //clip
 	}
+    
+
+    for(int i = 0; i < allClips.size();i++){
+        reciprocateSuppressions(allClips[i]);
+    }
 	
 }
 
@@ -283,7 +290,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 			linksXML.popTag();
 		}
 	}
-	
+    
     
     if(! linksXML.saveFile(linkFile) ){
 		ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
@@ -311,7 +318,6 @@ void CloudsFCPParser::removeLink(string linkName, string targetName){
     }
 }
 
-
 void CloudsFCPParser::suppressConnection(string sourceName, string targetName){
 	CloudsLink l;
 	l.sourceName = sourceName;
@@ -331,26 +337,55 @@ void CloudsFCPParser::suppressConnection(CloudsClip& source, CloudsClip& target)
 }
 
 void CloudsFCPParser::suppressConnection(CloudsLink& link){
+    
+    //TODO: remove a link if its there...
+    if(clipLinksTo(link.sourceName,link.targetName)){
+        removeLink(link.sourceName,link.targetName);
+        cout<<"Link being removed from "<< link.sourceName<<" and "<<link.targetName<<
+        " in suppressConnection function"<< endl;
+    }
+    
 	if(!linkIsSuppressed(link.sourceName, link.targetName)){
 		cout << "Suppressed connection " << link.sourceName << " >> " << link.targetName << endl;
 		suppressedConnections[link.sourceName].push_back(link);
 	}
-}
-
-void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
-	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
-		cout << "Unsuppressed connection " << linkName << " >> " << linkIndex << endl;
-		suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
-	}
+    if(!linkIsSuppressed(link.targetName, link.sourceName)){
+        CloudsLink swap = link;
+        swap.targetName = link.sourceName;
+        swap.sourceName = link.targetName;
+        suppressedConnections[link.targetName].push_back(swap);
+    }
 }
 
 void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
 	if(clipHasSuppressions(linkName)){
 		int linkIndex;
-		if(linkIsSuppressed(linkName, targetName,linkIndex)){
+		if(linkIsSuppressed(linkName, targetName, linkIndex)){
 			cout << "Unsuppressed connection " << linkName << " >> " << targetName << endl;
-			suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
+			//suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
+            unsuppressConnection(linkName, linkIndex);
 		}
+        else {
+            ofLogError() << "Could not unsuppress connection" << linkName << " to " << targetName;
+        }
+	}
+}
+
+void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
+	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
+		
+        cout << "Unsuppressed connection " << linkName << " >> " << linkIndex << endl;
+        CloudsLink& suppressedLink = suppressedConnections[linkName][linkIndex];
+        int reciprocalIndex;
+        if(linkIsSuppressed(suppressedLink.targetName, suppressedLink.sourceName, reciprocalIndex)){
+            suppressedConnections[suppressedLink.targetName].erase( suppressedConnections[suppressedLink.targetName].begin() + reciprocalIndex );
+        }
+        else{
+            ofLogError() << "No reciprocal suppression between clip " << suppressedLink.sourceName << " and " << suppressedLink.targetName;
+            ofSystemAlertDialog( "No reciprocal suppression between clip " + suppressedLink.sourceName + " and " + suppressedLink.targetName);
+        }
+        
+		suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
 	}
 }
 
@@ -541,20 +576,20 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	hasCombinedVideoIndeces.clear();
 	hasCombinedVideoAndQuestionIndeces.clear();
 	combinedVideoDirectory = directory;
-//	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
+    //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
 		allClips[i].hasCombinedVideo = false;
 		allClips[i].combinedVideoPath = directory + "/" + allClips[i].getCombinedMovieFile();
 		allClips[i].combinedCalibrationXMLPath = directory + "/" + allClips[i].getCombinedCalibrationXML();
 		allClips[i].hasCombinedVideo = ofFile(allClips[i].combinedVideoPath).exists() && ofFile(allClips[i].combinedCalibrationXMLPath).exists();
-//        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
+        //        cout << " combined video path is " << allClips[i].combinedVideoPath << " " << allClips[i].combinedCalibrationXMLPath << endl;
         
 		if(allClips[i].hasCombinedVideo){
 			hasCombinedVideoIndeces.push_back(i);
 			if(allClips[i].hasStartingQuestion()){
 				hasCombinedVideoAndQuestionIndeces.push_back(i);
 			}
-//			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
+            //			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
 	
@@ -754,6 +789,9 @@ void CloudsFCPParser::addLink(CloudsClip& source, CloudsClip& target){
 }
 
 void CloudsFCPParser::addLink(CloudsLink& link){
+ 
+    unsuppressConnection(link);
+    
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
 		linkedConnections[link.sourceName].push_back( link );
 	}
@@ -883,13 +921,13 @@ vector<CloudsClip> CloudsFCPParser::getMetaDataConnections(CloudsClip& source){
         if(nameA != nameB &&
            source.person != clipB.person &&
            !linkIsSuppressed(nameA, nameB) &&
-//           !clipLinksTo(nameA, nameB) &&
+           //           !clipLinksTo(nameA, nameB) &&
            getNumberOfSharedKeywords(source, clipB) > 1 )
         {
             clips.push_back(clipB);
         }
     }
-
+    
 	return clips;
 }
 
@@ -922,7 +960,27 @@ bool CloudsFCPParser::operator()(const string& a, const string& b){
     }
 }
 
+void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
+    
+    //get all suppressions
+    vector<CloudsLink>& sourceSuppressions = getSuppressionsForClip(sourceClip.getLinkName());
+    //for each...
+    for(int i =0; i<sourceSuppressions.size();i++){
+       //get the target
+        CloudsClip& targetClip = getClipWithLinkName(sourceSuppressions[i].targetName);
+        
+        //if it's not suppressed
+        if( ! linkIsSuppressed( targetClip.getLinkName(), sourceClip.getLinkName()) ){
+            suppressConnection(targetClip, sourceClip);
+            
+            cout<<"Added reciprocal suppresion for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
+        }
+    }
+}
+
 vector<string> CloudsFCPParser::getClustersForPerson(string personName){
+    
+    
     
 }
 
