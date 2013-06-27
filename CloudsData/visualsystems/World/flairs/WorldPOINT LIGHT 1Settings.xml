@@ -13,12 +13,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>X</Name>
-    <Value>193.717285156</Value>
+    <Value>5.234130859</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Y</Name>
-    <Value>298.428710938</Value>
+    <Value>424.082153320</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -28,37 +28,37 @@
 <Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
-    <Value>0.500000000</Value>
+    <Value>0.471203446</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AG</Name>
-    <Value>0.500000000</Value>
+    <Value>0.476438969</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AB</Name>
-    <Value>0.500000000</Value>
+    <Value>0.528795183</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DR</Name>
-    <Value>0.518324614</Value>
+    <Value>0.471203446</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DG</Name>
-    <Value>0.500000000</Value>
+    <Value>0.476438969</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>DB</Name>
-    <Value>0.246073127</Value>
+    <Value>0.528795183</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SR</Name>
-    <Value>0.518324614</Value>
+    <Value>0.534030676</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -68,5 +68,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SB</Name>
-    <Value>0.324607164</Value>
+    <Value>0.513088346</Value>
 </Widget>

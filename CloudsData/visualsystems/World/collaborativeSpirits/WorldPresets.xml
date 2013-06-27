@@ -12,8 +12,13 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>flairs</Name>
+    <Name>collaborativeSpirits</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>flairs</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
