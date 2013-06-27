@@ -11,8 +11,4 @@ class CloudsVisualSystemPreset {
 	CloudsVisualSystem* system;
 	
 	string getID();
-	
-	vector<string> keywords;
-	ofVec2f mapPosition;
-	float radius;
 };

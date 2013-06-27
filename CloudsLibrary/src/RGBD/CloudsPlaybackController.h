@@ -41,14 +41,10 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
+	bool simplePlaybackMode;
+	
   protected:
 
-	//A ROLL STUFF
-	//
-
-//	ofxGameCamera camera;
-//	cloudsCamera cloudsCam;
-	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	
@@ -75,12 +71,9 @@ class CloudsPlaybackController {
 	CloudsVisualSystem* currentVisualSystem;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-	void showVisualSystem();
-//	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
-	
-//	bool triggerVisualSystem;
-	//void guiEvent(ofxUIEventArgs &e);
+
+
 };

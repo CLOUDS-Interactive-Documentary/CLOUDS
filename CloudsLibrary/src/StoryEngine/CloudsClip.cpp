@@ -102,6 +102,10 @@ string CloudsClip::getFFMpegLine(string alternativeVideoPath, string exportFolde
     return "\n" + pipeline1.str() + "\n" + pipeline2.str() + "\n" + pipeline3.str() + "\n";
 }
 
+string CloudsClip::getRelinkedVideoFilePath(){
+	return relinkFilePath(sourceVideoFilePath);
+}
+
 string CloudsClip::getAdjustmentXML(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory( ofFilePath::removeExt(relinkFilePath(sourceVideoFilePath)) )) + "adjustment.xml";
 }
