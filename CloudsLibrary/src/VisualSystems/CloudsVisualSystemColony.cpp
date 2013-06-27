@@ -82,29 +82,22 @@ void CloudsVisualSystemColony::selfUpdate()
     }
     
     for (int i = cells.size()-1; i >= 0; i--){
-        if (cells[i]->dead == true){
-            delete cells[i];
-            cells.erase( cells.begin() + i);
-        }
-        
         if (cells[i]->shouldReplicate){
-            
+    
             colonyCell *newCell = new colonyCell();
             newCell->set(*cells[i]);
-            newborns.push_back(newCell);
-            
-            newbornCount ++;
-            cout << "number of newborns = " << newbornCount << endl;
+            cells.push_back(newCell);
             
             cells[i]->shouldReplicate = false;
             cells[i]->hasReplicated = true;
         }
         
-        for(int j = newborns.size()-1; j >= 0; j--){
-            cells.push_back( newborns[i] );
-            newborns.erase(newborns.begin()+j);
+        if (cells[i]->dead == true){
+            delete cells[i];
+            cells.erase( cells.begin() + i);
         }
     }
+    
 }
 
 void CloudsVisualSystemColony::draw(ofEventArgs & args)

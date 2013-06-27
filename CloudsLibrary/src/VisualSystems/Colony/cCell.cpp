@@ -208,33 +208,34 @@ ofPoint colonyCell::cohesion( vector<colonyCell*> &_cells ) {
 //
 void colonyCell::feedCellWidth( ofPixels &_pixels ){
     
-    float value = _pixels.getColor(int(x), int(y)).getBrightness();
-    
-    if(value > nutrientLevel && cellSize <= maxSize){
+    if ( x > 0 && x < ofGetScreenWidth() && y > 0 && y < ofGetScreenHeight()){
+        float value = _pixels.getColor(int(x), int(y)).getBrightness();
         
-        //grows the cell if there's sufficient nutrients
-        //
-        cellSize = cellSize + (value/2500.0);
-    }
-    if (value < nutrientLevel){
+        if(value > nutrientLevel && cellSize <= maxSize){
+            
+            //grows the cell if there's sufficient nutrients
+            //
+            cellSize = cellSize + (value/2500.0);
+        }
+        if (value < nutrientLevel){
+            
+            // shrinks cell if there's not enough nutrients
+            //
+            cellSize = cellSize - .001;
+        }
+        if (age > lifeSpan || hasReplicated){
+            cellSize = cellSize - 2.5;
+        }
         
-        // shrinks cell if there's not enough nutrients
-        //
-        cellSize = cellSize - .001;
+        if (cellSize <= .03){
+            dead = true;
+        }
+        
+        if (value > nutrientLevel && age >= fertilityAge){
+            shouldReplicate = true;
+            hasReplicated = true;
+        }
     }
-    if (age > lifeSpan || hasReplicated){
-        cellSize = cellSize - 2.5;
-    }
-    
-    if (cellSize <= .03){
-        dead = true;
-    }
-    
-    if (value > nutrientLevel && age >= fertilityAge){
-        shouldReplicate = true;
-        hasReplicated = true;
-    }
-    
     age ++;
 }
 
