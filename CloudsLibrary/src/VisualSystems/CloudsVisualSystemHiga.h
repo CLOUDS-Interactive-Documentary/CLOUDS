@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystemRezanator.h"
 
+#include "Replecator.h"
 
 class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
  public:
@@ -42,7 +43,10 @@ class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
 	
 	vector<ofNode> testNodeExamples;
 
-	ofxUISuperCanvas* customGui;
-	float exampleSlider;
+	ofxUISuperCanvas *replecatorGui, *drawerGui;
+	
+	Replecator repl;
+	
+	bool regenerate;
 };
 
