@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>ExampleCustom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000015259</XPosition>
+    <YPosition>267.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>num replications</Name>
+    <Value>4.413763046</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>replication offset</Name>
+    <Value>110.837287903</Value>
+</Widget>
