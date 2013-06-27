@@ -7,3 +7,58 @@
 //
 
 #include "wSatellite.h"
+
+wSatellite::wSatellite(){
+    lat = ofRandom(-180,180);
+    lon = ofRandom(-180,180);
+}
+
+void wSatellite::place( float _alt, ofVec3f _orbit ){
+    altitud.set(0,0,_alt);
+    orbit = _orbit;//.normalize();
+}
+
+void wSatellite::update(){
+    
+    lat += orbit.x;
+    lon += orbit.y;
+    
+    if (lat < -180.0f)
+        lat += 360.0f;
+    
+    if (lat > 180.0f)
+        lat -= 360.0f;
+    
+    if (lon < -180.0f)
+        lon += 360.0f;
+    
+    if (lon > 180.0f)
+        lon -= 360.0f;
+    
+    ofQuaternion latRot;
+    latRot.makeRotate( lat, 1, 0, 0);
+    
+    ofQuaternion longRot;
+    longRot.makeRotate( lon, 0, 1, 0);
+    
+    set(latRot * longRot * altitud);
+}
+
+void wSatellite::draw(){
+    ofPoint vectorToCenter = ofPoint(0,0,0)-*this;
+    vectorToCenter.normalize();
+    ofPoint objectLookAt = ofVec3f(0,0,1);
+    float theta = objectLookAt.angle(vectorToCenter);
+    ofPoint angleToCenter = vectorToCenter.crossed(objectLookAt);
+    angleToCenter.normalize();
+    
+    ofPushMatrix();
+    
+    ofTranslate(*this);
+    glRotatef(-theta, angleToCenter.x, angleToCenter.y, angleToCenter.z);
+    ofSetColor(100,100);
+    ofFill();
+    ofDrawBox(ofPoint(0,0,0), 1);
+    
+    ofPopMatrix();
+}

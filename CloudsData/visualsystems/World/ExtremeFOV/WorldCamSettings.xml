@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>343.000000000</YPosition>
+    <XPosition>213.000045776</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>118.226600647</Value>
+    <Value>98.521942139</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOV</Name>
-    <Value>40.788139343</Value>
+    <Value>164.926071167</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>209.261016846</Value>
+    <Value>303.251159668</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -6,9 +6,22 @@
 //
 //
 
-#ifndef __VSWorld__wSatellite__
-#define __VSWorld__wSatellite__
+#pragma once
 
-#include <iostream>
+#include "ofMain.h"
 
-#endif /* defined(__VSWorld__wSatellite__) */
+class wSatellite : public ofPoint {
+public:
+	wSatellite();
+    
+    void    place( float _alt, ofVec3f _orbit );
+    
+    void    update();
+    
+	void	draw();
+    
+private:
+    float   lat,lon;
+    ofPoint orbit;
+    ofPoint altitud;
+};

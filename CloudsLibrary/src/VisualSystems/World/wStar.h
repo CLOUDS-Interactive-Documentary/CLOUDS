@@ -5,6 +5,7 @@
 //  Created by Patricio Gonzalez Vivo on 6/25/13.
 //
 //  Reference: http://en.wikipedia.org/wiki/Equatorial_coordinate_system
+
 #pragma once
 
 #include "ofMain.h"
@@ -17,5 +18,6 @@ public:
 	void	draw();
     
     string  constName;
+    float   constAlpha;
     wStar   *connect;
 };

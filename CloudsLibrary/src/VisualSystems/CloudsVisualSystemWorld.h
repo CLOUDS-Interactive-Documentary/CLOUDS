@@ -13,6 +13,7 @@
 #include "wStar.h"
 #include "wPoint.h"
 #include "wParticle.h"
+#include "wSatellite.h"
 
 class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
 public:
@@ -81,4 +82,11 @@ protected:
     //
     void loadStarts( string _file);
     vector< wStar* > stars;
+    vector< string > constelations;
+    string  selectedConstelation;
+    float   constelationMin,constelationMax, constelationRnd;
+    
+    //  Satellites
+    //
+    vector< wSatellite > satellites;
 };

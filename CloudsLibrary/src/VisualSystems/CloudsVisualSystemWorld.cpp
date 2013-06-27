@@ -33,6 +33,10 @@ void CloudsVisualSystemWorld::selfSetup()
     solidSphereScale = 0.8666;
     wireSphereAlpha = 0.0784;
     solidSphereAlpha = 1.0;
+    
+    constelationMin = 0.035;
+    constelationMax = 0.4;
+    constelationRnd = 10;
 }
 
 void CloudsVisualSystemWorld::selfBegin()
@@ -52,6 +56,12 @@ void CloudsVisualSystemWorld::selfBegin()
     //
     loadStarts( "constelations.txt" );
 
+    for(int i = 0; i < 100; i++ ){
+        wSatellite newSat;
+        newSat.place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.01,0.01),0.0));
+        satellites.push_back( newSat );
+    }
+    
     globalOffset.set(0,0,0);
 }
 
@@ -184,21 +194,29 @@ void CloudsVisualSystemWorld::loadStarts( string _file){
     string filePath = getDataPath()+"visualsystems/World/"+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
+    string lastConstelation = "";
+    
     while(!buffer.isLastLine()) {
         string temp = buffer.getNextLine();
         
         if(temp.length() != 0) {
             vector<string> values = ofSplitString(temp, ",");
             
+            if ( values[0] != lastConstelation ){
+                constelations.push_back(values[0]);
+            }
+            
+            lastConstelation = values[0];
+            
             wStar *a = new wStar();
             a->place(ofToFloat(values[2]),
                       ofToFloat(values[1]) );
-            a->constName = values[0];
+            a->constName = lastConstelation;
             
             wStar *b = new wStar();
             b->place(ofToFloat(values[4]),
                       ofToFloat(values[3]) );
-            b->constName = values[0];
+            b->constName = lastConstelation;
             b->connect = a;
             
             stars.push_back(a);
@@ -236,6 +254,9 @@ void CloudsVisualSystemWorld::selfSetupRenderGui()
     rdrGui->addSlider("Wire_Sphere", 0.0, 1.0, &wireSphereAlpha);
     rdrGui->addSlider("Rivers", 0.0, 1.0, &riversAlpha);
     rdrGui->addSlider("Coast", 0.0, 1.0, &coastAlpha);
+    rdrGui->addSlider("Constelation_Min", 0.0, 1.0, &constelationMin);
+    rdrGui->addSlider("Constelation_Max", 0.0, 1.0, &constelationMax);
+    rdrGui->addSlider("Constelation_Randomizer", 0.0, 100, &constelationRnd);
 }
 
 void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
@@ -250,8 +271,6 @@ void CloudsVisualSystemWorld::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemWorld::selfUpdate()
 {
-    ofSetColor(255);
-
     //  Insert Particles if it's need
     //
     if ( (worldPoints.size() > 2) && (particles.size() < nMaxPoints-2) ){
@@ -298,11 +317,21 @@ void CloudsVisualSystemWorld::selfUpdate()
     for(int i = 0; i < worldPoints.size(); i++){
         worldPoints[i].update();
     }
+    
+    if ( (int)ofRandom(constelationRnd) == 1){
+        selectedConstelation = constelations[ ofRandom(constelations.size()) ];
+    }
+    
+    //  Update satellites
+    //
+    for(int i = 0; i < satellites.size(); i++){
+        satellites[i].update();
+    }
 }
 
 void CloudsVisualSystemWorld::selfDraw()
 {
-    mat->begin();
+    
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     
@@ -313,6 +342,7 @@ void CloudsVisualSystemWorld::selfDraw()
     
     //  Render globe
     //
+    mat->begin();
     ofFill();
     ofSetColor(20,solidSphereAlpha*255.0);
 	ofDrawSphere(0, 0, solidSphereScale*300 );
@@ -320,6 +350,8 @@ void CloudsVisualSystemWorld::selfDraw()
     ofNoFill();
     ofSetColor(255,wireSphereAlpha*255.0);
 	ofDrawSphere(0, 0, wireSphereScale*300);
+
+    
     //
     ofSetLineWidth(0.5);
     ofSetColor(255,coastAlpha*255.0f);
@@ -342,18 +374,31 @@ void CloudsVisualSystemWorld::selfDraw()
         worldPoints[i].draw();
     }
     
+    //  Satellites
+    //
+    for(int i = 0; i < satellites.size(); i++){
+        satellites[i].draw();
+    }
+    mat->end();
+    
     ofPopStyle();
     ofPopMatrix();
     
     //  Stars
     //
     for(int i = 0; i < stars.size(); i++){
+        if (stars[i]->constName == selectedConstelation && constelationRnd >= 1.0 ){
+            stars[i]->constAlpha = ofLerp(stars[i]->constAlpha,constelationMax,0.01);
+        } else {
+            stars[i]->constAlpha = ofLerp(stars[i]->constAlpha,constelationMin,0.01);
+        }
+        
         stars[i]->draw();
     }
     
     glDisable(GL_NORMALIZE);
     glDisable(GL_DEPTH_TEST);
-    mat->end();
+    
 }
 
 

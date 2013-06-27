@@ -10,6 +10,7 @@
 
 wStar::wStar(){
     connect = NULL;
+    constAlpha = 0.03;
 }
 
 void wStar::place( float _ra, float _dec){
@@ -32,7 +33,7 @@ void wStar::draw(){
     glEnd();
     
     if (connect != NULL){
-        ofSetColor(ofFloatColor(0.8,0.03));
+        ofSetColor(ofFloatColor(0.8,constAlpha));
         ofSetLineWidth(2.0);
         ofLine(*this, *connect);
     }
