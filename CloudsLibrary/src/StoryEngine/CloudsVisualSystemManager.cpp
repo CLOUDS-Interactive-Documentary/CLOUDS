@@ -17,7 +17,8 @@
 #endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
-
+	backupTimeInterval = 60*2;
+	lastBackupTime = ofGetElapsedTimef() - backupTimeInterval;
 }
 
 //--------------------------------------------------------------------
@@ -67,6 +68,11 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 }
 
 //--------------------------------------------------------------------
+string CloudsVisualSystemManager::getKeywordFilePath(){
+	return CloudsVisualSystem::getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
+}
+
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
 #ifndef CLOUDS_NO_VS	
 	presets.clear();
@@ -95,7 +101,13 @@ void CloudsVisualSystemManager::loadPresets(){
 	
 	keywords.clear();
 	ofxXmlSettings keywordXml;
-	keywordXml.loadFile( CloudsVisualSystem::getDataPath() + "/visualsystems/keywords.xml" );
+	string keywordsFile = getKeywordFilePath();
+
+	if(!keywordXml.loadFile( keywordsFile )){
+		ofSystemAlertDialog("UNABLE TO LOAD KEYWORD FILE! " + keywordsFile + " Do not proceed");
+		return;
+	}
+	
 	int numSystems = keywordXml.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
@@ -108,7 +120,22 @@ void CloudsVisualSystemManager::loadPresets(){
 }
 
 void CloudsVisualSystemManager::saveKeywords(){
+	
+	string keywordsFile = getKeywordFilePath();
+	
 	map<string,vector<string> >::iterator it;
+	
+	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
+		char backup[1024];
+		sprintf( backup, "%s_backup_Y.%02d_MO.%02d_D.%02d_H.%02d_MI.%02d.xml", ofFilePath::removeExt(keywordsFile).c_str(), ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
+		lastBackupTime = ofGetElapsedTimef();
+		if(!ofFile(keywordsFile).copyTo(backup)){
+			ofSystemAlertDialog("UNABLE TO CREATE KEYWORD ASSOCIATION BACK UP");
+			return;
+		}
+		
+		cout << "BACKUPING UP FILE FROM " << keywordsFile << " to " << backup << endl;
+	}
 	
 	ofxXmlSettings keywordXml;
 	int systemIndex = 0;
@@ -128,7 +155,9 @@ void CloudsVisualSystemManager::saveKeywords(){
 		systemIndex++;
 	}
 	
-	keywordXml.saveFile( CloudsVisualSystem::getDataPath() + "/visualsystems/keywords.xml" );
+	if(!keywordXml.saveFile( keywordsFile )){
+		ofSystemAlertDialog("UNABLE TO SAVE KEYWORD FILE " + keywordsFile );
+	}
 }
 
 vector<string> CloudsVisualSystemManager::keywordsForPreset(int index){

@@ -1,21 +1,20 @@
 
-#include "CloudsVisualSystemSeeingDark.h"
+#include "CloudsVisualSystemThingsInTheDark.h"
 
-CloudsVisualSystemSeeingDark::CloudsVisualSystemSeeingDark(){
+CloudsVisualSystemThingsInTheDark::CloudsVisualSystemThingsInTheDark(){
 	scanlineSimplify = ofVec2f(2,2);
 }
 
-string CloudsVisualSystemSeeingDark::getSystemName(){
-	return "SeeingDark";
+string CloudsVisualSystemThingsInTheDark::getSystemName(){
+	return "ThingsInTheDark";
 }
 
-
-void CloudsVisualSystemSeeingDark::selfSetup(){
+void CloudsVisualSystemThingsInTheDark::selfSetup(){
 	renderer.setShaderPath(getDataPath() + "shaders/rgbdcombined");
 	generateScanlines();
 }
 
-void CloudsVisualSystemSeeingDark::loadMovieForComposition(string videoPath){
+void CloudsVisualSystemThingsInTheDark::loadMovieForComposition(string videoPath){
 
 	if(renderer.setup(videoPath, ofFilePath::removeExt(videoPath)+".xml")){
 		fileNameInput->setTextString(ofFilePath::getFileName(videoPath));
@@ -27,7 +26,7 @@ void CloudsVisualSystemSeeingDark::loadMovieForComposition(string videoPath){
 	}
 }
 
-void CloudsVisualSystemSeeingDark::selfSetupGuis(){
+void CloudsVisualSystemThingsInTheDark::selfSetupGuis(){
 	
     composeGui = new ofxUISuperCanvas("EXAMPLE CUSTOM", gui);
     composeGui->copyCanvasStyle(gui);
@@ -57,13 +56,13 @@ void CloudsVisualSystemSeeingDark::selfSetupGuis(){
 	composeGui->addSlider("VERTICAL LINE SPACE", .5, 12, &scanlineSimplify.x);
 	composeGui->addSlider("HORIZONTAL LINE SPACE", .5, 12, &scanlineSimplify.y);
 	
-	ofAddListener(composeGui->newGUIEvent, this, &CloudsVisualSystemSeeingDark::selfGuiEvent);
+	ofAddListener(composeGui->newGUIEvent, this, &CloudsVisualSystemThingsInTheDark::selfGuiEvent);
 	
     guis.push_back(composeGui);
     guimap[composeGui->getName()] = composeGui;
 }
 
-void CloudsVisualSystemSeeingDark::generateScanlines(){
+void CloudsVisualSystemThingsInTheDark::generateScanlines(){
 		
 	verticalScanLines.clear();
 	horizontalScanLines.clear();
@@ -103,7 +102,7 @@ void CloudsVisualSystemSeeingDark::generateScanlines(){
 }
 
 
-void CloudsVisualSystemSeeingDark::selfUpdate(){
+void CloudsVisualSystemThingsInTheDark::selfUpdate(){
 	if(renderer.getPlayer().isLoaded()){
 		renderer.farClip = farPlane;
 		renderer.nearClip = nearPlane;
@@ -114,22 +113,22 @@ void CloudsVisualSystemSeeingDark::selfUpdate(){
 	}
 }
 
-void CloudsVisualSystemSeeingDark::selfDrawBackground(){
+void CloudsVisualSystemThingsInTheDark::selfDrawBackground(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfDrawDebug(){
+void CloudsVisualSystemThingsInTheDark::selfDrawDebug(){
 	ofPushStyle();
 	ofSetColor(255, 255, 0, 100);
 	ofDrawSphere(0, 0, 2);
 	ofPopStyle();
 }
 
-void CloudsVisualSystemSeeingDark::selfSceneTransformation(){
+void CloudsVisualSystemThingsInTheDark::selfSceneTransformation(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfDraw(){
+void CloudsVisualSystemThingsInTheDark::selfDraw(){
 	//draw the lines
 	if(renderer.getPlayer().isLoaded()){
 		
@@ -159,48 +158,48 @@ void CloudsVisualSystemSeeingDark::selfDraw(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfExit(){
+void CloudsVisualSystemThingsInTheDark::selfExit(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfBegin(){
+void CloudsVisualSystemThingsInTheDark::selfBegin(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfEnd(){
+void CloudsVisualSystemThingsInTheDark::selfEnd(){
 
 }
 
 
-void CloudsVisualSystemSeeingDark::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemThingsInTheDark::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == ' ' && renderer.getPlayer().isLoaded()) renderer.getPlayer().play();
 }
 
-void CloudsVisualSystemSeeingDark::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemThingsInTheDark::selfKeyReleased(ofKeyEventArgs & args){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemThingsInTheDark::selfMouseDragged(ofMouseEventArgs& data){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemThingsInTheDark::selfMouseMoved(ofMouseEventArgs& data){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfMousePressed(ofMouseEventArgs& data){
+void CloudsVisualSystemThingsInTheDark::selfMousePressed(ofMouseEventArgs& data){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemThingsInTheDark::selfMouseReleased(ofMouseEventArgs& data){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfSetupGui(){
+void CloudsVisualSystemThingsInTheDark::selfSetupGui(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemThingsInTheDark::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "VERTICAL LINE SPACE"){
 		refreshScanlineMesh = true;
 	}
@@ -217,22 +216,22 @@ void CloudsVisualSystemSeeingDark::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 
-void CloudsVisualSystemSeeingDark::selfSetupSystemGui(){
+void CloudsVisualSystemThingsInTheDark::selfSetupSystemGui(){
 
 }
 
-void CloudsVisualSystemSeeingDark::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemThingsInTheDark::guiSystemEvent(ofxUIEventArgs &e){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfSetupRenderGui(){
+void CloudsVisualSystemThingsInTheDark::selfSetupRenderGui(){
 
 }
 
-void CloudsVisualSystemSeeingDark::selfSetupTimeline(){
+void CloudsVisualSystemThingsInTheDark::selfSetupTimeline(){
 	timeline->addVideoTrack("Video");
 }
 
-void CloudsVisualSystemSeeingDark::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemThingsInTheDark::guiRenderEvent(ofxUIEventArgs &e){
 	
 }

@@ -148,4 +148,7 @@ class CloudsFCPParser {
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
 	CloudsClip dummyClip; // for failed reference returns
+	
+	float lastBackupTime;
+	float backupTimeInterval;
 };

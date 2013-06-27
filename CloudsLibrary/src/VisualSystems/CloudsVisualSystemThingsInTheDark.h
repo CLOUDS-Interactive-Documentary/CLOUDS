@@ -7,9 +7,9 @@
 #include "CloudsVisualSystemRezanator.h"
 #include "CloudsRGBDCombinedRender.h"
 
-class CloudsVisualSystemSeeingDark : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystemRezanator {
  public:
-	CloudsVisualSystemSeeingDark();
+	CloudsVisualSystemThingsInTheDark();
 
 	string getSystemName();
 	

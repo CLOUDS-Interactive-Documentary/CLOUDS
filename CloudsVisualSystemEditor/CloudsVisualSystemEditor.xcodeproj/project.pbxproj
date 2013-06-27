@@ -52,7 +52,7 @@
 		E73769CD1778DC4500892646 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769651778DC4500892646 /* CloudsVisualSystemOcean.cpp */; };
 		E73769CE1778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769671778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp */; };
 		E73769CF1778DC4500892646 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */; };
-		E73769D01778DC4500892646 /* CloudsVisualSystemSeeingDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696B1778DC4500892646 /* CloudsVisualSystemSeeingDark.cpp */; };
+		E73769D01778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */; };
 		E73769D11778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */; };
 		E73769D21778DC4500892646 /* CloudsVisualSystemStandin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */; };
 		E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */; };
@@ -308,8 +308,8 @@
 		E73769681778DC4500892646 /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
 		E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
 		E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
-		E737696B1778DC4500892646 /* CloudsVisualSystemSeeingDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSeeingDark.cpp; sourceTree = "<group>"; };
-		E737696C1778DC4500892646 /* CloudsVisualSystemSeeingDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSeeingDark.h; sourceTree = "<group>"; };
+		E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
+		E737696C1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
 		E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSpinningSquares.cpp; sourceTree = "<group>"; };
 		E737696E1778DC4500892646 /* CloudsVisualSystemSpinningSquares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSpinningSquares.h; sourceTree = "<group>"; };
 		E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemStandin.cpp; sourceTree = "<group>"; };
@@ -1028,8 +1028,8 @@
 				E73769681778DC4500892646 /* CloudsVisualSystemPaintBrush.h */,
 				E73769691778DC4500892646 /* CloudsVisualSystemRezanator.cpp */,
 				E737696A1778DC4500892646 /* CloudsVisualSystemRezanator.h */,
-				E737696B1778DC4500892646 /* CloudsVisualSystemSeeingDark.cpp */,
-				E737696C1778DC4500892646 /* CloudsVisualSystemSeeingDark.h */,
+				E737696B1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp */,
+				E737696C1778DC4500892646 /* CloudsVisualSystemThingsInTheDark.h */,
 				E737696D1778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp */,
 				E737696E1778DC4500892646 /* CloudsVisualSystemSpinningSquares.h */,
 				E737696F1778DC4500892646 /* CloudsVisualSystemStandin.cpp */,
@@ -2238,7 +2238,7 @@
 				E73769CD1778DC4500892646 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E73769CE1778DC4500892646 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E73769CF1778DC4500892646 /* CloudsVisualSystemRezanator.cpp in Sources */,
-				E73769D01778DC4500892646 /* CloudsVisualSystemSeeingDark.cpp in Sources */,
+				E73769D01778DC4500892646 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E73769D11778DC4500892646 /* CloudsVisualSystemSpinningSquares.cpp in Sources */,
 				E73769D21778DC4500892646 /* CloudsVisualSystemStandin.cpp in Sources */,
 				E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */,

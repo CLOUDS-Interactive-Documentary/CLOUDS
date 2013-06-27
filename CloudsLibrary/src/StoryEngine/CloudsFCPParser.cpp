@@ -11,9 +11,12 @@
 CloudsFCPParser::CloudsFCPParser(){
     keywordsDirty = false;
     sortedByOccurrence = false;
+	backupTimeInterval = 60*2;
+	lastBackupTime = -backupTimeInterval;
 }
 
 void CloudsFCPParser::loadFromFiles(){
+
 	if(ofDirectory("../../../CloudsData/").exists()){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
@@ -147,83 +150,97 @@ void CloudsFCPParser::parseLinks(string linkFile){
 	suppressedConnections.clear();
 	questionIds.clear();
 	
-    int totalLinks =0;
+    int totalLinks = 0;
     ofxXmlSettings linksXML;
-    if(linksXML.loadFile(linkFile)){
-        int numClips = linksXML.getNumTags("clip");
-        for(int i = 0; i < numClips; i++){
-            linksXML.pushTag("clip", i);
-            string clipName = linksXML.getValue("name", "");
-            int numLinks = linksXML.getNumTags("link");
-            int startQuestion = linksXML.getNumTags("startingQuestion");
-			if(numLinks > 0){
-                //				cout << "clip " << clipName << " had no links!" << endl;
-				for(int l = 0; l < numLinks; l++){
-					CloudsLink newLink;
-					linksXML.pushTag("link", l);
-					
-					newLink.sourceName = clipName;
-					newLink.targetName = linksXML.getValue("target", "");
-					newLink.startFrame = linksXML.getValue("startFrame", -1);
-					newLink.endFrame   = linksXML.getValue("endFrame", -1);
-					
-					linksXML.popTag(); //link
-					
-					linkedConnections[newLink.sourceName].push_back( newLink );
-				}
+    if(!linksXML.loadFile(linkFile)){
+		ofSystemAlertDialog("UNABLE TO LOAD LINKS! do not proceed");
+		return;
+	}
+	
+	int numClips = linksXML.getNumTags("clip");
+	for(int i = 0; i < numClips; i++){
+		linksXML.pushTag("clip", i);
+		
+		string clipName = linksXML.getValue("name", "");
+		int numLinks = linksXML.getNumTags("link");
+		int startQuestion = linksXML.getNumTags("startingQuestion");
+		int numSuppressed = linksXML.getNumTags("suppress");
+		
+		if(numLinks > 0){
+			for(int l = 0; l < numLinks; l++){
+				CloudsLink newLink;
+				linksXML.pushTag("link", l);
+				
+				newLink.sourceName = clipName;
+				newLink.targetName = linksXML.getValue("target", "");
+				newLink.startFrame = linksXML.getValue("startFrame", -1);
+				newLink.endFrame   = linksXML.getValue("endFrame", -1);
+				
+				linksXML.popTag(); //link
+				
+				linkedConnections[newLink.sourceName].push_back( newLink );
 			}
-			
-			int numSuppressed = linksXML.getNumTags("suppress");
-			if(numSuppressed > 0){
-				for(int l = 0; l < numSuppressed; l++){
-					CloudsLink newLink;
-					linksXML.pushTag("suppress", l);
-					
-					newLink.sourceName = clipName;
-					newLink.targetName = linksXML.getValue("target", "");
-					newLink.startFrame = linksXML.getValue("startFrame", -1);
-					newLink.endFrame   = linksXML.getValue("endFrame", -1);
-					
-					linksXML.popTag(); //link
-                    totalLinks++;
+		}
+		
 
-					suppressedConnections[newLink.sourceName].push_back( newLink );
-				}
+		if(numSuppressed > 0){
+			for(int l = 0; l < numSuppressed; l++){
+				CloudsLink newLink;
+				linksXML.pushTag("suppress", l);
+				
+				newLink.sourceName = clipName;
+				newLink.targetName = linksXML.getValue("target", "");
+				newLink.startFrame = linksXML.getValue("startFrame", -1);
+				newLink.endFrame   = linksXML.getValue("endFrame", -1);
+				
+				linksXML.popTag();//suppress
+
+				suppressedConnections[newLink.sourceName].push_back( newLink );
 			}
-			
-            if(startQuestion > 0){
-                string question = linksXML.getValue("startingQuestion", "");
-                bool hasQuestionClip;
-                CloudsClip& c =  getClipWithLinkName(clipName,hasQuestionClip);
-                if(hasQuestionClip){
-                    c.setStartingQuestion(question);
-                    questionIds.push_back( c.getID() );                    
-                    cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
-                }
-                else{
-                    ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
-                }
-            }
-			
-            linksXML.popTag(); //clip
-        }
-    }
-    cout<<"total Suppressions:"<<totalLinks<<endl;
+		}
+		
+		if(startQuestion > 0){
+			string question = linksXML.getValue("startingQuestion", "");
+			bool hasQuestionClip;
+			CloudsClip& c = getClipWithLinkName(clipName,hasQuestionClip);
+			if(hasQuestionClip){
+				c.setStartingQuestion(question);
+				questionIds.push_back( c.getID() );                    
+				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
+			}
+			else{
+				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
+			}
+		}
+		
+		linksXML.popTag(); //clip
+	}
+	
 }
 
-
 void CloudsFCPParser::saveLinks(string linkFile){
+	
+    int numClips = 0;
+	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
+		char backup[1024];
+		sprintf( backup, "%s_backup_Y.%02d_MO.%02d_D.%02d_H.%02d_MI.%02d.xml", ofFilePath::removeExt(linkFile).c_str(), ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
+		lastBackupTime = ofGetElapsedTimef();
+		if(!ofFile(linkFile).copyTo(backup)){
+			ofSystemAlertDialog("UNABLE TO CREATE LINK BACK UP");
+			return;
+		}
+		
+		cout << "BACKUPING UP FILE FROM " << linkFile << " to " << backup << endl;
+	}
+	
     ofxXmlSettings linksXML;
     map<string, vector<CloudsLink> >::iterator it;
-    int numClips = 0;
 	
 	for(int i = 0; i < allClips.size(); i++){
 		string clipName = allClips[i].getLinkName();
 		
 		bool hasLink = clipHasLink( allClips[i]);
-		
 		bool hasSuppressed = clipHasSuppressions( allClips[i] );
-        
         bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
 		
         if(hasLink || hasSuppressed || hasStartingQuestion){
@@ -263,13 +280,14 @@ void CloudsFCPParser::saveLinks(string linkFile){
                 linksXML.addValue("startingQuestion", startQuestion);
             }
 			
-
 			linksXML.popTag();
 		}
 	}
 	
     
-    linksXML.saveFile(linkFile);
+    if(! linksXML.saveFile(linkFile) ){
+		ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
+	}
 }
 
 void CloudsFCPParser::removeLink(string linkName, int linkIndex){

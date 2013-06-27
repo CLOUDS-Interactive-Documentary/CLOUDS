@@ -48,15 +48,14 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 }
 
 void CloudsVisualSystemLaplacianTunnel::selfSetupGuis(){
-	
-	cout << "SETUP!" << endl;
+
 	
     customGui = new ofxUISuperCanvas("Settings", gui);
     customGui->copyCanvasStyle(gui);
     customGui->copyCanvasProperties(gui);
 	
-    customGui->setName("ExampleCustom");
-    customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+//    customGui->setName("ExampleCustom");
+//    customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("num replications", 1, 100, &numReplications);
 	customGui->addSlider("replication offset", 0, 500, &replicationOffset);

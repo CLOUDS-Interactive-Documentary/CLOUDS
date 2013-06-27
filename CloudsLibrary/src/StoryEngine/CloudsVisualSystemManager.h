@@ -37,9 +37,10 @@ class CloudsVisualSystemManager {
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
 	
+	string getKeywordFilePath();
 	
-
-	
+	float lastBackupTime;
+	float backupTimeInterval;
 	map<string,vector<string> > keywords;
 	
 	//this instantiates and registers all the visual systems, called once at setup
