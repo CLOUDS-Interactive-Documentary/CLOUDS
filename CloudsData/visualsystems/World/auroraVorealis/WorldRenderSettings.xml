@@ -8,12 +8,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Solid_Sphere_Scale</Name>
-    <Value>0.866599977</Value>
+    <Value>0.960591137</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Wire_Sphere_Scale</Name>
-    <Value>0.933300018</Value>
+    <Value>0.984236479</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,30 +23,30 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wire_Sphere</Name>
-    <Value>0.089999989</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Rivers</Name>
-    <Value>0.392100006</Value>
+    <Value>0.507389188</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Coast</Name>
-    <Value>0.392100006</Value>
+    <Value>0.275862068</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Constelation_Min</Name>
-    <Value>0.035000000</Value>
+    <Value>0.019704433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Constelation_Max</Name>
-    <Value>0.400000006</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Constelation_Randomizer</Name>
-    <Value>10.000000000</Value>
+    <Value>10.433496475</Value>
 </Widget>
