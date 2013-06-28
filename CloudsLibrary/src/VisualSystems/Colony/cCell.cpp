@@ -17,18 +17,20 @@ colonyCell::colonyCell(){
     //  Default variables
     //
     r = 3.0;
-    cellSize = 5;
+    cellSize = .5;
     age = 0;
     maxSize = ofRandom(15,25);
     maxspeed = 1.1;
     maxforce = 0.8;
-    fertilityAge = ofRandom(500,700);
-    lifeSpan = ofRandom(100,750);
-    nutrientLevel = 80;
+    fertilityAge = ofRandom(400,900);
+    lifeSpan = ofRandom(100,650);
+    nutrientLevel = 35;
     dead = false;
     hasReplicated = false;
     shouldReplicate = false;
 }
+
+
 
 void colonyCell::applyForce(ofPoint _force) {
     
@@ -46,9 +48,9 @@ void colonyCell::applyFlock( vector<colonyCell*> &_cells ) {
     
     // Arbitrarily weight these forces
     //
-    sep *= 50.0;
+    sep *= 250.0;
     ali *= 0.2;
-    coh *= 1.0;
+    coh *= 0.1;
     
     // Add the force vectors to acceleration
     //
@@ -221,13 +223,13 @@ void colonyCell::feedCellWidth( ofPixels &_pixels ){
             
             // shrinks cell if there's not enough nutrients
             //
-            cellSize = cellSize - .001;
+            cellSize = cellSize - .01;
         }
         if (age > lifeSpan || hasReplicated){
-            cellSize = cellSize - 2.5;
+            cellSize = cellSize - .5;
         }
         
-        if (cellSize <= .03){
+        if (cellSize <= .001){
             dead = true;
         }
         
@@ -240,6 +242,7 @@ void colonyCell::feedCellWidth( ofPixels &_pixels ){
 }
 
 void colonyCell::draw() {
+   
     ofPushStyle();
     
     ofFill();
@@ -249,6 +252,10 @@ void colonyCell::draw() {
     ofFill();
     ofSetColor(255 - cellSize*4,255);
     ofCircle(*this, 5 + cellSize/3);
+    
+    
+ //   ofEnableAlphaBlending();
+ //	transparency.draw(*this, cellSize);
     
     ofPopStyle();
 }

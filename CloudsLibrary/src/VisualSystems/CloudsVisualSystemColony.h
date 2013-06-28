@@ -49,6 +49,8 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+   
+    
 private:
     
     ofFbo       foodFbo;

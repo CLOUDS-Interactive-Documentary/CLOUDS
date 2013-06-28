@@ -18,6 +18,7 @@ public:
     void    applyForce( ofPoint _force );
     void    applyFlock( vector<colonyCell*> &_cells );
     void    applyBorders();
+    void    setup();
     void    update();
     
     void    feedCellWidth( ofPixels &_pixels );
@@ -43,12 +44,15 @@ public:
     bool    hasReplicated;
     bool    shouldReplicate;
     
+    ofImage transparency;
+    
 private:
     ofPoint separate ( vector<colonyCell*> &_cells );
     ofPoint align ( vector<colonyCell*> &_cells );
     ofPoint cohesion ( vector<colonyCell*> &_cells );
     
     ofPoint seek( ofPoint _target);
+   
     
     
 };
