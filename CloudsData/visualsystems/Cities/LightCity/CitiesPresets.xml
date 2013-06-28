@@ -2,9 +2,14 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>777.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CloseUp</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GrayScottCity</Name>
@@ -22,11 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SmookyCity</Name>
+    <Name>Mountain</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>SmookyGrayScott</Name>
+    <Name>SmookyCity</Name>
     <Value>0</Value>
 </Widget>

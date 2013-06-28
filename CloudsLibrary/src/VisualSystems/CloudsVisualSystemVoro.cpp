@@ -20,8 +20,7 @@ string CloudsVisualSystemVoro::getSystemName()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
-    objectLookAt = ofVec3f(0,0,1);
-    ofLoadImage(dot, getDataPath()+"images/dot.png");
+    
 }
 
 void CloudsVisualSystemVoro::selfSetupGuis()
@@ -34,6 +33,21 @@ void CloudsVisualSystemVoro::selfAutoMode()
     
 }
 
+void CloudsVisualSystemVoro::selfBegin()
+{
+    objectLookAt = ofVec3f(0,0,1);
+    ofLoadImage(dot, getDataPath()+"images/dot.png");
+}
+
+void CloudsVisualSystemVoro::selfEnd()
+{
+    for(int i = seedParticles.size()-1; i >= 0; i-- ){
+        delete seedParticles[i];
+        seedParticles.erase(seedParticles.begin()+i);
+    }
+    seedParticles.clear();
+    cellMeshes.clear();
+}
 
 void CloudsVisualSystemVoro::selfDrawBackground()
 {
@@ -83,10 +97,8 @@ void CloudsVisualSystemVoro::selfUpdate()
     
     //  Compute seed particles
     //
-//    sort( seedParticles.begin(), seedParticles.end(), comparisonFunction );
     for (int i = 0; i < seedParticles.size(); i++){
 		for (int j = 0; j < i; j++){
-//            if ( fabs(seedParticles[j]->x - seedParticles[i]->x) >	50.0) break;
             seedParticles[i]->addRepulsionForce( seedParticles[j], repulsionPct);
 		}
 	}
@@ -220,16 +232,6 @@ void CloudsVisualSystemVoro::billBoard()
 }
 
 void CloudsVisualSystemVoro::selfExit()
-{
-    
-}
-
-void CloudsVisualSystemVoro::selfBegin()
-{
-    
-}
-
-void CloudsVisualSystemVoro::selfEnd()
 {
     
 }

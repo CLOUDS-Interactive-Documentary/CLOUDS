@@ -34,6 +34,17 @@ void CloudsVisualSystemTerrain::selfSetup()
     bChange = true;
 }
 
+
+void CloudsVisualSystemTerrain::selfBegin()
+{
+    
+}
+
+void CloudsVisualSystemTerrain::selfEnd()
+{
+    
+}
+
 void CloudsVisualSystemTerrain::selfSetupSystemGui()
 {
     sysGui->addLabel("Noise");
@@ -296,16 +307,6 @@ void CloudsVisualSystemTerrain::selfSceneTransformation()
 }
 
 void CloudsVisualSystemTerrain::selfExit()
-{
-    
-}
-
-void CloudsVisualSystemTerrain::selfBegin()
-{
-    
-}
-
-void CloudsVisualSystemTerrain::selfEnd()
 {
     
 }

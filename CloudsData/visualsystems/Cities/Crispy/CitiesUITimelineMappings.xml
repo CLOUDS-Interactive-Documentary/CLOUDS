@@ -4,9 +4,9 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>ROT-Z</WidgetName>
-                <WidgetID>13</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>noise_zoom</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>SystemSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
