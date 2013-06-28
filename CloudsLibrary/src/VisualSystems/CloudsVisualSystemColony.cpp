@@ -18,7 +18,9 @@ void CloudsVisualSystemColony::selfSetup()
     noiseShader.load("", getDataPath()+"shaders/VisualSystems/Colony/liquidNoise.fs");
     foodFbo.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     noiseZoom = 100.0;
-}
+    
+    
+   }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
