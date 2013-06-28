@@ -1,59 +1,64 @@
 <Canvas>
     <Kind>42</Kind>
-    <Name>MATERIAL 1Settings</Name>
+    <Name>POINT LIGHT 1Settings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>234.000000000</YPosition>
+    <XPosition>425.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>X</Name>
+    <Value>-151.833862305</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Y</Name>
+    <Value>109.946044922</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Z</Name>
+    <Value>-162.304931641</Value>
+</Widget>
+<Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
-    <Value>0.800000012</Value>
+    <Value>0.471203446</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AG</Name>
-    <Value>0.800000012</Value>
+    <Value>0.476438969</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AB</Name>
-    <Value>0.800000012</Value>
+    <Value>0.528795183</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.800000012</Value>
+    <Name>DR</Name>
+    <Value>0.376962632</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.800000012</Value>
+    <Name>DG</Name>
+    <Value>0.633507013</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.800000012</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>ER</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>EG</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>EB</Name>
-    <Value>0.000000000</Value>
+    <Name>DB</Name>
+    <Value>0.717276812</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SR</Name>
-    <Value>0.062826507</Value>
+    <Value>0.094240114</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -63,10 +68,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SB</Name>
-    <Value>0.041884176</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>SHINY</Name>
-    <Value>0.000000000</Value>
+    <Value>0.104711398</Value>
 </Widget>

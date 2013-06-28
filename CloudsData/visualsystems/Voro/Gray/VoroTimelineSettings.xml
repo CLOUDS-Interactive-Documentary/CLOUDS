@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>TimelineSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>399.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1453.000000000</XPosition>
+    <YPosition>579.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

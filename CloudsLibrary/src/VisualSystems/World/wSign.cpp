@@ -95,7 +95,7 @@ void wSign::update(float _speed){
             bDead = true;
     } else {
         vel += acc;
-        vel *= _speed*0.85;
+        vel *= _speed;//*0.85;
         *this += vel;
         acc *= 0;
     }
