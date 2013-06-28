@@ -43,8 +43,8 @@ public:
     bool    dead;
     bool    hasReplicated;
     bool    shouldReplicate;
-    
-    ofImage transparency;
+    int		spriteIndex;
+//    ofImage transparency;
     
 private:
     ofPoint separate ( vector<colonyCell*> &_cells );
@@ -53,6 +53,6 @@ private:
     
     ofPoint seek( ofPoint _target);
    
-    
+    ofMesh spriteMesh;
     
 };

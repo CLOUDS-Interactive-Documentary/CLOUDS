@@ -19,8 +19,8 @@ void CloudsVisualSystemColony::selfSetup()
     foodFbo.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     noiseZoom = 100.0;
     
-    
-   }
+	sprite.loadImage(getVisualSystemDataPath() + "_sprites/Cell_6f_sm_4.png");
+}
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
@@ -118,26 +118,18 @@ void CloudsVisualSystemColony::selfUpdate()
     
 }
 
-void CloudsVisualSystemColony::draw(ofEventArgs & args)
-{
-    ofPushStyle();
-    if(bRenderSystem)
-    {
-        drawBackground();
-    
-        ofSetColor(255,255,255);
-		noise.draw(0,0);
-//        foodFbo.draw(0, 0);
-        
-        for (int i = 0; i < cells.size(); i++) {
-            cells[i]->draw();
-        }
-        
-    }
-    
-    ofPopStyle();
-
-}
+//void CloudsVisualSystemColony::draw(ofEventArgs & args)
+//{
+//    ofPushStyle();
+//    if(bRenderSystem)
+//    {
+////        drawBackground();
+//    
+//    }
+//    
+//    ofPopStyle();
+//
+//}
 
 
 void CloudsVisualSystemColony::selfSetupGuis()
@@ -153,6 +145,26 @@ void CloudsVisualSystemColony::selfAutoMode()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+	ofSetColor(255,255,255);
+	noise.draw(0,0);
+	//foodFbo.draw(0, 0);
+	
+	ofEnableAlphaBlending();
+	for(int i = 0; i < sprites.size(); i++){
+		sprites[i].getTextureReference().bind();
+		for (int c = 0; c < cells.size(); c++) {
+			if(cells[c]->spriteIndex == i){
+				cells[c]->draw();
+			}
+		}		
+		sprites[i].getTextureReference().unbind();
+	}
+				
+//	sprite.getTextureReference().bind();
+//	for (int i = 0; i < cells.size(); i++) {
+//		cells[i]->draw();
+//	}
+//	sprite.getTextureReference().unbind();
     
 }
 

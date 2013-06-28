@@ -26,7 +26,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     
-    void draw(ofEventArgs & args);
+//    void draw(ofEventArgs & args);
     
     void selfExit();
     void selfBegin();
@@ -56,7 +56,7 @@ private:
     ofFbo       foodFbo;
     ofShader    noiseShader;
     
-	
+	vector<ofImage> sprites;
 	ofImage noise;
 	
     vector< colonyCell* > cells;
