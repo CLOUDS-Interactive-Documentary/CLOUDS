@@ -64,11 +64,13 @@
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
 	gui->addButton("Reset Camera", &resetCamera);
+	gui->addButton("Save Alignment", &saveAlignment);
+    
 	gui->addSlider("Clip Position", 0, 1.0, &clipPosition);
 	gui->addSlider("min depth", 300, 1000, &minDepth);
 	gui->addSlider("max depth", 900, 1500, &maxDepth);
-	gui->addSlider("x texture translate", -20, 20, &translate.x);
-	gui->addSlider("y texture translate", -20, 20, &translate.y);
+//	gui->addSlider("x texture translate", -20, 20, &translate.x);
+//	gui->addSlider("y texture translate", -20, 20, &translate.y);
 	gui->addSlider("x texture rotate", -5, 5, &rotate.x);
 	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
@@ -82,8 +84,6 @@
 	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
-
-	gui->addButton("Save Alignment", &saveAlignment);
 	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
 
@@ -113,6 +113,7 @@
 		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
 		for(int i = 0; i < exportManagers.size(); i++){
 			exportManagers[i]->alternativeVideoFolder = colorReplacementFolder;
+            exportManagers[i]->setExportDirectory( exportFolder );
 		}
 		
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
@@ -541,7 +542,7 @@
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
 	}
 	else if([@"exported" isEqualToString:aTableColumn.identifier]){
-		return ofFile::doesFileExist(exportFolder + "/" + parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()) ? @"YES" : @"NO";
+		return ofFile::doesFileExist(exportFolder + "/" + parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()+"/_calibration.xml") ? @"YES" : @"NO";
 	}
 	else{
 		return @"IDENTIFER ERROR";
