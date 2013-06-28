@@ -2,12 +2,17 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>278.000000000</XPosition>
-    <YPosition>793.000000000</YPosition>
+    <XPosition>213.000045776</XPosition>
+    <YPosition>678.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>sortingThunder</Name>
+    <Name>conflictForces</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Fire</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -17,17 +22,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>conflictForces</Name>
-    <Value>0</Value>
+    <Name>pixelsThunder</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>randomCaos</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>randomWaves</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -37,11 +37,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>sortingThunderSmall</Name>
+    <Name>randomWaves</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>pixelsThunder</Name>
-    <Value>1</Value>
+    <Name>sortingThunder</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sortingThunderSmall</Name>
+    <Value>0</Value>
 </Widget>
