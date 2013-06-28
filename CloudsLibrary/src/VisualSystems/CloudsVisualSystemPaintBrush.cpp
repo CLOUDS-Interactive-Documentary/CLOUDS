@@ -89,25 +89,14 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     canvas.end();
 }
 
-void CloudsVisualSystemPaintBrush::draw(ofEventArgs & args)
+void CloudsVisualSystemPaintBrush::selfDrawBackground()
 {
-    ofPushStyle();
-    if(bRenderSystem)
-    {
-        drawBackground();
-        
-        canvas.draw(0, 0);
-        
-        if (bDebug){
-            ofSetColor(255);
-            brush.drawDebug();
-        }
-        
-    }
+    canvas.draw(0, 0);
     
-    ofPopStyle();
-	
-//	timeline->draw();
+    if (bDebug){
+        ofSetColor(255);
+        brush.drawDebug();
+    }
 }
 
 
@@ -117,12 +106,6 @@ void CloudsVisualSystemPaintBrush::selfSetupGuis()
 }
 
 void CloudsVisualSystemPaintBrush::selfAutoMode()
-{
-    
-}
-
-
-void CloudsVisualSystemPaintBrush::selfDrawBackground()
 {
     
 }

@@ -3,17 +3,17 @@
     <Name>TimelineSettings</Name>
     <IsMinified>0</IsMinified>
     <XPosition>425.000061035</XPosition>
-    <YPosition>355.000000000</YPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>8</Kind>
     <Name>DURATION</Name>
-    <Value>0.000000000</Value>
+    <Value>1000.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

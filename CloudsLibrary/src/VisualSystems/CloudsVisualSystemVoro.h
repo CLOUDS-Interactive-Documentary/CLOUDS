@@ -49,7 +49,7 @@ public:
     void billBoard();
     
 protected:
-    vector <VoroParticle *> seedParticles;
+    vector<VoroParticle *> seedParticles;
     vector<ofMesh>  cellMeshes;
     
     ofTexture dot;

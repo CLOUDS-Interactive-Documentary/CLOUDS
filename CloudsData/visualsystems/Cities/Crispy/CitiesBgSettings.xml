@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>BgSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>676.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>GRAD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>0.000000000</Value>
+    <Value>5.099999905</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,20 +23,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>0.000000000</Value>
+    <Value>183.399017334</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>0.000000000</Value>
+    <Value>109.285713196</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>11.305418015</Value>
+    <Value>42.709358215</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>0.000000000</Value>
+    <Value>6.280787945</Value>
 </Widget>

@@ -16,8 +16,6 @@ string CloudsVisualSystemMemory::getSystemName()
 
 void CloudsVisualSystemMemory::selfSetup()
 {
-    ofEnableAlphaBlending();
-    
     blockScale = 1.0;
     blockWidth = 4;
     blockHeight = 8;
@@ -31,6 +29,7 @@ void CloudsVisualSystemMemory::selfSetup()
     bDeFrag = false;
     bBiDirectionalSort = false;
     
+    ofEnableAlphaBlending();
     generateFromMemory();
 }
 
@@ -58,6 +57,16 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
     rdrGui->addSlider("block_scale", 0.5
                       , 10, &blockScale);
     rdrGui->addSlider("block_border", 0.0, 1.0, &blockAlpha);
+}
+
+void CloudsVisualSystemMemory::selfBegin()
+{
+    generateFromMemory();
+}
+
+void CloudsVisualSystemMemory::selfEnd()
+{
+    
 }
 
 void CloudsVisualSystemMemory::guiSystemEvent(ofxUIEventArgs &e)
@@ -309,31 +318,22 @@ void CloudsVisualSystemMemory::swapBlocks(int _indexA, int _indexB){
     blocks[_indexB].bSelected = true;
 }
 
-void CloudsVisualSystemMemory::draw(ofEventArgs & args)
+void CloudsVisualSystemMemory::selfDrawBackground()
 {
-    ofPushStyle();
-    if(bRenderSystem)
-    {
-        drawBackground();
-        
-        ofNoFill();
-        ofSetColor(150);
-        ofSetLineWidth(0.5);
-        ofRect(14,14,ofGetWidth()-28,ofGetHeight()-28);
-        
-        ofSetColor(100);
-        ofSetLineWidth(1);
-        ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
-        
-        ofSetLineWidth(0.01);
-        for (int i = 0; i < blocks.size(); i++) {
-            blocks[i].draw();
-        }
-    }
+
+    ofNoFill();
+    ofSetColor(150);
+    ofSetLineWidth(0.5);
+    ofRect(14,14,ofGetWidth()-28,ofGetHeight()-28);
     
-    ofPopStyle();
-	
-    //	timeline->draw();
+    ofSetColor(100);
+    ofSetLineWidth(1);
+    ofRect(10,10,ofGetWidth()-20,ofGetHeight()-20);
+    
+    ofSetLineWidth(0.01);
+    for (int i = 0; i < blocks.size(); i++) {
+        blocks[i].draw();
+    }
 }
 
 
@@ -343,12 +343,6 @@ void CloudsVisualSystemMemory::selfSetupGuis()
 }
 
 void CloudsVisualSystemMemory::selfAutoMode()
-{
-    
-}
-
-
-void CloudsVisualSystemMemory::selfDrawBackground()
 {
     
 }
@@ -364,16 +358,6 @@ void CloudsVisualSystemMemory::selfSceneTransformation()
 }
 
 void CloudsVisualSystemMemory::selfExit()
-{
-    
-}
-
-void CloudsVisualSystemMemory::selfBegin()
-{
-    
-}
-
-void CloudsVisualSystemMemory::selfEnd()
 {
     
 }
