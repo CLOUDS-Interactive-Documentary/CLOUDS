@@ -542,7 +542,7 @@
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
 	}
 	else if([@"exported" isEqualToString:aTableColumn.identifier]){
-		return ofFile::doesFileExist(exportFolder + "/" + parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()) ? @"YES" : @"NO";
+		return ofFile::doesFileExist(exportFolder + "/" + parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()+"/_calibration.xml") ? @"YES" : @"NO";
 	}
 	else{
 		return @"IDENTIFER ERROR";
