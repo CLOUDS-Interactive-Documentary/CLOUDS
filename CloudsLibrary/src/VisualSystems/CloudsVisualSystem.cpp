@@ -2310,7 +2310,14 @@ void CloudsVisualSystem::drawBackground()
 	
 	ofPopStyle();
 	
+	//selfDrawBackground();
+	ofPushStyle();
+	ofPushMatrix();
+	ofTranslate(0, ofGetHeight());
+	ofScale(1,-1,1);
 	selfDrawBackground();
+	ofPopMatrix();
+	ofPopStyle();
 }
 
 void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& end)

@@ -8,11 +8,11 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "cCell.h"
         
-class CloudsVisualSystemColony : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -54,6 +54,9 @@ private:
     ofFbo       foodFbo;
     ofShader    noiseShader;
     
+	
+	ofImage noise;
+	
     vector< colonyCell* > cells;
     vector< colonyCell* > newborns;
     
