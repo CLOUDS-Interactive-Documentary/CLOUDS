@@ -17,7 +17,8 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	ofColor color; //clip marker color
+	ofColor color;
+    //clip marker color
     string startingQuestion;
 	
     //svg data
@@ -28,8 +29,27 @@ class CloudsClip {
     int startFrame;
     int endFrame;
 
-    vector<string> keywords;
-	
+//    vector<string> keywords;
+    vector<string>& getOriginalKeywords();
+    //used to save out links
+    vector<string>& getAdditionalKeywords();
+    vector<string>& getRevokedKeywords();
+    
+    //use everywhere for real keywoords
+	vector<string>& getKeywords();
+    
+    //called from the FCPParser
+    void setOriginalKeywords(vector<string>& keywords);
+    //called from the CloudsLinker UI
+    void setDesiredKeywords(vector<string>& desiredKeywords
+                            );
+    
+    //called during ParseLinks
+    void addKeyword(string keyword);
+    void revokeKeyword(string keyword);
+    bool hasAdditionalKeywords();
+    bool hasRevokedKeywords();
+    
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
@@ -69,4 +89,13 @@ class CloudsClip {
 	float contourMinBlobSize;
 	
 	bool adjustmentLoaded;
+    
+  protected:
+    vector<string> originalKeywords; //came in from FCP
+    vector<string> additionalKeywords; //added manually
+    vector<string> revokedKeywords; //manually removed
+    bool keywordsDirty;
+    void collateKeywords();
+    vector<string> keywords; //collated
+
 };

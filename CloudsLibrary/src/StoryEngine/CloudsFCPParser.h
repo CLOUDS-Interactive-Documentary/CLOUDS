@@ -52,7 +52,7 @@ class CloudsFCPParser {
     void unsuppressConnection(string linkName, int linkIndex);
 	void unsuppressConnection(string linkName, string targetName);
 	void unsuppressConnection(CloudsLink& link);
-
+    void refreshAllKeywords();
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -70,6 +70,10 @@ class CloudsFCPParser {
 	bool clipHasSuppressions(CloudsClip& clip);
 	bool clipHasSuppressions(string clipName);
 	
+    //are there any revoked or additional toolkits?
+    bool clipHasRevokedKeywords(CloudsClip& clip);
+    bool clipHasAdditionalKeywords(CloudsClip& clip);
+    
     //are there any starting Questions?
     bool clipHasStartingQuestions(CloudsClip& clip);
     bool clipHasStartingQuestions(string clipName);
@@ -139,6 +143,7 @@ class CloudsFCPParser {
     map<string, int> clipLinkNameToIndex;
     
     map<string, int> allKeywords;
+    //potential problem
     vector<string> keywordVector;
 	vector<int> hasCombinedVideoIndeces;
 	vector<string> questionIds;
@@ -147,11 +152,13 @@ class CloudsFCPParser {
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
-
+    
+    //not used at the moment
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
-	CloudsClip dummyClip; // for failed reference returns
 	
+    
+    CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;
 };

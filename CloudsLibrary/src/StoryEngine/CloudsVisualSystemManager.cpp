@@ -97,7 +97,13 @@ void CloudsVisualSystemManager::loadPresets(){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
 		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-		keywordXml.popTag(); //system
+        keywordXml.pushTag("suppresions");
+        int numSuppresions = keywordXml.getNumTags("clip");
+        for(int i=0; i<numSuppresions;i++){
+            suppressedClips[name].push_back(keywordXml.get);
+        }
+        
+        keywordXml.popTag(); //system
 	}
 	
 #endif

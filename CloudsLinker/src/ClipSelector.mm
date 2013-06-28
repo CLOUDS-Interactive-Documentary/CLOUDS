@@ -45,6 +45,7 @@
     [suppressedTable setTarget:self];
     [suppressedTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
+    NSLog(@"delegate? %@", currentKeywords.delegate.description);
 
 	[self updateTables];
 }
@@ -197,9 +198,10 @@
         if([self isClipSelected]){
 			CloudsClip m = [self selectedClip];
 			string keywordList = "";
-			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.keywords, ",").c_str()];
+			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.getKeywords(), ",").c_str()];
 			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
-			
+            
+            revokedKeywords=  [NSString stringWithUTF8String:ofJoinString(m.getRevokedKeywords(), "/n").c_str()];
 			dontUpdateClips = true;
 			[self updateTables];
 			dontUpdateClips = false;
@@ -290,7 +292,7 @@ completionsForSubstring:(NSString *)substring
     indexOfSelectedItem:(NSInteger *)selectedIndex
 {
     
-    //    cout << "asking for completions..." << endl;
+//    cout << "asking for completions..." << endl;
     NSMutableArray* completions = [NSMutableArray array];
     for(int i = 0; i < parser->getAllKeywords().size(); i++){
         NSString* stringKeyword = [NSString stringWithUTF8String:parser->getAllKeywords()[i].c_str()];
@@ -299,7 +301,7 @@ completionsForSubstring:(NSString *)substring
         }
     }
     
-    //    cout << "found " << completions.count << endl;
+//    cout << "found " << completions.count << endl;
     return completions;
 }
 
@@ -314,13 +316,23 @@ completionsForSubstring:(NSString *)substring
     }
     return NO;
 }
+- (IBAction) updateKeywords:(id)sender{
 
+    string keywordString= [currentKeywords.stringValue UTF8String];
+    CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
+    
+    vector<string> newKeywords = ofSplitString(keywordString, ",");
+    n.setDesiredKeywords(newKeywords);
+    cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
+
+
+}
 
 - (IBAction) setQuestionText:(id)sender{
     //button pressed
     CloudsClip m = [self selectedClip];
 	
-	//needs to be the Clip referenced by the main database to have tehq uestion stored
+	//needs to be the Clip referenced by the main database to have the question stored
     //get the txt from textfield, get currently select clip, and set it
     CloudsClip& n = parser->getClipWithLinkName(m.getLinkName());
     string q = [startQuestion.stringValue UTF8String];
@@ -447,6 +459,7 @@ completionsForSubstring:(NSString *)substring
     [linkTable reloadData];
     [suppressedTable reloadData];
     [metaTable reloadData];
+
 }
 
 - (void) updateSelectedClips
