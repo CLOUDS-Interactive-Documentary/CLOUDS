@@ -269,7 +269,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	}
 	else{
-		cout << "NO CONTOURS FOUND" << endl;
+		cout << "NO CONTOURS FOUND FRAME: " << ofToString(frameNum) << endl;
+		log += "NO CONTOURS FOUND FRAME: " + ofToString(frameNum) + "\n";
+
 	}
 	
 	//////////////////
@@ -296,8 +298,8 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				//LOAD IMAGE
 				char filename[1024];
 				sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), i);
-				ofPixels pix;
-				if(!ofLoadImage(pix, filename)){
+				ofPixels oldFrame;
+				if(!ofLoadImage(oldFrame, filename)){
 					ofLogError() << "Retro face fail -- Couldn't load image " << filename << endl;
 					continue;
 				}
@@ -307,17 +309,30 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				interpolatePolyLine(lastFace, faceOutline, interpFace, delta);
 				interpolatePolyLine(lastMouth, mouthOutline, interpMouth, delta);
 				
+				//cler face frame
+				cv::Mat dstMat = ofxCv::toCv(faceFrame);
+				dstMat.setTo(cv::Scalar(0));
+				
 				//ADD FACE
 				addFaceToPixels(faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
 				
 				//copy and paste the pixels into the buffer
 				ofPixels resized = faceFrame;
 				resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
-				resized.pasteInto(pix, faceTargetRectangle.x, faceTargetRectangle.y);
+				for(int y = 0; y < faceTargetRectangle.getHeight(); y++){
+					for(int x = 0; x < faceTargetRectangle.getWidth(); x++){
+						int oldFrameIndex  = ((faceTargetRectangle.y + y)*oldFrame.getWidth() + x) * 3;
+						int faceFrameIndex = (y*faceTargetRectangle.getWidth()+x) * 3;
+						oldFrame.getPixels()[ oldFrameIndex + 1 ] += resized.getPixels()[ faceFrameIndex + 1 ];
+						oldFrame.getPixels()[ oldFrameIndex + 2 ] += resized.getPixels()[ faceFrameIndex + 2 ];
+					}
+				}
 				
+				//resized.pasteInto(oldFrame, faceTargetRectangle.x, faceTargetRectangle.y);
+				log += "RE-SAVING filename with face " + string(filename) + "\n";
 				cout << "RE-SAVING filename with face " << filename << endl;
 				//SAVE IMAGE AGAIN
-				ofSaveImage(pix, filename);
+				ofSaveImage(oldFrame, filename);
 			}
 		}
 		
@@ -336,6 +351,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	}
 	else{
 		ofLogError() << " NO FACE FOUND FOR CLIP " << clipName << " FRAME " << ofToString(frameNum);
+		log += "NO FACE FOUND FOR CLIP " + clipName + " FRAME " + ofToString(frameNum) + "\n";
 		inFace = false;
 	}
 

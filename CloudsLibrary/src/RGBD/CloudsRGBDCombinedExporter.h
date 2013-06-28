@@ -45,6 +45,8 @@ class CloudsRGBDCombinedExporter {
 	ofxCv::ContourFinder contours;
 	ofVec3f facePosition;
 	
+	string log;
+	
   protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
