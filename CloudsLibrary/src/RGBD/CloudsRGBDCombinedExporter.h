@@ -74,7 +74,7 @@ class CloudsRGBDCombinedExporter {
 	
 //	ofFbo faceFBO; //draw target for face frame
 	ofPixels faceFrame; //copy to destination
-	ofPixels recoveryFadeFrame;
+	ofPixels recoveryFaceFrame;
 	
 	bool inFace;
 	bool foundFirstFace;

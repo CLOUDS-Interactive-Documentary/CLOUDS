@@ -245,7 +245,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
 	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
 		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
-		recoveryFadeFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+		recoveryFaceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
 
 	contours.setMinArea(minBlobSize);
@@ -312,14 +312,14 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				interpolatePolyLine(lastMouth, mouthOutline, interpMouth, delta);
 				
 				//cler face frame
-				cv::Mat dstMat = ofxCv::toCv(recoveryFadeFrame);
+				cv::Mat dstMat = ofxCv::toCv(recoveryFaceFrame);
 				dstMat.setTo(cv::Scalar(0));
 				
 				//ADD FACE
-				addFaceToPixels(recoveryFadeFrame, faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
+				addFaceToPixels(recoveryFaceFrame, faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
 				
 				//copy and paste the pixels into the buffer
-				ofPixels resized = recoveryFadeFrame;
+				ofPixels resized = recoveryFaceFrame;
 				resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
 				for(int y = 0; y < faceTargetRectangle.getHeight(); y++){
 					for(int x = 0; x < faceTargetRectangle.getWidth(); x++){
