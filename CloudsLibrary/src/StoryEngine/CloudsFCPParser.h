@@ -116,6 +116,9 @@ class CloudsFCPParser {
 	set<string> clusterMapColors;
 	
   protected:
+    
+    void reciprocateSuppressions(CloudsClip& clip );
+    
     string xmlDirectory;
     string combinedVideoDirectory;
 	

@@ -190,7 +190,7 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 }
 
 void CloudsStoryEngine::checkVisualSystems(){
-	if(visualSystems == NULL){
+	if(visualSystems == NULL || visualSystems->getPresets().size() == 0){
 		return;
 	}
 	

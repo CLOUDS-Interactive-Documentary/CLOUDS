@@ -57,6 +57,8 @@
 		3D5B93FB1753048300F558AC /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B93E91753048300F558AC /* ofxTween.cpp */; };
 		3D5B941D1753048A00F558AC /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94191753048A00F558AC /* ofxTextInputField.cpp */; };
 		3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94361753049600F558AC /* ofxMSATimer.cpp */; };
+		3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA56F9D177CC983002069B4 /* wSatellite.cpp */; };
+		3DA56FA3177CD5B9002069B4 /* wSign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA56FA1177CD5B9002069B4 /* wSign.cpp */; };
 		3DCACC86176A51F2000696C6 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */; };
 		3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40D99177905720030A5EE /* wPoint.cpp */; };
 		3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40DA4177A194E0030A5EE /* wStar.cpp */; };
@@ -65,7 +67,6 @@
 		3DEFE119176E7D8000139095 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE113176E7D8000139095 /* tinyxmlparser.cpp */; };
 		3DEFE11A176E7D8000139095 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE115176E7D8000139095 /* ofxXmlSettings.cpp */; };
 		3DEFE121176E897F00139095 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE11F176E897F00139095 /* wParticle.cpp */; };
-		4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -260,6 +261,10 @@
 		3D5B94371753049600F558AC /* ofxMSATimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSATimer.h; sourceTree = "<group>"; };
 		3D5B9440175304B800F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B9442175304B800F558AC /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
+		3DA56F9D177CC983002069B4 /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
+		3DA56F9E177CC983002069B4 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
+		3DA56FA1177CD5B9002069B4 /* wSign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSign.cpp; sourceTree = "<group>"; };
+		3DA56FA2177CD5B9002069B4 /* wSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSign.h; sourceTree = "<group>"; };
 		3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		3DCACC85176A51F2000696C6 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		3DD40D99177905720030A5EE /* wPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wPoint.cpp; sourceTree = "<group>"; };
@@ -274,8 +279,6 @@
 		3DEFE116176E7D8000139095 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		3DEFE11F176E897F00139095 /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
 		3DEFE120176E897F00139095 /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
-		4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
-		4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -845,6 +848,10 @@
 				3DD40D9A177905720030A5EE /* wPoint.h */,
 				3DD40DA4177A194E0030A5EE /* wStar.cpp */,
 				3DD40DA5177A194E0030A5EE /* wStar.h */,
+				3DA56F9D177CC983002069B4 /* wSatellite.cpp */,
+				3DA56F9E177CC983002069B4 /* wSatellite.h */,
+				3DA56FA1177CD5B9002069B4 /* wSign.cpp */,
+				3DA56FA2177CD5B9002069B4 /* wSign.h */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -1107,8 +1114,6 @@
 				3DEFE11E176E897F00139095 /* World */,
 				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
 				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
-				4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */,
-				4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */,
 				3DCACC85176A51F2000696C6 /* CloudsVisualSystemWorld.h */,
 				3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */,
 			);
@@ -1202,7 +1207,6 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */,
-				4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */,
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
@@ -1277,6 +1281,8 @@
 				3DEFE121176E897F00139095 /* wParticle.cpp in Sources */,
 				3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */,
 				3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */,
+				3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */,
+				3DA56FA3177CD5B9002069B4 /* wSign.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

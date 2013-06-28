@@ -2,11 +2,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "Replecator.h"
 
-class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemHiga : public CloudsVisualSystem {
  public:
 	CloudsVisualSystemHiga();
 

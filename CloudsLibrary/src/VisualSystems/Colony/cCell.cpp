@@ -208,7 +208,7 @@ ofPoint colonyCell::cohesion( vector<colonyCell*> &_cells ) {
 //
 void colonyCell::feedCellWidth( ofPixels &_pixels ){
     
-    if ( x > 0 && x < ofGetScreenWidth() && y > 0 && y < ofGetScreenHeight()){
+    if ( x > 0 && x < ofGetWidth() && y > 0 && y < ofGetWidth()){
         float value = _pixels.getColor(int(x), int(y)).getBrightness();
         
         if(value > nutrientLevel && cellSize <= maxSize){
@@ -243,11 +243,11 @@ void colonyCell::draw() {
     ofPushStyle();
     
     ofFill();
-    ofSetColor(160 + cellSize*6);
+    ofSetColor(160 + cellSize*6,255);
     ofCircle(*this, cellSize);
     
     ofFill();
-    ofSetColor(255 - cellSize*4);
+    ofSetColor(255 - cellSize*4,255);
     ofCircle(*this, 5 + cellSize/3);
     
     ofPopStyle();

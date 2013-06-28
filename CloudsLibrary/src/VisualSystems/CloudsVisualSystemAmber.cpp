@@ -109,6 +109,8 @@ void CloudsVisualSystemAmber::selfSetup()
     	billboards.setNormal(i,ofVec3f(it->getRadius(),0,0));        
         i++;
 	}
+	
+	colorPalletes = new ofxColorPalettes(getDataPath()+"colors/");
 }
 
 void CloudsVisualSystemAmber::selfSetupGuis()
@@ -207,6 +209,7 @@ void CloudsVisualSystemAmber::selfDraw()
 
 void CloudsVisualSystemAmber::selfExit()
 {
+	delete colorPalletes;
     delete billboardShader; 
     delete glow;
     delete ps;    

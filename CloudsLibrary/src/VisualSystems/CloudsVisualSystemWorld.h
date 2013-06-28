@@ -8,13 +8,15 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "wStar.h"
 #include "wPoint.h"
+#include "wSign.h"
 #include "wParticle.h"
+#include "wSatellite.h"
 
-class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemWorld : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -53,20 +55,22 @@ protected:
 
     //  Globe
     //
-    void        loadPath(ofVboMesh &_vbo, string _file);
+    void        loadVbo(ofVboMesh &_vbo, string _file);
+    float       wireSphereScale, solidSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha;
+    float       coastAlpha, riversAlpha;
     ofVboMesh   coastVbo;
     ofVboMesh   riversVbo;
 
     //  Cities
     //
-    void loadPoints(string _file);
+    void loadWorldPoints(string _file);
     vector< wPoint > worldPoints;
     float   pointNoisePeaks;
     float   rippleThreshold;
     
     //  Flocking particles
     //
-    void loadParticles( string _file );
     vector<wParticle*> particles;
     ofPoint globalOffset;
     float   nMaxPoints;
@@ -78,4 +82,15 @@ protected:
     //
     void loadStarts( string _file);
     vector< wStar* > stars;
+    vector< string > constelations;
+    string  selectedConstelation;
+    float   constelationMin,constelationMax, constelationRnd;
+    
+    //  Satellites
+    //
+    vector< wSatellite* > satellites;
+    vector< wSign > signs;
+    float   nMaxSigns;
+    float   nMaxSatellites;
+    
 };

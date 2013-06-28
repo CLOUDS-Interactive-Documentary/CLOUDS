@@ -28,9 +28,8 @@ class CloudsVisualSystemManager {
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
 	void loadPresets();
-	
-	void loadKeywords();
 	void saveKeywords();
+	
   protected:
 	
 	vector<CloudsVisualSystem*> systems;

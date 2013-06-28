@@ -10,9 +10,7 @@
 
 wPoint::wPoint(){
     color.set(255,0,0);
-    rippleColor.set(1.0,0.0,0.0);
-    rippleScale = ofRandom(0.01,0.05);
-    rippleDeepnes = 0;
+    rippleScale = ofRandom(50,500);
     noisePeaks = NULL;
     noiseThreshold = NULL;
     bRipple = false;
@@ -51,8 +49,6 @@ void wPoint::update(){
             bRipple = false;
         }
     }
-    
-    rippleDeepnes = ripplePct*rippleScale;
 }
 
 void wPoint::draw(){
@@ -67,46 +63,42 @@ void wPoint::draw(){
     }
     
     if (bRipple){
-        
-        //  Jen equation
-        //
-        float totalGlobeRadio = 300;
-        float rippleHeight = rippleDeepnes*totalGlobeRadio;
-        float rippleRadio = sqrt( 2*rippleHeight*totalGlobeRadio-powf(rippleHeight,2) );
-        
-        ofPoint vectorToCenter = ofPoint(0,0,0)-*this;
-        vectorToCenter.normalize();
-        ofPoint rippleCenter = *this + vectorToCenter * rippleHeight;
-    
-        ofPoint objectLookAt = ofVec3f(0,0,1);
-        float theta = objectLookAt.angle(vectorToCenter);
-        ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
-        rippleAngle.normalize();
-        
-        ofPushStyle();
-        rippleColor.a = (1.0-ripplePct);
-        ofSetColor(rippleColor);
-       
-        //  City dot
-        //
-        ofPushMatrix();
-        ofTranslate(*this);
-        glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
-        ofFill();
-        ofCircle(0,0,0, 2);
-        ofPopMatrix();
-        
-        //  Ripple
-        //
-        ofPushMatrix();
-        ofTranslate(rippleCenter);
-        glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
-        ofNoFill();
-        ofSetLineWidth(1.5);
-        ofCircle(0,0,0, rippleRadio);
-        ofPopMatrix();
-
-        ofPopStyle();
-        
+        drawRipple(ripplePct*0.61);
+        drawRipple(ripplePct);
     }
+}
+
+void wPoint::drawRipple( float _pct ){
+    //  Jen equation
+    //
+    float totalGlobeRadio = rippleScale;
+    float rippleDps = _pct*0.025;
+    float rippleHeight = rippleDps*totalGlobeRadio;
+    float rippleRadio = sqrt( 2*rippleHeight*totalGlobeRadio-powf(rippleHeight,2) );
+    
+    ofPoint vectorToCenter = ofPoint(0,0,0)-*this;
+    vectorToCenter.normalize();
+    ofPoint rippleCenter = *this + vectorToCenter * rippleHeight;
+    
+    ofPoint objectLookAt = ofVec3f(0,0,1);
+    float theta = objectLookAt.angle(vectorToCenter);
+    ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
+    rippleAngle.normalize();
+    
+    ofPushStyle();
+    ofFloatColor rippleColor = color;
+    rippleColor.a = (1.0-_pct)*0.2;
+    ofSetColor(rippleColor);
+    
+    //  Ripple
+    //
+    ofPushMatrix();
+    ofTranslate(rippleCenter);
+    glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
+    ofNoFill();
+    
+    ofCircle(0,0,0, rippleRadio);
+    ofPopMatrix();
+    
+    ofPopStyle();
 }
