@@ -21,13 +21,13 @@ void CloudsFCPParser::loadFromFiles(){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-        refreshAllKeywords();
+
 	}
 	else{
 		setup("xml");
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
-        refreshAllKeywords();
+
 	}
 }
 
@@ -65,6 +65,7 @@ void CloudsFCPParser::refreshXML(){
             addXMLFile( dir.getPath(i) );
         }
     }
+    refreshAllKeywords();
 }
 
 void CloudsFCPParser::parseClusterMap(string mapFile){
@@ -236,7 +237,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
                 c.addKeyword(additionalKeywords[i]);
             }
         }
-		
+
         //add revoked and additional keywords
         
 		linksXML.popTag(); //clip
@@ -613,8 +614,9 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
     keywordsDirty = true;
 }
 void CloudsFCPParser::refreshAllKeywords(){
-    for(int i=0;allClips.size();i++){
-        vector<string> newKeywords = allClips[i].getKeywords();
+    for(int i = 0; i < allClips.size(); i++){
+
+        vector<string>& newKeywords = allClips[i].getKeywords();
         for(int k = 0; k < newKeywords.size(); k++){
             if(newKeywords[k].find("?") == string::npos &&
                newKeywords[k].find("link:") == string::npos)
@@ -623,7 +625,6 @@ void CloudsFCPParser::refreshAllKeywords(){
             }
         }
     }
-    
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
