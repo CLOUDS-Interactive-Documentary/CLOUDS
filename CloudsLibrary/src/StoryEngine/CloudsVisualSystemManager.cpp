@@ -35,11 +35,11 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCities() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );	
+	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemHiga() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
-//	registerVisualSystem( new CloudsVisualSystemAmber() );
+    //	registerVisualSystem( new CloudsVisualSystemAmber() );
 #endif
     
 }
@@ -135,6 +135,13 @@ void CloudsVisualSystemManager::saveKeywords(){
 		
 		keywordXml.pushTag("system",systemIndex);
 		keywordXml.addValue("keywords", keywordString);
+        keywordXml.addTag("suppresions");
+        keywordXml.pushTag("suppresions");
+        vector<string>& clips =  getSuppressionsForPreset(presetName);
+        for (int i =0; i<clips.size(); i++) {
+            keywordXml.addValue("clip",clips[i]);
+        }
+        keywordXml.popTag();//suppressions
 		keywordXml.popTag();
 		
 		systemIndex++;
@@ -173,7 +180,28 @@ vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPr
 	
 	return keywords[ preset.getID() ];
 }
+void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
+    if( ! isClipSuppressed(presetID,clipName)){
+        suppressedClips[presetID].push_back(clipName);
+        cout<<"Suppressed Clip: "<<clipName<<" for Visual System: "<<presetID<<endl;
+    }
+    
+    
+}
 
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
+    vector<string>& clips = suppressedClips[presetID];
+    for(int i=0;i<clips.size();i++){
+        if(clips[i]==clip){
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
+    return suppressedClips[presetID];
+}
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
 	keywords[ preset.getID() ] = newKeywords;
