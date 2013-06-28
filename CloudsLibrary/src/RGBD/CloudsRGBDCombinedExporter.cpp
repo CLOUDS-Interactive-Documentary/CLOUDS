@@ -245,6 +245,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
 	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
 		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+		recoveryFadeFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
 
 	contours.setMinArea(minBlobSize);
@@ -301,6 +302,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				ofPixels oldFrame;
 				if(!ofLoadImage(oldFrame, filename)){
 					ofLogError() << "Retro face fail -- Couldn't load image " << filename << endl;
+					log += "Retro face fail -- Couldn't load image: " + ofToString(filename) + "\n";
 					continue;
 				}
 				
@@ -310,19 +312,20 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 				interpolatePolyLine(lastMouth, mouthOutline, interpMouth, delta);
 				
 				//cler face frame
-				cv::Mat dstMat = ofxCv::toCv(faceFrame);
+				cv::Mat dstMat = ofxCv::toCv(recoveryFadeFrame);
 				dstMat.setTo(cv::Scalar(0));
 				
 				//ADD FACE
-				addFaceToPixels(faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
+				addFaceToPixels(recoveryFadeFrame, faceTargetRectangle, interpLeftEye, interpRightEye, interpFace, interpMouth);
 				
 				//copy and paste the pixels into the buffer
-				ofPixels resized = faceFrame;
+				ofPixels resized = recoveryFadeFrame;
 				resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
 				for(int y = 0; y < faceTargetRectangle.getHeight(); y++){
 					for(int x = 0; x < faceTargetRectangle.getWidth(); x++){
 						int oldFrameIndex  = ((faceTargetRectangle.y + y)*oldFrame.getWidth() + x) * 3;
 						int faceFrameIndex = (y*faceTargetRectangle.getWidth()+x) * 3;
+						//oldFrame.getPixels()[ oldFrameIndex + 0 ] += resized.getPixels()[ faceFrameIndex + 1 ]
 						oldFrame.getPixels()[ oldFrameIndex + 1 ] += resized.getPixels()[ faceFrameIndex + 1 ];
 						oldFrame.getPixels()[ oldFrameIndex + 2 ] += resized.getPixels()[ faceFrameIndex + 2 ];
 					}
@@ -344,7 +347,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		lastFace = faceOutline;
 		lastMouth = mouthOutline;
 		
-		addFaceToPixels(faceTargetRectangle, leftEye, rightEye, faceOutline, mouthOutline);
+		addFaceToPixels(faceFrame, faceTargetRectangle, leftEye, rightEye, faceOutline, mouthOutline);
 		
 		lastFaceFrameFound = frameNum;
 
@@ -405,7 +408,7 @@ void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& 
     }
 }
 
-void CloudsRGBDCombinedExporter::addFaceToPixels(ofRectangle target,
+void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixels& pix, ofRectangle target,
 												 ofPolyline& leftEye, ofPolyline& rightEye,
 												 ofPolyline& faceOutline,ofPolyline& mouthOutline){
 
@@ -431,7 +434,7 @@ void CloudsRGBDCombinedExporter::addFaceToPixels(ofRectangle target,
 	}
 
 	//fill in all the polgons
-	cv::Mat dstMat = ofxCv::toCv(faceFrame);
+	cv::Mat dstMat = ofxCv::toCv(pix);
 	const cv::Point* ppt[1];
 	int npt[1];
 	

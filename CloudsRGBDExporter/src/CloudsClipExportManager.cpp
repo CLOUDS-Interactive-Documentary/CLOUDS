@@ -131,7 +131,7 @@ void CloudsClipExportManager::threadedFunction(){
 	//TEMP
 	//exporter.writeMetaFile(outputDirectory, &renderer);
 	
-	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name;
+	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
 	
 	bool completedClip = false;
 	while( isThreadRunning() && currentFrame <= currentClip.endFrame + 24 ){ //24 frame handle
