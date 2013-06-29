@@ -29,13 +29,16 @@ class CloudsVisualSystemManager {
 	
 	void loadPresets();
 	void saveKeywords();
-	
+    void suppressClip(string presetID, string clipName);
+	vector<string>& getSuppressionsForPreset(string presetID);
+    bool isClipSuppressed(string presetID,string clip);
   protected:
 	
 	vector<CloudsVisualSystem*> systems;
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
-	
+
+    map<string, vector<string> > suppressedClips;
 	string getKeywordFilePath();
 	
 	float lastBackupTime;

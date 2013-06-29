@@ -381,7 +381,7 @@
 		
         preview.draw(videoRect);
 		
-		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.keywords, ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
+		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.getKeywords(), ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
     }
 	
 }

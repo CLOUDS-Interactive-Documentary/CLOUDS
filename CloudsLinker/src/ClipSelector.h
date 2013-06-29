@@ -19,7 +19,8 @@
     IBOutlet NSTableView* suppressedTable;
     IBOutlet NSTableView* metaTable;
     IBOutlet NSTokenField* currentKeywords;
-
+    IBOutlet NSTextField* revokedKeywords;
+    
     IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
     
@@ -46,6 +47,7 @@
 
 - (IBAction) saveLinks:(id)sender;
 
+- (IBAction) updateKeywords:(id)sender;
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 
@@ -70,11 +72,11 @@
 - (BOOL) tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
-- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors;
-- (NSArray *)tokenField:(NSTokenField *)tokenField completionsForSubstring:(NSString *)substring indexOfToken:(NSInteger)tokenIndex indexOfSelectedItem:(NSInteger *)selectedIndex;
 
 - (BOOL) hasKeyword:(NSString*) keyword;
-
+- (NSArray *)tokenField:(NSTokenField *)tokenField
+completionsForSubstring:(NSString *)substring
+           indexOfToken:(NSInteger)tokenIndex
+    indexOfSelectedItem:(NSInteger *)selectedIndex;
+    
 @end

@@ -26,18 +26,18 @@
         }
 		
         currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
-
+        
         currentVisualSystem->playSystem();
         currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
 		
-        shouldPlaySelectedRow = false;     
-    }        
+        shouldPlaySelectedRow = false;
+    }
     ofShowCursor();
 }
 
 - (void)draw
 {
-
+    
 }
 
 - (void)exit
@@ -80,6 +80,16 @@
 	
 }
 
+-(IBAction)suppressClip:(id)sender{
+    if(clipTable.selectedRow>0){
+        
+        visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
+        
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        
+        
+    }
+}
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	if(aTableView == presetTable){
@@ -175,9 +185,9 @@ completionsForSubstring:(NSString *)substring
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 		[clipTable reloadData];
-		[presetTable reloadData];	
+		[presetTable reloadData];
 	}
-
+    
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
@@ -190,15 +200,15 @@ completionsForSubstring:(NSString *)substring
 		[clipTable reloadData];
 		[presetTable reloadData];
 	}
-
-//	[self updateAssociatedClips];
+    
+    //	[self updateAssociatedClips];
 	
-//	if(presetTable.selectedRow >= 0){
-//		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-//		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-//		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-//		[clipTable reloadData];	
-//	}
+    //	if(presetTable.selectedRow >= 0){
+    //		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
+    //		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
+    //		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+    //		[clipTable reloadData];
+    //	}
 	
 	return tokens;
 }

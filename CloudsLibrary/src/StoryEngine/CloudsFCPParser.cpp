@@ -21,11 +21,13 @@ void CloudsFCPParser::loadFromFiles(){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+
 	}
 	else{
 		setup("xml");
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
+
 	}
 }
 
@@ -63,6 +65,7 @@ void CloudsFCPParser::refreshXML(){
             addXMLFile( dir.getPath(i) );
         }
     }
+    refreshAllKeywords();
 }
 
 void CloudsFCPParser::parseClusterMap(string mapFile){
@@ -165,7 +168,8 @@ void CloudsFCPParser::parseLinks(string linkFile){
 		int numLinks = linksXML.getNumTags("link");
 		int startQuestion = linksXML.getNumTags("startingQuestion");
 		int numSuppressed = linksXML.getNumTags("suppress");
-		
+		int numRevoked = linksXML.getNumTags("revokedKeywords");
+		int numAdditional = linksXML.getNumTags("additionalKeywords");
 		if(numLinks > 0){
 			for(int l = 0; l < numLinks; l++){
 				CloudsLink newLink;
@@ -197,7 +201,6 @@ void CloudsFCPParser::parseLinks(string linkFile){
                 
 				suppressedConnections[newLink.sourceName].push_back( newLink );
                 
-                
 			}
 		}
 		
@@ -214,11 +217,33 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
 			}
 		}
-		
+        
+        if(numRevoked>0){
+            string revokedKeywordsString = linksXML.getValue("revokedKeywords", "");
+            vector<string> revokedKeywords = ofSplitString(revokedKeywordsString, ",");
+            CloudsClip& c = getClipWithLinkName(clipName);
+             revokedKeywords;
+            for(int i=0; i<revokedKeywords.size();i++){
+                c.revokeKeyword(revokedKeywords[i]);
+            }
+        }
+        
+        if(numAdditional>0){
+            string additionalKeywordsString = linksXML.getValue("additionalKeywords", "");
+            vector<string> additionalKeywords = ofSplitString(additionalKeywordsString, ",");
+            CloudsClip& c = getClipWithLinkName(clipName);
+            additionalKeywords;
+            for(int i=0; i<additionalKeywords.size();i++){
+                c.addKeyword(additionalKeywords[i]);
+            }
+        }
+
+        //add revoked and additional keywords
+        
 		linksXML.popTag(); //clip
 	}
     
-
+    
     for(int i = 0; i < allClips.size();i++){
         reciprocateSuppressions(allClips[i]);
     }
@@ -249,7 +274,10 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		bool hasLink = clipHasLink( allClips[i]);
 		bool hasSuppressed = clipHasSuppressions( allClips[i] );
         bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
-		
+		bool hasRevokedKeywords = clipHasRevokedKeywords(allClips[i]);
+        bool hasAdditionalKeywords = clipHasAdditionalKeywords(allClips[i]);
+        
+        
         if(hasLink || hasSuppressed || hasStartingQuestion){
 			
 			linksXML.addTag("clip");
@@ -285,6 +313,17 @@ void CloudsFCPParser::saveLinks(string linkFile){
             if(hasStartingQuestion){
                 string startQuestion = allClips[i].getStartingQuestion();
                 linksXML.addValue("startingQuestion", startQuestion);
+            }
+            
+            if(hasRevokedKeywords){
+                string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
+                linksXML.addValue("revokedKeywords", revokedKeywords);
+                
+            }
+            
+            if(hasAdditionalKeywords){
+                string additionalKeywords = ofJoinString(allClips[i].getAdditionalKeywords(),"," );
+                linksXML.addValue("additionalKeywords ", additionalKeywords);
             }
 			
 			linksXML.popTag();
@@ -433,6 +472,14 @@ bool CloudsFCPParser::clipHasStartingQuestions(CloudsClip& clip){
     return clip.hasStartingQuestion();
 }
 
+bool CloudsFCPParser::clipHasRevokedKeywords(CloudsClip& clip){
+    return clip.hasRevokedKeywords();
+}
+
+bool CloudsFCPParser::clipHasAdditionalKeywords(CloudsClip& clip){
+    return clip.hasAdditionalKeywords();
+}
+
 bool CloudsFCPParser::clipHasStartingQuestions(string clipName){
     CloudsClip& c = getClipWithLinkName(clipName);
     return clipHasStartingQuestions(c);
@@ -552,14 +599,9 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 				cm.color.b = fcpXML.getValue("color:blue", 0);
 				string keywordString = ofToLower( fcpXML.getValue("comment", "") );
 				ofStringReplace(keywordString, "\n", ",");
-				cm.keywords = ofSplitString(keywordString, ",",true,true);
-				for(int k = 0; k < cm.keywords.size(); k++){
-					if(cm.keywords[k].find("?") == string::npos &&
-					   cm.keywords[k].find("link:") == string::npos)
-					{
-						allKeywords[cm.keywords[k]]++;
-					}
-				}
+                vector<string> fcpKeywords = ofSplitString(keywordString, ",",true,true);
+				cm.setOriginalKeywords(fcpKeywords);
+                
                 //            cout << "       added marker: \"" << cm.name << "\" with [" << cm.keywords.size() << "] keywords" << endl;
                 clipIDToIndex[cm.getID()] = allClips.size();
 				clipLinkNameToIndex[cm.getLinkName()] = allClips.size();
@@ -568,9 +610,22 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         }
         fcpXML.popTag(); //marker
     }
+    
     keywordsDirty = true;
 }
+void CloudsFCPParser::refreshAllKeywords(){
+    for(int i = 0; i < allClips.size(); i++){
 
+        vector<string>& newKeywords = allClips[i].getKeywords();
+        for(int k = 0; k < newKeywords.size(); k++){
+            if(newKeywords[k].find("?") == string::npos &&
+               newKeywords[k].find("link:") == string::npos)
+            {
+                allKeywords[newKeywords[k]]++;
+            }
+        }
+    }
+}
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	hasCombinedVideoIndeces.clear();
@@ -789,7 +844,7 @@ void CloudsFCPParser::addLink(CloudsClip& source, CloudsClip& target){
 }
 
 void CloudsFCPParser::addLink(CloudsLink& link){
- 
+    
     unsuppressConnection(link);
     
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
@@ -808,7 +863,7 @@ vector<CloudsLink>& CloudsFCPParser::getSuppressionsForClip(string clipName){
 int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
 	int keywordsFound = 0;
     for(int c = 0; c < allClips.size(); c++){
-		if( ofContains(allClips[c].keywords, filterWord) ){
+		if( ofContains(allClips[c].getKeywords(), filterWord) ){
 			keywordsFound++;
 		}
 	}
@@ -826,7 +881,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
 	set<string> includedClips;
     for(int c = 0; c < allClips.size(); c++){
         for(int i = 0; i < filter.size(); i++){
-            if(ofContains(allClips[c].keywords, filter[i]) &&
+            if(ofContains(allClips[c].getKeywords(), filter[i]) &&
 			   includedClips.find(allClips[c].getLinkName()) == includedClips.end()){
 				includedClips.insert(allClips[c].getLinkName());
                 filteredMarkers.push_back(allClips[c]);
@@ -841,7 +896,7 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	set<string> relatedKeywords;
 	vector<CloudsClip> relatedClips = getClipsWithKeyword(filterWord);
 	for(int i = 0; i < relatedClips.size(); i++){
-		vector<string>& keys = relatedClips[i].keywords;
+		vector<string>& keys = relatedClips[i].getKeywords();
 		for(int k = 0; k < keys.size(); k++){
 			relatedKeywords.insert(keys[k]);
 		}
@@ -853,8 +908,8 @@ vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywo
 	vector<CloudsClip> sharedClips;
     //	cout << "Computing shared clips for " << keywordA << " " << keywordB << endl;
 	for(int i = 0; i < allClips.size(); i++){
-		if(ofContains(allClips[i].keywords, keywordA) &&
-		   ofContains(allClips[i].keywords, keywordB))
+		if(ofContains(allClips[i].getKeywords(), keywordA) &&
+		   ofContains(allClips[i].getKeywords(), keywordB))
 		{
             //			cout << "	Adding Clip " << markers[i].getLinkName() << " marker " << i << endl;
 			sharedClips.push_back(allClips[i]);
@@ -866,8 +921,8 @@ vector<CloudsClip> CloudsFCPParser::getSharedClips(string keywordA, string keywo
 int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 	int clipsInCommon = 0;
 	for(int i = 0; i < allClips.size(); i++){
-		if(ofContains(allClips[i].keywords, keywordA) &&
-		   ofContains(allClips[i].keywords, keywordB))
+		if(ofContains(allClips[i].getKeywords(), keywordA) &&
+		   ofContains(allClips[i].getKeywords(), keywordB))
 		{
 			clipsInCommon++;
 		}
@@ -877,8 +932,8 @@ int CloudsFCPParser::getNumberOfSharedClips(string keywordA, string keywordB){
 
 int CloudsFCPParser::getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b){
 	int sharedKeywordCount = 0;
-	for(int i = 0; i < a.keywords.size(); i++){
-		if(ofContains(b.keywords, a.keywords[i])){
+	for(int i = 0; i < a.getKeywords().size(); i++){
+		if(ofContains(b.getKeywords(), a.getKeywords()[i])){
 			sharedKeywordCount++;
 		}
 	}
@@ -895,7 +950,7 @@ float CloudsFCPParser::getAllClipDuration(){
 int CloudsFCPParser::getNumMetaDataConnections(CloudsClip& source){
 	int clipcount = 0;
     string nameA = source.getLinkName();
-    vector<CloudsClip> connections = getClipsWithKeyword(source.keywords);
+    vector<CloudsClip> connections = getClipsWithKeyword(source.getKeywords());
     for(int j = 0; j < connections.size(); j++){
         CloudsClip& clipB = connections[j];
         string nameB = connections[j].getLinkName();
@@ -914,7 +969,7 @@ int CloudsFCPParser::getNumMetaDataConnections(CloudsClip& source){
 vector<CloudsClip> CloudsFCPParser::getMetaDataConnections(CloudsClip& source){
 	vector<CloudsClip> clips;
     string nameA = source.getLinkName();
-    vector<CloudsClip> connections = getClipsWithKeyword(source.keywords);
+    vector<CloudsClip> connections = getClipsWithKeyword(source.getKeywords());
     for(int j = 0; j < connections.size(); j++){
         CloudsClip& clipB = connections[j];
         string nameB = connections[j].getLinkName();
@@ -934,9 +989,9 @@ vector<CloudsClip> CloudsFCPParser::getMetaDataConnections(CloudsClip& source){
 //Return a vector of keywords shared by both clips
 vector<string> CloudsFCPParser::getSharedKeywords(CloudsClip& a, CloudsClip& b){
 	vector<string> sharedKeywords;
-	for(int i = 0; i < a.keywords.size(); i++){
-		if(ofContains(b.keywords, a.keywords[i])){
-			sharedKeywords.push_back(a.keywords[i]);
+	for(int i = 0; i < a.getKeywords().size(); i++){
+		if(ofContains(b.getKeywords(), a.getKeywords()[i])){
+			sharedKeywords.push_back(a.getKeywords()[i]);
 		}
 	}
 	return sharedKeywords;
@@ -966,7 +1021,7 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
     vector<CloudsLink>& sourceSuppressions = getSuppressionsForClip(sourceClip.getLinkName());
     //for each...
     for(int i =0; i<sourceSuppressions.size();i++){
-       //get the target
+        //get the target
         CloudsClip& targetClip = getClipWithLinkName(sourceSuppressions[i].targetName);
         
         //if it's not suppressed
