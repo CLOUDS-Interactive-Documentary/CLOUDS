@@ -1535,6 +1535,7 @@
 						<object class="NSTextField" id="76750930">
 							<reference key="NSNextResponder" ref="794196034"/>
 							<int key="NSvFlags">268</int>
+							<array class="NSMutableArray" key="NSSubviews"/>
 							<string key="NSFrame">{{93, 672}, {463, 21}}</string>
 							<reference key="NSSuperview" ref="794196034"/>
 							<reference key="NSWindow"/>
@@ -3037,7 +3038,7 @@
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
-						<object class="NSTextField" id="614419853">
+						<object class="NSTextField" id="281022610">
 							<reference key="NSNextResponder" ref="794196034"/>
 							<int key="NSvFlags">311</int>
 							<string key="NSFrame">{{1160, 38}, {140, 114}}</string>
@@ -3045,13 +3046,13 @@
 							<reference key="NSWindow"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="272696677">
+							<object class="NSTextFieldCell" key="NSCell" id="140102898">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents">revoked keys</string>
 								<reference key="NSSupport" ref="803814002"/>
 								<string key="NSCellIdentifier">_NS:1535</string>
-								<reference key="NSControlView" ref="614419853"/>
+								<reference key="NSControlView" ref="281022610"/>
 								<reference key="NSBackgroundColor" ref="717426172"/>
 								<reference key="NSTextColor" ref="392064256"/>
 							</object>
@@ -3478,7 +3479,7 @@
 						<reference key="source" ref="734267975"/>
 						<reference key="destination" ref="524681584"/>
 					</object>
-					<int key="connectionID">1209</int>
+					<int key="connectionID">1212</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3615,6 +3616,14 @@
 						<reference key="destination" ref="983833247"/>
 					</object>
 					<int key="connectionID">1208</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">revokedKeywords</string>
+						<reference key="source" ref="463263"/>
+						<reference key="destination" ref="281022610"/>
+					</object>
+					<int key="connectionID">1213</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3914,7 +3923,7 @@
 							<reference ref="448398664"/>
 							<reference ref="316133115"/>
 							<reference ref="983833247"/>
-							<reference ref="614419853"/>
+							<reference ref="281022610"/>
 						</array>
 						<reference key="parent" ref="533426753"/>
 					</object>
@@ -5053,16 +5062,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1210</int>
-						<reference key="object" ref="614419853"/>
+						<reference key="object" ref="281022610"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="272696677"/>
+							<reference ref="140102898"/>
 						</array>
 						<reference key="parent" ref="794196034"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1211</int>
-						<reference key="object" ref="272696677"/>
-						<reference key="parent" ref="614419853"/>
+						<reference key="object" ref="140102898"/>
+						<reference key="parent" ref="281022610"/>
 					</object>
 				</array>
 			</object>
@@ -5279,7 +5288,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1211</int>
+			<int key="maxID">1213</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

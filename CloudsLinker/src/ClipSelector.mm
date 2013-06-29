@@ -201,7 +201,8 @@
 			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.getKeywords(), ",").c_str()];
 			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
             
-            revokedKeywords=  [NSString stringWithUTF8String:ofJoinString(m.getRevokedKeywords(), "/n").c_str()];
+            revokedKeywords=  [NSString stringWithUTF8String:ofJoinString(m.getRevokedKeywords(), ",").c_str()];
+            cout<<"Revoked list"<<ofJoinString(m.getRevokedKeywords(), ",")<<endl;
 			dontUpdateClips = true;
 			[self updateTables];
 			dontUpdateClips = false;
