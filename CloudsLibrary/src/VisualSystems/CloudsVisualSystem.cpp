@@ -2101,6 +2101,8 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+	
+	selfPresetLoaded(presetPath);
 }
 
 void CloudsVisualSystem::savePresetGUIS(string presetName)
@@ -2354,6 +2356,11 @@ string CloudsVisualSystem::getSystemName()
 void CloudsVisualSystem::selfSetup()
 {
     
+}
+
+void CloudsVisualSystem::selfPresetLoaded(string presetPath)
+{
+	
 }
 
 void CloudsVisualSystem::selfSetupGuis()

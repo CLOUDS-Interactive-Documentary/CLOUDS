@@ -218,6 +218,11 @@ void CloudsVisualSystemVectorFlow::selfBegin(){
 	regenerateFlow = true;
 }
 
+void CloudsVisualSystemVectorFlow::selfPresetLoaded(string presetPath)
+{
+	regenerateFlow = true;
+}
+
 void CloudsVisualSystemVectorFlow::selfEnd(){
 	
 }
