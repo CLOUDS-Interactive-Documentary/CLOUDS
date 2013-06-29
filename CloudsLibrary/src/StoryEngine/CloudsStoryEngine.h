@@ -23,6 +23,7 @@ class CloudsStoryEngine {
 	void setup();
 
 	void seedWithClip(CloudsClip& seed);
+	void seedWithClip(CloudsClip& seed, string topic);
 	bool playNextClip(); //you can use this to skip if it's waiting
 	bool clipEnded(); //call this when the clip is done!
 	
@@ -69,8 +70,10 @@ class CloudsStoryEngine {
 	int nextClipTopScore;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
+	
+	void buildQueue(float seconds);
+	
 	bool populateNextClips();
-
 	void checkVisualSystems();
 	
 	float getNextClipDelay();
@@ -82,6 +85,8 @@ class CloudsStoryEngine {
 	CloudsVisualSystemPreset currentVisualSystem;
 	
 	vector<CloudsClip> clipHistory;
+	vector<CloudsClip> clipQueue;
+	
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;
 	

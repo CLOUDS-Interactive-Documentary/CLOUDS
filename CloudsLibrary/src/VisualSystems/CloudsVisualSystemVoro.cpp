@@ -20,8 +20,7 @@ string CloudsVisualSystemVoro::getSystemName()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
-    objectLookAt = ofVec3f(0,0,1);
-    ofLoadImage(dot, getDataPath()+"images/dot.png");
+    
 }
 
 void CloudsVisualSystemVoro::selfSetupGuis()
@@ -29,11 +28,49 @@ void CloudsVisualSystemVoro::selfSetupGuis()
     
 }
 
-void CloudsVisualSystemVoro::selfAutoMode()
+void CloudsVisualSystemVoro::selfSetupSystemGui()
 {
+    sysGui->addLabel("Particles");
+    sysGui->addSlider("Max_Number", 10, 1000, &MaxNumOfParticles);
+    sysGui->addSlider("BornSecRate", 0.001, 60, &bornRate);
+    sysGui->addSlider("Max_Size", 1, 10, &MaxSize);
+    sysGui->addSlider("GrowRate", 0.0, 0.1, &growRate);
+    sysGui->addSlider("InitialForce", 0.0, 1.0, &initialForce);
+    sysGui->addSlider("Z_Move", 0.0, 1.0, &zMove);
+    sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
+    sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
+    sysGui->addToggle("Glow",& bDrawGlow);
+    sysGui->addSlider("Glow_Size", 0.0, 1.0, &glowSize);
+    sysGui->addToggle("DrawParticles", &bDrawParticles);
+    sysGui->addButton("Clear", &bClear);
     
+    sysGui->addLabel("Voronoi");
+    sysGui->addToggle("Container_Periodic", &containerPeriodic);
+    sysGui->addSlider("Conteiner_Size", 10, 200, &containerSize);
+    sysGui->addSlider("Conteiner_Height", 1, 200, &containerHeight);
+    sysGui->addToggle("Cylinder", &bCyllinder);
+    sysGui->addToggle("Sphere", &bSphere);
+    sysGui->addSlider("Cell_Alpha", 0.0, 1.0, &cellsAlpha);
+    sysGui->addToggle("DrawVoronoi", &bDrawVoronoi);
+    sysGui->addSlider("Cell_Wires_Alpha", 0.0, 1.0, &cellsWireAlpha);
+    sysGui->addToggle("DrawVoronoiWires", &bDrawVoronoiWireFrames);
 }
 
+void CloudsVisualSystemVoro::selfBegin()
+{
+    objectLookAt = ofVec3f(0,0,1);
+    ofLoadImage(dot, getDataPath()+"images/dot.png");
+}
+
+void CloudsVisualSystemVoro::selfEnd()
+{
+    for(int i = seedParticles.size()-1; i >= 0; i-- ){
+        delete seedParticles[i];
+        seedParticles.erase(seedParticles.begin()+i);
+    }
+    seedParticles.clear();
+    cellMeshes.clear();
+}
 
 void CloudsVisualSystemVoro::selfDrawBackground()
 {
@@ -83,10 +120,8 @@ void CloudsVisualSystemVoro::selfUpdate()
     
     //  Compute seed particles
     //
-//    sort( seedParticles.begin(), seedParticles.end(), comparisonFunction );
     for (int i = 0; i < seedParticles.size(); i++){
 		for (int j = 0; j < i; j++){
-//            if ( fabs(seedParticles[j]->x - seedParticles[i]->x) >	50.0) break;
             seedParticles[i]->addRepulsionForce( seedParticles[j], repulsionPct);
 		}
 	}
@@ -224,16 +259,6 @@ void CloudsVisualSystemVoro::selfExit()
     
 }
 
-void CloudsVisualSystemVoro::selfBegin()
-{
-    
-}
-
-void CloudsVisualSystemVoro::selfEnd()
-{
-    
-}
-
 void CloudsVisualSystemVoro::selfKeyPressed(ofKeyEventArgs & args)
 {
     
@@ -274,35 +299,6 @@ void CloudsVisualSystemVoro::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
-
-void CloudsVisualSystemVoro::selfSetupSystemGui()
-{
-    sysGui->addLabel("Particles");
-    sysGui->addSlider("Max_Number", 10, 1000, &MaxNumOfParticles);
-    sysGui->addSlider("BornSecRate", 0.001, 60, &bornRate);
-    sysGui->addSlider("Max_Size", 1, 10, &MaxSize);
-    sysGui->addSlider("GrowRate", 0.0, 0.1, &growRate);
-    sysGui->addSlider("InitialForce", 0.0, 1.0, &initialForce);
-    sysGui->addSlider("Z_Move", 0.0, 1.0, &zMove);
-    sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
-    sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
-    sysGui->addToggle("Glow",& bDrawGlow);
-    sysGui->addSlider("Glow_Size", 0.0, 1.0, &glowSize);
-    sysGui->addToggle("DrawParticles", &bDrawParticles);
-    sysGui->addButton("Clear", &bClear);
-    
-    sysGui->addLabel("Voronoi");
-    sysGui->addToggle("Container_Periodic", &containerPeriodic);
-    sysGui->addSlider("Conteiner_Size", 10, 200, &containerSize);
-    sysGui->addSlider("Conteiner_Height", 1, 200, &containerHeight);
-    sysGui->addToggle("Cylinder", &bCyllinder);
-    sysGui->addToggle("Sphere", &bSphere);
-    sysGui->addSlider("Cell_Alpha", 0.0, 1.0, &cellsAlpha);
-    sysGui->addToggle("DrawVoronoi", &bDrawVoronoi);
-    sysGui->addSlider("Cell_Wires_Alpha", 0.0, 1.0, &cellsWireAlpha);
-    sysGui->addToggle("DrawVoronoiWires", &bDrawVoronoiWireFrames);
-}
-
 void CloudsVisualSystemVoro::guiSystemEvent(ofxUIEventArgs &e)
 {
 
@@ -314,6 +310,11 @@ void CloudsVisualSystemVoro::selfSetupRenderGui()
 }
 
 void CloudsVisualSystemVoro::guiRenderEvent(ofxUIEventArgs &e)
+{
+    
+}
+
+void CloudsVisualSystemVoro::selfAutoMode()
 {
     
 }

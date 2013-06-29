@@ -8,11 +8,11 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "cCell.h"
         
-class CloudsVisualSystemColony : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -26,7 +26,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     
-    void draw(ofEventArgs & args);
+//    void draw(ofEventArgs & args);
     
     void selfExit();
     void selfBegin();
@@ -49,11 +49,16 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
     
+   
+    
 private:
     
     ofFbo       foodFbo;
     ofShader    noiseShader;
     
+	vector<ofImage> sprites;
+	ofImage noise;
+	
     vector< colonyCell* > cells;
     vector< colonyCell* > newborns;
     

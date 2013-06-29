@@ -57,8 +57,6 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     
-    void draw(ofEventArgs & args);
-    
     void selfExit();
     void selfBegin();
 	void selfEnd();

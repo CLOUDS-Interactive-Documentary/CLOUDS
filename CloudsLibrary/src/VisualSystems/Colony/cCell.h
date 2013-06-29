@@ -18,6 +18,7 @@ public:
     void    applyForce( ofPoint _force );
     void    applyFlock( vector<colonyCell*> &_cells );
     void    applyBorders();
+    void    setup();
     void    update();
     
     void    feedCellWidth( ofPixels &_pixels );
@@ -42,6 +43,8 @@ public:
     bool    dead;
     bool    hasReplicated;
     bool    shouldReplicate;
+    int		spriteIndex;
+//    ofImage transparency;
     
 private:
     ofPoint separate ( vector<colonyCell*> &_cells );
@@ -49,6 +52,7 @@ private:
     ofPoint cohesion ( vector<colonyCell*> &_cells );
     
     ofPoint seek( ofPoint _target);
-    
+   
+    ofMesh spriteMesh;
     
 };

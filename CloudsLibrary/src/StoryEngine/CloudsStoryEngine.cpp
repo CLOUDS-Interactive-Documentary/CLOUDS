@@ -46,6 +46,11 @@ void CloudsStoryEngine::update(ofEventArgs& args){
 
 void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	
+	seedWithClip(seed, seed.keywords[ ofRandom(seed.keywords.size()) ]);
+
+}
+
+void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
 	clipHistory.clear();
 	topicHistory.clear();
 	peopleVisited.clear();
@@ -55,13 +60,33 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	freeTopic = false;
 	
 	//freeTopic = true;
-	currentTopic = seed.keywords[ ofRandom(seed.keywords.size()) ];
+	currentTopic =   topic;
 	//select a random topic from the clip
 	
-	CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
-	ofNotifyEvent(events.storyBegan,args);
+	buildQueue(10*60);
+	//CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
+	//ofNotifyEvent(events.storyBegan,args);
+	
+	//loadClip( seed );
+}
+
+void CloudsStoryEngine::buildQueue(float seconds){
+	
+	float totalSecondsEnqueued = 0;
+	bool deadEnd = false;
+	string topic = currentTopic;
+	while(totalSecondsEnqueued < seconds && !deadEnd){
+		vector<CloudsClip> nextOptions = network->getClipsWithKeyword(topic);
 		
-	loadClip( seed );	
+		
+//		if(freeTopic){
+//			nextClips = network->getClipsWithKeyword(currentClip.keywords);
+//		}
+//		else{
+//		}
+		
+	}
+	
 }
 
 bool CloudsStoryEngine::playNextClip(){
@@ -221,7 +246,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	}
 	
 	vector<CloudsLink>& links = network->getLinksForClip( currentClip );
-	
+
 	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
 	
 	for(int i = 0; i < links.size(); i++){

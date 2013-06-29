@@ -18,6 +18,8 @@ void CloudsVisualSystemColony::selfSetup()
     noiseShader.load("", getDataPath()+"shaders/VisualSystems/Colony/liquidNoise.fs");
     foodFbo.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     noiseZoom = 100.0;
+    
+	sprite.loadImage(getVisualSystemDataPath() + "_sprites/Cell_6f_sm_4.png");
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -47,11 +49,25 @@ void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemColony::selfUpdate()
 {
+	
+	if(!noise.isAllocated() || noise.getWidth() != ofGetWidth() || noise.getHeight() != ofGetHeight()){
+		noise.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_GRAYSCALE);
+		
+		for(int x = 0; x < noise.getWidth(); x++){
+			for(int y = 0; y < noise.getHeight(); y++){
+				noise.setColor(x,y,ofColor(ofNoise(x/200.,y/200.0) * 255, 255) );
+
+			}
+		}
+		
+		noise.reloadTexture();
+	}
+	
     //  Process food texture
     //
     int width = foodFbo.getWidth();
     int height = foodFbo.getHeight();
-    
+    /*
     ofSetColor(255);
     foodFbo.begin();
     noiseShader.begin();
@@ -69,7 +85,8 @@ void CloudsVisualSystemColony::selfUpdate()
     
     ofPixels pixels;
     foodFbo.getTextureReference().readToPixels(pixels);
-    
+    */
+	
     //  Update cells position and life
     //
     for (int i = 0; i < cells.size(); i++) {
@@ -78,7 +95,8 @@ void CloudsVisualSystemColony::selfUpdate()
         cells[i]->applyBorders();
         cells[i]->update();
         
-        cells[i]->feedCellWidth( pixels );
+//        cells[i]->feedCellWidth( pixels );
+		cells[i]->feedCellWidth( noise.getPixelsRef() );
     }
     
     for (int i = cells.size()-1; i >= 0; i--){
@@ -100,26 +118,18 @@ void CloudsVisualSystemColony::selfUpdate()
     
 }
 
-void CloudsVisualSystemColony::draw(ofEventArgs & args)
-{
-    ofPushStyle();
-    if(bRenderSystem)
-    {
-        drawBackground();
-    
-        ofSetColor(255);
-        foodFbo.draw(0, 0);
-        
-        for (int i = 0; i < cells.size(); i++) {
-            cells[i]->draw();
-        }
-        
-    }
-    
-    ofPopStyle();
-	
-    //	timeline->draw();
-}
+//void CloudsVisualSystemColony::draw(ofEventArgs & args)
+//{
+//    ofPushStyle();
+//    if(bRenderSystem)
+//    {
+////        drawBackground();
+//    
+//    }
+//    
+//    ofPopStyle();
+//
+//}
 
 
 void CloudsVisualSystemColony::selfSetupGuis()
@@ -135,6 +145,26 @@ void CloudsVisualSystemColony::selfAutoMode()
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
+	ofSetColor(255,255,255);
+	noise.draw(0,0);
+	//foodFbo.draw(0, 0);
+	
+	ofEnableAlphaBlending();
+	for(int i = 0; i < sprites.size(); i++){
+		sprites[i].getTextureReference().bind();
+		for (int c = 0; c < cells.size(); c++) {
+			if(cells[c]->spriteIndex == i){
+				cells[c]->draw();
+			}
+		}		
+		sprites[i].getTextureReference().unbind();
+	}
+				
+//	sprite.getTextureReference().bind();
+//	for (int i = 0; i < cells.size(); i++) {
+//		cells[i]->draw();
+//	}
+//	sprite.getTextureReference().unbind();
     
 }
 
