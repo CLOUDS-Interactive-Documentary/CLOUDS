@@ -133,9 +133,9 @@ void CloudsClusterVisualiser::setup(CloudsFCPParser& dbref){
     vector<CloudsClip>& clips = database->getAllClips();
     for(int k = 0; k < allKeywords.size(); k++){
         for(int c = 0; c < clips.size(); c++){
-            if( ofContains(clips[c].keywords, allKeywords[k]) ){
+            if( ofContains(clips[c].getKeywords(), allKeywords[k]) ){
                 for(int i = k+1; i < allKeywords.size(); i++){
-                    if( ofContains(clips[c].keywords, allKeywords[i]) ){
+                    if( ofContains(clips[c].getKeywords(), allKeywords[i]) ){
                         sharedClips[ make_pair(allKeywords[k], allKeywords[i]) ]++;
                     }
                 }

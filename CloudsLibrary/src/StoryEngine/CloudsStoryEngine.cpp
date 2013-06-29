@@ -47,7 +47,7 @@ void CloudsStoryEngine::update(ofEventArgs& args){
 
 void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	
-	seedWithClip(seed, seed.keywords[ ofRandom(seed.keywords.size()) ]);
+	seedWithClip(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 
 }
 
@@ -170,7 +170,7 @@ void CloudsStoryEngine::buildQueue(CloudsClip& seed, float seconds){
 
 string CloudsStoryEngine::selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic){
 	
-	vector<string>& topics = clip.keywords;
+	vector<string>& topics = clip.getKeywords();
 	vector<float> topicScores;
 	topicScores.resize(topics.size());
 	float topicHighScore = 0;
@@ -348,7 +348,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	//get all the adjascent clips, assign weights to them and select
 	vector<CloudsClip> nextClips;
 	if(freeTopic){
-		nextClips = parser->getClipsWithKeyword(currentClip.keywords);
+		nextClips = parser->getClipsWithKeyword(currentClip.getKeywords());
 	}
 	else{
 		nextClips = parser->getClipsWithKeyword(currentTopic);
@@ -435,12 +435,12 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
 	}
 	
 	int score = 5;
-	if(history.size() > 1 && ofContains( history[history.size()-2].keywords, newTopic) ){
+	if(history.size() > 1 && ofContains( history[history.size()-2].getKeywords(), newTopic) ){
 		if(printDecisions) cout << "	LAST CLIP " << history[history.size()-2].getLinkName() << " shares topic " << newTopic << endl;
 		score += 10;
 	}
 	
-	if(history.size() > 2 && ofContains( history[history.size()-3].keywords, newTopic) ){
+	if(history.size() > 2 && ofContains( history[history.size()-3].getKeywords(), newTopic) ){
 		if(printDecisions) cout << "	TWO CLIPS AGO " << history[history.size()-3].getLinkName() << " shares topic " << newTopic << endl;
 		score += 10;
 	}
@@ -531,7 +531,7 @@ float CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 		return 0;
 	}
 	
-	bool containsCurrentTopic = ofContains(clip.keywords, currentTopic);
+	bool containsCurrentTopic = ofContains(clip.getKeywords(), currentTopic);
 	if(!freeTopic && !containsCurrentTopic){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
 		return 0;
