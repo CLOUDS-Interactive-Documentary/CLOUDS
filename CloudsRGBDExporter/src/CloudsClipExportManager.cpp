@@ -139,7 +139,7 @@ void CloudsClipExportManager::threadedFunction(){
 	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
 	
 	bool completedClip = false;
-	while( isThreadRunning() && currentFrame <= currentClip.endFrame + 24 ){ //24 frame handle
+	while( isThreadRunning() && !completedClip ){ //24 frame handle
 		
 		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
@@ -151,9 +151,10 @@ void CloudsClipExportManager::threadedFunction(){
 		exporter.renderFrame(outputDirectory, currentClip.getID(), &renderer, rgbdPlayer.getVideoPlayer()->getPixelsRef(), currentFrame);
 
 		rgbdPlayer.getVideoPlayer()->nextFrame();
+        int lastFrame =  rgbdPlayer.getVideoPlayer()->getCurrentFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
 		
-		if(currentFrame > currentClip.endFrame){
+		if(currentFrame > currentClip.endFrame + 24 || lastFrame == currentFrame){
 			completedClip = true;
 		}
 		ofSleepMillis(10);
