@@ -124,8 +124,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 	if(simplePlaybackMode){
-		storyEngine->drawStoryEngineDebug();
-		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
+		storyEngine->drawActDebug();
+//		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
 	}
 }
 
