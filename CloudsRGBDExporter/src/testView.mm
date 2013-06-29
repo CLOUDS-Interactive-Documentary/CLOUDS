@@ -525,6 +525,10 @@
 	if([@"clip" isEqualToString:aTableColumn.identifier]){
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
 	}
+	if([@"frames" isEqualToString:aTableColumn.identifier]){
+		string frameDescriptor = "[ " + ofToString(parser.getAllClips()[rowIndex].startFrame) + " - " + ofToString(parser.getAllClips()[rowIndex].endFrame) + " ]";
+		return [NSString stringWithUTF8String: frameDescriptor.c_str() ];
+	}
 	else if([@"align" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getAdjustmentXML()) ? @"YES" : @"NO";
 	}

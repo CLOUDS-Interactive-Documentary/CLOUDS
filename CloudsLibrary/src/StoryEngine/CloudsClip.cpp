@@ -307,18 +307,47 @@ string CloudsClip::getSceneFolder(){
 //--------------------------------------------------------------------
 string CloudsClip::relinkFilePath(string filePath){
 	
+	
+	vector<string> drives;
+	drives.push_back("Seance");
+	drives.push_back("Nebula");
+	drives.push_back("Supernova");
+	drives.push_back("Nebula_helper");
+
 	if( !ofFile(filePath).exists() ){
-		//		cout << "Switched clip from " << clipFilePath;
-        if(ofFile::doesFileExist("/Volumes/Seance/")){
-            ofStringReplace(filePath, "Nebula_backup", "Seance");
-            ofStringReplace(filePath, "Nebula", "Seance");
-        }
-        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
-            ofStringReplace(filePath, "Nebula_backup", "Nebula_helper");
-            ofStringReplace(filePath, "Nebula", "Nebula_helper");
-        }
-        
-        //		cout << " to " << clipFilePath << endl;
+		for(int i = 0; i < drives.size(); i++){
+			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
+				for(int j = 0; j < drives.size(); j++){
+					if(j != i){
+						ofStringReplace(filePath, drives[j], drives[i]);
+					}
+				}
+				break;
+			}
+		}
 	}
+	
 	return filePath;
+	
+//	if( !ofFile(filePath).exists() ){
+//		//		cout << "Switched clip from " << clipFilePath;
+//        if(ofFile::doesFileExist("/Volumes/Seance/")){
+//            ofStringReplace(filePath, "Nebula_backup", "Seance");
+//            ofStringReplace(filePath, "Nebula", "Seance");
+//            ofStringReplace(filePath, "Supernova", "Seance");
+//			
+//        }
+//        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
+//            ofStringReplace(filePath, "Nebula", "Nebula_helper");
+//            ofStringReplace(filePath, "Seance", "Nebula_helper");
+//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
+//        }
+//        else if(ofFile::doesFileExist("/Volumes/Supernova/")){
+//            ofStringReplace(filePath, "Nebula", "Supernova");
+//            ofStringReplace(filePath, "Seance", "Nebula_helper");
+//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
+//		}
+//        //		cout << " to " << clipFilePath << endl;
+//	}
+//	return filePath;
 }
