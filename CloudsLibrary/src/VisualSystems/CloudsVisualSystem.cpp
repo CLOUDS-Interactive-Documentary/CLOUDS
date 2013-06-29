@@ -39,10 +39,6 @@ string CloudsVisualSystem::getDataPath()
     return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
 }
 
-//bool CloudsVisualSystem::isReleventToKeyword(string keyword){
-//	return ofContains(relevantKeywords, keyword);
-//}
-
 void CloudsVisualSystem::setup(){
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
@@ -67,8 +63,8 @@ void CloudsVisualSystem::setup(){
     setupAppParams();
     setupDebugParams();
     setupCameraParams();
-    setupLightingParams();
-    setupMaterialParams();
+	setupLightingParams();
+	setupMaterialParams();
     setupTimeLineParams();
     
     selfSetup();
@@ -183,42 +179,6 @@ void CloudsVisualSystem::speakerEnded(){
 }
 
 #define REZANATOR_GUI_ALPHA_MULTIPLIER 4
-
-//void CloudsVisualSystem::setup()
-//{
-//    ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
-//    
-//	currentCamera = &cam;
-//	
-//    ofDirectory dir;
-//    string directoryName = getVisualSystemDataPath();
-//    if(!dir.doesDirectoryExist(directoryName))
-//    {
-//        dir.createDirectory(directoryName);
-//    }
-//    
-//    string workingDirectoryName = directoryName+"Working/";
-//    if(!dir.doesDirectoryExist(workingDirectoryName))
-//    {
-//        dir.createDirectory(workingDirectoryName);
-//    }
-//    
-//    setupAppParams();
-//    setupDebugParams();
-//    setupCameraParams();
-//    setupLightingParams();
-//    setupMaterialParams();
-//    setupTimeLineParams();
-//    
-//    selfSetup();
-//    setupCoreGuis();
-//    selfSetupGuis();
-//	
-//	setupTimeline();
-//    setupTimelineGui();
-//    
-//	hideGUIS();
-//}
 
 void CloudsVisualSystem::update(ofEventArgs & args)
 {
@@ -1909,7 +1869,7 @@ void CloudsVisualSystem::loadTimelineUIMappings(string path)
 	//    cout << "LOADING TIMELINE UI MAPPINGS" << endl;
     ofxXmlSettings *XML = new ofxXmlSettings();
     XML->loadFile(path);
-    if(XML->pushTag("Map", 0))
+    if(XML->tagExists("Map",0) && XML->pushTag("Map", 0))
     {
         if(XML->pushTag("Bangs", 0))
         {
@@ -2350,7 +2310,7 @@ void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& en
 //Grab These Methods
 string CloudsVisualSystem::getSystemName()
 {
-	return "Rezanator";
+	return "CloudsVisualSystem";
 }
 
 void CloudsVisualSystem::selfSetup()
