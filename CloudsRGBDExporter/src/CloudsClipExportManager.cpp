@@ -132,7 +132,7 @@ void CloudsClipExportManager::threadedFunction(){
 	//exporter.writeMetaFile(outputDirectory, &renderer);
 	
 	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
-	
+	int lastFrame = currentFrame;
 	bool completedClip = false;
 	while( isThreadRunning() && !completedClip ){ //24 frame handle
 		
@@ -146,12 +146,19 @@ void CloudsClipExportManager::threadedFunction(){
 		exporter.renderFrame(outputDirectory, currentClip.getID(), &renderer, rgbdPlayer.getVideoPlayer()->getPixelsRef(), currentFrame);
 
 		rgbdPlayer.getVideoPlayer()->nextFrame();
-        int lastFrame =  rgbdPlayer.getVideoPlayer()->getCurrentFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
-		
-		if(currentFrame > currentClip.endFrame + 24 || lastFrame == currentFrame){
+
+        if(lastFrame == currentFrame){
+            exporter.log += "Frame stuck on " + ofToString(currentFrame) + "\n";
+        	completedClip = true;
+        }
+        
+		if(currentFrame > currentClip.endFrame + 24){
+            exporter.log += "Export completed successfully \n";
 			completedClip = true;
 		}
+        
+        lastFrame = currentFrame;
 		ofSleepMillis(10);
 	}
 	
@@ -160,6 +167,10 @@ void CloudsClipExportManager::threadedFunction(){
 		
 	}
 	ofBuffer logFileBuf(exporter.log);
-	ofBufferToFile(outputDirectory + "/" + currentClip.getID() + "_log.txt", logFileBuf);
+    string logFilePath = outputDirectory + "/" + currentClip.getID() + "_log.txt";
+    cout << "Saving log to " << logFilePath << endl;
+    
+	ofBufferToFile(logFilePath, logFileBuf);
+    
 	done = true;
 }
