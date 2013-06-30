@@ -345,9 +345,12 @@
 	if(clipTable.selectedRow >= 0){
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
-		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]));
+		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);
 		
 		if(player.setup(clip.getSceneFolder())){
+			if(!player.alternativeVideoIsConfirmed()){
+				ofSystemAlertDialog("Error confirming altenrative clip " + clip.getSceneFolder() );
+			}
 			showHistogram = false;
 			calculatedHistogram = false;
 			histogram.clear();

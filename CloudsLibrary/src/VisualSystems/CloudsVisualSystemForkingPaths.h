@@ -1,25 +1,37 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "CloudsVisualSystem.h"
 
 
-class FlowParticle {
+class ForkingPath {
   public:
-	FlowParticle(){
-		index = 0;
-		dead = false;
+	ForkingPath(){
+		merged = false;
+		foundTrack = false;
+		backset = 0;
+		trackIndex = 0;
+		track.setMode(OF_PRIMITIVE_LINE_STRIP);
+
 	}
-	ofVec3f pos;
-	int index;
-	bool dead;
+	ofVec2f forkPosition;
+	ofVec2f mergePosition;
+	ofVec2f currentPos;
+	ofVec2f currentDirection;
+	
+	float backset;
+	float targetTrackHeight;
+	bool foundTrack;
+	bool merged;
+	int trackIndex;
+	
+	ofMesh track;
 };
 
-class CloudsVisualSystemVectorFlow : public CloudsVisualSystem {
+class CloudsVisualSystemForkingPaths : public CloudsVisualSystem {
 public:
 	
-	CloudsVisualSystemVectorFlow();
+	CloudsVisualSystemForkingPaths();
 	
 	string getSystemName();
     
@@ -56,28 +68,20 @@ public:
 	
 protected:
 	
-	vector<FlowParticle> particles;
+	void addPath();
+	bool forkPath(ForkingPath& path, vector<ForkingPath>& paths);
+	void generateTracks();
 	
-	int maxVertices;
-	ofVboMesh particleMesh;
-	ofVboMesh lines;
-	int trailLength;
-	float generateTrailLength;
-	float generateMaxVerts;
-	float particlesPerFrame;
+	vector<float> tracks;
+	vector<bool> usedTracks;
 	
-	void addParticle();
+	vector<ForkingPath> paths;
 	
-	ofVec3f getDirection(float x, float y);
-	float getMagnitude(float x, float y);
+	int closestUnusedTrack(int trackindex);
 	
-	void initFlowField();
-	bool regenerateFlow;
-	float step;
-	float chaos;
-	int width, height;
+	bool regenerate;
 	float speed;
-	float maxLength;
-
-	float fieldAlpha;
+	float forkPercent;
+	float mergePercent;
+	float trackDistance;
 };

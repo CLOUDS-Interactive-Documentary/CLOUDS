@@ -52,13 +52,18 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	rgbdPlayer.setUseTexture(false);
 	
 	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << " ALT FOLDER " << alternativeVideoFolder << endl;
-	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder );
+	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder, true );
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load scene";
 		done = true;
 		return;
 	}
-	
+	if(!rgbdPlayer.alternativeVideoIsConfirmed()){
+		ofLogError() << "Movie file in " << alternativeVideoFolder << " does not have the same number of frames as " << currentClip.sourceVideoFilePath << endl;
+		done = true;
+		return;
+		
+	}
 	renderer.cacheValidVertices = true;
 	renderer.setup(rgbdPlayer.getScene().calibrationFolder);
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
