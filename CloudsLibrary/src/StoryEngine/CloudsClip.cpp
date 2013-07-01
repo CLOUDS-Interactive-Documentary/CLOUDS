@@ -136,8 +136,8 @@ vector<string>& CloudsClip::getKeywords(){
 
 void CloudsClip::collateKeywords(){
     
-    //start with keywords = originaKeywords;
     keywords = originalKeywords;
+    specialKeywords.clear();
     
     //go through and remove revoked keywords
     for (int k = 0; k<revokedKeywords.size(); k++) {
@@ -149,13 +149,29 @@ void CloudsClip::collateKeywords(){
     
     //go through and add additional
     for (int l =0; l<additionalKeywords.size(); l++) {
+        //Returns 0 if they compare equal
         if (! ofContains(keywords, additionalKeywords[l]) ){
             keywords.push_back(additionalKeywords[l]);
             cout<<"Adding addition keywords for clip"<<name<< " : "<< additionalKeywords[l]<<endl;
         }
     }
     
+    //remove special keywords from keywords -> specialKeywords
+    for (int l =keywords.size() - 1 ; l>=0; l--) {
+        if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
+            cout<<"Special keywords for clip"<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
+            specialKeywords.push_back(keywords[l]);
+            keywords.erase(keywords.begin()+l);
+
+        }
+    }
     keywordsDirty = false;
+}
+vector<string> CloudsClip:: getSpecialKeywords(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return specialKeywords;
 }
 
 void CloudsClip::setOriginalKeywords(vector<string>& keywords){
@@ -168,6 +184,8 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
     
     //find all the keywords not in the original list (additonal)
     for(int i= 0; i<desiredKeywords.size();i++){
+        
+        //Check to see if its a special keyword
         if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
             cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
             addKeyword(desiredKeywords[i]);
@@ -196,13 +214,13 @@ void CloudsClip::addKeyword(string keyword){
 
 void CloudsClip::revokeKeyword(string keyword){
     if(!ofContains(revokedKeywords, keyword) &&
-        ofContains(originalKeywords, keyword))
+       ofContains(originalKeywords, keyword))
     {
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
     
-
+    
 }
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
@@ -313,7 +331,7 @@ string CloudsClip::relinkFilePath(string filePath){
 	drives.push_back("Nebula");
 	drives.push_back("Supernova");
 	drives.push_back("Nebula_helper");
-
+    
 	if( !ofFile(filePath).exists() ){
 		for(int i = 0; i < drives.size(); i++){
 			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
@@ -329,25 +347,25 @@ string CloudsClip::relinkFilePath(string filePath){
 	
 	return filePath;
 	
-//	if( !ofFile(filePath).exists() ){
-//		//		cout << "Switched clip from " << clipFilePath;
-//        if(ofFile::doesFileExist("/Volumes/Seance/")){
-//            ofStringReplace(filePath, "Nebula_backup", "Seance");
-//            ofStringReplace(filePath, "Nebula", "Seance");
-//            ofStringReplace(filePath, "Supernova", "Seance");
-//			
-//        }
-//        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
-//            ofStringReplace(filePath, "Nebula", "Nebula_helper");
-//            ofStringReplace(filePath, "Seance", "Nebula_helper");
-//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
-//        }
-//        else if(ofFile::doesFileExist("/Volumes/Supernova/")){
-//            ofStringReplace(filePath, "Nebula", "Supernova");
-//            ofStringReplace(filePath, "Seance", "Nebula_helper");
-//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
-//		}
-//        //		cout << " to " << clipFilePath << endl;
-//	}
-//	return filePath;
+    //	if( !ofFile(filePath).exists() ){
+    //		//		cout << "Switched clip from " << clipFilePath;
+    //        if(ofFile::doesFileExist("/Volumes/Seance/")){
+    //            ofStringReplace(filePath, "Nebula_backup", "Seance");
+    //            ofStringReplace(filePath, "Nebula", "Seance");
+    //            ofStringReplace(filePath, "Supernova", "Seance");
+    //
+    //        }
+    //        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
+    //            ofStringReplace(filePath, "Nebula", "Nebula_helper");
+    //            ofStringReplace(filePath, "Seance", "Nebula_helper");
+    //            ofStringReplace(filePath, "Supernova", "Nebula_helper");
+    //        }
+    //        else if(ofFile::doesFileExist("/Volumes/Supernova/")){
+    //            ofStringReplace(filePath, "Nebula", "Supernova");
+    //            ofStringReplace(filePath, "Seance", "Nebula_helper");
+    //            ofStringReplace(filePath, "Supernova", "Nebula_helper");
+    //		}
+    //        //		cout << " to " << clipFilePath << endl;
+    //	}
+    //	return filePath;
 }

@@ -22,9 +22,11 @@ void CloudsFCPParser::loadFromFiles(){
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
 
+
 	}
 	else{
 		setup("xml");
+
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
 
@@ -277,8 +279,8 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		bool hasRevokedKeywords = clipHasRevokedKeywords(allClips[i]);
         bool hasAdditionalKeywords = clipHasAdditionalKeywords(allClips[i]);
         
-        
-        if(hasLink || hasSuppressed || hasStartingQuestion){
+//        cout<<
+        if(hasLink || hasSuppressed || hasStartingQuestion || hasRevokedKeywords || hasAdditionalKeywords){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);
@@ -318,16 +320,17 @@ void CloudsFCPParser::saveLinks(string linkFile){
             if(hasRevokedKeywords){
                 string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
                 linksXML.addValue("revokedKeywords", revokedKeywords);
+                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
                 
             }
             
             if(hasAdditionalKeywords){
                 string additionalKeywords = ofJoinString(allClips[i].getAdditionalKeywords(),"," );
-                linksXML.addValue("additionalKeywords ", additionalKeywords);
+                linksXML.addValue("additionalKeywords", additionalKeywords);
             }
 			
 			linksXML.popTag();
-		}
+		}		
 	}
     
     
