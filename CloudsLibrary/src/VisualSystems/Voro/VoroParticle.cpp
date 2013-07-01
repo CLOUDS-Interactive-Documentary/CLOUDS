@@ -9,6 +9,8 @@ VoroParticle::VoroParticle(){
     
 	damping = 0.07f;
     size = 1.0;
+    
+    nucle = NULL;
 }
 
 void VoroParticle::init( ofPoint _pos, ofPoint _vel){

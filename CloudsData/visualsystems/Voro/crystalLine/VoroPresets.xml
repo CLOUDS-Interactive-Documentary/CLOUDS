@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <XPosition>1448.000000000</XPosition>
+    <YPosition>237.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Gray</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,15 +38,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>crystalLine</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>grow</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>cells</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
