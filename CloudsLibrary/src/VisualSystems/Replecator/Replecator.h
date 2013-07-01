@@ -23,8 +23,8 @@ public:
 	Replecator *parent;
 	vector<Replecator> children;
 	
-	Replecator() : parent(NULL) {}
-	Replecator(Replecator* parent) : parent(parent) {}
+	Replecator() : idx(0), parent(NULL) {}
+	Replecator(Replecator* parent) : idx(0), parent(parent) {}
 	
 	void setup(SetupOp sOp, int iteration)
 	{
@@ -52,7 +52,7 @@ public:
 	void update(UpdateOp gOp)
 	{
 		gOp(this);
-		
+
 		for (int i = 0; i < children.size(); i++)
 		{
 			children[i].update(gOp);
