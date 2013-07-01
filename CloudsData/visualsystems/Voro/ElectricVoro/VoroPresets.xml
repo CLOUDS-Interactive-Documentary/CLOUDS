@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1449.000000000</XPosition>
-    <YPosition>780.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -22,7 +22,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>ConstelationVoronoi</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>CristalCell</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ElectricVoro</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Hex01</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kryptonite</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -37,16 +62,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ConstelationVoronoi</Name>
+    <Name>Strange</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>UniverseVoro</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>ElectricVoro</Name>
-    <Value>1</Value>
 </Widget>
