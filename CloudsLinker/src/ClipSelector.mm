@@ -329,7 +329,7 @@ completionsForSubstring:(NSString *)substring
     cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
     string revokedList = ofJoinString(n.getRevokedKeywords(), ",");
     revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
-
+    [self saveLinks:self];
 }
 
 - (IBAction) setQuestionText:(id)sender{
