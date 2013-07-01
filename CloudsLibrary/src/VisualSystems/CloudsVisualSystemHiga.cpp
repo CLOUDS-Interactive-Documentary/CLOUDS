@@ -1,33 +1,49 @@
 
 #include "CloudsVisualSystemHiga.h"
 
+static float rows = 0, cols = 0;
+static float local_time = 0;
+
 struct Grid2D
 {
-	float rows;
-	float cols;
-	float width;
-	float height;
 	float scale;
 	
 	void operator()(Replecator *repl)
 	{
 		int X = rows;
 		int Y = cols;
+		int NUM = X * Y;
 		
-		repl->children.resize(X * Y);
+		repl->children.resize(NUM);
+	}
+};
+
+struct Grid2DUpdater
+{
+	float width, height;
+	float scale;
+
+	void operator()(Replecator *repl)
+	{
+		int X = rows;
+		int Y = cols;
+		int NUM = X * Y;
+		
+		if (repl->children.size() != NUM) return;
 		
 		float s = scale;
 		width *= s;
 		height *= s;
 		
-		float inv_w = width / (X - 1);
-		float inv_h = height / (Y - 1);
+		float inv_w = width / X;
+		float inv_h = height / Y;
 		
 		int idx = 0;
 		for (int y = 0; y < Y; y++)
 		{
 			for (int x = 0; x < X; x++)
 			{
+				repl->children[idx].m.makeIdentityMatrix();
 				repl->children[idx].m.glScale(s, s, s);
 				repl->children[idx].m.glTranslate(inv_w * x, inv_h * y, 0);
 				
@@ -44,28 +60,32 @@ struct Drawer
 	float rot_x;
 	float rot_y;
 	
+	float phase_x;
+	float phase_y;
+	
 	void operator()(Replecator *repl)
 	{
 		if (repl->parent == NULL) return;
 		
-		if (repl->idx % 2 == 0) ofNoFill();
-		else ofFill();
+		float t = local_time;
 		
-		float t = ofGetElapsedTimef();
+		phase_x += t * rot_x;
+		phase_y += t * rot_y;
 		
-		float hue = fmodf(ofMap(repl->idx, 0, 24, 0, 255) + t, 255);
-		ofColor c = ofColor::fromHsb(hue, 255, 255, 255);
+		float hue = fmodf(ofMap(repl->idx, 0, 24, 0, 255) + phase_x + phase_y, 255);
+		ofColor c = ofColor::fromHsb(hue, 255, 255);
 		ofSetColor(c);
 		
 		ofTranslate(0, 0, hue);
-		ofRotateY(hue * t * rot_x);
-		ofRotateX(hue * t * rot_y);
+		ofRotateY(hue * phase_x);
+		ofRotateX(hue * phase_y);
 		ofRect(0, 0, width, height);
 	}
 };
 
-static Drawer drawer = {100, 100, 1, 0.5};
-static Grid2D grid2d = {10, 10, 2000, 2000, 0.5};
+static Drawer drawer = {100, 100, 1, 0.5, 0, 0};
+static Grid2D grid2d = {0.5};
+static Grid2DUpdater grid2d_updater;
 
 CloudsVisualSystemHiga::CloudsVisualSystemHiga(){
 
@@ -77,6 +97,8 @@ string CloudsVisualSystemHiga::getSystemName(){
 
 void CloudsVisualSystemHiga::selfSetup(){
 	repl.setup(grid2d, 2);
+	
+	local_time = 0;
 }
 
 void CloudsVisualSystemHiga::selfSetupGuis(){
@@ -87,13 +109,14 @@ void CloudsVisualSystemHiga::selfSetupGuis(){
     replecatorGui->setName("Replecator");
     replecatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
+	replecatorGui->addSlider("LOCAL_TIME", 0, 120, &local_time);
 	replecatorGui->addButton("REGENERATE", &regenerate);
 	
-	replecatorGui->addSlider("ROWS", 2, 20, &grid2d.rows);
-	replecatorGui->addSlider("COLS", 2, 20, &grid2d.cols);
-	replecatorGui->addSlider("WIDTH", 1, 2000, &grid2d.width);
-	replecatorGui->addSlider("HEIGHT", 1, 2000, &grid2d.height);
-	replecatorGui->addSlider("ITERATION_SCALE", 0.1, 1, &grid2d.scale);
+	replecatorGui->addSlider("ROWS", 1, 20, &rows);
+	replecatorGui->addSlider("COLS", 1, 20, &cols);
+	replecatorGui->addSlider("WIDTH", 1, 2000, &grid2d_updater.width);
+	replecatorGui->addSlider("HEIGHT", 1, 2000, &grid2d_updater.height);
+	replecatorGui->addSlider("ITERATION_SCALE", 0.1, 1, &grid2d_updater.scale);
 	
 	guis.push_back(replecatorGui);
 	guimap[replecatorGui->getName()] = replecatorGui;
@@ -122,6 +145,8 @@ void CloudsVisualSystemHiga::selfUpdate(){
 	{
 		repl.setup(grid2d, 2);
 	}
+	
+	repl.update(grid2d_updater);
 }
 
 void CloudsVisualSystemHiga::selfDrawBackground(){
@@ -137,7 +162,11 @@ void CloudsVisualSystemHiga::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemHiga::selfDraw(){
+	ofPushStyle();
+	ofSetRectMode(OF_RECTMODE_CORNER);
+	ofScale(0.5, 0.5, 0.5);
 	repl.draw(drawer);
+	ofPopStyle();
 }
 
 void CloudsVisualSystemHiga::selfExit(){

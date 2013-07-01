@@ -23,12 +23,12 @@ void testApp::setup(){
 	visualSystems.loadPresets();
 	
 	storyEngine.setup();
-	storyEngine.network = &parser;
+	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
 	storyEngine.maxTimesOnTopic = 4;
 //	storyEngine.combinedClipsOnly = true;
-	storyEngine.printDecisions = false;
+	storyEngine.printDecisions = true;
 	
 	player.simplePlaybackMode = true;
 	player.setup(storyEngine);
@@ -56,6 +56,8 @@ void testApp::draw(){
 //	sound.drawDebug();
 	
 	//storyEngine.drawStoryEngineDebug();
+	
+
 }
 
 //--------------------------------------------------------------

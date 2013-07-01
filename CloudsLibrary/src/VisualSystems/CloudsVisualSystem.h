@@ -36,6 +36,8 @@ class CloudsVisualSystem {
     virtual void selfDrawDebug();
     virtual void selfSceneTransformation();
     virtual void selfDraw();
+	virtual void selfPresetLoaded(string presetPath);
+	
     virtual void selfExit();
     virtual void selfBegin();
 	virtual void selfEnd();

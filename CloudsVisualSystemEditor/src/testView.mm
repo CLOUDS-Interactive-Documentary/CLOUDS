@@ -118,7 +118,7 @@
 			return [NSString stringWithUTF8String: associatedClips[rowIndex].getLinkName().c_str() ];
 		}
 		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].keywords
+			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
 	}

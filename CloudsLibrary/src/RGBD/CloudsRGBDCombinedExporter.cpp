@@ -325,7 +325,8 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 					for(int x = 0; x < faceTargetRectangle.getWidth(); x++){
 						int oldFrameIndex  = ((faceTargetRectangle.y + y)*oldFrame.getWidth() + x) * 3;
 						int faceFrameIndex = (y*faceTargetRectangle.getWidth()+x) * 3;
-						//oldFrame.getPixels()[ oldFrameIndex + 0 ] += resized.getPixels()[ faceFrameIndex + 1 ]
+						oldFrame.getPixels()[ oldFrameIndex + 0 ] += MAX(resized.getPixels()[ faceFrameIndex + 0 ],
+																		 resized.getPixels()[ faceFrameIndex + 1 ]);
 						oldFrame.getPixels()[ oldFrameIndex + 1 ] += resized.getPixels()[ faceFrameIndex + 1 ];
 						oldFrame.getPixels()[ oldFrameIndex + 2 ] += resized.getPixels()[ faceFrameIndex + 2 ];
 					}

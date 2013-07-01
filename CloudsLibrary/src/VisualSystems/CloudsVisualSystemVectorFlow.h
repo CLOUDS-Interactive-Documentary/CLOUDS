@@ -30,6 +30,8 @@ public:
     void selfDrawBackground();
     void selfDrawDebug();
     void selfSceneTransformation();
+	void selfPresetLoaded(string presetPath);
+	
     void selfDraw();
     void selfExit();
     void selfBegin();

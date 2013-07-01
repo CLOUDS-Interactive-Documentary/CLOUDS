@@ -17,7 +17,7 @@ class CloudsStoryEngine {
 	CloudsStoryEngine();
 	~CloudsStoryEngine();
 	
-	CloudsFCPParser* network;
+	CloudsFCPParser* parser;
 	CloudsVisualSystemManager* visualSystems;
 	
 	void setup();
@@ -35,7 +35,6 @@ class CloudsStoryEngine {
 	float getTotalSecondsWatched();
 
 	bool historyContainsClip(CloudsClip& m);
-		
 	//after this many times the topic becomes available again
 	int topicTimeoutPeriod;
 	int getTimesOnTopic();
@@ -43,6 +42,7 @@ class CloudsStoryEngine {
 	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
+	bool printCriticalDecisions;
 	bool atDeadEnd();
 	
 	//for use in the main clouds repository
@@ -56,6 +56,7 @@ class CloudsStoryEngine {
 	float fixedClipDelay;
 	
 	void drawStoryEngineDebug();
+	void drawActDebug();
 	
   protected:
 	
@@ -71,7 +72,9 @@ class CloudsStoryEngine {
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
-	void buildQueue(float seconds);
+	void buildQueue(CloudsClip& seed, float seconds);
+	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
+	
 	
 	bool populateNextClips();
 	void checkVisualSystems();
@@ -94,9 +97,15 @@ class CloudsStoryEngine {
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
-	int scoreForClip(CloudsClip& clip);
+	float scoreForClip(CloudsClip& clip);
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic); //queue based
+	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
+	
+	
 	void loadClip(CloudsClip& clip);
 	void chooseNewTopic(CloudsClip& clip);
+	
+	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack);
-
+	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
 };

@@ -13,7 +13,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemHiga.h"
-
+#include "CloudsVisualSystemForkingPaths.h"
 #endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
@@ -28,15 +28,16 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	systems.clear();
 	presets.clear();
 	
-	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-	registerVisualSystem( new CloudsVisualSystemLSystems() );
-	registerVisualSystem( new CloudsVisualSystemVoro() );
-	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
-	registerVisualSystem( new CloudsVisualSystemCities() );
-	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
-	registerVisualSystem( new CloudsVisualSystemHiga() );
+//	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
+//	registerVisualSystem( new CloudsVisualSystemLSystems() );
+//	registerVisualSystem( new CloudsVisualSystemVoro() );
+//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+//	registerVisualSystem( new CloudsVisualSystemCities() );
+//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
+//	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
+//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+//	registerVisualSystem( new CloudsVisualSystemHiga() );
+	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
@@ -97,12 +98,16 @@ void CloudsVisualSystemManager::loadPresets(){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
 		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-        keywordXml.pushTag("suppresions");
-        int numSuppresions = keywordXml.getNumTags("clip");
-        for(int i=0; i<numSuppresions;i++){
-            suppressedClips[name].push_back(keywordXml.get);
-        }
-        
+		
+		if(keywordXml.tagExists("suppressions")){
+			keywordXml.pushTag("suppresions");
+			int numSuppresions = keywordXml.getNumTags("clip");
+			for(int i=0; i<numSuppresions;i++){
+				suppressedClips[name].push_back(keywordXml.getValue("clip", "", i));
+			}
+			keywordXml.popTag(); //suppressions
+		}
+		
         keywordXml.popTag(); //system
 	}
 	
