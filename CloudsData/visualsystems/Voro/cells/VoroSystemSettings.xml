@@ -13,47 +13,47 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Number</Name>
-    <Value>73.399017334</Value>
+    <Value>102.660095215</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BornSecRate</Name>
-    <Value>2.000000000</Value>
+    <Value>5.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Size</Name>
-    <Value>1.532019734</Value>
+    <Value>10.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GrowRate</Name>
-    <Value>0.006896552</Value>
+    <Value>0.041871920</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>InitialForce</Name>
-    <Value>0.039408866</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Z_Move</Name>
-    <Value>0.000000000</Value>
+    <Value>0.300492615</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Atraction</Name>
-    <Value>0.004433498</Value>
+    <Value>0.013300492</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Repulsion</Name>
-    <Value>0.931034505</Value>
+    <Value>0.049261082</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Glow</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,12 +63,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>texture_Size</Name>
-    <Value>1.000000000</Value>
+    <Value>0.482758611</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Container_Periodic</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Conteiner_Height</Name>
-    <Value>1.000000000</Value>
+    <Value>200.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,25 +88,25 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Sphere</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wall</Name>
-    <Value>0.354679793</Value>
+    <Value>1.576354623</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Alpha</Name>
-    <Value>0.359605908</Value>
+    <Value>0.039999999</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wires_Alpha</Name>
-    <Value>1.000000000</Value>
+    <Value>0.172413796</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Vertex_Alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>0.039408866</Value>
 </Widget>

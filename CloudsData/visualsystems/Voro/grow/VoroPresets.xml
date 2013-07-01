@@ -7,32 +7,7 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>ElectricVoro</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Gray</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Hex01</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Kryptonite</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>OrganicTissue</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>UniverseVoro</Name>
+    <Name>cells</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -42,11 +17,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>grow</Name>
+    <Name>electric</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>cells</Name>
+    <Name>Gray</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>grow</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OrganicTissue</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UniverseVoro</Name>
     <Value>0</Value>
 </Widget>

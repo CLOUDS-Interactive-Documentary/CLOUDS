@@ -55,6 +55,7 @@ protected:
     ofShader    background;
     
     ofTexture   dot;
+    ofTexture   nucles[28];
     ofVec3f     objectLookAt;
     
     //  Particle System
@@ -67,20 +68,21 @@ protected:
     float   wallThikness;
     int     fps;
     bool    bClear;
-    float   fGlow;
-    float   fVertex;
-    float   fNucle;
+    
+    float   tSize;
+    
+    bool    bDrawGlow;
+    bool    bDrawNucles;
     
     //  Voronoi
     //
     float   containerSize,containerHeight;
     float   cellsAlpha;
     float   cellsWireAlpha;
+    float   cellsVertexAlpha;
     bool    containerPeriodic;
     bool    bSphere;
     bool    bCyllinder;
-    bool    bDrawVoronoi;
-    bool    bDrawVoronoiWireFrames;
     
     //  Displacement
     //

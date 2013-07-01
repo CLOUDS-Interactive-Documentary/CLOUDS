@@ -27,6 +27,8 @@ public:
     ofPoint vel;
     ofPoint acc;
 
+    ofTexture *nucle;
+    
     float   damping;
     float   size;
 };

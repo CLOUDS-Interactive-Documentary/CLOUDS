@@ -13,27 +13,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Number</Name>
-    <Value>73.399017334</Value>
+    <Value>49.599998474</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BornSecRate</Name>
-    <Value>2.000000000</Value>
+    <Value>0.600989997</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max_Size</Name>
-    <Value>1.532019734</Value>
+    <Value>3.970443249</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>GrowRate</Name>
-    <Value>0.006896552</Value>
+    <Value>0.004926108</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>InitialForce</Name>
-    <Value>0.039408866</Value>
+    <Value>0.009556651</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,22 +43,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Atraction</Name>
-    <Value>0.004433498</Value>
+    <Value>0.016256159</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Repulsion</Name>
-    <Value>0.931034505</Value>
+    <Value>0.482758611</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Glow</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Nucles</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -78,7 +78,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Conteiner_Height</Name>
-    <Value>1.000000000</Value>
+    <Value>0.100000001</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,22 +88,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Sphere</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wall</Name>
-    <Value>0.354679793</Value>
+    <Value>0.078817733</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Alpha</Name>
-    <Value>0.359605908</Value>
+    <Value>0.802955687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell_Wires_Alpha</Name>
-    <Value>1.000000000</Value>
+    <Value>0.172413796</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

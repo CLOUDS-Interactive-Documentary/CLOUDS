@@ -43,17 +43,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>EG</Name>
-    <Value>0.000000000</Value>
+    <Value>0.099477075</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>EB</Name>
-    <Value>0.000000000</Value>
+    <Value>0.230365843</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SR</Name>
-    <Value>0.000000000</Value>
+    <Value>0.408376962</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -68,5 +68,5 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>0.000000000</Value>
+    <Value>11.980295181</Value>
 </Widget>
