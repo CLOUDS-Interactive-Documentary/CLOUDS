@@ -46,7 +46,7 @@ void CloudsStoryEngine::update(ofEventArgs& args){
 
 void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 	
-	seedWithClip(seed, seed.keywords[ ofRandom(seed.keywords.size()) ]);
+	seedWithClip(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 
 }
 
@@ -239,7 +239,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	//get all the adjascent clips, assign weights to them and select
 	vector<CloudsClip> nextClips;
 	if(freeTopic){
-		nextClips = network->getClipsWithKeyword(currentClip.keywords);
+		nextClips = network->getClipsWithKeyword(currentClip.getKeywords());
 	}
 	else{
 		nextClips = network->getClipsWithKeyword(currentTopic);	
@@ -330,7 +330,7 @@ int CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 		return 0;
 	}
 	
-	bool containsCurrentTopic = ofContains(clip.keywords, currentTopic);
+	bool containsCurrentTopic = ofContains(clip.getKeywords(), currentTopic);
 	if(!freeTopic && !containsCurrentTopic){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
 		return 0;

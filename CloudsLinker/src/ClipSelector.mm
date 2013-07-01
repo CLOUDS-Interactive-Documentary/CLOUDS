@@ -197,12 +197,14 @@
 		
         if([self isClipSelected]){
 			CloudsClip m = [self selectedClip];
-			string keywordList = "";
+			string revokedList = "";
 			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.getKeywords(), ",").c_str()];
 			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
-            
-            revokedKeywords=  [NSString stringWithUTF8String:ofJoinString(m.getRevokedKeywords(), ",").c_str()];
-            cout<<"Revoked list"<<ofJoinString(m.getRevokedKeywords(), ",")<<endl;
+//revokedList = "AAA";
+            revokedList = ofJoinString(m.getRevokedKeywords(), ",");
+            revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
+            cout<<"Revoked list "<<revokedList<<endl;
+            revokedKeywords.updateLayer;
 			dontUpdateClips = true;
 			[self updateTables];
 			dontUpdateClips = false;
@@ -325,7 +327,8 @@ completionsForSubstring:(NSString *)substring
     vector<string> newKeywords = ofSplitString(keywordString, ",");
     n.setDesiredKeywords(newKeywords);
     cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
-
+    string revokedList = ofJoinString(n.getRevokedKeywords(), ",");
+    revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
 
 }
 

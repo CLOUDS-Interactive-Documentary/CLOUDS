@@ -170,15 +170,15 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
     for(int i= 0; i<desiredKeywords.size();i++){
         if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
             cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
-            additionalKeywords.push_back(desiredKeywords[i]);
+            addKeyword(desiredKeywords[i]);
         }
     }
     
     //find all the keywords missing from the original list (rvoked)
-    for(int i=0;i<originalKeywords.size();i++){
+    for(int i=0; i < originalKeywords.size() ; i++){
         if(! ofContains(desiredKeywords, originalKeywords[i])&&! ofContains(revokedKeywords, originalKeywords[i])){
-            cout<<"revoking keyword : "<< desiredKeywords[i]<<" from clip "<<name<<endl;            
-            revokedKeywords.push_back(originalKeywords[i]);
+            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
+            revokeKeyword(originalKeywords[i]);
         }
     }
     keywordsDirty =true;
