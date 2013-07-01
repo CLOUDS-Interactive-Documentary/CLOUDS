@@ -22,9 +22,11 @@ void CloudsFCPParser::loadFromFiles(){
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
 
+
 	}
 	else{
 		setup("xml");
+
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
 
@@ -324,11 +326,11 @@ void CloudsFCPParser::saveLinks(string linkFile){
             
             if(hasAdditionalKeywords){
                 string additionalKeywords = ofJoinString(allClips[i].getAdditionalKeywords(),"," );
-                linksXML.addValue("additionalKeywords ", additionalKeywords);
+                linksXML.addValue("additionalKeywords", additionalKeywords);
             }
 			
 			linksXML.popTag();
-		}
+		}		
 	}
     
     
