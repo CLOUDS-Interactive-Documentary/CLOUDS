@@ -52,8 +52,10 @@ protected:
     vector<VoroParticle *> seedParticles;
     vector<ofMesh>  cellMeshes;
     
-    ofTexture dot;
-    ofVec3f objectLookAt;
+    ofShader    background;
+    
+    ofTexture   dot;
+    ofVec3f     objectLookAt;
     
     //  Particle System
     //
@@ -62,10 +64,12 @@ protected:
     float   MaxNumOfParticles, MaxSize;
     float   initialForce;
     float   zMove;
+    float   wallThikness;
     int     fps;
-    bool    bClear,bDrawParticles;
-    float   glowSize;
-    bool    bDrawGlow;
+    bool    bClear;
+    float   fGlow;
+    float   fVertex;
+    float   fNucle;
     
     //  Voronoi
     //
@@ -78,4 +82,10 @@ protected:
     bool    bDrawVoronoi;
     bool    bDrawVoronoiWireFrames;
     
+    //  Displacement
+    //
+//    ofShader noiseDisplacement;
+//    float   noiseAmplitud;
+//    float   noiseDensity;
+//    float   noisePosition;
 };

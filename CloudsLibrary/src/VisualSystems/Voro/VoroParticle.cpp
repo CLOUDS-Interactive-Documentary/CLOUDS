@@ -31,18 +31,6 @@ void VoroParticle::update(){
     acc *= 0;
 }
 
-//------------------------------------------------------------
-void VoroParticle::draw(){
-    ofCircle(*this, size);
-}
-
-void VoroParticle::drawSphere(){
-    ofPushMatrix();
-    ofTranslate(*this);
-//    ofDrawSphere(size);
-    ofPopMatrix();
-}
-
 void VoroParticle::infinitWalls(){
 	
 	// what are the walls

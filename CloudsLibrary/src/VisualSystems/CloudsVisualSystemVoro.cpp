@@ -20,6 +20,12 @@ string CloudsVisualSystemVoro::getSystemName()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
+    background.load("",getDataPath()+"shaders/VisualSystems/Voro/cosmos.fs");
+    
+//    noiseDisplacement.load(getDataPath()+"shaders/VisualSystems/Voro/noiseDisplacement");
+//    noiseAmplitud = 0.0;
+//    noiseDensity = 0.0;
+//    noisePosition = 1.0;
     
 }
 
@@ -39,9 +45,11 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Z_Move", 0.0, 1.0, &zMove);
     sysGui->addSlider("Atraction", 0.0, 0.3, &atractionPct);
     sysGui->addSlider("Repulsion", 0.0, 1.0, &repulsionPct);
-    sysGui->addToggle("Glow",& bDrawGlow);
-    sysGui->addSlider("Glow_Size", 0.0, 1.0, &glowSize);
-    sysGui->addToggle("DrawParticles", &bDrawParticles);
+    
+    sysGui->addSlider("Glow", 0.0, 1.0, &fGlow);
+    sysGui->addSlider("Vertex", 0.0, 1.0, &fVertex);
+    sysGui->addSlider("Nucles",0.0,1.0 ,&fNucle);
+    
     sysGui->addButton("Clear", &bClear);
     
     sysGui->addLabel("Voronoi");
@@ -50,10 +58,19 @@ void CloudsVisualSystemVoro::selfSetupSystemGui()
     sysGui->addSlider("Conteiner_Height", 1, 200, &containerHeight);
     sysGui->addToggle("Cylinder", &bCyllinder);
     sysGui->addToggle("Sphere", &bSphere);
+    sysGui->addSlider("Cell_Wall", 0.0, 2.0, &wallThikness);
     sysGui->addSlider("Cell_Alpha", 0.0, 1.0, &cellsAlpha);
     sysGui->addToggle("DrawVoronoi", &bDrawVoronoi);
     sysGui->addSlider("Cell_Wires_Alpha", 0.0, 1.0, &cellsWireAlpha);
     sysGui->addToggle("DrawVoronoiWires", &bDrawVoronoiWireFrames);
+}
+
+void CloudsVisualSystemVoro::selfSetupRenderGui()
+{
+//    rdrGui->addSlider("noise_amplitud", 0.0, 2.0, &noiseAmplitud);
+//    rdrGui->addSlider("noise_density", 0.0, 2.0, &noiseDensity);
+//    rdrGui->addSlider("noise_position", 0.0, 10.0, &noisePosition);
+    
 }
 
 void CloudsVisualSystemVoro::selfBegin()
@@ -74,7 +91,25 @@ void CloudsVisualSystemVoro::selfEnd()
 
 void CloudsVisualSystemVoro::selfDrawBackground()
 {
-    
+//    ofPushStyle();
+//    int width = ofGetWidth();
+//    int height = ofGetHeight();
+//    
+//    background.begin();
+//    background.setUniform1f("time", ofGetElapsedTimef());
+//    background.setUniform2f("mouse", xRot->getPos()*PI, yRot->getPos()*PI);
+//    background.setUniform2f("resolution", width, height);
+//    background.setUniform1f("starsAlpha", 0.5);
+//
+//    glBegin(GL_QUADS);
+//    glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
+//    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
+//    glTexCoord2f(width, height); glVertex3f(width, height, 0);
+//    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
+//    glEnd();
+//    background.end();
+//    
+//    ofPopStyle();
 }
 
 void CloudsVisualSystemVoro::selfDrawDebug()
@@ -146,23 +181,23 @@ void CloudsVisualSystemVoro::selfUpdate()
                       containerPeriodic,containerPeriodic,containerPeriodic,
                       1);
         
-//        if (bSphere){
-//            voro::wall_sphere sph(0, 0, 0, containerSize);
-//            con.add_wall(sph);
-//            bCyllinder = false;
-//        }
-//        
-//        if (bCyllinder){
-//			voro::wall_cylinder cyl(0,0,0,0,0,0, containerSize);
-//            con.add_wall(cyl);
-//            bSphere = false;
-//        }
+        if (bSphere){
+            voro::wall_sphere sph(0, 0, 0, containerSize);
+            con.add_wall(sph);
+            bCyllinder = false;
+        }
+        
+        if (bCyllinder){
+			voro::wall_cylinder cyl(0,0,0,0,0,0, containerSize);
+            con.add_wall(cyl);
+            bSphere = false;
+        }
         
         for(int i = 0; i < seedParticles.size(); i++){
             con.put(i, seedParticles[i]->x, seedParticles[i]->y, seedParticles[i]->z);
         }
         
-        cellMeshes = getCellsFromContainer(con);
+        cellMeshes = getCellsFromContainer(con,wallThikness);
     }
     
     
@@ -172,19 +207,25 @@ void CloudsVisualSystemVoro::selfUpdate()
 void CloudsVisualSystemVoro::selfDraw()
 {
     mat->begin();
+//    noiseDisplacement.begin();
+//    noiseDisplacement.setUniform1f("noiseAmplitude", noiseAmplitud);
+//    noiseDisplacement.setUniform1f("noiseDensity", noiseDensity);
+//    noiseDisplacement.setUniform1f("noisePosition", noisePosition);
+    
     ofPushMatrix();
     
     glEnable(GL_DEPTH_TEST);
-    
-    if (bDrawGlow){
-        glDepthMask(GL_FALSE);
-        ofEnableBlendMode(OF_BLENDMODE_ADD);
-    }
-    
-    ofMesh particles;
-    particles.setMode(OF_PRIMITIVE_POINTS);
-    
+
     if (bDrawParticles){
+        
+        if (bDrawGlow){
+            glDepthMask(GL_FALSE);
+            ofEnableBlendMode(OF_BLENDMODE_ADD);
+        }
+        
+        ofMesh particles;
+        particles.setMode(OF_PRIMITIVE_POINTS);
+        
         for (int i = 0; i < seedParticles.size(); i++){
             
             if (bDrawGlow){
@@ -192,7 +233,7 @@ void CloudsVisualSystemVoro::selfDraw()
                 ofPushMatrix();
                 ofSetRectMode(OF_RECTMODE_CENTER);
                 
-                ofTranslate(*seedParticles[i]);
+                ofTranslate(*seedParticles[i]*(float)(1.0+wallThikness));
                 billBoard();
                 
                 ofSetColor(255, 255*(seedParticles[i]->size/MaxSize));
@@ -203,30 +244,32 @@ void CloudsVisualSystemVoro::selfDraw()
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 ofPopMatrix();
             } else {
-//                ofSetColor(255,255,0);
-//                seedParticles[i]->drawSphere();
-                particles.addVertex( *seedParticles[i] );
+                particles.addVertex( *seedParticles[i]*(float)(1.0+wallThikness) );
             }
         }
-    }
-
-    if (bDrawGlow){
-        glDepthMask(GL_TRUE);
-        ofEnableAlphaBlending();
-    } else {
-        particles.draw();
+        
+        for(int i = 0; i < cellMeshes.size(); i++){
+            cellMeshes[i].drawVertices();
+        }
+        
+        if (bDrawGlow){
+            glDepthMask(GL_TRUE);
+            ofEnableAlphaBlending();
+        } else {
+            particles.draw();
+        }
     }
     
-    if(bDrawVoronoiWireFrames || bDrawVoronoi){
+    if(cellsAlpha>0.0 || cellsWireAlpha>0.0){
         for(int i = 0; i < cellMeshes.size(); i++){
             ofSetColor(255,cellsAlpha*255.0);
             
-            if(bDrawVoronoi){
+            if(cellsAlpha>0.0){
                 ofSetColor(155,cellsAlpha*100.0);
                 cellMeshes[i].drawFaces();
             }
             
-            if(bDrawVoronoiWireFrames){
+            if(cellsWireAlpha>0.0){
                 ofSetColor(155,cellsWireAlpha*100.0);
                 cellMeshes[i].drawWireframe();
             }
@@ -237,6 +280,9 @@ void CloudsVisualSystemVoro::selfDraw()
     glDisable(GL_DEPTH_TEST);
     
     ofPopMatrix();
+    
+//    noiseDisplacement.end();
+    
     mat->end();
 }
 
@@ -302,11 +348,6 @@ void CloudsVisualSystemVoro::selfGuiEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemVoro::guiSystemEvent(ofxUIEventArgs &e)
 {
 
-}
-
-void CloudsVisualSystemVoro::selfSetupRenderGui()
-{
-    
 }
 
 void CloudsVisualSystemVoro::guiRenderEvent(ofxUIEventArgs &e)
