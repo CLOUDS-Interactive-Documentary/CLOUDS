@@ -12,6 +12,9 @@ void testApp::setup(){
 	cam.setup();
 	
 	
+	glEnable(GL_POINT_SMOOTH);
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);
+	
 	gpuParticles.setup();
 	
 }
