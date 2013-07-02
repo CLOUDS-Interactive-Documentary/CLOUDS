@@ -36,7 +36,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 //	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 //	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 //	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
-//	registerVisualSystem( new CloudsVisualSystemHiga() );
+	registerVisualSystem( new CloudsVisualSystemHiga() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..

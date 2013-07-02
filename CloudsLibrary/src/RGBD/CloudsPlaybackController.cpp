@@ -113,8 +113,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 		return;
 	}
-	
 	//END SIMPLE MODE
+	
 	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
 		rgbdVisualSystem.speakerEnded();
 		storyEngine->clipEnded();
@@ -146,8 +146,7 @@ void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 	
 	//this has to draw last
 	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	
+	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);	
 }
 
 //--------------------------------------------------------------------

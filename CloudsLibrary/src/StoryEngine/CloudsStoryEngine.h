@@ -72,7 +72,7 @@ class CloudsStoryEngine {
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
-	void buildQueue(CloudsClip& seed, float seconds);
+	void buildQueue(CloudsClip seed, float seconds);
 	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
 	
 	
