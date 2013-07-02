@@ -1,7 +1,0 @@
-//
-//  Stage.cpp
-//
-
-namespace GPUParticles {
-	
-}

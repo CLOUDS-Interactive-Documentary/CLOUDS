@@ -9,7 +9,7 @@ float rand(vec2 co){
 void main() {
     vec2 st = gl_TexCoord[0].st;
     gl_FragColor = gl_Color;
-	gl_FragColor.ra = vec2(.1);
-
+	
+//	gl_FragColor.ra = vec2(.1);
    // gl_FragColor.rgb *= rand(mapCoordinate);
 }

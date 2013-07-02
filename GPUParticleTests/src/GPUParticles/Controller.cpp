@@ -12,20 +12,25 @@ namespace GPUParticles {
 
 	Controller::Controller(){
 		updating = true;
+		numParticles = 50000;
 	}
 	
 	void Controller::setup(){
 		
-		state.init(1e6);
+		state.init(numParticles);
 		
+		reloadShaders();
+		
+		birthSpread = 500.0f;
+		birthPlace = ofVec3f(0,10,0);
+		birthRate = 0.01f;
+	}
+	
+	void Controller::reloadShaders(){
 		null.load("default.vert","null.frag");
 		forceSet.load();
 		state.loadShader();
 		points.setState(state);
-		
-		birthSpread = 5.0f;
-		birthPlace = ofVec3f(0,10,0);
-		birthRate = 0.01f;
 	}
 	
 	void Controller::update() {
@@ -39,6 +44,7 @@ namespace GPUParticles {
 			*x++ = ofRandomf() * birthSpread + birthPlace.x;
 			*x++ = ofRandomf() * birthSpread + birthPlace.y;
 			*x++ = ofRandomf() * birthSpread + birthPlace.z;
+			
 			*x++ = ofRandomuf() < birthRate;
 		}
 
@@ -54,25 +60,19 @@ namespace GPUParticles {
 		random.draw(0,state.getHeight(), state.getWidth(), -state.getHeight());
 		state.getTargetVelocity().end();
 		ofPopStyle();
+		
 		ofDisableAlphaBlending();
 	}
 	
 	void Controller::draw(){
-		//ofDrawGrid(10, 10, true);
-		//ofEnableAlphaBlending();
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-		
+
 		ofPushStyle();
-		ofSetColor(255, 255, 255, 50);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+	
+		points.draw();
+
 		ofPopStyle();
 		
-		//glEnable(GL_POINT_SMOOTH);
-		points.draw();
-		//glDisable(GL_POINT_SMOOTH);
-		
-		ofPushMatrix();
-		ofRotate(90, 1, 0, 0);
-		ofPopMatrix();
 	}
 	
 	void Controller::reset(){
@@ -124,15 +124,5 @@ namespace GPUParticles {
 			ofDrawBitmapString("not updating", 10, ofGetHeight() - 30);
 		}
 	}
-	
-//	void Controller::windowResized(ofEventArgs& args){
-//		ofFbo::Settings settings;
-//		settings.width = ofGetWidth();
-//		settings.height = ofGetHeight();
-//		settings.internalformat = GL_RGBA;
-//		settings.depthStencilInternalFormat = GL_DEPTH24_STENCIL8;
-//		multiSample.allocate(settings);
-
-//	}
 	
 };

@@ -6,7 +6,7 @@
 #include "State.h"
 #include "ForceSet.h"
 #include "Points.h"
-#include "GroundPlane.h"
+//#include "GroundPlane.h"
 
 namespace GPUParticles {
 	
@@ -14,9 +14,12 @@ namespace GPUParticles {
   	public:
 		Controller();
 		
+		void setParticleCount(int numParticles);
 		void setup();
 		void update();
 		void draw();
+		
+		void reloadShaders();
 		
 		void reset();
 		
@@ -24,13 +27,13 @@ namespace GPUParticles {
 		
 	protected:
 		
-//		void windowResized(ofEventArgs& args);
-		
 		ofShader null;
 		State state;
 		ForceSet forceSet;
 		ofShader gravity;
 		Points points;
+
+		int numParticles;
 		
 		ofFloatImage random;
 		

@@ -6,14 +6,11 @@
 #include "ofxGameCamera.h"
 #include "GPUParticles/Controller.h"
 
-//using namespace GPUParticles;
-
 class testApp : public ofBaseApp{
 public:
 	void setup();
 	void update();
 	void draw();
-	void drawFromAbove();
 	
 	void keyPressed(int key);
 	void keyReleased(int key);

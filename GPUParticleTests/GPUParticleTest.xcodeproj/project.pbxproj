@@ -57,8 +57,6 @@
 		E776C28B178252A7001D8CDC /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C27D178252A7001D8CDC /* Controller.cpp */; };
 		E776C28C178252A7001D8CDC /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C27F178252A7001D8CDC /* Gravity.cpp */; };
 		E776C28D178252A7001D8CDC /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C281178252A7001D8CDC /* Points.cpp */; };
-		E776C28E178252A7001D8CDC /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C283178252A7001D8CDC /* Stage.cpp */; };
-		E776C28F178252A7001D8CDC /* GroundPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C285178252A7001D8CDC /* GroundPlane.cpp */; };
 		E776C290178252A7001D8CDC /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C287178252A7001D8CDC /* State.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
@@ -178,9 +176,6 @@
 		E776C280178252A7001D8CDC /* Gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gravity.h; sourceTree = "<group>"; };
 		E776C281178252A7001D8CDC /* Points.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Points.cpp; sourceTree = "<group>"; };
 		E776C282178252A7001D8CDC /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
-		E776C283178252A7001D8CDC /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
-		E776C285178252A7001D8CDC /* GroundPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundPlane.cpp; sourceTree = "<group>"; };
-		E776C286178252A7001D8CDC /* GroundPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundPlane.h; sourceTree = "<group>"; };
 		E776C287178252A7001D8CDC /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		E776C288178252A7001D8CDC /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
@@ -497,31 +492,20 @@
 		E776C278178252A7001D8CDC /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
-				E776C284178252A7001D8CDC /* Stages */,
+				E776C27E178252A7001D8CDC /* Controller.h */,
+				E776C27D178252A7001D8CDC /* Controller.cpp */,
 				E776C279178252A7001D8CDC /* Force.cpp */,
 				E776C27A178252A7001D8CDC /* Force.h */,
 				E776C27B178252A7001D8CDC /* ForceSet.cpp */,
 				E776C27C178252A7001D8CDC /* ForceSet.h */,
-				E776C27D178252A7001D8CDC /* Controller.cpp */,
-				E776C27E178252A7001D8CDC /* Controller.h */,
 				E776C27F178252A7001D8CDC /* Gravity.cpp */,
 				E776C280178252A7001D8CDC /* Gravity.h */,
 				E776C281178252A7001D8CDC /* Points.cpp */,
 				E776C282178252A7001D8CDC /* Points.h */,
-				E776C283178252A7001D8CDC /* Stage.cpp */,
-				E776C287178252A7001D8CDC /* State.cpp */,
 				E776C288178252A7001D8CDC /* State.h */,
+				E776C287178252A7001D8CDC /* State.cpp */,
 			);
 			path = GPUParticles;
-			sourceTree = "<group>";
-		};
-		E776C284178252A7001D8CDC /* Stages */ = {
-			isa = PBXGroup;
-			children = (
-				E776C285178252A7001D8CDC /* GroundPlane.cpp */,
-				E776C286178252A7001D8CDC /* GroundPlane.h */,
-			);
-			path = Stages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,8 +627,6 @@
 				E776C28B178252A7001D8CDC /* Controller.cpp in Sources */,
 				E776C28C178252A7001D8CDC /* Gravity.cpp in Sources */,
 				E776C28D178252A7001D8CDC /* Points.cpp in Sources */,
-				E776C28E178252A7001D8CDC /* Stage.cpp in Sources */,
-				E776C28F178252A7001D8CDC /* GroundPlane.cpp in Sources */,
 				E776C290178252A7001D8CDC /* State.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

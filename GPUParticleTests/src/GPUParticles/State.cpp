@@ -75,6 +75,7 @@ namespace GPUParticles {
 		this->drawQuad();
 		
 		integrate.end();
+		
 		glPopAttrib();
 		
 		sourcePosition.end();
