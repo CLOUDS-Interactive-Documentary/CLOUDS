@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D03B1D71755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1D31755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp */; };
+		3D47906817835BF600EE85CA /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D47906617835BF600EE85CA /* vParticle.cpp */; };
 		3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
 		3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
 		3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -151,6 +152,8 @@
 /* Begin PBXFileReference section */
 		3D03B1D31755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
 		3D03B1D41755AA7B009CF17D /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		3D47906617835BF600EE85CA /* vParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vParticle.cpp; sourceTree = "<group>"; };
+		3D47906717835BF600EE85CA /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -890,6 +893,8 @@
 				3DB8116B1753FC3000954467 /* Voro.h */,
 				3DB8116C1753FC3000954467 /* VoroParticle.cpp */,
 				3DB8116D1753FC3000954467 /* VoroParticle.h */,
+				3D47906717835BF600EE85CA /* vParticle.h */,
+				3D47906617835BF600EE85CA /* vParticle.cpp */,
 			);
 			path = Voro;
 			sourceTree = "<group>";
@@ -1389,6 +1394,7 @@
 				3DB811781753FC3000954467 /* Voro.cpp in Sources */,
 				3DB811791753FC3000954467 /* VoroParticle.cpp in Sources */,
 				3D03B1D71755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */,
+				3D47906817835BF600EE85CA /* vParticle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
