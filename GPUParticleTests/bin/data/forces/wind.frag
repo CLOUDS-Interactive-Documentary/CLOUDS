@@ -20,16 +20,19 @@ void main() {
 	vec3 p = getPosition().xyz;
 	vec3 v = getVelocity().xyz;
 	
+	vec3 centerline = p;
 	centerline = p;
 	centerline.xz *= 0.0;
 	
-	inplane = p;
+	vec3 inplane = p;
 	inplane.y *= 0.0;
 
 	centerline = normalize(centerline);
 	inplane = normalize(centerline);
-	tangent = cross(centerline, inplane);
+	vec3 tangent = cross(centerline, inplane);
+	
 	gl_FragColor = vec4(0,0,0,1);
-	//v.xyz += tangent;
+	
+	v.xyz += tangent;
 
 }

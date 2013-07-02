@@ -12,6 +12,7 @@ namespace GPUParticles {
 		ofDirectory dir;
 		dir.listDir("forces");
 		dir.sort();
+		
 		for (int i=0; i<dir.size(); i++) {
 			string name = dir.getFile(i).getBaseName();
 			if (name[0] == '~')

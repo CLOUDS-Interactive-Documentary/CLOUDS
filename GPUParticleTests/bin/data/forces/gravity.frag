@@ -19,24 +19,25 @@ bool isnan(float number) {
 }
 //this function is a force and returns velocity
 void main() {
+	
 	vec3 p = getPosition().xyz;
 	vec3 v = getVelocity().xyz;
 	//if (position.y > 0)
 
-	vec3 centerline = p;
-	centerline.xz *= 0.0;
-	
-	vec3 inplane = p;
-	inplane.y *= 0.0;
+//	vec3 centerline = p;
+//	centerline.xz *= 0.0;
+//	
+//	vec3 inplane = p;
+//	inplane.y *= 0.0;
+//
+//	centerline = normalize(centerline);
+//	inplane = normalize(centerline);
+//	vec3 tangent = cross(centerline, inplane);
 
-	centerline = normalize(centerline);
-	inplane = normalize(centerline);
-	vec3 tangent = cross(centerline, inplane);
-
-	if (p.y > 0.0)
-		v += vec3(0,-2.0,0);
-	else
-		v = vec3(0.8*v.x,0.8 * abs(v.y),0.8*v.z)+ tangent * length(inplane);
+//	if (p.y > 0.0)
+		v += vec3(0,-80.0,0);
+//	else
+//		v = vec3(0.8*v.x,0.8 * abs(v.y),0.8*v.z)+ tangent * length(inplane);
 
 	 //v+= tangent * length(inplane);
 

@@ -23,7 +23,7 @@ namespace GPUParticles {
 		
 		birthSpread = 500.0f;
 		birthPlace = ofVec3f(0,10,0);
-		birthRate = 0.01f;
+		birthRate = 0.001f;
 	}
 	
 	void Controller::reloadShaders(){
