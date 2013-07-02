@@ -17,17 +17,22 @@ colonyCell::colonyCell(){
     //  Default variables
     //
     r = 3.0;
-    cellSize = .5;
+    cellSize = 1;
     age = 0;
     maxSize = ofRandom(15,25);
-    maxspeed = 1.1;
-    maxforce = 0.8;
-    fertilityAge = ofRandom(400,900);
-    lifeSpan = ofRandom(100,650);
-    nutrientLevel = 35;
+    maxspeed = .4;
+    maxforce = 0.4;
+    fertilityAge = ofRandom(500,700);
+    lifeSpan = ofRandom(90,600);
+    nutrientLevel = 50;
     dead = false;
     hasReplicated = false;
+    isFertile = ofRandom(0,1);
     shouldReplicate = false;
+    
+    isFertile = ofRandomuf() > .5;
+    
+    spriteIndex = ofRandom(0,4);
 	
 	spriteMesh.clear();
 	
@@ -60,7 +65,7 @@ void colonyCell::applyFlock( vector<colonyCell*> &_cells ) {
     
     // Arbitrarily weight these forces
     //
-    sep *= 250.0;
+    sep *= 150;
     ali *= 0.2;
     coh *= 0.1;
     
@@ -245,7 +250,7 @@ void colonyCell::feedCellWidth( ofPixels &_pixels ){
 		cellSize = cellSize - .01;
 	}
 	if (age > lifeSpan || hasReplicated){
-		cellSize = cellSize - .5;
+		cellSize = cellSize - .03;
 	}
 	
 	if (cellSize <= .001){
