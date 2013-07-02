@@ -192,12 +192,17 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if(aNotification.object == keywordTable){
-		[clipTable deselectAll:self];
+		[self deselectCurrentClip];
+		
 		dontUpdateKeywords = true;
 		[self updateTables];
 		dontUpdateKeywords = false;
     }
     else if(aNotification.object == clipTable){
+		[metaTable deselectAll:self];
+		[linkTable deselectAll:self];
+		[suppressedTable deselectAll:self];
+		
 		[self updateSelectedClip];
     }
     else if(aNotification.object == linkTable){
@@ -211,7 +216,7 @@
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){
                 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
-				[clipTable deselectAll:self];
+				[self deselectCurrentClip];
                 break;
             }
         }
@@ -221,6 +226,7 @@
             return;
         }
 		
+		[self updateSharedKeywords];
     }
     else if(aNotification.object == suppressedTable){
         if(suppressedTable.selectedRow<0){
@@ -453,6 +459,14 @@ completionsForSubstring:(NSString *)substring
 	return keywordTable.selectedRow >= 0;
 }
 
+- (void) deselectCurrentClip
+{
+	[clipTable deselectAll:self];
+	[metaTable deselectAll:self];
+	[linkTable deselectAll:self];
+	[suppressedTable deselectAll:self];
+}
+
 - (void) updateTables
 {
 	[self updateSelectedClips];
@@ -512,17 +526,19 @@ completionsForSubstring:(NSString *)substring
 		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
 		revokedList = ofJoinString(m.getRevokedKeywords(), ",");
 		revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
-		revokedKeywords.updateLayer;
 		
 		currentClipLinks = parser->getLinksForClip(m.getLinkName());
 		currentSuppressedLinks = parser->getSuppressionsForClip(m.getLinkName());
 		currentMetaLinks = parser->getMetaDataConnections(m);
+		
+		[self updateSharedKeywords];
 	}
 	else{
 		
 		currentKeywords.stringValue = @"";
 		revokedKeywords.stringValue = @"";
 		startQuestion.stringValue = @"";
+		sharedKeywords.stringValue = @"";
 		
 		currentClipLinks.clear();
 		currentSuppressedLinks.clear();
@@ -535,4 +551,16 @@ completionsForSubstring:(NSString *)substring
 	
 }
 
+- (void) updateSharedKeywords
+{
+	if([self isClipSelected] && metaTable.selectedRow >= 0 && metaTable.selectedRow < currentMetaLinks.size()){
+		CloudsClip clip = [self selectedClip];
+		CloudsClip metaClip = [self selectedMeta];
+		sharedKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(parser->getSharedKeywords(clip, metaClip), ", ").c_str() ];
+	}
+	else{
+		sharedKeywords.stringValue = @"";
+	}
+
+}
 @end
