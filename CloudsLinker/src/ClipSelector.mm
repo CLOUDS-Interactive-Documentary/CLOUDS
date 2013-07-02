@@ -26,14 +26,9 @@
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
     
-    cout << "setting action " << [clipTable description] << endl;
-    
     [clipTable setTarget:self];
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 		
-//    [keywordTable setTarget:self];
-//    [keywordTable setDoubleAction:@selector(playDoubleClickedRow:)];
-
 	[keywordTable reloadData];
 	
     [metaTable setTarget:self];
@@ -45,33 +40,25 @@
     [suppressedTable setTarget:self];
     [suppressedTable setDoubleAction:@selector(playDoubleClickedRow:)];
 
-    NSLog(@"delegate? %@", currentKeywords.delegate.description);
-
 	[self updateTables];
 }
 
 
 - (IBAction) saveLinks:(id)sender
 {
-//	if(ofDirectory("../../../CloudsData/links/").exists()){
-//		parser->saveLinks("../../../CloudsData/links/clouds_link_db.xml");
-//	}
-//	else{
-//		parser->saveLinks("clouds_link_db.xml");
-//	}
 	[testViewParent saveLinks:self];
 }
-- (IBAction) specialKeywords:(id)sender{
+
+- (IBAction) specialKeywords:(id)sender
+{
     CloudsClip clip = [self selectedClip];
     vector<string> test = clip.getSpecialKeywords();
-    
     
     for( int i =0 ;i<test.size();i++){
         cout<<"special keywords are: "<<test[i]<<endl;
     }
-
-
 }
+
 - (IBAction) playDoubleClickedRow:(id)sender
 {
 	
@@ -117,13 +104,12 @@
         return currentSuppressedLinks.size();
     }
     else if(aTableView == metaTable){
-        return currentMetaLinks.size();
+        return [self isClipSelected] ? currentMetaLinks.size() : 0;
     }
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    
     if(aTableView == keywordTable){
         string keyword = parser->getAllKeywords()[rowIndex];
         if([@"occurrence" isEqualToString:aTableColumn.identifier]){
@@ -143,10 +129,7 @@
             return [NSNumber numberWithInt:parser->getSuppressionsForClip(m.getLinkName()).size()];
         }
         else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
-            //return [NSNumber numberWithInt:parser.getSuppressionsForClip(m.getLinkName()).size()];
-            //string
             string s = m.getStartingQuestion();
-            //cout<<"Starting: "<<s<<endl;
             return [NSString stringWithUTF8String:s.c_str()];
         }
         else if([@"Meta Links" isEqualToString:aTableColumn.identifier]){
@@ -170,7 +153,7 @@
     else if(aTableView == metaTable){
 
         string metaTableSourceEntry = currentMetaLinks[rowIndex].getLinkName();
-//        cout<<metaTableSourceEntry<<endl;
+
         if(currentMetaLinks[rowIndex].startFrame != -1 && currentMetaLinks[rowIndex].endFrame != -1){
             metaTableSourceEntry += "[" + ofToString(currentMetaLinks[rowIndex].startFrame) + " - " + ofToString(currentMetaLinks[rowIndex].endFrame) + "]";
         }
@@ -192,33 +175,35 @@
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors
 {
-		//TODO:
+	NSArray *newDescriptors = [tableView sortDescriptors];
+	
+    NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
+    if(tableView == keywordTable){
+        parser->sortKeywordsByOccurrence( [ [[newDescriptors objectAtIndex:0] key]  isEqualToString:@"occurrence"] );
+    }
+
+    //    [results sortUsingDescriptors:newDescriptors];
+    //"results" is my NSMutableArray which is set to be the data source for the NSTableView object.
+//    [tableView reloadData];
+	[testViewParent updateViews];
+	
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if(aNotification.object == keywordTable){
-		[clipTable selectRowIndexes:nil
-			   byExtendingSelection:NO];
+		[self deselectCurrentClip];
 		
+		dontUpdateKeywords = true;
 		[self updateTables];
+		dontUpdateKeywords = false;
     }
     else if(aNotification.object == clipTable){
+		[metaTable deselectAll:self];
+		[linkTable deselectAll:self];
+		[suppressedTable deselectAll:self];
 		
-        if([self isClipSelected]){
-			CloudsClip m = [self selectedClip];
-			string revokedList = "";
-            string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
-			currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
-
-			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
-            revokedList = ofJoinString(m.getRevokedKeywords(), ",");
-            revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
-            revokedKeywords.updateLayer;
-			dontUpdateClips = true;
-			[self updateTables];
-			dontUpdateClips = false;
-		}
+		[self updateSelectedClip];
     }
     else if(aNotification.object == linkTable){
 		
@@ -227,12 +212,11 @@
         }
         
         vector<CloudsClip>& searchClips = (selectedClips.size() == 0) ? parser->getAllClips() : selectedClips;
-        //CloudsClip& m = [self selectedClip];
         string targetClip = currentClipLinks[ linkTable.selectedRow ].targetName;
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){
                 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
-                [clipTable selectRowIndexes:indexSet byExtendingSelection:NO];
+				[self deselectCurrentClip];
                 break;
             }
         }
@@ -242,16 +226,13 @@
             return;
         }
 		
+		[self updateSharedKeywords];
     }
     else if(aNotification.object == suppressedTable){
         if(suppressedTable.selectedRow<0){
             return;
         }
 		
-//		cout << "deselecting from link table";
-//		[linkTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
-		
-		//linkTable.selectedRow = -1;
     }
 }
 
@@ -329,26 +310,40 @@ completionsForSubstring:(NSString *)substring
     }
     return NO;
 }
-- (IBAction) updateKeywords:(id)sender{
 
-    string keywordString= [currentKeywords.stringValue UTF8String];
-    CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
+- (void) updateKeywords:(id)sender{
+
     
-    if(n.person != ""){
+    if([self isClipSelected]){
+		
+		string keywordString = [currentKeywords.stringValue UTF8String];
+		
+		CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
+		
         vector<string> newKeywords = ofSplitString(keywordString, ",");
         n.setDesiredKeywords(newKeywords);
         cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
+		
         string revokedList = ofJoinString(n.getRevokedKeywords(), ",");
-        revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
-        [self saveLinks:self];
+        revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
+		parser->refreshAllKeywords();
+		
+		
+		[testViewParent updateViews];
+
+
+//		[self updateSelectedClip];
+
+		[self saveLinks:self];
+
     }
     else{
         ofLogError()<<"No clip selected!"<<endl;
     }
-
+	
 }
 
-- (IBAction) setQuestionText:(id)sender{
+- (void) setQuestionText:(id)sender{
     //button pressed
     CloudsClip m = [self selectedClip];
 	
@@ -361,7 +356,7 @@ completionsForSubstring:(NSString *)substring
     
 	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
 	
-	[self updateTables];
+	[testViewParent updateViews];
     [self saveLinks:self];
 }
 
@@ -375,7 +370,7 @@ completionsForSubstring:(NSString *)substring
 		parser->unsuppressConnection(linkSourceName, linkTargetName);
 		parser->addLink(linkSourceName, linkTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
 	}
 }
@@ -385,7 +380,7 @@ completionsForSubstring:(NSString *)substring
     if(linkTable.selectedRow >= 0 && [self isClipSelected]){
         parser->removeLink( [self selectedClip].getLinkName(), linkTable.selectedRow );
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
     }
 }
@@ -395,7 +390,7 @@ completionsForSubstring:(NSString *)substring
     if(suppressedTable.selectedRow >= 0 && [self isClipSelected]){
         parser->unsuppressConnection( [self selectedClip].getLinkName(), suppressedTable.selectedRow);
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
     }
 }
@@ -407,10 +402,12 @@ completionsForSubstring:(NSString *)substring
         string suppressSourceName = [self selectedClip].getLinkName();
         string suppressTargetName = currentMetaLinks[metaTable.selectedRow].getLinkName();
         
+		cout << "Suppress meta clip: " << suppressSourceName << " -> " << suppressTargetName << endl;
+		
         parser->removeLink(suppressSourceName, suppressTargetName);
 		parser->suppressConnection(suppressSourceName, suppressTargetName);
 				
-		[self updateTables];
+		[testViewParent updateViews];
         [self saveLinks:self];
     }
 }
@@ -424,7 +421,7 @@ completionsForSubstring:(NSString *)substring
 		parser->removeLink(suppressSourceName, suppressTargetName);
 		parser->suppressConnection(suppressSourceName, suppressTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
         [self saveLinks:self];
 	}
 }
@@ -439,7 +436,8 @@ completionsForSubstring:(NSString *)substring
 		parser->unsuppressConnection(suppressSourceName, suppressTargetName);
 		parser->addLink(suppressSourceName, suppressTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
+		
         [self saveLinks:self];
 	}
 }
@@ -447,12 +445,13 @@ completionsForSubstring:(NSString *)substring
 - (IBAction) showQuestionsChanged:(id)sender
 {
 
-	[self updateTables];
+	[testViewParent updateViews];
 }
 
 - (bool) isClipSelected
 {
-    return clipTable.selectedRow >= 0;
+    return clipTable.selectedRow >= 0 && ((selectedClips.size() > 0 && clipTable.selectedRow < selectedClips.size()) ||
+										  (selectedClips.size() == 0 && clipTable.selectedRow < parser->getAllClips().size()));
 }
 
 - (bool) isKeywordSelected
@@ -460,37 +459,31 @@ completionsForSubstring:(NSString *)substring
 	return keywordTable.selectedRow >= 0;
 }
 
+- (void) deselectCurrentClip
+{
+	[clipTable deselectAll:self];
+	[metaTable deselectAll:self];
+	[linkTable deselectAll:self];
+	[suppressedTable deselectAll:self];
+}
+
 - (void) updateTables
 {
-	currentClipLinks.clear();
-	currentSuppressedLinks.clear();
-	currentMetaLinks.clear();
-	
-	if([self isClipSelected]){
-		CloudsClip clip = [self selectedClip];
-		currentClipLinks = parser->getLinksForClip(clip.getLinkName());
-		currentSuppressedLinks = parser->getSuppressionsForClip(clip.getLinkName());
-		currentMetaLinks = parser->getMetaDataConnections(clip);
-	}
-	
 	[self updateSelectedClips];
+	[self updateSelectedClip];
 	
-	if(!dontUpdateClips) [clipTable reloadData];
-    [linkTable reloadData];
-    [suppressedTable reloadData];
-    [metaTable reloadData];
-
+	[clipTable reloadData];
+	if(!dontUpdateKeywords) [keywordTable reloadData];
 }
 
 - (void) updateSelectedClips
 {
-	
 	selectedClips.clear();
 	selectedKeywords.clear();
+	
 	if(showOnlyQuestions.state == NSOnState){
 
-		[keywordTable selectRowIndexes:nil
-				  byExtendingSelection:NO];
+		[keywordTable deselectAll:self];
 		
 		for(int i = 0; i < parser->getAllClips().size(); i++ ){
 			if(parser->getAllClips()[i].hasStartingQuestion()){
@@ -499,17 +492,75 @@ completionsForSubstring:(NSString *)substring
 		}
 	}
 	else if(keywordTable.selectedRow >= 0){
-		
 		NSUInteger idx = [keywordTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			// do work with "idx"
 			selectedKeywords.push_back(parser->getAllKeywords()[idx]);
+			cout << "selected keyword " << parser->getAllKeywords()[idx] << endl;
 			
 			// get the next index in the set
 			idx = [keywordTable.selectedRowIndexes indexGreaterThanIndex:idx];
 		}
-		selectedClips = parser->getClipsWithKeyword(selectedKeywords);
+		if(selectedKeywords.size() > 0){
+			selectedClips = parser->getClipsWithKeyword(selectedKeywords);
+			if(selectedClips.size() == 0){
+				ofSystemAlertDialog("No clips found for Keywords: " + ofJoinString(selectedKeywords,","));
+				[keywordTable deselectAll:self];				
+			}
+		}
 	}
 }
 
+- (void) updateSelectedClip
+{
+
+	if([self isClipSelected]){
+		
+		cout << "UPDATING SELECTED CLIP, row selected is "<< clipTable.selectedRow << endl;
+		
+		CloudsClip m = [self selectedClip];
+		string revokedList = "";
+		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
+		currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
+		
+		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
+		revokedList = ofJoinString(m.getRevokedKeywords(), ",");
+		revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
+		
+		currentClipLinks = parser->getLinksForClip(m.getLinkName());
+		currentSuppressedLinks = parser->getSuppressionsForClip(m.getLinkName());
+		currentMetaLinks = parser->getMetaDataConnections(m);
+		
+		[self updateSharedKeywords];
+	}
+	else{
+		
+		currentKeywords.stringValue = @"";
+		revokedKeywords.stringValue = @"";
+		startQuestion.stringValue = @"";
+		sharedKeywords.stringValue = @"";
+		
+		currentClipLinks.clear();
+		currentSuppressedLinks.clear();
+		currentMetaLinks.clear();
+	}
+	
+    [linkTable reloadData];
+    [suppressedTable reloadData];
+    [metaTable reloadData];
+	
+}
+
+- (void) updateSharedKeywords
+{
+	if([self isClipSelected] && metaTable.selectedRow >= 0 && metaTable.selectedRow < currentMetaLinks.size()){
+		CloudsClip clip = [self selectedClip];
+		CloudsClip metaClip = [self selectedMeta];
+		sharedKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(parser->getSharedKeywords(clip, metaClip), ", ").c_str() ];
+	}
+	else{
+		sharedKeywords.stringValue = @"";
+	}
+
+}
 @end

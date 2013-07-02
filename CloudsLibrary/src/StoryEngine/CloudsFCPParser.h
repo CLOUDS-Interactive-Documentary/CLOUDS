@@ -22,7 +22,10 @@ class CloudsFCPParser {
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
     vector<string> getClustersForPerson(string personName);
+	
 #pragma mark Clips
+	bool hasClipWithLinkName(string linkname);
+	bool hasClipWithID(string ID);
 	CloudsClip& getClipWithLinkName( string linkname );
 	CloudsClip& getClipWithLinkName( string linkname, bool& clipFound );
 	CloudsClip& getClipWithID( string ID );
@@ -53,6 +56,7 @@ class CloudsFCPParser {
 	void unsuppressConnection(string linkName, string targetName);
 	void unsuppressConnection(CloudsLink& link);
     void refreshAllKeywords();
+	
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -125,9 +129,6 @@ class CloudsFCPParser {
     
     string xmlDirectory;
     string combinedVideoDirectory;
-	
-	bool keywordsDirty;
-    void refreshKeywordVector();
     
 	bool sortedByOccurrence;
 	

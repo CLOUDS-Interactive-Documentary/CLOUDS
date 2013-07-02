@@ -198,7 +198,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
 			sharedRenderer->getShader().setUniform1f("eyeMultiplier", eyeMultiplier);
-			sharedRenderer->getShader().setUniform1f("mouthMultiplier", mouthMultiplier);
 			sharedRenderer->getShader().setUniform1f("skinMultiplier", skinMultiplier);
 			sharedRenderer->getShader().setUniform1f("baseMultiplier", meshAlpha);
 			
@@ -216,7 +215,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			ofPopStyle();
 			
 			sharedRenderer->getShader().setUniform1f("eyeMultiplier", 0);
-			sharedRenderer->getShader().setUniform1f("mouthMultiplier", 0);
 			sharedRenderer->getShader().setUniform1f("skinMultiplier", 0);
 			sharedRenderer->getShader().setUniform1f("baseMultiplier", 1.0);
 			
@@ -332,7 +330,6 @@ void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 	rdrGui->addToggle("DRAW MESH", &drawMesh);
 	rdrGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
 	rdrGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
-	rdrGui->addSlider("MOUTH MULTIPLIER", 0, 1.0f, &mouthMultiplier);
 	rdrGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
 	
 	rdrGui->addLabel("POINTS");

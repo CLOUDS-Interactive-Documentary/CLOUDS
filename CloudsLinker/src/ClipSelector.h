@@ -21,7 +21,7 @@
     IBOutlet NSTableView* metaTable;
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* revokedKeywords;
-
+    IBOutlet NSTextField* sharedKeywords;
     
     IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
@@ -34,22 +34,29 @@
     vector<CloudsClip> currentMetaLinks;
 	
     CloudsFCPParser* parser;
+	
     testView* testViewParent;
 	
-	BOOL dontUpdateClips;
+	BOOL dontUpdateKeywords;
 }
 
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 
+
 - (void) setup;
-//- (void) playClip:(CloudsClip&) clip;
+
 - (void) updateTables;
 - (void) updateSelectedClips;
+- (void) updateSelectedClip;
+- (void) updateSharedKeywords;
+- (void) deselectCurrentClip;
 
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) specialKeywords:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
+
+
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 

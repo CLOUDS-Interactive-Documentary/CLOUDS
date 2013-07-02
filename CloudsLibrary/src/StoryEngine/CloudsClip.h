@@ -39,7 +39,7 @@ class CloudsClip {
 	vector<string>& getKeywords();
     
     //get special # keywords
-    vector<string> getSpecialKeywords();
+    vector<string>& getSpecialKeywords();
     
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);

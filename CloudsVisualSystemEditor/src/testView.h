@@ -35,6 +35,7 @@
 - (void)windowResized:(NSSize)size;
 
 -(IBAction) suppressClip:(id)sender;
+-(IBAction) unsuppressClip:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "ParticleConnectionGenerator.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
 
-class CloudsVisualSystemRGBD : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
 
 	string getSystemName();
