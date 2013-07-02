@@ -24,6 +24,7 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E726EED417836F3400B7D392 /* noise.frag in Sources */ = {isa = PBXBuildFile; fileRef = E726EED317836F3400B7D392 /* noise.frag */; };
 		E7365A581712FC0400AA89EC /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7365A541712FC0400AA89EC /* ofxGameCamera.cpp */; };
 		E7365A651712FD6A00AA89EC /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7365A5E1712FD6A00AA89EC /* tinyxml.cpp */; };
 		E7365A661712FD6A00AA89EC /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7365A601712FD6A00AA89EC /* tinyxmlerror.cpp */; };
@@ -45,7 +46,7 @@
 		E7365AB0171304DC00AA89EC /* default.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7365AA3171304DC00AA89EC /* default.vert */; };
 		E7365AB1171304DC00AA89EC /* displace.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AA4171304DC00AA89EC /* displace.frag */; };
 		E7365AB2171304DC00AA89EC /* displace.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7365AA5171304DC00AA89EC /* displace.vert */; };
-		E7365AB3171304DC00AA89EC /* gravity.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AA7171304DC00AA89EC /* gravity.frag */; };
+		E7365AB3171304DC00AA89EC /* ~gravity.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AA7171304DC00AA89EC /* ~gravity.frag */; };
 		E7365AB6171304DC00AA89EC /* integrate.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AAA171304DC00AA89EC /* integrate.frag */; };
 		E7365AB7171304DC00AA89EC /* 3 - bounce.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AAC171304DC00AA89EC /* 3 - bounce.frag */; };
 		E7365AB8171304DC00AA89EC /* 4 - sine.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7365AAD171304DC00AA89EC /* 4 - sine.frag */; };
@@ -57,7 +58,7 @@
 		E776C28C178252A7001D8CDC /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C27F178252A7001D8CDC /* Gravity.cpp */; };
 		E776C28D178252A7001D8CDC /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C281178252A7001D8CDC /* Points.cpp */; };
 		E776C290178252A7001D8CDC /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C287178252A7001D8CDC /* State.cpp */; };
-		E776C29217826414001D8CDC /* wind.frag in Sources */ = {isa = PBXBuildFile; fileRef = E776C29117826414001D8CDC /* wind.frag */; };
+		E776C29217826414001D8CDC /* ~wind.frag in Sources */ = {isa = PBXBuildFile; fileRef = E776C29117826414001D8CDC /* ~wind.frag */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -115,6 +116,7 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E726EED317836F3400B7D392 /* noise.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.frag; sourceTree = "<group>"; };
 		E7365A541712FC0400AA89EC /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		E7365A551712FC0400AA89EC /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		E7365A5E1712FD6A00AA89EC /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 		E7365AA3171304DC00AA89EC /* default.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vert; sourceTree = "<group>"; };
 		E7365AA4171304DC00AA89EC /* displace.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = displace.frag; sourceTree = "<group>"; };
 		E7365AA5171304DC00AA89EC /* displace.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = displace.vert; sourceTree = "<group>"; };
-		E7365AA7171304DC00AA89EC /* gravity.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gravity.frag; sourceTree = "<group>"; };
+		E7365AA7171304DC00AA89EC /* ~gravity.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = "~gravity.frag"; path = "../../../../../../../../../../../../../../~gravity.frag"; sourceTree = "<group>"; };
 		E7365AAA171304DC00AA89EC /* integrate.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = integrate.frag; sourceTree = "<group>"; };
 		E7365AAC171304DC00AA89EC /* 3 - bounce.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "3 - bounce.frag"; sourceTree = "<group>"; };
 		E7365AAD171304DC00AA89EC /* 4 - sine.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "4 - sine.frag"; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 		E776C282178252A7001D8CDC /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		E776C287178252A7001D8CDC /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		E776C288178252A7001D8CDC /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
-		E776C29117826414001D8CDC /* wind.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = wind.frag; sourceTree = "<group>"; };
+		E776C29117826414001D8CDC /* ~wind.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = "~wind.frag"; path = "../../../../../../../../../../../../../../~wind.frag"; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -473,8 +475,9 @@
 		E7365AA6171304DC00AA89EC /* forces */ = {
 			isa = PBXGroup;
 			children = (
-				E776C29117826414001D8CDC /* wind.frag */,
-				E7365AA7171304DC00AA89EC /* gravity.frag */,
+				E776C29117826414001D8CDC /* ~wind.frag */,
+				E726EED317836F3400B7D392 /* noise.frag */,
+				E7365AA7171304DC00AA89EC /* ~gravity.frag */,
 			);
 			path = forces;
 			sourceTree = "<group>";
@@ -615,7 +618,7 @@
 				E7365AB0171304DC00AA89EC /* default.vert in Sources */,
 				E7365AB1171304DC00AA89EC /* displace.frag in Sources */,
 				E7365AB2171304DC00AA89EC /* displace.vert in Sources */,
-				E7365AB3171304DC00AA89EC /* gravity.frag in Sources */,
+				E7365AB3171304DC00AA89EC /* ~gravity.frag in Sources */,
 				E7365AB6171304DC00AA89EC /* integrate.frag in Sources */,
 				E7365AB7171304DC00AA89EC /* 3 - bounce.frag in Sources */,
 				E7365AB8171304DC00AA89EC /* 4 - sine.frag in Sources */,
@@ -627,7 +630,8 @@
 				E776C28C178252A7001D8CDC /* Gravity.cpp in Sources */,
 				E776C28D178252A7001D8CDC /* Points.cpp in Sources */,
 				E776C290178252A7001D8CDC /* State.cpp in Sources */,
-				E776C29217826414001D8CDC /* wind.frag in Sources */,
+				E776C29217826414001D8CDC /* ~wind.frag in Sources */,
+				E726EED417836F3400B7D392 /* noise.frag in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

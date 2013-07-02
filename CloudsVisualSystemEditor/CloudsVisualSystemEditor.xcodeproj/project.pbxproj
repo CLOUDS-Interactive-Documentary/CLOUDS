@@ -27,6 +27,7 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E726EED8178387AA00B7D392 /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E726EED6178387AA00B7D392 /* CloudsVisualSystemVoro.cpp */; };
 		E73769B11778DC4500892646 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769231778DC4500892646 /* CloudsQuestion.cpp */; };
 		E73769B31778DC4500892646 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769271778DC4500892646 /* CloudsRGBDCombinedRender.cpp */; };
 		E73769B41778DC4500892646 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769291778DC4500892646 /* CloudsVisualSystemRGBD.cpp */; };
@@ -164,7 +165,10 @@
 		E73779B01778E03200892646 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E73779AE1778E03200892646 /* kiss_fft.c */; };
 		E73779B11778E03200892646 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E73779AF1778E03200892646 /* kiss_fftr.c */; };
 		E776C263177F7277001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */; };
-		E7AF9E15177CD414002CBBB6 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7AF9E13177CD414002CBBB6 /* CloudsVisualSystemWorld.cpp */; };
+		E78B3047178388E700D9B1E5 /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B303E178388E700D9B1E5 /* wPoint.cpp */; };
+		E78B3048178388E700D9B1E5 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B3040178388E700D9B1E5 /* wSatellite.cpp */; };
+		E78B3049178388E700D9B1E5 /* wSign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B3042178388E700D9B1E5 /* wSign.cpp */; };
+		E78B304A178388E700D9B1E5 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B3044178388E700D9B1E5 /* wStar.cpp */; };
 		E7C765AD177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C765AB177B51C700A58372 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
@@ -228,6 +232,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E726EED6178387AA00B7D392 /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
+		E726EED7178387AA00B7D392 /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
 		E73769231778DC4500892646 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E73769241778DC4500892646 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E73769271778DC4500892646 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
@@ -678,8 +684,14 @@
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
-		E7AF9E13177CD414002CBBB6 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
-		E7AF9E14177CD414002CBBB6 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
+		E78B303E178388E700D9B1E5 /* wPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wPoint.cpp; sourceTree = "<group>"; };
+		E78B303F178388E700D9B1E5 /* wPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wPoint.h; sourceTree = "<group>"; };
+		E78B3040178388E700D9B1E5 /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
+		E78B3041178388E700D9B1E5 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
+		E78B3042178388E700D9B1E5 /* wSign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSign.cpp; sourceTree = "<group>"; };
+		E78B3043178388E700D9B1E5 /* wSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSign.h; sourceTree = "<group>"; };
+		E78B3044178388E700D9B1E5 /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
+		E78B3045178388E700D9B1E5 /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		E7C765AB177B51C700A58372 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7C765AC177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
@@ -923,8 +935,8 @@
 				E73769551778DC4500892646 /* CloudsVisualSystem.cpp */,
 				E73769581778DC4500892646 /* CloudsVisualSystemAmber.h */,
 				E73769571778DC4500892646 /* CloudsVisualSystemAmber.cpp */,
-				E7AF9E13177CD414002CBBB6 /* CloudsVisualSystemWorld.cpp */,
-				E7AF9E14177CD414002CBBB6 /* CloudsVisualSystemWorld.h */,
+				E726EED7178387AA00B7D392 /* CloudsVisualSystemVoro.h */,
+				E726EED6178387AA00B7D392 /* CloudsVisualSystemVoro.cpp */,
 				E737695A1778DC4500892646 /* CloudsVisualSystemCities.h */,
 				E73769591778DC4500892646 /* CloudsVisualSystemCities.cpp */,
 				E7C765AC177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.h */,
@@ -1048,6 +1060,14 @@
 		E73769AC1778DC4500892646 /* World */ = {
 			isa = PBXGroup;
 			children = (
+				E78B303E178388E700D9B1E5 /* wPoint.cpp */,
+				E78B303F178388E700D9B1E5 /* wPoint.h */,
+				E78B3040178388E700D9B1E5 /* wSatellite.cpp */,
+				E78B3041178388E700D9B1E5 /* wSatellite.h */,
+				E78B3042178388E700D9B1E5 /* wSign.cpp */,
+				E78B3043178388E700D9B1E5 /* wSign.h */,
+				E78B3044178388E700D9B1E5 /* wStar.cpp */,
+				E78B3045178388E700D9B1E5 /* wStar.h */,
 				E73769AD1778DC4500892646 /* wParticle.cpp */,
 				E73769AE1778DC4500892646 /* wParticle.h */,
 			);
@@ -2209,8 +2229,12 @@
 				E73779B01778E03200892646 /* kiss_fft.c in Sources */,
 				E73779B11778E03200892646 /* kiss_fftr.c in Sources */,
 				E7C765AD177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
-				E7AF9E15177CD414002CBBB6 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E776C263177F7277001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */,
+				E726EED8178387AA00B7D392 /* CloudsVisualSystemVoro.cpp in Sources */,
+				E78B3047178388E700D9B1E5 /* wPoint.cpp in Sources */,
+				E78B3048178388E700D9B1E5 /* wSatellite.cpp in Sources */,
+				E78B3049178388E700D9B1E5 /* wSign.cpp in Sources */,
+				E78B304A178388E700D9B1E5 /* wStar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,8 @@ string CloudsVisualSystemVoro::getSystemName()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
-    background.load("",getDataPath()+"shaders/VisualSystems/Voro/cosmos.fs");
+//    background.load("",getDataPath()+"shaders/VisualSystems/Voro/cosmos.fs");
+    background.load("",getDataPath()+"shaders/VisualSystems/Voro/edgeDetection.fs");
     
 //    noiseDisplacement.load(getDataPath()+"shaders/VisualSystems/Voro/noiseDisplacement");
 //    noiseAmplitud = 0.0;
@@ -112,7 +113,7 @@ void CloudsVisualSystemVoro::selfDrawBackground()
 //    background.setUniform2f("mouse", xRot->getPos()*PI, yRot->getPos()*PI);
 //    background.setUniform2f("resolution", width, height);
 //    background.setUniform1f("starsAlpha", 0.5);
-//
+    
 //    glBegin(GL_QUADS);
 //    glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
 //    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
@@ -120,7 +121,7 @@ void CloudsVisualSystemVoro::selfDrawBackground()
 //    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
 //    glEnd();
 //    background.end();
-//    
+    
 //    ofPopStyle();
 }
 
@@ -194,17 +195,17 @@ void CloudsVisualSystemVoro::selfUpdate()
                       containerPeriodic,containerPeriodic,containerPeriodic,
                       1);
         
-        if (bSphere){
-            voro::wall_sphere sph(0, 0, 0, containerSize);
-            con.add_wall(sph);
-            bCyllinder = false;
-        }
-        
-        if (bCyllinder){
-			voro::wall_cylinder cyl(0,0,0,0,0,0, containerSize);
-            con.add_wall(cyl);
-            bSphere = false;
-        }
+//        if (bSphere){
+//            voro::wall_sphere sph(0, 0, 0, containerSize);
+//            con.add_wall(sph);
+//            bCyllinder = false;
+//        }
+//        
+//        if (bCyllinder){
+//			voro::wall_cylinder cyl(0,0,0,0,0,0, containerSize);
+//            con.add_wall(cyl);
+//            bSphere = false;
+//        }
         
         for(int i = 0; i < seedParticles.size(); i++){
             con.put(i, seedParticles[i]->x, seedParticles[i]->y, seedParticles[i]->z);
@@ -338,6 +339,7 @@ void CloudsVisualSystemVoro::selfDraw()
             }
         }
     }
+    
 //    noiseDisplacement.end();
     
     glDisable(GL_DEPTH_TEST);
@@ -345,6 +347,17 @@ void CloudsVisualSystemVoro::selfDraw()
     
     mat->end();
 }
+
+//void CloudsVisualSystemVoro::selfPostDraw(){
+//    background.begin();
+//    background.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+//    getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+//                                 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+//                                 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+//
+//    
+//    background.end();
+//}
 
 void CloudsVisualSystemVoro::billBoard()
 {
