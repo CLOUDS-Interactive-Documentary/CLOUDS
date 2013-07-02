@@ -8,8 +8,9 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "VoroParticle.h"
 #include "Voro.h"
+#include "VoroParticle.h"
+#include "vParticle.h"
 
 class CloudsVisualSystemVoro : public CloudsVisualSystem {
 public:
@@ -73,6 +74,14 @@ protected:
     
     bool    bDrawGlow;
     bool    bDrawNucles;
+    
+    //  Cosmic Dust Particles
+    //
+//    vector<vParticle*> particles;
+//    ofPoint globalOffset;
+//    float   nMaxPoints;
+//    float   density,gravity,repulsion;
+//    float   turbulence,neigbordhood,independence;
     
     //  Voronoi
     //
