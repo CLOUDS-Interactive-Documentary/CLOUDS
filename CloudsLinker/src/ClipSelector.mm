@@ -185,7 +185,7 @@
     //    [results sortUsingDescriptors:newDescriptors];
     //"results" is my NSMutableArray which is set to be the data source for the NSTableView object.
 //    [tableView reloadData];
-	[self updateTables];
+	[testViewParent updateViews];
 	
 }
 
@@ -193,13 +193,12 @@
 {
     if(aNotification.object == keywordTable){
 		[clipTable deselectAll:self];
-		
+		dontUpdateKeywords = true;
 		[self updateTables];
+		dontUpdateKeywords = false;
     }
     else if(aNotification.object == clipTable){
-
 		[self updateSelectedClip];
-		
     }
     else if(aNotification.object == linkTable){
 		
@@ -208,7 +207,6 @@
         }
         
         vector<CloudsClip>& searchClips = (selectedClips.size() == 0) ? parser->getAllClips() : selectedClips;
-        //CloudsClip& m = [self selectedClip];
         string targetClip = currentClipLinks[ linkTable.selectedRow ].targetName;
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){
@@ -325,10 +323,10 @@ completionsForSubstring:(NSString *)substring
 		parser->refreshAllKeywords();
 		
 		
-		[self updateTables];
-		[keywordTable reloadData];
+		[testViewParent updateViews];
 
-		[self updateSelectedClip];
+
+//		[self updateSelectedClip];
 
 		[self saveLinks:self];
 
@@ -352,7 +350,7 @@ completionsForSubstring:(NSString *)substring
     
 	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
 	
-	[self updateTables];
+	[testViewParent updateViews];
     [self saveLinks:self];
 }
 
@@ -366,7 +364,7 @@ completionsForSubstring:(NSString *)substring
 		parser->unsuppressConnection(linkSourceName, linkTargetName);
 		parser->addLink(linkSourceName, linkTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
 	}
 }
@@ -376,7 +374,7 @@ completionsForSubstring:(NSString *)substring
     if(linkTable.selectedRow >= 0 && [self isClipSelected]){
         parser->removeLink( [self selectedClip].getLinkName(), linkTable.selectedRow );
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
     }
 }
@@ -386,7 +384,7 @@ completionsForSubstring:(NSString *)substring
     if(suppressedTable.selectedRow >= 0 && [self isClipSelected]){
         parser->unsuppressConnection( [self selectedClip].getLinkName(), suppressedTable.selectedRow);
 		
-		[self updateTables];
+		[testViewParent updateViews];
 		[self saveLinks:self];
     }
 }
@@ -403,7 +401,7 @@ completionsForSubstring:(NSString *)substring
         parser->removeLink(suppressSourceName, suppressTargetName);
 		parser->suppressConnection(suppressSourceName, suppressTargetName);
 				
-		[self updateTables];
+		[testViewParent updateViews];
         [self saveLinks:self];
     }
 }
@@ -417,7 +415,7 @@ completionsForSubstring:(NSString *)substring
 		parser->removeLink(suppressSourceName, suppressTargetName);
 		parser->suppressConnection(suppressSourceName, suppressTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
         [self saveLinks:self];
 	}
 }
@@ -432,7 +430,8 @@ completionsForSubstring:(NSString *)substring
 		parser->unsuppressConnection(suppressSourceName, suppressTargetName);
 		parser->addLink(suppressSourceName, suppressTargetName);
 		
-		[self updateTables];
+		[testViewParent updateViews];
+		
         [self saveLinks:self];
 	}
 }
@@ -440,7 +439,7 @@ completionsForSubstring:(NSString *)substring
 - (IBAction) showQuestionsChanged:(id)sender
 {
 
-	[self updateTables];
+	[testViewParent updateViews];
 }
 
 - (bool) isClipSelected
@@ -459,8 +458,8 @@ completionsForSubstring:(NSString *)substring
 	[self updateSelectedClips];
 	[self updateSelectedClip];
 	
-	if(!dontUpdateClips) [clipTable reloadData];
-
+	[clipTable reloadData];
+	if(!dontUpdateKeywords) [keywordTable reloadData];
 }
 
 - (void) updateSelectedClips

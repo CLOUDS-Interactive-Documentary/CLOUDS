@@ -34,13 +34,15 @@
     vector<CloudsClip> currentMetaLinks;
 	
     CloudsFCPParser* parser;
+	
     testView* testViewParent;
 	
-	BOOL dontUpdateClips;
+	BOOL dontUpdateKeywords;
 }
 
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
+
 
 - (void) setup;
 //- (void) playClip:(CloudsClip&) clip;

@@ -37,7 +37,14 @@
     
 }
 
--(IBAction)stopPreview:(id)sender
+
+- (void) updateViews
+{
+	[linkerA updateTables];
+	[linkerB updateTables];
+}
+
+- (IBAction)stopPreview:(id)sender
 {
     preview.stop();
 }
@@ -74,14 +81,11 @@
 			preview.stop();
 		}
 	}
-    
 }
 
 - (void)draw
 {
-    
 	ofBackground(0);
-	
     if(preview.isLoaded()){
 		ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
 		ofRectangle videoRect(0,0,1920,1080);
@@ -90,8 +94,7 @@
         preview.draw(videoRect);
 		
 		font.drawString(currentPlayingClip.getLinkName() + "\n" + ofJoinString(currentPlayingClip.getKeywords(), ", "), 10, ofGetHeight() - font.getLineHeight()*2 - 10);
-    }
-	
+    }	
 }
 
 - (void) exit

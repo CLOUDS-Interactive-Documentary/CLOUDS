@@ -43,6 +43,8 @@
 
 - (void) playClip:(CloudsClip&)clip;
 
+- (void) updateViews;
+
 - (IBAction) setXMLFolder:(id)sender;
 - (IBAction) refreshXML:(id)sender;
 - (IBAction) saveLinks:(id)sender;
