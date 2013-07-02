@@ -46,10 +46,12 @@
 //- (void) playClip:(CloudsClip&) clip;
 - (void) updateTables;
 - (void) updateSelectedClips;
+- (void) updateSelectedClip;
 
 - (IBAction) saveLinks:(id)sender;
 - (IBAction) specialKeywords:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
+
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 

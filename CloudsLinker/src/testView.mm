@@ -111,12 +111,12 @@
 //	gui->loadSettings("settings.xml");
 //	gui->disable();
     
+    linkerA.testViewParent = self;
+    linkerB.testViewParent = self;
     linkerA.parser = &parser;
     linkerB.parser = &parser;
 	[linkerA setup];
     [linkerB setup];
-    linkerA.testViewParent = self;
-    linkerB.testViewParent = self;
     
 //	exporter.saveGephiCSV(parser);
     
@@ -726,21 +726,23 @@
 {
     //    parser.setup("xml");
     //    parser.parseLinks("clouds_link_db.xml");
-	
-	if(ofDirectory("../../../CloudsData/").exists()){
-		parser.setup("../../../CloudsData/fcpxml/");
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-        parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-        cout << "USING CLOUDS DATA DIRECTORY" << endl;
 
-	}
-	else{
-		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.setup("xml");
-		parser.parseLinks("clouds_link_db.xml");
-        parser.parseClusterMap("CLOUDS_test_5_26_13.SVG");
-	}
-    
+	parser.loadFromFiles();
+	
+//	if(ofDirectory("../../../CloudsData/").exists()){
+//		parser.setup("../../../CloudsData/fcpxml/");
+//		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+//        parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+//        cout << "USING CLOUDS DATA DIRECTORY" << endl;
+//
+//	}
+//	else{
+//		cout << "SETTING UP IN DATA DIRECTORY" << endl;
+//		parser.setup("xml");
+//		parser.parseLinks("clouds_link_db.xml");
+//        parser.parseClusterMap("CLOUDS_test_5_26_13.SVG");
+//	}
+//    
     //    parser.parseLinks("../../../CloudsLibrary/data/links/clouds_link_db.xml");
     
 //    [keywordTableSource reloadData];

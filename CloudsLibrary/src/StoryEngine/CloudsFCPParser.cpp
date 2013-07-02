@@ -9,7 +9,6 @@
 #include "CloudsFCPParser.h"
 
 CloudsFCPParser::CloudsFCPParser(){
-    keywordsDirty = false;
     sortedByOccurrence = false;
 	backupTimeInterval = 60*2;
 	lastBackupTime = -backupTimeInterval;
@@ -21,12 +20,9 @@ void CloudsFCPParser::loadFromFiles(){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-
-
 	}
 	else{
 		setup("xml");
-
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
 
@@ -37,10 +33,10 @@ void CloudsFCPParser::setup(string directory){
     xmlDirectory = directory;
     refreshXML();
 	
-    map<string, int>::iterator it;
-    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-        //        cout << it->first << ": " << it->second << endl;
-    }
+//    map<string, int>::iterator it;
+//    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
+//        //        cout << it->first << ": " << it->second << endl;
+//    }
 }
 
 void CloudsFCPParser::refreshXML(){
@@ -67,6 +63,7 @@ void CloudsFCPParser::refreshXML(){
             addXMLFile( dir.getPath(i) );
         }
     }
+	
     refreshAllKeywords();
 }
 
@@ -168,10 +165,11 @@ void CloudsFCPParser::parseLinks(string linkFile){
 		
 		string clipName = linksXML.getValue("name", "");
 		int numLinks = linksXML.getNumTags("link");
-		int startQuestion = linksXML.getNumTags("startingQuestion");
 		int numSuppressed = linksXML.getNumTags("suppress");
 		int numRevoked = linksXML.getNumTags("revokedKeywords");
 		int numAdditional = linksXML.getNumTags("additionalKeywords");
+		int startQuestion = linksXML.getNumTags("startingQuestion");
+		
 		if(numLinks > 0){
 			for(int l = 0; l < numLinks; l++){
 				CloudsLink newLink;
@@ -184,11 +182,22 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				
 				linksXML.popTag(); //link
 				
+				if(!hasClipWithLinkName(newLink.sourceName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which linked to \"" + newLink.targetName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				if(!hasClipWithLinkName(newLink.targetName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was linked from \"" + newLink.sourceName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
 				linkedConnections[newLink.sourceName].push_back( newLink );
 			}
 		}
 		
-        
 		if(numSuppressed > 0){
 			for(int l = 0; l < numSuppressed; l++){
 				CloudsLink newLink;
@@ -201,8 +210,20 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				
 				linksXML.popTag();//suppress
                 
+				if(!hasClipWithLinkName(newLink.sourceName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which was suppressed from \"" + newLink.targetName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				if(!hasClipWithLinkName(newLink.targetName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was suppressed from \"" + newLink.sourceName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				
 				suppressedConnections[newLink.sourceName].push_back( newLink );
-                
 			}
 		}
 		
@@ -220,27 +241,26 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			}
 		}
         
-        if(numRevoked>0){
+		//add revoked and additional keywords
+        if(numRevoked > 0){
             string revokedKeywordsString = linksXML.getValue("revokedKeywords", "");
             vector<string> revokedKeywords = ofSplitString(revokedKeywordsString, ",");
             CloudsClip& c = getClipWithLinkName(clipName);
-             revokedKeywords;
-            for(int i=0; i<revokedKeywords.size();i++){
+
+            for(int i = 0; i < revokedKeywords.size(); i++){
                 c.revokeKeyword(revokedKeywords[i]);
             }
         }
         
-        if(numAdditional>0){
+        if(numAdditional > 0){
             string additionalKeywordsString = linksXML.getValue("additionalKeywords", "");
             vector<string> additionalKeywords = ofSplitString(additionalKeywordsString, ",");
             CloudsClip& c = getClipWithLinkName(clipName);
-            additionalKeywords;
-            for(int i=0; i<additionalKeywords.size();i++){
+
+            for(int i = 0; i < additionalKeywords.size(); i++){
                 c.addKeyword(additionalKeywords[i]);
             }
         }
-
-        //add revoked and additional keywords
         
 		linksXML.popTag(); //clip
 	}
@@ -249,7 +269,8 @@ void CloudsFCPParser::parseLinks(string linkFile){
     for(int i = 0; i < allClips.size();i++){
         reciprocateSuppressions(allClips[i]);
     }
-	
+
+	refreshAllKeywords();
 }
 
 void CloudsFCPParser::saveLinks(string linkFile){
@@ -279,7 +300,6 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		bool hasRevokedKeywords = clipHasRevokedKeywords(allClips[i]);
         bool hasAdditionalKeywords = clipHasAdditionalKeywords(allClips[i]);
         
-//        cout<<
         if(hasLink || hasSuppressed || hasStartingQuestion || hasRevokedKeywords || hasAdditionalKeywords){
 			
 			linksXML.addTag("clip");
@@ -613,10 +633,13 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         }
         fcpXML.popTag(); //marker
     }
-    
-    keywordsDirty = true;
 }
+
 void CloudsFCPParser::refreshAllKeywords(){
+	
+	allKeywords.clear();
+	keywordVector.clear();
+	
     for(int i = 0; i < allClips.size(); i++){
 
         vector<string>& newKeywords = allClips[i].getKeywords();
@@ -627,6 +650,14 @@ void CloudsFCPParser::refreshAllKeywords(){
                 allKeywords[newKeywords[k]]++;
             }
         }
+    }
+
+    map<string, int>::iterator it;
+    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
+		if(it->first == "absraction"){
+			ofLogError() << "ADDING " << it->first << endl;
+		}
+        keywordVector.push_back(it->first);
     }
 }
 
@@ -681,6 +712,14 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 	else {
 		return allClips[ ofRandom(allClips.size())];
 	}
+}
+
+bool CloudsFCPParser::hasClipWithLinkName(string linkname){
+	return clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end();
+}
+
+bool CloudsFCPParser::hasClipWithID(string ID){
+	return clipIDToIndex.find(ID) != clipIDToIndex.end();
 }
 
 CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
@@ -752,7 +791,8 @@ void CloudsFCPParser::populateKeyThemes(set<string>& themes){
 	//search through all tags to find the shortest path to key
 	tagToKeyTheme.clear();
 	
-	getAllKeywords();
+	//refreshKeywordVector();
+	refreshAllKeywords();
 	
 	for(int i = 0; i < keywordVector.size(); i++){
         
@@ -806,9 +846,6 @@ string CloudsFCPParser::getKeyThemeForTag(string tag){
 }
 
 vector<string>& CloudsFCPParser::getAllKeywords(){
-    if(keywordsDirty){
-        refreshKeywordVector();
-    }
     return keywordVector;
 }
 
@@ -1000,14 +1037,8 @@ vector<string> CloudsFCPParser::getSharedKeywords(CloudsClip& a, CloudsClip& b){
 	return sharedKeywords;
 }
 
-void CloudsFCPParser::refreshKeywordVector(){
-    keywordVector.clear();
-    map<string, int>::iterator it;
-    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-        keywordVector.push_back(it->first);
-    }
-    keywordsDirty = false;
-}
+//void CloudsFCPParser::refreshKeywordVector(){
+//}
 
 bool CloudsFCPParser::operator()(const string& a, const string& b){
     if(sortedByOccurrence){
