@@ -410,19 +410,27 @@ void CloudsFCPParser::suppressConnection(CloudsLink& link){
 	
 	//reciprocate the suppression
     if(!linkIsSuppressed(link.targetName, link.sourceName)){
+		
+		// remove any existing link the other way
+		if(clipLinksTo(link.targetName,link.sourceName)){
+			removeLink(link.targetName,link.sourceName);
+			cout<<"Link being removed from "<< link.targetName<<" and "<<link.sourceName<<
+			" in suppressConnection function"<< endl;
+		}
+		
         CloudsLink swap = link;
         swap.targetName = link.sourceName;
         swap.sourceName = link.targetName;
         suppressedConnections[link.targetName].push_back(swap);
     }
-}
+} 
 
 void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
+	
 	if(clipHasSuppressions(linkName)){
 		int linkIndex;
 		if(linkIsSuppressed(linkName, targetName, linkIndex)){
 			cout << "Unsuppressed connection " << linkName << " >> " << targetName << endl;
-			//suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
             unsuppressConnection(linkName, linkIndex);
 		}
         else {
@@ -432,6 +440,7 @@ void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
 }
 
 void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
+	
 	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
 		
         cout << "Unsuppressed connection " << linkName << " >> " << linkIndex << endl;
@@ -880,7 +889,9 @@ void CloudsFCPParser::addLink(CloudsClip& source, CloudsClip& target){
 
 void CloudsFCPParser::addLink(CloudsLink& link){
     
-    unsuppressConnection(link);
+	if(linkIsSuppressed(link.sourceName, link.targetName)){
+		unsuppressConnection(link);
+	}
     
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
 		linkedConnections[link.sourceName].push_back( link );
