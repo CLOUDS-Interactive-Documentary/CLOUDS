@@ -59,6 +59,8 @@
 		E7637D651734DE8A008ADC62 /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */; };
 		E7637D671734DE8A008ADC62 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D631734DE8A008ADC62 /* CloudsRGBDCombinedRender.cpp */; };
 		E7637D8E17359C55008ADC62 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D8C17359C55008ADC62 /* CloudsVisualSystem.cpp */; };
+		E776C2691781D872001D8CDC /* CloudsVisualSystemHiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C2671781D872001D8CDC /* CloudsVisualSystemHiga.cpp */; };
+		E776C26E1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C26C1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.cpp */; };
 		E7770402177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7770400177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E779B955173D4DD2006357EF /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779B8FF173D4DD2006357EF /* Calibration.cpp */; };
 		E779B956173D4DD2006357EF /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779B900173D4DD2006357EF /* ContourFinder.cpp */; };
@@ -345,6 +347,11 @@
 		E763800617359DF5008ADC62 /* ofxUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWaveform.h; sourceTree = "<group>"; };
 		E763800717359DF5008ADC62 /* ofxUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWidget.h; sourceTree = "<group>"; };
 		E763800817359DF5008ADC62 /* ofxUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWidgetWithLabel.h; sourceTree = "<group>"; };
+		E776C2671781D872001D8CDC /* CloudsVisualSystemHiga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemHiga.cpp; sourceTree = "<group>"; };
+		E776C2681781D872001D8CDC /* CloudsVisualSystemHiga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemHiga.h; sourceTree = "<group>"; };
+		E776C26B1781D880001D8CDC /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
+		E776C26C1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
+		E776C26D1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770400177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7770401177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E779B8F5173D4DD2006357EF /* Calibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibration.h; sourceTree = "<group>"; };
@@ -1000,6 +1007,10 @@
 		E7637D511734DE75008ADC62 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E776C26C1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.cpp */,
+				E776C26D1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.h */,
+				E776C2671781D872001D8CDC /* CloudsVisualSystemHiga.cpp */,
+				E776C2681781D872001D8CDC /* CloudsVisualSystemHiga.h */,
 				E7770400177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.cpp */,
 				E7770401177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.h */,
 				E7637D8D17359C55008ADC62 /* CloudsVisualSystem.h */,
@@ -1020,6 +1031,7 @@
 				E74CE8301768ECEA00083C4C /* CloudsVisualSystemVoro.cpp */,
 				E7637D591734DE75008ADC62 /* CloudsVisualSystemComputationTicker.h */,
 				E7637D581734DE75008ADC62 /* CloudsVisualSystemComputationTicker.cpp */,
+				E776C26A1781D880001D8CDC /* Replecator */,
 				E7D2FEC517572B2C0083EB8E /* ConnectorParticles */,
 				E74CE8821768EEB400083C4C /* Voro */,
 				E7D330C41751DDE2006706ED /* LSystems */,
@@ -1102,6 +1114,14 @@
 				E763800817359DF5008ADC62 /* ofxUIWidgetWithLabel.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E776C26A1781D880001D8CDC /* Replecator */ = {
+			isa = PBXGroup;
+			children = (
+				E776C26B1781D880001D8CDC /* Replecator.h */,
+			);
+			path = Replecator;
 			sourceTree = "<group>";
 		};
 		E779B6AB173D4DC8006357EF /* ofxCv */ = {
@@ -2122,6 +2142,8 @@
 				E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */,
 				E73779BE177A1C4200892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E7770402177BD720009CB7AD /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
+				E776C2691781D872001D8CDC /* CloudsVisualSystemHiga.cpp in Sources */,
+				E776C26E1781D8AD001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

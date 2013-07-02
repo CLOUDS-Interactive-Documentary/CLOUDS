@@ -26,18 +26,18 @@
         }
 		
         currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
-
+        
         currentVisualSystem->playSystem();
         currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
 		
-        shouldPlaySelectedRow = false;     
-    }        
+        shouldPlaySelectedRow = false;
+    }
     ofShowCursor();
 }
 
 - (void)draw
 {
-
+    
 }
 
 - (void)exit
@@ -79,7 +79,25 @@
 {
 	
 }
+-(IBAction) unsuppressClip:(id)sender{
+    if(clipTable.selectedRow>=0){
+        visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        
+        [clipTable reloadData];
+    }
+}
 
+-(IBAction)suppressClip:(id)sender{
+    if(clipTable.selectedRow>=0){
+        
+        visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
+        
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        
+        [clipTable reloadData];
+    }
+}
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	if(aTableView == presetTable){
@@ -102,15 +120,28 @@
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
 			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
 		}
+
 	}
 	else if(aTableView == clipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: associatedClips[rowIndex].getLinkName().c_str() ];
 		}
 		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].keywords
+			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
+        else if( [@"Suppressed" isEqualToString:aTableColumn.identifier] ){
+            if( visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[rowIndex].getLinkName())){
+                string str = "Yes";
+                return [NSString stringWithUTF8String:str.c_str()];
+            }
+            else{
+                string str = "No";
+                return [NSString stringWithUTF8String:str.c_str()];
+                
+            }
+            
+        }
 	}
 }
 
@@ -175,9 +206,9 @@ completionsForSubstring:(NSString *)substring
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 		[clipTable reloadData];
-		[presetTable reloadData];	
+		[presetTable reloadData];
 	}
-
+    
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
@@ -190,15 +221,15 @@ completionsForSubstring:(NSString *)substring
 		[clipTable reloadData];
 		[presetTable reloadData];
 	}
-
-//	[self updateAssociatedClips];
+    
+    //	[self updateAssociatedClips];
 	
-//	if(presetTable.selectedRow >= 0){
-//		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-//		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-//		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-//		[clipTable reloadData];	
-//	}
+    //	if(presetTable.selectedRow >= 0){
+    //		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
+    //		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
+    //		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+    //		[clipTable reloadData];
+    //	}
 	
 	return tokens;
 }

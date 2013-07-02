@@ -326,12 +326,12 @@
 			children = (
 				18142707176629EE00C2B5FE /* ClusterData.h */,
 				18142706176629ED00C2B5FE /* ClusterData.cpp */,
+				E7637D751734DEF7008ADC62 /* CloudsLink.h */,
+				E7637D741734DEF7008ADC62 /* CloudsLink.cpp */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
 				E7637D6D1734DEF7008ADC62 /* CloudsClip.cpp */,
-				E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D711734DEF7008ADC62 /* CloudsFCPParser.h */,
-				E7637D741734DEF7008ADC62 /* CloudsLink.cpp */,
-				E7637D751734DEF7008ADC62 /* CloudsLink.h */,
+				E7637D701734DEF7008ADC62 /* CloudsFCPParser.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";

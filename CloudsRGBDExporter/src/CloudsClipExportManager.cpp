@@ -52,13 +52,18 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	rgbdPlayer.setUseTexture(false);
 	
 	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << " ALT FOLDER " << alternativeVideoFolder << endl;
-	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder );
+	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder, true );
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load scene";
 		done = true;
 		return;
 	}
-	
+	if(!rgbdPlayer.alternativeVideoIsConfirmed()){
+		ofLogError() << "Movie file in " << alternativeVideoFolder << " does not have the same number of frames as " << currentClip.sourceVideoFilePath << endl;
+		done = true;
+		return;
+		
+	}
 	renderer.cacheValidVertices = true;
 	renderer.setup(rgbdPlayer.getScene().calibrationFolder);
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
@@ -132,9 +137,9 @@ void CloudsClipExportManager::threadedFunction(){
 	//exporter.writeMetaFile(outputDirectory, &renderer);
 	
 	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
-	
+	int lastFrame = currentFrame;
 	bool completedClip = false;
-	while( isThreadRunning() && currentFrame <= currentClip.endFrame + 24 ){ //24 frame handle
+	while( isThreadRunning() && !completedClip ){ //24 frame handle
 		
 		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
@@ -147,10 +152,18 @@ void CloudsClipExportManager::threadedFunction(){
 
 		rgbdPlayer.getVideoPlayer()->nextFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
-		
-		if(currentFrame > currentClip.endFrame){
+
+        if(lastFrame == currentFrame){
+            exporter.log += "Frame stuck on " + ofToString(currentFrame) + "\n";
+        	completedClip = true;
+        }
+        
+		if(currentFrame > currentClip.endFrame + 24){
+            exporter.log += "Export completed successfully \n";
 			completedClip = true;
 		}
+        
+        lastFrame = currentFrame;
 		ofSleepMillis(10);
 	}
 	
@@ -159,6 +172,10 @@ void CloudsClipExportManager::threadedFunction(){
 		
 	}
 	ofBuffer logFileBuf(exporter.log);
-	ofBufferToFile(outputDirectory + "/" + currentClip.getID() + "_log.txt", logFileBuf);
+    string logFilePath = outputDirectory + "/" + currentClip.getID() + "_log.txt";
+    cout << "Saving log to " << logFilePath << endl;
+    
+	ofBufferToFile(logFilePath, logFileBuf);
+    
 	done = true;
 }

@@ -40,13 +40,10 @@ class CloudsVisualSystemHiga : public CloudsVisualSystem {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
-	
-	vector<ofNode> testNodeExamples;
 
 	ofxUISuperCanvas *replecatorGui, *drawerGui;
 	
 	Replecator repl;
-	
 	bool regenerate;
 };
 

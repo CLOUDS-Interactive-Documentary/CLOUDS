@@ -17,7 +17,7 @@ CloudsClip::CloudsClip(){
 	adjustmentLoaded = false;
 	minDepth = 400;
 	maxDepth = 1200;
-
+    keywordsDirty = true;
     
 }
 
@@ -43,6 +43,12 @@ void CloudsClip::setStartingQuestion(string question){
 }
 bool CloudsClip::hasStartingQuestion(){
     return !startingQuestion.empty();
+}
+bool CloudsClip::hasAdditionalKeywords(){
+    return !additionalKeywords.empty();
+}
+bool CloudsClip::hasRevokedKeywords(){
+    return !revokedKeywords.empty();
 }
 string CloudsClip::getMetaInfo(){
 	return clip + ": [" + ofToString(startFrame) + ", " + ofToString(endFrame) + "] fcp id: " + fcpFileId;
@@ -110,11 +116,116 @@ string CloudsClip::getAdjustmentXML(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory( ofFilePath::removeExt(relinkFilePath(sourceVideoFilePath)) )) + "adjustment.xml";
 }
 
+vector<string>& CloudsClip::getOriginalKeywords(){
+    return originalKeywords;
+}
+vector<string>& CloudsClip::getAdditionalKeywords(){
+    return additionalKeywords;
+}
+vector<string>& CloudsClip::getRevokedKeywords(){
+    return revokedKeywords;
+}
+
+vector<string>& CloudsClip::getKeywords(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return keywords;
+}
+vector<string>& CloudsClip::getSpecialKeywords(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return specialKeywords;
+}
+
+void CloudsClip::collateKeywords(){
+    
+    keywords = originalKeywords;
+    specialKeywords.clear();
+    
+    //go through and remove revoked keywords
+    for (int k = 0; k<revokedKeywords.size(); k++) {
+        if(ofContains(keywords, revokedKeywords[k])){
+            keywords.erase(keywords.begin()+ofFind(keywords, revokedKeywords[k]));
+            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
+        }
+    }
+    
+    //go through and add additional
+    for (int l =0; l<additionalKeywords.size(); l++) {
+        //Returns 0 if they compare equal
+        if (! ofContains(keywords, additionalKeywords[l]) ){
+            keywords.push_back(additionalKeywords[l]);
+            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
+        }
+    }
+    
+    //remove special keywords from keywords -> specialKeywords
+    for (int l = keywords.size() - 1 ; l>=0; l--) {
+        if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
+            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
+            specialKeywords.push_back(keywords[l]);
+            keywords.erase(keywords.begin()+l);
+
+        }
+    }
+    keywordsDirty = false;
+}
+
+void CloudsClip::setOriginalKeywords(vector<string>& keywords){
+    originalKeywords = keywords;
+	keywordsDirty = true;
+}
+
+void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
+    additionalKeywords.clear();
+    revokedKeywords.clear();
+    
+    //find all the keywords not in the original list (additonal)
+    for(int i= 0; i<desiredKeywords.size();i++){
+        
+        //Check to see if its a special keyword
+        if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
+            cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
+            addKeyword(desiredKeywords[i]);
+        }
+    }
+    
+    //find all the keywords missing from the original list (rvoked)
+    for(int i=0; i < originalKeywords.size() ; i++){
+        if(! ofContains(desiredKeywords, originalKeywords[i])&&! ofContains(revokedKeywords, originalKeywords[i])){
+            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
+            revokeKeyword(originalKeywords[i]);
+        }
+    }
+    keywordsDirty =true;
+}
+
+void CloudsClip::addKeyword(string keyword){
+    
+    if(!ofContains(additionalKeywords, keyword) &&
+       !ofContains(originalKeywords, keyword))
+    {
+        additionalKeywords.push_back(keyword);
+        keywordsDirty = true;
+    }
+}
+
+void CloudsClip::revokeKeyword(string keyword){
+    if(!ofContains(revokedKeywords, keyword) &&
+       ofContains(originalKeywords, keyword))
+    {
+        revokedKeywords.push_back(keyword);
+        keywordsDirty = true;
+    }
+}
+
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
     
-//	if(adjustmentLoaded && !forceReload){
-//		return;
-//	}
+    //	if(adjustmentLoaded && !forceReload){
+    //		return;
+    //	}
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
@@ -132,7 +243,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	adjustScale.x = adjustmentSettings.getValue("adjustment:scale:x", 1.);
 	adjustScale.y = adjustmentSettings.getValue("adjustment:scale:y", 1.);
 	
-
+    
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
@@ -146,7 +257,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
 						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
 	
-						   
+    
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -183,7 +294,7 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("min", minDepth);
 	alignmentSettings.addValue("max", maxDepth);
 	alignmentSettings.popTag();
-
+    
 	alignmentSettings.addTag("extraction");
 	alignmentSettings.pushTag("extraction");
 	alignmentSettings.addValue("colorr", contourTargetColor.r);
@@ -198,7 +309,7 @@ void CloudsClip::saveAdjustmentToXML(){
 	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
-
+    
 	alignmentSettings.popTag(); //adjustment
 	
 	alignmentSettings.saveFile(getAdjustmentXML());
@@ -208,22 +319,28 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
-
 //--------------------------------------------------------------------
 string CloudsClip::relinkFilePath(string filePath){
 	
+	vector<string> drives;
+	
+	drives.push_back("Seance");
+	drives.push_back("Nebula");
+	drives.push_back("Supernova");
+	drives.push_back("Nebula_helper");
+    
 	if( !ofFile(filePath).exists() ){
-		//		cout << "Switched clip from " << clipFilePath;
-        if(ofFile::doesFileExist("/Volumes/Seance/")){
-            ofStringReplace(filePath, "Nebula_backup", "Seance");
-            ofStringReplace(filePath, "Nebula", "Seance");
-        }
-        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
-            ofStringReplace(filePath, "Nebula_backup", "Nebula_helper");
-            ofStringReplace(filePath, "Nebula", "Nebula_helper");
-        }
-        
-        //		cout << " to " << clipFilePath << endl;
+		for(int i = 0; i < drives.size(); i++){
+			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
+				for(int j = 0; j < drives.size(); j++){
+					if(j != i){
+						ofStringReplace(filePath, drives[j], drives[i]);
+					}
+				}
+				break;
+			}
+		}
 	}
+	
 	return filePath;
 }

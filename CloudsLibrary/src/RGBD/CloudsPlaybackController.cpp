@@ -113,8 +113,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 		return;
 	}
-	
 	//END SIMPLE MODE
+	
 	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
 		rgbdVisualSystem.speakerEnded();
 		storyEngine->clipEnded();
@@ -124,8 +124,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 	if(simplePlaybackMode){
-		storyEngine->drawStoryEngineDebug();
-		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
+		storyEngine->drawActDebug();
+//		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
 	}
 }
 
@@ -146,8 +146,7 @@ void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 	
 	//this has to draw last
 	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	
+	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);	
 }
 
 //--------------------------------------------------------------------

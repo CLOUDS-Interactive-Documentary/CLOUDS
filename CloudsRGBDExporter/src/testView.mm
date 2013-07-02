@@ -345,9 +345,12 @@
 	if(clipTable.selectedRow >= 0){
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
-		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]));
+		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);
 		
 		if(player.setup(clip.getSceneFolder())){
+			if(!player.alternativeVideoIsConfirmed()){
+				ofSystemAlertDialog("Error confirming altenrative clip " + clip.getSceneFolder() );
+			}
 			showHistogram = false;
 			calculatedHistogram = false;
 			histogram.clear();
@@ -524,6 +527,10 @@
 
 	if([@"clip" isEqualToString:aTableColumn.identifier]){
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+	}
+	if([@"frames" isEqualToString:aTableColumn.identifier]){
+		string frameDescriptor = "[ " + ofToString(parser.getAllClips()[rowIndex].startFrame) + " - " + ofToString(parser.getAllClips()[rowIndex].endFrame) + " ]";
+		return [NSString stringWithUTF8String: frameDescriptor.c_str() ];
 	}
 	else if([@"align" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getAdjustmentXML()) ? @"YES" : @"NO";

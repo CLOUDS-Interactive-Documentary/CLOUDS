@@ -49,7 +49,7 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		CloudsClip& clipA = parser.getAllClips()[i];
 		string nameA = clipA.getLinkName();
-		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.keywords);
+		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.getKeywords());
 		for(int j = 0; j < connections.size(); j++){
 			CloudsClip& clipB = connections[j];
 			string nameB = connections[j].getLinkName();

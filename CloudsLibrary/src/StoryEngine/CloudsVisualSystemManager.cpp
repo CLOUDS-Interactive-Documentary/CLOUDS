@@ -13,7 +13,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemHiga.h"
-
+#include "CloudsVisualSystemForkingPaths.h"
 #endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
@@ -30,16 +30,17 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
-	registerVisualSystem( new CloudsVisualSystemVoro() );
-	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+//	registerVisualSystem( new CloudsVisualSystemVoro() );
+//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
-	registerVisualSystem( new CloudsVisualSystemVerletForm() );
+//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );	
+//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemHiga() );
+	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
-//	registerVisualSystem( new CloudsVisualSystemAmber() );
+    //	registerVisualSystem( new CloudsVisualSystemAmber() );
 #endif
     
 }
@@ -97,7 +98,17 @@ void CloudsVisualSystemManager::loadPresets(){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
 		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-		keywordXml.popTag(); //system
+		
+		if(keywordXml.tagExists("suppressions")){
+			keywordXml.pushTag("suppresions");
+			int numSuppresions = keywordXml.getNumTags("clip");
+			for(int i=0; i<numSuppresions;i++){
+				suppressedClips[name].push_back(keywordXml.getValue("clip", "", i));
+			}
+			keywordXml.popTag(); //suppressions
+		}
+		
+        keywordXml.popTag(); //system
 	}
 	
 #endif
@@ -135,6 +146,13 @@ void CloudsVisualSystemManager::saveKeywords(){
 		
 		keywordXml.pushTag("system",systemIndex);
 		keywordXml.addValue("keywords", keywordString);
+        keywordXml.addTag("suppresions");
+        keywordXml.pushTag("suppresions");
+        vector<string>& clips =  getSuppressionsForPreset(presetName);
+        for (int i =0; i<clips.size(); i++) {
+            keywordXml.addValue("clip",clips[i]);
+        }
+        keywordXml.popTag();//suppressions
 		keywordXml.popTag();
 		
 		systemIndex++;
@@ -173,7 +191,59 @@ vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPr
 	
 	return keywords[ preset.getID() ];
 }
+void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
+    if( ! isClipSuppressed(presetID,clipName)){
+        suppressedClips[presetID].push_back(clipName);
+        cout<<"Suppressed Clip: "<<clipName<<" for Visual System: "<<presetID<<endl;
+    }
+    
+    
+}
 
+void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
+    int suppressionIndex;
+    if(isClipSuppressed( presetID, clip,suppressionIndex)){
+        cout<<"Unsuppressing connection for Preset: "<<presetID<<" and "<<clip<<endl;
+        unsuppressClip(presetID, suppressionIndex);
+    }
+    else{
+        cout<<"Suppression not found for Preset: "<<presetID<<" and "<<clip<<endl;
+    }
+    
+}
+
+void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
+    if(suppressedClips.find(presetID) != suppressedClips.end()){
+    suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
+    }
+    else{
+        ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
+    }
+    
+}
+
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
+    int deadIndex;
+    return isClipSuppressed(presetID, clip,deadIndex);
+}
+
+
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, int& index){
+    vector<string>& clips = suppressedClips[presetID];
+    for(int i=0;i<clips.size();i++){
+        if(clips[i]==clip){
+            index = i;
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
+    return suppressedClips[presetID];
+}
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
 	keywords[ preset.getID() ] = newKeywords;
