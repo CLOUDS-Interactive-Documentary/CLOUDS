@@ -56,7 +56,6 @@
 		E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */; };
 		E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769731778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp */; };
 		E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */; };
-		E73769D61778DC4500892646 /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769771778DC4500892646 /* CloudsVisualSystemVoro.cpp */; };
 		E73769D71778DC4500892646 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */; };
 		E73769D81778DC4500892646 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737697C1778DC4500892646 /* ParticleConnection.cpp */; };
 		E73769D91778DC4500892646 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737697E1778DC4500892646 /* ParticleConnectionGenerator.cpp */; };
@@ -288,8 +287,6 @@
 		E73769741778DC4500892646 /* CloudsVisualSystemVectorFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVectorFlow.h; sourceTree = "<group>"; };
 		E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVerletForm.cpp; sourceTree = "<group>"; };
 		E73769761778DC4500892646 /* CloudsVisualSystemVerletForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVerletForm.h; sourceTree = "<group>"; };
-		E73769771778DC4500892646 /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
-		E73769781778DC4500892646 /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
 		E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		E737697A1778DC4500892646 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		E737697C1778DC4500892646 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
@@ -956,8 +953,6 @@
 				E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */,
 				E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */,
 				E73769761778DC4500892646 /* CloudsVisualSystemVerletForm.h */,
-				E73769771778DC4500892646 /* CloudsVisualSystemVoro.cpp */,
-				E73769781778DC4500892646 /* CloudsVisualSystemVoro.h */,
 				E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */,
 				E737697A1778DC4500892646 /* CloudsVisualSystemWorld.h */,
 				E7770408177CC422009CB7AD /* Replecator */,
@@ -2108,7 +2103,6 @@
 				E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */,
 				E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */,
-				E73769D61778DC4500892646 /* CloudsVisualSystemVoro.cpp in Sources */,
 				E73769D71778DC4500892646 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E73769D81778DC4500892646 /* ParticleConnection.cpp in Sources */,
 				E73769D91778DC4500892646 /* ParticleConnectionGenerator.cpp in Sources */,

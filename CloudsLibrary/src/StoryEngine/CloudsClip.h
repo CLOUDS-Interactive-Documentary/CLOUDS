@@ -38,6 +38,9 @@ class CloudsClip {
     //use everywhere for real keywoords
 	vector<string>& getKeywords();
     
+    //get special # keywords
+    vector<string> getSpecialKeywords();
+    
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
@@ -91,9 +94,10 @@ class CloudsClip {
 	bool adjustmentLoaded;
     
   protected:
-    vector<string> originalKeywords; //came in from FCP
-    vector<string> additionalKeywords; //added manually
-    vector<string> revokedKeywords; //manually removed
+    vector<string> originalKeywords;    //came in from FCP
+    vector<string> additionalKeywords;  //added manually
+    vector<string> revokedKeywords;     //manually removed
+    vector<string> specialKeywords;        //special Keywords start with #
     bool keywordsDirty;
     void collateKeywords();
     vector<string> keywords; //collated

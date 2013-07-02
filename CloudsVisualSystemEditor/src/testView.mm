@@ -79,15 +79,23 @@
 {
 	
 }
+-(IBAction) unsuppressClip:(id)sender{
+    if(clipTable.selectedRow>=0){
+        visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
+        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        
+        [clipTable reloadData];
+    }
+}
 
 -(IBAction)suppressClip:(id)sender{
-    if(clipTable.selectedRow>0){
+    if(clipTable.selectedRow>=0){
         
         visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
         
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
         
-        
+        [clipTable reloadData];
     }
 }
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -112,6 +120,7 @@
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
 			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
 		}
+
 	}
 	else if(aTableView == clipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
@@ -121,6 +130,18 @@
 			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
+        else if( [@"Suppressed" isEqualToString:aTableColumn.identifier] ){
+            if( visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[rowIndex].getLinkName())){
+                string str = "Yes";
+                return [NSString stringWithUTF8String:str.c_str()];
+            }
+            else{
+                string str = "No";
+                return [NSString stringWithUTF8String:str.c_str()];
+                
+            }
+            
+        }
 	}
 }
 

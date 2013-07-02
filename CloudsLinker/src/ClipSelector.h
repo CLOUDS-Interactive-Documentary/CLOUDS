@@ -9,6 +9,7 @@
 #pragma once
 #import <Foundation/Foundation.h>
 #include "CloudsFCPParser.h"
+#include <set>
 @class testView;
 
 @interface ClipSelector : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
@@ -20,6 +21,7 @@
     IBOutlet NSTableView* metaTable;
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* revokedKeywords;
+
     
     IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
@@ -46,7 +48,7 @@
 - (void) updateSelectedClips;
 
 - (IBAction) saveLinks:(id)sender;
-
+- (IBAction) specialKeywords:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;

@@ -630,6 +630,7 @@
 {
 	if(ofDirectory("../../../CloudsData/links/").exists()){
 		parser.saveLinks("../../../CloudsData/links/clouds_link_db.xml");
+        cout<<"saving!"<<endl;
 	}
 	else{
 		parser.saveLinks("clouds_link_db.xml");
@@ -730,6 +731,8 @@
 		parser.setup("../../../CloudsData/fcpxml/");
 		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+        cout << "USING CLOUDS DATA DIRECTORY" << endl;
+
 	}
 	else{
 		cout << "SETTING UP IN DATA DIRECTORY" << endl;

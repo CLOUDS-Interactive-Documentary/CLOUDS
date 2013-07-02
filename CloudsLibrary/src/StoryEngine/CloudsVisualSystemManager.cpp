@@ -28,13 +28,13 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	systems.clear();
 	presets.clear();
 	
-//	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-//	registerVisualSystem( new CloudsVisualSystemLSystems() );
+	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
+	registerVisualSystem( new CloudsVisualSystemLSystems() );
 //	registerVisualSystem( new CloudsVisualSystemVoro() );
 //	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
-//	registerVisualSystem( new CloudsVisualSystemCities() );
+	registerVisualSystem( new CloudsVisualSystemCities() );
 //	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-//	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
+	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 //	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemHiga() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
@@ -200,15 +200,46 @@ void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
     
 }
 
+void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
+    int suppressionIndex;
+    if(isClipSuppressed( presetID, clip,suppressionIndex)){
+        cout<<"Unsuppressing connection for Preset: "<<presetID<<" and "<<clip<<endl;
+        unsuppressClip(presetID, suppressionIndex);
+    }
+    else{
+        cout<<"Suppression not found for Preset: "<<presetID<<" and "<<clip<<endl;
+    }
+    
+}
+
+void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
+    if(suppressedClips.find(presetID) != suppressedClips.end()){
+    suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
+    }
+    else{
+        ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
+    }
+    
+}
+
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
+    int deadIndex;
+    return isClipSuppressed(presetID, clip,deadIndex);
+}
+
+
+bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, int& index){
     vector<string>& clips = suppressedClips[presetID];
     for(int i=0;i<clips.size();i++){
         if(clips[i]==clip){
+            index = i;
             return true;
         }
     }
     return false;
 }
+
+
 
 vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
     return suppressedClips[presetID];

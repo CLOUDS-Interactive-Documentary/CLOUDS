@@ -61,7 +61,17 @@
 //	}
 	[testViewParent saveLinks:self];
 }
+- (IBAction) specialKeywords:(id)sender{
+    CloudsClip clip = [self selectedClip];
+    vector<string> test = clip.getSpecialKeywords();
+    
+    
+    for( int i =0 ;i<test.size();i++){
+        cout<<"special keywords are: "<<test[i]<<endl;
+    }
 
+
+}
 - (IBAction) playDoubleClickedRow:(id)sender
 {
 	
@@ -197,12 +207,14 @@
 		
         if([self isClipSelected]){
 			CloudsClip m = [self selectedClip];
-			string keywordList = "";
-			currentKeywords.stringValue = [NSString stringWithUTF8String:ofJoinString(m.getKeywords(), ",").c_str()];
+			string revokedList = "";
+            string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
+			currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
+
 			startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
-            
-            revokedKeywords=  [NSString stringWithUTF8String:ofJoinString(m.getRevokedKeywords(), ",").c_str()];
-            cout<<"Revoked list"<<ofJoinString(m.getRevokedKeywords(), ",")<<endl;
+            revokedList = ofJoinString(m.getRevokedKeywords(), ",");
+            revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
+            revokedKeywords.updateLayer;
 			dontUpdateClips = true;
 			[self updateTables];
 			dontUpdateClips = false;
@@ -322,10 +334,17 @@ completionsForSubstring:(NSString *)substring
     string keywordString= [currentKeywords.stringValue UTF8String];
     CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
     
-    vector<string> newKeywords = ofSplitString(keywordString, ",");
-    n.setDesiredKeywords(newKeywords);
-    cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
-
+    if(n.person != ""){
+        vector<string> newKeywords = ofSplitString(keywordString, ",");
+        n.setDesiredKeywords(newKeywords);
+        cout<<"Keywords for clip: "<< n.getLinkName()<<" ::"<<keywordString <<endl;
+        string revokedList = ofJoinString(n.getRevokedKeywords(), ",");
+        revokedKeywords.stringValue=  [NSString stringWithUTF8String:revokedList.c_str()];
+        [self saveLinks:self];
+    }
+    else{
+        ofLogError()<<"No clip selected!"<<endl;
+    }
 
 }
 
