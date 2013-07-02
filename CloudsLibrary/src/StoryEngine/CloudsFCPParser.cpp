@@ -31,12 +31,7 @@ void CloudsFCPParser::loadFromFiles(){
 
 void CloudsFCPParser::setup(string directory){
     xmlDirectory = directory;
-    refreshXML();
-	
-//    map<string, int>::iterator it;
-//    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-//        //        cout << it->first << ": " << it->second << endl;
-//    }
+    refreshXML();	
 }
 
 void CloudsFCPParser::refreshXML(){
@@ -399,18 +394,21 @@ void CloudsFCPParser::suppressConnection(CloudsClip& source, CloudsClip& target)
 }
 
 void CloudsFCPParser::suppressConnection(CloudsLink& link){
-    
-    //TODO: remove a link if its there...
+	
+	// remove any existing links
     if(clipLinksTo(link.sourceName,link.targetName)){
         removeLink(link.sourceName,link.targetName);
         cout<<"Link being removed from "<< link.sourceName<<" and "<<link.targetName<<
-        " in suppressConnection function"<< endl;
+		" in suppressConnection function"<< endl;
     }
     
+	//suppress one way
 	if(!linkIsSuppressed(link.sourceName, link.targetName)){
 		cout << "Suppressed connection " << link.sourceName << " >> " << link.targetName << endl;
 		suppressedConnections[link.sourceName].push_back(link);
 	}
+	
+	//reciprocate the suppression
     if(!linkIsSuppressed(link.targetName, link.sourceName)){
         CloudsLink swap = link;
         swap.targetName = link.sourceName;
@@ -654,9 +652,6 @@ void CloudsFCPParser::refreshAllKeywords(){
 
     map<string, int>::iterator it;
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-		if(it->first == "absraction"){
-			ofLogError() << "ADDING " << it->first << endl;
-		}
         keywordVector.push_back(it->first);
     }
 }

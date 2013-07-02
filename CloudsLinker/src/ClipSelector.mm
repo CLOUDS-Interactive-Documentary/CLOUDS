@@ -26,14 +26,9 @@
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
     
-    cout << "setting action " << [clipTable description] << endl;
-    
     [clipTable setTarget:self];
     [clipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 		
-//    [keywordTable setTarget:self];
-//    [keywordTable setDoubleAction:@selector(playDoubleClickedRow:)];
-
 	[keywordTable reloadData];
 	
     [metaTable setTarget:self];
@@ -44,8 +39,6 @@
 
     [suppressedTable setTarget:self];
     [suppressedTable setDoubleAction:@selector(playDoubleClickedRow:)];
-
-    NSLog(@"delegate? %@", currentKeywords.delegate.description);
 
 	[self updateTables];
 }
@@ -182,30 +175,31 @@
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors
 {
-		//TODO:
+	NSArray *newDescriptors = [tableView sortDescriptors];
+	
+    NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
+    if(tableView == keywordTable){
+        parser->sortKeywordsByOccurrence( [ [[newDescriptors objectAtIndex:0] key]  isEqualToString:@"occurrence"] );
+    }
+
+    //    [results sortUsingDescriptors:newDescriptors];
+    //"results" is my NSMutableArray which is set to be the data source for the NSTableView object.
+//    [tableView reloadData];
+	[self updateTables];
+	
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
     if(aNotification.object == keywordTable){
-//		[clipTable selectRowIndexes:nil
-//			   byExtendingSelection:NO];
 		[clipTable deselectAll:self];
 		
 		[self updateTables];
     }
     else if(aNotification.object == clipTable){
-		
-//        if([self isClipSelected]){
 
-			[self updateSelectedClip];
-			//pushes data into the clip-specific tables
-			//[self updateSelectedClip];
-			
-//			dontUpdateClips = true;
-//			[self updateTables];
-//			dontUpdateClips = false;
-//		}
+		[self updateSelectedClip];
+		
     }
     else if(aNotification.object == linkTable){
 		
@@ -219,7 +213,6 @@
         for(int i = 0; i < searchClips.size(); i++){
             if(searchClips[i].name == targetClip){
                 NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:i];
-                //[clipTable selectRowIndexes:indexSet byExtendingSelection:NO];
 				[clipTable deselectAll:self];
                 break;
             }
@@ -236,10 +229,6 @@
             return;
         }
 		
-//		cout << "deselecting from link table";
-//		[linkTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
-		
-		//linkTable.selectedRow = -1;
     }
 }
 
@@ -317,7 +306,8 @@ completionsForSubstring:(NSString *)substring
     }
     return NO;
 }
-- (IBAction) updateKeywords:(id)sender{
+
+- (void) updateKeywords:(id)sender{
 
     
     if([self isClipSelected]){
@@ -349,7 +339,7 @@ completionsForSubstring:(NSString *)substring
 	
 }
 
-- (IBAction) setQuestionText:(id)sender{
+- (void) setQuestionText:(id)sender{
     //button pressed
     CloudsClip m = [self selectedClip];
 	
@@ -530,8 +520,6 @@ completionsForSubstring:(NSString *)substring
 		currentMetaLinks = parser->getMetaDataConnections(m);
 	}
 	else{
-		
-		cout << "NO CLIP SELECTED" << endl;
 		
 		currentKeywords.stringValue = @"";
 		revokedKeywords.stringValue = @"";
