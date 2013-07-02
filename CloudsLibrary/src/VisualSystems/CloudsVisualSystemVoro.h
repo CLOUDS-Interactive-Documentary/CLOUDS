@@ -10,7 +10,7 @@
 #include "CloudsVisualSystem.h"
 #include "Voro.h"
 #include "VoroParticle.h"
-#include "vParticle.h"
+//#include "vParticle.h"
 
 class CloudsVisualSystemVoro : public CloudsVisualSystem {
 public:
@@ -26,6 +26,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
+//    void selfPostDraw();
     void selfExit();
     void selfBegin();
 	void selfEnd();
@@ -71,17 +72,8 @@ protected:
     bool    bClear;
     
     float   tSize;
-    
     bool    bDrawGlow;
     bool    bDrawNucles;
-    
-    //  Cosmic Dust Particles
-    //
-//    vector<vParticle*> particles;
-//    ofPoint globalOffset;
-//    float   nMaxPoints;
-//    float   density,gravity,repulsion;
-//    float   turbulence,neigbordhood,independence;
     
     //  Voronoi
     //
@@ -92,6 +84,14 @@ protected:
     bool    containerPeriodic;
     bool    bSphere;
     bool    bCyllinder;
+    
+    //  Cosmic Dust Particles
+    //
+//    vector<vParticle*> particles;
+//    ofPoint globalOffset;
+//    float   nMaxPoints;
+//    float   density,gravity,repulsion;
+//    float   turbulence,neigbordhood,independence;
     
     //  Displacement
     //
