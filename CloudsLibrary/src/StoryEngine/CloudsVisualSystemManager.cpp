@@ -11,9 +11,13 @@
 #include "CloudsVisualSystemCollaboration1.h"
 #include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemVectorFlow.h"
+#include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemHiga.h"
 #include "CloudsVisualSystemForkingPaths.h"
+#include "CloudsVisualSystemMemory.h"
+#include "CloudsVisualSystemPaintBrush.h"
+
 #endif
 
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
@@ -27,17 +31,21 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	nameToVisualSystem.clear();
 	systems.clear();
 	presets.clear();
-	
+
+	//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+	//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+	//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
+
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
-//	registerVisualSystem( new CloudsVisualSystemVoro() );
-//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+	registerVisualSystem( new CloudsVisualSystemVoro() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
-//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+	registerVisualSystem( new CloudsVisualSystemWorld() );
+	registerVisualSystem( new CloudsVisualSystemMemory() );
 	registerVisualSystem( new CloudsVisualSystemHiga() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
+	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
