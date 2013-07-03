@@ -226,6 +226,9 @@
         return;
 	}
 	
+	preview.setFrame(clip.startFrame);
+	preview.play();
+	
 	currentPlayingClip = clip;
 	clipEndFrame = clip.endFrame;	
 }
