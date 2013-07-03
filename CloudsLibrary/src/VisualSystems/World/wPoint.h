@@ -23,6 +23,7 @@ public:
     
     ofQuaternion latRot,longRot;
     float   latitud, longitud;
+    float   size;
     
     float   noise;
     float   nNoise;
