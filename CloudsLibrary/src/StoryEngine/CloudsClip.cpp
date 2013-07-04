@@ -122,7 +122,6 @@ vector<string>& CloudsClip::getOriginalKeywords(){
 vector<string>& CloudsClip::getAdditionalKeywords(){
     return additionalKeywords;
 }
-
 vector<string>& CloudsClip::getRevokedKeywords(){
     return revokedKeywords;
 }
@@ -133,33 +132,50 @@ vector<string>& CloudsClip::getKeywords(){
     }
     return keywords;
 }
+vector<string>& CloudsClip::getSpecialKeywords(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return specialKeywords;
+}
 
 void CloudsClip::collateKeywords(){
     
-    //start with keywords = originaKeywords;
     keywords = originalKeywords;
+    specialKeywords.clear();
     
     //go through and remove revoked keywords
     for (int k = 0; k<revokedKeywords.size(); k++) {
         if(ofContains(keywords, revokedKeywords[k])){
             keywords.erase(keywords.begin()+ofFind(keywords, revokedKeywords[k]));
-            cout<<"Removing keywords for clip"<<name<< " : "<< revokedKeywords[k]<<endl;
+            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
         }
     }
     
     //go through and add additional
     for (int l =0; l<additionalKeywords.size(); l++) {
+        //Returns 0 if they compare equal
         if (! ofContains(keywords, additionalKeywords[l]) ){
             keywords.push_back(additionalKeywords[l]);
-            cout<<"Adding addition keywords for clip"<<name<< " : "<< additionalKeywords[l]<<endl;
+            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
         }
     }
     
+    //remove special keywords from keywords -> specialKeywords
+    for (int l = keywords.size() - 1 ; l>=0; l--) {
+        if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
+            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
+            specialKeywords.push_back(keywords[l]);
+            keywords.erase(keywords.begin()+l);
+
+        }
+    }
     keywordsDirty = false;
 }
 
 void CloudsClip::setOriginalKeywords(vector<string>& keywords){
     originalKeywords = keywords;
+	keywordsDirty = true;
 }
 
 void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
@@ -168,17 +184,19 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
     
     //find all the keywords not in the original list (additonal)
     for(int i= 0; i<desiredKeywords.size();i++){
+        
+        //Check to see if its a special keyword
         if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
             cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
-            additionalKeywords.push_back(desiredKeywords[i]);
+            addKeyword(desiredKeywords[i]);
         }
     }
     
     //find all the keywords missing from the original list (rvoked)
-    for(int i=0;i<originalKeywords.size();i++){
+    for(int i=0; i < originalKeywords.size() ; i++){
         if(! ofContains(desiredKeywords, originalKeywords[i])&&! ofContains(revokedKeywords, originalKeywords[i])){
-            cout<<"revoking keyword : "<< desiredKeywords[i]<<" from clip "<<name<<endl;            
-            revokedKeywords.push_back(originalKeywords[i]);
+            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
+            revokeKeyword(originalKeywords[i]);
         }
     }
     keywordsDirty =true;
@@ -186,8 +204,8 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
 
 void CloudsClip::addKeyword(string keyword){
     
-    if(!ofContains(additionalKeywords, keyword)&&
-       ! ofContains(originalKeywords, keyword))
+    if(!ofContains(additionalKeywords, keyword) &&
+       !ofContains(originalKeywords, keyword))
     {
         additionalKeywords.push_back(keyword);
         keywordsDirty = true;
@@ -196,13 +214,11 @@ void CloudsClip::addKeyword(string keyword){
 
 void CloudsClip::revokeKeyword(string keyword){
     if(!ofContains(revokedKeywords, keyword) &&
-        ofContains(originalKeywords, keyword))
+       ofContains(originalKeywords, keyword))
     {
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
-    
-
 }
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
@@ -303,17 +319,16 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
-
 //--------------------------------------------------------------------
 string CloudsClip::relinkFilePath(string filePath){
 	
-	
 	vector<string> drives;
+	
 	drives.push_back("Seance");
 	drives.push_back("Nebula");
 	drives.push_back("Supernova");
 	drives.push_back("Nebula_helper");
-
+    
 	if( !ofFile(filePath).exists() ){
 		for(int i = 0; i < drives.size(); i++){
 			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
@@ -328,26 +343,4 @@ string CloudsClip::relinkFilePath(string filePath){
 	}
 	
 	return filePath;
-	
-//	if( !ofFile(filePath).exists() ){
-//		//		cout << "Switched clip from " << clipFilePath;
-//        if(ofFile::doesFileExist("/Volumes/Seance/")){
-//            ofStringReplace(filePath, "Nebula_backup", "Seance");
-//            ofStringReplace(filePath, "Nebula", "Seance");
-//            ofStringReplace(filePath, "Supernova", "Seance");
-//			
-//        }
-//        else if(ofFile::doesFileExist("/Volumes/Nebula_helper/")){
-//            ofStringReplace(filePath, "Nebula", "Nebula_helper");
-//            ofStringReplace(filePath, "Seance", "Nebula_helper");
-//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
-//        }
-//        else if(ofFile::doesFileExist("/Volumes/Supernova/")){
-//            ofStringReplace(filePath, "Nebula", "Supernova");
-//            ofStringReplace(filePath, "Seance", "Nebula_helper");
-//            ofStringReplace(filePath, "Supernova", "Nebula_helper");
-//		}
-//        //		cout << " to " << clipFilePath << endl;
-//	}
-//	return filePath;
 }

@@ -241,12 +241,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		currentCamera->end();
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
-		//TODO: add shader preprocess
+		selfPostDraw();
 		
-        CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-    }
+	}
     
 	timeline->draw();
 	
@@ -2355,6 +2352,13 @@ void CloudsVisualSystem::selfDraw()
     ofSetColor(ofColor(255));
     ofFill();
     mat->end();
+}
+
+void CloudsVisualSystem::selfPostDraw(){
+	
+	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+													 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+													 -CloudsVisualSystem::getSharedRenderTarget().getHeight());	
 }
 
 void CloudsVisualSystem::selfExit()

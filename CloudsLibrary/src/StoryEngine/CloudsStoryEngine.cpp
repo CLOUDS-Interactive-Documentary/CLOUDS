@@ -71,7 +71,7 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
 	//loadClip( seed );
 }
 
-void CloudsStoryEngine::buildQueue(CloudsClip& seed, float seconds){
+void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 	
 	float totalSecondsEnqueued = 0;
 	bool deadEnd = false;
@@ -81,7 +81,6 @@ void CloudsStoryEngine::buildQueue(CloudsClip& seed, float seconds){
 	CloudsClip clip = seed;
 	clipQueue.push_back(clip);
 	
-
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
 	
@@ -156,7 +155,6 @@ void CloudsStoryEngine::buildQueue(CloudsClip& seed, float seconds){
 		
 	}
 	
-
 	cout << "CLIPS:" << endl;
 	for(int i = 0; i < clipQueue.size(); i++){
 		cout << "	CLIP: " << clipQueue[i].getLinkName() << endl;
@@ -166,6 +164,15 @@ void CloudsStoryEngine::buildQueue(CloudsClip& seed, float seconds){
 	for(int i = 0; i < topicHistory.size(); i++){
 		cout << "	TOPIC: " << topicHistory[i] << endl;
 	}
+	
+	// TEMP
+	CloudsStoryEventArgs argsA(seed,allNextClips,currentTopic);
+	ofNotifyEvent(events.storyBegan,argsA);
+	
+	
+	CloudsStoryEventArgs argsB(clipQueue[0], allNextClips, topicHistory[0]);
+	ofNotifyEvent(events.clipBegan,argsB);
+	
 }
 
 string CloudsStoryEngine::selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic){
@@ -269,6 +276,8 @@ bool CloudsStoryEngine::clipEnded(){
 		waitingForNextClip = true;
 		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
 	}
+	
+	buildQueue( clipQueue[clipQueue.size()-1], 60*5 );
 }
 
 void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){

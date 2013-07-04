@@ -9,6 +9,8 @@ VoroParticle::VoroParticle(){
     
 	damping = 0.07f;
     size = 1.0;
+    
+    nucle = NULL;
 }
 
 void VoroParticle::init( ofPoint _pos, ofPoint _vel){
@@ -29,18 +31,6 @@ void VoroParticle::update(){
     *this += vel;
     
     acc *= 0;
-}
-
-//------------------------------------------------------------
-void VoroParticle::draw(){
-    ofCircle(*this, size);
-}
-
-void VoroParticle::drawSphere(){
-    ofPushMatrix();
-    ofTranslate(*this);
-//    ofDrawSphere(size);
-    ofPopMatrix();
 }
 
 void VoroParticle::infinitWalls(){

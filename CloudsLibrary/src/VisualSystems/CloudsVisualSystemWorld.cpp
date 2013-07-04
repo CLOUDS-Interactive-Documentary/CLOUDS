@@ -52,6 +52,7 @@ void CloudsVisualSystemWorld::selfBegin()
     //  Load cities points
     //
     loadWorldPoints( "simple-cities.txt" );
+    loadSecWorldPoints( "airports.txt");
     
     //  Load Stars
     //
@@ -152,6 +153,25 @@ void CloudsVisualSystemWorld::loadWorldPoints(string _file){
             worldPoint.noiseThreshold = &rippleThreshold;
             
             worldPoints.push_back(worldPoint);
+        }
+    }
+}
+
+void CloudsVisualSystemWorld::loadSecWorldPoints(string _file){
+    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    ofBuffer buffer = ofBufferFromFile(filePath);
+    
+    while(!buffer.isLastLine()) {
+        string temp = buffer.getNextLine();
+        
+        if(temp.length() != 0) {
+            vector<string> values = ofSplitString(temp, "|");
+            
+            wPoint worldPoint;
+            worldPoint.place(ofToFloat(values[5]),ofToFloat(values[6]));
+            worldPoint.size = ofMap(ofToFloat(values[4]), 0, 10000, 0.1, 5.0);
+            
+            secWorldPoints.push_back(worldPoint);
         }
     }
 }
@@ -310,27 +330,28 @@ void CloudsVisualSystemWorld::selfUpdate()
         if (satellites[i]->distance(worldPoints[randomCity])< 150){
             wSign newSign;
             newSign.set(worldPoints[randomCity]);
-            worldPoints[randomCity].bRipple = true;
-            newSign.target = satellites[i];
+            newSign.setTarget(satellites[i]);
             signs.push_back(newSign);
+            
+//            worldPoints[randomCity].bRipple = true;
         }
     }
 
     while (signs.size() > nMaxSigns) {
-        signs.erase(signs.begin()+signs.size()-1);
+        signs.erase( signs.begin()+signs.size()-1 );
     }
     
     for(int i = signs.size()-1; i >=0 ; i--){
         if ( signs[i].bDead ){
             
-            if (signs[i].getAlitude() > 50){
+            if ( signs[i].getAlitude() > 50 ){
                 ofPoint src = *(signs[i].target);
                 
                 for (int j = 0; j < worldPoints.size(); j++){
                     if ( src.distance(worldPoints[j]) < 150){
                         wSign newSign;
                         newSign.set(src);
-                        newSign.target = &worldPoints[j];
+                        newSign.setTarget(&worldPoints[j]);
                         signs.push_back(newSign);
                         break;
                     }
@@ -339,7 +360,7 @@ void CloudsVisualSystemWorld::selfUpdate()
             
             signs.erase(signs.begin()+i);
         } else {
-            signs[i].update(density);
+            signs[i].update(0.9);
         }
     }
     
@@ -389,15 +410,21 @@ void CloudsVisualSystemWorld::selfDraw()
         worldPoints[i].draw();
     }
     
+    for(int i = 0; i < secWorldPoints.size(); i++){
+        secWorldPoints[i].draw();
+    }
+    
     //  Satellites
     //
     for(int i = 0; i < satellites.size(); i++){
         satellites[i]->draw();
     }
+    
     ofSetCircleResolution(6);
     for(int i = 0; i < signs.size(); i++){
         signs[i].draw();
     }
+    
     mat->end();
     
     ofPopStyle();

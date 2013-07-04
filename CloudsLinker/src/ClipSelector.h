@@ -9,6 +9,7 @@
 #pragma once
 #import <Foundation/Foundation.h>
 #include "CloudsFCPParser.h"
+#include <set>
 @class testView;
 
 @interface ClipSelector : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
@@ -20,6 +21,7 @@
     IBOutlet NSTableView* metaTable;
     IBOutlet NSTokenField* currentKeywords;
     IBOutlet NSTextField* revokedKeywords;
+    IBOutlet NSTextField* sharedKeywords;
     
     IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
@@ -32,26 +34,33 @@
     vector<CloudsClip> currentMetaLinks;
 	
     CloudsFCPParser* parser;
+	CloudsClip dummyClip;
     testView* testViewParent;
 	
-	BOOL dontUpdateClips;
+	BOOL dontUpdateKeywords;
 }
 
 @property(nonatomic, readwrite) CloudsFCPParser* parser;
 @property(nonatomic, assign) testView* testViewParent;
 
+
 - (void) setup;
-//- (void) playClip:(CloudsClip&) clip;
+
 - (void) updateTables;
 - (void) updateSelectedClips;
+- (void) updateSelectedClip;
+- (void) updateSharedKeywords;
+- (void) deselectCurrentClip;
 
 - (IBAction) saveLinks:(id)sender;
-
 - (IBAction) updateKeywords:(id)sender;
+
+- (IBAction) applySpecialKeyword:(id<NSUserInterfaceItemIdentification>)sender;
+
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 
-- (CloudsClip) selectedClip;
+- (CloudsClip&) selectedClip;
 - (CloudsLink&) selectedLink;
 - (CloudsLink&) selectedSuppression;
 - (CloudsClip&) selectedMeta;

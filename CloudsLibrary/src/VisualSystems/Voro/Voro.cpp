@@ -53,7 +53,7 @@ ofMesh getCellMesh(voro::voronoicell &_c, ofPoint _pos ){
             vertices.push_back(newPoint);
             
             ofPoint newNormal;
-            newNormal =  newPoint - centroid ;
+            newNormal = newPoint - _pos;//centroid ;
             newNormal = newNormal.normalize();
             normals.push_back(newNormal);
         }
@@ -95,7 +95,7 @@ ofMesh getCellMesh(voro::voronoicell &_c, ofPoint _pos ){
     return ofMesh();
 };
 
-vector<ofMesh>  getCellsFromContainer(voro::container &_con){
+vector<ofMesh>  getCellsFromContainer(voro::container &_con, float _wallsThikness){
     
     vector<ofMesh> cells;
     
@@ -109,7 +109,7 @@ vector<ofMesh>  getCellsFromContainer(voro::container &_con){
                 return cells;
             } else {
                 double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
-                ofMesh cellMesh = getCellMesh(c, ofPoint(pp[0],pp[1],pp[2]));
+                ofMesh cellMesh = getCellMesh(c, ofPoint(pp[0],pp[1],pp[2])*(float)(1.0+_wallsThikness) );
                 cells.push_back( cellMesh );
                 i++;
             }

@@ -21,7 +21,7 @@ void testApp::setup(){
 	visualSystems.populateVisualSystems();
 	
 	storyEngine.setup();
-	storyEngine.network = &parser;
+	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
 	storyEngine.maxTimesOnTopic = 4;

@@ -9,7 +9,6 @@
 #include "CloudsFCPParser.h"
 
 CloudsFCPParser::CloudsFCPParser(){
-    keywordsDirty = false;
     sortedByOccurrence = false;
 	backupTimeInterval = 60*2;
 	lastBackupTime = -backupTimeInterval;
@@ -21,24 +20,18 @@ void CloudsFCPParser::loadFromFiles(){
 		setup("../../../CloudsData/fcpxml/");
 		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
         parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-
 	}
 	else{
 		setup("xml");
 		parseLinks("clouds_link_db.xml");
         parseClusterMap("CLOUDS_test_5_26_13.SVG");
-
+        
 	}
 }
 
 void CloudsFCPParser::setup(string directory){
     xmlDirectory = directory;
     refreshXML();
-	
-    map<string, int>::iterator it;
-    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-        //        cout << it->first << ": " << it->second << endl;
-    }
 }
 
 void CloudsFCPParser::refreshXML(){
@@ -65,6 +58,7 @@ void CloudsFCPParser::refreshXML(){
             addXMLFile( dir.getPath(i) );
         }
     }
+	
     refreshAllKeywords();
 }
 
@@ -166,10 +160,11 @@ void CloudsFCPParser::parseLinks(string linkFile){
 		
 		string clipName = linksXML.getValue("name", "");
 		int numLinks = linksXML.getNumTags("link");
-		int startQuestion = linksXML.getNumTags("startingQuestion");
 		int numSuppressed = linksXML.getNumTags("suppress");
 		int numRevoked = linksXML.getNumTags("revokedKeywords");
 		int numAdditional = linksXML.getNumTags("additionalKeywords");
+		int startQuestion = linksXML.getNumTags("startingQuestion");
+		
 		if(numLinks > 0){
 			for(int l = 0; l < numLinks; l++){
 				CloudsLink newLink;
@@ -182,11 +177,22 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				
 				linksXML.popTag(); //link
 				
+				if(!hasClipWithLinkName(newLink.sourceName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which linked to \"" + newLink.targetName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				if(!hasClipWithLinkName(newLink.targetName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was linked from \"" + newLink.sourceName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
 				linkedConnections[newLink.sourceName].push_back( newLink );
 			}
 		}
 		
-        
 		if(numSuppressed > 0){
 			for(int l = 0; l < numSuppressed; l++){
 				CloudsLink newLink;
@@ -199,8 +205,20 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				
 				linksXML.popTag();//suppress
                 
+				if(!hasClipWithLinkName(newLink.sourceName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which was suppressed from \"" + newLink.targetName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				if(!hasClipWithLinkName(newLink.targetName)){
+					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was suppressed from \"" + newLink.sourceName + "\".";
+					ofLogError() << errorText;
+					ofSystemAlertDialog(errorText);
+					continue;
+				}
+				
 				suppressedConnections[newLink.sourceName].push_back( newLink );
-                
 			}
 		}
 		
@@ -218,27 +236,26 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			}
 		}
         
-        if(numRevoked>0){
+		//add revoked and additional keywords
+        if(numRevoked > 0){
             string revokedKeywordsString = linksXML.getValue("revokedKeywords", "");
             vector<string> revokedKeywords = ofSplitString(revokedKeywordsString, ",");
             CloudsClip& c = getClipWithLinkName(clipName);
-             revokedKeywords;
-            for(int i=0; i<revokedKeywords.size();i++){
+            
+            for(int i = 0; i < revokedKeywords.size(); i++){
                 c.revokeKeyword(revokedKeywords[i]);
             }
         }
         
-        if(numAdditional>0){
+        if(numAdditional > 0){
             string additionalKeywordsString = linksXML.getValue("additionalKeywords", "");
             vector<string> additionalKeywords = ofSplitString(additionalKeywordsString, ",");
             CloudsClip& c = getClipWithLinkName(clipName);
-            additionalKeywords;
-            for(int i=0; i<additionalKeywords.size();i++){
+            
+            for(int i = 0; i < additionalKeywords.size(); i++){
                 c.addKeyword(additionalKeywords[i]);
             }
         }
-
-        //add revoked and additional keywords
         
 		linksXML.popTag(); //clip
 	}
@@ -247,7 +264,8 @@ void CloudsFCPParser::parseLinks(string linkFile){
     for(int i = 0; i < allClips.size();i++){
         reciprocateSuppressions(allClips[i]);
     }
-	
+    
+	refreshAllKeywords();
 }
 
 void CloudsFCPParser::saveLinks(string linkFile){
@@ -277,8 +295,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		bool hasRevokedKeywords = clipHasRevokedKeywords(allClips[i]);
         bool hasAdditionalKeywords = clipHasAdditionalKeywords(allClips[i]);
         
-        
-        if(hasLink || hasSuppressed || hasStartingQuestion){
+        if(hasLink || hasSuppressed || hasStartingQuestion || hasRevokedKeywords || hasAdditionalKeywords){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);
@@ -318,12 +335,13 @@ void CloudsFCPParser::saveLinks(string linkFile){
             if(hasRevokedKeywords){
                 string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
                 linksXML.addValue("revokedKeywords", revokedKeywords);
+                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
                 
             }
             
             if(hasAdditionalKeywords){
                 string additionalKeywords = ofJoinString(allClips[i].getAdditionalKeywords(),"," );
-                linksXML.addValue("additionalKeywords ", additionalKeywords);
+                linksXML.addValue("additionalKeywords", additionalKeywords);
             }
 			
 			linksXML.popTag();
@@ -376,19 +394,30 @@ void CloudsFCPParser::suppressConnection(CloudsClip& source, CloudsClip& target)
 }
 
 void CloudsFCPParser::suppressConnection(CloudsLink& link){
-    
-    //TODO: remove a link if its there...
+	
+	// remove any existing links
     if(clipLinksTo(link.sourceName,link.targetName)){
         removeLink(link.sourceName,link.targetName);
         cout<<"Link being removed from "<< link.sourceName<<" and "<<link.targetName<<
-        " in suppressConnection function"<< endl;
+		" in suppressConnection function"<< endl;
     }
     
+	//suppress one way
 	if(!linkIsSuppressed(link.sourceName, link.targetName)){
 		cout << "Suppressed connection " << link.sourceName << " >> " << link.targetName << endl;
 		suppressedConnections[link.sourceName].push_back(link);
 	}
+	
+	//reciprocate the suppression
     if(!linkIsSuppressed(link.targetName, link.sourceName)){
+		
+		// remove any existing link the other way
+		if(clipLinksTo(link.targetName,link.sourceName)){
+			removeLink(link.targetName,link.sourceName);
+			cout<<"Link being removed from "<< link.targetName<<" and "<<link.sourceName<<
+			" in suppressConnection function"<< endl;
+		}
+		
         CloudsLink swap = link;
         swap.targetName = link.sourceName;
         swap.sourceName = link.targetName;
@@ -397,11 +426,11 @@ void CloudsFCPParser::suppressConnection(CloudsLink& link){
 }
 
 void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
+	
 	if(clipHasSuppressions(linkName)){
 		int linkIndex;
 		if(linkIsSuppressed(linkName, targetName, linkIndex)){
 			cout << "Unsuppressed connection " << linkName << " >> " << targetName << endl;
-			//suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
             unsuppressConnection(linkName, linkIndex);
 		}
         else {
@@ -411,6 +440,7 @@ void CloudsFCPParser::unsuppressConnection(string linkName, string targetName){
 }
 
 void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
+	
 	if(suppressedConnections.find(linkName) != suppressedConnections.end()){
 		
         cout << "Unsuppressed connection " << linkName << " >> " << linkIndex << endl;
@@ -610,12 +640,15 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         }
         fcpXML.popTag(); //marker
     }
-    
-    keywordsDirty = true;
 }
-void CloudsFCPParser::refreshAllKeywords(){
-    for(int i = 0; i < allClips.size(); i++){
 
+void CloudsFCPParser::refreshAllKeywords(){
+	
+	allKeywords.clear();
+	keywordVector.clear();
+	
+    for(int i = 0; i < allClips.size(); i++){
+        
         vector<string>& newKeywords = allClips[i].getKeywords();
         for(int k = 0; k < newKeywords.size(); k++){
             if(newKeywords[k].find("?") == string::npos &&
@@ -624,7 +657,18 @@ void CloudsFCPParser::refreshAllKeywords(){
                 allKeywords[newKeywords[k]]++;
             }
         }
+        
+        vector<string>& specialKeywords = allClips[i].getSpecialKeywords();
+        for(int j=0 ; j<specialKeywords.size();j++){
+            allKeywords[specialKeywords[j]]++;
+        }
     }
+    
+    map<string, int>::iterator it;
+    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
+        keywordVector.push_back(it->first);
+    }
+    
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
@@ -678,6 +722,14 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 	else {
 		return allClips[ ofRandom(allClips.size())];
 	}
+}
+
+bool CloudsFCPParser::hasClipWithLinkName(string linkname){
+	return clipLinkNameToIndex.find(linkname) != clipLinkNameToIndex.end();
+}
+
+bool CloudsFCPParser::hasClipWithID(string ID){
+	return clipIDToIndex.find(ID) != clipIDToIndex.end();
 }
 
 CloudsClip& CloudsFCPParser::getClipWithLinkName( string linkname ){
@@ -749,7 +801,8 @@ void CloudsFCPParser::populateKeyThemes(set<string>& themes){
 	//search through all tags to find the shortest path to key
 	tagToKeyTheme.clear();
 	
-	getAllKeywords();
+	//refreshKeywordVector();
+	refreshAllKeywords();
 	
 	for(int i = 0; i < keywordVector.size(); i++){
         
@@ -803,9 +856,6 @@ string CloudsFCPParser::getKeyThemeForTag(string tag){
 }
 
 vector<string>& CloudsFCPParser::getAllKeywords(){
-    if(keywordsDirty){
-        refreshKeywordVector();
-    }
     return keywordVector;
 }
 
@@ -845,7 +895,9 @@ void CloudsFCPParser::addLink(CloudsClip& source, CloudsClip& target){
 
 void CloudsFCPParser::addLink(CloudsLink& link){
     
-    unsuppressConnection(link);
+	if(linkIsSuppressed(link.sourceName, link.targetName)){
+		unsuppressConnection(link);
+	}
     
 	if( !clipLinksTo(link.sourceName, link.targetName) ){
 		linkedConnections[link.sourceName].push_back( link );
@@ -881,7 +933,12 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
 	set<string> includedClips;
     for(int c = 0; c < allClips.size(); c++){
         for(int i = 0; i < filter.size(); i++){
-            if(ofContains(allClips[c].getKeywords(), filter[i]) &&
+            
+            //if filter[i] is #special, use special
+            vector<string>& searchVector = (filter[i][0] == '#') ?
+            allClips[c].getSpecialKeywords() : allClips[c].getKeywords();
+            
+            if(ofContains(searchVector, filter[i]) &&
 			   includedClips.find(allClips[c].getLinkName()) == includedClips.end()){
 				includedClips.insert(allClips[c].getLinkName());
                 filteredMarkers.push_back(allClips[c]);
@@ -894,6 +951,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
 
 set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	set<string> relatedKeywords;
+    
 	vector<CloudsClip> relatedClips = getClipsWithKeyword(filterWord);
 	for(int i = 0; i < relatedClips.size(); i++){
 		vector<string>& keys = relatedClips[i].getKeywords();
@@ -997,14 +1055,8 @@ vector<string> CloudsFCPParser::getSharedKeywords(CloudsClip& a, CloudsClip& b){
 	return sharedKeywords;
 }
 
-void CloudsFCPParser::refreshKeywordVector(){
-    keywordVector.clear();
-    map<string, int>::iterator it;
-    for(it = allKeywords.begin(); it != allKeywords.end(); it++){
-        keywordVector.push_back(it->first);
-    }
-    keywordsDirty = false;
-}
+//void CloudsFCPParser::refreshKeywordVector(){
+//}
 
 bool CloudsFCPParser::operator()(const string& a, const string& b){
     if(sortedByOccurrence){
