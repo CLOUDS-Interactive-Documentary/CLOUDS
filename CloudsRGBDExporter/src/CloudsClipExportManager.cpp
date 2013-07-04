@@ -45,7 +45,11 @@ bool CloudsClipExportManager::setExportDirectory(string directory){
 void CloudsClipExportManager::exportClip(CloudsClip clip){
 
 	currentClip = clip;
-	
+
+	holeFiller.setKernelSize(3);
+    holeFiller.setIterations(3);
+    
+    
 	done = false;
 	currentFrame = clip.startFrame - 24; //24 frame handle
 	
@@ -123,6 +127,9 @@ void CloudsClipExportManager::medianFilter(){
 		}
 		medianPixels.getPixels()[i] = getMedianValueOf5( medianBuffer );
 	}
+    
+    holeFiller.close(medianPixels);
+
 }
 
 void CloudsClipExportManager::threadedFunction(){
