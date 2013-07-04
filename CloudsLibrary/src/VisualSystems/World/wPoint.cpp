@@ -14,6 +14,7 @@ wPoint::wPoint(){
     noisePeaks = NULL;
     noiseThreshold = NULL;
     bRipple = false;
+    size = 1.0;
 }
 
 void wPoint::place(float _lat, float _long){
@@ -26,6 +27,11 @@ void wPoint::place(float _lat, float _long){
     longRot.makeRotate( longitud, 0, 1, 0);
     
     set(latRot * longRot * displacementFromCenter);
+    
+    color.set(255,0,0);
+    color.setHue(20+ofNoise(x*0.1,y*0.1,z*0.4)*30);
+    color.setBrightness(100+ofNoise(x*0.1,y*0.1,z*0.1)*155);
+    color.a = 200;
 }
 
 void wPoint::update(){
@@ -53,19 +59,34 @@ void wPoint::update(){
 
 void wPoint::draw(){
     
+    ofPushStyle();
+    
     if (noisePeaks != NULL){
-        ofPoint head = *this - ofPoint(0,0,0);
-        head.normalize();
-        head *= noise;
-        color.setHue( 20+nNoise*30 );
+        if ( *noisePeaks > 0.1 ){
+            
+            color.setHue( 20+nNoise*30 );
+            ofSetColor(color);
+            
+            ofPoint head = *this - ofPoint(0,0,0);
+            head.normalize();
+            head *= noise;
+            ofLine(*this, *this+head);
+        }
+    } else {
+        
         ofSetColor(color);
-        ofLine(*this, *this+head);
+        glPointSize(size);
+        glBegin(GL_POINTS);
+        glVertex3f(x,y,z);
+        glEnd();
     }
     
     if (bRipple){
         drawRipple(ripplePct*0.61);
         drawRipple(ripplePct);
     }
+    
+    ofPopStyle();
 }
 
 void wPoint::drawRipple( float _pct ){

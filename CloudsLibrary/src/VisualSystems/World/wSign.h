@@ -14,7 +14,10 @@ class wSign : public ofPoint {
 public:
 	wSign();
     
+    void    setTarget( ofPoint *_target );
+    
     float   getAlitude();
+    
 	void	applyForce(ofPoint _force){acc += _force;};
     
     void    addRepulsionForce(ofPoint p, float radius, float scale);
@@ -28,12 +31,9 @@ public:
     ofPoint *target;
     ofPoint vel,acc;
     
-    ofPoint ripplePnt;
-    float   ripplePct;
-    float   rippleScl;
-    
+    int     nFrame;
     bool    bDead;
     
 private:
-    void drawRipple( ofPoint _pos, float _pct, float _size, bool _dir = true );
+    void drawWaves( ofPoint _pos, float _pct, float _size);
 };

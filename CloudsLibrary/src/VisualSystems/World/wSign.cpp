@@ -13,13 +13,18 @@ wSign::wSign(){
 	vel.set(0,0,0);
 	acc.set(0,0,0);
     
-    ripplePnt.set(0,0);
-    ripplePct = 0.0;
-    rippleScl = 0.05;
-    
+    nFrame = 0;
     bDead = false;
     
     target = NULL;
+}
+
+void  wSign::setTarget( ofPoint *_target ){
+    target = _target;
+    
+    vel = *target - *this;
+    vel.normalize();
+    vel *= 1.0;
 }
 
 float wSign::getAlitude(){
@@ -79,31 +84,34 @@ void wSign::addAttractionForce(ofPoint posOfForce, float radius, float scale){
 void wSign::update(float _speed){
 	
     if (target != NULL){
-        if ( distance(*target) <= 0.1 ){
-            ripplePct += 0.01;
-            ripplePnt = *this;
-            tail.clear();
+        if ( distance(*target) <= 10.0 ){
+            
+            if ( tail.size() > 0 ){
+                tail.erase(tail.begin());
+            } else {
+                bDead = true;
+            }
+            
         } else {
-            addAttractionForce(*target, 150, 0.5);
+            
+            if ((nFrame)%5 == 0){
+                tail.push_back(*this);
+            }
+            
+            while (tail.size() > 10) {
+                tail.erase(tail.begin());
+            }
         }
     }
     
-    if (ripplePct > 0.0 ){
-        if (ripplePct < 1.0)
-            ripplePct += 0.01;
-        else
-            bDead = true;
-    } else {
-        vel += acc;
-        vel *= _speed;//*0.85;
-        *this += vel;
-        acc *= 0;
-    }
+    addAttractionForce(*target, 150, 0.5);
     
-    tail.push_back(*this);
-    while (tail.size() > 50) {
-        tail.erase(tail.begin());
-    }
+    vel += acc;
+    vel *= _speed;
+    *this += vel;
+    acc *= 0;
+    
+    nFrame++;
 }
 
 void wSign::draw(){
@@ -111,63 +119,50 @@ void wSign::draw(){
     
 //    ofMesh mesh;
 //    mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-//    for (int i = 0; i < tail.size(); i++){
-//        float alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
+//    for (int i = tail.size()-1 ; i >= 1; i--){
+//        float alpha = ofMap(i, 0,tail.size()-1, 0.5, 0.0);
 //        
-//        mesh.addColor(ofFloatColor( 1.0, alpha) );
+//        mesh.addColor(ofFloatColor( 0.5, 1.0, 0.3, alpha) );
 //        mesh.addVertex(tail[i]);
 //    }
 //    ofFill();
 //    ofSetColor( 255 );
 //    mesh.draw();
     
-    for (int i = 0; i < tail.size(); i+= 5){
-        float alpha = ofMap(i+1, 1,tail.size(), 1.0, 0.0);
-        drawRipple( tail[i], alpha, 10 );
-    }
+    glBegin(GL_POINTS);
+    glVertex3f(x,y,z);
+    glEnd();
     
-    if (ripplePct > 0.0 ){
-        drawRipple(ripplePnt, ripplePct, 100, true);
+    for (int i = tail.size()-1 ; i >= 1; i--){
+        float pct = ofMap(tail.size()-1-i, 0, tail.size(), 0.0, 1.0,true);
+        ofPoint vectorToCenter = tail[i-1]-tail[i];
+        
+        vectorToCenter.normalize();
+        ofPoint objectLookAt = ofVec3f(0,0,1);
+        float theta = objectLookAt.angle(vectorToCenter);
+        ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
+        rippleAngle.normalize();
+        
+        ofPushStyle();
+        ofFloatColor waveColor;
+        waveColor.set(1.0);
+        waveColor.a = pct;
+        ofSetColor(waveColor);
+
+        ofPushMatrix();
+        ofTranslate( tail[i] );
+        glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
+        ofNoFill();
+        ofCircle(0,0,0, 5*(1.0-pct));
+        ofPopMatrix();
+        
+        ofPopStyle();
     }
     
     ofPopStyle();
 }
 
-void wSign::drawRipple( ofPoint _pos, float _pct, float _size, bool _dir ){
-    //  Jen equation
-    //
-    float rippleDps = _pct*rippleScl;
-    float rippleHeight = rippleDps*_size;
-    float rippleRadio = sqrt( 2*rippleHeight*_size-powf(rippleHeight,2) );
+void wSign::drawWaves( ofPoint _pos, float _pct, float _size){
     
-    ofPoint vectorToCenter = vel;
-    if (_dir)
-        vectorToCenter = ofPoint(0,0,0)- _pos;
-    
-    vectorToCenter.normalize();
-    ofPoint rippleCenter = _pos + vectorToCenter * rippleHeight;
-    
-    ofPoint objectLookAt = ofVec3f(0,0,1);
-    float theta = objectLookAt.angle(vectorToCenter);
-    ofPoint rippleAngle = vectorToCenter.crossed(objectLookAt);
-    rippleAngle.normalize();
-    
-    ofPushStyle();
-    ofFloatColor rippleColor;
-    rippleColor.set(1.0);
-    rippleColor.a = (1.0-_pct)*0.7;
-    ofSetColor(rippleColor);
-    
-    //  Ripple
-    //
-    ofPushMatrix();
-    ofTranslate(rippleCenter);
-    glRotatef(-theta, rippleAngle.x, rippleAngle.y, rippleAngle.z);
-    ofNoFill();
-    
-    //    ofSetLineWidth(1.5);
-    ofCircle(0,0,0, rippleRadio);
-    ofPopMatrix();
-    
-    ofPopStyle();
+   
 }
