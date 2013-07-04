@@ -36,6 +36,49 @@ void CloudsStoryEngine::setup(){
 	if(!isSetup){
 		ofAddListener(ofEvents().update, this, &CloudsStoryEngine::update);
 		isSetup = true;
+
+        KeywordDichotomy d;
+
+
+        d.left = "#art";
+        d.right = "#tech";
+        d.balance =0;
+        dichotomies.push_back(d);
+
+        d.left = "#emotional";
+        d.right = "#logical";
+        d.balance =0;
+        dichotomies.push_back(d);
+        
+        d.left = "#breakthrough";
+        d.right = "#obstacle";
+        d.balance =0;
+        dichotomies.push_back(d);
+
+        d.left = "#inspiring";
+        d.right = "#discouraging";
+        d.balance =0;
+        dichotomies.push_back(d);
+
+        d.left = "#fun";
+        d.right = "#serious";
+        d.balance =0;
+        dichotomies.push_back(d);
+        
+        d.left = "#sincere";
+        d.right = "#ironic";
+        d.balance =0;
+        dichotomies.push_back(d);
+
+        d.left = "#mindblowing";
+        d.right = "#mundane";
+        d.balance =0;
+        dichotomies.push_back(d);
+
+        d.left = "#rational";
+        d.right = "#surreal";
+        d.balance =0;
+        dichotomies.push_back(d);
 	}
 }
 
@@ -106,8 +149,21 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 		//add all manual links
 		vector<CloudsLink>& links = parser->getLinksForClip( clip );
 		for(int i = 0; i < links.size(); i++){
-			nextOptions.push_back( parser->getClipWithLinkName(links[i].targetName) );
+            
+            bool valid = true;
+            for(int c = 0; c < nextOptions.size(); c++){
+                if(nextOptions[c].getLinkName() == links[i].targetName){
+                    //don't add...
+                    valid = false;
+                    break;
+                }
+            }
+            
+            if(valid){
+                nextOptions.push_back( parser->getClipWithLinkName(links[i].targetName) );
+            }
 		}
+        
 		
 		//remove suppressions
 		vector<CloudsLink>& suppressions = parser->getSuppressionsForClip( clip );
@@ -118,14 +174,16 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 				}
 			}
 		}
-	
+        
+        //remove clips that share just one keyword...
+        
 		int topScore = 0;
 		for(int i = 0; i < nextOptions.size(); i++){
-			CloudsClip& clip = nextOptions[ i ];
-			int score = scoreForClip(clipQueue, clip, topic);
+			CloudsClip& nextClipOption = nextOptions[ i ];
+			int score = scoreForClip(clipQueue, nextClipOption, topic);
 			totalPoints += score;
 			topScore = MAX(topScore, score);
-			clip.currentScore = score;
+			nextClipOption.currentScore = score;
 		}
 	
 		if(topScore == 0){
@@ -145,6 +203,7 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 		//select next clip
 		clip = winningClips[ofRandom(winningClips.size())];
 		
+        updateDichotomies(clip);
 		clipQueue.push_back(clip);
 		totalSecondsEnqueued += clip.getDuration();
 		timesOnCurrentTopic++;
@@ -175,6 +234,27 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 	
 }
 
+void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
+    vector<string> specialkeywords= clip.getSpecialKeywords();
+    
+    for(int i=0; i <dichotomies.size();i++){
+        for(int j=0; j<specialkeywords.size();j++){
+         
+            if(dichotomies[i].left == specialkeywords[j]){
+                dichotomies[i].balance -= 1;
+                cout<<dichotomies[i].left<<": +1"<<endl;
+                
+            }
+            else if (dichotomies[i].right == specialkeywords[j]){
+                cout<<dichotomies[i].right<<": +1"<<endl;
+                dichotomies[i].balance += 1;
+            }
+            
+        }
+    }
+}
+
+//TODO: use coehsion and map distance to fix dead ends
 string CloudsStoryEngine::selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic){
 	
 	vector<string>& topics = clip.getKeywords();
@@ -482,7 +562,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 //    }
     
 	bool link = parser->clipLinksTo( currentlyPlayingClip.getLinkName(), potentialNextClip.getLinkName() );
-	if(potentialNextClip.person == currentlyPlayingClip.person){
+	if(!link && potentialNextClip.person == currentlyPlayingClip.person){
 		if(printDecisions) cout << "	REJECTED Clip " << potentialNextClip.getLinkName() << ": same person" << endl;
 		return 0;
 	}
@@ -502,7 +582,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	//Base score
 	int score = 0;
 	int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
-	score += (topicsInCommon)*10;
+	score += topicsInCommon*10;
 	
 	if(history.size() > 1){
 		int topicsInCommonWithPrevious = parser->getSharedKeywords(history[history.size()-2], potentialNextClip ).size();
@@ -517,13 +597,22 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	//penalize for the person occurring
 	score -= occurrences*4;
 	
+    //history should contain #keywords dichotomies, and then augment score
+    vector<string> specialKeywords = currentlyPlayingClip.getSpecialKeywords();
+    
+    
 	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
 	
 	return MAX(score, 0);
 }
 
+
+//IGNORE
 float CloudsStoryEngine::scoreForClip(CloudsClip& clip){
-	
+    
+    return 0;
+    
+	/*
 	//rejection criteria -- flat out reject clips on some basis
 	if(combinedClipsOnly && !clip.hasCombinedVideo){
 		if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": no combined video file" << endl;
@@ -585,6 +674,7 @@ float CloudsStoryEngine::scoreForClip(CloudsClip& clip){
 	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
 	
 	return MAX(score, 0);
+     */
 }
 
 void CloudsStoryEngine::drawStoryEngineDebug(){
@@ -617,7 +707,14 @@ void CloudsStoryEngine::drawActDebug(){
 		ofRect(screenX, 100 + 30*i, width, 30);
 		ofDrawBitmapString(clipQueue[i].getLinkName(), screenX+10, 100 + 30*(i+.75));
 	}
-	
+    
+    string dichotomiesString = "";
+    
+    for (int i =0; i<dichotomies.size(); i++) {
+        dichotomiesString += dichotomies[i].left + "," + dichotomies[i].right + " : " + ofToString(dichotomies[i].balance) + "\n";
+    }
+    ofDrawBitmapString(dichotomiesString, ofGetWidth()-500, 100);
+  	
 }
 
 float CloudsStoryEngine::getTotalSecondsWatched(){
