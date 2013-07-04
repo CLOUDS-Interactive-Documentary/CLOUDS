@@ -151,17 +151,9 @@ string CloudsVisualSystem::getCurrentTopic(){
 	return currentTopic;
 }
 
-//vector<string>& CloudsVisualSystem::getRelevantKeywords(){
-//	return relevantKeywords;
-//}
-
-void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
+void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRenderer& newRenderer){
 	sharedRenderer = &newRenderer;
 }
-
-//void CloudsVisualSystem::setCamera(CloudsCamera& camera){
-//	sharedCamera = &camera;
-//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,

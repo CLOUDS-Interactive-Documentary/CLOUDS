@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsRGBDCombinedRender.h"
+#include "CloudsRGBDCombinedRenderer.h"
 #include "ofxCameraSaveLoad.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
@@ -96,7 +96,7 @@ class CloudsVisualSystem {
 	void playSystem();
 	void stopSystem();
 	
-	void setRenderer(CloudsRGBDCombinedRender& newRenderer);
+	void setRenderer(CloudsRGBDCombinedRenderer& newRenderer);
 
 
 	void setupSpeaker(string speakerFirstName,
@@ -286,13 +286,9 @@ class CloudsVisualSystem {
     bool bShowTimeline;
     bool bEnableTimelineTrackCreation;
 
-	//called when showing the visual system, and to end it
-//	virtual void begin();
-//	virtual void end();
-
 	//these variables are set by the playback controller when displaying
 	//ways to interact with the pointcloud data
-	CloudsRGBDCombinedRender* sharedRenderer;
+	CloudsRGBDCombinedRenderer* sharedRenderer;
 	//set to true if the pointcloud renderer has valid speaker
 	bool hasSpeaker;
 	

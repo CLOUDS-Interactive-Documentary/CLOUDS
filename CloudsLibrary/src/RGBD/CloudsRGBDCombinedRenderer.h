@@ -12,11 +12,11 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 
-class CloudsRGBDCombinedRender {
+class CloudsRGBDCombinedRenderer {
 public:
     
-    CloudsRGBDCombinedRender();
-    ~CloudsRGBDCombinedRender();
+    CloudsRGBDCombinedRenderer();
+    ~CloudsRGBDCombinedRenderer();
 	
     //  SET
     //

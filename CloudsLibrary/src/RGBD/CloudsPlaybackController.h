@@ -4,7 +4,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "CloudsStoryEngine.h"
-#include "CloudsRGBDCombinedRender.h"
+#include "CloudsRGBDCombinedRenderer.h"
 #include "CloudsVisualSystem.h"
 
 #include "ofxGameCamera.h"
@@ -49,7 +49,7 @@ class CloudsPlaybackController {
 	CloudsClip currentClip;
 	
 	//RGBD STUFF
-	CloudsRGBDCombinedRender combinedRenderer;
+	CloudsRGBDCombinedRenderer combinedRenderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	string combinedMoviesFolder;
 	
