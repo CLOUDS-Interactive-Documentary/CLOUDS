@@ -56,6 +56,7 @@
 - (IBAction) specialKeywords:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
 
+- (IBAction) applySpecialKeyword:(id)sender;
 
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;

@@ -313,7 +313,6 @@ completionsForSubstring:(NSString *)substring
 
 - (void) updateKeywords:(id)sender{
 
-    
     if([self isClipSelected]){
 		
 		string keywordString = [currentKeywords.stringValue UTF8String];
@@ -340,7 +339,16 @@ completionsForSubstring:(NSString *)substring
     else{
         ofLogError()<<"No clip selected!"<<endl;
     }
-	
+}
+
+- (IBAction) applySpecialKeyword:(id)sender
+{
+	if([self isClipSelected]){
+		
+		NSButton
+		NSLog([sender tag]);
+		
+	}
 }
 
 - (void) setQuestionText:(id)sender{
@@ -561,6 +569,6 @@ completionsForSubstring:(NSString *)substring
 	else{
 		sharedKeywords.stringValue = @"";
 	}
-
 }
+
 @end
