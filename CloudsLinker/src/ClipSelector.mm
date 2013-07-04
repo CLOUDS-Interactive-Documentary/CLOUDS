@@ -49,7 +49,7 @@
 	[testViewParent saveLinks:self];
 }
 
-- (IBAction) specialKeywords:(id)sender
+- (void) specialKeywords:(id)sender
 {
     CloudsClip clip = [self selectedClip];
     vector<string> test = clip.getSpecialKeywords();
@@ -203,7 +203,8 @@
 		[linkTable deselectAll:self];
 		[suppressedTable deselectAll:self];
 		
-		[self updateSelectedClip];
+		[self performSelectorOnMainThread:@selector(updateSelectedClip) withObject:nil waitUntilDone:NO];
+		//[self updateSelectedClip];
     }
     else if(aNotification.object == linkTable){
 		
@@ -263,14 +264,14 @@
     }
 }
 
-- (CloudsClip) selectedClip
+- (CloudsClip&) selectedClip
 {
 	if(![self isClipSelected]){
-		return CloudsClip();
+		return dummyClip;
 	}
 	
     if(selectedClips.size() > 0){
-        return selectedClips[clipTable.selectedRow];
+        return parser->getClipWithID( selectedClips[clipTable.selectedRow].getID() );
 //        cout<<"Selected clip from source table "<<c.getLinkName()<<","<<c.hasStartingQuestion()<<endl;
     }
     else{
@@ -317,7 +318,8 @@ completionsForSubstring:(NSString *)substring
 		
 		string keywordString = [currentKeywords.stringValue UTF8String];
 		
-		CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
+//		CloudsClip& n = parser->getClipWithLinkName([self selectedClip].getLinkName());
+		CloudsClip& n = [self selectedClip];
 		
         vector<string> newKeywords = ofSplitString(keywordString, ",");
         n.setDesiredKeywords(newKeywords);
@@ -327,11 +329,7 @@ completionsForSubstring:(NSString *)substring
         revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
 		parser->refreshAllKeywords();
 		
-		
 		[testViewParent updateViews];
-
-
-//		[self updateSelectedClip];
 
 		[self saveLinks:self];
 
@@ -341,23 +339,23 @@ completionsForSubstring:(NSString *)substring
     }
 }
 
-- (IBAction) applySpecialKeyword:(id)sender
+- (IBAction) applySpecialKeyword:(id<NSUserInterfaceItemIdentification>)sender
 {
+	NSLog(@" tag %@", sender.identifier);
 	if([self isClipSelected]){
-		
-		NSButton
-		NSLog([sender tag]);
-		
+		[self selectedClip].addKeyword( "#" + string( [sender.identifier UTF8String] ) );
+		[testViewParent updateViews];
+		[self saveLinks:self];
 	}
 }
 
 - (void) setQuestionText:(id)sender{
     //button pressed
-    CloudsClip m = [self selectedClip];
+//    CloudsClip m = [self selectedClip];
 	
 	//needs to be the Clip referenced by the main database to have the question stored
     //get the txt from textfield, get currently select clip, and set it
-    CloudsClip& n = parser->getClipWithLinkName(m.getLinkName());
+    CloudsClip& n = [self selectedClip];
     string q = [startQuestion.stringValue UTF8String];
     
     n.setStartingQuestion(q);
@@ -526,7 +524,7 @@ completionsForSubstring:(NSString *)substring
 		
 		cout << "UPDATING SELECTED CLIP, row selected is "<< clipTable.selectedRow << endl;
 		
-		CloudsClip m = [self selectedClip];
+		CloudsClip& m = [self selectedClip];
 		string revokedList = "";
 		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
 		currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
@@ -562,13 +560,14 @@ completionsForSubstring:(NSString *)substring
 - (void) updateSharedKeywords
 {
 	if([self isClipSelected] && metaTable.selectedRow >= 0 && metaTable.selectedRow < currentMetaLinks.size()){
-		CloudsClip clip = [self selectedClip];
-		CloudsClip metaClip = [self selectedMeta];
+		CloudsClip& clip = [self selectedClip];
+		CloudsClip& metaClip = [self selectedMeta];
 		sharedKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(parser->getSharedKeywords(clip, metaClip), ", ").c_str() ];
 	}
 	else{
 		sharedKeywords.stringValue = @"";
 	}
+	
 }
 
 @end
