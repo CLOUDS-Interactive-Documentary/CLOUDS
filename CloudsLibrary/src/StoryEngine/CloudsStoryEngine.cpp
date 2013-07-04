@@ -38,7 +38,7 @@ void CloudsStoryEngine::setup(){
 		isSetup = true;
 
         KeywordDichotomy d;
-
+        dichotomyThreshold = 3;
 
         d.left = "#art";
         d.right = "#tech";
@@ -598,8 +598,33 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	score -= occurrences*4;
 	
     //history should contain #keywords dichotomies, and then augment score
-    vector<string> specialKeywords = currentlyPlayingClip.getSpecialKeywords();
+    vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
     
+    for(int i=0; i< dichotomies.size(); i++){
+        for( int k=0; k<specialKeywords.size(); k++){
+            if(dichotomies[i].right == specialKeywords[k]){
+                
+                if(dichotomies[i].balance > dichotomyThreshold){
+                    dichotomies[i].balance = -1;
+                }
+                else{
+                    score+= dichotomies[i].balance*2;
+                }
+                
+            }
+            else if(dichotomies[i].left == specialKeywords[k]){
+                
+                if(dichotomies[i].balance < -dichotomyThreshold){
+                    dichotomies[i].balance = 1;
+                }
+                else{
+                    score +=  -dichotomies[i].balance*2;
+                    
+                }
+                
+            }
+        }
+    }
     
 	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
 	

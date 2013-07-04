@@ -78,6 +78,7 @@ class CloudsStoryEngine {
 	
 	float totalPoints;
 	int nextClipTopScore;
+    int dichotomyThreshold;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
