@@ -65,7 +65,9 @@ protected:
     //  Cities
     //
     void loadWorldPoints(string _file);
+    void loadSecWorldPoints(string _file);
     vector< wPoint > worldPoints;
+    vector< wPoint > secWorldPoints;
     float   pointNoisePeaks;
     float   rippleThreshold;
     
