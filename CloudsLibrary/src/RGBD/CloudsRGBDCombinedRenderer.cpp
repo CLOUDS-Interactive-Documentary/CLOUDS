@@ -1,16 +1,16 @@
 //
-//  CloudsRGBDCombinedRender.cpp
-//  CloudsRGBDCombinedRender
+//  CloudsRGBDCombinedRenderer.cpp
+//  CloudsRGBDCombinedRenderer
 //
 //  Created by Patricio Gonzalez Vivo on 4/14/13.
 //
 //
 
-#include "CloudsRGBDCombinedRender.h"
+#include "CloudsRGBDCombinedRenderer.h"
 
 
 //---------------------------------------------------------------
-CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
+CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
 	
 	player = ofPtr<ofVideoPlayer>( new ofVideoPlayer );
 
@@ -30,16 +30,16 @@ CloudsRGBDCombinedRender::CloudsRGBDCombinedRender(){
     bRendererBound = false;
 }
 
-CloudsRGBDCombinedRender::~CloudsRGBDCombinedRender(){
+CloudsRGBDCombinedRenderer::~CloudsRGBDCombinedRenderer(){
     
 }
 
 //--------------------------------------------------------------- SET
-bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath){
+bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPath){
 	ofxXmlSettings XML;
 
 	if ( !XML.loadFile(calibrationXMLPath)){
-		ofLogError() << "CloudsRGBDCombinedRender::setup -- XML Path " << calibrationXMLPath << " failed to load";
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- XML Path " << calibrationXMLPath << " failed to load";
 		return false;		
 	}
 	
@@ -119,7 +119,7 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
 
     //TODO make asynchronous
 	if(!player->loadMovie(videoPath)){
-		ofLogError() << "CloudsRGBDCombinedRender::setup -- Movie path " << videoPath << " failed to load";
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
 	
@@ -136,12 +136,12 @@ bool CloudsRGBDCombinedRender::setup(string videoPath, string calibrationXMLPath
     return true;
 }
 
-void CloudsRGBDCombinedRender::setShaderPath(string _shaderPath){
+void CloudsRGBDCombinedRenderer::setShaderPath(string _shaderPath){
     shaderPath = _shaderPath;
 	reloadShader();
 }
 
-void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
+void CloudsRGBDCombinedRenderer::setSimplification(ofVec2f _simplification){
 	
 	if(simplify == _simplification){
 		return;
@@ -207,12 +207,12 @@ void CloudsRGBDCombinedRender::setSimplification(ofVec2f _simplification){
 	}
 }
 
-void CloudsRGBDCombinedRender::reloadShader(){
+void CloudsRGBDCombinedRenderer::reloadShader(){
 	shader.load( shaderPath );
 }
 
 //--------------------------------------------------------------- BINDERS
-bool CloudsRGBDCombinedRender::bindRenderer(){
+bool CloudsRGBDCombinedRenderer::bindRenderer(){
     ofPushMatrix();
 	
 	ofScale(1, -1, 1);
@@ -232,7 +232,7 @@ bool CloudsRGBDCombinedRender::bindRenderer(){
 	return true;
 }
 
-void CloudsRGBDCombinedRender::unbindRenderer(){
+void CloudsRGBDCombinedRenderer::unbindRenderer(){
     if(!bRendererBound){
 		ofLogError("ofxRGBDGPURenderer::unbindRenderer -- called without renderer bound");
 	 	return;
@@ -244,10 +244,10 @@ void CloudsRGBDCombinedRender::unbindRenderer(){
 	ofPopMatrix();
 }
 
-void CloudsRGBDCombinedRender::setupProjectionUniforms(){
+void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
     
 	if(!getPlayer().isLoaded()){
-		ofLogWarning() << " CloudsRGBDCombinedRender::setupProjectionUniforms -- player is not ready";
+		ofLogWarning() << " CloudsRGBDCombinedRenderer::setupProjectionUniforms -- player is not ready";
 		return;
 	}
 	
@@ -299,47 +299,47 @@ void CloudsRGBDCombinedRender::setupProjectionUniforms(){
 }
 
 //--------------------------------------------------------------- ACTIONS
-ofVideoPlayer& CloudsRGBDCombinedRender::getPlayer(){
+ofVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
 	return *player;
 }
 
 //--------------------------------------------------------------- ACTIONS
-ofPtr<ofVideoPlayer> CloudsRGBDCombinedRender::getSharedPlayerPtr(){
+ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
 	return player;
 }
 
 //--------------------------------------------------------------- ACTIONS
-ofShader& CloudsRGBDCombinedRender::getShader(){
+ofShader& CloudsRGBDCombinedRenderer::getShader(){
 	return shader;
 }
 
 //--------------------------------------------------------------- ACTIONS
-void CloudsRGBDCombinedRender::update(){
+void CloudsRGBDCombinedRenderer::update(){
 	getPlayer().setVolume(1.0);
 	if(getPlayer().isLoaded()){
 		getPlayer().update();
 	}
 }
 
-bool CloudsRGBDCombinedRender::isPlaying(){
+bool CloudsRGBDCombinedRenderer::isPlaying(){
 	return getPlayer().isLoaded() && getPlayer().isPlaying();
 }
 
-bool CloudsRGBDCombinedRender::isDone(){
+bool CloudsRGBDCombinedRenderer::isDone(){
 	return getPlayer().isLoaded() && !getPlayer().isPlaying();
 }
 
-void CloudsRGBDCombinedRender::drawMesh(){
+void CloudsRGBDCombinedRenderer::drawMesh(){
 	draw(OF_MESH_FILL);
 }
-void CloudsRGBDCombinedRender::drawPointCloud(){
+void CloudsRGBDCombinedRenderer::drawPointCloud(){
 	draw(OF_MESH_POINTS);
 }
-void CloudsRGBDCombinedRender::drawWireFrame(){
+void CloudsRGBDCombinedRenderer::drawWireFrame(){
 	draw(OF_MESH_WIREFRAME);
 }
 
-void CloudsRGBDCombinedRender::draw(ofPolyRenderMode drawMode){
+void CloudsRGBDCombinedRenderer::draw(ofPolyRenderMode drawMode){
     if(bindRenderer()){
 		
 		switch(drawMode){
