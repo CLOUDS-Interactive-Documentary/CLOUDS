@@ -70,7 +70,7 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 		distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
 	}
 	
-	headPosition = ofVec3f(XML.getValue("face:x", 0.0),
+	headPosition = ofVec3f(-XML.getValue("face:x", 0.0),
 						   -XML.getValue("face:y", 0.0),
 						   XML.getValue("face:z", 0.0));
 	

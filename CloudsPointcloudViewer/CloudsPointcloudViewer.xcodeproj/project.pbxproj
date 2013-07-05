@@ -111,6 +111,7 @@
 		E73995E217863E6000EA5F4D /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995D917863E6000EA5F4D /* Gravity.cpp */; };
 		E73995E317863E6000EA5F4D /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995DB17863E6000EA5F4D /* Points.cpp */; };
 		E73995E417863E6000EA5F4D /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995DD17863E6000EA5F4D /* State.cpp */; };
+		E739962E1787274E00EA5F4D /* wind.frag in Sources */ = {isa = PBXBuildFile; fileRef = E739962D1787274E00EA5F4D /* wind.frag */; };
 		E74CE81317663BAA00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE81117663BAA00083C4C /* ClusterData.cpp */; };
 		E7A1E0C81760E80E00A51263 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A1E0C71760E80E00A51263 /* libz.dylib */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
@@ -371,9 +372,9 @@
 		E739961B178640E700EA5F4D /* ~gravity.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "~gravity.frag"; sourceTree = "<absolute>"; };
 		E739961C178640E700EA5F4D /* ~groundplane.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "~groundplane.frag"; sourceTree = "<absolute>"; };
 		E739961D178640E700EA5F4D /* ~sine.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "~sine.frag"; sourceTree = "<absolute>"; };
-		E739961E178640E700EA5F4D /* ~wind.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = "~wind.frag"; sourceTree = "<absolute>"; };
 		E739961F178640E700EA5F4D /* integrate.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = integrate.frag; sourceTree = "<group>"; };
 		E7399620178640E700EA5F4D /* null.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = null.frag; sourceTree = "<group>"; };
+		E739962D1787274E00EA5F4D /* wind.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = wind.frag; sourceTree = "<group>"; };
 		E74CE81117663BAA00083C4C /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		E74CE81217663BAA00083C4C /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E753BD7F1740B241005952A8 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -713,7 +714,6 @@
 		E739911C1786161400EA5F4D /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7399613178640E600EA5F4D /* GPUParticles */,
 				E73995BD1786209B00EA5F4D /* ConnectorParticles */,
 				E739911E1786161500EA5F4D /* CloudsVisualSystem.h */,
 				E739911D1786161500EA5F4D /* CloudsVisualSystem.cpp */,
@@ -982,6 +982,7 @@
 		E73995D217863E6000EA5F4D /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
+				E7399613178640E600EA5F4D /* GPUParticles */,
 				E73995D317863E6000EA5F4D /* Controller.cpp */,
 				E73995D417863E6000EA5F4D /* Controller.h */,
 				E73995D517863E6000EA5F4D /* Force.cpp */,
@@ -1009,19 +1010,19 @@
 				E7399620178640E700EA5F4D /* null.frag */,
 			);
 			name = GPUParticles;
-			path = ../../../CloudsData/shaders/GPUParticles;
+			path = ../../../../CloudsData/shaders/GPUParticles;
 			sourceTree = "<group>";
 		};
 		E7399617178640E700EA5F4D /* forces */ = {
 			isa = PBXGroup;
 			children = (
+				E739962D1787274E00EA5F4D /* wind.frag */,
 				E7399618178640E700EA5F4D /* noise.frag */,
 				E7399619178640E700EA5F4D /* ~bounce.frag */,
 				E739961A178640E700EA5F4D /* ~goup.frag */,
 				E739961B178640E700EA5F4D /* ~gravity.frag */,
 				E739961C178640E700EA5F4D /* ~groundplane.frag */,
 				E739961D178640E700EA5F4D /* ~sine.frag */,
-				E739961E178640E700EA5F4D /* ~wind.frag */,
 			);
 			path = forces;
 			sourceTree = "<group>";
@@ -1271,6 +1272,7 @@
 				E73995E217863E6000EA5F4D /* Gravity.cpp in Sources */,
 				E73995E317863E6000EA5F4D /* Points.cpp in Sources */,
 				E73995E417863E6000EA5F4D /* State.cpp in Sources */,
+				E739962E1787274E00EA5F4D /* wind.frag in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,13 +1307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
-					"$(OFXPCL_HEADER_SEARCH_PATHS)",
-					"$(OFXCV_HEADERS)",
-					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
-					"$(OF_PATH)/addons/ofxFaceTracker/libs/FaceTracker/include/**",
-				);
+				HEADER_SEARCH_PATHS = "$(OF_CORE_HEADERS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -1343,13 +1339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
-					"$(OFXPCL_HEADER_SEARCH_PATHS)",
-					"$(OFXCV_HEADERS)",
-					"$(OF_PATH)/addons/ofxCv/libs/ofxCv/include/",
-					"$(OF_PATH)/addons/ofxFaceTracker/libs/FaceTracker/include/**",
-				);
+				HEADER_SEARCH_PATHS = "$(OF_CORE_HEADERS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",

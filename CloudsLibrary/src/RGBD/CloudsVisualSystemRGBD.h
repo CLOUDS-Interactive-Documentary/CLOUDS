@@ -45,6 +45,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 
 	ofxUISuperCanvas *meshGui;
 	ofxUISuperCanvas *cameraGui;
+	ofxUISuperCanvas *particleGui;
 	
 	ofVec3f translatedHeadPosition;
 	CloudsRGBDCamera cloudsCamera;

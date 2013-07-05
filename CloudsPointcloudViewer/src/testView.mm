@@ -33,6 +33,8 @@
 	rgbdVisualSystem.playSystem();
 	rgbdVisualSystem.loadPresetGUISFromName("Test_");
 	
+	srand(ofGetSeconds());
+	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
 }
@@ -86,7 +88,7 @@
 	}
 	
 	if(key == 'R'){
-		renderer.reloadShader();
+//		renderer.reloadShader();
 	}	
 	
 }

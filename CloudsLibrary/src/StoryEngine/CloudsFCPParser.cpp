@@ -229,7 +229,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			if(hasQuestionClip){
 				c.setStartingQuestion(question);
 				questionIds.push_back( c.getID() );
-				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
+//				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
 			}
 			else{
 				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;

@@ -92,6 +92,18 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(cameraGui);
 	guimap[meshGui->getName()] = cameraGui;
 	
+	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
+	particleGui->copyCanvasStyle(gui);
+    particleGui->copyCanvasProperties(gui);
+    particleGui->setName("Particle");
+    particleGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
+	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
+	
+	guis.push_back(particleGui);
+	guimap[meshGui->getName()] = particleGui;
+	
 }
 
 //--------------------------------------------------------------
@@ -110,14 +122,13 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	currentFlowPosition += cloudFlow;
 	sharedRenderer->flowPosition = currentFlowPosition;
 	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
+	cloudsCamera.lookTarget = translatedHeadPosition;
 	
 	particulateController.birthPlace = translatedHeadPosition;
-	particulateController.birthSpread = 1000;
 	
+	glDisable(GL_LIGHTING);
+	glDisable(GL_DEPTH_TEST);
 	particulateController.update();
-	
-	
-	cloudsCamera.lookTarget = translatedHeadPosition;
 }
 
 //--------------------------------------------------------------
@@ -327,15 +338,15 @@ void CloudsVisualSystemRGBD::selfDraw(){
 //		connectionGenerator.draw();
 
 		sharedRenderer->unbindRenderer();
-		
-		
-		glEnable(GL_DEPTH_TEST);
-		particulateController.draw();
-		
+				
 		
 		glPopAttrib();
 		ofPopMatrix();
 		ofPopStyle();
+		
+		glEnable(GL_DEPTH_TEST);
+		particulateController.draw();
+
 	}
 }
 
@@ -353,7 +364,7 @@ void CloudsVisualSystemRGBD::selfEnd(){
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
-
+		particulateController.reloadShaders();
 	}
 }
 

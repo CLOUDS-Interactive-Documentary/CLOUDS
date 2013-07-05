@@ -109,7 +109,6 @@ namespace GPUParticles {
 	
 	//--------
 	void State::loadShader() {
-		cout << "LOADING SHADER WITH PATH " << shaderPath << endl;
 		null.load(shaderPath + "default.vert", shaderPath + "null.frag");
 		integrate.load(shaderPath + "default.vert", shaderPath + "integrate.frag");
 	}
