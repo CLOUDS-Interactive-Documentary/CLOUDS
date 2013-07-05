@@ -6,6 +6,14 @@
 
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
+#include "CloudsAct.h"
+
+typedef struct {
+    string left;
+    string right;
+    int balance; //pos/neg
+} KeywordDichotomy;
+
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -57,7 +65,8 @@ class CloudsStoryEngine {
 	
 	void drawStoryEngineDebug();
 	void drawActDebug();
-	
+    void updateDichotomies(CloudsClip& clip);
+	void clearDichotomiesBalance();
   protected:
 	
 	CloudsEvents events;
@@ -66,15 +75,17 @@ class CloudsStoryEngine {
 	bool hasclip;
 	CloudsClip currentClip;
 	int totalFramesWatched;
-	
+	CloudsAct act;
+    
 	float totalPoints;
 	int nextClipTopScore;
+    int dichotomyThreshold;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
-	void buildQueue(CloudsClip seed, float seconds);
+	void buildAct(CloudsClip seed, float seconds);
 	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
-	
+
 	
 	bool populateNextClips();
 	void checkVisualSystems();
@@ -89,7 +100,9 @@ class CloudsStoryEngine {
 	
 	vector<CloudsClip> clipHistory;
 	vector<CloudsClip> clipQueue;
+	vector<KeywordDichotomy> dichotomies;
 	
+    
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;
 	
