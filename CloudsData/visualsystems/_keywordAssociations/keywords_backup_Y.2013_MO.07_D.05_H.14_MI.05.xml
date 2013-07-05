@@ -27,7 +27,7 @@
     <suppresions></suppresions>
 </system>
 <system name="Cities_SmookyCity">
-    <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_SmookyGrayScott">
@@ -247,7 +247,7 @@
     <suppresions></suppresions>
 </system>
 <system name="World_auroraVorealis">
-    <keywords>communication|community|collaboration</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="World_collaboration">

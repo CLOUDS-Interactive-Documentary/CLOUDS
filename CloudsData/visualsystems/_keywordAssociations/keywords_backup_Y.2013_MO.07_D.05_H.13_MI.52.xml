@@ -3,31 +3,31 @@
     <suppresions></suppresions>
 </system>
 <system name="Cities_CloseUp">
-    <keywords>cities|complexity</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_Crispy">
-    <keywords>cities|future|futurism</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_GrayScottCity">
-    <keywords>cities|growth|biology</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_GrayscottSmooke">
-    <keywords>cities|growth|biology</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_LightCity">
-    <keywords>cities|complexity|noise|future</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_Mountain">
-    <keywords>biology|growth</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_SmookyCity">
-    <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_SmookyGrayScott">
@@ -79,11 +79,11 @@
     <suppresions></suppresions>
 </system>
 <system name="LSystems_LindenTree">
-    <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="LSystems_mycelium">
-    <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="LSystems_mycelium_1">
@@ -247,7 +247,7 @@
     <suppresions></suppresions>
 </system>
 <system name="World_auroraVorealis">
-    <keywords>communication|community|collaboration</keywords>
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="World_collaboration">

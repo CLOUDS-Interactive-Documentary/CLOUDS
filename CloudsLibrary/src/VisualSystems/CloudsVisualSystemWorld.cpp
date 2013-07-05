@@ -228,7 +228,7 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
     sysGui->addSlider("independence", 0, 0.01, &independence);
 
     sysGui->addLabel("Satelite");
-    sysGui->addSlider("Number_of_Satelites", 0.0, 100, &nMaxSatellites);
+    sysGui->addSlider("Number_of_Satelites", 0.0, 1000, &nMaxSatellites);
     sysGui->addSlider("Max_signals", 0.0, 1000.0, &nMaxSigns);
 }
 
@@ -259,7 +259,7 @@ void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
     
     for(int i = 0; i < nMaxSatellites; i++ ){
         wSatellite *newSat = new wSatellite();
-        newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.01,0.01),0.0));
+        newSat->place(400, ofVec3f(ofRandom(-0.01,0.01),ofRandom(-0.05,0.05),0.0));
         satellites.push_back( newSat );
     }
 }
