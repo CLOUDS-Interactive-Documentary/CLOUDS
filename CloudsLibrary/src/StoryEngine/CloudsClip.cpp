@@ -148,7 +148,7 @@ void CloudsClip::collateKeywords(){
     for (int k = 0; k<revokedKeywords.size(); k++) {
         if(ofContains(keywords, revokedKeywords[k])){
             keywords.erase(keywords.begin()+ofFind(keywords, revokedKeywords[k]));
-            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
+//            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
         }
     }
     
@@ -157,14 +157,14 @@ void CloudsClip::collateKeywords(){
         //Returns 0 if they compare equal
         if (! ofContains(keywords, additionalKeywords[l]) ){
             keywords.push_back(additionalKeywords[l]);
-            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
+//            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
         }
     }
     
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
         if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
-            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
+//            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
 

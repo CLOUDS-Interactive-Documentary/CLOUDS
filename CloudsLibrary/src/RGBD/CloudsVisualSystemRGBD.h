@@ -5,6 +5,7 @@
 #include "ParticleConnectionGenerator.h"
 #include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
+#include "GPUParticles/Controller.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -41,14 +42,21 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void guiRenderEvent(ofxUIEventArgs &e);
 
   protected:
+
+	ofxUISuperCanvas *meshGui;
+	ofxUISuperCanvas *cameraGui;
 	
+	ofVec3f translatedHeadPosition;
 	CloudsRGBDCamera cloudsCamera;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;
 	ofMesh randomPoints;
+	
 	ParticleConnectionGenerator connectionGenerator;
-
+	GPUParticles::Controller particulateController;
+	
+	
 	vector<CloudsQuestion> questions;
 	
 	float pointcloudScale;

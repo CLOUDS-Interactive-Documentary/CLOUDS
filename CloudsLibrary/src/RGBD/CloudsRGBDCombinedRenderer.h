@@ -63,6 +63,8 @@ public:
 	ofVec3f adjustRotate;
 	ofVec2f adjustScale;
     
+	ofVec3f headPosition;
+	
 	float minDepth;
 	float maxDepth;
 	

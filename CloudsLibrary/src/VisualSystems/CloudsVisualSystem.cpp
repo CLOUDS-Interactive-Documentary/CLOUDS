@@ -3,6 +3,7 @@
 static bool confirmedDataPath = false;
 static bool usingDevelopmentFolder = false;
 static ofFbo sharedRenderTarget;
+static ofImage sharedCursor;
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     if(!sharedRenderTarget.isAllocated() ||
@@ -12,6 +13,13 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
         sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
     }
     return sharedRenderTarget;
+}
+
+ofImage& CloudsVisualSystem::getCursor(){
+	if(!sharedCursor.bAllocated()){
+		sharedCursor.loadImage(getDataPath() + "images/cursor.png");
+	}
+	return sharedCursor;
 }
 
 CloudsVisualSystem::CloudsVisualSystem(){
@@ -234,7 +242,10 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
 		selfPostDraw();
-		
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		getCursor().draw( ofGetMouseX(),ofGetMouseY() );
+		ofPopStyle();
 	}
     
 	timeline->draw();
@@ -279,38 +290,18 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     deleteGUIS();
 }
 
-//void CloudsVisualSystem::begin()
-//{
-//    loadGUIS();
-//	timeline->hide();
-//	hideGUIS();
-//	ofHideCursor();
-//	
-//	//    showGUIS(); //remove this so the gui doesn't keep popping up
-//    cam.enableMouseInput();
-//    for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-//    {
-//        it->second->light.setup();
-//    }
-//    selfBegin();
-//}
-
-//void CloudsVisualSystem::end()
-//{
-//	
-//}
 
 void CloudsVisualSystem::toggleControls(){
 	
 	toggleGUIS();
 	timeline->toggleShow();
 	
-	if(timeline->getIsShowing()){
-		ofShowCursor();
-	}
-	else{
+//	if(timeline->getIsShowing()){
+//		ofShowCursor();
+//	}
+//	else{
 		ofHideCursor();
-	}
+//	}
 	
 }
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)

@@ -23,7 +23,7 @@
 
 
 	[clipTable setTarget:self];
-	[clipTable setDoubleAction:@selector(loadClip:)];
+	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
 	
 	rgbdVisualSystem.setRenderer(renderer);
@@ -31,6 +31,10 @@
 	renderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
 
 	rgbdVisualSystem.playSystem();
+	rgbdVisualSystem.loadPresetGUISFromName("Test_");
+	
+	[self loadClip: parser.getRandomClip(true, false)];
+	
 }
 
 - (void)update
@@ -43,24 +47,27 @@
 
 }
 
-- (void) loadClip:(id)sender
+- (void) loadClipFromTable:(id)sender
 {
 
 	if(clipTable.selectedRow >= 0){
 
-		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
+		[self loadClip: parser.getAllClips()[ clipTable.selectedRow ] ];
 		
-		if(clip.hasCombinedVideo && renderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-			renderer.getPlayer().play();
-			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
-			currentClip = clip;
-		}
-		else{
-			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
-		}
 	}
 }
 
+- (IBAction)loadClip:(CloudsClip&)clip
+{
+	if(clip.hasCombinedVideo && renderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+		renderer.getPlayer().play();
+		rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+		currentClip = clip;
+	}
+	else{
+		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+	}	
+}
 
 - (void)exit
 {

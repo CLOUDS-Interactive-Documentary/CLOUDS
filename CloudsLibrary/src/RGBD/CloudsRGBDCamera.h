@@ -15,7 +15,7 @@ class CloudsRGBDCamera : public ofCamera {
 	float sideDistance;
 	float frontDistance;
 	float sidePullback;
-
+	float dropAmount;
 	float liftAmount;
 	//y params range --
 	float liftRange;
@@ -34,6 +34,7 @@ class CloudsRGBDCamera : public ofCamera {
 	
   protected:
 	ofVec3f currentPosition;
+	ofVec3f currentLookTarget;
 	
 	void setPositionFromMouse();
 	

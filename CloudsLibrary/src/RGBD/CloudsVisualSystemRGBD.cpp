@@ -18,14 +18,79 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	connectionGenerator.setMinDistance(40);
 	connectionGenerator.setup();
 	
+	particulateController.setParticleCount(1e5);
+	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
+	particulateController.setup();
+	
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 	setCurrentCamera(cloudsCamera);
-	
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGuis(){
+	
+	meshGui = new ofxUISuperCanvas("MESH", gui);
+	meshGui->copyCanvasStyle(gui);
+    meshGui->copyCanvasProperties(gui);
+    meshGui->setName("Mesh");
+    meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	meshGui->addSlider("CLOUD SCALE", .001,  1.0, &pointcloudScale);
+	meshGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
+	
+	meshGui->addLabel("MESH");
+	meshGui->addToggle("DRAW MESH", &drawMesh);
+	meshGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
+	meshGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
+	meshGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
+	
+	meshGui->addLabel("POINTS");
+	meshGui->addToggle("DRAW POINTS", &drawPoints);
+	meshGui->addSlider("SIZE MAX", 0, 3, &pointSizeMax);
+	meshGui->addSlider("SIZE MIN", 0, 3, &pointSizeMin);
+	meshGui->addSpacer();
+	meshGui->addSlider("P GRID ALPHA", 0, 1.0, &pointGridAlpha);
+	meshGui->addSlider("P GRID VERT SPACE", 1, 10, &pointVerticalSpace);
+	meshGui->addSlider("P GRID HORI SPACE", 1, 10, &pointHorizontalSpace);
+	meshGui->addSpacer();
+	meshGui->addSlider("NUM RANDOM POINTS", 0, 500000.0f, &numRandomPoints);
+	meshGui->addSlider("RANDOM ALPHA", 0, 1.0f, &randomPointAlpha);
+	
+	meshGui->addLabel("LINES");
+	meshGui->addToggle("DRAW LINES", &drawScanlines);
+	meshGui->addSlider("VERT LINE SPACE", .5, 12, &scanlineSimplify.x);
+	meshGui->addSlider("VERT LINE ALPHA", 0, 1.0, &verticalScanlineAlpha);
+	meshGui->addSlider("VERT LINE THICKNESS", 0, 2.0, &verticalScanlineThickness);
+	meshGui->addSpacer();
+	meshGui->addSlider("HORIZ LINE SPACE", .5, 12, &scanlineSimplify.y);
+	meshGui->addSlider("HORIZ LINE ALPHA", 0, 1.0, &horizontalScanlineAlpha);
+	meshGui->addSlider("HORIZ LINE THICKNESS", 0, 2.0, &horizontalScanlineThickness);
+	
+	meshGui->addLabel("FLOW");
+	meshGui->addSlider("CLOUD FLOW", -5, 5, &cloudFlow);
+	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
+	
+	guis.push_back(meshGui);
+	guimap[meshGui->getName()] = meshGui;
+
+	
+	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
+	cameraGui->copyCanvasStyle(gui);
+    cameraGui->copyCanvasProperties(gui);
+    cameraGui->setName("Camera");
+    cameraGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	cameraGui->addLabel("OFFSETS");
+	cameraGui->addSlider("FRONT DISTANCE", 50, 200, &cloudsCamera.frontDistance);
+	cameraGui->addSlider("SIDE DISTANCE", 20, 200, &cloudsCamera.sideDistance);
+	cameraGui->addSlider("SIDE PULLBACK", -200, 200, &cloudsCamera.sidePullback);
+	cameraGui->addSlider("LIFT RANGE", 0, 100, &cloudsCamera.liftRange);
+	cameraGui->addSlider("LIFT AMOUNT", 10, 200, &cloudsCamera.liftAmount);
+	cameraGui->addSlider("DROP AMOUNT", 0, 200, &cloudsCamera.dropAmount);
+	
+	guis.push_back(cameraGui);
+	guimap[meshGui->getName()] = cameraGui;
 	
 }
 
@@ -40,10 +105,19 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	if(numRandomPoints != randomPoints.getNumVertices()){
 		generateRandomPoints();
 	}
+	
+
 	currentFlowPosition += cloudFlow;
 	sharedRenderer->flowPosition = currentFlowPosition;
+	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
 	
-	//connectionGenerator.update();
+	particulateController.birthPlace = translatedHeadPosition;
+	particulateController.birthSpread = 1000;
+	
+	particulateController.update();
+	
+	
+	cloudsCamera.lookTarget = translatedHeadPosition;
 }
 
 //--------------------------------------------------------------
@@ -155,7 +229,7 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
-	
+	ofDrawSphere(translatedHeadPosition, 10);
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
@@ -163,7 +237,6 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemRGBD::selfDraw(){
-	
 	
 	if(sharedRenderer != NULL && hasSpeaker){
 
@@ -208,7 +281,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			glDepthFunc(GL_LEQUAL);
 			glEnable(GL_CULL_FACE);
 			glCullFace(GL_FRONT);
-//			ofDisableAlphaBlending();
+
 			pointGrid.draw();
 			ofTranslate(0,0,-3);
 			
@@ -255,6 +328,11 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 		sharedRenderer->unbindRenderer();
 		
+		
+		glEnable(GL_DEPTH_TEST);
+		particulateController.draw();
+		
+		
 		glPopAttrib();
 		ofPopMatrix();
 		ofPopStyle();
@@ -299,7 +377,7 @@ void CloudsVisualSystemRGBD::selfMousePressed(ofMouseEventArgs& data){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfMouseReleased(ofMouseEventArgs& data){
-	
+
 }
 
 //--------------------------------------------------------------
@@ -309,7 +387,19 @@ void CloudsVisualSystemRGBD::selfSetupGui(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfGuiEvent(ofxUIEventArgs &e){
-	
+	if(e.widget->getName() == "VERT LINE SPACE"){
+		refreshScanlineMesh = true;
+	}
+	else if(e.widget->getName() == "HORIZ LINE SPACE"){
+		refreshScanlineMesh = true;
+	}
+	else if(e.widget->getName() == "P GRID VERT SPACE"){
+		refreshPointcloud = true;
+	}
+	else if(e.widget->getName() == "P GRID HORI SPACE"){
+		refreshPointcloud = true;
+	}
+
 }
 
 //--------------------------------------------------------------
@@ -323,39 +413,7 @@ void CloudsVisualSystemRGBD::guiSystemEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupRenderGui(){
 	
-	rdrGui->addSlider("CLOUD SCALE", .001,  0.5, &pointcloudScale);
-	rdrGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
 
-	rdrGui->addLabel("MESH");
-	rdrGui->addToggle("DRAW MESH", &drawMesh);
-	rdrGui->addSlider("MESH ALPHA", 0, 1.0f, &meshAlpha);
-	rdrGui->addSlider("EYE MULTIPLIER", 0, 1.0f, &eyeMultiplier);
-	rdrGui->addSlider("SKIN MULTIPLIER", 0, 1.0f, &skinMultiplier);
-	
-	rdrGui->addLabel("POINTS");
-	rdrGui->addToggle("DRAW POINTS", &drawPoints);
-	rdrGui->addSlider("POINTSIZE MAX", 0, 3, &pointSizeMax);
-	rdrGui->addSlider("POINTSIZE MIN", 0, 3, &pointSizeMin);
-	rdrGui->addSpacer();
-	rdrGui->addSlider("POINT GRID ALPHA", 0, 1.0, &pointGridAlpha);
-	rdrGui->addSlider("POINTGRID VERTICAL SPACE", 1, 10, &pointVerticalSpace);
-	rdrGui->addSlider("POINTGRID HORIZONTAL SPACE", 1, 10, &pointHorizontalSpace);
-	rdrGui->addSpacer();
-	rdrGui->addSlider("NUM RANDOM POINTS", 0, 500000.0f, &numRandomPoints);
-	rdrGui->addSlider("RANDOM POINT ALPHA", 0, 1.0f, &randomPointAlpha);
-	
-	rdrGui->addLabel("LINES");
-	rdrGui->addToggle("DRAW LINES", &drawScanlines);
-	rdrGui->addSlider("VERTICAL LINE SPACE", .5, 12, &scanlineSimplify.x);
-	rdrGui->addSlider("VERTICAL LINE ALPHA", 0, 1.0, &verticalScanlineAlpha);
-	rdrGui->addSlider("VERTICAL LINE THICKNESS", 0, 2.0, &verticalScanlineThickness);
-	rdrGui->addSpacer();
-	rdrGui->addSlider("HORIZONTAL LINE SPACE", .5, 12, &scanlineSimplify.y);
-	rdrGui->addSlider("HORIZ. LINE ALPHA", 0, 1.0, &horizontalScanlineAlpha);
-	rdrGui->addSlider("HORIZ. LINE THICKNESS", 0, 2.0, &horizontalScanlineThickness);
-	
-	rdrGui->addLabel("FLOW");
-	rdrGui->addSlider("CLOUD FLOW", -5, 5, &cloudFlow);
 }
 
 //--------------------------------------------------------------
@@ -363,17 +421,6 @@ void CloudsVisualSystemRGBD::guiRenderEvent(ofxUIEventArgs &e){
 	
 //	cout << "GUI EVENT WITH WIDGET " << e.widget->getName();
 	
-	if(e.widget->getName() == "VERTICAL LINE SPACE"){
-		refreshScanlineMesh = true;
-	}
-	else if(e.widget->getName() == "HORIZONTAL LINE SPACE"){
-		refreshScanlineMesh = true;
-	}
-	else if(e.widget->getName() == "POINTGRID VERTICAL SPACE"){
-		refreshPointcloud = true;
-	}
-	else if(e.widget->getName() == "POINTGRID HORIZONTAL SPACE"){
-		refreshPointcloud = true;
-	}
+
 }
 

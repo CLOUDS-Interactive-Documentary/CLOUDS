@@ -70,7 +70,13 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 		distortionP[i] = XML.getValue("colorIntrinsics:dP:p"+ofToString(i), 1.0f);
 	}
 	
-	float mat4x4[16] = {
+	headPosition = ofVec3f(XML.getValue("face:x", 0.0),
+						   -XML.getValue("face:y", 0.0),
+						   XML.getValue("face:z", 0.0));
+	
+	cout << "head position " << headPosition << endl;
+	
+ 	float mat4x4[16] = {
 		depthToRGBRotation[0],depthToRGBRotation[1],depthToRGBRotation[2],0,
 		depthToRGBRotation[3],depthToRGBRotation[4],depthToRGBRotation[5],0,
 		depthToRGBRotation[6],depthToRGBRotation[7],depthToRGBRotation[8],0,

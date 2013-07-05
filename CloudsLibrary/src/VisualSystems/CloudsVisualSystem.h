@@ -26,7 +26,8 @@ class CloudsVisualSystem {
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
 	static ofFbo& getSharedRenderTarget();
-
+	static ofImage& getCursor();
+	
 	//SUB CLASSES USE THESE METHODS:
     virtual void selfSetup();
     virtual void selfSetupGuis();
