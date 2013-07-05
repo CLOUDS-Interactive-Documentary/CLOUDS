@@ -107,23 +107,25 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
 	currentTopic =   topic;
 	//select a random topic from the clip
 	
-	buildQueue(seed, 10*60);
+	buildAct(seed, 10*60);
 	//CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
 	//ofNotifyEvent(events.storyBegan,args);
 	
 	//loadClip( seed );
 }
 
-void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
+void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 	
 	float totalSecondsEnqueued = 0;
 	bool deadEnd = false;
 	string topic = currentTopic;
 	clipQueue.clear();
+    act.clips.clear();
 	
 	CloudsClip clip = seed;
-	clipQueue.push_back(clip);
-	
+	act.clips.push_back(clip);
+	clearDichotomiesBalance();
+    
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
 	
@@ -180,7 +182,7 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 		int topScore = 0;
 		for(int i = 0; i < nextOptions.size(); i++){
 			CloudsClip& nextClipOption = nextOptions[ i ];
-			int score = scoreForClip(clipQueue, nextClipOption, topic);
+			int score = scoreForClip(act.clips, nextClipOption, topic);
 			totalPoints += score;
 			topScore = MAX(topScore, score);
 			nextClipOption.currentScore = score;
@@ -204,7 +206,7 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 		clip = winningClips[ofRandom(winningClips.size())];
 		
         updateDichotomies(clip);
-		clipQueue.push_back(clip);
+		act.clips.push_back(clip);
 		totalSecondsEnqueued += clip.getDuration();
 		timesOnCurrentTopic++;
 
@@ -215,8 +217,8 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 	}
 	
 	cout << "CLIPS:" << endl;
-	for(int i = 0; i < clipQueue.size(); i++){
-		cout << "	CLIP: " << clipQueue[i].getLinkName() << endl;
+	for(int i = 0; i < act.clips.size(); i++){
+		cout << "	CLIP: " << act.clips[i].getLinkName() << endl;
 	}
 	
 	cout << "TOPICS: " << endl;
@@ -229,9 +231,16 @@ void CloudsStoryEngine::buildQueue(CloudsClip seed, float seconds){
 	ofNotifyEvent(events.storyBegan,argsA);
 	
 	
-	CloudsStoryEventArgs argsB(clipQueue[0], allNextClips, topicHistory[0]);
+	CloudsStoryEventArgs argsB(act.clips[0], allNextClips, topicHistory[0]);
 	ofNotifyEvent(events.clipBegan,argsB);
 	
+}
+
+void CloudsStoryEngine::clearDichotomiesBalance(){
+    
+    for(int i=0; i <dichotomies.size();i++){
+        dichotomies[i].balance =0;
+    }
 }
 
 void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
@@ -262,7 +271,7 @@ string CloudsStoryEngine::selectTopic(CloudsClip& clip, vector<string>& topicHis
 	topicScores.resize(topics.size());
 	float topicHighScore = 0;
 	for(int i = 0; i < topics.size(); i++){
-		topicScores[i] = scoreForTopic(topicHistory, clipQueue, topic, topics[i]);
+		topicScores[i] = scoreForTopic(topicHistory, act.clips, topic, topics[i]);
 		topicHighScore = MAX(topicHighScore,topicScores[i]);
 	}
 	
@@ -357,7 +366,7 @@ bool CloudsStoryEngine::clipEnded(){
 		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
 	}
 	
-	buildQueue( clipQueue[clipQueue.size()-1], 60*5 );
+	buildAct( act.clips[act.clips.size()-1], 60*5 );
 }
 
 void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
@@ -719,18 +728,18 @@ void CloudsStoryEngine::drawStoryEngineDebug(){
 
 void CloudsStoryEngine::drawActDebug(){
 	float totalTime = 0;
-	for(int i = 0; i < clipQueue.size(); i++){
-		totalTime += clipQueue[i].getDuration();
+	for(int i = 0; i < act.clips.size(); i++){
+		totalTime += act.clips[i].getDuration();
 	}
 	
 	int currentTime = 0;
-	for(int i = 0; i < clipQueue.size(); i++){
+	for(int i = 0; i < act.clips.size(); i++){
 		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-		float width = ofMap(clipQueue[i].getDuration(), 0, totalTime,  0, ofGetWidth());
-		currentTime += clipQueue[i].getDuration();
+		float width = ofMap(act.clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
+		currentTime += act.clips[i].getDuration();
 		ofNoFill();
 		ofRect(screenX, 100 + 30*i, width, 30);
-		ofDrawBitmapString(clipQueue[i].getLinkName(), screenX+10, 100 + 30*(i+.75));
+		ofDrawBitmapString(act.clips[i].getLinkName(), screenX+10, 100 + 30*(i+.75));
 	}
     
     string dichotomiesString = "";
