@@ -20,8 +20,8 @@ string CloudsVisualSystemVoro::getSystemName()
 
 void CloudsVisualSystemVoro::selfSetup()
 {
-//    background.load("",getDataPath()+"shaders/VisualSystems/Voro/cosmos.fs");
-    background.load("",getDataPath()+"shaders/VisualSystems/Voro/edgeDetection.fs");
+    background.load("",getDataPath()+"shaders/VisualSystems/Voro/cosmos.fs");
+//    background.load("",getDataPath()+"shaders/VisualSystems/Voro/edgeDetection.fs");
     
 //    noiseDisplacement.load(getDataPath()+"shaders/VisualSystems/Voro/noiseDisplacement");
 //    noiseAmplitud = 0.0;
@@ -107,13 +107,13 @@ void CloudsVisualSystemVoro::selfDrawBackground()
 //    ofPushStyle();
 //    int width = ofGetWidth();
 //    int height = ofGetHeight();
-//    
+//
 //    background.begin();
 //    background.setUniform1f("time", ofGetElapsedTimef());
 //    background.setUniform2f("mouse", xRot->getPos()*PI, yRot->getPos()*PI);
 //    background.setUniform2f("resolution", width, height);
 //    background.setUniform1f("starsAlpha", 0.5);
-    
+//    
 //    glBegin(GL_QUADS);
 //    glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
 //    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
@@ -121,7 +121,7 @@ void CloudsVisualSystemVoro::selfDrawBackground()
 //    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
 //    glEnd();
 //    background.end();
-    
+//    
 //    ofPopStyle();
 }
 

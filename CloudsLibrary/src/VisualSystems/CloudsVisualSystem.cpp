@@ -99,7 +99,7 @@ void CloudsVisualSystem::playSystem(){
 		loadGUIS();
 		timeline->hide();
 		hideGUIS();
-		ofHideCursor();
+//		ofHideCursor();
 		
 		//    showGUIS(); //remove this so the gui doesn't keep popping up
 		cam.enableMouseInput();
@@ -300,7 +300,7 @@ void CloudsVisualSystem::toggleControls(){
 //		ofShowCursor();
 //	}
 //	else{
-		ofHideCursor();
+//		ofHideCursor();
 //	}
 	
 }
