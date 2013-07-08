@@ -13,7 +13,12 @@ namespace GPUParticles {
 	public:
 		void setState(State &);
 		void customDraw();
+		
+		ofFloatColor color;
+		float sizeThreshold;
+
 	protected:
+		
 		State * state;
 		ofMesh mesh;
 		ofShader displace;

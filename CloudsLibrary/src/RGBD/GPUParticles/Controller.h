@@ -30,6 +30,8 @@ namespace GPUParticles {
 		float birthSpread;
 		float birthRate;
 		
+		Points& getPoints();
+		
 	protected:
 		
 		string shaderDirectory;

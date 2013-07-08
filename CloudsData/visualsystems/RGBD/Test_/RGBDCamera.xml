@@ -3,7 +3,7 @@
     <Name>Camera</Name>
     <IsMinified>0</IsMinified>
     <XPosition>425.000000000</XPosition>
-    <YPosition>837.000000000</YPosition>
+    <YPosition>859.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SIDE PULLBACK</Name>
-    <Value>-50.000000000</Value>
+    <Value>-48.275863647</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LIFT RANGE</Name>
-    <Value>77.339897156</Value>
+    <Value>65.024635315</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LIFT AMOUNT</Name>
-    <Value>10.000000000</Value>
+    <Value>21.231527328</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

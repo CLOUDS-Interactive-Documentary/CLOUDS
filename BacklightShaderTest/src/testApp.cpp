@@ -19,7 +19,7 @@ void testApp::update(){
 void testApp::draw(){
 	
 	cam.begin();
-	ofNoFill();
+//	ofNoFill();
 	
 	backlight.begin();
 	ofDrawSphere(0, 0, 150);

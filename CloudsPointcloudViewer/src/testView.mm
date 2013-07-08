@@ -87,6 +87,14 @@
 		}
 	}
 	
+	if(key == 'P'){
+		renderer.getPlayer().play();
+	}
+	
+	if(key == 'H'){
+		ofShowCursor();
+	}
+	
 	if(key == 'R'){
 //		renderer.reloadShader();
 	}	
