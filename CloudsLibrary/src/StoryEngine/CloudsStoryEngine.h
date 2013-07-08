@@ -67,6 +67,8 @@ class CloudsStoryEngine {
 	void drawActDebug();
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
+    
+    CloudsAct& getAct();
   protected:
 	
 	CloudsEvents events;

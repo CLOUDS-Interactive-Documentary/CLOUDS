@@ -120,15 +120,17 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 	bool deadEnd = false;
 	string topic = currentTopic;
 	clipQueue.clear();
-    act.clips.clear();
+    act.clearAct();
 	
 	CloudsClip clip = seed;
-	act.clips.push_back(clip);
+
+    act.addClipToAct(clip);
 	clearDichotomiesBalance();
     
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
-	
+	act.setTopicInHistory(topic);
+  
 	int timesOnCurrentTopic = 0;
 	bool freeTopic = false;
 	while( totalSecondsEnqueued < seconds ){
@@ -143,9 +145,12 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 			timesOnCurrentTopic = 1;
 			freeTopic = false;
 			topicHistory.push_back(topic);
+
 		}
-		
-		//get all meta data options
+        
+        //storing a copy of current topic for each clip
+		act.setTopicInHistory(topic);
+        //get all meta data options
 		vector<CloudsClip> nextOptions = parser->getClipsWithKeyword(topic);
 		
 		//add all manual links
@@ -182,7 +187,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		int topScore = 0;
 		for(int i = 0; i < nextOptions.size(); i++){
 			CloudsClip& nextClipOption = nextOptions[ i ];
-			int score = scoreForClip(act.clips, nextClipOption, topic);
+			int score = scoreForClip(act.getAllClips(), nextClipOption, topic);
 			totalPoints += score;
 			topScore = MAX(topScore, score);
 			nextClipOption.currentScore = score;
@@ -206,7 +211,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		clip = winningClips[ofRandom(winningClips.size())];
 		
         updateDichotomies(clip);
-		act.clips.push_back(clip);
+		act.addClipToAct(clip);
 		totalSecondsEnqueued += clip.getDuration();
 		timesOnCurrentTopic++;
 
@@ -217,21 +222,24 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 	}
 	
 	cout << "CLIPS:" << endl;
-	for(int i = 0; i < act.clips.size(); i++){
-		cout << "	CLIP: " << act.clips[i].getLinkName() << endl;
+	for(int i = 0; i < act.getAllClips().size(); i++){
+		cout << "	CLIP: " << act.getClipInAct(i).getLinkName() << endl;
 	}
 	
 	cout << "TOPICS: " << endl;
-	for(int i = 0; i < topicHistory.size(); i++){
-		cout << "	TOPIC: " << topicHistory[i] << endl;
+	for(int i = 0; i < act.getAllTopics().size(); i++){
+		cout << "	TOPIC: " << act.getTopicInHistory(i) << endl;
 	}
 	
+    
+    cout<<"TOPIC SIZE: "<<act.getAllTopics().size()<<endl;
+    cout<<"Clips SIZE: "<<act.getAllClips().size()<<endl;
 	// TEMP
 	CloudsStoryEventArgs argsA(seed,allNextClips,currentTopic);
 	ofNotifyEvent(events.storyBegan,argsA);
 	
 	
-	CloudsStoryEventArgs argsB(act.clips[0], allNextClips, topicHistory[0]);
+	CloudsStoryEventArgs argsB(act.getClipInAct(0), allNextClips, act.getTopicInHistory(0));
 	ofNotifyEvent(events.clipBegan,argsB);
 	
 }
@@ -271,7 +279,7 @@ string CloudsStoryEngine::selectTopic(CloudsClip& clip, vector<string>& topicHis
 	topicScores.resize(topics.size());
 	float topicHighScore = 0;
 	for(int i = 0; i < topics.size(); i++){
-		topicScores[i] = scoreForTopic(topicHistory, act.clips, topic, topics[i]);
+		topicScores[i] = scoreForTopic(topicHistory, act.getAllClips(), topic, topics[i]);
 		topicHighScore = MAX(topicHighScore,topicScores[i]);
 	}
 	
@@ -366,7 +374,7 @@ bool CloudsStoryEngine::clipEnded(){
 		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
 	}
 	
-	buildAct( act.clips[act.clips.size()-1], 60*5 );
+	buildAct( act.getAllClips()[act.getAllClips().size()-1], 60*5 );
 }
 
 void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
@@ -711,6 +719,9 @@ float CloudsStoryEngine::scoreForClip(CloudsClip& clip){
      */
 }
 
+CloudsAct& CloudsStoryEngine::getAct(){
+    return act;
+}
 void CloudsStoryEngine::drawStoryEngineDebug(){
 	ofPushStyle();
 	
@@ -728,18 +739,18 @@ void CloudsStoryEngine::drawStoryEngineDebug(){
 
 void CloudsStoryEngine::drawActDebug(){
 	float totalTime = 0;
-	for(int i = 0; i < act.clips.size(); i++){
-		totalTime += act.clips[i].getDuration();
+	for(int i = 0; i < act.getAllClips().size(); i++){
+		totalTime += act.getClipInAct(i).getDuration();
 	}
 	
 	int currentTime = 0;
-	for(int i = 0; i < act.clips.size(); i++){
+	for(int i = 0; i < act.getAllClips().size(); i++){
 		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-		float width = ofMap(act.clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
-		currentTime += act.clips[i].getDuration();
+		float width = ofMap(act.getClipInAct(i).getDuration(), 0, totalTime,  0, ofGetWidth());
+		currentTime += act.getClipInAct(i).getDuration();
 		ofNoFill();
 		ofRect(screenX, 100 + 30*i, width, 30);
-		ofDrawBitmapString(act.clips[i].getLinkName(), screenX+10, 100 + 30*(i+.75));
+		ofDrawBitmapString(act.getClipInAct(i).getLinkName(), screenX+10, 100 + 30*(i+.75));
 	}
     
     string dichotomiesString = "";

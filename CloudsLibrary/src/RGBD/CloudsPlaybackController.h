@@ -6,10 +6,10 @@
 #include "CloudsStoryEngine.h"
 #include "CloudsRGBDCombinedRenderer.h"
 #include "CloudsVisualSystem.h"
-
+#include "CloudsAct.h"
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
-//#include "CloudsCamera.h"
+
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -47,7 +47,7 @@ class CloudsPlaybackController {
 
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
-	
+	CloudsAct* act;
 	//RGBD STUFF
 	CloudsRGBDCombinedRenderer combinedRenderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;

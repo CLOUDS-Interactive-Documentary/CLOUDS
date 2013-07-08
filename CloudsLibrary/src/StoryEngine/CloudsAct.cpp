@@ -12,35 +12,59 @@ CloudsAct::CloudsAct(){
     currentPlayIndex = 0;
     currentTime = 0;
     actPlaying =false;
+    waitingForNextClip = false;
 }
 
 void CloudsAct::update(){
     
     if(actPlaying){
-        currentTime += ofGetElapsedTimef() -currentTime;
-        if(currentTime>clipEndTime){
-            playNextClip();
+       
+        if(waitingForNextClip&&nextClipTime<timer.getAppTimeSeconds()){
+            loadNextClip();
         }
     }
-
-
 }
 
-void CloudsAct::playNextClip(){
+void CloudsAct::loadNextClip(){
+    currentClip = clips[currentPlayIndex];
+    currentTopic = topicHistory[currentPlayIndex];
+    currentPlayIndex++;
     
-    currentClip = clips[currentPlayIndex++];
-    clipEndTime = currentTime + currentClip.getDuration();
+    CloudsStoryEventArgs args(currentClip,clips,currentTopic);
+    ofNotifyEvent(events.clipBegan, args, this); 
 }
 
 
 void CloudsAct::playAct(){
     currentPlayIndex = 0;
     currentClip = clips[currentPlayIndex];
-    currentTime = ofGetElapsedTimef();
+    currentTopic = topicHistory[currentPlayIndex];
+    currentTime = timer.getAppTimeSeconds();
     actPlaying = true;
     clipEndTime = currentTime +currentClip.getDuration();
-    
 
+    CloudsStoryEventArgs argsA(currentClip,clips,currentTopic);
+    ofNotifyEvent(events.actBegan,argsA ,this);
+    
+    CloudsStoryEventArgs argsB(currentClip,clips,currentTopic);
+    ofNotifyEvent(events.clipBegan, argsB,this);
+    
+}
+
+
+
+bool CloudsAct::clipEnded(){
+   
+    CloudsStoryEventArgs args(currentClip,clips,currentTopic);
+    ofNotifyEvent(events.clipEnded, args, this);
+    
+    if(currentPlayIndex<clips.size()){
+        waitingForNextClip = true;
+        nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
+    }
+    else{
+        ofNotifyEvent(events.actEnded, args, this);
+    }
 }
 
 
@@ -67,6 +91,36 @@ void CloudsAct::drawActDebug(){
 		ofDrawBitmapString(clips[i].getLinkName(), screenX+10, 100 + 30*(i+.75));
 	}
     
+}
+
+CloudsClip& CloudsAct::getClipInAct(int index){
+    return clips[index];
+}
+
+void CloudsAct::addClipToAct(CloudsClip clip){
+    clips.push_back(clip);
+}
+
+vector<CloudsClip>& CloudsAct::getAllClips(){
+    return clips;
+}
+
+
+string CloudsAct::getTopicInHistory(int index){
+    return topicHistory[index];
+}
+
+vector<string>& CloudsAct::getAllTopics(){
+    return topicHistory;
+}
+
+void CloudsAct::setTopicInHistory(string topic){
+    topicHistory.push_back(topic);
+}
+
+void CloudsAct::clearAct(){
+    clips.clear();
+    topicHistory.clear();
 }
 
 

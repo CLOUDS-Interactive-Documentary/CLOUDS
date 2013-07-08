@@ -38,6 +38,9 @@ class CloudsEvents {
 	ofEvent<CloudsStoryEventArgs> storyBegan;
 	ofEvent<CloudsStoryEventArgs> storyEnded;
 	
+    ofEvent<CloudsStoryEventArgs> actBegan;
+    ofEvent<CloudsStoryEventArgs> actEnded;
+    
 	ofEvent<CloudsStoryEventArgs> clipBegan;
 	ofEvent<CloudsStoryEventArgs> clipEnded;
 
