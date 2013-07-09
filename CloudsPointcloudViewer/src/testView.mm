@@ -95,6 +95,11 @@
 		ofShowCursor();
 	}
 	
+	if(key == 'Q'){
+		
+		rgbdVisualSystem.addQuestion(parser.getRandomClip(true,true));
+	}
+	
 	if(key == 'R'){
 //		renderer.reloadShader();
 	}	

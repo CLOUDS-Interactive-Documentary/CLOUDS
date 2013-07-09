@@ -239,6 +239,17 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
+		
+		ofPushStyle();
+		ofPushMatrix();
+		ofTranslate(0, ofGetHeight());
+		ofScale(1,-1,1);
+		
+		selfDrawOverlay();
+		
+		ofPopMatrix();
+		ofPopStyle();
+		
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
 		selfPostDraw();
@@ -2335,6 +2346,10 @@ void CloudsVisualSystem::selfDraw()
     ofSetColor(ofColor(255));
     ofFill();
     mat->end();
+}
+
+void CloudsVisualSystem::selfDrawOverlay(){
+	
 }
 
 void CloudsVisualSystem::selfPostDraw(){
