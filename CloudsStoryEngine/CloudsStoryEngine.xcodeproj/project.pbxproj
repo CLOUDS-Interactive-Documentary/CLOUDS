@@ -25,6 +25,12 @@
 		18731D49178B2A9400E22F84 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D40178B2A9400E22F84 /* Gravity.cpp */; };
 		18731D4A178B2A9400E22F84 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D42178B2A9400E22F84 /* Points.cpp */; };
 		18731D4B178B2A9400E22F84 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D44178B2A9400E22F84 /* State.cpp */; };
+		18731D65178E0F5C00E22F84 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 18731D59178E0F5C00E22F84 /* kiss_fft.c */; };
+		18731D66178E0F5C00E22F84 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 18731D5A178E0F5C00E22F84 /* kiss_fftr.c */; };
+		18731D67178E0F5C00E22F84 /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 18731D5C178E0F5C00E22F84 /* kiss_fftnd.c */; };
+		18731D68178E0F5C00E22F84 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D5F178E0F5C00E22F84 /* ofxOcean.cpp */; };
+		18731D69178E0F5C00E22F84 /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D61178E0F5C00E22F84 /* ofxOceanRenderer.cpp */; };
+		18731D6A178E0F5C00E22F84 /* ofxOceanTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D63178E0F5C00E22F84 /* ofxOceanTile.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -239,6 +245,20 @@
 		18731D43178B2A9400E22F84 /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		18731D44178B2A9400E22F84 /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		18731D45178B2A9400E22F84 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		18731D51178E0F5C00E22F84 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		18731D55178E0F5C00E22F84 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
+		18731D56178E0F5C00E22F84 /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
+		18731D58178E0F5C00E22F84 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
+		18731D59178E0F5C00E22F84 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
+		18731D5A178E0F5C00E22F84 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		18731D5C178E0F5C00E22F84 /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
+		18731D5D178E0F5C00E22F84 /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
+		18731D5F178E0F5C00E22F84 /* ofxOcean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOcean.cpp; sourceTree = "<group>"; };
+		18731D60178E0F5C00E22F84 /* ofxOcean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOcean.h; sourceTree = "<group>"; };
+		18731D61178E0F5C00E22F84 /* ofxOceanRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanRenderer.cpp; sourceTree = "<group>"; };
+		18731D62178E0F5C00E22F84 /* ofxOceanRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanRenderer.h; sourceTree = "<group>"; };
+		18731D63178E0F5C00E22F84 /* ofxOceanTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanTile.cpp; sourceTree = "<group>"; };
+		18731D64178E0F5C00E22F84 /* ofxOceanTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanTile.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -786,6 +806,76 @@
 			path = GPUParticles;
 			sourceTree = "<group>";
 		};
+		18731D50178E0F5B00E22F84 /* ofxOcean */ = {
+			isa = PBXGroup;
+			children = (
+				18731D51178E0F5C00E22F84 /* .gitignore */,
+				18731D52178E0F5C00E22F84 /* libs */,
+				18731D5E178E0F5C00E22F84 /* src */,
+			);
+			name = ofxOcean;
+			path = ../../../addons/ofxOcean;
+			sourceTree = "<group>";
+		};
+		18731D52178E0F5C00E22F84 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				18731D53178E0F5C00E22F84 /* kiss */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		18731D53178E0F5C00E22F84 /* kiss */ = {
+			isa = PBXGroup;
+			children = (
+				18731D54178E0F5C00E22F84 /* include */,
+				18731D57178E0F5C00E22F84 /* src */,
+				18731D5B178E0F5C00E22F84 /* tools */,
+			);
+			path = kiss;
+			sourceTree = "<group>";
+		};
+		18731D54178E0F5C00E22F84 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				18731D55178E0F5C00E22F84 /* kiss_fft.h */,
+				18731D56178E0F5C00E22F84 /* kiss_fftr.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		18731D57178E0F5C00E22F84 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18731D58178E0F5C00E22F84 /* _kiss_fft_guts.h */,
+				18731D59178E0F5C00E22F84 /* kiss_fft.c */,
+				18731D5A178E0F5C00E22F84 /* kiss_fftr.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		18731D5B178E0F5C00E22F84 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				18731D5C178E0F5C00E22F84 /* kiss_fftnd.c */,
+				18731D5D178E0F5C00E22F84 /* kiss_fftnd.h */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		18731D5E178E0F5C00E22F84 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18731D5F178E0F5C00E22F84 /* ofxOcean.cpp */,
+				18731D60178E0F5C00E22F84 /* ofxOcean.h */,
+				18731D61178E0F5C00E22F84 /* ofxOceanRenderer.cpp */,
+				18731D62178E0F5C00E22F84 /* ofxOceanRenderer.h */,
+				18731D63178E0F5C00E22F84 /* ofxOceanTile.cpp */,
+				18731D64178E0F5C00E22F84 /* ofxOceanTile.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		3D2E9FF0174C16EC002D9E02 /* ofxGameCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,6 +897,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				18731D50178E0F5B00E22F84 /* ofxOcean */,
 				E74CE8741768ED7B00083C4C /* ofxMSACore */,
 				E74CE8371768ED6100083C4C /* ofxMSAObjCPointer */,
 				E74CE8481768ED6100083C4C /* ofxMSAPhysics */,
@@ -2264,6 +2355,12 @@
 				18731D49178B2A9400E22F84 /* Gravity.cpp in Sources */,
 				18731D4A178B2A9400E22F84 /* Points.cpp in Sources */,
 				18731D4B178B2A9400E22F84 /* State.cpp in Sources */,
+				18731D65178E0F5C00E22F84 /* kiss_fft.c in Sources */,
+				18731D66178E0F5C00E22F84 /* kiss_fftr.c in Sources */,
+				18731D67178E0F5C00E22F84 /* kiss_fftnd.c in Sources */,
+				18731D68178E0F5C00E22F84 /* ofxOcean.cpp in Sources */,
+				18731D69178E0F5C00E22F84 /* ofxOceanRenderer.cpp in Sources */,
+				18731D6A178E0F5C00E22F84 /* ofxOceanTile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

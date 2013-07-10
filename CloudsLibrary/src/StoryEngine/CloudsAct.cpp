@@ -18,22 +18,6 @@ CloudsAct::CloudsAct(){
     duration = 0;
 }
 
-//void CloudsAct::update(){
-//    
-//    if(actPlaying){
-//
-//        if(waitingForNextClip && nextClipTime<timer.getAppTimeSeconds()){
-//            loadNextClip();
-//        }
-//        
-//        if(timeToPlayVisualSystem()){
-//
-//        }
-//        else if(visualSystemEndTime>timer.getAppTimeSeconds()){
-//        }
-//    }
-//}
-
 void CloudsAct::loadNextClip(){
     currentClip = clips[currentPlayIndex];
     currentTopic = topicHistory[currentPlayIndex];
@@ -66,21 +50,36 @@ void CloudsAct::populateTime(){
 
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
-
+    topicsTrack = timeline.addFlags("Topics");
+    
+    string currentTopic = "";
+    string previousTopic = "";
     
     for(int i=0; i < actItems.size(); i++){
         ActTimeItem& item = actItems[i];
+
         if(item.type == Clip){
+            currentTopic = topicMap[item.key];
+            
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
+            
+            if(currentTopic != previousTopic){
+                topicsTrack ->addFlagAtTime(currentTopic, item.startTime * 1000);
+            }
+
+            previousTopic = currentTopic;
+
         }
         else if(item.type == VS){
-            visualSystemsTrack->addFlagAtTime("start%" + item.key, item.startTime * 1000);
-            visualSystemsTrack->addFlagAtTime("end%" + item.key, item.endTime * 1000);
+            visualSystemsTrack->addFlagAtTime("start:" + item.key, item.startTime * 1000);
+            visualSystemsTrack->addFlagAtTime("end:" + item.key, item.endTime * 1000);
         }
         else if (item.type == Gap){
             //nothing for now
         }
     }
+    
+    
     
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 }
@@ -92,6 +91,8 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
     else if(bang.track == visualSystemsTrack){
         //split string on %, send VS either began or ended
+        vector <string> presetId = ofSplitString(bang.flag, ":");
+        CloudsStoryEventArgs args(clipMap[presetId[1]], "");
     }
 }
 
@@ -215,6 +216,10 @@ void CloudsAct::setTopicInHistory(string topic){
     topicHistory.push_back(topic);
 }
 
+void CloudsAct::setTopicForClip(string topic, string clipName)
+{
+    topicMap[clipName] = topic;
+}
 
 void CloudsAct::clearAct(){
     clips.clear();

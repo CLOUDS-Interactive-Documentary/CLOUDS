@@ -215,7 +215,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
         updateDichotomies(clip);
 
         act.addClipToAct(clip,totalSecondsEnqueued);
-        
+        act.setTopicForClip(topic, clip.getLinkName());
 		totalSecondsEnqueued += clip.getDuration();
 
 		timesOnCurrentTopic++;

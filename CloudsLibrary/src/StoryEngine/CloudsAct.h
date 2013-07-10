@@ -56,6 +56,7 @@ class CloudsAct{
     
     string getTopicInHistory(int index);
     void setTopicInHistory(string topic);
+    void setTopicForClip(string topic, string clipName);
     vector<string>& getAllTopics();
     
 	bool clipEnded(); //call this when the clip is done!
@@ -85,7 +86,7 @@ protected:
     
     map<string, CloudsVisualSystemPreset> visualSystemsMap;
     map<string, ActTimeItem> visualSystemItems;
-    
+    map< string, string> topicMap;
     vector<string> questions;
   
     
@@ -93,6 +94,7 @@ protected:
     
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;
+    ofxTLFlags* topicsTrack;
     
     bool waitingForNextClip;
     bool actPlaying;
