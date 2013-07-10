@@ -38,14 +38,14 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 
-//	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-//	registerVisualSystem( new CloudsVisualSystemLSystems() );
-//	registerVisualSystem( new CloudsVisualSystemVoro() );
-//	registerVisualSystem( new CloudsVisualSystemCities() );
-//	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
+	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
+	registerVisualSystem( new CloudsVisualSystemLSystems() );
+	registerVisualSystem( new CloudsVisualSystemVoro() );
+	registerVisualSystem( new CloudsVisualSystemCities() );
+	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 	registerVisualSystem( new CloudsVisualSystemWorld() );
 	registerVisualSystem( new CloudsVisualSystemMemory() );
-//	registerVisualSystem( new CloudsVisualSystemHiga() );
+	registerVisualSystem( new CloudsVisualSystemHiga() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );

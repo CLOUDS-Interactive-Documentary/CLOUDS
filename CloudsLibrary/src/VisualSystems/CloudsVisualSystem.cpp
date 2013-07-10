@@ -1169,6 +1169,9 @@ void CloudsVisualSystem::setupPointLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setPointLight();
+	//removes light until we are active
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1199,6 +1202,8 @@ void CloudsVisualSystem::setupSpotLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setSpotlight();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1233,6 +1238,8 @@ void CloudsVisualSystem::setupBeamLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setDirectional();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
