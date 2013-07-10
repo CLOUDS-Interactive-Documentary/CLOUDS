@@ -628,10 +628,10 @@
 				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E739911A178615F400EA5F4D /* CloudsRGBDCamera.h */,
 				E7399119178615F400EA5F4D /* CloudsRGBDCamera.cpp */,
-				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
-				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
 				E731D65717401845006B9650 /* CloudsRGBDCombinedRenderer.h */,
 				E731D65617401845006B9650 /* CloudsRGBDCombinedRenderer.cpp */,
+				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
+				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
 				E79DD943178B71A300057B34 /* CloudsQuestion.h */,
 				E79DD942178B71A200057B34 /* CloudsQuestion.cpp */,
 			);
