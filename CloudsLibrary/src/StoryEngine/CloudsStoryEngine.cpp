@@ -24,6 +24,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	
 	fixedClipDelay = 5;
 	maxTimesOnTopic = 4;
+
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -124,7 +125,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 	
 	CloudsClip clip = seed;
 
-    act.addClipToAct(clip);
+    act.addClipToAct(clip,totalSecondsEnqueued);
 	clearDichotomiesBalance();
     
 	vector<string> topicHistory;
@@ -135,10 +136,12 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 	bool freeTopic = false;
 	while( totalSecondsEnqueued < seconds ){
 		freeTopic |= timesOnCurrentTopic > maxTimesOnTopic;
+
 		if(freeTopic){
 			string newTopic = selectTopic(clip, topicHistory, topic);
 			if(newTopic == topic){
 				break;
+
 			}
 			
 			topic = newTopic;
@@ -147,7 +150,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 			topicHistory.push_back(topic);
 
 		}
-        
+        cout<<"Times on topic :"<< topic<<", "<<timesOnCurrentTopic<<endl;
         //storing a copy of current topic for each clip
 		act.setTopicInHistory(topic);
         //get all meta data options
@@ -183,7 +186,6 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		}
         
         //remove clips that share just one keyword...
-        
 		int topScore = 0;
 		for(int i = 0; i < nextOptions.size(); i++){
 			CloudsClip& nextClipOption = nextOptions[ i ];
@@ -211,16 +213,58 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		clip = winningClips[ofRandom(winningClips.size())];
 		
         updateDichotomies(clip);
-		act.addClipToAct(clip);
+
+        act.addClipToAct(clip,totalSecondsEnqueued);
+        
 		totalSecondsEnqueued += clip.getDuration();
+
 		timesOnCurrentTopic++;
 
-		//Decide if a visual system goes on top
-		
+
+        
+        
+        
 		//Decide if a question is to be asked
 		
 	}
 	
+    // do the same thing again for Visual Systems
+    totalSecondsEnqueued = 0;
+    soloPointCloudTime = 0;
+    minLengthToShowPointCloudInClip = 0;
+    
+    //while(totalSecondsEnqueued<seconds){
+        for(int i=0; i<act.getAllClips().size();i++){
+        
+            CloudsClip& clip = act.getClipInAct(i);
+          
+           // totalSecondsEnqueued+= clip.getDuration();
+            soloPointCloudTime = clip.getDuration();
+            
+//            //Decide if a visual system goes on top
+//            if (totalSecondsEnqueued>soloPointCloudTime && clip.getDuration()>minLengthToShowPointCloudInClip){
+//                
+//                //insert a visual system during the clip
+//                
+//                //TODO: Make non random preset
+//                act.addVisualSystemDuringClip(visualSystems->getRandomVisualSystem(), totalSecondsEnqueued, clip.getDuration() );
+//            }
+//            else if(clip.getDuration()>soloPointCloudTime && clip.getDuration()<minLengthToShowPointCloudInClip){
+//                
+//                //insert a visual system after the point cloud and include a gap in clip time
+//                //TODO: Make non random preset
+//                act.addVisualSystemAfterClip(visualSystems->getRandomVisualSystem(), totalSecondsEnqueued);
+//                
+//                act.addGapForVisualSystem(totalSecondsEnqueued);
+//                
+//                //TODO: Make this a non-arbitrary number. Currently its the duration set in clouds act.
+//                
+//                //totalSecondsEnqueued += 60;
+//                
+//            }
+        }
+   // }
+    
 	cout << "CLIPS:" << endl;
 	for(int i = 0; i < act.getAllClips().size(); i++){
 		cout << "	CLIP: " << act.getClipInAct(i).getLinkName() << endl;

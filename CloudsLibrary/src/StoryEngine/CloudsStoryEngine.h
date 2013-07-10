@@ -78,7 +78,9 @@ class CloudsStoryEngine {
 	CloudsClip currentClip;
 	int totalFramesWatched;
 	CloudsAct act;
-    
+
+    float soloPointCloudTime;
+    float minLengthToShowPointCloudInClip;
 	float totalPoints;
 	int nextClipTopScore;
     int dichotomyThreshold;
