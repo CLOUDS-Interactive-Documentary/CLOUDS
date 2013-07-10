@@ -49,6 +49,8 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
+    
+    loadPresets();
 #endif
     
 }
@@ -63,7 +65,6 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
 	
-	loadPresets();
 	
 #endif
 }
@@ -120,6 +121,7 @@ void CloudsVisualSystemManager::loadPresets(){
 	}
 	
 #endif
+    cout << "** LOADED PRESETS " << presets.size() << endl;
 }
 
 //--------------------------------------------------------------------
@@ -173,6 +175,10 @@ void CloudsVisualSystemManager::saveKeywords(){
 
 //--------------------------------------------------------------------
 CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
+    if(presets.size() == 0){
+        ofLogError() << "No Visual System presets";
+        return dummyPreset;
+    }
 	return presets[ ofRandom(presets.size()) ];
 }
 

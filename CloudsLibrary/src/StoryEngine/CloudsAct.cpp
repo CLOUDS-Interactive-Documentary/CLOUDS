@@ -15,32 +15,31 @@ CloudsAct::CloudsAct(){
     waitingForNextClip = false;
     //TODO: Make non-arbritrary
     visualSystemDuration = 60;
-
+    duration = 0;
 }
 
-void CloudsAct::update(){
-    
-    if(actPlaying){
-
-        if(waitingForNextClip && nextClipTime<timer.getAppTimeSeconds()){
-            loadNextClip();
-        }
-        
-        if(timeToPlayVisualSystem()){
-//            ofNotifyEvent(events.visualSystemBegan, args, this)
-        }
-        else if(visualSystemEndTime>timer.getAppTimeSeconds()){
-//            ofNotifyEvent(events.visualSystemEnded, args, this);
-        }
-    }
-}
+//void CloudsAct::update(){
+//    
+//    if(actPlaying){
+//
+//        if(waitingForNextClip && nextClipTime<timer.getAppTimeSeconds()){
+//            loadNextClip();
+//        }
+//        
+//        if(timeToPlayVisualSystem()){
+//
+//        }
+//        else if(visualSystemEndTime>timer.getAppTimeSeconds()){
+//        }
+//    }
+//}
 
 void CloudsAct::loadNextClip(){
     currentClip = clips[currentPlayIndex];
     currentTopic = topicHistory[currentPlayIndex];
     currentPlayIndex++;
     
-    CloudsStoryEventArgs args(currentClip,clips,currentTopic);
+    CloudsStoryEventArgs args(currentClip,currentTopic);
     ofNotifyEvent(events.clipBegan, args, this); 
 }
 
@@ -54,67 +53,87 @@ void CloudsAct::playAct(){
     clipEndTime = startTime +currentClip.getDuration();
 
     //secsSinceLastVisualSystemPlayed =0;
-    CloudsStoryEventArgs argsA(currentClip,clips,currentTopic);
+    CloudsStoryEventArgs argsA(currentClip,currentTopic);
     ofNotifyEvent(events.actBegan,argsA ,this);
-    
-    CloudsStoryEventArgs argsB(currentClip,clips,currentTopic);
-    ofNotifyEvent(events.clipBegan, argsB,this);
-    
+        
 }
 
-
 void CloudsAct::populateTime(){
+
+    timeline.setup();
+    timeline.setDurationInSeconds(duration);
+    timeline.setAutosave(false);
+
+    visualSystemsTrack = timeline.addFlags("Visual Systems");
+    clipsTrack = timeline.addFlags("Clips");
+
+    
     for(int i=0; i < actItems.size(); i++){
-        if(actItems[i].type ==Clip){
-            
+        ActTimeItem& item = actItems[i];
+        if(item.type == Clip){
+            clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
         }
-        else if(actItems[i].type == VS){
-            
+        else if(item.type == VS){
+            visualSystemsTrack->addFlagAtTime("start%" + item.key, item.startTime * 1000);
+            visualSystemsTrack->addFlagAtTime("end%" + item.key, item.endTime * 1000);
         }
-        else if (actItems[i].type == Gap){
-            
+        else if (item.type == Gap){
+            //nothing for now
         }
+    }
+    
+    ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+}
+
+void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
+    if(bang.track == clipsTrack){
+        CloudsStoryEventArgs args(clipMap[bang.flag], "");
+        ofNotifyEvent(events.clipBegan, args);
+    }
+    else if(bang.track == visualSystemsTrack){
+        //split string on %, send VS either began or ended
     }
 }
 
 bool CloudsAct::clipEnded(){
    
-    CloudsStoryEventArgs args(currentClip,clips,currentTopic);
-    ofNotifyEvent(events.clipEnded, args, this);
+    CloudsStoryEventArgs args(currentClip,currentTopic);
+    ofNotifyEvent(events.clipEnded, args);
     
     if(currentPlayIndex<clips.size()){
         waitingForNextClip = true;
         nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
     }
     else{
-        ofNotifyEvent(events.actEnded, args, this);
+        ofNotifyEvent(events.actEnded, args);
     }
 }
 
 
 float CloudsAct::getActDuration(){
-    float totalDuration;
+    float totalDuration = 0;
     for(int i=0; i < clips.size(); i++){
         totalDuration += clips[i].getDuration();
     }
 }
 
 void CloudsAct::drawActDebug(){
-    float totalTime = 0;
-	for(int i = 0; i < clips.size(); i++){
-		totalTime += clips[i].getDuration();
-	}
-	
-	int currentTime = 0;
-	for(int i = 0; i < clips.size(); i++){
-		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-		float width = ofMap(clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
-		currentTime += clips[i].getDuration();
-		ofNoFill();
-		ofRect(screenX, 100 + 30*i, width, 30);
-		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
-	}
+//    float totalTime = 0;
+//	for(int i = 0; i < clips.size(); i++){
+//		totalTime += clips[i].getDuration();
+//	}
+//	
+//	int currentTime = 0;
+//	for(int i = 0; i < clips.size(); i++){
+//		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
+//		float width = ofMap(clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
+//		currentTime += clips[i].getDuration();
+//		ofNoFill();
+//		ofRect(screenX, 100 + 30*i, width, 30);
+//		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
+//	}
     
+    timeline.draw();
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
@@ -132,13 +151,15 @@ ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
 void CloudsAct::addClipToAct(CloudsClip clip, float startTime){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
-   
+
+    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip; 
     item.key =clip.getLinkName();
     item.startTime = startTime;
     item.endTime = startTime+clip.getDuration();
+    duration = MAX(item.endTime, duration);
     
     actItems.push_back(item);
     clipItems[clip.getLinkName()] = item;
@@ -148,6 +169,7 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     visualSystems.push_back(preset);
     visualSystemsMap[preset.getID()] = preset;
     
+    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
     ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;
@@ -157,6 +179,8 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
 
     item.endTime = vsStartTime + duration;
     
+    duration = MAX(item.endTime, duration);
+
     actItems.push_back(item);
     visualSystemItems[preset.getID()] = item;
     
@@ -168,6 +192,8 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     item.startTime = startTime;
     item.endTime = startTime + visualSystemDuration;
     
+    duration = MAX(item.endTime, duration);
+
     actItems.push_back(item);
     
 }

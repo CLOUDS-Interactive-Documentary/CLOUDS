@@ -35,7 +35,8 @@ class CloudsAct{
     public:
     CloudsAct();
     
-    void update(); //you can use this to skip if it's waiting
+    
+    void populateTime();
     void playAct();
 
     void clearAct();
@@ -51,6 +52,8 @@ class CloudsAct{
     
     ActTimeItem& getItemForClip(CloudsClip& clip);
     
+    //void update(); //you can use this to skip if it's waiting
+    
     string getTopicInHistory(int index);
     void setTopicInHistory(string topic);
     vector<string>& getAllTopics();
@@ -63,7 +66,7 @@ class CloudsAct{
     
 protected:
 
-    ofxTimeline timeLine;
+    ofxTimeline timeline;
     ActItemType itemType;
     ofxMSATimer timer;
     CloudsClip currentClip;
@@ -73,7 +76,8 @@ protected:
     vector<CloudsVisualSystemPreset> visualSystems;
     vector<string> topicHistory;
     vector<ActTimeItem> actItems;
-    
+
+    void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
     
     map<string, CloudsClip>clipMap;
@@ -84,9 +88,11 @@ protected:
     
     vector<string> questions;
   
-    void populateTime();
     
     float visualSystemDuration;
+    
+    ofxTLFlags* visualSystemsTrack;
+    ofxTLFlags* clipsTrack;
     
     bool waitingForNextClip;
     bool actPlaying;
@@ -96,9 +102,8 @@ protected:
     
     float visualSystemStartTime;
     float visualSystemEndTime;
-   
     
-
+    float duration;
 
     int currentPlayIndex;
     void loadNextClip();

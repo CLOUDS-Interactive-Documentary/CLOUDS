@@ -228,7 +228,6 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     float currentPosition = 0;
     bool systemRunning = false;
     
-    //MAKE VARAIBLE
     float systemMaxRunTime = 60*2;
     float maxVisualSystemGapTime = 60*3;
     float longClipThreshold = 30;
@@ -236,7 +235,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     float visualSystemStartTime;
     string currentTopic = act.getTopicInHistory(0);
     string previousTopic = currentTopic;
-    
+    float visualSystemDuration  = 0;
     for(int i=0; i < act.getAllClips().size(); i++){
         
         CloudsClip& currentClip = act.getClipInAct(i);
@@ -246,7 +245,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
         
         if( systemRunning ) {
             
-            float visualSystemDuration = clipStartTime - visualSystemStartTime;
+            visualSystemDuration = clipStartTime - visualSystemStartTime;
             if(visualSystemDuration > systemMaxRunTime || currentTopic != previousTopic){
                 if(currentClip.getDuration() > longClipThreshold){
                     visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
@@ -276,8 +275,14 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     }
 
     if(systemRunning){
-        // ...
+        float clipStartTime = act.getItemForClip(act.getClipInAct(act.getAllClips().size()-1)).startTime;
+        float clipEndTime = act.getItemForClip(act.getClipInAct(act.getAllClips().size()-1)).endTime;
+        act.addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
+        systemRunning = false;
+        lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
     }
+    
+    act.populateTime(); 
     
 	cout << "CLIPS:" << endl;
 	for(int i = 0; i < act.getAllClips().size(); i++){
@@ -292,13 +297,14 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     
     cout<<"TOPIC SIZE: "<<act.getAllTopics().size()<<endl;
     cout<<"Clips SIZE: "<<act.getAllClips().size()<<endl;
+    
 	// TEMP
-	CloudsStoryEventArgs argsA(seed,allNextClips,currentTopic);
-	ofNotifyEvent(events.storyBegan,argsA);
+//	CloudsStoryEventArgs argsA(seed,allNextClips,currentTopic);
+//	ofNotifyEvent(events.storyBegan,argsA);
 	
 	
-	CloudsStoryEventArgs argsB(act.getClipInAct(0), allNextClips, act.getTopicInHistory(0));
-	ofNotifyEvent(events.clipBegan,argsB);
+//	CloudsStoryEventArgs argsB(act.getClipInAct(0), allNextClips, act.getTopicInHistory(0));
+//	ofNotifyEvent(events.clipBegan,argsB);
 	
 }
 
@@ -413,7 +419,7 @@ void CloudsStoryEngine::loadClip(CloudsClip& clip){
 	
 	populateNextClips();
 	
-	CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+	CloudsStoryEventArgs args(currentClip, currentTopic);
 	ofNotifyEvent(events.clipBegan,args);
 }
 
@@ -421,7 +427,7 @@ bool CloudsStoryEngine::clipEnded(){
 
 	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
 	
-	CloudsStoryEventArgs args(currentClip,allNextClips,currentTopic);
+	CloudsStoryEventArgs args(currentClip,currentTopic);
 	args.timeUntilNextClip = getNextClipDelay();
 	ofNotifyEvent(events.clipEnded, args, this);
 	if(atDeadEnd()){
@@ -478,7 +484,7 @@ void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
 			ofNotifyEvent(events.visualSystemEnded, args);
 			watchingVisualSystem = false;
 		}
-		CloudsStoryEventArgs args(currentClip, allNextClips, currentTopic);
+		CloudsStoryEventArgs args(currentClip, currentTopic);
 		ofNotifyEvent(events.topicChanged, args);
 
 	}
