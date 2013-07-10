@@ -78,7 +78,7 @@ namespace GPUParticles {
 	void Controller::draw(){
 
 		ofPushStyle();
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 		points.draw();
 
@@ -90,6 +90,9 @@ namespace GPUParticles {
 		state.clear();
 	}
 	
+	Points& Controller::getPoints(){
+		return points;
+	}
 	void Controller::drawDebug(){
 
 		state.getTargetPosition().draw(0, 0, 128, 128);

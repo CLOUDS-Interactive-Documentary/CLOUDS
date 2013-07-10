@@ -2,6 +2,7 @@
 #include "CloudsVisualSystemManager.h"
 
 #ifndef CLOUDS_NO_VS
+
 #include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsVisualSystemLSystems.h"
 #include "CloudsVisualSystemVoro.h"
@@ -17,6 +18,7 @@
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemPaintBrush.h"
+#include "CloudsVisualSystemOcean.h"
 
 #endif
 
@@ -46,6 +48,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemHiga() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
+	registerVisualSystem( new CloudsVisualSystemOcean() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );

@@ -87,6 +87,19 @@
 		}
 	}
 	
+	if(key == 'P'){
+		renderer.getPlayer().play();
+	}
+	
+	if(key == 'H'){
+		ofShowCursor();
+	}
+	
+	if(key == 'Q'){
+		
+		rgbdVisualSystem.addQuestion(parser.getRandomClip(true,true));
+	}
+	
 	if(key == 'R'){
 //		renderer.reloadShader();
 	}	

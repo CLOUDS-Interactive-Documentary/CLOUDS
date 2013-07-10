@@ -239,6 +239,17 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
+		
+		ofPushStyle();
+		ofPushMatrix();
+		ofTranslate(0, ofGetHeight());
+		ofScale(1,-1,1);
+		
+		selfDrawOverlay();
+		
+		ofPopMatrix();
+		ofPopStyle();
+		
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
 		selfPostDraw();
@@ -1158,6 +1169,9 @@ void CloudsVisualSystem::setupPointLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setPointLight();
+	//removes light until we are active
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1188,6 +1202,8 @@ void CloudsVisualSystem::setupSpotLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setSpotlight();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1222,6 +1238,8 @@ void CloudsVisualSystem::setupBeamLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setDirectional();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -2335,6 +2353,10 @@ void CloudsVisualSystem::selfDraw()
     ofSetColor(ofColor(255));
     ofFill();
     mat->end();
+}
+
+void CloudsVisualSystem::selfDrawOverlay(){
+	
 }
 
 void CloudsVisualSystem::selfPostDraw(){

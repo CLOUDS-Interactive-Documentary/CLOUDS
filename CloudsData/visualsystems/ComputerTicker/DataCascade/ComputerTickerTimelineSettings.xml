@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>TimelineSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637.000000000</XPosition>
-    <YPosition>284.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>543.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>ENABLE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>8</Kind>

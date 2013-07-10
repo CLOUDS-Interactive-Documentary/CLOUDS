@@ -162,6 +162,11 @@
 		E73779A51778DF7800892646 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737799D1778DF7800892646 /* ofxTextInputField.cpp */; };
 		E73779B01778E03200892646 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E73779AE1778E03200892646 /* kiss_fft.c */; };
 		E73779B11778E03200892646 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E73779AF1778E03200892646 /* kiss_fftr.c */; };
+		E7399677178743B900EA5F4D /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E739966D178743B900EA5F4D /* ofxAVFVideoPlayer.mm */; };
+		E7399678178743B900EA5F4D /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E739966F178743B900EA5F4D /* ofxAVFVideoRenderer.m */; };
+		E739967D178743D800EA5F4D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967C178743D800EA5F4D /* AVFoundation.framework */; };
+		E739967F178743E900EA5F4D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967E178743E900EA5F4D /* CoreMedia.framework */; };
+		E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7399680178743F200EA5F4D /* QuartzCore.framework */; };
 		E776C263177F7277001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */; };
 		E78B3047178388E700D9B1E5 /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B303E178388E700D9B1E5 /* wPoint.cpp */; };
 		E78B3048178388E700D9B1E5 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78B3040178388E700D9B1E5 /* wSatellite.cpp */; };
@@ -675,6 +680,13 @@
 		E73779AD1778E03200892646 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		E73779AE1778E03200892646 /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		E73779AF1778E03200892646 /* kiss_fftr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftr.c; sourceTree = "<group>"; };
+		E739966C178743B900EA5F4D /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		E739966D178743B900EA5F4D /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
+		E739966E178743B900EA5F4D /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
+		E739966F178743B900EA5F4D /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
+		E739967C178743D800EA5F4D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		E739967E178743E900EA5F4D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		E7399680178743F200EA5F4D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
@@ -698,6 +710,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */,
+				E739967F178743E900EA5F4D /* CoreMedia.framework in Frameworks */,
+				E739967D178743D800EA5F4D /* AVFoundation.framework in Frameworks */,
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -743,6 +758,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E739965A178743B900EA5F4D /* ofxAVFVideoPlayer */,
 				E737798E1778DF7800892646 /* ofxTextInputField */,
 				E73779861778DF6000892646 /* ofxExtras */,
 				E73779131778DF1600892646 /* ofxOcean */,
@@ -770,6 +786,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7399680178743F200EA5F4D /* QuartzCore.framework */,
+				E739967E178743E900EA5F4D /* CoreMedia.framework */,
+				E739967C178743D800EA5F4D /* AVFoundation.framework */,
 				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -1975,6 +1994,26 @@
 			path = ../../../../libs/kiss/src;
 			sourceTree = "<group>";
 		};
+		E739965A178743B900EA5F4D /* ofxAVFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E739966B178743B900EA5F4D /* src */,
+			);
+			name = ofxAVFVideoPlayer;
+			path = ../../../addons/ofxAVFVideoPlayer;
+			sourceTree = "<group>";
+		};
+		E739966B178743B900EA5F4D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E739966C178743B900EA5F4D /* ofxAVFVideoPlayer.h */,
+				E739966D178743B900EA5F4D /* ofxAVFVideoPlayer.mm */,
+				E739966E178743B900EA5F4D /* ofxAVFVideoRenderer.h */,
+				E739966F178743B900EA5F4D /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7770408177CC422009CB7AD /* Replecator */ = {
 			isa = PBXGroup;
 			children = (
@@ -2223,6 +2262,8 @@
 				E78B3048178388E700D9B1E5 /* wSatellite.cpp in Sources */,
 				E78B3049178388E700D9B1E5 /* wSign.cpp in Sources */,
 				E78B304A178388E700D9B1E5 /* wStar.cpp in Sources */,
+				E7399677178743B900EA5F4D /* ofxAVFVideoPlayer.mm in Sources */,
+				E7399678178743B900EA5F4D /* ofxAVFVideoRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
