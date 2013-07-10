@@ -91,8 +91,10 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
     else if(bang.track == visualSystemsTrack){
         //split string on %, send VS either began or ended
-        vector <string> presetId = ofSplitString(bang.flag, ":");
-        CloudsStoryEventArgs args(clipMap[presetId[1]], "");
+        vector <string> presetId;
+        presetId = ofSplitString(bang.flag, ":");
+        CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+        ofNotifyEvent(events.visualSystemBegan, args);
     }
 }
 
