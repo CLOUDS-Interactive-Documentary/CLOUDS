@@ -219,51 +219,65 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		totalSecondsEnqueued += clip.getDuration();
 
 		timesOnCurrentTopic++;
-
-
-        
-        
-        
 		//Decide if a question is to be asked
 		
 	}
 	
     // do the same thing again for Visual Systems
-    totalSecondsEnqueued = 0;
-    soloPointCloudTime = 0;
-    minLengthToShowPointCloudInClip = 0;
+    float lastVisualSystemEnded = 0;
+    float currentPosition = 0;
+    bool systemRunning = false;
     
-    //while(totalSecondsEnqueued<seconds){
-        for(int i=0; i<act.getAllClips().size();i++){
+    //MAKE VARAIBLE
+    float systemMaxRunTime = 60*2;
+    float maxVisualSystemGapTime = 60*3;
+    float longClipThreshold = 30;
+    float longClipFadeInPercent = .5;
+    float visualSystemStartTime;
+    string currentTopic = act.getTopicInHistory(0);
+    string previousTopic = currentTopic;
+    
+    for(int i=0; i < act.getAllClips().size(); i++){
         
-            CloudsClip& clip = act.getClipInAct(i);
-          
-           // totalSecondsEnqueued+= clip.getDuration();
-            soloPointCloudTime = clip.getDuration();
+        CloudsClip& currentClip = act.getClipInAct(i);
+        string currentTopic = act.getTopicInHistory(i);
+        float clipStartTime = act.getItemForClip(currentClip).startTime;
+        float clipEndTime = act.getItemForClip(currentClip).endTime;
+        
+        if( systemRunning ) {
             
-//            //Decide if a visual system goes on top
-//            if (totalSecondsEnqueued>soloPointCloudTime && clip.getDuration()>minLengthToShowPointCloudInClip){
-//                
-//                //insert a visual system during the clip
-//                
-//                //TODO: Make non random preset
-//                act.addVisualSystemDuringClip(visualSystems->getRandomVisualSystem(), totalSecondsEnqueued, clip.getDuration() );
-//            }
-//            else if(clip.getDuration()>soloPointCloudTime && clip.getDuration()<minLengthToShowPointCloudInClip){
-//                
-//                //insert a visual system after the point cloud and include a gap in clip time
-//                //TODO: Make non random preset
-//                act.addVisualSystemAfterClip(visualSystems->getRandomVisualSystem(), totalSecondsEnqueued);
-//                
-//                act.addGapForVisualSystem(totalSecondsEnqueued);
-//                
-//                //TODO: Make this a non-arbitrary number. Currently its the duration set in clouds act.
-//                
-//                //totalSecondsEnqueued += 60;
-//                
-//            }
+            float visualSystemDuration = clipStartTime - visualSystemStartTime;
+            if(visualSystemDuration > systemMaxRunTime || currentTopic != previousTopic){
+                if(currentClip.getDuration() > longClipThreshold){
+                    visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
+                }
+                act.addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
+                systemRunning = false;
+                lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
+            }
         }
-   // }
+        else {
+            float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
+            if(timeSinceLastVisualSystem > maxVisualSystemGapTime){
+                
+                //if the clip is shorter than the 30 seconds dont start the VS during the clip.
+                if (currentClip.getDuration() > longClipThreshold) {
+                    visualSystemStartTime  = clipStartTime + currentClip.getDuration()*longClipFadeInPercent;
+                }
+                else{
+                    visualSystemStartTime = clipStartTime;
+                }
+                systemRunning = true;
+            }
+        }
+
+        previousTopic = currentTopic;
+        
+    }
+
+    if(systemRunning){
+        // ...
+    }
     
 	cout << "CLIPS:" << endl;
 	for(int i = 0; i < act.getAllClips().size(); i++){

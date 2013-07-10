@@ -44,10 +44,12 @@ class CloudsAct{
     void addClipToAct(CloudsClip clip, float startTime);
     vector<CloudsClip>& getAllClips();
     
-    void addVisualSystemDuringClip(CloudsVisualSystemPreset preset, float startTime, float clipDuration);
-    void addVisualSystemAfterClip(CloudsVisualSystemPreset preset, float startTime);
+    void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
+//    void addVisualSystemAfterClip(CloudsVisualSystemPreset preset, float startTime);
     
     void addGapForVisualSystem(float startTime);
+    
+    ActTimeItem& getItemForClip(CloudsClip& clip);
     
     string getTopicInHistory(int index);
     void setTopicInHistory(string topic);
@@ -72,10 +74,14 @@ protected:
     vector<string> topicHistory;
     vector<ActTimeItem> actItems;
     
-    map<string,CloudsClip>clipMap;
-    map<string,CloudsVisualSystemPreset>visualSystemsMap;
-
-
+    ActTimeItem dummy;
+    
+    map<string, CloudsClip>clipMap;
+    map<string, ActTimeItem> clipItems;
+    
+    map<string, CloudsVisualSystemPreset> visualSystemsMap;
+    map<string, ActTimeItem> visualSystemItems;
+    
     vector<string> questions;
   
     void populateTime();

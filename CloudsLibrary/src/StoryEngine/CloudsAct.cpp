@@ -121,6 +121,14 @@ CloudsClip& CloudsAct::getClipInAct(int index){
     return clips[index];
 }
 
+ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
+    if(clipMap.find(clip.getLinkName()) == clipMap.end()){
+        ofLogError() << "Couldn't find Act Item for cilp " << clip.getLinkName();
+        return dummy;
+    }
+    return clipItems[clip.getLinkName()];
+}
+
 void CloudsAct::addClipToAct(CloudsClip clip, float startTime){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
@@ -133,41 +141,25 @@ void CloudsAct::addClipToAct(CloudsClip clip, float startTime){
     item.endTime = startTime+clip.getDuration();
     
     actItems.push_back(item);
+    clipItems[clip.getLinkName()] = item;
 }
 
-void CloudsAct::addVisualSystemDuringClip(CloudsVisualSystemPreset preset, float startTime, float clipDuration){
+void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
     visualSystems.push_back(preset);
     visualSystemsMap[preset.getID()] = preset;
     
     ActTimeItem item;
     // start the visual system halfway through the clip
-    float vsStartTime  = startTime +clipDuration/2;
+    float vsStartTime  = startTime;
     item.type = VS;
     item.key =preset.getID();
     item.startTime = vsStartTime;
 
-    item.endTime = vsStartTime + 60;
+    item.endTime = vsStartTime + duration;
     
     actItems.push_back(item);
+    visualSystemItems[preset.getID()] = item;
     
-    
-}
-
-void CloudsAct::addVisualSystemAfterClip(CloudsVisualSystemPreset preset, float startTime){
-    visualSystems.push_back(preset);
-    visualSystemsMap[preset.getID()] = preset;
-    
-    ActTimeItem item;
-
-    item.type = VS;
-    item.key = preset.getID();
-    //Since were not playing during a clip start at the queued startTime
-    item.startTime = startTime;
-    
-
-    item.endTime =  startTime +visualSystemDuration;
-    
-    actItems.push_back(item);
 }
 
 void CloudsAct::addGapForVisualSystem(float startTime){
