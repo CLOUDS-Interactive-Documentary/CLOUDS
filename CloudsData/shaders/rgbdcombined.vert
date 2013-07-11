@@ -46,9 +46,14 @@ uniform vec4 faceFeatureRect;
 uniform vec4 deltaChangeRect;
 
 varying float positionValid;
-varying vec3 normal;
 varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample;
+
+//LIGHT
+varying vec3 eye;
+varying vec3 normal;
+varying vec3 diffuseLightDirection;
+varying float diffuseAttenuate;
 
 const float epsilon = 1e-6;
 
@@ -66,13 +71,8 @@ vec3 rgb2hsl( vec3 _input ){
 	if ( cMax > cMin ) {
 		float cDelta = cMax - cMin;
         
-		// saturation
-		if ( l < 0.5 ) {
-			s = cDelta / ( cMax + cMin );
-		} else {
-			s = cDelta / ( 2.0 - ( cMax + cMin ) );
-		}
-		
+		s = l < .05 ? cDelta / ( cMax + cMin ) : cDelta / ( 2.0 - ( cMax + cMin ) );
+
 		// hue
 		if ( r == cMax ) {
 			h = ( g - b ) / cDelta;
@@ -111,8 +111,13 @@ void main(void){
     
 	//extract the normal and pass it along to the fragment shader
     vec2  normalPos = samplePos + normalRect.xy;
-    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
-    
+//    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
+	vec4 normalColor = texture2DRect(texture, floor(normalPos) + vec2(.5,.5));
+	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
+    normal = -normalize(gl_NormalMatrix * surfaceNormal);
+	vec3 vert = vec3(gl_ModelViewMatrix * pos);
+	eye = normalize(-vert);
+	
     float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0)  );
     float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y)  );
     float left  = depthValueFromSample( depthPos + vec2(-simplify.x,0.0) );
@@ -158,13 +163,20 @@ void main(void){
         xypp.y = xyp.y * (1.0 + dK.x*r2 + dK.y*r4 + dK.z*r6) + dP.x * (r2 + 2.0*pow(xyp.y, 2.0) ) + 2.0*dP.y*xyp.x*xyp.y;
         vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
 
-        //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0;
-		gl_TexCoord[0].xy = uv;
+        //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0; 
+		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw);
 	}
 	
+	//DIFFUSE LIGHT
+	vec3 diffuseLightDirectionFull = vec3(gl_LightSource[0].position.xyz - vert);
+    float d = length(diffuseLightDirectionFull);
+	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation +
+							 gl_LightSource[0].linearAttenuation	* d +
+							 gl_LightSource[0].quadraticAttenuation * d * d);
+	
+	diffuseLightDirection = diffuseLightDirectionFull / d;
+	
 	// now that we have the texture coordinate we can sample the face feature and movement map which correlate to the video texture
-
-
 	if(useFaces == 1){
 		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
 		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
@@ -178,7 +190,6 @@ void main(void){
 	else {
 		faceFeatureSample = vec4(0.);
 		deltaChangeSample = vec4(0.);
-
 	}
 		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
