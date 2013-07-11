@@ -11,11 +11,13 @@
 wSatellite::wSatellite(){
     lat = ofRandom(-50,50);
     lon = ofRandom(-180,180);
+    freq = ofNoise(lat*0.01,lon*0.01);
 }
 
 void wSatellite::place( float _alt, ofVec3f _orbit ){
     altitud.set(0,0,_alt);
     orbit = _orbit;//.normalize();
+    freq = ofNoise(lat*0.01,lon*0.01);
 }
 
 void wSatellite::update(){
@@ -55,8 +57,10 @@ void wSatellite::draw(){
     ofPushMatrix();
     ofTranslate(*this);
     glRotatef(-theta, angleToCenter.x, angleToCenter.y, angleToCenter.z);
-    ofSetColor(200,200);
+    float blinking = abs(sin(ofGetElapsedTimef()*freq));
+    ofSetColor(200,blinking*200,blinking*200,200);
     ofFill();
     ofDrawBox(ofPoint(0,0,0), 1);
+    
     ofPopMatrix();
 }

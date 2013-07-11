@@ -21,7 +21,7 @@ public:
 	void	draw();
     
 private:
-    float   lat,lon;
+    float   lat,lon,freq;
     ofPoint orbit;
     ofPoint altitud;
 };
