@@ -30,8 +30,8 @@ void testApp::setup(){
 //	storyEngine.combinedClipsOnly = true;
 	storyEngine.printDecisions = true;
 	
-	player.simplePlaybackMode = true;
-	player.setup(storyEngine);
+//	player.simplePlaybackMode = true;
+//	player.setup(storyEngine);
 //	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );

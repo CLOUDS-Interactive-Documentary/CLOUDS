@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsFCPParser.h"
-#include "CloudsPlaybackController.h"
+//#include "CloudsPlaybackController.h"
 #include "CloudsSound.h"
 
 class testApp : public ofBaseApp{
@@ -24,7 +24,7 @@ class testApp : public ofBaseApp{
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
-	CloudsPlaybackController player;
+//	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
 //	CloudsSound sound;
 	
