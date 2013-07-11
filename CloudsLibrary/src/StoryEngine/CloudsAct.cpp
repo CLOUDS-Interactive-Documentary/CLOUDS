@@ -44,27 +44,21 @@ void CloudsAct::playAct(){
 }
 
 void CloudsAct::populateTime(){
-    if (timeLineActive) {
-        timeline.clear();
-        
-//        clipsTrack->clear();
-//        visualSystemsTrack->clear();
-//        topicsTrack->clear();
-        timeline.removeTrack(visualSystemsTrack);
-        timeline.removeTrack(clipsTrack);
-        timeline.removeTrack(topicsTrack);
 
-    }
     timeline.setup();
+    timeline.clear();
+    
     timeline.setDurationInSeconds(duration);
     timeline.setAutosave(false);
-
+    
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
     topicsTrack = timeline.addFlags("Topics");
+    timeline.addSwitches("switches");
+    
     timeLineActive = true;
-    string currentTopic = "";
     string previousTopic = "";
+    string currentTopic = "";
     
     for(int i=0; i < actItems.size(); i++){
         ActTimeItem& item = actItems[i];
@@ -75,7 +69,7 @@ void CloudsAct::populateTime(){
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
             
             if(currentTopic != previousTopic){
-                topicsTrack ->addFlagAtTime(currentTopic, item.startTime * 1000);
+                topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
             }
             
             previousTopic = currentTopic;
@@ -147,9 +141,10 @@ void CloudsAct::drawActDebug(){
     //		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
     //	}
     ofPushMatrix();
-    ofTranslate(0,ofGetHeight()/3);
+//    ofTranslate(0,ofGetHeight()/3);
+    timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
-    ofPopMatrix();
+  //  ofPopMatrix();
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
@@ -164,9 +159,10 @@ ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
     return clipItems[clip.getLinkName()];
 }
 
-void CloudsAct::addClipToAct(CloudsClip clip, float startTime){
+void CloudsAct::addClipToAct(CloudsClip clip, string topic, float startTime){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
+    topicMap[clip.getLinkName()] = topic;
     
     cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
@@ -218,18 +214,17 @@ vector<CloudsClip>& CloudsAct::getAllClips(){
     return clips;
 }
 
-
-string CloudsAct::getTopicInHistory(int index){
-    return topicHistory[index];
+string CloudsAct::getTopicForClip(CloudsClip& clip){
+    return topicMap[ clip.getLinkName() ];
 }
 
 vector<string>& CloudsAct::getAllTopics(){
     return topicHistory;
 }
 
-void CloudsAct::setTopicInHistory(string topic){
-    topicHistory.push_back(topic);
-}
+//void CloudsAct::addTopicToHistory(string topic){
+//    topicHistory.push_back(topic);
+//}
 
 void CloudsAct::setTopicForClip(string topic, string clipName)
 {
@@ -243,6 +238,8 @@ void CloudsAct::clearAct(){
     visualSystemsMap.clear();
     topicMap.clear();
     actItems.clear();
+    timeline.reset();
+    duration = 0;
 }
 
 

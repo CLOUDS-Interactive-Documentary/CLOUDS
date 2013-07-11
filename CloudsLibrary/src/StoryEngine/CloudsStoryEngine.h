@@ -39,11 +39,11 @@ class CloudsStoryEngine {
 	void update(ofEventArgs& args);
 	
 	CloudsClip& getCurrentClip();
-	vector<CloudsClip>& getClipHistory();
+//	vector<CloudsClip>& getClipHistory();
 	string getCurrentTopic();
 	float getTotalSecondsWatched();
 
-	bool historyContainsClip(CloudsClip& m);
+//	bool historyContainsClip(CloudsClip& m);
 	//after this many times the topic becomes available again
 	int topicTimeoutPeriod;
 	int getTimesOnTopic();
@@ -75,6 +75,7 @@ class CloudsStoryEngine {
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
+    float actLength;
 protected:
 	
 
@@ -94,7 +95,7 @@ protected:
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
-	void buildAct(CloudsClip seed, float seconds);
+	void buildAct(CloudsClip& seed, float seconds);
 	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
 
 	
@@ -109,8 +110,8 @@ protected:
 	float visualSystemEndTime;
 	CloudsVisualSystemPreset currentVisualSystem;
 	
-	vector<CloudsClip> clipHistory;
-	vector<CloudsClip> clipQueue;
+//	vector<CloudsClip> clipHistory;
+//	vector<CloudsClip> clipQueue;
 	vector<KeywordDichotomy> dichotomies;
 	
     
@@ -130,6 +131,6 @@ protected:
 	void chooseNewTopic(CloudsClip& clip);
 	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
-	int occurrencesOfPerson(string person, int stepsBack);
+//	int occurrencesOfPerson(string person, int stepsBack);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
 };

@@ -25,6 +25,12 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	fixedClipDelay = 5;
 	maxTimesOnTopic = 4;
     
+    systemMaxRunTime = 60*2;
+    maxVisualSystemGapTime = 60*3;
+    longClipThreshold = 30;
+    longClipFadeInPercent = .5;
+    actLength = 10 * 60;
+
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -82,10 +88,6 @@ void CloudsStoryEngine::setup(){
         dichotomies.push_back(d);
 	}
     
-    systemMaxRunTime = 60*2;
-    maxVisualSystemGapTime = 60*3;
-    longClipThreshold = 30;
-    longClipFadeInPercent = .5;
 }
 
 void CloudsStoryEngine::update(ofEventArgs& args){
@@ -101,8 +103,8 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
 }
 
 void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
-	clipHistory.clear();
-	topicHistory.clear();
+//	clipHistory.clear();
+//	topicHistory.clear();
 	peopleVisited.clear();
 	allNextClips.clear();
 	
@@ -110,32 +112,31 @@ void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
 	freeTopic = false;
 	
 	//freeTopic = true;
-	currentTopic =   topic;
+	currentTopic =  topic;
 	//select a random topic from the clip
 	
-	buildAct(seed, 10*60);
-	//CloudsStoryEventArgs args(seed,allNextClips,currentTopic);
-	//ofNotifyEvent(events.storyBegan,args);
-	
-	//loadClip( seed );
+	buildAct(seed, actLength);
 }
 
-void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
+void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
 	
 	float totalSecondsEnqueued = 0;
 	bool deadEnd = false;
 	string topic = currentTopic;
-	clipQueue.clear();
-    act.clearAct();
-	
+    vector<CloudsClip> clipHistory;
+    vector<CloudsClip> clipQueue;
 	CloudsClip clip = seed;
-    
-    act.addClipToAct(clip,totalSecondsEnqueued);
+
+    act.clearAct();
 	clearDichotomiesBalance();
-    
+	
+    act.addClipToAct(clip, topic, totalSecondsEnqueued);
+//    act.setTopicForClip(clip, currentTopic );
+    totalSecondsEnqueued += clip.getDuration();
+
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
-	act.setTopicInHistory(topic);
+//	act.addTopicToHistory(topic);
     
 	int timesOnCurrentTopic = 0;
 	bool freeTopic = false;
@@ -155,9 +156,10 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 			topicHistory.push_back(topic);
             
 		}
+        
         cout<<"Times on topic :"<< topic<<", "<<timesOnCurrentTopic<<endl;
         //storing a copy of current topic for each clip
-		act.setTopicInHistory(topic);
+		
         //get all meta data options
 		vector<CloudsClip> nextOptions = parser->getClipsWithKeyword(topic);
 		
@@ -219,8 +221,8 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
 		
         updateDichotomies(clip);
         
-        act.addClipToAct(clip,totalSecondsEnqueued);
-        act.setTopicForClip(topic, clip.getLinkName());
+        act.addClipToAct(clip,topic,totalSecondsEnqueued);
+//        act.setTopicForClip(topic, clip.getLinkName());
 		totalSecondsEnqueued += clip.getDuration();
         
 		timesOnCurrentTopic++;
@@ -235,20 +237,21 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     
     cout<<"***** SYSTEM MAX RUN TIME*****"<<systemMaxRunTime<<endl;
     float visualSystemStartTime;
-    string currentTopic = act.getTopicInHistory(0);
+//    string currentTopic = act.getTopicInHistory(0);
     string previousTopic = currentTopic;
     float visualSystemDuration  = 0;
     for(int i=0; i < act.getAllClips().size(); i++){
         
         CloudsClip& currentClip = act.getClipInAct(i);
-        string currentTopic = act.getTopicInHistory(i);
+        topic = act.getTopicForClip(currentClip);
+//        string currentTopic = act.getTopicInHistory(i);
         float clipStartTime = act.getItemForClip(currentClip).startTime;
         float clipEndTime = act.getItemForClip(currentClip).endTime;
         
         if( systemRunning ) {
             
             visualSystemDuration = clipStartTime - visualSystemStartTime;
-            if(visualSystemDuration > systemMaxRunTime || currentTopic != previousTopic){
+            if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
                 if(currentClip.getDuration() > longClipThreshold){
                     visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
                 }
@@ -272,7 +275,7 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
             }
         }
         
-        previousTopic = currentTopic;
+        previousTopic = topic;
         
     }
     
@@ -285,21 +288,21 @@ void CloudsStoryEngine::buildAct(CloudsClip seed, float seconds){
     }
     
     act.populateTime();
-    
-	cout << "CLIPS:" << endl;
-	for(int i = 0; i < act.getAllClips().size(); i++){
-		cout << "	CLIP: " << act.getClipInAct(i).getLinkName() << endl;
-	}
+//    
+//	cout << "CLIPS:" << endl;
+//	for(int i = 0; i < act.getAllClips().size(); i++){
+//		cout << "	CLIP: " << act.getClipInAct(i).getLinkName() << endl;
+//	}
 	
-	cout << "TOPICS: " << endl;
-	for(int i = 0; i < act.getAllTopics().size(); i++){
-		cout << "	TOPIC: " << act.getTopicInHistory(i) << endl;
-	}
+//	cout << "TOPICS: " << endl;
+//	for(int i = 0; i < act.getAllTopics().size(); i++){
+//		cout << "	TOPIC: " << act.getTopicInHistory(i) << endl;
+//	}
 	
     
-    cout<<"TOPIC SIZE: "<<act.getAllTopics().size()<<endl;
-    cout<<"Clips SIZE: "<<act.getAllClips().size()<<endl;
-    
+//    cout<<"TOPIC SIZE: "<<act.getAllTopics().size()<<endl;
+//    cout<<"Clips SIZE: "<<act.getAllClips().size()<<endl;
+//    
 	// TEMP
     //	CloudsStoryEventArgs argsA(seed,allNextClips,currentTopic);
     //	ofNotifyEvent(events.storyBegan,argsA);
@@ -402,45 +405,45 @@ bool CloudsStoryEngine::playNextClip(){
 
 void CloudsStoryEngine::loadClip(CloudsClip& clip){
     
-	hasclip = true;
-	
-	timesOnTopic++;
-	if(timesOnTopic >= maxTimesOnTopic){
-		freeTopic = true;
-	}
-    
-	if(hasclip && (freeTopic || currentTopic == "") ){
-		chooseNewTopic(clip);
-	}
-    
-	checkVisualSystems();
-    
-	currentClip = clip;
-	clipHistory.push_back( clip );
-	peopleVisited[ clip.person ]++;
-	
-	populateNextClips();
-	
-	CloudsStoryEventArgs args(currentClip, currentTopic);
-	ofNotifyEvent(events.clipBegan,args);
+//	hasclip = true;
+//	
+//	timesOnTopic++;
+//	if(timesOnTopic >= maxTimesOnTopic){
+//		freeTopic = true;
+//	}
+//    
+//	if(hasclip && (freeTopic || currentTopic == "") ){
+//		chooseNewTopic(clip);
+//	}
+//    
+//	checkVisualSystems();
+//    
+//	currentClip = clip;
+//	clipHistory.push_back( clip );
+//	peopleVisited[ clip.person ]++;
+//	
+//	populateNextClips();
+//	
+//	CloudsStoryEventArgs args(currentClip, currentTopic);
+//	ofNotifyEvent(events.clipBegan,args);
 }
 
 bool CloudsStoryEngine::clipEnded(){
-    
-	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
-	
-	CloudsStoryEventArgs args(currentClip,currentTopic);
-	args.timeUntilNextClip = getNextClipDelay();
-	ofNotifyEvent(events.clipEnded, args, this);
-	if(atDeadEnd()){
-		ofNotifyEvent(events.storyEnded, args, this);
-	}
-	else{
-		waitingForNextClip = true;
-		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
-	}
-	
-	buildAct( act.getAllClips()[act.getAllClips().size()-1], 60*5 );
+//    
+//	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
+//	
+//	CloudsStoryEventArgs args(currentClip,currentTopic);
+//	args.timeUntilNextClip = getNextClipDelay();
+//	ofNotifyEvent(events.clipEnded, args, this);
+//	if(atDeadEnd()){
+//		ofNotifyEvent(events.storyEnded, args, this);
+//	}
+//	else{
+//		waitingForNextClip = true;
+//		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
+//	}
+//	
+//	buildAct( act.getAllClips()[act.getAllClips().size()-1], 60*5 );
 }
 
 void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
@@ -836,9 +839,9 @@ CloudsClip& CloudsStoryEngine::getCurrentClip(){
 	return currentClip;
 }
 
-vector<CloudsClip>& CloudsStoryEngine::getClipHistory(){
-	return clipHistory;
-}
+//vector<CloudsClip>& CloudsStoryEngine::getClipHistory(){
+//	return clipHistory;
+//}
 
 string CloudsStoryEngine::getCurrentTopic(){
 	return currentTopic;
@@ -860,9 +863,9 @@ bool CloudsStoryEngine::atDeadEnd(){
 	return validNextClips.size() == 0;
 }
 
-bool CloudsStoryEngine::historyContainsClip(CloudsClip& m){
-	return historyContainsClip(m, clipHistory);
-}
+//bool CloudsStoryEngine::historyContainsClip(CloudsClip& m){
+//	return historyContainsClip(m, clipHistory);
+//}
 
 bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& history){
 	string clipLinkName = m.getLinkName();
@@ -874,9 +877,9 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& h
 	return false;
 }
 
-int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack){
-	return occurrencesOfPerson(person, stepsBack, clipHistory);
-}
+//int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack){
+//	return occurrencesOfPerson(person, stepsBack, clipHistory);
+//}
 
 int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history){
 	int occurrences = 0;

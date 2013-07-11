@@ -42,7 +42,7 @@ class CloudsAct{
     void clearAct();
 
     CloudsClip& getClipInAct(int index);
-    void addClipToAct(CloudsClip clip, float startTime);
+    void addClipToAct(CloudsClip clip, string topic, float startTime);
     vector<CloudsClip>& getAllClips();
     
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
@@ -54,9 +54,10 @@ class CloudsAct{
     
     //void update(); //you can use this to skip if it's waiting
     
-    string getTopicInHistory(int index);
-    void setTopicInHistory(string topic);
+ //   string getTopicInHistory(int index);
+//    void setTopicInHistory(string topic);
     void setTopicForClip(string topic, string clipName);
+    string getTopicForClip(CloudsClip& clip);
     vector<string>& getAllTopics();
     
 	bool clipEnded(); //call this when the clip is done!

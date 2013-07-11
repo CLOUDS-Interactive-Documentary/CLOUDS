@@ -30,6 +30,7 @@ class testApp : public ofBaseApp{
 //	CloudsSound sound;
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
     
     void guiEvent(ofxUIEventArgs &e);
 	void audioRequested(float * output, int bufferSize, int nChannels);
