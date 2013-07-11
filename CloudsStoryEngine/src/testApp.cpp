@@ -62,6 +62,8 @@ void testApp::setup(){
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	storyEngine.seedWithClip( clip );
+
+
 }
 
 //--------------------------------------------------------------
@@ -72,6 +74,7 @@ void testApp::update(){
         CloudsClip& clip = parser.getRandomClip(false,false);
         storyEngine.seedWithClip( clip );
         //storyEngine.getAct().clearAct();
+      
         
     }
 
@@ -87,8 +90,8 @@ void testApp::draw(){
 //	sound.drawDebug();
 	
 	//storyEngine.drawStoryEngineDebug();
-	
-
+    
+    storyEngine.getAct().drawActDebug();
 }
 
 void testApp::exit(){

@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		18731D101785E49700E22F84 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D0E1785E49700E22F84 /* cCell.cpp */; };
 		18731D1C1785E4A100E22F84 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D121785E4A100E22F84 /* wParticle.cpp */; };
-		18731D1D1785E4A100E22F84 /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D141785E4A100E22F84 /* wPoint.cpp */; };
 		18731D1E1785E4A100E22F84 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D161785E4A100E22F84 /* wSatellite.cpp */; };
-		18731D1F1785E4A100E22F84 /* wSign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D181785E4A100E22F84 /* wSign.cpp */; };
 		18731D201785E4A100E22F84 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D1A1785E4A100E22F84 /* wStar.cpp */; };
 		18731D281785E53000E22F84 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D221785E53000E22F84 /* Brush.cpp */; };
 		18731D291785E53000E22F84 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D241785E53000E22F84 /* Particle.cpp */; };
@@ -31,6 +29,7 @@
 		18731D68178E0F5C00E22F84 /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D5F178E0F5C00E22F84 /* ofxOcean.cpp */; };
 		18731D69178E0F5C00E22F84 /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D61178E0F5C00E22F84 /* ofxOceanRenderer.cpp */; };
 		18731D6A178E0F5C00E22F84 /* ofxOceanTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D63178E0F5C00E22F84 /* ofxOceanTile.cpp */; };
+		1877A9F8178F414B006DAA37 /* CloudsD3Exporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1877A9F6178F414B006DAA37 /* CloudsD3Exporter.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -213,12 +212,8 @@
 		18731D0F1785E49700E22F84 /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
 		18731D121785E4A100E22F84 /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
 		18731D131785E4A100E22F84 /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
-		18731D141785E4A100E22F84 /* wPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wPoint.cpp; sourceTree = "<group>"; };
-		18731D151785E4A100E22F84 /* wPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wPoint.h; sourceTree = "<group>"; };
 		18731D161785E4A100E22F84 /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
 		18731D171785E4A100E22F84 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
-		18731D181785E4A100E22F84 /* wSign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSign.cpp; sourceTree = "<group>"; };
-		18731D191785E4A100E22F84 /* wSign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSign.h; sourceTree = "<group>"; };
 		18731D1A1785E4A100E22F84 /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
 		18731D1B1785E4A100E22F84 /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		18731D221785E53000E22F84 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
@@ -259,6 +254,9 @@
 		18731D62178E0F5C00E22F84 /* ofxOceanRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanRenderer.h; sourceTree = "<group>"; };
 		18731D63178E0F5C00E22F84 /* ofxOceanTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanTile.cpp; sourceTree = "<group>"; };
 		18731D64178E0F5C00E22F84 /* ofxOceanTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanTile.h; sourceTree = "<group>"; };
+		1877A9F6178F414B006DAA37 /* CloudsD3Exporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsD3Exporter.cpp; sourceTree = "<group>"; };
+		1877A9F7178F414B006DAA37 /* CloudsD3Exporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsD3Exporter.h; sourceTree = "<group>"; };
+		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -762,12 +760,8 @@
 			children = (
 				18731D121785E4A100E22F84 /* wParticle.cpp */,
 				18731D131785E4A100E22F84 /* wParticle.h */,
-				18731D141785E4A100E22F84 /* wPoint.cpp */,
-				18731D151785E4A100E22F84 /* wPoint.h */,
 				18731D161785E4A100E22F84 /* wSatellite.cpp */,
 				18731D171785E4A100E22F84 /* wSatellite.h */,
-				18731D181785E4A100E22F84 /* wSign.cpp */,
-				18731D191785E4A100E22F84 /* wSign.h */,
 				18731D1A1785E4A100E22F84 /* wStar.cpp */,
 				18731D1B1785E4A100E22F84 /* wStar.h */,
 			);
@@ -874,6 +868,15 @@
 				18731D64178E0F5C00E22F84 /* ofxOceanTile.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		1877A9F5178F414B006DAA37 /* Exporters */ = {
+			isa = PBXGroup;
+			children = (
+				1877A9F6178F414B006DAA37 /* CloudsD3Exporter.cpp */,
+				1877A9F7178F414B006DAA37 /* CloudsD3Exporter.h */,
+			);
+			path = Exporters;
 			sourceTree = "<group>";
 		};
 		3D2E9FF0174C16EC002D9E02 /* ofxGameCamera */ = {
@@ -1022,6 +1025,8 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
+				1877A9F5178F414B006DAA37 /* Exporters */,
 				E7BAFBD0176A43780097AC71 /* Sound */,
 				E7637D5E1734DE8A008ADC62 /* RGBD */,
 				E7637D511734DE75008ADC62 /* VisualSystems */,
@@ -2339,9 +2344,7 @@
 				E776C258177E025B001D8CDC /* CloudsVisualSystemHiga.cpp in Sources */,
 				18731D101785E49700E22F84 /* cCell.cpp in Sources */,
 				18731D1C1785E4A100E22F84 /* wParticle.cpp in Sources */,
-				18731D1D1785E4A100E22F84 /* wPoint.cpp in Sources */,
 				18731D1E1785E4A100E22F84 /* wSatellite.cpp in Sources */,
-				18731D1F1785E4A100E22F84 /* wSign.cpp in Sources */,
 				18731D201785E4A100E22F84 /* wStar.cpp in Sources */,
 				18731D281785E53000E22F84 /* Brush.cpp in Sources */,
 				18731D291785E53000E22F84 /* Particle.cpp in Sources */,
@@ -2361,6 +2364,7 @@
 				18731D68178E0F5C00E22F84 /* ofxOcean.cpp in Sources */,
 				18731D69178E0F5C00E22F84 /* ofxOceanRenderer.cpp in Sources */,
 				18731D6A178E0F5C00E22F84 /* ofxOceanTile.cpp in Sources */,
+				1877A9F8178F414B006DAA37 /* CloudsD3Exporter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

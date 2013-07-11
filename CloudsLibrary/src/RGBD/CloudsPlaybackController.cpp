@@ -59,7 +59,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		if(!simplePlaybackMode){
 			rgbdVisualSystem.setRenderer(combinedRenderer);
 			rgbdVisualSystem.setup();
-			combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
+			combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 		}
 
 	}
@@ -125,7 +125,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 	if(simplePlaybackMode){
-        act->drawActDebug();
+
 //		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
 	}
 }
