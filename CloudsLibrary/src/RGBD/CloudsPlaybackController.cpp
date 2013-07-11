@@ -59,7 +59,7 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 		if(!simplePlaybackMode){
 			rgbdVisualSystem.setRenderer(combinedRenderer);
 			rgbdVisualSystem.setup();
-			combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
+			combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 		}
 
 	}
