@@ -8,13 +8,16 @@
 
 #include "CloudsRGBDCombinedRenderer.h"
 
-
 //---------------------------------------------------------------
 CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
+	ofVideoPlayer* vp = new ofVideoPlayer();	
+#ifdef AVF_PLAYER
+	vp->setPlayer( ofPtr<ofBaseVideoPlayer>( new ofxAVFVideoPlayer() ) );
+#else
+	player = ofPtr<ofVideoPlayer>( vp );
+#endif
 	
-	player = ofPtr<ofVideoPlayer>( new ofVideoPlayer );
-
-    setShaderPath("shaders/rgbdcombined");
+	setShaderPath("shaders/rgbdcombined");
     
     simplify.set(0,0);
     
@@ -123,20 +126,33 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 	//this describes the change each frame
 	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
 
+#ifdef AVF_PLAYER
     //TODO make asynchronous
-	if(!player->loadMovie(videoPath)){
+	//if(!player->loadMovie(videoPath)){
+	getPlayer().stop();
+	if(!getPlayer().loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
-		return false;
+//		return false;
 	}
+#else
+	if(!player->loadMovie(videoPath)){
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";	
+	}
+#endif
 	
-    colorScale.x = float(getPlayer().getWidth()) / float(colorRect.width);
-	if(getPlayer().getHeight() > 1200){
+//	float colorWidth  = getPlayer().getWidth();
+//	float colorHeight = getPlayer().getHeight();
+	float colorWidth  = 1280;
+	float colorHeight = 1560;
+	
+    colorScale.x = float(colorWidth) / float(colorRect.width);
+	if(colorHeight > 1200){
 		useFaces = true;
-		colorScale.y = float(getPlayer().getHeight() - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
+		colorScale.y = float(colorHeight - (depthRect.height + faceFeatureRect.height) ) / float(colorRect.height);
 	}
 	else{
 		useFaces = false;
-		colorScale.y = float(getPlayer().getHeight() - (depthRect.height) ) / float(colorRect.height);
+		colorScale.y = float(colorHeight - (depthRect.height) ) / float(colorRect.height);
 	}
 
     return true;
@@ -259,7 +275,7 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
 	
 	getPlayer().setLoopState(OF_LOOP_NONE);
 	
-    shader.setUniformTexture("texture", getPlayer(), 0);
+    shader.setUniformTexture("texture", getPlayer().getTextureReference(), 0);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
@@ -304,15 +320,22 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
 //    shader.setUniform2f("scale", scale.x, scale.y);
 }
 
+#ifdef AVF_PLAYER
+//--------------------------------------------------------------- ACTIONS
+ofxAVFVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
+	return avPlayer;
+}
+#else
 //--------------------------------------------------------------- ACTIONS
 ofVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
 	return *player;
 }
-
 //--------------------------------------------------------------- ACTIONS
 ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
 	return player;
 }
+#endif
+
 
 //--------------------------------------------------------------- ACTIONS
 ofShader& CloudsRGBDCombinedRenderer::getShader(){
@@ -321,10 +344,30 @@ ofShader& CloudsRGBDCombinedRenderer::getShader(){
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRenderer::update(){
-	getPlayer().setVolume(1.0);
-	if(getPlayer().isLoaded()){
-		getPlayer().update();
+
+	getPlayer().update();
+	
+	float audioVolume = 1.0;
+#ifdef AVF_PLAYER
+	float position = getPlayer().getPositionInSeconds();
+	float duration = getPlayer().getDuration();
+#else
+	float position = getPlayer().getPosition()*getPlayer().getDuration();
+	float duration = getPlayer().getDuration();
+#endif
+	
+	//cout << "position is " << position << " " << duration << " duration " << endl;
+	
+	if(position < 1){
+		audioVolume = powf(position,2.0);
+//		cout << "VOLUME " << audioVolume << endl;
 	}
+	else if(position > duration - 1){
+		audioVolume = powf(duration - position, 2.0);
+//		cout << "VOLUME " << audioVolume << endl;
+	}
+	
+	getPlayer().setVolume(audioVolume);
 }
 
 bool CloudsRGBDCombinedRenderer::isPlaying(){
