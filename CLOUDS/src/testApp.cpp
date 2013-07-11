@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -14,11 +15,11 @@ void testApp::setup(){
 
     parser.loadFromFiles();
 	
-	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
+	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
 
-	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
+	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	visualSystems.populateVisualSystems();
 	
