@@ -518,6 +518,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E73996561787300C00EA5F4D /* CoreMedia.framework */,
+				E73996541787300700EA5F4D /* QuartzCore.framework */,
+				E739965217872FFC00EA5F4D /* AVFoundation.framework */,
 				E7A1E0C71760E80E00A51263 /* libz.dylib */,
 				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
@@ -566,9 +569,6 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E73996561787300C00EA5F4D /* CoreMedia.framework */,
-				E73996541787300700EA5F4D /* QuartzCore.framework */,
-				E739965217872FFC00EA5F4D /* AVFoundation.framework */,
 				608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
