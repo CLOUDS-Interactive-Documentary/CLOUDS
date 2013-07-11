@@ -11,7 +11,7 @@
 #include "CloudsVisualSystem.h"
 
 #include "wStar.h"
-#include "wPoint.h"
+#include "wCity.h"
 #include "wParticle.h"
 #include "wSatellite.h"
 
@@ -65,12 +65,15 @@ protected:
 
     //  Cities
     //
-    void loadWorldPoints(string _file);
-    void loadSecWorldPoints(string _file);
-    vector< wPoint > worldPoints;
-    vector< wPoint > secWorldPoints;
+    void loadCities(string _file);
+    void loadSecCities(string _file);
+    vector< wCity > cities;
+    vector< wCity > secCities;
+    float   citiesAlpha;
+    
     float   pointNoisePeaks;
     float   rippleThreshold;
+    
     
     //  Flocking particles
     //
@@ -92,6 +95,11 @@ protected:
     //  Satellites
     //
     vector< wSatellite* > satellites;
+    float   satLinksAlpha;
+    float   satLinksDist;
     float   nMaxSatellites;
+    
+    float   blinkingAlpha;
+    float   blinkingSpeed;
     
 };

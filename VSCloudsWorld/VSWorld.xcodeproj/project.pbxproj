@@ -59,7 +59,7 @@
 		3D605190178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D60518E178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp */; };
 		3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA56F9D177CC983002069B4 /* wSatellite.cpp */; };
 		3DCACC86176A51F2000696C6 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */; };
-		3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40D99177905720030A5EE /* wPoint.cpp */; };
+		3DD40D9B177905720030A5EE /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40D99177905720030A5EE /* wCity.cpp */; };
 		3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40DA4177A194E0030A5EE /* wStar.cpp */; };
 		3DEFE117176E7D8000139095 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE110176E7D8000139095 /* tinyxml.cpp */; };
 		3DEFE118176E7D8000139095 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DEFE112176E7D8000139095 /* tinyxmlerror.cpp */; };
@@ -264,8 +264,8 @@
 		3DA56F9E177CC983002069B4 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
 		3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		3DCACC85176A51F2000696C6 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
-		3DD40D99177905720030A5EE /* wPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wPoint.cpp; sourceTree = "<group>"; };
-		3DD40D9A177905720030A5EE /* wPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wPoint.h; sourceTree = "<group>"; };
+		3DD40D99177905720030A5EE /* wCity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wCity.cpp; sourceTree = "<group>"; };
+		3DD40D9A177905720030A5EE /* wCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wCity.h; sourceTree = "<group>"; };
 		3DD40DA4177A194E0030A5EE /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
 		3DD40DA5177A194E0030A5EE /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		3DEFE110176E7D8000139095 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -841,8 +841,8 @@
 			children = (
 				3DEFE11F176E897F00139095 /* wParticle.cpp */,
 				3DEFE120176E897F00139095 /* wParticle.h */,
-				3DD40D99177905720030A5EE /* wPoint.cpp */,
-				3DD40D9A177905720030A5EE /* wPoint.h */,
+				3DD40D99177905720030A5EE /* wCity.cpp */,
+				3DD40D9A177905720030A5EE /* wCity.h */,
 				3DD40DA4177A194E0030A5EE /* wStar.cpp */,
 				3DD40DA5177A194E0030A5EE /* wStar.h */,
 				3DA56F9D177CC983002069B4 /* wSatellite.cpp */,
@@ -1273,7 +1273,7 @@
 				3DEFE119176E7D8000139095 /* tinyxmlparser.cpp in Sources */,
 				3DEFE11A176E7D8000139095 /* ofxXmlSettings.cpp in Sources */,
 				3DEFE121176E897F00139095 /* wParticle.cpp in Sources */,
-				3DD40D9B177905720030A5EE /* wPoint.cpp in Sources */,
+				3DD40D9B177905720030A5EE /* wCity.cpp in Sources */,
 				3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */,
 				3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */,
 				3D605190178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp in Sources */,

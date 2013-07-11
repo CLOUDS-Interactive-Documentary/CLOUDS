@@ -39,6 +39,8 @@ void CloudsVisualSystemWorld::selfSetup()
     constelationRnd = 10;
     
     nMaxSatellites = 10;
+    satLinksDist = 0;
+    satLinksAlpha = 1.0;
     
     haloShader.load(getDataPath()+"shaders/VisualSystems/World/backlight");
 }
@@ -52,8 +54,8 @@ void CloudsVisualSystemWorld::selfBegin()
     
     //  Load cities points
     //
-    loadWorldPoints( "simple-cities.txt" );
-    loadSecWorldPoints( "airports.txt");
+    loadCities( "simple-cities.txt" );
+    loadSecCities( "airports.txt");
     
     //  Load Stars
     //
@@ -72,7 +74,8 @@ void CloudsVisualSystemWorld::selfEnd()
 {
     coastVbo.clear();
     riversVbo.clear();
-    worldPoints.clear();
+    cities.clear();
+    secCities.clear();
     
     for(int i = particles.size()-1; i >= 0; i--){
         delete particles[i];
@@ -137,7 +140,7 @@ void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
     }
 }
 
-void CloudsVisualSystemWorld::loadWorldPoints(string _file){
+void CloudsVisualSystemWorld::loadCities(string _file){
     string filePath = getDataPath()+"visualsystems/World/"+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
@@ -147,17 +150,17 @@ void CloudsVisualSystemWorld::loadWorldPoints(string _file){
         if(temp.length() != 0) {
             vector<string> values = ofSplitString(temp, "|");
             
-            wPoint worldPoint;
-            worldPoint.place(ofToFloat(values[1]),ofToFloat(values[2]));
-            worldPoint.noisePeaks = &pointNoisePeaks;
-            worldPoint.noiseThreshold = &rippleThreshold;
+            wCity city;
+            city.place(ofToFloat(values[1]),ofToFloat(values[2]));
+            city.noisePeaks = &pointNoisePeaks;
+            city.noiseThreshold = &rippleThreshold;
             
-            worldPoints.push_back(worldPoint);
+            cities.push_back(city);
         }
     }
 }
 
-void CloudsVisualSystemWorld::loadSecWorldPoints(string _file){
+void CloudsVisualSystemWorld::loadSecCities(string _file){
     string filePath = getDataPath()+"visualsystems/World/"+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
@@ -167,11 +170,11 @@ void CloudsVisualSystemWorld::loadSecWorldPoints(string _file){
         if(temp.length() != 0) {
             vector<string> values = ofSplitString(temp, "|");
             
-            wPoint worldPoint;
-            worldPoint.place(ofToFloat(values[5]),ofToFloat(values[6]));
-            worldPoint.size = ofMap(ofToFloat(values[4]), 0, 10000, 0.1, 5.0);
+            wCity city;
+            city.place(ofToFloat(values[5]),ofToFloat(values[6]));
+            city.size = ofMap(ofToFloat(values[4]), 0, 10000, 0.1, 5.0);
             
-            secWorldPoints.push_back(worldPoint);
+            secCities.push_back(city);
         }
     }
 }
@@ -228,7 +231,9 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
     sysGui->addSlider("independence", 0, 0.01, &independence);
 
     sysGui->addLabel("Satelite");
-    sysGui->addSlider("Number_of_Satelites", 0.0, 1000, &nMaxSatellites);
+    sysGui->addSlider("Satelites_ammount", 0.0, 1000, &nMaxSatellites);
+    sysGui->addSlider("Satelites_links_distance", 0.0, 200, &satLinksDist);
+    sysGui->addSlider("Satelites_links_alpha", 0.0, 1.0, &satLinksAlpha);
 }
 
 void CloudsVisualSystemWorld::selfSetupRenderGui()
@@ -248,6 +253,7 @@ void CloudsVisualSystemWorld::selfSetupRenderGui()
     rdrGui->addLabel("World Map");
     rdrGui->addSlider("Rivers", 0.0, 1.0, &riversAlpha);
     rdrGui->addSlider("Coast", 0.0, 1.0, &coastAlpha);
+    rdrGui->addSlider("Cities", 0.0, 1.0, &citiesAlpha);
     
     rdrGui->addLabel("Stars & Constelations");
     rdrGui->addSlider("Constelation_Min", 0.0, 1.0, &constelationMin);
@@ -277,17 +283,17 @@ void CloudsVisualSystemWorld::selfUpdate()
 {
     //  Insert Particles if it's need
     //
-    if ( (worldPoints.size() > 2) && (particles.size() < nMaxPoints-2) ){
-        int randomIndex = ofRandom(worldPoints.size()-1);
+    if ( (cities.size() > 2) && (particles.size() < nMaxPoints-2) ){
+        int randomIndex = ofRandom(cities.size()-1);
         
         wParticle *newParticle = new wParticle();
-        newParticle->set( worldPoints[randomIndex]*1.01 );
+        newParticle->set( cities[randomIndex]*1.01 );
         newParticle->loc = *newParticle;
         newParticle->vel = *newParticle - ofPoint(0,0,0);
         newParticle->vel.normalize();
         newParticle->vel *= initialForce;
         
-        newParticle->color = worldPoints[randomIndex].color;
+        newParticle->color = cities[randomIndex].color;
         newParticle->bTrail = true;
         particles.push_back(newParticle);
     }
@@ -318,8 +324,8 @@ void CloudsVisualSystemWorld::selfUpdate()
 							turbulence/neigbordhood,
 							turbulence/neigbordhood);
     
-    for(int i = 0; i < worldPoints.size(); i++){
-        worldPoints[i].update();
+    for(int i = 0; i < cities.size(); i++){
+        cities[i].update();
     }
     
     if ( (int)ofRandom(constelationRnd) == 1){
@@ -370,7 +376,7 @@ void CloudsVisualSystemWorld::selfDraw()
     //  WORLD MAP
     //  -------------------------------------
     //
-    if (coastAlpha && riversAlpha){
+    if (coastAlpha || riversAlpha){
         //  Coast
         ofSetLineWidth(0.5);
         ofSetColor(255,coastAlpha*255.0f);
@@ -381,6 +387,14 @@ void CloudsVisualSystemWorld::selfDraw()
         riversVbo.drawWireframe();
         ofSetColor(255,100);
     }
+    if (citiesAlpha){
+        for(int i = 0; i < cities.size(); i++){
+            cities[i].draw(citiesAlpha);
+        }
+        for(int i = 0; i < secCities.size(); i++){
+            secCities[i].draw(citiesAlpha);
+        }
+    }
     
     //  Particles
     //
@@ -388,20 +402,17 @@ void CloudsVisualSystemWorld::selfDraw()
         particles[i]->draw();
     }
     
-    //  Spikes
-    //
-    for(int i = 0; i < worldPoints.size(); i++){
-        worldPoints[i].draw();
-    }
-    
-    for(int i = 0; i < secWorldPoints.size(); i++){
-        secWorldPoints[i].draw();
-    }
-    
     //  Satellites
     //
     for(int i = 0; i < satellites.size(); i++){
         satellites[i]->draw();
+        
+        for(int j = i; j >= 0 ; j--){
+            if (satellites[i]->distance( *satellites[j] ) <= satLinksDist ){
+                ofSetColor(255,satLinksAlpha*255.0);
+                ofLine(*satellites[i], *satellites[j]);
+            }
+        }
     }
 
     mat->end();
