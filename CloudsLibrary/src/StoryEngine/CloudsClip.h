@@ -9,7 +9,7 @@ class CloudsClip {
   public:
 	CloudsClip();
 	
-	static string relinkFilePath(string filePath);
+	
     
 	string name;
     string person;
