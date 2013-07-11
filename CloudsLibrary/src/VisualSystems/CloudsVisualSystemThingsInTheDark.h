@@ -5,7 +5,7 @@
 
 #include "ofxUI.h"
 #include "CloudsVisualSystem.h"
-#include "CloudsRGBDCombinedRender.h"
+#include "CloudsRGBDCombinedRenderer.h"
 
 class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystem {
  public:
@@ -46,7 +46,7 @@ class CloudsVisualSystemThingsInTheDark : public CloudsVisualSystem {
 	
 	void loadMovieForComposition(string videoPath);
 
-	CloudsRGBDCombinedRender renderer;
+	CloudsRGBDCombinedRenderer renderer;
 	
 	ofxUISuperCanvas* composeGui;
 	ofxUITextInput* fileNameInput;

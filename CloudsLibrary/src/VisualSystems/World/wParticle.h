@@ -36,7 +36,7 @@ public:
     
     ofPoint     loc,vel,acc;
 	ofPoint     localOffset;
-	ofColor     color;
+	ofFloatColor color;
     
     ofPoint     ripplePnt;
     float       ripplePct;

@@ -93,6 +93,9 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 	
+    filler.setKernelSize(3);
+    filler.setIterations(3);
+
 	cout << "Finished setup " << ofxTimecode::timecodeForSeconds(parser.getAllClipDuration()) << " seconds" << endl;
 }
 
@@ -218,6 +221,7 @@
 		loadedClip.adjustTranslate = renderer.colorMatrixTranslate = translate;
 		loadedClip.adjustScale = renderer.scale = scale;
 		
+        filler.close( renderer.getDepthImage() );
 		renderer.update();
 	}
 	
@@ -349,7 +353,7 @@
 		
 		if(player.setup(clip.getSceneFolder())){
 			if(!player.alternativeVideoIsConfirmed()){
-				ofSystemAlertDialog("Error confirming altenrative clip " + clip.getSceneFolder() );
+				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
 			}
 			showHistogram = false;
 			calculatedHistogram = false;

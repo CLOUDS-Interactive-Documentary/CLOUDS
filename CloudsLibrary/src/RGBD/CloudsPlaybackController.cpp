@@ -21,10 +21,11 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		
-		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
-		ofRemoveListener(storyEngine->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofRemoveListener(storyEngine->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+		ofRemoveListener(act->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
+		ofRemoveListener(act->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
+
+		ofRemoveListener(act->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofRemoveListener(act->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
 		
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
@@ -39,13 +40,13 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
 		
 		this->storyEngine = &storyEngine;
-		
-		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
-		ofAddListener(storyEngine.getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofAddListener(storyEngine.getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+        this->act= &this->storyEngine->getAct();
+    
+		ofAddListener(act->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
+		ofAddListener(act->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
 	
-		ofAddListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
+		ofAddListener(act->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
+		ofAddListener(act->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
@@ -124,7 +125,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 	if(simplePlaybackMode){
-		storyEngine->drawActDebug();
+        act->drawActDebug();
 //		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
 	}
 }

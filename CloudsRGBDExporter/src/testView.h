@@ -9,6 +9,7 @@
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
 #include "ofxCv.h"
+#include "ofxDepthHoleFiller.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	
@@ -74,7 +75,8 @@
 	ofColor targetColor;
 	ofVec2f facePosition;
 	ofxDepthImageCompressor compressor;
-	
+	ofxDepthHoleFiller filler;
+    
 	//0 - 1 clip position
 	float clipPosition;
 	

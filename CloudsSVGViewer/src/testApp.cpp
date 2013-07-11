@@ -187,10 +187,9 @@ void testApp::draw(){
     for(int i=0; i<centres.size();i++){
     
         if (medianValues[i] / maxDistances[i] < 1.*mouseX/ofGetWidth()) {
-            ofSetColor(255);
+            ofSetColor(255,100);
             font.drawString(keyWords[i], centres[i].x*ofGetWidth(),centres[i].y*ofGetHeight());
-            //ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),
-             //        (medianValues[i])*ofGetHeight());
+            ofCircle(centres[i] * ofVec2f(ofGetWidth(),ofGetHeight()),(medianValues[i])*ofGetHeight());
             
         }
         cout<<1.*mouseX/ofGetWidth()<<endl;

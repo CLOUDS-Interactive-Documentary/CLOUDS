@@ -34,7 +34,7 @@
     vector<CloudsClip> currentMetaLinks;
 	
     CloudsFCPParser* parser;
-	
+	CloudsClip dummyClip;
     testView* testViewParent;
 	
 	BOOL dontUpdateKeywords;
@@ -53,14 +53,14 @@
 - (void) deselectCurrentClip;
 
 - (IBAction) saveLinks:(id)sender;
-- (IBAction) specialKeywords:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
 
+- (IBAction) applySpecialKeyword:(id<NSUserInterfaceItemIdentification>)sender;
 
 - (bool) isClipSelected;
 - (bool) isKeywordSelected;
 
-- (CloudsClip) selectedClip;
+- (CloudsClip&) selectedClip;
 - (CloudsLink&) selectedLink;
 - (CloudsLink&) selectedSuppression;
 - (CloudsClip&) selectedMeta;

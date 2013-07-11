@@ -1,63 +1,27 @@
 
 #include "CloudsVisualSystemVerletForm.h"
 
-vector<ofColor> CloudsVisualSystemVerletForm::initColors() {
+vector<ofColor> CloudsVisualSystemVerletForm::initColors(int row) {
 
 	//palette
 	ofPixels pix;
-
-	if( !ofLoadImage(pix, "catenarycolors.png") ){
+	vector<ofColor> col;
+	
+	if( !ofLoadImage(pix, getVisualSystemDataPath() + "_palettes/catenarycolors.png") ){
 		ofLogError() << "COULDN'T LOAD COLORS";
+		return col;
 	}
 	
-	int randomPalette = int(ofRandom(1, pix.getHeight()));
-	vector<ofColor> col;
-	for(int i = 1; i < randomPalette; i++){
-		ofColor color = pix.getColor(i, randomPalette);
+	row = ofClamp(row, 1, pix.getHeight()-1);
+	//int randomPalette = int(ofRandom(1, pix.getHeight()));
+
+	for(int i = 1; i < pix.getWidth(); i++){
+		ofColor color = pix.getColor(i, row);
 		if(color.a == 0) break;
 		col.push_back( color );
 	}
-	cout << "found " << col.size() << " for palette row " << randomPalette << endl;
+	cout << "found " << col.size() << " for palette row " << row << endl;
 	return col;
-	
-	//COLOR GENERATOR
-	/*
-	vector<ofColor> colstr;
-	
-	colstr.push_back(ofColor::fromHex(0xFFFF00)); colstr.push_back(ofColor::fromHex(0xFF9900)); //0
-	colstr.push_back(ofColor::fromHex(0xCABEBD)); colstr.push_back(ofColor::fromHex(0xFFFFFF)); //1
-	colstr.push_back(ofColor::fromHex(0x001B2E)); colstr.push_back(ofColor::fromHex(0xA1CDFF)); //2
-	colstr.push_back(ofColor::fromHex(0xFF0000)); colstr.push_back(ofColor::fromHex(0x7D0000)); //3
-	colstr.push_back(ofColor::fromHex(0x00FF00)); colstr.push_back(ofColor::fromHex(0x003800)); //4
-	colstr.push_back(ofColor::fromHex(0x00FFFF)); colstr.push_back(ofColor::fromHex(0x00ABC9)); //5
-	colstr.push_back(ofColor::fromHex(0xFF3287)); colstr.push_back(ofColor::fromHex(0xFFA1C1)); //6
-	colstr.push_back(ofColor::fromHex(0xFF7700)); colstr.push_back(ofColor::fromHex(0xFF2500)); //7
-	colstr.push_back(ofColor::fromHex(0x480081)); colstr.push_back(ofColor::fromHex(0xB477FF)); //8
-	colstr.push_back(ofColor::fromHex(0x373737)); colstr.push_back(ofColor::fromHex(0x838383)); //9
-	colstr.push_back(ofColor::fromHex(0xFFFFFF)); colstr.push_back(ofColor::fromHex(0xF0F0F0)); //10
-	colstr.push_back(ofColor::fromHex(0xCCFFFF)); colstr.push_back(ofColor::fromHex(0x0099FF)); //11
-	colstr.push_back(ofColor::fromHex(0x003300)); colstr.push_back(ofColor::fromHex(0x33FF00));  //12
-
-	
-	vector<ofColor> col;
-	for (int i = 0; i < colstr.size() / 2; i++) {
-		if (ofRandom(100) > 30) {
-//			int c1 = toColor(colstr[i*2]);
-//			int c2 = toColor(colstr[i*2+1]);
-			
-			ofColor c1 = colstr[i*2];
-			ofColor c2 = colstr[i*2+1];
-			int n = (int)ofRandom(3, 11);
-			
-			for(int j = 0; j < n; j++){
-				col.push_back( c1.getLerped(c2, ofMap(j, 0, n-1, 0, 1)) );
-				//col.push_back( colstr );
-			}
-		}
-	}
-	
-	return col;
-	 */
 }
 
 CloudsVisualSystemVerletForm::CloudsVisualSystemVerletForm(){
@@ -69,7 +33,6 @@ CloudsVisualSystemVerletForm::CloudsVisualSystemVerletForm(){
 	clothHeight = 200;
 	
 	gridSize = 25;
-	doRegenerateMesh = true;
 
 }
 
@@ -79,9 +42,6 @@ string CloudsVisualSystemVerletForm::getSystemName(){
 
 void CloudsVisualSystemVerletForm::selfSetup(){
 
-	//generateMesh();
-	
-//	ofRandomize(colors);
 
 }
 
@@ -89,11 +49,9 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	
 	cout << "GENERATING MESH " << endl;
 
-	colors = initColors();
+	colors = initColors( int(colorIndex) );
 
-	particleToMeshIndex.clear();
-	particles.clear();
-	physics.clear();
+	clearElements();
 	
 	physics.setWorldSize(ofVec3f(-clothWidth*2,-clothWidth*2,-clothWidth*2),
 						 ofVec3f(clothWidth*2,clothHeight*2,clothWidth*2));
@@ -101,7 +59,7 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 	physics.setDrag(1.0);
 	physics.setGravity(-.1);
 		
-	mesh.clear();
+
 	ofMesh baseMesh;
 	float gridStepX = (float) ((clothWidth) / gridSize);
 	float gridStepY = (float) ((clothHeight) / gridSize);
@@ -117,7 +75,7 @@ void CloudsVisualSystemVerletForm::generateMesh(){
 			particle->setMass(.2);
 			particles[i].push_back( particle );
 			
-			particleToMeshIndex[particle] = baseMesh.getNumVertices();
+//			particleToMeshIndex[particle] = baseMesh.getNumVertices();
 			meshIndexToParticle[baseMesh.getNumVertices()] = particle;
 			
 			baseMesh.addVertex( position );
@@ -231,6 +189,8 @@ void CloudsVisualSystemVerletForm::selfSetupGuis(){
     clothGui->setName("ClothSettings");
     clothGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	clothGui->addSlider("COLOR INDEX", 0, 909, &colorIndex);
+	
 	clothGui->addSlider("CLOTH WIDTH", 10, 1000, &clothWidth);
 	clothGui->addSlider("CLOTH HEIGHT", 10, 1000, &clothHeight);
 	clothGui->addSlider("GRID SIZE", 10, 100, &gridSize);
@@ -248,13 +208,17 @@ void CloudsVisualSystemVerletForm::selfSetupGuis(){
 	
 }
 
+void CloudsVisualSystemVerletForm::selfPresetLoaded(string presetPath){
+	shouldRegenerateMesh = true;
+}
+
 void CloudsVisualSystemVerletForm::selfUpdate(){
 
 	gridSize = int(gridSize);
 	
-	if(doRegenerateMesh){
+	if(shouldRegenerateMesh){
 		generateMesh();
-		doRegenerateMesh = false;
+		shouldRegenerateMesh = false;
 	}
 	
 	physics.update();
@@ -308,6 +272,7 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 	
 	//update normals
 
+	ofSetGlobalAmbientColor( ofColor(0,0,0) );
 	mesh.draw();
 	
 	
@@ -337,11 +302,20 @@ void CloudsVisualSystemVerletForm::selfExit(){
 }
 
 void CloudsVisualSystemVerletForm::selfBegin(){
-	
+	shouldRegenerateMesh = true;
 }
 
 void CloudsVisualSystemVerletForm::selfEnd(){
+	clearElements();
+}
+
+void CloudsVisualSystemVerletForm::clearElements(){
+	mesh.clear();
+	meshIndexToParticle.clear();
+	particleToMeshIndices.clear();
 	
+	particles.clear();
+	physics.clear();
 }
 
 void CloudsVisualSystemVerletForm::selfKeyPressed(ofKeyEventArgs & args){

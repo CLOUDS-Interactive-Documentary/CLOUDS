@@ -3,6 +3,7 @@
 static bool confirmedDataPath = false;
 static bool usingDevelopmentFolder = false;
 static ofFbo sharedRenderTarget;
+static ofImage sharedCursor;
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     if(!sharedRenderTarget.isAllocated() ||
@@ -12,6 +13,13 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
         sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
     }
     return sharedRenderTarget;
+}
+
+ofImage& CloudsVisualSystem::getCursor(){
+	if(!sharedCursor.bAllocated()){
+		sharedCursor.loadImage(getDataPath() + "images/cursor.png");
+	}
+	return sharedCursor;
 }
 
 CloudsVisualSystem::CloudsVisualSystem(){
@@ -91,7 +99,7 @@ void CloudsVisualSystem::playSystem(){
 		loadGUIS();
 		timeline->hide();
 		hideGUIS();
-		ofHideCursor();
+//		ofHideCursor();
 		
 		//    showGUIS(); //remove this so the gui doesn't keep popping up
 		cam.enableMouseInput();
@@ -151,17 +159,9 @@ string CloudsVisualSystem::getCurrentTopic(){
 	return currentTopic;
 }
 
-//vector<string>& CloudsVisualSystem::getRelevantKeywords(){
-//	return relevantKeywords;
-//}
-
-void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRender& newRenderer){
+void CloudsVisualSystem::setRenderer(CloudsRGBDCombinedRenderer& newRenderer){
 	sharedRenderer = &newRenderer;
 }
-
-//void CloudsVisualSystem::setCamera(CloudsCamera& camera){
-//	sharedCamera = &camera;
-//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
@@ -239,10 +239,24 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
+		
+		ofPushStyle();
+		ofPushMatrix();
+		ofTranslate(0, ofGetHeight());
+		ofScale(1,-1,1);
+		
+		selfDrawOverlay();
+		
+		ofPopMatrix();
+		ofPopStyle();
+		
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
 		selfPostDraw();
-		
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		getCursor().draw( ofGetMouseX(),ofGetMouseY() );
+		ofPopStyle();
 	}
     
 	timeline->draw();
@@ -287,38 +301,18 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     deleteGUIS();
 }
 
-//void CloudsVisualSystem::begin()
-//{
-//    loadGUIS();
-//	timeline->hide();
-//	hideGUIS();
-//	ofHideCursor();
-//	
-//	//    showGUIS(); //remove this so the gui doesn't keep popping up
-//    cam.enableMouseInput();
-//    for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-//    {
-//        it->second->light.setup();
-//    }
-//    selfBegin();
-//}
-
-//void CloudsVisualSystem::end()
-//{
-//	
-//}
 
 void CloudsVisualSystem::toggleControls(){
 	
 	toggleGUIS();
 	timeline->toggleShow();
 	
-	if(timeline->getIsShowing()){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
+//	if(timeline->getIsShowing()){
+//		ofShowCursor();
+//	}
+//	else{
+//		ofHideCursor();
+//	}
 	
 }
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
@@ -1175,6 +1169,9 @@ void CloudsVisualSystem::setupPointLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setPointLight();
+	//removes light until we are active
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1205,6 +1202,8 @@ void CloudsVisualSystem::setupSpotLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setSpotlight();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1239,6 +1238,8 @@ void CloudsVisualSystem::setupBeamLight(string name)
 {
     ofxLight *l = new ofxLight();
     l->light.setDirectional();
+	l->light.destroy();
+	
     lights[name] = l;
     
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -2352,6 +2353,10 @@ void CloudsVisualSystem::selfDraw()
     ofSetColor(ofColor(255));
     ofFill();
     mat->end();
+}
+
+void CloudsVisualSystem::selfDrawOverlay(){
+	
 }
 
 void CloudsVisualSystem::selfPostDraw(){

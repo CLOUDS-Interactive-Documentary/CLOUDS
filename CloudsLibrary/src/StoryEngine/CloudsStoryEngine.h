@@ -6,6 +6,15 @@
 
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
+#include "CloudsAct.h"
+
+
+typedef struct {
+    string left;
+    string right;
+    int balance; //pos/neg
+} KeywordDichotomy;
+
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -30,11 +39,11 @@ class CloudsStoryEngine {
 	void update(ofEventArgs& args);
 	
 	CloudsClip& getCurrentClip();
-	vector<CloudsClip>& getClipHistory();
+//	vector<CloudsClip>& getClipHistory();
 	string getCurrentTopic();
 	float getTotalSecondsWatched();
 
-	bool historyContainsClip(CloudsClip& m);
+//	bool historyContainsClip(CloudsClip& m);
 	//after this many times the topic becomes available again
 	int topicTimeoutPeriod;
 	int getTimesOnTopic();
@@ -57,24 +66,38 @@ class CloudsStoryEngine {
 	
 	void drawStoryEngineDebug();
 	void drawActDebug();
+    void updateDichotomies(CloudsClip& clip);
+	void clearDichotomiesBalance();
+    
+    CloudsAct& getAct();
+    //VS Story Engine Parameters
+    float systemMaxRunTime;
+    float maxVisualSystemGapTime;
+    float longClipThreshold;
+    float longClipFadeInPercent;
+    float actLength;
+protected:
 	
-  protected:
-	
+
 	CloudsEvents events;
 	bool isSetup;
 	
 	bool hasclip;
 	CloudsClip currentClip;
 	int totalFramesWatched;
-	
+	CloudsAct act;
+
+    float soloPointCloudTime;
+    float minLengthToShowPointCloudInClip;
 	float totalPoints;
 	int nextClipTopScore;
+    int dichotomyThreshold;
 	vector<CloudsClip> validNextClips;
 	vector<CloudsClip> allNextClips;
 	
-	void buildQueue(CloudsClip seed, float seconds);
+	void buildAct(CloudsClip& seed, float seconds);
 	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
-	
+
 	
 	bool populateNextClips();
 	void checkVisualSystems();
@@ -87,9 +110,11 @@ class CloudsStoryEngine {
 	float visualSystemEndTime;
 	CloudsVisualSystemPreset currentVisualSystem;
 	
-	vector<CloudsClip> clipHistory;
-	vector<CloudsClip> clipQueue;
+//	vector<CloudsClip> clipHistory;
+//	vector<CloudsClip> clipQueue;
+	vector<KeywordDichotomy> dichotomies;
 	
+    
 	vector<string> topicHistory;
 	map<string, int> peopleVisited;
 	
@@ -106,6 +131,6 @@ class CloudsStoryEngine {
 	void chooseNewTopic(CloudsClip& clip);
 	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
-	int occurrencesOfPerson(string person, int stepsBack);
+//	int occurrencesOfPerson(string person, int stepsBack);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
 };
