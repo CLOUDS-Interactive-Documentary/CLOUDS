@@ -8,6 +8,7 @@
 #include "CloudsVisualSystemManager.h"
 #include "CloudsAct.h"
 
+
 typedef struct {
     string left;
     string right;
@@ -69,8 +70,14 @@ class CloudsStoryEngine {
 	void clearDichotomiesBalance();
     
     CloudsAct& getAct();
-  protected:
+    //VS Story Engine Parameters
+    float systemMaxRunTime;
+    float maxVisualSystemGapTime;
+    float longClipThreshold;
+    float longClipFadeInPercent;
+protected:
 	
+
 	CloudsEvents events;
 	bool isSetup;
 	

@@ -106,7 +106,7 @@ protected:
     float visualSystemEndTime;
     
     float duration;
-
+    bool timeLineActive;
     int currentPlayIndex;
     void loadNextClip();
     float getActDuration();

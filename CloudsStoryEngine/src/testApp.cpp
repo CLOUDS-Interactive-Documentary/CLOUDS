@@ -36,7 +36,16 @@ void testApp::setup(){
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
 	CloudsClip& clip = parser.getRandomClip(false,false);
-	
+	rebuildAct = false;
+    gui = new ofxUISuperCanvas("STORY ENGINE Params", OFX_UI_FONT_MEDIUM);
+    gui->addSpacer();
+    gui->addSlider("MaxVSruntime", 0, 480,&storyEngine.systemMaxRunTime);
+    gui->addSlider("MaxVSgaptime", 0, 60, &storyEngine.maxVisualSystemGapTime);
+    gui->addSlider("Long clip threshold", 0, 240, &storyEngine.longClipThreshold);
+    gui->addSlider("Long Clip fade in percent", 0.0, 1.0, storyEngine.longClipFadeInPercent);
+    gui->addButton("BuildAct", &rebuildAct);
+    gui->autoSizeToFitWidgets();
+    ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	storyEngine.seedWithClip( clip );
@@ -60,6 +69,22 @@ void testApp::draw(){
 
 }
 
+void testApp::exit(){
+    delete gui;
+}
+//--------------------------------------------------------------
+void testApp::guiEvent(ofxUIEventArgs &e)
+{
+    	string name = e.widget->getName();
+    if(name == "BuildAct"){
+        if(rebuildAct){
+            rebuildAct =false;
+            CloudsClip& clip = parser.getRandomClip(false,false);
+            storyEngine.seedWithClip( clip );
+        }
+    }
+
+}
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	if(key == '1'){
