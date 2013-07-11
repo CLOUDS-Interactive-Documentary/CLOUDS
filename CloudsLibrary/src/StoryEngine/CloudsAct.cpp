@@ -140,7 +140,7 @@ void CloudsAct::drawActDebug(){
     //		ofRect(screenX, 100 + 30*i, width, 30);
     //		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
     //	}
-    ofPushMatrix();
+//    ofPushMatrix();
 //    ofTranslate(0,ofGetHeight()/3);
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
