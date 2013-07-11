@@ -12,7 +12,6 @@
 
 #include "wStar.h"
 #include "wPoint.h"
-#include "wSign.h"
 #include "wParticle.h"
 #include "wSatellite.h"
 
@@ -56,8 +55,10 @@ protected:
     //  Globe
     //
     void        loadVbo(ofVboMesh &_vbo, string _file);
-    float       wireSphereScale, solidSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha;
+    ofShader    haloShader;
+    
+    float       wireSphereScale, solidSphereScale, haloSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
     float       coastAlpha, riversAlpha;
     ofVboMesh   coastVbo;
     ofVboMesh   riversVbo;
@@ -91,8 +92,6 @@ protected:
     //  Satellites
     //
     vector< wSatellite* > satellites;
-    vector< wSign > signs;
-    float   nMaxSigns;
     float   nMaxSatellites;
     
 };
