@@ -36,8 +36,10 @@ class CloudsVisualSystemManager {
     void unsuppressClip(string presetID, string clip);
     void unsuppressClip(string presetID, int presetIndex);
     
-    protected:
-	
+  protected:
+
+	CloudsVisualSystemPreset dummyPreset;
+    
 	vector<CloudsVisualSystem*> systems;
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;

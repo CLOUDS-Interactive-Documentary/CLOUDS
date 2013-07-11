@@ -11,8 +11,7 @@
 #include "CloudsVisualSystem.h"
 
 #include "wStar.h"
-#include "wPoint.h"
-#include "wSign.h"
+#include "wCity.h"
 #include "wParticle.h"
 #include "wSatellite.h"
 
@@ -56,20 +55,25 @@ protected:
     //  Globe
     //
     void        loadVbo(ofVboMesh &_vbo, string _file);
-    float       wireSphereScale, solidSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha;
+    ofShader    haloShader;
+    
+    float       wireSphereScale, solidSphereScale, haloSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
     float       coastAlpha, riversAlpha;
     ofVboMesh   coastVbo;
     ofVboMesh   riversVbo;
 
     //  Cities
     //
-    void loadWorldPoints(string _file);
-    void loadSecWorldPoints(string _file);
-    vector< wPoint > worldPoints;
-    vector< wPoint > secWorldPoints;
+    void loadCities(string _file);
+    void loadSecCities(string _file);
+    vector< wCity > cities;
+    vector< wCity > secCities;
+    float   citiesAlpha;
+    
     float   pointNoisePeaks;
     float   rippleThreshold;
+    
     
     //  Flocking particles
     //
@@ -91,8 +95,11 @@ protected:
     //  Satellites
     //
     vector< wSatellite* > satellites;
-    vector< wSign > signs;
-    float   nMaxSigns;
+    float   satLinksAlpha;
+    float   satLinksDist;
     float   nMaxSatellites;
+    
+    float   blinkingAlpha;
+    float   blinkingSpeed;
     
 };

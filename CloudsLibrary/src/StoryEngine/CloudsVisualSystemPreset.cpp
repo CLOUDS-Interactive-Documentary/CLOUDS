@@ -10,9 +10,9 @@
 #include "CloudsVisualSystem.h"
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
-	
+	system = NULL;
 }
 
 string CloudsVisualSystemPreset::getID(){
-	return system->getSystemName() + "_" + presetName;
+	return (system == NULL ? "null" : system->getSystemName() ) + "_" + presetName;
 }

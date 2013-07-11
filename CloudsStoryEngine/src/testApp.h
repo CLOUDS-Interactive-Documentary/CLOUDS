@@ -5,12 +5,13 @@
 #include "CloudsFCPParser.h"
 //#include "CloudsPlaybackController.h"
 #include "CloudsSound.h"
-
+#include "ofxUI.h"
 class testApp : public ofBaseApp{
   public:
 	void setup();
 	void update();
 	void draw();
+    void exit();
 	
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -27,7 +28,10 @@ class testApp : public ofBaseApp{
 //	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
 //	CloudsSound sound;
-	
-	
+	bool rebuildAct;
+    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
+    
+    void guiEvent(ofxUIEventArgs &e);
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };

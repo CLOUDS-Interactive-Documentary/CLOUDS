@@ -10,14 +10,14 @@
 
 #include "ofMain.h"
 
-class wPoint : public ofPoint {
+class wCity : public ofPoint {
 public:
     
-    wPoint();
+    wCity();
     
     void place(float _lat, float _long);
     void update();
-    void draw();
+    void draw(float _alpha = 1.0);
 
     ofColor color;
     

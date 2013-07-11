@@ -1,14 +1,14 @@
 //
-//  wPoint.cpp
+//  wCity.cpp
 //  VSWorld
 //
 //  Created by Patricio Gonzalez Vivo on 6/24/13.
 //
 //
 
-#include "wPoint.h"
+#include "wCity.h"
 
-wPoint::wPoint(){
+wCity::wCity(){
     color.set(255,0,0);
     rippleScale = ofRandom(50,500);
     noisePeaks = NULL;
@@ -17,7 +17,7 @@ wPoint::wPoint(){
     size = 1.0;
 }
 
-void wPoint::place(float _lat, float _long){
+void wCity::place(float _lat, float _long){
     ofVec3f displacementFromCenter = ofVec3f(0,0,-300);
     
     latitud = _lat;
@@ -34,7 +34,7 @@ void wPoint::place(float _lat, float _long){
     color.a = 200;
 }
 
-void wPoint::update(){
+void wCity::update(){
     ofPoint pos = *this*ofGetElapsedTimef()*0.001;
     noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
     nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
@@ -57,7 +57,7 @@ void wPoint::update(){
     }
 }
 
-void wPoint::draw(){
+void wCity::draw(float _alpha){
     
     ofPushStyle();
     
@@ -65,7 +65,7 @@ void wPoint::draw(){
         if ( *noisePeaks > 0.1 ){
             
             color.setHue( 20+nNoise*30 );
-            ofSetColor(color);
+            ofSetColor(color,_alpha*255);
             
             ofPoint head = *this - ofPoint(0,0,0);
             head.normalize();
@@ -74,7 +74,7 @@ void wPoint::draw(){
         }
     } else {
         
-        ofSetColor(color);
+        ofSetColor(color,_alpha*255);
         glPointSize(size);
         glBegin(GL_POINTS);
         glVertex3f(x,y,z);
@@ -89,7 +89,7 @@ void wPoint::draw(){
     ofPopStyle();
 }
 
-void wPoint::drawRipple( float _pct ){
+void wCity::drawRipple( float _pct ){
     //  Jen equation
     //
     float totalGlobeRadio = rippleScale;
