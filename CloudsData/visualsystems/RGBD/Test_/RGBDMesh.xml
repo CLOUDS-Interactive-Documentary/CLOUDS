@@ -28,17 +28,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MESH ALPHA</Name>
-    <Value>0.192118227</Value>
+    <Value>0.550000012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SKIN MULTIPLIER</Name>
-    <Value>0.379310340</Value>
+    <Value>0.133004919</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>EYE MULTIPLIER</Name>
-    <Value>0.453201979</Value>
+    <Value>0.325123161</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -58,12 +58,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID ALPHA</Name>
-    <Value>0.566502452</Value>
+    <Value>0.475000024</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID VERT SPACE</Name>
-    <Value>2.551724195</Value>
+    <Value>3.305418730</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -93,7 +93,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VERT LINE ALPHA</Name>
-    <Value>0.497536957</Value>
+    <Value>0.475000024</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -108,7 +108,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HORIZ LINE ALPHA</Name>
-    <Value>0.162561581</Value>
+    <Value>0.449999988</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
