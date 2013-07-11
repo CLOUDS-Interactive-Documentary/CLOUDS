@@ -5,6 +5,7 @@
 #include "ofxCameraSaveLoad.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
+#include "CloudsGlobal.h"
 
 //tenuous
 #include "ofxExtras.h"
@@ -71,7 +72,6 @@ class CloudsVisualSystem {
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
-    static string getDataPath();
 		
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes

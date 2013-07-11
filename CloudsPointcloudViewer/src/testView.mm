@@ -1,5 +1,5 @@
 #import "testView.h"
-
+#include "CloudsGlobal.h"
 @implementation testView
 @synthesize clipTable;
 
@@ -14,8 +14,8 @@
 	parser.loadFromFiles();
 
 	
-	if(ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
-		parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
+	if(ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
+		parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	}
 	else{
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -28,7 +28,7 @@
 	
 	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
-	renderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
+	renderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 
 	rgbdVisualSystem.playSystem();
 	rgbdVisualSystem.loadPresetGUISFromName("Test_");

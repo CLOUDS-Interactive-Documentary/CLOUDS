@@ -1,5 +1,7 @@
 
 #include "CloudsVisualSystem.h"
+
+
 //static bool confirmedDataPath = false;
 //static bool usingDevelopmentFolder = false;
 static ofFbo sharedRenderTarget;
