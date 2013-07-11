@@ -1,7 +1,7 @@
 
 #include "CloudsVisualSystem.h"
-static bool confirmedDataPath = false;
-static bool usingDevelopmentFolder = false;
+//static bool confirmedDataPath = false;
+//static bool usingDevelopmentFolder = false;
 static ofFbo sharedRenderTarget;
 static ofImage sharedCursor;
 
@@ -35,17 +35,6 @@ string CloudsVisualSystem::getVisualSystemDataPath(){
     return getDataPath() + "visualsystems/"+getSystemName()+"/";
 }
 
-string CloudsVisualSystem::getDataPath()
-{
-	if(!confirmedDataPath){
-		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
-		if(!usingDevelopmentFolder){
-			ofDirectory("CloudsData/").create();
-		}
-		confirmedDataPath = true;
-	}
-    return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
-}
 
 void CloudsVisualSystem::setup(){
 	

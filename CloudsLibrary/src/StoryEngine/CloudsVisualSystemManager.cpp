@@ -1,5 +1,7 @@
 
 #include "CloudsVisualSystemManager.h"
+#include "ofxXmlSettings.h"
+#include "CloudsGlobal.h"
 
 #ifndef CLOUDS_NO_VS
 
@@ -30,14 +32,14 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
 #ifndef CLOUDS_NO_VS
+	
 	nameToVisualSystem.clear();
 	systems.clear();
 	presets.clear();
 
-	//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
-	//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
-	//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-
+	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
 	registerVisualSystem( new CloudsVisualSystemVoro() );
@@ -186,7 +188,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
-	return CloudsVisualSystem::getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
+	return getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
 }
 
 //--------------------------------------------------------------------
