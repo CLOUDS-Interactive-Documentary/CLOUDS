@@ -328,6 +328,10 @@ void CloudsVisualSystemWorld::selfUpdate()
         cities[i].update();
     }
     
+    for(int i = 0; i < secCities.size(); i++){
+        secCities[i].update();
+    }
+    
     if ( (int)ofRandom(constelationRnd) == 1){
         selectedConstelation = constelations[ ofRandom(constelations.size()) ];
     }
@@ -388,11 +392,11 @@ void CloudsVisualSystemWorld::selfDraw()
         ofSetColor(255,100);
     }
     if (citiesAlpha){
+        for(int i = 0; i < secCities.size(); i++){
+            secCities[i].draw(citiesAlpha*0.9);
+        }
         for(int i = 0; i < cities.size(); i++){
             cities[i].draw(citiesAlpha);
-        }
-        for(int i = 0; i < secCities.size(); i++){
-            secCities[i].draw(citiesAlpha);
         }
     }
     

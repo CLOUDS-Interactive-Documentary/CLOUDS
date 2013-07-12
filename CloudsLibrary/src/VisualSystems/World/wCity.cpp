@@ -32,12 +32,25 @@ void wCity::place(float _lat, float _long){
     color.setHue(20+ofNoise(x*0.1,y*0.1,z*0.4)*30);
     color.setBrightness(100+ofNoise(x*0.1,y*0.1,z*0.1)*155);
     color.a = 200;
+    
+    freq = ofNoise(_lat*0.1,_long*0.1);
 }
 
 void wCity::update(){
     ofPoint pos = *this*ofGetElapsedTimef()*0.001;
-    noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
-    nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
+    
+    if ( noisePeaks != NULL){
+        if ( *noisePeaks > 0.0){
+        noise = powf( *noisePeaks ,ofNoise( sin(pos.x),pos.y,pos.z*0.1));
+        nNoise = ofMap(noise,0.001,*noisePeaks,0.0,1.0,true);
+        color.setHue( 20+nNoise*30 );
+        size = nNoise*5.0;
+        }
+    } else {
+        float blink = abs(sin(ofGetElapsedTimef()*freq));
+        color.setHue( 20+ blink * 30 );
+        size =  blink * 2.0;
+    }
     
     if (noiseThreshold != NULL && noisePeaks != NULL){
         if (nNoise > *noiseThreshold ){
@@ -63,8 +76,6 @@ void wCity::draw(float _alpha){
     
     if (noisePeaks != NULL){
         if ( *noisePeaks > 0.1 ){
-            
-            color.setHue( 20+nNoise*30 );
             ofSetColor(color,_alpha*255);
             
             ofPoint head = *this - ofPoint(0,0,0);
@@ -72,14 +83,15 @@ void wCity::draw(float _alpha){
             head *= noise;
             ofLine(*this, *this+head);
         }
-    } else {
         
         ofSetColor(color,_alpha*255);
-        glPointSize(size);
-        glBegin(GL_POINTS);
-        glVertex3f(x,y,z);
-        glEnd();
     }
+    
+    ofSetColor(color,_alpha*255);
+    glPointSize(size);
+    glBegin(GL_POINTS);
+    glVertex3f(x,y,z);
+    glEnd();
     
     if (bRipple){
         drawRipple(ripplePct*0.61);
