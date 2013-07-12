@@ -53,16 +53,21 @@ void testApp::setup(){
     gui->addLabel("CLIP: ");
     gui->addSlider("ACT LENGTH", 60, 1200, &storyEngine.actLength);
     gui->addButton("BUILD ACT", false);
-    gui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
-    gui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
-    gui->addSlider("SAME PERSON IN SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
-    gui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
-    gui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
     gui->autoSizeToFitWidgets();
 
 
 
+    clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
+    clipGui->setPosition(gui->getRect()->width, 0);
+        clipGui->addSpacer();
+    clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
+    clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
+    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
+    clipGui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
+    clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
+    clipGui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
+    ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
     
 
     
