@@ -131,12 +131,11 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
 	clearDichotomiesBalance();
 	
     act.addClipToAct(clip, topic, totalSecondsEnqueued);
-//    act.setTopicForClip(clip, currentTopic );
     totalSecondsEnqueued += clip.getDuration();
 
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
-//	act.addTopicToHistory(topic);
+
     
 	int timesOnCurrentTopic = 0;
 	bool freeTopic = false;
@@ -222,7 +221,6 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
         updateDichotomies(clip);
         
         act.addClipToAct(clip,topic,totalSecondsEnqueued);
-//        act.setTopicForClip(topic, clip.getLinkName());
 		totalSecondsEnqueued += clip.getDuration();
         
 		timesOnCurrentTopic++;
@@ -235,7 +233,6 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
     float currentPosition = 0;
     bool systemRunning = false;
     
-    cout<<"***** SYSTEM MAX RUN TIME*****"<<systemMaxRunTime<<endl;
     float visualSystemStartTime;
 //    string currentTopic = act.getTopicInHistory(0);
     string previousTopic = currentTopic;
@@ -666,23 +663,45 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	}
 	
 	//Base score
-	int score = 0;
+//	int score = 0;
+    int totalScore = 0;
+    int topicsInCommonScore = 0;
+    int topicsInCommonMultiplier = 10;
+    
+    int topicsInCommonWithPreviousScore = 0;
+    int topicsinCommonWithPreviousMultiplier = 5;
+    
+    int linkFactor =20 ;
+    int linkScore =0 ;
+    
+    int samePersonOccuranceScore =0;
+    int samePersonOccuranceSuppressionFactor = 4;
+    
+    int dichotomiesScore = 0;
+    int dichomoiesFactor = 2;
+    
 	int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
-	score += topicsInCommon*10;
+//	score += topicsInCommon*10;
 	
+    topicsInCommonScore +=topicsInCommon*topicsInCommonMultiplier;
+    
 	if(history.size() > 1){
 		int topicsInCommonWithPrevious = parser->getSharedKeywords(history[history.size()-2], potentialNextClip ).size();
-		score += topicsInCommonWithPrevious * 5;
+//		score += topicsInCommonWithPrevious * 5;
+        
+        topicsInCommonWithPreviousScore += topicsInCommonWithPrevious * topicsinCommonWithPreviousMultiplier;
 	}
 	
 	//If this clip is a link weight it highly
 	if( link ){
-		score += 20;
+//		score += 20;
+        linkScore += linkFactor;
 	}
 	
 	//penalize for the person occurring
-	score -= occurrences*4;
-	
+//	score -= occurrences*4;
+	samePersonOccuranceScore += occurrences * samePersonOccuranceSuppressionFactor;
+    
     //history should contain #keywords dichotomies, and then augment score
     vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
     
@@ -694,7 +713,8 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
                     dichotomies[i].balance = -1;
                 }
                 else{
-                    score+= dichotomies[i].balance*2;
+//                    score+= dichotomies[i].balance*2;
+                    dichotomiesScore += dichotomies[i].balance * dichomoiesFactor;
                 }
                 
             }
@@ -704,17 +724,23 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
                     dichotomies[i].balance = 1;
                 }
                 else{
-                    score +=  -dichotomies[i].balance*2;
-                    
+//                    score +=  -dichotomies[i].balance*2;
+                    dichotomiesScore += -dichotomies[i].balance * dichomoiesFactor;
                 }
                 
             }
         }
     }
+    totalScore = topicsInCommonScore + topicsInCommonWithPreviousScore - samePersonOccuranceScore + dichotomiesScore;
     
-	if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
+	if(printDecisions) {
+    cout << "	ACCEPTED " << (link ? "LINK " : "") << totalScore << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
+        
+        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
+    }
 	
-	return MAX(score, 0);
+    
+	return MAX(totalScore, 0);
 }
 
 
