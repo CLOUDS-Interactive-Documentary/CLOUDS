@@ -47,13 +47,21 @@ void testApp::setup(){
     gui->addSlider("MAX VS RUNTIME", 0, 480,&storyEngine.systemMaxRunTime);
     gui->addSlider("MAX VS GAPTIME", 0, 60, &storyEngine.maxVisualSystemGapTime);
     gui->addSlider("LONG CLIP THRESHOLD", 0, 240, &storyEngine.longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, storyEngine.longClipFadeInPercent);
+    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &storyEngine.longClipFadeInPercent);
     gui->addSpacer();
     
     gui->addLabel("CLIP: ");
     gui->addSlider("ACT LENGTH", 60, 1200, &storyEngine.actLength);
     gui->addButton("BUILD ACT", false);
+    gui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
+    gui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
+    gui->addSlider("SAME PERSON IN SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
+    gui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
+    gui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
     gui->autoSizeToFitWidgets();
+
+
+
     ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
     
 

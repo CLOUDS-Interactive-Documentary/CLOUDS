@@ -76,6 +76,12 @@ class CloudsStoryEngine {
     float longClipThreshold;
     float longClipFadeInPercent;
     float actLength;
+    
+    int topicsInCommonMultiplier;
+    int topicsinCommonWithPreviousMultiplier;
+    int samePersonOccuranceSuppressionFactor;
+    int dichomoiesFactor;
+    int linkFactor;
 protected:
 	
 

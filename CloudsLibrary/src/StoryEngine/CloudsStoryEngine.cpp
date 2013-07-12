@@ -30,6 +30,12 @@ CloudsStoryEngine::CloudsStoryEngine(){
     longClipThreshold = 30;
     longClipFadeInPercent = .5;
     actLength = 10 * 60;
+    
+    topicsInCommonMultiplier = 10;
+    topicsinCommonWithPreviousMultiplier = 5;
+    samePersonOccuranceSuppressionFactor = 4;
+    dichomoiesFactor = 2;
+    linkFactor =20 ;
 
 }
 
@@ -666,19 +672,15 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 //	int score = 0;
     int totalScore = 0;
     int topicsInCommonScore = 0;
-    int topicsInCommonMultiplier = 10;
-    
+
     int topicsInCommonWithPreviousScore = 0;
-    int topicsinCommonWithPreviousMultiplier = 5;
-    
-    int linkFactor =20 ;
+
     int linkScore =0 ;
     
     int samePersonOccuranceScore =0;
-    int samePersonOccuranceSuppressionFactor = 4;
-    
+
     int dichotomiesScore = 0;
-    int dichomoiesFactor = 2;
+    
     
 	int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
 //	score += topicsInCommon*10;
