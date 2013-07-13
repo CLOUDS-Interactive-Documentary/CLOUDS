@@ -84,7 +84,8 @@ class CloudsStoryEngine {
     int linkFactor;
 protected:
 	
-
+    ofBuffer scoreBuffer;
+    stringstream scoreStream;
 	CloudsEvents events;
 	bool isSetup;
 	
@@ -129,7 +130,7 @@ protected:
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
 	float scoreForClip(CloudsClip& clip);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic); //queue based
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log); //queue based
 	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
 	
 	
