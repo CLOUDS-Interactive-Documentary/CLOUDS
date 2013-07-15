@@ -4,7 +4,7 @@
 #include "CloudsStoryEngine.h"
 #include "CloudsFCPParser.h"
 //#include "CloudsPlaybackController.h"
-#include "CloudsSound.h"
+//#include "CloudsSound.h"
 #include "ofxUI.h"
 
 class testApp : public ofBaseApp{
@@ -26,9 +26,8 @@ class testApp : public ofBaseApp{
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
-//	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
-//	CloudsSound sound;
+
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;

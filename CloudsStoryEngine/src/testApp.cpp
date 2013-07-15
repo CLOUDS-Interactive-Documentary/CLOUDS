@@ -10,16 +10,6 @@ void testApp::setup(){
 
 	parser.loadFromFiles();
 	
-//	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
-//  parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
-//  parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-    
-	//if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
-	//	ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
-	//}
-	//parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	//visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
 	
 	storyEngine.setup();
@@ -27,7 +17,6 @@ void testApp::setup(){
 	storyEngine.visualSystems = &visualSystems;
 	
 	storyEngine.maxTimesOnTopic = 4;
-//	storyEngine.combinedClipsOnly = true;
 	storyEngine.printDecisions = true;
 	
 //	player.simplePlaybackMode = true;
@@ -56,10 +45,9 @@ void testApp::setup(){
     gui->autoSizeToFitWidgets();
 
 
-
     clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
     clipGui->setPosition(gui->getRect()->width, 0);
-        clipGui->addSpacer();
+	clipGui->addSpacer();
     clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
@@ -68,8 +56,6 @@ void testApp::setup(){
     clipGui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
     ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
-    
-
     
     
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
@@ -87,8 +73,6 @@ void testApp::update(){
         CloudsClip& clip = parser.getRandomClip(false,false);
         storyEngine.seedWithClip( clip );
         //storyEngine.getAct().clearAct();
-      
-        
     }
 
 //	sound.update();

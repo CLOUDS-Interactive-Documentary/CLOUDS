@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsRGBDCombinedRenderer.h"
 #include "ofxCameraSaveLoad.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
@@ -20,6 +19,7 @@
  */
 
 //TODO: fading, info routing
+class CloudsRGBDCombinedRenderer;
 
 class CloudsVisualSystem {
   public:

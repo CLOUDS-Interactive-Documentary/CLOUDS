@@ -1,5 +1,6 @@
 
 #include "CloudsVisualSystem.h"
+#include "CloudsRGBDCombinedRenderer.h"
 
 static ofFbo sharedRenderTarget;
 static ofImage sharedCursor;
