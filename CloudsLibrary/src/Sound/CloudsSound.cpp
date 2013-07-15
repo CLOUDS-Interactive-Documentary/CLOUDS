@@ -165,6 +165,10 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
     
 }
 
+//--------------------------------------------------------------------
+void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
+	
+}
 
 //--------------------------------------------------------------------
 void CloudsSound::topicChanged(string& topic){

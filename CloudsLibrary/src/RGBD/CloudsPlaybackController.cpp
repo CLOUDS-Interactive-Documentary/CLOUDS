@@ -161,6 +161,11 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
 	}	
+
+}
+//--------------------------------------------------------------------
+void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
+	
 }
 
 //--------------------------------------------------------------------
