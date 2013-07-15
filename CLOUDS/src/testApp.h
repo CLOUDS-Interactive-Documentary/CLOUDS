@@ -28,6 +28,5 @@ class testApp : public ofBaseApp{
 	CloudsStoryEngine storyEngine;
 	CloudsSound sound;
 	
-	
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };

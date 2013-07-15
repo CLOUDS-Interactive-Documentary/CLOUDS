@@ -127,7 +127,6 @@ void CloudsVisualSystemManager::loadPresets(){
 		splitName.erase(splitName.begin()); //delete the system name
 		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
 		presets.push_back(preset);
-//		cout << "NO VS mode adding preset " << preset.getID() << endl;
 		#endif
 		
 		if(keywordXml.tagExists("suppressions")){

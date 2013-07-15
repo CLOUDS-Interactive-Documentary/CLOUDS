@@ -6,10 +6,10 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
-	simplePlaybackMode = false;
-	
+	currentAct = NULL;
 }
 
+//--------------------------------------------------------------------
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
@@ -18,51 +18,58 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
 		eventsRegistered = false;
 		
-		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
-		
-		ofRemoveListener(act->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(act->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
-
-		ofRemoveListener(act->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofRemoveListener(act->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
-		
-		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
-		
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		
+		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
+		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	}
+	
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
 	}
 }
+
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	if(!eventsRegistered){
 		
 		this->storyEngine = &storyEngine;
-        this->act= &this->storyEngine->getAct();
-    
-		ofAddListener(act->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofAddListener(act->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
-	
-		ofAddListener(act->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofAddListener(act->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
 		
-		ofRegisterKeyEvents(this);
-		ofRegisterMouseEvents(this);
+		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+		eventsRegistered = true;
 		
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
+
 		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
 		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
-		eventsRegistered = true;
+		ofRegisterKeyEvents(this);
+		ofRegisterMouseEvents(this);
 
-		if(!simplePlaybackMode){
-			rgbdVisualSystem.setRenderer(combinedRenderer);
-			rgbdVisualSystem.setup();
-			combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
-		}
-
+		rgbdVisualSystem.setRenderer(combinedRenderer);
+		rgbdVisualSystem.setup();
+		
+		combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 	}
+}
+
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::playAct(CloudsAct* act){
+	
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
+	}
+	
+	currentAct = act;
+	currentAct->registerEvents(this);
+	currentAct->play();
+	
 }
 
 //--------------------------------------------------------------------
@@ -73,7 +80,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == OF_KEY_RIGHT){
-		storyEngine->playNextClip();
+		//replace with some call to act
+//		storyEngine->playNextClip();
 	}
 }
 
@@ -102,47 +110,31 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
-	//SIMPLE MODE
-	if(simplePlaybackMode){
-		if(!storyEngine->isWaiting() &&
-		   combinedRenderer.getPlayer().isLoaded() &&
-		   combinedRenderer.getPlayer().isPlaying() &&
-		   combinedRenderer.getPlayer().getCurrentFrame() >= currentClip.endFrame)
-		{
-			storyEngine->clipEnded();
-			combinedRenderer.getPlayer().stop();
-		}
-		return;
-	}
-	//END SIMPLE MODE
-	
-	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
-		rgbdVisualSystem.speakerEnded();
-		storyEngine->clipEnded();
-	}
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
-	if(simplePlaybackMode){
 
-//		combinedRenderer.getPlayer().draw(0, 0, 960, 540);
-	}
 }
 
-#pragma story engine
+#pragma story engine events
 //--------------------------------------------------------------------
-void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
-	
-	if(!simplePlaybackMode){
-		rgbdVisualSystem.playSystem();
-	}
-	
-	playClip(args.chosenClip);	
+void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
+	playAct(args.act);
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
+	rgbdVisualSystem.playSystem();
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
 	
 	//this has to draw last
@@ -154,7 +146,6 @@ void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
 void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
-		//showVisualSystem();
 		showVisualSystem(args.preset);
 	}
 	else{
@@ -173,20 +164,13 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::topicChanged(string& args){
+	currentTopic = args;
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
-		
-	//SIMPLE PLAYBACK
-	if(simplePlaybackMode){
-		if(!combinedRenderer.getPlayer().loadMovie( clip.getRelinkedVideoFilePath() )){
-			ofLogError() << "CloudsPlaybackController::playClip -- simple mode -- couldn't play back " << clip.getRelinkedVideoFilePath();
-		}
-		combinedRenderer.getPlayer().setFrame(clip.startFrame);
-		combinedRenderer.getPlayer().play();
-		currentClip = clip;
-		return;
-	}
-	//END SIMPLE PLAYBACK
-	
+
 	if(clip.hasCombinedVideo){
 		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 			combinedRenderer.getPlayer().play();
@@ -206,7 +190,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
 	
-	if(simplePlaybackMode) return;
+//	if(simplePlaybackMode) return;
 	
 	if(showingVisualSystem){
 		hideVisualSystem();
@@ -216,7 +200,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	rgbdVisualSystem.stopSystem();
 	
-	nextVisualSystem.system->setCurrentTopic( storyEngine->getCurrentTopic() );
+	//TODO: replace with act current question
+	nextVisualSystem.system->setCurrentTopic( currentTopic );
 	nextVisualSystem.system->playSystem();
 	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	

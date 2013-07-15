@@ -9,10 +9,6 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-//	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
-//    parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
-//    parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-
     parser.loadFromFiles();
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
@@ -38,32 +34,28 @@ void testApp::setup(){
 	CloudsClip& clip = parser.getRandomClip(true,false);
 	
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+
+	storyEngine.buildAct(clip);
 	
-	storyEngine.seedWithClip( clip );
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-//	player.update();
+
 	sound.update();
 	ofShowCursor();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
-//	cout << "APP DRAW" << endl;
 	
 	sound.drawDebug();
 	
-	//storyEngine.drawStoryEngineDebug();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == '1'){
-		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
-	}
+
 }
 
 //--------------------------------------------------------------
