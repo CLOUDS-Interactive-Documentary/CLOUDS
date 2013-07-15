@@ -35,11 +35,12 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 
 class CloudsQuestionEventArgs : public ofEventArgs{
    public:
-    CloudsQuestionEventArgs(string clipQuestion){
-        question = clipQuestion;
+    CloudsQuestionEventArgs(CloudsClip& questionClip) :questionClip(questionClip)
+    {
+
     }
-    
-    string question;
+
+    CloudsClip& questionClip;
 };
 
 

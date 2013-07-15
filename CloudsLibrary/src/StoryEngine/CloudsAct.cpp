@@ -103,7 +103,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         ofNotifyEvent(events.visualSystemBegan, args);
     }
     else if(bang.track == questionsTrack){
-        CloudsQuestionEventArgs args(bang.flag);
+        CloudsQuestionEventArgs args(questionsMap[bang.flag]);
         ofNotifyEvent(events.askQuestion, args);
     }
 }

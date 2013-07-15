@@ -40,7 +40,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     dichomoiesFactor = 2;
     linkFactor =20 ;
     questionDisplayPeriod = 120;
-
+    maxTimeWithoutQuestion =120;
     
     
 }
@@ -140,7 +140,7 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
     scoreBuffer.clear();
     scoreStream.clear();
 	CloudsClip clip = seed;
-
+    int timeForNewQuesiton = 0;
         scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore"<<endl;
     
     act.clearAct();
@@ -148,12 +148,13 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
 
     act.addClipToAct(clip, topic, totalSecondsEnqueued);
     totalSecondsEnqueued += clip.getDuration();
-    
+    timeForNewQuesiton += clip.getDuration();
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
 
     
 	int timesOnCurrentTopic = 0;
+
 	bool freeTopic = false;
 	while( totalSecondsEnqueued < seconds ){
     scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;        
@@ -246,19 +247,24 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
         
         act.addClipToAct(clip,topic,totalSecondsEnqueued);
 		totalSecondsEnqueued += clip.getDuration();
-
+        timeForNewQuesiton += clip.getDuration();
+        
 		//Decide if a question is to be asked
-        if((int)totalSecondsEnqueued%120 ==0){
-            vector<CloudsClip> clips = parser->getClipsWithKeyword(currentTopic);
-            CloudsClip questionClip ;
+        if((int)timeForNewQuesiton > maxTimeWithoutQuestion){
+            timeForNewQuesiton = 0;
+            vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
+
+
             for(int i = 0; i<clips.size(); i++){
                 
-                if(clips[i].hasStartingQuestion()&& clips[i].getLinkName() != clip.getLinkName() ){
-                    questionClip = clips[i];
+                if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
+                                cout<<"Adding Starting Question"<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
+                    //questions houldnt start during viusal systems
+                    act.addQuestionToAct(clips[i], totalSecondsEnqueued, questionDisplayPeriod);
                     break;
                 }
             }
-            act.addQuestionToAct(questionClip, totalSecondsEnqueued, questionDisplayPeriod);
+            
         }
  
 		timesOnCurrentTopic++;
@@ -325,7 +331,7 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
     act.populateTime();
 
     scoreBuffer.set(scoreStream);
-    cout<<scoreBuffer.getText()<<endl;
+//    cout<<scoreBuffer.getText()<<endl;
     ofBufferToFile("score.csv", scoreBuffer);
 
 }
@@ -757,7 +763,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     if(printDecisions) {
         cout << "	ACCEPTED " << (link ? "LINK " : "") << totalScore << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
         
-        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
+//        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
     }
 	
     

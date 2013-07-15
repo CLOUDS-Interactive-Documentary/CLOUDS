@@ -78,6 +78,7 @@ class CloudsStoryEngine {
     float longClipFadeInPercent;
     float actLength;
     float questionDisplayPeriod;
+    float maxTimeWithoutQuestion;
     
     //Story engine decision making parameters
     int topicsInCommonMultiplier;
