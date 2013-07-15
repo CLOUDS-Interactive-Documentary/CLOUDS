@@ -135,10 +135,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 
 
 float CloudsAct::getActDuration(){
-    float totalDuration = 0;
-    for(int i=0; i < clips.size(); i++){
-        totalDuration += clips[i].getDuration();
-    }
+    return duration;
 }
 
 
