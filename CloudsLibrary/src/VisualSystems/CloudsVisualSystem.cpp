@@ -1,9 +1,6 @@
 
 #include "CloudsVisualSystem.h"
 
-
-//static bool confirmedDataPath = false;
-//static bool usingDevelopmentFolder = false;
 static ofFbo sharedRenderTarget;
 static ofImage sharedCursor;
 
@@ -13,6 +10,10 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
        sharedRenderTarget.getHeight() != ofGetHeight())
     {
         sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+		sharedRenderTarget.begin();
+		ofClear(0,0,0,0);
+		sharedRenderTarget.end();
+		
     }
     return sharedRenderTarget;
 }
@@ -27,6 +28,7 @@ ofImage& CloudsVisualSystem::getCursor(){
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = NULL;
+	bClearBackground = true;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -203,7 +205,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     if(bRenderSystem)
     {
         CloudsVisualSystem::getSharedRenderTarget().begin();
-        ofClear(0, 0, 0);
+		if(bClearBackground){
+			ofClear(0, 0, 0, 0);
+		}
         
         drawBackground();
         
@@ -2226,42 +2230,45 @@ void CloudsVisualSystem::drawBackground()
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 	
-    if(gradientMode == OF_GRADIENT_CIRCULAR)
-    {
-        
-        //  TEMPORAL FIX
-        //
-		//		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
-		ofSetSmoothLighting(true);
-		
-        ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
-		
-        //  Sorry Reza this is a quick and durty fix
-        //
-		//        ofPushMatrix();
-		//        if(camFOV > 60)
-		//        {
-		//            ofBackground(*bgColor2);
-		//        }
-		//        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
-		//        ofDisableLighting();
-		//        ofSetSmoothLighting(true);
-		//        glNormal3f(0,0,1);
-		//        ofLayerGradient(*bgColor, *bgColor2);
-		//        ofPopMatrix();
-        
-    }
-    else
-    {
-        ofSetSmoothLighting(false);
-        ofBackground(*bgColor);
-    }
+    if(bClearBackground)
+	{
+		if(gradientMode == OF_GRADIENT_CIRCULAR)
+		{
+			
+			//  TEMPORAL FIX
+			//
+			//		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
+			ofSetSmoothLighting(true);
+			ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
+			
+			//  Sorry Reza this is a quick and durty fix
+			//
+			//        ofPushMatrix();
+			//        if(camFOV > 60)
+			//        {
+			//            ofBackground(*bgColor2);
+			//        }
+			//        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
+			//        ofDisableLighting();
+			//        ofSetSmoothLighting(true);
+			//        glNormal3f(0,0,1);
+			//        ofLayerGradient(*bgColor, *bgColor2);
+			//        ofPopMatrix();
+			
+		}
+		else
+		{
+			ofSetSmoothLighting(false);
+			ofBackground(*bgColor);
+		}
+	}
+
 	//	glPopAttrib();
 	
 	
 	ofPopStyle();
 	
-	//selfDrawBackground();
+
 	ofPushStyle();
 	ofPushMatrix();
 	ofTranslate(0, ofGetHeight());

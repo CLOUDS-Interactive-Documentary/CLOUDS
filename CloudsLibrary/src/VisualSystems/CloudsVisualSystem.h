@@ -100,7 +100,6 @@ class CloudsVisualSystem {
 	
 	void setRenderer(CloudsRGBDCombinedRenderer& newRenderer);
 
-
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
 					  string quoteName);
@@ -257,7 +256,7 @@ class CloudsVisualSystem {
     bool bUpdateSystem;
     bool bDebug;
     float debugGridSize;
-	
+	bool bClearBackground;
     //CAM
     float camDistance;
     float camFOV;
