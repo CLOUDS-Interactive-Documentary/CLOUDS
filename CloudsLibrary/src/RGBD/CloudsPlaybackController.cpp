@@ -164,6 +164,11 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
+	rgbdVisualSystem.addQuestion(args.questionClip);
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::topicChanged(string& args){
 	currentTopic = args;
 }

@@ -104,7 +104,7 @@ void CloudsSound::drawDebug(){
 void CloudsSound::actCreated(CloudsActEventArgs& args){
 	
 	currentAct = args.act;
-	currentAct->unregisterEvents(this);
+	currentAct->registerEvents(this);
 }
 
 //--------------------------------------------------------------------
@@ -165,6 +165,10 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
     
 }
 
+//--------------------------------------------------------------------
+void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
+	
+}
 
 //--------------------------------------------------------------------
 void CloudsSound::topicChanged(string& topic){

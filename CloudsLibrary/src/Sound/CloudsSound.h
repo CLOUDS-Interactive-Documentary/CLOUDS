@@ -30,6 +30,7 @@ class CloudsSound {
 	void clipBegan(CloudsClipEventArgs& args);
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);	
 	void topicChanged(string& args);
 	
   protected:
