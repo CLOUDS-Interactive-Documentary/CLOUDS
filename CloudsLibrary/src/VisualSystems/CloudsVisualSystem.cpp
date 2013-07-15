@@ -196,6 +196,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	if(!ofGetMousePressed())
     {
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
+		//timeline->setOffset(ofVec2f(4, 0 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
 }
@@ -1369,9 +1370,10 @@ void CloudsVisualSystem::setupTimeline()
 
 void CloudsVisualSystem::resetTimeline()
 {
+	ofRemoveListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
     timeline->reset();
     timeline->setPageName(ofToUpper(getSystemName()));
-    selfSetupTimeline();
+    setupTimeline();
 }
 
 void CloudsVisualSystem::timelineBangEvent(ofxTLBangEventArgs& args)
@@ -2052,6 +2054,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");
     
     resetTimeline();
+	
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
