@@ -87,6 +87,11 @@
 		E7402EA4178F459000FEABED /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E9C178F459000FEABED /* Points.cpp */; };
 		E7402EA5178F459000FEABED /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E9E178F459000FEABED /* State.cpp */; };
 		E7402EA8178F45AA00FEABED /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402EA6178F45AA00FEABED /* CloudsAct.cpp */; };
+		E74186871794B5E300ABFF41 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74186861794B5E300ABFF41 /* AVFoundation.framework */; };
+		E74186891794B5E800ABFF41 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74186881794B5E800ABFF41 /* CoreMedia.framework */; };
+		E741868B1794B5F000ABFF41 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E741868A1794B5EF00ABFF41 /* QuartzCore.framework */; };
+		E74186A51794B68100ABFF41 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E74186A01794B68100ABFF41 /* ofxAVFVideoPlayer.mm */; };
+		E74186A61794B68100ABFF41 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E74186A21794B68100ABFF41 /* ofxAVFVideoRenderer.m */; };
 		E745F6EC1720FE9400B86D7E /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E51720FE9400B86D7E /* tinyxml.cpp */; };
 		E745F6ED1720FE9400B86D7E /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E71720FE9400B86D7E /* tinyxmlerror.cpp */; };
 		E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E81720FE9400B86D7E /* tinyxmlparser.cpp */; };
@@ -374,6 +379,13 @@
 		E7402E9F178F459000FEABED /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E7402EA6178F45AA00FEABED /* CloudsAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAct.cpp; sourceTree = "<group>"; };
 		E7402EA7178F45AA00FEABED /* CloudsAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAct.h; sourceTree = "<group>"; };
+		E74186861794B5E300ABFF41 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E74186881794B5E800ABFF41 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E741868A1794B5EF00ABFF41 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E741869F1794B68100ABFF41 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		E74186A01794B68100ABFF41 /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
+		E74186A11794B68100ABFF41 /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
+		E74186A21794B68100ABFF41 /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
 		E745F6E51720FE9400B86D7E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E745F6E61720FE9400B86D7E /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		E745F6E71720FE9400B86D7E /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -749,6 +761,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E741868B1794B5F000ABFF41 /* QuartzCore.framework in Frameworks */,
+				E74186891794B5E800ABFF41 /* CoreMedia.framework in Frameworks */,
+				E74186871794B5E300ABFF41 /* AVFoundation.framework in Frameworks */,
 				E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -796,6 +811,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E741868C1794B68000ABFF41 /* ofxAVFVideoPlayer */,
 				E7402E7A178F44DC00FEABED /* ofxOcean */,
 				E74CE8741768ED7B00083C4C /* ofxMSACore */,
 				E74CE8371768ED6100083C4C /* ofxMSAObjCPointer */,
@@ -822,6 +838,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E741868A1794B5EF00ABFF41 /* QuartzCore.framework */,
+				E74186881794B5E800ABFF41 /* CoreMedia.framework */,
+				E74186861794B5E300ABFF41 /* AVFoundation.framework */,
 				E761F4D71622CA3D00029E43 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -1159,6 +1178,26 @@
 			path = GPUParticles;
 			sourceTree = "<group>";
 		};
+		E741868C1794B68000ABFF41 /* ofxAVFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E741869E1794B68100ABFF41 /* src */,
+			);
+			name = ofxAVFVideoPlayer;
+			path = ../../../addons/ofxAVFVideoPlayer;
+			sourceTree = "<group>";
+		};
+		E741869E1794B68100ABFF41 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E741869F1794B68100ABFF41 /* ofxAVFVideoPlayer.h */,
+				E74186A01794B68100ABFF41 /* ofxAVFVideoPlayer.mm */,
+				E74186A11794B68100ABFF41 /* ofxAVFVideoRenderer.h */,
+				E74186A21794B68100ABFF41 /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E745F6C61720FE0E00B86D7E /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1311,10 +1350,10 @@
 				E7402E93178F459000FEABED /* GPUParticles */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
-				E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */,
 				E73995C8178620AD00EA5F4D /* CloudsRGBDCamera.h */,
-				E73995C9178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp */,
+				E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */,
 				E73995CA178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.h */,
+				E73995C9178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
 				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
@@ -2407,6 +2446,8 @@
 				E72D3A4B1794871C0079254B /* Module.cpp in Sources */,
 				E72D3A4C1794871C0079254B /* RandomMover.cpp in Sources */,
 				E72D3A4F179487220079254B /* CloudsVisualSystemLia.cpp in Sources */,
+				E74186A51794B68100ABFF41 /* ofxAVFVideoPlayer.mm in Sources */,
+				E74186A61794B68100ABFF41 /* ofxAVFVideoRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2433,6 +2474,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = AVF_PLAYER;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
@@ -2468,6 +2510,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = AVF_PLAYER;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -2507,6 +2550,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -2610,6 +2654,7 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (

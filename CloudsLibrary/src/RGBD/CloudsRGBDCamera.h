@@ -20,7 +20,6 @@ class CloudsRGBDCamera : public ofCamera {
 	//y params range --
 	float liftRange;
 
-	
 	//looking and dampening params
 	ofVec3f lookTarget;
 	ofVec3f targetPosition;

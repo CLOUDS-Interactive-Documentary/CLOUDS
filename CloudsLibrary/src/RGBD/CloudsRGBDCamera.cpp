@@ -9,7 +9,6 @@
 #include "CloudsRGBDCamera.h"
 
 CloudsRGBDCamera::CloudsRGBDCamera(){
-	
 	sideDistance = 100;
 	frontDistance = 150;
 	sidePullback = -50;
@@ -18,7 +17,6 @@ CloudsRGBDCamera::CloudsRGBDCamera(){
 	dropAmount = 25;
 	isSetup = false;
 	damp = .1;
-
 }
 
 void CloudsRGBDCamera::setup(){
@@ -52,7 +50,6 @@ void CloudsRGBDCamera::setPositionFromMouse(){
 	float liftDrift = ofMap(ofGetMouseY(), ofGetHeight()*.2, ofGetHeight()*.8, -liftRange,liftRange, true);
 	position.y += ofMap(abs(.5 - percentOnCurve), 0, .5, (liftDrift + liftAmount), (liftDrift-liftAmount)*.5);
 	position.z -= MAX(liftDrift,0) * .5; // zoom in on mouse up
-	//position.y -= dropAmount;
 
 	targetPosition = position;
 	currentPosition += (targetPosition - currentPosition) * damp;

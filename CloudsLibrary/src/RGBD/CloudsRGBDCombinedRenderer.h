@@ -50,11 +50,11 @@ public:
 	void drawPointCloud();
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
-	
+
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
 #ifdef AVF_PLAYER
 	ofxAVFVideoPlayer& getPlayer();
 #else
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
 	ofVideoPlayer& getPlayer();
 #endif
 	

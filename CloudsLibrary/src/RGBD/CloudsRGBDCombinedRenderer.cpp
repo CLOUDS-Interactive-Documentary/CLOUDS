@@ -325,6 +325,10 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
 ofxAVFVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
 	return avPlayer;
 }
+
+ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
+	return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
+}
 #else
 //--------------------------------------------------------------- ACTIONS
 ofVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){

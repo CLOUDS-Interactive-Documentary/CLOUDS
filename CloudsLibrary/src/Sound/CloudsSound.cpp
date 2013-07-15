@@ -104,7 +104,7 @@ void CloudsSound::drawDebug(){
 void CloudsSound::actCreated(CloudsActEventArgs& args){
 	
 	currentAct = args.act;
-	currentAct->unregisterEvents(this);
+	currentAct->registerEvents(this);
 }
 
 //--------------------------------------------------------------------
