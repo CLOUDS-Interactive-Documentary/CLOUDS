@@ -21,6 +21,7 @@
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
+#include "CloudsVisualSystemLia.h"
 
 #endif
 
@@ -51,6 +52,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );
+	registerVisualSystem( new CloudsVisualSystemLia() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
