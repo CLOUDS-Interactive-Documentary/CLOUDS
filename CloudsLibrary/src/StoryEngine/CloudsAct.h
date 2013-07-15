@@ -21,7 +21,8 @@
 typedef enum {
     Clip =0,
     VS,
-    Gap
+    Gap,
+    Question
 }ActItemType;
 
 struct ActTimeItem{
@@ -50,12 +51,14 @@ class CloudsAct{
     
     void addGapForVisualSystem(float startTime);
     
+    void addQuestionToAct(CloudsClip clip, float startTime, float duration);
+    CloudsClip& getClipForQuestion(string question);
     ActTimeItem& getItemForClip(CloudsClip& clip);
     
     //void update(); //you can use this to skip if it's waiting
     
- //   string getTopicInHistory(int index);
-//    void setTopicInHistory(string topic);
+//   string getTopicInHistory(int index);
+//   void setTopicInHistory(string topic);
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip& clip);
     vector<string>& getAllTopics();
@@ -78,9 +81,11 @@ protected:
     vector<CloudsVisualSystemPreset> visualSystems;
     vector<string> topicHistory;
     vector<ActTimeItem> actItems;
+    
 
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
+    CloudsClip dummyClip;
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
@@ -88,7 +93,7 @@ protected:
     map<string, CloudsVisualSystemPreset> visualSystemsMap;
     map<string, ActTimeItem> visualSystemItems;
     map< string, string> topicMap;
-    vector<string> questions;
+    map<string, CloudsClip> questionsMap;
   
     
     float visualSystemDuration;
@@ -96,6 +101,7 @@ protected:
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;
     ofxTLFlags* topicsTrack;
+    ofxTLFlags* questionsTrack;
     
     bool waitingForNextClip;
     bool actPlaying;

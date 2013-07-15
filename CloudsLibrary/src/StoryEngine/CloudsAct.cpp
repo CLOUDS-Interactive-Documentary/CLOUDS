@@ -54,7 +54,7 @@ void CloudsAct::populateTime(){
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
     topicsTrack = timeline.addFlags("Topics");
-    timeline.addSwitches("switches");
+    questionsTrack = timeline.addFlags("Questions");
     
     timeLineActive = true;
     string previousTopic = "";
@@ -82,10 +82,11 @@ void CloudsAct::populateTime(){
         else if (item.type == Gap){
             //nothing for now
         }
+        else if(item.type == Question){
+            questionsTrack->addFlagAtTime(item.key, item.startTime*1000);
+        }
     }
-    
-    
-    
+
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 }
 
@@ -100,6 +101,10 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         presetId = ofSplitString(bang.flag, ":");
         CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
         ofNotifyEvent(events.visualSystemBegan, args);
+    }
+    else if(bang.track == questionsTrack){
+        CloudsQuestionEventArgs args(bang.flag);
+        ofNotifyEvent(events.askQuestion, args);
     }
 }
 
@@ -125,26 +130,11 @@ float CloudsAct::getActDuration(){
     }
 }
 
+
 void CloudsAct::drawActDebug(){
-    //    float totalTime = 0;
-    //	for(int i = 0; i < clips.size(); i++){
-    //		totalTime += clips[i].getDuration();
-    //	}
-    //
-    //	int currentTime = 0;
-    //	for(int i = 0; i < clips.size(); i++){
-    //		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-    //		float width = ofMap(clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
-    //		currentTime += clips[i].getDuration();
-    //		ofNoFill();
-    //		ofRect(screenX, 100 + 30*i, width, 30);
-    //		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
-    //	}
-//    ofPushMatrix();
-//    ofTranslate(0,ofGetHeight()/3);
+    
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
-  //  ofPopMatrix();
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
@@ -208,6 +198,26 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     
     actItems.push_back(item);
     
+}
+void CloudsAct::addQuestionToAct(CloudsClip clip, float startTime, float duration){
+    ActTimeItem item;
+    item.type = Question;
+    item.key = clip.startingQuestion;
+    item.startTime = startTime;
+    item.endTime = startTime + duration;
+
+    questionsMap[clip.startingQuestion] = clip;
+    //TODO: Check if you need to update duratio here. I dont think you do.
+//    duration = MAX(item.endTIme, duration);
+    actItems.push_back(item);
+}
+
+CloudsClip& CloudsAct :: getClipForQuestion(string question){
+    if(questionsMap.find(question) == questionsMap.end()){
+        ofLogError() << "Couldn't find Clip Item with Starting Question " << question;
+        return dummyClip;
+    }
+    return questionsMap[question];
 }
 
 vector<CloudsClip>& CloudsAct::getAllClips(){

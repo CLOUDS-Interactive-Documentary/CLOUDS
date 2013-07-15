@@ -33,6 +33,16 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 	float duration;
 };
 
+class CloudsQuestionEventArgs : public ofEventArgs{
+   public:
+    CloudsQuestionEventArgs(string clipQuestion){
+        question = clipQuestion;
+    }
+    
+    string question;
+};
+
+
 class CloudsEvents {
   public:
 	ofEvent<CloudsStoryEventArgs> storyBegan;
@@ -46,6 +56,8 @@ class CloudsEvents {
 
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
+    
+    ofEvent<CloudsQuestionEventArgs> askQuestion;
 
 	ofEvent<CloudsStoryEventArgs> topicChanged;
 	

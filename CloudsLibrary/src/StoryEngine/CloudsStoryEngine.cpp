@@ -39,6 +39,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     samePersonOccuranceSuppressionFactor = 4;
     dichomoiesFactor = 2;
     linkFactor =20 ;
+    questionDisplayPeriod = 120;
 
     
     
@@ -245,10 +246,23 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
         
         act.addClipToAct(clip,topic,totalSecondsEnqueued);
 		totalSecondsEnqueued += clip.getDuration();
-        
+
+		//Decide if a question is to be asked
+        if((int)totalSecondsEnqueued%120 ==0){
+            vector<CloudsClip> clips = parser->getClipsWithKeyword(currentTopic);
+            CloudsClip questionClip ;
+            for(int i = 0; i<clips.size(); i++){
+                
+                if(clips[i].hasStartingQuestion()&& clips[i].getLinkName() != clip.getLinkName() ){
+                    questionClip = clips[i];
+                    break;
+                }
+            }
+            act.addQuestionToAct(questionClip, totalSecondsEnqueued, questionDisplayPeriod);
+        }
  
 		timesOnCurrentTopic++;
-		//Decide if a question is to be asked
+
 		
 	}
 	

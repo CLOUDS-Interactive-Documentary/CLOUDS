@@ -70,18 +70,23 @@ class CloudsStoryEngine {
 	void clearDichotomiesBalance();
     
     CloudsAct& getAct();
-    //VS Story Engine Parameters
+    
+    //Story engine act parameters
     float systemMaxRunTime;
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
     float actLength;
+    float questionDisplayPeriod;
     
+    //Story engine decision making parameters
     int topicsInCommonMultiplier;
     int topicsinCommonWithPreviousMultiplier;
     int samePersonOccuranceSuppressionFactor;
     int dichomoiesFactor;
     int linkFactor;
+    
+    
 protected:
 	
     ofBuffer scoreBuffer;
