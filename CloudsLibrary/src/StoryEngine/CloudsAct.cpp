@@ -130,7 +130,9 @@ float CloudsAct::getActDuration(){
     }
 }
 
-
+vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
+    return visualSystems;
+}
 void CloudsAct::drawActDebug(){
     
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
@@ -138,7 +140,23 @@ void CloudsAct::drawActDebug(){
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
+
     return clips[index];
+}
+
+CloudsClip& CloudsAct:: getClipAtTime(float time){
+    for(int i=0; i< clips.size(); i++){
+        ActTimeItem item = getItemForClip(clips[i]);
+        if(time >= item.startTime && time <= item.endTime){
+            return clips[i];
+        }
+    }
+    cout<<"No clip found at that time!"<<endl;
+    return dummyClip;
+}
+
+CloudsVisualSystemPreset& CloudsAct::getVisualSystemInAct(int index){
+    return visualSystems[index];
 }
 
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
@@ -147,6 +165,13 @@ ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
         return dummy;
     }
     return clipItems[clip.getLinkName()];
+}
+
+ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset){
+    if(visualSystemItems.find(preset.getID()) == visualSystemItems.end()){
+        ofLogError()<<"Can't find Act item for Visual System"<<endl;
+    }
+    return visualSystemItems[preset.getID()];
 }
 
 void CloudsAct::addClipToAct(CloudsClip clip, string topic, float startTime){

@@ -36,36 +36,34 @@ class CloudsAct{
     public:
     CloudsAct();
     
-    
     void populateTime();
+    void drawActDebug();
     void playAct();
-
     void clearAct();
-
-    CloudsClip& getClipInAct(int index);
-    void addClipToAct(CloudsClip clip, string topic, float startTime);
+    
     vector<CloudsClip>& getAllClips();
-    
-    void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
-//    void addVisualSystemAfterClip(CloudsVisualSystemPreset preset, float startTime);
-    
-    void addGapForVisualSystem(float startTime);
-    
-    void addQuestionToAct(CloudsClip clip, float startTime, float duration);
-    CloudsClip& getClipForQuestion(string question);
-    ActTimeItem& getItemForClip(CloudsClip& clip);
-    
-    //void update(); //you can use this to skip if it's waiting
-    
-//   string getTopicInHistory(int index);
-//   void setTopicInHistory(string topic);
-    void setTopicForClip(string topic, string clipName);
-    string getTopicForClip(CloudsClip& clip);
+    vector<CloudsVisualSystemPreset>& getAllVisualSystems();
     vector<string>& getAllTopics();
     
-	bool clipEnded(); //call this when the clip is done!
-    void drawActDebug();
+    CloudsClip& getClipInAct(int index);
+    CloudsClip& getClipForQuestion(string question);
+    CloudsClip& getClipAtTime(float time);
     
+    CloudsVisualSystemPreset& getVisualSystemInAct(int index);
+    
+    void addClipToAct(CloudsClip clip, string topic, float startTime);
+    void addGapForVisualSystem(float startTime);
+    void addQuestionToAct(CloudsClip clip, float startTime, float duration);
+    void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
+
+    ActTimeItem& getItemForClip(CloudsClip& clip);
+    ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
+    
+    void setTopicForClip(string topic, string clipName);
+    string getTopicForClip(CloudsClip& clip);
+    
+	bool clipEnded(); //call this when the clip is done!
+
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
     CloudsEvents& getEvents();
     

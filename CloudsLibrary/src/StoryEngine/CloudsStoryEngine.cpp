@@ -141,23 +141,23 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
     scoreStream.clear();
 	CloudsClip clip = seed;
     int timeForNewQuesiton = 0;
-        scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore"<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore"<<endl;
     
     act.clearAct();
 	clearDichotomiesBalance();
-
+    
     act.addClipToAct(clip, topic, totalSecondsEnqueued);
     totalSecondsEnqueued += clip.getDuration();
-    timeForNewQuesiton += clip.getDuration();
+
 	vector<string> topicHistory;
 	topicHistory.push_back(topic);
-
+    
     
 	int timesOnCurrentTopic = 0;
-
+    
 	bool freeTopic = false;
 	while( totalSecondsEnqueued < seconds ){
-    scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;        
+        scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
 		freeTopic |= timesOnCurrentTopic > maxTimesOnTopic;
         
 		if(freeTopic){
@@ -247,34 +247,16 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
         
         act.addClipToAct(clip,topic,totalSecondsEnqueued);
 		totalSecondsEnqueued += clip.getDuration();
-        timeForNewQuesiton += clip.getDuration();
+
         
-		//Decide if a question is to be asked
-        if((int)timeForNewQuesiton > maxTimeWithoutQuestion){
-            timeForNewQuesiton = 0;
-            vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
-
-
-            for(int i = 0; i<clips.size(); i++){
-                
-                if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
-                                cout<<"Adding Starting Question"<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
-                    //questions houldnt start during viusal systems
-                    act.addQuestionToAct(clips[i], totalSecondsEnqueued, questionDisplayPeriod);
-                    break;
-                }
-            }
-            
-        }
- 
+        
 		timesOnCurrentTopic++;
-
+        
 		
 	}
 	
     // do the same thing again for Visual Systems
     float lastVisualSystemEnded = 0;
-    float currentPosition = 0;
     bool systemRunning = false;
     
     float visualSystemStartTime;
@@ -328,12 +310,90 @@ void CloudsStoryEngine::buildAct(CloudsClip& seed, float seconds){
         lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
     }
     
+    float questionStartTime = 0;
+
+    for(int i =0; i<act.getAllClips().size() ; i++){
+        //Decide if a question is to be asked
+        CloudsClip& currentClip = act.getClipInAct(i);
+        bool safeToAskQuestion = true;
+        
+        
+        float clipStartTime = act.getItemForClip(currentClip).startTime;
+        float clipEndTime = act.getItemForClip(currentClip).endTime;
+        
+        
+        float timeSinceLastQuestion = clipStartTime - questionStartTime;
+        
+        if(timeSinceLastQuestion > maxTimeWithoutQuestion){
+
+            //questions shouldnt start during visual systems
+            for(int k=0; k < act.getAllVisualSystems().size(); k++){
+                CloudsVisualSystemPreset& preset = act.getVisualSystemInAct(k);
+
+                float presetStartTime = act.getItemForVisualSystem(preset).startTime;
+                float presetEndTime = act.getItemForVisualSystem(preset).endTime;
+                
+                //is a Visual System playing for the entire duration of the clip
+                if(clipStartTime > presetStartTime && clipEndTime < presetEndTime ){
+                    //do nothing
+                }
+                // A visual System starts during a clip
+                else if (presetStartTime > clipStartTime && presetStartTime < clipEndTime){
+                    questionStartTime = clipStartTime;
+                    
+                    vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
+                    
+                    for(int i = 0; i<clips.size(); i++){
+                        
+                        if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
+                            cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
+                            act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
+                            break;
+                        }
+                        else if(i == clips.size()-1){
+                            
+                            clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
+                            act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
+                            cout<<"No question found!"<<endl;
+                        }
+                    }
+                }
+                //A Visual System ends during a clip
+                else if (presetEndTime > clipStartTime && presetEndTime < clipEndTime){
+                    questionStartTime = presetEndTime;
+
+                    vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
+                    
+                    for(int i = 0; i<clips.size(); i++){
+                        
+                        if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
+                            cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
+                            act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
+                            break;
+                        }
+                        else if(i == clips.size()-1){
+                            
+                            clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
+                            act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
+                            cout<<"No question found!"<<endl;
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+
+        }
+
+    }
+    
     act.populateTime();
-
+    
     scoreBuffer.set(scoreStream);
-//    cout<<scoreBuffer.getText()<<endl;
+    //    cout<<scoreBuffer.getText()<<endl;
     ofBufferToFile("score.csv", scoreBuffer);
-
+    
 }
 
 void CloudsStoryEngine::clearDichotomiesBalance(){
@@ -574,7 +634,7 @@ bool CloudsStoryEngine::populateNextClips(){
 	allNextClips.clear();
     
 	int topScore = 0;
-
+    
 	for(int i = 0; i < nextClips.size(); i++){
 		CloudsClip& m = nextClips[ i ];
 		int score = scoreForClip( m );
@@ -703,7 +763,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     
 	int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
-
+    
 	
     topicsInCommonScore +=topicsInCommon*topicsInCommonMultiplier;
     
@@ -763,7 +823,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     if(printDecisions) {
         cout << "	ACCEPTED " << (link ? "LINK " : "") << totalScore << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
         
-//        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
+        //        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
     }
 	
     
