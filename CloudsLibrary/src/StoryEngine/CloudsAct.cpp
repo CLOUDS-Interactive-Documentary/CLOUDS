@@ -237,12 +237,13 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     actItems.push_back(item);
     
 }
-void CloudsAct::addQuestionToAct(CloudsClip clip, float startTime, float duration){
+void CloudsAct::addQuestionToAct(CloudsClip clip, float startTime){
     ActTimeItem item;
     item.type = Question;
     item.key = clip.startingQuestion;
     item.startTime = startTime;
-    item.endTime = startTime + duration;
+    //dont care about end time as it will end with visual system;
+    item.endTime = startTime + 10;
 
     questionsMap[clip.startingQuestion] = clip;
     //TODO: Check if you need to update duratio here. I dont think you do.
