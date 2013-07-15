@@ -7,7 +7,9 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-
+	
+	currentAct = NULL;
+	
 	parser.loadFromFiles();
 	
 	visualSystems.loadPresets();
@@ -19,9 +21,6 @@ void testApp::setup(){
 	storyEngine.maxTimesOnTopic = 4;
 	storyEngine.printDecisions = true;
 	
-//	player.simplePlaybackMode = true;
-//	player.setup(storyEngine);
-//	sound.setup(storyEngine);
 
 	ofEnableSmoothing();
 	
@@ -57,22 +56,63 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
     ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
     
-    
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
-	storyEngine.seedWithClip( clip );
+	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	storyEngine.buildAct( clip );
 
+}
 
+//--------------------------------------------------------------
+void testApp::actCreated(CloudsActEventArgs& args){
+	
+	if(currentAct != NULL){
+		currentAct->unregisterActEvents(this);
+		delete currentAct;
+	}
+
+	currentAct = args.act;
+//	currentAct->registerActEvents(this);
+//	currentAct->play();
+}
+
+//--------------------------------------------------------------
+void testApp::actBegan(CloudsActEventArgs& args){
+	cout << "act began" << endl;
+}
+
+//--------------------------------------------------------------
+void testApp::actEnded(CloudsActEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::clipBegan(CloudsClipEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::topicChanged(string& newTopic){
+	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
     if(rebuildAct){
-        rebuildAct =false;
+        rebuildAct = false;
         CloudsClip& clip = parser.getRandomClip(false,false);
-        storyEngine.seedWithClip( clip );
-        //storyEngine.getAct().clearAct();
+		storyEngine.buildAct( clip );
     }
 
 //	sound.update();
@@ -87,8 +127,11 @@ void testApp::draw(){
 //	sound.drawDebug();
 	
 	//storyEngine.drawStoryEngineDebug();
-    
-    storyEngine.getAct().drawActDebug();
+    if(currentAct != NULL){
+		currentAct->drawDebug();
+	}
+	
+//    storyEngine.getAct().drawActDebug();
 }
 
 void testApp::exit(){
@@ -106,20 +149,6 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == '1'){
-		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
-	}
-}
-
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

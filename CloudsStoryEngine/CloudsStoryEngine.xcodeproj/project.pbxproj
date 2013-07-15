@@ -759,8 +759,8 @@
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
 				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
-				18731D2E178628D200E22F84 /* CloudsAct.cpp */,
 				18731D2F178628D200E22F84 /* CloudsAct.h */,
+				18731D2E178628D200E22F84 /* CloudsAct.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";

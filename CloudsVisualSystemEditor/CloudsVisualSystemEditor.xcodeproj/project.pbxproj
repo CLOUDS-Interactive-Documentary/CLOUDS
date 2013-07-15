@@ -33,12 +33,10 @@
 		E72D3A05179443E80079254B /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D39FC179443E80079254B /* Globals.cpp */; };
 		E72D3A06179443E80079254B /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D39FE179443E80079254B /* Module.cpp */; };
 		E72D3A07179443E80079254B /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A00179443E80079254B /* RandomMover.cpp */; };
-		E72D3A08179443E80079254B /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A02179443E80079254B /* testApp.cpp */; };
 		E73769B11778DC4500892646 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769231778DC4500892646 /* CloudsQuestion.cpp */; };
 		E73769B41778DC4500892646 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769291778DC4500892646 /* CloudsVisualSystemRGBD.cpp */; };
 		E73769B51778DC4500892646 /* CloudsIntroSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737692C1778DC4500892646 /* CloudsIntroSequence.cpp */; };
 		E73769B91778DC4500892646 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737693B1778DC4500892646 /* CloudsClip.cpp */; };
-		E73769BA1778DC4500892646 /* CloudsClusterVisualizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737693D1778DC4500892646 /* CloudsClusterVisualizer.cpp */; };
 		E73769BB1778DC4500892646 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769401778DC4500892646 /* CloudsFCPParser.cpp */; };
 		E73769BD1778DC4500892646 /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769441778DC4500892646 /* CloudsLink.cpp */; };
 		E73769BF1778DC4500892646 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769481778DC4500892646 /* CloudsStoryEngine.cpp */; };
@@ -252,8 +250,6 @@
 		E72D39FF179443E80079254B /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
 		E72D3A00179443E80079254B /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
 		E72D3A01179443E80079254B /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
-		E72D3A02179443E80079254B /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		E72D3A03179443E80079254B /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		E73769231778DC4500892646 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E73769241778DC4500892646 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E73769291778DC4500892646 /* CloudsVisualSystemRGBD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBD.cpp; sourceTree = "<group>"; };
@@ -262,8 +258,6 @@
 		E737692D1778DC4500892646 /* CloudsIntroSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsIntroSequence.h; sourceTree = "<group>"; };
 		E737693B1778DC4500892646 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E737693C1778DC4500892646 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
-		E737693D1778DC4500892646 /* CloudsClusterVisualizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterVisualizer.cpp; sourceTree = "<group>"; };
-		E737693E1778DC4500892646 /* CloudsClusterVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterVisualizer.h; sourceTree = "<group>"; };
 		E737693F1778DC4500892646 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
 		E73769401778DC4500892646 /* CloudsFCPParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsFCPParser.cpp; sourceTree = "<group>"; };
 		E73769411778DC4500892646 /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsFCPParser.h; sourceTree = "<group>"; };
@@ -896,8 +890,6 @@
 				E72D39FF179443E80079254B /* Module.h */,
 				E72D3A00179443E80079254B /* RandomMover.cpp */,
 				E72D3A01179443E80079254B /* RandomMover.h */,
-				E72D3A02179443E80079254B /* testApp.cpp */,
-				E72D3A03179443E80079254B /* testApp.h */,
 			);
 			path = LIA;
 			sourceTree = "<group>";
@@ -946,25 +938,23 @@
 		E737693A1778DC4500892646 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E737693F1778DC4500892646 /* CloudsEvents.h */,
 				E737694D1778DC4500892646 /* CloudsVisualSystemPreset.h */,
 				E737694C1778DC4500892646 /* CloudsVisualSystemPreset.cpp */,
 				E737694B1778DC4500892646 /* CloudsVisualSystemManager.h */,
 				E737694A1778DC4500892646 /* CloudsVisualSystemManager.cpp */,
-				E737693B1778DC4500892646 /* CloudsClip.cpp */,
 				E737693C1778DC4500892646 /* CloudsClip.h */,
-				E737693D1778DC4500892646 /* CloudsClusterVisualizer.cpp */,
-				E737693E1778DC4500892646 /* CloudsClusterVisualizer.h */,
-				E737693F1778DC4500892646 /* CloudsEvents.h */,
-				E73769401778DC4500892646 /* CloudsFCPParser.cpp */,
+				E737693B1778DC4500892646 /* CloudsClip.cpp */,
 				E73769411778DC4500892646 /* CloudsFCPParser.h */,
-				E73769441778DC4500892646 /* CloudsLink.cpp */,
+				E73769401778DC4500892646 /* CloudsFCPParser.cpp */,
 				E73769451778DC4500892646 /* CloudsLink.h */,
-				E73769481778DC4500892646 /* CloudsStoryEngine.cpp */,
+				E73769441778DC4500892646 /* CloudsLink.cpp */,
 				E73769491778DC4500892646 /* CloudsStoryEngine.h */,
-				E737694E1778DC4500892646 /* ClusterData.cpp */,
+				E73769481778DC4500892646 /* CloudsStoryEngine.cpp */,
 				E737694F1778DC4500892646 /* ClusterData.h */,
-				E73769501778DC4500892646 /* ParticleEdge.cpp */,
+				E737694E1778DC4500892646 /* ClusterData.cpp */,
 				E73769511778DC4500892646 /* ParticleEdge.h */,
+				E73769501778DC4500892646 /* ParticleEdge.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -2162,7 +2152,6 @@
 				E73769B41778DC4500892646 /* CloudsVisualSystemRGBD.cpp in Sources */,
 				E73769B51778DC4500892646 /* CloudsIntroSequence.cpp in Sources */,
 				E73769B91778DC4500892646 /* CloudsClip.cpp in Sources */,
-				E73769BA1778DC4500892646 /* CloudsClusterVisualizer.cpp in Sources */,
 				E73769BB1778DC4500892646 /* CloudsFCPParser.cpp in Sources */,
 				E73769BD1778DC4500892646 /* CloudsLink.cpp in Sources */,
 				E73769BF1778DC4500892646 /* CloudsStoryEngine.cpp in Sources */,
@@ -2303,7 +2292,6 @@
 				E72D3A05179443E80079254B /* Globals.cpp in Sources */,
 				E72D3A06179443E80079254B /* Module.cpp in Sources */,
 				E72D3A07179443E80079254B /* RandomMover.cpp in Sources */,
-				E72D3A08179443E80079254B /* testApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

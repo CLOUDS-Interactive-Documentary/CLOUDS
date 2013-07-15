@@ -11,50 +11,57 @@
 CloudsAct::CloudsAct(){
     currentPlayIndex = 0;
     startTime = 0;
-    actPlaying =false;
+    actPlaying = false;
     waitingForNextClip = false;
-    //TODO: Make non-arbritrary
-    visualSystemDuration = 60;
+	timelinePopulated = false;
     duration = 0;
     timeLineActive = false;
 }
 
-void CloudsAct::loadNextClip(){
-    currentClip = clips[currentPlayIndex];
-    currentTopic = topicHistory[currentPlayIndex];
-    currentPlayIndex++;
-    
-    CloudsStoryEventArgs args(currentClip,currentTopic);
-    ofNotifyEvent(events.clipBegan, args, this);
+CloudsAct::~CloudsAct(){
+	//TODO remove listener
+	if(timelinePopulated){
+		ofRemoveListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+	}
 }
 
+//void CloudsAct::loadNextClip(){
+//    currentClip = clips[currentPlayIndex];
+//    currentTopic = topicHistory[currentPlayIndex];
+//    currentPlayIndex++;
+//    
+//    CloudsStoryEventArgs args(currentClip,currentTopic);
+//    ofNotifyEvent(events.clipBegan, args, this);
+//}
 
-void CloudsAct::playAct(){
+
+void CloudsAct::play(){
     currentPlayIndex = 0;
     currentClip = clips[currentPlayIndex];
-    currentTopic = topicHistory[currentPlayIndex];
-    startTime = timer.getAppTimeSeconds();
     actPlaying = true;
-    clipEndTime = startTime +currentClip.getDuration();
     
     //secsSinceLastVisualSystemPlayed =0;
-    CloudsStoryEventArgs argsA(currentClip,currentTopic);
-    ofNotifyEvent(events.actBegan,argsA ,this);
+    CloudsActEventArgs args(this);
+    ofNotifyEvent(events.actBegan, args);
+	
+	timeline.play();
     
 }
 
 void CloudsAct::populateTime(){
-
+	
+	timelinePopulated = true;
+	
+    timeline.setAutosave(false);
     timeline.setup();
     timeline.clear();
     
     timeline.setDurationInSeconds(duration);
-    timeline.setAutosave(false);
     
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
     topicsTrack = timeline.addFlags("Topics");
-    timeline.addSwitches("switches");
+
     
     timeLineActive = true;
     string previousTopic = "";
@@ -84,14 +91,14 @@ void CloudsAct::populateTime(){
         }
     }
     
-    
-    
+	//TODO remove listener
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     if(bang.track == clipsTrack){
-        CloudsStoryEventArgs args(clipMap[bang.flag], "");
+        CloudsClipEventArgs args(clipMap[bang.flag], "");
         ofNotifyEvent(events.clipBegan, args);
     }
     else if(bang.track == visualSystemsTrack){
@@ -103,19 +110,19 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
 }
 
-bool CloudsAct::clipEnded(){
-    
-    CloudsStoryEventArgs args(currentClip,currentTopic);
-    ofNotifyEvent(events.clipEnded, args);
-    
-    if(currentPlayIndex<clips.size()){
-        waitingForNextClip = true;
-        nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
-    }
-    else{
-        ofNotifyEvent(events.actEnded, args);
-    }
-}
+//bool CloudsAct::clipEnded(){
+//    
+//    CloudsClipEventArgs args(currentClip,currentTopic);
+//    ofNotifyEvent(events.clipEnded, args);
+//    
+//    if(currentPlayIndex<clips.size()){
+//        waitingForNextClip = true;
+//        nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
+//    }
+//    else{
+//        ofNotifyEvent(events.actEnded, args);
+//    }
+//}
 
 
 float CloudsAct::getActDuration(){
@@ -125,26 +132,9 @@ float CloudsAct::getActDuration(){
     }
 }
 
-void CloudsAct::drawActDebug(){
-    //    float totalTime = 0;
-    //	for(int i = 0; i < clips.size(); i++){
-    //		totalTime += clips[i].getDuration();
-    //	}
-    //
-    //	int currentTime = 0;
-    //	for(int i = 0; i < clips.size(); i++){
-    //		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-    //		float width = ofMap(clips[i].getDuration(), 0, totalTime,  0, ofGetWidth());
-    //		currentTime += clips[i].getDuration();
-    //		ofNoFill();
-    //		ofRect(screenX, 100 + 30*i, width, 30);
-    //		ofDrawBitmapString(clips[i].getLinkName() , screenX+10, 100 + 30*(i+.75));
-    //	}
-//    ofPushMatrix();
-//    ofTranslate(0,ofGetHeight()/3);
+void CloudsAct::drawDebug(){
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
-  //  ofPopMatrix();
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
@@ -218,9 +208,9 @@ string CloudsAct::getTopicForClip(CloudsClip& clip){
     return topicMap[ clip.getLinkName() ];
 }
 
-vector<string>& CloudsAct::getAllTopics(){
-    return topicHistory;
-}
+//vector<string>& CloudsAct::getAllTopics(){
+//    return topicHistory;
+//}
 
 //void CloudsAct::addTopicToHistory(string topic){
 //    topicHistory.push_back(topic);
@@ -231,9 +221,9 @@ void CloudsAct::setTopicForClip(string topic, string clipName)
     topicMap[clipName] = topic;
 }
 
-void CloudsAct::clearAct(){
+void CloudsAct::clear(){
     clips.clear();
-    topicHistory.clear();
+//    topicHistory.clear();
     clipMap.clear();
     visualSystemsMap.clear();
     topicMap.clear();
@@ -241,7 +231,6 @@ void CloudsAct::clearAct(){
     timeline.reset();
     duration = 0;
 }
-
 
 CloudsEvents& CloudsAct::getEvents(){
 	return events;

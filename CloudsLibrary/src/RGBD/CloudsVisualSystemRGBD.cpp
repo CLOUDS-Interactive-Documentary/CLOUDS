@@ -1,5 +1,5 @@
-
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsRGBDCombinedRenderer.h"
 
 
 //--------------------------------------------------------------
@@ -127,7 +127,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
-	
 
 }
 

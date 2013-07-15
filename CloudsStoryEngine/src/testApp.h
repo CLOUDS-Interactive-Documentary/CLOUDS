@@ -6,6 +6,7 @@
 //#include "CloudsPlaybackController.h"
 //#include "CloudsSound.h"
 #include "ofxUI.h"
+#include "CloudsAct.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -27,11 +28,22 @@ class testApp : public ofBaseApp{
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
 	CloudsStoryEngine storyEngine;
-
+	CloudsAct* currentAct;
+	
+	
+	//clip events
+	void actCreated(CloudsActEventArgs& args);
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void topicChanged(string& newTopic);
+		
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
-    CloudsAct act;
+
     void guiEvent(ofxUIEventArgs &e);
-	void audioRequested(float * output, int bufferSize, int nChannels);
+
 };

@@ -5,13 +5,22 @@
 #include "CloudsClip.h"
 #include "CloudsVisualSystemPreset.h"
 
-class CloudsStoryEventArgs : public ofEventArgs {
+
+class CloudsAct;
+class CloudsActEventArgs : public ofEventArgs {
   public:
-	CloudsStoryEventArgs(CloudsClip& chosenClip, string currentTopic)
+	CloudsActEventArgs(CloudsAct* act){
+		this->act = act;
+	}
+	CloudsAct* act;
+};
+
+class CloudsClipEventArgs : public ofEventArgs {
+  public:
+	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic)
 		: chosenClip(chosenClip), currentTopic(currentTopic)
 	{
 		timeUntilNextClip = 0;
-
 	}
 	
 	CloudsClip& chosenClip;
@@ -35,19 +44,18 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 
 class CloudsEvents {
   public:
-	ofEvent<CloudsStoryEventArgs> storyBegan;
-	ofEvent<CloudsStoryEventArgs> storyEnded;
+	 //sent by story engine
+    ofEvent<CloudsActEventArgs> actCreated;
 	
-    ofEvent<CloudsStoryEventArgs> actBegan;
-    ofEvent<CloudsStoryEventArgs> actEnded;
-    
-	ofEvent<CloudsStoryEventArgs> clipBegan;
-	ofEvent<CloudsStoryEventArgs> clipEnded;
+	//sent by act
+    ofEvent<CloudsActEventArgs> actBegan;
+    ofEvent<CloudsActEventArgs> actEnded;
+	ofEvent<CloudsClipEventArgs> clipBegan;
 
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
-	ofEvent<CloudsStoryEventArgs> topicChanged;
+	ofEvent<string> topicChanged;
 	
 };
 
