@@ -36,6 +36,8 @@ void testApp::setup(){
     gui->addSlider("MAX VS GAPTIME", 0, 60, &storyEngine.maxVisualSystemGapTime);
     gui->addSlider("LONG CLIP THRESHOLD", 0, 240, &storyEngine.longClipThreshold);
     gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &storyEngine.longClipFadeInPercent);
+    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &storyEngine.maxTimeWithoutQuestion);
+
     gui->addSpacer();
     
     gui->addLabel("CLIP: ");

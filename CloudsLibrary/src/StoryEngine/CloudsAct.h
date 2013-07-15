@@ -74,7 +74,7 @@ class CloudsAct{
     
     void addClipToAct(CloudsClip clip, string topic, float startTime);
     void addGapForVisualSystem(float startTime);
-    void addQuestionToAct(CloudsClip clip, float startTime, float duration);
+    void addQuestionToAct(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
 
     ActTimeItem& getItemForClip(CloudsClip& clip);

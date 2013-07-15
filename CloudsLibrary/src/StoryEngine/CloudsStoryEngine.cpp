@@ -41,7 +41,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     dichomoiesFactor = 2;
     linkFactor =20 ;
 
-    questionDisplayPeriod = 120;
+
     maxTimeWithoutQuestion =120;
 
 }
@@ -321,63 +321,59 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     }
     
 
-//    float questionStartTime = 0;
-//    
-//    //questions shouldnt start during visual systems
-//    for(int k=0; k < act.getAllVisualSystems().size(); k++){
-//        CloudsVisualSystemPreset& preset = act.getVisualSystemInAct(k);
-//        
-//        float presetStartTime = act.getItemForVisualSystem(preset).startTime;
-//        float presetEndTime = act.getItemForVisualSystem(preset).endTime;
-//        
-//        //is a Visual System playing for the entire duration of the clip
-//        if(questionStartTimepresetStartTime && clipEndTime < presetEndTime ){
-//            //do nothing
-//        }
-//        // A visual System starts during a clip
-//        else if (presetStartTime > clipStartTime && presetStartTime < clipEndTime){
-////            questionStartTime = clipStartTime;
-////            
-////            vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
-////            
-////            for(int i = 0; i<clips.size(); i++){
-////                
-////                if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
-////                    cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
-////                    act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
-////                    break;
-////                }
-////                else if(i == clips.size()-1){
-////                    
-////                    clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
-////                    act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
-////                    cout<<"No question found!"<<endl;
-////                }
-////            }
-//        }
-//        //A Visual System ends during a clip
-//        else if (presetEndTime > clipStartTime && presetEndTime < clipEndTime){
-////            questionStartTime = presetEndTime;
-////            
-////            vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
-////            
-////            for(int i = 0; i<clips.size(); i++){
-////                
-////                if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
-////                    cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
-////                    act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
-////                    break;
-////                }
-////                else if(i == clips.size()-1){
-////                    
-////                    clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
-////                    act.addQuestionToAct(clips[i], questionStartTime, questionDisplayPeriod);
-////                    cout<<"No question found!"<<endl;
-////                }
-////            }
-//        }
-//    }
+    float questionStartTime = 0;
+    float lastQuestionTime = 0;
+    float currentTime = 0;
     
+   //questions shouldnt start during visual systems
+   for(int k=0; k < act->getAllVisualSystems().size(); k++){
+       CloudsVisualSystemPreset& preset = act->getVisualSystemInAct(k);
+       
+       float presetStartTime = act->getItemForVisualSystem(preset).startTime;
+       float presetEndTime = act->getItemForVisualSystem(preset).endTime;
+
+       float timeSinceLastQuestion = presetStartTime - lastQuestionTime;
+       
+       
+       if(timeSinceLastQuestion > maxTimeWithoutQuestion){
+       
+           CloudsClip& clip = act->getClipAtTime(presetStartTime);
+           
+           float clipStartTime = act->getItemForClip(clip).startTime;
+           float clipEndTime = act->getItemForClip(clip).endTime;
+           
+           string topic =act->getTopicForClip(clip);
+           vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
+           
+           //if a visual system is already playing and is going to end in the clip.
+           //ask the question after the system stops playing.
+           if(clipStartTime > presetStartTime && clipEndTime > presetEndTime){
+               questionStartTime = presetEndTime;
+
+           }
+           else{
+               questionStartTime = clipStartTime;
+           }
+           
+            for(int i = 0; i<clips.size(); i++){
+
+                if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
+                    cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
+                    act->addQuestionToAct(clips[i], questionStartTime);
+                    break;
+                }
+                else if(i == clips.size()-1){
+
+                    clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
+                    act->addQuestionToAct(clips[i], questionStartTime);
+                    cout<<"No question found!"<<endl;
+                }
+            }
+           lastQuestionTime = questionStartTime;
+       }
+
+  }
+ 
     act->populateTime();
 
     scoreBuffer.set(scoreStream);
