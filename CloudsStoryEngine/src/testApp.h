@@ -6,6 +6,7 @@
 //#include "CloudsPlaybackController.h"
 #include "CloudsSound.h"
 #include "ofxUI.h"
+
 class testApp : public ofBaseApp{
   public:
 	void setup();
@@ -31,7 +32,7 @@ class testApp : public ofBaseApp{
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
-    
+    CloudsAct act;
     void guiEvent(ofxUIEventArgs &e);
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };

@@ -137,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D28426D17934435007B9AE2 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		3D2CCFDE1773A9C20084FB7A /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
 		3D2CCFDF1773A9C20084FB7A /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -1118,6 +1119,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3D28426D17934435007B9AE2 /* CloudsGlobal.h */,
 				3D03B1BF1755A1AE009CF17D /* RGBD */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);

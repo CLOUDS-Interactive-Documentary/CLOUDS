@@ -22,7 +22,7 @@ Abû Zabi|24.48|54.37
 Dubayy(Dubai)|25.27|55.33
 al-'Ayn|24.23|55.74
 ash-Shâriqah|25.37|55.41
-Buenos Aires|-34.61|-58.37
+Buenos Aires|-34.37|-58.32
 Abovyan|40.27|44.62
 Gyumri|40.78|43.83
 Vanadzor|40.8|44.49

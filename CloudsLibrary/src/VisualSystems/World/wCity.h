@@ -22,7 +22,7 @@ public:
     ofColor color;
     
     ofQuaternion latRot,longRot;
-    float   latitud, longitud;
+    float   latitud, longitud, freq;
     float   size;
     
     float   noise;

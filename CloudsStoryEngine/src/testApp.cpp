@@ -47,14 +47,27 @@ void testApp::setup(){
     gui->addSlider("MAX VS RUNTIME", 0, 480,&storyEngine.systemMaxRunTime);
     gui->addSlider("MAX VS GAPTIME", 0, 60, &storyEngine.maxVisualSystemGapTime);
     gui->addSlider("LONG CLIP THRESHOLD", 0, 240, &storyEngine.longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, storyEngine.longClipFadeInPercent);
+    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &storyEngine.longClipFadeInPercent);
     gui->addSpacer();
     
     gui->addLabel("CLIP: ");
     gui->addSlider("ACT LENGTH", 60, 1200, &storyEngine.actLength);
     gui->addButton("BUILD ACT", false);
     gui->autoSizeToFitWidgets();
+
+
+
+    clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
+    clipGui->setPosition(gui->getRect()->width, 0);
+        clipGui->addSpacer();
+    clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
+    clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
+    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
+    clipGui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
+    clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
+    clipGui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
+    ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
     
 
     
@@ -62,6 +75,8 @@ void testApp::setup(){
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	storyEngine.seedWithClip( clip );
+
+
 }
 
 //--------------------------------------------------------------
@@ -72,6 +87,7 @@ void testApp::update(){
         CloudsClip& clip = parser.getRandomClip(false,false);
         storyEngine.seedWithClip( clip );
         //storyEngine.getAct().clearAct();
+      
         
     }
 
@@ -87,8 +103,8 @@ void testApp::draw(){
 //	sound.drawDebug();
 	
 	//storyEngine.drawStoryEngineDebug();
-	
-
+    
+    storyEngine.getAct().drawActDebug();
 }
 
 void testApp::exit(){
