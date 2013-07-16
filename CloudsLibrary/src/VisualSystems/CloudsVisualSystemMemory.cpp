@@ -92,10 +92,22 @@ void CloudsVisualSystemMemory::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemMemory::generate(){
     if (bTexture){
+        
+        //  Player
+        //
 //        generateFromTexture( sharedRenderer->getPlayer().getTextureReference() );
+        
+        //  Image
+        //
         ofImage img;
         img.loadImage("img.jpg");
         generateFromTexture( img.getTextureReference() );
+        
+        //  FBO
+        //
+//        ofFbo fbo;
+//        fbo.allocate(ofGetScreenWidth(), ofGetScreenHeight());
+//        generateFromTexture( fbo.getTextureReference() );
     } else {
         generateFromMemory();
     }
@@ -155,12 +167,9 @@ void CloudsVisualSystemMemory::generateFromMemory(){
 }
 
 void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
-    
-    
+
     ofPixels pixels;
     _tex.readToPixels(pixels);
-    
-    int blocksTotal = 10000*(10-blockScale);
     
     int xMargin = 20;
     int yMargin = 20;
@@ -168,46 +177,35 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
     int width = ofGetWidth()-xMargin*2.0;
     int height = ofGetHeight()-yMargin*2.0;
     
-    float widthBlocks = blockWidth*blockScale;
-    float heightBlocks = blockHeight*blockScale;
+    ofRectangle block;
+    block.width = blockWidth*blockScale;
+    block.height = blockHeight*blockScale;
     
-    xBlocks = (float)width/(widthBlocks+margin*blockScale);
-    yBlocks = (float)height/(heightBlocks+margin*blockScale);
+    xBlocks = (float)width/((blockWidth+margin)*blockScale);
+    yBlocks = (float)height/((blockHeight+margin)*blockScale);
     
     blocks.clear();
-    int index = 0;
     for (int j = 0; j < yBlocks; j++) {
         for (int i = 0; i < xBlocks; i++){
             
-            if (index < blocksTotal ){
-                
-                int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
-                int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
-                
-                if ( y > (ofGetHeight()+margin+heightBlocks))
-                    break;
+            int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
+            int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
             
-                Block block;
-                block.x = x+widthBlocks*0.5;
-                block.y = y+heightBlocks*0.5;
-                block.width = widthBlocks;
-                block.height = heightBlocks;
-                
-                int color = pixels.getColor( (((float)block.x+block.width*0.5)/(float)ofGetWidth())*pixels.getWidth(),
-                                             (((float)block.y+block.height*0.5)/(float)ofGetHeight())*pixels.getHeight() ).getBrightness();
-                
-                block.color = ofColor( color );
-                block.borderColor = borderColor;
-                block.value = color;
-                block.bSelected = false;
-                
-                blocks.push_back(block);
-                
-            } else {
-                break;
-            }
+            Block newBlock;
+            newBlock.set(block);
+            newBlock.x = x+block.width*0.5;
+            newBlock.y = y+block.height*0.5;
             
-            index++;
+            ofPoint st = newBlock.getCenter();
+            st /= ofPoint(ofGetWidth(),ofGetHeight());
+            st *= ofPoint(pixels.getWidth(),pixels.getHeight());
+            
+            newBlock.value = pixels.getColor( st.x, st.y ).r;//.getBrightness() ;
+            newBlock.color = ofColor( newBlock.value );
+            newBlock.borderColor = borderColor;
+            newBlock.bSelected = false;
+            
+            blocks.push_back(newBlock);
         }
     }
 }
