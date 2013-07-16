@@ -1,5 +1,6 @@
-
 #include "CloudsVisualSystemRGBD.h"
+#include "CloudsRGBDCombinedRenderer.h"
+
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
@@ -25,6 +26,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cloudsCamera.setup();
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 	setCurrentCamera(cloudsCamera);
+	
+	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+
 }
 
 //--------------------------------------------------------------
@@ -35,6 +39,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     meshGui->copyCanvasProperties(gui);
     meshGui->setName("Mesh");
     meshGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	meshGui->addToggle("DRAW CLOUD", &drawCloud);
 	
 	meshGui->addSlider("CLOUD SCALE", .001,  1.0, &pointcloudScale);
 	meshGui->addSlider("CLOUD OFFSET",   0, -800, &pointcloudOffsetZ);
@@ -73,7 +79,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
-
 	
 	cameraGui = new ofxUISuperCanvas("CAMERA", gui);
 	cameraGui->copyCanvasStyle(gui);
@@ -92,43 +97,94 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(cameraGui);
 	guimap[meshGui->getName()] = cameraGui;
 	
+	
 	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
 	particleGui->copyCanvasStyle(gui);
     particleGui->copyCanvasProperties(gui);
     particleGui->setName("Particle");
     particleGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	particleGui->addToggle("DRAW PARTICLES", &drawParticulate);
+	
 	particleGui->addSlider("BIRTH RATE", 0, .01, &particulateController.birthRate);
 	particleGui->addSlider("BIRTH SPREAD", 10, 10000, &particulateController.birthSpread);
+	particleGui->addSlider("POINT SIZE THRESHOLD", 0, .01, &particulateController.getPoints().sizeThreshold);
+	
+	particleGui->addSlider("POINT COLOR H", 0, 1.0, &pointColor.x);
+	particleGui->addSlider("POINT COLOR S", 0, 1.0, &pointColor.y);
+	particleGui->addSlider("POINT COLOR V", 0, 1.0, &pointColor.z);
+	particleGui->addSlider("POINT COLOR A", 0, 1.0, &pointColor.w);
 	
 	guis.push_back(particleGui);
 	guimap[meshGui->getName()] = particleGui;
 	
+	
+	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
+	questionGui->copyCanvasStyle(gui);
+    questionGui->copyCanvasProperties(gui);
+    questionGui->setName("Questions");
+    questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	guis.push_back(questionGui);
+	guimap[meshGui->getName()] = questionGui;
+
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
-	if(refreshScanlineMesh){
-		generateScanlines();
-	}
-	if(refreshPointcloud){
-		generatePointGrid();
-	}
-	if(numRandomPoints != randomPoints.getNumVertices()){
-		generateRandomPoints();
-	}
 	
-
-	currentFlowPosition += cloudFlow;
-	sharedRenderer->flowPosition = currentFlowPosition;
+	//update camera
 	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
 	cloudsCamera.lookTarget = translatedHeadPosition;
+
+	if(drawCloud){
+		if(refreshScanlineMesh){
+			generateScanlines();
+		}
+		if(refreshPointcloud){
+			generatePointGrid();
+		}
+		if(numRandomPoints != randomPoints.getNumVertices()){
+			generateRandomPoints();
+		}
+		
+		currentFlowPosition += cloudFlow;
+		sharedRenderer->flowPosition = currentFlowPosition;
+	}
+
+	if(drawParticulate){
+		particulateController.birthPlace = translatedHeadPosition;
+		
+		glDisable(GL_LIGHTING);
+		glDisable(GL_DEPTH_TEST);
+		particulateController.getPoints().color = ofFloatColor::fromHsb(pointColor.x, pointColor.y, pointColor.z);
+		particulateController.getPoints().color.a = pointColor.w;
+		
+		particulateController.update();
+	}
 	
-	particulateController.birthPlace = translatedHeadPosition;
+	updateQuestions();
 	
-	glDisable(GL_LIGHTING);
-	glDisable(GL_DEPTH_TEST);
-	particulateController.update();
+}
+
+//--------------------------------------------------------------	
+void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
+
+	CloudsQuestion* q = new CloudsQuestion();
+	q->cam = &cloudsCamera;
+	q->font = &displayFont;
+	q->clip = questionClip;
+	q->setup();
+		
+	questions.push_back(q);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::updateQuestions(){
+	for(int i = 0; i < questions.size(); i++){
+		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, cloudsCamera.frontDistance);
+		questions[i]->update();
+	}
 }
 
 //--------------------------------------------------------------
@@ -249,7 +305,7 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
-	if(sharedRenderer != NULL && hasSpeaker){
+	if(drawCloud && sharedRenderer != NULL && hasSpeaker){
 
 //		cout << "RGBD DRAW" << endl;
 		
@@ -339,14 +395,30 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 		sharedRenderer->unbindRenderer();
 				
-		
 		glPopAttrib();
 		ofPopMatrix();
 		ofPopStyle();
 		
+	}
+		
+	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
 		particulateController.draw();
+	}
+	
+	drawQuestions();
 
+}
+
+void CloudsVisualSystemRGBD::drawQuestions(){
+	for(int i = 0; i < questions.size(); i++){
+		questions[i]->draw();
+	}
+}
+
+void CloudsVisualSystemRGBD::selfDrawOverlay() {
+	for(int i = 0; i < questions.size(); i++){
+		questions[i]->drawOverlay();
 	}
 }
 
@@ -365,6 +437,7 @@ void CloudsVisualSystemRGBD::selfEnd(){
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		particulateController.reloadShaders();
+		sharedRenderer->reloadShader();
 	}
 }
 

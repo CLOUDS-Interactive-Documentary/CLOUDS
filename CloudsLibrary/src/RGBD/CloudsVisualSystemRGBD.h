@@ -20,10 +20,14 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
+	void selfDrawOverlay();
     void selfExit();
     void selfBegin();
 	void selfEnd();
     
+	
+	void addQuestion(CloudsClip& q);
+	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -46,6 +50,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *meshGui;
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
+	ofxUISuperCanvas *questionGui;
+	
+	ofTrueTypeFont displayFont;
+	vector<CloudsQuestion> currentQuestions;
 	
 	ofVec3f translatedHeadPosition;
 	CloudsRGBDCamera cloudsCamera;
@@ -57,8 +65,12 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ParticleConnectionGenerator connectionGenerator;
 	GPUParticles::Controller particulateController;
 	
+	void updateQuestions();
+	void drawQuestions();
 	
-	vector<CloudsQuestion> questions;
+	vector<CloudsQuestion*> questions;
+	
+	ofVec4f pointColor;
 	
 	float pointcloudScale;
 	float pointcloudOffsetZ;
@@ -78,7 +90,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointVerticalSpace;
 	float pointHorizontalSpace;
 	void generatePointGrid();
-
+	
+	bool drawParticulate;
+	bool drawCloud;
 	bool drawMesh;
 	float meshAlpha;
 	
@@ -92,12 +106,17 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float numRandomPoints;
 	void generateRandomPoints();
 	
+	
+	//QUESTION
+//	ofVec3f questionOffset;
+//	float questionRange;
+//	float questionFloat;
+	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;
 	float verticalScanlineThickness;
 	float horizontalScanlineAlpha;
 	float horizontalScanlineThickness;
 	void generateScanlines();
-	
 	
 };

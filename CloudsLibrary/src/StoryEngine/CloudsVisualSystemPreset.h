@@ -8,6 +8,7 @@ class CloudsVisualSystemPreset {
 	
 	CloudsVisualSystemPreset();
 	string presetName;
+	string systemName;
 	CloudsVisualSystem* system;
 	
 	string getID();

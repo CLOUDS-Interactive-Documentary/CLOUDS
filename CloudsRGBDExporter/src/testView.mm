@@ -1,6 +1,8 @@
+
 #import "testView.h"
 #include "ofxDepthImageCompressor.h"
 #include "ofxTimecode.h"
+#include "CloudsGlobal.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -34,7 +36,7 @@
 	colorReplacementFolder = ofBufferFromFile("ColorReplacementFolder.txt").getText();
 	
 	if(exportFolder == ""){
-		exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/");
+		exportFolder = relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/");
 	}
 	
 	[exportFolderField setStringValue: [NSString stringWithUTF8String:exportFolder.c_str()] ];

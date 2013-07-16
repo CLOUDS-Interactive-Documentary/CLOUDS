@@ -1,7 +1,7 @@
 
 #include "CloudsVisualSystem.h"
-static bool confirmedDataPath = false;
-static bool usingDevelopmentFolder = false;
+#include "CloudsRGBDCombinedRenderer.h"
+
 static ofFbo sharedRenderTarget;
 static ofImage sharedCursor;
 
@@ -11,6 +11,10 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
        sharedRenderTarget.getHeight() != ofGetHeight())
     {
         sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+		sharedRenderTarget.begin();
+		ofClear(0,0,0,0);
+		sharedRenderTarget.end();
+		
     }
     return sharedRenderTarget;
 }
@@ -25,6 +29,7 @@ ofImage& CloudsVisualSystem::getCursor(){
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = NULL;
+	bClearBackground = true;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -35,17 +40,6 @@ string CloudsVisualSystem::getVisualSystemDataPath(){
     return getDataPath() + "visualsystems/"+getSystemName()+"/";
 }
 
-string CloudsVisualSystem::getDataPath()
-{
-	if(!confirmedDataPath){
-		usingDevelopmentFolder = ofDirectory("../../../CloudsData/").exists();
-		if(!usingDevelopmentFolder){
-			ofDirectory("CloudsData/").create();
-		}
-		confirmedDataPath = true;
-	}
-    return usingDevelopmentFolder ? "../../../CloudsData/" : "CloudsData/";
-}
 
 void CloudsVisualSystem::setup(){
 	
@@ -202,6 +196,7 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	if(!ofGetMousePressed())
     {
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
+		//timeline->setOffset(ofVec2f(4, 0 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
 }
@@ -212,7 +207,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     if(bRenderSystem)
     {
         CloudsVisualSystem::getSharedRenderTarget().begin();
-        ofClear(0, 0, 0);
+		if(bClearBackground){
+			ofClear(0, 0, 0, 0);
+		}
         
         drawBackground();
         
@@ -1373,9 +1370,10 @@ void CloudsVisualSystem::setupTimeline()
 
 void CloudsVisualSystem::resetTimeline()
 {
+	ofRemoveListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
     timeline->reset();
     timeline->setPageName(ofToUpper(getSystemName()));
-    selfSetupTimeline();
+    setupTimeline();
 }
 
 void CloudsVisualSystem::timelineBangEvent(ofxTLBangEventArgs& args)
@@ -2056,6 +2054,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     ofxLoadCamera(cam, presetPath+"/"+"ofEasyCamSettings");
     
     resetTimeline();
+	
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
@@ -2235,42 +2234,45 @@ void CloudsVisualSystem::drawBackground()
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 	
-    if(gradientMode == OF_GRADIENT_CIRCULAR)
-    {
-        
-        //  TEMPORAL FIX
-        //
-		//		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
-		ofSetSmoothLighting(true);
-		
-        ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
-		
-        //  Sorry Reza this is a quick and durty fix
-        //
-		//        ofPushMatrix();
-		//        if(camFOV > 60)
-		//        {
-		//            ofBackground(*bgColor2);
-		//        }
-		//        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
-		//        ofDisableLighting();
-		//        ofSetSmoothLighting(true);
-		//        glNormal3f(0,0,1);
-		//        ofLayerGradient(*bgColor, *bgColor2);
-		//        ofPopMatrix();
-        
-    }
-    else
-    {
-        ofSetSmoothLighting(false);
-        ofBackground(*bgColor);
-    }
+    if(bClearBackground)
+	{
+		if(gradientMode == OF_GRADIENT_CIRCULAR)
+		{
+			
+			//  TEMPORAL FIX
+			//
+			//		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
+			ofSetSmoothLighting(true);
+			ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
+			
+			//  Sorry Reza this is a quick and durty fix
+			//
+			//        ofPushMatrix();
+			//        if(camFOV > 60)
+			//        {
+			//            ofBackground(*bgColor2);
+			//        }
+			//        billBoard(cam.getGlobalPosition(), ofVec3f(0,0,0));
+			//        ofDisableLighting();
+			//        ofSetSmoothLighting(true);
+			//        glNormal3f(0,0,1);
+			//        ofLayerGradient(*bgColor, *bgColor2);
+			//        ofPopMatrix();
+			
+		}
+		else
+		{
+			ofSetSmoothLighting(false);
+			ofBackground(*bgColor);
+		}
+	}
+
 	//	glPopAttrib();
 	
 	
 	ofPopStyle();
 	
-	//selfDrawBackground();
+
 	ofPushStyle();
 	ofPushMatrix();
 	ofTranslate(0, ofGetHeight());

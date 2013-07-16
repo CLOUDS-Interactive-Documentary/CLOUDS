@@ -6,11 +6,13 @@
 //
 //
 
-#ifndef CLOUDS_RGBD_COMBINED_RENDER
-#define CLOUDS_RGBD_COMBINED_RENDER
+#pragma once
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#ifdef AVF_PLAYER
+#include "ofxAVFVideoPlayer.h"
+#endif
 
 class CloudsRGBDCombinedRenderer {
 public:
@@ -21,7 +23,7 @@ public:
     //  SET
     //
 	bool setup(string videoPath, string calibrationXMLPath);
-//    void setTexture(ofBaseHasTexture& _tex);
+
 	void setShaderPath(string _shaderPath);
 	void reloadShader();
     
@@ -48,10 +50,14 @@ public:
 	void drawPointCloud();
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
-    
-	ofVideoPlayer& getPlayer();
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
 
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+#ifdef AVF_PLAYER
+	ofxAVFVideoPlayer& getPlayer();
+#else
+	ofVideoPlayer& getPlayer();
+#endif
+	
 	ofShader& getShader();
 	
 	// Move in 3D Space
@@ -79,9 +85,13 @@ public:
   protected:
     void setupProjectionUniforms();
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
-    	
-	ofPtr<ofVideoPlayer> player;
 
+#ifdef AVF_PLAYER
+	ofxAVFVideoPlayer avPlayer;
+#else
+	ofPtr<ofVideoPlayer> player;
+#endif
+	
 	ofShader shader;
     string shaderPath;
     
@@ -122,5 +132,3 @@ public:
     bool bMeshGenerated;
     
 };
-
-#endif

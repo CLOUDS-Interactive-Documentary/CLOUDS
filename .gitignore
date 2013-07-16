@@ -47,3 +47,5 @@ timeline*.xml
 /CloudsRGBDExporter/bin/data/SavedExportFolder.txt
 /CloudsRGBDExporter/bin/data/ColorReplacementFolder.txt
 *.vbo
+/CloudsStoryEngine/bin/data/score.csv
+score.csv

@@ -4,9 +4,15 @@
 uniform sampler2DRect texture;
 
 varying float positionValid;
-varying vec3 normal;
 varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample;
+
+
+//LIGHTING
+varying vec3 eye;
+varying vec3 normal;
+varying float diffuseAttenuate;
+varying vec3 diffuseLightDirection;
 
 uniform float eyeMultiplier;
 uniform float skinMultiplier;
@@ -14,6 +20,13 @@ uniform float baseMultiplier;
 
 const float epsilon = 1e-6;
 
+float calculateLight(){
+	vec3 N = normal;
+	vec3 L = diffuseLightDirection;
+	
+	float lambertTerm = dot(N,L) * diffuseAttenuate;
+	return lambertTerm;
+}
 
 float isEye(){
 	return min(min(faceFeatureSample.r, faceFeatureSample.g), faceFeatureSample.b);
@@ -41,6 +54,7 @@ void main(){
 	}
 	
     vec4 col = texture2DRect(texture, gl_TexCoord[0].st);
-    gl_FragColor = gl_Color * col * attenuate;
+    gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
+	//gl_FragColor = vec4(normal,1.0);
 }
 

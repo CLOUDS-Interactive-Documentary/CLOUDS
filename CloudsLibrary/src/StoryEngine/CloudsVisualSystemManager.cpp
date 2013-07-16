@@ -1,5 +1,7 @@
 
 #include "CloudsVisualSystemManager.h"
+#include "ofxXmlSettings.h"
+#include "CloudsGlobal.h"
 
 #ifndef CLOUDS_NO_VS
 
@@ -19,6 +21,7 @@
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
+#include "CloudsVisualSystemLia.h"
 
 #endif
 
@@ -30,14 +33,14 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
 #ifndef CLOUDS_NO_VS
+	
 	nameToVisualSystem.clear();
 	systems.clear();
 	presets.clear();
 
-	//	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
-	//	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
-	//	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-
+	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
+	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
 	registerVisualSystem( new CloudsVisualSystemVoro() );
@@ -49,6 +52,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );
+	registerVisualSystem( new CloudsVisualSystemLia() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
@@ -68,20 +72,31 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
 	
-	
 #endif
 }
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
-#ifndef CLOUDS_NO_VS
+	
 	presets.clear();
+	keywords.clear();	
+	ofxXmlSettings keywordXml;
+	string keywordsFile = getKeywordFilePath();
+	if(!keywordXml.loadFile( keywordsFile )){
+		ofSystemAlertDialog("UNABLE TO LOAD KEYWORD FILE! " + keywordsFile + " Do not proceed");
+		return;
+	}
+	
+	//This is flagged if we don't want this app to be dependent on visual systems
+	//they presets will then be loaded all from keywords file
+	#ifndef CLOUDS_NO_VS
 	for(int i = 0; i < systems.size(); i++){
 		vector<string> systemPresets = systems[i]->getPresets();
 		
 		if(systemPresets.size() == 0){
-			cout << "NO PRESETS for SYSTEM " <<  systems[i]->getSystemName() << endl;
+			cout << "NO PRESETS for SYSTEM " << systems[i]->getSystemName() << endl;
 			CloudsVisualSystemPreset preset;
+			preset.systemName = systems[i]->getSystemName();
 			preset.presetName = "no-preset";
 			preset.system = systems[i];
 			presets.push_back(preset);
@@ -90,26 +105,29 @@ void CloudsVisualSystemManager::loadPresets(){
 			for(int p = 0; p < systemPresets.size(); p++){
 				CloudsVisualSystemPreset preset;
 				preset.presetName = systemPresets[p];
+				preset.systemName = systems[i]->getSystemName();
 				preset.system = systems[i];
 				presets.push_back(preset);
 			}
 		}
 	}
-	
-	keywords.clear();
-	ofxXmlSettings keywordXml;
-	string keywordsFile = getKeywordFilePath();
-	
-	if(!keywordXml.loadFile( keywordsFile )){
-		ofSystemAlertDialog("UNABLE TO LOAD KEYWORD FILE! " + keywordsFile + " Do not proceed");
-		return;
-	}
+	#endif
 	
 	int numSystems = keywordXml.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
 		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
+		
+		#ifdef CLOUDS_NO_VS
+		vector<string> splitName = ofSplitString(name, "_",true,true);
+		
+		CloudsVisualSystemPreset preset;
+		preset.systemName = splitName[0];
+		splitName.erase(splitName.begin()); //delete the system name
+		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+		presets.push_back(preset);
+		#endif
 		
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppresions");
@@ -123,7 +141,7 @@ void CloudsVisualSystemManager::loadPresets(){
         keywordXml.popTag(); //system
 	}
 	
-#endif
+
     cout << "** LOADED PRESETS " << presets.size() << endl;
 }
 
@@ -192,7 +210,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
-	return CloudsVisualSystem::getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
+	return getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
 }
 
 //--------------------------------------------------------------------

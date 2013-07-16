@@ -28,7 +28,7 @@
 		18E9EB8117736E94002B535C /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E9EB5617736E94002B535C /* wall.cpp */; };
 		18E9EB8217736E94002B535C /* Voro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E9EB5917736E94002B535C /* Voro.cpp */; };
 		18E9EB8317736E94002B535C /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E9EB5B17736E94002B535C /* VoroParticle.cpp */; };
-		18E9EB8D17736F07002B535C /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E9EB8917736F07002B535C /* CloudsRGBDCombinedRender.cpp */; };
+		3D193790178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D19378E178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.cpp */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -201,8 +201,8 @@
 		18E9EB5A17736E94002B535C /* Voro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voro.h; sourceTree = "<group>"; };
 		18E9EB5B17736E94002B535C /* VoroParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoroParticle.cpp; sourceTree = "<group>"; };
 		18E9EB5C17736E94002B535C /* VoroParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoroParticle.h; sourceTree = "<group>"; };
-		18E9EB8917736F07002B535C /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		18E9EB8A17736F07002B535C /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		3D19378E178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
+		3D19378F178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -570,8 +570,8 @@
 		18E9EB8417736F07002B535C /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				18E9EB8917736F07002B535C /* CloudsRGBDCombinedRender.cpp */,
-				18E9EB8A17736F07002B535C /* CloudsRGBDCombinedRender.h */,
+				3D19378E178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.cpp */,
+				3D19378F178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.h */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -1343,9 +1343,9 @@
 				18E9EB8117736E94002B535C /* wall.cpp in Sources */,
 				18E9EB8217736E94002B535C /* Voro.cpp in Sources */,
 				18E9EB8317736E94002B535C /* VoroParticle.cpp in Sources */,
-				18E9EB8D17736F07002B535C /* CloudsRGBDCombinedRender.cpp in Sources */,
 				188D7341177370B300B9F54B /* CloudsVisualSystem.cpp in Sources */,
 				188D7342177370B300B9F54B /* CloudsVisualSystemRezanator.cpp in Sources */,
+				3D193790178F4388004FD1F4 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,8 @@
 //
 
 #include "CloudsClip.h"
+#include "CloudsGlobal.h"
+
 #define FRAME_PADDING 24
 
 CloudsClip::CloudsClip(){
@@ -319,28 +321,3 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
-//--------------------------------------------------------------------
-string CloudsClip::relinkFilePath(string filePath){
-	
-	vector<string> drives;
-	
-	drives.push_back("Seance");
-	drives.push_back("Nebula");
-	drives.push_back("Supernova");
-	drives.push_back("Nebula_helper");
-    
-	if( !ofFile(filePath).exists() ){
-		for(int i = 0; i < drives.size(); i++){
-			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
-				for(int j = 0; j < drives.size(); j++){
-					if(j != i){
-						ofStringReplace(filePath, drives[j], drives[i]);
-					}
-				}
-				break;
-			}
-		}
-	}
-	
-	return filePath;
-}

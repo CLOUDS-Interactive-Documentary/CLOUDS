@@ -25,6 +25,8 @@ cd ..
 git clone git@github.com:rezaali/ofxColorPalettes
 git clone git@github.com:obviousjim/ofxOcean
 
+
+
 git clone https://github.com/satoruhiga/ofxCocoaGLView
 git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
@@ -34,6 +36,7 @@ git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
 
 ${PREFIX}rezaali/ofxGenerative
+${PREFIX}obviousjim/ofxAVFVideoPlayer
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange

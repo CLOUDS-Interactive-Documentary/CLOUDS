@@ -25,7 +25,9 @@ class CloudsPlaybackController {
 
 	//set it up with an existing story engine that will register the events
 	void setup(CloudsStoryEngine& storyEngine);
-	
+	void beginWithClip(); //auto play by creating new acts
+	void playAct(CloudsAct* act);
+
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
 	void update(ofEventArgs& args);
@@ -39,28 +41,31 @@ class CloudsPlaybackController {
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
 	
-	void exit(ofEventArgs & args);
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(string& args);
 	
-	bool simplePlaybackMode;
+	void exit(ofEventArgs & args);
 	
   protected:
 
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
-	CloudsAct* act;
+	CloudsAct* currentAct;
+	
 	//RGBD STUFF
 	CloudsRGBDCombinedRenderer combinedRenderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	string combinedMoviesFolder;
+	string currentTopic;
 	
 	bool eventsRegistered;
-	void storyBegan(CloudsStoryEventArgs& args);
-	void clipBegan(CloudsStoryEventArgs& args);
-	void clipEnded(CloudsStoryEventArgs& args);
-	void storyEnded(CloudsStoryEventArgs& args);
-
-	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
-	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void actCreated(CloudsActEventArgs& args);
+	
 	
 	void playClip(CloudsClip& clip);
 	

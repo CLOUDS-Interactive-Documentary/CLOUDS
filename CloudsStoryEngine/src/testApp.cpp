@@ -7,19 +7,11 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-
+	
+	currentAct = NULL;
+	
 	parser.loadFromFiles();
 	
-//	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
-//  parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
-//  parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-    
-	//if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
-	//	ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
-	//}
-	//parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	//visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
 	
 	storyEngine.setup();
@@ -27,12 +19,8 @@ void testApp::setup(){
 	storyEngine.visualSystems = &visualSystems;
 	
 	storyEngine.maxTimesOnTopic = 4;
-//	storyEngine.combinedClipsOnly = true;
 	storyEngine.printDecisions = true;
 	
-	player.simplePlaybackMode = true;
-	player.setup(storyEngine);
-//	sound.setup(storyEngine);
 
 	ofEnableSmoothing();
 	
@@ -47,32 +35,88 @@ void testApp::setup(){
     gui->addSlider("MAX VS RUNTIME", 0, 480,&storyEngine.systemMaxRunTime);
     gui->addSlider("MAX VS GAPTIME", 0, 60, &storyEngine.maxVisualSystemGapTime);
     gui->addSlider("LONG CLIP THRESHOLD", 0, 240, &storyEngine.longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, storyEngine.longClipFadeInPercent);
+    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &storyEngine.longClipFadeInPercent);
+    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &storyEngine.maxTimeWithoutQuestion);
+
     gui->addSpacer();
     
     gui->addLabel("CLIP: ");
     gui->addSlider("ACT LENGTH", 60, 1200, &storyEngine.actLength);
     gui->addButton("BUILD ACT", false);
     gui->autoSizeToFitWidgets();
-    ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
-    
 
-    
+
+    clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
+    clipGui->setPosition(gui->getRect()->width, 0);
+	clipGui->addSpacer();
+    clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
+    clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
+    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
+    clipGui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
+    clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
+    clipGui->autoSizeToFitWidgets();
+    ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
+    ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
     
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
-	storyEngine.seedWithClip( clip );
+	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	storyEngine.buildAct( clip );
+
 }
 
+//--------------------------------------------------------------
+void testApp::actCreated(CloudsActEventArgs& args){
+	
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
+	}
+
+	currentAct = args.act;
+	currentAct->registerEvents(this);
+	currentAct->play();
+}
+
+//--------------------------------------------------------------
+void testApp::actBegan(CloudsActEventArgs& args){
+	cout << "act began" << endl;
+}
+
+//--------------------------------------------------------------
+void testApp::actEnded(CloudsActEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::clipBegan(CloudsClipEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::topicChanged(string& newTopic){
+	
+}
+void testApp:: questionAsked(CloudsQuestionEventArgs& args){
+    
+}
 //--------------------------------------------------------------
 void testApp::update(){
     
     if(rebuildAct){
-        rebuildAct =false;
+        rebuildAct = false;
         CloudsClip& clip = parser.getRandomClip(false,false);
-        storyEngine.seedWithClip( clip );
-        //storyEngine.getAct().clearAct();
-        
+		storyEngine.buildAct( clip );
     }
 
 //	sound.update();
@@ -87,8 +131,11 @@ void testApp::draw(){
 //	sound.drawDebug();
 	
 	//storyEngine.drawStoryEngineDebug();
+    if(currentAct != NULL){
+		currentAct->drawDebug();
+	}
 	
-
+//    storyEngine.getAct().drawActDebug();
 }
 
 void testApp::exit(){
@@ -106,20 +153,6 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == '1'){
-		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
-	}
-}
-
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
 }
 
 //--------------------------------------------------------------

@@ -14,5 +14,5 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 }
 
 string CloudsVisualSystemPreset::getID(){
-	return (system == NULL ? "null" : system->getSystemName() ) + "_" + presetName;
+	return systemName + "_" + presetName;
 }

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsRGBDCombinedRenderer.h"
 #include "ofxCameraSaveLoad.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
+#include "CloudsGlobal.h"
 
 //tenuous
 #include "ofxExtras.h"
@@ -19,6 +19,7 @@
  */
 
 //TODO: fading, info routing
+class CloudsRGBDCombinedRenderer;
 
 class CloudsVisualSystem {
   public:
@@ -71,7 +72,6 @@ class CloudsVisualSystem {
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
-    static string getDataPath();
 		
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes
@@ -99,7 +99,6 @@ class CloudsVisualSystem {
 	void stopSystem();
 	
 	void setRenderer(CloudsRGBDCombinedRenderer& newRenderer);
-
 
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
@@ -257,7 +256,7 @@ class CloudsVisualSystem {
     bool bUpdateSystem;
     bool bDebug;
     float debugGridSize;
-	
+	bool bClearBackground;
     //CAM
     float camDistance;
     float camFOV;
