@@ -1,5 +1,6 @@
 #import "testView.h"
 #include "CloudsClip.h"
+#include "CloudsGlobal.h"
 
 @implementation testView
 
@@ -100,6 +101,16 @@
 - (void) exit
 {
 	NSLog(@"exit!!");
+}
+
+- (void)selectClip:(CloudsClip)clip inAlternateTable:(id)sender
+{
+	if(sender == linkerA){
+		[linkerB selectClip:clip];
+	}
+	else{
+		[linkerA selectClip:clip];
+	}
 }
 
 - (void)keyPressed:(int)key
@@ -219,7 +230,7 @@
 		
 	preview.stop();
 	
-	string clipFilePath = CloudsClip::relinkFilePath( clip.sourceVideoFilePath );
+	string clipFilePath = relinkFilePath( clip.sourceVideoFilePath );
 	movieSuccessfullyLoaded = preview.loadMovie(clipFilePath) ;
 	if(!movieSuccessfullyLoaded){
 		ofLogError() << "Clip " << clipFilePath << " failed to load.";
