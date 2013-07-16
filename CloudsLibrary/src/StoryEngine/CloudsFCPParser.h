@@ -142,6 +142,7 @@ class CloudsFCPParser {
     vector<CloudsClip> allClips;
     map<string, int> clipIDToIndex;
     map<string, int> clipLinkNameToIndex;
+    map<string, vector<int> > questionTopicstoClipIndex;
     
     map<string, int> allKeywords;
     //potential problem
