@@ -215,7 +215,7 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
         
         //Check to see if its a special keyword
         if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
-            cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
+//            cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
             addKeyword(desiredKeywords[i]);
         }
     }
@@ -223,7 +223,7 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
     //find all the keywords missing from the original list (rvoked)
     for(int i=0; i < originalKeywords.size() ; i++){
         if(! ofContains(desiredKeywords, originalKeywords[i])&&! ofContains(revokedKeywords, originalKeywords[i])){
-            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
+//            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
             revokeKeyword(originalKeywords[i]);
         }
     }

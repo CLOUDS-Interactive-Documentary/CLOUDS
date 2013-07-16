@@ -335,7 +335,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
             if(hasRevokedKeywords){
                 string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
                 linksXML.addValue("revokedKeywords", revokedKeywords);
-                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
+//                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
                 
             }
             
@@ -651,11 +651,11 @@ void CloudsFCPParser::refreshAllKeywords(){
         
         vector<string>& newKeywords = allClips[i].getKeywords();
         for(int k = 0; k < newKeywords.size(); k++){
-            if(newKeywords[k].find("?") == string::npos &&
-               newKeywords[k].find("link:") == string::npos)
-            {
+//            if(newKeywords[k].find("?") == string::npos &&
+//               newKeywords[k].find("link:") == string::npos)
+//            {
                 allKeywords[newKeywords[k]]++;
-            }
+//            }
         }
         
         vector<string>& specialKeywords = allClips[i].getSpecialKeywords();
