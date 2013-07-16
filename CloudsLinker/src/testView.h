@@ -60,6 +60,8 @@
 - (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
 - (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
 
+- (void) selectClip:(CloudsClip)clip inAlternateTable:(id)sender;
+
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;
 - (void)mouseMoved:(NSPoint)p;

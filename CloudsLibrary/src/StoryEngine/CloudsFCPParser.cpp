@@ -1005,6 +1005,7 @@ float CloudsFCPParser::getAllClipDuration(){
 	}
 	return duration;
 }
+
 int CloudsFCPParser::getNumMetaDataConnections(CloudsClip& source){
 	int clipcount = 0;
     string nameA = source.getLinkName();
@@ -1086,8 +1087,6 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
 }
 
 vector<string> CloudsFCPParser::getClustersForPerson(string personName){
-    
-    
     
 }
 
