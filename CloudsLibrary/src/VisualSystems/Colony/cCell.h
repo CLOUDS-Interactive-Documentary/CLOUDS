@@ -39,6 +39,7 @@ public:
     
     int     nutrientLevel;
     int     age;
+    bool     isFertile;
     
     bool    dead;
     bool    hasReplicated;

@@ -18,13 +18,18 @@ void CloudsVisualSystemColony::selfSetup()
     noiseShader.load("", getDataPath()+"shaders/VisualSystems/Colony/liquidNoise.fs");
     foodFbo.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     noiseZoom = 100.0;
-    
-	sprite.loadImage(getVisualSystemDataPath() + "_sprites/Cell_6f_sm_4.png");
+    sprites.resize(5);
+	sprites[0].loadImage(getVisualSystemDataPath() + "_sprites/Cell_white_1a.png");
+    sprites[1].loadImage(getVisualSystemDataPath() + "_sprites/Cell_white_1b.png");
+    sprites[2].loadImage(getVisualSystemDataPath() + "_sprites/Cell_white_1a.png");
+    sprites[3].loadImage(getVisualSystemDataPath() + "_sprites/Cell_white_1b.png");
+    sprites[4].loadImage(getVisualSystemDataPath() + "_sprites/Cell_white_1a.png");
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
     sysGui->addSlider("noiseZoom", 0.0, 1000, &noiseZoom);
+  //  sysGui->addSlider("NutrientLevel", 0.0, 1000, &nutrientLevel);
 }
 
 void CloudsVisualSystemColony::selfSetupRenderGui()
@@ -100,7 +105,7 @@ void CloudsVisualSystemColony::selfUpdate()
     }
     
     for (int i = cells.size()-1; i >= 0; i--){
-        if (cells[i]->shouldReplicate){
+        if (cells[i] -> isFertile && cells[i]->shouldReplicate){
     
             colonyCell *newCell = new colonyCell();
             newCell->set(*cells[i]);
@@ -146,7 +151,7 @@ void CloudsVisualSystemColony::selfAutoMode()
 void CloudsVisualSystemColony::selfDrawBackground()
 {
 	ofSetColor(255,255,255);
-	noise.draw(0,0);
+//	noise.draw(0,0);
 	//foodFbo.draw(0, 0);
 	
 	ofEnableAlphaBlending();
@@ -185,7 +190,7 @@ void CloudsVisualSystemColony::selfExit()
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < 200; i++) {
+    for (int i = 0; i < 5; i++) {
         colonyCell *newCell = new colonyCell();
         newCell->set(ofRandomWidth(),ofRandomHeight());
         cells.push_back(newCell);

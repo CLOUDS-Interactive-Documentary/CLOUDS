@@ -12,7 +12,7 @@
 
 class Block : public ofRectangle {
 public:
-    ofFloatColor    color;
+    ofFloatColor    color,borderColor;
     int             value;
     float           border;
     bool            bSelected;
@@ -29,9 +29,9 @@ public:
         
         ofNoFill();
         if (bSelected){
-            ofSetColor(21, 217, 203);
+            ofSetColor(borderColor);
         } else {
-            ofSetColor(ofFloatColor(0.5,border));
+            ofSetColor(ofFloatColor(0.5,borderColor.a));
         }
         ofRect(*this);
         
@@ -81,7 +81,10 @@ public:
 private:
     vector<Block> blocks;
     
+    void    generate();
     void    generateFromMemory();
+    void    generateFromTexture(ofTexture &_tex);
+    
     void    unSelectAll();
     void    swapBlocks(int _indexA, int _indexB);
     
@@ -94,8 +97,9 @@ private:
     void    applyRandomUp();
     void    applyRandomDown();
     
+    ofFloatColor borderColor;
     float   margin;
-    float   blockWidth, blockHeight, blockScale, blockAlpha;
+    float   blockWidth, blockHeight, blockScale;
     float   randomSort, randomMix, randomUp, randomDown;
     float   noiseLerp;
     
@@ -105,4 +109,6 @@ private:
     bool    bSort;
     bool    bDeFrag;
     bool    bBiDirectionalSort;
+    bool    bTexture;
+    
 };

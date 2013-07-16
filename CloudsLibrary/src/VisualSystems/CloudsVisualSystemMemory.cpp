@@ -19,22 +19,26 @@ void CloudsVisualSystemMemory::selfSetup()
     blockScale = 1.0;
     blockWidth = 4;
     blockHeight = 8;
-    blockAlpha = 1.0;
     margin = 2;
     noiseLerp = 0;
     randomUp = 0;
     randomDown = 0;
 
+    borderColor = ofFloatColor(0.0823, 0.8509, 0.7960);
+    bTexture = false;
     bSort = true;
     bDeFrag = false;
     bBiDirectionalSort = false;
     
     ofEnableAlphaBlending();
-    generateFromMemory();
+    generate();
 }
 
 void CloudsVisualSystemMemory::selfSetupSystemGui()
 {
+    sysGui->addLabel("Source");
+    sysGui->addToggle("Texture", &bTexture);
+    
     sysGui->addLabel("Order");
     sysGui->addToggle("Sort", &bSort);
     sysGui->addToggle("BiDirectionalSort", &bBiDirectionalSort);
@@ -56,12 +60,15 @@ void CloudsVisualSystemMemory::selfSetupRenderGui()
     rdrGui->addSlider("block_height", 0.0, 20, &blockHeight);
     rdrGui->addSlider("block_scale", 0.5
                       , 10, &blockScale);
-    rdrGui->addSlider("block_border", 0.0, 1.0, &blockAlpha);
+    rdrGui->addSlider("block_border", 0.0, 1.0, &(borderColor.a));
+    rdrGui->addSlider("border_red", 0.0, 1.0, &(borderColor.r));
+    rdrGui->addSlider("border_green", 0.0, 1.0, &(borderColor.g));
+    rdrGui->addSlider("border_blue", 0.0, 1.0, &(borderColor.b));
 }
 
 void CloudsVisualSystemMemory::selfBegin()
 {
-    generateFromMemory();
+    generate();
 }
 
 void CloudsVisualSystemMemory::selfEnd()
@@ -76,11 +83,22 @@ void CloudsVisualSystemMemory::guiSystemEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystemMemory::guiRenderEvent(ofxUIEventArgs &e)
 {
-    generateFromMemory();
+    generate();
 }
 
 void CloudsVisualSystemMemory::selfKeyPressed(ofKeyEventArgs & args){
-    generateFromMemory();
+    generate();
+}
+
+void CloudsVisualSystemMemory::generate(){
+    if (bTexture){
+//        generateFromTexture( sharedRenderer->getPlayer().getTextureReference() );
+        ofImage img;
+        img.loadImage("img.jpg");
+        generateFromTexture( img.getTextureReference() );
+    } else {
+        generateFromMemory();
+    }
 }
 
 void CloudsVisualSystemMemory::generateFromMemory(){
@@ -119,7 +137,7 @@ void CloudsVisualSystemMemory::generateFromMemory(){
                 block.width = widthBlocks;
                 block.height = heightBlocks;
                 block.color = ofColor((unsigned char)data[index]);
-                block.border = blockAlpha;
+                block.borderColor = borderColor;
                 block.value = (int)data[index];
                 block.bSelected = false;
                 
@@ -134,6 +152,64 @@ void CloudsVisualSystemMemory::generateFromMemory(){
     }
     
     delete []data;
+}
+
+void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
+    
+    
+    ofPixels pixels;
+    _tex.readToPixels(pixels);
+    
+    int blocksTotal = 10000*(10-blockScale);
+    
+    int xMargin = 20;
+    int yMargin = 20;
+    
+    int width = ofGetWidth()-xMargin*2.0;
+    int height = ofGetHeight()-yMargin*2.0;
+    
+    float widthBlocks = blockWidth*blockScale;
+    float heightBlocks = blockHeight*blockScale;
+    
+    xBlocks = (float)width/(widthBlocks+margin*blockScale);
+    yBlocks = (float)height/(heightBlocks+margin*blockScale);
+    
+    blocks.clear();
+    int index = 0;
+    for (int j = 0; j < yBlocks; j++) {
+        for (int i = 0; i < xBlocks; i++){
+            
+            if (index < blocksTotal ){
+                
+                int x = xMargin + ((margin + blockWidth)*blockScale)*i ;
+                int y = yMargin + ((margin + blockHeight)*blockScale)*j ;
+                
+                if ( y > (ofGetHeight()+margin+heightBlocks))
+                    break;
+            
+                Block block;
+                block.x = x+widthBlocks*0.5;
+                block.y = y+heightBlocks*0.5;
+                block.width = widthBlocks;
+                block.height = heightBlocks;
+                
+                int color = pixels.getColor( (((float)block.x+block.width*0.5)/(float)ofGetWidth())*pixels.getWidth(),
+                                             (((float)block.y+block.height*0.5)/(float)ofGetHeight())*pixels.getHeight() ).getBrightness();
+                
+                block.color = ofColor( color );
+                block.borderColor = borderColor;
+                block.value = color;
+                block.bSelected = false;
+                
+                blocks.push_back(block);
+                
+            } else {
+                break;
+            }
+            
+            index++;
+        }
+    }
 }
 
 void CloudsVisualSystemMemory::unSelectAll(){
