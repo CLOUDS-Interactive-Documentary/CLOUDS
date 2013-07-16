@@ -88,10 +88,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		combinedRenderer.reloadShader();
 	}
 	
-	if(args.key == OF_KEY_RIGHT){
-		//replace with some call to act
-//		storyEngine->playNextClip();
-	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){

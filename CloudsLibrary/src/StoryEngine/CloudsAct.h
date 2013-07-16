@@ -66,15 +66,15 @@ class CloudsAct{
     vector<CloudsVisualSystemPreset>& getAllVisualSystems();
     vector<string>& getAllTopics();
     
-    CloudsClip& getClipInAct(int index);
+    CloudsClip& getClip(int index);
     CloudsClip& getClipForQuestion(string question);
     CloudsClip& getClipAtTime(float time);
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     
-    void addClipToAct(CloudsClip clip, string topic, float startTime);
+    void addClip(CloudsClip clip, string topic, float startTime);
     void addGapForVisualSystem(float startTime);
-    void addQuestionToAct(CloudsClip clip, float startTime);
+    void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
 
     ActTimeItem& getItemForClip(CloudsClip& clip);
@@ -103,7 +103,6 @@ protected:
     vector<CloudsVisualSystemPreset> visualSystems;
 
     vector<ActTimeItem> actItems;
-    
 
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
@@ -117,7 +116,6 @@ protected:
     map< string, string> topicMap;
     map<string, CloudsClip> questionsMap;
   
-    
     float visualSystemDuration;
     
     ofxTLFlags* visualSystemsTrack;
@@ -125,17 +123,10 @@ protected:
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
     
-    bool waitingForNextClip;
-    bool actPlaying;
-    float startTime;
-    float clipEndTime;
-    float nextClipTime;
-    
     float visualSystemStartTime;
     float visualSystemEndTime;
     
     float duration;
-    bool timeLineActive;
     int currentPlayIndex;
     void loadNextClip();
     float getActDuration();

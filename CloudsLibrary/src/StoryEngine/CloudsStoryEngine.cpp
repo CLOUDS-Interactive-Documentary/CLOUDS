@@ -226,7 +226,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         clearDichotomiesBalance();
         
         
-        act->addClipToAct(clip, topic, totalSecondsEnqueued);
+        act->addClip(clip, topic, totalSecondsEnqueued);
         
         totalSecondsEnqueued += clip.getDuration();
         
@@ -325,7 +325,7 @@ void CloudsStoryEngine:: displayGui(bool display){
             
             updateDichotomies(clip);
             
-            act->addClipToAct(clip,topic,totalSecondsEnqueued);
+            act->addClip(clip,topic,totalSecondsEnqueued);
             totalSecondsEnqueued += clip.getDuration();
             
             timesOnCurrentTopic++;
@@ -344,7 +344,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         float visualSystemDuration  = 0;
         for(int i=0; i < act->getAllClips().size(); i++){
             
-            CloudsClip& currentClip = act->getClipInAct(i);
+            CloudsClip& currentClip = act->getClip(i);
             topic = act->getTopicForClip(currentClip);
             //        string currentTopic = act.getTopicInHistory(i);
             float clipStartTime = act->getItemForClip(currentClip).startTime;
@@ -382,8 +382,8 @@ void CloudsStoryEngine:: displayGui(bool display){
         }
         
         if(systemRunning){
-            float clipStartTime = act->getItemForClip(act->getClipInAct(act->getAllClips().size()-1)).startTime;
-            float clipEndTime = act->getItemForClip(act->getClipInAct(act->getAllClips().size()-1)).endTime;
+            float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
+            float clipEndTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).endTime;
             act->addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
             systemRunning = false;
             lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
@@ -428,13 +428,13 @@ void CloudsStoryEngine:: displayGui(bool display){
                     
                     if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
                         cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
-                        act->addQuestionToAct(clips[i], questionStartTime);
+                        act->addQuestion(clips[i], questionStartTime);
                         break;
                     }
                     else if(i == clips.size()-1){
                         
                         clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
-                        act->addQuestionToAct(clips[i], questionStartTime);
+                        act->addQuestion(clips[i], questionStartTime);
                         cout<<"No question found!"<<endl;
                     }
                 }
