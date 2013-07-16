@@ -7,7 +7,7 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-	
+    displayGui = false;
 	currentAct = NULL;
 	
 	parser.loadFromFiles();
@@ -28,41 +28,11 @@ void testApp::setup(){
 	CloudsClip& clip = parser.getRandomClip(false,false);
 	rebuildAct = false;
     
-    
-    gui = new ofxUISuperCanvas("STORY ENGINE PARAMS", OFX_UI_FONT_MEDIUM);
-    gui->addSpacer();
-    gui->addLabel("VS :");
-    gui->addSlider("MAX VS RUNTIME", 0, 480,&storyEngine.systemMaxRunTime);
-    gui->addSlider("MAX VS GAPTIME", 0, 60, &storyEngine.maxVisualSystemGapTime);
-    gui->addSlider("LONG CLIP THRESHOLD", 0, 240, &storyEngine.longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &storyEngine.longClipFadeInPercent);
-    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &storyEngine.maxTimeWithoutQuestion);
-
-    gui->addSpacer();
-    
-    gui->addLabel("CLIP: ");
-    gui->addSlider("ACT LENGTH", 60, 1200, &storyEngine.actLength);
-    gui->addButton("BUILD ACT", false);
-    gui->autoSizeToFitWidgets();
-
-
-    clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
-    clipGui->setPosition(gui->getRect()->width, 0);
-	clipGui->addSpacer();
-    clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, storyEngine.topicsInCommonMultiplier);
-    clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, storyEngine.topicsinCommonWithPreviousMultiplier);
-    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, storyEngine.samePersonOccuranceSuppressionFactor);
-    clipGui->addSlider("LINK FACTOR",0,50,storyEngine.linkFactor);
-    clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,storyEngine.dichomoiesFactor);
-    clipGui->autoSizeToFitWidgets();
-    ofAddListener(gui->newGUIEvent, this, &testApp::guiEvent);
-    ofAddListener(clipGui->newGUIEvent, this, &testApp::guiEvent);
-    
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 	storyEngine.buildAct( clip );
-
+    
 }
 
 //--------------------------------------------------------------
@@ -112,34 +82,20 @@ void testApp:: questionAsked(CloudsQuestionEventArgs& args){
 }
 //--------------------------------------------------------------
 void testApp::update(){
-    
-    if(rebuildAct){
-        rebuildAct = false;
-        CloudsClip& clip = parser.getRandomClip(false,false);
-		storyEngine.buildAct( clip );
-    }
-
-//	sound.update();
 	ofShowCursor();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
-//	cout << "APP DRAW" << endl;
-	
-//	sound.drawDebug();
-	
-	//storyEngine.drawStoryEngineDebug();
     if(currentAct != NULL){
 		currentAct->drawDebug();
 	}
-	
-//    storyEngine.getAct().drawActDebug();
 }
 
 void testApp::exit(){
-    delete gui;
+    storyEngine.saveGuiSettings();
+    
 }
 //--------------------------------------------------------------
 void testApp::guiEvent(ofxUIEventArgs &e)
@@ -153,6 +109,11 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 }
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    
+    if(key == ' '){
+        displayGui = ! displayGui;
+        storyEngine.displayGui(displayGui);
+    }
 }
 
 //--------------------------------------------------------------

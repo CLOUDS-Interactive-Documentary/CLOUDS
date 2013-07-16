@@ -3,9 +3,10 @@
 
 #include "ofMain.h"
 #include "CloudsEvents.h"
-
+#include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
+#include "ofxUI.h"
 
 
 typedef struct {
@@ -50,7 +51,10 @@ class CloudsStoryEngine {
 	//after this many times the topic becomes available again
 //	int topicTimeoutPeriod;
 	int getTimesOnTopic();
-	
+    
+    void initGui();
+    void saveGuiSettings();
+    void displayGui(bool display);
 	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
@@ -92,9 +96,12 @@ class CloudsStoryEngine {
     int dichomoiesFactor;
     int linkFactor;
     
-    
+
 protected:
-	
+    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
+    
+    void guiEvent(ofxUIEventArgs &e);
     ofBuffer scoreBuffer;
     stringstream scoreStream;
 	CloudsEvents events;
