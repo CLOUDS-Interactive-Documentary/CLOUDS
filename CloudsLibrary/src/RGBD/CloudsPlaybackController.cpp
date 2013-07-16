@@ -3,6 +3,7 @@
 
 
 CloudsPlaybackController::CloudsPlaybackController(){
+	storyEngine = NULL;
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
@@ -22,23 +23,24 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofUnregisterKeyEvents(this);
 		
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
-		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+		
 	}
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
 		delete currentAct;
 	}
+	
+	if(storyEngine != NULL){
+		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	}
 }
 
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
+void CloudsPlaybackController::setup(){
 	if(!eventsRegistered){
 		
-		this->storyEngine = &storyEngine;
-		
-		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 		eventsRegistered = true;
 		
 		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
@@ -57,6 +59,14 @@ void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
 	}
 }
 
+//--------------------------------------------------------------------
+void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
+	if(this->storyEngine != NULL){
+		ofRemoveListener(this->storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	}
+	ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	this->storyEngine = &storyEngine;
+}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
@@ -69,7 +79,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	currentAct = act;
 	currentAct->registerEvents(this);
 	currentAct->play();
-	
 }
 
 //--------------------------------------------------------------------
@@ -115,6 +124,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 
+	if(currentAct != NULL && ofGetKeyPressed('-')){
+		currentAct->drawDebug();
+	}
 }
 
 #pragma story engine events

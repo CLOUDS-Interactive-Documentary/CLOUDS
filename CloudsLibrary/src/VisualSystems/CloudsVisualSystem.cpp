@@ -91,7 +91,6 @@ void CloudsVisualSystem::playSystem(){
 		isPlaying = true;
 		
 		loadGUIS();
-		timeline->hide();
 		hideGUIS();
 //		ofHideCursor();
 		
@@ -196,7 +195,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 	if(!ofGetMousePressed())
     {
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
-		//timeline->setOffset(ofVec2f(4, 0 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
 }
@@ -298,20 +296,6 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     deleteGUIS();
 }
 
-
-void CloudsVisualSystem::toggleControls(){
-	
-	toggleGUIS();
-	timeline->toggleShow();
-	
-//	if(timeline->getIsShowing()){
-//		ofShowCursor();
-//	}
-//	else{
-//		ofHideCursor();
-//	}
-	
-}
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 {
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -369,7 +353,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
             
         case 'h':
         {
-			toggleControls();
+			toggleGUIS();
         }
             break;
             
@@ -1355,6 +1339,7 @@ void CloudsVisualSystem::setupTimeline()
 	timeline->setLoopType(OF_LOOP_NORMAL);
     timeline->setPageName(ofToUpper(getSystemName()));
     
+	
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
     if(!dir.doesDirectoryExist(workingDirectoryName))
@@ -1364,8 +1349,10 @@ void CloudsVisualSystem::setupTimeline()
     
     timeline->setWorkingFolder(getVisualSystemDataPath()+"Working/Timeline/");
     ofAddListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
-    
+    timeline->hide();
+	
     selfSetupTimeline();
+	
 }
 
 void CloudsVisualSystem::resetTimeline()
@@ -2099,6 +2086,7 @@ void CloudsVisualSystem::showGUIS()
     {
         (*it)->enable();
     }
+	timeline->show();
 }
 
 void CloudsVisualSystem::hideGUIS()
@@ -2107,6 +2095,8 @@ void CloudsVisualSystem::hideGUIS()
     {
         (*it)->disable();
     }
+	
+	timeline->hide();	
 }
 
 void CloudsVisualSystem::toggleGUIS()
@@ -2115,6 +2105,8 @@ void CloudsVisualSystem::toggleGUIS()
     {
         (*it)->toggleVisible();
     }
+	timeline->toggleShow();
+	bShowTimeline = timeline->getIsShowing();
 }
 
 void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)

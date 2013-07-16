@@ -199,7 +199,6 @@ class CloudsVisualSystem {
     void deleteGUIS();
     
 	void setCurrentCamera(ofCamera& cam);
-	void toggleControls();
 	bool cursorIsOverGUI();
 	
   protected:

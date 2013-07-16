@@ -34,7 +34,6 @@ CloudsAct::~CloudsAct(){
 //    ofNotifyEvent(events.clipBegan, args, this);
 //}
 
-
 void CloudsAct::play(){
     currentPlayIndex = 0;
     currentClip = clips[currentPlayIndex];
@@ -111,7 +110,12 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
         CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-        ofNotifyEvent(events.visualSystemBegan, args);
+		if(presetId[0] == "start"){
+			ofNotifyEvent(events.visualSystemBegan, args);
+		}
+		else{
+			ofNotifyEvent(events.visualSystemEnded, args);
+		}
     }
     else if(bang.track == questionsTrack){
         CloudsQuestionEventArgs args(questionsMap[bang.flag]);
