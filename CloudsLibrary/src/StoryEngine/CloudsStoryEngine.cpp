@@ -231,7 +231,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         
         act->addClip(clip, topic, totalSecondsEnqueued);
         
-        totalSecondsEnqueued += clip.getDuration();
+        totalSecondsEnqueued += clip.getDuration()+gapLength;
         
         vector<string> topicHistory;
         topicHistory.push_back(topic);

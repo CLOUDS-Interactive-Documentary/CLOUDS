@@ -58,7 +58,7 @@ void CloudsAct::populateTime(){
             currentTopic = topicMap[item.key];
             
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
-          //  clipsTrack->addFlagAtTime("clip end", item.endTime * 1000);
+            clipsTrack->addFlagAtTime("clip end", item.endTime * 1000);
             
             
             if(currentTopic != previousTopic){
