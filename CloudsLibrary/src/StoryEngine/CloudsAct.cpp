@@ -29,7 +29,7 @@ CloudsAct::~CloudsAct(){
 //    currentClip = clips[currentPlayIndex];
 //    currentTopic = topicHistory[currentPlayIndex];
 //    currentPlayIndex++;
-//    
+//
 //    CloudsStoryEventArgs args(currentClip,currentTopic);
 //    ofNotifyEvent(events.clipBegan, args, this);
 //}
@@ -61,9 +61,9 @@ void CloudsAct::populateTime(){
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
     topicsTrack = timeline.addFlags("Topics");
-
+    
     questionsTrack = timeline.addFlags("Questions");
-
+    
     
     timeLineActive = true;
     string previousTopic = "";
@@ -76,6 +76,8 @@ void CloudsAct::populateTime(){
             currentTopic = topicMap[item.key];
             
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
+          //  clipsTrack->addFlagAtTime("clip end", item.endTime * 1000);
+            
             
             if(currentTopic != previousTopic){
                 topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
@@ -98,20 +100,33 @@ void CloudsAct::populateTime(){
     
 	//TODO remove listener
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
-
+    
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     if(bang.track == clipsTrack){
-        CloudsClipEventArgs args(clipMap[bang.flag], "");
-        ofNotifyEvent(events.clipBegan, args);
+        if(bang.flag =="clip end"){
+            
+        }
+        else{
+            CloudsClipEventArgs args(clipMap[bang.flag], "");
+            ofNotifyEvent(events.clipBegan, args);
+        }
+        
     }
     else if(bang.track == visualSystemsTrack){
         //split string on %, send VS either began or ended
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
-        CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-        ofNotifyEvent(events.visualSystemBegan, args);
+        if(presetId[0] == "start" ){
+            CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+            ofNotifyEvent(events.visualSystemBegan, args);
+        }
+        else{
+            CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+            ofNotifyEvent(events.visualSystemEnded, args);
+        }
+        
     }
     else if(bang.track == questionsTrack){
         CloudsQuestionEventArgs args(questionsMap[bang.flag]);
@@ -120,10 +135,10 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 }
 
 //bool CloudsAct::clipEnded(){
-//    
+//
 //    CloudsClipEventArgs args(currentClip,currentTopic);
 //    ofNotifyEvent(events.clipEnded, args);
-//    
+//
 //    if(currentPlayIndex<clips.size()){
 //        waitingForNextClip = true;
 //        nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
@@ -144,13 +159,13 @@ vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
 }
 
 void CloudsAct::drawDebug(){
-
+    
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
 }
 
 CloudsClip& CloudsAct::getClipInAct(int index){
-
+    
     return clips[index];
 }
 
@@ -241,10 +256,10 @@ void CloudsAct::addQuestionToAct(CloudsClip clip, float startTime){
     item.startTime = startTime;
     //dont care about end time as it will end with visual system;
     item.endTime = startTime + 10;
-
+    
     questionsMap[clip.startingQuestion] = clip;
     //TODO: Check if you need to update duratio here. I dont think you do.
-//    duration = MAX(item.endTIme, duration);
+    //    duration = MAX(item.endTIme, duration);
     actItems.push_back(item);
 }
 
@@ -279,7 +294,7 @@ void CloudsAct::setTopicForClip(string topic, string clipName)
 
 void CloudsAct::clear(){
     clips.clear();
-//    topicHistory.clear();
+    //    topicHistory.clear();
     clipMap.clear();
     visualSystemsMap.clear();
     topicMap.clear();
