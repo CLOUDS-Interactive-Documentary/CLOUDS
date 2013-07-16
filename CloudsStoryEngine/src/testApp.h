@@ -44,6 +44,7 @@ class testApp : public ofBaseApp{
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
+    bool displayGui;
 
     void guiEvent(ofxUIEventArgs &e);
 
