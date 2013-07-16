@@ -70,7 +70,7 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
-	
+
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
 		delete currentAct;

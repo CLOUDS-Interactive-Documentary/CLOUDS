@@ -34,6 +34,7 @@ void CloudsAct::populateTime(){
 	
 	timelinePopulated = true;
 	
+	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
     timeline.clear();
