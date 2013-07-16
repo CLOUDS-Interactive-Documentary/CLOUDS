@@ -9,49 +9,33 @@
 #include "CloudsAct.h"
 
 CloudsAct::CloudsAct(){
-    currentPlayIndex = 0;
-    startTime = 0;
-    actPlaying = false;
-    waitingForNextClip = false;
+
 	timelinePopulated = false;
     duration = 0;
-    timeLineActive = false;
 }
 
 CloudsAct::~CloudsAct(){
-	//TODO remove listener
 	if(timelinePopulated){
 		ofRemoveListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	}
 }
 
-//void CloudsAct::loadNextClip(){
-//    currentClip = clips[currentPlayIndex];
-//    currentTopic = topicHistory[currentPlayIndex];
-//    currentPlayIndex++;
-//
-//    CloudsStoryEventArgs args(currentClip,currentTopic);
-//    ofNotifyEvent(events.clipBegan, args, this);
-//}
-
 
 void CloudsAct::play(){
-    currentPlayIndex = 0;
-    currentClip = clips[currentPlayIndex];
-    actPlaying = true;
+
+    currentClip = clips[0];
     
-    //secsSinceLastVisualSystemPlayed =0;
     CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
 	
-	timeline.play();
-    
+	timeline.play();    
 }
 
 void CloudsAct::populateTime(){
 	
 	timelinePopulated = true;
 	
+	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
     timeline.clear();
@@ -63,9 +47,7 @@ void CloudsAct::populateTime(){
     topicsTrack = timeline.addFlags("Topics");
     
     questionsTrack = timeline.addFlags("Questions");
-    
-    
-    timeLineActive = true;
+
     string previousTopic = "";
     string currentTopic = "";
     
@@ -84,7 +66,6 @@ void CloudsAct::populateTime(){
             }
             
             previousTopic = currentTopic;
-            
         }
         else if(item.type == VS){
             visualSystemsTrack->addFlagAtTime("start:" + item.key, item.startTime * 1000);
@@ -100,7 +81,6 @@ void CloudsAct::populateTime(){
     
 	//TODO remove listener
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
-    
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
@@ -118,36 +98,21 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         //split string on %, send VS either began or ended
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
-        if(presetId[0] == "start" ){
-            CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-            ofNotifyEvent(events.visualSystemBegan, args);
-        }
-        else{
-            CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-            ofNotifyEvent(events.visualSystemEnded, args);
-        }
-        
+
+        CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+		if(presetId[0] == "start"){
+			ofNotifyEvent(events.visualSystemBegan, args);
+		}
+		else{
+			ofNotifyEvent(events.visualSystemEnded, args);
+		}
+
     }
     else if(bang.track == questionsTrack){
         CloudsQuestionEventArgs args(questionsMap[bang.flag]);
         ofNotifyEvent(events.questionAsked, args);
     }
 }
-
-//bool CloudsAct::clipEnded(){
-//
-//    CloudsClipEventArgs args(currentClip,currentTopic);
-//    ofNotifyEvent(events.clipEnded, args);
-//
-//    if(currentPlayIndex<clips.size()){
-//        waitingForNextClip = true;
-//        nextClipTime = timer.getAppTimeSeconds()+args.timeUntilNextClip;
-//    }
-//    else{
-//        ofNotifyEvent(events.actEnded, args);
-//    }
-//}
-
 
 float CloudsAct::getActDuration(){
     return duration;
@@ -159,13 +124,11 @@ vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
 }
 
 void CloudsAct::drawDebug(){
-    
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
 }
 
-CloudsClip& CloudsAct::getClipInAct(int index){
-    
+CloudsClip& CloudsAct::getClip(int index){
     return clips[index];
 }
 
@@ -199,7 +162,7 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-void CloudsAct::addClipToAct(CloudsClip clip, string topic, float startTime){
+void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
@@ -208,7 +171,7 @@ void CloudsAct::addClipToAct(CloudsClip clip, string topic, float startTime){
     ActTimeItem item;
     
     item.type = Clip;
-    item.key =clip.getLinkName();
+    item.key = clip.getLinkName();
     item.startTime = startTime;
     item.endTime = startTime+clip.getDuration();
     duration = MAX(item.endTime, duration);
@@ -249,7 +212,7 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     actItems.push_back(item);
     
 }
-void CloudsAct::addQuestionToAct(CloudsClip clip, float startTime){
+void CloudsAct::addQuestion(CloudsClip clip, float startTime){
     ActTimeItem item;
     item.type = Question;
     item.key = clip.startingQuestion;

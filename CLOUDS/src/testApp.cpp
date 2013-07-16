@@ -27,7 +27,8 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.printDecisions = false;
 	
-	player.setup(storyEngine);
+	player.setup();
+	player.setStoryEngine(storyEngine);
 	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
@@ -48,9 +49,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
 	sound.drawDebug();
-	
 }
 
 //--------------------------------------------------------------

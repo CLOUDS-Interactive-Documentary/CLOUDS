@@ -79,7 +79,9 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 void CloudsVisualSystemManager::loadPresets(){
 	
 	presets.clear();
-	keywords.clear();	
+	nameToPresets.clear();
+	keywords.clear();
+	
 	ofxXmlSettings keywordXml;
 	string keywordsFile = getKeywordFilePath();
 	if(!keywordXml.loadFile( keywordsFile )){
@@ -99,6 +101,8 @@ void CloudsVisualSystemManager::loadPresets(){
 			preset.systemName = systems[i]->getSystemName();
 			preset.presetName = "no-preset";
 			preset.system = systems[i];
+			
+			nameToPresets[preset.systemName].push_back( preset );
 			presets.push_back(preset);
 		}
 		else {
@@ -108,6 +112,7 @@ void CloudsVisualSystemManager::loadPresets(){
 				preset.systemName = systems[i]->getSystemName();
 				preset.system = systems[i];
 				presets.push_back(preset);
+				nameToPresets[preset.systemName].push_back( preset );
 			}
 		}
 	}
@@ -127,6 +132,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		splitName.erase(splitName.begin()); //delete the system name
 		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
 		presets.push_back(preset);
+		nameToPresets[preset.systemName].push_back(preset);
 		#endif
 		
 		if(keywordXml.tagExists("suppressions")){
@@ -204,6 +210,19 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
 }
 
 //--------------------------------------------------------------------
+vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem(string systemName){
+	if( nameToPresets.find(systemName) == nameToPresets.end() ){
+		ofLogError() << "Couldn't find presets for system " << systemName << endl;
+	}
+	return nameToPresets[systemName];
+}
+
+//--------------------------------------------------------------------
+CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string systemName, string presetName){
+	//TODO::
+}
+
+//--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;
 }
@@ -226,15 +245,16 @@ vector<string> CloudsVisualSystemManager::keywordsForPreset(CloudsVisualSystemPr
 	
 	return keywords[ preset.getID() ];
 }
+
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
     if( ! isClipSuppressed(presetID,clipName)){
         suppressedClips[presetID].push_back(clipName);
         cout<<"Suppressed Clip: "<<clipName<<" for Visual System: "<<presetID<<endl;
-    }
-    
-    
+    }    
 }
 
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
     int suppressionIndex;
     if(isClipSuppressed( presetID, clip,suppressionIndex)){
@@ -244,25 +264,25 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
     else{
         cout<<"Suppression not found for Preset: "<<presetID<<" and "<<clip<<endl;
     }
-    
 }
 
+//--------------------------------------------------------------------
 void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
     if(suppressedClips.find(presetID) != suppressedClips.end()){
-    suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
+		suppressedClips[presetID].erase(suppressedClips[presetID].begin() +presetIndex);
     }
     else{
         ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
-    }
-    
+    }    
 }
 
+//--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
     int deadIndex;
     return isClipSuppressed(presetID, clip,deadIndex);
 }
 
-
+//--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, int& index){
     vector<string>& clips = suppressedClips[presetID];
     for(int i=0;i<clips.size();i++){
@@ -274,8 +294,7 @@ bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, in
     return false;
 }
 
-
-
+//--------------------------------------------------------------------
 vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
     return suppressedClips[presetID];
 }

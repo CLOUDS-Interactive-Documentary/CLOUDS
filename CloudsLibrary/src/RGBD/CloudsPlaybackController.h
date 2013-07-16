@@ -24,7 +24,8 @@ class CloudsPlaybackController {
 	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup(CloudsStoryEngine& storyEngine);
+	void setup();
+	void setStoryEngine(CloudsStoryEngine& storyEngine);
 	void beginWithClip(); //auto play by creating new acts
 	void playAct(CloudsAct* act);
 
