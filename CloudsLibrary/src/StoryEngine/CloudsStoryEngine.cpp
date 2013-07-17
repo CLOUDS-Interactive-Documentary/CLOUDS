@@ -40,9 +40,11 @@ CloudsStoryEngine::CloudsStoryEngine(){
     samePersonOccuranceSuppressionFactor = 4;
     dichomoiesFactor = 2;
     linkFactor =20 ;
+    maxTimeWithoutQuestion =120;
+    gapLength = 5;
     initGui();
     displayGui(false);
-    maxTimeWithoutQuestion =120;
+
     
 }
 
@@ -113,6 +115,7 @@ void CloudsStoryEngine:: initGui(){
     gui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
     gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
     gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
+    gui->addSlider("GAP BETWEEN CLIPS", 0, 20, &gapLength);
     
     gui->addSpacer();
     
@@ -128,7 +131,7 @@ void CloudsStoryEngine:: initGui(){
     if(ofFile::doesFileExist(filePath2))gui->loadSettings(filePath2);
     
     clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
-    clipGui->setPosition(gui->getRect()->width, 0);
+    clipGui->setPosition(gui->getRect()->width+100, 0);
 	clipGui->addSpacer();
     clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, topicsinCommonWithPreviousMultiplier);
@@ -228,7 +231,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         
         act->addClip(clip, topic, totalSecondsEnqueued);
         
-        totalSecondsEnqueued += clip.getDuration();
+        totalSecondsEnqueued += clip.getDuration()+gapLength;
         
         vector<string> topicHistory;
         topicHistory.push_back(topic);
@@ -325,8 +328,9 @@ void CloudsStoryEngine:: displayGui(bool display){
             
             updateDichotomies(clip);
             
+
             act->addClip(clip,topic,totalSecondsEnqueued);
-            totalSecondsEnqueued += clip.getDuration();
+            totalSecondsEnqueued += clip.getDuration()  +gapLength;
             
             timesOnCurrentTopic++;
             

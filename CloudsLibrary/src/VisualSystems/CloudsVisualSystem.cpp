@@ -14,8 +14,9 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
         sharedRenderTarget->allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 		sharedRenderTarget->begin();
 		ofClear(0,0,0,0);
+
 		sharedRenderTarget->end();
-		
+
     }
     return * sharedRenderTarget;
 }
@@ -2047,8 +2048,7 @@ void CloudsVisualSystem::loadPresetGUISFromName(string presetName){
 
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 {
-	
-	cout << "Loading preset data from " << presetPath << endl;
+		 
 	
     for(int i = 0; i < guis.size(); i++)
     {
@@ -2060,6 +2060,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     resetTimeline();
 	
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
+	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 	
@@ -2083,6 +2084,7 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+presetName+"/"+"ofEasyCamSettings");
     saveTimelineUIMappings(getVisualSystemDataPath()+presetName+"/"+getSystemName()+"UITimelineMappings.xml");
+	timeline->setName(presetName);
     timeline->saveTracksToFolder(getVisualSystemDataPath()+presetName+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }

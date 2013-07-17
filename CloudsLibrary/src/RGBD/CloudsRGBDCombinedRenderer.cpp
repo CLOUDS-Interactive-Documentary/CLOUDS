@@ -315,9 +315,7 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
     //    cout << "FarClip: " << farClip << endl;
     //    cout << "nearClip: " << nearClip << endl;
     //    cout << "edgeClip: " << edgeClip << endl;
-    
-//    shader.setUniform2f("shift", shift.x, shift.y);
-//    shader.setUniform2f("scale", scale.x, scale.y);
+
 }
 
 #ifdef AVF_PLAYER
