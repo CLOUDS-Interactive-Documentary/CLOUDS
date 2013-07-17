@@ -13,7 +13,8 @@
 #include "LSystem.h"
 
 struct LNode : public ofPoint {
-    float startTime;
+    float   startTime;
+    float   pct;
     vector<int> branchesIndex;
 };
 
@@ -21,24 +22,23 @@ class LSystemReconstructor {
 public:
     LSystemReconstructor();
     
-    void setup( LSystem &_lsys, int _deep );
+    void    setup( LSystem &_lsys, int _deep );
+    void    init();
     
-    float getPct();
+    float   getPct();
+    void    update();
     
-    void start();
-    void pause();
-    void stop();
+    ofMesh      originalMesh;
+    ofMesh      growMesh;
+    ofPolyline  activeNodes;
     
-    void update();
-    void draw();
+    float   tNoise;
+    float   aNoise;
+    float   bornRandom;
+    float   speed;
     
-    ofMesh  mesh;
-    ofPolyline activeNodes;
-    
-    float tNoise;
-    float aNoise;
-    float bornRandom;
-    float speed;
+    bool    bGrow;
+    bool    bFlow;
     
 private:
     vector<ofPolyline>  lines;
@@ -48,12 +48,10 @@ private:
     void    addNode(ofPoint &_pnt);
     int     isNode(ofPoint &_pnt);
     
-    void    renderBranch(int _index, float _relativeTime, float _speed);
-    void    addLineToMesh(ofMesh &_mesh, ofPoint &A, ofPoint &B, ofFloatColor &c);
+    void    renderBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed);
     
-    float   time, lastTime;
+    float   time, timeLast;
     float   pct;
-    bool    bGrow;
 };
 
 #endif /* defined(__lSystem__LSystemReconstructor__) */

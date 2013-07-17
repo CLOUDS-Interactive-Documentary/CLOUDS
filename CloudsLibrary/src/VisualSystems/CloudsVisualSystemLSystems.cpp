@@ -17,8 +17,6 @@ void CloudsVisualSystemLSystems::selfSetup()
 {
     objectLookAt = ofVec3f(0,0,1);
     
-    ofLoadImage(dot, getDataPath()+"images/dot.png");
-    
     angle = 5;
     axiom = "B";
     rule1 = "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB";
@@ -30,23 +28,19 @@ void CloudsVisualSystemLSystems::selfSetupGuis()
     
 }
 
-void CloudsVisualSystemLSystems::selfAutoMode()
-{
+void CloudsVisualSystemLSystems::selfAutoMode(){
     
 }
 
-void CloudsVisualSystemLSystems::selfBegin()
-{
+void CloudsVisualSystemLSystems::selfBegin(){
+    reBuildLSys();
+}
+
+void CloudsVisualSystemLSystems::selfEnd(){
     
 }
 
-void CloudsVisualSystemLSystems::selfEnd()
-{
-    
-}
-
-void CloudsVisualSystemLSystems::selfUpdate()
-{
+void CloudsVisualSystemLSystems::selfUpdate(){
     lsysr.update();
 }
 
@@ -64,87 +58,46 @@ void CloudsVisualSystemLSystems::reBuildLSys(){
     }
     
     lsysr.setup(sys, lsysDepth);
-    lsysr.start();
+    lsysr.init();
 }
 
 void CloudsVisualSystemLSystems::selfDrawBackground()
 {
     ofPushMatrix();
+    ofPushStyle();
     
     ofTranslate(ofGetWidth()*0.5, ofGetHeight()*0.5);
     ofTranslate(xRot->getPos(), yRot->getPos());
     ofScale(camDistance*0.1,camDistance*0.1);
     
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(255, originalAlpha*255);
+    lsysr.originalMesh.draw();
     
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(255, particlesAlpha*255);
     for(int i = 0; i < lsysr.activeNodes.size(); i++){
         ofPoint pos = lsysr.activeNodes.getVertices()[i];
-        float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.5;
         
-        ofPushMatrix();
-        ofSetRectMode(OF_RECTMODE_CENTER);
-        ofTranslate(pos);
-        ofSetColor(255, 255*intensity);
-        dot.draw(0, 0, intensity*dotSize, intensity*dotSize);
-        ofSetRectMode(OF_RECTMODE_CORNER);
-        ofPopMatrix();
-        
+        glPointSize(dotSize);
+        glBegin(GL_POINTS);
+        glVertex3f(pos.x,pos.y,pos.z);
+        glEnd();
     }
-    ofSetColor(255);
-    lsysr.draw();
+    
+    ofSetColor(255, traceAlpha*255);
+    lsysr.growMesh.draw();
     
     ofEnableAlphaBlending();
+    
+    ofPopStyle();
     ofPopMatrix();
 }
 
-void CloudsVisualSystemLSystems::selfDraw()
-{
-//    mat->begin();
-//    glDepthMask(GL_FALSE);
-    
-//    ofPushMatrix();
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
-//    
-//    for(int i = 0; i < lsysr.activeNodes.size(); i++){
-//        ofPoint pos = lsysr.activeNodes.getVertices()[i];
-//        float intensity = ofNoise(pos.x*0.01, pos.y*0.05, ofGetElapsedTimef()*0.01,(float)(i)*0.01)*0.5;
-//        
-//        ofPushMatrix();
-//        ofSetRectMode(OF_RECTMODE_CENTER);
-//        ofTranslate(pos);
-//        billBoard();
-//        ofSetColor(255, 255*intensity);
-//        dot.draw(0, 0, intensity*dotSize, intensity*dotSize);
-//        ofSetRectMode(OF_RECTMODE_CORNER);
-//        ofPopMatrix();
-//        
-//    }
-//    ofSetColor(255);
-//    lsysr.draw();
-//    
-//    ofEnableAlphaBlending();
-//    ofPopMatrix();
-    
-//    glDepthMask(GL_TRUE);
-//    mat->end();
+void CloudsVisualSystemLSystems::selfDraw(){
+
 }
 
-void CloudsVisualSystemLSystems::billBoard()
-{
-    ofVec3f objToCam = cam.getGlobalPosition();
-    objToCam.normalize();
-    float theta = objectLookAt.angle(objToCam);
-    ofVec3f axisOfRotation = objToCam.crossed(objectLookAt);
-    axisOfRotation.normalize();
-    
-    glRotatef(-zRot->getPos(), 0.0, 0.0, 1.0);
-    glRotatef(-yRot->getPos(), 0.0, 1.0, 0.0);
-    glRotatef(-xRot->getPos(), 1.0, 0.0, 0.0);
-    glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);    
-}
-
-void CloudsVisualSystemLSystems::selfSetupSystemGui()
-{
+void CloudsVisualSystemLSystems::selfSetupSystemGui(){
     ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B", OFX_UI_FONT_SMALL);
     uiAxiom->setAutoClear(false);
     ofxUITextInput *uiRule1 = sysGui->addTextInput("Rule1", "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB", OFX_UI_FONT_SMALL);
@@ -158,8 +111,9 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui()
     sysGui->addSlider("tNoise", 0.0, 1.0, &lsysr.tNoise);
     sysGui->addSlider("Speed", 0.0, 10, &lsysr.speed);
     sysGui->addSlider("bornTime", 0.0, 10.0, &lsysr.bornRandom);
-    sysGui->addSlider("dotSize", 0.0, 100.0, &dotSize);
-    sysGui->addButton("REGENERATE", true);
+    
+    sysGui->addToggle("Grow", &lsysr.bGrow);
+    sysGui->addToggle("Flow", &lsysr.bFlow);
     
     axiom = uiAxiom->getTextString();
     rule1 = uiRule1->getTextString();
@@ -168,25 +122,35 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui()
     reBuildLSys();
 }
 
-void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e)
-{
+void CloudsVisualSystemLSystems::selfSetupRenderGui(){
+    rdrGui->addLabel("Show");
+    rdrGui->addSlider("Oringinal_alpha", 0.0, 1.0, &originalAlpha);
+    rdrGui->addSlider("Particles_alpha", 0.0, 1.0, &particlesAlpha);
+    rdrGui->addSlider("Particles_size", 0.0, 10.0, &dotSize);
+    rdrGui->addSlider("Trace", 0.0, 1.0, &traceAlpha);
+}
+
+void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
 	int kind = e.widget->getKind();
     
     if ( name == "Axiom"){
         ofxUITextInput *uiAxiom = (ofxUITextInput *) e.widget;
         axiom = uiAxiom->getTextString();
+        reBuildLSys();
     } else if ( name == "Rule1"){
         ofxUITextInput *uiRule1 = (ofxUITextInput *) e.widget;
         rule1 = uiRule1->getTextString();
+        reBuildLSys();
     } else if ( name == "Rule2"){
         ofxUITextInput *uiRule2 = (ofxUITextInput *) e.widget;
         rule2 = uiRule2->getTextString();
-    } else if ( name == "REGENERATE"){
-        lsysr.stop();
-    }
+        reBuildLSys();
+    } else if ( name == "Angle" || name == "Depth" || name == "Scale" || name == "Grow"){
+        reBuildLSys();
+    } 
     
-    reBuildLSys();
+    
 }
 
 void CloudsVisualSystemLSystems::selfExit()
@@ -230,11 +194,6 @@ void CloudsVisualSystemLSystems::selfSetupGui()
 }
 
 void CloudsVisualSystemLSystems::selfGuiEvent(ofxUIEventArgs &e)
-{
-    
-}
-
-void CloudsVisualSystemLSystems::selfSetupRenderGui()
 {
     
 }
