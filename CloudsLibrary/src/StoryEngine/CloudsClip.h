@@ -35,6 +35,7 @@ class CloudsClip {
     vector<string>& getAdditionalKeywords();
     vector<string>& getRevokedKeywords();
     vector<string>& getAllTopicsWithQuestion();
+    
     //use everywhere for real keywoords
 	vector<string>& getKeywords();
     

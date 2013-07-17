@@ -663,9 +663,10 @@ void CloudsFCPParser::refreshAllKeywords(){
             allKeywords[specialKeywords[j]]++;
         }
         
+        //add index of clips for topic questions
         vector<string>& topicsWithQuestions = allClips[i].getAllTopicsWithQuestion();
-        for(int l =0; l< topicsWithQuestions.size(); l){
-            questionTopicstoClipIndex[topicsWithQuestions[i]].push_back(i);
+        for(int l =0; l< topicsWithQuestions.size(); l++){
+            questionTopicstoClipIndex[topicsWithQuestions[l]].push_back(i);
         }
         
         
