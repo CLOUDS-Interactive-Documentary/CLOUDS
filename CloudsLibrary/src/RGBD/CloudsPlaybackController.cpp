@@ -39,6 +39,20 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
+	//LB
+	//	create a shared fbo. We'll pass a pointer to each visual system as the are played
+	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	sharedRenderTarget.begin();
+	ofClear(0,0,0,0);
+	sharedRenderTarget.end();
+	
+	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	nextRenderTarget.begin();
+	ofClear(0,0,0,0);
+	nextRenderTarget.end();
+	
+	
+	
 	if(!eventsRegistered){
 		
 		eventsRegistered = true;
@@ -51,12 +65,27 @@ void CloudsPlaybackController::setup(){
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
+		
+		
+		//LB:: pointing to our our sharedRndertarget
+		rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
+		rgbdVisualSystem.setDrawToScreen( false );
 		
 		combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
+		
+		fadeDuration = 1000;
+		fadeStartTime = ofGetElapsedTimeMillis();
+		fadeEndTime = fadeStartTime + fadeDuration;
+		fadeStartVal = 0;
+		fadeTargetVal = 255;
+		
 	}
+		
+	
+	
 }
 
 //--------------------------------------------------------------------
@@ -120,6 +149,33 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 
+//	LB:: we do our mixing here?
+	
+//	ofClear(0, 0, 0, 0);
+	
+    
+	//turn off depth testing and enable blending
+	//TODO:: add blending modes to GUI?
+    glDisable( GL_DEPTH_TEST );
+	ofEnableBlendMode(	OF_BLENDMODE_ADD );
+	
+	
+	
+	crossfadeValue = ofClamp( ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal), 0, 255 );
+	
+	ofSetColor( 255, 255, 255, crossfadeValue );
+	
+	rgbdVisualSystem.selfPostDraw();
+	
+	ofSetColor( 255, 255, 255, 255 - crossfadeValue );
+	
+	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	
+    ofDisableBlendMode();
+	
+    glEnable( GL_DEPTH_TEST );
+	
+	
 	if(currentAct != NULL && ofGetKeyPressed('-')){
 		currentAct->drawDebug();
 	}
@@ -206,29 +262,59 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 //	if(simplePlaybackMode) return;
 	
 	if(showingVisualSystem){
-		hideVisualSystem();
+		hideVisualSystem();// logic to go back to clip here
 	}
 	
-	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
+	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
 	
-	rgbdVisualSystem.stopSystem();
+
+//	rgbdVisualSystem.stopSystem();//<--- cross fade. do we need stop after fade?
+	
+	
+
+	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
+	
+	//we draw to screen in CloudsPlaybackController::draw() so we disable it in the nexVisualSystem
+	nextVisualSystem.system->setDrawToScreen( false );
 	
 	//TODO: replace with act current question
 	nextVisualSystem.system->setCurrentTopic( currentTopic );
 	nextVisualSystem.system->playSystem();
 	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	
-	currentVisualSystem = nextVisualSystem.system;
 	showingVisualSystem = true;
+	
+	currentVisualSystem = nextVisualSystem.system;
+	
+	//set crossfade
+	fadeDuration = 3000;
+	fadeStartTime = ofGetElapsedTimeMillis();
+	fadeEndTime = fadeStartTime + fadeDuration;
+	fadeStartVal = 255;
+	fadeTargetVal = 0;
+	
+
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem(){
+	cout << endl << endl<<"HIDDING VISUAL SYSTEM" << endl << endl;
 	if(showingVisualSystem && currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
+		
+//		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
-		rgbdVisualSystem.playSystem();
+		//		rgbdVisualSystem.playSystem();// fade in instead
+		
+		
+		//set crossfade
+		fadeDuration = 3000;
+		fadeStartTime = ofGetElapsedTimeMillis();
+		fadeEndTime = fadeStartTime + fadeDuration;
+		fadeStartVal = 0;
+		fadeTargetVal = 255;
+		
 	}
 }

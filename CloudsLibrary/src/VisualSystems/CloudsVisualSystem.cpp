@@ -2,21 +2,23 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsRGBDCombinedRenderer.h"
 
-static ofFbo sharedRenderTarget;
+//static ofFbo sharedRenderTarget;
 static ofImage sharedCursor;
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
-    if(!sharedRenderTarget.isAllocated() ||
-       sharedRenderTarget.getWidth() != ofGetWidth() ||
-       sharedRenderTarget.getHeight() != ofGetHeight())
+	//LB
+    if(!sharedRenderTarget->isAllocated() ||
+       sharedRenderTarget->getWidth() != ofGetWidth() ||
+       sharedRenderTarget->getHeight() != ofGetHeight())
     {
-        sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
-		sharedRenderTarget.begin();
+        sharedRenderTarget->allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+		sharedRenderTarget->begin();
 		ofClear(0,0,0,0);
-		sharedRenderTarget.end();
-		
+
+		sharedRenderTarget->end();
+
     }
-    return sharedRenderTarget;
+    return * sharedRenderTarget;
 }
 
 ofImage& CloudsVisualSystem::getCursor(){
@@ -30,6 +32,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = NULL;
 	bClearBackground = true;
+	bDrawToScreen = true;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -81,7 +84,10 @@ void CloudsVisualSystem::setup(){
 }
 
 void CloudsVisualSystem::playSystem(){
+
 	if(!isPlaying){
+		
+		cout << endl<< endl << "CloudsVisualSystem::playSystem -> fbo width is " << sharedRenderTarget->getWidth() << endl<<endl;
 		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
@@ -204,6 +210,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
+	  
+	  //bind our fbo, lights, debug 
         CloudsVisualSystem::getSharedRenderTarget().begin();
 		if(bClearBackground){
 			ofClear(0, 0, 0, 0);
@@ -226,7 +234,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         ofPopStyle();
         
         lightsBegin();
-        
+      
+	  //	draw this visual system
 		ofPushStyle();
         selfDraw();
         ofPopStyle();
@@ -247,7 +256,16 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
         CloudsVisualSystem::getSharedRenderTarget().end();
 		
-		selfPostDraw();
+	  //draw the fbo to the screen as a full screen quad
+	  if(bDrawToScreen)	selfPostDraw();
+	  /*
+	   how do we break this out into the playback controller?
+	   1. I don't think we need to unregister this from the ofEvents
+	   2. the controller has a registered draw() correct
+	   3. 
+	   */
+	  
+	  //other
 		ofPushStyle();
 		ofEnableAlphaBlending();
 		getCursor().draw( ofGetMouseX(),ofGetMouseY() );
@@ -2355,6 +2373,8 @@ void CloudsVisualSystem::selfDrawOverlay(){
 }
 
 void CloudsVisualSystem::selfPostDraw(){
+	
+	//draws to viewport
 	
 	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
 													 CloudsVisualSystem::getSharedRenderTarget().getWidth(),

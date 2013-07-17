@@ -26,8 +26,11 @@ class CloudsVisualSystem {
 	   
 	CloudsVisualSystem();
 	~CloudsVisualSystem();
-	static ofFbo& getSharedRenderTarget();
+	ofFbo& getSharedRenderTarget();
+//	static ofFbo& getSharedRenderTarget();
 	static ofImage& getCursor();
+	
+	ofFbo* sharedRenderTarget;
 	
 	//SUB CLASSES USE THESE METHODS:
     virtual void selfSetup();
@@ -201,6 +204,10 @@ class CloudsVisualSystem {
 	void setCurrentCamera(ofCamera& cam);
 	bool cursorIsOverGUI();
 	
+	//LB TODO:: move these to .cpp
+	void setDrawToScreen( bool state ){	bDrawToScreen = state;}
+	bool getDrawToScreen( bool state ){	return bDrawToScreen;}
+	
   protected:
 		
 	//UI
@@ -256,6 +263,8 @@ class CloudsVisualSystem {
     bool bDebug;
     float debugGridSize;
 	bool bClearBackground;
+	bool bDrawToScreen;
+	
     //CAM
     float camDistance;
     float camFOV;
