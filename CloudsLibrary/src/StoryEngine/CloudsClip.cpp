@@ -257,6 +257,15 @@ void CloudsClip::addQuestionTopicPair(string topic, string question){
     topicWithQuestions.push_back(topic);
 }
 
+string CloudsClip::getQuestionForTopic(string topic){
+    if(questionTopicMap.find(topic) != questionTopicMap.end()){
+        return questionTopicMap[topic];
+    }
+    ofLogError()<<"No question found for "<<topic<<" in clip: "<<getLinkName()<<endl;
+    return "";
+
+}
+
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
     
     //	if(adjustmentLoaded && !forceReload){

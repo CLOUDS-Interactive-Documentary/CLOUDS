@@ -106,6 +106,7 @@ class CloudsFCPParser {
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
+    vector<CloudsClip> getClipsWithQuestionsForTopic(string topic);
     set<string> getRelatedKeywords(string filterWord);
 	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
 	vector<string> getSharedKeywords(CloudsClip& a, CloudsClip& b);

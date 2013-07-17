@@ -218,6 +218,8 @@ void CloudsStoryEngine:: displayGui(bool display){
         
         vector<CloudsClip> clipHistory;
         vector<CloudsClip> clipQueue;
+
+        
         scoreBuffer.clear();
         scoreStream.clear();
         CloudsClip clip = seed;
@@ -309,6 +311,7 @@ void CloudsStoryEngine:: displayGui(bool display){
             for (int i=0; i<scoreLogPairs.size(); i++) {
                 scoreStream<<scoreLogPairs[i].second;
             }
+            
             if(topScore == 0){
                 //Dead end!
                 cout << "Dead end, no clips left" << endl;
@@ -328,9 +331,21 @@ void CloudsStoryEngine:: displayGui(bool display){
             
             updateDichotomies(clip);
             
-
+            //adding all option clips with questions to the 
+            for(int i=0; i<nextOptions.size(); i++){
+//                if(nextOptions[i].getAllQuestionTopicPairs().size() > 0 &&
+                if(parser->clipLinksTo(clip.getLinkName(), nextOptions[i].getLinkName() ) &&
+                   nextOptions[i].hasStartingQuestion()){
+                    act->addQuestion(nextOptions[i], totalSecondsEnqueued);
+                }
+//                else{
+//                    //this is only temp while we dont have a lot of questions
+//                   act->addQuestion(nextOptions[i], totalSecondsEnqueued);
+//                }
+            }
+            
             act->addClip(clip,topic,totalSecondsEnqueued);
-            totalSecondsEnqueued += clip.getDuration()  +gapLength;
+            totalSecondsEnqueued += clip.getDuration() + gapLength;
             
             timesOnCurrentTopic++;
             
@@ -362,6 +377,7 @@ void CloudsStoryEngine:: displayGui(bool display){
                         visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
                     }
                     act->addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
+                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
@@ -416,7 +432,7 @@ void CloudsStoryEngine:: displayGui(bool display){
                 float clipEndTime = act->getItemForClip(clip).endTime;
                 
                 string topic =act->getTopicForClip(clip);
-                vector<CloudsClip> clips = parser->getClipsWithKeyword(topic);
+                vector<CloudsClip> clips = parser->getClipsWithQuestionsForTopic(topic);//getClipsWithKeyword(topic);
                 
                 //if a visual system is already playing and is going to end in the clip.
                 //ask the question after the system stops playing.
@@ -429,24 +445,26 @@ void CloudsStoryEngine:: displayGui(bool display){
                 }
                 
                 for(int i = 0; i<clips.size(); i++){
-                    
-                    if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
-                        cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
-                        act->addQuestion(clips[i], questionStartTime);
-                        break;
-                    }
-                    else if(i == clips.size()-1){
-                        
-                        clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
-                        act->addQuestion(clips[i], questionStartTime);
-                        cout<<"No question found!"<<endl;
-                    }
+//                    if(){
+//                        act->addQuestion(clips[i], questionStartTime);
+//                       
+//                    }
+//                    else if(i == clips.size()-1){
+//                        
+//                        clips[i].setStartingQuestion("Dummy question from story engine? Yes.");
+//                        act->addQuestion(clips[i], questionStartTime);
+//                        cout<<"No question found!"<<endl;
+//                    }
                 }
-                lastQuestionTime = questionStartTime;
+		                lastQuestionTime = questionStartTime;
             }
             
         }
-        
+        //                    if(clips[i].hasStartingQuestion() && clips[i].getLinkName() != clip.getLinkName() ){
+        //                        cout<<"Adding Starting Question "<<clips[i].startingQuestion<< " from clip" << clip.getLinkName()<< endl;
+        //                        act->addQuestion(clips[i], questionStartTime);
+        //                        break;
+        //                    }
         act->populateTime();
         
         scoreBuffer.set(scoreStream);
