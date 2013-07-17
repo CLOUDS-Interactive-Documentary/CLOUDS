@@ -662,6 +662,13 @@ void CloudsFCPParser::refreshAllKeywords(){
         for(int j=0 ; j<specialKeywords.size();j++){
             allKeywords[specialKeywords[j]]++;
         }
+        
+        vector<string>& topicsWithQuestions = allClips[i].getAllTopicsWithQuestion();
+        for(int l =0; l< topicsWithQuestions.size(); l){
+            questionTopicstoClipIndex[topicsWithQuestions[i]].push_back(i);
+        }
+        
+        
     }
     
     map<string, int>::iterator it;

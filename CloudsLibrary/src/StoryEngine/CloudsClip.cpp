@@ -141,6 +141,19 @@ vector<string>& CloudsClip::getSpecialKeywords(){
     return specialKeywords;
 }
 
+map<string,string> &CloudsClip:: getAllQuestionTopicPairs(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return questionTopicMap;
+}
+
+vector<string>& CloudsClip::getAllTopicsWithQuestion(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return topicWithQuestions;
+}
 void CloudsClip::collateKeywords(){
     
     keywords = originalKeywords;
@@ -165,13 +178,26 @@ void CloudsClip::collateKeywords(){
     
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
-        if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
+        if(keywords[l].compare(0, 1, "#") == 0 &&! ofContains(specialKeywords, keywords[l])){
 //            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
 
         }
+        if(keywords[l][0] == '?' && !ofContains(specialKeywords, keywords[l])){
+            
+//           cout<<keywords[i] << " is a question in the new format. removing from keywords list and adding to questions"<< endl;
+            
+            //format of question topic pair is ?topic:question
+            specialKeywords.push_back(keywords[l]);
+            vector<string>questionTopicPair = ofSplitString(keywords[l], ":");
+            //removing ? from front of topic
+            ofStringReplace(questionTopicPair[0], "?", "");
+            addQuestionTopicPair(questionTopicPair[0], questionTopicPair[1]);
+            keywords.erase(keywords.begin() + l);
+        }
     }
+    
     keywordsDirty = false;
 }
 
@@ -221,6 +247,13 @@ void CloudsClip::revokeKeyword(string keyword){
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
+}
+void CloudsClip::addQuestionTopicPair(string topic, string question){
+    
+    cout<<"adding question : " << question << "for topic "<< topic << " in clip" << getLinkName()<<endl;
+    map<string,string> questionTopicMap;
+    questionTopicMap[topic] = question;
+    topicWithQuestions.push_back(topic);
 }
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){

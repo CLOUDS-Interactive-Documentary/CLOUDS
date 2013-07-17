@@ -34,12 +34,17 @@ class CloudsClip {
     //used to save out links
     vector<string>& getAdditionalKeywords();
     vector<string>& getRevokedKeywords();
-    
+    vector<string>& getAllTopicsWithQuestion();
     //use everywhere for real keywoords
 	vector<string>& getKeywords();
     
     //get special # keywords
     vector<string>& getSpecialKeywords();
+    
+    //question topic pairs
+    map<string,string>& getAllQuestionTopicPairs();
+    void addQuestionTopicPair(string topic, string question);
+    string getTopicForQuestion(string question);
     
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
@@ -66,6 +71,7 @@ class CloudsClip {
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
+    
 	
 	bool hasCombinedVideo;
 	string combinedVideoPath;
@@ -98,6 +104,8 @@ class CloudsClip {
     vector<string> additionalKeywords;  //added manually
     vector<string> revokedKeywords;     //manually removed
     vector<string> specialKeywords;        //special Keywords start with #
+    vector<string> topicWithQuestions;
+    map<string,string> questionTopicMap; //question-topic pairs
     bool keywordsDirty;
     void collateKeywords();
     vector<string> keywords; //collated
