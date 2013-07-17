@@ -169,7 +169,7 @@ void CloudsClip::collateKeywords(){
     
     //go through and add additional
     for (int l =0; l<additionalKeywords.size(); l++) {
-        //Returns 0 if they compare equal
+        
         if (! ofContains(keywords, additionalKeywords[l]) ){
             keywords.push_back(additionalKeywords[l]);
 //            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
@@ -178,20 +178,21 @@ void CloudsClip::collateKeywords(){
     
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
+        
         if(keywords[l].compare(0, 1, "#") == 0 &&! ofContains(specialKeywords, keywords[l])){
 //            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
 
         }
-        if(keywords[l][0] == '?' && !ofContains(specialKeywords, keywords[l])){
+        
+        else if(keywords[l][0] == '?' && !ofContains(specialKeywords, keywords[l])){
             
 //           cout<<keywords[i] << " is a question in the new format. removing from keywords list and adding to questions"<< endl;
             
             //format of question topic pair is ?topic:question
             specialKeywords.push_back(keywords[l]);
             vector<string>questionTopicPair = ofSplitString(keywords[l], ":");
-            //removing ? from front of topic
             ofStringReplace(questionTopicPair[0], "?", "");
             addQuestionTopicPair(questionTopicPair[0], questionTopicPair[1]);
             keywords.erase(keywords.begin() + l);

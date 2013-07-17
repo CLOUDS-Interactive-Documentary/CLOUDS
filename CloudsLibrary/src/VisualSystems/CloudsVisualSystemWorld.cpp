@@ -364,16 +364,16 @@ void CloudsVisualSystemWorld::selfDraw()
     //  Wire Sphere
     ofNoFill();
     ofSetColor(255,wireSphereAlpha*255.0);
-	ofDrawSphere(0, 0, wireSphereScale*300);
+	ofSphere(0, 0, wireSphereScale*300);
     //  Solid Sphere
     ofFill();
     ofSetColor(20,solidSphereAlpha*255.0);
-	ofDrawSphere(0, 0, solidSphereScale*300 );
+	ofSphere(0, 0, solidSphereScale*300 );
     //  Hallo
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     haloShader.begin();
     ofSetColor(0, 227, 255,haloSphereAlpha*255.0);
-	ofDrawSphere(0, 0, haloSphereScale*300);
+	ofSphere(0, 0, haloSphereScale*300);
 	haloShader.end();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     

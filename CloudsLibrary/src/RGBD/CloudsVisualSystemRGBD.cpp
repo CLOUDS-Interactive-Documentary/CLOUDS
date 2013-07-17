@@ -296,7 +296,7 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
-	ofDrawSphere(translatedHeadPosition, 10);
+	ofSphere(translatedHeadPosition, 10);
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
