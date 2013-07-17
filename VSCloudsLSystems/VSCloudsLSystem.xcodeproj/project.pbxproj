@@ -290,6 +290,7 @@
 		3D9EBCDB1787974500B15E7C /* Points.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Points.h; sourceTree = "<group>"; };
 		3D9EBCDC1787974500B15E7C /* State.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = State.cpp; sourceTree = "<group>"; };
 		3D9EBCDD1787974500B15E7C /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		3DAE1BA7179726FF0048E89A /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -1173,6 +1174,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3DAE1BA7179726FF0048E89A /* CloudsGlobal.h */,
 				3D9EBCC41787974500B15E7C /* RGBD */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);
