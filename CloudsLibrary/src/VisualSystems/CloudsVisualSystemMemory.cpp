@@ -196,9 +196,8 @@ void CloudsVisualSystemMemory::generateFromTexture(ofTexture &_tex){
             newBlock.x = x+block.width*0.5;
             newBlock.y = y+block.height*0.5;
             
-            ofPoint st = newBlock.getCenter();
-            st /= ofPoint(ofGetWidth(),ofGetHeight());
-            st *= ofPoint(pixels.getWidth(),pixels.getHeight());
+            ofPoint st = ofPoint( ((float)i)/((float)xBlocks), ((float)j)/((float)yBlocks));
+            st *= ofPoint(_tex.getWidth(),_tex.getHeight());
             
             newBlock.value = pixels.getColor( st.x, st.y ).r;//.getBrightness() ;
             newBlock.color = ofColor( newBlock.value );

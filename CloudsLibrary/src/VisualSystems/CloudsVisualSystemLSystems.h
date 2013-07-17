@@ -52,11 +52,10 @@ protected:
     
     ofVec3f objectLookAt;
     
-    void reBuildLSys();
+    void    reBuildLSys();
     
-    ofTexture   dot;
+    LSystemReconstructor    lsysr;
     
-    LSystemReconstructor lsysr;
     string  axiom;
     string  rule1;
     string  rule2;
@@ -65,4 +64,8 @@ protected:
     float   lsysScale;
     float   lsysDepth;
     float   dotSize;
+    
+    float   originalAlpha;
+    float   traceAlpha;
+    float   particlesAlpha;
 };

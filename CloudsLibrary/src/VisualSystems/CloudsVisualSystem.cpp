@@ -2,23 +2,12 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsRGBDCombinedRenderer.h"
 
-//static ofFbo sharedRenderTarget;
+static ofFbo staticRenderTarget;
 static ofImage sharedCursor;
 
-ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
-	//LB
-    if(!sharedRenderTarget->isAllocated() ||
-       sharedRenderTarget->getWidth() != ofGetWidth() ||
-       sharedRenderTarget->getHeight() != ofGetHeight())
-    {
-        sharedRenderTarget->allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
-		sharedRenderTarget->begin();
-		ofClear(0,0,0,0);
-
-		sharedRenderTarget->end();
-
-    }
-    return * sharedRenderTarget;
+//default render target is a statically shared FBO
+ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
+	return staticRenderTarget;
 }
 
 ofImage& CloudsVisualSystem::getCursor(){
@@ -31,12 +20,29 @@ ofImage& CloudsVisualSystem::getCursor(){
 CloudsVisualSystem::CloudsVisualSystem(){
 	isPlaying = false;
 	sharedRenderer = NULL;
+	sharedRenderTarget = NULL;
 	bClearBackground = true;
 	bDrawToScreen = true;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
 	
+}
+
+ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
+	
+	ofFbo& renderTarget = sharedRenderTarget != NULL ? *sharedRenderTarget : getStaticRenderTarget();
+	
+    if(!renderTarget.isAllocated() ||
+       renderTarget.getWidth() != ofGetWidth() ||
+       renderTarget.getHeight() != ofGetHeight())
+    {
+        renderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+		renderTarget.begin();
+		ofClear(0,0,0,0);
+		renderTarget.end();
+    }
+    return renderTarget;
 }
 
 string CloudsVisualSystem::getVisualSystemDataPath(){
@@ -87,7 +93,7 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
 		
-		cout << endl<< endl << "CloudsVisualSystem::playSystem -> fbo width is " << sharedRenderTarget->getWidth() << endl<<endl;
+		cout << endl<< endl << "CloudsVisualSystem::playSystem -> fbo width is " << getSharedRenderTarget().getWidth() << endl<<endl;
 		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
