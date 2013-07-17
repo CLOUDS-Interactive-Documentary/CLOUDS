@@ -9,6 +9,8 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
+    ofEnableAlphaBlending();
+	
     parser.loadFromFiles();
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
@@ -24,8 +26,9 @@ void testApp::setup(){
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
+	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem(presets[ ofRandom(presets.size()) ], clip.getDuration()/2, clip.getDuration());
+	act->addVisualSystem(presets[ ofRandom(presets.size()) ], 5, 10 );
 	act->populateTime();
 	
 	player.playAct(act);

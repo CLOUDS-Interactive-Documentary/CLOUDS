@@ -121,7 +121,7 @@ void CloudsVisualSystemThingsInTheDark::selfDrawBackground(){
 void CloudsVisualSystemThingsInTheDark::selfDrawDebug(){
 	ofPushStyle();
 	ofSetColor(255, 255, 0, 100);
-	ofDrawSphere(0, 0, 2);
+	ofSphere(0, 0, 2);
 	ofPopStyle();
 }
 
