@@ -14,7 +14,6 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 		sharedRenderTarget.begin();
 		ofClear(0,0,0,0);
 		sharedRenderTarget.end();
-		
     }
     return sharedRenderTarget;
 }
