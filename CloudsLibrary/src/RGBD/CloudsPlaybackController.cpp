@@ -6,6 +6,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
+	nextVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
 }
@@ -76,11 +77,15 @@ void CloudsPlaybackController::setup(){
 		
 		combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 		
+		//just temporary. we'll need a better fade event setup with more triggers
 		fadeDuration = 1000;
 		fadeStartTime = ofGetElapsedTimeMillis();
 		fadeEndTime = fadeStartTime + fadeDuration;
 		fadeStartVal = 0;
 		fadeTargetVal = 255;
+		
+		fadingOut = fadingIn = false;
+		crossfadeValue = 255;
 		
 	}
 		
@@ -144,6 +149,26 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
+	
+	
+	if(fadingIn || fadingOut){
+		crossfadeValue = ofClamp( ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal), 0, 255 );
+		
+		if(fadingOut && crossfadeValue > 255 ){
+			fadingOut = false;
+			crossfadeValue = 255;
+			
+			hideVisualSystem();
+		}
+		else if(fadingIn && crossfadeValue < 0 ){
+			fadingIn = false;
+			crossfadeValue = 0;
+			
+			rgbdVisualSystem.stopSystem();
+		}
+		
+	}
+	
 }
 
 //--------------------------------------------------------------------
@@ -159,20 +184,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     glDisable( GL_DEPTH_TEST );
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
-	
-	
-	crossfadeValue = ofClamp( ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal), 0, 255 );
-	
 	ofSetColor( 255, 255, 255, crossfadeValue );
-	
 	rgbdVisualSystem.selfPostDraw();
 	
 	ofSetColor( 255, 255, 255, 255 - crossfadeValue );
-	
 	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
 	
     ofDisableBlendMode();
-	
     glEnable( GL_DEPTH_TEST );
 	
 	
@@ -220,7 +238,8 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
-		hideVisualSystem();
+		fadeOutVisualSystem();
+//		hideVisualSystem();
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -262,7 +281,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 //	if(simplePlaybackMode) return;
 	
 	if(showingVisualSystem){
-		hideVisualSystem();// logic to go back to clip here
+//		hideVisualSystem();
+
+		fadeOutVisualSystem();
 	}
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
@@ -286,12 +307,10 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	currentVisualSystem = nextVisualSystem.system;
 	
-	//set crossfade
-	fadeDuration = 3000;
-	fadeStartTime = ofGetElapsedTimeMillis();
-	fadeEndTime = fadeStartTime + fadeDuration;
-	fadeStartVal = 255;
-	fadeTargetVal = 0;
+	fadeInVisualSystem();
+	
+	
+	//camera setup clones and tweens
 	
 
 }
@@ -303,18 +322,41 @@ void CloudsPlaybackController::hideVisualSystem(){
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
 		
-//		currentVisualSystem->stopSystem();
+		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
 		//		rgbdVisualSystem.playSystem();// fade in instead
 		
-		
-		//set crossfade
-		fadeDuration = 3000;
-		fadeStartTime = ofGetElapsedTimeMillis();
-		fadeEndTime = fadeStartTime + fadeDuration;
-		fadeStartVal = 0;
-		fadeTargetVal = 255;
-		
 	}
+}
+
+void CloudsPlaybackController::fadeInVisualSystem(){
+	cout<< "Fade In Visual System" <<endl;
+	
+	fadingIn = true;
+	fadingOut = false;
+	
+	//set crossfade
+	fadeDuration = 3000;
+	fadeStartTime = ofGetElapsedTimeMillis();
+	fadeEndTime = fadeStartTime + fadeDuration;
+	fadeStartVal = 255;
+	fadeTargetVal = 0;
+	
+}
+
+void CloudsPlaybackController::fadeOutVisualSystem(){
+	cout<< "Fade Out Visual System" <<endl;
+	
+	fadingIn = false;
+	fadingOut = true;
+	
+	//set crossfade
+	fadeDuration = 3000;
+	fadeStartTime = ofGetElapsedTimeMillis();
+	fadeEndTime = fadeStartTime + fadeDuration;
+	fadeStartVal = 0;
+	fadeTargetVal = 255;
+	
+	rgbdVisualSystem.playSystem();
 }

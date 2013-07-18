@@ -204,12 +204,17 @@ class CloudsVisualSystem {
     void toggleGuiAndPosition(ofxUISuperCanvas *g);
     void deleteGUIS();
     
-	void setCurrentCamera(ofCamera& cam);
+	void setCurrentCamera( ofCamera& cam );
+	void setCurrentCamera( ofCamera* swappedInCam );
+	ofCamera* getCameraRef();
+
+
 	bool cursorIsOverGUI();
 	
-	//LB TODO:: move these to .cpp
-	void setDrawToScreen( bool state ){	bDrawToScreen = state;}
-	bool getDrawToScreen( bool state ){	return bDrawToScreen;}
+	void setDrawToScreen( bool state );
+	bool getDrawToScreen();
+	
+	
 	
   protected:
 		
@@ -277,6 +282,11 @@ class CloudsVisualSystem {
     ofx1DExtruder *xRot;
     ofx1DExtruder *yRot;
     ofx1DExtruder *zRot;
+	
+	
+	
+	
+//	ofCamera* getCamera(){}
     
     //COLORS
 //    ofxColorPalettes *colorPalletes;

@@ -58,6 +58,11 @@ class CloudsPlaybackController {
 	int crossfadeValue;
 	float fadeStartTime, fadeEndTime, fadeDuration;
 	int fadeStartVal, fadeTargetVal;
+	bool fadingOut, fadingIn;
+	
+	ofCamera superCamera;
+	ofCamera* rgbdCamera;
+	ofCamera* nextCamera;
 	
 	
   protected:
@@ -89,6 +94,9 @@ class CloudsPlaybackController {
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
+	
+	void fadeInVisualSystem();
+	void fadeOutVisualSystem();
 
 
 };

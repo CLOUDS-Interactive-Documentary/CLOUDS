@@ -60,7 +60,7 @@ void wSatellite::draw(){
     float blinking = abs(sin(ofGetElapsedTimef()*freq));
     ofSetColor(200,blinking*200,blinking*200,200);
     ofFill();
-    ofDrawBox(ofPoint(0,0,0), 1);
+    ofBox(ofPoint(0,0,0), 1);
     
     ofPopMatrix();
 }
