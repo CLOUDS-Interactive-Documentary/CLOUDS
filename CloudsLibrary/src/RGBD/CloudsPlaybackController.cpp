@@ -152,36 +152,38 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	//handle fading
 	if(fadingIn || fadingOut){
-		crossfadeValue = ofClamp( ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal), 0, 1. );
+		crossfadeValue = ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal);
 		
-		if(fadingOut && crossfadeValue > 1 ){
-			fadingOut = false;
-			crossfadeValue = 1;
-			
-			hideVisualSystem();
-		}
-		else if(fadingIn && crossfadeValue < 0 ){
+		//end fading in
+		if(fadingIn && crossfadeValue < 0 ){
 			fadingIn = false;
 			crossfadeValue = 0;
 			
 			rgbdVisualSystem.stopSystem();
+			
+			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
+		}
+		//end fading out
+		else if(fadingOut && crossfadeValue > 1 ){
+			fadingOut = false;
+			crossfadeValue = 1;
+			
+			hideVisualSystem();
+			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
+		}
+		//otherwise we're fading and we need to mix our cameras
+		else{
+			
+			//mix the attributes ffrom our vis system cameras to build our superCamera
+			mixCameras( rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
+			
+			//set the visual systems' current camera to our supercamera
+			currentVisualSystem->setCurrentCamera( superCamera );
+			rgbdVisualSystem.setCurrentCamera( superCamera );
+			
 		}
 		
 	}
-	
-	//update super-camera from active systems
-	if(currentVisualSystem != NULL){
-
-		//mix the attributes ffrom our vis system cameras to build our superCamera
-		mixCameras( rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
-		
-		currentVisualSystem->setCurrentCamera( superCamera );
-		rgbdVisualSystem.setCurrentCamera( superCamera );
-	}
-	else{
-		rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
-	}
-
 	
 }
 
