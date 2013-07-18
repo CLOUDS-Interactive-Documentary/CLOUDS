@@ -93,8 +93,6 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
 		
-		cout << endl<< endl << "CloudsVisualSystem::playSystem -> fbo width is " << getSharedRenderTarget().getWidth() << endl<<endl;
-		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
@@ -264,12 +262,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
 	  //draw the fbo to the screen as a full screen quad
 	  if(bDrawToScreen)	selfPostDraw();
-	  /*
-	   how do we break this out into the playback controller?
-	   1. I don't think we need to unregister this from the ofEvents
-	   2. the controller has a registered draw() correct
-	   3. 
-	   */
 	  
 	  //other
 		ofPushStyle();
@@ -2048,7 +2040,8 @@ void CloudsVisualSystem::saveGUIS()
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }
 
-void CloudsVisualSystem::loadPresetGUISFromName(string presetName){
+void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
+{
 	loadPresetGUISFromPath(getVisualSystemDataPath() + presetName);
 }
 
@@ -2147,8 +2140,31 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
     }
 }
 
-void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam){
+void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
+{
 	currentCamera = &swappedInCam;
+}
+
+
+ofCamera* CloudsVisualSystem::getCurrentCamera()
+{
+	return currentCamera;
+}
+
+void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
+{
+	setCurrentCamera(*swappedInCam);
+}
+
+ofCamera* CloudsVisualSystem::getCameraRef(){
+	return &cam;
+}
+
+void CloudsVisualSystem::setDrawToScreen( bool state ){
+	bDrawToScreen = state;
+}
+bool CloudsVisualSystem::getDrawToScreen(){
+	return bDrawToScreen;
 }
 
 void CloudsVisualSystem::drawDebug()
