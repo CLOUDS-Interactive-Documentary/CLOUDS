@@ -52,6 +52,15 @@ class CloudsQuestionEventArgs : public ofEventArgs{
     CloudsClip& questionClip;
 };
 
+class CloudsPreRollEventArgs : public ofEventArgs{
+public:
+    CloudsPreRollEventArgs(CloudsClip& preRollClip) :preRollClip(preRollClip)
+    {
+        
+    }
+    
+    CloudsClip& preRollClip;
+};
 
 class CloudsEvents {
   public:
@@ -65,6 +74,9 @@ class CloudsEvents {
 
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
+
+	ofEvent<CloudsPreRollEventArgs> preRollRequested;
+	
     
     ofEvent<CloudsQuestionEventArgs> questionAsked;
 

@@ -80,6 +80,10 @@ void testApp::topicChanged(string& newTopic){
 void testApp:: questionAsked(CloudsQuestionEventArgs& args){
     
 }
+
+void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
+    
+}
 //--------------------------------------------------------------
 void testApp::update(){
 	ofShowCursor();

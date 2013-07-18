@@ -40,6 +40,7 @@ class testApp : public ofBaseApp{
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
     void questionAsked(CloudsQuestionEventArgs& args);
 	void topicChanged(string& newTopic);
+    void preRollRequested(CloudsPreRollEventArgs& clip);
 		
 	bool rebuildAct;
     ofxUISuperCanvas *gui;
