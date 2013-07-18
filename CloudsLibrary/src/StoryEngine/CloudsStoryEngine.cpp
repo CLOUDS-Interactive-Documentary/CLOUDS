@@ -41,7 +41,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     dichomoiesFactor = 2;
     linkFactor =20 ;
     maxTimeWithoutQuestion =120;
-    gapLength = 5;
+    gapLengthMultiplier = 0.5;
     initGui();
     displayGui(false);
 
@@ -106,40 +106,41 @@ void CloudsStoryEngine::setup(){
 }
 
 void CloudsStoryEngine:: initGui(){
-    gui = new ofxUISuperCanvas("STORY ENGINE PARAMS", OFX_UI_FONT_MEDIUM);
-    gui->setPosition(0, 0);
-    gui->addSpacer();
-    gui->addLabel("VS :");
-    gui->addSlider("MAX VS RUNTIME", 0, 480,&systemMaxRunTime);
-    gui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
-    gui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
-    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
-    gui->addSlider("GAP BETWEEN CLIPS", 0, 20, &gapLength);
-    
-    gui->addSpacer();
-    
-    gui->addLabel("CLIP: ");
-    gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
-    gui->addButton("BUILD ACT", false);
-    gui->autoSizeToFitWidgets();
-    
-    string filePath = getDataPath() +"storyEngineParameters/gui.xml";
-    if(ofFile::doesFileExist(filePath))gui->loadSettings(filePath);
-    
-    string filePath2 = getDataPath() +"storyEngineParameters/clipGui.xml";
-    if(ofFile::doesFileExist(filePath2))gui->loadSettings(filePath2);
-    
-    clipGui = new ofxUISuperCanvas("CLIP STORY SCORE PARAMETERS", OFX_UI_FONT_MEDIUM);
-    clipGui->setPosition(gui->getRect()->width+100, 0);
+    clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
+    clipGui->setPosition(0,0);
 	clipGui->addSpacer();
     clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, topicsinCommonWithPreviousMultiplier);
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, samePersonOccuranceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50,linkFactor);
     clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,dichomoiesFactor);
+    
     clipGui->autoSizeToFitWidgets();
     
+    gui = new ofxUISuperCanvas("STORY ENGINE ACT PARAMS :", OFX_UI_FONT_SMALL);
+    gui->setPosition(clipGui->getRect()->x + 100, clipGui->getRect()->y + 10);
+    gui->addSpacer();
+    gui->addButton("BUILD ACT", false);
+    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
+    gui->addSlider("GAP LENGTH MULTIPLIER", 0.01, 0.1, &gapLengthMultiplier);
+    gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
+    gui->addSpacer();
+    gui->addLabel("VS :");
+    gui->addSlider("MAX VS RUNTIME", 0, 480,&systemMaxRunTime);
+    gui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
+    gui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
+    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
+
+    gui->autoSizeToFitWidgets();
+    
+    
+
+    
+    string filePath = getDataPath() +"storyEngineParameters/gui.xml";
+    if(ofFile::doesFileExist(filePath))gui->loadSettings(filePath);
+    
+    string filePath2 = getDataPath() +"storyEngineParameters/clipGui.xml";
+    if(ofFile::doesFileExist(filePath2))clipGui->loadSettings(filePath2);
     ofAddListener(gui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     ofAddListener(clipGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     
@@ -233,7 +234,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         
         act->addClip(clip, topic, totalSecondsEnqueued);
         
-        totalSecondsEnqueued += clip.getDuration()+gapLength;
+        totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() );
         
         vector<string> topicHistory;
         topicHistory.push_back(topic);
@@ -342,7 +343,7 @@ void CloudsStoryEngine:: displayGui(bool display){
             }
             
             act->addClip(clip,topic,totalSecondsEnqueued);
-            totalSecondsEnqueued += clip.getDuration() + gapLength;
+            totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
             
             timesOnCurrentTopic++;
             
