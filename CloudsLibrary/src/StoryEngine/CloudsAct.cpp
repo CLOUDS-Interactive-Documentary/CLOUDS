@@ -216,24 +216,14 @@ void CloudsAct::addQuestion(CloudsClip clip, float startTime){
     ActTimeItem item;
     item.type = Question;
     //making the key the first question for now
-    if(clip.getAllQuestionTopicPairs().size() > 0){
-        item.key = clip.getAllQuestionTopicPairs()[0];
-    }
-    else if(clip.hasStartingQuestion()){
-        item.key = "Starting Question: "+ clip.getStartingQuestion();
-        
-    }
-    else{
-        item.key = "Clip doesn't have questions yet";
-    }
+    //TODO: MAKE THIS LESS ARBITRARY
+    item.key = clip.getQuestionsVector()[ofRandom(clip.getQuestionsVector().size()-1)];
 
     item.startTime = startTime;
     //dont care about end time as it will end with visual system;
     item.endTime = startTime + 10;
     
     questionsMap[item.key] = clip;
-    //TODO: Check if you need to update duratio here. I dont think you do.
-    //    duration = MAX(item.endTIme, duration);
     actItems.push_back(item);
 
 }

@@ -46,7 +46,7 @@ class CloudsClip {
     map<string,string>& getAllQuestionTopicPairs();
     void addQuestionTopicPair(string topic, string question);
     string getQuestionForTopic(string topic);
-    
+    vector<string> getQuestionsVector();
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
