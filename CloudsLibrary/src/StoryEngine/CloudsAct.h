@@ -17,7 +17,8 @@ typedef enum {
     Clip =0,
     VS,
     Gap,
-    Question
+    Question,
+    PreRoll
 }ActItemType;
 
 struct ActTimeItem{
@@ -76,7 +77,8 @@ class CloudsAct{
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
-
+    void addClipPreRollFlag(float startTime, string clipName);
+    
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
     ActTimeItem& getItemForClip(CloudsClip& clip);
@@ -123,6 +125,7 @@ protected:
     
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;
+    ofxTLFlags* clipPreRollTrack;
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
     

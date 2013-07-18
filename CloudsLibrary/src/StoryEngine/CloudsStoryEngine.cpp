@@ -17,13 +17,9 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	parser = NULL;
 	visualSystems = NULL;
     
-    //	hasclip = false;
 	isSetup = false;
 	printDecisions = true;
 	combinedClipsOnly = false;
-    //	totalFramesWatched = 0;
-    //	waitingForNextClip = false;
-    //	watchingVisualSystem = false;
 	printCriticalDecisions = false;
 	
 	fixedClipDelay = 5;
@@ -42,6 +38,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     linkFactor =20 ;
     maxTimeWithoutQuestion =120;
     gapLengthMultiplier = 0.5;
+    preRollDuration = 5;
     initGui();
     displayGui(false);
     
@@ -55,7 +52,6 @@ CloudsStoryEngine::~CloudsStoryEngine(){
 
 void CloudsStoryEngine::setup(){
 	if(!isSetup){
-        //		ofAddListener(ofEvents().update, this, &CloudsStoryEngine::update);
 		isSetup = true;
         
         KeywordDichotomy d;
@@ -117,23 +113,26 @@ void CloudsStoryEngine:: initGui(){
     
     clipGui->autoSizeToFitWidgets();
     
-    gui = new ofxUISuperCanvas("STORY ENGINE ACT PARAMS :", OFX_UI_FONT_SMALL);
+    gui = new ofxUISuperCanvas("ACT BUILDER GENERAL PARAMS :", OFX_UI_FONT_SMALL);
     gui->setPosition(clipGui->getRect()->x + 100, clipGui->getRect()->y + 10);
     gui->addSpacer();
-    gui->addButton("BUILD ACT", false);
     gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
     gui->addSlider("GAP LENGTH MULTIPLIER", 0.01, 0.1, &gapLengthMultiplier);
     gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
-    gui->addSpacer();
-    gui->addLabel("VS :");
-    gui->addSlider("MAX VS RUNTIME", 0, 480,&systemMaxRunTime);
-    gui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
-    gui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
-    gui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
+    gui->addSlider("PREROLL FLAG TIME", 1, 10, &preRollDuration);
+    gui->addButton("BUILD ACT", false);
     
     gui->autoSizeToFitWidgets();
     
-    
+    vsGui = new ofxUISuperCanvas("ACT BUILDER VS PARAMS :", OFX_UI_FONT_SMALL);
+    vsGui->setPosition(gui->getRect()->x + 100, gui->getRect()->y + 10);
+    vsGui->addSpacer();
+    vsGui->addSlider("MAX VS RUNTIME", 0, 480,&systemMaxRunTime);
+    vsGui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
+    vsGui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
+    vsGui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
+
+    vsGui->autoSizeToFitWidgets();
     
     
     string filePath = getDataPath() +"storyEngineParameters/gui.xml";
@@ -141,8 +140,13 @@ void CloudsStoryEngine:: initGui(){
     
     string filePath2 = getDataPath() +"storyEngineParameters/clipGui.xml";
     if(ofFile::doesFileExist(filePath2))clipGui->loadSettings(filePath2);
+    
+    string filePath3 = getDataPath() +"storyEngineParameters/vsGui.xml";
+    if(ofFile::doesFileExist(filePath3))clipGui->loadSettings(filePath3);
+    
     ofAddListener(gui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     ofAddListener(clipGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
+    ofAddListener(vsGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     
 }
 
@@ -161,8 +165,10 @@ void CloudsStoryEngine:: saveGuiSettings(){
     
     string filePath = getDataPath() +"storyEngineParameters/gui.xml";
     string filePath2 = getDataPath() +"storyEngineParameters/clipGui.xml";
+    string filePath3 = getDataPath() +"storyEngineParameters/vsGui.xml";
     gui->saveSettings(filePath);
     clipGui->saveSettings(filePath2);
+    vsGui->saveSettings(filePath3);
     
 }
 
@@ -170,40 +176,16 @@ void CloudsStoryEngine:: displayGui(bool display){
     if(display){
         gui->enable();
         clipGui->enable();
+        vsGui->enable();
     }
     else{
         clipGui->disable();
         gui->disable();
+        vsGui->disable();
     }
     
 }
-//void CloudsStoryEngine::update(ofEventArgs& args){
-//	if(waitingForNextClip && nextClipTime < ofGetElapsedTimef()){
-//		playNextClip();
-//	}
-//}
 
-//void CloudsStoryEngine::seedWithClip(CloudsClip& seed){
-
-//	seedWithClip(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
-
-//}
-
-//void CloudsStoryEngine::seedWithClip(CloudsClip& seed, string topic){
-//    //	clipHistory.clear();
-//    //	topicHistory.clear();
-//	peopleVisited.clear();
-//	allNextClips.clear();
-//
-////	hasclip = false;
-//	freeTopic = false;
-//
-//	//freeTopic = true;
-//	currentTopic = topic;
-//
-//	//select a random topic from the clip
-//	buildAct(seed, actLength);
-//}
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed){
     return buildAct(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
@@ -343,6 +325,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         act->addClip(clip,topic,totalSecondsEnqueued);
+        float preRollStartTime  = totalSecondsEnqueued - preRollDuration;
+        act->addClipPreRollFlag(preRollStartTime,clip.getLinkName());
         totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
         
         timesOnCurrentTopic++;
@@ -374,7 +358,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
                 if(currentClip.getDuration() > longClipThreshold){
                     visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
                 }
-                act->addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
+                CloudsVisualSystemPreset& preset = visualSystems->getRandomVisualSystem();
+                act->addVisualSystem(preset, visualSystemStartTime, visualSystemDuration);
+                
                 act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                 systemRunning = false;
                 lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
@@ -386,7 +372,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             //if the clip is shorter than the 30 seconds dont start the VS during the clip.
             if(timeSinceLastVisualSystem > maxVisualSystemGapTime && currentClip.getDuration() > longClipThreshold){
                 
-//                if () {
+//                if (currentClip.getDuration() > longClipThreshold) {
                 //Add some fade in time 
                     visualSystemStartTime  = clipStartTime + currentClip.getDuration()*longClipFadeInPercent;
 //                }
@@ -413,6 +399,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     float questionStartTime = 0;
     float lastQuestionTime = 0;
     float currentTime = 0;
+    
+    //Leaving this in for now incase we decide to re implement it later
     
     //questions shouldnt start during visual systems
     //        for(int k=0; k < act->getAllVisualSystems().size(); k++){
@@ -534,288 +522,6 @@ string CloudsStoryEngine::selectTopic(CloudsAct* act, CloudsClip& clip, vector<s
     
     return topic;
 }
-
-//bool CloudsStoryEngine::playNextClip(){
-//
-//	waitingForNextClip = false;
-//
-//	//CHECK PRECONDITION
-//	if(parser == NULL){
-//		ofLogError("Clouds Visualizer or Database is null! exiting select clip");
-//		return false;
-//	}
-//
-//	//We need a clip to be able to select a new one.
-//	if(!hasclip){
-//		ofLogError("Cannot select new clip without a seed");
-//		return false;
-//	}
-//
-//	if(atDeadEnd()){
-//        ofLogError("CloudsStoryEngine::playNextClip") << " At dead end!";
-//		return false;
-//	}
-//
-//	//Do a weighted selection based on the random value
-//	int randomClip = ofRandom( validNextClips.size() );
-//	cout << "SELECTED CLIP:" << randomClip << "/" << validNextClips.size();
-//	cout << " " << validNextClips[randomClip].getLinkName() << endl;
-//
-//	loadClip( validNextClips[randomClip] );
-//
-//	return true;
-//}
-
-
-//bool CloudsStoryEngine::clipEnded(){
-//
-//	totalFramesWatched += (currentClip.endFrame - currentClip.startFrame);
-//
-//	CloudsStoryEventArgs args(currentClip,currentTopic);
-//	args.timeUntilNextClip = getNextClipDelay();
-//	ofNotifyEvent(events.clipEnded, args, this);
-//	if(atDeadEnd()){
-//		ofNotifyEvent(events.storyEnded, args, this);
-//	}
-//	else{
-//		waitingForNextClip = true;
-//		nextClipTime = ofGetElapsedTimef() + args.timeUntilNextClip;
-//	}
-//
-//	buildAct( act.getAllClips()[act.getAllClips().size()-1], 60*5 );
-//}
-
-//void CloudsStoryEngine::chooseNewTopic(CloudsClip& upcomingClip){
-//
-//	//TO CHOOSE A NEW TOPIC WE WANT TO FIND THE MOST "SIMILAR" TOPIC
-//	//this means the topic that shares the highest percent of clips with the current topic
-//	//This will prioritize
-//	vector<string> topics = parser->getSharedKeywords(currentClip, upcomingClip);
-//	//vector<string> topics = upcomingClip.keywords;
-//	bool topicSwitched = false;
-//	if(topics.size() == 0){
-//		cout << "	TOPIC SWITCH: NO SHARED TOPICS" << endl;
-//		return;
-//	}
-//
-//	cout << "Switching topic from " << currentTopic << " with " << topics.size() << " shared topics" << endl;
-//	string winningTopic = "";
-//	float highScore = 0;
-//	for(int i = 0; i < topics.size(); i++){
-//
-//		if(ofContains(topicHistory, topics[i])){
-//			continue;
-//		}
-//
-//		int sharedClips = parser->getNumberOfSharedClips(currentTopic,topics[i]);
-//		int totalClips = parser->getNumberOfClipsWithKeyword(topics[i]);
-//		float score = 1.0 * sharedClips / totalClips;
-//		cout << "TOPIC " << topics[i] << " SCORE " << score << " : " << sharedClips << "/" << totalClips << endl;
-//		if(highScore <= score){
-//			currentTopic = topics[i];
-//			highScore = score;
-//			topicSwitched = true;
-//		}
-//	}
-//
-//	topicHistory.push_back(currentTopic);
-//	if(topicSwitched){
-//		timesOnTopic = 0;
-//		freeTopic = false;
-//		cout << "	TOPIC SWITCH TO " << currentTopic << endl;
-//		if(watchingVisualSystem){
-//			CloudsVisualSystemEventArgs args(currentVisualSystem);
-//			ofNotifyEvent(events.visualSystemEnded, args);
-//			watchingVisualSystem = false;
-//		}
-//		CloudsStoryEventArgs args(currentClip, currentTopic);
-//		ofNotifyEvent(events.topicChanged, args);
-//
-//	}
-//	else{
-//		cout << "	FAILED TO SWITCH TOPIC " << currentTopic << endl;
-//	}
-//}
-
-//<<<<<<< HEAD
-//bool CloudsStoryEngine::populateNextClips(){
-//
-//	//get all the adjascent clips, assign weights to them and select
-//	vector<CloudsClip> nextClips;
-//	if(freeTopic){
-//		nextClips = parser->getClipsWithKeyword(currentClip.getKeywords());
-//	}
-//	else{
-//		nextClips = parser->getClipsWithKeyword(currentTopic);
-//	}
-//
-//	vector<CloudsLink>& links = parser->getLinksForClip( currentClip );
-//
-//	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
-//
-//	for(int i = 0; i < links.size(); i++){
-//		nextClips.push_back( parser->getClipWithLinkName(links[i].targetName) );
-//	}
-//
-//    //	if(printDecisions){
-//    //		cout << "REALTED CLIPS:" << endl;
-//    //		for(int i = 0; i < related.size(); i++){
-//    //			cout << "	\"" << related[i].getLinkName() << "\""
-//    //				 << " Topics: [" << ofJoinString(related[i].keywords, ",") << "]" << endl;
-//    //		}
-//    //	}
-//
-//	totalPoints = 0;
-//
-//	validNextClips.clear();
-//	allNextClips.clear();
-//
-//	int topScore = 0;
-//
-//	for(int i = 0; i < nextClips.size(); i++){
-//		CloudsClip& m = nextClips[ i ];
-//		int score = scoreForClip( m );
-//		if(score != 0){
-//			totalPoints += score;
-//			if(score > topScore) topScore = score;
-//			m.currentScore = score;
-//			allNextClips.push_back(m);
-//		}
-//	}
-//
-//	//if no clips were valid, return false
-//	if(totalPoints == 0) {
-//		cout << "DEAD END ENCOUNTRED, FREEING TOPIC" << endl;
-//
-//		// if we are at a dead end because of the lack of clips,
-//		// recurse the call with an open topic
-//		// May still be dead from exhausted clips or topics on the same node
-//
-//		if(!freeTopic){
-//			freeTopic = true;
-//			return populateNextClips();
-//		}
-//
-//		ofLogError("Dead end found at clip " + currentClip.getLinkName());
-//		return false;
-//	}
-//
-//
-//	for(int i = 0; i < allNextClips.size(); i++){
-//		if(allNextClips[i].currentScore == topScore){
-//			validNextClips.push_back( allNextClips[i] );
-//		}
-//	}
-//
-//	if(printDecisions){
-//		cout << "VALID CLIPS WITH SCORE " << topScore << endl;
-//		for(int i = 0; i < validNextClips.size(); i++){
-//			cout << "	" << validNextClips[i].getLinkName() << endl;
-//		}
-//	}
-//
-//	return true;
-//}
-//=======
-//void CloudsStoryEngine::checkVisualSystems(){
-//	if(visualSystems == NULL || visualSystems->getPresets().size() == 0){
-//		return;
-//	}
-//
-//	if(timesOnTopic == 2){
-//		CloudsVisualSystemPreset preset = visualSystems->getRandomVisualSystem();
-//		CloudsVisualSystemEventArgs args(visualSystems->getRandomVisualSystem());
-//		ofNotifyEvent(events.visualSystemBegan, args);
-//		cout << "SHOW VISUAL SYSTEM!" << endl;
-//		watchingVisualSystem = true;
-//	}
-//
-//	if(timesOnTopic == maxTimesOnTopic - 1){
-//		watchingVisualSystem = false;
-//		CloudsVisualSystemEventArgs args(currentVisualSystem);
-//		ofNotifyEvent(events.visualSystemEnded, args);
-//	}
-//}
-
-//bool CloudsStoryEngine::populateNextClips(){
-//
-//	//get all the adjascent clips, assign weights to them and select
-//	vector<CloudsClip> nextClips;
-//	if(freeTopic){
-//		nextClips = parser->getClipsWithKeyword(currentClip.getKeywords());
-//	}
-//	else{
-//		nextClips = parser->getClipsWithKeyword(currentTopic);
-//	}
-//
-//	vector<CloudsLink>& links = parser->getLinksForClip( currentClip );
-//
-//	cout << "RELATED CLIPS TO: " << currentTopic << " " << nextClips.size() << " AND " << links.size() << " LINKS. ASSIGNING VALUES:" << endl;
-//
-//	for(int i = 0; i < links.size(); i++){
-//		nextClips.push_back( parser->getClipWithLinkName(links[i].targetName) );
-//	}
-//
-//    //	if(printDecisions){
-//    //		cout << "REALTED CLIPS:" << endl;
-//    //		for(int i = 0; i < related.size(); i++){
-//    //			cout << "	\"" << related[i].getLinkName() << "\""
-//    //				 << " Topics: [" << ofJoinString(related[i].keywords, ",") << "]" << endl;
-//    //		}
-//    //	}
-//
-//	totalPoints = 0;
-//
-//	validNextClips.clear();
-//	allNextClips.clear();
-//
-//	int topScore = 0;
-//
-//	for(int i = 0; i < nextClips.size(); i++){
-//		CloudsClip& m = nextClips[ i ];
-//		int score = scoreForClip( m );
-//		if(score != 0){
-//			totalPoints += score;
-//			if(score > topScore) topScore = score;
-//			m.currentScore = score;
-//			allNextClips.push_back(m);
-//		}
-//	}
-//
-//	//if no clips were valid, return false
-//	if(totalPoints == 0) {
-//		cout << "DEAD END ENCOUNTRED, FREEING TOPIC" << endl;
-//
-//		// if we are at a dead end because of the lack of clips,
-//		// recurse the call with an open topic
-//		// May still be dead from exhausted clips or topics on the same node
-//
-//		if(!freeTopic){
-//			freeTopic = true;
-//			return populateNextClips();
-//		}
-//
-//		ofLogError("Dead end found at clip " + currentClip.getLinkName());
-//		return false;
-//	}
-//
-//
-//	for(int i = 0; i < allNextClips.size(); i++){
-//		if(allNextClips[i].currentScore == topScore){
-//			validNextClips.push_back( allNextClips[i] );
-//		}
-//	}
-//
-//	if(printDecisions){
-//		cout << "VALID CLIPS WITH SCORE " << topScore << endl;
-//		for(int i = 0; i < validNextClips.size(); i++){
-//			cout << "	" << validNextClips[i].getLinkName() << endl;
-//		}
-//	}
-//
-//	return true;
-//}
-
 
 float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history,
                                        string currentTopic, string newTopic)
@@ -1127,10 +833,6 @@ bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& h
     }
     return false;
 }
-
-//int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack){
-//	return occurrencesOfPerson(person, stepsBack, clipHistory);
-//}
 
 int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history){
     int occurrences = 0;
