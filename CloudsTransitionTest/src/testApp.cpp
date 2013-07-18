@@ -9,13 +9,16 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
+	
     ofEnableAlphaBlending();
 	
     parser.loadFromFiles();
+
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
+	
 
 	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	player.setup();
@@ -28,7 +31,7 @@ void testApp::setup(){
 	
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem(presets[ ofRandom(presets.size()) ], 5, 10 );
+	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 5, 12 );
 	act->populateTime();
 	
 	player.playAct(act);
@@ -38,6 +41,12 @@ void testApp::setup(){
 void testApp::update(){
 
 	ofShowCursor();
+	
+	//get cam a
+	
+	//get cam b
+	
+	//
 }
 
 //--------------------------------------------------------------

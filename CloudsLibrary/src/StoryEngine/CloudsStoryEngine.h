@@ -79,28 +79,10 @@ class CloudsStoryEngine {
 
 //    CloudsAct& getAct();
 	
-	//TODO: these should be private once the gui is internal
-    //VS Story Engine Parameters
-
-    float systemMaxRunTime;
-    float maxVisualSystemGapTime;
-    float longClipThreshold;
-    float longClipFadeInPercent;
-    float actLength;
-    float maxTimeWithoutQuestion;
-    float gapLength;
-    
-    //Story engine decision making parameters
-    int topicsInCommonMultiplier;
-    int topicsinCommonWithPreviousMultiplier;
-    int samePersonOccuranceSuppressionFactor;
-    int dichomoiesFactor;
-    int linkFactor;
-    
-
 protected:
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
+    ofxUISuperCanvas *vsGui;
     
     void guiEvent(ofxUIEventArgs &e);
     ofBuffer scoreBuffer;
@@ -158,4 +140,23 @@ protected:
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 //	int occurrencesOfPerson(string person, int stepsBack);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
+
+private:
+    //Act Builder Parameters
+    float actLength;
+    float maxTimeWithoutQuestion;
+    float gapLengthMultiplier;
+    //VS Story Engine Parameters
+    float systemMaxRunTime;
+    float maxVisualSystemGapTime;
+    float longClipThreshold;
+    float longClipFadeInPercent;
+    float preRollDuration;
+    
+    //Story engine decision making parameters
+    int topicsInCommonMultiplier;
+    int topicsinCommonWithPreviousMultiplier;
+    int samePersonOccuranceSuppressionFactor;
+    int dichomoiesFactor;
+    int linkFactor;
 };

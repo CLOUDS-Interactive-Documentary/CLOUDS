@@ -935,6 +935,22 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord){
 	filter.push_back(filterWord);
 	return getClipsWithKeyword(filter);
 }
+vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
+    vector<CloudsClip> clips;
+    
+    if(questionTopicstoClipIndex.find(topic) != questionTopicstoClipIndex.end())
+    {
+        vector<int> clipIndex =questionTopicstoClipIndex[topic];
+        
+        for(int i=0; i<clipIndex.size(); i++){
+            clips.push_back(allClips[i]);
+        }
+        
+    }
+    
+    return clips;
+    
+}
 
 vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
     vector<CloudsClip> filteredMarkers;

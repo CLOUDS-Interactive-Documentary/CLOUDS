@@ -41,13 +41,13 @@ void CloudsAct::populateTime(){
     timeline.clear();
     
     timeline.setDurationInSeconds(duration);
-    
+    topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
-    topicsTrack = timeline.addFlags("Topics");
-    
+    clipPreRollTrack = timeline.addFlags("Clip PreRoll Flags");
     questionsTrack = timeline.addFlags("Questions");
 
+    timeline.setInPointAtSeconds(0);
     string previousTopic = "";
     string currentTopic = "";
     
@@ -58,7 +58,7 @@ void CloudsAct::populateTime(){
             currentTopic = topicMap[item.key];
             
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
-            clipsTrack->addFlagAtTime("clip end", item.endTime * 1000);
+            clipsTrack->addFlagAtTime(" ", item.endTime * 1000);
             
             
             if(currentTopic != previousTopic){
@@ -70,6 +70,9 @@ void CloudsAct::populateTime(){
         else if(item.type == VS){
             visualSystemsTrack->addFlagAtTime("start:" + item.key, item.startTime * 1000);
             visualSystemsTrack->addFlagAtTime("end:" + item.key, item.endTime * 1000);
+        }
+        else if(item.type == PreRoll){
+            clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);
         }
         else if (item.type == Gap){
             //nothing for now
@@ -85,7 +88,7 @@ void CloudsAct::populateTime(){
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     if(bang.track == clipsTrack){
-        if(bang.flag =="clip end"){
+        if(bang.flag ==" "){
             
         }
         else{
@@ -198,7 +201,6 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     
     actItems.push_back(item);
     visualSystemItems[preset.getID()] = item;
-    
 }
 
 void CloudsAct::addGapForVisualSystem(float startTime){
@@ -212,18 +214,44 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     actItems.push_back(item);
     
 }
+void CloudsAct::addClipPreRollFlag(float startTime, string clipName){
+    ActTimeItem item;
+    item.type = PreRoll;
+    item.key = clipName;
+    item.startTime = startTime;
+    item.endTime = startTime;
+    
+    actItems.push_back(item);
+}
+
 void CloudsAct::addQuestion(CloudsClip clip, float startTime){
     ActTimeItem item;
     item.type = Question;
-    item.key = clip.startingQuestion;
+    
+    //making the key the first question for now
+    //TODO: MAKE THIS LESS ARBITRARY
+    item.key = clip.getQuestionsVector()[ofRandom(clip.getQuestionsVector().size()-1)];
+
     item.startTime = startTime;
     //dont care about end time as it will end with visual system;
     item.endTime = startTime + 10;
     
-    questionsMap[clip.startingQuestion] = clip;
-    //TODO: Check if you need to update duratio here. I dont think you do.
-    //    duration = MAX(item.endTIme, duration);
+    questionsMap[item.key] = clip;
     actItems.push_back(item);
+
+}
+
+void CloudsAct::removeQuestionAtTime(float startTime, float duration){
+    float endTime = startTime + duration;
+    for(int i =0; i<actItems.size(); i++){
+        if(actItems[i].type == Question){
+            if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
+                questionsMap.erase(actItems[i].key);
+                actItems.erase(actItems.begin() + i);
+
+            }
+        }
+    }
 }
 
 CloudsClip& CloudsAct :: getClipForQuestion(string question){

@@ -2,29 +2,9 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>234.000000000</XPosition>
-    <YPosition>5.000000000</YPosition>
+    <XPosition>60.000000000</XPosition>
+    <YPosition>16.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MAX VS RUNTIME</Name>
-    <Value>120.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>MAX VS GAPTIME</Name>
-    <Value>60.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LONG CLIP THRESHOLD</Name>
-    <Value>30.000001907</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LONG CLIP FAD IN %</Name>
-    <Value>0.500000000</Value>
-</Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX TIME W/O QUESTION</Name>
@@ -32,6 +12,16 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
+    <Name>GAP LENGTH MULTIPLIER</Name>
+    <Value>0.100000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
     <Name>ACT LENGTH</Name>
-    <Value>352.019714355</Value>
+    <Value>600.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PREROLL FLAG TIME</Name>
+    <Value>5.000000000</Value>
 </Widget>

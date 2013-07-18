@@ -138,6 +138,7 @@ vector<string>& CloudsClip::getSpecialKeywords(){
     if(keywordsDirty){
         collateKeywords();
     }
+    
     return specialKeywords;
 }
 
@@ -188,7 +189,7 @@ void CloudsClip::collateKeywords(){
         
         else if(keywords[l][0] == '?' && !ofContains(specialKeywords, keywords[l])){
             
-//           cout<<keywords[i] << " is a question in the new format. removing from keywords list and adding to questions"<< endl;
+//           cout<<keywords[l] << " is a question in the new format. removing from keywords list and adding to questions"<< endl;
             
             //format of question topic pair is ?topic:question
             specialKeywords.push_back(keywords[l]);
@@ -251,10 +252,31 @@ void CloudsClip::revokeKeyword(string keyword){
 }
 void CloudsClip::addQuestionTopicPair(string topic, string question){
     
-    cout<<"adding question : " << question << "for topic "<< topic << " in clip" << getLinkName()<<endl;
-    map<string,string> questionTopicMap;
+//    cout<<"adding question : " << question << " for topic "<< topic << " in clip " << getLinkName()<<endl;
+
     questionTopicMap[topic] = question;
     topicWithQuestions.push_back(topic);
+}
+
+string CloudsClip::getQuestionForTopic(string topic){
+    if(questionTopicMap.find(topic) != questionTopicMap.end()){
+        return questionTopicMap[topic];
+    }
+    ofLogError()<<"No question found for "<<topic<<" in clip: "<<getLinkName()<<endl;
+    return "";
+
+}
+
+vector<string> CloudsClip:: getQuestionsVector(){
+
+    vector<string> questions;
+    
+    map<string,string>::iterator it;
+    for( it = questionTopicMap.begin(); it != questionTopicMap.end(); it++){
+        questions.push_back(it->second);
+    }
+    
+    return questions;
 }
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
