@@ -93,8 +93,6 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
 		
-		cout << endl<< endl << "CloudsVisualSystem::playSystem -> fbo width is " << getSharedRenderTarget().getWidth() << endl<<endl;
-		
 		ofRegisterMouseEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
@@ -2042,7 +2040,8 @@ void CloudsVisualSystem::saveGUIS()
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }
 
-void CloudsVisualSystem::loadPresetGUISFromName(string presetName){
+void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
+{
 	loadPresetGUISFromPath(getVisualSystemDataPath() + presetName);
 }
 
@@ -2141,11 +2140,19 @@ void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
     }
 }
 
-void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam){
+void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
+{
 	currentCamera = &swappedInCam;
 }
 
-void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam ){
+
+ofCamera* CloudsVisualSystem::getCurrentCamera()
+{
+	return currentCamera;
+}
+
+void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
+{
 	setCurrentCamera(*swappedInCam);
 }
 

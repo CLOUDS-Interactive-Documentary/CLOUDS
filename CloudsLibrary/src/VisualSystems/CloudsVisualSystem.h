@@ -207,6 +207,7 @@ class CloudsVisualSystem {
 	void setCurrentCamera( ofCamera& cam );
 	void setCurrentCamera( ofCamera* swappedInCam );
 	ofCamera* getCameraRef();
+	ofCamera* getCurrentCamera();
 
 
 	bool cursorIsOverGUI();

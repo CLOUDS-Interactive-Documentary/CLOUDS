@@ -55,14 +55,16 @@ class CloudsPlaybackController {
 	ofFbo sharedRenderTarget;
 	ofFbo nextRenderTarget;
 	
-	int crossfadeValue;
+	float crossfadeValue;
 	float fadeStartTime, fadeEndTime, fadeDuration;
-	int fadeStartVal, fadeTargetVal;
+	float fadeStartVal, fadeTargetVal;
 	bool fadingOut, fadingIn;
 	
 	ofCamera superCamera;
 	ofCamera* rgbdCamera;
 	ofCamera* nextCamera;
+	
+	void mixCameras( ofCamera* c0, ofCamera*  c1, float x );
 	
 	
   protected:
