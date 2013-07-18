@@ -918,8 +918,8 @@
 		E73769201778DC4500892646 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				E73769231778DC4500892646 /* CloudsQuestion.cpp */,
 				E73769241778DC4500892646 /* CloudsQuestion.h */,
+				E73769231778DC4500892646 /* CloudsQuestion.cpp */,
 				E737692A1778DC4500892646 /* CloudsVisualSystemRGBD.h */,
 				E73769291778DC4500892646 /* CloudsVisualSystemRGBD.cpp */,
 			);

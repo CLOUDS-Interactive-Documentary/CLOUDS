@@ -30,7 +30,6 @@ class CloudsVisualSystem {
 	static ofFbo& getStaticRenderTarget(); //default
 	
 	ofFbo& getSharedRenderTarget();
-//	static ofFbo& getSharedRenderTarget();
 	static ofImage& getCursor();
 	
 	ofFbo* sharedRenderTarget;
