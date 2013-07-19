@@ -49,6 +49,7 @@ class CloudsPlaybackController {
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionAsked(CloudsQuestionEventArgs& args);
 	void topicChanged(string& args);
+	void preRollRequested(CloudsPreRollEventArgs& args);
 	
 	void exit(ofEventArgs & args);
 	

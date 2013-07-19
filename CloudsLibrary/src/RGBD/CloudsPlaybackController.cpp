@@ -192,10 +192,14 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 		else{
 			
 			//mix the attributes ffrom our vis system cameras to build our superCamera
+<<<<<<< HEAD
 			mixCameras(&superCamera,
 					   rgbdVisualSystem.getCameraRef(),
 					   currentVisualSystem->getCameraRef(),
 					   crossfadeValue );
+=======
+			mixCameras( &rgbdVisualSystem.getCameraRef(), &currentVisualSystem->getCameraRef(), crossfadeValue );
+>>>>>>> 983d8d1bf3343a12cd3b341dc9ff5d329b93125d
 			
 			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
@@ -304,6 +308,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 	if(showingVisualSystem){
 		fadeOutVisualSystem();
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
+							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -318,6 +323,11 @@ void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::topicChanged(string& args){
 	currentTopic = args;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
+	//TODO -- respond to this event with the story engine
 }
 
 //--------------------------------------------------------------------

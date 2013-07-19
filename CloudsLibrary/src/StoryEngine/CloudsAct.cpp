@@ -115,6 +115,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         CloudsQuestionEventArgs args(questionsMap[bang.flag]);
         ofNotifyEvent(events.questionAsked, args);
     }
+    else if(bang.track == clipPreRollTrack){
+        CloudsPreRollEventArgs args(clipMap[bang.flag]);
+        ofNotifyEvent(events.preRollRequested, args);
+        
+    }
 }
 
 float CloudsAct::getActDuration(){

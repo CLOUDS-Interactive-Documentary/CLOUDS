@@ -234,6 +234,10 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="VerletForm_RotYAnimationTest">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="VerletForm_no-preset">
     <keywords></keywords>
     <suppresions></suppresions>
