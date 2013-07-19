@@ -152,25 +152,25 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	//handle fading
 	if(fadingIn || fadingOut){
-		crossfadeValue = ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal);
+		int currentTime = ofGetElapsedTimeMillis();
+		
+		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, ease,  ofxTween::easeInOut );
+		
 		
 		//end fading in
-		if(fadingIn && crossfadeValue < 0 ){
+		if(fadingIn && currentTime > fadeEndTime ){
 			fadingIn = false;
-			crossfadeValue = 0;
-			
 			rgbdVisualSystem.stopSystem();
-			
 			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
 		}
+		
 		//end fading out
-		else if(fadingOut && crossfadeValue > 1 ){
+		else if(fadingOut && currentTime > fadeEndTime ){
 			fadingOut = false;
-			crossfadeValue = 1;
-			
 			hideVisualSystem();
 			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
 		}
+		
 		//otherwise we're fading and we need to mix our cameras
 		else{
 			
@@ -320,7 +320,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	if(showingVisualSystem){
 //		hideVisualSystem();
-
 		fadeOutVisualSystem();
 	}
 	
@@ -346,11 +345,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	currentVisualSystem = nextVisualSystem.system;
 	
 	fadeInVisualSystem();
-	
-	
-	//camera setup clones and tweens
-	
-
 }
 
 //--------------------------------------------------------------------
@@ -363,8 +357,7 @@ void CloudsPlaybackController::hideVisualSystem(){
 		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
-		//		rgbdVisualSystem.playSystem();// fade in instead
-		
+		//rgbdVisualSystem.playSystem();// fade in instead
 	}
 }
 
@@ -383,7 +376,6 @@ void CloudsPlaybackController::fadeInVisualSystem(){
 }
 
 void CloudsPlaybackController::fadeOutVisualSystem(){
-
 	
 	fadingIn = false;
 	fadingOut = true;

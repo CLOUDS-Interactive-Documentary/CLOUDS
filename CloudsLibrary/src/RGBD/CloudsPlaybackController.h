@@ -66,6 +66,8 @@ class CloudsPlaybackController {
 	
 	void mixCameras( ofCamera* c0, ofCamera*  c1, float x );
 	
+	ofxEasingSine ease;
+	
 	
   protected:
 
