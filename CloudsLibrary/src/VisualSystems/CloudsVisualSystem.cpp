@@ -1361,6 +1361,8 @@ void CloudsVisualSystem::setupTimeline()
     timeline = new ofxTimeline();
 	timeline->setup();
     timeline->setMinimalHeaders(true);
+	timeline->setFrameBased(false);
+	cout << "******* TL DURATION " << timelineDuration << endl;
 	timeline->setDurationInFrames(1000);
 	timeline->setLoopType(OF_LOOP_NORMAL);
     timeline->setPageName(ofToUpper(getSystemName()));
@@ -1444,6 +1446,7 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     if(name == "DURATION")
     {
+//		cout << "****** TL duration changed " << timelineDuration << endl;
         timeline->setDurationInFrames(floor(timelineDuration));
     }
     else if(name == "ANIMATE")
@@ -2086,6 +2089,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+	timeline->setDurationInFrames(timelineDuration);
 	
 	selfPresetLoaded(presetPath);
 }
