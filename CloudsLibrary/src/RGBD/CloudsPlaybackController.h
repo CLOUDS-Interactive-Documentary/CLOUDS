@@ -55,18 +55,18 @@ class CloudsPlaybackController {
 	ofFbo sharedRenderTarget;
 	ofFbo nextRenderTarget;
 	
-	float crossfadeValue;
-	float fadeStartTime, fadeEndTime, fadeDuration;
-	float fadeStartVal, fadeTargetVal;
-	bool fadingOut, fadingIn;
 	
+	
+	//crossfading CloudsVisualSystems
+	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
+	bool fadingOut, fadingIn;
 	ofCamera superCamera;
 	ofCamera* rgbdCamera;
 	ofCamera* nextCamera;
 	
-	void mixCameras( ofCamera* c0, ofCamera*  c1, float x );
-	
-	ofxEasingSine ease;
+	void mixCameras( ofCamera* targetCam, ofCamera* c0, ofCamera*  c1, float x );
+	ofxEasingQuint fadeEase;
+	void updateCrossFade();
 	
 	
   protected:

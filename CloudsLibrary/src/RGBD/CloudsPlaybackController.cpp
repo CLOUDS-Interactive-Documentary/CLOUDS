@@ -149,25 +149,35 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
+	updateCrossFade();
 	
-	//handle fading
+}
+
+void CloudsPlaybackController::updateCrossFade(){
+	//handle fadin/out
 	if(fadingIn || fadingOut){
 		int currentTime = ofGetElapsedTimeMillis();
 		
-		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, ease,  ofxTween::easeInOut );
+		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
 		
 		
 		//end fading in
 		if(fadingIn && currentTime > fadeEndTime ){
+			//end fade and stop the other system
 			fadingIn = false;
 			rgbdVisualSystem.stopSystem();
+			
+			//use our currentVisualSystem's camera( no more need for the super camera anymore )
 			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
 		}
 		
 		//end fading out
 		else if(fadingOut && currentTime > fadeEndTime ){
+			//end fade and stop the other system
 			fadingOut = false;
 			hideVisualSystem();
+			
+			//use our currentVisualSystem's camera( no need for the super camera anymore )
 			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
 		}
 		
@@ -175,7 +185,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		else{
 			
 			//mix the attributes ffrom our vis system cameras to build our superCamera
-			mixCameras( rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
+			mixCameras( &superCamera, rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
 			
 			//set the visual systems' current camera to our supercamera
 			currentVisualSystem->setCurrentCamera( superCamera );
@@ -184,25 +194,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 		
 	}
-	
 }
 
-void CloudsPlaybackController::mixCameras( ofCamera* c0, ofCamera*  c1, float x ){
+void CloudsPlaybackController::mixCameras( ofCamera* targetCam, ofCamera* c0, ofCamera*  c1, float x ){
 	//get inverse val
 	float mx = 1. - x;
 	
 	//projection stuff
-	superCamera.setupPerspective(false,													//bool vFlip
+	targetCam->setupPerspective(false,													//bool vFlip
 								 c0->getFov()*x			+	c1->getFov()*mx,			//float fov
 								 c0->getNearClip()*x	+	c1->getNearClip()*mx,		//float nearDist
 								 c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
 								 c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
 	//position, rotation, are we missing something else here?
-	superCamera.setPosition( c0->getPosition()*x + c1->getPosition()*mx );
+	targetCam->setPosition( c0->getPosition()*x + c1->getPosition()*mx );
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
-	superCamera.setOrientation( rot );
+	targetCam->setOrientation( rot );
 	
 	
 }
