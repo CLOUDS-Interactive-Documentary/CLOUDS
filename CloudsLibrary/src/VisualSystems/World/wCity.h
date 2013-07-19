@@ -15,14 +15,14 @@ public:
     
     wCity();
     
+    ofQuaternion getQuaternion();
     void place(float _lat, float _long);
     void update();
     void draw(float _alpha = 1.0);
 
     ofColor color;
     
-    ofQuaternion latRot,longRot;
-    float   latitud, longitud, freq;
+    float   freq;
     float   size;
     
     float   noise;
@@ -37,5 +37,5 @@ public:
     
 private:
     void drawRipple( float _pct );
-    
+    ofQuaternion quaternion;
 };

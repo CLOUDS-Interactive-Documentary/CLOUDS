@@ -9,6 +9,8 @@
 #include "LSystemReconstructor.h"
 LSystemReconstructor::LSystemReconstructor(){
     bGrow = false;
+    breakness = 0.0;
+    
     speed = 1.0;
     aNoise = 0.7;
     tNoise = 0.1;
@@ -66,17 +68,49 @@ void LSystemReconstructor::addNode(ofPoint &_pnt){
     node.set(_pnt);
     node.startTime = -1.0;
     node.pct = -1.0;
+    
+    if (breakness > 0.0){
+        node.bActive = (ofRandomf()>=breakness*0.001)?true:false;
+    } else {
+        node.bActive = true;
+    }
+    
     node.branchesIndex.push_back( lines.size()-1 );
     nodes.push_back( node );
 }
 
-float LSystemReconstructor::getPct(){
-    return ofClamp(pct,0.0,1.0);
+ofRectangle LSystemReconstructor::getActiveNodesAre(){
+    ofRectangle box;
+	int n = activeNodes.size();
+	if(n > 0) {
+		const ofPoint& first = activeNodes[0];
+		// inititally, use width and height as max x and max y
+		box.set(first.x, first.y, first.x, first.y);
+		for(int i = 0; i < n; i++) {
+			const ofPoint& cur = activeNodes[i];
+			if(cur.x < box.x) {
+				box.x = cur.x;
+			}
+			if(cur.x > box.width) {
+				box.width = cur.x;
+			}
+			if(cur.y < box.y) {
+				box.y = cur.y;
+			}
+			if(cur.y > box.height) {
+				box.height = cur.y;
+			}
+		}
+		// later, we make width and height relative
+		box.width -= box.x;
+		box.height -= box.y;
+	}
+	return box;
 }
 
 void LSystemReconstructor::init(){
     timeLast = ofGetElapsedTimef();
-    pct = time = 0.0;
+    time = 0.0;
 }
 
 void LSystemReconstructor::update(){
@@ -95,7 +129,6 @@ void LSystemReconstructor::update(){
         //  Render
         //
         growMesh.clear();
-        pct = 0.0;
         for(int i = 0; i < nodes.size(); i++){
             if (nodes[i].startTime >= 0.0){
                 float relativeTime = time - nodes[i].startTime;
@@ -130,7 +163,7 @@ void LSystemReconstructor::update(){
                     ofPoint B = lines[ index ][k+1];
                     ofPoint pos = (1.0-pct)*A + (pct)*B;
                     
-                    activeNodes.addVertex(pos);
+                    activeNodes.push_back(pos);
                 }
                 
                 nodes[i].pct += speed*0.01;
@@ -172,7 +205,7 @@ void LSystemReconstructor::renderBranch(ofMesh &_mesh, int _index, float _relati
             //
             ofPoint pos = (1.0-pct)*A + (pct)*B;
             
-            activeNodes.addVertex(pos);
+            activeNodes.push_back(pos);
             
             _mesh.addVertex(lines[ _index ][k]);
             _mesh.addVertex(pos);
@@ -200,7 +233,7 @@ void LSystemReconstructor::renderBranch(ofMesh &_mesh, int _index, float _relati
 
 int LSystemReconstructor::isNode(ofPoint &_pnt){
     for (int i = nodes.size()-1; i >= 0; i--) {
-        if ( nodes[i] == _pnt ){
+        if ( nodes[i] == _pnt && nodes[i].bActive ){
             return i;
         }
     }

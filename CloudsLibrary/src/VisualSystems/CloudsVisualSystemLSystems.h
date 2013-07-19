@@ -49,23 +49,13 @@ public:
     void billBoard(); 
     
 protected:
-    
-    ofVec3f objectLookAt;
-    
     void    reBuildLSys();
     
     LSystemReconstructor    lsysr;
     
-    string  axiom;
-    string  rule1;
-    string  rule2;
-    float   angle;
-    float   globalScale;
-    float   lsysScale;
-    float   lsysDepth;
-    float   dotSize;
+    string  axiom,rule1,rule2;
+    float   angle,lsysScale,lsysDepth;
     
-    float   originalAlpha;
-    float   traceAlpha;
-    float   particlesAlpha;
+    float   originalAlpha,traceAlpha;
+    float   dotSize,particlesAlpha;
 };

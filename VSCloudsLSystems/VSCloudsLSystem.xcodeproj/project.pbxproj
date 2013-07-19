@@ -63,6 +63,9 @@
 		3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B966E175308D000F558AC /* ofxEasingSine.cpp */; };
 		3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9670175308D000F558AC /* ofxTween.cpp */; };
 		3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */; };
+		3D900AA917985E1500AC6BF6 /* LParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D900AA717985E1500AC6BF6 /* LParticle.cpp */; };
+		3D900AAC17985F4500AC6BF6 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D900AAA17985F4500AC6BF6 /* LNode.cpp */; };
+		3D900AB017987D1A00AC6BF6 /* LVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D900AAE17987D1900AC6BF6 /* LVectorField.cpp */; };
 		3D9EBCE21787974500B15E7C /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EBCCD1787974500B15E7C /* CloudsRGBDCombinedRenderer.cpp */; };
 		3D9EBCE41787974500B15E7C /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EBCD21787974500B15E7C /* Controller.cpp */; };
 		3D9EBCE51787974500B15E7C /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EBCD41787974500B15E7C /* Force.cpp */; };
@@ -276,6 +279,12 @@
 		3D5B96A4175308FE00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		3D5B96A7175308FE00F558AC /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
+		3D900AA717985E1500AC6BF6 /* LParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LParticle.cpp; sourceTree = "<group>"; };
+		3D900AA817985E1500AC6BF6 /* LParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LParticle.h; sourceTree = "<group>"; };
+		3D900AAA17985F4500AC6BF6 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
+		3D900AAB17985F4500AC6BF6 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
+		3D900AAE17987D1900AC6BF6 /* LVectorField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVectorField.cpp; sourceTree = "<group>"; };
+		3D900AAF17987D1900AC6BF6 /* LVectorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVectorField.h; sourceTree = "<group>"; };
 		3D9EBCCD1787974500B15E7C /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
 		3D9EBCCE1787974500B15E7C /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		3D9EBCD21787974500B15E7C /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
@@ -466,8 +475,14 @@
 			children = (
 				3D5B917C17517E8700F558AC /* LSystem.h */,
 				3D5B917B17517E8700F558AC /* LSystem.cpp */,
+				3D900AAB17985F4500AC6BF6 /* LNode.h */,
+				3D900AAA17985F4500AC6BF6 /* LNode.cpp */,
 				3D5B917E17517E8700F558AC /* LSystemReconstructor.h */,
 				3D5B917D17517E8700F558AC /* LSystemReconstructor.cpp */,
+				3D900AA817985E1500AC6BF6 /* LParticle.h */,
+				3D900AA717985E1500AC6BF6 /* LParticle.cpp */,
+				3D900AAF17987D1900AC6BF6 /* LVectorField.h */,
+				3D900AAE17987D1900AC6BF6 /* LVectorField.cpp */,
 			);
 			path = LSystems;
 			sourceTree = "<group>";
@@ -1359,6 +1374,9 @@
 				3D9EBCE71787974500B15E7C /* Gravity.cpp in Sources */,
 				3D9EBCE81787974500B15E7C /* Points.cpp in Sources */,
 				3D9EBCE91787974500B15E7C /* State.cpp in Sources */,
+				3D900AA917985E1500AC6BF6 /* LParticle.cpp in Sources */,
+				3D900AAC17985F4500AC6BF6 /* LNode.cpp in Sources */,
+				3D900AB017987D1A00AC6BF6 /* LVectorField.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

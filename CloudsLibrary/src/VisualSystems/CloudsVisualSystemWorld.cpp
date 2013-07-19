@@ -234,6 +234,9 @@ void CloudsVisualSystemWorld::selfSetupSystemGui()
     sysGui->addSlider("Satelites_ammount", 0.0, 1000, &nMaxSatellites);
     sysGui->addSlider("Satelites_links_distance", 0.0, 200, &satLinksDist);
     sysGui->addSlider("Satelites_links_alpha", 0.0, 1.0, &satLinksAlpha);
+    
+    sysGui->addLabel("Arcs");
+    sysGui->addSlider("Arcs_ammount", 0.0, 1000, &arcsMax);
 }
 
 void CloudsVisualSystemWorld::selfSetupRenderGui()
@@ -259,6 +262,9 @@ void CloudsVisualSystemWorld::selfSetupRenderGui()
     rdrGui->addSlider("Constelation_Min", 0.0, 1.0, &constelationMin);
     rdrGui->addSlider("Constelation_Max", 0.0, 1.0, &constelationMax);
     rdrGui->addSlider("Constelation_Randomizer", 0.0, 100, &constelationRnd);
+    
+    rdrGui->addLabel("Arcs");
+    rdrGui->addSlider("Arcs_Alpha", 0.0, 1.0, &arcsAlpha);
 }
 
 void CloudsVisualSystemWorld::guiSystemEvent(ofxUIEventArgs &e)
@@ -341,6 +347,38 @@ void CloudsVisualSystemWorld::selfUpdate()
     for(int i = 0; i < satellites.size(); i++){
         satellites[i]->update();
     }
+    
+    
+    //  Update Arcs
+    //
+    if ( (arcs.size() == 0 ) && (arcsMax > 0) ){
+        wArc arc;
+        arc.init(cities[ofRandom(cities.size())], cities[ofRandom(cities.size())]);
+        arcs.push_back(arc);
+
+    } else if ( arcs.size() > arcsMax ){
+        arcs[ofRandom(arcs.size())].kill();
+    }
+    
+    for(int i = arcs.size()-1; i >= 0; i--){
+        
+        arcs[i].update();
+        
+        if ( arcs[i].doesDie() ){
+            arcs.erase(arcs.begin()+i);
+        } else if ( arcs[i].doesArrive() && arcs[i].bActive ){
+            arcs[i].bActive = false;
+            
+            wArc arc;
+    
+            arc.init( arcs[ i ].getDst() , cities[ofRandom(cities.size())]);
+            arcs.push_back(arc);
+            
+            arc.init( arcs[ i ].getDst() , cities[ofRandom(cities.size())]);
+            arcs.push_back(arc);
+        }
+    }
+
 }
 
 void CloudsVisualSystemWorld::selfDraw()
@@ -418,7 +456,14 @@ void CloudsVisualSystemWorld::selfDraw()
             }
         }
     }
-
+    
+    //  Arcs
+    //
+    for(int i = 0; i < arcs.size(); i++){
+        ofSetColor(255,255*arcsAlpha);
+        arcs[i].draw();
+    }
+    
     mat->end();
     
     ofPopStyle();
