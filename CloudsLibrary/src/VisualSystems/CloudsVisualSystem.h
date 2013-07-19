@@ -5,6 +5,7 @@
 #include "ofxTimeline.h"
 #include "ofxUI.h"
 #include "CloudsGlobal.h"
+#include "ofxTLCameraTrack.h"
 
 //tenuous
 #include "ofxExtras.h"
@@ -205,7 +206,7 @@ class CloudsVisualSystem {
     
 	void setCurrentCamera( ofCamera& cam );
 	void setCurrentCamera( ofCamera* swappedInCam );
-	ofCamera* getCameraRef();
+	ofCamera& getCameraRef();
 	ofCamera* getCurrentCamera();
 
 
@@ -283,26 +284,20 @@ class CloudsVisualSystem {
     ofx1DExtruder *yRot;
     ofx1DExtruder *zRot;
 	
-	
-	
-	
-//	ofCamera* getCamera(){}
-    
-    //COLORS
-//    ofxColorPalettes *colorPalletes;
-    
     //TIMELINE
     void resetTimeline();
 	void bindWidgetToTimeline(ofxUIWidget* widget);
     void unBindWidgetFromTimeline(ofxUIWidget* widget);
-    ofxTimeline *timeline;
-    
+    ofxTimeline* timeline;
+    ofxTLCameraTrack* cameraTrack;
+	
     map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
     map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
     map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
     map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
     
     float timelineDuration;
+	bool bUseCameraTrack;
     bool bEnableTimeline;
     bool bDeleteTimelineTrack;
     bool bShowTimeline;
