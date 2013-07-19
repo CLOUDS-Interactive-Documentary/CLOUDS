@@ -307,8 +307,9 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     materials.clear();
     materialGuis.clear();
     
+	delete cameraTrack;
     delete timeline;
-    
+
     selfExit();
     
     deleteGUIS();
@@ -481,8 +482,15 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
                 (*it)->toggleMinified();
             }
         }
-            break;
-            
+		break;
+		
+		case 'T':
+			cameraTrack->addKeyframe();
+			break;
+		case 'L':
+
+			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
+			break;
         default:
             selfKeyPressed(args);
             break;
@@ -1356,10 +1364,11 @@ void CloudsVisualSystem::setupTimeline()
 	timeline->setDurationInFrames(1000);
 	timeline->setLoopType(OF_LOOP_NORMAL);
     timeline->setPageName(ofToUpper(getSystemName()));
+	
 	cameraTrack = new ofxTLCameraTrack();
 	cameraTrack->setCamera(getCameraRef());
-	
-    //timeline->addTrack(<#string name#>, <#ofxTLTrack *track#>)
+	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Working/Timeline/cameraTrack.xml");
+    timeline->addTrack("Camera", cameraTrack);
 	
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
@@ -2159,7 +2168,6 @@ void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
 {
 	currentCamera = &swappedInCam;
 }
-
 
 ofCamera* CloudsVisualSystem::getCurrentCamera()
 {
