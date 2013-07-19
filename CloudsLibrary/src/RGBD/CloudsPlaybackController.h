@@ -63,10 +63,16 @@ class CloudsPlaybackController {
 	ofCamera superCamera;
 	ofCamera* rgbdCamera;
 	ofCamera* nextCamera;
+	ofVec3f nextCameraStartPosition;
 	
-	void mixCameras( ofCamera* targetCam, ofCamera* c0, ofCamera*  c1, float x );
+	void mixCameras(ofCamera* targetCam,
+					ofCamera* c0,
+					ofCamera* c1,
+					float x,
+					ofVec3f posOffset0=ofVec3f(),
+					ofVec3f posOffset1=ofVec3f() );
 	ofxEasingQuint fadeEase;
-	void updateCrossFade();
+	void updateVisualSystemCrossFade();
 	
 	
   protected:

@@ -149,20 +149,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
-	updateCrossFade();
+	updateVisualSystemCrossFade();
 	
 }
 
-void CloudsPlaybackController::updateCrossFade(){
+void CloudsPlaybackController::updateVisualSystemCrossFade(){
 	//handle fadin/out
-	if(fadingIn || fadingOut){
+	if( fadingIn || fadingOut){
 		int currentTime = ofGetElapsedTimeMillis();
 		
 		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
 		
 		
 		//end fading in
-		if(fadingIn && currentTime > fadeEndTime ){
+		if( fadingIn && currentTime > fadeEndTime ){
 			//end fade and stop the other system
 			fadingIn = false;
 			rgbdVisualSystem.stopSystem();
@@ -172,7 +172,7 @@ void CloudsPlaybackController::updateCrossFade(){
 		}
 		
 		//end fading out
-		else if(fadingOut && currentTime > fadeEndTime ){
+		else if( fadingOut && currentTime > fadeEndTime ){
 			//end fade and stop the other system
 			fadingOut = false;
 			hideVisualSystem();
@@ -184,10 +184,18 @@ void CloudsPlaybackController::updateCrossFade(){
 		//otherwise we're fading and we need to mix our cameras
 		else{
 			
-			//mix the attributes ffrom our vis system cameras to build our superCamera
-			mixCameras( &superCamera, rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
+			//get the position offset for the currentVisualSystem
+			ofVec3f currentSystemPositionOffsest = currentVisualSystem->getCameraPosition() - nextCameraStartPosition;
 			
-			//set the visual systems' current camera to our supercamera
+			//mix the attributes ffrom our vis system cameras to build our superCamera
+			mixCameras(&superCamera,						//targetCamera
+					   rgbdVisualSystem.getCameraRef(),		//ofCamera0
+					   currentVisualSystem->getCameraRef(),	//ofCamera1
+					   crossfadeValue,						//mixValue
+					   ofVec3f(),							//possOffset0
+					   currentSystemPositionOffsest );		//possOffset1
+			
+			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
 			rgbdVisualSystem.setCurrentCamera( superCamera );
 			
@@ -196,19 +204,26 @@ void CloudsPlaybackController::updateCrossFade(){
 	}
 }
 
-void CloudsPlaybackController::mixCameras( ofCamera* targetCam, ofCamera* c0, ofCamera*  c1, float x ){
+void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
+										  ofCamera* c0,
+										  ofCamera*  c1,
+										  float x,
+										  ofVec3f posOffset0,
+										  ofVec3f posOffset1 )
+{
+	
 	//get inverse val
 	float mx = 1. - x;
 	
 	//projection stuff
 	targetCam->setupPerspective(false,													//bool vFlip
-								 c0->getFov()*x			+	c1->getFov()*mx,			//float fov
-								 c0->getNearClip()*x	+	c1->getNearClip()*mx,		//float nearDist
-								 c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
-								 c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
+								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
+								c0->getNearClip()*x		+	c1->getNearClip()*mx,		//float nearDist
+								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
+								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
 	//position, rotation, are we missing something else here?
-	targetCam->setPosition( c0->getPosition()*x + c1->getPosition()*mx );
+	targetCam->setPosition( (c0->getPosition()+posOffset0)*x + (c1->getPosition()+posOffset1)*mx );
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
 	targetCam->setOrientation( rot );
@@ -352,6 +367,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	showingVisualSystem = true;
 	
 	currentVisualSystem = nextVisualSystem.system;
+	
+	nextCameraStartPosition = currentVisualSystem->getCameraPosition();
 	
 	fadeInVisualSystem();
 }
