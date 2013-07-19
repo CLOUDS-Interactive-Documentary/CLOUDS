@@ -45,8 +45,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 	
-	ofCamera* getCameraRef(){
-		return  &cloudsCamera;
+	ofCamera& getCameraRef(){
+		return  cloudsCamera;
 	}
 
   protected:

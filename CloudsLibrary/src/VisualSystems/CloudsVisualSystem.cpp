@@ -23,6 +23,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	sharedRenderTarget = NULL;
 	bClearBackground = true;
 	bDrawToScreen = true;
+	bUseCameraTrack = false;
+	cameraTrack = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -1354,7 +1356,10 @@ void CloudsVisualSystem::setupTimeline()
 	timeline->setDurationInFrames(1000);
 	timeline->setLoopType(OF_LOOP_NORMAL);
     timeline->setPageName(ofToUpper(getSystemName()));
-    
+	cameraTrack = new ofxTLCameraTrack();
+	cameraTrack->setCamera(getCameraRef());
+	
+    //timeline->addTrack(<#string name#>, <#ofxTLTrack *track#>)
 	
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
@@ -1414,6 +1419,7 @@ void CloudsVisualSystem::setupTimelineGui()
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
+    tlGui->addToggle("CAMERA TRACK", &bUseCameraTrack);
     
     tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
@@ -1450,6 +1456,15 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
         setTimelineTrackDeletion(t->getValue());
         
     }
+	else if(name == "CAMERA TRACK"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+			cameraTrack->enable();
+		}
+		else{
+			cameraTrack->disable();
+		}
+	}
     else if(name == "ENABLE")
     {
         if(bEnableTimeline)
@@ -2156,8 +2171,8 @@ void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
 	setCurrentCamera(*swappedInCam);
 }
 
-ofCamera* CloudsVisualSystem::getCameraRef(){
-	return &cam;
+ofCamera& CloudsVisualSystem::getCameraRef(){
+	return cam;
 }
 
 void CloudsVisualSystem::setDrawToScreen( bool state ){
