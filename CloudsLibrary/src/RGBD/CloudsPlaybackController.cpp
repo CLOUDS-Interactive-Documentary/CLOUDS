@@ -191,9 +191,7 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 			mixCameras(&superCamera,						//targetCamera
 					   rgbdVisualSystem.getCameraRef(),		//ofCamera0
 					   currentVisualSystem->getCameraRef(),	//ofCamera1
-					   crossfadeValue,						//mixValue
-					   ofVec3f(),							//possOffset0
-					   currentSystemPositionOffsest );		//possOffset1
+					   crossfadeValue );					//mixValue 
 			
 			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
@@ -207,23 +205,21 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
 										  ofCamera* c0,
 										  ofCamera*  c1,
-										  float x,
-										  ofVec3f posOffset0,
-										  ofVec3f posOffset1 )
+										  float x )
 {
 	
 	//get inverse val
 	float mx = 1. - x;
 	
 	//projection stuff
-	targetCam->setupPerspective(false,													//bool vFlip
-								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
-								c0->getNearClip()*x		+	c1->getNearClip()*mx,		//float nearDist
-								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
+	targetCam->setupPerspective(false,	//bool vFlip
+								c0->getFov()*x			+	c1->getFov()*mx,	//float fov
+								c0->getNearClip()*x		+	c1->getNearClip()*mx,	//float nearDist
+								c0->getFarClip()*x		+	c1->getFarClip()*mx,	//float farDist
 								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
 	//position, rotation, are we missing something else here?
-	targetCam->setPosition( (c0->getPosition()+posOffset0)*x + (c1->getPosition()+posOffset1)*mx );
+	targetCam->setPosition( c0->getPosition()*x + c1->getPosition()*mx );
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
 	targetCam->setOrientation( rot );
