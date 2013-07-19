@@ -2189,14 +2189,9 @@ void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
 	setCurrentCamera(*swappedInCam);
 }
 
-<<<<<<< HEAD
-ofCamera* CloudsVisualSystem::getCameraRef()
-{
-	return &cam;
-=======
+
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;
->>>>>>> 983d8d1bf3343a12cd3b341dc9ff5d329b93125d
 }
 
 void CloudsVisualSystem::setDrawToScreen( bool state )
@@ -2426,7 +2421,7 @@ void CloudsVisualSystem::selfSceneTransformation()
 
 ofVec3f CloudsVisualSystem::getCameraPosition()
 {
-	return getCameraRef()->getPosition();
+	return getCameraRef().getPosition();
     
 }
 

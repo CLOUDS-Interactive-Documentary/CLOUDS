@@ -192,15 +192,12 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 		else{
 			
 			//mix the attributes ffrom our vis system cameras to build our superCamera
-<<<<<<< HEAD
+
 			mixCameras(&superCamera,
-					   rgbdVisualSystem.getCameraRef(),
-					   currentVisualSystem->getCameraRef(),
+					   &rgbdVisualSystem.getCameraRef(),
+					   &currentVisualSystem->getCameraRef(),
 					   crossfadeValue );
-=======
-			mixCameras( &rgbdVisualSystem.getCameraRef(), &currentVisualSystem->getCameraRef(), crossfadeValue );
->>>>>>> 983d8d1bf3343a12cd3b341dc9ff5d329b93125d
-			
+
 			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
 			rgbdVisualSystem.setCurrentCamera( superCamera );
@@ -380,7 +377,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	currentVisualSystem = nextVisualSystem.system;
 	
-	cameraStartPos = currentVisualSystem->getCameraRef()->getPosition();
+	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	fadeInVisualSystem();
 }
