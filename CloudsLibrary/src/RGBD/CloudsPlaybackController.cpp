@@ -151,6 +151,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	updateVisualSystemCrossFade();
 	
+//	//TEMP
+//	if(currentVisualSystem != NULL)	{
+//		//replicate a basic camera annimation
+//		currentVisualSystem->getCameraRef()->move(0,0,10);
+//	}
+	
+	
 }
 
 void CloudsPlaybackController::updateVisualSystemCrossFade(){
@@ -184,14 +191,11 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 		//otherwise we're fading and we need to mix our cameras
 		else{
 			
-			//get the position offset for the currentVisualSystem
-			ofVec3f currentSystemPositionOffsest = currentVisualSystem->getCameraPosition() - nextCameraStartPosition;
-			
 			//mix the attributes ffrom our vis system cameras to build our superCamera
-			mixCameras(&superCamera,						//targetCamera
-					   rgbdVisualSystem.getCameraRef(),		//ofCamera0
-					   currentVisualSystem->getCameraRef(),	//ofCamera1
-					   crossfadeValue );					//mixValue 
+			mixCameras(&superCamera,
+					   rgbdVisualSystem.getCameraRef(),
+					   currentVisualSystem->getCameraRef(),
+					   crossfadeValue );
 			
 			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
@@ -205,21 +209,23 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
 										  ofCamera* c0,
 										  ofCamera*  c1,
-										  float x )
+										  float x,
+										  ofVec3f posOffset0,
+										  ofVec3f posOffset1 )
 {
 	
 	//get inverse val
 	float mx = 1. - x;
 	
 	//projection stuff
-	targetCam->setupPerspective(false,	//bool vFlip
-								c0->getFov()*x			+	c1->getFov()*mx,	//float fov
-								c0->getNearClip()*x		+	c1->getNearClip()*mx,	//float nearDist
-								c0->getFarClip()*x		+	c1->getFarClip()*mx,	//float farDist
+	targetCam->setupPerspective(false,													//bool vFlip
+								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
+								c0->getNearClip()*x		+	c1->getNearClip()*mx,		//float nearDist
+								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
 								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
 	//position, rotation, are we missing something else here?
-	targetCam->setPosition( c0->getPosition()*x + c1->getPosition()*mx );
+	targetCam->setPosition( (c0->getPosition()+posOffset0)*x + (c1->getPosition()+posOffset1)*mx );
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
 	targetCam->setOrientation( rot );
@@ -230,21 +236,21 @@ void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 
-//	LB:: we do our mixing here?
-	
-//	ofClear(0, 0, 0, 0);
-	
     
 	//turn off depth testing and enable blending
-	//TODO:: add blending modes to GUI?
     glDisable( GL_DEPTH_TEST );
+	
+	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
 	int mixVal = 255 * crossfadeValue;
 	
 	ofSetColor( 255, 255, 255, mixVal );
+	
 	rgbdVisualSystem.selfPostDraw();
 	
+	//???: currentVisualSystem->getBlendMode()
+	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	ofSetColor( 255, 255, 255, 255 - mixVal );
 	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
 	
@@ -364,7 +370,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	currentVisualSystem = nextVisualSystem.system;
 	
-	nextCameraStartPosition = currentVisualSystem->getCameraPosition();
+	cameraStartPos = currentVisualSystem->getCameraRef()->getPosition();
 	
 	fadeInVisualSystem();
 }
@@ -399,6 +405,12 @@ void CloudsPlaybackController::fadeInVisualSystem(){
 
 void CloudsPlaybackController::fadeOutVisualSystem(){
 	
+	//move our rgbdSystem to account for the distance we've traveled
+	ofVec3f camdelta = currentVisualSystem->getCameraPosition() - cameraStartPos;
+	rgbdVisualSystem.positionOffset += camDelta;
+	//???: maybe we want the above somewhere else. updateVisualSystemCrossFade()?
+
+	//handle the fading
 	fadingIn = false;
 	fadingOut = true;
 	

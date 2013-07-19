@@ -134,8 +134,11 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	//update camera
-	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ);
-	cloudsCamera.lookTarget = translatedHeadPosition;
+	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
+	cloudsCamera.lookTarget = translatedHeadPosition + positionOffset;
+	
+	//???: LB- I added our positionOffset to the cloudsCamera positioning stuff ^above. Is there a better way to do this?
+	
 
 	if(drawCloud){
 		if(refreshScanlineMesh){

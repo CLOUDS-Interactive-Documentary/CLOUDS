@@ -222,14 +222,19 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		}
         
         drawBackground();
-        
+	  
+	  
+	  //start our 3d scene
 		currentCamera->begin();
-        
+	  
         ofRotateX(xRot->getPos());
         ofRotateY(yRot->getPos());
         ofRotateZ(zRot->getPos());
         
         selfSceneTransformation();
+	  
+	  //accumulated position offset
+	  ofTranslate( positionOffset );
         
         glEnable(GL_DEPTH_TEST);
         
@@ -247,6 +252,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
+	  
 		
 		ofPushStyle();
 		ofPushMatrix();
@@ -2156,14 +2162,18 @@ void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
 	setCurrentCamera(*swappedInCam);
 }
 
-ofCamera* CloudsVisualSystem::getCameraRef(){
+ofCamera* CloudsVisualSystem::getCameraRef()
+{
 	return &cam;
 }
 
-void CloudsVisualSystem::setDrawToScreen( bool state ){
+void CloudsVisualSystem::setDrawToScreen( bool state )
+{
 	bDrawToScreen = state;
 }
-bool CloudsVisualSystem::getDrawToScreen(){
+
+bool CloudsVisualSystem::getDrawToScreen()
+{
 	return bDrawToScreen;
 }
 
@@ -2378,6 +2388,13 @@ void CloudsVisualSystem::selfDrawDebug()
 
 void CloudsVisualSystem::selfSceneTransformation()
 {
+    
+}
+
+
+ofVec3f CloudsVisualSystem::getCameraPosition()
+{
+	return getCameraRef()->getPosition();
     
 }
 
