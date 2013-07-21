@@ -259,7 +259,11 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 
 	if(currentAct != NULL && ofGetKeyPressed('-')){
+		currentAct->getTimeline().enableEvents();
 		currentAct->drawDebug();
+	}
+	else{
+		currentAct->getTimeline().disableEvents();
 	}
 }
 
@@ -272,6 +276,10 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	rgbdVisualSystem.playSystem();
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }
 
 //--------------------------------------------------------------------
@@ -283,9 +291,6 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
 	
-	//this has to draw last
-	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);	
 }
 
 //--------------------------------------------------------------------
@@ -387,6 +392,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
 	fadeInVisualSystem();
+	
+	
 }
 
 //--------------------------------------------------------------------
@@ -437,4 +444,9 @@ void CloudsPlaybackController::fadeOutVisualSystem(){
 	fadeTargetVal = 1.;
 	
 	rgbdVisualSystem.playSystem();
+	
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }

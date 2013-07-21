@@ -950,8 +950,8 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */,
 				E7402DE1178F44A100FEABED /* CloudsVisualSystem.h */,
+				E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */,
 				E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */,
 				E7402DE3178F44A100FEABED /* CloudsVisualSystemAmber.h */,
 				E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */,
