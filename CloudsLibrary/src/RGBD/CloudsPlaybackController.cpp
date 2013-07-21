@@ -258,7 +258,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     ofDisableBlendMode();
     glEnable( GL_DEPTH_TEST );
 	
-	
+
 	if(currentAct != NULL && ofGetKeyPressed('-')){
 		currentAct->drawDebug();
 	}
@@ -360,8 +360,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 
 //	rgbdVisualSystem.stopSystem();
-	
-	
 
 	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
@@ -388,8 +386,9 @@ void CloudsPlaybackController::hideVisualSystem(){
 	if(showingVisualSystem && currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
-		
-		currentVisualSystem->stopSystem();
+
+		//JG why calling this twice?
+//		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
 		//rgbdVisualSystem.playSystem();// fade in instead

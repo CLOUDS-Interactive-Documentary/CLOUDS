@@ -111,6 +111,7 @@ void CloudsVisualSystemManager::loadPresets(){
 				preset.presetName = systemPresets[p];
 				preset.systemName = systems[i]->getSystemName();
 				preset.system = systems[i];
+				preset.loadTimeInfo();
 				presets.push_back(preset);
 				nameToPresets[preset.systemName].push_back( preset );
 			}
@@ -131,6 +132,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
 		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+		preset.loadTimeInfo();
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
 		#endif

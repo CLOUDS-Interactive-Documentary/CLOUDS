@@ -94,6 +94,7 @@
 		E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8231768DDCE00083C4C /* ClusterData.cpp */; };
 		E74CE86E1768ED6200083C4C /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */; };
 		E74CE8801768ED7C00083C4C /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */; };
+		E75ED88C179C6010007667F1 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75ED88A179C6010007667F1 /* wArc.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D411734DE68008ADC62 /* CloudsClip.cpp */; };
 		E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
@@ -406,6 +407,8 @@
 		E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
 		E74CE87E1768ED7B00083C4C /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
 		E74CE87F1768ED7B00083C4C /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
+		E75ED88A179C6010007667F1 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		E75ED88B179C6010007667F1 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7637D411734DE68008ADC62 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7637D421734DE68008ADC62 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
@@ -936,16 +939,16 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */,
-				E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */,
 				E7402DE1178F44A100FEABED /* CloudsVisualSystem.h */,
+				E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */,
 				E7402DE3178F44A100FEABED /* CloudsVisualSystemAmber.h */,
-				E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */,
+				E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */,
 				E7402DE5178F44A100FEABED /* CloudsVisualSystemCities.h */,
-				E7402DE6178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp */,
+				E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */,
 				E7402DE7178F44A100FEABED /* CloudsVisualSystemCollaboration1.h */,
-				E7402DEA178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp */,
+				E7402DE6178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp */,
 				E7402DEB178F44A100FEABED /* CloudsVisualSystemComputationTicker.h */,
+				E7402DEA178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp */,
 				E7402DEC178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp */,
 				E7402DED178F44A100FEABED /* CloudsVisualSystemForkingPaths.h */,
 				E7402DEE178F44A100FEABED /* CloudsVisualSystemHiga.cpp */,
@@ -1088,6 +1091,8 @@
 		E7402E42178F44A100FEABED /* World */ = {
 			isa = PBXGroup;
 			children = (
+				E75ED88A179C6010007667F1 /* wArc.cpp */,
+				E75ED88B179C6010007667F1 /* wArc.h */,
 				E7402E43178F44A100FEABED /* wCity.cpp */,
 				E7402E44178F44A100FEABED /* wCity.h */,
 				E7402E45178F44A100FEABED /* wParticle.cpp */,
@@ -2374,6 +2379,7 @@
 				E72D3A1D17944FB10079254B /* RandomMover.cpp in Sources */,
 				E79E4C651797518300719469 /* ofxAVFVideoPlayer.mm in Sources */,
 				E79E4C661797518300719469 /* ofxAVFVideoRenderer.m in Sources */,
+				E75ED88C179C6010007667F1 /* wArc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

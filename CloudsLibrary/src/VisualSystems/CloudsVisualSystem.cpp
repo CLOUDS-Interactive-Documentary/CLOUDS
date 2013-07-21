@@ -113,6 +113,7 @@ void CloudsVisualSystem::playSystem(){
 		}
 		
 		selfBegin();
+		
 		timeline->setCurrentFrame(0);
 		if(cameraTrack->getKeyframes().size() > 0){
 			cameraTrack->lockCameraToTrack = true;
@@ -328,6 +329,11 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
 
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 {
+	
+	if(timeline->isModal()){
+		return;
+	}
+	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
         if((*it)->hasKeyboardFocus())
@@ -500,7 +506,6 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 			cameraTrack->addKeyframe();
 			break;
 		case 'L':
-
 			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
 			break;
         default:
@@ -624,9 +629,10 @@ void CloudsVisualSystem::setupMaterialParams()
 
 void CloudsVisualSystem::setupTimeLineParams()
 {
-    bShowTimeline = true;
+//    bShowTimeline = true;
+	bTimelineIsIndefinite = true;
     bDeleteTimelineTrack = false;
-    timelineDuration = 1000;
+    timelineDuration = 60;
     bEnableTimeline = false;
     bEnableTimelineTrackCreation = false;
 }
@@ -690,6 +696,36 @@ vector<string> CloudsVisualSystem::getPresets()
 		}
 	}
 	return presets;
+}
+
+
+float CloudsVisualSystem::getIntroDuration(){
+	vector<ofxTLKeyframe*>& flags = introOutroTrack->getKeyframes();
+	for(int i = 0; i < flags.size(); i++){
+		ofxTLFlag* flag = (ofxTLFlag*)flags[i];
+		string text = ofToLower(flag->textField.text);
+		if( (!bTimelineIsIndefinite && text == "intro") ||
+		    ( bTimelineIsIndefinite && text == "middle"))
+		{
+			return flag->time/1000.0;
+		}
+	}
+	return 0;
+}
+
+float CloudsVisualSystem::getOutroDuration(){
+	vector<ofxTLKeyframe*>& flags = introOutroTrack->getKeyframes();
+	for(int i = 0; i < flags.size(); i++){
+		ofxTLFlag* flag = (ofxTLFlag*)flags[i];
+		string text = ofToLower(flag->textField.text);
+		if( (!bTimelineIsIndefinite && text == "outro") ||
+			( bTimelineIsIndefinite && text == "middle"))
+		{
+			return timeline->getDurationInSeconds() - flag->time/1000.0;
+		}
+	}
+	
+	return 0;
 }
 
 void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
@@ -1090,6 +1126,9 @@ void CloudsVisualSystem::guiCameraEvent(ofxUIEventArgs &e)
             zRot->setHome(45);
         }
     }
+	else if(name == "ADD KEYFRAME"){
+		cameraTrack->addKeyframe();
+	}
 }
 
 void CloudsVisualSystem::setupPresetGui()
@@ -1378,7 +1417,7 @@ void CloudsVisualSystem::setupTimeline()
     timeline->setMinimalHeaders(true);
 	timeline->setFrameBased(false);
 	timeline->setSpacebarTogglePlay(false);
-	timeline->setDurationInFrames(1000);
+	timeline->setDurationInSeconds(60);
 	timeline->setLoopType(OF_LOOP_NONE);
     timeline->setPageName(ofToUpper(getSystemName()));
 	
@@ -1386,6 +1425,7 @@ void CloudsVisualSystem::setupTimeline()
 	cameraTrack->setCamera(getCameraRef());
 	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Working/Timeline/cameraTrack.xml");
     timeline->addTrack("Camera", cameraTrack);
+	introOutroTrack = timeline->addFlags("Intro-Outro", getVisualSystemDataPath()+"Working/Timeline/IntroOutro.xml");
 	
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
@@ -1412,16 +1452,25 @@ void CloudsVisualSystem::resetTimeline()
 
 void CloudsVisualSystem::timelineBangEvent(ofxTLBangEventArgs& args)
 {
+	
     if(bEnableTimeline)
     {
-        map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.find((ofxTLBangs *)args.track);
-        if(it != tlButtonMap.end())
-        {
-            ofxUIButton *b = it->second;
-            b->setValue(!b->getValue());
-            b->triggerSelf();
-            b->setValue(!b->getValue());
-        }
+		if(args.track == introOutroTrack)
+		{
+			if(bTimelineIsIndefinite && args.flag == "middle"){
+				timeline->stop();
+			}
+		}
+		else{
+			map<ofxTLBangs*, ofxUIButton*>::iterator it = tlButtonMap.find((ofxTLBangs *)args.track);
+			if(it != tlButtonMap.end())
+			{
+				ofxUIButton *b = it->second;
+				b->setValue(!b->getValue());
+				b->triggerSelf();
+				b->setValue(!b->getValue());
+			}
+		}
     }
 }
 
@@ -1441,13 +1490,14 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addWidgetToHeader(toggle);
     tlGui->addSpacer();
     
-    tlGui->addNumberDialer("DURATION", 0.0, 10000, &timelineDuration, 0.0)->setDisplayLabel(true);
+    tlGui->addNumberDialer("DURATION", 0.0, 60*5, &timelineDuration, 0.0)->setDisplayLabel(true);
+    tlGui->addToggle("INDEFINITE", &bTimelineIsIndefinite);
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-//		tlGui->addToggle("CAMERA TRACK", &bUseCameraTrack);
+
     
-    tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
+    //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
     tlGui->autoSizeToFitWidgets();
@@ -1462,8 +1512,8 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
     if(name == "DURATION")
     {
 //		cout << "****** TL duration changed " << timelineDuration << endl;
-        timeline->setDurationInFrames(floor(timelineDuration));
-		timelineDuration = timeline->getDurationInFrames();
+        timeline->setDurationInSeconds(timelineDuration);
+		timelineDuration = timeline->getDurationInSeconds();
     }
     else if(name == "ANIMATE")
     {
@@ -1507,17 +1557,17 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
             }
         }
     }
-    else if(name == "SHOW/HIDE")
-    {
-        if(bShowTimeline)
-        {
-            timeline->show();
-        }
-        else
-        {
-            timeline->hide();
-        }
-    }
+//    else if(name == "SHOW/HIDE")
+//    {
+//        if(bShowTimeline)
+//        {
+//            timeline->show();
+//        }
+//        else
+//        {
+//            timeline->hide();
+//        }
+//    }
 }
 
 void CloudsVisualSystem::setTimelineTrackDeletion(bool state)
@@ -2105,8 +2155,8 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
-	timeline->setDurationInFrames(timelineDuration);
-	timelineDuration = timeline->getDurationInFrames();
+	timeline->setDurationInSeconds(timelineDuration);
+	timelineDuration = timeline->getDurationInSeconds();
 	
 	selfPresetLoaded(presetPath);
 }
@@ -2131,6 +2181,17 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeline->setName(presetName);
     timeline->saveTracksToFolder(getVisualSystemDataPath()+presetName+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+
+	ofxXmlSettings timeInfo;
+	timeInfo.addTag("timeinfo");
+	timeInfo.pushTag("timeinfo");
+	timeInfo.addValue("indefinite", bTimelineIsIndefinite);
+	timeInfo.addValue("duration", timelineDuration);
+	timeInfo.addValue("introDuration", getIntroDuration());
+	timeInfo.addValue("outroDuration", getOutroDuration());
+	timeInfo.popTag();//timeinfo
+	timeInfo.save(getVisualSystemDataPath()+presetName+"/"+"TimeInfo.xml");
+	
 }
 
 void CloudsVisualSystem::deleteGUIS()
@@ -2169,7 +2230,7 @@ void CloudsVisualSystem::toggleGUIS()
         (*it)->toggleVisible();
     }
 	timeline->toggleShow();
-	bShowTimeline = timeline->getIsShowing();
+//	bShowTimeline = timeline->getIsShowing();
 }
 
 void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)
