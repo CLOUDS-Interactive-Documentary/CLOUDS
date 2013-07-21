@@ -79,12 +79,11 @@ void CloudsVisualSystem::setup(){
 	setupLightingParams();
 	setupMaterialParams();
     setupTimeLineParams();
+	setupTimeline();
     
     selfSetup();
     setupCoreGuis();
     selfSetupGuis();
-	
-	setupTimeline();
     setupTimelineGui();
     
 	hideGUIS();
@@ -114,7 +113,11 @@ void CloudsVisualSystem::playSystem(){
 		}
 		
 		selfBegin();
-
+		timeline->setCurrentFrame(0);
+		if(cameraTrack->getKeyframes().size() > 0){
+			cameraTrack->lockCameraToTrack = true;
+		}
+		timeline->play();
 	}
 }
 
@@ -135,7 +138,9 @@ void CloudsVisualSystem::stopSystem(){
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
-		
+			
+		timeline->stop();
+		cameraTrack->lockCameraToTrack = false;
 		isPlaying = false;
 	}
 }
@@ -246,7 +251,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         
         lightsBegin();
       
-	  //	draw this visual system
+		//draw this visual system
 		ofPushStyle();
         selfDraw();
         ofPopStyle();
@@ -360,6 +365,7 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 			
         case ' ':
         {
+			timeline->togglePlay();
             ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->setValue(timeline->getIsPlaying());
             ((ofxUIToggle *) tlGui->getWidget("ENABLE"))->triggerSelf();
         }
@@ -956,7 +962,11 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-X", 0, 360.0, xRot->getPosPtr())->setIncrement(1.0);
     camGui->addSlider("ROT-Y", 0, 360.0, yRot->getPosPtr())->setIncrement(1.0);
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
-    
+    camGui->addLabel("TRACK");
+    camGui->addButton("ADD KEYFRAME", false);
+    camGui->addToggle("LOCK TO TRACK", cameraTrack->lockCameraToTrack);
+	
+	
     camGui->addSpacer();
     vector<string> views;
     views.push_back("TOP");
@@ -1363,14 +1373,13 @@ void CloudsVisualSystem::guiLightEvent(ofxUIEventArgs &e)
 
 void CloudsVisualSystem::setupTimeline()
 {
-
     timeline = new ofxTimeline();
 	timeline->setup();
     timeline->setMinimalHeaders(true);
 	timeline->setFrameBased(false);
-	cout << "******* TL DURATION " << timelineDuration << endl;
+	timeline->setSpacebarTogglePlay(false);
 	timeline->setDurationInFrames(1000);
-	timeline->setLoopType(OF_LOOP_NORMAL);
+	timeline->setLoopType(OF_LOOP_NONE);
     timeline->setPageName(ofToUpper(getSystemName()));
 	
 	cameraTrack = new ofxTLCameraTrack();
@@ -1436,7 +1445,7 @@ void CloudsVisualSystem::setupTimelineGui()
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
-    tlGui->addToggle("CAMERA TRACK", &bUseCameraTrack);
+//		tlGui->addToggle("CAMERA TRACK", &bUseCameraTrack);
     
     tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
@@ -1454,6 +1463,7 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
     {
 //		cout << "****** TL duration changed " << timelineDuration << endl;
         timeline->setDurationInFrames(floor(timelineDuration));
+		timelineDuration = timeline->getDurationInFrames();
     }
     else if(name == "ANIMATE")
     {
@@ -1474,15 +1484,15 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
         setTimelineTrackDeletion(t->getValue());
         
     }
-	else if(name == "CAMERA TRACK"){
-        ofxUIToggle *t = (ofxUIToggle *) e.widget;
-        if(t->getValue()){
-			cameraTrack->enable();
-		}
-		else{
-			cameraTrack->disable();
-		}
-	}
+//	else if(name == "CAMERA TRACK"){
+//        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+//        if(t->getValue()){
+//			cameraTrack->enable();
+//		}
+//		else{
+//			cameraTrack->disable();
+//		}
+//	}
     else if(name == "ENABLE")
     {
         if(bEnableTimeline)
@@ -2096,6 +2106,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 	timeline->setDurationInFrames(timelineDuration);
+	timelineDuration = timeline->getDurationInFrames();
 	
 	selfPresetLoaded(presetPath);
 }
