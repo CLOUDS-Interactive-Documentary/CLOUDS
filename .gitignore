@@ -44,3 +44,8 @@ _gameCameraPosition.xml
 timeline*_Page_One_trackPositions.xml
 timeline*.xml
 *trackPositions.xml
+/CloudsRGBDExporter/bin/data/SavedExportFolder.txt
+/CloudsRGBDExporter/bin/data/ColorReplacementFolder.txt
+*.vbo
+/CloudsStoryEngine/bin/data/score.csv
+score.csv

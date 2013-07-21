@@ -23,10 +23,10 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	
 	CloudsFCPParser parser;
+	CloudsVisualSystemManager visualSystems;
 	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
 	CloudsSound sound;
-	
 	
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };

@@ -8,9 +8,15 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
-class CloudsVisualSystemWorld : public CloudsVisualSystemRezanator {
+#include "wArc.h"
+#include "wStar.h"
+#include "wCity.h"
+#include "wParticle.h"
+#include "wSatellite.h"
+
+class CloudsVisualSystemWorld : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -46,14 +52,59 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    void loadPath(vector<ofPolyline> &_path, string _file);
-    void loadPoints(vector<ofPoint> &_points, string _file);
+
+    //  Globe
+    //
+    void        loadVbo(ofVboMesh &_vbo, string _file);
+    ofShader    haloShader;
     
-    vector<ofPolyline> coast;
-    vector<ofPolyline> borders;
-    vector<ofPolyline> rivers;
+    float       wireSphereScale, solidSphereScale, haloSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+    float       coastAlpha, riversAlpha;
+    ofVboMesh   coastVbo;
+    ofVboMesh   riversVbo;
+
+    //  Cities
+    //
+    void loadCities(string _file);
+    void loadSecCities(string _file);
+    vector< wCity > cities;
+    vector< wCity > secCities;
+    float   citiesAlpha;
     
-    vector<ofPoint>    points;
+    float   pointNoisePeaks;
+    float   rippleThreshold;
     
-    float pointNoisePeaks;
+    
+    //  Flocking particles
+    //
+    vector<wParticle*> particles;
+    ofPoint globalOffset;
+    float   nMaxPoints;
+    float   initialForce;
+    float   density,gravity,repulsion;
+    float   turbulence,neigbordhood,independence;
+    
+    //  Stars/constelations
+    //
+    void loadStarts( string _file);
+    vector< wStar* > stars;
+    vector< string > constelations;
+    string  selectedConstelation;
+    float   constelationMin,constelationMax, constelationRnd;
+    
+    //  Satellites
+    //
+    vector< wSatellite* > satellites;
+    float   satLinksAlpha;
+    float   satLinksDist;
+    float   nMaxSatellites;
+    float   blinkingAlpha;
+    float   blinkingSpeed;
+    
+    //  Arcs
+    //
+    vector<wArc>    arcs;
+    float           arcsAlpha;
+    float           arcsMax;
 };

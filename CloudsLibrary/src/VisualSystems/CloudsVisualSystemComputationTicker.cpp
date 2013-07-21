@@ -31,12 +31,7 @@ void CloudsVisualSystemComputationTicker::selfSetup(){
 	offsetMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 	
 	reloadShaders();
-	
-	relevantKeywords.push_back("computer");
-	relevantKeywords.push_back("computation");
-	relevantKeywords.push_back("computational art");
-	relevantKeywords.push_back("computational power");
-	
+		
 	regenerate = true;
 	
 	//choose a random preset
@@ -54,7 +49,7 @@ void CloudsVisualSystemComputationTicker::reloadShaders(){
 	ofClear(0);
 	targetOffset.end();
 	
-	drawShader.load( getDataPath() + "shaders/VisualSystems/ComputationTicker/display");
+	drawShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/display");
 	updateShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/update");
 }
 
@@ -116,6 +111,8 @@ void CloudsVisualSystemComputationTicker::selfUpdate(){
 	ofPushStyle();
 	
 	ofDisableAlphaBlending();
+	glDisable(GL_DEPTH_TEST);
+
 	sourceOffset.begin();
 	updateShader.begin();
 	updateShader.setUniformTexture("image", targetOffset.getTextureReference(), 0);
@@ -173,8 +170,6 @@ void CloudsVisualSystemComputationTicker::selfDraw(){
 	
 	drawShader.end();
 	
-	
-	
 }
 
 void CloudsVisualSystemComputationTicker::selfExit(){
@@ -189,13 +184,7 @@ void CloudsVisualSystemComputationTicker::selfBegin(){
 	targetOffset.begin();
 	ofClear(0);
 	targetOffset.end();
-	
-	
-	vector<string> presets = getPresets();
-	if(presets.size() > 0){
-		loadPresetGUIS(getVisualSystemDataPath() + presets[ ofRandom( presets.size() ) ]);
-	}
-
+		
 }
 
 void CloudsVisualSystemComputationTicker::selfEnd(){

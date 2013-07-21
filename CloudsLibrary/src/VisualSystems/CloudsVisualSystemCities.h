@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
-class CloudsVisualSystemCities : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemCities : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -49,6 +49,7 @@ public:
     
 protected:
     void    makeGrid(float _size, int _resolution);
+    void    generateCube(float _sizeX, float _sizeY, float _sizeZ);
     float   size, resolution, height;
     
     //  Noise
@@ -79,15 +80,4 @@ protected:
     float   blocksMinSize,blocksMinDist,blocksAlpha;
     float   blockSize;
     GLuint  cube;
-    
-    //  WireFrames && Points
-    //
-    ofVboMesh meshPoints;
-    ofVboMesh meshWires;
-    ofShader extrudeShader;
-    float   meshHeight;
-    float   meshScale;
-    float   wireFramesAlpha;
-    float   pointsSize;
-    
 };

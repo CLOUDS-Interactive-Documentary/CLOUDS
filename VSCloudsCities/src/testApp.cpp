@@ -1,7 +1,8 @@
 #include "testApp.h"
-
+#include "ofxTimeline.h"
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofxTimeline::removeCocoaMenusFromGlut("Cities");
 	ofSetVerticalSync(true);
 	
 	cities.setup();

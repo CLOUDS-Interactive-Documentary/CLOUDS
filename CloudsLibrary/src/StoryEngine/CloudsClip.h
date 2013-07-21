@@ -9,7 +9,7 @@ class CloudsClip {
   public:
 	CloudsClip();
 	
-	static string relinkFilePath(string filePath);
+	
     
 	string name;
     string person;
@@ -17,7 +17,8 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	ofColor color; //clip marker color
+	ofColor color;
+    //clip marker color
     string startingQuestion;
 	
     //svg data
@@ -28,8 +29,36 @@ class CloudsClip {
     int startFrame;
     int endFrame;
 
-    vector<string> keywords;
-	
+//    vector<string> keywords;
+    vector<string>& getOriginalKeywords();
+    //used to save out links
+    vector<string>& getAdditionalKeywords();
+    vector<string>& getRevokedKeywords();
+    vector<string>& getAllTopicsWithQuestion();
+    
+    //use everywhere for real keywoords
+	vector<string>& getKeywords();
+    
+    //get special # keywords
+    vector<string>& getSpecialKeywords();
+    
+    //question topic pairs
+    map<string,string>& getAllQuestionTopicPairs();
+    void addQuestionTopicPair(string topic, string question);
+    string getQuestionForTopic(string topic);
+    vector<string> getQuestionsVector();
+    //called from the FCPParser
+    void setOriginalKeywords(vector<string>& keywords);
+    //called from the CloudsLinker UI
+    void setDesiredKeywords(vector<string>& desiredKeywords
+                            );
+    
+    //called during ParseLinks
+    void addKeyword(string keyword);
+    void revokeKeyword(string keyword);
+    bool hasAdditionalKeywords();
+    bool hasRevokedKeywords();
+    
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
@@ -42,17 +71,19 @@ class CloudsClip {
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
-    string getFFMpegLine(string _exportFolder);
+    string getFFMpegLine(string alternativeVideoPath, string exportFolder);
+    
 	
 	bool hasCombinedVideo;
 	string combinedVideoPath;
 	string combinedCalibrationXMLPath;
 	
+	string getRelinkedVideoFilePath();
+	
 	//adjustment paramters set by the exporter
 	string getAdjustmentXML();
 	void loadAdjustmentFromXML(bool forceReload = false);
 	void saveAdjustmentToXML();
-	void addAdjustmentToXML(ofxXmlSettings adjustment);
 	
 	//adjustment parameters
 	float minDepth;
@@ -60,11 +91,24 @@ class CloudsClip {
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
-
+	ofVec2f faceCoord;
+	
 	//contour parameters
 	ofColor contourTargetColor;
 	float contourTargetThreshold;
 	float contourMinBlobSize;
 	
 	bool adjustmentLoaded;
+    
+  protected:
+    vector<string> originalKeywords;    //came in from FCP
+    vector<string> additionalKeywords;  //added manually
+    vector<string> revokedKeywords;     //manually removed
+    vector<string> specialKeywords;        //special Keywords start with #
+    vector<string> topicWithQuestions;
+    map<string,string> questionTopicMap; //question-topic pairs
+    bool keywordsDirty;
+    void collateKeywords();
+    vector<string> keywords; //collated
+
 };

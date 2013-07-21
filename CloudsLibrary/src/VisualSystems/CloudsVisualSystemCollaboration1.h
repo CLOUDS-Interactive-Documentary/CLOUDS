@@ -7,7 +7,7 @@
 	 @author jtnimoy
 */
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #define _C CloudsVisualSystemCollaboration1
 
@@ -37,7 +37,7 @@ namespace jtn{
 
 //--------------------------------------------------------
 
-class _C:public CloudsVisualSystemRezanator{
+class _C:public CloudsVisualSystem{
  public:
 	void selfSetup();
     string getSystemName();

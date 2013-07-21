@@ -69,17 +69,14 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
     ofPushStyle();
     if(bRenderSystem)
     {
+        CloudsVisualSystem::getSharedRenderTarget().begin();
+        ofClear(0, 0, 0);
         
         //  TEMPORARY FIX
         //
         drawBackground();
         
-		if(camUseClouds && sharedCamera != NULL){
-			sharedCamera->begin();
-		}
-		else{
-			currentCamera->begin();
-		}
+		currentCamera->begin();
         
         //  TEMPORARY FIX
         //
@@ -105,18 +102,19 @@ void CloudsVisualSystemRezanator::draw(ofEventArgs & args)
 		
         lightsEnd();
         
-		if(camUseClouds && sharedCamera != NULL){
-			sharedCamera->end();
-		}
-		else{
-			currentCamera->end();
-		}
-
+		currentCamera->end();
+        CloudsVisualSystem::getSharedRenderTarget().end();
+		
+		//TODO: add shader preprocess
+		
+        CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
     }
     
-    ofPopStyle();
-	
 	timeline->draw();
+	
+    ofPopStyle();
 }
 
 void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
@@ -159,7 +157,11 @@ void CloudsVisualSystemRezanator::exit(ofEventArgs & args)
 void CloudsVisualSystemRezanator::begin()
 {
     loadGUIS();
-    showGUIS();
+	timeline->hide();
+	hideGUIS();
+	ofHideCursor();
+	
+//    showGUIS(); //remove this so the gui doesn't keep popping up
     cam.enableMouseInput();
     for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
     {
@@ -180,6 +182,19 @@ void CloudsVisualSystemRezanator::end()
     selfEnd();
 }
 
+void CloudsVisualSystemRezanator::toggleControls(){
+	
+	toggleGUIS();
+	timeline->toggleShow();
+	
+	if(timeline->getIsShowing()){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
+
+}
 void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
 {
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
@@ -237,16 +252,7 @@ void CloudsVisualSystemRezanator::keyPressed(ofKeyEventArgs & args)
             
         case 'h':
         {
-            toggleGUIS();
-			timeline->toggleShow();
-//            if(bShowTimeline)
-//            {
-//                timeline->hide();
-//            }
-//            else{
-//                timeline->show();
-//            }
-//            bShowTimeline = !bShowTimeline;            
+			toggleControls();
         }
             break;
             
@@ -538,7 +544,7 @@ vector<string> CloudsVisualSystemRezanator::getPresets()
 		for(int i = 0; i < presetsFolder.size(); i++){
 			if(presetsFolder.getFile(i).isDirectory() &&
                ofFilePath::removeTrailingSlash(presetsFolder.getName(i)) != "Working" &&
-			   presetsFolder.getName(i).at(0) != '_')
+			   presetsFolder.getName(i).at(0) != '_') //use leading _ to hide folders
             {
 				presets.push_back(presetsFolder.getName(i));
 			}
@@ -573,7 +579,7 @@ void CloudsVisualSystemRezanator::guiEvent(ofxUIEventArgs &e)
             ofFileDialogResult result = ofSystemLoadDialog("Load Visual System Preset Folder", true, getVisualSystemDataPath());
             if(result.bSuccess && result.fileName.length())
             {
-                loadPresetGUIS(result.filePath);
+                loadPresetGUISFromPath(result.filePath);
             }
             else{
                 loadGUIS();
@@ -812,8 +818,6 @@ void CloudsVisualSystemRezanator::setupCameraGui()
     camGui->addWidgetDown(button, OFX_UI_ALIGN_RIGHT, true);
     camGui->addWidgetToHeader(button);
     camGui->addSpacer();
-    camGui->addToggle("USE CLOUDS CAM", &camUseClouds);
-    camGui->addSpacer();
     camGui->addSlider("DIST", 0, 1000, &camDistance);
     camGui->addSlider("FOV", 0, 180, &camFOV);
     camGui->addSlider("ROT-X", 0, 360.0, xRot->getPosPtr())->setIncrement(1.0);
@@ -976,7 +980,7 @@ void CloudsVisualSystemRezanator::guiPresetEvent(ofxUIEventArgs &e)
     ofxUIToggle *t = (ofxUIToggle *) e.widget;
     if(t->getValue())
     {
-        loadPresetGUIS(getVisualSystemDataPath() + e.widget->getName());
+        loadPresetGUISFromName(e.widget->getName());
     }
 }
 
@@ -1602,10 +1606,10 @@ void CloudsVisualSystemRezanator::saveTimelineUIMappings(string path)
 {
     if(ofFile::doesFileExist(path))
     {
-        cout << "DELETING OLD MAPPING FILE" << endl;
+//        cout << "DELETING OLD MAPPING FILE" << endl;
         ofFile::removeFile(path);
     }
-    cout << "TIMELINE UI MAPPER SAVING" << endl;
+//    cout << "TIMELINE UI MAPPER SAVING" << endl;
     ofxXmlSettings *XML = new ofxXmlSettings(path);
     XML->clear();
     
@@ -1907,8 +1911,15 @@ void CloudsVisualSystemRezanator::saveGUIS()
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 }
 
-void CloudsVisualSystemRezanator::loadPresetGUIS(string presetPath)
+void CloudsVisualSystemRezanator::loadPresetGUISFromName(string presetName){
+	loadPresetGUISFromPath(getVisualSystemDataPath() + presetName);
+}
+
+void CloudsVisualSystemRezanator::loadPresetGUISFromPath(string presetPath)
 {
+	
+	cout << "Loading preset data from " << presetPath << endl;
+	
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->loadSettings(presetPath+"/"+getSystemName()+guis[i]->getName()+".xml");
@@ -2088,16 +2099,21 @@ void CloudsVisualSystemRezanator::drawNormalizedTexturedQuad()
 void CloudsVisualSystemRezanator::drawBackground()
 {
 	ofPushStyle();
+//	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
+	ofEnableAlphaBlending();
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	
     if(gradientMode == OF_GRADIENT_CIRCULAR)
     {
         
         //  TEMPORAL FIX
         //
 //		cout << "drawing bckground color " << *bgColor << " " << *bgColor2 << endl;
-
 		ofSetSmoothLighting(true);
+
         ofBackgroundGradient(*bgColor, *bgColor2, OF_GRADIENT_CIRCULAR);
-		ofPopStyle();
     
         //  Sorry Reza this is a quick and durty fix
         //
@@ -2113,14 +2129,18 @@ void CloudsVisualSystemRezanator::drawBackground()
 //        ofLayerGradient(*bgColor, *bgColor2);
 //        ofPopMatrix();
         
-        selfDrawBackground();
     }
     else
     {
         ofSetSmoothLighting(false);
         ofBackground(*bgColor);
     }
-	ofPopStyle();	
+//	glPopAttrib();
+
+	
+	ofPopStyle();
+	
+	selfDrawBackground();	
 }
 
 void CloudsVisualSystemRezanator::ofLayerGradient(const ofColor& start, const ofColor& end)

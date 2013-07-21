@@ -3,12 +3,12 @@
 
 #include "ofMain.h"
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "MSAPhysics3D.h"
 
 using namespace msa::physics;
 
-class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
   public:
 	
 	CloudsVisualSystemVerletForm();
@@ -17,7 +17,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	
     void selfSetup();
     void selfSetupGuis();
-    
+    void selfPresetLoaded(string presetPath);
+	
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -26,6 +27,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
     void selfExit();
     void selfBegin();
 	void selfEnd();
+	
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -50,14 +52,14 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
  
   protected:
 	
-	bool doRegenerateMesh;
-	
 	ofxUISuperCanvas* clothGui;
 	
 	float clothWidth;
 	float clothHeight;
-	
+	float colorIndex;
 	float gridSize;
+	
+	void clearElements();
 	
 	bool shouldRegenerateMesh;
 	void generateMesh();
@@ -68,7 +70,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	
 	ofVboMesh mesh;
 	World3D physics;
-	map<Particle3D*, ofIndexType> particleToMeshIndex;
+//	map<Particle3D*, ofIndexType> particleToMeshIndex;
 	map<ofIndexType, Particle3D*> meshIndexToParticle;
 	map<Particle3D*, vector<ofIndexType> > particleToMeshIndices;
 	
@@ -78,7 +80,7 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystemRezanator {
 	vector< vector<Particle3D*> > particles;
 	
 	//color generators
-	vector<ofColor> initColors();
+	vector<ofColor> initColors(int row);
 	vector<ofColor> colors;
 
 	ofPixels colorPalettes;

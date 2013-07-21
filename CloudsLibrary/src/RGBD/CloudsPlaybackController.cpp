@@ -1,21 +1,16 @@
 
 #include "CloudsPlaybackController.h"
 
-#include "CloudsVisualSystemRezanator.h"
-#include "CloudsVisualSystemComputationTicker.h"
-#include "CloudsVisualSystemLSystems.h"
-#include "CloudsVisualSystemVoro.h"
-#include "CloudsVisualSystemVerletForm.h"
-#include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemAmber.h"
-#include "CloudsVisualSystemCollaboration1.h"
 
 CloudsPlaybackController::CloudsPlaybackController(){
+	storyEngine = NULL;
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
+	currentAct = NULL;
 }
 
+//--------------------------------------------------------------------
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
@@ -23,55 +18,100 @@ CloudsPlaybackController::~CloudsPlaybackController(){
 void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
 		eventsRegistered = false;
-		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
-		ofRemoveListener(storyEngine->getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofRemoveListener(storyEngine->getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
-		
-		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
 		
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		
-//		delete visualSystemControls;
-//		delete visualSystemDD;
-//		delete keyThemesDD;
+		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
+		
+	}
+	
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
+	}
+	
+	if(storyEngine != NULL){
+		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
 }
 
-//--------------------------------------------------------------------
-void CloudsPlaybackController::setup(CloudsStoryEngine& storyEngine){
-	if(!eventsRegistered){
-//		camera.setup();
-//		camera.autosavePosition = true;
-//		camera.loadCameraPosition();
-		
-		cloudsCam.setup();
-		cloudsCam.lookTarget = ofVec3f(0,25,0);
 
-		this->storyEngine = &storyEngine;
-		
-		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsPlaybackController::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsPlaybackController::clipBegan);
-		ofAddListener(storyEngine.getEvents().visualSystemBegan, this, &CloudsPlaybackController::visualSystemBegan);
-		ofAddListener(storyEngine.getEvents().visualSystemEnded, this, &CloudsPlaybackController::visualSystemEnded);
+//--------------------------------------------------------------------
+void CloudsPlaybackController::setup(){
+	//LB
+	//	create a shared fbo. We'll pass a pointer to each visual system as the are played
+	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	sharedRenderTarget.begin();
+	ofClear(0,0,0,0);
+	sharedRenderTarget.end();
 	
-		ofAddListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
+	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	nextRenderTarget.begin();
+	ofClear(0,0,0,0);
+	nextRenderTarget.end();
+	
+	
+	
+	if(!eventsRegistered){
+		
+		eventsRegistered = true;
+		
+		ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+		ofRemoveListener(ofEvents().update, this, &CloudsPlaybackController::update);
+
+		ofAddListener(ofEvents().update, this, &CloudsPlaybackController::update);
+		ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
-		populateVisualSystems();
+		
+		//LB:: pointing to our our sharedRndertarget
+		rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
 
 		rgbdVisualSystem.setRenderer(combinedRenderer);
-		rgbdVisualSystem.setCamera(cloudsCam);
 		rgbdVisualSystem.setup();
+		rgbdVisualSystem.setDrawToScreen( false );
 		
-		eventsRegistered = true;
-
-		//combinedRenderer.setShaderPath("../../../CloudsData/shaders/rgbdcombined");
-		combinedRenderer.setShaderPath( CloudsVisualSystem::getDataPath() + "shaders/rgbdcombined");
+		combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
+		
+		//just temporary. we'll need a better fade event setup with more triggers
+		fadeDuration = 1000;
+		fadeStartTime = ofGetElapsedTimeMillis();
+		fadeEndTime = fadeStartTime + fadeDuration;
+		fadeStartVal = 0;
+		fadeTargetVal = 1.;
+		
+		fadingOut = fadingIn = false;
+		crossfadeValue = 1.;
+		
 	}
+		
+	
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
+	if(this->storyEngine != NULL){
+		ofRemoveListener(this->storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	}
+	ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
+	this->storyEngine = &storyEngine;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::playAct(CloudsAct* act){
+
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
+	}
+	
+	currentAct = act;
+	currentAct->registerEvents(this);
+	currentAct->play();
 }
 
 //--------------------------------------------------------------------
@@ -81,9 +121,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		combinedRenderer.reloadShader();
 	}
 	
-	if(args.key == OF_KEY_RIGHT){
-		storyEngine->playNextClip();
-	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -107,48 +144,160 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::update(){
-
+void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
-	if(combinedRenderer.isDone() && !storyEngine->isWaiting()){
-		rgbdVisualSystem.speakerEnded();
-		storyEngine->clipEnded();
-	}
+	updateVisualSystemCrossFade();
 	
-}
-
-//--------------------------------------------------------------------
-void CloudsPlaybackController::draw(){
-	
-//	if(!showingVisualSystem && combinedRenderer.isPlaying()){
-//		camera.begin();
-//		combinedRenderer.drawPointCloud();
-//		camera.end();
+//	//TEMP
+//	if(currentVisualSystem != NULL)	{
+//		//replicate a basic camera annimation
+//		currentVisualSystem->getCameraRef()->move(0,0,10);
 //	}
 	
+	
 }
 
-#pragma story engine
-//--------------------------------------------------------------------
-void CloudsPlaybackController::storyBegan(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::updateVisualSystemCrossFade(){
+	//handle fadin/out
+	if( fadingIn || fadingOut){
+		int currentTime = ofGetElapsedTimeMillis();
+		
+		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
+		
+		
+		//end fading in
+		if( fadingIn && currentTime > fadeEndTime ){
+			//end fade and stop the other system
+			fadingIn = false;
+			rgbdVisualSystem.stopSystem();
+			
+			//use our currentVisualSystem's camera( no more need for the super camera anymore )
+			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
+		}
+		
+		//end fading out
+		else if( fadingOut && currentTime > fadeEndTime ){
+			//end fade and stop the other system
+			fadingOut = false;
+			hideVisualSystem();
+			
+			//use our currentVisualSystem's camera( no need for the super camera anymore )
+			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
+		}
+		
+		//otherwise we're fading and we need to mix our cameras
+		else{
+			
+			//mix the attributes ffrom our vis system cameras to build our superCamera
+
+			mixCameras(&superCamera,
+					   &rgbdVisualSystem.getCameraRef(),
+					   &currentVisualSystem->getCameraRef(),
+					   crossfadeValue );
+
+			//set the visual systems' current camera to our superCamera
+			currentVisualSystem->setCurrentCamera( superCamera );
+			rgbdVisualSystem.setCurrentCamera( superCamera );
+			
+		}
+		
+	}
+}
+
+void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
+										  ofCamera* c0,
+										  ofCamera*  c1,
+										  float x,
+										  ofVec3f posOffset0,
+										  ofVec3f posOffset1 )
+{
 	
+	//get inverse val
+	float mx = 1. - x;
+	
+	//projection stuff
+	targetCam->setupPerspective(false,													//bool vFlip
+								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
+								c0->getNearClip()*x		+	c1->getNearClip()*mx,		//float nearDist
+								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
+								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
+	
+	//position, rotation, are we missing something else here?
+	targetCam->setPosition( (c0->getPosition()+posOffset0)*x + (c1->getPosition()+posOffset1)*mx );
+	ofQuaternion rot;
+	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
+	targetCam->setOrientation( rot );
+	
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::draw(ofEventArgs & args){
+
+    
+	//turn off depth testing and enable blending
+    glDisable( GL_DEPTH_TEST );
+	
+	//???: rgbdVisualSystem.getBlendMode()
+	ofEnableBlendMode(	OF_BLENDMODE_ADD );
+	
+	int mixVal = 255 * crossfadeValue;
+	
+	ofSetColor( 255, 255, 255, mixVal );
+	
+	rgbdVisualSystem.selfPostDraw();
+	
+	//???: currentVisualSystem->getBlendMode()
+	ofEnableBlendMode(	OF_BLENDMODE_ADD );
+	ofSetColor( 255, 255, 255, 255 - mixVal );
+	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	
+    ofDisableBlendMode();
+    glEnable( GL_DEPTH_TEST );
+	
+
+	if(currentAct != NULL && ofGetKeyPressed('-')){
+		currentAct->getTimeline().enableEvents();
+		currentAct->drawDebug();
+	}
+	else{
+		currentAct->getTimeline().disableEvents();
+	}
+}
+
+#pragma story engine events
+//--------------------------------------------------------------------
+void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
+	playAct(args.act);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	rgbdVisualSystem.playSystem();
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 	
-	playClip(args.chosenClip);
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::clipBegan(CloudsStoryEventArgs& args){
-	playClip(args.chosenClip);
+void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
+	
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemBegan(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
+	playClip(args.chosenClip);
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args){
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
-		//showVisualSystem();
+		showVisualSystem(args.preset);
 	}
 	else{
 		ofLogError() << "Triggered visual system while still showing one";
@@ -156,9 +305,20 @@ void CloudsPlaybackController::visualSystemBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemEnded(CloudsStoryEventArgs& args){
+void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
-		hideVisualSystem();
+
+		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
+		//a "middle" flag, which would stop the timeline. so when the system is ready to fade out let's play it again to
+		//watch the outro
+		if(args.preset.outroDuration > 0 && args.preset.indefinite){
+			args.preset.system->getTimeline()->play();
+		}
+		
+		//TODO: respond to args.preset.outroDuration
+		fadeOutVisualSystem();
+//		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
+							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -166,180 +326,151 @@ void CloudsPlaybackController::visualSystemEnded(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
+	rgbdVisualSystem.addQuestion(args.questionClip);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::topicChanged(string& args){
+	currentTopic = args;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
+	prerollClip(args.preRollClip, args.clipStartTimeOffset);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
+	if(!clip.hasCombinedVideo){
+		ofLogError() << "CloudsPlaybackController::prerollClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+		return;
+	}
+	
+	if(!combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
+		ofLogError() << "CloudsPlaybackController::prerollClip Error prerolling clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
+		return;
+	}
+	
+	prerolledClipID = clip.getID();
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
+
+	if(clip.getID() != prerolledClipID){
+		prerollClip(clip,1);
+	}
+	rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+	prerolledClipID = "";
+	currentClip = clip;
 	
-	if(clip.hasCombinedVideo){
-		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-			combinedRenderer.getPlayer().play();
-			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
-			currentClip = clip;
-		}
-		else{
-			ofLogError() << "RGBD LOAD : folder " << clip.combinedVideoPath << " is not valid" << endl;
-		}
-	}
-	else {
-		ofLogError() << "RGBD LOAD : clip " << clip.getLinkName() << " doesn't have combined video" << endl;
-	}
+	combinedRenderer.swapAndPlay();
+	
+//	if(clip.hasCombinedVideo){
+//		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+//			combinedRenderer.getPlayer().play();
+//			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+//			currentClip = clip;
+//		}
+//		else{
+//			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+//		}
+//	}
+//	else {
+//		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+//	}
 }
 
-#pragma visual systems
-//--------------------------------------------------------------------
-void CloudsPlaybackController::populateVisualSystems(){
-	
-	ofLogVerbose() << "Populating visual systems";
-	
-	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
-	registerVisualSystem( new CloudsVisualSystemLSystems() );
-	registerVisualSystem( new CloudsVisualSystemVoro() );
-	
-	set<string> keyThemes;
-	for(int i = 0; i < visualSystems.size(); i++){
-		vector<string>& keys = visualSystems[i]->getRelevantKeywords();
-		for(int k = 0; k < keys.size(); k++){
-			keyThemes.insert( keys[k] );
-		}
-	}
-	
-//	storyEngine->network->populateKeyThemes(keyThemes);
-	
-	//create the drop down
-    vector<string> names;
-	for(int i = 0; i < visualSystems.size(); i++){
-		names.push_back(visualSystems[i]->getSystemName());
-	}
-	
-	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
-	float length = 320;
-		
-	visualSystemControls = new ofxUISuperCanvas("VISUAL SYSTEMS");
-	visualSystemControls->addWidgetDown(new ofxUILabel("VISUAL SYSTEMS:", OFX_UI_FONT_MEDIUM));
-	visualSystemRadio = visualSystemControls->addRadio("VI	SUAL SYSTEM", names, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
-	visualSystemControls->addSlider("Test Duration (S)", 2, 60*5, &timeToTest);
-    visualSystemControls->setTheme(OFX_UI_THEME_COOLCLAY);
-    visualSystemControls->autoSizeToFitWidgets();
-	
-    ofAddListener(visualSystemControls->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
-}
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::registerVisualSystem(CloudsVisualSystem* system){
+void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
 	
-	ofLogVerbose() << "Registering system " << system->getSystemName();
+//	if(simplePlaybackMode) return;
 	
-
-	system->setup();
-	system->setCamera(cloudsCam);
-	
-	visualSystems.push_back( system );
-	nameToVisualSystem[system->getSystemName()] = system;
-}
-
-//--------------------------------------------------------------------
-void CloudsPlaybackController::showVisualSystem(){
-
-	/*
-	//get the visual system that is closest to this tag
-	string keyTheme = storyEngine->network->getKeyThemeForTag(storyEngine->getCurrentTopic());
-
-	for(int i = 0; i < visualSystems.size(); i++){
-		if(visualSystems[i]->isReleventToKeyword(keyTheme)){
-			showVisualSystem(visualSystems[i], keyTheme);
-			cout << "selected visual system " << currentVisualSystem->getSystemName() << " for topic " << storyEngine->getCurrentTopic() << " and key theme " << keyTheme << endl;
-			return;
-		}
-	}
-	
-	ofLogError() << "No visual systems found for topic: " << storyEngine->getCurrentTopic() << " picking random"<<endl;
-
-	//pick a random one
-	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());
-	*/
-	
-	//For now show a random system!
-	showVisualSystem(visualSystems[ int(ofRandom(visualSystems.size())) ], storyEngine->getCurrentTopic());		
-}
-
-//--------------------------------------------------------------------
-void CloudsPlaybackController::showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme){
 	if(showingVisualSystem){
+		//JG changed this directly to hide. This shouldn't ever happen when being driven by the story engine
 		hideVisualSystem();
+//		fadeOutVisualSystem();
 	}
-
-	cout << "showing " << nextVisualSystem->getSystemName() << endl;
 	
-	rgbdVisualSystem.stopSystem();
+	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
 	
-	nextVisualSystem->setCurrentTopic(storyEngine->getCurrentTopic());
-	nextVisualSystem->setCurrentKeyword(keyTheme);
-	nextVisualSystem->playSystem();
 
-	currentVisualSystem = nextVisualSystem;
+
+	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
+	
+	//we draw to screen in CloudsPlaybackController::draw() so we disable it in the nexVisualSystem
+	nextVisualSystem.system->setDrawToScreen( false );
+	
+	//TODO: replace with act current question
+	nextVisualSystem.system->setCurrentTopic( currentTopic );
+	nextVisualSystem.system->playSystem();
+	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
+	
 	showingVisualSystem = true;
 	
-	visualSystemControls->disable();
-	if(keyThemesPanel != NULL) keyThemesPanel->disable();
-
+	currentVisualSystem = nextVisualSystem.system;
+	
+	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
+	
+	//TODO: fade in based on nextVisualSystem.introDuration;
+	fadeInVisualSystem();
+	
+	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem(){
+
 	if(showingVisualSystem && currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
+
+		//JG why calling this twice?
+//		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
-		
-		visualSystemControls->enable();
-		if(keyThemesPanel != NULL) keyThemesPanel->enable();
-		
-		rgbdVisualSystem.playSystem();
-	}
-}
-
-//--------------------------------------------------------------------
-CloudsVisualSystem* CloudsPlaybackController::visualSystemWithName(string systemName){
-	if(nameToVisualSystem.find(systemName) != nameToVisualSystem.end()){
-		return nameToVisualSystem[systemName];
-	}
-	ofLogError() << "Could not find Visual System with name " << systemName;
-	return NULL;
-}
-
-//--------------------------------------------------------------------
-void CloudsPlaybackController::guiEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-    
-//    cout << "WIDGET NAME: " << name << endl;
-    
-    if(e.widget->getParent() == visualSystemRadio){
-		if(visualSystemRadio->getActive() != NULL){
-						
-			CloudsVisualSystem* system = visualSystemWithName( name );
-			if(system != NULL){
-				if(keyThemesPanel != NULL){
-					delete keyThemesPanel;
-				}
-				keyThemesPanel = new ofxUICanvas(0, visualSystemControls->getRect()->getMaxY(), 0, 0);
-				vector<string>& relevantKeys = system->getRelevantKeywords();
-				if(relevantKeys.size() == 0){
-					relevantKeys.push_back("no-key");
-				}
-				keyThemesRadio = keyThemesPanel->addRadio("KEY THEMES", relevantKeys, OFX_UI_ORIENTATION_VERTICAL, 16, 16);
 				
-				keyThemesPanel->setTheme(OFX_UI_THEME_COOLCLAY);
-				playButton = keyThemesPanel->addButton("Test System", &triggerVisualSystem);
-			
-				keyThemesPanel->autoSizeToFitWidgets();
-				ofAddListener(keyThemesPanel->newGUIEvent, this, &CloudsPlaybackController::guiEvent);
-			}
-		}
-    }
-	else if(e.widget == playButton && playButton->getValue() && !showingVisualSystem){
-		
-		cout << "Showing visual system!" << endl;
-		
-		showVisualSystem(visualSystemWithName(visualSystemRadio->getActive()->getName()),
-						 keyThemesRadio->getActive()->getName());
+		//rgbdVisualSystem.playSystem();// fade in instead
 	}
+}
+
+void CloudsPlaybackController::fadeInVisualSystem(){
+	
+	fadingIn = true;
+	fadingOut = false;
+	
+	//set crossfade
+	fadeDuration = 3000;
+	fadeStartTime = ofGetElapsedTimeMillis();
+	fadeEndTime = fadeStartTime + fadeDuration;
+	fadeStartVal = 1.;
+	fadeTargetVal = 0;
+	
+}
+
+void CloudsPlaybackController::fadeOutVisualSystem(){
+	
+	//move our rgbdSystem to account for the distance we've traveled
+	ofVec3f camdelta = currentVisualSystem->getCameraPosition() - cameraStartPos;
+	rgbdVisualSystem.positionOffset += camDelta;
+	//???: maybe we want the above somewhere else. updateVisualSystemCrossFade()?
+
+	//handle the fading
+	fadingIn = false;
+	fadingOut = true;
+	
+	//set crossfade
+	fadeDuration = 3000;
+	fadeStartTime = ofGetElapsedTimeMillis();
+	fadeEndTime = fadeStartTime + fadeDuration;
+	fadeStartVal = 0;
+	fadeTargetVal = 1.;
+	
+	rgbdVisualSystem.playSystem();
+	
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }

@@ -14,32 +14,49 @@
 
 class CloudsFCPParser {
   public:
-    CloudsFCPParser();
+    
+	CloudsFCPParser();
+	
+	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
     vector<string> getClustersForPerson(string personName);
+	
 #pragma mark Clips
+	bool hasClipWithLinkName(string linkname);
+	bool hasClipWithID(string ID);
 	CloudsClip& getClipWithLinkName( string linkname );
+	CloudsClip& getClipWithLinkName( string linkname, bool& clipFound );
+	CloudsClip& getClipWithID( string ID );
+	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
 	//MANAGE
     void parseLinks(string linkFile);
     void parseClusterMap(string mapFile);
+	
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
     vector<CloudsLink>& getSuppressionsForClip(string clipName);
-    
+
+	void addLink(string sourceName, string targetName);
+	void addLink(CloudsClip& source, CloudsClip& target);
     void addLink(CloudsLink& link);
+	
     void removeLink(string linkName, int linkIndex);
 	void removeLink(string linkName, string targetName);
 	void saveLinks(string linkFile);
 
+	void suppressConnection(string sourceName, string targetName);
+	void suppressConnection(CloudsClip& source, CloudsClip& target);
 	void suppressConnection(CloudsLink& link);
     void unsuppressConnection(string linkName, int linkIndex);
 	void unsuppressConnection(string linkName, string targetName);
-
+	void unsuppressConnection(CloudsLink& link);
+    void refreshAllKeywords();
+	
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -57,6 +74,10 @@ class CloudsFCPParser {
 	bool clipHasSuppressions(CloudsClip& clip);
 	bool clipHasSuppressions(string clipName);
 	
+    //are there any revoked or additional toolkits?
+    bool clipHasRevokedKeywords(CloudsClip& clip);
+    bool clipHasAdditionalKeywords(CloudsClip& clip);
+    
     //are there any starting Questions?
     bool clipHasStartingQuestions(CloudsClip& clip);
     bool clipHasStartingQuestions(string clipName);
@@ -66,6 +87,8 @@ class CloudsFCPParser {
 	bool linkIsSuppressed(string clipNameA, string clipNameB, int& index);
 	
 	float percentOfClipsLinked();
+	float getAllClipDuration();
+
 	
 	//create a list that maps all of the tags back to closest key theme
 	void populateKeyThemes();
@@ -77,17 +100,21 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false);
+	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
+							  bool mustHaveQuestion = false);
 	
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
+    vector<CloudsClip> getClipsWithQuestionsForTopic(string topic);
     set<string> getRelatedKeywords(string filterWord);
 	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
 	vector<string> getSharedKeywords(CloudsClip& a, CloudsClip& b);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
 	vector<CloudsClip> getSharedClips(string keywordA, string keywordB);
+	vector<CloudsClip> getMetaDataConnections(CloudsClip& source);
+	int getNumMetaDataConnections(CloudsClip& source);
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
@@ -98,11 +125,11 @@ class CloudsFCPParser {
 	set<string> clusterMapColors;
 	
   protected:
+    
+    void reciprocateSuppressions(CloudsClip& clip );
+    
     string xmlDirectory;
     string combinedVideoDirectory;
-	
-	bool keywordsDirty;
-    void refreshKeywordVector();
     
 	bool sortedByOccurrence;
 	
@@ -114,17 +141,27 @@ class CloudsFCPParser {
 	set<string> markerLinkNames;
 
     vector<CloudsClip> allClips;
-    map<string, int> clipIndex;
+    map<string, int> clipIDToIndex;
+    map<string, int> clipLinkNameToIndex;
+    map<string, vector<int> > questionTopicstoClipIndex;
     
     map<string, int> allKeywords;
+    //potential problem
     vector<string> keywordVector;
 	vector<int> hasCombinedVideoIndeces;
+	vector<string> questionIds;
+	vector<int> hasCombinedVideoAndQuestionIndeces;
 	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
-
+    
+    //not used at the moment
 	set<string> keyThemes;
 	map<string,string> tagToKeyTheme;
-	CloudsClip dummyClip; // for failed reference returns
+	
+    
+    CloudsClip dummyClip; // for failed reference returns
+	float lastBackupTime;
+	float backupTimeInterval;
 };

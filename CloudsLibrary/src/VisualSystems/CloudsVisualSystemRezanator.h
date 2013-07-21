@@ -1,14 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
+//#include "ofxUI.h"
 #include "ofxGenerative.h"
 #include "ofxColorPalettes.h"
 #include "ofxExtras.h"
 #include "CloudsVisualSystem.h"
-#include "ofxCameraSaveLoad.h"
-
-#include "ofxTimeline.h"
+//#include "ofxCameraSaveLoad.h"
+//#include "ofxTimeline.h"
 
 class CloudsVisualSystemRezanator : public CloudsVisualSystem {
 public:
@@ -90,7 +89,8 @@ public:
     
     //UI Helpers
     void loadGUIS();
-    void loadPresetGUIS(string presetName); 
+	void loadPresetGUISFromName(string presetName);
+    void loadPresetGUISFromPath(string presetPath);
     void saveGUIS();
     void savePresetGUIS(string presetName); 
     void showGUIS();
@@ -100,6 +100,7 @@ public:
     void deleteGUIS();
     
 	void setCurrentCamera(ofCamera& cam);
+	void toggleControls();
 	bool cursorIsOverGUI();
 	
     //Drawing Helpers
@@ -207,7 +208,6 @@ public:
     //CAM
     float camDistance;
     float camFOV;
-	bool camUseClouds;
     ofxViewType view;
 	ofCamera* currentCamera;
     ofEasyCam cam;

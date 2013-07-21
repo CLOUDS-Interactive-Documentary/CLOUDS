@@ -7,11 +7,12 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
-#include "VoroParticle.h"
+#include "CloudsVisualSystem.h"
 #include "Voro.h"
+#include "VoroParticle.h"
+//#include "vParticle.h"
 
-class CloudsVisualSystemVoro : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemVoro : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -25,6 +26,7 @@ public:
     void selfDrawDebug();
     void selfSceneTransformation();
     void selfDraw();
+//    void selfPostDraw();
     void selfExit();
     void selfBegin();
 	void selfEnd();
@@ -49,11 +51,14 @@ public:
     void billBoard();
     
 protected:
-    vector <VoroParticle *> seedParticles;
+    vector<VoroParticle *> seedParticles;
     vector<ofMesh>  cellMeshes;
     
-    ofTexture dot;
-    ofVec3f objectLookAt;
+    ofShader    background;
+    
+    ofTexture   dot;
+    ofTexture   nucles[28];
+    ofVec3f     objectLookAt;
     
     //  Particle System
     //
@@ -62,20 +67,36 @@ protected:
     float   MaxNumOfParticles, MaxSize;
     float   initialForce;
     float   zMove;
+    float   wallThikness;
     int     fps;
-    bool    bClear,bDrawParticles;
-    float   glowSize;
+    bool    bClear;
+    
+    float   tSize;
     bool    bDrawGlow;
+    bool    bDrawNucles;
     
     //  Voronoi
     //
     float   containerSize,containerHeight;
     float   cellsAlpha;
     float   cellsWireAlpha;
+    float   cellsVertexAlpha;
     bool    containerPeriodic;
     bool    bSphere;
     bool    bCyllinder;
-    bool    bDrawVoronoi;
-    bool    bDrawVoronoiWireFrames;
     
+    //  Cosmic Dust Particles
+    //
+//    vector<vParticle*> particles;
+//    ofPoint globalOffset;
+//    float   nMaxPoints;
+//    float   density,gravity,repulsion;
+//    float   turbulence,neigbordhood,independence;
+    
+    //  Displacement
+    //
+//    ofShader noiseDisplacement;
+//    float   noiseAmplitud;
+//    float   noiseDensity;
+//    float   noisePosition;
 };

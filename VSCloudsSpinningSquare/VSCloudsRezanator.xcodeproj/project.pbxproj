@@ -60,7 +60,7 @@
 		3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B966E175308D000F558AC /* ofxEasingSine.cpp */; };
 		3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9670175308D000F558AC /* ofxTween.cpp */; };
 		3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */; };
-		3DDBA90617605ED8000B393E /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DDBA90217605ED8000B393E /* CloudsRGBDCombinedRender.cpp */; };
+		3D683B441791957200593A48 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D683B421791957200593A48 /* CloudsRGBDCombinedRenderer.cpp */; };
 		4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
@@ -264,8 +264,9 @@
 		3D5B96A4175308FE00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		3D5B96A7175308FE00F558AC /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
-		3DDBA90217605ED8000B393E /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		3DDBA90317605ED8000B393E /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		3D683B411791955C00593A48 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		3D683B421791957200593A48 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
+		3D683B431791957200593A48 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
 		4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -842,8 +843,8 @@
 		3DDBA8FD17605ED8000B393E /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				3DDBA90217605ED8000B393E /* CloudsRGBDCombinedRender.cpp */,
-				3DDBA90317605ED8000B393E /* CloudsRGBDCombinedRender.h */,
+				3D683B421791957200593A48 /* CloudsRGBDCombinedRenderer.cpp */,
+				3D683B431791957200593A48 /* CloudsRGBDCombinedRenderer.h */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -1124,6 +1125,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3D683B411791955C00593A48 /* CloudsGlobal.h */,
 				3DDBA8FD17605ED8000B393E /* RGBD */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);
@@ -1304,7 +1306,7 @@
 				3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */,
 				3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */,
 				816B6FED1753291A005727A2 /* CloudsVisualSystemSpinningSquares.cpp in Sources */,
-				3DDBA90617605ED8000B393E /* CloudsRGBDCombinedRender.cpp in Sources */,
+				3D683B441791957200593A48 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

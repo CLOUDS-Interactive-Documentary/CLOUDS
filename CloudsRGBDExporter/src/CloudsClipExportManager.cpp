@@ -45,25 +45,35 @@ bool CloudsClipExportManager::setExportDirectory(string directory){
 void CloudsClipExportManager::exportClip(CloudsClip clip){
 
 	currentClip = clip;
-	
+
+	holeFiller.setKernelSize(3);
+    holeFiller.setIterations(3);
+    
+    
 	done = false;
-	currentFrame = clip.startFrame;
+	currentFrame = clip.startFrame - 24; //24 frame handle
 	
 	rgbdPlayer.setUseTexture(false);
 	
-	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << endl;
-	
+	cout << "BEGINNING EXPORT OF CLIP ON THREAD " << currentClip.getLinkName() << " ALT FOLDER " << alternativeVideoFolder << endl;
+	rgbdPlayer.setAlternativeVideoFolder( alternativeVideoFolder, true );
 	if(!rgbdPlayer.setup( currentClip.getSceneFolder() )){
 		ofLogError() << "Scene at path " << currentClip.getSceneFolder() << " Failed to load scene";
 		done = true;
 		return;
 	}
-	
+	if(!rgbdPlayer.alternativeVideoIsConfirmed()){
+		ofLogError() << "Movie file in " << alternativeVideoFolder << " does not have the same number of frames as " << currentClip.sourceVideoFilePath << endl;
+		done = true;
+		return;
+		
+	}
 	renderer.cacheValidVertices = true;
 	renderer.setup(rgbdPlayer.getScene().calibrationFolder);
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
 	
-	medianPixels.allocate(rgbdPlayer.getDepthPixels().getWidth(), rgbdPlayer.getDepthPixels().getHeight(), OF_IMAGE_GRAYSCALE);
+	medianPixels.allocate(rgbdPlayer.getDepthPixels().getWidth(),
+						  rgbdPlayer.getDepthPixels().getHeight(), OF_IMAGE_GRAYSCALE);
 	renderer.setDepthImage(medianPixels);
 
 	currentClip.loadAdjustmentFromXML(true);
@@ -74,14 +84,17 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.scale = currentClip.adjustScale;
 	
 	rgbdPlayer.getVideoPlayer()->setFrame(currentFrame);
+	rgbdPlayer.getVideoPlayer()->update();
+	renderer.update();
 	
 	exporter.minBlobSize = currentClip.contourMinBlobSize;
 	exporter.targetColor = currentClip.contourTargetColor;
 	exporter.contourThreshold = currentClip.contourTargetThreshold;
+	exporter.facePosition = renderer.getWorldPoint(currentClip.faceCoord, rgbdPlayer.getDepthSequence()->getPixels());
 	
 	exporter.prepare();
 	
-	cout << "STARTING CLIP EXPORT " << endl;
+	cout << "STARTING CLIP EXPORT face position " << exporter.facePosition << " coord (" << currentClip.faceCoord << ")" << endl;
 	
 	startThread(true, false);
 }
@@ -100,12 +113,13 @@ void CloudsClipExportManager::medianFilter(){
 	int currentDepthFrame = rgbdPlayer.getDepthSequence()->getCurrentFrame();
 	ofShortPixels pixels[5];
 	unsigned short medianBuffer[5];
-
-	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame-2, pixels[0]);
-	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame-1, pixels[1]);
-	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+0, pixels[2]);
-	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+1, pixels[3]);
-	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(currentDepthFrame+2, pixels[4]);
+	
+	int maxDepthFrame = rgbdPlayer.getDepthSequence()->getTotalNumFrames()-1;
+	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(ofClamp(currentDepthFrame-2,0,maxDepthFrame), pixels[0]);
+	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(ofClamp(currentDepthFrame-1,0,maxDepthFrame), pixels[1]);
+	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(ofClamp(currentDepthFrame+0,0,maxDepthFrame), pixels[2]);
+	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(ofClamp(currentDepthFrame+1,0,maxDepthFrame), pixels[3]);
+	rgbdPlayer.getDepthSequence()->getPixelsAtFrame(ofClamp(currentDepthFrame+2,0,maxDepthFrame), pixels[4]);
 	
 	for(int i = 0; i < pixels[0].getWidth()*pixels[0].getHeight(); i++){
 		for(int p = 0; p < 5; p++){
@@ -113,6 +127,9 @@ void CloudsClipExportManager::medianFilter(){
 		}
 		medianPixels.getPixels()[i] = getMedianValueOf5( medianBuffer );
 	}
+    
+    holeFiller.close(medianPixels);
+
 }
 
 void CloudsClipExportManager::threadedFunction(){
@@ -123,10 +140,15 @@ void CloudsClipExportManager::threadedFunction(){
 		dir.create();
 	}
 	
+	//TEMP
+	//exporter.writeMetaFile(outputDirectory, &renderer);
+	
+	exporter.log = "writing " + currentClip.getID() + " from " + rgbdPlayer.getScene().name + "\n";
+	int lastFrame = currentFrame;
 	bool completedClip = false;
-	while( isThreadRunning() && currentFrame <= currentClip.endFrame ){
+	while( isThreadRunning() && !completedClip ){ //24 frame handle
 		
-		cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
+		//cout << "Exporting  " << currentClip.getLinkName() << " : " << currentFrame << endl;
 		
 		medianFilter();
 		
@@ -137,16 +159,30 @@ void CloudsClipExportManager::threadedFunction(){
 
 		rgbdPlayer.getVideoPlayer()->nextFrame();
 		currentFrame = rgbdPlayer.getVideoPlayer()->getCurrentFrame();
-		
-		if(currentFrame > currentClip.endFrame){
+
+        if(lastFrame == currentFrame){
+            exporter.log += "Frame stuck on " + ofToString(currentFrame) + "\n";
+        	completedClip = true;
+        }
+        
+		if(currentFrame > currentClip.endFrame + 24){
+            exporter.log += "Export completed successfully \n";
 			completedClip = true;
 		}
+        
+        lastFrame = currentFrame;
 		ofSleepMillis(10);
 	}
 	
 	if(completedClip){
 		exporter.writeMetaFile(outputDirectory, &renderer);
+		
 	}
-	
+	ofBuffer logFileBuf(exporter.log);
+    string logFilePath = outputDirectory + "/" + currentClip.getID() + "_log.txt";
+    cout << "Saving log to " << logFilePath << endl;
+    
+	ofBufferToFile(logFilePath, logFileBuf);
+    
 	done = true;
 }

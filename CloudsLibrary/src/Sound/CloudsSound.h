@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "CloudsStoryEngine.h"
+#include "CloudsAct.h"
 
 class CloudsSound {
   public:
@@ -23,18 +24,24 @@ class CloudsSound {
 	void mouseReleased(ofMouseEventArgs & args);
 	
 	void audioRequested(ofAudioEventArgs& args);
+
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);	
+	void topicChanged(string& args);
+	void preRollRequested(CloudsPreRollEventArgs& args);
 	
   protected:
 
 	CloudsStoryEngine* storyEngine;
+	CloudsAct* currentAct;
 	
 	bool eventsRegistered;
-	void storyBegan(CloudsStoryEventArgs& args);
-	void clipEnded(CloudsStoryEventArgs& args);
-	void clipBegan(CloudsStoryEventArgs& args);
-	void storyEnded(CloudsStoryEventArgs& args);
-	void topicChanged(CloudsStoryEventArgs& args);
-	
+	void actCreated(CloudsActEventArgs& args);
+
 	// Luke's vars
 	// 
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)

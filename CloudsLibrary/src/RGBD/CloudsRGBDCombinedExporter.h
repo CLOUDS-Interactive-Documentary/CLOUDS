@@ -43,11 +43,15 @@ class CloudsRGBDCombinedExporter {
 	float contourThreshold;
 	float minBlobSize;
 	ofxCv::ContourFinder contours;
-protected:
+	ofVec3f facePosition;
+	
+	string log;
+	
+  protected:
     
 	ofColor getColorForZDepth(unsigned short z, float minDepth, float maxDepth);
 	void interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta);
-	void addFaceToPixels(ofPixelsRef& targetPixels, ofPixelsRef& tempPixels, ofRectangle target,
+	void addFaceToPixels(ofPixels& pix, ofRectangle target,
 						 ofPolyline& leftEye, ofPolyline& rightEye,
 						 ofPolyline& faceOutline, ofPolyline& mouthOutline);
 	
@@ -70,6 +74,8 @@ protected:
 	
 //	ofFbo faceFBO; //draw target for face frame
 	ofPixels faceFrame; //copy to destination
+	ofPixels recoveryFaceFrame;
+	
 	bool inFace;
 	bool foundFirstFace;
 	int lastFaceFrameFound;

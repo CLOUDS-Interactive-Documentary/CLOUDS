@@ -6,6 +6,7 @@
 #include "CloudsRGBDCombinedExporter.h"
 #include "ofxRGBDCPURenderer.h"
 #include "ofxRGBDPlayer.h"
+#include "ofxDepthHoleFiller.h"
 
 class CloudsClipExportManager : public ofThread {
   public:
@@ -16,7 +17,8 @@ class CloudsClipExportManager : public ofThread {
 	bool isDone();
 	float percentComplete();
 	bool setExportDirectory(string directory);
-
+	string alternativeVideoFolder;
+	int framesRemaining;
   protected:
 	
 	void medianFilter();
@@ -26,6 +28,8 @@ class CloudsClipExportManager : public ofThread {
 	ofxRGBDPlayer rgbdPlayer;
 	CloudsRGBDCombinedExporter exporter;
 	
+    ofxDepthHoleFiller holeFiller;
+    
 	ofShortPixels medianPixels;
 	
 	string exportDirectory;

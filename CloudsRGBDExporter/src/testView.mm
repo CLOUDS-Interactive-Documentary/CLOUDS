@@ -1,4 +1,8 @@
+
 #import "testView.h"
+#include "ofxDepthImageCompressor.h"
+#include "ofxTimecode.h"
+#include "CloudsGlobal.h"
 
 @implementation testView
 @synthesize clipTable;
@@ -13,21 +17,34 @@
 	minBlobSize = 0;
 	selectColor = false;
 
-	cout << "PARSING LINKS" << endl;
-	if(ofDirectory("../../../CloudsData/").exists()){
-		
-		cout << "Found link in correct directory" << endl;
-		parser.setup("../../../CloudsData/fcpxml/");
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-	}
-	else{
-		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.setup("xml");
-		parser.parseLinks("clouds_link_db.xml");
-	}
+//	cout << "PARSING LINKS" << endl;
+//	if(ofDirectory("../../../CloudsData/").exists()){
+//		
+//		cout << "Found link in correct directory" << endl;
+//		parser.setup("../../../CloudsData/fcpxml/");
+//		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+//	}
+//	else{
+//		cout << "SETTING UP IN DATA DIRECTORY" << endl;
+//		parser.setup("xml");
+//		parser.parseLinks("clouds_link_db.xml");
+//	}
+	
+	parser.loadFromFiles();
 
-    [clipTable reloadData];
-    exportFolder = CloudsClip::relinkFilePath("/Volumes/Nebula/MediaPackages/_exports");
+	exportFolder = ofBufferFromFile("SavedExportFolder.txt").getText();
+	colorReplacementFolder = ofBufferFromFile("ColorReplacementFolder.txt").getText();
+	
+	if(exportFolder == ""){
+		exportFolder = relinkFilePath("/Volumes/Nebula/MediaPackages/_exports/");
+	}
+	
+	[exportFolderField setStringValue: [NSString stringWithUTF8String:exportFolder.c_str()] ];
+	[colorReplacementField setStringValue: [NSString stringWithUTF8String:colorReplacementFolder.c_str()] ];
+
+    
+	[clipTable reloadData];
+	
     cout << "Relinked Export Folder "<< exportFolder << endl;
 	for(int i = 0; i < 8; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
@@ -43,16 +60,19 @@
 	progressBars[6] = clipProgress7;
 	progressBars[7] = clipProgress8;
 
+	//renderer.setShaderPath("../../../CloudsData/shaders/unproject");
 	renderer.setShaderPath("../../../CloudsData/shaders/unproject");
 	
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
 	gui->addButton("Reset Camera", &resetCamera);
+	gui->addButton("Save Alignment", &saveAlignment);
+    
 	gui->addSlider("Clip Position", 0, 1.0, &clipPosition);
 	gui->addSlider("min depth", 300, 1000, &minDepth);
 	gui->addSlider("max depth", 900, 1500, &maxDepth);
-	gui->addSlider("x texture translate", -20, 20, &translate.x);
-	gui->addSlider("y texture translate", -20, 20, &translate.y);
+//	gui->addSlider("x texture translate", -20, 20, &translate.x);
+//	gui->addSlider("y texture translate", -20, 20, &translate.y);
 	gui->addSlider("x texture rotate", -5, 5, &rotate.x);
 	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
@@ -60,13 +80,12 @@
 	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
 	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
 	gui->addToggle("select color", &selectColor);
+	gui->addToggle("select face", &selectFace);
 	
 	gui->addToggle("pause", &pause);
 	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
-
-	gui->addButton("Save Alignment", &saveAlignment);
 	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
 
@@ -76,15 +95,32 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
 	
-	cout << "Finished setup" << endl;
+    filler.setKernelSize(3);
+    filler.setIterations(3);
+
+	cout << "Finished setup " << ofxTimecode::timecodeForSeconds(parser.getAllClipDuration()) << " seconds" << endl;
 }
 
 - (void)update
-{
-	
+{	
 	if(startExport){
 		[self cancelExport:self];
-    
+		
+		colorReplacementFolder = string([[colorReplacementField stringValue] UTF8String]);
+		exportFolder = [[exportFolderField stringValue] UTF8String] ;
+		
+		ofBuffer savedExportBuf;
+		savedExportBuf.append( exportFolder );
+		ofBuffer savedColorBuf;
+		savedColorBuf.append( colorReplacementFolder );
+
+		ofBufferToFile("SavedExportFolder.txt", savedExportBuf);
+		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
+		for(int i = 0; i < exportManagers.size(); i++){
+			exportManagers[i]->alternativeVideoFolder = colorReplacementFolder;
+            exportManagers[i]->setExportDirectory( exportFolder );
+		}
+		
 		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
 		while (idx != NSNotFound) {
 			// do work with "idx"
@@ -101,13 +137,21 @@
 		cout << "exporting " << selectedClips.size() << endl;
 		
         ofBuffer encodingScript;
-        encodingScript.append("#!/bin/bash");
+        encodingScript.append("#!/bin/bash\n");
+		for(int i = 0; i < selectedClips.size(); i++){
+			encodingScript.append("#" + selectedClips[i].getID() + "\n" );
+		}
         for(int i = 0; i < selectedClips.size(); i++){
-            encodingScript.append( selectedClips[i].getFFMpegLine(exportFolder) );
+            encodingScript.append( selectedClips[i].getFFMpegLine(colorReplacementFolder, exportFolder) );
         }
-//        ofBufferToFile(exportFolder+"/script.sh", encodingScript);
-        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
-//        selectedClips.clear();
+		
+		char filename[512];
+		sprintf(filename, "%s/ffmpeg_encode_M.%02d_D.%02d_H%02d_M.%02d.sh",exportFolder.c_str(),ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
+		
+        ofBufferToFile(filename, encodingScript);
+		
+//        ofBufferToFile("~/Desktop/"+ofGetTimestampString()+".sh", encodingScript);
+//        selectedClips.clear(); //STOP the export
 		startExport = false;
 	}
 	
@@ -161,6 +205,8 @@
 		loadedClip.contourMinBlobSize = minBlobSize;
 		loadedClip.contourTargetColor = targetColor;
 		loadedClip.contourTargetThreshold = contourThreshold;
+		loadedClip.faceCoord = facePosition;
+		
 	}
 
 	if(player.isLoaded() &&
@@ -177,6 +223,7 @@
 		loadedClip.adjustTranslate = renderer.colorMatrixTranslate = translate;
 		loadedClip.adjustScale = renderer.scale = scale;
 		
+        filler.close( renderer.getDepthImage() );
 		renderer.update();
 	}
 	
@@ -196,7 +243,24 @@
 			player.getVideoPlayer()->draw(0,0);
 			contours.draw();
 			ofPopMatrix();
-		}	
+		}
+	}
+	else if(selectFace){
+		ofPushMatrix();
+		ofTranslate(200,0);
+		
+		ofImage depthImage;
+		compressor.convertTo8BitImage(player.getDepthSequence()->getPixels(), depthImage);
+
+		depthImage.draw(0,0);
+		
+		ofPushStyle();
+		ofSetColor(255,100,0);
+		ofNoFill();
+		ofCircle(facePosition, 10);
+		ofPopStyle();
+		
+		ofPopMatrix();
 	}
 	else {
 		framebuffer.begin();
@@ -219,14 +283,20 @@
 		ofNoFill();
 		ofPushMatrix();
 		ofSetHexColor(0x69aade);
-		ofTranslate(0, 0, minDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);      
+		ofTranslate(minDepth, 0, 0);
+
+//#if (OF_VERSION_PATCH > 4)
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);
 		ofPopMatrix();
 		
 		ofPushMatrix();
 		ofSetHexColor(0xFFFFFF - 0x69aade);
-		ofTranslate(0, 0, maxDepth);
-		ofDrawPlane(0, 0, 800, 800);
+        ofRotate(-90, 0,1,0);
+		ofTranslate(maxDepth, 0, 0);
+		//ofDrawPlane(0, 0, 800, 800);
+        ofDrawGridPlane(800);        
 		ofPopMatrix();
 		
 		cam.end();
@@ -281,7 +351,12 @@
 	if(clipTable.selectedRow >= 0){
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
+		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);
+		
 		if(player.setup(clip.getSceneFolder())){
+			if(!player.alternativeVideoIsConfirmed()){
+				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
+			}
 			showHistogram = false;
 			calculatedHistogram = false;
 			histogram.clear();
@@ -298,12 +373,13 @@
 			scale = loadedClip.adjustScale;
 			minDepth = loadedClip.minDepth;
 			maxDepth = loadedClip.maxDepth;
-			
+
 			minBlobSize = loadedClip.contourMinBlobSize;
 			targetColor = loadedClip.contourTargetColor;
 			contourThreshold = loadedClip.contourTargetThreshold;
 			contours.setTargetColor(targetColor);
-
+			facePosition = loadedClip.faceCoord;
+			
 			player.play();
 		}
 	}
@@ -372,7 +448,10 @@
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
-	
+	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
+		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
+		contours.setTargetColor(targetColor);
+	}	
 }
 
 - (void)mousePressed:(NSPoint)p button:(int)button
@@ -380,6 +459,13 @@
 	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
 		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
 		contours.setTargetColor(targetColor);
+	}
+	
+	else if(selectFace && player.isLoaded() &&
+	   ofRectangle(200,0,player.getDepthSequence()->getPixels().getWidth(),
+					     player.getDepthSequence()->getPixels().getHeight()).inside(p.x, p.y)){
+		   facePosition = ofVec2f(p.x-200, p.y);
+		   cout << "setting face position to " << selectFace << endl;
 	}
 }
 
@@ -391,7 +477,6 @@
 - (void)windowResized:(NSSize)size
 {
 	framebuffer.allocate(size.width, size.height, GL_RGB, 4);
-
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -449,11 +534,17 @@
 	if([@"clip" isEqualToString:aTableColumn.identifier]){
 		return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
 	}
+	if([@"frames" isEqualToString:aTableColumn.identifier]){
+		string frameDescriptor = "[ " + ofToString(parser.getAllClips()[rowIndex].startFrame) + " - " + ofToString(parser.getAllClips()[rowIndex].endFrame) + " ]";
+		return [NSString stringWithUTF8String: frameDescriptor.c_str() ];
+	}
 	else if([@"align" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getAdjustmentXML()) ? @"YES" : @"NO";
 	}
 	else if([@"file" isEqualToString:aTableColumn.identifier]){
-		return [NSString stringWithUTF8String: ofFilePath::getBaseName( parser.getAllClips()[rowIndex].sourceVideoFilePath ).c_str() ];
+		vector<string> components = ofSplitString( ofFilePath::removeTrailingSlash(parser.getAllClips()[rowIndex].getSceneFolder()), "/" );
+		string takeName = components[components.size()-1];
+		return  [NSString stringWithUTF8String:(takeName + " - " + ofFilePath::getBaseName(parser.getAllClips()[rowIndex].sourceVideoFilePath)).c_str() ];
 	}
 	else if([@"depth" isEqualToString:aTableColumn.identifier]){
 		CloudsClip& clip = parser.getAllClips()[rowIndex];
@@ -464,7 +555,7 @@
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
 	}
 	else if([@"exported" isEqualToString:aTableColumn.identifier]){
-		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()) ? @"YES" : @"NO";
+		return ofFile::doesFileExist(exportFolder + "/" + parser.getAllClips()[rowIndex].getCombinedPNGExportFolder()+"/_calibration.xml") ? @"YES" : @"NO";
 	}
 	else{
 		return @"IDENTIFER ERROR";

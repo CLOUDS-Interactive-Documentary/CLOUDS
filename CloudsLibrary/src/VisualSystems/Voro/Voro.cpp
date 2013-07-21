@@ -53,7 +53,7 @@ ofMesh getCellMesh(voro::voronoicell &_c, ofPoint _pos ){
             vertices.push_back(newPoint);
             
             ofPoint newNormal;
-            newNormal =  newPoint - centroid ;
+            newNormal = newPoint - _pos;//centroid ;
             newNormal = newNormal.normalize();
             normals.push_back(newNormal);
         }
@@ -95,7 +95,7 @@ ofMesh getCellMesh(voro::voronoicell &_c, ofPoint _pos ){
     return ofMesh();
 };
 
-vector<ofMesh>  getCellsFromContainer(voro::container &_con){
+vector<ofMesh>  getCellsFromContainer(voro::container &_con, float _wallsThikness){
     
     vector<ofMesh> cells;
     
@@ -109,7 +109,7 @@ vector<ofMesh>  getCellsFromContainer(voro::container &_con){
                 return cells;
             } else {
                 double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
-                ofMesh cellMesh = getCellMesh(c, ofPoint(pp[0],pp[1],pp[2]));
+                ofMesh cellMesh = getCellMesh(c, ofPoint(pp[0],pp[1],pp[2])*(float)(1.0+_wallsThikness) );
                 cells.push_back( cellMesh );
                 i++;
             }
@@ -188,6 +188,80 @@ vector<ofPoint> getCellsCentroids(voro::container &_con){
     }
     
     return centroids;
+}
+
+vector< vector<ofPoint> > getCellsVertices(voro::container &_con){
+    vector< vector<ofPoint> > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+    int i = 0;
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                vector< ofPoint > cell = getCellVerteces(c, ofPoint(pp[0],pp[1],pp[2]) );
+                cells.push_back( cell );
+                i++;
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
+}
+
+vector< ofPolyline > getCellsPolylines(voro::container &_con){
+    vector< ofPolyline > cells;
+    
+    ofPoint pos;
+    
+    voro::c_loop_all vl( _con );
+
+	if( vl.start() ){
+        
+        do {
+            voro::voronoicell c;
+            int k = 0;
+            if( !_con.compute_cell(c, vl) ) {
+                return cells;
+            } else {
+                
+                double *pp = _con.p[vl.ijk] + _con.ps * vl.q;
+                ofPoint pos = ofPoint(pp[0],pp[1],pp[2]);
+                
+                ofPolyline cell;
+                
+                double *ptsp= c.pts;
+                vector<ofPoint> points;
+                
+                //  Index
+                //
+                for(int i = 0; i < c.p; i++){
+                    for(int j = 0; j < c.nu[i]; j++) {
+                        int k = c.ed[i][0];
+                        
+                        ofPoint newPoint;
+                        newPoint.x = pos.x + c.pts[3*k]*0.5;
+                        newPoint.y = pos.y + c.pts[3*k+1]*0.5;
+                        newPoint.z = pos.z + c.pts[3*k+2]*0.5;
+                        cell.addVertex(newPoint);
+                    }
+                }
+                
+                cells.push_back( cell );
+                
+            }
+            
+        } while( vl.inc() );
+    }
+    
+    return cells;
 }
 
 bool insideContainer(voro::container &_con, ofPoint _pos){

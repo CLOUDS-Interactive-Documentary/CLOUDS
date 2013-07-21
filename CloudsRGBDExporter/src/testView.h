@@ -9,8 +9,12 @@
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
 #include "ofxCv.h"
+#include "ofxDepthHoleFiller.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
+	
+	IBOutlet NSTextField* exportFolderField;
+	IBOutlet NSTextField* colorReplacementField;
 	
 	IBOutlet NSTableView* clipTable;
 
@@ -30,6 +34,7 @@
 	CloudsFCPParser parser;
 	ofxRGBDPlayer player;
 	ofxRGBDGPURenderer renderer;
+	
 	vector<CloudsClipExportManager*> exportManagers;
 	
 	bool exporting;
@@ -45,8 +50,9 @@
 	
 	int currentClipIndex;
 	
-    string  exportFolder;
-    
+    string exportFolder;
+    string colorReplacementFolder;
+	
 	//correction variables, loaded for each clip
 	ofVec3f translate;
 	ofVec3f rotate;
@@ -65,8 +71,12 @@
 	float contourThreshold;
 	float minBlobSize;
 	bool selectColor;
+	bool selectFace;
 	ofColor targetColor;
-	
+	ofVec2f facePosition;
+	ofxDepthImageCompressor compressor;
+	ofxDepthHoleFiller filler;
+    
 	//0 - 1 clip position
 	float clipPosition;
 	
@@ -75,6 +85,7 @@
 	unsigned maxSequenceDepth;
 	bool useLog;
 	map<unsigned short, int> hist;
+
 	
 }
 

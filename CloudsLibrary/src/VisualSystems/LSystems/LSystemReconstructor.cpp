@@ -9,11 +9,13 @@
 #include "LSystemReconstructor.h"
 LSystemReconstructor::LSystemReconstructor(){
     bGrow = false;
+    breakness = 0.0;
+    
     speed = 1.0;
     aNoise = 0.7;
     tNoise = 0.1;
     bornRandom = 2.0;
-    mesh.setMode(OF_PRIMITIVE_LINES);
+    growMesh.setMode(OF_PRIMITIVE_LINES);
 }
 
 void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
@@ -25,6 +27,8 @@ void LSystemReconstructor::setup(LSystem &_lsys, int _deep){
     _lsys.unoise = aNoise;
     _lsys.utime = tNoise;
     _lsys.make(_deep);
+    
+    originalMesh = _lsys.mesh;
     
     if (_lsys.mesh.getVertices().size() > 2){
         lineTo(_lsys.mesh.getVertices()[0]);
@@ -63,73 +67,128 @@ void LSystemReconstructor::addNode(ofPoint &_pnt){
     LNode node;
     node.set(_pnt);
     node.startTime = -1.0;
+    node.pct = -1.0;
+    
+    if (breakness > 0.0){
+        node.bActive = (ofRandomf()>=breakness*0.001)?true:false;
+    } else {
+        node.bActive = true;
+    }
+    
     node.branchesIndex.push_back( lines.size()-1 );
     nodes.push_back( node );
 }
 
-float LSystemReconstructor::getPct(){
-    return ofClamp(pct,0.0,1.0);
+ofRectangle LSystemReconstructor::getActiveNodesAre(){
+    ofRectangle box;
+	int n = activeNodes.size();
+	if(n > 0) {
+		const ofPoint& first = activeNodes[0];
+		// inititally, use width and height as max x and max y
+		box.set(first.x, first.y, first.x, first.y);
+		for(int i = 0; i < n; i++) {
+			const ofPoint& cur = activeNodes[i];
+			if(cur.x < box.x) {
+				box.x = cur.x;
+			}
+			if(cur.x > box.width) {
+				box.width = cur.x;
+			}
+			if(cur.y < box.y) {
+				box.y = cur.y;
+			}
+			if(cur.y > box.height) {
+				box.height = cur.y;
+			}
+		}
+		// later, we make width and height relative
+		box.width -= box.x;
+		box.height -= box.y;
+	}
+	return box;
 }
 
-void LSystemReconstructor::start(){
-    bGrow = true;
-}
-
-void LSystemReconstructor::stop(){
-    lastTime = ofGetElapsedTimef();
-    pct = time = 0.0;
-    bGrow = false;
-}
-
-void LSystemReconstructor::pause(){
-    bGrow = false;
+void LSystemReconstructor::init(){
+    timeLast = ofGetElapsedTimef();
+    time = 0.0;
 }
 
 void LSystemReconstructor::update(){
     
     //  Update Time
     //
-    float now = ofGetElapsedTimef();
-    float diff = now - lastTime;
+    float timeNow = ofGetElapsedTimef();
+    float timeDiff = timeNow - timeLast;
+    activeNodes.clear();
+    
     if (bGrow){
-        
         //  Go foward on time
         //
-        time += diff*speed;
+        time += timeDiff*speed;
         
         //  Render
         //
-        mesh.clear();
-        activeNodes.clear();
-        
-        pct = 0.0;
+        growMesh.clear();
         for(int i = 0; i < nodes.size(); i++){
             if (nodes[i].startTime >= 0.0){
                 float relativeTime = time - nodes[i].startTime;
                 for (int j = 0; j < nodes[i].branchesIndex.size(); j++){
-                    renderBranch( nodes[i].branchesIndex[j], relativeTime, ofNoise(nodes[i].x+ofGetElapsedTimef()*0.01,nodes[i].y));
+                    renderBranch( growMesh, nodes[i].branchesIndex[j], relativeTime, ofNoise(nodes[i].x+ofGetElapsedTimef()*0.01,nodes[i].y));
                 }
             }
         }
     }
     
-    lastTime = now;
+    if (bFlow){
+        for(int i = 0; i < nodes.size(); i++){
+            if (nodes[i].pct >= 0.0){
+                
+                if (bGrow){
+                    if (nodes[i].startTime < 0.0){
+                        break;
+                    }
+                }
+                
+                for (int j = 0; j < nodes[i].branchesIndex.size(); j++){
+                    
+                    int index = nodes[i].branchesIndex[j];
+                    int totalPoints = lines[ index ].size();
+                    
+                    float line = (totalPoints-1)*nodes[i].pct;
+                    int k = line;
+                        
+                    float pct = line-(int)(line);
+                    
+                    ofPoint A = lines[ index ][k];
+                    ofPoint B = lines[ index ][k+1];
+                    ofPoint pos = (1.0-pct)*A + (pct)*B;
+                    
+                    activeNodes.push_back(pos);
+                }
+                
+                nodes[i].pct += speed*0.01;
+                
+                if(nodes[i].pct > 1.0){
+                    nodes[i].pct = -1.0;
+                }
+            } else {
+                nodes[i].pct = ofRandom(-10.0,0.1);
+            }
+        }
+    }
+    
+    timeLast = timeNow;
 }
 
-void LSystemReconstructor::draw(){
-    mesh.draw();
-}
-
-void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _speed){
+void LSystemReconstructor::renderBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed){
     
     int totalPoints = lines[_index].size();
     int drawPoints = 0;
     
     for (int k = 0 ; k < totalPoints-1; k++){                  
         float thisTime = _speed*(float)k;
-        float nextTime = _speed*((float)k+1.0f);;
-        ofFloatColor color = ofFloatColor(1.0, 1.0-(((float)k)/((float)totalPoints))*0.8 );
-                
+        float nextTime = _speed*((float)k+1.0f);
+        
         if ( k == totalPoints-1){
             nextTime = thisTime;
         }
@@ -146,14 +205,16 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
             //
             ofPoint pos = (1.0-pct)*A + (pct)*B;
             
-            activeNodes.addVertex(pos);
+            activeNodes.push_back(pos);
             
-            addLineToMesh( mesh, lines[ _index ][k], pos, color);
+            _mesh.addVertex(lines[ _index ][k]);
+            _mesh.addVertex(pos);
             
         } else if ( _relativeTime > thisTime ){
             ofPoint pos = lines[ _index ][k];
             
-            addLineToMesh( mesh, pos, lines[ _index ][k+1], color);
+            _mesh.addVertex(pos);
+            _mesh.addVertex(lines[_index][k+1]);
             
             //  check if pass over a node
             //
@@ -170,16 +231,9 @@ void LSystemReconstructor::renderBranch(int _index, float _relativeTime, float _
     }
 }
 
-void LSystemReconstructor::addLineToMesh(ofMesh &_mesh, ofPoint &A, ofPoint &B, ofFloatColor &c){
-    mesh.addColor(c);
-    mesh.addVertex(A);
-    mesh.addColor(c);
-    mesh.addVertex(B);
-}
-
 int LSystemReconstructor::isNode(ofPoint &_pnt){
     for (int i = nodes.size()-1; i >= 0; i--) {
-        if ( nodes[i] == _pnt ){
+        if ( nodes[i] == _pnt && nodes[i].bActive ){
             return i;
         }
     }

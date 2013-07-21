@@ -80,7 +80,9 @@ void CloudsVisualSystemOcean::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemOcean::selfDraw(){
-//	renderer.drawWireframe();
+
+
+	renderer.drawWireframe();
 	renderer.draw();
 }
 

@@ -30,6 +30,10 @@ LSystem::LSystem(){
     utime           = 0.0f;
 }
 
+LSystem::~LSystem(){
+    delete []axiom;
+}
+
 void LSystem::addAxion(string _axiom){
     //  Delete previus axioms
     //

@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noisePeaks</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>rippleThreshold</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>max_number</Name>
+    <Value>221.674880981</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>initialForce</Name>
+    <Value>5.763546944</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>density</Name>
+    <Value>0.862068951</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gravity</Name>
+    <Value>0.605911314</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>repulsion</Name>
+    <Value>0.901477814</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>turbulence</Name>
+    <Value>0.090000004</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>neigbordhood</Name>
+    <Value>300.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>independence</Name>
+    <Value>0.003448276</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Number_of_Satelites</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_signals</Name>
+    <Value>0.000000000</Value>
+</Widget>

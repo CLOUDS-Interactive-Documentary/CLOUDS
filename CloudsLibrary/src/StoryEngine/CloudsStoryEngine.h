@@ -2,88 +2,164 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsFCPParser.h"
 #include "CloudsEvents.h"
+#include "CloudsGlobal.h"
+#include "CloudsFCPParser.h"
+#include "CloudsVisualSystemManager.h"
+#include "ofxUI.h"
+
+
+typedef struct {
+    string left;
+    string right;
+    int balance; //pos/neg
+} KeywordDichotomy;
+
 
 /**
  * The Clouds story engine generates sequences of clips
  * based on the keyword connectivity and rules.
  * It has state history for each story sequence
  */
+class CloudsAct;
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();
 	~CloudsStoryEngine();
 	
-	//CloudsFCPVisualizer* visualizer;
-	CloudsFCPParser* network;
+	CloudsFCPParser* parser;
+	CloudsVisualSystemManager* visualSystems;
 	
 	void setup();
-
-	void seedWithClip(CloudsClip& seed);
-	bool playNextClip(); //you can use this to skip if it's waiting
-	bool clipEnded(); //call this when the clip is done!
 	
-	void update(ofEventArgs& args);
+	CloudsAct* buildAct(CloudsClip& seed);
+	CloudsAct* buildAct(CloudsClip& seed, string topic);
 	
-	CloudsClip& getCurrentClip();
-	vector<CloudsClip>& getClipHistory();
-	string getCurrentTopic();
-	float getTotalSecondsWatched();
+//	void seedWithClip(CloudsClip& seed);
+//	void seedWithClip(CloudsClip& seed, string topic);
+//	bool playNextClip(); //you can use this to skip if it's waiting
+//	bool clipEnded(); //call this when the clip is done!
+	
+	//void update(ofEventArgs& args);
+	
+//	CloudsClip& getCurrentClip();
+//	vector<CloudsClip>& getClipHistory();
+//	string getCurrentTopic();
+//	float getTotalSecondsWatched();
 
-	bool historyContainsClip(CloudsClip& m);
-		
+//	bool historyContainsClip(CloudsClip& m);
 	//after this many times the topic becomes available again
-	int topicTimeoutPeriod;
+//	int topicTimeoutPeriod;
 	int getTimesOnTopic();
-	
+    
+    void initGui();
+    void saveGuiSettings();
+    void displayGui(bool display);
 	//after this many clips the topic opens up again
 	int maxTimesOnTopic;
 	bool printDecisions;
+	bool printCriticalDecisions;
 	bool atDeadEnd();
 	
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
-	bool isWaiting();
+//	bool isWaiting();
 	
 	CloudsEvents& getEvents();
 	
 	//TODO: make dynamic, will be improved
 	float fixedClipDelay;
-
-  protected:
 	
+//	void drawStoryEngineDebug();
+//	void drawActDebug();
+    void updateDichotomies(CloudsClip& clip);
+	void clearDichotomiesBalance();
+    
+
+//    CloudsAct& getAct();
+    
+protected:
+    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
+    ofxUISuperCanvas *vsGui;
+    
+    void guiEvent(ofxUIEventArgs &e);
+    ofBuffer scoreBuffer;
+    stringstream scoreStream;
 	CloudsEvents events;
 	bool isSetup;
 	
-	bool hasclip;
-	CloudsClip currentClip;
-	int totalFramesWatched;
-	
+//	bool hasclip;
+//	CloudsClip currentClip;
+//	int totalFramesWatched;
+//	CloudsAct act;
+
+    float soloPointCloudTime;
+    float minLengthToShowPointCloudInClip;
 	float totalPoints;
 	int nextClipTopScore;
-	vector<CloudsClip> validNextClips;
-	vector<CloudsClip> allNextClips;
-	bool populateNextClips();
+    int dichotomyThreshold;
+	
+//	vector<CloudsClip> validNextClips;
+//	vector<CloudsClip> allNextClips;
+	
 
-	void checkVisualSystems();
 	
-	float getNextClipDelay();
-	bool waitingForNextClip;
-	float nextClipTime;
+//	bool populateNextClips();
+//	void checkVisualSystems();
 	
-	vector<CloudsClip> clipHistory;
-	vector<string> topicHistory;
-	map<string, int> peopleVisited;
+//	float getNextClipDelay();
+//	bool waitingForNextClip;
+//	float nextClipTime;
+	
+//	bool watchingVisualSystem;
+//	float visualSystemEndTime;
+//	CloudsVisualSystemPreset currentVisualSystem;
+	
+//	vector<CloudsClip> clipHistory;
+//	vector<CloudsClip> clipQueue;
+	vector<KeywordDichotomy> dichotomies;
+    
+//	vector<string> topicHistory;
+//	map<string, int> peopleVisited;
 	
 	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
-	int scoreForClip(CloudsClip& clip);
-	void loadClip(CloudsClip& clip);
-	void chooseNewTopic(CloudsClip& clip);
-	int occurrencesOfPerson(string person, int stepsBack);
+//	float scoreForClip(CloudsClip& clip);
+	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic);
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log); //queue based
+	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
+	
+	
+//	void loadClip(CloudsClip& clip);
+//	void chooseNewTopic(CloudsClip& clip);
+	
+	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
+//	int occurrencesOfPerson(string person, int stepsBack);
+	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
 
+private:
+    //Act Builder Parameters
+    float actLength;
+    float maxTimeWithoutQuestion;
+    float gapLengthMultiplier;
+    float minClipDurationForStartingOffset;
+    float preRollDuration;
+    
+    //VS Story Engine Parameters
+    float systemMaxRunTime;
+    float maxVisualSystemGapTime;
+    float longClipThreshold;
+    float longClipFadeInPercent;
+    
+    
+    //Story engine decision making parameters
+    int topicsInCommonMultiplier;
+    int topicsinCommonWithPreviousMultiplier;
+    int samePersonOccuranceSuppressionFactor;
+    int dichomoiesFactor;
+    int linkFactor;
 };

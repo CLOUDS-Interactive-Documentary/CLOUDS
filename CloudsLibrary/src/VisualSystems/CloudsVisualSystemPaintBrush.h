@@ -8,11 +8,11 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 
 #include "Brush.h"
 
-class CloudsVisualSystemPaintBrush : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemPaintBrush : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -25,8 +25,6 @@ public:
     void selfDrawBackground();
     void selfDrawDebug();
     void selfSceneTransformation();
-    
-    void draw(ofEventArgs & args);
     
     void selfExit();
     void selfBegin();

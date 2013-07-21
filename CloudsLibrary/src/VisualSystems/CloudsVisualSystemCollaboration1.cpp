@@ -111,10 +111,11 @@ void _C::selfUpdate(){
 }
 
 void _C::selfDrawBackground(){
-    ofBackgroundGradient(ofColor(0), ofColor(255));
+ //   ofBackgroundGradient(ofColor(0), ofColor(255));
 }
 
 void _C::selfDraw(){
+	
 	ofPushMatrix();
 	ofRotate(rotation,0,0,1);
     ofTranslate(

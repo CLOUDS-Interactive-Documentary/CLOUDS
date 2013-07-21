@@ -16,7 +16,7 @@ string CloudsVisualSystemAmber::getSystemName()
 
 void CloudsVisualSystemAmber::selfSetup()
 {
-    
+	
     billboards.getVertices().resize(NUM_BILLBOARDS);
 	billboards.getColors().resize(NUM_BILLBOARDS);
 	billboards.getNormals().resize(NUM_BILLBOARDS,ofVec3f(0));
@@ -109,6 +109,8 @@ void CloudsVisualSystemAmber::selfSetup()
     	billboards.setNormal(i,ofVec3f(it->getRadius(),0,0));        
         i++;
 	}
+	
+	colorPalletes = new ofxColorPalettes(getDataPath()+"colors/");
 }
 
 void CloudsVisualSystemAmber::selfSetupGuis()
@@ -184,6 +186,8 @@ void CloudsVisualSystemAmber::selfSceneTransformation()
 
 void CloudsVisualSystemAmber::selfDraw()
 {
+	ofPushStyle();
+	
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     glDisable(GL_DEPTH_TEST);
 //    ps->draw();
@@ -199,10 +203,13 @@ void CloudsVisualSystemAmber::selfDraw()
 	billboardShader->end();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	
+	ofPopStyle();
 }
 
 void CloudsVisualSystemAmber::selfExit()
 {
+	delete colorPalletes;
     delete billboardShader; 
     delete glow;
     delete ps;    

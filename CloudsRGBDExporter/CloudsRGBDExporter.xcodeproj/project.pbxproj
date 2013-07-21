@@ -31,11 +31,9 @@
 		E7318F2B17403F13006B9650 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7318DB717403F12006B9650 /* Utility.cpp */; };
 		E7318F4317405037006B9650 /* CloudsClipExportManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7318F4117405037006B9650 /* CloudsClipExportManager.cpp */; };
 		E731D66F17401845006B9650 /* CloudsRGBDCombinedExporter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */; };
-		E731D67017401845006B9650 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65617401845006B9650 /* CloudsRGBDCombinedRender.cpp */; };
 		E731D67117401845006B9650 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65917401845006B9650 /* CloudsClip.cpp */; };
 		E731D67217401845006B9650 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65C17401845006B9650 /* CloudsFCPParser.cpp */; };
 		E731D67417401845006B9650 /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D66017401845006B9650 /* CloudsLink.cpp */; };
-		E731D67517401845006B9650 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D66217401845006B9650 /* CloudsStoryEngine.cpp */; };
 		E731D7AA17401886006B9650 /* ofxDepthHoleFiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72817401886006B9650 /* ofxDepthHoleFiller.cpp */; };
 		E731D7AB17401886006B9650 /* ofxDepthImageCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72A17401886006B9650 /* ofxDepthImageCompressor.cpp */; };
 		E731D7AC17401886006B9650 /* ofxDepthImageProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D72C17401886006B9650 /* ofxDepthImageProvider.cpp */; };
@@ -171,8 +169,6 @@
 		E7318F4217405037006B9650 /* CloudsClipExportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClipExportManager.h; sourceTree = "<group>"; };
 		E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedExporter.cpp; sourceTree = "<group>"; };
 		E731D65517401845006B9650 /* CloudsRGBDCombinedExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedExporter.h; sourceTree = "<group>"; };
-		E731D65617401845006B9650 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		E731D65717401845006B9650 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
 		E731D65917401845006B9650 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E731D65A17401845006B9650 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
 		E731D65B17401845006B9650 /* CloudsEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsEvents.h; sourceTree = "<group>"; };
@@ -180,8 +176,6 @@
 		E731D65D17401845006B9650 /* CloudsFCPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsFCPParser.h; sourceTree = "<group>"; };
 		E731D66017401845006B9650 /* CloudsLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsLink.cpp; sourceTree = "<group>"; };
 		E731D66117401845006B9650 /* CloudsLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLink.h; sourceTree = "<group>"; };
-		E731D66217401845006B9650 /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
-		E731D66317401845006B9650 /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
 		E731D67D17401884006B9650 /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
 		E731D72817401886006B9650 /* ofxDepthHoleFiller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDepthHoleFiller.cpp; sourceTree = "<group>"; };
 		E731D72917401886006B9650 /* ofxDepthHoleFiller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDepthHoleFiller.h; sourceTree = "<group>"; };
@@ -232,6 +226,7 @@
 		E731DA97174018DE006B9650 /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		E731DA98174018DE006B9650 /* Wrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
 		E731DA9C174018DE006B9650 /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
+		E74186671794AE0600ABFF41 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		E74CE81117663BAA00083C4C /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		E74CE81217663BAA00083C4C /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E753BD7F1740B241005952A8 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -559,6 +554,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E74186671794AE0600ABFF41 /* CloudsGlobal.h */,
+				E731D64C17401845006B9650 /* CloudsLibrary */,
 				E7AF5E04175FE54200E91B59 /* ofxFaceTracker */,
 				E753BB311740B239005952A8 /* ofxUI */,
 				E731630217403EC4006B9650 /* ofxPCL */,
@@ -569,7 +566,6 @@
 				E731D7C61740188F006B9650 /* ofxTimecode */,
 				E731D67A17401884006B9650 /* ofxRange */,
 				E731D67E17401884006B9650 /* ofxRGBDepth */,
-				E731D64C17401845006B9650 /* CloudsLibrary */,
 				609133721652C97100B523AD /* ofxCocoaGLView */,
 			);
 			name = addons;
@@ -705,8 +701,6 @@
 			children = (
 				E731D65517401845006B9650 /* CloudsRGBDCombinedExporter.h */,
 				E731D65417401845006B9650 /* CloudsRGBDCombinedExporter.cpp */,
-				E731D65717401845006B9650 /* CloudsRGBDCombinedRender.h */,
-				E731D65617401845006B9650 /* CloudsRGBDCombinedRender.cpp */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -723,8 +717,6 @@
 				E731D65C17401845006B9650 /* CloudsFCPParser.cpp */,
 				E731D66117401845006B9650 /* CloudsLink.h */,
 				E731D66017401845006B9650 /* CloudsLink.cpp */,
-				E731D66217401845006B9650 /* CloudsStoryEngine.cpp */,
-				E731D66317401845006B9650 /* CloudsStoryEngine.h */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -1600,11 +1592,9 @@
 				609133871652CB3E00B523AD /* testView.mm in Sources */,
 				608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */,
 				E731D66F17401845006B9650 /* CloudsRGBDCombinedExporter.cpp in Sources */,
-				E731D67017401845006B9650 /* CloudsRGBDCombinedRender.cpp in Sources */,
 				E731D67117401845006B9650 /* CloudsClip.cpp in Sources */,
 				E731D67217401845006B9650 /* CloudsFCPParser.cpp in Sources */,
 				E731D67417401845006B9650 /* CloudsLink.cpp in Sources */,
-				E731D67517401845006B9650 /* CloudsStoryEngine.cpp in Sources */,
 				E731D7AA17401886006B9650 /* ofxDepthHoleFiller.cpp in Sources */,
 				E731D7AB17401886006B9650 /* ofxDepthImageCompressor.cpp in Sources */,
 				E731D7AC17401886006B9650 /* ofxDepthImageProvider.cpp in Sources */,

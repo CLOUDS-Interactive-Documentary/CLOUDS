@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -8,48 +9,52 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
-    parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
-    parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-    
-	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
+    parser.loadFromFiles();
+	
+	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
 	}
 
-	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
+	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+	
+	visualSystems.populateVisualSystems();
 	
 	storyEngine.setup();
-	storyEngine.network = &parser;
+	storyEngine.parser = &parser;
+	storyEngine.visualSystems = &visualSystems;
+	
 	storyEngine.maxTimesOnTopic = 4;
 	storyEngine.combinedClipsOnly = true;
+	storyEngine.printDecisions = false;
 	
-	player.setup(storyEngine);
+	player.setup();
+	player.setStoryEngine(storyEngine);
 	sound.setup(storyEngine);
 	
 	float randomClip = ofRandom(parser.getAllClips().size() );
+	CloudsClip& clip = parser.getRandomClip(true,false);
+	
+	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 
-	storyEngine.seedWithClip( parser.getRandomClip(true) );
-	//storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );
+	storyEngine.buildAct(clip);
 	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	player.update();
+
 	sound.update();
+	ofShowCursor();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	player.draw();
 	sound.drawDebug();
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == '1'){
-		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
-	}
+
 }
 
 //--------------------------------------------------------------

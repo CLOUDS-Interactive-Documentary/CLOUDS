@@ -4,12 +4,12 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "CloudsStoryEngine.h"
-#include "CloudsRGBDCombinedRender.h"
+#include "CloudsRGBDCombinedRenderer.h"
 #include "CloudsVisualSystem.h"
-
+#include "CloudsAct.h"
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
-#include "CloudsCamera.h"
+
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -24,12 +24,15 @@ class CloudsPlaybackController {
 	~CloudsPlaybackController();
 
 	//set it up with an existing story engine that will register the events
-	void setup(CloudsStoryEngine& storyEngine);
-	
+	void setup();
+	void setStoryEngine(CloudsStoryEngine& storyEngine);
+	void beginWithClip(); //auto play by creating new acts
+	void playAct(CloudsAct* act);
+
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
-	void update();
-	void draw();
+	void update(ofEventArgs& args);
+	void draw(ofEventArgs& args);
 	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
@@ -39,67 +42,75 @@ class CloudsPlaybackController {
 	void mousePressed(ofMouseEventArgs & args);
 	void mouseReleased(ofMouseEventArgs & args);
 	
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+	void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(string& args);
+	void preRollRequested(CloudsPreRollEventArgs& args);
+	
 	void exit(ofEventArgs & args);
+	
+	ofFbo sharedRenderTarget;
+	ofFbo nextRenderTarget;
+	
+	
+	
+	//crossfading CloudsVisualSystems
+	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
+	bool fadingOut, fadingIn;
+	ofCamera superCamera;
+	ofCamera* rgbdCamera;
+	ofCamera* nextCamera;
+	ofVec3f cameraStartPos, camDelta;
+	ofMatrix4x4 accumulatedTransform;
+	
+	void mixCameras(ofCamera* targetCam,
+					ofCamera* c0,
+					ofCamera* c1,
+					float x,
+					ofVec3f posOffset0=ofVec3f(),
+					ofVec3f posOffset1=ofVec3f() );
+	ofxEasingQuint fadeEase;
+	void updateVisualSystemCrossFade();
+	
 	
   protected:
 
-	//A ROLL STUFF
-	//
-
-//	ofxGameCamera camera;
-	CloudsCamera cloudsCam;
-	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
+	CloudsAct* currentAct;
 	
 	//RGBD STUFF
-	CloudsRGBDCombinedRender combinedRenderer;
+	CloudsRGBDCombinedRenderer combinedRenderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	string combinedMoviesFolder;
+	string currentTopic;
 	
 	bool eventsRegistered;
-	void storyBegan(CloudsStoryEventArgs& args);
-	void clipBegan(CloudsStoryEventArgs& args);
-	void clipEnded(CloudsStoryEventArgs& args);
-	void storyEnded(CloudsStoryEventArgs& args);
-
-	void visualSystemBegan(CloudsStoryEventArgs& args);
-	void visualSystemEnded(CloudsStoryEventArgs& args);
+	void actCreated(CloudsActEventArgs& args);
 	
+	
+	string prerolledClipID;
+	void prerollClip(CloudsClip& clip, float toTime);
 	void playClip(CloudsClip& clip);
+
 	
 	//VISUAL SYSTEMS
 	//
 	bool showingVisualSystem;
-	vector<CloudsVisualSystem*> visualSystems;
-	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
-	//this instantiates and registers all the visual systems, called once at setup
-	void populateVisualSystems();
-	//call once for each new system you instantiate
-	void registerVisualSystem(CloudsVisualSystem* system);
-	CloudsVisualSystem* visualSystemWithName(string systemName);
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-	void showVisualSystem();
-	void showVisualSystem(CloudsVisualSystem* nextVisualSystem, string keyTheme);
+	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	//GUI
-	//
-	ofxUISuperCanvas* visualSystemControls;
-	
-	//WIDGETS
-	ofxUIRadio *visualSystemRadio;
-	
-	ofxUICanvas* keyThemesPanel;
-	ofxUIRadio *keyThemesRadio;
-	ofxUIButton *playButton;
-	
-	
-	float timeToTest;
-	bool triggerVisualSystem;
-	void guiEvent(ofxUIEventArgs &e);
+	void fadeInVisualSystem();
+	void fadeOutVisualSystem();
+
+
 };

@@ -29,8 +29,11 @@ void            addCellsSeeds(voro::container &_con, vector<ofPoint*> &_pnts, bo
 void            addCellsSeeds(voro::container &_con, ofPoint *_pnts, int _nSize, bool _checkInside = false);
 
 vector<float>   getCellsRadius(voro::container &_con);
-vector<ofMesh>  getCellsFromContainer(voro::container &_con);
+vector<ofMesh>  getCellsFromContainer(voro::container &_con, float _wallsThikness = 0.0);
 vector<ofPoint> getCellsPositions(voro::container &_con);
 vector<ofPoint> getCellsCentroids(voro::container &_con);
+vector< ofPolyline > getCellsPolylines(voro::container &_con);
+vector< vector<ofPoint> > getCellsVertices(voro::container &_con);
+
 
 bool            insideContainer(voro::container &_con, ofPoint _pnt);

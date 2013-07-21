@@ -24,13 +24,11 @@ public:
     
     void    update();
     
-    void    draw();
-    void    draw(ofImage &img);
-    void    drawSphere();
-    
     ofPoint vel;
     ofPoint acc;
 
+    ofTexture *nucle;
+    
     float   damping;
     float   size;
 };

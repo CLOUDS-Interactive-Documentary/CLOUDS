@@ -10,7 +10,7 @@
 
 ClusterData::ClusterData(){
     
-    Id ="##";
+    Id ="";
     Color = ofColor(255);
     FillOpacity = 0;
     Radius = -1;

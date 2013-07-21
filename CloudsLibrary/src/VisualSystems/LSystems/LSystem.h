@@ -18,6 +18,7 @@ class LSystem {
 public:
     
     LSystem();
+    ~LSystem();
     
     void    setAngle(float _deg){angle = ofDegToRad(_deg);};
     void    addAxion(string _axiom);

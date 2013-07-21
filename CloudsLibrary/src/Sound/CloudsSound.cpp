@@ -12,11 +12,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 	this->storyEngine = &storyEngine;
 	
 	if(!eventsRegistered){
-		ofAddListener(storyEngine.getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofAddListener(storyEngine.getEvents().clipBegan, this, &CloudsSound::clipBegan);
-		ofAddListener(storyEngine.getEvents().clipEnded, this, &CloudsSound::clipEnded);
+		ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsSound::actCreated);
 		ofAddListener(ofEvents().exit, this, &CloudsSound::exit);
-		ofAddListener(storyEngine.getEvents().topicChanged, this, &CloudsSound::topicChanged);
 		
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
@@ -62,13 +59,17 @@ void CloudsSound::exit(ofEventArgs & args){
 		
 		eventsRegistered = false;
 		
-		ofRemoveListener(storyEngine->getEvents().storyBegan, this, &CloudsSound::storyBegan);
-		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsSound::clipBegan);
-		ofRemoveListener(storyEngine->getEvents().clipEnded, this, &CloudsSound::clipEnded);
-		ofRemoveListener(storyEngine->getEvents().topicChanged, this, &CloudsSound::topicChanged);
+		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsSound::actCreated);
+		ofRemoveListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 		
-		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);
+		if(currentAct != NULL){
+			currentAct->unregisterEvents( this );
+		}
+//		ofRemoveListener(storyEngine->getEvents().clipBegan, this, &CloudsSound::clipBegan);
+//		ofRemoveListener(storyEngine->getEvents().clipEnded, this, &CloudsSound::clipEnded);
+//		ofRemoveListener(storyEngine->getEvents().topicChanged, this, &CloudsSound::topicChanged);
 		
+		ofRemoveListener(ofEvents().exit, this, &CloudsSound::exit);		
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);		
 	}
@@ -100,17 +101,32 @@ void CloudsSound::drawDebug(){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::storyBegan(CloudsStoryEventArgs& args){
-	//Happens at the very beginning of a sequence
+void CloudsSound::actCreated(CloudsActEventArgs& args){
+	
+	currentAct = args.act;
+	currentAct->registerEvents(this);
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
-	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
+void CloudsSound::actBegan(CloudsActEventArgs& args){
+	//Happens at the very beginning of a sequence
+}
+
+void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::clipBegan(CloudsClipEventArgs& args){
+	cout << "SOUND: current topic >> " << args.currentTopic << endl;
 	cout << "SOUND: keywords >> ";
-    for(int i=0;i<args.chosenClip.keywords.size();i++)
+    for(int i=0;i<args.chosenClip.getKeywords().size();i++)
     {
-        cout << i << ": " << args.chosenClip.keywords[i] << " ";
+        cout << i << ": " << args.chosenClip.getKeywords()[i] << " ";
     }
     cout << endl;
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
@@ -150,19 +166,23 @@ void CloudsSound::clipBegan(CloudsStoryEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::clipEnded(CloudsStoryEventArgs& args){
-	//happens when a clip is over
-	cout << "there will be a pause for: " << args.timeUntilNextClip << " seconds" << endl;
-}
-
-//--------------------------------------------------------------------
-void CloudsSound::topicChanged(CloudsStoryEventArgs& args){
+void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 	
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::storyEnded(CloudsStoryEventArgs& args){
+void CloudsSound::topicChanged(string& topic){
 	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::actEnded(CloudsActEventArgs& args){
+	args.act->unregisterEvents(this);
 }
 
 //--------------------------------------------------------------------

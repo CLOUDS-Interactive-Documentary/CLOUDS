@@ -3,34 +3,85 @@
 
 #include "ofMain.h"
 #include "CloudsClip.h"
+#include "CloudsVisualSystemPreset.h"
 
-class CloudsStoryEventArgs : public ofEventArgs {
+
+class CloudsAct;
+class CloudsActEventArgs : public ofEventArgs {
   public:
-	CloudsStoryEventArgs(CloudsClip& chosenClip, vector<CloudsClip>& clipOptions, string currentTopic)
-		: chosenClip(chosenClip), clipOptions(clipOptions), currentTopic(currentTopic)
+	CloudsActEventArgs(CloudsAct* act){
+		this->act = act;
+	}
+	CloudsAct* act;
+};
+
+class CloudsClipEventArgs : public ofEventArgs {
+  public:
+	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic)
+		: chosenClip(chosenClip), currentTopic(currentTopic)
 	{
 		timeUntilNextClip = 0;
-
 	}
 	
 	CloudsClip& chosenClip;
-	vector<CloudsClip>& clipOptions;
+	vector<CloudsClip> clipOptions;
 	string currentTopic;
 	float timeUntilNextClip;
 };
 
+class CloudsVisualSystemEventArgs : public ofEventArgs {
+  public:
+	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
+		: preset(preset)
+	{
+		duration = 0;
+	}
+
+	CloudsVisualSystemPreset& preset;
+	
+	float duration;
+};
+
+class CloudsQuestionEventArgs : public ofEventArgs{
+   public:
+    CloudsQuestionEventArgs(CloudsClip& questionClip) :questionClip(questionClip)
+    {
+
+    }
+
+    CloudsClip& questionClip;
+};
+
+class CloudsPreRollEventArgs : public ofEventArgs{
+public:
+    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset) :preRollClip(preRollClip)
+    {
+        clipStartTimeOffset = 0;
+    }
+    
+    CloudsClip& preRollClip;
+    float clipStartTimeOffset;
+};
+
 class CloudsEvents {
   public:
-	ofEvent<CloudsStoryEventArgs> storyBegan;
-	ofEvent<CloudsStoryEventArgs> storyEnded;
+	 //sent by story engine
+    ofEvent<CloudsActEventArgs> actCreated;
 	
-	ofEvent<CloudsStoryEventArgs> clipBegan;
-	ofEvent<CloudsStoryEventArgs> clipEnded;
+	//sent by act
+    ofEvent<CloudsActEventArgs> actBegan;
+    ofEvent<CloudsActEventArgs> actEnded;
+	ofEvent<CloudsClipEventArgs> clipBegan;
 
-	ofEvent<CloudsStoryEventArgs> visualSystemBegan;
-	ofEvent<CloudsStoryEventArgs> visualSystemEnded;
+	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
+	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
-	ofEvent<CloudsStoryEventArgs> topicChanged;
+	ofEvent<CloudsPreRollEventArgs> preRollRequested;
+	
+    
+    ofEvent<CloudsQuestionEventArgs> questionAsked;
+
+	ofEvent<string> topicChanged;
 	
 };
 

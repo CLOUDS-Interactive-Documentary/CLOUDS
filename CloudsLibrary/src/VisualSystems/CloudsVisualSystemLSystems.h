@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "LSystemReconstructor.h"
 
-class CloudsVisualSystemLSystems : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemLSystems : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -49,20 +49,13 @@ public:
     void billBoard(); 
     
 protected:
+    void    reBuildLSys();
     
-    ofVec3f objectLookAt;
+    LSystemReconstructor    lsysr;
     
-    void reBuildLSys();
+    string  axiom,rule1,rule2;
+    float   angle,lsysScale,lsysDepth;
     
-    ofTexture   dot;
-    
-    LSystemReconstructor lsysr;
-    string  axiom;
-    string  rule1;
-    string  rule2;
-    float   angle;
-    float   globalScale;
-    float   lsysScale;
-    float   lsysDepth;
-    float   dotSize;
+    float   originalAlpha,traceAlpha;
+    float   dotSize,particlesAlpha;
 };

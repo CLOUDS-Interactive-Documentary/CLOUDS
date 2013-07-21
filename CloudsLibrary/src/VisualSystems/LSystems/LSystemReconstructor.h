@@ -11,49 +11,44 @@
 
 #include "ofMain.h"
 #include "LSystem.h"
-
-struct LNode : public ofPoint {
-    float startTime;
-    vector<int> branchesIndex;
-};
+#include "LNode.h"
 
 class LSystemReconstructor {
 public:
     LSystemReconstructor();
     
-    void setup( LSystem &_lsys, int _deep );
+    void    setup( LSystem &_lsys, int _deep );
+    void    init();
     
-    float getPct();
+    ofRectangle getActiveNodesAre();
     
-    void start();
-    void pause();
-    void stop();
+    void    update();
     
-    void update();
-    void draw();
+    ofMesh      originalMesh;
+    ofMesh      growMesh;
+    vector<ofPoint>  activeNodes;
     
-    ofMesh  mesh;
-    ofPolyline activeNodes;
+    float   tNoise;
+    float   aNoise;
+    float   bornRandom;
+    float   speed;
     
-    float tNoise;
-    float aNoise;
-    float bornRandom;
-    float speed;
+    float   breakness;
+    
+    bool    bGrow;
+    bool    bFlow;
     
 private:
     vector<ofPolyline>  lines;
-    vector<LNode> nodes;
+    vector<LNode>       nodes;
     
     void    lineTo(ofPoint &_pnt);
     void    addNode(ofPoint &_pnt);
     int     isNode(ofPoint &_pnt);
     
-    void    renderBranch(int _index, float _relativeTime, float _speed);
-    void    addLineToMesh(ofMesh &_mesh, ofPoint &A, ofPoint &B, ofFloatColor &c);
+    void    renderBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed);
     
-    float   time, lastTime;
-    float   pct;
-    bool    bGrow;
+    float   time, timeLast;
 };
 
-#endif /* defined(__lSystem__LSystemReconstructor__) */
+#endif

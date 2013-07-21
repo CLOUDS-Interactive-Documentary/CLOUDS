@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D03B1D71755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D03B1D31755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp */; };
+		3D47906817835BF600EE85CA /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D47906617835BF600EE85CA /* vParticle.cpp */; };
 		3D5B95CB175308AE00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9557175308AD00F558AC /* kiss_fft.c */; };
 		3D5B95CC175308AE00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9558175308AD00F558AC /* kiss_fftr.c */; };
 		3D5B95CD175308AE00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B955B175308AD00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -61,6 +61,7 @@
 		3D5B9689175308D000F558AC /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B966E175308D000F558AC /* ofxEasingSine.cpp */; };
 		3D5B968A175308D000F558AC /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B9670175308D000F558AC /* ofxTween.cpp */; };
 		3D5B96AA175308FE00F558AC /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */; };
+		3D9EBCBE178757A100B15E7C /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9EBCBC178757A100B15E7C /* CloudsRGBDCombinedRenderer.cpp */; };
 		3DB810EE1753F97200954467 /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB810EC1753F97200954467 /* CloudsVisualSystemVoro.cpp */; };
 		3DB8116E1753FC3000954467 /* c_loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB811521753FC3000954467 /* c_loops.cpp */; };
 		3DB8116F1753FC3000954467 /* cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB811541753FC3000954467 /* cell.cpp */; };
@@ -74,7 +75,6 @@
 		3DB811771753FC3000954467 /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB811671753FC3000954467 /* wall.cpp */; };
 		3DB811781753FC3000954467 /* Voro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8116A1753FC3000954467 /* Voro.cpp */; };
 		3DB811791753FC3000954467 /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8116C1753FC3000954467 /* VoroParticle.cpp */; };
-		4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -150,8 +150,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D03B1D31755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		3D03B1D41755AA7B009CF17D /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		3D28426B17934399007B9AE2 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		3D47906617835BF600EE85CA /* vParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vParticle.cpp; sourceTree = "<group>"; };
+		3D47906717835BF600EE85CA /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -277,6 +278,8 @@
 		3D5B96A4175308FE00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B96A6175308FE00F558AC /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
 		3D5B96A7175308FE00F558AC /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
+		3D9EBCBC178757A100B15E7C /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
+		3D9EBCBD178757A100B15E7C /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		3DB810EC1753F97200954467 /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
 		3DB810ED1753F97200954467 /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
 		3DB811521753FC3000954467 /* c_loops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_loops.cpp; sourceTree = "<group>"; };
@@ -307,8 +310,6 @@
 		3DB8116B1753FC3000954467 /* Voro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voro.h; sourceTree = "<group>"; };
 		3DB8116C1753FC3000954467 /* VoroParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoroParticle.cpp; sourceTree = "<group>"; };
 		3DB8116D1753FC3000954467 /* VoroParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoroParticle.h; sourceTree = "<group>"; };
-		4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
-		4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -482,8 +483,8 @@
 		3D03B1CE1755AA7B009CF17D /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				3D03B1D31755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp */,
-				3D03B1D41755AA7B009CF17D /* CloudsRGBDCombinedRender.h */,
+				3D9EBCBC178757A100B15E7C /* CloudsRGBDCombinedRenderer.cpp */,
+				3D9EBCBD178757A100B15E7C /* CloudsRGBDCombinedRenderer.h */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -893,6 +894,8 @@
 				3DB8116B1753FC3000954467 /* Voro.h */,
 				3DB8116C1753FC3000954467 /* VoroParticle.cpp */,
 				3DB8116D1753FC3000954467 /* VoroParticle.h */,
+				3D47906717835BF600EE85CA /* vParticle.h */,
+				3D47906617835BF600EE85CA /* vParticle.cpp */,
 			);
 			path = Voro;
 			sourceTree = "<group>";
@@ -1204,6 +1207,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3D28426B17934399007B9AE2 /* CloudsGlobal.h */,
 				3D03B1CE1755AA7B009CF17D /* RGBD */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);
@@ -1216,8 +1220,6 @@
 				3DB811501753FC3000954467 /* Voro */,
 				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
 				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
-				4685C831175074ED008E5061 /* CloudsVisualSystemRezanator.h */,
-				4685C830175074ED008E5061 /* CloudsVisualSystemRezanator.cpp */,
 				3DB810ED1753F97200954467 /* CloudsVisualSystemVoro.h */,
 				3DB810EC1753F97200954467 /* CloudsVisualSystemVoro.cpp */,
 			);
@@ -1315,7 +1317,6 @@
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */,
-				4685C832175074ED008E5061 /* CloudsVisualSystemRezanator.cpp in Sources */,
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
@@ -1394,7 +1395,8 @@
 				3DB811771753FC3000954467 /* wall.cpp in Sources */,
 				3DB811781753FC3000954467 /* Voro.cpp in Sources */,
 				3DB811791753FC3000954467 /* VoroParticle.cpp in Sources */,
-				3D03B1D71755AA7B009CF17D /* CloudsRGBDCombinedRender.cpp in Sources */,
+				3D47906817835BF600EE85CA /* vParticle.cpp in Sources */,
+				3D9EBCBE178757A100B15E7C /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

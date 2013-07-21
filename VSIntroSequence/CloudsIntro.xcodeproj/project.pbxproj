@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D98166D17662224005409F9 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D98166917662224005409F9 /* CloudsRGBDCombinedRender.cpp */; };
+		3D683B48179195AA00593A48 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D683B46179195AA00593A48 /* CloudsRGBDCombinedRenderer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -142,8 +142,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D98166917662224005409F9 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		3D98166A17662224005409F9 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
+		3D683B46179195AA00593A48 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
+		3D683B47179195AA00593A48 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		3D683B49179195B400593A48 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -428,8 +429,8 @@
 		3D98166417662224005409F9 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				3D98166917662224005409F9 /* CloudsRGBDCombinedRender.cpp */,
-				3D98166A17662224005409F9 /* CloudsRGBDCombinedRender.h */,
+				3D683B46179195AA00593A48 /* CloudsRGBDCombinedRenderer.cpp */,
+				3D683B47179195AA00593A48 /* CloudsRGBDCombinedRenderer.h */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -1127,6 +1128,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3D683B49179195B400593A48 /* CloudsGlobal.h */,
 				3D98166417662224005409F9 /* RGBD */,
 				E7117F9B1752897800C189BF /* Sequences */,
 				E7E95E731733624100294C72 /* VisualSystems */,
@@ -1312,7 +1314,7 @@
 				E711841B1752B1ED00C189BF /* IntroTunnel.frag in Sources */,
 				E711841C1752B1ED00C189BF /* IntroTunnel.vert in Sources */,
 				E71184241753065F00C189BF /* BarrelChromaAb.fs in Sources */,
-				3D98166D17662224005409F9 /* CloudsRGBDCombinedRender.cpp in Sources */,
+				3D683B48179195AA00593A48 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

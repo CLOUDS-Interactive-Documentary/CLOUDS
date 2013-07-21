@@ -2,12 +2,11 @@
 #pragma once
 
 #include "ofMain.h"
+#include "CloudsVisualSystem.h"
 
-#include "ofxUI.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "Replecator.h"
 
-
-class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
+class CloudsVisualSystemHiga : public CloudsVisualSystem {
  public:
 	CloudsVisualSystemHiga();
 
@@ -41,10 +40,10 @@ class CloudsVisualSystemHiga : public CloudsVisualSystemRezanator {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
-	
-	vector<ofNode> testNodeExamples;
 
-	ofxUISuperCanvas* customGui;
-	float exampleSlider;
+	ofxUISuperCanvas *replecatorGui, *drawerGui;
+	
+	Replecator repl;
+	bool regenerate;
 };
 
