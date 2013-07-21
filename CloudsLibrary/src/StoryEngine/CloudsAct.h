@@ -26,6 +26,7 @@ struct ActTimeItem{
     string key;
     float startTime;
     float endTime;
+    float clipStartPointOffset;
 };
 
 
@@ -79,7 +80,7 @@ class CloudsAct{
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
-    void addClipPreRollFlag(float startTime, string clipName);
+    void addClipPreRollFlag(float preRollFlagTime, float clipStartPointOffset, string clipName);
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
@@ -109,7 +110,7 @@ protected:
     vector<CloudsVisualSystemPreset> visualSystems;
 
     vector<ActTimeItem> actItems;
-    map<ActTimeItem, int> actItemsIndex;
+    map<string,ActTimeItem> actItemsMap;
 
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;

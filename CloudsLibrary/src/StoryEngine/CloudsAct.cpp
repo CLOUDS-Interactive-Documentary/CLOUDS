@@ -116,7 +116,9 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         ofNotifyEvent(events.questionAsked, args);
     }
     else if(bang.track == clipPreRollTrack){
-        CloudsPreRollEventArgs args(clipMap[bang.flag]);
+        vector<string> clipName = ofSplitString(bang.flag, "%");
+        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].clipStartPointOffset << endl;
+        CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].clipStartPointOffset);
         ofNotifyEvent(events.preRollRequested, args);
         
     }
@@ -185,6 +187,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     duration = MAX(item.endTime, duration);
     
     actItems.push_back(item);
+    actItemsMap[item.key] = item;
     clipItems[clip.getLinkName()] = item;
 }
 
@@ -205,6 +208,7 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     duration = MAX(item.endTime, duration);
     
     actItems.push_back(item);
+    actItemsMap[item.key] = item;
     visualSystemItems[preset.getID()] = item;
 }
 
@@ -219,13 +223,15 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     actItems.push_back(item);
     
 }
-void CloudsAct::addClipPreRollFlag(float startTime, string clipName){
+void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipStartPointOffset, string clipName){
     ActTimeItem item;
     item.type = PreRoll;
-    item.key = clipName;
-    item.startTime = startTime;
-    item.endTime = startTime;
+    item.key = "%" + clipName;
+    item.startTime = preRollFlagTime;
+    item.endTime = preRollFlagTime;
+    item.clipStartPointOffset = clipStartPointOffset;
     
+    actItemsMap[item.key] = item;
     actItems.push_back(item);
 }
 

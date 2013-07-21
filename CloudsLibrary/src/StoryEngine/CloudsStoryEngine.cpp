@@ -325,8 +325,19 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         act->addClip(clip,topic,totalSecondsEnqueued);
-        float preRollStartTime  = totalSecondsEnqueued - preRollDuration;
-        act->addClipPreRollFlag(preRollStartTime,clip.getLinkName());
+        float clipStartPointOffset;
+        
+        // if clip is longer than minimum length for long clip allow the 2 second intro
+        if (clip.getDuration()>20) {
+            clipStartPointOffset = 0;
+        }
+        // else make a hard cut into the clip 2 i.e scrub-in 2 seconds.
+        else{
+            clipStartPointOffset = 2;
+        }
+        
+        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
+        act->addClipPreRollFlag(preRollFlagTime, clipStartPointOffset,clip.getLinkName());
         totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
         
         timesOnCurrentTopic++;

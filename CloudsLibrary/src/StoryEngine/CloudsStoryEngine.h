@@ -78,7 +78,7 @@ class CloudsStoryEngine {
     
 
 //    CloudsAct& getAct();
-	
+    
 protected:
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;

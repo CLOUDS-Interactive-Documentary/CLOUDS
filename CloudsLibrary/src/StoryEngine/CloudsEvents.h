@@ -54,12 +54,13 @@ class CloudsQuestionEventArgs : public ofEventArgs{
 
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
-    CloudsPreRollEventArgs(CloudsClip& preRollClip) :preRollClip(preRollClip)
+    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset) :preRollClip(preRollClip)
     {
-        
+        clipStartTimeOffset = 0;
     }
     
     CloudsClip& preRollClip;
+    float clipStartTimeOffset;
 };
 
 class CloudsEvents {
