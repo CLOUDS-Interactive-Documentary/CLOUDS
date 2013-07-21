@@ -10,6 +10,7 @@
 
 #include "CloudsVisualSystem.h"
 
+#include "wArc.h"
 #include "wStar.h"
 #include "wCity.h"
 #include "wParticle.h"
@@ -98,8 +99,12 @@ protected:
     float   satLinksAlpha;
     float   satLinksDist;
     float   nMaxSatellites;
-    
     float   blinkingAlpha;
     float   blinkingSpeed;
     
+    //  Arcs
+    //
+    vector<wArc>    arcs;
+    float           arcsAlpha;
+    float           arcsMax;
 };
