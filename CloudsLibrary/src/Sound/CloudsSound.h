@@ -44,11 +44,12 @@ class CloudsSound {
     int framesize; // sigvs (512 seems ok)
 	
     int returnQuadrant(int x, int y);
+    int returnColor(string c);
     ofTrueTypeFont theFont;
     int first_vec;
     int osx, osy;
     int quadrant;
     float sx, sy, delta;
     float allownote;
-
+    
 };
