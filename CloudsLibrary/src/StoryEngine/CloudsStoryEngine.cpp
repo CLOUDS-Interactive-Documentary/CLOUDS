@@ -396,6 +396,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         //Decide if a question is to be asked
     }
     
+    if(systemRunning){
+        float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
+        float clipEndTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).endTime;
+        act->addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
+        systemRunning = false;
+        lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
+    }
+    
+    
     // do the same thing again for Visual Systems
 //    float lastVisualSystemEnded = 0;
 //    bool systemRunning = false;
@@ -449,18 +458,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         
 //    }
     
-    if(systemRunning){
-        float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
-        float clipEndTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).endTime;
-        act->addVisualSystem(visualSystems->getRandomVisualSystem(), visualSystemStartTime, visualSystemDuration);
-        systemRunning = false;
-        lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
-    }
+
     
-    
-    float questionStartTime = 0;
-    float lastQuestionTime = 0;
-    float currentTime = 0;
+//    float questionStartTime = 0;
+//    float lastQuestionTime = 0;
+//    float currentTime = 0;
     
     //Leaving this in for now incase we decide to re implement it later
     
