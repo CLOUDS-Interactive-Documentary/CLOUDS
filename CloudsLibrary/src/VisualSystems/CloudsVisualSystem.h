@@ -78,7 +78,8 @@ class CloudsVisualSystem {
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
-		
+	ofxTimeline* getTimeline();
+	
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes
 	virtual void setup();

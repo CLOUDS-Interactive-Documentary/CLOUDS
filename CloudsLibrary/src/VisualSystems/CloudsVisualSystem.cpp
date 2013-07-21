@@ -51,6 +51,9 @@ string CloudsVisualSystem::getVisualSystemDataPath(){
     return getDataPath() + "visualsystems/"+getSystemName()+"/";
 }
 
+ofxTimeline* CloudsVisualSystem::getTimeline(){
+	return timeline;
+}
 
 void CloudsVisualSystem::setup(){
 	

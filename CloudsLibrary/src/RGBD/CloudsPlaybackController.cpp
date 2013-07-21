@@ -6,7 +6,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
-	nextVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
 }
@@ -303,6 +302,15 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
+
+		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
+		//a "middle" flag, which would stop the timeline. so when the system is ready to fade out let's play it again to
+		//watch the outro
+		if(args.preset.outroDuration > 0 && args.preset.indefinite){
+			args.preset.system->getTimeline()->play();
+		}
+		
+		//TODO: respond to args.preset.outroDuration
 		fadeOutVisualSystem();
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
 							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
@@ -352,14 +360,14 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 //	if(simplePlaybackMode) return;
 	
 	if(showingVisualSystem){
-//		hideVisualSystem();
-		fadeOutVisualSystem();
+		//JG changed this directly to hide. This shouldn't ever happen when being driven by the story engine
+		hideVisualSystem();
+//		fadeOutVisualSystem();
 	}
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
 	
 
-//	rgbdVisualSystem.stopSystem();
 
 	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
@@ -377,6 +385,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
+	//TODO: fade in based on nextVisualSystem.introDuration;
 	fadeInVisualSystem();
 }
 

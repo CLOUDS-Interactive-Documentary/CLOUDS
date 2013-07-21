@@ -100,7 +100,6 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
-	CloudsVisualSystem* nextVisualSystem;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
