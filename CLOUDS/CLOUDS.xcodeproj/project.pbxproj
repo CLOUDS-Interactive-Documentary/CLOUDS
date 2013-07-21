@@ -164,6 +164,7 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E7920773179C986600FAA959 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7920771179C986600FAA959 /* wArc.cpp */; };
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
@@ -678,6 +679,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E7920771179C986600FAA959 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		E7920772179C986600FAA959 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
 		E7BAFBD2176A43780097AC71 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
 		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
@@ -1099,6 +1102,8 @@
 		E7402E42178F44A100FEABED /* World */ = {
 			isa = PBXGroup;
 			children = (
+				E7920771179C986600FAA959 /* wArc.cpp */,
+				E7920772179C986600FAA959 /* wArc.h */,
 				E7402E43178F44A100FEABED /* wCity.cpp */,
 				E7402E44178F44A100FEABED /* wCity.h */,
 				E7402E45178F44A100FEABED /* wParticle.cpp */,
@@ -2448,6 +2453,7 @@
 				E72D3A4F179487220079254B /* CloudsVisualSystemLia.cpp in Sources */,
 				E74186A51794B68100ABFF41 /* ofxAVFVideoPlayer.mm in Sources */,
 				E74186A61794B68100ABFF41 /* ofxAVFVideoRenderer.m in Sources */,
+				E7920773179C986600FAA959 /* wArc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
