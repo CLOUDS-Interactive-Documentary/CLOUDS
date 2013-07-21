@@ -39,6 +39,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     maxTimeWithoutQuestion =120;
     gapLengthMultiplier = 0.5;
     preRollDuration = 5;
+    minClipDurationForStartingOffset = 30;
     initGui();
     displayGui(false);
     
@@ -120,6 +121,7 @@ void CloudsStoryEngine:: initGui(){
     gui->addSlider("GAP LENGTH MULTIPLIER", 0.01, 0.1, &gapLengthMultiplier);
     gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
     gui->addSlider("PREROLL FLAG TIME", 1, 10, &preRollDuration);
+    gui->addSlider("MIN CLIP DURATION FOR START OFFSET", 0, 100, &minClipDurationForStartingOffset);
     gui->addButton("BUILD ACT", false);
     
     gui->autoSizeToFitWidgets();
@@ -328,7 +330,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         float clipStartPointOffset;
         
         // if clip is longer than minimum length for long clip allow the 2 second intro
-        if (clip.getDuration()>20) {
+        if (clip.getDuration()>minClipDurationForStartingOffset) {
             clipStartPointOffset = 0;
         }
         // else make a hard cut into the clip 2 i.e scrub-in 2 seconds.

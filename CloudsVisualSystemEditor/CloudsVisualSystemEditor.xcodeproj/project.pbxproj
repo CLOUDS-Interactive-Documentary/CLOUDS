@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18DB1616179C53B300545614 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DB1614179C53B300545614 /* wArc.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -212,6 +213,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18DB1614179C53B300545614 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		18DB1615179C53B300545614 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -2027,6 +2030,8 @@
 		E7402DC0178F400F00FEABED /* World */ = {
 			isa = PBXGroup;
 			children = (
+				18DB1614179C53B300545614 /* wArc.cpp */,
+				18DB1615179C53B300545614 /* wArc.h */,
 				E7402DC1178F400F00FEABED /* wCity.cpp */,
 				E7402DC2178F400F00FEABED /* wCity.h */,
 				E7402DC3178F400F00FEABED /* wParticle.cpp */,
@@ -2292,6 +2297,7 @@
 				E72D3A05179443E80079254B /* Globals.cpp in Sources */,
 				E72D3A06179443E80079254B /* Module.cpp in Sources */,
 				E72D3A07179443E80079254B /* RandomMover.cpp in Sources */,
+				18DB1616179C53B300545614 /* wArc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

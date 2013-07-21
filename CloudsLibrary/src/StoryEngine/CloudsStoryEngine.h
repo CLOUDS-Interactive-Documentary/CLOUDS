@@ -146,12 +146,15 @@ private:
     float actLength;
     float maxTimeWithoutQuestion;
     float gapLengthMultiplier;
+    float minClipDurationForStartingOffset;
+    float preRollDuration;
+    
     //VS Story Engine Parameters
     float systemMaxRunTime;
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
-    float preRollDuration;
+    
     
     //Story engine decision making parameters
     int topicsInCommonMultiplier;
