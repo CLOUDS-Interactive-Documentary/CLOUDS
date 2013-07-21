@@ -93,7 +93,10 @@ class CloudsPlaybackController {
 	void actCreated(CloudsActEventArgs& args);
 	
 	
+	string prerolledClipID;
+	void prerollClip(CloudsClip& clip, float toTime);
 	void playClip(CloudsClip& clip);
+
 	
 	//VISUAL SYSTEMS
 	//

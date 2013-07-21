@@ -22,8 +22,9 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath, string calibrationXMLPath);
-
+	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0);
+	void swapAndPlay();
+	
 	void setShaderPath(string _shaderPath);
 	void reloadShader();
     
@@ -87,7 +88,8 @@ public:
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
 
 #ifdef AVF_PLAYER
-	ofxAVFVideoPlayer avPlayer;
+	ofxAVFVideoPlayer currentPlayer;
+	ofxAVFVideoPlayer nextPlayer;
 #else
 	ofPtr<ofVideoPlayer> player;
 #endif
@@ -126,6 +128,7 @@ public:
 	//this describes the change each frame
 	ofRectangle deltaChangeRect;
 	
+	string nextCalibrationXML;
 	bool useFaces;
 	
     bool bRendererBound;

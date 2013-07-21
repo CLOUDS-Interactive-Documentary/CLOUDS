@@ -33,17 +33,38 @@ CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
     bRendererBound = false;
 }
 
+//---------------------------------------------------------------
 CloudsRGBDCombinedRenderer::~CloudsRGBDCombinedRenderer(){
     
 }
 
-//--------------------------------------------------------------- SET
-bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPath){
-	ofxXmlSettings XML;
+//---------------------------------------------------------------
+bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPath, float offsetTime){
+	
+#ifdef AVF_PLAYER
+	if(!nextPlayer.loadMovie(videoPath)){
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
+		return false;
+	}
+	nextPlayer.setPosition( offsetTime / nextPlayer.getDuration() );
+#else
+	if(!player->loadMovie(videoPath)){
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
+		return false;
+	}
+#endif
+	
+	nextCalibrationXML = calibrationXMLPath;
+	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
+	return true;
+}
 
-	if ( !XML.loadFile(calibrationXMLPath)){
-		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- XML Path " << calibrationXMLPath << " failed to load";
-		return false;		
+void CloudsRGBDCombinedRenderer::swapAndPlay(){
+	
+	ofxXmlSettings XML;
+	if ( !XML.loadFile(nextCalibrationXML) ){
+		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- XML Path " << nextCalibrationXML << " failed to load";
+		return;
 	}
 	
 	colorPrincipalPoint.x = XML.getValue("colorIntrinsics:ppx", 971.743835449);
@@ -77,7 +98,7 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 						   -XML.getValue("face:y", 0.0),
 						   XML.getValue("face:z", 0.0));
 	
-	cout << "head position " << headPosition << endl;
+	//cout << "head position " << headPosition << endl;
 	
  	float mat4x4[16] = {
 		depthToRGBRotation[0],depthToRGBRotation[1],depthToRGBRotation[2],0,
@@ -88,17 +109,17 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 	
 	extrinsics = ofMatrix4x4(mat4x4);
 	
-//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
+	//	cout << "extrinsic matrix: " << endl << extrinsics << endl;
 	
 	//adjustment
 	adjustTranslate.x = XML.getValue("adjustment:translate:x", 0.0);
 	adjustTranslate.y = XML.getValue("adjustment:translate:y", 0.0);
 	adjustTranslate.z = XML.getValue("adjustment:translate:z", 0.0);
-
+	
 	adjustRotate.x = XML.getValue("adjustment:rotate:x", 0.0);
 	adjustRotate.y = XML.getValue("adjustment:rotate:y", 0.0);
 	adjustRotate.z = XML.getValue("adjustment:rotate:z", 0.0);
-
+	
 	adjustScale.x = XML.getValue("adjustment:scale:x", 1.0);
 	adjustScale.y = XML.getValue("adjustment:scale:y", 1.0);
 	
@@ -119,29 +140,15 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 	
 	nearClip = minDepth = XML.getValue("adjustment:depth:min", 1.0f);
 	farClip = maxDepth = XML.getValue("adjustment:depth:max", 6000.0f);
-		
+	
 	//TODO automatically
 	//this describes the face features: eyes, mouth, and skin
 	faceFeatureRect = ofRectangle(depthRect.x, depthRect.getMaxY(), 640, 360);
 	//this describes the change each frame
 	deltaChangeRect = ofRectangle(normalRect.x, normalRect.getMaxY(), 640, 360);
-
-#ifdef AVF_PLAYER
-    //TODO make asynchronous
-	//if(!player->loadMovie(videoPath)){
-	getPlayer().stop();
-	if(!getPlayer().loadMovie(videoPath)){
-		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
-//		return false;
-	}
-#else
-	if(!player->loadMovie(videoPath)){
-		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";	
-	}
-#endif
 	
-//	float colorWidth  = getPlayer().getWidth();
-//	float colorHeight = getPlayer().getHeight();
+	//	float colorWidth  = getPlayer().getWidth();
+	//	float colorHeight = getPlayer().getHeight();
 	float colorWidth  = 1280;
 	float colorHeight = 1560;
 	
@@ -154,8 +161,17 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 		useFaces = false;
 		colorScale.y = float(colorHeight - (depthRect.height) ) / float(colorRect.height);
 	}
+	
+#ifdef AVF_PLAYER
+	currentPlayer.stop();
+	nextPlayer.play();
+	swap(currentPlayer,nextPlayer);
+#else
+	player->play();
+#endif
+	cout << "swapped and played clip"<< endl;
 
-    return true;
+
 }
 
 void CloudsRGBDCombinedRenderer::setShaderPath(string _shaderPath){
@@ -321,9 +337,10 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
 #ifdef AVF_PLAYER
 //--------------------------------------------------------------- ACTIONS
 ofxAVFVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
-	return avPlayer;
+	return currentPlayer;
 }
 
+//bad news
 ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
 	return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
 }

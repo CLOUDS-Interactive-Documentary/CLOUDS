@@ -337,25 +337,49 @@ void CloudsPlaybackController::topicChanged(string& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
-	//TODO -- respond to this event with the story engine
+	prerollClip(args.preRollClip, args.clipStartTimeOffset);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
+	if(!clip.hasCombinedVideo){
+		ofLogError() << "CloudsPlaybackController::prerollClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+		return;
+	}
+	
+	if(!combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
+		ofLogError() << "CloudsPlaybackController::prerollClip Error prerolling clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
+		return;
+	}
+	
+	prerolledClipID = clip.getID();
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 
-	if(clip.hasCombinedVideo){
-		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-			combinedRenderer.getPlayer().play();
-			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
-			currentClip = clip;
-		}
-		else{
-			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
-		}
+	if(clip.getID() != prerolledClipID){
+		prerollClip(clip,1);
 	}
-	else {
-		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
-	}
+	rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+	prerolledClipID = "";
+	currentClip = clip;
+	
+	combinedRenderer.swapAndPlay();
+	
+//	if(clip.hasCombinedVideo){
+//		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+//			combinedRenderer.getPlayer().play();
+//			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+//			currentClip = clip;
+//		}
+//		else{
+//			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+//		}
+//	}
+//	else {
+//		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+//	}
 }
 
 
