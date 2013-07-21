@@ -176,6 +176,11 @@ void CloudsSound::topicChanged(string& topic){
 }
 
 //--------------------------------------------------------------------
+void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
 }
