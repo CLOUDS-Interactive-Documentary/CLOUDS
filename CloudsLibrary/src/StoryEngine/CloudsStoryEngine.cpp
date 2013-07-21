@@ -203,6 +203,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     vector<CloudsClip> clipHistory;
     vector<CloudsClip> clipQueue;
+
+    //VS Stuff
+    float lastVisualSystemEnded = 0;
+    bool systemRunning = false;
+    float visualSystemStartTime =0;
+    string previousTopic = " ";
+    float visualSystemDuration  = 0;
+    //VS Stuff
     
     
     scoreBuffer.clear();
@@ -316,7 +324,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         
         updateDichotomies(clip);
         
-        //adding all option clips with questions to the
+        //adding all option clips with questions
         for(int k=0; k<nextOptions.size(); k++){
             
             if(nextOptions[k].getQuestionsVector().size() > 0 &&
@@ -327,6 +335,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         act->addClip(clip,topic,totalSecondsEnqueued);
+        
+        //populating PreRoll Track
         float clipStartPointOffset;
         
         // if clip is longer than minimum length for long clip allow the 2 second intro
@@ -335,42 +345,28 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         // else make a hard cut into the clip 2 i.e scrub-in 2 seconds.
         else{
-            clipStartPointOffset = 2;
+            clipStartPointOffset = 1;
         }
+        
         
         float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipStartPointOffset,clip.getLinkName());
-        totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
+      
         
-        timesOnCurrentTopic++;
-        
-        
-        //Decide if a question is to be asked
-    }
+        // populating Visual Systems
+        topic = act->getTopicForClip(clip);
     
-    // do the same thing again for Visual Systems
-    float lastVisualSystemEnded = 0;
-    bool systemRunning = false;
-    
-    float visualSystemStartTime;
-    //    string currentTopic = act.getTopicInHistory(0);
-    string previousTopic = currentTopic;
-    float visualSystemDuration  = 0;
-    for(int i=0; i < act->getAllClips().size(); i++){
-        
-        CloudsClip& currentClip = act->getClip(i);
-        topic = act->getTopicForClip(currentClip);
-        //        string currentTopic = act.getTopicInHistory(i);
-        float clipStartTime = act->getItemForClip(currentClip).startTime;
-        float clipEndTime = act->getItemForClip(currentClip).endTime;
+        float clipStartTime = act->getItemForClip(clip).startTime;
+        float clipEndTime = act->getItemForClip(clip).endTime;
         
         if( systemRunning ) {
             
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
-                if(currentClip.getDuration() > longClipThreshold){
-                    visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
+                if(clip.getDuration() > longClipThreshold){
+                    visualSystemDuration += clip.getDuration()*longClipFadeInPercent;
                 }
+                //TODO: Make non-random
                 CloudsVisualSystemPreset& preset = visualSystems->getRandomVisualSystem();
                 act->addVisualSystem(preset, visualSystemStartTime, visualSystemDuration);
                 
@@ -383,22 +379,75 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
             
             //if the clip is shorter than the 30 seconds dont start the VS during the clip.
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && currentClip.getDuration() > longClipThreshold){
+            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold){
                 
-//                if (currentClip.getDuration() > longClipThreshold) {
-                //Add some fade in time 
-                    visualSystemStartTime  = clipStartTime + currentClip.getDuration()*longClipFadeInPercent;
-//                }
-//                else{
-//                    visualSystemStartTime = clipStartTime;
-//                }
+                visualSystemStartTime  = clipStartTime + clip.getDuration()*longClipFadeInPercent;
                 systemRunning = true;
             }
         }
         
         previousTopic = topic;
         
+        totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
+        
+        timesOnCurrentTopic++;
+        
+        
+        //Decide if a question is to be asked
     }
+    
+    // do the same thing again for Visual Systems
+//    float lastVisualSystemEnded = 0;
+//    bool systemRunning = false;
+//    
+//    float visualSystemStartTime;
+//    //    string currentTopic = act.getTopicInHistory(0);
+//    string previousTopic = currentTopic;
+//    float visualSystemDuration  = 0;
+//    
+//    for(int i=0; i < act->getAllClips().size(); i++){
+//
+//        CloudsClip& currentClip = act->getClip(i);
+//        topic = act->getTopicForClip(currentClip);
+//        //        string currentTopic = act.getTopicInHistory(i);
+//        float clipStartTime = act->getItemForClip(currentClip).startTime;
+//        float clipEndTime = act->getItemForClip(currentClip).endTime;
+//        
+//        if( systemRunning ) {
+//            
+//            visualSystemDuration = clipStartTime - visualSystemStartTime;
+//            if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
+//                if(currentClip.getDuration() > longClipThreshold){
+//                    visualSystemDuration += currentClip.getDuration()*longClipFadeInPercent;
+//                }
+//                CloudsVisualSystemPreset& preset = visualSystems->getRandomVisualSystem();
+//                act->addVisualSystem(preset, visualSystemStartTime, visualSystemDuration);
+//                
+//                act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+//                systemRunning = false;
+//                lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
+//            }
+//        }
+//        else {
+//            float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
+//            
+//            //if the clip is shorter than the 30 seconds dont start the VS during the clip.
+//            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && currentClip.getDuration() > longClipThreshold){
+//                
+////                if (currentClip.getDuration() > longClipThreshold) {
+//                //Add some fade in time 
+//                    visualSystemStartTime  = clipStartTime + currentClip.getDuration()*longClipFadeInPercent;
+////                }
+////                else{
+////                    visualSystemStartTime = clipStartTime;
+////                }
+//                systemRunning = true;
+//            }
+//        }
+//        
+//        previousTopic = topic;
+        
+//    }
     
     if(systemRunning){
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
