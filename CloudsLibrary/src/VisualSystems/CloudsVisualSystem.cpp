@@ -632,7 +632,7 @@ void CloudsVisualSystem::setupMaterialParams()
 
 void CloudsVisualSystem::setupTimeLineParams()
 {
-//    bShowTimeline = true;
+    bShowTimeline = false;
 	bTimelineIsIndefinite = true;
     bDeleteTimelineTrack = false;
     timelineDuration = 60;
@@ -1439,10 +1439,11 @@ void CloudsVisualSystem::setupTimeline()
     
     timeline->setWorkingFolder(getVisualSystemDataPath()+"Working/Timeline/");
     ofAddListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
-    timeline->hide();
+	if(!bShowTimeline){
+		timeline->hide();
+	}
 	
     selfSetupTimeline();
-	
 }
 
 void CloudsVisualSystem::resetTimeline()
@@ -1499,7 +1500,6 @@ void CloudsVisualSystem::setupTimelineGui()
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
 
-    
     //tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
     selfSetupTimelineGui();
@@ -1537,15 +1537,6 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
         setTimelineTrackDeletion(t->getValue());
         
     }
-//	else if(name == "CAMERA TRACK"){
-//        ofxUIToggle *t = (ofxUIToggle *) e.widget;
-//        if(t->getValue()){
-//			cameraTrack->enable();
-//		}
-//		else{
-//			cameraTrack->disable();
-//		}
-//	}
     else if(name == "ENABLE")
     {
         if(bEnableTimeline)
@@ -2233,7 +2224,7 @@ void CloudsVisualSystem::toggleGUIS()
         (*it)->toggleVisible();
     }
 	timeline->toggleShow();
-//	bShowTimeline = timeline->getIsShowing();
+	bShowTimeline = timeline->getIsShowing();
 }
 
 void CloudsVisualSystem::toggleGuiAndPosition(ofxUISuperCanvas *g)

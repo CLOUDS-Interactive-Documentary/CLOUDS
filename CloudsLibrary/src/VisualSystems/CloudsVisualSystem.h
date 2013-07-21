@@ -311,8 +311,9 @@ class CloudsVisualSystem {
     float timelineDuration;
 	bool bUseCameraTrack;
     bool bEnableTimeline;
+	
     bool bDeleteTimelineTrack;
-//    bool bShowTimeline;
+    bool bShowTimeline;
     bool bEnableTimelineTrackCreation;
 
 	
