@@ -23,6 +23,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	sharedRenderTarget = NULL;
 	bClearBackground = true;
 	bDrawToScreen = true;
+	bUseCameraTrack = false;
+	cameraTrack = NULL;
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
@@ -222,14 +224,19 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		}
         
         drawBackground();
-        
+	  
+	  
+	  //start our 3d scene
 		currentCamera->begin();
-        
+	  
         ofRotateX(xRot->getPos());
         ofRotateY(yRot->getPos());
         ofRotateZ(zRot->getPos());
         
         selfSceneTransformation();
+	  
+	  //accumulated position offset
+	  ofTranslate( positionOffset );
         
         glEnable(GL_DEPTH_TEST);
         
@@ -247,6 +254,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         lightsEnd();
         
 		currentCamera->end();
+	  
 		
 		ofPushStyle();
 		ofPushMatrix();
@@ -305,8 +313,9 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     materials.clear();
     materialGuis.clear();
     
+	delete cameraTrack;
     delete timeline;
-    
+
     selfExit();
     
     deleteGUIS();
@@ -479,8 +488,15 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
                 (*it)->toggleMinified();
             }
         }
-            break;
-            
+		break;
+		
+		case 'T':
+			cameraTrack->addKeyframe();
+			break;
+		case 'L':
+
+			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
+			break;
         default:
             selfKeyPressed(args);
             break;
@@ -1351,10 +1367,16 @@ void CloudsVisualSystem::setupTimeline()
     timeline = new ofxTimeline();
 	timeline->setup();
     timeline->setMinimalHeaders(true);
+	timeline->setFrameBased(false);
+	cout << "******* TL DURATION " << timelineDuration << endl;
 	timeline->setDurationInFrames(1000);
 	timeline->setLoopType(OF_LOOP_NORMAL);
     timeline->setPageName(ofToUpper(getSystemName()));
-    
+	
+	cameraTrack = new ofxTLCameraTrack();
+	cameraTrack->setCamera(getCameraRef());
+	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Working/Timeline/cameraTrack.xml");
+    timeline->addTrack("Camera", cameraTrack);
 	
     ofDirectory dir;
     string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
@@ -1414,6 +1436,7 @@ void CloudsVisualSystem::setupTimelineGui()
     
     tlGui->addToggle("ANIMATE", &bEnableTimelineTrackCreation);
     tlGui->addToggle("DELETE", &bDeleteTimelineTrack);
+    tlGui->addToggle("CAMERA TRACK", &bUseCameraTrack);
     
     tlGui->addToggle("SHOW/HIDE", &bShowTimeline);
     
@@ -1429,6 +1452,7 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     if(name == "DURATION")
     {
+//		cout << "****** TL duration changed " << timelineDuration << endl;
         timeline->setDurationInFrames(floor(timelineDuration));
     }
     else if(name == "ANIMATE")
@@ -1450,6 +1474,15 @@ void CloudsVisualSystem::guiTimelineEvent(ofxUIEventArgs &e)
         setTimelineTrackDeletion(t->getValue());
         
     }
+	else if(name == "CAMERA TRACK"){
+        ofxUIToggle *t = (ofxUIToggle *) e.widget;
+        if(t->getValue()){
+			cameraTrack->enable();
+		}
+		else{
+			cameraTrack->disable();
+		}
+	}
     else if(name == "ENABLE")
     {
         if(bEnableTimeline)
@@ -2062,6 +2095,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+	timeline->setDurationInFrames(timelineDuration);
 	
 	selfPresetLoaded(presetPath);
 }
@@ -2145,7 +2179,6 @@ void CloudsVisualSystem::setCurrentCamera(ofCamera& swappedInCam)
 	currentCamera = &swappedInCam;
 }
 
-
 ofCamera* CloudsVisualSystem::getCurrentCamera()
 {
 	return currentCamera;
@@ -2156,14 +2189,18 @@ void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
 	setCurrentCamera(*swappedInCam);
 }
 
-ofCamera* CloudsVisualSystem::getCameraRef(){
-	return &cam;
+
+ofCamera& CloudsVisualSystem::getCameraRef(){
+	return cam;
 }
 
-void CloudsVisualSystem::setDrawToScreen( bool state ){
+void CloudsVisualSystem::setDrawToScreen( bool state )
+{
 	bDrawToScreen = state;
 }
-bool CloudsVisualSystem::getDrawToScreen(){
+
+bool CloudsVisualSystem::getDrawToScreen()
+{
 	return bDrawToScreen;
 }
 
@@ -2378,6 +2415,13 @@ void CloudsVisualSystem::selfDrawDebug()
 
 void CloudsVisualSystem::selfSceneTransformation()
 {
+    
+}
+
+
+ofVec3f CloudsVisualSystem::getCameraPosition()
+{
+	return getCameraRef().getPosition();
     
 }
 

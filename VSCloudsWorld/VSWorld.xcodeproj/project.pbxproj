@@ -57,6 +57,7 @@
 		3D5B941D1753048A00F558AC /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94191753048A00F558AC /* ofxTextInputField.cpp */; };
 		3D5B943B1753049600F558AC /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B94361753049600F558AC /* ofxMSATimer.cpp */; };
 		3D605190178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D60518E178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp */; };
+		3D900AB41799B51400AC6BF6 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D900AB21799B51400AC6BF6 /* wArc.cpp */; };
 		3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DA56F9D177CC983002069B4 /* wSatellite.cpp */; };
 		3DCACC86176A51F2000696C6 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */; };
 		3DD40D9B177905720030A5EE /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DD40D99177905720030A5EE /* wCity.cpp */; };
@@ -261,6 +262,8 @@
 		3D5B9442175304B800F558AC /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
 		3D60518E178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
 		3D60518F178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		3D900AB21799B51400AC6BF6 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		3D900AB31799B51400AC6BF6 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		3DA56F9D177CC983002069B4 /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
 		3DA56F9E177CC983002069B4 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
 		3DCACC84176A51F2000696C6 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
@@ -848,6 +851,8 @@
 				3DD40DA5177A194E0030A5EE /* wStar.h */,
 				3DA56F9D177CC983002069B4 /* wSatellite.cpp */,
 				3DA56F9E177CC983002069B4 /* wSatellite.h */,
+				3D900AB21799B51400AC6BF6 /* wArc.cpp */,
+				3D900AB31799B51400AC6BF6 /* wArc.h */,
 			);
 			path = World;
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 				3DD40DA6177A194E0030A5EE /* wStar.cpp in Sources */,
 				3DA56F9F177CC983002069B4 /* wSatellite.cpp in Sources */,
 				3D605190178DF418009A4ED7 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
+				3D900AB41799B51400AC6BF6 /* wArc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

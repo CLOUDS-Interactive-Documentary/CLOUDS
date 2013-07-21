@@ -11,12 +11,7 @@
 
 #include "ofMain.h"
 #include "LSystem.h"
-
-struct LNode : public ofPoint {
-    float   startTime;
-    float   pct;
-    vector<int> branchesIndex;
-};
+#include "LNode.h"
 
 class LSystemReconstructor {
 public:
@@ -25,24 +20,27 @@ public:
     void    setup( LSystem &_lsys, int _deep );
     void    init();
     
-    float   getPct();
+    ofRectangle getActiveNodesAre();
+    
     void    update();
     
     ofMesh      originalMesh;
     ofMesh      growMesh;
-    ofPolyline  activeNodes;
+    vector<ofPoint>  activeNodes;
     
     float   tNoise;
     float   aNoise;
     float   bornRandom;
     float   speed;
     
+    float   breakness;
+    
     bool    bGrow;
     bool    bFlow;
     
 private:
     vector<ofPolyline>  lines;
-    vector<LNode> nodes;
+    vector<LNode>       nodes;
     
     void    lineTo(ofPoint &_pnt);
     void    addNode(ofPoint &_pnt);
@@ -51,7 +49,6 @@ private:
     void    renderBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed);
     
     float   time, timeLast;
-    float   pct;
 };
 
-#endif /* defined(__lSystem__LSystemReconstructor__) */
+#endif

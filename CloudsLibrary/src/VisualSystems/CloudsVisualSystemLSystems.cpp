@@ -8,23 +8,18 @@
 
 #include "CloudsVisualSystemLSystems.h"
 
-string CloudsVisualSystemLSystems::getSystemName()
-{
+string CloudsVisualSystemLSystems::getSystemName(){
 	return "LSystems";
 }
 
-void CloudsVisualSystemLSystems::selfSetup()
-{
-    objectLookAt = ofVec3f(0,0,1);
-    
+void CloudsVisualSystemLSystems::selfSetup(){
     angle = 5;
     axiom = "B";
     rule1 = "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB";
     rule2 = "F=FF";
 }
 
-void CloudsVisualSystemLSystems::selfSetupGuis()
-{
+void CloudsVisualSystemLSystems::selfSetupGuis(){
     
 }
 
@@ -67,7 +62,7 @@ void CloudsVisualSystemLSystems::selfDrawBackground()
     ofPushStyle();
     
     ofTranslate(ofGetWidth()*0.5, ofGetHeight()*0.5);
-    ofTranslate(xRot->getPos(), yRot->getPos());
+    ofTranslate((180.0-xRot->getPos())*10.0, (180.0-yRot->getPos())*10.0);
     ofScale(camDistance*0.1,camDistance*0.1);
     
     ofSetColor(255, originalAlpha*255);
@@ -76,7 +71,7 @@ void CloudsVisualSystemLSystems::selfDrawBackground()
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetColor(255, particlesAlpha*255);
     for(int i = 0; i < lsysr.activeNodes.size(); i++){
-        ofPoint pos = lsysr.activeNodes.getVertices()[i];
+        ofPoint pos = lsysr.activeNodes[i];
         
         glPointSize(dotSize);
         glBegin(GL_POINTS);
@@ -111,9 +106,11 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui(){
     sysGui->addSlider("tNoise", 0.0, 1.0, &lsysr.tNoise);
     sysGui->addSlider("Speed", 0.0, 10, &lsysr.speed);
     sysGui->addSlider("bornTime", 0.0, 10.0, &lsysr.bornRandom);
+    sysGui->addSlider("breakness", 0.0, 1.0, &lsysr.breakness);
     
     sysGui->addToggle("Grow", &lsysr.bGrow);
     sysGui->addToggle("Flow", &lsysr.bFlow);
+    
     
     axiom = uiAxiom->getTextString();
     rule1 = uiRule1->getTextString();
@@ -146,7 +143,7 @@ void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e){
         ofxUITextInput *uiRule2 = (ofxUITextInput *) e.widget;
         rule2 = uiRule2->getTextString();
         reBuildLSys();
-    } else if ( name == "Angle" || name == "Depth" || name == "Scale" || name == "Grow"){
+    } else if ( name == "Angle" || name == "Depth" || name == "Scale" || name == "Grow" || name == "breakness"){
         reBuildLSys();
     } 
     

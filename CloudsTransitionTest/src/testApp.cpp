@@ -31,7 +31,10 @@ void testApp::setup(){
 	
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 5, 12 );
+	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 5, 7 );
+	
+	
+	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 20, 7 );
 	act->populateTime();
 	
 	player.playAct(act);
@@ -42,11 +45,6 @@ void testApp::update(){
 
 	ofShowCursor();
 	
-	//get cam a
-	
-	//get cam b
-	
-	//
 }
 
 //--------------------------------------------------------------

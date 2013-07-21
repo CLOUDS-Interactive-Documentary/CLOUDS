@@ -149,60 +149,87 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	combinedRenderer.update();
 	
+	updateVisualSystemCrossFade();
 	
-	//handle fading
-	if(fadingIn || fadingOut){
-		crossfadeValue = ofMap(ofGetElapsedTimeMillis(), fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal);
+//	//TEMP
+//	if(currentVisualSystem != NULL)	{
+//		//replicate a basic camera annimation
+//		currentVisualSystem->getCameraRef()->move(0,0,10);
+//	}
+	
+	
+}
+
+void CloudsPlaybackController::updateVisualSystemCrossFade(){
+	//handle fadin/out
+	if( fadingIn || fadingOut){
+		int currentTime = ofGetElapsedTimeMillis();
+		
+		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
+		
 		
 		//end fading in
-		if(fadingIn && crossfadeValue < 0 ){
+		if( fadingIn && currentTime > fadeEndTime ){
+			//end fade and stop the other system
 			fadingIn = false;
-			crossfadeValue = 0;
-			
 			rgbdVisualSystem.stopSystem();
 			
+			//use our currentVisualSystem's camera( no more need for the super camera anymore )
 			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
 		}
+		
 		//end fading out
-		else if(fadingOut && crossfadeValue > 1 ){
+		else if( fadingOut && currentTime > fadeEndTime ){
+			//end fade and stop the other system
 			fadingOut = false;
-			crossfadeValue = 1;
-			
 			hideVisualSystem();
+			
+			//use our currentVisualSystem's camera( no need for the super camera anymore )
 			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
 		}
+		
 		//otherwise we're fading and we need to mix our cameras
 		else{
 			
 			//mix the attributes ffrom our vis system cameras to build our superCamera
-			mixCameras( rgbdVisualSystem.getCameraRef(), currentVisualSystem->getCameraRef(), crossfadeValue );
-			
-			//set the visual systems' current camera to our supercamera
+
+			mixCameras(&superCamera,
+					   &rgbdVisualSystem.getCameraRef(),
+					   &currentVisualSystem->getCameraRef(),
+					   crossfadeValue );
+
+			//set the visual systems' current camera to our superCamera
 			currentVisualSystem->setCurrentCamera( superCamera );
 			rgbdVisualSystem.setCurrentCamera( superCamera );
 			
 		}
 		
 	}
-	
 }
 
-void CloudsPlaybackController::mixCameras( ofCamera* c0, ofCamera*  c1, float x ){
+void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
+										  ofCamera* c0,
+										  ofCamera*  c1,
+										  float x,
+										  ofVec3f posOffset0,
+										  ofVec3f posOffset1 )
+{
+	
 	//get inverse val
 	float mx = 1. - x;
 	
 	//projection stuff
-	superCamera.setupPerspective(false,													//bool vFlip
-								 c0->getFov()*x			+	c1->getFov()*mx,			//float fov
-								 c0->getNearClip()*x	+	c1->getNearClip()*mx,		//float nearDist
-								 c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
-								 c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
+	targetCam->setupPerspective(false,													//bool vFlip
+								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
+								c0->getNearClip()*x		+	c1->getNearClip()*mx,		//float nearDist
+								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
+								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
 	//position, rotation, are we missing something else here?
-	superCamera.setPosition( c0->getPosition()*x + c1->getPosition()*mx );
+	targetCam->setPosition( (c0->getPosition()+posOffset0)*x + (c1->getPosition()+posOffset1)*mx );
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
-	superCamera.setOrientation( rot );
+	targetCam->setOrientation( rot );
 	
 	
 }
@@ -210,21 +237,21 @@ void CloudsPlaybackController::mixCameras( ofCamera* c0, ofCamera*  c1, float x 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
 
-//	LB:: we do our mixing here?
-	
-//	ofClear(0, 0, 0, 0);
-	
     
 	//turn off depth testing and enable blending
-	//TODO:: add blending modes to GUI?
     glDisable( GL_DEPTH_TEST );
+	
+	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
 	int mixVal = 255 * crossfadeValue;
 	
 	ofSetColor( 255, 255, 255, mixVal );
+	
 	rgbdVisualSystem.selfPostDraw();
 	
+	//???: currentVisualSystem->getBlendMode()
+	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	ofSetColor( 255, 255, 255, 255 - mixVal );
 	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
 	
@@ -278,6 +305,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 	if(showingVisualSystem){
 		fadeOutVisualSystem();
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
+							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -292,6 +320,11 @@ void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::topicChanged(string& args){
 	currentTopic = args;
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
+	//TODO -- respond to this event with the story engine
 }
 
 //--------------------------------------------------------------------
@@ -320,7 +353,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	if(showingVisualSystem){
 //		hideVisualSystem();
-
 		fadeOutVisualSystem();
 	}
 	
@@ -345,12 +377,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	currentVisualSystem = nextVisualSystem.system;
 	
+	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
+	
 	fadeInVisualSystem();
-	
-	
-	//camera setup clones and tweens
-	
-
 }
 
 //--------------------------------------------------------------------
@@ -363,8 +392,7 @@ void CloudsPlaybackController::hideVisualSystem(){
 		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
-		//		rgbdVisualSystem.playSystem();// fade in instead
-		
+		//rgbdVisualSystem.playSystem();// fade in instead
 	}
 }
 
@@ -383,8 +411,13 @@ void CloudsPlaybackController::fadeInVisualSystem(){
 }
 
 void CloudsPlaybackController::fadeOutVisualSystem(){
-
 	
+	//move our rgbdSystem to account for the distance we've traveled
+	ofVec3f camdelta = currentVisualSystem->getCameraPosition() - cameraStartPos;
+	rgbdVisualSystem.positionOffset += camDelta;
+	//???: maybe we want the above somewhere else. updateVisualSystemCrossFade()?
+
+	//handle the fading
 	fadingIn = false;
 	fadingOut = true;
 	
