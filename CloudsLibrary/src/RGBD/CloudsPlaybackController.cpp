@@ -6,7 +6,6 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
 	currentVisualSystem = NULL;
-	nextVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
 }
@@ -258,9 +257,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     ofDisableBlendMode();
     glEnable( GL_DEPTH_TEST );
 	
-	
+
 	if(currentAct != NULL && ofGetKeyPressed('-')){
+		currentAct->getTimeline().enableEvents();
 		currentAct->drawDebug();
+	}
+	else{
+		currentAct->getTimeline().disableEvents();
 	}
 }
 
@@ -273,6 +276,10 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	rgbdVisualSystem.playSystem();
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }
 
 //--------------------------------------------------------------------
@@ -284,9 +291,6 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
 	
-	//this has to draw last
-	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);	
 }
 
 //--------------------------------------------------------------------
@@ -303,6 +307,15 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 	if(showingVisualSystem){
+
+		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
+		//a "middle" flag, which would stop the timeline. so when the system is ready to fade out let's play it again to
+		//watch the outro
+		if(args.preset.outroDuration > 0 && args.preset.indefinite){
+			args.preset.system->getTimeline()->play();
+		}
+		
+		//TODO: respond to args.preset.outroDuration
 		fadeOutVisualSystem();
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
 							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
@@ -324,25 +337,49 @@ void CloudsPlaybackController::topicChanged(string& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
-	//TODO -- respond to this event with the story engine
+	prerollClip(args.preRollClip, args.clipStartTimeOffset);
+}
+
+//--------------------------------------------------------------------
+void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
+	if(!clip.hasCombinedVideo){
+		ofLogError() << "CloudsPlaybackController::prerollClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+		return;
+	}
+	
+	if(!combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
+		ofLogError() << "CloudsPlaybackController::prerollClip Error prerolling clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
+		return;
+	}
+	
+	prerolledClipID = clip.getID();
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip){
 
-	if(clip.hasCombinedVideo){
-		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-			combinedRenderer.getPlayer().play();
-			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
-			currentClip = clip;
-		}
-		else{
-			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
-		}
+	if(clip.getID() != prerolledClipID){
+		prerollClip(clip,1);
 	}
-	else {
-		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
-	}
+	rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+	prerolledClipID = "";
+	currentClip = clip;
+	
+	combinedRenderer.swapAndPlay();
+	
+//	if(clip.hasCombinedVideo){
+//		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+//			combinedRenderer.getPlayer().play();
+//			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+//			currentClip = clip;
+//		}
+//		else{
+//			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
+//		}
+//	}
+//	else {
+//		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
+//	}
 }
 
 
@@ -352,16 +389,14 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 //	if(simplePlaybackMode) return;
 	
 	if(showingVisualSystem){
-//		hideVisualSystem();
-		fadeOutVisualSystem();
+		//JG changed this directly to hide. This shouldn't ever happen when being driven by the story engine
+		hideVisualSystem();
+//		fadeOutVisualSystem();
 	}
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
 	
 
-//	rgbdVisualSystem.stopSystem();
-	
-	
 
 	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
@@ -379,7 +414,10 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
+	//TODO: fade in based on nextVisualSystem.introDuration;
 	fadeInVisualSystem();
+	
+	
 }
 
 //--------------------------------------------------------------------
@@ -388,8 +426,9 @@ void CloudsPlaybackController::hideVisualSystem(){
 	if(showingVisualSystem && currentVisualSystem != NULL){
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
-		
-		currentVisualSystem->stopSystem();
+
+		//JG why calling this twice?
+//		currentVisualSystem->stopSystem();
 		currentVisualSystem = NULL;
 				
 		//rgbdVisualSystem.playSystem();// fade in instead
@@ -429,4 +468,9 @@ void CloudsPlaybackController::fadeOutVisualSystem(){
 	fadeTargetVal = 1.;
 	
 	rgbdVisualSystem.playSystem();
+	
+	//this has to draw last
+//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
+	
 }

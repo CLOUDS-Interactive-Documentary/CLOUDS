@@ -22,8 +22,9 @@ public:
 	
     //  SET
     //
-	bool setup(string videoPath, string calibrationXMLPath);
-
+	bool setup(string videoPath, string calibrationXMLPath, float offsetTime = 0);
+	void swapAndPlay();
+	
 	void setShaderPath(string _shaderPath);
 	void reloadShader();
     
@@ -51,7 +52,11 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
 
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+	// UNIMPLEMENTED
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
+		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
+	}
+	
 #ifdef AVF_PLAYER
 	ofxAVFVideoPlayer& getPlayer();
 #else
@@ -87,9 +92,11 @@ public:
     void setTextureScaleForImage(ofBaseHasTexture& _texture);
 
 #ifdef AVF_PLAYER
-	ofxAVFVideoPlayer avPlayer;
+	ofxAVFVideoPlayer currentPlayer;
+	ofxAVFVideoPlayer nextPlayer;
 #else
-	ofPtr<ofVideoPlayer> player;
+	ofVideoPlayer currentPlayer;
+	ofVideoPlayer nextPlayer;
 #endif
 	
 	ofShader shader;
@@ -126,6 +133,7 @@ public:
 	//this describes the change each frame
 	ofRectangle deltaChangeRect;
 	
+	string nextCalibrationXML;
 	bool useFaces;
 	
     bool bRendererBound;

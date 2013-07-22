@@ -29,8 +29,6 @@ struct ActTimeItem{
     float clipStartPointOffset;
 };
 
-
-
 class CloudsAct{
   public:
 	
@@ -89,7 +87,8 @@ class CloudsAct{
     
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip& clip);
-
+	
+	ofxTimeline& getTimeline(){ return timeline; }
     
     void drawDebug();
     

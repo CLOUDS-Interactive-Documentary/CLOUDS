@@ -122,16 +122,16 @@ void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipBegan(CloudsClipEventArgs& args){
-//	cout << "SOUND: current topic >> " << storyEngine->getCurrentTopic() << endl;
-//	cout << "SOUND: keywords >> ";
-//    for(int i=0;i<args.chosenClip.keywords.size();i++)
-//    {
-//        cout << i << ": " << args.chosenClip.keywords[i] << " ";
-//    }
-//    cout << endl;
-//	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
-//	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << endl;
-//	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
+	cout << "SOUND: current topic >> " << args.currentTopic << endl;
+	cout << "SOUND: keywords >> ";
+    for(int i=0;i<args.chosenClip.getKeywords().size();i++)
+    {
+        cout << i << ": " << args.chosenClip.getKeywords()[i] << " ";
+    }
+    cout << endl;
+	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
+	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << ": " << returnColor(args.chosenClip.cluster.hexColor) << endl;
+	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
 
 	float t, beatoffset;
     float musicdur = args.chosenClip.getDuration();
@@ -176,6 +176,11 @@ void CloudsSound::topicChanged(string& topic){
 }
 
 //--------------------------------------------------------------------
+void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
 }
@@ -193,85 +198,12 @@ void CloudsSound::keyReleased(ofKeyEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsSound::mouseDragged(ofMouseEventArgs & args){
 	
-    float t, beatoffset;
-    
-    // some timing shit...
-    t = ofGetElapsedTimef();
-    float tempo = 0.1;
-    float del1, del2;
-    beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
-    /*
-    switch (quadrant) {
-        case 0:
-            // pretty waves
-            WAVETABLE(0., 3., 0.05, mtof(scale(int((1.0-sy)*36.)+40., 2)), sy, "themellowwave", "themellowamp");
-            break;
-        case 1:
-            // plucky
-            STRUM(0., 1.0, 0.2, mtof(scale(int((1.0-sy)*36.)+50., 5)), ofMap(delta, 0., 1., 5., 0.1), 1., sx);
-            break;
-        case 2:
-            // only in mousePressed(), sorry
-            break;
-        case 3:
-            // steve jobs in a beat
-            del1 = tempo*4./(float(round(sx*8.0+1.0))/8.0);
-            del2 = tempo*4./(float(round((1.0-sx)*8.0+1.0))/8.0);
-            SCHEDULEBANG(beatoffset);
-            if(allownote==1) {
-                PANECHO(0+beatoffset, sy, ofMap(delta, 0., 1., 0.0, tempo), 0.7, del1, del2, 0.4, 10.);
-                allownote=0;
-            }
-            if(DEBUG) cout << beatoffset << " " << del1 << " " << del2 << endl;
-            break;
-        default:
-            break;
-    }
-     */
 }
 
 void CloudsSound::mouseMoved(ofMouseEventArgs & args){
 	
 }
 void CloudsSound::mousePressed(ofMouseEventArgs & args){
-	float t, beatoffset;
-	
-    // some timing shit...
-    t = ofGetElapsedTimef();
-    float tempo = 0.125;
-    beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
-	
-    int bpattern[] = {1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,1,1};
-    /*
-    switch (quadrant) {
-        case 0:
-            // fast attack waves
-            WAVETABLE(0., 0.1, 0.2, mtof(scale(int((1.0-sy)*36.)+28., 2)), sy, "thewave", "theamp");
-            break;
-        case 1:
-            // plucks
-            STRUM(0., 1.0, 0.3, mtof(scale(int((1.0-sy)*36.)+50., 5)), 1.0, 1., sx);
-            STRUM(0.125, 1.0, 0.2, mtof(scale(int((1.0-sy)*36.)+50.+4., 5)), ofMap(delta, 0., 1., 5., 0.1), 1., sx);
-            STRUM(0.25, 1.0, 0.2, mtof(scale(int((1.0-sy)*36.)+50.+7., 5)), ofMap(delta, 0., 1., 5., 0.1), 1., sx);
-            break;
-        case 2:
-            // beats
-            for(int i = 0;i<32;i++)
-            {
-                if(bpattern[i]==1) {
-					MMODALBAR(i*tempo+beatoffset, 1., 0.2, mtof(scale(int((1.0-sy)*36.)+40., 2)), ofMap(i,0,31,0.1,0.9), sx, int(ofRandom(8)));
-                }
-            }
-            if(DEBUG) cout << sx << " " << sy << " " << delta << endl;
-            break;
-        case 3:
-            // only in mouseDragged(), sorry
-            break;
-        default:
-            break;
-    }
-     */
-
 }
 
 void CloudsSound::audioRequested(ofAudioEventArgs& args){
@@ -323,4 +255,28 @@ int CloudsSound::returnQuadrant(int x, int y)
     
     return(foo);
     
+}
+
+// translate color strings into numbers for score system
+int CloudsSound::returnColor(string c)
+{
+    //cout << "color: " << c << endl;
+    int outc = -1;
+    if(c.compare("3753a9")==0) outc = 0;
+    else if(c.compare("377ea9")==0) outc = 1;
+    else if(c.compare("37a953")==0) outc = 2;
+    else if(c.compare("37a97e")==0) outc = 3;
+    else if(c.compare("37a9a9")==0) outc = 4;
+    else if(c.compare("4537a9")==0) outc = 5;
+    else if(c.compare("45a937")==0) outc = 6;
+    else if(c.compare("7037a9")==0) outc = 7;
+    else if(c.compare("70a937")==0) outc = 8;
+    else if(c.compare("9b37a9")==0) outc = 9;
+    else if(c.compare("9ba937")==0) outc = 10;
+    else if(c.compare("a93737")==0) outc = 11;
+    else if(c.compare("a93762")==0) outc = 12;
+    else if(c.compare("a9378d")==0) outc = 13;
+    else if(c.compare("a96237")==0) outc = 14;
+    else if(c.compare("a98d37")==0) outc = 15;
+    return(outc);
 }

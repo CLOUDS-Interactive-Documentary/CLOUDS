@@ -38,6 +38,8 @@ void CloudsAct::populateTime(){
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
+	timeline.disableEvents();
+	
     timeline.clear();
     
     timeline.setDurationInSeconds(duration);
@@ -134,6 +136,7 @@ vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
 }
 
 void CloudsAct::drawDebug(){
+	
     timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
     timeline.draw();
 }

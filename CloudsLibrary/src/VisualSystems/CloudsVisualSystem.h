@@ -78,7 +78,8 @@ class CloudsVisualSystem {
 	
 	//Data Folder Path
     string getVisualSystemDataPath();
-		
+	ofxTimeline* getTimeline();
+	
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes
 	virtual void setup();
@@ -296,19 +297,26 @@ class CloudsVisualSystem {
     void unBindWidgetFromTimeline(ofxUIWidget* widget);
     ofxTimeline* timeline;
     ofxTLCameraTrack* cameraTrack;
+	ofxTLFlags* introOutroTrack;
 	
     map<ofxTLBangs*, ofxUIButton*>	tlButtonMap;
     map<ofxUIToggle*, ofxTLSwitches*>	tlToggleMap;
     map<ofxUISlider*, ofxTLCurves*>	tlSliderMap;
     map<ofxUINumberDialer*, ofxTLCurves*> tlDialerMap;
-    
+
+	bool bTimelineIsIndefinite;
+	float getIntroDuration();
+	float getOutroDuration();
+
     float timelineDuration;
 	bool bUseCameraTrack;
     bool bEnableTimeline;
+	
     bool bDeleteTimelineTrack;
     bool bShowTimeline;
     bool bEnableTimelineTrackCreation;
 
+	
 	//these variables are set by the playback controller when displaying
 	//ways to interact with the pointcloud data
 	CloudsRGBDCombinedRenderer* sharedRenderer;
