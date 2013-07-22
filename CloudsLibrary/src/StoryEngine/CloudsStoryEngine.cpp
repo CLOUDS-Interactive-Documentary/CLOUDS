@@ -207,6 +207,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     float visualSystemStartTime =0;
     string previousTopic = " ";
     float visualSystemDuration  = 0;
+    float maxTimeRemainingForVisualSystem =0;
+    bool isPresetIndefinite = false;
+    float definitePresetEndTime =0;
+    //TODO: Make this non refrenced
+    CloudsVisualSystemPreset& currentPreset = visualSystems->getRandomVisualSystem();
     //VS Stuff
     
     
@@ -293,8 +298,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
             
-            int score = scoreForClip(act->getAllClips(), nextClipOption, topic,log, systemRunning );
-            //give additional weight to clips that are better suited for voice overs if a VS is playing.
+            int score = scoreForClip(act->getAllClips(), nextClipOption, topic,log, systemRunning, isPresetIndefinite );
+
             scoreLogPairs.push_back( make_pair(score,log));
             totalPoints += score;
             topScore = MAX(topScore, score);
@@ -347,24 +352,33 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         float clipEndTime = act->getItemForClip(clip).endTime;
         
         if( systemRunning ) {
-            
-			//TODO: check if indefinite
-			//preset.indefinite;  if not, use preset.duration
-			//
-            
 
             visualSystemDuration = clipStartTime - visualSystemStartTime;
-            if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
-                if(clip.getDuration() > longClipThreshold){
-                    visualSystemDuration += clip.getDuration()*longClipFadeInPercent;
+            
+            if(isPresetIndefinite){
+                if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
+                    if(clip.getDuration() > longClipThreshold){
+                        visualSystemDuration += clip.getDuration()*longClipFadeInPercent;
+                    }
+                    
+                    act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
+                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+                    systemRunning = false;
+                    lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
-                //TODO: Make non-random
-                CloudsVisualSystemPreset& preset = visualSystems->getRandomVisualSystem();
-                act->addVisualSystem(preset, visualSystemStartTime, visualSystemDuration);
-                act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
-                systemRunning = false;
-                lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
             }
+            else{
+                if(visualSystemDuration > definitePresetEndTime ){
+                    definitePresetEndTime = 0;
+                    act->addVisualSystem(currentPreset, visualSystemStartTime, definitePresetEndTime);
+                    act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
+                    systemRunning = false;
+                    isPresetIndefinite = true;
+                    lastVisualSystemEnded = visualSystemStartTime + definitePresetEndTime;
+                }
+            }
+            
+
         }
         else {
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
@@ -373,7 +387,18 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold ){
                 
                 visualSystemStartTime  = clipStartTime + clip.getDuration() * longClipFadeInPercent;
+                maxTimeRemainingForVisualSystem = systemMaxRunTime;
+                
+                //TODO: Make non-random
+                currentPreset = visualSystems->getRandomVisualSystem();
+                
+                isPresetIndefinite = currentPreset.indefinite;
+                
+                if (! isPresetIndefinite) {
+                    definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
+                }
                 systemRunning = true;
+
             }
         }
         
@@ -624,7 +649,7 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
     return score;
 }
 
-float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log, bool visualSystemRunning){
+float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log, bool visualSystemRunning, bool isPresetIndefinite){
     
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     
@@ -660,6 +685,11 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     //If a VS is not running reject clips that do not have video footage
     if(potentialNextClip.hasSpecialKeyword("#vo") && ! visualSystemRunning){
+        return 0;
+    }
+    
+    //If a VS is running and is of a definite duration do not use voice over clips
+    if(potentialNextClip.hasSpecialKeyword("#vo") && visualSystemRunning && ! isPresetIndefinite){
         return 0;
     }
     //Base score
