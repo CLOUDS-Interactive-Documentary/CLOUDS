@@ -22,9 +22,7 @@ void testApp::setup(){
 	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
-	
 	storyEngine.combinedClipsOnly = true;
-	storyEngine.printDecisions = false;
 	
 	player.setup();
 	player.setStoryEngine(storyEngine);
