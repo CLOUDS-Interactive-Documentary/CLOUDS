@@ -122,6 +122,7 @@ void CloudsVisualSystem::playSystem(){
 			cameraTrack->lockCameraToTrack = true;
 		}
 		timeline->play();
+		bDebug = false;
 	}
 }
 
@@ -588,7 +589,7 @@ void CloudsVisualSystem::setupAppParams()
 void CloudsVisualSystem::setupDebugParams()
 {
     //DEBUG
-    bDebug = true;
+    bDebug = false;
     debugGridSize = 100;
 }
 
@@ -2153,6 +2154,7 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timelineDuration = timeline->getDurationInSeconds();
 	
 	selfPresetLoaded(presetPath);
+
 }
 
 void CloudsVisualSystem::savePresetGUIS(string presetName)
@@ -2254,7 +2256,6 @@ void CloudsVisualSystem::setCurrentCamera( ofCamera* swappedInCam )
 {
 	setCurrentCamera(*swappedInCam);
 }
-
 
 ofCamera& CloudsVisualSystem::getCameraRef(){
 	return cam;

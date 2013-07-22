@@ -102,7 +102,7 @@ void CloudsStoryEngine::setup(){
 	}
 }
 
-void CloudsStoryEngine:: initGui(){
+void CloudsStoryEngine::initGui(){
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
 	clipGui->addSpacer();
