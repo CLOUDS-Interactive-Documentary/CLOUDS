@@ -82,7 +82,7 @@ protected:
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning ); //queue based
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite ); //queue based
 	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
 		
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);

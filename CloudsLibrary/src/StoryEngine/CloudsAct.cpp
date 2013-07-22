@@ -9,7 +9,7 @@
 #include "CloudsAct.h"
 
 CloudsAct::CloudsAct(){
-
+    
 	timelinePopulated = false;
     duration = 0;
 }
@@ -26,7 +26,7 @@ void CloudsAct::play(){
     CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
 	
-	timeline.play();    
+	timeline.play();
 }
 
 void CloudsAct::populateTime(){
@@ -46,7 +46,7 @@ void CloudsAct::populateTime(){
     clipsTrack = timeline.addFlags("Clips");
     clipPreRollTrack = timeline.addFlags("Clip PreRoll Flags");
     questionsTrack = timeline.addFlags("Questions");
-
+    
     timeline.setInPointAtSeconds(0);
     string previousTopic = "";
     string currentTopic = "";
@@ -75,7 +75,7 @@ void CloudsAct::populateTime(){
             else{
                 visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
             }
-
+            
             if(item.endTime != item.outroStartTime){
                 visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
                 visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
@@ -83,7 +83,7 @@ void CloudsAct::populateTime(){
             else{
                 visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
             }
-
+            
             
         }
         else if(item.type == PreRoll){
@@ -116,17 +116,17 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         //split string on %, send VS either began or ended
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
-
+        
         CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
 		if(presetId[0] == "start " ){
             cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
 			ofNotifyEvent(events.visualSystemBegan, args);
-		} 
+		}
 		else if(presetId[0] == "outro "){
-            cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;            
+            cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
 			ofNotifyEvent(events.visualSystemEnded, args);
 		}
-
+        
     }
     else if(bang.track == questionsTrack){
         CloudsQuestionEventArgs args(questionsMap[bang.flag]);
@@ -151,7 +151,8 @@ vector<keywordDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
     if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
         return dichotomiesMap[clipName];
     }
-       return dummyDichotomies;
+    cout<<"dichotomoies not found for clip: "<< clipName<<endl;
+    return dummyDichotomies;
 }
 vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
     return visualSystems;
@@ -290,14 +291,14 @@ void CloudsAct::addQuestion(CloudsClip clip, float startTime){
     //making the key the first question for now
     //TODO: MAKE THIS LESS ARBITRARY
     item.key = clip.getQuestionsVector()[ofRandom(clip.getQuestionsVector().size()-1)];
-
+    
     item.startTime = startTime;
     //dont care about end time as it will end with visual system;
     item.endTime = startTime + 10;
     
     questionsMap[item.key] = clip;
     actItems.push_back(item);
-
+    
 }
 
 void CloudsAct::removeQuestionAtTime(float startTime, float duration){
@@ -307,7 +308,7 @@ void CloudsAct::removeQuestionAtTime(float startTime, float duration){
             if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
                 questionsMap.erase(actItems[i].key);
                 actItems.erase(actItems.begin() + i);
-
+                
             }
         }
     }

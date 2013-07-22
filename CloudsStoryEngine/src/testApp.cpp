@@ -46,6 +46,7 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	currentAct = args.act;
 	currentAct->registerEvents(this);
 	currentAct->play();
+    currentAct->getTimeline().enableEvents();
 }
 
 //--------------------------------------------------------------
