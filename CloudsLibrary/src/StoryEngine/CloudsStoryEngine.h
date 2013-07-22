@@ -7,12 +7,12 @@
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
 #include "ofxUI.h"
-
-typedef struct {
-    string left;
-    string right;
-    int balance; //pos/neg
-} KeywordDichotomy;
+#include "keywordDichotomy.h"
+//typedef struct {
+//    string left;
+//    string right;
+//    int balance; //pos/neg
+//} KeywordDichotomy;
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -54,7 +54,7 @@ class CloudsStoryEngine {
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
 
-    vector<KeywordDichotomy> getCurrentDichotomyBalance();
+    vector<keywordDichotomy> getCurrentDichotomyBalance();
 
 //    CloudsAct& getAct();
     
@@ -75,14 +75,14 @@ protected:
 	float totalPoints;
 	int nextClipTopScore;
     int dichotomyThreshold;
-	vector<KeywordDichotomy> dichotomies;
+	vector<keywordDichotomy> dichotomies;
     
 	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning); //queue based
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning ); //queue based
 	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
 		
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);

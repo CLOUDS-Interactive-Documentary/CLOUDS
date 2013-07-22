@@ -267,6 +267,7 @@
 		3D5B9442175304B800F558AC /* ofRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofRange.h; sourceTree = "<group>"; };
 		3D605192178DF487009A4ED7 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
 		3D605193178DF487009A4ED7 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		3DA45C57179DA242002EC0AC /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		3DCACC6C176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
 		3DCACC6D176A2D5D000696C6 /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
 		3DCACC70176A309D000696C6 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
@@ -1140,6 +1141,7 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				3DA45C57179DA242002EC0AC /* CloudsGlobal.h */,
 				3D03B1BF1755A1AE009CF17D /* RGBD */,
 				E7E95E731733624100294C72 /* VisualSystems */,
 			);

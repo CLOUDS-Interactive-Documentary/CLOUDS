@@ -55,7 +55,7 @@ void CloudsStoryEngine::setup(){
 	if(!isSetup){
 		isSetup = true;
         
-        KeywordDichotomy d;
+        keywordDichotomy d;
         dichotomyThreshold = 3;
         
 		dichotomies.clear();
@@ -225,7 +225,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
 	act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
 	totalSecondsEnqueued = preRollDuration;
 	
-    act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration);
+    act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
     totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() ) * clipHandleDuration*2;
     
     vector<string> topicHistory;
@@ -335,7 +335,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
 		clipHandleDuration = getHandleForClip(clip);
-        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration);
+        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration,getCurrentDichotomyBalance());
 		float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
       
@@ -351,6 +351,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
 			//TODO: check if indefinite
 			//preset.indefinite;  if not, use preset.duration
 			//
+            
+
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
                 if(clip.getDuration() > longClipThreshold){
@@ -370,7 +372,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             //if the clip is shorter than the 30 seconds dont start the VS during the clip.
             if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold ){
                 
-                visualSystemStartTime  = clipStartTime + clip.getDuration()*longClipFadeInPercent;
+                visualSystemStartTime  = clipStartTime + clip.getDuration() * longClipFadeInPercent;
                 systemRunning = true;
             }
         }
@@ -551,7 +553,7 @@ void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
     }
 }
 
-vector<KeywordDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
+vector<keywordDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
     return dichotomies;
 }
 
