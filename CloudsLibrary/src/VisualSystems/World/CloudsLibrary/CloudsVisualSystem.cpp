@@ -51,13 +51,7 @@ string CloudsVisualSystem::getVisualSystemDataPath(){
     
     bool NotStandALoneFolder = ofDirectory("../../../CloudsLibrary/").exists();
     
-    string path = "../../../data/";
-    
-    if (NotStandALoneFolder)
-        path = "../../../CloudsLibrary/src/VisualSystems/"+ getSystemName() +"/bin/data/" ;
-    
-    
-    return path;
+    return NotStandALoneFolder ? "../../../CloudsLibrary/src/VisualSystems/" + getSystemName() +"/bin/data" : "../../../data/";
 }
 
 string CloudsVisualSystem::getSystemName(){

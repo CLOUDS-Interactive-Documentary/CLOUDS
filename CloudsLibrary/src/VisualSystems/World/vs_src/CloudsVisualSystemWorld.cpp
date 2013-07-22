@@ -42,7 +42,7 @@ void CloudsVisualSystemWorld::selfSetup()
     satLinksDist = 0;
     satLinksAlpha = 1.0;
     
-    haloShader.load(getDataPath()+"shaders/VisualSystems/World/backlight");
+    haloShader.load(getVisualSystemDataPath()+"shaders/backlight");
 }
 
 void CloudsVisualSystemWorld::selfBegin()
@@ -103,7 +103,7 @@ void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
     
     ifstream fileIn;
 	
-    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    string filePath = getVisualSystemDataPath()+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
     int lineCount = 0;
@@ -141,7 +141,7 @@ void CloudsVisualSystemWorld::loadVbo(ofVboMesh &_vbo, string _file){
 }
 
 void CloudsVisualSystemWorld::loadCities(string _file){
-    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    string filePath = getVisualSystemDataPath()+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
     while(!buffer.isLastLine()) {
@@ -161,7 +161,7 @@ void CloudsVisualSystemWorld::loadCities(string _file){
 }
 
 void CloudsVisualSystemWorld::loadSecCities(string _file){
-    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    string filePath = getVisualSystemDataPath()+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
     while(!buffer.isLastLine()) {
@@ -180,7 +180,7 @@ void CloudsVisualSystemWorld::loadSecCities(string _file){
 }
 
 void CloudsVisualSystemWorld::loadStarts( string _file){
-    string filePath = getDataPath()+"visualsystems/World/"+_file;
+    string filePath = getVisualSystemDataPath()+_file;
     ofBuffer buffer = ofBufferFromFile(filePath);
     
     string lastConstelation = "";
