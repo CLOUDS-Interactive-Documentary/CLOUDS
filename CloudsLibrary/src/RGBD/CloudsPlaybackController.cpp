@@ -335,7 +335,8 @@ void CloudsPlaybackController::topicChanged(string& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
-	prerollClip(args.preRollClip, args.clipStartTimeOffset);
+	cout << "PREROLLING CLIP TO " << 1. - args.handleLength << endl;
+	prerollClip(args.preRollClip, 1. - args.handleLength);
 }
 
 //--------------------------------------------------------------------

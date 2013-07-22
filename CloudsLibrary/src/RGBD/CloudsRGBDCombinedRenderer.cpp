@@ -10,14 +10,7 @@
 
 //---------------------------------------------------------------
 CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
-//	ofVideoPlayer* vp = new ofVideoPlayer();	
-//#ifndef AVF_PLAYER
-//	vp->setPlayer( ofPtr<ofBaseVideoPlayer>( new ofxAVFVideoPlayer() ) );
-//#else
-//	currentPlayer = ofPtr<ofVideoPlayer>( vp );
-//	nextPlayer = ofPtr<ofVideoPlayer>( vp );
-//#endif
-	
+
 	setShaderPath("shaders/rgbdcombined");
     
     simplify.set(0,0);
@@ -28,7 +21,8 @@ CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
     
 	minDepth = 400;
 	maxDepth = 2000;
-
+	
+	clipPrerolled = false;
     bMirror     = false;
     bFlipTexture = false;
     bRendererBound = false;
@@ -47,16 +41,14 @@ bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPa
 		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
+#ifdef AVF_PLAYER
+	nextPlayer.setPositionInSeconds( offsetTime );
+#else
 	nextPlayer.setPosition( offsetTime / nextPlayer.getDuration() );
-//#else
-//	if(!nextPlayer->loadMovie(videoPath)){
-//		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
-//		return false;
-//	}
-////#endif
-	
+#endif
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
+	clipPrerolled = true;
 	return true;
 }
 
@@ -166,16 +158,8 @@ void CloudsRGBDCombinedRenderer::swapAndPlay(){
 	currentPlayer.stop();
 	nextPlayer.play();
 	swap(currentPlayer,nextPlayer);
-
-//#ifdef AVF_PLAYER
-//	currentPlayer.stop();
-//	nextPlayer.play();
-//	swap(currentPlayer,nextPlayer);
-//#else
-//	currentPlayer->stop();
-//	nextPlayer->play();
-//	swap(currentPlayer,nextPlayer);	
-//#endif
+	clipPrerolled = false;
+	
 	cout << "swapped and played clip " << endl;
 
 }
@@ -357,9 +341,12 @@ ofShader& CloudsRGBDCombinedRenderer::getShader(){
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDCombinedRenderer::update(){
 
-	getPlayer().update();
-	
+	currentPlayer.update();
+	if(clipPrerolled){
+		nextPlayer.update();
+	}
 	float audioVolume = 1.0;
+
 #ifdef AVF_PLAYER
 	float position = getPlayer().getPositionInSeconds();
 	float duration = getPlayer().getDuration();
@@ -370,16 +357,22 @@ void CloudsRGBDCombinedRenderer::update(){
 	
 	//cout << "position is " << position << " " << duration << " duration " << endl;
 	
-	if(position < 1){
-		audioVolume = powf(position,2.0);
+	if(position < 1.0){
+		//audioVolume = powf(position,2.0);
+		audioVolume = ofMap(position, .8, 1.0, 0., 1.0, true);
 //		cout << "VOLUME " << audioVolume << endl;
 	}
-	else if(position > duration - 1){
-		audioVolume = powf(duration - position, 2.0);
+	else if(position > duration - 1.0){
+//		audioVolume = powf(duration - position, 2.0);
+		audioVolume = ofMap(position, duration - 1.0, duration - .8, 1.0, 0.0, true);
 //		cout << "VOLUME " << audioVolume << endl;
 	}
-	
+
 	getPlayer().setVolume(audioVolume);
+	
+	if(position > duration - .04){
+		getPlayer().stop();
+	}
 }
 
 bool CloudsRGBDCombinedRenderer::isPlaying(){

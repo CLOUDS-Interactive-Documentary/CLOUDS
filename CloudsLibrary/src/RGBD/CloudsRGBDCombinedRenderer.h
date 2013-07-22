@@ -136,6 +136,8 @@ public:
 	string nextCalibrationXML;
 	bool useFaces;
 	
+	bool clipPrerolled;
+	
     bool bRendererBound;
     bool bMeshGenerated;
     

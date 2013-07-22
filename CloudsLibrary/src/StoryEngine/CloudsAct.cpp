@@ -36,7 +36,7 @@ void CloudsAct::populateTime(){
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
-//	timeline.disableEvents();
+	timeline.disableEvents();
 	
     timeline.clear();
     
@@ -120,8 +120,8 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
     else if(bang.track == clipPreRollTrack){
         vector<string> clipName = ofSplitString(bang.flag, "%");
-        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].clipStartPointOffset << endl;
-        CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].clipStartPointOffset);
+        cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
+        CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);
         
     }
@@ -176,7 +176,7 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
+void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
@@ -187,7 +187,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     item.type = Clip;
     item.key = clip.getLinkName();
     item.startTime = startTime;
-    item.endTime = startTime+clip.getDuration();
+    item.endTime = startTime+clip.getDuration() + handleLength;
     duration = MAX(item.endTime, duration);
     
     actItems.push_back(item);
@@ -228,13 +228,13 @@ void CloudsAct::addGapForVisualSystem(float startTime){
     actItems.push_back(item);
     
 }
-void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipStartPointOffset, string clipName){
+void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName){
     ActTimeItem item;
     item.type = PreRoll;
     item.key = "%" + clipName;
     item.startTime = preRollFlagTime;
     item.endTime = preRollFlagTime;
-    item.clipStartPointOffset = clipStartPointOffset;
+    item.handleLength = clipHandleLength;
     
     actItemsMap[item.key] = item;
     actItems.push_back(item);
