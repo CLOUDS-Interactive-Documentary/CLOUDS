@@ -97,7 +97,6 @@ public:
 #else
 	ofVideoPlayer currentPlayer;
 	ofVideoPlayer nextPlayer;
-	
 #endif
 	
 	ofShader shader;

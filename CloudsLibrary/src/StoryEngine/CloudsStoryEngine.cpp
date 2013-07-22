@@ -22,7 +22,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 	combinedClipsOnly = false;
 	printCriticalDecisions = false;
 	
-	fixedClipDelay = 5;
+//	fixedClipDelay = 5;
 	maxTimesOnTopic = 4;
     
     systemMaxRunTime = 60*2;
@@ -160,7 +160,6 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
         CloudsClip& clip = parser->getRandomClip(false,false);
 		buildAct( clip );
     }
-    
 }
 
 void CloudsStoryEngine:: saveGuiSettings(){
@@ -185,9 +184,7 @@ void CloudsStoryEngine:: displayGui(bool display){
         gui->disable();
         vsGui->disable();
     }
-    
 }
-
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed){
     return buildAct(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
@@ -686,156 +683,6 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     return MAX(totalScore, 0);
 }
 
-
-//IGNORE
-//float CloudsStoryEngine::scoreForClip(CloudsClip& clip){
-//
-//    return 0;
-
-/*
- //rejection criteria -- flat out reject clips on some basis
- if(combinedClipsOnly && !clip.hasCombinedVideo){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": no combined video file" << endl;
- return 0;
- }
- 
- if(clip.cluster.Id == ""){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": disconnect from cluster map =(" << endl;
- return 0;
- }
- 
- if(clip.person == currentClip.person){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same person" << endl;
- return 0;
- }
- 
- bool containsCurrentTopic = ofContains(clip.getKeywords(), currentTopic);
- if(!freeTopic && !containsCurrentTopic){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": not on topic " << currentTopic << endl;
- return 0;
- }
- //maybe a bug...
- else if(freeTopic && containsCurrentTopic){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": same topic as before " << currentTopic << endl;
- return 0;
- }
- 
- //reject any nodes we've seen already
- if(historyContainsClip(clip)){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": already visited" << endl;
- return 0;
- }
- 
- int occurrences = occurrencesOfPerson(clip.person, 20);
- if(occurrences > 4){
- if(printDecisions) cout << "	REJECTED Clip " << clip.getLinkName() << ": person appeared more than 4 times in the last 20 clips" << endl;
- return 0;
- }
- 
- if(parser->linkIsSuppressed(currentClip.getLinkName(), clip.getLinkName())) {
- if(printDecisions) cout << "	REJECTED clip " << clip.getLinkName() << ": link is suppressed" << endl;
- return 0;
- }
- 
- //Base score
- int score = 10;
- int topicsInCommon = parser->getSharedKeywords(currentClip, clip).size();
- score += (topicsInCommon-1)*10;
- 
- bool link = parser->clipLinksTo( currentClip.getLinkName(), clip.getLinkName() );
- //If this clip is a link weight it highly
- if( link ){
- score += 20;
- }
- 
- //penalize for the person occurring
- score -= occurrences*4;
- 
- if(printDecisions) cout << "	ACCEPTED " << (link ? "LINK " : "") << score << " Clip " << clip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
- 
- return MAX(score, 0);
- */
-//}
-
-//CloudsAct& CloudsStoryEngine::getAct(){
-//    return act;
-//}
-
-//void CloudsStoryEngine::drawStoryEngineDebug(){
-//	ofPushStyle();
-//
-//	ofSetColor(255);
-//	string debugString = "";
-//	debugString += "Current Clip:    " + currentClip.getLinkName() + "\n";
-//	debugString += "Current Topic:   " + getCurrentTopic() + "\n";
-//	debugString += "Times on Topic:  " + ofToString(timesOnTopic) + "/" + ofToString(maxTimesOnTopic) + "\n";
-//
-//
-//	ofDrawBitmapString(debugString,25,25);
-//
-//	ofPopStyle();
-//}
-
-//void CloudsStoryEngine::drawActDebug(){
-//	float totalTime = 0;
-//	for(int i = 0; i < act.getAllClips().size(); i++){
-//		totalTime += act.getClipInAct(i).getDuration();
-//	}
-//
-//	int currentTime = 0;
-//	for(int i = 0; i < act.getAllClips().size(); i++){
-//		float screenX = ofMap(currentTime, 0, totalTime,  0, ofGetWidth());
-//		float width = ofMap(act.getClipInAct(i).getDuration(), 0, totalTime,  0, ofGetWidth());
-//		currentTime += act.getClipInAct(i).getDuration();
-//		ofNoFill();
-//		ofRect(screenX, 100 + 30*i, width, 30);
-//		ofDrawBitmapString(act.getClipInAct(i).getLinkName(), screenX+10, 100 + 30*(i+.75));
-//	}
-//
-//    string dichotomiesString = "";
-//
-//    for (int i =0; i<dichotomies.size(); i++) {
-//        dichotomiesString += dichotomies[i].left + "," + dichotomies[i].right + " : " + ofToString(dichotomies[i].balance) + "\n";
-//    }
-//    ofDrawBitmapString(dichotomiesString, ofGetWidth()-500, 100);
-//
-//}
-
-//float CloudsStoryEngine::getTotalSecondsWatched(){
-//	return totalFramesWatched / 23.976;
-//}
-
-//CloudsClip& CloudsStoryEngine::getCurrentClip(){
-//	return currentClip;
-//}
-
-//vector<CloudsClip>& CloudsStoryEngine::getClipHistory(){
-//	return clipHistory;
-//}
-
-//string CloudsStoryEngine::getCurrentTopic(){
-//	return currentTopic;
-//}
-
-//int CloudsStoryEngine::getTimesOnTopic(){
-//	return timesOnTopic;
-//}
-
-//float CloudsStoryEngine::getNextClipDelay(){
-//	return fixedClipDelay;
-//}
-
-//bool CloudsStoryEngine::isWaiting(){
-//	return waitingForNextClip;
-//}
-
-//bool CloudsStoryEngine::atDeadEnd(){
-//	return validNextClips.size() == 0;
-//}
-
-//bool CloudsStoryEngine::historyContainsClip(CloudsClip& m){
-//	return historyContainsClip(m, clipHistory);
-//}
 
 bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& history){
     string clipLinkName = m.getLinkName();
