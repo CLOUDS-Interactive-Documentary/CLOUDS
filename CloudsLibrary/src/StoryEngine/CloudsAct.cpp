@@ -36,7 +36,7 @@ void CloudsAct::populateTime(){
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
-//	timeline.disableEvents();
+	timeline.disableEvents();
 	
     timeline.clear();
     
@@ -68,10 +68,22 @@ void CloudsAct::populateTime(){
             previousTopic = currentTopic;
         }
         else if(item.type == VS){
-            visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
-            visualSystemsTrack->addFlagAtTime("intro :" + item.key, item.introEndTime * 1000);
-            visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
-            visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
+            if(item.startTime != item.introEndTime){
+                visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
+                visualSystemsTrack->addFlagAtTime("intro :" + item.key, item.introEndTime * 1000);
+            }
+            else{
+                visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
+            }
+
+            if(item.endTime != item.outroStartTime){
+                visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
+                visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
+            }
+            else{
+                visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
+            }
+
             
         }
         else if(item.type == PreRoll){
@@ -106,10 +118,12 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         presetId = ofSplitString(bang.flag, ":");
 
         CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-		if(presetId[0] == "start"){
+		if(presetId[0] == "start " ){
+            cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
 			ofNotifyEvent(events.visualSystemBegan, args);
-		}
-		else if(presetId[0] == "outro"){
+		} 
+		else if(presetId[0] == "outro "){
+            cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;            
 			ofNotifyEvent(events.visualSystemEnded, args);
 		}
 
