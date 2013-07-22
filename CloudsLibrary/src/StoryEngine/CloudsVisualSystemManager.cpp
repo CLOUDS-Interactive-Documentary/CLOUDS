@@ -221,7 +221,14 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem
 
 //--------------------------------------------------------------------
 CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string systemName, string presetName){
-	//TODO::
+	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].presetName == presetName){
+			return presets[i];
+		}
+	}
+	ofLogError() << "Couldn't find preset " << systemName << " " << presetName;
+	return dummyPreset;
 }
 
 //--------------------------------------------------------------------

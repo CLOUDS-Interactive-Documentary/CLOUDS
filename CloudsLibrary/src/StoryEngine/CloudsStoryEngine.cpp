@@ -352,7 +352,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         float clipEndTime = act->getItemForClip(clip).endTime;
         
         if( systemRunning ) {
-
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             
             if(isPresetIndefinite){
