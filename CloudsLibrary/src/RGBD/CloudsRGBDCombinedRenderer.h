@@ -91,7 +91,9 @@ public:
 	ofxAVFVideoPlayer currentPlayer;
 	ofxAVFVideoPlayer nextPlayer;
 #else
-	ofPtr<ofVideoPlayer> player;
+	ofPtr<ofVideoPlayer> currentPlayer;
+	ofPtr<ofVideoPlayer> nextPlayer;
+	
 #endif
 	
 	ofShader shader;

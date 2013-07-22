@@ -168,9 +168,9 @@ void CloudsRGBDCombinedRenderer::swapAndPlay(){
 	swap(currentPlayer,nextPlayer);
 #else
 	player->play();
+	swap(currentPlayer,nextPlayer);	
 #endif
 	cout << "swapped and played clip"<< endl;
-
 
 }
 
