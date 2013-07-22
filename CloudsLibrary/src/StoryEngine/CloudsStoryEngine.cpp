@@ -221,7 +221,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     int timeForNewQuesiton = 0;
     
-    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore"<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore,voiceOverScore"<<endl;
     
     clearDichotomiesBalance();
     
@@ -238,7 +238,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     int timesOnCurrentTopic = 0;
     while( totalSecondsEnqueued < seconds ){
-        scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
+        scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
         
         freeTopic |= timesOnCurrentTopic > maxTimesOnTopic;
         
@@ -767,12 +767,12 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     string linkName =potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
     
-    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<endl;
+    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<voiceOverScore<<endl;
     
     log = ss.str();
     
     if(printDecisions) {
-        cout << "	ACCEPTED " << (link ? "LINK " : "") << totalScore << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common" << endl;
+        cout << "	ACCEPTED " << (link ? "LINK " : "") << totalScore << " Clip " << potentialNextClip.getLinkName() << " occurrences " << occurrences << " and " << topicsInCommon << " topics in common " <<dichotomiesScore<<" dichotomiesScore "<<voiceOverScore<<" voiceOverScore "<< endl;
         
         //        cout<<" Score Breakdown: " << totalScore <<" = "<<topicsInCommonScore<< " + " << topicsInCommonWithPreviousScore << " - " << samePersonOccuranceScore << " + "<<dichotomiesScore<<endl;
     }
