@@ -53,8 +53,13 @@ class CloudsStoryEngine {
 	
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
+
+    vector<KeywordDichotomy> getCurrentDichotomyBalance();
+
+//    CloudsAct& getAct();
     
-  protected:
+protected:
+
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;

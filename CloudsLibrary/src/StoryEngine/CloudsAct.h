@@ -26,6 +26,8 @@ struct ActTimeItem{
     string key;
     float startTime;
     float endTime;
+    float introEndTime;
+    float outroStartTime;
     float clipStartPointOffset;
 };
 
@@ -102,7 +104,6 @@ protected:
     ActItemType itemType;
 	
 	bool timelinePopulated;
-    CloudsClip currentClip;
     string currentTopic;
     CloudsEvents events;
     vector<CloudsClip> clips;
