@@ -7,3 +7,10 @@
 //
 
 #include "keywordDichotomy.h"
+
+keywordDichotomy::keywordDichotomy(){
+    left ="";
+    right ="";
+    balance =0; //pos/neg
+
+}

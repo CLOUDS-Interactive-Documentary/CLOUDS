@@ -9,6 +9,12 @@
 #ifndef __CloudsStoryEngine__keywordDichotomy__
 #define __CloudsStoryEngine__keywordDichotomy__
 
-#include <iostream>
-
+#include "ofMain.h"
+class keywordDichotomy{
+public:
+    keywordDichotomy();
+    string left;
+    string right;
+    int balance; //pos/neg
+};
 #endif /* defined(__CloudsStoryEngine__keywordDichotomy__) */
