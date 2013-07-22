@@ -22,8 +22,6 @@ CloudsAct::~CloudsAct(){
 
 
 void CloudsAct::play(){
-
-    currentClip = clips[0];
     
     CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
@@ -38,7 +36,7 @@ void CloudsAct::populateTime(){
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
-	timeline.disableEvents();
+//	timeline.disableEvents();
 	
     timeline.clear();
     
@@ -70,8 +68,11 @@ void CloudsAct::populateTime(){
             previousTopic = currentTopic;
         }
         else if(item.type == VS){
-            visualSystemsTrack->addFlagAtTime("start:" + item.key, item.startTime * 1000);
-            visualSystemsTrack->addFlagAtTime("end:" + item.key, item.endTime * 1000);
+            visualSystemsTrack->addFlagAtTime("start :" + item.key, item.startTime * 1000);
+            visualSystemsTrack->addFlagAtTime("intro :" + item.key, item.introEndTime * 1000);
+            visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
+            visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
+            
         }
         else if(item.type == PreRoll){
             clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);
@@ -108,7 +109,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 		if(presetId[0] == "start"){
 			ofNotifyEvent(events.visualSystemBegan, args);
 		}
-		else{
+		else if(presetId[0] == "outro"){
 			ofNotifyEvent(events.visualSystemEnded, args);
 		}
 
@@ -205,8 +206,9 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     item.type = VS;
     item.key =preset.getID();
     item.startTime = vsStartTime;
-    
     item.endTime = vsStartTime + duration;
+    item.introEndTime = vsStartTime + preset.introDuration;
+    item.outroStartTime = item.endTime -preset.outroDuration;
     
     duration = MAX(item.endTime, duration);
     

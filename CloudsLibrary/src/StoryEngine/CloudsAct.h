@@ -26,6 +26,8 @@ struct ActTimeItem{
     string key;
     float startTime;
     float endTime;
+    float introEndTime;
+    float outroStartTime;
     float clipStartPointOffset;
 };
 
