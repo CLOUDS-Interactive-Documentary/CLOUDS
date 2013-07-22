@@ -10,12 +10,13 @@
 
 //---------------------------------------------------------------
 CloudsRGBDCombinedRenderer::CloudsRGBDCombinedRenderer(){
-	ofVideoPlayer* vp = new ofVideoPlayer();	
-#ifdef AVF_PLAYER
-	vp->setPlayer( ofPtr<ofBaseVideoPlayer>( new ofxAVFVideoPlayer() ) );
-#else
-	player = ofPtr<ofVideoPlayer>( vp );
-#endif
+//	ofVideoPlayer* vp = new ofVideoPlayer();	
+//#ifndef AVF_PLAYER
+//	vp->setPlayer( ofPtr<ofBaseVideoPlayer>( new ofxAVFVideoPlayer() ) );
+//#else
+//	currentPlayer = ofPtr<ofVideoPlayer>( vp );
+//	nextPlayer = ofPtr<ofVideoPlayer>( vp );
+//#endif
 	
 	setShaderPath("shaders/rgbdcombined");
     
@@ -41,18 +42,18 @@ CloudsRGBDCombinedRenderer::~CloudsRGBDCombinedRenderer(){
 //---------------------------------------------------------------
 bool CloudsRGBDCombinedRenderer::setup(string videoPath, string calibrationXMLPath, float offsetTime){
 	
-#ifdef AVF_PLAYER
+//#ifdef AVF_PLAYER
 	if(!nextPlayer.loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
 	nextPlayer.setPosition( offsetTime / nextPlayer.getDuration() );
-#else
-	if(!player->loadMovie(videoPath)){
-		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
-		return false;
-	}
-#endif
+//#else
+//	if(!nextPlayer->loadMovie(videoPath)){
+//		ofLogError() << "CloudsRGBDCombinedRenderer::setup -- Movie path " << videoPath << " failed to load";
+//		return false;
+//	}
+////#endif
 	
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
@@ -161,16 +162,21 @@ void CloudsRGBDCombinedRenderer::swapAndPlay(){
 		useFaces = false;
 		colorScale.y = float(colorHeight - (depthRect.height) ) / float(colorRect.height);
 	}
-	
-#ifdef AVF_PLAYER
+
 	currentPlayer.stop();
 	nextPlayer.play();
 	swap(currentPlayer,nextPlayer);
-#else
-	player->play();
-	swap(currentPlayer,nextPlayer);	
-#endif
-	cout << "swapped and played clip"<< endl;
+
+//#ifdef AVF_PLAYER
+//	currentPlayer.stop();
+//	nextPlayer.play();
+//	swap(currentPlayer,nextPlayer);
+//#else
+//	currentPlayer->stop();
+//	nextPlayer->play();
+//	swap(currentPlayer,nextPlayer);	
+//#endif
+	cout << "swapped and played clip " << endl;
 
 }
 
@@ -334,27 +340,14 @@ void CloudsRGBDCombinedRenderer::setupProjectionUniforms(){
 
 }
 
-#ifdef AVF_PLAYER
 //--------------------------------------------------------------- ACTIONS
+#ifdef AVF_PLAYER
 ofxAVFVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
+#else
+ofVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
+#endif
 	return currentPlayer;
 }
-
-//bad news
-ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
-	return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
-}
-#else
-//--------------------------------------------------------------- ACTIONS
-ofVideoPlayer& CloudsRGBDCombinedRenderer::getPlayer(){
-	return *player;
-}
-//--------------------------------------------------------------- ACTIONS
-ofPtr<ofVideoPlayer> CloudsRGBDCombinedRenderer::getSharedPlayerPtr(){
-	return player;
-}
-#endif
-
 
 //--------------------------------------------------------------- ACTIONS
 ofShader& CloudsRGBDCombinedRenderer::getShader(){

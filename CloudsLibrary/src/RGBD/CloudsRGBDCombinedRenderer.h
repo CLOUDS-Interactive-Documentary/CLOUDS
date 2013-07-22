@@ -52,7 +52,11 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
 
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+	// UNIMPLEMENTED
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
+		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
+	}
+	
 #ifdef AVF_PLAYER
 	ofxAVFVideoPlayer& getPlayer();
 #else
@@ -91,8 +95,8 @@ public:
 	ofxAVFVideoPlayer currentPlayer;
 	ofxAVFVideoPlayer nextPlayer;
 #else
-	ofPtr<ofVideoPlayer> currentPlayer;
-	ofPtr<ofVideoPlayer> nextPlayer;
+	ofVideoPlayer currentPlayer;
+	ofVideoPlayer nextPlayer;
 	
 #endif
 	
