@@ -16,7 +16,7 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemManager();
 	
 	void populateVisualSystems();
-	CloudsVisualSystemPreset& getRandomVisualSystem();
+	CloudsVisualSystemPreset getRandomVisualSystem();
 	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName); 
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
@@ -26,7 +26,11 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(int index);
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
-	
+	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
+
+    
+    //choose one you havent seen
+    // choose
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
 	void loadPresets();
@@ -46,7 +50,6 @@ class CloudsVisualSystemManager {
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
 	map<string, vector<CloudsVisualSystemPreset> > nameToPresets;
-	
     map<string, vector<string> > suppressedClips;
 	string getKeywordFilePath();
 	
