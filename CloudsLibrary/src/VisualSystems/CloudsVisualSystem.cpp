@@ -2184,7 +2184,7 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("introDuration", getIntroDuration());
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
-	timeInfo.save(getVisualSystemDataPath()+presetName+"/"+"TimeInfo.xml");
+	timeInfo.saveFile(getVisualSystemDataPath()+presetName+"/"+"TimeInfo.xml");
 	
 }
 

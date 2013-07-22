@@ -25,7 +25,7 @@ string CloudsVisualSystemPreset::getID(){
 void CloudsVisualSystemPreset::loadTimeInfo(){
 	ofxXmlSettings timeInfo;
 	string path = getDataPath() + "visualsystems/"+systemName+"/" + presetName + "/TimeInfo.xml";
-	if(timeInfo.load(path) ){
+	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
 		indefinite = timeInfo.getValue("indefinite", true);
 		duration = timeInfo.getValue("duration", 60);
@@ -41,7 +41,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 			timeInfo.addValue("indefinite", indefinite);
 			timeInfo.addValue("introDuration", introDuration);
 			timeInfo.addValue("outroDuration", outroDuration);
-			timeInfo.save(path);
+			timeInfo.saveFile(path);
 		}
 	}
 }
