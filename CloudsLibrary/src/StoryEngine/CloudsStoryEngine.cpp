@@ -293,13 +293,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
             
-            int score = scoreForClip(act->getAllClips(), nextClipOption, topic,log);
+            int score = scoreForClip(act->getAllClips(), nextClipOption, topic,log, systemRunning );
             //give additional weight to clips that are better suited for voice overs if a VS is playing.
-            if( systemRunning && nextClipOption.hasSpecialKeyword("#vo") ){
-                //TODO: Figure out with James what this value should be.
-                score += 15;
-                
-            }
             scoreLogPairs.push_back( make_pair(score,log));
             totalPoints += score;
             topScore = MAX(topScore, score);
@@ -627,7 +622,7 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
     return score;
 }
 
-float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log){
+float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log, bool visualSystemRunning){
     
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     
@@ -661,6 +656,10 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
         return 0;
     }
     
+    //If a VS is not running reject clips that do not have video footage
+    if(potentialNextClip.hasSpecialKeyword("#vo") && ! visualSystemRunning){
+        return 0;
+    }
     //Base score
     int totalScore = 0;
     int topicsInCommonScore = 0;
@@ -673,6 +672,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     int dichotomiesScore = 0;
     
+    int voiceOverScore =0;
     
     int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
     
@@ -722,7 +722,14 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
             }
         }
     }
-    totalScore = topicsInCommonScore + topicsInCommonWithPreviousScore - samePersonOccuranceScore + dichotomiesScore;
+
+    if( visualSystemRunning && potentialNextClip.hasSpecialKeyword("#vo") ){
+        //TODO: Make less arbitrary
+        voiceOverScore = 15;
+        
+    }
+
+    totalScore = topicsInCommonScore + topicsInCommonWithPreviousScore - samePersonOccuranceScore + dichotomiesScore + voiceOverScore;
     
     stringstream ss;
     string linkName =potentialNextClip.getLinkName();
