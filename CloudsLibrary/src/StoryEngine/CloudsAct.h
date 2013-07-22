@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "ofxTimeline.h"
-
+#include "keywordDichotomy.h"
 
 typedef enum {
     Clip =0,
@@ -76,7 +76,7 @@ class CloudsAct{
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     
-    void addClip(CloudsClip clip, string topic, float startTime, float handleLength);
+    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance);
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
@@ -123,7 +123,7 @@ protected:
     map<string, ActTimeItem> visualSystemItems;
     map< string, string> topicMap;
     map<string, CloudsClip> questionsMap;
-  
+    map<string, vector<keywordDichotomy> > dichotomiesMap;
     float visualSystemDuration;
     
     ofxTLFlags* visualSystemsTrack;

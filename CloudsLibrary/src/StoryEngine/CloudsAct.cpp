@@ -107,7 +107,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
             
         }
         else{
-            CloudsClipEventArgs args(clipMap[bang.flag], "");
+            CloudsClipEventArgs args(clipMap[bang.flag], topicMap[bang.flag],dichotomiesMap[bang.flag]);
             ofNotifyEvent(events.clipBegan, args);
         }
         
@@ -190,7 +190,7 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength){
+void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
@@ -206,7 +206,9 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     
     actItems.push_back(item);
     actItemsMap[item.key] = item;
+    dichotomiesMap[item.key] = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
+    
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
