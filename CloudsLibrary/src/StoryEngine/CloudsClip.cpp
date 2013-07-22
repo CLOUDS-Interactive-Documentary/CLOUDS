@@ -242,14 +242,11 @@ void CloudsClip::addKeyword(string keyword){
     }
 }
 
-bool CloudsClip:: hasSpecialKeyword(string keyword){
-
-    for (int i = 0; i<specialKeywords.size(); i++) {
-        if(specialKeywords[i] == keyword){
-            return true;
-        }
-    }
-    return false;
+bool CloudsClip::hasSpecialKeyword(string keyword){
+	if (keyword.at(0) != '#') {
+		keyword = "#"+keyword;
+	}
+	return ofContains(specialKeywords,keyword);
 }
 
 void CloudsClip::revokeKeyword(string keyword){

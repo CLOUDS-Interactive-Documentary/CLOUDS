@@ -41,17 +41,15 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 void CloudsPlaybackController::setup(){
 	//LB
 	//	create a shared fbo. We'll pass a pointer to each visual system as the are played
-	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
 	sharedRenderTarget.begin();
 	ofClear(0,0,0,0);
 	sharedRenderTarget.end();
 	
-	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
+	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
 	nextRenderTarget.begin();
 	ofClear(0,0,0,0);
 	nextRenderTarget.end();
-	
-	
 	
 	if(!eventsRegistered){
 		
@@ -337,7 +335,8 @@ void CloudsPlaybackController::topicChanged(string& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::preRollRequested(CloudsPreRollEventArgs& args){
-	prerollClip(args.preRollClip, args.clipStartTimeOffset);
+	cout << "PREROLLING CLIP TO " << 1. - args.handleLength << endl;
+	prerollClip(args.preRollClip, 1. - args.handleLength);
 }
 
 //--------------------------------------------------------------------
@@ -366,22 +365,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	currentClip = clip;
 	
 	combinedRenderer.swapAndPlay();
-	
-//	if(clip.hasCombinedVideo){
-//		if(combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-//			combinedRenderer.getPlayer().play();
-//			rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
-//			currentClip = clip;
-//		}
-//		else{
-//			ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";
-//		}
-//	}
-//	else {
-//		ofLogError() << "CloudsPlaybackController::playClip -- clip " << clip.getLinkName() << " doesn't have combined video";
-//	}
 }
-
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
@@ -405,8 +389,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	//TODO: replace with act current question
 	nextVisualSystem.system->setCurrentTopic( currentTopic );
-	nextVisualSystem.system->playSystem();
 	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
+	nextVisualSystem.system->playSystem();
+
 	
 	showingVisualSystem = true;
 	
@@ -416,8 +401,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
 	fadeInVisualSystem();
-	
-	
+		
 }
 
 //--------------------------------------------------------------------
@@ -468,9 +452,5 @@ void CloudsPlaybackController::fadeOutVisualSystem(){
 	fadeTargetVal = 1.;
 	
 	rgbdVisualSystem.playSystem();
-	
-	//this has to draw last
-//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	
+		
 }

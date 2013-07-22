@@ -102,7 +102,7 @@ void CloudsStoryEngine::setup(){
 	}
 }
 
-void CloudsStoryEngine:: initGui(){
+void CloudsStoryEngine::initGui(){
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
 	clipGui->addSpacer();
@@ -220,14 +220,16 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     clearDichotomiesBalance();
     
-    
-    act->addClip(clip, topic, totalSecondsEnqueued);
-    
-    totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() );
+	float preRollFlagTime  = 0;
+	float clipHandleDuration = getHandleForClip(clip);
+	act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+	totalSecondsEnqueued = preRollDuration;
+	
+    act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration);
+    totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() ) * clipHandleDuration*2;
     
     vector<string> topicHistory;
     topicHistory.push_back(topic);
-    
     
     int timesOnCurrentTopic = 0;
     while( totalSecondsEnqueued < seconds ){
@@ -332,39 +334,28 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         for(int k=0; k<nextOptions.size(); k++){
             
             if(nextOptions[k].getQuestionsVector().size() > 0 &&
-               parser->clipLinksTo(clip.getLinkName(), nextOptions[k].getLinkName())){
-                
-                act->addQuestion(nextOptions[k], totalSecondsEnqueued);
+			   parser->clipLinksTo(clip.getLinkName(), nextOptions[k].getLinkName())){
+				act->addQuestion(nextOptions[k], totalSecondsEnqueued);
             }
         }
         
-        act->addClip(clip,topic,totalSecondsEnqueued);
-        
-        //populating PreRoll Track
-        float clipStartPointOffset;
-        
-        // if clip is longer than minimum length for long clip allow the 2 second intro
-        if (clip.getDuration()>minClipDurationForStartingOffset) {
-            clipStartPointOffset = 0;
-        }
-        // else make a hard cut into the clip 2 i.e scrub-in 2 seconds.
-        else{
-            clipStartPointOffset = 1;
-        }
-        
-        
-        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
-        act->addClipPreRollFlag(preRollFlagTime, clipStartPointOffset,clip.getLinkName());
+		clipHandleDuration = getHandleForClip(clip);
+        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration);
+		float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
+        act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
       
         
         // populating Visual Systems
-        topic = act->getTopicForClip(clip);
+        //topic = act->getTopicForClip(clip);
     
         float clipStartTime = act->getItemForClip(clip).startTime;
         float clipEndTime = act->getItemForClip(clip).endTime;
         
         if( systemRunning ) {
             
+			//TODO: check if indefinite
+			//preset.indefinite;  if not, use preset.duration
+			//
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
                 if(clip.getDuration() > longClipThreshold){
@@ -373,7 +364,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
                 //TODO: Make non-random
                 CloudsVisualSystemPreset& preset = visualSystems->getRandomVisualSystem();
                 act->addVisualSystem(preset, visualSystemStartTime, visualSystemDuration);
-                
                 act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                 systemRunning = false;
                 lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
@@ -391,15 +381,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         previousTopic = topic;
-        
-        totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() );
-        
+        totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration*2;
         timesOnCurrentTopic++;
         
         
         //Decide if a question is to be asked
     }
-    
+	
+    //TODO: be aware if you have ended on a fixed duration VS to respect its duration
     if(systemRunning){
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
         float clipEndTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).endTime;
@@ -532,6 +521,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     return act;
 }
 
+float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
+	// if clip is longer than minimum length for long clip allow the 2 second intro
+//	if (clip.getDuration()>minClipDurationForStartingOffset) {
+//		return 0;
+//	}
+	return 1;			
+}
+
 void CloudsStoryEngine::clearDichotomiesBalance(){
     
     for(int i=0; i <dichotomies.size();i++){
@@ -630,7 +627,7 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
     return score;
 }
 
-float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic,string& log){
+float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log){
     
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     

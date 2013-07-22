@@ -24,7 +24,7 @@ class CloudsClipEventArgs : public ofEventArgs {
 	}
 	
 	CloudsClip& chosenClip;
-	vector<CloudsClip> clipOptions;
+//	vector<CloudsClip> clipOptions;
 	string currentTopic;
 	float timeUntilNextClip;
 };
@@ -34,12 +34,9 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
 		: preset(preset)
 	{
-		duration = 0;
 	}
 
 	CloudsVisualSystemPreset& preset;
-	
-	float duration;
 };
 
 class CloudsQuestionEventArgs : public ofEventArgs{
@@ -48,19 +45,19 @@ class CloudsQuestionEventArgs : public ofEventArgs{
     {
 
     }
-
     CloudsClip& questionClip;
 };
 
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
-    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset) :preRollClip(preRollClip)
+    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
+		: preRollClip(preRollClip)
     {
         clipStartTimeOffset = 0;
     }
     
     CloudsClip& preRollClip;
-    float clipStartTimeOffset;
+    float handleLength;
 };
 
 class CloudsEvents {

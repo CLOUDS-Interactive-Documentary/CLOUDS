@@ -28,7 +28,7 @@ struct ActTimeItem{
     float endTime;
     float introEndTime;
     float outroStartTime;
-    float clipStartPointOffset;
+    float handleLength;
 };
 
 class CloudsAct{
@@ -76,11 +76,11 @@ class CloudsAct{
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     
-    void addClip(CloudsClip clip, string topic, float startTime);
+    void addClip(CloudsClip clip, string topic, float startTime, float handleLength);
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
-    void addClipPreRollFlag(float preRollFlagTime, float clipStartPointOffset, string clipName);
+    void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);

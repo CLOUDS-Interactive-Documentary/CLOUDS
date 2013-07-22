@@ -102,6 +102,7 @@ private:
     float longClipThreshold;
     float longClipFadeInPercent;
     
+	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
     int topicsInCommonMultiplier;
