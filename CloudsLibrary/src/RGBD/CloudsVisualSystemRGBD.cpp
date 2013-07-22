@@ -333,7 +333,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
 		
 		sharedRenderer->bindRenderer();
-		sharedRenderer->getShader().setUniform1f("baseMultiplier", 1.0);
+		sharedRenderer->getShader().setUniform1f("baseMultiplier", sharedRenderer->getFadeIn() * sharedRenderer->getFadeIn() );
 		
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
