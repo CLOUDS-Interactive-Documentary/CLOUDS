@@ -242,6 +242,16 @@ void CloudsClip::addKeyword(string keyword){
     }
 }
 
+bool CloudsClip:: hasSpecialKeyword(string keyword){
+
+    for (int i = 0; i<specialKeywords.size(); i++) {
+        if(specialKeywords[i] == keyword){
+            return true;
+        }
+    }
+    return false;
+}
+
 void CloudsClip::revokeKeyword(string keyword){
     if(!ofContains(revokedKeywords, keyword) &&
        ofContains(originalKeywords, keyword))

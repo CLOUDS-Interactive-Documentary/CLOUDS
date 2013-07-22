@@ -290,7 +290,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         for(int i = 0; i < nextOptions.size(); i++){
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
+            
             int score = scoreForClip(act->getAllClips(), nextClipOption, topic,log);
+            //give additional weight to clips that are better suited for voice overs if a VS is playing.
+            if( systemRunning && nextClipOption.hasSpecialKeyword("#vo") ){
+                //TODO: Figure out with James what this value should be.
+                score += 15;
+                
+            }
             scoreLogPairs.push_back( make_pair(score,log));
             totalPoints += score;
             topScore = MAX(topScore, score);
