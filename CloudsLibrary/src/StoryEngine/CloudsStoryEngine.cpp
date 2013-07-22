@@ -351,8 +351,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
 			//TODO: check if indefinite
 			//preset.indefinite;  if not, use preset.duration
 			//
-            
-
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
                 if(clip.getDuration() > longClipThreshold){
