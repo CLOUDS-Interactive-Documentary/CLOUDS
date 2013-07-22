@@ -107,7 +107,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
             
         }
         else{
-            CloudsClipEventArgs args(clipMap[bang.flag], topicMap[bang.flag],dichotomiesMap[bang.flag]);
+            CloudsClipEventArgs args(clipMap[bang.flag], topicMap[bang.flag],getDichotomiesForClip(bang.flag));
             ofNotifyEvent(events.clipBegan, args);
         }
         
@@ -146,6 +146,13 @@ float CloudsAct::getActDuration(){
 }
 
 
+vector<keywordDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
+    
+    if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
+        return dichotomiesMap[clipName];
+    }
+       return dummyDichotomies;
+}
 vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
     return visualSystems;
 }
@@ -209,6 +216,26 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     dichotomiesMap[item.key] = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     
+}
+
+void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
+    clips.push_back(clip);
+    clipMap[clip.getLinkName()] = clip;
+    topicMap[clip.getLinkName()] = topic;
+    
+    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+    ActTimeItem item;
+    
+    item.type = Clip;
+    item.key = clip.getLinkName();
+    item.startTime = startTime;
+    //defaulting handle length to 1
+    item.endTime = startTime+clip.getDuration() + 1;
+    duration = MAX(item.endTime, duration);
+    
+    actItems.push_back(item);
+    actItemsMap[item.key] = item;
+    clipItems[clip.getLinkName()] = item;
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){

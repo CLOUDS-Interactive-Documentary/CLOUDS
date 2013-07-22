@@ -75,12 +75,14 @@ class CloudsAct{
     CloudsClip& getClipAtTime(float time);
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
-    
+    void addClip(CloudsClip clip, string topic, float startTime);    
     void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance);
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
+
+    vector<keywordDichotomy>& getDichotomiesForClip(string clipName);
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
@@ -115,6 +117,7 @@ protected:
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
     CloudsClip dummyClip;
+    vector<keywordDichotomy> dummyDichotomies;
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
