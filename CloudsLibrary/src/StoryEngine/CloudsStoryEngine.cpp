@@ -379,7 +379,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
             
             //if the clip is shorter than the 30 seconds dont start the VS during the clip.
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold){
+            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold ){
                 
                 visualSystemStartTime  = clipStartTime + clip.getDuration()*longClipFadeInPercent;
                 systemRunning = true;
@@ -553,6 +553,10 @@ void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
             
         }
     }
+}
+
+vector<KeywordDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
+    return dichotomies;
 }
 
 //TODO: use coehsion and map distance to fix dead ends

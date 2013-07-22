@@ -75,7 +75,7 @@ class CloudsStoryEngine {
 //	void drawActDebug();
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
-    
+    vector<KeywordDichotomy> getCurrentDichotomyBalance();
 
 //    CloudsAct& getAct();
     

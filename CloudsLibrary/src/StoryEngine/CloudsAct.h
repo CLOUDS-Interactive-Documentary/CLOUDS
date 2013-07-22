@@ -103,7 +103,6 @@ protected:
     ActItemType itemType;
 	
 	bool timelinePopulated;
-    CloudsClip currentClip;
     string currentTopic;
     CloudsEvents events;
     vector<CloudsClip> clips;
