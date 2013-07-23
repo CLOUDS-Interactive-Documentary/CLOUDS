@@ -135,11 +135,13 @@ class CloudsFCPParser {
 	
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
-	
+    void populateKeywordCentroids();
+    void getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
 	set<string> markerLinkNames;
 
+    vector<pair<string,ofVec2f> > keywordCentroids;
     vector<CloudsClip> allClips;
     map<string, int> clipIDToIndex;
     map<string, int> clipLinkNameToIndex;

@@ -8,6 +8,10 @@
 
 #include "CloudsFCPParser.h"
 
+bool distanceSort(pair<string,float> a, pair<string,float> b ){
+    return a.second > b.second;
+}
+
 CloudsFCPParser::CloudsFCPParser(){
     sortedByOccurrence = false;
 	backupTimeInterval = 60*2;
@@ -266,6 +270,56 @@ void CloudsFCPParser::parseLinks(string linkFile){
     }
     
 	refreshAllKeywords();
+}
+
+void CloudsFCPParser::populateKeywordCentroids(){
+    for(int k =0; k < getAllKeywords().size(); k++){
+        vector<CloudsClip> clips = getClipsWithKeyword(getAllKeywords()[k]);
+        
+        
+        float numClips =0;
+        ofVec2f centroid;
+        for( int i=0; i<clips.size(); i++){
+            if(clips[i].cluster.Centre != ofVec2f(-1, -1)){
+                centroid += clips[i].cluster.Centre;
+                numClips++;
+            }
+        }
+        centroid /= numClips;
+        keywordCentroids.push_back(make_pair(getAllKeywords()[k], centroid));
+    }
+
+
+}
+
+void CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
+    string keyword = "";
+    ofVec2f centroid;
+    vector<pair<string, float> > distancePair;
+    for (int i =0;  i < keywordCentroids.size(); i++) {
+        if(keywordCentroids[i].first == currentKeyword){
+            keyword = keywordCentroids[i].first;
+            centroid  = keywordCentroids[i].second;
+            break;
+        }
+    }
+    
+    for (int j=0; j < keywordCentroids.size(); j++) {
+        
+        float distance = centroid.distance(keywordCentroids[j].second);
+        distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
+    }
+    
+    sort(distancePair.begin(), distancePair.end(),distanceSort);
+    
+    vector<string> adjacentKeywords;
+    numOfDesiredKeywords =MIN(distancePair.size(),numOfDesiredKeywords);
+    
+    for (int k=0 ; k<numOfDesiredKeywords; k++) {
+        adjacentKeywords.push_back(distancePair[k].first);
+    }
+    
+    return adjacentKeywords;
 }
 
 void CloudsFCPParser::saveLinks(string linkFile){

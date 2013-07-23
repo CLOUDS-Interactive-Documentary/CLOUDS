@@ -47,12 +47,17 @@
     </suppress>
     <startingQuestion>How is new media &quot;new&quot;?</startingQuestion>
     <revokedKeywords>storage</revokedKeywords>
-    <additionalKeywords>archiving,new media,?technology: What is new and innovative in new media?,#start,personal data</additionalKeywords>
+    <additionalKeywords>archiving,new media,?technology: What is new and innovative in new media?,personal data,#easy,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - mini-brains</name>
     <link>
         <target>Kyle_CH - storytelling</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Kevin - algo stories 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -77,7 +82,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>futue of cinema</revokedKeywords>
-    <additionalKeywords>future of cinema</additionalKeywords>
+    <additionalKeywords>future of cinema,?storytelling: What is the future of storytelling?,#logical,#mindblowing,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - software is a brain</name>
@@ -126,6 +131,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#easy,#logical,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - mini-brains 2</name>
@@ -209,6 +215,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#art,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - story medium</name>
@@ -282,6 +289,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?future of cinema: how will we experience movies in the future?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - stories make our lives worth living</name>
@@ -310,6 +318,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#inspiring,#serious,#gold,#conclusion,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - stories through our brains</name>
@@ -323,6 +332,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - global communication</name>
@@ -386,6 +396,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy,#sincere,#breakthrough,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - global interactions</name>
@@ -439,6 +450,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy,#emotional,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - different ways of communicating</name>
@@ -547,7 +559,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>digital meets physical,?digital meets physical: What are the advantages of virtual communication?</additionalKeywords>
+    <additionalKeywords>digital meets physical,?digital meets physical: What are the advantages of virtual communication?,#inspiring,#emotional,#fun,#sincere,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - dreaming together</name>
@@ -631,7 +643,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>interconnectedness</additionalKeywords>
+    <additionalKeywords>interconnectedness,#emotional,#gold,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - exchange of ideas drives progress</name>
@@ -690,6 +702,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?technological progress: What&apos;s driving the rapid pace of progress?,#easy,#logical,#rational,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - autonomous storytellers</name>
@@ -718,7 +731,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?storytelling: What&apos;s the future of storytelling?</additionalKeywords>
+    <additionalKeywords>?storytelling: What&apos;s the future of storytelling?,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - Mini-Artificial Intelligences</name>
@@ -797,7 +810,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>man vs machine,code,consciousness</additionalKeywords>
+    <additionalKeywords>man vs machine,code,consciousness,#gold,#fun,#mindblowing,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - Tailored Stories</name>
@@ -806,7 +819,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>artificial intelligence</additionalKeywords>
+    <additionalKeywords>artificial intelligence,#rational,#inspiring,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - Crowdsourcing</name>
@@ -815,6 +828,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - sheep market</name>
@@ -824,7 +838,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#sincere,#breakthrough,#example,?crowdsourcing: How does a creative project employ crowdsourcing?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - sheep market 2</name>
@@ -853,7 +867,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#rational,#serious,#mundane,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - networked creativity</name>
@@ -903,7 +917,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <startingQuestion>How has the internet changed everything?</startingQuestion>
-    <additionalKeywords>collective intelligence,#start,?network: How has the internet changed everything?</additionalKeywords>
+    <additionalKeywords>collective intelligence,?network: How has the internet changed everything?,#easy,#start,#logical,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - data experience</name>
@@ -913,7 +927,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>big data</revokedKeywords>
-    <additionalKeywords>cinema,narrative</additionalKeywords>
+    <additionalKeywords>cinema,narrative,#gold,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - data storytelling</name>
@@ -942,7 +956,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>datatelling</additionalKeywords>
+    <additionalKeywords>datatelling,#mindblowing,#sincere,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - webGL</name>
@@ -971,6 +985,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#breakthrough,#logical,#tech,?virtual: What&apos;s the current state of virtual reality?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - lego creatures</name>
@@ -1019,7 +1034,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>world building</additionalKeywords>
+    <additionalKeywords>world building,#surreal,#mindblowing,#inspiring,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - sharing</name>
@@ -1048,7 +1063,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>sharing</additionalKeywords>
+    <additionalKeywords>sharing,#inspiring,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - exquisite forest</name>
@@ -1097,7 +1112,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#art,#fun,#inspiring,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - exquisite forest 3</name>
@@ -1107,7 +1122,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>tree,#example</additionalKeywords>
+    <additionalKeywords>tree,#art,#logical,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - infinity</name>
@@ -1156,6 +1171,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - code, story, communication</name>
@@ -1169,6 +1185,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#tech,#logical,#sincere,#emotional,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - experience design</name>
@@ -1218,7 +1235,7 @@
         <endFrame>-1</endFrame>
     </link>
     <startingQuestion>How has the internet changed everything?</startingQuestion>
-    <additionalKeywords>#start,?experience design: How does digital design apply to everyday life?</additionalKeywords>
+    <additionalKeywords>?experience design: How does digital design apply to everyday life?,#mindblowing,#conclusion,#gold,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - the best games are great stories</name>
@@ -1237,6 +1254,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - individualization + emotion</name>
@@ -1265,7 +1283,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>empathy,experience design,experience</additionalKeywords>
+    <additionalKeywords>empathy,experience design,experience,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - progress</name>
@@ -1314,7 +1332,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>fantasy technology,dreams</additionalKeywords>
+    <additionalKeywords>fantasy technology,dreams,#easy,#surreal,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - digital trace</name>
@@ -1388,7 +1406,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>the cloud,memory,identity,quantified self,personal data</additionalKeywords>
+    <additionalKeywords>the cloud,memory,identity,quantified self,personal data,#emotional,#tech,#logical,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - collaboration</name>
@@ -1417,7 +1435,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>collective intelligence</additionalKeywords>
+    <additionalKeywords>collective intelligence,#tech,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - curiosity</name>
@@ -1466,7 +1484,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>technological progress,new aesthetic</additionalKeywords>
+    <additionalKeywords>technological progress,new aesthetic,#inspiring,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - recombination</name>
@@ -1505,6 +1523,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - make an egg</name>
@@ -1518,10 +1537,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#fun,#obstacle,#logical,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - protein folding 1</name>
-    <additionalKeywords>art and science</additionalKeywords>
+    <additionalKeywords>art and science,#tech,#logical,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - protein folding 2</name>
@@ -1535,6 +1555,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#logical,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - examples of the impossible</name>
@@ -1631,7 +1652,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>tools</additionalKeywords>
+    <additionalKeywords>tools,#sincere,#gold,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - Reaching higher</name>
@@ -1655,6 +1676,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - DNA computing 1</name>
@@ -1673,6 +1695,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#bug,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - DNA computing 2</name>
@@ -1691,6 +1714,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#obstacle,#logical,#rational,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - probability</name>
@@ -1802,7 +1826,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>noise,#bug</additionalKeywords>
+    <additionalKeywords>noise,#tech,#obstacle,#logical,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - soft systems 1</name>
@@ -1980,6 +2004,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#logical,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - modeling complex systems</name>
@@ -2123,6 +2148,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#logical,#mundane,#sincere,#discouraging,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - an overly complex model</name>
@@ -2236,6 +2262,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#obstacle,#rational,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - modeling the human being</name>
@@ -2419,6 +2446,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#discouraging,#obstacle,#rational,#logical</additionalKeywords>
+</clip>
+<clip>
+    <name>Andres - Less beautiful than it could be</name>
+    <additionalKeywords>#logical,#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - correct is beautiful</name>
@@ -2452,6 +2484,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#logical,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - seeing molecules</name>
@@ -2475,7 +2508,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>microscope,vision</additionalKeywords>
+    <additionalKeywords>microscope,vision,#tech,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - Computational lens</name>
@@ -2500,7 +2533,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>cameras,simulation</revokedKeywords>
-    <additionalKeywords>camera</additionalKeywords>
+    <additionalKeywords>camera,#rational,#tech,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - camera distorts reality</name>
@@ -2515,7 +2548,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>cameras</revokedKeywords>
-    <additionalKeywords>camera,vision</additionalKeywords>
+    <additionalKeywords>camera,vision,#tech,#logical,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - actually interesting</name>
@@ -2700,6 +2733,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>data visualization</revokedKeywords>
+    <additionalKeywords>#inspiring,#breakthrough,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - tool for others</name>
@@ -2738,7 +2772,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - trips</name>
@@ -2753,7 +2787,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>data visualization,souvenir,personal</revokedKeywords>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - making things</name>
@@ -2767,6 +2801,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#tech,#emotional,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - frustrated about visualization</name>
@@ -2851,7 +2886,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visualization,crisis</revokedKeywords>
-    <additionalKeywords>data visualization</additionalKeywords>
+    <additionalKeywords>data visualization,#serious,#obstacle,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - digestibility</name>
@@ -2891,6 +2926,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visual storytelling,society</revokedKeywords>
+    <additionalKeywords>#logical,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - tools for storytelling</name>
@@ -2914,6 +2950,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#serious,#obstacle,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - Mesh-U business</name>
@@ -2922,6 +2959,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#example</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - maps</name>
@@ -2990,6 +3028,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#logical,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - meaningful shape1</name>
@@ -3069,7 +3108,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>trace of your life</revokedKeywords>
-    <additionalKeywords>personal data,memory</additionalKeywords>
+    <additionalKeywords>personal data,memory,#emotional,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - making a map</name>
@@ -3124,7 +3163,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>trace of your life</revokedKeywords>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#logical,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - face data</name>
@@ -3149,6 +3188,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>face tracking</revokedKeywords>
+    <additionalKeywords>#tech,#emotional,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - hackathon</name>
@@ -3188,6 +3228,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>thinking by doing,improvization,process,creative process</revokedKeywords>
+    <additionalKeywords>#art,#breakthrough,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - ar&amp;&amp;code</name>
@@ -3212,6 +3253,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>thinking by doing,improvization,process,creative process,sharing</revokedKeywords>
+    <additionalKeywords>#inspiring,#breakthrough,#art,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - women in tech</name>
@@ -3221,12 +3263,12 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>gender gap,women</revokedKeywords>
-    <additionalKeywords>gender,eyeo,community</additionalKeywords>
+    <additionalKeywords>gender,eyeo,community,?gender: Does the prevalance of men in technology tend to crowd out females?,#obstacle,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - glass ceiling</name>
     <revokedKeywords>women,gender gap</revokedKeywords>
-    <additionalKeywords>gender</additionalKeywords>
+    <additionalKeywords>gender,#tech,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - creative coding is more diverse</name>
@@ -3236,12 +3278,12 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>women,gender gap</revokedKeywords>
-    <additionalKeywords>gender</additionalKeywords>
+    <additionalKeywords>gender,?gender: Does the prevalance of men in technology tend to crowd out females?,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - Significant othered</name>
     <revokedKeywords>gender gap,women</revokedKeywords>
-    <additionalKeywords>gender,relationships</additionalKeywords>
+    <additionalKeywords>gender,relationships,#obstacle,#tech,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - programming is a superpower</name>
@@ -3280,7 +3322,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>magic</additionalKeywords>
+    <additionalKeywords>magic,#easy,#inspiring,#fun,#sincere,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - tech fracturing</name>
@@ -3300,6 +3342,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>specialization</revokedKeywords>
+    <additionalKeywords>#mundane,#discouraging,#obstacle,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - skillshare</name>
@@ -3407,6 +3450,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - big data</name>
@@ -3436,7 +3480,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>data visualization</revokedKeywords>
-    <additionalKeywords>complexity</additionalKeywords>
+    <additionalKeywords>complexity,#rational,#mundane,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - field of data vis</name>
@@ -3500,7 +3544,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>useless,?data visualization: What&apos;s the purpose of data visualization?</additionalKeywords>
+    <additionalKeywords>useless,?data visualization: What&apos;s the purpose of data visualization?,#obstacle,#tech,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - technoutopian</name>
@@ -3539,6 +3583,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#fun,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - changing the world</name>
@@ -3613,7 +3658,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>technological progress,problem-solving</revokedKeywords>
-    <additionalKeywords>problem solving</additionalKeywords>
+    <additionalKeywords>problem solving,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - art and culture</name>
@@ -3648,7 +3693,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>society</revokedKeywords>
-    <additionalKeywords>ideas</additionalKeywords>
+    <additionalKeywords>ideas,#rational,#mundane,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - art for money</name>
@@ -3678,7 +3723,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>life and work,art versus engineering</revokedKeywords>
-    <additionalKeywords>career,art vs engineering</additionalKeywords>
+    <additionalKeywords>career,art vs engineering,#obstacle,#rational,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - hybridity</name>
@@ -3742,7 +3787,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>community,art and code</additionalKeywords>
+    <additionalKeywords>community,art and code,#rational,#sincere,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - Background</name>
@@ -3801,7 +3846,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>math</additionalKeywords>
+    <additionalKeywords>math,#inspiring,#rational,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - there was no degree</name>
@@ -3855,6 +3900,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#obstacle,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - geodata</name>
@@ -3873,6 +3919,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - tools for storytelling2</name>
@@ -3906,6 +3953,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere,#emotional,#gold,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - work for hire</name>
@@ -3915,6 +3963,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>clients</revokedKeywords>
+    <additionalKeywords>#sincere,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - brogrammers</name>
@@ -3968,7 +4017,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>magic</additionalKeywords>
+    <additionalKeywords>magic,#tech,#easy,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - beginnings</name>
@@ -3998,6 +4047,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <startingQuestion>Why do artists use code?</startingQuestion>
+    <additionalKeywords>#easy,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Processing, what is it?</name>
@@ -4040,7 +4090,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering,thinking by doing,thinking and making</revokedKeywords>
-    <additionalKeywords>art vs engineering,thinking with code</additionalKeywords>
+    <additionalKeywords>art vs engineering,thinking with code,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - tangle</name>
@@ -4064,6 +4114,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>?thinking by doing: How does the form of a design emerge?,#art,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Borrowing from culture</name>
@@ -4098,7 +4149,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visual culture</revokedKeywords>
-    <additionalKeywords>creativity,hybridity,music</additionalKeywords>
+    <additionalKeywords>creativity,hybridity,music,?creativity: What&apos;s the key to being creative?,#art,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Systems theory</name>
@@ -4174,7 +4225,7 @@
     </suppress>
     <startingQuestion>How can simple rules have complex results?</startingQuestion>
     <revokedKeywords>how do you build serendipity into your systems?&#x0D;emergence</revokedKeywords>
-    <additionalKeywords>emergence,?systems: How can simple rules have complex results?,#start</additionalKeywords>
+    <additionalKeywords>emergence,?systems: How can simple rules have complex results?,#mindblowing,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - emergence</name>
@@ -4225,7 +4276,7 @@
     </suppress>
     <startingQuestion>What is emergence?</startingQuestion>
     <revokedKeywords>what is emergence?</revokedKeywords>
-    <additionalKeywords>simulation,?emergence: What is emergence?,#start</additionalKeywords>
+    <additionalKeywords>simulation,?emergence: What is emergence?,#easy,#gold,#inspiring,#start,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - pseudo-science</name>
@@ -4274,6 +4325,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#art,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - futurist</name>
@@ -4287,7 +4339,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#lighthearted,futurism</additionalKeywords>
+    <additionalKeywords>futurism,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - understanding future</name>
@@ -4347,7 +4399,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>future</revokedKeywords>
-    <additionalKeywords>engineering,opacity</additionalKeywords>
+    <additionalKeywords>engineering,opacity,#rational,#tech,#inspiring,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - synthetic biology</name>
