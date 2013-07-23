@@ -30,7 +30,7 @@
         currentVisualSystem->playSystem();
         currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
 		
-        shouldPlaySelectedRow = false;
+        shouldPlaySelectedRow = false;	
     }
     ofShowCursor();
 }

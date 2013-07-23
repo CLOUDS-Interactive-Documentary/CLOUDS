@@ -30,7 +30,6 @@
 		E71A4BCD179E15D6000D96AF /* airports.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B4F179E15D2000D96AF /* airports.txt */; };
 		E71A4BCE179E15D6000D96AF /* cities.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B50179E15D2000D96AF /* cities.txt */; };
 		E71A4BCF179E15D6000D96AF /* constelations.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B51179E15D2000D96AF /* constelations.txt */; };
-		E71A4BD0179E15D6000D96AF /* NewMedia Fett.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */; };
 		E71A4BD1179E15D6000D96AF /* cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B55179E15D2000D96AF /* cursor.png */; };
 		E71A4BD2179E15D6000D96AF /* loc.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B56179E15D2000D96AF /* loc.txt */; };
 		E71A4C17179E15D6000D96AF /* backlight.frag in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BA5179E15D4000D96AF /* backlight.frag */; };
@@ -39,7 +38,6 @@
 		E71A4C1A179E15D6000D96AF /* simple-cities.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BA8179E15D4000D96AF /* simple-cities.txt */; };
 		E71A4C1B179E15D6000D96AF /* simple-coast.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BA9179E15D4000D96AF /* simple-coast.txt */; };
 		E71A4C1C179E15D7000D96AF /* simple-rivers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BAA179E15D4000D96AF /* simple-rivers.txt */; };
-		E71A4C1D179E15D7000D96AF /* World 2013-07-22-20-54-20-849.png in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */; };
 		E71A4C27179E15D8000D96AF /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBA179E15D5000D96AF /* CloudsVisualSystemWorld.cpp */; };
 		E71A4C28179E15D8000D96AF /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBC179E15D5000D96AF /* wArc.cpp */; };
 		E71A4C29179E15D8000D96AF /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBE179E15D5000D96AF /* wCity.cpp */; };
@@ -192,7 +190,7 @@
 		E7424FC1179EDAB000B2F0A3 /* display.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7424F85179EDAAF00B2F0A3 /* display.vert */; };
 		E7424FC2179EDAB000B2F0A3 /* update.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7424F86179EDAAF00B2F0A3 /* update.frag */; };
 		E7424FC3179EDAB000B2F0A3 /* update.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7424F87179EDAAF00B2F0A3 /* update.vert */; };
-		E7424FC9179EDAB000B2F0A3 /* CloudsVisualSystemComputationTicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemComputationTicker.cpp */; };
+		E7424FC9179EDAB000B2F0A3 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.cpp */; };
 		E776C263177F7277001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */; };
 		E7C765AD177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C765AB177B51C700A58372 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
@@ -260,7 +258,6 @@
 		E71A4B4F179E15D2000D96AF /* airports.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.txt; sourceTree = "<group>"; };
 		E71A4B50179E15D2000D96AF /* cities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cities.txt; sourceTree = "<group>"; };
 		E71A4B51179E15D2000D96AF /* constelations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constelations.txt; sourceTree = "<group>"; };
-		E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewMedia Fett.ttf"; sourceTree = "<group>"; };
 		E71A4B55179E15D2000D96AF /* cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cursor.png; sourceTree = "<group>"; };
 		E71A4B56179E15D2000D96AF /* loc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loc.txt; sourceTree = "<group>"; };
 		E71A4BA5179E15D4000D96AF /* backlight.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = backlight.frag; sourceTree = "<group>"; };
@@ -269,7 +266,6 @@
 		E71A4BA8179E15D4000D96AF /* simple-cities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-cities.txt"; sourceTree = "<group>"; };
 		E71A4BA9179E15D4000D96AF /* simple-coast.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-coast.txt"; sourceTree = "<group>"; };
 		E71A4BAA179E15D4000D96AF /* simple-rivers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-rivers.txt"; sourceTree = "<group>"; };
-		E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "World 2013-07-22-20-54-20-849.png"; sourceTree = "<group>"; };
 		E71A4BBA179E15D5000D96AF /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		E71A4BBB179E15D5000D96AF /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		E71A4BBC179E15D5000D96AF /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
@@ -743,8 +739,8 @@
 		E7424F85179EDAAF00B2F0A3 /* display.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = display.vert; sourceTree = "<group>"; };
 		E7424F86179EDAAF00B2F0A3 /* update.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = update.frag; sourceTree = "<group>"; };
 		E7424F87179EDAAF00B2F0A3 /* update.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = update.vert; sourceTree = "<group>"; };
-		E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemComputationTicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemComputationTicker.cpp; sourceTree = "<group>"; };
-		E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemComputationTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemComputationTicker.h; sourceTree = "<group>"; };
+		E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
+		E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
@@ -942,7 +938,6 @@
 				E71A4B4F179E15D2000D96AF /* airports.txt */,
 				E71A4B50179E15D2000D96AF /* cities.txt */,
 				E71A4B51179E15D2000D96AF /* constelations.txt */,
-				E71A4B52179E15D2000D96AF /* GUI */,
 				E71A4B54179E15D2000D96AF /* images */,
 				E71A4B56179E15D2000D96AF /* loc.txt */,
 				E71A4BA4179E15D4000D96AF /* shaders */,
@@ -950,17 +945,8 @@
 				E71A4BA8179E15D4000D96AF /* simple-cities.txt */,
 				E71A4BA9179E15D4000D96AF /* simple-coast.txt */,
 				E71A4BAA179E15D4000D96AF /* simple-rivers.txt */,
-				E71A4BAB179E15D4000D96AF /* snapshots */,
 			);
 			path = data;
-			sourceTree = "<group>";
-		};
-		E71A4B52179E15D2000D96AF /* GUI */ = {
-			isa = PBXGroup;
-			children = (
-				E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */,
-			);
-			path = GUI;
 			sourceTree = "<group>";
 		};
 		E71A4B54179E15D2000D96AF /* images */ = {
@@ -978,14 +964,6 @@
 				E71A4BA6179E15D4000D96AF /* backlight.vert */,
 			);
 			path = shaders;
-			sourceTree = "<group>";
-		};
-		E71A4BAB179E15D4000D96AF /* snapshots */ = {
-			isa = PBXGroup;
-			children = (
-				E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */,
-			);
-			path = snapshots;
 			sourceTree = "<group>";
 		};
 		E71A4BB9179E15D4000D96AF /* vs_src */ = {
@@ -2198,8 +2176,8 @@
 		E7424F90179EDAAF00B2F0A3 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemComputationTicker.h */,
-				E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemComputationTicker.cpp */,
+				E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.h */,
+				E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2286,14 +2264,12 @@
 				E71A4BCD179E15D6000D96AF /* airports.txt in Resources */,
 				E71A4BCE179E15D6000D96AF /* cities.txt in Resources */,
 				E71A4BCF179E15D6000D96AF /* constelations.txt in Resources */,
-				E71A4BD0179E15D6000D96AF /* NewMedia Fett.ttf in Resources */,
 				E71A4BD1179E15D6000D96AF /* cursor.png in Resources */,
 				E71A4BD2179E15D6000D96AF /* loc.txt in Resources */,
 				E71A4C19179E15D6000D96AF /* simple-borders.txt in Resources */,
 				E71A4C1A179E15D6000D96AF /* simple-cities.txt in Resources */,
 				E71A4C1B179E15D6000D96AF /* simple-coast.txt in Resources */,
 				E71A4C1C179E15D7000D96AF /* simple-rivers.txt in Resources */,
-				E71A4C1D179E15D7000D96AF /* World 2013-07-22-20-54-20-849.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2475,7 +2451,7 @@
 				E7424FC1179EDAB000B2F0A3 /* display.vert in Sources */,
 				E7424FC2179EDAB000B2F0A3 /* update.frag in Sources */,
 				E7424FC3179EDAB000B2F0A3 /* update.vert in Sources */,
-				E7424FC9179EDAB000B2F0A3 /* CloudsVisualSystemComputationTicker.cpp in Sources */,
+				E7424FC9179EDAB000B2F0A3 /* CloudsVisualSystemDataCascade.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

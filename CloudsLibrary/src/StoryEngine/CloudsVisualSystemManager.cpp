@@ -5,7 +5,7 @@
 
 #ifndef CLOUDS_NO_VS
 
-#include "CloudsVisualSystemComputationTicker.h"
+#include "CloudsVisualSystemDataCascade.h"
 #include "CloudsVisualSystemLSystems.h"
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemVerletForm.h"
@@ -41,7 +41,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
+	registerVisualSystem( new CloudsVisualSystemDataCascade() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
 	registerVisualSystem( new CloudsVisualSystemVoro() );
 	registerVisualSystem( new CloudsVisualSystemCities() );
