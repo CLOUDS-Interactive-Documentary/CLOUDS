@@ -1,0 +1,3 @@
+[submodule "CloudsLibrary/src/VisualSystems/World"]
+	path = CloudsLibrary/src/VisualSystems/World
+	url = git@github.com:CLOUDS-Interactive-Documentary/World.git
