@@ -322,7 +322,8 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     }
     materials.clear();
     materialGuis.clear();
-    
+    cameraTrack->lockCameraToTrack = false;
+	cameraTrack->disable();
 	delete cameraTrack;
     delete timeline;
 
@@ -2154,7 +2155,6 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timelineDuration = timeline->getDurationInSeconds();
 	
 	selfPresetLoaded(presetPath);
-
 }
 
 void CloudsVisualSystem::savePresetGUIS(string presetName)
