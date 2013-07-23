@@ -740,7 +740,6 @@
 		E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
 		E7424FCE179EECAC00B2F0A3 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
-		E7424FCF179EF05100B2F0A3 /* ofxViewType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxViewType.h; sourceTree = "<group>"; };
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
@@ -987,7 +986,6 @@
 		E71A4C30179E1A27000D96AF /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7424FCF179EF05100B2F0A3 /* ofxViewType.h */,
 				E7424FCE179EECAC00B2F0A3 /* ofxLight.h */,
 				E71A4C32179E1A27000D96AF /* CloudsRGBDCombinedRenderer.h */,
 				E71A4C31179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp */,
