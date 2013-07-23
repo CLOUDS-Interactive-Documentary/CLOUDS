@@ -1,6 +1,7 @@
 
 #include "CloudsVisualSystemThingsInTheDark.h"
 #include "CloudsRGBDCombinedRenderer.h"
+#include "CloudsGlobal.h"
 
 CloudsVisualSystemThingsInTheDark::CloudsVisualSystemThingsInTheDark(){
 	scanlineSimplify = ofVec2f(2,2);

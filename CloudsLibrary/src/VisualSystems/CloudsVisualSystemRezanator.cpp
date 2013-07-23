@@ -1,4 +1,5 @@
 #include "CloudsVisualSystemRezanator.h"
+#include "CloudsGlobal.h"
 
 #define REZANATOR_GUI_ALPHA_MULTIPLIER 4
 

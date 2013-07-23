@@ -6,6 +6,7 @@
 //
 
 #include "CloudsVisualSystemCities.h"
+#include "CloudsGlobal.h"
 
 string CloudsVisualSystemCities::getSystemName()
 {

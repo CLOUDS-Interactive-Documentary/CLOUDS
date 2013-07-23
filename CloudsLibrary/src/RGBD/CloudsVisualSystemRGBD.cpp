@@ -1,6 +1,6 @@
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDCombinedRenderer.h"
-
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){

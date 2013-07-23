@@ -8,6 +8,7 @@
 
 #include "CloudsVisualSystemAmber.h"
 #include "ofxGenerative.h"
+#include "CloudsGlobal.h"
 
 string CloudsVisualSystemAmber::getSystemName()
 {

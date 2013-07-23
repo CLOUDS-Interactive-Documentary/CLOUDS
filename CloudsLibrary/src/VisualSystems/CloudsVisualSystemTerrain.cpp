@@ -7,6 +7,7 @@
 //
 
 #include "CloudsVisualSystemTerrain.h"
+#include "CloudsGlobal.h"
 
 string CloudsVisualSystemTerrain::getSystemName()
 {

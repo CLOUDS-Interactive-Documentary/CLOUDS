@@ -49,8 +49,8 @@ void CloudsVisualSystemComputationTicker::reloadShaders(){
 	ofClear(0);
 	targetOffset.end();
 	
-	drawShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/display");
-	updateShader.load( getDataPath() + "/shaders/VisualSystems/ComputationTicker/update");
+	drawShader.load( getVisualSystemDataPath() + "display");
+	updateShader.load( getVisualSystemDataPath() + "update");
 }
 
 //--------------------------------------------------------------

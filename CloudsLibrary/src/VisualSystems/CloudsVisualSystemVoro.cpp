@@ -7,6 +7,7 @@
 //
 
 #include "CloudsVisualSystemVoro.h"
+#include "CloudsGlobal.h"
 
 // comparison routine for sort...
 bool comparisonFunction(  VoroParticle *a, VoroParticle *b ) {
