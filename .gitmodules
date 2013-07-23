@@ -4,3 +4,6 @@
 [submodule "CloudsLibrary/src/VisualSystemsLibrary"]
 	path = CloudsLibrary/src/VisualSystemsLibrary
 	url = https://github.com/CLOUDS-Interactive-Documentary/VisualSystemsLibrary
+[submodule "CloudsLibrary/src/VisualSystems/DataCascade"]
+	path = CloudsLibrary/src/VisualSystems/DataCascade
+	url = git@github.com:CLOUDS-Interactive-Documentary/DataCascade.git
