@@ -123,8 +123,10 @@ void CloudsVisualSystemManager::loadPresets(){
 	for(int i = 0; i < numSystems; i++){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
-		keywords[ name ] = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-		
+		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
+		keywords[ name ] = presetKeywords;
+//        presetToKeywords[name] = presetKeywords;
+        
 		#ifdef CLOUDS_NO_VS
 		vector<string> splitName = ofSplitString(name, "_",true,true);
 		
@@ -203,12 +205,24 @@ void CloudsVisualSystemManager::saveKeywords(){
 }
 
 //--------------------------------------------------------------------
-CloudsVisualSystemPreset& CloudsVisualSystemManager::getRandomVisualSystem(){
+CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
     if(presets.size() == 0){
         ofLogError() << "No Visual System presets";
         return dummyPreset;
     }
 	return presets[ ofRandom(presets.size()) ];
+}
+
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
+    vector<CloudsVisualSystemPreset> presetsWithKeyword;
+
+    for(int i =0; i<presets.size(); i++){
+        if( ofContains(keywordsForPreset(i), keyword) ){
+            presetsWithKeyword.push_back(presets[i]);
+        }
+    }
+    
+    return presetsWithKeyword;
 }
 
 //--------------------------------------------------------------------
@@ -221,7 +235,14 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem
 
 //--------------------------------------------------------------------
 CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string systemName, string presetName){
-	//TODO::
+	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].presetName == presetName){
+			return presets[i];
+		}
+	}
+	ofLogError() << "Couldn't find preset " << systemName << " " << presetName;
+	return dummyPreset;
 }
 
 //--------------------------------------------------------------------
