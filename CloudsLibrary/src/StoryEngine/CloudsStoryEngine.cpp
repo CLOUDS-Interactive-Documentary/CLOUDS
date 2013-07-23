@@ -308,6 +308,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         sort(scoreLogPairs.begin(), scoreLogPairs.end(), logsort);
+
         for (int i=0; i<scoreLogPairs.size(); i++) {
             scoreStream<<scoreLogPairs[i].second;
         }
