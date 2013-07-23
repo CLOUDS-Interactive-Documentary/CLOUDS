@@ -1,3 +1,6 @@
 [submodule "CloudsLibrary/src/VisualSystems/World"]
 	path = CloudsLibrary/src/VisualSystems/World
 	url = git@github.com:CLOUDS-Interactive-Documentary/World.git
+[submodule "CloudsLibrary/src/VisualSystemsLibrary"]
+	path = CloudsLibrary/src/VisualSystemsLibrary
+	url = https://github.com/CLOUDS-Interactive-Documentary/VisualSystemsLibrary

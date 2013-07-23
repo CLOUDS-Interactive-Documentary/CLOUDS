@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18DB1616179C53B300545614 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DB1614179C53B300545614 /* wArc.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -28,6 +27,27 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E71A4BCD179E15D6000D96AF /* airports.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B4F179E15D2000D96AF /* airports.txt */; };
+		E71A4BCE179E15D6000D96AF /* cities.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B50179E15D2000D96AF /* cities.txt */; };
+		E71A4BCF179E15D6000D96AF /* constelations.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B51179E15D2000D96AF /* constelations.txt */; };
+		E71A4BD0179E15D6000D96AF /* NewMedia Fett.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */; };
+		E71A4BD1179E15D6000D96AF /* cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B55179E15D2000D96AF /* cursor.png */; };
+		E71A4BD2179E15D6000D96AF /* loc.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4B56179E15D2000D96AF /* loc.txt */; };
+		E71A4C17179E15D6000D96AF /* backlight.frag in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BA5179E15D4000D96AF /* backlight.frag */; };
+		E71A4C18179E15D6000D96AF /* backlight.vert in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BA6179E15D4000D96AF /* backlight.vert */; };
+		E71A4C19179E15D6000D96AF /* simple-borders.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BA7179E15D4000D96AF /* simple-borders.txt */; };
+		E71A4C1A179E15D6000D96AF /* simple-cities.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BA8179E15D4000D96AF /* simple-cities.txt */; };
+		E71A4C1B179E15D6000D96AF /* simple-coast.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BA9179E15D4000D96AF /* simple-coast.txt */; };
+		E71A4C1C179E15D7000D96AF /* simple-rivers.txt in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BAA179E15D4000D96AF /* simple-rivers.txt */; };
+		E71A4C1D179E15D7000D96AF /* World 2013-07-22-20-54-20-849.png in Resources */ = {isa = PBXBuildFile; fileRef = E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */; };
+		E71A4C27179E15D8000D96AF /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBA179E15D5000D96AF /* CloudsVisualSystemWorld.cpp */; };
+		E71A4C28179E15D8000D96AF /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBC179E15D5000D96AF /* wArc.cpp */; };
+		E71A4C29179E15D8000D96AF /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BBE179E15D5000D96AF /* wCity.cpp */; };
+		E71A4C2A179E15D8000D96AF /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BC0179E15D5000D96AF /* wParticle.cpp */; };
+		E71A4C2B179E15D8000D96AF /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BC2179E15D5000D96AF /* wSatellite.cpp */; };
+		E71A4C2C179E15D8000D96AF /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4BC4179E15D5000D96AF /* wStar.cpp */; };
+		E71A4C36179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4C31179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp */; };
+		E71A4C37179E1A27000D96AF /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71A4C33179E1A27000D96AF /* CloudsVisualSystem.cpp */; };
 		E726EED8178387AA00B7D392 /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E726EED6178387AA00B7D392 /* CloudsVisualSystemVoro.cpp */; };
 		E72D39F8179443E10079254B /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D39F6179443E10079254B /* CloudsVisualSystemLia.cpp */; };
 		E72D3A04179443E80079254B /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D39FA179443E80079254B /* ColorPalette.cpp */; };
@@ -45,7 +65,6 @@
 		E73769C11778DC4500892646 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737694C1778DC4500892646 /* CloudsVisualSystemPreset.cpp */; };
 		E73769C21778DC4500892646 /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737694E1778DC4500892646 /* ClusterData.cpp */; };
 		E73769C31778DC4500892646 /* ParticleEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769501778DC4500892646 /* ParticleEdge.cpp */; };
-		E73769C51778DC4500892646 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769551778DC4500892646 /* CloudsVisualSystem.cpp */; };
 		E73769C61778DC4500892646 /* CloudsVisualSystemAmber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769571778DC4500892646 /* CloudsVisualSystemAmber.cpp */; };
 		E73769C71778DC4500892646 /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769591778DC4500892646 /* CloudsVisualSystemCities.cpp */; };
 		E73769C81778DC4500892646 /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737695B1778DC4500892646 /* CloudsVisualSystemCollaboration1.cpp */; };
@@ -59,7 +78,6 @@
 		E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769711778DC4500892646 /* CloudsVisualSystemTerrain.cpp */; };
 		E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769731778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp */; };
 		E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */; };
-		E73769D71778DC4500892646 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */; };
 		E73769D81778DC4500892646 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737697C1778DC4500892646 /* ParticleConnection.cpp */; };
 		E73769D91778DC4500892646 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737697E1778DC4500892646 /* ParticleConnectionGenerator.cpp */; };
 		E73769DA1778DC4500892646 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769801778DC4500892646 /* ParticleConnector.cpp */; };
@@ -170,10 +188,6 @@
 		E739967D178743D800EA5F4D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967C178743D800EA5F4D /* AVFoundation.framework */; };
 		E739967F178743E900EA5F4D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967E178743E900EA5F4D /* CoreMedia.framework */; };
 		E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7399680178743F200EA5F4D /* QuartzCore.framework */; };
-		E7402DC9178F400F00FEABED /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DC1178F400F00FEABED /* wCity.cpp */; };
-		E7402DCA178F400F00FEABED /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DC3178F400F00FEABED /* wParticle.cpp */; };
-		E7402DCB178F400F00FEABED /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DC5178F400F00FEABED /* wSatellite.cpp */; };
-		E7402DCC178F400F00FEABED /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DC7178F400F00FEABED /* wStar.cpp */; };
 		E7402DCF178F40A600FEABED /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DCD178F40A600FEABED /* CloudsVisualSystemRezanator.cpp */; };
 		E776C263177F7277001D8CDC /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */; };
 		E7C765AD177B51C800A58372 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C765AB177B51C700A58372 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
@@ -213,8 +227,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18DB1614179C53B300545614 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
-		18DB1615179C53B300545614 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -241,6 +253,35 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E71A4B4F179E15D2000D96AF /* airports.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.txt; sourceTree = "<group>"; };
+		E71A4B50179E15D2000D96AF /* cities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cities.txt; sourceTree = "<group>"; };
+		E71A4B51179E15D2000D96AF /* constelations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constelations.txt; sourceTree = "<group>"; };
+		E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewMedia Fett.ttf"; sourceTree = "<group>"; };
+		E71A4B55179E15D2000D96AF /* cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cursor.png; sourceTree = "<group>"; };
+		E71A4B56179E15D2000D96AF /* loc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = loc.txt; sourceTree = "<group>"; };
+		E71A4BA5179E15D4000D96AF /* backlight.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = backlight.frag; sourceTree = "<group>"; };
+		E71A4BA6179E15D4000D96AF /* backlight.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = backlight.vert; sourceTree = "<group>"; };
+		E71A4BA7179E15D4000D96AF /* simple-borders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-borders.txt"; sourceTree = "<group>"; };
+		E71A4BA8179E15D4000D96AF /* simple-cities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-cities.txt"; sourceTree = "<group>"; };
+		E71A4BA9179E15D4000D96AF /* simple-coast.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-coast.txt"; sourceTree = "<group>"; };
+		E71A4BAA179E15D4000D96AF /* simple-rivers.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simple-rivers.txt"; sourceTree = "<group>"; };
+		E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "World 2013-07-22-20-54-20-849.png"; sourceTree = "<group>"; };
+		E71A4BBA179E15D5000D96AF /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
+		E71A4BBB179E15D5000D96AF /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
+		E71A4BBC179E15D5000D96AF /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		E71A4BBD179E15D5000D96AF /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
+		E71A4BBE179E15D5000D96AF /* wCity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wCity.cpp; sourceTree = "<group>"; };
+		E71A4BBF179E15D5000D96AF /* wCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wCity.h; sourceTree = "<group>"; };
+		E71A4BC0179E15D5000D96AF /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
+		E71A4BC1179E15D5000D96AF /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
+		E71A4BC2179E15D5000D96AF /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
+		E71A4BC3179E15D5000D96AF /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
+		E71A4BC4179E15D5000D96AF /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
+		E71A4BC5179E15D5000D96AF /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
+		E71A4C31179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
+		E71A4C32179E1A27000D96AF /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		E71A4C33179E1A27000D96AF /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
+		E71A4C34179E1A27000D96AF /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E726EED6178387AA00B7D392 /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
 		E726EED7178387AA00B7D392 /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
 		E72D39F6179443E10079254B /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
@@ -276,8 +317,6 @@
 		E737694F1778DC4500892646 /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E73769501778DC4500892646 /* ParticleEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEdge.cpp; sourceTree = "<group>"; };
 		E73769511778DC4500892646 /* ParticleEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEdge.h; sourceTree = "<group>"; };
-		E73769551778DC4500892646 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
-		E73769561778DC4500892646 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E73769571778DC4500892646 /* CloudsVisualSystemAmber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemAmber.cpp; sourceTree = "<group>"; };
 		E73769581778DC4500892646 /* CloudsVisualSystemAmber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAmber.h; sourceTree = "<group>"; };
 		E73769591778DC4500892646 /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
@@ -304,8 +343,6 @@
 		E73769741778DC4500892646 /* CloudsVisualSystemVectorFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVectorFlow.h; sourceTree = "<group>"; };
 		E73769751778DC4500892646 /* CloudsVisualSystemVerletForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVerletForm.cpp; sourceTree = "<group>"; };
 		E73769761778DC4500892646 /* CloudsVisualSystemVerletForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVerletForm.h; sourceTree = "<group>"; };
-		E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
-		E737697A1778DC4500892646 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		E737697C1778DC4500892646 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
 		E737697D1778DC4500892646 /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
 		E737697E1778DC4500892646 /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
@@ -698,14 +735,6 @@
 		E739967E178743E900EA5F4D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E7399680178743F200EA5F4D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E7402DBF178F3FA400FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
-		E7402DC1178F400F00FEABED /* wCity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wCity.cpp; sourceTree = "<group>"; };
-		E7402DC2178F400F00FEABED /* wCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wCity.h; sourceTree = "<group>"; };
-		E7402DC3178F400F00FEABED /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
-		E7402DC4178F400F00FEABED /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
-		E7402DC5178F400F00FEABED /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
-		E7402DC6178F400F00FEABED /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
-		E7402DC7178F400F00FEABED /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
-		E7402DC8178F400F00FEABED /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		E7402DCD178F40A600FEABED /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
 		E7402DCE178F40A600FEABED /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
@@ -882,6 +911,105 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E71A4B49179E15D2000D96AF /* World */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4B4C179E15D2000D96AF /* bin */,
+				E71A4BB9179E15D4000D96AF /* vs_src */,
+			);
+			path = World;
+			sourceTree = "<group>";
+		};
+		E71A4B4C179E15D2000D96AF /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4B4D179E15D2000D96AF /* data */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		E71A4B4D179E15D2000D96AF /* data */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4B4F179E15D2000D96AF /* airports.txt */,
+				E71A4B50179E15D2000D96AF /* cities.txt */,
+				E71A4B51179E15D2000D96AF /* constelations.txt */,
+				E71A4B52179E15D2000D96AF /* GUI */,
+				E71A4B54179E15D2000D96AF /* images */,
+				E71A4B56179E15D2000D96AF /* loc.txt */,
+				E71A4BA4179E15D4000D96AF /* shaders */,
+				E71A4BA7179E15D4000D96AF /* simple-borders.txt */,
+				E71A4BA8179E15D4000D96AF /* simple-cities.txt */,
+				E71A4BA9179E15D4000D96AF /* simple-coast.txt */,
+				E71A4BAA179E15D4000D96AF /* simple-rivers.txt */,
+				E71A4BAB179E15D4000D96AF /* snapshots */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		E71A4B52179E15D2000D96AF /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4B53179E15D2000D96AF /* NewMedia Fett.ttf */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+		E71A4B54179E15D2000D96AF /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4B55179E15D2000D96AF /* cursor.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		E71A4BA4179E15D4000D96AF /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4BA5179E15D4000D96AF /* backlight.frag */,
+				E71A4BA6179E15D4000D96AF /* backlight.vert */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		E71A4BAB179E15D4000D96AF /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4BAC179E15D4000D96AF /* World 2013-07-22-20-54-20-849.png */,
+			);
+			path = snapshots;
+			sourceTree = "<group>";
+		};
+		E71A4BB9179E15D4000D96AF /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4BBA179E15D5000D96AF /* CloudsVisualSystemWorld.cpp */,
+				E71A4BBB179E15D5000D96AF /* CloudsVisualSystemWorld.h */,
+				E71A4BBC179E15D5000D96AF /* wArc.cpp */,
+				E71A4BBD179E15D5000D96AF /* wArc.h */,
+				E71A4BBE179E15D5000D96AF /* wCity.cpp */,
+				E71A4BBF179E15D5000D96AF /* wCity.h */,
+				E71A4BC0179E15D5000D96AF /* wParticle.cpp */,
+				E71A4BC1179E15D5000D96AF /* wParticle.h */,
+				E71A4BC2179E15D5000D96AF /* wSatellite.cpp */,
+				E71A4BC3179E15D5000D96AF /* wSatellite.h */,
+				E71A4BC4179E15D5000D96AF /* wStar.cpp */,
+				E71A4BC5179E15D5000D96AF /* wStar.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E71A4C30179E1A27000D96AF /* VisualSystemsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E71A4C32179E1A27000D96AF /* CloudsRGBDCombinedRenderer.h */,
+				E71A4C31179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp */,
+				E71A4C34179E1A27000D96AF /* CloudsVisualSystem.h */,
+				E71A4C33179E1A27000D96AF /* CloudsVisualSystem.cpp */,
+			);
+			path = VisualSystemsLibrary;
+			sourceTree = "<group>";
+		};
 		E72D39F9179443E80079254B /* LIA */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +1038,7 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E71A4C30179E1A27000D96AF /* VisualSystemsLibrary */,
 				E73769201778DC4500892646 /* RGBD */,
 				E737692B1778DC4500892646 /* Sequences */,
 				E737693A1778DC4500892646 /* StoryEngine */,
@@ -965,8 +1094,7 @@
 		E73769521778DC4500892646 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E73769561778DC4500892646 /* CloudsVisualSystem.h */,
-				E73769551778DC4500892646 /* CloudsVisualSystem.cpp */,
+				E71A4B49179E15D2000D96AF /* World */,
 				E7402DCE178F40A600FEABED /* CloudsVisualSystemRezanator.h */,
 				E7402DCD178F40A600FEABED /* CloudsVisualSystemRezanator.cpp */,
 				E73769581778DC4500892646 /* CloudsVisualSystemAmber.h */,
@@ -1003,10 +1131,7 @@
 				E73769761778DC4500892646 /* CloudsVisualSystemVerletForm.h */,
 				E72D39F6179443E10079254B /* CloudsVisualSystemLia.cpp */,
 				E72D39F7179443E10079254B /* CloudsVisualSystemLia.h */,
-				E73769791778DC4500892646 /* CloudsVisualSystemWorld.cpp */,
-				E737697A1778DC4500892646 /* CloudsVisualSystemWorld.h */,
 				E72D39F9179443E80079254B /* LIA */,
-				E7402DC0178F400F00FEABED /* World */,
 				E7770408177CC422009CB7AD /* Replecator */,
 				E737697B1778DC4500892646 /* ConnectorParticles */,
 				E73769821778DC4500892646 /* LSystems */,
@@ -2027,23 +2152,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E7402DC0178F400F00FEABED /* World */ = {
-			isa = PBXGroup;
-			children = (
-				18DB1614179C53B300545614 /* wArc.cpp */,
-				18DB1615179C53B300545614 /* wArc.h */,
-				E7402DC1178F400F00FEABED /* wCity.cpp */,
-				E7402DC2178F400F00FEABED /* wCity.h */,
-				E7402DC3178F400F00FEABED /* wParticle.cpp */,
-				E7402DC4178F400F00FEABED /* wParticle.h */,
-				E7402DC5178F400F00FEABED /* wSatellite.cpp */,
-				E7402DC6178F400F00FEABED /* wSatellite.h */,
-				E7402DC7178F400F00FEABED /* wStar.cpp */,
-				E7402DC8178F400F00FEABED /* wStar.h */,
-			);
-			path = World;
-			sourceTree = "<group>";
-		};
 		E7770408177CC422009CB7AD /* Replecator */ = {
 			isa = PBXGroup;
 			children = (
@@ -2123,6 +2231,17 @@
 			files = (
 				609133841652CA6600B523AD /* MainMenu.xib in Resources */,
 				E73774CD1778DD2900892646 /* easing_terms_of_use.html in Resources */,
+				E71A4BCD179E15D6000D96AF /* airports.txt in Resources */,
+				E71A4BCE179E15D6000D96AF /* cities.txt in Resources */,
+				E71A4BCF179E15D6000D96AF /* constelations.txt in Resources */,
+				E71A4BD0179E15D6000D96AF /* NewMedia Fett.ttf in Resources */,
+				E71A4BD1179E15D6000D96AF /* cursor.png in Resources */,
+				E71A4BD2179E15D6000D96AF /* loc.txt in Resources */,
+				E71A4C19179E15D6000D96AF /* simple-borders.txt in Resources */,
+				E71A4C1A179E15D6000D96AF /* simple-cities.txt in Resources */,
+				E71A4C1B179E15D6000D96AF /* simple-coast.txt in Resources */,
+				E71A4C1C179E15D7000D96AF /* simple-rivers.txt in Resources */,
+				E71A4C1D179E15D7000D96AF /* World 2013-07-22-20-54-20-849.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2164,7 +2283,6 @@
 				E73769C11778DC4500892646 /* CloudsVisualSystemPreset.cpp in Sources */,
 				E73769C21778DC4500892646 /* ClusterData.cpp in Sources */,
 				E73769C31778DC4500892646 /* ParticleEdge.cpp in Sources */,
-				E73769C51778DC4500892646 /* CloudsVisualSystem.cpp in Sources */,
 				E73769C61778DC4500892646 /* CloudsVisualSystemAmber.cpp in Sources */,
 				E73769C71778DC4500892646 /* CloudsVisualSystemCities.cpp in Sources */,
 				E73769C81778DC4500892646 /* CloudsVisualSystemCollaboration1.cpp in Sources */,
@@ -2178,7 +2296,6 @@
 				E73769D31778DC4500892646 /* CloudsVisualSystemTerrain.cpp in Sources */,
 				E73769D41778DC4500892646 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E73769D51778DC4500892646 /* CloudsVisualSystemVerletForm.cpp in Sources */,
-				E73769D71778DC4500892646 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E73769D81778DC4500892646 /* ParticleConnection.cpp in Sources */,
 				E73769D91778DC4500892646 /* ParticleConnectionGenerator.cpp in Sources */,
 				E73769DA1778DC4500892646 /* ParticleConnector.cpp in Sources */,
@@ -2287,17 +2404,22 @@
 				E726EED8178387AA00B7D392 /* CloudsVisualSystemVoro.cpp in Sources */,
 				E7399677178743B900EA5F4D /* ofxAVFVideoPlayer.mm in Sources */,
 				E7399678178743B900EA5F4D /* ofxAVFVideoRenderer.m in Sources */,
-				E7402DC9178F400F00FEABED /* wCity.cpp in Sources */,
-				E7402DCA178F400F00FEABED /* wParticle.cpp in Sources */,
-				E7402DCB178F400F00FEABED /* wSatellite.cpp in Sources */,
-				E7402DCC178F400F00FEABED /* wStar.cpp in Sources */,
 				E7402DCF178F40A600FEABED /* CloudsVisualSystemRezanator.cpp in Sources */,
 				E72D39F8179443E10079254B /* CloudsVisualSystemLia.cpp in Sources */,
 				E72D3A04179443E80079254B /* ColorPalette.cpp in Sources */,
 				E72D3A05179443E80079254B /* Globals.cpp in Sources */,
 				E72D3A06179443E80079254B /* Module.cpp in Sources */,
 				E72D3A07179443E80079254B /* RandomMover.cpp in Sources */,
-				18DB1616179C53B300545614 /* wArc.cpp in Sources */,
+				E71A4C17179E15D6000D96AF /* backlight.frag in Sources */,
+				E71A4C18179E15D6000D96AF /* backlight.vert in Sources */,
+				E71A4C27179E15D8000D96AF /* CloudsVisualSystemWorld.cpp in Sources */,
+				E71A4C28179E15D8000D96AF /* wArc.cpp in Sources */,
+				E71A4C29179E15D8000D96AF /* wCity.cpp in Sources */,
+				E71A4C2A179E15D8000D96AF /* wParticle.cpp in Sources */,
+				E71A4C2B179E15D8000D96AF /* wSatellite.cpp in Sources */,
+				E71A4C2C179E15D8000D96AF /* wStar.cpp in Sources */,
+				E71A4C36179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp in Sources */,
+				E71A4C37179E1A27000D96AF /* CloudsVisualSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
