@@ -716,8 +716,6 @@
 		E737797F1778DF4D00892646 /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
 		E73779801778DF4D00892646 /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
 		E73779811778DF4D00892646 /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
-		E737798A1778DF6000892646 /* ofxExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
-		E737798B1778DF6000892646 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
 		E737799D1778DF7800892646 /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E737799E1778DF7800892646 /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
 		E73779AA1778DFFA00892646 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
@@ -741,6 +739,8 @@
 		E7424F87179EDAAF00B2F0A3 /* update.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = update.vert; sourceTree = "<group>"; };
 		E7424F91179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E7424F92179EDAAF00B2F0A3 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
+		E7424FCE179EECAC00B2F0A3 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E7424FCF179EF05100B2F0A3 /* ofxViewType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxViewType.h; sourceTree = "<group>"; };
 		E776C261177F7276001D8CDC /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E776C262177F7276001D8CDC /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7770409177CC422009CB7AD /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
@@ -806,7 +806,6 @@
 			children = (
 				E739965A178743B900EA5F4D /* ofxAVFVideoPlayer */,
 				E737798E1778DF7800892646 /* ofxTextInputField */,
-				E73779861778DF6000892646 /* ofxExtras */,
 				E73779131778DF1600892646 /* ofxOcean */,
 				E737790B1778DF0500892646 /* ofxColorPalettes */,
 				E73778EA1778DEFF00892646 /* ofxCameraSaveLoad */,
@@ -988,6 +987,8 @@
 		E71A4C30179E1A27000D96AF /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E7424FCF179EF05100B2F0A3 /* ofxViewType.h */,
+				E7424FCE179EECAC00B2F0A3 /* ofxLight.h */,
 				E71A4C32179E1A27000D96AF /* CloudsRGBDCombinedRenderer.h */,
 				E71A4C31179E1A27000D96AF /* CloudsRGBDCombinedRenderer.cpp */,
 				E71A4C34179E1A27000D96AF /* CloudsVisualSystem.h */,
@@ -2056,24 +2057,6 @@
 				E737797F1778DF4D00892646 /* MSACoreGL.cpp */,
 				E73779801778DF4D00892646 /* MSACoreGL.h */,
 				E73779811778DF4D00892646 /* MSACoreMath.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		E73779861778DF6000892646 /* ofxExtras */ = {
-			isa = PBXGroup;
-			children = (
-				E73779891778DF6000892646 /* src */,
-			);
-			name = ofxExtras;
-			path = ../../../addons/ofxExtras;
-			sourceTree = "<group>";
-		};
-		E73779891778DF6000892646 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E737798A1778DF6000892646 /* ofxExtras.h */,
-				E737798B1778DF6000892646 /* ofxLight.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
