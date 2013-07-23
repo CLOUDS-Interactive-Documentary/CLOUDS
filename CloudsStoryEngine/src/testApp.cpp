@@ -119,6 +119,9 @@ void testApp::keyPressed(int key){
         displayGui = ! displayGui;
         storyEngine.displayGui(displayGui);
     }
+    else if(key =='f'){
+        ofToggleFullscreen();
+    }
 }
 
 //--------------------------------------------------------------
