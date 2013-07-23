@@ -59,6 +59,7 @@ class CloudsClip {
     bool hasAdditionalKeywords();
     bool hasRevokedKeywords();
     bool hasSpecialKeyword(string keyword);
+    bool hasKeyword(string keyword);
     
 	float getDuration();
     string getLinkName();

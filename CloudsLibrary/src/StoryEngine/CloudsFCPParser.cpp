@@ -7,6 +7,7 @@
 //
 
 #include "CloudsFCPParser.h"
+#include "CloudsGlobal.h"
 
 bool distanceSort(pair<string,float> a, pair<string,float> b ){
     return a.second > b.second;
@@ -20,17 +21,18 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     
-	if(ofDirectory("../../../CloudsData/").exists()){
-		setup("../../../CloudsData/fcpxml/");
-		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-	}
-	else{
-		setup("xml");
-		parseLinks("clouds_link_db.xml");
-        parseClusterMap("CLOUDS_test_5_26_13.SVG");
+    
+//	if(ofDirectory("../../../CloudsData/").exists()){
+//		setup("../../../CloudsData/fcpxml/");
+//		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+//        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+//	}
+//	else{
+		setup(getDataPath() + "fcpxml");
+		parseLinks(getDataPath() + "links/clouds_link_db.xml");
+        parseClusterMap(getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
         
-	}
+//	}
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -292,7 +294,7 @@ void CloudsFCPParser::populateKeywordCentroids(){
 
 }
 
-void CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
+vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
     string keyword = "";
     ofVec2f centroid;
     vector<pair<string, float> > distancePair;
@@ -736,6 +738,8 @@ void CloudsFCPParser::refreshAllKeywords(){
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	hasCombinedVideoIndeces.clear();
 	hasCombinedVideoAndQuestionIndeces.clear();
+    hasCombinedAndIsStartingClipIndeces.clear();
+    
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
@@ -750,6 +754,9 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 			if(allClips[i].hasStartingQuestion()){
 				hasCombinedVideoAndQuestionIndeces.push_back(i);
 			}
+            if(allClips[i].hasSpecialKeyword("#start")){
+                hasCombinedAndIsStartingClipIndeces.push_back(i);
+            }
             //			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
@@ -757,13 +764,13 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool mustHaveQuestion){
-	if(mustHaveCombinedVideoFile && mustHaveQuestion){
-		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no questions clips with combined videos";
+CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool startingClip){
+	if(mustHaveCombinedVideoFile && startingClip){
+		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
+			ofLogError() << "CloudsFCPParser::getRandomClip has no start clips clips with combined videos";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
+		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
 	else if(mustHaveCombinedVideoFile){
 		if(hasCombinedVideoIndeces.size() == 0){
@@ -772,7 +779,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 		}
 		return allClips[ hasCombinedVideoIndeces[ofRandom(hasCombinedVideoIndeces.size())] ];
 	}
-	else if(mustHaveQuestion){
+	else if(startingClip){
 		if(questionIds.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << " has no questions";
 			return dummyClip;

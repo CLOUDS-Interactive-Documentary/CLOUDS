@@ -101,7 +101,7 @@ class CloudsFCPParser {
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
 	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
-							  bool mustHaveQuestion = false);
+							  bool startingClip = false);
 	
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
@@ -123,7 +123,7 @@ class CloudsFCPParser {
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
-	
+    vector<string> getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );
@@ -136,7 +136,7 @@ class CloudsFCPParser {
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
     void populateKeywordCentroids();
-    void getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+   
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
 	set<string> markerLinkNames;
@@ -153,6 +153,7 @@ class CloudsFCPParser {
 	vector<int> hasCombinedVideoIndeces;
 	vector<string> questionIds;
 	vector<int> hasCombinedVideoAndQuestionIndeces;
+	vector<int> hasCombinedAndIsStartingClipIndeces;
 	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
