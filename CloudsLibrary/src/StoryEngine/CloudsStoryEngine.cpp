@@ -222,7 +222,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     int timeForNewQuesiton = 0;
     
-    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore,voiceOverScore"<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore,voiceOverScore"<<endl;
     
     clearDichotomiesBalance();
     
@@ -239,7 +239,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     int timesOnCurrentTopic = 0;
     while( totalSecondsEnqueued < seconds ){
-        scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
+        scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
         
         freeTopic |= timesOnCurrentTopic > maxTimesOnTopic;
         
@@ -794,13 +794,13 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
         
     }
     
-    totalScore = topicsInCommonScore + topicsInCommonWithPreviousScore - samePersonOccuranceScore + dichotomiesScore + voiceOverScore;
+    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore - samePersonOccuranceScore + dichotomiesScore + voiceOverScore;
     
     stringstream ss;
     string linkName =potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
     
-    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<voiceOverScore<<endl;
+    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<voiceOverScore<<endl;
     
     log = ss.str();
     
