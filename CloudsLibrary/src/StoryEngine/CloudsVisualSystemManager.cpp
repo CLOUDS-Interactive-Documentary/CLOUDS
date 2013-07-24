@@ -22,7 +22,7 @@
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
 #include "CloudsVisualSystemLia.h"
-#include "Fireworks.h"
+#include "CloudsVisualSystemFireworks.h"
 
 #endif
 
@@ -54,6 +54,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );
 	registerVisualSystem( new CloudsVisualSystemLia() );
+	registerVisualSystem( new CloudsVisualSystemFireworks() );
 	
 	//REZA: Adding this makes it so the pointclouds don't show..
     //	registerVisualSystem( new CloudsVisualSystemAmber() );
