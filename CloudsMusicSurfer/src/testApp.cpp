@@ -460,7 +460,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
             WAVETABLE(i, 2., 0.05, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
-            for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,16))))
+            for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,8))))
             {
                     
                 STRUM(i+j, 1.0, 0.1, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
