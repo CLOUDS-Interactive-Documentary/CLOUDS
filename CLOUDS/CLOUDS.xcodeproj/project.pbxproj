@@ -1060,11 +1060,11 @@
 		E742500A179F981B00B2F0A3 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E742500C179F981B00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp */,
-				E742500D179F981B00B2F0A3 /* CloudsRGBDCombinedRenderer.h */,
-				E742500E179F981B00B2F0A3 /* CloudsVisualSystem.cpp */,
-				E742500F179F981B00B2F0A3 /* CloudsVisualSystem.h */,
 				E7425010179F981B00B2F0A3 /* ofxLight.h */,
+				E742500D179F981B00B2F0A3 /* CloudsRGBDCombinedRenderer.h */,
+				E742500C179F981B00B2F0A3 /* CloudsRGBDCombinedRenderer.cpp */,
+				E742500F179F981B00B2F0A3 /* CloudsVisualSystem.h */,
+				E742500E179F981B00B2F0A3 /* CloudsVisualSystem.cpp */,
 			);
 			path = VisualSystemsLibrary;
 			sourceTree = "<group>";
