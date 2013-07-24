@@ -49,3 +49,4 @@ timeline*.xml
 *.vbo
 /CloudsStoryEngine/bin/data/score.csv
 score.csv
+/CLOUDS/bin/data/CloudsData/

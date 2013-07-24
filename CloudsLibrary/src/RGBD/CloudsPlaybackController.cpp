@@ -400,7 +400,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	nextVisualSystem.system->setCurrentTopic( currentTopic );
 	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	nextVisualSystem.system->playSystem();
-
 	
 	showingVisualSystem = true;
 	
@@ -409,8 +408,12 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
+<<<<<<< HEAD
 	fadeInVisualSystem( 3 );
 		
+=======
+	fadeInVisualSystem();
+>>>>>>> d013f747572d17f2bf0cc8a21419a46b8b5cbad8
 }
 
 //--------------------------------------------------------------------

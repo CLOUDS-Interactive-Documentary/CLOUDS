@@ -12,7 +12,7 @@ ofFbo& CloudsVisualSystem::getStaticRenderTarget(){
 
 ofImage& CloudsVisualSystem::getCursor(){
 	if(!sharedCursor.bAllocated()){
-		sharedCursor.loadImage(getDataPath() + "images/cursor.png");
+		sharedCursor.loadImage( getVisualSystemDataPath() + "images/cursor.png");
 	}
 	return sharedCursor;
 }
@@ -48,7 +48,20 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 }
 
 string CloudsVisualSystem::getVisualSystemDataPath(){
-    return getDataPath() + "visualsystems/"+getSystemName()+"/";
+    
+    bool NotStandALoneFolder = ofDirectory("../../../CloudsLibrary/").exists();
+    
+    string path = "../../../data/";
+    
+    if (NotStandALoneFolder)
+        path = "../../../CloudsLibrary/src/VisualSystems/"+ getSystemName() +"/bin/data/" ;
+    
+    
+    return path;
+}
+
+string CloudsVisualSystem::getSystemName(){
+    return "VisualSystemName";
 }
 
 ofxTimeline* CloudsVisualSystem::getTimeline(){
@@ -64,7 +77,7 @@ void CloudsVisualSystem::setup(){
 	currentCamera = &cam;
 	
     ofDirectory dir;
-    string directoryName = getVisualSystemDataPath();
+    string directoryName = getVisualSystemDataPath()+"Presets/";
     if(!dir.doesDirectoryExist(directoryName))
     {
         dir.createDirectory(directoryName);
@@ -322,7 +335,8 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
     }
     materials.clear();
     materialGuis.clear();
-    
+    cameraTrack->lockCameraToTrack = false;
+	cameraTrack->disable();
 	delete cameraTrack;
     delete timeline;
 
@@ -385,10 +399,10 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         {
             ofImage img;
             img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
-			if( !ofDirectory(getDataPath()+"snapshots/").exists() ){
-				ofDirectory(getDataPath()+"snapshots/").create();
+			if( !ofDirectory(getVisualSystemDataPath()+"snapshots/").exists() ){
+				ofDirectory(getVisualSystemDataPath()+"snapshots/").create();
 			}
-            img.saveImage(getDataPath()+"snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
+            img.saveImage(getVisualSystemDataPath()+"snapshots/" + getSystemName() + " " + ofGetTimestampString() + ".png");
         }
             break;
             
@@ -687,7 +701,7 @@ void CloudsVisualSystem::setupGui()
 vector<string> CloudsVisualSystem::getPresets()
 {
 	vector<string> presets;
-	ofDirectory presetsFolder = ofDirectory(getVisualSystemDataPath());
+	ofDirectory presetsFolder = ofDirectory(getVisualSystemDataPath()+"Presets/");
 	if(presetsFolder.exists()){
 		presetsFolder.listDir();
 		for(int i = 0; i < presetsFolder.size(); i++){
@@ -755,7 +769,7 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
         ofxUIButton *b = (ofxUIButton *) e.widget;
         if(b->getValue())
         {
-            ofFileDialogResult result = ofSystemLoadDialog("Load Visual System Preset Folder", true, getVisualSystemDataPath());
+            ofFileDialogResult result = ofSystemLoadDialog("Load Visual System Preset Folder", true, getVisualSystemDataPath()+"Presets/");
             if(result.bSuccess && result.fileName.length())
             {
                 loadPresetGUISFromPath(result.filePath);
@@ -1427,18 +1441,18 @@ void CloudsVisualSystem::setupTimeline()
 	
 	cameraTrack = new ofxTLCameraTrack();
 	cameraTrack->setCamera(getCameraRef());
-	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Working/Timeline/cameraTrack.xml");
+	cameraTrack->setXMLFileName(getVisualSystemDataPath()+"Presets/Working/Timeline/cameraTrack.xml");
     timeline->addTrack("Camera", cameraTrack);
-	introOutroTrack = timeline->addFlags("Intro-Outro", getVisualSystemDataPath()+"Working/Timeline/IntroOutro.xml");
+	introOutroTrack = timeline->addFlags("Intro-Outro", getVisualSystemDataPath()+"Presets/Working/Timeline/IntroOutro.xml");
 	
     ofDirectory dir;
-    string workingDirectoryName = getVisualSystemDataPath()+"Working/Timeline/";
+    string workingDirectoryName = getVisualSystemDataPath()+"Presets/Working/Timeline/";
     if(!dir.doesDirectoryExist(workingDirectoryName))
     {
         dir.createDirectory(workingDirectoryName);
     }
     
-    timeline->setWorkingFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    timeline->setWorkingFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
     ofAddListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
 	if(!bShowTimeline){
 		timeline->hide();
@@ -2106,31 +2120,31 @@ void CloudsVisualSystem::loadGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->loadSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
     cam.reset();
-    ofxLoadCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
+    ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     resetTimeline();
-    loadTimelineUIMappings(getVisualSystemDataPath()+"Working/"+getSystemName()+"UITimelineMappings.xml");
-    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/"+getSystemName()+"UITimelineMappings.xml");
+    timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 }
 
 void CloudsVisualSystem::saveGUIS()
 {
     for(int i = 0; i < guis.size(); i++)
     {
-        guis[i]->saveSettings(getVisualSystemDataPath()+"Working/"+getSystemName()+guis[i]->getName()+".xml");
+        guis[i]->saveSettings(getVisualSystemDataPath()+"Presets/Working/"+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+"Working/"+"ofEasyCamSettings");
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     
-    saveTimelineUIMappings(getVisualSystemDataPath()+"Working/"+getSystemName()+"UITimelineMappings.xml");
+    saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/"+getSystemName()+"UITimelineMappings.xml");
     
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
 {
-	loadPresetGUISFromPath(getVisualSystemDataPath() + presetName);
+	loadPresetGUISFromPath(getVisualSystemDataPath()+"Presets/"+ presetName);
 }
 
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
@@ -2149,20 +2163,23 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
     loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	timeline->setDurationInSeconds(timelineDuration);
 	timelineDuration = timeline->getDurationInSeconds();
 	
 	selfPresetLoaded(presetPath);
+<<<<<<< HEAD
 	
 	cout <<endl << "presetPath: "<<presetPath << " getSystemName(): "<< getSystemName() << endl<<endl;
 
+=======
+>>>>>>> d013f747572d17f2bf0cc8a21419a46b8b5cbad8
 }
 
 void CloudsVisualSystem::savePresetGUIS(string presetName)
 {
     ofDirectory dir;
-    string presetDirectory = getVisualSystemDataPath()+presetName+"/";
+    string presetDirectory = getVisualSystemDataPath()+"Presets/"+presetName+"/";
     if(!dir.doesDirectoryExist(presetDirectory))
     {
         dir.createDirectory(presetDirectory);
@@ -2174,11 +2191,11 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     {
         guis[i]->saveSettings(presetDirectory+getSystemName()+guis[i]->getName()+".xml");
     }
-    ofxSaveCamera(cam, getVisualSystemDataPath()+presetName+"/"+"ofEasyCamSettings");
-    saveTimelineUIMappings(getVisualSystemDataPath()+presetName+"/"+getSystemName()+"UITimelineMappings.xml");
+    ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/"+"ofEasyCamSettings");
+    saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/"+presetName+"/"+getSystemName()+"UITimelineMappings.xml");
 	timeline->setName(presetName);
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+presetName+"/Timeline/");
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/"+presetName+"/Timeline/");
+    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/"+"Working/Timeline/");
 
 	ofxXmlSettings timeInfo;
 	timeInfo.addTag("timeinfo");
@@ -2188,7 +2205,7 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 	timeInfo.addValue("introDuration", getIntroDuration());
 	timeInfo.addValue("outroDuration", getOutroDuration());
 	timeInfo.popTag();//timeinfo
-	timeInfo.saveFile(getVisualSystemDataPath()+presetName+"/"+"TimeInfo.xml");
+	timeInfo.saveFile(getVisualSystemDataPath()+"Presets/"+presetName+"/"+"TimeInfo.xml");
 	
 }
 
@@ -2444,12 +2461,6 @@ void CloudsVisualSystem::ofLayerGradient(const ofColor& start, const ofColor& en
     glDepthMask(false);
     mesh.draw();
     glDepthMask(true);
-}
-
-//Grab These Methods
-string CloudsVisualSystem::getSystemName()
-{
-	return "CloudsVisualSystem";
 }
 
 void CloudsVisualSystem::selfSetup()

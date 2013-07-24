@@ -7,6 +7,11 @@
 //
 
 #include "CloudsFCPParser.h"
+#include "CloudsGlobal.h"
+
+bool distanceSort(pair<string,float> a, pair<string,float> b ){
+    return a.second > b.second;
+}
 
 CloudsFCPParser::CloudsFCPParser(){
     sortedByOccurrence = false;
@@ -16,17 +21,18 @@ CloudsFCPParser::CloudsFCPParser(){
 
 void CloudsFCPParser::loadFromFiles(){
     
-	if(ofDirectory("../../../CloudsData/").exists()){
-		setup("../../../CloudsData/fcpxml/");
-		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-	}
-	else{
-		setup("xml");
-		parseLinks("clouds_link_db.xml");
-        parseClusterMap("CLOUDS_test_5_26_13.SVG");
+    
+//	if(ofDirectory("../../../CloudsData/").exists()){
+//		setup("../../../CloudsData/fcpxml/");
+//		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+//        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+//	}
+//	else{
+		setup(getDataPath() + "fcpxml");
+		parseLinks(getDataPath() + "links/clouds_link_db.xml");
+        parseClusterMap(getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
         
-	}
+//	}
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -266,6 +272,56 @@ void CloudsFCPParser::parseLinks(string linkFile){
     }
     
 	refreshAllKeywords();
+}
+
+void CloudsFCPParser::populateKeywordCentroids(){
+    for(int k =0; k < getAllKeywords().size(); k++){
+        vector<CloudsClip> clips = getClipsWithKeyword(getAllKeywords()[k]);
+        
+        
+        float numClips =0;
+        ofVec2f centroid;
+        for( int i=0; i<clips.size(); i++){
+            if(clips[i].cluster.Centre != ofVec2f(-1, -1)){
+                centroid += clips[i].cluster.Centre;
+                numClips++;
+            }
+        }
+        centroid /= numClips;
+        keywordCentroids.push_back(make_pair(getAllKeywords()[k], centroid));
+    }
+
+
+}
+
+vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
+    string keyword = "";
+    ofVec2f centroid;
+    vector<pair<string, float> > distancePair;
+    for (int i =0;  i < keywordCentroids.size(); i++) {
+        if(keywordCentroids[i].first == currentKeyword){
+            keyword = keywordCentroids[i].first;
+            centroid  = keywordCentroids[i].second;
+            break;
+        }
+    }
+    
+    for (int j=0; j < keywordCentroids.size(); j++) {
+        
+        float distance = centroid.distance(keywordCentroids[j].second);
+        distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
+    }
+    
+    sort(distancePair.begin(), distancePair.end(),distanceSort);
+    
+    vector<string> adjacentKeywords;
+    numOfDesiredKeywords =MIN(distancePair.size(),numOfDesiredKeywords);
+    
+    for (int k=0 ; k<numOfDesiredKeywords; k++) {
+        adjacentKeywords.push_back(distancePair[k].first);
+    }
+    
+    return adjacentKeywords;
 }
 
 void CloudsFCPParser::saveLinks(string linkFile){
@@ -682,6 +738,8 @@ void CloudsFCPParser::refreshAllKeywords(){
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	hasCombinedVideoIndeces.clear();
 	hasCombinedVideoAndQuestionIndeces.clear();
+    hasCombinedAndIsStartingClipIndeces.clear();
+    
 	combinedVideoDirectory = directory;
     //	cout << "Setting combined directory to " << directory << " looking for all clips " << allClips.size() << endl;
 	for(int i = 0; i < allClips.size(); i++){
@@ -696,6 +754,9 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 			if(allClips[i].hasStartingQuestion()){
 				hasCombinedVideoAndQuestionIndeces.push_back(i);
 			}
+            if(allClips[i].hasSpecialKeyword("#start")){
+                hasCombinedAndIsStartingClipIndeces.push_back(i);
+            }
             //			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
@@ -703,13 +764,13 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool mustHaveQuestion){
-	if(mustHaveCombinedVideoFile && mustHaveQuestion){
-		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no questions clips with combined videos";
+CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool startingClip){
+	if(mustHaveCombinedVideoFile && startingClip){
+		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
+			ofLogError() << "CloudsFCPParser::getRandomClip has no start clips clips with combined videos";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
+		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
 	else if(mustHaveCombinedVideoFile){
 		if(hasCombinedVideoIndeces.size() == 0){
@@ -718,7 +779,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 		}
 		return allClips[ hasCombinedVideoIndeces[ofRandom(hasCombinedVideoIndeces.size())] ];
 	}
-	else if(mustHaveQuestion){
+	else if(startingClip){
 		if(questionIds.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << " has no questions";
 			return dummyClip;
