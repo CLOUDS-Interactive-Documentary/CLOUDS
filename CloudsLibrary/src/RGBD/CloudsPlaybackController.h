@@ -109,11 +109,12 @@ class CloudsPlaybackController {
 	//remove the current visual system
 	void hideVisualSystem();
 	
-	void fadeInVisualSystem( float duration=3 );
-	void fadeOutVisualSystem( float duration=3 );
+	void fadeInVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
+	void fadeOutVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
 	
 	void transitionVisualSystemIn( float transitionDuration=0, float fadeDuration=3 );
 	void transitionVisualSystemOut( float transitionDuration=0, float fadeDuration=3 );
+	bool bIsFading, transitioningIn, transitioningOut;
 
 
 };
