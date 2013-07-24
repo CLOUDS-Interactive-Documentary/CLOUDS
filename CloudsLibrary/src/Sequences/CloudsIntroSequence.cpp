@@ -8,6 +8,7 @@
 
 #include "CloudsIntroSequence.h"
 #include "ofxObjLoader.h"
+#include "CloudsGlobal.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
 		

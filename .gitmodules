@@ -1,0 +1,39 @@
+[submodule "CloudsLibrary/src/VisualSystemsLibrary"]
+	path = CloudsLibrary/src/VisualSystemsLibrary
+	url = git@github.com:CLOUDS-Interactive-Documentary/VisualSystemsLibrary
+[submodule "CloudsLibrary/src/VisualSystems/DataCascade"]
+	path = CloudsLibrary/src/VisualSystems/DataCascade
+	url = git@github.com:CLOUDS-Interactive-Documentary/DataCascade.git
+[submodule "CloudsLibrary/src/VisualSystems/World"]
+	path = CloudsLibrary/src/VisualSystems/World
+	url = git@github.com:CLOUDS-Interactive-Documentary/World.git
+[submodule "CloudsLibrary/src/VisualSystems/ForkingPaths"]
+	path = CloudsLibrary/src/VisualSystems/ForkingPaths
+	url = git@github.com:CLOUDS-Interactive-Documentary/ForkingPaths.git
+[submodule "CloudsLibrary/src/VisualSystems/Ocean"]
+	path = CloudsLibrary/src/VisualSystems/Ocean
+	url = git@github.com:CLOUDS-Interactive-Documentary/Ocean.git
+[submodule "CloudsLibrary/src/VisualSystems/Fireworks"]
+	path = CloudsLibrary/src/VisualSystems/Fireworks
+	url = git@github.com:CLOUDS-Interactive-Documentary/Fireworks.git
+[submodule "CloudsLibrary/src/VisualSystems/LSystem"]
+	path = CloudsLibrary/src/VisualSystems/LSystem
+	url = git@github.com:CLOUDS-Interactive-Documentary/LSystem.git
+[submodule "CloudsLibrary/src/VisualSystems/Voro"]
+	path = CloudsLibrary/src/VisualSystems/Voro
+	url = git@github.com:CLOUDS-Interactive-Documentary/Voro.git
+[submodule "CloudsLibrary/src/VisualSystems/Colony"]
+	path = CloudsLibrary/src/VisualSystems/Colony
+	url = git@github.com:CLOUDS-Interactive-Documentary/Colony.git
+[submodule "CloudsLibrary/src/VisualSystems/PaintBrush"]
+	path = CloudsLibrary/src/VisualSystems/PaintBrush
+	url = git@github.com:CLOUDS-Interactive-Documentary/PaintBrush.git
+[submodule "CloudsLibrary/src/VisualSystems/VectorFlow"]
+	path = CloudsLibrary/src/VisualSystems/VectorFlow
+	url = git@github.com:CLOUDS-Interactive-Documentary/VectorFlow.git
+[submodule "CloudsLibrary/src/VisualSystems/Cities"]
+	path = CloudsLibrary/src/VisualSystems/Cities
+	url = git@github.com:CLOUDS-Interactive-Documentary/Cities.git
+[submodule "CloudsLibrary/src/VisualSystems/Memory"]
+	path = CloudsLibrary/src/VisualSystems/Memory
+	url = git@github.com:CLOUDS-Interactive-Documentary/Memory.git

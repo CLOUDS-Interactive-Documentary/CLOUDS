@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>PerlinSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>273.000061035</XPosition>
+    <YPosition>558.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ACTIVE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PERLIN POWER</Name>
+    <Value>0.019704133</Value>
+</Widget>

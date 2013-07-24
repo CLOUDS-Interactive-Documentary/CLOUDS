@@ -24,7 +24,7 @@ void testApp::setup(){
 	player.setup();
 	
 	visualSystems.populateVisualSystems();
-	vector<CloudsVisualSystemPreset>& presets = visualSystems.getPresetsForSystem("ComputerTicker");
+	vector<CloudsVisualSystemPreset>& presets = visualSystems.getPresetsForSystem("DataCascade");
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);

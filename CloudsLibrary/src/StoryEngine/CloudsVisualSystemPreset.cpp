@@ -10,6 +10,10 @@
 #include "CloudsVisualSystem.h"
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/vs-remove-fix
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	system = NULL;
 	indefinite = true;
