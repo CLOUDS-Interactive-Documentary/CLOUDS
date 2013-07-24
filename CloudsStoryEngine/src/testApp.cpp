@@ -46,6 +46,7 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	currentAct = args.act;
 	currentAct->registerEvents(this);
 	currentAct->play();
+    currentAct->getTimeline().enableEvents();
 }
 
 //--------------------------------------------------------------
@@ -117,6 +118,9 @@ void testApp::keyPressed(int key){
     if(key == ' '){
         displayGui = ! displayGui;
         storyEngine.displayGui(displayGui);
+    }
+    else if(key =='f'){
+        ofToggleFullscreen();
     }
 }
 

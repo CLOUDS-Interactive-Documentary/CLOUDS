@@ -4,7 +4,6 @@
 #include "ofxCameraSaveLoad.h"
 #include "ofxTimeline.h"
 #include "ofxUI.h"
-#include "CloudsGlobal.h"
 #include "ofxTLCameraTrack.h"
 
 //tenuous
@@ -31,7 +30,7 @@ class CloudsVisualSystem {
 	static ofFbo& getStaticRenderTarget(); //default
 	
 	ofFbo& getSharedRenderTarget();
-	static ofImage& getCursor();
+	ofImage& getCursor();
 	
 	ofFbo* sharedRenderTarget;
 	

@@ -22,10 +22,7 @@ void testApp::setup(){
 	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
-	
-	storyEngine.maxTimesOnTopic = 4;
 	storyEngine.combinedClipsOnly = true;
-	storyEngine.printDecisions = false;
 	
 	player.setup();
 	player.setStoryEngine(storyEngine);

@@ -242,6 +242,20 @@ void CloudsClip::addKeyword(string keyword){
     }
 }
 
+bool CloudsClip::hasKeyword(string keyword){
+
+return ofContains(getKeywords(), keyword);
+
+}
+
+
+bool CloudsClip::hasSpecialKeyword(string keyword){
+	if (keyword.at(0) != '#') {
+		keyword = "#"+keyword;
+	}
+	return ofContains(specialKeywords,keyword);
+}
+
 void CloudsClip::revokeKeyword(string keyword){
     if(!ofContains(revokedKeywords, keyword) &&
        ofContains(originalKeywords, keyword))

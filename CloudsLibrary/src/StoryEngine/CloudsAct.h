@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "ofxTimeline.h"
-
+#include "keywordDichotomy.h"
 
 typedef enum {
     Clip =0,
@@ -26,7 +26,9 @@ struct ActTimeItem{
     string key;
     float startTime;
     float endTime;
-    float clipStartPointOffset;
+    float introEndTime;
+    float outroStartTime;
+    float handleLength;
 };
 
 class CloudsAct{
@@ -73,12 +75,14 @@ class CloudsAct{
     CloudsClip& getClipAtTime(float time);
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
-    
-    void addClip(CloudsClip clip, string topic, float startTime);
+    void addClip(CloudsClip clip, string topic, float startTime);    
+    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance);
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
-    void addClipPreRollFlag(float preRollFlagTime, float clipStartPointOffset, string clipName);
+    void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
+
+    vector<keywordDichotomy>& getDichotomiesForClip(string clipName);
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
@@ -102,7 +106,6 @@ protected:
     ActItemType itemType;
 	
 	bool timelinePopulated;
-    CloudsClip currentClip;
     string currentTopic;
     CloudsEvents events;
     vector<CloudsClip> clips;
@@ -114,6 +117,7 @@ protected:
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
     CloudsClip dummyClip;
+    vector<keywordDichotomy> dummyDichotomies;
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
@@ -122,7 +126,7 @@ protected:
     map<string, ActTimeItem> visualSystemItems;
     map< string, string> topicMap;
     map<string, CloudsClip> questionsMap;
-  
+    map<string, vector<keywordDichotomy> > dichotomiesMap;
     float visualSystemDuration;
     
     ofxTLFlags* visualSystemsTrack;

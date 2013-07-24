@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18731D2E178628D200E22F84 /* CloudsAct.cpp */; };
+		18DB161B179DB7EC00545614 /* keywordDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DB1619179DB7EB00545614 /* keywordDichotomy.cpp */; };
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -152,6 +153,8 @@
 		18731D2E178628D200E22F84 /* CloudsAct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsAct.cpp; sourceTree = "<group>"; };
 		18731D2F178628D200E22F84 /* CloudsAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsAct.h; sourceTree = "<group>"; };
 		1877A9F9178F417A006DAA37 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		18DB1619179DB7EB00545614 /* keywordDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keywordDichotomy.cpp; sourceTree = "<group>"; };
+		18DB161A179DB7EC00545614 /* keywordDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keywordDichotomy.h; sourceTree = "<group>"; };
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -761,6 +764,8 @@
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
 				18731D2F178628D200E22F84 /* CloudsAct.h */,
 				18731D2E178628D200E22F84 /* CloudsAct.cpp */,
+				18DB1619179DB7EB00545614 /* keywordDichotomy.cpp */,
+				18DB161A179DB7EC00545614 /* keywordDichotomy.h */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -1703,6 +1708,7 @@
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */,
 				E72D3A3A179458B70079254B /* ofxCameraSaveLoad.cpp in Sources */,
+				18DB161B179DB7EC00545614 /* keywordDichotomy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

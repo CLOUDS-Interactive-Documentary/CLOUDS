@@ -56,6 +56,11 @@ void CloudsVisualSystemPaintBrush::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemPaintBrush::selfUpdate()
 {
+    ofPushStyle();
+    ofSetColor(255);
+    glDisable(GL_DEPTH_TEST);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
     brush.update();
     
     if (brush.getVel().length() < particlesThreshold){
@@ -68,7 +73,6 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     brush.addParticles(particles, particlesThreshold, particlesAlpha);
     
     canvas.begin();
-    
     
     for(int i = particles.size()-1; i >= 0 ; i--){
         
@@ -87,16 +91,25 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     brush.draw();
     
     canvas.end();
+    
+    ofPopStyle();
 }
 
 void CloudsVisualSystemPaintBrush::selfDrawBackground()
 {
+    ofPushStyle();
+    ofSetColor(255);
+    glDisable(GL_DEPTH_TEST);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
     canvas.draw(0, 0);
     
     if (bDebug){
         ofSetColor(255);
         brush.drawDebug();
     }
+    
+    ofPopStyle();
 }
 
 

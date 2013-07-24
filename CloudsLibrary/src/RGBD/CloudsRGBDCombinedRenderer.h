@@ -52,7 +52,18 @@ public:
 	void drawWireFrame();
 	void draw(ofPolyRenderMode drawMode);
 
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr();
+	// UNIMPLEMENTED
+	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
+		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
+	}
+	
+	float getFadeIn(){
+		return 1.;
+	};
+	float getFadeOut(){
+		return 1.;
+	};
+	
 #ifdef AVF_PLAYER
 	ofxAVFVideoPlayer& getPlayer();
 #else
@@ -91,7 +102,8 @@ public:
 	ofxAVFVideoPlayer currentPlayer;
 	ofxAVFVideoPlayer nextPlayer;
 #else
-	ofPtr<ofVideoPlayer> player;
+	ofVideoPlayer currentPlayer;
+	ofVideoPlayer nextPlayer;
 #endif
 	
 	ofShader shader;
@@ -130,6 +142,8 @@ public:
 	
 	string nextCalibrationXML;
 	bool useFaces;
+	
+	bool clipPrerolled;
 	
     bool bRendererBound;
     bool bMeshGenerated;

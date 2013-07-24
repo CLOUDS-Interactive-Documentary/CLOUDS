@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "CloudsClip.h"
 #include "CloudsVisualSystemPreset.h"
+#include "keywordDichotomy.h"
 
 
 class CloudsAct;
@@ -17,14 +18,14 @@ class CloudsActEventArgs : public ofEventArgs {
 
 class CloudsClipEventArgs : public ofEventArgs {
   public:
-	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic)
-		: chosenClip(chosenClip), currentTopic(currentTopic)
+	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic, vector<keywordDichotomy>& currentDichotomiesBalance)
+		: chosenClip(chosenClip), currentTopic(currentTopic),currentDichotomiesBalance(currentDichotomiesBalance)
 	{
 		timeUntilNextClip = 0;
 	}
 	
 	CloudsClip& chosenClip;
-	vector<CloudsClip> clipOptions;
+	vector<keywordDichotomy>& currentDichotomiesBalance;
 	string currentTopic;
 	float timeUntilNextClip;
 };
@@ -34,12 +35,9 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
 		: preset(preset)
 	{
-		duration = 0;
 	}
 
 	CloudsVisualSystemPreset& preset;
-	
-	float duration;
 };
 
 class CloudsQuestionEventArgs : public ofEventArgs{
@@ -48,19 +46,19 @@ class CloudsQuestionEventArgs : public ofEventArgs{
     {
 
     }
-
     CloudsClip& questionClip;
 };
 
 class CloudsPreRollEventArgs : public ofEventArgs{
 public:
-    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset) :preRollClip(preRollClip)
+    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
+		: preRollClip(preRollClip)
     {
         clipStartTimeOffset = 0;
     }
     
     CloudsClip& preRollClip;
-    float clipStartTimeOffset;
+    float handleLength;
 };
 
 class CloudsEvents {
