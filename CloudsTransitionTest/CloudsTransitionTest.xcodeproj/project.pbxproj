@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		50C542BE17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C542BC17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -122,7 +123,6 @@
 		E7BBBCB517A02CF5007D7EC1 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB60017A02CEE007D7EC1 /* cCell.cpp */; };
 		E7BBBCB617A02CF5007D7EC1 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB60217A02CEE007D7EC1 /* CloudsVisualSystemColony.cpp */; };
 		E7BBBCBD17A02CF5007D7EC1 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB64617A02CEE007D7EC1 /* CloudsVisualSystemDataCascade.cpp */; };
-		E7BBBCC217A02CF5007D7EC1 /* Fireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB66817A02CEF007D7EC1 /* Fireworks.cpp */; };
 		E7BBBCC517A02CF5007D7EC1 /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB69817A02CF0007D7EC1 /* CloudsVisualSystemForkingPaths.cpp */; };
 		E7BBBCC617A02CF5007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB6B417A02CF0007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7BBBCC717A02CF5007D7EC1 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB76217A02CF0007D7EC1 /* CloudsVisualSystemLia.cpp */; };
@@ -229,6 +229,8 @@
 /* Begin PBXFileReference section */
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		50C542BC17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFireworks.cpp; sourceTree = "<group>"; };
+		50C542BD17A0646D0069EAB9 /* CloudsVisualSystemFireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFireworks.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -592,8 +594,6 @@
 		E7BBB60317A02CEE007D7EC1 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		E7BBB64617A02CEE007D7EC1 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E7BBB64717A02CEE007D7EC1 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
-		E7BBB66817A02CEF007D7EC1 /* Fireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fireworks.cpp; sourceTree = "<group>"; };
-		E7BBB66917A02CEF007D7EC1 /* Fireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fireworks.h; sourceTree = "<group>"; };
 		E7BBB69817A02CF0007D7EC1 /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E7BBB69917A02CF0007D7EC1 /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7BBB6B417A02CF0007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
@@ -1965,8 +1965,8 @@
 		E7BBB66717A02CEF007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBB66817A02CEF007D7EC1 /* Fireworks.cpp */,
-				E7BBB66917A02CEF007D7EC1 /* Fireworks.h */,
+				50C542BC17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp */,
+				50C542BD17A0646D0069EAB9 /* CloudsVisualSystemFireworks.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2596,7 +2596,6 @@
 				E7BBBCB517A02CF5007D7EC1 /* cCell.cpp in Sources */,
 				E7BBBCB617A02CF5007D7EC1 /* CloudsVisualSystemColony.cpp in Sources */,
 				E7BBBCBD17A02CF5007D7EC1 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E7BBBCC217A02CF5007D7EC1 /* Fireworks.cpp in Sources */,
 				E7BBBCC517A02CF5007D7EC1 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
 				E7BBBCC617A02CF5007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E7BBBCC717A02CF5007D7EC1 /* CloudsVisualSystemLia.cpp in Sources */,
@@ -2645,6 +2644,7 @@
 				E7BBBD3D17A02DF6007D7EC1 /* ParticleConnection.cpp in Sources */,
 				E7BBBD3E17A02DF6007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */,
 				E7BBBD3F17A02DF6007D7EC1 /* ParticleConnector.cpp in Sources */,
+				50C542BE17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
