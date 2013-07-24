@@ -114,7 +114,7 @@ class CloudsPlaybackController {
 	
 	void transitionVisualSystemIn( float transitionDuration=0, float fadeDuration=3 );
 	void transitionVisualSystemOut( float transitionDuration=0, float fadeDuration=3 );
-	bool bIsFading, transitioningIn, transitioningOut;
+	bool bIsFading;
 
 
 };

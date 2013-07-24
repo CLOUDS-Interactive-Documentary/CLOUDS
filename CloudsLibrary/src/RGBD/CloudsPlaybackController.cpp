@@ -84,8 +84,6 @@ void CloudsPlaybackController::setup(){
 		fadingOut = fadingIn = false;
 		crossfadeValue = 1.;
 		bIsFading = false;
-		
-		transitioningIn = transitioningOut = false;
 	}
 		
 	
@@ -193,6 +191,7 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 		
 		//otherwise we're fading and we need to mix our cameras
 		else{
+			//shout out to the faded
 			if(!bIsFading && currentTime >= fadeStartTime){
 				bIsFading = true;
 				
@@ -456,13 +455,8 @@ void CloudsPlaybackController::transitionVisualSystemIn( float transitionDuratio
 	//start our fade
 	fadeInVisualSystem( fadeDuration, ofGetElapsedTimef() + transitionDuration );
 	
-	//RGBD camera transition
-	
-	transitioningIn = true;
-	transitioningOut = false;
-	
-	//find out what kind of transition to use from the new visual system
-	cout << "transition type" << currentVisualSystem->getTransitionType() << endl;
+	//start our rgbSystem's transition
+	rgbdVisualSystem.transitionIn(currentVisualSystem->getTransitionType(), transitionDuration );
 }
 
 void CloudsPlaybackController::transitionVisualSystemOut( float transitionDuration, float fadeDuration )
@@ -470,9 +464,8 @@ void CloudsPlaybackController::transitionVisualSystemOut( float transitionDurati
 	//start up our fade
 	fadeOutVisualSystem( fadeDuration, ofGetElapsedTimef() + transitionDuration );
 	
-	
-	transitioningIn = false;
-	transitioningOut = true;
+	//start our rgbSystem's transition
+	rgbdVisualSystem.transitionOut(currentVisualSystem->getTransitionType(), transitionDuration );
 }
 
 void CloudsPlaybackController::fadeInVisualSystem( float duration, float start )
