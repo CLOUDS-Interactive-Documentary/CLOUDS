@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		5029D8F7179DCAB800E62E34 /* keywordDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5029D8F5179DCAB800E62E34 /* keywordDichotomy.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -223,6 +224,8 @@
 /* Begin PBXFileReference section */
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		5029D8F5179DCAB800E62E34 /* keywordDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keywordDichotomy.cpp; sourceTree = "<group>"; };
+		5029D8F6179DCAB800E62E34 /* keywordDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keywordDichotomy.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1296,6 +1299,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				5029D8F5179DCAB800E62E34 /* keywordDichotomy.cpp */,
+				5029D8F6179DCAB800E62E34 /* keywordDichotomy.h */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
 				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
@@ -2380,6 +2385,7 @@
 				E79E4C651797518300719469 /* ofxAVFVideoPlayer.mm in Sources */,
 				E79E4C661797518300719469 /* ofxAVFVideoRenderer.m in Sources */,
 				E75ED88C179C6010007667F1 /* wArc.cpp in Sources */,
+				5029D8F7179DCAB800E62E34 /* keywordDichotomy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

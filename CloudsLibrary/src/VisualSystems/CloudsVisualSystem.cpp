@@ -2146,14 +2146,16 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
     
     resetTimeline();
 	
-    loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
+    loadTimelineUIMappings(presetPath+"/"+getSystemName()+"UITimelineMappings.xml");
     timeline->loadTracksFromFolder(presetPath+"/Timeline/");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Working/Timeline/");
 	timeline->setDurationInSeconds(timelineDuration);
 	timelineDuration = timeline->getDurationInSeconds();
 	
 	selfPresetLoaded(presetPath);
+	
+	cout <<endl << "presetPath: "<<presetPath << " getSystemName(): "<< getSystemName() << endl<<endl;
 
 }
 

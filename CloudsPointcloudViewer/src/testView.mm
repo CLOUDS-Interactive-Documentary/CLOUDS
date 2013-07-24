@@ -62,7 +62,9 @@
 - (IBAction)loadClip:(CloudsClip&)clip
 {
 	if(clip.hasCombinedVideo && renderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
-		renderer.getPlayer().play();
+		
+//		renderer.getPlayer().play();
+		renderer.swapAndPlay();
 		rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
 		currentClip = clip;
 	}
