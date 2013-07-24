@@ -54,6 +54,10 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="ComputerTicker_DataCascadeCam">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="ComputerTicker_LittlePointsFast">
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
     <suppresions></suppresions>
@@ -231,6 +235,10 @@
     <suppresions></suppresions>
 </system>
 <system name="VerletForm_Generate_dense">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="VerletForm_IntroOutroCamTest">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
