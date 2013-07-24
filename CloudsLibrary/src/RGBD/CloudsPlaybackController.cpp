@@ -155,6 +155,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	}
 	
 	
+	
+	//TODO:	transition enums Fly through static turn awauy
+	
+	//TODO: add camera animations to RGBDVisSYs
+	
+	//TODO: offsetTargets for turning away
+	
+	
 }
 
 void CloudsPlaybackController::updateVisualSystemCrossFade(){
@@ -242,7 +250,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
-	float mixVal = 255 * crossfadeValue;
+	float mixVal = crossfadeValue * 255;
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	
@@ -252,7 +260,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		
 		//???: currentVisualSystem->getBlendMode()
 		ofEnableBlendMode(	OF_BLENDMODE_ADD );
-		ofSetColor( 255, 255, 255, 255 - mixVal );
+		ofSetColor( 255, 255, 255, ofClamp(255 - mixVal, 0, 255) );
 		
 		
 		//TODO: draw 2D( selfPostDraw ) of draw 3D( selfDraw )
@@ -410,6 +418,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	//TODO: fade in based on nextVisualSystem.introDuration;
 
 	fadeInVisualSystem( 3 );
+	//TODO: get the fade in time from the args?
+	
 		
 //	fadeInVisualSystem();
 
