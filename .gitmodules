@@ -19,3 +19,6 @@
 [submodule "CloudsLibrary/src/VisualSystems/LSystem"]
 	path = CloudsLibrary/src/VisualSystems/LSystem
 	url = git@github.com:CLOUDS-Interactive-Documentary/LSystem.git
+[submodule "CloudsLibrary/src/VisualSystems/Voro"]
+	path = CloudsLibrary/src/VisualSystems/Voro
+	url = git@github.com:CLOUDS-Interactive-Documentary/Voro.git
