@@ -26,7 +26,7 @@ void testApp::setup(){
 	
 	visualSystems.populateVisualSystems();
 	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "VerletForm", "Generate_dense" );
+	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "Lia", "LIA_01"	);
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
