@@ -92,7 +92,7 @@ CloudsVisualSystemHiga::CloudsVisualSystemHiga(){
 }
 
 string CloudsVisualSystemHiga::getSystemName(){
-	return "HigaSystem";
+	return "Replecator";
 }
 
 void CloudsVisualSystemHiga::selfSetup(){
