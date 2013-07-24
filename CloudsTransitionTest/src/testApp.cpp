@@ -13,7 +13,6 @@ void testApp::setup(){
     ofEnableAlphaBlending();
 	
     parser.loadFromFiles();
-
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
