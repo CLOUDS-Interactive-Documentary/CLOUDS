@@ -59,7 +59,7 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 string _C::getSystemName(){
-  return "Collab1";
+  return "Neurons";
 }
 
 void _C::writeToDisk(string dirname){
