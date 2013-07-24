@@ -10,6 +10,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
+
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	system = NULL;
 	indefinite = true;

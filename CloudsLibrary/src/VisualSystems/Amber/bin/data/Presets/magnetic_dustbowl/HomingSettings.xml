@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>HomingSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>479.000061035</XPosition>
+    <YPosition>676.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ACTIVE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HOMING POWER</Name>
+    <Value>0.699999988</Value>
+</Widget>

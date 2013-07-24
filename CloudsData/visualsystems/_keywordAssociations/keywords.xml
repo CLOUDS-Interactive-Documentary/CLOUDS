@@ -26,11 +26,19 @@
     <keywords>biology|growth</keywords>
     <suppresions></suppresions>
 </system>
+<system name="Cities_SmokyCity">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="Cities_SmookyCity">
     <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
     <suppresions></suppresions>
 </system>
 <system name="Cities_SmookyGrayScott">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Cities_no-preset">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -46,6 +54,10 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Collab1_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="ComputerTicker_BigPointsSlowStreamUp">
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
     <suppresions></suppresions>
@@ -54,8 +66,40 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="ComputerTicker_DataCascadeCam">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="ComputerTicker_LittlePointsFast">
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_BackgroundTestStraight">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_BigPointsSlowStreamUp">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_DataCascade">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_DataCascadeCam">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_LittlePointsFast">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_NewPresetTest">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="DataCascade_TimelineTestPoints">
+    <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="ForkingPaths_no-preset">
@@ -75,6 +119,30 @@
     <suppresions></suppresions>
 </system>
 <system name="HigaSystem_Spiral">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="HigaSystem_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_CityTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_City_ZoomOut">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_HexTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_LindenTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_mycelium">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -106,11 +174,19 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="LSystems_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="LaplacianTunnel_DarkTripleTunnel">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
 <system name="LaplacianTunnel_LighterTunnelLoop">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LaplacianTunnel_no-preset">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -166,6 +242,10 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Memory_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="Memory_pixelsThunder">
     <keywords></keywords>
     <suppresions></suppresions>
@@ -194,6 +274,18 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Neurons_Cosmic">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Neurons_CosmicS">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Neurons_MezzyNeurons">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="Ocean_ChoppyMountainWaves">
     <keywords></keywords>
     <suppresions></suppresions>
@@ -206,7 +298,27 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Ocean_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="PaintBrush_PlayFull">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_CandyCopter">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_ExamplePreset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_NewTestPreset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_Spiral">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -230,7 +342,19 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="VectorFlow_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="VerletForm_CameraKeyframeTest">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="VerletForm_Generate_dense">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="VerletForm_IntroOutroCamTest">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -319,6 +443,22 @@
     <suppresions></suppresions>
 </system>
 <system name="Voro_grow">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Voro_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="World_Arcs">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="World_Aurora">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="World_Edge">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>

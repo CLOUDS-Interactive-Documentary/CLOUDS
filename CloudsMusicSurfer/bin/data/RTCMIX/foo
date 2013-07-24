@@ -1,0 +1,42 @@
+  rtsetparams(44100, 2)
+   load("MBANDEDWG")
+
+   amp = 10000
+   ampenv = maketable("line", 1000, 0,1, 1,0)
+
+   pitches  = { 8.00, 8.02, 8.04, 8.05, 8.07, 8.08, 8.10, 9.00 }
+	lpitches = len(pitches)
+
+   st = 0.0
+   for (i = 0; i < 50; i = i+1)
+   {
+      index = trand(0, lpitches)
+      pch = pitches[index]
+      MBANDEDWG(st, 1.0, amp*ampenv, cpspch(pch), 0.3, 1, 0.5, 0, 0.0, 1.0, 0.0, random())
+      st = st + 0.1
+   }
+
+   for (i = 0; i < 50; i = i+1)
+   {
+      index = trand(0, lpitches)
+      pch = pitches[index]
+      MBANDEDWG(st, 1.0, amp*ampenv, cpspch(pch), 0.3, 1, 0.5, 1, 0.0, 1.0, 0.0, random())
+      st = st + 0.15
+   }
+
+   for (i = 0; i < 50; i = i+1)
+   {
+      index = trand(0, lpitches)
+      pch = pitches[index]
+      MBANDEDWG(st, 1.0, amp*ampenv, cpspch(pch), 0.3, 1, 0.5, 2, 0.0, 1.0, 0.0, random())
+      st = st + 0.2
+   }
+
+   for (i = 0; i < 50; i = i+1)
+   {
+      index = trand(0, lpitches)
+      pch = pitches[index]
+      MBANDEDWG(st, 1.0, amp*ampenv, cpspch(pch), 0.3, 1, 0.5, 3, 0.0, 1.0, 0.0, random())
+      st = st + 0.25
+   }
+

@@ -10,6 +10,7 @@ void testApp::setup(){
 	ofToggleFullscreen();
 	
 	
+	
     ofEnableAlphaBlending();
 	
     parser.loadFromFiles();
@@ -24,17 +25,17 @@ void testApp::setup(){
 	player.setup();
 	
 	visualSystems.populateVisualSystems();
-	vector<CloudsVisualSystemPreset>& presets = visualSystems.getPresetsForSystem("ComputerTicker");
+	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
+	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "Fireworks", "Fireworks"	);
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 5, 7 );
+	act->addVisualSystem( preset0, 5, 7 );
 	
-	
-	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 20, 7 );
+	act->addVisualSystem( preset1, 20, 7 );
 	act->populateTime();
 	
 	player.playAct(act);

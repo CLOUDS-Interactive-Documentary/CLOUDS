@@ -1,0 +1,16 @@
+slowwaves modalbeats
+slowwaves
+modalbeats
+helmholtz
+helmholtz modalbeats
+meshbeats
+meshbeats modalbeats helmholtz
+lowwavepulse modalbeats helmholtz meshbeats
+lowwavepulse helmholtz
+lowwavepulse slowwaveshi
+lowwavepulse slowwaveshi slowmeshbeats
+slowwave helmholtz meshbeats modalbeats
+strumsine modalbeats
+strumsine waveguide
+waveguide slowmeshbeats slowwaveshi
+waveguidebeats strumsine helmholtz

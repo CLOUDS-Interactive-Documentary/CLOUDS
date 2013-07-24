@@ -5,14 +5,14 @@
 
 #ifndef CLOUDS_NO_VS
 
-#include "CloudsVisualSystemComputationTicker.h"
+#include "CloudsVisualSystemDataCascade.h"
 #include "CloudsVisualSystemLSystems.h"
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemAmber.h"
+//#include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemCollaboration1.h"
-#include "CloudsVisualSystemAmber.h"
+//#include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
@@ -22,6 +22,7 @@
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
 #include "CloudsVisualSystemLia.h"
+#include "Fireworks.h"
 
 #endif
 
@@ -41,7 +42,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
 	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-	registerVisualSystem( new CloudsVisualSystemComputationTicker() );
+	registerVisualSystem( new CloudsVisualSystemDataCascade() );
 	registerVisualSystem( new CloudsVisualSystemLSystems() );
 	registerVisualSystem( new CloudsVisualSystemVoro() );
 	registerVisualSystem( new CloudsVisualSystemCities() );

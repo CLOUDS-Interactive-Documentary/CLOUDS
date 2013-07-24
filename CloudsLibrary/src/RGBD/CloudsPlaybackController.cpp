@@ -155,12 +155,20 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 //	}
 	
 	
+	
+	//TODO:	transition enums Fly through static turn awauy
+	
+	//TODO: add camera animations to RGBDVisSYs
+	
+	//TODO: offsetTargets for turning away
+	
+	
 }
 
 void CloudsPlaybackController::updateVisualSystemCrossFade(){
 	//handle fadin/out
 	if( fadingIn || fadingOut){
-		int currentTime = ofGetElapsedTimef();
+		float currentTime = ofGetElapsedTimef();
 		
 		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
 		
@@ -237,21 +245,29 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	//turn off depth testing and enable blending
     glDisable( GL_DEPTH_TEST );
 	
+	ofPushStyle();
+	
 	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
-	int mixVal = 255 * crossfadeValue;
+	float mixVal = crossfadeValue * 255;
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	
 	rgbdVisualSystem.selfPostDraw();
 	
-	//???: currentVisualSystem->getBlendMode()
-	ofEnableBlendMode(	OF_BLENDMODE_ADD );
-	ofSetColor( 255, 255, 255, 255 - mixVal );
-	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	if(currentVisualSystem != NULL){
+		
+		//???: currentVisualSystem->getBlendMode()
+		ofEnableBlendMode(	OF_BLENDMODE_ADD );
+		ofSetColor( 255, 255, 255, ofClamp(255 - mixVal, 0, 255) );
+		
+		
+		//TODO: draw 2D( selfPostDraw ) of draw 3D( selfDraw )
+		currentVisualSystem->selfPostDraw();
+	}
 	
-    ofDisableBlendMode();
+    ofPopStyle();
     glEnable( GL_DEPTH_TEST );
 	
 
@@ -313,8 +329,12 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 		
+		cout <<endl <<  "args.preset.outroDuration: "<< args.preset.outroDuration << endl << endl;
 		//TODO: respond to args.preset.outroDuration
-		fadeOutVisualSystem( args.preset.outroDuration * 1000 );// convert to milli seconds
+		transitionVisualSystemOut( 0, 3 );//args.preset.outroDuration );
+		
+//		fadeOutVisualSystem( 3 );//args.preset.outroDuration );
+		
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
 							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
@@ -399,7 +419,11 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
-	fadeInVisualSystem();
+
+//	fadeInVisualSystem( 3 );
+	transitionVisualSystemIn(0, 3);
+	//TODO: get the fade in time from the args?
+
 }
 
 //--------------------------------------------------------------------
@@ -417,7 +441,8 @@ void CloudsPlaybackController::hideVisualSystem(){
 	}
 }
 
-void CloudsPlaybackController::fadeInVisualSystem(float duration){
+void CloudsPlaybackController::fadeInVisualSystem(float duration)
+{
 	
 	
 	cout<< endl << "FADE IN:::: duration: "<< duration << endl<< endl;
@@ -434,7 +459,8 @@ void CloudsPlaybackController::fadeInVisualSystem(float duration){
 	
 }
 
-void CloudsPlaybackController::fadeOutVisualSystem(float duration){
+void CloudsPlaybackController::fadeOutVisualSystem(float duration)
+{
 	
 	cout<< endl << "FADE OUT:::: duration: "<< duration << endl<< endl;
 	
@@ -456,4 +482,15 @@ void CloudsPlaybackController::fadeOutVisualSystem(float duration){
 	
 	rgbdVisualSystem.playSystem();
 		
+}
+
+
+void CloudsPlaybackController::transitionVisualSystemIn( float transitionDuration, float fadeDuration )
+{
+	fadeInVisualSystem( fadeDuration );
+}
+
+void CloudsPlaybackController::transitionVisualSystemOut( float transitionDuration, float fadeDuration )
+{
+	fadeOutVisualSystem( fadeDuration );
 }

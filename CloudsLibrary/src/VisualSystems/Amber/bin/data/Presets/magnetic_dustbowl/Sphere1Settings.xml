@@ -1,0 +1,28 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Sphere1Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>597.000061035</XPosition>
+    <YPosition>263.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ACTIVE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE POWER</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPHERE RADIUS</Name>
+    <Value>49.079776764</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>S POSITION</Name>
+    <XValue>0.000000000</XValue>
+    <YValue>0.000000000</YValue>
+</Widget>
