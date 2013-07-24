@@ -67,6 +67,7 @@ protected:
     void guiEvent(ofxUIEventArgs &e);
     ofBuffer scoreBuffer;
     stringstream scoreStream;
+    stringstream topicScoreStream;
 	CloudsEvents events;
 	bool isSetup;
 	
@@ -87,7 +88,7 @@ protected:
 		
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
-
+    CloudsVisualSystemPreset getVisualSystemPreset(string keyword);
 private:
     //Act Builder Parameters
     float actLength;
