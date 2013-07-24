@@ -7,7 +7,7 @@ vector<ofColor> CloudsVisualSystemVerletForm::initColors(int row) {
 	ofPixels pix;
 	vector<ofColor> col;
 	
-	if( !ofLoadImage(pix, getVisualSystemDataPath() + "_palettes/catenarycolors.png") ){
+	if( !ofLoadImage(pix, getVisualSystemDataPath() + "Palettes/catenarycolors.png") ){
 		ofLogError() << "COULDN'T LOAD COLORS";
 		return col;
 	}
