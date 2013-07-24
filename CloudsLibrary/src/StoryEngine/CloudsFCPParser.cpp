@@ -22,17 +22,17 @@ CloudsFCPParser::CloudsFCPParser(){
 void CloudsFCPParser::loadFromFiles(){
     
     
-//	if(ofDirectory("../../../CloudsData/").exists()){
-//		setup("../../../CloudsData/fcpxml/");
-//		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-//        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-//	}
-//	else{
-		setup(getDataPath() + "fcpxml");
-		parseLinks(getDataPath() + "links/clouds_link_db.xml");
-        parseClusterMap(getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-        
-//	}
+    //	if(ofDirectory("../../../CloudsData/").exists()){
+    //		setup("../../../CloudsData/fcpxml/");
+    //		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+    //        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+    //	}
+    //	else{
+    setup(getDataPath() + "fcpxml");
+    parseLinks(getDataPath() + "links/clouds_link_db.xml");
+    parseClusterMap(getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
+    
+    //	}
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -235,7 +235,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			if(hasQuestionClip){
 				c.setStartingQuestion(question);
 				questionIds.push_back( c.getID() );
-//				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
+                //				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
 			}
 			else{
 				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
@@ -278,36 +278,96 @@ void CloudsFCPParser::populateKeywordCentroids(){
     for(int k =0; k < getAllKeywords().size(); k++){
         vector<CloudsClip> clips = getClipsWithKeyword(getAllKeywords()[k]);
         
-        
         float numClips =0;
         ofVec2f centroid;
+        
         for( int i=0; i<clips.size(); i++){
             if(clips[i].cluster.Centre != ofVec2f(-1, -1)){
                 centroid += clips[i].cluster.Centre;
                 numClips++;
             }
         }
+        
         centroid /= numClips;
         keywordCentroids.push_back(make_pair(getAllKeywords()[k], centroid));
+        keywordCentroidIndex[getAllKeywords()[k]]= k;
     }
-
-
-}
-
-float CloudsFCPParser::getDistanceFromOfAdjacentKeywords(string keyword){
+    
     
 }
+
+void CloudsFCPParser::calculateCohesionMedianForKeywords(){
+    for( int i=0; i< getAllKeywords().size(); i++){
+        string currentKeyword = getAllKeywords()[i];
+        ofVec2f keywordCentroid = getKeywordCentroid(currentKeyword);
+        vector<CloudsClip> clips = getClipsWithKeyword(currentKeyword);
+        
+        vector<float> distancesPerClip;
+        float maxDistance = 0;
+        float minDistance = INT_MAX;
+        float numClips  =0;
+        float totalDistance = 0;
+        
+        for (int k=0; k<clips.size(); k++) {
+            if(clips[k].cluster.Centre != ofVec2f(-1,-1)){
+                float distance = keywordCentroid.distance(clips[k].cluster.Centre);
+                totalDistance += distance;
+                distancesPerClip.push_back(distance);
+                maxDistance = MAX(maxDistance,distance);
+                minDistance = MIN(minDistance,distance);
+                numClips++;
+            }
+            
+            float avgDistance = totalDistance / numClips;
+            
+            if(distancesPerClip.begin() != distancesPerClip.end()){
+                std::sort(distancesPerClip.begin(), distancesPerClip.end());
+                float medianValue = distancesPerClip[distancesPerClip.size()/2];
+                keywordCohesionMap[currentKeyword] = medianValue / maxDistance;
+            }
+        }
+        
+    }
+}
+float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
+    
+    if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
+        return keywordCohesionMap[keyword];
+    }
+    ofLogError()<<"Couldnt find cohesion index for keyword: "<<endl;
+    return 0;
+    
+}
+float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string keyword2){
+    
+    return getKeywordCentroid(keyword1).distance(getKeywordCentroid(keyword2));
+}
+
+ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
+    
+    ofVec2f centroid;
+    int index = keywordCentroidIndex[keyword];
+    if(index != -1){
+        return keywordCentroids[index].second;
+    }
+    ofLogError()<<"No centroid found for keyword: "<< keyword<<endl;
+    
+    return ofVec2f(-1, -1);
+}
+
+int CloudsFCPParser::getCentroidMapIndex(string keyword){
+    if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
+        return keywordCentroidIndex[keyword];
+    }
+    ofLogError()<<"Couldnt find index for keyword: "<<keyword<<endl;
+}
+
 vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
     string keyword = "";
     ofVec2f centroid;
     vector<pair<string, float> > distancePair;
-    for (int i =0;  i < keywordCentroids.size(); i++) {
-        if(keywordCentroids[i].first == currentKeyword){
-            keyword = keywordCentroids[i].first;
-            centroid  = keywordCentroids[i].second;
-            break;
-        }
-    }
+    
+    centroid = getKeywordCentroid(currentKeyword);
     
     for (int j=0; j < keywordCentroids.size(); j++) {
         
@@ -394,7 +454,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
             if(hasRevokedKeywords){
                 string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
                 linksXML.addValue("revokedKeywords", revokedKeywords);
-//                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
+                //                cout<<"revoking keywords in save: "<<revokedKeywords<<endl;
                 
             }
             
@@ -710,11 +770,11 @@ void CloudsFCPParser::refreshAllKeywords(){
         
         vector<string>& newKeywords = allClips[i].getKeywords();
         for(int k = 0; k < newKeywords.size(); k++){
-//            if(newKeywords[k].find("?") == string::npos &&
-//               newKeywords[k].find("link:") == string::npos)
-//            {
-                allKeywords[newKeywords[k]]++;
-//            }
+            //            if(newKeywords[k].find("?") == string::npos &&
+            //               newKeywords[k].find("link:") == string::npos)
+            //            {
+            allKeywords[newKeywords[k]]++;
+            //            }
         }
         
         vector<string>& specialKeywords = allClips[i].getSpecialKeywords();
