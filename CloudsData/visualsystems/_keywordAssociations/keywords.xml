@@ -26,6 +26,10 @@
     <keywords>biology|growth</keywords>
     <suppresions></suppresions>
 </system>
+<system name="Cities_SmokyCity">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="Cities_SmookyCity">
     <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
     <suppresions></suppresions>
@@ -119,6 +123,26 @@
     <suppresions></suppresions>
 </system>
 <system name="HigaSystem_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_CityTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_City_ZoomOut">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_HexTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_LindenTree">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="LSystem_mycelium">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
@@ -250,6 +274,18 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Neurons_Cosmic">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Neurons_CosmicS">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Neurons_MezzyNeurons">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="Ocean_ChoppyMountainWaves">
     <keywords></keywords>
     <suppresions></suppresions>
@@ -262,7 +298,27 @@
     <keywords></keywords>
     <suppresions></suppresions>
 </system>
+<system name="Ocean_no-preset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
 <system name="PaintBrush_PlayFull">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_CandyCopter">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_ExamplePreset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_NewTestPreset">
+    <keywords></keywords>
+    <suppresions></suppresions>
+</system>
+<system name="Replecator_Spiral">
     <keywords></keywords>
     <suppresions></suppresions>
 </system>

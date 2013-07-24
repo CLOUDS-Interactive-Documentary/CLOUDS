@@ -1266,8 +1266,8 @@
 		E742537D179F985600B2F0A3 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */,
 				E742537F179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.h */,
+				E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
