@@ -10,9 +10,11 @@ void testApp::setup(){
 	ofToggleFullscreen();
 	
 	
+	
     ofEnableAlphaBlending();
 	
     parser.loadFromFiles();
+
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -23,17 +25,17 @@ void testApp::setup(){
 	player.setup();
 	
 	visualSystems.populateVisualSystems();
-	vector<CloudsVisualSystemPreset>& presets = visualSystems.getPresetsForSystem("DataCascade");
+	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
+	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "VerletForm", "Generate_dense" );
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 5, 7 );
+	act->addVisualSystem( preset0, 5, 7 );
 	
-	
-	act->addVisualSystem( presets[ ofRandom(presets.size()) ], 20, 7 );
+	act->addVisualSystem( preset1, 20, 7 );
 	act->populateTime();
 	
 	player.playAct(act);

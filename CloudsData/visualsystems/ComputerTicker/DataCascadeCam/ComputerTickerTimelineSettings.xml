@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>TimelineSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>565.000000000</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>121.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,12 @@
 <Widget>
     <Kind>8</Kind>
     <Name>DURATION</Name>
-    <Value>1000.000000000</Value>
+    <Value>11.876999855</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>INDEFINITE</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -24,14 +29,4 @@
     <Kind>2</Kind>
     <Name>DELETE</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>CAMERA TRACK</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SHOW/HIDE</Name>
-    <Value>1</Value>
 </Widget>

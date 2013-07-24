@@ -160,7 +160,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 void CloudsPlaybackController::updateVisualSystemCrossFade(){
 	//handle fadin/out
 	if( fadingIn || fadingOut){
-		int currentTime = ofGetElapsedTimef();
+		float currentTime = ofGetElapsedTimef();
 		
 		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
 		
@@ -237,21 +237,29 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	//turn off depth testing and enable blending
     glDisable( GL_DEPTH_TEST );
 	
+	ofPushStyle();
+	
 	//???: rgbdVisualSystem.getBlendMode()
 	ofEnableBlendMode(	OF_BLENDMODE_ADD );
 	
-	int mixVal = 255 * crossfadeValue;
+	float mixVal = 255 * crossfadeValue;
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	
 	rgbdVisualSystem.selfPostDraw();
 	
-	//???: currentVisualSystem->getBlendMode()
-	ofEnableBlendMode(	OF_BLENDMODE_ADD );
-	ofSetColor( 255, 255, 255, 255 - mixVal );
-	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	if(currentVisualSystem != NULL){
+		
+		//???: currentVisualSystem->getBlendMode()
+		ofEnableBlendMode(	OF_BLENDMODE_ADD );
+		ofSetColor( 255, 255, 255, 255 - mixVal );
+		
+		
+		//TODO: draw 2D( selfPostDraw ) of draw 3D( selfDraw )
+		currentVisualSystem->selfPostDraw();
+	}
 	
-    ofDisableBlendMode();
+    ofPopStyle();
     glEnable( GL_DEPTH_TEST );
 	
 
@@ -313,8 +321,9 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 		
+		cout <<endl <<  "args.preset.outroDuration: "<< args.preset.outroDuration << endl << endl;
 		//TODO: respond to args.preset.outroDuration
-		fadeOutVisualSystem( args.preset.outroDuration * 1000 );// convert to milli seconds
+		fadeOutVisualSystem( 3 );//args.preset.outroDuration );
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
 							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
@@ -399,7 +408,12 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
+<<<<<<< HEAD
+	fadeInVisualSystem( 3 );
+		
+=======
 	fadeInVisualSystem();
+>>>>>>> d013f747572d17f2bf0cc8a21419a46b8b5cbad8
 }
 
 //--------------------------------------------------------------------
