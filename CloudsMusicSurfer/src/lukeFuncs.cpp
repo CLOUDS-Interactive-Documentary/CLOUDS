@@ -36,13 +36,11 @@ void REVERB(double time)
     int bx;
     bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 1, 0., 1., 0., 1., 0., 1.)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", time);
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 80., 10., 0.1, 0.1, -90., -12., -12., 5.0, 0)", time);
-    parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 80., 10., 0.5, 0.5, -90., -12., -12., 5.0, 1)", time);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 80., 10., 0.1, 0.1, -90., -6., -6., 5.0)", time);
     parse_score(thebuf, bx);
 }
 
