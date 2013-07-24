@@ -40,7 +40,7 @@ void REVERB(double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 80., 10., 0.1, 0.1, -90., -6., -6., 5.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.1, 0.1, -90., -6., -6., 3.0)", time);
     parse_score(thebuf, bx);
 }
 
@@ -128,6 +128,21 @@ void STRUM(double outskip, double dur, double amp, double freq, double squish, d
     int bx;
     bx = snprintf(thebuf, 256, "STRUM2(%f, %f, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, freq, squish, decay, pan);
     parse_score(thebuf, bx);    
+}
+
+// three-pitch filtered noise
+void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope)
+{
+    double bw1 = 1.0/Q;
+    double bw2 = 1.0/Q;
+    double bw3 = 1.0/Q;
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "NOISE(%f, %f, %f*%s, 1)", outskip, dur, MAXAMP*amp, (char*)ampenvelope.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "FILTERBANK(%f, 0, %f, %f, %f, 0, %f, %f, %f, 1., %f, %f, 1., %f, %f, 1.)", outskip, dur, 0.1, ringdown, pan, f1, bw1, f2, bw2, f3, bw3);
+    parse_score(thebuf, bx);    
+    
 }
 
 // banded waveguide
