@@ -7,3 +7,15 @@
 [submodule "CloudsLibrary/src/VisualSystems/World"]
 	path = CloudsLibrary/src/VisualSystems/World
 	url = git@github.com:CLOUDS-Interactive-Documentary/World.git
+[submodule "CloudsLibrary/src/VisualSystems/ForkingPaths"]
+	path = CloudsLibrary/src/VisualSystems/ForkingPaths
+	url = git@github.com:CLOUDS-Interactive-Documentary/ForkingPaths.git
+[submodule "CloudsLibrary/src/VisualSystems/Ocean"]
+	path = CloudsLibrary/src/VisualSystems/Ocean
+	url = git@github.com:CLOUDS-Interactive-Documentary/Ocean.git
+[submodule "CloudsLibrary/src/VisualSystems/Fireworks"]
+	path = CloudsLibrary/src/VisualSystems/Fireworks
+	url = git@github.com:CLOUDS-Interactive-Documentary/Fireworks.git
+[submodule "CloudsLibrary/src/VisualSystems/LSystem"]
+	path = CloudsLibrary/src/VisualSystems/LSystem
+	url = git@github.com:CLOUDS-Interactive-Documentary/LSystem.git
