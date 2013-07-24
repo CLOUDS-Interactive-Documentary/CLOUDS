@@ -331,7 +331,10 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 		cout <<endl <<  "args.preset.outroDuration: "<< args.preset.outroDuration << endl << endl;
 		//TODO: respond to args.preset.outroDuration
-		fadeOutVisualSystem( 3 );//args.preset.outroDuration );
+		transitionVisualSystemOut( 0, 3 );//args.preset.outroDuration );
+		
+//		fadeOutVisualSystem( 3 );//args.preset.outroDuration );
+		
 //		hideVisualSystem(); TODO:: is it ok to swap this with fadeOutVisSys OK?
 							//JG: YES! the visualSystemEnded will trigger the beginning of the transition out
 	}
@@ -417,11 +420,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	//TODO: fade in based on nextVisualSystem.introDuration;
 
-	fadeInVisualSystem( 3 );
+//	fadeInVisualSystem( 3 );
+	transitionVisualSystemIn(0, 3);
 	//TODO: get the fade in time from the args?
-	
-		
-//	fadeInVisualSystem();
 
 }
 
@@ -440,7 +441,8 @@ void CloudsPlaybackController::hideVisualSystem(){
 	}
 }
 
-void CloudsPlaybackController::fadeInVisualSystem(float duration){
+void CloudsPlaybackController::fadeInVisualSystem(float duration)
+{
 	
 	
 	cout<< endl << "FADE IN:::: duration: "<< duration << endl<< endl;
@@ -457,7 +459,8 @@ void CloudsPlaybackController::fadeInVisualSystem(float duration){
 	
 }
 
-void CloudsPlaybackController::fadeOutVisualSystem(float duration){
+void CloudsPlaybackController::fadeOutVisualSystem(float duration)
+{
 	
 	cout<< endl << "FADE OUT:::: duration: "<< duration << endl<< endl;
 	
@@ -479,4 +482,15 @@ void CloudsPlaybackController::fadeOutVisualSystem(float duration){
 	
 	rgbdVisualSystem.playSystem();
 		
+}
+
+
+void CloudsPlaybackController::transitionVisualSystemIn( float transitionDuration, float fadeDuration )
+{
+	fadeInVisualSystem( fadeDuration );
+}
+
+void CloudsPlaybackController::transitionVisualSystemOut( float transitionDuration, float fadeDuration )
+{
+	fadeOutVisualSystem( fadeDuration );
 }

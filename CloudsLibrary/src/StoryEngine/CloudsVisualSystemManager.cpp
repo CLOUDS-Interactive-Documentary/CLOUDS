@@ -22,6 +22,7 @@
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
 #include "CloudsVisualSystemLia.h"
+#include "CloudsVisualSystemFireworks"
 
 #endif
 

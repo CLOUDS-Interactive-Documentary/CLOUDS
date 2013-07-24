@@ -26,7 +26,7 @@ void testApp::setup(){
 	
 	visualSystems.populateVisualSystems();
 	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "Fireworks", "LIA_02"	);
+	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "Fireworks", "Fireworks"	);
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
