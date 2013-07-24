@@ -294,6 +294,9 @@ void CloudsFCPParser::populateKeywordCentroids(){
 
 }
 
+float CloudsFCPParser::getDistanceFromOfAdjacentKeywords(string keyword){
+    
+}
 vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
     string keyword = "";
     ofVec2f centroid;
@@ -1012,6 +1015,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     return clips;
     
 }
+
 
 vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
     vector<CloudsClip> filteredMarkers;

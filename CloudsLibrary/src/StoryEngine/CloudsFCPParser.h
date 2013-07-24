@@ -123,7 +123,7 @@ class CloudsFCPParser {
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
-    vector<string> getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+    vector<string  > getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );

@@ -218,11 +218,13 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     scoreBuffer.clear();
     scoreStream.clear();
+    topicScoreStream.clear();
+    
     CloudsClip clip = seed;
     
     int timeForNewQuesiton = 0;
     
-    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,samePersonOccuranceScore,dichotomiesScore,voiceOverScore"<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccuranceScore,dichotomiesScore,voiceOverScore,lastClipCommonality,twoClipsAgoCommonality,relevancyScore "<<endl;
     
     clearDichotomiesBalance();
     
@@ -293,6 +295,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         }
         
         vector<pair<int,string> > scoreLogPairs;
+
         //remove clips that share just one keyword...
         int topScore = 0;
         for(int i = 0; i < nextOptions.size(); i++){
@@ -393,37 +396,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
                 visualSystemStartTime  = clipStartTime + clip.getDuration() * longClipFadeInPercent;
                 maxTimeRemainingForVisualSystem = systemMaxRunTime;
                 
-                //TODO: Make non-random
-                vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeyword(topic);
-                
-                if(presets.size() > 0){
-                    
-                    currentPreset = presets[ofRandom(presets.size() -1)];
-                    presetHistory.push_back(currentPreset);
-                    cout<<"Using Preset "<<currentPreset.getID()<<" for keyword "<<topic<<endl;
-                }
-                else{
-                    ofLogError()<<"No Presets for Keyword: "<<topic<<endl;
-                    vector<string> adjacentTopics = parser->getAdjacentKeywords(topic, 5);
-                    bool foundPreset = false;
-                    for (int i =0; i < adjacentTopics.size(); i++) {
-                        
-                        if ( visualSystems->getPresetsForKeyword(adjacentTopics[i]).size() ) {
-                            currentPreset = visualSystems->getPresetsForKeyword(adjacentTopics[i])[0];
-                            foundPreset = true;
-                            cout<<"Using Preset "<<currentPreset.getID()<<" for keyword "<<topic<<endl;                            
-                            break;
-                        }
-                    }
-
-                    if (! foundPreset) {
-                        currentPreset = visualSystems -> getRandomVisualSystem();
-                    ofLogError()<<"No Presets found! using random preset "<<currentPreset.getID()<<endl;
-                    }
-                    
-                    
-                    presetHistory.push_back(currentPreset);
-                }
+                currentPreset = getVisualSystemPreset(topic);
+                presetHistory.push_back(currentPreset);
                 
                 isPresetIndefinite = currentPreset.indefinite;
                 
@@ -438,8 +412,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         previousTopic = topic;
         totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration * 2;
         timesOnCurrentTopic++;
-        
-        
+
         //Decide if a question is to be asked
     }
 	
@@ -491,6 +464,42 @@ float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
 	return 1;
 }
 
+CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword){
+    vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeyword(keyword);
+    CloudsVisualSystemPreset preset;
+
+    if(presets.size() > 0){
+        
+        preset = presets[ofRandom(presets.size() -1)];
+        cout<<"Using Preset "<<preset.getID()<<" for keyword "<<keyword<<endl;
+    }
+    else{
+        
+        ofLogError()<<"No Presets for Keyword: "<<keyword<<endl;
+        vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+        bool foundPreset = false;
+
+        for (int i =0; i < adjacentTopics.size(); i++) {
+            
+            if ( visualSystems->getPresetsForKeyword(adjacentTopics[i]).size() ) {
+                preset = visualSystems->getPresetsForKeyword(adjacentTopics[i])[0];
+                foundPreset = true;
+                cout<<"Using Preset "<<preset.getID()<<" for keyword "<<keyword<<endl;
+                break;
+            }
+        }
+        
+        if (! foundPreset) {
+            preset = visualSystems -> getRandomVisualSystem();
+            ofLogError()<<"No Presets found! using random preset "<<preset.getID()<<endl;
+        }
+    
+    }
+    
+    
+    return preset;
+    
+}
 void CloudsStoryEngine::clearDichotomiesBalance(){
     
     for(int i=0; i <dichotomies.size();i++){
@@ -568,23 +577,30 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
     }
     
     int score = 5;
+    
+    int lastClipCommonality = 0;
+    int twoClipsAgoCommonality = 0;
+
     if(history.size() > 1 && ofContains( history[history.size()-2].getKeywords(), newTopic) ){
         if(printDecisions) cout << "	LAST CLIP " << history[history.size()-2].getLinkName() << " shares topic " << newTopic << endl;
-        score += 10;
+        lastClipCommonality = 10;
     }
     
     if(history.size() > 2 && ofContains( history[history.size()-3].getKeywords(), newTopic) ){
         if(printDecisions) cout << "	TWO CLIPS AGO " << history[history.size()-3].getLinkName() << " shares topic " << newTopic << endl;
-        score += 10;
+        twoClipsAgoCommonality = 10;
     }
     
     int sharedClips = parser->getNumberOfSharedClips(currentTopic,newTopic);
     int totalClips = parser->getNumberOfClipsWithKeyword(newTopic);
     float relevancyScore = (1.0 * sharedClips / totalClips) * 10;
-    score += relevancyScore;
+
+    float cohesionScore;//Add cohesion score to favor topics
+    
+    score = lastClipCommonality + twoClipsAgoCommonality + relevancyScore ;
     cout << "	TOPIC " << newTopic << " SCORE " << relevancyScore << " : " << sharedClips << "/" << totalClips << endl;
     
-    float cohesionScore;//Add cohesion score to favor topics
+
     
     return score;
 }
@@ -638,6 +654,8 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     int topicsInCommonWithPreviousScore = 0;
     
+    int topicsInCommonWithPreviousAveraged = 0;
+    
     int linkScore =0 ;
     
     int samePersonOccuranceScore =0;
@@ -649,12 +667,13 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     int topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
     
     
-    topicsInCommonScore +=topicsInCommon*topicsInCommonMultiplier;
+    topicsInCommonScore += topicsInCommon * topicsInCommonMultiplier;
     
     if(history.size() > 1){
         int topicsInCommonWithPrevious = parser->getSharedKeywords(history[history.size()-2], potentialNextClip ).size();
-        //		score += topicsInCommonWithPrevious * 5;
-        
+
+        topicsInCommonWithPreviousAveraged =  (parser->getNumberOfSharedKeywords(history[history.size()-2], potentialNextClip) /  potentialNextClip.getKeywords().size() ) * 10;
+
         topicsInCommonWithPreviousScore += topicsInCommonWithPrevious * topicsinCommonWithPreviousMultiplier;
     }
     
