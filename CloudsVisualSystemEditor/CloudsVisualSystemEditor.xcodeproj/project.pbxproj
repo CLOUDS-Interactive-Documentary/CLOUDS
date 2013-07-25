@@ -2212,8 +2212,8 @@
 		E7BBAB75179FA184007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBAB76179FA184007D7EC1 /* CloudsVisualSystemHiga.cpp */,
 				E7BBAB77179FA184007D7EC1 /* CloudsVisualSystemHiga.h */,
+				E7BBAB76179FA184007D7EC1 /* CloudsVisualSystemHiga.cpp */,
 				E7BBAB78179FA184007D7EC1 /* Replecator.h */,
 			);
 			path = vs_src;
