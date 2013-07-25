@@ -28,6 +28,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	setCurrentCamera(cloudsCamera);
 	
 	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	
+	transitioningIn = transitioningOut = false;
 
 }
 
@@ -137,7 +139,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
 	cloudsCamera.lookTarget = translatedHeadPosition + positionOffset;
 	
-	//???: LB- I added our positionOffset to the cloudsCamera positioning stuff ^above. Is there a better way to do this?
+	//LB: I added our positionOffset to the cloudsCamera positioning stuff above. Is there a better way to do this?
 	
 
 	if(drawCloud){
@@ -168,6 +170,32 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	
+	updateTransition();
+	
+}
+
+void CloudsVisualSystemRGBD::updateTransition(){
+	
+}
+
+
+void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration )
+{
+	cout <<"CloudsVisualSystemRGBD::transitionIn "<< transitionType << " : " << duration << endl;
+	transitionStartTime = ofGetElapsedTimef();
+	transitionEndTime = transitionStartTime + duration;
+	transitioningIn = true;
+	transitioningOut = false;
+}
+
+void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration )
+{
+	cout <<"CloudsVisualSystemRGBD::transitionOut "<< transitionType << " : " << duration << endl;
+	
+	transitionStartTime = ofGetElapsedTimef();
+	transitionEndTime = transitionStartTime + duration;
+	transitioningIn = false;
+	transitioningOut = true;
 }
 
 //--------------------------------------------------------------	

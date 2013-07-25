@@ -123,7 +123,7 @@ class CloudsFCPParser {
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
-    vector<string> getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+    vector<string  > getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );
@@ -139,9 +139,19 @@ class CloudsFCPParser {
    
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-	set<string> markerLinkNames;
+    
+    set<string> markerLinkNames;
 
     vector<pair<string,ofVec2f> > keywordCentroids;
+    map<string, int> keywordCentroidIndex;
+    map<string, float>keywordCohesionMap;
+
+    float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
+    void calculateCohesionMedianForKeywords();
+    ofVec2f getKeywordCentroid(string keyword);
+    float getCohesionIndexForKeyword(string keyword);
+    int getCentroidMapIndex(string keyword);
+    
     vector<CloudsClip> allClips;
     map<string, int> clipIDToIndex;
     map<string, int> clipLinkNameToIndex;

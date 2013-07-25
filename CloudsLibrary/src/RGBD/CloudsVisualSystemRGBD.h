@@ -48,6 +48,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 		return  cloudsCamera;
 	}
+	
+	void transitionIn( RGBDTransitionType transitionType, float duration );
+	void transitionOut( RGBDTransitionType transitionType, float duration );
 
   protected:
 
@@ -122,5 +125,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float horizontalScanlineAlpha;
 	float horizontalScanlineThickness;
 	void generateScanlines();
+	
+	//transition
+	void updateTransition();
+	bool transitioningIn, transitioningOut;
+	float transitionStartTime, transitionEndTime;
+	
 	
 };

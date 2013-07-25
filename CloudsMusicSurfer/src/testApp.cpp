@@ -353,7 +353,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
                 float pick = (int)ofRandom(0, pitches[mh].notes.size());
                 float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
                 
-                MBANDEDWG(i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.1, 0.3), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+                MBANDEDWG(i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.05, 0.15), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -451,7 +451,19 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         }
         
     }
-    
+
+    // FILTERNOISE
+    if (find(ilist.begin(), ilist.end(), "filternoise") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*2.;
+            FNOISE3(i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
+        }
+        
+    }
+
     // STRUMSINE
     if (find(ilist.begin(), ilist.end(), "strumsine") != ilist.end())
     {
@@ -459,11 +471,11 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
-            WAVETABLE(i, 2., 0.05, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            WAVETABLE(i, 2., 0.025, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
             for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,8))))
             {
                     
-                STRUM(i+j, 1.0, 0.1, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
+                STRUM(i+j, 1.0, 0.05, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
                 int tr = ofRandom(0, 5);
                 if(tr==0) pitch+=7;
             }
@@ -480,7 +492,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
-            MBANDEDWG(i, ofRandom(7., 15.0), ofRandom(0.1, 0.3), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+            MBANDEDWG(i, ofRandom(7., 15.0), ofRandom(0.05, 0.15), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
         
         }
     }
