@@ -52,7 +52,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	
-	void transition( ofVec3f startPos, ofVec3f endPos, float duration=3, float startTime=ofGetElapsedTimef() );
+	void transition( ofVec3f startPos, ofVec3f endPos, ofQuaternion startRot, ofQuaternion endRot, float duration=3, float startTime=ofGetElapsedTimef() );
 
   protected:
 

@@ -193,23 +193,19 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 			if(!bIsFading && currentTime >= fadeStartTime){
 				bIsFading = true;
 				
-//				if(fadingIn){
-//					cout  << "fadingIn " << ofGetElapsedTimef() << endl;
-//				}
-//				else{
-//					cout  << "fadingOut " << ofGetElapsedTimef() << endl;
-//				}
+//				if(fadingIn)	cout  << "fadingIn " << ofGetElapsedTimef() << endl;
+//				else{	cout  << "fadingOut " << ofGetElapsedTimef() << endl;
 			}
 			
-			//mix the attributes from our two vis system cameras to build our fading superCamera
-			mixCameras(&superCamera,
-					   &rgbdVisualSystem.getCameraRef(),
-					   &currentVisualSystem->getCameraRef(),
-					   crossfadeValue );
-
-			//set the visual systems' current camera to our superCamera
-			currentVisualSystem->setCurrentCamera( superCamera );
-			rgbdVisualSystem.setCurrentCamera( superCamera );
+//			//mix the attributes from our two vis system cameras to build our fading superCamera
+//			mixCameras(&superCamera,
+//					   &rgbdVisualSystem.getCameraRef(),
+//					   &currentVisualSystem->getCameraRef(),
+//					   crossfadeValue );
+//
+//			//set the visual systems' current camera to our superCamera
+//			currentVisualSystem->setCurrentCamera( superCamera );
+//			rgbdVisualSystem.setCurrentCamera( superCamera );
 			
 		}
 		
@@ -320,7 +316,8 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& args)
+{
 	cout <<endl<< "VISUALSYSTEM ENDED"<<endl <<endl;
 	if(showingVisualSystem){
 
@@ -336,7 +333,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 		
 		
-		transitionRgbdSystemIn( 2, 1 );//args.preset.outroDuration );
+		transitionRgbdSystemIn( 2, 2 );//args.preset.outroDuration );
 		
 //		fadeOutVisualSystem( 3 );//args.preset.outroDuration );
 		
@@ -380,7 +377,8 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::playClip(CloudsClip& clip){
+void CloudsPlaybackController::playClip(CloudsClip& clip)
+{
 
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);
@@ -393,7 +391,8 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem){
+void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem)
+{
 	
 //	if(simplePlaybackMode) return;
 	
@@ -426,7 +425,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	//TODO: fade in based on nextVisualSystem.introDuration;
 
 //	fadeInVisualSystem( 3 );
-	transitionRgbdSystemOut(2, 4);
+	transitionRgbdSystemOut( 2, 2 );
 	//TODO: get the fade in time from the args?
 
 }
@@ -450,7 +449,6 @@ void CloudsPlaybackController::hideVisualSystem()
 
 void CloudsPlaybackController::transitionRgbdSystemOut( float transitionDuration, float fadeDuration )
 {
-	
 	//start our rgbSystem's transition
 	rgbdVisualSystem.transitionOut( currentVisualSystem->getTransitionType(), transitionDuration );
 	
@@ -459,8 +457,7 @@ void CloudsPlaybackController::transitionRgbdSystemOut( float transitionDuration
 }
 
 void CloudsPlaybackController::transitionRgbdSystemIn( float transitionDuration, float fadeDuration )
-{
-	
+{	
 	//start our rgbSystem's transition
 	rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), transitionDuration );
 	
