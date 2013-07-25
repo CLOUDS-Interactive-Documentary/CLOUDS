@@ -50,8 +50,7 @@ class CloudsClip {
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
-    void setDesiredKeywords(vector<string>& desiredKeywords
-                            );
+    void setDesiredKeywords(vector<string>& desiredKeywords);
     
     //called during ParseLinks
     void addKeyword(string keyword);

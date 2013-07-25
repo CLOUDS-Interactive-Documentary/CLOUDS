@@ -28,6 +28,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	setCurrentCamera(cloudsCamera);
 	
 	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	
+	transitioning = transitioningIn = transitioningOut = false;
 
 }
 
@@ -137,7 +139,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
 	cloudsCamera.lookTarget = translatedHeadPosition + positionOffset;
 	
-	//???: LB- I added our positionOffset to the cloudsCamera positioning stuff ^above. Is there a better way to do this?
+	//LB: I added our positionOffset to the cloudsCamera positioning stuff above. Is there a better way to do this?
 	
 
 	if(drawCloud){
@@ -168,6 +170,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	
+	updateTransition();
+	
 }
 
 //--------------------------------------------------------------	
@@ -188,6 +192,79 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, cloudsCamera.frontDistance);
 		questions[i]->update();
 	}
+}
+
+void CloudsVisualSystemRGBD::updateTransition(){
+	
+	if(transitioning){
+		//get our mixing value by mapping currentTime to the transition start and end time
+		float t = ofGetElapsedTimef();
+		float x = ofMap(t, transitionStartTime, transitionEndTime, 0, 1);
+		x = ofClamp( x, 0, 1 );
+		
+		if(t >= transitionEndTime ){
+			cout <<"end transition "<< ofGetElapsedTimef() << endl << endl;
+			transitioning = false;
+		}
+		
+		
+		//set our transition transform matrix
+		//
+		//rotation
+		ofQuaternion rotQuat;
+		rotQuat.slerp( x, transitionStartRot, transitionEndRot );
+		transitionMatrix.makeRotationMatrix( rotQuat );
+		
+		//position
+		transitionMatrix.setTranslation( transitionStartPos*(1.-x) + transitionEndPos*x );
+		
+//		cout << "mixVal: " << x << endl;
+		transitionVal = x;
+	}
+}
+
+void CloudsVisualSystemRGBD::transition( ofVec3f startPos, ofVec3f endPos, ofQuaternion startRot, ofQuaternion endRot, float duration, float startTime )
+{
+	//set up our transition variables
+	transitionMatrix.makeIdentityMatrix();
+	transitionMatrix.setTranslation( startPos );
+	
+	transitionStartPos = startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	transitionEndPos = endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	
+	transitionStartRot = startRot;
+	transitionEndRot = endRot;
+	
+	transitionStartTime = startTime;
+	transitionEndTime = transitionStartTime + duration;
+	
+	transitioning = true;
+}
+
+void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime )
+{
+	cout << endl << "start transition in "<< ofGetElapsedTimef() << endl;
+	
+	ofVec3f startPos(0,0,-500);
+//	startPos = startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	
+	//start a transition
+	ofQuaternion startRot;
+	startRot.makeRotate( 90, 1, 0, 0 );
+	transition( startPos, ofVec3f(0,0,0), startRot, ofQuaternion(), duration, startTime );
+}
+
+void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime )
+{
+	cout << endl <<"start transition out "<< ofGetElapsedTimef() << endl;
+	
+	ofVec3f endPos(0,0,1000);
+//	endPos = endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	
+	//start a transition
+	ofQuaternion endRot;
+	endRot.makeRotate( 90, 1, 0, 0 );
+	transition( ofVec3f(0,0,0), endPos, ofQuaternion(), endRot, duration, startTime );
 }
 
 //--------------------------------------------------------------
@@ -308,6 +385,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+	ofPushMatrix();
+	
+	//trnsition transformation
+	ofMultMatrix( transitionMatrix );
+	
 	if(drawCloud && sharedRenderer != NULL && hasSpeaker){
 
 //		cout << "RGBD DRAW" << endl;
@@ -323,7 +405,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
-		
 
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -408,6 +489,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_DEPTH_TEST);
 		particulateController.draw();
 	}
+	
+	ofPopMatrix();
 	
 	drawQuestions();
 

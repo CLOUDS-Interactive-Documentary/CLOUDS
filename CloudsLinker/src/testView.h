@@ -45,8 +45,7 @@
 
 - (void) updateViews;
 
-- (IBAction) setXMLFolder:(id)sender;
-- (IBAction) refreshXML:(id)sender;
+
 - (IBAction) saveLinks:(id)sender;
 
 - (IBAction) togglePlay:(id)sender;

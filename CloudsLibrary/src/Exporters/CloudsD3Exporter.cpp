@@ -56,7 +56,7 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 			if(nameA != nameB &&
 			   clipA.person != clipB.person &&
 			   !parser.linkIsSuppressed(nameA, nameB) &&
-			   !parser.clipLinksTo(nameA, nameB) &&
+//			   !parser.clipLinksTo(nameA, nameB) &&
 			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1 )
 			{
 				csvBuffer.append(nameA + "," + nameB + "\n");
@@ -65,7 +65,7 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 		
 		vector<CloudsLink>& links = parser.getLinksForClip(clipA);
 		for(int i = 0; i < links.size(); i++){
-			csvBuffer.append(nameA + "," + links[i].targetName + "\n");
+//			csvBuffer.append(nameA + "," + links[i].targetName + "\n");
 //			cout << "	Added LINK to CSV " << (nameA + "," + links[i].targetName + "\n") << endl;
 		}
 		

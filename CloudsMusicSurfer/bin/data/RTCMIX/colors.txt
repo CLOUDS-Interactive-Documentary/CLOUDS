@@ -3,7 +3,7 @@ slowwaves
 modalbeats
 helmholtz
 helmholtz modalbeats
-meshbeats
+meshbeats filternoise
 meshbeats modalbeats helmholtz
 lowwavepulse modalbeats helmholtz meshbeats
 lowwavepulse helmholtz
@@ -13,4 +13,4 @@ slowwave helmholtz meshbeats modalbeats
 strumsine modalbeats
 strumsine waveguide
 waveguide slowmeshbeats slowwaveshi
-waveguidebeats strumsine helmholtz
+waveguidebeats strumsine filternoise

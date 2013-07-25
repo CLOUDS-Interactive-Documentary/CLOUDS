@@ -381,6 +381,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Martin - Are we getting smarter?</target>
         <startFrame>-1</startFrame>
@@ -437,6 +442,11 @@
     </link>
     <link>
         <target>Lauren - Fluxus App</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Social dynamics</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -4035,6 +4045,206 @@
     <additionalKeywords>magic,#tech,#easy,#breakthrough</additionalKeywords>
 </clip>
 <clip>
+    <name>Bruce - It&apos;s an old thing</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - cyberpunk dictum long</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - creative agglomeration</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Wikipedia and Github</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Github Tarball</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Constant improvement</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - aborted projects</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Volition</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Gardening 1</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Gardening 2</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Anthropomorphism</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Digital humanities technology</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Textual technologies</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Dead sea scrolls</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - fanciful metaphors 1</name>
+    <additionalKeywords>#ironic,#surreal,#mindblowing,#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - beauty of code 3</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - beauty of math</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Parametric vs Generative</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Digital fabrication</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Design vs Art</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - 3D printed buildings</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - digital status quo</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - military</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Don&apos;t care about design</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Age of the universe, really weird</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Gay sex, not that weird</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Fax machine</name>
+    <additionalKeywords>#hard,#fun</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Infinity in a grain of sand</name>
+    <additionalKeywords>#hard,#mindblowing</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - New media Wow</name>
+    <additionalKeywords>#ironic,#fun</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Eno 2</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - new aesthetic 1</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - new aesthetic 2</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - new aesthetic artists</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - camera technician vs explorer</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Trendspotting</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Trendier than thou</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Criticism</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - 7 year lifespan of novelty</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Art history vs Trendspotting</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - orange</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - future of the new aesthetic</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Popular installation art</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Future art</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - Future camera 1</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - future camera 2</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - future camera 3</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - future camera 4</name>
+    <additionalKeywords>#hard</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - lashup 1</name>
+    <additionalKeywords>#hard,creative misuse</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - lashup 2</name>
+    <additionalKeywords>#hard,creative misuse</additionalKeywords>
+</clip>
+<clip>
+    <name>Bruce - lashup 3</name>
+    <additionalKeywords>#hard,creative misuse</additionalKeywords>
+</clip>
+<clip>
     <name>Casey - beginnings</name>
     <link>
         <target>Nervous_Jessica - John Maeda</target>
@@ -6784,6 +6994,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - seeing patterns 1</name>
@@ -7625,6 +7836,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#example,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Googe plus 2</name>
@@ -7678,6 +7890,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#example</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - zooming in</name>
@@ -7833,7 +8046,7 @@
 </clip>
 <clip>
     <name>Fernanda - teens give birth to memes</name>
-    <additionalKeywords>#fun,#emotional</additionalKeywords>
+    <additionalKeywords>#hard,#gold,#emotional,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Sentiment analysis</name>
@@ -7857,6 +8070,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#hard,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Viral pattern 1</name>
@@ -7900,6 +8114,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#fun,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Viral pattern 2</name>
@@ -7913,6 +8128,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#rational,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Replaying the moment of discovery</name>
@@ -7946,6 +8162,61 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#gold,#emotional,#breakthrough,#inspiring</additionalKeywords>
+</clip>
+<clip>
+    <name>Fernanda - Social dynamics</name>
+    <link>
+        <target>Maeda - People</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Julia - human in tech</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Lauren - social media rewards</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - listening post</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>JTNimoy - relating</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - global interactions</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Aaron - global communication</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <suppress>
+        <target>Jer - active not interactive</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Jer - everyday experience</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <suppress>
+        <target>Maeda - People you&apos;re meeting,</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>people,#easy,#inspiring,#sincere,#gold,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - mainstreaming of data viz</name>
@@ -7969,6 +8240,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#conclusion,#hard,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - art science spectrum</name>
@@ -7992,6 +8264,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>?science: How can scientific inquiry inform the creative process?,#sincere,#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - hybrid community</name>
@@ -8015,6 +8288,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#easy,#inspiring,?hybridity: What does it mean to be hybrid?</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - nytimes graphics</name>
@@ -8063,6 +8337,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#rational,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Policy and data</name>
@@ -8132,6 +8407,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>social</revokedKeywords>
+    <additionalKeywords>#mundane,#inspiring,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Personal data</name>
@@ -8190,6 +8466,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#emotional,#sincere,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - email storytelling</name>
@@ -8218,6 +8495,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#sincere,#breakthrough,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - quantified self</name>
@@ -8236,6 +8514,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - non numerical visualization</name>
@@ -8284,7 +8563,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>data</additionalKeywords>
+    <additionalKeywords>data,#obstacle,#rational,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - what do we mean by data</name>
@@ -8323,6 +8602,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - fleshmap1</name>
@@ -8341,6 +8621,15 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#emotional,#hard,?data: What&apos;s difficult to visualize?</additionalKeywords>
+</clip>
+<clip>
+    <name>Fernanda - fleshmap2</name>
+    <additionalKeywords>#hard,#emotional,?sex: How can data provide insights on human sexuality?</additionalKeywords>
+</clip>
+<clip>
+    <name>Fernanda - fleshmap 3</name>
+    <additionalKeywords>?data visualization: How can data offer a window into the subconscious?,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - what is data</name>
@@ -8374,6 +8663,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy,#tech,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - curiosity</name>
@@ -8397,6 +8687,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>?questions: What&apos;s the starting point for a project?,#easy,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - beautiful evidence 1</name>
@@ -8425,6 +8716,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - beautiful evidence 2</name>
@@ -8478,6 +8770,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#art,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - aesthetics as communication</name>
@@ -8531,6 +8824,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?truth: How do you perceive truth?,#hard,#sincere,#rational,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Fernanda - Data questions</name>
@@ -8597,6 +8891,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - useless, whimsical</name>
@@ -8626,7 +8921,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering</additionalKeywords>
+    <additionalKeywords>art vs engineering,useless,useful,#fun,#art,?useless: If the art needn&apos;t have a function then what is its value?,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - wide open field</name>
@@ -8665,6 +8960,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#surreal,#ironic,#fun,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - my mother the abstract painter</name>
@@ -8678,6 +8974,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#art,#sincere,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - yellow tail</name>
@@ -8727,7 +9024,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#easy,#fun,#breakthrough,#example,#art,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - playable image</name>
@@ -8787,7 +9084,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#art,#example</additionalKeywords>
+    <additionalKeywords>#fun,#rational,#example,#art,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - eno</name>
@@ -8801,6 +9098,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#ironic,#art,#breakthrough,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - instruments</name>
@@ -8824,6 +9122,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational,#breakthrough,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - piano and pencil,</name>
@@ -8857,7 +9156,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>children,play</additionalKeywords>
+    <additionalKeywords>children,play,#hard,#art,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - observation of users</name>
@@ -8886,6 +9185,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#obstacle,#rational,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - twitching in a room</name>
@@ -8929,6 +9229,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#obstacle,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - what&apos;s an instrument?</name>
@@ -8952,6 +9253,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational,#logical,#ironic,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - project example</name>
@@ -8996,7 +9298,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#fun,#gold,#example,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - Play</name>
@@ -9020,7 +9322,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fun</additionalKeywords>
+    <additionalKeywords>#easy,#fun,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - why major in art</name>
@@ -9030,12 +9332,12 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering,#obstacle,#sincere,#mundane</additionalKeywords>
+    <additionalKeywords>art vs engineering,#obstacle,#sincere,#mundane,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - Marker 2</name>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering,#logical</additionalKeywords>
+    <additionalKeywords>art vs engineering,#hard,#logical,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - make a mark</name>
@@ -9094,7 +9396,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#art</additionalKeywords>
+    <additionalKeywords>#hard,#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - woah</name>
@@ -9129,7 +9431,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>randomness</revokedKeywords>
-    <additionalKeywords>feedback,#inspiring</additionalKeywords>
+    <additionalKeywords>feedback,#gold,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - woah2</name>
@@ -9198,7 +9500,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>imagination</additionalKeywords>
+    <additionalKeywords>imagination,#emotional,#art,#inspiring,?serendipity: What&apos;s the role of serendipity?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - this to that</name>
@@ -9217,7 +9519,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#ironic,#fun</additionalKeywords>
+    <additionalKeywords>#rational,#fun,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - emotion</name>
@@ -9360,7 +9662,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#emotional,#mindblowing</additionalKeywords>
+    <additionalKeywords>#hard,#mindblowing,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hybridity</name>
@@ -9384,7 +9686,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>interdisciplinary,#obstacle,#serious</additionalKeywords>
+    <additionalKeywords>interdisciplinary,#hard,#serious,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hybridity2</name>
@@ -9398,7 +9700,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>interdisciplinary,#breakthrough</additionalKeywords>
+    <additionalKeywords>interdisciplinary,#hard,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - people like myself</name>
@@ -9488,6 +9790,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - people at MIT</name>
@@ -9511,6 +9814,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - ACG3</name>
@@ -9644,7 +9948,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source,teachers</revokedKeywords>
-    <additionalKeywords>#sincere,generations</additionalKeywords>
+    <additionalKeywords>generations,#emotional,#sincere,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - closed source mistake</name>
@@ -9733,7 +10037,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#serious</additionalKeywords>
+    <additionalKeywords>#hard,#serious,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - pedagogical impulse</name>
@@ -9767,7 +10071,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>teaching</additionalKeywords>
+    <additionalKeywords>teaching,#hard,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - limits to sharing</name>
@@ -9894,7 +10198,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>give everything away,education</additionalKeywords>
+    <additionalKeywords>give everything away,education,#sincere,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - keeping you stuff working</name>
@@ -9929,7 +10233,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>new media old media</revokedKeywords>
-    <additionalKeywords>old media,#discouraging,#obstacle</additionalKeywords>
+    <additionalKeywords>old media,#serious,#discouraging,#obstacle,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - sad not to be making</name>
@@ -9968,7 +10272,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>teaching,#discouraging,#obstacle,#emotional,generations</additionalKeywords>
+    <additionalKeywords>teaching,generations,#serious,#discouraging,#obstacle,#emotional,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - administrating versus making</name>
@@ -10007,6 +10311,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#serious,#hard,#discouraging,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - STUDIO art and code</name>
@@ -10026,7 +10331,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>studio</revokedKeywords>
-    <additionalKeywords>hackathon</additionalKeywords>
+    <additionalKeywords>hackathon,#sincere,#hard,#inspiring,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - open data</name>
@@ -10100,6 +10405,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#logical,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hackathon</name>
@@ -10118,6 +10424,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#rational,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - hackathons2</name>
@@ -10243,7 +10550,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mundane,#serious</additionalKeywords>
+    <additionalKeywords>#rational,#mundane,#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - why make art</name>
@@ -10267,6 +10574,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#art,#mundane,#serious,#hard,#sincere,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - formalism</name>
@@ -10305,6 +10613,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational,#art,#sincere,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - audiovisual concept</name>
@@ -10343,6 +10652,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#sincere,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - easy beauty</name>
@@ -10381,6 +10691,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#art,#obstacle,#discouraging,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - raytraced spheres</name>
@@ -10450,7 +10761,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>new media old media</revokedKeywords>
-    <additionalKeywords>new media,old media,#ironic</additionalKeywords>
+    <additionalKeywords>new media,old media,#hard,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - laughter</name>
@@ -10469,7 +10780,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>fantasy technology,#surreal,#fun,#emotional</additionalKeywords>
+    <additionalKeywords>fantasy technology,#hard,#emotional,#fun,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - laughter2</name>
@@ -10488,7 +10799,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#emotional,#inspiring</additionalKeywords>
+    <additionalKeywords>#hard,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - kerrington</name>
@@ -10507,6 +10818,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#serious,#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - kessler</name>
@@ -10525,10 +10837,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#mundane,#sincere,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - apocalypse3</name>
-    <additionalKeywords>#rational,#serious</additionalKeywords>
+    <additionalKeywords>#hard,#rational,#serious,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - jolted into the NOW</name>
@@ -10537,7 +10850,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#mindblowing,#breakthrough</additionalKeywords>
+    <additionalKeywords>#conclusion,#mindblowing,#breakthrough,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - machines and human intelligence</name>
@@ -10561,7 +10874,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#mindblowing,#rational</additionalKeywords>
+    <additionalKeywords>#hard,#conclusion,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - singularity</name>
@@ -10590,7 +10903,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>bots</additionalKeywords>
+    <additionalKeywords>bots,#hard,#discouraging,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - World becoming one mind</name>
@@ -10614,7 +10927,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#mindblowing</additionalKeywords>
+    <additionalKeywords>#hard,#rational,#mindblowing,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - abstraction</name>
@@ -10678,7 +10991,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#inspiring,#art</additionalKeywords>
+    <additionalKeywords>#hard,#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - aesthetics and abstraction</name>
@@ -10687,6 +11000,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#hard,#sincere,#inspiring,#art</additionalKeywords>
 </clip>
 <clip>
     <name>Golan_AMA - first computer art</name>
@@ -10762,6 +11076,7 @@
     </suppress>
     <startingQuestion>Why is computer art often abstract?</startingQuestion>
     <revokedKeywords>new media old media</revokedKeywords>
+    <additionalKeywords>#art,#fun,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - camera getting cheaper</name>
@@ -10790,7 +11105,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#rational,#logical</additionalKeywords>
+    <additionalKeywords>#tech,#rational,#logical,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - ubiquitous computing</name>
@@ -10809,7 +11124,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#rational</additionalKeywords>
+    <additionalKeywords>#tech,#logical,#rational,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - camera scaling up</name>
@@ -10823,7 +11138,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical</additionalKeywords>
+    <additionalKeywords>#tech,#hard,#logical,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Doug Engelbart part 1</name>
@@ -10857,7 +11172,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>engineering</additionalKeywords>
+    <additionalKeywords>engineering,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - human augmentation</name>
@@ -10896,7 +11211,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>artificial intelligence,collective intelligence</additionalKeywords>
+    <additionalKeywords>artificial intelligence,collective intelligence,#hard,#tech,#gold,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - AI 1</name>
@@ -10960,7 +11275,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>new aesthetic,#mindblowing,#rational,#tech,?artificial intelligence: How advanced is artificial intelligence currently?</additionalKeywords>
+    <additionalKeywords>new aesthetic,?artificial intelligence: How advanced is artificial intelligence currently?,#hard,#tech,#rational,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - AI 2</name>
@@ -11014,7 +11329,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>weird,#surreal,?artificial intelligence: How does artificial intelligence compare to human intelligence?</additionalKeywords>
+    <additionalKeywords>weird,?artificial intelligence: How does artificial intelligence compare to human intelligence?,#mindblowing,#hard,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - object oriented ontology 1</name>
@@ -11054,6 +11369,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link:greg - object oriented ontology 2</revokedKeywords>
+    <additionalKeywords>#tech,#mindblowing,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - object oriented ontology 3</name>
@@ -11077,7 +11393,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#surreal,#fun</additionalKeywords>
+    <additionalKeywords>#surreal,#fun,#hard,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Object Oriented Ontology 2</name>
@@ -11112,7 +11428,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link:greg - the &quot;like&quot; button cascade</revokedKeywords>
-    <additionalKeywords>#tech</additionalKeywords>
+    <additionalKeywords>#hard,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - the &quot;Like&quot; button cascade</name>
@@ -11206,7 +11522,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#gold,#mindblowing</additionalKeywords>
+    <additionalKeywords>#hard,#mindblowing,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Trickle down</name>
@@ -11255,7 +11571,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#tech,#rational,users</additionalKeywords>
+    <additionalKeywords>users,#hard,#rational,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Sharpening spears</name>
@@ -11294,7 +11610,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#obstacle,#tech</additionalKeywords>
+    <additionalKeywords>#hard,#tech,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Creative Coder</name>
@@ -11308,13 +11624,18 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - It&apos;s an old thing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Shiffman - offers me a way to think</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering,link:greg - creative coder 2</revokedKeywords>
-    <additionalKeywords>art vs engineering,thinking with code,coding,#serious,#logical,#rational</additionalKeywords>
+    <additionalKeywords>art vs engineering,thinking with code,coding,#rational,#logical,#serious,creative coding</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - Gaze tracking</name>
@@ -11428,7 +11749,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what is a career or discipline that will exist in the future that doesn&apos;t exist yet?,sharing</revokedKeywords>
-    <additionalKeywords>collective intelligence</additionalKeywords>
+    <additionalKeywords>collective intelligence,#hard,#rational,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - visual effects</name>
@@ -11473,6 +11794,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>storytelling</revokedKeywords>
+    <additionalKeywords>#inspiring,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - cameras scaling up</name>
@@ -11481,7 +11803,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#rational,#tech</additionalKeywords>
+    <additionalKeywords>#rational,#tech,#logical,#hard,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Greg - makematics1</name>
@@ -11531,7 +11853,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>link:greg - makematics2</revokedKeywords>
-    <additionalKeywords>#obstacle</additionalKeywords>
+    <additionalKeywords>#obstacle,#hard,#tech,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - behavior change</name>
@@ -11540,6 +11862,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#serious,#tech,#discouraging,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - Hummingbird drone</name>
@@ -11593,7 +11916,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#mindblowing,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - Drones can help</name>
@@ -11612,6 +11935,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>?military technology: How can military technology benefit humanity?,#breakthrough,#mundane,#rational,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - Julian Oliver</name>
@@ -11681,7 +12005,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>data liberation,network security</revokedKeywords>
-    <additionalKeywords>power,data,security,big data</additionalKeywords>
+    <additionalKeywords>power,data,security,big data,#tech,#rational,#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - hacker critique</name>
@@ -11705,7 +12029,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>wikipedia,collective intelligence</additionalKeywords>
+    <additionalKeywords>wikipedia,collective intelligence,#rational,#serious,#inspiring,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - hackers</name>
@@ -11749,7 +12073,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>tribe,tools,#bug,#gold,#fun</additionalKeywords>
+    <additionalKeywords>tribe,tools,#bug,#gold,#fun,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - Data ownership</name>
@@ -11854,7 +12178,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>humanism</revokedKeywords>
-    <additionalKeywords>devices,personal data,solutions,#gold,policy</additionalKeywords>
+    <additionalKeywords>devices,personal data,solutions,policy,#hard,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - MathMajor 1</name>
@@ -11888,7 +12212,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>struggle,struggle with technology,#obstacle,learning</additionalKeywords>
+    <additionalKeywords>struggle,struggle with technology,learning,#mundane,#logical,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - a different mathematics</name>
@@ -11917,7 +12241,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>computation,#logical</additionalKeywords>
+    <additionalKeywords>computation,#inspiring,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Math simulating reality</name>
@@ -11941,7 +12265,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>reality,logic,#logical,uncanny</additionalKeywords>
+    <additionalKeywords>reality,logic,uncanny,#mindblowing,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Math shapes the world</name>
@@ -11970,7 +12294,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>systems,chaos,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>systems,chaos,#inspiring,#fixed,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Lidar 1</name>
@@ -12009,7 +12333,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>data,camera</additionalKeywords>
+    <additionalKeywords>data,camera,#tech,#hard,#example</additionalKeywords>
+</clip>
+<clip>
+    <name>Jen - Lidar 2</name>
+    <additionalKeywords>#tech,#example,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Predicting weather</name>
@@ -12084,7 +12412,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>climate</revokedKeywords>
-    <additionalKeywords>phenomena</additionalKeywords>
+    <additionalKeywords>phenomena,#obstacle,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - hated computer science</name>
@@ -12128,7 +12456,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#obstacle</additionalKeywords>
+    <additionalKeywords>#tech,#obstacle,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - necessity of code 1</name>
@@ -12157,7 +12485,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>boring</additionalKeywords>
+    <additionalKeywords>boring,#hard,#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - necessity of code 2</name>
@@ -12181,6 +12509,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - sitting in front of a computer</name>
@@ -12244,7 +12573,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,boring</additionalKeywords>
+    <additionalKeywords>attention,boring,#hard,#obstacle,#discouraging,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - struggle with programming</name>
@@ -12283,7 +12612,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#tech,#obstacle</additionalKeywords>
+    <additionalKeywords>#hard,#obstacle,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - to program or not to program</name>
@@ -12293,7 +12622,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>frustration,art vs engineering,#obstacle</additionalKeywords>
+    <additionalKeywords>frustration,art vs engineering,#tech,#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - new toolkits</name>
@@ -12327,6 +12656,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#discouraging,#obstacle,#rational,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - facebook data</name>
@@ -12370,6 +12700,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Big data</name>
@@ -12398,6 +12729,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#mundane,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data crystal ball 1</name>
@@ -12417,7 +12749,7 @@
         <endFrame>-1</endFrame>
     </link>
     <startingQuestion>What&apos;s powerful about &apos;Big Data&apos;?</startingQuestion>
-    <additionalKeywords>?big data: What is powerful about Big Data?,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>?big data: What is powerful about Big Data?,#hard,#mindblowing,#fixed,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data crystal ball 2</name>
@@ -12436,7 +12768,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>power</additionalKeywords>
+    <additionalKeywords>power,#hard,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data crystal ball 3</name>
@@ -12540,7 +12872,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#fixed,#bug</additionalKeywords>
+    <additionalKeywords>#logical,#hard,#bug,#fixed</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - personal archive 1</name>
@@ -12604,7 +12936,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#sincere,#emotional</additionalKeywords>
+    <additionalKeywords>#serious,#sincere,#emotional,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - keeping pictures</name>
@@ -12648,7 +12980,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#serious,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Personal archive 2</name>
@@ -12677,7 +13009,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data autobiography</name>
@@ -12701,7 +13033,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>data</additionalKeywords>
+    <additionalKeywords>data,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data viz challenges</name>
@@ -12736,6 +13068,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>solutions</revokedKeywords>
+    <additionalKeywords>#hard,#gold,#obstacle,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - visual communication</name>
@@ -12780,7 +13113,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visual language</revokedKeywords>
-    <additionalKeywords>design,aesthetics</additionalKeywords>
+    <additionalKeywords>design,aesthetics,#hard,#obstacle,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - generalization 1</name>
@@ -12900,6 +13233,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visualization,perception</revokedKeywords>
+    <additionalKeywords>#discouraging,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - generalization 2</name>
@@ -12998,6 +13332,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#obstacle,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Scaling data</name>
@@ -13056,6 +13391,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - pull out the stories</name>
@@ -13084,6 +13420,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere,#emotional,#inspiring,#hard,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - rhetorical tool 1</name>
@@ -13102,6 +13439,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#serious,#obstacle,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - rhetorical tool 2</name>
@@ -13115,6 +13453,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#example,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data viz too serious 1</name>
@@ -13128,7 +13467,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fun,#emotional</additionalKeywords>
+    <additionalKeywords>#hard,#emotional,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data viz too serious 2</name>
@@ -13157,6 +13496,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - a gravity to the work</name>
@@ -13190,6 +13530,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Golan - why make art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <suppress>
         <target>Binx - actually interesting</target>
         <startFrame>-1</startFrame>
@@ -13201,7 +13546,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>data vizualization</revokedKeywords>
-    <additionalKeywords>data visualization,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>data visualization,#hard,#serious,#obstacle,#fixed,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data viz noire</name>
@@ -13235,6 +13580,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#mundane,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - too serious</name>
@@ -13253,6 +13599,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#obstacle,#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - more playfulness</name>
@@ -13271,7 +13618,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?play: Does art have to be serious?</additionalKeywords>
+    <additionalKeywords>?play: Does art have to be serious?,#serious,#obstacle,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - rafael&apos;s cardiogram</name>
@@ -13386,7 +13733,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>visualization,project example</revokedKeywords>
-    <additionalKeywords>#example</additionalKeywords>
+    <additionalKeywords>#fun,#emotional,#hard,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - stencil pie chart</name>
@@ -13401,7 +13748,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>project example</revokedKeywords>
-    <additionalKeywords>solutions,#example</additionalKeywords>
+    <additionalKeywords>solutions,#fun,#hard,#example</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - stasis 1</name>
@@ -13445,6 +13792,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#tech,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - stasis 2</name>
@@ -13514,6 +13862,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>new media old media</revokedKeywords>
+    <additionalKeywords>#tech,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - telling stories to engage</name>
@@ -13527,6 +13876,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#conclusion,#emotional,#sincere,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data memory 1</name>
@@ -13555,6 +13905,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#serious</additionalKeywords>
+</clip>
+<clip>
+    <name>Jen - data memory 2</name>
+    <additionalKeywords>#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data truth</name>
@@ -13573,6 +13928,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - truthiness</name>
@@ -13651,6 +14007,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - oversimplified circles 1</name>
@@ -13689,6 +14046,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#discouraging,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - oversimplified circles 2</name>
@@ -13707,6 +14065,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#serious,#rational,#ironic</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - objective subjective</name>
@@ -13785,7 +14144,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>?truth: How do you navigate around truth?</additionalKeywords>
+    <additionalKeywords>?truth: How do you navigate around truth?,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - numbers and words</name>
@@ -13809,6 +14168,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#rational,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - library</name>
@@ -13842,6 +14202,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#inspiring,#example,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - deep interaction</name>
@@ -13880,7 +14241,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>zen</additionalKeywords>
+    <additionalKeywords>zen,#hard,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - immersion of reading</name>
@@ -13914,7 +14275,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention</additionalKeywords>
+    <additionalKeywords>attention,#inspiring,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - in the movie</name>
@@ -13938,7 +14299,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>future of cinema</additionalKeywords>
+    <additionalKeywords>future of cinema,#hard,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - museum immersion</name>
@@ -13952,6 +14313,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#art,#sincere,#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - immersion in data</name>
@@ -13995,6 +14357,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>?data: How can data become more accessible?,#inspiring,#breakthrough,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - intuitive spelunking</name>
@@ -14033,6 +14396,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere,#breakthrough,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Guesswork</name>
@@ -14041,6 +14405,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - information cave</name>
@@ -14049,6 +14414,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - all about complexity</name>
@@ -14087,6 +14453,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - browsing</name>
@@ -14115,6 +14482,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data essay 1</name>
@@ -14158,6 +14526,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data essay 2</name>
@@ -14211,7 +14580,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>storytelling</additionalKeywords>
+    <additionalKeywords>storytelling,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - life chapters</name>
@@ -14240,7 +14609,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>memory</additionalKeywords>
+    <additionalKeywords>memory,#hard,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - twitter friends</name>
@@ -14299,7 +14668,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>memory</additionalKeywords>
+    <additionalKeywords>memory,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - building community</name>
@@ -14313,7 +14682,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>social media</additionalKeywords>
+    <additionalKeywords>social media,#sincere,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - prisons</name>
@@ -14327,6 +14696,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#discouraging,#serious,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - self and other</name>
@@ -14390,7 +14760,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>empathy</additionalKeywords>
+    <additionalKeywords>empathy,#hard,#serious,#mundane</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - grouping people</name>
@@ -14469,7 +14839,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>people</additionalKeywords>
+    <additionalKeywords>people,#hard,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - saving the world</name>
@@ -14518,6 +14888,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#mundane,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - right choice 1</name>
@@ -14556,6 +14927,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#emotional,#conclusion,#sincere</additionalKeywords>
+</clip>
+<clip>
+    <name>Jen - right choice 2</name>
+    <additionalKeywords>#hard,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Making a tool</name>
@@ -14609,6 +14985,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#emotional,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - everyday experience</name>
@@ -14667,7 +15044,13 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>why are artists beginning to work with code in a way that engages everday experience?,interface</revokedKeywords>
+    <additionalKeywords>#inspiring,#sincere,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Eyewriter touchstone</name>
@@ -14681,7 +15064,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>assistive technology</additionalKeywords>
+    <additionalKeywords>assistive technology,#hard,#sincere,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - makerthons</name>
@@ -14710,6 +15093,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#tech,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Desire to get together</name>
@@ -14788,7 +15172,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>hackathon,digital meets physical</additionalKeywords>
+    <additionalKeywords>hackathon,digital meets physical,#sincere,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Generative Art</name>
@@ -14828,7 +15212,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>describe the difference between generative art (developing work from algorithms) and data visualization,creative process,generative,beginning</revokedKeywords>
-    <additionalKeywords>beginnings,simulation,creativity,art and code,generative art</additionalKeywords>
+    <additionalKeywords>beginnings,simulation,creativity,art and code,generative art,#easy,#mindblowing,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Pattern</name>
@@ -14963,7 +15347,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>emergence</revokedKeywords>
-    <additionalKeywords>#bug,#fixed</additionalKeywords>
+    <additionalKeywords>#logical,#mindblowing,#inspiring,#easy,#fixed,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - people don&apos;t read these things</name>
@@ -15027,7 +15411,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>nytimes,complexity</additionalKeywords>
+    <additionalKeywords>nytimes,complexity,#hard,#discouraging,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - data visualization</name>
@@ -15096,6 +15480,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#rational,#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Good at understanding complexity</name>
@@ -15155,6 +15540,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>link to john maeda,link to rachel binx</revokedKeywords>
+    <additionalKeywords>#tech,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - take advantage of this thing we can do</name>
@@ -15198,6 +15584,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - reading the complexity</name>
@@ -15231,6 +15618,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#hard,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - ambiguous narrative</name>
@@ -15274,6 +15662,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#art,#emotional,#conclusion,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - lives being documented through data</name>
@@ -15353,7 +15742,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <startingQuestion>What does data tells us about ourselves?</startingQuestion>
-    <additionalKeywords>personal data,?personal data: What does data tell us about ourselves?</additionalKeywords>
+    <additionalKeywords>personal data,?personal data: What does data tell us about ourselves?,#emotional,#mindblowing,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - open paths 2</name>
@@ -15367,7 +15756,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps</additionalKeywords>
+    <additionalKeywords>maps,#breakthrough,#tech,#hard,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - open paths 3</name>
@@ -15386,7 +15775,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps</additionalKeywords>
+    <additionalKeywords>maps,#hard,#ironic,#discouraging,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Big Data Security</name>
@@ -15405,7 +15794,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>data ownership</additionalKeywords>
+    <additionalKeywords>data ownership,#hard,#tech,#discouraging,#obstacle,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Data ownership</name>
@@ -15439,7 +15828,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>users</additionalKeywords>
+    <additionalKeywords>users,#discouraging,#obstacle,#logical,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Research at Open Paths</name>
@@ -15453,7 +15842,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>maps,data ownership,personal data</additionalKeywords>
+    <additionalKeywords>maps,data ownership,personal data,#sincere,#hard,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Thought it was boring</name>
@@ -15497,7 +15886,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>personal data,memory,archiving,#breakthrough,datatelling</additionalKeywords>
+    <additionalKeywords>personal data,memory,archiving,datatelling,#emotional,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - open paths 1</name>
@@ -15522,7 +15911,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>trace of your life</revokedKeywords>
-    <additionalKeywords>personal data,maps</additionalKeywords>
+    <additionalKeywords>personal data,maps,#sincere,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - deciding not to record</name>
@@ -15541,7 +15930,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#hard,#logical,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - storage</name>
@@ -15606,7 +15995,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>storage</revokedKeywords>
-    <additionalKeywords>personal data</additionalKeywords>
+    <additionalKeywords>personal data,#serious,#discouraging,#obstacle,#conclusion,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - spoken word</name>
@@ -15705,7 +16094,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>archiving,sharing,community,language</additionalKeywords>
+    <additionalKeywords>archiving,sharing,community,language,#conclusion,#hard,#rational,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - active not interactive</name>
@@ -15764,6 +16153,12 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <suppress>
+        <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
+    <additionalKeywords>#hard,#ironic,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - failure to communicate</name>
@@ -15793,6 +16188,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>information visualization,link: john maeda,link: rachel binx</revokedKeywords>
+    <additionalKeywords>#hard,#rational,#discouraging,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - opportunistic sensors for apple</name>
@@ -15816,7 +16212,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>maps</additionalKeywords>
+    <additionalKeywords>maps,#hard,#tech,#serious,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Thanks</name>
@@ -15891,7 +16287,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>currency</revokedKeywords>
-    <additionalKeywords>economics</additionalKeywords>
+    <additionalKeywords>economics,#inspiring,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Software1</name>
@@ -15940,6 +16336,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#inspiring,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Software2</name>
@@ -15968,6 +16365,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#tech,#serious,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Post-capitalism</name>
@@ -16067,6 +16465,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>post-capitalism</revokedKeywords>
+    <additionalKeywords>#logical,#serious,#sincere,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - post-capitalism2</name>
@@ -16131,6 +16530,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>post-capitalism</revokedKeywords>
+    <additionalKeywords>#tech,#logical,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Toxi: gurus</name>
@@ -16179,7 +16579,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>thanks</additionalKeywords>
+    <additionalKeywords>thanks,#hard,#rational,#sincere,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - fireflies</name>
@@ -16228,7 +16628,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>collective intelligence,social</additionalKeywords>
+    <additionalKeywords>collective intelligence,social,#mindblowing,#breakthrough,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - Bicycles for the Mind</name>
@@ -16257,6 +16657,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy,#rational,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - scale of universe</name>
@@ -16275,7 +16676,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>scale,zoom</additionalKeywords>
+    <additionalKeywords>scale,zoom,#mindblowing,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - in the now</name>
@@ -16304,6 +16705,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#sincere,#inspiring,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - advertising</name>
@@ -16332,7 +16734,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>software</additionalKeywords>
+    <additionalKeywords>software,#serious,#obstacle,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - CocoCola</name>
@@ -16361,6 +16763,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#rational,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - myth of art and technology</name>
@@ -16400,7 +16803,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering</additionalKeywords>
+    <additionalKeywords>art vs engineering,#art,#serious</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - microsoft research</name>
@@ -16409,6 +16812,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#tech,#serious,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - first mover</name>
@@ -16427,6 +16831,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#rational,#discouraging,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>Joel - interactivity</name>
@@ -16470,6 +16875,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#obstacle,#ironic,#fun</additionalKeywords>
+</clip>
+<clip>
+    <name>Joel - water colors and soccer balls</name>
+    <additionalKeywords>#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Describe the Kinect</name>
@@ -16499,6 +16909,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>what is this camera rig,describe rgbd?</revokedKeywords>
+    <additionalKeywords>#easy,#mindblowing,#logical,?kinect: How does this camera work?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - increased the bandwidth</name>
@@ -16509,6 +16920,11 @@
     </link>
     <link>
         <target>Theo - 3D sensing</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Bruce - lashup 1</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -16532,7 +16948,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#bug</additionalKeywords>
+    <additionalKeywords>#mindblowing,#logical,#tech,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - performance1</name>
@@ -16546,7 +16962,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>clouds,#surreal,fantasy technology</additionalKeywords>
+    <additionalKeywords>clouds,fantasy technology,#gold,#fun,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - evolution</name>
@@ -16560,7 +16976,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>code</additionalKeywords>
+    <additionalKeywords>code,#tech,#fun,#breakthrough,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - I addicted myself</name>
@@ -16619,7 +17035,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>coding</additionalKeywords>
+    <additionalKeywords>coding,#sincere,#mindblowing,#tech,#easy,?coding: How did you become interested in programming?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - be a robot</name>
@@ -16654,7 +17070,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>man versus machine</revokedKeywords>
-    <additionalKeywords>man vs machine,wearables,perception,reality</additionalKeywords>
+    <additionalKeywords>man vs machine,wearables,perception,reality,#tech,#logical,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Dream1</name>
@@ -16694,6 +17110,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>algorithm</revokedKeywords>
+    <additionalKeywords>#sincere,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Comes from the human mind</name>
@@ -16712,6 +17129,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#logical,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Unplugging</name>
@@ -16770,6 +17188,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#tech,#logical,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - data loss</name>
@@ -16838,7 +17257,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>memory,#bug</additionalKeywords>
+    <additionalKeywords>memory,#hard,#discouraging,#emotional,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - open source mensch</name>
@@ -16877,6 +17296,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#ironic,#obstacle</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - thinking by doing</name>
@@ -16936,7 +17356,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>heuristics,link:casey - ideally it goes beyond my imagination</revokedKeywords>
-    <additionalKeywords>art vs engineering</additionalKeywords>
+    <additionalKeywords>art vs engineering,#logical,#tech,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Cortex</name>
@@ -16981,6 +17401,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>subliminal,link:jtnimoy - cortex2,link:marius - reach your visual cortex</revokedKeywords>
+    <additionalKeywords>#easy,#mindblowing,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - 100 artists versus One</name>
@@ -17004,6 +17425,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - one of us</name>
@@ -17112,6 +17534,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
+    <additionalKeywords>#fun,#rational,?collaboration: Are groups of people working together more creative than individuals?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - originality</name>
@@ -17151,7 +17574,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>new media old media</revokedKeywords>
-    <additionalKeywords>new media</additionalKeywords>
+    <additionalKeywords>new media,#serious,#rational</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - geek culture</name>
@@ -17190,6 +17613,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#gold,#emotional,#discouraging</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - relating</name>
@@ -17264,7 +17688,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>post digital,link:maeda - about relationships</revokedKeywords>
-    <additionalKeywords>post-digital</additionalKeywords>
+    <additionalKeywords>post-digital,#sincere,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - immersion</name>
@@ -17349,7 +17773,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>funny</revokedKeywords>
-    <additionalKeywords>#fun,#ironic</additionalKeywords>
+    <additionalKeywords>#fun,#ironic,?immersion: How can technology create an immersive experience?</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - immersion2</name>
@@ -17423,7 +17847,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#fun</additionalKeywords>
+    <additionalKeywords>?immersion: How can technology create an immersive experience?,#mindblowing,#tech,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - they will learn</name>
@@ -17437,6 +17861,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <additionalKeywords>#dud</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - icosahedron</name>
@@ -17510,6 +17935,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#mundane,#rational,#sincere</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Dream</name>
@@ -17528,6 +17954,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#easy,#tech,#mindblowing,#sincere,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - based on human mind</name>
@@ -17616,6 +18043,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#hard,#rational,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - Pickle</name>
@@ -17676,7 +18104,7 @@
     </suppress>
     <startingQuestion>What does it feel like to program?</startingQuestion>
     <revokedKeywords>weird,funny</revokedKeywords>
-    <additionalKeywords>?programming: What does it feel like to program?,#start</additionalKeywords>
+    <additionalKeywords>?programming: What does it feel like to program?,#inspiring,#easy,#start</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - museum emotion</name>
@@ -18270,6 +18698,11 @@
     </link>
     <link>
         <target>Lauren - the way people interact</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Social dynamics</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -25781,6 +26214,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <link>
+        <target>Bruce - lashup 1</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <additionalKeywords>creative misuse</additionalKeywords>
 </clip>
 <clip>
@@ -25869,22 +26307,12 @@
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Nervous_Jesse - theoretical</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Zach - more poetry, less demo</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
     <link>
-        <target>Julian - artist and hired hand</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Binx - art for money</target>
+        <target>Casey - branching off branching</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -26331,6 +26759,11 @@
     <name>Lauren - social media rewards</name>
     <link>
         <target>Fernanda - Viral pattern 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Fernanda - Social dynamics</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -28697,6 +29130,11 @@
 </clip>
 <clip>
     <name>Maeda - last trick</name>
+    <link>
+        <target>Golan - yellow tail</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
     <revokedKeywords>process&#x0D;mind and hand&#x0D;intuition</revokedKeywords>
     <additionalKeywords>process</additionalKeywords>
 </clip>
@@ -28841,6 +29279,11 @@
     </link>
     <link>
         <target>Julia - medium of our time</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - yellow tail</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -28999,6 +29442,11 @@
     </link>
     <link>
         <target>Kyle_CH - new generation</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - yellow tail</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -30122,6 +30570,11 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <suppress>
+        <target>Fernanda - Social dynamics</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </suppress>
     <revokedKeywords>art as experience,work and life</revokedKeywords>
     <additionalKeywords>social</additionalKeywords>
 </clip>
@@ -30202,6 +30655,11 @@
     </link>
     <link>
         <target>Kyle_CH - history of computational art</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - yellow tail</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -36077,6 +36535,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
+    <revokedKeywords>objects&#x0D;architecture,link: marius 3d printing,link: marius color 3d printing</revokedKeywords>
+    <additionalKeywords>architecture</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - I create the work that I love</name>
@@ -41573,6 +42033,11 @@
     </link>
     <link>
         <target>Lauren - Limits of self 2</target>
+        <startFrame>-1</startFrame>
+        <endFrame>-1</endFrame>
+    </link>
+    <link>
+        <target>Golan - why make art</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>

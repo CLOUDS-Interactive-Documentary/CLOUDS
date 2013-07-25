@@ -16,6 +16,8 @@ wf_slowwaveshi = maketable("wave", 1000, 1.0, 0.1, 0.3, 0.05, 0.15, 0.025);
 vel_strike = maketable("line", 1000, 0.0, 1.0, 1.0, 0.0, 10., 0.);
 
 bus_config("WAVETABLE", "aux 0-1 out");
+bus_config("NOISE", "aux 8-9 out");
+bus_config("FILTERBANK", "aux 8-9 in", "aux 0-1 out");
 bus_config("STEREO", "in 0", "aux 0-1 out");
 bus_config("MMODALBAR", "aux 0-1 out");
 bus_config("MBLOWBOTL", "aux 0-1 out");
