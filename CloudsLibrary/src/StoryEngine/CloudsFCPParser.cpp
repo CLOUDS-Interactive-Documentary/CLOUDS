@@ -346,7 +346,8 @@ float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string k
 ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
     
     ofVec2f centroid;
-    int index = keywordCentroidIndex[keyword];
+//    int index = keywordCentroidIndex[keyword];
+	int index = getCentroidMapIndex(keyword);
     if(index != -1){
         return keywordCentroids[index].second;
     }
@@ -360,6 +361,7 @@ int CloudsFCPParser::getCentroidMapIndex(string keyword){
         return keywordCentroidIndex[keyword];
     }
     ofLogError()<<"Couldnt find index for keyword: "<<keyword<<endl;
+	return -1;
 }
 
 vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){

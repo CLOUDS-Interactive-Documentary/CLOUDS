@@ -12,7 +12,6 @@
 #include "CloudsVisualSystemCities.h"
 //#include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemCollaboration1.h"
-//#include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
