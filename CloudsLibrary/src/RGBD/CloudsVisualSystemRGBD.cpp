@@ -194,7 +194,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	}
 }
 
-void CloudsVisualSystemRGBD::	updateTransition(){
+void CloudsVisualSystemRGBD::updateTransition(){
 	
 	if(transitioning){
 		//get our mixing value by mapping currentTime to the transition start and end time
@@ -237,8 +237,9 @@ void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, fl
 {
 	cout << endl << "start transition in "<< ofGetElapsedTimef() << endl;
 	
-	ofVec3f startPos(0,0,500);
-//	startPos *= startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	ofVec3f startPos(0,0,-500);
+	
+	startPos = startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
 	
 	transition( startPos, ofVec3f(0,0,0), duration, startTime );
 	
@@ -248,8 +249,8 @@ void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, f
 {
 	cout << endl <<"start transition out "<< ofGetElapsedTimef() << endl;
 	
-	ofVec3f endPos(0,0,-1000);
-//	endPos *= endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	ofVec3f endPos(0,0,1000);
+	endPos = endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
 	transition( ofVec3f(0,0,0), endPos, duration, startTime );
 }
 
