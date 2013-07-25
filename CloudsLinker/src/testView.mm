@@ -18,7 +18,8 @@
 	
 	movieSuccessfullyLoaded = false;
     
-    [self refreshXML:self];
+	parser.printErrors = true;
+	parser.loadFromFiles();
     clipEndFrame = 0;
     clipLoaded = NO;
 	
@@ -272,18 +273,6 @@
 - (void)windowResized:(NSSize)size
 {
 
-}
-
-- (IBAction) setXMLFolder:(id)sender
-{
-    
-}
-
-- (IBAction) refreshXML:(id)sender
-{
-
-	parser.loadFromFiles();
-	    
 }
 
 @end

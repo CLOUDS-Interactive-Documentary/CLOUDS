@@ -22,6 +22,7 @@ class CloudsFCPParser {
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
     vector<string> getClustersForPerson(string personName);
+	bool printErrors;
 	
 #pragma mark Clips
 	bool hasClipWithLinkName(string linkname);

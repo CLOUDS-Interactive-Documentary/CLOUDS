@@ -14,25 +14,16 @@ bool distanceSort(pair<string,float> a, pair<string,float> b ){
 }
 
 CloudsFCPParser::CloudsFCPParser(){
+	printErrors = false;
     sortedByOccurrence = false;
 	backupTimeInterval = 60*2;
 	lastBackupTime = -backupTimeInterval;
 }
 
 void CloudsFCPParser::loadFromFiles(){
-    
-    
-    //	if(ofDirectory("../../../CloudsData/").exists()){
-    //		setup("../../../CloudsData/fcpxml/");
-    //		parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-    //        parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-    //	}
-    //	else{
     setup(getDataPath() + "fcpxml");
     parseLinks(getDataPath() + "links/clouds_link_db.xml");
     parseClusterMap(getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-    
-    //	}
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -156,7 +147,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
     int totalLinks = 0;
     ofxXmlSettings linksXML;
     if(!linksXML.loadFile(linkFile)){
-		ofSystemAlertDialog("UNABLE TO LOAD LINKS! do not proceed");
+		if(printErrors) ofSystemAlertDialog("UNABLE TO LOAD LINKS! do not proceed");
 		return;
 	}
 	
@@ -186,13 +177,13 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				if(!hasClipWithLinkName(newLink.sourceName)){
 					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which linked to \"" + newLink.targetName + "\".";
 					ofLogError() << errorText;
-					ofSystemAlertDialog(errorText);
+					if(printErrors) ofSystemAlertDialog(errorText);
 					continue;
 				}
 				if(!hasClipWithLinkName(newLink.targetName)){
 					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was linked from \"" + newLink.sourceName + "\".";
 					ofLogError() << errorText;
-					ofSystemAlertDialog(errorText);
+					if(printErrors) ofSystemAlertDialog(errorText);
 					continue;
 				}
 				linkedConnections[newLink.sourceName].push_back( newLink );
@@ -214,13 +205,13 @@ void CloudsFCPParser::parseLinks(string linkFile){
 				if(!hasClipWithLinkName(newLink.sourceName)){
 					string errorText = "Final Cut XML is missing \"" + newLink.sourceName + "\" which was suppressed from \"" + newLink.targetName + "\".";
 					ofLogError() << errorText;
-					ofSystemAlertDialog(errorText);
+					if(printErrors) ofSystemAlertDialog(errorText);
 					continue;
 				}
 				if(!hasClipWithLinkName(newLink.targetName)){
 					string errorText = "Final Cut XML is missing \"" + newLink.targetName + "\" which was suppressed from \"" + newLink.sourceName + "\".";
 					ofLogError() << errorText;
-					ofSystemAlertDialog(errorText);
+					if(printErrors) ofSystemAlertDialog(errorText);
 					continue;
 				}
 				
@@ -397,7 +388,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		sprintf( backup, "%s_backup_Y.%02d_MO.%02d_D.%02d_H.%02d_MI.%02d.xml", ofFilePath::removeExt(linkFile).c_str(), ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
 		lastBackupTime = ofGetElapsedTimef();
 		if(!ofFile(linkFile).copyTo(backup)){
-			ofSystemAlertDialog("UNABLE TO CREATE LINK BACK UP");
+			if(printErrors) ofSystemAlertDialog("UNABLE TO CREATE LINK BACK UP");
 			return;
 		}
 		
@@ -471,7 +462,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
     
     
     if(! linksXML.saveFile(linkFile) ){
-		ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
+		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
 	}
 }
 
@@ -572,7 +563,7 @@ void CloudsFCPParser::unsuppressConnection(string linkName, int linkIndex){
         }
         else{
             ofLogError() << "No reciprocal suppression between clip " << suppressedLink.sourceName << " and " << suppressedLink.targetName;
-            ofSystemAlertDialog( "No reciprocal suppression between clip " + suppressedLink.sourceName + " and " + suppressedLink.targetName);
+            if(printErrors) ofSystemAlertDialog( "No reciprocal suppression between clip " + suppressedLink.sourceName + " and " + suppressedLink.targetName);
         }
         
 		suppressedConnections[linkName].erase( suppressedConnections[linkName].begin() + linkIndex );
