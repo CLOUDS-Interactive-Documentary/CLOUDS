@@ -4,9 +4,9 @@
 #include "CloudsFCPParser.h"
 #include <algorithm> 
 //#include "../../../CloudsLibrary/VisualSystems"
-#include "CloudsVisualSystemRezanator.h"
-#include "VoroParticle.h"
-#include "Voro.h"
+//#include "CloudsVisualSystemRezanator.h"
+//#include "VoroParticle.h"
+//#include "Voro.h"
 
 
 class testApp : public ofBaseApp{
@@ -21,7 +21,7 @@ class testApp : public ofBaseApp{
     CloudsFCPParser parser;
     ofTrueTypeFont font;
     vector<string> keyWords;
-
+    map<string, ofVec2f> keywordsToCentre;
 
   
     float maxD;
@@ -35,7 +35,7 @@ protected:
     vector<ofVec2f> centres;
     vector<float> maxDistances;
     vector<ofColor> colors;
-    vector <VoroParticle *> seedParticles;
+//    vector <VoroParticle *> seedParticles;
     vector<ofMesh>  cellMeshes;
     vector<ofPolyline> cells;
     vector<ofPoint> cohesiveCells;
