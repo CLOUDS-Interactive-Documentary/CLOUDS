@@ -23,6 +23,7 @@ public:
 	int FillOpacity;
     float Radius;
     ofVec2f Centre;
+    ofVec2f originalCentre;
     //vector<string> RelatedIds;
 
 	

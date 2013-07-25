@@ -118,12 +118,16 @@ class CloudsFCPParser {
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
-
+    vector<string>& getContentKeywords();
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
     vector<string  > getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+    float getCohesionIndexForKeyword(string keyword);
+    float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
+    
+    void saveClusterMap(map<string, ofVec2f> centroidMap);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );
@@ -139,17 +143,15 @@ class CloudsFCPParser {
    
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-    
+
     set<string> markerLinkNames;
 
     vector<pair<string,ofVec2f> > keywordCentroids;
     map<string, int> keywordCentroidIndex;
     map<string, float>keywordCohesionMap;
 
-    float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
     void calculateCohesionMedianForKeywords();
     ofVec2f getKeywordCentroid(string keyword);
-    float getCohesionIndexForKeyword(string keyword);
     int getCentroidMapIndex(string keyword);
     
     vector<CloudsClip> allClips;
@@ -158,8 +160,12 @@ class CloudsFCPParser {
     map<string, vector<int> > questionTopicstoClipIndex;
     
     map<string, int> allKeywords;
-    //potential problem
+    map<string, int> contentKeywords;
+
+
+    
     vector<string> keywordVector;
+    vector<string> contentKeywordVector;
 	vector<int> hasCombinedVideoIndeces;
 	vector<string> questionIds;
 	vector<int> hasCombinedVideoAndQuestionIndeces;
