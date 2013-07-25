@@ -28,12 +28,14 @@ void testApp::setup(){
 	player.setStoryEngine(storyEngine);
 	sound.setup(storyEngine);
 	
-	float randomClip = ofRandom(parser.getAllClips().size() );
-	CloudsClip& clip = parser.getRandomClip(true,false);
+	srand( ofGetSeconds()*1000 );
+	CloudsClip& clip = parser.getRandomClip(true,true);
 	
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-
-	storyEngine.buildAct(clip);
+	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+	if(questionsAndTopics.size() > 0){
+		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
+	}
 	
 }
 

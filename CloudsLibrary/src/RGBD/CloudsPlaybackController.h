@@ -76,6 +76,7 @@ class CloudsPlaybackController {
 	ofxEasingQuint fadeEase;
 	void updateVisualSystemCrossFade();
 	
+
 	
   protected:
 

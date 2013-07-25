@@ -826,6 +826,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 			ofLogError() << "CloudsFCPParser::getRandomClip has no start clips clips with combined videos";
 			return dummyClip;
 		}
+		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
 	else if(mustHaveCombinedVideoFile){

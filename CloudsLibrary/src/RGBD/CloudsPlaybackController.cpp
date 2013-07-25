@@ -85,8 +85,6 @@ void CloudsPlaybackController::setup(){
 		crossfadeValue = 1.;
 		bIsFading = false;
 	}
-		
-	
 	
 }
 
