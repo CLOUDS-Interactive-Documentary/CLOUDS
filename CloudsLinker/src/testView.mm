@@ -34,7 +34,7 @@
 	[linkerA setup];
     [linkerB setup];
     
-//	exporter.saveGephiCSV(parser);
+	exporter.saveGephiCSV(parser);
     
 }
 

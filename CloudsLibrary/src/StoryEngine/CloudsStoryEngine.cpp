@@ -49,6 +49,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
 CloudsStoryEngine::~CloudsStoryEngine(){
     delete gui;
     delete clipGui;
+
 }
 
 void CloudsStoryEngine::setup(){
@@ -99,9 +100,42 @@ void CloudsStoryEngine::setup(){
         d.right = "#surreal";
         d.balance =0;
         dichotomies.push_back(d);
+        
+        clipScore["linkScore"] = 0;
+        clipScore["topicInCommonScore"] = 0;
+        clipScore["topicsInCommonWithPreviousScore"] = 0;
+        clipScore["samePersonOccuranceScore"] = 0;
+        clipScore["dichotomiesScore"] = 0;
+        clipScore["voiceOverScore"] = 0;
+        
+        topicScore["lastClipCommonality"]=0;
+        topicScore["twoClipsAgoCommonality"]=0;
+        topicScore["relevancyScore"]= 0;
+        topicScore["cohesionIndex"]= 0;
+        topicScore["distance"] = 0;
+        
 	}
 }
 
+void CloudsStoryEngine::updateLogs(bool addHeader){
+    string headerString = "";
+    if(addHeader){
+        map<string,int>::iterator it;
+        for(it = clipScore.begin(); it != clipScore.end(); it++){
+            headerString += it->first +",";
+        }
+        
+        for(it = topicScore.begin(); it != topicScore.end(); it++){
+            headerString += it->first +",";
+        }
+        headerString += "\n";
+        
+    }
+    
+    
+    
+    
+}
 void CloudsStoryEngine::initGui(){
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
@@ -224,7 +258,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     int timeForNewQuesiton = 0;
     
-    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccuranceScore,dichotomiesScore,voiceOverScore,lastClipCommonality,twoClipsAgoCommonality,relevancyScore "<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccuranceScore,dichotomiesScore,voiceOverScore,lastClipCommonality,twoClipsAgoCommonality,relevancyScore distanceBetweenKeywords,cohesionIndexForKeywords"<<endl;
     
     clearDichotomiesBalance();
     
@@ -238,7 +272,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     
     vector<string> topicHistory;
     topicHistory.push_back(topic);
-    
+    string topicLog = " ";
     int timesOnCurrentTopic = 0;
     while( totalSecondsEnqueued < seconds ){
         scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
@@ -246,7 +280,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         freeTopic |= timesOnCurrentTopic > maxTimesOnTopic;
         
         if(freeTopic){
-            string newTopic = selectTopic(act, clip, topicHistory, topic);
+            string newTopic = selectTopic(act, clip, topicHistory, topic,topicLog);
             if(newTopic == topic){
                 break;
                 
@@ -532,15 +566,16 @@ vector<keywordDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
 }
 
 //TODO: use coehsion and map distance to fix dead ends
-string CloudsStoryEngine::selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic){
+string CloudsStoryEngine::selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log){
     
     vector<string>& topics = clip.getKeywords();
     vector<float> topicScores;
     topicScores.resize(topics.size());
     float topicHighScore = 0;
     for(int i = 0; i < topics.size(); i++){
-        topicScores[i] = scoreForTopic(topicHistory, act->getAllClips(), topic, topics[i]);
+        topicScores[i] = scoreForTopic(topicHistory, act->getAllClips(), topic, topics[i], log);
         topicHighScore = MAX(topicHighScore,topicScores[i]);
+
     }
     
     if(topicHighScore == 0){
@@ -564,8 +599,9 @@ string CloudsStoryEngine::selectTopic(CloudsAct* act, CloudsClip& clip, vector<s
 }
 
 float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history,
-                                       string currentTopic, string newTopic)
+                                       string currentTopic, string newTopic, string& log)
 {
+    stringstream logging;
     if(currentTopic == newTopic){
         if(printDecisions) cout << "	REJECTED Topic " << currentTopic << ": same as new topic" << endl;
         return 0;
@@ -593,15 +629,18 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
     
     int sharedClips = parser->getNumberOfSharedClips(currentTopic,newTopic);
     int totalClips = parser->getNumberOfClipsWithKeyword(newTopic);
+    
+    float distanceBetweenKeywords = parser->getDistanceFromAdjacentKeywords(currentTopic, newTopic);
+    float cohesionIndexForKeywords = parser->getCohesionIndexForKeyword(newTopic);
+    
     float relevancyScore = (1.0 * sharedClips / totalClips) * 10;
 
     float cohesionScore;//Add cohesion score to favor topics
     
     score = lastClipCommonality + twoClipsAgoCommonality + relevancyScore ;
     cout << "	TOPIC " << newTopic << " SCORE " << relevancyScore << " : " << sharedClips << "/" << totalClips << endl;
-    
-
-    
+    logging<<" "<<","<<" "<<","<<" "<<","<< " "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<lastClipCommonality<<","<<twoClipsAgoCommonality<<","<<relevancyScore<<distanceBetweenKeywords<<","<<cohesionIndexForKeywords<<endl;
+    log = logging.str();
     return score;
 }
 
