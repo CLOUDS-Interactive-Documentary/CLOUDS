@@ -49,8 +49,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 		return  cloudsCamera;
 	}
 	
-	void transitionIn( RGBDTransitionType transitionType, float duration );
-	void transitionOut( RGBDTransitionType transitionType, float duration );
+	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
+	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
+	
+	void transition( ofVec3f startPos, ofVec3f endPos, float duration=3, float startTime=ofGetElapsedTimef() );
 
   protected:
 
@@ -128,8 +130,18 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	//transition
 	void updateTransition();
-	bool transitioningIn, transitioningOut;
-	float transitionStartTime, transitionEndTime;
+	bool transitioning, transitioningIn, transitioningOut;
+	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	
 	
+	//???: maybe we should combine these into a struct?
+	ofVec3f transitionStartPos, transitionEndPos;
+	ofQuaternion transitionStartRot, transitionEndRot;
+	ofxEasingQuint transitionEase;
+	
+	ofMatrix4x4 transitionMatrix;
+	
+	RGBDTransitionType transitionType;
+	
+	float transitionVal;
 };

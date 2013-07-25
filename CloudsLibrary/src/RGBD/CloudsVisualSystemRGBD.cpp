@@ -29,7 +29,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
 	
-	transitioningIn = transitioningOut = false;
+	transitioning = transitioningIn = transitioningOut = false;
 
 }
 
@@ -174,30 +174,6 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 }
 
-void CloudsVisualSystemRGBD::updateTransition(){
-	
-}
-
-
-void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration )
-{
-	cout <<"CloudsVisualSystemRGBD::transitionIn "<< transitionType << " : " << duration << endl;
-	transitionStartTime = ofGetElapsedTimef();
-	transitionEndTime = transitionStartTime + duration;
-	transitioningIn = true;
-	transitioningOut = false;
-}
-
-void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration )
-{
-	cout <<"CloudsVisualSystemRGBD::transitionOut "<< transitionType << " : " << duration << endl;
-	
-	transitionStartTime = ofGetElapsedTimef();
-	transitionEndTime = transitionStartTime + duration;
-	transitioningIn = false;
-	transitioningOut = true;
-}
-
 //--------------------------------------------------------------	
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 
@@ -216,6 +192,65 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, cloudsCamera.frontDistance);
 		questions[i]->update();
 	}
+}
+
+void CloudsVisualSystemRGBD::	updateTransition(){
+	
+	if(transitioning){
+		//get our mixing value by mapping currentTime to the transition start and end time
+		float t = ofGetElapsedTimef();
+		float x = ofMap(t, transitionStartTime, transitionEndTime, 0, 1);
+		x = ofClamp( x, 0, 1 );
+		
+		if(t >= transitionEndTime ){
+			cout <<"end transition "<< ofGetElapsedTimef() << endl << endl;
+			transitioning = false;
+		}
+		
+		//set our transition transform matrix
+		transitionMatrix.setTranslation( transitionStartPos*(1.-x) + transitionEndPos*x );
+		
+		
+		cout << "mixVal: " << x << endl;
+		transitionVal = x;
+	}
+}
+
+void CloudsVisualSystemRGBD::transition( ofVec3f startPos, ofVec3f endPos, float duration, float startTime )
+{
+	
+	transitionMatrix.makeIdentityMatrix();
+	transitionMatrix.setTranslation(startPos);
+	
+	transitionStartPos = startPos;
+	transitionEndPos = endPos;
+	
+	transitionStartTime = startTime;
+	transitionEndTime = transitionStartTime + duration;
+	
+	transitioning = true;
+	
+	
+}
+
+void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime )
+{
+	cout << endl << "start transition in "<< ofGetElapsedTimef() << endl;
+	
+	ofVec3f startPos(0,0,500);
+//	startPos *= startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	
+	transition( startPos, ofVec3f(0,0,0), duration, startTime );
+	
+}
+
+void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime )
+{
+	cout << endl <<"start transition out "<< ofGetElapsedTimef() << endl;
+	
+	ofVec3f endPos(0,0,-1000);
+//	endPos *= endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	transition( ofVec3f(0,0,0), endPos, duration, startTime );
 }
 
 //--------------------------------------------------------------
@@ -336,6 +371,11 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 void CloudsVisualSystemRGBD::selfDraw(){
 	
+	ofPushMatrix();
+	
+	//trnsition transformation
+	ofMultMatrix( transitionMatrix );
+	
 	if(drawCloud && sharedRenderer != NULL && hasSpeaker){
 
 //		cout << "RGBD DRAW" << endl;
@@ -351,7 +391,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
-		
 
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -436,6 +475,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_DEPTH_TEST);
 		particulateController.draw();
 	}
+	
+	ofPopMatrix();
 	
 	drawQuestions();
 
