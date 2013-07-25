@@ -100,42 +100,42 @@ void CloudsStoryEngine::setup(){
         d.right = "#surreal";
         d.balance =0;
         dichotomies.push_back(d);
-        
-        clipScore["linkScore"] = 0;
-        clipScore["topicInCommonScore"] = 0;
-        clipScore["topicsInCommonWithPreviousScore"] = 0;
-        clipScore["samePersonOccuranceScore"] = 0;
-        clipScore["dichotomiesScore"] = 0;
-        clipScore["voiceOverScore"] = 0;
-        
-        topicScore["lastClipCommonality"]=0;
-        topicScore["twoClipsAgoCommonality"]=0;
-        topicScore["relevancyScore"]= 0;
-        topicScore["cohesionIndex"]= 0;
-        topicScore["distance"] = 0;
+//        
+//        clipScore["linkScore"] = 0;
+//        clipScore["topicInCommonScore"] = 0;
+//        clipScore["topicsInCommonWithPreviousScore"] = 0;
+//        clipScore["samePersonOccuranceScore"] = 0;
+//        clipScore["dichotomiesScore"] = 0;
+//        clipScore["voiceOverScore"] = 0;
+//        
+//        topicScore["lastClipCommonality"]=0;
+//        topicScore["twoClipsAgoCommonality"]=0;
+//        topicScore["relevancyScore"]= 0;
+//        topicScore["cohesionIndex"]= 0;
+//        topicScore["distance"] = 0;
         
 	}
 }
 
-void CloudsStoryEngine::updateLogs(bool addHeader){
-    string headerString = "";
-    if(addHeader){
-        map<string,int>::iterator it;
-        for(it = clipScore.begin(); it != clipScore.end(); it++){
-            headerString += it->first +",";
-        }
-        
-        for(it = topicScore.begin(); it != topicScore.end(); it++){
-            headerString += it->first +",";
-        }
-        headerString += "\n";
-        
-    }
+//void CloudsStoryEngine::updateLogs(bool addHeader){
+//    string headerString = "";
+//    if(addHeader){
+//        map<string,int>::iterator it;
+//        for(it = clipScore.begin(); it != clipScore.end(); it++){
+//            headerString += it->first +",";
+//        }
+//        
+//        for(it = topicScore.begin(); it != topicScore.end(); it++){
+//            headerString += it->first +",";
+//        }
+//        headerString += "\n";
+//        
+//    }
+//    
+//    
+
     
-    
-    
-    
-}
+//}
 void CloudsStoryEngine::initGui(){
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
