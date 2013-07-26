@@ -269,12 +269,14 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
     glEnable( GL_DEPTH_TEST );
 	
 
-	if(currentAct != NULL && ofGetKeyPressed('-')){
-		currentAct->getTimeline().enableEvents();
-		currentAct->drawDebug();
-	}
-	else{
-		currentAct->getTimeline().disableEvents();
+	if(currentAct != NULL){
+		if(ofGetKeyPressed('-')){
+			currentAct->getTimeline().enableEvents();
+			currentAct->drawDebug();
+		}
+		else{
+			currentAct->getTimeline().disableEvents();
+		}
 	}
 }
 
