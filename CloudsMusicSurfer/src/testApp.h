@@ -66,6 +66,7 @@ class testApp : public ofBaseApp{
     int mcolor, mharmony, mrhythm;
     
     float MASTERAMP;
+    float MASTERTEMPO;
     
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;

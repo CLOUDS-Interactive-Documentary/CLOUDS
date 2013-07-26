@@ -99,7 +99,7 @@ class CloudsPlaybackController {
 	CloudsVisualSystem* currentVisualSystem;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
-	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem);
+	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system
 	void hideVisualSystem();
 	
