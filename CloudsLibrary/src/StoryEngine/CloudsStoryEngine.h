@@ -84,7 +84,7 @@ protected:
 	
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
 	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite ); //queue based
-	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic,string&z log);
+	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic,string& log);
 		
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
