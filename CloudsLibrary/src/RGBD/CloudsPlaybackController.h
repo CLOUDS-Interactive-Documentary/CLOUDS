@@ -4,7 +4,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "CloudsStoryEngine.h"
-#include "CloudsRGBDCombinedRenderer.h"
+#include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsAct.h"
 #include "ofxGameCamera.h"
@@ -80,7 +80,6 @@ class CloudsPlaybackController {
 	CloudsAct* currentAct;
 	
 	//RGBD STUFF
-	CloudsRGBDCombinedRenderer combinedRenderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	string combinedMoviesFolder;
 	string currentTopic;
@@ -93,7 +92,6 @@ class CloudsPlaybackController {
 	void prerollClip(CloudsClip& clip, float toTime);
 	void playClip(CloudsClip& clip);
 
-	
 	//VISUAL SYSTEMS
 	//
 	bool showingVisualSystem;

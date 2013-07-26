@@ -115,6 +115,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float numRandomPoints;
 	void generateRandomPoints();
 	
+	ofShader rgbdShader;
 	
 	//QUESTION
 //	ofVec3f questionOffset;

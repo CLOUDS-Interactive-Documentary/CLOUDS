@@ -64,15 +64,12 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
-		
-		//LB:: pointing to our our sharedRndertarget
+		//LB:: pointing to our our sharedRenderTarget
 		rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
-
-		rgbdVisualSystem.setRenderer(combinedRenderer);
+		
+		//rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
 		rgbdVisualSystem.setDrawToScreen( false );
-		
-		combinedRenderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
 		
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1000;
@@ -114,7 +111,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
 	if(args.key == 'R'){
-		combinedRenderer.reloadShader();
+//		combinedRenderer.reloadShader();
 	}
 	
 }
@@ -141,8 +138,6 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
-	
-	combinedRenderer.update();
 	
 	updateVisualSystemCrossFade();
 	
@@ -370,7 +365,7 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 		return;
 	}
 	
-	if(!combinedRenderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
+	if(!rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath, toTime) ){
 		ofLogError() << "CloudsPlaybackController::prerollClip Error prerolling clip " << clip.getLinkName() << " file path " << clip.combinedVideoPath;
 		return;
 	}
@@ -389,7 +384,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip)
 	prerolledClipID = "";
 	currentClip = clip;
 	
-	combinedRenderer.swapAndPlay();
+	rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 }
 
 //--------------------------------------------------------------------

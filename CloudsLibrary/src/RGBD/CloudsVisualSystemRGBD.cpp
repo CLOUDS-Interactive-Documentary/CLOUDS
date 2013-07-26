@@ -1,5 +1,5 @@
 #include "CloudsVisualSystemRGBD.h"
-#include "CloudsRGBDCombinedRenderer.h"
+#include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
@@ -13,6 +13,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	drawMesh = false;
 	
+	rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
+
 	generatePointGrid();
 	generateScanlines();
 	connectionGenerator.numParticles = 200;
@@ -136,7 +138,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	//update camera
-	translatedHeadPosition = sharedRenderer->headPosition*pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
+	translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
 	cloudsCamera.lookTarget = translatedHeadPosition + positionOffset;
 	
 	//LB: I added our positionOffset to the cloudsCamera positioning stuff above. Is there a better way to do this?
@@ -154,7 +156,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		}
 		
 		currentFlowPosition += cloudFlow;
-		sharedRenderer->flowPosition = currentFlowPosition;
+		getRGBDVideoPlayer().flowPosition = currentFlowPosition;
 	}
 
 	if(drawParticulate){
@@ -390,7 +392,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	//trnsition transformation
 	ofMultMatrix( transitionMatrix );
 	
-	if(drawCloud && sharedRenderer != NULL && hasSpeaker){
+	if(drawCloud && hasSpeaker){
 
 //		cout << "RGBD DRAW" << endl;
 		
@@ -412,20 +414,23 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		//move the pointcloud
 		ofTranslate(0,0,pointcloudOffsetZ);
 		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
+		ofScale(-1, -1, 1);
 		
-		sharedRenderer->bindRenderer();
-		sharedRenderer->getShader().setUniform1f("baseMultiplier", sharedRenderer->getFadeIn() * sharedRenderer->getFadeIn() );
+		rgbdShader.begin();
+		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
 		
+		rgbdShader.setUniform1f("baseMultiplier", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
 		if(drawMesh){
 
-			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
-			sharedRenderer->getShader().setUniform1f("eyeMultiplier", eyeMultiplier);
-			sharedRenderer->getShader().setUniform1f("skinMultiplier", skinMultiplier);
-			sharedRenderer->getShader().setUniform1f("baseMultiplier", meshAlpha);
+			rgbdShader.setUniform1f("flowPosition", 0);
+			rgbdShader.setUniform1f("eyeMultiplier", eyeMultiplier);
+			rgbdShader.setUniform1f("skinMultiplier", skinMultiplier);
+			rgbdShader.setUniform1f("baseMultiplier", meshAlpha);
 			
-			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
+//			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
+			rgbdShader.setUniform2f("simplify", pointHorizontalSpace, pointVerticalSpace);
 			
 			ofPushStyle();
 			glEnable(GL_DEPTH_TEST);
@@ -438,16 +443,16 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 			ofPopStyle();
 			
-			sharedRenderer->getShader().setUniform1f("eyeMultiplier", 0);
-			sharedRenderer->getShader().setUniform1f("skinMultiplier", 0);
-			sharedRenderer->getShader().setUniform1f("baseMultiplier", 1.0);
+			rgbdShader.setUniform1f("eyeMultiplier", 0);
+			rgbdShader.setUniform1f("skinMultiplier", 0);
+			rgbdShader.setUniform1f("baseMultiplier", 1.0);
 			
 		}
 		
 		glDisable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 		
-		sharedRenderer->getShader().setUniform1f("flowPosition", currentFlowPosition);
+		rgbdShader.setUniform1f("flowPosition", currentFlowPosition);
 
 		if(drawPoints){
 			//draw the points
@@ -458,7 +463,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			pointGrid.drawVertices();
 		}
 		
-		sharedRenderer->setSimplification(scanlineSimplify);
+		rgbdShader.setUniform2f("simplify", scanlineSimplify.x, scanlineSimplify.y);
 
 		//draw the lines
 		if(drawScanlines){
@@ -467,17 +472,17 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			ofSetLineWidth(horizontalScanlineThickness);
 			horizontalScanLines.draw();
 
-			sharedRenderer->getShader().setUniform1f("flowPosition", 0);
+			rgbdShader.setUniform1f("flowPosition", 0);
 			ofSetLineWidth(verticalScanlineThickness);
 			ofSetColor(255*verticalScanlineAlpha);
 			verticalScanLines.draw();
 		
 		}
 		
-		sharedRenderer->getShader().setUniform1f("flowPosition", 0);
+		rgbdShader.setUniform1f("flowPosition", 0);
 //		connectionGenerator.draw();
 
-		sharedRenderer->unbindRenderer();
+		rgbdShader.end();
 				
 		glPopAttrib();
 		ofPopMatrix();
@@ -523,7 +528,7 @@ void CloudsVisualSystemRGBD::selfEnd(){
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		particulateController.reloadShaders();
-		sharedRenderer->reloadShader();
+		rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
 	}
 }
 
