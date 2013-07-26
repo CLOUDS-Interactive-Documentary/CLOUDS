@@ -117,6 +117,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		combinedRenderer.reloadShader();
 	}
 	
+	if(args.key == 'P'){
+		currentAct->getTimeline().togglePlay();
+	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -282,6 +285,8 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	else{
 		currentAct->getTimeline().disableEvents();
 	}
+	
+
 }
 
 #pragma story engine events
@@ -338,7 +343,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		}
 	
 		float duration = args.preset.outroDuration;
-		transitionRgbdSystemIn( duration, duration );
+		transitionRgbdSystemIn( 3, 3 );// duration, duration );
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -420,11 +425,11 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	currentVisualSystem = nextVisualSystem.system;
 	
-	currentVisualSystem->setRGBDCamera( ofCamera(rgbdCamera) );
+//	currentVisualSystem->setRGBDCamera( ofCamera(rgbdCamera) );
 	
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
-	transitionRgbdSystemOut( transitionDuration, transitionDuration );
+	transitionRgbdSystemOut( 3, 3 );// transitionDuration, transitionDuration );
 }
 
 //--------------------------------------------------------------------
