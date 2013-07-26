@@ -120,11 +120,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
 		if(presetId[0] == "start " ){
             cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
-//			ofNotifyEvent(events.visualSystemBegan, args);
+			ofNotifyEvent(events.visualSystemBegan, args);
 		}
 		else if(presetId[0] == "outro "){
             cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
-//			ofNotifyEvent(events.visualSystemEnded, args);
+			ofNotifyEvent(events.visualSystemEnded, args);
 		}
         
     }

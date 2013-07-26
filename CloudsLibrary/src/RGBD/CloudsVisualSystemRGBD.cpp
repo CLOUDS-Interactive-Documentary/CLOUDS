@@ -246,11 +246,10 @@ void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, fl
 	cout << endl << "start transition in "<< ofGetElapsedTimef() << endl;
 	
 	ofVec3f startPos(0,0,-500);
-//	startPos = startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
 	
 	//start a transition
 	ofQuaternion startRot;
-	startRot.makeRotate( 90, 1, 0, 0 );
+	startRot.makeRotate( -90, 0, 1, 0 );
 	transition( startPos, ofVec3f(0,0,0), startRot, ofQuaternion(), duration, startTime );
 }
 
@@ -258,12 +257,11 @@ void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, f
 {
 	cout << endl <<"start transition out "<< ofGetElapsedTimef() << endl;
 	
-	ofVec3f endPos(0,0,1000);
-//	endPos = endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
+	ofVec3f endPos(100,100,300);
 	
 	//start a transition
 	ofQuaternion endRot;
-	endRot.makeRotate( 90, 1, 0, 0 );
+	endRot.makeRotate( 90, 0, 1, 0 );
 	transition( ofVec3f(0,0,0), endPos, ofQuaternion(), endRot, duration, startTime );
 }
 

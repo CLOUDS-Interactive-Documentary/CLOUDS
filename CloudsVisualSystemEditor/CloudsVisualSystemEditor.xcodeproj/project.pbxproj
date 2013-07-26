@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50FE21D417A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -138,7 +139,6 @@
 		E7BBAF3B179FA186007D7EC1 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA794179FA17E007D7EC1 /* cCell.cpp */; };
 		E7BBAF3C179FA186007D7EC1 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA796179FA17E007D7EC1 /* CloudsVisualSystemColony.cpp */; };
 		E7BBAF91179FA186007D7EC1 /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA801179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.cpp */; };
-		E7BBAFA0179FA186007D7EC1 /* Fireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA824179FA180007D7EC1 /* Fireworks.cpp */; };
 		E7BBAFBF179FA186007D7EC1 /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA854179FA180007D7EC1 /* CloudsVisualSystemForkingPaths.cpp */; };
 		E7BBAFE7179FA186007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA88A179FA180007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7BBB07D179FA186007D7EC1 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA93C179FA181007D7EC1 /* CloudsVisualSystemLia.cpp */; };
@@ -227,6 +227,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFireworks.cpp; sourceTree = "<group>"; };
+		50FE21D317A1D9980037BFB5 /* CloudsVisualSystemFireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFireworks.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -643,8 +645,6 @@
 		E7BBA797179FA17E007D7EC1 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		E7BBA801179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
 		E7BBA802179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
-		E7BBA824179FA180007D7EC1 /* Fireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fireworks.cpp; sourceTree = "<group>"; };
-		E7BBA825179FA180007D7EC1 /* Fireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fireworks.h; sourceTree = "<group>"; };
 		E7BBA854179FA180007D7EC1 /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E7BBA855179FA180007D7EC1 /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
 		E7BBA88A179FA180007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
@@ -2035,8 +2035,8 @@
 		E7BBA823179FA180007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBA824179FA180007D7EC1 /* Fireworks.cpp */,
-				E7BBA825179FA180007D7EC1 /* Fireworks.h */,
+				50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */,
+				50FE21D317A1D9980037BFB5 /* CloudsVisualSystemFireworks.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2574,7 +2574,6 @@
 				E7BBAF3B179FA186007D7EC1 /* cCell.cpp in Sources */,
 				E7BBAF3C179FA186007D7EC1 /* CloudsVisualSystemColony.cpp in Sources */,
 				E7BBAF91179FA186007D7EC1 /* CloudsVisualSystemDataCascade.cpp in Sources */,
-				E7BBAFA0179FA186007D7EC1 /* Fireworks.cpp in Sources */,
 				E7BBAFBF179FA186007D7EC1 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
 				E7BBAFE7179FA186007D7EC1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E7BBB07D179FA186007D7EC1 /* CloudsVisualSystemLia.cpp in Sources */,
@@ -2627,6 +2626,7 @@
 				E7BBB4C1179FA288007D7EC1 /* Gravity.cpp in Sources */,
 				E7BBB4C2179FA288007D7EC1 /* Points.cpp in Sources */,
 				E7BBB4C3179FA288007D7EC1 /* State.cpp in Sources */,
+				50FE21D417A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
