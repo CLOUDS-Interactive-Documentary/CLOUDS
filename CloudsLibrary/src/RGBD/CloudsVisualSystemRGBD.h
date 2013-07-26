@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ParticleConnectionGenerator.h"
-#include "CloudsRGBDCamera.h"
+//#include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 
@@ -19,7 +19,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfDrawBackground();
     void selfDrawDebug();
     void selfSceneTransformation();
-    void selfDraw();
+    void selfDrawRGBD();
 	void selfDrawOverlay();
     void selfExit();
     void selfBegin();
@@ -64,8 +64,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofTrueTypeFont displayFont;
 	vector<CloudsQuestion> currentQuestions;
 	
-	ofVec3f translatedHeadPosition;
-	CloudsRGBDCamera cloudsCamera;
+	
+//	CloudsRGBDCamera cloudsCamera;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;
@@ -81,8 +81,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	ofVec4f pointColor;
 	
-	float pointcloudScale;
-	float pointcloudOffsetZ;
 
 	ofVec2f scanlineSimplify;
 	
