@@ -145,4 +145,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	RGBDTransitionType transitionType;
 	
 	float transitionVal;
+	
+	
 };
