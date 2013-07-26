@@ -192,8 +192,9 @@ void CloudsVisualSystemRGBD::updateTransition(){
 	if(transitioning){
 		//get our mixing value by mapping currentTime to the transition start and end time
 		float t = ofGetElapsedTimef();
-		float x = ofMap(t, transitionStartTime, transitionEndTime, 0, 1);
-		x = ofClamp( x, 0, 1 );
+//		float x = ofMap(t, transitionStartTime, transitionEndTime, 0, 1);
+//		x = ofClamp( x, 0, 1 );
+		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
 		
 		if(t >= transitionEndTime ){
 			cout <<"end transition "<< ofGetElapsedTimef() << endl << endl;
