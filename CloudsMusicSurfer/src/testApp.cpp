@@ -38,6 +38,7 @@ void testApp::setup(){
     loadRTcmixFiles();
     
     MASTERAMP = 1.0;
+    MASTERTEMPO = 0.125;
 
     char sb [2];
     string s;
@@ -109,7 +110,8 @@ void testApp::draw(){
         rhythmbutton[i].draw();
     }
 
-    theFont.drawString("volume:" + ofToString(MASTERAMP), 300,300);        
+    theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
+    theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325);        
 }
 
 // RTcmix audio callback (we overrode and put in the pullTraverse()
@@ -151,7 +153,15 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == OF_KEY_LEFT)
+    {
+        MASTERTEMPO-=0.005;
+    }
+    else if(key == OF_KEY_RIGHT)
+    {
+        MASTERTEMPO+=0.005;
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -306,7 +316,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
 	
     // some timing shit...
     t = ofGetElapsedTimef();
-    float tempo = 0.125;
+    float tempo = MASTERTEMPO;
     int bcount = 0;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
