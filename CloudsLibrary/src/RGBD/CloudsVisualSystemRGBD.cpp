@@ -137,13 +137,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfUpdate(){
 	
-	//update camera
-	translatedHeadPosition = getRGBDVideoPlayer().headPosition * pointcloudScale + ofVec3f(0,0,pointcloudOffsetZ) + positionOffset;
-	cloudsCamera.lookTarget = translatedHeadPosition + positionOffset;
-	
-	//LB: I added our positionOffset to the cloudsCamera positioning stuff above. Is there a better way to do this?
-	
-
 	if(drawCloud){
 		if(refreshScanlineMesh){
 			generateScanlines();
@@ -171,9 +164,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	}
 	
 	updateQuestions();
-	
 	updateTransition();
-	
 }
 
 //--------------------------------------------------------------	
@@ -383,7 +374,7 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 }
 
-void CloudsVisualSystemRGBD::selfDraw(){
+void CloudsVisualSystemRGBD::selfDrawRGBD(){
 	
 	ofPushMatrix();
 	
@@ -408,11 +399,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
-		
-		//move the pointcloud
-		ofTranslate(0,0,pointcloudOffsetZ);
-		ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
-		ofScale(-1, -1, 1);
 		
 		rgbdShader.begin();
 		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
