@@ -19,7 +19,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfDrawBackground();
     void selfDrawDebug();
     void selfSceneTransformation();
-    void selfDrawRGBD();
+    void selfDraw();	
 	void selfDrawOverlay();
     void selfExit();
     void selfBegin();
@@ -48,7 +48,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofCamera& getCameraRef(){
 		return  cloudsCamera;
 	}
-	
+
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	

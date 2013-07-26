@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		5030D80E17A30BAF0019F279 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5030D80C17A30BAF0019F279 /* CloudsRGBDCamera.cpp */; };
+		5030D81117A30C010019F279 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5030D80F17A30C010019F279 /* CloudsRGBDVideoPlayer.cpp */; };
 		50C542BE17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C542BC17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -26,7 +28,6 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E73995CB178620AD00EA5F4D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -166,7 +167,6 @@
 		E7BBBD0517A02CF5007D7EC1 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBC9C17A02CF5007D7EC1 /* wParticle.cpp */; };
 		E7BBBD0617A02CF5007D7EC1 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBC9E17A02CF5007D7EC1 /* wSatellite.cpp */; };
 		E7BBBD0717A02CF5007D7EC1 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBCA017A02CF5007D7EC1 /* wStar.cpp */; };
-		E7BBBD3417A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBD2E17A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.cpp */; };
 		E7BBBD3517A02D98007D7EC1 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBD3017A02D98007D7EC1 /* CloudsVisualSystem.cpp */; };
 		E7BBBD3D17A02DF6007D7EC1 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBD3717A02DF6007D7EC1 /* ParticleConnection.cpp */; };
 		E7BBBD3E17A02DF6007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBBD3917A02DF6007D7EC1 /* ParticleConnectionGenerator.cpp */; };
@@ -229,6 +229,10 @@
 /* Begin PBXFileReference section */
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		5030D80C17A30BAF0019F279 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		5030D80D17A30BAF0019F279 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		5030D80F17A30C010019F279 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		5030D81017A30C010019F279 /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
 		50C542BC17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFireworks.cpp; sourceTree = "<group>"; };
 		50C542BD17A0646D0069EAB9 /* CloudsVisualSystemFireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFireworks.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -254,8 +258,6 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
-		E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
-		E73995C8178620AD00EA5F4D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -685,8 +687,6 @@
 		E7BBBC9F17A02CF5007D7EC1 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
 		E7BBBCA017A02CF5007D7EC1 /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
 		E7BBBCA117A02CF5007D7EC1 /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
-		E7BBBD2E17A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
-		E7BBBD2F17A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
 		E7BBBD3017A02D98007D7EC1 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E7BBBD3117A02D98007D7EC1 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7BBBD3217A02D98007D7EC1 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
@@ -1157,8 +1157,6 @@
 				E7402E93178F459000FEABED /* GPUParticles */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
-				E73995C8178620AD00EA5F4D /* CloudsRGBDCamera.h */,
-				E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
 				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
@@ -2268,8 +2266,10 @@
 		E7BBBD2C17A02D98007D7EC1 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBBD2E17A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.cpp */,
-				E7BBBD2F17A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.h */,
+				5030D80F17A30C010019F279 /* CloudsRGBDVideoPlayer.cpp */,
+				5030D81017A30C010019F279 /* CloudsRGBDVideoPlayer.h */,
+				5030D80C17A30BAF0019F279 /* CloudsRGBDCamera.cpp */,
+				5030D80D17A30BAF0019F279 /* CloudsRGBDCamera.h */,
 				E7BBBD3017A02D98007D7EC1 /* CloudsVisualSystem.cpp */,
 				E7BBBD3117A02D98007D7EC1 /* CloudsVisualSystem.h */,
 				E7BBBD3217A02D98007D7EC1 /* ofxLight.h */,
@@ -2574,7 +2574,6 @@
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */,
 				E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */,
-				E73995CB178620AD00EA5F4D /* CloudsRGBDCamera.cpp in Sources */,
 				E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */,
 				E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */,
 				E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */,
@@ -2639,12 +2638,13 @@
 				E7BBBD0517A02CF5007D7EC1 /* wParticle.cpp in Sources */,
 				E7BBBD0617A02CF5007D7EC1 /* wSatellite.cpp in Sources */,
 				E7BBBD0717A02CF5007D7EC1 /* wStar.cpp in Sources */,
-				E7BBBD3417A02D98007D7EC1 /* CloudsRGBDCombinedRenderer.cpp in Sources */,
 				E7BBBD3517A02D98007D7EC1 /* CloudsVisualSystem.cpp in Sources */,
 				E7BBBD3D17A02DF6007D7EC1 /* ParticleConnection.cpp in Sources */,
 				E7BBBD3E17A02DF6007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */,
 				E7BBBD3F17A02DF6007D7EC1 /* ParticleConnector.cpp in Sources */,
 				50C542BE17A0646D0069EAB9 /* CloudsVisualSystemFireworks.cpp in Sources */,
+				5030D80E17A30BAF0019F279 /* CloudsRGBDCamera.cpp in Sources */,
+				5030D81117A30C010019F279 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

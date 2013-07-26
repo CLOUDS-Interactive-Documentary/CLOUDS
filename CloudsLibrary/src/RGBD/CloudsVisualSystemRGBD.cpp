@@ -153,6 +153,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	}
 
 	if(drawParticulate){
+		
 		particulateController.birthPlace = translatedHeadPosition;
 		
 		glDisable(GL_LIGHTING);
@@ -375,7 +376,8 @@ void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 }
 
-void CloudsVisualSystemRGBD::selfDrawRGBD(){
+
+void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushMatrix();
 	
@@ -400,6 +402,8 @@ void CloudsVisualSystemRGBD::selfDrawRGBD(){
 
 		ofEnableAlphaBlending();
 		ofEnableBlendMode(OF_BLENDMODE_ADD);
+		
+		setupRGBDTransforms();
 		
 		rgbdShader.begin();
 		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
