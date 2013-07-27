@@ -39,12 +39,14 @@ void testApp::setup(){
     
     MASTERAMP = 1.0;
     MASTERTEMPO = 0.125;
+    AUTORUN = 0;
 
     char sb [2];
     string s;
     startbutton.init("start", &theFont, 200, 450, 0, 255, 0);
     stopbutton.init("stop", &theFont, 600, 450, 255, 0, 0);
     stopbutton.state = true;
+    autobutton.init("auto", &theFont, 400, 450, 96, 96, 255);
     for(int i = 0;i<16;i++)
     {   
         lukeButton c;
@@ -93,6 +95,7 @@ void testApp::draw(){
     // buttons and labels
     startbutton.draw();
     stopbutton.draw();
+    autobutton.draw();
     ofSetColor(255,255,255,255);
     theFont.drawString("color:", 50,80);        
     for(int i = 0;i<colorbutton.size();i++)
@@ -111,7 +114,7 @@ void testApp::draw(){
     }
 
     theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
-    theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325);        
+    theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325); 
 }
 
 // RTcmix audio callback (we overrode and put in the pullTraverse()
@@ -142,9 +145,34 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
     
     // not using right now
     if (check_bang() == 1) {
-        allownote = 1;
-        startbutton.state = false;
-        stopbutton.state = true;
+        if(AUTORUN==0)
+        {
+            allownote = 1;
+            startbutton.state = false;
+            stopbutton.state = true;
+        }
+        else
+        {
+            mcolor = ofRandom(0, 16);
+            mharmony = ofRandom(0, 16);
+            mrhythm = ofRandom(0, 16);
+            for(int j = 0;j<colorbutton.size();j++)
+            {
+                colorbutton[j].state = false;
+            }
+            colorbutton[mcolor].state = true;
+            for(int j = 0;j<harmonybutton.size();j++)
+            {
+                harmonybutton[j].state = false;
+            }
+            harmonybutton[mharmony].state = true;
+            for(int j = 0;j<rhythmbutton.size();j++)
+            {
+                rhythmbutton[j].state = false;
+            }
+            rhythmbutton[mrhythm].state = true;
+            startMusic(mcolor, mharmony, mrhythm, 5*60.);
+        }
         if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 }
@@ -212,6 +240,11 @@ void testApp::mouseReleased(int x, int y, int button){
         startbutton.state = false;
         stopbutton.state = true;
         stopMusic();
+    }
+    p = autobutton.test(x, y);
+    if(p) {
+        AUTORUN = 1-AUTORUN;
+        autobutton.state = AUTORUN>0;
     }
     for(int i = 0;i<colorbutton.size();i++)
     {
