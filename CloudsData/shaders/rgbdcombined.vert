@@ -7,7 +7,7 @@
 
 //TEXTURE INFORMATION
 //
-uniform sampler2DRect texture;
+uniform sampler2DRect rgbdTexture;
 uniform vec2 textureSize;
 
 //COLOR
@@ -91,8 +91,13 @@ vec3 rgb2hsl( vec3 _input ){
 }
 
 float depthValueFromSample( vec2 depthPos){
-    vec2  halfvec = vec2(.5,.5);
-    float depth = rgb2hsl( texture2DRect(texture, floor(depthPos) + halfvec ).xyz ).r;
+
+	depthPos.x = clamp(depthPos.x,depthRect.x+1.,depthRect.x+depthRect.z-2.);
+	depthPos.y = clamp(depthPos.y,depthRect.y+1.,depthRect.y+depthRect.w-2.);
+	
+	vec2  halfvec = vec2(.5,.5);
+	
+    float depth = rgb2hsl( texture2DRect(rgbdTexture, floor(depthPos) + halfvec ).xyz ).r;
     return depth * ( maxDepth - minDepth ) + minDepth;
 }
 
@@ -112,7 +117,7 @@ void main(void){
 	//extract the normal and pass it along to the fragment shader
     vec2  normalPos = samplePos + normalRect.xy;
 //    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
-	vec4 normalColor = texture2DRect(texture, floor(normalPos) + vec2(.5,.5));
+	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
@@ -180,12 +185,12 @@ void main(void){
 	if(useFaces == 1){
 		vec2 faceFeatureScale = faceFeatureRect.zw / colorRect.zw / colorScale;
 		vec2 faceFeaturePos = faceFeatureRect.xy + gl_TexCoord[0].xy * faceFeatureScale;
-		faceFeatureSample = texture2DRect(texture, faceFeaturePos);
+		faceFeatureSample = texture2DRect(rgbdTexture, faceFeaturePos);
 		
 		//extract the delta video change
 		vec2 deltaChangeScale = deltaChangeRect.zw / colorRect.zw / colorScale;
 		vec2 deltaChangePos = deltaChangeRect.xy + gl_TexCoord[0].xy * deltaChangeScale;
-		deltaChangeSample = texture2DRect(texture, deltaChangePos);
+		deltaChangeSample = texture2DRect(rgbdTexture, deltaChangePos);
 	}
 	else {
 		faceFeatureSample = vec4(0.);

@@ -1,7 +1,7 @@
 #version 110
 #extension GL_ARB_texture_rectangle : enable
 
-uniform sampler2DRect texture;
+uniform sampler2DRect rgbdTexture;
 
 varying float positionValid;
 varying vec4 faceFeatureSample;
@@ -53,7 +53,7 @@ void main(){
 		return;
 	}
 	
-    vec4 col = texture2DRect(texture, gl_TexCoord[0].st);
+    vec4 col = texture2DRect(rgbdTexture, gl_TexCoord[0].st);
     gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );
 	//gl_FragColor = vec4(normal,1.0);
 }
