@@ -36,7 +36,7 @@ void testApp::setup(){
 	act->addClip(clip, "topic", 0);
 	act->addVisualSystem( preset2, 5, 7 );
 	
-	act->addVisualSystem( preset2, 16, 4 );
+	act->addVisualSystem( preset2, 20, 4 );
 	
 	act->addVisualSystem( preset2, 40, 10 );
 	

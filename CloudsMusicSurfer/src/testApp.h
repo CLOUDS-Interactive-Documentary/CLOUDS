@@ -67,6 +67,7 @@ class testApp : public ofBaseApp{
     
     float MASTERAMP;
     float MASTERTEMPO;
+    int AUTORUN;
     
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
@@ -74,7 +75,7 @@ class testApp : public ofBaseApp{
 
     // ui crap
     ofTrueTypeFont theFont;
-    lukeButton startbutton, stopbutton;
+    lukeButton startbutton, stopbutton, autobutton;
     vector<lukeButton> colorbutton;
     vector<lukeButton> harmonybutton;
     vector<lukeButton> rhythmbutton;

@@ -52,7 +52,20 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	void transitionOut( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
 	
-	void transition( ofVec3f startPos, ofVec3f endPos, ofQuaternion startRotf, ofQuaternion endRot, float duration=3, float startTime=ofGetElapsedTimef() );
+	void transition( float duration=3, float startTime=ofGetElapsedTimef() );
+	
+	ofNode* transitionTarget;
+	ofNode transitionInStart;
+	ofNode transitionOutTarget;
+	ofVec3f transitionEndPosition;
+	ofQuaternion transitionEndRotation;
+	
+	void transitionIn( ofNode& targetNode, float duration, float startTime );
+	void transitionOut( ofNode& startNode, float duration, float startTime );
+	
+	ofNode oldCamNode;
+	
+	bool drawTransitionNodes;
 
   protected:
 

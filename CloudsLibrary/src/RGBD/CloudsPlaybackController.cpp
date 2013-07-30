@@ -169,7 +169,7 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 			rgbdVisualSystem.stopSystem();
 			
 			//use our currentVisualSystem's camera( no more need for the super camera anymore )
-			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
+//			currentVisualSystem->setCurrentCamera( currentVisualSystem->getCameraRef() );
 		}
 		
 		//end fading out
@@ -182,7 +182,7 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 			hideVisualSystem();
 			
 			//use our currentVisualSystem's camera( no need for the super camera anymore )
-			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
+//			rgbdVisualSystem.setCurrentCamera( rgbdVisualSystem.getCameraRef() );
 		}
 		
 		//otherwise we're fading and we need to mix our cameras

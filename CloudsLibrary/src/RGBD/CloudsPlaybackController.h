@@ -70,7 +70,7 @@ class CloudsPlaybackController {
 	void mixCameras(ofCamera* targetCam, ofCamera* c0, ofCamera* c1, float x );
 	ofxEasingQuint fadeEase;
 	void updateVisualSystemCrossFade();
-	
+
 
 	
   protected:

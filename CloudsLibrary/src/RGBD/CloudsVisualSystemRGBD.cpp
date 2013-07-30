@@ -31,7 +31,20 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
 	
+	
+	//TODO: do this else where
 	transitioning = transitioningIn = transitioningOut = false;
+	
+	transitionInStart.setPosition( 0, 0, -1000 );
+	transitionInStart.rotate( 180, ofVec3f(0, 1, 0 ) );
+	
+	transitionOutTarget.setPosition( 0, 0, 1000 );
+	transitionOutTarget.rotate( 180, ofVec3f(0, 1, 0 ) );
+	
+	
+	transitionTarget = &transitionOutTarget;
+	
+	drawTransitionNodes = true;
 
 }
 
@@ -193,71 +206,61 @@ void CloudsVisualSystemRGBD::updateTransition(){
 	if(transitioning){
 		//get our mixing value by mapping currentTime to the transition start and end time
 		float t = ofGetElapsedTimef();
-//		float x = ofMap(t, transitionStartTime, transitionEndTime, 0, 1);
-//		x = ofClamp( x, 0, 1 );
 		float x = ofxTween::map(t, transitionStartTime, transitionEndTime, 0, 1, true, transitionEase );
 		
 		if(t >= transitionEndTime ){
-			cout <<"end transition "<< ofGetElapsedTimef() << endl << endl;
+			cout <<"CloudsVisualSystemRGBD: transition ended "<< ofGetElapsedTimef() << endl << endl;
 			transitioning = false;
+			
+			cloudsCamera.targetNode = NULL;
+			cloudsCamera.startNode = NULL;
+			
 		}
 		
-		
-		//set our transition transform matrix
-		//
-		//rotation
-		ofQuaternion rotQuat;
-		rotQuat.slerp( x, transitionStartRot, transitionEndRot );
-		transitionMatrix.makeRotationMatrix( rotQuat );
-		
-		//position
-		transitionMatrix.setTranslation( transitionStartPos*(1.-x) + transitionEndPos*x );
-		
-//		cout << "mixVal: " << x << endl;
 		transitionVal = x;
+		cloudsCamera.setTransitionPercent( transitionVal );
+		
 	}
 }
 
-void CloudsVisualSystemRGBD::transition( ofVec3f startPos, ofVec3f endPos, ofQuaternion startRot, ofQuaternion endRot, float duration, float startTime )
+void CloudsVisualSystemRGBD::transition( float duration, float startTime )
 {
-	//set up our transition variables
-	transitionMatrix.makeIdentityMatrix();
-	transitionMatrix.setTranslation( startPos );
-	
-	transitionStartPos = startPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
-	transitionEndPos = endPos * cloudsCamera.getModelViewMatrix().getInverse().getRotate();
-	
-	transitionStartRot = startRot;
-	transitionEndRot = endRot;
-	
 	transitionStartTime = startTime;
 	transitionEndTime = transitionStartTime + duration;
 	
 	transitioning = true;
+	
+	ofQuaternion transitionEndRotation;
+}
+
+void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
+{
+	cout << "TRANSITION In:: " << ofGetElapsedTimef() << endl;
+	transition( duration, startTime );
+	
+	cloudsCamera.setTransitionStartNode( &transitionInStart );
+	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
+}
+
+void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, float startTime )
+{
+	cout << "TRANSITION OUT:: " << ofGetElapsedTimef() << endl;
+	
+	transition( duration, startTime );
+	
+	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
+	cloudsCamera.setTransitionTargetNode( &transitionOutTarget );
+	
 }
 
 void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime )
 {
-	cout << endl << "start transition in "<< ofGetElapsedTimef() << endl;
-	
-	ofVec3f startPos(0,0,-500);
-	
-	//start a transition
-	ofQuaternion startRot;
-	startRot.makeRotate( -90, 0, 1, 0 );
-	transition( startPos, ofVec3f(0,0,0), startRot, ofQuaternion(), duration, startTime );
+	transitionIn( transitionInStart, duration, startTime );
 }
 
 void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime )
 {
-	cout << endl <<"start transition out "<< ofGetElapsedTimef() << endl;
-	
-	ofVec3f endPos(100,100,300);
-	
-	//start a transition
-	ofQuaternion endRot;
-	endRot.makeRotate( 90, 0, 1, 0 );
-	transition( ofVec3f(0,0,0), endPos, ofQuaternion(), endRot, duration, startTime );
+	transitionOut( transitionOutTarget, duration, startTime );
 }
 
 //--------------------------------------------------------------
@@ -468,6 +471,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		
 		}
 		
+
 		rgbdShader.setUniform1f("flowPosition", 0);
 //		connectionGenerator.draw();
 
@@ -478,6 +482,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofPopStyle();
 		
 	}
+
 		
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
@@ -485,6 +490,31 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	}
 	
 	ofPopMatrix();
+	
+	
+	if(drawTransitionNodes){
+		ofPushStyle();
+		ofSetColor( 255, 255, 0 );
+		ofPushMatrix();
+		
+		ofMultMatrix( transitionOutTarget.getLocalTransformMatrix() );
+		ofScale( .25, .25, 1 );
+		ofBox(0, 0, 0, 100);
+		
+		ofPopMatrix();
+		
+		
+		ofSetColor( 0, 255, 255 );
+		ofPushMatrix();
+		
+		ofMultMatrix( transitionInStart.getLocalTransformMatrix() );
+		ofScale( .25, .25, 1.);
+		ofBox(0, 0, 0, 100);
+		
+		ofPopMatrix();
+		
+		ofPopStyle();
+	}
 	
 	drawQuestions();
 
