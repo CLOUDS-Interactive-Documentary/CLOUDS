@@ -133,10 +133,7 @@
 		E7BBBCCB17A02CF5007D7EC1 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB76A17A02CF0007D7EC1 /* RandomMover.cpp */; };
 		E7BBBCCE17A02CF5007D7EC1 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7DE17A02CF1007D7EC1 /* CloudsVisualSystemLSystems.cpp */; };
 		E7BBBCCF17A02CF5007D7EC1 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7E017A02CF1007D7EC1 /* LNode.cpp */; };
-		E7BBBCD017A02CF5007D7EC1 /* LParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7E217A02CF1007D7EC1 /* LParticle.cpp */; };
 		E7BBBCD117A02CF5007D7EC1 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7E417A02CF1007D7EC1 /* LSystem.cpp */; };
-		E7BBBCD217A02CF5007D7EC1 /* LSystemReconstructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7E617A02CF1007D7EC1 /* LSystemReconstructor.cpp */; };
-		E7BBBCD317A02CF5007D7EC1 /* LVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB7E817A02CF1007D7EC1 /* LVectorField.cpp */; };
 		E7BBBCD617A02CF5007D7EC1 /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB89517A02CF1007D7EC1 /* CloudsVisualSystemMemory.cpp */; };
 		E7BBBCD717A02CF5007D7EC1 /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB8D817A02CF1007D7EC1 /* CloudsVisualSystemCollaboration1.cpp */; };
 		E7BBBCDA17A02CF5007D7EC1 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB95917A02CF2007D7EC1 /* CloudsVisualSystemOcean.cpp */; };
@@ -614,14 +611,8 @@
 		E7BBB7DF17A02CF1007D7EC1 /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
 		E7BBB7E017A02CF1007D7EC1 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
 		E7BBB7E117A02CF1007D7EC1 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
-		E7BBB7E217A02CF1007D7EC1 /* LParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LParticle.cpp; sourceTree = "<group>"; };
-		E7BBB7E317A02CF1007D7EC1 /* LParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LParticle.h; sourceTree = "<group>"; };
 		E7BBB7E417A02CF1007D7EC1 /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
 		E7BBB7E517A02CF1007D7EC1 /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		E7BBB7E617A02CF1007D7EC1 /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
-		E7BBB7E717A02CF1007D7EC1 /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
-		E7BBB7E817A02CF1007D7EC1 /* LVectorField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVectorField.cpp; sourceTree = "<group>"; };
-		E7BBB7E917A02CF1007D7EC1 /* LVectorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVectorField.h; sourceTree = "<group>"; };
 		E7BBB89517A02CF1007D7EC1 /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
 		E7BBB89617A02CF1007D7EC1 /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
 		E7BBB8D817A02CF1007D7EC1 /* CloudsVisualSystemCollaboration1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCollaboration1.cpp; sourceTree = "<group>"; };
@@ -2043,14 +2034,8 @@
 				E7BBB7DF17A02CF1007D7EC1 /* CloudsVisualSystemLSystems.h */,
 				E7BBB7E017A02CF1007D7EC1 /* LNode.cpp */,
 				E7BBB7E117A02CF1007D7EC1 /* LNode.h */,
-				E7BBB7E217A02CF1007D7EC1 /* LParticle.cpp */,
-				E7BBB7E317A02CF1007D7EC1 /* LParticle.h */,
 				E7BBB7E417A02CF1007D7EC1 /* LSystem.cpp */,
 				E7BBB7E517A02CF1007D7EC1 /* LSystem.h */,
-				E7BBB7E617A02CF1007D7EC1 /* LSystemReconstructor.cpp */,
-				E7BBB7E717A02CF1007D7EC1 /* LSystemReconstructor.h */,
-				E7BBB7E817A02CF1007D7EC1 /* LVectorField.cpp */,
-				E7BBB7E917A02CF1007D7EC1 /* LVectorField.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2604,10 +2589,7 @@
 				E7BBBCCB17A02CF5007D7EC1 /* RandomMover.cpp in Sources */,
 				E7BBBCCE17A02CF5007D7EC1 /* CloudsVisualSystemLSystems.cpp in Sources */,
 				E7BBBCCF17A02CF5007D7EC1 /* LNode.cpp in Sources */,
-				E7BBBCD017A02CF5007D7EC1 /* LParticle.cpp in Sources */,
 				E7BBBCD117A02CF5007D7EC1 /* LSystem.cpp in Sources */,
-				E7BBBCD217A02CF5007D7EC1 /* LSystemReconstructor.cpp in Sources */,
-				E7BBBCD317A02CF5007D7EC1 /* LVectorField.cpp in Sources */,
 				E7BBBCD617A02CF5007D7EC1 /* CloudsVisualSystemMemory.cpp in Sources */,
 				E7BBBCD717A02CF5007D7EC1 /* CloudsVisualSystemCollaboration1.cpp in Sources */,
 				E7BBBCDA17A02CF5007D7EC1 /* CloudsVisualSystemOcean.cpp in Sources */,

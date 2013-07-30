@@ -70,8 +70,6 @@ class CloudsPlaybackController {
 	void mixCameras(ofCamera* targetCam, ofCamera* c0, ofCamera* c1, float x );
 	ofxEasingQuint fadeEase;
 	void updateVisualSystemCrossFade();
-
-
 	
   protected:
 
@@ -97,6 +95,7 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
+	CloudsVisualSystem* nextSystem;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);

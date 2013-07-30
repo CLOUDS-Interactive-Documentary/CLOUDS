@@ -235,7 +235,7 @@ void CloudsVisualSystemRGBD::transition( float duration, float startTime )
 
 void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
 {
-	cout << "TRANSITION In:: " << ofGetElapsedTimef() << endl;
+	cout << "CloudsVisualSystemRGBD::TRANSITION In:: " << ofGetElapsedTimef() << endl;
 	transition( duration, startTime );
 	
 	cloudsCamera.setTransitionStartNode( &transitionInStart );
@@ -244,7 +244,7 @@ void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, f
 
 void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, float startTime )
 {
-	cout << "TRANSITION OUT:: " << ofGetElapsedTimef() << endl;
+	cout << "CloudsVisualSystemRGBD::TRANSITION OUT:: " << ofGetElapsedTimef() << endl;
 	
 	transition( duration, startTime );
 	
@@ -493,6 +493,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	
 	if(drawTransitionNodes){
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		ofPushStyle();
 		ofSetColor( 255, 255, 0 );
 		ofPushMatrix();
@@ -514,6 +515,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		ofPopMatrix();
 		
 		ofPopStyle();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 	
 	drawQuestions();
