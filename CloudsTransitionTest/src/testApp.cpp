@@ -33,11 +33,11 @@ void testApp::setup(){
 	
 	
 	act->addClip(clip, "topic", 0);
-//	act->addVisualSystem( preset0, 3, 5 );
-//	
-//	act->addVisualSystem( preset0, 12, 4 );
-//	
-//	act->addVisualSystem( preset0, 40, 10 );
+	act->addVisualSystem( preset0, 3, 5 );
+	
+	act->addVisualSystem( preset0, 12, 4 );
+	
+	act->addVisualSystem( preset0, 40, 10 );
 	
 	act->populateTime();
 	

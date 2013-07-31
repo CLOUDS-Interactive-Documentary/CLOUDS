@@ -6,6 +6,7 @@
 //#include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
+#include "ofxGameCamera.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -70,7 +71,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void lookThroughTransitionIn();
 	void lookThroughTransitionOut();
-	ofEasyCam transitionCam;
+//	ofEasyCam transitionCam;
+	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
 	void printTransitionNodes();
