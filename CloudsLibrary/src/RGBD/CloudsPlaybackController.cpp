@@ -64,7 +64,7 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
-		//LB:: pointing to our our sharedRenderTarget
+		//pointing to our our sharedRenderTarget
 		rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
 		
 		//rgbdVisualSystem.setRenderer(combinedRenderer);
@@ -73,7 +73,7 @@ void CloudsPlaybackController::setup(){
 		currentVisualSystem = &rgbdVisualSystem;
 		
 		//start an initila fade... and set our fade variables
-		fadeDuration = 1000;
+		fadeDuration = 1;
 		fadeStartTime = ofGetElapsedTimef();
 		fadeEndTime = fadeStartTime + fadeDuration;
 		fadeStartVal = 0;
@@ -300,6 +300,7 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		//start the generic fade
 		fadeOutVisualSystem( duration );
 		
+		//if there is a nextSystem transition out the rgbd using the next system's transition type
 		if (nextSystem != NULL) {
 			
 			//transition-in the rgbd visual system
@@ -329,9 +330,12 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 		fadeOutVisualSystem( args.preset.outroDuration );
 		
+		//if we have a currentSystem transition the rgbd using it's transition type
 		if(currentVisualSystem != NULL){
 			
-			//transition-in the rgbd visual system
+			//???: how long do we transition into the rgbdSystem? it's 2 for now...
+			
+			//transition-in the rgbd visual system after the system fades out
 			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), 2, ofGetElapsedTimef() + args.preset.outroDuration );
 			
 		}
