@@ -22,6 +22,11 @@ extern "C" {
     int parse_score(char *thebuf, int buflen);
     int check_bang();
     void flush_sched();
+    extern char *get_print();
+    extern void reset_print();
+    void OF_buffer_load_set(char *filename, char *bufname, float insk, float dur);
+    int mm_buf_getframes(char *bufname);
+    int mm_buf_getchans(char *bufname);
 }
 
 // luke's comp structures
@@ -39,6 +44,13 @@ struct lukeColor {
     vector<string> instruments;
 };
 
+struct lukePreset {
+    int color;
+    int harmony;
+    int rhythm;
+    float tempo;
+};
+
 
 // luke's music functions
 double mtof(double f, double tuning);
@@ -48,6 +60,7 @@ int scale(int p, int o);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
 void loadcolors(string f, vector<lukeColor>& c);
+void loadpresets(string f, vector<lukePreset>& p);
 
 // luke's audio functions
 void RTcmixParseScoreFile(string f);
@@ -60,7 +73,7 @@ void MBANDEDWG(double outskip, double dur, double amp, double freq, double strik
 void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
 
 void REVERB(double time);
-void INPUTSOUND(string file);
+void LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);

@@ -44,11 +44,12 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
     
-    // Luke's vars
+    // Luke's stuff
 	// 
     void startMusic(int mc, int mh, int mr, float musicdur);
     void stopMusic();
     void loadRTcmixFiles();
+    void pushInterface();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
     int sr; // sampling rate
@@ -70,8 +71,9 @@ class testApp : public ofBaseApp{
     int AUTORUN;
     
     vector<lukeRhythm> rhythms;
-    vector<lukePitchArray> pitches;
     vector<lukeColor> colors;
+    vector<lukePitchArray> pitches;
+    vector<lukePreset> presets;
 
     // ui crap
     ofTrueTypeFont theFont;
@@ -79,5 +81,6 @@ class testApp : public ofBaseApp{
     vector<lukeButton> colorbutton;
     vector<lukeButton> harmonybutton;
     vector<lukeButton> rhythmbutton;
+    vector<lukeButton> presetbutton;
     
 };

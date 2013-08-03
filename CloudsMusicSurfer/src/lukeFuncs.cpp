@@ -54,21 +54,26 @@ void SCHEDULEBANG(double time)
 }
 
 // sets up rtinput() for a signal processing routine that requires an audio file
-void INPUTSOUND(string file)
+void LOADSOUND(string file, string handle)
 {
     string fullfile = ofToDataPath(file);
-    char thebuf [256];
-    int bx;
-    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)fullfile.c_str());
-    parse_score(thebuf, bx);
     
+    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 10.);
+    // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
+    
+    printf("LOADED SOUND %s: file: %s  nframes: %d  nchans: %d\n", (char*)handle.c_str(),
+           (char*)file.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
+     
+
 }
 
 // basic soundfile mixing interface
-void STEREO(double outskip, double inskip, double dur, double amp, double pan)
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle)
 {
     char thebuf [256];
     int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*thestereoamp, %f)", outskip, inskip, dur, amp, pan);
     parse_score(thebuf, bx);
     
@@ -231,6 +236,31 @@ void loadcolors(string f, vector<lukeColor>& c)
         c.push_back(foo);
     }
 }
+
+// load preset file
+void loadpresets(string f, vector<lukePreset>& p)
+{
+    string sline;
+    ofFile pfile (ofToDataPath("RTCMIX/"+f));
+    if(!pfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer pbuf(pfile);
+    p.clear();
+    while(!pbuf.isLastLine())
+    {
+        sline=pbuf.getNextLine();
+        lukePreset foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        foo.color = ofToInt(temp[0]);
+        foo.harmony = ofToInt(temp[1]);
+        foo.rhythm = ofToInt(temp[2]);
+        foo.tempo = ofToFloat(temp[3]);
+        p.push_back(foo);
+    }
+}
+
 
 
 // frequency-to-midi
