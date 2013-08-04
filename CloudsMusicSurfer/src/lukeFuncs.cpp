@@ -253,9 +253,9 @@ void loadpresets(string f, vector<lukePreset>& p)
         sline=pbuf.getNextLine();
         lukePreset foo;
         vector<string> temp = ofSplitString(sline, " ");
-        foo.color = ofToInt(temp[0]);
-        foo.harmony = ofToInt(temp[1]);
-        foo.rhythm = ofToInt(temp[2]);
+        foo.color = ofToInt(temp[0])-1;
+        foo.harmony = ofToInt(temp[1])-1;
+        foo.rhythm = ofToInt(temp[2])-1;
         foo.tempo = ofToFloat(temp[3]);
         p.push_back(foo);
     }
