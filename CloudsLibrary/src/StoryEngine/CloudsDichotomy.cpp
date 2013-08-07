@@ -6,9 +6,9 @@
 //
 //
 
-#include "keywordDichotomy.h"
+#include "CloudsDichotomy.h"
 
-keywordDichotomy::keywordDichotomy(){
+CloudsDichotomy::CloudsDichotomy(){
     left ="";
     right ="";
     balance =0; //pos/neg

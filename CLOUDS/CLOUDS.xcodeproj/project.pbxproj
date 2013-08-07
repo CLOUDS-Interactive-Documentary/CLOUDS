@@ -174,7 +174,7 @@
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
-		E7BBB4E717A02BB5007D7EC1 /* keywordDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* keywordDichotomy.cpp */; };
+		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
 		E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */; };
 		E7D26E5317A2E14000652876 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
@@ -721,8 +721,8 @@
 		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
-		E7BBB4E517A02BB5007D7EC1 /* keywordDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keywordDichotomy.cpp; sourceTree = "<group>"; };
-		E7BBB4E617A02BB5007D7EC1 /* keywordDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keywordDichotomy.h; sourceTree = "<group>"; };
+		E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
+		E7BBB4E617A02BB5007D7EC1 /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
 		E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7D26E4D17A2C52D00652876 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7D26E4F17A2C54300652876 /* CloudsRGBDShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDShader.h; sourceTree = "<group>"; };
@@ -1718,8 +1718,8 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBB4E517A02BB5007D7EC1 /* keywordDichotomy.cpp */,
-				E7BBB4E617A02BB5007D7EC1 /* keywordDichotomy.h */,
+				E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */,
+				E7BBB4E617A02BB5007D7EC1 /* CloudsDichotomy.h */,
 				E7402EA7178F45AA00FEABED /* CloudsAct.h */,
 				E7402EA6178F45AA00FEABED /* CloudsAct.cpp */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
@@ -2924,7 +2924,7 @@
 				E7425652179F9A0A00B2F0A3 /* ParticleConnection.cpp in Sources */,
 				E7425653179F9A0A00B2F0A3 /* ParticleConnectionGenerator.cpp in Sources */,
 				E7425654179F9A0A00B2F0A3 /* ParticleConnector.cpp in Sources */,
-				E7BBB4E717A02BB5007D7EC1 /* keywordDichotomy.cpp in Sources */,
+				E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */,
 				E772443917A0B73100307AD1 /* CloudsVisualSystemFireworks.cpp in Sources */,
 				E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */,
 				E7D26E5317A2E14000652876 /* CloudsRGBDVideoPlayer.cpp in Sources */,

@@ -11,7 +11,7 @@
 #include "ofMain.h"
 #include "CloudsEvents.h"
 #include "ofxTimeline.h"
-#include "keywordDichotomy.h"
+#include "CloudsDichotomy.h"
 
 typedef enum {
     Clip =0,
@@ -76,13 +76,13 @@ class CloudsAct{
     
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     void addClip(CloudsClip clip, string topic, float startTime);    
-    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance);
+    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance);
     void addGapForVisualSystem(float startTime);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
 
-    vector<keywordDichotomy>& getDichotomiesForClip(string clipName);
+    vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
@@ -117,7 +117,7 @@ protected:
     void timelineEventFired(ofxTLBangEventArgs& bang);
     ActTimeItem dummy;
     CloudsClip dummyClip;
-    vector<keywordDichotomy> dummyDichotomies;
+    vector<CloudsDichotomy> dummyDichotomies;
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
@@ -126,7 +126,7 @@ protected:
     map<string, ActTimeItem> visualSystemItems;
     map< string, string> topicMap;
     map<string, CloudsClip> questionsMap;
-    map<string, vector<keywordDichotomy> > dichotomiesMap;
+    map<string, vector<CloudsDichotomy> > dichotomiesMap;
     float visualSystemDuration;
     
     ofxTLFlags* visualSystemsTrack;

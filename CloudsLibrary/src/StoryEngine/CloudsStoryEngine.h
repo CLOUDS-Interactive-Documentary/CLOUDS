@@ -7,7 +7,8 @@
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
 #include "ofxUI.h"
-#include "keywordDichotomy.h"
+#include "CloudsDichotomy.h"
+
 //typedef struct {
 //    string left;
 //    string right;
@@ -54,7 +55,7 @@ class CloudsStoryEngine {
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
 
-    vector<keywordDichotomy> getCurrentDichotomyBalance();
+    vector<CloudsDichotomy> getCurrentDichotomyBalance();
 
 //    CloudsAct& getAct();
     
@@ -76,7 +77,7 @@ protected:
 	float totalPoints;
 	int nextClipTopScore;
     int dichotomyThreshold;
-	vector<keywordDichotomy> dichotomies;
+	vector<CloudsDichotomy> dichotomies;
     
 	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic

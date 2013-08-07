@@ -146,7 +146,7 @@ float CloudsAct::getActDuration(){
 }
 
 
-vector<keywordDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
+vector<CloudsDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
     
     if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
         return dichotomiesMap[clipName];
@@ -198,7 +198,7 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<keywordDichotomy> currentDichotomiesBalance){
+void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;

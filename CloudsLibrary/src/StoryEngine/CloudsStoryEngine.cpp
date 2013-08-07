@@ -56,7 +56,7 @@ void CloudsStoryEngine::setup(){
 	if(!isSetup){
 		isSetup = true;
         
-        keywordDichotomy d;
+        CloudsDichotomy d;
         dichotomyThreshold = 3;
         
 		dichotomies.clear();
@@ -561,7 +561,8 @@ void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
     }
 }
 
-vector<keywordDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
+//intentionally by copy so that we can store them as we go
+vector<CloudsDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
     return dichotomies;
 }
 

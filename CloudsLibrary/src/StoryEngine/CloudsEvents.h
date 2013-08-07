@@ -4,7 +4,7 @@
 #include "ofMain.h"
 #include "CloudsClip.h"
 #include "CloudsVisualSystemPreset.h"
-#include "keywordDichotomy.h"
+#include "CloudsDichotomy.h"
 
 
 class CloudsAct;
@@ -18,14 +18,14 @@ class CloudsActEventArgs : public ofEventArgs {
 
 class CloudsClipEventArgs : public ofEventArgs {
   public:
-	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic, vector<keywordDichotomy>& currentDichotomiesBalance)
+	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic, vector<CloudsDichotomy>& currentDichotomiesBalance)
 		: chosenClip(chosenClip), currentTopic(currentTopic),currentDichotomiesBalance(currentDichotomiesBalance)
 	{
 		timeUntilNextClip = 0;
 	}
 	
 	CloudsClip& chosenClip;
-	vector<keywordDichotomy>& currentDichotomiesBalance;
+	vector<CloudsDichotomy>& currentDichotomiesBalance;
 	string currentTopic;
 	float timeUntilNextClip;
 };
