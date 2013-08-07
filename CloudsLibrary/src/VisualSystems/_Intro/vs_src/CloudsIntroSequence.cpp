@@ -8,7 +8,6 @@
 
 #include "CloudsIntroSequence.h"
 #include "ofxObjLoader.h"
-#include "CloudsGlobal.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
 		
@@ -19,7 +18,7 @@ CloudsIntroSequence::~CloudsIntroSequence(){
 }
 
 string CloudsIntroSequence::getSystemName(){
-	return "IntroSeqence";
+	return "_Intro";
 }
 
 void CloudsIntroSequence::selfSetup(){
@@ -32,14 +31,14 @@ void CloudsIntroSequence::selfSetup(){
 
 	setCurrentCamera(camera);
 	
-	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
-	ofxObjLoader::load(getDataPath() + "intro/OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
+	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
+	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
 	
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
 	
-	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
+	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
-	thinTypeMesh.load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.ply");
+	thinTypeMesh.load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thin_02.ply");
 	thinTypeMesh.clearColors();
 	
 	currentFontExtrusion = -1;
@@ -49,8 +48,8 @@ void CloudsIntroSequence::selfSetup(){
 }
 
 void CloudsIntroSequence::reloadShaders(){
-	tunnelShader.load(getDataPath() + "shaders/Intro/IntroTunnel");
-	chroma.load("",getDataPath() + "shaders/BarrelChromaAb.fs");
+	tunnelShader.load(getVisualSystemDataPath() + "shaders/IntroTunnel");
+	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
 }
 
 void CloudsIntroSequence::selfSetupGuis(){
@@ -60,13 +59,6 @@ void CloudsIntroSequence::selfSetupGuis(){
 }
 
 void CloudsIntroSequence::selfUpdate(){
-	
-	if(!fullscreenFbo.isAllocated() ||
-	   fullscreenFbo.getWidth() != ofGetWidth() ||
-	   fullscreenFbo.getHeight() != ofGetHeight())
-	{
-		fullscreenFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-	}
 	
 	camera.applyRotation = camera.applyTranslation = !cursorIsOverGUI();
 	
@@ -81,10 +73,18 @@ void CloudsIntroSequence::selfUpdate(){
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-	fullscreenFbo.begin();
 	
-	camera.begin();
+}
+
+void CloudsIntroSequence::drawCloudsType(){
 	
+}
+
+void CloudsIntroSequence::selfDrawDebug(){
+
+}
+
+void CloudsIntroSequence::selfDraw(){
 	glEnable(GL_DEPTH_TEST);
 	
 	ofClear(0);
@@ -97,19 +97,19 @@ void CloudsIntroSequence::selfDrawBackground(){
 	
 	ofRotate(180, 0, 1, 0);
 	ofScale(fontScale, fontScale, fontScale);
-//	ofSetColor(255);
-//	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
-//		cloudsTypeMesh.letters[i].front.drawFaces();
-//	}
+	//	ofSetColor(255);
+	//	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
+	//		cloudsTypeMesh.letters[i].front.drawFaces();
+	//	}
 	
 	thinTypeMesh.draw();
-
+	
 	//DRAW MESH
-//	thickTypeMesh.drawWireframe();
-//	ofEnableAlphaBlending();
-//	ofSetColor(255, 100);
-//	thickTypeMesh.draw();
-
+	//	thickTypeMesh.drawWireframe();
+	//	ofEnableAlphaBlending();
+	//	ofSetColor(255, 100);
+	//	thickTypeMesh.draw();
+	
 	ofPopMatrix();
 	
 	ofPushStyle();
@@ -119,13 +119,13 @@ void CloudsIntroSequence::selfDrawBackground(){
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
 	tunnelShader.setUniform1f("maxDistance", distanceRange.max);
-
+	
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
 	tunnelShader.setUniform1f("noiseDensity", perlinDensity);
 	perlinOffset += perlinSpeed;
 	tunnelShader.setUniform1f("noisePosition", perlinOffset);
 	
-//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	
 	ofSetColor(255);
 	tunnelMeshTight.drawVertices();
@@ -136,29 +136,18 @@ void CloudsIntroSequence::selfDrawBackground(){
 	tunnelShader.end();
 	ofPopStyle();
 	
-	fullscreenFbo.end();
-	
-	camera.end();
 	
 	
+	
+	
+}
+
+void CloudsIntroSequence::selfPostDraw(){
 	chroma.begin();
 	chroma.setUniform2f("resolution", ofGetWidth(),ofGetHeight());
 	chroma.setUniform1f("max_distort", maxChromaDistort);
-	fullscreenFbo.draw(0,ofGetHeight(),ofGetWidth(),-ofGetHeight());
+	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
-
-}
-
-void CloudsIntroSequence::drawCloudsType(){
-	
-}
-
-void CloudsIntroSequence::selfDrawDebug(){
-
-}
-
-void CloudsIntroSequence::selfDraw(){
-	
 }
 
 void CloudsIntroSequence::selfExit(){

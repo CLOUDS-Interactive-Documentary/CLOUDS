@@ -9,11 +9,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemRezanator.h"
+#include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
-//#include "ofxExtrudedText.h"
 
-class CloudsIntroSequence : public CloudsVisualSystemRezanator {
+class CloudsIntroSequence : public CloudsVisualSystem {
   public:
 	CloudsIntroSequence();
 	~CloudsIntroSequence();
@@ -39,6 +38,8 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
     virtual void selfMouseMoved(ofMouseEventArgs& data);
     virtual void selfMousePressed(ofMouseEventArgs& data);
     virtual void selfMouseReleased(ofMouseEventArgs& data);
+	
+	virtual void selfPostDraw();
     
     virtual void selfSetupSystemGui();
     virtual void guiSystemEvent(ofxUIEventArgs &e);
@@ -46,9 +47,11 @@ class CloudsIntroSequence : public CloudsVisualSystemRezanator {
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
 
-  protected:
+	virtual ofCamera& getCameraRef(){
+		return camera;
+	}
 	
-	ofFbo fullscreenFbo;
+  protected:
 	
 	float fontSize;
 	float fontExtrusion;

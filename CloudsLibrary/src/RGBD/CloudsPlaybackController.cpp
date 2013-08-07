@@ -405,8 +405,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	}
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
-	
-
 
 	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	

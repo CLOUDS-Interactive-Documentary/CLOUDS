@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "CloudsVisualSystemComputationTicker.h"
 #include "CloudsIntroSequence.h"
 
 class testApp : public ofBaseApp{
@@ -22,6 +21,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-//	CloudsVisualSystemComputationTicker computation;
 	CloudsIntroSequence intro;
 };

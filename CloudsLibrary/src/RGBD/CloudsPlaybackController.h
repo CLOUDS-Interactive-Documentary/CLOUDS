@@ -10,6 +10,7 @@
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
 
+#include "CloudsIntroSequence.h"
 
 #include "CloudsVisualSystemRGBD.h"
 
@@ -81,12 +82,13 @@ class CloudsPlaybackController {
 	
 	//RGBD STUFF
 	CloudsVisualSystemRGBD rgbdVisualSystem;
+	CloudsIntroSequence introSequence;
+	
 	string combinedMoviesFolder;
 	string currentTopic;
 	
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
-	
 	
 	string prerolledClipID;
 	void prerollClip(CloudsClip& clip, float toTime);
