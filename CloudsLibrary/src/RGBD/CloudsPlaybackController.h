@@ -27,7 +27,9 @@ class CloudsPlaybackController {
 	//set it up with an existing story engine that will register the events
 	void setup();
 	void setStoryEngine(CloudsStoryEngine& storyEngine);
-	void beginWithClip(); //auto play by creating new acts
+	
+	void showIntro(vector<CloudsClip>& possibleStartQuestions);
+	
 	void playAct(CloudsAct* act);
 
 	//update and draw to the screen, this will always
@@ -96,6 +98,7 @@ class CloudsPlaybackController {
 
 	//VISUAL SYSTEMS
 	//
+	bool showingIntro;
 	bool showingVisualSystem;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;

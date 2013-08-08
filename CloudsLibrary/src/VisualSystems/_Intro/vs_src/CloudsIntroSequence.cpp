@@ -10,7 +10,7 @@
 #include "ofxObjLoader.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
-		
+	selectedQuestion = NULL;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -29,7 +29,7 @@ void CloudsIntroSequence::selfSetup(){
 	camera.autosavePosition = true;
 	camera.loadCameraPosition();
 
-	setCurrentCamera(camera);
+//	setCurrentCamera(camera);
 	
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
@@ -70,6 +70,30 @@ void CloudsIntroSequence::selfUpdate(){
 //		cloudsTypeMesh.init(getDataPath() + "/font/materiapro_light.ttf", currentFontSize, currentFontExtrusion, "CLOUDS");
 	}
 
+}
+
+void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
+	
+	startQuestions.clear();
+	
+	for(int i = 0; i < possibleStartQuestions.size(); i++){
+		CloudsQuestion q;
+		q.cam = &camera;
+//		q.font = &displayFont;
+		q.clip = possibleStartQuestions[i];
+		q.topic = possibleStartQuestions[i].getAllTopicsWithQuestion()[0];
+		q.setup();
+		
+		startQuestions.push_back(q);
+	}
+}
+
+bool CloudsIntroSequence::isStartQuestionSelected(){
+	return selectedQuestion != NULL;
+}
+
+CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
+	return selectedQuestion;
 }
 
 void CloudsIntroSequence::selfDrawBackground(){

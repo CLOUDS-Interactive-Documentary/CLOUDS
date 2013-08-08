@@ -376,7 +376,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
         for(int k=0; k<nextOptions.size(); k++){
             
             if(nextOptions[k].getQuestionsVector().size() > 0 &&
-			   parser->clipLinksTo(clip.getLinkName(), nextOptions[k].getLinkName())){
+			   parser->clipLinksTo(clip.getLinkName(), nextOptions[k].getLinkName()))
+			{
 				act->addQuestion(nextOptions[k], totalSecondsEnqueued);
             }
         }

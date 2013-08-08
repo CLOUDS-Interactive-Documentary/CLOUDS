@@ -43,6 +43,7 @@ class CloudsClip {
     vector<string>& getSpecialKeywords();
     
     //question topic pairs
+	bool hasQuestion();
     map<string,string>& getAllQuestionTopicPairs();
     void addQuestionTopicPair(string topic, string question);
     string getQuestionForTopic(string topic);

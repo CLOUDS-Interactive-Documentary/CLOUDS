@@ -10,6 +10,9 @@ class CloudsQuestion {
 	
 	CloudsQuestion();
 		
+	CloudsClip clip; //must have a question
+	string topic;
+	
 	ofCamera* cam;
 	ofTrueTypeFont* font;
 	
@@ -22,7 +25,6 @@ class CloudsQuestion {
 	bool hovering;
 	float radius;
 	ofVec3f position;
-	CloudsClip clip; //must have a question
 	
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
@@ -30,8 +32,7 @@ class CloudsQuestion {
 	void mouseReleased(ofMouseEventArgs& args);
 	
   protected:
-	
-	
+
 	bool isSetup;
 	ofVec2f currentScreenPoint;
 	float screenRadius;

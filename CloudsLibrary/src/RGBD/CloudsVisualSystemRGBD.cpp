@@ -181,9 +181,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	updateTransition();
 }
 
-//--------------------------------------------------------------	
+//--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
-
 	CloudsQuestion* q = new CloudsQuestion();
 	q->cam = &cloudsCamera;
 	q->font = &displayFont;

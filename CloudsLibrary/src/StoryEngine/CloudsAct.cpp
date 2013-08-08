@@ -314,7 +314,7 @@ void CloudsAct::removeQuestionAtTime(float startTime, float duration){
     }
 }
 
-CloudsClip& CloudsAct :: getClipForQuestion(string question){
+CloudsClip& CloudsAct::getClipForQuestion(string question){
     if(questionsMap.find(question) == questionsMap.end()){
         ofLogError() << "Couldn't find Clip Item with Starting Question " << question;
         return dummyClip;

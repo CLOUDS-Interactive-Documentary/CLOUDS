@@ -55,7 +55,7 @@ void CloudsQuestion::draw(){
 
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
-		font->drawString( clip.getStartingQuestion(), currentScreenPoint.x, currentScreenPoint.y);
+		font->drawString( clip.getQuestionForTopic(topic), currentScreenPoint.x, currentScreenPoint.y);
 	}
 }
 

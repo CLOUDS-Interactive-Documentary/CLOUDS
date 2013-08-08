@@ -142,7 +142,14 @@ vector<string>& CloudsClip::getSpecialKeywords(){
     return specialKeywords;
 }
 
-map<string,string> &CloudsClip:: getAllQuestionTopicPairs(){
+bool CloudsClip::hasQuestion(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+	return questionTopicMap.size() > 0;
+}
+
+map<string,string>& CloudsClip::getAllQuestionTopicPairs(){
     if(keywordsDirty){
         collateKeywords();
     }
@@ -155,6 +162,7 @@ vector<string>& CloudsClip::getAllTopicsWithQuestion(){
     }
     return topicWithQuestions;
 }
+
 void CloudsClip::collateKeywords(){
     
     keywords = originalKeywords;
@@ -281,15 +289,12 @@ string CloudsClip::getQuestionForTopic(string topic){
 
 }
 
-vector<string> CloudsClip:: getQuestionsVector(){
-
+vector<string> CloudsClip::getQuestionsVector(){
     vector<string> questions;
-    
     map<string,string>::iterator it;
     for( it = questionTopicMap.begin(); it != questionTopicMap.end(); it++){
         questions.push_back(it->second);
     }
-    
     return questions;
 }
 

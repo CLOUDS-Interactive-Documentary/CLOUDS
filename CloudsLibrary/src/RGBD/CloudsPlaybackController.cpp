@@ -36,7 +36,6 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	}
 }
 
-
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
 	//LB
@@ -71,6 +70,8 @@ void CloudsPlaybackController::setup(){
 		rgbdVisualSystem.setup();
 		rgbdVisualSystem.setDrawToScreen( false );
 		
+		introSequence.setup();
+
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1000;
 		fadeStartTime = ofGetElapsedTimef();
@@ -92,6 +93,14 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 	}
 	ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	this->storyEngine = &storyEngine;
+}
+
+void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
+//	srand( ofGetSeconds()*1000 );
+//	CloudsClip& clip = parser.getRandomClip(true,true);
+	introSequence.setStartQuestions(possibleStartQuestions);
+	introSequence.playSystem();
+	showingIntro = true;
 }
 
 //--------------------------------------------------------------------
@@ -143,6 +152,24 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 void CloudsPlaybackController::update(ofEventArgs & args){
 	
 	updateVisualSystemCrossFade();
+	
+	if(showingIntro){
+		if(introSequence.isStartQuestionSelected()){
+			
+			CloudsQuestion* q = introSequence.getSelectedQuestion();
+			CloudsClip& clip = q->clip;
+			
+			//ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+			
+			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+			if(questionsAndTopics.size() > 0){
+				showingIntro = false;				
+				storyEngine->buildAct(clip, q->topic );
+
+			}
+			//Transition out of the act into the loading screen.
+		}
+	}
 	
 	//TODO: add camera animations to RGBDVisSYs
 	

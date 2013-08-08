@@ -2452,8 +2452,8 @@
 		E785F84D17B287B8002371FC /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E785F84E17B287B8002371FC /* CloudsIntroSequence.cpp */,
 				E785F84F17B287B8002371FC /* CloudsIntroSequence.h */,
+				E785F84E17B287B8002371FC /* CloudsIntroSequence.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

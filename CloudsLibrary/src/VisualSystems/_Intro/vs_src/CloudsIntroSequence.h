@@ -11,6 +11,8 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
+#include "CloudsClip.h"
+#include "CloudsQuestion.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -51,7 +53,15 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 		return camera;
 	}
 	
+	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
+	bool isStartQuestionSelected();
+	CloudsQuestion* getSelectedQuestion();
+
   protected:
+	
+	
+	vector<CloudsQuestion> startQuestions;
+	CloudsQuestion* selectedQuestion;
 	
 	float fontSize;
 	float fontExtrusion;
