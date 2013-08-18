@@ -26,23 +26,23 @@ void testApp::setup(){
 	
 	visualSystems.populateVisualSystems();
  	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "Cities", "LightCity" );
-	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "Fireworks", "Fireworks"	);
+	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "Fireworks", "fw_1"	);
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( preset2, 5, 7 );
+	act->addVisualSystem( preset0, 3, 5 );
 	
-	act->addVisualSystem( preset2, 20, 4 );
+	act->addVisualSystem( preset0, 12, 4 );
 	
-	act->addVisualSystem( preset2, 40, 10 );
+	act->addVisualSystem( preset0, 40, 10 );
 	
 	act->populateTime();
 	
 	player.playAct(act);
+	
 }
 
 //--------------------------------------------------------------

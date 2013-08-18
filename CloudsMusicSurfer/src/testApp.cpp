@@ -41,43 +41,11 @@ void testApp::setup(){
     MASTERTEMPO = 0.125;
     AUTORUN = 0;
 
-    char sb [2];
-    string s;
-    startbutton.init("start", &theFont, 200, 450, 0, 255, 0);
-    stopbutton.init("stop", &theFont, 600, 450, 255, 0, 0);
-    stopbutton.state = true;
-    autobutton.init("auto", &theFont, 400, 450, 96, 96, 255);
-    for(int i = 0;i<16;i++)
-    {   
-        lukeButton c;
-        sprintf(sb, "%.2i", i+1);
-        s = sb;
-        c.init(s, &theFont, 50 + i*30, 100, 192, 192, 64);
-        colorbutton.push_back(c);
-    }
-    colorbutton[0].state = true;
-    mcolor = 0;
-    for(int i = 0;i<16;i++)
-    {   
-        lukeButton c;
-        sprintf(sb, "%.2i", i+1);
-        s = sb;
-        c.init(s, &theFont, 50 + i*30, 150, 192, 64, 192);
-        harmonybutton.push_back(c);
-    }
-    harmonybutton[0].state = true;
-    mharmony = 0;
-    for(int i = 0;i<16;i++)
-    {   
-        lukeButton c;
-        sprintf(sb, "%.2i", i+1);
-        s = sb;
-        c.init(s, &theFont, 50 + i*30, 200, 64, 192, 192);
-        rhythmbutton.push_back(c);
-    }
-    rhythmbutton[0].state = true;
-    mrhythm = 0;
+    // THE LINE BELOW CAUSES A LINKER ERROR IF YOU UNCOMMENT:
+    //LOADSOUND("RTCMIX/samps/BD.aif", "BD");
 
+    pushInterface();
+    
 }
 
 //--------------------------------------------------------------
@@ -90,7 +58,7 @@ void testApp::draw(){
     
     // draw some shit
     ofSetColor(255,255,0); 
-    ofDrawBitmapString("Luke's Music Tester", 20, 20); 
+    ofDrawBitmapString("Luke's CLOUDS Music Tester", 20, 20); 
     
     // buttons and labels
     startbutton.draw();
@@ -111,6 +79,11 @@ void testApp::draw(){
     for(int i = 0;i<colorbutton.size();i++)
     {
         rhythmbutton[i].draw();
+    }
+    theFont.drawString("preset:", 50,230);        
+    for(int i = 0;i<presetbutton.size();i++)
+    {
+        presetbutton[i].draw();
     }
 
     theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
@@ -196,6 +169,7 @@ void testApp::keyPressed(int key){
 void testApp::keyReleased(int key){
     if (key == 'l'){
         loadRTcmixFiles();
+        pushInterface();
     }
     if (key == OF_KEY_DOWN)
     {
@@ -285,6 +259,26 @@ void testApp::mouseReleased(int x, int y, int button){
             mrhythm = i;
         }
     }
+    for(int i = 0;i<presetbutton.size();i++)
+    {
+        p = presetbutton[i].test(x, y);
+        if(p)
+        {
+            colorbutton[mcolor].state = false;
+            mcolor = presets[i].color;
+            colorbutton[mcolor].state = true;
+            harmonybutton[mharmony].state = false;
+            mharmony = presets[i].harmony;
+            harmonybutton[mharmony].state = true;
+            rhythmbutton[mrhythm].state = false;
+            mrhythm = presets[i].rhythm;
+            rhythmbutton[mrhythm].state = true;
+            MASTERTEMPO = presets[i].tempo;
+            
+            
+            
+        }
+    }
     
 }
 
@@ -300,6 +294,59 @@ void testApp::gotMessage(ofMessage msg){
 
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
+
+}
+
+void testApp::pushInterface()
+{
+    char sb [2];
+    string s;
+    startbutton.init("start", &theFont, 200, 450, 0, 255, 0);
+    stopbutton.init("stop", &theFont, 600, 450, 255, 0, 0);
+    stopbutton.state = true;
+    autobutton.init("auto", &theFont, 400, 450, 96, 96, 255);
+    colorbutton.clear();
+    for(int i = 0;i<colors.size();i++)
+    {   
+        lukeButton c;
+        sprintf(sb, "%.2i", i+1);
+        s = sb;
+        c.init(s, &theFont, 50 + i*30, 100, 192, 192, 64);
+        colorbutton.push_back(c);
+    }
+    colorbutton[0].state = true;
+    mcolor = 0;
+    harmonybutton.clear();
+    for(int i = 0;i<pitches.size();i++)
+    {   
+        lukeButton c;
+        sprintf(sb, "%.2i", i+1);
+        s = sb;
+        c.init(s, &theFont, 50 + i*30, 150, 192, 64, 192);
+        harmonybutton.push_back(c);
+    }
+    harmonybutton[0].state = true;
+    mharmony = 0;
+    rhythmbutton.clear();
+    for(int i = 0;i<rhythms.size();i++)
+    {   
+        lukeButton c;
+        sprintf(sb, "%.2i", i+1);
+        s = sb;
+        c.init(s, &theFont, 50 + i*30, 200, 64, 192, 192);
+        rhythmbutton.push_back(c);
+    }
+    rhythmbutton[0].state = true;
+    mrhythm = 0;
+    presetbutton.clear();
+    for(int i = 0;i<presets.size();i++)
+    {   
+        lukeButton c;
+        sprintf(sb, "%.2i", i+1);
+        s = sb;
+        c.init(s, &theFont, 50 + i*30, 250, 255, 255, 255);
+        presetbutton.push_back(c);
+    }
 
 }
 
@@ -337,7 +384,18 @@ void testApp::loadRTcmixFiles()
         }
         cout << endl;
     }
-    
+
+    loadpresets("presets.txt", presets);
+    cout << "presets:" << endl;
+    for(int i = 0;i<presets.size();i++)
+    {
+        cout << presets[i].color << " ";
+        cout << presets[i].harmony << " ";
+        cout << presets[i].rhythm << " ";
+        cout << presets[i].tempo << " ";
+        cout << endl;
+    }
+
 
 }
 

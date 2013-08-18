@@ -6,6 +6,7 @@
 //#include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
+#include "ofxGameCamera.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -45,8 +46,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 	
+	
+	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){
-		return  cloudsCamera;
+		if(currentCamera != NULL)	return  *currentCamera;
+		return cloudsCamera;
 	}
 
 	void transitionIn( RGBDTransitionType transitionType, float duration, float startTime=ofGetElapsedTimef() );
@@ -63,9 +67,16 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void transitionIn( ofNode& targetNode, float duration, float startTime );
 	void transitionOut( ofNode& startNode, float duration, float startTime );
 	
-	ofNode oldCamNode;
-	
 	bool drawTransitionNodes;
+	
+	void lookThroughTransitionIn();
+	void lookThroughTransitionOut();
+//	ofEasyCam transitionCam;
+	ofxGameCamera transitionCam;
+	ofNode* transitionCamTargetNode;
+	
+	void printTransitionNodes();
+	void setTransitionNodes( RGBDTransitionType transitionType );
 
   protected:
 
