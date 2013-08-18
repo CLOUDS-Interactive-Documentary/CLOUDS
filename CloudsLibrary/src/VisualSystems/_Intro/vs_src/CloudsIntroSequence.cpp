@@ -73,7 +73,8 @@ void CloudsIntroSequence::selfUpdate(){
 }
 
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
-	
+
+	selectedQuestion = NULL;
 	startQuestions.clear();
 	
 	for(int i = 0; i < possibleStartQuestions.size(); i++){
@@ -106,6 +107,14 @@ void CloudsIntroSequence::drawCloudsType(){
 
 void CloudsIntroSequence::selfDrawDebug(){
 
+}
+
+void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
+	//testing for now
+	CloudsVisualSystem::timelineBangEvent(args);
+	if(args.flag == "TriggerQ"){
+		selectedQuestion = &startQuestions[0];
+	}
 }
 
 void CloudsIntroSequence::selfDraw(){
@@ -159,10 +168,6 @@ void CloudsIntroSequence::selfDraw(){
 	
 	tunnelShader.end();
 	ofPopStyle();
-	
-	
-	
-	
 	
 }
 

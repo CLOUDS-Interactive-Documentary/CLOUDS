@@ -491,7 +491,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	ofPopMatrix();
 	
 	
-	if(drawTransitionNodes){
+	if(false && drawTransitionNodes){
 		ofPushStyle();
 		ofSetColor( 255, 255, 0 );
 		ofPushMatrix();

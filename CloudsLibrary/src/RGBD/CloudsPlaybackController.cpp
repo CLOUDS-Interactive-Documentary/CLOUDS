@@ -71,6 +71,7 @@ void CloudsPlaybackController::setup(){
 		rgbdVisualSystem.setDrawToScreen( false );
 		
 		introSequence.setup();
+		introSequence.loadPresetGUISFromName("SimpleFlyThrough");
 
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1000;
@@ -164,10 +165,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
+				introSequence.stopSystem();
 				storyEngine->buildAct(clip, q->topic );
 
 			}
 			//Transition out of the act into the loading screen.
+
 		}
 	}
 	
@@ -322,6 +325,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	rgbdVisualSystem.playSystem();
+	rgbdVisualSystem.loadPresetGUISFromName("Test_");
 	//this has to draw last
 //	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
 //	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
@@ -446,9 +450,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	showingVisualSystem = true;
 	
 	currentVisualSystem = nextVisualSystem.system;
-	
-//	currentVisualSystem->setRGBDCamera( ofCamera(rgbdCamera) );
-	
+		
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	transitionRgbdSystemOut( 3, 3 );// transitionDuration, transitionDuration );

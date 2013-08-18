@@ -28,6 +28,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     virtual void selfDrawBackground();
     virtual void selfDrawDebug();
 
+	virtual void timelineBangEvent(ofxTLBangEventArgs& args);
+	
     virtual void selfDraw();
     virtual void selfExit();
     virtual void selfBegin();
