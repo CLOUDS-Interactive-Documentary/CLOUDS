@@ -17,13 +17,19 @@ class CloudsQuestion {
 	ofCamera* cam;
 	ofTrueTypeFont* font;
 	
+	float secondsToWriteQuestion;
+	float secondsToConsiderSelected;
+	
 	void setup();
 	
 	void draw();
 	void drawOverlay();
 	void update();
 	
-	bool hovering;
+	void startHovering();
+	void stopHovering();
+	bool isSelected();
+	
 	float radius;
 	ofVec3f position;
 	
@@ -39,6 +45,9 @@ class CloudsQuestion {
 	
   protected:
 
+	float hoveringStartTime;
+	
 	bool isSetup;
+	bool hovering;
 	float screenRadius;
 };

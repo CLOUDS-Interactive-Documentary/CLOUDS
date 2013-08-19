@@ -14,6 +14,9 @@ CloudsQuestion::CloudsQuestion(){
 	radius = 10;
 	cam = NULL;
 	introQuestion = false;
+	secondsToWriteQuestion = 4;
+	secondsToConsiderSelected = 10;
+	font = NULL;
 }
 
 void CloudsQuestion::setup(){
@@ -55,10 +58,35 @@ void CloudsQuestion::draw(){
 	ofPopStyle();
 }
 
+void CloudsQuestion::startHovering(){
+	if(!hovering){
+		hovering = true;
+		hoveringStartTime = ofGetElapsedTimef();
+	}
+}
+
+void CloudsQuestion::stopHovering(){
+	hovering = false;
+}
+
+bool CloudsQuestion::isSelected(){
+	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
+}
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
-		font->drawString( clip.getQuestionForTopic(topic), currentScreenPoint.x, currentScreenPoint.y);
+
+		int charactersToType = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
+		string substring = question.substr(0, charactersToType);
+//		cout << "hovering overlay should draw " << charactersToType << " of (" << question << ")" << endl;
+		if(font != NULL){
+			font->drawString( substring, currentScreenPoint.x, currentScreenPoint.y);
+		}
+		else{
+			ofDrawBitmapString(substring, currentScreenPoint);
+		}
 	}
+	
+	//TODO draw selection progress bar
 }
 
 void CloudsQuestion::mousePressed(ofMouseEventArgs& args){

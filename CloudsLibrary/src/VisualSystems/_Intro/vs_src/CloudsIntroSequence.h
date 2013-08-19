@@ -43,6 +43,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     virtual void selfMousePressed(ofMouseEventArgs& data);
     virtual void selfMouseReleased(ofMouseEventArgs& data);
 	
+	virtual void selfDrawOverlay();
 	virtual void selfPostDraw();
 
 	virtual void selfGuiEvent(ofxUIEventArgs &e);
@@ -80,6 +81,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	float questionTugMinDistance;
 	float questionTugMaxDistance;
+	
+	ofTrueTypeFont font;
 	
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;

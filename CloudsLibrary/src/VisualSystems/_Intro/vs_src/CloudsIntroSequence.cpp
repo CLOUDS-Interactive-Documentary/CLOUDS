@@ -8,6 +8,7 @@
 
 #include "CloudsIntroSequence.h"
 #include "ofxObjLoader.h"
+#include "CloudsGlobal.h"
 
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
@@ -25,6 +26,8 @@ string CloudsIntroSequence::getSystemName(){
 
 void CloudsIntroSequence::selfSetup(){
 
+	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	
 	perlinOffset = 0;
 	
 	camera.setup();
@@ -93,6 +96,7 @@ void CloudsIntroSequence::selfUpdate(){
 					//startQuestions[i].position.z += (1. - (distanceToQuestion / questionTugMinDistance) ) * cameraForwardSpeed;
 					if(distanceToQuestion < questionTugMinDistance){
 						caughtQuestion = &startQuestions[i];
+						caughtQuestion->startHovering();
 					}
 				}
 				
@@ -101,6 +105,7 @@ void CloudsIntroSequence::selfUpdate(){
 			else if(caughtQuestion == &startQuestions[i]){
 				startQuestions[i].position.z += cameraForwardSpeed;
 				if(distanceToQuestion > questionTugMinDistance){
+					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
 				}
 			}
@@ -126,7 +131,7 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		CloudsQuestion q;
 		q.cam = &warpCamera;
-//		q.font = &displayFont;
+		q.font = &font;
 		q.clip = possibleStartQuestions[i];
 		q.topic = q.clip.getAllTopicsWithQuestion()[0];
 		q.question = q.clip.getQuestionForTopic(q.topic);
@@ -155,7 +160,7 @@ CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-	
+
 }
 
 void CloudsIntroSequence::drawCloudsType(){
@@ -248,6 +253,12 @@ void CloudsIntroSequence::selfDraw(){
 	glPointSize(1);
 	ofPopStyle();
 	
+}
+
+void CloudsIntroSequence::selfDrawOverlay(){
+	for(int i = 0; i < startQuestions.size(); i++){
+		startQuestions[i].drawOverlay();
+	}
 }
 
 void CloudsIntroSequence::selfPostDraw(){
