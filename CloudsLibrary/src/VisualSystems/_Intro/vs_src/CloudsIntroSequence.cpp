@@ -158,6 +158,10 @@ void CloudsIntroSequence::generateTunnel(){
 
 	// loose tunnel, with lines
 	tunnelMeshLoose.clear();
+	float looseTunnelStepZ = tunnelMax.z / looseTunnelResolutionZ;
+	float looseTunnelStepY = tunnelMax.y / looseTunnelResolutionX;
+	float looseTunnelStepX = tunnelMax.x / looseTunnelResolutionX;
+	
 	for(float z = 0; z < tunnelMax.z; z += looseTunnelStepZ){
 		//add invisible connector point
 		tunnelMeshLoose.addColor(ofFloatColor(0,0));
@@ -169,7 +173,7 @@ void CloudsIntroSequence::generateTunnel(){
 			tunnelMeshLoose.addVertex(ofVec3f(x,-tunnelMax.y,z));
 		}
 		//draw right side
-		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += looseTunnelStepX){
+		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += looseTunnelStepY){
 			tunnelMeshLoose.addColor(ofFloatColor::white);
 			tunnelMeshLoose.addVertex(ofVec3f(tunnelMax.x,y,z));
 		}
@@ -179,7 +183,7 @@ void CloudsIntroSequence::generateTunnel(){
 			tunnelMeshLoose.addVertex(ofVec3f(x,tunnelMax.y,z));
 		}
 		//draw the left side
-		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= looseTunnelStepX){
+		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= looseTunnelStepY){
 			tunnelMeshLoose.addColor(ofFloatColor::white);
 			tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,y,z));
 		}
@@ -188,6 +192,9 @@ void CloudsIntroSequence::generateTunnel(){
 	}
 	tunnelMeshLoose.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
+	float tightTunnelStepZ = tunnelMax.z / tightTunnelResolutionZ;
+	float tightTunnelStepY = tunnelMax.y / tightTunnelResolutionX;
+	float tightTunnelStepX = tunnelMax.x / tightTunnelResolutionX;
 	// tight tunnel, dots only
 	tunnelMeshTight.clear();
 	for(float z = 0; z < tunnelMax.z; z += tightTunnelStepZ){
@@ -196,7 +203,7 @@ void CloudsIntroSequence::generateTunnel(){
 			tunnelMeshTight.addVertex(ofVec3f(x,-tunnelMax.y,z));
 		}
 		//draw right side
-		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += tightTunnelStepX){
+		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += tightTunnelStepY){
 			tunnelMeshTight.addVertex(ofVec3f(tunnelMax.x,y,z));
 		}
 		//draw bottom
@@ -204,15 +211,14 @@ void CloudsIntroSequence::generateTunnel(){
 			tunnelMeshTight.addVertex(ofVec3f(x,tunnelMax.y,z));
 		}
 		//draw the left side
-		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= tightTunnelStepX){
+		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= tightTunnelStepY){
 			tunnelMeshTight.addVertex(ofVec3f(-tunnelMax.x,y,z));
 		}
-	}
-	
+	}	
 }
 
 void CloudsIntroSequence::positionStartQuestions(){
-	cout << "current z wrap is " << questionWrapDistance << endl;
+
 	//set the start questions along a random tunnel
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].position = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
@@ -486,10 +492,10 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->addSlider("Tunnel Height", 10, 25, &tunnelMax.y);
 	tunnelGui->addSlider("Tunnel Depth",  100, 200, &tunnelMax.z);
 
-	tunnelGui->addSlider("Tight Step X", .5, 5, &tightTunnelStepX);
-	tunnelGui->addSlider("Tight Step Z", .5, 5, &tightTunnelStepZ);
-	tunnelGui->addSlider("Loose Step X", 2, 20, &looseTunnelStepX);
-	tunnelGui->addSlider("Loose Step Z", 2, 20, &looseTunnelStepZ);
+	tunnelGui->addSlider("Tight Rez X", 10, 200, &tightTunnelResolutionX);
+	tunnelGui->addSlider("Tight Rez Z", 10, 200, &tightTunnelResolutionZ);
+	tunnelGui->addSlider("Loose Rez X", 10, 200, &looseTunnelResolutionX);
+	tunnelGui->addSlider("Loose Rez Z", 10, 200, &looseTunnelResolutionZ);
 	tunnelGui->addButton("generate tunnel", false);
 	
 	ofAddListener(tunnelGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
