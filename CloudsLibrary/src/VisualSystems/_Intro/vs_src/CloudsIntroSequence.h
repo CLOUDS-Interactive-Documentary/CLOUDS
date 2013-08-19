@@ -74,14 +74,19 @@ class CloudsIntroSequence : public CloudsVisualSystem {
   protected:
 	
 	ofxUISuperCanvas* questionGui;
+	ofxUISuperCanvas* tunnelGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
 	float cameraForwardSpeed;
 	
+	float questionTugMinDepth;
 	float questionTugMinDistance;
 	float questionTugMaxDistance;
+	float questionSize;
+	float questionTunnelInnerRadius;
 	
+	//TODO pick a better font renderer
 	ofTrueTypeFont font;
 	
 	void positionStartQuestions();
@@ -98,7 +103,10 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	float perlinOffset;
 	float wireframeAlpha;
+	
 	void reloadShaders();
+	bool paused;
+	void pauseAtBeginning();
 	
 	ofMesh blocksMesh;
 	ofMesh tunnelMeshTight;
@@ -109,6 +117,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofCamera warpCamera;
 	
 	ofShader tunnelShader;
+	ofShader questionShader;
 	ofShader chroma;
 	
 	ofRange pointSize;	
@@ -127,8 +136,16 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
+	
+	void generateTunnel();
+	float tightTunnelStepX;
+	float tightTunnelStepZ;
+	float looseTunnelStepX;
+	float looseTunnelStepZ;
+	
 //	ofxExtrudedText cloudsTypeMesh;
 	ofMesh thickTypeMesh;
 	ofMesh thinTypeMesh;
+
 
 };

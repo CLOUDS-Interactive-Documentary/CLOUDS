@@ -25,6 +25,12 @@ void CloudsQuestion::setup(){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
 		
+
+		geometry.addVertex(ofVec3f(-.5,-.5,0) * 4) ;
+		geometry.addVertex(ofVec3f(.5,-.5,0)* 4);
+		geometry.addVertex(ofVec3f(.5,.5,0)* 4);
+		geometry.addVertex(ofVec3f(-.5,.5,0)* 4);
+		geometry.setMode(OF_PRIMITIVE_LINE_LOOP);
 	}
 }
 
@@ -50,9 +56,10 @@ void CloudsQuestion::draw(){
 	
 	ofPushMatrix();
 	ofTranslate(position);
-	ofRotate(ofGetFrameNum(), 0, 1, 0);
-	
-	ofCircle(0,0,radius);
+	ofRotate(ofGetFrameNum()*4, 0, 1, 0);
+//	ofScale(radius, radius);
+	geometry.draw();
+	//ofCircle(0,0,radius);
 
 	ofPopMatrix();
 
@@ -88,11 +95,35 @@ void CloudsQuestion::drawOverlay(){
 			ofDrawBitmapString(substring, currentScreenPoint);
 		}
 
+//		ofVec3f currentScreenPoint3d(currentScreenPoint.x,currentScreenPoint.y,0);
+		
 		ofPushStyle();
+		ofMesh progress;
+		progress.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		
+		progress.addVertex(ofVec3f(currentScreenPoint.x,currentScreenPoint.y+5,0));
+		progress.addVertex(ofVec3f(currentScreenPoint.x,currentScreenPoint.y+10,0));
+		
 		float width = font->stringWidth(question);
 		float percentToSelection = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true);
+		
+		progress.addVertex(ofVec3f(currentScreenPoint.x + width*percentToSelection + 5, currentScreenPoint.y+5,0));
+		progress.addVertex(ofVec3f(currentScreenPoint.x + width*percentToSelection, currentScreenPoint.y+10,0));
+
+		progress.addColor(ofFloatColor::white * .7);
+		progress.addColor(ofFloatColor::white * .7);
+		
+		float oscatten = sin(ofGetElapsedTimef()*10)*.5+.5;
+		ofFloatColor flash = ofFloatColor::white.getLerped(ofFloatColor::crimson, percentToSelection*oscatten);
+		progress.addColor(flash);
+		progress.addColor(flash);
+		progress.draw();
+		
+		ofSetColor(ofFloatColor::crimson);
 		ofSetLineWidth(3);
-		ofLine(currentScreenPoint, (currentScreenPoint + ofVec2f(width*percentToSelection,0)));
+		ofLine(currentScreenPoint.x + width, currentScreenPoint.y+5,
+			   currentScreenPoint.x + width, currentScreenPoint.y+10);
+		
 		ofPopStyle();
 	}
 }
@@ -102,12 +133,11 @@ void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
 }
 
 void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
-	if(cam == NULL){
-		return;
-	}
-	
+//	if(cam == NULL){
+//		return;
+//	}
 
-	hovering = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+//	hovering = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
 }
 
 void CloudsQuestion::mouseReleased(ofMouseEventArgs& args){

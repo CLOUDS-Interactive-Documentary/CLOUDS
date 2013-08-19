@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Tunnel</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>326.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Tunnel Width</Name>
+    <Value>20.788167953</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Tunnel Height</Name>
+    <Value>10.886694908</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Tunnel Depth</Name>
+    <Value>180.788146973</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Tight Step X</Name>
+    <Value>0.655171037</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Tight Step Z</Name>
+    <Value>0.921180904</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loose Step X</Name>
+    <Value>9.714281082</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loose Step Z</Name>
+    <Value>12.019699097</Value>
+</Widget>

@@ -39,6 +39,8 @@ class CloudsQuestion {
 	void mouseDragged(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
 
+	ofMesh geometry;
+	
 	ofVec2f currentScreenPoint;
 
 	//intro question variables

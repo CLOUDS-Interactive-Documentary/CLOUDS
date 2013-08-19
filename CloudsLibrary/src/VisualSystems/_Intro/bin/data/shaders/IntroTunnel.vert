@@ -142,7 +142,6 @@ void main(void)
 							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
 	
 	vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
-//	pos = gl_Vertex;
 	
 	gl_Position = gl_ModelViewProjectionMatrix * pos;
 	

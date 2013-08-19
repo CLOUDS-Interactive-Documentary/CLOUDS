@@ -14,6 +14,7 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
 	showingQuestions = false;
 	useDebugCamera = false;
+	paused = false;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -34,9 +35,9 @@ void CloudsIntroSequence::selfSetup(){
 	camera.autosavePosition = true;
 	camera.loadCameraPosition();
 	
-	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
-	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
-
+//	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
+//	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
+	
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
 	
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
@@ -49,22 +50,26 @@ void CloudsIntroSequence::selfSetup(){
 	currentFontSize = -1;
 	
 	reloadShaders();
+
 }
 
 void CloudsIntroSequence::selfPresetLoaded(string presetPath){
-	tunnelMax = tunnelMin = tunnelMeshLoose.getVertices()[0];
-	for(int i = 1; i < tunnelMeshLoose.getVertices().size(); i++){
-		tunnelMax = ofVec3f(MAX(tunnelMax.x, tunnelMeshLoose.getVertices()[i].x),
-							MAX(tunnelMax.y, tunnelMeshLoose.getVertices()[i].y),
-							MAX(tunnelMax.z, tunnelMeshLoose.getVertices()[i].z));
-		tunnelMin = ofVec3f(MIN(tunnelMin.x, tunnelMeshLoose.getVertices()[i].x),
-							MIN(tunnelMin.y, tunnelMeshLoose.getVertices()[i].y),
-							MIN(tunnelMin.z, tunnelMeshLoose.getVertices()[i].z));
-	}
+//	tunnelMax = tunnelMin = tunnelMeshLoose.getVertices()[0];
+//	for(int i = 1; i < tunnelMeshLoose.getVertices().size(); i++){
+//		tunnelMax = ofVec3f(MAX(tunnelMax.x, tunnelMeshLoose.getVertices()[i].x),
+//							MAX(tunnelMax.y, tunnelMeshLoose.getVertices()[i].y),
+//							MAX(tunnelMax.z, tunnelMeshLoose.getVertices()[i].z));
+//		tunnelMin = ofVec3f(MIN(tunnelMin.x, tunnelMeshLoose.getVertices()[i].x),
+//							MIN(tunnelMin.y, tunnelMeshLoose.getVertices()[i].y),
+//							MIN(tunnelMin.z, tunnelMeshLoose.getVertices()[i].z));
+//	}
+//
+	
+	generateTunnel();
 	
 	cout << "Tunnel min is " << tunnelMin << " tunnel max is " << tunnelMax << endl;
 	
-	warpCamera.setPosition(0, 0, tunnelMin.z);
+	warpCamera.setPosition(0, 0, -tunnelMax.z);
 	warpCamera.lookAt(ofVec3f(0,0,0));
 	
 	positionStartQuestions();
@@ -72,6 +77,7 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 
 void CloudsIntroSequence::reloadShaders(){
 	tunnelShader.load(getVisualSystemDataPath() + "shaders/IntroTunnel");
+	questionShader.load(getVisualSystemDataPath() + "shaders/Question");
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
 }
 
@@ -79,16 +85,19 @@ void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	
-	warpCamera.dolly(-cameraForwardSpeed);
+	if(!paused){
+		warpCamera.dolly(-cameraForwardSpeed);
+	}
 	
 	ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
 	for(int i = 0; i < startQuestions.size(); i++){
+		
 		startQuestions[i].update();
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
 		
-		if(startQuestions[i].position.z - warpCamera.getPosition().z < distanceRange.max){
+		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance){
@@ -99,7 +108,6 @@ void CloudsIntroSequence::selfUpdate(){
 						caughtQuestion->startHovering();
 					}
 				}
-				
 			}
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &startQuestions[i]){
@@ -145,10 +153,69 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 	}
 }
 
+void CloudsIntroSequence::generateTunnel(){
+
+	// loose tunnel, with lines
+	tunnelMeshLoose.clear();
+	for(float z = -tunnelMax.z; z <= tunnelMax.z; z += looseTunnelStepZ){
+		//add invisible connector point
+		tunnelMeshLoose.addColor(ofFloatColor(0,0));
+		tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,-tunnelMax.y, z));
+		
+		//draw the top
+		for(float x = -tunnelMax.x; x <= tunnelMax.x; x += looseTunnelStepX){
+			tunnelMeshLoose.addColor(ofFloatColor::white);
+			tunnelMeshLoose.addVertex(ofVec3f(x,-tunnelMax.y,z));
+		}
+		//draw right side
+		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += looseTunnelStepX){
+			tunnelMeshLoose.addColor(ofFloatColor::white);
+			tunnelMeshLoose.addVertex(ofVec3f(tunnelMax.x,y,z));
+		}
+		//draw bottom
+		for(float x = tunnelMax.x; x >= -tunnelMax.x; x -= looseTunnelStepX){
+			tunnelMeshLoose.addColor(ofFloatColor::white);
+			tunnelMeshLoose.addVertex(ofVec3f(x,tunnelMax.y,z));
+		}
+		//draw the left side
+		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= looseTunnelStepX){
+			tunnelMeshLoose.addColor(ofFloatColor::white);
+			tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,y,z));
+		}
+		tunnelMeshLoose.addColor(ofFloatColor(0,0));
+		tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,-tunnelMax.y, z));
+	
+	}
+	tunnelMeshLoose.setMode(OF_PRIMITIVE_LINE_STRIP);
+	
+	// tight tunnel, dots only
+	tunnelMeshTight.clear();
+	for(float z = -tunnelMax.z; z <= tunnelMax.z; z += tightTunnelStepZ){
+		//draw the top
+		for(float x = -tunnelMax.x; x <= tunnelMax.x; x += tightTunnelStepX){
+			tunnelMeshTight.addVertex(ofVec3f(x,-tunnelMax.y,z));
+		}
+		//draw right side
+		for(float y = -tunnelMax.y; y <= tunnelMax.y; y += tightTunnelStepX){
+			tunnelMeshTight.addVertex(ofVec3f(tunnelMax.x,y,z));
+		}
+		//draw bottom
+		for(float x = tunnelMax.x; x >= -tunnelMax.x; x -= tightTunnelStepX){
+			tunnelMeshTight.addVertex(ofVec3f(x,tunnelMax.y,z));
+		}
+		//draw the left side
+		for(float y = tunnelMax.y; y >= -tunnelMax.y; y -= tightTunnelStepX){
+			tunnelMeshTight.addVertex(ofVec3f(-tunnelMax.x,y,z));
+		}
+	}
+	
+}
+
 void CloudsIntroSequence::positionStartQuestions(){
+	cout << "current z wrap is " << questionWrapDistance << endl;
 	//set the start questions along a random tunnel
 	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].position = ofVec3f(0,ofRandom(0, tunnelMax.y), 0);
+		startQuestions[i].position = ofVec3f(0, ofRandom(questionTunnelInnerRadius, tunnelMax.y), 0);
 		startQuestions[i].position.rotate(ofRandom(360), ofVec3f(0,0,1));
 		startQuestions[i].position.z = tunnelMax.z + ofRandom(questionWrapDistance);
 	}
@@ -229,7 +296,7 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelMeshTight.drawVertices();
 	
 	ofSetColor(255*wireframeAlpha);
-	tunnelMeshLoose.drawWireframe();
+	tunnelMeshLoose.draw();
 
 	tunnelShader.end();
 		
@@ -241,14 +308,18 @@ void CloudsIntroSequence::selfDraw(){
 	ofSetColor(255);
 	
 	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
-	
+	questionShader.begin();
+	questionShader.setUniform1f("minPointSize", pointSize.min);
+	questionShader.setUniform1f("maxPointSize", pointSize.max);
+	questionShader.setUniform1f("minDistance", distanceRange.min);
+	questionShader.setUniform1f("maxDistance", distanceRange.max);
+
 	for(int i = 0; i < startQuestions.size(); i++){
 		debugMesh.addColor(caughtQuestion == &startQuestions[i] ? ofFloatColor::red : ofFloatColor::white);
 		debugMesh.addVertex(startQuestions[i].position);
+		startQuestions[i].draw();
 //		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
 //		cout << "drawing point at " << startQuestions[i].position << endl;
-		
-		
 	}
 	
 	glPointSize(4);
@@ -256,12 +327,17 @@ void CloudsIntroSequence::selfDraw(){
 	glPointSize(1);
 	ofPopStyle();
 	
+	questionShader.end();
+	
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
+	ofPushStyle();
+	ofEnableAlphaBlending();
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].drawOverlay();
 	}
+	ofPopStyle();
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -285,6 +361,10 @@ void CloudsIntroSequence::selfEnd(){
 }
 
 void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
+
+	if(args.key == 'q'){
+		pauseAtBeginning();
+	}
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
@@ -311,6 +391,17 @@ void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "arrange questions" && ((ofxUIButton*)e.widget)->getValue()){
 		positionStartQuestions();
 	}
+	else if(e.widget->getName() == "generate tunnel" && ((ofxUIButton*)e.widget)->getValue()){
+		generateTunnel();
+	}
+}
+
+void CloudsIntroSequence::pauseAtBeginning(){
+	cout << "pausing!!" << endl;
+	
+	warpCamera.setPosition(0, 0, -tunnelMax.z);
+	warpCamera.lookAt(ofVec3f(0,0,0));
+	paused = !paused;
 }
 
 void CloudsIntroSequence::selfSetupSystemGui(){
@@ -367,17 +458,41 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->setName("Questions");
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	//	questionGui->addSlider("Start Z", 1, 1000, &questionStartZ);
+	questionGui->addSlider("Size", 2, 20, &questionSize);
 	questionGui->addSlider("Wrap Distance", 100, 1000, &questionWrapDistance);
-	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance) ;
-	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance) ;
+	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
+	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
+	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance);
+	questionGui->addSlider("Tug Min Depth", 100, 1000, &questionTugMinDepth);
 
 	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
-		ofAddListener(questionGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
+	ofAddListener(questionGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
 	
 	guis.push_back(questionGui);
 	guimap[questionGui->getName()] = questionGui;
+	
+	
+	tunnelGui = new ofxUISuperCanvas("TUNNEL", gui);
+	tunnelGui->copyCanvasStyle(gui);
+	tunnelGui->copyCanvasProperties(gui);
+	tunnelGui->setName("Tunnel");
+	tunnelGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	tunnelGui->addSlider("Tunnel Width",  10, 40, &tunnelMax.x);
+	tunnelGui->addSlider("Tunnel Height", 10, 25, &tunnelMax.y);
+	tunnelGui->addSlider("Tunnel Depth",  100, 200, &tunnelMax.z);
+
+	tunnelGui->addSlider("Tight Step X", .5, 5, &tightTunnelStepX);
+	tunnelGui->addSlider("Tight Step Z", .5, 5, &tightTunnelStepZ);
+	tunnelGui->addSlider("Loose Step X", 2, 20, &looseTunnelStepX);
+	tunnelGui->addSlider("Loose Step Z", 2, 20, &looseTunnelStepZ);
+	tunnelGui->addButton("generate tunnel", false);
+	
+	ofAddListener(tunnelGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
+	
+	guis.push_back(tunnelGui);
+	guimap[tunnelGui->getName()] = tunnelGui;
 	
 }
 
