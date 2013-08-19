@@ -17,7 +17,8 @@ class CloudsQuestion {
 	ofCamera* cam;
 	ofTrueTypeFont* font;
 	
-	float secondsToWriteQuestion;
+//	float secondsToWriteQuestion;
+	float charsPerSecond;
 	float secondsToConsiderSelected;
 	
 	void setup();

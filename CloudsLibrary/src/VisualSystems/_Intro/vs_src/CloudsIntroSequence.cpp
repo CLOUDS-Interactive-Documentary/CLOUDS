@@ -104,7 +104,10 @@ void CloudsIntroSequence::selfUpdate(){
 			//we have a caught question make sure it's still close
 			else if(caughtQuestion == &startQuestions[i]){
 				startQuestions[i].position.z += cameraForwardSpeed;
-				if(distanceToQuestion > questionTugMinDistance){
+				if( caughtQuestion->isSelected()){
+					selectedQuestion = caughtQuestion;
+				}
+				else if(distanceToQuestion > questionTugMinDistance){
 					caughtQuestion->stopHovering();
 					caughtQuestion = NULL;
 				}
