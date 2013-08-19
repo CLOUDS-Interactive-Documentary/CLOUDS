@@ -69,8 +69,9 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 	
 	cout << "Tunnel min is " << tunnelMin << " tunnel max is " << tunnelMax << endl;
 	
-	warpCamera.setPosition(0, 0, -tunnelMax.z);
-	warpCamera.lookAt(ofVec3f(0,0,0));
+
+	warpCamera.setPosition(0, 0, 0);
+	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
 	
 	positionStartQuestions();
 }
@@ -157,7 +158,7 @@ void CloudsIntroSequence::generateTunnel(){
 
 	// loose tunnel, with lines
 	tunnelMeshLoose.clear();
-	for(float z = -tunnelMax.z; z <= tunnelMax.z; z += looseTunnelStepZ){
+	for(float z = 0; z < tunnelMax.z; z += looseTunnelStepZ){
 		//add invisible connector point
 		tunnelMeshLoose.addColor(ofFloatColor(0,0));
 		tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,-tunnelMax.y, z));
@@ -184,13 +185,12 @@ void CloudsIntroSequence::generateTunnel(){
 		}
 		tunnelMeshLoose.addColor(ofFloatColor(0,0));
 		tunnelMeshLoose.addVertex(ofVec3f(-tunnelMax.x,-tunnelMax.y, z));
-	
 	}
 	tunnelMeshLoose.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
 	// tight tunnel, dots only
 	tunnelMeshTight.clear();
-	for(float z = -tunnelMax.z; z <= tunnelMax.z; z += tightTunnelStepZ){
+	for(float z = 0; z < tunnelMax.z; z += tightTunnelStepZ){
 		//draw the top
 		for(float x = -tunnelMax.x; x <= tunnelMax.x; x += tightTunnelStepX){
 			tunnelMeshTight.addVertex(ofVec3f(x,-tunnelMax.y,z));
@@ -242,14 +242,9 @@ void CloudsIntroSequence::drawCloudsType(){
 	//	for(int i = 0; i < cloudsTypeMesh.letters.size(); i++){
 	//		cloudsTypeMesh.letters[i].front.drawFaces();
 	//	}
-	
+	ofTranslate(0, 0, -tunnelMax.z);
 	thinTypeMesh.draw();
-	
-	//DRAW MESH
-	//thickTypeMesh.drawWireframe();
-	//ofEnableAlphaBlending();
-	//ofSetColor(255, 100);
-	//thickTypeMesh.draw();
+
 	
 	ofPopMatrix();
 }
@@ -269,13 +264,14 @@ void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 }
 
 void CloudsIntroSequence::selfDraw(){
-	glEnable(GL_DEPTH_TEST);
 	
-	ofClear(0);
+	
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	ofEnableSmoothing();
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 	glEnable(GL_POINT_SMOOTH);
+//	glEnable(GL_DEPTH_TEST);
 	
 	drawCloudsType();
 	
@@ -286,16 +282,22 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
 	tunnelShader.setUniform1f("maxDistance", distanceRange.max);
+
 	
+	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
+	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
+
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
 	tunnelShader.setUniform1f("noiseDensity", perlinDensity);
 	perlinOffset += perlinSpeed;
 	tunnelShader.setUniform1f("noisePosition", perlinOffset);
+	tunnelShader.setUniform1f("colorAttenuate", 1.0);
 	
 	ofSetColor(255);
 	tunnelMeshTight.drawVertices();
 	
-	ofSetColor(255*wireframeAlpha);
+	ofSetLineWidth(1);
+	tunnelShader.setUniform1f("colorAttenuate", wireframeAlpha);
 	tunnelMeshLoose.draw();
 
 	tunnelShader.end();
@@ -365,6 +367,9 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'q'){
 		pauseAtBeginning();
 	}
+	if(args.key == 'R'){
+		reloadShaders();
+	}
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
@@ -397,10 +402,8 @@ void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void CloudsIntroSequence::pauseAtBeginning(){
-	cout << "pausing!!" << endl;
-	
-	warpCamera.setPosition(0, 0, -tunnelMax.z);
-	warpCamera.lookAt(ofVec3f(0,0,0));
+	warpCamera.setPosition(0, 0, 0);
+	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
 	paused = !paused;
 }
 

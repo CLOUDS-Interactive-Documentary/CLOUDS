@@ -8,6 +8,9 @@ uniform float noiseAmplitude;
 uniform float noiseDensity;
 uniform float noisePosition;
 
+uniform float cameraZ;
+uniform float tunnelDepth;
+
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
 }
@@ -126,7 +129,7 @@ float snoise(vec4 v)
 	m0 = m0 * m0;
 	m1 = m1 * m1;
 	return 49.0 * (dot(m0*m0, vec3( dot( p0, x0 ), dot( p1, x1 ), dot( p2, x2 )))
-				 + dot(m1*m1, vec2( dot( p3, x3 ), dot( p4, x4 ) ) ) ) ;
+				+  dot(m1*m1, vec2( dot( p3, x3 ), dot( p4, x4 ) ) ) ) ;
 	
 }
 
@@ -140,8 +143,12 @@ void main(void)
 							 snoise(vec4(gl_Vertex.yzx / max(noiseDensity,epsilon), noisePosition)),
 							 0);
 							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
-	
-	vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
+
+	float zPush = sign(mod(cameraZ,tunnelDepth) - gl_Vertex.z) * .5 + .5;
+	float wrapOffset = (floor(cameraZ / tunnelDepth) + zPush) * tunnelDepth;
+	float newZ = wrapOffset + gl_Vertex.z;
+	vec4 pos = vec4(vec3(gl_Vertex.xy,newZ) + noiseDistort * noiseAmplitude, 1.0);
+	//vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
 	
 	gl_Position = gl_ModelViewProjectionMatrix * pos;
 	

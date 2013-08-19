@@ -82,7 +82,7 @@ bool CloudsQuestion::isSelected(){
 }
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
-
+		glDisable(GL_DEPTH_TEST);
 		float secondsToWriteQuestion = question.size() / charsPerSecond;
 		int charactersToType = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
 
@@ -125,6 +125,7 @@ void CloudsQuestion::drawOverlay(){
 			   currentScreenPoint.x + width, currentScreenPoint.y+10);
 		
 		ofPopStyle();
+		glEnable(GL_DEPTH_TEST);
 	}
 }
 

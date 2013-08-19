@@ -136,14 +136,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelDistance;
 	float tunnelStartZ;
 	
-	
 	void generateTunnel();
 	float tightTunnelStepX;
 	float tightTunnelStepZ;
 	float looseTunnelStepX;
 	float looseTunnelStepZ;
 	
-//	ofxExtrudedText cloudsTypeMesh;
 	ofMesh thickTypeMesh;
 	ofMesh thinTypeMesh;
 
