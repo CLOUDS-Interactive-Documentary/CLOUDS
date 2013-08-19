@@ -76,6 +76,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionWrapDistance;
 	float cameraForwardSpeed;
 	
+	float questionTugMinDistance;
+	float questionTugMaxDistance;
+	
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;

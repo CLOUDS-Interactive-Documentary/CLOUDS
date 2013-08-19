@@ -76,6 +76,21 @@ void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	warpCamera.dolly(-cameraForwardSpeed);
+	for(int i = 0; i < startQuestions.size(); i++){
+		startQuestions[i].update();
+		if(startQuestions[i].position.z < warpCamera.getPosition().z){
+			startQuestions[i].position.z += questionWrapDistance;
+		}
+		
+		ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
+		if(startQuestions[i].position.z - warpCamera.getPosition().z < distanceRange.max){
+			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
+			if( distanceToQuestion < questionTugMinDistance ){
+				startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
+				//startQuestions[i].position.z += (1. - (distanceToQuestion / questionTugMinDistance) ) * cameraForwardSpeed;
+			}
+		}
+	}
 	
 	if(currentFontSize != fontSize ||
 	   currentFontExtrusion != fontExtrusion)
@@ -200,7 +215,7 @@ void CloudsIntroSequence::selfDraw(){
 	ofPopStyle();
 	
 	ofPushStyle();
-	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
+//	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
 	ofMesh debugMesh;
 	ofSetColor(255);
 	
@@ -209,8 +224,10 @@ void CloudsIntroSequence::selfDraw(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		debugMesh.addColor(ofFloatColor::white);
 		debugMesh.addVertex(startQuestions[i].position);
-		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
+//		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
 //		cout << "drawing point at " << startQuestions[i].position << endl;
+		
+		
 	}
 	
 	glPointSize(4);
@@ -319,7 +336,9 @@ void CloudsIntroSequence::selfSetupGuis(){
 	
 	//	questionGui->addSlider("Start Z", 1, 1000, &questionStartZ);
 	questionGui->addSlider("Wrap Distance", 100, 1000, &questionWrapDistance);
-	
+	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance) ;
+	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance) ;
+
 	questionGui->addButton("Rearrange Start Questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
 	//	ofAddListener(questionGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);

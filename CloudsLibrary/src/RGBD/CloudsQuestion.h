@@ -31,13 +31,14 @@ class CloudsQuestion {
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseDragged(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
-	
+
+	ofVec2f currentScreenPoint;
+
 	//intro question variables
 	bool introQuestion;
 	
   protected:
 
 	bool isSetup;
-	ofVec2f currentScreenPoint;
 	float screenRadius;
 };

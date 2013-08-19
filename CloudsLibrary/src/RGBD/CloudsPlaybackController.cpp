@@ -100,7 +100,7 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(true,true);
 	introSequence.setStartQuestions(possibleStartQuestions);
-	introSequence.loadPresetGUISFromName("TunnelWarp");	
+	introSequence.loadPresetGUISFromName("TunnelWarp");
 	introSequence.playSystem();
 	showingIntro = true;
 }
