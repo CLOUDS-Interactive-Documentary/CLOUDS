@@ -72,7 +72,6 @@ void CloudsPlaybackController::setup(){
 		currentVisualSystem = &rgbdVisualSystem;
 		
 		introSequence.setup();
-		introSequence.loadPresetGUISFromName("SimpleFlyThrough");
 
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1;
@@ -101,6 +100,7 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(true,true);
 	introSequence.setStartQuestions(possibleStartQuestions);
+	introSequence.loadPresetGUISFromName("TunnelWarp");	
 	introSequence.playSystem();
 	showingIntro = true;
 }
@@ -449,15 +449,11 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	showingVisualSystem = true;
 	
-//<<<<<<< HEAD
 	currentVisualSystem = nextVisualSystem.system;
 		
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
 	transitionRgbdSystemOut( 3, 3 );// transitionDuration, transitionDuration );
-//=======
-//	nextSystem = nextVisualSystem.system;
-//>>>>>>> 6095a5e2709f75ffdca4f0bfdb2213b4e60543cd
 }
 
 //--------------------------------------------------------------------

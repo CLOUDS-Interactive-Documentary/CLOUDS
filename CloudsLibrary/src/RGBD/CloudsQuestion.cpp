@@ -13,12 +13,14 @@ CloudsQuestion::CloudsQuestion(){
 	isSetup = false;
 	radius = 10;
 	cam = NULL;
+	introQuestion = false;
 }
 
 void CloudsQuestion::setup(){
 	if(!isSetup){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
+		
 	}
 }
 
@@ -29,6 +31,10 @@ void CloudsQuestion::update(){
 	
 	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius,0));
 	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
+	
+	if(introQuestion){
+		
+	}
 
 }
 

@@ -11,6 +11,8 @@
 
 CloudsIntroSequence::CloudsIntroSequence(){
 	selectedQuestion = NULL;
+	showingQuestions = false;
+	useDebugCamera = false;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -28,23 +30,41 @@ void CloudsIntroSequence::selfSetup(){
 	camera.setup();
 	camera.autosavePosition = true;
 	camera.loadCameraPosition();
-
-//	setCurrentCamera(camera);
 	
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
-	
+
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
 	
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
 	thinTypeMesh.load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thin_02.ply");
-	thinTypeMesh.clearColors();
 	
+	thinTypeMesh.clearColors();
+		
 	currentFontExtrusion = -1;
 	currentFontSize = -1;
 	
 	reloadShaders();
+}
+
+void CloudsIntroSequence::selfPresetLoaded(string presetPath){
+	tunnelMax = tunnelMin = tunnelMeshLoose.getVertices()[0];
+	for(int i = 1; i < tunnelMeshLoose.getVertices().size(); i++){
+		tunnelMax = ofVec3f(MAX(tunnelMax.x, tunnelMeshLoose.getVertices()[i].x),
+							MAX(tunnelMax.y, tunnelMeshLoose.getVertices()[i].y),
+							MAX(tunnelMax.z, tunnelMeshLoose.getVertices()[i].z));
+		tunnelMin = ofVec3f(MIN(tunnelMin.x, tunnelMeshLoose.getVertices()[i].x),
+							MIN(tunnelMin.y, tunnelMeshLoose.getVertices()[i].y),
+							MIN(tunnelMin.z, tunnelMeshLoose.getVertices()[i].z));
+	}
+	
+	cout << "Tunnel min is " << tunnelMin << " tunnel max is " << tunnelMax << endl;
+	
+	warpCamera.setPosition(0, 0, tunnelMin.z);
+	warpCamera.lookAt(ofVec3f(0,0,0));
+	
+	positionStartQuestions();
 }
 
 void CloudsIntroSequence::reloadShaders(){
@@ -52,15 +72,10 @@ void CloudsIntroSequence::reloadShaders(){
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
 }
 
-void CloudsIntroSequence::selfSetupGuis(){
-	
-	camGui->addSlider("Camera Speed", 0, 5, &camera.speed);
-	sysGui->addButton("RESET GAME CAMERA", false);
-}
-
 void CloudsIntroSequence::selfUpdate(){
 	
-	camera.applyRotation = camera.applyTranslation = !cursorIsOverGUI();
+	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
+	warpCamera.dolly(-cameraForwardSpeed);
 	
 	if(currentFontSize != fontSize ||
 	   currentFontExtrusion != fontExtrusion)
@@ -78,14 +93,28 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 	startQuestions.clear();
 	
 	for(int i = 0; i < possibleStartQuestions.size(); i++){
+		
 		CloudsQuestion q;
-		q.cam = &camera;
+		q.cam = &warpCamera;
 //		q.font = &displayFont;
 		q.clip = possibleStartQuestions[i];
-		q.topic = possibleStartQuestions[i].getAllTopicsWithQuestion()[0];
+		q.topic = q.clip.getAllTopicsWithQuestion()[0];
+		q.question = q.clip.getQuestionForTopic(q.topic);
+		
 		q.setup();
 		
 		startQuestions.push_back(q);
+	}
+}
+
+void CloudsIntroSequence::positionStartQuestions(){
+	//set the start questions along a random tunnel
+	cout << " positioning " << startQuestions.size() << " questions " << endl;
+	
+	for(int i = 0; i < startQuestions.size(); i++){
+		startQuestions[i].position = ofVec3f(0,ofRandom(0, tunnelMax.y), 0);
+		startQuestions[i].position.rotate(ofRandom(360), ofVec3f(0,0,1));
+		startQuestions[i].position.z = tunnelMax.z + ofRandom(questionWrapDistance);
 	}
 }
 
@@ -102,30 +131,6 @@ void CloudsIntroSequence::selfDrawBackground(){
 }
 
 void CloudsIntroSequence::drawCloudsType(){
-	
-}
-
-void CloudsIntroSequence::selfDrawDebug(){
-
-}
-
-void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
-	//testing for now
-	CloudsVisualSystem::timelineBangEvent(args);
-	if(args.flag == "TriggerQ"){
-		selectedQuestion = &startQuestions[0];
-	}
-}
-
-void CloudsIntroSequence::selfDraw(){
-	glEnable(GL_DEPTH_TEST);
-	
-	ofClear(0);
-	
-	ofEnableSmoothing();
-	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
-	glEnable(GL_POINT_SMOOTH);
-	
 	ofPushMatrix();
 	
 	ofRotate(180, 0, 1, 0);
@@ -138,12 +143,38 @@ void CloudsIntroSequence::selfDraw(){
 	thinTypeMesh.draw();
 	
 	//DRAW MESH
-	//	thickTypeMesh.drawWireframe();
-	//	ofEnableAlphaBlending();
-	//	ofSetColor(255, 100);
-	//	thickTypeMesh.draw();
+	//thickTypeMesh.drawWireframe();
+	//ofEnableAlphaBlending();
+	//ofSetColor(255, 100);
+	//thickTypeMesh.draw();
 	
 	ofPopMatrix();
+}
+
+void CloudsIntroSequence::selfDrawDebug(){
+
+
+}
+
+void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
+	//testing for now
+	CloudsVisualSystem::timelineBangEvent(args);
+//	if(args.flag == "TriggerQ"){
+//		//selectedQuestion = &startQuestions[0];
+//		showingQuestions = true;
+//	}
+}
+
+void CloudsIntroSequence::selfDraw(){
+	glEnable(GL_DEPTH_TEST);
+	
+	ofClear(0);
+	
+	ofEnableSmoothing();
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+	glEnable(GL_POINT_SMOOTH);
+	
+	drawCloudsType();
 	
 	ofPushStyle();
 	
@@ -158,15 +189,33 @@ void CloudsIntroSequence::selfDraw(){
 	perlinOffset += perlinSpeed;
 	tunnelShader.setUniform1f("noisePosition", perlinOffset);
 	
-	//	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	
 	ofSetColor(255);
 	tunnelMeshTight.drawVertices();
 	
 	ofSetColor(255*wireframeAlpha);
 	tunnelMeshLoose.drawWireframe();
-	
+
 	tunnelShader.end();
+		
+	ofPopStyle();
+	
+	ofPushStyle();
+	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
+	ofMesh debugMesh;
+	ofSetColor(255);
+	
+	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
+	
+	for(int i = 0; i < startQuestions.size(); i++){
+		debugMesh.addColor(ofFloatColor::white);
+		debugMesh.addVertex(startQuestions[i].position);
+		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
+//		cout << "drawing point at " << startQuestions[i].position << endl;
+	}
+	
+	glPointSize(4);
+	debugMesh.drawVertices();
+	glPointSize(1);
 	ofPopStyle();
 	
 }
@@ -215,16 +264,22 @@ void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
 }
 
 void CloudsIntroSequence::selfSetupSystemGui(){
-	sysGui->addButton("RELOAD SHADER", false);
+	sysGui->addButton("reset debug camera", false);
+	sysGui->addButton("reload shader", false);
+}
 
+void CloudsIntroSequence::selfSetupCameraGui(){
+	camGui->addToggle("use debug camera", &useDebugCamera);
+	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
+	camGui->addSlider("camera fwd force", 0, 10, &cameraForwardSpeed);
 }
 
 void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "RELOAD SHADER" && ((ofxUIButton*)e.widget)->getValue()){
+	if(e.widget->getName() == "reload shader" && ((ofxUIButton*)e.widget)->getValue()){
 		cout << "Loaded shader" << endl;
 		reloadShaders();
 	}
-	else if(e.widget->getName() == "RESET GAME CAMERA" && ((ofxUIButton*)e.widget)->getValue()){
+	else if(e.widget->getName() == "reset debug camera" && ((ofxUIButton*)e.widget)->getValue()){
 		camera.setPosition(0, 0, 0);
 		camera.setOrientation(ofQuaternion());
 		camera.rotate(180, ofVec3f(0,1,0));
@@ -251,6 +306,27 @@ void CloudsIntroSequence::selfSetupRenderGui(){
 	rdrGui->addSlider("Font Scale", .1, 10, &fontScale);
 	
 	rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &wireframeAlpha);
+}
+
+
+void CloudsIntroSequence::selfSetupGuis(){
+	
+	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
+	questionGui->copyCanvasStyle(gui);
+	questionGui->copyCanvasProperties(gui);
+	questionGui->setName("Questions");
+	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//	questionGui->addSlider("Start Z", 1, 1000, &questionStartZ);
+	questionGui->addSlider("Wrap Distance", 100, 1000, &questionWrapDistance);
+	
+	questionGui->addButton("Rearrange Start Questions", false);
+	//	questionGui->addToggle("Custom Toggle", &customToggle);
+	//	ofAddListener(questionGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);
+	
+	guis.push_back(questionGui);
+	guimap[questionGui->getName()] = questionGui;
+	
 }
 
 void CloudsIntroSequence::guiRenderEvent(ofxUIEventArgs &e){

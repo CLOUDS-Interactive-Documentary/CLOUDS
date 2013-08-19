@@ -51,7 +51,7 @@ void testApp::setup(){
 		}
 		else if(!startingNodes[i].hasCombinedVideo){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
-			startingNodes.erase(startingNodes.begin() + i);
+//			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
 			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestionsVector()[0] << endl;

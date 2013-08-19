@@ -51,9 +51,18 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     virtual void selfSetupRenderGui();
     virtual void guiRenderEvent(ofxUIEventArgs &e);
 
+	virtual void selfSetupCameraGui();
+	
 	virtual ofCamera& getCameraRef(){
-		return camera;
+		if(useDebugCamera){
+			return camera;
+		}
+		else{
+			return warpCamera;
+		}
 	}
+	
+	void selfPresetLoaded(string presetPath);
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
 	bool isStartQuestionSelected();
@@ -61,7 +70,13 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
   protected:
 	
+	ofxUISuperCanvas* questionGui;
 	
+	bool showingQuestions;
+	float questionWrapDistance;
+	float cameraForwardSpeed;
+	
+	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;
 	
@@ -80,7 +95,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofMesh tunnelMeshTight;
 	ofMesh tunnelMeshLoose;
 	
+	bool useDebugCamera;
 	ofxGameCamera camera;
+	ofCamera warpCamera;
 	
 	ofShader tunnelShader;
 	ofShader chroma;
@@ -94,6 +111,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float perlinAmplitude;
 	float perlinDensity;
 	float perlinSpeed;
+	
+	//we find these from the model when we open the tunnel
+	ofVec3f tunnelMax;
+	ofVec3f tunnelMin;
+	float tunnelDistance;
+	float tunnelStartZ;
 	
 //	ofxExtrudedText cloudsTypeMesh;
 	ofMesh thickTypeMesh;

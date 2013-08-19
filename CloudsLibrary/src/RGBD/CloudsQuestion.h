@@ -12,6 +12,7 @@ class CloudsQuestion {
 		
 	CloudsClip clip; //must have a question
 	string topic;
+	string question;
 	
 	ofCamera* cam;
 	ofTrueTypeFont* font;
@@ -30,6 +31,9 @@ class CloudsQuestion {
 	void mousePressed(ofMouseEventArgs& args);
 	void mouseDragged(ofMouseEventArgs& args);
 	void mouseReleased(ofMouseEventArgs& args);
+	
+	//intro question variables
+	bool introQuestion;
 	
   protected:
 
