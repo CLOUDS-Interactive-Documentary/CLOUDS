@@ -75,19 +75,34 @@ void CloudsIntroSequence::reloadShaders(){
 void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
+	
 	warpCamera.dolly(-cameraForwardSpeed);
+	
+	ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].update();
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
 		
-		ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
 		if(startQuestions[i].position.z - warpCamera.getPosition().z < distanceRange.max){
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
-			if( distanceToQuestion < questionTugMinDistance ){
-				startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
-				//startQuestions[i].position.z += (1. - (distanceToQuestion / questionTugMinDistance) ) * cameraForwardSpeed;
+			if(caughtQuestion == NULL){
+				if( distanceToQuestion < questionTugMaxDistance){
+					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
+					//startQuestions[i].position.z += (1. - (distanceToQuestion / questionTugMinDistance) ) * cameraForwardSpeed;
+					if(distanceToQuestion < questionTugMinDistance){
+						caughtQuestion = &startQuestions[i];
+					}
+				}
+				
+			}
+			//we have a caught question make sure it's still close
+			else if(caughtQuestion == &startQuestions[i]){
+				startQuestions[i].position.z += cameraForwardSpeed;
+				if(distanceToQuestion > questionTugMinDistance){
+					caughtQuestion = NULL;
+				}
 			}
 		}
 	}
@@ -124,8 +139,6 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 
 void CloudsIntroSequence::positionStartQuestions(){
 	//set the start questions along a random tunnel
-	cout << " positioning " << startQuestions.size() << " questions " << endl;
-	
 	for(int i = 0; i < startQuestions.size(); i++){
 		startQuestions[i].position = ofVec3f(0,ofRandom(0, tunnelMax.y), 0);
 		startQuestions[i].position.rotate(ofRandom(360), ofVec3f(0,0,1));
@@ -222,7 +235,7 @@ void CloudsIntroSequence::selfDraw(){
 	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
 	
 	for(int i = 0; i < startQuestions.size(); i++){
-		debugMesh.addColor(ofFloatColor::white);
+		debugMesh.addColor(caughtQuestion == &startQuestions[i] ? ofFloatColor::red : ofFloatColor::white);
 		debugMesh.addVertex(startQuestions[i].position);
 //		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
 //		cout << "drawing point at " << startQuestions[i].position << endl;
@@ -278,6 +291,12 @@ void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
 
 void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){
 	
+}
+
+void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
+	if(e.widget->getName() == "arrange questions" && ((ofxUIButton*)e.widget)->getValue()){
+		positionStartQuestions();
+	}
 }
 
 void CloudsIntroSequence::selfSetupSystemGui(){
@@ -339,9 +358,9 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance) ;
 	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance) ;
 
-	questionGui->addButton("Rearrange Start Questions", false);
+	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
-	//	ofAddListener(questionGui->newGUIEvent, this, &CloudsVisualSystemEmpty::selfGuiEvent);
+		ofAddListener(questionGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
 	
 	guis.push_back(questionGui);
 	guimap[questionGui->getName()] = questionGui;

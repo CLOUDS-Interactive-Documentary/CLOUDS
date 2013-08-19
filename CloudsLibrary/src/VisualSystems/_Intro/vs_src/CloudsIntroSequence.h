@@ -44,7 +44,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
     virtual void selfMouseReleased(ofMouseEventArgs& data);
 	
 	virtual void selfPostDraw();
-    
+
+	virtual void selfGuiEvent(ofxUIEventArgs &e);
+	
     virtual void selfSetupSystemGui();
     virtual void guiSystemEvent(ofxUIEventArgs &e);
     
@@ -82,6 +84,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;
+	CloudsQuestion* caughtQuestion;
 	
 	float fontSize;
 	float fontExtrusion;
