@@ -241,14 +241,14 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 	q->font = &displayFont;
 	q->clip = questionClip;
 	q->setup();
-		
+	
 	questions.push_back(q);
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = 0; i < questions.size(); i++){
-		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, cloudsCamera.frontDistance);
+		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, 0);
 		questions[i]->update();
 	}
 }
@@ -618,9 +618,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
+	glPointSize(3);
+	ofSetColor(ofColor::cornsilk);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
 	}
+	glPointSize(1);
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {

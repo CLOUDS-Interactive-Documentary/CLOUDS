@@ -19,7 +19,7 @@ ofVec3f randomPointOnSphere(){
 CloudsQuestion::CloudsQuestion(){
 	hovering = false;
 	isSetup = false;
-	radius = 10;
+	radius = 30;
 	cam = NULL;
 	introQuestion = false;
 	charsPerSecond = 20;
@@ -33,7 +33,9 @@ void CloudsQuestion::setup(){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
 		
-		question = ofToUpper(question);
+		topic = clip.getAllTopicsWithQuestion()[0];
+		question = ofToUpper(clip.getQuestionForTopic(topic));
+		
 //square
 //		geometry.addVertex(ofVec3f(-.5,-.5,0)) ;
 //		geometry.addVertex(ofVec3f(.5,-.5,0));
@@ -92,14 +94,14 @@ void CloudsQuestion::draw(){
 
 	float expandPercent;
 	if(hovering){
-		expandPercent = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, .2, 1.0, true);
+		expandPercent = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, .1, 1.0, true);
 	}
 	else{
-		expandPercent = .2;
+		expandPercent = .1;
 	}
+	
 	ofPushMatrix();
 	ofTranslate(position);
-	//ofRotate(ofGetFrameNum()*4, 0, 1, 0);
 	ofVec3f axis;
 	float angle;
 	currentRot.getRotate(angle, axis);
@@ -142,30 +144,41 @@ void CloudsQuestion::drawOverlay(){
 	if(hovering){
 		glDisable(GL_DEPTH_TEST);
 
-		
 		float width = font->stringWidth(question);
-		ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
+		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
+		ofVec2f screenPosition;
+		if( currentScreenPoint.x >  ofGetWidth()/2){
+			screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
+		}
+		else{
+			screenPosition = currentScreenPoint;
+		}
+
+		//DRAW BACKBOX
+//		ofPushStyle();
+//		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+//		ofSetColor(255,20);
+//		ofRect(screenPosition.x, screenPosition.y-25, width+40, 50);
+//		ofPopStyle();
 		
 		float secondsToWriteQuestion = question.size() / charsPerSecond;
 		int charactersToType = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
-
 		string substring = question.substr(0, charactersToType);
-		ofPushStyle();
-		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-		ofSetColor(255,20);
-		ofRect(screenPosition.x, screenPosition.y-25, width+40, 50);
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
-		ofPopStyle();
-//		cout << "hovering overlay should draw " << charactersToType << " of (" << question << ")" << endl;
 		if(font != NULL){
+			ofPushStyle();
+			ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+			ofSetColor(50);
+			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
+			ofSetColor(255);
+			ofEnableBlendMode(OF_BLENDMODE_ADD);
 			font->drawString(substring, screenPosition.x+10, screenPosition.y);
+			ofPopStyle();
 		}
 		else{
 			ofDrawBitmapString(substring, screenPosition);
 		}
 		
-//		ofVec3f currentScreenPoint3d(currentScreenPoint.x,currentScreenPoint.y,0);
-		
+		//DRAW PROGRESS BAR
 		ofPushStyle();
 		ofMesh progress;
 		progress.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
@@ -173,9 +186,7 @@ void CloudsQuestion::drawOverlay(){
 		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+5,0));
 		progress.addVertex(ofVec3f(screenPosition.x+10,screenPosition.y+10,0));
 		
-		
 		float percentToSelection = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true);
-		
 		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection + 5, screenPosition.y+5,0));
 		progress.addVertex(ofVec3f(screenPosition.x+10 + width*percentToSelection, screenPosition.y+10,0));
 
@@ -186,15 +197,15 @@ void CloudsQuestion::drawOverlay(){
 		ofFloatColor flash = ofFloatColor::white.getLerped(ofFloatColor::crimson, percentToSelection*oscatten);
 		progress.addColor(flash);
 		progress.addColor(flash);
-		progress.draw();
+		//progress.draw(); //disabling for now
 		
-		ofSetLineWidth(2);
-		ofLine(screenPosition.x+15 + width, screenPosition.y+6,
-			   screenPosition.x+10 + width, screenPosition.y+11);
-
-		ofSetColor(flash, 128);
-		ofSetLineWidth(1);
-		ofLine(screenPosition.x,screenPosition.y-25, currentScreenPoint.x,currentScreenPoint.y);
+		//DRAW TRACKING LINE
+//		ofSetLineWidth(2);
+//		ofLine(screenPosition.x+15 + width, screenPosition.y+6,
+//			   screenPosition.x+10 + width, screenPosition.y+11);
+//		ofSetColor(flash, 128);
+//		ofSetLineWidth(1);
+//		ofLine(screenPosition.x,screenPosition.y-25, currentScreenPoint.x,currentScreenPoint.y);
 
 		ofPopStyle();
 		glEnable(GL_DEPTH_TEST);
@@ -209,8 +220,13 @@ void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
 	if(cam == NULL){
 		return;
 	}
-	if(introQuestion){
-		hovering = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+	if(!introQuestion){
+		if(!hovering && currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius) {
+			startHovering();
+		}
+		else {
+			//stopHovering();
+		}
 	}
 }
 

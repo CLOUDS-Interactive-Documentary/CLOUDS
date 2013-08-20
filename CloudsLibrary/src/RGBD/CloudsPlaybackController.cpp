@@ -130,6 +130,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
+		currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
 		rgbdVisualSystem.addQuestion(currentClip);
 	}
 

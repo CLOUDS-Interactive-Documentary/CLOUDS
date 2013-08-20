@@ -27,7 +27,7 @@ string CloudsIntroSequence::getSystemName(){
 
 void CloudsIntroSequence::selfSetup(){
 
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 21);
 	
 	perlinOffset = 0;
 	
@@ -98,6 +98,7 @@ void CloudsIntroSequence::selfUpdate(){
 		
 		startQuestions[i].radius = questionSize;
 		startQuestions[i].update();
+		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
@@ -107,7 +108,6 @@ void CloudsIntroSequence::selfUpdate(){
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance){
 					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
-					//startQuestions[i].position.z += (1. - (distanceToQuestion / questionTugMinDistance) ) * cameraForwardSpeed;
 					if(distanceToQuestion < questionTugMinDistance){
 						caughtQuestion = &startQuestions[i];
 						caughtQuestion->startHovering();
@@ -149,8 +149,8 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		q.cam = &warpCamera;
 		q.font = &font;
 		q.clip = possibleStartQuestions[i];
-		q.topic = q.clip.getAllTopicsWithQuestion()[0];
-		q.question = q.clip.getQuestionForTopic(q.topic);
+//		q.topic = q.clip.getAllTopicsWithQuestion()[0];
+//		q.question = q.clip.getQuestionForTopic(q.topic);
 		
 		q.setup();
 		
@@ -337,7 +337,6 @@ void CloudsIntroSequence::selfDraw(){
 	ofPopStyle();
 	
 	questionShader.end();
-	
 }
 
 void CloudsIntroSequence::drawCloudsType(){
