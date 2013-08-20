@@ -7,28 +7,23 @@
 </Canvas>
 <Widget>
     <Kind>4</Kind>
-    <Name>Min Point Size</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>1.000000000</Value>
+    <Value>1.344827652</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Min Distance</Name>
-    <Value>270.935974121</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>3891.625732422</Value>
+    <Value>337.438446045</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Chroma Max Distort</Name>
-    <Value>0.492610812</Value>
+    <Value>0.394088656</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,20 +33,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Perlin Density</Name>
-    <Value>0.000000000</Value>
+    <Value>3.694581270</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Perlin Speed</Name>
-    <Value>0.000000000</Value>
+    <Value>0.003940887</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Font Scale</Name>
-    <Value>1.319211841</Value>
+    <Value>3.367487431</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.152709365</Value>
+    <Value>1.000000000</Value>
 </Widget>

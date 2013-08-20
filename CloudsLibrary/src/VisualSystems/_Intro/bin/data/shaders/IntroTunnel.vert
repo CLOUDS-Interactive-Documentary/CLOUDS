@@ -11,6 +11,7 @@ uniform float noisePosition;
 uniform float cameraZ;
 uniform float tunnelDepth;
 
+
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
 }
@@ -150,12 +151,19 @@ void main(void)
 	vec4 pos = vec4(vec3(gl_Vertex.xy,newZ) + noiseDistort * noiseAmplitude, 1.0);
 	//vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
 	
-	gl_Position = gl_ModelViewProjectionMatrix * pos;
+	vec4 eyeCoord = gl_ModelViewMatrix * pos;
+	gl_Position = gl_ProjectionMatrix * eyeCoord;
+	float dist = length(eyeCoord.xyz);
+	float att  = 500.0 / dist;
 	
-	//START NOISE ---------------------------
-	gl_PointSize = clamp(map(pow(gl_Position.z,1.5), maxDistance, minDistance, minPointSize, maxPointSize),
-							minPointSize, maxPointSize);
+	//gl_Position = gl_ModelViewProjectionMatrix * pos;
 	
-	//pass color info along
-	gl_FrontColor = gl_Color * clamp(map(pow(gl_Position.z,1.5), minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
+
+//	gl_PointSize = clamp(map(gl_Position.z, maxDistance, minDistance, minPointSize, maxPointSize),
+//							minPointSize, maxPointSize) * att;
+	gl_PointSize = maxPointSize * att;
+
+	//pass color & texture info along
+	gl_TexCoord[0] = gl_MultiTexCoord0;
+	gl_FrontColor = gl_Color * clamp(map(gl_Position.z, minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
 }

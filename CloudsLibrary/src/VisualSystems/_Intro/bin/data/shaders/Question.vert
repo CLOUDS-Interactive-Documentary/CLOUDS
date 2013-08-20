@@ -25,5 +25,5 @@ void main(void)
 	//						minPointSize, maxPointSize);
 	
 	//pass color info along
-	gl_FrontColor = gl_Color * clamp(map(pow(gl_Position.z,1.5), minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
+	gl_FrontColor = gl_Color * clamp(map(gl_Position.z, minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
 }

@@ -137,13 +137,15 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float tunnelStartZ;
 	
 	void generateTunnel();
-	float tightTunnelResolutionX;
-	float tightTunnelResolutionZ;
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
+	
+	
+	ofFloatColor tint;
 	
 	ofMesh thickTypeMesh;
 	ofMesh thinTypeMesh;
 
+	ofImage sprite;
 
 };

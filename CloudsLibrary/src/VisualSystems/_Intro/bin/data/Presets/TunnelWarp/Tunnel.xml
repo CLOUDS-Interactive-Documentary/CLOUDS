@@ -8,35 +8,40 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Width</Name>
-    <Value>20.788167953</Value>
+    <Value>33.940879822</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Height</Name>
-    <Value>10.886694908</Value>
+    <Value>15.985217094</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Depth</Name>
-    <Value>180.788146973</Value>
+    <Value>357.142578125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Tight Step X</Name>
-    <Value>0.655171037</Value>
+    <Name>Tunnel Tint H</Name>
+    <Value>0.541871607</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Tight Step Z</Name>
-    <Value>0.921180904</Value>
+    <Name>Tunnel Tint S</Name>
+    <Value>0.330048949</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Loose Step X</Name>
-    <Value>9.714281082</Value>
+    <Name>Tunnel Tint B</Name>
+    <Value>0.714285433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Loose Step Z</Name>
-    <Value>12.019699097</Value>
+    <Name>Loose Rez X</Name>
+    <Value>12.758615494</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Loose Rez Z</Name>
+    <Value>50.000000000</Value>
 </Widget>

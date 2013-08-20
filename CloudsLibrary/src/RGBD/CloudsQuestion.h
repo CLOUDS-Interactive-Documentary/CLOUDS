@@ -33,6 +33,9 @@ class CloudsQuestion {
 	
 	float radius;
 	ofVec3f position;
+	ofQuaternion currentRot;
+	ofQuaternion rot1;
+	ofQuaternion rot2;
 	
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
@@ -45,7 +48,7 @@ class CloudsQuestion {
 
 	//intro question variables
 	bool introQuestion;
-	
+	void orientToCenter();
   protected:
 
 	float hoveringStartTime;
