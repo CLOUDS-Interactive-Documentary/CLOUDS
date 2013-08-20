@@ -43,7 +43,7 @@ class CloudsQuestion {
 	void mouseReleased(ofMouseEventArgs& args);
 
 	ofMesh geometry;
-	
+	ofMesh sphereGeo;
 	ofVec2f currentScreenPoint;
 
 	//intro question variables

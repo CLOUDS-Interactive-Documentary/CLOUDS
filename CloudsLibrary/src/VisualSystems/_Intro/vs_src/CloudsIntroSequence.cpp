@@ -27,7 +27,7 @@ string CloudsIntroSequence::getSystemName(){
 
 void CloudsIntroSequence::selfSetup(){
 
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
 	
 	perlinOffset = 0;
 	
@@ -66,7 +66,7 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 //							MIN(tunnelMin.y, tunnelMeshLoose.getVertices()[i].y),
 //							MIN(tunnelMin.z, tunnelMeshLoose.getVertices()[i].z));
 //	}
-//
+
 	
 	generateTunnel();
 	
@@ -162,6 +162,7 @@ void CloudsIntroSequence::generateTunnel(){
 
 	// loose tunnel, with lines
 	tunnelMeshLoose.clear();
+	
 	float looseTunnelStepZ = tunnelMax.z / looseTunnelResolutionZ;
 	float looseTunnelStepY = tunnelMax.y / looseTunnelResolutionX;
 	float looseTunnelStepX = tunnelMax.x / looseTunnelResolutionX;
@@ -267,11 +268,9 @@ void CloudsIntroSequence::selfDraw(){
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
 	glEnable(GL_POINT_SMOOTH);
-//	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_DEPTH_TEST);
 	
 	ofEnableBlendMode(OF_BLENDMODE_ADD);
-	//ofEnableAlphaBlending();
 	
 	drawCloudsType();
 	
@@ -321,6 +320,9 @@ void CloudsIntroSequence::selfDraw(){
 	questionShader.setUniform1f("minDistance", distanceRange.min);
 	questionShader.setUniform1f("maxDistance", distanceRange.max);
 
+	ofFloatColor questionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g, questionNodeTint.b);
+	
+	questionShader.setUniform4f("tint", questionTint.r, questionTint.g, questionTint.b, 1.0);
 	for(int i = 0; i < startQuestions.size(); i++){
 		debugMesh.addColor(caughtQuestion == &startQuestions[i] ? ofFloatColor::red : ofFloatColor::white);
 		debugMesh.addVertex(startQuestions[i].position);
@@ -328,7 +330,7 @@ void CloudsIntroSequence::selfDraw(){
 //		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
 //		cout << "drawing point at " << startQuestions[i].position << endl;
 	}
-	
+
 	glPointSize(4);
 	debugMesh.drawVertices();
 	glPointSize(1);
@@ -351,11 +353,6 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
-	ofPushStyle();
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].drawOverlay();
-	}
-	ofPopStyle();
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -364,6 +361,13 @@ void CloudsIntroSequence::selfPostDraw(){
 	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
+	
+	ofPushStyle();
+	for(int i = 0; i < startQuestions.size(); i++){
+		startQuestions[i].drawOverlay();
+	}
+	ofPopStyle();
+	
 }
 
 void CloudsIntroSequence::selfExit(){
@@ -482,6 +486,10 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
 	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance);
 	questionGui->addSlider("Tug Min Depth", 100, 1000, &questionTugMinDepth);
+
+	questionGui->addSlider("Question Tint H",  0, 1.0, &questionNodeTint.r);
+	questionGui->addSlider("Question Tint S",  0, 1.0, &questionNodeTint.g);
+	questionGui->addSlider("Question Tint B",  0, 1.0, &questionNodeTint.b);
 
 	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);

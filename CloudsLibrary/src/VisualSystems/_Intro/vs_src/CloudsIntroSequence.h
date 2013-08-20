@@ -142,10 +142,12 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	
 	ofFloatColor tint;
+	ofFloatColor questionNodeTint;
 	
 	ofMesh thickTypeMesh;
 	ofMesh thinTypeMesh;
 
 	ofImage sprite;
+
 
 };
