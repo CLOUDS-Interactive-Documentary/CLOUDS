@@ -654,6 +654,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'V' && currentCamera != &transitionCam ){
 		lookThroughTransitionOut();
 	}
+	
 }
 
 void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
@@ -671,7 +672,6 @@ void CloudsVisualSystemRGBD::selfMouseDragged(ofMouseEventArgs& data){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfMouseMoved(ofMouseEventArgs& data){
-	
 }
 
 //--------------------------------------------------------------

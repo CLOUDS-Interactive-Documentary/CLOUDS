@@ -86,7 +86,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
 	
 	ofTrueTypeFont displayFont;
-	vector<CloudsQuestion> currentQuestions;
+//	vector<CloudsQuestion> currentQuestions;
 	
 	
 //	CloudsRGBDCamera cloudsCamera;

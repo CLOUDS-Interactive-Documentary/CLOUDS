@@ -206,10 +206,12 @@ void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
 }
 
 void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
-//	if(cam == NULL){
-//		return;
-//	}
-//	hovering = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+	if(cam == NULL){
+		return;
+	}
+	if(introQuestion){
+		hovering = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+	}
 }
 
 void CloudsQuestion::mouseReleased(ofMouseEventArgs& args){

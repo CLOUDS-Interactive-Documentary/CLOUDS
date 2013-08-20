@@ -23,7 +23,7 @@ void main(void)
 
 	//gl_PointSize = clamp(map(pow(gl_Position.z,1.5), maxDistance, minDistance, minPointSize, maxPointSize),
 	//						minPointSize, maxPointSize);
-	gl_PointSize = 1.5;
+	gl_PointSize = 2.5;
 	
 	//pass color info along
 	gl_FrontColor = gl_Color * clamp(map(gl_Position.z, minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);

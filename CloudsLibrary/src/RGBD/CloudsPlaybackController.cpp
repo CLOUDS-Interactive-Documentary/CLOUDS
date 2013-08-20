@@ -128,6 +128,11 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'P'){
 		currentAct->getTimeline().togglePlay();
 	}
+	
+	if(args.key == 'Q'){
+		rgbdVisualSystem.addQuestion(currentClip);
+	}
+
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
