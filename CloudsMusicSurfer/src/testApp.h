@@ -69,6 +69,8 @@ class testApp : public ofBaseApp{
     float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
+    bool DOCLEAR;
+    float cleartime;
     
     vector<lukeRhythm> rhythms;
     vector<lukeColor> colors;

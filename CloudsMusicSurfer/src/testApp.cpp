@@ -10,7 +10,7 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
     ofEnableAlphaBlending();
-    ofSetBackgroundAuto(true);
+    ofSetBackgroundAuto(false);
     
     // RTcmix audio stuff
     sr = 44100;
@@ -40,6 +40,8 @@ void testApp::setup(){
     MASTERAMP = 1.0;
     MASTERTEMPO = 0.125;
     AUTORUN = 0;
+    DOCLEAR = true;
+    cleartime = ofGetElapsedTimef();
 
     // THE LINE BELOW CAUSES A LINKER ERROR IF YOU UNCOMMENT:
     //LOADSOUND("RTCMIX/samps/BD.aif", "BD");
@@ -56,38 +58,44 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    // draw some shit
-    ofSetColor(255,255,0); 
-    ofDrawBitmapString("Luke's CLOUDS Music Tester", 20, 20); 
+    if(DOCLEAR) {
     
-    // buttons and labels
-    startbutton.draw();
-    stopbutton.draw();
-    autobutton.draw();
-    ofSetColor(255,255,255,255);
-    theFont.drawString("color:", 50,80);        
-    for(int i = 0;i<colorbutton.size();i++)
-    {
-        colorbutton[i].draw();
-    }
-    theFont.drawString("harmony:", 50,130);        
-    for(int i = 0;i<colorbutton.size();i++)
-    {
-        harmonybutton[i].draw();
-    }
-    theFont.drawString("rhythm:", 50,180);        
-    for(int i = 0;i<colorbutton.size();i++)
-    {
-        rhythmbutton[i].draw();
-    }
-    theFont.drawString("preset:", 50,230);        
-    for(int i = 0;i<presetbutton.size();i++)
-    {
-        presetbutton[i].draw();
-    }
+        ofClear(0,0,0);
+        // draw some shit
+        ofSetColor(255,255,0); 
+        ofDrawBitmapString("Luke's CLOUDS Music Tester", 20, 20); 
+    
+        // buttons and labels
+        startbutton.draw();
+        stopbutton.draw();
+        autobutton.draw();
+        ofSetColor(255,255,255,255);
+        theFont.drawString("color:", 50,80);        
+        for(int i = 0;i<colorbutton.size();i++)
+        {
+            colorbutton[i].draw();
+        }
+        theFont.drawString("harmony:", 50,130);        
+        for(int i = 0;i<colorbutton.size();i++)
+        {
+            harmonybutton[i].draw();
+        }
+        theFont.drawString("rhythm:", 50,180);        
+        for(int i = 0;i<colorbutton.size();i++)
+        {
+            rhythmbutton[i].draw();
+        }
+        theFont.drawString("preset:", 50,230);        
+        for(int i = 0;i<presetbutton.size();i++)
+        {
+            presetbutton[i].draw();
+        }
 
-    theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
-    theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325); 
+        theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
+        theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325); 
+
+        if(ofGetElapsedTimef()-cleartime>0.1) DOCLEAR = false;
+    }
 }
 
 // RTcmix audio callback (we overrode and put in the pullTraverse()
@@ -154,19 +162,13 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    if(key == OF_KEY_LEFT)
-    {
-        MASTERTEMPO-=0.005;
-    }
-    else if(key == OF_KEY_RIGHT)
-    {
-        MASTERTEMPO+=0.005;
-    }
-    
+
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
+    DOCLEAR = true;
+    cleartime = ofGetElapsedTimef();
     if (key == 'l'){
         loadRTcmixFiles();
         pushInterface();
@@ -180,6 +182,14 @@ void testApp::keyReleased(int key){
     {
         MASTERAMP+=0.1;
         if(MASTERAMP>2.) MASTERAMP=2.;
+    }
+    if(key == OF_KEY_LEFT)
+    {
+        MASTERTEMPO-=0.005;
+    }
+    else if(key == OF_KEY_RIGHT)
+    {
+        MASTERTEMPO+=0.005;
     }
 }
 
@@ -202,6 +212,9 @@ void testApp::mousePressed(int x, int y, int button){
 void testApp::mouseReleased(int x, int y, int button){
 
     bool p;
+    
+    DOCLEAR = true;
+    cleartime = ofGetElapsedTimef();
     
     p = startbutton.test(x,y);
     if(p) {
