@@ -19,7 +19,7 @@ ofVec3f randomPointOnSphere(){
 CloudsQuestion::CloudsQuestion(){
 	hovering = false;
 	isSetup = false;
-	radius = 30;
+	radius = 15;
 	cam = NULL;
 	introQuestion = false;
 	charsPerSecond = 20;
@@ -171,6 +171,7 @@ void CloudsQuestion::drawOverlay(){
 			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
 			ofSetColor(255);
 			ofEnableBlendMode(OF_BLENDMODE_ADD);
+			font->drawString(substring, screenPosition.x+10, screenPosition.y);
 			font->drawString(substring, screenPosition.x+10, screenPosition.y);
 			ofPopStyle();
 		}

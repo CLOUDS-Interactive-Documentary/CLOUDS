@@ -619,7 +619,8 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 void CloudsVisualSystemRGBD::drawQuestions(){
 	glPointSize(3);
-	ofSetColor(ofColor::cornsilk);
+	
+	ofSetColor(ofColor(0,100,250), 100);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
 	}
