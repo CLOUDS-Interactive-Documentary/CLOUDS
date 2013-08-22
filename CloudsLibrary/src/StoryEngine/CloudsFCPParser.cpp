@@ -1112,10 +1112,11 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& fi
             
             //if filter[i] is #special, use special
             vector<string>& searchVector = (filter[i][0] == '#') ?
-            allClips[c].getSpecialKeywords() : allClips[c].getKeywords();
+				allClips[c].getSpecialKeywords() : allClips[c].getKeywords();
             
             if(ofContains(searchVector, filter[i]) &&
-			   includedClips.find(allClips[c].getLinkName()) == includedClips.end()){
+			   includedClips.find(allClips[c].getLinkName()) == includedClips.end())
+			{
 				includedClips.insert(allClips[c].getLinkName());
                 filteredMarkers.push_back(allClips[c]);
                 break;

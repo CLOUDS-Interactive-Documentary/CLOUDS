@@ -19,6 +19,10 @@
 //	[allClipTable setTarget:self];
 //	[allClipTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[allClipTable reloadData];
+	[allKeywordTable reloadData];
+	
+	
+	[self updateCounts];
 
 }
 
@@ -85,6 +89,35 @@
 {
 	
 }
+
+- (IBAction) updateKeywords:(id)sender
+{
+	if(presetTable.selectedRow >= 0){
+		
+		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
+		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
+		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+			
+		[self updateCounts];
+		
+		[clipTable reloadData];
+		[presetTable reloadData];
+		[allKeywordTable reloadData];
+		[allClipTable reloadData];
+	}
+}
+
+- (void) updateCounts
+{
+	set<string> allKeywords = visualSystems.getAllKeywords();
+	vector<string> allKeysVector( allKeywords.begin(), allKeywords.end() );
+	float percentKeywords = 1.0 * allKeywords.size() / parser.getAllKeywords().size();
+	float percentClips = 1.0 * parser.getClipsWithKeyword(allKeysVector).size() / parser.getAllClips().size();
+	
+	[keywordPercent setStringValue:[NSString stringWithFormat:@"%.02f%% Keywords Tagged", percentKeywords*100]];
+	[clipPercent setStringValue: [NSString stringWithFormat:@"%.02f%% Clips Tagged", percentClips*100]];
+}
+
 -(IBAction) unsuppressClip:(id)sender{
     if(clipTable.selectedRow>=0){
         visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
@@ -113,8 +146,10 @@
 	else if(aTableView == clipTable){
 		return associatedClips.size();
 	}
+	else if(aTableView == allKeywordTable){
+		return parser.getAllKeywords().size();
+	}
 	else if(aTableView == allClipTable){
-		cout << "ALL CLIPS " << parser.getAllClips().size() << endl;
 		return parser.getAllClips().size();
 	}
 	return 0;
@@ -132,7 +167,6 @@
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
 			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
 		}
-
 	}
 	else if(aTableView == clipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
@@ -153,13 +187,12 @@
             }
         }
 	}
-	else if(aTableView == allClipTable){
-		if([@"clip" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+	else if(aTableView == allKeywordTable){
+		if([@"keyword" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: parser.getAllKeywords()[rowIndex].c_str() ];
 		}
-		else if([@"systems" isEqualToString:aTableColumn.identifier]){
-			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords(parser.getAllClips()[rowIndex].getKeywords());
-
+		else if([@"presets" isEqualToString:aTableColumn.identifier]){
+			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[rowIndex] );
 			vector<string> ids;
 			for(int i = 0; i < presets.size(); i++){
 				ids.push_back(presets[i].getID());
@@ -167,7 +200,20 @@
 			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
 		}
 	}
-	
+	else if(aTableView == allClipTable){
+		if([@"clip" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+		}
+		else if([@"presets" isEqualToString:aTableColumn.identifier]){
+			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords(parser.getAllClips()[rowIndex].getKeywords());
+			vector<string> ids;
+			for(int i = 0; i < presets.size(); i++){
+				ids.push_back(presets[i].getID());
+			}
+			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
+		}
+	}
+
 	return @"-";
 }
 
@@ -188,7 +234,6 @@
 {
 	if(aNotification.object == presetTable){
 		if(selectedPreset != NULL){
-			
 			vector<string> keywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
 			visualSystems.setKeywordsForPreset(*selectedPreset, keywords);
 			visualSystems.saveKeywords();
@@ -228,11 +273,6 @@ completionsForSubstring:(NSString *)substring
 	cout << "CONTROL TEXT END EDITING" << endl;
 	
 	if(presetTable.selectedRow >= 0){
-		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-		[clipTable reloadData];
-		[presetTable reloadData];
 	}
     
 }
@@ -271,7 +311,7 @@ completionsForSubstring:(NSString *)substring
 		associatedKeywords = visualSystems.keywordsForPreset(*selectedPreset);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 	}
-	
+		
 	[clipTable reloadData];
 }
 

@@ -6,14 +6,15 @@
 #include "CloudsVisualSystemManager.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate, NSTokenFieldDelegate> {
+	IBOutlet NSTokenField* currentKeywords;
 	
 	IBOutlet NSTableView* presetTable;
 	IBOutlet NSTableView* clipTable;
+	IBOutlet NSTableView* allKeywordTable;
 	IBOutlet NSTableView* allClipTable;
-	IBOutlet NSTokenField* currentKeywords;
 	
-//	IBOutlet NSTextLabel* keywordPercent
-//	IBOutlet NSTextLabel* clipPercent;
+	IBOutlet NSTextField* keywordPercent;
+	IBOutlet NSTextField* clipPercent;
 	
 	bool shouldPlaySelectedRow;
 	
@@ -23,6 +24,9 @@
 	CloudsVisualSystemPreset* selectedPreset;
 	vector<CloudsClip> associatedClips;
 	vector<string> associatedKeywords;
+	
+	float percentKeywordsTagged;
+	float percentClipsTagged;
 }
 
 - (void)setup;
@@ -38,8 +42,11 @@
 - (void)mouseReleased:(NSPoint)p button:(int)button;
 - (void)windowResized:(NSSize)size;
 
--(IBAction) suppressClip:(id)sender;
--(IBAction) unsuppressClip:(id)sender;
+- (void) updateCounts;
+
+- (IBAction) updateKeywords:(id)sender;
+- (IBAction) suppressClip:(id)sender;
+- (IBAction) unsuppressClip:(id)sender;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

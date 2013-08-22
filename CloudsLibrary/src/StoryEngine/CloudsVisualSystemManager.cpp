@@ -10,7 +10,6 @@
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemCities.h"
-//#include "CloudsVisualSystemAmber.h"
 #include "CloudsVisualSystemCollaboration1.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
@@ -264,6 +263,19 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string s
 }
 
 //--------------------------------------------------------------------
+set<string> CloudsVisualSystemManager::getAllKeywords(){
+	set<string> allKeywords;
+	for(int i = 0; i < presets.size(); i++){
+		if(presetHasKeywords(presets[i])){
+			for(int k = 0; k < keywords[presets[i].getID()].size(); k++){
+				allKeywords.insert( keywords[presets[i].getID()][k] );
+			}
+		}
+	}
+	return allKeywords;
+}
+
+//--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 	return presets;
 }
@@ -276,6 +288,11 @@ string CloudsVisualSystemManager::getKeywordFilePath(){
 //--------------------------------------------------------------------
 vector<string> CloudsVisualSystemManager::keywordsForPreset(int index){
 	return keywords[ presets[index].getID() ];
+}
+
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::presetHasKeywords(CloudsVisualSystemPreset& preset){
+	return keywords.find( preset.getID() ) != keywords.end();
 }
 
 //--------------------------------------------------------------------

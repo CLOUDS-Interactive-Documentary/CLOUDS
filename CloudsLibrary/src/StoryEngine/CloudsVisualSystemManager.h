@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemPreset.h"
+#include <set>
 
 class CloudsVisualSystemManager {
   public:
@@ -23,11 +24,14 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystem* visualSystemWithName(string systemName);
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
+	bool presetHasKeywords(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(int index);
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords);
+	
+	set<string> getAllKeywords();
 	
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
@@ -50,12 +54,14 @@ class CloudsVisualSystemManager {
 	map<string, vector<CloudsVisualSystemPreset> > nameToPresets;
     map<string, vector<string> > suppressedClips;
 	string getKeywordFilePath();
+
 	
-	float lastBackupTime;
-	float backupTimeInterval;
 	map<string,vector<string> > keywords;
-	
+
+
 	//this instantiates and registers all the visual systems, called once at setup
 	void registerVisualSystem(CloudsVisualSystem* system);
+	float lastBackupTime;
+	float backupTimeInterval;
 
 };
