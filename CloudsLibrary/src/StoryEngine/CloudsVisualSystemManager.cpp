@@ -67,7 +67,7 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 #ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	
-	system->setup();
+	//system->setup();
 	
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;

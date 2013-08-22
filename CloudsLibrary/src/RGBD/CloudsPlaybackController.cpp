@@ -40,15 +40,15 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 void CloudsPlaybackController::setup(){
 	//LB
 	//	create a shared fbo. We'll pass a pointer to each visual system as the are played
-	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-	sharedRenderTarget.begin();
-	ofClear(0,0,0,0);
-	sharedRenderTarget.end();
-	
-	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-	nextRenderTarget.begin();
-	ofClear(0,0,0,0);
-	nextRenderTarget.end();
+//	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+//	sharedRenderTarget.begin();
+//	ofClear(0,0,0,0);
+//	sharedRenderTarget.end();
+//	
+//	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+//	nextRenderTarget.begin();
+//	ofClear(0,0,0,0);
+//	nextRenderTarget.end();
 	
 	if(!eventsRegistered){
 		
@@ -64,7 +64,7 @@ void CloudsPlaybackController::setup(){
 		ofRegisterMouseEvents(this);
 		
 		//pointing to our our sharedRenderTarget
-		rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
+		//rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
 		
 		//rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
@@ -108,9 +108,19 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
+	//TODO this shouldn't happen when runs are set up
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
 		delete currentAct;
+	}
+	
+	//TODO: show loading screen while we initialize all the visual systems
+	vector<CloudsVisualSystem*> systems = act->getAllVisualSystems();
+	for(int i = 0; i < systems.size(); i++){
+		if(systems[i] != NULL){
+			cout << "CloudsPlaybackController::playAct -- Setting up:: " << systems[i]->getSystemName() << endl;
+			systems[i]->setup();
+		}
 	}
 	
 	currentAct = act;
@@ -159,7 +169,6 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
 	
-	updateVisualSystemCrossFade();
 	
 	if(showingIntro){
 		if(introSequence.isStartQuestionSelected()){
@@ -180,22 +189,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 		}
 	}
+	else {
+		updateVisualSystemFade();
+	}
 	
-	//TODO: add camera animations to RGBDVisSYs
+	//TODO: add camera animations to RGBDVisSys
 	
 	//TODO: offsetTargets for turning away
 	
-	
 }
 
-//TODO: rename updateVisualSystemFade
-void CloudsPlaybackController::updateVisualSystemCrossFade(){
+
+void CloudsPlaybackController::updateVisualSystemFade(){
 	//handle fadin/out
 	if( fadingIn || fadingOut){
 		float currentTime = ofGetElapsedTimef();
 		
 		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
-		
 		
 		//end fading in
 		if( fadingIn && currentTime > fadeEndTime ){
@@ -218,12 +228,11 @@ void CloudsPlaybackController::updateVisualSystemCrossFade(){
 				nextSystem = NULL;
 				
 				fadeInVisualSystem(1);
-				
-			}else{
+			}
+			else{
 				//back to the RGBD visual system
 				hideVisualSystem();
 				fadeInVisualSystem(1);
-				
 			}
 			
 			//end fade
@@ -253,7 +262,7 @@ void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
 	//projection stuff
 	targetCam->setupPerspective(false,												//bool vFlip
 								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
-								c0->getNearClip()*x	+	c1->getNearClip()*mx,		//float nearDist
+								c0->getNearClip()*x	+	c1->getNearClip()*mx,			//float nearDist
 								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
 								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
 	
@@ -262,13 +271,10 @@ void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
 	ofQuaternion rot;
 	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
 	targetCam->setOrientation( rot );
-	
-	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::draw(ofEventArgs & args){
-
     
 	//turn off depth testing and enable blending
     glDisable( GL_DEPTH_TEST );
@@ -333,7 +339,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
 		
-		//
 		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
 		
 		//set the nextSystem pointer that we'll switch to when the fade ends
@@ -348,7 +353,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 			//transition-in the rgbd visual system
 			rgbdVisualSystem.transitionOut( nextSystem->getTransitionType(), duration );
 		}
-
 	}
 	else{
 		ofLogError() << "Triggered visual system while still showing one";
@@ -440,10 +444,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 		hideVisualSystem();
 	}
 	
-
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl << endl<< endl;
 
-	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
+//	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
 	//we draw to screen in CloudsPlaybackController::draw() so we disable it in the nexVisualSystem
 	nextVisualSystem.system->setDrawToScreen( false );

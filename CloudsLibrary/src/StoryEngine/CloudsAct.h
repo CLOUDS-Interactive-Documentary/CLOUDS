@@ -67,7 +67,9 @@ class CloudsAct{
     void clear();
 
     vector<CloudsClip>& getAllClips();
-    vector<CloudsVisualSystemPreset>& getAllVisualSystems();
+    vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
+	vector<CloudsVisualSystem*> getAllVisualSystems();
+	
     vector<string>& getAllTopics();
     
     CloudsClip& getClip(int index);
@@ -95,7 +97,6 @@ class CloudsAct{
 	ofxTimeline& getTimeline(){ return timeline; }
     
     void drawDebug();
-    
 
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
     CloudsEvents& getEvents();

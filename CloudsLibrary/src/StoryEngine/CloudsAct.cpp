@@ -134,8 +134,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         vector<string> clipName = ofSplitString(bang.flag, "%");
         cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
-        ofNotifyEvent(events.preRollRequested, args);
-        
+        ofNotifyEvent(events.preRollRequested, args);        
     }
 }
 
@@ -143,8 +142,7 @@ float CloudsAct::getActDuration(){
     return duration;
 }
 
-
-vector<CloudsDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
+vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
     
     if(dichotomiesMap.find(clipName) != dichotomiesMap.end()){
         return dichotomiesMap[clipName];
@@ -152,7 +150,18 @@ vector<CloudsDichotomy>& CloudsAct:: getDichotomiesForClip(string clipName){
     cout<<"dichotomoies not found for clip: "<< clipName<<endl;
     return dummyDichotomies;
 }
-vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystems(){
+
+vector<CloudsVisualSystem*> CloudsAct::getAllVisualSystems(){
+	vector<CloudsVisualSystem*> vs;
+	for(int i = 0; i < visualSystems.size(); i++){
+		if(!ofContains(vs, visualSystems[i].system)){
+			vs.push_back(visualSystems[i].system);
+		}
+	}
+	return vs;
+}
+
+vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
     return visualSystems;
 }
 

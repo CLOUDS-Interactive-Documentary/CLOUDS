@@ -183,7 +183,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(particleGui);
 	guimap[meshGui->getName()] = particleGui;
 	
-	
 	questionGui = new ofxUISuperCanvas("QUESTIONS", gui);
 	questionGui->copyCanvasStyle(gui);
     questionGui->copyCanvasProperties(gui);
@@ -192,7 +191,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
-
 }
 
 //--------------------------------------------------------------
@@ -271,7 +269,6 @@ void CloudsVisualSystemRGBD::updateTransition(){
 		
 		transitionVal = x;
 		cloudsCamera.setTransitionPercent( transitionVal );
-		
 	}
 }
 
@@ -294,8 +291,7 @@ void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, f
 	cloudsCamera.setTransitionTargetNode( &cloudsCamera.mouseBasedNode );
 }
 
-void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, float startTime )
-{
+void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, float startTime ) {
 	cout << "CloudsVisualSystemRGBD::TRANSITION OUT:: " << ofGetElapsedTimef() << endl;
 	
 	cloudsCamera.setTransitionStartNode( &cloudsCamera.mouseBasedNode );
@@ -304,20 +300,16 @@ void CloudsVisualSystemRGBD::transitionOut( ofNode& startNode, float duration, f
 	transition( duration, startTime );
 }
 
-void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime )
-{
+void CloudsVisualSystemRGBD::transitionIn( RGBDTransitionType transitionType, float duration, float startTime ) {
 	setTransitionNodes(transitionType );
 	transitionIn( transitionInStart, duration, startTime );
 }
 
-void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime )
-{
+void CloudsVisualSystemRGBD::transitionOut( RGBDTransitionType transitionType, float duration, float startTime ) {
 	
 	setTransitionNodes( transitionType );
 	transitionOut( transitionOutTarget, duration, startTime );
 }
-
-
 
 void CloudsVisualSystemRGBD::printTransitionNodes(){
 	

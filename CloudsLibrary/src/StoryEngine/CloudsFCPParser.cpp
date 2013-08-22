@@ -23,8 +23,8 @@ CloudsFCPParser::CloudsFCPParser(){
 void CloudsFCPParser::loadFromFiles(){
     setup(getDataPath() + "fcpxml");
     parseLinks(getDataPath() + "links/clouds_link_db.xml");
-    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-    
+//    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
+  parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
 
 }
 
@@ -335,13 +335,11 @@ float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string k
 }
 
 float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
-    
     if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
         return keywordCohesionMap[keyword];
     }
-    ofLogError()<<"Couldnt find cohesion index for keyword: "<<endl;
+    ofLogError("CloudsFCPParser::getCohesionIndexForKeyword")<<"Couldnt find cohesion index for keyword: "<<endl;
     return 0;
-    
 }
 
 void CloudsFCPParser::calculateCohesionMedianForKeywords(){
@@ -374,10 +372,8 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
                 keywordCohesionMap[currentKeyword] = medianValue / maxDistance;
             }
         }
-        
     }
 }
-
 
 ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
     
@@ -387,7 +383,7 @@ ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
     if(index != -1){
         return keywordCentroids[index].second;
     }
-    ofLogError()<<"No centroid found for keyword: "<< keyword<<endl;
+    ofLogError("CloudsFCPParser::getKeywordCentroid")<<"No centroid found for keyword: "<< keyword<<endl;
     
     return ofVec2f(-1, -1);
 }
@@ -396,12 +392,9 @@ int CloudsFCPParser::getCentroidMapIndex(string keyword){
     if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
         return keywordCentroidIndex[keyword];
     }
-    ofLogError()<<"Couldnt find index for keyword: "<<keyword<<endl;
+    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
 	return -1;
 }
-
-
-
 
 void CloudsFCPParser::saveLinks(string linkFile){
 	

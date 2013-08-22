@@ -49,7 +49,6 @@ CloudsStoryEngine::CloudsStoryEngine(){
 CloudsStoryEngine::~CloudsStoryEngine(){
     delete gui;
     delete clipGui;
-
 }
 
 void CloudsStoryEngine::setup(){
@@ -245,10 +244,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     float maxTimeRemainingForVisualSystem =0;
     bool isPresetIndefinite = false;
     float definitePresetEndTime =0;
-    //TODO: Make this non refrenced
+    //TODO: Make this non referenced
     CloudsVisualSystemPreset currentPreset;
     //VS Stuff
-    
     
     scoreBuffer.clear();
     scoreStream.clear();
@@ -476,7 +474,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     }
 
     act->populateTime();
-    
+	
     scoreBuffer.set(scoreStream);
     ofBufferToFile("score.csv", scoreBuffer);
     
@@ -512,7 +510,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 
         for (int i =0; i < adjacentTopics.size(); i++) {
             
-            if ( visualSystems->getPresetsForKeyword(adjacentTopics[i]).size() ) {
+            if(visualSystems->getPresetsForKeyword(adjacentTopics[i]).size() ) {
                 preset = visualSystems->getPresetsForKeyword(adjacentTopics[i])[0];
                 foundPreset = true;
                 cout<<"Using Preset "<<preset.getID()<<" for keyword "<<keyword<<endl;
@@ -549,7 +547,6 @@ void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
                 cout<<dichotomies[i].right<<": +1"<<endl;
                 dichotomies[i].balance += 1;
             }
-            
         }
     }
 }
