@@ -13,90 +13,92 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
-	
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
 
-
-	customGui->addSlider("seed", 0, 100, &seed);
-	customGui->addSlider("hero nodes", 5, 20, &heroNodes);
-	customGui->addSlider("spawn radius",  5, 1000, &heroRadius);
-	customGui->addSlider("radius var",  5, 1000, &heroRadiusVariance);
-	customGui->addSlider("num iterations" 1, 20, &numIterations);
-	customGui->addSlider("num branches" 1, 20, &numBranches);
-	customGui->addSlider("surviving branches" 1, 10, &numSurvivingBranches);
-	customGui->addSlider("min branch dist",  10, 1000, &minDistance);
-	customGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
-	customGui->addSlider("step size",  1, 300, &stepSize);
-	customGui->addSlider("replicate point size", 1, 50, &replicatePointSize);
-
-	customGui->addSlider("line thickness",  1, 10, &lineThickness);
-	customGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
-
-	customGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
-	customGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
-	customGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
-
-	customGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
-	customGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
-
-	customGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
-	customGui->addSlider("node pop length" 50, 2000, &nodePopLength);
-	customGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
-	customGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
-
-	customGui->addSlider("line start",  0, 1.0, &lineStartTime);
-	customGui->addSlider("line end",  0, 1.0, &lineEndTime);
-	customGui->addSlider("line fade verts" 1, 10, &lineFadeVerts);
-
-	gui.loadFromFile("settings.xml");
+	generatorGui = new ofxUISuperCanvas("GENERATOR", gui);
+	generatorGui->copyCanvasStyle(gui);
+	generatorGui->copyCanvasProperties(gui);
+	generatorGui->setName("Generator");
+	generatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+	generatorGui->addSlider("seed", 0, 100, &seed);
+	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
+	generatorGui->addSlider("spawn radius",  5, 1000, &heroRadius);
+	generatorGui->addSlider("radius var",  5, 1000, &heroRadiusVariance);
+	generatorGui->addSlider("num iterations", 1, 20, &numIterations);
+	generatorGui->addSlider("num branches", 1, 20, &numBranches);
+	generatorGui->addSlider("surviving branches", 1, 10, &numSurvivingBranches);
+	generatorGui->addSlider("min branch dist",  10, 1000, &minDistance);
+	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
+	generatorGui->addSlider("step size",  1, 300, &stepSize);
+	generatorGui->addSlider("replicate point size", 1, 50, &replicatePointSize);
 
-	timeline.setup();
+
+	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
+	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
+	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
+
+	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
+	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
+
+	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
+
+	ofAddListener(generatorGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(generatorGui);
+	guimap[generatorGui->getName()] = generatorGui;
+
+	displayGui = new ofxUISuperCanvas("DISPLAY", gui);
+	displayGui->copyCanvasStyle(gui);
+	displayGui->copyCanvasProperties(gui);
+	displayGui->setName("Display");
+	displayGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
+	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
+	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
 	
-//	timeline.setFrameRate(24);
-//	timeline.setFrameBased(true);
-//	timeline.setDurationInFrames(30*24);
-//	timeline.addTrack("camera", &camTrack);
-	timeline.addCurves("node bounce");
-	timeline.addCurves("cluster node size", ofRange(1, 10), 2);
-	timeline.addCurves("traversed node size", ofRange(1, 10), 2);
-	timeline.addCurves("line focal dist", ofRange(0, sqrt(3000)),  100);
-	timeline.addCurves("line focal range", ofRange(0, sqrt(3000)),  100);
-	timeline.addCurves("line width", ofRange(.5, 2.0),  100);
-	timeline.addCurves("line dissolve");
-	lineColor = timeline.addColors("line color");
-	timeline.addColorsWithPalette("node color", "nerve_palette.png");
-	//timeline.addColors("node color");
-//	timeline.setMinimalHeaders(true);
+	displayGui->addSlider("line start",  0, 1.0, &lineStartTime);
+	displayGui->addSlider("line end",  0, 1.0, &lineEndTime);
+	displayGui->addSlider("line fade verts", 1, 10, &lineFadeVerts);
+	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
+	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
+	displayGui->addSlider("line width", .5, 2.0, &lineWidth);
+	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
+	displayGui->addSlider("line thickness",  1, 10, &lineThickness);
+	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
+
+	displayGui->addSlider("node bounce", 0, 1.0, &nodeBounce);
+	displayGui->addSlider("cluster node size", 1, 10, &clusterNodeSize);
+	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
+
+	ofAddListener(displayGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
+	guis.push_back(displayGui);
+	guimap[generatorGui->getName()] = displayGui;
+
+//	timeline.addCurves("node bounce");
+//	timeline.addCurves("cluster node size", ofRange(1, 10), 2);
+//	timeline.addCurves("traversed node size", ofRange(1, 10), 2);
+	//timeline.addCurves("line focal dist", ofRange(0, sqrt(3000)),  100);
+	//timeline.addCurves("line focal range", ofRange(0, sqrt(3000)),  100);
+//	timeline.addCurves("line width", ofRange(.5, 2.0),  100);
+	//timeline.addCurves("line dissolve");
 	
-	//camTrack.setCamera(cam);
+	//TODO :: ADD COLOR
+	
+
+	//TODO ::
 		
 	traversedNodePoints.setUsage( GL_DYNAMIC_DRAW );
 	traversedNodePoints.setMode(OF_PRIMITIVE_POINTS);
 	nodeCloudPoints.enableNormals();
 	
 	loadShader();
-	
 }
 
-void testApp::loadShader(){
-	CloudsVisualSystemClusterMap.load("shaders/Billboard");
+void CloudsVisualSystemClusterMap::loadShader(){
+	billboard.load("shaders/Billboard");
 	billboard.begin();
 	billboard.setUniform1i("tex", 0);
 	billboard.end();
@@ -134,32 +136,17 @@ void CloudsVisualSystemClusterMap::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+
+void CloudsVisualSystemClusterMap::selfSetupTimeline(){
+	lineColor = timeline->addColors("line color");
+	nodeColor = timeline->addColorsWithPalette("node color", "nerve_palette.png");
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
-	
-//	videoLoaded = false;
-//	
-//	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-//		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-//								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-//		
-//		getRGBDVideoPlayer().swapAndPlay();
-//		
-//		for(int i = 0; i < 640; i += 2){
-//			for(int j = 0; j < 480; j+=2){
-//				simplePointcloud.addVertex(ofVec3f(i,j,0));
-//			}
-//		}
-//		
-//		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-//		videoLoaded = true;
-//	}
-	
-	
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
+
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -184,22 +171,23 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
-	if(!ofGetMousePressed(0)){
-		timeline.setOffset(ofVec2f(0,ofGetHeight()-timeline.getHeight()));
-	}
 	
-	ofRectangle fboContainer = ofRectangle(0,0,ofGetWidth()-250,timeline.getTopLeft().y);
+//	if(!ofGetMousePressed(0)){
+//		timeline.setOffset(ofVec2f(0,ofGetHeight()-timeline.getHeight()));
+//	}
 	
-	fboRect = ofRectangle(0,0,16,9);
-	fboRect.scaleTo(fboContainer);
-	fboRect.x = 200;
-	cam.applyRotation = cam.applyTranslation = fboRect.inside(mouseX, mouseY) && !camTrack.lockCameraToTrack;
+//	ofRectangle fboContainer = ofRectangle(0,0,ofGetWidth()-250,timeline.getTopLeft().y);
+//	fboRect = ofRectangle(0,0,16,9);
+//	fboRect.scaleTo(fboContainer);
+//	fboRect.x = 200;
 	
-	int vertEndIndex = ofMap(timeline.getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
+//	cam.applyRotation = cam.applyTranslation =  fboRect.inside(mouseX, mouseY) && !camTrack.lockCameraToTrack;
+	
+	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
 	int vertsToHighlight = ofClamp(vertEndIndex,0,traversal.getVertices().size()-1);
-	int lineDissolveVerts = vertEndIndex*timeline.getValue("line dissolve");
+	int lineDissolveVerts = vertEndIndex*lineDissolve;
 	
-	float nodeSize = powf(timeline.getValue("traversed node size"), 2);
+	float nodeSize = powf(traversedNodeSize, 2);
 	for(int i = 0; i < vertsToHighlight; i++){;
 		//		float fade = ofMap(i, vertsToHighlight*.9, vertsToHighlight, 1.0, 0, true);
 		float alpha = ofMap(i, vertEndIndex, vertEndIndex-nodePopLength, 0.0, 1.0, true);
@@ -213,8 +201,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
 			//traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = 1.0;
 			//			cout << "setting color of  line point " << i << " to node index " << endl;
-			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = nodeSize*timeline.getValueAtPercent("node bounce", alpha);
-			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i ] ] = currentColor;
+			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = nodeSize*nodeBounce, alpha;
+			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i] ] = currentColor;
 		}
 	}
 	
@@ -230,7 +218,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	}
 	
 	
-	float clusterNodeBaseSize = timeline.getValue("cluster node size");
+	float clusterNodeBaseSize =  clusterNodeSize;
 	vector<ofVec3f>& normals = nodeCloudPoints.getNormals();
 	for(int i = 0; i < nodes.size(); i++){
 		if(nodes[i]->nodePointIndex != -1){
@@ -243,8 +231,10 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
 	
+	//TODO: evaluate line blur target
 	
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	/*
 	lineBlurTarget.begin();
 	ofClear(0,0,0,0);
 	ofPushStyle();
@@ -258,19 +248,20 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	
 	ofPopStyle();
 	lineBlurTarget.end();
+	*/
 	
-	renderTarget.begin();
-	ofClear(0,0,0,0);
+	//renderTarget.begin();
+//	ofClear(0,0,0,0);
 	
-	cam.begin(ofRectangle(0,0,1920,1080));
+//	cam.begin(ofRectangle(0,0,1920,1080));
 	ofPushStyle();
 	
 	ofSetColor(255);
 	
-	ofSetLineWidth(	timeline.getValue("line width") );
+	ofSetLineWidth(	lineWidth );
 	lineAttenuate.begin();
-	lineAttenuate.setUniform1f("focalPlane", powf(timeline.getValue("line focal dist"),2));
-	lineAttenuate.setUniform1f("focalRange", powf(timeline.getValue("line focal range"),2));
+	lineAttenuate.setUniform1f("focalPlane", powf(lineFocalDistance,2));
+	lineAttenuate.setUniform1f("focalRange", powf(lineFocalRange,2));
 	lineAttenuate.setUniform1f("lineFade", lineAlpha);
 	lineAttenuate.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
 	lineAttenuate.setUniform1f("radius", 300.);
@@ -316,7 +307,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofEnableArbTex();
 	
 	ofPopStyle();
-	cam.end();
+
 	
 	//line blur
 //	gaussianBlur.begin();
@@ -364,8 +355,6 @@ void CloudsVisualSystemClusterMap::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemClusterMap::selfEnd(){
-	
-	simplePointcloud.clear();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -449,9 +438,11 @@ void CloudsVisualSystemClusterMap::generate(){
 		n->stepSize = stepSize;
 		n->numSurvivingBranches = numSurvivingBranches;
 		n->minFuseRadius = minFuseRadius;
-		n->nodeColorTrack = (ofxTLColorTrack*)timeline.getTrack("node color");
-		n->lineColor = timeline.getColor("line color");
-		n->nodeColor = timeline.getColor("node color");
+		
+		//TODO: add color
+		n->nodeColorTrack = nodeColor;
+		n->lineColor = timeline->getColor("line color");
+		n->nodeColor = timeline->getColor("node color");
 		n->replicatePointDistance = replicatePointDistance;
 		n->replicatePointSize = replicatePointSize;
 		n->numPointsAtReplicate = numPointsAtReplicate;

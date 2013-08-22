@@ -31,34 +31,35 @@ void testApp::setup(){
 
 	
 	////////SEED WITH RANDOM CLIP
-	srand( ofGetSeconds()*1000 );
-	CloudsClip& clip = parser.getRandomClip(true,true);
-	
-	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
-	if(questionsAndTopics.size() > 0){
-		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
-	}
+//	srand( ofGetSeconds()*1000 );
+//	CloudsClip& clip = parser.getRandomClip(true,false);
+//	
+//	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+//	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+////	if(questionsAndTopics.size() > 0){
+////		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
+////	}
+//	storyEngine.buildAct(clip, clip.getKeywords()[0] );
 	////////SEED WITH RANDOM CLIP
 	
 	//////////////SHOW INTRO
-//	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-//	//safe guard delete any starters that don't have questions
-//	for(int i = startingNodes.size()-1; i >= 0; i--){
-//		if(!startingNodes[i].hasQuestion() ) {
-//			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
-//			startingNodes.erase(startingNodes.begin() + i);
-//		}
-//		else if(!startingNodes[i].hasCombinedVideo){
-//			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
-//			//startingNodes.erase(startingNodes.begin() + i);
-//		}
-//		else{
-//			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestionsVector()[0] << endl;
-//		}
-//	}
-//	cout << "Starting with " << startingNodes.size() << endl;
-//	player.showIntro(startingNodes);
+	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+	//safe guard delete any starters that don't have questions
+	for(int i = startingNodes.size()-1; i >= 0; i--){
+		if(!startingNodes[i].hasQuestion() ) {
+			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
+			startingNodes.erase(startingNodes.begin() + i);
+		}
+		else if(!startingNodes[i].hasCombinedVideo){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
+			//startingNodes.erase(startingNodes.begin() + i);
+		}
+		else{
+			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestionsVector()[0] << endl;
+		}
+	}
+	cout << "Starting with " << startingNodes.size() << endl;
+	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
 	
 }

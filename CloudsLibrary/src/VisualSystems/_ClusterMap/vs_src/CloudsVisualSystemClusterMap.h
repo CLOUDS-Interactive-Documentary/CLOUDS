@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
+#include "Node.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
@@ -36,6 +37,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	void selfSetupTimeline();
+	
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -86,26 +89,26 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 
+
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
+	ofCamera& getCameraRef(){
+		return cam;
+	}
 
 	//
-	ofCamera& getCameraRef(){
-		if(videoLoaded){
-			return cloudsCamera;
-		}
-		return CloudsVisualSystem::getCameraRef();
-	}
+//	ofCamera& getCameraRef(){
+//		return CloudsVisualSystem::getCameraRef();
+//	}
 
 protected:
     
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* generatorGui;
+	ofxUISuperCanvas* displayGui;
+	
 	float seed; //read as int
 	float heroNodes; //read as int
 	float numIterations; //read as int
@@ -115,15 +118,13 @@ protected:
 	float minDistance;
 	float distanceRange;
 	float stepSize;
-	float lineThickness;
-	float lineAlpha;
 	float minAttractRadius;
 	float minRepelRadius;
 	float minFuseRadius;
 	
 	float lineStartTime;
 	float lineEndTime;
-	int lineFadeVerts;
+	float lineFadeVerts;
 	float lineBlurAmount;
 	float lineBlurFade;
 	
@@ -134,18 +135,30 @@ protected:
 	float traverseNodeWeight;
 	float traverseStepSize;
 	
-	int numSurvivingBranches;
+	float numSurvivingBranches;
 	int numPointsAtReplicate;
 	
 	float replicatePointDistance;
 	float replicatePointSize;
 	float maxTraverseAngle;
 	
-	int nodePopLength;
+	float nodePopLength;
 	
+	//taken from timeline
+	float nodeBounce;
+	float clusterNodeSize;
+	float traversedNodeSize;
+	float lineFocalDistance;
+	float lineFocalRange;
+	float lineWidth;
+	float lineDissolve;
+	float lineThickness;
+	float lineAlpha;
+
 	ofxGameCamera cam;
 
 	ofxTLColorTrack* lineColor;
+	ofxTLColorTrack* nodeColor;
 	
 	vector<Node*> nodes;
 	vector<ofVec3f> fusePoints;
@@ -155,7 +168,9 @@ protected:
 	//for drawing the line
 	ofVboMesh traversal;
 	
-	ofxTLCurves* nodeBounce;
+	//ofxTLCurves* nodeBounce;
+
+	
 	//for drawing the node graphics
 	vector<Node*> traversedNodes;
 	map<ofIndexType,ofIndexType> traversalIndexToNodeIndex;
