@@ -25,6 +25,9 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */; };
+		E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769417C67A7900CC6EC8 /* LNode.cpp */; };
+		E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769617C67A7900CC6EC8 /* LSystem.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -49,12 +52,6 @@
 		E74255E8179F985900B2F0A3 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425221179F985500B2F0A3 /* Globals.cpp */; };
 		E74255E9179F985900B2F0A3 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425223179F985500B2F0A3 /* Module.cpp */; };
 		E74255EA179F985900B2F0A3 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425225179F985500B2F0A3 /* RandomMover.cpp */; };
-		E74255ED179F985900B2F0A3 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425285179F985500B2F0A3 /* CloudsVisualSystemLSystems.cpp */; };
-		E74255EE179F985900B2F0A3 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425287179F985500B2F0A3 /* LNode.cpp */; };
-		E74255EF179F985900B2F0A3 /* LParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425289179F985500B2F0A3 /* LParticle.cpp */; };
-		E74255F0179F985900B2F0A3 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742528B179F985500B2F0A3 /* LSystem.cpp */; };
-		E74255F1179F985900B2F0A3 /* LSystemReconstructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742528D179F985500B2F0A3 /* LSystemReconstructor.cpp */; };
-		E74255F2179F985900B2F0A3 /* LVectorField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742528F179F985500B2F0A3 /* LVectorField.cpp */; };
 		E74255F5179F985900B2F0A3 /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742533F179F985600B2F0A3 /* CloudsVisualSystemMemory.cpp */; };
 		E74255F6179F985900B2F0A3 /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */; };
 		E74255F9179F985900B2F0A3 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425395179F985600B2F0A3 /* CloudsVisualSystemOcean.cpp */; };
@@ -261,6 +258,12 @@
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
+		E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
+		E736769317C67A7900CC6EC8 /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
+		E736769417C67A7900CC6EC8 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
+		E736769517C67A7900CC6EC8 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
+		E736769617C67A7900CC6EC8 /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
+		E736769717C67A7900CC6EC8 /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -310,18 +313,6 @@
 		E7425224179F985500B2F0A3 /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
 		E7425225179F985500B2F0A3 /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
 		E7425226179F985500B2F0A3 /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
-		E7425285179F985500B2F0A3 /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
-		E7425286179F985500B2F0A3 /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
-		E7425287179F985500B2F0A3 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
-		E7425288179F985500B2F0A3 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
-		E7425289179F985500B2F0A3 /* LParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LParticle.cpp; sourceTree = "<group>"; };
-		E742528A179F985500B2F0A3 /* LParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LParticle.h; sourceTree = "<group>"; };
-		E742528B179F985500B2F0A3 /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
-		E742528C179F985500B2F0A3 /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		E742528D179F985500B2F0A3 /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
-		E742528E179F985500B2F0A3 /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
-		E742528F179F985500B2F0A3 /* LVectorField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVectorField.cpp; sourceTree = "<group>"; };
-		E7425290179F985500B2F0A3 /* LVectorField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVectorField.h; sourceTree = "<group>"; };
 		E742533F179F985600B2F0A3 /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
 		E7425340179F985600B2F0A3 /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
 		E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCollaboration1.cpp; sourceTree = "<group>"; };
@@ -1221,18 +1212,12 @@
 		E7425284179F985500B2F0A3 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7425285179F985500B2F0A3 /* CloudsVisualSystemLSystems.cpp */,
-				E7425286179F985500B2F0A3 /* CloudsVisualSystemLSystems.h */,
-				E7425287179F985500B2F0A3 /* LNode.cpp */,
-				E7425288179F985500B2F0A3 /* LNode.h */,
-				E7425289179F985500B2F0A3 /* LParticle.cpp */,
-				E742528A179F985500B2F0A3 /* LParticle.h */,
-				E742528B179F985500B2F0A3 /* LSystem.cpp */,
-				E742528C179F985500B2F0A3 /* LSystem.h */,
-				E742528D179F985500B2F0A3 /* LSystemReconstructor.cpp */,
-				E742528E179F985500B2F0A3 /* LSystemReconstructor.h */,
-				E742528F179F985500B2F0A3 /* LVectorField.cpp */,
-				E7425290179F985500B2F0A3 /* LVectorField.h */,
+				E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */,
+				E736769317C67A7900CC6EC8 /* CloudsVisualSystemLSystems.h */,
+				E736769417C67A7900CC6EC8 /* LNode.cpp */,
+				E736769517C67A7900CC6EC8 /* LNode.h */,
+				E736769617C67A7900CC6EC8 /* LSystem.cpp */,
+				E736769717C67A7900CC6EC8 /* LSystem.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2889,12 +2874,6 @@
 				E74255E8179F985900B2F0A3 /* Globals.cpp in Sources */,
 				E74255E9179F985900B2F0A3 /* Module.cpp in Sources */,
 				E74255EA179F985900B2F0A3 /* RandomMover.cpp in Sources */,
-				E74255ED179F985900B2F0A3 /* CloudsVisualSystemLSystems.cpp in Sources */,
-				E74255EE179F985900B2F0A3 /* LNode.cpp in Sources */,
-				E74255EF179F985900B2F0A3 /* LParticle.cpp in Sources */,
-				E74255F0179F985900B2F0A3 /* LSystem.cpp in Sources */,
-				E74255F1179F985900B2F0A3 /* LSystemReconstructor.cpp in Sources */,
-				E74255F2179F985900B2F0A3 /* LVectorField.cpp in Sources */,
 				E74255F5179F985900B2F0A3 /* CloudsVisualSystemMemory.cpp in Sources */,
 				E74255F6179F985900B2F0A3 /* CloudsVisualSystemCollaboration1.cpp in Sources */,
 				E74255F9179F985900B2F0A3 /* CloudsVisualSystemOcean.cpp in Sources */,
@@ -2940,6 +2919,9 @@
 				E785F87217B28800002371FC /* ofxObjLoader.cpp in Sources */,
 				E79956CF17C27CBC00EF9330 /* Question.frag in Sources */,
 				E79956D017C27CBC00EF9330 /* Question.vert in Sources */,
+				E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */,
+				E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */,
+				E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
