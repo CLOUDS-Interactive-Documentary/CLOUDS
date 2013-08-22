@@ -13,7 +13,6 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 
-
 	generatorGui = new ofxUISuperCanvas("GENERATOR", gui);
 	generatorGui->copyCanvasStyle(gui);
 	generatorGui->copyCanvasProperties(gui);

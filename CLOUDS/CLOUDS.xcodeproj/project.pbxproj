@@ -1777,6 +1777,8 @@
 				E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */,
 				E7402EA7178F45AA00FEABED /* CloudsAct.h */,
 				E7402EA6178F45AA00FEABED /* CloudsAct.cpp */,
+				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
+				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
 				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
@@ -1790,8 +1792,6 @@
 				E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D491734DE68008ADC62 /* CloudsLink.h */,
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
-				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
-				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";

@@ -83,8 +83,6 @@ void CloudsAct::populateTime(){
             else{
                 visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
             }
-            
-            
         }
         else if(item.type == PreRoll){
             clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);

@@ -17,8 +17,8 @@ void testApp::setup(){
 
 	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
-	//visualSystems.populateVisualSystems();
-	visualSystems.loadPresets();
+	visualSystems.populateVisualSystems();
+	//visualSystems.loadPresets();
 	
 	storyEngine.setup();
 	storyEngine.parser = &parser;

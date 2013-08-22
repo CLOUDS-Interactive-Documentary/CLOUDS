@@ -301,12 +301,9 @@ void CloudsFCPParser::populateKeywordCentroids(){
         keywordCentroids.push_back(make_pair(getAllKeywords()[k], centroid));
         keywordCentroidIndex[getAllKeywords()[k]]= k;
     }
-    
-    
 }
 
-
-
+//returns keywords that are close to the given keyword on the cluster map
 vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int numOfDesiredKeywords){
     string keyword = "";
     ofVec2f centroid;
@@ -320,12 +317,12 @@ vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int
         distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
     }
     
-    sort(distancePair.begin(), distancePair.end(),distanceSort);
+    sort(distancePair.begin(), distancePair.end(), distanceSort);
     
     vector<string> adjacentKeywords;
-    numOfDesiredKeywords =MIN(distancePair.size(),numOfDesiredKeywords);
+    numOfDesiredKeywords = MIN(distancePair.size(),numOfDesiredKeywords);
     
-    for (int k=0 ; k<numOfDesiredKeywords; k++) {
+    for (int k = 0; k < numOfDesiredKeywords; k++) {
         adjacentKeywords.push_back(distancePair[k].first);
     }
     
