@@ -28,6 +28,14 @@
 		E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */; };
 		E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769417C67A7900CC6EC8 /* LNode.cpp */; };
 		E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769617C67A7900CC6EC8 /* LSystem.cpp */; };
+		E73676E417C67C4100CC6EC8 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E73676D917C67C4100CC6EC8 /* attenuatelines.frag */; };
+		E73676E517C67C4100CC6EC8 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E73676DA17C67C4100CC6EC8 /* attenuatelines.vert */; };
+		E73676E617C67C4100CC6EC8 /* Billboard.frag in Sources */ = {isa = PBXBuildFile; fileRef = E73676DB17C67C4100CC6EC8 /* Billboard.frag */; };
+		E73676E717C67C4100CC6EC8 /* Billboard.vert in Sources */ = {isa = PBXBuildFile; fileRef = E73676DC17C67C4100CC6EC8 /* Billboard.vert */; };
+		E73676E817C67C4100CC6EC8 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = E73676DD17C67C4100CC6EC8 /* gaussianblur.frag */; };
+		E73676E917C67C4100CC6EC8 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E73676DE17C67C4100CC6EC8 /* gaussianblur.vert */; };
+		E73676EA17C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73676E017C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.cpp */; };
+		E73676EB17C67C4100CC6EC8 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73676E217C67C4100CC6EC8 /* Node.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -264,6 +272,16 @@
 		E736769517C67A7900CC6EC8 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
 		E736769617C67A7900CC6EC8 /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
 		E736769717C67A7900CC6EC8 /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
+		E73676D917C67C4100CC6EC8 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
+		E73676DA17C67C4100CC6EC8 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
+		E73676DB17C67C4100CC6EC8 /* Billboard.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Billboard.frag; sourceTree = "<group>"; };
+		E73676DC17C67C4100CC6EC8 /* Billboard.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Billboard.vert; sourceTree = "<group>"; };
+		E73676DD17C67C4100CC6EC8 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
+		E73676DE17C67C4100CC6EC8 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
+		E73676E017C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
+		E73676E117C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
+		E73676E217C67C4100CC6EC8 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		E73676E317C67C4100CC6EC8 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -966,9 +984,59 @@
 			path = ../../CloudsData/shaders;
 			sourceTree = "<group>";
 		};
+		E736769B17C67C4100CC6EC8 /* _ClusterMap */ = {
+			isa = PBXGroup;
+			children = (
+				E736769C17C67C4100CC6EC8 /* bin */,
+				E73676DF17C67C4100CC6EC8 /* vs_src */,
+			);
+			path = _ClusterMap;
+			sourceTree = "<group>";
+		};
+		E736769C17C67C4100CC6EC8 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				E736769D17C67C4100CC6EC8 /* data */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		E736769D17C67C4100CC6EC8 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				E73676D817C67C4100CC6EC8 /* shaders */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		E73676D817C67C4100CC6EC8 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E73676D917C67C4100CC6EC8 /* attenuatelines.frag */,
+				E73676DA17C67C4100CC6EC8 /* attenuatelines.vert */,
+				E73676DB17C67C4100CC6EC8 /* Billboard.frag */,
+				E73676DC17C67C4100CC6EC8 /* Billboard.vert */,
+				E73676DD17C67C4100CC6EC8 /* gaussianblur.frag */,
+				E73676DE17C67C4100CC6EC8 /* gaussianblur.vert */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		E73676DF17C67C4100CC6EC8 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E73676E317C67C4100CC6EC8 /* Node.h */,
+				E73676E217C67C4100CC6EC8 /* Node.cpp */,
+				E73676E117C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.h */,
+				E73676E017C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.cpp */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E736769B17C67C4100CC6EC8 /* _ClusterMap */,
 				E785F80217B287B7002371FC /* _Intro */,
 				E742501B179F985100B2F0A3 /* Cities */,
 				E742509D179F985200B2F0A3 /* Colony */,
@@ -2922,6 +2990,14 @@
 				E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */,
 				E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */,
 				E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */,
+				E73676E417C67C4100CC6EC8 /* attenuatelines.frag in Sources */,
+				E73676E517C67C4100CC6EC8 /* attenuatelines.vert in Sources */,
+				E73676E617C67C4100CC6EC8 /* Billboard.frag in Sources */,
+				E73676E717C67C4100CC6EC8 /* Billboard.vert in Sources */,
+				E73676E817C67C4100CC6EC8 /* gaussianblur.frag in Sources */,
+				E73676E917C67C4100CC6EC8 /* gaussianblur.vert in Sources */,
+				E73676EA17C67C4100CC6EC8 /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E73676EB17C67C4100CC6EC8 /* Node.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
