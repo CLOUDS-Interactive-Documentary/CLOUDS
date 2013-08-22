@@ -13,9 +13,6 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 
-	cam.setup();
-	cam.autosavePosition = true;
-	cam.loadCameraPosition();
 
 	generatorGui = new ofxUISuperCanvas("GENERATOR", gui);
 	generatorGui->copyCanvasStyle(gui);
@@ -34,15 +31,11 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
 	generatorGui->addSlider("step size",  1, 300, &stepSize);
 	generatorGui->addSlider("replicate point size", 1, 50, &replicatePointSize);
-
-
 	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
 	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
 	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
-
 	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
 	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
-
 	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
 
 	ofAddListener(generatorGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
@@ -98,19 +91,19 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 }
 
 void CloudsVisualSystemClusterMap::loadShader(){
-	billboard.load("shaders/Billboard");
+	billboard.load(getVisualSystemDataPath() + "shaders/Billboard");
 	billboard.begin();
 	billboard.setUniform1i("tex", 0);
 	billboard.end();
 	
 	ofDisableArbTex();
-	nodeSprite.loadImage("shaders/dot.png");
-	nodeSpriteBasic.loadImage("shaders/dot_no_ring.png");
+	nodeSprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
 	ofEnableArbTex();
 	
-	lineAttenuate.load("shaders/attenuatelines");
+	lineAttenuate.load(getVisualSystemDataPath() +"shaders/attenuatelines");
 	
-	gaussianBlur.load("shaders/gaussianblur");
+	gaussianBlur.load(getVisualSystemDataPath() + "shaders/gaussianblur");
 }
 
 void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
@@ -136,16 +129,18 @@ void CloudsVisualSystemClusterMap::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-
 void CloudsVisualSystemClusterMap::selfSetupTimeline(){
 	lineColor = timeline->addColors("line color");
-	nodeColor = timeline->addColorsWithPalette("node color", "nerve_palette.png");
+	nodeColor = timeline->addColorsWithPalette("node color", getVisualSystemDataPath() + "images/nerve_palette.png");
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemClusterMap::selfSetup(){
+	cam.setup();
+	cam.autosavePosition = true;
+	cam.loadCameraPosition();
 
 }
 
@@ -231,10 +226,15 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
 	
-	//TODO: evaluate line blur target
+//	ofSetColor(255);
+//	ofSphere(ofGetWidth()/2, ofGetHeight()/2, 10);
+//	
+//	return;
 	
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	glDisable(GL_DEPTH_TEST);
+
 	/*
+	 //TODO: evaluate line blur target
 	lineBlurTarget.begin();
 	ofClear(0,0,0,0);
 	ofPushStyle();
@@ -255,6 +255,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	
 //	cam.begin(ofRectangle(0,0,1920,1080));
 	ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	
 	ofSetColor(255);
 	
@@ -280,7 +281,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	ofDisableArbTex();
 	
 	nodeSpriteBasic.getTextureReference().bind();
-	ofSetColor(255*.5);
+//	ofSetColor(255*.5);
 	
 	//glPointSize(replicatePointSize);
 	billboard.setUniform1f("minSize", replicatePointSize);
@@ -381,6 +382,7 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(key == 'S'){
+		cout << "Loading shader!" << endl;
 		loadShader();
 	}
 
