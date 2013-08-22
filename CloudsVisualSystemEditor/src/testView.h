@@ -9,7 +9,11 @@
 	
 	IBOutlet NSTableView* presetTable;
 	IBOutlet NSTableView* clipTable;
+	IBOutlet NSTableView* allClipTable;
 	IBOutlet NSTokenField* currentKeywords;
+	
+//	IBOutlet NSTextLabel* keywordPercent
+//	IBOutlet NSTextLabel* clipPercent;
 	
 	bool shouldPlaySelectedRow;
 	

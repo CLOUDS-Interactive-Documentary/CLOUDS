@@ -90,7 +90,8 @@ protected:
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
     CloudsVisualSystemPreset getVisualSystemPreset(string keyword);
-private:
+	
+  private:
     //Act Builder Parameters
     float actLength;
     float maxTimeWithoutQuestion;

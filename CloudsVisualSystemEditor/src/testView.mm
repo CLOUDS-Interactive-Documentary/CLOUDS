@@ -15,6 +15,11 @@
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
+	
+//	[allClipTable setTarget:self];
+//	[allClipTable setDoubleAction:@selector(playDoubleClickedRow:)];
+	[allClipTable reloadData];
+
 }
 
 - (void)update
@@ -32,7 +37,8 @@
 		
         shouldPlaySelectedRow = false;	
     }
-    ofShowCursor();
+	
+    //ofShowCursor();
 }
 
 - (void)draw
@@ -98,6 +104,7 @@
         [clipTable reloadData];
     }
 }
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	if(aTableView == presetTable){
@@ -106,6 +113,11 @@
 	else if(aTableView == clipTable){
 		return associatedClips.size();
 	}
+	else if(aTableView == allClipTable){
+		cout << "ALL CLIPS " << parser.getAllClips().size() << endl;
+		return parser.getAllClips().size();
+	}
+	return 0;
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
@@ -138,11 +150,25 @@
             else{
                 string str = "No";
                 return [NSString stringWithUTF8String:str.c_str()];
-                
             }
-            
         }
 	}
+	else if(aTableView == allClipTable){
+		if([@"clip" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
+		}
+		else if([@"systems" isEqualToString:aTableColumn.identifier]){
+			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords(parser.getAllClips()[rowIndex].getKeywords());
+
+			vector<string> ids;
+			for(int i = 0; i < presets.size(); i++){
+				ids.push_back(presets[i].getID());
+			}
+			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
+		}
+	}
+	
+	return @"-";
 }
 
 - (vector<string>) entries:(vector<string>&)a sharedWith:(vector<string>&)b
@@ -184,7 +210,7 @@ completionsForSubstring:(NSString *)substring
 	indexOfSelectedItem:(NSInteger *)selectedIndex
 {
     
-    //    cout << "asking for completions..." << endl;
+    //cout << "asking for completions..." << endl;
     NSMutableArray* completions = [NSMutableArray array];
     for(int i = 0; i < parser.getAllKeywords().size(); i++){
         NSString* stringKeyword = [NSString stringWithUTF8String:parser.getAllKeywords()[i].c_str()];

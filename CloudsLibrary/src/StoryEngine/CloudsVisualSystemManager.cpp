@@ -214,16 +214,33 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
 	return presets[ ofRandom(presets.size()) ];
 }
 
+//--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
-    vector<CloudsVisualSystemPreset> presetsWithKeyword;
+//    vector<CloudsVisualSystemPreset> presetsWithKeyword;
 
-    for(int i =0; i<presets.size(); i++){
-        if( ofContains(keywordsForPreset(i), keyword) ){
-            presetsWithKeyword.push_back(presets[i]);
-        }
-    }
-    
-    return presetsWithKeyword;
+//    for(int i =0; i<presets.size(); i++){
+//        if( ofContains(keywordsForPreset(i), keyword) ){
+//            presetsWithKeyword.push_back(presets[i]);
+//        }
+//    }
+	vector<string> keywords;
+	keywords.push_back(keyword);
+    return getPresetsForKeywords(keywords);
+}
+
+//--------------------------------------------------------------------
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keywords){
+	vector<CloudsVisualSystemPreset> presetsWithKeywords;
+
+	for(int i = 0; i < presets.size(); i++){
+		for(int k = 0; k < keywords.size(); k++){
+			if( ofContains(keywordsForPreset(i), keywords[k]) ){
+				presetsWithKeywords.push_back(presets[i]);
+				continue;
+			}
+		}
+	}
+	return presetsWithKeywords;
 }
 
 //--------------------------------------------------------------------

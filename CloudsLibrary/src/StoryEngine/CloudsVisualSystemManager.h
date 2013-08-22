@@ -27,10 +27,8 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
-
-    
-    //choose one you havent seen
-    // choose
+	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords);
+	
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
 	void loadPresets();
@@ -41,7 +39,7 @@ class CloudsVisualSystemManager {
     bool isClipSuppressed(string presetID,string clip, int& index);
     void unsuppressClip(string presetID, string clip);
     void unsuppressClip(string presetID, int presetIndex);
-    
+	
   protected:
 
 	CloudsVisualSystemPreset dummyPreset;
