@@ -50,4 +50,5 @@ timeline*.xml
 /CloudsStoryEngine/bin/data/score.csv
 score.csv
 /CLOUDS/bin/data/CloudsData/
-/CloudsData/visualsystems/_keywordAssociations/backup/
+/CloudsData/visualsystems/_keywordAssociations/keywords_backup*\
+/CloudsData/links/clouds_link_db_backup*
