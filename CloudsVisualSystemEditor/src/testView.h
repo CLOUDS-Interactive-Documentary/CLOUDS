@@ -44,6 +44,7 @@
 
 - (void) updateCounts;
 
+- (IBAction) updatePresets:(id)sender;
 - (IBAction) updateKeywords:(id)sender;
 - (IBAction) suppressClip:(id)sender;
 - (IBAction) unsuppressClip:(id)sender;

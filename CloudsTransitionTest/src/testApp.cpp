@@ -9,8 +9,6 @@ void testApp::setup(){
 	ofBackground(0);
 	ofToggleFullscreen();
 	
-	
-	
     ofEnableAlphaBlending();
 	
     parser.loadFromFiles();
@@ -26,16 +24,15 @@ void testApp::setup(){
 	
 	visualSystems.populateVisualSystems();
  	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "Fireworks", "fw_1"	);
+	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "LSystem", "CityTree");
 	
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
-	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( preset0, 3, 5 );
+	act->addVisualSystem( preset2, 10, 15 );
 	
-	act->addVisualSystem( preset0, 12, 4 );
+//	act->addVisualSystem( preset0, 12, 4 );
 	
 	act->addVisualSystem( preset0, 40, 10 );
 	

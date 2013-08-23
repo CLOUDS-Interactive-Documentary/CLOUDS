@@ -34,7 +34,11 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 #ifndef CLOUDS_NO_VS
 	
 	nameToVisualSystem.clear();
+	for(int i = 0; i < systems.size(); i++){
+		delete systems[i];
+	}
 	systems.clear();
+	
 	presets.clear();
 
 	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
@@ -53,10 +57,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemOcean() );
 	registerVisualSystem( new CloudsVisualSystemLia() );
 	registerVisualSystem( new CloudsVisualSystemFireworks() );
-	
-	//REZA: Adding this makes it so the pointclouds don't show..
-    //	registerVisualSystem( new CloudsVisualSystemAmber() );
-    
+	    
     loadPresets();
 #endif
     
@@ -66,13 +67,12 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
 #ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
-	
+	//setup now happens when the system is ready to play
 	//system->setup();
+#endif
 	
 	systems.push_back( system );
 	nameToVisualSystem[system->getSystemName()] = system;
-	
-#endif
 }
 
 //--------------------------------------------------------------------
@@ -81,6 +81,7 @@ void CloudsVisualSystemManager::loadPresets(){
 	presets.clear();
 	nameToPresets.clear();
 	keywords.clear();
+	suppressedClips.clear();
 	
 	ofxXmlSettings keywordXml;
 	string keywordsFile = getKeywordFilePath();
@@ -129,7 +130,6 @@ void CloudsVisualSystemManager::loadPresets(){
         
 		#ifdef CLOUDS_NO_VS
 		vector<string> splitName = ofSplitString(name, "_",true,true);
-		
 		CloudsVisualSystemPreset preset;
 		preset.systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
@@ -138,12 +138,16 @@ void CloudsVisualSystemManager::loadPresets(){
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
 		#endif
-		
+		cout << "SYSTEM NAME IS " << name << endl;
 		if(keywordXml.tagExists("suppressions")){
-			keywordXml.pushTag("suppresions");
-			int numSuppresions = keywordXml.getNumTags("clip");
-			for(int i=0; i<numSuppresions;i++){
-				suppressedClips[name].push_back(keywordXml.getValue("clip", "", i));
+			cout << "Found suppressions for clip " << name << endl;
+			
+			keywordXml.pushTag("suppressions");
+			int numSuppressions = keywordXml.getNumTags("clip");
+			for(int i=0; i<numSuppressions;i++){
+				string suppressedLinkName = keywordXml.getValue("clip", "", i);
+				cout << "found suppression " << suppressedLinkName << endl;
+				suppressedClips[name].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions
 		}
@@ -187,8 +191,8 @@ void CloudsVisualSystemManager::saveKeywords(){
 		
 		keywordXml.pushTag("system",systemIndex);
 		keywordXml.addValue("keywords", keywordString);
-        keywordXml.addTag("suppresions");
-        keywordXml.pushTag("suppresions");
+        keywordXml.addTag("suppressions");
+        keywordXml.pushTag("suppressions");
         vector<string>& clips =  getSuppressionsForPreset(presetName);
         for (int i =0; i<clips.size(); i++) {
             keywordXml.addValue("clip",clips[i]);

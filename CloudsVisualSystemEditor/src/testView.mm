@@ -32,10 +32,12 @@
         
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
+			currentVisualSystem = NULL;
         }
 		
         currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
-        
+		
+		currentVisualSystem->setup();
         currentVisualSystem->playSystem();
         currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
 		
@@ -44,6 +46,7 @@
 	
     //ofShowCursor();
 }
+
 
 - (void)draw
 {
@@ -90,6 +93,16 @@
 	
 }
 
+- (IBAction) updatePresets:(id)sender
+{
+	visualSystems.loadPresets();
+	
+	[clipTable reloadData];
+	[presetTable reloadData];
+	[allKeywordTable reloadData];
+	[allClipTable reloadData];	
+}
+
 - (IBAction) updateKeywords:(id)sender
 {
 	if(presetTable.selectedRow >= 0){
@@ -97,7 +110,8 @@
 		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-			
+		visualSystems.saveKeywords();
+		
 		[self updateCounts];
 		
 		[clipTable reloadData];
@@ -115,14 +129,15 @@
 	float percentClips = 1.0 * parser.getClipsWithKeyword(allKeysVector).size() / parser.getAllClips().size();
 	
 	[keywordPercent setStringValue:[NSString stringWithFormat:@"%.02f%% Keywords Tagged", percentKeywords*100]];
-	[clipPercent setStringValue: [NSString stringWithFormat:@"%.02f%% Clips Tagged", percentClips*100]];
+	[clipPercent setStringValue:[NSString stringWithFormat:@"%.02f%% Clips Tagged", percentClips*100]];
 }
 
 -(IBAction) unsuppressClip:(id)sender{
     if(clipTable.selectedRow>=0){
         visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
-        
+        visualSystems.saveKeywords();
+		
         [clipTable reloadData];
     }
 }
@@ -133,8 +148,10 @@
         visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
         
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
-        
+        visualSystems.saveKeywords();
+		
         [clipTable reloadData];
+		
     }
 }
 
@@ -191,6 +208,10 @@
 		if([@"keyword" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: parser.getAllKeywords()[rowIndex].c_str() ];
 		}
+		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
+			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ rowIndex ] ).size() ];
+			//[NSInteger integer: parser.getAllKeywords()[rowIndex].c_str() ];
+		}
 		else if([@"presets" isEqualToString:aTableColumn.identifier]){
 			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[rowIndex] );
 			vector<string> ids;
@@ -233,11 +254,10 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
 	if(aNotification.object == presetTable){
-		if(selectedPreset != NULL){
-			vector<string> keywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-			visualSystems.setKeywordsForPreset(*selectedPreset, keywords);
-			visualSystems.saveKeywords();
-		}
+//		if(selectedPreset != NULL){
+//			vector<string> keywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
+//			visualSystems.setKeywordsForPreset(*selectedPreset, keywords);
+//		}
 		
 		[self updateAssociatedClips];
 		
@@ -272,21 +292,14 @@ completionsForSubstring:(NSString *)substring
 {
 	cout << "CONTROL TEXT END EDITING" << endl;
 	
-	if(presetTable.selectedRow >= 0){
-	}
-    
+	return true;
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
 {
 	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
-	if(presetTable.selectedRow >= 0){
-		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-		[clipTable reloadData];
-		[presetTable reloadData];
-	}
+//	if(presetTable.selectedRow >= 0){
+//	}
     
     //	[self updateAssociatedClips];
 	

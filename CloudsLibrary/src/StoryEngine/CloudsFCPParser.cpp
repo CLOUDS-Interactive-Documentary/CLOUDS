@@ -1248,7 +1248,7 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
         if( ! linkIsSuppressed( targetClip.getLinkName(), sourceClip.getLinkName()) ){
             suppressConnection(targetClip, sourceClip);
             
-            cout<<"Added reciprocal suppresion for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
+            cout<<"Added reciprocal suppression for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
         }
     }
 }

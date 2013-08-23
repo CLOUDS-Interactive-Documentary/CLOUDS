@@ -199,7 +199,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	
 }
 
-
 void CloudsPlaybackController::updateVisualSystemFade(){
 	//handle fadin/out
 	if( fadingIn || fadingOut){
@@ -226,6 +225,7 @@ void CloudsPlaybackController::updateVisualSystemFade(){
 				//non RGBD visual system
 				currentVisualSystem = nextSystem;
 				nextSystem = NULL;
+				rgbdVisualSystem.stopSystem();
 				
 				fadeInVisualSystem(1);
 			}
@@ -238,15 +238,12 @@ void CloudsPlaybackController::updateVisualSystemFade(){
 			//end fade
 			fadingOut = false;
 		}
-		
-		//otherwise we're fading and we need to mix our cameras
 		else{
 			//shout out to the faded
 			if(!bIsFading && currentTime >= fadeStartTime){
 				bIsFading = true;
 			}
 		}
-		
 	}
 }
 
@@ -282,7 +279,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	ofPushStyle();
 	
 	//???: rgbdVisualSystem.getBlendMode()
-	ofEnableBlendMode(	OF_BLENDMODE_ADD );
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	
 	float mixVal = crossfadeValue * 255;
 	
@@ -324,6 +321,9 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
+	//TODO: Trigger cluster map with new updates
+	
+	
 }
 
 //--------------------------------------------------------------------
@@ -335,7 +335,6 @@ void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args)
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args)
 {
-	
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
 		
@@ -425,7 +424,6 @@ void CloudsPlaybackController::prerollClip(CloudsClip& clip, float toTime){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playClip(CloudsClip& clip)
 {
-
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);
 	}
@@ -458,7 +456,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	showingVisualSystem = true;
 	
-	currentVisualSystem = nextVisualSystem.system;
+	nextSystem = nextVisualSystem.system;
 		
 	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
 	
@@ -468,9 +466,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 //--------------------------------------------------------------------
 void CloudsPlaybackController::hideVisualSystem()
 {
-
 	if(showingVisualSystem && currentVisualSystem != NULL){
-		cout << "hideVisualSystem "<< ofGetElapsedTimef() << endl<< endl<< endl;
+		cout << "hideVisualSystem "<< ofGetElapsedTimef() << endl << endl << endl;
 		currentVisualSystem->stopSystem();
 		showingVisualSystem = false;
 		currentVisualSystem = &rgbdVisualSystem;
@@ -510,7 +507,6 @@ void CloudsPlaybackController::fadeOutVisualSystem( float duration, float start 
 	fadeStartVal = 1;
 	fadeTargetVal = 0.;
 }
-
 
 void CloudsPlaybackController::transitionRgbdSystemOut( float transitionDuration, float fadeDuration )
 {

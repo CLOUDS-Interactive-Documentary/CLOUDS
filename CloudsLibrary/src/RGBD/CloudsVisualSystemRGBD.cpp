@@ -279,7 +279,7 @@ void CloudsVisualSystemRGBD::transition( float duration, float startTime )
 	
 	transitioning = true;
 	
-	ofQuaternion transitionEndRotation;
+//	ofQuaternion transitionEndRotation;
 }
 
 void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
