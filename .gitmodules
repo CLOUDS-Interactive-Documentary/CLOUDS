@@ -37,3 +37,9 @@
 [submodule "CloudsLibrary/src/VisualSystems/Memory"]
 	path = CloudsLibrary/src/VisualSystems/Memory
 	url = git@github.com:CLOUDS-Interactive-Documentary/Memory.git
+[submodule "CloudsLibrary/src/VisualSystems/Scrape"]
+	path = CloudsLibrary/src/VisualSystems/Scrape
+	url = git@github.com:CLOUDS-Interactive-Documentary/Scrape.git
+[submodule "CloudsLibrary/src/VisualSystems/Oscillations"]
+	path = CloudsLibrary/src/VisualSystems/Oscillations
+	url = git@github.com:CLOUDS-Interactive-Documentary/Oscillations.git

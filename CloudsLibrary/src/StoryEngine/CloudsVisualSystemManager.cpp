@@ -138,6 +138,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
 		#endif
+		
 		cout << "SYSTEM NAME IS " << name << endl;
 		if(keywordXml.tagExists("suppressions")){
 			cout << "Found suppressions for clip " << name << endl;
