@@ -21,6 +21,10 @@
 #include "CloudsVisualSystemOcean.h"
 #include "CloudsVisualSystemLia.h"
 #include "CloudsVisualSystemFireworks.h"
+#include "CloudsVisualSystemCosmic.h"
+#include "CloudsVisualSystemMarchingCubes.h"
+#include "CloudsVisualSystemOscillations.h"
+#include "ScrapeVisualSystem.h"
 
 #endif
 
@@ -57,8 +61,13 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemOcean() );
 	registerVisualSystem( new CloudsVisualSystemLia() );
 	registerVisualSystem( new CloudsVisualSystemFireworks() );
-	    
+	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
+	registerVisualSystem( new CloudsVisualSystemCosmic() );
+	registerVisualSystem( new ScrapeVisualSystem() );
+	registerVisualSystem( new CloudsVisualSystemOscillations() );
+	
     loadPresets();
+	
 #endif
     
 }
