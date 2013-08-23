@@ -300,7 +300,6 @@ completionsForSubstring:(NSString *)substring
 	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
 //	if(presetTable.selectedRow >= 0){
 //	}
-    
     //	[self updateAssociatedClips];
 	
     //	if(presetTable.selectedRow >= 0){
