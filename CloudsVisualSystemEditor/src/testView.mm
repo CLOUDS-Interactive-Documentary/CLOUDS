@@ -110,6 +110,15 @@
 		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+		selectedPreset->enabled = (enabledBox.state == NSOnState);
+		selectedPreset->comments = [notesText.stringValue UTF8String];
+		selectedPreset->grade = [grade.stringValue UTF8String];
+		
+//		currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
+//		notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
+//		grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
+//		enabledBox.state = selectedPreset->enabled;
+		
 		visualSystems.saveKeywords();
 		
 		[self updateCounts];
@@ -178,6 +187,10 @@
 		if([@"system" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].system->getSystemName().c_str()];
 		}
+		else if([@"grade" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String:
+					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + string("/") + visualSystems.getPresets()[rowIndex].grade).c_str()];
+		}		
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
 		}
@@ -195,12 +208,10 @@
 		}
         else if( [@"Suppressed" isEqualToString:aTableColumn.identifier] ){
             if( visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[rowIndex].getLinkName())){
-                string str = "Yes";
-                return [NSString stringWithUTF8String:str.c_str()];
+                return @"Yes";
             }
             else{
-                string str = "No";
-                return [NSString stringWithUTF8String:str.c_str()];
+                return @"No";
             }
         }
 	}
@@ -208,6 +219,10 @@
 		if([@"keyword" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: parser.getAllKeywords()[rowIndex].c_str() ];
 		}
+		else if([@"cohesion" isEqualToString:aTableColumn.identifier]){
+			return [NSNumber numberWithFloat: parser.getCohesionIndexForKeyword( parser.getAllKeywords()[ rowIndex ] ) ];
+		}
+
 		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
 			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ rowIndex ] ).size() ];
 			//[NSInteger integer: parser.getAllKeywords()[rowIndex].c_str() ];
@@ -254,19 +269,26 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
 	if(aNotification.object == presetTable){
-//		if(selectedPreset != NULL){
-//			vector<string> keywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-//			visualSystems.setKeywordsForPreset(*selectedPreset, keywords);
-//		}
 		
 		[self updateAssociatedClips];
 		
-		currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
+		if(selectedPreset != NULL){
+			currentKeywords.stringValue = [NSString stringWithUTF8String: ofJoinString(associatedKeywords,",").c_str() ];
+			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
+			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
+			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
+		}
+		else{
+			currentKeywords.stringValue = @"";
+			notesText.stringValue = @"";
+			grade.stringValue = @"";
+			enabledBox.state = NSOnState;
+		}
 	}
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
-	
+		//omg sorting
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
@@ -300,8 +322,7 @@ completionsForSubstring:(NSString *)substring
 	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
 //	if(presetTable.selectedRow >= 0){
 //	}
-    //	[self updateAssociatedClips];
-	
+    //	[self updateAssociatedClips];	
     //	if(presetTable.selectedRow >= 0){
     //		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
     //		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);

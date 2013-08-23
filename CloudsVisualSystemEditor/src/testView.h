@@ -16,6 +16,10 @@
 	IBOutlet NSTextField* keywordPercent;
 	IBOutlet NSTextField* clipPercent;
 	
+	IBOutlet NSTextField* notesText;
+	IBOutlet NSComboBox* grade;
+	IBOutlet NSButton* enabledBox;
+	
 	bool shouldPlaySelectedRow;
 	
 	CloudsFCPParser parser;

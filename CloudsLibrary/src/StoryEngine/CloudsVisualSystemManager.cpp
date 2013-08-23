@@ -135,23 +135,21 @@ void CloudsVisualSystemManager::loadPresets(){
 		keywordXml.pushTag( "system", i );
 		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
 		keywords[ name ] = presetKeywords;
-//        presetToKeywords[name] = presetKeywords;
-        
+		
 		#ifdef CLOUDS_NO_VS
-		vector<string> splitName = ofSplitString(name, "_",true,true);
 		CloudsVisualSystemPreset preset;
+		vector<string> splitName = ofSplitString(name, "_",true,true);
 		preset.systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
 		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
 		preset.loadTimeInfo();
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
+		#else
+		CloudsVisualSystemPreset& preset = getPresetWithID(name);
 		#endif
 		
-		cout << "SYSTEM NAME IS " << name << endl;
-		if(keywordXml.tagExists("suppressions")){
-			cout << "Found suppressions for clip " << name << endl;
-			
+		if(keywordXml.tagExists("suppressions")){			
 			keywordXml.pushTag("suppressions");
 			int numSuppressions = keywordXml.getNumTags("clip");
 			for(int i=0; i<numSuppressions;i++){
@@ -161,6 +159,10 @@ void CloudsVisualSystemManager::loadPresets(){
 			}
 			keywordXml.popTag(); //suppressions
 		}
+		
+		preset.comments = keywordXml.getValue("comments","");
+		preset.grade = keywordXml.getValue("grade", "");
+		preset.enabled = keywordXml.getValue("enabled", true );
 		
         keywordXml.popTag(); //system
 	}
@@ -176,10 +178,14 @@ void CloudsVisualSystemManager::saveKeywords(){
 	
 	map<string,vector<string> >::iterator it;
 	
-	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval){
+	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval ){
 		char backup[1024];
-		sprintf( backup, "%s_backup_Y.%02d_MO.%02d_D.%02d_H.%02d_MI.%02d.xml", ofFilePath::removeExt(keywordsFile).c_str(), ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes() );
+		sprintf(backup, "%s_backup_Y.%02d_MO.%02d_D.%02d_H.%02d_MI.%02d.xml",
+				ofFilePath::removeExt(keywordsFile).c_str(),
+				ofGetYear(), ofGetMonth(), ofGetDay(), ofGetHours(), ofGetMinutes());
+		
 		lastBackupTime = ofGetElapsedTimef();
+		
 		if(!ofFile(keywordsFile).copyTo(backup)){
 			ofSystemAlertDialog("UNABLE TO CREATE KEYWORD ASSOCIATION BACK UP");
 			return;
@@ -194,21 +200,34 @@ void CloudsVisualSystemManager::saveKeywords(){
 		string presetName = it->first;
 		string keywordString = ofJoinString(it->second, "|");
 		
+		CloudsVisualSystemPreset& preset = getPresetWithID(presetName);
+		
 		cout << "saving " << presetName << " -> (" << keywordString << ")" << endl;
 		
 		keywordXml.addTag("system");
 		keywordXml.addAttribute("system", "name", presetName, systemIndex);
 		
 		keywordXml.pushTag("system",systemIndex);
+		
+		//KEYWORDS
 		keywordXml.addValue("keywords", keywordString);
-        keywordXml.addTag("suppressions");
+        
+		//SUPPRESSIONS
+		keywordXml.addTag("suppressions");
         keywordXml.pushTag("suppressions");
         vector<string>& clips =  getSuppressionsForPreset(presetName);
         for (int i =0; i<clips.size(); i++) {
             keywordXml.addValue("clip",clips[i]);
         }
         keywordXml.popTag();//suppressions
-		keywordXml.popTag();
+		
+		//COMMENT
+		keywordXml.addValue("comments", preset.comments);
+		keywordXml.addValue("grade", preset.grade);
+		keywordXml.addValue("enabled", preset.enabled);
+		
+		keywordXml.popTag(); // pop system
+		
 		
 		systemIndex++;
 	}
@@ -228,14 +247,7 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
-//    vector<CloudsVisualSystemPreset> presetsWithKeyword;
-
-//    for(int i =0; i<presets.size(); i++){
-//        if( ofContains(keywordsForPreset(i), keyword) ){
-//            presetsWithKeyword.push_back(presets[i]);
-//        }
-//    }
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){	
 	vector<string> keywords;
 	keywords.push_back(keyword);
     return getPresetsForKeywords(keywords);
@@ -273,6 +285,17 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string s
 		}
 	}
 	ofLogError() << "Couldn't find preset " << systemName << " " << presetName;
+	return dummyPreset;
+}
+
+//--------------------------------------------------------------------
+CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetWithID(string presetID){
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].getID() == presetID){
+			return presets[i];
+		}
+	}
+	ofLogError("CloudsVisualSystemManager::getPresetWithID") << "Couldn't find preset with ID " << presetID;
 	return dummyPreset;
 }
 

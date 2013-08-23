@@ -18,7 +18,8 @@ class CloudsVisualSystemManager {
 	
 	void populateVisualSystems();
 	CloudsVisualSystemPreset getRandomVisualSystem();
-	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName); 
+	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName);
+	CloudsVisualSystemPreset& getPresetWithID(string presetID);
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
 	CloudsVisualSystem* visualSystemWithName(string systemName);

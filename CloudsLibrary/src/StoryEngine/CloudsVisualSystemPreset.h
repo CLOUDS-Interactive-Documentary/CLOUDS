@@ -17,6 +17,8 @@ class CloudsVisualSystemPreset {
 	bool indefinite;
 	void loadTimeInfo();
 	string getID();
-	
+	string comments;
+	string grade;
+	bool enabled;
 
 };

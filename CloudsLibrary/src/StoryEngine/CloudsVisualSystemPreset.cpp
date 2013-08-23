@@ -13,6 +13,7 @@
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	system = NULL;
+	enabled = true;
 	indefinite = true;
 	duration = 60;
 	introDuration = 0;
