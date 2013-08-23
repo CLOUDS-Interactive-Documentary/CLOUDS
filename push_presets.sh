@@ -1,16 +1,20 @@
 #/bin/bash
 
-for i in CloudsLibrary/src/VisualSystems/ ; do
-  echo "UPDATING $i"
-  if [ -d "$i" ]; then
+VS_DIR=CloudsLibrary/src/VisualSystems
+cd $VS_DIR
+for i in `ls .` ; do
+
+  if [ -e "$i/.git" ]; then
+	echo "UPDATING $i"
 	cd $i
+	git checkout master
     git add *.xml *.cpp *.h
     git pull
-# 	if [ $? -e 0 ]; then
-    	git commit -m "updating presets"
-		git push
-#   fi
-	cd -
+	if [ $? -eq 0 ]; then
+  	  git commit -m "updating presets"
+	  git push
+ 	fi
+    cd ..
   fi
 done
 
