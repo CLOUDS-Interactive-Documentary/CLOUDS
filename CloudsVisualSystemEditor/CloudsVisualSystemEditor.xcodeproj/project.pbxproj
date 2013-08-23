@@ -66,7 +66,6 @@
 		E7367B5E17C6E09C00CC6EC8 /* sphereShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7367A3D17C6E09B00CC6EC8 /* sphereShader.vert */; };
 		E7367B5F17C6E09C00CC6EC8 /* velShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7367A3E17C6E09B00CC6EC8 /* velShader.frag */; };
 		E7367B6017C6E09C00CC6EC8 /* velShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7367A3F17C6E09B00CC6EC8 /* velShader.vert */; };
-		E7367B7217C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7367A5A17C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.cpp */; };
 		E7367C1A17C6E24800CC6EC8 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7367BD017C6E24800CC6EC8 /* ofxMtlBoxFitting.cpp */; };
 		E7367C1B17C6E24800CC6EC8 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7367BD217C6E24800CC6EC8 /* ScrapeVisualSystem.cpp */; };
 		E73769B11778DC4500892646 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769231778DC4500892646 /* CloudsQuestion.cpp */; };
@@ -330,8 +329,6 @@
 		E7367A3D17C6E09B00CC6EC8 /* sphereShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.vert; sourceTree = "<group>"; };
 		E7367A3E17C6E09B00CC6EC8 /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
 		E7367A3F17C6E09B00CC6EC8 /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
-		E7367A5A17C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCosmic.cpp; sourceTree = "<group>"; };
-		E7367A5B17C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
 		E7367BD017C6E24800CC6EC8 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E7367BD117C6E24800CC6EC8 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
 		E7367BD217C6E24800CC6EC8 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
@@ -1129,8 +1126,6 @@
 		E7367A5917C6E09C00CC6EC8 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7367A5B17C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.h */,
-				E7367A5A17C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2830,7 +2825,6 @@
 				E7367B5E17C6E09C00CC6EC8 /* sphereShader.vert in Sources */,
 				E7367B5F17C6E09C00CC6EC8 /* velShader.frag in Sources */,
 				E7367B6017C6E09C00CC6EC8 /* velShader.vert in Sources */,
-				E7367B7217C6E09C00CC6EC8 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E7367C1A17C6E24800CC6EC8 /* ofxMtlBoxFitting.cpp in Sources */,
 				E7367C1B17C6E24800CC6EC8 /* ScrapeVisualSystem.cpp in Sources */,
 			);
