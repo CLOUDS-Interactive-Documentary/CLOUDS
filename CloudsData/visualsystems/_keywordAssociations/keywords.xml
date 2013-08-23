@@ -1026,7 +1026,7 @@
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>BUG</grade>
     <enabled>1</enabled>
 </system>
 <system name="Voro_grow">
