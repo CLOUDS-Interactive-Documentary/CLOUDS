@@ -43,3 +43,6 @@
 [submodule "CloudsLibrary/src/VisualSystems/Oscillations"]
 	path = CloudsLibrary/src/VisualSystems/Oscillations
 	url = git@github.com:CLOUDS-Interactive-Documentary/Oscillations.git
+[submodule "CloudsLibrary/src/VisualSystems/Metaballs"]
+	path = CloudsLibrary/src/VisualSystems/Metaballs
+	url = git@github.com:CLOUDS-Interactive-Documentary/Metaballs.git
