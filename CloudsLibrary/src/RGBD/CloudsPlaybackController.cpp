@@ -50,8 +50,8 @@ void CloudsPlaybackController::setup(){
 	ofClear(0,0,0,0);
 	nextRenderTarget.end();
 	
-	rgbdVisualSystemFadeInDuration = 2;
-	rgbdVisualSystemFadeOutDuration = 2;
+	rgbdVisualSystemFadeInDuration = 3;
+	rgbdVisualSystemFadeOutDuration = 3;
 	
 	if(!eventsRegistered){
 		
@@ -459,7 +459,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
 	
-	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
+//	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
 	//we draw to screen in CloudsPlaybackController::draw() so we disable it in the nexVisualSystem
 	nextVisualSystem.system->setDrawToScreen( false );
@@ -473,9 +473,9 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	nextSystem = nextVisualSystem.system;
 		
-	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
-	
-	transitionRgbdSystemOut( 3, 3 );// transitionDuration, transitionDuration );
+	//LB: I think the prblem was here...
+	//	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
+	//	transitionRgbdSystemOut( 1,1 );// transitionDuration, transitionDuration );
 }
 
 //--------------------------------------------------------------------
@@ -505,6 +505,8 @@ void CloudsPlaybackController::fadeInVisualSystem( float duration, float start )
 	fadeDuration = duration;
 	fadeStartTime = start;
 	fadeEndTime = fadeStartTime + fadeDuration;
+	
+	//fade from 0 opacity to 1
 	fadeStartVal = 0;
 	fadeTargetVal = 1;
 	
@@ -522,6 +524,9 @@ void CloudsPlaybackController::fadeOutVisualSystem( float duration, float start 
 	fadeDuration = duration;
 	fadeStartTime = start;
 	fadeEndTime = fadeStartTime + fadeDuration;
+	
+	
+	//fade from 1 opacity to 0
 	fadeStartVal = 1;
 	fadeTargetVal = 0.;
 	
