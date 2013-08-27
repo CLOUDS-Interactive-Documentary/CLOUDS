@@ -187,7 +187,8 @@ void testApp::mousePressed(int x, int y, int button){
     float tempo = 0.125;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 
-    int bpattern[] = {1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,1,1};
+   // int bpattern[] = {1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,1,1};
+    int bpatter[] = {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1 };
     
 
     switch (quadrant) {
@@ -240,7 +241,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-// utility routine to fine where we are clicking
+// utility routine to find where we are clicking
 int testApp::returnQuadrant(int x, int y)
 {
     int foo = 3;

@@ -74,10 +74,6 @@
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
     <suppressions></suppressions>
 </system>
-<system name="Cosmic_no-preset">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
 <system name="DataCascade_BackgroundTestStraight">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -353,7 +349,7 @@
     <suppressions></suppressions>
 </system>
 <system name="Memory_sortingThunder">
-    <keywords>memory|data|archiving</keywords>
+    <keywords></keywords>
     <suppressions></suppressions>
 </system>
 <system name="Memory_sortingThunderSmall">
@@ -361,10 +357,6 @@
     <suppressions></suppressions>
 </system>
 <system name="Memory_vert">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="MetaballsSystem_no-preset">
     <keywords></keywords>
     <suppressions></suppressions>
 </system>
@@ -377,7 +369,7 @@
     <suppressions></suppressions>
 </system>
 <system name="Neurons_CosmicS">
-    <keywords>artificial intelligence</keywords>
+    <keywords></keywords>
     <suppressions></suppressions>
 </system>
 <system name="Neurons_MezzyNeurons">
@@ -400,30 +392,6 @@
     <keywords></keywords>
     <suppressions></suppressions>
 </system>
-<system name="Oscillations_Agam">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Oscillations_Helix">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Oscillations_Treadmill">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Oscillations_Waerfront">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Oscillations_Waves">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Oscillations_Wormhole">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
 <system name="PaintBrush_PlayFull">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -441,18 +409,6 @@
     <suppressions></suppressions>
 </system>
 <system name="Replecator_Spiral">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Scrape_2D In Yo Brain">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Scrape_2D In Yo Face">
-    <keywords></keywords>
-    <suppressions></suppressions>
-</system>
-<system name="Scrape_Tony&apos;s Death Star">
     <keywords></keywords>
     <suppressions></suppressions>
 </system>
