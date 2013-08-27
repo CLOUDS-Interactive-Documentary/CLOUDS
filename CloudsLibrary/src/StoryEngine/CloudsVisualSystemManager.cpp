@@ -284,7 +284,7 @@ CloudsVisualSystemPreset& CloudsVisualSystemManager::getPresetForSystem(string s
 			return presets[i];
 		}
 	}
-	ofLogError() << "Couldn't find preset " << systemName << " " << presetName;
+	ofLogError("CloudsVisualSystemManager::getPresetForSystem") << "Couldn't find preset " << systemName << " " << presetName;
 	return dummyPreset;
 }
 
