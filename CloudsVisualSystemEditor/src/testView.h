@@ -29,6 +29,9 @@
 	vector<CloudsClip> associatedClips;
 	vector<string> associatedKeywords;
 	
+	vector<int> sortedKeywordIndeces;
+	vector<int> sortedClipIndeces;
+	
 	float percentKeywordsTagged;
 	float percentClipsTagged;
 }

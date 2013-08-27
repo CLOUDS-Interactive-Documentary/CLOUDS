@@ -1,6 +1,14 @@
 #import "testView.h"
 #include "CloudsVisualSystem.h"
 
+struct sortObject {
+	CloudsFCPParser* parser;
+	bool operator() (pair<int,string> keyA, pair<int,string> keyB) {
+		return ( parser->getCohesionIndexForKeyword(keyA.second) > parser->getCohesionIndexForKeyword(keyB.second) );
+	}
+	
+} cohesionSort;
+
 @implementation testView
 
 - (void)setup
@@ -12,6 +20,22 @@
 	
 	visualSystems.populateVisualSystems();
 	
+	
+	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
+
+	
+	for (NSTableColumn *tableColumn in allClipTable.tableColumns) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
+        [tableColumn setSortDescriptorPrototype:sortDescriptor];
+    }
+
+	for(int i = 0; i < parser.getAllKeywords().size(); i++){
+		sortedKeywordIndeces.push_back( i );
+	}
+
     [presetTable setTarget:self];
 	[presetTable setDoubleAction:@selector(playDoubleClickedRow:)];
 	[presetTable reloadData];
@@ -173,7 +197,8 @@
 		return associatedClips.size();
 	}
 	else if(aTableView == allKeywordTable){
-		return parser.getAllKeywords().size();
+//		return parser.getAllKeywords().size();
+		return sortedKeywordIndeces.size();
 	}
 	else if(aTableView == allClipTable){
 		return parser.getAllClips().size();
@@ -216,19 +241,19 @@
         }
 	}
 	else if(aTableView == allKeywordTable){
+		int keywordIndex = sortedKeywordIndeces[rowIndex];
 		if([@"keyword" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: parser.getAllKeywords()[rowIndex].c_str() ];
+			return [NSString stringWithUTF8String:parser.getAllKeywords()[ keywordIndex ].c_str() ];
 		}
 		else if([@"cohesion" isEqualToString:aTableColumn.identifier]){
-			return [NSNumber numberWithFloat: parser.getCohesionIndexForKeyword( parser.getAllKeywords()[ rowIndex ] ) ];
+			return [NSNumber numberWithFloat: parser.getCohesionIndexForKeyword( parser.getAllKeywords()[ keywordIndex ] ) ];
 		}
-
 		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
-			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ rowIndex ] ).size() ];
+			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ keywordIndex ] ).size() ];
 			//[NSInteger integer: parser.getAllKeywords()[rowIndex].c_str() ];
 		}
 		else if([@"presets" isEqualToString:aTableColumn.identifier]){
-			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[rowIndex] );
+			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[ keywordIndex ] );
 			vector<string> ids;
 			for(int i = 0; i < presets.size(); i++){
 				ids.push_back(presets[i].getID());
@@ -288,7 +313,37 @@
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
-		//omg sorting
+	//omg sorting
+	
+	NSArray *newDescriptors = [tableView sortDescriptors];
+    NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
+	cohesionSort.parser = &parser;
+
+    if(tableView == allKeywordTable){
+		sortedKeywordIndeces.clear();
+		
+		NSString* descriptor = [[newDescriptors objectAtIndex:0] key];
+		if( [@"cohesion" isEqualToString: descriptor] ){
+			vector< pair<int,string> > keywordIndeces(parser.getAllKeywords().size());
+			for(int i = 0; i < parser.getAllKeywords().size(); i++){
+				keywordIndeces[i] = make_pair(i, parser.getAllKeywords()[i] );
+			}
+			
+			sort(keywordIndeces.begin(), keywordIndeces.end(), cohesionSort);
+			
+			for(int i = 0; i < keywordIndeces.size(); i++){
+				sortedKeywordIndeces.push_back( keywordIndeces[i].first );
+			}
+		}
+		else if( [@"keyword" isEqualToString: descriptor] ){
+			for(int i = 0; i < parser.getAllKeywords().size(); i++){
+				sortedKeywordIndeces.push_back( i );
+			}
+		}
+		else if( [@"clip" isEqualToString: descriptor] ){
+			
+		}
+    }
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
@@ -312,14 +367,13 @@ completionsForSubstring:(NSString *)substring
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
-	cout << "CONTROL TEXT END EDITING" << endl;
-	
+//	cout << "CONTROL TEXT END EDITING" << endl;	
 	return true;
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
 {
-	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
+//	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
 //	if(presetTable.selectedRow >= 0){
 //	}
     //	[self updateAssociatedClips];	

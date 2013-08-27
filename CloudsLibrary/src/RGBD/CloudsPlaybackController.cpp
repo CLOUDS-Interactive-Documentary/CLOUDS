@@ -459,7 +459,7 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
 	
-	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
+	//nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
 	
 	//we draw to screen in CloudsPlaybackController::draw() so we disable it in the nexVisualSystem
 	nextVisualSystem.system->setDrawToScreen( false );
