@@ -57,7 +57,7 @@ class CloudsPlaybackController {
 	void exit(ofEventArgs & args);
 	
 //	ofFbo sharedRenderTarget;
-//	ofFbo nextRenderTarget;
+	ofFbo nextRenderTarget;
 	
 	//crossfading CloudsVisualSystems
 	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
@@ -107,6 +107,8 @@ class CloudsPlaybackController {
 	
 	void fadeInVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
 	void fadeOutVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
+	
+	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
 	
 	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
 	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );

@@ -34,8 +34,6 @@
 		E736770317C67F7E00CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73676FD17C67F7E00CC6EC8 /* CloudsVisualSystemLSystems.cpp */; };
 		E736770417C67F7E00CC6EC8 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73676FF17C67F7E00CC6EC8 /* LNode.cpp */; };
 		E736770517C67F7E00CC6EC8 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736770117C67F7E00CC6EC8 /* LSystem.cpp */; };
-		E73678E817C6DF2B00CC6EC8 /* oscillationsShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E736785E17C6DF2A00CC6EC8 /* oscillationsShader.frag */; };
-		E73678E917C6DF2B00CC6EC8 /* oscillationsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E736785F17C6DF2A00CC6EC8 /* oscillationsShader.vert */; };
 		E73678F417C6DF2B00CC6EC8 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736787317C6DF2B00CC6EC8 /* CloudsVisualSystemOscillations.cpp */; };
 		E736792F17C6E02500CC6EC8 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736791A17C6E02500CC6EC8 /* ofxAutoReloadedShader.cpp */; };
 		E73769B11778DC4500892646 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769231778DC4500892646 /* CloudsQuestion.cpp */; };
@@ -188,47 +186,12 @@
 		E7BBB4C1179FA288007D7EC1 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B5179FA288007D7EC1 /* Gravity.cpp */; };
 		E7BBB4C2179FA288007D7EC1 /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B7179FA288007D7EC1 /* Points.cpp */; };
 		E7BBB4C3179FA288007D7EC1 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B9179FA288007D7EC1 /* State.cpp */; };
-		E7D3634317C7D072004A5ED6 /* accShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622217C7D072004A5ED6 /* accShader.frag */; };
-		E7D3634417C7D072004A5ED6 /* accShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622317C7D072004A5ED6 /* accShader.vert */; };
-		E7D3634517C7D072004A5ED6 /* attractorShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622417C7D072004A5ED6 /* attractorShader.frag */; };
-		E7D3634617C7D072004A5ED6 /* attractorShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622517C7D072004A5ED6 /* attractorShader.vert */; };
-		E7D3634717C7D072004A5ED6 /* electroAddShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622617C7D072004A5ED6 /* electroAddShader.frag */; };
-		E7D3634817C7D072004A5ED6 /* electroShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622717C7D072004A5ED6 /* electroShader.frag */; };
-		E7D3634917C7D072004A5ED6 /* electroShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622817C7D072004A5ED6 /* electroShader.vert */; };
-		E7D3634A17C7D072004A5ED6 /* floorShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622917C7D072004A5ED6 /* floorShader.frag */; };
-		E7D3634B17C7D072004A5ED6 /* floorShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622A17C7D072004A5ED6 /* floorShader.vert */; };
-		E7D3634C17C7D072004A5ED6 /* homeShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622B17C7D072004A5ED6 /* homeShader.frag */; };
-		E7D3634D17C7D072004A5ED6 /* homeShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622C17C7D072004A5ED6 /* homeShader.vert */; };
-		E7D3634E17C7D072004A5ED6 /* noise.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622D17C7D072004A5ED6 /* noise.frag */; };
-		E7D3634F17C7D072004A5ED6 /* noise.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622E17C7D072004A5ED6 /* noise.vert */; };
-		E7D3635017C7D072004A5ED6 /* noiseShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3622F17C7D072004A5ED6 /* noiseShader.frag */; };
-		E7D3635117C7D072004A5ED6 /* noiseShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623017C7D072004A5ED6 /* noiseShader.vert */; };
-		E7D3635217C7D072004A5ED6 /* noiseShader_backup.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623117C7D072004A5ED6 /* noiseShader_backup.frag */; };
-		E7D3635317C7D072004A5ED6 /* posShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623217C7D072004A5ED6 /* posShader.frag */; };
-		E7D3635417C7D072004A5ED6 /* posShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623317C7D072004A5ED6 /* posShader.vert */; };
-		E7D3635517C7D072004A5ED6 /* radShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623417C7D072004A5ED6 /* radShader.frag */; };
-		E7D3635617C7D072004A5ED6 /* radShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623517C7D072004A5ED6 /* radShader.vert */; };
-		E7D3635717C7D072004A5ED6 /* renderShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623617C7D072004A5ED6 /* renderShader.frag */; };
-		E7D3635817C7D072004A5ED6 /* renderShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623717C7D072004A5ED6 /* renderShader.vert */; };
-		E7D3635917C7D072004A5ED6 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623817C7D072004A5ED6 /* rgbdcombined.frag */; };
-		E7D3635A17C7D072004A5ED6 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623917C7D072004A5ED6 /* rgbdcombined.vert */; };
-		E7D3635B17C7D072004A5ED6 /* sphereShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623A17C7D072004A5ED6 /* sphereShader.frag */; };
-		E7D3635C17C7D072004A5ED6 /* sphereShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623B17C7D072004A5ED6 /* sphereShader.vert */; };
-		E7D3635D17C7D072004A5ED6 /* velShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623C17C7D072004A5ED6 /* velShader.frag */; };
-		E7D3635E17C7D072004A5ED6 /* velShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3623D17C7D072004A5ED6 /* velShader.vert */; };
 		E7D3637017C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */; };
-		E7D3650C17C7D0FF004A5ED6 /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3643F17C7D0FF004A5ED6 /* facingRatio.frag */; };
-		E7D3650D17C7D0FF004A5ED6 /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644017C7D0FF004A5ED6 /* facingRatio.vert */; };
-		E7D3650E17C7D0FF004A5ED6 /* groundShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644117C7D0FF004A5ED6 /* groundShader.frag */; };
-		E7D3650F17C7D0FF004A5ED6 /* groundShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644217C7D0FF004A5ED6 /* groundShader.vert */; };
-		E7D3651017C7D0FF004A5ED6 /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644317C7D0FF004A5ED6 /* normalShader.frag */; };
-		E7D3651117C7D0FF004A5ED6 /* normalShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644417C7D0FF004A5ED6 /* normalShader.vert */; };
-		E7D3651217C7D0FF004A5ED6 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644517C7D0FF004A5ED6 /* rgbdcombined.frag */; };
-		E7D3651317C7D0FF004A5ED6 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D3644617C7D0FF004A5ED6 /* rgbdcombined.vert */; };
 		E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3645817C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */; };
 		E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */; };
 		E7D365F217C7D32C004A5ED6 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365A917C7D32C004A5ED6 /* ScrapeVisualSystem.cpp */; };
+		E7D365FB17C7EF50004A5ED6 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -831,6 +794,8 @@
 		E7D365A817C7D32C004A5ED6 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
 		E7D365A917C7D32C004A5ED6 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
 		E7D365AA17C7D32C004A5ED6 /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
+		E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
+		E7D365FA17C7EF50004A5ED6 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -2614,6 +2579,8 @@
 		E7D365A517C7D32C004A5ED6 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7D365FA17C7EF50004A5ED6 /* ScrapeCamera.h */,
+				E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */,
 				E7D365A817C7D32C004A5ED6 /* ofxMtlBoxFitting.h */,
 				E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */,
 				E7D365AA17C7D32C004A5ED6 /* ScrapeVisualSystem.h */,
@@ -2875,51 +2842,14 @@
 				E736770317C67F7E00CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */,
 				E736770417C67F7E00CC6EC8 /* LNode.cpp in Sources */,
 				E736770517C67F7E00CC6EC8 /* LSystem.cpp in Sources */,
-				E73678E817C6DF2B00CC6EC8 /* oscillationsShader.frag in Sources */,
-				E73678E917C6DF2B00CC6EC8 /* oscillationsShader.vert in Sources */,
 				E73678F417C6DF2B00CC6EC8 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E736792F17C6E02500CC6EC8 /* ofxAutoReloadedShader.cpp in Sources */,
-				E7D3634317C7D072004A5ED6 /* accShader.frag in Sources */,
-				E7D3634417C7D072004A5ED6 /* accShader.vert in Sources */,
-				E7D3634517C7D072004A5ED6 /* attractorShader.frag in Sources */,
-				E7D3634617C7D072004A5ED6 /* attractorShader.vert in Sources */,
-				E7D3634717C7D072004A5ED6 /* electroAddShader.frag in Sources */,
-				E7D3634817C7D072004A5ED6 /* electroShader.frag in Sources */,
-				E7D3634917C7D072004A5ED6 /* electroShader.vert in Sources */,
-				E7D3634A17C7D072004A5ED6 /* floorShader.frag in Sources */,
-				E7D3634B17C7D072004A5ED6 /* floorShader.vert in Sources */,
-				E7D3634C17C7D072004A5ED6 /* homeShader.frag in Sources */,
-				E7D3634D17C7D072004A5ED6 /* homeShader.vert in Sources */,
-				E7D3634E17C7D072004A5ED6 /* noise.frag in Sources */,
-				E7D3634F17C7D072004A5ED6 /* noise.vert in Sources */,
-				E7D3635017C7D072004A5ED6 /* noiseShader.frag in Sources */,
-				E7D3635117C7D072004A5ED6 /* noiseShader.vert in Sources */,
-				E7D3635217C7D072004A5ED6 /* noiseShader_backup.frag in Sources */,
-				E7D3635317C7D072004A5ED6 /* posShader.frag in Sources */,
-				E7D3635417C7D072004A5ED6 /* posShader.vert in Sources */,
-				E7D3635517C7D072004A5ED6 /* radShader.frag in Sources */,
-				E7D3635617C7D072004A5ED6 /* radShader.vert in Sources */,
-				E7D3635717C7D072004A5ED6 /* renderShader.frag in Sources */,
-				E7D3635817C7D072004A5ED6 /* renderShader.vert in Sources */,
-				E7D3635917C7D072004A5ED6 /* rgbdcombined.frag in Sources */,
-				E7D3635A17C7D072004A5ED6 /* rgbdcombined.vert in Sources */,
-				E7D3635B17C7D072004A5ED6 /* sphereShader.frag in Sources */,
-				E7D3635C17C7D072004A5ED6 /* sphereShader.vert in Sources */,
-				E7D3635D17C7D072004A5ED6 /* velShader.frag in Sources */,
-				E7D3635E17C7D072004A5ED6 /* velShader.vert in Sources */,
 				E7D3637017C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp in Sources */,
-				E7D3650C17C7D0FF004A5ED6 /* facingRatio.frag in Sources */,
-				E7D3650D17C7D0FF004A5ED6 /* facingRatio.vert in Sources */,
-				E7D3650E17C7D0FF004A5ED6 /* groundShader.frag in Sources */,
-				E7D3650F17C7D0FF004A5ED6 /* groundShader.vert in Sources */,
-				E7D3651017C7D0FF004A5ED6 /* normalShader.frag in Sources */,
-				E7D3651117C7D0FF004A5ED6 /* normalShader.vert in Sources */,
-				E7D3651217C7D0FF004A5ED6 /* rgbdcombined.frag in Sources */,
-				E7D3651317C7D0FF004A5ED6 /* rgbdcombined.vert in Sources */,
 				E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */,
 				E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */,
 				E7D365F217C7D32C004A5ED6 /* ScrapeVisualSystem.cpp in Sources */,
+				E7D365FB17C7EF50004A5ED6 /* ScrapeCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

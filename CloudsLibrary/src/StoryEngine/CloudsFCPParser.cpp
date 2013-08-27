@@ -154,6 +154,8 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
         
         mapsXML.popTag(); //svg
     }
+	
+	calculateCohesionMedianForKeywords();
 }
 
 void CloudsFCPParser::parseLinks(string linkFile){
@@ -338,7 +340,7 @@ float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
     if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
         return keywordCohesionMap[keyword];
     }
-    ofLogError("CloudsFCPParser::getCohesionIndexForKeyword")<<"Couldnt find cohesion index for keyword: "<<endl;
+    ofLogError("CloudsFCPParser::getCohesionIndexForKeyword")<<"Couldnt find cohesion index for keyword: " << keyword << endl;
     return 0;
 }
 
@@ -475,7 +477,6 @@ void CloudsFCPParser::saveLinks(string linkFile){
 			linksXML.popTag();
 		}
 	}
-    
     
     if(! linksXML.saveFile(linkFile) ){
 		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
