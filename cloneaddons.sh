@@ -35,6 +35,7 @@ git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
 git clone https://github.com/Larsberg/ofxMarchingCubes
+git clone https://github.com/andreasmuller/ofxAutoReloadedShader
 
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
