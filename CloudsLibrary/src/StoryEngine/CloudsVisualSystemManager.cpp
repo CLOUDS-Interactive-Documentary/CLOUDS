@@ -61,10 +61,10 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemOcean() );
 	registerVisualSystem( new CloudsVisualSystemLia() );
 	registerVisualSystem( new CloudsVisualSystemFireworks() );
-//	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
-//	registerVisualSystem( new CloudsVisualSystemCosmic() );
-//	registerVisualSystem( new ScrapeVisualSystem() );
-//	registerVisualSystem( new CloudsVisualSystemOscillations() );
+	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
+	registerVisualSystem( new CloudsVisualSystemCosmic() );
+	registerVisualSystem( new ScrapeVisualSystem() );
+	registerVisualSystem( new CloudsVisualSystemOscillations() );
 	
     loadPresets();
 	
