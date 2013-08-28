@@ -1,6 +1,91 @@
 
 #include "CloudsPlaybackController.h"
 
+//TODO: rename crossfadeValue
+ofEvent <CloudsPlaybackControllerEvent> CloudsPlaybackControllerEvent::events;
+
+void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlaybackControllerEvent &e )
+{
+	
+	if( e.name == fadeOutRGBD )
+	{
+		//cout << e.name << " : " << e.message << endl;
+		if(e.message == "started")
+		{
+			cout << endl << "RGBD fading out" << endl << endl;
+			rgbdVisualSystem.transitionOut( currentVisualSystem->getTransitionType(), e.span );
+		}
+		if(e.message == "ended")
+		{
+			cout << endl << "RGBD faded out" << endl << endl;
+			
+			//stop the rgbd system
+			rgbdVisualSystem.stopSystem();
+			
+			//fade in nextVisual system
+			float duration = 1;
+		
+			addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), duration, 0, 1, &crossfadeValue );
+			currentVisualSystem = nextSystem;
+		}
+	}
+	
+	if( e.name == fadeInRGBD )
+	{
+		//cout << e.name << " : " << e.message << endl;
+		if(e.message == "started")
+		{
+			cout << endl << "RGBD FADING IN" << endl << endl;
+			rgbdVisualSystem.playSystem();
+			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), e.span );
+		}
+		
+		if(e.message == "ended")
+		{
+			cout << endl << "RGBD FADED IN" << endl << endl;
+			currentVisualSystem = &rgbdVisualSystem;
+		}
+	}
+	
+	if( e.name == fadeInVisualSystem){
+		if(e.message == "started")
+		{
+			cout << endl << "fading in next visual system" << endl << endl;
+		}
+		
+		if(e.message == "ended")
+		{
+			cout << endl << "faded in next visual system" << endl << endl;
+		}
+	}
+	
+	
+	if( e.name == fadeOutVisualSystem){
+		if(e.message == "started")
+		{
+			cout << endl << "fading out next visual system" << endl << endl;
+		}
+		
+		if(e.message == "ended")
+		{
+			cout << endl << "faded out next visual system" << endl << endl;
+			
+			float duration = 1;
+			addControllerTween( fadeInRGBD, ofGetElapsedTimef(), duration, 0, 1, &crossfadeValue );
+			showingVisualSystem = false;
+		}
+	}
+}
+
+
+void CloudsPlaybackController::addControllerTween( string name, float startTime, float span, float startVal, float endVal, float *value )
+{
+	
+	CloudsPlaybackControllerTween t;
+	t.setup( name, startTime, span, startVal, endVal, value );
+	
+	controllerTweens.push_back( t );
+}
 
 CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
@@ -34,6 +119,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(storyEngine != NULL){
 		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
+	
+	
+	ofRemoveListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
 }
 
 //--------------------------------------------------------------------
@@ -86,8 +174,20 @@ void CloudsPlaybackController::setup(){
 		fadingOut = fadingIn = false;
 		crossfadeValue = 1.;
 		bIsFading = false;
+		
 	}
 	
+	CloudsPlaybackControllerTween t;
+	t.setup("testTween", ofGetElapsedTimef(), 5, 0, 100);
+	controllerTweens.push_back( t );
+	
+	
+	ofAddListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
+	
+	fadeOutRGBD = "fadeOutRGBD";
+	fadeInRGBD = "fadeInRGBD";
+	fadeOutVisualSystem = "fadeOutVisualSystem";
+	fadeInVisualSystem = "fadeInVisualSystem";
 }
 
 //--------------------------------------------------------------------
@@ -193,95 +293,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		}
 	}
 	else {
-		updateVisualSystemFade();
+//		updateVisualSystemFade();
+	}
+	
+	//updating tweens
+	float elapsedTime = ofGetElapsedTimef();
+	for (int i=controllerTweens.size()-1; i>=0; i--) {
+		controllerTweens[i].update( elapsedTime );
+		
+		if(controllerTweens[i].bEnded){
+			controllerTweens.erase(controllerTweens.begin() + i );
+		}
 	}
 	
 	//TODO: add camera animations to RGBDVisSys
 	
 	//TODO: offsetTargets for turning away
 	
-}
-
-void CloudsPlaybackController::updateVisualSystemFade(){
-	//handle fadin/out
-	if( fadingIn || fadingOut){
-		float currentTime = ofGetElapsedTimef();
-		
-		crossfadeValue = ofxTween::map( currentTime, fadeStartTime, fadeEndTime, fadeStartVal, fadeTargetVal, true, fadeEase,  ofxTween::easeInOut );
-		
-		
-		//end fading in
-		if( fadingIn && currentTime > fadeEndTime ){
-			cout  << "FADED IN " << ofGetElapsedTimef() << endl;
-			bIsFading = false;
-			
-			//end fade
-			fadingIn = false;
-		}
-		
-		//end fading out
-		else if( fadingOut && currentTime > fadeEndTime ){
-			
-			cout  << "FADED OUT " << ofGetElapsedTimef() << endl;
-			
-			//fade in the new visual system
-			if(nextSystem != NULL){
-				//non RGBD visual system
-				currentVisualSystem = nextSystem;
-				nextSystem = NULL;
-				rgbdVisualSystem.stopSystem();
-				
-				//fase in the next viz system
-				fadeInVisualSystem(1);
-				
-				//stop the the rgbdSystem becuase it's no longer visible
-				rgbdVisualSystem.stopSystem();
-				
-			}else{
-				//hide(stopSystem() & NULL the pointers) the faded out visual system
-				hideVisualSystem();
-				
-				//back to the RGBD visual system
-				fadeInVisualSystem( rgbdVisualSystemFadeInDuration );
-				
-				//play the the rgbdSystem becuase it will be fading in
-				rgbdVisualSystem.playSystem();
-				
-			}
-			
-			//end fade
-			fadingOut = false;
-		}
-		else{
-			//shout out to the faded
-			if(!bIsFading && currentTime >= fadeStartTime){
-				bIsFading = true;
-			}
-		}
-	}
-}
-
-void CloudsPlaybackController::mixCameras(ofCamera* targetCam,
-										  ofCamera* c0,
-										  ofCamera*  c1,
-										  float x )
-{
-	
-	//get inverse val
-	float mx = 1. - x;
-	
-	//projection stuff
-	targetCam->setupPerspective(false,												//bool vFlip
-								c0->getFov()*x			+	c1->getFov()*mx,			//float fov
-								c0->getNearClip()*x	+	c1->getNearClip()*mx,			//float nearDist
-								c0->getFarClip()*x		+	c1->getFarClip()*mx,		//float farDist
-								c0->getLensOffset()*x	+	c1->getLensOffset()*mx );	//const ofVec2f & lensOffset
-	
-	//position, rotation, are we missing something else here?
-	targetCam->setPosition( c0->getPosition()*x + c1->getPosition()*mx );
-	ofQuaternion rot;
-	rot.slerp( mx, c0->getOrientationQuat(), c1->getOrientationQuat() );
-	targetCam->setOrientation( rot );
 }
 
 //--------------------------------------------------------------------
@@ -355,18 +383,19 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		//
 		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
 		
+		
 		//set the nextSystem pointer that we'll switch to when the fade ends
 		showVisualSystem( args.preset, duration );
-		
-		//start the generic fade
-		fadeOutVisualSystem( duration );
+
+//		//start the generic fade
+//		fadeOutVisualSystem( duration );
 		
 		//if there is a nextSystem transition out the rgbd using the next system's transition type
-		if (nextSystem != NULL) {
-			
-			//transition-in the rgbd visual system
-			rgbdVisualSystem.transitionOut( nextSystem->getTransitionType(), duration );
-		}
+//		if (nextSystem != NULL) {
+//			cout << "visualSystemBegan & nextSystem != NULL" << endl;
+//			//transition-in the rgbd visual system
+//			rgbdVisualSystem.transitionOut( nextSystem->getTransitionType(), duration );
+//		}
 		
 	}
 	else{
@@ -389,17 +418,23 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 		
-		fadeOutVisualSystem( args.preset.outroDuration );
+//		fadeOutVisualSystem( args.preset.outroDuration );
 		
-		//if we have a currentSystem transition the rgbd using it's transition type
-		if(currentVisualSystem != NULL){
-			
-			//to change the rgbdVisual system fade out time change: rgbdVisualSystemFadeOutDuration = 2; //fade time
-			
-			//transition-in the rgbd visual system after the system fades out
-			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), rgbdVisualSystemFadeOutDuration, ofGetElapsedTimef() + args.preset.outroDuration );
-			
-		}
+		
+		
+		float duration = 1;//(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
+		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), duration, 1, 0, &crossfadeValue );
+
+		
+//		//if we have a currentSystem transition the rgbd using it's transition type
+//		if(currentVisualSystem != NULL){
+//			
+//			//to change the rgbdVisual system fade out time change: rgbdVisualSystemFadeOutDuration = 2; //fade time
+//			
+//			//transition-in the rgbd visual system after the system fades out
+//			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), rgbdVisualSystemFadeOutDuration, ofGetElapsedTimef() + args.preset.outroDuration );
+//			
+//		}
 	}
 	else{
 		ofLogError() << "Hiding visual system while none is showing";
@@ -457,6 +492,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 		hideVisualSystem();
 	}
 	
+	addControllerTween(fadeOutRGBD, ofGetElapsedTimef(), transitionDuration, 1, 0, &crossfadeValue);
+	
 	cout << "showing " << nextVisualSystem.system->getSystemName() << " Preset: " << nextVisualSystem.presetName << endl;
 	
 //	nextVisualSystem.system->sharedRenderTarget = &nextRenderTarget;
@@ -472,10 +509,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	showingVisualSystem = true;
 	
 	nextSystem = nextVisualSystem.system;
-		
-	//LB: I think the prblem was here...
-	//	cameraStartPos = currentVisualSystem->getCameraRef().getPosition();
-	//	transitionRgbdSystemOut( 1,1 );// transitionDuration, transitionDuration );
 }
 
 //--------------------------------------------------------------------
@@ -488,68 +521,4 @@ void CloudsPlaybackController::hideVisualSystem()
 		currentVisualSystem = &rgbdVisualSystem;
 		rgbdVisualSystem.playSystem();
 	}
-}
-
-
-void CloudsPlaybackController::fadeInVisualSystem( float duration, float start )
-{
-	cout << "fadeInVisualSystem " << ofGetElapsedTimef() << endl;
-	
-	fadingIn = true;
-	fadingOut = false;
-
-	fadingIn = true;
-	fadingOut = false;
-	
-	//set crossfade
-	fadeDuration = duration;
-	fadeStartTime = start;
-	fadeEndTime = fadeStartTime + fadeDuration;
-	
-	//fade from 0 opacity to 1
-	fadeStartVal = 0;
-	fadeTargetVal = 1;
-	
-}
-
-void CloudsPlaybackController::fadeOutVisualSystem( float duration, float start )
-{
-	cout << "fadeOutVisualSystem " << ofGetElapsedTimef() << endl;
- 	
-	//handle the fading
-	fadingIn = false;
-	fadingOut = true;
-	
-	//set crossfade
-	fadeDuration = duration;
-	fadeStartTime = start;
-	fadeEndTime = fadeStartTime + fadeDuration;
-	
-	
-	//fade from 1 opacity to 0
-	fadeStartVal = 1;
-	fadeTargetVal = 0.;
-	
-}
-
-void CloudsPlaybackController::transitionRgbdSystemOut( float transitionDuration, float fadeDuration )
-{
-	cout << "transitionRgbdSystemOut: " << ofGetElapsedTimef() << endl;
-	
-	//start our rgbSystem's transition
-	rgbdVisualSystem.transitionOut( currentVisualSystem->getTransitionType(), transitionDuration );
-	
-	//start our fade
-	fadeInVisualSystem( transitionDuration, ofGetElapsedTimef() );
-}
-
-void CloudsPlaybackController::transitionRgbdSystemIn( float transitionDuration, float fadeDuration )
-{
-	cout << endl << "transitionRgbdSystemIn: " << ofGetElapsedTimef() << endl<< endl;
-	
-	//start our rgbSystem's transition
-	rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), transitionDuration );
-	
-	//start our fade
-	fadeOutVisualSystem( transitionDuration, ofGetElapsedTimef() );
 }

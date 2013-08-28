@@ -62,6 +62,14 @@
 		E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8231768DDCE00083C4C /* ClusterData.cpp */; };
 		E74CE86E1768ED6200083C4C /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */; };
 		E74CE8801768ED7C00083C4C /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */; };
+		E75DB43017CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB40D17CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.cpp */; };
+		E75DB4B517CDBD1300CD99D9 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB4AA17CDBD1300CD99D9 /* ofxMtlBoxFitting.cpp */; };
+		E75DB4B617CDBD1300CD99D9 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB4AC17CDBD1300CD99D9 /* ScrapeCamera.cpp */; };
+		E75DB4B717CDBD1300CD99D9 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB4AE17CDBD1300CD99D9 /* ScrapeVisualSystem.cpp */; };
+		E75DB56617CDBD1700CD99D9 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB55E17CDBD1700CD99D9 /* CloudsVisualSystemOscillations.cpp */; };
+		E75DB65A17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB64E17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp */; };
+		E75DB68B17CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB68017CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp */; };
+		E75DB6B117CDBD8A00CD99D9 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6A917CDBD8A00CD99D9 /* ofxMarchingCubes.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D411734DE68008ADC62 /* CloudsClip.cpp */; };
 		E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
@@ -343,6 +351,23 @@
 		E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
 		E74CE87E1768ED7B00083C4C /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
 		E74CE87F1768ED7B00083C4C /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
+		E75DB40D17CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCosmic.cpp; sourceTree = "<group>"; };
+		E75DB40E17CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
+		E75DB4AA17CDBD1300CD99D9 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
+		E75DB4AB17CDBD1300CD99D9 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
+		E75DB4AC17CDBD1300CD99D9 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
+		E75DB4AD17CDBD1300CD99D9 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
+		E75DB4AE17CDBD1300CD99D9 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
+		E75DB4AF17CDBD1300CD99D9 /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
+		E75DB55E17CDBD1700CD99D9 /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
+		E75DB55F17CDBD1700CD99D9 /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
+		E75DB64E17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMarchingCubes.cpp; sourceTree = "<group>"; };
+		E75DB64F17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMarchingCubes.h; sourceTree = "<group>"; };
+		E75DB68017CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAutoReloadedShader.cpp; sourceTree = "<group>"; };
+		E75DB68117CDBD4800CD99D9 /* ofxAutoReloadedShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAutoReloadedShader.h; sourceTree = "<group>"; };
+		E75DB6A817CDBD8A00CD99D9 /* mcTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcTables.h; sourceTree = "<group>"; };
+		E75DB6A917CDBD8A00CD99D9 /* ofxMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMarchingCubes.cpp; sourceTree = "<group>"; };
+		E75DB6AA17CDBD8A00CD99D9 /* ofxMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMarchingCubes.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7637D411734DE68008ADC62 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7637D421734DE68008ADC62 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
@@ -838,6 +863,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E75DB68F17CDBD8A00CD99D9 /* ofxMarchingCubes */,
+				E75DB65E17CDBD4800CD99D9 /* ofxAutoReloadedShader */,
 				E73677B617C6CF3F00CC6EC8 /* ofxObjLoader */,
 				E79E4C4C1797518200719469 /* ofxAVFVideoPlayer */,
 				E7402E7A178F44DC00FEABED /* ofxOcean */,
@@ -1272,6 +1299,115 @@
 				E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */,
 				E74CE87E1768ED7B00083C4C /* MSACoreGL.h */,
 				E74CE87F1768ED7B00083C4C /* MSACoreMath.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E75DB11017CDBD0800CD99D9 /* Cosmic */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB40C17CDBD0A00CD99D9 /* vs_src */,
+			);
+			path = Cosmic;
+			sourceTree = "<group>";
+		};
+		E75DB40C17CDBD0A00CD99D9 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB40D17CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.cpp */,
+				E75DB40E17CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E75DB43417CDBD1200CD99D9 /* Scrape */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB4A917CDBD1300CD99D9 /* vs_src */,
+			);
+			path = Scrape;
+			sourceTree = "<group>";
+		};
+		E75DB4A917CDBD1300CD99D9 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB4AA17CDBD1300CD99D9 /* ofxMtlBoxFitting.cpp */,
+				E75DB4AB17CDBD1300CD99D9 /* ofxMtlBoxFitting.h */,
+				E75DB4AC17CDBD1300CD99D9 /* ScrapeCamera.cpp */,
+				E75DB4AD17CDBD1300CD99D9 /* ScrapeCamera.h */,
+				E75DB4AE17CDBD1300CD99D9 /* ScrapeVisualSystem.cpp */,
+				E75DB4AF17CDBD1300CD99D9 /* ScrapeVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E75DB4BB17CDBD1700CD99D9 /* Oscillations */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB55D17CDBD1700CD99D9 /* vs_src */,
+			);
+			path = Oscillations;
+			sourceTree = "<group>";
+		};
+		E75DB55D17CDBD1700CD99D9 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB55E17CDBD1700CD99D9 /* CloudsVisualSystemOscillations.cpp */,
+				E75DB55F17CDBD1700CD99D9 /* CloudsVisualSystemOscillations.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E75DB56A17CDBD1F00CD99D9 /* Metaballs */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB64D17CDBD2000CD99D9 /* vs_src */,
+			);
+			path = Metaballs;
+			sourceTree = "<group>";
+		};
+		E75DB64D17CDBD2000CD99D9 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB64E17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp */,
+				E75DB64F17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E75DB65E17CDBD4800CD99D9 /* ofxAutoReloadedShader */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB67F17CDBD4800CD99D9 /* src */,
+			);
+			name = ofxAutoReloadedShader;
+			path = ../../../addons/ofxAutoReloadedShader;
+			sourceTree = "<group>";
+		};
+		E75DB67F17CDBD4800CD99D9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB68017CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp */,
+				E75DB68117CDBD4800CD99D9 /* ofxAutoReloadedShader.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E75DB68F17CDBD8A00CD99D9 /* ofxMarchingCubes */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB6A717CDBD8A00CD99D9 /* src */,
+			);
+			name = ofxMarchingCubes;
+			path = ../../../addons/ofxMarchingCubes;
+			sourceTree = "<group>";
+		};
+		E75DB6A717CDBD8A00CD99D9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E75DB6A817CDBD8A00CD99D9 /* mcTables.h */,
+				E75DB6A917CDBD8A00CD99D9 /* ofxMarchingCubes.cpp */,
+				E75DB6AA17CDBD8A00CD99D9 /* ofxMarchingCubes.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1996,6 +2132,10 @@
 		E7BBB4E917A02CEC007D7EC1 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E75DB56A17CDBD1F00CD99D9 /* Metaballs */,
+				E75DB4BB17CDBD1700CD99D9 /* Oscillations */,
+				E75DB43417CDBD1200CD99D9 /* Scrape */,
+				E75DB11017CDBD0800CD99D9 /* Cosmic */,
 				E736770817C6CE1E00CC6EC8 /* _ClusterMap */,
 				E736775117C6CE1F00CC6EC8 /* _Intro */,
 				E7BBB53217A02CEC007D7EC1 /* Cities */,
@@ -2380,12 +2520,12 @@
 		E7BBBD2C17A02D98007D7EC1 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				5030D80F17A30C010019F279 /* CloudsRGBDVideoPlayer.cpp */,
 				5030D81017A30C010019F279 /* CloudsRGBDVideoPlayer.h */,
-				5030D80C17A30BAF0019F279 /* CloudsRGBDCamera.cpp */,
+				5030D80F17A30C010019F279 /* CloudsRGBDVideoPlayer.cpp */,
 				5030D80D17A30BAF0019F279 /* CloudsRGBDCamera.h */,
-				E7BBBD3017A02D98007D7EC1 /* CloudsVisualSystem.cpp */,
+				5030D80C17A30BAF0019F279 /* CloudsRGBDCamera.cpp */,
 				E7BBBD3117A02D98007D7EC1 /* CloudsVisualSystem.h */,
+				E7BBBD3017A02D98007D7EC1 /* CloudsVisualSystem.cpp */,
 				E7BBBD3217A02D98007D7EC1 /* ofxLight.h */,
 			);
 			path = VisualSystemsLibrary;
@@ -2768,6 +2908,14 @@
 				E73677B517C6CE1F00CC6EC8 /* CloudsIntroSequence.cpp in Sources */,
 				E73677D317C6CF4000CC6EC8 /* glm.c in Sources */,
 				E73677D417C6CF4000CC6EC8 /* ofxObjLoader.cpp in Sources */,
+				E75DB43017CDBD0A00CD99D9 /* CloudsVisualSystemCosmic.cpp in Sources */,
+				E75DB4B517CDBD1300CD99D9 /* ofxMtlBoxFitting.cpp in Sources */,
+				E75DB4B617CDBD1300CD99D9 /* ScrapeCamera.cpp in Sources */,
+				E75DB4B717CDBD1300CD99D9 /* ScrapeVisualSystem.cpp in Sources */,
+				E75DB56617CDBD1700CD99D9 /* CloudsVisualSystemOscillations.cpp in Sources */,
+				E75DB65A17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
+				E75DB68B17CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp in Sources */,
+				E75DB6B117CDBD8A00CD99D9 /* ofxMarchingCubes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

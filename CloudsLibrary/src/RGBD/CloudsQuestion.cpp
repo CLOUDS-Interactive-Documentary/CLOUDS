@@ -33,8 +33,13 @@ void CloudsQuestion::setup(){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
 		
-		topic = clip.getAllTopicsWithQuestion()[0];
-		question = ofToUpper(clip.getQuestionForTopic(topic));
+		if(clip.getAllTopicsWithQuestion().size() > 0){
+			topic = clip.getAllTopicsWithQuestion()[0];
+			question = ofToUpper(clip.getQuestionForTopic(topic));
+		}
+		else{
+			ofLogError("CloudsQuestion::setup") << "no topic associated with quesiton clip " << clip.getLinkName() << endl;
+		}
 		
 //square
 //		geometry.addVertex(ofVec3f(-.5,-.5,0)) ;
