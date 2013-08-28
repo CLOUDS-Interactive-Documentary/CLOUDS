@@ -14,6 +14,94 @@
 
 #include "CloudsVisualSystemRGBD.h"
 
+
+class CloudsPlaybackControllerEvent : public ofEventArgs {
+    
+public:
+	
+	//	Tween * tween;
+	string message;
+	string name;
+	float value, span;
+    
+    CloudsPlaybackControllerEvent() {
+    }
+	static ofEvent <CloudsPlaybackControllerEvent> events;
+};
+
+class CloudsPlaybackControllerTween {
+public:
+	CloudsPlaybackControllerTween(){};
+	~CloudsPlaybackControllerTween(){};
+	
+	void setup( string _name, float _startTime, float _span, float _startVal, float _endVal, float *_value = NULL ){
+		name = _name;
+		
+		startTime = _startTime;
+		span = _span;
+		endTime = startTime + span;
+		
+		startVal = _startVal;
+		endVal = _endVal;
+		
+		value = _value;
+		
+		bStarted = false;
+		bEnded = false;
+		autoDelete = true;
+	}
+	
+	void update( float elapsedTime=ofGetElapsedTimef() ){
+		val = ofMap(elapsedTime, startTime, endTime, startVal, endVal, true );
+		if(value != NULL){
+			*value = val;
+		}
+		
+		//start event
+		if(!bStarted && elapsedTime >= startTime){
+			bStarted = true;
+			
+			static CloudsPlaybackControllerEvent startEvent;
+			startEvent.message = "started";
+			startEvent.name = name;
+			startEvent.value = startVal;
+			startEvent.span = span;
+			if(value != NULL)	*value = startVal;
+			ofNotifyEvent( CloudsPlaybackControllerEvent::events, startEvent );
+		}
+		
+		
+		//update event
+		static CloudsPlaybackControllerEvent updateEvent;
+		updateEvent.message = "updated";
+		updateEvent.name = name;
+		updateEvent.value = val;
+		updateEvent.span = span;
+		ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
+		
+		//end event
+		if(!bEnded && elapsedTime >= endTime){
+			bEnded = true;
+			
+			static CloudsPlaybackControllerEvent endEvent;
+			endEvent.message = "ended";
+			endEvent.name = name;
+			endEvent.value = endVal;
+			endEvent.span = span;
+			if(value != NULL)	*value = endVal;
+			ofNotifyEvent( CloudsPlaybackControllerEvent::events, endEvent );
+			
+		}
+	}
+	
+	bool bStarted, bEnded, autoDelete;
+	float startTime, span, endTime, startVal, endVal, val;
+	float *value;
+	
+	string name;
+};
+
+
 /**
  * This class controls playback of RGBD sequences
  * and decides when to show Visual Systems
@@ -72,6 +160,18 @@ class CloudsPlaybackController {
 	ofxEasingQuint fadeEase;
 	void updateVisualSystemFade();
 	
+	void CloudsPlaybackControllerEventHandler( CloudsPlaybackControllerEvent &e );
+	
+	void addControllerTween( string name, float startTime, float span, float startVal, float endVal, float *value );
+
+	vector<CloudsPlaybackControllerTween> controllerTweens;
+	
+	string fadeOutRGBD;
+	string fadeInRGBD;
+	
+	string fadeOutVisualSystem;
+	string fadeInVisualSystem;
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -104,15 +204,14 @@ class CloudsPlaybackController {
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system
 	void hideVisualSystem();
-	
-	void fadeInVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
-	void fadeOutVisualSystem( float duration=3, float start=ofGetElapsedTimef() );
+
 	
 	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
 	
 	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
 	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );
 	bool bIsFading;
+	
 
 
 };
