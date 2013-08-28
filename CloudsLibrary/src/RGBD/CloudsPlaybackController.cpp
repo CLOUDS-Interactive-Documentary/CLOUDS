@@ -119,6 +119,9 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(storyEngine != NULL){
 		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
+	
+	
+	ofRemoveListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
 }
 
 //--------------------------------------------------------------------
