@@ -26,9 +26,9 @@
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
 	
-	rgbdVisualSystem.setRenderer(renderer);
+//	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
-	renderer.setShaderPath( getDataPath() + "shaders/rgbdcombined");
+//	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
 
 	rgbdVisualSystem.playSystem();
 	rgbdVisualSystem.loadPresetGUISFromName("Test_");
@@ -41,7 +41,7 @@
 
 - (void)update
 {
-	renderer.update();
+//	renderer.update();
 }
 
 - (void)draw

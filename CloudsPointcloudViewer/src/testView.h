@@ -3,13 +3,13 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-#include "CloudsRGBDCombinedRenderer.h"
+#include "CloudsRGBDVideoPlayer.h"
 #include "CloudsVisualSystemRGBD.h"
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
 	CloudsFCPParser parser;
-	CloudsRGBDCombinedRenderer renderer;
+	CloudsRGBDVideoPlayer renderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
 	CloudsClip currentClip;
