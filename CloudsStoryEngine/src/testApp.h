@@ -29,7 +29,7 @@ class testApp : public ofBaseApp{
 	CloudsVisualSystemManager visualSystems;
 	CloudsStoryEngine storyEngine;
 	CloudsAct* currentAct;
-	
+	CloudsRun run;
 	
 	//clip events
 	void actCreated(CloudsActEventArgs& args);

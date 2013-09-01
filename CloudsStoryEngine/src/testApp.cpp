@@ -31,7 +31,7 @@ void testApp::setup(){
 	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	storyEngine.buildAct( clip );
+	storyEngine.buildAct(run, clip );
     
 }
 

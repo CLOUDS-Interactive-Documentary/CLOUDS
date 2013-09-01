@@ -88,10 +88,11 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	//moved this -- don't set up until the loading screen of the act
 	//system->setup();
+	nameToVisualSystem[system->getSystemName()] = system;
+
 #endif
 	
 	systems.push_back( system );
-	nameToVisualSystem[system->getSystemName()] = system;
 }
 
 //--------------------------------------------------------------------
