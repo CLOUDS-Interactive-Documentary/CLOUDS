@@ -2,11 +2,11 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>9.000000000</XPosition>
-    <YPosition>305.000000000</YPosition>
+    <XPosition>637.000000000</XPosition>
+    <YPosition>445.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>CopiedPresets</Name>
+    <Name>DefaultCluster</Name>
     <Value>1</Value>
 </Widget>

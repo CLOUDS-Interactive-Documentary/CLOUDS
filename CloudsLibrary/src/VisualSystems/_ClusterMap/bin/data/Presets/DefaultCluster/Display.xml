@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Display</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>579.000000000</XPosition>
-    <YPosition>167.000000000</YPosition>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -23,12 +23,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>line start</Name>
-    <Value>0.088669948</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>line end</Name>
-    <Value>0.251231521</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -154,8 +154,8 @@ void CloudsVisualSystemClusterMap::guiRenderEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemClusterMap::selfSetupTimeline(){
-	lineColor = timeline->addColors("line color");
-	nodeColor = timeline->addColorsWithPalette("node color", getVisualSystemDataPath() + "images/nerve_palette.png");
+	lineColor = timeline->addColors("line color", "LineColor.xml");
+	nodeColor = timeline->addColorsWithPalette("node color","NodeColor.xml", getVisualSystemDataPath() + "images/nerve_palette.png");
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -172,6 +172,8 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
+	generate();
+	traverse();
 	
 }
 
@@ -508,6 +510,8 @@ void CloudsVisualSystemClusterMap::generate(){
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
+	
+	cout << "Traversing!" << endl;
 	
 	//find the nodes with the greatest distance and to get there
 	Node* n1, *n2 = NULL;
