@@ -33,15 +33,15 @@ CloudsStoryEngine::CloudsStoryEngine(){
     
     topicsInCommonMultiplier = 10;
     topicsinCommonWithPreviousMultiplier = 5;
-    samePersonOccuranceSuppressionFactor = 4;
-    dichomoiesFactor = 2;
+    samePersonOccurrenceSuppressionFactor = 4;
+    dichotomyWeight = 2;
     linkFactor =20 ;
     maxTimeWithoutQuestion =120;
     gapLengthMultiplier = 0.5;
     preRollDuration = 5;
     minClipDurationForStartingOffset = 30;
-    initGui();
-    displayGui(false);
+	
+//    displayGui(false);
     
 }
 
@@ -54,6 +54,8 @@ void CloudsStoryEngine::setup(){
 	if(!isSetup){
 		isSetup = true;
         
+		initGui();
+		
         CloudsDichotomy d;
         dichotomyThreshold = 3;
         
@@ -137,16 +139,17 @@ void CloudsStoryEngine::initGui(){
 	clipGui->addSpacer();
     clipGui->addSlider("CURRENT TOPICS IN COMMON MULTIPLIER", 0, 50, topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON WITH HISTORY MULTIPLIER", 0, 10, topicsinCommonWithPreviousMultiplier);
-    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, samePersonOccuranceSuppressionFactor);
+    clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, samePersonOccurrenceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50,linkFactor);
-    clipGui->addSlider("DICHOTOMIES FACTOR", 0,10,dichomoiesFactor);
+    clipGui->addSlider("DICHOTOMY WEIGHT", 0,10,dichotomyWeight);
     
     clipGui->autoSizeToFitWidgets();
     
     gui = new ofxUISuperCanvas("ACT BUILDER GENERAL PARAMS :", OFX_UI_FONT_SMALL);
     gui->setPosition(clipGui->getRect()->x + 100, clipGui->getRect()->y + 10);
     gui->addSpacer();
-    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
+//    gui->addSlider("MAX TIME W/O QUESTION", 60, 600, &maxTimeWithoutQuestion);
+	gui->addSlider("MAX TIMES ON TOPIC", 2, 7, &maxTimesOnTopic);
     gui->addSlider("GAP LENGTH MULTIPLIER", 0.01, 0.1, &gapLengthMultiplier);
     gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
     gui->addSlider("PREROLL FLAG TIME", 1, 10, &preRollDuration);
@@ -178,7 +181,16 @@ void CloudsStoryEngine::initGui(){
     ofAddListener(gui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     ofAddListener(clipGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
     ofAddListener(vsGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
-    
+	
+	positionGuis();
+	toggleGuis();
+	
+}
+
+void CloudsStoryEngine::positionGuis(){
+	clipGui->setPosition(0,0);
+	gui->setPosition(clipGui->getRect()->getMaxX(), clipGui->getRect()->y);
+	vsGui->setPosition(gui->getRect()->getMaxX(), gui->getRect()->y);
 }
 
 void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
@@ -203,17 +215,10 @@ void CloudsStoryEngine:: saveGuiSettings(){
     
 }
 
-void CloudsStoryEngine:: displayGui(bool display){
-    if(display){
-        gui->enable();
-        clipGui->enable();
-        vsGui->enable();
-    }
-    else{
-        clipGui->disable();
-        gui->disable();
-        vsGui->disable();
-    }
+void CloudsStoryEngine::toggleGuis(){
+	clipGui->toggleVisible();
+	gui->toggleVisible();
+	vsGui->toggleVisible();
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){
@@ -255,7 +260,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     
     int timeForNewQuesiton = 0;
     
-    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccuranceScore,dichotomiesScore,voiceOverScore,lastClipCommonality,twoClipsAgoCommonality,relevancyScore distanceBetweenKeywords,cohesionIndexForKeywords"<<endl;
+    scoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccurrenceScore,dichotomyWeight,voiceOverScore,lastClipCommonality,twoClipsAgoCommonality,relevancyScore distanceBetweenKeywords,cohesionIndexForKeywords"<<endl;
     
     clearDichotomiesBalance();
     
@@ -715,7 +720,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     //penalize for the person occurring
     //	score -= occurrences*4;
-    samePersonOccuranceScore += occurrences * samePersonOccuranceSuppressionFactor;
+    samePersonOccuranceScore -= occurrences * samePersonOccurrenceSuppressionFactor;
     
     //history should contain #keywords dichotomies, and then augment score
     vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
@@ -728,7 +733,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
                     dichotomies[i].balance = -1;
                 }
                 else{
-                    dichotomiesScore += dichotomies[i].balance * dichomoiesFactor;
+                    dichotomiesScore += dichotomies[i].balance * dichotomyWeight;
                 }
                 
             }
@@ -738,7 +743,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
                     dichotomies[i].balance = 1;
                 }
                 else{
-                    dichotomiesScore += -dichotomies[i].balance * dichomoiesFactor;
+                    dichotomiesScore += -dichotomies[i].balance * dichotomyWeight;
                 }
                 
             }
