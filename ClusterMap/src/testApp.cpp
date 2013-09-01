@@ -4,6 +4,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+	ofEnableAlphaBlending();
 	
 	visualSystem.setup();
 	visualSystem.playSystem();	

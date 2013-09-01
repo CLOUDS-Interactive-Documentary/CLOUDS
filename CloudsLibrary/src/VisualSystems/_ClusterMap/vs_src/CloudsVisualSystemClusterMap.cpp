@@ -111,6 +111,31 @@ void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
+void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
+	selectedQuestion = NULL;
+	questions.clear();
+	
+	for(int i = 0; i < questionClips.size(); i++){
+		
+		CloudsQuestion q;
+		q.cam = &getCameraRef();
+		q.font = &font;
+		q.clip = questionClips[i];
+		
+		q.setup();
+		
+		questions.push_back(q);
+	}
+
+}
+
+CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
+	//TODO: interaction for selecting a question
+	
+	//Temporary to just return the first one
+	return &questions[0];
+}
+
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemClusterMap::selfSetupSystemGui(){
 	
@@ -308,7 +333,6 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	
 	ofPopStyle();
 
-	
 	//line blur
 //	gaussianBlur.begin();
 	

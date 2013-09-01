@@ -116,6 +116,8 @@ protected:
     map<string,ActTimeItem> actItemsMap;
 
     void timelineEventFired(ofxTLBangEventArgs& bang);
+	void timelineStopped(ofxTLPlaybackEventArgs& event);
+	
     ActTimeItem dummy;
     CloudsClip dummyClip;
     vector<CloudsDichotomy> dummyDichotomies;

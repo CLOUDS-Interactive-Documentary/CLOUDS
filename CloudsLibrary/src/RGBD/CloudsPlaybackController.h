@@ -11,7 +11,7 @@
 #include "ofxUI.h"
 
 #include "CloudsIntroSequence.h"
-
+#include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
 
 
@@ -144,7 +144,6 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-//	ofFbo sharedRenderTarget;
 	ofFbo nextRenderTarget;
 	
 	//crossfading CloudsVisualSystems
@@ -181,6 +180,7 @@ class CloudsPlaybackController {
 	//RGBD STUFF
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	CloudsIntroSequence introSequence;
+	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	string combinedMoviesFolder;
 	string currentTopic;
@@ -196,6 +196,7 @@ class CloudsPlaybackController {
 	//
 	bool showingIntro;
 	bool showingVisualSystem;
+	bool showingClusterMap;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystem* nextSystem;

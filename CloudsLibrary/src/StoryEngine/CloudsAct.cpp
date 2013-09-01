@@ -17,6 +17,7 @@ CloudsAct::CloudsAct(){
 CloudsAct::~CloudsAct(){
 	if(timelinePopulated){
 		ofRemoveListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+		ofRemoveListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 	}
 }
 
@@ -94,8 +95,9 @@ void CloudsAct::populateTime(){
         }
     }
     
-	//TODO remove listener
+
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
@@ -135,6 +137,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);        
     }
+}
+
+void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
+	CloudsActEventArgs args(this);
+    ofNotifyEvent(events.actEnded, args);
 }
 
 float CloudsAct::getActDuration(){

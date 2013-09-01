@@ -94,7 +94,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
+	showingClusterMap = false;
 	
+	//JG cut out transition hack
 	TEMP_SYSTEM_HACK = NULL;
 }
 
@@ -166,7 +168,8 @@ void CloudsPlaybackController::setup(){
 		currentVisualSystem = &rgbdVisualSystem;
 		
 		introSequence.setup();
-
+		clusterMapVisualSystem.setup();
+		
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1;
 		fadeStartTime = ofGetElapsedTimef();
@@ -203,22 +206,19 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
+	
+	//TEMPORARY:: Should be set at the end of the act to all unasked questions from the last act
+	clusterMapVisualSystem.setQuestions(possibleStartQuestions);
+	
 	introSequence.setStartQuestions(possibleStartQuestions);
 	introSequence.playSystem();
 	introSequence.loadPresetGUISFromName("TunnelWarp");
-	showingIntro = true;
-	
+	showingIntro = true;	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
-	//TODO this shouldn't happen when runs are set up
-	if(currentAct != NULL){
-		currentAct->unregisterEvents(this);
-		delete currentAct;
-	}
-	
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystem*> systems = act->getAllVisualSystems();
 	for(int i = 0; i < systems.size(); i++){
@@ -228,6 +228,12 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 		}
 	}
 	
+	//TODO clear last act
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		delete currentAct;
+	}
+
 	currentAct = act;
 	currentAct->registerEvents(this);
 	currentAct->play();
@@ -288,23 +294,31 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 				showingIntro = false;				
 				introSequence.stopSystem();
 				storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
-
 			}
-			//Transition out of the act into the loading screen.
-
+			//TODO: Transition out of the act into the loading screen.
+		}
+	}
+	else if(showingClusterMap){
+		//TODO add questions to cluster map
+		//right now we can just have a canned animation and stop it when we are done
+		if(!clusterMapVisualSystem.getTimeline()->getIsPlaying()){
+			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
+			CloudsClip& clip = q->clip;
+			
+			showingClusterMap = false;
+			clusterMapVisualSystem.stopSystem();
+			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
 		}
 	}
 	else {
-//		updateVisualSystemFade();
-	}
-	
-	//updating tweens
-	float elapsedTime = ofGetElapsedTimef();
-	for (int i=controllerTweens.size()-1; i>=0; i--) {
-		controllerTweens[i].update( elapsedTime );
-		
-		if(controllerTweens[i].bEnded){
-			controllerTweens.erase(controllerTweens.begin() + i );
+		//updating tweens
+		float elapsedTime = ofGetElapsedTimef();
+		for (int i = controllerTweens.size()-1; i>=0; i--) {
+			controllerTweens[i].update( elapsedTime );
+			
+			if(controllerTweens[i].bEnded){
+				controllerTweens.erase(controllerTweens.begin() + i );
+			}
 		}
 	}
 	
@@ -354,6 +368,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
+	
 	rgbdVisualSystem.playSystem();
 	rgbdVisualSystem.loadPresetGUISFromName("Test_");
 }
@@ -361,14 +376,19 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
+	cout << "ACT ENDED TRIGGERED" << endl;
+	
+	rgbdVisualSystem.stopSystem();
+	
 	//TODO: Trigger cluster map with new updates
+	clusterMapVisualSystem.playSystem();
+	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
 	
-	
+	showingClusterMap = true;
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args)
-{
+void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 	playClip(args.chosenClip);
 }
 
@@ -383,8 +403,6 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		TEMP_SYSTEM_HACK = args.preset.system;
 		rgbdVisualSystem.stopSystem();
 		args.preset.system->setDrawToScreen( false );
-		
-		//TODO: replace with act current question
 		args.preset.system->setCurrentTopic( currentTopic );
 		args.preset.system->playSystem();
 		args.preset.system->loadPresetGUISFromName( args.preset.presetName );
@@ -432,8 +450,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
 		//a "middle" flag, which would stop the timeline. so when the system is ready to fade out let's play it again to
-		//watch the outro
-		
+		//watch the outro		
 		if(args.preset.outroDuration > 0 && args.preset.indefinite){
 			args.preset.system->getTimeline()->play();
 		}
@@ -445,9 +462,8 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 
 //		//if we have a currentSystem transition the rgbd using it's transition type
 //		if(currentVisualSystem != NULL){
-//			
+//
 //			//to change the rgbdVisual system fade out time change: rgbdVisualSystemFadeOutDuration = 2; //fade time
-//			
 //			//transition-in the rgbd visual system after the system fades out
 //			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), rgbdVisualSystemFadeOutDuration, ofGetElapsedTimef() + args.preset.outroDuration );
 //			
@@ -506,6 +522,7 @@ void CloudsPlaybackController::playClip(CloudsClip& clip)
 void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration)
 {
 	if(showingVisualSystem){
+		ofLogError("CloudsPlaybackController::showVisualSystem") << "Still showing last system";
 		hideVisualSystem();
 	}
 	

@@ -1,20 +1,11 @@
-//
-// CLOUDS Interactive Documentary
-//
-// VISUAL SYSTEMS
-//
-// Welcome to the EMPTY CloudsVisualSystem
-//
-//
-//
 
 #pragma once
 
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
 #include "Node.h"
+#include "CloudsQuestion.h"
 
-//TODO: rename this to your own visual system
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
@@ -89,7 +80,6 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 
-
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
@@ -100,8 +90,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 //	ofCamera& getCameraRef(){
 //		return CloudsVisualSystem::getCameraRef();
 //	}
-
-protected:
+	
+	void setQuestions(vector<CloudsClip>& questions);
+	CloudsQuestion* getSelectedQuestion();
+	
+  protected:
     
     //  Your Stuff
     //
@@ -169,7 +162,7 @@ protected:
 	ofVboMesh traversal;
 	
 	//ofxTLCurves* nodeBounce;
-
+	
 	
 	//for drawing the node graphics
 	vector<Node*> traversedNodes;
@@ -188,12 +181,9 @@ protected:
 	ofImage nodeSpriteBasic;
 	void loadShader();
 
-//	bool customToggle;
-//	float customFloat1;
-//	float customFloat2;
+	//TODO pick a better font renderer
+	ofTrueTypeFont font;
+	vector<CloudsQuestion> questions;
+	CloudsQuestion* selectedQuestion;
 	
-//	bool videoLoaded;
-//	ofImage someImage;
-//	ofShader pointcloudShader;
-//	ofVboMesh simplePointcloud;
 };
