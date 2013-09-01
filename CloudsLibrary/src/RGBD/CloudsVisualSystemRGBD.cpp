@@ -1,3 +1,4 @@
+
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
@@ -46,7 +47,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionTarget = &transitionOutTarget;
 	
-	drawTransitionNodes = true;
+	drawTransitionNodes = false;
 	
 	transitionCam.setup();
 	
