@@ -503,8 +503,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	//TODO: replace with act current question
 	nextVisualSystem.system->setCurrentTopic( currentTopic );
-	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	nextVisualSystem.system->playSystem();
+	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	
 	showingVisualSystem = true;
 	
