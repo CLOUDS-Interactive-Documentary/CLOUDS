@@ -36,6 +36,7 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 		if(e.message == "started")
 		{
 			cout << endl << "RGBD FADING IN" << endl << endl;
+			
 			rgbdVisualSystem.playSystem();
 			rgbdVisualSystem.transitionIn( currentVisualSystem->getTransitionType(), e.span );
 		}
@@ -93,6 +94,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
+	
+	TEMP_SYSTEM_HACK = NULL;
 }
 
 //--------------------------------------------------------------------
@@ -181,7 +184,6 @@ void CloudsPlaybackController::setup(){
 	t.setup("testTween", ofGetElapsedTimef(), 5, 0, 100);
 	controllerTweens.push_back( t );
 	
-	
 	ofAddListener( CloudsPlaybackControllerEvent::events, this, &CloudsPlaybackController::CloudsPlaybackControllerEventHandler );
 	
 	fadeOutRGBD = "fadeOutRGBD";
@@ -200,12 +202,12 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 }
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
-//	srand( ofGetSeconds()*1000 );
-//	CloudsClip& clip = parser.getRandomClip(true,true);
+
 	introSequence.setStartQuestions(possibleStartQuestions);
 	introSequence.playSystem();
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 	showingIntro = true;
+	
 }
 
 //--------------------------------------------------------------------
@@ -376,9 +378,21 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 	if(!showingVisualSystem){
 		cout << "Received show visual system" << endl;
 		
-		//
-		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
+		//****************************************
+		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+		TEMP_SYSTEM_HACK = args.preset.system;
+		rgbdVisualSystem.stopSystem();
+		args.preset.system->setDrawToScreen( false );
 		
+		//TODO: replace with act current question
+		args.preset.system->setCurrentTopic( currentTopic );
+		args.preset.system->playSystem();
+		args.preset.system->loadPresetGUISFromName( args.preset.presetName );
+		showingVisualSystem = true;
+		return;
+		//****************************************END HACK
+		
+		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
 		
 		//set the nextSystem pointer that we'll switch to when the fade ends
 		showVisualSystem( args.preset, duration );
@@ -404,6 +418,16 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 {
 	if(showingVisualSystem){
 		
+		//****************************************
+		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+		TEMP_SYSTEM_HACK->stopSystem();
+		TEMP_SYSTEM_HACK = NULL;
+		rgbdVisualSystem.playSystem();
+		rgbdVisualSystem.loadPresetGUISFromName("Test_");
+		showingVisualSystem = false;
+		return;
+		//**************************************** END HACK
+		
 		cout << "visualSystemEnded "<< ofGetElapsedTimef() <<endl<<endl<<endl<<endl;
 		
 		//JG: Timing thing. If the system is indefinite, and has an outro then it most likely was created with
@@ -416,12 +440,9 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 		
 //		fadeOutVisualSystem( args.preset.outroDuration );
 		
-		
-		
 		float duration = 1;//(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), duration, 1, 0, &crossfadeValue );
 
-		
 //		//if we have a currentSystem transition the rgbd using it's transition type
 //		if(currentVisualSystem != NULL){
 //			
