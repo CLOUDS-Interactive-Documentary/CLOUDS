@@ -171,6 +171,8 @@ class CloudsPlaybackController {
 	string fadeOutVisualSystem;
 	string fadeInVisualSystem;
 	
+	string nextPresetName;
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;

@@ -404,16 +404,19 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		cout << "Received show visual system" << endl;
 		
 		//****************************************
-//		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
 //		TEMP_SYSTEM_HACK = args.preset.system;
 //		rgbdVisualSystem.stopSystem();
 //		args.preset.system->setDrawToScreen( false );
 //		args.preset.system->setCurrentTopic( currentTopic );
 //		args.preset.system->playSystem();
 //		args.preset.system->loadPresetGUISFromName( args.preset.presetName );
+//
 //		showingVisualSystem = true;
 //		return;
-//		//****************************************END HACK
+		//****************************************END HACK
+		
+		nextPresetName = args.preset.presetName;
 		
 		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
 		
@@ -441,15 +444,15 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 {
 	if(showingVisualSystem){
 		
-//		//****************************************
-//		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+		//****************************************
+		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
 //		TEMP_SYSTEM_HACK->stopSystem();
 //		TEMP_SYSTEM_HACK = NULL;
 //		rgbdVisualSystem.playSystem();
 //		rgbdVisualSystem.loadPresetGUISFromName("Test_");
 //		showingVisualSystem = false;
 //		return;
-//		//**************************************** END HACK
+		//**************************************** END HACK
 		
 		cout << "visualSystemEnded "<< ofGetElapsedTimef() <<endl<<endl<<endl<<endl;
 		
@@ -552,6 +555,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 
 void CloudsPlaybackController::playNextVisualSystem()
 {
+	
+	nextSystem->loadPresetGUISFromName( nextPresetName );
 	nextSystem->setCurrentTopic( currentTopic );
 	nextSystem->playSystem();
 }
