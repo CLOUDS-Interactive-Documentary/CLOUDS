@@ -525,7 +525,6 @@
 		E75DB9CF17CDC7EF00CD99D9 /* sphereShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.vert; sourceTree = "<group>"; };
 		E75DB9D017CDC7EF00CD99D9 /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
 		E75DB9D117CDC7EF00CD99D9 /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
-		E75DB9D517CDC7EF00CD99D9 /* Working_RESET.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_RESET.xml; sourceTree = "<group>"; };
 		E75DB9ED17CDC7EF00CD99D9 /* CloudsVisualSystemCosmic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCosmic.cpp; sourceTree = "<group>"; };
 		E75DB9EE17CDC7EF00CD99D9 /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
 		E75DBABA17CDC7F000CD99D9 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; };
@@ -1903,7 +1902,6 @@
 			isa = PBXGroup;
 			children = (
 				E75DB9B517CDC7EF00CD99D9 /* shaders */,
-				E75DB9D517CDC7EF00CD99D9 /* Working_RESET.xml */,
 			);
 			path = data;
 			sourceTree = "<group>";
