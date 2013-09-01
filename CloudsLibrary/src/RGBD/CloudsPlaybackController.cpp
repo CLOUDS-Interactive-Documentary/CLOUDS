@@ -137,7 +137,8 @@ void CloudsPlaybackController::setup(){
 //	sharedRenderTarget.begin();
 //	ofClear(0,0,0,0);
 //	sharedRenderTarget.end();
-//	
+//
+	//JG pretty sure we don't need the FBO anymore
 	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
 	nextRenderTarget.begin();
 	ofClear(0,0,0,0);
@@ -159,16 +160,15 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		
-		//pointing to our our sharedRenderTarget
-		//rgbdVisualSystem.sharedRenderTarget = &sharedRenderTarget;
-		
-		//rgbdVisualSystem.setRenderer(combinedRenderer);
 		rgbdVisualSystem.setup();
 		rgbdVisualSystem.setDrawToScreen( false );
 		currentVisualSystem = &rgbdVisualSystem;
 		
 		introSequence.setup();
+		//introSequence.setDrawToScreen(false);
+		
 		clusterMapVisualSystem.setup();
+		//clusterMapVisualSystem.setDrawToScreen( false );
 		
 		//start an initila fade... and set our fade variables
 		fadeDuration = 1;
@@ -228,7 +228,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 		}
 	}
 	
-	//TODO clear last act
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
 		delete currentAct;
@@ -343,7 +342,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	
-	if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	if(!showingIntro && !showingClusterMap){
+		if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+	}
 	
     ofPopStyle();
     glEnable( GL_DEPTH_TEST );

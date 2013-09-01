@@ -69,19 +69,6 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	guis.push_back(displayGui);
 	guimap[generatorGui->getName()] = displayGui;
 
-//	timeline.addCurves("node bounce");
-//	timeline.addCurves("cluster node size", ofRange(1, 10), 2);
-//	timeline.addCurves("traversed node size", ofRange(1, 10), 2);
-	//timeline.addCurves("line focal dist", ofRange(0, sqrt(3000)),  100);
-	//timeline.addCurves("line focal range", ofRange(0, sqrt(3000)),  100);
-//	timeline.addCurves("line width", ofRange(.5, 2.0),  100);
-	//timeline.addCurves("line dissolve");
-	
-	//TODO :: ADD COLOR
-	
-
-	//TODO ::
-		
 	traversedNodePoints.setUsage( GL_DYNAMIC_DRAW );
 	traversedNodePoints.setMode(OF_PRIMITIVE_POINTS);
 	nodeCloudPoints.enableNormals();
@@ -165,16 +152,15 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
-
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
+	timeline->setLoopType(OF_LOOP_NONE);
 	generate();
 	traverse();
-	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -193,16 +179,7 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
-//	if(!ofGetMousePressed(0)){
-//		timeline.setOffset(ofVec2f(0,ofGetHeight()-timeline.getHeight()));
-//	}
-	
-//	ofRectangle fboContainer = ofRectangle(0,0,ofGetWidth()-250,timeline.getTopLeft().y);
-//	fboRect = ofRectangle(0,0,16,9);
-//	fboRect.scaleTo(fboContainer);
-//	fboRect.x = 200;
-	
-//	cam.applyRotation = cam.applyTranslation =  fboRect.inside(mouseX, mouseY) && !camTrack.lockCameraToTrack;
+	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
 	
 	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
 	int vertsToHighlight = ofClamp(vertEndIndex,0,traversal.getVertices().size()-1);
@@ -252,13 +229,9 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
 	
-//	ofSetColor(255);
-//	ofSphere(ofGetWidth()/2, ofGetHeight()/2, 10);
-//	
-//	return;
-	
-	glDisable(GL_DEPTH_TEST);
 
+	glDisable(GL_DEPTH_TEST);
+	
 	/*
 	 //TODO: evaluate line blur target
 	lineBlurTarget.begin();
@@ -276,12 +249,9 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	lineBlurTarget.end();
 	*/
 	
-	//renderTarget.begin();
-//	ofClear(0,0,0,0);
-	
-//	cam.begin(ofRectangle(0,0,1920,1080));
 	ofPushStyle();
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	
 	
 	ofSetColor(255);
 	
@@ -339,6 +309,7 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 //	gaussianBlur.begin();
 	
 	ofPushStyle();
+	
 	//ofSetColor(255 * lineBlurFade);
 //	ofSetColor(255*lineBlurFade);
 	
@@ -352,19 +323,6 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 //	gaussianBlur.end();
 	
 	ofPopStyle();
-	
-	//renderTarget.end();
-	
-//	ofEnableAlphaBlending();
-//	if(ofGetKeyPressed('=')){
-//		lineBlurTarget.draw(fboRect.getX(), fboRect.getMaxY(), fboRect.width,-fboRect.height);
-//	}
-//	else{
-//		renderTarget.draw(fboRect.getX(), fboRect.getMaxY(), fboRect.width,-fboRect.height);
-//	}
-
-	//	gui.draw();
-	
 }
 
 // draw any debug stuff here
@@ -398,47 +356,18 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 //		timeline.togglePlay();
 //	}
 	
-	if(key == 'g'){
-		generate();
-	}
-	
-	if(key == 't'){
-		traverse();
-	}
+//	if(key == 'g'){
+//		generate();
+//	}
+//	
+//	if(key == 't'){
+//		traverse();
+//	}
 	
 	if(key == 'S'){
 		cout << "Loading shader!" << endl;
 		loadShader();
 	}
-
-//	if(key == 'T'){
-//		camTrack.addKeyframe();
-//	}
-	
-//	if(key == 'L'){
-//		camTrack.lockCameraToTrack = !camTrack.lockCameraToTrack;
-//		if(!camTrack.lockCameraToTrack){
-//			cam.setAnglesFromOrientation();
-//		}
-//	}
-	
-//	if(key == 'f'){
-//		ofToggleFullscreen();
-//	}
-	
-//	if(key == 'R'){
-//		rendering = !rendering;
-//		if(rendering){
-//			char folder[1024];
-//			sprintf(folder, "frames_%02d_%02d_%02d/",ofGetDay(), ofGetHours(), ofGetMinutes());
-//			renderFolder = folder;
-//			frameNum = 0;
-//			ofDirectory(renderFolder).create(true);
-//			timeline.setCurrentFrame(timeline.getInFrame());
-//			timeline.play();
-//		}
-//	}
-	
 }
 
 void CloudsVisualSystemClusterMap::generate(){
