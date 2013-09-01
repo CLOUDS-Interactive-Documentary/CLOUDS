@@ -21,6 +21,8 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 			
 			//stop the rgbd system
 			rgbdVisualSystem.stopSystem();
+			playNextVisualSystem();
+			
 			
 			//fade in nextVisual system
 			float duration = 1;
@@ -71,9 +73,11 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 		{
 			cout << endl << "faded out next visual system" << endl << endl;
 			
+			hideVisualSystem();
+			
 			float duration = 1;
 			addControllerTween( fadeInRGBD, ofGetElapsedTimef(), duration, 0, 1, &crossfadeValue );
-			showingVisualSystem = false;
+			
 		}
 	}
 }
@@ -400,16 +404,16 @@ void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& ar
 		cout << "Received show visual system" << endl;
 		
 		//****************************************
-		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
-		TEMP_SYSTEM_HACK = args.preset.system;
-		rgbdVisualSystem.stopSystem();
-		args.preset.system->setDrawToScreen( false );
-		args.preset.system->setCurrentTopic( currentTopic );
-		args.preset.system->playSystem();
-		args.preset.system->loadPresetGUISFromName( args.preset.presetName );
-		showingVisualSystem = true;
-		return;
-		//****************************************END HACK
+//		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+//		TEMP_SYSTEM_HACK = args.preset.system;
+//		rgbdVisualSystem.stopSystem();
+//		args.preset.system->setDrawToScreen( false );
+//		args.preset.system->setCurrentTopic( currentTopic );
+//		args.preset.system->playSystem();
+//		args.preset.system->loadPresetGUISFromName( args.preset.presetName );
+//		showingVisualSystem = true;
+//		return;
+//		//****************************************END HACK
 		
 		float duration = args.preset.introDuration == 0.?  1 : args.preset.introDuration;
 		
@@ -437,15 +441,15 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 {
 	if(showingVisualSystem){
 		
-		//****************************************
-		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
-		TEMP_SYSTEM_HACK->stopSystem();
-		TEMP_SYSTEM_HACK = NULL;
-		rgbdVisualSystem.playSystem();
-		rgbdVisualSystem.loadPresetGUISFromName("Test_");
-		showingVisualSystem = false;
-		return;
-		//**************************************** END HACK
+//		//****************************************
+//		//JG TEMP SYSTEM HACK -- LARS PLEASE DELETE THIS WHEN YOU HAVE IT WORKING
+//		TEMP_SYSTEM_HACK->stopSystem();
+//		TEMP_SYSTEM_HACK = NULL;
+//		rgbdVisualSystem.playSystem();
+//		rgbdVisualSystem.loadPresetGUISFromName("Test_");
+//		showingVisualSystem = false;
+//		return;
+//		//**************************************** END HACK
 		
 		cout << "visualSystemEnded "<< ofGetElapsedTimef() <<endl<<endl<<endl<<endl;
 		
@@ -537,13 +541,19 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	nextVisualSystem.system->setDrawToScreen( false );
 	
 	//TODO: replace with act current question
-	nextVisualSystem.system->setCurrentTopic( currentTopic );
-	nextVisualSystem.system->playSystem();
+//	nextVisualSystem.system->setCurrentTopic( currentTopic );
+//	nextVisualSystem.system->playSystem();
 	nextVisualSystem.system->loadPresetGUISFromName( nextVisualSystem.presetName );
 	
 	showingVisualSystem = true;
 	
 	nextSystem = nextVisualSystem.system;
+}
+
+void CloudsPlaybackController::playNextVisualSystem()
+{
+	nextSystem->setCurrentTopic( currentTopic );
+	nextSystem->playSystem();
 }
 
 //--------------------------------------------------------------------
