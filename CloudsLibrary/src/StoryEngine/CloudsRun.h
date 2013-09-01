@@ -15,6 +15,7 @@ class CloudsRun
 	int actCount;
     vector<CloudsClip> clipHistory;
     vector<CloudsVisualSystemPreset> presetHistory;
+	vector<string> topicHistory;
 	
 	//TODO: acts can be persisted
 //	void save();

@@ -56,8 +56,6 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
 	
-	CloudsRun* currentRun;
-	
     void guiEvent(ofxUIEventArgs &e);
     ofBuffer scoreBuffer;
     stringstream scoreStream;
