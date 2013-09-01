@@ -203,8 +203,8 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(true,true);
 	introSequence.setStartQuestions(possibleStartQuestions);
-	introSequence.loadPresetGUISFromName("TunnelWarp");
 	introSequence.playSystem();
+	introSequence.loadPresetGUISFromName("TunnelWarp");
 	showingIntro = true;
 }
 
@@ -285,7 +285,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
 				introSequence.stopSystem();
-				storyEngine->buildAct(clip, q->topic );
+				storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
 
 			}
 			//Transition out of the act into the loading screen.
@@ -354,10 +354,6 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	rgbdVisualSystem.playSystem();
 	rgbdVisualSystem.loadPresetGUISFromName("Test_");
-	//this has to draw last
-//	ofRemoveListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-//	ofAddListener(ofEvents().draw, this, &CloudsPlaybackController::draw);
-	
 }
 
 //--------------------------------------------------------------------

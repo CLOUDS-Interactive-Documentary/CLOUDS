@@ -20,7 +20,6 @@ CloudsAct::~CloudsAct(){
 	}
 }
 
-
 void CloudsAct::play(){
     
     CloudsActEventArgs args(this);

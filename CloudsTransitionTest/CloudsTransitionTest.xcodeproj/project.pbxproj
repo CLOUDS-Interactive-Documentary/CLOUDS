@@ -28,6 +28,7 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7176E2517D3BB0C00C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2317D3BB0B00C8DC38 /* CloudsRun.cpp */; };
 		E73677A817C6CE1F00CC6EC8 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E736774617C6CE1F00CC6EC8 /* attenuatelines.frag */; };
 		E73677A917C6CE1F00CC6EC8 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E736774717C6CE1F00CC6EC8 /* attenuatelines.vert */; };
 		E73677AA17C6CE1F00CC6EC8 /* Billboard.frag in Sources */ = {isa = PBXBuildFile; fileRef = E736774817C6CE1F00CC6EC8 /* Billboard.frag */; };
@@ -275,6 +276,8 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
+		E7176E2317D3BB0B00C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
+		E7176E2417D3BB0C00C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
 		E736774617C6CE1F00CC6EC8 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
 		E736774717C6CE1F00CC6EC8 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
 		E736774817C6CE1F00CC6EC8 /* Billboard.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Billboard.frag; sourceTree = "<group>"; };
@@ -1071,8 +1074,8 @@
 		E73677A517C6CE1F00CC6EC8 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E73677A617C6CE1F00CC6EC8 /* CloudsIntroSequence.cpp */,
 				E73677A717C6CE1F00CC6EC8 /* CloudsIntroSequence.h */,
+				E73677A617C6CE1F00CC6EC8 /* CloudsIntroSequence.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1432,6 +1435,8 @@
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
 				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
+				E7176E2417D3BB0C00C8DC38 /* CloudsRun.h */,
+				E7176E2317D3BB0B00C8DC38 /* CloudsRun.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -2916,6 +2921,7 @@
 				E75DB65A17CDBD2000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E75DB68B17CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp in Sources */,
 				E75DB6B117CDBD8A00CD99D9 /* ofxMarchingCubes.cpp in Sources */,
+				E7176E2517D3BB0C00C8DC38 /* CloudsRun.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

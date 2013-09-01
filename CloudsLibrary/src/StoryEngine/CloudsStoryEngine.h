@@ -2,18 +2,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxUI.h"
+
 #include "CloudsEvents.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
-#include "ofxUI.h"
+#include "CloudsRun.h"
 #include "CloudsDichotomy.h"
-
-//typedef struct {
-//    string left;
-//    string right;
-//    int balance; //pos/neg
-//} KeywordDichotomy;
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -31,8 +27,8 @@ class CloudsStoryEngine {
 	
 	void setup();
 	
-	CloudsAct* buildAct(CloudsClip& seed);
-	CloudsAct* buildAct(CloudsClip& seed, string topic);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic);
 	
     void initGui();
     void saveGuiSettings();
@@ -49,22 +45,19 @@ class CloudsStoryEngine {
 	
 	CloudsEvents& getEvents();
 	
-
-//	float fixedClipDelay;
-	
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
 
     vector<CloudsDichotomy> getCurrentDichotomyBalance();
 
-//    CloudsAct& getAct();
-    
-protected:
+  protected:
 
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
-    
+	
+	CloudsRun* currentRun;
+	
     void guiEvent(ofxUIEventArgs &e);
     ofBuffer scoreBuffer;
     stringstream scoreStream;
@@ -91,7 +84,6 @@ protected:
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
     CloudsVisualSystemPreset getVisualSystemPreset(string keyword);
 	
-  private:
     //Act Builder Parameters
     float actLength;
     float maxTimeWithoutQuestion;

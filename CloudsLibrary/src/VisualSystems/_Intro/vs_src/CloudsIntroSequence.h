@@ -13,50 +13,51 @@
 #include "ofxGameCamera.h"
 #include "CloudsClip.h"
 #include "CloudsQuestion.h"
+#include "CloudsRun.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
 	CloudsIntroSequence();
 	~CloudsIntroSequence();
 	
-	virtual string getSystemName();
+	string getSystemName();
 	
-    virtual void selfSetup();
-    virtual void selfSetupGuis();
+    void selfSetup();
+    void selfSetupGuis();
     
-    virtual void selfUpdate();
-    virtual void selfDrawBackground();
-    virtual void selfDrawDebug();
+    void selfUpdate();
+    void selfDrawBackground();
+    void selfDrawDebug();
 
-	virtual void timelineBangEvent(ofxTLBangEventArgs& args);
+	void timelineBangEvent(ofxTLBangEventArgs& args);
 	
-    virtual void selfDraw();
-    virtual void selfExit();
-    virtual void selfBegin();
-	virtual void selfEnd();
+    void selfDraw();
+    void selfExit();
+    void selfBegin();
+	void selfEnd();
 	
-    virtual void selfKeyPressed(ofKeyEventArgs & args);
-    virtual void selfKeyReleased(ofKeyEventArgs & args);
+    void selfKeyPressed(ofKeyEventArgs & args);
+    void selfKeyReleased(ofKeyEventArgs & args);
     
-    virtual void selfMouseDragged(ofMouseEventArgs& data);
-    virtual void selfMouseMoved(ofMouseEventArgs& data);
-    virtual void selfMousePressed(ofMouseEventArgs& data);
-    virtual void selfMouseReleased(ofMouseEventArgs& data);
+    void selfMouseDragged(ofMouseEventArgs& data);
+    void selfMouseMoved(ofMouseEventArgs& data);
+    void selfMousePressed(ofMouseEventArgs& data);
+    void selfMouseReleased(ofMouseEventArgs& data);
 	
-	virtual void selfDrawOverlay();
-	virtual void selfPostDraw();
+	void selfDrawOverlay();
+	void selfPostDraw();
 
-	virtual void selfGuiEvent(ofxUIEventArgs &e);
+	void selfGuiEvent(ofxUIEventArgs &e);
 	
-    virtual void selfSetupSystemGui();
-    virtual void guiSystemEvent(ofxUIEventArgs &e);
+    void selfSetupSystemGui();
+    void guiSystemEvent(ofxUIEventArgs &e);
     
-    virtual void selfSetupRenderGui();
-    virtual void guiRenderEvent(ofxUIEventArgs &e);
+    void selfSetupRenderGui();
+    void guiRenderEvent(ofxUIEventArgs &e);
 
-	virtual void selfSetupCameraGui();
+	void selfSetupCameraGui();
 	
-	virtual ofCamera& getCameraRef(){
+	ofCamera& getCameraRef(){
 		if(useDebugCamera){
 			return camera;
 		}
@@ -69,9 +70,16 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
 	bool isStartQuestionSelected();
+	
 	CloudsQuestion* getSelectedQuestion();
-
+	CloudsRun& getSelectedRun(){
+		return currentRun;
+	};
+	
   protected:
+	
+	//TODO: when the title scene is added this will be selectable
+	CloudsRun currentRun;
 	
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;

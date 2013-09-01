@@ -43,7 +43,6 @@ CloudsStoryEngine::CloudsStoryEngine(){
     initGui();
     displayGui(false);
     
-    
 }
 
 CloudsStoryEngine::~CloudsStoryEngine(){
@@ -130,11 +129,8 @@ void CloudsStoryEngine::setup(){
 //        headerString += "\n";
 //        
 //    }
-//    
-//    
-
-    
 //}
+
 void CloudsStoryEngine::initGui(){
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS :", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
@@ -191,7 +187,8 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
     ofxUIButton* b = (ofxUIButton*) e.widget;
     if(name == "BUILD ACT" &&  b->getValue() ){
         CloudsClip& clip = parser->getRandomClip(false,false);
-		buildAct( clip );
+		CloudsRun run;
+		buildAct(run, clip );
     }
 }
 
@@ -219,21 +216,24 @@ void CloudsStoryEngine:: displayGui(bool display){
     }
 }
 
-CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed){
-    return buildAct(seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){
+    return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
-CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string topic){
     
+	currentRun = &run;
+	
     CloudsAct* act = new CloudsAct();
     float seconds = actLength;
     float totalSecondsEnqueued = 0;
     bool freeTopic = false;
     bool deadEnd = false;
     
-    vector<CloudsClip> clipHistory;
     vector<CloudsClip> clipQueue;
-    vector<CloudsVisualSystemPreset> presetHistory;
+	
+    vector<CloudsClip>& clipHistory = currentRun->clipHistory;
+    vector<CloudsVisualSystemPreset>& presetHistory = currentRun->presetHistory;
     
     //VS Stuff
     float lastVisualSystemEnded = 0;
@@ -243,7 +243,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     float visualSystemDuration  = 0;
     float maxTimeRemainingForVisualSystem =0;
     bool isPresetIndefinite = false;
-    float definitePresetEndTime =0;
+    float definitePresetEndTime = 0;
     //TODO: Make this non referenced
     CloudsVisualSystemPreset currentPreset;
     //VS Stuff
@@ -484,6 +484,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsClip& seed, string topic){
     return act;
 }
 
+//TODO: timing of transitions per clip based on clip length
 float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
 	// if clip is longer than minimum length for long clip allow the 2 second intro
     //	if (clip.getDuration()>minClipDurationForStartingOffset) {
