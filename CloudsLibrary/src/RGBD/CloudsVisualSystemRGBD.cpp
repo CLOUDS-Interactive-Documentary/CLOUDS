@@ -471,8 +471,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushMatrix();
 	
+	
 	//trnsition transformation
-	ofMultMatrix( transitionMatrix );
+	ofMultMatrix( transitionMatrix );// <--- LB: I think this can go...
 	
 	if(drawCloud && hasSpeaker){
 

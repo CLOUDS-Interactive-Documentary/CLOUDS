@@ -22,7 +22,7 @@ public:
 	//	Tween * tween;
 	string message;
 	string name;
-	float value, span;
+	float value, span, startTime, endTime;
     
     CloudsPlaybackControllerEvent() {
     }
@@ -57,6 +57,18 @@ public:
 			*value = val;
 		}
 		
+		
+		
+		//update event
+		static CloudsPlaybackControllerEvent updateEvent;
+		updateEvent.message = "updated";
+		updateEvent.name = name;
+		updateEvent.value = val;
+		updateEvent.span = span;
+		updateEvent.startTime = startTime;
+		updateEvent.endTime = endTime;
+		ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
+		
 		//start event
 		if(!bStarted && elapsedTime >= startTime){
 			bStarted = true;
@@ -66,18 +78,11 @@ public:
 			startEvent.name = name;
 			startEvent.value = startVal;
 			startEvent.span = span;
+			startEvent.startTime = startTime;
+			startEvent.endTime = endTime;
 			if(value != NULL)	*value = startVal;
 			ofNotifyEvent( CloudsPlaybackControllerEvent::events, startEvent );
 		}
-		
-		
-		//update event
-		static CloudsPlaybackControllerEvent updateEvent;
-		updateEvent.message = "updated";
-		updateEvent.name = name;
-		updateEvent.value = val;
-		updateEvent.span = span;
-		ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
 		
 		//end event
 		if(!bEnded && elapsedTime >= endTime){
@@ -88,6 +93,8 @@ public:
 			endEvent.name = name;
 			endEvent.value = endVal;
 			endEvent.span = span;
+			endEvent.startTime = startTime;
+			endEvent.endTime = endTime;
 			if(value != NULL)	*value = endVal;
 			ofNotifyEvent( CloudsPlaybackControllerEvent::events, endEvent );
 			
