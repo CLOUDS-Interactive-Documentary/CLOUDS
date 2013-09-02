@@ -32,10 +32,11 @@ class CloudsStoryEngine {
 	
     void initGui();
     void saveGuiSettings();
-    void displayGui(bool display);
+    void toggleGuis();
+	void positionGuis();
 	
 	//after this many clips the topic opens up again
-	int maxTimesOnTopic;
+	float maxTimesOnTopic;
 	bool printDecisions;
 	bool printCriticalDecisions;
 	bool atDeadEnd();
@@ -100,7 +101,7 @@ class CloudsStoryEngine {
     //Story engine decision making parameters
     int topicsInCommonMultiplier;
     int topicsinCommonWithPreviousMultiplier;
-    int samePersonOccuranceSuppressionFactor;
-    int dichomoiesFactor;
+    int samePersonOccurrenceSuppressionFactor;
+    int dichotomyWeight;
     int linkFactor;
 };

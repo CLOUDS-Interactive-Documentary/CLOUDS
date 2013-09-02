@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>510.000000000</XPosition>
-    <YPosition>11.000000000</YPosition>
+    <XPosition>0.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -27,6 +27,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>DICHOTOMIES FACTOR</Name>
+    <Name>DICHOTOMY WEIGHT</Name>
     <Value>2.000000000</Value>
 </Widget>
