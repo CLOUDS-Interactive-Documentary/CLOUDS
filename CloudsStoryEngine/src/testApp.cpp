@@ -24,8 +24,7 @@ void testApp::setup(){
 	
 	CloudsClip& clip = parser.getRandomClip(false,true);
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	storyEngine.buildAct(run, clip );
-    
+	storyEngine.buildAct(run, clip);
 }
 
 //--------------------------------------------------------------

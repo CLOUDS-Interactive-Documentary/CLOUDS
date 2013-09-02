@@ -9,11 +9,13 @@ class CloudsClip {
   public:
 	CloudsClip();
 	
-	
-    
 	string name;
     string person;
     string clip;
+
+	string getSpeakerLastName();
+	string getSpeakerFirstName();
+	string getSpeakerGender();
 	
 	string fcpFileId;
     string sourceVideoFilePath;

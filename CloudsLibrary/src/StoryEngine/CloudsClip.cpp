@@ -8,8 +8,11 @@
 
 #include "CloudsClip.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
 
 #define FRAME_PADDING 24
+
+
 
 CloudsClip::CloudsClip(){
 	currentScore = 0;
@@ -20,11 +23,22 @@ CloudsClip::CloudsClip(){
 	minDepth = 400;
 	maxDepth = 1200;
     keywordsDirty = true;
-    
 }
 
 string CloudsClip::getLinkName(){
 	return person + " - " + name;
+}
+
+string CloudsClip::getSpeakerFirstName(){
+	return speakers[person].firstName;
+}
+
+string CloudsClip::getSpeakerLastName(){
+	return speakers[person].lastName;
+}
+
+string CloudsClip::getSpeakerGender(){
+	return speakers[person].gender;
 }
 
 float CloudsClip::getDuration(){
@@ -121,9 +135,11 @@ string CloudsClip::getAdjustmentXML(){
 vector<string>& CloudsClip::getOriginalKeywords(){
     return originalKeywords;
 }
+
 vector<string>& CloudsClip::getAdditionalKeywords(){
     return additionalKeywords;
 }
+
 vector<string>& CloudsClip::getRevokedKeywords(){
     return revokedKeywords;
 }

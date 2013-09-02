@@ -8,6 +8,7 @@
 
 #include "CloudsFCPParser.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
 
 bool distanceSort(pair<string,float> a, pair<string,float> b ){
     return a.second > b.second;
@@ -24,7 +25,7 @@ void CloudsFCPParser::loadFromFiles(){
     setup(getDataPath() + "fcpxml");
     parseLinks(getDataPath() + "links/clouds_link_db.xml");
 //    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-  parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
+	parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
 
 }
 
@@ -58,6 +59,8 @@ void CloudsFCPParser::refreshXML(){
         }
     }
 	
+	//printSpeakerList();
+	populateSpeakers();
     refreshAllKeywords();
 }
 
@@ -769,6 +772,18 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
         }
         fcpXML.popTag(); //marker
     }
+}
+
+void CloudsFCPParser::printSpeakerList(){
+	speakerFcpIds.clear();
+	for(int i = 0; i < allClips.size(); i++){
+		speakerFcpIds.insert(allClips[i].person);
+	}
+	set<string>::iterator it;
+	cout << "ALL SPEAKER IDs" << endl;
+	for( it = speakerFcpIds.begin(); it != speakerFcpIds.end(); it++){
+		cout << "	" << *it << endl;
+	}
 }
 
 void CloudsFCPParser::refreshAllKeywords(){

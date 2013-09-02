@@ -183,6 +183,7 @@
 		E7176E3B17D3FF7300C8DC38 /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
 		E7176E3C17D3FF7300C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
 		E7176E3D17D3FF7300C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
+		E7176E4217D4229600C8DC38 /* CloudsSpeaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E72D3A36179458B70079254B /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		E72D3A37179458B70079254B /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E745F6E51720FE9400B86D7E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -763,6 +764,7 @@
 				E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D491734DE68008ADC62 /* CloudsLink.h */,
 				E7637D481734DE68008ADC62 /* CloudsLink.cpp */,
+				18731D2E178628D200E22F84 /* CloudsAct.cpp */,
 				E7637D4B1734DE68008ADC62 /* CloudsStoryEngine.h */,
 				E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */,
 				E7176E3A17D3FF7300C8DC38 /* CloudsDichotomy.cpp */,
@@ -770,7 +772,7 @@
 				E7176E3C17D3FF7300C8DC38 /* CloudsRun.cpp */,
 				E7176E3D17D3FF7300C8DC38 /* CloudsRun.h */,
 				18731D2F178628D200E22F84 /* CloudsAct.h */,
-				18731D2E178628D200E22F84 /* CloudsAct.cpp */,
+				E7176E4217D4229600C8DC38 /* CloudsSpeaker.h */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
