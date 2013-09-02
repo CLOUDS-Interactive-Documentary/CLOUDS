@@ -58,17 +58,7 @@ public:
 		}
 		
 		
-		
-		//update event
-		static CloudsPlaybackControllerEvent updateEvent;
-		updateEvent.message = "updated";
-		updateEvent.name = name;
-		updateEvent.value = val;
-		updateEvent.span = span;
-		updateEvent.startTime = startTime;
-		updateEvent.endTime = endTime;
-		ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
-		
+
 		//start event
 		if(!bStarted && elapsedTime >= startTime){
 			bStarted = true;
@@ -82,6 +72,19 @@ public:
 			startEvent.endTime = endTime;
 			if(value != NULL)	*value = startVal;
 			ofNotifyEvent( CloudsPlaybackControllerEvent::events, startEvent );
+		}
+		
+		//update event
+		if(bStarted && !bEnded){
+			
+			static CloudsPlaybackControllerEvent updateEvent;
+			updateEvent.message = "updated";
+			updateEvent.name = name;
+			updateEvent.value = val;
+			updateEvent.span = span;
+			updateEvent.startTime = startTime;
+			updateEvent.endTime = endTime;
+			ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
 		}
 		
 		//end event
