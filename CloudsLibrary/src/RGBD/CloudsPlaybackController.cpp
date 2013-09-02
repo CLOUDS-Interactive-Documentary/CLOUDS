@@ -154,10 +154,10 @@ void CloudsPlaybackController::setup(){
 //	sharedRenderTarget.end();
 //
 	//JG pretty sure we don't need the FBO anymore
-	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-	nextRenderTarget.begin();
-	ofClear(0,0,0,0);
-	nextRenderTarget.end();
+//	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
+//	nextRenderTarget.begin();
+//	ofClear(0,0,0,0);
+//	nextRenderTarget.end();
 	
 	rgbdVisualSystemFadeInDuration = 3;
 	rgbdVisualSystemFadeOutDuration = 3;
