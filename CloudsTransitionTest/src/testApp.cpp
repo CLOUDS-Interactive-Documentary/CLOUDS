@@ -30,9 +30,9 @@ void testApp::setup(){
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
 	act->addClip(clip, "topic", 0);
-	act->addVisualSystem( preset0, 4, 3 );
-	act->addVisualSystem( preset2, 14, 3 );
-	act->addVisualSystem( preset0, 24, 3 );
+	act->addVisualSystem( preset0, 4, 5 );
+	act->addVisualSystem( preset2, 14, 5 );
+	act->addVisualSystem( preset0, 24, 5 );
 
 	
 	act->populateTime();
