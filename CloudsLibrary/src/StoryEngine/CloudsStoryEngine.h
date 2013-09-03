@@ -56,6 +56,7 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
+	ofxUISuperCanvas *topicGui;
 	
     void guiEvent(ofxUIEventArgs &e);
 
@@ -69,7 +70,6 @@ class CloudsStoryEngine {
     int dichotomyThreshold;
 	vector<CloudsDichotomy> dichotomies;
     
-	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
@@ -88,18 +88,27 @@ class CloudsStoryEngine {
     float minClipDurationForStartingOffset;
     float preRollDuration;
     
+	
+	
+	
     //VS Story Engine Parameters
     float systemMaxRunTime;
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
-    
+
+	
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
-    int topicsInCommonMultiplier;
-    int topicsinCommonWithPreviousMultiplier;
-    int samePersonOccurrenceSuppressionFactor;
-    int dichotomyWeight;
-    int linkFactor;
+    float topicsInCommonMultiplier;
+    float topicsinCommonWithPreviousMultiplier;
+    float samePersonOccurrenceSuppressionFactor;
+    float dichotomyWeight;
+    float linkFactor;
+	
+	//Topic selection parameters
+	float topicRelevancyMultiplier;
+	float lastClipSharesTopicBoost;
+	float twoClipsAgoSharesTopicBoost;
 };

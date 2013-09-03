@@ -87,16 +87,16 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
     if(currentAct != NULL){
 		currentAct->drawDebug();
 	}
 }
 
+//--------------------------------------------------------------
 void testApp::exit(){
     storyEngine.saveGuiSettings();
-    
 }
+
 //--------------------------------------------------------------
 void testApp::guiEvent(ofxUIEventArgs &e)
 {
