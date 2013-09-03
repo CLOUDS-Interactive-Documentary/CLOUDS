@@ -49,4 +49,7 @@
 [submodule "CloudsLibrary/src/VisualSystems/Cosmic"]
 	path = CloudsLibrary/src/VisualSystems/Cosmic
 	url = git@github.com:rezaali/Cosmic.git
+[submodule "CloudsLibrary/src/VisualSystems/Connectors"]
+	path = CloudsLibrary/src/VisualSystems/Connectors
+	url = git@github.com:CLOUDS-Interactive-Documentary/Connectors.git
 	

@@ -146,18 +146,6 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setup(){
-	//LB
-	//	create a shared fbo. We'll pass a pointer to each visual system as the are played
-//	sharedRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-//	sharedRenderTarget.begin();
-//	ofClear(0,0,0,0);
-//	sharedRenderTarget.end();
-//
-	//JG pretty sure we don't need the FBO anymore
-//	nextRenderTarget.allocate(ofGetWidth(), ofGetHeight(), GL_RGB);
-//	nextRenderTarget.begin();
-//	ofClear(0,0,0,0);
-//	nextRenderTarget.end();
 	
 	rgbdVisualSystemFadeInDuration = 3;
 	rgbdVisualSystemFadeOutDuration = 3;

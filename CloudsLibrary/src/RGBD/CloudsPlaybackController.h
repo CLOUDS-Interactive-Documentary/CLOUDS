@@ -154,8 +154,6 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-	ofFbo nextRenderTarget;
-	
 	//crossfading CloudsVisualSystems
 	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
 	bool fadingOut, fadingIn;
@@ -215,22 +213,17 @@ class CloudsPlaybackController {
 	
 	//JG added a temp system to just straight cross/cut between the systems
 	//Temp system will always be whatever other visual system is showing
-	CloudsVisualSystem* TEMP_SYSTEM_HACK;
+//	CloudsVisualSystem* TEMP_SYSTEM_HACK;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system
 	void hideVisualSystem();
-	
 	void playNextVisualSystem();
-
 	
 	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
 	
 	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
 	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );
 	bool bIsFading;
-	
-
-
 };
