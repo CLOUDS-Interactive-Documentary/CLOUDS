@@ -136,6 +136,7 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E78CCB2617D58EAD005F6D77 /* ofxOceanCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78CCB2417D58EAD005F6D77 /* ofxOceanCamera.cpp */; };
 		E79E4C651797518300719469 /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79E4C601797518300719469 /* ofxAVFVideoPlayer.mm */; };
 		E79E4C661797518300719469 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E79E4C621797518300719469 /* ofxAVFVideoRenderer.m */; };
 		E79E4C6B179751A700719469 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79E4C6A179751A700719469 /* AVFoundation.framework */; };
@@ -633,6 +634,8 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
+		E78CCB2417D58EAD005F6D77 /* ofxOceanCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanCamera.cpp; sourceTree = "<group>"; };
+		E78CCB2517D58EAD005F6D77 /* ofxOceanCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanCamera.h; sourceTree = "<group>"; };
 		E79E4C5F1797518300719469 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
 		E79E4C601797518300719469 /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
 		E79E4C611797518300719469 /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
@@ -1158,6 +1161,8 @@
 			children = (
 				E7402E83178F44DC00FEABED /* ofxOcean.cpp */,
 				E7402E84178F44DC00FEABED /* ofxOcean.h */,
+				E78CCB2417D58EAD005F6D77 /* ofxOceanCamera.cpp */,
+				E78CCB2517D58EAD005F6D77 /* ofxOceanCamera.h */,
 				E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */,
 				E7402E88178F44DC00FEABED /* ofxOceanRenderer.h */,
 				E7402E8B178F44DC00FEABED /* ofxOceanTile.cpp */,
@@ -2924,6 +2929,7 @@
 				E75DB68B17CDBD4800CD99D9 /* ofxAutoReloadedShader.cpp in Sources */,
 				E75DB6B117CDBD8A00CD99D9 /* ofxMarchingCubes.cpp in Sources */,
 				E7176E2517D3BB0C00C8DC38 /* CloudsRun.cpp in Sources */,
+				E78CCB2617D58EAD005F6D77 /* ofxOceanCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
