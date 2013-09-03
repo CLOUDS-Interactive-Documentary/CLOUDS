@@ -182,7 +182,6 @@ void CloudsStoryEngine::initGui(){
     gui->addSlider("ACT LENGTH", 60, 1200,&actLength);
     gui->addSlider("PREROLL FLAG TIME", 1, 10, &preRollDuration);
     gui->addSlider("MIN CLIP DURATION FOR START OFFSET", 0, 100, &minClipDurationForStartingOffset);
-    
     gui->autoSizeToFitWidgets();
     
     vsGui = new ofxUISuperCanvas("VISUAL SYSTEM PARAMS", OFX_UI_FONT_SMALL);
@@ -192,7 +191,6 @@ void CloudsStoryEngine::initGui(){
     vsGui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
     vsGui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
     vsGui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
-    
     vsGui->autoSizeToFitWidgets();
     
     string filePath;
@@ -232,7 +230,7 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
     string name = e.widget->getName();
     if(name == "STARTING QUESTIONS"){
 	    ofxUIDropDownList* b = (ofxUIDropDownList*) e.widget;
-		if(b->getSelectedIndeces().size() > 0){
+		if(! b->isOpen() && b->getSelectedIndeces().size() > 0){
 			CloudsClip clip = parser->getClipsWithKeyword("#start")[ b->getSelectedIndeces()[0] ];
 			string topic = clip.getAllQuestionTopicPairs().begin()->first;
 			cout << "SELECTED CLIP ** " << clip.getLinkName() << " WITH TOPIC " << topic << endl;
@@ -252,6 +250,7 @@ void CloudsStoryEngine::saveGuiSettings(){
 void CloudsStoryEngine::toggleGuis(){
 	actGui->toggleVisible();
 	clipGui->toggleVisible();
+	topicGui->toggleVisible();
 	gui->toggleVisible();
 	vsGui->toggleVisible();
 }

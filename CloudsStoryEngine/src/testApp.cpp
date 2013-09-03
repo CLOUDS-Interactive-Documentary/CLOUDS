@@ -23,10 +23,6 @@ void testApp::setup(){
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis();
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	
-//	CloudsClip& clip = parser.getRandomClip(false,true);
-
-//	storyEngine.buildAct(run, clip);
 }
 
 //--------------------------------------------------------------
@@ -45,7 +41,7 @@ void testApp::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::actBegan(CloudsActEventArgs& args){
-	cout << "act began" << endl;
+//	cout << "act began" << endl;
 }
 
 //--------------------------------------------------------------
