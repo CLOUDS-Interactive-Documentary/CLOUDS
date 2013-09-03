@@ -216,7 +216,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
     
-    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -237,7 +237,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
     
-    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -256,7 +256,7 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     visualSystems.push_back(preset);
     visualSystemsMap[preset.getID()] = preset;
     
-    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
+//    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
     ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;

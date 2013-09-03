@@ -16,15 +16,17 @@ void testApp::setup(){
 	
 	visualSystems.loadPresets();
 	
-	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = true;
-	storyEngine.toggleGuis();
 	
-	CloudsClip& clip = parser.getRandomClip(false,true);
+	storyEngine.setup();
+	storyEngine.printDecisions = false;
+	storyEngine.toggleGuis();
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	storyEngine.buildAct(run, clip);
+	
+//	CloudsClip& clip = parser.getRandomClip(false,true);
+
+//	storyEngine.buildAct(run, clip);
 }
 
 //--------------------------------------------------------------

@@ -165,7 +165,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			int numSuppressions = keywordXml.getNumTags("clip");
 			for(int i=0; i<numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
-				cout << "found suppression " << suppressedLinkName << endl;
+//				cout << "found suppression " << suppressedLinkName << endl;
 				suppressedClips[name].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions

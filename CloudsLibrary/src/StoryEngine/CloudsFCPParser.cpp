@@ -140,19 +140,17 @@ void CloudsFCPParser::parseClusterMap(string mapFile){
         
         for(int i = 0; i < allClips.size(); i++){
             if(allClips[i].cluster.originalCentre != ofVec2f(-1, -1)){
-
-                allClips[i].cluster.Centre.x = ofMap(allClips[i].cluster.originalCentre.x, minCx, maxCx, 0, 1);
-                allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.originalCentre.y, minCy, maxCy, 0, 1);
-                allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
-                cout<<allClips[i].cluster.Centre<<endl;
+//TODO:  CLUSTERS ARE BROKEN
+//                allClips[i].cluster.Centre.x = ofMap(allClips[i].cluster.originalCentre.x, minCx, maxCx, 0, 1);
+//                allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.originalCentre.y, minCy, maxCy, 0, 1);
+//                allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
+//                cout<<allClips[i].cluster.Centre<<endl;
             }
             else{
                 cout<<"ERROR CLIP NOT FOUND IN MAP:"<<allClips[i].getLinkName()<<endl;
             }
             
         }
-//        cout<<minR<<","<<maxR<<endl;
-//        cout<<maxCx<<","<<minCx<<"::"<<maxCy<<","<<minCy;
         mapsXML.popTag();//g
         
         mapsXML.popTag(); //svg
@@ -343,7 +341,7 @@ float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
     if(keywordCohesionMap.find(keyword) != keywordCohesionMap.end()){
         return keywordCohesionMap[keyword];
     }
-    ofLogError("CloudsFCPParser::getCohesionIndexForKeyword")<<"Couldnt find cohesion index for keyword: " << keyword << endl;
+//    ofLogError("CloudsFCPParser::getCohesionIndexForKeyword")<<"Couldnt find cohesion index for keyword: " << keyword << endl;
     return 0;
 }
 
@@ -388,7 +386,7 @@ ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
     if(index != -1){
         return keywordCentroids[index].second;
     }
-    ofLogError("CloudsFCPParser::getKeywordCentroid")<<"No centroid found for keyword: "<< keyword<<endl;
+    //ofLogError("CloudsFCPParser::getKeywordCentroid")<<"No centroid found for keyword: "<< keyword<<endl;
     
     return ofVec2f(-1, -1);
 }
@@ -397,7 +395,7 @@ int CloudsFCPParser::getCentroidMapIndex(string keyword){
     if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
         return keywordCentroidIndex[keyword];
     }
-    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
+//    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
 	return -1;
 }
 

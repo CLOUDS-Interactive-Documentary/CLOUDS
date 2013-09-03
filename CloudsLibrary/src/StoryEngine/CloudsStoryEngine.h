@@ -53,6 +53,7 @@ class CloudsStoryEngine {
 
   protected:
 
+	ofxUISuperCanvas *actGui;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
@@ -87,9 +88,6 @@ class CloudsStoryEngine {
     float gapLengthMultiplier;
     float minClipDurationForStartingOffset;
     float preRollDuration;
-    
-	
-	
 	
     //VS Story Engine Parameters
     float systemMaxRunTime;
@@ -97,7 +95,6 @@ class CloudsStoryEngine {
     float longClipThreshold;
     float longClipFadeInPercent;
 
-	
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
