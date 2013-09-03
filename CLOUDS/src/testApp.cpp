@@ -20,10 +20,11 @@ void testApp::setup(){
 	visualSystems.populateVisualSystems();
 	//visualSystems.loadPresets();
 	
-	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
+	storyEngine.printDecisions = false;
 	storyEngine.combinedClipsOnly = true;
+	storyEngine.setup();
 	
 	player.setup();
 	player.setStoryEngine(storyEngine);
@@ -61,7 +62,6 @@ void testApp::setup(){
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
-	
 }
 
 //--------------------------------------------------------------

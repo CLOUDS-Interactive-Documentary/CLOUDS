@@ -279,8 +279,6 @@ void CloudsVisualSystemRGBD::transition( float duration, float startTime )
 	transitionEndTime = transitionStartTime + duration;
 	
 	transitioning = true;
-	
-//	ofQuaternion transitionEndRotation;
 }
 
 void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
@@ -472,7 +470,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	ofPushMatrix();
 	
 	
-	//trnsition transformation
+	//transition transformation
 	ofMultMatrix( transitionMatrix );// <--- LB: I think this can go...
 	
 	if(drawCloud && hasSpeaker){
@@ -499,7 +497,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		rgbdShader.begin();
 		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
 		
-		rgbdShader.setUniform1f("baseMultiplier", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+//		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
+		
+		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
 		if(drawMesh){
