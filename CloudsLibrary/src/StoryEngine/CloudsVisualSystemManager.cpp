@@ -28,6 +28,16 @@
 
 #endif
 
+
+bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
+	int comp = a.systemName.compare( b.systemName );
+	if( comp != 0 ){
+		return comp < 0;
+	}
+	return a.presetName.compare( b.presetName ) < 0;
+}
+
+
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
 	backupTimeInterval = 60*2;
 	lastBackupTime = ofGetElapsedTimef() - backupTimeInterval;
@@ -67,7 +77,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemOscillations() );
 	
     loadPresets();
-	
+
 #endif
     
 }
@@ -76,12 +86,13 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
 #ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
-	//setup now happens when the system is ready to play
+	//moved this -- don't set up until the loading screen of the act
 	//system->setup();
+	nameToVisualSystem[system->getSystemName()] = system;
+
 #endif
 	
 	systems.push_back( system );
-	nameToVisualSystem[system->getSystemName()] = system;
 }
 
 //--------------------------------------------------------------------
@@ -154,7 +165,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			int numSuppressions = keywordXml.getNumTags("clip");
 			for(int i=0; i<numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
-				cout << "found suppression " << suppressedLinkName << endl;
+//				cout << "found suppression " << suppressedLinkName << endl;
 				suppressedClips[name].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions
@@ -167,7 +178,8 @@ void CloudsVisualSystemManager::loadPresets(){
         keywordXml.popTag(); //system
 	}
 	
-
+	sort(presets.begin(), presets.end(), preset_sort);
+	
     cout << "** LOADED PRESETS " << presets.size() << endl;
 }
 

@@ -2,18 +2,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxUI.h"
+
 #include "CloudsEvents.h"
 #include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
-#include "ofxUI.h"
+#include "CloudsRun.h"
 #include "CloudsDichotomy.h"
-
-//typedef struct {
-//    string left;
-//    string right;
-//    int balance; //pos/neg
-//} KeywordDichotomy;
 
 /**
  * The Clouds story engine generates sequences of clips
@@ -31,15 +27,16 @@ class CloudsStoryEngine {
 	
 	void setup();
 	
-	CloudsAct* buildAct(CloudsClip& seed);
-	CloudsAct* buildAct(CloudsClip& seed, string topic);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
+	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic);
 	
     void initGui();
     void saveGuiSettings();
-    void displayGui(bool display);
+    void toggleGuis();
+	void positionGuis();
 	
 	//after this many clips the topic opens up again
-	int maxTimesOnTopic;
+	float maxTimesOnTopic;
 	bool printDecisions;
 	bool printCriticalDecisions;
 	bool atDeadEnd();
@@ -49,26 +46,21 @@ class CloudsStoryEngine {
 	
 	CloudsEvents& getEvents();
 	
-
-//	float fixedClipDelay;
-	
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
 
     vector<CloudsDichotomy> getCurrentDichotomyBalance();
 
-//    CloudsAct& getAct();
-    
-protected:
+  protected:
 
+	ofxUISuperCanvas *actGui;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
-    
+	ofxUISuperCanvas *topicGui;
+	
     void guiEvent(ofxUIEventArgs &e);
-    ofBuffer scoreBuffer;
-    stringstream scoreStream;
-    stringstream topicScoreStream;
+
 	CloudsEvents events;
 	bool isSetup;
 	
@@ -79,7 +71,6 @@ protected:
     int dichotomyThreshold;
 	vector<CloudsDichotomy> dichotomies;
     
-	string currentTopic;
 	int timesOnTopic; //how many times have we heard about this specific topic
 	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
@@ -91,26 +82,30 @@ protected:
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
     CloudsVisualSystemPreset getVisualSystemPreset(string keyword);
 	
-  private:
     //Act Builder Parameters
     float actLength;
     float maxTimeWithoutQuestion;
     float gapLengthMultiplier;
     float minClipDurationForStartingOffset;
     float preRollDuration;
-    
+	
     //VS Story Engine Parameters
     float systemMaxRunTime;
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
-    
+
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
-    int topicsInCommonMultiplier;
-    int topicsinCommonWithPreviousMultiplier;
-    int samePersonOccuranceSuppressionFactor;
-    int dichomoiesFactor;
-    int linkFactor;
+    float topicsInCommonMultiplier;
+    float topicsinCommonWithPreviousMultiplier;
+    float samePersonOccurrenceSuppressionFactor;
+    float dichotomyWeight;
+    float linkFactor;
+	
+	//Topic selection parameters
+	float topicRelevancyMultiplier;
+	float lastClipSharesTopicBoost;
+	float twoClipsAgoSharesTopicBoost;
 };

@@ -17,9 +17,9 @@ CloudsAct::CloudsAct(){
 CloudsAct::~CloudsAct(){
 	if(timelinePopulated){
 		ofRemoveListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+		ofRemoveListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 	}
 }
-
 
 void CloudsAct::play(){
     
@@ -95,8 +95,9 @@ void CloudsAct::populateTime(){
         }
     }
     
-	//TODO remove listener
+
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
+	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
@@ -136,6 +137,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);        
     }
+}
+
+void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
+	CloudsActEventArgs args(this);
+    ofNotifyEvent(events.actEnded, args);
 }
 
 float CloudsAct::getActDuration(){
@@ -210,7 +216,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
     
-    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -231,7 +237,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
     
-    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -250,7 +256,7 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     visualSystems.push_back(preset);
     visualSystemsMap[preset.getID()] = preset;
     
-    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
+//    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
     ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;

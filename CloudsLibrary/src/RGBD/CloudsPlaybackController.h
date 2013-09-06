@@ -11,7 +11,7 @@
 #include "ofxUI.h"
 
 #include "CloudsIntroSequence.h"
-
+#include "CloudsVisualSystemClusterMap.h"
 #include "CloudsVisualSystemRGBD.h"
 
 
@@ -22,7 +22,7 @@ public:
 	//	Tween * tween;
 	string message;
 	string name;
-	float value, span;
+	float value, span, startTime, endTime;
     
     CloudsPlaybackControllerEvent() {
     }
@@ -57,6 +57,8 @@ public:
 			*value = val;
 		}
 		
+		
+
 		//start event
 		if(!bStarted && elapsedTime >= startTime){
 			bStarted = true;
@@ -66,18 +68,24 @@ public:
 			startEvent.name = name;
 			startEvent.value = startVal;
 			startEvent.span = span;
+			startEvent.startTime = startTime;
+			startEvent.endTime = endTime;
 			if(value != NULL)	*value = startVal;
 			ofNotifyEvent( CloudsPlaybackControllerEvent::events, startEvent );
 		}
 		
-		
 		//update event
-		static CloudsPlaybackControllerEvent updateEvent;
-		updateEvent.message = "updated";
-		updateEvent.name = name;
-		updateEvent.value = val;
-		updateEvent.span = span;
-		ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
+		if(bStarted && !bEnded){
+			
+			static CloudsPlaybackControllerEvent updateEvent;
+			updateEvent.message = "updated";
+			updateEvent.name = name;
+			updateEvent.value = val;
+			updateEvent.span = span;
+			updateEvent.startTime = startTime;
+			updateEvent.endTime = endTime;
+			ofNotifyEvent( CloudsPlaybackControllerEvent::events, updateEvent );
+		}
 		
 		//end event
 		if(!bEnded && elapsedTime >= endTime){
@@ -88,6 +96,8 @@ public:
 			endEvent.name = name;
 			endEvent.value = endVal;
 			endEvent.span = span;
+			endEvent.startTime = startTime;
+			endEvent.endTime = endTime;
 			if(value != NULL)	*value = endVal;
 			ofNotifyEvent( CloudsPlaybackControllerEvent::events, endEvent );
 			
@@ -144,9 +154,6 @@ class CloudsPlaybackController {
 	
 	void exit(ofEventArgs & args);
 	
-//	ofFbo sharedRenderTarget;
-	ofFbo nextRenderTarget;
-	
 	//crossfading CloudsVisualSystems
 	float crossfadeValue, fadeStartTime, fadeEndTime, fadeDuration, fadeStartVal, fadeTargetVal;
 	bool fadingOut, fadingIn;
@@ -172,6 +179,8 @@ class CloudsPlaybackController {
 	string fadeOutVisualSystem;
 	string fadeInVisualSystem;
 	
+	string nextPresetName;
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -181,6 +190,7 @@ class CloudsPlaybackController {
 	//RGBD STUFF
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	CloudsIntroSequence introSequence;
+	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	string combinedMoviesFolder;
 	string currentTopic;
@@ -196,22 +206,24 @@ class CloudsPlaybackController {
 	//
 	bool showingIntro;
 	bool showingVisualSystem;
+	bool showingClusterMap;
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystem* nextSystem;
+	
+	//JG added a temp system to just straight cross/cut between the systems
+	//Temp system will always be whatever other visual system is showing
+//	CloudsVisualSystem* TEMP_SYSTEM_HACK;
 	
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system
 	void hideVisualSystem();
-
+	void playNextVisualSystem();
 	
 	float rgbdVisualSystemFadeInDuration, rgbdVisualSystemFadeOutDuration;
 	
 	void transitionRgbdSystemOut( float transitionDuration=0, float fadeDuration=3 );
 	void transitionRgbdSystemIn( float transitionDuration=0, float fadeDuration=3 );
 	bool bIsFading;
-	
-
-
 };

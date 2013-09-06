@@ -9,6 +9,7 @@ struct sortObject {
 	
 } cohesionSort;
 
+
 @implementation testView
 
 - (void)setup
@@ -25,7 +26,6 @@ struct sortObject {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
         [tableColumn setSortDescriptorPrototype:sortDescriptor];
     }
-
 	
 	for (NSTableColumn *tableColumn in allClipTable.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];

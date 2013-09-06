@@ -3,7 +3,6 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 #include "ParticleConnectionGenerator.h"
-//#include "CloudsRGBDCamera.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -71,7 +70,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void lookThroughTransitionIn();
 	void lookThroughTransitionOut();
-//	ofEasyCam transitionCam;
+
 	ofxGameCamera transitionCam;
 	ofNode* transitionCamTargetNode;
 	
@@ -79,23 +78,21 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void setTransitionNodes( RGBDTransitionType transitionType );
 
   protected:
+	
 
 	ofxUISuperCanvas *meshGui;
 	ofxUISuperCanvas *cameraGui;
 	ofxUISuperCanvas *particleGui;
 	ofxUISuperCanvas *questionGui;
+	ofxUISuperCanvas *connectorGui;
 	
 	ofTrueTypeFont displayFont;
-//	vector<CloudsQuestion> currentQuestions;
-	
-	
-//	CloudsRGBDCamera cloudsCamera;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;
 	ofMesh randomPoints;
 	
-	ParticleConnectionGenerator connectionGenerator;
+	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;
 	
 	void updateQuestions();
@@ -104,7 +101,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	vector<CloudsQuestion*> questions;
 	
 	ofVec4f pointColor;
-	
 
 	ofVec2f scanlineSimplify;
 	
@@ -162,7 +158,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofQuaternion transitionStartRot, transitionEndRot;
 	ofxEasingQuint transitionEase;
 	
-	ofMatrix4x4 transitionMatrix;
+	//ofMatrix4x4 transitionMatrix;
 	
 	RGBDTransitionType transitionType;
 	

@@ -17,6 +17,7 @@ varying vec3 diffuseLightDirection;
 uniform float eyeMultiplier;
 uniform float skinMultiplier;
 uniform float baseMultiplier;
+uniform float fadeValue;
 
 const float epsilon = 1e-6;
 
@@ -47,7 +48,7 @@ void main(){
         return;
     }
 
-	float attenuate = baseMultiplier + max(isEye() * eyeMultiplier, isSkin() * skinMultiplier);
+	float attenuate = (baseMultiplier + max(isEye() * eyeMultiplier, isSkin() * skinMultiplier)) * fadeValue;
 	if(attenuate < epsilon){
 		discard;
 		return;

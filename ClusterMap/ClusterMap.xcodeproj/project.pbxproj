@@ -57,6 +57,9 @@
 		E70743CA17BE31CB0055782E /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E70743C417BE31CB0055782E /* gaussianblur.vert */; };
 		E70743D117BE32280055782E /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70743CF17BE32280055782E /* Node.cpp */; };
 		E70743D417BE32550055782E /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70743D217BE32550055782E /* CloudsVisualSystemClusterMap.cpp */; };
+		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
+		E7176E3417D3DADC00C8DC38 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E3017D3DADC00C8DC38 /* CloudsClip.cpp */; };
+		E7176E3517D3DADC00C8DC38 /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E3217D3DADC00C8DC38 /* ClusterData.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
 		E724461316573A0800D70E01 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E724459716573A0400D70E01 /* ofxHotKeys_impl_mac.mm */; };
 		E724461416573A0800D70E01 /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459816573A0400D70E01 /* ofxHotKeys_impl_win.cpp */; };
@@ -285,6 +288,13 @@
 		E70743D017BE32280055782E /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		E70743D217BE32550055782E /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
 		E70743D317BE32550055782E /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
+		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../CloudsLibrary/src/RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
+		E7176E2E17D3DABA00C8DC38 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsQuestion.h; path = ../CloudsLibrary/src/RGBD/CloudsQuestion.h; sourceTree = "<group>"; };
+		E7176E3017D3DADC00C8DC38 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsClip.cpp; path = ../CloudsLibrary/src/StoryEngine/CloudsClip.cpp; sourceTree = "<group>"; };
+		E7176E3117D3DADC00C8DC38 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsClip.h; path = ../CloudsLibrary/src/StoryEngine/CloudsClip.h; sourceTree = "<group>"; };
+		E7176E3217D3DADC00C8DC38 /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClusterData.cpp; path = ../CloudsLibrary/src/StoryEngine/ClusterData.cpp; sourceTree = "<group>"; };
+		E7176E3317D3DADC00C8DC38 /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClusterData.h; path = ../CloudsLibrary/src/StoryEngine/ClusterData.h; sourceTree = "<group>"; };
+		E7176E3617D3DAFB00C8DC38 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		E724459516573A0400D70E01 /* ofxHotKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxHotKeys.h; sourceTree = "<group>"; };
 		E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxHotKeys_impl_linux.cpp; sourceTree = "<group>"; };
 		E724459716573A0400D70E01 /* ofxHotKeys_impl_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxHotKeys_impl_mac.mm; sourceTree = "<group>"; };
@@ -479,6 +489,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */,
 				E70743CE17BE32280055782E /* vs_src */,
 				E70743BE17BE31CB0055782E /* shaders */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
@@ -746,6 +757,20 @@
 			);
 			name = vs_src;
 			path = ../CloudsLibrary/src/VisualSystems/_ClusterMap/vs_src;
+			sourceTree = "<group>";
+		};
+		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E7176E3617D3DAFB00C8DC38 /* CloudsGlobal.h */,
+				E7176E2E17D3DABA00C8DC38 /* CloudsQuestion.h */,
+				E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */,
+				E7176E3117D3DADC00C8DC38 /* CloudsClip.h */,
+				E7176E3017D3DADC00C8DC38 /* CloudsClip.cpp */,
+				E7176E3317D3DADC00C8DC38 /* ClusterData.h */,
+				E7176E3217D3DADC00C8DC38 /* ClusterData.cpp */,
+			);
+			name = CloudsLibrary;
 			sourceTree = "<group>";
 		};
 		E724445016573A0400D70E01 /* ofxTimeline */ = {
@@ -1106,6 +1131,9 @@
 				E70743CA17BE31CB0055782E /* gaussianblur.vert in Sources */,
 				E70743D117BE32280055782E /* Node.cpp in Sources */,
 				E70743D417BE32550055782E /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */,
+				E7176E3417D3DADC00C8DC38 /* CloudsClip.cpp in Sources */,
+				E7176E3517D3DADC00C8DC38 /* ClusterData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

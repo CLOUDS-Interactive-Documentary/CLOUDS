@@ -7,32 +7,22 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-    displayGui = false;
+    ofEnableSmoothing();
+	
 	currentAct = NULL;
+	rebuildAct = false;
 	
 	parser.loadFromFiles();
 	
 	visualSystems.loadPresets();
 	
-	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-	storyEngine.maxTimesOnTopic = 4;
-	storyEngine.printDecisions = true;
-	
-
-	ofEnableSmoothing();
-	
-    float randomClip = ofRandom(parser.getAllClips().size() );
-	CloudsClip& clip = parser.getRandomClip(false,false);
-	rebuildAct = false;
-    
-	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-	
+	storyEngine.setup();
+	storyEngine.printDecisions = false;
+	storyEngine.toggleGuis();
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
-	storyEngine.buildAct( clip );
-    
 }
 
 //--------------------------------------------------------------
@@ -51,7 +41,7 @@ void testApp::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::actBegan(CloudsActEventArgs& args){
-	cout << "act began" << endl;
+//	cout << "act began" << endl;
 }
 
 //--------------------------------------------------------------
@@ -78,7 +68,8 @@ void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 void testApp::topicChanged(string& newTopic){
 	
 }
-void testApp:: questionAsked(CloudsQuestionEventArgs& args){
+
+void testApp::questionAsked(CloudsQuestionEventArgs& args){
     
 }
 
@@ -87,21 +78,23 @@ void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
 }
 //--------------------------------------------------------------
 void testApp::update(){
-	ofShowCursor();
+//	ofShowCursor();
+	//keepin it real
+	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
     if(currentAct != NULL){
 		currentAct->drawDebug();
 	}
 }
 
+//--------------------------------------------------------------
 void testApp::exit(){
     storyEngine.saveGuiSettings();
-    
 }
+
 //--------------------------------------------------------------
 void testApp::guiEvent(ofxUIEventArgs &e)
 {
@@ -115,13 +108,15 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
-    if(key == ' '){
-        displayGui = ! displayGui;
-        storyEngine.displayGui(displayGui);
+    if(key == 'h'){
+        storyEngine.toggleGuis();
     }
     else if(key =='f'){
         ofToggleFullscreen();
     }
+	if(key == 't'){
+		storyEngine.positionGuis();
+	}
 }
 
 //--------------------------------------------------------------

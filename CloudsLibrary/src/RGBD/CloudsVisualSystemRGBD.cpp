@@ -1,3 +1,4 @@
+
 #include "CloudsVisualSystemRGBD.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
@@ -17,9 +18,6 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 	generatePointGrid();
 	generateScanlines();
-	connectionGenerator.numParticles = 200;
-	connectionGenerator.setMinDistance(40);
-	connectionGenerator.setup();
 	
 	particulateController.setParticleCount(1e5);
 	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
@@ -29,8 +27,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 	setCurrentCamera(cloudsCamera);
 	
-	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	generator.setup();
 	
+	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
 	
 	//TODO: do this elsewhere
 	transitioning = transitioningIn = transitioningOut = false;
@@ -43,10 +42,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.useArrowKeys = true;
 	
-	
 	transitionTarget = &transitionOutTarget;
 	
-	drawTransitionNodes = true;
+	drawTransitionNodes = false;
 	
 	transitionCam.setup();
 	
@@ -191,6 +189,22 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
+	
+	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
+	connectorGui->copyCanvasStyle(gui);
+	connectorGui->copyCanvasProperties(gui);
+	connectorGui->setName("Custom");
+	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
+	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
+	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
+	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
+	
+	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
+	
+	guis.push_back(connectorGui);
+	guimap[connectorGui->getName()] = connectorGui;
 }
 
 //--------------------------------------------------------------
@@ -230,6 +244,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 	}
+	
+	generator.update();
 }
 
 //--------------------------------------------------------------
@@ -264,7 +280,6 @@ void CloudsVisualSystemRGBD::updateTransition(){
 			
 			cloudsCamera.targetNode = NULL;
 			cloudsCamera.startNode = NULL;
-			
 		}
 		
 		transitionVal = x;
@@ -278,8 +293,6 @@ void CloudsVisualSystemRGBD::transition( float duration, float startTime )
 	transitionEndTime = transitionStartTime + duration;
 	
 	transitioning = true;
-	
-//	ofQuaternion transitionEndRotation;
 }
 
 void CloudsVisualSystemRGBD::transitionIn( ofNode& targetNode, float duration, float startTime )
@@ -470,8 +483,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushMatrix();
 	
-	//trnsition transformation
-	ofMultMatrix( transitionMatrix );
+	
+	//transition transformation
+//	ofMultMatrix( transitionMatrix );// <--- LB: I think this can go...
 	
 	if(drawCloud && hasSpeaker){
 
@@ -497,7 +511,9 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		rgbdShader.begin();
 		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
 		
-		rgbdShader.setUniform1f("baseMultiplier", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+//		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
+		
+		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
 		if(drawMesh){
@@ -556,11 +572,11 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			verticalScanLines.draw();
 		
 		}
-		
 
 		rgbdShader.setUniform1f("flowPosition", 0);
 //		connectionGenerator.draw();
-
+		generator.draw();
+		
 		rgbdShader.end();
 				
 		glPopAttrib();

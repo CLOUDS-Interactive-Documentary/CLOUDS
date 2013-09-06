@@ -33,7 +33,6 @@ class CloudsFCPParser {
 	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
-	//MANAGE
     void parseLinks(string linkFile);
     void parseClusterMap(string mapFile);
 	
@@ -57,6 +56,7 @@ class CloudsFCPParser {
 	void unsuppressConnection(string linkName, string targetName);
 	void unsuppressConnection(CloudsLink& link);
     void refreshAllKeywords();
+	void printSpeakerList();
 	
 	//QUERIES
 	//true if A has any out going links at all
@@ -89,7 +89,6 @@ class CloudsFCPParser {
 	
 	float percentOfClipsLinked();
 	float getAllClipDuration();
-
 	
 	//create a list that maps all of the tags back to closest key theme
 	void populateKeyThemes();
@@ -120,11 +119,12 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
+	
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
-    vector<string  > getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+    vector<string> getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
     float getCohesionIndexForKeyword(string keyword);
     float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
     
@@ -146,10 +146,11 @@ class CloudsFCPParser {
     map<string, string> fileIdToName;
 
     set<string> markerLinkNames;
-
+	set<string> speakerFcpIds;
+	
     vector<pair<string,ofVec2f> > keywordCentroids;
     map<string, int> keywordCentroidIndex;
-    map<string, float>keywordCohesionMap;
+    map<string, float> keywordCohesionMap;
 
     void calculateCohesionMedianForKeywords();
     ofVec2f getKeywordCentroid(string keyword);
@@ -162,8 +163,6 @@ class CloudsFCPParser {
     
     map<string, int> allKeywords;
     map<string, int> contentKeywords;
-
-
     
     vector<string> keywordVector;
     vector<string> contentKeywordVector;

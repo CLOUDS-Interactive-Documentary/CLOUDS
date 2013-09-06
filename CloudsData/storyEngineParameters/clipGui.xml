@@ -2,23 +2,28 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>510.000000000</XPosition>
-    <YPosition>11.000000000</YPosition>
+    <XPosition>408.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
-    <Name>CURRENT TOPICS IN COMMON MULTIPLIER</Name>
-    <Value>16.748767853</Value>
+    <Name>MAX TIMES ON TOPIC</Name>
+    <Value>4.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>TOPICS IN COMMON WITH HISTORY MULTIPLIER</Name>
+    <Name>TOPICS IN COMMON CURRENT MULTIPLIER</Name>
+    <Value>13.300492287</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOPICS IN COMMON PREVIOUS MULTIPLIER</Name>
     <Value>5.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAME PERSON SUPPRESSION FACTOR</Name>
-    <Value>4.000000000</Value>
+    <Value>7.733989716</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -27,6 +32,6 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>DICHOTOMIES FACTOR</Name>
+    <Name>DICHOTOMY WEIGHT</Name>
     <Value>2.000000000</Value>
 </Widget>
