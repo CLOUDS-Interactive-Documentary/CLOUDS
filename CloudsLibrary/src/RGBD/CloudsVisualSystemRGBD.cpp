@@ -27,7 +27,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	cloudsCamera.lookTarget = ofVec3f(0,25,0);
 	setCurrentCamera(cloudsCamera);
 	
-	generator.setup();
+//	generator.setup();
 	
 	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
 	
@@ -196,12 +196,12 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	connectorGui->setName("Custom");
 	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
-	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
-	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
-	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
-	
-	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
+//	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
+//	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
+//	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
+//	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
+//	
+//	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
 	
 	guis.push_back(connectorGui);
 	guimap[connectorGui->getName()] = connectorGui;
@@ -245,7 +245,7 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 	}
 	
-	generator.update();
+//	generator.update();
 }
 
 //--------------------------------------------------------------
@@ -575,7 +575,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 		rgbdShader.setUniform1f("flowPosition", 0);
 //		connectionGenerator.draw();
-		generator.draw();
+//		generator.draw();
 		
 		rgbdShader.end();
 				
