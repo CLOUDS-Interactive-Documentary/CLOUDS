@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
-#include "ParticleConnectionGenerator.h"
+//#include "ParticleConnectionGenerator.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -92,7 +92,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofMesh pointGrid;
 	ofMesh randomPoints;
 	
-	ParticleConnectionGenerator generator;
+//	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;
 	
 	void updateQuestions();

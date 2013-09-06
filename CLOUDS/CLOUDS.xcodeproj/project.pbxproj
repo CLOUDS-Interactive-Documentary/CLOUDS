@@ -197,11 +197,6 @@
 		E7D330791751D446006706ED /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330661751D446006706ED /* ofxSwarmBehavior.cpp */; };
 		E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330691751D446006706ED /* ofxVerletSolver.cpp */; };
 		E7D330B91751D4C1006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */; };
-		E7DE953717D5A535002BFDF4 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DE952B17D5A535002BFDF4 /* CloudsVisualSystemConnectors.cpp */; };
-		E7DE953817D5A535002BFDF4 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DE952D17D5A535002BFDF4 /* ParticleConnection.cpp */; };
-		E7DE953917D5A535002BFDF4 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DE952F17D5A535002BFDF4 /* ParticleConnectionGenerator.cpp */; };
-		E7DE953A17D5A535002BFDF4 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DE953117D5A535002BFDF4 /* ParticleConnector.cpp */; };
-		E7DE953B17D5A535002BFDF4 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DE953317D5A535002BFDF4 /* ParticleConnectorBin.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
@@ -855,16 +850,6 @@
 		E7D3309B1751D493006706ED /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
 		E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		E7D330B61751D4C1006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
-		E7DE952B17D5A535002BFDF4 /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
-		E7DE952C17D5A535002BFDF4 /* CloudsVisualSystemConnectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemConnectors.h; sourceTree = "<group>"; };
-		E7DE952D17D5A535002BFDF4 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
-		E7DE952E17D5A535002BFDF4 /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
-		E7DE952F17D5A535002BFDF4 /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
-		E7DE953017D5A535002BFDF4 /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
-		E7DE953117D5A535002BFDF4 /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
-		E7DE953217D5A535002BFDF4 /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
-		E7DE953317D5A535002BFDF4 /* ParticleConnectorBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectorBin.cpp; sourceTree = "<group>"; };
-		E7DE953417D5A535002BFDF4 /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
@@ -1104,7 +1089,6 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7DE94FC17D5A535002BFDF4 /* Connectors */,
 				E736769B17C67C4100CC6EC8 /* _ClusterMap */,
 				E785F80217B287B7002371FC /* _Intro */,
 				E75DB6F017CDC7ED00CD99D9 /* Cosmic */,
@@ -3022,31 +3006,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E7DE94FC17D5A535002BFDF4 /* Connectors */ = {
-			isa = PBXGroup;
-			children = (
-				E7DE952A17D5A535002BFDF4 /* vs_src */,
-			);
-			path = Connectors;
-			sourceTree = "<group>";
-		};
-		E7DE952A17D5A535002BFDF4 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7DE952B17D5A535002BFDF4 /* CloudsVisualSystemConnectors.cpp */,
-				E7DE952C17D5A535002BFDF4 /* CloudsVisualSystemConnectors.h */,
-				E7DE952D17D5A535002BFDF4 /* ParticleConnection.cpp */,
-				E7DE952E17D5A535002BFDF4 /* ParticleConnection.h */,
-				E7DE952F17D5A535002BFDF4 /* ParticleConnectionGenerator.cpp */,
-				E7DE953017D5A535002BFDF4 /* ParticleConnectionGenerator.h */,
-				E7DE953117D5A535002BFDF4 /* ParticleConnector.cpp */,
-				E7DE953217D5A535002BFDF4 /* ParticleConnector.h */,
-				E7DE953317D5A535002BFDF4 /* ParticleConnectorBin.cpp */,
-				E7DE953417D5A535002BFDF4 /* ParticleConnectorBin.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3303,11 +3262,6 @@
 				E75DBCE717CDC8A700CD99D9 /* ofxMarchingCubes.cpp in Sources */,
 				E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */,
 				E78CCB2217D58E63005F6D77 /* ofxOceanCamera.cpp in Sources */,
-				E7DE953717D5A535002BFDF4 /* CloudsVisualSystemConnectors.cpp in Sources */,
-				E7DE953817D5A535002BFDF4 /* ParticleConnection.cpp in Sources */,
-				E7DE953917D5A535002BFDF4 /* ParticleConnectionGenerator.cpp in Sources */,
-				E7DE953A17D5A535002BFDF4 /* ParticleConnector.cpp in Sources */,
-				E7DE953B17D5A535002BFDF4 /* ParticleConnectorBin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
