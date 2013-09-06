@@ -535,14 +535,14 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 			}
 			adjascentTried = true;
 			vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
-			log += "ERROR,No valid presets for Keywords " + ofJoinString(currentClip.getKeywords(),", ") + " searching adjacent keywords " + ofJoinString(adjacentTopics, ", ");
+			log += "ERROR,No valid presets for Keywords " + ofJoinString(currentClip.getKeywords(),", ") + " searching adjacent keywords " + ofJoinString(adjacentTopics, ", ") + "\n";
 			presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
 		}
 	}
 	
 	sort(scoreLogPairs.begin(), scoreLogPairs.end(), logsort);
 	for(int i = 0; i < scoreLogPairs.size(); i++){
-		presetLog += "," + scoreLogPairs[i].second;
+		log += "," + scoreLogPairs[i].second + "\n";
 	}
 	
 	if(topScore != 0){
@@ -556,7 +556,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 	}
 	else{
 		preset = visualSystems->getRandomVisualSystem();
-		log += "ERROR,No Presets found! using random preset "  + preset.getID();
+		log += "ERROR,No Presets found! using random preset "  + preset.getID() + "\n";
 	}
 	
     return preset;

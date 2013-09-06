@@ -179,9 +179,6 @@
 		E7BBB480179FA187007D7EC1 /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBAE35179FA186007D7EC1 /* wParticle.cpp */; };
 		E7BBB481179FA187007D7EC1 /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBAE37179FA186007D7EC1 /* wSatellite.cpp */; };
 		E7BBB482179FA187007D7EC1 /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBAE39179FA186007D7EC1 /* wStar.cpp */; };
-		E7BBB4BB179FA288007D7EC1 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4A8179FA288007D7EC1 /* ParticleConnection.cpp */; };
-		E7BBB4BC179FA288007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AA179FA288007D7EC1 /* ParticleConnectionGenerator.cpp */; };
-		E7BBB4BD179FA288007D7EC1 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AC179FA288007D7EC1 /* ParticleConnector.cpp */; };
 		E7BBB4BE179FA288007D7EC1 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AF179FA288007D7EC1 /* Controller.cpp */; };
 		E7BBB4BF179FA288007D7EC1 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B1179FA288007D7EC1 /* Force.cpp */; };
 		E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B3179FA288007D7EC1 /* ForceSet.cpp */; };
@@ -735,12 +732,6 @@
 		E7BBAE38179FA186007D7EC1 /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
 		E7BBAE39179FA186007D7EC1 /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
 		E7BBAE3A179FA186007D7EC1 /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
-		E7BBB4A8179FA288007D7EC1 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
-		E7BBB4A9179FA288007D7EC1 /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
-		E7BBB4AA179FA288007D7EC1 /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
-		E7BBB4AB179FA288007D7EC1 /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
-		E7BBB4AC179FA288007D7EC1 /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
-		E7BBB4AD179FA288007D7EC1 /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
 		E7BBB4AF179FA288007D7EC1 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		E7BBB4B0179FA288007D7EC1 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		E7BBB4B1179FA288007D7EC1 /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
@@ -1084,7 +1075,6 @@
 		E73769201778DC4500892646 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBB4A7179FA288007D7EC1 /* ConnectorParticles */,
 				E7BBB4AE179FA288007D7EC1 /* GPUParticles */,
 				E73769241778DC4500892646 /* CloudsQuestion.h */,
 				E73769231778DC4500892646 /* CloudsQuestion.cpp */,
@@ -2409,19 +2399,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7BBB4A7179FA288007D7EC1 /* ConnectorParticles */ = {
-			isa = PBXGroup;
-			children = (
-				E7BBB4A8179FA288007D7EC1 /* ParticleConnection.cpp */,
-				E7BBB4A9179FA288007D7EC1 /* ParticleConnection.h */,
-				E7BBB4AA179FA288007D7EC1 /* ParticleConnectionGenerator.cpp */,
-				E7BBB4AB179FA288007D7EC1 /* ParticleConnectionGenerator.h */,
-				E7BBB4AC179FA288007D7EC1 /* ParticleConnector.cpp */,
-				E7BBB4AD179FA288007D7EC1 /* ParticleConnector.h */,
-			);
-			path = ConnectorParticles;
-			sourceTree = "<group>";
-		};
 		E7BBB4AE179FA288007D7EC1 /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
@@ -2836,9 +2813,6 @@
 				E7BBB480179FA187007D7EC1 /* wParticle.cpp in Sources */,
 				E7BBB481179FA187007D7EC1 /* wSatellite.cpp in Sources */,
 				E7BBB482179FA187007D7EC1 /* wStar.cpp in Sources */,
-				E7BBB4BB179FA288007D7EC1 /* ParticleConnection.cpp in Sources */,
-				E7BBB4BC179FA288007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */,
-				E7BBB4BD179FA288007D7EC1 /* ParticleConnector.cpp in Sources */,
 				E7BBB4BE179FA288007D7EC1 /* Controller.cpp in Sources */,
 				E7BBB4BF179FA288007D7EC1 /* Force.cpp in Sources */,
 				E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */,
