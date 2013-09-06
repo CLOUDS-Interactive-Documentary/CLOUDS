@@ -63,24 +63,21 @@ class CloudsStoryEngine {
 
 	CloudsEvents events;
 	bool isSetup;
-	
-    float soloPointCloudTime;
-    float minLengthToShowPointCloudInClip;
-	float totalPoints;
-	int nextClipTopScore;
-    int dichotomyThreshold;
+
 	vector<CloudsDichotomy> dichotomies;
+    int dichotomyThreshold;
     
-	int timesOnTopic; //how many times have we heard about this specific topic
-	bool freeTopic; //means the topic is up for grabs on the next traverse
+//	int timesOnTopic; //how many times have we heard about this specific topic
+//	bool freeTopic; //means the topic is up for grabs on the next traverse
 	
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
 	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite ); //queue based
-	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic,string& log);
-		
+	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
+	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
+	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
-    CloudsVisualSystemPreset getVisualSystemPreset(string keyword);
+    CloudsVisualSystemPreset getVisualSystemPreset(string keyword, CloudsClip& currentClip, vector<string>& presetHistory, string& log);
 	
     //Act Builder Parameters
     float actLength;
@@ -90,11 +87,14 @@ class CloudsStoryEngine {
     float preRollDuration;
 	
     //VS Story Engine Parameters
+	float visualSystemPrimaryTopicBoost;
+	float visualSystemSecondaryTopicBoost;
     float systemMaxRunTime;
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
 
+	
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
@@ -108,4 +108,5 @@ class CloudsStoryEngine {
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;
 	float twoClipsAgoSharesTopicBoost;
+	
 };
