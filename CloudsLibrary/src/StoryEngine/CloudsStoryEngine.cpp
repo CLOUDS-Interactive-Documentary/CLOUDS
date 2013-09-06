@@ -267,8 +267,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 
 	topicScoreStream << "MAX TIMES ON TOPIC,LAST CLIP SHARES TOPIC BOOST,TWO CLIPS AGO SHARES TOPIC BOOST,TOPIC RELEVANCY MULTIPLIER"<< endl;
 	topicScoreStream << maxTimesOnTopic <<","<< lastClipSharesTopicBoost <<","<< twoClipsAgoSharesTopicBoost <<","<< topicRelevancyMultiplier<<"," <<endl;
-	topicScoreStream<<"Current Topic,Potential Topic,Total Score,Last Clip Commonality,Two Clips Ago Commonality,Relevancy Score,Cohesion Score"<<endl;
+	topicScoreStream << "Current Topic,Potential Topic,Total Score,Last Clip Commonality,Two Clips Ago Commonality,Relevancy Score,Cohesion Score"<<endl;
 
+	vsScoreStream << "Topic,Clip,System Preset,Total Score,Main Topic Score,Secondary Topic Score,Keywords Matched"<<endl;
     clearDichotomiesBalance();
 	CloudsVisualSystemPreset currentPreset;
     CloudsClip clip = seed;
@@ -404,7 +405,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         clipHistory.push_back(clip);
         
 		///////////////// VISUAL SYSTEMS
-		
 		//check to see if we want to add a visual system
         float clipStartTime = act->getItemForClip(clip).startTime;
         float clipEndTime = act->getItemForClip(clip).endTime;
@@ -450,8 +450,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                 if (!isPresetIndefinite) {
                     definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
                 }
-				vsScoreStream << "Started " << (isPresetIndefinite ? "Indefinite" : "Definite") << " Visual System " << currentPreset.getID() << " during clip " << clip.getLinkName() <<
+				
+				vsScoreStream << topic <<","<< clip.getLinkName() <<","<< currentPreset.getID() << endl;
 				vsScoreStream << log << endl;
+
                 systemRunning = true;
             }
         }
@@ -502,7 +504,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	ofBufferToFile(getDataPath() + "logs/topicScores.csv", topicBuffer);
 
 	ofBuffer visualSystemBuffer;
-	topicBuffer.set(vsScoreStream);
+	visualSystemBuffer.set(vsScoreStream);
 	ofBufferToFile(getDataPath() + "logs/visualSystemScores.csv", visualSystemBuffer);
 
     run.actCount++;
@@ -522,6 +524,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 	vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
 	CloudsVisualSystemPreset preset;
 	while(topScore == 0){
+		
 		for(int i = 0; i < presets.size(); i++){
 			string presetLog;
 			presets[i].currentScore = scoreForVisualSystem(presets[i], presetHistory, keyword, currentClip.getKeywords(), presetLog);
@@ -530,19 +533,29 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 		}
 		
 		if(topScore == 0){
+			//we didn't find any visual systems for this clip
+			log += ",ERROR,No valid presets clip keywords\n";
+			log += ",,"+ofJoinString(currentClip.getKeywords(),"\n,,") + "\n";
 			if(adjascentTried){
 				break;
 			}
 			adjascentTried = true;
 			vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
-			log += "ERROR,No valid presets for Keywords " + ofJoinString(currentClip.getKeywords(),", ") + " searching adjacent keywords " + ofJoinString(adjacentTopics, ", ") + "\n";
+			if(adjacentTopics.size() == 0){
+				log += ",ERROR,No topics adjacent to " + keyword + "\n";
+				break;
+			}
+			//Try the 5 nearby clips to start with
+			log += ",searching adjacent keywords:\n";
+			log += +",,"+ofJoinString(adjacentTopics, "\n,,") + "\n";
+			
 			presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
 		}
 	}
 	
 	sort(scoreLogPairs.begin(), scoreLogPairs.end(), logsort);
 	for(int i = 0; i < scoreLogPairs.size(); i++){
-		log += "," + scoreLogPairs[i].second + "\n";
+		log += scoreLogPairs[i].second + "\n";
 	}
 	
 	if(topScore != 0){
@@ -556,43 +569,46 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 	}
 	else{
 		preset = visualSystems->getRandomVisualSystem();
-		log += "ERROR,No Presets found! using random preset "  + preset.getID() + "\n";
+		log += ",ERROR,no presets found! " + preset.getID() + "\n";
 	}
 	
     return preset;
 }
 
 float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log){
-	log += preset.getID() + " ";
+	log += ",,"+preset.getID() + ",";
 	if(!preset.enabled){
-		log += " rejected because it's disabled";
+		log += "rejected because it's disabled";
 		return 0;
 	}
 	
 	if(ofContains(presetHistory, preset.getID())){
-		log += " rejected because we've seen it before";
+		log += "rejected because we've seen it before";
 		return 0;
 	}
 	
 	vector<string> keywords = visualSystems->keywordsForPreset(preset);
 	if(keywords.size() == 0 ){
-		log += " rejected because it has no keywords";
+		log += "rejected because it has no keywords";
 		return 0;
 	}
 	
 	float mainTopicScore = 0;
 	float secondaryTopicScore = 0;
+	vector<string> keywordsMatched;
 	for(int i = 0; i < keywords.size(); i++){
 		if(keywords[i] == currentTopic){
 			mainTopicScore += visualSystemPrimaryTopicBoost;
-			log += currentTopic;
+			keywordsMatched.push_back(keywords[i]);
 		}
 		else if(ofContains(seconardyTopics, keywords[i])){
 			secondaryTopicScore += visualSystemSecondaryTopicBoost;
-			log += keywords[i] + ", ";
+			keywordsMatched.push_back(keywords[i]);
 		}
 	}
-	return mainTopicScore + secondaryTopicScore;
+	float totalScore = mainTopicScore + secondaryTopicScore;
+	log += ofToString(totalScore,1) +","+ ofToString(mainTopicScore,1) +","+ ofToString(secondaryTopicScore,1) +","+ ofJoinString(keywordsMatched, "; ");
+	return totalScore;
 }
 
 void CloudsStoryEngine::clearDichotomiesBalance(){
