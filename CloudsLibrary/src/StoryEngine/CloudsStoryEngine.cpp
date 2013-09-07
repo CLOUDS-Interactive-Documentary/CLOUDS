@@ -814,7 +814,6 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
                 else{
                     dichotomiesScore += -dichotomies[i].balance * dichotomyWeight;
                 }
-                
             }
         }
     }

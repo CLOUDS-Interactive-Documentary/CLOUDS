@@ -203,6 +203,17 @@
 		E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
 		E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
+		E7FC8BF217DA9A51007BEFA5 /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8BE317DA9A51007BEFA5 /* HistoryNode.cpp */; };
+		E7FC8BF317DA9A51007BEFA5 /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8BE517DA9A51007BEFA5 /* WebHistoryVisualSystem.cpp */; };
+		E7FC8C1B17DA9AA5007BEFA5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */; };
+		E7FC8C1C17DA9AA5007BEFA5 /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0517DA9AA5007BEFA5 /* ofxSQLite.cpp */; };
+		E7FC8C1D17DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0717DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp */; };
+		E7FC8C1E17DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0917DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp */; };
+		E7FC8C1F17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0B17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp */; };
+		E7FC8C2017DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0E17DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp */; };
+		E7FC8C2117DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1017DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp */; };
+		E7FC8C2317DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1617DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp */; };
+		E7FC8C3717DA9AC1007BEFA5 /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -860,6 +871,33 @@
 		E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
 		E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E7F77742177395910096AEF7 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
+		E7FC8BE317DA9A51007BEFA5 /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
+		E7FC8BE417DA9A51007BEFA5 /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
+		E7FC8BE517DA9A51007BEFA5 /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
+		E7FC8BE617DA9A51007BEFA5 /* WebHistoryVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHistoryVisualSystem.h; sourceTree = "<group>"; };
+		E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		E7FC8C0317DA9AA5007BEFA5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		E7FC8C0417DA9AA5007BEFA5 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		E7FC8C0517DA9AA5007BEFA5 /* ofxSQLite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLite.cpp; sourceTree = "<group>"; };
+		E7FC8C0617DA9AA5007BEFA5 /* ofxSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLite.h; sourceTree = "<group>"; };
+		E7FC8C0717DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteAbstract.cpp; sourceTree = "<group>"; };
+		E7FC8C0817DA9AA5007BEFA5 /* ofxSQLiteAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteAbstract.h; sourceTree = "<group>"; };
+		E7FC8C0917DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteDelete.cpp; sourceTree = "<group>"; };
+		E7FC8C0A17DA9AA5007BEFA5 /* ofxSQLiteDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteDelete.h; sourceTree = "<group>"; };
+		E7FC8C0B17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteFieldValues.cpp; sourceTree = "<group>"; };
+		E7FC8C0C17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteFieldValues.h; sourceTree = "<group>"; };
+		E7FC8C0D17DA9AA5007BEFA5 /* ofxSQLiteHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteHeaders.h; sourceTree = "<group>"; };
+		E7FC8C0E17DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteInsert.cpp; sourceTree = "<group>"; };
+		E7FC8C0F17DA9AA5007BEFA5 /* ofxSQLiteInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteInsert.h; sourceTree = "<group>"; };
+		E7FC8C1017DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteSelect.cpp; sourceTree = "<group>"; };
+		E7FC8C1117DA9AA5007BEFA5 /* ofxSQLiteSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteSelect.h; sourceTree = "<group>"; };
+		E7FC8C1417DA9AA5007BEFA5 /* ofxSQLiteType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteType.h; sourceTree = "<group>"; };
+		E7FC8C1517DA9AA5007BEFA5 /* ofxSQLiteTypeNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteTypeNow.h; sourceTree = "<group>"; };
+		E7FC8C1617DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteUpdate.cpp; sourceTree = "<group>"; };
+		E7FC8C1717DA9AA5007BEFA5 /* ofxSQLiteUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteUpdate.h; sourceTree = "<group>"; };
+		E7FC8C1817DA9AA5007BEFA5 /* ofxSQLiteWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteWhere.h; sourceTree = "<group>"; };
+		E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
+		E7FC8C3417DA9AC1007BEFA5 /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -917,6 +955,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7FC8C2417DA9AC0007BEFA5 /* ofxTextWriter */,
+				E7FC8BF917DA9AA5007BEFA5 /* ofxSQLite */,
 				E75DBCC517CDC8A600CD99D9 /* ofxMarchingCubes */,
 				E75DBC3E17CDC86000CD99D9 /* ofxAutoReloadedShader */,
 				E785F85417B287FF002371FC /* ofxObjLoader */,
@@ -1094,6 +1134,7 @@
 				E75DB6F017CDC7ED00CD99D9 /* Cosmic */,
 				E75DB9EF17CDC7EF00CD99D9 /* Metaballs */,
 				E75DBAD517CDC7F000CD99D9 /* Oscillations */,
+				E7FC8B7E17DA9A50007BEFA5 /* WebHistory */,
 				E75DBB7A17CDC7F100CD99D9 /* Scrape */,
 				E742501B179F985100B2F0A3 /* Cities */,
 				E742509D179F985200B2F0A3 /* Colony */,
@@ -3006,6 +3047,96 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7FC8B7E17DA9A50007BEFA5 /* WebHistory */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8BE217DA9A51007BEFA5 /* vs_src */,
+			);
+			path = WebHistory;
+			sourceTree = "<group>";
+		};
+		E7FC8BE217DA9A51007BEFA5 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8BE317DA9A51007BEFA5 /* HistoryNode.cpp */,
+				E7FC8BE417DA9A51007BEFA5 /* HistoryNode.h */,
+				E7FC8BE517DA9A51007BEFA5 /* WebHistoryVisualSystem.cpp */,
+				E7FC8BE617DA9A51007BEFA5 /* WebHistoryVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7FC8BF917DA9AA5007BEFA5 /* ofxSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8BFF17DA9AA5007BEFA5 /* src */,
+			);
+			name = ofxSQLite;
+			path = ../../../addons/ofxSQLite;
+			sourceTree = "<group>";
+		};
+		E7FC8BFF17DA9AA5007BEFA5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8C0017DA9AA5007BEFA5 /* lib */,
+				E7FC8C0517DA9AA5007BEFA5 /* ofxSQLite.cpp */,
+				E7FC8C0617DA9AA5007BEFA5 /* ofxSQLite.h */,
+				E7FC8C0717DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp */,
+				E7FC8C0817DA9AA5007BEFA5 /* ofxSQLiteAbstract.h */,
+				E7FC8C0917DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp */,
+				E7FC8C0A17DA9AA5007BEFA5 /* ofxSQLiteDelete.h */,
+				E7FC8C0B17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp */,
+				E7FC8C0C17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.h */,
+				E7FC8C0D17DA9AA5007BEFA5 /* ofxSQLiteHeaders.h */,
+				E7FC8C0E17DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp */,
+				E7FC8C0F17DA9AA5007BEFA5 /* ofxSQLiteInsert.h */,
+				E7FC8C1017DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp */,
+				E7FC8C1117DA9AA5007BEFA5 /* ofxSQLiteSelect.h */,
+				E7FC8C1417DA9AA5007BEFA5 /* ofxSQLiteType.h */,
+				E7FC8C1517DA9AA5007BEFA5 /* ofxSQLiteTypeNow.h */,
+				E7FC8C1617DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp */,
+				E7FC8C1717DA9AA5007BEFA5 /* ofxSQLiteUpdate.h */,
+				E7FC8C1817DA9AA5007BEFA5 /* ofxSQLiteWhere.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7FC8C0017DA9AA5007BEFA5 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8C0117DA9AA5007BEFA5 /* sqlite */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E7FC8C0117DA9AA5007BEFA5 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */,
+				E7FC8C0317DA9AA5007BEFA5 /* sqlite3.h */,
+				E7FC8C0417DA9AA5007BEFA5 /* sqlite3ext.h */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		E7FC8C2417DA9AC0007BEFA5 /* ofxTextWriter */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8C3217DA9AC1007BEFA5 /* src */,
+			);
+			name = ofxTextWriter;
+			path = ../../../addons/ofxTextWriter;
+			sourceTree = "<group>";
+		};
+		E7FC8C3217DA9AC1007BEFA5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */,
+				E7FC8C3417DA9AC1007BEFA5 /* ofxTextWriter.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3262,6 +3393,17 @@
 				E75DBCE717CDC8A700CD99D9 /* ofxMarchingCubes.cpp in Sources */,
 				E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */,
 				E78CCB2217D58E63005F6D77 /* ofxOceanCamera.cpp in Sources */,
+				E7FC8BF217DA9A51007BEFA5 /* HistoryNode.cpp in Sources */,
+				E7FC8BF317DA9A51007BEFA5 /* WebHistoryVisualSystem.cpp in Sources */,
+				E7FC8C1B17DA9AA5007BEFA5 /* sqlite3.c in Sources */,
+				E7FC8C1C17DA9AA5007BEFA5 /* ofxSQLite.cpp in Sources */,
+				E7FC8C1D17DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp in Sources */,
+				E7FC8C1E17DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp in Sources */,
+				E7FC8C1F17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp in Sources */,
+				E7FC8C2017DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp in Sources */,
+				E7FC8C2117DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp in Sources */,
+				E7FC8C2317DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp in Sources */,
+				E7FC8C3717DA9AC1007BEFA5 /* ofxTextWriter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
