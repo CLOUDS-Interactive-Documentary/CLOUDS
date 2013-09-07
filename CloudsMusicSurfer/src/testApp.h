@@ -49,6 +49,7 @@ class testApp : public ofBaseApp{
     void startMusic(int mc, int mh, int mr, float musicdur);
     void stopMusic();
     void loadRTcmixFiles();
+    void loadRTcmixSamples();
     void pushInterface();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)

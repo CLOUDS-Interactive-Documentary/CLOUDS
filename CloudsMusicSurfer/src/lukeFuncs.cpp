@@ -58,13 +58,11 @@ void LOADSOUND(string file, string handle)
 {
     string fullfile = ofToDataPath(file);
     
-    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 10.);
+    OF_buffer_load_set((char*)fullfile.c_str(), (char*)handle.c_str(), 0., 10.);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
     printf("LOADED SOUND %s: file: %s  nframes: %d  nchans: %d\n", (char*)handle.c_str(),
-           (char*)file.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
-     
-
+           (char*)fullfile.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
 }
 
 // basic soundfile mixing interface
@@ -74,7 +72,7 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*thestereoamp, %f)", outskip, inskip, dur, amp, pan);
+    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*amp_declick, %f)", outskip, inskip, dur, amp, pan);
     parse_score(thebuf, bx);
     
 }

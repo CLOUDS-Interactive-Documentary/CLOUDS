@@ -74,7 +74,7 @@ void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan
 
 void REVERB(double time);
 void LOADSOUND(string file, string handle);
-void STEREO(double outskip, double inskip, double dur, double amp, double pan);
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 

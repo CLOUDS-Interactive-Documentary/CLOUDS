@@ -14,3 +14,4 @@ strumsine modalbeats
 strumsine waveguide
 waveguide slowmeshbeats slowwaveshi
 waveguidebeats strumsine filternoise
+phatbeatz filternoise
