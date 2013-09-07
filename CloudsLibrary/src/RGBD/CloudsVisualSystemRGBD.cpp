@@ -15,6 +15,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	drawMesh = false;
 	
 	rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
+	CloudsQuestion::reloadShader();
 
 	generatePointGrid();
 	generateScanlines();
@@ -627,11 +628,13 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 void CloudsVisualSystemRGBD::drawQuestions(){
 	glPointSize(3);
-	
-	ofSetColor(ofColor(0,100,250), 100);
+	CloudsQuestion::startShader();
+	//TODO parameterize
+	CloudsQuestion::shader.setUniform4f("color",0.0,0.4,1.0,0.4);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
 	}
+	CloudsQuestion::endShader();
 	glPointSize(1);
 }
 
@@ -656,6 +659,7 @@ void CloudsVisualSystemRGBD::selfEnd(){
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		particulateController.reloadShaders();
+		CloudsQuestion::reloadShader();
 		rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
 	}
 	

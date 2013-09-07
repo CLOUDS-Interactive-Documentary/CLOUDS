@@ -23,6 +23,15 @@ class CloudsQuestion {
 	
 	void setup();
 	
+	static ofShader shader;
+	static void startShader();
+	static void endShader();
+	static void reloadShader();
+	
+	
+	float expandPercent;
+	float selectPercent;
+	
 	void draw();
 	void drawOverlay();
 	void update();
@@ -34,8 +43,6 @@ class CloudsQuestion {
 	float radius;
 	ofVec3f position;
 	ofQuaternion currentRot;
-	ofQuaternion rot1;
-	ofQuaternion rot2;
 	
 	void mouseMoved(ofMouseEventArgs& args);
 	void mousePressed(ofMouseEventArgs& args);
@@ -43,14 +50,20 @@ class CloudsQuestion {
 	void mouseReleased(ofMouseEventArgs& args);
 
 	ofMesh geometry;
+	ofMesh progressRing;
+	
 	ofMesh sphereGeo;
+	
+	ofMesh dottedCircle;
 	ofVec2f currentScreenPoint;
 
 	//intro question variables
 	bool introQuestion;
 	void orientToCenter();
   protected:
+	
 
+	
 	float hoveringStartTime;
 	
 	bool isSetup;
