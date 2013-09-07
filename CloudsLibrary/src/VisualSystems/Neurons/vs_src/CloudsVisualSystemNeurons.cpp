@@ -1,4 +1,4 @@
-#include "CloudsVisualSystemCollaboration1.h"
+#include "CloudsVisualSystemNeurons.h"
 #include <GLUT/GLUT.h>
 
 #define DEFAULT_BLUE 0xC4 / 255.0
