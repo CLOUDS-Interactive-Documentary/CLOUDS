@@ -7,6 +7,11 @@
 //
 
 #include "CloudsQuestion.h"
+#include "CloudsGlobal.h"
+#include "ofxTween.h"
+
+ofShader CloudsQuestion::shader = ofShader();
+
 ofVec3f randomPointOnSphere(){
 	
 	float theta = ofRandom(TWO_PI);
@@ -17,15 +22,20 @@ ofVec3f randomPointOnSphere(){
 };
 
 CloudsQuestion::CloudsQuestion(){
+	
 	hovering = false;
 	isSetup = false;
-	radius = 15;
+	radius = 10;
 	cam = NULL;
 	introQuestion = false;
 	charsPerSecond = 20;
-	//secondsToWriteQuestion = 2;
+
 	secondsToConsiderSelected = 3;
 	font = NULL;
+	
+	expandPercent = .1;
+	selectPercent = 0;
+
 }
 
 void CloudsQuestion::setup(){
@@ -41,39 +51,82 @@ void CloudsQuestion::setup(){
 			ofLogError("CloudsQuestion::setup") << "no topic associated with quesiton clip " << clip.getLinkName() << endl;
 		}
 		
-//square
-//		geometry.addVertex(ofVec3f(-.5,-.5,0)) ;
-//		geometry.addVertex(ofVec3f(.5,-.5,0));
-//		geometry.addVertex(ofVec3f(.5,.5,0));
-//		geometry.addVertex(ofVec3f(-.5,.5,0));
-
 		//diamonds
-		geometry.addVertex(ofVec3f(0,-.5,0));
-		geometry.addVertex(ofVec3f(.5,0,0));
-		geometry.addVertex(ofVec3f(0,.5,0));
-		geometry.addVertex(ofVec3f(-.5,0,0));
-		
-		geometry.addVertex(ofVec3f(0,-.5,0)); //connect
-		
-		geometry.addVertex(ofVec3f(0,0,.5));
-		geometry.addVertex(ofVec3f(0,.5,0));
-		geometry.addVertex(ofVec3f(0,0,-.5));
-		geometry.addVertex(ofVec3f(0,-.5,0));
-		
-		geometry.setMode(OF_PRIMITIVE_LINE_STRIP);
-		
-		for(int i = 0; i < 200; i++){
-			sphereGeo.addVertex(randomPointOnSphere()*.5);
-		}
+//		geometry.addVertex(ofVec3f(0,-.5,0));
+//		geometry.addVertex(ofVec3f(.5,0,0));
+//		geometry.addVertex(ofVec3f(0,.5,0));
+//		geometry.addVertex(ofVec3f(-.5,0,0));
+//		
+//		geometry.addVertex(ofVec3f(0,-.5,0)); //connect
+//		
+//		geometry.addVertex(ofVec3f(0,0,.5));
+//		geometry.addVertex(ofVec3f(0,.5,0));
+//		geometry.addVertex(ofVec3f(0,0,-.5));
+//		geometry.addVertex(ofVec3f(0,-.5,0));
+//		
+//		geometry.setMode(OF_PRIMITIVE_LINE_STRIP);
+
+		//SPHERE GEO
+//		for(int i = 0; i < 200; i++){
+//			sphereGeo.addVertex(randomPointOnSphere()*.5);
+//		}
 		
 //		rot1.makeRotate(ofRandom(.1,3), randomPointOnSphere());
 //		rot2.makeRotate(ofRandom(.2,4), randomPointOnSphere());
+//		rot1.makeRotate(ofRandom(.1,3), ofVec3f(0,1,0));
+		float clockInnerRadius = .9;
+		float clockThickness = .1;
+		float clockOuterRadius = clockInnerRadius + clockThickness;
 		
-		rot1.makeRotate(ofRandom(.1,3), ofVec3f(0,1,0));
+		for(float i = 0; i <= 1.0; i += 1.0/36.0){
+			float angle = i * 360;
+			ofVec3f inner(0,1,0);
+			inner.rotate(angle, ofVec3f(0,0,1));
+			
+			if(i < 1.0){
+				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
+				dottedCircle.addNormal(inner);
+				dottedCircle.addVertex(inner * .5);
+				
+				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
+				dottedCircle.addNormal(inner);
+				dottedCircle.addVertex(inner * 1.5);
+			}
+			
+			//inner
+			progressRing.addColor(ofFloatColor(0, i, 0));
+			progressRing.addNormal(inner*clockInnerRadius);
+			progressRing.addVertex(inner*.25);
+			
+			//outer
+			progressRing.addColor(ofFloatColor(0, i, 0));
+			progressRing.addNormal(inner*clockOuterRadius);
+			progressRing.addVertex(inner*.25);
+		}
+			
+		//close the loop
+//		progressRing.addColor(ofFloatColor(1, 0, 0));
+//		progressRing.addNormal(ofVec3f(0,clockInnerRadius,0));
+//		progressRing.addVertex(ofVec3f(0,1,0)*.1);
+//		
+//		progressRing.addColor(ofFloatColor(1, 0, 0));
+//		progressRing.addNormal(ofVec3f(0,1.0,0));
+//		progressRing.addVertex(ofVec3f(0,1.0,0));
 		
-		//rot2.makeRotate(ofRandom(.2,4), ofVec3f(0,0,1));
-		
+		progressRing.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		dottedCircle.setMode(OF_PRIMITIVE_LINES);
 	}
+}
+
+void CloudsQuestion::startShader(){
+	CloudsQuestion::shader.begin();
+}
+void CloudsQuestion::endShader(){
+	CloudsQuestion::shader.end();
+}
+void CloudsQuestion::reloadShader(){
+	cout << "RELOADING QUESTION SHADER" << endl;
+	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");
 }
 
 void CloudsQuestion::update(){
@@ -81,10 +134,8 @@ void CloudsQuestion::update(){
 	ofVec3f screenPoint = cam->worldToScreen(position);
 	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
 	
-	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius,0));
+	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0));
 	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
-	//currentRot *= (rot1*rot2);
-	currentRot = rot1 * currentRot;
 }
 
 void CloudsQuestion::draw(){
@@ -97,26 +148,39 @@ void CloudsQuestion::draw(){
 		ofNoFill();
 	}
 
-	float expandPercent;
 	if(hovering){
-		expandPercent = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, .1, 1.0, true);
+		ofxEasingCubic cub;
+		expandPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected*.3, .2, 1.0, true, cub, ofxTween::easeOut);
+		selectPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true, cub, ofxTween::easeOut);
 	}
 	else{
-		expandPercent = .1;
+		expandPercent += (.1 - expandPercent)*.2;
+		selectPercent += (0 - selectPercent)*.4;
 	}
 	
+	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
+	CloudsQuestion::shader.setUniform1f("maxExpand", radius);
+	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
+
 	ofPushMatrix();
 	ofTranslate(position);
+	ofNode n;
+	n.setPosition(position);
+	n.lookAt(cam->getPosition());
+	
+	currentRot.slerp(.1, currentRot, n.getOrientationQuat());
+	
 	ofVec3f axis;
 	float angle;
 	currentRot.getRotate(angle, axis);
+	ofVec3f dial = n.getLookAtDir();
+	ofRotate(-ofGetElapsedTimef()*100,dial.x,dial.y,dial.z);
 	ofRotate(angle,axis.x,axis.y,axis.z);
 	
-	ofScale(radius*expandPercent, radius*expandPercent, radius*expandPercent);
-	//geometry.draw();
-	sphereGeo.drawVertices();
-	//ofCircle(0,0,radius);
-
+//	ofScale(radius*expandPercent, radius*expandPercent, radius*expandPercent);
+	dottedCircle.draw();
+	progressRing.draw();
+	
 	ofPopMatrix();
 
 	ofPopStyle();
@@ -147,12 +211,13 @@ bool CloudsQuestion::isSelected(){
 }
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
+		
 		glDisable(GL_DEPTH_TEST);
 
 		float width = font->stringWidth(question);
 		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
 		ofVec2f screenPosition;
-		if( currentScreenPoint.x >  ofGetWidth()/2){
+		if( currentScreenPoint.x > ofGetWidth()/2){
 			screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
 		}
 		else{
@@ -169,20 +234,20 @@ void CloudsQuestion::drawOverlay(){
 		float secondsToWriteQuestion = question.size() / charsPerSecond;
 		int charactersToType = ofMap(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToWriteQuestion, 0, question.size(), true);
 		string substring = question.substr(0, charactersToType);
-		if(font != NULL){
-			ofPushStyle();
-			ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
-			ofSetColor(50);
-			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
-			ofSetColor(255);
-			ofEnableBlendMode(OF_BLENDMODE_ADD);
+//		if(font != NULL){
+//			ofPushStyle();
+//			ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+//			ofSetColor(50);
+//			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
+//			ofSetColor(255);
+//			ofEnableBlendMode(OF_BLENDMODE_ADD);
 			font->drawString(substring, screenPosition.x+10, screenPosition.y);
 			font->drawString(substring, screenPosition.x+10, screenPosition.y);
-			ofPopStyle();
-		}
-		else{
-			ofDrawBitmapString(substring, screenPosition);
-		}
+//			ofPopStyle();
+//		}
+//		else{
+//			ofDrawBitmapString(substring, screenPosition);
+//		}
 		
 		//DRAW PROGRESS BAR
 		ofPushStyle();
@@ -205,17 +270,16 @@ void CloudsQuestion::drawOverlay(){
 		progress.addColor(flash);
 		//progress.draw(); //disabling for now
 		
-		//DRAW TRACKING LINE
-//		ofSetLineWidth(2);
-//		ofLine(screenPosition.x+15 + width, screenPosition.y+6,
-//			   screenPosition.x+10 + width, screenPosition.y+11);
-//		ofSetColor(flash, 128);
-//		ofSetLineWidth(1);
-//		ofLine(screenPosition.x,screenPosition.y-25, currentScreenPoint.x,currentScreenPoint.y);
-
+		
 		ofPopStyle();
 		glEnable(GL_DEPTH_TEST);
 	}
+
+	ofPushStyle();
+	//debug
+//	ofSetColor(255, 0, 0, 100);
+//	ofCircle(currentScreenPoint, screenRadius);
+	ofPopStyle();
 }
 
 void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
@@ -226,12 +290,14 @@ void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
 	if(cam == NULL){
 		return;
 	}
+	
 	if(!introQuestion){
-		if(!hovering && currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius) {
+		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+		if(!hovering && insideHover) {
 			startHovering();
 		}
-		else {
-			//stopHovering();
+		else if(hovering && !insideHover){
+			stopHovering();
 		}
 	}
 }

@@ -861,7 +861,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 			ofLogError() << "CloudsFCPParser::getRandomClip has no start clips clips with combined videos";
 			return dummyClip;
 		}
-		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
+//		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
 	else if(mustHaveCombinedVideoFile){
@@ -877,7 +877,7 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool 
 			return dummyClip;
 		}
         CloudsClip& clip = getClipWithID( questionIds[ ofRandom(questionIds.size()) ] ) ;
-        cout << "has a question" << clip.getID() << endl;
+//        cout << "has a question" << clip.getID() << endl;
 		return ( clip );
 	}
 	else {

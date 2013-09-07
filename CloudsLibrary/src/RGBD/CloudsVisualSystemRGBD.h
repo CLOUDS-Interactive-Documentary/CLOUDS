@@ -135,10 +135,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	ofShader rgbdShader;
 	
-	//QUESTION
-//	ofVec3f questionOffset;
-//	float questionRange;
-//	float questionFloat;
 	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;
@@ -152,6 +148,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	
+	ofVec3f questionXZ;
+	float questionDriftRange;
+	float questionYCenter;
+	float questionYDriftRange;
+	float questionYRange;
 	
 	//???: maybe we should combine these into a struct?
 	ofVec3f transitionStartPos, transitionEndPos;
