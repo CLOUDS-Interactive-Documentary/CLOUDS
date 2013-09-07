@@ -262,6 +262,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 	
+	for(int i = 0; i < questions.size(); i++){
+		if(questionClip.getID() == questions[i]->clip.getID()){
+			//don't add duplicate questions
+			return;
+		}
+	}
 	CloudsQuestion* q = new CloudsQuestion();
 	q->cam = &cloudsCamera;
 	q->font = &displayFont;
@@ -281,7 +287,7 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
-//	for(int i = 0; i < questions.size(); i++){
+
 	for(int i = questions.size()-1; i >= 0; i--){
 	
 		questions[i]->update();
