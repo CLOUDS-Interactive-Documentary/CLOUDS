@@ -103,7 +103,7 @@ void CloudsQuestion::setup(){
 			progressRing.addNormal(inner*clockOuterRadius);
 			progressRing.addVertex(inner*.25);
 		}
-		
+			
 		//close the loop
 //		progressRing.addColor(ofFloatColor(1, 0, 0));
 //		progressRing.addNormal(ofVec3f(0,clockInnerRadius,0));

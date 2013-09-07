@@ -161,7 +161,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	guis.push_back(cameraGui);
 	guimap[meshGui->getName()] = cameraGui;
 	
-	
 	particleGui = new ofxUISuperCanvas("PARTICLE", gui);
 	particleGui->copyCanvasStyle(gui);
     particleGui->copyCanvasProperties(gui);
@@ -187,6 +186,12 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     questionGui->copyCanvasProperties(gui);
     questionGui->setName("Questions");
     questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	//center point, max drift
+	questionGui->add2DPad("XZ",	ofVec3f(0, -400), ofVec3f(-200, 200), &questionXZ);
+	questionGui->addSlider("Drift Range", 40, 200, &questionDriftRange);
+	questionGui->addSlider("Y Range", 40, 200, &questionYRange);
+	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
@@ -251,10 +256,18 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
+	
 	CloudsQuestion* q = new CloudsQuestion();
 	q->cam = &cloudsCamera;
 	q->font = &displayFont;
 	q->clip = questionClip;
+	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
+								+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
+										  ofRandom(-questionYRange,questionYRange),
+										  ofRandom(-questionDriftRange,questionDriftRange));
+	
+	q->position = translatedHeadPosition + startPosition;
+
 	q->setup();
 	
 	questions.push_back(q);
@@ -263,7 +276,6 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = 0; i < questions.size(); i++){
-		questions[i]->position = translatedHeadPosition + ofVec3f(-cloudsCamera.sideDistance, 0, 0);
 		questions[i]->update();
 	}
 }
@@ -473,20 +485,31 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 
 void CloudsVisualSystemRGBD::selfDrawDebug(){
 	ofSphere(translatedHeadPosition, 10);
+	
+	ofVec3f questionOriginMax = ofVec3f(questionXZ.x, questionYCenter+questionYRange, questionXZ.y);
+	ofVec3f questionOriginMin = ofVec3f(questionXZ.x, questionYCenter-questionYRange, questionXZ.y);
+	ofSphere(translatedHeadPosition+questionOriginMax, 10);
+	ofSphere(translatedHeadPosition+questionOriginMin, 10);
+	
+	ofPushStyle();
+	ofPushMatrix();
+	
+	ofNoFill();
+	ofTranslate(questionXZ.x, questionYCenter, questionXZ.y);
+	ofRotate(90, 1, 0, 0);
+	ofCircle(0, 0, questionDriftRange);
+	
+	ofPopStyle();
+	ofPopMatrix();
 }
 
 void CloudsVisualSystemRGBD::selfSceneTransformation(){
 
 }
 
-
 void CloudsVisualSystemRGBD::selfDraw(){
 	
 	ofPushMatrix();
-	
-	
-	//transition transformation
-//	ofMultMatrix( transitionMatrix );// <--- LB: I think this can go...
 	
 	if(drawCloud && hasSpeaker){
 
