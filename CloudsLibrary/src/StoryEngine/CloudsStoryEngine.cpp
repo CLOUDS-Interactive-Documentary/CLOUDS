@@ -118,14 +118,16 @@ void CloudsStoryEngine::initGui(){
 	for(int i = 0; i < startingNodes.size(); i++){
 		CloudsClip& clip = startingNodes[i];
 		if(!clip.hasQuestion()){
-			continue;
+			questions.push_back("#START CLIP " + ofToUpper(clip.getLinkName()) + " HAS NO QUESTION **");
 		}
-		map<string,string> clipQuestions = clip.getAllQuestionTopicPairs();
-		questions.push_back( clipQuestions.begin()->first + " : " + clipQuestions.begin()->second );
+		else{
+			map<string,string> clipQuestions = clip.getAllQuestionTopicPairs();
+			questions.push_back( clip.getLinkName() + ", " + clipQuestions.begin()->first + ", " + clipQuestions.begin()->second );
+		}
 	}
 	
 	actGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	ofxUIDropDownList* ddQuestions = actGui->addDropDownList("STARTING QUESTIONS", questions, 400);
+	ofxUIDropDownList* ddQuestions = actGui->addDropDownList("STARTING QUESTIONS", questions, 700);
 	ddQuestions->setAutoClose(true);
 	ddQuestions->setShowCurrentSelected(true);
 	ddQuestions->setAllowMultiple(false);
@@ -191,11 +193,11 @@ void CloudsStoryEngine::initGui(){
 }
 
 void CloudsStoryEngine::positionGuis(){
-	actGui->setPosition(0,0);
-	clipGui->setPosition(actGui->getRect()->getMaxX(), actGui->getRect()->y);
+	clipGui->setPosition(0,0);
 	topicGui->setPosition(clipGui->getRect()->getMaxX(), clipGui->getRect()->y);
 	gui->setPosition(topicGui->getRect()->getMaxX(), topicGui->getRect()->y);
 	vsGui->setPosition(gui->getRect()->getMaxX(), gui->getRect()->y);
+	actGui->setPosition(0,clipGui->getRect()->getMaxY());
 }
 
 void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
@@ -204,7 +206,11 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
     if(name == "STARTING QUESTIONS"){
 	    ofxUIDropDownList* b = (ofxUIDropDownList*) e.widget;
 		if(! b->isOpen() && b->getSelectedIndeces().size() > 0){
+
 			CloudsClip clip = parser->getClipsWithKeyword("#start")[ b->getSelectedIndeces()[0] ];
+			
+			cout << "Selected index  is " << b->getSelectedIndeces()[0] << endl;
+			
 			string topic = clip.getAllQuestionTopicPairs().begin()->first;
 			cout << "SELECTED CLIP ** " << clip.getLinkName() << " WITH TOPIC " << topic << endl;
 			CloudsRun run;
@@ -227,7 +233,6 @@ void CloudsStoryEngine::toggleGuis(){
 	gui->toggleVisible();
 	vsGui->toggleVisible();
 }
-
 
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){

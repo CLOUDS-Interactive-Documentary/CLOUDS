@@ -51,8 +51,8 @@ class CloudsStoryEngine {
 
     vector<CloudsDichotomy> getCurrentDichotomyBalance();
 
-  protected:
-
+ protected:
+	
 	ofxUISuperCanvas *actGui;
     ofxUISuperCanvas *gui;
     ofxUISuperCanvas *clipGui;

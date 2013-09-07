@@ -302,7 +302,6 @@ string CloudsClip::getQuestionForTopic(string topic){
     }
     ofLogError()<<"No question found for "<<topic<<" in clip: "<<getLinkName()<<endl;
     return "";
-
 }
 
 vector<string> CloudsClip::getQuestionsVector(){
