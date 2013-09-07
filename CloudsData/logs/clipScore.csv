@@ -1,0 +1,395 @@
+SAME PERSON SUPPRESSION FACTOR,LINK FACTOR,DICHOTOMY WEIGHT,LAST CLIP COMMONALITY MULTIPLIER,TWO CLIPS COMMONALITY MULTIPLIER
+8.81773,20,2,9.35961,5
+Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccurrenceScore,dichotomyWeight,voiceOverScore
+Philip - with programming you can do whatever,cosmogeny
+ , ,Kyle_CH - coding is 1,48.0788,20,28.0788,0,0,0,0
+ , ,Casey - Developing a microworld,28.0788,0,28.0788,0,0,0,0
+ , ,Kyle_CH - coding 2,28.0788,0,28.0788,0,0,0,0
+ , ,Ramsey - minecraft 2,18.7192,0,18.7192,0,0,0,0
+ , ,Ramsey - Conway 1,18.7192,0,18.7192,0,0,0,0
+ , ,Ramsey - Conway 2,18.7192,0,18.7192,0,0,0,0
+ , ,Ramsey - Conway 3,18.7192,0,18.7192,0,0,0,0
+ , ,Shiffman - programming the universe,18.7192,0,18.7192,0,0,0,0
+ , ,Shiffman - how far could we get?,18.7192,0,18.7192,0,0,0,0
+ , ,Marcus - emergence,9.35961,0,9.35961,0,0,0,0
+ , ,Ramsey - minecraft 1,9.35961,0,9.35961,0,0,0,0
+ , ,Ramsey - elegant system,9.35961,0,9.35961,0,0,0,0
+ , ,Shiffman - nature of code book,9.35961,0,9.35961,0,0,0,0
+Kyle_CH - coding is 1,cosmogeny
+ , ,Ramsey - minecraft 2,62.0788,20,28.0788,10,0,4,0
+ , ,Ramsey - Conway 1,62.0788,20,28.0788,10,0,4,0
+ , ,Shiffman - programming the universe,58.0788,20,28.0788,10,0,0,0
+ , ,Philip - build the whole universe,56.2611,20,28.0788,15,-8.81773,2,0
+ , ,Shiffman - how far could we get?,48.7192,20,18.7192,10,0,0,0
+ , ,Ramsey - minecraft 1,45.7192,20,18.7192,5,0,2,0
+ , ,Theo - magic,43.7192,20,18.7192,5,0,0,0
+ , ,Ramsey - emergence from simple rules,22,20,0,0,0,2,0
+ , ,Marcus - emergence,16.3596,0,9.35961,5,0,2,0
+ , ,Ramsey - elegant system,16.3596,0,9.35961,5,0,2,0
+ , ,Shiffman - nature of code book,14.3596,0,9.35961,5,0,0,0
+Ramsey - Conway 1,cosmogeny
+ , ,Shiffman - programming the universe,63.0788,20,28.0788,15,0,0,0
+ , ,Casey - Developing a microworld,52.0788,0,28.0788,20,0,4,0
+ , ,Shiffman - Games,43.7192,20,18.7192,5,0,0,0
+ , ,Kyle_CH - coding 2,42.9015,0,18.7192,25,-8.81773,8,0
+ , ,Casey - 10Print,40.7192,20,18.7192,0,0,2,0
+ , ,Vera - Digital life forms,38.7192,20,18.7192,0,0,0,0
+ , ,Shiffman - how far could we get?,38.0788,0,28.0788,10,0,0,0
+ , ,Jen - a different mathematics,31.3596,20,9.35961,0,0,2,0
+ , ,Marcus - emergence,29.7192,0,18.7192,5,0,6,0
+ , ,Andres - soft systems 1,29.3596,20,9.35961,0,0,0,0
+ , ,Philip - build the whole universe,28.9015,0,18.7192,15,-8.81773,4,0
+ , ,Shiffman - nature of code book,14.3596,0,9.35961,5,0,0,0
+Shiffman - programming the universe,cosmogeny
+ , ,Casey - Developing a microworld,67.0788,20,28.0788,15,0,4,0
+ , ,Ramsey - emergence from simple rules,45.9015,20,18.7192,10,-8.81773,6,0
+ , ,Marcus - Epic Games predictions,45.3596,20,9.35961,10,0,6,0
+ , ,Ramsey - elegant system,41.9015,20,18.7192,10,-8.81773,2,0
+ , ,Marcus - modeling consciousness,40.3596,20,9.35961,5,0,6,0
+ , ,Martin - starry night,37.3596,20,9.35961,0,0,8,0
+ , ,Kyle_CH - coding 2,37.2611,0,28.0788,10,-8.81773,8,0
+ , ,Ramsey - minecraft 2,28.9015,0,18.7192,15,-8.81773,4,0
+ , ,Ramsey - New Kind of Science,18.5419,20,9.35961,0,-8.81773,-2,0
+ , ,Ramsey - minecraft 1,12.5419,0,9.35961,10,-8.81773,2,0
+Casey - Developing a microworld,cosmogeny
+ , ,Philip - build the whole universe,55.2611,20,28.0788,10,-8.81773,6,0
+ , ,Ramsey - Conway 3,53.2611,20,28.0788,10,-8.81773,4,0
+ , ,Ramsey - Conway 2,49.6207,0,37.4384,15,-8.81773,6,0
+ , ,Karolina - system metaphor,41.7192,20,18.7192,5,0,-2,0
+ , ,Marcus - emergence,36.7192,0,18.7192,10,0,8,0
+ , ,Ramsey - elegant system,34.5419,20,9.35961,10,-8.81773,4,0
+ , ,Shiffman - how far could we get?,34.2611,0,28.0788,15,-8.81773,0,0
+ , ,Paola - Thinking by doing,20,20,0,0,0,0,0
+ , ,Ramsey - minecraft 1,18.9015,0,18.7192,5,-8.81773,4,0
+ , ,Shiffman - nature of code book,5.54187,0,9.35961,5,-8.81773,0,0
+Philip - build the whole universe,cosmogeny
+ , ,Shiffman - how far could we get?,44.9015,20,18.7192,15,-8.81773,0,0
+ , ,Ramsey - minecraft 2,42.9015,20,18.7192,15,-8.81773,-2,0
+ , ,Ramsey - emergence from simple rules,40.9015,20,18.7192,5,-8.81773,6,0
+ , ,Kyle_CH - coding 2,38.2611,0,28.0788,15,-8.81773,4,0
+ , ,Kevin - invented as opposed to discovered 1,29.3596,20,9.35961,0,0,0,0
+ , ,Ramsey - elegant system,21.5419,20,9.35961,5,-8.81773,-4,0
+ , ,Lauren - swapping perspectives 1,14.3596,0,9.35961,5,0,0,0
+ , ,Sophy - are we having fun?,14.3596,0,9.35961,5,0,0,0
+ERROR Shiffman - how far could we get? does not have current topic god mode. making free
+Shiffman - how far could we get?,god mode
+ , ,Ramsey - Conway 3,50.2611,20,28.0788,15,-8.81773,-4,0
+ , ,Martin - data revleation,42.7192,20,18.7192,0,0,4,0
+ , ,Jen - Predicting weather,40.7192,20,18.7192,0,0,2,0
+ , ,Theo - inspired by nature,38.7192,20,18.7192,0,0,0,0
+ , ,Martin - birds eye view,29.3596,20,9.35961,0,0,0,0
+ , ,Kyle_CH - coding 2,26.9015,0,18.7192,15,-8.81773,2,0
+ , ,Andres - modeling the human being,25.0788,0,28.0788,5,0,-8,0
+ , ,Theo - magic,23.7192,0,18.7192,5,0,0,0
+ , ,Philip - couldn't do this with actual water,22.0837,0,18.7192,15,-17.6355,6,0
+ , ,Karolina - system metaphor,21.7192,0,18.7192,5,0,-2,0
+ , ,Jer - Pattern,20,20,0,0,0,0,0
+ , ,Bruce - beauty of code 3,19.3596,0,9.35961,10,0,0,0
+ , ,Bruce - beauty of code 2,19.3596,0,9.35961,10,0,0,0
+ , ,Karolina - stasis,19.3596,0,9.35961,10,0,0,0
+ , ,Kyle_CH - nature is complex,18.5419,20,9.35961,0,-8.81773,-2,0
+ , ,Marcus - code for storytelling,18.3596,0,9.35961,5,0,4,0
+ , ,Andres - an overly complex model,18,20,0,0,0,-2,0
+ , ,Ramsey - minecraft 2,17.9015,0,18.7192,10,-8.81773,-2,0
+ , ,Philip - programming the river,17.0837,0,18.7192,10,-17.6355,6,0
+ , ,Casey - emergence,16.9015,0,18.7192,5,-8.81773,2,0
+ , ,Karolina - uncanny/sniff,16.3596,0,9.35961,5,0,2,0
+ , ,Jer - Generative Art,16.3596,0,9.35961,5,0,2,0
+ , ,Theo - funky forest,16.3596,0,9.35961,5,0,2,0
+ , ,Marcus - energy flow,16.3596,0,9.35961,5,0,2,0
+ , ,Andres - protein folding 1,14.3596,0,9.35961,5,0,0,0
+ , ,Andres - protein folding 2,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - Fountain pen,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - Epic Games predictions,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - modeling consciousness,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - global conversation,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - energy flow_riot,14.3596,0,9.35961,5,0,0,0
+ , ,Karolina - suspension of disbelief,14.3596,0,9.35961,5,0,0,0
+ , ,Casey - pseudo-science,13.5419,0,9.35961,15,-8.81773,-2,0
+ , ,Bruce - Simulation Replication Recursion,12.3596,0,9.35961,5,0,-2,0
+ , ,Andres - make an egg,12.3596,0,9.35961,5,0,-2,0
+ , ,Philip - toxi's physics,11.0837,0,18.7192,10,-17.6355,0,0
+ , ,Nervous_Jesse - simulation,10.3596,0,9.35961,5,0,-4,0
+ , ,Jen - Math simulating reality,10.3596,0,9.35961,5,0,-4,0
+ , ,Casey - Tron,9.54187,0,9.35961,5,-8.81773,4,0
+ , ,Kyle_CH - coral reefs,9.18227,20,0,0,-8.81773,-2,0
+ , ,Casey - What is emergence?,9.18227,20,0,0,-8.81773,-2,0
+ , ,Philip - understanding through physics,5.72414,0,9.35961,10,-17.6355,4,0
+ , ,Casey - You need noise,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Kyle_CH - storytelling,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Kyle_CH - Polygons,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Kyle_CH - Modeling consciousness,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Kyle_CH - modeling consciousness 2,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Philip - limitations,2.36453,20,0,0,-17.6355,0,0
+ , ,Philip - all the points can flush,1.72414,0,9.35961,10,-17.6355,0,0
+ , ,Philip - learn through programming,0.724138,0,9.35961,5,-17.6355,4,0
+ , ,Philip - bits and bytes,-3.27586,0,9.35961,5,-17.6355,0,0
+Ramsey - Conway 3,simulation
+ , ,Karolina - system metaphor,50.7192,20,18.7192,10,0,2,0
+ , ,Casey - What is emergence?,29.9015,20,18.7192,0,-8.81773,0,0
+ , ,Kyle_CH - coding 2,23.9015,0,18.7192,10,-8.81773,4,0
+ , ,Casey - emergence,23.9015,0,18.7192,10,-8.81773,4,0
+ , ,Marcus - simulation to stories,23.3596,0,9.35961,10,0,4,0
+ , ,Shiffman - Constraints:,21.7241,20,9.35961,10,-17.6355,0,0
+ , ,Andres - modeling the human being,20.3596,0,9.35961,15,0,-4,0
+ , ,Theo - magic,19.3596,0,9.35961,10,0,0,0
+ , ,Jer - Generative Art,18.3596,0,9.35961,5,0,4,0
+ , ,Marcus - code for storytelling,18.3596,0,9.35961,5,0,4,0
+ , ,Marcus - energy flow,16.3596,0,9.35961,5,0,2,0
+ , ,Andres - protein folding 2,16.3596,0,9.35961,5,0,2,0
+ , ,Andres - protein folding 1,16.3596,0,9.35961,5,0,2,0
+ , ,Shiffman - Games,15.4434,0,28.0788,5,-17.6355,0,0
+ , ,Shiffman - NOC 2,15.0837,0,18.7192,10,-17.6355,4,0
+ , ,Casey - You need noise,14.9015,0,18.7192,5,-8.81773,0,0
+ , ,Marcus - modeling consciousness,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - global conversation,14.3596,0,9.35961,5,0,0,0
+ , ,Andres - make an egg,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - beauty of code 2,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - beauty of code 3,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - Simulation Replication Recursion,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - Fountain pen,14.3596,0,9.35961,5,0,0,0
+ , ,Jen - Math simulating reality,14.3596,0,9.35961,5,0,0,0
+ , ,Karolina - stasis,14.3596,0,9.35961,5,0,0,0
+ , ,Karolina - uncanny/sniff,14.3596,0,9.35961,5,0,0,0
+ , ,Nervous_Jesse - simulation,12.3596,0,9.35961,5,0,-2,0
+ , ,Karolina - suspension of disbelief,12.3596,0,9.35961,5,0,-2,0
+ , ,Casey - Tron,9.54187,0,9.35961,5,-8.81773,4,0
+ , ,Philip - programming the river,7.72414,0,9.35961,10,-17.6355,6,0
+ , ,Shiffman - a mystical quality,6.72414,0,9.35961,15,-17.6355,0,0
+ , ,Philip - couldn't do this with actual water,5.72414,0,9.35961,10,-17.6355,4,0
+ , ,Kyle_CH - Modeling consciousness,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Kyle_CH - modeling consciousness 2,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Philip - toxi's physics,3.72414,0,9.35961,10,-17.6355,2,0
+ , ,Kyle_CH - storytelling,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Philip - learn through programming,2.72414,0,9.35961,5,-17.6355,6,0
+ , ,Shiffman - NOC 1,1.72414,0,9.35961,10,-17.6355,0,0
+ , ,Shiffman - NOC 3,1.72414,0,9.35961,10,-17.6355,0,0
+ , ,Casey - pseudo-science,1.54187,0,9.35961,5,-8.81773,-4,0
+ , ,Philip - understanding through physics,0.724138,0,9.35961,5,-17.6355,4,0
+ , ,Philip - all the points can flush,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - reality will only get you so far,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Philip - bits and bytes,-1.27586,0,9.35961,5,-17.6355,2,0
+ , ,Shiffman - mutation,-3.27586,0,9.35961,5,-17.6355,0,0
+Karolina - system metaphor,simulation
+ , ,Kevin - game designers,66.4384,20,37.4384,5,0,4,0
+ , ,Kevin - non-mimetic reality,53.0788,20,28.0788,5,0,0,0
+ , ,Ramsey - Conway 2,51.0837,0,18.7192,50,-17.6355,0,0
+ , ,Jen - Math simulating reality,45.7192,20,18.7192,5,0,2,0
+ , ,Marcus - Epic Games predictions,40.0788,0,28.0788,10,0,2,0
+ , ,Andres - modeling the human being,23.7192,0,18.7192,5,0,0,0
+ , ,Bruce - Fountain pen,23.7192,0,18.7192,5,0,0,0
+ , ,Philip - programming the river,22.7241,20,9.35961,5,-17.6355,6,0
+ , ,Kyle_CH - Polygons,19.9015,0,18.7192,10,-8.81773,0,0
+ , ,Philip - bits and bytes,19.4434,0,28.0788,5,-17.6355,4,0
+ , ,Marcus - energy flow_riot,19.3596,0,9.35961,10,0,0,0
+ , ,Marcus - code for storytelling,18.3596,0,9.35961,5,0,4,0
+ , ,Andres - protein folding 2,18.3596,0,9.35961,5,0,4,0
+ , ,Andres - protein folding 1,18.3596,0,9.35961,5,0,4,0
+ , ,Jer - Generative Art,18.3596,0,9.35961,5,0,4,0
+ , ,Theo - funky forest,16.3596,0,9.35961,5,0,2,0
+ , ,Marcus - energy flow,16.3596,0,9.35961,5,0,2,0
+ , ,Marcus - simulation to stories,16.3596,0,9.35961,5,0,2,0
+ , ,Andres - make an egg,16.3596,0,9.35961,5,0,2,0
+ , ,Shiffman - Games,16.0837,0,18.7192,15,-17.6355,0,0
+ , ,Shiffman - reality will only get you so far,15.4434,0,28.0788,5,-17.6355,0,0
+ , ,Shiffman - NOC 2,15.0837,0,18.7192,10,-17.6355,4,0
+ , ,Kyle_CH - coding 2,14.5419,0,9.35961,10,-8.81773,4,0
+ , ,Casey - emergence,14.5419,0,9.35961,10,-8.81773,4,0
+ , ,Bruce - beauty of code 2,14.3596,0,9.35961,5,0,0,0
+ , ,Theo - magic,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - beauty of code 3,14.3596,0,9.35961,5,0,0,0
+ , ,Bruce - Simulation Replication Recursion,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - global conversation,14.3596,0,9.35961,5,0,0,0
+ , ,Nervous_Jesse - simulation,14.3596,0,9.35961,5,0,0,0
+ , ,Marcus - modeling consciousness,12.3596,0,9.35961,5,0,-2,0
+ , ,Kyle_CH - videogame world,12.1823,20,0,5,-8.81773,-4,0
+ , ,Kyle_CH - storytelling,10.9015,0,18.7192,5,-8.81773,-4,0
+ , ,Ramsey - minecraft 2,10.7241,0,9.35961,15,-17.6355,4,0
+ , ,Casey - You need noise,10.5419,0,9.35961,10,-8.81773,0,0
+ , ,Philip - understanding through physics,10.0837,0,18.7192,5,-17.6355,4,0
+ , ,Casey - Tron,9.54187,0,9.35961,5,-8.81773,4,0
+ , ,Shiffman - NOC 1,6.08374,0,18.7192,5,-17.6355,0,0
+ , ,Kyle_CH - Modeling consciousness,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Kyle_CH - modeling consciousness 2,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Philip - learn through programming,4.72414,0,9.35961,5,-17.6355,8,0
+ , ,Philip - toxi's physics,0.724138,0,9.35961,5,-17.6355,4,0
+ , ,Shiffman - Constraints:,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - mutation,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - NOC 3,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - a mystical quality,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Philip - all the points can flush,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Philip - couldn't do this with actual water,-1.27586,0,9.35961,5,-17.6355,2,0
+ , ,Casey - pseudo-science,-0.458128,0,9.35961,5,-8.81773,-6,0
+ERROR Kevin - game designers does not have current topic simulation. making free
+Kevin - game designers,simulation
+ , ,Paola - Portal,51.7192,20,18.7192,5,0,8,0
+ , ,Paola - Moma games,35.3596,20,9.35961,0,0,6,0
+ , ,Kyle_CH - Avatars,34.9015,20,18.7192,5,-8.81773,0,0
+ , ,Zach - minecraft livecode,29.3596,20,9.35961,0,0,0,0
+ , ,Jen - objective subjective,28.7192,0,18.7192,10,0,0,0
+ , ,Kyle_CH - virtual and identity,25.5419,20,9.35961,5,-8.81773,0,0
+ , ,Karolina - uncanny/sniff,20.9015,0,18.7192,15,-8.81773,-4,0
+ , ,Andres - seeing molecules,20.3596,0,9.35961,5,0,6,0
+ , ,Bruce - Fountain pen,19.3596,0,9.35961,10,0,0,0
+ , ,Karolina - suspension of disbelief,18.9015,0,18.7192,15,-8.81773,-6,0
+ , ,Jen - oversimplified circles 2,18.3596,0,9.35961,5,0,4,0
+ , ,Ramsey - a piece of my mind,17.7241,20,9.35961,0,-17.6355,6,0
+ , ,Kyle_CH - videogame world,16.5419,20,9.35961,0,-8.81773,-4,0
+ , ,Golan_AMA - aesthetics and abstraction,16.3596,0,9.35961,5,0,2,0
+ , ,Golan_AMA - abstraction,16.3596,0,9.35961,5,0,2,0
+ , ,Kyle_CH - virtual space online,11.1823,20,0,0,-8.81773,0,0
+ , ,Kyle_CH - Polygons,10.5419,0,9.35961,10,-8.81773,0,0
+ , ,Shiffman - NOC 1,1.72414,0,9.35961,10,-17.6355,0,0
+ERROR Paola - Portal does not have current topic representation. making free
+Paola - Portal,representation
+ , ,Kevin - No consequences 1,46.9015,20,18.7192,15,-8.81773,2,0
+ , ,Aaron - experience design,39.3596,20,9.35961,10,0,0,0
+ , ,Zach - minecraft livecode,34.3596,20,9.35961,5,0,0,0
+ , ,Kyle_CH - MMORPGs,25.5419,20,9.35961,5,-8.81773,0,0
+ , ,Kyle_CH - videogame world,21.5419,20,9.35961,5,-8.81773,-4,0
+ , ,Marcus - Epic Games predictions,21.3596,0,9.35961,10,0,2,0
+ , ,Marcus - lego bricks,20.3596,0,9.35961,5,0,6,0
+ , ,Casey - Indie Game movement,19.9015,0,18.7192,10,-8.81773,0,0
+ , ,Casey - It's not cinema not a game,19.5419,20,9.35961,5,-8.81773,-6,0
+ , ,Marcus - Sims,18.3596,0,9.35961,5,0,4,0
+ , ,Ramsey - games for access,17.0837,0,18.7192,10,-17.6355,6,0
+ , ,Kevin - algo chess 2,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Kevin - algo chess 1,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Karolina - Everything,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Ramsey - Conway 2,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - Games,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - gambling 1,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - gambling 2,-3.27586,0,9.35961,5,-17.6355,0,0
+Kevin - No consequences 1,games
+ , ,Nervous_Jesse - our explorations are random,24,20,0,0,0,4,0
+ , ,Marcus - lego bricks,22.3596,0,9.35961,5,0,8,0
+ , ,Marcus - Sims,20.3596,0,9.35961,5,0,6,0
+ , ,Bruce - beauty of math,20,20,0,0,0,0,0
+ , ,Ramsey - games for access,17.0837,0,18.7192,10,-17.6355,6,0
+ , ,Shantell - drawing with computers,16,20,0,0,0,-4,0
+ , ,Karolina - Everything,7.54187,0,9.35961,5,-8.81773,2,0
+ , ,Casey - It's not cinema not a game,1.54187,0,9.35961,5,-8.81773,-4,0
+ , ,Ramsey - Conway 2,-1.27586,0,9.35961,5,-17.6355,2,0
+ , ,Shiffman - Games,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - gambling 1,-3.27586,0,9.35961,5,-17.6355,0,0
+ , ,Shiffman - gambling 2,-3.27586,0,9.35961,5,-17.6355,0,0
+ERROR Nervous_Jesse - our explorations are random does not have current topic games. making free
+Nervous_Jesse - our explorations are random,games
+ , ,Marius - gardening,38.7192,20,18.7192,0,0,0,0
+ , ,JTNimoy - thinking by doing,31.3596,20,9.35961,0,0,2,0
+ , ,Shantell - drawing with computers,25.3596,20,9.35961,0,0,-4,0
+ , ,Marcus - emergence,24.7192,0,18.7192,0,0,6,0
+ , ,Marcus - Sims,20.3596,0,9.35961,5,0,6,0
+ , ,Zach - debugging,20,20,0,0,0,0,0
+ , ,Marius - parameter space,16,20,0,0,0,-4,0
+ , ,Karolina - Ocean as metaphor,15.5419,0,9.35961,0,-8.81773,0,15
+ , ,Marcus - lego bricks,14.3596,0,9.35961,5,0,0,0
+ , ,Kevin - no consequences 2,13.3645,20,0,5,-17.6355,6,0
+ , ,Jen - Math shapes the world,13.3596,0,9.35961,0,0,4,0
+ , ,Golan - woah,13.3596,0,9.35961,0,0,4,0
+ , ,Golan - woah2,13.3596,0,9.35961,0,0,4,0
+ , ,Casey - Ideally it goes beyond my imagination,13.1823,20,0,0,-8.81773,2,0
+ , ,Casey - Computer as collaborator,12.5419,0,9.35961,0,-8.81773,12,0
+ , ,Andres - fuzzy systems,9.35961,0,9.35961,0,0,0,0
+ , ,Andres - soft systems 1,9.35961,0,9.35961,0,0,0,0
+ , ,Vera - Playing with a system,9.35961,0,9.35961,0,0,0,0
+ , ,Sophy - the Cloud,9.35961,0,9.35961,0,0,0,0
+ , ,Jen - Predicting weather,9.35961,0,9.35961,0,0,0,0
+ , ,Golan - audiovisual concept,9.35961,0,9.35961,0,0,0,0
+ , ,Karolina - Everything,7.54187,0,9.35961,5,-8.81773,2,0
+ , ,Andres - modeling the human being,5.35961,0,9.35961,0,0,-4,0
+ , ,Kyle_CH - Casey Reas Music Visualizations,4.54187,0,9.35961,0,-8.81773,4,0
+ , ,Kevin - algo trading 1,3.72414,0,9.35961,0,-17.6355,12,0
+ , ,Kevin - printing code,3.72414,0,9.35961,0,-17.6355,12,0
+ , ,Casey - Systems theory,2.54187,0,9.35961,0,-8.81773,2,0
+ , ,Kevin - Draft mode,2.36453,20,0,0,-17.6355,0,0
+ , ,Kevin - invented as opposed to discovered 1,1.08374,0,18.7192,0,-17.6355,0,0
+ , ,Kevin - invented as opposed to discovered 2,1.08374,0,18.7192,0,-17.6355,0,0
+ , ,Kyle_CH - Sentience of digital art,0.541872,0,9.35961,0,-8.81773,0,0
+ , ,Casey - thinking about time,0.541872,0,9.35961,0,-8.81773,0,0
+ , ,Ramsey - elegant system,-8.27586,0,9.35961,0,-17.6355,0,0
+ , ,Ramsey - C++ built the modern world,-6.27586,0,9.35961,0,-17.6355,2,0
+ , ,Philip - system in your head,-6.27586,0,9.35961,0,-17.6355,2,0
+ , ,Kevin - computation was invented,-4.27586,0,9.35961,0,-17.6355,4,0
+ , ,Kevin - computation is unnatural,-8.27586,0,9.35961,0,-17.6355,0,0
+ , ,Andres - modeling complex systems,-2.64039,0,9.35961,0,0,-12,0
+ERROR Marius - gardening does not have current topic systems. making free
+Marius - gardening,systems
+ , ,Casey - You need noise,29.9015,20,18.7192,0,-8.81773,0,0
+ , ,Nervous_Jesse - doing something new with a system,23.5419,0,9.35961,15,-8.81773,8,0
+ , ,Andres - fuzzy systems,23,20,0,5,0,-2,0
+ , ,Bruce - Gardening 2,22.7192,0,18.7192,10,0,-6,0
+ , ,Casey - randomness,22.5419,20,9.35961,0,-8.81773,2,0
+ , ,Maeda - Inexactitude:,18,20,0,0,0,-2,0
+ , ,Bruce - Gardening 1,14.3596,0,9.35961,5,0,0,0
+ , ,Casey - tangle,7.18227,20,0,0,-8.81773,-4,0
+ , ,Kevin - invented as opposed to discovered 2,1.72414,0,9.35961,10,-17.6355,0,0
+ERROR Casey - You need noise does not have current topic gardening. making free
+Casey - You need noise,gardening
+ , ,Marius - constraining randomness,53.9015,20,18.7192,20,-8.81773,4,0
+ , ,Andres - fuzzy systems,32.7192,20,18.7192,0,0,-6,0
+ , ,Andres - soft systems 2,26,20,0,0,0,6,0
+ , ,Golan - woah2,18.3596,0,9.35961,5,0,4,0
+ , ,Marius - It's dirtier than that,16.1823,20,0,5,-8.81773,0,0
+ , ,Shiffman - randomness can be not very thoughtful,6.08374,0,18.7192,5,-17.6355,0,0
+ , ,Shiffman - mutation,6.08374,0,18.7192,5,-17.6355,0,0
+ , ,Marius - algorithms as parameter space,5.54187,0,9.35961,5,-8.81773,0,0
+ , ,Marius - parameter space,3.54187,0,9.35961,5,-8.81773,-2,0
+ , ,Shiffman - make it random,-3.27586,0,9.35961,5,-17.6355,0,0
+Marius - constraining randomness,randomness
+ , ,Ramsey - emergence from simple rules,36.0837,20,18.7192,5,-17.6355,10,0
+ , ,Andres - soft systems 1,34.3596,20,9.35961,5,0,0,0
+ , ,Casey - 10Print,33.0837,20,18.7192,10,-17.6355,2,0
+ , ,Shantell - luck,23.3596,0,9.35961,10,0,4,0
+ , ,Shiffman - mutation,21.7241,20,9.35961,10,-17.6355,0,0
+ , ,Shantell - Sharing creates luck,19.3596,0,9.35961,10,0,0,0
+ , ,Casey - What is emergence?,18.7241,20,9.35961,5,-17.6355,2,0
+ , ,Golan - woah2,18.3596,0,9.35961,5,0,4,0
+ , ,Nervous_Jesse - Time in the universe,13.1823,20,0,0,-8.81773,2,0
+ , ,Casey - randomness,13.0837,0,18.7192,10,-17.6355,2,0
+ , ,Ramsey - conway,10.3645,20,0,0,-17.6355,8,0
+ , ,Shiffman - make it random,6.08374,0,18.7192,5,-17.6355,0,0
+ , ,Shiffman - randomness can be not very thoughtful,1.72414,0,9.35961,10,-17.6355,0,0
+ERROR Ramsey - emergence from simple rules does not have current topic randomness. making free
+Ramsey - emergence from simple rules,randomness
+ , ,Andres - soft systems 1,43.7192,20,18.7192,5,0,0,0
+ , ,Marcus - emergence,38.0788,0,28.0788,10,0,0,0
+ , ,Jen - a different mathematics,35.3596,20,9.35961,0,0,6,0
+ , ,Andres - modeling complex systems,32.7192,20,18.7192,0,0,-6,0
+ , ,Marcus - Sims,31.7192,0,18.7192,5,0,8,0
+ , ,Casey - What is emergence?,28.0837,20,18.7192,5,-17.6355,2,0
+ , ,Shiffman - genetics short 2,26.0837,20,18.7192,5,-17.6355,0,0
+ , ,Marcus - lego bricks,25.7192,0,18.7192,5,0,2,0
+ , ,Nervous_Jessica - biocomputer,25.7192,0,18.7192,5,0,2,0
+ , ,Shiffman - NOC 2,23.4434,0,28.0788,5,-17.6355,8,0
+ , ,Jer - fireflies,22.3596,0,9.35961,5,0,8,0
+ , ,Casey - emergence,19.0837,0,18.7192,10,-17.6355,8,0
+ , ,Nervous_Jessica - RNA and Viruses,16.3596,0,9.35961,5,0,2,0
+ , ,Nervous_Jesse - organic process,15.5419,0,9.35961,15,-8.81773,0,0
+ , ,Nervous_Jesse - reaction lamp,14.5419,0,9.35961,10,-8.81773,4,0
+ , ,Vera - Playing with a system,14.3596,0,9.35961,5,0,0,0
+ , ,Vera - Digital life forms,14.3596,0,9.35961,5,0,0,0
+ , ,Shiffman - NOC 1,11.7241,20,9.35961,0,-17.6355,0,0
+ , ,Casey - Systems theory,8.08374,0,18.7192,5,-17.6355,2,0
+ , ,Shiffman - Games,6.08374,0,18.7192,5,-17.6355,0,0
+ , ,Kevin - printing code,4.36453,20,0,0,-17.6355,2,0
+ , ,Shiffman - nature of code book,2.36453,20,0,0,-17.6355,0,0
+Andres - soft systems 1,emergence
+ , ,Marcus - Sims,56.7192,20,18.7192,10,0,8,0
+ , ,Ramsey - elegant system,43.6256,20,28.0788,20,-26.4532,2,0
+ , ,Vera - Playing with a system,23.7192,0,18.7192,5,0,0,0
+ , ,Nervous_Jessica - biocomputer,21.3596,0,9.35961,10,0,2,0
+ , ,Jer - fireflies,20.3596,0,9.35961,5,0,6,0
+ , ,Marcus - energy flow_riot,19.3596,0,9.35961,10,0,0,0
+ , ,Nervous_Jesse - organic process,14.9015,0,18.7192,5,-8.81773,0,0
+ , ,Shiffman - NOC 2,14.7241,0,9.35961,15,-17.6355,8,0
+ , ,Vera - Digital life forms,14.3596,0,9.35961,5,0,0,0
+ , ,Nervous_Jessica - RNA and Viruses,14.3596,0,9.35961,5,0,0,0
+ , ,Casey - Systems theory,13.0837,0,18.7192,10,-17.6355,2,0
+ , ,Ramsey - Conway 2,9.9064,0,9.35961,25,-26.4532,2,0
+ , ,Casey - emergence,9.72414,0,9.35961,10,-17.6355,8,0
+ , ,Nervous_Jesse - reaction lamp,9.54187,0,9.35961,5,-8.81773,4,0
+ , ,Casey - What is emergence?,3.72414,0,9.35961,10,-17.6355,2,0
+ , ,Ramsey - conway,3.5468,20,0,10,-26.4532,0,0
+ , ,Shiffman - Games,1.72414,0,9.35961,10,-17.6355,0,0
+ , ,Ramsey - New Kind of Science,-2.0936,0,9.35961,15,-26.4532,0,0
