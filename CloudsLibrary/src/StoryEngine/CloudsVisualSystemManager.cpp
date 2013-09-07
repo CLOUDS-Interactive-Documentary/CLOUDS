@@ -10,7 +10,7 @@
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemCollaboration1.h"
+#include "CloudsVisualSystemNeurons.h"
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
@@ -55,7 +55,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	presets.clear();
 
-	registerVisualSystem( new CloudsVisualSystemCollaboration1() );
+	registerVisualSystem( new CloudsVisualSystemNeurons() );
 	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem( new CloudsVisualSystemVerletForm() );
 	registerVisualSystem( new CloudsVisualSystemDataCascade() );
