@@ -112,8 +112,8 @@
 		E739965317872FFC00EA5F4D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739965217872FFC00EA5F4D /* AVFoundation.framework */; };
 		E73996551787300700EA5F4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73996541787300700EA5F4D /* QuartzCore.framework */; };
 		E73996571787300D00EA5F4D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73996561787300C00EA5F4D /* CoreMedia.framework */; };
+		E74620CB17DB8162002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620C917DB8162002FC464 /* CloudsSpeaker.cpp */; };
 		E74CE81317663BAA00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE81117663BAA00083C4C /* ClusterData.cpp */; };
-		E75DB6C217CDC02A00CD99D9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E75DB6B917CDC02A00CD99D9 /* .gitignore */; };
 		E75DB6C317CDC02A00CD99D9 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6BA17CDC02A00CD99D9 /* CloudsRGBDCamera.cpp */; };
 		E75DB6C417CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6BC17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp */; };
 		E75DB6C517CDC02A00CD99D9 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6BE17CDC02A00CD99D9 /* CloudsVisualSystem.cpp */; };
@@ -121,9 +121,6 @@
 		E75DB6E817CDC0A100CD99D9 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DB6DC17CDC0A100CD99D9 /* ofxGameCamera.cpp */; };
 		E79DD944178B71A300057B34 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79DD942178B71A200057B34 /* CloudsQuestion.cpp */; };
 		E7A1E0C81760E80E00A51263 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A1E0C71760E80E00A51263 /* libz.dylib */; };
-		E7BBB4D0179FA7EB007D7EC1 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4CA179FA7EB007D7EC1 /* ParticleConnection.cpp */; };
-		E7BBB4D1179FA7EB007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4CC179FA7EB007D7EC1 /* ParticleConnectionGenerator.cpp */; };
-		E7BBB4D2179FA7EB007D7EC1 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4CE179FA7EB007D7EC1 /* ParticleConnector.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -380,6 +377,8 @@
 		E73996541787300700EA5F4D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E73996561787300C00EA5F4D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E7402DBD178F304700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
+		E74620C917DB8162002FC464 /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSpeaker.cpp; sourceTree = "<group>"; };
+		E74620CA17DB8162002FC464 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E74CE81117663BAA00083C4C /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
 		E74CE81217663BAA00083C4C /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E753BD7F1740B241005952A8 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
@@ -426,7 +425,6 @@
 		E753BDA81740B241005952A8 /* ofxUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWaveform.h; sourceTree = "<group>"; };
 		E753BDA91740B241005952A8 /* ofxUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWidget.h; sourceTree = "<group>"; };
 		E753BDAA1740B241005952A8 /* ofxUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUIWidgetWithLabel.h; sourceTree = "<group>"; };
-		E75DB6B917CDC02A00CD99D9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E75DB6BA17CDC02A00CD99D9 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E75DB6BB17CDC02A00CD99D9 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E75DB6BC17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -440,12 +438,6 @@
 		E79DD942178B71A200057B34 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E79DD943178B71A300057B34 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E7A1E0C71760E80E00A51263 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		E7BBB4CA179FA7EB007D7EC1 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
-		E7BBB4CB179FA7EB007D7EC1 /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
-		E7BBB4CC179FA7EB007D7EC1 /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
-		E7BBB4CD179FA7EB007D7EC1 /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
-		E7BBB4CE179FA7EB007D7EC1 /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
-		E7BBB4CF179FA7EB007D7EC1 /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -633,7 +625,6 @@
 		E731D65117401845006B9650 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBB4C9179FA7EB007D7EC1 /* ConnectorParticles */,
 				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
 				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
@@ -646,6 +637,8 @@
 		E731D65817401845006B9650 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E74620CA17DB8162002FC464 /* CloudsSpeaker.h */,
+				E74620C917DB8162002FC464 /* CloudsSpeaker.cpp */,
 				E731D65B17401845006B9650 /* CloudsEvents.h */,
 				E731D66117401845006B9650 /* CloudsLink.h */,
 				E731D66017401845006B9650 /* CloudsLink.cpp */,
@@ -1101,11 +1094,10 @@
 		E75DB6B817CDC02A00CD99D9 /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E75DB6B917CDC02A00CD99D9 /* .gitignore */,
-				E75DB6BA17CDC02A00CD99D9 /* CloudsRGBDCamera.cpp */,
 				E75DB6BB17CDC02A00CD99D9 /* CloudsRGBDCamera.h */,
-				E75DB6BC17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp */,
+				E75DB6BA17CDC02A00CD99D9 /* CloudsRGBDCamera.cpp */,
 				E75DB6BD17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.h */,
+				E75DB6BC17CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp */,
 				E75DB6BE17CDC02A00CD99D9 /* CloudsVisualSystem.cpp */,
 				E75DB6BF17CDC02A00CD99D9 /* CloudsVisualSystem.h */,
 				E75DB6C017CDC02A00CD99D9 /* ofxLight.h */,
@@ -1130,19 +1122,6 @@
 				E75DB6DD17CDC0A100CD99D9 /* ofxGameCamera.h */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		E7BBB4C9179FA7EB007D7EC1 /* ConnectorParticles */ = {
-			isa = PBXGroup;
-			children = (
-				E7BBB4CA179FA7EB007D7EC1 /* ParticleConnection.cpp */,
-				E7BBB4CB179FA7EB007D7EC1 /* ParticleConnection.h */,
-				E7BBB4CC179FA7EB007D7EC1 /* ParticleConnectionGenerator.cpp */,
-				E7BBB4CD179FA7EB007D7EC1 /* ParticleConnectionGenerator.h */,
-				E7BBB4CE179FA7EB007D7EC1 /* ParticleConnector.cpp */,
-				E7BBB4CF179FA7EB007D7EC1 /* ParticleConnector.h */,
-			);
-			path = ConnectorParticles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1217,7 +1196,6 @@
 				609133841652CA6600B523AD /* MainMenu.xib in Resources */,
 				E739949D17861F5600EA5F4D /* easing_terms_of_use.html in Resources */,
 				E739964C17872FD000EA5F4D /* readme.md in Resources */,
-				E75DB6C217CDC02A00CD99D9 /* .gitignore in Resources */,
 				E75DB6C617CDC02A00CD99D9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1331,13 +1309,11 @@
 				E739964D17872FD000EA5F4D /* ofxAVFVideoPlayer.mm in Sources */,
 				E739964E17872FD000EA5F4D /* ofxAVFVideoRenderer.m in Sources */,
 				E79DD944178B71A300057B34 /* CloudsQuestion.cpp in Sources */,
-				E7BBB4D0179FA7EB007D7EC1 /* ParticleConnection.cpp in Sources */,
-				E7BBB4D1179FA7EB007D7EC1 /* ParticleConnectionGenerator.cpp in Sources */,
-				E7BBB4D2179FA7EB007D7EC1 /* ParticleConnector.cpp in Sources */,
 				E75DB6C317CDC02A00CD99D9 /* CloudsRGBDCamera.cpp in Sources */,
 				E75DB6C417CDC02A00CD99D9 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E75DB6C517CDC02A00CD99D9 /* CloudsVisualSystem.cpp in Sources */,
 				E75DB6E817CDC0A100CD99D9 /* ofxGameCamera.cpp in Sources */,
+				E74620CB17DB8162002FC464 /* CloudsSpeaker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

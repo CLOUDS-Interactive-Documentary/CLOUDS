@@ -61,10 +61,10 @@
 
 - (IBAction)loadClip:(CloudsClip&)clip
 {
-	if(clip.hasCombinedVideo && renderer.setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
+	if(clip.hasCombinedVideo && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 		
 //		renderer.getPlayer().play();
-		renderer.swapAndPlay();
+		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
 		rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
 		currentClip = clip;
 	}
@@ -80,17 +80,17 @@
 
 - (void)keyPressed:(int)key
 {
-	if(key == ' ' && renderer.getPlayer().isLoaded()){
-		if(renderer.getPlayer().isPlaying()){
-			renderer.getPlayer().stop();
+	if(key == ' ' && rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().isLoaded() ){
+		if(rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().isPlaying()){
+			rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().stop();
 		}
 		else{
-			renderer.getPlayer().play();
+			rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
 		}
 	}
 	
 	if(key == 'P'){
-		renderer.getPlayer().play();
+		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
 	}
 	
 	if(key == 'H'){

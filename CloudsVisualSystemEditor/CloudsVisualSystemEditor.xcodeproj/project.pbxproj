@@ -137,6 +137,8 @@
 		E739967D178743D800EA5F4D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967C178743D800EA5F4D /* AVFoundation.framework */; };
 		E739967F178743E900EA5F4D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E739967E178743E900EA5F4D /* CoreMedia.framework */; };
 		E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7399680178743F200EA5F4D /* QuartzCore.framework */; };
+		E74620A317DB7E9C002FC464 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746209617DB7E9C002FC464 /* ofxBillboard.cpp */; };
+		E74620A917DB7EF8002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */; };
 		E77BAA1A17DA77CD00B8744F /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA9D317DA77CD00B8744F /* HistoryNode.cpp */; };
 		E77BAA1B17DA77CD00B8744F /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA9D517DA77CD00B8744F /* WebHistoryVisualSystem.cpp */; };
 		E77BAA3617DA781900B8744F /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA2E17DA781900B8744F /* ofxTextWriter.cpp */; };
@@ -654,6 +656,10 @@
 		E739967E178743E900EA5F4D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E7399680178743F200EA5F4D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E7402DBF178F3FA400FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
+		E746209617DB7E9C002FC464 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
+		E746209717DB7E9C002FC464 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
+		E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSpeaker.cpp; sourceTree = "<group>"; };
+		E74620A817DB7EF8002FC464 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E77BA9D317DA77CD00B8744F /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
 		E77BA9D417DA77CD00B8744F /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
 		E77BA9D517DA77CD00B8744F /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
@@ -889,6 +895,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E746208017DB7E9B002FC464 /* ofxBillboard */,
 				E77BAA3A17DA784200B8744F /* ofxSQLite */,
 				E77BAA1F17DA781800B8744F /* ofxTextWriter */,
 				E7D3652017C7D144004A5ED6 /* ofxMarchingCubes */,
@@ -1146,6 +1153,8 @@
 				E737694E1778DC4500892646 /* ClusterData.cpp */,
 				E73769511778DC4500892646 /* ParticleEdge.h */,
 				E73769501778DC4500892646 /* ParticleEdge.cpp */,
+				E74620A817DB7EF8002FC464 /* CloudsSpeaker.h */,
+				E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";
@@ -2061,6 +2070,24 @@
 				E739966D178743B900EA5F4D /* ofxAVFVideoPlayer.mm */,
 				E739966E178743B900EA5F4D /* ofxAVFVideoRenderer.h */,
 				E739966F178743B900EA5F4D /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E746208017DB7E9B002FC464 /* ofxBillboard */ = {
+			isa = PBXGroup;
+			children = (
+				E746209517DB7E9C002FC464 /* src */,
+			);
+			name = ofxBillboard;
+			path = ../../../addons/ofxBillboard;
+			sourceTree = "<group>";
+		};
+		E746209517DB7E9C002FC464 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E746209617DB7E9C002FC464 /* ofxBillboard.cpp */,
+				E746209717DB7E9C002FC464 /* ofxBillboard.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -2994,6 +3021,8 @@
 				E77BAA6217DA784200B8744F /* ofxSQLiteInsert.cpp in Sources */,
 				E77BAA6317DA784200B8744F /* ofxSQLiteSelect.cpp in Sources */,
 				E77BAA6517DA784200B8744F /* ofxSQLiteUpdate.cpp in Sources */,
+				E74620A317DB7E9C002FC464 /* ofxBillboard.cpp in Sources */,
+				E74620A917DB7EF8002FC464 /* CloudsSpeaker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

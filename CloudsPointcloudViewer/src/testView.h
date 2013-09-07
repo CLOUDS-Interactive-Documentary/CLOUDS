@@ -8,13 +8,12 @@
 
 @interface testView : ofxCocoaGLView <NSTableViewDataSource, NSTableViewDelegate> {
 	IBOutlet NSTableView* clipTable;
+	
 	CloudsFCPParser parser;
-	CloudsRGBDVideoPlayer renderer;
 	CloudsVisualSystemRGBD rgbdVisualSystem;
 	
 	CloudsClip currentClip;
 	int currentClipIndex;
-
 }
 
 @property (assign) IBOutlet NSTableView *clipTable;
