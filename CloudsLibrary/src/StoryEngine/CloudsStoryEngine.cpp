@@ -387,6 +387,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         
         //select next clip
         clip = winningClips[ofRandom(winningClips.size())];
+		cout << "clip " << clip.getLinkName() << " has speaker gender " << clip.getSpeakerGender() << endl;
         if(clip.getSpeakerGender() == "male"){
 			moreMenThanWomen++;
 		}
@@ -839,7 +840,8 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
         voiceOverScore = 15;
     }
     
-	//gender balance score
+	//gender balance scorec
+	
 	genderBalanceScore = (potentialNextClip.getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * moreMenThanWomen;
     totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + genderBalanceScore + voiceOverScore;
     
@@ -847,7 +849,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     string linkName =potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
     
-    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<moreMenThanWomen<<";"<<genderBalanceScore<<","<<voiceOverScore<<endl;
+    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<genderBalanceScore<<","<<voiceOverScore<<endl;
     
     log = ss.str();
     

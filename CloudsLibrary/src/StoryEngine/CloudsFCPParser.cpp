@@ -60,7 +60,7 @@ void CloudsFCPParser::refreshXML(){
     }
 	
 	//printSpeakerList();
-	populateSpeakers();
+	CloudsSpeaker::populateSpeakers();
     refreshAllKeywords();
 }
 

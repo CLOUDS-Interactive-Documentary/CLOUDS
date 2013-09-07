@@ -30,15 +30,15 @@ string CloudsClip::getLinkName(){
 }
 
 string CloudsClip::getSpeakerFirstName(){
-	return speakers[person].firstName;
+	return CloudsSpeaker::speakers[person].firstName;
 }
 
 string CloudsClip::getSpeakerLastName(){
-	return speakers[person].lastName;
+	return CloudsSpeaker::speakers[person].lastName;
 }
 
 string CloudsClip::getSpeakerGender(){
-	return speakers[person].gender;
+	return CloudsSpeaker::speakers[person].gender;
 }
 
 float CloudsClip::getDuration(){

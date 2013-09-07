@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>408.000000000</XPosition>
+    <XPosition>0.000000000</XPosition>
     <YPosition>0.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -34,4 +34,9 @@
     <Kind>4</Kind>
     <Name>DICHOTOMY WEIGHT</Name>
     <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GENDER BALANCE </Name>
+    <Value>2.463054180</Value>
 </Widget>

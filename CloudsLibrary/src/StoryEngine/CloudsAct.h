@@ -8,10 +8,13 @@
 
 #ifndef __CloudsStoryEngine__CloudsAct__
 #define __CloudsStoryEngine__CloudsAct__
+
 #include "ofMain.h"
 #include "CloudsEvents.h"
+
 #include "ofxTimeline.h"
 #include "CloudsDichotomy.h"
+
 
 typedef enum {
     Clip =0,
@@ -103,7 +106,14 @@ class CloudsAct{
     
 protected:
 
+
     ofxTimeline timeline;
+    ofxTLFlags* visualSystemsTrack;
+    ofxTLFlags* clipsTrack;
+    ofxTLFlags* clipPreRollTrack;
+    ofxTLFlags* topicsTrack;
+    ofxTLFlags* questionsTrack;
+	
     ActItemType itemType;
 	
 	bool timelinePopulated;
@@ -131,12 +141,7 @@ protected:
     map<string, CloudsClip> questionsMap;
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
     float visualSystemDuration;
-    
-    ofxTLFlags* visualSystemsTrack;
-    ofxTLFlags* clipsTrack;
-    ofxTLFlags* clipPreRollTrack;
-    ofxTLFlags* topicsTrack;
-    ofxTLFlags* questionsTrack;
+
     
     float visualSystemStartTime;
     float visualSystemEndTime;
