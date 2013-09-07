@@ -159,6 +159,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Cosmic_Swoop">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Cosmic_nBody">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -679,6 +686,69 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Metaballs_BlueClouds">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_fancy blend">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_fancy blend 2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_fancy smoothing">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_fauxMetaballs">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_greatjob">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_metaball simple">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_nice weather">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Metaballs_vertically stretched">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="NervousSystem_no-preset">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -705,6 +775,13 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade>A</grade>
+    <enabled>1</enabled>
+</system>
+<system name="Ocean_BlueOcean">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="Ocean_ChoppyMountainWaves">
@@ -736,7 +813,7 @@
     <enabled>1</enabled>
 </system>
 <system name="Oscillations_Agam">
-    <keywords></keywords>
+    <keywords>old media</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1065,6 +1142,20 @@
     <enabled>1</enabled>
 </system>
 <system name="Voro_no-preset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="WebHistory_AutoSpiderShell">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="WebHistory_HazyCloseUp">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
