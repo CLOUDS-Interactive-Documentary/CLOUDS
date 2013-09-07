@@ -4180,11 +4180,6 @@
 <clip>
     <name>Bruce - Gardening 1</name>
     <link>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
         <target>Marius - It&apos;s dirtier than that</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -4221,7 +4216,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>language,writing,#transcript,#hard</additionalKeywords>
+    <additionalKeywords>writing,#transcript,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - Textual technologies</name>
@@ -5422,11 +5417,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <suppress>
-        <target>Marius - Evolutionary process</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
     <additionalKeywords>#tech,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -5436,11 +5426,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <suppress>
-        <target>Marius - Evolutionary process</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
     <revokedKeywords>metaphors,life and code</revokedKeywords>
     <additionalKeywords>biology and code,biology,metaphor,#tech,#mindblowing,#logical,#hard</additionalKeywords>
 </clip>
@@ -5824,11 +5809,6 @@
 </clip>
 <clip>
     <name>Casey - randomness</name>
-    <link>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
     <link>
         <target>Marius - gardening</target>
         <startFrame>-1</startFrame>
@@ -6704,11 +6684,6 @@
     </link>
     <link>
         <target>Andres - soft systems 2</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - algorithms as a parameter space</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -10246,11 +10221,6 @@
         <endFrame>-1</endFrame>
     </suppress>
     <suppress>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
         <target>Marcus - lego bricks</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -10290,18 +10260,8 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
-        <target>Marius - Evolutionary process</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
     <suppress>
         <target>Casey - Programming at 26</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Marius - algorithms as a parameter space</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
@@ -24211,11 +24171,6 @@
         <endFrame>-1</endFrame>
     </suppress>
     <suppress>
-        <target>Marius - Evolutionary process</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
         <target>Marcus - emergence</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -28676,7 +28631,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?communication: How do people communicate now?,#start</additionalKeywords>
+    <additionalKeywords>#start,?social media: How does human interaction rely on networks?</additionalKeywords>
 </clip>
 <clip>
     <name>Lauren - virtual relationships</name>
@@ -33736,11 +33691,6 @@
         <endFrame>-1</endFrame>
     </suppress>
     <suppress>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
         <target>Golan - woah2</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
@@ -34936,125 +34886,6 @@
     <additionalKeywords>#inspiring,#easy</additionalKeywords>
 </clip>
 <clip>
-    <name>Marius - algorithms as a parameter space</name>
-    <link>
-        <target>Nervous_Jesse - our explorations are random</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Nervous_Jesse - understanding to control 4</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shiffman - There&apos;s an element of surprise</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Casey - randomness</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Casey - 10Print</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shiffman - randomness can be not very thoughtful</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shiffman - make it random</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Kyle_CH - abstraction</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Bruce - Constant improvement</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Bruce - Gardening 1</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <suppress>
-        <target>Golan - woah</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Golan - woah2</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Marcus - Sims</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Shantell - Sharing creates luck</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Shantell - luck</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <revokedKeywords>generative</revokedKeywords>
-    <additionalKeywords>generative art,improvization,algorithm,#bug,#logical,#fixed</additionalKeywords>
-</clip>
-<clip>
-    <name>Marius - Evolutionary process</name>
-    <link>
-        <target>Vera - Digital life forms</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Shiffman - genetic algos 1</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Golan - woah</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Golan - woah2</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <suppress>
-        <target>Casey - Craig Venter</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Casey - synthetic biology</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <suppress>
-        <target>Kevin - computation was invented</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
-    <additionalKeywords>#logical,#rational,#hard</additionalKeywords>
-</clip>
-<clip>
     <name>Marius - dropped out of computer science</name>
     <suppress>
         <target>Shantell - Coding: what does it feel like?</target>
@@ -35177,7 +35008,8 @@
         <endFrame>-1</endFrame>
     </suppress>
     <startingQuestion>Where do your ideas come from?</startingQuestion>
-    <additionalKeywords>?creativity: What&apos;s the origin of a purely abstract form?,#gold,#easy,#start</additionalKeywords>
+    <revokedKeywords>link:jtnimoy - dream</revokedKeywords>
+    <additionalKeywords>#start,#easy,#gold,?creativity: What&apos;s the origin of a purely abstract form?</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - Continuous process of exploration</name>
@@ -35346,7 +35178,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>how do you choose what to display</revokedKeywords>
-    <additionalKeywords>iteration,?gardening: Does a generative artwork ever reach a state of completion?</additionalKeywords>
+    <additionalKeywords>iteration,#start,?gardening: Does a generative artwork ever reach a state of completion?</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - It&apos;s dirtier than that</name>
@@ -35367,11 +35199,6 @@
     </link>
     <link>
         <target>Casey - You need noise</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - algorithms as a parameter space</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -38588,11 +38415,6 @@
     <name>Nervous_Jesse - our explorations are random</name>
     <link>
         <target>Marius - parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - algorithms as a parameter space</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -45817,11 +45639,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <suppress>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
     <additionalKeywords>#inspiring,#hard</additionalKeywords>
 </clip>
 <clip>
@@ -46319,11 +46136,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <suppress>
-        <target>Marius - algorithms as a parameter space</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </suppress>
 </clip>
 <clip>
     <name>Shantell - Future gesture</name>
@@ -46705,6 +46517,10 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+</clip>
+<clip>
+    <name>Shiffman - NOC 3</name>
+    <additionalKeywords>#start,?simulation: What would it mean to simulate the world through code?</additionalKeywords>
 </clip>
 <clip>
     <name>Shiffman - nature of code book</name>
@@ -47100,11 +46916,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <link>
-        <target>Marius - Evolutionary process</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
     <additionalKeywords>dna,probability</additionalKeywords>
 </clip>
 <clip>
@@ -47129,11 +46940,6 @@
     </link>
     <link>
         <target>Ramsey - conway</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - Evolutionary process</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -47168,11 +46974,6 @@
     </link>
     <link>
         <target>Marius - artificial creativity</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - Evolutionary process</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
@@ -47228,11 +47029,6 @@
     </link>
     <link>
         <target>Marius - artificial creativity</target>
-        <startFrame>-1</startFrame>
-        <endFrame>-1</endFrame>
-    </link>
-    <link>
-        <target>Marius - Evolutionary process</target>
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
