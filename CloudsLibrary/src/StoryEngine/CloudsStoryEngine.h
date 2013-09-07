@@ -66,12 +66,8 @@ class CloudsStoryEngine {
 
 	vector<CloudsDichotomy> dichotomies;
     int dichotomyThreshold;
-    
-//	int timesOnTopic; //how many times have we heard about this specific topic
-//	bool freeTopic; //means the topic is up for grabs on the next traverse
-	
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite ); //queue based
+	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreManThanWomen ); //queue based
 	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
 	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
 	
@@ -94,7 +90,6 @@ class CloudsStoryEngine {
     float longClipThreshold;
     float longClipFadeInPercent;
 
-	
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
@@ -103,10 +98,10 @@ class CloudsStoryEngine {
     float samePersonOccurrenceSuppressionFactor;
     float dichotomyWeight;
     float linkFactor;
+	float genderBalanceFactor;
 	
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;
 	float twoClipsAgoSharesTopicBoost;
-	
 };

@@ -45,6 +45,8 @@ CloudsStoryEngine::CloudsStoryEngine(){
     preRollDuration = 5;
     minClipDurationForStartingOffset = 30;
 	
+	genderBalanceFactor = 5;
+	
 	visualSystemPrimaryTopicBoost = 10;
 	visualSystemSecondaryTopicBoost = 5;
     
@@ -111,7 +113,7 @@ void CloudsStoryEngine::setup(){
 
 void CloudsStoryEngine::initGui(){
 	
-	actGui =  new ofxUISuperCanvas("ACT PARAMS", OFX_UI_FONT_SMALL);
+	actGui = new ofxUISuperCanvas("ACT PARAMS", OFX_UI_FONT_SMALL);
 	
 	vector<CloudsClip> startingNodes = parser->getClipsWithKeyword("#start");
 	vector<string> questions;
@@ -141,7 +143,9 @@ void CloudsStoryEngine::initGui(){
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, &samePersonOccurrenceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50, &linkFactor);
     clipGui->addSlider("DICHOTOMY WEIGHT", 0,10, &dichotomyWeight);
-    clipGui->autoSizeToFitWidgets();
+    clipGui->addSlider("GENDER BALANCE ", 0, 10, &genderBalanceFactor);
+	
+	clipGui->autoSizeToFitWidgets();
     
 	topicGui = new ofxUISuperCanvas("TOPIC SCORE PARAMS", OFX_UI_FONT_SMALL);
 	topicGui->addSlider("RELEVANCY MULTIPLIER", 0, 200, &topicRelevancyMultiplier);
@@ -266,9 +270,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     stringstream topicScoreStream;
     stringstream vsScoreStream;
     
-	clipScoreStream<<"SAME PERSON SUPPRESSION FACTOR,LINK FACTOR,DICHOTOMY WEIGHT,LAST CLIP COMMONALITY MULTIPLIER,TWO CLIPS COMMONALITY MULTIPLIER"<< endl;
-	clipScoreStream<<samePersonOccurrenceSuppressionFactor<<","<<linkFactor<<","<<dichotomyWeight<<","<<topicsInCommonMultiplier<<","<<topicsinCommonWithPreviousMultiplier<< endl;
-    clipScoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccurrenceScore,dichotomyWeight,voiceOverScore"<<endl;
+	clipScoreStream<<"SAME PERSON SUPPRESSION FACTOR,LINK FACTOR,DICHOTOMY WEIGHT,GENDER BALANCE,LAST CLIP COMMONALITY MULTIPLIER,TWO CLIPS COMMONALITY MULTIPLIER"<< endl;
+	clipScoreStream<<samePersonOccurrenceSuppressionFactor<<","<<linkFactor<<","<<dichotomyWeight<<","<<genderBalanceFactor<<","<<topicsInCommonMultiplier<<","<<topicsinCommonWithPreviousMultiplier<< endl;
+    clipScoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccurrenceScore,dichotomyWeight,genderBalance,voiceOverScore"<<endl;
 
 	topicScoreStream << "MAX TIMES ON TOPIC,LAST CLIP SHARES TOPIC BOOST,TWO CLIPS AGO SHARES TOPIC BOOST,TOPIC RELEVANCY MULTIPLIER"<< endl;
 	topicScoreStream << maxTimesOnTopic <<","<< lastClipSharesTopicBoost <<","<< twoClipsAgoSharesTopicBoost <<","<< topicRelevancyMultiplier<<"," <<endl;
@@ -279,6 +283,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	CloudsVisualSystemPreset currentPreset;
     CloudsClip clip = seed;
 
+	int moreMenThanWomen = 0;
     int timeForNewQuesiton = 0;
 	float preRollFlagTime  = 0;
 	float clipHandleDuration = getHandleForClip(clip);
@@ -351,7 +356,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
             
-            float score = scoreForClip(clipHistory, nextClipOption, topic,log, systemRunning, isPresetIndefinite);
+            float score = scoreForClip(clipHistory, nextClipOption, topic,log, systemRunning, isPresetIndefinite, moreMenThanWomen);
             
             scoreLogPairs.push_back( make_pair(score,log) );
 //            totalPoints += score;
@@ -382,7 +387,12 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         
         //select next clip
         clip = winningClips[ofRandom(winningClips.size())];
-        
+        if(clip.getSpeakerGender() == "male"){
+			moreMenThanWomen++;
+		}
+		else{
+			moreMenThanWomen--;
+		}
 		//wondering why we need this... aren't we guarenteed to have the topic?
         if (!clip.hasKeyword(topic) ) {
 			clipScoreStream << "ERROR " << clip.getLinkName() << " does not have current topic " << topic << ". making free" << endl;
@@ -725,7 +735,7 @@ float CloudsStoryEngine::scoreForTopic(vector<string>& topicHistory, vector<Clou
 
 
 #pragma mark CLIP SCORES
-float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log, bool visualSystemRunning, bool isPresetIndefinite){
+float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& potentialNextClip, string topic, string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreMenThanWomen){
     
     CloudsClip& currentlyPlayingClip = history[history.size()-1];
     
@@ -777,6 +787,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     float samePersonOccuranceScore = 0;
     float dichotomiesScore = 0;
     float voiceOverScore = 0;
+	float genderBalanceScore = 0;
 	
 	//need to consider discouraging clips with a lot of topics
     float topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
@@ -828,13 +839,15 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
         voiceOverScore = 15;
     }
     
-    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + voiceOverScore;
+	//gender balance score
+	genderBalanceScore = (potentialNextClip.getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * moreMenThanWomen;
+    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + genderBalanceScore + voiceOverScore;
     
     stringstream ss;
     string linkName =potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
     
-    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<voiceOverScore<<endl;
+    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<moreMenThanWomen<<";"<<genderBalanceScore<<","<<voiceOverScore<<endl;
     
     log = ss.str();
     
