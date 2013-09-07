@@ -45,6 +45,7 @@ class _C:public CloudsVisualSystem{
     void selfDrawBackground();
     void selfDraw();
 	void selfSetupGuis();
+	void selfPresetLoaded(string presetPath);
     
     
 	ofxUISlider *spinSlider;

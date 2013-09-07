@@ -88,6 +88,10 @@ void _C::selfSetupGuis(){
     saveButton = gui->addButton("Freeze Tree To Disk", false, 32,32);
 }
 
+void _C::selfPresetLoaded(string presetPath){
+	reset();
+}
+
 void _C::selfUpdate(){
 	
     rotation += spinSlider->getScaledValue();

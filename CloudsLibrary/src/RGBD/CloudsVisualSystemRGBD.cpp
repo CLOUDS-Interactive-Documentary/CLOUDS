@@ -14,6 +14,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	drawMesh = false;
 	
+	questionLifeSpan = 3;
+
 	rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
 	CloudsQuestion::reloadShader();
 
@@ -157,6 +159,9 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	cameraGui->addSlider("LIFT RANGE", 0, 100, &cloudsCamera.liftRange);
 	cameraGui->addSlider("LIFT AMOUNT", 10, 200, &cloudsCamera.liftAmount);
 	cameraGui->addSlider("DROP AMOUNT", 0, 200, &cloudsCamera.dropAmount);
+	cameraGui->addSlider("DRIFT ANGLE", 0, 200, &cloudsCamera.maxDriftAngle);
+	cameraGui->addSlider("DRIFT DENSITY", 0, 1.0, &cloudsCamera.driftNoiseDensity);
+	cameraGui->addSlider("DRIFT SPEED", 0, .1, &cloudsCamera.driftNoiseSpeed);
 	
 	guis.push_back(cameraGui);
 	guimap[meshGui->getName()] = cameraGui;
@@ -192,6 +197,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("Drift Range", 40, 200, &questionDriftRange);
 	questionGui->addSlider("Y Range", 40, 200, &questionYRange);
 	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
+	questionGui->addSlider("Life Span Mins", 1, 6, &questionLifeSpan);
 	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
@@ -206,7 +212,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 //	connectorGui->addToggle("Draw Connections", &generator.drawConnections);
 //	connectorGui->addSlider("Min Connection Distance", 1, 100, &generator.minDistance);
 //	connectorGui->addSlider("Boundary Size", 100, 1000, &generator.boundarySize);
-//	
 //	connectorGui->addSlider("Max Connections", 1, 10, &generator.maxConnections);
 	
 	guis.push_back(connectorGui);
@@ -267,7 +272,8 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 										  ofRandom(-questionDriftRange,questionDriftRange));
 	
 	q->position = translatedHeadPosition + startPosition;
-
+	q->birthTime = ofGetElapsedTimef();
+	
 	q->setup();
 	
 	questions.push_back(q);
@@ -275,8 +281,14 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
-	for(int i = 0; i < questions.size(); i++){
+//	for(int i = 0; i < questions.size(); i++){
+	for(int i = questions.size()-1; i >= 0; i--){
+	
 		questions[i]->update();
+		if(!questions[i]->hovering && ofGetElapsedTimef() - questions[i]->birthTime > questionLifeSpan*60 ){
+			delete questions[i];
+			questions.erase(questions.begin()+i);
+		}
 	}
 }
 
@@ -616,7 +628,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 	}
 	
 	ofPopMatrix();
-	
 	
 
 	if(drawTransitionNodes){

@@ -28,7 +28,7 @@ class CloudsQuestion {
 	static void endShader();
 	static void reloadShader();
 	
-	
+	float birthTime;
 	float expandPercent;
 	float selectPercent;
 	
@@ -39,6 +39,7 @@ class CloudsQuestion {
 	void startHovering();
 	void stopHovering();
 	bool isSelected();
+	bool hovering;
 	
 	float radius;
 	ofVec3f position;
@@ -67,6 +68,6 @@ class CloudsQuestion {
 	float hoveringStartTime;
 	
 	bool isSetup;
-	bool hovering;
+
 	float screenRadius;
 };
