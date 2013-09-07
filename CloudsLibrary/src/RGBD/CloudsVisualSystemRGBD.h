@@ -76,7 +76,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
-
+	
+	
   protected:
 	
 
@@ -135,7 +136,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	ofShader rgbdShader;
 	
-	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;
 	float verticalScanlineThickness;
@@ -148,11 +148,13 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	
+	
 	ofVec3f questionXZ;
 	float questionDriftRange;
 	float questionYCenter;
 	float questionYDriftRange;
 	float questionYRange;
+	float questionLifeSpan; //minutes
 	
 	//???: maybe we should combine these into a struct?
 	ofVec3f transitionStartPos, transitionEndPos;
