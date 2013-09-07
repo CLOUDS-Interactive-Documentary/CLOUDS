@@ -58,3 +58,6 @@ score.csv
 /CLOUDS/bin/data/topicScores.csv
 /CloudsData/CloudsMovieDirectory_local.txt
 CloudsMovieDirectory_remote.txt
+/CloudsData/logs/clipScore.csv
+/CloudsData/logs/topicScores.csv
+/CloudsData/logs/visualSystemScores.csv
