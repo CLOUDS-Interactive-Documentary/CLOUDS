@@ -21,4 +21,5 @@ class CloudsVisualSystemPreset {
 	string grade;
 	bool enabled;
 
+	float currentScore;
 };

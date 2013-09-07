@@ -25,7 +25,7 @@
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "ScrapeVisualSystem.h"
-
+#include "WebHistoryVisualSystem.h"
 #endif
 
 
@@ -73,8 +73,9 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemFireworks() );
 	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
 	registerVisualSystem( new CloudsVisualSystemCosmic() );
-	registerVisualSystem( new ScrapeVisualSystem() );
 	registerVisualSystem( new CloudsVisualSystemOscillations() );
+	registerVisualSystem( new ScrapeVisualSystem() );
+	registerVisualSystem( new WebHistoryVisualSystem() );
 	
     loadPresets();
 

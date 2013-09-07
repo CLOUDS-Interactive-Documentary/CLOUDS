@@ -1429,8 +1429,8 @@
 		E779BE68173D60A2006357EF /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E779BE69173D60A2006357EF /* ofxTextInputField.cpp */,
 				E779BE6A173D60A2006357EF /* ofxTextInputField.h */,
+				E779BE69173D60A2006357EF /* ofxTextInputField.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
