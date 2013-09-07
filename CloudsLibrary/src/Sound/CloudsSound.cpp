@@ -128,6 +128,10 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
     {
         cout << i << ": " << args.chosenClip.getKeywords()[i] << " ";
     }
+    for(int i=0;i<args.chosenClip.getSpecialKeywords().size();i++)
+    {
+        cout << i << ": " << args.chosenClip.getSpecialKeywords()[i] << " ";
+    }
     cout << endl;
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
 	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << ": " << returnColor(args.chosenClip.cluster.hexColor) << endl;

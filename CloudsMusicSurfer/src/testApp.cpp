@@ -43,9 +43,10 @@ void testApp::setup(){
     DOCLEAR = true;
     cleartime = ofGetElapsedTimef();
 
-    // THE LINE BELOW CAUSES A LINKER ERROR IF YOU UNCOMMENT:
-    //LOADSOUND("RTCMIX/samps/BD.aif", "BD");
-
+    // load samples
+    loadRTcmixSamples();
+    
+    // display
     pushInterface();
     
 }
@@ -76,12 +77,12 @@ void testApp::draw(){
             colorbutton[i].draw();
         }
         theFont.drawString("harmony:", 50,130);        
-        for(int i = 0;i<colorbutton.size();i++)
+        for(int i = 0;i<harmonybutton.size();i++)
         {
             harmonybutton[i].draw();
         }
         theFont.drawString("rhythm:", 50,180);        
-        for(int i = 0;i<colorbutton.size();i++)
+        for(int i = 0;i<rhythmbutton.size();i++)
         {
             rhythmbutton[i].draw();
         }
@@ -119,6 +120,7 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         {
             WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
             STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
+            STEREO(i*0.1, 0., 1., 0.05, i/11.0, "BD"); 
         }
         // launch initial effects chain (reverb)
         REVERB(5.0); // gimme some reverb
@@ -412,6 +414,14 @@ void testApp::loadRTcmixFiles()
 
 }
 
+void testApp::loadRTcmixSamples()
+{
+    LOADSOUND("RTCMIX/samps/BD.aif", "BD");
+    LOADSOUND("RTCMIX/samps/SD.aif", "SD");
+    LOADSOUND("RTCMIX/samps/CH.aif", "CH");
+    LOADSOUND("RTCMIX/samps/OH.aif", "OH");
+}
+
 void testApp::startMusic(int mc, int mh, int mr, float musicdur)
 {
     
@@ -608,6 +618,25 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
             MBANDEDWG(i, ofRandom(7., 15.0), ofRandom(0.05, 0.15), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
         
+        }
+    }
+    
+    // PHATBEATZ
+    if (find(ilist.begin(), ilist.end(), "phatbeatz") != ilist.end())
+    {
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                
+                float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
+                pick = (int)ofRandom(0, 3);
+                if(pick<2) STEREO(i, 0., 0.5, t_amp, 0.5, "BD"); else STEREO(i, 0., 0.5, t_amp, 0.5, "SD");
+            }
+            pick = ofRandom(0,4);
+            if(pick<2) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "CH");
+            else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "OH");
+            bcount = (bcount+1)%rhythms[mr].beats.size();
         }
     }
     
