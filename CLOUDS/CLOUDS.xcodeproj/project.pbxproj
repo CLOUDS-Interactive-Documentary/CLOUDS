@@ -56,7 +56,6 @@
 		E74255E9179F985900B2F0A3 /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425223179F985500B2F0A3 /* Module.cpp */; };
 		E74255EA179F985900B2F0A3 /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425225179F985500B2F0A3 /* RandomMover.cpp */; };
 		E74255F5179F985900B2F0A3 /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742533F179F985600B2F0A3 /* CloudsVisualSystemMemory.cpp */; };
-		E74255F6179F985900B2F0A3 /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */; };
 		E74255F9179F985900B2F0A3 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7425395179F985600B2F0A3 /* CloudsVisualSystemOcean.cpp */; };
 		E74255FC179F985900B2F0A3 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74253DC179F985700B2F0A3 /* Brush.cpp */; };
 		E74255FD179F985900B2F0A3 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74253DE179F985700B2F0A3 /* CloudsVisualSystemPaintBrush.cpp */; };
@@ -199,6 +198,7 @@
 		E7D330791751D446006706ED /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330661751D446006706ED /* ofxSwarmBehavior.cpp */; };
 		E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330691751D446006706ED /* ofxVerletSolver.cpp */; };
 		E7D330B91751D4C1006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */; };
+		E7DD858717DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD858517DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
@@ -344,8 +344,6 @@
 		E7425226179F985500B2F0A3 /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
 		E742533F179F985600B2F0A3 /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
 		E7425340179F985600B2F0A3 /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
-		E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCollaboration1.cpp; sourceTree = "<group>"; };
-		E742537F179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCollaboration1.h; sourceTree = "<group>"; };
 		E7425395179F985600B2F0A3 /* CloudsVisualSystemOcean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOcean.cpp; sourceTree = "<group>"; };
 		E7425396179F985600B2F0A3 /* CloudsVisualSystemOcean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOcean.h; sourceTree = "<group>"; };
 		E74253DC179F985700B2F0A3 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
@@ -867,6 +865,8 @@
 		E7D3309B1751D493006706ED /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
 		E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		E7D330B61751D4C1006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		E7DD858517DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemNeurons.cpp; sourceTree = "<group>"; };
+		E7DD858617DBC40A00AFB2DD /* CloudsVisualSystemNeurons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemNeurons.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
@@ -1425,8 +1425,8 @@
 		E742537D179F985600B2F0A3 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E742537F179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.h */,
-				E742537E179F985600B2F0A3 /* CloudsVisualSystemCollaboration1.cpp */,
+				E7DD858517DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp */,
+				E7DD858617DBC40A00AFB2DD /* CloudsVisualSystemNeurons.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3369,7 +3369,6 @@
 				E74255E9179F985900B2F0A3 /* Module.cpp in Sources */,
 				E74255EA179F985900B2F0A3 /* RandomMover.cpp in Sources */,
 				E74255F5179F985900B2F0A3 /* CloudsVisualSystemMemory.cpp in Sources */,
-				E74255F6179F985900B2F0A3 /* CloudsVisualSystemCollaboration1.cpp in Sources */,
 				E74255F9179F985900B2F0A3 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E74255FC179F985900B2F0A3 /* Brush.cpp in Sources */,
 				E74255FD179F985900B2F0A3 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
@@ -3433,6 +3432,7 @@
 				E7FC8C3717DA9AC1007BEFA5 /* ofxTextWriter.cpp in Sources */,
 				E746194D17DB783B002FC464 /* CloudsSpeaker.cpp in Sources */,
 				E74620C417DB8074002FC464 /* ofxBillboard.cpp in Sources */,
+				E7DD858717DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

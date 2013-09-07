@@ -9,7 +9,7 @@
 
 #include "CloudsVisualSystem.h"
 
-#define _C CloudsVisualSystemCollaboration1
+#define _C CloudsVisualSystemNeurons
 
 namespace jtn{
 	class TreeNode:public ofPoint{
