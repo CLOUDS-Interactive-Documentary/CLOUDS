@@ -52,4 +52,7 @@
 [submodule "CloudsLibrary/src/VisualSystems/Connectors"]
 	path = CloudsLibrary/src/VisualSystems/Connectors
 	url = git@github.com:CLOUDS-Interactive-Documentary/Connectors.git
+[submodule "CloudsLibrary/src/VisualSystems/WebHistory"]
+	path = CloudsLibrary/src/VisualSystems/WebHistory
+	url = git@github.com:CLOUDS-Interactive-Documentary/WebHistory.git
 	
