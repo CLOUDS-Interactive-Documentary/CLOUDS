@@ -181,6 +181,10 @@ class CloudsPlaybackController {
 	
 	string nextPresetName;
 	
+	vector<string> scratchTracks;
+	ofSoundPlayer scratchPlayer;
+	int currentScratch;
+	float currentVolume;
   protected:
 
 	CloudsStoryEngine* storyEngine;

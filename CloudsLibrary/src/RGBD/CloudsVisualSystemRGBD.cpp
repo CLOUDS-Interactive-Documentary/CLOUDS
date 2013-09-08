@@ -3,6 +3,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
 	return "RGBD";
@@ -21,7 +22,9 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 	generatePointGrid();
 	generateScanlines();
+	generateTriangulation();
 	
+
 	particulateController.setParticleCount(1e5);
 	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
@@ -141,6 +144,10 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	
 	meshGui->addLabel("FLOW");
 	meshGui->addSlider("CLOUD FLOW", -5, 5, &cloudFlow);
+	
+	meshGui->addSlider("LIGHT_OFFSET_Y", -100, 100, &lightOffsetY);
+	meshGui->addSlider("LIGHT_OFFSET_Z", 0, 100, &lightOffsetZ);
+
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemRGBD::selfGuiEvent);
 	
 	guis.push_back(meshGui);
@@ -225,11 +232,17 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		if(refreshScanlineMesh){
 			generateScanlines();
 		}
+		
 		if(refreshPointcloud){
 			generatePointGrid();
 		}
+		
 		if(numRandomPoints != randomPoints.getNumVertices()){
 			generateRandomPoints();
+		}
+		
+		if(refreshTriangulation){
+			generateTriangulation();
 		}
 		
 		currentFlowPosition += cloudFlow;
@@ -262,6 +275,12 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 	
+	for(int i = 0; i < questions.size(); i++){
+		if(questionClip.getID() == questions[i]->clip.getID()){
+			//don't add duplicate questions
+			return;
+		}
+	}
 	CloudsQuestion* q = new CloudsQuestion();
 	q->cam = &cloudsCamera;
 	q->font = &displayFont;
@@ -281,7 +300,7 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::updateQuestions(){
-//	for(int i = 0; i < questions.size(); i++){
+
 	for(int i = questions.size()-1; i >= 0; i--){
 	
 		questions[i]->update();
@@ -475,13 +494,20 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 	for (float ystep = 0; ystep <= height-scanlineSimplify.y; ystep += scanlineSimplify.y){
 		for (float xstep = 0; xstep <= width-scanlineSimplify.x; xstep += scanlineSimplify.x){
 			
-			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
+//			float ystepOffset = ofRandom(-scanlineSimplify.y/4,scanlineSimplify.y/4);
 			
-			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
-			horizontalScanLines.addVertex( ofVec3f(xstep, ystep+ystepOffset, 0) );
+//			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
+			ofVec3f stepA = ofVec3f(xstep, ystep, 0);
+			ofVec3f stepB = ofVec3f(xstep+scanlineSimplify.x, ystep, 0);
+			ofVec3f mid = (stepA + stepB) / 2.0;
 			
-			horizontalScanLines.addColor(ofFloatColor(ofRandom(1.)));
-			horizontalScanLines.addVertex( ofVec3f(xstep+scanlineSimplify.x, ystep+ystepOffset, 0) );
+			horizontalScanLines.addNormal( mid );
+			horizontalScanLines.addColor( ofFloatColor( stepB.x/640,stepB.y/480, stepB.x/640,stepB.y/480) );
+			horizontalScanLines.addVertex( stepA);
+			
+			horizontalScanLines.addNormal( mid );
+			horizontalScanLines.addColor( ofFloatColor( stepA.x/640,stepA.y/480, stepA.x/640,stepA.y/480 ) );
+			horizontalScanLines.addVertex( stepB);
 		}
 	}
 
@@ -489,6 +515,50 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 	horizontalScanLines.setMode( OF_PRIMITIVE_LINES );
 	
 	refreshScanlineMesh = false;
+}
+
+
+void CloudsVisualSystemRGBD::generateTriangulation(){
+	
+	delaunay.reset();
+	
+	float percentChanceOfPoint = .5;
+	for(float y = 0; y < 480; y += 1.5){
+		for(float x = 0; x < 640; x += 1.5){
+			if(ofRandomuf() < percentChanceOfPoint){
+				delaunay.addPoint(ofVec2f(x,y));
+			}
+		}
+	}
+	
+	delaunay.triangulate();
+	
+	ofMesh& dmesh = delaunay.triangleMesh;
+	triangulation.clear();
+	for(int i = 0; i < dmesh.getNumIndices(); i += 3){
+		
+		ofVec3f& a = dmesh.getVertices()[ dmesh.getIndices()[i  ] ];
+		ofVec3f& b = dmesh.getVertices()[ dmesh.getIndices()[i+1] ];
+		ofVec3f& c = dmesh.getVertices()[ dmesh.getIndices()[i+2] ];
+		
+		ofVec3f center = (a+b+c)/3.0;
+		
+		triangulation.addColor( ofFloatColor(b.x/640., b.y/480., c.x/640., c.y/480.) );
+		triangulation.addNormal(center);
+		triangulation.addVertex(a);
+
+		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., c.x/640., c.y/480.) );
+		triangulation.addNormal(center);
+		triangulation.addVertex(b);
+		
+		triangulation.addColor( ofFloatColor(a.x/640., a.y/480., b.x/640., b.y/480.) );
+		triangulation.addNormal(center);
+		triangulation.addVertex(c);
+	
+	}
+	
+	
+	refreshTriangulation = false;
 }
 
 void CloudsVisualSystemRGBD::selfDrawBackground(){
@@ -538,9 +608,6 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glEnable(GL_POINT_SMOOTH);
 		glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 		glEnable(GL_LINE_SMOOTH);
-
-		ofEnableAlphaBlending();
-		ofEnableBlendMode(OF_BLENDMODE_ADD);
 		
 		setupRGBDTransforms();
 		
@@ -548,43 +615,84 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		getRGBDVideoPlayer().setupProjectionUniforms(rgbdShader);
 		
 //		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
+		rgbdShader.setUniform1f("fadeValue", 1.0);
+//		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut();
+		ofxEasingCubic cub;
+		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
+		rgbdShader.setUniform1f("eyeMultiplier", 0.0);
+		rgbdShader.setUniform1f("skinMultiplier", 0.0);
+		rgbdShader.setUniform1f("baseMultiplier", 1.0);
 		
-		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
+		rgbdShader.setUniform3f("headPosition",
+								getRGBDVideoPlayer().headPosition.x,
+								-getRGBDVideoPlayer().headPosition.y,
+								getRGBDVideoPlayer().headPosition.z);
+		
+		rgbdShader.setUniform3f("lightPosition",
+								getRGBDVideoPlayer().headPosition.x,
+								getRGBDVideoPlayer().headPosition.y+lightOffsetY*100,
+								getRGBDVideoPlayer().headPosition.z+lightOffsetZ*100);
+		
+		
+		//		if(drawMesh){
+		//			rgbdShader.setUniform1f("flowPosition", 0);
+		//			rgbdShader.setUniform1f("eyeMultiplier", eyeMultiplier);
+		//			rgbdShader.setUniform1f("skinMultiplier", skinMultiplier);
+		//			rgbdShader.setUniform1f("baseMultiplier", meshAlpha);
+		//
+		////			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
+		//			rgbdShader.setUniform2f("simplify", pointHorizontalSpace, pointVerticalSpace);
+		//
+		//			ofPushStyle();
+		//			glEnable(GL_DEPTH_TEST);
+		//			glDepthFunc(GL_LEQUAL);
+		//			glEnable(GL_CULL_FACE);
+		//			glCullFace(GL_FRONT);
+		//
+		//			pointGrid.draw();
+		//			ofTranslate(0,0,-3);
+		//
+		//			ofPopStyle();
+		//
+		//			rgbdShader.setUniform1f("eyeMultiplier", 0);
+		//			rgbdShader.setUniform1f("skinMultiplier", 0);
+		//			rgbdShader.setUniform1f("baseMultiplier", 1.0);
+		//		}
+		
 		//set up the renderer so that any geometry within 640x480 space
 		//can be prjected onto the pointcloud
+		ofDisableAlphaBlending();
+		//ofEnableAlphaBlending();
+		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 		if(drawMesh){
-
-			rgbdShader.setUniform1f("flowPosition", 0);
-			rgbdShader.setUniform1f("eyeMultiplier", eyeMultiplier);
-			rgbdShader.setUniform1f("skinMultiplier", skinMultiplier);
-			rgbdShader.setUniform1f("baseMultiplier", meshAlpha);
-			
-//			sharedRenderer->setSimplification(ofVec2f(pointHorizontalSpace, pointVerticalSpace));
-			rgbdShader.setUniform2f("simplify", pointHorizontalSpace, pointVerticalSpace);
 			
 			ofPushStyle();
+			ofSetColor(255, 255, 255);
+			rgbdShader.setUniform1f("isMeshed", 1);
+			rgbdShader.setUniform1f("headAttenuateMix", 1.);
+			rgbdShader.setUniform1f("flowPosition", 0);
 			glEnable(GL_DEPTH_TEST);
-			glDepthFunc(GL_LEQUAL);
+			
+//			glDepthFunc(GL_LEQUAL);
 			glEnable(GL_CULL_FACE);
-			glCullFace(GL_FRONT);
+			glCullFace(GL_BACK);
+			
+			triangulation.draw();
 
-			pointGrid.draw();
-			ofTranslate(0,0,-3);
-			
+			glDisable(GL_CULL_FACE);
 			ofPopStyle();
-			
-			rgbdShader.setUniform1f("eyeMultiplier", 0);
-			rgbdShader.setUniform1f("skinMultiplier", 0);
-			rgbdShader.setUniform1f("baseMultiplier", 1.0);
-			
 		}
+			
 		
 		glDisable(GL_DEPTH_TEST);
-		glDepthFunc(GL_LESS);
-		
-		rgbdShader.setUniform1f("flowPosition", currentFlowPosition);
+		ofEnableBlendMode(OF_BLENDMODE_ADD);
+//		glDepthFunc(GL_LESS);
 
 		if(drawPoints){
+			rgbdShader.setUniform1f("flowPosition", currentFlowPosition);
+			rgbdShader.setUniform1f("isMeshed", 0);
+			rgbdShader.setUniform1f("headAttenuateMix", 0.);
 			//draw the points
 			glPointSize(pointSizeMin);
 			ofSetColor(255*randomPointAlpha);
@@ -597,19 +705,30 @@ void CloudsVisualSystemRGBD::selfDraw(){
 
 		//draw the lines
 		if(drawScanlines){
-			
-			ofSetColor(255*horizontalScanlineAlpha);
+			rgbdShader.setUniform1f("flowPosition", 0.0);
+			rgbdShader.setUniform1f("isMeshed", 1.0);
+			rgbdShader.setUniform1f("headAttenuateMix", .0);
+
 			ofSetLineWidth(horizontalScanlineThickness);
 			horizontalScanLines.draw();
 
-			rgbdShader.setUniform1f("flowPosition", 0);
-			ofSetLineWidth(verticalScanlineThickness);
-			ofSetColor(255*verticalScanlineAlpha);
-			verticalScanLines.draw();
-		
+//			rgbdShader.setUniform1f("flowPosition", 0);
+//			ofSetLineWidth(verticalScanlineThickness);
+//			ofSetColor(255*verticalScanlineAlpha);
+//			verticalScanLines.draw();
 		}
+		
+		//subtractive wirerame
+		//glDisable(GL_DEPTH_TEST);
+		ofPushMatrix();
+		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+		glPushAttrib(GL_POLYGON_BIT);
+		glPolygonOffset(1, 0);
+//		triangulation.drawWireframe();
+		glPopAttrib();
+		ofEnableAlphaBlending();
+		ofPopMatrix();
 
-		rgbdShader.setUniform1f("flowPosition", 0);
 //		connectionGenerator.draw();
 //		generator.draw();
 		
@@ -737,6 +856,13 @@ void CloudsVisualSystemRGBD::selfMouseReleased(ofMouseEventArgs& data){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetupGui(){
 	
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBD::selfPresetLoaded( string presetName ){
+	refreshScanlineMesh = true;
+	refreshPointcloud = true;
+	refreshTriangulation = true;
 }
 
 //--------------------------------------------------------------

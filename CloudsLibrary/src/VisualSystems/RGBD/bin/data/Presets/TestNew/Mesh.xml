@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Mesh</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>434.000000000</XPosition>
+    <YPosition>159.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -48,32 +48,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MAX</Name>
-    <Value>0.532019675</Value>
+    <Value>0.266009837</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MIN</Name>
-    <Value>0.000000000</Value>
+    <Value>0.177339911</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID ALPHA</Name>
-    <Value>0.475000024</Value>
+    <Value>0.428571433</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID VERT SPACE</Name>
-    <Value>3.305418730</Value>
+    <Value>6.320197105</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID HORI SPACE</Name>
-    <Value>3.039408922</Value>
+    <Value>3.527093649</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NUM RANDOM POINTS</Name>
-    <Value>113300.492187500</Value>
+    <Value>83743.843750000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -103,7 +103,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HORIZ LINE SPACE</Name>
-    <Value>6.448275566</Value>
+    <Value>4.522167683</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -119,4 +119,14 @@
     <Kind>4</Kind>
     <Name>CLOUD FLOW</Name>
     <Value>0.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIGHT_OFFSET_Y</Name>
+    <Value>1.477836609</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIGHT_OFFSET_Z</Name>
+    <Value>14.285715103</Value>
 </Widget>

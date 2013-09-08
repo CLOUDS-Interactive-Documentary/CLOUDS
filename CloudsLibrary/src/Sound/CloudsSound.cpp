@@ -122,6 +122,9 @@ void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::clipBegan(CloudsClipEventArgs& args){
+	///TEMPORARY FOR SCRATCH TRACKS
+	return;
+	
 	cout << "SOUND: current topic >> " << args.currentTopic << endl;
 	cout << "SOUND: keywords >> ";
     for(int i=0;i<args.chosenClip.getKeywords().size();i++)
