@@ -521,7 +521,7 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 void CloudsVisualSystemRGBD::generateTriangulation(){
 	
 	delaunay.reset();
-	
+
 	float percentChanceOfPoint = .5;
 	for(float y = 0; y < 480; y += 1.5){
 		for(float x = 0; x < 640; x += 1.5){
@@ -556,7 +556,6 @@ void CloudsVisualSystemRGBD::generateTriangulation(){
 		triangulation.addVertex(c);
 	
 	}
-	
 	
 	refreshTriangulation = false;
 }
