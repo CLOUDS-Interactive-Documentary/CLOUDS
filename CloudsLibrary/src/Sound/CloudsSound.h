@@ -4,6 +4,7 @@
 #include "CloudsEvents.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
+#include "lukeFuncs.h"
 
 class CloudsSound {
   public:
@@ -31,7 +32,7 @@ class CloudsSound {
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionAsked(CloudsQuestionEventArgs& args);	
-	void topicChanged(string& args);
+	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	
   protected:
@@ -42,21 +43,37 @@ class CloudsSound {
 	bool eventsRegistered;
 	void actCreated(CloudsActEventArgs& args);
 
-	// Luke's vars
-	// 
+    // Luke's stuff
+	//
+    void startMusic(int mc, int mh, int mr, float musicdur);
+    void stopMusic();
+    void loadRTcmixFiles();
+    void loadRTcmixSamples();
+    void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
     int sr; // sampling rate
     int nbufs; // number of buffers
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
-	
+
     int returnQuadrant(int x, int y);
     int returnColor(string c);
-    ofTrueTypeFont theFont;
     int first_vec;
     int osx, osy;
     int quadrant;
     float sx, sy, delta;
     float allownote;
+    int mcolor, mharmony, mrhythm;
+
+    float MASTERAMP;
+    float MASTERTEMPO;
+    int AUTORUN;
+    bool DOCLEAR;
+    float cleartime;
     
+    vector<lukeRhythm> rhythms;
+    vector<lukeColor> colors;
+    vector<lukePitchArray> pitches;
+    vector<lukePreset> presets;
+
 };

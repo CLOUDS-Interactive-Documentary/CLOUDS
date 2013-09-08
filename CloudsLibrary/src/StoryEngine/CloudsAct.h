@@ -134,10 +134,13 @@ protected:
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
-    
+
+	
     map<string, CloudsVisualSystemPreset> visualSystemsMap;
     map<string, ActTimeItem> visualSystemItems;
-    map< string, string> topicMap;
+    map<string, string> topicMap;
+	map<string, float> topicDurationMap;
+	
     map<string, CloudsClip> questionsMap;
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
     float visualSystemDuration;

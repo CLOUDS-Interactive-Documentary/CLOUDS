@@ -61,6 +61,16 @@ public:
     float handleLength;
 };
 
+class CloudsTopicEventArgs : public ofEventArgs{
+public:
+	CloudsTopicEventArgs(string topic, float duration)
+		: topic(topic), duration(duration)
+	{}
+	
+	string topic;
+	float duration;
+};
+
 class CloudsEvents {
   public:
 	 //sent by story engine
@@ -79,7 +89,7 @@ class CloudsEvents {
     
     ofEvent<CloudsQuestionEventArgs> questionAsked;
 
-	ofEvent<string> topicChanged;
+	ofEvent<CloudsTopicEventArgs> topicChanged;
 	
 };
 

@@ -50,7 +50,7 @@ void CloudsAct::populateTime(){
     timeline.setInPointAtSeconds(0);
     string previousTopic = "";
     string currentTopic = "";
-    
+    float currentTopicStartTime = 0;
     for(int i=0; i < actItems.size(); i++){
         ActTimeItem& item = actItems[i];
         
@@ -63,6 +63,10 @@ void CloudsAct::populateTime(){
             
             if(currentTopic != previousTopic){
                 topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
+				if(previousTopic != ""){
+					topicDurationMap[previousTopic] =  item.startTime - currentTopicStartTime;
+				}
+				currentTopicStartTime = item.startTime;
             }
             
             previousTopic = currentTopic;
@@ -94,7 +98,9 @@ void CloudsAct::populateTime(){
             questionsTrack->addFlagAtTime(item.key, item.startTime*1000);
         }
     }
-    
+	
+	topicDurationMap[previousTopic] = duration - currentTopicStartTime;
+
 
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
@@ -137,6 +143,11 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
         ofNotifyEvent(events.preRollRequested, args);        
     }
+	else if(bang.track == topicsTrack){
+        cout<<"sending topic: "<<bang.flag <<" with duration: "<< topicDurationMap[bang.flag] << endl;
+		CloudsTopicEventArgs args(bang.flag, topicDurationMap[bang.flag] );
+		ofNotifyEvent(events.topicChanged, args);
+	}
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
@@ -364,6 +375,7 @@ void CloudsAct::clear(){
     topicMap.clear();
     actItems.clear();
     timeline.reset();
+	topicDurationMap.clear();
     duration = 0;
 }
 

@@ -18,37 +18,44 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 	
-		theFont.loadFont(ofToDataPath("Times New Roman.ttf"), 32);
+        // RTcmix audio stuff
+        sr = 44100;
+        nbufs = 2; // you can use more for more processing but latency will suffer
+        nchans = 2; // stereo
+        framesize = 512; // sigvs
+        s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
+        
+        // initialize RTcmix
+        rtcmixmain();
+        maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
+        
+        // initialize OF audio streaming
+        // ALERT: there is a piece of shit bug in this (related to jack, i think)
+        // make sure to set your audio output in your audio/midi setup to 44100 24-bit.
+        // anything else will cause the thing to reset to 96k 16bit
+        // and all will go haywire and play an octave higher (or whatever)
+        ofSoundStreamSetup(nchans, 0, sr, framesize, nbufs);
+        ofSoundStreamStart();
+        
+        // launch initial setup score
+        RTcmixParseScoreFile("cmixinit.sco");
+        first_vec=1; // we haven't had audio yet
+        
+        // load samples
+        loadRTcmixSamples();
 
-		// RTcmix audio stuff
-		sr = 44100;
-		nbufs = 2; // you can use more for more processing but latency will suffer
-		nchans = 2; // stereo
-		framesize = 512; // sigvs
-		s_audio_outbuf = (short*)malloc(nchans*framesize*sizeof(short)); // audio buffer (interleaved)
-		
-		// initialize RTcmix
-		rtcmixmain();
-		maxmsp_rtsetparams(sr, nchans, framesize, NULL, NULL);
-		
-		// initialize OF audio streaming
-		// ALERT: there is a piece of shit bug in this (related to jack, i think)
-		// make sure to set your audio output in your audio/midi setup to 44100 24-bit.
-		// anything else will cause the thing to reset to 96k 16bit
-		// and all will go haywire and play an octave higher (or whatever)
-		ofSoundStreamSetup(nchans, 0, sr, framesize, nbufs);
-		ofSoundStreamStart();
-		
+        // load data files
+        loadRTcmixFiles();
+        
+        MASTERAMP = 1.0;
+        MASTERTEMPO = 0.125;
+        AUTORUN = 0;
+        DOCLEAR = true;
+        cleartime = ofGetElapsedTimef();
+        
+        
 		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 
-		// launch initial setup score
-		RTcmixInit();
-		first_vec=1; // we haven't had audio yet
-		
-		// stash previous scaled mouse positions
-		osx = 0.5;
-		osy = 0.5;
-		
 		eventsRegistered = true;
 	}
 }
@@ -123,8 +130,8 @@ void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 	///TEMPORARY FOR SCRATCH TRACKS
-	return;
-	
+	//return;
+	/*
 	cout << "SOUND: current topic >> " << args.currentTopic << endl;
 	cout << "SOUND: keywords >> ";
     for(int i=0;i<args.chosenClip.getKeywords().size();i++)
@@ -135,41 +142,15 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
     {
         cout << i << ": " << args.chosenClip.getSpecialKeywords()[i] << " ";
     }
+    for(int i=0;i<args.currentDichotomiesBalance.size();i++)
+    {
+        cout << i << ": " << args.currentDichotomiesBalance[i].left << " " << args.currentDichotomiesBalance[i].right << " " << args.currentDichotomiesBalance[i].balance << endl;
+    }
     cout << endl;
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
 	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << ": " << returnColor(args.chosenClip.cluster.hexColor) << endl;
 	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
-
-	float t, beatoffset;
-    float musicdur = args.chosenClip.getDuration();
-	
-    // some timing shit...
-    t = ofGetElapsedTimef();
-    float tempo = 0.125;
-    int bcount = 0;
-    beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
-	
-    int bpattern[] = {1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0};
-    int notes[] = {0, 3, 5, 7, 0, 7, 9, 10, 9, 10, 12, 3, 15, 12, 19, 14};
-    
-    // beats
-    for(float i = 0;i<musicdur;i+=tempo)
-    {
-        if(bpattern[bcount]==1) {
-            
-            float t_amp = 1.0-fabs((i/musicdur)-0.5)*2.;
-            
-            MMODALBAR(i, 1., t_amp*0.2, mtof(scale(int(ofRandom(0.,36.)+40.), 2)), ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8)));
-        }
-        bcount = (bcount+1)%(sizeof(bpattern)/sizeof(bpattern[0]));
-    }
-    for(float i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
-    {
-        int pick = (int)ofRandom(0, sizeof(notes)/sizeof(notes[0]));
-            WAVETABLE(i, ofRandom(3., 10.), 0.025, mtof(scale(notes[pick]+55., 2)), ofRandom(0.,1.), "themellowwave", "themellowamp");
-        WAVETABLE(i, ofRandom(3., 10.), 0.025, mtof(scale(notes[pick]+55., 2))*0.99, ofRandom(0.,1.), "themellowwave", "themellowamp");
-    }
-    
+    */
 }
 
 //--------------------------------------------------------------------
@@ -178,8 +159,21 @@ void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::topicChanged(string& topic){
-	
+void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
+	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
+    
+    float musicdur = args.duration;
+    
+    int preset = ofRandom(0, presets.size());
+    
+    mcolor = presets[preset].color;
+    mharmony = presets[preset].harmony;
+    mrhythm = presets[preset].rhythm;
+    MASTERTEMPO = presets[preset].tempo;
+    
+    cout << "PLAYING MUSIC: " << mcolor << " " << mharmony << " " << mrhythm << " " << musicdur << endl;
+    startMusic(mcolor, mharmony, mrhythm, musicdur);
+    
 }
 
 //--------------------------------------------------------------------
@@ -199,7 +193,18 @@ void CloudsSound::keyPressed(ofKeyEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
-	
+
+    if (args.key == OF_KEY_DOWN)
+    {
+        MASTERAMP-=0.1;
+        if(MASTERAMP<0.) MASTERAMP=0.;
+    }
+    if (args.key == OF_KEY_UP)
+    {
+        MASTERAMP+=0.1;
+        if(MASTERAMP>2.) MASTERAMP=2.;
+    }
+
 }
 
 //--------------------------------------------------------------------
@@ -220,7 +225,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // fill up the audio buffer
     for (int i = 0; i < args.bufferSize * args.nChannels; i++)
     {
-        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+        args.buffer[i] = MASTERAMP*(float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
     
     // fire first audio-generating info upon confirming audio is up and running
@@ -233,10 +238,12 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
         // play pretty intro melody
         for(int i = 0;i<12;i++)
         {
-            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "thewave", "theamp");
+            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
             STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
+            //STEREO(i*0.1, 0., 0.2, 0.05, i/11.0, "BD");
         }
-        INPUTSOUND("SJ.aif"); // load up steve jobs, poor guy
+        // launch initial effects chain (reverb)
+        REVERB(5.0); // gimme some reverb
     }
     
     // not using right now
@@ -287,3 +294,296 @@ int CloudsSound::returnColor(string c)
     else if(c.compare("a98d37")==0) outc = 15;
     return(outc);
 }
+
+
+void CloudsSound::loadRTcmixFiles()
+{
+    loadcolors("colors.txt", colors);
+    cout << "colors:" << endl;
+    for(int i = 0;i<colors.size();i++)
+    {
+        for(int j = 0;j<colors[i].instruments.size();j++)
+        {
+            cout << colors[i].instruments[j] << " ";
+        }
+        cout << endl;
+    }
+    
+    loadrhythms("rhythms.txt", rhythms);
+    cout << "rhythms:" << endl;
+    for(int i = 0;i<rhythms.size();i++)
+    {
+        for(int j = 0;j<rhythms[i].beats.size();j++)
+        {
+            cout << rhythms[i].beats[j] << " ";
+        }
+        cout << endl;
+    }
+    
+    loadpitches("pitches.txt", pitches);
+    cout << "pitches:" << endl;
+    for(int i = 0;i<pitches.size();i++)
+    {
+        for(int j = 0;j<pitches[i].notes.size();j++)
+        {
+            cout << pitches[i].notes[j] << " ";
+        }
+        cout << endl;
+    }
+    
+    loadpresets("presets.txt", presets);
+    cout << "presets:" << endl;
+    for(int i = 0;i<presets.size();i++)
+    {
+        cout << presets[i].color << " ";
+        cout << presets[i].harmony << " ";
+        cout << presets[i].rhythm << " ";
+        cout << presets[i].tempo << " ";
+        cout << endl;
+    }
+    
+    
+}
+
+void CloudsSound::loadRTcmixSamples()
+{
+    LOADSOUND("samps/BD.aif", "BD");
+    LOADSOUND("samps/SD.aif", "SD");
+    LOADSOUND("samps/CH.aif", "CH");
+    LOADSOUND("samps/OH.aif", "OH");
+}
+
+void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
+{
+    
+    float t, beatoffset;
+    float i, j;
+	
+    // some timing shit...
+    t = ofGetElapsedTimef();
+    float tempo = MASTERTEMPO;
+    int bcount = 0;
+    beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
+	
+    flush_sched(); // kill previous music
+    
+    // REVERB
+    REVERB(musicdur+7.0); // gimme some reverb
+    
+    //
+    // =========================
+    // BEGIN ORCHESTRATION BLOCK
+    // =========================
+    //
+    
+    vector<string> ilist = colors[mc].instruments; // list of instruments
+    
+    // MODALBEATS
+    if (find(ilist.begin(), ilist.end(), "modalbeats") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                
+                float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*rhythms[mr].beats[bcount];
+                float pick = (int)ofRandom(0, pitches[mh].notes.size());
+                float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
+                
+                MMODALBAR(i, 1., t_amp*0.2, t_freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+        
+    }
+    
+    // WAVEGUIDEBEATS
+    if (find(ilist.begin(), ilist.end(), "waveguidebeats") != ilist.end())
+    {
+        int preset = 3;
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                
+                float t_amp = rhythms[mr].beats[bcount];
+                float pick = (int)ofRandom(0, pitches[mh].notes.size());
+                float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
+                
+                MBANDEDWG(i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.05, 0.15), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+        
+    }
+    
+    // LOWWAVEPULSE
+    if (find(ilist.begin(), ilist.end(), "lowwavepulse") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            float p = 0.7;
+            if(rhythms[mr].beats[bcount]>0.) {
+                
+                float t_amp = rhythms[mr].beats[bcount];
+                float pick = (int)ofRandom(0, pitches[mh].notes.size());
+                float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*0.5;
+                
+                WAVETABLE(i, ofRandom(0.1, 0.3), 0.05, t_freq, p, "wf_organ", "amp_sharpadsr");
+                WAVETABLE(i, ofRandom(0.1, 0.3), 0.05, t_freq*1.5, 1.-p, "wf_organ", "amp_sharpadsr");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+            p = 1.0-p;
+        }
+        
+    }
+    
+    // MESHBEATS
+    if (find(ilist.begin(), ilist.end(), "meshbeats") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            int nx = ofRandom(2,12);
+            int ny = ofRandom(2,12);
+            MMESH2D(i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+        }
+        
+    }
+    
+    // SLOWMESHBEATS
+    if (find(ilist.begin(), ilist.end(), "slowmeshbeats") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            int nx = ofRandom(2,12);
+            int ny = ofRandom(2,12);
+            MMESH2D(i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+        }
+        
+    }
+    
+    // SLOWWAVES
+    if (find(ilist.begin(), ilist.end(), "slowwaves") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
+            WAVETABLE(i, ofRandom(3., 10.), 0.025, freq, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+            WAVETABLE(i, ofRandom(3., 10.), 0.025, freq*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+        }
+        
+    }
+    
+    // SLOWWAVESHI
+    if (find(ilist.begin(), ilist.end(), "slowwaveshi") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float d0 = ofRandom(2., 6.);
+            float of1 = d0*ofRandom(0.3, 0.7);
+            float d1 = d0+of1;
+            float of2 = d1*ofRandom(0.3, 0.7);
+            float d2 = d1+of1+of2;
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote+12., pitches[mh].scale));
+            WAVETABLE(i, d0, 0.02, freq, ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+            WAVETABLE(i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+            WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+        }
+        
+    }
+    
+    // HELMHOLTZ
+    if (find(ilist.begin(), ilist.end(), "helmholtz") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*2.;
+            MBLOWBOTL(i, ofRandom(1., 3.), 0.25, freq, ofRandom(0.05, 0.2), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
+            MBLOWBOTL(i+tempo*floor(ofRandom(0, 4)), ofRandom(1., 3.), 0.25, freq*1.5, ofRandom(0.01, 0.08), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
+        }
+        
+    }
+    
+    // FILTERNOISE
+    if (find(ilist.begin(), ilist.end(), "filternoise") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*2.;
+            FNOISE3(i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
+        }
+        
+    }
+    
+    // STRUMSINE
+    if (find(ilist.begin(), ilist.end(), "strumsine") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
+            WAVETABLE(i, 2., 0.025, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,8))))
+            {
+                
+                STRUM(i+j, 1.0, 0.05, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
+                int tr = ofRandom(0, 5);
+                if(tr==0) pitch+=7;
+            }
+        }
+        PANECHO(0., 0., musicdur+5., 1., tempo*4., tempo*6., 0.7, 7.);
+        
+    }
+    
+    // WAVEGUIDE
+    if (find(ilist.begin(), ilist.end(), "waveguide") != ilist.end())
+    {
+        int preset = 3;
+        for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(6, 24)))
+        {
+            int pick = (int)ofRandom(0, pitches[mh].notes.size());
+            float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
+            MBANDEDWG(i, ofRandom(7., 15.0), ofRandom(0.05, 0.15), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+            
+        }
+    }
+    
+    // PHATBEATZ
+    if (find(ilist.begin(), ilist.end(), "phatbeatz") != ilist.end())
+    {
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                
+                float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
+                pick = (int)ofRandom(0, 3);
+                if(pick<2) STEREO(i, 0., 0.5, t_amp, 0.5, "BD"); else STEREO(i, 0., 0.5, t_amp, 0.5, "SD");
+            }
+            pick = ofRandom(0,4);
+            if(pick<2) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "CH");
+            else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "OH");
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    //
+    // =======================
+    // END ORCHESTRATION BLOCK
+    // =======================
+    //
+    
+    // schedule end event at time + ring-down
+    SCHEDULEBANG(musicdur+7.0);
+    
+}
+
+void CloudsSound::stopMusic()
+{
+    flush_sched();
+}
+

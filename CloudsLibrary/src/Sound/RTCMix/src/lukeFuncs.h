@@ -21,22 +21,60 @@ extern "C" {
     void pullTraverse(short *inbuf, short *outbuf);
     int parse_score(char *thebuf, int buflen);
     int check_bang();
+    void flush_sched();
+    extern char *get_print();
+    extern void reset_print();
+    void OF_buffer_load_set(char *filename, char *bufname, float insk, float dur);
+    int mm_buf_getframes(char *bufname);
+    int mm_buf_getchans(char *bufname);
 }
+
+// luke's comp structures
+struct lukeRhythm {
+    vector<float> beats;
+};
+
+struct lukePitchArray {
+    vector<int> notes;
+    int basenote;
+    int scale;
+};
+
+struct lukeColor {
+    vector<string> instruments;
+};
+
+struct lukePreset {
+    int color;
+    int harmony;
+    int rhythm;
+    float tempo;
+};
+
 
 // luke's music functions
 double mtof(double f, double tuning);
 double mtof(double f);
 double ftom(double f, double tuning);
 int scale(int p, int o);
+void loadrhythms(string f, vector<lukeRhythm>& r);
+void loadpitches(string f, vector<lukePitchArray>& p);
+void loadcolors(string f, vector<lukeColor>& c);
+void loadpresets(string f, vector<lukePreset>& p);
 
 // luke's audio functions
-void RTcmixInit();
+void RTcmixParseScoreFile(string f);
 void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope);
 void MMODALBAR(double outskip, double dur, double amp, double freq, double hardness, double pos, int instrument);
 void STRUM(double outskip, double dur, double amp, double freq, double squish, double decay, double pan);
+void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope);
+void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan);
+void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope);
+void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
+
 void REVERB(double time);
-void INPUTSOUND(string file);
-void STEREO(double outskip, double inskip, double dur, double amp, double pan);
+void LOADSOUND(string file, string handle);
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 
