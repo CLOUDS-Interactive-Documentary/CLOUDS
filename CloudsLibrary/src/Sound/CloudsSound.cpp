@@ -170,8 +170,8 @@ void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsSound::topicChanged(string& topic){
-	
+void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
+	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
 }
 
 //--------------------------------------------------------------------

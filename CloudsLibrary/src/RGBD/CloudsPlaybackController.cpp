@@ -192,7 +192,7 @@ void CloudsPlaybackController::setup(){
 		dir.allowExt("mp3");
 		dir.listDir();
 		for(int i = 0; i < dir.numFiles(); i++){
-			scratchTracks.push_back(dir.getPath(i));
+			//scratchTracks.push_back(dir.getPath(i));
 		}
 		if(scratchTracks.size() > 0){
 			currentScratch = 0;
@@ -474,8 +474,8 @@ void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 //--------------------------------------------------------------------
-void CloudsPlaybackController::topicChanged(string& args){
-	currentTopic = args;
+void CloudsPlaybackController::topicChanged(CloudsTopicEventArgs& args){
+	currentTopic = args.topic;
 }
 
 //--------------------------------------------------------------------

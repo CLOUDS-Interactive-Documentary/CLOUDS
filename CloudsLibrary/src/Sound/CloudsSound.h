@@ -32,7 +32,7 @@ class CloudsSound {
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
 	void questionAsked(CloudsQuestionEventArgs& args);	
-	void topicChanged(string& args);
+	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	
   protected:

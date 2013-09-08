@@ -40,7 +40,6 @@ void testApp::setup(){
 //	if(questionsAndTopics.size() > 0){
 //		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
 //	}
-    CloudsRun run;
 	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
 	////////SEED WITH RANDOM CLIP
 	

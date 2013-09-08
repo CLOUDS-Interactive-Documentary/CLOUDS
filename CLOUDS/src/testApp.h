@@ -27,6 +27,8 @@ class testApp : public ofBaseApp{
 	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
 	CloudsSound sound;
+	CloudsRun run;
+
 	
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };
