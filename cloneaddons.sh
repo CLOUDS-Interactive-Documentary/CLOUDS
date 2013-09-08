@@ -36,6 +36,9 @@ git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
 git clone https://github.com/Larsberg/ofxMarchingCubes
 git clone https://github.com/andreasmuller/ofxAutoReloadedShader
+git clone https://github.com/obviousjim/ofxDelaunay
+git clone https://github.com/prisonerjohn/ofxSQLite
+git clone https://github.com/prisonerjohn/ofxTextWriter
 
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
