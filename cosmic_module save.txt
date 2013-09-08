@@ -1,0 +1,3 @@
+[submodule "CloudsLibrary/src/VisualSystems/Cosmic"]
+	path = CloudsLibrary/src/VisualSystems/Cosmic
+	url = git@github.com:rezaali/Cosmic.git
