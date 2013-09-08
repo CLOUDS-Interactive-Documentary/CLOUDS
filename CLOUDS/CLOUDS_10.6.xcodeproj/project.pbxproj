@@ -25,57 +25,89 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E72D3A491794871C0079254B /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A411794871C0079254B /* ColorPalette.cpp */; };
-		E72D3A4A1794871C0079254B /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A431794871C0079254B /* Globals.cpp */; };
-		E72D3A4B1794871C0079254B /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A451794871C0079254B /* Module.cpp */; };
-		E72D3A4C1794871C0079254B /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A471794871C0079254B /* RandomMover.cpp */; };
-		E72D3A4F179487220079254B /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A4D179487220079254B /* CloudsVisualSystemLia.cpp */; };
-		E73995CB178620AD00EA5F4D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */; };
-		E73995CC178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73995C9178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp */; };
-		E7402E4B178F44A100FEABED /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */; };
-		E7402E4C178F44A100FEABED /* CloudsVisualSystemAmber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */; };
-		E7402E4D178F44A100FEABED /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */; };
-		E7402E4E178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DE6178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp */; };
-		E7402E50178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DEA178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp */; };
-		E7402E51178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DEC178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp */; };
-		E7402E52178F44A100FEABED /* CloudsVisualSystemHiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DEE178F44A100FEABED /* CloudsVisualSystemHiga.cpp */; };
-		E7402E53178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DF0178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.cpp */; };
-		E7402E54178F44A100FEABED /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DF2178F44A100FEABED /* CloudsVisualSystemLSystems.cpp */; };
-		E7402E55178F44A100FEABED /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DF4178F44A100FEABED /* CloudsVisualSystemMemory.cpp */; };
-		E7402E56178F44A100FEABED /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DF6178F44A100FEABED /* CloudsVisualSystemOcean.cpp */; };
-		E7402E57178F44A100FEABED /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DF8178F44A100FEABED /* CloudsVisualSystemPaintBrush.cpp */; };
-		E7402E58178F44A100FEABED /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402DFA178F44A100FEABED /* CloudsVisualSystemRezanator.cpp */; };
-		E7402E5B178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E00178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.cpp */; };
-		E7402E5C178F44A100FEABED /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E02178F44A100FEABED /* CloudsVisualSystemVectorFlow.cpp */; };
-		E7402E5D178F44A100FEABED /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E04178F44A100FEABED /* CloudsVisualSystemVerletForm.cpp */; };
-		E7402E5E178F44A100FEABED /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E06178F44A100FEABED /* CloudsVisualSystemVoro.cpp */; };
-		E7402E5F178F44A100FEABED /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E08178F44A100FEABED /* CloudsVisualSystemWorld.cpp */; };
-		E7402E60178F44A100FEABED /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E0B178F44A100FEABED /* cCell.cpp */; };
-		E7402E61178F44A100FEABED /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E0E178F44A100FEABED /* ParticleConnection.cpp */; };
-		E7402E62178F44A100FEABED /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E10178F44A100FEABED /* ParticleConnectionGenerator.cpp */; };
-		E7402E63178F44A100FEABED /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E12178F44A100FEABED /* ParticleConnector.cpp */; };
-		E7402E64178F44A100FEABED /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E15178F44A100FEABED /* LSystem.cpp */; };
-		E7402E65178F44A100FEABED /* LSystemReconstructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E17178F44A100FEABED /* LSystemReconstructor.cpp */; };
-		E7402E66178F44A100FEABED /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E1A178F44A100FEABED /* Brush.cpp */; };
-		E7402E67178F44A100FEABED /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E1C178F44A100FEABED /* Particle.cpp */; };
-		E7402E68178F44A200FEABED /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E1E178F44A100FEABED /* Spring.cpp */; };
-		E7402E69178F44A200FEABED /* c_loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E24178F44A100FEABED /* c_loops.cpp */; };
-		E7402E6A178F44A200FEABED /* cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E26178F44A100FEABED /* cell.cpp */; };
-		E7402E6B178F44A200FEABED /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E28178F44A100FEABED /* common.cpp */; };
-		E7402E6C178F44A200FEABED /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E2B178F44A100FEABED /* container.cpp */; };
-		E7402E6D178F44A200FEABED /* container_prd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E2D178F44A100FEABED /* container_prd.cpp */; };
-		E7402E6E178F44A200FEABED /* pre_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E2F178F44A100FEABED /* pre_container.cpp */; };
-		E7402E6F178F44A200FEABED /* unitcell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E32178F44A100FEABED /* unitcell.cpp */; };
-		E7402E70178F44A200FEABED /* v_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E34178F44A100FEABED /* v_base.cpp */; };
-		E7402E71178F44A200FEABED /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E36178F44A100FEABED /* v_compute.cpp */; };
-		E7402E72178F44A200FEABED /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E39178F44A100FEABED /* wall.cpp */; };
-		E7402E73178F44A200FEABED /* Voro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E3C178F44A100FEABED /* Voro.cpp */; };
-		E7402E74178F44A200FEABED /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E3E178F44A100FEABED /* VoroParticle.cpp */; };
-		E7402E75178F44A200FEABED /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E40178F44A100FEABED /* vParticle.cpp */; };
-		E7402E76178F44A200FEABED /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E43178F44A100FEABED /* wCity.cpp */; };
-		E7402E77178F44A200FEABED /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E45178F44A100FEABED /* wParticle.cpp */; };
-		E7402E78178F44A200FEABED /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E47178F44A100FEABED /* wSatellite.cpp */; };
-		E7402E79178F44A200FEABED /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E49178F44A100FEABED /* wStar.cpp */; };
+		E730A4D617DCDC940088335A /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4CE17DCDC940088335A /* CloudsRGBDCamera.cpp */; };
+		E730A4D717DCDC940088335A /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4D017DCDC940088335A /* CloudsRGBDVideoPlayer.cpp */; };
+		E730A4D817DCDC940088335A /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4D217DCDC940088335A /* CloudsVisualSystem.cpp */; };
+		E730B76717DCDCC20088335A /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A52817DCDCAE0088335A /* CloudsVisualSystemClusterMap.cpp */; };
+		E730B76817DCDCC20088335A /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A52A17DCDCAE0088335A /* Node.cpp */; };
+		E730B76E17DCDCC20088335A /* CloudsIntroSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A58117DCDCAE0088335A /* CloudsIntroSequence.cpp */; };
+		E730B77717DCDCC20088335A /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A62717DCDCAF0088335A /* CloudsVisualSystemCities.cpp */; };
+		E730B77B17DCDCC20088335A /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A66017DCDCAF0088335A /* cCell.cpp */; };
+		E730B77C17DCDCC20088335A /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A66217DCDCAF0088335A /* CloudsVisualSystemColony.cpp */; };
+		E730B77F17DCDCC20088335A /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A69717DCDCB00088335A /* CloudsVisualSystemConnectors.cpp */; };
+		E730B78017DCDCC20088335A /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A69917DCDCB00088335A /* ParticleConnection.cpp */; };
+		E730B78117DCDCC20088335A /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A69B17DCDCB00088335A /* ParticleConnectionGenerator.cpp */; };
+		E730B78217DCDCC20088335A /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A69D17DCDCB00088335A /* ParticleConnector.cpp */; };
+		E730B78317DCDCC20088335A /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A69F17DCDCB00088335A /* ParticleConnectorBin.cpp */; };
+		E730B7AC17DCDCC20088335A /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AA3517DCDCB30088335A /* CloudsVisualSystemDataCascade.cpp */; };
+		E730B7B517DCDCC20088335A /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AB4C17DCDCB50088335A /* CloudsVisualSystemFireworks.cpp */; };
+		E730B7B817DCDCC20088335A /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AB7C17DCDCB50088335A /* CloudsVisualSystemForkingPaths.cpp */; };
+		E730B7BA17DCDCC20088335A /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AC4617DCDCB60088335A /* CloudsVisualSystemLia.cpp */; };
+		E730B7BB17DCDCC20088335A /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AC4817DCDCB60088335A /* ColorPalette.cpp */; };
+		E730B7BC17DCDCC20088335A /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AC4A17DCDCB60088335A /* Globals.cpp */; };
+		E730B7BD17DCDCC20088335A /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AC4C17DCDCB60088335A /* Module.cpp */; };
+		E730B7BE17DCDCC20088335A /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AC4E17DCDCB60088335A /* RandomMover.cpp */; };
+		E730B7C417DCDCC20088335A /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730ACCE17DCDCB70088335A /* CloudsVisualSystemLSystems.cpp */; };
+		E730B7C517DCDCC20088335A /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730ACD017DCDCB70088335A /* LNode.cpp */; };
+		E730B7C617DCDCC20088335A /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730ACD217DCDCB70088335A /* LSystem.cpp */; };
+		E730B7C917DCDCC20088335A /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730AE1D17DCDCB80088335A /* CloudsVisualSystemMemory.cpp */; };
+		E730B7D417DCDCC20088335A /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B01A17DCDCBA0088335A /* CloudsVisualSystemMarchingCubes.cpp */; };
+		E730B7D517DCDCC20088335A /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B08317DCDCBA0088335A /* CloudsVisualSystemNeurons.cpp */; };
+		E730B7DA17DCDCC20088335A /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B0C717DCDCBA0088335A /* CloudsVisualSystemOcean.cpp */; };
+		E730B7E117DCDCC20088335A /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B1D317DCDCBC0088335A /* CloudsVisualSystemOscillations.cpp */; };
+		E730B7E417DCDCC20088335A /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B21C17DCDCBC0088335A /* Brush.cpp */; };
+		E730B7E517DCDCC20088335A /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B21E17DCDCBC0088335A /* CloudsVisualSystemPaintBrush.cpp */; };
+		E730B7E617DCDCC20088335A /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B22017DCDCBC0088335A /* Particle.cpp */; };
+		E730B7E717DCDCC20088335A /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B22217DCDCBC0088335A /* Spring.cpp */; };
+		E730B7E817DCDCC20088335A /* CloudsVisualSystemHiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B28117DCDCBD0088335A /* CloudsVisualSystemHiga.cpp */; };
+		E730B7EE17DCDCC20088335A /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B3D717DCDCBE0088335A /* ofxMtlBoxFitting.cpp */; };
+		E730B7EF17DCDCC20088335A /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B3D917DCDCBE0088335A /* ScrapeCamera.cpp */; };
+		E730B7F017DCDCC20088335A /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B3DB17DCDCBE0088335A /* ScrapeVisualSystem.cpp */; };
+		E730B7F417DCDCC20088335A /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B46817DCDCBF0088335A /* CloudsVisualSystemVectorFlow.cpp */; };
+		E730B7F517DCDCC20088335A /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B49E17DCDCBF0088335A /* CloudsVisualSystemVerletForm.cpp */; };
+		E730B7FD17DCDCC20088335A /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B54617DCDCC00088335A /* CloudsVisualSystemVoro.cpp */; };
+		E730B7FE17DCDCC20088335A /* c_loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B54917DCDCC00088335A /* c_loops.cpp */; };
+		E730B7FF17DCDCC20088335A /* cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B54B17DCDCC00088335A /* cell.cpp */; };
+		E730B80017DCDCC20088335A /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B54D17DCDCC00088335A /* common.cpp */; };
+		E730B80117DCDCC20088335A /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55017DCDCC00088335A /* container.cpp */; };
+		E730B80217DCDCC20088335A /* container_prd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55217DCDCC00088335A /* container_prd.cpp */; };
+		E730B80317DCDCC20088335A /* pre_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55417DCDCC00088335A /* pre_container.cpp */; };
+		E730B80417DCDCC20088335A /* unitcell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55717DCDCC00088335A /* unitcell.cpp */; };
+		E730B80517DCDCC20088335A /* v_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55917DCDCC00088335A /* v_base.cpp */; };
+		E730B80617DCDCC20088335A /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55B17DCDCC00088335A /* v_compute.cpp */; };
+		E730B80717DCDCC20088335A /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B55E17DCDCC00088335A /* wall.cpp */; };
+		E730B80817DCDCC20088335A /* Voro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B56117DCDCC00088335A /* Voro.cpp */; };
+		E730B80917DCDCC20088335A /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B56317DCDCC00088335A /* VoroParticle.cpp */; };
+		E730B80A17DCDCC20088335A /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B56517DCDCC00088335A /* vParticle.cpp */; };
+		E730B81217DCDCC30088335A /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B61C17DCDCC10088335A /* HistoryNode.cpp */; };
+		E730B81317DCDCC30088335A /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B61E17DCDCC10088335A /* WebHistoryVisualSystem.cpp */; };
+		E730B81917DCDCC30088335A /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B74D17DCDCC20088335A /* CloudsVisualSystemWorld.cpp */; };
+		E730B81A17DCDCC30088335A /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B74F17DCDCC20088335A /* wArc.cpp */; };
+		E730B81B17DCDCC30088335A /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B75117DCDCC20088335A /* wCity.cpp */; };
+		E730B81C17DCDCC30088335A /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B75317DCDCC20088335A /* wParticle.cpp */; };
+		E730B81D17DCDCC30088335A /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B75517DCDCC20088335A /* wSatellite.cpp */; };
+		E730B81E17DCDCC30088335A /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B75717DCDCC20088335A /* wStar.cpp */; };
+		E730B87117DCDE5E0088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B86917DCDE5D0088335A /* Delaunay.cpp */; };
+		E730B87217DCDE5E0088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B86D17DCDE5E0088335A /* ofxDelaunay.cpp */; };
+		E730B88917DCDE810088335A /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B88517DCDE810088335A /* ofxTextWriter.cpp */; };
+		E730B8AF17DCDEDF0088335A /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E730B89617DCDEDF0088335A /* sqlite3.c */; };
+		E730B8B017DCDEDF0088335A /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B89917DCDEDF0088335A /* ofxSQLite.cpp */; };
+		E730B8B117DCDEDF0088335A /* ofxSQLiteAbstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B89B17DCDEDF0088335A /* ofxSQLiteAbstract.cpp */; };
+		E730B8B217DCDEDF0088335A /* ofxSQLiteDelete.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B89D17DCDEDF0088335A /* ofxSQLiteDelete.cpp */; };
+		E730B8B317DCDEDF0088335A /* ofxSQLiteFieldValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B89F17DCDEDF0088335A /* ofxSQLiteFieldValues.cpp */; };
+		E730B8B417DCDEDF0088335A /* ofxSQLiteInsert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B8A217DCDEDF0088335A /* ofxSQLiteInsert.cpp */; };
+		E730B8B517DCDEDF0088335A /* ofxSQLiteSelect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B8A417DCDEDF0088335A /* ofxSQLiteSelect.cpp */; };
+		E730B8B717DCDEDF0088335A /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B8AA17DCDEDF0088335A /* ofxSQLiteUpdate.cpp */; };
+		E730B8DA17DCDFC90088335A /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B8D217DCDFC90088335A /* ofxMarchingCubes.cpp */; };
+		E730B90B17DCE0280088335A /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B90017DCE0280088335A /* ofxAutoReloadedShader.cpp */; };
+		E730B92C17DCE04D0088335A /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = E730B92417DCE04D0088335A /* glm.c */; };
+		E730B92D17DCE04D0088335A /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B92817DCE04D0088335A /* ofxObjLoader.cpp */; };
+		E730B94B17DCE1150088335A /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B94717DCE1150088335A /* ofxBillboard.cpp */; };
+		E730B95117DCE2250088335A /* ofxOceanCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B94F17DCE2250088335A /* ofxOceanCamera.cpp */; };
+		E730B95417DCE3B10088335A /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B95217DCE3B10088335A /* CloudsRun.cpp */; };
+		E730B95717DCEA240088335A /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B95517DCEA240088335A /* CloudsSpeaker.cpp */; };
+		E730B95A17DCEB860088335A /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B95817DCEB860088335A /* CloudsDichotomy.cpp */; };
+		E730B97717DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730B97517DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -160,7 +192,6 @@
 		E779BE38173D5FCD006357EF /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
 		E779BE56173D6082006357EF /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
 		E779BE6D173D60A2006357EF /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
-		E7920773179C986600FAA959 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7920771179C986600FAA959 /* wArc.cpp */; };
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBEC176A4BE20097AC71 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BAFBE8176A4BE20097AC71 /* librtcmix.a */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
@@ -246,114 +277,188 @@
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
-		E72D3A411794871C0079254B /* ColorPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPalette.cpp; sourceTree = "<group>"; };
-		E72D3A421794871C0079254B /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
-		E72D3A431794871C0079254B /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
-		E72D3A441794871C0079254B /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
-		E72D3A451794871C0079254B /* Module.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Module.cpp; sourceTree = "<group>"; };
-		E72D3A461794871C0079254B /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
-		E72D3A471794871C0079254B /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
-		E72D3A481794871C0079254B /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
-		E72D3A4D179487220079254B /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
-		E72D3A4E179487220079254B /* CloudsVisualSystemLia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLia.h; sourceTree = "<group>"; };
-		E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
-		E73995C8178620AD00EA5F4D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
-		E73995C9178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
-		E73995CA178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		E730A4CE17DCDC940088335A /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		E730A4CF17DCDC940088335A /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		E730A4D017DCDC940088335A /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		E730A4D117DCDC940088335A /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		E730A4D217DCDC940088335A /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
+		E730A4D317DCDC940088335A /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
+		E730A4D417DCDC940088335A /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E730A4D517DCDC940088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E730A52817DCDCAE0088335A /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
+		E730A52917DCDCAE0088335A /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
+		E730A52A17DCDCAE0088335A /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		E730A52B17DCDCAE0088335A /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		E730A58117DCDCAE0088335A /* CloudsIntroSequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsIntroSequence.cpp; sourceTree = "<group>"; };
+		E730A58217DCDCAE0088335A /* CloudsIntroSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsIntroSequence.h; sourceTree = "<group>"; };
+		E730A62717DCDCAF0088335A /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
+		E730A62817DCDCAF0088335A /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
+		E730A66017DCDCAF0088335A /* cCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCell.cpp; sourceTree = "<group>"; };
+		E730A66117DCDCAF0088335A /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
+		E730A66217DCDCAF0088335A /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
+		E730A66317DCDCAF0088335A /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
+		E730A69717DCDCB00088335A /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
+		E730A69817DCDCB00088335A /* CloudsVisualSystemConnectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemConnectors.h; sourceTree = "<group>"; };
+		E730A69917DCDCB00088335A /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
+		E730A69A17DCDCB00088335A /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
+		E730A69B17DCDCB00088335A /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
+		E730A69C17DCDCB00088335A /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
+		E730A69D17DCDCB00088335A /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
+		E730A69E17DCDCB00088335A /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
+		E730A69F17DCDCB00088335A /* ParticleConnectorBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectorBin.cpp; sourceTree = "<group>"; };
+		E730A6A017DCDCB00088335A /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
+		E730AA3517DCDCB30088335A /* CloudsVisualSystemDataCascade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemDataCascade.cpp; sourceTree = "<group>"; };
+		E730AA3617DCDCB30088335A /* CloudsVisualSystemDataCascade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemDataCascade.h; sourceTree = "<group>"; };
+		E730AB4C17DCDCB50088335A /* CloudsVisualSystemFireworks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFireworks.cpp; sourceTree = "<group>"; };
+		E730AB4D17DCDCB50088335A /* CloudsVisualSystemFireworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFireworks.h; sourceTree = "<group>"; };
+		E730AB7C17DCDCB50088335A /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
+		E730AB7D17DCDCB50088335A /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
+		E730AC4617DCDCB60088335A /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
+		E730AC4717DCDCB60088335A /* CloudsVisualSystemLia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLia.h; sourceTree = "<group>"; };
+		E730AC4817DCDCB60088335A /* ColorPalette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorPalette.cpp; sourceTree = "<group>"; };
+		E730AC4917DCDCB60088335A /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPalette.h; sourceTree = "<group>"; };
+		E730AC4A17DCDCB60088335A /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
+		E730AC4B17DCDCB60088335A /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		E730AC4C17DCDCB60088335A /* Module.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Module.cpp; sourceTree = "<group>"; };
+		E730AC4D17DCDCB60088335A /* Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Module.h; sourceTree = "<group>"; };
+		E730AC4E17DCDCB60088335A /* RandomMover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandomMover.cpp; sourceTree = "<group>"; };
+		E730AC4F17DCDCB60088335A /* RandomMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomMover.h; sourceTree = "<group>"; };
+		E730ACCE17DCDCB70088335A /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
+		E730ACCF17DCDCB70088335A /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
+		E730ACD017DCDCB70088335A /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
+		E730ACD117DCDCB70088335A /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
+		E730ACD217DCDCB70088335A /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
+		E730ACD317DCDCB70088335A /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
+		E730AE1D17DCDCB80088335A /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
+		E730AE1E17DCDCB80088335A /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
+		E730B01A17DCDCBA0088335A /* CloudsVisualSystemMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMarchingCubes.cpp; sourceTree = "<group>"; };
+		E730B01B17DCDCBA0088335A /* CloudsVisualSystemMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMarchingCubes.h; sourceTree = "<group>"; };
+		E730B08317DCDCBA0088335A /* CloudsVisualSystemNeurons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemNeurons.cpp; sourceTree = "<group>"; };
+		E730B08417DCDCBA0088335A /* CloudsVisualSystemNeurons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemNeurons.h; sourceTree = "<group>"; };
+		E730B0C717DCDCBA0088335A /* CloudsVisualSystemOcean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOcean.cpp; sourceTree = "<group>"; };
+		E730B0C817DCDCBA0088335A /* CloudsVisualSystemOcean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOcean.h; sourceTree = "<group>"; };
+		E730B1D317DCDCBC0088335A /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
+		E730B1D417DCDCBC0088335A /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
+		E730B21C17DCDCBC0088335A /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
+		E730B21D17DCDCBC0088335A /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
+		E730B21E17DCDCBC0088335A /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
+		E730B21F17DCDCBC0088335A /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
+		E730B22017DCDCBC0088335A /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		E730B22117DCDCBC0088335A /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		E730B22217DCDCBC0088335A /* Spring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spring.cpp; sourceTree = "<group>"; };
+		E730B22317DCDCBC0088335A /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
+		E730B28117DCDCBD0088335A /* CloudsVisualSystemHiga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemHiga.cpp; sourceTree = "<group>"; };
+		E730B28217DCDCBD0088335A /* CloudsVisualSystemHiga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemHiga.h; sourceTree = "<group>"; };
+		E730B28317DCDCBD0088335A /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
+		E730B3D717DCDCBE0088335A /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
+		E730B3D817DCDCBE0088335A /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
+		E730B3D917DCDCBE0088335A /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
+		E730B3DA17DCDCBE0088335A /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
+		E730B3DB17DCDCBE0088335A /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
+		E730B3DC17DCDCBE0088335A /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
+		E730B46817DCDCBF0088335A /* CloudsVisualSystemVectorFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVectorFlow.cpp; sourceTree = "<group>"; };
+		E730B46917DCDCBF0088335A /* CloudsVisualSystemVectorFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVectorFlow.h; sourceTree = "<group>"; };
+		E730B49E17DCDCBF0088335A /* CloudsVisualSystemVerletForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVerletForm.cpp; sourceTree = "<group>"; };
+		E730B49F17DCDCBF0088335A /* CloudsVisualSystemVerletForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVerletForm.h; sourceTree = "<group>"; };
+		E730B54617DCDCC00088335A /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
+		E730B54717DCDCC00088335A /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
+		E730B54917DCDCC00088335A /* c_loops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_loops.cpp; sourceTree = "<group>"; };
+		E730B54A17DCDCC00088335A /* c_loops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_loops.h; sourceTree = "<group>"; };
+		E730B54B17DCDCC00088335A /* cell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cell.cpp; sourceTree = "<group>"; };
+		E730B54C17DCDCC00088335A /* cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cell.h; sourceTree = "<group>"; };
+		E730B54D17DCDCC00088335A /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
+		E730B54E17DCDCC00088335A /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		E730B54F17DCDCC00088335A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		E730B55017DCDCC00088335A /* container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = container.cpp; sourceTree = "<group>"; };
+		E730B55117DCDCC00088335A /* container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = container.h; sourceTree = "<group>"; };
+		E730B55217DCDCC00088335A /* container_prd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = container_prd.cpp; sourceTree = "<group>"; };
+		E730B55317DCDCC00088335A /* container_prd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = container_prd.h; sourceTree = "<group>"; };
+		E730B55417DCDCC00088335A /* pre_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pre_container.cpp; sourceTree = "<group>"; };
+		E730B55517DCDCC00088335A /* pre_container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pre_container.h; sourceTree = "<group>"; };
+		E730B55617DCDCC00088335A /* rad_option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rad_option.h; sourceTree = "<group>"; };
+		E730B55717DCDCC00088335A /* unitcell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unitcell.cpp; sourceTree = "<group>"; };
+		E730B55817DCDCC00088335A /* unitcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unitcell.h; sourceTree = "<group>"; };
+		E730B55917DCDCC00088335A /* v_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = v_base.cpp; sourceTree = "<group>"; };
+		E730B55A17DCDCC00088335A /* v_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v_base.h; sourceTree = "<group>"; };
+		E730B55B17DCDCC00088335A /* v_compute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = v_compute.cpp; sourceTree = "<group>"; };
+		E730B55C17DCDCC00088335A /* v_compute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v_compute.h; sourceTree = "<group>"; };
+		E730B55D17DCDCC00088335A /* voro++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "voro++.h"; sourceTree = "<group>"; };
+		E730B55E17DCDCC00088335A /* wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wall.cpp; sourceTree = "<group>"; };
+		E730B55F17DCDCC00088335A /* wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wall.h; sourceTree = "<group>"; };
+		E730B56017DCDCC00088335A /* worklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = worklist.h; sourceTree = "<group>"; };
+		E730B56117DCDCC00088335A /* Voro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voro.cpp; sourceTree = "<group>"; };
+		E730B56217DCDCC00088335A /* Voro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voro.h; sourceTree = "<group>"; };
+		E730B56317DCDCC00088335A /* VoroParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoroParticle.cpp; sourceTree = "<group>"; };
+		E730B56417DCDCC00088335A /* VoroParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoroParticle.h; sourceTree = "<group>"; };
+		E730B56517DCDCC00088335A /* vParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vParticle.cpp; sourceTree = "<group>"; };
+		E730B56617DCDCC00088335A /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
+		E730B61C17DCDCC10088335A /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
+		E730B61D17DCDCC10088335A /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
+		E730B61E17DCDCC10088335A /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
+		E730B61F17DCDCC10088335A /* WebHistoryVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHistoryVisualSystem.h; sourceTree = "<group>"; };
+		E730B74D17DCDCC20088335A /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
+		E730B74E17DCDCC20088335A /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
+		E730B74F17DCDCC20088335A /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
+		E730B75017DCDCC20088335A /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
+		E730B75117DCDCC20088335A /* wCity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wCity.cpp; sourceTree = "<group>"; };
+		E730B75217DCDCC20088335A /* wCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wCity.h; sourceTree = "<group>"; };
+		E730B75317DCDCC20088335A /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
+		E730B75417DCDCC20088335A /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
+		E730B75517DCDCC20088335A /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
+		E730B75617DCDCC20088335A /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
+		E730B75717DCDCC20088335A /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
+		E730B75817DCDCC20088335A /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
+		E730B86917DCDE5D0088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
+		E730B86A17DCDE5D0088335A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
+		E730B86B17DCDE5D0088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E730B86D17DCDE5E0088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
+		E730B86E17DCDE5E0088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E730B88517DCDE810088335A /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
+		E730B88617DCDE810088335A /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
+		E730B89617DCDEDF0088335A /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		E730B89717DCDEDF0088335A /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		E730B89817DCDEDF0088335A /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		E730B89917DCDEDF0088335A /* ofxSQLite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLite.cpp; sourceTree = "<group>"; };
+		E730B89A17DCDEDF0088335A /* ofxSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLite.h; sourceTree = "<group>"; };
+		E730B89B17DCDEDF0088335A /* ofxSQLiteAbstract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteAbstract.cpp; sourceTree = "<group>"; };
+		E730B89C17DCDEDF0088335A /* ofxSQLiteAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteAbstract.h; sourceTree = "<group>"; };
+		E730B89D17DCDEDF0088335A /* ofxSQLiteDelete.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteDelete.cpp; sourceTree = "<group>"; };
+		E730B89E17DCDEDF0088335A /* ofxSQLiteDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteDelete.h; sourceTree = "<group>"; };
+		E730B89F17DCDEDF0088335A /* ofxSQLiteFieldValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteFieldValues.cpp; sourceTree = "<group>"; };
+		E730B8A017DCDEDF0088335A /* ofxSQLiteFieldValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteFieldValues.h; sourceTree = "<group>"; };
+		E730B8A117DCDEDF0088335A /* ofxSQLiteHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteHeaders.h; sourceTree = "<group>"; };
+		E730B8A217DCDEDF0088335A /* ofxSQLiteInsert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteInsert.cpp; sourceTree = "<group>"; };
+		E730B8A317DCDEDF0088335A /* ofxSQLiteInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteInsert.h; sourceTree = "<group>"; };
+		E730B8A417DCDEDF0088335A /* ofxSQLiteSelect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteSelect.cpp; sourceTree = "<group>"; };
+		E730B8A517DCDEDF0088335A /* ofxSQLiteSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteSelect.h; sourceTree = "<group>"; };
+		E730B8A817DCDEDF0088335A /* ofxSQLiteType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteType.h; sourceTree = "<group>"; };
+		E730B8A917DCDEDF0088335A /* ofxSQLiteTypeNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteTypeNow.h; sourceTree = "<group>"; };
+		E730B8AA17DCDEDF0088335A /* ofxSQLiteUpdate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteUpdate.cpp; sourceTree = "<group>"; };
+		E730B8AB17DCDEDF0088335A /* ofxSQLiteUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteUpdate.h; sourceTree = "<group>"; };
+		E730B8AC17DCDEDF0088335A /* ofxSQLiteWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteWhere.h; sourceTree = "<group>"; };
+		E730B8D117DCDFC90088335A /* mcTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcTables.h; sourceTree = "<group>"; };
+		E730B8D217DCDFC90088335A /* ofxMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMarchingCubes.cpp; sourceTree = "<group>"; };
+		E730B8D317DCDFC90088335A /* ofxMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMarchingCubes.h; sourceTree = "<group>"; };
+		E730B90017DCE0280088335A /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAutoReloadedShader.cpp; sourceTree = "<group>"; };
+		E730B90117DCE0280088335A /* ofxAutoReloadedShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAutoReloadedShader.h; sourceTree = "<group>"; };
+		E730B92417DCE04D0088335A /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
+		E730B92517DCE04D0088335A /* glm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
+		E730B92617DCE04D0088335A /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		E730B92817DCE04D0088335A /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
+		E730B92917DCE04D0088335A /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
+		E730B94717DCE1150088335A /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
+		E730B94817DCE1150088335A /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
+		E730B94F17DCE2250088335A /* ofxOceanCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanCamera.cpp; sourceTree = "<group>"; };
+		E730B95017DCE2250088335A /* ofxOceanCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanCamera.h; sourceTree = "<group>"; };
+		E730B95217DCE3B10088335A /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
+		E730B95317DCE3B10088335A /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
+		E730B95517DCEA240088335A /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSpeaker.cpp; sourceTree = "<group>"; };
+		E730B95617DCEA240088335A /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
+		E730B95817DCEB860088335A /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
+		E730B95917DCEB860088335A /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
+		E730B97517DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
+		E730B97617DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
-		E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
-		E7402DE1178F44A100FEABED /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
-		E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemAmber.cpp; sourceTree = "<group>"; };
-		E7402DE3178F44A100FEABED /* CloudsVisualSystemAmber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemAmber.h; sourceTree = "<group>"; };
-		E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
-		E7402DE5178F44A100FEABED /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
-		E7402DE6178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCollaboration1.cpp; sourceTree = "<group>"; };
-		E7402DE7178F44A100FEABED /* CloudsVisualSystemCollaboration1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCollaboration1.h; sourceTree = "<group>"; };
-		E7402DEA178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemComputationTicker.cpp; sourceTree = "<group>"; };
-		E7402DEB178F44A100FEABED /* CloudsVisualSystemComputationTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemComputationTicker.h; sourceTree = "<group>"; };
-		E7402DEC178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
-		E7402DED178F44A100FEABED /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
-		E7402DEE178F44A100FEABED /* CloudsVisualSystemHiga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemHiga.cpp; sourceTree = "<group>"; };
-		E7402DEF178F44A100FEABED /* CloudsVisualSystemHiga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemHiga.h; sourceTree = "<group>"; };
-		E7402DF0178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
-		E7402DF1178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
-		E7402DF2178F44A100FEABED /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
-		E7402DF3178F44A100FEABED /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
-		E7402DF4178F44A100FEABED /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
-		E7402DF5178F44A100FEABED /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
-		E7402DF6178F44A100FEABED /* CloudsVisualSystemOcean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOcean.cpp; sourceTree = "<group>"; };
-		E7402DF7178F44A100FEABED /* CloudsVisualSystemOcean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOcean.h; sourceTree = "<group>"; };
-		E7402DF8178F44A100FEABED /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
-		E7402DF9178F44A100FEABED /* CloudsVisualSystemPaintBrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPaintBrush.h; sourceTree = "<group>"; };
-		E7402DFA178F44A100FEABED /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
-		E7402DFB178F44A100FEABED /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
-		E7402E00178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
-		E7402E01178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
-		E7402E02178F44A100FEABED /* CloudsVisualSystemVectorFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVectorFlow.cpp; sourceTree = "<group>"; };
-		E7402E03178F44A100FEABED /* CloudsVisualSystemVectorFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVectorFlow.h; sourceTree = "<group>"; };
-		E7402E04178F44A100FEABED /* CloudsVisualSystemVerletForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVerletForm.cpp; sourceTree = "<group>"; };
-		E7402E05178F44A100FEABED /* CloudsVisualSystemVerletForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVerletForm.h; sourceTree = "<group>"; };
-		E7402E06178F44A100FEABED /* CloudsVisualSystemVoro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVoro.cpp; sourceTree = "<group>"; };
-		E7402E07178F44A100FEABED /* CloudsVisualSystemVoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVoro.h; sourceTree = "<group>"; };
-		E7402E08178F44A100FEABED /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
-		E7402E09178F44A100FEABED /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
-		E7402E0B178F44A100FEABED /* cCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCell.cpp; sourceTree = "<group>"; };
-		E7402E0C178F44A100FEABED /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
-		E7402E0E178F44A100FEABED /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
-		E7402E0F178F44A100FEABED /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
-		E7402E10178F44A100FEABED /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
-		E7402E11178F44A100FEABED /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
-		E7402E12178F44A100FEABED /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
-		E7402E13178F44A100FEABED /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
-		E7402E15178F44A100FEABED /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
-		E7402E16178F44A100FEABED /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		E7402E17178F44A100FEABED /* LSystemReconstructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystemReconstructor.cpp; sourceTree = "<group>"; };
-		E7402E18178F44A100FEABED /* LSystemReconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemReconstructor.h; sourceTree = "<group>"; };
-		E7402E1A178F44A100FEABED /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
-		E7402E1B178F44A100FEABED /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
-		E7402E1C178F44A100FEABED /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		E7402E1D178F44A100FEABED /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
-		E7402E1E178F44A100FEABED /* Spring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spring.cpp; sourceTree = "<group>"; };
-		E7402E1F178F44A100FEABED /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
-		E7402E21178F44A100FEABED /* Replecator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replecator.h; sourceTree = "<group>"; };
-		E7402E24178F44A100FEABED /* c_loops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_loops.cpp; sourceTree = "<group>"; };
-		E7402E25178F44A100FEABED /* c_loops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_loops.h; sourceTree = "<group>"; };
-		E7402E26178F44A100FEABED /* cell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cell.cpp; sourceTree = "<group>"; };
-		E7402E27178F44A100FEABED /* cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cell.h; sourceTree = "<group>"; };
-		E7402E28178F44A100FEABED /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
-		E7402E29178F44A100FEABED /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		E7402E2A178F44A100FEABED /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		E7402E2B178F44A100FEABED /* container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = container.cpp; sourceTree = "<group>"; };
-		E7402E2C178F44A100FEABED /* container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = container.h; sourceTree = "<group>"; };
-		E7402E2D178F44A100FEABED /* container_prd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = container_prd.cpp; sourceTree = "<group>"; };
-		E7402E2E178F44A100FEABED /* container_prd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = container_prd.h; sourceTree = "<group>"; };
-		E7402E2F178F44A100FEABED /* pre_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pre_container.cpp; sourceTree = "<group>"; };
-		E7402E30178F44A100FEABED /* pre_container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pre_container.h; sourceTree = "<group>"; };
-		E7402E31178F44A100FEABED /* rad_option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rad_option.h; sourceTree = "<group>"; };
-		E7402E32178F44A100FEABED /* unitcell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unitcell.cpp; sourceTree = "<group>"; };
-		E7402E33178F44A100FEABED /* unitcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unitcell.h; sourceTree = "<group>"; };
-		E7402E34178F44A100FEABED /* v_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = v_base.cpp; sourceTree = "<group>"; };
-		E7402E35178F44A100FEABED /* v_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v_base.h; sourceTree = "<group>"; };
-		E7402E36178F44A100FEABED /* v_compute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = v_compute.cpp; sourceTree = "<group>"; };
-		E7402E37178F44A100FEABED /* v_compute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = v_compute.h; sourceTree = "<group>"; };
-		E7402E38178F44A100FEABED /* voro++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "voro++.h"; sourceTree = "<group>"; };
-		E7402E39178F44A100FEABED /* wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wall.cpp; sourceTree = "<group>"; };
-		E7402E3A178F44A100FEABED /* wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wall.h; sourceTree = "<group>"; };
-		E7402E3B178F44A100FEABED /* worklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = worklist.h; sourceTree = "<group>"; };
-		E7402E3C178F44A100FEABED /* Voro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voro.cpp; sourceTree = "<group>"; };
-		E7402E3D178F44A100FEABED /* Voro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voro.h; sourceTree = "<group>"; };
-		E7402E3E178F44A100FEABED /* VoroParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoroParticle.cpp; sourceTree = "<group>"; };
-		E7402E3F178F44A100FEABED /* VoroParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoroParticle.h; sourceTree = "<group>"; };
-		E7402E40178F44A100FEABED /* vParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vParticle.cpp; sourceTree = "<group>"; };
-		E7402E41178F44A100FEABED /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
-		E7402E43178F44A100FEABED /* wCity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wCity.cpp; sourceTree = "<group>"; };
-		E7402E44178F44A100FEABED /* wCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wCity.h; sourceTree = "<group>"; };
-		E7402E45178F44A100FEABED /* wParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wParticle.cpp; sourceTree = "<group>"; };
-		E7402E46178F44A100FEABED /* wParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wParticle.h; sourceTree = "<group>"; };
-		E7402E47178F44A100FEABED /* wSatellite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wSatellite.cpp; sourceTree = "<group>"; };
-		E7402E48178F44A100FEABED /* wSatellite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wSatellite.h; sourceTree = "<group>"; };
-		E7402E49178F44A100FEABED /* wStar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wStar.cpp; sourceTree = "<group>"; };
-		E7402E4A178F44A100FEABED /* wStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wStar.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
 		E7402E83178F44DC00FEABED /* ofxOcean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOcean.cpp; sourceTree = "<group>"; };
@@ -669,8 +774,6 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
-		E7920771179C986600FAA959 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
-		E7920772179C986600FAA959 /* wArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wArc.h; sourceTree = "<group>"; };
 		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
 		E7BAFBD2176A43780097AC71 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
 		E7BAFBE8176A4BE20097AC71 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
@@ -802,6 +905,12 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E730B93117DCE1150088335A /* ofxBillboard */,
+				E730B90F17DCE04C0088335A /* ofxObjLoader */,
+				E730B8DE17DCE0280088335A /* ofxAutoReloadedShader */,
+				E730B88D17DCDEDF0088335A /* ofxSQLite */,
+				E730B87617DCDE800088335A /* ofxTextWriter */,
+				E730B85517DCDE5D0088335A /* ofxDelaunay */,
 				E7402E7A178F44DC00FEABED /* ofxOcean */,
 				E74CE8741768ED7B00083C4C /* ofxMSACore */,
 				E74CE8371768ED6100083C4C /* ofxMSAObjCPointer */,
@@ -820,6 +929,7 @@
 				E779B6AB173D4DC8006357EF /* ofxCv */,
 				E7637D8F17359DED008ADC62 /* ofxUI */,
 				E745F6E31720FE9400B86D7E /* ofxXmlSettings */,
+				E730B8B817DCDFC90088335A /* ofxMarchingCubes */,
 				E745F6C61720FE0E00B86D7E /* CloudsLibrary */,
 			);
 			name = addons;
@@ -917,188 +1027,743 @@
 			path = ../../CloudsData/shaders;
 			sourceTree = "<group>";
 		};
-		E72D3A401794871C0079254B /* LIA */ = {
+		E730A4CC17DCDC940088335A /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E72D3A411794871C0079254B /* ColorPalette.cpp */,
-				E72D3A421794871C0079254B /* ColorPalette.h */,
-				E72D3A431794871C0079254B /* Globals.cpp */,
-				E72D3A441794871C0079254B /* Globals.h */,
-				E72D3A451794871C0079254B /* Module.cpp */,
-				E72D3A461794871C0079254B /* Module.h */,
-				E72D3A471794871C0079254B /* RandomMover.cpp */,
-				E72D3A481794871C0079254B /* RandomMover.h */,
+				E730A4CE17DCDC940088335A /* CloudsRGBDCamera.cpp */,
+				E730A4CF17DCDC940088335A /* CloudsRGBDCamera.h */,
+				E730A4D017DCDC940088335A /* CloudsRGBDVideoPlayer.cpp */,
+				E730A4D117DCDC940088335A /* CloudsRGBDVideoPlayer.h */,
+				E730A4D217DCDC940088335A /* CloudsVisualSystem.cpp */,
+				E730A4D317DCDC940088335A /* CloudsVisualSystem.h */,
+				E730A4D417DCDC940088335A /* ofxLight.h */,
+				E730A4D517DCDC940088335A /* README.md */,
 			);
-			path = LIA;
+			path = VisualSystemsLibrary;
 			sourceTree = "<group>";
 		};
-		E7402DDF178F44A100FEABED /* VisualSystems */ = {
+		E730A4D917DCDCAE0088335A /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
-				E7402DE1178F44A100FEABED /* CloudsVisualSystem.h */,
-				E7402DE0178F44A100FEABED /* CloudsVisualSystem.cpp */,
-				E7402DE2178F44A100FEABED /* CloudsVisualSystemAmber.cpp */,
-				E7402DE3178F44A100FEABED /* CloudsVisualSystemAmber.h */,
-				E7402DE4178F44A100FEABED /* CloudsVisualSystemCities.cpp */,
-				E7402DE5178F44A100FEABED /* CloudsVisualSystemCities.h */,
-				E7402DE6178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp */,
-				E7402DE7178F44A100FEABED /* CloudsVisualSystemCollaboration1.h */,
-				E7402DEA178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp */,
-				E7402DEB178F44A100FEABED /* CloudsVisualSystemComputationTicker.h */,
-				E7402DEC178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp */,
-				E7402DED178F44A100FEABED /* CloudsVisualSystemForkingPaths.h */,
-				E7402DEE178F44A100FEABED /* CloudsVisualSystemHiga.cpp */,
-				E7402DEF178F44A100FEABED /* CloudsVisualSystemHiga.h */,
-				E7402DF0178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.cpp */,
-				E7402DF1178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.h */,
-				E7402DF2178F44A100FEABED /* CloudsVisualSystemLSystems.cpp */,
-				E7402DF3178F44A100FEABED /* CloudsVisualSystemLSystems.h */,
-				E7402DF4178F44A100FEABED /* CloudsVisualSystemMemory.cpp */,
-				E7402DF5178F44A100FEABED /* CloudsVisualSystemMemory.h */,
-				E7402DF6178F44A100FEABED /* CloudsVisualSystemOcean.cpp */,
-				E7402DF7178F44A100FEABED /* CloudsVisualSystemOcean.h */,
-				E7402DF8178F44A100FEABED /* CloudsVisualSystemPaintBrush.cpp */,
-				E7402DF9178F44A100FEABED /* CloudsVisualSystemPaintBrush.h */,
-				E7402DFA178F44A100FEABED /* CloudsVisualSystemRezanator.cpp */,
-				E7402DFB178F44A100FEABED /* CloudsVisualSystemRezanator.h */,
-				E7402E00178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.cpp */,
-				E7402E01178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.h */,
-				E7402E02178F44A100FEABED /* CloudsVisualSystemVectorFlow.cpp */,
-				E7402E03178F44A100FEABED /* CloudsVisualSystemVectorFlow.h */,
-				E7402E04178F44A100FEABED /* CloudsVisualSystemVerletForm.cpp */,
-				E7402E05178F44A100FEABED /* CloudsVisualSystemVerletForm.h */,
-				E7402E06178F44A100FEABED /* CloudsVisualSystemVoro.cpp */,
-				E7402E07178F44A100FEABED /* CloudsVisualSystemVoro.h */,
-				E72D3A4D179487220079254B /* CloudsVisualSystemLia.cpp */,
-				E72D3A4E179487220079254B /* CloudsVisualSystemLia.h */,
-				E7402E08178F44A100FEABED /* CloudsVisualSystemWorld.cpp */,
-				E7402E09178F44A100FEABED /* CloudsVisualSystemWorld.h */,
-				E72D3A401794871C0079254B /* LIA */,
-				E7402E0A178F44A100FEABED /* Colony */,
-				E7402E0D178F44A100FEABED /* ConnectorParticles */,
-				E7402E14178F44A100FEABED /* LSystems */,
-				E7402E19178F44A100FEABED /* PaintBrush */,
-				E7402E20178F44A100FEABED /* Replecator */,
-				E7402E22178F44A100FEABED /* Voro */,
-				E7402E42178F44A100FEABED /* World */,
+				E730B95B17DCEC260088335A /* LaplacianTunnel */,
+				E730A4E317DCDCAE0088335A /* _ClusterMap */,
+				E730A52C17DCDCAE0088335A /* _Intro */,
+				E730A58417DCDCAE0088335A /* Cities */,
+				E730A62917DCDCAF0088335A /* Colony */,
+				E730A66817DCDCB00088335A /* Connectors */,
+				E730A9A717DCDCB30088335A /* DataCascade */,
+				E730AA3B17DCDCB30088335A /* Fireworks */,
+				E730AB4E17DCDCB50088335A /* ForkingPaths */,
+				E730AB9A17DCDCB60088335A /* LIA */,
+				E730AC5017DCDCB60088335A /* LSystem */,
+				E730ACD417DCDCB70088335A /* Memory */,
+				E730AE3917DCDCB80088335A /* Metaballs */,
+				E730B01C17DCDCBA0088335A /* Neurons */,
+				E730B08517DCDCBA0088335A /* Ocean */,
+				E730B0CD17DCDCBB0088335A /* Oscillations */,
+				E730B1D517DCDCBC0088335A /* PaintBrush */,
+				E730B22417DCDCBC0088335A /* Replecator */,
+				E730B32017DCDCBD0088335A /* Scrape */,
+				E730B3E117DCDCBE0088335A /* VectorFlow */,
+				E730B46E17DCDCBF0088335A /* VerletForm */,
+				E730B4A017DCDCBF0088335A /* Voro */,
+				E730B56717DCDCC00088335A /* WebHistory */,
+				E730B62417DCDCC10088335A /* World */,
 			);
 			path = VisualSystems;
 			sourceTree = "<group>";
 		};
-		E7402E0A178F44A100FEABED /* Colony */ = {
+		E730A4E317DCDCAE0088335A /* _ClusterMap */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E0B178F44A100FEABED /* cCell.cpp */,
-				E7402E0C178F44A100FEABED /* cCell.h */,
+				E730A52717DCDCAE0088335A /* vs_src */,
+			);
+			path = _ClusterMap;
+			sourceTree = "<group>";
+		};
+		E730A52717DCDCAE0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730A52817DCDCAE0088335A /* CloudsVisualSystemClusterMap.cpp */,
+				E730A52917DCDCAE0088335A /* CloudsVisualSystemClusterMap.h */,
+				E730A52A17DCDCAE0088335A /* Node.cpp */,
+				E730A52B17DCDCAE0088335A /* Node.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730A52C17DCDCAE0088335A /* _Intro */ = {
+			isa = PBXGroup;
+			children = (
+				E730A58017DCDCAE0088335A /* vs_src */,
+			);
+			path = _Intro;
+			sourceTree = "<group>";
+		};
+		E730A58017DCDCAE0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730A58117DCDCAE0088335A /* CloudsIntroSequence.cpp */,
+				E730A58217DCDCAE0088335A /* CloudsIntroSequence.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730A58417DCDCAE0088335A /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				E730A62617DCDCAF0088335A /* vs_src */,
+			);
+			path = Cities;
+			sourceTree = "<group>";
+		};
+		E730A62617DCDCAF0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730A62717DCDCAF0088335A /* CloudsVisualSystemCities.cpp */,
+				E730A62817DCDCAF0088335A /* CloudsVisualSystemCities.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730A62917DCDCAF0088335A /* Colony */ = {
+			isa = PBXGroup;
+			children = (
+				E730A65F17DCDCAF0088335A /* vs_src */,
 			);
 			path = Colony;
 			sourceTree = "<group>";
 		};
-		E7402E0D178F44A100FEABED /* ConnectorParticles */ = {
+		E730A65F17DCDCAF0088335A /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E0E178F44A100FEABED /* ParticleConnection.cpp */,
-				E7402E0F178F44A100FEABED /* ParticleConnection.h */,
-				E7402E10178F44A100FEABED /* ParticleConnectionGenerator.cpp */,
-				E7402E11178F44A100FEABED /* ParticleConnectionGenerator.h */,
-				E7402E12178F44A100FEABED /* ParticleConnector.cpp */,
-				E7402E13178F44A100FEABED /* ParticleConnector.h */,
+				E730A66017DCDCAF0088335A /* cCell.cpp */,
+				E730A66117DCDCAF0088335A /* cCell.h */,
+				E730A66217DCDCAF0088335A /* CloudsVisualSystemColony.cpp */,
+				E730A66317DCDCAF0088335A /* CloudsVisualSystemColony.h */,
 			);
-			path = ConnectorParticles;
+			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7402E14178F44A100FEABED /* LSystems */ = {
+		E730A66817DCDCB00088335A /* Connectors */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E15178F44A100FEABED /* LSystem.cpp */,
-				E7402E16178F44A100FEABED /* LSystem.h */,
-				E7402E17178F44A100FEABED /* LSystemReconstructor.cpp */,
-				E7402E18178F44A100FEABED /* LSystemReconstructor.h */,
+				E730A69617DCDCB00088335A /* vs_src */,
 			);
-			path = LSystems;
+			path = Connectors;
 			sourceTree = "<group>";
 		};
-		E7402E19178F44A100FEABED /* PaintBrush */ = {
+		E730A69617DCDCB00088335A /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E1A178F44A100FEABED /* Brush.cpp */,
-				E7402E1B178F44A100FEABED /* Brush.h */,
-				E7402E1C178F44A100FEABED /* Particle.cpp */,
-				E7402E1D178F44A100FEABED /* Particle.h */,
-				E7402E1E178F44A100FEABED /* Spring.cpp */,
-				E7402E1F178F44A100FEABED /* Spring.h */,
+				E730A69717DCDCB00088335A /* CloudsVisualSystemConnectors.cpp */,
+				E730A69817DCDCB00088335A /* CloudsVisualSystemConnectors.h */,
+				E730A69917DCDCB00088335A /* ParticleConnection.cpp */,
+				E730A69A17DCDCB00088335A /* ParticleConnection.h */,
+				E730A69B17DCDCB00088335A /* ParticleConnectionGenerator.cpp */,
+				E730A69C17DCDCB00088335A /* ParticleConnectionGenerator.h */,
+				E730A69D17DCDCB00088335A /* ParticleConnector.cpp */,
+				E730A69E17DCDCB00088335A /* ParticleConnector.h */,
+				E730A69F17DCDCB00088335A /* ParticleConnectorBin.cpp */,
+				E730A6A017DCDCB00088335A /* ParticleConnectorBin.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730A9A717DCDCB30088335A /* DataCascade */ = {
+			isa = PBXGroup;
+			children = (
+				E730AA3417DCDCB30088335A /* vs_src */,
+			);
+			path = DataCascade;
+			sourceTree = "<group>";
+		};
+		E730AA3417DCDCB30088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730AA3517DCDCB30088335A /* CloudsVisualSystemDataCascade.cpp */,
+				E730AA3617DCDCB30088335A /* CloudsVisualSystemDataCascade.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730AA3B17DCDCB30088335A /* Fireworks */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB4B17DCDCB50088335A /* vs_src */,
+			);
+			path = Fireworks;
+			sourceTree = "<group>";
+		};
+		E730AB4B17DCDCB50088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB4C17DCDCB50088335A /* CloudsVisualSystemFireworks.cpp */,
+				E730AB4D17DCDCB50088335A /* CloudsVisualSystemFireworks.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730AB4E17DCDCB50088335A /* ForkingPaths */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB7B17DCDCB50088335A /* vs_src */,
+			);
+			path = ForkingPaths;
+			sourceTree = "<group>";
+		};
+		E730AB7B17DCDCB50088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730AB7C17DCDCB50088335A /* CloudsVisualSystemForkingPaths.cpp */,
+				E730AB7D17DCDCB50088335A /* CloudsVisualSystemForkingPaths.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730AB9A17DCDCB60088335A /* LIA */ = {
+			isa = PBXGroup;
+			children = (
+				E730AC4517DCDCB60088335A /* vs_src */,
+			);
+			path = LIA;
+			sourceTree = "<group>";
+		};
+		E730AC4517DCDCB60088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730AC4617DCDCB60088335A /* CloudsVisualSystemLia.cpp */,
+				E730AC4717DCDCB60088335A /* CloudsVisualSystemLia.h */,
+				E730AC4817DCDCB60088335A /* ColorPalette.cpp */,
+				E730AC4917DCDCB60088335A /* ColorPalette.h */,
+				E730AC4A17DCDCB60088335A /* Globals.cpp */,
+				E730AC4B17DCDCB60088335A /* Globals.h */,
+				E730AC4C17DCDCB60088335A /* Module.cpp */,
+				E730AC4D17DCDCB60088335A /* Module.h */,
+				E730AC4E17DCDCB60088335A /* RandomMover.cpp */,
+				E730AC4F17DCDCB60088335A /* RandomMover.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730AC5017DCDCB60088335A /* LSystem */ = {
+			isa = PBXGroup;
+			children = (
+				E730ACCD17DCDCB70088335A /* vs_src */,
+			);
+			path = LSystem;
+			sourceTree = "<group>";
+		};
+		E730ACCD17DCDCB70088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730ACCE17DCDCB70088335A /* CloudsVisualSystemLSystems.cpp */,
+				E730ACCF17DCDCB70088335A /* CloudsVisualSystemLSystems.h */,
+				E730ACD017DCDCB70088335A /* LNode.cpp */,
+				E730ACD117DCDCB70088335A /* LNode.h */,
+				E730ACD217DCDCB70088335A /* LSystem.cpp */,
+				E730ACD317DCDCB70088335A /* LSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730ACD417DCDCB70088335A /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				E730AE1C17DCDCB80088335A /* vs_src */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
+		E730AE1C17DCDCB80088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730AE1D17DCDCB80088335A /* CloudsVisualSystemMemory.cpp */,
+				E730AE1E17DCDCB80088335A /* CloudsVisualSystemMemory.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730AE3917DCDCB80088335A /* Metaballs */ = {
+			isa = PBXGroup;
+			children = (
+				E730B01917DCDCB90088335A /* vs_src */,
+			);
+			path = Metaballs;
+			sourceTree = "<group>";
+		};
+		E730B01917DCDCB90088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B01A17DCDCBA0088335A /* CloudsVisualSystemMarchingCubes.cpp */,
+				E730B01B17DCDCBA0088335A /* CloudsVisualSystemMarchingCubes.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B01C17DCDCBA0088335A /* Neurons */ = {
+			isa = PBXGroup;
+			children = (
+				E730B08217DCDCBA0088335A /* vs_src */,
+			);
+			path = Neurons;
+			sourceTree = "<group>";
+		};
+		E730B08217DCDCBA0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B08317DCDCBA0088335A /* CloudsVisualSystemNeurons.cpp */,
+				E730B08417DCDCBA0088335A /* CloudsVisualSystemNeurons.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B08517DCDCBA0088335A /* Ocean */ = {
+			isa = PBXGroup;
+			children = (
+				E730B0C617DCDCBA0088335A /* vs_src */,
+			);
+			path = Ocean;
+			sourceTree = "<group>";
+		};
+		E730B0C617DCDCBA0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B0C717DCDCBA0088335A /* CloudsVisualSystemOcean.cpp */,
+				E730B0C817DCDCBA0088335A /* CloudsVisualSystemOcean.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B0CD17DCDCBB0088335A /* Oscillations */ = {
+			isa = PBXGroup;
+			children = (
+				E730B1D217DCDCBC0088335A /* vs_src */,
+			);
+			path = Oscillations;
+			sourceTree = "<group>";
+		};
+		E730B1D217DCDCBC0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B1D317DCDCBC0088335A /* CloudsVisualSystemOscillations.cpp */,
+				E730B1D417DCDCBC0088335A /* CloudsVisualSystemOscillations.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B1D517DCDCBC0088335A /* PaintBrush */ = {
+			isa = PBXGroup;
+			children = (
+				E730B21B17DCDCBC0088335A /* vs_src */,
 			);
 			path = PaintBrush;
 			sourceTree = "<group>";
 		};
-		E7402E20178F44A100FEABED /* Replecator */ = {
+		E730B21B17DCDCBC0088335A /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E21178F44A100FEABED /* Replecator.h */,
+				E730B21C17DCDCBC0088335A /* Brush.cpp */,
+				E730B21D17DCDCBC0088335A /* Brush.h */,
+				E730B21E17DCDCBC0088335A /* CloudsVisualSystemPaintBrush.cpp */,
+				E730B21F17DCDCBC0088335A /* CloudsVisualSystemPaintBrush.h */,
+				E730B22017DCDCBC0088335A /* Particle.cpp */,
+				E730B22117DCDCBC0088335A /* Particle.h */,
+				E730B22217DCDCBC0088335A /* Spring.cpp */,
+				E730B22317DCDCBC0088335A /* Spring.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B22417DCDCBC0088335A /* Replecator */ = {
+			isa = PBXGroup;
+			children = (
+				E730B28017DCDCBD0088335A /* vs_src */,
 			);
 			path = Replecator;
 			sourceTree = "<group>";
 		};
-		E7402E22178F44A100FEABED /* Voro */ = {
+		E730B28017DCDCBD0088335A /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E23178F44A100FEABED /* voro++ */,
-				E7402E3C178F44A100FEABED /* Voro.cpp */,
-				E7402E3D178F44A100FEABED /* Voro.h */,
-				E7402E3E178F44A100FEABED /* VoroParticle.cpp */,
-				E7402E3F178F44A100FEABED /* VoroParticle.h */,
-				E7402E40178F44A100FEABED /* vParticle.cpp */,
-				E7402E41178F44A100FEABED /* vParticle.h */,
+				E730B28117DCDCBD0088335A /* CloudsVisualSystemHiga.cpp */,
+				E730B28217DCDCBD0088335A /* CloudsVisualSystemHiga.h */,
+				E730B28317DCDCBD0088335A /* Replecator.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B32017DCDCBD0088335A /* Scrape */ = {
+			isa = PBXGroup;
+			children = (
+				E730B3D617DCDCBE0088335A /* vs_src */,
+			);
+			path = Scrape;
+			sourceTree = "<group>";
+		};
+		E730B3D617DCDCBE0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B3D717DCDCBE0088335A /* ofxMtlBoxFitting.cpp */,
+				E730B3D817DCDCBE0088335A /* ofxMtlBoxFitting.h */,
+				E730B3D917DCDCBE0088335A /* ScrapeCamera.cpp */,
+				E730B3DA17DCDCBE0088335A /* ScrapeCamera.h */,
+				E730B3DB17DCDCBE0088335A /* ScrapeVisualSystem.cpp */,
+				E730B3DC17DCDCBE0088335A /* ScrapeVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B3E117DCDCBE0088335A /* VectorFlow */ = {
+			isa = PBXGroup;
+			children = (
+				E730B46717DCDCBF0088335A /* vs_src */,
+			);
+			path = VectorFlow;
+			sourceTree = "<group>";
+		};
+		E730B46717DCDCBF0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B46817DCDCBF0088335A /* CloudsVisualSystemVectorFlow.cpp */,
+				E730B46917DCDCBF0088335A /* CloudsVisualSystemVectorFlow.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B46E17DCDCBF0088335A /* VerletForm */ = {
+			isa = PBXGroup;
+			children = (
+				E730B49D17DCDCBF0088335A /* vs_src */,
+			);
+			path = VerletForm;
+			sourceTree = "<group>";
+		};
+		E730B49D17DCDCBF0088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B49E17DCDCBF0088335A /* CloudsVisualSystemVerletForm.cpp */,
+				E730B49F17DCDCBF0088335A /* CloudsVisualSystemVerletForm.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B4A017DCDCBF0088335A /* Voro */ = {
+			isa = PBXGroup;
+			children = (
+				E730B54517DCDCC00088335A /* vs_src */,
 			);
 			path = Voro;
 			sourceTree = "<group>";
 		};
-		E7402E23178F44A100FEABED /* voro++ */ = {
+		E730B54517DCDCC00088335A /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402E24178F44A100FEABED /* c_loops.cpp */,
-				E7402E25178F44A100FEABED /* c_loops.h */,
-				E7402E26178F44A100FEABED /* cell.cpp */,
-				E7402E27178F44A100FEABED /* cell.h */,
-				E7402E28178F44A100FEABED /* common.cpp */,
-				E7402E29178F44A100FEABED /* common.h */,
-				E7402E2A178F44A100FEABED /* config.h */,
-				E7402E2B178F44A100FEABED /* container.cpp */,
-				E7402E2C178F44A100FEABED /* container.h */,
-				E7402E2D178F44A100FEABED /* container_prd.cpp */,
-				E7402E2E178F44A100FEABED /* container_prd.h */,
-				E7402E2F178F44A100FEABED /* pre_container.cpp */,
-				E7402E30178F44A100FEABED /* pre_container.h */,
-				E7402E31178F44A100FEABED /* rad_option.h */,
-				E7402E32178F44A100FEABED /* unitcell.cpp */,
-				E7402E33178F44A100FEABED /* unitcell.h */,
-				E7402E34178F44A100FEABED /* v_base.cpp */,
-				E7402E35178F44A100FEABED /* v_base.h */,
-				E7402E36178F44A100FEABED /* v_compute.cpp */,
-				E7402E37178F44A100FEABED /* v_compute.h */,
-				E7402E38178F44A100FEABED /* voro++.h */,
-				E7402E39178F44A100FEABED /* wall.cpp */,
-				E7402E3A178F44A100FEABED /* wall.h */,
-				E7402E3B178F44A100FEABED /* worklist.h */,
+				E730B54617DCDCC00088335A /* CloudsVisualSystemVoro.cpp */,
+				E730B54717DCDCC00088335A /* CloudsVisualSystemVoro.h */,
+				E730B54817DCDCC00088335A /* voro++ */,
+				E730B56117DCDCC00088335A /* Voro.cpp */,
+				E730B56217DCDCC00088335A /* Voro.h */,
+				E730B56317DCDCC00088335A /* VoroParticle.cpp */,
+				E730B56417DCDCC00088335A /* VoroParticle.h */,
+				E730B56517DCDCC00088335A /* vParticle.cpp */,
+				E730B56617DCDCC00088335A /* vParticle.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B54817DCDCC00088335A /* voro++ */ = {
+			isa = PBXGroup;
+			children = (
+				E730B54917DCDCC00088335A /* c_loops.cpp */,
+				E730B54A17DCDCC00088335A /* c_loops.h */,
+				E730B54B17DCDCC00088335A /* cell.cpp */,
+				E730B54C17DCDCC00088335A /* cell.h */,
+				E730B54D17DCDCC00088335A /* common.cpp */,
+				E730B54E17DCDCC00088335A /* common.h */,
+				E730B54F17DCDCC00088335A /* config.h */,
+				E730B55017DCDCC00088335A /* container.cpp */,
+				E730B55117DCDCC00088335A /* container.h */,
+				E730B55217DCDCC00088335A /* container_prd.cpp */,
+				E730B55317DCDCC00088335A /* container_prd.h */,
+				E730B55417DCDCC00088335A /* pre_container.cpp */,
+				E730B55517DCDCC00088335A /* pre_container.h */,
+				E730B55617DCDCC00088335A /* rad_option.h */,
+				E730B55717DCDCC00088335A /* unitcell.cpp */,
+				E730B55817DCDCC00088335A /* unitcell.h */,
+				E730B55917DCDCC00088335A /* v_base.cpp */,
+				E730B55A17DCDCC00088335A /* v_base.h */,
+				E730B55B17DCDCC00088335A /* v_compute.cpp */,
+				E730B55C17DCDCC00088335A /* v_compute.h */,
+				E730B55D17DCDCC00088335A /* voro++.h */,
+				E730B55E17DCDCC00088335A /* wall.cpp */,
+				E730B55F17DCDCC00088335A /* wall.h */,
+				E730B56017DCDCC00088335A /* worklist.h */,
 			);
 			path = "voro++";
 			sourceTree = "<group>";
 		};
-		E7402E42178F44A100FEABED /* World */ = {
+		E730B56717DCDCC00088335A /* WebHistory */ = {
 			isa = PBXGroup;
 			children = (
-				E7920771179C986600FAA959 /* wArc.cpp */,
-				E7920772179C986600FAA959 /* wArc.h */,
-				E7402E43178F44A100FEABED /* wCity.cpp */,
-				E7402E44178F44A100FEABED /* wCity.h */,
-				E7402E45178F44A100FEABED /* wParticle.cpp */,
-				E7402E46178F44A100FEABED /* wParticle.h */,
-				E7402E47178F44A100FEABED /* wSatellite.cpp */,
-				E7402E48178F44A100FEABED /* wSatellite.h */,
-				E7402E49178F44A100FEABED /* wStar.cpp */,
-				E7402E4A178F44A100FEABED /* wStar.h */,
+				E730B61B17DCDCC10088335A /* vs_src */,
+			);
+			path = WebHistory;
+			sourceTree = "<group>";
+		};
+		E730B61B17DCDCC10088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B61C17DCDCC10088335A /* HistoryNode.cpp */,
+				E730B61D17DCDCC10088335A /* HistoryNode.h */,
+				E730B61E17DCDCC10088335A /* WebHistoryVisualSystem.cpp */,
+				E730B61F17DCDCC10088335A /* WebHistoryVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B62417DCDCC10088335A /* World */ = {
+			isa = PBXGroup;
+			children = (
+				E730B74C17DCDCC20088335A /* vs_src */,
 			);
 			path = World;
+			sourceTree = "<group>";
+		};
+		E730B74C17DCDCC20088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B74D17DCDCC20088335A /* CloudsVisualSystemWorld.cpp */,
+				E730B74E17DCDCC20088335A /* CloudsVisualSystemWorld.h */,
+				E730B74F17DCDCC20088335A /* wArc.cpp */,
+				E730B75017DCDCC20088335A /* wArc.h */,
+				E730B75117DCDCC20088335A /* wCity.cpp */,
+				E730B75217DCDCC20088335A /* wCity.h */,
+				E730B75317DCDCC20088335A /* wParticle.cpp */,
+				E730B75417DCDCC20088335A /* wParticle.h */,
+				E730B75517DCDCC20088335A /* wSatellite.cpp */,
+				E730B75617DCDCC20088335A /* wSatellite.h */,
+				E730B75717DCDCC20088335A /* wStar.cpp */,
+				E730B75817DCDCC20088335A /* wStar.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E730B85517DCDE5D0088335A /* ofxDelaunay */ = {
+			isa = PBXGroup;
+			children = (
+				E730B86717DCDE5D0088335A /* libs */,
+				E730B86B17DCDE5D0088335A /* README.md */,
+				E730B86C17DCDE5D0088335A /* src */,
+			);
+			name = ofxDelaunay;
+			path = ../../../addons/ofxDelaunay;
+			sourceTree = "<group>";
+		};
+		E730B86717DCDE5D0088335A /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E730B86817DCDE5D0088335A /* Delaunay */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E730B86817DCDE5D0088335A /* Delaunay */ = {
+			isa = PBXGroup;
+			children = (
+				E730B86917DCDE5D0088335A /* Delaunay.cpp */,
+				E730B86A17DCDE5D0088335A /* Delaunay.h */,
+			);
+			path = Delaunay;
+			sourceTree = "<group>";
+		};
+		E730B86C17DCDE5D0088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B86D17DCDE5E0088335A /* ofxDelaunay.cpp */,
+				E730B86E17DCDE5E0088335A /* ofxDelaunay.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B87617DCDE800088335A /* ofxTextWriter */ = {
+			isa = PBXGroup;
+			children = (
+				E730B88417DCDE810088335A /* src */,
+			);
+			name = ofxTextWriter;
+			path = ../../../addons/ofxTextWriter;
+			sourceTree = "<group>";
+		};
+		E730B88417DCDE810088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B88517DCDE810088335A /* ofxTextWriter.cpp */,
+				E730B88617DCDE810088335A /* ofxTextWriter.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B88D17DCDEDF0088335A /* ofxSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				E730B89317DCDEDF0088335A /* src */,
+			);
+			name = ofxSQLite;
+			path = ../../../addons/ofxSQLite;
+			sourceTree = "<group>";
+		};
+		E730B89317DCDEDF0088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B89417DCDEDF0088335A /* lib */,
+				E730B89917DCDEDF0088335A /* ofxSQLite.cpp */,
+				E730B89A17DCDEDF0088335A /* ofxSQLite.h */,
+				E730B89B17DCDEDF0088335A /* ofxSQLiteAbstract.cpp */,
+				E730B89C17DCDEDF0088335A /* ofxSQLiteAbstract.h */,
+				E730B89D17DCDEDF0088335A /* ofxSQLiteDelete.cpp */,
+				E730B89E17DCDEDF0088335A /* ofxSQLiteDelete.h */,
+				E730B89F17DCDEDF0088335A /* ofxSQLiteFieldValues.cpp */,
+				E730B8A017DCDEDF0088335A /* ofxSQLiteFieldValues.h */,
+				E730B8A117DCDEDF0088335A /* ofxSQLiteHeaders.h */,
+				E730B8A217DCDEDF0088335A /* ofxSQLiteInsert.cpp */,
+				E730B8A317DCDEDF0088335A /* ofxSQLiteInsert.h */,
+				E730B8A417DCDEDF0088335A /* ofxSQLiteSelect.cpp */,
+				E730B8A517DCDEDF0088335A /* ofxSQLiteSelect.h */,
+				E730B8A817DCDEDF0088335A /* ofxSQLiteType.h */,
+				E730B8A917DCDEDF0088335A /* ofxSQLiteTypeNow.h */,
+				E730B8AA17DCDEDF0088335A /* ofxSQLiteUpdate.cpp */,
+				E730B8AB17DCDEDF0088335A /* ofxSQLiteUpdate.h */,
+				E730B8AC17DCDEDF0088335A /* ofxSQLiteWhere.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B89417DCDEDF0088335A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E730B89517DCDEDF0088335A /* sqlite */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E730B89517DCDEDF0088335A /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				E730B89617DCDEDF0088335A /* sqlite3.c */,
+				E730B89717DCDEDF0088335A /* sqlite3.h */,
+				E730B89817DCDEDF0088335A /* sqlite3ext.h */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		E730B8B817DCDFC90088335A /* ofxMarchingCubes */ = {
+			isa = PBXGroup;
+			children = (
+				E730B8D017DCDFC90088335A /* src */,
+			);
+			name = ofxMarchingCubes;
+			path = ../../../addons/ofxMarchingCubes;
+			sourceTree = "<group>";
+		};
+		E730B8D017DCDFC90088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B8D117DCDFC90088335A /* mcTables.h */,
+				E730B8D217DCDFC90088335A /* ofxMarchingCubes.cpp */,
+				E730B8D317DCDFC90088335A /* ofxMarchingCubes.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B8DE17DCE0280088335A /* ofxAutoReloadedShader */ = {
+			isa = PBXGroup;
+			children = (
+				E730B8FF17DCE0280088335A /* src */,
+			);
+			name = ofxAutoReloadedShader;
+			path = ../../../addons/ofxAutoReloadedShader;
+			sourceTree = "<group>";
+		};
+		E730B8FF17DCE0280088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B90017DCE0280088335A /* ofxAutoReloadedShader.cpp */,
+				E730B90117DCE0280088335A /* ofxAutoReloadedShader.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B90F17DCE04C0088335A /* ofxObjLoader */ = {
+			isa = PBXGroup;
+			children = (
+				E730B92217DCE04D0088335A /* libs */,
+				E730B92617DCE04D0088335A /* Readme.md */,
+				E730B92717DCE04D0088335A /* src */,
+			);
+			name = ofxObjLoader;
+			path = ../../../addons/ofxObjLoader;
+			sourceTree = "<group>";
+		};
+		E730B92217DCE04D0088335A /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E730B92317DCE04D0088335A /* glm */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E730B92317DCE04D0088335A /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				E730B92417DCE04D0088335A /* glm.c */,
+				E730B92517DCE04D0088335A /* glm.h */,
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
+		E730B92717DCE04D0088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B92817DCE04D0088335A /* ofxObjLoader.cpp */,
+				E730B92917DCE04D0088335A /* ofxObjLoader.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B93117DCE1150088335A /* ofxBillboard */ = {
+			isa = PBXGroup;
+			children = (
+				E730B94617DCE1150088335A /* src */,
+			);
+			name = ofxBillboard;
+			path = ../../../addons/ofxBillboard;
+			sourceTree = "<group>";
+		};
+		E730B94617DCE1150088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B94717DCE1150088335A /* ofxBillboard.cpp */,
+				E730B94817DCE1150088335A /* ofxBillboard.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E730B95B17DCEC260088335A /* LaplacianTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				E730B97417DCEC260088335A /* vs_src */,
+			);
+			path = LaplacianTunnel;
+			sourceTree = "<group>";
+		};
+		E730B97417DCEC260088335A /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E730B97517DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.cpp */,
+				E730B97617DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.h */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E7402E7A178F44DC00FEABED /* ofxOcean */ = {
@@ -1141,6 +1806,8 @@
 			children = (
 				E7402E83178F44DC00FEABED /* ofxOcean.cpp */,
 				E7402E84178F44DC00FEABED /* ofxOcean.h */,
+				E730B94F17DCE2250088335A /* ofxOceanCamera.cpp */,
+				E730B95017DCE2250088335A /* ofxOceanCamera.h */,
 				E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */,
 				E7402E88178F44DC00FEABED /* ofxOceanRenderer.h */,
 				E7402E8B178F44DC00FEABED /* ofxOceanTile.cpp */,
@@ -1180,8 +1847,9 @@
 		E745F6CA1720FE0E00B86D7E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E730A4D917DCDCAE0088335A /* VisualSystems */,
+				E730A4CC17DCDC940088335A /* VisualSystemsLibrary */,
 				E7402DDE178F43C700FEABED /* CloudsGlobal.h */,
-				E7402DDF178F44A100FEABED /* VisualSystems */,
 				E7BAFBD0176A43780097AC71 /* Sound */,
 				E7637D5E1734DE8A008ADC62 /* RGBD */,
 				E7637D401734DE68008ADC62 /* StoryEngine */,
@@ -1293,6 +1961,12 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E730B95917DCEB860088335A /* CloudsDichotomy.h */,
+				E730B95817DCEB860088335A /* CloudsDichotomy.cpp */,
+				E730B95617DCEA240088335A /* CloudsSpeaker.h */,
+				E730B95517DCEA240088335A /* CloudsSpeaker.cpp */,
+				E730B95317DCE3B10088335A /* CloudsRun.h */,
+				E730B95217DCE3B10088335A /* CloudsRun.cpp */,
 				E7402EA7178F45AA00FEABED /* CloudsAct.h */,
 				E7402EA6178F45AA00FEABED /* CloudsAct.cpp */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
@@ -1320,10 +1994,6 @@
 				E7402E93178F459000FEABED /* GPUParticles */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
-				E73995C8178620AD00EA5F4D /* CloudsRGBDCamera.h */,
-				E73995C7178620AD00EA5F4D /* CloudsRGBDCamera.cpp */,
-				E73995CA178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.h */,
-				E73995C9178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
 				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
@@ -2202,7 +2872,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS_10.6" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2354,52 +3024,6 @@
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */,
 				E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */,
-				E73995CB178620AD00EA5F4D /* CloudsRGBDCamera.cpp in Sources */,
-				E73995CC178620AD00EA5F4D /* CloudsRGBDCombinedRenderer.cpp in Sources */,
-				E7402E4B178F44A100FEABED /* CloudsVisualSystem.cpp in Sources */,
-				E7402E4C178F44A100FEABED /* CloudsVisualSystemAmber.cpp in Sources */,
-				E7402E4D178F44A100FEABED /* CloudsVisualSystemCities.cpp in Sources */,
-				E7402E4E178F44A100FEABED /* CloudsVisualSystemCollaboration1.cpp in Sources */,
-				E7402E50178F44A100FEABED /* CloudsVisualSystemComputationTicker.cpp in Sources */,
-				E7402E51178F44A100FEABED /* CloudsVisualSystemForkingPaths.cpp in Sources */,
-				E7402E52178F44A100FEABED /* CloudsVisualSystemHiga.cpp in Sources */,
-				E7402E53178F44A100FEABED /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
-				E7402E54178F44A100FEABED /* CloudsVisualSystemLSystems.cpp in Sources */,
-				E7402E55178F44A100FEABED /* CloudsVisualSystemMemory.cpp in Sources */,
-				E7402E56178F44A100FEABED /* CloudsVisualSystemOcean.cpp in Sources */,
-				E7402E57178F44A100FEABED /* CloudsVisualSystemPaintBrush.cpp in Sources */,
-				E7402E58178F44A100FEABED /* CloudsVisualSystemRezanator.cpp in Sources */,
-				E7402E5B178F44A100FEABED /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
-				E7402E5C178F44A100FEABED /* CloudsVisualSystemVectorFlow.cpp in Sources */,
-				E7402E5D178F44A100FEABED /* CloudsVisualSystemVerletForm.cpp in Sources */,
-				E7402E5E178F44A100FEABED /* CloudsVisualSystemVoro.cpp in Sources */,
-				E7402E5F178F44A100FEABED /* CloudsVisualSystemWorld.cpp in Sources */,
-				E7402E60178F44A100FEABED /* cCell.cpp in Sources */,
-				E7402E61178F44A100FEABED /* ParticleConnection.cpp in Sources */,
-				E7402E62178F44A100FEABED /* ParticleConnectionGenerator.cpp in Sources */,
-				E7402E63178F44A100FEABED /* ParticleConnector.cpp in Sources */,
-				E7402E64178F44A100FEABED /* LSystem.cpp in Sources */,
-				E7402E65178F44A100FEABED /* LSystemReconstructor.cpp in Sources */,
-				E7402E66178F44A100FEABED /* Brush.cpp in Sources */,
-				E7402E67178F44A100FEABED /* Particle.cpp in Sources */,
-				E7402E68178F44A200FEABED /* Spring.cpp in Sources */,
-				E7402E69178F44A200FEABED /* c_loops.cpp in Sources */,
-				E7402E6A178F44A200FEABED /* cell.cpp in Sources */,
-				E7402E6B178F44A200FEABED /* common.cpp in Sources */,
-				E7402E6C178F44A200FEABED /* container.cpp in Sources */,
-				E7402E6D178F44A200FEABED /* container_prd.cpp in Sources */,
-				E7402E6E178F44A200FEABED /* pre_container.cpp in Sources */,
-				E7402E6F178F44A200FEABED /* unitcell.cpp in Sources */,
-				E7402E70178F44A200FEABED /* v_base.cpp in Sources */,
-				E7402E71178F44A200FEABED /* v_compute.cpp in Sources */,
-				E7402E72178F44A200FEABED /* wall.cpp in Sources */,
-				E7402E73178F44A200FEABED /* Voro.cpp in Sources */,
-				E7402E74178F44A200FEABED /* VoroParticle.cpp in Sources */,
-				E7402E75178F44A200FEABED /* vParticle.cpp in Sources */,
-				E7402E76178F44A200FEABED /* wCity.cpp in Sources */,
-				E7402E77178F44A200FEABED /* wParticle.cpp in Sources */,
-				E7402E78178F44A200FEABED /* wSatellite.cpp in Sources */,
-				E7402E79178F44A200FEABED /* wStar.cpp in Sources */,
 				E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */,
 				E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */,
 				E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */,
@@ -2411,12 +3035,89 @@
 				E7402EA4178F459000FEABED /* Points.cpp in Sources */,
 				E7402EA5178F459000FEABED /* State.cpp in Sources */,
 				E7402EA8178F45AA00FEABED /* CloudsAct.cpp in Sources */,
-				E72D3A491794871C0079254B /* ColorPalette.cpp in Sources */,
-				E72D3A4A1794871C0079254B /* Globals.cpp in Sources */,
-				E72D3A4B1794871C0079254B /* Module.cpp in Sources */,
-				E72D3A4C1794871C0079254B /* RandomMover.cpp in Sources */,
-				E72D3A4F179487220079254B /* CloudsVisualSystemLia.cpp in Sources */,
-				E7920773179C986600FAA959 /* wArc.cpp in Sources */,
+				E730A4D617DCDC940088335A /* CloudsRGBDCamera.cpp in Sources */,
+				E730A4D717DCDC940088335A /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E730A4D817DCDC940088335A /* CloudsVisualSystem.cpp in Sources */,
+				E730B76717DCDCC20088335A /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E730B76817DCDCC20088335A /* Node.cpp in Sources */,
+				E730B76E17DCDCC20088335A /* CloudsIntroSequence.cpp in Sources */,
+				E730B77717DCDCC20088335A /* CloudsVisualSystemCities.cpp in Sources */,
+				E730B77B17DCDCC20088335A /* cCell.cpp in Sources */,
+				E730B77C17DCDCC20088335A /* CloudsVisualSystemColony.cpp in Sources */,
+				E730B77F17DCDCC20088335A /* CloudsVisualSystemConnectors.cpp in Sources */,
+				E730B78017DCDCC20088335A /* ParticleConnection.cpp in Sources */,
+				E730B78117DCDCC20088335A /* ParticleConnectionGenerator.cpp in Sources */,
+				E730B78217DCDCC20088335A /* ParticleConnector.cpp in Sources */,
+				E730B78317DCDCC20088335A /* ParticleConnectorBin.cpp in Sources */,
+				E730B7AC17DCDCC20088335A /* CloudsVisualSystemDataCascade.cpp in Sources */,
+				E730B7B517DCDCC20088335A /* CloudsVisualSystemFireworks.cpp in Sources */,
+				E730B7B817DCDCC20088335A /* CloudsVisualSystemForkingPaths.cpp in Sources */,
+				E730B7BA17DCDCC20088335A /* CloudsVisualSystemLia.cpp in Sources */,
+				E730B7BB17DCDCC20088335A /* ColorPalette.cpp in Sources */,
+				E730B7BC17DCDCC20088335A /* Globals.cpp in Sources */,
+				E730B7BD17DCDCC20088335A /* Module.cpp in Sources */,
+				E730B7BE17DCDCC20088335A /* RandomMover.cpp in Sources */,
+				E730B7C417DCDCC20088335A /* CloudsVisualSystemLSystems.cpp in Sources */,
+				E730B7C517DCDCC20088335A /* LNode.cpp in Sources */,
+				E730B7C617DCDCC20088335A /* LSystem.cpp in Sources */,
+				E730B7C917DCDCC20088335A /* CloudsVisualSystemMemory.cpp in Sources */,
+				E730B7D417DCDCC20088335A /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
+				E730B7D517DCDCC20088335A /* CloudsVisualSystemNeurons.cpp in Sources */,
+				E730B7DA17DCDCC20088335A /* CloudsVisualSystemOcean.cpp in Sources */,
+				E730B7E117DCDCC20088335A /* CloudsVisualSystemOscillations.cpp in Sources */,
+				E730B7E417DCDCC20088335A /* Brush.cpp in Sources */,
+				E730B7E517DCDCC20088335A /* CloudsVisualSystemPaintBrush.cpp in Sources */,
+				E730B7E617DCDCC20088335A /* Particle.cpp in Sources */,
+				E730B7E717DCDCC20088335A /* Spring.cpp in Sources */,
+				E730B7E817DCDCC20088335A /* CloudsVisualSystemHiga.cpp in Sources */,
+				E730B7EE17DCDCC20088335A /* ofxMtlBoxFitting.cpp in Sources */,
+				E730B7EF17DCDCC20088335A /* ScrapeCamera.cpp in Sources */,
+				E730B7F017DCDCC20088335A /* ScrapeVisualSystem.cpp in Sources */,
+				E730B7F417DCDCC20088335A /* CloudsVisualSystemVectorFlow.cpp in Sources */,
+				E730B7F517DCDCC20088335A /* CloudsVisualSystemVerletForm.cpp in Sources */,
+				E730B7FD17DCDCC20088335A /* CloudsVisualSystemVoro.cpp in Sources */,
+				E730B7FE17DCDCC20088335A /* c_loops.cpp in Sources */,
+				E730B7FF17DCDCC20088335A /* cell.cpp in Sources */,
+				E730B80017DCDCC20088335A /* common.cpp in Sources */,
+				E730B80117DCDCC20088335A /* container.cpp in Sources */,
+				E730B80217DCDCC20088335A /* container_prd.cpp in Sources */,
+				E730B80317DCDCC20088335A /* pre_container.cpp in Sources */,
+				E730B80417DCDCC20088335A /* unitcell.cpp in Sources */,
+				E730B80517DCDCC20088335A /* v_base.cpp in Sources */,
+				E730B80617DCDCC20088335A /* v_compute.cpp in Sources */,
+				E730B80717DCDCC20088335A /* wall.cpp in Sources */,
+				E730B80817DCDCC20088335A /* Voro.cpp in Sources */,
+				E730B80917DCDCC20088335A /* VoroParticle.cpp in Sources */,
+				E730B80A17DCDCC20088335A /* vParticle.cpp in Sources */,
+				E730B81217DCDCC30088335A /* HistoryNode.cpp in Sources */,
+				E730B81317DCDCC30088335A /* WebHistoryVisualSystem.cpp in Sources */,
+				E730B81917DCDCC30088335A /* CloudsVisualSystemWorld.cpp in Sources */,
+				E730B81A17DCDCC30088335A /* wArc.cpp in Sources */,
+				E730B81B17DCDCC30088335A /* wCity.cpp in Sources */,
+				E730B81C17DCDCC30088335A /* wParticle.cpp in Sources */,
+				E730B81D17DCDCC30088335A /* wSatellite.cpp in Sources */,
+				E730B81E17DCDCC30088335A /* wStar.cpp in Sources */,
+				E730B87117DCDE5E0088335A /* Delaunay.cpp in Sources */,
+				E730B87217DCDE5E0088335A /* ofxDelaunay.cpp in Sources */,
+				E730B88917DCDE810088335A /* ofxTextWriter.cpp in Sources */,
+				E730B8AF17DCDEDF0088335A /* sqlite3.c in Sources */,
+				E730B8B017DCDEDF0088335A /* ofxSQLite.cpp in Sources */,
+				E730B8B117DCDEDF0088335A /* ofxSQLiteAbstract.cpp in Sources */,
+				E730B8B217DCDEDF0088335A /* ofxSQLiteDelete.cpp in Sources */,
+				E730B8B317DCDEDF0088335A /* ofxSQLiteFieldValues.cpp in Sources */,
+				E730B8B417DCDEDF0088335A /* ofxSQLiteInsert.cpp in Sources */,
+				E730B8B517DCDEDF0088335A /* ofxSQLiteSelect.cpp in Sources */,
+				E730B8B717DCDEDF0088335A /* ofxSQLiteUpdate.cpp in Sources */,
+				E730B8DA17DCDFC90088335A /* ofxMarchingCubes.cpp in Sources */,
+				E730B90B17DCE0280088335A /* ofxAutoReloadedShader.cpp in Sources */,
+				E730B92C17DCE04D0088335A /* glm.c in Sources */,
+				E730B92D17DCE04D0088335A /* ofxObjLoader.cpp in Sources */,
+				E730B94B17DCE1150088335A /* ofxBillboard.cpp in Sources */,
+				E730B95117DCE2250088335A /* ofxOceanCamera.cpp in Sources */,
+				E730B95417DCE3B10088335A /* CloudsRun.cpp in Sources */,
+				E730B95717DCEA240088335A /* CloudsSpeaker.cpp in Sources */,
+				E730B95A17DCEB860088335A /* CloudsDichotomy.cpp in Sources */,
+				E730B97717DCEC260088335A /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2716,7 +3417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS_10.6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
