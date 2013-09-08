@@ -3,6 +3,12 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 
+#include "ofxAVFVideoPlayer.h"
+typedef struct{
+	ofRange depthRange;
+	ofVec2f depthFOV;
+	ofVec2f depthPP;
+} Intrinsics;
 
 class CloudsVisualSystemRGBDVideo : public CloudsVisualSystem {
 public:
@@ -42,6 +48,19 @@ public:
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 	
+	ofCamera& getCameraRef(){
+		return cloudsCamera;
+	}
   protected:	
-
+	
+	bool playMovie(string path);
+	
+	Intrinsics videoIntrinsics;
+	ofxAVFVideoPlayer player;
+	ofShader rgbdPixelToPixelShader;
+	bool movieLoaded;
+	
+	ofxUITextInput* videoPathField;
+	ofVboMesh mesh;
+	
 };

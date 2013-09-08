@@ -202,7 +202,7 @@
 		E7BBB4C3179FA288007D7EC1 /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B9179FA288007D7EC1 /* State.cpp */; };
 		E7D212B617DD30720050CEFD /* rgbdpixeltopixel.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D2129F17DD30720050CEFD /* rgbdpixeltopixel.frag */; };
 		E7D212B717DD30720050CEFD /* rgbdpixeltopixel.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D212A017DD30720050CEFD /* rgbdpixeltopixel.vert */; };
-		E7D212B817DD30720050CEFD /* CloudsVisualRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D212A217DD30720050CEFD /* CloudsVisualRGBDVideo.cpp */; };
+		E7D212B817DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */; };
 		E7D3637017C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */; };
 		E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3645817C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */; };
@@ -799,8 +799,8 @@
 		E7BBB4BA179FA288007D7EC1 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E7D2129F17DD30720050CEFD /* rgbdpixeltopixel.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdpixeltopixel.frag; sourceTree = "<group>"; };
 		E7D212A017DD30720050CEFD /* rgbdpixeltopixel.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdpixeltopixel.vert; sourceTree = "<group>"; };
-		E7D212A217DD30720050CEFD /* CloudsVisualRGBDVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualRGBDVideo.cpp; sourceTree = "<group>"; };
-		E7D212A317DD30720050CEFD /* CloudsVisualRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualRGBDVideo.h; sourceTree = "<group>"; };
+		E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBDVideo.cpp; sourceTree = "<group>"; };
+		E7D212A317DD30720050CEFD /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
 		E7D3622217C7D072004A5ED6 /* accShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.frag; sourceTree = "<group>"; };
 		E7D3622317C7D072004A5ED6 /* accShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.vert; sourceTree = "<group>"; };
 		E7D3622417C7D072004A5ED6 /* attractorShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractorShader.frag; sourceTree = "<group>"; };
@@ -2666,8 +2666,8 @@
 		E7D212A117DD30720050CEFD /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D212A317DD30720050CEFD /* CloudsVisualRGBDVideo.h */,
-				E7D212A217DD30720050CEFD /* CloudsVisualRGBDVideo.cpp */,
+				E7D212A317DD30720050CEFD /* CloudsVisualSystemRGBDVideo.h */,
+				E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3108,7 +3108,7 @@
 				E730A4A517DC492B0088335A /* ofxDelaunay.cpp in Sources */,
 				E7D212B617DD30720050CEFD /* rgbdpixeltopixel.frag in Sources */,
 				E7D212B717DD30720050CEFD /* rgbdpixeltopixel.vert in Sources */,
-				E7D212B817DD30720050CEFD /* CloudsVisualRGBDVideo.cpp in Sources */,
+				E7D212B817DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
