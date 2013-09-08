@@ -1067,8 +1067,7 @@
 				E73676F317C67E6700CC6EC8 /* CloudsVisualSystem.cpp */,
 				E73676F517C67E6700CC6EC8 /* ofxLight.h */,
 			);
-			name = VisualSystemsLibrary;
-			path = ../VisualSystemsLibrary;
+			path = VisualSystemsLibrary;
 			sourceTree = "<group>";
 		};
 		E73676FC17C67F7E00CC6EC8 /* vs_src */ = {
@@ -1160,6 +1159,7 @@
 			children = (
 				E73769201778DC4500892646 /* RGBD */,
 				E737693A1778DC4500892646 /* StoryEngine */,
+				E73676ED17C67E6700CC6EC8 /* VisualSystemsLibrary */,
 				E7BBA660179FA17D007D7EC1 /* VisualSystems */,
 			);
 			path = src;
@@ -2232,7 +2232,6 @@
 			isa = PBXGroup;
 			children = (
 				E77BA98417DA77CD00B8744F /* WebHistory */,
-				E73676ED17C67E6700CC6EC8 /* VisualSystemsLibrary */,
 				E7D3654D17C7D32B004A5ED6 /* Scrape */,
 				E7D3637417C7D0FF004A5ED6 /* Metaballs */,
 				E7D3613117C7D071004A5ED6 /* Cosmic */,
@@ -2305,8 +2304,8 @@
 		E7BBA800179FA17F007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBA801179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.cpp */,
 				E7BBA802179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.h */,
+				E7BBA801179FA17F007D7EC1 /* CloudsVisualSystemDataCascade.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2406,8 +2405,8 @@
 		E7BBAA7A179FA182007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBAA7B179FA182007D7EC1 /* CloudsVisualSystemMemory.cpp */,
 				E7BBAA7C179FA182007D7EC1 /* CloudsVisualSystemMemory.h */,
+				E7BBAA7B179FA182007D7EC1 /* CloudsVisualSystemMemory.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2515,8 +2514,8 @@
 		E7BBACF2179FA185007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBACF3179FA185007D7EC1 /* CloudsVisualSystemVerletForm.cpp */,
 				E7BBACF4179FA185007D7EC1 /* CloudsVisualSystemVerletForm.h */,
+				E7BBACF3179FA185007D7EC1 /* CloudsVisualSystemVerletForm.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2685,8 +2684,8 @@
 		E7D3625717C7D072004A5ED6 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */,
 				E7D3625917C7D072004A5ED6 /* CloudsVisualSystemCosmic.h */,
+				E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
