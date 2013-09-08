@@ -160,6 +160,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	bool transitioning, transitioningIn, transitioningOut;
 	float transitionStartTime, transitionEndTime, transitionStartVal, transitionTargetVal;
 	
+	float percentChanceOfPoint, lastPercentChanceOfPoint;
+	float triangulationXStep, lastTriangulationXStep;
+	float triangulationYStep, lastTriangulationYStep;
 	
 	ofVec3f questionXZ;
 	float questionDriftRange;

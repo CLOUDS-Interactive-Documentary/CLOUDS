@@ -20,11 +20,18 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
 	CloudsQuestion::reloadShader();
 
+	lastPercentChanceOfPoint = 0;
+	lastTriangulationXStep = 0;
+	lastTriangulationYStep = 0;
+	
+	percentChanceOfPoint = .5;
+	triangulationXStep = 1.5;
+	triangulationYStep = 1.5;
+	
 	generatePointGrid();
 	generateScanlines();
 	generateTriangulation();
 	
-
 	particulateController.setParticleCount(1e5);
 	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
@@ -54,7 +61,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.setup();
 	
-	
+
+
 //	enum RGBDTransitionType
 //  {
 //	TWO_DIMENSIONAL = 0,
@@ -522,15 +530,25 @@ void CloudsVisualSystemRGBD::generateTriangulation(){
 	
 	delaunay.reset();
 
-	float percentChanceOfPoint = .5;
-	for(float y = 0; y < 480; y += 1.5){
-		for(float x = 0; x < 640; x += 1.5){
+	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
+	   triangulationXStep == lastTriangulationXStep ||
+	   triangulationYStep == lastTriangulationYStep)
+	{
+		return;
+	}
+	
+	for(float y = 0; y < 480; y += triangulationYStep){
+		for(float x = 0; x < 640; x += triangulationXStep){
 			if(ofRandomuf() < percentChanceOfPoint){
 				delaunay.addPoint(ofVec2f(x,y));
 			}
 		}
 	}
 	
+	lastPercentChanceOfPoint = percentChanceOfPoint;
+	lastTriangulationXStep = triangulationXStep;
+	lastTriangulationYStep = triangulationYStep;
+
 	delaunay.triangulate();
 	
 	ofMesh& dmesh = delaunay.triangleMesh;
