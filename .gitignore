@@ -62,3 +62,7 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/logs/topicScores.csv
 /CloudsData/logs/visualSystemScores.csv
 /CloudsStoryEngine/run_logs/
+/VSCloudsNeuralNetwork/bin/data/CamSettings_ROT-Y.xml
+/VSCloudsNeuralNetwork/bin/data/CamSettings_DIST.xml
+/VSCloudsNeuralNetwork/bin/data/CamSettings_ROT-X.xml
+/CloudsVisualSystemEditor/bin/data/RenderSettings_chaos.xml
