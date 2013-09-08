@@ -131,7 +131,7 @@ void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 	///TEMPORARY FOR SCRATCH TRACKS
 	//return;
-	
+	/*
 	cout << "SOUND: current topic >> " << args.currentTopic << endl;
 	cout << "SOUND: keywords >> ";
     for(int i=0;i<args.chosenClip.getKeywords().size();i++)
@@ -150,18 +150,7 @@ void CloudsSound::clipBegan(CloudsClipEventArgs& args){
 	cout << "SOUND:center >> " << args.chosenClip.cluster.Centre << endl;
 	cout << "SOUND:hexcolor >> " << args.chosenClip.cluster.hexColor << ": " << returnColor(args.chosenClip.cluster.hexColor) << endl;
 	cout << "SOUND:duration in seconds >> " << args.chosenClip.getDuration() << endl;
-
-    float musicdur = args.chosenClip.getDuration();
-
-    mcolor = ofRandom(0, colors.size());
-    mharmony = ofRandom(0, pitches.size());
-    mrhythm = ofRandom(0, rhythms.size());
-    
-    cout << "PLAYING MUSIC: " << mcolor << " " << mharmony << " " << mrhythm << " " << musicdur << endl;
-    startMusic(mcolor, mharmony, mrhythm, musicdur);
-
-
-    
+    */
 }
 
 //--------------------------------------------------------------------
@@ -172,6 +161,19 @@ void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
 	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
+    
+    float musicdur = args.duration;
+    
+    int preset = ofRandom(0, presets.size());
+    
+    mcolor = presets[preset].color;
+    mharmony = presets[preset].harmony;
+    mrhythm = presets[preset].rhythm;
+    MASTERTEMPO = presets[preset].tempo;
+    
+    cout << "PLAYING MUSIC: " << mcolor << " " << mharmony << " " << mrhythm << " " << musicdur << endl;
+    startMusic(mcolor, mharmony, mrhythm, musicdur);
+    
 }
 
 //--------------------------------------------------------------------
@@ -191,7 +193,18 @@ void CloudsSound::keyPressed(ofKeyEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsSound::keyReleased(ofKeyEventArgs & args){
-	
+
+    if (args.key == OF_KEY_DOWN)
+    {
+        MASTERAMP-=0.1;
+        if(MASTERAMP<0.) MASTERAMP=0.;
+    }
+    if (args.key == OF_KEY_UP)
+    {
+        MASTERAMP+=0.1;
+        if(MASTERAMP>2.) MASTERAMP=2.;
+    }
+
 }
 
 //--------------------------------------------------------------------
@@ -212,7 +225,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // fill up the audio buffer
     for (int i = 0; i < args.bufferSize * args.nChannels; i++)
     {
-        args.buffer[i] = (float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
+        args.buffer[i] = MASTERAMP*(float)s_audio_outbuf[i]/MAXAMP; // transfer to the float *output buf
     }
     
     // fire first audio-generating info upon confirming audio is up and running
