@@ -10,21 +10,21 @@
     <suppressions></suppressions>
     <comments>Always looks like a mountain or a nipple, and doesn&apos;t hold one&apos;s attention. Needs to break the grid. Needs a way of tiling or repeating ad infinitum.</comments>
     <grade>C</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cities_Crispy">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cities_GrayScottCity">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade>C</grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cities_GrayscottSmooke">
     <keywords>Cities|systems</keywords>
@@ -136,21 +136,21 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cosmic_BioSystem">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade>BUG</grade>
-    <enabled>0</enabled>
+    <grade></grade>
+    <enabled>1</enabled>
 </system>
 <system name="Cosmic_Blackhole">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cosmic_Preset1">
     <keywords></keywords>
@@ -195,7 +195,7 @@
     <enabled>1</enabled>
 </system>
 <system name="DataCascade_DataCascade">
-    <keywords>data mining</keywords>
+    <keywords>data mining|computation</keywords>
     <suppressions>
         <clip>Jen - data crystal ball 2</clip>
     </suppressions>
@@ -246,7 +246,7 @@
     <enabled>1</enabled>
 </system>
 <system name="DataCascade_RGBDTunnel">
-    <keywords></keywords>
+    <keywords>computation</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -278,14 +278,14 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw4">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_1">
     <keywords></keywords>
@@ -320,49 +320,49 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_3">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_4">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_5">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_7">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_9">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="ForkingPaths_no-preset">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="HigaSystem_CandyCopter">
     <keywords></keywords>
@@ -509,14 +509,14 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_01">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_02">
     <keywords>journey</keywords>
@@ -530,7 +530,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_04">
     <keywords>generative art|abstraction</keywords>
@@ -558,46 +558,78 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_08">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_09">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Lia_LIA_10">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_DeFrag">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_Fire">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>computation</keywords>
+    <suppressions>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="Memory_GhostInTheShell">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>computation</keywords>
+    <suppressions>
+        <clip>Aaron - data experience</clip>
+        <clip>Aaron - data storytelling</clip>
+        <clip>Aaron - infinity</clip>
+        <clip>Binx - actually interesting</clip>
+        <clip>Binx - making a map</clip>
+        <clip>Binx - meaningful shape1</clip>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Bruce - beauty of code 1</clip>
+        <clip>Bruce - beauty of code 2</clip>
+        <clip>Karsten - virus</clip>
+        <clip>Kevin - computation was invented</clip>
+        <clip>Kevin - computation is unnatural</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - computer perception</clip>
+        <clip>Maeda - How do computers help us to visualize information?</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -607,14 +639,14 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_Hall">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_NoisePixels">
     <keywords></keywords>
@@ -628,28 +660,28 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_conflictForces">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_interestingSorting">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_lines">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_no-preset">
     <keywords></keywords>
@@ -663,17 +695,23 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Memory_randomCaos">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>dysfunction</keywords>
+    <suppressions>
+        <clip>Kevin - algo trading 2</clip>
+        <clip>Kevin - algo trading 3</clip>
+        <clip>Kevin - learning to code</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - trapese 1</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="Memory_randomDeFragWar">
-    <keywords></keywords>
+    <keywords>dysfunction</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -712,8 +750,26 @@
     <enabled>1</enabled>
 </system>
 <system name="Memory_sortingThunderSmall">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>computer</keywords>
+    <suppressions>
+        <clip>Joel - Bicycles for the Mind</clip>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Karsten - literacy issues&apos;</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - blows my mind</clip>
+        <clip>Maeda - a computer is a clock</clip>
+        <clip>Ramsey - code specifies behavior</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Ramsey - it&apos;s not painting 2</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Ramsey - does nature compute? 1</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+        <clip>Ramsey - what is a computer</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - computation is interpretation of rules</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -744,7 +800,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_Churning_Pitch">
     <keywords></keywords>
@@ -758,14 +814,14 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_Dense_Wireframes_VerticallyStretched">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_Gray_Clouds">
     <keywords>videogames</keywords>
@@ -786,7 +842,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_Purple_Clouds">
     <keywords></keywords>
@@ -821,63 +877,63 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_fancy blend">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_fancy blend 2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_fancy smoothing">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_fauxMetaballs">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_greatjob">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_metaball simple">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_nice weather">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_vertically stretched">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="NervousSystem_no-preset">
     <keywords></keywords>
@@ -971,7 +1027,7 @@
     <enabled>1</enabled>
 </system>
 <system name="Oscillations_Helix-Inverted">
-    <keywords>old media</keywords>
+    <keywords>old media|math</keywords>
     <suppressions>
         <clip>Bruce - lashup 3</clip>
         <clip>Casey - learning from precursors</clip>
@@ -995,7 +1051,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Oscillations_Progressive_wave_1">
     <keywords>old media|abstraction</keywords>
@@ -1028,7 +1084,7 @@
     <enabled>1</enabled>
 </system>
 <system name="Oscillations_Progressive_wormhole_1">
-    <keywords></keywords>
+    <keywords>math</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1039,10 +1095,10 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Oscillations_Waerfront">
-    <keywords></keywords>
+    <keywords>math</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1056,14 +1112,14 @@
     <enabled>1</enabled>
 </system>
 <system name="Oscillations_Wormhole">
-    <keywords></keywords>
+    <keywords>math</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="PaintBrush_PlayFull">
-    <keywords></keywords>
+    <keywords>play|drawing</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1074,28 +1130,28 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Replecator_ExamplePreset">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Replecator_NewTestPreset">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Replecator_Spiral">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Scrape_2D In Yo Brain">
     <keywords></keywords>
@@ -1139,45 +1195,45 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Scrape_IN YOUR FACE">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Scrape_SPYWALL">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Scrape_STACK BURSTS">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Scrape_Tony&apos;s Death Star">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="VectorFlow_HugeSweepingFlow">
-    <keywords></keywords>
+    <keywords>phenomena</keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_LargeSweepsFast">
-    <keywords>physics</keywords>
+    <keywords>physics|phenomena</keywords>
     <suppressions>
         <clip>Andres - camera distorts reality</clip>
         <clip>Elliot_UK - 2D vision in a 3D world</clip>
@@ -1224,7 +1280,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="VectorFlow_SparseFlow">
     <keywords>visualization</keywords>
@@ -1291,7 +1347,7 @@
     <enabled>1</enabled>
 </system>
 <system name="VerletForm_SimpleBalloon">
-    <keywords></keywords>
+    <keywords>generative art|formalism|form</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1365,7 +1421,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Voro_Hex01">
     <keywords></keywords>
@@ -1386,7 +1442,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Voro_Petro001">
     <keywords></keywords>
@@ -1421,6 +1477,47 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+</system>
+<system name="Voro_crystal1">
+    <keywords>growth|simulation</keywords>
+    <suppressions>
+        <clip>Andres - make an egg</clip>
+        <clip>Andres - modeling the human being</clip>
+        <clip>Bruce - beauty of code 3</clip>
+        <clip>Bruce - Fountain pen</clip>
+        <clip>Karolina - suspension of disbelief</clip>
+        <clip>Karolina - uncanny/sniff</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - modeling consciousness 2</clip>
+        <clip>Marcus - simulation to stories</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - energy flow</clip>
+        <clip>Marcus - modeling consciousness</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marcus - code for storytelling</clip>
+        <clip>Philip - programming the river</clip>
+        <clip>Philip - learn through programming</clip>
+        <clip>Philip - with programming you can do whatever</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - bits and bytes</clip>
+        <clip>Philip - all the points can flush</clip>
+        <clip>Ramsey - minecraft 2</clip>
+        <clip>Shantell - collaboration,</clip>
+        <clip>Shiffman - a mystical quality</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - programming the universe</clip>
+        <clip>Shiffman - Constraints,</clip>
+        <clip>Shiffman - NOC 1</clip>
+        <clip>Theo - funky forest</clip>
+        <clip>Theo - magic</clip>
+        <clip>Shiffman - NOC 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="Voro_crystalLine">
@@ -1428,21 +1525,21 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Voro_electric">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Voro_grow">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Voro_no-preset">
     <keywords></keywords>
@@ -1452,7 +1549,7 @@
     <enabled>1</enabled>
 </system>
 <system name="WebHistory_AutoSpiderShell">
-    <keywords></keywords>
+    <keywords>internet</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1463,24 +1560,24 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="WebHistory_HazyCloseUp">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="WebHistory_Hazy_wide">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="WebHistory_Simple">
-    <keywords></keywords>
+    <keywords>Internet|networks|network</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1494,21 +1591,21 @@
     <enabled>1</enabled>
 </system>
 <system name="World_Arcs">
-    <keywords></keywords>
+    <keywords>network security|communication|globalization</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="World_Atomic">
-    <keywords></keywords>
+    <keywords>virus|hackers|power</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="World_Atomic2">
-    <keywords></keywords>
+    <keywords>hackers|network security|power</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1536,7 +1633,7 @@
     <enabled>1</enabled>
 </system>
 <system name="World_LifeIsNetworks">
-    <keywords></keywords>
+    <keywords>power|globalization|communication</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1554,17 +1651,17 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="World_Social_Network1">
-    <keywords>social media|network</keywords>
+    <keywords>social media|network|facebook|twitter</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="World_Social_Network2">
-    <keywords>social media|network|communication</keywords>
+    <keywords>social media|network|communication|facebook</keywords>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
     </suppressions>
@@ -1573,7 +1670,7 @@
     <enabled>1</enabled>
 </system>
 <system name="World_SpaceJunk">
-    <keywords></keywords>
+    <keywords>military technology|power</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
