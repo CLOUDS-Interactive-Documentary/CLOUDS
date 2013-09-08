@@ -184,6 +184,20 @@ void CloudsPlaybackController::setup(){
 		crossfadeValue = 1.;
 		bIsFading = false;
 		
+		//setup scratch tracks
+		
+		ofDirectory dir(getDataPath() + "scratch/");
+		dir.allowExt("aif");
+		dir.allowExt("aiff");
+		dir.listDir();
+		for(int i = 0; i < dir.numFiles(); i++){
+			scratchTracks.push_back(dir.getPath(i));
+		}
+		if(scratchTracks.size() > 0){
+			currentScratch = 0;
+			scratchPlayer.loadSound(scratchTracks[0]);
+			scratchPlayer.play();
+		}
 	}
 	
 	CloudsPlaybackControllerTween t;
@@ -256,7 +270,32 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
 		rgbdVisualSystem.addQuestion(currentClip);
 	}
-
+	
+	//SCRATCH SCRUB
+	if(scratchTracks.size() > 0){
+		if(args.key == OF_KEY_UP){
+			currentVolume = MIN(currentVolume+.1, 1.0);
+			scratchPlayer.setVolume(currentVolume);
+		}
+		else if(args.key == OF_KEY_DOWN){
+			currentVolume = MAX(currentVolume-.1, 0.0);
+			scratchPlayer.setVolume(currentVolume);
+		}
+		else if(args.key == OF_KEY_RIGHT){
+			currentScratch = (currentScratch + 1) % scratchTracks.size();
+			scratchPlayer.stop();
+			scratchPlayer.unloadSound();
+			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+			scratchPlayer.play();
+		}
+		else if (args.key == OF_KEY_LEFT){
+			currentScratch = (scratchTracks.size() + currentScratch - 1) % scratchTracks.size();
+			scratchPlayer.stop();
+			scratchPlayer.unloadSound();
+			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+			scratchPlayer.play();
+		}
+	}
 }
 
 void CloudsPlaybackController::keyReleased(ofKeyEventArgs & args){
@@ -281,8 +320,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
-	
-	
+		
 	if(showingIntro){
 		if(introSequence.isStartQuestionSelected()){
 			
@@ -374,7 +412,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	
 	rgbdVisualSystem.playSystem();
-	rgbdVisualSystem.loadPresetGUISFromName("Test_");
+	rgbdVisualSystem.loadPresetGUISFromName("TestNew");
 }
 
 //--------------------------------------------------------------------
@@ -497,7 +535,7 @@ void CloudsPlaybackController::hideVisualSystem()
 		nextSystem->stopSystem();
 		nextSystem = NULL;
 		rgbdVisualSystem.playSystem();
-		rgbdVisualSystem.loadPresetGUISFromName("Test_");
+		rgbdVisualSystem.loadPresetGUISFromName("TestNew");
 		showingVisualSystem = false;
 		
 	}

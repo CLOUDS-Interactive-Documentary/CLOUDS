@@ -26,6 +26,8 @@
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
+		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
+		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
 		E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */; };
 		E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769417C67A7900CC6EC8 /* LNode.cpp */; };
 		E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769617C67A7900CC6EC8 /* LSystem.cpp */; };
@@ -277,6 +279,11 @@
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
 		E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
 		E7176E2A17D3C07500C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
+		E730A4BE17DCC5520088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
+		E730A4BF17DCC5520088335A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
+		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E730A4C217DCC5520088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
+		E730A4C317DCC5520088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
 		E736769317C67A7900CC6EC8 /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
 		E736769417C67A7900CC6EC8 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
@@ -961,6 +968,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E730A4AA17DCC5520088335A /* ofxDelaunay */,
 				E74620AA17DB8073002FC464 /* ofxBillboard */,
 				E7FC8C2417DA9AC0007BEFA5 /* ofxTextWriter */,
 				E7FC8BF917DA9AA5007BEFA5 /* ofxSQLite */,
@@ -1082,6 +1090,43 @@
 			);
 			name = shaders;
 			path = ../../CloudsData/shaders;
+			sourceTree = "<group>";
+		};
+		E730A4AA17DCC5520088335A /* ofxDelaunay */ = {
+			isa = PBXGroup;
+			children = (
+				E730A4BC17DCC5520088335A /* libs */,
+				E730A4C017DCC5520088335A /* README.md */,
+				E730A4C117DCC5520088335A /* src */,
+			);
+			name = ofxDelaunay;
+			path = ../../../addons/ofxDelaunay;
+			sourceTree = "<group>";
+		};
+		E730A4BC17DCC5520088335A /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E730A4BD17DCC5520088335A /* Delaunay */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E730A4BD17DCC5520088335A /* Delaunay */ = {
+			isa = PBXGroup;
+			children = (
+				E730A4BE17DCC5520088335A /* Delaunay.cpp */,
+				E730A4BF17DCC5520088335A /* Delaunay.h */,
+			);
+			path = Delaunay;
+			sourceTree = "<group>";
+		};
+		E730A4C117DCC5520088335A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E730A4C217DCC5520088335A /* ofxDelaunay.cpp */,
+				E730A4C317DCC5520088335A /* ofxDelaunay.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		E736769B17C67C4100CC6EC8 /* _ClusterMap */ = {
@@ -3433,6 +3478,8 @@
 				E746194D17DB783B002FC464 /* CloudsSpeaker.cpp in Sources */,
 				E74620C417DB8074002FC464 /* ofxBillboard.cpp in Sources */,
 				E7DD858717DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */,
+				E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */,
+				E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
