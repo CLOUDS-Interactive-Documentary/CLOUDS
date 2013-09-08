@@ -32,18 +32,20 @@ void testApp::setup(){
 
 	
 	////////SEED WITH RANDOM CLIP
-//	srand( ofGetSeconds()*1000 );
-//	CloudsClip& clip = parser.getRandomClip(true,false);
-//	
-//	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-//	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
-////	if(questionsAndTopics.size() > 0){
-////		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
-////	}
-//	storyEngine.buildAct(clip, clip.getKeywords()[0] );
+	srand( ofGetSeconds()*1000 );
+	CloudsClip& clip = parser.getRandomClip(true,false);
+	
+	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
+	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+//	if(questionsAndTopics.size() > 0){
+//		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
+//	}
+    CloudsRun run;
+	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
 	////////SEED WITH RANDOM CLIP
 	
 	//////////////SHOW INTRO
+    /*
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	//safe guard delete any starters that don't have questions
 	for(int i = startingNodes.size()-1; i >= 0; i--){
@@ -61,6 +63,7 @@ void testApp::setup(){
 	}
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
+     */
 	//////////////SHOW INTRO
 }
 

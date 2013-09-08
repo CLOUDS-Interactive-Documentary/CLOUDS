@@ -8,37 +8,40 @@
 
 #include <iostream>
 #include "lukeFuncs.h"
+#include "CloudsGlobal.h"
 
 // LUKE FUNCTIONS
 
-void RTcmixInit()
+// load an RTcmix text score (.sco) and parse
+void RTcmixParseScoreFile(string f)
 {
-    // luke's initial rtcmix score sent for parsing
-    string thescore = "srand() \
-    theamp = maketable(\"line\", 1000, 0.0, 0.0, 0.01, 1.0, 3.0, 0.0) \
-    thewave = maketable(\"wave\", 1000, 1.0, 0.7, 0.3, 0.3, 0.1, 0.1) \
-    themellowamp = maketable(\"line\", 1000, 0.0, 0.0, 1.0, 1.0, 2.0, 0.0) \
-    themellowwave = maketable(\"wave\", 1000, 1.0, 0.3, 0.2, 0.1, 0.05) \
-    thestereoamp = maketable(\"line\", 1000, 0.0, 0.0, 50.0, 1.0, 200.0, 1., 250.0, 0.0) \
-    bus_config(\"WAVETABLE\", \"aux 0-1 out\") \
-    bus_config(\"STRUM2\", \"aux 0-1 out\") \
-    bus_config(\"STEREO\", \"in 0\", \"aux 0-1 out\") \
-    bus_config(\"MMODALBAR\", \"aux 0-1 out\") \
-    bus_config(\"GVERB\", \"aux 0-1 in\", \"out 0-1\") \
-    bus_config(\"PANECHO\", \"in 0\", \"out 0-1\") \
-    ";
-
-    parse_score((char*)thescore.c_str(), thescore.length());
+    string thescore = "";
     
-
+    ofFile sco (getDataPath()+"sound/"+f);
+    if(!sco.exists())
+    {
+        ofLogError("no score file!");
+    }
+    ofBuffer scobuf(sco);
+    while(!scobuf.isLastLine())
+    {
+        thescore+=scobuf.getNextLine()+"\n";
+    }
+    parse_score((char*)thescore.c_str(), thescore.length());
 }
 
-// uses the GVERB() instrument
+// uses the SPLITTER() and MIX() and GVERB() instruments
 void REVERB(double time)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 80., 10., 0.5, 0.5, 0., -12.,-12.,5)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", time);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", time);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.1, 0.1, -90., -6., -6., 3.0)", time);
     parse_score(thebuf, bx);
 }
 
@@ -52,22 +55,26 @@ void SCHEDULEBANG(double time)
 }
 
 // sets up rtinput() for a signal processing routine that requires an audio file
-void INPUTSOUND(string file)
+void LOADSOUND(string file, string handle)
 {
-    string fullfile = ofToDataPath(file);
-    char thebuf [256];
-    int bx;
-    bx = snprintf(thebuf, 256, "rtinput(\"%s\")", (char*)fullfile.c_str());
-    parse_score(thebuf, bx);
+    string fullfile = ofToDataPath(getDataPath()+"sound/"+file);
+    //cout << "file: " << ofFile(fullfile).exists() << endl;
     
+    OF_buffer_load_set((char*)fullfile.c_str(), (char*)handle.c_str(), 0., 10.);
+    // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
+    
+    printf("LOADED SOUND %s: file: %s  nframes: %d  nchans: %d\n", (char*)handle.c_str(),
+           (char*)fullfile.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
 }
 
 // basic soundfile mixing interface
-void STEREO(double outskip, double inskip, double dur, double amp, double pan)
+void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*thestereoamp, %f)", outskip, inskip, dur, amp, pan);
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*amp_declick, %f)", outskip, inskip, dur, amp, pan);
     parse_score(thebuf, bx);
     
 }
@@ -76,11 +83,12 @@ void PANECHO(double outskip, double inskip, double dur, double amp, double leftd
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "PANECHO(%f, %f*DUR(), %f, %f*thestereoamp, %f, %f, %f, %f)", outskip, inskip, dur, amp, leftdelay, rightdelay, feedback, ringdown);
+    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f, %f, %f, %f, %f, 0)", outskip, inskip, dur, amp, leftdelay, rightdelay, feedback, ringdown);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "PANECHO(%f, %f, %f, %f, %f, %f, %f, %f, 1)", outskip, inskip, dur, amp, rightdelay, leftdelay, feedback, ringdown);
     parse_score(thebuf, bx);
     
 }
-
 
 // basic wavetable interface
 void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, string waveform, string ampenvelope)
@@ -88,6 +96,24 @@ void WAVETABLE(double outskip, double dur, double amp, double freq, double pan, 
     char thebuf [256];
     int bx;
     bx = snprintf(thebuf, 256, "WAVETABLE(%f, %f, %f*%s, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, pan, (char*)waveform.c_str());
+    parse_score(thebuf, bx);
+}
+
+// helmholtz resonator
+void MBLOWBOTL(double outskip, double dur, double amp, double freq, double noiseamp, double maxpressure, double pan, string pressureenv, string ampenvelope)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "MBLOWBOTL(%f, %f, %f*%s, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, (char*)ampenvelope.c_str(), freq, noiseamp, maxpressure, pan, (char*)pressureenv.c_str());
+    parse_score(thebuf, bx);
+}
+
+// 2D mesh from the STK
+void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints, double xpos, double ypos, double decay, double strike, double pan)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "MMESH2D(%f, %f, %f, %i, %i, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, nxpoints, nypoints, xpos, ypos, decay, strike, pan);
     parse_score(thebuf, bx);
 }
 
@@ -107,11 +133,134 @@ void STRUM(double outskip, double dur, double amp, double freq, double squish, d
     int bx;
     bx = snprintf(thebuf, 256, "STRUM2(%f, %f, %f, %f, %f, %f, %f)", outskip, dur, amp*MAXAMP, freq, squish, decay, pan);
     parse_score(thebuf, bx);
+}
+
+// three-pitch filtered noise
+void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope)
+{
+    double bw1 = 1.0/Q;
+    double bw2 = 1.0/Q;
+    double bw3 = 1.0/Q;
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "NOISE(%f, %f, %f*%s, 1)", outskip, dur, MAXAMP*amp, (char*)ampenvelope.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "FILTERBANK(%f, 0, %f, %f, %f, 0, %f, %f, %f, 1., %f, %f, 1., %f, %f, 1.)", outskip, dur, 0.1, ringdown, pan, f1, bw1, f2, bw2, f3, bw3);
+    parse_score(thebuf, bx);
     
 }
 
+// banded waveguide
+void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope)
+{
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "MBANDEDWG(%f, %f, %f, %f, %f, %i, %f, %i, %f, %f, %f, %f, %s)", outskip, dur, amp*MAXAMP, freq, strikepos, pluckflag, maxvel, preset, bowpressure, resonance, integration, pan, (char*)velocityenvelope.c_str());
+    parse_score(thebuf, bx);
+}
+
+
 
 // --- music functions ---
+
+// load rhythm array
+void loadrhythms(string f, vector<lukeRhythm>& r)
+{
+    string sline;
+    ofFile rfile (getDataPath()+"sound/"+f);
+    if(!rfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer rbuf(rfile);
+    r.clear();
+    while(!rbuf.isLastLine())
+    {
+        sline=rbuf.getNextLine();
+        lukeRhythm foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        for(int i = 0;i<temp.size();i++)
+        {
+            foo.beats.push_back(ofToFloat(temp[i]));
+        }
+        r.push_back(foo);
+    }
+}
+
+// load pitch array
+void loadpitches(string f, vector<lukePitchArray>& p)
+{
+    string sline;
+    ofFile pfile (getDataPath()+"sound/"+f);
+    if(!pfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer pbuf(pfile);
+    p.clear();
+    while(!pbuf.isLastLine())
+    {
+        sline=pbuf.getNextLine();
+        lukePitchArray foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        foo.basenote = ofToInt(temp[0]);
+        foo.scale = ofToInt(temp[1]);
+        for(int i = 2;i<temp.size();i++)
+        {
+            foo.notes.push_back(ofToInt(temp[i]));
+        }
+        p.push_back(foo);
+    }
+}
+
+// load color array
+void loadcolors(string f, vector<lukeColor>& c)
+{
+    string sline;
+    ofFile cfile (getDataPath()+"sound/"+f);
+    if(!cfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer cbuf(cfile);
+    c.clear();
+    while(!cbuf.isLastLine())
+    {
+        sline=cbuf.getNextLine();
+        lukeColor foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        for(int i = 0;i<temp.size();i++)
+        {
+            foo.instruments.push_back(temp[i]);
+        }
+        c.push_back(foo);
+    }
+}
+
+// load preset file
+void loadpresets(string f, vector<lukePreset>& p)
+{
+    string sline;
+    ofFile pfile (getDataPath()+"sound/"+f);
+    if(!pfile.exists())
+    {
+        ofLogError("no data file!");
+    }
+    ofBuffer pbuf(pfile);
+    p.clear();
+    while(!pbuf.isLastLine())
+    {
+        sline=pbuf.getNextLine();
+        lukePreset foo;
+        vector<string> temp = ofSplitString(sline, " ");
+        foo.color = ofToInt(temp[0])-1;
+        foo.harmony = ofToInt(temp[1])-1;
+        foo.rhythm = ofToInt(temp[2])-1;
+        foo.tempo = ofToFloat(temp[3]);
+        p.push_back(foo);
+    }
+}
+
 
 
 // frequency-to-midi
@@ -143,5 +292,5 @@ int scale(int p, int o)
     int s[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
     int oct = p/12;
     int pc = p%12;
-    return(oct*12 + s[(pc+o)%12]-s[o]);
+    if(o==-1) return(p); else return(oct*12 + s[(pc+o)%12]-s[o]);
 }
