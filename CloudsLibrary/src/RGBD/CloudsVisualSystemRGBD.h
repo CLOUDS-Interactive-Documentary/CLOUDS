@@ -6,6 +6,7 @@
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
+#include "ofxDelaunay.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -14,7 +15,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
     void selfSetup();
     void selfSetupGuis();
-    
+	void selfPresetLoaded( string presetName );
+
     void selfUpdate();
     void selfDrawBackground();
     void selfDrawDebug();
@@ -77,7 +79,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
 	
-	
   protected:
 	
 
@@ -119,6 +120,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointHorizontalSpace;
 	void generatePointGrid();
 	
+	
 	bool drawParticulate;
 	bool drawCloud;
 	bool drawMesh;
@@ -134,7 +136,17 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float numRandomPoints;
 	void generateRandomPoints();
 	
+	bool refreshTriangulation;
+	ofxDelaunay delaunay;
+	float triangleContract;
+	ofVboMesh triangulation;
+	
+	void generateTriangulation();
+
 	ofShader rgbdShader;
+	
+	float lightOffsetY;
+	float lightOffsetZ;
 	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;

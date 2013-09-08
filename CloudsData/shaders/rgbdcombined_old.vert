@@ -31,7 +31,6 @@ uniform vec2 depthFOV;
 uniform vec4 normalRect;
 
 //GEOMETRY
-uniform float isMeshed;
 uniform vec2  simplify;
 uniform float flowPosition;
 uniform float farClip;
@@ -41,11 +40,7 @@ uniform float edgeClip;
 uniform float minDepth;
 uniform float maxDepth;
 
-uniform float triangleContract;
-
 uniform int useFaces;
-uniform vec3 headPosition;
-
 //FACE FEATURE
 uniform vec4 faceFeatureRect;
 uniform vec4 deltaChangeRect;
@@ -55,15 +50,10 @@ varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample;
 
 //LIGHT
-uniform vec3 lightPosition;
-
 varying vec3 eye;
 varying vec3 normal;
 varying vec3 diffuseLightDirection;
 varying float diffuseAttenuate;
-
-varying float headPositionAttenuation;
-varying float forceFade;
 
 const float epsilon = 1e-6;
 
@@ -111,17 +101,10 @@ float depthValueFromSample( vec2 depthPos){
     return depth * ( maxDepth - minDepth ) + minDepth;
 }
 
-float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
-	return clamp( (value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin, outputMin, outputMax);
-}
-
 void main(void){
 	
 	// Here we get the position, and account for the vertex position flowing
-	vec2 vertexPos = gl_Vertex.xy;
-	vertexPos = mix(vertexPos, gl_Normal.xy, triangleContract * isMeshed); // don't blend if we aren't discarding
-					
-	vec2 samplePos = vec2(vertexPos.x, + mod(vertexPos.y + flowPosition, depthRect.w));
+	vec2 samplePos = vec2(gl_Vertex.x, + mod(gl_Vertex.y + flowPosition, depthRect.w));
     vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
 	
@@ -131,42 +114,46 @@ void main(void){
                     depth,
                     1.0);
     
-	//HEAD POSITION
-	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
-	
 	//extract the normal and pass it along to the fragment shader
-	
-	vec2 normalPos = mix(vertexPos.xy, gl_Normal.xy,isMeshed) + normalRect.xy;
+    vec2  normalPos = samplePos + normalRect.xy;
 //    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
-
 	vec3 surfaceNormal = normalColor.xyz * 2.0 - 1.0;
     normal = -normalize(gl_NormalMatrix * surfaceNormal);
 	vec3 vert = vec3(gl_ModelViewMatrix * pos);
 	eye = normalize(-vert);
 	
-    float neighborA = depthValueFromSample( depthRect.xy + mix(gl_Color.xy*depthRect.zw,gl_Normal.xy,triangleContract) );
-    float neighborB = depthValueFromSample( depthRect.xy + mix(gl_Color.zw*depthRect.zw,gl_Normal.xy,triangleContract) );
-	
-	if(isMeshed == 1.0){
-		positionValid = (depth < farClip &&
-					 neighborA < farClip &&
-                     neighborB < farClip &&
+    float right = depthValueFromSample( depthPos + vec2(simplify.x,0.0)  );
+    float down  = depthValueFromSample( depthPos + vec2(0.0,simplify.y)  );
+    float left  = depthValueFromSample( depthPos + vec2(-simplify.x,0.0) );
+    float up    = depthValueFromSample( depthPos + vec2(0.0,-simplify.y) );
+    float bl    = depthValueFromSample( vec2(floor(depthPos.x - simplify.x),floor( depthPos.y + simplify.y)) );
+    float ur    = depthValueFromSample( vec2(floor(depthPos.x  + simplify.x),floor(depthPos.y - simplify.y)) );
     
-					depth > nearClip &&
-					neighborA > nearClip &&
-					neighborB > nearClip &&
-						 
-                     abs(neighborA - depth) < edgeClip &&
-					 abs(neighborB - depth) < edgeClip
+    positionValid = (depth < farClip &&
+                        right < farClip &&
+                        down < farClip &&
+                        left < farClip &&
+                        up < farClip &&
+                        bl < farClip &&
+                        ur < farClip &&
+                        
+                        depth > nearClip &&
+                        right > nearClip &&
+                        down > nearClip &&
+                        left > nearClip &&
+                        up > nearClip &&
+                        bl > nearClip &&
+                        ur > nearClip &&
+                        
+                        abs(down - depth) < edgeClip &&
+                        abs(right - depth) < edgeClip &&
+                        abs(up - depth) < edgeClip &&
+                        abs(left - depth) < edgeClip &&
+                        abs(ur - depth) < edgeClip &&
+                        abs(bl - depth) < edgeClip
 						) ? 1.0 : 0.0;
-	}
-	else {
-		positionValid = (depth < farClip && depth > nearClip) ? 1.0 : 0.0;
-	}
     
-	//positionValid = 1.0;
-	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
     //
     vec4 projection = extrinsics * pos;
@@ -186,7 +173,7 @@ void main(void){
 	}
 	
 	//DIFFUSE LIGHT
-	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
+	vec3 diffuseLightDirectionFull = vec3(gl_LightSource[0].position.xyz - vert);
     float d = length(diffuseLightDirectionFull);
 	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation +
 							 gl_LightSource[0].linearAttenuation	* d +
@@ -209,9 +196,7 @@ void main(void){
 		faceFeatureSample = vec4(0.);
 		deltaChangeSample = vec4(0.);
 	}
-	
-	forceFade = max(isMeshed, 1.0 - triangleContract)	;
-	
+		
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
-    gl_FrontColor = vec4(1.0);
+    gl_FrontColor = gl_Color;
 }

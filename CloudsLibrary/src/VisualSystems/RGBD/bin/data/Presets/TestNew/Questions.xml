@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
-    <YPosition>633.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>287.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>11</Kind>
     <Name>XZ</Name>
-    <XValue>0.000000000</XValue>
+    <XValue>-400.000000000</XValue>
     <YValue>-117.241378784</YValue>
 </Widget>
 <Widget>
