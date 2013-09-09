@@ -34,6 +34,7 @@
 		E712D51C17DD8340006FEE82 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D51217DD8340006FEE82 /* ParticleConnectionGenerator.cpp */; };
 		E712D51D17DD8340006FEE82 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D51417DD8340006FEE82 /* ParticleConnector.cpp */; };
 		E712D51E17DD8340006FEE82 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D51617DD8340006FEE82 /* ParticleConnectorBin.cpp */; };
+		E712D52617DD846D006FEE82 /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D52317DD846D006FEE82 /* ofxRegex.cpp */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
@@ -301,6 +302,9 @@
 		E712D51517DD8340006FEE82 /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
 		E712D51617DD8340006FEE82 /* ParticleConnectorBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectorBin.cpp; sourceTree = "<group>"; };
 		E712D51717DD8340006FEE82 /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
+		E712D52317DD846D006FEE82 /* ofxRegex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRegex.cpp; sourceTree = "<group>"; };
+		E712D52417DD846D006FEE82 /* ofxRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRegex.h; sourceTree = "<group>"; };
+		E712D52517DD846D006FEE82 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
@@ -966,6 +970,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E712D52217DD846D006FEE82 /* ofxRegex */,
 				E730A4AA17DCC5520088335A /* ofxDelaunay */,
 				E74620AA17DB8073002FC464 /* ofxBillboard */,
 				E7FC8C2417DA9AC0007BEFA5 /* ofxTextWriter */,
@@ -1155,6 +1160,17 @@
 				E712D51717DD8340006FEE82 /* ParticleConnectorBin.h */,
 			);
 			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E712D52217DD846D006FEE82 /* ofxRegex */ = {
+			isa = PBXGroup;
+			children = (
+				E712D52317DD846D006FEE82 /* ofxRegex.cpp */,
+				E712D52417DD846D006FEE82 /* ofxRegex.h */,
+				E712D52517DD846D006FEE82 /* readme.txt */,
+			);
+			name = ofxRegex;
+			path = ../../../addons/ofxRegex;
 			sourceTree = "<group>";
 		};
 		E7134EB4174FF8AF00E013AA /* shaders */ = {
@@ -3516,6 +3532,7 @@
 				E712D51C17DD8340006FEE82 /* ParticleConnectionGenerator.cpp in Sources */,
 				E712D51D17DD8340006FEE82 /* ParticleConnector.cpp in Sources */,
 				E712D51E17DD8340006FEE82 /* ParticleConnectorBin.cpp in Sources */,
+				E712D52617DD846D006FEE82 /* ofxRegex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
