@@ -75,6 +75,37 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Cities_realistic">
+    <keywords>cities</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Cities_realistic2">
+    <keywords>cities|society</keywords>
+    <suppressions>
+        <clip>Jer - spoken word</clip>
+        <clip>Julia - toward greater generosity</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Martin - what the world is thinking</clip>
+        <clip>Paola - code is a language</clip>
+        <clip>Paola - Designers</clip>
+        <clip>Paola - Design and science</clip>
+        <clip>Ramsey - social computer</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Javier - behavior change</clip>
+        <clip>Jen - prisons</clip>
+        <clip>Jen - self and other</clip>
+        <clip>Karsten - data visualization</clip>
+        <clip>Karsten - solving complex problems</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Collab1_Cosmic">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1125,6 +1156,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="RGBDVideo_no-preset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Replecator_CandyCopter">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1584,11 +1622,11 @@
     <enabled>1</enabled>
 </system>
 <system name="World_Abstract">
-    <keywords>communication|globalization</keywords>
+    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="World_Arcs">
     <keywords>network security|communication|globalization</keywords>
