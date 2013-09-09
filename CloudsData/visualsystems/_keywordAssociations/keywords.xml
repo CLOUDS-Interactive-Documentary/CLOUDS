@@ -1156,6 +1156,38 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="RGBDVideo_ITP_1">
+    <keywords>hackathon|learning|coding|media lab|aesthetics and computation</keywords>
+    <suppressions>
+        <clip>Karsten - 256 bytes part 1</clip>
+        <clip>Karsten - Paul Burke</clip>
+        <clip>Kyle_CH - coding, magic</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="RGBDVideo_ITP_2_omer">
+    <keywords>hackers|hacker|art vs engineering</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="RGBDVideo_ITP_3">
+    <keywords>coding</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="RGBDVideo_ITP_4">
+    <keywords>learning|education|coding</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="RGBDVideo_no-preset">
     <keywords></keywords>
     <suppressions></suppressions>
