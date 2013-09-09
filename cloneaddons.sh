@@ -40,6 +40,8 @@ git clone https://github.com/obviousjim/ofxDelaunay
 git clone https://github.com/prisonerjohn/ofxSQLite
 git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
+git clone https://github.com/quinkennedy/ofxRegex
+
 ${PREFIX}rezaali/ofxGenerative
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
 

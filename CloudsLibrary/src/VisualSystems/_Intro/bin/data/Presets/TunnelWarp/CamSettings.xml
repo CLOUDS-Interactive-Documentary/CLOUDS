@@ -33,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>LOCK TO TRACK</Name>
-    <Value>0</Value>
+    <Value>77</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -89,6 +89,11 @@
     <Kind>17</Kind>
     <Name>3D</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>DISABLE</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

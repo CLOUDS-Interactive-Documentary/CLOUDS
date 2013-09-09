@@ -29,6 +29,8 @@ void CloudsIntroSequence::selfSetup(){
 
 	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 21);
 	
+	
+	
 	perlinOffset = 0;
 	
 	camera.setup();
@@ -83,6 +85,7 @@ void CloudsIntroSequence::reloadShaders(){
 	tunnelShader.load(getVisualSystemDataPath() + "shaders/IntroTunnel");
 	questionShader.load(getVisualSystemDataPath() + "shaders/Question");
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
+	CloudsQuestion::reloadShader();
 }
 
 void CloudsIntroSequence::selfUpdate(){
@@ -312,17 +315,20 @@ void CloudsIntroSequence::selfDraw(){
 //	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
 	ofMesh debugMesh;
 	ofSetColor(255);
-	
-	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
-	questionShader.begin();
-	questionShader.setUniform1f("minPointSize", pointSize.min);
-	questionShader.setUniform1f("maxPointSize", pointSize.max);
-	questionShader.setUniform1f("minDistance", distanceRange.min);
-	questionShader.setUniform1f("maxDistance", distanceRange.max);
 
 	ofFloatColor questionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g, questionNodeTint.b);
+
+	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
+//	questionShader.begin();
+//	questionShader.setUniform1f("minPointSize", pointSize.min);
+//	questionShader.setUniform1f("maxPointSize", pointSize.max);
+//	questionShader.setUniform1f("minDistance", distanceRange.min);
+//	questionShader.setUniform1f("maxDistance", distanceRange.max);
 	
-	questionShader.setUniform4f("tint", questionTint.r, questionTint.g, questionTint.b, 1.0);
+	CloudsQuestion::startShader();
+	
+//	questionShader.setUniform4f("tint", questionTint.r, questionTint.g, questionTint.b, 1.0);
+	CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
 	for(int i = 0; i < startQuestions.size(); i++){
 		debugMesh.addColor(caughtQuestion == &startQuestions[i] ? ofFloatColor::red : ofFloatColor::white);
 		debugMesh.addVertex(startQuestions[i].position);
@@ -331,12 +337,14 @@ void CloudsIntroSequence::selfDraw(){
 //		cout << "drawing point at " << startQuestions[i].position << endl;
 	}
 
-	glPointSize(4);
-	debugMesh.drawVertices();
-	glPointSize(1);
+	CloudsQuestion::endShader();
+	
+//	glPointSize(4);
+//	debugMesh.drawVertices();
+//	glPointSize(1);
 	ofPopStyle();
 	
-	questionShader.end();
+	//questionShader.end();
 }
 
 void CloudsIntroSequence::drawCloudsType(){

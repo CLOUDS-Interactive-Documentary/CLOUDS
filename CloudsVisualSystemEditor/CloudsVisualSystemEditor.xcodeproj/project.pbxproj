@@ -28,6 +28,14 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E712D36317DD807B006FEE82 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D33A17DD807B006FEE82 /* CloudsVisualSystemConnectors.cpp */; };
+		E712D36417DD807B006FEE82 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D33C17DD807B006FEE82 /* ParticleConnection.cpp */; };
+		E712D36517DD807B006FEE82 /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D33E17DD807B006FEE82 /* ParticleConnectionGenerator.cpp */; };
+		E712D36617DD807B006FEE82 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D34017DD807B006FEE82 /* ParticleConnector.cpp */; };
+		E712D36717DD807B006FEE82 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D34217DD807B006FEE82 /* ParticleConnectorBin.cpp */; };
+		E712D3F917DD808A006FEE82 /* Page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D3B917DD808A006FEE82 /* Page.cpp */; };
+		E712D3FA17DD808A006FEE82 /* PagesVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */; };
+		E712D43717DD80F8006FEE82 /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D43417DD80F8006FEE82 /* ofxRegex.cpp */; };
 		E7176E2817D3C02A00C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2617D3C02A00C8DC38 /* CloudsRun.cpp */; };
 		E730A4A317DC492B0088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A49517DC492A0088335A /* Delaunay.cpp */; };
 		E730A4A417DC492B0088335A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E730A49717DC492A0088335A /* README.md */; };
@@ -274,6 +282,23 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E712D33A17DD807B006FEE82 /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
+		E712D33B17DD807B006FEE82 /* CloudsVisualSystemConnectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemConnectors.h; sourceTree = "<group>"; };
+		E712D33C17DD807B006FEE82 /* ParticleConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnection.cpp; sourceTree = "<group>"; };
+		E712D33D17DD807B006FEE82 /* ParticleConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnection.h; sourceTree = "<group>"; };
+		E712D33E17DD807B006FEE82 /* ParticleConnectionGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectionGenerator.cpp; sourceTree = "<group>"; };
+		E712D33F17DD807B006FEE82 /* ParticleConnectionGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectionGenerator.h; sourceTree = "<group>"; };
+		E712D34017DD807B006FEE82 /* ParticleConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnector.cpp; sourceTree = "<group>"; };
+		E712D34117DD807B006FEE82 /* ParticleConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnector.h; sourceTree = "<group>"; };
+		E712D34217DD807B006FEE82 /* ParticleConnectorBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleConnectorBin.cpp; sourceTree = "<group>"; };
+		E712D34317DD807B006FEE82 /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
+		E712D3B917DD808A006FEE82 /* Page.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Page.cpp; sourceTree = "<group>"; };
+		E712D3BA17DD808A006FEE82 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
+		E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PagesVisualSystem.cpp; sourceTree = "<group>"; };
+		E712D3BC17DD808A006FEE82 /* PagesVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagesVisualSystem.h; sourceTree = "<group>"; };
+		E712D41E17DD80AE006FEE82 /* QuineVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuineVisualSystem.h; sourceTree = "<group>"; };
+		E712D43417DD80F8006FEE82 /* ofxRegex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRegex.cpp; sourceTree = "<group>"; };
+		E712D43517DD80F8006FEE82 /* ofxRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRegex.h; sourceTree = "<group>"; };
 		E7176E2617D3C02A00C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
 		E7176E2717D3C02A00C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
 		E730A49517DC492A0088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
@@ -910,6 +935,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E712D43317DD80F8006FEE82 /* ofxRegex */,
 				E730A48117DC492A0088335A /* ofxDelaunay */,
 				E746208017DB7E9B002FC464 /* ofxBillboard */,
 				E77BAA3A17DA784200B8744F /* ofxSQLite */,
@@ -1024,6 +1050,76 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E712D30B17DD807B006FEE82 /* Connectors */ = {
+			isa = PBXGroup;
+			children = (
+				E712D33917DD807B006FEE82 /* vs_src */,
+			);
+			path = Connectors;
+			sourceTree = "<group>";
+		};
+		E712D33917DD807B006FEE82 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E712D33A17DD807B006FEE82 /* CloudsVisualSystemConnectors.cpp */,
+				E712D33B17DD807B006FEE82 /* CloudsVisualSystemConnectors.h */,
+				E712D33C17DD807B006FEE82 /* ParticleConnection.cpp */,
+				E712D33D17DD807B006FEE82 /* ParticleConnection.h */,
+				E712D33E17DD807B006FEE82 /* ParticleConnectionGenerator.cpp */,
+				E712D33F17DD807B006FEE82 /* ParticleConnectionGenerator.h */,
+				E712D34017DD807B006FEE82 /* ParticleConnector.cpp */,
+				E712D34117DD807B006FEE82 /* ParticleConnector.h */,
+				E712D34217DD807B006FEE82 /* ParticleConnectorBin.cpp */,
+				E712D34317DD807B006FEE82 /* ParticleConnectorBin.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E712D36B17DD808A006FEE82 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				E712D3B717DD808A006FEE82 /* vs_src */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		E712D3B717DD808A006FEE82 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E712D3B917DD808A006FEE82 /* Page.cpp */,
+				E712D3BA17DD808A006FEE82 /* Page.h */,
+				E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */,
+				E712D3BC17DD808A006FEE82 /* PagesVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E712D3FE17DD80AD006FEE82 /* QuineVisualSystem */ = {
+			isa = PBXGroup;
+			children = (
+				E712D41D17DD80AE006FEE82 /* vs_src */,
+			);
+			path = QuineVisualSystem;
+			sourceTree = "<group>";
+		};
+		E712D41D17DD80AE006FEE82 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E712D41E17DD80AE006FEE82 /* QuineVisualSystem.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E712D43317DD80F8006FEE82 /* ofxRegex */ = {
+			isa = PBXGroup;
+			children = (
+				E712D43417DD80F8006FEE82 /* ofxRegex.cpp */,
+				E712D43517DD80F8006FEE82 /* ofxRegex.h */,
+			);
+			name = ofxRegex;
+			path = ../../../addons/ofxRegex;
 			sourceTree = "<group>";
 		};
 		E730A48117DC492A0088335A /* ofxDelaunay */ = {
@@ -2238,6 +2334,9 @@
 		E7BBA660179FA17D007D7EC1 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E712D3FE17DD80AD006FEE82 /* QuineVisualSystem */,
+				E712D36B17DD808A006FEE82 /* Pages */,
+				E712D30B17DD807B006FEE82 /* Connectors */,
 				E7D2128617DD30720050CEFD /* RGBDVideo */,
 				E77BA98417DA77CD00B8744F /* WebHistory */,
 				E7D3654D17C7D32B004A5ED6 /* Scrape */,
@@ -3109,6 +3208,14 @@
 				E7D212B617DD30720050CEFD /* rgbdpixeltopixel.frag in Sources */,
 				E7D212B717DD30720050CEFD /* rgbdpixeltopixel.vert in Sources */,
 				E7D212B817DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
+				E712D36317DD807B006FEE82 /* CloudsVisualSystemConnectors.cpp in Sources */,
+				E712D36417DD807B006FEE82 /* ParticleConnection.cpp in Sources */,
+				E712D36517DD807B006FEE82 /* ParticleConnectionGenerator.cpp in Sources */,
+				E712D36617DD807B006FEE82 /* ParticleConnector.cpp in Sources */,
+				E712D36717DD807B006FEE82 /* ParticleConnectorBin.cpp in Sources */,
+				E712D3F917DD808A006FEE82 /* Page.cpp in Sources */,
+				E712D3FA17DD808A006FEE82 /* PagesVisualSystem.cpp in Sources */,
+				E712D43717DD80F8006FEE82 /* ofxRegex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
