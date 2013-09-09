@@ -38,6 +38,11 @@ CloudsQuestion::CloudsQuestion(){
 
 }
 
+//TODO: universal Nodes
+void CloudsQuestion::addQuestionVariables(ofxUISuperCanvas* gui){
+
+}
+
 void CloudsQuestion::setup(){
 	if(!isSetup){
 		ofRegisterMouseEvents(this);
@@ -53,22 +58,26 @@ void CloudsQuestion::setup(){
 		
 
 		float clockInnerRadius = .9;
-		float clockThickness = .1;
+		float clockThickness = .2;
 		float clockOuterRadius = clockInnerRadius + clockThickness;
 		
 		for(float i = 0; i <= 1.0; i += 1.0/36.0){
-			float angle = i * 360;
+			float angle = fmod(i * 360,360);
 			ofVec3f inner(0,1,0);
 			inner.rotate(angle, ofVec3f(0,0,1));
 			
 			if(i < 1.0){
 				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
-				dottedCircle.addNormal(inner);
-				dottedCircle.addVertex(inner * .5);
-				
+//				dottedCircle.addNormal(inner);
+//				dottedCircle.addVertex(inner * .5);
+				dottedCircle.addNormal(inner*clockInnerRadius);
+				dottedCircle.addVertex(inner*.25);
+								
 				dottedCircle.addColor(ofFloatColor(1.0, 0.0, 0));
-				dottedCircle.addNormal(inner);
-				dottedCircle.addVertex(inner * 1.5);
+//				dottedCircle.addNormal(inner);
+//				dottedCircle.addVertex(inner * 1.5);
+				dottedCircle.addNormal(inner*clockOuterRadius);
+				dottedCircle.addVertex(inner*.25);
 			}
 			
 			//inner
@@ -139,6 +148,9 @@ void CloudsQuestion::draw(){
 	
 	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
 	CloudsQuestion::shader.setUniform1f("maxExpand", radius);
+	
+	//cout << "max expand " << radius << endl;
+	
 	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
 
 	ofPushMatrix();

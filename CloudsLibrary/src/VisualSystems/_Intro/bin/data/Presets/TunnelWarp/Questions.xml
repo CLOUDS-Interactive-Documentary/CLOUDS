@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Questions</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>501.000000000</XPosition>
-    <YPosition>277.000000000</YPosition>
+    <XPosition>849.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -38,15 +38,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Question Tint H</Name>
-    <Value>0.645320177</Value>
+    <Value>0.541871607</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Question Tint S</Name>
-    <Value>0.679802954</Value>
+    <Value>0.344827294</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Question Tint B</Name>
-    <Value>0.571428597</Value>
+    <Value>0.522167206</Value>
 </Widget>

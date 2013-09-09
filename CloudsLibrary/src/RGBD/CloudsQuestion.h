@@ -4,6 +4,7 @@
 
 #include "ofMain.h"
 #include "CloudsClip.h"
+#include "ofxUI.h"
 
 class CloudsQuestion {
   public:
@@ -17,7 +18,13 @@ class CloudsQuestion {
 	ofCamera* cam;
 	ofTrueTypeFont* font;
 	
-//	float secondsToWriteQuestion;
+	bool falloff;
+	float falloffDistance;
+	
+	float maxRadius;
+	float minRadius;
+	float tickRadius;
+	
 	float charsPerSecond;
 	float secondsToConsiderSelected;
 	
@@ -27,6 +34,7 @@ class CloudsQuestion {
 	static void startShader();
 	static void endShader();
 	static void reloadShader();
+	static void addQuestionVariables(ofxUISuperCanvas* gui);
 	
 	float birthTime;
 	float expandPercent;
@@ -61,6 +69,8 @@ class CloudsQuestion {
 	//intro question variables
 	bool introQuestion;
 	void orientToCenter();
+	
+	
   protected:
 	
 

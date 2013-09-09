@@ -10,7 +10,6 @@ void main() {
 	if(selected > 1.0){
 		discard;
 	}
-
-    vec2 st = gl_TexCoord[0].st;
+//    vec2 st = gl_TexCoord[0].st;
     gl_FragColor = gl_Color;
 }

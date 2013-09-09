@@ -27,7 +27,7 @@ string CloudsIntroSequence::getSystemName(){
 
 void CloudsIntroSequence::selfSetup(){
 
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 21);
+	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
 	
 	
 	
@@ -326,7 +326,10 @@ void CloudsIntroSequence::selfDraw(){
 //	questionShader.setUniform1f("maxDistance", distanceRange.max);
 	
 	CloudsQuestion::startShader();
-	
+	CloudsQuestion::shader.setUniform1f("minDistance", distanceRange.min);	
+	CloudsQuestion::shader.setUniform1f("maxDistance", distanceRange.max);
+	CloudsQuestion::shader.setUniform1f("attenuateFade", 1.0);
+
 //	questionShader.setUniform4f("tint", questionTint.r, questionTint.g, questionTint.b, 1.0);
 	CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
 	for(int i = 0; i < startQuestions.size(); i++){
@@ -488,7 +491,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	questionGui->addSlider("Size", 1, 5, &questionSize);
-	questionGui->addSlider("Wrap Distance", 100, 1000, &questionWrapDistance);
+	questionGui->addSlider("Wrap Distance", 100, 4000, &questionWrapDistance);
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
 	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance);

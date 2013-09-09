@@ -214,6 +214,8 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
 	questionGui->addSlider("Life Span Mins", 1, 6, &questionLifeSpan);
 	
+	CloudsQuestion::addQuestionVariables( questionGui );
+	
 	guis.push_back(questionGui);
 	guimap[meshGui->getName()] = questionGui;
 	
