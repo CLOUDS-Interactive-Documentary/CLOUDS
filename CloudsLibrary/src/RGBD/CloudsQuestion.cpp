@@ -51,29 +51,7 @@ void CloudsQuestion::setup(){
 			ofLogError("CloudsQuestion::setup") << "no topic associated with quesiton clip " << clip.getLinkName() << endl;
 		}
 		
-		//diamonds
-//		geometry.addVertex(ofVec3f(0,-.5,0));
-//		geometry.addVertex(ofVec3f(.5,0,0));
-//		geometry.addVertex(ofVec3f(0,.5,0));
-//		geometry.addVertex(ofVec3f(-.5,0,0));
-//		
-//		geometry.addVertex(ofVec3f(0,-.5,0)); //connect
-//		
-//		geometry.addVertex(ofVec3f(0,0,.5));
-//		geometry.addVertex(ofVec3f(0,.5,0));
-//		geometry.addVertex(ofVec3f(0,0,-.5));
-//		geometry.addVertex(ofVec3f(0,-.5,0));
-//		
-//		geometry.setMode(OF_PRIMITIVE_LINE_STRIP);
 
-		//SPHERE GEO
-//		for(int i = 0; i < 200; i++){
-//			sphereGeo.addVertex(randomPointOnSphere()*.5);
-//		}
-		
-//		rot1.makeRotate(ofRandom(.1,3), randomPointOnSphere());
-//		rot2.makeRotate(ofRandom(.2,4), randomPointOnSphere());
-//		rot1.makeRotate(ofRandom(.1,3), ofVec3f(0,1,0));
 		float clockInnerRadius = .9;
 		float clockThickness = .1;
 		float clockOuterRadius = clockInnerRadius + clockThickness;
@@ -124,6 +102,7 @@ void CloudsQuestion::startShader(){
 void CloudsQuestion::endShader(){
 	CloudsQuestion::shader.end();
 }
+
 void CloudsQuestion::reloadShader(){
 	cout << "RELOADING QUESTION SHADER" << endl;
 	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");

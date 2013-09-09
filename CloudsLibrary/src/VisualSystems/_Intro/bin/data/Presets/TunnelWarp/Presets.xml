@@ -1,15 +1,10 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>205.000000000</XPosition>
+    <YPosition>393.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>2</Kind>
-    <Name>SimpleFlyThrough</Name>
-    <Value>0</Value>
-</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>TunnelWarp</Name>
