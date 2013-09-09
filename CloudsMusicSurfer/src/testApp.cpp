@@ -118,9 +118,9 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         // play pretty intro melody
         for(int i = 0;i<12;i++)
         {
-            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
-            STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
-            STEREO(i*0.1, 0., 1., 0.05, i/11.0, "BD"); 
+        //    WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+       //     STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
+        //    STEREO(i*0.1, 0., 1., 0.05, i/11.0, "BD");
         }
         // launch initial effects chain (reverb)
         REVERB(5.0); // gimme some reverb
