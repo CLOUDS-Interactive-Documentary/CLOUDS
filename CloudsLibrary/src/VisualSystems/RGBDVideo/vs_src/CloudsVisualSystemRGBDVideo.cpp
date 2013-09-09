@@ -6,6 +6,7 @@
 CloudsVisualSystemRGBDVideo::CloudsVisualSystemRGBDVideo(){
 	videoPathField = NULL;
 	movieLoaded = false;
+	pointoffset = 0;
 }
 
 //--------------------------------------------------------------
@@ -15,7 +16,18 @@ string CloudsVisualSystemRGBDVideo::getSystemName(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBDVideo::selfSetup(){
+	for(int y = 0; y < 480; y++){
+		for(int x = 0; x < 640; x++){
+			pointCloud.addVertex(ofVec3f(x,y,0));
+		}
+	}
 	
+	reloadShader();
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemRGBDVideo::reloadShader(){
+	rgbdPixelToPixelShader.load(getVisualSystemDataPath() + "shaders/rgbdpixeltopixel");
 }
 
 //--------------------------------------------------------------
@@ -36,6 +48,7 @@ void CloudsVisualSystemRGBDVideo::selfSetupGuis(){
 
     videoPathField = g->addTextInput("VideoPath", "");
 	g->addButton("Load Video", false);
+	g->addSlider("Point Offset", -2000, 0, &pointoffset);
 	
     g->autoSizeToFitWidgets();
 
@@ -62,6 +75,9 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawBackground(){
+//	if(movieLoaded && player.isLoaded()){
+//		player.draw(0, 0);
+//	}
 }
 
 void CloudsVisualSystemRGBDVideo::selfDrawDebug(){
@@ -73,23 +89,30 @@ void CloudsVisualSystemRGBDVideo::selfSceneTransformation(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfDraw(){
-	if(movieLoaded){
+	if(movieLoaded && player.isLoaded()){
+				
+		ofPushMatrix();
 		
-		cout << " Movie loaded! " << player.getPositionInSeconds() << endl;
-		
+		setupRGBDTransforms();
+
 		rgbdPixelToPixelShader.begin();
+		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 0);
 		rgbdPixelToPixelShader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
 		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
 		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
 		rgbdPixelToPixelShader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
 		rgbdPixelToPixelShader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
+		
+		rgbdPixelToPixelShader.setUniform1f("pointoffset", pointoffset);
+		
 		rgbdPixelToPixelShader.setUniform1f("scale", 1.0);
 		rgbdPixelToPixelShader.setUniform1f("offset", 0.0);
-
-		mesh.draw();
+		
+		pointCloud.drawVertices();
 		
 		rgbdPixelToPixelShader.end();
 		
+		ofPopMatrix();
 	}
 }
 

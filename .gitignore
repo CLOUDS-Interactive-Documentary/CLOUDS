@@ -64,3 +64,6 @@ CloudsMovieDirectory_remote.txt
 /CloudsStoryEngine/run_logs/
 /CloudsData/scratch/
 /CloudsVisualSystemEditor/bin/data/CamSettings_ROT-X.xml
+/CloudsData/rgbdmovies/*.xml
+/CloudsData/rgbdmovies/*.mp4
+/CloudsData/rgbdmovies/*.mov

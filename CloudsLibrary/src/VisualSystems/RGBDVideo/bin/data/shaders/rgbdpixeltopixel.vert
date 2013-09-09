@@ -18,6 +18,8 @@ uniform float maxDepth;
 uniform float scale;
 uniform float offset;
 
+uniform float pointoffset;
+
 const float epsilon = 1e-6;
 
 varying vec2 texSample;
@@ -81,6 +83,8 @@ void main(void){
     vec4 pos = vec4((gl_Vertex.x - depthPP.x*scale) * depth / (depthFOV.x*scale),
                     (gl_Vertex.y - depthPP.y*scale) * depth / (depthFOV.y*scale),
                     depth, 1.0);
+	
+	pos.z += pointoffset;
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = gl_Color;
