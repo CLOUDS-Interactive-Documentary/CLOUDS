@@ -368,11 +368,11 @@
     <enabled>0</enabled>
 </system>
 <system name="Fireworks_fw_5">
-    <keywords></keywords>
+    <keywords>videogames</keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
+    <grade>B</grade>
+    <enabled>1</enabled>
 </system>
 <system name="Fireworks_fw_7">
     <keywords></keywords>
@@ -1688,6 +1688,36 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="World_Big Brother">
+    <keywords>power|security|network security</keywords>
+    <suppressions>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Greg - Gaze tracking</clip>
+        <clip>Julian - Critical engineering</clip>
+        <clip>Julia - million facebook</clip>
+        <clip>Julian - city as operating system</clip>
+        <clip>Kyle_MC - Anonymous</clip>
+        <clip>Kyle_MC - Face Tracking military</clip>
+        <clip>Kyle_MC - Dangerous to conflate</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Ramsey - dating algorithms</clip>
+        <clip>Ramsey - legos 3</clip>
+        <clip>Regine - the lucky ones</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="World_Data_globe">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="World_Edge">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1703,8 +1733,26 @@
     <enabled>1</enabled>
 </system>
 <system name="World_LifeIsNetworks">
-    <keywords>power|globalization|communication</keywords>
-    <suppressions></suppressions>
+    <keywords>power|globalization</keywords>
+    <suppressions>
+        <clip>Zach - Time slows down</clip>
+        <clip>Binx - Programming is a superpower</clip>
+        <clip>Binx - programming is a superpower</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>JTNimoy - Unplugging</clip>
+        <clip>Julia - million facebook</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Lauren - breaking down barriers</clip>
+        <clip>Ramsey - ALB 1</clip>
+        <clip>Ramsey - ALB 2</clip>
+        <clip>Ramsey - ALB 3</clip>
+        <clip>Ramsey - ALB 4</clip>
+        <clip>Ramsey - ALB 5</clip>
+        <clip>Ramsey - dating algorithms</clip>
+        <clip>Ramsey - legos 3</clip>
+        <clip>Regine - the lucky ones</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -1734,6 +1782,53 @@
     <keywords>social media|network|communication|facebook</keywords>
     <suppressions>
         <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Maeda - people are best communicators</clip>
+        <clip>Lauren - Virtual tension 2</clip>
+        <clip>Lauren - wearables 2</clip>
+        <clip>Lauren - friendtracking 1</clip>
+        <clip>Lauren - politics of liking things</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - RMB city</clip>
+        <clip>Kyle_MC - Keytweeter 2</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+        <clip>Kyle_CH - Social media performance</clip>
+        <clip>Kevin - storytelling human to human</clip>
+        <clip>Karsten - changing behavior</clip>
+        <clip>Jer - spoken word</clip>
+        <clip>Jer - failure to communicate</clip>
+        <clip>Jen - building community</clip>
+        <clip>Jen - intuitive spelunking</clip>
+        <clip>Jen - generalization 2</clip>
+        <clip>Jen - generalization 1</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - had to explain that the web was social</clip>
+        <clip>Elliot_UK - Ideaspace</clip>
+        <clip>Casey - New modes of expression</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Bruce - relating to history through networks</clip>
+        <clip>Bruce - Textual technologies</clip>
+        <clip>Binx - field of data vis</clip>
+        <clip>Binx - digestibility</clip>
+        <clip>Binx - frustrated about visualization</clip>
+        <clip>Aaron - digital trace</clip>
+        <clip>Aaron - code, story, communication</clip>
+        <clip>Sophy - tumblr 1</clip>
+        <clip>Sophy - avatar 2</clip>
+        <clip>Sophy - city</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Ramsey - ALB 1</clip>
+        <clip>Paola - social media quicksand</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Martin - all the words</clip>
+        <clip>Paola - the tribe</clip>
+        <clip>Martin - simple elegant prose</clip>
+        <clip>Martin - Are we getting smarter 2</clip>
+        <clip>Martin - Are we getting smarter?</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
