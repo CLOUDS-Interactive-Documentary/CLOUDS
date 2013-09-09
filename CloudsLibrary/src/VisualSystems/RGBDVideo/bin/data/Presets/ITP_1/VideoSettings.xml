@@ -1,0 +1,12 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>VideoSettings</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>12</Kind>
+    <Name>VideoPath</Name>
+    <Value>ITP_1.mp4</Value>
+</Widget>

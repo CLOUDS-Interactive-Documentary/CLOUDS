@@ -54,6 +54,7 @@ public:
   protected:	
 	
 	bool playMovie(string path);
+	string loadMoviePath;
 	
 	Intrinsics videoIntrinsics;
 	ofxAVFVideoPlayer player;
