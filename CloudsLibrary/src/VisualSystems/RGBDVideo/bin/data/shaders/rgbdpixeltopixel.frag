@@ -13,5 +13,6 @@ void main(){
 	}
     vec4 col = texture2DRect(texture, texSample);
     gl_FragColor = mix(col,gl_Color,colorFade);
+//	gl_FragColor = vec4(1.0);
 }
 

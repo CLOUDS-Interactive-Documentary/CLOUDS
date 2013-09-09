@@ -51,16 +51,22 @@ public:
 	ofCamera& getCameraRef(){
 		return cloudsCamera;
 	}
-  protected:	
-	
-	bool playMovie(string path);
-	
-	Intrinsics videoIntrinsics;
+  protected:
+
 	ofxAVFVideoPlayer player;
 	ofShader rgbdPixelToPixelShader;
+	Intrinsics videoIntrinsics;
+	ofVboMesh pointCloud;
+	
+	float pointoffset;
+	
+	void reloadShader();
+	
+	bool playMovie(string path);
+	string loadMoviePath;
+	
+
 	bool movieLoaded;
 	
 	ofxUITextInput* videoPathField;
-	ofVboMesh mesh;
-	
 };
