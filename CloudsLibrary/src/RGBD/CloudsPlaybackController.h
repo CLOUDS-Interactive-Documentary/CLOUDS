@@ -185,8 +185,13 @@ class CloudsPlaybackController {
 	ofSoundPlayer scratchPlayer;
 	int currentScratch;
 	float currentVolume;
+	float targetScratchVolume;
+	void setUseScratch(bool useScratch);
+
   protected:
 
+	
+	
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
@@ -214,11 +219,7 @@ class CloudsPlaybackController {
 	//if there is a system playing this wil be non-null
 	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystem* nextSystem;
-	
-	//JG added a temp system to just straight cross/cut between the systems
-	//Temp system will always be whatever other visual system is showing
-//	CloudsVisualSystem* TEMP_SYSTEM_HACK;
-	
+		
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);
 	//remove the current visual system

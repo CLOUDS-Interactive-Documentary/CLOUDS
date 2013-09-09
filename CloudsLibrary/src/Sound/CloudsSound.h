@@ -16,6 +16,8 @@ class CloudsSound {
 	void update();
 	void drawDebug();
 	
+	void setMasterAmp(float amp);
+	
 	void keyPressed(ofKeyEventArgs & args);
 	void keyReleased(ofKeyEventArgs & args);
 	
@@ -70,7 +72,8 @@ class CloudsSound {
     int AUTORUN;
     bool DOCLEAR;
     float cleartime;
-    
+    float targetAmp;
+	
     vector<lukeRhythm> rhythms;
     vector<lukeColor> colors;
     vector<lukePitchArray> pitches;

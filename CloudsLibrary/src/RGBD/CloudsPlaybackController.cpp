@@ -111,6 +111,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	currentAct = NULL;
 	showingClusterMap = false;
 	
+	targetScratchVolume = currentVolume = 1.0;
+	
 	//JG cut out transition hack
 	nextSystem = NULL;
 }
@@ -214,6 +216,15 @@ void CloudsPlaybackController::setup(){
 	fadeInVisualSystem = "fadeInVisualSystem";
 }
 
+void CloudsPlaybackController::setUseScratch(bool useScratch){
+	if(useScratch){
+		targetScratchVolume = 1.0;
+	}
+	else{
+		targetScratchVolume = 0.0;
+	}
+}
+
 //--------------------------------------------------------------------
 void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 	if(this->storyEngine != NULL){
@@ -276,12 +287,12 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	//SCRATCH SCRUB
 	if(scratchTracks.size() > 0){
 		if(args.key == OF_KEY_UP){
-			currentVolume = MIN(currentVolume+.1, 1.0);
-			scratchPlayer.setVolume(currentVolume);
+			targetScratchVolume = MIN(targetScratchVolume+.1, 1.0);
+			//scratchPlayer.setVolume(currentVolume);
 		}
 		else if(args.key == OF_KEY_DOWN){
-			currentVolume = MAX(currentVolume-.1, 0.0);
-			scratchPlayer.setVolume(currentVolume);
+			targetScratchVolume = MAX(targetScratchVolume-.1, 0.0);
+			//scratchPlayer.setVolume(currentVolume);
 		}
 		else if(args.key == OF_KEY_RIGHT){
 			currentScratch = (currentScratch + 1) % scratchTracks.size();
@@ -323,6 +334,9 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::update(ofEventArgs & args){
 		
+	currentVolume += (targetScratchVolume - currentVolume) * .05;
+	scratchPlayer.setVolume( currentVolume );
+	
 	if(showingIntro){
 		if(introSequence.isStartQuestionSelected()){
 			

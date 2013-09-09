@@ -61,6 +61,11 @@ void testApp::setup(){
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
+	
+	//temp sound stuff
+	sound.setMasterAmp(0.0);
+	useScratch = true;
+	
 }
 
 //--------------------------------------------------------------
@@ -76,7 +81,17 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	if(key == 'p'){
+		useScratch = !useScratch;
+		if(useScratch){
+			player.setUseScratch( true );
+			sound.setMasterAmp(0.0);
+		}
+		else{
+			player.setUseScratch( false );
+			sound.setMasterAmp(1.0);
+		}
+	}
 }
 
 //--------------------------------------------------------------

@@ -47,6 +47,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // load data files
         loadRTcmixFiles();
         
+		targetAmp = 1.0;
+		
         MASTERAMP = 1.0;
         MASTERTEMPO = 0.125;
         AUTORUN = 0;
@@ -82,9 +84,13 @@ void CloudsSound::exit(ofEventArgs & args){
 	}
 }
 
+void CloudsSound::setMasterAmp(float amp){
+	targetAmp = amp;
+}
+
 //--------------------------------------------------------------------
 void CloudsSound::update(){
-	
+	MASTERAMP += (targetAmp - MASTERAMP) * .05;
 }
 
 //--------------------------------------------------------------------
