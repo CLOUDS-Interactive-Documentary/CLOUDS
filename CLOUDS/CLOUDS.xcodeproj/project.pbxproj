@@ -35,6 +35,8 @@
 		E712D51D17DD8340006FEE82 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D51417DD8340006FEE82 /* ParticleConnector.cpp */; };
 		E712D51E17DD8340006FEE82 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D51617DD8340006FEE82 /* ParticleConnectorBin.cpp */; };
 		E712D52617DD846D006FEE82 /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D52317DD846D006FEE82 /* ofxRegex.cpp */; };
+		E712D52917DD8B3E006FEE82 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E712D52717DD8B3E006FEE82 /* question.frag */; };
+		E712D52A17DD8B3E006FEE82 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E712D52817DD8B3E006FEE82 /* question.vert */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
@@ -305,6 +307,8 @@
 		E712D52317DD846D006FEE82 /* ofxRegex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRegex.cpp; sourceTree = "<group>"; };
 		E712D52417DD846D006FEE82 /* ofxRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRegex.h; sourceTree = "<group>"; };
 		E712D52517DD846D006FEE82 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		E712D52717DD8B3E006FEE82 /* question.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = question.frag; sourceTree = "<group>"; };
+		E712D52817DD8B3E006FEE82 /* question.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = question.vert; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
@@ -1176,6 +1180,8 @@
 		E7134EB4174FF8AF00E013AA /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E712D52717DD8B3E006FEE82 /* question.frag */,
+				E712D52817DD8B3E006FEE82 /* question.vert */,
 				E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */,
 				E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */,
 				E7134EB8174FF8AF00E013AA /* unproject.vert */,
@@ -3533,6 +3539,8 @@
 				E712D51D17DD8340006FEE82 /* ParticleConnector.cpp in Sources */,
 				E712D51E17DD8340006FEE82 /* ParticleConnectorBin.cpp in Sources */,
 				E712D52617DD846D006FEE82 /* ofxRegex.cpp in Sources */,
+				E712D52917DD8B3E006FEE82 /* question.frag in Sources */,
+				E712D52A17DD8B3E006FEE82 /* question.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -101,6 +101,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;
 	CloudsQuestion* caughtQuestion;
+
+	vector<string> loadedQuestions;
 	
 	float fontSize;
 	float fontExtrusion;

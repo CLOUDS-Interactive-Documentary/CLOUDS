@@ -39,7 +39,7 @@ class testApp : public ofBaseApp{
 	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
 	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
     void questionAsked(CloudsQuestionEventArgs& args);
-	void topicChanged(string& newTopic);
+	void topicChanged(CloudsTopicEventArgs& newTopic);
     void preRollRequested(CloudsPreRollEventArgs& clip);
 		
 	bool rebuildAct;

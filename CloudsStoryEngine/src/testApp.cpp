@@ -65,7 +65,7 @@ void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
 }
 
 //--------------------------------------------------------------
-void testApp::topicChanged(string& newTopic){
+void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
 	
 }
 
