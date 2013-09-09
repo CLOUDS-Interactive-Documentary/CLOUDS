@@ -147,7 +147,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 	
 	ofxXmlSettings intrinsicsXml;
 	string xmlFilePath = ofFilePath::removeExt(filePath) + ".xml";
-	if(!intrinsicsXml.load(xmlFilePath)){
+	if(!intrinsicsXml.loadFile(xmlFilePath)){
 		ofLogError("CloudsVisualSystemRGBDVideo::selfPresetLoaded") << "XML File " << xmlFilePath << " Failed to load";
 		return false;
 	}
