@@ -26,6 +26,7 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E712D30917DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D30517DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
@@ -275,6 +276,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E712D30517DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBDVideo.cpp; sourceTree = "<group>"; };
+		E712D30617DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
 		E7134EB5174FF8AF00E013AA /* rgbdcombined.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		E7134EB6174FF8AF00E013AA /* rgbdcombined.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E7134EB8174FF8AF00E013AA /* unproject.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = unproject.vert; sourceTree = "<group>"; };
@@ -1053,6 +1056,23 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E712D2AB17DD6CD5006FEE82 /* RGBDVideo */ = {
+			isa = PBXGroup;
+			children = (
+				E712D30417DD6CD5006FEE82 /* vs_src */,
+			);
+			path = RGBDVideo;
+			sourceTree = "<group>";
+		};
+		E712D30417DD6CD5006FEE82 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E712D30517DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp */,
+				E712D30617DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E7134EB4174FF8AF00E013AA /* shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,6 +1190,7 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E712D2AB17DD6CD5006FEE82 /* RGBDVideo */,
 				E730B97A17DD054D0088335A /* Cosmic */,
 				E736769B17C67C4100CC6EC8 /* _ClusterMap */,
 				E785F80217B287B7002371FC /* _Intro */,
@@ -1362,8 +1383,8 @@
 		E742517A179F985400B2F0A3 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E742517B179F985400B2F0A3 /* CloudsVisualSystemForkingPaths.cpp */,
 				E742517C179F985400B2F0A3 /* CloudsVisualSystemForkingPaths.h */,
+				E742517B179F985400B2F0A3 /* CloudsVisualSystemForkingPaths.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3400,6 +3421,7 @@
 				E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */,
 				E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */,
 				E730BCA117DD05500088335A /* CloudsVisualSystemCosmic.cpp in Sources */,
+				E712D30917DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
