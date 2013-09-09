@@ -2546,8 +2546,8 @@
 		E7BBAAE6179FA183007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBAAE7179FA183007D7EC1 /* CloudsVisualSystemOcean.cpp */,
 				E7BBAAE8179FA183007D7EC1 /* CloudsVisualSystemOcean.h */,
+				E7BBAAE7179FA183007D7EC1 /* CloudsVisualSystemOcean.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
