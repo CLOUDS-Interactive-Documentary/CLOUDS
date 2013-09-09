@@ -29,7 +29,9 @@ void CloudsIntroSequence::selfSetup(){
 
 	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
 	
-	
+	loadedQuestions.push_back("Shiffman_NOC_3");
+	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
+	loadedQuestions.push_back("Ramsey_computation_is_interpretation_of_rules");
 	
 	perlinOffset = 0;
 	
@@ -312,42 +314,29 @@ void CloudsIntroSequence::selfDraw(){
 	ofPopStyle();
 	
 	ofPushStyle();
-//	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
-	ofMesh debugMesh;
-	ofSetColor(255);
-
 	ofFloatColor questionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g, questionNodeTint.b);
+	ofFloatColor loadedQuestionTint = ofFloatColor::fromHsb(questionNodeTint.r, questionNodeTint.g*1.2, questionNodeTint.b*1.3);
 
-	//	cout << "debug drawing " << startQuestions.size() << " questions" << endl;
-//	questionShader.begin();
-//	questionShader.setUniform1f("minPointSize", pointSize.min);
-//	questionShader.setUniform1f("maxPointSize", pointSize.max);
-//	questionShader.setUniform1f("minDistance", distanceRange.min);
-//	questionShader.setUniform1f("maxDistance", distanceRange.max);
-	
 	CloudsQuestion::startShader();
 	CloudsQuestion::shader.setUniform1f("minDistance", distanceRange.min);	
 	CloudsQuestion::shader.setUniform1f("maxDistance", distanceRange.max);
 	CloudsQuestion::shader.setUniform1f("attenuateFade", 1.0);
 
-//	questionShader.setUniform4f("tint", questionTint.r, questionTint.g, questionTint.b, 1.0);
-	CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
 	for(int i = 0; i < startQuestions.size(); i++){
-		debugMesh.addColor(caughtQuestion == &startQuestions[i] ? ofFloatColor::red : ofFloatColor::white);
-		debugMesh.addVertex(startQuestions[i].position);
+		if( ofContains(loadedQuestions,startQuestions[i].clip.getID()) ){
+			CloudsQuestion::shader.setUniform4f("color",1.0, loadedQuestionTint.g, 1.0, 1.0);
+		}
+		else{
+		   CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
+		}
 		startQuestions[i].draw();
-//		ofDrawBitmapString(startQuestions[i].question, startQuestions[i].position);
-//		cout << "drawing point at " << startQuestions[i].position << endl;
 	}
 
 	CloudsQuestion::endShader();
 	
-//	glPointSize(4);
-//	debugMesh.drawVertices();
-//	glPointSize(1);
 	ofPopStyle();
 	
-	//questionShader.end();
+
 }
 
 void CloudsIntroSequence::drawCloudsType(){
