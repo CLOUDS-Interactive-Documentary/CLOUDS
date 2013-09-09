@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>445.000000000</YPosition>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,11 +12,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ITP_4</Name>
-    <Value>0</Value>
+    <Name>ITP_2_omer</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>ITP_2_omer</Name>
-    <Value>1</Value>
+    <Name>ITP_4</Name>
+    <Value>0</Value>
 </Widget>
