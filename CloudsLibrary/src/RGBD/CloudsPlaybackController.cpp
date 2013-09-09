@@ -190,9 +190,10 @@ void CloudsPlaybackController::setup(){
 		dir.allowExt("aif");
 		dir.allowExt("aiff");
 		dir.allowExt("mp3");
+		dir.sort();
 		dir.listDir();
 		for(int i = 0; i < dir.numFiles(); i++){
-			//scratchTracks.push_back(dir.getPath(i));
+			scratchTracks.push_back(dir.getPath(i));
 		}
 		if(scratchTracks.size() > 0){
 			currentScratch = 0;
