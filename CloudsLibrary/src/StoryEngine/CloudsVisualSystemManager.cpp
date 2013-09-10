@@ -342,7 +342,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
-	return getDataPath() + "/visualsystems/_keywordAssociations/keywords.xml";
+	return getDataPath() + "/links/visualsystems_keywords_db.xml";
 }
 
 //--------------------------------------------------------------------
