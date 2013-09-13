@@ -40,7 +40,6 @@
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
-		E730BCA117DD05500088335A /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730BC7E17DD05500088335A /* CloudsVisualSystemCosmic.cpp */; };
 		E736769817C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */; };
 		E736769917C67A7900CC6EC8 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769417C67A7900CC6EC8 /* LNode.cpp */; };
 		E736769A17C67A7900CC6EC8 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E736769617C67A7900CC6EC8 /* LSystem.cpp */; };
@@ -319,8 +318,6 @@
 		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E730A4C217DCC5520088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E730A4C317DCC5520088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
-		E730BC7E17DD05500088335A /* CloudsVisualSystemCosmic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCosmic.cpp; sourceTree = "<group>"; };
-		E730BC7F17DD05500088335A /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
 		E736769217C67A7900CC6EC8 /* CloudsVisualSystemLSystems.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLSystems.cpp; sourceTree = "<group>"; };
 		E736769317C67A7900CC6EC8 /* CloudsVisualSystemLSystems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLSystems.h; sourceTree = "<group>"; };
 		E736769417C67A7900CC6EC8 /* LNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LNode.cpp; sourceTree = "<group>"; };
@@ -1227,23 +1224,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		E730B97A17DD054D0088335A /* Cosmic */ = {
-			isa = PBXGroup;
-			children = (
-				E730BC7D17DD05500088335A /* vs_src */,
-			);
-			path = Cosmic;
-			sourceTree = "<group>";
-		};
-		E730BC7D17DD05500088335A /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E730BC7E17DD05500088335A /* CloudsVisualSystemCosmic.cpp */,
-				E730BC7F17DD05500088335A /* CloudsVisualSystemCosmic.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E736769B17C67C4100CC6EC8 /* _ClusterMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,7 +1280,6 @@
 				E712D46717DD8334006FEE82 /* Pages */,
 				E712D43A17DD831F006FEE82 /* QuineVisualSystem */,
 				E712D2AB17DD6CD5006FEE82 /* RGBDVideo */,
-				E730B97A17DD054D0088335A /* Cosmic */,
 				E736769B17C67C4100CC6EC8 /* _ClusterMap */,
 				E785F80217B287B7002371FC /* _Intro */,
 				E75DB9EF17CDC7EF00CD99D9 /* Metaballs */,
@@ -3529,7 +3508,6 @@
 				E7DD858717DBC40A00AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */,
 				E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */,
-				E730BCA117DD05500088335A /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E712D30917DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				E712D4D217DD8335006FEE82 /* Page.cpp in Sources */,
 				E712D4D317DD8335006FEE82 /* PagesVisualSystem.cpp in Sources */,
