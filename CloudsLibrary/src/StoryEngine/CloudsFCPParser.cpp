@@ -842,7 +842,7 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
         
 		if(allClips[i].hasCombinedVideo){
 			hasCombinedVideoIndeces.push_back(i);
-			if(allClips[i].hasStartingQuestion()){
+			if(allClips[i].hasQuestion()){
 				hasCombinedVideoAndQuestionIndeces.push_back(i);
 			}
             if(allClips[i].hasSpecialKeyword("#start")){
@@ -855,33 +855,45 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 	ofLogNotice("CloudsFCPParser::setCombinedVideoDirectory") << "there are " << hasCombinedVideoAndQuestionIndeces.size() << " items with questions & combined " << endl;
 }
 
-CloudsClip& CloudsFCPParser::getRandomClip(bool mustHaveCombinedVideoFile, bool startingClip){
-	if(mustHaveCombinedVideoFile && startingClip){
+CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
+										   bool hasQuestion,
+										   bool hasStartQuestion)
+{
+	if(hasCombinedVideo && hasStartQuestion){
 		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no start clips clips with combined videos";
+			ofLogError() << "CloudsFCPParser::getRandomClip has no start  clips with combined videos";
 			return dummyClip;
 		}
 //		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
 		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
-	else if(mustHaveCombinedVideoFile){
+	else if(hasCombinedVideo && hasQuestion){
+		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
+			ofLogError() << "CloudsFCPParser::getRandomClip has no questions clips with combined videos";
+			return dummyClip;
+		}
+		//		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
+		return allClips[ hasCombinedVideoAndQuestionIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
+		
+	}
+	else if(hasCombinedVideo){
 		if(hasCombinedVideoIndeces.size() == 0){
 			ofLogError() << "CloudsFCPParser::getRandomClip has no combined videos ";
 			return dummyClip;
 		}
 		return allClips[ hasCombinedVideoIndeces[ofRandom(hasCombinedVideoIndeces.size())] ];
 	}
-	else if(startingClip){
+	else if(hasStartQuestion){
 		if(questionIds.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << " has no questions";
 			return dummyClip;
 		}
         CloudsClip& clip = getClipWithID( questionIds[ ofRandom(questionIds.size()) ] ) ;
 //        cout << "has a question" << clip.getID() << endl;
-		return ( clip );
+		return clip;
 	}
 	else {
-		return allClips[ ofRandom(allClips.size())];
+		return allClips[ ofRandom(allClips.size()) ];
 	}
 }
 

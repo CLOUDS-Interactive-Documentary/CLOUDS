@@ -100,9 +100,9 @@ class CloudsFCPParser {
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
-							  bool startingClip = false);
-	
+	CloudsClip& getRandomClip(bool hasCombinedVideo = false,
+							  bool hasQuestion = false,
+							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
