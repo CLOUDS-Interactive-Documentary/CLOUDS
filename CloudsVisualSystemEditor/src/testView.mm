@@ -175,6 +175,7 @@ struct sortObject {
     }
 }
 
+
 -(IBAction)suppressClip:(id)sender{
     if(clipTable.selectedRow>=0){
         
@@ -186,6 +187,11 @@ struct sortObject {
         [clipTable reloadData];
 		
     }
+}
+
+- (IBAction) exportStandalone:(id)sender
+{
+	visualSystems.exportStandalonePresets();
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
