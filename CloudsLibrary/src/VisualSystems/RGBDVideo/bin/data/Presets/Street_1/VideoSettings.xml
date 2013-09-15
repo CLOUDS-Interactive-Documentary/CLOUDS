@@ -2,16 +2,16 @@
     <Kind>42</Kind>
     <Name>VideoSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
-    <YPosition>609.000000000</YPosition>
+    <XPosition>241.000000000</XPosition>
+    <YPosition>178.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>12</Kind>
     <Name>VideoPath</Name>
-    <Value>ITP_1.mp4</Value>
+    <Value>Street_1.mp4</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Point Offset</Name>
-    <Value>-197.044433594</Value>
+    <Value>-778.325683594</Value>
 </Widget>
