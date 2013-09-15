@@ -56,6 +56,8 @@
 - (IBAction) suppressClip:(id)sender;
 - (IBAction) unsuppressClip:(id)sender;
 
+- (IBAction) exportStandalone:(id)sender;
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification;

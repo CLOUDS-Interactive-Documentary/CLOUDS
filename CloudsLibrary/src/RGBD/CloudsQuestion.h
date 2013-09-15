@@ -73,8 +73,6 @@ class CloudsQuestion {
 	
   protected:
 	
-
-	
 	float hoveringStartTime;
 	
 	bool isSetup;

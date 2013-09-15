@@ -45,6 +45,8 @@ class CloudsVisualSystemManager {
     void unsuppressClip(string presetID, string clip);
     void unsuppressClip(string presetID, int presetIndex);
 	
+	void exportStandalonePresets();
+	
   protected:
 
 	CloudsVisualSystemPreset dummyPreset;
