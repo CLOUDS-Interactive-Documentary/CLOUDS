@@ -33,7 +33,7 @@ void testApp::setup(){
 	
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
-//	CloudsClip& clip = parser.getRandomClip(true,false);
+//	CloudsClip& clip = parser.getRandomClip(true);
 //	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 //	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
 ////	if(questionsAndTopics.size() > 0){
