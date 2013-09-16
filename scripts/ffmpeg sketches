@@ -1,0 +1,11 @@
+#!/bin/bash
+
+EXTRACT AUDIO
+ffmpeg -i MVI_3814.mov -ss 143 -t 12 -ac 2 -ar 44100 -vn Binx_actually_interesting.wav
+
+ffmpeg -i [MOVIE.MOV] -ss [START:TIME:IN:MS] -t [duration:in:seconds] -ac 2 -ar 44100 -vn [SOUND.WAV]
+
+BUILD IMAGE SEQUENCE TO PRO RES
+ffmpeg -start_number 03443  -f image2 -r 23.98 -i Binx_trips_%05d.png -i Binx_actually_interesting.wav -acodec copy -codec:v prores -profile:v 2 -r 23.976 Binx_actually_interesting.mov
+
+ffmpeg -start_number [FRAME_N] -f image2 -r 23.98 -i [FILES_%05d.png] -i [SOUND.WAV] -acodec copy -codec:v prores -profile:v 2 -r 23.976 [MOVIE.MOV]
