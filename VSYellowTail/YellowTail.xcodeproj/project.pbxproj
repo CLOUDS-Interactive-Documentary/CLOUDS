@@ -90,9 +90,11 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E7402D83178CDDB800FEABED /* CloudsRGBDCombinedRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402D81178CDDB800FEABED /* CloudsRGBDCombinedRenderer.cpp */; };
+		E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */; };
+		E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */; };
+		E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */; };
+		E72FF1F317E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF1F117E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
-		E774E22A175E916000655914 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E774E228175E916000655914 /* CloudsVisualSystemVerletForm.cpp */; };
 		E774E26C175E91FA00655914 /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E774E234175E91F900655914 /* MSACoreGL.cpp */; };
 		E774E26F175E91FA00655914 /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E774E246175E91F900655914 /* MSAObjCPointer.cpp */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
@@ -101,7 +103,6 @@
 		E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
-		E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,7 +358,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* VSCloudsVerletFormDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCloudsVerletFormDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* YellowTailDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YellowTailDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -367,11 +368,16 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E7402D81178CDDB800FEABED /* CloudsRGBDCombinedRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCombinedRenderer.cpp; path = RGBD/CloudsRGBDCombinedRenderer.cpp; sourceTree = "<group>"; };
-		E7402D82178CDDB800FEABED /* CloudsRGBDCombinedRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRenderer.h; path = RGBD/CloudsRGBDCombinedRenderer.h; sourceTree = "<group>"; };
+		E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		E72FF18217E6A7970007780D /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
+		E72FF18417E6A7970007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
+		E72FF18517E6A7970007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E72FF1F117E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemYellowTail.cpp; sourceTree = "<group>"; };
+		E72FF1F217E6B9E20007780D /* CloudsVisualSystemYellowTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemYellowTail.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		E774E228175E916000655914 /* CloudsVisualSystemVerletForm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVerletForm.cpp; sourceTree = "<group>"; };
-		E774E229175E916000655914 /* CloudsVisualSystemVerletForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVerletForm.h; sourceTree = "<group>"; };
 		E774E230175E91F900655914 /* MSACore-Cinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
 		E774E231175E91F900655914 /* MSACore-OF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
 		E774E232175E91F900655914 /* MSACore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
@@ -403,8 +409,6 @@
 		E7846FBC1714899C00705E7A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
-		E7E95E771733624100294C72 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -975,13 +979,15 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* VSCloudsVerletFormDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* YellowTailDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E72FF1C117E6B9E20007780D /* YellowTail */,
+				E72FF17D17E6A7970007780D /* VisualSystemsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -996,6 +1002,39 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E72FF17D17E6A7970007780D /* VisualSystemsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */,
+				E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */,
+				E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */,
+				E72FF18217E6A7970007780D /* CloudsRGBDVideoPlayer.h */,
+				E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */,
+				E72FF18417E6A7970007780D /* CloudsVisualSystem.h */,
+				E72FF18517E6A7970007780D /* ofxLight.h */,
+			);
+			name = VisualSystemsLibrary;
+			path = ../../CloudsLibrary/src/VisualSystemsLibrary;
+			sourceTree = "<group>";
+		};
+		E72FF1C117E6B9E20007780D /* YellowTail */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF1F017E6B9E20007780D /* vs_src */,
+			);
+			name = YellowTail;
+			path = ../../CloudsLibrary/src/VisualSystems/YellowTail;
+			sourceTree = "<group>";
+		};
+		E72FF1F017E6B9E20007780D /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF1F217E6B9E20007780D /* CloudsVisualSystemYellowTail.h */,
+				E72FF1F117E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E774E22B175E91F900655914 /* ofxMSACore */ = {
@@ -1111,30 +1150,16 @@
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7402D82178CDDB800FEABED /* CloudsRGBDCombinedRenderer.h */,
-				E7402D81178CDDB800FEABED /* CloudsRGBDCombinedRenderer.cpp */,
-				E7E95E731733624100294C72 /* VisualSystems */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		E7E95E731733624100294C72 /* VisualSystems */ = {
-			isa = PBXGroup;
-			children = (
-				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
-				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
-				E774E229175E916000655914 /* CloudsVisualSystemVerletForm.h */,
-				E774E228175E916000655914 /* CloudsVisualSystemVerletForm.cpp */,
-			);
-			path = VisualSystems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* VSCloudsVerletForm */ = {
+		E4B69B5A0A3A1756003C02F2 /* YellowTail */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsVerletForm" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "YellowTail" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1146,9 +1171,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = VSCloudsVerletForm;
+			name = YellowTail;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* VSCloudsVerletFormDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* YellowTailDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1156,7 +1181,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsVerletForm" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "YellowTail" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1177,7 +1202,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* VSCloudsVerletForm */,
+				E4B69B5A0A3A1756003C02F2 /* YellowTail */,
 			);
 		};
 /* End PBXProject section */
@@ -1219,7 +1244,6 @@
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
-				E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */,
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
 				4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */,
 				4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */,
@@ -1285,10 +1309,12 @@
 				4695E3ED1752A089003001E2 /* ofxEasingQuint.cpp in Sources */,
 				4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */,
 				4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */,
-				E774E22A175E916000655914 /* CloudsVisualSystemVerletForm.cpp in Sources */,
 				E774E26C175E91FA00655914 /* MSACoreGL.cpp in Sources */,
 				E774E26F175E91FA00655914 /* MSAObjCPointer.cpp in Sources */,
-				E7402D83178CDDB800FEABED /* CloudsRGBDCombinedRenderer.cpp in Sources */,
+				E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */,
+				E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
+				E72FF1F317E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1463,7 +1489,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSCloudsVerletFormDebug;
+				PRODUCT_NAME = YellowTailDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1560,7 +1586,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSCloudsVerletForm;
+				PRODUCT_NAME = YellowTail;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1568,7 +1594,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSCloudsVerletForm" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "YellowTail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1577,7 +1603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSCloudsVerletForm" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "YellowTail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
