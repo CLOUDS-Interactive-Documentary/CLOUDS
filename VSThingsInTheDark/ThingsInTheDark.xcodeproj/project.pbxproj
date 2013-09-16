@@ -24,12 +24,20 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E72FF36B17E6CE9C0007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF36317E6CE9C0007780D /* CloudsRGBDCamera.cpp */; };
+		E72FF36C17E6CE9C0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF36517E6CE9C0007780D /* CloudsRGBDVideoPlayer.cpp */; };
+		E72FF36D17E6CE9C0007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF36717E6CE9C0007780D /* CloudsVisualSystem.cpp */; };
+		E72FF37417E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF37217E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.cpp */; };
+		E72FF3AB17E6CF560007780D /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E72FF3A017E6CF560007780D /* ofxAVFVideoPlayer.mm */; };
+		E72FF3AC17E6CF560007780D /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E72FF3A217E6CF560007780D /* ofxAVFVideoRenderer.m */; };
+		E72FF3B517E6D0F00007780D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FF3B417E6D0F00007780D /* CoreMedia.framework */; };
+		E72FF3B717E6D0F40007780D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FF3B617E6D0F40007780D /* AVFoundation.framework */; };
+		E72FF3B917E6D0FB0007780D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FF3B817E6D0FB0007780D /* QuartzCore.framework */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
 		E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB91714899C00705E7A /* tinyxmlparser.cpp */; };
 		E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */; };
-		E7BAFC1A176BB6B10097AC71 /* CloudsVisualSystemSeeingDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFC18176BB6B00097AC71 /* CloudsVisualSystemSeeingDark.cpp */; };
 		E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E7CF77C81753FEA0006B7D41 /* kiss_fft.c */; };
 		E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E7CF77C91753FEA0006B7D41 /* kiss_fftr.c */; };
 		E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CF77CC1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -79,7 +87,6 @@
 		E7CF78D21753FECA006B7D41 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CF78C01753FECA006B7D41 /* ofxTween.cpp */; };
 		E7CF78F91753FEEC006B7D41 /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CF78F41753FEEC006B7D41 /* ofxMSATimer.cpp */; };
 		E7CF79101753FF32006B7D41 /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CF790C1753FF32006B7D41 /* ofxTextInputField.cpp */; };
-		E7D32F631751B48C006706ED /* CloudsVisualSystemRezanator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */; };
 		E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F6C1751C625006706ED /* ofxBehavior.cpp */; };
 		E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F701751C625006706ED /* ofxBufferEffectorBehavior.cpp */; };
 		E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F731751C625006706ED /* ofxDamperBehavior.cpp */; };
@@ -99,8 +106,6 @@
 		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
-		E7E3C41F1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E3C41D1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp */; };
-		E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */; };
 		E7F77729176E114E0096AEF7 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F77727176E114E0096AEF7 /* rgbdcombined.frag */; };
 		E7F7772A176E114E0096AEF7 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F77728176E114E0096AEF7 /* rgbdcombined.vert */; };
 /* End PBXBuildFile section */
@@ -157,6 +162,23 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E72FF36317E6CE9C0007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		E72FF36417E6CE9C0007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		E72FF36517E6CE9C0007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		E72FF36617E6CE9C0007780D /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		E72FF36717E6CE9C0007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
+		E72FF36817E6CE9C0007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
+		E72FF36917E6CE9C0007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E72FF37217E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
+		E72FF37317E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
+		E72FF39F17E6CF560007780D /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
+		E72FF3A017E6CF560007780D /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
+		E72FF3A117E6CF560007780D /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
+		E72FF3A217E6CF560007780D /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
+		E72FF3B317E6D0880007780D /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
+		E72FF3B417E6D0F00007780D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		E72FF3B617E6D0F40007780D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		E72FF3B817E6D0FB0007780D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -204,8 +226,6 @@
 		E7846FB91714899C00705E7A /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E7846FBB1714899C00705E7A /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E7846FBC1714899C00705E7A /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
-		E7BAFC18176BB6B00097AC71 /* CloudsVisualSystemSeeingDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemSeeingDark.cpp; sourceTree = "<group>"; };
-		E7BAFC19176BB6B10097AC71 /* CloudsVisualSystemSeeingDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemSeeingDark.h; sourceTree = "<group>"; };
 		E7CF77C41753FEA0006B7D41 /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
 		E7CF77C51753FEA0006B7D41 /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
 		E7CF77C71753FEA0006B7D41 /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
@@ -308,8 +328,6 @@
 		E7CF78F51753FEEC006B7D41 /* ofxMSATimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSATimer.h; sourceTree = "<group>"; };
 		E7CF790C1753FF32006B7D41 /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E7CF790D1753FF32006B7D41 /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
-		E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRezanator.cpp; sourceTree = "<group>"; };
-		E7D32F621751B48C006706ED /* CloudsVisualSystemRezanator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRezanator.h; sourceTree = "<group>"; };
 		E7D32F6B1751C625006706ED /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
 		E7D32F6C1751C625006706ED /* ofxBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBehavior.cpp; sourceTree = "<group>"; };
 		E7D32F6D1751C625006706ED /* ofxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBehavior.h; sourceTree = "<group>"; };
@@ -371,10 +389,6 @@
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		E7E3C41D1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCombinedRender.cpp; path = RGBD/CloudsRGBDCombinedRender.cpp; sourceTree = "<group>"; };
-		E7E3C41E1759589C00511BB0 /* CloudsRGBDCombinedRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCombinedRender.h; path = RGBD/CloudsRGBDCombinedRender.h; sourceTree = "<group>"; };
-		E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
-		E7E95E771733624100294C72 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7F77727176E114E0096AEF7 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdcombined.frag; path = ../../../CloudsData/shaders/rgbdcombined.frag; sourceTree = "<group>"; };
 		E7F77728176E114E0096AEF7 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = rgbdcombined.vert; path = ../../../CloudsData/shaders/rgbdcombined.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -384,6 +398,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72FF3B917E6D0FB0007780D /* QuartzCore.framework in Frameworks */,
+				E72FF3B717E6D0F40007780D /* AVFoundation.framework in Frameworks */,
+				E72FF3B517E6D0F00007780D /* CoreMedia.framework in Frameworks */,
 				E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
@@ -411,6 +428,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E72FF37517E6CF540007780D /* ofxAVFVideoPlayer */,
 				E7CF78FD1753FF32006B7D41 /* ofxTextInputField */,
 				E7CF78DD1753FEEB006B7D41 /* ofxMSATimer */,
 				E7CF78D91753FED8006B7D41 /* ofxRange */,
@@ -421,7 +439,6 @@
 				E7D330101751C689006706ED /* ofxExtras */,
 				E7D3300A1751C668006706ED /* ofxColorPalettes */,
 				E7D32F671751C625006706ED /* ofxGenerative */,
-				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E7846FB41714899C00705E7A /* ofxXmlSettings */,
 				E7846DB71714887800705E7A /* ofxUI */,
 			);
@@ -431,6 +448,9 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E72FF3B817E6D0FB0007780D /* QuartzCore.framework */,
+				E72FF3B617E6D0F40007780D /* AVFoundation.framework */,
+				E72FF3B417E6D0F00007780D /* CoreMedia.framework */,
 				E761F4D71622CA3D00029E43 /* Accelerate.framework */,
 				E4C2424410CC5A17004149E2 /* AppKit.framework */,
 				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
@@ -492,6 +512,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -506,6 +527,58 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E72FF36117E6CE9C0007780D /* VisualSystemsLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF36317E6CE9C0007780D /* CloudsRGBDCamera.cpp */,
+				E72FF36417E6CE9C0007780D /* CloudsRGBDCamera.h */,
+				E72FF36517E6CE9C0007780D /* CloudsRGBDVideoPlayer.cpp */,
+				E72FF36617E6CE9C0007780D /* CloudsRGBDVideoPlayer.h */,
+				E72FF36717E6CE9C0007780D /* CloudsVisualSystem.cpp */,
+				E72FF36817E6CE9C0007780D /* CloudsVisualSystem.h */,
+				E72FF36917E6CE9C0007780D /* ofxLight.h */,
+			);
+			path = VisualSystemsLibrary;
+			sourceTree = "<group>";
+		};
+		E72FF36E17E6CEC30007780D /* ThingsInTheDark */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF37117E6CEC30007780D /* vs_src */,
+			);
+			name = ThingsInTheDark;
+			path = VisualSystems/ThingsInTheDark;
+			sourceTree = "<group>";
+		};
+		E72FF37117E6CEC30007780D /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF37217E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.cpp */,
+				E72FF37317E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E72FF37517E6CF540007780D /* ofxAVFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF39E17E6CF560007780D /* src */,
+			);
+			name = ofxAVFVideoPlayer;
+			path = ../../../addons/ofxAVFVideoPlayer;
+			sourceTree = "<group>";
+		};
+		E72FF39E17E6CF560007780D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E72FF39F17E6CF560007780D /* ofxAVFVideoPlayer.h */,
+				E72FF3A017E6CF560007780D /* ofxAVFVideoPlayer.mm */,
+				E72FF3A117E6CF560007780D /* ofxAVFVideoRenderer.h */,
+				E72FF3A217E6CF560007780D /* ofxAVFVideoRenderer.m */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		E7846DA31713A48B00705E7A /* data */ = {
@@ -1016,41 +1089,28 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E72FF3B317E6D0880007780D /* CloudsGlobal.h */,
 				E7E95E5D1733624100294C72 /* src */,
 			);
 			name = CloudsLibrary;
-			path = ../CloudsLibrary;
+			path = ../../CloudsLibrary;
 			sourceTree = "<group>";
 		};
 		E7E95E5D1733624100294C72 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E3C41E1759589C00511BB0 /* CloudsRGBDCombinedRender.h */,
-				E7E3C41D1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp */,
-				E7E95E731733624100294C72 /* VisualSystems */,
+				E72FF36E17E6CEC30007780D /* ThingsInTheDark */,
+				E72FF36117E6CE9C0007780D /* VisualSystemsLibrary */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		E7E95E731733624100294C72 /* VisualSystems */ = {
-			isa = PBXGroup;
-			children = (
-				E7E95E771733624100294C72 /* CloudsVisualSystem.h */,
-				E7E95E761733624100294C72 /* CloudsVisualSystem.cpp */,
-				E7D32F621751B48C006706ED /* CloudsVisualSystemRezanator.h */,
-				E7D32F611751B48C006706ED /* CloudsVisualSystemRezanator.cpp */,
-				E7BAFC19176BB6B10097AC71 /* CloudsVisualSystemSeeingDark.h */,
-				E7BAFC18176BB6B00097AC71 /* CloudsVisualSystemSeeingDark.cpp */,
-			);
-			path = VisualSystems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* VSSeeingDark */ = {
+		E4B69B5A0A3A1756003C02F2 /* ThingsInTheDark */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSSeeingDark" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "ThingsInTheDark" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1062,7 +1122,7 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = VSSeeingDark;
+			name = ThingsInTheDark;
 			productName = myOFApp;
 			productReference = E4B69B5B0A3A1756003C02F2 /* VSSeeingDarkDebug.app */;
 			productType = "com.apple.product-type.application";
@@ -1072,7 +1132,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSSeeingDark" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ThingsInTheDark" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1093,7 +1153,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* VSSeeingDark */,
+				E4B69B5A0A3A1756003C02F2 /* ThingsInTheDark */,
 			);
 		};
 /* End PBXProject section */
@@ -1135,8 +1195,6 @@
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
-				E7E95E841733624100294C72 /* CloudsVisualSystem.cpp in Sources */,
-				E7D32F631751B48C006706ED /* CloudsVisualSystemRezanator.cpp in Sources */,
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
@@ -1202,10 +1260,14 @@
 				E7CF78D21753FECA006B7D41 /* ofxTween.cpp in Sources */,
 				E7CF78F91753FEEC006B7D41 /* ofxMSATimer.cpp in Sources */,
 				E7CF79101753FF32006B7D41 /* ofxTextInputField.cpp in Sources */,
-				E7E3C41F1759589C00511BB0 /* CloudsRGBDCombinedRender.cpp in Sources */,
-				E7BAFC1A176BB6B10097AC71 /* CloudsVisualSystemSeeingDark.cpp in Sources */,
 				E7F77729176E114E0096AEF7 /* rgbdcombined.frag in Sources */,
 				E7F7772A176E114E0096AEF7 /* rgbdcombined.vert in Sources */,
+				E72FF36B17E6CE9C0007780D /* CloudsRGBDCamera.cpp in Sources */,
+				E72FF36C17E6CE9C0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E72FF36D17E6CE9C0007780D /* CloudsVisualSystem.cpp in Sources */,
+				E72FF37417E6CEC30007780D /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
+				E72FF3AB17E6CF560007780D /* ofxAVFVideoPlayer.mm in Sources */,
+				E72FF3AC17E6CF560007780D /* ofxAVFVideoRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1380,7 +1442,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSSeeingDarkDebug;
+				PRODUCT_NAME = ThingsInTheDarkDebug;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1478,7 +1540,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PRODUCT_NAME = VSSeeingDark;
+				PRODUCT_NAME = ThingsInTheDark;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1487,7 +1549,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "VSSeeingDark" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ThingsInTheDark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1496,7 +1558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "VSSeeingDark" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "ThingsInTheDark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

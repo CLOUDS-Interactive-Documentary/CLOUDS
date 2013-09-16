@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxUI.h"
-#include "CloudsVisualSystemSeeingDark.h"
+#include "CloudsVisualSystemThingsInTheDark.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -21,5 +21,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 	
-	CloudsVisualSystemSeeingDark seeingDark;
+	CloudsVisualSystemThingsInTheDark things;
 };

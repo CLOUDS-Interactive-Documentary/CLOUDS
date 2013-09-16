@@ -2,16 +2,16 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
 	ofSetVerticalSync(true);
-	
-	seeingDark.setup();
-	
-	seeingDark.playSystem();
-	
 	ofToggleFullscreen();
+	things.setup();
+	things.playSystem();
 }
 
+//--------------------------------------------------------------
+void testApp::dragEvent(ofDragInfo dragInfo){
+	things.loadMovieForComposition( dragInfo.files[0] );
+}
 
 //--------------------------------------------------------------
 void testApp::update(){
@@ -68,7 +68,3 @@ void testApp::gotMessage(ofMessage msg){
 
 }
 
-//--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
-	seeingDark.loadMovieForComposition(dragInfo.files[0]);
-}
