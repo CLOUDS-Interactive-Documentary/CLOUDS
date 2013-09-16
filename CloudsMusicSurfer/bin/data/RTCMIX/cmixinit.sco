@@ -12,6 +12,7 @@ amp_triangle = maketable("line", 1000, 0.0, 0.0, 1.0, 1.0, 2.0, 0.0);
 wf_organ = maketable("wave", 1000, 1.0, 0.7, 0.4, 0.3, 0.2, 0.1, 0.05, 0.02);
 wf_slowwaves = maketable("wave", 1000, 1.0, 0.3, 0.2, 0.1, 0.05);
 wf_slowwaveshi = maketable("wave", 1000, 1.0, 0.1, 0.3, 0.05, 0.15, 0.025);
+wf_waveshi = maketable("wave", 1000, "tri");
 
 vel_strike = maketable("line", 1000, 0.0, 1.0, 1.0, 0.0, 10., 0.);
 
