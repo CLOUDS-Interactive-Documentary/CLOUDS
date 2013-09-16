@@ -98,7 +98,7 @@ string CloudsVisualSystemReplecator::getSystemName(){
 void CloudsVisualSystemReplecator::selfSetup(){
 	repl.setup(grid2d, 2);
 	
-	local_time = 0;
+//	local_time = 0;
 }
 
 void CloudsVisualSystemReplecator::selfSetupGuis(){
@@ -109,7 +109,7 @@ void CloudsVisualSystemReplecator::selfSetupGuis(){
     replecatorGui->setName("Replecator");
     replecatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
-	replecatorGui->addSlider("LOCAL_TIME", 0, 120, &local_time);
+//	replecatorGui->addSlider("LOCAL_TIME", 0, 120, &local_time);
 	replecatorGui->addButton("REGENERATE", &regenerate);
 	
 	replecatorGui->addSlider("ROWS", 1, 20, &rows);
@@ -145,6 +145,7 @@ void CloudsVisualSystemReplecator::selfUpdate(){
 	{
 		repl.setup(grid2d, 2);
 	}
+	local_time = timeline->getCurrentTime();
 	
 	repl.update(grid2d_updater);
 }
