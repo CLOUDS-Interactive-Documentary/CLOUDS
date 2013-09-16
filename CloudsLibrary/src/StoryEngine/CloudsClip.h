@@ -20,6 +20,7 @@ class CloudsClip {
 	string fcpFileId;
     string sourceVideoFilePath;
 	ofColor color;
+	
     //clip marker color
     string startingQuestion;
 	

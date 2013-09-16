@@ -211,7 +211,6 @@
 		E7D212B617DD30720050CEFD /* rgbdpixeltopixel.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7D2129F17DD30720050CEFD /* rgbdpixeltopixel.frag */; };
 		E7D212B717DD30720050CEFD /* rgbdpixeltopixel.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7D212A017DD30720050CEFD /* rgbdpixeltopixel.vert */; };
 		E7D212B817DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */; };
-		E7D3637017C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */; };
 		E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3645817C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */; };
 		E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */; };
@@ -826,36 +825,6 @@
 		E7D212A017DD30720050CEFD /* rgbdpixeltopixel.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdpixeltopixel.vert; sourceTree = "<group>"; };
 		E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemRGBDVideo.cpp; sourceTree = "<group>"; };
 		E7D212A317DD30720050CEFD /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
-		E7D3622217C7D072004A5ED6 /* accShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.frag; sourceTree = "<group>"; };
-		E7D3622317C7D072004A5ED6 /* accShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.vert; sourceTree = "<group>"; };
-		E7D3622417C7D072004A5ED6 /* attractorShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractorShader.frag; sourceTree = "<group>"; };
-		E7D3622517C7D072004A5ED6 /* attractorShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attractorShader.vert; sourceTree = "<group>"; };
-		E7D3622617C7D072004A5ED6 /* electroAddShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = electroAddShader.frag; sourceTree = "<group>"; };
-		E7D3622717C7D072004A5ED6 /* electroShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = electroShader.frag; sourceTree = "<group>"; };
-		E7D3622817C7D072004A5ED6 /* electroShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = electroShader.vert; sourceTree = "<group>"; };
-		E7D3622917C7D072004A5ED6 /* floorShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floorShader.frag; sourceTree = "<group>"; };
-		E7D3622A17C7D072004A5ED6 /* floorShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floorShader.vert; sourceTree = "<group>"; };
-		E7D3622B17C7D072004A5ED6 /* homeShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = homeShader.frag; sourceTree = "<group>"; };
-		E7D3622C17C7D072004A5ED6 /* homeShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = homeShader.vert; sourceTree = "<group>"; };
-		E7D3622D17C7D072004A5ED6 /* noise.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.frag; sourceTree = "<group>"; };
-		E7D3622E17C7D072004A5ED6 /* noise.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.vert; sourceTree = "<group>"; };
-		E7D3622F17C7D072004A5ED6 /* noiseShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseShader.frag; sourceTree = "<group>"; };
-		E7D3623017C7D072004A5ED6 /* noiseShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseShader.vert; sourceTree = "<group>"; };
-		E7D3623117C7D072004A5ED6 /* noiseShader_backup.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseShader_backup.frag; sourceTree = "<group>"; };
-		E7D3623217C7D072004A5ED6 /* posShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.frag; sourceTree = "<group>"; };
-		E7D3623317C7D072004A5ED6 /* posShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.vert; sourceTree = "<group>"; };
-		E7D3623417C7D072004A5ED6 /* radShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = radShader.frag; sourceTree = "<group>"; };
-		E7D3623517C7D072004A5ED6 /* radShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = radShader.vert; sourceTree = "<group>"; };
-		E7D3623617C7D072004A5ED6 /* renderShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.frag; sourceTree = "<group>"; };
-		E7D3623717C7D072004A5ED6 /* renderShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.vert; sourceTree = "<group>"; };
-		E7D3623817C7D072004A5ED6 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
-		E7D3623917C7D072004A5ED6 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
-		E7D3623A17C7D072004A5ED6 /* sphereShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.frag; sourceTree = "<group>"; };
-		E7D3623B17C7D072004A5ED6 /* sphereShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.vert; sourceTree = "<group>"; };
-		E7D3623C17C7D072004A5ED6 /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
-		E7D3623D17C7D072004A5ED6 /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
-		E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCosmic.cpp; sourceTree = "<group>"; };
-		E7D3625917C7D072004A5ED6 /* CloudsVisualSystemCosmic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCosmic.h; sourceTree = "<group>"; };
 		E7D3643F17C7D0FF004A5ED6 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; };
 		E7D3644017C7D0FF004A5ED6 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
 		E7D3644117C7D0FF004A5ED6 /* groundShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = groundShader.frag; sourceTree = "<group>"; };
@@ -2341,7 +2310,6 @@
 				E77BA98417DA77CD00B8744F /* WebHistory */,
 				E7D3654D17C7D32B004A5ED6 /* Scrape */,
 				E7D3637417C7D0FF004A5ED6 /* Metaballs */,
-				E7D3613117C7D071004A5ED6 /* Cosmic */,
 				E73677D817C6DF2900CC6EC8 /* Oscillations */,
 				E7BBA6AF179FA17D007D7EC1 /* Cities */,
 				E7BBA75D179FA17E007D7EC1 /* Colony */,
@@ -2546,8 +2514,8 @@
 		E7BBAAE6179FA183007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7BBAAE7179FA183007D7EC1 /* CloudsVisualSystemOcean.cpp */,
 				E7BBAAE8179FA183007D7EC1 /* CloudsVisualSystemOcean.h */,
+				E7BBAAE7179FA183007D7EC1 /* CloudsVisualSystemOcean.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2767,75 +2735,6 @@
 			children = (
 				E7D212A317DD30720050CEFD /* CloudsVisualSystemRGBDVideo.h */,
 				E7D212A217DD30720050CEFD /* CloudsVisualSystemRGBDVideo.cpp */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
-		E7D3613117C7D071004A5ED6 /* Cosmic */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3613517C7D071004A5ED6 /* bin */,
-				E7D3625717C7D072004A5ED6 /* vs_src */,
-			);
-			path = Cosmic;
-			sourceTree = "<group>";
-		};
-		E7D3613517C7D071004A5ED6 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3613617C7D071004A5ED6 /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		E7D3613617C7D071004A5ED6 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3622117C7D072004A5ED6 /* shaders */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		E7D3622117C7D072004A5ED6 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3622217C7D072004A5ED6 /* accShader.frag */,
-				E7D3622317C7D072004A5ED6 /* accShader.vert */,
-				E7D3622417C7D072004A5ED6 /* attractorShader.frag */,
-				E7D3622517C7D072004A5ED6 /* attractorShader.vert */,
-				E7D3622617C7D072004A5ED6 /* electroAddShader.frag */,
-				E7D3622717C7D072004A5ED6 /* electroShader.frag */,
-				E7D3622817C7D072004A5ED6 /* electroShader.vert */,
-				E7D3622917C7D072004A5ED6 /* floorShader.frag */,
-				E7D3622A17C7D072004A5ED6 /* floorShader.vert */,
-				E7D3622B17C7D072004A5ED6 /* homeShader.frag */,
-				E7D3622C17C7D072004A5ED6 /* homeShader.vert */,
-				E7D3622D17C7D072004A5ED6 /* noise.frag */,
-				E7D3622E17C7D072004A5ED6 /* noise.vert */,
-				E7D3622F17C7D072004A5ED6 /* noiseShader.frag */,
-				E7D3623017C7D072004A5ED6 /* noiseShader.vert */,
-				E7D3623117C7D072004A5ED6 /* noiseShader_backup.frag */,
-				E7D3623217C7D072004A5ED6 /* posShader.frag */,
-				E7D3623317C7D072004A5ED6 /* posShader.vert */,
-				E7D3623417C7D072004A5ED6 /* radShader.frag */,
-				E7D3623517C7D072004A5ED6 /* radShader.vert */,
-				E7D3623617C7D072004A5ED6 /* renderShader.frag */,
-				E7D3623717C7D072004A5ED6 /* renderShader.vert */,
-				E7D3623817C7D072004A5ED6 /* rgbdcombined.frag */,
-				E7D3623917C7D072004A5ED6 /* rgbdcombined.vert */,
-				E7D3623A17C7D072004A5ED6 /* sphereShader.frag */,
-				E7D3623B17C7D072004A5ED6 /* sphereShader.vert */,
-				E7D3623C17C7D072004A5ED6 /* velShader.frag */,
-				E7D3623D17C7D072004A5ED6 /* velShader.vert */,
-			);
-			path = shaders;
-			sourceTree = "<group>";
-		};
-		E7D3625717C7D072004A5ED6 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3625917C7D072004A5ED6 /* CloudsVisualSystemCosmic.h */,
-				E7D3625817C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3181,7 +3080,6 @@
 				E736770517C67F7E00CC6EC8 /* LSystem.cpp in Sources */,
 				E73678F417C6DF2B00CC6EC8 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E736792F17C6E02500CC6EC8 /* ofxAutoReloadedShader.cpp in Sources */,
-				E7D3637017C7D072004A5ED6 /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */,
 				E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */,
@@ -3255,6 +3153,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -3289,6 +3188,7 @@
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",

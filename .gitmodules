@@ -52,9 +52,6 @@
 [submodule "CloudsLibrary/src/VisualSystems/WebHistory"]
 	path = CloudsLibrary/src/VisualSystems/WebHistory
 	url = git@github.com:CLOUDS-Interactive-Documentary/WebHistory.git
-[submodule "CloudsLibrary/src/VisualSystems/Cosmic"]
-	path = CloudsLibrary/src/VisualSystems/Cosmic
-	url = git@github.com:rezaali/Cosmic.git
 [submodule "CloudsLibrary/src/VisualSystems/QuineVisualSystem"]
 	path = CloudsLibrary/src/VisualSystems/QuineVisualSystem
 	url = 	git@github.com:CLOUDS-Interactive-Documentary/QuineVisualSystem.git

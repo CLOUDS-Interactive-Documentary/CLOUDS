@@ -40,7 +40,7 @@ void REVERB(double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.1, 0.1, -90., -6., -6., 3.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -18., -18., 2.0)", time);
     parse_score(thebuf, bx);
 }
 
@@ -54,15 +54,31 @@ void SCHEDULEBANG(double time)
 }
 
 // sets up rtinput() for a signal processing routine that requires an audio file
-void LOADSOUND(string file, string handle)
+float LOADSOUND(string file, string handle)
 {
     string fullfile = ofToDataPath(file);
+    ofVideoPlayer playa;
+    playa.loadMovie(fullfile);
+    float duration = playa.getDuration();
+    //cout << "DURATION: " << duration << endl;
+    playa.close();
     
-    OF_buffer_load_set((char*)fullfile.c_str(), (char*)handle.c_str(), 0., 10.);
+    OF_buffer_load_set((char*)fullfile.c_str(), (char*)handle.c_str(), 0., 30.);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
     printf("LOADED SOUND %s: file: %s  nframes: %d  nchans: %d\n", (char*)handle.c_str(),
            (char*)fullfile.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
+    /*
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "foo = filedur(\"%s\")", (char*)fullfile.c_str());
+    cout << thebuf << endl;
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "printf(\"DUR \" + \"%s \" + foo)", (char*)handle.c_str());
+    cout << thebuf << endl;
+    parse_score(thebuf, bx);
+     */
+    return(duration);
 }
 
 // basic soundfile mixing interface
@@ -73,6 +89,28 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "STEREO(%f, %f*DUR(), %f, %f*amp_declick, %f)", outskip, inskip, dur, amp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
+void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle)
+{
+    float incr = loopdur/looplen;
+    float freq = mtof(60);
+    freq = freq*incr;
+    double newp = ftom(freq, 440.);
+    double tp = newp-60.;
+    int oct = tp/12;
+    double pc = (fmod(tp,12.))*0.01;
+    double transp = oct+pc;
+    
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f, %f, 0, 0)", outskip, looplen, amp, transp);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f, %f, 1, 1)", outskip, looplen, amp, transp);
     parse_score(thebuf, bx);
     
 }

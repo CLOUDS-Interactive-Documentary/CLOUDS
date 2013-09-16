@@ -118,10 +118,11 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         // play pretty intro melody
         for(int i = 0;i<12;i++)
         {
-        //    WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
-       //     STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
-        //    STEREO(i*0.1, 0., 1., 0.05, i/11.0, "BD");
+            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
+            STEREO(i*0.1, 0., 1., 0.05, i/11.0, "BD");
         }
+        
         // launch initial effects chain (reverb)
         REVERB(5.0); // gimme some reverb
     }
@@ -158,6 +159,18 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         }
         if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
+    
+    
+    char *pbuf = get_print();
+    char *pbufptr = pbuf;
+    while (strlen(pbufptr) > 0) {
+        cout << pbufptr << endl;
+        pbufptr += (strlen(pbufptr) + 1);
+    }
+    
+    reset_print();
+    
+
 }
 
 
@@ -420,6 +433,14 @@ void testApp::loadRTcmixSamples()
     LOADSOUND("RTCMIX/samps/SD.aif", "SD");
     LOADSOUND("RTCMIX/samps/CH.aif", "CH");
     LOADSOUND("RTCMIX/samps/OH.aif", "OH");
+    LOADSOUND("RTCMIX/samps/BD2.aif", "BD2");
+    LOADSOUND("RTCMIX/samps/VD1.aif", "VD1");
+    LOADSOUND("RTCMIX/samps/VD2.aif", "VD2");
+    LOADSOUND("RTCMIX/samps/VD3.aif", "VD3");
+    LOADSOUND("RTCMIX/samps/VD4.aif", "VD4");
+    tl1 = LOADSOUND("RTCMIX/samps/testloop1.aif", "testloop1");
+    tl2 = LOADSOUND("RTCMIX/samps/testloop2.aif", "testloop2");
+    tl3 = LOADSOUND("RTCMIX/samps/testloop3.aif", "testloop3");
 }
 
 void testApp::startMusic(int mc, int mh, int mr, float musicdur)
@@ -562,6 +583,27 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         }
         
     }
+    
+    // WAVESHIPATTERNED
+    if (find(ilist.begin(), ilist.end(), "waveshipatterned") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+            float d0 = ofRandom(0.1, 0.5);
+            float of1 = d0*ofRandom(0.3, 0.7);
+            float d1 = d0+of1;
+            float of2 = d1*ofRandom(0.3, 0.7);
+            float d2 = d1+of1+of2;
+            float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote+12., pitches[mh].scale));
+            WAVETABLE(i, d0, 0.02, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
+            }
+        }
+    }
 
     // HELMHOLTZ
     if (find(ilist.begin(), ilist.end(), "helmholtz") != ilist.end())
@@ -640,6 +682,55 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         }
     }
     
+    // VERMONTBEATZ
+    if (find(ilist.begin(), ilist.end(), "vermontbeatz") != ilist.end())
+    {
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) { // this is a note!
+                float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
+                STEREO(i, 0., 0.5, t_amp, 0.5, "BD2");
+            }
+            else
+            {
+                pick = ofRandom(0,5);
+                if(pick==1) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
+                else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
+                else if(pick==3) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
+                else if(pick==4) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    // TESTLOOP1
+    if (find(ilist.begin(), ilist.end(), "testloop1") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl1, tempo*64., 0.25, "testloop1");
+        }
+    }
+
+    // TESTLOOP2
+    if (find(ilist.begin(), ilist.end(), "testloop2") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl2, tempo*64., 0.25, "testloop2");
+        }
+    }
+    
+    // TESTLOOP3
+    if (find(ilist.begin(), ilist.end(), "testloop3") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl3, tempo*64., 0.25, "testloop3");
+        }
+    }
+
     //
     // =======================
     // END ORCHESTRATION BLOCK

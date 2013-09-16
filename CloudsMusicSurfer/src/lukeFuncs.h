@@ -27,6 +27,8 @@ extern "C" {
     void OF_buffer_load_set(char *filename, char *bufname, float insk, float dur);
     int mm_buf_getframes(char *bufname);
     int mm_buf_getchans(char *bufname);
+    float maxmsp_vals[1024];
+    int vals_ready;
 }
 
 // luke's comp structures
@@ -73,8 +75,9 @@ void MBANDEDWG(double outskip, double dur, double amp, double freq, double strik
 void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
 
 void REVERB(double time);
-void LOADSOUND(string file, string handle);
+float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
+void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 

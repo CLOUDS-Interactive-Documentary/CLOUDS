@@ -91,18 +91,17 @@ class CloudsFCPParser {
 	float getAllClipDuration();
 	
 	//create a list that maps all of the tags back to closest key theme
-	void populateKeyThemes();
-	void populateKeyThemes(set<string>& keyThemes);
-
-	string getKeyThemeForTag(string tag);
+//	void populateKeyThemes();
+//	void populateKeyThemes(set<string>& keyThemes);
+//	string getKeyThemeForTag(string tag);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
-							  bool startingClip = false);
-	
+	CloudsClip& getRandomClip(bool hasCombinedVideo = false,
+							  bool hasQuestion = false,
+							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
