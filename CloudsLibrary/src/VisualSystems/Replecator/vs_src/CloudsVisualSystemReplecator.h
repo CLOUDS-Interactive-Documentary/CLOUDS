@@ -6,9 +6,9 @@
 
 #include "Replecator.h"
 
-class CloudsVisualSystemHiga : public CloudsVisualSystem {
+class CloudsVisualSystemReplecator : public CloudsVisualSystem {
  public:
-	CloudsVisualSystemHiga();
+	CloudsVisualSystemReplecator();
 
 	string getSystemName();
 	

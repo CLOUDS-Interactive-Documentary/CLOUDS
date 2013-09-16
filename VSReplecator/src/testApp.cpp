@@ -2,9 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	higaSystem.setup();
-	
-	higaSystem.playSystem();
+	replecator.setup();
+	replecator.playSystem();
 }
 
 //--------------------------------------------------------------

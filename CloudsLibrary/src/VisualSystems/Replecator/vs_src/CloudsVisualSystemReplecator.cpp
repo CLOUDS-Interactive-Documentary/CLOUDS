@@ -1,5 +1,5 @@
 
-#include "CloudsVisualSystemHiga.h"
+#include "CloudsVisualSystemReplecator.h"
 
 static float rows = 0, cols = 0;
 static float local_time = 0;
@@ -87,21 +87,21 @@ static Drawer drawer = {100, 100, 1, 0.5, 0, 0};
 static Grid2D grid2d = {0.5};
 static Grid2DUpdater grid2d_updater;
 
-CloudsVisualSystemHiga::CloudsVisualSystemHiga(){
+CloudsVisualSystemReplecator::CloudsVisualSystemReplecator(){
 
 }
 
-string CloudsVisualSystemHiga::getSystemName(){
+string CloudsVisualSystemReplecator::getSystemName(){
 	return "Replecator";
 }
 
-void CloudsVisualSystemHiga::selfSetup(){
+void CloudsVisualSystemReplecator::selfSetup(){
 	repl.setup(grid2d, 2);
 	
 	local_time = 0;
 }
 
-void CloudsVisualSystemHiga::selfSetupGuis(){
+void CloudsVisualSystemReplecator::selfSetupGuis(){
 	
 	replecatorGui = new ofxUISuperCanvas("REPLECATOR", gui);
 	replecatorGui->copyCanvasStyle(gui);
@@ -140,7 +140,7 @@ void CloudsVisualSystemHiga::selfSetupGuis(){
 }
 
 
-void CloudsVisualSystemHiga::selfUpdate(){
+void CloudsVisualSystemReplecator::selfUpdate(){
 	if (regenerate)
 	{
 		repl.setup(grid2d, 2);
@@ -149,19 +149,19 @@ void CloudsVisualSystemHiga::selfUpdate(){
 	repl.update(grid2d_updater);
 }
 
-void CloudsVisualSystemHiga::selfDrawBackground(){
+void CloudsVisualSystemReplecator::selfDrawBackground(){
 
 }
 
-void CloudsVisualSystemHiga::selfDrawDebug(){
+void CloudsVisualSystemReplecator::selfDrawDebug(){
 
 }
 
-void CloudsVisualSystemHiga::selfSceneTransformation(){
+void CloudsVisualSystemReplecator::selfSceneTransformation(){
 
 }
 
-void CloudsVisualSystemHiga::selfDraw(){
+void CloudsVisualSystemReplecator::selfDraw(){
 	ofPushStyle();
 	ofSetRectMode(OF_RECTMODE_CORNER);
 	ofScale(0.5, 0.5, 0.5);
@@ -169,67 +169,67 @@ void CloudsVisualSystemHiga::selfDraw(){
 	ofPopStyle();
 }
 
-void CloudsVisualSystemHiga::selfExit(){
+void CloudsVisualSystemReplecator::selfExit(){
 
 }
 
-void CloudsVisualSystemHiga::selfBegin(){
+void CloudsVisualSystemReplecator::selfBegin(){
 
 }
 
-void CloudsVisualSystemHiga::selfEnd(){
-
-}
-
-
-void CloudsVisualSystemHiga::selfKeyPressed(ofKeyEventArgs & args){
-
-}
-
-void CloudsVisualSystemHiga::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemReplecator::selfEnd(){
 
 }
 
 
-void CloudsVisualSystemHiga::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemReplecator::selfKeyPressed(ofKeyEventArgs & args){
 
 }
 
-void CloudsVisualSystemHiga::selfMouseMoved(ofMouseEventArgs& data){
-
-}
-
-void CloudsVisualSystemHiga::selfMousePressed(ofMouseEventArgs& data){
-
-}
-
-void CloudsVisualSystemHiga::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemReplecator::selfKeyReleased(ofKeyEventArgs & args){
 
 }
 
 
-void CloudsVisualSystemHiga::selfSetupGui(){
+void CloudsVisualSystemReplecator::selfMouseDragged(ofMouseEventArgs& data){
 
 }
 
-void CloudsVisualSystemHiga::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemReplecator::selfMouseMoved(ofMouseEventArgs& data){
+
+}
+
+void CloudsVisualSystemReplecator::selfMousePressed(ofMouseEventArgs& data){
+
+}
+
+void CloudsVisualSystemReplecator::selfMouseReleased(ofMouseEventArgs& data){
 
 }
 
 
-void CloudsVisualSystemHiga::selfSetupSystemGui(){
+void CloudsVisualSystemReplecator::selfSetupGui(){
 
 }
 
-void CloudsVisualSystemHiga::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemReplecator::selfGuiEvent(ofxUIEventArgs &e){
 
 }
 
 
-void CloudsVisualSystemHiga::selfSetupRenderGui(){
+void CloudsVisualSystemReplecator::selfSetupSystemGui(){
 
 }
 
-void CloudsVisualSystemHiga::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemReplecator::guiSystemEvent(ofxUIEventArgs &e){
+
+}
+
+
+void CloudsVisualSystemReplecator::selfSetupRenderGui(){
+
+}
+
+void CloudsVisualSystemReplecator::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
