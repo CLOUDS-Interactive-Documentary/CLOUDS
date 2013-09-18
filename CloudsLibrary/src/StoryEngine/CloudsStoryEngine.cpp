@@ -46,6 +46,7 @@ CloudsStoryEngine::CloudsStoryEngine(){
     minClipDurationForStartingOffset = 30;
 	
 	genderBalanceFactor = 5;
+    goldClipFactor = 50;
 	
 	visualSystemPrimaryTopicBoost = 10;
 	visualSystemSecondaryTopicBoost = 5;
@@ -137,6 +138,7 @@ void CloudsStoryEngine::initGui(){
 	
     clipGui = new ofxUISuperCanvas("CLIP SCORE PARAMS", OFX_UI_FONT_SMALL);
     clipGui->setPosition(0,0);
+    clipGui->addSpacer();
 	clipGui->addSlider("MAX TIMES ON TOPIC", 2, 7, &maxTimesOnTopic);
     clipGui->addSlider("TOPICS IN COMMON CURRENT MULTIPLIER", 0, 50, &topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON PREVIOUS MULTIPLIER", 0, 10, &topicsinCommonWithPreviousMultiplier);
@@ -144,11 +146,13 @@ void CloudsStoryEngine::initGui(){
     clipGui->addSlider("LINK FACTOR",0,50, &linkFactor);
     clipGui->addSlider("DICHOTOMY WEIGHT", 0,10, &dichotomyWeight);
     clipGui->addSlider("GENDER BALANCE ", 0, 10, &genderBalanceFactor);
+    clipGui->addSlider("GOLD CLIP FACTOR", 10, 100, &goldClipFactor);
 	
 	clipGui->autoSizeToFitWidgets();
     
 	topicGui = new ofxUISuperCanvas("TOPIC SCORE PARAMS", OFX_UI_FONT_SMALL);
-	topicGui->addSlider("RELEVANCY MULTIPLIER", 0, 200, &topicRelevancyMultiplier);
+	topicGui->addSpacer();
+    topicGui->addSlider("RELEVANCY MULTIPLIER", 0, 200, &topicRelevancyMultiplier);
 	topicGui->addSlider("LAST CLIP SHARES TOPIC BOOST", 0, 20, &lastClipSharesTopicBoost);
 	topicGui->addSlider("TWO CLIPS AGO SHARES TOPIC BOOST",0, 20, &twoClipsAgoSharesTopicBoost);
     topicGui->autoSizeToFitWidgets();
@@ -164,6 +168,7 @@ void CloudsStoryEngine::initGui(){
     
     vsGui = new ofxUISuperCanvas("VISUAL SYSTEM PARAMS", OFX_UI_FONT_SMALL);
     vsGui->setPosition(gui->getRect()->x + 100, gui->getRect()->y + 10);
+    vsGui->addSpacer();
 	vsGui->addSlider("PRIMARY TOPIC BOOST", 0, 20, &visualSystemPrimaryTopicBoost);
 	vsGui->addSlider("SECONDARY TOPIC BOOST", 0, 20, &visualSystemSecondaryTopicBoost);
     vsGui->addSlider("MAX VS RUNTIME", 0, 480,&systemMaxRunTime);
@@ -779,6 +784,13 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     if(potentialNextClip.hasSpecialKeyword("#vo") && visualSystemRunning && ! isPresetIndefinite){
         return 0;
     }
+    
+    // Ignore clip if it has been tagged as a  #dud
+    if(potentialNextClip.hasSpecialKeyword("#dud")){
+        if(printDecisions) cout<< "           REJECTED Clip "<<potentialNextClip.getLinkName()<< " : this clip has been marked with the #dud keyword"<<endl;
+        return 0;
+    }
+    
     //Base score
     float totalScore = 0;
     float topicsInCommonScore = 0;
@@ -789,6 +801,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     float dichotomiesScore = 0;
     float voiceOverScore = 0;
 	float genderBalanceScore = 0;
+    float goldClipScore = 0;
 	
 	//need to consider discouraging clips with a lot of topics
     float topicsInCommon = parser->getSharedKeywords(currentlyPlayingClip, potentialNextClip).size();
@@ -843,7 +856,13 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	//gender balance scorec
 	
 	genderBalanceScore = (potentialNextClip.getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * moreMenThanWomen;
-    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + genderBalanceScore + voiceOverScore;
+    
+    goldClipScore = (potentialNextClip.hasSpecialKeyword("gold") ? goldClipFactor : 0);
+    if(potentialNextClip.hasSpecialKeyword("gold")){
+        cout<<"STRUCK GOLD!  "<<potentialNextClip.getLinkName()<<" : "<< goldClipScore<<endl;
+    }
+    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + genderBalanceScore + voiceOverScore + goldClipScore;
+    
     
     stringstream ss;
     string linkName =potentialNextClip.getLinkName();

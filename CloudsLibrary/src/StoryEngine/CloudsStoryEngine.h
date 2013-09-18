@@ -99,6 +99,7 @@ class CloudsStoryEngine {
     float dichotomyWeight;
     float linkFactor;
 	float genderBalanceFactor;
+    float goldClipFactor;
 	
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
