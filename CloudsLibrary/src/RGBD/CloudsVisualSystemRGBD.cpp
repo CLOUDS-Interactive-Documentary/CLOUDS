@@ -886,6 +886,8 @@ void CloudsVisualSystemRGBD::selfKeyReleased(ofKeyEventArgs & args){
 		
 		setCurrentCamera(cloudsCamera);
 	}
+	
+
 }
 
 void CloudsVisualSystemRGBD::selfMouseDragged(ofMouseEventArgs& data){

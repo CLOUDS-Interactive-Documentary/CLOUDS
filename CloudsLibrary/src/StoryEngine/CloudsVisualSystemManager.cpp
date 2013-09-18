@@ -14,14 +14,14 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsVisualSystemHiga.h"
+#include "CloudsVisualSystemReplecator.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
-#include "CloudsVisualSystemLia.h"
+#include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemFireworks.h"
-//#include "CloudsVisualSystemCosmic.h"
+#include "CloudsVisualSystemCosmic.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 #include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemRGBDVideo.h"
@@ -71,14 +71,14 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 	registerVisualSystem( new CloudsVisualSystemWorld() );
 	registerVisualSystem( new CloudsVisualSystemMemory() );
-	registerVisualSystem( new CloudsVisualSystemHiga() );
+	registerVisualSystem( new CloudsVisualSystemReplecator() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );
-	registerVisualSystem( new CloudsVisualSystemLia() );
+	registerVisualSystem( new CloudsVisualSystemLIA() );
 	registerVisualSystem( new CloudsVisualSystemFireworks() );
 	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
-//	registerVisualSystem( new CloudsVisualSystemCosmic() );
+	registerVisualSystem( new CloudsVisualSystemCosmic() );
 	registerVisualSystem( new CloudsVisualSystemOscillations() );
 	registerVisualSystem( new CloudsVisualSystemRGBDVideo() );
 	registerVisualSystem( new CloudsVisualSystemConnectors() );
@@ -395,9 +395,47 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
 }
 
 //--------------------------------------------------------------------
+void CloudsVisualSystemManager::exportStandalonePresets(){
+	string standaloneExportFolder = getDataPath() + "standalonePresets/";
+	ofDirectory(standaloneExportFolder).create();
+	
+	cout << "COPYING PRESETS!" << endl;
+	set<CloudsVisualSystem*> systemsWithPresets;
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].enabled){
+			
+			string presetSourceDirectory = presets[i].system->getVisualSystemDataPath() + "Presets/" + presets[i].presetName;
+			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
+
+			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
+			
+			ofDirectory(presetTargetDirectory).create(true);
+			ofDirectory(presetSourceDirectory).copyTo(presetTargetDirectory, true);
+			
+			systemsWithPresets.insert(presets[i].system);
+		}
+	}
+	
+	cout << "COPYING SUPPORTING FILES" << endl;
+	set<CloudsVisualSystem*>::iterator it;
+	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
+		CloudsVisualSystem* sys = *it;
+		ofDirectory otherFiles( sys->getVisualSystemDataPath() );
+		otherFiles.listDir();
+		for(int f = 0; f < otherFiles.size(); f++){
+			if(otherFiles.getName(f) != "Presets"){
+				cout << "copying file " << otherFiles.getName(f);
+				otherFiles.getFile(f).copyTo(standaloneExportFolder + "VisualSystems/" + sys->getSystemName());
+			}
+		}
+	}
+
+}
+
+//--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
     int deadIndex;
-    return isClipSuppressed(presetID, clip,deadIndex);
+    return isClipSuppressed(presetID, clip, deadIndex);
 }
 
 //--------------------------------------------------------------------
