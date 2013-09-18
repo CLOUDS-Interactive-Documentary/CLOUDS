@@ -268,6 +268,15 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	currentAct->play();
 }
 
+void CloudsPlaybackController::setRandomQuestion(CloudsClip& clip){
+    if(currentVisualSystem->getSystemName() == "RGBD"){
+        rgbdVisualSystem.addQuestion(clip);
+        rgbdVisualSystem.setSelectedQuestion();
+    }
+
+    
+}
+
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
@@ -280,10 +289,11 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
+        cout<<"adding question"<<endl;
 		currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
 		rgbdVisualSystem.addQuestion(currentClip);
 	}
-	
+
 	//SCRATCH SCRUB
 	if(scratchTracks.size() > 0){
 		if(args.key == OF_KEY_UP){
@@ -366,7 +376,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
 		}
 	}
-	else {
+    else {
 		//updating tweens
 		float elapsedTime = ofGetElapsedTimef();
 		for (int i = controllerTweens.size()-1; i>=0; i--) {
@@ -376,6 +386,23 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 				controllerTweens.erase(controllerTweens.begin() + i );
 			}
 		}
+        
+        if(rgbdVisualSystem.isQuestionSelectedAndClipDone()){
+            CloudsQuestion* q = rgbdVisualSystem.getSelectedQuestion();
+            CloudsClip clip = q->clip;
+
+            cout<<"Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question<<endl;
+			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
+            
+            if(questionsAndTopics.size() > 0){
+                
+                rgbdVisualSystem.stopSystem();
+                rgbdVisualSystem.clearQuestions();
+                storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+                
+            }
+        }
+
 	}
 	
 	//TODO: add camera animations to RGBDVisSys
@@ -435,7 +462,7 @@ void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
 	cout << "ACT ENDED TRIGGERED" << endl;
-	
+
 	rgbdVisualSystem.stopSystem();
 	
 	//TODO: Trigger cluster map with new updates

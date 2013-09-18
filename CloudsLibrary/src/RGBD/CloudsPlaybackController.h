@@ -187,11 +187,12 @@ class CloudsPlaybackController {
 	float currentVolume;
 	float targetScratchVolume;
 	void setUseScratch(bool useScratch);
-
+	CloudsVisualSystem* currentVisualSystem;;
+    void setRandomQuestion(CloudsClip& clip);
   protected:
 
 	
-	
+
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
@@ -217,7 +218,7 @@ class CloudsPlaybackController {
 	bool showingVisualSystem;
 	bool showingClusterMap;
 	//if there is a system playing this wil be non-null
-	CloudsVisualSystem* currentVisualSystem;
+//	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystem* nextSystem;
 		
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic

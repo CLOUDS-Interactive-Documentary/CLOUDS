@@ -12,14 +12,14 @@
 
 ofShader CloudsQuestion::shader = ofShader();
 
-ofVec3f randomPointOnSphere(){
-	
-	float theta = ofRandom(TWO_PI);
-	float u = ofRandomf();
-	float usqrtinv = sqrt(1. - powf(u,2.));
-	return ofVec3f(cos(theta) * usqrtinv,
-				   sin(theta) * usqrtinv, u);
-};
+//ofVec3f randomPointOnSphere(){
+//	
+//	float theta = ofRandom(TWO_PI);
+//	float u = ofRandomf();
+//	float usqrtinv = sqrt(1. - powf(u,2.));
+//	return ofVec3f(cos(theta) * usqrtinv,
+//				   sin(theta) * usqrtinv, u);
+//};
 
 CloudsQuestion::CloudsQuestion(){
 	
@@ -274,7 +274,13 @@ void CloudsQuestion::drawOverlay(){
 }
 
 void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
-		
+    if(!introQuestion){
+		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
+		if(hovering && insideHover) {
+            cout<<"Ive clicked on the button"<<endl;    
+		}
+
+	}
 }
 
 void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
@@ -286,9 +292,11 @@ void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
 		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
 		if(!hovering && insideHover) {
 			startHovering();
+            cout<<"im hovering isinde the question"<<endl;
 		}
 		else if(hovering && !insideHover){
 			stopHovering();
+            cout<<"stop hovering"<<endl;
 		}
 	}
 }

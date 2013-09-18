@@ -288,6 +288,7 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 	for(int i = 0; i < questions.size(); i++){
 		if(questionClip.getID() == questions[i]->clip.getID()){
 			//don't add duplicate questions
+            ofLogError()<<"Duplicate question, ignoring"<<endl;
 			return;
 		}
 	}
@@ -318,7 +319,30 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			delete questions[i];
 			questions.erase(questions.begin()+i);
 		}
+        else if(questions[i]->isSelected()){
+            selectedQuestion = questions[i];
+        }
 	}
+}
+
+void CloudsVisualSystemRGBD::setSelectedQuestion(){
+
+    if(questions.size() > 0)    {
+        
+        selectedQuestion = questions[0];
+    }
+    else{
+        cout<<"No questions!"<<endl;
+    }
+    
+}
+
+void CloudsVisualSystemRGBD::clearQuestions(){
+    for (int i = 0; i<questions.size(); i++) {
+        delete questions[i];
+    }
+    questions.clear();
+    selectedQuestion = NULL;
 }
 
 void CloudsVisualSystemRGBD::updateTransition(){
@@ -428,7 +452,9 @@ void CloudsVisualSystemRGBD::generatePointGrid(){
 			pointGrid.addVertex(ofVec3f(x,y,0));
 		}
 	}
-	
+//        ofRange(clip1.start,clip1.end).intersects(ofRange(clip2.start,clip2.end))
+
+    //of
 	pointGrid.clearIndices();
 	int x = 0;
 	int y = 0;
@@ -826,6 +852,14 @@ void CloudsVisualSystemRGBD::selfBegin(){
 
 void CloudsVisualSystemRGBD::selfEnd(){
 	
+}
+
+bool CloudsVisualSystemRGBD::isQuestionSelectedAndClipDone(){
+    return  selectedQuestion != NULL && getRGBDVideoPlayer().isDone();
+}
+
+CloudsQuestion* CloudsVisualSystemRGBD::getSelectedQuestion(){
+    return selectedQuestion;
 }
 
 void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){

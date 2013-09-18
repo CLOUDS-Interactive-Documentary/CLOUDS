@@ -34,6 +34,7 @@ void testApp::setup(){
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(true,false);
+//    
 //	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 //	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
 ////	if(questionsAndTopics.size() > 0){
@@ -61,7 +62,7 @@ void testApp::setup(){
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
-	
+
 	//temp sound stuff
 	sound.setMasterAmp(0.0);
 	useScratch = true;
@@ -92,6 +93,13 @@ void testApp::keyPressed(int key){
 			sound.setMasterAmp(1.0);
 		}
 	}
+    
+    if( key == 'T'){
+        CloudsClip& clip = parser.getRandomClip(true,true);
+        player.setRandomQuestion(clip);
+        
+    }
+    
 }
 
 //--------------------------------------------------------------
