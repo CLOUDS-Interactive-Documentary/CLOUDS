@@ -30,7 +30,7 @@ git clone git@github.com:obviousjim/ofxOcean
 git clone https://github.com/satoruhiga/ofxCocoaGLView
 git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
-git clone https://github.com/memo/ofxMSACore
+git clone https://github.com/obviousjim/ofxMSACore #temp obviousjim for windows
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
@@ -42,7 +42,7 @@ git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
 
-${PREFIX}rezaali/ofxGenerative
+${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
 
 ${PREFIX}Flightphase/ofxGameCamera
