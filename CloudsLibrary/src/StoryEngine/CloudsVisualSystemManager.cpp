@@ -393,7 +393,7 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
         ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
     }    
 }
-
+#ifdef NO_VS
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::exportStandalonePresets(){
 	string standaloneExportFolder = getDataPath() + "standalonePresets/";
@@ -403,7 +403,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	set<CloudsVisualSystem*> systemsWithPresets;
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
-			
+
 			string presetSourceDirectory = presets[i].system->getVisualSystemDataPath() + "Presets/" + presets[i].presetName;
 			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
 
@@ -415,7 +415,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 			systemsWithPresets.insert(presets[i].system);
 		}
 	}
-	
+
 	cout << "COPYING SUPPORTING FILES" << endl;
 	set<CloudsVisualSystem*>::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
@@ -431,7 +431,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	}
 
 }
-
+#endif
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
     int deadIndex;

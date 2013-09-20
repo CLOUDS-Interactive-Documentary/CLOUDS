@@ -45,3 +45,8 @@
     <Name>GOLD CLIP FACTOR</Name>
     <Value>99.113296509</Value>
 </Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EASY CLIP FACTOR</Name>
+    <Value>76.945816040</Value>
+</Widget>
