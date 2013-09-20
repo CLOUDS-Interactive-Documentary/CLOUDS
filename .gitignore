@@ -30,6 +30,7 @@ graphviz/
 *.dll
 *.bak
 *.pdb
+*.ipch
 
 /testRTcmix/bin/data/shlib/*
 Working/
