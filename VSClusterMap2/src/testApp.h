@@ -2,6 +2,10 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemClusterMap.h"
+#include "CloudsRun.h"
+#include "CloudsStoryEngine.h"
+#include "CloudsAct.h"
+#include "CloudsFCPParser.h"
 
 class testApp : public ofBaseApp {
   public:
@@ -19,6 +23,9 @@ class testApp : public ofBaseApp {
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	CloudsVisualSystemClusterMap visualSystem;
-	
+	CloudsVisualSystemClusterMap clusterMap;
+	CloudsRun run;
+	CloudsFCPParser parser;
+	CloudsStoryEngine storyEngine;
+	CloudsVisualSystemManager visualSystems;
 };

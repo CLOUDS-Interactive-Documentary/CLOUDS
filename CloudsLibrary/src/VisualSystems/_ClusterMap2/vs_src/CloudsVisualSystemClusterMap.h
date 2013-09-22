@@ -3,14 +3,20 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
-#include "Node.h"
+#include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
 
+class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
-	//TODO: Change this to the name of your visual system
+	void buildEntireCluster(CloudsFCPParser& parser);
+	
+	void setRun(CloudsRun& run);
+	void setQuestions(vector<CloudsClip>& questions);
+	CloudsQuestion* getSelectedQuestion();
+
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -88,15 +94,7 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 		return easeCamera;
 	}
 
-	//
-//	ofCamera& getCameraRef(){
-//		return CloudsVisualSystem::getCameraRef();
-//	}
-	
-	void setQuestions(vector<CloudsClip>& questions);
-	CloudsQuestion* getSelectedQuestion();
-	
-	void buildEntireCluster();
+	void reloadShaders();
 	
   protected:
     
@@ -107,7 +105,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofxUISuperCanvas* displayGui;
 	
 	ofxGameCamera cam;
-
+	CloudsRun* run;
+	
 	ofxTLColorTrack* lineColor;
 	ofxTLColorTrack* nodeColor;
 
@@ -115,7 +114,14 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofTrueTypeFont font;
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
+	ofShader clusterShader;
 	
-
-	vector<ofVec3f> testPoints;
+	bool useShader;
+	ofImage sprite;
+	ofVboMesh traversal;
+	ofVboMesh clusterMesh;
+	vector<CloudsClusterNode> nodes;
+	
+	float meshExpansion;
+	float pointSize;
 };

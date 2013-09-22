@@ -12,6 +12,24 @@
 
 #include "CloudsFCPParser.h"
 
+//called once from start up of the app
+void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
+	
+	nodes.clear();
+	clusterMesh.clear();
+	
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		CloudsClusterNode n;
+		CloudsClip& clip = parser.getAllClips()[i];
+		n.clipId = clip.getID();
+		n.mesh = &clusterMesh;
+		n.vertexIndex = clusterMesh.getNumVertices();
+		
+		clusterMesh.addVertex(clip.networkPosition);
+		nodes.push_back(n);
+	}
+}
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
 
@@ -21,6 +39,10 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	generatorGui->setName("Generator");
 	generatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+	generatorGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
+	generatorGui->addSlider("point size", 1, 50, &pointSize);
+	generatorGui->addToggle("use shader", &useShader);
+
 //	generatorGui->addSlider("seed", 0, 100, &seed);
 //	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
 //	generatorGui->addSlider("spawn radius",  5, 1000, &heroRadius);
@@ -31,7 +53,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 //	generatorGui->addSlider("min branch dist",  10, 1000, &minDistance);
 //	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
 //	generatorGui->addSlider("step size",  1, 300, &stepSize);
-//	generatorGui->addSlider("replicate point size", 1, 50, &replicatePointSize);
+
 //	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
 //	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
 //	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
@@ -100,6 +122,10 @@ void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
 	}
 }
 
+void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
+	run = &newRun;
+}
+
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
 	selectedQuestion = NULL;
 	questions.clear();
@@ -115,7 +141,6 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 		
 		questions.push_back(q);
 	}
-
 }
 
 CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
@@ -154,8 +179,20 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
+	run = NULL;
 	
-	buildEntireCluster();
+	reloadShaders();
+
+}
+
+void CloudsVisualSystemClusterMap::reloadShaders(){
+	
+	ofDisableArbTex();
+	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+//	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
+	ofEnableArbTex();
+
+	clusterShader.load(getVisualSystemDataPath() + "shaders/cluster");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -163,8 +200,20 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
 	timeline->setLoopType(OF_LOOP_NONE);
+	
+	if(run != NULL){
+		traversal.clear();
+		for(int i = 0; i < run->clipHistory.size(); i++){
+			//active history nodes;
+			traversal.addVertex( run->clipHistory[i].networkPosition * 500 );
+		}
+	}
+	
+	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
+	
 //	generate();
 //	traverse();
+	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -184,6 +233,8 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
+	easeCamera.setTarget( clusterMesh.getCentroid() );
+
 	/*
 	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
 	int vertsToHighlight = ofClamp(vertEndIndex,0,traversal.getVertices().size()-1);
@@ -233,19 +284,28 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 }
 
 
-void CloudsVisualSystemClusterMap::buildEntireCluster(){
-	CloudsFCPParser parser;
-	parser.loadFromFiles();
-	
-	for(int i = 0; i < parser.getAllClips().size(); i++){
-		testPoints.push_back(parser.getAllClips()[i].networkPosition * 500);
-	}
-
-}
-
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
+
+	if(useShader){
+		clusterShader.begin();
+		clusterShader.setUniformTexture("tex", sprite, 0);
+		clusterShader.setUniform1f("expansion", meshExpansion);
+		clusterShader.setUniform1f("minSize", pointSize);
+		clusterShader.setUniform3f("attractor", 0, 0, 0);
+		clusterShader.setUniform1f("radius", 300.);
+		
+		ofEnablePointSprites();
+		ofDisableArbTex();
+	}
+	clusterMesh.drawVertices();
+	
+	if(useShader){
+		clusterShader.end();
+		ofDisablePointSprites();
+		ofEnableArbTex();
+	}
 	
 /*
 	ofPushStyle();
@@ -325,13 +385,10 @@ void CloudsVisualSystemClusterMap::selfDraw(){
  */
 	
 	
-	ofMesh m;
-	m.addVertices(testPoints);
-	m.drawVertices();
-	
-
-	easeCamera.setTarget( m.getCentroid() );
-	
+//	ofMesh m;
+//	m.addVertices(testPoints);
+//	m.drawVertices();
+//
 }
 
 // draw any debug stuff here
@@ -374,10 +431,10 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 //		traverse();
 //	}
 	
-//	if(key == 'S'){
-//		cout << "Loading shader!" << endl;
-//		loadShader();
-//	}
+	if(key == 'R'){
+		cout << "Loading shader!" << endl;
+		reloadShaders();
+	}
 }
 
 /*
