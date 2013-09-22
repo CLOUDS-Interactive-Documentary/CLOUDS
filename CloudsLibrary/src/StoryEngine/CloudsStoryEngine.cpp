@@ -266,6 +266,7 @@ void CloudsStoryEngine::saveGuiSettings(){
     clipGui->saveSettings(getDataPath() +"storyEngineParameters/clipGui.xml");
     vsGui->saveSettings(getDataPath() +"storyEngineParameters/vsGui.xml");
 	topicGui->saveSettings(getDataPath() +"storyEngineParameters/topicGui.xml");
+    runGui->saveSettings(getDataPath() +"storyEngineParameters/runGui.xml");
 }
 
 void CloudsStoryEngine::toggleGuis(){
@@ -274,6 +275,7 @@ void CloudsStoryEngine::toggleGuis(){
 	topicGui->toggleVisible();
 	gui->toggleVisible();
 	vsGui->toggleVisible();
+    runGui->toggleVisible();
 }
 
 #pragma mark INIT ACT
