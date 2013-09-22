@@ -44,8 +44,10 @@ void CloudsAct::populateTime(){
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     clipsTrack = timeline.addFlags("Clips");
+    difficultyTrack = timeline.addFlags("Clip Difficulty");
     clipPreRollTrack = timeline.addFlags("Clip PreRoll Flags");
     questionsTrack = timeline.addFlags("Questions");
+
     
     timeline.setInPointAtSeconds(0);
     string previousTopic = "";
@@ -59,8 +61,8 @@ void CloudsAct::populateTime(){
             
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
             clipsTrack->addFlagAtTime(" ", item.endTime * 1000);
-            
-            
+
+            difficultyTrack->addFlagAtTime(clipDifficultyMap[item.key], item.startTime * 1000);
             if(currentTopic != previousTopic){
                 topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
 				if(previousTopic != ""){
@@ -226,7 +228,17 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
+    string clipDifficulty ;
     
+    if (clip.hasSpecialKeyword("easy")) {
+        clipDifficulty = "easy";
+    }
+    else if(clip.hasSpecialKeyword("hard")){
+        clipDifficulty = "hard";
+    }
+    else{
+        clipDifficulty = "medium";
+    }
 //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
@@ -240,6 +252,8 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
+    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
+
     
 }
 
@@ -247,7 +261,17 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
+    string clipDifficulty ;
     
+    if (clip.hasSpecialKeyword("easy")) {
+        clipDifficulty = "easy";
+    }
+    else if(clip.hasSpecialKeyword("hard")){
+        clipDifficulty = "hard";
+    }
+    else{
+        clipDifficulty = "medium";
+    }
 //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
@@ -261,6 +285,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     clipItems[clip.getLinkName()] = item;
+    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;    
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){

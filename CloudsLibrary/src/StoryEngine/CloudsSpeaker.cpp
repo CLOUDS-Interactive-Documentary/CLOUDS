@@ -57,5 +57,12 @@ void CloudsSpeaker::populateSpeakers(){
 	speakers["Theo"]		= CloudsSpeaker("Theo", "Theo", "Watson", "male");
 	speakers["Vera"]		= CloudsSpeaker("Vera", "Vera", "Glahn", "female");
 	speakers["Zach"]		= CloudsSpeaker("Zach", "Zach", "Lieberman", "male");
+
+	//all people
+//	map<string,CloudsSpeaker>::iterator it;
+//	for(it = speakers.begin(); it != speakers.end(); it++){
+//		cout << it->second.firstName + " "  + it->second.lastName << endl;
+//	}
 }
+
 

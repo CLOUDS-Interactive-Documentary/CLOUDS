@@ -35,7 +35,8 @@ class CloudsFCPParser {
 #pragma mark Links
     void parseLinks(string linkFile);
     void parseClusterMap(string mapFile);
-	
+	void parseClusterNetwork(string fileName);
+		
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
@@ -139,21 +140,12 @@ class CloudsFCPParser {
 	
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
-    void populateKeywordCentroids();
    
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
 
     set<string> markerLinkNames;
 	set<string> speakerFcpIds;
-	
-    vector<pair<string,ofVec2f> > keywordCentroids;
-    map<string, int> keywordCentroidIndex;
-    map<string, float> keywordCohesionMap;
-
-    void calculateCohesionMedianForKeywords();
-    ofVec2f getKeywordCentroid(string keyword);
-    int getCentroidMapIndex(string keyword);
     
     vector<CloudsClip> allClips;
     map<string, int> clipIDToIndex;
@@ -174,11 +166,15 @@ class CloudsFCPParser {
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
     
-    //not used at the moment
-	set<string> keyThemes;
-	map<string,string> tagToKeyTheme;
-	
-    
+	//KEYWORDS + CLUSTER NETWORK
+    vector<pair<string, ofVec3f> > keywordCentroids;
+    map<string, int> keywordCentroidIndex;
+    map<string, float> keywordCohesionMap;
+    void populateKeywordCentroids();
+    void calculateCohesionMedianForKeywords();
+    ofVec2f getKeywordCentroid(string keyword);
+    int getCentroidMapIndex(string keyword);
+		
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;

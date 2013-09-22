@@ -34,13 +34,14 @@ class CloudsStoryEngine {
     void saveGuiSettings();
     void toggleGuis();
 	void positionGuis();
+    void updateRunData();
 	
-	//after this many clips the topic opens up again
+    //after this many clips the topic opens up again
 	float maxTimesOnTopic;
 	bool printDecisions;
 	bool printCriticalDecisions;
 	bool atDeadEnd();
-	
+
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
@@ -50,6 +51,9 @@ class CloudsStoryEngine {
 	void clearDichotomiesBalance();
 
     vector<CloudsDichotomy> getCurrentDichotomyBalance();
+    
+    //this is a test
+    CloudsRun runTest;
 
  protected:
 	
@@ -58,17 +62,18 @@ class CloudsStoryEngine {
     ofxUISuperCanvas *clipGui;
     ofxUISuperCanvas *vsGui;
 	ofxUISuperCanvas *topicGui;
-	
+	ofxUISuperCanvas *runGui;
     void guiEvent(ofxUIEventArgs &e);
 
 	CloudsEvents events;
 	bool isSetup;
 
+    vector<string> runTopicCount;
 	vector<CloudsDichotomy> dichotomies;
     int dichotomyThreshold;
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreManThanWomen ); //queue based
-	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
+    float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreManThanWomen, int    timesOnCurrentTopic  ); //queue based
+    float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
 	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
 	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
@@ -99,6 +104,8 @@ class CloudsStoryEngine {
     float dichotomyWeight;
     float linkFactor;
 	float genderBalanceFactor;
+    float goldClipFactor;
+    float easyClipScoreFactor;
 	
 	//Topic selection parameters
 	float topicRelevancyMultiplier;

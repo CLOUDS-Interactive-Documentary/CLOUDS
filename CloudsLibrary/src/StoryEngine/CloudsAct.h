@@ -113,6 +113,7 @@ protected:
     ofxTLFlags* clipPreRollTrack;
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
+    ofxTLFlags* difficultyTrack;
 	
     ActItemType itemType;
 	
@@ -134,6 +135,7 @@ protected:
     
     map<string, CloudsClip>clipMap;
     map<string, ActTimeItem> clipItems;
+    map<string, string> clipDifficultyMap;
 
 	
     map<string, CloudsVisualSystemPreset> visualSystemsMap;

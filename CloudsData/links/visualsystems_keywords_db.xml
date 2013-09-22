@@ -162,6 +162,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Connectors_Testing">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Cosmic_Attractors">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -859,6 +866,13 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>0</enabled>
+</system>
+<system name="Metaballs_Gray_Clouds_Cam">
+    <keywords>simulation|videogames</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="Metaballs_GreenGoo">
@@ -880,7 +894,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Metaballs_Purple_Smooth_Clouds">
     <keywords></keywords>
@@ -1149,8 +1163,22 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Pages_Drift">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="PaintBrush_PlayFull">
     <keywords>play|drawing</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="QuineVisualSystem_no-preset">
+    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1183,6 +1211,20 @@
 </system>
 <system name="RGBDVideo_ITP_4">
     <keywords>learning|education|coding</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="RGBDVideo_Street_1">
+    <keywords>cities</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="RGBDVideo_Subway_1">
+    <keywords>cities</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
