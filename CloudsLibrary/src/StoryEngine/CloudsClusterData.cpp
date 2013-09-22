@@ -6,9 +6,9 @@
 //
 //
 
-#include "ClusterData.h"
+#include "CloudsClusterData.h"
 
-ClusterData::ClusterData(){
+CloudsClusterData::CloudsClusterData(){
     
     Id ="";
     Color = ofColor(255);

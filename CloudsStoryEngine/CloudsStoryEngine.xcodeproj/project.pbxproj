@@ -35,7 +35,6 @@
 		E745F6EE1720FE9400B86D7E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E81720FE9400B86D7E /* tinyxmlparser.cpp */; };
 		E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */; };
 		E746194917DB716F002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746194817DB716F002FC464 /* CloudsSpeaker.cpp */; };
-		E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8231768DDCE00083C4C /* ClusterData.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7637D4C1734DE68008ADC62 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D411734DE68008ADC62 /* CloudsClip.cpp */; };
 		E7637D4D1734DE68008ADC62 /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
@@ -196,8 +195,6 @@
 		E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E745F6EB1720FE9400B86D7E /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E746194817DB716F002FC464 /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSpeaker.cpp; sourceTree = "<group>"; };
-		E74CE8231768DDCE00083C4C /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
-		E74CE8241768DDCE00083C4C /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7637D411734DE68008ADC62 /* CloudsClip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClip.cpp; sourceTree = "<group>"; };
 		E7637D421734DE68008ADC62 /* CloudsClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClip.h; sourceTree = "<group>"; };
@@ -758,8 +755,6 @@
 				186B68AE17EA34110020C952 /* CloudsVisualSystemManager.cpp */,
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
 				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
-				E74CE8241768DDCE00083C4C /* ClusterData.h */,
-				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E7637D421734DE68008ADC62 /* CloudsClip.h */,
 				E7637D411734DE68008ADC62 /* CloudsClip.cpp */,
 				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
@@ -1713,7 +1708,6 @@
 				E7D330781751D446006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D330791751D446006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */,
-				E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */,
 				E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */,
 				18731D30178628D200E22F84 /* CloudsAct.cpp in Sources */,
 				E72D3A3A179458B70079254B /* ofxCameraSaveLoad.cpp in Sources */,

@@ -23,6 +23,7 @@ CloudsClip::CloudsClip(){
 	minDepth = 400;
 	maxDepth = 1200;
     keywordsDirty = true;
+	networkPosition = ofVec3f(-1,-1,-1);
 }
 
 string CloudsClip::getLinkName(){

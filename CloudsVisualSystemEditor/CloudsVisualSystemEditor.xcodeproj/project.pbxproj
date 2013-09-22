@@ -86,8 +86,6 @@
 		E73769BF1778DC4500892646 /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769481778DC4500892646 /* CloudsStoryEngine.cpp */; };
 		E73769C01778DC4500892646 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737694A1778DC4500892646 /* CloudsVisualSystemManager.cpp */; };
 		E73769C11778DC4500892646 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737694C1778DC4500892646 /* CloudsVisualSystemPreset.cpp */; };
-		E73769C21778DC4500892646 /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E737694E1778DC4500892646 /* ClusterData.cpp */; };
-		E73769C31778DC4500892646 /* ParticleEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E73769501778DC4500892646 /* ParticleEdge.cpp */; };
 		E73773171778DD2900892646 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7376C431778DCFA00892646 /* Calibration.cpp */; };
 		E73773181778DD2900892646 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7376C441778DCFA00892646 /* ContourFinder.cpp */; };
 		E73773191778DD2900892646 /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7376C451778DCFA00892646 /* Distance.cpp */; };
@@ -402,10 +400,6 @@
 		E737694B1778DC4500892646 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		E737694C1778DC4500892646 /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
 		E737694D1778DC4500892646 /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
-		E737694E1778DC4500892646 /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
-		E737694F1778DC4500892646 /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
-		E73769501778DC4500892646 /* ParticleEdge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEdge.cpp; sourceTree = "<group>"; };
-		E73769511778DC4500892646 /* ParticleEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEdge.h; sourceTree = "<group>"; };
 		E7376C391778DCFA00892646 /* Calibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibration.h; sourceTree = "<group>"; };
 		E7376C3A1778DCFA00892646 /* ContourFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContourFinder.h; sourceTree = "<group>"; };
 		E7376C3B1778DCFA00892646 /* Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distance.h; sourceTree = "<group>"; };
@@ -1380,10 +1374,6 @@
 				E73769481778DC4500892646 /* CloudsStoryEngine.cpp */,
 				E7176E2717D3C02A00C8DC38 /* CloudsRun.h */,
 				E7176E2617D3C02A00C8DC38 /* CloudsRun.cpp */,
-				E737694F1778DC4500892646 /* ClusterData.h */,
-				E737694E1778DC4500892646 /* ClusterData.cpp */,
-				E73769511778DC4500892646 /* ParticleEdge.h */,
-				E73769501778DC4500892646 /* ParticleEdge.cpp */,
 				E74620A817DB7EF8002FC464 /* CloudsSpeaker.h */,
 				E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */,
 			);
@@ -3052,8 +3042,6 @@
 				E73769BF1778DC4500892646 /* CloudsStoryEngine.cpp in Sources */,
 				E73769C01778DC4500892646 /* CloudsVisualSystemManager.cpp in Sources */,
 				E73769C11778DC4500892646 /* CloudsVisualSystemPreset.cpp in Sources */,
-				E73769C21778DC4500892646 /* ClusterData.cpp in Sources */,
-				E73769C31778DC4500892646 /* ParticleEdge.cpp in Sources */,
 				E73773171778DD2900892646 /* Calibration.cpp in Sources */,
 				E73773181778DD2900892646 /* ContourFinder.cpp in Sources */,
 				E73773191778DD2900892646 /* Distance.cpp in Sources */,

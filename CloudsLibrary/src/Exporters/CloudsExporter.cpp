@@ -1,10 +1,6 @@
-#include "CloudsD3Exporter.h"
+#include "CloudsExporter.h"
 
-CloudsD3Exporter::CloudsD3Exporter(){
-	
-}
-
-void CloudsD3Exporter::saveChordMatrix(CloudsFCPParser& database){
+void CloudsExporter::saveChordMatrix(CloudsFCPParser& database){
 
 	database.sortKeywordsByOccurrence(true);
 	vector<string>& allKeywords = database.getAllKeywords();
@@ -43,7 +39,7 @@ void CloudsD3Exporter::saveChordMatrix(CloudsFCPParser& database){
 	ofBufferToFile("D3keywords.csv", csvBuffer);
 }
 
-void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
+void CloudsExporter::saveGephiCSV(CloudsFCPParser& parser){
 	ofBuffer csvBuffer;
 	csvBuffer.append("source,target\n");
 	for(int i = 0; i < parser.getAllClips().size(); i++){
@@ -70,7 +66,49 @@ void CloudsD3Exporter::saveGephiCSV(CloudsFCPParser& parser){
 		}
 		
 	}
+	
 	ofBufferToFile("gephi_edges.csv", csvBuffer);
 	
+}
+
+void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
+	ofBuffer pajekBuffer;
+	pajekBuffer.append("*Vertices " + ofToString(parser.getAllClips().size()) + "\n");
+	map<string,string> nodeIndex;
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		nodeIndex[parser.getAllClips()[i].getLinkName()] = ofToString(i);
+		pajekBuffer.append( ofToString(i) + " \"" + parser.getAllClips()[i].getLinkName() + "\"\n" );
+	}
+	
+	pajekBuffer.append("\n*Edgeslist\n");
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		
+		CloudsClip& clipA = parser.getAllClips()[i];
+		string nameA = clipA.getLinkName();
+		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.getKeywords());
+		vector<string> connectingNodes;
+		
+		for(int j = 0; j < connections.size(); j++){
+			
+			CloudsClip& clipB = connections[j];
+			string nameB = connections[j].getLinkName();
+			
+			if(nameA != nameB &&
+			   clipA.person != clipB.person &&
+			   !parser.linkIsSuppressed(nameA, nameB) &&
+			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1 )
+			{
+//				pajekBuffer.append(nameA + "," + nameB + "\n");
+				connectingNodes.push_back( nodeIndex[nameB] );
+			}
+		}
+		
+		if(connectingNodes.size() > 0){
+			pajekBuffer.append(nodeIndex[nameA] + " " + ofJoinString(connectingNodes, " ") + "\n" );
+		}
+		
+	}
+	
+	ofBufferToFile("CloudsCluster.net", pajekBuffer);
 }
 

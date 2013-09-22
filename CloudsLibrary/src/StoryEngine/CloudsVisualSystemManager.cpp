@@ -393,7 +393,8 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
         ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
     }    
 }
-#ifdef NO_VS
+
+#ifndef CLOUDS_NO_VS
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::exportStandalonePresets(){
 	string standaloneExportFolder = getDataPath() + "standalonePresets/";
@@ -432,6 +433,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 
 }
 #endif
+
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){
     int deadIndex;

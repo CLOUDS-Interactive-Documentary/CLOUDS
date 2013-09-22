@@ -105,7 +105,6 @@
 		E745F6EF1720FE9400B86D7E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */; };
 		E746194D17DB783B002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746194B17DB783B002FC464 /* CloudsSpeaker.cpp */; };
 		E74620C417DB8074002FC464 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620C017DB8074002FC464 /* ofxBillboard.cpp */; };
-		E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8231768DDCE00083C4C /* ClusterData.cpp */; };
 		E74CE86E1768ED6200083C4C /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */; };
 		E74CE8801768ED7C00083C4C /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */; };
 		E75DBC2217CDC7F100CD99D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBAD317CDC7F000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp */; };
@@ -475,8 +474,6 @@
 		E746194C17DB783B002FC464 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E74620C017DB8074002FC464 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
 		E74620C117DB8074002FC464 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
-		E74CE8231768DDCE00083C4C /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
-		E74CE8241768DDCE00083C4C /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSAObjCPointer.cpp; sourceTree = "<group>"; };
 		E74CE8471768ED6100083C4C /* MSAObjCPointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAObjCPointer.h; sourceTree = "<group>"; };
 		E74CE85E1768ED6200083C4C /* MSAPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics.h; sourceTree = "<group>"; };
@@ -2215,8 +2212,6 @@
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
 				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
 				E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */,
-				E74CE8241768DDCE00083C4C /* ClusterData.h */,
-				E74CE8231768DDCE00083C4C /* ClusterData.cpp */,
 				E7637D421734DE68008ADC62 /* CloudsClip.h */,
 				E7637D411734DE68008ADC62 /* CloudsClip.cpp */,
 				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
@@ -3429,7 +3424,6 @@
 				E7D330791751D446006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				E7D3307A1751D446006706ED /* ofxVerletSolver.cpp in Sources */,
 				E7D330B91751D4C1006706ED /* ofxCameraSaveLoad.cpp in Sources */,
-				E74CE8251768DDCE00083C4C /* ClusterData.cpp in Sources */,
 				E74CE86E1768ED6200083C4C /* MSAObjCPointer.cpp in Sources */,
 				E74CE8801768ED7C00083C4C /* MSACoreGL.cpp in Sources */,
 				E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */,

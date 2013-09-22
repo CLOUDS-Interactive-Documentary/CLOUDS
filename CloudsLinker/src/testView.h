@@ -5,7 +5,7 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-#include "CloudsD3Exporter.h"
+#include "CloudsExporter.h"
 #include "ClipSelector.h"
 
 //@class ViewerApp;
@@ -16,7 +16,6 @@
     
     CloudsFCPParser parser;
 	ofVideoPlayer preview;
-	CloudsD3Exporter exporter;
     
     vector<string> selectedKeywordsSource;
     vector<string> selectedKeywordsTarget;
