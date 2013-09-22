@@ -66,18 +66,22 @@ class testApp : public ofBaseApp{
     float sx, sy, delta;
     float allownote;
     int mcolor, mharmony, mrhythm;
+    string mbank;
     
     float MASTERAMP;
     float MASTERTEMPO;
     int AUTORUN;
     bool DOCLEAR;
+    bool RTCMIX_PRINT;
     float cleartime;
-    float tl1, tl2, tl3;
+    float tl1, tl2, tl3, bl1;
     
     vector<lukeRhythm> rhythms;
     vector<lukeColor> colors;
     vector<lukePitchArray> pitches;
     vector<lukePreset> presets;
+    
+    vector<lukeSample> looperSamples;
 
     // ui crap
     ofTrueTypeFont theFont;

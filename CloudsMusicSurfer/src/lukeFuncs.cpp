@@ -40,7 +40,7 @@ void REVERB(double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -18., -18., 2.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -15., -15., 3.0)", time);
     parse_score(thebuf, bx);
 }
 
@@ -108,12 +108,33 @@ void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, strin
     int bx;
     bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f, %f, 0, 0)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, 0)", outskip, looplen, amp, transp);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f, %f, 1, 1)", outskip, looplen, amp, transp);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 1, 1)", outskip, looplen, amp, transp);
     parse_score(thebuf, bx);
     
 }
+
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan)
+{
+    float incr = loopdur/looplen;
+    float freq = mtof(60);
+    freq = freq*incr;
+    double newp = ftom(freq, 440.);
+    double tp = newp-60.;
+    int oct = tp/12;
+    double pc = (fmod(tp,12.))*0.01;
+    double transp = oct+pc;
+    
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, %f)", outskip, looplen, amp, transp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
 
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown)
 {
@@ -293,6 +314,7 @@ void loadpresets(string f, vector<lukePreset>& p)
         foo.harmony = ofToInt(temp[1])-1;
         foo.rhythm = ofToInt(temp[2])-1;
         foo.tempo = ofToFloat(temp[3]);
+        foo.bank = temp[4];
         p.push_back(foo);
     }
 }
@@ -321,12 +343,49 @@ double mtof(double f)
 	return (440. * exp(.057762265 * (f - 69.)));
 }
 
+// midi-to-string
+string ptos(int p)
+{
+    string s = "";
+    int pc = p%12;
+    if(pc==0) s = "C";
+    else if(pc==1) s = "C#";
+    else if(pc==2) s = "D";
+    else if(pc==3) s = "D#";
+    else if(pc==4) s = "E";
+    else if(pc==5) s = "F";
+    else if(pc==6) s = "F#";
+    else if(pc==7) s = "G";
+    else if(pc==8) s = "G#";
+    else if(pc==9) s = "A";
+    else if(pc==10) s = "A#";
+    else if(pc==11) s = "B";
+    
+    return(s);
+}
+
 // quantize to a specific scale register
 int scale(int p, int o)
 {
     // minor scale
-    int s[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
+    int basescale[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
+    int s[12];
+    if(o==-1)
+    {
+        for(int i = 0;i<12;i++)
+        {
+            s[i] = i;
+        }
+    }
+    else
+    {
+        for(int i = 0;i<12;i++)
+        {
+            s[i] = (basescale[(i-o+12)%12]+o)%12;
+        }
+    }
+    
     int oct = p/12;
     int pc = p%12;
-    if(o==-1) return(p); else return(oct*12 + s[(pc+o)%12]-s[o]);
+    return(oct*12 + s[pc]);
 }

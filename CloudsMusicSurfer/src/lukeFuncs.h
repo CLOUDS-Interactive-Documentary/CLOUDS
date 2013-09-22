@@ -51,6 +51,15 @@ struct lukePreset {
     int harmony;
     int rhythm;
     float tempo;
+    string bank;
+};
+
+struct lukeSample {
+    string filename;
+    string handle;
+    string bank;
+    float length;
+    float numbeats;
 };
 
 
@@ -58,6 +67,7 @@ struct lukePreset {
 double mtof(double f, double tuning);
 double mtof(double f);
 double ftom(double f, double tuning);
+string ptos(int p);
 int scale(int p, int o);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
@@ -78,6 +88,7 @@ void REVERB(double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
 void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 
