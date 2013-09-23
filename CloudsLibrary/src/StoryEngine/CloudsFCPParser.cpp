@@ -14,6 +14,11 @@ bool distanceSort(pair<string,float> a, pair<string,float> b ){
     return a.second < b.second;
 }
 
+bool distanceSortLargeToSmall(pair<string,float> a, pair<string,float> b ){
+    return a.second > b.second;
+}
+
+
 CloudsFCPParser::CloudsFCPParser(){
 	printErrors = false;
     sortedByOccurrence = false;
@@ -327,6 +332,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	populateKeywordCentroids();
 	calculateCohesionMedianForKeywords();
 	calculateKeywordAdjascency();
+	calculateKeywordFamilies();
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){
@@ -390,6 +396,40 @@ vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int
     }
     
     return adjacentKeywords;
+}
+
+
+void CloudsFCPParser::calculateKeywordFamilies(){
+	keywordFamilies.clear();
+	vector<string>& keywords = getContentKeywords();
+	ofBuffer keywordFamilyBuffer;
+	
+	for(int i = 0; i < keywords.size(); i++){
+		
+		string keywordA = keywords[i];
+		int clipsWithKeywordA = getNumberOfClipsWithKeyword(keywordA);
+		set<string> related = getRelatedKeywords(keywordA);
+		set<string>::iterator it;
+		vector< pair<string,float> > overlapScore;
+		
+		for(it = related.begin(); it != related.end(); it++){
+			string keywordB = *it;
+			int clipsWithKeywordB = getNumberOfClipsWithKeyword(keywordB);
+			int clipsInCommon = getNumberOfSharedClips(keywordA, keywordB);
+			float percent = 1.0 * clipsInCommon / (clipsWithKeywordA + clipsWithKeywordB - clipsInCommon);
+			overlapScore.push_back(make_pair(keywordB, percent));
+		}
+		
+		sort(overlapScore.begin(), overlapScore.end(), distanceSortLargeToSmall);
+//		cout << "keyword " << keywordA << endl;
+		
+		keywordFamilyBuffer.append("keyword " + keywordA + "\n");
+		for(int i = 0; i < MIN(overlapScore.size(), 10); i++){
+			//cout << "	" << overlapScore[i].first << " " << overlapScore[i].second << endl;
+			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
+		}
+	}
+	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
 }
 
 float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string keyword2){
@@ -1145,7 +1185,9 @@ set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	for(int i = 0; i < relatedClips.size(); i++){
 		vector<string>& keys = relatedClips[i].getKeywords();
 		for(int k = 0; k < keys.size(); k++){
-			relatedKeywords.insert(keys[k]);
+			if(keys[k] != filterWord){
+				relatedKeywords.insert(keys[k]);
+			}
 		}
 	}
 	return relatedKeywords;
