@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-#include "ClusterData.h"
+//#include "ClusterData.h"
 
 class CloudsClip {
   public:
@@ -21,12 +21,14 @@ class CloudsClip {
     string sourceVideoFilePath;
 	ofColor color;
 	
-    //clip marker color
     string startingQuestion;
 	
+	ofVec3f networkPosition;
+	
+	//JG took out in replacement for
     //svg data
-    ClusterData cluster;
-	map<string, ofColor> clusterColors;
+//    ClusterData cluster;
+//	map<string, ofColor> clusterColors;
     
     float currentScore;
     int startFrame;

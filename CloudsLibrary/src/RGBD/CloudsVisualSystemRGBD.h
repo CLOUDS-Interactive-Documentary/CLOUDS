@@ -29,6 +29,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
 	
 	void addQuestion(CloudsClip& q);
+    void setSelectedQuestion();
+
+    void clearQuestions();
+    bool isQuestionSelectedAndClipDone();
+    CloudsQuestion* getSelectedQuestion();
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -101,7 +106,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void drawQuestions();
 	
 	vector<CloudsQuestion*> questions;
-	
+    CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
 
 	ofVec2f scanlineSimplify;

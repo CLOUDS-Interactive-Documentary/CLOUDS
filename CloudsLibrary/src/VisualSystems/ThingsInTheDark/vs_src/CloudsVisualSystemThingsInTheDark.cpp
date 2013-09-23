@@ -1,6 +1,5 @@
 
 #include "CloudsVisualSystemThingsInTheDark.h"
-#include "CloudsRGBDCombinedRenderer.h"
 #include "CloudsGlobal.h"
 
 CloudsVisualSystemThingsInTheDark::CloudsVisualSystemThingsInTheDark(){
@@ -12,7 +11,7 @@ string CloudsVisualSystemThingsInTheDark::getSystemName(){
 }
 
 void CloudsVisualSystemThingsInTheDark::selfSetup(){
-	renderer.setShaderPath(getDataPath() + "shaders/rgbdcombined");
+	//renderer.setShaderPath(getDataPath() + "shaders/rgbdcombined");
 	generateScanlines();
 }
 
@@ -108,7 +107,8 @@ void CloudsVisualSystemThingsInTheDark::selfUpdate(){
 	if(renderer.getPlayer().isLoaded()){
 		renderer.farClip = farPlane;
 		renderer.nearClip = nearPlane;
-		renderer.update();
+		//COMMENTED
+//		renderer.update();
 	}
 	if(refreshScanlineMesh){
 		generateScanlines();
@@ -139,11 +139,12 @@ void CloudsVisualSystemThingsInTheDark::selfDraw(){
 		ofTranslate(centerOffsetCourse + centerOffsetFine);
 		ofScale(scale,scale,scale);
 		
-		renderer.setSimplification(scanlineSimplify);
-		renderer.bindRenderer();
-		
-		renderer.getShader().setUniform1f("flowPosition", 0);
-		renderer.getShader().setUniform1f("baseMultiplier", 1.0);
+//JG COMMENTED
+//		renderer.setSimplification(scanlineSimplify);
+//		renderer.bindRenderer();
+//JG COMMENTED
+//		renderer.getShader().setUniform1f("flowPosition", 0);
+//		renderer.getShader().setUniform1f("baseMultiplier", 1.0);
 		
 		ofSetColor(255);
 		ofSetLineWidth(2);
@@ -152,8 +153,8 @@ void CloudsVisualSystemThingsInTheDark::selfDraw(){
 		ofSetLineWidth(2);
 		ofSetColor(255);
 		verticalScanLines.draw();
-		
-		renderer.unbindRenderer();
+//JG COMMENTED		
+//		renderer.unbindRenderer();
 		
 		ofPopMatrix();
 	}

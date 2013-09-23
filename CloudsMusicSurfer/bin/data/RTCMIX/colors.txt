@@ -19,3 +19,8 @@ phatbeatz helmholtz modalbeats
 slowwaves phatbeatz
 vermontbeatz slowwaves waveshipatterned
 testloop3 helmholtz lowwavepulse waveshipatterned
+kissmyarp slowwaves testloop1
+reichomatic testloop3
+glassomatic kissmyarpfast
+filternoise kissmyarp
+kissmyarpsynch waveshipatterned lowwavepulse

@@ -16,6 +16,7 @@ class CloudsRun
     vector<CloudsClip> clipHistory;
     vector<string> presetHistory;
 	vector<string> topicHistory;
+    map<string, int>timesOnCurrentTopicHistory;
 	
 	//TODO: acts can be persisted
 //	void save();

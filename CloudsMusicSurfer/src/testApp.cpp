@@ -38,9 +38,11 @@ void testApp::setup(){
     loadRTcmixFiles();
     
     MASTERAMP = 1.0;
-    MASTERTEMPO = 0.125;
+    MASTERTEMPO = 120;
+    mbank = "luke";
     AUTORUN = 0;
     DOCLEAR = true;
+    RTCMIX_PRINT = false;
     cleartime = ofGetElapsedTimef();
 
     // load samples
@@ -48,6 +50,13 @@ void testApp::setup(){
     
     // display
     pushInterface();
+    
+    // test scale
+    /*for(int k=60;k<75;k++)
+    {
+        int q = scale(k, 9);
+        cout << k << ": " << ptos(k) << " maps to " << q << ": " << ptos(q) << endl;
+    }*/
     
 }
 
@@ -160,7 +169,8 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
     
-    
+    if(RTCMIX_PRINT)
+    {
     char *pbuf = get_print();
     char *pbufptr = pbuf;
     while (strlen(pbufptr) > 0) {
@@ -169,6 +179,7 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
     }
     
     reset_print();
+    }
     
 
 }
@@ -188,6 +199,9 @@ void testApp::keyReleased(int key){
         loadRTcmixFiles();
         pushInterface();
     }
+    if (key == 'p') {
+        RTCMIX_PRINT = !RTCMIX_PRINT;
+    }
     if (key == OF_KEY_DOWN)
     {
         MASTERAMP-=0.1;
@@ -200,11 +214,11 @@ void testApp::keyReleased(int key){
     }
     if(key == OF_KEY_LEFT)
     {
-        MASTERTEMPO-=0.005;
+        MASTERTEMPO-=1;
     }
     else if(key == OF_KEY_RIGHT)
     {
-        MASTERTEMPO+=0.005;
+        MASTERTEMPO+=1;
     }
 }
 
@@ -302,9 +316,7 @@ void testApp::mouseReleased(int x, int y, int button){
             mrhythm = presets[i].rhythm;
             rhythmbutton[mrhythm].state = true;
             MASTERTEMPO = presets[i].tempo;
-            
-            
-            
+            mbank = presets[i].bank;
         }
     }
     
@@ -441,6 +453,32 @@ void testApp::loadRTcmixSamples()
     tl1 = LOADSOUND("RTCMIX/samps/testloop1.aif", "testloop1");
     tl2 = LOADSOUND("RTCMIX/samps/testloop2.aif", "testloop2");
     tl3 = LOADSOUND("RTCMIX/samps/testloop3.aif", "testloop3");
+    bl1 = LOADSOUND("RTCMIX/samps/loop1Cm120bpm.aif", "bassloop1");
+    
+    //some path, may be absolute or relative to bin/data
+    string path = ofToDataPath("RTCMIX/samps/loops/");
+    ofDirectory dir(path);
+    //only show png files
+    dir.allowExt("wav");
+    dir.allowExt("aif");
+    //populate the directory object
+    dir.listDir();
+
+    //go through and print out all the paths
+    for(int i = 0; i < dir.numFiles(); i++){
+        lukeSample foo;
+        foo.filename = dir.getPath(i);
+        foo.handle = dir.getName(i);
+        foo.length = LOADSOUND(foo.filename, foo.handle);
+        foo.bank = ofSplitString(foo.handle, "_")[0];
+        string len = ofSplitString(foo.handle, "_")[2];
+        len = ofSplitString(len, ".")[0];
+        foo.numbeats = ofToInt(len);
+        cout << foo.handle << " " << foo.bank << " " << foo.numbeats << endl;
+        looperSamples.push_back(foo);
+    }
+    
+    
 }
 
 void testApp::startMusic(int mc, int mh, int mr, float musicdur)
@@ -451,7 +489,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
 	
     // some timing shit...
     t = ofGetElapsedTimef();
-    float tempo = MASTERTEMPO;
+    float tempo = (15./MASTERTEMPO);
     int bcount = 0;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
@@ -602,6 +640,68 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
             WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
             pick = (pick+1) % pitches[mh].notes.size();
             }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+
+    
+    // KISS MY ARP
+    if (find(ilist.begin(), ilist.end(), "kissmyarp") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2)
+        {
+            int oct = ofRandom(0., 1.)*12;
+            int pitch = pitches[mh].notes[pick] % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            // cout << "doing pitch: " << ptos(pitch) << endl;
+            float freq = mtof(pitch);
+            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
+        }
+    }
+
+    // KISS MY ARP SYNCH
+    if (find(ilist.begin(), ilist.end(), "kissmyarpsynch") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+            int oct = ofRandom(0., 1.)*12;
+            int pitch = pitches[mh].notes[pick] % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            // cout << "doing pitch: " << ptos(pitch) << endl;
+            float freq = mtof(pitch);
+            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+
+    // KISS MY ARP FAST
+    if (find(ilist.begin(), ilist.end(), "kissmyarpfast") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            int oct = ofRandom(0., 2.)*12;
+            int pitch = pitches[mh].notes[pick] % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            // cout << "doing pitch: " << ptos(pitch) << endl;
+            float freq = mtof(pitch);
+            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
         }
     }
 
@@ -731,6 +831,54 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
         }
     }
 
+    // BASSLOOP1
+    if (find(ilist.begin(), ilist.end(), "bassloop1") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64)
+        {
+            SOUNDLOOP(i, bl1, tempo*64., 0.25, "bassloop1");
+        }
+    }
+    
+    // REICHOMATIC
+    if (find(ilist.begin(), ilist.end(), "reichomatic") != ilist.end())
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==mbank)
+            {
+                cout << "Sample: " << looperSamples[i].handle << endl;
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    int p = ofRandom(0, 3);
+                    if(p<1)
+                    {
+                        cout << "Playing: " << looperSamples[i].handle << " of length " << looperSamples[i].length << " at " << j << endl;
+                        SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, ofRandom(0.,1));
+                    }
+                }
+            }
+        }
+    }
+    
+    // GLASSOMATIC
+    if (find(ilist.begin(), ilist.end(), "glassomatic") != ilist.end())
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==mbank)
+            {
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, (float)i/looperSamples.size()-1);
+                }
+            }
+        }
+    }
+
+    
     //
     // =======================
     // END ORCHESTRATION BLOCK

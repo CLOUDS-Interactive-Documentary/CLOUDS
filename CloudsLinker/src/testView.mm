@@ -35,8 +35,8 @@
 	[linkerA setup];
     [linkerB setup];
     
-	exporter.saveGephiCSV(parser);
-    
+	//exporter.saveGephiCSV(parser);
+	CloudsExporter::savePajekNetwork(parser);
 }
 
 

@@ -1,0 +1,15 @@
+ofxXmlSettings
+ofxCameraSaveLoad
+ofxGameCamera
+ofxGenerative
+ofxMSACore
+ofxMSAInteractiveObject
+ofxMSAObjCPointer
+ofxMSAPhysics
+ofxMSATimer
+ofxRange
+ofxTextInputField
+ofxTimecode
+ofxTimeline
+ofxTween
+ofxUI

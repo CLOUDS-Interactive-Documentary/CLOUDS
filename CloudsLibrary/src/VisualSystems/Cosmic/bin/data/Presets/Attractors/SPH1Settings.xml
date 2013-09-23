@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SPH1Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>425.000061035</XPosition>
+    <YPosition>272.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SPH1 ACTIVE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPH1 POS-X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPH1 POS-Y</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SPH1 POS-Z</Name>
+    <Value>128.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPH1 RADIUS</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPH1 LIMIT</Name>
+    <Value>4.481415749</Value>
+</Widget>
