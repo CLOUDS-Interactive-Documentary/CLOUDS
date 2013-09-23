@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1803F0491778CFD60093DD74 /* ClipSelector.mm */; };
-		18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18142706176629ED00C2B5FE /* ClusterData.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -76,8 +75,6 @@
 /* Begin PBXFileReference section */
 		1803F0481778CFD60093DD74 /* ClipSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipSelector.h; sourceTree = "<group>"; };
 		1803F0491778CFD60093DD74 /* ClipSelector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ClipSelector.mm; sourceTree = "<group>"; };
-		18142706176629ED00C2B5FE /* ClusterData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClusterData.cpp; sourceTree = "<group>"; };
-		18142707176629EE00C2B5FE /* ClusterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterData.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -331,8 +328,6 @@
 			children = (
 				E7B3C7E017EE465400581ACD /* CloudsSpeaker.h */,
 				E7B3C7DF17EE465400581ACD /* CloudsSpeaker.cpp */,
-				18142707176629EE00C2B5FE /* ClusterData.h */,
-				18142706176629ED00C2B5FE /* ClusterData.cpp */,
 				E7637D751734DEF7008ADC62 /* CloudsLink.h */,
 				E7637D741734DEF7008ADC62 /* CloudsLink.cpp */,
 				E7637D6E1734DEF7008ADC62 /* CloudsClip.h */,
@@ -468,7 +463,6 @@
 				E7637D821734DEF7008ADC62 /* CloudsClip.cpp in Sources */,
 				E7637D831734DEF7008ADC62 /* CloudsFCPParser.cpp in Sources */,
 				E7637D851734DEF7008ADC62 /* CloudsLink.cpp in Sources */,
-				18142708176629EE00C2B5FE /* ClusterData.cpp in Sources */,
 				1803F04A1778CFD60093DD74 /* ClipSelector.mm in Sources */,
 				E7B3C7E117EE465400581ACD /* CloudsSpeaker.cpp in Sources */,
 			);

@@ -1,0 +1,473 @@
+COHESION:
+	error 0.0642684
+	internet 0.0703964
+	future 0.0968168
+	devices 0.118341
+	sex 0.121197
+	algorithms 0.122401
+	community 0.126079
+	future of cinema 0.126941
+	virtual 0.130195
+	storytelling 0.130273
+	beauty 0.133479
+	maps 0.134229
+	camera 0.135071
+	music 0.136871
+	open source 0.145365
+	visualization 0.159214
+	sketching 0.159221
+	stock market 0.159937
+	new media 0.16204
+	language 0.166342
+	time 0.167177
+	artificial intelligence 0.167916
+	sharing 0.169257
+	gesture 0.170533
+	augmented reality 0.172158
+	drawing 0.174116
+	nature 0.178391
+	open frameworks 0.180878
+	art vs engineering 0.183109
+	art 0.18399
+	kinect 0.184655
+	old media 0.185382
+	science fiction 0.187695
+	ideas 0.190779
+	aesthetics 0.190855
+	simulation 0.192034
+	originality 0.193954
+	3d printing 0.195233
+	liveness 0.195857
+	emergence 0.197125
+	distraction 0.199697
+	social media 0.20042
+	biology and code 0.200973
+	identity 0.202305
+	programming 0.202402
+	hybridity 0.202766
+	collaboration 0.203755
+	data visualization 0.211347
+	physicality 0.213749
+	god mode 0.215762
+	generative art 0.217927
+	cinema 0.21941
+	gps 0.221763
+	thinking 0.222379
+	beginnings 0.223396
+	biology 0.224374
+	relationships 0.225806
+	people 0.226416
+	social dynamics 0.226966
+	new aesthetic 0.23
+	toolkit 0.237511
+	rules 0.238063
+	sculpture 0.239362
+	network 0.241791
+	tribe 0.241945
+	criticality 0.244018
+	society 0.247057
+	control 0.251725
+	processing 0.254874
+	code 0.255118
+	archiving 0.256276
+	improvization 0.25755
+	cyborg 0.257991
+	users 0.259041
+	hackers 0.262032
+	surprise 0.262549
+	clouds 0.266256
+	career 0.269144
+	tools 0.273017
+	opacity 0.274955
+	exploration 0.277281
+	dna 0.277495
+	interconnectedness 0.27839
+	power 0.28061
+	social engagment 0.281601
+	mind and hand 0.282901
+	creative misuse 0.284786
+	communication 0.287273
+	weird 0.288331
+	branching 0.290644
+	machine aesthetics 0.290648
+	probability 0.293931
+	reality 0.294711
+	limitations 0.295346
+	technological progress 0.297124
+	thinking by doing 0.29715
+	google 0.297472
+	attention 0.304171
+	history 0.306395
+	coding 0.306512
+	commercialism 0.306998
+	education 0.312258
+	globalization 0.31269
+	nerd 0.312802
+	frustration 0.313724
+	interactivity 0.31401
+	art world 0.315203
+	surveillance 0.315287
+	collective intelligence 0.316124
+	aesthetics and computation 0.316133
+	progress 0.316951
+	media lab 0.317478
+	math 0.318246
+	solutions 0.319022
+	computer 0.321032
+	narrative 0.321736
+	economics 0.321756
+	audiovisualization 0.322595
+	data ownership 0.323002
+	learning 0.32335
+	pattern 0.324227
+	simplicity 0.324461
+	man vs machine 0.324551
+	subjectivity 0.32613
+	chance 0.330344
+	cognition 0.336242
+	serendipity 0.336776
+	commercial art 0.337761
+	critique 0.339375
+	preservation 0.339696
+	network security 0.341194
+	videogames 0.342153
+	culture 0.342649
+	computation 0.342842
+	humor 0.344601
+	cities 0.344926
+	face tracking 0.347098
+	randomness 0.347915
+	infinity 0.348058
+	immersion 0.34874
+	experience 0.349235
+	memory 0.349396
+	hack 0.351611
+	museums 0.353072
+	artificial life 0.35516
+	visual culture 0.357428
+	dialogue 0.358162
+	logic 0.358268
+	program or be programmed 0.359417
+	post-digital 0.360092
+	dysfunction 0.36038
+	embodiment 0.360983
+	intuition 0.361433
+	real and virtual 0.3651
+	cosmogeny 0.365832
+	evolution 0.368285
+	humanity 0.368802
+	staring at screens 0.371883
+	interfaces 0.374574
+	facebook 0.376377
+	teaching 0.376579
+	abstraction 0.378575
+	mentors 0.378999
+	legibility 0.379196
+	sound 0.380027
+	journey 0.380808
+	process 0.381115
+	art and code 0.384823
+	feedback 0.38519
+	interdisciplinary 0.387805
+	john maeda 0.388767
+	systems 0.389356
+	play 0.389907
+	realness 0.390175
+	installation 0.390616
+	newness 0.390758
+	representation 0.39326
+	technology 0.394642
+	data 0.39968
+	transparency 0.3999
+	engineering 0.402903
+	personal data 0.404502
+	design 0.409995
+	painting 0.411916
+	machine vision 0.413376
+	information 0.414162
+	creativity 0.415752
+	children 0.417773
+	physics 0.418126
+	fantasy 0.42042
+	arabic 0.422345
+	datatelling 0.422522
+	singularity 0.423622
+	wearables 0.425298
+	obsolescence 0.425423
+	fantasy technology 0.426019
+	thinking with code 0.426966
+	noise 0.427301
+	consciousness 0.427629
+	memes 0.429715
+	performance art 0.429975
+	wikipedia 0.430003
+	digital meets physical 0.436443
+	discovery 0.436722
+	knowledge 0.436808
+	hackathon 0.439334
+	military technology 0.439688
+	social 0.441099
+	futurism 0.441123
+	dreams 0.44237
+	complexity 0.442728
+	accessibility 0.443015
+	questions 0.44412
+	art and experience 0.447623
+	toolkits 0.450362
+	mastery 0.451032
+	perception 0.453706
+	creative coders 0.454945
+	artificiality 0.456542
+	crowdsourcing 0.46118
+	humanism 0.46204
+	algorithm 0.462719
+	emotion 0.463718
+	form 0.464587
+	hacker 0.464622
+	philsophy 0.465022
+	generations 0.466351
+	gardening 0.469576
+	world building 0.47021
+	existence 0.471403
+	games 0.476734
+	vision 0.477796
+	net.art 0.480392
+	love 0.483444
+	possibility 0.483449
+	problem solving 0.484246
+	microscope 0.484299
+	improvement 0.485348
+	useless 0.489464
+	twitter 0.491984
+	research 0.495597
+	trendspotting 0.498278
+	genetics 0.499199
+	sensor 0.503834
+	change 0.508705
+	creative coding 0.509486
+	zen 0.509845
+	bots 0.510199
+	reading 0.511048
+	science 0.511853
+	meaning 0.512409
+	addiction 0.512956
+	elegance 0.514341
+	poetry 0.514698
+	self expression 0.517867
+	money 0.521482
+	homogeneity 0.524268
+	art history 0.527284
+	anonymous 0.528723
+	feeling 0.531827
+	big data 0.534699
+	universe 0.535271
+	rgbd 0.535335
+	struggle with technology 0.535939
+	cellular automata 0.5371
+	focus 0.538113
+	organic 0.53956
+	apocalypse 0.541445
+	apps 0.542799
+	gadgets 0.545484
+	scale 0.547861
+	writing 0.552168
+	performance 0.553096
+	symbiosis 0.560846
+	system 0.561737
+	fat 0.562243
+	metaphor 0.568679
+	death 0.570328
+	useful 0.5713
+	mind 0.572664
+	chaos 0.575218
+	debugging 0.577066
+	behavior 0.577886
+	revelation 0.57922
+	life 0.579277
+	cyberpunk 0.580222
+	dystopia 0.580249
+	story 0.580639
+	god 0.583161
+	english 0.589868
+	art and tech 0.590236
+	technoptimism 0.59766
+	gift 0.598719
+	synthetic biology 0.600308
+	expression 0.60093
+	struggle 0.600999
+	magic 0.601842
+	cultural value 0.606941
+	ubiquitous computing 0.607237
+	bugs 0.607922
+	truth 0.61003
+	style 0.612883
+	uncertainty 0.615172
+	boring 0.61965
+	ubiquity 0.622221
+	utopia 0.627047
+	aesthetic experience 0.629579
+	projection 0.637856
+	why? 0.643748
+	corporate 0.64483
+	prediction 0.647648
+	gender 0.648509
+	critical engineering 0.649243
+	r&d 0.649726
+	eyewriter 0.654126
+	phenomena 0.654189
+	software 0.657548
+	empathy 0.657747
+	work 0.659414
+	serious 0.660615
+	nostalgia 0.661257
+	product 0.66126
+	lifetracking 0.661601
+	avatar 0.662847
+	art and security 0.670723
+	acu 0.675212
+	failure 0.680136
+	security 0.689572
+	zoom 0.699441
+	inexactitude 0.699588
+	uncanny 0.701732
+	imagination 0.706351
+	luck 0.709812
+	visual cortex 0.710619
+	understanding 0.713359
+	glitch 0.716095
+	information as weapon 0.716895
+	the cloud 0.718382
+	text 0.720805
+	design and art 0.72157
+	statistics 0.726633
+	experience design 0.727096
+	gestalt 0.727191
+	mysticism 0.734322
+	open paths 0.737882
+	iteration 0.738324
+	virality 0.739369
+	politics 0.741001
+	gadget 0.743263
+	art and science 0.751577
+	survival 0.756807
+	synesthesia 0.759393
+	challenges 0.769634
+	philosophy 0.771645
+	participation 0.774076
+	architecture 0.774481
+	light 0.785648
+	connections 0.786172
+	food 0.788825
+	audience 0.790804
+	motion 0.793692
+	nytimes 0.804135
+	balance 0.805742
+	formalism 0.808732
+	hacking 0.816966
+	privacy 0.817022
+	literacy 0.820122
+	why 0.823714
+	virtuosity 0.831747
+	funny 0.832742
+	digital divide 0.833561
+	infrastructure 0.83816
+	virus 0.841359
+	efficiency 0.847604
+	apple 0.857052
+	instrument 0.860199
+	working with others 0.881224
+	assistive technology 0.890835
+	beautiful exhuberance 0.892351
+	collaboration with machines 0.894659
+	quantified self 0.89611
+	business 0.898996
+	github 0.902384
+	legos 0.902608
+	thanks 0.904478
+	heuristics 0.912367
+	growth 0.915129
+	fun 0.916281
+	invention 0.918823
+	perspective 0.928311
+	digital culture 0.928831
+	tradition 0.941599
+	mobile 0.943172
+	innovation 0.951412
+	location 0.951981
+	advertising 0.95887
+	success 0.962734
+	evaluation 0.965316
+	code is messy 0.966261
+	alone together 0.967845
+	curation 0.983549
+	tech-demo 0.9837
+	objects 0.985055
+	coding for humanity 0.985201
+	journalism 0.9855
+	sensors 0.985579
+	kill the master 0.99259
+	tree 1
+	diy 1
+	fluxus 1
+	youtube 1
+	ambiguity 1
+	zach lieberman 1
+	internet of things 1
+	ego 1
+	intelligence 1
+	flow 1
+	influences 1
+	influence 1
+	infinite conversation 1
+	video art 1
+	epiphany 1
+	imaginary 1
+	wonder 1
+	eyeo 1
+	hope 1
+	visual effects 1
+	hallucination 1
+	order 1
+	consumer 1
+	own the tool 1
+	parameter space 1
+	space 1
+	passing the baton 1
+	constraints 1
+	atmosphere 1
+	authorship 1
+	connectivity 1
+	policy 1
+	skill 1
+	confusion 1
+	present shock 1
+	public 1
+	sentiment analysis 1
+	sensation 1
+	carl sims 1
+	rendering 1
+	responsibility 1
+	rhetoric 1
+	cameras 1
+	laughter 1
+	limits of the computer 1
+	thinking through code 1
+	things 1
+	design process 1
+	design by numbers 1
+	demo scene 1
+	media 1
+	taste 1
+	messiness 1
+	data mining 1
+	multiverse 1
+	synergy 1
+	data collection 1
+	creative control 1
+	object recognition 1
+	subversion 1
+	creation 1
+	open software 1
+	openness 1
+	street art 1
+	operating systems 1

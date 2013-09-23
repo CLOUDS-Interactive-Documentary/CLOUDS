@@ -16,13 +16,13 @@ void testApp::setup(){
 	storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	
-
-	
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
 	
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.setRun(run);
+	clusterMap.traverse();
+	
 	clusterMap.setup();
 	clusterMap.playSystem();
 }

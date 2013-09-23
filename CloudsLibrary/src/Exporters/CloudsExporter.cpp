@@ -94,9 +94,10 @@ void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
 			string nameB = connections[j].getLinkName();
 			
 			if(nameA != nameB &&
-			   clipA.person != clipB.person &&
+			   (parser.clipLinksTo(nameA, nameB) ||
+			   (clipA.person != clipB.person &&
 			   !parser.linkIsSuppressed(nameA, nameB) &&
-			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1 )
+			   parser.getNumberOfSharedKeywords(clipA, clipB) > 1) ))
 			{
 //				pajekBuffer.append(nameA + "," + nameB + "\n");
 				connectingNodes.push_back( nodeIndex[nameB] );

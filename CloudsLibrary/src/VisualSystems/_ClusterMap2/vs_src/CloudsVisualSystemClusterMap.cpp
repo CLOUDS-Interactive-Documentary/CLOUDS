@@ -17,6 +17,7 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	
 	nodes.clear();
 	clusterMesh.clear();
+	clipIdToNodeIndex.clear();
 	
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		CloudsClusterNode n;
@@ -25,9 +26,28 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 		n.mesh = &clusterMesh;
 		n.vertexIndex = clusterMesh.getNumVertices();
 		
+		clipIdToNodeIndex[clip.getID()] = nodes.size();
 		clusterMesh.addVertex(clip.networkPosition);
 		nodes.push_back(n);
 	}
+}
+
+void CloudsVisualSystemClusterMap::traverse(){
+	
+	if(run == NULL) return;
+	
+	traversalMesh.clear();
+	for(int  i = 0; i < run->topicHistory.size(); i++){
+		cout << "traversed to topic " << run->topicHistory[i] << endl;
+	}
+	for(int i = 0; i < run->clipHistory.size(); i++){
+		CloudsClip& clip = run->clipHistory[i];
+		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
+		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+		traversalMesh.addVertex(clip.networkPosition);
+	}
+	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -41,7 +61,6 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	
 	generatorGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
 	generatorGui->addSlider("point size", 1, 50, &pointSize);
-	generatorGui->addToggle("use shader", &useShader);
 
 //	generatorGui->addSlider("seed", 0, 100, &seed);
 //	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
@@ -201,15 +220,15 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
 	timeline->setLoopType(OF_LOOP_NONE);
 	
-	if(run != NULL){
-		traversal.clear();
-		for(int i = 0; i < run->clipHistory.size(); i++){
-			//active history nodes;
-			traversal.addVertex( run->clipHistory[i].networkPosition * 500 );
-		}
-	}
-	
-	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
+//	if(run != NULL){
+//		traversal.clear();
+//		for(int i = 0; i < run->clipHistory.size(); i++){
+//			//active history nodes;
+//			traversal.addVertex( run->clipHistory[i].networkPosition * 500 );
+//		}
+//	}
+//	
+//	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
 	
 //	generate();
 //	traverse();
@@ -288,24 +307,34 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
 
-	if(useShader){
-		clusterShader.begin();
-		clusterShader.setUniformTexture("tex", sprite, 0);
-		clusterShader.setUniform1f("expansion", meshExpansion);
-		clusterShader.setUniform1f("minSize", pointSize);
-		clusterShader.setUniform3f("attractor", 0, 0, 0);
-		clusterShader.setUniform1f("radius", 300.);
-		
-		ofEnablePointSprites();
-		ofDisableArbTex();
-	}
+	glDisable(GL_DEPTH_TEST);
+	
+	ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	clusterShader.begin();
+	clusterShader.setUniformTexture("tex", sprite, 0);
+	clusterShader.setUniform1f("expansion", meshExpansion);
+	clusterShader.setUniform1f("minSize", pointSize);
+	clusterShader.setUniform3f("attractor", 0, 0, 0);
+	clusterShader.setUniform1f("radius", 300.);
+	
+	ofEnablePointSprites();
+	ofDisableArbTex();
+	
 	clusterMesh.drawVertices();
 	
-	if(useShader){
-		clusterShader.end();
-		ofDisablePointSprites();
-		ofEnableArbTex();
-	}
+	clusterShader.end();
+	ofDisablePointSprites();
+	ofEnableArbTex();
+	
+	ofPushMatrix();
+	ofScale(meshExpansion,meshExpansion,meshExpansion);
+	traversalMesh.draw();
+	ofPopMatrix();
+	
+	ofPopStyle();
+	
+	glEnable(GL_DEPTH_TEST);
 	
 /*
 	ofPushStyle();

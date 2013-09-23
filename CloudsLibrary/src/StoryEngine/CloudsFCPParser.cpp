@@ -11,7 +11,7 @@
 #include "CloudsSpeaker.h"
 
 bool distanceSort(pair<string,float> a, pair<string,float> b ){
-    return a.second > b.second;
+    return a.second < b.second;
 }
 
 CloudsFCPParser::CloudsFCPParser(){
@@ -326,18 +326,19 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	
 	populateKeywordCentroids();
 	calculateCohesionMedianForKeywords();
+	calculateKeywordAdjascency();
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){
 
 	keywordCentroids.clear();
 	keywordCentroidIndex.clear();
-	
-    for(int k = 0; k < getAllKeywords().size(); k++){
-        vector<CloudsClip> clips = getClipsWithKeyword(getAllKeywords()[k]);
+	vector<string>& keywords = getContentKeywords();
+    for(int k = 0; k < keywords.size(); k++){
+        vector<CloudsClip> clips = getClipsWithKeyword(keywords[k]);
         
         float numClips = 0;
-        ofVec3f centroid;
+        ofVec3f centroid(0,0,0);
         
         for( int i = 0; i < clips.size(); i++){
             if( clips[i].networkPosition != ofVec3f(-1, -1, -1) ){
@@ -348,10 +349,18 @@ void CloudsFCPParser::populateKeywordCentroids(){
         
         centroid /= numClips;
 		
-        keywordCentroids.push_back( make_pair(getAllKeywords()[k], centroid) );
-        keywordCentroidIndex[getAllKeywords()[k]] = k;
+        keywordCentroids.push_back( make_pair(keywords[k], centroid) );
+        keywordCentroidIndex[keywords[k]] = k;
     }
+}
 
+void CloudsFCPParser::calculateKeywordAdjascency(){
+//		map<string, vector<string> > keywordAdjacency;
+	keywordAdjacency.clear();
+	vector<string>& keywords = getContentKeywords();
+	for(int i = 0; i < keywords.size(); i++){
+		keywordAdjacency[keywords[i]] = getAdjacentKeywords(keywords[i], 10);
+	}
 }
 
 //returns keywords that are close to the given keyword on the cluster map
@@ -363,17 +372,20 @@ vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int
     centroid = getKeywordCentroid(currentKeyword);
     
     for (int j=0; j < keywordCentroids.size(); j++) {
-        
-        float distance = centroid.distance(keywordCentroids[j].second);
-        distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
+        if(keywordCentroids[j].first != currentKeyword){
+			float distance = centroid.distance(keywordCentroids[j].second);
+			distancePair.push_back(make_pair(keywordCentroids[j].first, distance));
+		}
     }
     
     sort(distancePair.begin(), distancePair.end(), distanceSort);
     
     vector<string> adjacentKeywords;
     numOfDesiredKeywords = MIN(distancePair.size(),numOfDesiredKeywords);
-    
+
+//	cout << "keyword " << currentKeyword << endl;
     for (int k = 0; k < numOfDesiredKeywords; k++) {
+//		cout << "	" << distancePair[k].first << " " <<distancePair[k].second << endl;
         adjacentKeywords.push_back(distancePair[k].first);
     }
     
@@ -395,8 +407,10 @@ float CloudsFCPParser::getCohesionIndexForKeyword(string keyword){
 
 void CloudsFCPParser::calculateCohesionMedianForKeywords(){
 	
-    for( int i=0; i< getAllKeywords().size(); i++){
-        string currentKeyword = getAllKeywords()[i];
+	vector< pair<string, float> > topicCohesionPairs;
+	vector<string>& keywords = getContentKeywords();
+    for( int i=0; i< keywords.size(); i++){
+        string currentKeyword = keywords[i];
         ofVec2f keywordCentroid = getKeywordCentroid(currentKeyword);
         vector<CloudsClip> clips = getClipsWithKeyword(currentKeyword);
         
@@ -418,21 +432,28 @@ void CloudsFCPParser::calculateCohesionMedianForKeywords(){
         }
 		
 		float avgDistance = totalDistance / numClips;
-		
+
 		if(distancesPerClip.size() != 0 && maxDistance != 0){
 			std::sort(distancesPerClip.begin(), distancesPerClip.end());
 			float medianValue = distancesPerClip[distancesPerClip.size()/2];
 			keywordCohesionMap[currentKeyword] = medianValue / maxDistance;
+			topicCohesionPairs.push_back(make_pair(currentKeyword, keywordCohesionMap[currentKeyword]));
 //			cout << "**** Keyword " << currentKeyword << " has an average distance of " << avgDistance << " from " << numClips << " has cohesion score " << medianValue << "/" << maxDistance << "		" << medianValue / maxDistance << endl;
 		}
+		
     }
+	
+//	sort(topicCohesionPairs.begin(), topicCohesionPairs.end(), distanceSort);
+//	cout << "COHESION:" << endl;
+//	for(int i = 0; i < topicCohesionPairs.size(); i++){
+//		cout << "	" << topicCohesionPairs[i].first << " " << topicCohesionPairs[i].second << endl;
+//	}
+
 }
 
 ofVec2f CloudsFCPParser::getKeywordCentroid(string keyword){
     
-    ofVec2f centroid;
     int index = getCentroidMapIndex(keyword);
-
     if(index != -1){
         return keywordCentroids[index].second;
     }
@@ -445,7 +466,7 @@ int CloudsFCPParser::getCentroidMapIndex(string keyword){
     if(keywordCentroidIndex.find(keyword) != keywordCentroidIndex.end()){
         return keywordCentroidIndex[keyword];
     }
-//    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
+    ofLogError("CloudsFCPParser::getCentroidMapIndex")<<" Couldnt find  index for keyword: "<<keyword<<endl;
 	return -1;
 }
 
@@ -838,6 +859,9 @@ void CloudsFCPParser::refreshAllKeywords(){
 	
 	allKeywords.clear();
 	keywordVector.clear();
+	contentKeywordVector.clear();
+	questionTopicstoClipIndex.clear();
+	contentKeywords.clear();
 	
     for(int i = 0; i < allClips.size(); i++){
         
@@ -861,8 +885,6 @@ void CloudsFCPParser::refreshAllKeywords(){
         for(int l =0; l< topicsWithQuestions.size(); l++){
             questionTopicstoClipIndex[topicsWithQuestions[l]].push_back(i);
         }
-        
-        
     }
     
     map<string, int>::iterator it;

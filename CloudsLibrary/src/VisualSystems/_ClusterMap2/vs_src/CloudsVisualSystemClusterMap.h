@@ -12,11 +12,14 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
 	void buildEntireCluster(CloudsFCPParser& parser);
-	
+
 	void setRun(CloudsRun& run);
 	void setQuestions(vector<CloudsClip>& questions);
 	CloudsQuestion* getSelectedQuestion();
 
+	//will add the latest state of the run to the traversal
+	void traverse();
+	
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -116,11 +119,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	CloudsQuestion* selectedQuestion;
 	ofShader clusterShader;
 	
-	bool useShader;
 	ofImage sprite;
-	ofVboMesh traversal;
+	ofVboMesh traversalMesh;
 	ofVboMesh clusterMesh;
 	vector<CloudsClusterNode> nodes;
+	map<string,int> clipIdToNodeIndex;
 	
 	float meshExpansion;
 	float pointSize;

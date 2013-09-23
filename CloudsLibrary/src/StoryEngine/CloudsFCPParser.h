@@ -168,13 +168,16 @@ class CloudsFCPParser {
     
 	//KEYWORDS + CLUSTER NETWORK
     vector<pair<string, ofVec3f> > keywordCentroids;
+	map<string, vector<string> > keywordAdjacency;
     map<string, int> keywordCentroidIndex;
     map<string, float> keywordCohesionMap;
     void populateKeywordCentroids();
     void calculateCohesionMedianForKeywords();
     ofVec2f getKeywordCentroid(string keyword);
     int getCentroidMapIndex(string keyword);
-		
+	void calculateKeywordAdjascency();
+
+	
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;
