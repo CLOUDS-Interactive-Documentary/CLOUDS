@@ -210,89 +210,6 @@ void CloudsFCPParser::parseLinks(string linkFile){
 }
 
 #pragma mark KEYWORD + CLUSTER DATA
-
-void CloudsFCPParser::parseClusterMap(string mapFile){
-    float maxCx=0;
-    float maxCy=0;
-    float minCx=-1;
-    float minCy=-1;
-    float maxR=0;
-    float minR=80;
-    
-    ofxXmlSettings mapsXML;
-    /*
-	 if(mapsXML.loadFile(mapFile)){
-	 mapsXML.pushTag("svg");
-	 
-	 int numClips = mapsXML.getNumTags("g");
-	 
-	 mapsXML.pushTag("g",1);
-	 int numCircles = mapsXML.getNumTags("circle");
-	 map<string, vector<CloudsLink> >::iterator it;
-	 for(int j=0; j<numCircles;j++){
-	 string circleName;
-	 circleName = mapsXML.getAttribute("circle", "class",circleName, j);
-	 
-	 if(clipLinkNameToIndex.find(circleName) == clipLinkNameToIndex.end()){
-	 ofLogError() << "Clip " << circleName << " not found in FCP XML";
-	 continue;
-	 }
-	 
-	 CloudsClip& clip = allClips[ clipLinkNameToIndex[circleName] ];
-	 clip.cluster.Id = clip.getID();
-	 
-	 clip.cluster.hexColor = mapsXML.getAttribute("circle","fill",clip.cluster.hexColor,j);
-	 clip.cluster.hexColor.erase(clip.cluster.hexColor.begin()); //remove #
-	 unsigned int colorHex;
-	 std::stringstream ss;
-	 ss << std::hex << clip.cluster.hexColor;
-	 ss >> colorHex;
-	 
-	 clip.cluster.Color.setHex(colorHex);
-	 
-	 clusterMapColors.insert(clip.cluster.hexColor);
-	 //			if(clip.cluster.Color == ofColor(255)){
-	 //                cout<<clip.cluster.Id<<endl;
-	 //            }
-	 string radius;
-	 radius = mapsXML.getAttribute("circle", "r", radius,j);
-	 clip.cluster.Radius = ofToFloat(radius);
-	 maxR = MAX(maxR,clip.cluster.Radius);
-	 minR = MIN(minR,clip.cluster.Radius);
-	 
-	 string cx,cy;
-	 cx = mapsXML.getAttribute("circle", "cx", cx,j);
-	 cy = mapsXML.getAttribute("circle", "cy", cy,j);
-	 clip.cluster.originalCentre = ofVec2f(ofToFloat(cx),ofToFloat(cy));
-	 
-	 maxCx = MAX(maxCx,clip.cluster.originalCentre.x);
-	 minCx = MIN(minCx,clip.cluster.originalCentre.x);
-	 maxCy = MAX(maxCy,clip.cluster.originalCentre.y);
-	 minCy = MIN(minCy,clip.cluster.originalCentre.y);
-	 }
-	 
-	 for(int i = 0; i < allClips.size(); i++){
-	 if(allClips[i].cluster.originalCentre != ofVec2f(-1, -1)){
-	 //TODO:  CLUSTERS ARE BROKEN
-	 //                allClips[i].cluster.Centre.x = ofMap(allClips[i].cluster.originalCentre.x, minCx, maxCx, 0, 1);
-	 //                allClips[i].cluster.Centre.y = ofMap(allClips[i].cluster.originalCentre.y, minCy, maxCy, 0, 1);
-	 //                allClips[i].cluster.Radius = ofMap(allClips[i].cluster.Radius, minR, maxR, 0, 1);
-	 //                cout<<allClips[i].cluster.Centre<<endl;
-	 }
-	 else{
-	 cout<<"ERROR CLIP NOT FOUND IN MAP:"<<allClips[i].getLinkName()<<endl;
-	 }
-	 
-	 }
-	 mapsXML.popTag();//g
-	 
-	 mapsXML.popTag(); //svg
-	 }
-	 */
-	
-	calculateCohesionMedianForKeywords();
-}
-
 void CloudsFCPParser::parseClusterNetwork(string fileName){
 	ofBuffer pajekFile = ofBufferFromFile(fileName);
 	bool findingNodes = false;
@@ -330,8 +247,8 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 	}
 	
 	populateKeywordCentroids();
-	calculateCohesionMedianForKeywords();
-	calculateKeywordAdjascency();
+//	calculateCohesionMedianForKeywords();
+//	calculateKeywordAdjascency();
 	calculateKeywordFamilies();
 }
 
@@ -398,7 +315,6 @@ vector<string> CloudsFCPParser::getAdjacentKeywords( string currentKeyword , int
     return adjacentKeywords;
 }
 
-
 void CloudsFCPParser::calculateKeywordFamilies(){
 	keywordFamilies.clear();
 	vector<string>& keywords = getContentKeywords();
@@ -423,17 +339,21 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 		sort(overlapScore.begin(), overlapScore.end(), distanceSortLargeToSmall);
 //		cout << "keyword " << keywordA << endl;
 		
-		keywordFamilyBuffer.append("keyword " + keywordA + "\n");
+//		keywordFamilyBuffer.append("keyword " + keywordA + "\n");
 		for(int i = 0; i < MIN(overlapScore.size(), 10); i++){
 			//cout << "	" << overlapScore[i].first << " " << overlapScore[i].second << endl;
-			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
+			keywordFamilies[keywordA].push_back(overlapScore[i].first);
+//			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
 		}
 	}
-	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
+//	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
 }
 
-float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string keyword2){
-    
+vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
+	return keywordFamilies[keyword];
+}
+
+float CloudsFCPParser::getDistanceFromAdjacentKeywords(string keyword1, string keyword2){    
     return getKeywordCentroid(keyword1).distance(getKeywordCentroid(keyword2));
 }
 
@@ -1153,7 +1073,6 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     }
     
     return clips;
-    
 }
 
 vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
@@ -1287,9 +1206,6 @@ vector<string> CloudsFCPParser::getSharedKeywords(CloudsClip& a, CloudsClip& b){
 	return sharedKeywords;
 }
 
-//void CloudsFCPParser::refreshKeywordVector(){
-//}
-
 bool CloudsFCPParser::operator()(const string& a, const string& b){
     if(sortedByOccurrence){
         return allKeywords[a] > allKeywords[b];
@@ -1315,10 +1231,6 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
             cout<<"Added reciprocal suppression for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
         }
     }
-}
-
-vector<string> CloudsFCPParser::getClustersForPerson(string personName){
-    
 }
 
 

@@ -21,7 +21,6 @@ class CloudsFCPParser {
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
-    vector<string> getClustersForPerson(string personName);
 	bool printErrors;
 	
 #pragma mark Clips
@@ -34,7 +33,7 @@ class CloudsFCPParser {
 
 #pragma mark Links
     void parseLinks(string linkFile);
-    void parseClusterMap(string mapFile);
+//    void parseClusterMap(string mapFile);
 	void parseClusterNetwork(string fileName);
 		
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
@@ -119,6 +118,7 @@ class CloudsFCPParser {
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
+	vector<string>& getKeywordFamily(string keyword);
 	
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);

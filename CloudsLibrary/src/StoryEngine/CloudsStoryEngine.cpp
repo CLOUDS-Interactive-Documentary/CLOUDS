@@ -431,13 +431,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         
         //select next clip
         clip = winningClips[ofRandom(winningClips.size())];
-		cout << "clip " << clip.getLinkName() << " has speaker gender " << clip.getSpeakerGender() << endl;
+//		cout << "clip " << clip.getLinkName() << " has speaker gender " << clip.getSpeakerGender() << endl;
         if(clip.getSpeakerGender() == "male"){
 			moreMenThanWomen++;
 		}
 		else{
 			moreMenThanWomen--;
 		}
+		
 		//wondering why we need this... aren't we guarenteed to have the topic?
         if (!clip.hasKeyword(topic) ) {
 			clipScoreStream << "ERROR " << clip.getLinkName() << " does not have current topic " << topic << ". making free" << endl;
@@ -705,10 +706,11 @@ vector<CloudsDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){
 }
 
 #pragma mark TOPIC SCORES
-//TODO: use coehsion and map distance to fix dead ends
 string CloudsStoryEngine::selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log){
     
-    vector<string>& topics = clip.getKeywords();
+    //vector<string>& topics = clip.getKeywords();
+	vector<string>& topics = parser->getKeywordFamily( topic );
+	
     vector<float> topicScores;
     topicScores.resize(topics.size());
     float topicHighScore = 0;
