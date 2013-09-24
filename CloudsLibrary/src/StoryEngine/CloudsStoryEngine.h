@@ -94,7 +94,6 @@ class CloudsStoryEngine {
     float maxVisualSystemGapTime;
     float longClipThreshold;
     float longClipFadeInPercent;
-
 	float getHandleForClip(CloudsClip& clip);
     
     //Story engine decision making parameters
@@ -106,9 +105,12 @@ class CloudsStoryEngine {
 	float genderBalanceFactor;
     float goldClipFactor;
     float easyClipScoreFactor;
-	
+	float offTopicFactor;
+	float distantClipSuppressionFactor;
+
 	//Topic selection parameters
 	float topicRelevancyMultiplier;
 	float lastClipSharesTopicBoost;
 	float twoClipsAgoSharesTopicBoost;
+	
 };

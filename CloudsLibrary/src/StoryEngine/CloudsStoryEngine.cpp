@@ -44,7 +44,9 @@ CloudsStoryEngine::CloudsStoryEngine(){
     gapLengthMultiplier = 0.5;
     preRollDuration = 5;
     minClipDurationForStartingOffset = 30;
-    
+    offTopicFactor = 0;
+	distantClipSuppressionFactor = 0;
+	
 	genderBalanceFactor = 5;
     goldClipFactor = 50;
 	easyClipScoreFactor = 60;
@@ -149,10 +151,12 @@ void CloudsStoryEngine::initGui(){
 	clipGui->addSlider("MAX TIMES ON TOPIC", 2, 7, &maxTimesOnTopic);
     clipGui->addSlider("TOPICS IN COMMON CURRENT MULTIPLIER", 0, 50, &topicsInCommonMultiplier);
     clipGui->addSlider("TOPICS IN COMMON PREVIOUS MULTIPLIER", 0, 10, &topicsinCommonWithPreviousMultiplier);
+    clipGui->addSlider("OFF TOPIC FACTOR", 0, 20, &offTopicFactor);
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, &samePersonOccurrenceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50, &linkFactor);
     clipGui->addSlider("DICHOTOMY WEIGHT", 0,10, &dichotomyWeight);
-    clipGui->addSlider("GENDER BALANCE ", 0, 10, &genderBalanceFactor);
+    clipGui->addSlider("GENDER BALANCE", 0, 10, &genderBalanceFactor);
+	clipGui->addSlider("DISTANT CLIP SUPRRESSION", 0, 100, &distantClipSuppressionFactor);
     clipGui->addSlider("GOLD CLIP FACTOR", 10, 100, &goldClipFactor);
     clipGui->addSlider("EASY CLIP FACTOR", 10, 100, &easyClipScoreFactor);
 	
@@ -313,7 +317,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
     
 	clipScoreStream<<"SAME PERSON SUPPRESSION FACTOR,LINK FACTOR,DICHOTOMY WEIGHT,GENDER BALANCE,LAST CLIP COMMONALITY MULTIPLIER,TWO CLIPS COMMONALITY MULTIPLIER,GOLD CLIP FACTOR, EASY CLIP FACTOR"<< endl;
 	clipScoreStream<<samePersonOccurrenceSuppressionFactor<<","<<linkFactor<<","<<dichotomyWeight<<","<<genderBalanceFactor<<","<<topicsInCommonMultiplier<<","<<topicsinCommonWithPreviousMultiplier<<","<<goldClipFactor<<","<<easyClipScoreFactor<< endl;
-    clipScoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,( - ) samePersonOccurrenceScore,dichotomyWeight,genderBalance,voiceOverScore,goldFactorScore,clipDifficulty"<<endl;
+    clipScoreStream<<"Selected Clip,Current Topic, Potential Next Clip,Total Score,linkScore,topicsInCommonScore,topicsInCommonWithPreviousScore,offTopicScore,samePersonOccurrenceScore,dichotomyWeight,genderBalance,distanceClipSuppression,voiceOverScore,goldFactorScore,clipDifficulty"<<endl;
     
 	topicScoreStream << "MAX TIMES ON TOPIC,LAST CLIP SHARES TOPIC BOOST,TWO CLIPS AGO SHARES TOPIC BOOST,TOPIC RELEVANCY MULTIPLIER"<< endl;
 	topicScoreStream << maxTimesOnTopic <<","<< lastClipSharesTopicBoost <<","<< twoClipsAgoSharesTopicBoost <<","<< topicRelevancyMultiplier<<"," <<endl;
@@ -439,7 +443,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 			moreMenThanWomen--;
 		}
 		
-		//wondering why we need this... aren't we guarenteed to have the topic?
         if (!clip.hasKeyword(topic) ) {
 			clipScoreStream << "ERROR " << clip.getLinkName() << " does not have current topic " << topic << ". making free" << endl;
             freeTopic = true;
@@ -524,6 +527,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         timesOnCurrentTopic++;
         timesOnCurrentTopicHistory[topic]++;
     }
+	
     //add the history of the last topic in the act to the timesOnCurrentTopicHistory map of the CloudsRun.
     //    timesOnCurrentTopicHistory[topic] += timesOnCurrentTopic;
     
@@ -843,6 +847,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     
     //Base score
     float totalScore = 0;
+	float offTopicScore = 0; //negative if this is a link & off topic
     float topicsInCommonScore = 0;
     float topicsInCommonWithPreviousScore = 0;
     float topicsInCommonWithPreviousAveraged = 0;
@@ -851,6 +856,7 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     float dichotomiesScore = 0;
     float voiceOverScore = 0;
 	float genderBalanceScore = 0;
+	float distantClipSuppressionScore = 0;
     float goldClipScore = 0;
     float easyClipScore = 0;
 	
@@ -863,7 +869,13 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
         topicsInCommonWithPreviousAveraged = (parser->getNumberOfSharedKeywords(history[history.size()-2], potentialNextClip) /  potentialNextClip.getKeywords().size() );
         topicsInCommonWithPreviousScore += topicsInCommonWithPrevious * topicsinCommonWithPreviousMultiplier;
     }
-    
+	
+	//penalize for clip missing the current topic.
+    if(!ofContains(potentialNextClip.getKeywords(), topic)){
+		offTopicScore = -offTopicFactor;
+	}
+	
+	
     if( link ){
         linkScore += linkFactor;
     }
@@ -872,11 +884,12 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
 	//TODO: make this a little smarter
     samePersonOccuranceScore = -occurrences * samePersonOccurrenceSuppressionFactor;
     
+	
     //history should contain #keywords dichotomies, and then augment score
     vector<string> specialKeywords = potentialNextClip.getSpecialKeywords();
     
-    for(int i=0; i< dichotomies.size(); i++){
-        for( int k=0; k<specialKeywords.size(); k++){
+    for(int i = 0; i < dichotomies.size(); i++){
+        for( int k = 0; k < specialKeywords.size(); k++){
             if(dichotomies[i].right == specialKeywords[k]){
                 
                 if(dichotomies[i].balance > dichotomyThreshold){
@@ -905,9 +918,11 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     }
     
 	//gender balance scorec
-	
 	genderBalanceScore = (potentialNextClip.getSpeakerGender() == "male" ? -1 : 1 ) * genderBalanceFactor * moreMenThanWomen;
     
+	//discourage distant clips
+	distantClipSuppressionScore = -currentlyPlayingClip.networkPosition.distance( potentialNextClip.networkPosition ) * distantClipSuppressionFactor;
+	
     //gold clip score
     goldClipScore = (potentialNextClip.hasSpecialKeyword("gold") ? goldClipFactor : 0);
     
@@ -927,14 +942,26 @@ float CloudsStoryEngine::scoreForClip(vector<CloudsClip>& history, CloudsClip& p
     else{
         clipDifficulty = "medium";
     }
-    totalScore = linkScore + topicsInCommonScore + topicsInCommonWithPreviousScore + samePersonOccuranceScore + dichotomiesScore + genderBalanceScore + voiceOverScore + goldClipScore + easyClipScore ;
+	
+	//ADD IT UP
+    totalScore = linkScore +
+				 topicsInCommonScore +
+				 topicsInCommonWithPreviousScore +
+				 offTopicScore +
+				 samePersonOccuranceScore +
+				 dichotomiesScore +
+				 genderBalanceScore +
+				 distantClipSuppressionScore +
+				 voiceOverScore +
+				 goldClipScore +
+				 easyClipScore;
     
     
     stringstream ss;
     string linkName =potentialNextClip.getLinkName();
     ofStringReplace(linkName, ",", ":");
     
-    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<genderBalanceScore<<","<<voiceOverScore<<","<<goldClipScore<<","<<clipDifficulty<<endl;
+    ss<<" "<<","<<" "<<","<<linkName<<","<< totalScore<<","<<linkScore<<","<<topicsInCommonScore<<","<<topicsInCommonWithPreviousScore<<","<<offTopicScore<<","<<samePersonOccuranceScore<<","<<dichotomiesScore<<","<<genderBalanceScore<<","<<distantClipSuppressionScore<<","<<voiceOverScore<<","<<goldClipScore<<","<<clipDifficulty<<endl;
     
     log = ss.str();
     

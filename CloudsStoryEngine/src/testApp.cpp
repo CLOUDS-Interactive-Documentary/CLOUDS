@@ -117,6 +117,9 @@ void testApp::keyPressed(int key){
 	if(key == 't'){
 		storyEngine.positionGuis();
 	}
+	if(key == 'S'){
+		storyEngine.saveGuiSettings();
+	}
 }
 
 //--------------------------------------------------------------
