@@ -12,6 +12,7 @@ class CloudsClusterNode {
 	string clipId;
 	vector<string> adjascentClipIds;
 	
+	vector<int> clusterMeshVertexIds;
 	ofVboMesh* mesh;
 	int vertexIndex;
 	bool visible;

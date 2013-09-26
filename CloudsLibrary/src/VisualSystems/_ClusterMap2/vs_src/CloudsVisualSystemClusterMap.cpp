@@ -28,8 +28,53 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 		
 		clipIdToNodeIndex[clip.getID()] = nodes.size();
 		clusterMesh.addVertex(clip.networkPosition);
+		
 		nodes.push_back(n);
 	}
+	
+	
+	//add all connections to connection mesh
+	set< pair<string,string> > connections;
+	
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		CloudsClip& clip = parser.getAllClips()[i];
+		vector<CloudsClip> meta = parser.getClipsWithKeyword(clip.getKeywords());
+		vector<CloudsLink> links = parser.getLinksForClip(clip);
+		string nameA = clip.getID();
+		
+//		for(int l = meta.size()-1; l >= 0; l--){
+//			if( parser.linkIsSuppressed(nameA, meta[l].getLinkName()) ){
+//				meta.erase(meta.begin() + l);
+//			}
+//		}
+			
+		for(int l = 0; l < links.size(); l++){
+			meta.push_back(parser.getClipWithLinkName(links[l].targetName));
+		}
+		
+		for(int j = 0; j < meta.size(); j++){
+			string nameB = meta[j].getID();
+
+			if( connections.find( make_pair(nameA, nameB) ) == connections.end() &&
+				connections.find( make_pair(nameB, nameA) ) == connections.end() &&
+			    nameA != nameB &&
+				(parser.clipLinksTo(nameA, nameB) ||
+				(clip.person != meta[j].person &&
+				!parser.linkIsSuppressed(nameA, nameB) &&
+				parser.getNumberOfSharedKeywords(clip, meta[j]) > 1) ))
+			{
+				connections.insert(make_pair(nameB, nameA));
+				
+				nodes[ clipIdToNodeIndex[nameA] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+				connectionMesh.addVertex(parser.getAllClips()[i].networkPosition);
+				
+				nodes[ clipIdToNodeIndex[nameB] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+				connectionMesh.addVertex(meta[j].networkPosition);
+			}
+		}
+	}
+	connectionMesh.setMode(OF_PRIMITIVE_LINES);
+	
 }
 
 void CloudsVisualSystemClusterMap::traverse(){
@@ -47,6 +92,8 @@ void CloudsVisualSystemClusterMap::traverse(){
 		traversalMesh.addVertex(clip.networkPosition);
 	}
 	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	
+	
 	
 }
 
@@ -329,7 +376,13 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	
 	ofPushMatrix();
 	ofScale(meshExpansion,meshExpansion,meshExpansion);
+	ofSetColor(200, 150, 80);
 	traversalMesh.draw();
+	ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	ofSetColor(100, 150, 200, 20);
+	connectionMesh.draw();
+	ofPopStyle();
 	ofPopMatrix();
 	
 	ofPopStyle();

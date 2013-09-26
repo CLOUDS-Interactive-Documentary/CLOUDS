@@ -1068,10 +1068,10 @@
 		E7B3C75C17EE291500581ACD /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
-				E7B3C7F617EF75BA00581ACD /* CloudsVisualSystemManager.cpp */,
 				E7B3C7F717EF75BA00581ACD /* CloudsVisualSystemManager.h */,
-				E7B3C7F817EF75BA00581ACD /* CloudsVisualSystemPreset.cpp */,
+				E7B3C7F617EF75BA00581ACD /* CloudsVisualSystemManager.cpp */,
 				E7B3C7F917EF75BA00581ACD /* CloudsVisualSystemPreset.h */,
+				E7B3C7F817EF75BA00581ACD /* CloudsVisualSystemPreset.cpp */,
 				E7B3C7F017EE921500581ACD /* CloudsAct.h */,
 				E7B3C7EF17EE921500581ACD /* CloudsAct.cpp */,
 				E7B3C7ED17EE920D00581ACD /* CloudsStoryEngine.h */,
@@ -1388,6 +1388,7 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1421,6 +1422,7 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",

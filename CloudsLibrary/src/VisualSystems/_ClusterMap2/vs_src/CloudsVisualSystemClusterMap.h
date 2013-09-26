@@ -122,6 +122,9 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	ofImage sprite;
 	ofVboMesh traversalMesh;
 	ofVboMesh clusterMesh;
+	ofVboMesh connectionMesh;
+	
+	
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
 	
