@@ -468,6 +468,13 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         clipHistory.push_back(clip);
         
+        
+        //add clip topic history to run
+        vector<string> topics = clip.getKeywords();
+        for (int i =0; i < topics.size(); i++) {
+            timesOnCurrentTopicHistory[topics[i]]++;
+        }
+
 		///////////////// VISUAL SYSTEMS
 		//check to see if we want to add a visual system
         float clipStartTime = act->getItemForClip(clip).startTime;
@@ -525,7 +532,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         previousTopic = topic;
         totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration * 2;
         timesOnCurrentTopic++;
-        timesOnCurrentTopicHistory[topic]++;
+
     }
 	
     //add the history of the last topic in the act to the timesOnCurrentTopicHistory map of the CloudsRun.
