@@ -46,6 +46,7 @@ class CloudsClip {
     
     //get special # keywords
     vector<string>& getSpecialKeywords();
+
     
     //question topic pairs
 	bool hasQuestion();
@@ -57,6 +58,9 @@ class CloudsClip {
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
     void setDesiredKeywords(vector<string>& desiredKeywords);
+    
+    vector<string> getOverlappingClips();
+    bool hasOverlappingClips();
     
     //called during ParseLinks
     void addKeyword(string keyword);
@@ -80,7 +84,9 @@ class CloudsClip {
 	string getCombinedCalibrationXML();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
+    void addOverlappingClipName(string clipName);
 	
+
 	bool hasCombinedVideo;
 	string combinedVideoPath;
 	string combinedCalibrationXMLPath;
@@ -114,6 +120,7 @@ class CloudsClip {
     vector<string> specialKeywords;        //special Keywords start with #
     vector<string> topicWithQuestions;
     map<string,string> questionTopicMap; //question-topic pairs
+    vector<string> overlappingClips;
     bool keywordsDirty;
     void collateKeywords();
     vector<string> keywords; //collated

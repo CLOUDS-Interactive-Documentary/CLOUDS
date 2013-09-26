@@ -63,6 +63,7 @@ void CloudsFCPParser::refreshXML(){
     }
 	
 	//printSpeakerList();
+    getOverlappingClipIDs();
 	CloudsSpeaker::populateSpeakers();
     refreshAllKeywords();
 }
@@ -710,6 +711,8 @@ bool CloudsFCPParser::keywordsShareLink(string keyA, string keyB){
 	return false;
 }
 
+
+
 void CloudsFCPParser::addXMLFile(string xmlFile){
     ofxXmlSettings fcpXML;
     if(fcpXML.loadFile(xmlFile)){
@@ -797,10 +800,46 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
                 clipIDToIndex[cm.getID()] = allClips.size();
 				clipLinkNameToIndex[cm.getLinkName()] = allClips.size();
 				allClips.push_back(cm);
+                
+                //used for checking overlapping clips
+                cloudsClipToFileID[cm.getLinkName()] =fileID;
+                fileIDtoCloudsClips[fileID].push_back(cm);
+//                cout<<" Adding "<<cm.getLinkName()<<" to  video file : "<<fileID<<endl;
 			}
         }
+
         fcpXML.popTag(); //marker
     }
+}
+
+void CloudsFCPParser::getOverlappingClipIDs(){
+
+    vector<CloudsClip>& allClips = getAllClips();
+
+    for(int i=0; i<allClips.size(); i++){
+        
+        string fileId = cloudsClipToFileID[allClips[i].getLinkName()];
+        vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
+    
+        for(int j =0; j<clipsFromSameFile.size(); j++){
+
+            //        cout<<  "Checking for overlaps between "<< allClips[i].getLinkName() << " and "<< clipsFromSameFile[j].getLinkName()<< endl;
+            
+            if(allClips[i].getLinkName() != clipsFromSameFile[j].getLinkName()){
+                
+                if( ofRange(allClips[i].startFrame,allClips[i].endFrame).intersects(ofRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame))){
+                    
+                    overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
+
+                    allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
+
+                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
+                }
+                
+            }
+        }
+    }
+    
 }
 
 void CloudsFCPParser::printSpeakerList(){

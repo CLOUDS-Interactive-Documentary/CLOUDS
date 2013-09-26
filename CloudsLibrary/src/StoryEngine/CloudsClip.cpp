@@ -55,6 +55,17 @@ string CloudsClip::getStartingQuestion(){
     }
 }
 
+void CloudsClip::addOverlappingClipName( string clipName){
+    overlappingClips.push_back(clipName);
+}
+
+bool CloudsClip::hasOverlappingClips(){
+    return !overlappingClips.empty();
+}
+
+vector<string> CloudsClip::getOverlappingClips(){
+    return overlappingClips;
+}
 void CloudsClip::setStartingQuestion(string question){
     startingQuestion = question;
 }

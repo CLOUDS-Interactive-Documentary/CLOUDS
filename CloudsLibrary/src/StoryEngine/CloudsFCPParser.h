@@ -11,7 +11,7 @@
 #include "CloudsClip.h"
 #include "CloudsLink.h"
 #include <set>
-
+#include "ofRange.h"
 class CloudsFCPParser {
   public:
     
@@ -35,7 +35,12 @@ class CloudsFCPParser {
     void parseLinks(string linkFile);
 //    void parseClusterMap(string mapFile);
 	void parseClusterNetwork(string fileName);
-		
+	
+	void getOverlappingClipIDs();
+    map<string,string> cloudsClipToFileID;
+    map<string, vector<CloudsClip> > fileIDtoCloudsClips;
+    map<string, vector<string> > overlappingClipsMap;
+    
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
