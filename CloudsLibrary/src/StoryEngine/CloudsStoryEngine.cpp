@@ -993,11 +993,27 @@ float CloudsStoryEngine::getHandleForClip(CloudsClip& clip){
 
 bool CloudsStoryEngine::historyContainsClip(CloudsClip& m, vector<CloudsClip>& history){
     string clipLinkName = m.getLinkName();
+    
+    vector<string> overlappingClips;
+    if(m.hasOverlappingClips() ){
+        overlappingClips = m.getOverlappingClips();
+    }
+    
     for(int i = 0; i < history.size(); i++){
         if(clipLinkName == history[i].getLinkName()){
             return true;
         }
+        
+        if (! overlappingClips.empty()) {
+            if(ofContains(overlappingClips, history[i].getLinkName())){
+                
+                cout << "	REJECTED Clip " << m.getLinkName() << ": it overlaps with clip " <<history[i].getLinkName()<<" which has already been visited"<<endl;
+                return true;
+            }
+        }
     }
+    
+
     return false;
 }
 
