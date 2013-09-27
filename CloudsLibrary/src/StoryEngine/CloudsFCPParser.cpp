@@ -874,8 +874,13 @@ void CloudsFCPParser::autolinkSequentialClips(){
                     int compareID = compareName.at(compareName.length() -1 ) - '0';
                     
                     if(compareID == ++clipID){
+                        
+                        //adding link from clip N -1 -> N
                         addLink(allClips[i], getAllClips()[j]);
                         cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
+
+                        //removing clip N fromt clip N-1's overlapping list so that they story engine doesnt reject it.
+                        getAllClips()[i].removeOverlappingClipName(allClips[j].getLinkName());
                     }
                     
                 }

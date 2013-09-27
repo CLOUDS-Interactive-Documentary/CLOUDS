@@ -59,6 +59,14 @@ void CloudsClip::addOverlappingClipName( string clipName){
     overlappingClips.push_back(clipName);
 }
 
+void CloudsClip::removeOverlappingClipName(string clipName) {
+    if(ofContains(overlappingClips, clipName)){
+        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
+        
+        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
+     }
+}
+
 bool CloudsClip::hasOverlappingClips(){
     return !overlappingClips.empty();
 }

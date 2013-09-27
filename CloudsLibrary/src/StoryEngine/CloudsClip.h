@@ -85,7 +85,7 @@ class CloudsClip {
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
     
     void addOverlappingClipName(string clipName);
-	
+	void removeOverlappingClipName(string clipName);
 
 	bool hasCombinedVideo;
 	string combinedVideoPath;
