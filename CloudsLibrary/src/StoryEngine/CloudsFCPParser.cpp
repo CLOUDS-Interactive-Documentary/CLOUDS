@@ -866,7 +866,7 @@ void CloudsFCPParser::autolinkSequentialClips(){
 
                 string compareName =getAllClips()[j].getLinkName();
                 
-                //do the clips have the same name except for the last char i.e the sequence number?
+                //do the clips have the same name except for the last char i.e the sequence number? && are they not the same clip?
                 if( ! clipName.compare(0, clipName.length() -1, compareName, 0, compareName.length() -1)  &&
                     clipName != compareName){
                     
@@ -874,7 +874,8 @@ void CloudsFCPParser::autolinkSequentialClips(){
                     int compareID = compareName.at(compareName.length() -1 ) - '0';
                     
                     if(compareID == ++clipID){
-                        cout<< clipName << " and "<< compareName << " are in sequence" <<endl;    
+                        addLink(allClips[i], getAllClips()[j]);
+                        cout<<"Auto linking "<<allClips[i].getLinkName() << " and "<<getAllClips()[j].getLinkName() << " as they are in sequence" <<endl;
                     }
                     
                 }
