@@ -37,6 +37,8 @@ class CloudsFCPParser {
 	void parseClusterNetwork(string fileName);
 	
 	void getOverlappingClipIDs();
+    void autolinkSequentialClips();
+    
     map<string,string> cloudsClipToFileID;
     map<string, vector<CloudsClip> > fileIDtoCloudsClips;
     map<string, vector<string> > overlappingClipsMap;

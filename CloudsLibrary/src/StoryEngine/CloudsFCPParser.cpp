@@ -64,6 +64,7 @@ void CloudsFCPParser::refreshXML(){
 	
 	//printSpeakerList();
     getOverlappingClipIDs();
+    autolinkSequentialClips();
 	CloudsSpeaker::populateSpeakers();
     refreshAllKeywords();
 }
@@ -817,8 +818,13 @@ void CloudsFCPParser::getOverlappingClipIDs(){
     vector<CloudsClip>& allClips = getAllClips();
 
     for(int i=0; i<allClips.size(); i++){
-        
+        //this map is populated in parseClipItem() .
+        //In terms of FCP XML fileID tag is mapped to link name for clip which comes from the marker tag.
         string fileId = cloudsClipToFileID[allClips[i].getLinkName()];
+        
+        // fileIDTOCloudsClip is also populated in  parseClipItem() using this map to associate
+        //all clips associated with a file id. Here file id is referenced again from the FCP XML
+
         vector<CloudsClip> clipsFromSameFile = fileIDtoCloudsClips[fileId];
     
         for(int j =0; j<clipsFromSameFile.size(); j++){
@@ -830,7 +836,8 @@ void CloudsFCPParser::getOverlappingClipIDs(){
                 if( ofRange(allClips[i].startFrame,allClips[i].endFrame).intersects(ofRange(clipsFromSameFile[j].startFrame,clipsFromSameFile[j].endFrame))){
                     
                     overlappingClipsMap[allClips[i].getLinkName()].push_back(clipsFromSameFile[j].getLinkName());
-
+                    
+                    //adding the overlapping clip name to a vector in the CloudsClip
                     allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
 
                     ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
@@ -840,6 +847,45 @@ void CloudsFCPParser::getOverlappingClipIDs(){
         }
     }
     
+}
+
+
+void CloudsFCPParser::autolinkSequentialClips(){
+
+    vector<CloudsClip>& allClips = getAllClips();
+    
+    for(int i=0; i<allClips.size(); i++){
+        
+        string clipName= allClips[i].getLinkName();
+        string nums = "0123456789";
+        
+        //does the clip name end with a number?
+        if( clipName.find_last_of(nums) == clipName.length() -1){
+            
+            for(int j=0; j<getAllClips().size();j++){
+
+                string compareName =getAllClips()[j].getLinkName();
+                
+                //do the clips have the same name except for the last char i.e the sequence number?
+                if( ! clipName.compare(0, clipName.length() -1, compareName, 0, compareName.length() -1)  &&
+                    clipName != compareName){
+                    
+                    int clipID = clipName.at(clipName.length() -1) - '0';
+                    int compareID = compareName.at(compareName.length() -1 ) - '0';
+                    
+                    if(compareID == ++clipID){
+                        cout<< clipName << " and "<< compareName << " are in sequence" <<endl;    
+                    }
+                    
+                }
+                
+            }
+        }
+
+        
+    }
+
+
 }
 
 void CloudsFCPParser::printSpeakerList(){
