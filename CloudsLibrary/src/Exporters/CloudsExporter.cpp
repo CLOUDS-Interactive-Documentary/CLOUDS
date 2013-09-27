@@ -86,6 +86,11 @@ void CloudsExporter::savePajekNetwork(CloudsFCPParser& parser){
 		CloudsClip& clipA = parser.getAllClips()[i];
 		string nameA = clipA.getLinkName();
 		vector<CloudsClip> connections = parser.getClipsWithKeyword(clipA.getKeywords());
+		vector<CloudsLink> links = parser.getLinksForClip(clipA);
+		for(int l = 0; l < links.size(); l++){
+			connections.push_back(parser.getClipWithLinkName(links[l].targetName));
+		}
+
 		vector<string> connectingNodes;
 		
 		for(int j = 0; j < connections.size(); j++){

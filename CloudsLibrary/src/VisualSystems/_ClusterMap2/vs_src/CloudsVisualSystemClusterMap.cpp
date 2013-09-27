@@ -19,6 +19,10 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 	clusterMesh.clear();
 	clipIdToNodeIndex.clear();
 	
+	ofVec3f centroid(0,0,0);
+	ofVec3f maxBounds(0,0,0);
+	ofVec3f minBounds(0,0,0);
+	
 	for(int i = 0; i < parser.getAllClips().size(); i++){
 		CloudsClusterNode n;
 		CloudsClip& clip = parser.getAllClips()[i];
@@ -28,10 +32,24 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 		
 		clipIdToNodeIndex[clip.getID()] = nodes.size();
 		clusterMesh.addVertex(clip.networkPosition);
+		centroid += clip.networkPosition;
+		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
+							MAX(maxBounds.y,clip.networkPosition.y),
+							MAX(maxBounds.z,clip.networkPosition.z));
+		minBounds = ofVec3f(MIN(minBounds.x,clip.networkPosition.x),
+							MIN(minBounds.y,clip.networkPosition.y),
+							MIN(minBounds.z,clip.networkPosition.z));
 		
 		nodes.push_back(n);
 	}
 	
+	centroid /= nodes.size();
+	float maxDistance = 0;
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		maxDistance = MAX(maxDistance, parser.getAllClips()[i].networkPosition.distance(centroid));
+	}
+	
+	cout << "CENTROID " << centroid << " MAX D " << maxDistance << endl;
 	
 	//add all connections to connection mesh
 	set< pair<string,string> > connections;
@@ -47,7 +65,7 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 //				meta.erase(meta.begin() + l);
 //			}
 //		}
-			
+//
 		for(int l = 0; l < links.size(); l++){
 			meta.push_back(parser.getClipWithLinkName(links[l].targetName));
 		}
@@ -55,21 +73,34 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 		for(int j = 0; j < meta.size(); j++){
 			string nameB = meta[j].getID();
 
-			if( connections.find( make_pair(nameA, nameB) ) == connections.end() &&
+			if( nameA != nameB &&
+			    connections.find( make_pair(nameA, nameB) ) == connections.end() &&
 				connections.find( make_pair(nameB, nameA) ) == connections.end() &&
-			    nameA != nameB &&
 				(parser.clipLinksTo(nameA, nameB) ||
 				(clip.person != meta[j].person &&
 				!parser.linkIsSuppressed(nameA, nameB) &&
 				parser.getNumberOfSharedKeywords(clip, meta[j]) > 1) ))
 			{
-				connections.insert(make_pair(nameB, nameA));
+				connections.insert(make_pair(nameA, nameB));
+				
+				if(clip.networkPosition.distance(centroid) > maxDistance * .6)
+				{
+//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+					continue;
+				}
+				if(meta[j].networkPosition.distance(centroid) > maxDistance * .6 )
+				{
+//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+					continue;
+				}
 				
 				nodes[ clipIdToNodeIndex[nameA] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
-				connectionMesh.addVertex(parser.getAllClips()[i].networkPosition);
+				connectionMesh.addVertex(clip.networkPosition);
+				connectionMesh.addNormal(ofVec3f(0,0,0));
 				
 				nodes[ clipIdToNodeIndex[nameB] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
 				connectionMesh.addVertex(meta[j].networkPosition);
+				connectionMesh.addNormal(ofVec3f(0,0,0));				
 			}
 		}
 	}
@@ -83,17 +114,31 @@ void CloudsVisualSystemClusterMap::traverse(){
 	
 	traversalMesh.clear();
 	for(int  i = 0; i < run->topicHistory.size(); i++){
-		cout << "traversed to topic " << run->topicHistory[i] << endl;
+//		cout << "traversed to topic " << run->topicHistory[i] << endl;
 	}
+	ofVec3f lastPos;
 	for(int i = 0; i < run->clipHistory.size(); i++){
 		CloudsClip& clip = run->clipHistory[i];
 		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
-		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+		
+		//cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+		if(i > 0){
+			for(int s = 1; s < 100; s++){
+				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);
+				traversalMesh.addColor(ofFloatColor());
+			}
+		}
+		lastPos = clip.networkPosition;
 		traversalMesh.addVertex(clip.networkPosition);
+		traversalMesh.addColor(ofFloatColor());
+		
+
+		
+		for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
+			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
+		}
 	}
 	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-	
-	
 	
 }
 
@@ -137,7 +182,15 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	displayGui->setName("Display");
 	displayGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
-//	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
+	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
+	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
+	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
+	
+	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
+	
+	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
+	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
+	
 //	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
 //	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
 //	
@@ -147,13 +200,13 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 //	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
 //	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
 //	displayGui->addSlider("line width", .5, 2.0, &lineWidth);
-//	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
+
 //	displayGui->addSlider("line thickness",  1, 10, &lineThickness);
 //	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
 //
 //	displayGui->addSlider("node bounce", 0, 1.0, &nodeBounce);
 //	displayGui->addSlider("cluster node size", 1, 10, &clusterNodeSize);
-//	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
+
 
 	ofAddListener(displayGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(displayGui);
@@ -258,6 +311,7 @@ void CloudsVisualSystemClusterMap::reloadShaders(){
 //	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
 	ofEnableArbTex();
 
+	lineShader.load(getVisualSystemDataPath() +"shaders/attenuatelines");
 	clusterShader.load(getVisualSystemDataPath() + "shaders/cluster");
 }
 
@@ -301,51 +355,57 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
 	easeCamera.setTarget( clusterMesh.getCentroid() );
 
-	/*
-	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
-	int vertsToHighlight = ofClamp(vertEndIndex,0,traversal.getVertices().size()-1);
+
+//	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
+	int vertEndIndex = ofMap(timeline->getPercentComplete(), 0, 1.0, 0, traversalMesh.getVertices().size());
+	int vertsToHighlight = ofClamp(vertEndIndex,0, traversalMesh.getVertices().size() - 1);
 	int lineDissolveVerts = vertEndIndex*lineDissolve;
 	
 	float nodeSize = powf(traversedNodeSize, 2);
 	for(int i = 0; i < vertsToHighlight; i++){;
 		//		float fade = ofMap(i, vertsToHighlight*.9, vertsToHighlight, 1.0, 0, true);
-		float alpha = ofMap(i, vertEndIndex, vertEndIndex-nodePopLength, 0.0, 1.0, true);
+		float alpha = ofMap(i, vertEndIndex, vertEndIndex - nodePopLength, 0.0, 1.0, true);
 		float dissolveAlpha = 1.0;
 		if(lineDissolveVerts > 0){
 			dissolveAlpha = ofMap(i, lineDissolveVerts, lineDissolveVerts+20, 0.0, 1.0, true);
 		}
 		
-		ofFloatColor currentColor = lineColor->getColorAtPosition(alpha);
-		traversal.setColor(i, currentColor * dissolveAlpha);
-		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
+//		ofFloatColor currentColor = lineColor->getColorAtPosition(alpha);
+//		traversalMesh.setColor(i, currentColor * dissolveAlpha);
+		ofFloatColor currentColor(1.0,0,0,1.0);
+		traversalMesh.setColor(i, currentColor * dissolveAlpha);
+		
+//JG RE ADD NODE POINTS!
+//		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
 			//traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = 1.0;
 			//			cout << "setting color of  line point " << i << " to node index " << endl;
-			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = nodeSize*nodeBounce, alpha;
-			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i] ] = currentColor;
-		}
+//			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = nodeSize*nodeBounce, alpha;
+//			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i] ] = currentColor;
+//		}
+//END RE ADD
 	}
 	
-	for(int i = vertsToHighlight; i < traversal.getVertices().size(); i++){
-		traversal.setColor(i, ofFloatColor(0));
-		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
-			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = 0.0;
-		}
+	for(int i = vertsToHighlight; i < traversalMesh.getVertices().size(); i++){
+		traversalMesh.setColor(i, ofFloatColor(0));
+//JG RE ADD NODE POINTS!
+//		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
+//			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = 0.0;
+//		}
+//END RE ADD		
 	}
 	
-	if(traversal.getVertices().size() > 0){
-		trailHead = traversal.getVertices()[vertsToHighlight];
+	if(traversalMesh.getVertices().size() > 0 && vertsToHighlight < traversalMesh.getVertices().size()-1){
+		trailHead = traversalMesh.getVertices()[vertsToHighlight];
 	}
 	
-	
-	float clusterNodeBaseSize =  clusterNodeSize;
-	vector<ofVec3f>& normals = nodeCloudPoints.getNormals();
-	for(int i = 0; i < nodes.size(); i++){
-		if(nodes[i]->nodePointIndex != -1){
-			normals[ nodes[i]->nodePointIndex ].x = (normals[ nodes[i]->nodePointIndex ].y - normals[ nodes[i]->nodePointIndex ].z)* clusterNodeBaseSize;
-		}
-	}
-	 
-	 */
+//fuck is this?
+//	float clusterNodeBaseSize = clusterNodeSize;
+//	vector<ofVec3f>& normals = nodeCloudPoints.getNormals();
+//	for(int i = 0; i < nodes.size(); i++){
+//		if(nodes[i]->nodePointIndex != -1){
+//			normals[ nodes[i]->nodePointIndex ].x = (normals[ nodes[i]->nodePointIndex ].y - normals[ nodes[i]->nodePointIndex ].z)* clusterNodeBaseSize;
+//		}
+//	}
 	
 }
 
@@ -373,17 +433,24 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 	clusterShader.end();
 	ofDisablePointSprites();
 	ofEnableArbTex();
-	
+
 	ofPushMatrix();
 	ofScale(meshExpansion,meshExpansion,meshExpansion);
 	ofSetColor(200, 150, 80);
 	traversalMesh.draw();
-	ofPushStyle();
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	ofSetColor(100, 150, 200, 20);
-	connectionMesh.draw();
-	ofPopStyle();
 	ofPopMatrix();
+	
+	lineShader.begin();
+	lineShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
+	lineShader.setUniform1f("focalRange", powf(lineFocalRange,2));
+	lineShader.setUniform1f("lineFade", lineAlpha);
+	lineShader.setUniform1f("expansion", meshExpansion);
+	lineShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
+	lineShader.setUniform1f("radius", 300.);
+	
+	ofSetColor(100, 150, 200);	
+	connectionMesh.draw();
+	lineShader.end();
 	
 	ofPopStyle();
 	

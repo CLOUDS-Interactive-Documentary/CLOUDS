@@ -118,8 +118,11 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
 	ofShader clusterShader;
+	ofShader lineShader;
+	ofShader traversalShader;
 	
 	ofImage sprite;
+	
 	ofVboMesh traversalMesh;
 	ofVboMesh clusterMesh;
 	ofVboMesh connectionMesh;
@@ -130,4 +133,13 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	
 	float meshExpansion;
 	float pointSize;
+	
+	float lineAlpha;
+	float lineFocalDistance;
+	float lineFocalRange;
+	float lineDissolve;
+	ofVec3f trailHead;
+	
+	float nodePopLength;
+	float traversedNodeSize;
 };
