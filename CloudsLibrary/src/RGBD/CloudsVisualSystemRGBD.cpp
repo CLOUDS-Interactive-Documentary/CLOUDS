@@ -721,7 +721,12 @@ void CloudsVisualSystemRGBD::selfDraw(){
 			
 //			glDepthFunc(GL_LEQUAL);
 			glEnable(GL_CULL_FACE);
-			glCullFace(GL_BACK);
+			if(bUseOculusRift){
+				glCullFace(GL_FRONT);
+			}
+			else{
+				glCullFace(GL_BACK);
+			}
 			
 			triangulation.draw();
 

@@ -132,8 +132,6 @@ void CloudsVisualSystemClusterMap::traverse(){
 		traversalMesh.addVertex(clip.networkPosition);
 		traversalMesh.addColor(ofFloatColor());
 		
-
-		
 		for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
 			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
 		}
@@ -353,7 +351,7 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
-	easeCamera.setTarget( clusterMesh.getCentroid() );
+//	easeCamera.setTarget( clusterMesh.getCentroid() );
 
 
 //	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
@@ -396,6 +394,8 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	if(traversalMesh.getVertices().size() > 0 && vertsToHighlight < traversalMesh.getVertices().size()-1){
 		trailHead = traversalMesh.getVertices()[vertsToHighlight];
+		easeCamera.setDistance(.01);
+		easeCamera.setTarget(trailHead*meshExpansion);
 	}
 	
 //fuck is this?
