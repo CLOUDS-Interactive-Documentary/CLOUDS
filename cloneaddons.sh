@@ -44,6 +44,7 @@ git clone https://github.com/quinkennedy/ofxRegex
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
+${PREFIX}obviousjim/ofxOculusRift
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
