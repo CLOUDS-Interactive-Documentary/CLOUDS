@@ -135,6 +135,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
+        currentAct->unregisterEvents(currentRun);
 		delete currentAct;
 	}
 	
@@ -231,7 +232,12 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 		ofRemoveListener(this->storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
 	ofAddListener(storyEngine.getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
-	this->storyEngine = &storyEngine;
+    this->storyEngine = &storyEngine;
+}
+
+void CloudsPlaybackController::setRun(CloudsRun &run){
+    this->currentRun = &run;
+
 }
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
@@ -260,11 +266,14 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
+        currentAct->unregisterEvents(currentRun);
 		delete currentAct;
 	}
 
 	currentAct = act;
 	currentAct->registerEvents(this);
+    currentAct->registerEvents(currentRun);
+
 	currentAct->play();
 }
 

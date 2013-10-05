@@ -125,6 +125,7 @@ class CloudsPlaybackController {
 	//set it up with an existing story engine that will register the events
 	void setup();
 	void setStoryEngine(CloudsStoryEngine& storyEngine);
+    void setRun(CloudsRun& run);
 	
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 	
@@ -196,6 +197,7 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
+    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	CloudsVisualSystemRGBD rgbdVisualSystem;
