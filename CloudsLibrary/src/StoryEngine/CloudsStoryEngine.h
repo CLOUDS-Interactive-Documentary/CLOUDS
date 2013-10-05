@@ -27,8 +27,8 @@ class CloudsStoryEngine {
 	
 	void setup();
 	
-	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed);
-	CloudsAct* buildAct(CloudsRun& run, CloudsClip& seed, string topic);
+	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed);
+	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed, string topic);
 	
     void initGui();
     void saveGuiSettings();

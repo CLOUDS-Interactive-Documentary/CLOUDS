@@ -283,21 +283,22 @@ void CloudsStoryEngine::toggleGuis(){
 }
 
 #pragma mark INIT ACT
-CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed){
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
-CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string topic){
+CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
     CloudsAct* act = new CloudsAct();
     float seconds = actLength;
     float totalSecondsEnqueued = 0;
     bool freeTopic = false;
     bool deadEnd = false;
     
-    vector<CloudsClip>& clipHistory = run.clipHistory;
-    vector<string>& presetHistory = run.presetHistory;
-	vector<string>& topicHistory = run.topicHistory;
-    map<string, int>& timesOnCurrentTopicHistory = run.timesOnCurrentTopicHistory;
+    //the run now listens to act events and is updated thorugh them.
+    vector<CloudsClip> localClipHistory = run.clipHistory;
+    vector<string> localPresetHistory = run.presetHistory;
+	vector<string> localTopicHistory = run.topicHistory;
+    map<string, int> localTimesOnCurrentTopicHistory = run.timesOnCurrentTopicHistory;
 	
     //	cout << "*** RUN DEBUG " << clipHistory.size() << " and size of presets " << presetHistory.size() << endl;
     //VS Stuff
@@ -335,12 +336,13 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
 	act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
 	totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-	clipHistory.push_back(clip);
-	topicHistory.push_back(topic);
+	localClipHistory.push_back(clip);
+	localTopicHistory.push_back(topic);
 	
     totalSecondsEnqueued += clip.getDuration()+( gapLengthMultiplier * clip.getDuration() ) * clipHandleDuration*2;
-    timesOnCurrentTopicHistory[topic]++;
+    localTimesOnCurrentTopicHistory[topic]++;
     int timesOnCurrentTopic = 0;
+   
     while( totalSecondsEnqueued < seconds ){
         //scoreStream<<clip.getLinkName()<<","<<topic<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<","<<" "<<endl;
         clipScoreStream<<clip.getLinkName()<<","<<topic<<endl;
@@ -350,7 +352,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         if(freeTopic){
 			string topicLog="";
 			topicScoreStream<<topic<<","<<timesOnCurrentTopic<<" times,,,,"<<endl;
-            string newTopic = selectTopic(act, clip, topicHistory, topic,topicLog);
+            string newTopic = selectTopic(act, clip, localTopicHistory, topic,topicLog);
 			topicScoreStream << topicLog;
             if(newTopic == topic){
 				//We landed on the same topic, we are totally stuck -- end the act!
@@ -362,7 +364,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
             topic = newTopic;
             timesOnCurrentTopic = 1;
             freeTopic = false;
-            topicHistory.push_back(topic);
+            localTopicHistory.push_back(topic);
         }
         //storing a copy of current topic for each clip
         
@@ -404,7 +406,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
             CloudsClip& nextClipOption = nextOptions[ i ];
             string log = "";
             
-            float score = scoreForClip(clipHistory, nextClipOption, topic,log, systemRunning, isPresetIndefinite, moreMenThanWomen,timesOnCurrentTopicHistory[topic]);
+            float score = scoreForClip(localClipHistory, nextClipOption, topic,log, systemRunning, isPresetIndefinite, moreMenThanWomen,localTimesOnCurrentTopicHistory[topic]);
             
             scoreLogPairs.push_back( make_pair(score,log) );
             //            totalPoints += score;
@@ -466,13 +468,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
         act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration,getCurrentDichotomyBalance());
 		float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
-        clipHistory.push_back(clip);
+
+        localClipHistory.push_back(clip);
         
         
         //add clip topic history to run
         vector<string> topics = clip.getKeywords();
         for (int i =0; i < topics.size(); i++) {
-            timesOnCurrentTopicHistory[topics[i]]++;
+            localTimesOnCurrentTopicHistory[topics[i]]++;
         }
 
 		///////////////// VISUAL SYSTEMS
@@ -515,8 +518,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun& run, CloudsClip& seed, string 
                 maxTimeRemainingForVisualSystem = systemMaxRunTime;
 				
                 string log;
-                currentPreset = getVisualSystemPreset(topic, clip, presetHistory, log);
-                presetHistory.push_back(currentPreset.getID());
+                currentPreset = getVisualSystemPreset(topic, clip, localPresetHistory, log);
+                //The run now listens to act events and is updated via them
+                localPresetHistory.push_back(currentPreset.getID());
+                
                 isPresetIndefinite = currentPreset.indefinite;
                 if (!isPresetIndefinite) {
                     definitePresetEndTime = visualSystemStartTime + currentPreset.duration;
