@@ -6,7 +6,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>art vs engineering</additionalKeywords>
+    <additionalKeywords>art vs engineering,?career: Can work and fun be one in the same?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - exciting time</name>
@@ -220,7 +220,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#art,#logical</additionalKeywords>
+    <additionalKeywords>#logical,#art,?future of cinema: What will movies become in the future?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - story medium</name>
@@ -323,7 +323,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#inspiring,#serious,#gold,#conclusion,#sincere,#emotional</additionalKeywords>
+    <additionalKeywords>#emotional,#sincere,#conclusion,#gold,#serious,#inspiring,?storytelling: What&apos;s the purpose of storytelling?</additionalKeywords>
 </clip>
 <clip>
     <name>Aaron - stories through our brains</name>
@@ -49254,6 +49254,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?community: What binds you to this community?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open Frameworks 2</name>
@@ -49301,6 +49302,10 @@
         <endFrame>-1</endFrame>
     </suppress>
     <additionalKeywords>thanks</additionalKeywords>
+</clip>
+<clip>
+    <name>Zach - open source challenge</name>
+    <additionalKeywords>?community: What&apos;s the challenge of maintaining a community of toolmakers?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open CV</name>
@@ -49451,6 +49456,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
+    <additionalKeywords>?sharing: Does the open source ethos exist in non-digital communities?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - action script</name>
@@ -49544,6 +49550,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?programming: What was the gateway drug to creative coding?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - work with Golan</name>
@@ -49552,7 +49559,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>generations</additionalKeywords>
+    <additionalKeywords>generations,?mentors: How did you find your mentor?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - working with golan 2</name>
@@ -49600,7 +49607,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>hackathon,connections</additionalKeywords>
+    <additionalKeywords>hackathon,connections,?working with others: Why collaborate over working alone?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Drawn1</name>
@@ -49699,7 +49706,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#gold,#inspiring</additionalKeywords>
+    <additionalKeywords>#inspiring,#gold,?zen: How do you get into the zone?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Fucking boring</name>
@@ -49887,7 +49894,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>nerd,tribe</additionalKeywords>
+    <additionalKeywords>nerd,tribe,?community: What&apos;s the origin of this community?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - decompiling</name>
@@ -49951,6 +49958,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?open source: How did people learn to code before open source?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - less demo</name>
@@ -50000,7 +50008,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>homogeneity,new media,art vs engineering,?art versus engineering: What&apos;s the difference between an artwork and a demo?</additionalKeywords>
+    <additionalKeywords>homogeneity,new media,art vs engineering,?tech-demo: Where&apos;s the line between demo and poem?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open Frameworks 1</name>
@@ -50109,7 +50117,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>aesthetics and computation,open source,teaching,acu,sharing</additionalKeywords>
+    <additionalKeywords>aesthetics and computation,open source,teaching,acu,sharing,?open frameworks: What&apos;s the origin of openFrameworks?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Open Frameworks 3</name>
@@ -50153,7 +50161,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>struggle with technology,frustration,hybridity</additionalKeywords>
+    <additionalKeywords>struggle with technology,frustration,hybridity,?struggle with technology: Why don&apos;t more artists learn to code?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - emailing the communnity</name>
@@ -50297,6 +50305,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?drawing: How does drawing change the way you see?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - programming 2</name>
@@ -50330,7 +50339,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>code,staring at screens</additionalKeywords>
+    <additionalKeywords>code,staring at screens,?programming: What&apos;s the value of programming as a practice and process?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - Live coding</name>
@@ -50414,7 +50423,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>project example,give everything away</revokedKeywords>
-    <additionalKeywords>personal data,#example</additionalKeywords>
+    <additionalKeywords>personal data,#example,?sharing: Who were the pioneers of sharing source-code?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - processing, publishing</name>
@@ -50454,7 +50463,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>open source</revokedKeywords>
-    <additionalKeywords>sharing,#gold,#tech</additionalKeywords>
+    <additionalKeywords>sharing,#tech,#gold,?sharing: When and how did people start sharing more?</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - more poetry, less demo</name>
@@ -50499,5 +50508,5 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art versus engineering</revokedKeywords>
-    <additionalKeywords>aesthetics,interactivity,art vs engineering,#sincere,#inspiring,#art,#serious,#gold</additionalKeywords>
+    <additionalKeywords>aesthetics,interactivity,art vs engineering,#sincere,#inspiring,#art,#serious,#gold,?tech-demo: When does an experiment become more than just a techo demo?</additionalKeywords>
 </clip>
