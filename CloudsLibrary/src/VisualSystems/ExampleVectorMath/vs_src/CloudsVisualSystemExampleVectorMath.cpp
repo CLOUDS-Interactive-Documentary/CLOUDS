@@ -25,12 +25,29 @@ void CloudsVisualSystemExampleVectorMath::selfSetupGui(){
     customGui->addSlider("Z ROTATION", -10, 10, &rotateAmount.z);
     customGui->addSlider("ROTATION SPEED", -2, 2, &speedOfRotation);
     customGui->addSlider("LINE WIDTH", 1, 20, &lineWidth);
+    
     customGui->addSlider("FADE SPEED", 0.05, 2, &fadeSpeed);
-    customGui->addToggle("AUTO COLOR SHIFT", &bShiftColor);
+    customGui->addSlider("COLOR SHIFT SPEED", 0, 5, &colorShiftSpeed);
 	customGui->addToggle("SHOW AXIS", &bShowAxis);
     customGui->addToggle("AUTO DRAW", &bAutoDraw);
     customGui->addSlider("AUTO DRAW SPEED", 0.1, 3, &autoDrawSpeed);
-	
+	customGui->addSpacer();
+    
+    
+    customGui->addLabel("LINE COLOR", OFX_UI_FONT_SMALL);
+
+    float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
+    float dim = customGui->getGlobalSliderHeight();
+    
+    customGui->addMinimalSlider("R", 0.0, 1.0, &color.r, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("G", 0.0, 1.0, &color.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("B", 0.0, 1.0, &color.b, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
+
+    
+    
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleVectorMath::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -70,20 +87,21 @@ void CloudsVisualSystemExampleVectorMath::selfSetup(){
     maxDrawPointAge = 10;
     fadeSpeed = 10;
     autoDrawSpeed = 2;
-    bShiftColor = true;
-    colorShift = 0;
     bAutoDraw = false;
     colorShiftSpeed = 0.5;
-    lineColor = ofFloatColor::white;
+    color = ofFloatColor::white;
     autoDraw.x = ofRandomf();
     autoDraw.y = ofRandomf();
-    xAxisMin.set(-100,0,0);
-	xAxisMax.set(100,0,0);
-	yAxisMin.set(0,-100,0);
-	yAxisMax.set(0,100,0);
-	zAxisMin.set(0,0,-100);
-	zAxisMax.set(0,0,100);
-    
+    colorShift.x = ofRandomf();
+    colorShift.y = ofRandomf();
+    colorShift.z = ofRandomf();
+    axisSize = 100;
+    xAxisMin.set(-axisSize,0,0);
+	xAxisMax.set(axisSize,0,0);
+	yAxisMin.set(0,-axisSize,0);
+	yAxisMax.set(0,axisSize,0);
+	zAxisMin.set(0,0,-axisSize);
+	zAxisMax.set(0,0, axisSize);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -113,7 +131,7 @@ bool IsInvisible (DrawPoint& pt) {
 
 //normal update call
 void CloudsVisualSystemExampleVectorMath::selfUpdate(){
-
+    drawBackground();
     cam.setPosition(camPos);
     
 
@@ -131,67 +149,47 @@ void CloudsVisualSystemExampleVectorMath::selfUpdate(){
     zAxisMin.rotate(speedOfRotation, rotateAmount);
     zAxisMax.rotate(speedOfRotation, rotateAmount);
 
+    
     if(bAutoDraw) {
-        
         DrawPoint pt;
-        pt.color = lineColor;
+        pt.color = color;
         pt.createdAt = ofGetElapsedTimef();
         pt.pos.x = 400 - ofNoise(autoDraw.x, ofGetElapsedTimef()*autoDrawSpeed)*800;
         pt.pos.y = 300 - ofNoise(autoDraw.y, ofGetElapsedTimef()*autoDrawSpeed)*600;
         pts.push_back( pt );
     }
     
-    if(bShiftColor) {
-        colorShift += ofGetLastFrameTime()*colorShiftSpeed;
-        lineColor.setHsb(ofNoise(colorShift), 1, 1);
+    if(colorShiftSpeed>0) {
+        float h = ofNoise(colorShift.x, ofGetElapsedTimef()*colorShiftSpeed);
+        //float s = ofNoise(colorShift.y, ofGetElapsedTimef()*colorShiftSpeed);
+        float b = 0.5 + (ofNoise(colorShift.z, ofGetElapsedTimef()*colorShiftSpeed)/2.0);
+        color.setHsb(h, 1, b);
     }
-    
-//    while(pts.size() > MAX_N_PTS) {
-//        pts.erase(pts.begin());
-//    }
-    
-//    if(pts.size()>0 && pts[0].color.a<0.3){
-//        ofLogNotice() << "removing element";
-//        pts.erase(pts.begin());
-//    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleVectorMath::selfDraw(){
-	
+
+    
     cam.begin();
     ofPushMatrix();
     ofScale(1, -1, 1);
-    
-    
     ofSetLineWidth(lineWidth);
-    ofSetHexColor(0xFFFFFF);
     
     ofNoFill();
     ofEnableAlphaBlending();
-    //ofBeginShape();
     glBegin(GL_LINE_STRIP);
     for (int i = 0; i < pts.size(); i++){
-        if(i>0 && (pts[i].createdAt - pts[i-1].createdAt) > 0.5) {
-            //float dist = ofDist(pts[i].pos.x, pts[i].pos.y, pts[i-1].pos.x, pts[i-1].pos.y)> 100
-            ofEndShape();
-            ofBeginShape();
+        if(i>0 && (pts[i].createdAt - pts[i-1].createdAt) > 0.3) {
+            glEnd();
+            glBegin(GL_LINE_STRIP);
         } else {
             ofSetColor(pts[i].color.r*255, pts[i].color.g*255, pts[i].color.b*255, pts[i].color.a*255);
             glVertex3f(pts[i].pos.x, pts[i].pos.y, pts[i].pos.z);
-            /*
-            if(bCurveVertices) {
-                ofCurveVertex(pts[i].pos);
-            } else {
-                ofVertex(pts[i].pos);
-            }
-             */
-            //ofVertex(pts[i].pos);
         }
     }
     ofDisableAlphaBlending();
-    //ofEndShape();
     glEnd();
     
     if(bShowAxis)
@@ -252,10 +250,14 @@ void CloudsVisualSystemExampleVectorMath::selfMouseMoved(ofMouseEventArgs& data)
     float x = ofMap(data.x, 0, ofGetWidth(), -(ofGetWidth()/2.0), (ofGetWidth()/2.0));
     float y = ofMap(data.y, 0, ofGetHeight(), -(ofGetHeight()/2.0), (ofGetHeight()/2.0));
 
+//    float x = ofMap(data.x, 0, ofGetWidth(), -1, 1);
+//    float y = ofMap(data.y, 0, ofGetHeight(), -1, 1);
+    
     if(!bAutoDraw) {
         DrawPoint pt;
         pt.pos.set(x, y);
-        pt.color = lineColor;
+        //pt.pos = cam.screenToWorld(ofVec3f(x, y, 0));
+        pt.color = color;
         pt.createdAt = ofGetElapsedTimef();
         pts.push_back( pt );
     }

@@ -103,14 +103,17 @@ protected:
     
     //  Your Stuff
     //
-    float colorShift;
+
     float colorShiftSpeed;
-    bool bShiftColor;
+    ofVec3f colorShift;
+    
     bool bAutoDraw;
     float fadeSpeed;
+    
     ofVec2f autoDraw;
     float autoDrawSpeed;
-    ofFloatColor lineColor;
+    
+    ofFloatColor color;
     float maxDrawPointAge;
     bool bShowAxis;
     ofCamera cam;
@@ -129,6 +132,7 @@ protected:
     ofVec3f	yAxisMax;
     ofVec3f	zAxisMin;
     ofVec3f	zAxisMax;
+    float axisSize;
     
     float lineWidth;
     
