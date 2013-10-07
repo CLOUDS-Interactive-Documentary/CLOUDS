@@ -384,10 +384,6 @@ vector<string>& CloudsAct::getAllTopics(){
     return topicHistory;
 }
 
-//void CloudsAct::addTopicToHistory(string topic){
-//    topicHistory.push_back(topic);
-//}
-
 void CloudsAct::setTopicForClip(string topic, string clipName)
 {
     topicMap[clipName] = topic;

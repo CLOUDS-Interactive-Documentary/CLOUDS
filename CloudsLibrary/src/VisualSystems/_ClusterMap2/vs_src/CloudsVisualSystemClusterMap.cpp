@@ -137,8 +137,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
 		}
 	}
-	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-	
+	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);	
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -395,7 +394,7 @@ void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	if(traversalMesh.getVertices().size() > 0 && vertsToHighlight < traversalMesh.getVertices().size()-1){
 		trailHead = traversalMesh.getVertices()[vertsToHighlight];
-		easeCamera.setDistance(.01);
+		easeCamera.setDistance(100);
 		easeCamera.setTarget(trailHead*meshExpansion);
 	}
 	
