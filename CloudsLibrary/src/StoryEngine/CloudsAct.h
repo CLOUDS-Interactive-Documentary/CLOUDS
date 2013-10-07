@@ -68,7 +68,8 @@ class CloudsAct{
     void populateTime();
     void play();
     void clear();
-
+	
+	
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector<CloudsVisualSystem*> getAllVisualSystems();
@@ -106,7 +107,6 @@ class CloudsAct{
     
 protected:
 
-
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;
     ofxTLFlags* clipsTrack;
@@ -141,6 +141,7 @@ protected:
     map<string, CloudsVisualSystemPreset> visualSystemsMap;
     map<string, ActTimeItem> visualSystemItems;
     map<string, string> topicMap;
+	vector<string> topicHistory;
 	map<string, float> topicDurationMap;
 	
     map<string, CloudsClip> questionsMap;
