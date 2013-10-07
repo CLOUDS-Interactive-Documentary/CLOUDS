@@ -68,6 +68,7 @@ void CloudsAct::populateTime(){
 				if(previousTopic != ""){
 					topicDurationMap[previousTopic] =  item.startTime - currentTopicStartTime;
 				}
+				topicHistory.push_back(previousTopic);
 				currentTopicStartTime = item.startTime;
             }
             
@@ -379,9 +380,9 @@ string CloudsAct::getTopicForClip(CloudsClip& clip){
     return topicMap[ clip.getLinkName() ];
 }
 
-//vector<string>& CloudsAct::getAllTopics(){
-//    return topicHistory;
-//}
+vector<string>& CloudsAct::getAllTopics(){
+    return topicHistory;
+}
 
 //void CloudsAct::addTopicToHistory(string topic){
 //    topicHistory.push_back(topic);
@@ -394,7 +395,7 @@ void CloudsAct::setTopicForClip(string topic, string clipName)
 
 void CloudsAct::clear(){
     clips.clear();
-    //    topicHistory.clear();
+    topicHistory.clear();
     clipMap.clear();
     visualSystemsMap.clear();
     topicMap.clear();

@@ -36,6 +36,7 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
 							MAX(maxBounds.y,clip.networkPosition.y),
 							MAX(maxBounds.z,clip.networkPosition.z));
+		
 		minBounds = ofVec3f(MIN(minBounds.x,clip.networkPosition.x),
 							MIN(minBounds.y,clip.networkPosition.y),
 							MIN(minBounds.z,clip.networkPosition.z));
@@ -83,13 +84,12 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 			{
 				connections.insert(make_pair(nameA, nameB));
 				
-				if(clip.networkPosition.distance(centroid) > maxDistance * .6)
-				{
+				if(clip.networkPosition.distance(centroid) > maxDistance * .6) {
 //					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
-				if(meta[j].networkPosition.distance(centroid) > maxDistance * .6 )
-				{
+				
+				if(meta[j].networkPosition.distance(centroid) > maxDistance * .6 ) {
 //					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
 					continue;
 				}
@@ -113,6 +113,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 	if(run == NULL) return;
 	
 	traversalMesh.clear();
+
 	for(int  i = 0; i < run->topicHistory.size(); i++){
 //		cout << "traversed to topic " << run->topicHistory[i] << endl;
 	}
@@ -121,7 +122,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 		CloudsClip& clip = run->clipHistory[i];
 		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
 		
-		//cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+//		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
 		if(i > 0){
 			for(int s = 1; s < 100; s++){
 				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);
