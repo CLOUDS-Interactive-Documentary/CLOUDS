@@ -51,9 +51,13 @@ ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
 ${PREFIX}Flightphase/ofxTextInputField
+cd ofxTextInputField
+git checkout --track develop
+cd ..
+
 ${PREFIX}obviousjim/ofxRGBDepth
 cd ofxRGBDepth
-git checkout develop
+git checkout --track develop
 cd ..
 
 ${PREFIX}obviousjim/ofxCv
@@ -65,7 +69,7 @@ ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
-git checkout develop
+git checkout --track develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		
