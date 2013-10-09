@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	replecator.setup();
-	replecator.playSystem();
+	replicator.setup();
+	replicator.playSystem();
 }
 
 //--------------------------------------------------------------

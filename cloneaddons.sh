@@ -41,6 +41,8 @@ git clone https://github.com/prisonerjohn/ofxSQLite
 git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
+git clone https://github.com/satoruhiga/ofxAnimationPrimitives
+
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
