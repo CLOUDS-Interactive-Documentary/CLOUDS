@@ -3738,7 +3738,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>society</revokedKeywords>
-    <additionalKeywords>ideas,#rational,#mundane,#obstacle</additionalKeywords>
+    <additionalKeywords>ideas,#obstacle,#mundane,#rational,?art: Why does society need art?</additionalKeywords>
 </clip>
 <clip>
     <name>Binx - art for money</name>
@@ -4709,7 +4709,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#hard,#inspiring,#sincere,journey</additionalKeywords>
+    <additionalKeywords>journey,#sincere,#inspiring,#hard,?creativity: What drives us to be creative?</additionalKeywords>
 </clip>
 <clip>
     <name>Bruce - obsessed with tactics</name>
@@ -11386,7 +11386,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#art,#mundane,#serious,#hard,#sincere,#discouraging</additionalKeywords>
+    <additionalKeywords>#discouraging,#sincere,#hard,#serious,#mundane,#art,?art: Why does society need art?</additionalKeywords>
 </clip>
 <clip>
     <name>Golan - formalism</name>
@@ -17288,7 +17288,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#hard,#tech,#serious,#inspiring</additionalKeywords>
+    <additionalKeywords>#inspiring,#serious,#tech,#hard,?software: What does open source mean?</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - Post-capitalism</name>
@@ -24651,7 +24651,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>art and experience</revokedKeywords>
-    <additionalKeywords>experience,experience design,abstraction,#hard</additionalKeywords>
+    <additionalKeywords>experience,experience design,abstraction,#hard,?perception: How do algorithms alter perception?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - Distributable perceptual model</name>
@@ -24700,7 +24700,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#gold,#hard</additionalKeywords>
+    <additionalKeywords>#hard,#gold,?perception: What is the Gesamtkunstwerk - the ultimate work of art?</additionalKeywords>
 </clip>
 <clip>
     <name>Kevin - human perception</name>
@@ -30261,7 +30261,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#sincere,#inspiring</additionalKeywords>
+    <additionalKeywords>#inspiring,#sincere,?net.art: Is internet art shown in galleries?</additionalKeywords>
 </clip>
 <clip>
     <name>Lindsay - desire for closeness to work</name>
@@ -44626,7 +44626,7 @@
 </clip>
 <clip>
     <name>Regine - new media ghetto</name>
-    <additionalKeywords>#hard,#obstacle,#discouraging,#serious</additionalKeywords>
+    <additionalKeywords>#serious,#discouraging,#obstacle,#hard,?art world: Why does media art remain outside the mainstream?</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - doesn&apos;t matter as long as it&apos;s good</name>
@@ -48753,7 +48753,7 @@
         <endFrame>-1</endFrame>
     </link>
     <revokedKeywords>new media old media</revokedKeywords>
-    <additionalKeywords>art world,art and tech,new media,#rational,#art</additionalKeywords>
+    <additionalKeywords>art world,art and tech,new media,#art,#rational,?art world: What&apos;s wrong with contemporary art?</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - crazy researcher</name>
