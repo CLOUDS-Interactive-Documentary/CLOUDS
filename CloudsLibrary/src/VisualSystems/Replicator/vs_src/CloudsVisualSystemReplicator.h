@@ -4,11 +4,23 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 
-#include "Replecator.h"
+#include "ofxAnimationPrimitives.h"
 
-class CloudsVisualSystemReplecator : public CloudsVisualSystem {
+class CloudsVisualSystemReplicator : public CloudsVisualSystem {
  public:
-	CloudsVisualSystemReplecator();
+	
+	struct Data {
+		float x, y;
+		float w, h;
+		float rx, ry;
+	};
+	
+	typedef ofxAnimationPrimitives::Replicator_<Data> Replicator;
+	
+	Replicator repl;
+	float local_time;
+	
+	CloudsVisualSystemReplicator();
 
 	string getSystemName();
 	
@@ -40,10 +52,5 @@ class CloudsVisualSystemReplecator : public CloudsVisualSystem {
 	
 	void selfSetupRenderGui();
 	void guiRenderEvent(ofxUIEventArgs &e);
-
-	ofxUISuperCanvas *replecatorGui, *drawerGui;
-	
-	Replecator repl;
-	bool regenerate;
 };
 
