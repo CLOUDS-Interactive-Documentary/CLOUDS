@@ -92,8 +92,11 @@ void CloudsVisualSystemReplicator::selfDraw(){
 	ofSetColor(255, 70);
 	
 	ofSetRectMode(OF_RECTMODE_CENTER);
+#if (OF_VERSION_MINOR < 8)
+	glDisable(GL_DEPTH_TEST);
+#else
 	ofDisableDepthTest();
-	
+#endif
 	ofRotateZ(ofSignedNoise(1, 0, 0, local_time * 0.01) * 30);
 	ofRotateY(ofSignedNoise(0, 1, 0, local_time * 0.01) * 180);
 	ofRotateX(ofSignedNoise(0, 0, 1, local_time * 0.01) * 180);
