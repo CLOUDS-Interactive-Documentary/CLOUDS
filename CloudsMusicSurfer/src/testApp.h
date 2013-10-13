@@ -46,10 +46,11 @@ class testApp : public ofBaseApp{
     
     // Luke's stuff
 	// 
-    void startMusic(int mc, int mh, int mr, float musicdur);
+    void startMusic(vector<string> mo, int mh, int mr, float musicdur);
     void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
+    void registerOrchs();
     void pushInterface();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
@@ -65,7 +66,8 @@ class testApp : public ofBaseApp{
     int quadrant;
     float sx, sy, delta;
     float allownote;
-    int mcolor, mharmony, mrhythm;
+    int mharmony, mrhythm;
+    vector<string> morch;
     string mbank;
     
     float MASTERAMP;
@@ -77,18 +79,19 @@ class testApp : public ofBaseApp{
     float tl1, tl2, tl3, bl1;
     
     vector<lukeRhythm> rhythms;
-    vector<lukeColor> colors;
     vector<lukePitchArray> pitches;
     vector<lukePreset> presets;
+    vector<string> orchestra;
     
     vector<lukeSample> looperSamples;
 
     // ui crap
     ofTrueTypeFont theFont;
     lukeButton startbutton, stopbutton, autobutton;
+    vector<lukeButton> orchbutton;
     vector<lukeButton> colorbutton;
     vector<lukeButton> harmonybutton;
     vector<lukeButton> rhythmbutton;
     vector<lukeButton> presetbutton;
-    
+        
 };
