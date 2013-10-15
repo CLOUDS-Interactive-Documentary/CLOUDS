@@ -14,7 +14,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemWorld.h"
 #include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsVisualSystemReplecator.h"
+#include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemMemory.h"
 #include "CloudsVisualSystemPaintBrush.h"
@@ -71,7 +71,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
 	registerVisualSystem( new CloudsVisualSystemWorld() );
 	registerVisualSystem( new CloudsVisualSystemMemory() );
-	registerVisualSystem( new CloudsVisualSystemReplecator() );
+	registerVisualSystem( new CloudsVisualSystemReplicator() );
 	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
 	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
 	registerVisualSystem( new CloudsVisualSystemOcean() );

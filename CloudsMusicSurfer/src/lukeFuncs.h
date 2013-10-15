@@ -42,12 +42,8 @@ struct lukePitchArray {
     int scale;
 };
 
-struct lukeColor {
-    vector<string> instruments;
-};
-
 struct lukePreset {
-    int color;
+    vector<string> instruments;
     int harmony;
     int rhythm;
     float tempo;
@@ -71,7 +67,6 @@ string ptos(int p);
 int scale(int p, int o);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
-void loadcolors(string f, vector<lukeColor>& c);
 void loadpresets(string f, vector<lukePreset>& p);
 
 // luke's audio functions

@@ -41,6 +41,8 @@ git clone https://github.com/prisonerjohn/ofxSQLite
 git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
+git clone https://github.com/satoruhiga/ofxAnimationPrimitives
+
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
@@ -51,9 +53,13 @@ ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
 ${PREFIX}Flightphase/ofxTextInputField
+cd ofxTextInputField
+git checkout --track develop
+cd ..
+
 ${PREFIX}obviousjim/ofxRGBDepth
 cd ofxRGBDepth
-git checkout develop
+git checkout --track develop
 cd ..
 
 ${PREFIX}obviousjim/ofxCv
@@ -65,7 +71,7 @@ ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
-git checkout develop
+git checkout --track develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		

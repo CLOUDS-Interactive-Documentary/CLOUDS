@@ -1175,8 +1175,8 @@
 		E72FF13D17E6A2FA0007780D /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E72FF13E17E6A2FA0007780D /* CloudsVisualSystemCosmic.cpp */,
 				E72FF13F17E6A2FA0007780D /* CloudsVisualSystemCosmic.h */,
+				E72FF13E17E6A2FA0007780D /* CloudsVisualSystemCosmic.cpp */,
 			);
 			name = vs_src;
 			path = ../CloudsLibrary/src/VisualSystems/Cosmic/vs_src;

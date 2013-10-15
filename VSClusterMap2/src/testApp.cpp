@@ -17,7 +17,11 @@ void testApp::setup(){
 	storyEngine.setup();
 	
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-	storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
+	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
+	
+	//act->triggerAllEvents();
+	run.topicHistory = act->getAllTopics();
+	run.clipHistory = act->getAllClips();
 	
 	clusterMap.buildEntireCluster(parser);
 	clusterMap.setRun(run);
