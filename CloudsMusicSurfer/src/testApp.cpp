@@ -57,7 +57,7 @@ void testApp::setup(){
         int q = scale(k, 9);
         cout << k << ": " << ptos(k) << " maps to " << q << ": " << ptos(q) << endl;
     }*/
-    
+        
 }
 
 //--------------------------------------------------------------
@@ -80,29 +80,29 @@ void testApp::draw(){
         stopbutton.draw();
         autobutton.draw();
         ofSetColor(255,255,255,255);
-        theFont.drawString("color:", 50,80);        
-        for(int i = 0;i<colorbutton.size();i++)
+        theFont.drawString("orchestra:", 50,80);
+        for(int i = 0;i<orchbutton.size();i++)
         {
-            colorbutton[i].draw();
+            orchbutton[i].draw();
         }
-        theFont.drawString("harmony:", 50,130);        
+        theFont.drawString("harmony:", 250,130);
         for(int i = 0;i<harmonybutton.size();i++)
         {
             harmonybutton[i].draw();
         }
-        theFont.drawString("rhythm:", 50,180);        
+        theFont.drawString("rhythm:", 250,180);
         for(int i = 0;i<rhythmbutton.size();i++)
         {
             rhythmbutton[i].draw();
         }
-        theFont.drawString("preset:", 50,230);        
+        theFont.drawString("preset:", 250,230);
         for(int i = 0;i<presetbutton.size();i++)
         {
             presetbutton[i].draw();
         }
 
-        theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 200,300);        
-        theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 200,325); 
+        theFont.drawString("volume (up/down keys):" + ofToString(MASTERAMP), 300,300);
+        theFont.drawString("tempo (left/right keys):" + ofToString(MASTERTEMPO), 300,325);
 
         if(ofGetElapsedTimef()-cleartime>0.1) DOCLEAR = false;
     }
@@ -146,14 +146,19 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
         }
         else
         {
-            mcolor = ofRandom(0, 16);
-            mharmony = ofRandom(0, 16);
-            mrhythm = ofRandom(0, 16);
-            for(int j = 0;j<colorbutton.size();j++)
+            for(int j = 0;j<orchbutton.size();j++)
             {
-                colorbutton[j].state = false;
+                orchbutton[j].state = false;
             }
-            colorbutton[mcolor].state = true;
+            morch.clear();
+            for(int j = 0;j<3;j++)
+            {
+                int p = ofRandom(0,orchestra.size());
+                orchbutton[p].state = true;
+                morch.push_back(orchestra[p]);
+            }
+            mharmony = ofRandom(0, pitches.size());
+            mrhythm = ofRandom(0, rhythms.size());
             for(int j = 0;j<harmonybutton.size();j++)
             {
                 harmonybutton[j].state = false;
@@ -164,7 +169,8 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
                 rhythmbutton[j].state = false;
             }
             rhythmbutton[mrhythm].state = true;
-            startMusic(mcolor, mharmony, mrhythm, 5*60.);
+            startMusic(morch, mharmony, mrhythm, 5*60.);
+            DOCLEAR = true;
         }
         if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
@@ -249,7 +255,7 @@ void testApp::mouseReleased(int x, int y, int button){
     if(p) {
         stopbutton.state = false;
         startbutton.state = true;
-        startMusic(mcolor, mharmony, mrhythm, 5*60.);
+        startMusic(morch, mharmony, mrhythm, 5*60.);
     }
     p = stopbutton.test(x, y);
     if(p) {
@@ -262,17 +268,44 @@ void testApp::mouseReleased(int x, int y, int button){
         AUTORUN = 1-AUTORUN;
         autobutton.state = AUTORUN>0;
     }
-    for(int i = 0;i<colorbutton.size();i++)
+    for(int i = 0;i<orchbutton.size();i++)
     {
-        p = colorbutton[i].test(x, y);
+        p = orchbutton[i].test(x, y);
         if(p)
         {
-            for(int j = 0;j<colorbutton.size();j++)
+            orchbutton[i].state = !orchbutton[i].state;
+            if(orchbutton[i].state==true) // add to orchestration list
             {
-                colorbutton[j].state = false;
+                int matched = 0;
+                for(int j = 0;j<morch.size();j++)
+                {
+                    if(morch[j].compare(orchestra[i])==0) // already there
+                    {
+                        matched = 1;
+                    }
+                }
+                if(matched==0) // add
+                {
+                    morch.push_back(orchestra[i]);
+                }
+            
             }
-            colorbutton[i].state = true;
-            mcolor = i;
+            else // remove from orchestration list
+            {
+                int matched = -1;
+                for(int j = 0;j<morch.size();j++)
+                {
+                    if(morch[j].compare(orchestra[i])==0) // already there
+                    {
+                        matched = j;
+                    }
+                }
+                if(matched>-1)
+                {
+                    morch.erase(morch.begin()+matched);
+                }
+                
+            }
         }
     }
     for(int i = 0;i<harmonybutton.size();i++)
@@ -306,9 +339,22 @@ void testApp::mouseReleased(int x, int y, int button){
         p = presetbutton[i].test(x, y);
         if(p)
         {
-            colorbutton[mcolor].state = false;
-            mcolor = presets[i].color;
-            colorbutton[mcolor].state = true;
+            morch.clear();
+            for(int h = 0;h<orchbutton.size();h++)
+            {
+                orchbutton[h].state = false;
+            }
+            for(int j = 0;j<presets[i].instruments.size();j++)
+            {
+                morch.push_back(presets[i].instruments[j]);
+                for(int k = 0;k<orchbutton.size();k++)
+                {
+                    if(orchbutton[k].label.compare(presets[i].instruments[j])==0)
+                    {
+                        orchbutton[k].state = true;
+                    }
+                }
+            }
             harmonybutton[mharmony].state = false;
             mharmony = presets[i].harmony;
             harmonybutton[mharmony].state = true;
@@ -341,50 +387,54 @@ void testApp::pushInterface()
 {
     char sb [2];
     string s;
-    startbutton.init("start", &theFont, 200, 450, 0, 255, 0);
-    stopbutton.init("stop", &theFont, 600, 450, 255, 0, 0);
+    startbutton.init("start", &theFont, 300, 450, 0, 255, 0);
+    stopbutton.init("stop", &theFont, 700, 450, 255, 0, 0);
     stopbutton.state = true;
-    autobutton.init("auto", &theFont, 400, 450, 96, 96, 255);
-    colorbutton.clear();
-    for(int i = 0;i<colors.size();i++)
-    {   
+    autobutton.init("auto", &theFont, 500, 450, 96, 96, 255);
+    // orchestra buttons
+    orchbutton.clear();
+    for(int i = 0;i<orchestra.size();i++)
+    {
         lukeButton c;
-        sprintf(sb, "%.2i", i+1);
-        s = sb;
-        c.init(s, &theFont, 50 + i*30, 100, 192, 192, 64);
-        colorbutton.push_back(c);
+        s = orchestra[i];
+        c.init(s, &theFont, 50, 100 + i*theFont.getLineHeight(), 192, 192, 64);
+        orchbutton.push_back(c);
     }
-    colorbutton[0].state = true;
-    mcolor = 0;
+    orchbutton[0].state = true;
+    morch.clear();
+    morch.push_back(orchestra[0]);
+    // harmony buttons
     harmonybutton.clear();
     for(int i = 0;i<pitches.size();i++)
     {   
         lukeButton c;
         sprintf(sb, "%.2i", i+1);
         s = sb;
-        c.init(s, &theFont, 50 + i*30, 150, 192, 64, 192);
+        c.init(s, &theFont, 250 + i*30, 150, 192, 64, 192);
         harmonybutton.push_back(c);
     }
     harmonybutton[0].state = true;
     mharmony = 0;
+    // rhythm buttons
     rhythmbutton.clear();
     for(int i = 0;i<rhythms.size();i++)
     {   
         lukeButton c;
         sprintf(sb, "%.2i", i+1);
         s = sb;
-        c.init(s, &theFont, 50 + i*30, 200, 64, 192, 192);
+        c.init(s, &theFont, 250 + i*30, 200, 64, 192, 192);
         rhythmbutton.push_back(c);
     }
     rhythmbutton[0].state = true;
     mrhythm = 0;
+    // preset buttons
     presetbutton.clear();
     for(int i = 0;i<presets.size();i++)
     {   
         lukeButton c;
         sprintf(sb, "%.2i", i+1);
         s = sb;
-        c.init(s, &theFont, 50 + i*30, 250, 255, 255, 255);
+        c.init(s, &theFont, 250 + i*30, 250, 255, 255, 255);
         presetbutton.push_back(c);
     }
 
@@ -392,15 +442,11 @@ void testApp::pushInterface()
 
 void testApp::loadRTcmixFiles()
 {
-    loadcolors("colors.txt", colors);
-    cout << "colors:" << endl;
-    for(int i = 0;i<colors.size();i++)
+    registerOrchs();
+    cout << "orchestration:" << endl;
+    for(int i = 0;i<orchestra.size();i++)
     {
-        for(int j = 0;j<colors[i].instruments.size();j++)
-        {
-            cout << colors[i].instruments[j] << " ";
-        }
-        cout << endl;
+        cout << orchestra[i] << endl;
     }
     
     loadrhythms("rhythms.txt", rhythms);
@@ -429,7 +475,10 @@ void testApp::loadRTcmixFiles()
     cout << "presets:" << endl;
     for(int i = 0;i<presets.size();i++)
     {
-        cout << presets[i].color << " ";
+        for(int j = 0;j<presets[i].instruments.size();j++)
+        {
+            cout << presets[i].instruments[j] << " ";
+        }
         cout << presets[i].harmony << " ";
         cout << presets[i].rhythm << " ";
         cout << presets[i].tempo << " ";
@@ -481,7 +530,34 @@ void testApp::loadRTcmixSamples()
     
 }
 
-void testApp::startMusic(int mc, int mh, int mr, float musicdur)
+void testApp::registerOrchs()
+{
+    orchestra.clear();
+    orchestra.push_back("slowwaves");
+    orchestra.push_back("modalbeats");
+    orchestra.push_back("helmholtz");
+    orchestra.push_back("meshbeats");
+    orchestra.push_back("filternoise");
+    orchestra.push_back("lowwavepulse");
+    orchestra.push_back("slowwaveshi");
+    orchestra.push_back("slowmeshbeats");
+    orchestra.push_back("slowwave");
+    orchestra.push_back("strumsine");
+    orchestra.push_back("waveguide");
+    orchestra.push_back("waveguidebeats");
+    orchestra.push_back("phatbeatz");
+    orchestra.push_back("vermontbeatz");
+    orchestra.push_back("waveshipatterned");
+    orchestra.push_back("testloop3");
+    orchestra.push_back("kissmyarp");
+    orchestra.push_back("testloop1");
+    orchestra.push_back("reichomatic");
+    orchestra.push_back("glassomatic");
+    orchestra.push_back("kissmyarpfast");
+    orchestra.push_back("kissmyarpsynch");
+}
+
+void testApp::startMusic(vector<string> mo, int mh, int mr, float musicdur)
 {
     
     float t, beatoffset;
@@ -504,7 +580,7 @@ void testApp::startMusic(int mc, int mh, int mr, float musicdur)
     // =========================
     //
     
-    vector<string> ilist = colors[mc].instruments; // list of instruments
+    vector<string> ilist = mo; // list of instruments
     
     // MODALBEATS
     if (find(ilist.begin(), ilist.end(), "modalbeats") != ilist.end())
@@ -940,5 +1016,5 @@ bool lukeButton::test(int mx, int my)
 {
     float sw = myFont->stringWidth(label);
     float sh = myFont->getLineHeight();
-    return(mx>x&&mx<x+sw&&my>y-sh&&my<y+sh);
+    return(mx>x&&mx<x+sw&&my>y-sh&&my<y);
 }

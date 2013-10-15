@@ -270,30 +270,6 @@ void loadpitches(string f, vector<lukePitchArray>& p)
     }
 }
 
-// load color array
-void loadcolors(string f, vector<lukeColor>& c)
-{
-    string sline;
-    ofFile cfile (ofToDataPath("RTCMIX/"+f));
-    if(!cfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer cbuf(cfile);
-    c.clear();
-    while(!cbuf.isLastLine())
-    {
-        sline=cbuf.getNextLine();
-        lukeColor foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        for(int i = 0;i<temp.size();i++)
-        {
-            foo.instruments.push_back(temp[i]);
-        }        
-        c.push_back(foo);
-    }
-}
-
 // load preset file
 void loadpresets(string f, vector<lukePreset>& p)
 {
@@ -310,11 +286,14 @@ void loadpresets(string f, vector<lukePreset>& p)
         sline=pbuf.getNextLine();
         lukePreset foo;
         vector<string> temp = ofSplitString(sline, " ");
-        foo.color = ofToInt(temp[0])-1;
-        foo.harmony = ofToInt(temp[1])-1;
-        foo.rhythm = ofToInt(temp[2])-1;
-        foo.tempo = ofToFloat(temp[3]);
-        foo.bank = temp[4];
+        for(int i = 0;i<temp.size()-4;i++)
+        {
+            foo.instruments.push_back(temp[i]);
+        }
+        foo.harmony = ofToInt(temp[temp.size()-4])-1;
+        foo.rhythm = ofToInt(temp[temp.size()-3])-1;
+        foo.tempo = ofToFloat(temp[temp.size()-2]);
+        foo.bank = temp[temp.size()-1];
         p.push_back(foo);
     }
 }
