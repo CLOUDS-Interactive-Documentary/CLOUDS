@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>EXAMPLE VECTOR MATH</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>952.000000000</XPosition>
-    <YPosition>110.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROTATION SPEED</Name>
-    <Value>0.443349838</Value>
+    <Value>-0.344827533</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,7 +43,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>COLOR SHIFT SPEED</Name>
-    <Value>0.000000000</Value>
+    <Value>1.083743811</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -63,15 +63,15 @@
 <Widget>
     <Kind>25</Kind>
     <Name>R</Name>
-    <Value>1.000000000</Value>
+    <Value>0.830333292</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>G</Name>
-    <Value>1.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B</Name>
-    <Value>1.000000000</Value>
+    <Value>0.870244622</Value>
 </Widget>

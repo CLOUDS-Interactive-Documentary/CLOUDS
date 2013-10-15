@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F1765DC18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F1765DA18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -28,6 +27,7 @@
 		E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */; };
+		E75039D8180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75039D6180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -134,8 +134,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F1765DA18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemExampleVectorMath.cpp; path = ../../ExampleVectorMath/vs_src/CloudsVisualSystemExampleVectorMath.cpp; sourceTree = "<group>"; };
-		1F1765DB18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemExampleVectorMath.h; path = ../../ExampleVectorMath/vs_src/CloudsVisualSystemExampleVectorMath.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -164,6 +162,8 @@
 		E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E72FF12017E688FE0007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
+		E75039D6180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemExampleVectorMath.cpp; sourceTree = "<group>"; };
+		E75039D7180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemExampleVectorMath.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -505,16 +505,6 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
-		E72FF11317E688F30007780D /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				1F1765DA18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.cpp */,
-				1F1765DB18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.h */,
-			);
-			name = vs_src;
-			path = src/VisualSystems/Replecator/vs_src;
-			sourceTree = "<group>";
-		};
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +518,24 @@
 			);
 			name = VisualSystemsLibrary;
 			path = src/VisualSystemsLibrary;
+			sourceTree = "<group>";
+		};
+		E75039AB180DC33E00B23243 /* ExampleVectorMath */ = {
+			isa = PBXGroup;
+			children = (
+				E75039D5180DC33E00B23243 /* vs_src */,
+			);
+			name = ExampleVectorMath;
+			path = src/VisualSystems/ExampleVectorMath;
+			sourceTree = "<group>";
+		};
+		E75039D5180DC33E00B23243 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E75039D6180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.cpp */,
+				E75039D7180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.h */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E7846DA31713A48B00705E7A /* data */ = {
@@ -1036,8 +1044,8 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E75039AB180DC33E00B23243 /* ExampleVectorMath */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
-				E72FF11317E688F30007780D /* vs_src */,
 			);
 			name = CloudsLibrary;
 			path = ../../CloudsLibrary;
@@ -1070,8 +1078,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ExampleVectorMath" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1158,7 +1164,6 @@
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
-				1F1765DC18030893007D3C27 /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
 				E7CF78491753FEA1006B7D41 /* ofxTLAudioTrack.cpp in Sources */,
@@ -1204,6 +1209,7 @@
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
+				E75039D8180DC33E00B23243 /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
