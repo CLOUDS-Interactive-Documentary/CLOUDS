@@ -5,32 +5,49 @@
 
 #ifndef CLOUDS_NO_VS
 
+//JAMES SYSTEMS
 #include "CloudsVisualSystemDataCascade.h"
-#include "CloudsVisualSystemLSystems.h"
-#include "CloudsVisualSystemVoro.h"
-#include "CloudsVisualSystemVerletForm.h"
-#include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemNeurons.h"
 #include "CloudsVisualSystemVectorFlow.h"
-#include "CloudsVisualSystemWorld.h"
-#include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemForkingPaths.h"
-#include "CloudsVisualSystemMemory.h"
-#include "CloudsVisualSystemPaintBrush.h"
 #include "CloudsVisualSystemOcean.h"
-#include "CloudsVisualSystemLIA.h"
-#include "CloudsVisualSystemFireworks.h"
-#include "CloudsVisualSystemCosmic.h"
-#include "CloudsVisualSystemMarchingCubes.h"
-#include "CloudsVisualSystemOscillations.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemConnectors.h"
 
+//CONTRACTOR SYSTEMS
+//pati
+#include "CloudsVisualSystemLSystems.h"
+#include "CloudsVisualSystemVoro.h"
+#include "CloudsVisualSystemCities.h"
+#include "CloudsVisualSystemWorld.h"
+#include "CloudsVisualSystemMemory.h"
+#include "CloudsVisualSystemPaintBrush.h"
+
+//reza
+#include "CloudsVisualSystemCosmic.h"
+#include "CloudsVisualSystemFlocking.h"
+
+//lars
+#include "CloudsVisualSystemFireworks.h"
+#include "CloudsVisualSystemMarchingCubes.h"
+#include "3DModelVisualSystem.h"
+#include "MandalaVisualSystem.h"
+
+//CODE STORM
+#include "CloudsVisualSystemOscillations.h"
 #include "ScrapeVisualSystem.h"
 #include "WebHistoryVisualSystem.h"
 #include "PagesVisualSystem.h"
 #include "QuineVisualSystem.h"
+
+//COMMISSIONS
+#include "CloudsVisualSystemVerletForm.h"
+#include "CloudsVisualSystemNeurons.h"
+#include "CloudsVisualSystemLaplacianTunnel.h"
+#include "CloudsVisualSystemReplicator.h"
+#include "CloudsVisualSystemLIA.h"
+
+//EXAMPLES
+#include "CloudsVisualSystemExampleVectorMath.h"
 
 #endif
 
@@ -61,32 +78,52 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	presets.clear();
 
-	registerVisualSystem( new CloudsVisualSystemNeurons() );
-	registerVisualSystem( new CloudsVisualSystemLaplacianTunnel() );
-	registerVisualSystem( new CloudsVisualSystemVerletForm() );
-	registerVisualSystem( new CloudsVisualSystemDataCascade() );
-	registerVisualSystem( new CloudsVisualSystemLSystems() );
-	registerVisualSystem( new CloudsVisualSystemVoro() );
-	registerVisualSystem( new CloudsVisualSystemCities() );
-	registerVisualSystem( new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem( new CloudsVisualSystemWorld() );
-	registerVisualSystem( new CloudsVisualSystemMemory() );
-	registerVisualSystem( new CloudsVisualSystemReplicator() );
-	registerVisualSystem( new CloudsVisualSystemForkingPaths() );
-	registerVisualSystem( new CloudsVisualSystemPaintBrush() );
-	registerVisualSystem( new CloudsVisualSystemOcean() );
-	registerVisualSystem( new CloudsVisualSystemLIA() );
-	registerVisualSystem( new CloudsVisualSystemFireworks() );
-	registerVisualSystem( new CloudsVisualSystemMarchingCubes() );
-	registerVisualSystem( new CloudsVisualSystemCosmic() );
-	registerVisualSystem( new CloudsVisualSystemOscillations() );
-	registerVisualSystem( new CloudsVisualSystemRGBDVideo() );
-	registerVisualSystem( new CloudsVisualSystemConnectors() );
-	registerVisualSystem( new ScrapeVisualSystem() );
-	registerVisualSystem( new WebHistoryVisualSystem() );
-	registerVisualSystem( new PagesVisualSystem() );
-	registerVisualSystem( new QuineVisualSystem() );
+	//JAMES SYSTEMS
+	registerVisualSystem(new CloudsVisualSystemDataCascade() );
+	registerVisualSystem(new CloudsVisualSystemVectorFlow() );
+	registerVisualSystem(new CloudsVisualSystemForkingPaths() );
+	registerVisualSystem(new CloudsVisualSystemOcean() );
+	registerVisualSystem(new CloudsVisualSystemRGBDVideo() );
+	registerVisualSystem(new CloudsVisualSystemConnectors() );
 	
+	//CONTRACTOR SYSTEMS
+	//pati
+	registerVisualSystem(new CloudsVisualSystemLSystems() );
+	registerVisualSystem(new CloudsVisualSystemVoro() );
+	registerVisualSystem(new CloudsVisualSystemCities() );
+	registerVisualSystem(new CloudsVisualSystemWorld() );
+	registerVisualSystem(new CloudsVisualSystemMemory() );
+	registerVisualSystem(new CloudsVisualSystemPaintBrush() );
+	
+	//reza
+	registerVisualSystem(new CloudsVisualSystemCosmic() );
+	registerVisualSystem(new CloudsVisualSystemFlocking() );
+	
+	//lars
+	registerVisualSystem(new CloudsVisualSystemFireworks() );
+	registerVisualSystem(new CloudsVisualSystemMarchingCubes() );
+	registerVisualSystem(new CloudsVisualSystem3DModel() );
+	registerVisualSystem(new MandalaVisualSystem() );
+	
+	//CODE STORM
+	registerVisualSystem(new CloudsVisualSystemOscillations() );
+	registerVisualSystem(new ScrapeVisualSystem() );
+	registerVisualSystem(new WebHistoryVisualSystem() );
+	registerVisualSystem(new PagesVisualSystem() );
+	registerVisualSystem(new QuineVisualSystem() );
+	
+	//COMMISSIONS
+	registerVisualSystem(new CloudsVisualSystemVerletForm() );
+	registerVisualSystem(new CloudsVisualSystemNeurons() );
+	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
+	registerVisualSystem(new CloudsVisualSystemReplicator() );
+	registerVisualSystem(new CloudsVisualSystemLIA() );
+	
+	//EXAMPLES
+	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
+	
+
+
     loadPresets();
 
 #endif
