@@ -82,7 +82,8 @@ class CloudsAct{
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     void addClip(CloudsClip clip, string topic, float startTime);    
     void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance);
-    void addGapForVisualSystem(float startTime);
+    void addGapForCadence(CloudsVisualSystemPreset preset,float startTime, float duration);
+    void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
     void addQuestion(CloudsClip clip, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
@@ -91,6 +92,7 @@ class CloudsAct{
     
     void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
+    void updateVsEndTime(CloudsVisualSystemPreset preset, float newEndTime);
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
     
@@ -114,6 +116,7 @@ protected:
     ofxTLFlags* topicsTrack;
     ofxTLFlags* questionsTrack;
     ofxTLFlags* difficultyTrack;
+    ofxTLFlags* vsGapsTrack;
 	
     ActItemType itemType;
 	

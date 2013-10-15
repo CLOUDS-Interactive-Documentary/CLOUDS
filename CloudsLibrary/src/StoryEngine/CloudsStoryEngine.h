@@ -95,6 +95,7 @@ class CloudsStoryEngine {
     float longClipThreshold;
     float longClipFadeInPercent;
 	float getHandleForClip(CloudsClip& clip);
+    float cadenceForTopicChangeMultiplier;
     
     //Story engine decision making parameters
     float topicsInCommonMultiplier;
@@ -107,6 +108,7 @@ class CloudsStoryEngine {
     float easyClipScoreFactor;
 	float offTopicFactor;
 	float distantClipSuppressionFactor;
+
 
 	//Topic selection parameters
 	float topicRelevancyMultiplier;

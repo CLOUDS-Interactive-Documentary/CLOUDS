@@ -30,9 +30,11 @@ CloudsStoryEngine::CloudsStoryEngine(){
     longClipThreshold = 30;
     longClipFadeInPercent = .5;
     actLength = 10 * 60;
+    cadenceForTopicChangeMultiplier =  10;
     
 	lastClipSharesTopicBoost = 10;
 	twoClipsAgoSharesTopicBoost = 10;
+    
     
 	topicRelevancyMultiplier = 100;
     topicsInCommonMultiplier = 10;
@@ -187,6 +189,7 @@ void CloudsStoryEngine::initGui(){
     vsGui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
     vsGui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
     vsGui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
+    vsGui->addSlider("CADENCE FOR TOPIC CHANGE", 1, 30, &cadenceForTopicChangeMultiplier);
     vsGui->autoSizeToFitWidgets();
     
     string filePath;
@@ -486,17 +489,44 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             
             if(isPresetIndefinite){
-                if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
+                //if the indefinite visual system has gone greater than the max run time end the system
+                // and add to the act
+                if(visualSystemDuration > systemMaxRunTime ){
                     if(clip.getDuration() > longClipThreshold){
-                        visualSystemDuration += clip.getDuration()*longClipFadeInPercent;
+                        visualSystemDuration += clip.getDuration()*longClipFadeInPercent;   
+
                     }
-                    
+
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
                     act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
+                
+                //if the topic has changed and the system is still running extend the visual system, push back the clip start time
+                //and then start the new topic after that
+                else if(topic != previousTopic && systemRunning ){
+                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier;
+                    
+                    cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
+                    //updating totalSecondsEnqueued here may not be the best way to do this
+                    totalSecondsEnqueued +=cadenceForTopicChangeMultiplier;
+                    
+                    //pushing back clip start time to account for new gap
+                    act->updateClipStartTime(clip, totalSecondsEnqueued,clipHandleDuration, topic);
+                    float test = totalSecondsEnqueued + clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration * 2;
+
+                    act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
+                    act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
+
+                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+                    systemRunning = false;
+                    lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
+                    
+                }
+
             }
+            //if the definite visual system duartion has been exceeded end the system and add to the act
             else{
                 if(visualSystemDuration > definitePresetEndTime ){
                     definitePresetEndTime = 0;
@@ -545,6 +575,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     
     //TODO: be aware if you have ended on a fixed duration VS to respect its duration
+    //SM:(I think we are doing this now?)
     if(systemRunning){
 		
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
