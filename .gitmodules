@@ -67,4 +67,13 @@
 [submodule "CloudsLibrary/src/VisualSystems/DrawnLine"]
 	path = CloudsLibrary/src/VisualSystems/DrawnLine
 	url = 	git@github.com:CLOUDS-Interactive-Documentary/DrawnLine.git
+[submodule "CloudsLibrary/src/VisualSystems/MandalaVisualSystem"]
+	path = CloudsLibrary/src/VisualSystems/MandalaVisualSystem
+	url = 	git@github.com:CLOUDS-Interactive-Documentary/MandalaVisualSystem.git
+[submodule "CloudsLibrary/src/VisualSystems/Flocking"]
+	path = CloudsLibrary/src/VisualSystems/Flocking
+	url = 	git@github.com:CLOUDS-Interactive-Documentary/Flocking.git
+[submodule "CloudsLibrary/src/VisualSystems/3DModelVisualSystem"]
+	path = CloudsLibrary/src/VisualSystems/3DModelVisualSystem
+	url = 	git@github.com:CLOUDS-Interactive-Documentary/3DModelVisualSystem.git
 	
