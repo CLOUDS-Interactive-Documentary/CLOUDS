@@ -6,9 +6,35 @@
 //
 //
 
-#ifndef __CloudsStoryEngine__CloudsWebSocketConnection__
-#define __CloudsStoryEngine__CloudsWebSocketConnection__
+#pragma once
 
-#include <iostream>
+#include "ofMain.h"
+#include "ofxLibwebsockets.h"
+#include "CloudsEvents.h"
 
-#endif /* defined(__CloudsStoryEngine__CloudsWebSocketConnection__) */
+class CloudsWebSocketConnection {
+  public:
+	CloudsWebSocketConnection();
+	void setup();
+	
+	ofxLibwebsockets::Server server;
+	
+	void onConnect( ofxLibwebsockets::Event& args );
+	void onOpen( ofxLibwebsockets::Event& args );
+	void onClose( ofxLibwebsockets::Event& args );
+	void onIdle( ofxLibwebsockets::Event& args );
+	void onMessage( ofxLibwebsockets::Event& args );
+	void onBroadcast( ofxLibwebsockets::Event& args );
+
+	
+	void actCreated(CloudsActEventArgs& args);
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+    void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(CloudsTopicEventArgs& newTopic);
+    void preRollRequested(CloudsPreRollEventArgs& clip);
+
+};
