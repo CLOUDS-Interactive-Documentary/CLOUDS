@@ -61,7 +61,7 @@ class CloudsAct{
 		ofRemoveListener(events.topicChanged, listener, &ListenerClass::topicChanged);
         ofRemoveListener(events.preRollRequested, listener, &ListenerClass::preRollRequested);
 	}
-	
+
     CloudsAct();
 	~CloudsAct();
 	
