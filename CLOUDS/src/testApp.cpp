@@ -57,7 +57,7 @@ void testApp::setup(){
 			//startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
-			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestionsVector()[0] << endl;
+			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
 	}
 	cout << "Starting with " << startingNodes.size() << endl;

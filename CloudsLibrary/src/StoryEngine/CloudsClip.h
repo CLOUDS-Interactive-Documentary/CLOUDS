@@ -25,43 +25,14 @@ class CloudsClip {
 	
 	ofVec3f networkPosition;
 	
-	//JG took out in replacement for
-    //svg data
-//    ClusterData cluster;
-//	map<string, ofColor> clusterColors;
-    
     float currentScore;
     int startFrame;
     int endFrame;
-
-//    vector<string> keywords;
-    vector<string>& getOriginalKeywords();
-    //used to save out links
-    vector<string>& getAdditionalKeywords();
-    vector<string>& getRevokedKeywords();
-    vector<string>& getAllTopicsWithQuestion();
-    
-    //use everywhere for real keywoords
-	vector<string>& getKeywords();
-    
-    //get special # keywords
-    vector<string>& getSpecialKeywords();
-
-    
-    //question topic pairs
-	bool hasQuestion();
-    map<string,string>& getAllQuestionTopicPairs();
-    void addQuestionTopicPair(string topic, string question);
-    string getQuestionForTopic(string topic);
-    vector<string> getQuestionsVector();
+	
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
     void setDesiredKeywords(vector<string>& desiredKeywords);
-    
-    vector<string> getOverlappingClips();
-    bool hasOverlappingClips();
-    
     //called during ParseLinks
     void addKeyword(string keyword);
     void revokeKeyword(string keyword);
@@ -70,6 +41,30 @@ class CloudsClip {
     bool hasSpecialKeyword(string keyword);
     bool hasKeyword(string keyword);
     
+    vector<string>& getOriginalKeywords();
+    //used to save out links
+    vector<string>& getAdditionalKeywords();
+    vector<string>& getRevokedKeywords();
+    vector<string>& getAllTopicsWithQuestion();
+
+    //use everywhere for real keywoords
+	vector<string>& getKeywords();
+    //get special # keywords
+    vector<string>& getSpecialKeywords();
+    
+    //questions with topics
+    void addQuestionTopicPair(string topic, string question);
+	bool hasQuestion();
+    map<string,string>& getAllQuestionTopicPairs();
+    string getQuestionForTopic(string topic);
+	vector<string> getTopicsWithQuestions();
+    vector<string> getQuestions();
+	
+    //overlapping clips
+    vector<string> getOverlappingClips();
+    bool hasOverlappingClips();
+    
+
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();

@@ -44,11 +44,11 @@ ${PREFIX}obviousjim/ofxAVFVideoPlayer
 ${PREFIX}obviousjim/ofxOculusRift
 ${PREFIX}rezaali/ofxColorPalettes
 ${PREFIX}obviousjim/ofxOcean
-
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
+
 ${PREFIX}Flightphase/ofxTextInputField
 cd ofxTextInputField
 git checkout --track develop

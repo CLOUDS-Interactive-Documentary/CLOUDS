@@ -28,7 +28,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void selfEnd();
     
 	
-	void addQuestion(CloudsClip& q);
+	void addQuestion(CloudsClip& q,string topic, string question);
     void setSelectedQuestion();
 
     void clearQuestions();
@@ -180,8 +180,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofVec3f transitionStartPos, transitionEndPos;
 	ofQuaternion transitionStartRot, transitionEndRot;
 	ofxEasingQuint transitionEase;
-	
-	//ofMatrix4x4 transitionMatrix;
 	
 	RGBDTransitionType transitionType;
 	

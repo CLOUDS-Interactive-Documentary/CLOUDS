@@ -137,7 +137,10 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         
     }
     else if(bang.track == questionsTrack){
-        CloudsQuestionEventArgs args(questionsMap[bang.flag]);
+		CloudsClip& questionClip = questionsMap[bang.flag];
+		string topic = ofSplitString( bang.flag, "??")[0];
+		string question = questionClip.getQuestionForTopic(topic);
+        CloudsQuestionEventArgs args(questionClip,question,topic);
         ofNotifyEvent(events.questionAsked, args);
     }
     else if(bang.track == clipPreRollTrack){
@@ -334,13 +337,11 @@ void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipHandleLength
     actItems.push_back(item);
 }
 
-void CloudsAct::addQuestion(CloudsClip clip, float startTime){
+void CloudsAct::addQuestion(CloudsClip clip, string topic, float startTime){
     ActTimeItem item;
     item.type = Question;
     
-    //making the key the first question for now
-    //TODO: MAKE THIS LESS ARBITRARY
-    item.key = clip.getQuestionsVector()[ofRandom(clip.getQuestionsVector().size()-1)];
+    item.key = clip.getID() + "??" + topic;
     
     item.startTime = startTime;
     //dont care about end time as it will end with visual system;
@@ -351,26 +352,28 @@ void CloudsAct::addQuestion(CloudsClip clip, float startTime){
     
 }
 
-void CloudsAct::removeQuestionAtTime(float startTime, float duration){
-    float endTime = startTime + duration;
-    for(int i =0; i<actItems.size(); i++){
-        if(actItems[i].type == Question){
-            if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
-                questionsMap.erase(actItems[i].key);
-                actItems.erase(actItems.begin() + i);
-                
-            }
-        }
-    }
-}
-
-CloudsClip& CloudsAct::getClipForQuestion(string question){
-    if(questionsMap.find(question) == questionsMap.end()){
-        ofLogError() << "Couldn't find Clip Item with Starting Question " << question;
-        return dummyClip;
-    }
-    return questionsMap[question];
-}
+//NO LONGER USED
+///////
+//void CloudsAct::removeQuestionAtTime(float startTime, float duration){
+//    float endTime = startTime + duration;
+//    for(int i =0; i<actItems.size(); i++){
+//        if(actItems[i].type == Question){
+//            if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
+//                questionsMap.erase(actItems[i].key);
+//                actItems.erase(actItems.begin() + i);
+//            }
+//        }
+//    }
+//}
+/////////////////////
+//
+//CloudsClip& CloudsAct::getClipForQuestion(string question){
+//    if(questionsMap.find(question) == questionsMap.end()){
+//        ofLogError("CloudsAct::getClipForQuestion") << "Couldn't find Clip Item with Starting Question " << question;
+//        return dummyClip;
+//    }
+//    return questionsMap[question];
+//}
 
 vector<CloudsClip>& CloudsAct::getAllClips(){
     return clips;

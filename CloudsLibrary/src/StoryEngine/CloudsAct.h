@@ -69,7 +69,6 @@ class CloudsAct{
     void play();
     void clear();
 	
-	
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector<CloudsVisualSystem*> getAllVisualSystems();
@@ -77,20 +76,20 @@ class CloudsAct{
     vector<string>& getAllTopics();
     
     CloudsClip& getClip(int index);
-    CloudsClip& getClipForQuestion(string question);
+//    CloudsClip& getClipForQuestion(string question);
     CloudsClip& getClipAtTime(float time);
-    
+
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     void addClip(CloudsClip clip, string topic, float startTime);    
-    void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance);
+    void addClip(CloudsClip clip, string topic, float startTime, float handleLength, vector<CloudsDichotomy> currentDichotomiesBalance);
     void addGapForVisualSystem(float startTime);
-    void addQuestion(CloudsClip clip, float startTime);
+    void addQuestion(CloudsClip clip, string topic, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
 
     vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
     
-    void removeQuestionAtTime(float startTime, float endTime);
+//    void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);

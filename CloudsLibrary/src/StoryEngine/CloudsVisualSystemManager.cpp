@@ -48,6 +48,7 @@
 
 //EXAMPLES
 #include "CloudsVisualSystemExampleVectorMath.h"
+#include "CloudsVisualSystemExampleBox2D.h"
 
 #endif
 
@@ -121,8 +122,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	//EXAMPLES
 	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
-	
-
+	registerVisualSystem(new CloudsVisualSystemExampleBox2D() );
 
     loadPresets();
 
