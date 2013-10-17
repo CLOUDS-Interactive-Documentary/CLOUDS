@@ -19,13 +19,8 @@ fi
 git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
-git checkout develop
+git checkout --track develop
 cd ..
-
-git clone git@github.com:rezaali/ofxColorPalettes
-git clone git@github.com:obviousjim/ofxOcean
-
-
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
 git clone https://github.com/satoruhiga/ofxPCL
@@ -42,11 +37,13 @@ git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
 git clone https://github.com/satoruhiga/ofxAnimationPrimitives
-
+git clone https://github.com/vanderlin/ofxBox2d.git
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
 ${PREFIX}obviousjim/ofxOculusRift
+${PREFIX}rezaali/ofxColorPalettes
+${PREFIX}obviousjim/ofxOcean
 
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
