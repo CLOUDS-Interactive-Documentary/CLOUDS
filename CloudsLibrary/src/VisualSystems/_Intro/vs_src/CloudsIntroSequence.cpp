@@ -154,9 +154,9 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		q.cam = &warpCamera;
 		q.font = &font;
 		q.clip = possibleStartQuestions[i];
-//		q.topic = q.clip.getAllTopicsWithQuestion()[0];
-//		q.question = q.clip.getQuestionForTopic(q.topic);
-		
+		q.topic = q.clip.getAllTopicsWithQuestion()[0];
+		q.question = q.clip.getQuestionForTopic(q.topic);
+
 		q.setup();
 		
 		startQuestions.push_back(q);

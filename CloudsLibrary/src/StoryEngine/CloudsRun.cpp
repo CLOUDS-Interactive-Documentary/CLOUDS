@@ -22,10 +22,10 @@ void CloudsRun::clipBegan(CloudsClipEventArgs &args){
     cout<<"Clip began, current run updated"<<endl;
     
     for(int i=0; i< clipHistory.size(); i++){
-        if( clipHistory[i].getLinkName() ==args.chosenClip.getLinkName()){
+        if( clipHistory[i].getLinkName() == args.chosenClip.getLinkName() ){
             break;
         }
-        else if( i ==clipHistory.size() -1){
+        else if( i == clipHistory.size() -1){
           clipHistory.push_back(args.chosenClip);
         }
     }
@@ -37,10 +37,9 @@ void CloudsRun::visualSystemBegan(CloudsVisualSystemEventArgs& args){
     cout<<"VS began, current run updated"<<endl;
     if( ! ofContains(presetHistory, args.preset.getID())){
         presetHistory.push_back(args.preset.getID());
-        
     }
-    
 }
+
 void CloudsRun::visualSystemEnded(CloudsVisualSystemEventArgs& args){
     cout<<"VS ended, current run isnt doing anything about it"<<endl;
 }
