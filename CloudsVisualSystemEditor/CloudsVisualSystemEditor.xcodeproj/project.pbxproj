@@ -2182,10 +2182,10 @@
 		E737791B1778DF1600892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E737791C1778DF1600892646 /* ofxOcean.cpp */,
 				E737791D1778DF1600892646 /* ofxOcean.h */,
-				E78CCB1D17D58D77005F6D77 /* ofxOceanCamera.cpp */,
+				E737791C1778DF1600892646 /* ofxOcean.cpp */,
 				E78CCB1E17D58D77005F6D77 /* ofxOceanCamera.h */,
+				E78CCB1D17D58D77005F6D77 /* ofxOceanCamera.cpp */,
 				E73779201778DF1600892646 /* ofxOceanRenderer.cpp */,
 				E73779211778DF1600892646 /* ofxOceanRenderer.h */,
 				E73779241778DF1600892646 /* ofxOceanTile.cpp */,
@@ -2886,8 +2886,8 @@
 		E7C00FB2180DD33600B5CEF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7C00FB3180DD33600B5CEF1 /* CloudsVisualSystemExampleVectorMath.cpp */,
 				E7C00FB4180DD33600B5CEF1 /* CloudsVisualSystemExampleVectorMath.h */,
+				E7C00FB3180DD33600B5CEF1 /* CloudsVisualSystemExampleVectorMath.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
