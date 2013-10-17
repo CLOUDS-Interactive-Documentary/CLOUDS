@@ -22,6 +22,9 @@ void testApp::setup(){
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis();
+	
+	websockets.setup();
+	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 }
 
@@ -30,11 +33,15 @@ void testApp::actCreated(CloudsActEventArgs& args){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
+		currentAct->unregisterEvents(&websockets);
 		delete currentAct;
 	}
 
+	
 	currentAct = args.act;
 	currentAct->registerEvents(this);
+	currentAct->registerEvents(&websockets);
+	
 	currentAct->play();
     currentAct->getTimeline().enableEvents();
 }

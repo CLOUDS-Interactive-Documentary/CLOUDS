@@ -3,10 +3,9 @@
 #include "ofMain.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsFCPParser.h"
-//#include "CloudsPlaybackController.h"
-//#include "CloudsSound.h"
 #include "ofxUI.h"
 #include "CloudsAct.h"
+#include "CloudsWebSocketConnection.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -30,6 +29,8 @@ class testApp : public ofBaseApp{
 	CloudsStoryEngine storyEngine;
 	CloudsAct* currentAct;
 	CloudsRun run;
+	
+	CloudsWebSocketConnection websockets;
 	
 	//clip events
 	void actCreated(CloudsActEventArgs& args);
