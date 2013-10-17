@@ -370,7 +370,7 @@ void CloudsVisualSystemExampleBox2D::selfMouseReleased(ofMouseEventArgs& data){
 
 void CloudsVisualSystemExampleBox2D::addRandomCircle()
 {
-    float r = ofRandom(circleSizeMin, circleSizeMax);		// a random radius 4px - 20px
+    float r = ofRandom(circleSizeMin, circleSizeMax);
     ofxBox2dCircle circle;
     circle.setPhysics(3, 0.53, 0.1);
     circle.setup(box2d.getWorld(), ofGetWidth()/2, ofGetHeight()/2, r);
