@@ -192,6 +192,7 @@ void CloudsPlaybackController::setup(){
 		ofDirectory dir(getDataPath() + "scratch/");
 		dir.allowExt("aif");
 		dir.allowExt("aiff");
+		dir.allowExt("wav");		
 		dir.allowExt("mp3");
 		dir.sort();
 		dir.listDir();

@@ -631,16 +631,17 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 				break;
 			}
 			adjascentTried = true;
-			vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+			//Try the 5 nearby clips to start with
+			//vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+			vector<string>& adjacentTopics = parser->getKeywordFamily(keyword);
 			if(adjacentTopics.size() == 0){
 				log += ",ERROR,No topics adjacent to " + keyword + "\n";
 				break;
 			}
-			//Try the 5 nearby clips to start with
 			log += ",searching adjacent keywords:\n";
 			log += +",,"+ofJoinString(adjacentTopics, "\n,,") + "\n";
 			
-			presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
+			presets = visualSystems->getPresetsForKeywords( adjacentTopics );
 		}
 	}
 	
