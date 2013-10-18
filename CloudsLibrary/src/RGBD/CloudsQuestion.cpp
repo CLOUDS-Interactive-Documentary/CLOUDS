@@ -47,15 +47,7 @@ void CloudsQuestion::setup(){
 	if(!isSetup){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
-		
-		if(clip.getAllTopicsWithQuestion().size() > 0){
-			topic = clip.getAllTopicsWithQuestion()[0];
-			question = ofToUpper(clip.getQuestionForTopic(topic));
-		}
-		else{
-			ofLogError("CloudsQuestion::setup") << "no topic associated with quesiton clip " << clip.getLinkName() << endl;
-		}
-		
+		question = ofToUpper(question);
 
 		float clockInnerRadius = .9;
 		float clockThickness = .2;
@@ -292,11 +284,11 @@ void CloudsQuestion::mouseMoved(ofMouseEventArgs& args){
 		bool insideHover = currentScreenPoint.distance( ofVec2f(args.x,args.y) ) < screenRadius;
 		if(!hovering && insideHover) {
 			startHovering();
-            cout<<"im hovering isinde the question"<<endl;
+//            cout<<"im hovering isinde the question"<<endl;
 		}
 		else if(hovering && !insideHover){
 			stopHovering();
-            cout<<"stop hovering"<<endl;
+//            cout<<"stop hovering"<<endl;
 		}
 	}
 }

@@ -293,6 +293,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
     CloudsAct* act = new CloudsAct();
     float seconds = actLength;
+	int clipsAdded = 0;
     float totalSecondsEnqueued = 0;
     bool freeTopic = false;
     bool deadEnd = false;
@@ -459,22 +460,31 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         
 		///////////////// QUESTIONS
         //adding all option clips with questions
-        for(int k = 0; k < nextOptions.size(); k++){
-            if(nextOptions[k].getQuestionsVector().size() > 0 &&
-			   parser->clipLinksTo(clip.getLinkName(), nextOptions[k].getLinkName()))
-			{
-				act->addQuestion(nextOptions[k], totalSecondsEnqueued);
-            }
-        }
-        
+		if(clipsAdded > 2){
+			set<string> questionSetTopics;
+			for(int k = 0; k < nextOptions.size(); k++){
+				if(nextOptions[k].hasQuestion() &&
+				   !historyContainsClip(nextOptions[k], localClipHistory))
+				{
+					vector<string> topicsWithQuestions = nextOptions[k].getTopicsWithQuestions();
+					for(int q = 0; q < topicsWithQuestions.size(); q++){
+						//don't add a topic more than once
+						if( questionSetTopics.find(topicsWithQuestions[q]) == questionSetTopics.end() ){
+							act->addQuestion(nextOptions[k], topicsWithQuestions[q], totalSecondsEnqueued);
+							questionSetTopics.insert(topicsWithQuestions[q]);
+						}
+					}
+				}
+			}
+		}
+		
 		//add clip to act
 		clipHandleDuration = getHandleForClip(clip);
         act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration,getCurrentDichotomyBalance());
 		float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
-
         localClipHistory.push_back(clip);
-        
+		clipsAdded++;
         
         //add clip topic history to run
         vector<string> topics = clip.getKeywords();
@@ -499,7 +509,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     }
 
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
-                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+//                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
@@ -533,7 +543,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 if(visualSystemDuration > definitePresetEndTime ){
                     definitePresetEndTime = 0;
                     act->addVisualSystem(currentPreset, visualSystemStartTime, definitePresetEndTime);
-                    act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
+//                    act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
                     systemRunning = false;
                     isPresetIndefinite = true;
                     lastVisualSystemEnded = visualSystemStartTime + definitePresetEndTime;
@@ -587,7 +597,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 }
                 
                 act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
-                act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+                //act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                 systemRunning = false;
                 lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
             }
@@ -596,7 +606,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             if(visualSystemDuration > definitePresetEndTime ){
                 definitePresetEndTime = 0;
                 act->addVisualSystem(currentPreset, visualSystemStartTime, definitePresetEndTime);
-                act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
+                //act->removeQuestionAtTime(visualSystemStartTime, definitePresetEndTime);
                 systemRunning = false;
                 isPresetIndefinite = true;
                 lastVisualSystemEnded = visualSystemStartTime + definitePresetEndTime;
@@ -651,16 +661,17 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 				break;
 			}
 			adjascentTried = true;
-			vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+			//Try the 5 nearby clips to start with
+			//vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+			vector<string>& adjacentTopics = parser->getKeywordFamily(keyword);
 			if(adjacentTopics.size() == 0){
 				log += ",ERROR,No topics adjacent to " + keyword + "\n";
 				break;
 			}
-			//Try the 5 nearby clips to start with
 			log += ",searching adjacent keywords:\n";
 			log += +",,"+ofJoinString(adjacentTopics, "\n,,") + "\n";
 			
-			presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
+			presets = visualSystems->getPresetsForKeywords( adjacentTopics );
 		}
 	}
 	

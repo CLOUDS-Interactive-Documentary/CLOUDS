@@ -6,6 +6,16 @@
 #include "CloudsVisualSystem.h"
 #include "MSAPhysics3D.h"
 
+typedef struct{
+	bool enabled;
+	ofLight light;
+	float currentRot;
+	float spinRadius;
+	ofVec3f spinAxis;
+	float spinSpeed;
+	ofVec3f position;
+} AuxLight;
+
 using namespace msa::physics;
 
 class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
@@ -53,6 +63,8 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
   protected:
 	
 	ofxUISuperCanvas* clothGui;
+	ofxUISuperCanvas* auxLightGuis[3];
+	
 	
 	float clothWidth;
 	float clothHeight;
@@ -68,12 +80,12 @@ class CloudsVisualSystemVerletForm : public CloudsVisualSystem {
 	float springDampening;
 	float springExtend;
 	
+	AuxLight auxLights[3];
+	
 	ofVboMesh mesh;
 	World3D physics;
-//	map<Particle3D*, ofIndexType> particleToMeshIndex;
 	map<ofIndexType, Particle3D*> meshIndexToParticle;
 	map<Particle3D*, vector<ofIndexType> > particleToMeshIndices;
-	
 	
 	void updateNormals();
 	

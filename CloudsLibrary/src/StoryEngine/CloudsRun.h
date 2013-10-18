@@ -6,6 +6,8 @@
 #include "CloudsVisualSystemPreset.h"
 #include "CloudsEvents.h"
 
+#include <set>
+
 // the long game
 class CloudsRun
 {
@@ -19,6 +21,8 @@ class CloudsRun
     map<string, int> timesClipPlayed;
     vector<string> presetHistory;
 	vector<string> topicHistory;
+	set<string> questionTopicHistory;
+	
     map<string, int> timesOnCurrentTopicHistory;
     map<string, int> timesQuestionAsked;
     

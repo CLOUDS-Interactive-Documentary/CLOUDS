@@ -98,8 +98,13 @@
 	}
 	
 	if(key == 'Q'){
-		
-		rgbdVisualSystem.addQuestion(parser.getRandomClip(true,true));
+		CloudsClip& clip = parser.getRandomClip(false,true);
+		if(clip.hasQuestion()){
+			rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0] );
+		}
+		else {
+			cout << "clip " << clip.getLinkName() << " does not have a question!" << endl;
+		}
 	}
 	
 	if(key == 'R'){

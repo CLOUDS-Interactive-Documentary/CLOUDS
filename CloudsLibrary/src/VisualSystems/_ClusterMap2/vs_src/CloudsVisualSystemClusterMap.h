@@ -131,6 +131,8 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
 	vector<CloudsClusterNode> nodes;
 	map<string,int> clipIdToNodeIndex;
 	
+	float maxTraverseAngle;
+	
 	float meshExpansion;
 	float pointSize;
 	

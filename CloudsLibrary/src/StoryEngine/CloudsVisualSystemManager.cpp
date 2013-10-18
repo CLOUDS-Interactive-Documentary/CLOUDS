@@ -48,6 +48,7 @@
 
 //EXAMPLES
 #include "CloudsVisualSystemExampleVectorMath.h"
+#include "CloudsVisualSystemExampleBox2D.h"
 
 #endif
 
@@ -121,8 +122,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	
 	//EXAMPLES
 	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
-	
-
+	registerVisualSystem(new CloudsVisualSystemExampleBox2D() );
 
     loadPresets();
 
@@ -493,6 +493,7 @@ bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, in
 vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
     return suppressedClips[presetID];
 }
+
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
 	keywords[ preset.getID() ] = newKeywords;

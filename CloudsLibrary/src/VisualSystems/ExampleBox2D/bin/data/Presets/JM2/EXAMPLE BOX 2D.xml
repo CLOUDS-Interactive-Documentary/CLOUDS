@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EXAMPLE BOX 2D</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GAVITY CONTROL MODE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRIGGER FORCE</Name>
+    <Value>15.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX OBJECTS</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE MIN SIZE</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE MAX SIZE</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MIN WIDTH</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MAX WIDTH</Name>
+    <Value>30.000001907</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MIN HEIGHT</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MAX HEIGHT</Name>
+    <Value>30.000001907</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FILL</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>STATIC PLATFORMS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RANDOM PLATFORMS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CR</Name>
+    <Value>0.204188481</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CG</Name>
+    <Value>0.225130811</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CB</Name>
+    <Value>0.387434393</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RR</Name>
+    <Value>0.157068059</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RG</Name>
+    <Value>0.178010389</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RB</Name>
+    <Value>0.261779934</Value>
+</Widget>

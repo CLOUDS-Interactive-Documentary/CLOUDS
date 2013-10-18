@@ -131,10 +131,10 @@
         else if([@"Suppressions" isEqualToString:aTableColumn.identifier]){
            return [NSNumber numberWithInt:parser->getSuppressionsForClip(m.getLinkName()).size()];
         }
-        else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
-            string s = m.getStartingQuestion();
-            return [NSString stringWithUTF8String:s.c_str()];
-        }
+//        else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
+//            string s = m.getStartingQuestion();
+//            return [NSString stringWithUTF8String:s.c_str()];
+//        }
         else if([@"Meta Links" isEqualToString:aTableColumn.identifier]){
 			return @"";
 //            return [NSNumber numberWithInt:parser->getNumMetaDataConnections(m)];
@@ -364,20 +364,20 @@ completionsForSubstring:(NSString *)substring
 }
 
 - (void) setQuestionText:(id)sender{
-    //button pressed
-//    CloudsClip m = [self selectedClip];
-	
-	//needs to be the Clip referenced by the main database to have the question stored
-    //get the txt from textfield, get currently select clip, and set it
-    CloudsClip& n = [self selectedClip];
-    string q = [startQuestion.stringValue UTF8String];
-    
-    n.setStartingQuestion(q);
-    
-	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
-	
-	[testViewParent updateViews];
-    [self saveLinks:self];
+//    //button pressed
+////    CloudsClip m = [self selectedClip];
+//	
+//	//needs to be the Clip referenced by the main database to have the question stored
+//    //get the txt from textfield, get currently select clip, and set it
+//    CloudsClip& n = [self selectedClip];
+//    string q = [startQuestion.stringValue UTF8String];
+//    
+//    n.setStartingQuestion(q);
+//    
+//	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
+//	
+//	[testViewParent updateViews];
+//    [self saveLinks:self];
 }
 
 - (IBAction) linkFromMetaTable:(id)sender
@@ -543,7 +543,7 @@ completionsForSubstring:(NSString *)substring
 		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
 		currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
 		
-		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
+//		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
 		revokedList = ofJoinString(m.getRevokedKeywords(), ",");
 		revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
 		
@@ -557,7 +557,7 @@ completionsForSubstring:(NSString *)substring
 		
 		currentKeywords.stringValue = @"";
 		revokedKeywords.stringValue = @"";
-		startQuestion.stringValue = @"";
+//		startQuestion.stringValue = @"";
 		sharedKeywords.stringValue = @"";
 		
 		currentClipLinks.clear();

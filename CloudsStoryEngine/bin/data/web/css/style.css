@@ -1,0 +1,54 @@
+
+body{
+	font-family:'Conv_MateriaPro_Light',Sans-Serif;
+	background-image:url('../imgs/CLOUDS_display-05.png');
+	background-color:#000000;
+	background-size: 100%;
+	background-size: cover;
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:lighter;
+	
+}
+
+.container{
+	width:765px;
+	position:fixed;
+	top:198px;
+	right:283px;
+}
+
+.current_artist_block{
+	background-color:#000000;
+	margin-bottom:33px;
+	padding-bottom:15px;
+}
+
+#artist_name{
+	position:relative;
+	padding-left:19px;
+	padding-top:5px;
+	font-size:52px;
+	font-weight:lighter;
+}
+
+#byline{
+	position:relative;
+	padding-left:19px;
+	padding-top:1px;
+	font-size:35px;
+	font-weight:lighter;
+}
+
+#description{
+	padding-left:19px;
+	padding-top:10px;
+	font-size:26px;
+	line-height:32px;
+}
+
+
+
+
+
+

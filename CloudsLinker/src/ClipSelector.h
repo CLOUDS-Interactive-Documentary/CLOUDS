@@ -23,7 +23,7 @@
     IBOutlet NSTextField* revokedKeywords;
     IBOutlet NSTextField* sharedKeywords;
     
-    IBOutlet NSTextField* startQuestion;
+//    IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
     
     vector<CloudsClip> selectedClips;

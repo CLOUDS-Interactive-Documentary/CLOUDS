@@ -2,11 +2,16 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>321.000000000</XPosition>
-    <YPosition>285.000000000</YPosition>
+    <XPosition>1273.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>JeffA</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JeffB</Name>
+    <Value>0</Value>
 </Widget>
