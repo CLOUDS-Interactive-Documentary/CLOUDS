@@ -297,7 +297,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     bool freeTopic = false;
     bool deadEnd = false;
     
-    //the run now listens to act events and is updated thorugh them.
+    //the run now listens to act events and is updated through them.
+    //making a local copy of the current run to build the new act.
     vector<CloudsClip> localClipHistory = run.clipHistory;
     vector<string> localPresetHistory = run.presetHistory;
 	vector<string> localTopicHistory = run.topicHistory;
@@ -506,7 +507,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 //if the topic has changed and the system is still running extend the visual system, push back the clip start time
                 //and then start the new topic after that
                 else if(topic != previousTopic && systemRunning ){
-                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier;
+                    //putting ofRandom to give it some variation
+                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
                     
                     cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
                     //updating totalSecondsEnqueued here may not be the best way to do this
@@ -573,9 +575,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     //add the history of the last topic in the act to the timesOnCurrentTopicHistory map of the CloudsRun.
     //    timesOnCurrentTopicHistory[topic] += timesOnCurrentTopic;
     
-    
-    //TODO: be aware if you have ended on a fixed duration VS to respect its duration
-    //SM:(I think we are doing this now?)
     if(systemRunning){
 		
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
