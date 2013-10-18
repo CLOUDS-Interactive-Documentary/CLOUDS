@@ -47,15 +47,7 @@ void CloudsQuestion::setup(){
 	if(!isSetup){
 		ofRegisterMouseEvents(this);
 		isSetup = true;
-		
-		if(clip.getAllTopicsWithQuestion().size() > 0){
-			topic = clip.getAllTopicsWithQuestion()[0];
-			question = ofToUpper(clip.getQuestionForTopic(topic));
-		}
-		else{
-			ofLogError("CloudsQuestion::setup") << "no topic associated with quesiton clip " << clip.getLinkName() << endl;
-		}
-		
+		question = ofToUpper(question);
 
 		float clockInnerRadius = .9;
 		float clockThickness = .2;

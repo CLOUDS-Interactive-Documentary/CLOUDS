@@ -1,3 +1,24 @@
+<system name="3DModelVisualSystem_pink elephant">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="3DModelVisualSystem_voronoi">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="3DModelVisualSystem_voronoi knight rider">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Cities_Aura">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -162,7 +183,21 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Connectors_Rotating_Box">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Connectors_Testing">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Connectors_TestingCrap">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -297,6 +332,110 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="ExampleBox2D_JeffA">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleBox2D_JeffB">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_AutoDraw_BlackonWhite">
+    <keywords>drawing</keywords>
+    <suppressions>
+        <clip>Diederick - painting like coding</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shantell - Live performance,</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - every line is a mistake</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - drawn2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_AutoRainbow">
+    <keywords>drawing</keywords>
+    <suppressions>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shantell - Live performance,</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - drawing with Tayoon</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_DrawYourOwnRainbow">
+    <keywords>play|drawing</keywords>
+    <suppressions>
+        <clip>Jen - data viz too serious 2</clip>
+        <clip>Jen - rafael&apos;s cardiogram</clip>
+        <clip>Kevin - no consequences 2</clip>
+        <clip>Lauren - Lifelong project</clip>
+        <clip>Maeda - thinking about interfaces</clip>
+        <clip>Shantell - Kids</clip>
+        <clip>Shantell - big kid</clip>
+        <clip>Theo - Kids interacting</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Golan - instruments</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shantell - take the line further</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Shantell - simple</clip>
+        <clip>Shiffman - Not a visual thinker</clip>
+        <clip>Zach - drawn2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_JeffA">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_JeffB">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_WhiteLine_">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade>A</grade>
+    <enabled>1</enabled>
+</system>
 <system name="Fireworks_Fireworks">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -394,6 +533,20 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+</system>
+<system name="Flocking_Preset1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Flocking_Preset2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
 </system>
 <system name="ForkingPaths_no-preset">
     <keywords></keywords>
@@ -535,6 +688,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="LaplacianTunnel_DefaultGray">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="LaplacianTunnel_LighterTunnelLoop">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -547,7 +707,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
 </system>
 <system name="Lia_LIA_01">
     <keywords></keywords>
@@ -618,6 +778,27 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+</system>
+<system name="MandalaVisualSystem_2001">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="MandalaVisualSystem_laps">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="MandalaVisualSystem_muybridge">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
 </system>
 <system name="Memory_DeFrag">
     <keywords></keywords>
@@ -1029,7 +1210,35 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Ocean_BlueOceanStandin">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Ocean_ChoppyBlueOcean">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="Ocean_ChoppyMountainWaves">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Ocean_Glum">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Ocean_NightOcean">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1044,6 +1253,13 @@
     <enabled>1</enabled>
 </system>
 <system name="Ocean_SlimyGreenOcean">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="Ocean_StretchedBlueOcean">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1170,6 +1386,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="Pages_MeshData">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="PaintBrush_PlayFull">
     <keywords>play|drawing</keywords>
     <suppressions></suppressions>
@@ -1242,28 +1465,35 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
 </system>
 <system name="Replecator_ExamplePreset">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
 </system>
 <system name="Replecator_NewTestPreset">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
 </system>
 <system name="Replecator_Spiral">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
+</system>
+<system name="Replicator_no-preset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
 </system>
 <system name="Scrape_2D In Yo Brain">
     <keywords></keywords>
@@ -1358,6 +1588,13 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="VectorFlow_NewPresetForPatrick">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="VectorFlow_SlowFlow">
     <keywords>nature</keywords>
     <suppressions>
@@ -1423,6 +1660,20 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="VectorFlow_Vortex">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="VectorFlow_WhiteWind">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="VectorFlow_no-preset">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1431,6 +1682,13 @@
     <enabled>1</enabled>
 </system>
 <system name="VerletForm_CameraKeyframeTest">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="VerletForm_ExampleForMarius">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1460,6 +1718,13 @@
 </system>
 <system name="VerletForm_SimpleBalloon">
     <keywords>generative art|formalism|form</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="VerletForm_Tower">
+    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>

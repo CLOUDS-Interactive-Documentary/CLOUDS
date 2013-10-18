@@ -25,7 +25,7 @@ vector<ofColor> CloudsVisualSystemVerletForm::initColors(int row) {
 }
 
 CloudsVisualSystemVerletForm::CloudsVisualSystemVerletForm(){
-
+	
 	springStrength = .1;
 	springDampening = .1;
 	
@@ -41,7 +41,6 @@ string CloudsVisualSystemVerletForm::getSystemName(){
 }
 
 void CloudsVisualSystemVerletForm::selfSetup(){
-
 
 }
 
@@ -205,7 +204,29 @@ void CloudsVisualSystemVerletForm::selfSetupGuis(){
 	
     guis.push_back(clothGui);
     guimap[clothGui->getName()] = clothGui;
+
 	
+	for(int i = 0; i < 3; i++){
+		
+		auxLightGuis[i] = new ofxUISuperCanvas("AUX LIGHT " + ofToString(i), gui);
+		auxLightGuis[i]->copyCanvasStyle(gui);
+		auxLightGuis[i]->copyCanvasProperties(gui);
+		auxLightGuis[i]->setName("AuxLight " + ofToString(i));
+		auxLightGuis[i]->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+		auxLightGuis[i]->addToggle("ENABLE", &auxLights[i].enabled);
+		auxLightGuis[i]->addSlider("SPIN RADIUS", 100, 400, &auxLights[i].spinRadius);
+		auxLightGuis[i]->addMinimalSlider("SPIN AXIS X", -1, 1, &auxLights[i].spinAxis.x);
+		auxLightGuis[i]->addMinimalSlider("SPIN AXIS Y", -1, 1, &auxLights[i].spinAxis.y);
+		auxLightGuis[i]->addMinimalSlider("SPIN AXIS Z", -1, 1, &auxLights[i].spinAxis.z);
+		auxLightGuis[i]->addSlider("SPIN SPEED", 0, 4, &auxLights[i].spinSpeed);
+		
+		ofAddListener(auxLightGuis[i]->newGUIEvent, this, &CloudsVisualSystemVerletForm::selfGuiEvent);
+		
+		guis.push_back(auxLightGuis[i]);
+		guimap[clothGui->getName()] = auxLightGuis[i];
+
+	}
 }
 
 void CloudsVisualSystemVerletForm::selfPresetLoaded(string presetPath){
@@ -267,34 +288,36 @@ void CloudsVisualSystemVerletForm::selfDraw(){
 	ofEnableAlphaBlending();
 	
 	
-//	glLightModelf(<#GLenum pname#>, <#GLfloat param#>)
-	//glShadeModel(GL_FLAT);
-	
-	//update normals
-
-	ofSetGlobalAmbientColor( ofColor(0,0,0) );
-	mesh.draw();
-	
-	
-	//mesh.drawVertices();
-	/*
-	ofPushStyle();
-	int x = 0;
-	int y = 0;
-	for(int c = 0; c < colors.size(); c++ ){
+	for(int i = 0; i < 3; i++){
 		
-		ofSetColor( colors[c] );
-		
-		ofRect(x,y,19,19);
-		x+=20;
-		
-		if(x > ofGetWidth()-20) {
-			x=0;
-			y+=20;
+		if(!auxLights[i].enabled){
+			continue;
 		}
+		
+		auxLights[i].currentRot += auxLights[i].spinSpeed;
+		ofVec3f source;
+		if(auxLights[i].spinAxis.isAligned(ofVec3f(0,1,0))){
+			source = ofVec3f(1,0.0,0).getCrossed(auxLights[i].spinAxis).normalized();
+		}
+		else{
+			source = ofVec3f(0,1,0).getCrossed(auxLights[i].spinAxis).normalized();
+		}
+		ofVec3f newPosition = source.getRotated(auxLights[i].currentRot, auxLights[i].spinAxis) * auxLights[i].spinRadius;
+		auxLights[i].light.setPosition( newPosition );
+//		auxLights[i].light.setAttenuation(1.0*ofGetMouseX()/ofGetWidth());
+		auxLights[i].light.enable();
 	}
-	ofPopStyle();
-	*/
+	
+	mat->begin();
+	glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
+
+	mesh.draw();
+	mat->end();
+	
+	for(int i = 0; i < 3; i++){
+		if(auxLights[i].enabled) auxLights[i].light.disable();
+	}
+	
 }
 
 void CloudsVisualSystemVerletForm::selfExit(){

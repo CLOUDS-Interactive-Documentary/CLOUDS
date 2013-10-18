@@ -13,13 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxBox2d.h"
 
-#define MAX_N_PTS         1500
 
-struct DrawPoint {
-    ofVec3f pos;
-    ofFloatColor color;
-    float createdAt;
-};
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {

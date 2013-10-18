@@ -278,12 +278,11 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 	}
-	
-//	generator.update();
+
 }
 
 //--------------------------------------------------------------
-void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
+void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic, string question){
 	
 	for(int i = 0; i < questions.size(); i++){
 		if(questionClip.getID() == questions[i]->clip.getID()){
@@ -292,10 +291,14 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip){
 			return;
 		}
 	}
+	
 	CloudsQuestion* q = new CloudsQuestion();
 	q->cam = &cloudsCamera;
 	q->font = &displayFont;
 	q->clip = questionClip;
+	q->topic = topic;
+	q->question = question;
+	
 	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
 								+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
 										  ofRandom(-questionYRange,questionYRange),

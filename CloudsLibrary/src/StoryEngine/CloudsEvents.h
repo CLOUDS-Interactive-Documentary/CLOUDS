@@ -34,19 +34,20 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
   public:
 	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
 		: preset(preset)
-	{
-	}
+	{}
 
 	CloudsVisualSystemPreset& preset;
 };
 
 class CloudsQuestionEventArgs : public ofEventArgs{
    public:
-    CloudsQuestionEventArgs(CloudsClip& questionClip) :questionClip(questionClip)
-    {
-
-    }
+    CloudsQuestionEventArgs(CloudsClip& questionClip, string question, string topic)
+		: questionClip(questionClip), question(question), topic(topic)
+    {}
+	
     CloudsClip& questionClip;
+	string question;
+	string topic;
 };
 
 class CloudsPreRollEventArgs : public ofEventArgs{
