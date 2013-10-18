@@ -332,16 +332,58 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
-<system name="ExampleVectorMath_AutoDraw_BlackonWhite">
+<system name="ExampleBox2D_JeffA">
     <keywords></keywords>
     <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleBox2D_JeffB">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="ExampleVectorMath_AutoDraw_BlackonWhite">
+    <keywords>drawing</keywords>
+    <suppressions>
+        <clip>Diederick - painting like coding</clip>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Kyle_MC - Eyewriter</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shantell - Live performance,</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - every line is a mistake</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - drawn2</clip>
+    </suppressions>
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="ExampleVectorMath_AutoRainbow">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>drawing</keywords>
+    <suppressions>
+        <clip>Golan - yellow tail</clip>
+        <clip>Jer - Thought it was boring</clip>
+        <clip>Maeda - last trick</clip>
+        <clip>Maeda - I can still draw</clip>
+        <clip>Shantell - meeting zach</clip>
+        <clip>Shantell - work with zach</clip>
+        <clip>Shantell - full circle</clip>
+        <clip>Shantell - Live performance,</clip>
+        <clip>Shantell - live drawing</clip>
+        <clip>Shantell - circularity</clip>
+        <clip>Zach - Drawn1</clip>
+        <clip>Zach - drawn2</clip>
+        <clip>Zach - drawing with Tayoon</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>

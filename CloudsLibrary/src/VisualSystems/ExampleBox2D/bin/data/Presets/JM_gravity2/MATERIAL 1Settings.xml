@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>170.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
-    <Value>0.848167539</Value>
+    <Value>0.643979073</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
