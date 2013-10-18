@@ -364,13 +364,13 @@ void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){
             if (bCircles && (speed.x > 0 || !bRects)) {
                 // create circles
                 float r = getGaussian()*circleSizeDev + circleSizeMean;
-                addCircle(curMouse, speed/2, r);
+                addCircle(curMouse, speed, r);
             }
             else if (bRects && (speed.x < 0 || !bCircles)) {
                 // create rects
                 float w = getGaussian()*rectSizeDev + rectSizeMean;
                 float h = getGaussian()*rectSizeDev + rectSizeMean;
-                addRect(curMouse, speed/2, ofVec2f(w, h));
+                addRect(curMouse, speed, ofVec2f(w, h));
             }
         }
         
@@ -435,6 +435,7 @@ void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float r
     circle.setPhysics(3, 0.53, 0.1);
     circle.setup(box2d.getWorld(), pos.x, pos.y, rad);
     circle.setVelocity(vel);
+    circle.setRotation(ofRandom(180));
     circles.push_back(circle);
 }
 
@@ -445,6 +446,7 @@ void CloudsVisualSystemExampleBox2D::addRect(ofVec2f pos, ofVec2f vel, ofVec2f s
     rect.setPhysics(3, 0.53, 0.1);
     rect.setup(box2d.getWorld(), pos.x, pos.y, size.x, size.y);
     rect.setVelocity(vel);
+    rect.setRotation(ofRandom(180));
     rects.push_back(rect);
 }
 
