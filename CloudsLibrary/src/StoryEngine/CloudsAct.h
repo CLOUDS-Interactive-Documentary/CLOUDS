@@ -84,8 +84,7 @@ class CloudsAct{
     void addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance);
     void addGapForCadence(CloudsVisualSystemPreset preset,float startTime, float duration);
     void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
-    void addQuestion(CloudsClip clip, float startTime);
-
+    void addQuestion(CloudsClip clip, string topic, float startTime);
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
 

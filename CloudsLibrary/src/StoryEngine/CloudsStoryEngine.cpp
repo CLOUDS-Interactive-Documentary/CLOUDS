@@ -531,7 +531,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
                     act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
 
-                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+//                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                     
@@ -648,7 +648,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 		
 		for(int i = 0; i < presets.size(); i++){
 			string presetLog;
-			presets[i].currentScore = scoreForVisualSystem(presets[i], presetHistory, keyword, currentClip.getKeywords(), presetLog);
+			presets[i].currentScore = scoreForVisualSystem(presets[i], currentClip, presetHistory, keyword, currentClip.getKeywords(), presetLog);
 			topScore = MAX(presets[i].currentScore, topScore);
 			scoreLogPairs.push_back( make_pair(presets[i].currentScore, presetLog) );
 		}
@@ -697,13 +697,18 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
     return preset;
 }
 
-float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log){
+float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log){
 	log += ",,"+preset.getID() + ",";
 	if(!preset.enabled){
 		log += "rejected because it's disabled";
 		return 0;
 	}
 	
+    if(visualSystems->isClipSuppressed(preset.getID(), clip.getLinkName())){
+		log += "rejected because the system is suppressed for this clip";
+		return 0;
+    }
+       
 	if(ofContains(presetHistory, preset.getID())){
 		log += "rejected because we've seen it before";
 		return 0;
