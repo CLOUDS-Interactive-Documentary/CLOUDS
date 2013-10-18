@@ -52,6 +52,7 @@ timeline*.xml
 score.csv
 /CLOUDS/bin/data/CloudsData/
 /CloudsData/visualsystems/_keywordAssociations/keywords_backup*
+/CloudsData/links/visualsystems_keywords_db_backup*
 /CloudsData/links/clouds_link_db_backup*
 /CloudsStoryEngine/bin/data/clipScore.csv
 /CloudsStoryEngine/bin/data/topicScores.csv
