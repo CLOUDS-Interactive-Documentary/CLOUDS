@@ -46,14 +46,14 @@ float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / 23.976; //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
-string CloudsClip::getStartingQuestion(){
-    if(startingQuestion.empty()){
-        return "-";
-    }
-    else{
-		return startingQuestion;
-    }
-}
+//string CloudsClip::getStartingQuestion(){
+//    if(startingQuestion.empty()){
+//        return "-";
+//    }
+//    else{
+//		return startingQuestion;
+//    }
+//}
 
 void CloudsClip::addOverlappingClipName( string clipName){
     overlappingClips.push_back(clipName);
@@ -74,11 +74,11 @@ bool CloudsClip::hasOverlappingClips(){
 vector<string> CloudsClip::getOverlappingClips(){
     return overlappingClips;
 }
-void CloudsClip::setStartingQuestion(string question){
-    startingQuestion = question;
-}
+//void CloudsClip::setStartingQuestion(string question){
+//    startingQuestion = question;
+//}
 bool CloudsClip::hasStartingQuestion(){
-    return !startingQuestion.empty();
+	return hasQuestion() && hasSpecialKeyword("#start");
 }
 bool CloudsClip::hasAdditionalKeywords(){
     return !additionalKeywords.empty();

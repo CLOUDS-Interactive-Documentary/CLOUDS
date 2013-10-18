@@ -299,6 +299,8 @@ void CloudsVisualSystemRGBD::addQuestion(CloudsClip& questionClip, string topic,
 	q->topic = topic;
 	q->question = question;
 	
+	cout << "adding question " << q->clip.getLinkName() << " " << q->question << " " << q->topic << endl;
+	
 	ofVec3f startPosition = ofVec3f(questionXZ.x, questionYCenter, questionXZ.z)
 								+ ofVec3f(ofRandom(-questionDriftRange,questionDriftRange),
 										  ofRandom(-questionYRange,questionYRange),

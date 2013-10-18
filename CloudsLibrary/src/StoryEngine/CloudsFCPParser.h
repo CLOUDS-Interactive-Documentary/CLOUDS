@@ -86,6 +86,7 @@ class CloudsFCPParser {
     bool clipHasRevokedKeywords(CloudsClip& clip);
     bool clipHasAdditionalKeywords(CloudsClip& clip);
     
+	//old way
     //are there any starting Questions?
     bool clipHasStartingQuestions(CloudsClip& clip);
     bool clipHasStartingQuestions(string clipName);
@@ -165,8 +166,10 @@ class CloudsFCPParser {
     
     vector<string> keywordVector;
     vector<string> contentKeywordVector;
+	
+	vector<int> questionIndeces;
+	vector<int> startQuestionIndeces;
 	vector<int> hasCombinedVideoIndeces;
-	vector<string> questionIds;
 	vector<int> hasCombinedVideoAndQuestionIndeces;
 	vector<int> hasCombinedAndIsStartingClipIndeces;
 	

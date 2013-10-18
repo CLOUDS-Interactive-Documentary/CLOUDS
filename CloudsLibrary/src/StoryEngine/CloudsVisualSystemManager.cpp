@@ -493,6 +493,7 @@ bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip, in
 vector<string>& CloudsVisualSystemManager::getSuppressionsForPreset(string presetID){
     return suppressedClips[presetID];
 }
+
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& newKeywords ){
 	keywords[ preset.getID() ] = newKeywords;

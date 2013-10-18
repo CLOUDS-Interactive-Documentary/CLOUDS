@@ -88,7 +88,7 @@ void CloudsFCPParser::parseLinks(string linkFile){
     
     linkedConnections.clear();
 	suppressedConnections.clear();
-	questionIds.clear();
+//	questionIds.clear();
 	
     int totalLinks = 0;
     ofxXmlSettings linksXML;
@@ -165,19 +165,19 @@ void CloudsFCPParser::parseLinks(string linkFile){
 			}
 		}
 		
-		if(startQuestion > 0){
-			string question = linksXML.getValue("startingQuestion", "");
-			bool hasQuestionClip;
-			CloudsClip& c = getClipWithLinkName(clipName,hasQuestionClip);
-			if(hasQuestionClip){
-				c.setStartingQuestion(question);
-				questionIds.push_back( c.getID() );
-                //				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
-			}
-			else{
-				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
-			}
-		}
+//		if(startQuestion > 0){
+//			string question = linksXML.getValue("startingQuestion", "");
+//			bool hasQuestionClip;
+//			CloudsClip& c = getClipWithLinkName(clipName,hasQuestionClip);
+//			if(hasQuestionClip){
+//				c.setStartingQuestion(question);
+//				questionIds.push_back( c.getID() );
+//                //				cout << c.getID() << " has question: " << c.getStartingQuestion() << endl;
+//			}
+//			else{
+//				ofLogError("CloudsFCPParser::parseLinks") << clipName << " not found! has question " << question;
+//			}
+//		}
         
 		//add revoked and additional keywords
         if(numRevoked > 0){
@@ -455,11 +455,11 @@ void CloudsFCPParser::saveLinks(string linkFile){
 		
 		bool hasLink = clipHasLink( allClips[i]);
 		bool hasSuppressed = clipHasSuppressions( allClips[i] );
-        bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
+//        bool hasStartingQuestion = clipHasStartingQuestions(allClips[i]);
 		bool hasRevokedKeywords = clipHasRevokedKeywords(allClips[i]);
         bool hasAdditionalKeywords = clipHasAdditionalKeywords(allClips[i]);
         
-        if(hasLink || hasSuppressed || hasStartingQuestion || hasRevokedKeywords || hasAdditionalKeywords){
+        if(hasLink || hasSuppressed || /*hasStartingQuestion ||*/ hasRevokedKeywords || hasAdditionalKeywords){
 			
 			linksXML.addTag("clip");
 			linksXML.pushTag("clip", numClips++);
@@ -491,10 +491,10 @@ void CloudsFCPParser::saveLinks(string linkFile){
 				}
 			}
             
-            if(hasStartingQuestion){
-                string startQuestion = allClips[i].getStartingQuestion();
-                linksXML.addValue("startingQuestion", startQuestion);
-            }
+//            if(hasStartingQuestion){
+//                string startQuestion = allClips[i].getStartingQuestion();
+//                linksXML.addValue("startingQuestion", startQuestion);
+//            }
             
             if(hasRevokedKeywords){
                 string revokedKeywords=ofJoinString(allClips[i].getRevokedKeywords(), ",") ;
@@ -661,9 +661,6 @@ bool CloudsFCPParser::clipHasSuppressions(string clipName){
 	return suppressedConnections.find(clipName) != suppressedConnections.end() && suppressedConnections[clipName].size() > 0;
 }
 
-bool CloudsFCPParser::clipHasStartingQuestions(CloudsClip& clip){
-    return clip.hasStartingQuestion();
-}
 
 bool CloudsFCPParser::clipHasRevokedKeywords(CloudsClip& clip){
     return clip.hasRevokedKeywords();
@@ -676,6 +673,9 @@ bool CloudsFCPParser::clipHasAdditionalKeywords(CloudsClip& clip){
 bool CloudsFCPParser::clipHasStartingQuestions(string clipName){
     CloudsClip& c = getClipWithLinkName(clipName);
     return clipHasStartingQuestions(c);
+}
+bool CloudsFCPParser::clipHasStartingQuestions(CloudsClip& clip){
+    return clip.hasStartingQuestion();
 }
 
 bool CloudsFCPParser::linkIsSuppressed(string clipNameA, string clipNameB){
@@ -907,13 +907,16 @@ void CloudsFCPParser::printSpeakerList(){
 }
 
 void CloudsFCPParser::refreshAllKeywords(){
-	
+
 	allKeywords.clear();
 	keywordVector.clear();
 	contentKeywordVector.clear();
 	questionTopicstoClipIndex.clear();
 	contentKeywords.clear();
-	
+
+	questionIndeces.clear();
+	startQuestionIndeces.clear();
+
     for(int i = 0; i < allClips.size(); i++){
         
         vector<string>& newKeywords = allClips[i].getKeywords();
@@ -936,6 +939,13 @@ void CloudsFCPParser::refreshAllKeywords(){
         for(int l =0; l< topicsWithQuestions.size(); l++){
             questionTopicstoClipIndex[topicsWithQuestions[l]].push_back(i);
         }
+	
+		if(allClips[i].hasQuestion()){
+			questionIndeces.push_back(i);
+			if(allClips[i].hasSpecialKeyword("#start")){
+				startQuestionIndeces.push_back(i);
+			}
+		}
     }
     
     map<string, int>::iterator it;
@@ -946,6 +956,7 @@ void CloudsFCPParser::refreshAllKeywords(){
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
         keywordVector.push_back(it->first);
     }
+
     
 }
 
@@ -967,10 +978,10 @@ void CloudsFCPParser::setCombinedVideoDirectory(string directory){
 			hasCombinedVideoIndeces.push_back(i);
 			if(allClips[i].hasQuestion()){
 				hasCombinedVideoAndQuestionIndeces.push_back(i);
+				if(allClips[i].hasSpecialKeyword("#start")){
+					hasCombinedAndIsStartingClipIndeces.push_back(i);
+				}				
 			}
-            if(allClips[i].hasSpecialKeyword("#start")){
-                hasCombinedAndIsStartingClipIndeces.push_back(i);
-            }
             //			cout << "Clip " << allClips[i].getLinkName() << " combined video found!" << endl;
 		}
 	}
@@ -984,36 +995,44 @@ CloudsClip& CloudsFCPParser::getRandomClip(bool hasCombinedVideo,
 {
 	if(hasCombinedVideo && hasStartQuestion){
 		if(hasCombinedAndIsStartingClipIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no start  clips with combined videos";
+			ofLogError("CloudsFCPParser::getRandomClip") << "has no start  clips with combined videos";
 			return dummyClip;
 		}
 //		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
-		return allClips[ hasCombinedAndIsStartingClipIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
+		return allClips[ hasCombinedAndIsStartingClipIndeces[ ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
 	}
 	else if(hasCombinedVideo && hasQuestion){
 		if(hasCombinedVideoAndQuestionIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no questions clips with combined videos";
+			ofLogError("CloudsFCPParser::getRandomClip") << "has no questions clips with combined videos";
 			return dummyClip;
 		}
-		//		cout << " has " << hasCombinedAndIsStartingClipIndeces.size() << endl;
-		return allClips[ hasCombinedVideoAndQuestionIndeces[ofRandom(hasCombinedAndIsStartingClipIndeces.size())] ];
-		
+		cout << " has " << hasCombinedVideoAndQuestionIndeces.size() << endl;
+		return allClips[ hasCombinedVideoAndQuestionIndeces[ ofRandom(hasCombinedVideoAndQuestionIndeces.size())] ];
 	}
 	else if(hasCombinedVideo){
 		if(hasCombinedVideoIndeces.size() == 0){
-			ofLogError() << "CloudsFCPParser::getRandomClip has no combined videos ";
+			ofLogError("CloudsFCPParser::getRandomClip") << "has no combined videos ";
 			return dummyClip;
 		}
-		return allClips[ hasCombinedVideoIndeces[ofRandom(hasCombinedVideoIndeces.size())] ];
+		return allClips[ hasCombinedVideoIndeces[ ofRandom(hasCombinedVideoIndeces.size())] ];
 	}
 	else if(hasStartQuestion){
-		if(questionIds.size() == 0){
+		if(startQuestionIndeces.size() == 0){
+			ofLogError("CloudsFCPParser::getRandomClip") << " has no start questions";
+			return dummyClip;
+		}
+        CloudsClip& clip = allClips[ startQuestionIndeces[ ofRandom(startQuestionIndeces.size()) ]];
+//        cout << "has a question" << clip.getID() << endl;
+		return clip;
+	}
+	else if(hasQuestion){
+		if(questionIndeces.size() == 0){
 			ofLogError("CloudsFCPParser::getRandomClip") << " has no questions";
 			return dummyClip;
 		}
-        CloudsClip& clip = getClipWithID( questionIds[ ofRandom(questionIds.size()) ] ) ;
-//        cout << "has a question" << clip.getID() << endl;
-		return clip;
+        CloudsClip& clip = allClips[ questionIndeces[ ofRandom(questionIndeces.size()) ]];
+		//        cout << "has a question" << clip.getID() << endl;
+		return clip;		
 	}
 	else {
 		return allClips[ ofRandom(allClips.size()) ];

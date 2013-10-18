@@ -53,6 +53,7 @@ class CloudsClip {
     vector<string>& getSpecialKeywords();
     
     //questions with topics
+    bool hasStartingQuestion();
     void addQuestionTopicPair(string topic, string question);
 	bool hasQuestion();
     map<string,string>& getAllQuestionTopicPairs();
@@ -68,10 +69,8 @@ class CloudsClip {
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
-    string getStartingQuestion();
+//    string getStartingQuestion();
 	string getSceneFolder();
-	void setStartingQuestion(string question);
-    bool hasStartingQuestion();
 	
 	string getID();
 	string getCombinedPNGExportFolder();
