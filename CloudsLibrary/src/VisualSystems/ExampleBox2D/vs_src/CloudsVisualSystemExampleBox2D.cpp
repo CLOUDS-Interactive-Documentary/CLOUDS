@@ -21,15 +21,17 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
     
     customGui->addToggle("GAVITY CONTROL MODE", &bGravityMod);
     
-    customGui->addSlider("TRIGGER FORCE", 0, 30, &triggerForce);
-    customGui->addSlider("MAX OBJECTS", 10, 1000, &maxObjects);
+    customGui->addToggle("CIRCLES", &bCircles);
+    customGui->addToggle("RECTANGLES", &bRects);
     
-    customGui->addSlider("CIRCLE MIN SIZE", 5, 50, &circleSizeMin);
-    customGui->addSlider("CIRCLE MAX SIZE", 5, 50, &circleSizeMax);
-    customGui->addSlider("RECT MIN WIDTH", 5, 50, &rectSizeMin.x);
-    customGui->addSlider("RECT MAX WIDTH", 5, 50, &rectSizeMax.x);
-    customGui->addSlider("RECT MIN HEIGHT", 5, 50, &rectSizeMin.y);
-    customGui->addSlider("RECT MAX HEIGHT", 5, 50, &rectSizeMax.y);
+    customGui->addSlider("TRIGGER FORCE", 0, 30, &triggerForce);
+    customGui->addSlider("MAX CIRCLES", 10, 1000, &maxCircles);
+    customGui->addSlider("MAX RECTANGLES", 10, 1000, &maxRects);
+    
+    customGui->addSlider("CIRCLE MAX MEAN", 5, 50, &circleSizeMean);
+    customGui->addSlider("CIRCLE SIZE DEVIATION", 5, 50, &circleSizeDev);
+    customGui->addSlider("RECT MAX MEAN", 5, 50, &rectSizeMean);
+    customGui->addSlider("RECT SIZE DEVIATION", 5, 50, &rectSizeDev);
     
     customGui->addToggle("FILL", &bFill);
     customGui->addToggle("STATIC PLATFORMS", &bStaticPlatforms);
@@ -40,18 +42,26 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
     
     /* Circle color */
     customGui->addLabel("CIRCLE COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("CR", 0.0, 1.0, &circleColor.r, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("H1", 0.0, 255, &circleHSB.r, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("CG", 0.0, 1.0, &circleColor.g, length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("CB", 0.0, 1.0, &circleColor.b, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("S1", 0.0, 255, &circleHSB.g, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("B1", 0.0, 255, &circleHSB.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
+    /* Circle Line color */
+    customGui->addLabel("CIRCLE LINE COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("H2", 0.0, 255, &circleLineHSB.r, length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("S2", 0.0, 255, &circleLineHSB.g, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("B2", 0.0, 255, &circleLineHSB.b, length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
     /* Rectangle color */
     customGui->addLabel("RECT COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("RR", 0.0, 1.0, &rectColor.r, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("H3", 0.0, 255, &rectHSB.r, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("RG", 0.0, 1.0, &rectColor.g, length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("RB", 0.0, 1.0, &rectColor.b, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("S3", 0.0, 255, &rectHSB.g, length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("B3", 0.0, 255, &rectHSB.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     
@@ -65,25 +75,38 @@ void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
     if (e.widget->getName() == "GAVITY CONTROL MODE") {
         selfBegin();
     }
-    
-    if (e.widget->getName() == "STATIC PLATFORMS") {
+    else if (e.widget->getName() == "STATIC PLATFORMS") {
         if (bStaticPlatforms) {
             addStaticPlatforms();
         }
         else {
-            for (int i=0; i<platforms.size(); i++) {
-                platforms[i].destroy();
-            }
-            platforms.clear();
+            removeStaticPlatforms();
         }
     }
-    
-    if (e.widget->getName() == "RANDOM PLATFORMS") {
+    else if (e.widget->getName() == "RANDOM PLATFORMS") {
         if (bRandomPlatforms) {
             randomPlatformCounter=150;
         }
         else {
             removeRandomPlatform();
+        }
+    }
+    else if (e.widget->getName() == "CIRCLES") {
+        if (!bCircles) {
+            for (int i=0; i<circles.size(); i++)
+            {
+                circles[i].destroy();
+            }
+            circles.clear();
+        }
+    }
+    else if (e.widget->getName() == "RECTANGLES") {
+        if (!bRects) {
+            for (int i=0; i<rects.size(); i++)
+            {
+                rects[i].destroy();
+            }
+            rects.clear();
         }
     }
 }
@@ -101,50 +124,55 @@ void CloudsVisualSystemExampleBox2D::selfSetupRenderGui(){
     
 }
 
-void CloudsVisualSystemExampleBox2D::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemExampleBox2D::guiRenderEvent(ofxUIEventArgs &e)
+{
 	
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemExampleBox2D::selfSetup(){
-    
+void CloudsVisualSystemExampleBox2D::selfSetup()
+{
     box2d.init();
     box2d.setGravity(0, 7);
     box2d.createBounds();
     box2d.setFPS(60);
     
+    prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    
     // preset init
     bGravityMod = false;
     gravityForce = ofVec2f(0, 5);
     minObjectCount = 50;
-    maxObjects = 200;
+    maxCircles = 100;
+    maxRects = 100;
     triggerForce = 15;
     
+    bCircles = true;
+    bRects = true;
     bFill = false;
     bStaticPlatforms = false;
     bRandomPlatforms = false;
     
     randomPlatformCounter = 60;
     
-    circleSizeMin = 4;
-    circleSizeMax = 20;
-    rectSizeMin.x = 5;
-    rectSizeMax.x = 30;
-    rectSizeMin.y = 5;
-    rectSizeMax.y = 30;
+    circleSizeDev = 10;
+    circleSizeMean = 20;
+    rectSizeDev = 10;
+    rectSizeMean = 20;
     
-    circleColor = ofFloatColor(0.16, 0.35, 0.31);
-    rectColor = ofFloatColor(0.53, 0.68, 0.47);
+    circleHSB = ofFloatColor(100, 100, 100);
+    circleLineHSB = ofFloatColor(100, 100, 100);
+    rectHSB = ofFloatColor(100, 100, 100);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemExampleBox2D::selfPresetLoaded(string presetPath){
-    
-    cout<<"selfPresetLoaded\n";
+void CloudsVisualSystemExampleBox2D::selfPresetLoaded(string presetPath)
+{
+    reinitBounds();
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -152,16 +180,9 @@ void CloudsVisualSystemExampleBox2D::selfPresetLoaded(string presetPath){
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemExampleBox2D::selfBegin()
 {
-    cout<<"selfBegin()\n";
     if (bGravityMod) {
         // add objects if needed
-        int objNum = circles.size() + rects.size();
-        
-        while (objNum < minObjectCount) {
-            addRandomCircle();
-            addRandomRect();
-            objNum += 2;
-        }
+        createRandomObjects();
     }
     else {
         box2d.setGravity(0, 10);
@@ -169,6 +190,13 @@ void CloudsVisualSystemExampleBox2D::selfBegin()
     
     if (bStaticPlatforms) {
         addStaticPlatforms();
+    }
+    else {
+        removeStaticPlatforms();
+    }
+    
+    if (!bRandomPlatforms) {
+        removeRandomPlatform();
     }
 }
 
@@ -180,6 +208,13 @@ void CloudsVisualSystemExampleBox2D::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemExampleBox2D::selfUpdate(){
+    
+    // reinit world bound when screen size changes
+    if (prevScreenSize.x != ofGetWidth() ||
+        prevScreenSize.y != ofGetHeight()) {
+        reinitBounds();
+        prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
+    }
     
     // remove excessive objects
     handleObjectLimit();
@@ -214,6 +249,10 @@ void CloudsVisualSystemExampleBox2D::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemExampleBox2D::selfDrawBackground()
 {
+    ofColor cColor = ofColor::fromHsb(circleHSB.r, circleHSB.g, circleHSB.b);
+    ofColor clColor = ofColor::fromHsb(circleLineHSB.r, circleLineHSB.g, circleLineHSB.b);
+    ofColor rColor = ofColor::fromHsb(rectHSB.r, rectHSB.g, rectHSB.b);
+    
     if (bFill) {
         ofFill();
     } else {
@@ -224,18 +263,18 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
     // draw circles
     for (int i=0; i<circles.size(); i++)
     {
-        ofSetColor(circleColor);
+        ofSetColor(cColor);
         ofPushMatrix();
         ofTranslate(circles[i].getPosition());
         ofRotate(circles[i].getRotation());
         ofEllipse(0, 0, circles[i].getRadius()*2, circles[i].getRadius()*2);
-        ofSetColor(rectColor);
+        ofSetColor(clColor);
         ofLine(0, 0, circles[i].getRadius(), 0);
         ofPopMatrix();
     }
     
     // draw rectangles
-    ofSetColor(rectColor);
+    ofSetColor(rColor);
     for (int i=0; i<rects.size(); i++)
     {
         ofPushMatrix();
@@ -322,30 +361,16 @@ void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){
         ofVec2f speed = curMouse - prevMouse;
         
         if (speed.length() > triggerForce) {
-            if (speed.x > 0) {
+            if (bCircles && (speed.x > 0 || !bRects)) {
                 // create circles
-                float sd = (circleSizeMax - circleSizeMin) / 2;
-                float mean = (circleSizeMin + circleSizeMax) / 2;
-                float r = getGaussian()*sd + mean;
-                ofxBox2dCircle circle;
-                circle.setPhysics(3, 0.53, 0.1);
-                circle.setup(box2d.getWorld(), data.x, data.y, r);
-                circle.setVelocity(speed/2);
-                circles.push_back(circle);
+                float r = getGaussian()*circleSizeDev + circleSizeMean;
+                addCircle(curMouse, speed/2, r);
             }
-            else if (speed.x < 0) {
+            else if (bRects && (speed.x < 0 || !bCircles)) {
                 // create rects
-                float wsd = (rectSizeMax.x - rectSizeMin.x)/2;
-                float wmean = (rectSizeMax.x + rectSizeMin.x)/2;
-                float w = getGaussian()*wsd + wmean;
-                float hsd = (rectSizeMax.y - rectSizeMin.y)/2;
-                float hmean = (rectSizeMax.y + rectSizeMin.y)/2;
-                float h = getGaussian()*hsd + hmean;
-                ofxBox2dRect rect;
-                rect.setPhysics(3, 0.53, 0.1);
-                rect.setup(box2d.getWorld(), data.x, data.y, w, h);
-                rect.setVelocity(speed.x/2, speed.y/2);
-                rects.push_back(rect);
+                float w = getGaussian()*rectSizeDev + rectSizeMean;
+                float h = getGaussian()*rectSizeDev + rectSizeMean;
+                addRect(curMouse, speed/2, ofVec2f(w, h));
             }
         }
         
@@ -368,24 +393,61 @@ void CloudsVisualSystemExampleBox2D::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
+void CloudsVisualSystemExampleBox2D::createRandomObjects()
+{
+    if (!bCircles && !bRects) {
+        // nothing to add
+        return;
+    }
+    
+    // add objects if needed
+    int objNum = circles.size() + rects.size();
+
+    while (objNum < minObjectCount) {
+        if (bCircles) {
+            addRandomCircle();
+            objNum++;
+        }
+    
+        if (bRects) {
+            addRandomRect();
+            objNum++;
+        }
+    }
+}
+
 void CloudsVisualSystemExampleBox2D::addRandomCircle()
 {
-    float r = ofRandom(circleSizeMin, circleSizeMax);
-    ofxBox2dCircle circle;
-    circle.setPhysics(3, 0.53, 0.1);
-    circle.setup(box2d.getWorld(), ofGetWidth()/2, ofGetHeight()/2, r);
-    circles.push_back(circle);
+    float r = getGaussian()/2*circleSizeDev + circleSizeMean;
+    addCircle(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), r);
 }
 
 void CloudsVisualSystemExampleBox2D::addRandomRect()
 {
-    float w = ofRandom(rectSizeMin.x, rectSizeMax.x);
-    float h = ofRandom(rectSizeMin.y, rectSizeMax.y);
+    float w = getGaussian()*rectSizeDev + rectSizeMean;
+    float h = getGaussian()*rectSizeDev + rectSizeMean;
+    addRect(ofVec2f(ofGetWidth()/2, ofGetHeight()/2), ofVec2f(0, 0), ofVec2f(w, h));
+}
+
+void CloudsVisualSystemExampleBox2D::addCircle(ofVec2f pos, ofVec2f vel, float rad)
+{
+    ofxBox2dCircle circle;
+    circle.setPhysics(3, 0.53, 0.1);
+    circle.setup(box2d.getWorld(), pos.x, pos.y, rad);
+    circle.setVelocity(vel);
+    circles.push_back(circle);
+}
+
+
+void CloudsVisualSystemExampleBox2D::addRect(ofVec2f pos, ofVec2f vel, ofVec2f size)
+{
     ofxBox2dRect rect;
     rect.setPhysics(3, 0.53, 0.1);
-    rect.setup(box2d.getWorld(), ofGetWidth()/2, ofGetHeight()/2, w, h);
+    rect.setup(box2d.getWorld(), pos.x, pos.y, size.x, size.y);
+    rect.setVelocity(vel);
     rects.push_back(rect);
 }
+
 
 void CloudsVisualSystemExampleBox2D::addStaticPlatforms()
 {
@@ -410,6 +472,14 @@ void CloudsVisualSystemExampleBox2D::addStaticPlatforms()
     platforms.push_back(polyLine);
 }
 
+void CloudsVisualSystemExampleBox2D::removeStaticPlatforms()
+{
+    for (int i=0; i<platforms.size(); i++) {
+        platforms[i].destroy();
+    }
+    platforms.clear();
+}
+
 void CloudsVisualSystemExampleBox2D::addRandomPlatform()
 {
     ofxBox2dPolygon polygon;
@@ -426,17 +496,16 @@ void CloudsVisualSystemExampleBox2D::addRandomPlatform()
 
 void CloudsVisualSystemExampleBox2D::removeRandomPlatform()
 {
-    if (randomPlatforms.size() <= 0) {
-        return;
+    for (int i=0; i<randomPlatforms.size(); i++) {
+        randomPlatforms[i].destroy();
     }
     
-    randomPlatforms[0].destroy();
     randomPlatforms.clear();
 }
 
 void CloudsVisualSystemExampleBox2D::handleObjectLimit()
 {
-    int delCircleNum = circles.size() - (int)maxObjects/2;
+    int delCircleNum = circles.size() - (int)maxCircles;
     for (int i=0; i<delCircleNum; i++)
     {
         ofxBox2dCircle c = circles.front();
@@ -444,7 +513,7 @@ void CloudsVisualSystemExampleBox2D::handleObjectLimit()
         circles.erase(circles.begin());
     }
     
-    int delRectNum = rects.size() - (int)maxObjects/2;
+    int delRectNum = rects.size() - (int)maxRects;
     for (int i=0; i<delRectNum; i++)
     {
         ofxBox2dRect r = rects.front();
@@ -453,11 +522,21 @@ void CloudsVisualSystemExampleBox2D::handleObjectLimit()
     }
 }
 
+void CloudsVisualSystemExampleBox2D::reinitBounds()
+{
+    if (box2d.ground) {
+        box2d.world->DestroyBody(box2d.ground);
+        box2d.ground = NULL;
+    }
+
+    box2d.createBounds();
+}
+
 float CloudsVisualSystemExampleBox2D::getGaussian() {
     
     float x1 = ofRandomuf();
     
     float x2 = ofRandomuf();
     
-    return sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2);
+    return (sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2)) / 2;
 }

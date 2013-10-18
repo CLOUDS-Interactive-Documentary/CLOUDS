@@ -104,15 +104,22 @@ class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
 
 protected:
     
+    void createRandomObjects();
     void addRandomCircle();
     void addRandomRect();
+    void addCircle(ofVec2f pos, ofVec2f vel, float rad);
+    void addRect(ofVec2f pos, ofVec2f vel, ofVec2f size);
     void addStaticPlatforms();
+    void removeStaticPlatforms();
     void addRandomPlatform();
     void removeRandomPlatform();
     void handleObjectLimit();
+    void reinitBounds();
     float getGaussian();
     
     ofxBox2d box2d;
+    
+    ofVec2f prevScreenSize;
     
     ofVec2f prevMouse;
     
@@ -125,10 +132,14 @@ protected:
     ofxUISuperCanvas* customGui;
 
     bool bGravityMod;
+    bool bCircles;
+    bool bRects;
+    
     ofVec2f gravityForce;
     ofVec2f gravityLine;
     int minObjectCount;
-    float maxObjects;
+    float maxCircles;
+    float maxRects;
     
     
     bool bFill;
@@ -138,12 +149,12 @@ protected:
     
     int randomPlatformCounter;
     
-    ofFloatColor circleColor;
-    ofFloatColor rectColor;
+    ofFloatColor circleHSB;
+    ofFloatColor circleLineHSB;
+    ofFloatColor rectHSB;
     
-    float circleSizeMin;
-    float circleSizeMax;
-    
-    ofVec2f rectSizeMin;
-    ofVec2f rectSizeMax;
+    float circleSizeDev;
+    float circleSizeMean;
+    float rectSizeDev;
+    float rectSizeMean;
 };
