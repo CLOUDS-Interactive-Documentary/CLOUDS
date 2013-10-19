@@ -3,12 +3,193 @@
 //
 
 #include "CloudsVisualSystemClusterMap.h"
-#include "CloudsRGBDVideoPlayer.h"
+//#include "CloudsRGBDVideoPlayer.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
 //#endif
+
+#include "CloudsFCPParser.h"
+
+//called once from start up of the app
+void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
+	
+	nodes.clear();
+	clusterMesh.clear();
+	clipIdToNodeIndex.clear();
+	
+	ofVec3f centroid(0,0,0);
+	ofVec3f maxBounds(0,0,0);
+	ofVec3f minBounds(0,0,0);
+	
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		CloudsClusterNode n;
+		CloudsClip& clip = parser.getAllClips()[i];
+		n.clipId = clip.getID();
+		n.mesh = &clusterMesh;
+		n.vertexIndex = clusterMesh.getNumVertices();
+		
+		clipIdToNodeIndex[clip.getID()] = nodes.size();
+		clusterMesh.addVertex(clip.networkPosition);
+		centroid += clip.networkPosition;
+		maxBounds = ofVec3f(MAX(maxBounds.x,clip.networkPosition.x),
+							MAX(maxBounds.y,clip.networkPosition.y),
+							MAX(maxBounds.z,clip.networkPosition.z));
+		
+		minBounds = ofVec3f(MIN(minBounds.x,clip.networkPosition.x),
+							MIN(minBounds.y,clip.networkPosition.y),
+							MIN(minBounds.z,clip.networkPosition.z));
+		
+		nodes.push_back(n);
+	}
+	
+	centroid /= nodes.size();
+	float maxDistance = 0;
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		maxDistance = MAX(maxDistance, parser.getAllClips()[i].networkPosition.distance(centroid));
+	}
+	
+	cout << "CENTROID " << centroid << " MAX D " << maxDistance << endl;
+	
+	//add all connections to connection mesh
+	set< pair<string,string> > connections;
+	
+	for(int i = 0; i < parser.getAllClips().size(); i++){
+		CloudsClip& clip = parser.getAllClips()[i];
+		vector<CloudsClip> meta = parser.getClipsWithKeyword(clip.getKeywords());
+		vector<CloudsLink> links = parser.getLinksForClip(clip);
+		string nameA = clip.getID();
+		
+//		for(int l = meta.size()-1; l >= 0; l--){
+//			if( parser.linkIsSuppressed(nameA, meta[l].getLinkName()) ){
+//				meta.erase(meta.begin() + l);
+//			}
+//		}
+//
+		for(int l = 0; l < links.size(); l++){
+			meta.push_back(parser.getClipWithLinkName(links[l].targetName));
+		}
+		
+		for(int j = 0; j < meta.size(); j++){
+			string nameB = meta[j].getID();
+
+			if( nameA != nameB &&
+			    connections.find( make_pair(nameA, nameB) ) == connections.end() &&
+				connections.find( make_pair(nameB, nameA) ) == connections.end() &&
+				(parser.clipLinksTo(nameA, nameB) ||
+				(clip.person != meta[j].person &&
+				!parser.linkIsSuppressed(nameA, nameB) &&
+				parser.getNumberOfSharedKeywords(clip, meta[j]) > 1) ))
+			{
+				connections.insert(make_pair(nameA, nameB));
+				
+				if(clip.networkPosition.distance(centroid) > maxDistance * .6) {
+//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+					continue;
+				}
+				
+				if(meta[j].networkPosition.distance(centroid) > maxDistance * .6 ) {
+//					cout << "connecting outer ring clip " << meta[j].getLinkName() << endl;
+					continue;
+				}
+				
+				nodes[ clipIdToNodeIndex[nameA] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+				connectionMesh.addVertex(clip.networkPosition);
+				connectionMesh.addNormal(ofVec3f(0,0,0));
+				
+				nodes[ clipIdToNodeIndex[nameB] ].clusterMeshVertexIds.push_back( connectionMesh.getNumVertices() );
+				connectionMesh.addVertex(meta[j].networkPosition);
+				connectionMesh.addNormal(ofVec3f(0,0,0));				
+			}
+		}
+	}
+	connectionMesh.setMode(OF_PRIMITIVE_LINES);
+	
+}
+
+void CloudsVisualSystemClusterMap::traverse(){
+	
+	if(run == NULL) return;
+	
+	traversalMesh.clear();
+
+	for(int  i = 0; i < run->topicHistory.size(); i++){
+//		cout << "traversed to topic " << run->topicHistory[i] << endl;
+	}
+	
+	///BEGIN OLD LINEAR TRAVERSAL
+	ofVec3f lastPos;
+	for(int i = 0; i < run->clipHistory.size(); i++){
+		CloudsClip& clip = run->clipHistory[i];
+		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
+		
+//		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+		if(i > 0){
+			for(int s = 1; s < 100; s++){
+				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);
+				traversalMesh.addColor(ofFloatColor());
+			}
+		}
+		lastPos = clip.networkPosition;
+		traversalMesh.addVertex(clip.networkPosition);
+		traversalMesh.addColor(ofFloatColor());
+		
+		for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
+			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
+		}
+	}
+	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	//END OLD LINEAR TRAVERSAL
+	
+	/*
+	ofVec3f dirToTarget;
+	ofVec3f position = run->clipHistory[0].networkPosition;
+	ofVec3f currentDirection = run->clipHistory[1].networkPosition - position;
+	if(currentDirection.isAligned(ofVec3f(1,0,0))){
+		currentDirection = currentDirection.getCrossed(ofVec3f(0,0,1));
+	}
+	else{
+		currentDirection = currentDirection.getCrossed(ofVec3f(1,0,0));
+	}
+	
+	for(int i = 1; i < run->clipHistory.size(); i++){
+		
+		dirToTarget = run->clipHistory[i].networkPosition;
+		
+		CloudsClip& clip = run->clipHistory[i];
+		dirToTarget = (clip.networkPosition - position);
+		
+		ofVec3f direction = (clip.networkPosition - position).normalized();
+		
+		ofVec3f dirToNode = (clip.networkPosition - position);
+		float angleTo = dirToTarget.angle(dirToNode);
+//		if(angleTo > maxTraverseAngle){
+//			continue;
+//		}
+
+		int numSteps = 0;
+		float currentDistance = dirToTarget.length();
+		while(currentDistance > 2){
+			float dampen = ofMap(currentDistance, 20, 2, .05, 1, true);
+			direction += ( (dirToTarget / currentDistance) - direction) * dampen;
+			direction.normalize();
+			//			direction = dirToTarget.normalized();
+			position += direction * MIN(1, direction.length());
+			
+			traversalMesh.addColor(ofFloatColor(0));
+			traversalMesh.addVertex(position);
+			
+			dirToTarget = (clip.networkPosition - position);
+			currentDistance = dirToTarget.length();
+			if(numSteps++ > 10000){
+				cout << "failed with 10000 steps";
+				break;
+			}
+		}
+	}
+	*/
+}
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemClusterMap::selfSetupGui(){
@@ -19,22 +200,25 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	generatorGui->setName("Generator");
 	generatorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	generatorGui->addSlider("seed", 0, 100, &seed);
-	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
-	generatorGui->addSlider("spawn radius",  5, 1000, &heroRadius);
-	generatorGui->addSlider("radius var",  5, 1000, &heroRadiusVariance);
-	generatorGui->addSlider("num iterations", 1, 20, &numIterations);
-	generatorGui->addSlider("num branches", 1, 20, &numBranches);
-	generatorGui->addSlider("surviving branches", 1, 10, &numSurvivingBranches);
-	generatorGui->addSlider("min branch dist",  10, 1000, &minDistance);
-	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
-	generatorGui->addSlider("step size",  1, 300, &stepSize);
-	generatorGui->addSlider("replicate point size", 1, 50, &replicatePointSize);
-	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
-	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
-	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
-	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
-	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
+	generatorGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
+	generatorGui->addSlider("point size", 1, 50, &pointSize);
+
+//	generatorGui->addSlider("seed", 0, 100, &seed);
+//	generatorGui->addSlider("hero nodes", 5, 20, &heroNodes);
+//	generatorGui->addSlider("spawn radius",  5, 1000, &heroRadius);
+//	generatorGui->addSlider("radius var",  5, 1000, &heroRadiusVariance);
+//	generatorGui->addSlider("num iterations", 1, 20, &numIterations);
+//	generatorGui->addSlider("num branches", 1, 20, &numBranches);
+//	generatorGui->addSlider("surviving branches", 1, 10, &numSurvivingBranches);
+//	generatorGui->addSlider("min branch dist",  10, 1000, &minDistance);
+//	generatorGui->addSlider("branch dist rng",  0, 3.0, &distanceRange);
+//	generatorGui->addSlider("step size",  1, 300, &stepSize);
+
+//	generatorGui->addSlider("min attract radius",  10, 1000, &minAttractRadius);
+//	generatorGui->addSlider("min repel radius",  0, 1000, &minRepelRadius);
+//	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
+//	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
+//	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
 	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
 
 	ofAddListener(generatorGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
@@ -47,55 +231,67 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 	displayGui->setName("Display");
 	displayGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
-	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
-	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
-	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
-	
-	displayGui->addSlider("line start",  0, 1.0, &lineStartTime);
-	displayGui->addSlider("line end",  0, 1.0, &lineEndTime);
-	displayGui->addSlider("line fade verts", 1, 10, &lineFadeVerts);
+	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
 	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
 	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
-	displayGui->addSlider("line width", .5, 2.0, &lineWidth);
+	
 	displayGui->addSlider("line dissolve", 0, 1.0, &lineDissolve);
-	displayGui->addSlider("line thickness",  1, 10, &lineThickness);
-	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
-
-	displayGui->addSlider("node bounce", 0, 1.0, &nodeBounce);
-	displayGui->addSlider("cluster node size", 1, 10, &clusterNodeSize);
+	
 	displayGui->addSlider("traversed node size", 1, 10, &traversedNodeSize);
+	displayGui->addSlider("node pop length", 50, 2000, &nodePopLength);
+	
+//	displayGui->addSlider("line blur amount",  0, 10, &lineBlurAmount);
+//	displayGui->addSlider("line blur fade",  0, 1.0, &lineBlurFade);
+//	
+//	displayGui->addSlider("line start",  0, 1.0, &lineStartTime);
+//	displayGui->addSlider("line end",  0, 1.0, &lineEndTime);
+//	displayGui->addSlider("line fade verts", 1, 10, &lineFadeVerts);
+//	displayGui->addSlider("line focal dist", 0, sqrt(3000), &lineFocalDistance);
+//	displayGui->addSlider("line focal range", 0, sqrt(3000), &lineFocalRange);
+//	displayGui->addSlider("line width", .5, 2.0, &lineWidth);
+
+//	displayGui->addSlider("line thickness",  1, 10, &lineThickness);
+//	displayGui->addSlider("line alpha",  0, 1.0, &lineAlpha);
+//
+//	displayGui->addSlider("node bounce", 0, 1.0, &nodeBounce);
+//	displayGui->addSlider("cluster node size", 1, 10, &clusterNodeSize);
+
 
 	ofAddListener(displayGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(displayGui);
 	guimap[generatorGui->getName()] = displayGui;
 
-	traversedNodePoints.setUsage( GL_DYNAMIC_DRAW );
-	traversedNodePoints.setMode(OF_PRIMITIVE_POINTS);
-	nodeCloudPoints.enableNormals();
-	
-	loadShader();
+//	traversedNodePoints.setUsage( GL_DYNAMIC_DRAW );
+//	traversedNodePoints.setMode(OF_PRIMITIVE_POINTS);
+//	nodeCloudPoints.enableNormals();
+//	
+//	loadShader();
 }
 
-void CloudsVisualSystemClusterMap::loadShader(){
-	billboard.load(getVisualSystemDataPath() + "shaders/Billboard");
-	billboard.begin();
-	billboard.setUniform1i("tex", 0);
-	billboard.end();
-	
-	ofDisableArbTex();
-	nodeSprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
-	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
-	ofEnableArbTex();
-	
-	lineAttenuate.load(getVisualSystemDataPath() +"shaders/attenuatelines");
-	
-	gaussianBlur.load(getVisualSystemDataPath() + "shaders/gaussianblur");
-}
+//void CloudsVisualSystemClusterMap::loadShader(){
+//	billboard.load(getVisualSystemDataPath() + "shaders/Billboard");
+//	billboard.begin();
+//	billboard.setUniform1i("tex", 0);
+//	billboard.end();
+//	
+//	ofDisableArbTex();
+//	nodeSprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+//	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
+//	ofEnableArbTex();
+//	
+//	lineAttenuate.load(getVisualSystemDataPath() +"shaders/attenuatelines");
+//	
+//	gaussianBlur.load(getVisualSystemDataPath() + "shaders/gaussianblur");
+//}
 
 void CloudsVisualSystemClusterMap::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+}
+
+void CloudsVisualSystemClusterMap::setRun(CloudsRun& newRun){
+	run = &newRun;
 }
 
 void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClips){
@@ -113,7 +309,6 @@ void CloudsVisualSystemClusterMap::setQuestions(vector<CloudsClip>& questionClip
 		
 		questions.push_back(q);
 	}
-
 }
 
 CloudsQuestion* CloudsVisualSystemClusterMap::getSelectedQuestion(){
@@ -152,6 +347,21 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
+	run = NULL;
+	
+	reloadShaders();
+
+}
+
+void CloudsVisualSystemClusterMap::reloadShaders(){
+	
+	ofDisableArbTex();
+	sprite.loadImage(getVisualSystemDataPath() + "images/dot.png");
+//	nodeSpriteBasic.loadImage(getVisualSystemDataPath() + "images/dot_no_ring.png");
+	ofEnableArbTex();
+
+	lineShader.load(getVisualSystemDataPath() +"shaders/attenuatelines");
+	clusterShader.load(getVisualSystemDataPath() + "shaders/cluster");
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -159,8 +369,20 @@ void CloudsVisualSystemClusterMap::selfSetup(){
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemClusterMap::selfPresetLoaded(string presetPath){
 	timeline->setLoopType(OF_LOOP_NONE);
-	generate();
-	traverse();
+	
+//	if(run != NULL){
+//		traversal.clear();
+//		for(int i = 0; i < run->clipHistory.size(); i++){
+//			//active history nodes;
+//			traversal.addVertex( run->clipHistory[i].networkPosition * 500 );
+//		}
+//	}
+//	
+//	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
+	
+//	generate();
+//	traverse();
+	
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -180,75 +402,112 @@ void CloudsVisualSystemClusterMap::selfSceneTransformation(){
 void CloudsVisualSystemClusterMap::selfUpdate(){
 	
 	cam.applyRotation = cam.applyTranslation = !cursorIsOverGUI();
-	
-	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
-	int vertsToHighlight = ofClamp(vertEndIndex,0,traversal.getVertices().size()-1);
+//	easeCamera.setTarget( clusterMesh.getCentroid() );
+
+
+//	int vertEndIndex = ofMap(timeline->getPercentComplete(), lineStartTime, lineEndTime, 0, traversal.getVertices().size());
+	int vertEndIndex = ofMap(timeline->getPercentComplete(), 0, 1.0, 0, traversalMesh.getVertices().size());
+	int vertsToHighlight = ofClamp(vertEndIndex,0, traversalMesh.getVertices().size() - 1);
 	int lineDissolveVerts = vertEndIndex*lineDissolve;
 	
 	float nodeSize = powf(traversedNodeSize, 2);
 	for(int i = 0; i < vertsToHighlight; i++){;
 		//		float fade = ofMap(i, vertsToHighlight*.9, vertsToHighlight, 1.0, 0, true);
-		float alpha = ofMap(i, vertEndIndex, vertEndIndex-nodePopLength, 0.0, 1.0, true);
+		float alpha = ofMap(i, vertEndIndex, vertEndIndex - nodePopLength, 0.0, 1.0, true);
 		float dissolveAlpha = 1.0;
 		if(lineDissolveVerts > 0){
 			dissolveAlpha = ofMap(i, lineDissolveVerts, lineDissolveVerts+20, 0.0, 1.0, true);
 		}
 		
-		ofFloatColor currentColor = lineColor->getColorAtPosition(alpha);
-		traversal.setColor(i, currentColor * dissolveAlpha);
-		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
+//		ofFloatColor currentColor = lineColor->getColorAtPosition(alpha);
+//		traversalMesh.setColor(i, currentColor * dissolveAlpha);
+		ofFloatColor currentColor(1.0,0,0,1.0);
+		traversalMesh.setColor(i, currentColor * dissolveAlpha);
+		
+//JG RE ADD NODE POINTS!
+//		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
 			//traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = 1.0;
 			//			cout << "setting color of  line point " << i << " to node index " << endl;
-			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = nodeSize*nodeBounce, alpha;
-			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i] ] = currentColor;
-		}
+//			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = nodeSize*nodeBounce, alpha;
+//			traversedNodePoints.getColors()[  traversalIndexToNodeIndex[i] ] = currentColor;
+//		}
+//END RE ADD
 	}
 	
-	for(int i = vertsToHighlight; i < traversal.getVertices().size(); i++){
-		traversal.setColor(i, ofFloatColor(0));
-		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
-			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i ] ].x = 0.0;
-		}
+	for(int i = vertsToHighlight; i < traversalMesh.getVertices().size(); i++){
+		traversalMesh.setColor(i, ofFloatColor(0));
+//JG RE ADD NODE POINTS!
+//		if(traversalIndexToNodeIndex.find(i) != traversalIndexToNodeIndex.end()){
+//			traversedNodePoints.getNormals()[ traversalIndexToNodeIndex[i] ].x = 0.0;
+//		}
+//END RE ADD		
 	}
 	
-	if(traversal.getVertices().size() > 0){
-		trailHead = traversal.getVertices()[vertsToHighlight];
+	if(traversalMesh.getVertices().size() > 0 && vertsToHighlight < traversalMesh.getVertices().size()-1){
+		trailHead = traversalMesh.getVertices()[vertsToHighlight];
+		easeCamera.setDistance(100);
+		easeCamera.setTarget(trailHead*meshExpansion);
 	}
 	
+//fuck is this?
+//	float clusterNodeBaseSize = clusterNodeSize;
+//	vector<ofVec3f>& normals = nodeCloudPoints.getNormals();
+//	for(int i = 0; i < nodes.size(); i++){
+//		if(nodes[i]->nodePointIndex != -1){
+//			normals[ nodes[i]->nodePointIndex ].x = (normals[ nodes[i]->nodePointIndex ].y - normals[ nodes[i]->nodePointIndex ].z)* clusterNodeBaseSize;
+//		}
+//	}
 	
-	float clusterNodeBaseSize =  clusterNodeSize;
-	vector<ofVec3f>& normals = nodeCloudPoints.getNormals();
-	for(int i = 0; i < nodes.size(); i++){
-		if(nodes[i]->nodePointIndex != -1){
-			normals[ nodes[i]->nodePointIndex ].x = (normals[ nodes[i]->nodePointIndex ].y - normals[ nodes[i]->nodePointIndex ].z)* clusterNodeBaseSize;
-		}
-	}
 }
+
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemClusterMap::selfDraw(){
-	
 
 	glDisable(GL_DEPTH_TEST);
 	
-	/*
-	 //TODO: evaluate line blur target
-	lineBlurTarget.begin();
-	ofClear(0,0,0,0);
 	ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	clusterShader.begin();
+	clusterShader.setUniformTexture("tex", sprite, 0);
+	clusterShader.setUniform1f("expansion", meshExpansion);
+	clusterShader.setUniform1f("minSize", pointSize);
+	clusterShader.setUniform3f("attractor", 0, 0, 0);
+	clusterShader.setUniform1f("radius", 300.);
 	
-	cam.begin(ofRectangle(0,0,1920,1080));
-	ofSetLineWidth(	lineThickness *2);
-	ofSetColor(255);
-	traversal.setMode(OF_PRIMITIVE_LINE_STRIP);
-	traversal.draw();
-	cam.end();
+	ofEnablePointSprites();
+	ofDisableArbTex();
+	
+	clusterMesh.drawVertices();
+	
+	clusterShader.end();
+	ofDisablePointSprites();
+	ofEnableArbTex();
+
+	ofPushMatrix();
+	ofScale(meshExpansion,meshExpansion,meshExpansion);
+	ofSetColor(200, 150, 80);
+	traversalMesh.draw();
+	ofPopMatrix();
+	
+	lineShader.begin();
+	lineShader.setUniform1f("focalPlane", powf(lineFocalDistance,2));
+	lineShader.setUniform1f("focalRange", powf(lineFocalRange,2));
+	lineShader.setUniform1f("lineFade", lineAlpha);
+	lineShader.setUniform1f("expansion", meshExpansion);
+	lineShader.setUniform3f("attractor", trailHead.x, trailHead.y, trailHead.z);
+	lineShader.setUniform1f("radius", 300.);
+	
+	ofSetColor(100, 150, 200);	
+	connectionMesh.draw();
+	lineShader.end();
 	
 	ofPopStyle();
-	lineBlurTarget.end();
-	*/
 	
+	glEnable(GL_DEPTH_TEST);
+	
+/*
 	ofPushStyle();
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	
@@ -323,12 +582,20 @@ void CloudsVisualSystemClusterMap::selfDraw(){
 //	gaussianBlur.end();
 	
 	ofPopStyle();
+ */
+	
+	
+//	ofMesh m;
+//	m.addVertices(testPoints);
+//	m.drawVertices();
+//
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemClusterMap::selfDrawDebug(){
 	
 }
+
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemClusterMap::selfDrawBackground(){
 
@@ -364,12 +631,13 @@ void CloudsVisualSystemClusterMap::selfKeyPressed(ofKeyEventArgs & args){
 //		traverse();
 //	}
 	
-	if(key == 'S'){
+	if(key == 'R'){
 		cout << "Loading shader!" << endl;
-		loadShader();
+		reloadShaders();
 	}
 }
 
+/*
 void CloudsVisualSystemClusterMap::generate(){
 	for(int i = 0; i < nodes.size(); i++){
 		delete nodes[i];
@@ -437,7 +705,9 @@ void CloudsVisualSystemClusterMap::generate(){
 		}
 	}
 }
+*/
 
+/*
 void CloudsVisualSystemClusterMap::traverse(){
 	
 	cout << "Traversing!" << endl;
@@ -552,6 +822,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 	
 	cout << "traversing took " << traversal.getVertices().size() << " steps " << endl;
 }
+*/
 
 
 void CloudsVisualSystemClusterMap::selfKeyReleased(ofKeyEventArgs & args){

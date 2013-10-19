@@ -3,13 +3,23 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxGameCamera.h"
-#include "Node.h"
+#include "CloudsClusterNode.h"
 #include "CloudsQuestion.h"
+#include "CloudsRun.h"
 
+class CloudsFCPParser;
 class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
   public:
     
-	//TODO: Change this to the name of your visual system
+	void buildEntireCluster(CloudsFCPParser& parser);
+
+	void setRun(CloudsRun& run);
+	void setQuestions(vector<CloudsClip>& questions);
+	CloudsQuestion* getSelectedQuestion();
+
+	//will add the latest state of the run to the traversal
+	void traverse();
+	
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
@@ -83,107 +93,55 @@ class CloudsVisualSystemClusterMap : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		return cam;
+//		return cam;
+		return easeCamera;
 	}
 
-	//
-//	ofCamera& getCameraRef(){
-//		return CloudsVisualSystem::getCameraRef();
-//	}
-	
-	void setQuestions(vector<CloudsClip>& questions);
-	CloudsQuestion* getSelectedQuestion();
+	void reloadShaders();
 	
   protected:
     
     //  Your Stuff
     //
-	
+	ofEasyCam easeCamera;
 	ofxUISuperCanvas* generatorGui;
 	ofxUISuperCanvas* displayGui;
 	
-	float seed; //read as int
-	float heroNodes; //read as int
-	float numIterations; //read as int
-	float heroRadius;
-	float heroRadiusVariance;
-	float numBranches;
-	float minDistance;
-	float distanceRange;
-	float stepSize;
-	float minAttractRadius;
-	float minRepelRadius;
-	float minFuseRadius;
-	
-	float lineStartTime;
-	float lineEndTime;
-	float lineFadeVerts;
-	float lineBlurAmount;
-	float lineBlurFade;
-	
-	float maxAttractForce;
-	float maxRepelForce;
-	
-	float maxTraverseDistance;
-	float traverseNodeWeight;
-	float traverseStepSize;
-	
-	float numSurvivingBranches;
-	int numPointsAtReplicate;
-	
-	float replicatePointDistance;
-	float replicatePointSize;
-	float maxTraverseAngle;
-	
-	float nodePopLength;
-	
-	//taken from timeline
-	float nodeBounce;
-	float clusterNodeSize;
-	float traversedNodeSize;
-	float lineFocalDistance;
-	float lineFocalRange;
-	float lineWidth;
-	float lineDissolve;
-	float lineThickness;
-	float lineAlpha;
-
 	ofxGameCamera cam;
-
+	CloudsRun* run;
+	
 	ofxTLColorTrack* lineColor;
 	ofxTLColorTrack* nodeColor;
-	
-	vector<Node*> nodes;
-	vector<ofVec3f> fusePoints;
-	ofVboMesh geometry;
-	//fuzzy points
-	ofVboMesh nodeCloudPoints;
-	//for drawing the line
-	ofVboMesh traversal;
-	
-	//ofxTLCurves* nodeBounce;
-	
-	
-	//for drawing the node graphics
-	vector<Node*> traversedNodes;
-	map<ofIndexType,ofIndexType> traversalIndexToNodeIndex;
-	ofVboMesh traversedNodePoints;
-	
-	void traverse();
-	void generate();
-	ofVec3f trailHead;
-	ofShader billboard;
-	ofShader lineAttenuate;
-	
-	ofShader gaussianBlur;
-	string renderFolder;
-	ofImage nodeSprite;
-	ofImage nodeSpriteBasic;
-	void loadShader();
 
 	//TODO pick a better font renderer
 	ofTrueTypeFont font;
 	vector<CloudsQuestion> questions;
 	CloudsQuestion* selectedQuestion;
+	ofShader clusterShader;
+	ofShader lineShader;
+	ofShader traversalShader;
 	
+	ofImage sprite;
+	
+	ofVboMesh traversalMesh;
+	ofVboMesh clusterMesh;
+	ofVboMesh connectionMesh;
+	
+	
+	vector<CloudsClusterNode> nodes;
+	map<string,int> clipIdToNodeIndex;
+	
+	float maxTraverseAngle;
+	
+	float meshExpansion;
+	float pointSize;
+	
+	float lineAlpha;
+	float lineFocalDistance;
+	float lineFocalRange;
+	float lineDissolve;
+	ofVec3f trailHead;
+	
+	float nodePopLength;
+	float traversedNodeSize;
 };

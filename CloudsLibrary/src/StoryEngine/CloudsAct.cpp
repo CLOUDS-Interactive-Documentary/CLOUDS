@@ -415,13 +415,11 @@ string CloudsAct::getTopicForClip(CloudsClip& clip){
 }
 
 //
-//vector<string>& CloudsAct::getAllTopics(){
-//    return topicHistory;
-//}
+vector<string>& CloudsAct::getAllTopics(){
+    return topicHistory;
+}
 
-
-void CloudsAct::setTopicForClip(string topic, string clipName)
-{
+void CloudsAct::setTopicForClip(string topic, string clipName){
     topicMap[clipName] = topic;
 }
 
