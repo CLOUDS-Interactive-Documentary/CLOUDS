@@ -531,7 +531,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
                     act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
-
 //                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
@@ -697,8 +696,8 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 		preset = winningPresets[ ofRandom(winningPresets.size()) ];
 	}
 	else{
-		preset = visualSystems->getRandomVisualSystem();
-		log += ",ERROR,no presets found! " + preset.getID() + "\n";
+		preset = visualSystems->getRandomEnabledPreset();
+		log += ",ERROR,no presets found! " + preset.getID() + " enabled staus : "+ ofToString(preset.enabled) +"\n";
 	}
 	
     return preset;

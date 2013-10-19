@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
-    <IsMinified>1</IsMinified>
+    <IsMinified>0</IsMinified>
     <XPosition>213.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>

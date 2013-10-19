@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1697.000000000</XPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>849.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Brain</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Cosmic</Name>
@@ -12,11 +17,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>MezzyNeurons</Name>
+    <Name>CosmicS</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>CosmicSperm</Name>
+    <Name>Just_Points</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>MezzyNeurons</Name>
+    <Value>0</Value>
 </Widget>
