@@ -94,11 +94,12 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		ofPushMatrix();
 		
 		setupRGBDTransforms();
-
+		
+		ofTranslate(-translatedHeadPosition);
+		
 		rgbdPixelToPixelShader.begin();
 		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 0);
 		rgbdPixelToPixelShader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
-		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
 		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
 		rgbdPixelToPixelShader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);
 		rgbdPixelToPixelShader.setUniform1f("maxDepth", videoIntrinsics.depthRange.max);
@@ -121,8 +122,7 @@ void CloudsVisualSystemRGBDVideo::selfExit(){
 }
 
 void CloudsVisualSystemRGBDVideo::selfPresetLoaded(string presetPath){
-	loadMoviePath = videoPathField->getTextString() ;
-
+	loadMoviePath = videoPathField->getTextString();
 }
 
 bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
