@@ -121,23 +121,22 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
             ofNotifyEvent(events.clipBegan, args);
             cout << "CloudsAct::timelineEventFired SENDING CLIP BEGAN" << endl;
         }
-        
     }
     else if(bang.track == visualSystemsTrack){
         //split string on %, send VS either began or ended
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
-        
-        CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
-		if(presetId[0] == "start " ){
-            cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
-			ofNotifyEvent(events.visualSystemBegan, args);
+        if(presetId.size() > 1){
+			CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+			if(presetId[0] == "start " ){
+				cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				ofNotifyEvent(events.visualSystemBegan, args);
+			}
+			else if(presetId[0] == "outro "){
+				cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				ofNotifyEvent(events.visualSystemEnded, args);
+			}
 		}
-		else if(presetId[0] == "outro "){
-            cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
-			ofNotifyEvent(events.visualSystemEnded, args);
-		}
-        
     }
     else if(bang.track == questionsTrack){
 		CloudsClip& questionClip = questionsMap[bang.flag];

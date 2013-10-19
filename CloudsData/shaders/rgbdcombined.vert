@@ -136,7 +136,7 @@ void main(void){
 	
 	//extract the normal and pass it along to the fragment shader
 	
-	vec2 normalPos = mix(vertexPos.xy, gl_Normal.xy,isMeshed) + normalRect.xy;
+	vec2 normalPos = mix(samplePos.xy, gl_Normal.xy,isMeshed) + normalRect.xy;
 //    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 
@@ -188,7 +188,7 @@ void main(void){
 	//DIFFUSE LIGHT
 	vec3 diffuseLightDirectionFull = vec3(lightPosition.xyz - vert);
     float d = length(diffuseLightDirectionFull);
-	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation +
+	diffuseAttenuate = 1.0 /(gl_LightSource[0].constantAttenuation  +
 							 gl_LightSource[0].linearAttenuation	* d +
 							 gl_LightSource[0].quadraticAttenuation * d * d);
 	
@@ -210,7 +210,7 @@ void main(void){
 		deltaChangeSample = vec4(0.);
 	}
 	
-	forceFade = max(isMeshed, 1.0 - triangleContract)	;
+	forceFade = max(isMeshed, 1.0 - triangleContract);
 	
     gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;
     gl_FrontColor = vec4(1.0);
