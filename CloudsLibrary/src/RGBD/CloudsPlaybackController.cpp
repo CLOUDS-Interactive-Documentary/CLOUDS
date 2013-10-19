@@ -412,15 +412,17 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         if(rgbdVisualSystem.isQuestionSelectedAndClipDone()){
             CloudsQuestion* q = rgbdVisualSystem.getSelectedQuestion();
             CloudsClip clip = q->clip;
-
-            cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
-			//map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
-            
-			rgbdVisualSystem.clearQuestions();
-			rgbdVisualSystem.stopSystem();
+			string topic = q->topic;
 			
-			introSequence.getSelectedRun().questionTopicHistory.insert(q->topic);
-			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic);
+			rgbdVisualSystem.clearQuestions();
+			
+            //cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
+			
+			rgbdVisualSystem.stopSystem();
+			introSequence.getSelectedRun().questionTopicHistory.insert(topic);
+			
+			storyEngine->buildAct(introSequence.getSelectedRun(), clip, topic);
+
         }
 
 	}

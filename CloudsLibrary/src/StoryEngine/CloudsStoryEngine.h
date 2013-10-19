@@ -67,7 +67,7 @@ class CloudsStoryEngine {
 
 	CloudsEvents events;
 	bool isSetup;
-
+	
     vector<string> runTopicCount;
 	vector<CloudsDichotomy> dichotomies;
     int dichotomyThreshold;

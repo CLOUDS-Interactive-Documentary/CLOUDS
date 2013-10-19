@@ -179,6 +179,9 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float questionYRange;
 	float questionLifeSpan; //minutes
 	
+	ofFloatColor questionBaseHSB;
+	ofFloatColor questionHoverHSB;
+	
 	//???: maybe we should combine these into a struct?
 	ofVec3f transitionStartPos, transitionEndPos;
 	ofQuaternion transitionStartRot, transitionEndRot;
