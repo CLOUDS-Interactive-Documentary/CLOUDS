@@ -1258,8 +1258,8 @@
 		E712D30417DD6CD5006FEE82 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E712D30517DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp */,
 				E712D30617DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.h */,
+				E712D30517DD6CD5006FEE82 /* CloudsVisualSystemRGBDVideo.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

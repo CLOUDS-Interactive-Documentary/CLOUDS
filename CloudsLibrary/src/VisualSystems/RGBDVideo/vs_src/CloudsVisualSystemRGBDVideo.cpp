@@ -95,7 +95,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		
 		setupRGBDTransforms();
 		
-		ofTranslate(-translatedHeadPosition);
+		ofTranslate(translatedHeadPosition);
 		
 		rgbdPixelToPixelShader.begin();
 		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 0);
