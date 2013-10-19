@@ -345,7 +345,7 @@ void CloudsPlaybackController::mouseDragged(ofMouseEventArgs & args){
 }
 
 void CloudsPlaybackController::mouseMoved(ofMouseEventArgs & args){
-	
+	cursorMovedTime = ofGetElapsedTimef();
 }
 
 void CloudsPlaybackController::mousePressed(ofMouseEventArgs & args){
@@ -422,11 +422,16 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			introSequence.getSelectedRun().questionTopicHistory.insert(topic);
 			
 			storyEngine->buildAct(introSequence.getSelectedRun(), clip, topic);
-
         }
-
 	}
 	
+	//TODO replace with cool cursor animations
+	if(ofGetElapsedTimef() - cursorMovedTime < 1){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
 	//TODO: add camera animations to RGBDVisSys
 	
 	//TODO: offsetTargets for turning away

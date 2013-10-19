@@ -208,6 +208,8 @@ class CloudsPlaybackController {
 	CloudsIntroSequence introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
+	float cursorMovedTime;
+	
 	string combinedMoviesFolder;
 	string currentTopic;
 	
