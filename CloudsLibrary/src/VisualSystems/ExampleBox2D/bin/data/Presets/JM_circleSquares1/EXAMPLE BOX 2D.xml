@@ -8,12 +8,12 @@
 <Widget>
     <Kind>2</Kind>
     <Name>GAVITY CONTROL MODE</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>CIRCLES</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -23,37 +23,37 @@
 <Widget>
     <Kind>4</Kind>
     <Name>TRIGGER FORCE</Name>
-    <Value>15.000000000</Value>
+    <Value>5.615763187</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX CIRCLES</Name>
-    <Value>10.000000000</Value>
+    <Value>156.305419922</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX RECTANGLES</Name>
-    <Value>253.842361450</Value>
+    <Value>229.458129883</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE MAX MEAN</Name>
-    <Value>5.000000000</Value>
+    <Value>16.527093887</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE SIZE DEVIATION</Name>
-    <Value>5.000000000</Value>
+    <Value>10.763546944</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT MAX MEAN</Name>
-    <Value>14.532019615</Value>
+    <Value>17.192117691</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RECT SIZE DEVIATION</Name>
-    <Value>9.211822510</Value>
+    <Value>5.665024757</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -68,50 +68,50 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RANDOM PLATFORMS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>H1</Name>
-    <Value>128.167526245</Value>
+    <Value>132.172775269</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S1</Name>
-    <Value>129.502593994</Value>
+    <Value>85.445007324</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B1</Name>
-    <Value>174.895233154</Value>
+    <Value>230.968414307</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>H2</Name>
-    <Value>112.146598816</Value>
+    <Value>136.178009033</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S2</Name>
-    <Value>129.502593994</Value>
+    <Value>65.418823242</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B2</Name>
-    <Value>230.968536377</Value>
+    <Value>54.738178253</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>H3</Name>
-    <Value>20.026178360</Value>
+    <Value>152.198944092</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>S3</Name>
-    <Value>69.424057007</Value>
+    <Value>97.460708618</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B3</Name>
-    <Value>174.895233154</Value>
+    <Value>74.764358521</Value>
 </Widget>
