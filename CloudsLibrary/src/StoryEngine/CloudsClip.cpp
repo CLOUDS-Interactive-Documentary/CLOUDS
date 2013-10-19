@@ -318,7 +318,7 @@ string CloudsClip::getQuestionForTopic(string topic){
     if(questionTopicMap.find(topic) != questionTopicMap.end()){
         return questionTopicMap[topic];
     }
-    ofLogError()<<"No question found for "<<topic<<" in clip: "<<getLinkName()<<endl;
+    ofLogError("CloudsClip::getQuestionForTopic")<<"No question found for topic "<<topic<<" in clip: "<<getLinkName()<<endl;
     return "";
 }
 

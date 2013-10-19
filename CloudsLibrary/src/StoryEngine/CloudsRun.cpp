@@ -9,17 +9,14 @@
 #include "CloudsRun.h"
 
 void CloudsRun::actBegan(CloudsActEventArgs &args){
-    cout<<"Act began, the current run isnt doing anything about it"<<endl;
     actCount++;
 }
 
 void CloudsRun::actEnded(CloudsActEventArgs &args){
-    cout<<"Act ended, current run isnt doing anything about it"<<endl;
     
 }
 
 void CloudsRun::clipBegan(CloudsClipEventArgs &args){
-    cout<<"Clip began, current run updated"<<endl;
     
     for(int i=0; i< clipHistory.size(); i++){
         if( clipHistory[i].getLinkName() == args.chosenClip.getLinkName() ){
@@ -34,24 +31,23 @@ void CloudsRun::clipBegan(CloudsClipEventArgs &args){
 }
 
 void CloudsRun::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-    cout<<"VS began, current run updated"<<endl;
     if( ! ofContains(presetHistory, args.preset.getID())){
         presetHistory.push_back(args.preset.getID());
     }
 }
 
 void CloudsRun::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-    cout<<"VS ended, current run isnt doing anything about it"<<endl;
+ //   cout<<"VS ended, current run isnt doing anything about it"<<endl;
 }
 
 void CloudsRun::questionAsked(CloudsQuestionEventArgs& args){
-    cout<<"Question asked, current run isnt doing anything about it"<<endl;
+//    cout<<"Question asked, current run isnt doing anything about it"<<endl;
 //    timesQuestionAsked[args.questionClip]
 
 }
 
 void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
-    cout<<"Topic changed, current run updated"<<endl;
+//    cout<<"Topic changed, current run updated"<<endl;
 //    
     timesOnCurrentTopicHistory[args.topic]++;
     if(! ofContains(topicHistory, args.topic)){
@@ -61,5 +57,5 @@ void CloudsRun::topicChanged(CloudsTopicEventArgs& args){
 }
 
 void CloudsRun::preRollRequested(CloudsPreRollEventArgs& args){
-    cout<<"preRoll Requested, current run doesnt care"<<endl;
+//    cout<<"preRoll Requested, current run doesnt care"<<endl;
 }

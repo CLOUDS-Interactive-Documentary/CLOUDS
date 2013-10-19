@@ -138,8 +138,9 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     }
     else if(bang.track == questionsTrack){
 		CloudsClip& questionClip = questionsMap[bang.flag];
-		string topic = ofSplitString( bang.flag, "??")[0];
+		string topic = ofSplitString( bang.flag, "??")[1];
 		string question = questionClip.getQuestionForTopic(topic);
+		cout << "** story engine :: creating question " << question << " with topic " << topic << endl;
         CloudsQuestionEventArgs args(questionClip,question,topic);
         ofNotifyEvent(events.questionAsked, args);
     }

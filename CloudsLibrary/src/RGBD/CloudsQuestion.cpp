@@ -28,8 +28,9 @@ CloudsQuestion::CloudsQuestion(){
 	radius = 10;
 	cam = NULL;
 	introQuestion = false;
-	charsPerSecond = 20;
-
+	charsPerSecond = 45;
+	hoveringEnabled = true;
+	
 	secondsToConsiderSelected = 3;
 	font = NULL;
 	
@@ -138,13 +139,12 @@ void CloudsQuestion::draw(){
 		selectPercent += (0 - selectPercent)*.4;
 	}
 	
+//	cout << "expand percent " << expandPercent << " radius " << radius << endl;
+	
 	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
-	CloudsQuestion::shader.setUniform1f("maxExpand", radius);
-	
-	//cout << "max expand " << radius << endl;
-	
+	CloudsQuestion::shader.setUniform1f("maxExpand", radius);	
 	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
-
+	
 	ofPushMatrix();
 	ofTranslate(position);
 	ofNode n;
@@ -178,8 +178,17 @@ void CloudsQuestion::orientToCenter(){
 	currentRot = n.getOrientationQuat();
 }
 
+void CloudsQuestion::enableHover(){
+	hoveringEnabled = true;
+}
+
+void CloudsQuestion::disableHover(){
+	if(hovering) stopHovering();
+	hoveringEnabled = false;
+}
+
 void CloudsQuestion::startHovering(){
-	if(!hovering){
+	if(!hovering && hoveringEnabled){
 		hovering = true;
 		hoveringStartTime = ofGetElapsedTimef();
 	}
@@ -271,7 +280,6 @@ void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
 		if(hovering && insideHover) {
             cout<<"Ive clicked on the button"<<endl;    
 		}
-
 	}
 }
 

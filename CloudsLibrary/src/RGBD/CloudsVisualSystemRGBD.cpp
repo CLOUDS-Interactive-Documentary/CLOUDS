@@ -176,7 +176,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	cameraGui->addSlider("DROP AMOUNT", 0, 200, &cloudsCamera.dropAmount);
 	cameraGui->addSlider("DRIFT ANGLE", 0, 200, &cloudsCamera.maxDriftAngle);
 	cameraGui->addSlider("DRIFT DENSITY", 0, 1.0, &cloudsCamera.driftNoiseDensity);
-	cameraGui->addSlider("DRIFT SPEED", 0, .1, &cloudsCamera.driftNoiseSpeed);
+	cameraGui->addSlider("DRIFT SPEED", 0, .01, &attenuatedCameraDrift);
 	
 	guis.push_back(cameraGui);
 	guimap[meshGui->getName()] = cameraGui;
@@ -208,11 +208,13 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
     questionGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	//center point, max drift
-	questionGui->add2DPad("XZ",	ofVec3f(0, -400), ofVec3f(-200, 200), &questionXZ);
+	//questionGui->add2DPad("XZ",	ofVec3f(0, -400), ofVec3f(-200, 200), &questionXZ);
+	questionGui->addSlider("Position X", 0, -400, &questionXZ.x);
+	questionGui->addSlider("Position Y", -200, 200, &questionXZ.z);
 	questionGui->addSlider("Drift Range", 40, 200, &questionDriftRange);
 	questionGui->addSlider("Y Range", 40, 200, &questionYRange);
 	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
-	questionGui->addSlider("Life Span Mins", 1, 6, &questionLifeSpan);
+//	questionGui->addSlider("Life Span Mins", 1, 6, &questionLifeSpan);
 	
 	CloudsQuestion::addQuestionVariables( questionGui );
 	
@@ -278,6 +280,9 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
 		transitionCamTargetNode->setOrientation( transitionCam.getOrientationQuat() );
 	}
+	else{
+		cloudsCamera.driftNoiseSpeed = caughtQuestion ? 0 : attenuatedCameraDrift;
+	}
 
 }
 
@@ -320,34 +325,54 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	for(int i = questions.size()-1; i >= 0; i--){
 	
 		questions[i]->update();
-		if(!questions[i]->hovering && ofGetElapsedTimef() - questions[i]->birthTime > questionLifeSpan*60 ){
-			delete questions[i];
-			questions.erase(questions.begin()+i);
-		}
-        else if(questions[i]->isSelected()){
+		
+        if(selectedQuestion == NULL && questions[i]->isSelected() && ofGetMousePressed()){
             selectedQuestion = questions[i];
+			break;
         }
+		
+		if(caughtQuestion == NULL){
+			questions[i]->enableHover();
+		
+			if(questions[i]->hovering){
+				caughtQuestion = questions[i];
+			}
+		}
+		
+		if(caughtQuestion != NULL) {
+			if(questions[i] == caughtQuestion){
+				if(!caughtQuestion->hovering){
+					caughtQuestion = NULL;
+				}
+			}
+			else {
+				questions[i]->disableHover();
+			}
+		}
 	}
 }
 
 void CloudsVisualSystemRGBD::setSelectedQuestion(){
 
     if(questions.size() > 0)    {
-        
         selectedQuestion = questions[0];
     }
     else{
-        cout<<"No questions!"<<endl;
+        cout << "No questions!" << endl;
     }
     
 }
 
 void CloudsVisualSystemRGBD::clearQuestions(){
+	
+	cout << "Clearing questions!" << endl;
+	
+    selectedQuestion = NULL;
     for (int i = 0; i<questions.size(); i++) {
         delete questions[i];
     }
     questions.clear();
-    selectedQuestion = NULL;
+
 }
 
 void CloudsVisualSystemRGBD::updateTransition(){
@@ -417,7 +442,6 @@ void CloudsVisualSystemRGBD::printTransitionNodes(){
 	cout << "case TRANSITION_TYPE:" << endl;
 	cout << "	transitionInStart.setPosition(" << transitionInStart.getPosition() << ");"<< endl ;
 	cout << "	transitionInStart.setOrientation( ofQuaternion( " << strtQuat << ") );"<< endl << endl;
-	
 	cout << "	transitionOutTarget.setPosition(" << transitionOutTarget.getPosition() << ");"<< endl ;
 	cout << "	transitionOutTarget.setOrientation( ofQuaternion( " << endQuat << ") );"<< endl ;
 	cout <<endl<<"	break;" << endl << endl<< endl<< endl;
@@ -626,6 +650,9 @@ void CloudsVisualSystemRGBD::selfDrawDebug(){
 	ofPushStyle();
 	ofPushMatrix();
 	
+	for(int i = 0; i < questions.size(); i++){
+		ofBox( questions[i]->position, 3);
+	}
 	ofNoFill();
 	ofTranslate(questionXZ.x, questionYCenter, questionXZ.y);
 	ofRotate(90, 1, 0, 0);
@@ -835,12 +862,15 @@ void CloudsVisualSystemRGBD::selfDraw(){
 }
 
 void CloudsVisualSystemRGBD::drawQuestions(){
+	//TODO parameterize stuff
 	glPointSize(3);
+
 	CloudsQuestion::startShader();
-	//TODO parameterize
+	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
 	CloudsQuestion::shader.setUniform4f("color",0.0,0.4,1.0,0.4);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
+
 	}
 	CloudsQuestion::endShader();
 	glPointSize(1);

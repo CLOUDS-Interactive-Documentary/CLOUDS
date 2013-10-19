@@ -276,19 +276,20 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	currentAct->play();
 }
 
-//--------------------------------------------------------------------
-void CloudsPlaybackController::setRandomQuestion(CloudsClip& clip){
-    if(currentVisualSystem->getSystemName() == "RGBD"){
-        rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0]);
-        rgbdVisualSystem.setSelectedQuestion();
-    }    
-}
+////--------------------------------------------------------------------
+//void CloudsPlaybackController::setRandomQuestion(CloudsClip& clip){
+//    if(currentVisualSystem->getSystemName() == "RGBD"){
+//        rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0]);
+//        rgbdVisualSystem.setSelectedQuestion();
+//    }    
+//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	
 	if(args.key == 'R'){
 //		combinedRenderer.reloadShader();
+		CloudsQuestion::reloadShader();
 	}
 	
 	if(args.key == 'P'){
@@ -296,9 +297,13 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
-        cout<<"adding question"<<endl;
-		currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
-		rgbdVisualSystem.addQuestion(currentClip, currentClip.getKeywords()[0], "fake question?");
+        cout<<"adding fake question"<<endl;
+		for(int i = 0; i < fakeQuestions.size(); i++){
+//			currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
+			rgbdVisualSystem.addQuestion(fakeQuestions[i],
+										 fakeQuestions[i].getTopicsWithQuestions()[0],
+										 fakeQuestions[i].getQuestions()[0]);
+		}
 	}
 
 	//SCRATCH SCRUB
@@ -405,12 +410,14 @@ void CloudsPlaybackController::update(ofEventArgs & args){
             CloudsQuestion* q = rgbdVisualSystem.getSelectedQuestion();
             CloudsClip clip = q->clip;
 
-            cout<<"Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
+            cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
 			//map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
             
+			rgbdVisualSystem.clearQuestions();
 			rgbdVisualSystem.stopSystem();
+			
 			currentRun->questionTopicHistory.insert(q->topic);
-			storyEngine->buildAct(*currentRun, clip, q->topic);
+			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic);
         }
 
 	}

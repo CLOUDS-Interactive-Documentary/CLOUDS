@@ -30,8 +30,6 @@ void testApp::setup(){
     player.setRun(run);
 	sound.setup(storyEngine);
 
-
-	
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
 //	CloudsClip& clip = parser.getRandomClip(true,false);
@@ -54,10 +52,14 @@ void testApp::setup(){
 		}
 		else if(!startingNodes[i].hasCombinedVideo){
 			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
-			//startingNodes.erase(startingNodes.begin() + i);
+			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
 			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
+		}
+		
+		if( i < 5){
+			player.fakeQuestions.push_back( startingNodes[i] );
 		}
 	}
 	cout << "Starting with " << startingNodes.size() << endl;
@@ -95,11 +97,11 @@ void testApp::keyPressed(int key){
 		}
 	}
     
-    if( key == 'T'){
-        CloudsClip& clip = parser.getRandomClip(true,true);
-        player.setRandomQuestion(clip);
-        
-    }
+//    if( key == 'T'){
+//        CloudsClip& clip = parser.getRandomClip(true,true);
+//        player.setRandomQuestion(clip);
+//        
+//    }
     
 }
 

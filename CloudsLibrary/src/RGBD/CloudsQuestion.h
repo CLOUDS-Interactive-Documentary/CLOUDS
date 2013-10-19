@@ -44,6 +44,9 @@ class CloudsQuestion {
 	void drawOverlay();
 	void update();
 	
+	void enableHover();
+	void disableHover();
+	
 	void startHovering();
 	void stopHovering();
 	bool isSelected();
@@ -73,6 +76,7 @@ class CloudsQuestion {
 	
   protected:
 	
+	bool hoveringEnabled;
 	float hoveringStartTime;
 	
 	bool isSetup;

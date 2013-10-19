@@ -111,7 +111,7 @@ void CloudsIntroSequence::selfUpdate(){
 		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
 			if(caughtQuestion == NULL){
-				if( distanceToQuestion < questionTugMaxDistance){
+				if( distanceToQuestion < questionTugMaxDistance ){
 					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
 					if(distanceToQuestion < questionTugMinDistance){
 						caughtQuestion = &startQuestions[i];
@@ -321,22 +321,27 @@ void CloudsIntroSequence::selfDraw(){
 	CloudsQuestion::shader.setUniform1f("minDistance", distanceRange.min);	
 	CloudsQuestion::shader.setUniform1f("maxDistance", distanceRange.max);
 	CloudsQuestion::shader.setUniform1f("attenuateFade", 1.0);
+	CloudsQuestion::shader.setUniform4f("selectedColor", 1.0, loadedQuestionTint.g, 1.0, 1.0);
+	CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
 
 	for(int i = 0; i < startQuestions.size(); i++){
-		if( ofContains(loadedQuestions,startQuestions[i].clip.getID()) ){
-			CloudsQuestion::shader.setUniform4f("color",1.0, loadedQuestionTint.g, 1.0, 1.0);
-		}
-		else{
-		   CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
-		}
 		startQuestions[i].draw();
 	}
+		
+	//highlight specific questions
+//	for(int i = 0; i < startQuestions.size(); i++){
+//		if( ofContains(loadedQuestions,startQuestions[i].clip.getID()) ){
+//			CloudsQuestion::shader.setUniform4f("color",1.0, loadedQuestionTint.g, 1.0, 1.0);
+//		}
+//		else{
+//		   CloudsQuestion::shader.setUniform4f("color",questionTint.r, questionTint.g, questionTint.b, 1.0);
+//		}
+//		startQuestions[i].draw();
+//	}
 
 	CloudsQuestion::endShader();
 	
 	ofPopStyle();
-	
-
 }
 
 void CloudsIntroSequence::drawCloudsType(){
