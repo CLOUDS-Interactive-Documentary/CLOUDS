@@ -17,6 +17,7 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemManager();
 	
 	void populateVisualSystems();
+    void populateEnabledSystemIndeces();
 	CloudsVisualSystemPreset getRandomVisualSystem();
 	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName);
 	CloudsVisualSystemPreset& getPresetWithID(string presetID);
@@ -45,8 +46,9 @@ class CloudsVisualSystemManager {
     void unsuppressClip(string presetID, string clip);
     void unsuppressClip(string presetID, int presetIndex);
 	
-	void exportStandalonePresets();
-	
+    CloudsVisualSystemPreset getRandomEnabledPreset();
+  	void exportStandalonePresets();
+    
   protected:
 
 	CloudsVisualSystemPreset dummyPreset;
@@ -54,6 +56,7 @@ class CloudsVisualSystemManager {
 	vector<CloudsVisualSystem*> systems;
 	map<string, CloudsVisualSystem*> nameToVisualSystem;
 	vector<CloudsVisualSystemPreset> presets;
+    vector<int> enabledPresetsIndex;
 	map<string, vector<CloudsVisualSystemPreset> > nameToPresets;
     map<string, vector<string> > suppressedClips;
 	string getKeywordFilePath();
