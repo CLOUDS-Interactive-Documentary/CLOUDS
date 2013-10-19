@@ -31,7 +31,7 @@
 //	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
 
 	rgbdVisualSystem.playSystem();
-	rgbdVisualSystem.loadPresetGUISFromName("TestNew");
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
 	
 	srand(ofGetSeconds());
 	

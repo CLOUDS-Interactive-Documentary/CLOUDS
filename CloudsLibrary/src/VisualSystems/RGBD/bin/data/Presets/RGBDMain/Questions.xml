@@ -6,10 +6,14 @@
     <YPosition>287.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>11</Kind>
-    <Name>XZ</Name>
-    <XValue>-400.000000000</XValue>
-    <YValue>-117.241378784</YValue>
+    <Kind>4</Kind>
+    <Name>Position X</Name>
+    <Value>-47.290641785</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Position Y</Name>
+    <Value>0.985214233</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -25,9 +29,4 @@
     <Kind>4</Kind>
     <Name>Y Start</Name>
     <Value>-25.369457245</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Life Span Mins</Name>
-    <Value>3.000000000</Value>
 </Widget>

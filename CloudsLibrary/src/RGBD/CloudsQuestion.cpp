@@ -28,8 +28,11 @@ CloudsQuestion::CloudsQuestion(){
 	radius = 10;
 	cam = NULL;
 	introQuestion = false;
-	charsPerSecond = 20;
-
+	charsPerSecond = 45;
+	hoveringEnabled = true;
+	isDestroyed = false;
+	lockHover = false;
+	
 	secondsToConsiderSelected = 3;
 	font = NULL;
 	
@@ -135,16 +138,23 @@ void CloudsQuestion::draw(){
 	}
 	else{
 		expandPercent += (.1 - expandPercent)*.2;
-		selectPercent += (0 - selectPercent)*.4;
+		selectPercent += ( 0 - selectPercent)*.4;
 	}
 	
+	//make it blow up and fade out really quickly.
+	if(isDestroyed){
+		ofxEasingCubic cub;
+		expandPercent = ofxTween::map(ofGetElapsedTimef(), destroyedStartFadeTime, destroyFadeoutTime, .0, 1.0, true, cub, ofxTween::easeOut);
+//		cout << "expand percent " << expandPercent << endl;
+	}
+	
+//	cout << "expand percent " << expandPercent << " radius " << radius << endl;
+	
 	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
-	CloudsQuestion::shader.setUniform1f("maxExpand", radius);
-	
-	//cout << "max expand " << radius << endl;
-	
+	CloudsQuestion::shader.setUniform1f("maxExpand", radius);	
 	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
-
+	CloudsQuestion::shader.setUniform1f("destroyedAttenuate", isDestroyed ? 1.0 - expandPercent : 1.0);
+	
 	ofPushMatrix();
 	ofTranslate(position);
 	ofNode n;
@@ -162,7 +172,9 @@ void CloudsQuestion::draw(){
 	
 //	ofScale(radius*expandPercent, radius*expandPercent, radius*expandPercent);
 	dottedCircle.draw();
-	progressRing.draw();
+	if(!isDestroyed){
+		progressRing.draw();
+	}
 	
 	ofPopMatrix();
 
@@ -178,20 +190,40 @@ void CloudsQuestion::orientToCenter(){
 	currentRot = n.getOrientationQuat();
 }
 
+void CloudsQuestion::enableHover(){
+	hoveringEnabled = true;
+}
+
+void CloudsQuestion::disableHover(){
+	if(hovering) stopHovering();
+	hoveringEnabled = false;
+}
+
 void CloudsQuestion::startHovering(){
-	if(!hovering){
+	if(!hovering && hoveringEnabled && !isDestroyed){
 		hovering = true;
 		hoveringStartTime = ofGetElapsedTimef();
 	}
 }
 
 void CloudsQuestion::stopHovering(){
-	hovering = false;
+	if(!lockHover){
+		hovering = false;
+	}
+}
+
+void CloudsQuestion::destroy(){
+	if(!isDestroyed){
+		isDestroyed = true;
+		destroyedStartFadeTime = ofGetElapsedTimef();
+		destroyFadeoutTime = destroyedStartFadeTime + 1.0;
+	}
 }
 
 bool CloudsQuestion::isSelected(){
 	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
 }
+
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
 		
@@ -271,7 +303,6 @@ void CloudsQuestion::mousePressed(ofMouseEventArgs& args){
 		if(hovering && insideHover) {
             cout<<"Ive clicked on the button"<<endl;    
 		}
-
 	}
 }
 

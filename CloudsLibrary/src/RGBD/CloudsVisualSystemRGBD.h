@@ -84,6 +84,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
 	
+	ofVec3f bottomRight;
   protected:
 	
 
@@ -106,6 +107,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void drawQuestions();
 	
 	vector<CloudsQuestion*> questions;
+	CloudsQuestion* caughtQuestion;
     CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
 
@@ -124,7 +126,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float pointVerticalSpace;
 	float pointHorizontalSpace;
 	void generatePointGrid();
-	
 	
 	bool drawParticulate;
 	bool drawCloud;
@@ -152,6 +153,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	float lightOffsetY;
 	float lightOffsetZ;
+	
+	float attenuatedCameraDrift;
 	
 	bool refreshScanlineMesh;
 	float verticalScanlineAlpha;

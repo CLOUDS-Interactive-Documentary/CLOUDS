@@ -7,11 +7,6 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Test_</Name>
+    <Name>RGBDMain</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>TestNew</Name>
-    <Value>0</Value>
 </Widget>

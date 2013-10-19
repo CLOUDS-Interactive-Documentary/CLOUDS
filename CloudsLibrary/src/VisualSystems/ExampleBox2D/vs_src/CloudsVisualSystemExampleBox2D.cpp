@@ -249,6 +249,8 @@ void CloudsVisualSystemExampleBox2D::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemExampleBox2D::selfDrawBackground()
 {
+	ofPushStyle();
+	
     ofColor cColor = ofColor::fromHsb(circleHSB.r, circleHSB.g, circleHSB.b);
     ofColor clColor = ofColor::fromHsb(circleLineHSB.r, circleLineHSB.g, circleLineHSB.b);
     ofColor rColor = ofColor::fromHsb(rectHSB.r, rectHSB.g, rectHSB.b);
@@ -328,6 +330,8 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
         ofLine(len, 0, len-5, 5);
         ofPopMatrix();
     }
+	
+	ofPopStyle();
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more

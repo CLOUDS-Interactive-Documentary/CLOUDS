@@ -840,7 +840,7 @@ void CloudsFCPParser::getOverlappingClipIDs(){
                     //adding the overlapping clip name to a vector in the CloudsClip
                     allClips[i].addOverlappingClipName(clipsFromSameFile[j].getLinkName());
 
-                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
+//                    ofLogNotice()<< "OVERLAPPING CLIPS: "<<allClips[i].getLinkName()  << " overlaps with clip "<< clipsFromSameFile[j].getLinkName()<<endl;
                 }
                 
             }

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Particle</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
-    <YPosition>350.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,7 +13,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BIRTH RATE</Name>
-    <Value>0.001000000</Value>
+    <Value>0.000098522</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

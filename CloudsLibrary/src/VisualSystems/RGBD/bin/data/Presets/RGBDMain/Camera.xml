@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Camera</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>643.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>378.000000000</XPosition>
+    <YPosition>307.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -48,5 +48,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>DRIFT SPEED</Name>
-    <Value>0.038423646</Value>
+    <Value>0.003891626</Value>
 </Widget>

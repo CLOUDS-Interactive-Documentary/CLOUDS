@@ -44,12 +44,21 @@ class CloudsQuestion {
 	void drawOverlay();
 	void update();
 	
+	void enableHover();
+	void disableHover();
+	
+	
 	void startHovering();
 	void stopHovering();
 	bool isSelected();
 	bool hovering;
-	
+	void destroy();
+	bool isDestroyed;
+	float destroyFadeoutTime;
+	float destroyedStartFadeTime;
 	float radius;
+	bool lockHover;
+	
 	ofVec3f position;
 	ofQuaternion currentRot;
 	
@@ -70,9 +79,9 @@ class CloudsQuestion {
 	bool introQuestion;
 	void orientToCenter();
 	
-	
   protected:
 	
+	bool hoveringEnabled;
 	float hoveringStartTime;
 	
 	bool isSetup;
