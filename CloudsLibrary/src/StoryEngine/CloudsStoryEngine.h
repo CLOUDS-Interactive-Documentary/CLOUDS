@@ -74,7 +74,7 @@ class CloudsStoryEngine {
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
     float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreManThanWomen, int    timesOnCurrentTopic  ); //queue based
     float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
-	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
+	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip,vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
 	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
@@ -95,6 +95,7 @@ class CloudsStoryEngine {
     float longClipThreshold;
     float longClipFadeInPercent;
 	float getHandleForClip(CloudsClip& clip);
+    float cadenceForTopicChangeMultiplier;
     
     //Story engine decision making parameters
     float topicsInCommonMultiplier;
@@ -107,6 +108,7 @@ class CloudsStoryEngine {
     float easyClipScoreFactor;
 	float offTopicFactor;
 	float distantClipSuppressionFactor;
+
 
 	//Topic selection parameters
 	float topicRelevancyMultiplier;

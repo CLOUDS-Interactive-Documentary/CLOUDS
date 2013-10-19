@@ -117,27 +117,76 @@ void CloudsVisualSystemClusterMap::traverse(){
 	for(int  i = 0; i < run->topicHistory.size(); i++){
 //		cout << "traversed to topic " << run->topicHistory[i] << endl;
 	}
-	ofVec3f lastPos;
-	for(int i = 0; i < run->clipHistory.size(); i++){
-		CloudsClip& clip = run->clipHistory[i];
-		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
+	
+	///BEGIN OLD LINEAR TRAVERSAL
+//	ofVec3f lastPos;
+//	for(int i = 0; i < run->clipHistory.size(); i++){
+//		CloudsClip& clip = run->clipHistory[i];
+//		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
+//		
+////		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+//		if(i > 0){
+//			for(int s = 1; s < 100; s++){
+//				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);
+//				traversalMesh.addColor(ofFloatColor());
+//			}
+//		}
+//		lastPos = clip.networkPosition;
+//		traversalMesh.addVertex(clip.networkPosition);
+//		traversalMesh.addColor(ofFloatColor());
+//		
+//		for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
+//			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
+//		}
+//	}
+//	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	//END OLD LINEAR TRAVERSAL
+	
+	ofVec3f dirToTarget;
+	ofVec3f position = run->clipHistory[0].networkPosition;
+	ofVec3f currentDirection = run->clipHistory[1].networkPosition - position;
+	if(currentDirection.isAligned(ofVec3f(1,0,0))){
+		currentDirection = currentDirection.getCrossed(ofVec3f(0,0,1));
+	}
+	else{
+		currentDirection = currentDirection.getCrossed(ofVec3f(1,0,0));
+	}
+	
+	for(int i = 1; i < run->clipHistory.size(); i++){
+		dirToTarget = run->clipHistory[i].networkPosition
 		
-//		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
-		if(i > 0){
-			for(int s = 1; s < 100; s++){
-				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);
-				traversalMesh.addColor(ofFloatColor());
+		CloudsClip& clip = run->clipHistory[i];
+		dirToTarget = (clip.networkPosition - position);
+		
+		ofVec3f direction = (clip.networkPosition - position).normalized();
+		
+		ofVec3f dirToNode = (clip.networkPosition - position);
+		float angleTo = dirToTarget.angle(dirToNode);
+//		if(angleTo > maxTraverseAngle){
+//			continue;
+//		}
+
+		int numSteps = 0;
+		float currentDistance = dirToTarget.length();
+		while(currentDistance > 2){
+			float dampen = ofMap(currentDistance, 20, 2, .05, 1, true);
+			direction += ( (dirToTarget / currentDistance) - direction) * dampen;
+			direction.normalize();
+			//			direction = dirToTarget.normalized();
+			position += direction * MIN(1, direction.length());
+			
+			traversalMesh.addColor(ofFloatColor(0));
+			traversalMesh.addVertex(position);
+			
+			dirToTarget = (clip.networkPosition - position);
+			currentDistance = dirToTarget.length();
+			if(numSteps++ > 10000){
+				cout << "failed with 10000 steps";
+				break;
 			}
 		}
-		lastPos = clip.networkPosition;
-		traversalMesh.addVertex(clip.networkPosition);
-		traversalMesh.addColor(ofFloatColor());
-		
-		for(int c = 0; c < n.clusterMeshVertexIds.size(); c++){
-			connectionMesh.setNormal(n.clusterMeshVertexIds[c], ofVec3f(1.0,0.0,0.0));
-		}
 	}
-	traversalMesh.setMode(OF_PRIMITIVE_LINE_STRIP);	
+	
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -168,7 +217,7 @@ void CloudsVisualSystemClusterMap::selfSetupGui(){
 //	generatorGui->addSlider("min fuse radius",  1, 100, &minFuseRadius);
 //	generatorGui->addSlider("max attract force",  0, 1.0, &maxAttractForce);
 //	generatorGui->addSlider("max repel force",  0, 1.0, &maxRepelForce);
-//	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
+	generatorGui->addSlider("max traverse angle",  0, 180, &maxTraverseAngle);
 
 	ofAddListener(generatorGui->newGUIEvent, this, &CloudsVisualSystemClusterMap::selfGuiEvent);
 	guis.push_back(generatorGui);

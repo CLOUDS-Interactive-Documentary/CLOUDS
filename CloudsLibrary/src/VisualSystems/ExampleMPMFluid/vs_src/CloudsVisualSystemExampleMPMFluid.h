@@ -11,21 +11,21 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxBox2d.h"
+//#include "ofxMPMFluid.h"
 
 
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
+class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
   public:
     
-    CloudsVisualSystemExampleBox2D() {}
+    CloudsVisualSystemExampleMPMFluid() {}
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "ExampleBox2D";
+		return "ExampleMPMFluid";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -97,58 +97,7 @@ class CloudsVisualSystemExampleBox2D : public CloudsVisualSystem {
 	}
 
 protected:
-    
-    void createRandomObjects();
-    void addRandomCircle();
-    void addRandomRect();
-    void addCircle(ofVec2f pos, ofVec2f vel, float rad);
-    void addRect(ofVec2f pos, ofVec2f vel, ofVec2f size);
-    void addStaticPlatforms();
-    void removeStaticPlatforms();
-    void addRandomPlatform();
-    void removeRandomPlatform();
-    void handleObjectLimit();
-    void reinitBounds();
-    float getGaussian();
-    
-    ofxBox2d box2d;
-    
-    ofVec2f prevScreenSize;
-    
-    ofVec2f prevMouse;
-    
-    vector <ofxBox2dCircle> circles;
-    vector <ofxBox2dRect> rects;
-    vector <ofxBox2dPolygon> platforms;
-    vector <ofxBox2dPolygon> randomPlatforms;
-    
     // preset stuff
     ofxUISuperCanvas* customGui;
 
-    bool bGravityMod;
-    bool bCircles;
-    bool bRects;
-    
-    ofVec2f gravityForce;
-    ofVec2f gravityLine;
-    int minObjectCount;
-    float maxCircles;
-    float maxRects;
-    
-    
-    bool bFill;
-    bool bRandomPlatforms;
-    bool bStaticPlatforms;
-    float triggerForce;
-    
-    int randomPlatformCounter;
-    
-    ofFloatColor circleHSB;
-    ofFloatColor circleLineHSB;
-    ofFloatColor rectHSB;
-    
-    float circleSizeDev;
-    float circleSizeMean;
-    float rectSizeDev;
-    float rectSizeMean;
 };

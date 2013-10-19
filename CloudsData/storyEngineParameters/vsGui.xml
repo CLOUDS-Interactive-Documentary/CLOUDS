@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MAX VS RUNTIME</Name>
-    <Value>14.187191963</Value>
+    <Value>30.738916397</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -34,4 +34,9 @@
     <Kind>4</Kind>
     <Name>LONG CLIP FAD IN %</Name>
     <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CADENCE FOR TOPIC CHANGE</Name>
+    <Value>10.000000000</Value>
 </Widget>
