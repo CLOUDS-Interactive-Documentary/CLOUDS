@@ -472,7 +472,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
 	
 	rgbdVisualSystem.playSystem();
-	rgbdVisualSystem.loadPresetGUISFromName("TestNew");
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
 }
 
 //--------------------------------------------------------------------
@@ -601,7 +601,7 @@ void CloudsPlaybackController::hideVisualSystem()
 		nextSystem->stopSystem();
 		nextSystem = NULL;
 		rgbdVisualSystem.playSystem();
-		rgbdVisualSystem.loadPresetGUISFromName("TestNew");
+		rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
 		showingVisualSystem = false;
 	}
 }
