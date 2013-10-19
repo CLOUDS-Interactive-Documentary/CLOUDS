@@ -222,6 +222,10 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.comments = keywordXml.getValue("comments","");
 		preset.grade = keywordXml.getValue("grade", "");
 		preset.enabled = keywordXml.getValue("enabled", true );
+        if(preset.enabled){
+        
+            cout<<"The preset : "<<preset.getID()<<" has a definite duration of :"<<preset.duration<<endl;
+        }
         keywordXml.popTag(); //system
 	}
 	
