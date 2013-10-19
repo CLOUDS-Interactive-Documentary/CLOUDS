@@ -2,11 +2,16 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>372.000000000</XPosition>
-    <YPosition>295.000000000</YPosition>
+    <XPosition>314.000000000</XPosition>
+    <YPosition>266.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>DefaultCluster</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DefaultCluster_cluster2folder</Name>
     <Value>0</Value>
 </Widget>

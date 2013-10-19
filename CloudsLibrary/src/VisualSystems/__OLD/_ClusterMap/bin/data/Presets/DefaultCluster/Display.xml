@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Display</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>612.000000000</XPosition>
+    <YPosition>56.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>line alpha</Name>
+    <Value>0.906403959</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>line focal dist</Name>
+    <Value>28.870103836</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>line focal range</Name>
+    <Value>34.806015015</Value>
+</Widget>

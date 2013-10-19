@@ -3260,8 +3260,8 @@
 		E7C010B6180DD5E700B5CEF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7C010B7180DD5E700B5CEF1 /* 3DModelVisualSystem.cpp */,
 				E7C010B8180DD5E700B5CEF1 /* 3DModelVisualSystem.h */,
+				E7C010B7180DD5E700B5CEF1 /* 3DModelVisualSystem.cpp */,
 				E7C010B9180DD5E700B5CEF1 /* CloudsOrthoCamera.cpp */,
 				E7C010BA180DD5E700B5CEF1 /* CloudsOrthoCamera.h */,
 			);
