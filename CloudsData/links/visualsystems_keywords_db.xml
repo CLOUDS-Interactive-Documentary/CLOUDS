@@ -18,11 +18,44 @@
         <clip>Martin - Big data</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
+    <enabled>1</enabled>
+</system>
+<system name="3DModelVisualSystem_BigData">
+    <keywords>Archiving|archiving|data ownership|facebook|the cloud</keywords>
+    <suppressions>
+        <clip>Jen - twitter friends</clip>
+        <clip>Aaron - exciting time</clip>
+        <clip>Bruce - Github Tarball</clip>
+        <clip>Bruce - aborted projects</clip>
+        <clip>Golan - keeping you stuff working</clip>
+        <clip>Jer - spoken word</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Lindsay - death of technology</clip>
+        <clip>Maeda - recording appalachian music</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Shiffman - what do you archive?</clip>
+        <clip>Zach - Joshua Davis</clip>
+        <clip>Regine - future camera</clip>
+        <clip>Regine - information should be free</clip>
+        <clip>Bruce - pinheaded geekdom</clip>
+        <clip>Julia - strength of weak ties</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Kyle_CH - virtual and identity</clip>
+        <clip>Lauren - politics of liking things</clip>
+        <clip>Lauren - how we communicate, shorter</clip>
+        <clip>Lauren - friendtracking 1</clip>
+        <clip>Lindsay - meeting IRL</clip>
+        <clip>Lindsay - online identity</clip>
+        <clip>Paola - social media quicksand</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_CheeseDoodles">
-    <keywords>weird</keywords>
+    <keywords>weird|objects</keywords>
     <suppressions>
         <clip>Golan - kerrington</clip>
         <clip>Sophy - Where&apos;s the best hamburger?</clip>
@@ -35,13 +68,16 @@
         <clip>Bruce - Infinity in a grain of sand</clip>
         <clip>Bruce - Age of the universe, really weird</clip>
         <clip>Bruce - fanciful metaphors 1</clip>
+        <clip>Casey - teaching at UCLA</clip>
+        <clip>Nervous_Jessica - Design process</clip>
+        <clip>Nervous_Jessica - Design process 2</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_Clock2">
-    <keywords>clock|camera</keywords>
+    <keywords>clock|camera|artificial intelligence</keywords>
     <suppressions>
         <clip>Andres - seeing molecules</clip>
         <clip>Andres - camera distorts reality</clip>
@@ -61,9 +97,28 @@
         <clip>Kyle_MC - face algos</clip>
         <clip>Kyle_MC - folowing the finger</clip>
         <clip>Kyle_MC - Camera doesn&apos;t care if you&apos;re human</clip>
+        <clip>Aaron - Tailored Stories</clip>
+        <clip>Bruce - machines don&apos;t think 1</clip>
+        <clip>Bruce - machines don&apos;t think 2</clip>
+        <clip>Bruce - twitter is not your friend</clip>
+        <clip>Bruce - Hi I&apos;m conscious</clip>
+        <clip>Bruce - networks vs robots</clip>
+        <clip>Javier - Hummingbird drone</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Kevin - algo chess 1</clip>
+        <clip>Kevin - algo chess 2</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_CH - tribe of New media</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - uncanny</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marius - artificial creativity</clip>
+        <clip>Martin - limits of computation</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_FallingChairs">
@@ -213,7 +268,30 @@
         <clip>Marius - my work exists in a utopian space,</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
+    <enabled>1</enabled>
+</system>
+<system name="3DModelVisualSystem_TransHuman1">
+    <keywords>science fiction</keywords>
+    <suppressions>
+        <clip>Aaron - progress</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Julian - Ray Bradbury story</clip>
+        <clip>Julian - science fiction</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Sophy - techno-fungus</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Paola - teleportation</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>C</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_TransHuman1_">
@@ -241,6 +319,52 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="3DModelVisualSystem_TransHuman_female">
+    <keywords>dystopia|cyberpunk|artificial intelligence</keywords>
+    <suppressions>
+        <clip>Bruce - military</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Javier - behavior change</clip>
+        <clip>Jen - prisons</clip>
+        <clip>Julian - Ray Bradbury story</clip>
+        <clip>Julian - what&apos;s inside this thing</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - google&apos;s business model 1</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Aaron - software is a brain</clip>
+        <clip>Aaron - Mini-Artificial Intelligences</clip>
+        <clip>Aaron - Tailored Stories</clip>
+        <clip>Andres - Computational lens</clip>
+        <clip>Bruce - Anthropomorphism</clip>
+        <clip>Bruce - twitter is not your friend</clip>
+        <clip>Bruce - networks vs robots</clip>
+        <clip>Kyle_CH - Sentience of digital art</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_MC - Debug screen</clip>
+        <clip>Kyle_MC - new aesthetic 2</clip>
+        <clip>Kyle_MC - new aesthetic 1</clip>
+        <clip>Lauren - sentiment anaylsis</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Aesthetic with no references,</clip>
+        <clip>Marius - cyperpunk history</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Ramsey - independent of any human</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>C</grade>
+    <enabled>1</enabled>
+</system>
+<system name="3DModelVisualSystem_TransMan2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="3DModelVisualSystem_Transparency_Grenade">
     <keywords>transparency</keywords>
     <suppressions>
@@ -257,7 +381,7 @@
         <clip>Theo - crazy researcher</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>C</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_Virus1">
@@ -312,7 +436,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cities_Aura">
     <keywords></keywords>
@@ -697,7 +821,7 @@
     <enabled>1</enabled>
 </system>
 <system name="ExampleBox2D_JM1">
-    <keywords>interactivity</keywords>
+    <keywords>interactivity|processing</keywords>
     <suppressions>
         <clip>Diederick - don&apos;t like that kind of interaction</clip>
         <clip>Golan - yellow tail</clip>
@@ -1970,7 +2094,7 @@
     <enabled>1</enabled>
 </system>
 <system name="Neurons_Just_Points">
-    <keywords>network|clouds</keywords>
+    <keywords>network|clouds|emergence</keywords>
     <suppressions>
         <clip>Bruce - lashup 1</clip>
         <clip>Sophy - city</clip>
@@ -1989,6 +2113,20 @@
         <clip>Javier - Julian Oliver</clip>
         <clip>Fernanda - social network hairballs</clip>
         <clip>Bruce - relating to history through networks</clip>
+        <clip>Andres - soft systems 1</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Bruce - twitter is not your friend</clip>
+        <clip>Julia - Who owns the internet?</clip>
+        <clip>Karsten - DarkNet</clip>
+        <clip>Kyle_CH - RGBD</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Sophy - the Cloud</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -2563,7 +2701,11 @@
 </system>
 <system name="RGBDVideo_ITP_3">
     <keywords>coding</keywords>
-    <suppressions></suppressions>
+    <suppressions>
+        <clip>Ramsey - wizardry 1</clip>
+        <clip>Ramsey - designing languages</clip>
+        <clip>Bruce - Constant improvement</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2779,11 +2921,45 @@
     <grade></grade>
     <enabled>0</enabled>
 </system>
+<system name="VectorFlow_Electromagetique">
+    <keywords>electronic music|physics</keywords>
+    <suppressions>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - probability</clip>
+        <clip>Casey - pseudo-science</clip>
+        <clip>Elliot_UK - 2D vision in a 3D world</clip>
+        <clip>Karolina - stasis</clip>
+        <clip>Philip - understanding through physics</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Philip - couldn&apos;t do this with actual water</clip>
+        <clip>Philip - build the whole universe</clip>
+        <clip>Philip - image is in your brain</clip>
+        <clip>Ramsey - emergence from simple rules</clip>
+        <clip>Shiffman - NOC 3</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+</system>
 <system name="VectorFlow_HugeSweepingFlow">
     <keywords>phenomena</keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade>A</grade>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="VectorFlow_JonathanFlow">
+    <keywords>flow|pattern</keywords>
+    <suppressions>
+        <clip>Fernanda - Replaying the moment of discovery</clip>
+        <clip>Kevin - tracking rendition flights</clip>
+        <clip>Martin - Inflation not that interesting</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - data revleation</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_LargeSweepsFast">
@@ -2841,7 +3017,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
 </system>
 <system name="VectorFlow_SparseFlow">
     <keywords>visualization</keywords>
@@ -2891,6 +3067,27 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
+    <enabled>1</enabled>
+</system>
+<system name="VectorFlow_WavyFlock">
+    <keywords>emergence|processing</keywords>
+    <suppressions>
+        <clip>Jer - fireflies</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - elegant system</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - NOC 2</clip>
+        <clip>Andres - examples of the impossible</clip>
+        <clip>Casey - Processing addons</clip>
+        <clip>Casey - group teaching</clip>
+    </suppressions>
+    <comments></comments>
+    <grade>B</grade>
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_WhiteWind">
@@ -2957,7 +3154,7 @@
         <clip>Theo - inspired by nature</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_no-preset">
