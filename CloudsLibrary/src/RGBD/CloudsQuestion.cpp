@@ -30,6 +30,8 @@ CloudsQuestion::CloudsQuestion(){
 	introQuestion = false;
 	charsPerSecond = 45;
 	hoveringEnabled = true;
+	isDestroyed = false;
+	lockHover = false;
 	
 	secondsToConsiderSelected = 3;
 	font = NULL;
@@ -136,7 +138,14 @@ void CloudsQuestion::draw(){
 	}
 	else{
 		expandPercent += (.1 - expandPercent)*.2;
-		selectPercent += (0 - selectPercent)*.4;
+		selectPercent += ( 0 - selectPercent)*.4;
+	}
+	
+	//make it blow up and fade out really quickly.
+	if(isDestroyed){
+		ofxEasingCubic cub;
+		expandPercent = ofxTween::map(ofGetElapsedTimef(), destroyedStartFadeTime, destroyFadeoutTime, .0, 1.0, true, cub, ofxTween::easeOut);
+//		cout << "expand percent " << expandPercent << endl;
 	}
 	
 //	cout << "expand percent " << expandPercent << " radius " << radius << endl;
@@ -144,6 +153,7 @@ void CloudsQuestion::draw(){
 	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
 	CloudsQuestion::shader.setUniform1f("maxExpand", radius);	
 	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
+	CloudsQuestion::shader.setUniform1f("destroyedAttenuate", isDestroyed ? 1.0 - expandPercent : 1.0);
 	
 	ofPushMatrix();
 	ofTranslate(position);
@@ -162,7 +172,9 @@ void CloudsQuestion::draw(){
 	
 //	ofScale(radius*expandPercent, radius*expandPercent, radius*expandPercent);
 	dottedCircle.draw();
-	progressRing.draw();
+	if(!isDestroyed){
+		progressRing.draw();
+	}
 	
 	ofPopMatrix();
 
@@ -188,19 +200,30 @@ void CloudsQuestion::disableHover(){
 }
 
 void CloudsQuestion::startHovering(){
-	if(!hovering && hoveringEnabled){
+	if(!hovering && hoveringEnabled && !isDestroyed){
 		hovering = true;
 		hoveringStartTime = ofGetElapsedTimef();
 	}
 }
 
 void CloudsQuestion::stopHovering(){
-	hovering = false;
+	if(!lockHover){
+		hovering = false;
+	}
+}
+
+void CloudsQuestion::destroy(){
+	if(!isDestroyed){
+		isDestroyed = true;
+		destroyedStartFadeTime = ofGetElapsedTimef();
+		destroyFadeoutTime = destroyedStartFadeTime + 1.0;
+	}
 }
 
 bool CloudsQuestion::isSelected(){
 	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
 }
+
 void CloudsQuestion::drawOverlay(){
 	if(hovering){
 		

@@ -583,6 +583,8 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 		hideVisualSystem();
 	}
 	
+	rgbdVisualSystem.clearQuestions();
+	
 	//stotr the preset name for loading later in playNextVisualSystem()
 	nextPresetName = nextVisualSystem.presetName;
 	nextSystem = nextVisualSystem.system;

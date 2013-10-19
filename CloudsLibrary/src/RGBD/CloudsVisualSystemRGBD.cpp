@@ -328,9 +328,10 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 		
         if(selectedQuestion == NULL && questions[i]->isSelected() && ofGetMousePressed()){
             selectedQuestion = questions[i];
+			selectedQuestion->lockHover;
 			break;
         }
-		
+
 		if(caughtQuestion == NULL){
 			questions[i]->enableHover();
 		
@@ -347,6 +348,20 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 			}
 			else {
 				questions[i]->disableHover();
+			}
+		}
+	}
+	
+	if(selectedQuestion != NULL){
+		for(int i = questions.size()-1; i >= 0; i--){
+			if(selectedQuestion != questions[i]){
+				if(!questions[i]->isDestroyed){
+					questions[i]->destroy();
+				}
+				else if(questions[i]->destroyFadeoutTime < ofGetElapsedTimef()){
+					delete questions[i];
+					questions.erase(questions.begin() + i);
+				}
 			}
 		}
 	}
@@ -368,6 +383,7 @@ void CloudsVisualSystemRGBD::clearQuestions(){
 	cout << "Clearing questions!" << endl;
 	
     selectedQuestion = NULL;
+	caughtQuestion = NULL;
     for (int i = 0; i<questions.size(); i++) {
         delete questions[i];
     }
@@ -867,7 +883,8 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 	CloudsQuestion::startShader();
 	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
-	CloudsQuestion::shader.setUniform4f("color",0.0,0.4,1.0,0.4);
+	CloudsQuestion::shader.setUniform4f("color",0.0,0.4,1.0,0.7);
+	CloudsQuestion::shader.setUniform4f("selectedColor",1.0,0.4,1.0,0.7);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
 

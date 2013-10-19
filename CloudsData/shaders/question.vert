@@ -1,6 +1,7 @@
 uniform float expandPercent;
 uniform float selectPercent;
 uniform float maxExpand;
+uniform float destroyedAttenuate;
 
 uniform float attenuateFade;
 uniform float minDistance;
@@ -28,6 +29,6 @@ void main(void)
 //	gl_FrontColor = color;
 	float distanceAttenuate = clamp(map(gl_Position.z, minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
 	
-	gl_FrontColor = mix(color,selectedColor,selectPercent) *  mix(1.0, distanceAttenuate, attenuateFade);
+	gl_FrontColor = mix(color,selectedColor,selectPercent) *  mix(1.0, distanceAttenuate, attenuateFade) * destroyedAttenuate;
 //	gl_FrontColor = color *  mix(1.0, distanceAttenuate, attenuateFade);
 }

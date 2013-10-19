@@ -124,6 +124,8 @@
 		E7A1E0C81760E80E00A51263 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A1E0C71760E80E00A51263 /* libz.dylib */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7E5E2C21812192900CA4196 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C01812192900CA4196 /* question.frag */; };
+		E7E5E2C31812192900CA4196 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E2C11812192900CA4196 /* question.vert */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
@@ -443,6 +445,8 @@
 		E7A1E0C71760E80E00A51263 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7E5E2C01812192900CA4196 /* question.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.frag; path = ../../CloudsData/shaders/question.frag; sourceTree = "<group>"; };
+		E7E5E2C11812192900CA4196 /* question.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.vert; path = ../../CloudsData/shaders/question.vert; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -585,6 +589,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7E5E2C01812192900CA4196 /* question.frag */,
+				E7E5E2C11812192900CA4196 /* question.vert */,
 				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
 				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
 				609133851652CB3E00B523AD /* testView.h */,
@@ -1353,6 +1359,8 @@
 				E74620CB17DB8162002FC464 /* CloudsSpeaker.cpp in Sources */,
 				E730A47517DBE3FC0088335A /* ofxDelaunay.cpp in Sources */,
 				E730A47D17DBE4D00088335A /* Delaunay.cpp in Sources */,
+				E7E5E2C21812192900CA4196 /* question.frag in Sources */,
+				E7E5E2C31812192900CA4196 /* question.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
