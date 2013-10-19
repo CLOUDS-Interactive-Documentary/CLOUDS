@@ -499,7 +499,7 @@ void CloudsVisualSystemCosmic::drawSphereDebug()
         if(*(*bit))
         {
             ofNoFill();
-            float color = 255-bgBri->getPos();
+            float color = 255-bgBri;
             ofSetColor(color, 25.0*(*(*lit)));
 #if OF_VERSION_MINOR > 7
             ofDrawSphere(*(*pit), *(*rit));
@@ -526,7 +526,7 @@ void CloudsVisualSystemCosmic::drawAttractorDebug()
         if(*(*bit))
         {
             ofNoFill();
-            float color = 255-bgBri->getPos();
+            float color = 255-bgBri;
             ofSetColor(color, 25.0*(*(*lit)));
 #if OF_VERSION_MINOR > 7
             ofDrawSphere(*(*pit), *(*lit));
