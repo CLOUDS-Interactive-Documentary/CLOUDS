@@ -320,7 +320,7 @@
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_TransHuman_female">
-    <keywords>dystopia|cyberpunk|artificial intelligence</keywords>
+    <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
     <suppressions>
         <clip>Bruce - military</clip>
         <clip>Bruce - 2060s (Lashup 5)</clip>
@@ -2954,6 +2954,13 @@
     </suppressions>
     <comments></comments>
     <grade>B</grade>
+    <enabled>1</enabled>
+</system>
+<system name="VectorFlow_Electromagnetique">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_HugeSweepingFlow">
