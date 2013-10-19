@@ -135,7 +135,7 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
-        currentAct->unregisterEvents(currentRun);
+        currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
 	
@@ -218,6 +218,10 @@ void CloudsPlaybackController::setup(){
 	fadeInVisualSystem = "fadeInVisualSystem";
 }
 
+CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
+	return clusterMapVisualSystem;
+}
+
 void CloudsPlaybackController::setUseScratch(bool useScratch){
 	if(useScratch){
 		targetScratchVolume = 1.0;
@@ -237,14 +241,13 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
 }
 
 void CloudsPlaybackController::setRun(CloudsRun &run){
-    this->currentRun = &run;
+//    this->currentRun = &run;
 }
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
-	//TEMPORARY:: Should be set at the end of the act to all unasked questions from the last act
-	clusterMapVisualSystem.setQuestions(possibleStartQuestions);
 	
+
 	introSequence.setStartQuestions(possibleStartQuestions);
 	introSequence.playSystem();
 	introSequence.loadPresetGUISFromName("TunnelWarp");
@@ -265,13 +268,13 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	
 	if(currentAct != NULL){
 		currentAct->unregisterEvents(this);
-        currentAct->unregisterEvents(currentRun);
+        currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
 
 	currentAct = act;
 	currentAct->registerEvents(this);
-    currentAct->registerEvents(currentRun);
+    currentAct->registerEvents(&introSequence.getSelectedRun());
 
 	currentAct->play();
 }
@@ -299,7 +302,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == 'Q'){
         cout<<"adding fake question"<<endl;
 		for(int i = 0; i < fakeQuestions.size(); i++){
-//			currentClip.addQuestionTopicPair("topic", "What does it feel like to code?");
 			rgbdVisualSystem.addQuestion(fakeQuestions[i],
 										 fakeQuestions[i].getTopicsWithQuestions()[0],
 										 fakeQuestions[i].getQuestions()[0]);
@@ -385,12 +387,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO add questions to cluster map
 		//right now we can just have a canned animation and stop it when we are done
 		if(!clusterMapVisualSystem.getTimeline()->getIsPlaying()){
-			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
-			CloudsClip& clip = q->clip;
+//			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
+
+//			CloudsClip& clip = q->clip;
 			
 			showingClusterMap = false;
 			clusterMapVisualSystem.stopSystem();
-			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+			storyEngine->buildAct(introSequence.getSelectedRun(), currentClip, currentTopic);
 		}
 	}
 	////////////////////
@@ -416,7 +419,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			rgbdVisualSystem.clearQuestions();
 			rgbdVisualSystem.stopSystem();
 			
-			currentRun->questionTopicHistory.insert(q->topic);
+			introSequence.getSelectedRun().questionTopicHistory.insert(q->topic);
 			storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic);
         }
 
@@ -482,7 +485,9 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
 	rgbdVisualSystem.stopSystem();
 	
-	//TODO: Trigger cluster map with new updates
+	clusterMapVisualSystem.setRun(introSequence.getSelectedRun());
+	clusterMapVisualSystem.traverse();
+	
 	clusterMapVisualSystem.playSystem();
 	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
 	
@@ -531,7 +536,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
 	if(!showingVisualSystem){
 		//don't ask a topic that we've already seen
-		if(currentRun->questionTopicHistory.find(args.topic) == currentRun->questionTopicHistory.end()){
+		if(introSequence.getSelectedRun().questionTopicHistory.find(args.topic) == introSequence.getSelectedRun().questionTopicHistory.end()){
 			rgbdVisualSystem.addQuestion(args.questionClip, args.topic, args.question);
 		}
 	}

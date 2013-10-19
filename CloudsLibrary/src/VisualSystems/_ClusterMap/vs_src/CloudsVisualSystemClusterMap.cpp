@@ -110,12 +110,14 @@ void CloudsVisualSystemClusterMap::buildEntireCluster(CloudsFCPParser& parser){
 
 void CloudsVisualSystemClusterMap::traverse(){
 	
+	cout << " CloudsVisualSystemClusterMap::traverse TRAVERSING 1" << endl;
+	
 	if(run == NULL) return;
 	
 	traversalMesh.clear();
-
+	cout << "CloudsVisualSystemClusterMap::traverse TRAVERSING 2 " << run->topicHistory.size() << endl;
 	for(int  i = 0; i < run->topicHistory.size(); i++){
-//		cout << "traversed to topic " << run->topicHistory[i] << endl;
+		cout << "CloudsVisualSystemClusterMap::traverse -- traversed to topic " << run->topicHistory[i] << endl;
 	}
 	
 	///BEGIN OLD LINEAR TRAVERSAL
@@ -124,7 +126,7 @@ void CloudsVisualSystemClusterMap::traverse(){
 		CloudsClip& clip = run->clipHistory[i];
 		CloudsClusterNode& n = nodes[ clipIdToNodeIndex[ clip.getID() ] ];
 		
-//		cout << "traversed " << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
+		cout << "CloudsVisualSystemClusterMap::traverse	" << clip.getLinkName() << " at position " << (clip.networkPosition *300) << endl;
 		if(i > 0){
 			for(int s = 1; s < 100; s++){
 				traversalMesh.addVertex(lastPos + s * (clip.networkPosition-lastPos) / 100);

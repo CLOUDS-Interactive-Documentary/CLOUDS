@@ -28,6 +28,7 @@ void testApp::setup(){
 	player.setup();
 	player.setStoryEngine(storyEngine);
     player.setRun(run);
+	player.getClusterMap().buildEntireCluster(parser);
 	sound.setup(storyEngine);
 
 	////////SEED WITH RANDOM CLIP
@@ -65,7 +66,7 @@ void testApp::setup(){
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
-
+	
 	//temp sound stuff
 	sound.setMasterAmp(0.0);
 	useScratch = true;

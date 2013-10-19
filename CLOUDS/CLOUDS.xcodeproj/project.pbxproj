@@ -3572,10 +3572,10 @@
 		E7E5E30A18122F3C00CA4196 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5E30B18122F3C00CA4196 /* CloudsClusterNode.cpp */,
 				E7E5E30C18122F3C00CA4196 /* CloudsClusterNode.h */,
-				E7E5E30D18122F3C00CA4196 /* CloudsVisualSystemClusterMap.cpp */,
+				E7E5E30B18122F3C00CA4196 /* CloudsClusterNode.cpp */,
 				E7E5E30E18122F3C00CA4196 /* CloudsVisualSystemClusterMap.h */,
+				E7E5E30D18122F3C00CA4196 /* CloudsVisualSystemClusterMap.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
