@@ -43,11 +43,13 @@ void CloudsAct::populateTime(){
     timeline.setDurationInSeconds(duration);
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
+    vsGapsTrack = timeline.addFlags("VS Gap");
     clipsTrack = timeline.addFlags("Clips");
     difficultyTrack = timeline.addFlags("Clip Difficulty");
     clipPreRollTrack = timeline.addFlags("Clip PreRoll Flags");
     questionsTrack = timeline.addFlags("Questions");
-
+    
+    
     
     timeline.setInPointAtSeconds(0);
     string previousTopic = "";
@@ -61,7 +63,7 @@ void CloudsAct::populateTime(){
             
             clipsTrack->addFlagAtTime(item.key, item.startTime * 1000);
             clipsTrack->addFlagAtTime(" ", item.endTime * 1000);
-
+            
             difficultyTrack->addFlagAtTime(clipDifficultyMap[item.key], item.startTime * 1000);
             if(currentTopic != previousTopic){
                 topicsTrack->addFlagAtTime(currentTopic, item.startTime * 1000);
@@ -89,13 +91,16 @@ void CloudsAct::populateTime(){
             }
             else{
                 visualSystemsTrack->addFlagAtTime("outro :" + item.key, item.outroStartTime * 1000);
+                visualSystemsTrack->addFlagAtTime("end :" + item.key, item.endTime * 1000);
             }
         }
         else if(item.type == PreRoll){
             clipPreRollTrack->addFlagAtTime(item.key, item.startTime * 1000);
         }
         else if (item.type == Gap){
-            //nothing for now
+            vsGapsTrack->addFlagAtTime("gap start:" + item.key, item.startTime * 1000);
+            vsGapsTrack->addFlagAtTime("gap end:" + item.key, item.endTime * 1000);
+            // SM: Just doing this to display on the timeline. No events sent to the playback controller.
         }
         else if(item.type == Question){
             questionsTrack->addFlagAtTime(item.key, item.startTime*1000);
@@ -103,8 +108,8 @@ void CloudsAct::populateTime(){
     }
 	
 	topicDurationMap[previousTopic] = duration - currentTopicStartTime;
-
-
+    
+    
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
@@ -148,7 +153,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         vector<string> clipName = ofSplitString(bang.flag, "%");
         cout<<"sending clip: "<<clipName[1] <<" with Offset: "<< actItemsMap[bang.flag].handleLength << endl;
         CloudsPreRollEventArgs args(clipMap[clipName[1]],actItemsMap[bang.flag].handleLength);
-        ofNotifyEvent(events.preRollRequested, args);        
+        ofNotifyEvent(events.preRollRequested, args);
     }
 	else if(bang.track == topicsTrack){
         cout<<"sending topic: "<<bang.flag <<" with duration: "<< topicDurationMap[bang.flag] << endl;
@@ -244,7 +249,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     else{
         clipDifficulty = "medium";
     }
-//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -258,7 +263,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     dichotomiesMap[item.key] = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
-
+    
     
 }
 
@@ -277,7 +282,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     else{
         clipDifficulty = "medium";
     }
-//    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
     
     item.type = Clip;
@@ -290,19 +295,33 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     clipItems[clip.getLinkName()] = item;
-    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;    
+    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
+}
+
+void CloudsAct:: updateClipStartTime(CloudsClip clip, float startTime,float handleLength, string topic){
+    for(int i =0; i<actItems.size(); i++){
+        if(actItems[i].type == Clip && actItems[i].key == clip.getLinkName()){
+            
+            cout<<"updating clip start time for clip : "<<clip.getLinkName()<<" to account for VS gap"<<endl;
+            actItems[i].startTime = startTime;
+            //defaulting handle length to 1
+            actItems[i].endTime = startTime+clip.getDuration() + 1;
+        }
+    
+    }
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
     visualSystems.push_back(preset);
     visualSystemsMap[preset.getID()] = preset;
     
-//    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
+    //    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
     ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;
     item.type = VS;
-    item.key =preset.getID();
+    
+    item.key =preset.getID() ;
     item.startTime = vsStartTime;
     item.endTime = vsStartTime + duration;
     item.introEndTime = vsStartTime + preset.introDuration;
@@ -315,15 +334,26 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     visualSystemItems[preset.getID()] = item;
 }
 
-void CloudsAct::addGapForVisualSystem(float startTime){
+void CloudsAct::addGapForCadence(CloudsVisualSystemPreset preset,float startTime,float duration){
     ActTimeItem item;
+    item.key = preset.getID();
     item.type = Gap;
     item.startTime = startTime;
-    item.endTime = startTime + visualSystemDuration;
-    
-    duration = MAX(item.endTime, duration);
-    
+    item.endTime = startTime + duration;
+    updateVsEndTime(preset, duration);
     actItems.push_back(item);
+    
+}
+
+void CloudsAct::updateVsEndTime(CloudsVisualSystemPreset preset, float newEndTime){
+    for(int i =0; i<actItems.size(); i++){
+        if(actItems[i].type == VS && actItems[i].key == preset.getID()){
+            
+                actItems[i].outroStartTime += newEndTime;
+                actItems[i].endTime += newEndTime;
+
+        }
+    }
     
 }
 void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName){
@@ -384,9 +414,11 @@ string CloudsAct::getTopicForClip(CloudsClip& clip){
     return topicMap[ clip.getLinkName() ];
 }
 
-vector<string>& CloudsAct::getAllTopics(){
-    return topicHistory;
-}
+//
+//vector<string>& CloudsAct::getAllTopics(){
+//    return topicHistory;
+//}
+
 
 void CloudsAct::setTopicForClip(string topic, string clipName)
 {

@@ -30,9 +30,11 @@ CloudsStoryEngine::CloudsStoryEngine(){
     longClipThreshold = 30;
     longClipFadeInPercent = .5;
     actLength = 10 * 60;
+    cadenceForTopicChangeMultiplier =  10;
     
 	lastClipSharesTopicBoost = 10;
 	twoClipsAgoSharesTopicBoost = 10;
+    
     
 	topicRelevancyMultiplier = 100;
     topicsInCommonMultiplier = 10;
@@ -187,6 +189,7 @@ void CloudsStoryEngine::initGui(){
     vsGui->addSlider("MAX VS GAPTIME", 0, 60, &maxVisualSystemGapTime);
     vsGui->addSlider("LONG CLIP THRESHOLD", 0, 100,&longClipThreshold);
     vsGui->addSlider("LONG CLIP FAD IN %", 0.0, 1.0, &longClipFadeInPercent);
+    vsGui->addSlider("CADENCE FOR TOPIC CHANGE", 1, 30, &cadenceForTopicChangeMultiplier);
     vsGui->autoSizeToFitWidgets();
     
     string filePath;
@@ -295,7 +298,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     bool freeTopic = false;
     bool deadEnd = false;
     
-    //the run now listens to act events and is updated thorugh them.
+    //the run now listens to act events and is updated through them.
+    //making a local copy of the current run to build the new act.
     vector<CloudsClip> localClipHistory = run.clipHistory;
     vector<string> localPresetHistory = run.presetHistory;
 	vector<string> localTopicHistory = run.topicHistory;
@@ -496,17 +500,45 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             visualSystemDuration = clipStartTime - visualSystemStartTime;
             
             if(isPresetIndefinite){
-                if(visualSystemDuration > systemMaxRunTime || topic != previousTopic){
+                //if the indefinite visual system has gone greater than the max run time end the system
+                // and add to the act
+                if(visualSystemDuration > systemMaxRunTime ){
                     if(clip.getDuration() > longClipThreshold){
-                        visualSystemDuration += clip.getDuration()*longClipFadeInPercent;
+                        visualSystemDuration += clip.getDuration()*longClipFadeInPercent;   
+
                     }
-                    
+
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
 //                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
                 }
+                
+                //if the topic has changed and the system is still running extend the visual system, push back the clip start time
+                //and then start the new topic after that
+                else if(topic != previousTopic && systemRunning ){
+                    //putting ofRandom to give it some variation
+                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
+                    
+                    cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
+                    //updating totalSecondsEnqueued here may not be the best way to do this
+                    totalSecondsEnqueued +=cadenceForTopicChangeMultiplier;
+                    
+                    //pushing back clip start time to account for new gap
+                    act->updateClipStartTime(clip, totalSecondsEnqueued,clipHandleDuration, topic);
+                    float test = totalSecondsEnqueued + clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration * 2;
+
+                    act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
+                    act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
+
+//                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
+                    systemRunning = false;
+                    lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
+                    
+                }
+
             }
+            //if the definite visual system duartion has been exceeded end the system and add to the act
             else{
                 if(visualSystemDuration > definitePresetEndTime ){
                     definitePresetEndTime = 0;
@@ -553,8 +585,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     //add the history of the last topic in the act to the timesOnCurrentTopicHistory map of the CloudsRun.
     //    timesOnCurrentTopicHistory[topic] += timesOnCurrentTopic;
     
-    
-    //TODO: be aware if you have ended on a fixed duration VS to respect its duration
     if(systemRunning){
 		
         float clipStartTime = act->getItemForClip(act->getClip(act->getAllClips().size()-1)).startTime;
@@ -618,7 +648,7 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 		
 		for(int i = 0; i < presets.size(); i++){
 			string presetLog;
-			presets[i].currentScore = scoreForVisualSystem(presets[i], presetHistory, keyword, currentClip.getKeywords(), presetLog);
+			presets[i].currentScore = scoreForVisualSystem(presets[i], currentClip, presetHistory, keyword, currentClip.getKeywords(), presetLog);
 			topScore = MAX(presets[i].currentScore, topScore);
 			scoreLogPairs.push_back( make_pair(presets[i].currentScore, presetLog) );
 		}
@@ -667,13 +697,18 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
     return preset;
 }
 
-float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log){
+float CloudsStoryEngine::scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip, vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log){
 	log += ",,"+preset.getID() + ",";
 	if(!preset.enabled){
 		log += "rejected because it's disabled";
 		return 0;
 	}
 	
+    if(visualSystems->isClipSuppressed(preset.getID(), clip.getLinkName())){
+		log += "rejected because the system is suppressed for this clip";
+		return 0;
+    }
+       
 	if(ofContains(presetHistory, preset.getID())){
 		log += "rejected because we've seen it before";
 		return 0;
