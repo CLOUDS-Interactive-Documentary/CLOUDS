@@ -30,7 +30,7 @@ string CloudsVisualSystemPreset::getID(){
 
 void CloudsVisualSystemPreset::loadTimeInfo(){
 	ofxXmlSettings timeInfo;
-	string path = getDataPath() + "visualsystems/"+systemName+"/" + presetName + "/TimeInfo.xml";
+	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName + "/TimeInfo.xml";
 	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
 		indefinite = timeInfo.getValue("indefinite", true);
