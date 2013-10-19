@@ -218,7 +218,7 @@
     <keywords>clock</keywords>
     <suppressions></suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>A</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_StackOfChairs">
@@ -241,7 +241,7 @@
         <clip>Sophy - Where&apos;s the best hamburger?</clip>
     </suppressions>
     <comments></comments>
-    <grade>A</grade>
+    <grade>C</grade>
     <enabled>1</enabled>
 </system>
 <system name="3DModelVisualSystem_Succulent">
@@ -408,7 +408,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="3DModelVisualSystem_pink elephant">
     <keywords></keywords>
@@ -2671,7 +2671,7 @@
         <clip>Zach - action script shorter</clip>
     </suppressions>
     <comments></comments>
-    <grade></grade>
+    <grade>B</grade>
     <enabled>1</enabled>
 </system>
 <system name="QuineVisualSystem_no-preset">
@@ -2711,7 +2711,7 @@
     <enabled>1</enabled>
 </system>
 <system name="RGBDVideo_ITP_4">
-    <keywords>learning|education|coding</keywords>
+    <keywords>learning|education|coding|frustration</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
