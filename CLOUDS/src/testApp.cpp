@@ -60,7 +60,7 @@ void testApp::setup(){
 		}
 		
 		if( i < 5){
-			player.fakeQuestions.push_back( startingNodes[i] );
+//			player.fakeQuestions.push_back( startingNodes[i] );
 		}
 	}
 	cout << "Starting with " << startingNodes.size() << endl;

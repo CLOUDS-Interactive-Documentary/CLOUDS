@@ -504,9 +504,9 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-	
-	rgbdVisualSystem.playSystem();
-	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+	//JG FIX HERE
+//	rgbdVisualSystem.playSystem();
+//	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
 }
 
 //--------------------------------------------------------------------
