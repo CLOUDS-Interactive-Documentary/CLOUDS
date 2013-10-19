@@ -241,6 +241,25 @@
     <grade></grade>
     <enabled>1</enabled>
 </system>
+<system name="3DModelVisualSystem_Transparency_Grenade">
+    <keywords>transparency</keywords>
+    <suppressions>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Javier - hacker critique</clip>
+        <clip>Javier - Data ownership</clip>
+        <clip>Kyle_CH - tribe of New media</clip>
+        <clip>Kyle_MC - Anonymous</clip>
+        <clip>Kyle_MC - Transparent Tech</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Ramsey - literacy</clip>
+        <clip>Ramsey - google&apos;s business model 2</clip>
+        <clip>Theo - crazy researcher</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+</system>
 <system name="3DModelVisualSystem_Virus1">
     <keywords>virus</keywords>
     <suppressions>
@@ -2606,8 +2625,67 @@
     <enabled>1</enabled>
 </system>
 <system name="Replicator_no-preset">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>future|technological progress|internet</keywords>
+    <suppressions>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Elliot - augmented reality</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Theo - crazy researcher</clip>
+        <clip>Bruce - hamster herding</clip>
+        <clip>Greg - camera getting cheaper</clip>
+        <clip>Greg - camera scaling up</clip>
+        <clip>Greg - Trickle down</clip>
+        <clip>Greg - engage with research</clip>
+        <clip>Greg - Sharpening spears</clip>
+        <clip>Greg - cameras scaling up</clip>
+        <clip>Joel - myth of art and technology</clip>
+        <clip>JTNimoy - Comes from the human mind</clip>
+        <clip>JTNimoy - immersion2</clip>
+        <clip>Julia - program or be programmed</clip>
+        <clip>Julian - toolkit culture</clip>
+        <clip>Julian - journey to the moon</clip>
+        <clip>Karsten - illusion of original thought</clip>
+        <clip>Karsten - always improved</clip>
+        <clip>Kevin - printing code</clip>
+        <clip>Kevin - Getting smarter together</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Maeda - Design in the foreground</clip>
+        <clip>Marcus - Epic Games predictions</clip>
+        <clip>Marius - color 3D printing</clip>
+        <clip>Shantell - comes around</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Aaron - different ways of communicating</clip>
+        <clip>Fernanda - What people are thinking</clip>
+        <clip>Fernanda - had to explain that the web was social</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Martin - Net art</clip>
+        <clip>Martin - short attention span</clip>
+        <clip>Ramsey - biology and the internet</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2816,7 +2894,7 @@
     <enabled>1</enabled>
 </system>
 <system name="VectorFlow_WhiteWind">
-    <keywords>nature</keywords>
+    <keywords>nature|complexity</keywords>
     <suppressions>
         <clip>Andres - soft systems 2</clip>
         <clip>Andres - modeling the human being</clip>
@@ -2829,13 +2907,10 @@
         <clip>Kyle_CH - nature is complex</clip>
         <clip>Marcus - simulation to stories</clip>
         <clip>Martin - data revleation</clip>
-        <clip>Philip - programming the river</clip>
         <clip>Philip - couldn&apos;t do this with actual water</clip>
         <clip>Ramsey - does nature compute? 1</clip>
         <clip>Ramsey - does nature compute? 2</clip>
         <clip>Ramsey - Conway 2</clip>
-        <clip>Shiffman - Magnets</clip>
-        <clip>Shiffman - a mystical quality</clip>
         <clip>Shiffman - programming the universe</clip>
         <clip>Shiffman - how far could we get?</clip>
         <clip>Shiffman - Constraints,</clip>
@@ -2844,6 +2919,42 @@
         <clip>Theo - inspired by nature shorter</clip>
         <clip>Theo - evolution</clip>
         <clip>Theo - magic</clip>
+        <clip>Binx - big data</clip>
+        <clip>Fernanda - defense of complexity 1</clip>
+        <clip>Fernanda - defense of complexity 2</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Jen - oversimplified circles 1</clip>
+        <clip>Jen - all about complexity</clip>
+        <clip>Jer - Pattern</clip>
+        <clip>Jen - truthiness</clip>
+        <clip>Jen - data crystal ball 3</clip>
+        <clip>Jen - Big data</clip>
+        <clip>Jer - Good at understanding complexity</clip>
+        <clip>Karsten - database</clip>
+        <clip>Karolina - Ocean as metaphor</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>Maeda - simplicity and complexity</clip>
+        <clip>Marcus - emergence</clip>
+        <clip>Marcus - Sims</clip>
+        <clip>Marcus - energy flow_riot</clip>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Marius - code can be messy</clip>
+        <clip>Martin - Zooming is critical</clip>
+        <clip>Martin - limits of computation</clip>
+        <clip>Martin - starry night</clip>
+        <clip>Nervous_Jessica - biocomputer</clip>
+        <clip>Philip - toxi&apos;s physics</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Shiffman - Games</clip>
+        <clip>Shiffman - million monkeys</clip>
+        <clip>Theo - relating to nature</clip>
+        <clip>Theo - inspired by nature</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
