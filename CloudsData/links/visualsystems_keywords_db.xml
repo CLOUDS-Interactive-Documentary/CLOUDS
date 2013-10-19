@@ -694,7 +694,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Cosmic_no-preset">
     <keywords></keywords>
@@ -959,7 +959,7 @@
     </suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="ExampleBox2D_JM_gravity2">
     <keywords></keywords>
@@ -1220,11 +1220,19 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Flocking_JM2">
-    <keywords></keywords>
-    <suppressions></suppressions>
+    <keywords>emergence|nature of code|artificial life</keywords>
+    <suppressions>
+        <clip>Marcus - lego bricks</clip>
+        <clip>Nervous_Jesse - reaction lamp</clip>
+        <clip>Nervous_Jessica - RNA and Viruses</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Ramsey - Conway 2</clip>
+        <clip>Ramsey - Conway 3</clip>
+        <clip>Ramsey - Conway 1</clip>
+    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -1234,14 +1242,14 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="Flocking_Preset2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
 </system>
 <system name="ForkingPaths_no-preset">
     <keywords></keywords>
@@ -2700,11 +2708,18 @@
     <enabled>1</enabled>
 </system>
 <system name="RGBDVideo_ITP_3">
-    <keywords>coding</keywords>
+    <keywords>coding|program or be programmed</keywords>
     <suppressions>
         <clip>Ramsey - wizardry 1</clip>
         <clip>Ramsey - designing languages</clip>
         <clip>Bruce - Constant improvement</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - legos 1</clip>
+        <clip>Kyle_MC - We don&apos;t understand the thing</clip>
+        <clip>Ramsey - algorithms run wild</clip>
+        <clip>Ramsey - ownership and programming</clip>
+        <clip>Ramsey - legos 2</clip>
+        <clip>Ramsey - legos 3</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
