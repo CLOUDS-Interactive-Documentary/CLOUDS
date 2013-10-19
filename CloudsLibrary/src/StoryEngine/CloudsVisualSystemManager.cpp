@@ -78,7 +78,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	systems.clear();
 	
 	presets.clear();
-
+    
 	//JAMES SYSTEMS
 	registerVisualSystem(new CloudsVisualSystemDataCascade() );
 	registerVisualSystem(new CloudsVisualSystemVectorFlow() );
@@ -123,9 +123,9 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//EXAMPLES
 	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
 	registerVisualSystem(new CloudsVisualSystemExampleBox2D() );
-
+    
     loadPresets();
-
+    
 #endif
     
 }
@@ -137,7 +137,7 @@ void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system)
 	//moved this -- don't set up until the loading screen of the act
 	//system->setup();
 	nameToVisualSystem[system->getSystemName()] = system;
-
+    
 #endif
 	
 	systems.push_back( system );
@@ -160,7 +160,7 @@ void CloudsVisualSystemManager::loadPresets(){
 	
 	//This is flagged if we don't want this app to be dependent on visual systems
 	//they presets will then be loaded all from keywords file
-	#ifndef CLOUDS_NO_VS
+#ifndef CLOUDS_NO_VS
 	for(int i = 0; i < systems.size(); i++){
 		vector<string> systemPresets = systems[i]->getPresets();
 		
@@ -186,7 +186,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			}
 		}
 	}
-	#endif
+#endif
 	
 	int numSystems = keywordXml.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
@@ -195,7 +195,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
 		keywords[ name ] = presetKeywords;
 		
-		#ifdef CLOUDS_NO_VS
+#ifdef CLOUDS_NO_VS
 		CloudsVisualSystemPreset preset;
 		vector<string> splitName = ofSplitString(name, "_",true,true);
 		preset.systemName = splitName[0];
@@ -204,16 +204,16 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.loadTimeInfo();
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
-		#else
+#else
 		CloudsVisualSystemPreset& preset = getPresetWithID(name);
-		#endif
+#endif
 		
-		if(keywordXml.tagExists("suppressions")){			
+		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
 			int numSuppressions = keywordXml.getNumTags("clip");
 			for(int i=0; i<numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
-//				cout << "found suppression " << suppressedLinkName << endl;
+                //				cout << "found suppression " << suppressedLinkName << endl;
 				suppressedClips[name].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions
@@ -222,13 +222,23 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.comments = keywordXml.getValue("comments","");
 		preset.grade = keywordXml.getValue("grade", "");
 		preset.enabled = keywordXml.getValue("enabled", true );
-		
         keywordXml.popTag(); //system
 	}
 	
 	sort(presets.begin(), presets.end(), preset_sort);
-	
+	populateEnabledSystemIndeces();
     cout << "** LOADED PRESETS " << presets.size() << endl;
+}
+
+
+//--------------------------------------------------------------------
+void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
+    enabledPresetsIndex.clear();
+    for(int i =0; i<presets.size(); i++){
+        if(presets[i].enabled){
+            enabledPresetsIndex.push_back(i);
+        }
+    }
 }
 
 //--------------------------------------------------------------------
@@ -307,7 +317,7 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){	
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
 	vector<string> keywords;
 	keywords.push_back(keyword);
     return getPresetsForKeywords(keywords);
@@ -316,7 +326,7 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keywords){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
-
+    
 	for(int i = 0; i < presets.size(); i++){
 		for(int k = 0; k < keywords.size(); k++){
 			if( ofContains(keywordsForPreset(i), keywords[k]) ){
@@ -406,7 +416,7 @@ void CloudsVisualSystemManager::suppressClip(string presetID, string clipName){
     if( ! isClipSuppressed(presetID,clipName)){
         suppressedClips[presetID].push_back(clipName);
         cout<<"Suppressed Clip: "<<clipName<<" for Visual System: "<<presetID<<endl;
-    }    
+    }
 }
 
 //--------------------------------------------------------------------
@@ -420,7 +430,11 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, string clip){
         cout<<"Suppression not found for Preset: "<<presetID<<" and "<<clip<<endl;
     }
 }
-
+//--------------------------------------------------------------------
+CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomEnabledPreset(){
+    
+    return presets[enabledPresetsIndex[ofRandom(enabledPresetsIndex.size())]];
+}
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex){
     if(suppressedClips.find(presetID) != suppressedClips.end()){
@@ -428,7 +442,7 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
     }
     else{
         ofLogError()<<"Visual System Preset :" <<presetID<<" suppression not foun!"<<endl;
-    }    
+    }
 }
 
 #ifndef CLOUDS_NO_VS
@@ -441,10 +455,10 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	set<CloudsVisualSystem*> systemsWithPresets;
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
-
+            
 			string presetSourceDirectory = presets[i].system->getVisualSystemDataPath() + "Presets/" + presets[i].presetName;
 			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
-
+            
 			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
 			
 			ofDirectory(presetTargetDirectory).create(true);
@@ -453,7 +467,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 			systemsWithPresets.insert(presets[i].system);
 		}
 	}
-
+    
 	cout << "COPYING SUPPORTING FILES" << endl;
 	set<CloudsVisualSystem*>::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
@@ -467,7 +481,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 			}
 		}
 	}
-
+    
 }
 #endif
 

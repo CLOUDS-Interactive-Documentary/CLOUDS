@@ -19,7 +19,7 @@ void testApp::setup(){
 	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
 	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
 	
-	//act->triggerAllEvents();
+	//act->triggerAllEvents();	
 	run.topicHistory = act->getAllTopics();
 	run.clipHistory = act->getAllClips();
 	

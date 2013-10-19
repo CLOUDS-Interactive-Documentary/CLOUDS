@@ -116,12 +116,10 @@ void CloudsAct::populateTime(){
 
 void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
     if(bang.track == clipsTrack){
-        if(bang.flag ==" "){
-            
-        }
-        else{
+        if(bang.flag !=" "){
             CloudsClipEventArgs args(clipMap[bang.flag], topicMap[bang.flag],getDichotomiesForClip(bang.flag));
             ofNotifyEvent(events.clipBegan, args);
+            cout << "CloudsAct::timelineEventFired SENDING CLIP BEGAN" << endl;
         }
         
     }

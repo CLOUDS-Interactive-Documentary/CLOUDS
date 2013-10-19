@@ -210,11 +210,20 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	//center point, max drift
 	//questionGui->add2DPad("XZ",	ofVec3f(0, -400), ofVec3f(-200, 200), &questionXZ);
 	questionGui->addSlider("Position X", 0, -400, &questionXZ.x);
-	questionGui->addSlider("Position Y", -200, 200, &questionXZ.z);
+	questionGui->addSlider("Position Z", -200, 200, &questionXZ.z);
 	questionGui->addSlider("Drift Range", 40, 200, &questionDriftRange);
 	questionGui->addSlider("Y Range", 40, 200, &questionYRange);
 	questionGui->addSlider("Y Start", -50, 50, &questionYCenter);
-//	questionGui->addSlider("Life Span Mins", 1, 6, &questionLifeSpan);
+	
+	questionGui->addSlider("Base Color H", 0, 1., &questionBaseHSB.r);
+	questionGui->addSlider("Base Color S", 0, 1., &questionBaseHSB.g);
+	questionGui->addSlider("Base Color B", 0, 1., &questionBaseHSB.b);
+	
+	questionGui->addSlider("Hover Color H", 0, 1., &questionHoverHSB.r);
+	questionGui->addSlider("Hover Color S", 0, 1., &questionHoverHSB.g);
+	questionGui->addSlider("Hover Color B", 0, 1., &questionHoverHSB.b);
+
+
 	
 	CloudsQuestion::addQuestionVariables( questionGui );
 	
@@ -658,8 +667,8 @@ void CloudsVisualSystemRGBD::selfDrawBackground(){
 void CloudsVisualSystemRGBD::selfDrawDebug(){
 	ofSphere(translatedHeadPosition, 10);
 	
-	ofVec3f questionOriginMax = ofVec3f(questionXZ.x, questionYCenter+questionYRange, questionXZ.y);
-	ofVec3f questionOriginMin = ofVec3f(questionXZ.x, questionYCenter-questionYRange, questionXZ.y);
+	ofVec3f questionOriginMax = ofVec3f(questionXZ.x, questionYCenter+questionYRange, questionXZ.z);
+	ofVec3f questionOriginMin = ofVec3f(questionXZ.x, questionYCenter-questionYRange, questionXZ.z);
 	ofSphere(translatedHeadPosition+questionOriginMax, 10);
 	ofSphere(translatedHeadPosition+questionOriginMin, 10);
 	
@@ -883,11 +892,12 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 
 	CloudsQuestion::startShader();
 	CloudsQuestion::shader.setUniform1f("attenuateFade", 0.0);
-	CloudsQuestion::shader.setUniform4f("color",0.0,0.4,1.0,0.7);
-	CloudsQuestion::shader.setUniform4f("selectedColor",1.0,0.4,1.0,0.7);
+	ofFloatColor baseColor  = ofFloatColor::fromHsb(questionBaseHSB.r, questionBaseHSB.g, questionBaseHSB.b);
+	ofFloatColor hoverColor = ofFloatColor::fromHsb(questionHoverHSB.r, questionHoverHSB.g, questionHoverHSB.b);
+	CloudsQuestion::shader.setUniform4f("color",baseColor.r,baseColor.g,baseColor.b,.7);
+	CloudsQuestion::shader.setUniform4f("selectedColor",hoverColor.r,hoverColor.g,hoverColor.b,.7);
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->draw();
-
 	}
 	CloudsQuestion::endShader();
 	glPointSize(1);

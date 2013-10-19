@@ -297,6 +297,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     float totalSecondsEnqueued = 0;
     bool freeTopic = false;
     bool deadEnd = false;
+	bool firstClip = true;
     
     //the run now listens to act events and is updated through them.
     //making a local copy of the current run to build the new act.
@@ -530,7 +531,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration );
                     act->addGapForCadence(currentPreset,visualSystemStartTime + visualSystemDuration,  gapTimeForTopicChange);
-
 //                    act->removeQuestionAtTime(visualSystemStartTime, visualSystemDuration);
                     systemRunning = false;
                     lastVisualSystemEnded = visualSystemStartTime + visualSystemDuration;
@@ -554,9 +554,14 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
             
             //if the clip is shorter than the 30 seconds dont start the VS during the clip.
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold ){
-                
-                visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
+            if(firstClip || (timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold) ){
+                if(firstClip){
+					visualSystemStartTime = 0;
+					cout << "visual system start time is " << visualSystemStartTime << endl;					
+				}
+				else{
+					visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
+				}
                 maxTimeRemainingForVisualSystem = systemMaxRunTime;
 				
                 string log;
@@ -579,6 +584,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         previousTopic = topic;
         totalSecondsEnqueued += clip.getDuration() + ( gapLengthMultiplier * clip.getDuration() ) + clipHandleDuration * 2;
         timesOnCurrentTopic++;
+		firstClip = false;
 
     }
 	
@@ -690,8 +696,8 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 		preset = winningPresets[ ofRandom(winningPresets.size()) ];
 	}
 	else{
-		preset = visualSystems->getRandomVisualSystem();
-		log += ",ERROR,no presets found! " + preset.getID() + "\n";
+		preset = visualSystems->getRandomEnabledPreset();
+		log += ",ERROR,no presets found! " + preset.getID() + " enabled staus : "+ ofToString(preset.enabled) +"\n";
 	}
 	
     return preset;

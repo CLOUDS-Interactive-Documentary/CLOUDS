@@ -150,15 +150,15 @@ void main(void){
 	
 	if(isMeshed == 1.0){
 		positionValid = (depth < farClip &&
-					 neighborA < farClip &&
-                     neighborB < farClip &&
+						 neighborA < farClip &&
+						 neighborB < farClip &&
     
-					depth > nearClip &&
-					neighborA > nearClip &&
-					neighborB > nearClip &&
+						 depth > nearClip &&
+						 neighborA > nearClip &&
+						 neighborB > nearClip &&
 						 
-                     abs(neighborA - depth) < edgeClip &&
-					 abs(neighborB - depth) < edgeClip
+						 abs(neighborA - depth) < edgeClip &&
+						 abs(neighborB - depth) < edgeClip
 						) ? 1.0 : 0.0;
 	}
 	else {

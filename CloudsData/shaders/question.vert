@@ -25,7 +25,6 @@ void main(void)
 	//gl_Color.r is set to 1.0 if it's an outer ring
 	//gl_Color.g contains the percent along the curve
 	selected = max( gl_Color.r, gl_Color.g / max(selectPercent,epsilon) );
-	
 //	gl_FrontColor = color;
 	float distanceAttenuate = clamp(map(gl_Position.z, minDistance, maxDistance, 1.0, 0.0), 0.0, 1.0);
 	

@@ -87,13 +87,13 @@ void CloudsQuestion::setup(){
 		}
 			
 		//close the loop
-//		progressRing.addColor(ofFloatColor(1, 0, 0));
-//		progressRing.addNormal(ofVec3f(0,clockInnerRadius,0));
-//		progressRing.addVertex(ofVec3f(0,1,0)*.1);
-//		
-//		progressRing.addColor(ofFloatColor(1, 0, 0));
-//		progressRing.addNormal(ofVec3f(0,1.0,0));
-//		progressRing.addVertex(ofVec3f(0,1.0,0));
+		progressRing.addColor(ofFloatColor(0, 1, 0));
+		progressRing.addNormal(ofVec3f(0,clockInnerRadius,0));
+		progressRing.addVertex(ofVec3f(0,.25,0));
+//
+		progressRing.addColor(ofFloatColor(0, 1, 0));
+		progressRing.addNormal(ofVec3f(0,clockOuterRadius,0));
+		progressRing.addVertex(ofVec3f(0,.25,0));
 		
 		progressRing.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 		dottedCircle.setMode(OF_PRIMITIVE_LINES);

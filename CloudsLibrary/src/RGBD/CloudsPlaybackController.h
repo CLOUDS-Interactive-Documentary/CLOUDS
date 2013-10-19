@@ -130,7 +130,8 @@ class CloudsPlaybackController {
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 	
 	void playAct(CloudsAct* act);
-
+	CloudsVisualSystemClusterMap& getClusterMap();
+	
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
 	void update(ofEventArgs& args);
@@ -199,7 +200,7 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-    CloudsRun* currentRun;
+//    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	CloudsVisualSystemRGBD rgbdVisualSystem;
