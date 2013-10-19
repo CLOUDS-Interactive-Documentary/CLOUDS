@@ -15,6 +15,10 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	system = NULL;
 	enabled = true;
 	indefinite = true;
+	
+	defaultedToFamily = false;
+	randomlySelected = false;
+
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;

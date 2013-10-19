@@ -506,7 +506,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 if(visualSystemDuration > systemMaxRunTime ){
                     if(clip.getDuration() > longClipThreshold){
                         visualSystemDuration += clip.getDuration()*longClipFadeInPercent;   
-
                     }
 
                     act->addVisualSystem(currentPreset, visualSystemStartTime, visualSystemDuration);
@@ -645,11 +644,11 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 #pragma mark VISUAL SYSTEMS
 CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword, CloudsClip& currentClip, vector<string>& presetHistory, string& log){
     
-	bool adjascentTried = false;
-	float topScore = 0;
 	vector< pair<float, string> > scoreLogPairs;
 	vector<CloudsVisualSystemPreset> presets = visualSystems->getPresetsForKeywords( currentClip.getKeywords() );
 	CloudsVisualSystemPreset preset;
+	bool triedFamily = false;
+	float topScore = 0;
 	while(topScore == 0){
 		
 		for(int i = 0; i < presets.size(); i++){
@@ -663,12 +662,10 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 			//we didn't find any visual systems for this clip
 			log += ",ERROR,No valid presets clip keywords\n";
 			log += ",,"+ofJoinString(currentClip.getKeywords(),"\n,,") + "\n";
-			if(adjascentTried){
+			if(triedFamily){
 				break;
 			}
-			adjascentTried = true;
-			//Try the 5 nearby clips to start with
-			//vector<string> adjacentTopics = parser->getAdjacentKeywords(keyword, 5);
+			triedFamily = true;
 			vector<string>& adjacentTopics = parser->getKeywordFamily(keyword);
 			if(adjacentTopics.size() == 0){
 				log += ",ERROR,No topics adjacent to " + keyword + "\n";
@@ -694,11 +691,16 @@ CloudsVisualSystemPreset CloudsStoryEngine::getVisualSystemPreset(string keyword
 			}
 		}
 		preset = winningPresets[ ofRandom(winningPresets.size()) ];
+		preset.randomlySelected = false;
 	}
 	else{
 		preset = visualSystems->getRandomEnabledPreset();
 		log += ",ERROR,no presets found! " + preset.getID() + " enabled staus : "+ ofToString(preset.enabled) +"\n";
+		preset.randomlySelected = true;
 	}
+	preset.defaultedToFamily = triedFamily;
+	preset.conjureKeyword = keyword;
+	preset.allKeywords = visualSystems->keywordsForPreset(preset);
 	
     return preset;
 }

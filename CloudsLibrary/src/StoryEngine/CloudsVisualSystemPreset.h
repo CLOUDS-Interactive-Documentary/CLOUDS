@@ -21,5 +21,10 @@ class CloudsVisualSystemPreset {
 	string grade;
 	bool enabled;
 
+	bool defaultedToFamily;
+	string conjureKeyword;
+	vector<string> allKeywords; // only filled out when the preset is scheduled
+	bool randomlySelected;
+	
 	float currentScore;
 };

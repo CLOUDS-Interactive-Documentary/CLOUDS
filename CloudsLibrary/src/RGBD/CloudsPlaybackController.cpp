@@ -464,6 +464,30 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 		else{
 			currentAct->getTimeline().disableEvents();
 		}
+		
+		if(showingVisualSystem && ofGetKeyPressed('k')){
+			ofPushMatrix();
+			ofPushStyle();
+			ofEnableAlphaBlending();
+			ofTranslate(ofGetWidth()*.5, ofGetHeight()*.5);
+			ofScale(7,7);
+			ofSetColor(255);
+			string debugString =
+				currentVisualSystemPreset.presetName + " was associated with keyword " + currentVisualSystemPreset.conjureKeyword + "\n" +
+				"Preset's keywords " + ofJoinString(currentVisualSystemPreset.allKeywords, ", ") + "\n" +
+				"current clip's keywords " + ofJoinString(currentClip.getKeywords(), ", ") + "\n" +
+				"Had to default to keyword family? " + (currentVisualSystemPreset.defaultedToFamily ? "YES" : "NO") + "\n" +
+				"Had to pick a random preset? " + (currentVisualSystemPreset.randomlySelected ? "YES" : "NO");
+			//cout << "DRAWING DEBUGG STRING " << debugString << endl;
+			
+			ofDrawBitmapString(debugString, 0,0);
+			
+			ofSetColor(0,0,0,255);
+			ofRect(-5,-5,300, 50);
+			
+			ofPopStyle();
+			ofPopMatrix();
+		}
 	}
 }
 
@@ -590,11 +614,13 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 		hideVisualSystem();
 	}
 	
+	
 	rgbdVisualSystem.clearQuestions();
 	
 	//stotr the preset name for loading later in playNextVisualSystem()
 	nextPresetName = nextVisualSystem.presetName;
 	nextSystem = nextVisualSystem.system;
+	currentVisualSystemPreset = nextVisualSystem;
 	
 	//start the rgbd fade out. playNextVisualSystem() will be called once it's faded out
 	addControllerTween(fadeOutRGBD, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );

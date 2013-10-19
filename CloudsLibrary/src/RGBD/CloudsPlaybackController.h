@@ -189,7 +189,8 @@ class CloudsPlaybackController {
 	float currentVolume;
 	float targetScratchVolume;
 	void setUseScratch(bool useScratch);
-	CloudsVisualSystem* currentVisualSystem;;
+	CloudsVisualSystem* currentVisualSystem;
+	CloudsVisualSystemPreset currentVisualSystemPreset;
 //    void setRandomQuestion(CloudsClip& clip);
 	
 	vector<CloudsClip> fakeQuestions;
