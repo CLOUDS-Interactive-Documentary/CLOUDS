@@ -143,6 +143,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		[self updateAssociatedClips];
 		
 		selectedPreset->enabled = (enabledBox.state == NSOnState);
+		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
 		selectedPreset->comments = [notesText.stringValue UTF8String];
 		selectedPreset->grade = [grade.stringValue UTF8String];
 		
@@ -237,13 +238,23 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		}
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
-					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + string("/") + visualSystems.getPresets()[rowIndex].grade).c_str()];
+					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + 
+					  visualSystems.getPresets()[rowIndex].grade +
+					 (visualSystems.getPresets()[rowIndex].oculusCompatible ? "Oc" : "")).c_str()];
 		}		
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
 		}
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
 			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
+		}
+		else if( [@"timing" isEqualToString:aTableColumn.identifier] ){
+			if(visualSystems.getPresets()[rowIndex].indefinite){
+				return @"indefinite";
+			}
+			else {
+				return [NSString stringWithFormat:@"%.02fs", visualSystems.getPresets()[rowIndex].duration];
+			}
 		}
 	}
 	else if(aTableView == clipTable){
@@ -254,14 +265,6 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
-//        else if( [@"Suppressed" isEqualToString:aTableColumn.identifier] ){
-//            if( visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[rowIndex].getLinkName())){
-//                return @"Yes";
-//            }
-//            else{
-//                return @"No";
-//            }
-//        }
 	}
 	else if(aTableView == suppressedClipTable){
 		if([@"clip" isEqualToString:aTableColumn.identifier]){
@@ -336,18 +339,19 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
+			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
 		}
 		else{
 			currentKeywords.stringValue = @"";
 			notesText.stringValue = @"";
 			grade.stringValue = @"";
 			enabledBox.state = NSOnState;
+			oculusBox.state = NSOffState;
 		}
 	}
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
-	//omg sorting
 	
 	NSArray *newDescriptors = [tableView sortDescriptors];
     NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
@@ -401,23 +405,11 @@ completionsForSubstring:(NSString *)substring
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
-//	cout << "CONTROL TEXT END EDITING" << endl;	
 	return true;
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
 {
-//	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
-//	if(presetTable.selectedRow >= 0){
-//	}
-    //	[self updateAssociatedClips];	
-    //	if(presetTable.selectedRow >= 0){
-    //		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-    //		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-    //		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-    //		[clipTable reloadData];
-    //	}
-	
 	return tokens;
 }
 

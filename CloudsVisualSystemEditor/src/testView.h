@@ -20,6 +20,7 @@
 	IBOutlet NSTextField* notesText;
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
+	IBOutlet NSButton* oculusBox;
 	
 	bool shouldPlaySelectedRow;
 	

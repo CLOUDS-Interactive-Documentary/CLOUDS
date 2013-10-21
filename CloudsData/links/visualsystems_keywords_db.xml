@@ -20,6 +20,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_BigData">
     <keywords>Archiving|archiving|data ownership|facebook|the cloud</keywords>
@@ -53,6 +54,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_CheeseDoodles">
     <keywords>weird|objects</keywords>
@@ -75,6 +77,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Clock2">
     <keywords>clock|camera|artificial intelligence</keywords>
@@ -120,6 +123,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_FallingChairs">
     <keywords></keywords>
@@ -127,6 +131,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_FallingCubes">
     <keywords></keywords>
@@ -134,6 +139,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Kelp_Monochrome">
     <keywords></keywords>
@@ -141,6 +147,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Kelp_Normals">
     <keywords></keywords>
@@ -148,6 +155,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Kelp_Xray">
     <keywords>biology</keywords>
@@ -165,6 +173,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_LovelyTangle">
     <keywords>jewelry|design</keywords>
@@ -192,6 +201,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Nest_1">
     <keywords></keywords>
@@ -199,6 +209,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Nest_CoolTransparent">
     <keywords></keywords>
@@ -206,6 +217,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Nested_Sphere">
     <keywords></keywords>
@@ -213,6 +225,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Sphere_Clock">
     <keywords>clock</keywords>
@@ -220,6 +233,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_StackOfChairs">
     <keywords>weird</keywords>
@@ -243,6 +257,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Succulent">
     <keywords></keywords>
@@ -250,6 +265,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Succulent_BlueXray">
     <keywords>form</keywords>
@@ -259,6 +275,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Tangle_Transparent">
     <keywords>form</keywords>
@@ -270,6 +287,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_TransHuman1">
     <keywords>science fiction</keywords>
@@ -293,6 +311,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_TransHuman1_">
     <keywords>science fiction</keywords>
@@ -318,6 +337,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_TransHuman_female">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
@@ -357,6 +377,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_TransMan2">
     <keywords></keywords>
@@ -364,6 +385,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Transparency_Grenade">
     <keywords>transparency</keywords>
@@ -383,6 +405,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Virus1">
     <keywords>virus</keywords>
@@ -392,6 +415,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Vortex">
     <keywords>3d printing</keywords>
@@ -402,6 +426,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_Vroi">
     <keywords></keywords>
@@ -409,6 +434,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_pink elephant">
     <keywords></keywords>
@@ -416,6 +442,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_voronoi">
     <keywords></keywords>
@@ -423,6 +450,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_voronoi knight rider">
     <keywords></keywords>
@@ -430,6 +458,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_xray">
     <keywords></keywords>
@@ -437,6 +466,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_Aura">
     <keywords></keywords>
@@ -444,6 +474,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_CloseUp">
     <keywords></keywords>
@@ -451,6 +482,7 @@
     <comments>Always looks like a mountain or a nipple, and doesn&apos;t hold one&apos;s attention. Needs to break the grid. Needs a way of tiling or repeating ad infinitum.</comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_Crispy">
     <keywords></keywords>
@@ -458,6 +490,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_GrayScottCity">
     <keywords></keywords>
@@ -465,6 +498,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_GrayscottSmooke">
     <keywords>Cities|systems</keywords>
@@ -472,6 +506,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_LightCity">
     <keywords></keywords>
@@ -479,6 +514,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_Mountain">
     <keywords></keywords>
@@ -486,6 +522,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_SmokyCity">
     <keywords></keywords>
@@ -493,6 +530,7 @@
     <comments></comments>
     <grade>C</grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_SmookyCity">
     <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
@@ -500,6 +538,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_SmookyGrayScott">
     <keywords></keywords>
@@ -507,6 +546,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_no-preset">
     <keywords></keywords>
@@ -514,6 +554,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_realistic">
     <keywords>cities</keywords>
@@ -521,6 +562,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cities_realistic2">
     <keywords>cities|society</keywords>
@@ -545,6 +587,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Collab1_Cosmic">
     <keywords></keywords>
@@ -552,6 +595,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Collab1_CosmicS">
     <keywords></keywords>
@@ -559,6 +603,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Collab1_MezzyNeurons">
     <keywords></keywords>
@@ -566,6 +611,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Collab1_no-preset">
     <keywords></keywords>
@@ -573,6 +619,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ComputerTicker_BigPointsSlowStreamUp">
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
@@ -580,6 +627,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ComputerTicker_DataCascade">
     <keywords></keywords>
@@ -587,6 +635,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ComputerTicker_DataCascadeCam">
     <keywords></keywords>
@@ -594,6 +643,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ComputerTicker_LittlePointsFast">
     <keywords>hackathon|computation|keyboard|computational art|technological progress</keywords>
@@ -601,6 +651,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Connectors_Rotating_Box">
     <keywords>interconnectedness|connectivity|form</keywords>
@@ -619,6 +670,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Connectors_Testing">
     <keywords></keywords>
@@ -626,6 +678,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Connectors_TestingCrap">
     <keywords>connectivity|internet</keywords>
@@ -653,6 +706,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_Attractors">
     <keywords></keywords>
@@ -660,6 +714,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_BioSystem">
     <keywords></keywords>
@@ -667,6 +722,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_Blackhole">
     <keywords></keywords>
@@ -674,6 +730,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_Preset1">
     <keywords></keywords>
@@ -681,6 +738,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_Swoop">
     <keywords></keywords>
@@ -688,6 +746,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_nBody">
     <keywords></keywords>
@@ -695,6 +754,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Cosmic_no-preset">
     <keywords></keywords>
@@ -702,6 +762,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_BackgroundTestStraight">
     <keywords></keywords>
@@ -709,6 +770,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_BigPointsSlowStreamUp">
     <keywords></keywords>
@@ -716,6 +778,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_DataCascade">
     <keywords>data mining|computation</keywords>
@@ -736,6 +799,7 @@
     <comments>Beautiful. The only thing it could use is a little bloom, and to bring up the brightness, and some subtle color variation.</comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_DataCascadeCam">
     <keywords></keywords>
@@ -743,6 +807,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_DataCascadeClose">
     <keywords>computation</keywords>
@@ -762,6 +827,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_DoubleTunnel">
     <keywords>computation</keywords>
@@ -769,6 +835,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_LittlePointsFast">
     <keywords></keywords>
@@ -776,6 +843,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_NewPresetTest">
     <keywords></keywords>
@@ -783,6 +851,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_RGBDCascade">
     <keywords></keywords>
@@ -790,6 +859,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_RGBDTunnel">
     <keywords>computation</keywords>
@@ -805,6 +875,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="DataCascade_TimelineTestPoints">
     <keywords></keywords>
@@ -812,6 +883,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_GS1">
     <keywords></keywords>
@@ -819,6 +891,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JM1">
     <keywords>interactivity|processing</keywords>
@@ -845,6 +918,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JM2">
     <keywords>physics|play</keywords>
@@ -874,6 +948,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JM_circleSquares1">
     <keywords>interactivity|random|randomness</keywords>
@@ -912,6 +987,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JM_gravity1">
     <keywords>simulation</keywords>
@@ -960,6 +1036,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JM_gravity2">
     <keywords></keywords>
@@ -967,6 +1044,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JeffA">
     <keywords></keywords>
@@ -974,6 +1052,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_JeffB">
     <keywords></keywords>
@@ -981,6 +1060,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleBox2D_gal2">
     <keywords></keywords>
@@ -988,6 +1068,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_AutoDraw_BlackonWhite">
     <keywords>drawing</keywords>
@@ -1009,6 +1090,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_AutoRainbow">
     <keywords>drawing</keywords>
@@ -1030,6 +1112,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_DrawYourOwnRainbow">
     <keywords>play|drawing</keywords>
@@ -1057,6 +1140,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_JeffA">
     <keywords></keywords>
@@ -1064,6 +1148,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_JeffB">
     <keywords></keywords>
@@ -1071,6 +1156,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_WhiteLine_">
     <keywords>sketching|gesture</keywords>
@@ -1094,6 +1180,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="Fireworks_Fireworks">
     <keywords></keywords>
@@ -1101,6 +1188,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_Fireworks_1">
     <keywords></keywords>
@@ -1108,6 +1196,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_emitter">
     <keywords></keywords>
@@ -1115,6 +1204,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw4">
     <keywords></keywords>
@@ -1122,6 +1212,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_1">
     <keywords></keywords>
@@ -1129,6 +1220,7 @@
     <comments>Fun.</comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_10_fast">
     <keywords>Simulation|videogames</keywords>
@@ -1151,6 +1243,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_2">
     <keywords></keywords>
@@ -1158,6 +1251,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_3">
     <keywords></keywords>
@@ -1165,6 +1259,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_4">
     <keywords></keywords>
@@ -1172,6 +1267,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_5">
     <keywords>videogames</keywords>
@@ -1200,6 +1296,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_7">
     <keywords></keywords>
@@ -1207,6 +1304,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Fireworks_fw_9">
     <keywords></keywords>
@@ -1214,6 +1312,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Flocking_JM1">
     <keywords></keywords>
@@ -1221,6 +1320,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Flocking_JM2">
     <keywords>emergence|nature of code|artificial life</keywords>
@@ -1236,6 +1336,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Flocking_Preset1">
     <keywords></keywords>
@@ -1243,6 +1344,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Flocking_Preset2">
     <keywords></keywords>
@@ -1250,6 +1352,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ForkingPaths_no-preset">
     <keywords></keywords>
@@ -1257,6 +1360,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="HigaSystem_CandyCopter">
     <keywords></keywords>
@@ -1264,6 +1368,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="HigaSystem_ExamplePreset">
     <keywords></keywords>
@@ -1271,6 +1376,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="HigaSystem_NewTestPreset">
     <keywords></keywords>
@@ -1278,6 +1384,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="HigaSystem_Spiral">
     <keywords></keywords>
@@ -1285,6 +1392,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="HigaSystem_no-preset">
     <keywords></keywords>
@@ -1292,6 +1400,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystem_CityTree">
     <keywords>cities</keywords>
@@ -1304,6 +1413,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystem_City_ZoomOut">
     <keywords></keywords>
@@ -1311,6 +1421,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystem_HexTree">
     <keywords>complexity|systems</keywords>
@@ -1371,6 +1482,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystem_LindenTree">
     <keywords></keywords>
@@ -1378,6 +1490,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystem_mycelium">
     <keywords></keywords>
@@ -1385,6 +1498,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_CityTree">
     <keywords>cities|connections</keywords>
@@ -1392,6 +1506,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_City_ZoomOut">
     <keywords>cities|connections</keywords>
@@ -1399,6 +1514,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_HexTree">
     <keywords>virus|memes|pattern</keywords>
@@ -1406,6 +1522,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_LindenTree">
     <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
@@ -1413,6 +1530,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_mycelium">
     <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
@@ -1420,6 +1538,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_mycelium_1">
     <keywords></keywords>
@@ -1427,6 +1546,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_mycelium_2">
     <keywords></keywords>
@@ -1434,6 +1554,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LSystems_no-preset">
     <keywords></keywords>
@@ -1441,6 +1562,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LaplacianTunnel_DarkTripleTunnel">
     <keywords></keywords>
@@ -1448,6 +1570,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LaplacianTunnel_DefaultGray">
     <keywords></keywords>
@@ -1455,6 +1578,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LaplacianTunnel_LighterTunnelLoop">
     <keywords></keywords>
@@ -1462,6 +1586,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="LaplacianTunnel_no-preset">
     <keywords></keywords>
@@ -1469,6 +1594,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_01">
     <keywords></keywords>
@@ -1476,6 +1602,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_02">
     <keywords>journey</keywords>
@@ -1483,6 +1610,7 @@
     <comments>Too dark</comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_03">
     <keywords></keywords>
@@ -1490,6 +1618,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_04">
     <keywords>generative art|abstraction</keywords>
@@ -1497,6 +1626,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_05">
     <keywords>abstraction</keywords>
@@ -1504,6 +1634,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_06">
     <keywords>painting|abstraction</keywords>
@@ -1511,6 +1642,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_07">
     <keywords></keywords>
@@ -1518,6 +1650,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_08">
     <keywords></keywords>
@@ -1525,6 +1658,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_09">
     <keywords></keywords>
@@ -1532,6 +1666,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Lia_LIA_10">
     <keywords></keywords>
@@ -1539,6 +1674,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="MandalaVisualSystem_2001">
     <keywords></keywords>
@@ -1546,6 +1682,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="MandalaVisualSystem_laps">
     <keywords></keywords>
@@ -1553,6 +1690,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="MandalaVisualSystem_muybridge">
     <keywords>cinema</keywords>
@@ -1566,6 +1704,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_DeFrag">
     <keywords>error</keywords>
@@ -1588,6 +1727,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_Fire">
     <keywords>computation</keywords>
@@ -1610,6 +1750,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_GhostInTheShell">
     <keywords>computation</keywords>
@@ -1634,6 +1775,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_Glitch">
     <keywords>algorithm</keywords>
@@ -1655,6 +1797,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_Hall">
     <keywords></keywords>
@@ -1662,6 +1805,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_NoisePixels">
     <keywords></keywords>
@@ -1669,6 +1813,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_SortingAtari">
     <keywords></keywords>
@@ -1676,6 +1821,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_conflictForces">
     <keywords></keywords>
@@ -1683,6 +1829,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_interestingSorting">
     <keywords></keywords>
@@ -1690,6 +1837,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_lines">
     <keywords></keywords>
@@ -1697,6 +1845,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_no-preset">
     <keywords></keywords>
@@ -1704,6 +1853,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_pixelsThunder">
     <keywords></keywords>
@@ -1711,6 +1861,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_randomCaos">
     <keywords>dysfunction</keywords>
@@ -1728,6 +1879,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_randomDeFragWar">
     <keywords>dysfunction</keywords>
@@ -1745,6 +1897,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_randomWaves">
     <keywords>computer</keywords>
@@ -1770,6 +1923,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_sortingThunder">
     <keywords>algorithms</keywords>
@@ -1790,6 +1944,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_sortingThunderSmall">
     <keywords>algorithms</keywords>
@@ -1824,6 +1979,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Memory_vert">
     <keywords></keywords>
@@ -1831,6 +1987,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaball_no-preset">
     <keywords></keywords>
@@ -1838,6 +1995,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="MetaballsSystem_no-preset">
     <keywords></keywords>
@@ -1845,6 +2003,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_BlueClouds">
     <keywords></keywords>
@@ -1852,6 +2011,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Churning_Pitch">
     <keywords></keywords>
@@ -1859,6 +2019,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Churning_Pitch_linear">
     <keywords></keywords>
@@ -1866,6 +2027,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Dense_Wireframes_VerticallyStretched">
     <keywords></keywords>
@@ -1873,6 +2035,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Gray_Clouds">
     <keywords>videogames</keywords>
@@ -1880,6 +2043,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Gray_Clouds_Cam">
     <keywords>simulation|videogames</keywords>
@@ -1887,6 +2051,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_GreenGoo">
     <keywords>form|simulation</keywords>
@@ -1894,6 +2059,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_JadeCrystalCave">
     <keywords></keywords>
@@ -1901,6 +2067,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Purple_Clouds">
     <keywords></keywords>
@@ -1908,6 +2075,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Purple_Smooth_Clouds">
     <keywords></keywords>
@@ -1915,6 +2083,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Purple_Wireframe_Clouds">
     <keywords></keywords>
@@ -1922,6 +2091,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_SolarizedGoo">
     <keywords></keywords>
@@ -1929,6 +2099,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_Teal_Cave">
     <keywords></keywords>
@@ -1936,6 +2107,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_White_wireframe_clouds">
     <keywords>emergence</keywords>
@@ -1962,6 +2134,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy blend">
     <keywords></keywords>
@@ -1969,6 +2142,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy blend 2">
     <keywords></keywords>
@@ -1976,6 +2150,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy smoothing">
     <keywords></keywords>
@@ -1983,6 +2158,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_fauxMetaballs">
     <keywords></keywords>
@@ -1990,6 +2166,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_greatjob">
     <keywords></keywords>
@@ -1997,6 +2174,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_metaball simple">
     <keywords></keywords>
@@ -2004,6 +2182,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_nice weather">
     <keywords></keywords>
@@ -2011,6 +2190,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Metaballs_vertically stretched">
     <keywords></keywords>
@@ -2018,6 +2198,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="NervousSystem_no-preset">
     <keywords></keywords>
@@ -2025,6 +2206,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Neurons_Brain">
     <keywords>network|artificial intelligence</keywords>
@@ -2070,6 +2252,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Neurons_Cosmic">
     <keywords></keywords>
@@ -2077,6 +2260,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Neurons_CosmicS">
     <keywords>artificial intelligence</keywords>
@@ -2100,6 +2284,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Neurons_Just_Points">
     <keywords>network|clouds|emergence</keywords>
@@ -2139,6 +2324,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Neurons_MezzyNeurons">
     <keywords></keywords>
@@ -2146,6 +2332,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_BlueOcean">
     <keywords></keywords>
@@ -2153,6 +2340,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_BlueOceanStandin">
     <keywords>interconnectedness</keywords>
@@ -2165,6 +2353,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_ChoppyBlueOcean">
     <keywords>narrative</keywords>
@@ -2180,6 +2369,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_ChoppyMountainWaves">
     <keywords></keywords>
@@ -2187,6 +2377,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Dark_Stormy">
     <keywords></keywords>
@@ -2194,6 +2385,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_DunesAtNight">
     <keywords>journey</keywords>
@@ -2206,6 +2398,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Exoplanet_dusk_walk">
     <keywords>videogames</keywords>
@@ -2232,6 +2425,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Glum">
     <keywords>data</keywords>
@@ -2288,6 +2482,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Gray_Stormy">
     <keywords></keywords>
@@ -2295,6 +2490,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Mars_Noon_walk">
     <keywords></keywords>
@@ -2302,6 +2498,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Mars_morning_walk">
     <keywords>videogames</keywords>
@@ -2328,6 +2525,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_NightOcean">
     <keywords></keywords>
@@ -2335,6 +2533,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Points">
     <keywords>big data</keywords>
@@ -2353,6 +2552,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_SimpleTimelineTest">
     <keywords></keywords>
@@ -2360,6 +2560,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_SlimyGreenOcean">
     <keywords></keywords>
@@ -2367,6 +2568,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_StormyOcean">
     <keywords>videogames|virtual</keywords>
@@ -2407,6 +2609,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_StretchedBlueOcean">
     <keywords></keywords>
@@ -2414,6 +2617,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_WireframeNightOcean">
     <keywords>immersion|nature</keywords>
@@ -2449,6 +2653,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_no-preset">
     <keywords></keywords>
@@ -2456,6 +2661,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Agam">
     <keywords>old media</keywords>
@@ -2463,6 +2669,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Helix">
     <keywords></keywords>
@@ -2470,6 +2677,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Helix-Inverted">
     <keywords>old media|math</keywords>
@@ -2490,6 +2698,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Progressive_Helix">
     <keywords></keywords>
@@ -2497,6 +2706,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Progressive_wave_1">
     <keywords>old media|abstraction</keywords>
@@ -2527,6 +2737,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Progressive_wormhole_1">
     <keywords>math</keywords>
@@ -2534,6 +2745,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Treadmill">
     <keywords></keywords>
@@ -2541,6 +2753,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Waerfront">
     <keywords>math</keywords>
@@ -2548,6 +2761,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Waves">
     <keywords></keywords>
@@ -2555,6 +2769,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Oscillations_Wormhole">
     <keywords>math</keywords>
@@ -2562,6 +2777,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Pages_Drift">
     <keywords>storytelling</keywords>
@@ -2606,6 +2822,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Pages_MeshData">
     <keywords></keywords>
@@ -2613,6 +2830,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="PaintBrush_PlayFull">
     <keywords>play|drawing</keywords>
@@ -2652,6 +2870,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="QuineVisualSystem_PanDown">
     <keywords>programming</keywords>
@@ -2681,6 +2900,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="QuineVisualSystem_no-preset">
     <keywords></keywords>
@@ -2688,6 +2908,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_ITP_1">
     <keywords>hackathon|learning|coding|media lab|aesthetics and computation</keywords>
@@ -2699,6 +2920,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_ITP_2_omer">
     <keywords>hackers|hacker|art vs engineering</keywords>
@@ -2706,6 +2928,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_ITP_3">
     <keywords>coding|program or be programmed</keywords>
@@ -2724,6 +2947,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_ITP_4">
     <keywords>learning|education|coding|frustration</keywords>
@@ -2731,6 +2955,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_Street_1">
     <keywords>cities</keywords>
@@ -2738,6 +2963,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_Subway_1">
     <keywords>cities</keywords>
@@ -2745,6 +2971,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="RGBDVideo_no-preset">
     <keywords></keywords>
@@ -2752,6 +2979,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Replecator_CandyCopter">
     <keywords></keywords>
@@ -2759,6 +2987,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Replecator_ExamplePreset">
     <keywords></keywords>
@@ -2766,6 +2995,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Replecator_NewTestPreset">
     <keywords></keywords>
@@ -2773,6 +3003,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Replecator_Spiral">
     <keywords></keywords>
@@ -2780,6 +3011,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Replicator_no-preset">
     <keywords>future|technological progress|internet</keywords>
@@ -2846,6 +3078,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_2D In Yo Brain">
     <keywords></keywords>
@@ -2853,6 +3086,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_2D In Yo Face">
     <keywords></keywords>
@@ -2860,6 +3094,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_BIG STACKS">
     <keywords>memory</keywords>
@@ -2884,6 +3119,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_DataDeathStar">
     <keywords>memory</keywords>
@@ -2900,6 +3136,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_GRANULAR">
     <keywords></keywords>
@@ -2907,6 +3144,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_IN YOUR FACE">
     <keywords></keywords>
@@ -2914,6 +3152,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_SPYWALL">
     <keywords></keywords>
@@ -2921,6 +3160,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_STACK BURSTS">
     <keywords></keywords>
@@ -2928,6 +3168,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Scrape_Tony&apos;s Death Star">
     <keywords></keywords>
@@ -2935,6 +3176,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_Electromagetique">
     <keywords>electronic music|physics</keywords>
@@ -2955,6 +3197,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_Electromagnetique">
     <keywords></keywords>
@@ -2962,6 +3205,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_HugeSweepingFlow">
     <keywords>phenomena</keywords>
@@ -2969,6 +3213,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_JonathanFlow">
     <keywords>flow|pattern</keywords>
@@ -2983,6 +3228,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_LargeSweepsFast">
     <keywords>physics|phenomena</keywords>
@@ -2997,6 +3243,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_NewPresetForPatrick">
     <keywords></keywords>
@@ -3004,6 +3251,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_SlowFlow">
     <keywords>nature</keywords>
@@ -3033,6 +3281,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_SmallCrawlers">
     <keywords></keywords>
@@ -3040,6 +3289,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_SparseFlow">
     <keywords>visualization</keywords>
@@ -3062,6 +3312,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_SweepingMediums">
     <keywords>datatelling|visualization</keywords>
@@ -3069,6 +3320,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_Vortex">
     <keywords>exploration</keywords>
@@ -3090,6 +3342,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_WavyFlock">
     <keywords>emergence|processing</keywords>
@@ -3111,6 +3364,7 @@
     <comments></comments>
     <grade>B</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_WhiteWind">
     <keywords>nature|complexity</keywords>
@@ -3178,6 +3432,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VectorFlow_no-preset">
     <keywords></keywords>
@@ -3185,6 +3440,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_CameraKeyframeTest">
     <keywords></keywords>
@@ -3192,6 +3448,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_ExampleForMarius">
     <keywords>form</keywords>
@@ -3202,6 +3459,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_Generate_dense">
     <keywords></keywords>
@@ -3209,6 +3467,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_IntroOutroCamTest">
     <keywords></keywords>
@@ -3216,6 +3475,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_RotYAnimationTest">
     <keywords></keywords>
@@ -3223,6 +3483,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_SimpleBalloon">
     <keywords>generative art|formalism|form</keywords>
@@ -3243,6 +3504,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_Tower">
     <keywords>form</keywords>
@@ -3252,6 +3514,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="VerletForm_no-preset">
     <keywords></keywords>
@@ -3259,6 +3522,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CartoonishCell">
     <keywords></keywords>
@@ -3266,6 +3530,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CellBegin">
     <keywords></keywords>
@@ -3273,6 +3538,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CellMandala">
     <keywords></keywords>
@@ -3280,6 +3546,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CellularExplotion">
     <keywords></keywords>
@@ -3287,6 +3554,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CellularSlide">
     <keywords></keywords>
@@ -3294,6 +3562,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_ConstelationVoronoi">
     <keywords></keywords>
@@ -3301,6 +3570,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_CristalCell">
     <keywords></keywords>
@@ -3308,6 +3578,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_ElectricVoro">
     <keywords></keywords>
@@ -3315,6 +3586,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_Gray">
     <keywords></keywords>
@@ -3322,6 +3594,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_Hex01">
     <keywords></keywords>
@@ -3329,6 +3602,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_Kryptonite">
     <keywords></keywords>
@@ -3336,6 +3610,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_OrganicTissue">
     <keywords></keywords>
@@ -3343,6 +3618,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_Petro001">
     <keywords></keywords>
@@ -3350,6 +3626,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_PetroD01">
     <keywords></keywords>
@@ -3357,6 +3634,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_Strange">
     <keywords></keywords>
@@ -3364,6 +3642,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_UniverseVoro">
     <keywords></keywords>
@@ -3371,6 +3650,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_cells">
     <keywords></keywords>
@@ -3378,6 +3658,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_crystal1">
     <keywords>growth|simulation</keywords>
@@ -3419,6 +3700,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_crystalLine">
     <keywords></keywords>
@@ -3426,6 +3708,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_electric">
     <keywords></keywords>
@@ -3433,6 +3716,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_grow">
     <keywords></keywords>
@@ -3440,6 +3724,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="Voro_no-preset">
     <keywords></keywords>
@@ -3447,6 +3732,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="WebHistory_AutoSpiderShell">
     <keywords>internet</keywords>
@@ -3454,6 +3740,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="WebHistory_Brown_wide">
     <keywords></keywords>
@@ -3461,6 +3748,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="WebHistory_HazyCloseUp">
     <keywords></keywords>
@@ -3468,6 +3756,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="WebHistory_Hazy_wide">
     <keywords>internet</keywords>
@@ -3491,6 +3780,7 @@
     <comments></comments>
     <grade>A</grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="WebHistory_Simple">
     <keywords>Internet|networks|network</keywords>
@@ -3498,6 +3788,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Abstract">
     <keywords></keywords>
@@ -3505,6 +3796,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Arcs">
     <keywords>network security|communication|globalization</keywords>
@@ -3558,6 +3850,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Atomic">
     <keywords>virus|hackers|power</keywords>
@@ -3596,6 +3889,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Atomic2">
     <keywords>hackers|network security|power</keywords>
@@ -3603,6 +3897,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Aurora">
     <keywords></keywords>
@@ -3610,6 +3905,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Big Brother">
     <keywords>power|security|network security</keywords>
@@ -3633,6 +3929,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Data_globe">
     <keywords></keywords>
@@ -3640,6 +3937,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Edge">
     <keywords></keywords>
@@ -3647,6 +3945,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_ExtremeFOV">
     <keywords></keywords>
@@ -3654,6 +3953,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_LifeIsNetworks">
     <keywords>power|globalization</keywords>
@@ -3684,6 +3984,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Peaks">
     <keywords></keywords>
@@ -3691,6 +3992,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Resources">
     <keywords></keywords>
@@ -3698,6 +4000,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Social_Network1">
     <keywords>social media|network|facebook|twitter</keywords>
@@ -3705,6 +4008,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Social_Network2">
     <keywords>social media|network|communication|facebook</keywords>
@@ -3761,6 +4065,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_SpaceJunk">
     <keywords>military technology|power</keywords>
@@ -3768,6 +4073,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_Test">
     <keywords></keywords>
@@ -3775,6 +4081,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_auroraVorealis">
     <keywords>communication|community|collaboration</keywords>
@@ -3782,6 +4089,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_collaboration">
     <keywords></keywords>
@@ -3789,6 +4097,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_networks">
     <keywords></keywords>
@@ -3796,6 +4105,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_satellites">
     <keywords></keywords>
@@ -3803,6 +4113,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="World_teleComunications">
     <keywords></keywords>
@@ -3810,4 +4121,5 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
