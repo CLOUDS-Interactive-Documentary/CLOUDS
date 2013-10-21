@@ -1,0 +1,15 @@
+<Map>
+    <Bangs>
+        <Mapping>
+            <Widget>
+                <WidgetName>ADD KEYFRAME</WidgetName>
+                <WidgetID>16</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Bangs>
+    <Switches></Switches>
+    <SliderCurves></SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

@@ -1,0 +1,82 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>minLifeSpan</Name>
+    <Value>1.416748643</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxLifeSpan</Name>
+    <Value>4.103448391</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>minExplosionTime</Name>
+    <Value>0.193596065</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxExplosionTime</Name>
+    <Value>1.054187179</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>minParticleVelocity</Name>
+    <Value>10.344827652</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxParticleVelocity</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxFireworkVelocity</Name>
+    <Value>1.177339911</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>particle gravity</Name>
+    <Value>66.502456665</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>firework gravity</Name>
+    <Value>-0.044334948</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>camSpeed</Name>
+    <Value>2.186207056</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Custom Toggle</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>birth color map</Name>
+    <XValue>1.000000000</XValue>
+    <YValue>1.000000000</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>death color map</Name>
+    <XValue>0.671875000</XValue>
+    <YValue>0.773437500</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>70</BColor>
+    <AColor>255</AColor>
+</Widget>

@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>modelUIGui</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>70.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>boundBoxLineWidth</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arrowRadius</Name>
+    <Value>25.137931824</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arrowHeight</Name>
+    <Value>41.477832794</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>arrowPointHeight</Name>
+    <Value>0.589655161</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Kelp.obj</Name>
+    <Value>1</Value>
+</Widget>

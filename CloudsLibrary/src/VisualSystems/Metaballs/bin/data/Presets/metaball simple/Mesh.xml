@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>noise</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>metaballs</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>mc.scale.x</Name>
+    <Value>151.428573608</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>mc.scale.y</Name>
+    <Value>83.152709961</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>mc.scale.z</Name>
+    <Value>151.428573608</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>tileTranslateScale</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cloudHeight</Name>
+    <Value>-14.778320312</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>tiling</Name>
+    <Value>0</Value>
+</Widget>

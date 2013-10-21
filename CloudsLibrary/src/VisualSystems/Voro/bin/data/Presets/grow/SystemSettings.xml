@@ -1,0 +1,112 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Number</Name>
+    <Value>97.783248901</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BornSecRate</Name>
+    <Value>0.174118072</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max_Size</Name>
+    <Value>1.842364550</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GrowRate</Name>
+    <Value>0.008374385</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>InitialForce</Name>
+    <Value>0.014778325</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z_Move</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Atraction</Name>
+    <Value>0.022167489</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Repulsion</Name>
+    <Value>0.349753708</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Glow</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Nucles</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>texture_Size</Name>
+    <Value>0.931034505</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Container_Periodic</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Size</Name>
+    <Value>60.798030853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Conteiner_Height</Name>
+    <Value>4.038916111</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Cylinder</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sphere</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wall</Name>
+    <Value>0.275862068</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Alpha</Name>
+    <Value>0.093596056</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Wires_Alpha</Name>
+    <Value>0.536945820</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell_Vertex_Alpha</Name>
+    <Value>0.073891625</Value>
+</Widget>
