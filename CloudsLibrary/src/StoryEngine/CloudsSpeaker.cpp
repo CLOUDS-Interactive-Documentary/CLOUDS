@@ -7,6 +7,8 @@
 //
 
 #include "CloudsSpeaker.h"
+#include "ofxXmlSettings.h"
+#include "CloudsGlobal.h"
 
 map<string,CloudsSpeaker> CloudsSpeaker::speakers = map<string,CloudsSpeaker>();
 
@@ -63,6 +65,45 @@ void CloudsSpeaker::populateSpeakers(){
 //	for(it = speakers.begin(); it != speakers.end(); it++){
 //		cout << it->second.firstName + " "  + it->second.lastName << endl;
 //	}
+	
+	//export xml template
+
+	ofxXmlSettings xmltemplate;
+	map<string,CloudsSpeaker>::iterator it;
+	xmltemplate.addTag("clouds");
+	xmltemplate.pushTag("clouds");
+	int personnum = 0;
+	for(it = speakers.begin(); it != speakers.end(); it++){
+		xmltemplate.addTag("person");
+		xmltemplate.addAttribute("person", "id", it->first, personnum);
+		xmltemplate.pushTag("person", personnum);
+		xmltemplate.addValue("first", it->second.firstName);
+		xmltemplate.addValue("last", it->second.lastName);
+		xmltemplate.addValue("twitter", "");
+		xmltemplate.addValue("byline1", "");
+		xmltemplate.addValue("byline2", "");
+		xmltemplate.addValue("resume", "");
+		
+		xmltemplate.popTag();//person;
+		personnum++;
+	}
+	
+	xmltemplate.saveFile(getDataPath() + "/SpeakerTemplate.xml");
+
+//	<clouds>
+//	<person id="Lauren">
+//	<first>Lauren</first>
+//	<last>McCarthy</last>
+//	<title></title>
+//	<twitter>@lau</twitter>
+//	<location>Brooklyn, NY</location>
+//	<byline1></byline1>
+//	<byline2></byline2>
+//	<resume> ... </resume>
+//	</person>
+//	</clouds>
+	
+	
 }
 
 
