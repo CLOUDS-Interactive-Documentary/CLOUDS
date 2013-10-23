@@ -1,0 +1,6 @@
+[submodule "CloudsLibrary/src/VisualSystems/LaplacianTunnel"]
+	path = CloudsLibrary/src/VisualSystems/LaplacianTunnel
+	url = 	git@github.com:CLOUDS-Interactive-Documentary/LaplacianTunnel.git
+[submodule "CloudsLibrary/src/VisualSystems/GameOfLife"]
+	path = CloudsLibrary/src/VisualSystems/GameOfLife
+	url = 	git@github.com:CLOUDS-Interactive-Documentary/GameOfLife.git
