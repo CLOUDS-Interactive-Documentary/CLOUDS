@@ -20,7 +20,8 @@ class CloudsVisualSystemPreset {
 	string comments;
 	string grade;
 	bool enabled;
-
+	bool oculusCompatible;
+	
 	bool defaultedToFamily;
 	string conjureKeyword;
 	vector<string> allKeywords; // only filled out when the preset is scheduled

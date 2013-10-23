@@ -1,0 +1,22 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>fogGui</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>291.000000000</XPosition>
+    <YPosition>60.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogFalloffDistance</Name>
+    <Value>1668.965576172</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogFalloffExpo</Name>
+    <Value>4.397044182</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogFalloffScale</Name>
+    <Value>1.349753618</Value>
+</Widget>

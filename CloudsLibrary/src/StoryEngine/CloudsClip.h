@@ -3,7 +3,6 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-//#include "ClusterData.h"
 
 class CloudsClip {
   public:

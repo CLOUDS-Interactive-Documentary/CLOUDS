@@ -10,6 +10,7 @@
 	
 	IBOutlet NSTableView* presetTable;
 	IBOutlet NSTableView* clipTable;
+	IBOutlet NSTableView* suppressedClipTable;
 	IBOutlet NSTableView* allKeywordTable;
 	IBOutlet NSTableView* allClipTable;
 	
@@ -19,6 +20,7 @@
 	IBOutlet NSTextField* notesText;
 	IBOutlet NSComboBox* grade;
 	IBOutlet NSButton* enabledBox;
+	IBOutlet NSButton* oculusBox;
 	
 	bool shouldPlaySelectedRow;
 	
@@ -27,6 +29,7 @@
 	CloudsVisualSystem* currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
 	vector<CloudsClip> associatedClips;
+	vector<CloudsClip> suppressedClips;
 	vector<string> associatedKeywords;
 	
 	vector<int> sortedKeywordIndeces;

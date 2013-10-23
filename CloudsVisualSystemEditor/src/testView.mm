@@ -10,6 +10,10 @@ struct sortObject {
 } cohesionSort;
 
 
+bool clipsort(CloudsClip a, CloudsClip b){
+	return a.getID().compare( b.getID() ) < 0;
+}
+
 @implementation testView
 
 - (void)setup
@@ -122,6 +126,7 @@ struct sortObject {
 	visualSystems.loadPresets();
 	
 	[clipTable reloadData];
+	[suppressedClipTable reloadData];
 	[presetTable reloadData];
 	[allKeywordTable reloadData];
 	[allClipTable reloadData];	
@@ -133,8 +138,12 @@ struct sortObject {
 		
 		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
 		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+		
+		//associatedClips = parser.getClipsWithKeyword(associatedKeywords);
+		[self updateAssociatedClips];
+		
 		selectedPreset->enabled = (enabledBox.state == NSOnState);
+		selectedPreset->oculusCompatible = (oculusBox.state == NSOnState);
 		selectedPreset->comments = [notesText.stringValue UTF8String];
 		selectedPreset->grade = [grade.stringValue UTF8String];
 		
@@ -148,6 +157,7 @@ struct sortObject {
 		[self updateCounts];
 		
 		[clipTable reloadData];
+		[suppressedClipTable reloadData];
 		[presetTable reloadData];
 		[allKeywordTable reloadData];
 		[allClipTable reloadData];
@@ -165,32 +175,38 @@ struct sortObject {
 	[clipPercent setStringValue:[NSString stringWithFormat:@"%.02f%% Clips Tagged", percentClips*100]];
 }
 
--(IBAction) unsuppressClip:(id)sender{
-    if(clipTable.selectedRow>=0){
-        visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
-        cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
-        visualSystems.saveKeywords();
-		
-        [clipTable reloadData];
-    }
-}
-
-
--(IBAction)suppressClip:(id)sender{
-    if(clipTable.selectedRow>=0){
+- (IBAction)suppressClip:(id)sender{
+    if(clipTable.selectedRow >= 0){
         
+		//TODO: multi selection
         visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
         
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
         visualSystems.saveKeywords();
 		
-        [clipTable reloadData];
+		[self updateAssociatedClips];
+//        [clipTable reloadData];
+//		[suppressedClipTable reloadData];
 		
     }
 }
 
-- (IBAction) exportStandalone:(id)sender
-{
+- (IBAction) unsuppressClip:(id)sender{
+    if(suppressedClipTable.selectedRow >= 0){
+		
+		//TODO: multi selection
+        visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), suppressedClips[suppressedClipTable.selectedRow].getLinkName());
+        cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
+        visualSystems.saveKeywords();
+		
+		[self updateAssociatedClips];
+		
+    }
+}
+
+
+
+- (IBAction) exportStandalone:(id)sender {
 	visualSystems.exportStandalonePresets();
 }
 
@@ -202,8 +218,10 @@ struct sortObject {
 	else if(aTableView == clipTable){
 		return associatedClips.size();
 	}
+	else if(aTableView == suppressedClipTable){
+		return suppressedClips.size();
+	}
 	else if(aTableView == allKeywordTable){
-//		return parser.getAllKeywords().size();
 		return sortedKeywordIndeces.size();
 	}
 	else if(aTableView == allClipTable){
@@ -220,13 +238,23 @@ struct sortObject {
 		}
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
-					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + string("/") + visualSystems.getPresets()[rowIndex].grade).c_str()];
+					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + 
+					  visualSystems.getPresets()[rowIndex].grade +
+					 (visualSystems.getPresets()[rowIndex].oculusCompatible ? "Oc" : "")).c_str()];
 		}		
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
 		}
 		else if( [@"keywords" isEqualToString:aTableColumn.identifier] ){
 			return [NSString stringWithUTF8String: ofJoinString( visualSystems.keywordsForPreset(rowIndex), ",").c_str() ];
+		}
+		else if( [@"timing" isEqualToString:aTableColumn.identifier] ){
+			if(visualSystems.getPresets()[rowIndex].indefinite){
+				return @"indefinite";
+			}
+			else {
+				return [NSString stringWithFormat:@"%.02fs", visualSystems.getPresets()[rowIndex].duration];
+			}
 		}
 	}
 	else if(aTableView == clipTable){
@@ -237,14 +265,15 @@ struct sortObject {
 			return [NSString stringWithUTF8String: ofJoinString([self entries:associatedClips[rowIndex].getKeywords()
 																   sharedWith:associatedKeywords], ",").c_str() ];
 		}
-        else if( [@"Suppressed" isEqualToString:aTableColumn.identifier] ){
-            if( visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[rowIndex].getLinkName())){
-                return @"Yes";
-            }
-            else{
-                return @"No";
-            }
-        }
+	}
+	else if(aTableView == suppressedClipTable){
+		if([@"clip" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: suppressedClips[rowIndex].getLinkName().c_str() ];
+		}
+		else if([@"keyword" isEqualToString:aTableColumn.identifier]){
+			return [NSString stringWithUTF8String: ofJoinString([self entries:suppressedClips[rowIndex].getKeywords()
+																   sharedWith:associatedKeywords], ",").c_str() ];
+		}		
 	}
 	else if(aTableView == allKeywordTable){
 		int keywordIndex = sortedKeywordIndeces[rowIndex];
@@ -256,7 +285,6 @@ struct sortObject {
 		}
 		else if([@"numclips" isEqualToString:aTableColumn.identifier]){
 			return [NSNumber numberWithInt: parser.getClipsWithKeyword( parser.getAllKeywords()[ keywordIndex ] ).size() ];
-			//[NSInteger integer: parser.getAllKeywords()[rowIndex].c_str() ];
 		}
 		else if([@"presets" isEqualToString:aTableColumn.identifier]){
 			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeyword( parser.getAllKeywords()[ keywordIndex ] );
@@ -272,10 +300,13 @@ struct sortObject {
 			return [NSString stringWithUTF8String: parser.getAllClips()[rowIndex].getLinkName().c_str() ];
 		}
 		else if([@"presets" isEqualToString:aTableColumn.identifier]){
-			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords(parser.getAllClips()[rowIndex].getKeywords());
+			CloudsClip& clip = parser.getAllClips()[rowIndex];
+			vector<CloudsVisualSystemPreset> presets = visualSystems.getPresetsForKeywords( clip.getKeywords() );
 			vector<string> ids;
 			for(int i = 0; i < presets.size(); i++){
-				ids.push_back(presets[i].getID());
+				if(!visualSystems.isClipSuppressed(presets[i].getID(), clip.getLinkName()) ){
+					ids.push_back( presets[i].getID() );
+				}
 			}
 			return [NSString stringWithUTF8String: ofJoinString(ids, ", ").c_str()];
 		}
@@ -308,18 +339,19 @@ struct sortObject {
 			notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 			grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 			enabledBox.state = (selectedPreset->enabled ? NSOnState : NSOffState);
+			oculusBox.state = (selectedPreset->oculusCompatible ? NSOnState : NSOffState);
 		}
 		else{
 			currentKeywords.stringValue = @"";
 			notesText.stringValue = @"";
 			grade.stringValue = @"";
 			enabledBox.state = NSOnState;
+			oculusBox.state = NSOffState;
 		}
 	}
 }
 
 - (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange: (NSArray *)oldDescriptors{
-	//omg sorting
 	
 	NSArray *newDescriptors = [tableView sortDescriptors];
     NSLog(@"sort descriptor %@", [newDescriptors objectAtIndex:0]);
@@ -373,23 +405,11 @@ completionsForSubstring:(NSString *)substring
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
-//	cout << "CONTROL TEXT END EDITING" << endl;	
 	return true;
 }
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index
 {
-//	cout << "SHOULD ADD OBJECTS " << [tokens description] << endl;
-//	if(presetTable.selectedRow >= 0){
-//	}
-    //	[self updateAssociatedClips];	
-    //	if(presetTable.selectedRow >= 0){
-    //		associatedKeywords = ofSplitString([currentKeywords.stringValue UTF8String], ",", true, true);
-    //		visualSystems.setKeywordsForPreset(*selectedPreset, associatedKeywords);
-    //		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
-    //		[clipTable reloadData];
-    //	}
-	
 	return tokens;
 }
 
@@ -397,6 +417,7 @@ completionsForSubstring:(NSString *)substring
 {
 	selectedPreset = NULL;
 	associatedClips.clear();
+	suppressedClips.clear();
 	associatedKeywords.clear();
 	
 	if(presetTable.selectedRow >= 0){
@@ -404,8 +425,20 @@ completionsForSubstring:(NSString *)substring
 		associatedKeywords = visualSystems.keywordsForPreset(*selectedPreset);
 		associatedClips = parser.getClipsWithKeyword(associatedKeywords);
 	}
-		
+	
+	for(int i = associatedClips.size() - 1; i >= 0; i-- ){
+		if(visualSystems.isClipSuppressed(selectedPreset->getID(), associatedClips[i].getLinkName())){
+//			cout << "adding suppressed clip " << associatedClips[i].getLinkName();
+			suppressedClips.push_back(associatedClips[i]);
+			associatedClips.erase(associatedClips.begin() + i);
+		}
+	}
+	
+	sort(associatedClips.begin(),associatedClips.end(), clipsort);
+	sort(suppressedClips.begin(),suppressedClips.end(), clipsort);
+	
 	[clipTable reloadData];
+	[suppressedClipTable reloadData];
 }
 
 - (BOOL) hasKeyword:(NSString*)keyword

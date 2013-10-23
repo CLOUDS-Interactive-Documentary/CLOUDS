@@ -1169,6 +1169,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord){
 	filter.push_back(filterWord);
 	return getClipsWithKeyword(filter);
 }
+
 vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     vector<CloudsClip> clips;
     

@@ -250,8 +250,12 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 
 	introSequence.setStartQuestions(possibleStartQuestions);
 	introSequence.playSystem();
+#ifdef OCULUS_RIFT
+	introSequence.loadPresetGUISFromName("Oculus");
+#else
 	introSequence.loadPresetGUISFromName("TunnelWarp");
-	showingIntro = true;	
+#endif
+	showingIntro = true;
 }
 
 //--------------------------------------------------------------------

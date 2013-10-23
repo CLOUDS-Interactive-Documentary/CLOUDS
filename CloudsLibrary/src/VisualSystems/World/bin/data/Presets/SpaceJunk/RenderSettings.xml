@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Solid_Sphere_Scale</Name>
+    <Value>0.985221624</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Solid_Sphere_Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wire_Sphere_Scale</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wire_Sphere_Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Halo_Sphere_Scale</Name>
+    <Value>0.997536898</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Halo_Sphere_Alpha</Name>
+    <Value>0.522167504</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Rivers</Name>
+    <Value>0.172413796</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Coast</Name>
+    <Value>0.640394092</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cities</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Constelation_Min</Name>
+    <Value>0.005000001</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Constelation_Max</Name>
+    <Value>0.039408866</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Constelation_Randomizer</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Arcs_Alpha</Name>
+    <Value>0.389162570</Value>
+</Widget>

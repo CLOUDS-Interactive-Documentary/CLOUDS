@@ -19,7 +19,7 @@ fi
 git clone git@github.com:rezaali/ofxExtras
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
-git checkout --track develop
+git checkout -b develop --track origin/develop
 cd ..
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
@@ -51,12 +51,12 @@ ${PREFIX}Flightphase/ofxMSAInteractiveObject
 
 ${PREFIX}Flightphase/ofxTextInputField
 cd ofxTextInputField
-git checkout --track develop
+git checkout -b develop --track origin/develop
 cd ..
 
 ${PREFIX}obviousjim/ofxRGBDepth
 cd ofxRGBDepth
-git checkout --track develop
+git checkout -b develop --track origin/develop
 cd ..
 
 ${PREFIX}obviousjim/ofxCv
@@ -68,7 +68,7 @@ ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
-git checkout --track develop
+git checkout -b develop --track origin/develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		

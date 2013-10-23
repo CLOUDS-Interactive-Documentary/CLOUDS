@@ -1,0 +1,82 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OceanSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN SIZE X</Name>
+    <Value>127.043739319</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN SIZE Y</Name>
+    <Value>141.674285889</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIND SPEED Y</Name>
+    <Value>252.728469849</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE SPEED</Name>
+    <Value>1.231521130</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE SCALE</Name>
+    <Value>16.256097794</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE CHOPPINESS</Name>
+    <Value>2.660098314</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT ALPHA</Name>
+    <Value>0.059112698</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT SIZE</Name>
+    <Value>1.189654112</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW WIREFRAME</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIREFRAME ALPHA</Name>
+    <Value>0.497536659</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW OCEAN</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN ALPHA</Name>
+    <Value>0.187191814</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEPTH TESTING</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.112315185</Value>
+</Widget>

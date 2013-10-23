@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxVerts</Name>
+    <Value>78719.210937500</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>trail length</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>birthrate</Name>
+    <Value>16.748767853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>step</Name>
+    <Value>19.039409637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>chaos</Name>
+    <Value>87.832511902</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>0.001477833</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sincRadius</Name>
+    <Value>0.103448279</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fieldAmplitude</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>oscFreq</Name>
+    <Value>0.020197045</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxLength</Name>
+    <Value>3.940886736</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fieldAlpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>startColor</Name>
+    <XValue>0.492187500</XValue>
+    <YValue>0.406250000</YValue>
+    <RColor>70</RColor>
+    <GColor>0</GColor>
+    <BColor>38</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>endColor</Name>
+    <XValue>0.945312500</XValue>
+    <YValue>0.835937500</YValue>
+    <RColor>30</RColor>
+    <GColor>30</GColor>
+    <BColor>30</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Interpolate RGB</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Refresh Bg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Blend Add</Name>
+    <Value>1</Value>
+</Widget>

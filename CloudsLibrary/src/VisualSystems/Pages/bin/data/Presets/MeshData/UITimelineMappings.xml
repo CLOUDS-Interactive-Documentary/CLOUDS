@@ -1,0 +1,23 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>FILL ALPHA</WidgetName>
+                <WidgetID>6</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>MESH ALPHA</WidgetName>
+                <WidgetID>8</WidgetID>
+                <WidgetCanvasParent>Page</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>
