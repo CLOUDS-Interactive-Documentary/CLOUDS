@@ -82,3 +82,6 @@ CloudsMovieDirectory_remote.txt
 /CloudsLibrary/src/VisualSystems_/
 
 /CloudsLibrary/src/VisualSystemsLibrary_/
+
+/CloudsLibrary/src/VisualSystems/OpenP5Hackpact/vs_src/CloudsVisualSystemOpenP5Machine.cpp
+/CloudsLibrary/src/VisualSystems/OpenP5Hackpact/vs_src/CloudsVisualSystemOpenP5Machine.h
