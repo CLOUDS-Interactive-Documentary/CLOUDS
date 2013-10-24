@@ -26,7 +26,11 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
 	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
 	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-
+    
+    customGui->addLabel("Solid Sphere");
+    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
+    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
+    
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
 //	customGui->addButton("Custom Button", false);
@@ -72,6 +76,11 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup(){
 	for (int i=0; i<count; i++) {
 		list.push_back( Hair(radius) );
 	}
+    
+    wireSphereScale = 0.9333;
+    solidSphereScale = 0.8666;
+    wireSphereAlpha = 0.0784;
+    solidSphereAlpha = 1.0;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -102,6 +111,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
+    
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_NORMALIZE);
+    ofFill();
+    ofSetColor(20,solidSphereAlpha*255.0);
+	ofSphere(0, 0, solidSphereScale*300 );
 	
 	ofPushStyle();
 	

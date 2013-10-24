@@ -158,6 +158,14 @@ protected:
 	float ry = 0;
 
 	ofVboMesh mesh;
+    
+    //inner sphere
+    
+    void        loadVbo(ofVboMesh &_vbo, string _file);
+    
+    float       wireSphereScale, solidSphereScale, haloSphereScale;
+    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+
 	
 
 };
