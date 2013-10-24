@@ -47,6 +47,7 @@ class Hair {
 		float xb = xo * largo;
 		float yb = yo * largo;
 		float zb = zo * largo;
+      
 
 		mesh.addColor(ofFloatColor::white*solidSphereAlpha);
 		mesh.addVertex( ofVec3f(x,y,z) );

@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>989.000000000</XPosition>
-    <YPosition>290.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>145.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -18,12 +18,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-X</Name>
-    <Value>56.748767853</Value>
+    <Value>48.704151154</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>26.600984573</Value>
+    <Value>48.666000366</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

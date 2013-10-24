@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>35.000000000</XPosition>
+    <YPosition>333.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 1 Hue</Name>
+    <Value>138.177337646</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 1 Sat</Name>
+    <Value>128.128082275</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 1 Bri</Name>
+    <Value>193.448272705</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 2 Hue</Name>
+    <Value>118.078819275</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 2 Sat</Name>
+    <Value>195.960586548</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Color 2 Bri</Name>
+    <Value>177.118225098</Value>
+</Widget>
