@@ -2,36 +2,26 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>398.000000000</XPosition>
-    <YPosition>106.000000000</YPosition>
+    <XPosition>1003.000000000</XPosition>
+    <YPosition>104.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
-    <Name>Color 1 Hue</Name>
-    <Value>174.605911255</Value>
+    <Name>Solid_Sphere_Scale</Name>
+    <Value>0.232758626</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Color 1 Sat</Name>
-    <Value>87.931037903</Value>
+    <Name>Solid_Sphere_Alpha</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Color 1 Bri</Name>
-    <Value>207.266006470</Value>
+    <Name>Noise Speed</Name>
+    <Value>2.561576366</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Color 2 Hue</Name>
-    <Value>133.152709961</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Color 2 Sat</Name>
-    <Value>130.640396118</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Color 2 Bri</Name>
-    <Value>255.000000000</Value>
+    <Name>Noise Scale</Name>
+    <Value>0.512315273</Value>
 </Widget>

@@ -27,9 +27,9 @@ class Hair {
 		theta = asin(z/radius);
 	}
 	
-	void draw(ofMesh& mesh) {
-		float off = (ofNoise(ofGetElapsedTimeMillis() * 0.0005, sin(phi))-0.5) * 0.3;
-		float offb = (ofNoise(ofGetElapsedTimeMillis() * 0.0007, sin(z) * 0.01)-0.5) * 0.3;
+	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha) {
+		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
+		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
 		float thetaff = theta+off;
 		float phff = phi+offb;
@@ -48,8 +48,10 @@ class Hair {
 		float yb = yo * largo;
 		float zb = zo * largo;
 
-		mesh.addVertex(ofVec3f(x,y,z));
-		mesh.addVertex(ofVec3f(xb,yb,zb));
+		mesh.addColor(ofFloatColor::white*solidSphereAlpha);
+		mesh.addVertex( ofVec3f(x,y,z) );
+		mesh.addColor(ofFloatColor::white);
+		mesh.addVertex( ofVec3f(xb,yb,zb) );
 		
 //		beginShape(LINES);
 //		stroke(0);
@@ -157,8 +159,10 @@ protected:
 	float rx = 0;
 	float ry = 0;
 
-	ofVboMesh mesh;
-    
+    float noisePosition;
+	float noiseSpeed;
+	float noiseScale;
+	
     //inner sphere
     
     void        loadVbo(ofVboMesh &_vbo, string _file);

@@ -19,17 +19,19 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-
-	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
+//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
+//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+//
+//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
+//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
+//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
     
     customGui->addLabel("Solid Sphere");
     customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
     customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
+    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
+    customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
     
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -77,6 +79,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup(){
 		list.push_back( Hair(radius) );
 	}
     
+	noisePosition = 0;
+	noiseSpeed = 0;
+	noiseScale = 1;
+	
     wireSphereScale = 0.9333;
     solidSphereScale = 0.8666;
     wireSphereAlpha = 0.0784;
@@ -112,14 +118,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
     
+	ofPushStyle();
+		
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_NORMALIZE);
+
     ofFill();
     ofSetColor(20,solidSphereAlpha*255.0);
 	ofSphere(0, 0, solidSphereScale*300 );
-	
-	ofPushStyle();
-	
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	
 	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.005);
@@ -131,8 +136,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
 	//sphere(radio);
 	
 	ofMesh mesh;
+	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh);
+		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha);
 	}
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
