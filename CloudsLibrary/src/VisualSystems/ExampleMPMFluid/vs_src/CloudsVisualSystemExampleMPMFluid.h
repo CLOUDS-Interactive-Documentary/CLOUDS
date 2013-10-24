@@ -11,7 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-//#include "ofxMPMFluid.h"
+#include "ofxMPMFluid.h"
 
 
 
@@ -97,7 +97,24 @@ class CloudsVisualSystemExampleMPMFluid : public CloudsVisualSystem {
 	}
 
 protected:
+    
+    ofxMPMFluid fluid;
+    ofxMPMObstacle* obstacle;
+    
+    float scaleFactor;
+    
     // preset stuff
     ofxUISuperCanvas* customGui;
-
+    ofxUIRadio *interModeRadio;
+    float nParticles;
+    float density;
+    float stiffness;
+    float bulkViscosity;
+    float elasticity;
+    float viscosity;
+    float gravity;
+    float obstacleSize;
+    ofFloatColor pColor;
+    float lineWidth;
+    float mouseForce;
 };
