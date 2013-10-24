@@ -264,6 +264,8 @@
 		E7E5EB6518134D3E00CA4196 /* MandalaVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5EB5718134D3E00CA4196 /* MandalaVisualSystem.cpp */; };
 		E7E5EBDC18134D5B00CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5EBCC18134D5B00CA4196 /* CloudsClusterNode.cpp */; };
 		E7E5EBDD18134D5B00CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5EBCE18134D5B00CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
+		E7E5ECD018187C6100CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5EC9D18187C6000CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
+		E7E5ECD118187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5ECCE18187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
 		E7F777341772761A0096AEF7 /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
 		E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
@@ -1045,6 +1047,10 @@
 		E7E5EBCD18134D5B00CA4196 /* CloudsClusterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterNode.h; sourceTree = "<group>"; };
 		E7E5EBCE18134D5B00CA4196 /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
 		E7E5EBCF18134D5B00CA4196 /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
+		E7E5EC9D18187C6000CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Hackpact.cpp; sourceTree = "<group>"; };
+		E7E5EC9E18187C6000CA4196 /* CloudsVisualSystemOpenP5Hackpact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Hackpact.h; sourceTree = "<group>"; };
+		E7E5ECCE18187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5NoiseSphere.cpp; sourceTree = "<group>"; };
+		E7E5ECCF18187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5NoiseSphere.h; sourceTree = "<group>"; };
 		E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemManager.cpp; sourceTree = "<group>"; };
 		E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemManager.h; sourceTree = "<group>"; };
 		E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPreset.cpp; sourceTree = "<group>"; };
@@ -1413,6 +1419,8 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7E5EC6F18187C6000CA4196 /* OpenP5Hackpact */,
+				E7E5EC9F18187C6000CA4196 /* OpenP5NoiseSphere */,
 				E7E5EB6918134D5B00CA4196 /* _ClusterMap */,
 				E7E5EAC318134D3C00CA4196 /* MandalaVisualSystem */,
 				E7E5EAA718134D2200CA4196 /* Replicator */,
@@ -3608,6 +3616,40 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		E7E5EC6F18187C6000CA4196 /* OpenP5Hackpact */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5EC9C18187C6000CA4196 /* vs_src */,
+			);
+			path = OpenP5Hackpact;
+			sourceTree = "<group>";
+		};
+		E7E5EC9C18187C6000CA4196 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5EC9D18187C6000CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */,
+				E7E5EC9E18187C6000CA4196 /* CloudsVisualSystemOpenP5Hackpact.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7E5EC9F18187C6000CA4196 /* OpenP5NoiseSphere */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ECCD18187C6100CA4196 /* vs_src */,
+			);
+			path = OpenP5NoiseSphere;
+			sourceTree = "<group>";
+		};
+		E7E5ECCD18187C6100CA4196 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ECCE18187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */,
+				E7E5ECCF18187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E7FC8B7E17DA9A50007BEFA5 /* WebHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -4030,6 +4072,8 @@
 				E7E5EB6518134D3E00CA4196 /* MandalaVisualSystem.cpp in Sources */,
 				E7E5EBDC18134D5B00CA4196 /* CloudsClusterNode.cpp in Sources */,
 				E7E5EBDD18134D5B00CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E7E5ECD018187C6100CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				E7E5ECD118187C6100CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -267,6 +267,8 @@
 		E7DD858417DBC2B500AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD858217DBC2B500AFB2DD /* CloudsVisualSystemNeurons.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7E5ED591818846D00CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5ED011818846C00CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
+		E7E5ED801818846D00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5ED321818846C00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
@@ -1040,6 +1042,10 @@
 		E7DD858317DBC2B500AFB2DD /* CloudsVisualSystemNeurons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemNeurons.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7E5ED011818846C00CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Hackpact.cpp; sourceTree = "<group>"; };
+		E7E5ED021818846C00CA4196 /* CloudsVisualSystemOpenP5Hackpact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Hackpact.h; sourceTree = "<group>"; };
+		E7E5ED321818846C00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5NoiseSphere.cpp; sourceTree = "<group>"; };
+		E7E5ED331818846C00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5NoiseSphere.h; sourceTree = "<group>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -2879,6 +2885,8 @@
 		E7BBA660179FA17D007D7EC1 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7E5ECD31818846C00CA4196 /* OpenP5Hackpact */,
+				E7E5ED031818846C00CA4196 /* OpenP5NoiseSphere */,
 				856E0348181389A700A8383C /* ExampleBox2D */,
 				856E02361813899600A8383C /* ExampleVectorMath */,
 				856E00CC181388F900A8383C /* MandalaVisualSystem */,
@@ -3392,6 +3400,40 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		E7E5ECD31818846C00CA4196 /* OpenP5Hackpact */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ED001818846C00CA4196 /* vs_src */,
+			);
+			path = OpenP5Hackpact;
+			sourceTree = "<group>";
+		};
+		E7E5ED001818846C00CA4196 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ED011818846C00CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp */,
+				E7E5ED021818846C00CA4196 /* CloudsVisualSystemOpenP5Hackpact.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7E5ED031818846C00CA4196 /* OpenP5NoiseSphere */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ED311818846C00CA4196 /* vs_src */,
+			);
+			path = OpenP5NoiseSphere;
+			sourceTree = "<group>";
+		};
+		E7E5ED311818846C00CA4196 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5ED321818846C00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */,
+				E7E5ED331818846C00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3726,6 +3768,8 @@
 				856E06B9181389CD00A8383C /* ofxBox2dRect.cpp in Sources */,
 				856E070818138A9E00A8383C /* CloudsVisualSystemReplicator.cpp in Sources */,
 				856E083118138AE800A8383C /* CloudsVisualSystemFlocking.cpp in Sources */,
+				E7E5ED591818846D00CA4196 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				E7E5ED801818846D00CA4196 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
