@@ -11,19 +11,20 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Maze.h"
+#include "Flocking.h"
+#include "PathFollowing.h"
+#include "ObstacleAvoidance.h"
+#include "PursuitAndEvade.h"
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
+class CloudsVisualSystemExampleOpenSteer : public CloudsVisualSystem {
   public:
     
-    CloudsVisualSystemMazeGenerator();
-    
 	//TODO: Change this to the name of your visual system
-	//This determines your d2ata path so name it at first!
+	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "MazeGenerator";
+		return "ExampleOpenSteer";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -87,17 +88,35 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-	ofCamera& getCameraRef(){
-		return cam;
-	}
+//	ofCamera& getCameraRef(){
+//		return cam;
+//	}
+
+
 
 protected:
-    Maze maze;
-    MazeCamera *mazeCam;
     
-    // preset stuff
-    ofxUISuperCanvas* customGui;
+    //  Your Stuff
+    //
+	void setSimulation( int simulationIndex );
+    
+    
+	ofxUISuperCanvas* customGui;
+    
+    
+    //ofEasyCam cam;
+	
+    Flocking flocking;
+    PathFollowing pathFollowing;
+    ObstacleAvoidance obstacleAvoidance;
+    PursuitAndEvade pursuitAndEvade;
+	
+    vector<ofxOpenSteerPlugin*> simulations;
+    ofxOpenSteerPlugin* currentSimulation;
+    int simulationIndex;
+    
 };
