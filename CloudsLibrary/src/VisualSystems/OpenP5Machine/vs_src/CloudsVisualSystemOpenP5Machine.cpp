@@ -19,18 +19,9 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-    
-    customGui->addLabel("Solid Sphere");
-    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
-    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-
+	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
+	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
+	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
     
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -74,13 +65,15 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
 	
 
 	
-    solidSphereScale = 0.8666;
-    solidSphereAlpha = 1.0;
     
     depth = 400;
     
     ofEnableSmoothing();
     ofSetLineWidth(.1);
+    
+    color1HSB.r = 140;
+    color2HSB.g = 130;
+    color2HSB.b = 90;
 
 }
 
@@ -164,7 +157,10 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
 
     for(int i=0; i<10; i++) {
         
-        ofRotateX(framecount*PI/1000);
+     
+       // ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2, -400/2);
+        
+        ofRotateX(framecount* (ofRadToDeg(PI/1000)));
         
         for (int y = -2; y < 2; y++) {
             for (int x = -2; x < 2; x++) {
@@ -172,31 +168,37 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
 
                     ofPushMatrix();
                     ofTranslate(400*x, 300*y, 300*z);
-                    //color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b-r/4);
-                    //box.setColor(color);
-                    ofBox(5, 5, 100);
+                    color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b);
+                    ofSetColor(color);
+                    ofScale(5,5,100);
+                    ofBox(1, 1, 1);
                     ofPopMatrix();
-                    
+       
                     ofPushMatrix();
                     ofTranslate(400*x, 300*y, 50*z);
-                    ofBox(100, 10, 10);
+                    ofScale(100, 5, 5);
+                    ofBox(1, 1, 1);
                     ofPopMatrix();
                     
                     ofPushMatrix();
                     ofTranslate(400*x, 10*y, 50*z);
-                    ofBox(50, 5, 5);
+                    ofScale(50, 5, 5);
+                    ofBox(1, 1, 1);
                     ofPopMatrix();
                     
                     ofPushMatrix();
-                    ofRotateY(framecount*PI/400);
+                    ofRotateY(framecount* (ofRadToDeg(PI/400)));
                     ofTranslate(100*x, 300*y, 300*z);
-                    ofBox(60, 40, 20);
+                    ofScale(60, 40, 20);
+                    ofBox(1, 1, 1);
                     ofPopMatrix();
+        
                     
                 }
             }
         }
     }
+
 }
 
 
