@@ -87,7 +87,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup(){
     solidSphereScale = 0.8666;
     wireSphereAlpha = 0.0784;
     solidSphereAlpha = 1.0;
+    
+    ofEnableSmoothing();
+    ofSetLineWidth(.1);
+
 }
+
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -121,14 +126,15 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
 	ofPushStyle();
 		
     glEnable(GL_DEPTH_TEST);
+    
 
     ofFill();
     ofSetColor(20,solidSphereAlpha*255.0);
 	ofSphere(0, 0, solidSphereScale*300 );
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	
-	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.005);
-	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.005);
+	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
+	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
 	ofRotateY(rx);
