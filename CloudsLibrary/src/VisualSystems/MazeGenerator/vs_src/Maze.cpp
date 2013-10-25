@@ -13,7 +13,7 @@ Maze::Maze()
     for (int i=0; i<NUM_CELLS_X; i++) {
         for (int j=0; j<NUM_CELLS_Y; j++)
         {
-            cells[i][j] = new MazeCell(i, j, CELL_SIZE, 2, 10);
+            cells[i][j] = new MazeCell(i, j, CELL_SIZE, WALL_THICKNESS, WALL_HEIGHT);
         }
     }
     
@@ -54,20 +54,22 @@ void Maze::generate()
     }
 }
 
-void Maze::draw()
+void Maze::draw(int y)
 {
-    ofPushMatrix();
-    ofTranslate(-NUM_CELLS_X*CELL_SIZE/2, 50, 0);
+    int yLimit = min(y+60, NUM_CELLS_Y);
     
     for (int i=0; i<NUM_CELLS_X; i++)
     {
-        for (int j=0; j<NUM_CELLS_Y; j++)
+        for (int j=y; j<yLimit; j++)
         {
             cells[i][j]->draw();
         }
     }
-    
-    ofPopMatrix();
+}
+
+float Maze::getWidth()
+{
+    return NUM_CELLS_X*CELL_SIZE;
 }
 
 void Maze::generateStep()

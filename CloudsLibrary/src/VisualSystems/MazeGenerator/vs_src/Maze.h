@@ -10,11 +10,14 @@
 #define __MazeGenerator__Maze__
 
 #include <ofMain.h>
+#include "MazeCamera.h"
 #include "MazeCell.h"
 
-#define NUM_CELLS_X 20
-#define NUM_CELLS_Y 100
-#define CELL_SIZE 20
+#define NUM_CELLS_X 31
+#define NUM_CELLS_Y 1000
+#define CELL_SIZE 30
+#define WALL_HEIGHT 20
+#define WALL_THICKNESS 3
 
 class Maze
 {
@@ -23,7 +26,9 @@ public:
     ~Maze();
     void generate();
     
-    void draw();
+    void draw(int y);
+    
+    float getWidth();
     
     
 protected:

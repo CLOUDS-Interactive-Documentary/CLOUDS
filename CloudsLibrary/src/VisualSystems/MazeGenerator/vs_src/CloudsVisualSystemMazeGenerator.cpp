@@ -95,6 +95,8 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
     maze.generate();
+    
+    mazeCam = new MazeCamera(maze.getWidth()/2, 50, 0);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -121,14 +123,19 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
-    
+    mazeCam->update();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
-    maze.draw();    
+    mazeCam->begin();
+    
+    int y = mazeCam->getPosition().z/CELL_SIZE;
+    maze.draw(y);
+    
+    mazeCam->end();
 }
 
 // draw any debug stuff here
@@ -151,6 +158,7 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMazeGenerator::selfExit()
 {
+    delete mazeCam;
 }
 
 //events are called when the system is active

@@ -96,6 +96,7 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 
 protected:
     Maze maze;
+    MazeCamera *mazeCam;
     
     // preset stuff
     ofxUISuperCanvas* customGui;
