@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F24A562181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A560181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.cpp */; };
 		1F24A56B181ADCD600DD8D62 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A563181ADCD600DD8D62 /* CloudsRGBDCamera.cpp */; };
 		1F24A56C181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A565181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp */; };
 		1F24A56D181ADCD600DD8D62 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A567181ADCD600DD8D62 /* CloudsVisualSystem.cpp */; };
@@ -34,6 +33,7 @@
 		1F24A5CF181AE72B00DD8D62 /* TerrainRayTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A9181AE23600DD8D62 /* TerrainRayTest.h */; };
 		1F24A5D0181AE72B00DD8D62 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5AA181AE23600DD8D62 /* Vec3.cpp */; };
 		1F24A5D1181AE72B00DD8D62 /* Vec3Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5AB181AE23600DD8D62 /* Vec3Utilities.cpp */; };
+		1F61879C181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */; };
 		3D5B93651753046A00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F11753046A00F558AC /* kiss_fft.c */; };
 		3D5B93661753046A00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F21753046A00F558AC /* kiss_fftr.c */; };
 		3D5B93671753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F51753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -162,8 +162,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F24A560181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemExampleOpenSteer.cpp; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.cpp; sourceTree = "<group>"; };
-		1F24A561181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemExampleOpenSteer.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.h; sourceTree = "<group>"; };
 		1F24A563181ADCD600DD8D62 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCamera.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		1F24A564181ADCD600DD8D62 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCamera.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		1F24A565181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDVideoPlayer.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -233,11 +231,13 @@
 		1F24A5B1181AE23600DD8D62 /* ofxOpenSteerUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerUtils.h; sourceTree = "<group>"; };
 		1F24A5B2181AE23600DD8D62 /* ofxOpenSteerVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerVehicle.cpp; sourceTree = "<group>"; };
 		1F24A5B3181AE23600DD8D62 /* ofxOpenSteerVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerVehicle.h; sourceTree = "<group>"; };
-		1F24A5B4181AE27000DD8D62 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boid.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Boid.h; sourceTree = "<group>"; };
-		1F24A5B5181AE27000DD8D62 /* Flocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flocking.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Flocking.h; sourceTree = "<group>"; };
-		1F24A5B7181AE27000DD8D62 /* ObstacleAvoidance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleAvoidance.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/ObstacleAvoidance.h; sourceTree = "<group>"; };
-		1F24A5B8181AE27000DD8D62 /* PathFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFollowing.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PathFollowing.h; sourceTree = "<group>"; };
-		1F24A5B9181AE27000DD8D62 /* PursuitAndEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PursuitAndEvade.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PursuitAndEvade.h; sourceTree = "<group>"; };
+		1F618795181B045A00BAC654 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boid.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Boid.h; sourceTree = "<group>"; };
+		1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemExampleOpenSteer.cpp; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.cpp; sourceTree = "<group>"; };
+		1F618797181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemExampleOpenSteer.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.h; sourceTree = "<group>"; };
+		1F618798181B045A00BAC654 /* Flocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flocking.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Flocking.h; sourceTree = "<group>"; };
+		1F618799181B045A00BAC654 /* ObstacleAvoidance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleAvoidance.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/ObstacleAvoidance.h; sourceTree = "<group>"; };
+		1F61879A181B045A00BAC654 /* PathFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFollowing.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PathFollowing.h; sourceTree = "<group>"; };
+		1F61879B181B045A00BAC654 /* PursuitAndEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PursuitAndEvade.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PursuitAndEvade.h; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -1015,13 +1015,13 @@
 		3DA45C5F179DB6C3002EC0AC /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A560181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.cpp */,
-				1F24A561181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.h */,
-				1F24A5B4181AE27000DD8D62 /* Boid.h */,
-				1F24A5B5181AE27000DD8D62 /* Flocking.h */,
-				1F24A5B7181AE27000DD8D62 /* ObstacleAvoidance.h */,
-				1F24A5B8181AE27000DD8D62 /* PathFollowing.h */,
-				1F24A5B9181AE27000DD8D62 /* PursuitAndEvade.h */,
+				1F618795181B045A00BAC654 /* Boid.h */,
+				1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */,
+				1F618797181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.h */,
+				1F618798181B045A00BAC654 /* Flocking.h */,
+				1F618799181B045A00BAC654 /* ObstacleAvoidance.h */,
+				1F61879A181B045A00BAC654 /* PathFollowing.h */,
+				1F61879B181B045A00BAC654 /* PursuitAndEvade.h */,
 			);
 			path = vs_src;
 			sourceTree = SOURCE_ROOT;
@@ -1465,7 +1465,6 @@
 				3D5B936F1753046B00F558AC /* ofxHotKeys_impl_win.cpp in Sources */,
 				3D5B93701753046B00F558AC /* ofxRemoveCocoaMenu.mm in Sources */,
 				3D5B93711753046B00F558AC /* ofxTimeline.cpp in Sources */,
-				1F24A562181ADCB300DD8D62 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				3D5B93721753046B00F558AC /* ofxTLAudioTrack.cpp in Sources */,
 				3D5B93731753046B00F558AC /* ofxTLBangs.cpp in Sources */,
 				3D5B93741753046B00F558AC /* ofxTLCameraTrack.cpp in Sources */,
@@ -1485,6 +1484,7 @@
 				3D5B93821753046B00F558AC /* ofxTLPageTabs.cpp in Sources */,
 				3D5B93831753046B00F558AC /* ofxTLSwitches.cpp in Sources */,
 				3D5B93841753046B00F558AC /* ofxTLTicker.cpp in Sources */,
+				1F61879C181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				3D5B93851753046B00F558AC /* ofxTLTrack.cpp in Sources */,
 				3D5B93861753046B00F558AC /* ofxTLTrackHeader.cpp in Sources */,
 				1F24A56C181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp in Sources */,

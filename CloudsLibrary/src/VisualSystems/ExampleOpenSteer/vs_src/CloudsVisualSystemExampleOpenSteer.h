@@ -92,9 +92,9 @@ class CloudsVisualSystemExampleOpenSteer : public CloudsVisualSystem {
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-	ofCamera& getCameraRef(){
-		return cam;
-	}
+//	ofCamera& getCameraRef(){
+//		return cam;
+//	}
 
 
 
@@ -102,15 +102,13 @@ protected:
     
     //  Your Stuff
     //
-	
+	void setSimulation( int simulationIndex );
+    
+    
 	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
     
-    void setSimulation( int simulationIndex );
     
-    ofEasyCam cam;
+    //ofEasyCam cam;
 	
     Flocking flocking;
     PathFollowing pathFollowing;

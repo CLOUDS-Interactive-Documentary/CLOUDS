@@ -7,7 +7,7 @@
 using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
-class Boid: public ofxOpenSteerVehicle{
+class Boid: public ofxOpenSteerVehicle {
 	
 public:
     
@@ -50,6 +50,12 @@ public:
         if(pt) pt->updateForNewPosition (position());
     };
 	
+    void draw(){
+        drawBasic3dSphericalVehicle (*this, color);
+        annotationVelocityAcceleration ();
+        drawTrail();
+    }
+    
     Vec3 getSteeringForce(const float elapsedTime){
         // if there is no proximity database, just wander
         if(!pt) return steerForWander(elapsedTime);

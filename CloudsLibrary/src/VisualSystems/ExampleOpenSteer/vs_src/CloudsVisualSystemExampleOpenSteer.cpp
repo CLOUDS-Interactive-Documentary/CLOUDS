@@ -13,21 +13,51 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+    
+    float dim = 16;
+	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
+    float length = 255-xInit;
 	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
+    vector<string> names;
+	names.push_back("FLOCK");
+	names.push_back("PATH");
+	names.push_back("OBSTACLE");
+    names.push_back("PURSUIT");
+    
+    customGui->addSpacer(length-xInit, 2);
+	customGui->addRadio("SIMULATIONS", names, OFX_UI_ORIENTATION_HORIZONTAL, dim, dim);
+    
+    customGui->addSpacer(length-xInit, 2);
+	customGui->addWidgetDown(new ofxUILabel("BOIDS", OFX_UI_FONT_MEDIUM));
+	customGui->addToggle( "TAIL", true, dim, dim);
+    
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleOpenSteer::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
 void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
-	}
+    string name = e.widget->getName();
+	int kind = e.widget->getKind();
+
+    
+    if(name == "FLOCK"){
+        setSimulation(0);
+	} else if(name == "PATH"){
+        setSimulation(1);
+    } else if(name == "OBSTACLE"){
+        setSimulation(2);
+    } else if (name == "PURSUIT"){
+        setSimulation(3);
+    } else if(name=="TAIL") {
+        ofxUIButton *button = (ofxUIButton *) e.widget;
+		if(button->getValue()) {
+            
+        } else {
+            
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -36,8 +66,9 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupSystemGui(){
 }
 
 void CloudsVisualSystemExampleOpenSteer::guiSystemEvent(ofxUIEventArgs &e){
-	
+
 }
+
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemExampleOpenSteer::selfSetupRenderGui(){
 
@@ -80,7 +111,7 @@ void CloudsVisualSystemExampleOpenSteer::selfBegin(){
 	
 	// the sample simulations are quite small in scale, so
 	// we wanna make sure our camera is close enough
-	cam.setDistance(50);
+	//getCameraRef()->setDistance(50);
     
     currentSimulation = NULL;
 	setSimulation(0);
@@ -117,7 +148,6 @@ void CloudsVisualSystemExampleOpenSteer::selfDraw(){
     cam.begin();
     currentSimulation->draw();
 	cam.end();
-	
 }
 
 // draw any debug stuff here
@@ -144,8 +174,20 @@ void CloudsVisualSystemExampleOpenSteer::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemExampleOpenSteer::selfKeyPressed(ofKeyEventArgs & args){
-	
+    /*
+    if( args.key == OF_KEY_LEFT ){
+		simulationIndex--;
+		if(simulationIndex < 0) simulationIndex = simulations.size() - 1;
+		setSimulation(simulationIndex);
+	}
+	else if( args.key == OF_KEY_RIGHT ){
+		simulationIndex++;
+		if(simulationIndex > simulations.size() - 1) simulationIndex = 0;
+		setSimulation(simulationIndex);
+	}
+     */
 }
+
 void CloudsVisualSystemExampleOpenSteer::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
