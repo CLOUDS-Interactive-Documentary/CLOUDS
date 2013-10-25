@@ -64,14 +64,14 @@ class Hair {
 };
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
+class CloudsVisualSystemOpenP5Machine : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "OpenP5NoiseSphere";
+		return "OpenP5Machine";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -154,17 +154,8 @@ protected:
 	ofFloatColor color1HSB;
 	ofFloatColor color2HSB;
 	
-	int count = 4000;
-	vector<Hair> list;
-	float radius;
-	float rx = 0;
-	float ry = 0;
-
-    float noisePosition;
-	float noiseSpeed;
-	float noiseScale;
-	
-    //inner sphere
+	float depth;
+    int framecount;
     
     void        loadVbo(ofVboMesh &_vbo, string _file);
     
