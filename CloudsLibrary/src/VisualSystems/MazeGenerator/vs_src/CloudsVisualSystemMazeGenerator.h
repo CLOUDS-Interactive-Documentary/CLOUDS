@@ -11,16 +11,16 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-
+#include "Maze.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
   public:
     
-    CloudsVisualSystemMazeGenerator() {}
+    CloudsVisualSystemMazeGenerator();
     
 	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
+	//This determines your d2ata path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
 		return "MazeGenerator";
@@ -95,6 +95,7 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 	}
 
 protected:
+    Maze maze;
     
     // preset stuff
     ofxUISuperCanvas* customGui;

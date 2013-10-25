@@ -12,6 +12,10 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 
+CloudsVisualSystemMazeGenerator::CloudsVisualSystemMazeGenerator()
+{
+}
+
 void CloudsVisualSystemMazeGenerator::selfSetupGui(){
     customGui = new ofxUISuperCanvas("MAZE BUILDER", gui);
     customGui->copyCanvasStyle(gui);
@@ -90,6 +94,7 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
+    maze.generate();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -105,7 +110,6 @@ void CloudsVisualSystemMazeGenerator::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemMazeGenerator::selfBegin()
 {
-
 }
 
 //do things like ofRotate/ofTranslate here
@@ -124,7 +128,7 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
-    
+    maze.draw();    
 }
 
 // draw any debug stuff here
@@ -136,7 +140,6 @@ void CloudsVisualSystemMazeGenerator::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemMazeGenerator::selfDrawBackground()
 {
-    ofBackground(255, 0, 0);
 }
 
 // this is called when your system is no longer drawing.
