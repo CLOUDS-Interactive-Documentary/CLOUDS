@@ -234,5 +234,7 @@ protected:
 	ofVec3f accumulatedRotation;
 	
 	CloudsPathCamera pathCamera;
+	float pathCameraPosition;
+	bool bUseDuration;
 
 };

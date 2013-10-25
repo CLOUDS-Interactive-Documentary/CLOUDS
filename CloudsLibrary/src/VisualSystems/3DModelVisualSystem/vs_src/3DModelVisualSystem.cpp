@@ -174,6 +174,12 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	cameraPathsGui->addSpacer();
 	cameraPathsGui->addRadio("camera paths", cameraPaths );
 	
+	cameraPathsGui->addSpacer();
+	cameraPathsGui->addSlider("position", 0, 1, &pathCameraPosition);
+	cameraPathsGui->addToggle("bUseDuration", &bUseDuration);
+	cameraPathsGui->addSlider("duration", 1, 200, &pathCamera.getDuration() );
+	cameraPathsGui->addToggle("loop", &pathCamera.getLoop() );
+	
 	ofAddListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
 	guis.push_back(cameraPathsGui);
 	guimap[cameraPathsGui->getName()] = cameraPathsGui;
@@ -419,6 +425,8 @@ void CloudsVisualSystem3DModel::selfSetup()
 	singleViewName = "persp view";
 	bFourView = false;
 	
+	bUseDuration = false;
+	
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
 	
 	perspCam.bExploreMode = false;
@@ -534,7 +542,8 @@ void CloudsVisualSystem3DModel::selfDraw()
 	}
 	else if(currentSingleCam == &pathCamera)
 	{
-		pathCamera.update();
+		if(bUseDuration) pathCamera.update();
+		else	pathCamera.update( pathCameraPosition );
 		drawSceneCamera( &pathCamera );
 	}
 }
