@@ -40,7 +40,9 @@ public:
     static float cohesionAngle;
     static float cohesionWeight;
     
-    static Color fColor;
+    static Color bColor;
+    static Color tColor;
+    
     
     Boid(){
         pt = NULL;
@@ -82,9 +84,9 @@ public:
     };
 	
     void draw(){
-        drawBasic3dSphericalVehicle (*this, fColor);
+        drawBasic3dSphericalVehicle (*this, bColor);
         if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTail) drawTrail();
+        if(bDrawTail) drawTrail(tColor, gWhite);
     }
     
     Vec3 getSteeringForce(const float elapsedTime){

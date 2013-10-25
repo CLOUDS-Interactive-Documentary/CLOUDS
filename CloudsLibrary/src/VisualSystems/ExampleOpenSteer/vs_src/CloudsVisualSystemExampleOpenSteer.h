@@ -105,6 +105,7 @@ protected:
 	void setSimulation( int simulationIndex );
     
     ofFloatColor boidColor;
+    ofFloatColor tailColor;
 	ofxUISuperCanvas* customGui;
     
     

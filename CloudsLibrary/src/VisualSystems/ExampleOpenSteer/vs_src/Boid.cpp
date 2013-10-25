@@ -11,7 +11,8 @@
 bool Boid::bDrawTail = true;
 bool Boid::bDrawAnnotations = true;
 
-Color Boid::fColor;
+Color Boid::bColor;
+Color Boid::tColor;
 
 float Boid::fMaxSpeed = 9;
 float Boid::fMaxForce = 27;

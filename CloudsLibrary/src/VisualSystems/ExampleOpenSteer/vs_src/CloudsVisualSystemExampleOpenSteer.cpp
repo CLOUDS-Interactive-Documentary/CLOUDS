@@ -41,12 +41,21 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
     length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     dim = customGui->getGlobalSliderHeight();
     
-    customGui->addMinimalSlider("R", 0.0, 1.0, &boidColor.r, length, dim)->setShowValue(false);
+    
+    customGui->addWidgetDown(new ofxUILabel("BOID COLOR", OFX_UI_FONT_MEDIUM));
+    customGui->addMinimalSlider("R1", 0.0, 1.0, &boidColor.r, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("G", 0.0, 1.0, &boidColor.g, length, dim)->setShowValue(false);
-    customGui->addMinimalSlider("B", 0.0, 1.0, &boidColor.b, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("G1", 0.0, 1.0, &boidColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("B1", 0.0, 1.0, &boidColor.b, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
+    
+    customGui->addWidgetDown(new ofxUILabel("TAIL COLOR", OFX_UI_FONT_MEDIUM));
+    customGui->addMinimalSlider("R2", 0.0, 1.0, &tailColor.r, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("G2", 0.0, 1.0, &tailColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("B2", 0.0, 1.0, &tailColor.b, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     customGui->addSpacer();
     customGui->addLabel("FLOCKING", OFX_UI_FONT_SMALL);
@@ -74,33 +83,30 @@ void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
     } else if(name=="TAIL") {
         ofxUIButton *button = (ofxUIButton *) e.widget;
         Boid::bDrawTail = button->getValue();
-    } else if(name=="MAX FORCE") {
-        if(currentSimulation) {
-            VehicleGroup g = currentSimulation->getVehicles();
-            for(int i=0; i<g.size(); i++) {
-                g[i]->setMaxForce(Boid::fMaxForce);
-            }
+    } else if(name=="MAX FORCE" && currentSimulation) {
+        for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
+            currentSimulation->getVehicles()[i]->setMaxForce(Boid::fMaxForce);
         }
-    } else if(name=="MAX SPEED") {
-        if(currentSimulation) {
-            VehicleGroup g = currentSimulation->getVehicles();
-            for(int i=0; i<g.size(); i++) {
-                g[i]->setMaxSpeed(Boid::fMaxSpeed);
-            }
+    } else if(name=="MAX SPEED" && currentSimulation) {
+        for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
+            currentSimulation->getVehicles()[i]->setMaxSpeed(Boid::fMaxSpeed);
         }
-    } else if(name=="RADIUS") {
-        if(currentSimulation) {
-            VehicleGroup g = currentSimulation->getVehicles();
-            for(int i=0; i<g.size(); i++) {
-                g[i]->setRadius(Boid::radius);
-            }
+    } else if(name=="RADIUS" && currentSimulation) {
+        for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
+            currentSimulation->getVehicles()[i]->setRadius(Boid::radius);
         }
-    } else if(name=="R") {
-        Boid::fColor.setR(boidColor.r);
-    } else if(name=="G") {
-        Boid::fColor.setG(boidColor.g);
-    } else if(name=="B") {
-        Boid::fColor.setB(boidColor.b);
+    } else if(name=="R1") {
+        Boid::bColor.setR(boidColor.r);
+    } else if(name=="G1") {
+        Boid::bColor.setG(boidColor.g);
+    } else if(name=="B1") {
+        Boid::bColor.setB(boidColor.b);
+    } else if(name=="R2") {
+        Boid::tColor.setR(tailColor.r);
+    } else if(name=="G2") {
+        Boid::tColor.setG(tailColor.g);
+    } else if(name=="B2") {
+        Boid::tColor.setB(tailColor.b);
     }
 }
 
@@ -126,7 +132,8 @@ void CloudsVisualSystemExampleOpenSteer::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemExampleOpenSteer::selfSetup(){
-    Boid::fColor.set(1, 1, 1);
+    Boid::bColor.set(1, 1, 1);
+    Boid::tColor.set(0.5f, 0.5f, 0.5f);
     
     // add the simulations to the vector and initialize the first one
 	simulations.push_back(&flocking);
