@@ -47,7 +47,8 @@ class Cube {
         ofRotateX(rotX);
         ofRotateY(rotY);
         ofRotateZ(rotZ);
-        ofBox(w, h, d);
+        ofScale(w, h, d); 
+        ofBox(1, 1, 1);
         ofPopMatrix();
         
 	}

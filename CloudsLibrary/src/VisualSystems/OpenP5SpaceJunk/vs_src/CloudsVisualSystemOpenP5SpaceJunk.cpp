@@ -73,7 +73,7 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     
     
 	for (int i=0; i<limit; i++) {
-		list.push_back( Cube(ofRandom(5, 15), ofRandom(5, 15), ofRandom(5, 15),
+		list.push_back( Cube(ofRandom(4, 20), ofRandom(4, 20), ofRandom(2, 20),
                              ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
                              ofRandom(0, 0), ofRandom(0, 0), ofRandom(0, 0) ) );
 	}
