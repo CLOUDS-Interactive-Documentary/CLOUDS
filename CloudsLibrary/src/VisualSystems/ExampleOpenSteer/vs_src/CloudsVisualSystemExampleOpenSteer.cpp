@@ -24,13 +24,35 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
 	names.push_back("PATH");
 	names.push_back("OBSTACLE");
     names.push_back("PURSUIT");
-    
-    customGui->addSpacer(length-xInit, 2);
-	customGui->addRadio("SIMULATIONS", names, OFX_UI_ORIENTATION_HORIZONTAL, dim, dim);
+    customGui->addWidgetDown(new ofxUILabel("SIMULATIONS", OFX_UI_FONT_MEDIUM));
+    customGui->addLabel("CLICK AGAIN TO RESET", OFX_UI_FONT_SMALL);
+	customGui->addRadio("SIMULATIONS", names, OFX_UI_ORIENTATION_HORIZONTAL);
     
     customGui->addSpacer(length-xInit, 2);
 	customGui->addWidgetDown(new ofxUILabel("BOIDS", OFX_UI_FONT_MEDIUM));
-	customGui->addToggle( "TAIL", true, dim, dim);
+    
+    customGui->addToggle("DRAW TAIL", &Boid::bDrawTail);
+    customGui->addToggle("DRAW ANNOTATIONS", &Boid::bDrawAnnotations);
+    customGui->addSlider("RADIUS", 0, 10, &Boid::radius);
+    customGui->addSlider("MAX FORCE", 10, 50, &Boid::fMaxForce);
+    customGui->addSlider("MAX SPEED", 5, 40, &Boid::fMaxSpeed);
+    customGui->addSlider("INITIAL POSITION RADIUS", 10, 50, &Boid::fInitialPositionRadius);
+    
+    length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
+    dim = customGui->getGlobalSliderHeight();
+    
+    customGui->addMinimalSlider("R", 0.0, 1.0, &boidColor.r, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("G", 0.0, 1.0, &boidColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("B", 0.0, 1.0, &boidColor.b, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
+    
+    customGui->addSpacer();
+    customGui->addLabel("FLOCKING", OFX_UI_FONT_SMALL);
+    customGui->addSlider("COHESION WEIGHT", 5, 20, &Boid::cohesionWeight);
+    customGui->addSlider("SEPARATION WEIGHT", 5, 20, &Boid::separationWeight);
+    customGui->addSlider("ALIGNMENT WEIGHT", 5, 20, &Boid::alignmentWeight);
     
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleOpenSteer::selfGuiEvent);
 	guis.push_back(customGui);
@@ -40,7 +62,6 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
 void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
 	int kind = e.widget->getKind();
-
     
     if(name == "FLOCK"){
         setSimulation(0);
@@ -53,12 +74,33 @@ void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
     } else if(name=="TAIL") {
         ofxUIButton *button = (ofxUIButton *) e.widget;
         Boid::bDrawTail = button->getValue();
-		if(button->getValue()) {
-            
-            cout << "tail on!" << endl;
-        } else {
-            cout << "tail off!" << endl;
+    } else if(name=="MAX FORCE") {
+        if(currentSimulation) {
+            VehicleGroup g = currentSimulation->getVehicles();
+            for(int i=0; i<g.size(); i++) {
+                g[i]->setMaxForce(Boid::fMaxForce);
+            }
         }
+    } else if(name=="MAX SPEED") {
+        if(currentSimulation) {
+            VehicleGroup g = currentSimulation->getVehicles();
+            for(int i=0; i<g.size(); i++) {
+                g[i]->setMaxSpeed(Boid::fMaxSpeed);
+            }
+        }
+    } else if(name=="RADIUS") {
+        if(currentSimulation) {
+            VehicleGroup g = currentSimulation->getVehicles();
+            for(int i=0; i<g.size(); i++) {
+                g[i]->setRadius(Boid::radius);
+            }
+        }
+    } else if(name=="R") {
+        Boid::fColor.setR(boidColor.r);
+    } else if(name=="G") {
+        Boid::fColor.setG(boidColor.g);
+    } else if(name=="B") {
+        Boid::fColor.setB(boidColor.b);
     }
 }
 
@@ -84,6 +126,8 @@ void CloudsVisualSystemExampleOpenSteer::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemExampleOpenSteer::selfSetup(){
+    Boid::fColor.set(1, 1, 1);
+    
     // add the simulations to the vector and initialize the first one
 	simulations.push_back(&flocking);
 	simulations.push_back(&pathFollowing);
