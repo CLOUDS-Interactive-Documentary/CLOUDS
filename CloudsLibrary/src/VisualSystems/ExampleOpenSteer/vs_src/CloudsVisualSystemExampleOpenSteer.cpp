@@ -52,10 +52,12 @@ void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
         setSimulation(3);
     } else if(name=="TAIL") {
         ofxUIButton *button = (ofxUIButton *) e.widget;
+        Boid::bDrawTail = button->getValue();
 		if(button->getValue()) {
             
+            cout << "tail on!" << endl;
         } else {
-            
+            cout << "tail off!" << endl;
         }
     }
 }

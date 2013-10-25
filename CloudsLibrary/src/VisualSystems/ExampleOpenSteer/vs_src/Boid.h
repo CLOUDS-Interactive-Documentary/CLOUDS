@@ -1,6 +1,13 @@
-// Base boid used by all the simulations with flocking behaviour
+//
+//  Boid.h
+//  ExampleOpenSteer
+//
+//  Created by Jeffrey Crouse on 10/25/13.
+//
+//
 
 #pragma once
+
 
 #include "ofxOpenSteer.h"
 
@@ -12,6 +19,7 @@ class Boid: public ofxOpenSteerVehicle {
 public:
     
     ProximityToken* pt;
+    static bool bDrawTail;
     
     Boid(){
         pt = NULL;
@@ -20,7 +28,7 @@ public:
     ~Boid(){
         if(pt) delete pt;
         pt = NULL;
-    };    
+    };
     
     void reset(){
 		// reset the vehicle
@@ -53,7 +61,7 @@ public:
     void draw(){
         drawBasic3dSphericalVehicle (*this, color);
         annotationVelocityAcceleration ();
-        drawTrail();
+        if(bDrawTail) drawTrail();
     }
     
     Vec3 getSteeringForce(const float elapsedTime){
@@ -97,6 +105,6 @@ public:
 		const Vec3 alignmentW = alignment * alignmentWeight;
 		const Vec3 cohesionW = cohesion * cohesionWeight;
 		
-		return separationW + alignmentW + cohesionW;	
+		return separationW + alignmentW + cohesionW;
 	};
 };
