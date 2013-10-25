@@ -19,6 +19,16 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	
 //	customGui->addSpacer();
 	
+	customGui->addSlider("globalRotation.x", -180, 180, &globalRotation.x )->setIncrement(.01);
+	customGui->addSlider("globalRotation.y", -180, 180, &globalRotation.y )->setIncrement(.01);
+	customGui->addSlider("globalRotation.z", -180, 180, &globalRotation.z )->setIncrement(.01);
+	
+	customGui->addSlider("globalRotationVel.x", -40, 40, &globalRotationVelocity.x )->setIncrement(.01);
+	customGui->addSlider("globalRotationVel.y", -40, 40, &globalRotationVelocity.y )->setIncrement(.01);
+	customGui->addSlider("globalRotationVel.z", -40, 40, &globalRotationVelocity.z )->setIncrement(.01);
+	
+	customGui->addSpacer();
+	
 	customGui->addToggle("bounding box", &bDrawBoundingBox);
 	customGui->addToggle("draw arrows", &bDrawArrows);
 	customGui->addToggle("draw cameras", &bDrawCameras);
@@ -142,12 +152,7 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	
 	//camera views
 	vector<string> viewNames;
-	viewNames.push_back("front view"),
-	viewNames.push_back("plan view"),
-	viewNames.push_back("left view"),
-	viewNames.push_back("persp view"),
-	viewNames.push_back("four view"),
-	viewNames.push_back("path camera");
+	viewNames.push_back("front view"),viewNames.push_back("plan view"),viewNames.push_back("left view"),viewNames.push_back("persp view"),viewNames.push_back("four view");
 	
 	cameraViewsGui = new ofxUISuperCanvas("cameraViewsGui", gui);
 	cameraViewsGui->copyCanvasStyle(gui);
@@ -164,19 +169,6 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	ofAddListener(cameraViewsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
 	guis.push_back(cameraViewsGui);
 	guimap[cameraViewsGui->getName()] = cameraViewsGui;
-	
-	
-	cameraPathsGui = new ofxUISuperCanvas("cameraPathsGui", gui);
-	cameraPathsGui->copyCanvasStyle(gui);
-	cameraPathsGui->copyCanvasProperties(gui);
-	cameraPathsGui->setName("cameraPathsGui");
-	cameraPathsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	cameraPathsGui->addSpacer();
-	cameraPathsGui->addRadio("camera paths", cameraPaths );
-	
-	ofAddListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
-	guis.push_back(cameraPathsGui);
-	guimap[cameraPathsGui->getName()] = cameraPathsGui;
 }
 
 void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
@@ -221,7 +213,7 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 		if( e.getToggle()->getValue() )
 		{
 			string parent = e.getToggle()->getParent()->getName();
-			cout << "**** " << name << " TRIGGERED TOGGLE " << parent << endl;
+//			cout << "**** " << name << " TRIGGERED TOGGLE " << parent << endl;
 		
 			if (parent == "shaders")
 			{
@@ -242,21 +234,6 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 					{
 						cout << "loading model: " << name << endl;
 						loadModel( "models/" + name, bSmoothModel );
-					}
-				}
-			}
-			
-			
-			else if(parent == "camera paths")
-			{
-				//load the model from the selected file
-				for (int i=0; i<cameraPaths.size(); i++)
-				{
-					if(cameraPaths[i] == name )
-					{
-						cout << "loading camera path: " << name << endl;
-//						loadModel( "models/" + name, bSmoothModel );
-						pathCamera.loadPathFromFile(getVisualSystemDataPath() + "cameraPaths/" + name );
 					}
 				}
 			}
@@ -318,10 +295,6 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 					
 					bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = true;
 				}
-				else if( name == "path camera")
-				{
-					currentSingleCam = &pathCamera;
-				}
 			}
 		}
 	}
@@ -360,17 +333,6 @@ void CloudsVisualSystem3DModel::selfSetup()
 	for(int i = 0; i < dir.numFiles(); i++){
 		objFiles.push_back( dir.getName(i) );
 		cout << "OBJ FILE NAME: " << dir.getName( i ) << endl;
-	}
-	
-	path = getVisualSystemDataPath() + "cameraPaths/";
-	cout << "camera path path: " << path << endl;
-	
-	ofDirectory camdir;
-	camdir.allowExt("xml");
-	camdir.listDir( path );
-	for(int i = 0; i < camdir.numFiles(); i++){
-		cameraPaths.push_back( camdir.getName(i) );
-		cout << "CAMERA PATH FILE NAME: " << camdir.getName( i ) << endl;
 	}
 	
 	
@@ -479,6 +441,7 @@ void CloudsVisualSystem3DModel::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystem3DModel::selfDraw()
 {
+
 	//???: update... for some reason the selfUpdate is being called in stand alone.
 //	bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = false;
 	if( cursorIsOverGUI() )
@@ -532,11 +495,7 @@ void CloudsVisualSystem3DModel::selfDraw()
 	{
 		drawScenePlan();
 	}
-	else if(currentSingleCam == &pathCamera)
-	{
-		pathCamera.update();
-		drawSceneCamera( &pathCamera );
-	}
+
 }
 
 void CloudsVisualSystem3DModel::updateModelTransform()
@@ -1018,17 +977,14 @@ void CloudsVisualSystem3DModel::resizeTheArrowMesh( float radius, float height, 
 	arrowScale.set( radius/2, height, radius/2 );
 }
 
-void CloudsVisualSystem3DModel::drawSceneCamera( ofCamera* cam )
+void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
 {
-	cam->begin();
 	
-	drawSceneGeometry(cam);
+	if(cam != NULL)
+	{
+		cam->begin( viewRect );
+	}
 	
-	cam->end();
-}
-
-void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
-{
 	
 	//rotation velocity
 	float t = ofGetElapsedTimef();
@@ -1118,11 +1074,13 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	
 	ofMultMatrix( modelTransform.getGlobalTransformMatrix() );
 	
+
 	ofTranslate( positionOffset );
+
 	ofRotateX( globalRotation.x + accumulatedRotation.x );
 	ofRotateY( globalRotation.y + accumulatedRotation.y );
 	ofRotateZ( globalRotation.z + accumulatedRotation.z );
-	
+		
 	//draw bounding box
 	if(bDrawBoundingBox)
 	{
@@ -1155,17 +1113,17 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 			glDisable( GL_DEPTH_TEST );
 			glBlendFunc(GL_ONE, GL_ONE);
 			
-			//			ofBlendMode( OF_BLENDMODE_ADD );
-			//			glDisable( GL_DEPTH_TEST );
-			//			glEnable( GL_CULL_FACE);
-			//			glCullFace(GL_FRONT);
+//			ofBlendMode( OF_BLENDMODE_ADD );
+//			glDisable( GL_DEPTH_TEST );
+//			glEnable( GL_CULL_FACE);
+//			glCullFace(GL_FRONT);
 			modelMesh.draw();
 			
-			//			glCullFace(GL_BACK);
-			//			modelMesh.draw();
-			//
-			//			glDisable(GL_CULL_FACE);
-			//			glDisable( GL_DEPTH_TEST );
+//			glCullFace(GL_BACK);
+//			modelMesh.draw();
+//			
+//			glDisable(GL_CULL_FACE);
+//			glDisable( GL_DEPTH_TEST );
 			
 			ofBlendMode( OF_BLENDMODE_ADD );
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1179,17 +1137,6 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	}
 	
 	ofPopMatrix();
-}
-
-void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
-{
-	
-	if(cam != NULL)
-	{
-		cam->begin( viewRect );
-	}
-	
-	drawSceneGeometry(cam);
 		
 	if( cam != NULL)	cam->end();
 }
