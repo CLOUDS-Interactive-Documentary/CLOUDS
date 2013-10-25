@@ -154,20 +154,21 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 		
 		float rollMix = ofMap( ourRoll, min(minTilt, maxTilt), max(minTilt, maxTilt), -1, 1, false );
 		
-		if(ourRoll < min(minTilt, maxTilt))
-		{
-			tilt(min(minTilt, maxTilt) - (ourRoll + 1));
-		}
-		if(ourRoll > max(minTilt, maxTilt))
-		{
-			tilt( ourRoll - (min(minTilt, maxTilt) + 1) );
-		}
-		
-		
-		ourRoll = -getRoll();
+//		if(ourRoll < min(minTilt, maxTilt))
+//		{
+//			tilt(min(minTilt, maxTilt) - (ourRoll + 1));
+//		}
+//		if(ourRoll > max(minTilt, maxTilt))
+//		{
+//			tilt( ourRoll - (min(minTilt, maxTilt) + 1) );
+//		}
+//		
+//		
+//		ourRoll = -getRoll();
 		
 		if( (my < 0 && rollMix > 0) || (my>0 && rollMix < 0))
 		{
+			//does this cause flipping when the max&minTilt difference is small?
 			xScl *= 1. - abs( rollMix );
 		}
 
