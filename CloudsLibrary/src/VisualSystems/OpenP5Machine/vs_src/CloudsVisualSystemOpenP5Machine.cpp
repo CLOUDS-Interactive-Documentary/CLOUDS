@@ -153,7 +153,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
     
     ofColor color;
     
-    framecount = ofGetElapsedTimeMillis();
+    framecount = (ofGetElapsedTimeMillis()/33);
 
     for(int i=0; i<10; i++) {
         
