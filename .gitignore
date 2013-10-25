@@ -87,3 +87,13 @@ CloudsMovieDirectory_remote.txt
 /CloudsLibrary/src/VisualSystems/OpenP5Hackpact/vs_src/CloudsVisualSystemOpenP5Machine.h
 
 /VSOpenP5Machine/
+
+CloudsVisualSystemOpenP5NoiseSphere.cpp
+
+/CloudsLibrary/src/VisualSystems/OpenP5NoiseSphere/vs_src/CloudsVisualSystemOpenP5NoiseSphere.h
+
+/CloudsLibrary/src/VisualSystems/OpenP5NoiseSphere/vs_src/CloudsVisualSystemOpenP5NoiseSphere.cpp
+
+/CloudsLibrary/src/VisualSystems/OpenP5NoiseSphere/vs_src/
+
+/MakeNewProjectFile.mp4
