@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		6472185618198E2B0024C21E /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6472185418198E2B0024C21E /* ETF.cpp */; };
+		6472185718198E2B0024C21E /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6472185518198E2B0024C21E /* fdog.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1DE1C2017DD13460020BBB0 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE1C1F17DD13460020BBB0 /* librtcmix.a */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -313,6 +315,12 @@
 /* Begin PBXFileReference section */
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		6472184F18198E2B0024C21E /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
+		6472185018198E2B0024C21E /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
+		6472185118198E2B0024C21E /* imatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imatrix.h; sourceTree = "<group>"; };
+		6472185218198E2B0024C21E /* myvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myvec.h; sourceTree = "<group>"; };
+		6472185418198E2B0024C21E /* ETF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETF.cpp; sourceTree = "<group>"; };
+		6472185518198E2B0024C21E /* fdog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fdog.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1DE1C1F17DD13460020BBB0 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -1124,6 +1132,43 @@
 			children = (
 				3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */,
 				3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		6472184C18198E2B0024C21E /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				6472184D18198E2B0024C21E /* include */,
+				6472185318198E2B0024C21E /* src */,
+			);
+			path = CLD;
+			sourceTree = "<group>";
+		};
+		6472184D18198E2B0024C21E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6472184E18198E2B0024C21E /* CLD */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		6472184E18198E2B0024C21E /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				6472184F18198E2B0024C21E /* ETF.h */,
+				6472185018198E2B0024C21E /* fdog.h */,
+				6472185118198E2B0024C21E /* imatrix.h */,
+				6472185218198E2B0024C21E /* myvec.h */,
+			);
+			path = CLD;
+			sourceTree = "<group>";
+		};
+		6472185318198E2B0024C21E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6472185418198E2B0024C21E /* ETF.cpp */,
+				6472185518198E2B0024C21E /* fdog.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -2682,6 +2727,7 @@
 		E779B8F0173D4DD2006357EF /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				6472184C18198E2B0024C21E /* CLD */,
 				E779B9A6173D4E16006357EF /* opencv */,
 				E779B8F2173D4DD2006357EF /* ofxCv */,
 			);
@@ -4001,6 +4047,8 @@
 				E7156FA518106F1B00410646 /* ofxBox2dRect.cpp in Sources */,
 				E7E5E31518122F3C00CA4196 /* CloudsClusterNode.cpp in Sources */,
 				E7E5E31618122F3C00CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				6472185618198E2B0024C21E /* ETF.cpp in Sources */,
+				6472185718198E2B0024C21E /* fdog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4027,10 +4075,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"AVF_PLAYER=1",
-					"OCULUS_RIFT=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
@@ -4044,7 +4089,7 @@
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 					src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -4066,10 +4111,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"AVF_PLAYER=1",
-					"OCULUS_RIFT=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -4084,7 +4126,7 @@
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 					src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
