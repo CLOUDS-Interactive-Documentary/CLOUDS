@@ -32,6 +32,12 @@ public:
         if(pt) pt->updateForNewPosition (position());
     };
     
+    void draw(){
+        drawBasic3dSphericalVehicle (*this, color);
+        if(bDrawAnnotations) annotationVelocityAcceleration();
+        if(bDrawTail) drawTrail();
+    }
+    
     Vec3 getSteeringForce(const float elapsedTime){
         
         // Inherit the flocking force
@@ -76,6 +82,12 @@ public:
     ~Victim(){
         predators = NULL;
     };
+    
+    void draw(){
+        drawBasic3dSphericalVehicle (*this, color);
+        if(bDrawAnnotations) annotationVelocityAcceleration();
+        if(bDrawTail) drawTrail();
+    }
     
     void reset(){
         // reset the vehicle

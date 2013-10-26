@@ -16,15 +16,49 @@ CloudsVisualSystemMazeGenerator::CloudsVisualSystemMazeGenerator()
 {
 }
 
-void CloudsVisualSystemMazeGenerator::selfSetupGui(){
+void CloudsVisualSystemMazeGenerator::selfSetupGui()
+{
+    ParamManager* pm = &ParamManager::getInstance();
+
     customGui = new ofxUISuperCanvas("MAZE BUILDER", gui);
     customGui->copyCanvasStyle(gui);
     customGui->copyCanvasProperties(gui);
 	customGui->setName("MAZE BUILDER");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
+
     customGui->addSpacer();
+    customGui->addLabel("CAMERA");
+    customGui->addSlider("CAM SPEED", 0, 10, &pm->cameraSpeed);
+
+    customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
+
+    float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
+    float dim = customGui->getGlobalSliderHeight();
+
+    customGui->addSpacer();
+    customGui->addLabel("COLORS");
+    customGui->addLabel("GROUND COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("GH", 0.0, 255, &(pm->groundColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("GS", 0.0, 255, &(pm->groundColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("GB", 0.0, 255, &(pm->groundColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
+    customGui->addLabel("WALL COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("WH", 0.0, 255, &(pm->wallColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("WS", 0.0, 255, &(pm->wallColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("WB", 0.0, 255, &(pm->wallColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
+    customGui->addLabel("SIDE WALLS COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("SH", 0.0, 255, &(pm->sideWallsColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("SS", 0.0, 255, &(pm->sideWallsColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SB", 0.0, 255, &(pm->sideWallsColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
+
 #if 0
     customGui->addLabel("PHYSICS");
     customGui->addSlider("PARTICLES", 0, 50000, &nParticles);
@@ -94,9 +128,10 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
-    maze.generate();
+    maze = new Maze(30, 4, 30);
+    maze->generate();
     
-    mazeCam = new MazeCamera(maze.getWidth()/2, 50, 0);
+    mazeCam = new MazeCamera(maze->getWidth()/2, 180, 100);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -124,6 +159,7 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
     mazeCam->update();
+    maze->update(mazeCam);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -132,8 +168,7 @@ void CloudsVisualSystemMazeGenerator::selfDraw()
 {
     mazeCam->begin();
     
-    int y = mazeCam->getPosition().z/CELL_SIZE;
-    maze.draw(y);
+    maze->draw(mazeCam);
     
     mazeCam->end();
 }
@@ -158,6 +193,7 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMazeGenerator::selfExit()
 {
+    delete maze;
     delete mazeCam;
 }
 

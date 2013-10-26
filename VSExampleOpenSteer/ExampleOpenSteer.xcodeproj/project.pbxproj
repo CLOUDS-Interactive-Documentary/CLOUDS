@@ -7,33 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F24A56B181ADCD600DD8D62 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A563181ADCD600DD8D62 /* CloudsRGBDCamera.cpp */; };
-		1F24A56C181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A565181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp */; };
-		1F24A56D181ADCD600DD8D62 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A567181ADCD600DD8D62 /* CloudsVisualSystem.cpp */; };
-		1F24A5BB181AE70900DD8D62 /* ofxOpenSteerVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5B2181AE23600DD8D62 /* ofxOpenSteerVehicle.cpp */; };
-		1F24A5BC181AE70C00DD8D62 /* ofxOpenSteerPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5AE181AE23600DD8D62 /* ofxOpenSteerPlugin.cpp */; };
-		1F24A5BD181AE72B00DD8D62 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A597181AE23500DD8D62 /* Camera.cpp */; };
-		1F24A5BE181AE72B00DD8D62 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A598181AE23500DD8D62 /* Clock.cpp */; };
-		1F24A5BF181AE72B00DD8D62 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A599181AE23500DD8D62 /* Color.cpp */; };
-		1F24A5C0181AE72B00DD8D62 /* Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59A181AE23500DD8D62 /* Draw.cpp */; };
-		1F24A5C1181AE72B00DD8D62 /* lq.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59B181AE23500DD8D62 /* lq.c */; };
-		1F24A5C2181AE72B00DD8D62 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59C181AE23500DD8D62 /* Obstacle.cpp */; };
-		1F24A5C3181AE72B00DD8D62 /* OldPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59D181AE23500DD8D62 /* OldPathway.cpp */; };
-		1F24A5C4181AE72B00DD8D62 /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59E181AE23600DD8D62 /* OpenSteerDemo.cpp */; };
-		1F24A5C5181AE72B00DD8D62 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A59F181AE23600DD8D62 /* Path.cpp */; };
-		1F24A5C6181AE72B00DD8D62 /* Pathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A0181AE23600DD8D62 /* Pathway.cpp */; };
-		1F24A5C7181AE72B00DD8D62 /* PlugIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A1181AE23600DD8D62 /* PlugIn.cpp */; };
-		1F24A5C8181AE72B00DD8D62 /* PolylineSegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A2181AE23600DD8D62 /* PolylineSegmentedPath.cpp */; };
-		1F24A5C9181AE72B00DD8D62 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A3181AE23600DD8D62 /* PolylineSegmentedPathwaySegmentRadii.cpp */; };
-		1F24A5CA181AE72B00DD8D62 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A4181AE23600DD8D62 /* PolylineSegmentedPathwaySingleRadius.cpp */; };
-		1F24A5CB181AE72B00DD8D62 /* SegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A5181AE23600DD8D62 /* SegmentedPath.cpp */; };
-		1F24A5CC181AE72B00DD8D62 /* SegmentedPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A6181AE23600DD8D62 /* SegmentedPathway.cpp */; };
-		1F24A5CD181AE72B00DD8D62 /* SimpleVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A7181AE23600DD8D62 /* SimpleVehicle.cpp */; };
-		1F24A5CE181AE72B00DD8D62 /* TerrainRayTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A8181AE23600DD8D62 /* TerrainRayTest.cpp */; };
-		1F24A5CF181AE72B00DD8D62 /* TerrainRayTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5A9181AE23600DD8D62 /* TerrainRayTest.h */; };
-		1F24A5D0181AE72B00DD8D62 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5AA181AE23600DD8D62 /* Vec3.cpp */; };
-		1F24A5D1181AE72B00DD8D62 /* Vec3Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24A5AB181AE23600DD8D62 /* Vec3Utilities.cpp */; };
-		1F61879C181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */; };
+		1FC034C8181B096800A66E32 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034C1181B096800A66E32 /* CloudsRGBDCamera.cpp */; };
+		1FC034C9181B096800A66E32 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034C3181B096800A66E32 /* CloudsRGBDVideoPlayer.cpp */; };
+		1FC034CA181B096800A66E32 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034C5181B096800A66E32 /* CloudsVisualSystem.cpp */; };
+		1FC034D2181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034CC181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.cpp */; };
+		1FC03517181B0ACD00A66E32 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FA181B09A900A66E32 /* Camera.cpp */; };
+		1FC03518181B0ACD00A66E32 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FB181B09A900A66E32 /* Clock.cpp */; };
+		1FC03519181B0ACD00A66E32 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FC181B09A900A66E32 /* Color.cpp */; };
+		1FC0351A181B0ACD00A66E32 /* Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FD181B09A900A66E32 /* Draw.cpp */; };
+		1FC0351B181B0ACD00A66E32 /* lq.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FE181B09A900A66E32 /* lq.c */; };
+		1FC0351C181B0ACD00A66E32 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC034FF181B09A900A66E32 /* Obstacle.cpp */; };
+		1FC0351D181B0ACD00A66E32 /* OldPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03500181B09A900A66E32 /* OldPathway.cpp */; };
+		1FC0351E181B0ACD00A66E32 /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03501181B09A900A66E32 /* OpenSteerDemo.cpp */; };
+		1FC0351F181B0ACD00A66E32 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03502181B09A900A66E32 /* Path.cpp */; };
+		1FC03520181B0ACD00A66E32 /* Pathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03503181B09A900A66E32 /* Pathway.cpp */; };
+		1FC03521181B0ACD00A66E32 /* PlugIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03504181B09A900A66E32 /* PlugIn.cpp */; };
+		1FC03522181B0ACD00A66E32 /* PolylineSegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03505181B09A900A66E32 /* PolylineSegmentedPath.cpp */; };
+		1FC03523181B0ACD00A66E32 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03506181B09A900A66E32 /* PolylineSegmentedPathwaySegmentRadii.cpp */; };
+		1FC03524181B0ACD00A66E32 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03507181B09A900A66E32 /* PolylineSegmentedPathwaySingleRadius.cpp */; };
+		1FC03525181B0ACD00A66E32 /* SegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03508181B09A900A66E32 /* SegmentedPath.cpp */; };
+		1FC03526181B0ACD00A66E32 /* SegmentedPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03509181B09A900A66E32 /* SegmentedPathway.cpp */; };
+		1FC03527181B0ACD00A66E32 /* SimpleVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0350A181B09A900A66E32 /* SimpleVehicle.cpp */; };
+		1FC03528181B0ACD00A66E32 /* TerrainRayTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0350B181B09A900A66E32 /* TerrainRayTest.cpp */; };
+		1FC03529181B0ACD00A66E32 /* TerrainRayTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0350C181B09A900A66E32 /* TerrainRayTest.h */; };
+		1FC0352A181B0ACD00A66E32 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0350D181B09A900A66E32 /* Vec3.cpp */; };
+		1FC0352B181B0ACD00A66E32 /* Vec3Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0350E181B09A900A66E32 /* Vec3Utilities.cpp */; };
+		1FC0352C181B0ADA00A66E32 /* ofxOpenSteerPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03511181B09A900A66E32 /* ofxOpenSteerPlugin.cpp */; };
+		1FC0352D181B0ADA00A66E32 /* ofxOpenSteerVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC03515181B09A900A66E32 /* ofxOpenSteerVehicle.cpp */; };
+		1FC03530181B0BDB00A66E32 /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0352F181B0BDB00A66E32 /* Boid.cpp */; };
 		3D5B93651753046A00F558AC /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F11753046A00F558AC /* kiss_fft.c */; };
 		3D5B93661753046A00F558AC /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F21753046A00F558AC /* kiss_fftr.c */; };
 		3D5B93671753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B92F51753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
@@ -162,82 +163,82 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F24A563181ADCD600DD8D62 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCamera.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
-		1F24A564181ADCD600DD8D62 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCamera.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.h; sourceTree = "<group>"; };
-		1F24A565181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDVideoPlayer.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
-		1F24A566181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDVideoPlayer.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
-		1F24A567181ADCD600DD8D62 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystem.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsVisualSystem.cpp; sourceTree = "<group>"; };
-		1F24A568181ADCD600DD8D62 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystem.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsVisualSystem.h; sourceTree = "<group>"; };
-		1F24A569181ADCD600DD8D62 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLight.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/ofxLight.h; sourceTree = "<group>"; };
-		1F24A56A181ADCD600DD8D62 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../CloudsLibrary/src/VisualSystemsLibrary/README.md; sourceTree = "<group>"; };
-		1F24A575181AE23500DD8D62 /* AbstractVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractVehicle.h; sourceTree = "<group>"; };
-		1F24A576181AE23500DD8D62 /* Annotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
-		1F24A577181AE23500DD8D62 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
-		1F24A578181AE23500DD8D62 /* Clock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
-		1F24A579181AE23500DD8D62 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		1F24A57A181AE23500DD8D62 /* Draw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Draw.h; sourceTree = "<group>"; };
-		1F24A57B181AE23500DD8D62 /* LocalSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalSpace.h; sourceTree = "<group>"; };
-		1F24A57C181AE23500DD8D62 /* lq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lq.h; sourceTree = "<group>"; };
-		1F24A57D181AE23500DD8D62 /* Obstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
-		1F24A57E181AE23500DD8D62 /* OldPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldPathway.h; sourceTree = "<group>"; };
-		1F24A57F181AE23500DD8D62 /* OpenSteerDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSteerDemo.h; sourceTree = "<group>"; };
-		1F24A580181AE23500DD8D62 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
-		1F24A581181AE23500DD8D62 /* Pathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathway.h; sourceTree = "<group>"; };
-		1F24A582181AE23500DD8D62 /* PlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlugIn.h; sourceTree = "<group>"; };
-		1F24A583181AE23500DD8D62 /* PolylineSegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPath.h; sourceTree = "<group>"; };
-		1F24A584181AE23500DD8D62 /* PolylineSegmentedPathwaySegmentRadii.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySegmentRadii.h; sourceTree = "<group>"; };
-		1F24A585181AE23500DD8D62 /* PolylineSegmentedPathwaySingleRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySingleRadius.h; sourceTree = "<group>"; };
-		1F24A586181AE23500DD8D62 /* Proximity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proximity.h; sourceTree = "<group>"; };
-		1F24A587181AE23500DD8D62 /* QueryPathAlike.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlike.h; sourceTree = "<group>"; };
-		1F24A588181AE23500DD8D62 /* QueryPathAlikeBaseDataExtractionPolicies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeBaseDataExtractionPolicies.h; sourceTree = "<group>"; };
-		1F24A589181AE23500DD8D62 /* QueryPathAlikeMappings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeMappings.h; sourceTree = "<group>"; };
-		1F24A58A181AE23500DD8D62 /* QueryPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeUtilities.h; sourceTree = "<group>"; };
-		1F24A58B181AE23500DD8D62 /* SegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPath.h; sourceTree = "<group>"; };
-		1F24A58C181AE23500DD8D62 /* SegmentedPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathAlikeUtilities.h; sourceTree = "<group>"; };
-		1F24A58D181AE23500DD8D62 /* SegmentedPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathway.h; sourceTree = "<group>"; };
-		1F24A58E181AE23500DD8D62 /* SharedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedPointer.h; sourceTree = "<group>"; };
-		1F24A58F181AE23500DD8D62 /* SimpleVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleVehicle.h; sourceTree = "<group>"; };
-		1F24A590181AE23500DD8D62 /* StandardTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardTypes.h; sourceTree = "<group>"; };
-		1F24A591181AE23500DD8D62 /* SteerLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SteerLibrary.h; sourceTree = "<group>"; };
-		1F24A592181AE23500DD8D62 /* UnusedParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnusedParameter.h; sourceTree = "<group>"; };
-		1F24A593181AE23500DD8D62 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
-		1F24A594181AE23500DD8D62 /* Vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
-		1F24A595181AE23500DD8D62 /* Vec3Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3Utilities.h; sourceTree = "<group>"; };
-		1F24A597181AE23500DD8D62 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
-		1F24A598181AE23500DD8D62 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
-		1F24A599181AE23500DD8D62 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
-		1F24A59A181AE23500DD8D62 /* Draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Draw.cpp; sourceTree = "<group>"; };
-		1F24A59B181AE23500DD8D62 /* lq.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lq.c; sourceTree = "<group>"; };
-		1F24A59C181AE23500DD8D62 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
-		1F24A59D181AE23500DD8D62 /* OldPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OldPathway.cpp; sourceTree = "<group>"; };
-		1F24A59E181AE23600DD8D62 /* OpenSteerDemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenSteerDemo.cpp; sourceTree = "<group>"; };
-		1F24A59F181AE23600DD8D62 /* Path.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
-		1F24A5A0181AE23600DD8D62 /* Pathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pathway.cpp; sourceTree = "<group>"; };
-		1F24A5A1181AE23600DD8D62 /* PlugIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlugIn.cpp; sourceTree = "<group>"; };
-		1F24A5A2181AE23600DD8D62 /* PolylineSegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPath.cpp; sourceTree = "<group>"; };
-		1F24A5A3181AE23600DD8D62 /* PolylineSegmentedPathwaySegmentRadii.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySegmentRadii.cpp; sourceTree = "<group>"; };
-		1F24A5A4181AE23600DD8D62 /* PolylineSegmentedPathwaySingleRadius.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySingleRadius.cpp; sourceTree = "<group>"; };
-		1F24A5A5181AE23600DD8D62 /* SegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPath.cpp; sourceTree = "<group>"; };
-		1F24A5A6181AE23600DD8D62 /* SegmentedPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPathway.cpp; sourceTree = "<group>"; };
-		1F24A5A7181AE23600DD8D62 /* SimpleVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleVehicle.cpp; sourceTree = "<group>"; };
-		1F24A5A8181AE23600DD8D62 /* TerrainRayTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainRayTest.cpp; sourceTree = "<group>"; };
-		1F24A5A9181AE23600DD8D62 /* TerrainRayTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerrainRayTest.h; sourceTree = "<group>"; };
-		1F24A5AA181AE23600DD8D62 /* Vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
-		1F24A5AB181AE23600DD8D62 /* Vec3Utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3Utilities.cpp; sourceTree = "<group>"; };
-		1F24A5AD181AE23600DD8D62 /* ofxOpenSteer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteer.h; sourceTree = "<group>"; };
-		1F24A5AE181AE23600DD8D62 /* ofxOpenSteerPlugin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerPlugin.cpp; sourceTree = "<group>"; };
-		1F24A5AF181AE23600DD8D62 /* ofxOpenSteerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerPlugin.h; sourceTree = "<group>"; };
-		1F24A5B0181AE23600DD8D62 /* ofxOpenSteerTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerTypes.h; sourceTree = "<group>"; };
-		1F24A5B1181AE23600DD8D62 /* ofxOpenSteerUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerUtils.h; sourceTree = "<group>"; };
-		1F24A5B2181AE23600DD8D62 /* ofxOpenSteerVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerVehicle.cpp; sourceTree = "<group>"; };
-		1F24A5B3181AE23600DD8D62 /* ofxOpenSteerVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerVehicle.h; sourceTree = "<group>"; };
-		1F618795181B045A00BAC654 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boid.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Boid.h; sourceTree = "<group>"; };
-		1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemExampleOpenSteer.cpp; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.cpp; sourceTree = "<group>"; };
-		1F618797181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemExampleOpenSteer.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.h; sourceTree = "<group>"; };
-		1F618798181B045A00BAC654 /* Flocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flocking.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Flocking.h; sourceTree = "<group>"; };
-		1F618799181B045A00BAC654 /* ObstacleAvoidance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleAvoidance.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/ObstacleAvoidance.h; sourceTree = "<group>"; };
-		1F61879A181B045A00BAC654 /* PathFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFollowing.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PathFollowing.h; sourceTree = "<group>"; };
-		1F61879B181B045A00BAC654 /* PursuitAndEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PursuitAndEvade.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PursuitAndEvade.h; sourceTree = "<group>"; };
+		1FC034C1181B096800A66E32 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDCamera.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
+		1FC034C2181B096800A66E32 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDCamera.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDCamera.h; sourceTree = "<group>"; };
+		1FC034C3181B096800A66E32 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsRGBDVideoPlayer.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
+		1FC034C4181B096800A66E32 /* CloudsRGBDVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsRGBDVideoPlayer.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsRGBDVideoPlayer.h; sourceTree = "<group>"; };
+		1FC034C5181B096800A66E32 /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystem.cpp; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsVisualSystem.cpp; sourceTree = "<group>"; };
+		1FC034C6181B096800A66E32 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystem.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/CloudsVisualSystem.h; sourceTree = "<group>"; };
+		1FC034C7181B096800A66E32 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLight.h; path = ../../CloudsLibrary/src/VisualSystemsLibrary/ofxLight.h; sourceTree = "<group>"; };
+		1FC034CC181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemExampleOpenSteer.cpp; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.cpp; sourceTree = "<group>"; };
+		1FC034CD181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemExampleOpenSteer.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/CloudsVisualSystemExampleOpenSteer.h; sourceTree = "<group>"; };
+		1FC034CE181B098100A66E32 /* Flocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flocking.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Flocking.h; sourceTree = "<group>"; };
+		1FC034CF181B098100A66E32 /* ObstacleAvoidance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleAvoidance.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/ObstacleAvoidance.h; sourceTree = "<group>"; };
+		1FC034D0181B098100A66E32 /* PathFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFollowing.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PathFollowing.h; sourceTree = "<group>"; };
+		1FC034D1181B098100A66E32 /* PursuitAndEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PursuitAndEvade.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/PursuitAndEvade.h; sourceTree = "<group>"; };
+		1FC034D8181B09A900A66E32 /* AbstractVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractVehicle.h; sourceTree = "<group>"; };
+		1FC034D9181B09A900A66E32 /* Annotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		1FC034DA181B09A900A66E32 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		1FC034DB181B09A900A66E32 /* Clock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
+		1FC034DC181B09A900A66E32 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		1FC034DD181B09A900A66E32 /* Draw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Draw.h; sourceTree = "<group>"; };
+		1FC034DE181B09A900A66E32 /* LocalSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalSpace.h; sourceTree = "<group>"; };
+		1FC034DF181B09A900A66E32 /* lq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lq.h; sourceTree = "<group>"; };
+		1FC034E0181B09A900A66E32 /* Obstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		1FC034E1181B09A900A66E32 /* OldPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldPathway.h; sourceTree = "<group>"; };
+		1FC034E2181B09A900A66E32 /* OpenSteerDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSteerDemo.h; sourceTree = "<group>"; };
+		1FC034E3181B09A900A66E32 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		1FC034E4181B09A900A66E32 /* Pathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathway.h; sourceTree = "<group>"; };
+		1FC034E5181B09A900A66E32 /* PlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlugIn.h; sourceTree = "<group>"; };
+		1FC034E6181B09A900A66E32 /* PolylineSegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPath.h; sourceTree = "<group>"; };
+		1FC034E7181B09A900A66E32 /* PolylineSegmentedPathwaySegmentRadii.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySegmentRadii.h; sourceTree = "<group>"; };
+		1FC034E8181B09A900A66E32 /* PolylineSegmentedPathwaySingleRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySingleRadius.h; sourceTree = "<group>"; };
+		1FC034E9181B09A900A66E32 /* Proximity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proximity.h; sourceTree = "<group>"; };
+		1FC034EA181B09A900A66E32 /* QueryPathAlike.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlike.h; sourceTree = "<group>"; };
+		1FC034EB181B09A900A66E32 /* QueryPathAlikeBaseDataExtractionPolicies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeBaseDataExtractionPolicies.h; sourceTree = "<group>"; };
+		1FC034EC181B09A900A66E32 /* QueryPathAlikeMappings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeMappings.h; sourceTree = "<group>"; };
+		1FC034ED181B09A900A66E32 /* QueryPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeUtilities.h; sourceTree = "<group>"; };
+		1FC034EE181B09A900A66E32 /* SegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPath.h; sourceTree = "<group>"; };
+		1FC034EF181B09A900A66E32 /* SegmentedPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathAlikeUtilities.h; sourceTree = "<group>"; };
+		1FC034F0181B09A900A66E32 /* SegmentedPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathway.h; sourceTree = "<group>"; };
+		1FC034F1181B09A900A66E32 /* SharedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedPointer.h; sourceTree = "<group>"; };
+		1FC034F2181B09A900A66E32 /* SimpleVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleVehicle.h; sourceTree = "<group>"; };
+		1FC034F3181B09A900A66E32 /* StandardTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardTypes.h; sourceTree = "<group>"; };
+		1FC034F4181B09A900A66E32 /* SteerLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SteerLibrary.h; sourceTree = "<group>"; };
+		1FC034F5181B09A900A66E32 /* UnusedParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnusedParameter.h; sourceTree = "<group>"; };
+		1FC034F6181B09A900A66E32 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		1FC034F7181B09A900A66E32 /* Vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
+		1FC034F8181B09A900A66E32 /* Vec3Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3Utilities.h; sourceTree = "<group>"; };
+		1FC034FA181B09A900A66E32 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		1FC034FB181B09A900A66E32 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		1FC034FC181B09A900A66E32 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		1FC034FD181B09A900A66E32 /* Draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Draw.cpp; sourceTree = "<group>"; };
+		1FC034FE181B09A900A66E32 /* lq.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lq.c; sourceTree = "<group>"; };
+		1FC034FF181B09A900A66E32 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		1FC03500181B09A900A66E32 /* OldPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OldPathway.cpp; sourceTree = "<group>"; };
+		1FC03501181B09A900A66E32 /* OpenSteerDemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenSteerDemo.cpp; sourceTree = "<group>"; };
+		1FC03502181B09A900A66E32 /* Path.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
+		1FC03503181B09A900A66E32 /* Pathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pathway.cpp; sourceTree = "<group>"; };
+		1FC03504181B09A900A66E32 /* PlugIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlugIn.cpp; sourceTree = "<group>"; };
+		1FC03505181B09A900A66E32 /* PolylineSegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPath.cpp; sourceTree = "<group>"; };
+		1FC03506181B09A900A66E32 /* PolylineSegmentedPathwaySegmentRadii.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySegmentRadii.cpp; sourceTree = "<group>"; };
+		1FC03507181B09A900A66E32 /* PolylineSegmentedPathwaySingleRadius.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySingleRadius.cpp; sourceTree = "<group>"; };
+		1FC03508181B09A900A66E32 /* SegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPath.cpp; sourceTree = "<group>"; };
+		1FC03509181B09A900A66E32 /* SegmentedPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPathway.cpp; sourceTree = "<group>"; };
+		1FC0350A181B09A900A66E32 /* SimpleVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleVehicle.cpp; sourceTree = "<group>"; };
+		1FC0350B181B09A900A66E32 /* TerrainRayTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainRayTest.cpp; sourceTree = "<group>"; };
+		1FC0350C181B09A900A66E32 /* TerrainRayTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerrainRayTest.h; sourceTree = "<group>"; };
+		1FC0350D181B09A900A66E32 /* Vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
+		1FC0350E181B09A900A66E32 /* Vec3Utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3Utilities.cpp; sourceTree = "<group>"; };
+		1FC03510181B09A900A66E32 /* ofxOpenSteer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteer.h; sourceTree = "<group>"; };
+		1FC03511181B09A900A66E32 /* ofxOpenSteerPlugin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerPlugin.cpp; sourceTree = "<group>"; };
+		1FC03512181B09A900A66E32 /* ofxOpenSteerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerPlugin.h; sourceTree = "<group>"; };
+		1FC03513181B09A900A66E32 /* ofxOpenSteerTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerTypes.h; sourceTree = "<group>"; };
+		1FC03514181B09A900A66E32 /* ofxOpenSteerUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerUtils.h; sourceTree = "<group>"; };
+		1FC03515181B09A900A66E32 /* ofxOpenSteerVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerVehicle.cpp; sourceTree = "<group>"; };
+		1FC03516181B09A900A66E32 /* ofxOpenSteerVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerVehicle.h; sourceTree = "<group>"; };
+		1FC0352E181B0B9A00A66E32 /* Boid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boid.h; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Boid.h; sourceTree = "<group>"; };
+		1FC0352F181B0BDB00A66E32 /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Boid.cpp; path = ../../CloudsLibrary/src/VisualSystems/ExampleOpenSteer/vs_src/Boid.cpp; sourceTree = "<group>"; };
 		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
@@ -533,119 +534,119 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F24A570181AE22100DD8D62 /* ofxOpenSteer */ = {
+		1FC034D3181B099900A66E32 /* ofxOpenSteer */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A571181AE23500DD8D62 /* libs */,
-				1F24A5AC181AE23600DD8D62 /* src */,
+				1FC034D4181B09A900A66E32 /* libs */,
+				1FC0350F181B09A900A66E32 /* src */,
 			);
 			name = ofxOpenSteer;
 			sourceTree = "<group>";
 		};
-		1F24A571181AE23500DD8D62 /* libs */ = {
+		1FC034D4181B09A900A66E32 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A572181AE23500DD8D62 /* opensteer */,
+				1FC034D5181B09A900A66E32 /* opensteer */,
 			);
 			name = libs;
 			path = ../../../addons/ofxOpenSteer/libs;
 			sourceTree = "<group>";
 		};
-		1F24A572181AE23500DD8D62 /* opensteer */ = {
+		1FC034D5181B09A900A66E32 /* opensteer */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A573181AE23500DD8D62 /* include */,
-				1F24A596181AE23500DD8D62 /* src */,
+				1FC034D6181B09A900A66E32 /* include */,
+				1FC034F9181B09A900A66E32 /* src */,
 			);
 			path = opensteer;
 			sourceTree = "<group>";
 		};
-		1F24A573181AE23500DD8D62 /* include */ = {
+		1FC034D6181B09A900A66E32 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A574181AE23500DD8D62 /* OpenSteer */,
+				1FC034D7181B09A900A66E32 /* OpenSteer */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		1F24A574181AE23500DD8D62 /* OpenSteer */ = {
+		1FC034D7181B09A900A66E32 /* OpenSteer */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A575181AE23500DD8D62 /* AbstractVehicle.h */,
-				1F24A576181AE23500DD8D62 /* Annotation.h */,
-				1F24A577181AE23500DD8D62 /* Camera.h */,
-				1F24A578181AE23500DD8D62 /* Clock.h */,
-				1F24A579181AE23500DD8D62 /* Color.h */,
-				1F24A57A181AE23500DD8D62 /* Draw.h */,
-				1F24A57B181AE23500DD8D62 /* LocalSpace.h */,
-				1F24A57C181AE23500DD8D62 /* lq.h */,
-				1F24A57D181AE23500DD8D62 /* Obstacle.h */,
-				1F24A57E181AE23500DD8D62 /* OldPathway.h */,
-				1F24A57F181AE23500DD8D62 /* OpenSteerDemo.h */,
-				1F24A580181AE23500DD8D62 /* Path.h */,
-				1F24A581181AE23500DD8D62 /* Pathway.h */,
-				1F24A582181AE23500DD8D62 /* PlugIn.h */,
-				1F24A583181AE23500DD8D62 /* PolylineSegmentedPath.h */,
-				1F24A584181AE23500DD8D62 /* PolylineSegmentedPathwaySegmentRadii.h */,
-				1F24A585181AE23500DD8D62 /* PolylineSegmentedPathwaySingleRadius.h */,
-				1F24A586181AE23500DD8D62 /* Proximity.h */,
-				1F24A587181AE23500DD8D62 /* QueryPathAlike.h */,
-				1F24A588181AE23500DD8D62 /* QueryPathAlikeBaseDataExtractionPolicies.h */,
-				1F24A589181AE23500DD8D62 /* QueryPathAlikeMappings.h */,
-				1F24A58A181AE23500DD8D62 /* QueryPathAlikeUtilities.h */,
-				1F24A58B181AE23500DD8D62 /* SegmentedPath.h */,
-				1F24A58C181AE23500DD8D62 /* SegmentedPathAlikeUtilities.h */,
-				1F24A58D181AE23500DD8D62 /* SegmentedPathway.h */,
-				1F24A58E181AE23500DD8D62 /* SharedPointer.h */,
-				1F24A58F181AE23500DD8D62 /* SimpleVehicle.h */,
-				1F24A590181AE23500DD8D62 /* StandardTypes.h */,
-				1F24A591181AE23500DD8D62 /* SteerLibrary.h */,
-				1F24A592181AE23500DD8D62 /* UnusedParameter.h */,
-				1F24A593181AE23500DD8D62 /* Utilities.h */,
-				1F24A594181AE23500DD8D62 /* Vec3.h */,
-				1F24A595181AE23500DD8D62 /* Vec3Utilities.h */,
+				1FC034D8181B09A900A66E32 /* AbstractVehicle.h */,
+				1FC034D9181B09A900A66E32 /* Annotation.h */,
+				1FC034DA181B09A900A66E32 /* Camera.h */,
+				1FC034DB181B09A900A66E32 /* Clock.h */,
+				1FC034DC181B09A900A66E32 /* Color.h */,
+				1FC034DD181B09A900A66E32 /* Draw.h */,
+				1FC034DE181B09A900A66E32 /* LocalSpace.h */,
+				1FC034DF181B09A900A66E32 /* lq.h */,
+				1FC034E0181B09A900A66E32 /* Obstacle.h */,
+				1FC034E1181B09A900A66E32 /* OldPathway.h */,
+				1FC034E2181B09A900A66E32 /* OpenSteerDemo.h */,
+				1FC034E3181B09A900A66E32 /* Path.h */,
+				1FC034E4181B09A900A66E32 /* Pathway.h */,
+				1FC034E5181B09A900A66E32 /* PlugIn.h */,
+				1FC034E6181B09A900A66E32 /* PolylineSegmentedPath.h */,
+				1FC034E7181B09A900A66E32 /* PolylineSegmentedPathwaySegmentRadii.h */,
+				1FC034E8181B09A900A66E32 /* PolylineSegmentedPathwaySingleRadius.h */,
+				1FC034E9181B09A900A66E32 /* Proximity.h */,
+				1FC034EA181B09A900A66E32 /* QueryPathAlike.h */,
+				1FC034EB181B09A900A66E32 /* QueryPathAlikeBaseDataExtractionPolicies.h */,
+				1FC034EC181B09A900A66E32 /* QueryPathAlikeMappings.h */,
+				1FC034ED181B09A900A66E32 /* QueryPathAlikeUtilities.h */,
+				1FC034EE181B09A900A66E32 /* SegmentedPath.h */,
+				1FC034EF181B09A900A66E32 /* SegmentedPathAlikeUtilities.h */,
+				1FC034F0181B09A900A66E32 /* SegmentedPathway.h */,
+				1FC034F1181B09A900A66E32 /* SharedPointer.h */,
+				1FC034F2181B09A900A66E32 /* SimpleVehicle.h */,
+				1FC034F3181B09A900A66E32 /* StandardTypes.h */,
+				1FC034F4181B09A900A66E32 /* SteerLibrary.h */,
+				1FC034F5181B09A900A66E32 /* UnusedParameter.h */,
+				1FC034F6181B09A900A66E32 /* Utilities.h */,
+				1FC034F7181B09A900A66E32 /* Vec3.h */,
+				1FC034F8181B09A900A66E32 /* Vec3Utilities.h */,
 			);
 			path = OpenSteer;
 			sourceTree = "<group>";
 		};
-		1F24A596181AE23500DD8D62 /* src */ = {
+		1FC034F9181B09A900A66E32 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A597181AE23500DD8D62 /* Camera.cpp */,
-				1F24A598181AE23500DD8D62 /* Clock.cpp */,
-				1F24A599181AE23500DD8D62 /* Color.cpp */,
-				1F24A59A181AE23500DD8D62 /* Draw.cpp */,
-				1F24A59B181AE23500DD8D62 /* lq.c */,
-				1F24A59C181AE23500DD8D62 /* Obstacle.cpp */,
-				1F24A59D181AE23500DD8D62 /* OldPathway.cpp */,
-				1F24A59E181AE23600DD8D62 /* OpenSteerDemo.cpp */,
-				1F24A59F181AE23600DD8D62 /* Path.cpp */,
-				1F24A5A0181AE23600DD8D62 /* Pathway.cpp */,
-				1F24A5A1181AE23600DD8D62 /* PlugIn.cpp */,
-				1F24A5A2181AE23600DD8D62 /* PolylineSegmentedPath.cpp */,
-				1F24A5A3181AE23600DD8D62 /* PolylineSegmentedPathwaySegmentRadii.cpp */,
-				1F24A5A4181AE23600DD8D62 /* PolylineSegmentedPathwaySingleRadius.cpp */,
-				1F24A5A5181AE23600DD8D62 /* SegmentedPath.cpp */,
-				1F24A5A6181AE23600DD8D62 /* SegmentedPathway.cpp */,
-				1F24A5A7181AE23600DD8D62 /* SimpleVehicle.cpp */,
-				1F24A5A8181AE23600DD8D62 /* TerrainRayTest.cpp */,
-				1F24A5A9181AE23600DD8D62 /* TerrainRayTest.h */,
-				1F24A5AA181AE23600DD8D62 /* Vec3.cpp */,
-				1F24A5AB181AE23600DD8D62 /* Vec3Utilities.cpp */,
+				1FC034FA181B09A900A66E32 /* Camera.cpp */,
+				1FC034FB181B09A900A66E32 /* Clock.cpp */,
+				1FC034FC181B09A900A66E32 /* Color.cpp */,
+				1FC034FD181B09A900A66E32 /* Draw.cpp */,
+				1FC034FE181B09A900A66E32 /* lq.c */,
+				1FC034FF181B09A900A66E32 /* Obstacle.cpp */,
+				1FC03500181B09A900A66E32 /* OldPathway.cpp */,
+				1FC03501181B09A900A66E32 /* OpenSteerDemo.cpp */,
+				1FC03502181B09A900A66E32 /* Path.cpp */,
+				1FC03503181B09A900A66E32 /* Pathway.cpp */,
+				1FC03504181B09A900A66E32 /* PlugIn.cpp */,
+				1FC03505181B09A900A66E32 /* PolylineSegmentedPath.cpp */,
+				1FC03506181B09A900A66E32 /* PolylineSegmentedPathwaySegmentRadii.cpp */,
+				1FC03507181B09A900A66E32 /* PolylineSegmentedPathwaySingleRadius.cpp */,
+				1FC03508181B09A900A66E32 /* SegmentedPath.cpp */,
+				1FC03509181B09A900A66E32 /* SegmentedPathway.cpp */,
+				1FC0350A181B09A900A66E32 /* SimpleVehicle.cpp */,
+				1FC0350B181B09A900A66E32 /* TerrainRayTest.cpp */,
+				1FC0350C181B09A900A66E32 /* TerrainRayTest.h */,
+				1FC0350D181B09A900A66E32 /* Vec3.cpp */,
+				1FC0350E181B09A900A66E32 /* Vec3Utilities.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		1F24A5AC181AE23600DD8D62 /* src */ = {
+		1FC0350F181B09A900A66E32 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A5AD181AE23600DD8D62 /* ofxOpenSteer.h */,
-				1F24A5AE181AE23600DD8D62 /* ofxOpenSteerPlugin.cpp */,
-				1F24A5AF181AE23600DD8D62 /* ofxOpenSteerPlugin.h */,
-				1F24A5B0181AE23600DD8D62 /* ofxOpenSteerTypes.h */,
-				1F24A5B1181AE23600DD8D62 /* ofxOpenSteerUtils.h */,
-				1F24A5B2181AE23600DD8D62 /* ofxOpenSteerVehicle.cpp */,
-				1F24A5B3181AE23600DD8D62 /* ofxOpenSteerVehicle.h */,
+				1FC03510181B09A900A66E32 /* ofxOpenSteer.h */,
+				1FC03511181B09A900A66E32 /* ofxOpenSteerPlugin.cpp */,
+				1FC03512181B09A900A66E32 /* ofxOpenSteerPlugin.h */,
+				1FC03513181B09A900A66E32 /* ofxOpenSteerTypes.h */,
+				1FC03514181B09A900A66E32 /* ofxOpenSteerUtils.h */,
+				1FC03515181B09A900A66E32 /* ofxOpenSteerVehicle.cpp */,
+				1FC03516181B09A900A66E32 /* ofxOpenSteerVehicle.h */,
 			);
 			name = src;
 			path = ../../../addons/ofxOpenSteer/src;
@@ -1015,13 +1016,14 @@
 		3DA45C5F179DB6C3002EC0AC /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				1F618795181B045A00BAC654 /* Boid.h */,
-				1F618796181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp */,
-				1F618797181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.h */,
-				1F618798181B045A00BAC654 /* Flocking.h */,
-				1F618799181B045A00BAC654 /* ObstacleAvoidance.h */,
-				1F61879A181B045A00BAC654 /* PathFollowing.h */,
-				1F61879B181B045A00BAC654 /* PursuitAndEvade.h */,
+				1FC034CC181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.cpp */,
+				1FC034CD181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.h */,
+				1FC034CE181B098100A66E32 /* Flocking.h */,
+				1FC034CF181B098100A66E32 /* ObstacleAvoidance.h */,
+				1FC034D0181B098100A66E32 /* PathFollowing.h */,
+				1FC034D1181B098100A66E32 /* PursuitAndEvade.h */,
+				1FC0352E181B0B9A00A66E32 /* Boid.h */,
+				1FC0352F181B0BDB00A66E32 /* Boid.cpp */,
 			);
 			path = vs_src;
 			sourceTree = SOURCE_ROOT;
@@ -1029,14 +1031,13 @@
 		3DA460BE179ED608002EC0AC /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A563181ADCD600DD8D62 /* CloudsRGBDCamera.cpp */,
-				1F24A564181ADCD600DD8D62 /* CloudsRGBDCamera.h */,
-				1F24A565181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp */,
-				1F24A566181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.h */,
-				1F24A567181ADCD600DD8D62 /* CloudsVisualSystem.cpp */,
-				1F24A568181ADCD600DD8D62 /* CloudsVisualSystem.h */,
-				1F24A569181ADCD600DD8D62 /* ofxLight.h */,
-				1F24A56A181ADCD600DD8D62 /* README.md */,
+				1FC034C1181B096800A66E32 /* CloudsRGBDCamera.cpp */,
+				1FC034C2181B096800A66E32 /* CloudsRGBDCamera.h */,
+				1FC034C3181B096800A66E32 /* CloudsRGBDVideoPlayer.cpp */,
+				1FC034C4181B096800A66E32 /* CloudsRGBDVideoPlayer.h */,
+				1FC034C5181B096800A66E32 /* CloudsVisualSystem.cpp */,
+				1FC034C6181B096800A66E32 /* CloudsVisualSystem.h */,
+				1FC034C7181B096800A66E32 /* ofxLight.h */,
 			);
 			path = VisualSystemsLibrary;
 			sourceTree = "<group>";
@@ -1219,7 +1220,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				1F24A570181AE22100DD8D62 /* ofxOpenSteer */,
+				1FC034D3181B099900A66E32 /* ofxOpenSteer */,
 				644DD7E417A206F2009950CB /* ofxAVFVideoPlayer */,
 				3DEFE10E176E7D8000139095 /* ofxXmlSettings */,
 				3D5B943F175304B700F558AC /* ofxRange */,
@@ -1417,27 +1418,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F24A5BD181AE72B00DD8D62 /* Camera.cpp in Sources */,
-				1F24A5BE181AE72B00DD8D62 /* Clock.cpp in Sources */,
-				1F24A5BF181AE72B00DD8D62 /* Color.cpp in Sources */,
-				1F24A5C0181AE72B00DD8D62 /* Draw.cpp in Sources */,
-				1F24A5C1181AE72B00DD8D62 /* lq.c in Sources */,
-				1F24A5C2181AE72B00DD8D62 /* Obstacle.cpp in Sources */,
-				1F24A5C3181AE72B00DD8D62 /* OldPathway.cpp in Sources */,
-				1F24A5C4181AE72B00DD8D62 /* OpenSteerDemo.cpp in Sources */,
-				1F24A5C5181AE72B00DD8D62 /* Path.cpp in Sources */,
-				1F24A5C6181AE72B00DD8D62 /* Pathway.cpp in Sources */,
-				1F24A5C7181AE72B00DD8D62 /* PlugIn.cpp in Sources */,
-				1F24A5C8181AE72B00DD8D62 /* PolylineSegmentedPath.cpp in Sources */,
-				1F24A5C9181AE72B00DD8D62 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
-				1F24A5CA181AE72B00DD8D62 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
-				1F24A5CB181AE72B00DD8D62 /* SegmentedPath.cpp in Sources */,
-				1F24A5CC181AE72B00DD8D62 /* SegmentedPathway.cpp in Sources */,
-				1F24A5CD181AE72B00DD8D62 /* SimpleVehicle.cpp in Sources */,
-				1F24A5CE181AE72B00DD8D62 /* TerrainRayTest.cpp in Sources */,
-				1F24A5CF181AE72B00DD8D62 /* TerrainRayTest.h in Sources */,
-				1F24A5D0181AE72B00DD8D62 /* Vec3.cpp in Sources */,
-				1F24A5D1181AE72B00DD8D62 /* Vec3Utilities.cpp in Sources */,
+				1FC0352C181B0ADA00A66E32 /* ofxOpenSteerPlugin.cpp in Sources */,
+				1FC0352D181B0ADA00A66E32 /* ofxOpenSteerVehicle.cpp in Sources */,
+				1FC03517181B0ACD00A66E32 /* Camera.cpp in Sources */,
+				1FC03518181B0ACD00A66E32 /* Clock.cpp in Sources */,
+				1FC03519181B0ACD00A66E32 /* Color.cpp in Sources */,
+				1FC0351A181B0ACD00A66E32 /* Draw.cpp in Sources */,
+				1FC0351B181B0ACD00A66E32 /* lq.c in Sources */,
+				1FC0351C181B0ACD00A66E32 /* Obstacle.cpp in Sources */,
+				1FC0351D181B0ACD00A66E32 /* OldPathway.cpp in Sources */,
+				1FC0351E181B0ACD00A66E32 /* OpenSteerDemo.cpp in Sources */,
+				1FC0351F181B0ACD00A66E32 /* Path.cpp in Sources */,
+				1FC03520181B0ACD00A66E32 /* Pathway.cpp in Sources */,
+				1FC03521181B0ACD00A66E32 /* PlugIn.cpp in Sources */,
+				1FC03522181B0ACD00A66E32 /* PolylineSegmentedPath.cpp in Sources */,
+				1FC03523181B0ACD00A66E32 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
+				1FC03524181B0ACD00A66E32 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
+				1FC03525181B0ACD00A66E32 /* SegmentedPath.cpp in Sources */,
+				1FC03526181B0ACD00A66E32 /* SegmentedPathway.cpp in Sources */,
+				1FC03527181B0ACD00A66E32 /* SimpleVehicle.cpp in Sources */,
+				1FC03528181B0ACD00A66E32 /* TerrainRayTest.cpp in Sources */,
+				1FC03529181B0ACD00A66E32 /* TerrainRayTest.h in Sources */,
+				1FC0352A181B0ACD00A66E32 /* Vec3.cpp in Sources */,
+				1FC0352B181B0ACD00A66E32 /* Vec3Utilities.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */,
@@ -1462,6 +1465,7 @@
 				3D5B93671753046A00F558AC /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				3D5B936D1753046B00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */,
 				3D5B936E1753046B00F558AC /* ofxHotKeys_impl_mac.mm in Sources */,
+				1FC034D2181B098100A66E32 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				3D5B936F1753046B00F558AC /* ofxHotKeys_impl_win.cpp in Sources */,
 				3D5B93701753046B00F558AC /* ofxRemoveCocoaMenu.mm in Sources */,
 				3D5B93711753046B00F558AC /* ofxTimeline.cpp in Sources */,
@@ -1477,6 +1481,7 @@
 				3D5B937B1753046B00F558AC /* ofxTLImageSequence.cpp in Sources */,
 				3D5B937C1753046B00F558AC /* ofxTLImageSequenceFrame.cpp in Sources */,
 				3D5B937D1753046B00F558AC /* ofxTLImageTrack.cpp in Sources */,
+				1FC034C8181B096800A66E32 /* CloudsRGBDCamera.cpp in Sources */,
 				3D5B937E1753046B00F558AC /* ofxTLInOut.cpp in Sources */,
 				3D5B937F1753046B00F558AC /* ofxTLKeyframes.cpp in Sources */,
 				3D5B93801753046B00F558AC /* ofxTLLFO.cpp in Sources */,
@@ -1484,16 +1489,17 @@
 				3D5B93821753046B00F558AC /* ofxTLPageTabs.cpp in Sources */,
 				3D5B93831753046B00F558AC /* ofxTLSwitches.cpp in Sources */,
 				3D5B93841753046B00F558AC /* ofxTLTicker.cpp in Sources */,
-				1F61879C181B045A00BAC654 /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
 				3D5B93851753046B00F558AC /* ofxTLTrack.cpp in Sources */,
 				3D5B93861753046B00F558AC /* ofxTLTrackHeader.cpp in Sources */,
-				1F24A56C181ADCD600DD8D62 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				3D5B93871753046B00F558AC /* ofxTLVideoThumb.cpp in Sources */,
 				3D5B93881753046B00F558AC /* ofxTLVideoTrack.cpp in Sources */,
 				3D5B93891753046B00F558AC /* ofxTLZoomer.cpp in Sources */,
 				3D5B93B21753047C00F558AC /* ofxTimecode.cpp in Sources */,
 				3D5B93EF1753048300F558AC /* ofxEasing.cpp in Sources */,
+				1FC034CA181B096800A66E32 /* CloudsVisualSystem.cpp in Sources */,
 				3D5B93F01753048300F558AC /* ofxEasingBack.cpp in Sources */,
+				1FC03530181B0BDB00A66E32 /* Boid.cpp in Sources */,
+				1FC034C9181B096800A66E32 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				3D5B93F11753048300F558AC /* ofxEasingBounce.cpp in Sources */,
 				3D5B93F21753048300F558AC /* ofxEasingCirc.cpp in Sources */,
 				3D5B93F31753048300F558AC /* ofxEasingCubic.cpp in Sources */,
@@ -1513,10 +1519,6 @@
 				3DEFE11A176E7D8000139095 /* ofxXmlSettings.cpp in Sources */,
 				644DD7FC17A206F2009950CB /* ofxAVFVideoPlayer.mm in Sources */,
 				644DD7FD17A206F2009950CB /* ofxAVFVideoRenderer.m in Sources */,
-				1F24A56D181ADCD600DD8D62 /* CloudsVisualSystem.cpp in Sources */,
-				1F24A56B181ADCD600DD8D62 /* CloudsRGBDCamera.cpp in Sources */,
-				1F24A5BC181AE70C00DD8D62 /* ofxOpenSteerPlugin.cpp in Sources */,
-				1F24A5BB181AE70900DD8D62 /* ofxOpenSteerVehicle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1617,7 +1619,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					"\"$(SRCROOT)/../../../addons/ofxOpenSteer/libs/opensteer/include\"",
+					../../../addons/ofxOpenSteer/libs/opensteer/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -1702,6 +1704,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = ExampleOpenSteerDebug;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1724,7 +1727,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					"\"$(SRCROOT)/../../../addons/ofxOpenSteer/libs/opensteer/include\"",
+					../../../addons/ofxOpenSteer/libs/opensteer/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -1809,6 +1812,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = ExampleOpenSteer;
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

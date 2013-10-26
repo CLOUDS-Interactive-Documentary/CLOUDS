@@ -104,7 +104,8 @@ protected:
     //
 	void setSimulation( int simulationIndex );
     
-    
+    ofFloatColor boidColor;
+    ofFloatColor tailColor;
 	ofxUISuperCanvas* customGui;
     
     
@@ -118,5 +119,5 @@ protected:
     vector<ofxOpenSteerPlugin*> simulations;
     ofxOpenSteerPlugin* currentSimulation;
     int simulationIndex;
-    
+
 };

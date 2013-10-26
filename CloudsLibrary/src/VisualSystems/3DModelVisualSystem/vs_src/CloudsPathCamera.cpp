@@ -10,9 +10,9 @@
 CloudsPathCamera::CloudsPathCamera()
 {
 	startTime = 0;
-	endTime = 30;
+	duration = 30;
 	bUseUpSpline = false;
-	bLoop = false;
+	bLoop = true;
 };
 CloudsPathCamera::~CloudsPathCamera(){
 	clear();
@@ -53,8 +53,10 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	addTargetControlVertices( cameraTargetPath );
 	addUpControlVertices( cameraUp );
 	
-	setLoop( false );
-	useUp( true );
+	startTime = ofGetElapsedTimef();
+	
+//	setLoop( false );
+//	useUp( true );
 }
 
 void CloudsPathCamera::addPositionControlVertex( ofVec3f v )
@@ -106,7 +108,7 @@ void CloudsPathCamera::setUpControlVertices( vector<ofVec3f>& v )
 
 void CloudsPathCamera::update()
 {
-	float t = ofMap( ofGetElapsedTimef(), startTime, endTime,0 ,1);
+	float t = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
 	update( t );
 }
 
@@ -125,9 +127,9 @@ void CloudsPathCamera::setStartTime( float _startTime )
 	startTime = _startTime;
 }
 
-void CloudsPathCamera::setEndTime(float _endTime )
+void CloudsPathCamera::setDuration(float _duration )
 {
-	endTime = _endTime;
+	duration = _duration;
 }
 
 float& CloudsPathCamera::getStartTime()
@@ -135,9 +137,9 @@ float& CloudsPathCamera::getStartTime()
 	return startTime;
 }
 
-float& CloudsPathCamera::getEndTime()
+float& CloudsPathCamera::getDuration()
 {
-	return endTime;
+	return duration;
 }
 
 ofxSimpleSpline& CloudsPathCamera::getPositionSpline()

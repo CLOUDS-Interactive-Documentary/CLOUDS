@@ -36,10 +36,10 @@ public:
 	void update( float t );
 	
 	void setStartTime( float _startTime );
-	void setEndTime(float _endTime );
+	void setDuration(float _duration );
 	
 	float& getStartTime();
-	float& getEndTime();
+	float& getDuration();
 	
 	ofxSimpleSpline& getPositionSpline();
 	ofxSimpleSpline& getTargetSpline();
@@ -52,7 +52,7 @@ public:
 	
 protected:
 	ofxSimpleSpline positionSpline, targetSpline, upSpline;
-	float startTime, endTime;
+	float startTime, duration;
 	
 	bool bLoop, bUseUpSpline;
 };

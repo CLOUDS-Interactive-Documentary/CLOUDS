@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ParamManager.h"
 #include "Maze.h"
 
 //TODO: rename this to your own visual system
@@ -95,8 +96,8 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 	}
 
 protected:
-    Maze maze;
-    MazeCamera *mazeCam;
+    Maze* maze;
+    MazeCamera* mazeCam;
     
     // preset stuff
     ofxUISuperCanvas* customGui;

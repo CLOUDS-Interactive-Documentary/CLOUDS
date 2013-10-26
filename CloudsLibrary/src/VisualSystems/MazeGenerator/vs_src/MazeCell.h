@@ -10,6 +10,7 @@
 #define __MazeGenerator__MazeCell__
 
 #include <ofMain.h>
+#include "ParamManager.h"
 
 class MazeCell
 {
@@ -20,10 +21,11 @@ public:
     bool top,left,right,bottom;
     bool mazeExit;
     bool searchStart;
+    bool visible;
 
     MazeCell(int x, int y, float s, float thickness, float height);
     
-    void draw();
+    void draw(bool isGenerator);
     
     int getX() { return x; }
     int getY() { return y; }

@@ -1,6 +1,13 @@
-// Base boid used by all the simulations with flocking behaviour
+//
+//  Boid.h
+//  ExampleOpenSteer
+//
+//  Created by Jeffrey Crouse on 10/25/13.
+//
+//
 
 #pragma once
+
 
 #include "ofxOpenSteer.h"
 
@@ -12,6 +19,30 @@ class Boid: public ofxOpenSteerVehicle {
 public:
     
     ProximityToken* pt;
+    static bool bDrawTail;
+    static bool bDrawAnnotations;
+    
+    static float fMaxSpeed;
+    static float fMaxForce;
+    static float fInitialPositionRadius;
+    
+    static float radius;
+    
+    static float separationRadius;
+    static float separationAngle;
+    static float separationWeight;
+    
+    static float alignmentRadius;
+    static float alignmentAngle;
+    static float alignmentWeight;
+    
+    static float cohesionRadius;
+    static float cohesionAngle;
+    static float cohesionWeight;
+    
+    static Color bColor;
+    static Color tColor;
+    
     
     Boid(){
         pt = NULL;
@@ -20,18 +51,20 @@ public:
     ~Boid(){
         if(pt) delete pt;
         pt = NULL;
-    };    
+    };
     
     void reset(){
 		// reset the vehicle
 		ofxOpenSteerVehicle::reset ();
 		
 		// steering force is clipped to this magnitude
-		setMaxForce (27);
+		setMaxForce (Boid::fMaxForce);
 		
 		// velocity is clipped to this magnitude
-		setMaxSpeed (9);
+		setMaxSpeed (Boid::fMaxSpeed);
 		
+        setRadius(Boid::radius);
+        
 		// initial slow speed
 		setSpeed (maxSpeed() * 0.3f);
 		
@@ -39,7 +72,7 @@ public:
 		regenerateOrthonormalBasisUF (RandomUnitVector ());
 		
 		// randomize initial position
-		setPosition (RandomVectorInUnitRadiusSphere() * 20);
+		setPosition (RandomVectorInUnitRadiusSphere() * Boid::fInitialPositionRadius);
 		
 		// notify proximity database that our position has changed
 		if(pt) pt->updateForNewPosition (position());
@@ -51,26 +84,16 @@ public:
     };
 	
     void draw(){
-        drawBasic3dSphericalVehicle (*this, color);
-        annotationVelocityAcceleration ();
-        drawTrail();
+        drawBasic3dSphericalVehicle (*this, bColor);
+        if(bDrawAnnotations) annotationVelocityAcceleration();
+        if(bDrawTail) drawTrail(tColor, gWhite);
     }
     
     Vec3 getSteeringForce(const float elapsedTime){
         // if there is no proximity database, just wander
         if(!pt) return steerForWander(elapsedTime);
         
-		const float separationRadius =  5.0f;
-		const float separationAngle  = -0.707f;
-		const float separationWeight =  12.0f;
-		
-		const float alignmentRadius = 7.5f;
-		const float alignmentAngle  = 0.7f;
-		const float alignmentWeight = 8.0f;
-		
-		const float cohesionRadius = 50.0f;
-		const float cohesionAngle  = -0.15f;
-		const float cohesionWeight = 8.0f;
+
 		
 		const float maxRadius = maxXXX (separationRadius,
 										maxXXX (alignmentRadius,
@@ -97,6 +120,6 @@ public:
 		const Vec3 alignmentW = alignment * alignmentWeight;
 		const Vec3 cohesionW = cohesion * cohesionWeight;
 		
-		return separationW + alignmentW + cohesionW;	
+		return separationW + alignmentW + cohesionW;
 	};
 };

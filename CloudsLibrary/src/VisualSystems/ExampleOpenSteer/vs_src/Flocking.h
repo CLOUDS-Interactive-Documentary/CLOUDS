@@ -7,6 +7,7 @@
 using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
+
 class Flocking: public ofxOpenSteerPlugin {
     
 public:
