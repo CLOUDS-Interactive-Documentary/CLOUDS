@@ -81,8 +81,14 @@ class CloudsVisualSystemOpenP5Machine : public CloudsVisualSystem {
     
     void selfMouseDragged(ofMouseEventArgs& data);
     void selfMouseMoved(ofMouseEventArgs& data);
-    void selfMousePressed(ofMouseEventArgs& data);
-    void selfMouseReleased(ofMouseEventArgs& data);
+    void selfMousePressed(int x, int y, int button);
+    void selfMouseReleased(int x, int y, int button);
+    
+    ofEasyCam cam;
+    ofLight dir;
+    ofLight amb;
+    ofMaterial material;
+    ofVec3f dir_rot;
 	
 	
 

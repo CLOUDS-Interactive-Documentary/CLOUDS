@@ -70,6 +70,9 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     
     ofEnableSmoothing();
     ofSetLineWidth(.1);
+    glEnable(GL_DEPTH_TEST);
+    ofSetSmoothLighting(true);
+    
     
     color1HSB.r = 140;
     color2HSB.g = 130;
@@ -100,6 +103,8 @@ void CloudsVisualSystemOpenP5Machine::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemOpenP5Machine::selfUpdate(){
+ 
+   
 
 }
 
@@ -154,6 +159,22 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
     ofColor color;
     
     framecount = (ofGetElapsedTimeMillis()/33);
+    
+    //cam.begin();
+    
+    
+  //  ofVec3f center = ofVec3f(0);
+    
+   // dir.setDiffuseColor(ofColor(0.0f, 0.0f, 255.0f));
+   // dir.setSpecularColor(ofColor(255.0f, 0.0f, 0.0f));
+    
+ //   dir.setDirectional();
+    dir_rot = ofVec3f(0, -95, 0);
+    //  setLightOri(dir, dir_rot);
+    
+    amb.setAmbientColor(ofColor(50.0, 100.0, 200.0, 100.0));
+    
+    //spotlight is drawn in the camera frame and oriented relative to the focus of the camera
 
     for(int i=0; i<10; i++) {
         
@@ -199,6 +220,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
         }
     }
 
+ //   cam.end();
 }
 
 
@@ -242,10 +264,13 @@ void CloudsVisualSystemOpenP5Machine::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemOpenP5Machine::selfMousePressed(ofMouseEventArgs& data){
-	
+void CloudsVisualSystemOpenP5Machine::selfMousePressed(int x, int y, int button){
+	if (gui->isHit(x, y)) {
+        cam.disableMouseInput();
+    }
 }
 
-void CloudsVisualSystemOpenP5Machine::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemOpenP5Machine::selfMouseReleased(int x, int y, int button){
+     cam.enableMouseInput();
 	
 }

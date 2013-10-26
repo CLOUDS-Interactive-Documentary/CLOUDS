@@ -1,0 +1,98 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OceanSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>617.000000000</XPosition>
+    <YPosition>51.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN SIZE X</Name>
+    <Value>756.157653809</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN SIZE Y</Name>
+    <Value>326.995086670</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIND SPEED Y</Name>
+    <Value>193.733993530</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE SPEED</Name>
+    <Value>0.837438405</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE SCALE</Name>
+    <Value>18.719211578</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAVE CHOPPINESS</Name>
+    <Value>0.295566499</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>USE BUOYANT CAM</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE WIDTH</Name>
+    <Value>35.339900970</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFT HEIGHT</Name>
+    <Value>33.990146637</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT ALPHA</Name>
+    <Value>0.945812821</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POINT SIZE</Name>
+    <Value>0.879310369</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW WIREFRAME</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIREFRAME ALPHA</Name>
+    <Value>0.073891625</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW OCEAN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCEAN ALPHA</Name>
+    <Value>0.192118227</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>FOG RANGE</Name>
+    <HighValue>3719.212158203</HighValue>
+    <LowValue>1182.265991211</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.000000000</Value>
+</Widget>

@@ -1,0 +1,38 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Grid</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>318.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Display Grid</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Range</Name>
+    <HighValue>3349.751953125</HighValue>
+    <LowValue>-270.936523438</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spacing</Name>
+    <Value>876.847290039</Value>
+</Widget>
+<Widget>
+    <Kind>8</Kind>
+    <Name>Pattern</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Width</Name>
+    <Value>1.477832556</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Alpha</Name>
+    <Value>0.197044328</Value>
+</Widget>
