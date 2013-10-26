@@ -29,7 +29,7 @@
 //lars
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
-#include "3DModelVisualSystem.h"
+//#include "3DModelVisualSystem.h"
 #include "MandalaVisualSystem.h"
 
 //CODE STORM
@@ -103,7 +103,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//lars
 	registerVisualSystem(new CloudsVisualSystemFireworks() );
 	registerVisualSystem(new CloudsVisualSystemMarchingCubes() );
-	registerVisualSystem(new CloudsVisualSystem3DModel() );
+	//registerVisualSystem(new CloudsVisualSystem3DModel() );
 	registerVisualSystem(new MandalaVisualSystem() );
 	
 	//CODE STORM

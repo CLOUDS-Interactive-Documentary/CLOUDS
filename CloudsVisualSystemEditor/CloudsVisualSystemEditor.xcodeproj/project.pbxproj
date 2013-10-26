@@ -13,6 +13,7 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		859A45D3181C684700B9F251 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -341,6 +342,8 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
+		859A45C8181C684700B9F251 /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1120,9 +1123,28 @@
 			name = ofxCocoaGLView;
 			sourceTree = "<group>";
 		};
+		859A45B2181C684700B9F251 /* ofxSimpleSpline */ = {
+			isa = PBXGroup;
+			children = (
+				859A45C6181C684700B9F251 /* src */,
+			);
+			name = ofxSimpleSpline;
+			path = ../../../addons/ofxSimpleSpline;
+			sourceTree = "<group>";
+		};
+		859A45C6181C684700B9F251 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */,
+				859A45C8181C684700B9F251 /* ofxSimpleSpline.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				859A45B2181C684700B9F251 /* ofxSimpleSpline */,
 				E7156FC91810D42700410646 /* ofxBox2d */,
 				E7C00DB3180DD20200B5CEF1 /* ofxAnimationPrimitives */,
 				E712D43317DD80F8006FEE82 /* ofxRegex */,
@@ -3763,6 +3785,7 @@
 				E71572051810D43400410646 /* ofxBox2dPolygon.cpp in Sources */,
 				E71572061810D43400410646 /* ofxBox2dRect.cpp in Sources */,
 				E715729F1810D46B00410646 /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
+				859A45D3181C684700B9F251 /* ofxSimpleSpline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
