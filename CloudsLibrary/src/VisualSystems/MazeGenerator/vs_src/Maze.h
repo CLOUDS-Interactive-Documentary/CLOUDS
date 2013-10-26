@@ -28,7 +28,8 @@ public:
     ~Maze();
     void generate();
     
-    void draw(ofCamera *cam);
+    void update(ofCamera* cam);
+    void draw(ofCamera* cam);
     
     float getWidth();
     
@@ -39,6 +40,7 @@ protected:
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
     int step;
+    int currentYLimit;
     MazeCell* currentCell;
     MazeCell* exitCell;
 

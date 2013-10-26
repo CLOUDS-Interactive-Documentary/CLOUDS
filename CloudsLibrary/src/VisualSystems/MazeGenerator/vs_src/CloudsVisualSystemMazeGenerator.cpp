@@ -149,6 +149,7 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
     mazeCam->update();
+    maze->update(mazeCam);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera

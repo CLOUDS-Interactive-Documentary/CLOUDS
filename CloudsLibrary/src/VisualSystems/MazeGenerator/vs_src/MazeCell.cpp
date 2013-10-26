@@ -19,39 +19,40 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     top = left = right = bottom = true;
     mazeExit = searchStart = visited = searched = false;
     
-    // bottom
-//    wall.addVertex(ofVec3f(-1, 0, 1));
-//    wall.addVertex(ofVec3f(size/2, 0, wallThickness/2));
-//    wall.addVertex(ofVec3f(size/2, 0, -wallThickness/2));
-//    wall.addVertex(ofVec3f(-size/2, 0, -wallThickness/2));
-//    
-//    // top
-//    wall.addVertex(ofVec3f(-size/2, wallHeight, wallThickness/2));
-//    wall.addVertex(ofVec3f(size/2, wallHeight, wallThickness/2));
-//    wall.addVertex(ofVec3f(size/2, wallHeight, -wallThickness/2));
-//    wall.addVertex(ofVec3f(-size/2, wallHeight, -wallThickness/2));
-//    
-//    wall.addTriangle(0, 1, 2); // bottom
-//    wall.addTriangle(2, 3, 0);
-    
-    
-    
+    visible = false;
 }
 
-void MazeCell::draw()
+void MazeCell::draw(bool isGenerator)
 {
-    float lx = x*size;
-    float rx = x*size+size;
-    float ty = y*size;
-    float by = y*size+size;
+    if (!visible) {
+        return;
+    }
     
-//    ofRect(lx,ty,size,size);
+    if (isGenerator)
+    {
+        ofFill();
+        ofSetColor(255, 0, 0);
+        ofPushMatrix();
+        ofTranslate(x*size+size/2, 0, y*size+size/2);
+        ofScale(size, size, size);
+        ofBox(1);
+        ofPopMatrix();
+    }
     
     ofFill();
     ofSetColor(ofColor::fromHsb(
         ParamManager::getInstance().wallColor.r,
         ParamManager::getInstance().wallColor.g,
         ParamManager::getInstance().wallColor.b));
+
+    if (top && bottom && right && left) {
+        ofPushMatrix();
+        ofTranslate(x*size+size/2, 0, y*size+size/2);
+        ofScale(size, size, size);
+        ofBox(1);
+        ofPopMatrix();
+        return;
+    }
     
     float length = size + wallThickness - 0.1;
     

@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MAZE BUILDER</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>3.000000000</XPosition>
+    <YPosition>275.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM SPEED</Name>
+    <Value>3.990147591</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+    <Value>172.225112915</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+    <Value>57.408355713</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B</Name>
+    <Value>158.874313354</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+    <Value>164.214660645</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+    <Value>45.392650604</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B</Name>
+    <Value>110.811477661</Value>
+</Widget>

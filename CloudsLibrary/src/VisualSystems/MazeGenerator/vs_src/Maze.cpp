@@ -28,6 +28,7 @@ Maze::Maze(float cSize, float wThickness, float wHeight)
     finishedGenerating = false;
     finishedSolving = false;
     step = 0;
+    currentYLimit = 40;
 }
 
 Maze::~Maze()
@@ -59,14 +60,17 @@ void Maze::generate()
 //    }
 }
 
-void Maze::draw(ofCamera *cam)
+void Maze::update(ofCamera *cam)
 {
     if (!finishedGenerating) {
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<8; i++) {
             generateStep();
         }
     }
+}
 
+void Maze::draw(ofCamera *cam)
+{
     // draw the ground
     ofFill();
     ofSetColor(ofColor::fromHsb(
@@ -90,14 +94,17 @@ void Maze::draw(ofCamera *cam)
         for (int j=yStart; j<yLimit; j++)
         {
             // make the visual effect of the maze beeing generated.
-            if (j > yLimit-10) {
-                if ((int)ofRandom(10-j) == 0) {
-                    cells[i][j]->draw();
+            if (cells[i][j]->visible == false) {
+                if (j > yLimit-2) {
+                    if (ofRandom(80) < 1) {
+                        cells[i][j]->visible = true;
+                    }
+                }
+                else {
+                    cells[i][j]->visible = true;
                 }
             }
-            else {
-                cells[i][j]->draw();
-            }
+            cells[i][j]->draw(currentCell == cells[i][j]);
         }
     }
 }
@@ -112,7 +119,12 @@ void Maze::generateStep()
     if (finishedGenerating) { return; }
     bool valid = false;
     std::vector<int> available_dirs;
-    for (int i=0;i<4;i++) { available_dirs.push_back(i); }
+    for (int i=0;i<4;i++)
+    {
+        available_dirs.push_back(i);
+        
+        
+    }
     while (!valid) {
         int curx = currentCell->getX();
         int cury = currentCell->getY();
@@ -147,7 +159,7 @@ void Maze::generateStep()
                 }
                 break;
             case 2:
-                if (cury < NUM_CELLS_Y-1 && cells[curx][cury+1]->notVisited()) {
+                if (cury < min(NUM_CELLS_Y-1,currentYLimit-1) && cells[curx][cury+1]->notVisited()) {
                     cout<<"Going south"<<endl;
                     currentCell->bottom = false;
                     currentCell = cells[curx][cury+1];
@@ -179,8 +191,11 @@ void Maze::generateStep()
                 cellStack.pop();
             }
             else {
-                finishedGenerating = true;
-                currentCell = NULL;
+                int prevLimit = currentYLimit;
+                currentYLimit += 40;
+                currentCell = cells[0][prevLimit+1];
+//                finishedGenerating = true; 
+//                currentCell = NULL;
             }
             valid = true;
         }
