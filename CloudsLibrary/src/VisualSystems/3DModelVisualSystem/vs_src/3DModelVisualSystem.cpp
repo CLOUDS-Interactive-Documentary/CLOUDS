@@ -6,8 +6,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystem3DModel::selfSetupGui(){
-
+void CloudsVisualSystem3DModel::selfSetupGui()
+{
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
@@ -27,8 +27,7 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	customGui->addToggle("smooth model", false );
 	customGui->addToggle("wireframe", &bWireframe );
 	customGui->addSlider("wireframeLinewidth", 0.5, 10, &wireframeLinewidth);
-//	customGui->addSlider("discardThreshold", 0., 1, &discardThreshold);
-	customGui->addSlider("modelScale", .1, 10., &modelScale);
+	customGui->addSlider("modelScale", .1, 10., &modelScale)->setIncrement(.01);
 	customGui->addImageSampler("c1", &colorMap, (float)colorMap.getWidth()/2, (float)colorMap.getHeight()/2 );
 	
 	customGui->addSlider("specularExpo", 1, 128, &specularExpo);
@@ -123,6 +122,8 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	modelUIGui->setName("modelUIGui");
 	modelUIGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	modelUIGui->addSpacer();
+	modelUIGui->addToggle("bCenterModel", &bCenterModel);
+	modelUIGui->addToggle("bAutoScale", &bAutoScale);
 	
 	modelUIGui->addSlider("boundBoxLineWidth", 0.5, 10, &boundBoxLineWidth);
 	
@@ -278,6 +279,8 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 				perspCam.disableMouseInput();
 				bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = false;
 				
+				bDoNotScaleModel = false;
+				
 				if(name == "left view")
 				{
 					currentSingleCam = &leftCam;
@@ -310,6 +313,13 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 					
 					bPlanCamIsActive = true;
 				}
+				
+				else if( name == "path camera")
+				{
+					currentSingleCam = &pathCamera;
+					bDoNotScaleModel = true;
+				}
+				
 				else if( name == "four view")
 				{
 					bFourView = true;
@@ -323,10 +333,6 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 					planCam.enableMouseInput();
 					
 					bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = true;
-				}
-				else if( name == "path camera")
-				{
-					currentSingleCam = &pathCamera;
 				}
 			}
 		}
@@ -426,6 +432,10 @@ void CloudsVisualSystem3DModel::selfSetup()
 	bFourView = false;
 	
 	bUseDuration = false;
+	bRepositionModel = true;
+	bDoNotScaleModel = false;
+	
+	pathCamera.setNearClip(.1);
 	
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
 	
@@ -548,20 +558,6 @@ void CloudsVisualSystem3DModel::selfDraw()
 	}
 }
 
-void CloudsVisualSystem3DModel::updateModelTransform()
-{
-	//update the model transforms
-	modelRot.makeRotate( 0, 0, 1, 0);//ofGetElapsedTimef()*2
-	if(modelScl.length() == 0.)	modelScl.y = .00001;
-	
-	boundCenter = (minBound + maxBound) * .5;
-	
-	modelTransform.setOrientation( modelRot );
-	modelTransform.setScale( modelScl * modelScale );
-	modelTransform.setPosition( -boundCenter * modelScl * modelScale);
-	modelTransform.move(0,  (maxBound.y - minBound.y) * .5 * modelScl.y * modelScale, 0);
-}
-
 // draw any debug stuff here
 void CloudsVisualSystem3DModel::selfDrawDebug(){
 	
@@ -664,12 +660,12 @@ void CloudsVisualSystem3DModel::calcBoundingBox(){
 	//cout << minBound << " : " << maxBound << endl;
 	boundCenter = ( minBound + maxBound ) * .5;
 	
-	minBound -= boundCenter;
-	maxBound -= boundCenter;
-	
-	for (int i=0; i<v.size(); i++) {
-		modelMesh.setVertex( i, v[i] - boundCenter );
-	}
+//	minBound -= boundCenter;
+//	maxBound -= boundCenter;
+//	
+//	for (int i=0; i<v.size(); i++) {
+//		modelMesh.setVertex( i, v[i] - boundCenter );
+//	}
 };
 
 void CloudsVisualSystem3DModel::loadCameraLineModel( ofVbo& vbo, string loc ){
@@ -1010,8 +1006,7 @@ void CloudsVisualSystem3DModel::facetMesh( ofMesh& smoothedMesh, ofMesh& targetM
 
 void CloudsVisualSystem3DModel::resizeTheArrowMesh( float radius, float height, float pointBaseHight )
 {
-	//the top pointy part of the mesh vertices are 1-12 but not 6.	1,...,5,7,...,12
-	
+	//move the middle vertices up and down
 	vector<ofVec3f> v = arrowMesh.getVertices();
 
 	for (int i=0; i<v.size(); i++) {
@@ -1125,12 +1120,14 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	//draw our model
 	ofPushMatrix();
 	
+//	ofTranslate(-boundCenter);
+	
 	ofMultMatrix( modelTransform.getGlobalTransformMatrix() );
 	
-	ofTranslate( positionOffset );
-	ofRotateX( globalRotation.x + accumulatedRotation.x );
-	ofRotateY( globalRotation.y + accumulatedRotation.y );
-	ofRotateZ( globalRotation.z + accumulatedRotation.z );
+//	ofTranslate( positionOffset );
+//	ofRotateX( globalRotation.x + accumulatedRotation.x );
+//	ofRotateY( globalRotation.y + accumulatedRotation.y );
+//	ofRotateZ( globalRotation.z + accumulatedRotation.z );
 	
 	//draw bounding box
 	if(bDrawBoundingBox)
@@ -1164,17 +1161,7 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 			glDisable( GL_DEPTH_TEST );
 			glBlendFunc(GL_ONE, GL_ONE);
 			
-			//			ofBlendMode( OF_BLENDMODE_ADD );
-			//			glDisable( GL_DEPTH_TEST );
-			//			glEnable( GL_CULL_FACE);
-			//			glCullFace(GL_FRONT);
 			modelMesh.draw();
-			
-			//			glCullFace(GL_BACK);
-			//			modelMesh.draw();
-			//
-			//			glDisable(GL_CULL_FACE);
-			//			glDisable( GL_DEPTH_TEST );
 			
 			ofBlendMode( OF_BLENDMODE_ADD );
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1226,6 +1213,38 @@ void CloudsVisualSystem3DModel::drawSceneLeft( ofRectangle viewRect )
 
 
 
+
+void CloudsVisualSystem3DModel::updateModelTransform()
+{
+	modelTransform.resetTransform();
+	
+	ofVec3f scl(1,1,1);
+	
+	if(!bDoNotScaleModel && currentSingleCam != &pathCamera)
+	{
+		scl = (bAutoScale? modelScl : ofVec3f(1,1,1)) * modelScale;
+		modelTransform.setScale( scl );
+	}
+	
+	if(bCenterModel)
+	{
+		modelTransform.setPosition( -boundCenter );
+		modelTransform.move(0, (maxBound.y-minBound.y)*.5 * scl.y, 0);
+	}
+	
+
+	//update the model transforms
+	//modelRot.makeRotate( 0, 0, 1, 0);//ofGetElapsedTimef()*2
+	//if(modelScl.length() == 0.)	modelScl.y = .00001;
+	
+	//boundCenter = (minBound + maxBound) * .5;
+	
+	//modelTransform.setOrientation( modelRot );
+	
+	//modelTransform.setScale( modelScl * modelScale );
+	//modelTransform.setPosition( -boundCenter * modelScl * modelScale);
+	//modelTransform.move(0,  (maxBound.y - minBound.y) * .5 * modelScl.y * modelScale, 0);
+}
 
 
 

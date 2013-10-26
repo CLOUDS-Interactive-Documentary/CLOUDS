@@ -6,6 +6,16 @@
     <YPosition>93.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>2</Kind>
+    <Name>bCenterModel</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bAutoScale</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>boundBoxLineWidth</Name>
     <Value>1.000000000</Value>
