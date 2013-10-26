@@ -19,7 +19,7 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     top = left = right = bottom = true;
     mazeExit = searchStart = visited = searched = false;
     
-    visible = false;
+    visible = true;
 }
 
 void MazeCell::draw(bool isGenerator)

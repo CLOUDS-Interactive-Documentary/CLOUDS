@@ -12,8 +12,8 @@ MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
 {
     setPosition(x, y, z);
     lookAt(ofVec3f(x, y, z+10));
-    rotate(37, ofVec3f(1, 0, 0));
-    setFov(30);
+    rotate(50, ofVec3f(1, 0, 0));
+    setFov(100);
     
     vel = ofVec3f(0, 0, 1);
     acc = ofVec3f();
@@ -21,12 +21,8 @@ MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
 
 void MazeCamera::update()
 {
-//    acc = ;
-    vel = ofVec3f(0, 0, 2 + abs((float)ofGetMouseY()/2)/100);
-    cout<<vel.z<<endl;
-    setFov(90 - vel.z*5);
+    vel = ofVec3f(0, 0, ParamManager::getInstance().cameraSpeed);
     move(vel);
-    acc = ofVec3f();
 }
 
 void MazeCamera::setVelocity(ofVec3f v)

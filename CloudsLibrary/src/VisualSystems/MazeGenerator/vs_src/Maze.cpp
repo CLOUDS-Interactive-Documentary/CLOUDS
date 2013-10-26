@@ -71,39 +71,53 @@ void Maze::update(ofCamera *cam)
 
 void Maze::draw(ofCamera *cam)
 {
+    // for tiling
+    int yStart = cam->getPosition().z/cellSize-5;
+    int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead, NUM_CELLS_Y);
+    if (yStart < 0) {
+        yStart = 0;
+    }
+    float length = (float)yLimit - yStart;
+    float middle = (float)yStart + length/2;
+
     // draw the ground
     ofFill();
-    ofSetColor(ofColor::fromHsb(
-            ParamManager::getInstance().groundColor.r,
-            ParamManager::getInstance().groundColor.g,
-            ParamManager::getInstance().groundColor.b));
-    
+    ofSetColor(ParamManager::getInstance().getGroundColor());
     ofPushMatrix();
-    ofTranslate(NUM_CELLS_X*cellSize/2, -wallHeight/2, NUM_CELLS_Y*cellSize/2);
-    ofScale(NUM_CELLS_X*cellSize, 1, NUM_CELLS_Y*cellSize);
+    ofTranslate(NUM_CELLS_X*cellSize/2, -wallHeight/2, middle*cellSize);
+    ofScale(NUM_CELLS_X*cellSize+120, 1, length*cellSize);
     ofBox(1);
     ofPopMatrix();
     
-    
+    // draw side walls
+    ofSetColor(ParamManager::getInstance().getSideWallsColor());
+    ofPushMatrix();
+    ofTranslate(-1, 200, middle*cellSize);
+    ofScale(wallThickness, 400, length*cellSize);
+    ofBox(1);
+    ofPopMatrix();
+    ofPushMatrix();
+    ofTranslate(NUM_CELLS_X*cellSize+1, 200, middle*cellSize);
+    ofScale(wallThickness, 400, length*cellSize);
+    ofBox(1);
+    ofPopMatrix();
+
     // draw the cells
-    int yStart = cam->getPosition().z/cellSize;
-    int yLimit = min(yStart+60, NUM_CELLS_Y);
-    
     for (int i=0; i<NUM_CELLS_X; i++)
     {
         for (int j=yStart; j<yLimit; j++)
         {
             // make the visual effect of the maze beeing generated.
-            if (cells[i][j]->visible == false) {
-                if (j > yLimit-2) {
-                    if (ofRandom(80) < 1) {
-                        cells[i][j]->visible = true;
-                    }
-                }
-                else {
-                    cells[i][j]->visible = true;
-                }
-            }
+//            if (cells[i][j]->visible == false) {
+//                if (j > yLimit-2) {
+//                    if (ofRandom(80) < 1) {
+//                        cells[i][j]->visible = true;
+//                    }
+//                }
+//                else {
+//                    cells[i][j]->visible = true;
+//                }
+//            }
             cells[i][j]->draw(currentCell == cells[i][j]);
         }
     }
@@ -192,7 +206,7 @@ void Maze::generateStep()
             }
             else {
                 int prevLimit = currentYLimit;
-                currentYLimit += 40;
+                currentYLimit += 60;
                 currentCell = cells[0][prevLimit+1];
 //                finishedGenerating = true; 
 //                currentCell = NULL;

@@ -30,11 +30,13 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
     customGui->addLabel("CAMERA");
     customGui->addSlider("CAM SPEED", 0, 10, &pm->cameraSpeed);
 
+    customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
+
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
 
     customGui->addSpacer();
-    customGui->addLabel("LOOK");
+    customGui->addLabel("COLORS");
     customGui->addLabel("GROUND COLOR", OFX_UI_FONT_SMALL);
     customGui->addMinimalSlider("GH", 0.0, 255, &(pm->groundColor.r), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -48,6 +50,14 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
     customGui->addMinimalSlider("WS", 0.0, 255, &(pm->wallColor.g), length, dim)->setShowValue(true);
     customGui->addMinimalSlider("WB", 0.0, 255, &(pm->wallColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
+    customGui->addLabel("SIDE WALLS COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("SH", 0.0, 255, &(pm->sideWallsColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("SS", 0.0, 255, &(pm->sideWallsColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SB", 0.0, 255, &(pm->sideWallsColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
 
 #if 0
     customGui->addLabel("PHYSICS");
@@ -121,7 +131,7 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     maze = new Maze(30, 4, 30);
     maze->generate();
     
-    mazeCam = new MazeCamera(maze->getWidth()/2, 180, 0);
+    mazeCam = new MazeCamera(maze->getWidth()/2, 180, 100);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered

@@ -22,7 +22,15 @@ public:
     
     ofFloatColor groundColor;
     ofFloatColor wallColor;
+    ofFloatColor sideWallsColor;
+    
+    ofColor getGroundColor();
+    ofColor getWallColor();
+    ofColor getSideWallsColor();
+    
     float cameraSpeed;
+    float cameraAngle;
+    float showAhead;
     
 private:
     ParamManager();
