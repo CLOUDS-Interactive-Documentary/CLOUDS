@@ -12,21 +12,23 @@
 #include <ofMain.h>
 #include "MazeCamera.h"
 #include "MazeCell.h"
+#include "ParamManager.h"
 
 #define NUM_CELLS_X 31
 #define NUM_CELLS_Y 1000
-#define CELL_SIZE 30
-#define WALL_HEIGHT 20
-#define WALL_THICKNESS 3
 
 class Maze
 {
 public:
-    Maze();
+    float cellSize;
+    float wallThickness;
+    float wallHeight;
+    
+    Maze(float cSize, float wThick, float wHeight);
     ~Maze();
     void generate();
     
-    void draw(int y);
+    void draw(ofCamera *cam);
     
     float getWidth();
     

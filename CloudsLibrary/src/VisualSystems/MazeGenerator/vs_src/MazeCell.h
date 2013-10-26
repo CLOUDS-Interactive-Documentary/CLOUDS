@@ -10,6 +10,7 @@
 #define __MazeGenerator__MazeCell__
 
 #include <ofMain.h>
+#include "ParamManager.h"
 
 class MazeCell
 {

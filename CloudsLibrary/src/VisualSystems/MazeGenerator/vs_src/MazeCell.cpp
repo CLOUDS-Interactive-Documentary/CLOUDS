@@ -48,12 +48,17 @@ void MazeCell::draw()
 //    ofRect(lx,ty,size,size);
     
     ofFill();
-    ofSetColor(200);
+    ofSetColor(ofColor::fromHsb(
+        ParamManager::getInstance().wallColor.r,
+        ParamManager::getInstance().wallColor.g,
+        ParamManager::getInstance().wallColor.b));
+    
+    float length = size + wallThickness - 0.1;
     
     if (top) {
         ofPushMatrix();
         ofTranslate(x*size+size/2, 0, y*size);
-        ofScale(size, wallHeight, wallThickness);
+        ofScale(length, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }
@@ -61,7 +66,7 @@ void MazeCell::draw()
         ofPushMatrix();
         ofTranslate((x+1)*size, 0, y*size+size/2);
         ofRotateY(90);
-        ofScale(size, wallHeight, wallThickness);
+        ofScale(length, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }
@@ -69,14 +74,14 @@ void MazeCell::draw()
         ofPushMatrix();
         ofTranslate(x*size, 0, y*size + size/2);
         ofRotateY(90);
-        ofScale(size, wallHeight, wallThickness);
+        ofScale(length, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }
     if (bottom) {
         ofPushMatrix();
         ofTranslate(x*size+size/2, 0, (y+1)*size);
-        ofScale(size, wallHeight, wallThickness);
+        ofScale(length, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }

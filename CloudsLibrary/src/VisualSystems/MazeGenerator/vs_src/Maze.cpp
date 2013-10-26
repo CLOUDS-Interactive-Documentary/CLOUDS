@@ -8,12 +8,17 @@
 
 #include "Maze.h"
 
-Maze::Maze()
+Maze::Maze(float cSize, float wThickness, float wHeight)
 {
+    cellSize = cSize;
+    wallThickness = wThickness;
+    wallHeight = wHeight;
+    
     for (int i=0; i<NUM_CELLS_X; i++) {
         for (int j=0; j<NUM_CELLS_Y; j++)
         {
-            cells[i][j] = new MazeCell(i, j, CELL_SIZE, WALL_THICKNESS, WALL_HEIGHT);
+            cells[i][j] = new MazeCell(i, j, cellSize,
+                wallThickness, wallHeight);
         }
     }
     
@@ -39,8 +44,8 @@ Maze::~Maze()
 void Maze::generate()
 {
     // set starting (exit) point
-    int randX = (int)ofRandom(NUM_CELLS_X);
-    int randY = (int)ofRandom(NUM_CELLS_Y);
+    int randX = 0;//(int)ofRandom(NUM_CELLS_X);
+    int randY = 0;//(int)ofRandom(NUM_CELLS_Y);
     currentCell = cells[randX][randY];
     currentCell->visit();
     currentCell->mazeExit = true;
@@ -49,27 +54,57 @@ void Maze::generate()
     finishedGenerating = false;
     
     // generate the maze
-    while (!finishedGenerating) {
-        generateStep();
-    }
+//    while (!finishedGenerating) {
+//        generateStep();
+//    }
 }
 
-void Maze::draw(int y)
+void Maze::draw(ofCamera *cam)
 {
-    int yLimit = min(y+60, NUM_CELLS_Y);
+    if (!finishedGenerating) {
+        for (int i=0; i<5; i++) {
+            generateStep();
+        }
+    }
+
+    // draw the ground
+    ofFill();
+    ofSetColor(ofColor::fromHsb(
+            ParamManager::getInstance().groundColor.r,
+            ParamManager::getInstance().groundColor.g,
+            ParamManager::getInstance().groundColor.b));
+    
+    ofPushMatrix();
+    ofTranslate(NUM_CELLS_X*cellSize/2, -wallHeight/2, NUM_CELLS_Y*cellSize/2);
+    ofScale(NUM_CELLS_X*cellSize, 1, NUM_CELLS_Y*cellSize);
+    ofBox(1);
+    ofPopMatrix();
+    
+    
+    // draw the cells
+    int yStart = cam->getPosition().z/cellSize;
+    int yLimit = min(yStart+60, NUM_CELLS_Y);
     
     for (int i=0; i<NUM_CELLS_X; i++)
     {
-        for (int j=y; j<yLimit; j++)
+        for (int j=yStart; j<yLimit; j++)
         {
-            cells[i][j]->draw();
+            // make the visual effect of the maze beeing generated.
+            if (j > yLimit-10) {
+                if ((int)ofRandom(10-j) == 0) {
+                    cells[i][j]->draw();
+                }
+            }
+            else {
+                cells[i][j]->draw();
+            }
         }
     }
 }
 
 float Maze::getWidth()
 {
-    return NUM_CELLS_X*CELL_SIZE;
+    return NUM_CELLS_X*cellSize;
 }
 
 void Maze::generateStep()
