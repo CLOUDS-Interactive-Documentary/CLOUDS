@@ -5,44 +5,29 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 
+/*
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-    
-    customGui->addLabel("Solid Sphere");
-    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
-    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
-    customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
-    
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
+	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
+	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
+	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+
+	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
+	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
+	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
 	
-	
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti ::selfGuiEvent);
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+ 
+ */	
 }
 
 void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
@@ -76,6 +61,13 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
 
 
 	ofBackground(0);
+    for(int i = 0; i<NWALKERS; i++){
+        
+        walkers[i] = *new Walker();
+
+        
+    }
+
     
    
     

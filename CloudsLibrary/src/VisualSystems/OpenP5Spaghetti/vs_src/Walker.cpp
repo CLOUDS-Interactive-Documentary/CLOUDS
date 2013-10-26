@@ -27,7 +27,7 @@ void Walker::init(int _nParticles, ofColor _color){
         i = 0;
     
         ofVec3f position;
-        ofColor color;
+        ofColor color = ((ofRandom(255), 100, 100));
     
         position.x = (ofRandom(3) - 1.5);
         position.y = (ofRandom(3) - 1.5);
@@ -60,27 +60,27 @@ void Walker::step(){
     
         struct particle newParticle;
         newParticle.position = particles[i].position;
-        newParticle.color = particle.color;
+        //newParticle.color = particle.color;
         particles.push_back(newParticle);
     
         i++;
         
-        if( position.x < minX){
+        if( particles[i].position.x < minX){
             minX = particles[i].position.x;
         }
-        if( position.x > maxX){
+        if( particles[i].position.x > maxX){
             maxX = particles[i].position.x;
         }
-        if( position.y < minY){
+        if( particles[i].position.y < minY){
             minY = particles[i].position.y;
         }
-        if( position.y > maxY){
+        if( particles[i].position.y > maxY){
             maxY =  particles[i].position.y;
         }
-        if( position.z < minZ){
+        if( particles[i].position.z < minZ){
             minZ =  particles[i].position.z;
         }
-        if( position.z > maxZ){
+        if( particles[i].position.z > maxZ){
             maxZ =  particles[i].position.z;
         }
         
@@ -95,7 +95,7 @@ void Walker::step(){
 void Walker::draw(){
         
         
-        ofColor color;
+      //  ofColor color;
         ofVec3f point;
         ofVboMesh mesh;
         int idx = 0;
@@ -116,6 +116,6 @@ void Walker::draw(){
             
         }
         
-        mesh.drawVertices()
-        
+    mesh.drawVertices();
+    
 };
