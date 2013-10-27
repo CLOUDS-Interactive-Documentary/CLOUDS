@@ -929,8 +929,8 @@
 		8584983A181B0F3A00148EF5 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				8584983B181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
 				8584983C181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.h */,
+				8584983B181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
 				85FAB6A1181B70A200676607 /* Walker.h */,
 				85FAB6A2181B713200676607 /* Walker.cpp */,
 			);

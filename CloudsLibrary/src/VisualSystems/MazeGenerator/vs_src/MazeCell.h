@@ -39,6 +39,7 @@ private:
     int x, y;
     bool visited;
     bool searched;
+    float wallLength;
     
 };
 

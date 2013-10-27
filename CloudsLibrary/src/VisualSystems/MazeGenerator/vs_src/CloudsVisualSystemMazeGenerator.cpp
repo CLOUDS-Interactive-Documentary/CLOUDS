@@ -28,13 +28,21 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 
     customGui->addSpacer();
     customGui->addLabel("CAMERA");
-    customGui->addSlider("CAM SPEED", 0, 10, &pm->cameraSpeed);
+    customGui->addSlider("CAM SPEED", 0, 100, &pm->cameraSpeed);
+    customGui->addSlider("CAM HEIGHT", 0, 1000, &pm->cameraHeight);
+    customGui->addSlider("CAM ANGLE", 0, 360, &pm->cameraAngle);
 
     customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
 
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
 
+    customGui->addSpacer();
+    customGui->addToggle("LIGHT DIRECTION ANGLE", &bLights);
+    customGui->addSlider("LX", 0, 360, &lightAng.x);
+    customGui->addSlider("LY", 0, 360, &lightAng.y);
+    customGui->addSlider("LZ", 0, 360, &lightAng.z);
+    
     customGui->addSpacer();
     customGui->addLabel("COLORS");
     customGui->addLabel("GROUND COLOR", OFX_UI_FONT_SMALL);
@@ -58,6 +66,12 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
     customGui->addMinimalSlider("SB", 0.0, 255, &(pm->sideWallsColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
+    customGui->addLabel("GENERATOR COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("NH", 0.0, 255, &(pm->generatorColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("NS", 0.0, 255, &(pm->generatorColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("NB", 0.0, 255, &(pm->generatorColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
 #if 0
     customGui->addLabel("PHYSICS");
@@ -128,10 +142,14 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
-    maze = new Maze(30, 4, 30);
-    maze->generate();
+//    maze = new Maze(30, 4, 30);
+    maze[0] = new Maze(60, 4, 40);
+    maze[0]->generate();
     
-    mazeCam = new MazeCamera(maze->getWidth()/2, 180, 100);
+    mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
+    
+    light = new ofLight();
+    light->setDirectional();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -159,7 +177,13 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
     mazeCam->update();
-    maze->update(mazeCam);
+    
+    maze[0]->update(mazeCam);
+
+    if (bLights) {
+        setLightOri(light, lightAng);
+
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -167,8 +191,17 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
     mazeCam->begin();
+
+    if (bLights) {
+        light->enable();
+    }
     
-    maze->draw(mazeCam);
+    maze[0]->draw(mazeCam);
+    mazeCam->draw();
+    
+    if (bLights) {
+        light->disable();
+    }
     
     mazeCam->end();
 }
@@ -193,7 +226,8 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMazeGenerator::selfExit()
 {
-    delete maze;
+    delete maze[0];
+    
     delete mazeCam;
 }
 
@@ -223,4 +257,15 @@ void CloudsVisualSystemMazeGenerator::selfMousePressed(ofMouseEventArgs& data){
 
 void CloudsVisualSystemMazeGenerator::selfMouseReleased(ofMouseEventArgs& data){
 	
+}
+
+void
+CloudsVisualSystemMazeGenerator::setLightOri(ofLight* light, ofVec3f rot)
+{
+    ofVec3f xax(1, 0, 0);
+    ofVec3f yax(0, 1, 0);
+    ofVec3f zax(0, 0, 1);
+    ofQuaternion q;
+    q.makeRotate(rot.x, xax, rot.y, yax, rot.z, zax);
+    light->setOrientation(q);
 }

@@ -8,11 +8,12 @@
 
 #include "Maze.h"
 
-Maze::Maze(float cSize, float wThickness, float wHeight)
+Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
 {
     cellSize = cSize;
     wallThickness = wThickness;
     wallHeight = wHeight;
+    pos = p;
     
     for (int i=0; i<NUM_CELLS_X; i++) {
         for (int j=0; j<NUM_CELLS_Y; j++)
@@ -58,6 +59,10 @@ void Maze::generate()
 //    while (!finishedGenerating) {
 //        generateStep();
 //    }
+//    for (int i=0; i<10000; i++)
+//    {
+//        generateStep();
+//    }
 }
 
 void Maze::update(ofCamera *cam)
@@ -71,6 +76,8 @@ void Maze::update(ofCamera *cam)
 
 void Maze::draw(ofCamera *cam)
 {
+    ofPushMatrix();
+    ofTranslate(pos);
     // for tiling
     int yStart = cam->getPosition().z/cellSize-5;
     int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead, NUM_CELLS_Y);
@@ -92,12 +99,12 @@ void Maze::draw(ofCamera *cam)
     // draw side walls
     ofSetColor(ParamManager::getInstance().getSideWallsColor());
     ofPushMatrix();
-    ofTranslate(-1, 200, middle*cellSize);
+    ofTranslate(0, 200-wallHeight/2, middle*cellSize);
     ofScale(wallThickness, 400, length*cellSize);
     ofBox(1);
     ofPopMatrix();
     ofPushMatrix();
-    ofTranslate(NUM_CELLS_X*cellSize+1, 200, middle*cellSize);
+    ofTranslate(NUM_CELLS_X*cellSize+0.1, 200-wallHeight/2, middle*cellSize);
     ofScale(wallThickness, 400, length*cellSize);
     ofBox(1);
     ofPopMatrix();
@@ -107,20 +114,11 @@ void Maze::draw(ofCamera *cam)
     {
         for (int j=yStart; j<yLimit; j++)
         {
-            // make the visual effect of the maze beeing generated.
-//            if (cells[i][j]->visible == false) {
-//                if (j > yLimit-2) {
-//                    if (ofRandom(80) < 1) {
-//                        cells[i][j]->visible = true;
-//                    }
-//                }
-//                else {
-//                    cells[i][j]->visible = true;
-//                }
-//            }
             cells[i][j]->draw(currentCell == cells[i][j]);
         }
     }
+    
+    ofPopMatrix();
 }
 
 float Maze::getWidth()
@@ -148,7 +146,6 @@ void Maze::generateStep()
         switch(dir) {
             case 0:
                 if (cury > 0 && cells[curx][cury-1]->notVisited()) {
-                    cout<<"Going north"<<endl;
                     currentCell->top = false;
                     currentCell = cells[curx][cury-1];
                     currentCell->visit();
@@ -161,7 +158,6 @@ void Maze::generateStep()
                 break;
             case 1:
                 if (curx < NUM_CELLS_X-1 && cells[curx+1][cury]->notVisited()) {
-                    cout<<"Going east"<<endl;
                     currentCell->right = false;
                     currentCell = cells[curx+1][cury];
                     currentCell->visit();
@@ -174,7 +170,6 @@ void Maze::generateStep()
                 break;
             case 2:
                 if (cury < min(NUM_CELLS_Y-1,currentYLimit-1) && cells[curx][cury+1]->notVisited()) {
-                    cout<<"Going south"<<endl;
                     currentCell->bottom = false;
                     currentCell = cells[curx][cury+1];
                     currentCell->visit();
@@ -187,7 +182,6 @@ void Maze::generateStep()
                 break;
             case 3:
                 if (curx > 0 && cells[curx-1][cury]->notVisited()) {
-                    cout<<"Going west"<<endl;
                     currentCell->left = false;
                     currentCell = cells[curx-1][cury];
                     currentCell->visit();

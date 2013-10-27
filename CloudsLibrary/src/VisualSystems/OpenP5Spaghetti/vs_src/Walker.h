@@ -16,7 +16,7 @@ class Walker {
     struct particle {
 	ofVec3f position;
     ofColor color; 
-    };
+};
 
 public:
     

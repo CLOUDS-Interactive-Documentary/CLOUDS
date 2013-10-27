@@ -96,8 +96,15 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 	}
 
 protected:
-    Maze* maze;
+    void setLightOri(ofLight* light, ofVec3f rot);
+    
+    Maze* maze[3];
     MazeCamera* mazeCam;
+    
+    ofLight *light;
+    ofVec3f lightAng;
+    
+    bool bLights;
     
     // preset stuff
     ofxUISuperCanvas* customGui;

@@ -12,6 +12,7 @@ ParamManager::ParamManager()
 {
     cameraSpeed = 1;
     cameraAngle = 45;
+    cameraHeight = 180;
     showAhead = 60;
 
 }
@@ -34,4 +35,9 @@ ofColor ParamManager::getWallColor()
 ofColor ParamManager::getSideWallsColor()
 {
     return ofColor::fromHsb(sideWallsColor.r, sideWallsColor.g, sideWallsColor.b);
+}
+
+ofColor ParamManager::getGeneratorColor()
+{
+    return ofColor::fromHsb(generatorColor.r, generatorColor.g, generatorColor.b);
 }

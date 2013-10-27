@@ -16,6 +16,8 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     wallThickness = t;
     wallHeight = h;
     
+    wallLength = size + wallThickness - 0.1;
+    
     top = left = right = bottom = true;
     mazeExit = searchStart = visited = searched = false;
     
@@ -31,7 +33,7 @@ void MazeCell::draw(bool isGenerator)
     if (isGenerator)
     {
         ofFill();
-        ofSetColor(255, 0, 0);
+        ofSetColor(ParamManager::getInstance().getGeneratorColor());
         ofPushMatrix();
         ofTranslate(x*size+size/2, 0, y*size+size/2);
         ofScale(size, size, size);
@@ -40,10 +42,7 @@ void MazeCell::draw(bool isGenerator)
     }
     
     ofFill();
-    ofSetColor(ofColor::fromHsb(
-        ParamManager::getInstance().wallColor.r,
-        ParamManager::getInstance().wallColor.g,
-        ParamManager::getInstance().wallColor.b));
+    ofSetColor(ParamManager::getInstance().getWallColor());
 
     if (top && bottom && right && left) {
         ofPushMatrix();
@@ -54,12 +53,10 @@ void MazeCell::draw(bool isGenerator)
         return;
     }
     
-    float length = size + wallThickness - 0.1;
-    
     if (top) {
         ofPushMatrix();
         ofTranslate(x*size+size/2, 0, y*size);
-        ofScale(length, wallHeight, wallThickness);
+        ofScale(wallLength, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }
@@ -67,28 +64,24 @@ void MazeCell::draw(bool isGenerator)
         ofPushMatrix();
         ofTranslate((x+1)*size, 0, y*size+size/2);
         ofRotateY(90);
-        ofScale(length, wallHeight, wallThickness);
-        ofBox(1);
-        ofPopMatrix();
-    }
-    if (left) {
-        ofPushMatrix();
-        ofTranslate(x*size, 0, y*size + size/2);
-        ofRotateY(90);
-        ofScale(length, wallHeight, wallThickness);
-        ofBox(1);
-        ofPopMatrix();
-    }
-    if (bottom) {
-        ofPushMatrix();
-        ofTranslate(x*size+size/2, 0, (y+1)*size);
-        ofScale(length, wallHeight, wallThickness);
+        ofScale(wallLength, wallHeight, wallThickness);
         ofBox(1);
         ofPopMatrix();
     }
     
-//    if (searched && (stack.search(this) > -1 )) {
-//        fill(20);
-//        ellipse((lx+rx)/2,(ty+by)/2,s/3,s/3);
+//    if (left) {
+//        ofPushMatrix();
+//        ofTranslate(x*size, 0, y*size + size/2);
+//        ofRotateY(90);
+//        ofScale(wallLength, wallHeight, wallThickness);
+//        ofBox(1);
+//        ofPopMatrix();
+//    }
+//    if (bottom) {
+//        ofPushMatrix();
+//        ofTranslate(x*size+size/2, 0, (y+1)*size);
+//        ofScale(wallLength, wallHeight, wallThickness);
+//        ofBox(1);
+//        ofPopMatrix();
 //    }
 }

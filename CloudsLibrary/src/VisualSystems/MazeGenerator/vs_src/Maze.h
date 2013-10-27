@@ -15,7 +15,7 @@
 #include "ParamManager.h"
 
 #define NUM_CELLS_X 31
-#define NUM_CELLS_Y 1000
+#define NUM_CELLS_Y 10000
 
 class Maze
 {
@@ -24,7 +24,8 @@ public:
     float wallThickness;
     float wallHeight;
     
-    Maze(float cSize, float wThick, float wHeight);
+//    Maze(float cSize, float wThick, float wHeight);
+    Maze(float cSize, float wThick, float wHeight, ofVec3f p = ofVec3f());
     ~Maze();
     void generate();
     
@@ -36,6 +37,8 @@ public:
     
 protected:
     void generateStep();
+    
+    ofVec3f pos;
     
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
