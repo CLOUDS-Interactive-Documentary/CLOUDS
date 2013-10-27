@@ -5,6 +5,7 @@
 CloudsSound::CloudsSound(){
 	storyEngine = NULL;
 	eventsRegistered = false;
+	maxSpeakerVolume = 1.0;
 }
 
 //--------------------------------------------------------------------
