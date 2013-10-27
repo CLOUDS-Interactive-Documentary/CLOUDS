@@ -9,7 +9,7 @@
 
 #include "CloudsSound.h"
 
-void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank)
+void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank)
 {
     
     float t, beatoffset;
@@ -38,7 +38,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     cout << "===============" << endl;
     
     // REVERB
-    REVERB(musicdur+7.0); // gimme some reverb
+    REVERB(outskip, musicdur+7.0); // gimme some reverb
     
     //
     // =========================
@@ -57,7 +57,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 float pick = (int)ofRandom(0, pitches[mh].notes.size());
                 float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
                 
-                MMODALBAR(i, 1., t_amp*0.2, t_freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
+                MMODALBAR(outskip+i, 1., t_amp*0.2, t_freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -76,7 +76,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 float pick = (int)ofRandom(0, pitches[mh].notes.size());
                 float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
                 
-                MBANDEDWG(i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.05, 0.15), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+                MBANDEDWG(outskip+i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.05, 0.15), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -95,8 +95,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 float pick = (int)ofRandom(0, pitches[mh].notes.size());
                 float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*0.5;
                 
-                WAVETABLE(i, ofRandom(0.1, 0.3), 0.05, t_freq, p, "wf_organ", "amp_sharpadsr");
-                WAVETABLE(i, ofRandom(0.1, 0.3), 0.05, t_freq*1.5, 1.-p, "wf_organ", "amp_sharpadsr");
+                WAVETABLE(outskip+i, ofRandom(0.1, 0.3), 0.05, t_freq, p, "wf_organ", "amp_sharpadsr");
+                WAVETABLE(outskip+i, ofRandom(0.1, 0.3), 0.05, t_freq*1.5, 1.-p, "wf_organ", "amp_sharpadsr");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
             p = 1.0-p;
@@ -112,7 +112,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
             int nx = ofRandom(2,12);
             int ny = ofRandom(2,12);
-            MMESH2D(i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
         }
         
     }
@@ -125,7 +125,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
             int nx = ofRandom(2,12);
             int ny = ofRandom(2,12);
-            MMESH2D(i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
         }
         
     }
@@ -137,8 +137,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
-            WAVETABLE(i, ofRandom(3., 10.), 0.025, freq, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
-            WAVETABLE(i, ofRandom(3., 10.), 0.025, freq*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+            WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+            WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
         }
         
     }
@@ -155,9 +155,9 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             float of2 = d1*ofRandom(0.3, 0.7);
             float d2 = d1+of1+of2;
             float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote+12., pitches[mh].scale));
-            WAVETABLE(i, d0, 0.02, freq, ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
-            WAVETABLE(i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
-            WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+            WAVETABLE(outskip+i, d0, 0.02, freq, ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+            WAVETABLE(outskip+i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
+            WAVETABLE(outskip+i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_slowwaveshi", "amp_triangle");
         }
         
     }
@@ -175,9 +175,9 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 float of2 = d1*ofRandom(0.3, 0.7);
                 float d2 = d1+of1+of2;
                 float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote+12., pitches[mh].scale));
-                WAVETABLE(i, d0, 0.02, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i, d0, 0.02, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
                 pick = (pick+1) % pitches[mh].notes.size();
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
@@ -198,8 +198,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             pitch = scale(pitch, pitches[mh].scale);
             // cout << "doing pitch: " << ptos(pitch) << endl;
             float freq = mtof(pitch);
-            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-            WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
             pick = (pick+1) % pitches[mh].notes.size();
         }
     }
@@ -218,8 +218,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 pitch = scale(pitch, pitches[mh].scale);
                 // cout << "doing pitch: " << ptos(pitch) << endl;
                 float freq = mtof(pitch);
-                WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
                 pick = (pick+1) % pitches[mh].notes.size();
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
@@ -239,8 +239,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             pitch = scale(pitch, pitches[mh].scale);
             // cout << "doing pitch: " << ptos(pitch) << endl;
             float freq = mtof(pitch);
-            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-            WAVETABLE(i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(outskip+i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
             pick = (pick+1) % pitches[mh].notes.size();
         }
     }
@@ -252,8 +252,8 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*2.;
-            MBLOWBOTL(i, ofRandom(1., 3.), 0.25, freq, ofRandom(0.05, 0.2), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
-            MBLOWBOTL(i+tempo*floor(ofRandom(0, 4)), ofRandom(1., 3.), 0.25, freq*1.5, ofRandom(0.01, 0.08), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
+            MBLOWBOTL(outskip+i, ofRandom(1., 3.), 0.25, freq, ofRandom(0.05, 0.2), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
+            MBLOWBOTL(outskip+i+tempo*floor(ofRandom(0, 4)), ofRandom(1., 3.), 0.25, freq*1.5, ofRandom(0.01, 0.08), ofRandom(0.5, 0.9), ofRandom(0.,1.), "amp_sharp", "amp_triangle");
         }
         
     }
@@ -265,7 +265,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale))*2.;
-            FNOISE3(i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
+            FNOISE3(outskip+i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
         }
         
     }
@@ -277,16 +277,16 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
-            WAVETABLE(i, 2., 0.025, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            WAVETABLE(outskip+i, 2., 0.025, mtof(pitch), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
             for(j=0;j<tempo;j+=(tempo/floor(ofRandom(4,8))))
             {
                 
-                STRUM(i+j, 1.0, 0.05, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
+                STRUM(outskip+i+j, 1.0, 0.05, mtof(pitch), ofRandom(1.0, 5.0), ofRandom(1.0, 5.0), ofRandom(1.0));
                 int tr = ofRandom(0, 5);
                 if(tr==0) pitch+=7;
             }
         }
-        PANECHO(0., 0., musicdur+5., 1., tempo*4., tempo*6., 0.7, 7.);
+        PANECHO(outskip, 0., musicdur+5., 1., tempo*4., tempo*6., 0.7, 7.);
         
     }
     
@@ -298,7 +298,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             int pick = (int)ofRandom(0, pitches[mh].notes.size());
             float pitch = scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale);
-            MBANDEDWG(i, ofRandom(7., 15.0), ofRandom(0.05, 0.15), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+            MBANDEDWG(outskip+i, ofRandom(7., 15.0), ofRandom(0.05, 0.15), mtof(pitch), ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
             
         }
     }
@@ -313,11 +313,11 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                 
                 float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
                 pick = (int)ofRandom(0, 3);
-                if(pick<2) STEREO(i, 0., 0.5, t_amp, 0.5, "BD"); else STEREO(i, 0., 0.5, t_amp, 0.5, "SD");
+                if(pick<2) STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "BD"); else STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "SD");
             }
             pick = ofRandom(0,4);
-            if(pick<2) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "CH");
-            else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "OH");
+            if(pick<2) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "CH");
+            else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "OH");
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
     }
@@ -330,15 +330,15 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
         {
             if(rhythms[mr].beats[bcount]>0.) { // this is a note!
                 float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
-                STEREO(i, 0., 0.5, t_amp, 0.5, "BD2");
+                STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "BD2");
             }
             else
             {
                 pick = ofRandom(0,5);
-                if(pick==1) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
-                else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
-                else if(pick==3) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
-                else if(pick==4) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+                if(pick==1) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
+                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
+                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
+                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -349,7 +349,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
-            SOUNDLOOP(i, tl1, tempo*64., 0.25, "testloop1");
+            SOUNDLOOP(outskip+i, tl1, tempo*64., 0.25, "testloop1");
         }
     }
     
@@ -358,7 +358,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
-            SOUNDLOOP(i, tl2, tempo*64., 0.25, "testloop2");
+            SOUNDLOOP(outskip+i, tl2, tempo*64., 0.25, "testloop2");
         }
     }
     
@@ -367,7 +367,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
-            SOUNDLOOP(i, tl3, tempo*64., 0.25, "testloop3");
+            SOUNDLOOP(outskip+i, tl3, tempo*64., 0.25, "testloop3");
         }
     }
     
@@ -376,7 +376,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     {
         for(i = 0;i<musicdur;i+=tempo*64)
         {
-            SOUNDLOOP(i, bl1, tempo*64., 0.25, "bassloop1");
+            SOUNDLOOP(outskip+i, bl1, tempo*64., 0.25, "bassloop1");
         }
     }
     
@@ -395,7 +395,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
                     if(p<1)
                     {
                         cout << "Playing: " << looperSamples[i].handle << " of length " << looperSamples[i].length << " at " << j << endl;
-                        SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, ofRandom(0.,1));
+                        SOUNDLOOPMONO(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, ofRandom(0.,1));
                     }
                 }
             }
@@ -412,7 +412,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
             {
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {
-                    SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, (float)i/looperSamples.size()-1);
+                    SOUNDLOOPMONO(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, (float)i/looperSamples.size()-1);
                 }
             }
         }
@@ -425,7 +425,7 @@ void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur, 
     //
     
     // schedule end event at time + ring-down
-    SCHEDULEBANG(musicdur+7.0);
+    SCHEDULEBANG(outskip+musicdur+7.0);
     
 }
 

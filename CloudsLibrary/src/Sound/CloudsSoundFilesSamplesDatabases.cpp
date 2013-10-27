@@ -71,34 +71,35 @@ void CloudsSound::loadRTcmixSamples()
     cout << "LOADING SOUNDS" << endl;
     cout << "==============" << endl;
     string spath = getDataPath() + "sound/samps/";
-    LOADSOUND(spath + "BD.aif", "BD");
-    LOADSOUND(spath + "SD.aif", "SD");
-    LOADSOUND(spath + "CH.aif", "CH");
-    LOADSOUND(spath + "OH.aif", "OH");
+    ofDirectory sdir(spath);
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD.aif", "BD");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "SD.aif", "SD");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "CH.aif", "CH");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "OH.aif", "OH");
     
-    LOADSOUND(spath + "BD2.aif", "BD2");
-    LOADSOUND(spath + "VD1.aif", "VD1");
-    LOADSOUND(spath + "VD2.aif", "VD2");
-    LOADSOUND(spath + "VD3.aif", "VD3");
-    LOADSOUND(spath + "VD4.aif", "VD4");
-    tl1 = LOADSOUND(spath + "testloop1.aif", "testloop1");
-    tl2 = LOADSOUND(spath + "testloop2.aif", "testloop2");
-    tl3 = LOADSOUND(spath + "testloop3.aif", "testloop3");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "BD2.aif", "BD2");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD1.aif", "VD1");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD2.aif", "VD2");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD3.aif", "VD3");
+    LOADSOUND(sdir.getAbsolutePath() + "/" + "VD4.aif", "VD4");
+    tl1 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop1.aif", "testloop1");
+    tl2 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop2.aif", "testloop2");
+    tl3 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop3.aif", "testloop3");
     
     //some path, may be absolute or relative to bin/data
     spath = spath+"loops/";
-    ofDirectory dir(spath);
+    ofDirectory ldir(spath);
     //only show sound files
-    dir.allowExt("wav");
-    dir.allowExt("aif");
+    ldir.allowExt("wav");
+    ldir.allowExt("aif");
     //populate the directory object
-    dir.listDir();
+    ldir.listDir();
     
     //go through and print out all the paths
-    for(int i = 0; i < dir.numFiles(); i++){
+    for(int i = 0; i < ldir.numFiles(); i++){
         lukeSample foo;
-        foo.filename = dir.getPath(i);
-        foo.handle = dir.getName(i);
+        foo.filename = ldir.getAbsolutePath() + "/" + ldir.getName(i);
+        foo.handle = ldir.getName(i);
         foo.length = LOADSOUND(foo.filename, foo.handle);
         foo.bank = ofSplitString(foo.handle, "_")[0];
         string len = ofSplitString(foo.handle, "_")[2];
