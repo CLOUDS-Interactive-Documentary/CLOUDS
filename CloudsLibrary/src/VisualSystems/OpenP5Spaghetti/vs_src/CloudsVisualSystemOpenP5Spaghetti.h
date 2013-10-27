@@ -11,7 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Walker.h"
+#include "Walker.cpp"
 
 #define NWALKERS 2
 
@@ -25,7 +25,7 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "OpenP5Spaghetti ";
+		return "OpenP5Spaghetti";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -105,5 +105,5 @@ protected:
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
+
 };
