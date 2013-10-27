@@ -172,13 +172,17 @@ void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
     
     int preset = ofRandom(0, presets.size());
     
-    mcolor = presets[preset].color;
+    morch = presets[preset].instruments;
+//    morch.clear();
+//    for(int i = 0;i<presets[preset].instruments.size();i++)
+//    {
+//        morch.push_back(presets[preset].instruments[i]);
+//    }
     mharmony = presets[preset].harmony;
     mrhythm = presets[preset].rhythm;
     MASTERTEMPO = presets[preset].tempo;
     
-    cout << "PLAYING MUSIC: " << mcolor << " " << mharmony << " " << mrhythm << " " << musicdur << endl;
-    startMusic(mcolor, mharmony, mrhythm, musicdur);
+    startMusic(morch, mharmony, mrhythm, musicdur);
     
 }
 
@@ -239,15 +243,15 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     {
         first_vec = 0;
         // launch initial effects chain (reverb)
-        REVERB(60*60*12); // gimme twelve hours of reverb, baby.
+        //REVERB(60*60*12); // gimme twelve hours of reverb, baby.
 		
         // play pretty intro melody
-//        for(int i = 0;i<12;i++)
-//        {
-//            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
-//            STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
-//            //STEREO(i*0.1, 0., 0.2, 0.05, i/11.0, "BD");
-//        }
+        for(int i = 0;i<12;i++)
+        {
+            WAVETABLE(i*0.1, 0.1, 0.05, mtof(48.+(i*5)+7), ofRandom(1.0), "wf_organ", "amp_sharpadsr");
+            STRUM(i*0.1, 1.0, 0.1, mtof(48.+(i*5)), 1.0, 1.0, ofRandom(1.0));
+            STEREO(i*0.1, 0., 0.2, 0.05, i/11.0, "BD");
+        }
         // launch initial effects chain (reverb)
         REVERB(5.0); // gimme some reverb
     }
@@ -304,19 +308,19 @@ int CloudsSound::returnColor(string c)
 
 void CloudsSound::loadRTcmixFiles()
 {
-    loadcolors("colors.txt", colors);
-    cout << "colors:" << endl;
-    for(int i = 0;i<colors.size();i++)
+    cout << "==================" << endl;
+    cout << "LOADING SOUND DATA" << endl;
+    cout << "==================" << endl;
+
+    registerOrchs();
+    cout << "ORCHESTRA:" << endl;
+    for(int i = 0;i<orchestra.size();i++)
     {
-        for(int j = 0;j<colors[i].instruments.size();j++)
-        {
-            cout << colors[i].instruments[j] << " ";
-        }
-        cout << endl;
+        cout << orchestra[i] << endl;
     }
     
     loadrhythms("rhythms.txt", rhythms);
-    cout << "rhythms:" << endl;
+    cout << "RHYTHMS:" << endl;
     for(int i = 0;i<rhythms.size();i++)
     {
         for(int j = 0;j<rhythms[i].beats.size();j++)
@@ -327,7 +331,7 @@ void CloudsSound::loadRTcmixFiles()
     }
     
     loadpitches("pitches.txt", pitches);
-    cout << "pitches:" << endl;
+    cout << "PITCHES:" << endl;
     for(int i = 0;i<pitches.size();i++)
     {
         for(int j = 0;j<pitches[i].notes.size();j++)
@@ -338,28 +342,106 @@ void CloudsSound::loadRTcmixFiles()
     }
     
     loadpresets("presets.txt", presets);
-    cout << "presets:" << endl;
+    cout << "PRESETS:" << endl;
     for(int i = 0;i<presets.size();i++)
     {
-        cout << presets[i].color << " ";
+        for(int j = 0;j<presets[i].instruments.size();j++)
+        {
+            cout << presets[i].instruments[j] << " ";
+        }
         cout << presets[i].harmony << " ";
         cout << presets[i].rhythm << " ";
         cout << presets[i].tempo << " ";
         cout << endl;
     }
-    
-    
+
+    cout << "====" << endl;
+    cout << "DONE" << endl;
+    cout << "====" << endl;
+
 }
 
 void CloudsSound::loadRTcmixSamples()
 {
-    LOADSOUND("samps/BD.aif", "BD");
-    LOADSOUND("samps/SD.aif", "SD");
-    LOADSOUND("samps/CH.aif", "CH");
-    LOADSOUND("samps/OH.aif", "OH");
+    cout << "==============" << endl;
+    cout << "LOADING SOUNDS" << endl;
+    cout << "==============" << endl;
+    string spath = getDataPath() + "sound/samps/";
+    LOADSOUND(spath + "BD.aif", "BD");
+    LOADSOUND(spath + "SD.aif", "SD");
+    LOADSOUND(spath + "CH.aif", "CH");
+    LOADSOUND(spath + "OH.aif", "OH");
+
+    LOADSOUND(spath + "BD2.aif", "BD2");
+    LOADSOUND(spath + "VD1.aif", "VD1");
+    LOADSOUND(spath + "VD2.aif", "VD2");
+    LOADSOUND(spath + "VD3.aif", "VD3");
+    LOADSOUND(spath + "VD4.aif", "VD4");
+    tl1 = LOADSOUND(spath + "testloop1.aif", "testloop1");
+    tl2 = LOADSOUND(spath + "testloop2.aif", "testloop2");
+    tl3 = LOADSOUND(spath + "testloop3.aif", "testloop3");
+    
+    //some path, may be absolute or relative to bin/data
+    spath = spath+"loops/";
+    ofDirectory dir(spath);
+    //only show sound files
+    dir.allowExt("wav");
+    dir.allowExt("aif");
+    //populate the directory object
+    dir.listDir();
+    
+    //go through and print out all the paths
+    for(int i = 0; i < dir.numFiles(); i++){
+        lukeSample foo;
+        foo.filename = dir.getPath(i);
+        foo.handle = dir.getName(i);
+        foo.length = LOADSOUND(foo.filename, foo.handle);
+        foo.bank = ofSplitString(foo.handle, "_")[0];
+        string len = ofSplitString(foo.handle, "_")[2];
+        len = ofSplitString(len, ".")[0];
+        foo.numbeats = ofToInt(len);
+        //cout << foo.handle << " " << foo.bank << " " << foo.numbeats << " " << foo.length << endl;
+        looperSamples.push_back(foo);
+    }
+    
+    cout << "====" << endl;
+    cout << "DONE" << endl;
+    cout << "====" << endl;
+    
+
+
 }
 
-void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
+
+void CloudsSound::registerOrchs()
+{
+    orchestra.clear();
+    orchestra.push_back("slowwaves");
+    orchestra.push_back("modalbeats");
+    orchestra.push_back("helmholtz");
+    orchestra.push_back("meshbeats");
+    orchestra.push_back("filternoise");
+    orchestra.push_back("lowwavepulse");
+    orchestra.push_back("slowwaveshi");
+    orchestra.push_back("slowmeshbeats");
+    orchestra.push_back("slowwave");
+    orchestra.push_back("strumsine");
+    orchestra.push_back("waveguide");
+    orchestra.push_back("waveguidebeats");
+    orchestra.push_back("phatbeatz");
+    orchestra.push_back("vermontbeatz");
+    orchestra.push_back("waveshipatterned");
+    orchestra.push_back("testloop3");
+    orchestra.push_back("kissmyarp");
+    orchestra.push_back("testloop1");
+    orchestra.push_back("reichomatic");
+    orchestra.push_back("glassomatic");
+    orchestra.push_back("kissmyarpfast");
+    orchestra.push_back("kissmyarpsynch");
+}
+
+
+void CloudsSound::startMusic(vector<string> mo, int mh, int mr, float musicdur)
 {
     
     float t, beatoffset;
@@ -373,6 +455,20 @@ void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
 	
     flush_sched(); // kill previous music
     
+    vector<string> ilist = mo; // list of instruments
+    
+    
+    cout << "===============" << endl;
+    cout << "MAKING MUSIC!!!" << endl;
+    cout << musicdur << " " << "seconds" << endl;
+    cout << "harmony: " << mh << ", rhythm: " << mr << endl;
+    cout << "orchestration:" << endl;
+    for(int i = 0;i<ilist.size();i++)
+    {
+        cout << ilist[i] << endl;
+    }
+    cout << "===============" << endl;
+    
     // REVERB
     REVERB(musicdur+7.0); // gimme some reverb
     
@@ -381,8 +477,6 @@ void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
     // BEGIN ORCHESTRATION BLOCK
     // =========================
     //
-    
-    vector<string> ilist = colors[mc].instruments; // list of instruments
     
     // MODALBEATS
     if (find(ilist.begin(), ilist.end(), "modalbeats") != ilist.end())
@@ -500,6 +594,89 @@ void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
         
     }
     
+    // WAVESHIPATTERNED
+    if (find(ilist.begin(), ilist.end(), "waveshipatterned") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                float d0 = ofRandom(0.1, 0.5);
+                float of1 = d0*ofRandom(0.3, 0.7);
+                float d1 = d0+of1;
+                float of2 = d1*ofRandom(0.3, 0.7);
+                float d2 = d1+of1+of2;
+                float freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote+12., pitches[mh].scale));
+                WAVETABLE(i, d0, 0.02, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(i+of1, d1, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(i+of2, d2, 0.02, freq*ofRandom(0.99, 1.01), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                pick = (pick+1) % pitches[mh].notes.size();
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    
+    // KISS MY ARP
+    if (find(ilist.begin(), ilist.end(), "kissmyarp") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2)
+        {
+            int oct = ofRandom(0., 1.)*12;
+            int pitch = pitches[mh].notes[pick] % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            // cout << "doing pitch: " << ptos(pitch) << endl;
+            float freq = mtof(pitch);
+            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
+        }
+    }
+    
+    // KISS MY ARP SYNCH
+    if (find(ilist.begin(), ilist.end(), "kissmyarpsynch") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo*2)
+        {
+            if(rhythms[mr].beats[bcount]>0.) {
+                int oct = ofRandom(0., 1.)*12;
+                int pitch = pitches[mh].notes[pick] % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                // cout << "doing pitch: " << ptos(pitch) << endl;
+                float freq = mtof(pitch);
+                WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                pick = (pick+1) % pitches[mh].notes.size();
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    // KISS MY ARP FAST
+    if (find(ilist.begin(), ilist.end(), "kissmyarpfast") != ilist.end())
+    {
+        int pick = 0;
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            int oct = ofRandom(0., 2.)*12;
+            int pitch = pitches[mh].notes[pick] % 12;
+            pitch+=pitches[mh].basenote;
+            pitch+=oct;
+            pitch = scale(pitch, pitches[mh].scale);
+            // cout << "doing pitch: " << ptos(pitch) << endl;
+            float freq = mtof(pitch);
+            WAVETABLE(i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            WAVETABLE(i+tempo*3, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            pick = (pick+1) % pitches[mh].notes.size();
+        }
+    }
+    
     // HELMHOLTZ
     if (find(ilist.begin(), ilist.end(), "helmholtz") != ilist.end())
     {
@@ -574,6 +751,102 @@ void CloudsSound::startMusic(int mc, int mh, int mr, float musicdur)
             if(pick<2) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "CH");
             else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "OH");
             bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    // VERMONTBEATZ
+    if (find(ilist.begin(), ilist.end(), "vermontbeatz") != ilist.end())
+    {
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(rhythms[mr].beats[bcount]>0.) { // this is a note!
+                float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
+                STEREO(i, 0., 0.5, t_amp, 0.5, "BD2");
+            }
+            else
+            {
+                pick = ofRandom(0,5);
+                if(pick==1) STEREO(i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
+                else if(pick==2) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
+                else if(pick==3) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
+                else if(pick==4) STEREO(i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+            }
+            bcount = (bcount+1)%rhythms[mr].beats.size();
+        }
+    }
+    
+    // TESTLOOP1
+    if (find(ilist.begin(), ilist.end(), "testloop1") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl1, tempo*64., 0.25, "testloop1");
+        }
+    }
+    
+    // TESTLOOP2
+    if (find(ilist.begin(), ilist.end(), "testloop2") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl2, tempo*64., 0.25, "testloop2");
+        }
+    }
+    
+    // TESTLOOP3
+    if (find(ilist.begin(), ilist.end(), "testloop3") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64.)
+        {
+            SOUNDLOOP(i, tl3, tempo*64., 0.25, "testloop3");
+        }
+    }
+    
+    // BASSLOOP1
+    if (find(ilist.begin(), ilist.end(), "bassloop1") != ilist.end())
+    {
+        for(i = 0;i<musicdur;i+=tempo*64)
+        {
+            SOUNDLOOP(i, bl1, tempo*64., 0.25, "bassloop1");
+        }
+    }
+    
+    // REICHOMATIC
+    if (find(ilist.begin(), ilist.end(), "reichomatic") != ilist.end())
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==mbank)
+            {
+                cout << "Sample: " << looperSamples[i].handle << endl;
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    int p = ofRandom(0, 3);
+                    if(p<1)
+                    {
+                        cout << "Playing: " << looperSamples[i].handle << " of length " << looperSamples[i].length << " at " << j << endl;
+                        SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, ofRandom(0.,1));
+                    }
+                }
+            }
+        }
+    }
+    
+    // GLASSOMATIC
+    if (find(ilist.begin(), ilist.end(), "glassomatic") != ilist.end())
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==mbank)
+            {
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    SOUNDLOOPMONO(j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, (float)i/looperSamples.size()-1);
+                }
+            }
         }
     }
     
