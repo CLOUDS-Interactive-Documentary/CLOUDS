@@ -49,7 +49,7 @@ class CloudsSound {
 
     // Luke's stuff
 	//
-    void startMusic(vector<string> mo, int mh, int mr, float musicdur);
+    void startMusic(vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank);
     void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
@@ -61,12 +61,8 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int returnQuadrant(int x, int y);
     int returnColor(string c);
     int first_vec;
-    int osx, osy;
-    int quadrant;
-    float sx, sy, delta;
     float allownote;
     int mharmony, mrhythm;
     vector<string> morch;

@@ -12,6 +12,8 @@
 		6472185718198E2B0024C21E /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6472185518198E2B0024C21E /* fdog.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1DE1C2017DD13460020BBB0 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE1C1F17DD13460020BBB0 /* librtcmix.a */; };
+		C1E2A439181DC22A00F0586B /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */; };
+		C1E2A43C181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -324,6 +326,8 @@
 		6472185518198E2B0024C21E /* fdog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fdog.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1DE1C1F17DD13460020BBB0 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
+		C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFuncs.cpp; sourceTree = "<group>"; };
+		C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFilesSamplesDatabases.cpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -3440,6 +3444,8 @@
 				E7BAFBE3176A4BE20097AC71 /* RTCMix */,
 				E7BAFBD2176A43780097AC71 /* CloudsSound.h */,
 				E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */,
+				C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */,
+				C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -4070,6 +4076,8 @@
 				6472185618198E2B0024C21E /* ETF.cpp in Sources */,
 				6472185718198E2B0024C21E /* fdog.cpp in Sources */,
 				E759EE0C181D8FE000FA1E90 /* ofxSimpleSpline.cpp in Sources */,
+				C1E2A439181DC22A00F0586B /* CloudsSoundFuncs.cpp in Sources */,
+				C1E2A43C181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

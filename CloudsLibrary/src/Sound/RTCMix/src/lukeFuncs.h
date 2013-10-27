@@ -58,7 +58,6 @@ struct lukeSample {
     float numbeats;
 };
 
-
 // luke's music functions
 double mtof(double f, double tuning);
 double mtof(double f);

@@ -41,7 +41,7 @@ void REVERB(double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -15., -15., 3.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", time);
     parse_score(thebuf, bx);
 }
 
@@ -54,7 +54,7 @@ void SCHEDULEBANG(double time)
     parse_score(thebuf, bx);
 }
 
-// sets up rtinput() for a signal processing routine that requires an audio file
+// loads an audio file into RAM as a buffer handle
 float LOADSOUND(string file, string handle)
 {
     ofVideoPlayer playa;
@@ -82,6 +82,7 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     
 }
 
+// loop a sound (transposition auto-corrected based on ideal length)
 void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle)
 {
     float incr = loopdur/looplen;
@@ -104,6 +105,7 @@ void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, strin
     
 }
 
+// loop a sound in, well, mono
 void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan)
 {
     float incr = loopdur/looplen;
