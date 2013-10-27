@@ -315,6 +315,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == '\\'){
 		if(showingIntro){
 			introSequence.autoSelectQuestion();
+            scratchPlayer.stop();
+            scratchPlayer.unloadSound();
+            
 		}
 	}
 	
