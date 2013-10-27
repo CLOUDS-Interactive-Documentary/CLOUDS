@@ -1125,10 +1125,13 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	
 	ofMultMatrix( modelTransform.getGlobalTransformMatrix() );
 	
-	ofTranslate( positionOffset - boundCenter );
-	ofRotateX( globalRotation.x + accumulatedRotation.x );
-	ofRotateY( globalRotation.y + accumulatedRotation.y );
-	ofRotateZ( globalRotation.z + accumulatedRotation.z );
+	if(currentSingleCam != &pathCamera)
+	{
+		ofTranslate( positionOffset - boundCenter );
+		ofRotateX( globalRotation.x + accumulatedRotation.x );
+		ofRotateY( globalRotation.y + accumulatedRotation.y );
+		ofRotateZ( globalRotation.z + accumulatedRotation.z );
+	}
 	
 	//draw bounding box
 	if(bDrawBoundingBox)
