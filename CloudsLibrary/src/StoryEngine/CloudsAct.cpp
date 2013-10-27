@@ -23,7 +23,7 @@ CloudsAct::~CloudsAct(){
 
 void CloudsAct::play(){
     
-    CloudsActEventArgs args(this);
+    CloudsActEventArgs args(this, finalDichotomies);
     ofNotifyEvent(events.actBegan, args);
 	
 	timeline.play();
@@ -160,7 +160,7 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
-	CloudsActEventArgs args(this);
+	CloudsActEventArgs args(this,finalDichotomies);
     ofNotifyEvent(events.actEnded, args);
 }
 
@@ -258,6 +258,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
+	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
     
