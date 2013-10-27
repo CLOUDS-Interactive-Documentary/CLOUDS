@@ -149,11 +149,12 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
     ofRotateX(ofRadToDeg(ang));
     ofRotateY(ofRadToDeg(ang));
-    
+    mat->begin();
     for (int i = 0;i < limit; i++) {
 		list[i].draw();
 	}
-    
+    mat->end();
+	
     ofPopStyle();
     
     ang += 0.002;
