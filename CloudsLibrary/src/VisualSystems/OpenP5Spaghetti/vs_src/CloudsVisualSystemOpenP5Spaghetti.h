@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "Walker.h"
 
 #define NWALKERS 2
 
@@ -104,5 +105,5 @@ protected:
     //  Your Stuff
     //
 	
-
+	ofxUISuperCanvas* customGui;
 };

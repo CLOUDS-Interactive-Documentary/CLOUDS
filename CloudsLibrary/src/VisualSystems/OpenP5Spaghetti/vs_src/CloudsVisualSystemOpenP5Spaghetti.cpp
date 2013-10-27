@@ -40,7 +40,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 	
 	
 	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti ::selfGuiEvent);
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
@@ -72,13 +72,6 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
-	
-
-
-	ofBackground(0);
-    
-   
-    
 
 }
 
@@ -99,12 +92,12 @@ void CloudsVisualSystemOpenP5Spaghetti::selfBegin(){
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
-void CloudsVisualSystemOpenP5Spaghetti ::selfSceneTransformation(){
+void CloudsVisualSystemOpenP5Spaghetti::selfSceneTransformation(){
 	
 }
 
 //normal update call
-void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
+void CloudsVisualSystemOpenP5Spaghetti::selfUpdate(){
     
     for(int i = 0; i<NWALKERS; i++){
         
@@ -116,10 +109,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
-    
-    
-    
+void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
     int idx = 0;
     
     for(int i = 0; i<NWALKERS; i++){
@@ -128,12 +118,12 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemOpenP5Spaghetti ::selfDrawDebug(){
+void CloudsVisualSystemOpenP5Spaghetti::selfDrawDebug(){
 
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void CloudsVisualSystemOpenP5Spaghetti ::selfDrawBackground(){
+void CloudsVisualSystemOpenP5Spaghetti::selfDrawBackground(){
 
 	//turn the background refresh off
 	//bClearBackground = false;
@@ -141,36 +131,36 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfDrawBackground(){
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemOpenP5Spaghetti ::selfEnd(){
+void CloudsVisualSystemOpenP5Spaghetti::selfEnd(){
 
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemOpenP5Spaghetti ::selfExit(){
+void CloudsVisualSystemOpenP5Spaghetti::selfExit(){
 	
 }
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemOpenP5Spaghetti ::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemOpenP5Spaghetti::selfKeyPressed(ofKeyEventArgs & args){
 	
 }
-void CloudsVisualSystemOpenP5Spaghetti ::selfKeyReleased(ofKeyEventArgs & args){
-	
-}
-
-void CloudsVisualSystemOpenP5Spaghetti ::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemOpenP5Spaghetti::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemOpenP5Spaghetti ::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemOpenP5Spaghetti::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemOpenP5Spaghetti ::selfMousePressed(ofMouseEventArgs& data){
+void CloudsVisualSystemOpenP5Spaghetti::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemOpenP5Spaghetti ::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemOpenP5Spaghetti::selfMousePressed(ofMouseEventArgs& data){
+	
+}
+
+void CloudsVisualSystemOpenP5Spaghetti::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
