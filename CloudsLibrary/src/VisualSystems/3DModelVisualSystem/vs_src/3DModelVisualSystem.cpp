@@ -479,6 +479,7 @@ void CloudsVisualSystem3DModel::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystem3DModel::selfBegin()
 {
+	accumulatedRotation.set( 0,0,0);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -1124,10 +1125,10 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	
 	ofMultMatrix( modelTransform.getGlobalTransformMatrix() );
 	
-//	ofTranslate( positionOffset );
-//	ofRotateX( globalRotation.x + accumulatedRotation.x );
-//	ofRotateY( globalRotation.y + accumulatedRotation.y );
-//	ofRotateZ( globalRotation.z + accumulatedRotation.z );
+	ofTranslate( positionOffset - boundCenter );
+	ofRotateX( globalRotation.x + accumulatedRotation.x );
+	ofRotateY( globalRotation.y + accumulatedRotation.y );
+	ofRotateZ( globalRotation.z + accumulatedRotation.z );
 	
 	//draw bounding box
 	if(bDrawBoundingBox)
