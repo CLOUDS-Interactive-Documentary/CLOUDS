@@ -229,7 +229,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 		nextPlayer.update();
 	}
 	
-	float audioVolume = 1.0;
+	float audioVolume = maxVolume;
 #ifdef AVF_PLAYER
 	float position = getPlayer().getPositionInSeconds();
 	float duration = getPlayer().getDuration();
