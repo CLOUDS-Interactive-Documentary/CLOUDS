@@ -162,9 +162,13 @@ void CloudsVisualSystemOscillations::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOscillations::selfDraw(){
-    ofBackground(invertColorScheme? ofColor(180,180,180) : ofColor(0,0,0));
     
-
+	ofPushStyle();
+	
+	//TODO: fix this without setting background
+	
+	//ofBackground(invertColorScheme? ofColor(180,180,180) : ofColor(0,0,0));
+    
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);    
     if (displayGrid) {
         glLineStipple((int)GridPattern, 0x8888);
@@ -178,12 +182,14 @@ void CloudsVisualSystemOscillations::selfDraw(){
         glDisable(GL_LINE_STIPPLE);
     }
     
-        glDisable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
     
     mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
 
     ofSetLineWidth(lineWidth);
 	mesh.drawWireframe();
+	
+	ofPopStyle();
 }
 
 // draw any debug stuff here
