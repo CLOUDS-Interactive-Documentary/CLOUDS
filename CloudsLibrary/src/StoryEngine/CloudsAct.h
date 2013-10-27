@@ -148,6 +148,8 @@ protected:
 	
     map<string, CloudsClip> questionsMap;
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
+	vector<CloudsDichotomy> finalDichotomies;
+	
     float visualSystemDuration;
 
     

@@ -615,7 +615,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     run.actCount++;
     
-    CloudsActEventArgs args(act);
+    CloudsActEventArgs args(act, dichotomies);
     ofNotifyEvent(events.actCreated, args);
     
     return act;
