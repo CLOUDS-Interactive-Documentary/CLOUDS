@@ -156,6 +156,7 @@
 		E74620C417DB8074002FC464 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620C017DB8074002FC464 /* ofxBillboard.cpp */; };
 		E74CE86E1768ED6200083C4C /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */; };
 		E74CE8801768ED7C00083C4C /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */; };
+		E759EE0C181D8FE000FA1E90 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EE07181D8FE000FA1E90 /* ofxSimpleSpline.cpp */; };
 		E75DBC2217CDC7F100CD99D9 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBAD317CDC7F000CD99D9 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E75DBC2917CDC7F100CD99D9 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBB7817CDC7F100CD99D9 /* CloudsVisualSystemOscillations.cpp */; };
 		E75DBC2F17CDC7F100CD99D9 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBBF017CDC7F100CD99D9 /* ofxMtlBoxFitting.cpp */; };
@@ -651,6 +652,8 @@
 		E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
 		E74CE87E1768ED7B00083C4C /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
 		E74CE87F1768ED7B00083C4C /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
+		E759EE07181D8FE000FA1E90 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
+		E759EE08181D8FE000FA1E90 /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		E75DBABA17CDC7F000CD99D9 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; };
 		E75DBABB17CDC7F000CD99D9 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
 		E75DBABC17CDC7F000CD99D9 /* groundShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = groundShader.frag; sourceTree = "<group>"; };
@@ -1176,6 +1179,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E759EDF2181D8FDF00FA1E90 /* ofxSimpleSpline */,
 				E7156DEB18106F1600410646 /* ofxBox2d */,
 				E7BFAE5B180660AC00F38CA7 /* ofxAnimationPrimitives */,
 				E712D52217DD846D006FEE82 /* ofxRegex */,
@@ -2455,6 +2459,24 @@
 				E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */,
 				E74CE87E1768ED7B00083C4C /* MSACoreGL.h */,
 				E74CE87F1768ED7B00083C4C /* MSACoreMath.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E759EDF2181D8FDF00FA1E90 /* ofxSimpleSpline */ = {
+			isa = PBXGroup;
+			children = (
+				E759EE06181D8FE000FA1E90 /* src */,
+			);
+			name = ofxSimpleSpline;
+			path = ../../../addons/ofxSimpleSpline;
+			sourceTree = "<group>";
+		};
+		E759EE06181D8FE000FA1E90 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E759EE07181D8FE000FA1E90 /* ofxSimpleSpline.cpp */,
+				E759EE08181D8FE000FA1E90 /* ofxSimpleSpline.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -4049,6 +4071,7 @@
 				E7E5E31618122F3C00CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
 				6472185618198E2B0024C21E /* ETF.cpp in Sources */,
 				6472185718198E2B0024C21E /* fdog.cpp in Sources */,
+				E759EE0C181D8FE000FA1E90 /* ofxSimpleSpline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
