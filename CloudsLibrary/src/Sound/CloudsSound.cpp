@@ -52,7 +52,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         mbank = "luke";
         AUTORUN = 0;
         DOCLEAR = true;
-        RTCMIX_PRINT = false;
+        RTCMIX_PRINT = true;
         
 		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 
@@ -125,19 +125,34 @@ void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
+    
+    int rigged = 0; // set to '1' for rigged orchestration (set below)
+    
 	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
     
     float musicdur = args.duration;
     
     int preset = ofRandom(0, presets.size());
     
-    morch = presets[preset].instruments;
-    mharmony = presets[preset].harmony;
-    mrhythm = presets[preset].rhythm;
-    MASTERTEMPO = presets[preset].tempo;
-    mbank = presets[preset].bank;
+    if(rigged)
+    {
+        morch.clear();
+        morch.push_back("reichomatic");
+        mharmony = 0;
+        mrhythm = 0;
+        MASTERTEMPO = 120;
+        mbank = "luke";
+    }
+    else
+    {
+        morch = presets[preset].instruments;
+        mharmony = presets[preset].harmony;
+        mrhythm = presets[preset].rhythm;
+        MASTERTEMPO = presets[preset].tempo;
+        mbank = presets[preset].bank;
+    }
     
-    startMusic(morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
+    startMusic(0, morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
     
 }
 
@@ -212,7 +227,7 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
             STEREO(i*0.1, 0., 0.2, 0.05, i/11.0, "BD");
         }
         // launch initial effects chain (reverb)
-        REVERB(5.0); // gimme some reverb
+        REVERB(0, 5.0); // gimme some reverb
     }
     
     // not using right now
