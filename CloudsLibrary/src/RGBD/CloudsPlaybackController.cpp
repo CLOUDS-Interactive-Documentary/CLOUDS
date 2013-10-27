@@ -222,6 +222,10 @@ CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
 	return clusterMapVisualSystem;
 }
 
+CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
+	return rgbdVisualSystem.getRGBDVideoPlayer();
+}
+
 void CloudsPlaybackController::setUseScratch(bool useScratch){
 	if(useScratch){
 		targetScratchVolume = 1.0;

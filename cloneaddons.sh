@@ -17,9 +17,11 @@ fi
 
 #private, must be read
 git clone git@github.com:rezaali/ofxExtras
+
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
 git checkout -b develop --track origin/develop
+git pull
 cd ..
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
@@ -71,6 +73,7 @@ ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
 git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		

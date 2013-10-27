@@ -37,6 +37,8 @@ class CloudsSound {
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	
+	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
