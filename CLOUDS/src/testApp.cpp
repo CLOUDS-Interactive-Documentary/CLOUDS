@@ -32,33 +32,33 @@ void testApp::setup(){
 	sound.setup(storyEngine);
 
 	////////SEED WITH RANDOM CLIP
-	srand( ofGetSeconds()*1000 );
-	CloudsClip& clip = parser.getRandomClip(false,false);
-	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
+//	srand( ofGetSeconds()*1000 );
+//	CloudsClip& clip = parser.getRandomClip(false,false);
+//	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
 	////////SEED WITH RANDOM CLIP
 	
 	//////////////SHOW INTRO
-//	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-//	//safe guard delete any starters that don't have questions
-//	for(int i = startingNodes.size()-1; i >= 0; i--){
-//		if(!startingNodes[i].hasQuestion() ) {
-//			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
-//			startingNodes.erase(startingNodes.begin() + i);
-//		}
-//		else if(!startingNodes[i].hasCombinedVideo){
-//			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
-//			startingNodes.erase(startingNodes.begin() + i);
-//		}
-//		else{
-//			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
-//		}
-//		
-//		if( i < 5){
-////			player.fakeQuestions.push_back( startingNodes[i] );
-//		}
-//	}
-//	cout << "Starting with " << startingNodes.size() << endl;
-//	player.showIntro(startingNodes);
+	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
+	//safe guard delete any starters that don't have questions
+	for(int i = startingNodes.size()-1; i >= 0; i--){
+		if(!startingNodes[i].hasQuestion() ) {
+			ofLogError() << "Clip " << startingNodes[i].getID() << " is labeled as #start but has no question, removing.";
+			startingNodes.erase(startingNodes.begin() + i);
+		}
+		else if(!startingNodes[i].hasCombinedVideo){
+			ofLogError() << "Clip " << startingNodes[i].getID() << " has no combined video file, removing.";
+			startingNodes.erase(startingNodes.begin() + i);
+		}
+		else{
+			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
+		}
+		
+		if( i < 5){
+//			player.fakeQuestions.push_back( startingNodes[i] );
+		}
+	}
+	cout << "Starting with " << startingNodes.size() << endl;
+	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
 	
 	//temp sound stuff

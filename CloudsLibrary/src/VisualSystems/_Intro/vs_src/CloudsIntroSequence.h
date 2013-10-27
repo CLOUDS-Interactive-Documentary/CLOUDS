@@ -70,8 +70,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	void setStartQuestions(vector<CloudsClip>& possibleStartQuestions);
 	bool isStartQuestionSelected();
-	
+	void autoSelectQuestion();
 	CloudsQuestion* getSelectedQuestion();
+	
 	CloudsRun& getSelectedRun(){
 		return currentRun;
 	};

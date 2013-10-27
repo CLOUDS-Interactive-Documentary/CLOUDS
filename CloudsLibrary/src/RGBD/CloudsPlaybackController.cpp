@@ -312,6 +312,12 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		}
 	}
 
+	if(args.key == '\\'){
+		if(showingIntro){
+			introSequence.autoSelectQuestion();
+		}
+	}
+	
 	//SCRATCH SCRUB
 	if(scratchTracks.size() > 0){
 		if(args.key == OF_KEY_UP){

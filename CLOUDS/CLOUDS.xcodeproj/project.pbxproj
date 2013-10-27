@@ -758,7 +758,6 @@
 		E779B906173D4DD2006357EF /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		E779B907173D4DD2006357EF /* Wrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
 		E779B90B173D4DD2006357EF /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
-		E779B90C173D4DD2006357EF /* update-projects.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "update-projects.py"; sourceTree = "<group>"; };
 		E779B9A9173D4E16006357EF /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		E779B9AA173D4E16006357EF /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cv.hpp; sourceTree = "<group>"; };
 		E779B9AB173D4E16006357EF /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
@@ -2740,7 +2739,6 @@
 			children = (
 				E779B8F0173D4DD2006357EF /* libs */,
 				E779B90A173D4DD2006357EF /* src */,
-				E779B90C173D4DD2006357EF /* update-projects.py */,
 			);
 			name = ofxCv;
 			path = ../../../addons/ofxCv;
