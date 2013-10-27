@@ -9,6 +9,7 @@
 #include "CloudsFCPParser.h"
 #include "CloudsGlobal.h"
 #include "CloudsSpeaker.h"
+#include "CloudsDichotomy.h"
 
 bool distanceSort(pair<string,float> a, pair<string,float> b ){
     return a.second < b.second;
@@ -882,16 +883,10 @@ void CloudsFCPParser::autolinkSequentialClips(){
                         //removing clip N fromt clip N-1's overlapping list so that they story engine doesnt reject it.
                         getAllClips()[i].removeOverlappingClipName(allClips[j].getLinkName());
                     }
-                    
                 }
-                
             }
         }
-
-        
     }
-
-
 }
 
 void CloudsFCPParser::printSpeakerList(){
@@ -904,6 +899,27 @@ void CloudsFCPParser::printSpeakerList(){
 	for( it = speakerFcpIds.begin(); it != speakerFcpIds.end(); it++){
 		cout << "	" << *it << endl;
 	}
+}
+
+void CloudsFCPParser::printDichotomyRatios(){
+	vector<CloudsDichotomy> dichotomies = CloudsDichotomy::getDichotomies();
+	ofBuffer dichotomyScores;
+	
+	for(int i = 0; i < getContentKeywords().size(); i++){
+		vector<CloudsClip> clipsForKeyword = getClipsWithKeyword(getContentKeywords()[i]);
+		dichotomyScores.append("Keyword: " + getContentKeywords()[i] + " (" + ofToString(clipsForKeyword.size()) + ") clips\n");
+		for(int d = 0; d < dichotomies.size(); d++){
+			vector<CloudsClip> leftClips  = getClipsWithKeyword(dichotomies[d].left,  clipsForKeyword);
+			vector<CloudsClip> rightClips = getClipsWithKeyword(dichotomies[d].right, clipsForKeyword);
+			char report[1024];
+			sprintf(report, "	%s %d %.02f%% :: %s %d %.02f%%\n",
+					dichotomies[d].left.c_str(),  int(leftClips.size()),  (1.0*leftClips.size()  / clipsForKeyword.size() ),
+					dichotomies[d].right.c_str(), int(rightClips.size()), (1.0*rightClips.size() / clipsForKeyword.size()));
+			dichotomyScores.append(report);
+		}
+	}
+	
+	ofBufferToFile(getDataPath() + "DichotomyRatios.txt", dichotomyScores);
 }
 
 void CloudsFCPParser::refreshAllKeywords(){
@@ -956,8 +972,6 @@ void CloudsFCPParser::refreshAllKeywords(){
     for(it = allKeywords.begin(); it != allKeywords.end(); it++){
         keywordVector.push_back(it->first);
     }
-
-    
 }
 
 void CloudsFCPParser::setCombinedVideoDirectory(string directory){
@@ -1165,9 +1179,39 @@ int CloudsFCPParser::getNumberOfClipsWithKeyword(string filterWord){
 }
 
 vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord){
+	return getClipsWithKeyword(filterWord, getAllClips());
+}
+
+vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(string filterWord, vector<CloudsClip>& searchClips){
 	vector<string> filter;
 	filter.push_back(filterWord);
-	return getClipsWithKeyword(filter);
+	return getClipsWithKeyword(filter, searchClips);
+}
+
+vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
+	return getClipsWithKeyword(filter, getAllClips());
+}
+
+vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip>& searchClips){
+    vector<CloudsClip> filteredMarkers;
+	set<string> includedClips;
+    for(int c = 0; c < searchClips.size(); c++){
+        for(int i = 0; i < filter.size(); i++){
+            
+            //if filter[i] is #special, use special
+            vector<string>& searchVector = (filter[i][0] == '#') ?
+				searchClips[c].getSpecialKeywords() : searchClips[c].getKeywords();
+            
+            if(ofContains(searchVector, filter[i]) &&
+			   includedClips.find(searchClips[c].getLinkName()) == includedClips.end())
+			{
+				includedClips.insert(searchClips[c].getLinkName());
+                filteredMarkers.push_back(searchClips[c]);
+                break;
+            }
+        }
+    }
+    return filteredMarkers;
 }
 
 vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
@@ -1186,27 +1230,7 @@ vector<CloudsClip> CloudsFCPParser::getClipsWithQuestionsForTopic(string topic){
     return clips;
 }
 
-vector<CloudsClip> CloudsFCPParser::getClipsWithKeyword(const vector<string>& filter){
-    vector<CloudsClip> filteredMarkers;
-	set<string> includedClips;
-    for(int c = 0; c < allClips.size(); c++){
-        for(int i = 0; i < filter.size(); i++){
-            
-            //if filter[i] is #special, use special
-            vector<string>& searchVector = (filter[i][0] == '#') ?
-				allClips[c].getSpecialKeywords() : allClips[c].getKeywords();
-            
-            if(ofContains(searchVector, filter[i]) &&
-			   includedClips.find(allClips[c].getLinkName()) == includedClips.end())
-			{
-				includedClips.insert(allClips[c].getLinkName());
-                filteredMarkers.push_back(allClips[c]);
-                break;
-            }
-        }
-    }
-    return filteredMarkers;
-}
+
 
 set<string> CloudsFCPParser::getRelatedKeywords(string filterWord){
 	set<string> relatedKeywords;

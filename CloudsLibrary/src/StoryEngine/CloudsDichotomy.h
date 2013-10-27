@@ -13,6 +13,8 @@
 class CloudsDichotomy{
 public:
     CloudsDichotomy();
+	
+	static vector<CloudsDichotomy> getDichotomies();
     string left;
     string right;
     int balance; //pos/neg

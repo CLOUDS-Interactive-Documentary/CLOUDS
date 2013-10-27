@@ -71,51 +71,9 @@ void CloudsStoryEngine::setup(){
         
         initGui();
         
-        CloudsDichotomy d;
         dichotomyThreshold = 3;
-        
-        dichotomies.clear();
-        
-        d.left = "#art";
-        d.right = "#tech";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#emotional";
-        d.right = "#logical";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#breakthrough";
-        d.right = "#obstacle";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#inspiring";
-        d.right = "#discouraging";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#fun";
-        d.right = "#serious";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#sincere";
-        d.right = "#ironic";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#mindblowing";
-        d.right = "#mundane";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#rational";
-        d.right = "#surreal";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
+
+		dichotomies = CloudsDichotomy::getDichotomies();
     }
 }
 
