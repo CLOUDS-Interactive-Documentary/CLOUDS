@@ -236,5 +236,9 @@ protected:
 	CloudsPathCamera pathCamera;
 	float pathCameraPosition;
 	bool bUseDuration;
+	
+	bool bRepositionModel;
+	
+	bool bCenterModel, bAutoScale,bDoNotScaleModel;
 
 };

@@ -1,0 +1,52 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>transform</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>24</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>positionOffset.x</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>positionOffset.y</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>positionOffset.z</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotation.x</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotation.y</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotation.z</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotationVel.x</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotationVel.y</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>globalRotationVel.z</Name>
+    <Value>0</Value>
+</Widget>
