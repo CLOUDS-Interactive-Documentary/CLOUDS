@@ -23,13 +23,16 @@ public:
     ofFloatColor groundColor;
     ofFloatColor wallColor;
     ofFloatColor sideWallsColor;
+    ofFloatColor generatorColor;
     
     ofColor getGroundColor();
     ofColor getWallColor();
     ofColor getSideWallsColor();
+    ofColor getGeneratorColor();
     
     float cameraSpeed;
     float cameraAngle;
+    float cameraHeight;
     float showAhead;
     
 private:
