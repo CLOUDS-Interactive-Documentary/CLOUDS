@@ -1165,7 +1165,8 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 			glDisable( GL_DEPTH_TEST );
 			glBlendFunc(GL_ONE, GL_ONE);
 			
-			modelMesh.draw();
+//			modelMesh.draw();
+			bWireframe?	modelMesh.drawWireframe() : modelMesh.draw();
 			
 			ofBlendMode( OF_BLENDMODE_ADD );
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
