@@ -6,37 +6,33 @@
 //
 //
 
-#ifndef OpenP5Spaghetti_Walker_h
-#define OpenP5Spaghetti_Walker_h
+#pragma once
 
 #include "ofMain.h"
 
 
 class Walker {
-    struct particle {
-	ofVec3f position;
-    ofColor color; 
-};
 
-public:
+  public:
+	Walker();
+	
+	ofVec3f position;
+    ofFloatColor color;
     
 	float seed;
     int i;
     float maxX, minX, maxY, minY, maxZ, minZ;
     int nParticles;
-    
-    Walker();
+
     void init(int nParticles, ofColor color);
     void step();
     void draw();
     
     
     
-protected:
+  protected:
     
-    vector<particle>particles;
+//    vector<particle> particles;
     ofVboMesh mesh;
   
 };
-
-#endif

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxUI.h"
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
 class testApp : public ofBaseApp{

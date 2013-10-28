@@ -49,8 +49,6 @@
 		2AAEF59E180F136F005F33D3 /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF572180F136F005F33D3 /* b2RevoluteJoint.cpp */; };
 		2AAEF59F180F136F005F33D3 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		2AAEF5A0180F136F005F33D3 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF578180F136F005F33D3 /* del_impl.cpp */; };
-		8584983D181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8584983B181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp */; };
-		85FAB6A3181B713200676607 /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85FAB6A2181B713200676607 /* Walker.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -68,6 +66,8 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E759EFE5181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EFE1181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp */; };
+		E759EFE6181E271300FA1E90 /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EFE3181E271300FA1E90 /* Walker.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -270,70 +270,6 @@
 		2AAEF57A180F136F005F33D3 /* dpoint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dpoint.hpp; sourceTree = "<group>"; };
 		2AAEF57B180F136F005F33D3 /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		2AAEF57C180F136F005F33D3 /* triangle_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = triangle_impl.hpp; sourceTree = "<group>"; };
-		858497F9181B0F3A00148EF5 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
-		858497FA181B0F3A00148EF5 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
-		858497FB181B0F3A00148EF5 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
-		858497FC181B0F3A00148EF5 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
-		858497FD181B0F3A00148EF5 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
-		858497FE181B0F3A00148EF5 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
-		858497FF181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
-		85849800181B0F3A00148EF5 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
-		85849801181B0F3A00148EF5 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
-		85849802181B0F3A00148EF5 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
-		85849803181B0F3A00148EF5 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
-		85849804181B0F3A00148EF5 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
-		85849806181B0F3A00148EF5 /* BasicMotion_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BasicMotion_inout.xml; sourceTree = "<group>"; };
-		85849807181B0F3A00148EF5 /* BasicMotion_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BasicMotion_zoomer.xml; sourceTree = "<group>"; };
-		85849808181B0F3A00148EF5 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
-		85849809181B0F3A00148EF5 /* CamSettings_ROT-X.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CamSettings_ROT-X.xml"; sourceTree = "<group>"; };
-		8584980A181B0F3A00148EF5 /* CamSettings_ROT-Y.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CamSettings_ROT-Y.xml"; sourceTree = "<group>"; };
-		8584980B181B0F3A00148EF5 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
-		8584980C181B0F3A00148EF5 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
-		8584980D181B0F3A00148EF5 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
-		8584980F181B0F3A00148EF5 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
-		85849810181B0F3A00148EF5 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
-		85849811181B0F3A00148EF5 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
-		85849812181B0F3A00148EF5 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
-		85849813181B0F3A00148EF5 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
-		85849814181B0F3A00148EF5 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
-		85849815181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
-		85849816181B0F3A00148EF5 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
-		85849817181B0F3A00148EF5 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
-		85849818181B0F3A00148EF5 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
-		85849819181B0F3A00148EF5 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
-		8584981A181B0F3A00148EF5 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
-		8584981C181B0F3A00148EF5 /* BasicPreset_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BasicPreset_inout.xml; sourceTree = "<group>"; };
-		8584981D181B0F3A00148EF5 /* BasicPreset_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BasicPreset_zoomer.xml; sourceTree = "<group>"; };
-		8584981E181B0F3A00148EF5 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
-		8584981F181B0F3A00148EF5 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
-		85849820181B0F3A00148EF5 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
-		85849821181B0F3A00148EF5 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
-		85849823181B0F3A00148EF5 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
-		85849824181B0F3A00148EF5 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
-		85849825181B0F3A00148EF5 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
-		85849826181B0F3A00148EF5 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
-		85849827181B0F3A00148EF5 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
-		85849828181B0F3A00148EF5 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
-		85849829181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
-		8584982A181B0F3A00148EF5 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
-		8584982B181B0F3A00148EF5 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
-		8584982C181B0F3A00148EF5 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
-		8584982D181B0F3A00148EF5 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
-		8584982F181B0F3A00148EF5 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
-		85849830181B0F3A00148EF5 /* CamSettings_ROT-X.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CamSettings_ROT-X.xml"; sourceTree = "<group>"; };
-		85849831181B0F3A00148EF5 /* CamSettings_ROT-Y.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CamSettings_ROT-Y.xml"; sourceTree = "<group>"; };
-		85849832181B0F3A00148EF5 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
-		85849833181B0F3A00148EF5 /* Working_CAMERA_trackPositions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_CAMERA_trackPositions.xml; sourceTree = "<group>"; };
-		85849834181B0F3A00148EF5 /* Working_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_inout.xml; sourceTree = "<group>"; };
-		85849835181B0F3A00148EF5 /* Working_OPENP5NOISESPHERE_trackPositions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_OPENP5NOISESPHERE_trackPositions.xml; sourceTree = "<group>"; };
-		85849836181B0F3A00148EF5 /* Working_Page_One_trackPositions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_Page_One_trackPositions.xml; sourceTree = "<group>"; };
-		85849837181B0F3A00148EF5 /* Working_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Working_zoomer.xml; sourceTree = "<group>"; };
-		85849838181B0F3A00148EF5 /* TimelineSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimelineSettings.xml; sourceTree = "<group>"; };
-		85849839181B0F3A00148EF5 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
-		8584983B181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Spaghetti.cpp; sourceTree = "<group>"; };
-		8584983C181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Spaghetti.h; sourceTree = "<group>"; };
-		85FAB6A1181B70A200676607 /* Walker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Walker.h; sourceTree = "<group>"; };
-		85FAB6A2181B713200676607 /* Walker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Walker.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -355,6 +291,10 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E759EFE1181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Spaghetti.cpp; sourceTree = "<group>"; };
+		E759EFE2181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Spaghetti.h; sourceTree = "<group>"; };
+		E759EFE3181E271300FA1E90 /* Walker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Walker.cpp; sourceTree = "<group>"; };
+		E759EFE4181E271300FA1E90 /* Walker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Walker.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -785,158 +725,6 @@
 			path = triangle;
 			sourceTree = "<group>";
 		};
-		858497F4181B0F3A00148EF5 /* OpenP5Spaghetti */ = {
-			isa = PBXGroup;
-			children = (
-				858497F5181B0F3A00148EF5 /* bin */,
-				8584983A181B0F3A00148EF5 /* vs_src */,
-			);
-			name = OpenP5Spaghetti;
-			path = ../../CloudsLibrary/src/VisualSystems/OpenP5Spaghetti;
-			sourceTree = "<group>";
-		};
-		858497F5181B0F3A00148EF5 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				858497F6181B0F3A00148EF5 /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		858497F6181B0F3A00148EF5 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				858497F7181B0F3A00148EF5 /* Presets */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		858497F7181B0F3A00148EF5 /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-				858497F8181B0F3A00148EF5 /* BasicMotion */,
-				8584980E181B0F3A00148EF5 /* BasicPreset */,
-				85849822181B0F3A00148EF5 /* Working */,
-			);
-			path = Presets;
-			sourceTree = "<group>";
-		};
-		858497F8181B0F3A00148EF5 /* BasicMotion */ = {
-			isa = PBXGroup;
-			children = (
-				858497F9181B0F3A00148EF5 /* BgSettings.xml */,
-				858497FA181B0F3A00148EF5 /* CamSettings.xml */,
-				858497FB181B0F3A00148EF5 /* Custom.xml */,
-				858497FC181B0F3A00148EF5 /* LightSettings.xml */,
-				858497FD181B0F3A00148EF5 /* MATERIAL 1Settings.xml */,
-				858497FE181B0F3A00148EF5 /* ofEasyCamSettings */,
-				858497FF181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */,
-				85849800181B0F3A00148EF5 /* Presets.xml */,
-				85849801181B0F3A00148EF5 /* RenderSettings.xml */,
-				85849802181B0F3A00148EF5 /* Settings.xml */,
-				85849803181B0F3A00148EF5 /* SystemSettings.xml */,
-				85849804181B0F3A00148EF5 /* TimeInfo.xml */,
-				85849805181B0F3A00148EF5 /* Timeline */,
-				8584980C181B0F3A00148EF5 /* TimelineSettings.xml */,
-				8584980D181B0F3A00148EF5 /* UITimelineMappings.xml */,
-			);
-			path = BasicMotion;
-			sourceTree = "<group>";
-		};
-		85849805181B0F3A00148EF5 /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				85849806181B0F3A00148EF5 /* BasicMotion_inout.xml */,
-				85849807181B0F3A00148EF5 /* BasicMotion_zoomer.xml */,
-				85849808181B0F3A00148EF5 /* cameraTrack.xml */,
-				85849809181B0F3A00148EF5 /* CamSettings_ROT-X.xml */,
-				8584980A181B0F3A00148EF5 /* CamSettings_ROT-Y.xml */,
-				8584980B181B0F3A00148EF5 /* IntroOutro.xml */,
-			);
-			path = Timeline;
-			sourceTree = "<group>";
-		};
-		8584980E181B0F3A00148EF5 /* BasicPreset */ = {
-			isa = PBXGroup;
-			children = (
-				8584980F181B0F3A00148EF5 /* BgSettings.xml */,
-				85849810181B0F3A00148EF5 /* CamSettings.xml */,
-				85849811181B0F3A00148EF5 /* Custom.xml */,
-				85849812181B0F3A00148EF5 /* LightSettings.xml */,
-				85849813181B0F3A00148EF5 /* MATERIAL 1Settings.xml */,
-				85849814181B0F3A00148EF5 /* ofEasyCamSettings */,
-				85849815181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */,
-				85849816181B0F3A00148EF5 /* Presets.xml */,
-				85849817181B0F3A00148EF5 /* RenderSettings.xml */,
-				85849818181B0F3A00148EF5 /* Settings.xml */,
-				85849819181B0F3A00148EF5 /* SystemSettings.xml */,
-				8584981A181B0F3A00148EF5 /* TimeInfo.xml */,
-				8584981B181B0F3A00148EF5 /* Timeline */,
-				85849820181B0F3A00148EF5 /* TimelineSettings.xml */,
-				85849821181B0F3A00148EF5 /* UITimelineMappings.xml */,
-			);
-			path = BasicPreset;
-			sourceTree = "<group>";
-		};
-		8584981B181B0F3A00148EF5 /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				8584981C181B0F3A00148EF5 /* BasicPreset_inout.xml */,
-				8584981D181B0F3A00148EF5 /* BasicPreset_zoomer.xml */,
-				8584981E181B0F3A00148EF5 /* cameraTrack.xml */,
-				8584981F181B0F3A00148EF5 /* IntroOutro.xml */,
-			);
-			path = Timeline;
-			sourceTree = "<group>";
-		};
-		85849822181B0F3A00148EF5 /* Working */ = {
-			isa = PBXGroup;
-			children = (
-				85849823181B0F3A00148EF5 /* BgSettings.xml */,
-				85849824181B0F3A00148EF5 /* CamSettings.xml */,
-				85849825181B0F3A00148EF5 /* Custom.xml */,
-				85849826181B0F3A00148EF5 /* LightSettings.xml */,
-				85849827181B0F3A00148EF5 /* MATERIAL 1Settings.xml */,
-				85849828181B0F3A00148EF5 /* ofEasyCamSettings */,
-				85849829181B0F3A00148EF5 /* POINT LIGHT 1Settings.xml */,
-				8584982A181B0F3A00148EF5 /* Presets.xml */,
-				8584982B181B0F3A00148EF5 /* RenderSettings.xml */,
-				8584982C181B0F3A00148EF5 /* Settings.xml */,
-				8584982D181B0F3A00148EF5 /* SystemSettings.xml */,
-				8584982E181B0F3A00148EF5 /* Timeline */,
-				85849838181B0F3A00148EF5 /* TimelineSettings.xml */,
-				85849839181B0F3A00148EF5 /* UITimelineMappings.xml */,
-			);
-			path = Working;
-			sourceTree = "<group>";
-		};
-		8584982E181B0F3A00148EF5 /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				8584982F181B0F3A00148EF5 /* cameraTrack.xml */,
-				85849830181B0F3A00148EF5 /* CamSettings_ROT-X.xml */,
-				85849831181B0F3A00148EF5 /* CamSettings_ROT-Y.xml */,
-				85849832181B0F3A00148EF5 /* IntroOutro.xml */,
-				85849833181B0F3A00148EF5 /* Working_CAMERA_trackPositions.xml */,
-				85849834181B0F3A00148EF5 /* Working_inout.xml */,
-				85849835181B0F3A00148EF5 /* Working_OPENP5NOISESPHERE_trackPositions.xml */,
-				85849836181B0F3A00148EF5 /* Working_Page_One_trackPositions.xml */,
-				85849837181B0F3A00148EF5 /* Working_zoomer.xml */,
-			);
-			path = Timeline;
-			sourceTree = "<group>";
-		};
-		8584983A181B0F3A00148EF5 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				8584983C181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.h */,
-				8584983B181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
-				85FAB6A1181B70A200676607 /* Walker.h */,
-				85FAB6A2181B713200676607 /* Walker.cpp */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1021,8 +809,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				858497F4181B0F3A00148EF5 /* OpenP5Spaghetti */,
-				E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -1038,6 +824,26 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E759EFB4181E271300FA1E90 /* OpenP5Spaghetti */ = {
+			isa = PBXGroup;
+			children = (
+				E759EFE0181E271300FA1E90 /* vs_src */,
+			);
+			name = OpenP5Spaghetti;
+			path = src/VisualSystems/OpenP5Spaghetti;
+			sourceTree = "<group>";
+		};
+		E759EFE0181E271300FA1E90 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E759EFE2181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.h */,
+				E759EFE1181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp */,
+				E759EFE4181E271300FA1E90 /* Walker.h */,
+				E759EFE3181E271300FA1E90 /* Walker.cpp */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E7846DA31713A48B00705E7A /* data */ = {
@@ -1556,12 +1362,14 @@
 				E7E5EC681817C01400CA4196 /* README.md */,
 			);
 			name = VisualSystemsLibrary;
-			path = ../../CloudsLibrary/src/VisualSystemsLibrary;
+			path = src/VisualSystemsLibrary;
 			sourceTree = "<group>";
 		};
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E759EFB4181E271300FA1E90 /* OpenP5Spaghetti */,
+				E7E5EC601817C01400CA4196 /* VisualSystemsLibrary */,
 			);
 			name = CloudsLibrary;
 			path = ../../CloudsLibrary;
@@ -1767,8 +1575,8 @@
 				E7E5EC691817C01400CA4196 /* CloudsRGBDCamera.cpp in Sources */,
 				E7E5EC6A1817C01400CA4196 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E7E5EC6B1817C01400CA4196 /* CloudsVisualSystem.cpp in Sources */,
-				8584983D181B0F3A00148EF5 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
-				85FAB6A3181B713200676607 /* Walker.cpp in Sources */,
+				E759EFE5181E271300FA1E90 /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
+				E759EFE6181E271300FA1E90 /* Walker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
