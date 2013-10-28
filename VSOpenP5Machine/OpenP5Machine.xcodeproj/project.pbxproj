@@ -926,8 +926,8 @@
 		85822AB11819EB2200260986 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				85822AB21819EB2200260986 /* CloudsVisualSystemOpenP5Machine.cpp */,
 				85822AB31819EB2200260986 /* CloudsVisualSystemOpenP5Machine.h */,
+				85822AB21819EB2200260986 /* CloudsVisualSystemOpenP5Machine.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

@@ -156,6 +156,9 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
 }
     */
     
+	
+	mat->begin();
+	
     ofColor color;
     
     framecount = (ofGetElapsedTimeMillis()/33);
@@ -172,7 +175,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
     dir_rot = ofVec3f(0, -95, 0);
     //  setLightOri(dir, dir_rot);
     
-    amb.setAmbientColor(ofColor(50.0, 100.0, 200.0, 100.0));
+    //amb.setAmbientColor(ofColor(50.0, 100.0, 200.0, 100.0));
     
     //spotlight is drawn in the camera frame and oriented relative to the focus of the camera
 
@@ -219,7 +222,8 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
             }
         }
     }
-
+	mat->end();
+	
  //   cam.end();
 }
 
