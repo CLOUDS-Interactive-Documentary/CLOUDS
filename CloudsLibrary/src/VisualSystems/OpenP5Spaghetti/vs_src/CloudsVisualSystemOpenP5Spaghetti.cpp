@@ -5,30 +5,39 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
 
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 
-/*
+    float dim = 16;
+	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
+    float length = 255-xInit;
+
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
+	customGui->setName("Spaghetti");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
 
-	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
+
+    customGui->addSpacer(length-xInit, 2);
+    customGui->addLabel("SIMULATION");
+    customGui->addLabel("click to reset");
+    customGui->addToggle("SMOOTH", &smooth);
+    customGui->addToggle("GNARLY", &gnarly);
+    customGui->addSlider("Particle number", 0, 1000, &NumWalkers);
+ //   customGui->addSlider("STEP SIZE", 0, 5, 0.5, &Walker::stepSize);
+//	customGui->addSlider("NOISE SPEED", 0, 1, 0.5, &Walker::noiseSpeed1);
+   
+
+    
+    customGui->addLabel("RENDERING");
+	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
+    customGui->addToggle("DRAW LINES", &Walker::drawLines);
+    
+    ofAddListener(customGui->newGUIEvent, this, CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
- 
- */	
+  
 }
 
 void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
@@ -59,8 +68,10 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
     for(int i = 0; i<NWALKERS; i++){
+   
         walkers.push_back( Walker() );
-		walkers[i].init(100, ofFloatColor::white);
+		walkers[i].init(40, ofFloatColor::white);
+    
 //        walkers[i] = *new Walker();
     }
 }
@@ -89,12 +100,19 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
     
-    for(int i = 0; i < NWALKERS; i++){
+    if (smooth){
+        gnarly = false;
+    for(int i = 0; i < NumWalkers; i++){
+        walkers[i].smoothTrails();
         
-        walkers[i].noiseStep();
-        
+        }
     }
-
+    if (gnarly){
+        smooth = false;
+    for(int i = 0; i < NumWalkers; i++){
+        walkers[i].gnarlyTrails();
+    }
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -103,7 +121,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	glDisable(GL_DEPTH_TEST);
 	
-    for(int i = 0; i<NWALKERS; i++){
+    for(int i = 0; i<NumWalkers; i++){
 		
         walkers[i].draw();
     }
