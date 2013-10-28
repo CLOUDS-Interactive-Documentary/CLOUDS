@@ -78,7 +78,7 @@ void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints,
 void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope);
 void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
 
-void REVERB(double time);
+void REVERB(double outskip, double time);
 float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
 void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);

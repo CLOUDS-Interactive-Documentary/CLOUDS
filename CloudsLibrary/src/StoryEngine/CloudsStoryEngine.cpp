@@ -71,51 +71,9 @@ void CloudsStoryEngine::setup(){
         
         initGui();
         
-        CloudsDichotomy d;
         dichotomyThreshold = 3;
-        
-        dichotomies.clear();
-        
-        d.left = "#art";
-        d.right = "#tech";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#emotional";
-        d.right = "#logical";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#breakthrough";
-        d.right = "#obstacle";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#inspiring";
-        d.right = "#discouraging";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#fun";
-        d.right = "#serious";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#sincere";
-        d.right = "#ironic";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#mindblowing";
-        d.right = "#mundane";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
-        d.left = "#rational";
-        d.right = "#surreal";
-        d.balance =0;
-        dichotomies.push_back(d);
-        
+
+		dichotomies = CloudsDichotomy::getDichotomies();
     }
 }
 
@@ -156,7 +114,7 @@ void CloudsStoryEngine::initGui(){
     clipGui->addSlider("OFF TOPIC FACTOR", 0, 20, &offTopicFactor);
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, &samePersonOccurrenceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50, &linkFactor);
-    clipGui->addSlider("DICHOTOMY WEIGHT", 0,10, &dichotomyWeight);
+    clipGui->addSlider("DICHOTOMY WEIGHT", 0,100, &dichotomyWeight);
     clipGui->addSlider("GENDER BALANCE", 0, 10, &genderBalanceFactor);
     clipGui->addSlider("DISTANT CLIP SUPRRESSION", 0, 100, &distantClipSuppressionFactor);
     clipGui->addSlider("GOLD CLIP FACTOR", 10, 100, &goldClipFactor);
@@ -480,8 +438,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             freeTopic = true;
         }
         
-        ///////////////// DIOCHOTOMIES
-        updateDichotomies(clip);
         
         ///////////////// QUESTIONS
         //adding all option clips with questions
@@ -503,9 +459,12 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             }
         }
         
+		///////////////// DIOCHOTOMIES
+        updateDichotomies(clip);
+
         //add clip to act
         clipHandleDuration = getHandleForClip(clip);
-        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration,getCurrentDichotomyBalance());
+        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
         float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         localClipHistory.push_back(clip);
@@ -657,7 +616,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     run.actCount++;
     
-    CloudsActEventArgs args(act);
+    CloudsActEventArgs args(act, dichotomies);
     ofNotifyEvent(events.actCreated, args);
     
     return act;
@@ -775,22 +734,23 @@ void CloudsStoryEngine::clearDichotomiesBalance(){
 }
 
 void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
-    vector<string> specialkeywords= clip.getSpecialKeywords();
+    vector<string> specialkeywords = clip.getSpecialKeywords();
     
-    for(int i=0; i <dichotomies.size();i++){
-        for(int j=0; j<specialkeywords.size();j++){
+    for(int i=0; i < dichotomies.size();i++){
+        for(int j=0; j < specialkeywords.size();j++){
             
             if(dichotomies[i].left == specialkeywords[j]){
                 dichotomies[i].balance -= 1;
-                //                cout<<dichotomies[i].left<<": +1"<<endl;
+                //cout<<dichotomies[i].left<<": +1"<<endl;
             }
             else if (dichotomies[i].right == specialkeywords[j]){
-                //                cout<<dichotomies[i].right<<": +1"<<endl;
+                //cout<<dichotomies[i].right<<": +1"<<endl;
                 dichotomies[i].balance += 1;
             }
         }
     }
 }
+
 
 //intentionally by copy so that we can store them as we go
 vector<CloudsDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){

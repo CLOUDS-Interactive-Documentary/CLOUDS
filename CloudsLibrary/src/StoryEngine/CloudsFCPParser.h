@@ -64,6 +64,7 @@ class CloudsFCPParser {
 	void unsuppressConnection(CloudsLink& link);
     void refreshAllKeywords();
 	void printSpeakerList();
+	void printDichotomyRatios();
 	
 	//QUERIES
 	//true if A has any out going links at all
@@ -112,8 +113,11 @@ class CloudsFCPParser {
 							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
+	vector<CloudsClip> getClipsWithKeyword(string filterWord, vector<CloudsClip>& searchClips);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
+	vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip>& searchClips);
     vector<CloudsClip> getClipsWithQuestionsForTopic(string topic);
+	
     set<string> getRelatedKeywords(string filterWord);
 	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
 	

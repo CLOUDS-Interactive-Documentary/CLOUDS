@@ -148,9 +148,12 @@ protected:
 	
     map<string, CloudsClip> questionsMap;
     map<string, vector<CloudsDichotomy> > dichotomiesMap;
+	ofxTLFlags* dichotomyClips;
+	map<string, ofxTLCurves*> dichotomyTracks;
+	
+	vector<CloudsDichotomy> finalDichotomies;
+	
     float visualSystemDuration;
-
-    
     float visualSystemStartTime;
     float visualSystemEndTime;
     

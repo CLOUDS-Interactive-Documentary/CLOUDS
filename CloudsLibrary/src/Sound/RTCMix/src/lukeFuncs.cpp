@@ -31,17 +31,17 @@ void RTcmixParseScoreFile(string f)
 }
 
 // uses the SPLITTER() and MIX() and GVERB() instruments
-void REVERB(double time)
+void REVERB(double outskip, double time)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
+    bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 

@@ -23,6 +23,8 @@ void testApp::setup(){
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis();
 	
+	parser.printDichotomyRatios();
+	
 	websockets.setup();
 	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
@@ -112,6 +114,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     }
 
 }
+
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
