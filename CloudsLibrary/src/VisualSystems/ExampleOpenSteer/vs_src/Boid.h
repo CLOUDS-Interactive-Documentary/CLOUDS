@@ -116,7 +116,7 @@ public:
 		const Vec3 separation = steerForSeparation (separationRadius,
 													separationAngle,
 													neighbors);
-		const Vec3 alignment  = steerForAlignment  (alignmentRadius,
+		const Vec3 alignment  = steerForAlignment  (    alignmentRadius,
 													alignmentAngle,
 													neighbors);
 		const Vec3 cohesion   = steerForCohesion   (cohesionRadius,

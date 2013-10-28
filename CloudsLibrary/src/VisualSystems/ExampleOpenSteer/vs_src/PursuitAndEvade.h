@@ -124,8 +124,16 @@ public:
         
         // Evade force
         Vec3 evade = steerForEvasion(*predator, 1.f); // victim, prediction time
+        Vec3 force = evade + flock * 0.1; // scaping victim is more important than flocking
         
-        return evade + flock * 0.1; // scaping victim is more important than flocking
+
+        const ofVec3f position = getPosition();
+        
+        if(position.distance(ofVec3f(0,0,0)) > Boid::fMaximumRadius) {
+            force += steerForSeek(Vec3(0,0,0));
+        }
+
+        return force;
     }
     
 };
