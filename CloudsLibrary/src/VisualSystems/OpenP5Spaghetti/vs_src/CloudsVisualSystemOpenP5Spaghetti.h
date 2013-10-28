@@ -11,9 +11,9 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Walker.cpp"
+#include "Walker.h"
 
-#define NWALKERS 2
+#define NWALKERS 20
 
 
 
@@ -90,8 +90,8 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
    
-    Walker walkers[NWALKERS];
-	
+    //Walker walkers[NWALKERS];
+	vector<Walker> walkers;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

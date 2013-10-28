@@ -114,7 +114,7 @@ void CloudsStoryEngine::initGui(){
     clipGui->addSlider("OFF TOPIC FACTOR", 0, 20, &offTopicFactor);
     clipGui->addSlider("SAME PERSON SUPPRESSION FACTOR", 0, 10, &samePersonOccurrenceSuppressionFactor);
     clipGui->addSlider("LINK FACTOR",0,50, &linkFactor);
-    clipGui->addSlider("DICHOTOMY WEIGHT", 0,10, &dichotomyWeight);
+    clipGui->addSlider("DICHOTOMY WEIGHT", 0,100, &dichotomyWeight);
     clipGui->addSlider("GENDER BALANCE", 0, 10, &genderBalanceFactor);
     clipGui->addSlider("DISTANT CLIP SUPRRESSION", 0, 100, &distantClipSuppressionFactor);
     clipGui->addSlider("GOLD CLIP FACTOR", 10, 100, &goldClipFactor);
