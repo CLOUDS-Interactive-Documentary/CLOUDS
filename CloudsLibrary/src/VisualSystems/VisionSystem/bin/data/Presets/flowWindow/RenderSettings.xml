@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>237.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX LINE WIDTH</Name>
+    <Value>2.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEARNING TIME</Name>
+    <Value>15.000000954</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>25.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PERSISTANCE</Name>
+    <Value>3.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXDISTANCE</Name>
+    <Value>80.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN AREA RADIUS</Name>
+    <Value>15.000000954</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX AREA RADIUS</Name>
+    <Value>12.561575890</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>25.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CONTOUR TRACKING</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW PLAYER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW THRESHOLDED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW DIFF</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLEAR DIFF</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>union_square_crop.mov</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GreenPoint_bike_crop.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>indianTrafficCrop.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>unionsq_1 - Wi-Fi_crop.mov</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Swarm_EindhovenTest_Watec_two-visitors_Crop.mov</Name>
+    <Value>0</Value>
+</Widget>

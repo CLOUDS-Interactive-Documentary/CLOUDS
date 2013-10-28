@@ -268,6 +268,8 @@ void CloudsVisionSystem::selfPresetLoaded(string presetPath){
             loadMovieAtIndex(i);
         }
     }
+    
+    
     //TODO: Clean up the paths
 
 }
@@ -620,7 +622,7 @@ void CloudsVisionSystem::selfGuiEvent(ofxUIEventArgs &e)
 
 void CloudsVisionSystem::loadCurrentMovie(){
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-    if(player->loadMovie(movieStrings[ movieIndex ])){
+    if(player->loadMovie(getVisualSystemDataPath() + movieStrings[ movieIndex ])){
         resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
                                 player->getPixelsRef().getImageType());
         player->play();
@@ -639,7 +641,7 @@ void CloudsVisionSystem::loadCurrentMovie(){
 void  CloudsVisionSystem::loadMovieAtIndex(int index){
     movieIndex = index;
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
-    if(player->loadMovie(movieStrings[ movieIndex ])){
+    if(player->loadMovie(getVisualSystemDataPath() +movieStrings[ movieIndex ])){
         resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
                                 player->getPixelsRef().getImageType());
         player->play();

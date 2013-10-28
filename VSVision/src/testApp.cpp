@@ -7,34 +7,15 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofEnableAlphaBlending();
 	
-	parser.loadFromFiles();
-	visualSystems.loadPresets();
-	
-	storyEngine.parser = &parser;
-	storyEngine.visualSystems = &visualSystems;
-	storyEngine.printDecisions = false;
-	storyEngine.combinedClipsOnly = false;
-	storyEngine.setup();
-	
-	vector<CloudsClip> startingNodes = parser.getClipsWithKeyword("#start");
-	CloudsAct* act = storyEngine.buildAct(run, startingNodes[ ofRandom(startingNodes.size()) ]);
-	
-	//act->triggerAllEvents();	
-	run.topicHistory = act->getAllTopics();
-	run.clipHistory = act->getAllClips();
-	
-	clusterMap.buildEntireCluster(parser);
-	clusterMap.setRun(run);
-	clusterMap.traverse();
-	
-	clusterMap.setup();
-	clusterMap.playSystem();
+    visionSystem.setup();
+	visionSystem.playSystem();
+
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	
-
+    visionSystem.selfUpdate();
 }
 
 //--------------------------------------------------------------
