@@ -428,10 +428,6 @@ void CloudsVisionSystem::selfDrawBackground()
     }
     
     if(currentMode == ControurTracking){
-        //        ofPushMatrix();
-        //        ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-        //        ofPushMatrix();
-        //        ofTranslate(-player->getWidth()/2, -player->getHeight()/2);
         contourFinder.draw();
         
         vector<MyTracker>& followers = tracker.getFollowers();
@@ -441,8 +437,6 @@ void CloudsVisionSystem::selfDrawBackground()
             followers[i].draw(lineWidth);
             
         }
-        //        ofPopMatrix();
-        //        ofPopMatrix();
         
     }
     else if(currentMode == OpticalFlow){
