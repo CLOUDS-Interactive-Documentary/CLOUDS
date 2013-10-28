@@ -104,11 +104,12 @@ protected:
     //
 	void setSimulation( int simulationIndex );
     
-    ofFloatColor boidColor;
-    ofFloatColor tailColor;
+    ofFloatColor bodyColor;
+    ofFloatColor trailColor;
+    ofFloatColor tickColor;
 	ofxUISuperCanvas* customGui;
-    
-    
+
+
     //ofEasyCam cam;
 	
     Flocking flocking;

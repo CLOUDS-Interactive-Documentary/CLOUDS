@@ -19,7 +19,7 @@ class Boid: public ofxOpenSteerVehicle {
 public:
     
     ProximityToken* pt;
-    static bool bDrawTail;
+    static bool bDrawTrail;
     static bool bDrawAnnotations;
     
     static float fMaxSpeed;
@@ -40,10 +40,15 @@ public:
     static float cohesionAngle;
     static float cohesionWeight;
     
-    static Color bColor;
-    static Color tColor;
+    static Color bodyColor;
+    static Color trailColor;
+    static Color tickColor;
     
-    
+    static float trailVertexCount;
+    static float trailDuration;
+
+    static float nBoids; //ugh -- has to be a float bcz of ofxUISlider
+
     Boid(){
         pt = NULL;
     };
@@ -76,6 +81,8 @@ public:
 		
 		// notify proximity database that our position has changed
 		if(pt) pt->updateForNewPosition (position());
+
+		setTrailParameters(Boid::trailDuration, Boid::trailVertexCount);
 	};
     
     void update(){
@@ -84,11 +91,12 @@ public:
     };
 	
     void draw(){
-        drawBasic3dSphericalVehicle (*this, bColor);
+        drawBasic3dSphericalVehicle (*this, bodyColor);
         if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTail) drawTrail(tColor, gWhite);
+        if(bDrawTrail) drawTrail(trailColor, tickColor);
     }
-    
+
+
     Vec3 getSteeringForce(const float elapsedTime){
         // if there is no proximity database, just wander
         if(!pt) return steerForWander(elapsedTime);

@@ -13,7 +13,7 @@ class Flocking: public ofxOpenSteerPlugin {
 public:
     
     ProximityDatabase* pd;
-    
+
     Flocking(){
         pd = NULL;  
     };
@@ -27,7 +27,7 @@ public:
         // Create a proximity database with default settings
         pd = createProximityDatabase();
         
-        for(unsigned int i=0;i<300;i++){
+        for(unsigned int i=0; i<Boid::nBoids; i++){
             Boid* v = new Boid();
             v->pt = allocateProximityToken(pd, v);
             v->reset();

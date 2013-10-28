@@ -8,11 +8,12 @@
 
 #include "Boid.h"
 
-bool Boid::bDrawTail = true;
+bool Boid::bDrawTrail = true;
 bool Boid::bDrawAnnotations = true;
 
-Color Boid::bColor;
-Color Boid::tColor;
+Color Boid::bodyColor;
+Color Boid::trailColor;
+Color Boid::tickColor;
 
 float Boid::fMaxSpeed = 9;
 float Boid::fMaxForce = 27;
@@ -31,3 +32,8 @@ float Boid::alignmentWeight = 8.0f;
 float Boid::cohesionRadius = 50.0f;
 float Boid::cohesionAngle  = -0.15f;
 float Boid::cohesionWeight = 8.0f;
+
+float Boid::trailVertexCount = 100;
+float Boid::trailDuration = 5;
+
+float Boid::nBoids = 100;

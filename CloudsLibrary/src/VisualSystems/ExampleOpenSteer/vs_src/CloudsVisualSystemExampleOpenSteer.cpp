@@ -19,6 +19,12 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
 	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
     float length = 255-xInit;
 	
+    customGui->addWidgetDown(new ofxUILabel("INITIAL VALUES", OFX_UI_FONT_MEDIUM));
+    customGui->addSlider("N BOIDS", 10, 300, &Boid::nBoids);
+    customGui->addSlider("TRAIL VERTEX COUNT", 20, 200, &Boid::trailVertexCount);
+    customGui->addSlider("TRAIL DURATION", 1, 10, &Boid::trailDuration);
+    customGui->addSlider("INITIAL POSITION RADIUS", 10, 50, &Boid::fInitialPositionRadius);
+
     vector<string> names;
 	names.push_back("FLOCK");
 	names.push_back("PATH");
@@ -30,33 +36,41 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
     
     customGui->addSpacer(length-xInit, 2);
 	customGui->addWidgetDown(new ofxUILabel("BOIDS", OFX_UI_FONT_MEDIUM));
-    
-    customGui->addToggle("DRAW TAIL", &Boid::bDrawTail);
+    customGui->addToggle("DRAW TRAIL", &Boid::bDrawTrail);
     customGui->addToggle("DRAW ANNOTATIONS", &Boid::bDrawAnnotations);
     customGui->addSlider("RADIUS", 0, 10, &Boid::radius);
     customGui->addSlider("MAX FORCE", 10, 50, &Boid::fMaxForce);
     customGui->addSlider("MAX SPEED", 5, 40, &Boid::fMaxSpeed);
-    customGui->addSlider("INITIAL POSITION RADIUS", 10, 50, &Boid::fInitialPositionRadius);
+    
+
     
     length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     dim = customGui->getGlobalSliderHeight();
     
     
     customGui->addWidgetDown(new ofxUILabel("BOID COLOR", OFX_UI_FONT_MEDIUM));
-    customGui->addMinimalSlider("R1", 0.0, 1.0, &boidColor.r, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("BODY_R", 0.0, 1.0, &bodyColor.r, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("G1", 0.0, 1.0, &boidColor.g, length, dim)->setShowValue(false);
-    customGui->addMinimalSlider("B1", 0.0, 1.0, &boidColor.b, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("BODY_G", 0.0, 1.0, &bodyColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("BODY_B", 0.0, 1.0, &bodyColor.b, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     
-    customGui->addWidgetDown(new ofxUILabel("TAIL COLOR", OFX_UI_FONT_MEDIUM));
-    customGui->addMinimalSlider("R2", 0.0, 1.0, &tailColor.r, length, dim)->setShowValue(false);
+    customGui->addWidgetDown(new ofxUILabel("TRAIL COLOR", OFX_UI_FONT_MEDIUM));
+    customGui->addMinimalSlider("TRAIL_R", 0.0, 1.0, &trailColor.r, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("G2", 0.0, 1.0, &tailColor.g, length, dim)->setShowValue(false);
-    customGui->addMinimalSlider("B2", 0.0, 1.0, &tailColor.b, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("TRAIL_G", 0.0, 1.0, &trailColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("TRAIL_B", 0.0, 1.0, &trailColor.b, length, dim)->setShowValue(false);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
+
+    customGui->addWidgetDown(new ofxUILabel("TICK COLOR", OFX_UI_FONT_MEDIUM));
+    customGui->addMinimalSlider("TICK_R", 0.0, 1.0, &tickColor.r, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("TICK_G", 0.0, 1.0, &tickColor.g, length, dim)->setShowValue(false);
+    customGui->addMinimalSlider("TICK_B", 0.0, 1.0, &tickColor.b, length, dim)->setShowValue(false);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
     customGui->addSpacer();
     customGui->addLabel("FLOCKING", OFX_UI_FONT_SMALL);
     customGui->addSlider("COHESION WEIGHT", 5, 20, &Boid::cohesionWeight);
@@ -80,9 +94,9 @@ void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
         setSimulation(2);
     } else if (name == "PURSUIT"){
         setSimulation(3);
-    } else if(name=="TAIL") {
-        ofxUIButton *button = (ofxUIButton *) e.widget;
-        Boid::bDrawTail = button->getValue();
+    } else if(name=="DRAW TRAIL") {
+        //ofxUIButton *button = (ofxUIButton *) e.widget;
+        //Boid::bDrawTrail = button->getValue();
     } else if(name=="MAX FORCE" && currentSimulation) {
         for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
             currentSimulation->getVehicles()[i]->setMaxForce(Boid::fMaxForce);
@@ -95,18 +109,34 @@ void CloudsVisualSystemExampleOpenSteer::selfGuiEvent(ofxUIEventArgs &e){
         for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
             currentSimulation->getVehicles()[i]->setRadius(Boid::radius);
         }
-    } else if(name=="R1") {
-        Boid::bColor.setR(boidColor.r);
-    } else if(name=="G1") {
-        Boid::bColor.setG(boidColor.g);
-    } else if(name=="B1") {
-        Boid::bColor.setB(boidColor.b);
-    } else if(name=="R2") {
-        Boid::tColor.setR(tailColor.r);
-    } else if(name=="G2") {
-        Boid::tColor.setG(tailColor.g);
-    } else if(name=="B2") {
-        Boid::tColor.setB(tailColor.b);
+    } else if(name=="BODY_R") {
+        Boid::bodyColor.setR(bodyColor.r);
+    } else if(name=="BODY_G") {
+        Boid::bodyColor.setG(bodyColor.g);
+    } else if(name=="BODY_B") {
+        Boid::bodyColor.setB(bodyColor.b);
+    } else if(name=="TRAIL_R") {
+        Boid::trailColor.setR(trailColor.r);
+    } else if(name=="TRAIL_G") {
+        Boid::trailColor.setG(trailColor.g);
+    } else if(name=="TRAIL_B") {
+        Boid::trailColor.setB(trailColor.b);
+    } else if(name=="TICK_R") {
+        Boid::tickColor.setR(tickColor.r);
+    } else if(name=="TICK_G") {
+        Boid::tickColor.setG(tickColor.g);
+    } else if(name=="TICK_B") {
+        Boid::tickColor.setG(tickColor.b);
+    } else if(name=="N BOIDS") {
+        Boid::nBoids = floor( ((ofxUISlider*)e.widget)->getScaledValue() + .5 );
+        ((ofxUISlider*)e.widget)->setValue( Boid::nBoids );
+    } else if(name=="TRAIL VERTEX COUNT") {
+        Boid::trailVertexCount = floor( ((ofxUISlider*)e.widget)->getScaledValue() + .5 );
+        ((ofxUISlider*)e.widget)->setValue( Boid::trailVertexCount );
+
+    } else if(name=="TRAIL DURATION") {
+
+
     }
 }
 
@@ -132,8 +162,9 @@ void CloudsVisualSystemExampleOpenSteer::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemExampleOpenSteer::selfSetup(){
-    Boid::bColor.set(1, 1, 1);
-    Boid::tColor.set(0.5f, 0.5f, 0.5f);
+    Boid::bodyColor.set(1, 1, 1);
+    Boid::trailColor.set(0.5f, 0.5f, 0.5f);
+    Boid::tickColor.set(1.0, 1.0, 1.0);
     
     // add the simulations to the vector and initialize the first one
 	simulations.push_back(&flocking);
