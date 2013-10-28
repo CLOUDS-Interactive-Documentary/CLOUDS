@@ -42,7 +42,7 @@
 //COMMISSIONS
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemNeurons.h"
-#include "CloudsVisualSystemLaplacianTunnel.h"
+//#include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemLIA.h"
 
@@ -116,7 +116,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//COMMISSIONS
 	registerVisualSystem(new CloudsVisualSystemVerletForm() );
 	registerVisualSystem(new CloudsVisualSystemNeurons() );
-	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
+//	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem(new CloudsVisualSystemReplicator() );
 	registerVisualSystem(new CloudsVisualSystemLIA() );
 	
