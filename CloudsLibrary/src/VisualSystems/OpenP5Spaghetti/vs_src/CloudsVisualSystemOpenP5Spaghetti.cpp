@@ -57,21 +57,11 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
-	
-
-
-	ofBackground(0);
     for(int i = 0; i<NWALKERS; i++){
-        
-        walkers[i] = *new Walker();
-
-        
+        walkers.push_back( Walker() );
+		walkers[i].init(400, ofFloatColor::white);
+//        walkers[i] = *new Walker();
     }
-
-    
-   
-    
-
 }
 
 
@@ -98,7 +88,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
     
-    for(int i = 0; i<NWALKERS; i++){
+    for(int i = 0; i < NWALKERS; i++){
         
         walkers[i].step();
         
@@ -109,11 +99,6 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
-    
-    
-    
-    int idx = 0;
-    
     for(int i = 0; i<NWALKERS; i++){
         walkers[i].draw();
     }
