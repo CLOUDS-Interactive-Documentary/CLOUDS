@@ -105,7 +105,8 @@ void CloudsVisualSystemOscillations::selfSetup(){
     ofFloatColor zero = ofFloatColor(0,0,0);
     for (int i = 0; i < NUMPOINTS ; i++){
         mesh.addColor(zero);
-        mesh.addVertex(ofPoint(0,0,0));
+//        mesh.addVertex(ofPoint(i*1.0/NUMPOINTS,0,0));
+                mesh.addVertex(ofPoint(0,0,i));
     }
     
     
@@ -113,8 +114,10 @@ void CloudsVisualSystemOscillations::selfSetup(){
     
     offsetX = offsetY = 0;
     BuildGrid();
-    
+
     crtShader.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
+    oscillator.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
+
 	
 }
 
@@ -146,17 +149,37 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     
     offsetX += speed;
     
-    float px, py, pz;
-    ofFloatColor zero = invertColorScheme? ofFloatColor(1,1,1,0) : ofFloatColor(0,0,0,0); //neccessary to have two?
+    ofFloatColor zero = invertColorScheme? ofFloatColor(1,1,1,0) : ofFloatColor(0,0,0,0);
     ofFloatColor c =    invertColorScheme? ofFloatColor(0,0,0,0.1) : ofFloatColor(1,1,1,0.2);
-    for (int i = 0; i < NUMPOINTS;  i++){
-        mesh.setColor(i, (i/(NUMPOINTS*1.0))>curveProgress ? zero : c);
-        px = cos((0.7+ 0.09 * 0.3 / width) * i * precision + offsetX);
-        py = sin(i * precision + offsetY);
-        pz = abs((-NUMPOINTS/2.0)+i)/(NUMPOINTS/2.0);
-        mesh.setVertex(i, ofPoint( -curveWidth/2.0 + px * curveWidth, -curveHeight/2.0 + py * curveHeight, -curveDepth/2.0 + curveZPos + pz * curveDepth));
-    }
     
+    
+    oscillator.begin();
+    oscillator.setUniform1f("numPoints", (float) NUMPOINTS);
+    oscillator.setUniform4fv("targetColor", c.v); //FIXME: needs to be on color and off color
+    oscillator.setUniform1f("curveProgress",curveProgress);
+    oscillator.setUniform1f("precision", precision);
+    oscillator.setUniform1f("offsetX", offsetX);
+    oscillator.setUniform1f("offsetY", offsetY);
+    oscillator.setUniform1f("curveWidth", curveWidth);
+    oscillator.setUniform1f("curveHeight", curveHeight);
+    oscillator.setUniform1f("curveZPos", curveZPos);
+    oscillator.setUniform1f("curveDepth", curveDepth);
+    oscillator.end();
+    
+    
+    
+//    float px, py, pz;
+//    for (int i = 0; i < NUMPOINTS;  i++){
+//        mesh.setColor(i, (i/(NUMPOINTS*1.0))>curveProgress ? zero : c);
+//        px = cos((0.7+ 0.09 * 0.3 / width) * i * precision + offsetX);
+//        py = sin(i * precision + offsetY);
+//        pz = abs((-NUMPOINTS/2.0)+i)/(NUMPOINTS/2.0);
+//        mesh.setVertex(i, ofPoint( -curveWidth/2.0 + px * curveWidth, -curveHeight/2.0 + py * curveHeight, -curveDepth/2.0 + curveZPos + pz * curveDepth));
+//    }
+    
+    
+    
+    //FIXME: This shouldn't happen unprovoked. It needs to be a callback to the UI.
     BuildGrid();
 }
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -176,9 +199,12 @@ void CloudsVisualSystemOscillations::selfDraw(){
         glEnable(GL_LINE_STIPPLE);
         grid.setMode(OF_PRIMITIVE_LINES);
         
+        
         grid.drawWireframe();
 //        grid.drawVertices();
+
 //        grid.draw();
+
         glDisable(GL_LINE_STIPPLE);
     }
     
@@ -187,7 +213,9 @@ void CloudsVisualSystemOscillations::selfDraw(){
     mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
 
     ofSetLineWidth(lineWidth);
+    oscillator.begin();
 	mesh.drawWireframe();
+    oscillator.end();
 	
 	ofPopStyle();
 }
@@ -198,7 +226,8 @@ void CloudsVisualSystemOscillations::selfDrawDebug(){
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemOscillations::selfDrawBackground(){
-
+    
+    
 	//turn the background refresh off
 	//bClearBackground = false;
 	
@@ -209,6 +238,8 @@ void CloudsVisualSystemOscillations::selfDrawBackground(){
 void CloudsVisualSystemOscillations::selfPostDraw(){
     //DO NOT CHANGE THIS LINE< REZA MADE THIS
 //    crtShader.setUniformTexture("screen", fbo.getTextureReference(), fbo.getTextureReference().getTextureData().textureID);
+    
+    
     crtShader.begin();
 //    crtShader.setUniform1i("screen", GL_TEXTURE0);
     crtShader.setUniformTexture("screen", getSharedRenderTarget(), 0 );

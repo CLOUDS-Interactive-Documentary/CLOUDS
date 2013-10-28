@@ -109,12 +109,13 @@ protected:
     float curveProgress, speed, lineWidth;
     float curveHeight, curveWidth, curveDepth, curveZPos;
     float chromaAbbr, lensDistortion;
-    ofxAutoReloadedShader crtShader;
+    
+    //TODO: Change back to just a shader after building
+    ofxAutoReloadedShader crtShader, oscillator;
     
 	ofxUISuperCanvas* customGui;
     ofxUISuperCanvas* gridControls;
     bool invertColorScheme;
-    
     
     //Grid
     ofVboMesh grid;
