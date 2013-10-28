@@ -109,14 +109,14 @@ void CloudsVisualSystemOscillations::selfSetup(){
                 mesh.addVertex(ofPoint(0,0,i));
     }
     
-    
+    mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
     //TODO: Find way to update on every resize
     
     offsetX = offsetY = 0;
     BuildGrid();
 
-    crtShader.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
-    oscillator.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
+    oscillator.load(getVisualSystemDataPath() +"shaders/oscillationsShader");
+    crtShader.load(getVisualSystemDataPath() +"shaders/chromaticAbberation");
 
 	
 }
@@ -164,6 +164,8 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     oscillator.setUniform1f("curveHeight", curveHeight);
     oscillator.setUniform1f("curveZPos", curveZPos);
     oscillator.setUniform1f("curveDepth", curveDepth);
+    oscillator.setUniform2f("resolution",width,height);
+	
     oscillator.end();
     
     
@@ -202,19 +204,17 @@ void CloudsVisualSystemOscillations::selfDraw(){
         
         grid.drawWireframe();
 //        grid.drawVertices();
-
 //        grid.draw();
 
         glDisable(GL_LINE_STIPPLE);
     }
     
 	glDisable(GL_DEPTH_TEST);
-    
-    mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
 
     ofSetLineWidth(lineWidth);
     oscillator.begin();
-	mesh.drawWireframe();
+//	mesh.drawWireframe();
+	mesh.draw();
     oscillator.end();
 	
 	ofPopStyle();
@@ -243,10 +243,14 @@ void CloudsVisualSystemOscillations::selfPostDraw(){
     crtShader.begin();
 //    crtShader.setUniform1i("screen", GL_TEXTURE0);
     crtShader.setUniformTexture("screen", getSharedRenderTarget(), 0 );
-    crtShader.setUniform2f("resolution", float( getSharedRenderTarget().getWidth() ), (float) getSharedRenderTarget().getHeight());
+    crtShader.setUniform2f("resolution",
+						   float(getSharedRenderTarget().getWidth()),
+						   float(getSharedRenderTarget().getHeight()));
     getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
 													 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
 													 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	CloudsVisualSystem::selfPostDraw();
+	
     crtShader.end();
 
 }
