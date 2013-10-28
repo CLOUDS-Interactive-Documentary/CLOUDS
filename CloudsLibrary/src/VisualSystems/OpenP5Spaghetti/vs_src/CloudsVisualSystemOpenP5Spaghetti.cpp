@@ -5,6 +5,7 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
 
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 
@@ -59,7 +60,7 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
     for(int i = 0; i<NWALKERS; i++){
         walkers.push_back( Walker() );
-		walkers[i].init(400, ofFloatColor::white);
+		walkers[i].init(100, ofFloatColor::white);
 //        walkers[i] = *new Walker();
     }
 }
@@ -90,7 +91,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
     
     for(int i = 0; i < NWALKERS; i++){
         
-        walkers[i].step();
+        walkers[i].noiseStep();
         
     }
 

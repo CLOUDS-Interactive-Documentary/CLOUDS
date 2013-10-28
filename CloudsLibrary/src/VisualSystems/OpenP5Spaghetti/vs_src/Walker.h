@@ -21,11 +21,13 @@ class Walker {
     
 	float seed;
     int i;
+    float j;
     float maxX, minX, maxY, minY, maxZ, minZ;
     int nParticles;
 
     void init(int nParticles, ofColor color);
     void step();
+    void noiseStep();
     void draw();
     
     
@@ -34,5 +36,6 @@ class Walker {
     
 //    vector<particle> particles;
     ofVboMesh mesh;
+    
   
 };

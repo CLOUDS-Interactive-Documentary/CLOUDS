@@ -4,6 +4,7 @@
 void testApp::setup(){
 	vs.setup();
 	vs.playSystem();
+    ofSetFrameRate(30);
 }
 
 //--------------------------------------------------------------

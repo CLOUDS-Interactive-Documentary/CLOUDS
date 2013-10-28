@@ -13,7 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "Walker.h"
 
-#define NWALKERS 20
+#define NWALKERS 35
 
 
 
@@ -104,6 +104,7 @@ protected:
     
     //  Your Stuff
     //
+
 	
 
 };

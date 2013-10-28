@@ -25,12 +25,15 @@ void Walker::init(int _nParticles, ofColor _color){
 	maxX = minX = maxY = minY = 0;
 	minZ = maxZ = 0;
 	i = 0;
+    j = 0; 
 	
-	color = ofFloatColor::fromHsb( ofRandomuf(), 1.0, 1.0 );
+	color = ofFloatColor::fromHsb( ofRandomuf(), .3, .95 );
 	
 	mesh.addColor(color);
 	mesh.addVertex(position);
 	mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+    //mesh.setMode(OF_PRIMITIVE_POINTS);
+    
 }
 	
 void Walker::step(){
@@ -62,32 +65,8 @@ void Walker::step(){
 	 */
 	
 
-//        struct particle newParticle;
-//	newParticle.position = particles[i].position;
-	//newParticle.color = particle.color;
-//	particles.push_back(newParticle);
 
-//	i++;
-	
-//	if( particles[i].position.x < minX){
-//		minX = particles[i].position.x;
-//	}
-//	if( particles[i].position.x > maxX){
-//		maxX = particles[i].position.x;
-//	}
-//	if( particles[i].position.y < minY){
-//		minY = particles[i].position.y;
-//	}
-//	if( particles[i].position.y > maxY){
-//		maxY =  particles[i].position.y;
-//	}
-//	if( particles[i].position.z < minZ){
-//		minZ =  particles[i].position.z;
-//	}
-//	if( particles[i].position.z > maxZ){
-//		maxZ =  particles[i].position.z;
-//	}
-	
+
 	if (i >= nParticles){
 		mesh.getVertices().erase( mesh.getVertices().begin() );
 		mesh.getColors().erase( mesh.getColors().begin() );
@@ -97,6 +76,35 @@ void Walker::step(){
 
 //		i--;
             
+}
+
+void Walker::noiseStep(){
+    
+    j = j + 1;
+    float t = (ofGetElapsedTimeMillis());
+    float t0 = t/25;
+    float t1 = t/100;
+    float t2 = t/400;
+    float t3 = t/900;
+    float t4 = t*2;
+    
+    
+	position.x += (ofNoise(t2 * .01, j * .01, seed) * 1 - .5);              //ofNoise(frameCount, i * 0.01, seed) * 3)
+    position.y += (ofNoise(seed , t2 * .01, j * 0.01) * 1 - .5);             //(ofNoise(seed, frameCount, i * 0.01 ) * 3) - 1.5;
+	position.z += (ofNoise( j * .01, seed, t2 *.01 ) * 1 - .5);    //(ofNoise(i * 0.01, frameCount, seed) * 3) - 1.5;
+    
+	mesh.addColor(color);
+	mesh.addVertex(position);
+    
+	if (i >= nParticles){
+		mesh.getVertices().erase( mesh.getVertices().begin() );
+		mesh.getColors().erase( mesh.getColors().begin() );
+		
+        //		particles.erase(particles.begin() );
+	}
+    
+    //		i--;
+    
 }
     
 void Walker::draw(){

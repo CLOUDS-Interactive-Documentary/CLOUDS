@@ -20,8 +20,9 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+	customGui->addSlider("Color 1 Sat", 0, 1, &color1HSB.g);
+	customGui->addSlider("Color 1 Bri", 0, 1, &color1HSB.b);
+
     
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -185,6 +186,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
        // ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2, -400/2);
         
         ofRotateX(framecount* (ofRadToDeg(PI/1000)));
+        
         
         for (int y = -2; y < 2; y++) {
             for (int x = -2; x < 2; x++) {
