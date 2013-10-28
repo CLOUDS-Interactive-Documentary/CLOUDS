@@ -438,8 +438,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             freeTopic = true;
         }
         
-        ///////////////// DIOCHOTOMIES
-        updateDichotomies(clip);
         
         ///////////////// QUESTIONS
         //adding all option clips with questions
@@ -461,9 +459,12 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
             }
         }
         
+		///////////////// DIOCHOTOMIES
+        updateDichotomies(clip);
+
         //add clip to act
         clipHandleDuration = getHandleForClip(clip);
-        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration,getCurrentDichotomyBalance());
+        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
         float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         localClipHistory.push_back(clip);
@@ -733,22 +734,23 @@ void CloudsStoryEngine::clearDichotomiesBalance(){
 }
 
 void CloudsStoryEngine::updateDichotomies(CloudsClip& clip){
-    vector<string> specialkeywords= clip.getSpecialKeywords();
+    vector<string> specialkeywords = clip.getSpecialKeywords();
     
-    for(int i=0; i <dichotomies.size();i++){
-        for(int j=0; j<specialkeywords.size();j++){
+    for(int i=0; i < dichotomies.size();i++){
+        for(int j=0; j < specialkeywords.size();j++){
             
             if(dichotomies[i].left == specialkeywords[j]){
                 dichotomies[i].balance -= 1;
-                //                cout<<dichotomies[i].left<<": +1"<<endl;
+                //cout<<dichotomies[i].left<<": +1"<<endl;
             }
             else if (dichotomies[i].right == specialkeywords[j]){
-                //                cout<<dichotomies[i].right<<": +1"<<endl;
+                //cout<<dichotomies[i].right<<": +1"<<endl;
                 dichotomies[i].balance += 1;
             }
         }
     }
 }
+
 
 //intentionally by copy so that we can store them as we go
 vector<CloudsDichotomy> CloudsStoryEngine::getCurrentDichotomyBalance(){

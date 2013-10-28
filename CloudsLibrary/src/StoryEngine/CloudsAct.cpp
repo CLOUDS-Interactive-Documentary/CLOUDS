@@ -36,11 +36,13 @@ void CloudsAct::populateTime(){
 	timeline.setSpacebarTogglePlay(false);
     timeline.setAutosave(false);
     timeline.setup();
+	timeline.setMinimalHeaders(true);
 	timeline.disableEvents();
 	
     timeline.clear();
     
     timeline.setDurationInSeconds(duration);
+	timeline.setPageName("story");
     topicsTrack = timeline.addFlags("Topics");
     visualSystemsTrack = timeline.addFlags("Visual Systems");
     vsGapsTrack = timeline.addFlags("VS Gap");
@@ -48,8 +50,6 @@ void CloudsAct::populateTime(){
     difficultyTrack = timeline.addFlags("Clip Difficulty");
     clipPreRollTrack = timeline.addFlags("Clip PreRoll Flags");
     questionsTrack = timeline.addFlags("Questions");
-    
-    
     
     timeline.setInPointAtSeconds(0);
     string previousTopic = "";
@@ -109,7 +109,28 @@ void CloudsAct::populateTime(){
 	
 	topicDurationMap[previousTopic] = duration - currentTopicStartTime;
     
+	timeline.addPage("dichotomies", true);
+	dichotomyClips = timeline.addFlags("DichotomyClips");
+	vector<CloudsDichotomy> dichotomies = CloudsDichotomy::getDichotomies();
+    for(int i = 0;  i < dichotomies.size(); i++){
+		string trackName = dichotomies[i].left + " _ " + dichotomies[i].right;
+		dichotomyTracks[trackName] = timeline.addCurves(trackName, ofRange(-5,5), 0);
+	}
     
+	map<string, vector<CloudsDichotomy> >::iterator it;
+	for(it = dichotomiesMap.begin(); it != dichotomiesMap.end(); it++){
+		
+		float startTime = clipItems[it->first].startTime;
+		dichotomyClips->addFlagAtTime(it->first, startTime*1000);
+		vector<CloudsDichotomy>& clipDichotomy = it->second;		
+		for(int i = 0; i < dichotomies.size(); i++){
+			string trackName = dichotomies[i].left + " _ " + dichotomies[i].right;
+
+			dichotomyTracks[trackName]->addKeyframeAtMillis(clipDichotomy[i].balance, startTime*1000.0);
+		}
+	}
+	
+	timeline.setCurrentPage(0);
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
@@ -193,7 +214,7 @@ vector<CloudsVisualSystemPreset>& CloudsAct::getAllVisualSystemPresets(){
 
 void CloudsAct::drawDebug(){
 	
-    timeline.setOffset(ofVec2f(0,ofGetHeight()/3));
+    timeline.setOffset(ofVec2f(0,ofGetHeight()*.5));
     timeline.draw();
 }
 
@@ -296,7 +317,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
 }
 
-void CloudsAct:: updateClipStartTime(CloudsClip clip, float startTime,float handleLength, string topic){
+void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handleLength, string topic){
     for(int i =0; i<actItems.size(); i++){
         if(actItems[i].type == Clip && actItems[i].key == clip.getLinkName()){
             
