@@ -54,7 +54,7 @@ public:
 	ofPath circle;
 	SteerPath* path;
     ProximityDatabase* pd;
-    
+
     PathFollowing(){
         pd = NULL;  
     };
@@ -77,7 +77,7 @@ public:
 		
 		path = createPath(circle.getOutline()[0], 1.5); // polyline, radius
 		
-		for(unsigned int i=0;i<100;i++){
+		for(unsigned int i=0;i<Boid::nBoids;i++){
 			PathBoid* v = new PathBoid();
             v->path = path;
             v->pt = allocateProximityToken(pd, v);

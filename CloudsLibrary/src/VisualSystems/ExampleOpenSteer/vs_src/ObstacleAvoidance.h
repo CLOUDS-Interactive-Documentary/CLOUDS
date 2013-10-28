@@ -54,7 +54,6 @@ class ObstacleAvoidance: public ofxOpenSteerPlugin {
 public:
     Vec3 origin;
     Vec3 target;
-    
     ObstacleGroup* obstacles;
 	
 	float radius;
@@ -67,6 +66,7 @@ public:
 	
 	string name(){ return "Obstacle Avoidance"; };
 	
+
 	void setup(){
 		ofxOpenSteerPlugin::setup();
 		
@@ -85,7 +85,7 @@ public:
         // Create a proximity database with default settings
         pd = createProximityDatabase();
 		
-		for(unsigned int i=0;i<100;i++){
+		for(unsigned int i=0; i<Boid::nBoids; i++){
 			ObstacleBoid* v = new ObstacleBoid();
             v->pt = allocateProximityToken(pd, v);
             v->origin = &origin;
@@ -124,5 +124,4 @@ public:
         if(pd) delete pd;
         pd = NULL;
 	}
-	
 };

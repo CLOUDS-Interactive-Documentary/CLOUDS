@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2ACC04D81811B0CE00953B09 /* ofxMPMFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC04CE1811B0CE00953B09 /* ofxMPMFluid.cpp */; };
-		2ACC04D91811B0CE00953B09 /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC04D01811B0CE00953B09 /* ofxMPMNode.cpp */; };
-		2ACC04DA1811B0CE00953B09 /* ofxMPMObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC04D21811B0CE00953B09 /* ofxMPMObstacle.cpp */; };
-		2ACC04DB1811B0CE00953B09 /* ofxMPMParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC04D41811B0CE00953B09 /* ofxMPMParticle.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -35,6 +31,8 @@
 		E759EF4B181DC80E00FA1E90 /* oscillationsShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */; };
 		E759EF4C181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */; };
 		E759EFAB181DC85500FA1E90 /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EFA0181DC85500FA1E90 /* ofxAutoReloadedShader.cpp */; };
+		E759EFEB181E5FDE00FA1E90 /* chromaticAbberation.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */; };
+		E759EFEC181E5FDE00FA1E90 /* chromaticAbberation.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -141,14 +139,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2ACC04CE1811B0CE00953B09 /* ofxMPMFluid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMFluid.cpp; sourceTree = "<group>"; };
-		2ACC04CF1811B0CE00953B09 /* ofxMPMFluid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMPMFluid.h; sourceTree = "<group>"; };
-		2ACC04D01811B0CE00953B09 /* ofxMPMNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMNode.cpp; sourceTree = "<group>"; };
-		2ACC04D11811B0CE00953B09 /* ofxMPMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMPMNode.h; sourceTree = "<group>"; };
-		2ACC04D21811B0CE00953B09 /* ofxMPMObstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMObstacle.cpp; sourceTree = "<group>"; };
-		2ACC04D31811B0CE00953B09 /* ofxMPMObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMPMObstacle.h; sourceTree = "<group>"; };
-		2ACC04D41811B0CE00953B09 /* ofxMPMParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMPMParticle.cpp; sourceTree = "<group>"; };
-		2ACC04D51811B0CE00953B09 /* ofxMPMParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMPMParticle.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -177,12 +167,14 @@
 		E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E72FF12017E688FE0007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
-		E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.frag; sourceTree = "<group>"; };
-		E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = oscillationsShader.vert; sourceTree = "<group>"; };
+		E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = oscillationsShader.frag; sourceTree = "<group>"; };
+		E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = oscillationsShader.vert; sourceTree = "<group>"; };
 		E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
 		E759EF49181DC80E00FA1E90 /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
 		E759EFA0181DC85500FA1E90 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAutoReloadedShader.cpp; sourceTree = "<group>"; };
 		E759EFA1181DC85500FA1E90 /* ofxAutoReloadedShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAutoReloadedShader.h; sourceTree = "<group>"; };
+		E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = chromaticAbberation.frag; sourceTree = "<group>"; };
+		E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = chromaticAbberation.vert; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -424,35 +416,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2ACC04B91811B0CD00953B09 /* ofxMPMFluid */ = {
-			isa = PBXGroup;
-			children = (
-				2ACC04CD1811B0CE00953B09 /* src */,
-			);
-			name = ofxMPMFluid;
-			path = ../../../addons/ofxMPMFluid;
-			sourceTree = "<group>";
-		};
-		2ACC04CD1811B0CE00953B09 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				2ACC04CE1811B0CE00953B09 /* ofxMPMFluid.cpp */,
-				2ACC04CF1811B0CE00953B09 /* ofxMPMFluid.h */,
-				2ACC04D01811B0CE00953B09 /* ofxMPMNode.cpp */,
-				2ACC04D11811B0CE00953B09 /* ofxMPMNode.h */,
-				2ACC04D21811B0CE00953B09 /* ofxMPMObstacle.cpp */,
-				2ACC04D31811B0CE00953B09 /* ofxMPMObstacle.h */,
-				2ACC04D41811B0CE00953B09 /* ofxMPMParticle.cpp */,
-				2ACC04D51811B0CE00953B09 /* ofxMPMParticle.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
 				E759EF7E181DC85500FA1E90 /* ofxAutoReloadedShader */,
-				2ACC04B91811B0CD00953B09 /* ofxMPMFluid */,
 				E7CF78FD1753FF32006B7D41 /* ofxTextInputField */,
 				E7CF78DD1753FEEB006B7D41 /* ofxMSATimer */,
 				E7CF78D91753FED8006B7D41 /* ofxRange */,
@@ -594,6 +561,8 @@
 		E759EF44181DC80E00FA1E90 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				E759EFE9181E5FDE00FA1E90 /* chromaticAbberation.frag */,
+				E759EFEA181E5FDE00FA1E90 /* chromaticAbberation.vert */,
 				E759EF45181DC80E00FA1E90 /* oscillationsShader.frag */,
 				E759EF46181DC80E00FA1E90 /* oscillationsShader.vert */,
 			);
@@ -603,8 +572,8 @@
 		E759EF47181DC80E00FA1E90 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */,
 				E759EF49181DC80E00FA1E90 /* CloudsVisualSystemOscillations.h */,
+				E759EF48181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1242,19 +1211,16 @@
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
-				2ACC04DB1811B0CE00953B09 /* ofxMPMParticle.cpp in Sources */,
 				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
 				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */,
-				2ACC04DA1811B0CE00953B09 /* ofxMPMObstacle.cpp in Sources */,
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
-				2ACC04D81811B0CE00953B09 /* ofxMPMFluid.cpp in Sources */,
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
@@ -1280,7 +1246,6 @@
 				E7CF785C1753FEA1006B7D41 /* ofxTLTrack.cpp in Sources */,
 				E7CF785D1753FEA1006B7D41 /* ofxTLTrackHeader.cpp in Sources */,
 				E7CF785E1753FEA1006B7D41 /* ofxTLVideoThumb.cpp in Sources */,
-				2ACC04D91811B0CE00953B09 /* ofxMPMNode.cpp in Sources */,
 				E7CF785F1753FEA1006B7D41 /* ofxTLVideoTrack.cpp in Sources */,
 				E7CF78601753FEA1006B7D41 /* ofxTLZoomer.cpp in Sources */,
 				E7CF78891753FEC0006B7D41 /* ofxTimecode.cpp in Sources */,
@@ -1306,6 +1271,8 @@
 				E759EF4B181DC80E00FA1E90 /* oscillationsShader.vert in Sources */,
 				E759EF4C181DC80E00FA1E90 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E759EFAB181DC85500FA1E90 /* ofxAutoReloadedShader.cpp in Sources */,
+				E759EFEB181E5FDE00FA1E90 /* chromaticAbberation.frag in Sources */,
+				E759EFEC181E5FDE00FA1E90 /* chromaticAbberation.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
