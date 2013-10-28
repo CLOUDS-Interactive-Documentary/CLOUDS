@@ -109,3 +109,11 @@ CloudsVisualSystemOpenP5NoiseSphere.cpp
 /CloudsLibrary/src/VisualSystems/Vision/bin/data/toConvert/Street_Slow1_BW.mp4
 /CloudsLibrary/src/VisualSystems/Vision/bin/data/toConvert/Street_Slow2_BW.mp4
 /CloudsLibrary/src/VisualSystems/Vision/bin/data/toConvert/Street_Slow3_BW.mp4
+
+/CloudsLibrary/src/VisualSystems/VisionSystem/bin/data/toConvert/
+/VSVision/bin/data/GUI/data/oldVideos/
+/VSVision/bin/data/GUI/data/toConvert/
+/CloudsLibrary/src/VisualSystems/VisionSystem/bin/data/GreenPoint_bike.m4v
+/VSVision/bin/data/GUI/data/GreenPoint_bike.m4v
+
+/CloudsLibrary/src/VisualSystems/VisionSystem/bin/data/oldVideos/
