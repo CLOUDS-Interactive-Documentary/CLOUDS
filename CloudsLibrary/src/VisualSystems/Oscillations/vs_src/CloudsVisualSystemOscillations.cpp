@@ -33,7 +33,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
 	curveControls->addSlider("Depth", 0, 10000, &curveDepth);
 	curveControls->addSlider("Z Position", -1000, 1000, &curveZPos);
 	curveControls->addSlider("Speed", 0, 1, &speed);
-    curveControls->addSlider("Line Width", 0, 20, &lineWidth);
+
     
     curveControls->addSpacer("Color");
     curveControls->addMinimalSlider("Red", 0, 1, &curveColor.r, length, dim)->setShowValue(false);
@@ -42,6 +42,12 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     curveControls->addMinimalSlider("Blue", 0, 1, &curveColor.b, length, dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     curveControls->addMinimalSlider("Alpha", 0, 1, &curveColor.a);
+    curveControls->addMinimalSlider("Width", 0, 20, &lineWidth, length * 3./2., dim)->setShowValue(false);
+    curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    curveControls->addToggle("Render Lines", &renderLines);
+    
+    curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    
 
     ofAddListener(curveControls->newGUIEvent, this, &CloudsVisualSystemOscillations::selfGuiEvent);
     
@@ -127,7 +133,7 @@ void CloudsVisualSystemOscillations::selfSetup(){
         mesh.addVertex(ofPoint(0,0,i));
     }
     
-    mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
+    
     //TODO: Find way to update on every resize
     
     offsetX = offsetY = 0;
@@ -166,6 +172,11 @@ void CloudsVisualSystemOscillations::selfUpdate(){
     height = ofGetHeight();
     offsetX += speed;
     
+    if (renderLines){
+        mesh.setMode(OF_PRIMITIVE_LINE_LOOP);
+    } else {
+        mesh.setMode(OF_PRIMITIVE_POINTS);
+    }
     
     oscillator.begin();
     

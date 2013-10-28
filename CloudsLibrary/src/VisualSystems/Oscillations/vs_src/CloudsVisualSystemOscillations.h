@@ -108,15 +108,14 @@ protected:
     
     //Color Scheme
     ofFloatColor curveColor, gridColor;
-    float curveColorH, curveColorS, curveColorL, curveColorA;
-    float gridColorH, gridColorS, gridColorL, gridColorA;
-    
+        
     //Wave
     ofVboMesh mesh;
     float heightFactor, precision;
     float curveProgress, speed, lineWidth;
     float curveHeight, curveWidth, curveDepth, curveZPos;
     float offsetX, offsetY;
+    bool renderLines;
     
     //Grid
     ofVboMesh grid;
