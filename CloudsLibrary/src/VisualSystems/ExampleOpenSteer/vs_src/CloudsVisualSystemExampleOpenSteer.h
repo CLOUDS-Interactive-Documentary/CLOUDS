@@ -109,6 +109,7 @@ protected:
     ofFloatColor tickColor;
 	ofxUISuperCanvas* customGui;
 
+	ofVec3f avgPosition;
 
     //ofEasyCam cam;
 	

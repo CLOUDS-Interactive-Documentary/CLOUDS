@@ -25,7 +25,7 @@ public:
     static float fMaxSpeed;
     static float fMaxForce;
     static float fInitialPositionRadius;
-    
+    static float fMaximumRadius;
     static float radius;
     
     static float separationRadius;
@@ -128,6 +128,13 @@ public:
 		const Vec3 alignmentW = alignment * alignmentWeight;
 		const Vec3 cohesionW = cohesion * cohesionWeight;
 		
-		return separationW + alignmentW + cohesionW;
+		const ofVec3f position = getPosition();
+
+        Vec3 force = separationW + alignmentW + cohesionW;
+        
+        if(position.distance(ofVec3f(0,0,0)) > Boid::fMaximumRadius) {
+            force += steerForSeek(Vec3(0,0,0));
+		}
+		return force;
 	};
 };

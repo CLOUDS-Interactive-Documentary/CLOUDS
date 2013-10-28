@@ -41,7 +41,7 @@ void CloudsVisualSystemExampleOpenSteer::selfSetupGui(){
     customGui->addSlider("RADIUS", 0, 10, &Boid::radius);
     customGui->addSlider("MAX FORCE", 10, 50, &Boid::fMaxForce);
     customGui->addSlider("MAX SPEED", 5, 40, &Boid::fMaxSpeed);
-    
+    customGui->addSlider("MAXIMUM RADIUS", 50, 100, &Boid::fMaximumRadius);
 
     
     length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
@@ -224,11 +224,18 @@ void CloudsVisualSystemExampleOpenSteer::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemExampleOpenSteer::selfUpdate(){
     currentSimulation->update();
+
+    ofVec3f pos;
+    for(int i=0; i<currentSimulation->getVehicles().size(); i++) {
+        pos += currentSimulation->getVehicles()[i]->getPosition();
+    }
+    avgPosition = pos/currentSimulation->getVehicles().size();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleOpenSteer::selfDraw(){
+    //cam.lookAt(avgPosition);
     cam.begin();
     currentSimulation->draw();
 	cam.end();

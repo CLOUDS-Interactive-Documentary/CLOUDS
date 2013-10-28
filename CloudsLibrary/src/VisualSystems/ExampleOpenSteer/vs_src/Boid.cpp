@@ -18,7 +18,7 @@ Color Boid::tickColor;
 float Boid::fMaxSpeed = 9;
 float Boid::fMaxForce = 27;
 float Boid::fInitialPositionRadius = 20;
-
+float Boid::fMaximumRadius = 200;
 float Boid::radius = 1;
 
 float Boid::separationRadius =  5.0f;
