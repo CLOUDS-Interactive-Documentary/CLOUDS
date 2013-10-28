@@ -32,7 +32,7 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
 	curveControls->addSlider("Width", 0, 10000, &curveWidth);
 	curveControls->addSlider("Depth", 0, 10000, &curveDepth);
 	curveControls->addSlider("Z Position", -1000, 1000, &curveZPos);
-	curveControls->addSlider("Speed", 0, 1, &speed);
+	curveControls->addSlider("Speed", 0, 0.5, &speed);
 
     
     curveControls->addSpacer("Color");
@@ -42,13 +42,12 @@ void CloudsVisualSystemOscillations::selfSetupGui(){
     curveControls->addMinimalSlider("Blue", 0, 1, &curveColor.b, length, dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     curveControls->addMinimalSlider("Alpha", 0, 1, &curveColor.a);
-    curveControls->addMinimalSlider("Width", 0, 20, &lineWidth, length * 3./2., dim)->setShowValue(false);
+    curveControls->addMinimalSlider("Width", 0, 20, &CurveLineWidth, length * 3./2., dim)->setShowValue(false);
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
     curveControls->addToggle("Render Lines", &renderLines);
     
     curveControls->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
-
     ofAddListener(curveControls->newGUIEvent, this, &CloudsVisualSystemOscillations::selfGuiEvent);
     
     gridControls = new ofxUISuperCanvas("Grid", gui);
@@ -217,8 +216,9 @@ void CloudsVisualSystemOscillations::selfDraw(){
     
 	glDisable(GL_DEPTH_TEST);
 
-    ofSetLineWidth(lineWidth);
+
     oscillator.begin();
+    ofSetLineWidth(CurveLineWidth);
 	mesh.draw();
     oscillator.end();
 	

@@ -112,7 +112,7 @@ protected:
     //Wave
     ofVboMesh mesh;
     float heightFactor, precision;
-    float curveProgress, speed, lineWidth;
+    float curveProgress, speed, CurveLineWidth;
     float curveHeight, curveWidth, curveDepth, curveZPos;
     float offsetX, offsetY;
     bool renderLines;
