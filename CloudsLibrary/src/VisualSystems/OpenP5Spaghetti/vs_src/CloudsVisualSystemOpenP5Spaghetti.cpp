@@ -99,7 +99,11 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	glDisable(GL_DEPTH_TEST);
+	
     for(int i = 0; i<NWALKERS; i++){
+		
         walkers[i].draw();
     }
 }
