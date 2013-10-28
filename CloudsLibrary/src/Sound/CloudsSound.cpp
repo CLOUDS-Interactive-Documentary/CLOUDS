@@ -52,7 +52,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         mbank = "luke";
         AUTORUN = 0;
         DOCLEAR = true;
-        RTCMIX_PRINT = true;
+        RTCMIX_PRINT = false;
         
 		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 
