@@ -25,3 +25,8 @@
     <Name>JM_Machine1</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JM_Machine2</Name>
+    <Value>0</Value>
+</Widget>
