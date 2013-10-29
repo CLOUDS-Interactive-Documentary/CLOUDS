@@ -35,8 +35,13 @@ class Walker {
     
     //random seed for noise
     float seed;
-    static float noiseSpeed1;
-    static float stepSize;
+    static float noiseSpeedx;
+    static float noiseSpeedy;
+    static float noiseSpeedz;
+    
+    static float stepSizex;
+    static float stepSizey;
+    static float stepSizez;
     
     static bool drawPoints;
 	//float pointAlpha;

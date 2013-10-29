@@ -8,13 +8,19 @@
 
 #include "Walker.h"
 
-float Walker::stepSize = 1.0f;
-float Walker::noiseSpeed1 = .01f;
+float Walker::stepSizex = 1.0f;
+float Walker::stepSizey = 1.0f;
+float Walker::stepSizez = 1.0f;
+
+float Walker::noiseSpeedx = .01f;
+float Walker::noiseSpeedy = .01f;
+float Walker::noiseSpeedz = .01f;
+
 bool Walker:: drawPoints = true;
 bool Walker:: drawLines = false;
 int Walker:: i;
 float Walker:: j;
-float Walker:: nParticles = 50;
+float Walker:: nParticles = 40;
 
 Walker::Walker(){
     
@@ -73,15 +79,12 @@ void Walker::smoothTrails(){
     
     j = j + 1;
     float t = (ofGetElapsedTimeMillis());
-    float t0 = t/25;
-    float t1 = t/100;
-    float t2 = t/400;
-    float t3 = t/900;
-    float t4 = t*2;
+    float t2 = t/999;
+   
     
-	position.x += (ofNoise(t2 * .01, j * .01, seed) * 1 - .5);              
-    position.y += (ofNoise(seed , t2 * .01, j * 0.01) * 1 - .5);           
-	position.z += (ofNoise( j * .01, seed, t2 *.01 ) * 1 - .5);   
+	position.x += (ofNoise(t2 * noiseSpeedx, j * noiseSpeedx, seed) * stepSizex*2.0 - stepSizex); //noiseSpeed .01 stepSize 3
+    position.y += (ofNoise(seed , t2 * noiseSpeedy, j * noiseSpeedy) * stepSizey*2.0 - stepSizey);
+	position.z += (ofNoise( j * noiseSpeedz, seed, t2 * noiseSpeedz ) * stepSizez*2.0 - stepSizez);
     
 	mesh.addColor(color);
 	mesh.addVertex(position);
@@ -100,12 +103,11 @@ void Walker::gnarlyTrails(){
     
     j = j + 1;
     float t = (ofGetElapsedTimeMillis());
+    float t0 = t/20;
     
-    float t0 = t * noiseSpeed1;
-    
-	position.x += (ofNoise(t0 * .2, j * .4, seed) * stepSize*2.0 - stepSize);
-    position.y += (ofNoise(seed , t0 * .2, j * 0.5) * stepSize*2.0 - stepSize);
-	position.z += (ofNoise( j * .5, seed, t0 * .2  ) * stepSize*2.0 - stepSize);
+	position.x += (ofNoise(t0 * noiseSpeedx, j * noiseSpeedx, seed) * stepSizex*2.0 - stepSizex);
+    position.y += (ofNoise(seed , t0 * noiseSpeedy, j * noiseSpeedy) * stepSizey*2.0 - stepSizey);
+	position.z += (ofNoise( j * noiseSpeedz, seed, t0 * noiseSpeedz  ) * stepSizez*2.0 - stepSizez);
 
     
     /* float t0 = t/25;

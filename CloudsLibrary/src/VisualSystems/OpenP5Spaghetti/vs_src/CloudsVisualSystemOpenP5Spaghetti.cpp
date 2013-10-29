@@ -29,8 +29,13 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addToggle("GNARLY", &gnarly);
     customGui->addSlider("Number of Walkers", 1, 50, &NWalkers);
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
-  //  customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSize);
-//	customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeed1);
+    customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSizex);
+    customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSizey);
+    customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSizez);
+    
+	customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeedx);
+    customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeedy);
+    customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeedz);
 
     
     customGui->addLabel("RENDERING");
