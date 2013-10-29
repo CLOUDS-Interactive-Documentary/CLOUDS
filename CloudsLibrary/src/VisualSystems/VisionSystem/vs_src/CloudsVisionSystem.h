@@ -15,7 +15,7 @@
 
 typedef enum{
     OpticalFlow =0,
-    ControurTracking,
+    ContourTracking,
     HeatMap
 
 }CVMode;
