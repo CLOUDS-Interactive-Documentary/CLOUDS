@@ -92,12 +92,12 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
    
-    //Walker walkers[NWALKERS];
+   
 	vector<Walker> walkers;
     
-    int NumWalkers;
-    bool smooth;
-    bool gnarly;
+    static float NWalkers;
+    static bool smooth;
+    static bool gnarly;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

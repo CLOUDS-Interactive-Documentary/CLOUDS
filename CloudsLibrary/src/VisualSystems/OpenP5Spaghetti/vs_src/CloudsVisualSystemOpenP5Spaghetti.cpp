@@ -24,19 +24,21 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addLabel("click to reset");
     customGui->addToggle("SMOOTH", &smooth);
     customGui->addToggle("GNARLY", &gnarly);
-    customGui->addSlider("Particle number", 0, 1000, &NumWalkers);
- //   customGui->addSlider("STEP SIZE", 0, 5, 0.5, &Walker::stepSize);
-//	customGui->addSlider("NOISE SPEED", 0, 1, 0.5, &Walker::noiseSpeed1);
-   
+    customGui->addSlider("Number of Walkers", 1, 50, &NWalkers);
+    customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
+  //  customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSize);
+//	customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeed1);
 
     
     customGui->addLabel("RENDERING");
 	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
     customGui->addToggle("DRAW LINES", &Walker::drawLines);
-    
-    ofAddListener(customGui->newGUIEvent, this, CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
+ 
+
+    ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+ 
   
 }
 
@@ -67,7 +69,12 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
-    for(int i = 0; i<NWALKERS; i++){
+    
+    NWalkers = 10;
+    smooth = true; 
+    Walker::drawLines = true; 
+    
+    for(int i = 0; i<NWalkers; i++){
    
         walkers.push_back( Walker() );
 		walkers[i].init(40, ofFloatColor::white);
@@ -102,14 +109,14 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
     
     if (smooth){
         gnarly = false;
-    for(int i = 0; i < NumWalkers; i++){
+    for(int i = 0; i < NWalkers; i++){
         walkers[i].smoothTrails();
         
         }
     }
     if (gnarly){
         smooth = false;
-    for(int i = 0; i < NumWalkers; i++){
+    for(int i = 0; i < NWalkers; i++){
         walkers[i].gnarlyTrails();
     }
     }
@@ -121,7 +128,7 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
 	glDisable(GL_DEPTH_TEST);
 	
-    for(int i = 0; i<NumWalkers; i++){
+    for(int i = 0; i<NWalkers; i++){
 		
         walkers[i].draw();
     }

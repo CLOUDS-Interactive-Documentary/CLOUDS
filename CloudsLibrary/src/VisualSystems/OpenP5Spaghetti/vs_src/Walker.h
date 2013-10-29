@@ -20,10 +20,10 @@ class Walker {
     ofFloatColor color;
     
 	
-    int i;
-    float j;
+    static int i;
+    static float j;
     float maxX, minX, maxY, minY, maxZ, minZ;
-    int nParticles;
+    static float nParticles;
 
     void init(int nParticles, ofColor color);
     void step();
@@ -31,13 +31,13 @@ class Walker {
     void gnarlyTrails();
     void draw();
     
-    float seed;
-    float noiseSpeed1;
-    float stepSize;
+    static float seed;
+    static float noiseSpeed1;
+    static float stepSize;
     
-    bool drawPoints;
+    static bool drawPoints;
 	//float pointAlpha;
-	bool drawLines;
+	static bool drawLines;
     
     
     
