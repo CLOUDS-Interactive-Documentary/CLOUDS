@@ -7,6 +7,9 @@
  uniform float distortionAmount;
  uniform float abberationAmount;
 
+
+// float  abberationAmount = 0.8;
+
 mat3 kernel = mat3(	0.0625,	0.125,	0.0625,
 					0.125,	0.250,	0.125,
 					0.0625,	0.125,	0.0625);
@@ -26,14 +29,14 @@ void main(){
 
 	float dist = distance(gl_TexCoord[0].st, (resolution / 2.));
 	dist /= (distance(resolution/2., vec2(0.)));
-	float distFactor = pow(dist, 2.0) * max(resolution.x, resolution.y) * 0.33;
+	float distFactor = pow(dist, 2.0) * max(resolution.x, resolution.y) * distortionAmount;
 	
 	vec2 offset = normalize(resolution/2. - coord);
 
 	vec4 t = vec4(0.);
-	t.x = convolution(coord + offset * distFactor * 0.005).x;
-	t.y = convolution(coord + offset * distFactor * 0.045).y;
-	t.z = convolution(coord + offset * distFactor * 0.090).z;
+	t.x = convolution(coord + offset * distFactor * 0.005 * abberationAmount).x;
+	t.y = convolution(coord + offset * distFactor * 0.045 * abberationAmount).y;
+	t.z = convolution(coord + offset * distFactor * 0.090 * abberationAmount).z;
 	t.w = 1.;
 	
 

@@ -21,22 +21,16 @@ vec3 getThePoint(float pointID){
 	float py = sin(pointID * precision + offsetY);
 	float pz = abs((-numPoints / 2.0) + pointID) / (numPoints / 2.0);
 	return vec3( -curveWidth / 2.0 + px * curveWidth, -curveHeight / 2.0 + py * curveHeight, -curveDepth / 2.0 + curveZPos + pz * curveDepth);
-//	return vec3( px,
-//				 0.,
-//				 pointID);
 }
 
 
 void main(){
-
+	float pointID = gl_Vertex.z;
 	gl_TexCoord[0] = gl_MultiTexCoord0;
-	vec4 v = vec4(getThePoint(gl_Vertex.z*2.) , 1.); //infer position from z
-	//vec4 v = gl_Vertex;
-	vec4 pos = gl_ProjectionMatrix * gl_ModelViewMatrix * v;
-	//vec4 pos = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex; //rollback
-	gl_Position = pos;
-	// gl_FrontColor = targetColor; 
-	gl_FrontColor = gl_Color; 
+	vec4 v = vec4(getThePoint(pointID) , 1.); //infer position from z
+	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * v;
+	float progressFalloff = float(pointID/numPoints < curveProgress); //TODO: make continuous;
+	gl_FrontColor = vec4(targetColor.xyz, progressFalloff * targetColor.w); 
 
 }
 

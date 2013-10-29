@@ -177,6 +177,7 @@ void CloudsVisualSystem::setup(){
 	
     ofDirectory dir;
     string directoryName = getVisualSystemDataPath()+"Presets/";
+    cout<<"Directory name: "<< directoryName<<endl;
     if(!dir.doesDirectoryExist(directoryName))
     {
         dir.createDirectory(directoryName);

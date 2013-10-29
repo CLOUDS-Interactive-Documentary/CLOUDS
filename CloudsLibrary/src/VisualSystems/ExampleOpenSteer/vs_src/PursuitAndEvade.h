@@ -35,7 +35,7 @@ public:
     void draw(){
         drawBasic3dSphericalVehicle (*this, color);
         if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTail) drawTrail();
+        if(bDrawTrail) drawTrail();
     }
     
     Vec3 getSteeringForce(const float elapsedTime){
@@ -86,7 +86,7 @@ public:
     void draw(){
         drawBasic3dSphericalVehicle (*this, color);
         if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTail) drawTrail();
+        if(bDrawTrail) drawTrail();
     }
     
     void reset(){
@@ -124,8 +124,16 @@ public:
         
         // Evade force
         Vec3 evade = steerForEvasion(*predator, 1.f); // victim, prediction time
+        Vec3 force = evade + flock * 0.1; // scaping victim is more important than flocking
         
-        return evade + flock * 0.1; // scaping victim is more important than flocking
+
+        const ofVec3f position = getPosition();
+        
+        if(position.distance(ofVec3f(0,0,0)) > Boid::fMaximumRadius) {
+            force += steerForSeek(Vec3(0,0,0));
+        }
+
+        return force;
     }
     
 };
@@ -138,7 +146,7 @@ public:
     
     ProximityDatabase* pdPredators;
     ProximityDatabase* pdVictims;
-    
+
     PursuitAndEvade(){
         pdPredators = NULL;  
         pdVictims = NULL;  
@@ -156,7 +164,8 @@ public:
         pdVictims = createProximityDatabase();
         
         // Create the predators
-		for(unsigned int i=0;i<5;i++){
+        int nPredators = floor(Boid::nBoids*0.3);
+		for(unsigned int i=0; i<nPredators; i++){
 			Predator* v = new Predator();
             v->pt = allocateProximityToken(pdPredators, v);
             v->reset();
@@ -164,8 +173,10 @@ public:
             predators.push_back(v);
 		}
         
+
         // Create the victims
-		for(unsigned int i=0;i<30;i++){
+        int nVictims = floor(Boid::nBoids*0.7);
+		for(unsigned int i=0; i<nVictims; i++){
 			Victim* v = new Victim();
             v->pt = allocateProximityToken(pdVictims, v);
             v->reset();
@@ -181,9 +192,7 @@ public:
         // Inform the victims about the predators
 		for(VehicleIterator i = victims.begin(); i != victims.end(); i++) {
             ((Victim*)(*i))->predators = &predators;
-        }        
-        
-
+        }
 	};
 	
 	void exit(){

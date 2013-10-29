@@ -98,33 +98,36 @@ class CloudsVisualSystemOscillations : public CloudsVisualSystem {
 	
 protected:
     
-    //  Your Stuff
-    //
+    float width,height;
     
-    float width,height; 
-    float offsetX, offsetY;
+    //UI
+	ofxUISuperCanvas* curveControls;
+    ofxUISuperCanvas* gridControls;
+    ofxUISuperCanvas* colorControls;
+
     
+    //Color Scheme
+    ofFloatColor curveColor, gridColor;
+        
+    //Wave
     ofVboMesh mesh;
     float heightFactor, precision;
-    float curveProgress, speed, lineWidth;
+    float curveProgress, speed, CurveLineWidth;
     float curveHeight, curveWidth, curveDepth, curveZPos;
-    float chromaAbbr, lensDistortion;
-    
-    //TODO: Change back to just a shader after building
-    ofxAutoReloadedShader crtShader, oscillator;
-    
-	ofxUISuperCanvas* customGui;
-    ofxUISuperCanvas* gridControls;
-    bool invertColorScheme;
+    float offsetX, offsetY;
+    bool renderLines;
     
     //Grid
     ofVboMesh grid;
     bool displayGrid;
     struct {float low, high; } GridClipping;
     float GridPointSpacing;
-    float GridPointAlpha;
-    void BuildGrid();
     float GridLineWidth;
     float GridPattern;
-
+    void BuildGrid();
+    
+    //Shader
+    float chromaAbbr, lensDistortion;
+    //TODO: Change back to just a shader after building
+    ofxAutoReloadedShader crtShader, oscillator;
 };
