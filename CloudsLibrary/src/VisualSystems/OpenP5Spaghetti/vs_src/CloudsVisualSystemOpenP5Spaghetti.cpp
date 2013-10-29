@@ -4,6 +4,9 @@
 
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
+float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 10;
+bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
+bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
@@ -70,9 +73,7 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
     
-    NWalkers = 10;
-    smooth = true; 
-    Walker::drawLines = true; 
+
     
     for(int i = 0; i<NWalkers; i++){
    

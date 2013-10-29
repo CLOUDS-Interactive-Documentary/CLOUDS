@@ -22,8 +22,10 @@ class Walker {
 	
     static int i;
     static float j;
-    float maxX, minX, maxY, minY, maxZ, minZ;
     static float nParticles;
+    
+    float maxX, minX, maxY, minY, maxZ, minZ;
+    
 
     void init(int nParticles, ofColor color);
     void step();
@@ -31,13 +33,17 @@ class Walker {
     void gnarlyTrails();
     void draw();
     
-    static float seed;
+    //random seed for noise
+    float seed;
     static float noiseSpeed1;
     static float stepSize;
     
     static bool drawPoints;
 	//float pointAlpha;
 	static bool drawLines;
+    
+    //the number of vertices in the mesh
+    int numVertices;
     
     
     

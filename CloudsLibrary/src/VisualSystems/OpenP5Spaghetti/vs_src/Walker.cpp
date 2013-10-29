@@ -8,6 +8,14 @@
 
 #include "Walker.h"
 
+float Walker::stepSize = 1.0f;
+float Walker::noiseSpeed1 = .01f;
+bool Walker:: drawPoints = true;
+bool Walker:: drawLines = false;
+int Walker:: i;
+float Walker:: j;
+float Walker:: nParticles = 50;
+
 Walker::Walker(){
     
     drawPoints = true;
@@ -48,7 +56,7 @@ void Walker::step(){
 	mesh.addColor(color);
 	mesh.addVertex(position);
 
-    int numVertices = mesh.getNumVertices();
+    numVertices = mesh.getNumVertices();
     
 	if (numVertices >= nParticles){
 		mesh.getVertices().erase( mesh.getVertices().begin() );
@@ -78,7 +86,8 @@ void Walker::smoothTrails(){
 	mesh.addColor(color);
 	mesh.addVertex(position);
     
-	if (i >= nParticles){
+    numVertices = mesh.getNumVertices();
+	if (numVertices >= nParticles){
 		mesh.getVertices().erase( mesh.getVertices().begin() );
 		mesh.getColors().erase( mesh.getColors().begin() );
 		
@@ -113,6 +122,7 @@ void Walker::gnarlyTrails(){
     */
 	mesh.addColor(color);
 	mesh.addVertex(position);
+    
     
 	if (i >= nParticles){
 		mesh.getVertices().erase( mesh.getVertices().begin() );
