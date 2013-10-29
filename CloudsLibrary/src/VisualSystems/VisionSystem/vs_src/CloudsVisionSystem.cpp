@@ -278,7 +278,7 @@ void CloudsVisionSystem::selfPresetLoaded(string presetPath){
                 setMode(OpticalFlow);
             }
             else if(modes[k]->getName() == "CONTOUR TRACKING" ){
-                setMode(ControurTracking);
+                setMode(ContourTracking);
             }
             else if(modes[k]->getName() == "ABS DIFF HEAT MAP"){
                 setMode(HeatMap);
@@ -396,7 +396,7 @@ void CloudsVisionSystem::selfUpdate(){
     player->update();
     frameIsNew = player->isFrameNew();
     
-    if(currentMode == ControurTracking){
+    if(currentMode == ContourTracking){
         
         updateContourTracking();
     }
@@ -427,7 +427,7 @@ void CloudsVisionSystem::selfDrawBackground()
         thresholded.draw(0,0, thresholded.width, thresholded.height);
     }
     
-    if(currentMode == ControurTracking){
+    if(currentMode == ContourTracking){
         contourFinder.draw();
         
         vector<MyTracker>& followers = tracker.getFollowers();
@@ -468,8 +468,6 @@ void CloudsVisionSystem::selfDrawBackground()
         ofSetColor(0, 0, 255);
         ofRect(0, 0+ accumulation.height  ,  mapBlue, 10);
     }
-    
-    
 }
 
 void CloudsVisionSystem::selfDraw()
@@ -548,8 +546,8 @@ void CloudsVisionSystem::setMode(CVMode mode){
             drawThresholded = false;
             break;
             
-        case ControurTracking:
-            currentMode = ControurTracking;
+        case ContourTracking:
+            currentMode = ContourTracking;
             drawDiff = false;
             drawThresholded = false;
             drawPlayer = true;
@@ -561,7 +559,6 @@ void CloudsVisionSystem::setMode(CVMode mode){
             drawThresholded = false;
             drawPlayer =false;
             break;
-            
             
         default:
             break;
@@ -593,7 +590,7 @@ void CloudsVisionSystem::selfGuiEvent(ofxUIEventArgs &e)
         setMode(OpticalFlow);
     }
     else if( name == "CONTOUR TRACKING" ){
-        setMode(ControurTracking);
+        setMode(ContourTracking);
         
     }
     else if (name == "DRAW PLAYER"){
