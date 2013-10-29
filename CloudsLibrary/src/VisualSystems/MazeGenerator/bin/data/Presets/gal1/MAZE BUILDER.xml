@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MAZE BUILDER</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>315.000000000</XPosition>
+    <YPosition>-8.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM SPEED</Name>
+    <Value>2.118226528</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHOW AHEAD</Name>
+    <Value>108.620689392</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GH</Name>
+    <Value>164.214660645</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GS</Name>
+    <Value>73.429298401</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GB</Name>
+    <Value>150.863830566</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WH</Name>
+    <Value>164.214660645</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WS</Name>
+    <Value>77.434532166</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WB</Name>
+    <Value>102.801002502</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>168.219894409</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>105.471122742</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SB</Name>
+    <Value>150.863830566</Value>
+</Widget>

@@ -6,8 +6,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystem3DModel::selfSetupGui(){
-
+void CloudsVisualSystem3DModel::selfSetupGui()
+{
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
@@ -19,16 +19,6 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	
 //	customGui->addSpacer();
 	
-	customGui->addSlider("globalRotation.x", -180, 180, &globalRotation.x )->setIncrement(.01);
-	customGui->addSlider("globalRotation.y", -180, 180, &globalRotation.y )->setIncrement(.01);
-	customGui->addSlider("globalRotation.z", -180, 180, &globalRotation.z )->setIncrement(.01);
-	
-	customGui->addSlider("globalRotationVel.x", -40, 40, &globalRotationVelocity.x )->setIncrement(.01);
-	customGui->addSlider("globalRotationVel.y", -40, 40, &globalRotationVelocity.y )->setIncrement(.01);
-	customGui->addSlider("globalRotationVel.z", -40, 40, &globalRotationVelocity.z )->setIncrement(.01);
-	
-	customGui->addSpacer();
-	
 	customGui->addToggle("bounding box", &bDrawBoundingBox);
 	customGui->addToggle("draw arrows", &bDrawArrows);
 	customGui->addToggle("draw cameras", &bDrawCameras);
@@ -37,8 +27,7 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	customGui->addToggle("smooth model", false );
 	customGui->addToggle("wireframe", &bWireframe );
 	customGui->addSlider("wireframeLinewidth", 0.5, 10, &wireframeLinewidth);
-//	customGui->addSlider("discardThreshold", 0., 1, &discardThreshold);
-	customGui->addSlider("modelScale", .1, 10., &modelScale);
+	customGui->addSlider("modelScale", .1, 10., &modelScale)->setIncrement(.01);
 	customGui->addImageSampler("c1", &colorMap, (float)colorMap.getWidth()/2, (float)colorMap.getHeight()/2 );
 	
 	customGui->addSlider("specularExpo", 1, 128, &specularExpo);
@@ -133,6 +122,8 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	modelUIGui->setName("modelUIGui");
 	modelUIGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	modelUIGui->addSpacer();
+	modelUIGui->addToggle("bCenterModel", &bCenterModel);
+	modelUIGui->addToggle("bAutoScale", &bAutoScale);
 	
 	modelUIGui->addSlider("boundBoxLineWidth", 0.5, 10, &boundBoxLineWidth);
 	
@@ -152,7 +143,12 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	
 	//camera views
 	vector<string> viewNames;
-	viewNames.push_back("front view"),viewNames.push_back("plan view"),viewNames.push_back("left view"),viewNames.push_back("persp view"),viewNames.push_back("four view");
+	viewNames.push_back("front view"),
+	viewNames.push_back("plan view"),
+	viewNames.push_back("left view"),
+	viewNames.push_back("persp view"),
+	viewNames.push_back("four view"),
+	viewNames.push_back("path camera");
 	
 	cameraViewsGui = new ofxUISuperCanvas("cameraViewsGui", gui);
 	cameraViewsGui->copyCanvasStyle(gui);
@@ -169,6 +165,25 @@ void CloudsVisualSystem3DModel::selfSetupGui(){
 	ofAddListener(cameraViewsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
 	guis.push_back(cameraViewsGui);
 	guimap[cameraViewsGui->getName()] = cameraViewsGui;
+	
+	
+	cameraPathsGui = new ofxUISuperCanvas("cameraPathsGui", gui);
+	cameraPathsGui->copyCanvasStyle(gui);
+	cameraPathsGui->copyCanvasProperties(gui);
+	cameraPathsGui->setName("cameraPathsGui");
+	cameraPathsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	cameraPathsGui->addSpacer();
+	cameraPathsGui->addRadio("camera paths", cameraPaths );
+	
+	cameraPathsGui->addSpacer();
+	cameraPathsGui->addSlider("position", 0, 1, &pathCameraPosition);
+	cameraPathsGui->addToggle("bUseDuration", &bUseDuration);
+	cameraPathsGui->addSlider("duration", 1, 200, &pathCamera.getDuration() );
+	cameraPathsGui->addToggle("loop", &pathCamera.getLoop() );
+	
+	ofAddListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
+	guis.push_back(cameraPathsGui);
+	guimap[cameraPathsGui->getName()] = cameraPathsGui;
 }
 
 void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
@@ -213,7 +228,7 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 		if( e.getToggle()->getValue() )
 		{
 			string parent = e.getToggle()->getParent()->getName();
-//			cout << "**** " << name << " TRIGGERED TOGGLE " << parent << endl;
+			cout << "**** " << name << " TRIGGERED TOGGLE " << parent << endl;
 		
 			if (parent == "shaders")
 			{
@@ -238,6 +253,21 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 				}
 			}
 			
+			
+			else if(parent == "camera paths")
+			{
+				//load the model from the selected file
+				for (int i=0; i<cameraPaths.size(); i++)
+				{
+					if(cameraPaths[i] == name )
+					{
+						cout << "loading camera path: " << name << endl;
+//						loadModel( "models/" + name, bSmoothModel );
+						pathCamera.loadPathFromFile(getVisualSystemDataPath() + "cameraPaths/" + name );
+					}
+				}
+			}
+			
 			else if(parent == "camera views")
 			{
 				cout << "set current camera to view: " << name << endl;
@@ -248,6 +278,8 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 				planCam.disableMouseInput();
 				perspCam.disableMouseInput();
 				bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = false;
+				
+				bDoNotScaleModel = false;
 				
 				if(name == "left view")
 				{
@@ -281,6 +313,13 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 					
 					bPlanCamIsActive = true;
 				}
+				
+				else if( name == "path camera")
+				{
+					currentSingleCam = &pathCamera;
+					bDoNotScaleModel = true;
+				}
+				
 				else if( name == "four view")
 				{
 					bFourView = true;
@@ -335,6 +374,17 @@ void CloudsVisualSystem3DModel::selfSetup()
 		cout << "OBJ FILE NAME: " << dir.getName( i ) << endl;
 	}
 	
+	path = getVisualSystemDataPath() + "cameraPaths/";
+	cout << "camera path path: " << path << endl;
+	
+	ofDirectory camdir;
+	camdir.allowExt("xml");
+	camdir.listDir( path );
+	for(int i = 0; i < camdir.numFiles(); i++){
+		cameraPaths.push_back( camdir.getName(i) );
+		cout << "CAMERA PATH FILE NAME: " << camdir.getName( i ) << endl;
+	}
+	
 	
 	//set our defaults
 	videoLoaded = false;
@@ -381,6 +431,12 @@ void CloudsVisualSystem3DModel::selfSetup()
 	singleViewName = "persp view";
 	bFourView = false;
 	
+	bUseDuration = false;
+	bRepositionModel = true;
+	bDoNotScaleModel = false;
+	
+	pathCamera.setNearClip(.1);
+	
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
 	
 	perspCam.bExploreMode = false;
@@ -423,6 +479,7 @@ void CloudsVisualSystem3DModel::selfPresetLoaded(string presetPath)
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystem3DModel::selfBegin()
 {
+	accumulatedRotation.set( 0,0,0);
 }
 
 //do things like ofRotate/ofTranslate here
@@ -441,7 +498,6 @@ void CloudsVisualSystem3DModel::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystem3DModel::selfDraw()
 {
-
 	//???: update... for some reason the selfUpdate is being called in stand alone.
 //	bLeftCamIsActive = bFrontCamIsActive = bPlanCamIsActive = bPerspCamIsActive = false;
 	if( cursorIsOverGUI() )
@@ -495,21 +551,12 @@ void CloudsVisualSystem3DModel::selfDraw()
 	{
 		drawScenePlan();
 	}
-
-}
-
-void CloudsVisualSystem3DModel::updateModelTransform()
-{
-	//update the model transforms
-	modelRot.makeRotate( 0, 0, 1, 0);//ofGetElapsedTimef()*2
-	if(modelScl.length() == 0.)	modelScl.y = .00001;
-	
-	boundCenter = (minBound + maxBound) * .5;
-	
-	modelTransform.setOrientation( modelRot );
-	modelTransform.setScale( modelScl * modelScale );
-	modelTransform.setPosition( -boundCenter * modelScl * modelScale);
-	modelTransform.move(0,  (maxBound.y - minBound.y) * .5 * modelScl.y * modelScale, 0);
+	else if(currentSingleCam == &pathCamera)
+	{
+		if(bUseDuration) pathCamera.update();
+		else	pathCamera.update( pathCameraPosition );
+		drawSceneCamera( &pathCamera );
+	}
 }
 
 // draw any debug stuff here
@@ -614,12 +661,12 @@ void CloudsVisualSystem3DModel::calcBoundingBox(){
 	//cout << minBound << " : " << maxBound << endl;
 	boundCenter = ( minBound + maxBound ) * .5;
 	
-	minBound -= boundCenter;
-	maxBound -= boundCenter;
-	
-	for (int i=0; i<v.size(); i++) {
-		modelMesh.setVertex( i, v[i] - boundCenter );
-	}
+//	minBound -= boundCenter;
+//	maxBound -= boundCenter;
+//	
+//	for (int i=0; i<v.size(); i++) {
+//		modelMesh.setVertex( i, v[i] - boundCenter );
+//	}
 };
 
 void CloudsVisualSystem3DModel::loadCameraLineModel( ofVbo& vbo, string loc ){
@@ -960,8 +1007,7 @@ void CloudsVisualSystem3DModel::facetMesh( ofMesh& smoothedMesh, ofMesh& targetM
 
 void CloudsVisualSystem3DModel::resizeTheArrowMesh( float radius, float height, float pointBaseHight )
 {
-	//the top pointy part of the mesh vertices are 1-12 but not 6.	1,...,5,7,...,12
-	
+	//move the middle vertices up and down
 	vector<ofVec3f> v = arrowMesh.getVertices();
 
 	for (int i=0; i<v.size(); i++) {
@@ -977,14 +1023,17 @@ void CloudsVisualSystem3DModel::resizeTheArrowMesh( float radius, float height, 
 	arrowScale.set( radius/2, height, radius/2 );
 }
 
-void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
+void CloudsVisualSystem3DModel::drawSceneCamera( ofCamera* cam )
 {
+	cam->begin();
 	
-	if(cam != NULL)
-	{
-		cam->begin( viewRect );
-	}
+	drawSceneGeometry(cam);
 	
+	cam->end();
+}
+
+void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
+{
 	
 	//rotation velocity
 	float t = ofGetElapsedTimef();
@@ -1072,15 +1121,18 @@ void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle v
 	//draw our model
 	ofPushMatrix();
 	
+//	ofTranslate(-boundCenter);
+	
 	ofMultMatrix( modelTransform.getGlobalTransformMatrix() );
 	
-
-	ofTranslate( positionOffset );
-
-	ofRotateX( globalRotation.x + accumulatedRotation.x );
-	ofRotateY( globalRotation.y + accumulatedRotation.y );
-	ofRotateZ( globalRotation.z + accumulatedRotation.z );
-		
+	if(currentSingleCam != &pathCamera)
+	{
+		ofTranslate( positionOffset - boundCenter );
+		ofRotateX( globalRotation.x + accumulatedRotation.x );
+		ofRotateY( globalRotation.y + accumulatedRotation.y );
+		ofRotateZ( globalRotation.z + accumulatedRotation.z );
+	}
+	
 	//draw bounding box
 	if(bDrawBoundingBox)
 	{
@@ -1113,17 +1165,8 @@ void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle v
 			glDisable( GL_DEPTH_TEST );
 			glBlendFunc(GL_ONE, GL_ONE);
 			
-//			ofBlendMode( OF_BLENDMODE_ADD );
-//			glDisable( GL_DEPTH_TEST );
-//			glEnable( GL_CULL_FACE);
-//			glCullFace(GL_FRONT);
-			modelMesh.draw();
-			
-//			glCullFace(GL_BACK);
 //			modelMesh.draw();
-//			
-//			glDisable(GL_CULL_FACE);
-//			glDisable( GL_DEPTH_TEST );
+			bWireframe?	modelMesh.drawWireframe() : modelMesh.draw();
 			
 			ofBlendMode( OF_BLENDMODE_ADD );
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1137,6 +1180,17 @@ void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle v
 	}
 	
 	ofPopMatrix();
+}
+
+void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
+{
+	
+	if(cam != NULL)
+	{
+		cam->begin( viewRect );
+	}
+	
+	drawSceneGeometry(cam);
 		
 	if( cam != NULL)	cam->end();
 }
@@ -1164,6 +1218,38 @@ void CloudsVisualSystem3DModel::drawSceneLeft( ofRectangle viewRect )
 
 
 
+
+void CloudsVisualSystem3DModel::updateModelTransform()
+{
+	modelTransform.resetTransform();
+	
+	ofVec3f scl(1,1,1);
+	
+	if(!bDoNotScaleModel && currentSingleCam != &pathCamera)
+	{
+		scl = (bAutoScale? modelScl : ofVec3f(1,1,1)) * modelScale;
+		modelTransform.setScale( scl );
+	}
+	
+	if(bCenterModel)
+	{
+		modelTransform.setPosition( -boundCenter );
+		modelTransform.move(0, (maxBound.y-minBound.y)*.5 * scl.y, 0);
+	}
+	
+
+	//update the model transforms
+	//modelRot.makeRotate( 0, 0, 1, 0);//ofGetElapsedTimef()*2
+	//if(modelScl.length() == 0.)	modelScl.y = .00001;
+	
+	//boundCenter = (minBound + maxBound) * .5;
+	
+	//modelTransform.setOrientation( modelRot );
+	
+	//modelTransform.setScale( modelScl * modelScale );
+	//modelTransform.setPosition( -boundCenter * modelScl * modelScale);
+	//modelTransform.move(0,  (maxBound.y - minBound.y) * .5 * modelScl.y * modelScale, 0);
+}
 
 
 

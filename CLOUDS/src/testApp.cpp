@@ -11,7 +11,9 @@ void testApp::setup(){
     parser.loadFromFiles();
 	
 	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
+		ofSystemAlertDialog("Could not find movie file path. \
+							Create a file called CloudsMovieDirectory.txt \
+							that contains one line, the path to your movies folder");
 	}
 
 	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
@@ -33,13 +35,7 @@ void testApp::setup(){
 
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
-//	CloudsClip& clip = parser.getRandomClip(true,false);
-//    
-//	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-//	map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
-////	if(questionsAndTopics.size() > 0){
-////		storyEngine.buildAct(clip, questionsAndTopics.begin()->first );
-////	}
+//	CloudsClip& clip = parser.getRandomClip(false,false);
 //	storyEngine.buildAct(run, clip, clip.getKeywords()[0] );
 	////////SEED WITH RANDOM CLIP
 	
@@ -68,13 +64,15 @@ void testApp::setup(){
 	//////////////SHOW INTRO
 	
 	//temp sound stuff
-	sound.setMasterAmp(0.0);
-	useScratch = true;
+	sound.setMasterAmp(1.0);
+	useScratch = false;
 	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
+	
 	sound.update();
 	ofShowCursor();
 }

@@ -222,6 +222,10 @@ CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
 	return clusterMapVisualSystem;
 }
 
+CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
+	return rgbdVisualSystem.getRGBDVideoPlayer();
+}
+
 void CloudsPlaybackController::setUseScratch(bool useScratch){
 	if(useScratch){
 		targetScratchVolume = 1.0;
@@ -312,6 +316,15 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		}
 	}
 
+	if(args.key == '\\'){
+		if(showingIntro){
+			introSequence.autoSelectQuestion();
+            scratchPlayer.stop();
+            scratchPlayer.unloadSound();
+            
+		}
+	}
+	
 	//SCRATCH SCRUB
 	if(scratchTracks.size() > 0){
 		if(args.key == OF_KEY_UP){

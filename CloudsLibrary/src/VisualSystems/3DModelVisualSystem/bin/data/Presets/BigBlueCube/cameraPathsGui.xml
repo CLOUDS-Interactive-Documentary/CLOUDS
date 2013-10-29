@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>cameraPathsGui</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>139</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>pathDebug.xml</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>testPath.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>testPath1.xml</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>position</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bUseDuration</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>duration</Name>
+    <Value>8.84236</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>loop</Name>
+    <Value>1</Value>
+</Widget>

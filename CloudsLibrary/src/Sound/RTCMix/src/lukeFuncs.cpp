@@ -31,17 +31,17 @@ void RTcmixParseScoreFile(string f)
 }
 
 // uses the SPLITTER() and MIX() and GVERB() instruments
-void REVERB(double time)
+void REVERB(double outskip, double time)
 {
     char thebuf [256];
     int bx;
-    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 0, 1., 0., 1., 0., 1., 0.)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "SPLITTER(0.0, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", time);
+    bx = snprintf(thebuf, 256, "SPLITTER(%f, 0.0, %f, 1., 1, 0., 1., 1., 0., 0., 1.)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "MIX(0.0, 0.0, %f, 1., 0, 1)", time);
+    bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(0.0, 0.0, %f, 1.0, 50., 8., 0.1, 0.1, -90., -6., -6., 3.0)", time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 
@@ -54,17 +54,20 @@ void SCHEDULEBANG(double time)
     parse_score(thebuf, bx);
 }
 
-// sets up rtinput() for a signal processing routine that requires an audio file
-void LOADSOUND(string file, string handle)
+// loads an audio file into RAM as a buffer handle
+float LOADSOUND(string file, string handle)
 {
-    string fullfile = ofToDataPath(getDataPath()+"sound/"+file);
-    //cout << "file: " << ofFile(fullfile).exists() << endl;
+    ofVideoPlayer playa;
+    playa.loadMovie(file);
+    float duration = playa.getDuration();
+    playa.close();
     
-    OF_buffer_load_set((char*)fullfile.c_str(), (char*)handle.c_str(), 0., 10.);
+    OF_buffer_load_set((char*)file.c_str(), (char*)handle.c_str(), 0., 30.);
     // you can now use the buffer name (bname) in rtinput("MMBUF", "buffername")
     
-    printf("LOADED SOUND %s: file: %s  nframes: %d  nchans: %d\n", (char*)handle.c_str(),
-           (char*)fullfile.c_str(), mm_buf_getframes((char*)handle.c_str()), mm_buf_getchans((char*)handle.c_str()));
+    printf("LOADED SOUND %s: file: %s  duration: %f\n", (char*)handle.c_str(),
+           (char*)file.c_str(), duration);
+    return(duration);
 }
 
 // basic soundfile mixing interface
@@ -78,6 +81,51 @@ void STEREO(double outskip, double inskip, double dur, double amp, double pan, s
     parse_score(thebuf, bx);
     
 }
+
+// loop a sound (transposition auto-corrected based on ideal length)
+void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle)
+{
+    float incr = loopdur/looplen;
+    float freq = mtof(60);
+    freq = freq*incr;
+    double newp = ftom(freq, 440.);
+    double tp = newp-60.;
+    int oct = tp/12;
+    double pc = (fmod(tp,12.))*0.01;
+    double transp = oct+pc;
+    
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, 0)", outskip, looplen, amp, transp);
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 1, 1)", outskip, looplen, amp, transp);
+    parse_score(thebuf, bx);
+    
+}
+
+// loop a sound in, well, mono
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan)
+{
+    float incr = loopdur/looplen;
+    float freq = mtof(60);
+    freq = freq*incr;
+    double newp = ftom(freq, 440.);
+    double tp = newp-60.;
+    int oct = tp/12;
+    double pc = (fmod(tp,12.))*0.01;
+    double transp = oct+pc;
+    
+    char thebuf [256];
+    int bx;
+    bx = snprintf(thebuf, 256, "rtinput(\"MMBUF\", \"%s\")", (char*)handle.c_str());
+    parse_score(thebuf, bx);
+    bx = snprintf(thebuf, 256, "TRANS3(%f, 0., %f, %f*amp_declick, %f, 0, %f)", outskip, looplen, amp, transp, pan);
+    parse_score(thebuf, bx);
+    
+}
+
 
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown)
 {
@@ -213,30 +261,6 @@ void loadpitches(string f, vector<lukePitchArray>& p)
     }
 }
 
-// load color array
-void loadcolors(string f, vector<lukeColor>& c)
-{
-    string sline;
-    ofFile cfile (getDataPath()+"sound/"+f);
-    if(!cfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer cbuf(cfile);
-    c.clear();
-    while(!cbuf.isLastLine())
-    {
-        sline=cbuf.getNextLine();
-        lukeColor foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        for(int i = 0;i<temp.size();i++)
-        {
-            foo.instruments.push_back(temp[i]);
-        }
-        c.push_back(foo);
-    }
-}
-
 // load preset file
 void loadpresets(string f, vector<lukePreset>& p)
 {
@@ -253,13 +277,18 @@ void loadpresets(string f, vector<lukePreset>& p)
         sline=pbuf.getNextLine();
         lukePreset foo;
         vector<string> temp = ofSplitString(sline, " ");
-        foo.color = ofToInt(temp[0])-1;
-        foo.harmony = ofToInt(temp[1])-1;
-        foo.rhythm = ofToInt(temp[2])-1;
-        foo.tempo = ofToFloat(temp[3]);
+        for(int i = 0;i<temp.size()-4;i++)
+        {
+            foo.instruments.push_back(temp[i]);
+        }
+        foo.harmony = ofToInt(temp[temp.size()-4])-1;
+        foo.rhythm = ofToInt(temp[temp.size()-3])-1;
+        foo.tempo = ofToFloat(temp[temp.size()-2]);
+        foo.bank = temp[temp.size()-1];
         p.push_back(foo);
     }
 }
+
 
 
 
@@ -285,12 +314,49 @@ double mtof(double f)
 	return (440. * exp(.057762265 * (f - 69.)));
 }
 
+// midi-to-string
+string ptos(int p)
+{
+    string s = "";
+    int pc = p%12;
+    if(pc==0) s = "C";
+    else if(pc==1) s = "C#";
+    else if(pc==2) s = "D";
+    else if(pc==3) s = "D#";
+    else if(pc==4) s = "E";
+    else if(pc==5) s = "F";
+    else if(pc==6) s = "F#";
+    else if(pc==7) s = "G";
+    else if(pc==8) s = "G#";
+    else if(pc==9) s = "A";
+    else if(pc==10) s = "A#";
+    else if(pc==11) s = "B";
+    
+    return(s);
+}
+
 // quantize to a specific scale register
 int scale(int p, int o)
 {
     // minor scale
-    int s[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
+    int basescale[12] = {0, 0, 2, 3, 3, 5, 5, 7, 8, 8, 10, 10};
+    int s[12];
+    if(o==-1)
+    {
+        for(int i = 0;i<12;i++)
+        {
+            s[i] = i;
+        }
+    }
+    else
+    {
+        for(int i = 0;i<12;i++)
+        {
+            s[i] = (basescale[(i-o+12)%12]+o)%12;
+        }
+    }
+    
     int oct = p/12;
     int pc = p%12;
-    if(o==-1) return(p); else return(oct*12 + s[(pc+o)%12]-s[o]);
+    return(oct*12 + s[pc]);
 }

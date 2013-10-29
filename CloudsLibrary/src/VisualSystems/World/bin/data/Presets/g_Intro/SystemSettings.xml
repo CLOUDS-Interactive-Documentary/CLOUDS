@@ -1,0 +1,82 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>82.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noisePeaks</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>rippleThreshold</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>max_number</Name>
+    <Value>527.093566895</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>initialForce</Name>
+    <Value>7.290640354</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>density</Name>
+    <Value>0.921182275</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>gravity</Name>
+    <Value>0.940886676</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>repulsion</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>turbulence</Name>
+    <Value>0.054088674</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>neigbordhood</Name>
+    <Value>258.758605957</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>independence</Name>
+    <Value>0.006206896</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Satelites_ammount</Name>
+    <Value>123.152709961</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Satelites_links_distance</Name>
+    <Value>155.665023804</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Satelites_links_alpha</Name>
+    <Value>0.157635465</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Arcs_ammount</Name>
+    <Value>536.945800781</Value>
+</Widget>

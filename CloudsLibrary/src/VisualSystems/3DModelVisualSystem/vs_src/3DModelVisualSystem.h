@@ -13,6 +13,7 @@
 #include "ofxObjLoader.h"
 #include "CloudsVisualSystem.h"
 #include "CloudsOrthoCamera.h"
+#include "CloudsPathCamera.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystem3DModel : public CloudsVisualSystem {
@@ -113,6 +114,9 @@ class CloudsVisualSystem3DModel : public CloudsVisualSystem {
 	void drawSceneFront( ofRectangle viewRect=ofGetCurrentViewport() );
 	void drawSceneLeft( ofRectangle viewRect=ofGetCurrentViewport() );
 	
+	void drawSceneCamera( ofCamera* cam );
+	void drawSceneGeometry(ofCamera* cam);
+	
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -135,6 +139,7 @@ protected:
 	ofxUISuperCanvas* modelUIGui;
 	ofxUISuperCanvas* gridGui;
 	ofxUISuperCanvas* cameraViewsGui;
+	ofxUISuperCanvas* cameraPathsGui;
 	ofxUISuperCanvas* fogGui;
 	ofxUISuperCanvas* transformGui;
 	
@@ -177,6 +182,7 @@ protected:
 	
 	
 	vector <string> objFiles;
+	vector <string> cameraPaths;
 	
 	ofVbo modelNormalInfo;
 	ofShader modelNormalInfoShader;
@@ -222,11 +228,17 @@ protected:
 	bool bDrawBoundingBox, bDrawArrows, bDrawCameras, bDrawGrid;
 	
 	
-
 	ofVec3f positionOffset;//Eular angles
-
 	ofVec3f globalRotation;//Eular angles
 	ofVec3f globalRotationVelocity;//multiplied against elapsed time
 	ofVec3f accumulatedRotation;
+	
+	CloudsPathCamera pathCamera;
+	float pathCameraPosition;
+	bool bUseDuration;
+	
+	bool bRepositionModel;
+	
+	bool bCenterModel, bAutoScale,bDoNotScaleModel;
 
 };

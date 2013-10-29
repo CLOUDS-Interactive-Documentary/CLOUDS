@@ -27,6 +27,8 @@ extern "C" {
     void OF_buffer_load_set(char *filename, char *bufname, float insk, float dur);
     int mm_buf_getframes(char *bufname);
     int mm_buf_getchans(char *bufname);
+    float maxmsp_vals[1024];
+    int vals_ready;
 }
 
 // luke's comp structures
@@ -40,26 +42,30 @@ struct lukePitchArray {
     int scale;
 };
 
-struct lukeColor {
-    vector<string> instruments;
-};
-
 struct lukePreset {
-    int color;
+    vector<string> instruments;
     int harmony;
     int rhythm;
     float tempo;
+    string bank;
 };
 
+struct lukeSample {
+    string filename;
+    string handle;
+    string bank;
+    float length;
+    float numbeats;
+};
 
 // luke's music functions
 double mtof(double f, double tuning);
 double mtof(double f);
 double ftom(double f, double tuning);
+string ptos(int p);
 int scale(int p, int o);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
-void loadcolors(string f, vector<lukeColor>& c);
 void loadpresets(string f, vector<lukePreset>& p);
 
 // luke's audio functions
@@ -72,9 +78,11 @@ void MMESH2D(double outskip, double dur, double amp, int nxpoints, int nypoints,
 void MBANDEDWG(double outskip, double dur, double amp, double freq, double strikepos, int pluckflag, double maxvel, int preset, double bowpressure, double resonance, double integration, double pan, string velocityenvelope);
 void FNOISE3(double outskip, double dur, double amp, double ringdown, double pan, double f1, double f2, double f3, double Q, string ampenvelope);
 
-void REVERB(double time);
-void LOADSOUND(string file, string handle);
+void REVERB(double outskip, double time);
+float LOADSOUND(string file, string handle);
 void STEREO(double outskip, double inskip, double dur, double amp, double pan, string handle);
+void SOUNDLOOP(double outskip, double loopdur, double looplen, double amp, string handle);
+void SOUNDLOOPMONO(double outskip, double loopdur, double looplen, double amp, string handle, double pan);
 void PANECHO(double outskip, double inskip, double dur, double amp, double leftdelay, double rightdelay, double feedback, double ringdown);
 void SCHEDULEBANG(double time);
 

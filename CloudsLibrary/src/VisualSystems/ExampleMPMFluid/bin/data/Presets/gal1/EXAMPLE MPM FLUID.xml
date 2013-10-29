@@ -2,13 +2,13 @@
     <Kind>42</Kind>
     <Name>EXAMPLE MPM FLUID</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>274.000000000</XPosition>
-    <YPosition>48.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>PARTICLES</Name>
-    <Value>42610.835937500</Value>
+    <Value>19211.822265625</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

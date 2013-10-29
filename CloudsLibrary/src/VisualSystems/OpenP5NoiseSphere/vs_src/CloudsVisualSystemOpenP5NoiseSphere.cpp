@@ -30,6 +30,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     customGui->addLabel("Solid Sphere");
     customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
     customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
+    //customGui->addSlider("Hair count", 3000.0,7000.0, &count);
+    
     customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
     customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
     

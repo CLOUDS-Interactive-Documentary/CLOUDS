@@ -245,6 +245,10 @@ bool CloudsIntroSequence::isStartQuestionSelected(){
 	return selectedQuestion != NULL;
 }
 
+void CloudsIntroSequence::autoSelectQuestion(){
+	selectedQuestion = &startQuestions[ ofRandom(startQuestions.size()) ];
+}
+
 CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
 	return selectedQuestion;
 }

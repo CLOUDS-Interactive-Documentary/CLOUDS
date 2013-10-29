@@ -37,6 +37,8 @@ class CloudsSound {
 	void topicChanged(CloudsTopicEventArgs& args);
 	void preRollRequested(CloudsPreRollEventArgs& args);
 	
+	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
+	
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -47,10 +49,11 @@ class CloudsSound {
 
     // Luke's stuff
 	//
-    void startMusic(int mc, int mh, int mr, float musicdur);
+    void startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank);
     void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
+    void registerOrchs();
     void audioRequested(float * output, int bufferSize, int nChannels);
 	short *s_audio_outbuf; // this is the buf filled by rtcmix (it uses short samples)
     int sr; // sampling rate
@@ -58,14 +61,12 @@ class CloudsSound {
     int nchans; // 2 = stereo
     int framesize; // sigvs (512 seems ok)
 
-    int returnQuadrant(int x, int y);
     int returnColor(string c);
     int first_vec;
-    int osx, osy;
-    int quadrant;
-    float sx, sy, delta;
     float allownote;
-    int mcolor, mharmony, mrhythm;
+    int mharmony, mrhythm;
+    vector<string> morch;
+    string mbank;
 
     float MASTERAMP;
     float MASTERTEMPO;
@@ -73,10 +74,14 @@ class CloudsSound {
     bool DOCLEAR;
     float cleartime;
     float targetAmp;
+    bool RTCMIX_PRINT;
+    float tl1, tl2, tl3, bl1;
 	
     vector<lukeRhythm> rhythms;
-    vector<lukeColor> colors;
     vector<lukePitchArray> pitches;
     vector<lukePreset> presets;
+    vector<string> orchestra;
+
+    vector<lukeSample> looperSamples;
 
 };

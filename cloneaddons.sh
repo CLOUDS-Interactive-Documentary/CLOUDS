@@ -17,9 +17,11 @@ fi
 
 #private, must be read
 git clone git@github.com:rezaali/ofxExtras
+
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
 git checkout -b develop --track origin/develop
+git pull
 cd ..
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
@@ -38,6 +40,8 @@ git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
 git clone https://github.com/satoruhiga/ofxAnimationPrimitives
 git clone https://github.com/vanderlin/ofxBox2d.git
+git clone https://github.com/underdoeg/ofxOpenSteer.git
+git clone https://github.com/Larsberg/ofxSimpleSpline
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
@@ -69,6 +73,7 @@ ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
 git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		

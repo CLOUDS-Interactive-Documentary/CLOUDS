@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>2121.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>USE BUOYANT CAM</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BASE WIDTH</Name>
+    <Value>6.492610931</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFT HEIGHT</Name>
+    <Value>6.403941154</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPEED</Name>
+    <Value>-0.059113301</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DAMPEN</Name>
+    <Value>0.064039409</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX LOOK UP ROT</Name>
+    <Value>5.320197105</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX LOOK DOWN ROT</Name>
+    <Value>4.433497429</Value>
+</Widget>

@@ -87,7 +87,7 @@ void CloudsVisualSystemExampleMPMFluid::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemExampleMPMFluid::selfSetup()
 {
-    fluid.setup(50000, 128, 80);
+    fluid.setup(50000, 64, 40);
 
     nParticles = 20000;
     density = 5;

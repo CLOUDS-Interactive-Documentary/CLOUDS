@@ -29,7 +29,7 @@
 //lars
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
-#include "3DModelVisualSystem.h"
+//#include "3DModelVisualSystem.h"
 #include "MandalaVisualSystem.h"
 
 //CODE STORM
@@ -42,7 +42,7 @@
 //COMMISSIONS
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemNeurons.h"
-#include "CloudsVisualSystemLaplacianTunnel.h"
+//#include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemLIA.h"
 
@@ -103,7 +103,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//lars
 	registerVisualSystem(new CloudsVisualSystemFireworks() );
 	registerVisualSystem(new CloudsVisualSystemMarchingCubes() );
-	registerVisualSystem(new CloudsVisualSystem3DModel() );
+	//registerVisualSystem(new CloudsVisualSystem3DModel() );
 	registerVisualSystem(new MandalaVisualSystem() );
 	
 	//CODE STORM
@@ -116,7 +116,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//COMMISSIONS
 	registerVisualSystem(new CloudsVisualSystemVerletForm() );
 	registerVisualSystem(new CloudsVisualSystemNeurons() );
-	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
+//	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
 	registerVisualSystem(new CloudsVisualSystemReplicator() );
 	registerVisualSystem(new CloudsVisualSystemLIA() );
 	

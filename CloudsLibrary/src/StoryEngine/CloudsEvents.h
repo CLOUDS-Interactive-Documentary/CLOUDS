@@ -10,9 +10,10 @@
 class CloudsAct;
 class CloudsActEventArgs : public ofEventArgs {
   public:
-	CloudsActEventArgs(CloudsAct* act){
-		this->act = act;
-	}
+	CloudsActEventArgs(CloudsAct* act, vector<CloudsDichotomy>& finalDichotomyBalance)
+		: act(act), finalDichotomyBalance(finalDichotomyBalance)
+	{ }
+	vector<CloudsDichotomy>& finalDichotomyBalance;
 	CloudsAct* act;
 };
 

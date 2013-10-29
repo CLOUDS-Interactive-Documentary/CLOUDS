@@ -154,7 +154,7 @@ protected:
 	ofFloatColor color1HSB;
 	ofFloatColor color2HSB;
 	
-	int count = 4000;
+	int count = 10000;
 	vector<Hair> list;
 	float radius;
 	float rx = 0;

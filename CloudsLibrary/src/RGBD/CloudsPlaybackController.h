@@ -131,6 +131,7 @@ class CloudsPlaybackController {
 	
 	void playAct(CloudsAct* act);
 	CloudsVisualSystemClusterMap& getClusterMap();
+	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
 	
 	//update and draw to the screen, this will always
 	//show the main CLOUDS experience as pointclouds or visual systems
