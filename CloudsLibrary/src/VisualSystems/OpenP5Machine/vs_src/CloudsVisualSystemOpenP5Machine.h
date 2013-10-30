@@ -114,8 +114,12 @@ protected:
     
     void        loadVbo(ofVboMesh &_vbo, string _file);
     
-    float       wireSphereScale, solidSphereScale, haloSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+    float boxScaleX;
+    float boxScaleY;
+    float boxScaleZ;
+    float shiftX;
+    float shiftY;
+    float shiftZ;
 
 	
 

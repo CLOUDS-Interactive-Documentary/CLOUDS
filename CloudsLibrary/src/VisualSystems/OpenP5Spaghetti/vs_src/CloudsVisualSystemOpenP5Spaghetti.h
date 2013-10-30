@@ -13,8 +13,6 @@
 #include "CloudsVisualSystem.h"
 #include "Walker.h"
 
-#define NWALKERS 20
-
 
 
 //TODO: rename this to your own visual system
@@ -24,11 +22,15 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
+    
+    
+    
     string getSystemName(){
 		return "OpenP5Spaghetti";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
+  
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
     
@@ -90,8 +92,12 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
    
-    //Walker walkers[NWALKERS];
+   
 	vector<Walker> walkers;
+    
+    static float NWalkers;
+    static bool smooth;
+    static bool gnarly;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -104,6 +110,11 @@ protected:
     
     //  Your Stuff
     //
+
+    ofxUISuperCanvas* customGui;
+	ofxUISuperCanvas* customCameraGui;
+    
+   
 	
 
 };

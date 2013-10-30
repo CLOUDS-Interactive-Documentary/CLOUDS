@@ -10,22 +10,13 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
-//These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui(){
-
+void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
+{
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-
-	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
 
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -60,39 +51,38 @@ void CloudsVisualSystemOpenP5TextUniverse::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
-void CloudsVisualSystemOpenP5TextUniverse::selfSetup(){
-	
-	
-	//some of these could become params
-	N = 1000;
-	tetha = 10;
-	ang = TWO_PI/N;
-	beta = 0;
-	rotation = 0;
-	
-	mesh.clear();
-	
-	//cache
-	for( int r = 10; r < 1000; r += 50){
-		for (int j = 0; j < N; j += 1) {
-			
-			mesh.addColor(ofColor());
-			mesh.addVertex(ofVec3f());
-			
-			mesh.addColor(ofColor());
-			mesh.addVertex(ofVec3f());
-			
-			mesh.addColor(ofColor());
-			mesh.addVertex(ofVec3f());
-			
-			mesh.addColor(ofColor());
-			mesh.addVertex(ofVec3f());
-		}
-	}
-	
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
+{
+    // Load the contents of the text file.
+    ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
+    if (buffer.size()) {
+        text = new TUText(buffer.getText());
+        text->print();
+    }
+    
+    // Build the node network.
+    orbital = new TUOrbital(30, 1000);
+    orbital->text = "If I were a writer who had that kinds of chops, I'd be wanting to do something that was deconstructive";
+    
+    for (int i = 0; i < text->paragraphs.size(); i++) {
+        TUOrbital oi(*orbital, text->paragraphs[i].str);
+        orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
+        
+        for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+            orbital->children[i].children.push_back(TUOrbital(orbital->children[i], text->paragraphs[i].sentences[j].str));
+            
+            for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                orbital->children[i].children[j].children.push_back(TUOrbital(orbital->children[i].children[j], text->paragraphs[i].sentences[j].words[k]));
+            }
+        }
+    }
+    
+    // Load the font.
+    TUOrbital::font.loadFont("Museo-300.otf", 14);
+    TUOrbital::font.setLineLength(150);
+    
+    bMouseDragged = false;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -116,67 +106,14 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSceneTransformation(){
 }
 
 //normal update call
-void CloudsVisualSystemOpenP5TextUniverse::selfUpdate(){
-
+void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
+{
+    orbital->update(0, 0, 0, false);
 }
 
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5TextUniverse::selfDraw(){
-	
-	ofColor color;
-	ofVec3f point;
-	ofMatrix4x4 transform;
-	int idx = 0;
-	for( int r = 10; r < 1000; r += 50){
-		for (int j = 0; j < N; j += 1) {
-			
-			//P5
-			//			float x = r*cos(radians(j));
-			//			float y = r*sin(radians(j));
-			//			rotateY(radians(beta));
-			//
-			//			stroke(60,200,255-r/4);
-			//			point(x, y, r);
-			//			point(-x, -y, r);
-			//
-			//			stroke(95,200,255-r/4);
-			//			point(y, x, -r);
-			//			point(-y, -x, -r);
-			
-			//OF
-			float x = r*cos(ofDegToRad(j));
-			float y = r*sin(ofDegToRad(j));
-			//ofRotateY(ofDegToRad(beta));
-			transform.rotate(beta, 0, 1, 0);
-			
-			color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b-r/4);
-			point.set(x, y, r);
-			mesh.setColor(idx, color);
-			mesh.setVertex(idx++,transform*point);
-			
-			point.set(-x, -y, r);
-			mesh.setColor(idx,color);
-			mesh.setVertex(idx++,transform*point);
-			
-			color.setHsb(color2HSB.r,color2HSB.g,color2HSB.b-r/4);
-			point.set(y, x, -r);
-			mesh.setColor(idx,color);
-			mesh.setVertex(idx++,transform*point);
-			
-			point.set(-y, -x, -r);
-			mesh.setColor(idx,color);
-			mesh.setVertex(idx++,transform*point);
-		}
-	}
-	
-	beta += 0.0001;
-	if( beta >= TWO_PI || beta <= -TWO_PI){
-        beta += -1;
-	}
-	
-	mesh.drawVertices();
-
+void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
+{
+    orbital->draw(getCameraRef(), bMouseDragged);
 }
 
 // draw any debug stuff here
@@ -197,9 +134,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfEnd(){
 
 	
 }
-// this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemOpenP5TextUniverse::selfExit(){
-	
+
+void CloudsVisualSystemOpenP5TextUniverse::selfExit()
+{
+	delete text;
+    delete orbital;
 }
 
 //events are called when the system is active
@@ -211,8 +150,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfKeyReleased(ofKeyEventArgs & args
 	
 }
 
-void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& data){
-	
+void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& data)
+{
+    bMouseDragged = true;
 }
 
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseMoved(ofMouseEventArgs& data){
@@ -223,6 +163,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& da
 	
 }
 
-void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data){
-	
+void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data)
+{
+    bMouseDragged = false;
 }

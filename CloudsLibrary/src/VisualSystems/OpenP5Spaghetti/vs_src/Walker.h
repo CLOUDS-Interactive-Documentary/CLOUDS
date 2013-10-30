@@ -19,14 +19,36 @@ class Walker {
 	ofVec3f position;
     ofFloatColor color;
     
-	float seed;
-    int i;
+	
+    static int i;
+    static float j;
+    static float nParticles;
+    
     float maxX, minX, maxY, minY, maxZ, minZ;
-    int nParticles;
+    
 
     void init(int nParticles, ofColor color);
     void step();
+    void smoothTrails();
+    void gnarlyTrails();
     void draw();
+    
+    //random seed for noise
+    float seed;
+    static float noiseSpeedx;
+    static float noiseSpeedy;
+    static float noiseSpeedz;
+    
+    static float stepSizex;
+    static float stepSizey;
+    static float stepSizez;
+    
+    static bool drawPoints;
+	//float pointAlpha;
+	static bool drawLines;
+    
+    //the number of vertices in the mesh
+    int numVertices;
     
     
     
@@ -34,5 +56,7 @@ class Walker {
     
 //    vector<particle> particles;
     ofVboMesh mesh;
+    
+    
   
 };
