@@ -8,27 +8,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>CAM SPEED</Name>
-    <Value>4.926108360</Value>
+    <Value>2.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CAM HEIGHT</Name>
-    <Value>453.201965332</Value>
+    <Value>305.418731689</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CAM ANGLE</Name>
-    <Value>49.655170441</Value>
+    <Value>83.349754333</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHOW AHEAD</Name>
-    <Value>89.310340881</Value>
+    <Value>87.241378784</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>LIGHT DIRECTION ANGLE</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
