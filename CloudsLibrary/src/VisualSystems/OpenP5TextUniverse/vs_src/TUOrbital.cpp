@@ -22,7 +22,7 @@ TUOrbital::TUOrbital(float size, float radius)
     this->size = size;
     this->radius = radius;
     
-    bSelected = bClicked = true;
+    bSelected = bClicked = bRenderText = true;
 }
 
 //--------------------------------------------------------------
@@ -34,7 +34,7 @@ TUOrbital::TUOrbital(TUOrbital& parent, string text)
     this->size = parent.size / 3 * 2;
     this->radius = parent.radius / 2;
     
-    bSelected = bClicked = true;
+    bSelected = bClicked = bRenderText = true;
 }
 
 //--------------------------------------------------------------
@@ -98,7 +98,7 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         ofRotateZ(rotations.z);
         ofScale(1, -1, 1);
         
-        if (bClicked) {
+        if (bRenderText && bClicked) {
             font.drawString(text, size, 0);
         }
         

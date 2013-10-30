@@ -1485,8 +1485,8 @@
 			children = (
 				6472185A18199AAA0024C21E /* CloudsVisualSystemOpenP5TextUniverse.cpp */,
 				6472185B18199AAA0024C21E /* CloudsVisualSystemOpenP5TextUniverse.h */,
-				64E98A9318203B380039E3A7 /* TUOrbital.h */,
 				64E98A97182046B30039E3A7 /* TUOrbital.cpp */,
+				64E98A9318203B380039E3A7 /* TUOrbital.h */,
 				6449BF0D181E089700E27EFB /* TUText.h */,
 			);
 			path = vs_src;

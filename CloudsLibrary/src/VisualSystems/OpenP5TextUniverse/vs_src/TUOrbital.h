@@ -37,7 +37,8 @@ class TUOrbital
         
         bool bSelected;
         bool bClicked;
-        
+        bool bRenderText;
+    
         int color;
 };
 
