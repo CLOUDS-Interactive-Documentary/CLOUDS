@@ -90,7 +90,9 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
+    
+    void setColorBetween(ofColor color1, ofColor color2);
+        
    
    
 	vector<Walker> walkers;
@@ -98,6 +100,14 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     static float NWalkers;
     static bool smooth;
     static bool gnarly;
+    
+    ofImage colorMap;
+	ofColor color1;
+    ofColor color2;
+    ofColor randomColor;
+    ofColor newColor = ofColor::white;
+    float saturation = 100;
+    float brightness = 200;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

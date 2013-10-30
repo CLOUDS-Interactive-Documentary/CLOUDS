@@ -4,7 +4,7 @@
 
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
-float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 50f;
+float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 50;
 bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
 bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
 
@@ -37,8 +37,13 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeedy);
     customGui->addSlider("NOISE SPEED", 0.0, 1.0, &Walker::noiseSpeedz);
 
-    
+    customGui->addSpacer(length-xInit, 2);
     customGui->addLabel("RENDERING");
+    customGui->addImageSampler("Color 1", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
+	customGui->addImageSampler("Color 2", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
+    customGui->addSlider("Saturation", 0.0, 255.0, saturation);
+    customGui->addSlider("Brightness", 0.0, 255.0, brightness);
+
 	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
     customGui->addToggle("DRAW LINES", &Walker::drawLines);
  
@@ -54,7 +59,32 @@ void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
 //	}
+    if( e.widget->getName() == "Color 1"){
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		color1 = sampler->getColor();
+	}
+    if( e.widget->getName() == "Color 2"){
+		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+		color2 = sampler->getColor();
+	}
+    
+    if(e.widget->getName() == "Color 2"){
+    		cout << "Changed!" << endl;
+    	
+   
+        
+    
+        for(int i = 0; i<NWalkers; i++){
+            randomColor = color1.lerp(color2, ofRandom(1));
+            
+            newColor.setHsb(randomColor.getHue(), saturation, brightness);
+        
+            walkers[i].setColor(newColor);
+        }
+    }
+    
 }
+
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupSystemGui(){
@@ -70,7 +100,10 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupRenderGui(){
 }
 
 void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
-	
+    
+    
+    
+                              
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -78,12 +111,12 @@ void CloudsVisualSystemOpenP5Spaghetti::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
     
-
+    colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
     
     for(int i = 0; i<NWalkers; i++){
    
         walkers.push_back( Walker() );
-		walkers[i].init(40, ofFloatColor::white);
+		walkers[i].init(40, newColor);
     
 //        walkers[i] = *new Walker();
     }

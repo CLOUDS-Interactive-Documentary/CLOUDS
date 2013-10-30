@@ -1,0 +1,97 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Spaghetti</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SMOOTH</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GNARLY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Number of Walkers</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Particles per Walker</Name>
+    <Value>780.541870117</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>Color 1</Name>
+    <XValue>0.281250000</XValue>
+    <YValue>0.390625000</YValue>
+    <RColor>14</RColor>
+    <GColor>152</GColor>
+    <BColor>240</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>Color 2</Name>
+    <XValue>0.570312500</XValue>
+    <YValue>0.781250000</YValue>
+    <RColor>240</RColor>
+    <GColor>255</GColor>
+    <BColor>37</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW LINES</Name>
+    <Value>1</Value>
+</Widget>

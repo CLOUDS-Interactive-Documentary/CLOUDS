@@ -17,8 +17,7 @@ class Walker {
 	Walker();
 	
 	ofVec3f position;
-    ofFloatColor color;
-    
+    ofColor color;
 	
     static int i;
     static float j;
@@ -32,6 +31,7 @@ class Walker {
     void smoothTrails();
     void gnarlyTrails();
     void draw();
+    void setColor(ofColor color);
     
     //random seed for noise
     float seed;
@@ -47,6 +47,9 @@ class Walker {
 	//float pointAlpha;
 	static bool drawLines;
     
+    static float saturation;
+    static float brightness;
+    
     //the number of vertices in the mesh
     int numVertices;
     
@@ -56,6 +59,7 @@ class Walker {
     
 //    vector<particle> particles;
     ofVboMesh mesh;
+    
     
     
   
