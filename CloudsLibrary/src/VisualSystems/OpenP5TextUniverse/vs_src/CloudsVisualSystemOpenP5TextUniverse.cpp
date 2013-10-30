@@ -54,16 +54,16 @@ void CloudsVisualSystemOpenP5TextUniverse::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
 {
+    // Load the contents of the text file.
     ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
     if (buffer.size()) {
         text = new TUText(buffer.getText());
         text->print();
     }
     
+    // Build the node network.
     orbital = new TUOrbital(30, 1000);
     orbital->text = "If I were a writer who had that kinds of chops, I'd be wanting to do something that was deconstructive";
-    
-    // initializing children
     
     for (int i = 0; i < text->paragraphs.size(); i++) {
         TUOrbital oi(*orbital, text->paragraphs[i].str);
@@ -74,16 +74,13 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
             
             for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
                 orbital->children[i].children[j].children.push_back(TUOrbital(orbital->children[i].children[j], text->paragraphs[i].sentences[j].words[k]));
-                /*
-                 for(int m = 0; m < txt.paragraphs[i].sentences[j].words[l].chars.length; m++) {
-                 Orbital om = new Orbital(otxt.children[i].children[j].children[l], str(txt.paragraphs[i].sentences[j].words[l].chars[m]));
-                 otxt.children[i].children[j].children[l].children = (Orbital[]) append(otxt.children[i].children[j].children[l].children, om);
-                 */
-                //}
-                
             }
         }
     }
+    
+    // Load the font.
+    TUOrbital::font.loadFont("Museo-300.otf", 14);
+    TUOrbital::font.setLineLength(150);
     
     bMouseDragged = false;
 }

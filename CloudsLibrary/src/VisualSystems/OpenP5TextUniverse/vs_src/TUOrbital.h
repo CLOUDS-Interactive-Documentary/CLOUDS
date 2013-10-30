@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxFTGL.h"
 
 //--------------------------------------------------------------
 //--------------------------------------------------------------
@@ -17,7 +18,6 @@ class TUOrbital
     public:
         TUOrbital(float size, float radius)
         {
-            
             text = "";
             
             this->size = size;
@@ -39,9 +39,9 @@ class TUOrbital
         
         void update(float x, float y, float z, bool bSelected)
         {
-            this->x = x;
-            this->y = y;
-            this->z = z;
+            pos.x = x;
+            pos.y = y;
+            pos.z = z;
             
             if (bSelected) {
                 this->bSelected = true;
@@ -78,12 +78,12 @@ class TUOrbital
         {
             ofPushMatrix();
             {
-                ofTranslate(x, y, z);
+                ofTranslate(pos);
                 
                 ofSetColor(255);
                 
                 for (int i = 0; i < children.size(); i++) {
-                    ofLine(0, 0, 0, children[i].x, children[i].y, children[i].z);
+                    ofLine(ofVec3f::zero(), children[i].pos);
                 
                     // recursive draw
                     children[i].draw(cam, bMouseDragged);
@@ -94,10 +94,10 @@ class TUOrbital
                 ofRotateX(rotations.x);
                 ofRotateY(rotations.y);
                 ofRotateZ(rotations.z);
+                ofScale(1, -1, 1);
                 
                 if (bClicked) {
-                    ofDrawBitmapString(text, 0, 150);
-//                    text(txt, sze, 0, 150, 300);
+                    font.drawString(text, size, 0);
                 }
 
                 ofRect(-size / 2.0f, -size / 2.0f, size, size);
@@ -144,9 +144,10 @@ class TUOrbital
         }
     
         static float focusX, focusY, focusZ;
+        static ofxFTGLSimpleLayout font;
     
-        float x, y, z;
-        
+        ofVec3f pos;
+    
         float radius, size;
         
         string text;

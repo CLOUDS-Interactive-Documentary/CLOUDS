@@ -11,3 +11,5 @@
 float TUOrbital::focusX;
 float TUOrbital::focusY;
 float TUOrbital::focusZ;
+
+ofxFTGLSimpleLayout TUOrbital::font;
