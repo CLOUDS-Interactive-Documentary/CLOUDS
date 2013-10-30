@@ -406,13 +406,13 @@ void CloudsVisualSystemMandala::selfDraw()
 	//draw the 3D scene
 	glEnable( GL_DEPTH_TEST );
 	ofSetColor(255,255,255);
-	camera.begin();
+//	camera.begin();
 	
 	ofEnableBlendMode(surfaceBlendMode);
 	
 	drawSurface( surface );
 	
-	camera.end();
+//	camera.end();
 }
 
 void CloudsVisualSystemMandala::drawShapesToFbo( float t)

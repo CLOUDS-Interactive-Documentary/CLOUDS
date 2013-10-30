@@ -253,9 +253,9 @@ public:
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-	ofCamera& getCameraRef(){
-		return camera;
-	}
+//	ofCamera& getCameraRef(){
+//		return camera;
+//	}
 	
 	//
 	//	ofCamera& getCameraRef(){
@@ -288,7 +288,7 @@ protected:
 	
 	void loadShaders();
 	
-	ofEasyCam camera;
+//	ofEasyCam camera;
 	
 	
 	ofNode sweeper;
@@ -329,7 +329,7 @@ protected:
 	float noiseTimeScale, noiseScale, noiseOffset, noiseTime;
 	float blinkyness, blinkynessScale, blinkynessTimeScale;
 	
-	ofEasyCam orthoCamera;
+//	ofEasyCam orthoCamera;
 	
 	float noduleRotation;
 	float numW, numH;
