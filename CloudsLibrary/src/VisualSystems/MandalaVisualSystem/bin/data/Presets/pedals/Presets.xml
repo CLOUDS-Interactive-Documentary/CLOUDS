@@ -32,6 +32,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>square</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>squares</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>texture debug</Name>
     <Value>0</Value>
 </Widget>
