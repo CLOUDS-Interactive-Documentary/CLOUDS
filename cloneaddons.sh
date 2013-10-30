@@ -35,6 +35,7 @@ git clone https://github.com/Larsberg/ofxMarchingCubes
 git clone https://github.com/andreasmuller/ofxAutoReloadedShader
 git clone https://github.com/obviousjim/ofxDelaunay
 git clone https://github.com/prisonerjohn/ofxSQLite
+git clone https://github.com/prisonerjohn/ofxFTGL
 git clone https://github.com/prisonerjohn/ofxTextWriter
 git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex

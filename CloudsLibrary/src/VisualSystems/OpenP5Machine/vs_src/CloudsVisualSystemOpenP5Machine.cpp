@@ -19,9 +19,20 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+    customGui->addWidgetDown(new ofxUILabel("BOX COLOR", OFX_UI_FONT_MEDIUM));
+	customGui->addSlider("Color 1 Hue", 0.0, 1.0, &color1HSB.r);
+	customGui->addSlider("Color 1 Sat", 0.0, 1.0, &color1HSB.g);
+	customGui->addSlider("Color 1 Bri", 0.0, 1.0, &color1HSB.b);
+    
+    customGui->addWidgetDown(new ofxUILabel("BOX SCALE", OFX_UI_FONT_MEDIUM));
+    customGui->addSlider("Box Scale X", 0.0, 4.0, &boxScaleX);
+	customGui->addSlider("Box Scale Y", 0.0, 4.0, &boxScaleY);
+	customGui->addSlider("Box Scale Z", 0.0, 4.0, &boxScaleZ);
+    customGui->addWidgetDown(new ofxUILabel("Shift Position", OFX_UI_FONT_MEDIUM));
+    customGui->addSlider("Shift X", 0.0, 5.0, &shiftX);
+	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
+	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
+
     
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -74,7 +85,7 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     ofSetSmoothLighting(true);
     
     
-    color1HSB.r = 140;
+    color1HSB.r = 200;
     color2HSB.g = 130;
     color2HSB.b = 90;
 
@@ -112,108 +123,52 @@ void CloudsVisualSystemOpenP5Machine::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5Machine::selfDraw(){
   
-    /*
-    
-    for(int i=0; i<10; i++) {
-        
-        float r = random(20);
-        
-        rotateX(frameCount*PI/1000);
-        
-        //alt effect
-        //rotateY(frameCount*PI/1000);
-        
-   
-        for (int y = -2; y < 2; y++) {
-            for (int x = -2; x < 2; x++) {
-                for (int z = -2; z < 2; z++) {
-                    
-                    pushMatrix();
-                    translate(400*x, 300*y, 300*z);
-                    box(5, 5, 100);
-                    popMatrix();
-                    
-                    pushMatrix();
-                    translate(400*x, 300*y, 50*z);
-                    box(100, 5, 5);
-                    popMatrix();
-                    
-                    pushMatrix();
-                    translate(400*x, 10*y, 50*z);
-                    box(50, 5, 5);
-                    popMatrix();
-                    
-                    pushMatrix();
-                    rotateY(frameCount*PI/400);
-                    translate(100*x, 300*y, 300*z);
-                    box(60, 40, 20);
-                    popMatrix();
-                    
-                }
-            }
-        }
-    }
-}
-    */
-    
-	
-	mat->begin();
-	
-    ofColor color;
-    
+    ofPushStyle();
+    mat->begin();
+	ofColor color;
+     
     framecount = (ofGetElapsedTimeMillis()/33);
+    ofRotateY(framecount* (ofRadToDeg(PI/500)));
+    ofTranslate(ofGetWindowWidth()/10, ofGetWindowWidth()/10, depth/2);
     
-    //cam.begin();
-    
-    
-  //  ofVec3f center = ofVec3f(0);
-    
-   // dir.setDiffuseColor(ofColor(0.0f, 0.0f, 255.0f));
-   // dir.setSpecularColor(ofColor(255.0f, 0.0f, 0.0f));
-    
- //   dir.setDirectional();
-    dir_rot = ofVec3f(0, -95, 0);
-    //  setLightOri(dir, dir_rot);
-    
-    //amb.setAmbientColor(ofColor(50.0, 100.0, 200.0, 100.0));
-    
-    //spotlight is drawn in the camera frame and oriented relative to the focus of the camera
 
     for(int i=0; i<10; i++) {
-        
-     
-       // ofTranslate(ofGetWindowWidth()/2, ofGetWindowHeight()/2, -400/2);
+
         
         ofRotateX(framecount* (ofRadToDeg(PI/1000)));
         
+        
         for (int y = -2; y < 2; y++) {
             for (int x = -2; x < 2; x++) {
-                for (int z = -2; z < 2; z++) {
-
+                for (int z = -1; z < 2; z++) {
+                    
+                
                     ofPushMatrix();
-                    ofTranslate(400*x, 300*y, 300*z);
+                    ofTranslate(shiftX*400*x, shiftY*300*y, shiftZ*300*z);
                     color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b);
                     ofSetColor(color);
-                    ofScale(5,5,100);
+                    ofScale(5*boxScaleX,5*boxScaleY,100*boxScaleZ);
                     ofBox(1, 1, 1);
                     ofPopMatrix();
        
+                    ofRotateX(240);
                     ofPushMatrix();
-                    ofTranslate(400*x, 300*y, 50*z);
-                    ofScale(100, 5, 5);
+                    ofTranslate(shiftX*400*x, shiftY*300*y, shiftZ*50*z);
+                    ofScale(100*boxScaleX, 5*boxScaleY, 5*boxScaleZ);
+                    ofBox(1, 1, 1);
+                    ofPopMatrix();
+                    ofRotateX(50);
+                    ofPushMatrix();
+                    ofTranslate(shiftX*400*x,shiftY*10*y, shiftZ*50*z);
+                    ofScale(50*boxScaleX, 5*boxScaleY, 5*boxScaleZ);
                     ofBox(1, 1, 1);
                     ofPopMatrix();
                     
-                    ofPushMatrix();
-                    ofTranslate(400*x, 10*y, 50*z);
-                    ofScale(50, 5, 5);
-                    ofBox(1, 1, 1);
-                    ofPopMatrix();
-                    
+                    ofRotateX(160);
                     ofPushMatrix();
                     ofRotateY(framecount* (ofRadToDeg(PI/400)));
-                    ofTranslate(100*x, 300*y, 300*z);
-                    ofScale(60, 40, 20);
+                    ofTranslate(shiftX*100*x, shiftY*300*y, shiftZ*300*z);
+                    ofScale(60*boxScaleX, 40*boxScaleY, 20*boxScaleZ);
                     ofBox(1, 1, 1);
                     ofPopMatrix();
         
@@ -222,7 +177,10 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
             }
         }
     }
+    
+    
 	mat->end();
+    ofPopStyle();
 	
  //   cam.end();
 }

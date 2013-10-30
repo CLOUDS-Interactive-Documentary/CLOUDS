@@ -7,6 +7,10 @@
 
 #define _N jtn::TreeNode
 
+#pragma mark
+
+//statics
+
 float _C::dotSize = 0.1;
 float _C::axonThickness = 0;
 float _C::alpha = 0;
@@ -19,15 +23,21 @@ float _C::danceOffset = 0;
 
 void _C::reset(){
     
-    
+    //free all dynamically allocated memory
     
     vector<_N*>::iterator it;
     for( it=_N::all.begin() ; it!=_N::all.end() ; it++){
         delete *it;
     }
+    
+    //clear all linked lists
+    
     _N::all.clear();
     rootNodes.clear();
 	
+    
+    // lay down new root nodes in an inward facing spherical formation
+    
     int stepsTheta = sqrt(rootCount);
     int stepsPhi = sqrt(rootCount);
     float incTheta = (PI*2)/(float)stepsTheta;
@@ -35,12 +45,17 @@ void _C::reset(){
     for(int j=0;j<stepsPhi+1;j++){
         for(int i=0;i<stepsTheta;i++){
             
+            //sphere coordinate math
             float x = cos(i*incTheta) * sin(j*incPhi);
             float y = sin(i*incTheta) * sin(j*incPhi);
             float z = cos(j*incPhi);
             
             _N *n = new _N();
             n->generation = 0;
+            
+            //set the direction to current point scaled out.
+            // only works if pivot == origin
+            
             n->future.x = n->x = x * 50;
             n->future.y = n->y = y * 50;
             n->future.z = n->z = z * 50;
@@ -54,7 +69,7 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
     }else if(e.widget->getName()=="Freeze Tree To Disk" && ofGetMousePressed()){
-        
+        // TODO: serialize node tree into a flat file.
     }
 }
 
@@ -62,6 +77,10 @@ string _C::getSystemName(){
   return "Neurons";
 }
 
+
+/**
+    serializes node network into a flat file
+ */
 void _C::writeToDisk(string dirname){
     ofstream outfile((dirname + "/hansolo.carbonite").c_str());
     outfile << "hi there";
@@ -122,6 +141,8 @@ void _C::selfDraw(){
 	
 	ofPushMatrix();
 	ofRotate(rotation,0,0,1);
+    
+    //some camera sway
     ofTranslate(
                 ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,
                 ofNoise( ofGetFrameNum() * 0.01 , 2000) * _C::sway,
@@ -129,6 +150,8 @@ void _C::selfDraw(){
     );
 	_N::drawMode = GL_LINES;
 
+    
+    // for all root nodes:
     vector<_N*>::iterator it;
     int tCount=0;
     for(it=rootNodes.begin();it!=rootNodes.end();it++){
@@ -145,6 +168,8 @@ void _C::selfDraw(){
 	glPointSize(dotSize);
 	glBegin(GL_POINTS);
 	glColor3f(1,1,1);
+    
+    // for all terminals
 	for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
 		glVertex3f( (*it)->x,
 								(*it)->y,
@@ -195,6 +220,8 @@ void _N::update(){
 		(*it)->update();
 	}
 	
+    
+    // branching rules
 	if( _N::all.size() < _C::nodeMax
 			&& (
 		 (ofRandomuf() < 0.1 && children.size()==0)
