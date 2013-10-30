@@ -4,7 +4,7 @@
 
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 
-float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 10;
+float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 50f;
 bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
 bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
 
