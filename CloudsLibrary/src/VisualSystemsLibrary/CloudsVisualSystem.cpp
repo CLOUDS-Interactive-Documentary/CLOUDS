@@ -1408,34 +1408,34 @@ void CloudsVisualSystem::setupMaterial(string name, ofMaterial *m)
     float dim = g->getGlobalSliderHeight();
     
     g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AR", 0.0, 1.0, &m->getAmbientColor()->r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AR", 0.0, 1.0, &m->getAmbientColor().r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AG", 0.0, 1.0, &m->getAmbientColor()->g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AB", 0.0, 1.0, &m->getAmbientColor()->b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AG", 0.0, 1.0, &m->getAmbientColor().g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AB", 0.0, 1.0, &m->getAmbientColor().b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
     g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AR", 0.0, 1.0, &m->getDiffuseColor()->r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AR", 0.0, 1.0, &m->getDiffuseColor().r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AG", 0.0, 1.0, &m->getDiffuseColor()->g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AB", 0.0, 1.0, &m->getDiffuseColor()->b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AG", 0.0, 1.0, &m->getDiffuseColor().g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AB", 0.0, 1.0, &m->getDiffuseColor().b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
     g->addLabel("EMISSIVE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("ER", 0.0, 1.0, &m->getEmissiveColor()->r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("ER", 0.0, 1.0, &m->getEmissiveColor().r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("EG", 0.0, 1.0, &m->getEmissiveColor()->g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("EB", 0.0, 1.0, &m->getEmissiveColor()->b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("EG", 0.0, 1.0, &m->getEmissiveColor().g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("EB", 0.0, 1.0, &m->getEmissiveColor().b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
     g->addLabel("SPECULAR", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("SR", 0.0, 1.0, &(m->getSpecularColor()->r), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SR", 0.0, 1.0, &(m->getSpecularColor().r), length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("SG", 0.0, 1.0, &(m->getSpecularColor()->g), length, dim)->setShowValue(false);
-    g->addMinimalSlider("SB", 0.0, 1.0, &(m->getSpecularColor()->b), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SG", 0.0, 1.0, &(m->getSpecularColor().g), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SB", 0.0, 1.0, &(m->getSpecularColor().b), length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
