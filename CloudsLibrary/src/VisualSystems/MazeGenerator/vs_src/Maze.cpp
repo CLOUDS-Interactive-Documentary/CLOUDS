@@ -8,6 +8,8 @@
 
 #include "Maze.h"
 
+#define SIDE_WALLS
+
 Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
 {
     cellSize = cSize;
@@ -46,8 +48,8 @@ Maze::~Maze()
 void Maze::generate()
 {
     // set starting (exit) point
-    int randX = 0;//(int)ofRandom(NUM_CELLS_X);
-    int randY = 0;//(int)ofRandom(NUM_CELLS_Y);
+    int randX = 0;
+    int randY = 0;
     currentCell = cells[randX][randY];
     currentCell->visit();
     currentCell->mazeExit = true;
@@ -59,16 +61,16 @@ void Maze::generate()
 //    while (!finishedGenerating) {
 //        generateStep();
 //    }
-//    for (int i=0; i<10000; i++)
-//    {
-//        generateStep();
-//    }
+    for (int i=0; i<500; i++)
+    {
+        generateStep();
+    }
 }
 
 void Maze::update(ofCamera *cam)
 {
     if (!finishedGenerating) {
-        for (int i=0; i<8; i++) {
+        for (int i=0; i<4; i++) {
             generateStep();
         }
     }
@@ -80,7 +82,7 @@ void Maze::draw(ofCamera *cam)
     ofTranslate(pos);
     // for tiling
     int yStart = cam->getPosition().z/cellSize-5;
-    int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead, NUM_CELLS_Y);
+    int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead,NUM_CELLS_Y);
     if (yStart < 0) {
         yStart = 0;
     }
@@ -97,18 +99,20 @@ void Maze::draw(ofCamera *cam)
     ofPopMatrix();
     
     // draw side walls
+#ifdef SIDE_WALLS
     ofSetColor(ParamManager::getInstance().getSideWallsColor());
     ofPushMatrix();
-    ofTranslate(0, 200-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 400, length*cellSize);
+    ofTranslate(-0.1, 800-wallHeight/2, middle*cellSize);
+    ofScale(wallThickness, 1600, length*cellSize);
     ofBox(1);
     ofPopMatrix();
     ofPushMatrix();
-    ofTranslate(NUM_CELLS_X*cellSize+0.1, 200-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 400, length*cellSize);
+    ofTranslate(NUM_CELLS_X*cellSize+0.1, 800-wallHeight/2, middle*cellSize);
+    ofScale(wallThickness, 1600, length*cellSize);
     ofBox(1);
     ofPopMatrix();
-
+#endif
+    
     // draw the cells
     for (int i=0; i<NUM_CELLS_X; i++)
     {
@@ -201,9 +205,13 @@ void Maze::generateStep()
             else {
                 int prevLimit = currentYLimit;
                 currentYLimit += 60;
-                currentCell = cells[0][prevLimit+1];
-//                finishedGenerating = true; 
-//                currentCell = NULL;
+                if (prevLimit > NUM_CELLS_Y) {
+                    finishedGenerating = true;
+                    currentCell = NULL;
+                }
+                else {
+                    currentCell = cells[0][prevLimit+1];
+                }
             }
             valid = true;
         }

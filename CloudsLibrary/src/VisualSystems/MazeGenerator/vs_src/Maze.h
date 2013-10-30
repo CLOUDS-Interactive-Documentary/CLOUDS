@@ -24,7 +24,6 @@ public:
     float wallThickness;
     float wallHeight;
     
-//    Maze(float cSize, float wThick, float wHeight);
     Maze(float cSize, float wThick, float wHeight, ofVec3f p = ofVec3f());
     ~Maze();
     void generate();
@@ -39,6 +38,7 @@ protected:
     void generateStep();
     
     ofVec3f pos;
+    ofVbo geometry;
     
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;

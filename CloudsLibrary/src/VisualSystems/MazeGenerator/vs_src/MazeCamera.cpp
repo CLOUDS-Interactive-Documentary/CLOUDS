@@ -23,18 +23,18 @@ MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
 void MazeCamera::update()
 {
 #ifdef FLYING_CAM
+    float mazeWidth = 1860;
+    float mazeHeight = 600;
+    mousePos = ofVec3f((1-(float)ofGetMouseX()/ofGetWidth()) * mazeWidth, 0 + (1-(float)ofGetMouseY()/ofGetHeight()) * mazeHeight, getPosition().z+500);
     vel = (mousePos-getPosition()).normalize() * ParamManager::getInstance().cameraSpeed;
     lookAt(mousePos);
 #else
+    setPosition(getPosition().x, ParamManager::getInstance().cameraHeight, getPosition().z);
     vel = ofVec3f(0, 0, ParamManager::getInstance().cameraSpeed);
     lookAt(getPosition() + ofVec3f(0, 0, 10));
 #endif
     rotate(ParamManager::getInstance().cameraAngle, ofVec3f(1, 0, 0));
-    move(vel);
-    
-    float mazeWidth = 1860;
-    float mazeHeight = 600;
-    mousePos = ofVec3f((1-(float)ofGetMouseX()/ofGetWidth()) * mazeWidth, 200 + (1-(float)ofGetMouseY()/ofGetHeight()) * mazeHeight, getPosition().z+500);
+    move(vel);    
 }
 
 void MazeCamera::draw()

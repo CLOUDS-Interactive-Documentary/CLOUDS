@@ -69,14 +69,14 @@ void MazeCell::draw(bool isGenerator)
         ofPopMatrix();
     }
     
-//    if (left) {
-//        ofPushMatrix();
-//        ofTranslate(x*size, 0, y*size + size/2);
-//        ofRotateY(90);
-//        ofScale(wallLength, wallHeight, wallThickness);
-//        ofBox(1);
-//        ofPopMatrix();
-//    }
+    if (x==0) {
+        ofPushMatrix();
+        ofTranslate(x*size, 0, y*size + size/2);
+        ofRotateY(90);
+        ofScale(wallLength, wallHeight, wallThickness);
+        ofBox(1);
+        ofPopMatrix();
+    }
 //    if (bottom) {
 //        ofPushMatrix();
 //        ofTranslate(x*size+size/2, 0, (y+1)*size);
