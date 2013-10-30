@@ -43,12 +43,15 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	shapesGui->setColorFill( ofColor( 30,30,35,250) );
 	
 	vector<string> shapeNames;
-	shapeNames.push_back("square"), shapeNames.push_back("triangle"), shapeNames.push_back("circle");
+	shapeNames.push_back("square");
+	shapeNames.push_back("triangle");
+	shapeNames.push_back("circle");
+	
 	shapesGui->addLabel("shape types");
 	shapesGui->addSpacer();
 	shapesGui->addRadio("shapeTypes", shapeNames );
 	shapesGui->addSpacer();
-	shapesGui->addToggle("randomColors", false );
+	shapesGui->addToggle("randomColors", &bUseRandomColors );
 	shapesGui->addSlider("shapesScale", .1, 10, &shapesScale);
 	shapesGui->addSlider("numW", 1, 20, &numW)->setIncrement(1);
 	shapesGui->addSlider("numH", 1, 10, &numH)->setIncrement(1);
@@ -94,6 +97,16 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	textureNames.push_back("space balls");
 	surfaceGui->addRadio("textures", textureNames);
 	
+	surfaceGui->addSpacer();
+	surfaceGui->addLabel("animation profile");
+	
+	profileTypeNames.push_back("half circle");
+	profileTypeNames.push_back("wave");
+	profileTypeNames.push_back("half circle & wave");
+	surfaceGui->addRadio("profileTypes", profileTypeNames );
+	
+	
+	
 	ofAddListener(surfaceGui->newGUIEvent, this, &CloudsVisualSystemMandala::selfGuiEvent);
 	guis.push_back(surfaceGui);
 	guimap[customGui->getName()] = surfaceGui;
@@ -111,18 +124,26 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 	}
 	else if(name == "randomColors")
 	{
-		cout << "e.getToggle()->getValue(); " << e.getToggle()->getValue() << endl;
-		setupNodules( *currentShape, numW, numH, e.getToggle()->getValue() );
+		setupNodules( *currentShape, numW, numH );
 	}
 	
 	else if(kind == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 	{
+		cout << e.getToggle()->getParent()->getName() << endl;
+		
 		if(name == "square")	setupNodules( square, numW, numH );
 		else if(name == "triangle")	setupNodules( triangle, numW, numH );
 		else if(name == "circle")	setupNodules( circle, numW, numH );
 		
 		else if(name == "shapes fbo")	currentTexture = &animatedMap.getTextureReference();
 		else if(name == "space balls")	currentTexture = &debugImage.getTextureReference();
+		
+		else if(e.getToggle()->getParent()->getName() == "profileTypes")
+		{
+			for (int i=0; i<profileTypeNames.size(); i++) {
+				if(profileTypeNames[i] == name)	profileType = name;
+			}
+		}
 	}
 	
 	else{
@@ -203,6 +224,9 @@ void CloudsVisualSystemMandala::selfSetup()
 	currentShape = &triangle;
 	
 	currentTexture = NULL;
+	bUseRandomColors = false;
+	
+	profileType = "half circle";
 	
 	//load some images for gui and debug
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
@@ -274,7 +298,7 @@ void CloudsVisualSystemMandala::selfSetup()
 	setupNodules( triangle, numW, numH );
 }
 
-void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH, bool useRandomColors )
+void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH )
 {
 	currentShape = &m;
 	nodules.resize( numW * numH);
@@ -289,7 +313,7 @@ void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH, 
 			nodules[index].setPosition( i * noduleSize.x + noduleSize.x * .5 *(j%2), j * noduleSize.y+ noduleSize.x * .5 , 0);
 			nodules[index].setScale( noduleSize.y * shapesScale );
 			nodules[index].setOrientation(ofVec3f(0,0,0));
-			if(useRandomColors == true)	nodules[index].offsetColor.set(ofRandom(2.), ofRandom(2.), ofRandom(2.) );
+			if(bUseRandomColors)	nodules[index].offsetColor.set(ofRandom(2.), ofRandom(2.), ofRandom(2.) );
 			else	nodules[index].offsetColor.set(1,1,1);
 		}
 	}
@@ -342,16 +366,18 @@ void CloudsVisualSystemMandala::selfUpdate()
 		
 		for (int j=0; j<profileVertices.size(); j++)
 		{
-			curveMix = ofMap( curveMixStep*j, .25, .35, 0, 1, true);
-			curveMix *= curveMix;
-			//cv[i][j] = profileVertices[j] * sweeper.getGlobalTransformMatrix();
-//			cv[i][j] = waveCV[j] * sweeper.getGlobalTransformMatrix();
-			cv[i][j] = (curveMix * waveCV[j] + (1. - curveMix) * profileVertices[j]) * sweeper.getGlobalTransformMatrix();
+			if(profileType == "half circle")	cv[i][j] = profileVertices[j] * sweeper.getGlobalTransformMatrix();
+			else if(profileType == "wave")	cv[i][j] = waveCV[j] * sweeper.getGlobalTransformMatrix();
+			else{
+				curveMix = ofMap( curveMixStep*j, .25, .35, 0, 1, true);
+				curveMix *= curveMix;
+				cv[i][j] = (curveMix * waveCV[j] + (1. - curveMix) * profileVertices[j]) * sweeper.getGlobalTransformMatrix();
+			}
 			
 			if(noiseOffset>.1)
 			{
 				nx = (cv[i][j].x + noiseTime) * noiseScale;
-//				ny = cv[i][j].y * noiseScale;
+				//ny = cv[i][j].y * noiseScale;
 				nz = cv[i][j].z * noiseScale;
 				
 				cv[i][j].y += ofSignedNoise(nx,nz) * noiseOffset;
@@ -364,6 +390,7 @@ void CloudsVisualSystemMandala::selfUpdate()
 	
 	//TODO: delete this:
 	ofSetWindowTitle( ofToString(ofGetFrameRate()) );
+	
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera

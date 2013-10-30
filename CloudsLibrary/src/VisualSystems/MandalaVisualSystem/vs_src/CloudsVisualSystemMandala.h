@@ -268,7 +268,7 @@ protected:
 	
 	void drawSurface(ofxSimpleSurface& surface );
 	void drawShapesToFbo(float t=ofGetElapsedTimef());
-	void setupNodules( ofVboMesh& m, int numW = 11, int numH = 5, bool useRandomColors = false );
+	void setupNodules( ofVboMesh& m, int numW = 11, int numH = 5);
 	
 	vector<ofVboMesh*> meshes;
 	
@@ -338,4 +338,8 @@ protected:
 	ofVboMesh* currentShape;
 	
 	ofTexture* currentTexture;
+	bool bUseRandomColors;
+	
+	string profileType;
+	vector<string> profileTypeNames;
 };

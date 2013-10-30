@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>637</XPosition>
-    <YPosition>445</YPosition>
+    <XPosition>849</XPosition>
+    <YPosition>213</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -12,8 +12,18 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>glowy circles</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>glowy triangles</Name>
     <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>minimal squares</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -27,11 +37,21 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>square</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>squares</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>glowy circles</Name>
+    <Name>texture debug</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>square sphere</Name>
     <Value>0</Value>
 </Widget>

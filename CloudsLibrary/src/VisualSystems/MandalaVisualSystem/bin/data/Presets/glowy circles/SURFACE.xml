@@ -35,3 +35,18 @@
     <Name>space balls</Name>
     <Value>0</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>half circle</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>wave</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>half circle &amp; wave</Name>
+    <Value>1</Value>
+</Widget>

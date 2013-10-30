@@ -13,16 +13,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>glowy circles</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>glowy triangles</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>minimal squares</Name>
+    <Name>glowy triangles</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -52,6 +47,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>square sphere</Name>
-    <Value>0</Value>
+    <Name>minimal squares</Name>
+    <Value>1</Value>
 </Widget>
