@@ -13,6 +13,13 @@ float TUOrbital::focusY;
 float TUOrbital::focusZ;
 
 ofxFTGLSimpleLayout TUOrbital::font;
+ofColor TUOrbital::textColor(255);
+
+ofColor TUOrbital::lineColor(255);
+float TUOrbital::lineWidth = 1.0f;
+
+ofColor TUOrbital::nodeColor(255);
+float TUOrbital::nodeScalar = 1.0f;
 
 //--------------------------------------------------------------
 TUOrbital::TUOrbital(float size, float radius)
@@ -82,10 +89,11 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
     {
         ofTranslate(pos);
         
-        ofSetColor(255);
-        
         for (int i = 0; i < children.size(); i++) {
-            ofLine(ofVec3f::zero(), children[i].pos);
+            if (lineWidth > 0) {
+                ofSetColor(lineColor);
+                ofLine(ofVec3f::zero(), children[i].pos);
+            }
             
             // recursive draw
             children[i].draw(cam, bMouseDragged);
@@ -95,14 +103,15 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         ofScale(1, -1, 1);
         
         if (bRenderText && bClicked) {
-            font.drawString(text, size, 0);
+            ofSetColor(textColor);
+            font.drawString(text, (size * nodeScalar), 0);
         }
         
-        ofRect(-size / 2.0f, -size / 2.0f, size, size);
+        ofSetColor(nodeColor);
+        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
         
         if (!bMouseDragged) {
             if (isMouseover(cam)) {
-                
                 if (ofGetMousePressed()) {
                     bClicked = true;
                     bSelected = true;
@@ -125,7 +134,6 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         }
     }
     ofPopMatrix();
-    
 }
 
 //--------------------------------------------------------------

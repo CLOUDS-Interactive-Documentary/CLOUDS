@@ -93,6 +93,9 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
 
     protected:
         ofxUISuperCanvas * customGui;
+        ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
+        ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
+        ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
     
         TUOrbital * orbital;
         TUText * text;
