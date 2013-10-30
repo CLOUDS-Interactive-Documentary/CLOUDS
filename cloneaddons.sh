@@ -43,6 +43,7 @@ git clone https://github.com/satoruhiga/ofxAnimationPrimitives
 git clone https://github.com/vanderlin/ofxBox2d.git
 git clone https://github.com/underdoeg/ofxOpenSteer.git
 git clone https://github.com/Larsberg/ofxSimpleSpline
+git clone https://github.com/Larsberg/ofxSimpleSurface
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
