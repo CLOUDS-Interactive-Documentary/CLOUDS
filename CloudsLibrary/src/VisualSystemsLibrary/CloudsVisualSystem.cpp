@@ -1432,14 +1432,14 @@ void CloudsVisualSystem::setupMaterial(string name, ofMaterial *m)
     g->addSpacer();
     
     g->addLabel("SPECULAR", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("SR", 0.0, 1.0, &m->getSpecularColor().r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SR", 0.0, 1.0, &(m->getSpecularColor().r), length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("SG", 0.0, 1.0, &m->getSpecularColor().g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("SB", 0.0, 1.0, &m->getSpecularColor().b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SG", 0.0, 1.0, &(m->getSpecularColor().g), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SB", 0.0, 1.0, &(m->getSpecularColor().b), length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
-    g->addMinimalSlider("SHINY", 0.0, 128.0, &(m->getShininess()))->setShowValue(false);
+    g->addMinimalSlider("SHINY", 0.0, 128.0, (m->getShininess()))->setShowValue(false);
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());

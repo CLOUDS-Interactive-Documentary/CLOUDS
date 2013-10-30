@@ -319,8 +319,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == '\\'){
 		if(showingIntro){
 			introSequence.autoSelectQuestion();
-            scratchPlayer.stop();
-            scratchPlayer.unloadSound();
             
 		}
 	}
@@ -395,6 +393,10 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 				introSequence.stopSystem();
 				storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
 			}
+			
+			scratchPlayer.stop();
+            scratchPlayer.unloadSound();
+
 			//TODO: Transition out of the act into the loading screen.
 		}
 	}
