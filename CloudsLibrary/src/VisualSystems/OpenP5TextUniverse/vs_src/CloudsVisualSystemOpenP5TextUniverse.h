@@ -12,7 +12,11 @@
 
 #include "CloudsVisualSystem.h"
 
-class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem {
+#include "TUOrbital.h"
+#include "TUText.h"
+
+class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
+{
   public:
     
 	//TODO: Change this to the name of your visual system
@@ -91,22 +95,10 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem {
 //	}
 
 
-protected:
+    protected:
+        ofxUISuperCanvas * customGui;
     
-    //  Your Stuff
-    //
-	
-	ofxUISuperCanvas* customGui;
-	
-	ofFloatColor color1HSB;
-	ofFloatColor color2HSB;
-	
-	float rotation;
-	float N;
-	float tetha;
-	float ang;
-	float beta;
-	ofVboMesh mesh;
-	
-
+        TUOrbital * orbital;
+        TUText * text;
+        bool bMouseDragged;
 };
