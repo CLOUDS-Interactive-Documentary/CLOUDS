@@ -10,18 +10,17 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 {
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
+	customGui = new ofxUISuperCanvas("ORBITAL", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
+	customGui->setName("Orbital");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
+    
+    customGui->addSpacer();
+    customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
 	guis.push_back(customGui);
@@ -54,6 +53,10 @@ void CloudsVisualSystemOpenP5TextUniverse::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
 {
+    // Set defaults.
+    currSpin = 0.0f;
+    spinSpeed = 0.5f;
+    
     // Load the contents of the text file.
     ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
     if (buffer.size()) {
@@ -107,15 +110,25 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSceneTransformation(){
 	
 }
 
-//normal update call
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
 {
+    currSpin += spinSpeed;
+    
     orbital->update(0, 0, 0, false);
 }
 
 void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
 {
-    orbital->draw(getCameraRef(), bMouseDragged);
+    ofPushStyle();
+    ofPushMatrix();
+    {
+        ofRotate(currSpin, 0, 1, 0);
+        
+        orbital->draw(getCameraRef(), bMouseDragged);
+    }
+    ofPopMatrix();
+    ofPopStyle();
 }
 
 // draw any debug stuff here
@@ -137,6 +150,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfEnd(){
 	
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfExit()
 {
 	delete text;
@@ -152,6 +166,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfKeyReleased(ofKeyEventArgs & args
 	
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& data)
 {
     bMouseDragged = true;
@@ -165,6 +180,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& da
 	
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data)
 {
     bMouseDragged = false;

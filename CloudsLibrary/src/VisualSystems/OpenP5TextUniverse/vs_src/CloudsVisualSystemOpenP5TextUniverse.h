@@ -97,4 +97,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         TUOrbital * orbital;
         TUText * text;
         bool bMouseDragged;
+    
+        float currSpin;
+        float spinSpeed;
 };
