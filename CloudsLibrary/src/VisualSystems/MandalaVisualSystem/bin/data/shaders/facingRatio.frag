@@ -1,10 +1,7 @@
-
-#version 120
-#extension GL_ARB_texture_rectangle : enable
-
-uniform float specularScale = 1.;
-uniform float specularExpo = 64.;
-uniform float discardThreshold = .35;
+uniform sampler2DRect map;
+uniform vec2 mapDim;
+uniform float polarAlphaExpo;
+uniform float polarAlphaExpoScale;
 
 varying vec3 norm;
 varying vec3 ePos;
@@ -12,11 +9,15 @@ varying vec2 uv;
 
 void main(void)
 {
-	float fr = dot( -normalize(ePos), normalize( norm ) ) ;
+	vec3 normal = normalize(norm);
+	float fr = pow( abs(dot( ePos, normal )), 1.);
+
+	gl_FragColor = texture2DRect( map, uv * mapDim);
+//	gl_FragColor.xyz += fr;
+	gl_FragColor.w *= fr;
+	gl_FragColor.xyz += pow( fr, 12.);
+	gl_FragColor.w *= min(1., 1. - pow( abs(uv.y * 2. - 1.)*1.01, 10. ));
 	
-	if( abs(fr) > discardThreshold)	discard;
-	fr *= specularScale * pow( fr* .5 + .5, specularExpo);
-	
-	gl_FragColor = vec4( gl_Color.xyz + fr, gl_Color.w );
+//	gl_FragColor = vec4( normal*.5 + .5, 1.);
 }
 
