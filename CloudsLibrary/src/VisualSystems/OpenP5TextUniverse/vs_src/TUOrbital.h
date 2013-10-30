@@ -21,7 +21,7 @@ class TUOrbital
     
         void update(float x, float y, float z, bool bSelected);
         void draw(ofCamera& cam, bool bMouseDragged);
-    
+        void billboard();
         bool isMouseover(ofCamera& cam);
     
         static float focusX, focusY, focusZ;

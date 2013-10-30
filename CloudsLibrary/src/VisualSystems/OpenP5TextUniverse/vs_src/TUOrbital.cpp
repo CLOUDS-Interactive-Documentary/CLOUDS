@@ -91,11 +91,7 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
             children[i].draw(cam, bMouseDragged);
         }
         
-        // orient to camera position
-        ofVec3f rotations = cam.getOrientationEuler();
-        ofRotateX(rotations.x);
-        ofRotateY(rotations.y);
-        ofRotateZ(rotations.z);
+        billboard();
         ofScale(1, -1, 1);
         
         if (bRenderText && bClicked) {
@@ -130,6 +126,30 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
     }
     ofPopMatrix();
     
+}
+
+//--------------------------------------------------------------
+void TUOrbital::billboard()
+{
+	// Get the current modelview matrix.
+	float modelview[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX , modelview);
+    
+	// Undo all rotations.
+	// Beware all scaling is lost as well.
+	for (int i = 0; i < 3; i++) {
+		for (int j=0; j < 3; j++) {
+			if (i == j) {
+				modelview[i * 4 + j] = 1.0;
+            }
+			else {
+				modelview[i * 4 + j] = 0.0;
+            }
+		}
+    }
+    
+	// Set the modelview with no rotations.
+	glLoadMatrixf(modelview);
 }
 
 //--------------------------------------------------------------
