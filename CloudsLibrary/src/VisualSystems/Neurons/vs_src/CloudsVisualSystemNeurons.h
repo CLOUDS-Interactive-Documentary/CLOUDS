@@ -1,9 +1,9 @@
 #pragma once
 
 /**
-	 introductory example of subclassing Rezanator.
-	 spinning square is drawn with 1 spinning slider.
-	 
+     growing, jiggling neurons.
+     quatumblable.
+ 
 	 @author jtnimoy
 */
 
