@@ -91,15 +91,69 @@ void Maze::buildModel()
             normalCounter += cells[i][j]->fillNormalData(normalData, normalCounter);
         }
     }
+	
+	//LB
+//    geometry.setVertexData(vertexData, vertsCounter, GL_STATIC_DRAW);
+//    geometry.setIndexData(indexData, indexCounter, GL_STATIC_DRAW);
+//    geometry.setNormalData(normalData, normalCounter, GL_STATIC_DRAW);
+//    indexCount = indexCounter;
+	
+	
+	//LB: we want it to be faceted correct?
+	//
+	//	-the issue seems to be that the normals are set per vertex rather then per face
+	//
+	//	-here I'm making new arrays out of the data coming in from the cells. with one vertex & normal per index.
+	//
+	//	-you probably don't need indices if it's not a smooth mesh... I commented them out.
+	//
+	//	-I've disregarded the old normals and am recalculating them here, it'll be a little faster to pass them hard coded from the cells. I did
+	//	it this way so that I wouldn't mess with your code too much
+	//
+	
+	vector<ofVec3f> vertices(indexCounter);
+	vector<ofVec3f> normals(indexCounter);
+//	vector<ofIndexType> indices(indexCounter);
+	for (int i=0; i<indexCounter; i+=6)
+	{
+		vertices[i] = vertexData[ indexData[i] ];
+		vertices[i+1] = vertexData[ indexData[i+1] ];
+		vertices[i+2] = vertexData[ indexData[i+2] ];
+		vertices[i+3] = vertexData[ indexData[i+3] ];
+		vertices[i+4] = vertexData[ indexData[i+4] ];
+		vertices[i+5] = vertexData[ indexData[i+5] ];
+		
+		ofVec3f faceNormal = normalFrom3Points(vertices[i], vertices[i+1], vertices[i+2]);
+		normals[i] = faceNormal;
+		normals[i+1] = faceNormal;
+		normals[i+2] = faceNormal;
+		normals[i+3] = faceNormal;
+		normals[i+4] = faceNormal;
+		normals[i+5] = faceNormal;
+		
+//		indices[i] = i;
+//		indices[i+1] = i+1;
+//		indices[i+2] = i+2;
+//		indices[i+3] = i+3;
+//		indices[i+4] = i+4;
+//		indices[i+5] = i+5;
+	}
+	
     
-    geometry.setVertexData(vertexData, vertsCounter, GL_STATIC_DRAW);
-    geometry.setIndexData(indexData, indexCounter, GL_STATIC_DRAW);
-    geometry.setNormalData(normalData, normalCounter, GL_STATIC_DRAW);
+    geometry.setVertexData( &vertices[0], vertices.size(), GL_STATIC_DRAW);
+    geometry.setNormalData( &normals[0], normals.size(), GL_STATIC_DRAW);
+//    geometry.setIndexData( &indices[0], indices.size(), GL_STATIC_DRAW);
+	
     indexCount = indexCounter;
     
     delete vertexData;
     delete indexData;
     delete normalData;
+	
+	//LB
+	vertices.clear();
+	normals.clear();
+//	indices.clear();
 }
 
 void Maze::update(ofCamera *cam)
@@ -116,7 +170,9 @@ void Maze::draw(ofCamera *cam)
     ofPushMatrix();
     ofTranslate(pos);
     
-    geometry.drawElements(GL_TRIANGLES, indexCount);
+	//LB
+	geometry.draw(GL_TRIANGLES, 0, indexCount);
+    //geometry.drawElements(GL_TRIANGLES, indexCount);
     
 #if 0
     // for tiling

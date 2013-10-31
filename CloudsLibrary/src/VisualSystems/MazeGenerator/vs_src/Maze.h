@@ -37,6 +37,14 @@ public:
 protected:
     void generateStep();
     void buildModel();
+	
+	
+	//LB
+	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
+	{
+		return (p2 - p1).cross( p0 - p1).normalized();
+	}
+
     
     ofVec3f pos;
     ofVbo geometry;
