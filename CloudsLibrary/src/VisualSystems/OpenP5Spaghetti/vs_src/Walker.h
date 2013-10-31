@@ -17,6 +17,8 @@ class Walker {
 	Walker();
 	
 	ofVec3f position;
+    ofVec3f previousPosition;
+    ofVec3f currentPosition;
     ofColor color;
 	
     static int i;
@@ -53,12 +55,13 @@ class Walker {
     //the number of vertices in the mesh
     int numVertices;
     
+    ofVboMesh mesh;
     
     
   protected:
     
 //    vector<particle> particles;
-    ofVboMesh mesh;
+    
     
     
     

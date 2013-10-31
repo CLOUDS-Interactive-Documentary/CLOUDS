@@ -60,6 +60,8 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
 	//do things like ofRotate/ofTranslate here
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
+    
+    void initialize();
 	
 	//normal update call
 	void selfUpdate();
@@ -91,23 +93,36 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
-    void setColorBetween(ofColor color1, ofColor color2);
-        
+    //void setColorBetween(ofColor color1, ofColor color2);
+    
+    void regenerate(); 
    
    
+    bool justStartingOut = true;
+    
 	vector<Walker> walkers;
     
     static float NWalkers;
     static bool smooth;
     static bool gnarly;
-    
-    ofImage colorMap;
+    bool shouldRegenerate;
+    bool rainbow;
+    bool oscillate;
+    bool dichromatic;
+        
+//  ofImage colorMap;
 	ofColor color1;
     ofColor color2;
     ofColor randomColor;
-    ofColor newColor = ofColor::white;
+    ofColor newColor;
     float saturation = 100;
     float brightness = 200;
+    float saturation1;
+    float brightness1;
+    float saturation2;
+    float brightness2;
+    float hue1 = 50;
+    float hue2 = 100;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -123,6 +138,16 @@ protected:
 
     ofxUISuperCanvas* customGui;
 	ofxUISuperCanvas* customCameraGui;
+     
+    //oscillator
+    
+    float osc;
+    float amplitude = 100;
+    float period = 120;
+    float frameCount;
+    
+    //float osc = amplitude * cos(TWO_PI * frameCount / period);
+
     
    
 	
