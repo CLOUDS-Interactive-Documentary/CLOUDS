@@ -18,7 +18,15 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    customGui->addButton("REGENERATE", &shouldRegenerate);
 	
+    customGui->addSlider("X Random Min", 0, 50, &XrandMin);
+    customGui->addSlider("X Random Max", 0, 50, &XrandMax);
+    customGui->addSlider("Y Random Min", 0, 50, &YrandMin);
+    customGui->addSlider("Y Random Max", 0, 50, &YrandMax);
+    customGui->addSlider("Z Random Min", 0, 50, &ZrandMin);
+    customGui->addSlider("Z Random Max", 0, 50, &ZrandMax);
+    
 	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
 	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
 	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
@@ -43,6 +51,9 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
 //	}
+    if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
+		selfBegin();
+	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -73,7 +84,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     
     
 	for (int i=0; i<limit; i++) {
-		list.push_back( Cube(ofRandom(4, 20), ofRandom(4, 20), ofRandom(2, 20),
+        //Cube.ofColor(color1);
+		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
                              ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
                              ofRandom(0, 0), ofRandom(0, 0), ofRandom(0, 0) ) );
 	}
@@ -94,7 +106,15 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5SpaceJunk::selfBegin(){
-	
+    
+    list.clear();
+    
+    for (int i=0; i<limit; i++) {
+        //Cube.ofColor(color1);
+		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+                             ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
+                             ofRandom(0, 0), ofRandom(0, 0), ofRandom(0, 0) ) );
+	}
 }
 
 //do things like ofRotate/ofTranslate here
@@ -149,11 +169,11 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
     ofRotateX(ofRadToDeg(ang));
     ofRotateY(ofRadToDeg(ang));
-    mat->begin();
+   // mat->begin();
     for (int i = 0;i < limit; i++) {
 		list[i].draw();
 	}
-    mat->end();
+  //  mat->end();
 	
     ofPopStyle();
     

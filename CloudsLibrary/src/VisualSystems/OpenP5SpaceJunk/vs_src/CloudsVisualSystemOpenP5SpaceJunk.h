@@ -146,10 +146,18 @@ protected:
 	ofFloatColor color2HSB;
 	
 	int limit = 500;
-
     float ang;
     
 	vector<Cube> list;
+    
+    float XrandMin;
+    float XrandMax;
+    float YrandMin;
+    float YrandMax;
+    float ZrandMin;
+    float ZrandMax;
+    
+    bool shouldRegenerate; 
 		
 
 };
