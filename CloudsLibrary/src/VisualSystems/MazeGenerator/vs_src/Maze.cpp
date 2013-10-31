@@ -171,8 +171,14 @@ void Maze::draw(ofCamera *cam)
     ofTranslate(pos);
     
 	//LB
-	geometry.draw(GL_TRIANGLES, 0, indexCount);
     //geometry.drawElements(GL_TRIANGLES, indexCount);
+	
+	//LB
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	geometry.draw(GL_TRIANGLES, 0, indexCount);
+	glDisable(GL_CULL_FACE);
+	
     
 #if 0
     // for tiling
