@@ -21,11 +21,18 @@ class TUOrbital
     
         void update(float x, float y, float z, bool bSelected);
         void draw(ofCamera& cam, bool bMouseDragged);
-    
+        void billboard();
         bool isMouseover(ofCamera& cam);
     
         static float focusX, focusY, focusZ;
         static ofxFTGLSimpleLayout font;
+        static ofColor textColor;
+    
+        static ofColor lineColor;
+        static float lineWidth;
+    
+        static ofColor nodeColor;
+        static float nodeScalar;
     
         ofVec3f pos;
     
@@ -37,7 +44,8 @@ class TUOrbital
         
         bool bSelected;
         bool bClicked;
-        
+        bool bRenderText;
+    
         int color;
 };
 
