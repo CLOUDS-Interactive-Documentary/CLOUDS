@@ -23,24 +23,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
     
     customGui->addSpacer();
-    textHue = new ofx1DExtruder(0);
-    textHue->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(textHue);
-    customGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
-    textSat = new ofx1DExtruder(0);
-    textSat->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(textSat);
-    customGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
-    textBri = new ofx1DExtruder(0);
-    textBri->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(textBri);
-    customGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
-    textAlpha = new ofx1DExtruder(0);
-    textAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(textAlpha);
-    customGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
-	
-    customGui->addSpacer();
     customGui->addSlider("LINE WIDTH", 0.0, 10.0, &TUOrbital::lineWidth);
     lineHue = new ofx1DExtruder(0);
     lineHue->setPhysics(0.95, 5.0, 25.0);
@@ -77,6 +59,39 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     nodeAlpha->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(nodeAlpha);
     customGui->addSlider("NODE ALPHA", 0.0, 255.0, nodeAlpha->getPosPtr());
+    
+    customGui->addSpacer();
+    textHue = new ofx1DExtruder(0);
+    textHue->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(textHue);
+    customGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
+    textSat = new ofx1DExtruder(0);
+    textSat->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(textSat);
+    customGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
+    textBri = new ofx1DExtruder(0);
+    textBri->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(textBri);
+    customGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
+    textAlpha = new ofx1DExtruder(0);
+    textAlpha->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(textAlpha);
+    customGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
+	
+    customGui->addSpacer();
+    customGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
+    customGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
+    customGui->addSlider("FONT SIZE", 1, 128, &TUOrbital::fontSize);
+    customGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    vector<string> fonts;
+    fonts.push_back("HELVETICA");
+    fonts.push_back("MATERIA PRO");
+    fonts.push_back("MUSEO 300");
+    fonts.push_back("NEW MEDIA FETT");
+    ofxUIDropDownList *ddl = customGui->addDropDownList("FONT", fonts);
+    //    ddl->setAutoClose(false);
+    ddl->setShowCurrentSelected(true);
+    //    ddl->activateToggle("DISABLE");
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
 	guis.push_back(customGui);
@@ -124,6 +139,34 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "NODE ALPHA") {
         nodeAlpha->setPosAndHome(nodeAlpha->getPos());
     }
+    
+    else if (e.widget->getName() == "LINE LENGTH") {
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
+    else if (e.widget->getName() == "FONT SIZE" || e.widget->getName() == "FONT DEPTH") {
+        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
+    else if (e.widget->getName() == "HELVETICA") {
+        TUOrbital::fontName = "Helvetica.ttf";
+        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
+    else if (e.widget->getName() == "MATERIA PRO") {
+        TUOrbital::fontName = "MateriaPro_Light.otf";
+        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
+    else if (e.widget->getName() == "MUSEO 300") {
+        TUOrbital::fontName = "Museo-300.otf";
+        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
+    else if (e.widget->getName() == "NEW MEDIA FETT") {
+        TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
+        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -154,7 +197,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
     if (buffer.size()) {
         text = new TUText(buffer.getText());
-        text->print();
+//        text->print();
     }
     
     // Build the node network.
@@ -178,8 +221,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     }
     
     // Load the font.
-    TUOrbital::font.loadFont("Museo-300.otf", 14);
-    TUOrbital::font.setLineLength(150);
+    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+    TUOrbital::font.setLineLength(TUOrbital::lineLength);
     
     bMouseDragged = false;
 }

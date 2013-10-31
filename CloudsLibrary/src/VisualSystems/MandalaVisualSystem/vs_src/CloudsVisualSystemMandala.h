@@ -15,6 +15,19 @@
 #include "ofxObjLoader.h"
 #include "ofxTween.h"
 
+
+class MandalaTicker{
+public:
+	MandalaTicker(){};
+	~MandalaTicker(){};
+	
+	float start, span;
+	
+	void update();
+	
+	bool bLoop;
+};
+
 class MandalaNodule : public ofNode{
 public:
 	MandalaNodule(){
