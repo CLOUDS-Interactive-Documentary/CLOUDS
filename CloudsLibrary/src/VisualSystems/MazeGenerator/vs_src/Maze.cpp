@@ -58,28 +58,67 @@ void Maze::generate()
     finishedGenerating = false;
     
     // generate the maze
-//    while (!finishedGenerating) {
-//        generateStep();
-//    }
-    for (int i=0; i<500; i++)
-    {
+    while (!finishedGenerating) {
         generateStep();
     }
+    
+    buildModel();
+}
+
+void Maze::buildModel()
+{
+    int verts = 0;
+    int faces = 0;
+    
+    for (int j=0; j<NUM_CELLS_Y; j++) {
+        for (int i=0; i<NUM_CELLS_X; i++) {
+            verts += cells[i][j]->getVertexCount();
+            faces += cells[i][j]->getFaceCount();
+        }
+    }
+    
+    ofVec3f* vertexData = new ofVec3f[verts];
+    ofIndexType* indexData = new ofIndexType[faces*3];
+    ofVec3f* normalData = new ofVec3f[faces];
+    
+    int vertsCounter=0;
+    int indexCounter=0;
+    int normalCounter=0;
+    for (int j=0; j<NUM_CELLS_Y; j++) {
+        for (int i=0; i<NUM_CELLS_X; i++) {
+            indexCounter += cells[i][j]->fillIndexData(indexData, vertsCounter, indexCounter);
+            vertsCounter += cells[i][j]->fillVertexData(vertexData, vertsCounter);
+            normalCounter += cells[i][j]->fillNormalData(normalData, normalCounter);
+        }
+    }
+    
+    geometry.setVertexData(vertexData, vertsCounter, GL_STATIC_DRAW);
+    geometry.setIndexData(indexData, indexCounter, GL_STATIC_DRAW);
+    geometry.setNormalData(normalData, normalCounter, GL_STATIC_DRAW);
+    indexCount = indexCounter;
+    
+    delete vertexData;
+    delete indexData;
+    delete normalData;
 }
 
 void Maze::update(ofCamera *cam)
 {
-    if (!finishedGenerating) {
-        for (int i=0; i<4; i++) {
-            generateStep();
-        }
-    }
+//    if (!finishedGenerating) {
+//        for (int i=0; i<4; i++) {
+//            generateStep();
+//        }
+//    }
 }
 
 void Maze::draw(ofCamera *cam)
 {
     ofPushMatrix();
     ofTranslate(pos);
+    
+    geometry.drawElements(GL_TRIANGLES, indexCount);
+    
+#if 0
     // for tiling
     int yStart = cam->getPosition().z/cellSize-5;
     int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead,NUM_CELLS_Y);
@@ -121,6 +160,7 @@ void Maze::draw(ofCamera *cam)
             cells[i][j]->draw(currentCell == cells[i][j]);
         }
     }
+#endif
     
     ofPopMatrix();
 }
