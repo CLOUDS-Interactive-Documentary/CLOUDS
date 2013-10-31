@@ -289,8 +289,9 @@ void CloudsVisualSystemMandala::selfSetup()
 	surface.setup(3,3);
 	surface.setClosed( true, false );
 	
-	int fboWidth = ofGetWidth() * 2;
-	animatedMap.allocate(fboWidth, fboWidth / 3);
+	animatedMap.allocate( 2048, 1024);
+//	int fboWidth = ofGetWidth() * 2;
+//	animatedMap.allocate(fboWidth, fboWidth / 3);
 		
 	currentTexture = &animatedMap.getTextureReference();
 	
@@ -406,13 +407,30 @@ void CloudsVisualSystemMandala::selfDraw()
 	//draw the 3D scene
 	glEnable( GL_DEPTH_TEST );
 	ofSetColor(255,255,255);
-//	camera.begin();
 	
 	ofEnableBlendMode(surfaceBlendMode);
 	
 	drawSurface( surface );
 	
-//	camera.end();
+//	glEnable( GL_DEPTH_TEST );
+//	ofSetColor(255, 0, 0);
+//	ofVec2f uv(cos(t*.1)*.5+.5, sin(t*.1)*.5+.5);
+//	
+//	uv = uv * .125 + .5;
+//	ofVec3f pOnS = surface.pointOnSurface( uv );
+//	ofVec3f nOnS = surface.getSurfaceNormal( uv );
+//	ofSphere( pOnS, 30);
+//	ofSphere( pOnS + nOnS * 30, 30);
+//	
+//	ofVec3f f_pos, f_norm;
+//	surface.getMeshPositionAndNormal( f_pos, f_norm, uv.x, uv.y);
+//	
+//	ofSetColor(255, 0, 0);
+//	ofSphere( f_pos, 10);
+//	ofSphere( f_pos + f_norm*20, 10);
+//	ofSphere( f_pos + f_norm*40, 10);
+//	ofSphere( f_pos + f_norm*60, 10);
+	
 }
 
 void CloudsVisualSystemMandala::drawShapesToFbo( float t)
@@ -459,6 +477,9 @@ void CloudsVisualSystemMandala::drawShapesToFbo( float t)
 
 void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 {
+	float t = ofGetElapsedTimef();
+	
+	
 	ofPushMatrix();
 	//ofScale(1,.5, 1);
 	
@@ -479,8 +500,6 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 		facingRatio.begin();
 		facingRatio.setUniformTexture("map", *currentTexture, 0);
 		facingRatio.setUniform2f("mapDim", currentTexture->getWidth(), currentTexture->getHeight() );
-//		facingRatio.setUniformTexture("map", animatedMap, 0);
-//		facingRatio.setUniform2f("mapDim", animatedMap.getWidth(), animatedMap.getHeight() );
 		facingRatio.setUniform1f("polarAlphaExpo", polarAlphaExpo);
 		facingRatio.setUniform1f("polarAlphaExpoScale", polarAlphaExpoScale);
 		
@@ -498,10 +517,11 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 		ofEnableAlphaBlending();
 		glDisable( GL_DEPTH_TEST );
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		
+//		glEnable( GL_DEPTH_TEST );
 		surface.draw();
 		
 		glDisable(GL_CULL_FACE);
+		
 		
 		
 		facingRatio.end();
