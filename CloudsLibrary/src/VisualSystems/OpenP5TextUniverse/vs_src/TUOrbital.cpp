@@ -13,7 +13,11 @@ float TUOrbital::focusY;
 float TUOrbital::focusZ;
 
 ofxFTGLSimpleLayout TUOrbital::font;
-ofxFTGLSimpleLayout TUOrbital::initium;
+string TUOrbital::fontName = "Helvetica.ttf";
+float TUOrbital::lineLength = 150.0f;
+float TUOrbital::fontSize = 14;
+float TUOrbital::fontDepth = 0;
+bool TUOrbital::bAllCaps = false;
 ofColor TUOrbital::textColor(255);
 
 ofColor TUOrbital::lineColor(255);
@@ -105,12 +109,16 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         
         if (bRenderText && bClicked) {
             ofSetColor(textColor);
-            font.drawString(text.substr(1), initium.stringWidth(text.substr(0, 1)), 0);
+            if (bAllCaps) {
+                font.drawString(ofToUpper(text), (size * nodeScalar), 0);
+            }
+            else {
+                font.drawString(text, (size * nodeScalar), 0);
+            }
         }
         
         ofSetColor(nodeColor);
-//        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
-        initium.drawString(text.substr(0, 1), 0, 0);
+        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
         
         if (!bMouseDragged) {
             if (isMouseover(cam)) {
