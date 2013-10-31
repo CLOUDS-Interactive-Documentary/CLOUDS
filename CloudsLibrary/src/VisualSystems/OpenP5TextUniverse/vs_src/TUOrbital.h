@@ -26,7 +26,6 @@ class TUOrbital
     
         static float focusX, focusY, focusZ;
         static ofxFTGLSimpleLayout font;
-        static ofxFTGLSimpleLayout initium;
         static ofColor textColor;
     
         static ofColor lineColor;

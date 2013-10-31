@@ -13,7 +13,6 @@ float TUOrbital::focusY;
 float TUOrbital::focusZ;
 
 ofxFTGLSimpleLayout TUOrbital::font;
-ofxFTGLSimpleLayout TUOrbital::initium;
 ofColor TUOrbital::textColor(255);
 
 ofColor TUOrbital::lineColor(255);
@@ -105,12 +104,11 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         
         if (bRenderText && bClicked) {
             ofSetColor(textColor);
-            font.drawString(text.substr(1), initium.stringWidth(text.substr(0, 1)), 0);
+            font.drawString(text, (size * nodeScalar), 0);
         }
         
         ofSetColor(nodeColor);
-//        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
-        initium.drawString(text.substr(0, 1), 0, 0);
+        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
         
         if (!bMouseDragged) {
             if (isMouseover(cam)) {
