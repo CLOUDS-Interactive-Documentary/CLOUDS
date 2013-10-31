@@ -32,6 +32,10 @@ class testApp : public ofBaseApp{
     float satWeight;
     float brightWeight;
     
+    float hueThreshold;
+    float satThreshold;
+    float brightThreshold;
+    
     ofxUISuperCanvas *gui;
 	void guiEvent(ofxUIEventArgs &e);
 };

@@ -3,18 +3,18 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-/*
-	if(ofDirectory("../../../CloudsData/").exists()){
-		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-		parser.setup("../../../CloudsData/fcpxml/");
-        parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-	}
-	else{
-		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-		parser.parseLinks("clouds_link_db.xml");
-		parser.setup("xml");
-	}
-*/
+    /*
+     if(ofDirectory("../../../CloudsData/").exists()){
+     parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
+     parser.setup("../../../CloudsData/fcpxml/");
+     parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
+     }
+     else{
+     cout << "SETTING UP IN DATA DIRECTORY" << endl;
+     parser.parseLinks("clouds_link_db.xml");
+     parser.setup("xml");
+     }
+     */
     if(! player.loadMovie("Zach_Fucking_boring.mov")){
         cout<<"Movie not loaded"<<endl;
     }
@@ -26,9 +26,9 @@ void testApp::setup(){
     gui->addSpacer();
     gui->addSpacer();
     gui->addSlider("THRESHOLD", 0.0, 2.0, &threshold);
-    gui->addSlider("HUE WEIGHT", 0.0, 1.0, &hueWeight);
-    gui->addSlider("SATURATION WEIGHT", 0.0, 1.0, &satWeight);
-    gui->addSlider("BRIGTHNESS WEIGHT", 0.0, 1.0, &brightWeight);
+    gui->addSlider("HUE THRESHOLD", 0.0, 1.0, &hueThreshold);
+    gui->addSlider("SATURATION THRESHOLD", 0.0, 1.0, &satThreshold);
+    gui->addSlider("BRIGTHNESS THRESHOLD", 0.0, 1.0, &brightThreshold);
     gui->addSpacer();
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
@@ -45,9 +45,9 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+    
     player.update();
-
+    
 }
 
 //--------------------------------------------------------------
@@ -59,7 +59,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    
     if(key == OF_KEY_UP){
         threshold += 0.2;
         cout<<"Threshold updated : "<<threshold<<endl;
@@ -85,17 +85,17 @@ void testApp::exit(){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-
+    
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
@@ -106,32 +106,45 @@ void testApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::checkColorDistance(){
     ofFloatColor c =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
+        ofVec3f sample = ofVec3f(c.getHue() ,c.getSaturation(),c.getBrightness() );
     ofPixels pixels = player.getPixelsRef();
-    ofVec3f sample = ofVec3f(c.getHue() * hueWeight,c.getSaturation() * satWeight,c.getBrightness() * brightWeight);
-//    ofVec3f sample = ofVec3f(c.r,c.g,c.b);
+
     cout<<"HSB :"<< sample<<endl;
-for( int j=0; j < player.getHeight(); j++){
-    for (int i =0 ; i<player.getWidth();i++) {
-
+    for( int j=0; j < player.getHeight(); j++){
+        for (int i =0 ; i<player.getWidth();i++) {
+            
             ofFloatColor currentColour = pixels.getColor(i, j);
-
-            ofVec3f current = ofVec3f(currentColour.getHue() * hueWeight,currentColour.getSaturation() * satWeight,currentColour.getBrightness() * brightWeight);
-
-            if(sample.distance(current) < threshold){
-                if(ofGetKeyPressed('1')){
-                    cout<<"distance : "<<sample.distance(current)<<endl;     
-                }
-               
-
-
+            
+            //            ofVec3f current = ofVec3f(currentColour.getHue() ,currentColour.getSaturation() ,currentColour.getBrightness());
+            
+            float hue = abs(c.getHue() - currentColour.getHue());
+            float sat = abs(c.getSaturation() - currentColour.getSaturation());
+            float bright = abs(c.getBrightness() - currentColour.getBrightness());
+            
+            if(hue < hueThreshold && sat < satThreshold && bright < brightThreshold){
                 ofFloatColor col;
                 col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
                 img.setColor(i, j, col);
-                
             }
             else{
-                img.setColor(i, j, ofFloatColor(0,0,0) );
+                img.setColor(i,j,ofFloatColor(0,0,0));
             }
+            /*
+             
+             if(sample.distance(current) < threshold){
+             if(ofGetKeyPressed('1')){
+             cout<<"distance : "<<sample.distance(current)<<endl;
+             }
+             
+             ofFloatColor col;
+             col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
+             img.setColor(i, j, col);
+             
+             }
+             else{
+             img.setColor(i, j, ofFloatColor(0,0,0) );
+             }
+             */
         }
     }
     img.update();
@@ -139,20 +152,20 @@ for( int j=0; j < player.getHeight(); j++){
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
-
+    
 }
 
 //--------------------------------------------------------------
 void testApp::gotMessage(ofMessage msg){
-
+    
 }
 
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
-
+    
 }
