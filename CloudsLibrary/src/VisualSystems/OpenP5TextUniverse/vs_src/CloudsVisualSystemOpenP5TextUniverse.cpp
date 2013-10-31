@@ -179,6 +179,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     
     // Load the font.
     TUOrbital::font.loadFont("Museo-300.otf", 14);
+    TUOrbital::initium.loadFont("Museo-300.otf", 56);
     TUOrbital::font.setLineLength(150);
     
     bMouseDragged = false;
