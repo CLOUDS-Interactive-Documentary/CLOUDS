@@ -26,6 +26,18 @@ class TUOrbital
     
         static float focusX, focusY, focusZ;
         static ofxFTGLSimpleLayout font;
+        static string fontName;
+        static float lineLength;
+        static float fontSize;
+        static float fontDepth;
+        static bool bAllCaps;
+        static ofColor textColor;
+    
+        static ofColor lineColor;
+        static float lineWidth;
+    
+        static ofColor nodeColor;
+        static float nodeScalar;
     
         ofVec3f pos;
     

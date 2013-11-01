@@ -14,8 +14,8 @@
 #include "MazeCell.h"
 #include "ParamManager.h"
 
-#define NUM_CELLS_X 31
-#define NUM_CELLS_Y 10000
+#define NUM_CELLS_X 150
+#define NUM_CELLS_Y 1000
 
 class Maze
 {
@@ -36,9 +36,19 @@ public:
     
 protected:
     void generateStep();
+    void buildModel();
+	
+	
+	//LB
+	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
+	{
+		return (p2 - p1).cross( p0 - p1).normalized();
+	}
+
     
     ofVec3f pos;
     ofVbo geometry;
+    int indexCount;
     
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
