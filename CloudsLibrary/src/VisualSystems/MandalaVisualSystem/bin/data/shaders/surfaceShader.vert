@@ -1,10 +1,9 @@
-varying vec4 color;
 varying vec3 norm;
 varying vec3 ePos;
 varying vec2 uv;
 void main()
 {
-	uv = gl_MultiTexCoord0.xy;
+	uv = gl_MultiTexCoord0.xy;// * mapDim;
 	
 	norm = gl_NormalMatrix * gl_Normal;
 	
@@ -13,7 +12,5 @@ void main()
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
 	
 	gl_Position = gl_ProjectionMatrix * ecPosition;
-	
-	color = gl_Color;
 }
 

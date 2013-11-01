@@ -176,10 +176,12 @@ void CloudsVisualSystem3DModel::selfSetupGui()
 	cameraPathsGui->addRadio("camera paths", cameraPaths );
 	
 	cameraPathsGui->addSpacer();
-	cameraPathsGui->addSlider("position", 0, 1, &pathCameraPosition);
-	cameraPathsGui->addToggle("bUseDuration", &bUseDuration);
-	cameraPathsGui->addSlider("duration", 1, 200, &pathCamera.getDuration() );
+	cameraPathsGui->addToggle("draw path", &bDrawCameraPath );
+	cameraPathsGui->addSlider("position on path", 0, 1, &pathCameraPosition);
+//	cameraPathsGui->addToggle("bUseDuration", &bUseDuration);
 	cameraPathsGui->addToggle("loop", &pathCamera.getLoop() );
+	cameraPathsGui->addSlider("loop time", 1, 200, &pathCamera.getDuration() );
+	
 	
 	ofAddListener(cameraPathsGui->newGUIEvent, this, &CloudsVisualSystem3DModel::selfGuiEvent);
 	guis.push_back(cameraPathsGui);
@@ -224,6 +226,11 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 	
 	else if( kind == OFX_UI_WIDGET_TOGGLE)
 	{
+		
+		if (name == "loop")
+		{
+			bUseDuration = e.getToggle()->getValue();
+		}
 		
 		if( e.getToggle()->getValue() )
 		{
@@ -434,6 +441,7 @@ void CloudsVisualSystem3DModel::selfSetup()
 	bUseDuration = false;
 	bRepositionModel = true;
 	bDoNotScaleModel = false;
+	bDrawCameraPath = true;
 	
 	pathCamera.setNearClip(.1);
 	
@@ -1138,6 +1146,12 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	{
 		ofSetColor(255, 255, 255, 255);
 		drawBoundingBox();
+	}
+	
+	if(bDrawCameraPath)
+	{
+		glLineWidth(majorGridLineWidth);
+		pathCamera.drawPaths();
 	}
 	
 	ofSetColor(modelColor);
