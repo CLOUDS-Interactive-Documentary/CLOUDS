@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>0.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD</Name>
+    <Value>0.660098493</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE THRESHOLD</Name>
+    <Value>0.433497548</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SATURATION THRESHOLD</Name>
+    <Value>0.068965517</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BRIGTHNESS THRESHOLD</Name>
+    <Value>0.487684727</Value>
+</Widget>

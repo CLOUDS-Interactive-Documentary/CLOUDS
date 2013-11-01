@@ -21,7 +21,7 @@ float _C::danceAmp = 0;
 float _C::danceFreq = 0;
 float _C::danceOffset = 0;
 
-void _C::reset(){
+void _C::reset(bool createRootNodes){
     
     //free all dynamically allocated memory
     
@@ -38,29 +38,31 @@ void _C::reset(){
     
     // lay down new root nodes in an inward facing spherical formation
     
-    int stepsTheta = sqrt(rootCount);
-    int stepsPhi = sqrt(rootCount);
-    float incTheta = (PI*2)/(float)stepsTheta;
-    float incPhi = (PI)/(float)stepsPhi;
-    for(int j=0;j<stepsPhi+1;j++){
-        for(int i=0;i<stepsTheta;i++){
-            
-            //sphere coordinate math
-            float x = cos(i*incTheta) * sin(j*incPhi);
-            float y = sin(i*incTheta) * sin(j*incPhi);
-            float z = cos(j*incPhi);
-            
-            _N *n = new _N();
-            n->generation = 0;
-            
-            //set the direction to current point scaled out.
-            // only works if pivot == origin
-            
-            n->future.x = n->x = x * 50;
-            n->future.y = n->y = y * 50;
-            n->future.z = n->z = z * 50;
-            n->direction = ofPoint(-x,-y,-z);
-            rootNodes.push_back(n);
+    if(createRootNodes){
+        int stepsTheta = sqrt(rootCount);
+        int stepsPhi = sqrt(rootCount);
+        float incTheta = (PI*2)/(float)stepsTheta;
+        float incPhi = (PI)/(float)stepsPhi;
+        for(int j=0;j<stepsPhi+1;j++){
+            for(int i=0;i<stepsTheta;i++){
+                
+                //sphere coordinate math
+                float x = cos(i*incTheta) * sin(j*incPhi);
+                float y = sin(i*incTheta) * sin(j*incPhi);
+                float z = cos(j*incPhi);
+                
+                _N *n = new _N();
+                n->generation = 0;
+                
+                //set the direction to current point scaled out.
+                // only works if pivot == origin
+                
+                n->future.x = n->x = x * 50;
+                n->future.y = n->y = y * 50;
+                n->future.z = n->z = z * 50;
+                n->direction = ofPoint(-x,-y,-z);
+                rootNodes.push_back(n);
+            }
         }
     }
 }
@@ -68,8 +70,12 @@ void _C::reset(){
 void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
-    }else if(e.widget->getName()=="Freeze Tree To Disk" && ofGetMousePressed()){
-        // TODO: serialize node tree into a flat file.
+    }else if(e.widget == saveButton && ofGetMousePressed()){
+        writeToFile( ofToDataPath(getVisualSystemDataPath()) );
+    }else if(e.widget == loadButton && ofGetMousePressed()){
+        cout << ofGetTimestampString() << endl;
+        readFromFile( ofToDataPath(getVisualSystemDataPath()) );
+        cout << ofGetTimestampString() << endl;
     }
 }
 
@@ -78,13 +84,95 @@ string _C::getSystemName(){
 }
 
 
+
 /**
     serializes node network into a flat file
  */
-void _C::writeToDisk(string dirname){
-    ofstream outfile((dirname + "/hansolo.carbonite").c_str());
-    outfile << "hi there";
+void _C::writeToFile(string dirname){
+    //open outfile
+    ofLogNotice() << "Saving neurons to neurons.dat";
+    ofstream fout((dirname + "neurons.dat").c_str(), ios::binary);
+    fout << "NeuronNetwork " << 0 // important! increment this version number as needed.
+        << endl;
+    
+    // flatten all neurons to a file
+    vector<_N*>::iterator nit = _N::all.begin();
+    for(;nit!=_N::all.end();nit++){
+        (*nit)->serialize(fout);
+    }
+    
+    fout.close();
+    ofLogNotice() << "Done saving.";
 }
+
+
+
+/**
+ unserializes node network from a flat file and into memory.
+ */
+void _C::readFromFile(string dirname){
+    
+    reset(false);
+    
+    ofLogNotice() << "Loading neurons from neurons.dat";
+    ifstream fin((dirname + "neurons.dat").c_str());
+    
+    while(fin.good()){
+        string token;
+        fin >> token;
+        if(token=="NeuronNetwork"){ // file header
+            float version;
+            fin >> version;
+            ofLogNotice() << "NeuronNetwork file version " << version;
+        }else if(token=="N"){
+            _N *n = new _N(fin); // node will parse the file by itself.
+        }else if(token==""){
+            fin.close();
+            break;
+        }else{
+            ofLogError() << "Unrecognized token: " << token;
+        }
+    }
+    
+    if(fin.is_open()){
+        fin.close();
+    }
+    
+    // resolve indices to pointers.
+    
+    vector<_N*>::iterator nit = _N::all.begin();
+    for(;nit != _N::all.end();nit++){
+        if( ((int)(*nit)->parent) == -1 ){ // if it was stored in the file as -1
+            (*nit)->parent = NULL; // convert it back to null.
+            rootNodes.push_back(*nit); // collect the parent into the root list.
+        }else{
+            //otherwise a straight element index.
+            (*nit)->parent = _N::all[ (int)((*nit)->parent) ];
+        }
+        
+        // start a fresh list of pointers
+        vector<_N*> pointers;
+        
+        //for all children
+        vector<_N*>::iterator cit = (*nit)->children.begin();
+        for(;cit != (*nit)->children.end(); cit++){
+            
+            //record the current pointer for the given index.
+            pointers.push_back( _N::all[ (int)(*cit) ] );
+        }
+        
+        //swap lists
+        (*nit)->children = pointers;
+        
+        
+    }
+    
+    ofLogNotice() << "Done loading.";
+
+}
+
+
+
 
 void _C::selfSetup(){
     rotation = 0;
@@ -104,7 +192,8 @@ void _C::selfSetupGuis(){
     danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
     danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
     danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
-    saveButton = gui->addButton("Freeze Tree To Disk", false, 32,32);
+    saveButton = gui->addButton("Save Neurons", false, 32,32);
+    loadButton = gui->addButton("Load Neurons", false, 32,32);
 }
 
 void _C::selfPresetLoaded(string presetPath){
@@ -335,7 +424,80 @@ _N::TreeNode(){
 	age = 0;
 }
 
+_N::TreeNode(ifstream &fin){
+
+    
+    ident = all.size();
+	all.push_back(this);
+
+    
+    int fileIdent;
+    fin >> fileIdent;
+    if(fileIdent != ident){
+        ofLogError() << "Neuron file loader: " << "non-matching identities: " << fileIdent << " != " << ident;
+    }else{
+        //cout << "MATCHING identities: " << fileIdent << " == " << ident << endl;
+    }
+    
+    fin >> x >> y >> z >>
+        future.x >> future.y >> future.z >>
+        r >> g >> b >> a >>
+        rot.x >> rot.y >> rot.z >>
+        generation >> age >>
+        direction.x >> direction.y >> direction.z;
+    
+    
+    // store both parent index and child indices into pointer slots temporarily
+    // and i promise to resolve the indices to pointers in a later global pass.
+    
+    int parentIndex;
+    fin >> parentIndex;
+    parent = (_N*)(parentIndex);
+    
+    int childCount;
+    fin >> childCount;
+    
+    int childIndex;
+    
+    for(int i=0;i<childCount;i++){
+        fin >> childIndex;
+        children.push_back((_N*)childIndex);
+    }
+    
+}
+
 _N::~TreeNode(){
 }
+
+void _N::serialize(ofstream &fout){
+    
+    //dump out all my attributes.
+    
+    fout << "N " << ' ' <<
+        ident << ' ' <<
+        x << ' ' << y << ' ' << z << ' ' <<
+        future.x << ' ' << future.y << ' ' << future.z << ' ' <<
+        r << ' ' << g << ' ' << b << ' ' << a << ' ' <<
+        rot.x << ' ' << rot.y << ' ' << rot.z << ' ' <<
+        generation << ' ' << age << ' ' <<
+        direction.x << ' ' << direction.y << ' ' << direction.z << ' ' ;
+    
+    // convert linkage pointers into file indexes,
+    // assuming nodes are written in same order as they appear in _N::all
+    
+    if(parent==NULL){
+        fout << -1 << ' ';
+    }else{
+        fout << parent->ident << ' ';
+    }
+    
+    fout << children.size() << ' ';
+    
+    for(int i=0;i<children.size();i++){
+        fout << children[i]->ident << ' ';
+    }
+    fout << endl;
+}
+
 
 
