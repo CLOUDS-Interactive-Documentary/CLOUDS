@@ -122,6 +122,18 @@ void CloudsPathCamera::update( float t )
 	else	lookAt( targetSpline.getPoint( t ) );
 }
 
+void CloudsPathCamera::drawPaths( float lineWidth)
+{
+	glLineWidth(lineWidth);
+	ofSetColor(255,255,0, 100);
+	positionSpline.update();
+	positionSpline.draw();
+	
+	ofSetColor(0,255,255, 100);
+	targetSpline.update();
+	targetSpline.draw();
+}
+
 void CloudsPathCamera::setStartTime( float _startTime )
 {
 	startTime = _startTime;

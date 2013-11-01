@@ -18,6 +18,8 @@
 		5055DFA8181ED75200761DA0 /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFA0181ED75200761DA0 /* CloudsVisualSystemMandala.cpp */; };
 		5055DFAC181EF67500761DA0 /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFAA181EF67500761DA0 /* facingRatio.frag */; };
 		5055DFAD181EF67500761DA0 /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFAB181EF67500761DA0 /* facingRatio.vert */; };
+		50EAB55E1824049600BD3C98 /* surfaceShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50EAB55C1824049500BD3C98 /* surfaceShader.frag */; };
+		50EAB55F1824049600BD3C98 /* surfaceShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50EAB55D1824049500BD3C98 /* surfaceShader.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -577,6 +579,9 @@
 		5055DFA1181ED75200761DA0 /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
 		5055DFAA181EF67500761DA0 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5055DFAB181EF67500761DA0 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
+		50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
+		50EAB55C1824049500BD3C98 /* surfaceShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = surfaceShader.frag; sourceTree = "<group>"; };
+		50EAB55D1824049500BD3C98 /* surfaceShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = surfaceShader.vert; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1730,6 +1735,8 @@
 				5055DFAB181EF67500761DA0 /* facingRatio.vert */,
 				5055DF9D181ED75200761DA0 /* normalShader.frag */,
 				5055DF9E181ED75200761DA0 /* normalShader.vert */,
+				50EAB55C1824049500BD3C98 /* surfaceShader.frag */,
+				50EAB55D1824049500BD3C98 /* surfaceShader.vert */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1739,6 +1746,7 @@
 			children = (
 				5055DFA0181ED75200761DA0 /* CloudsVisualSystemMandala.cpp */,
 				5055DFA1181ED75200761DA0 /* CloudsVisualSystemMandala.h */,
+				50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2543,6 +2551,8 @@
 				5055DFAD181EF67500761DA0 /* facingRatio.vert in Sources */,
 				502DD87E18202B39009096FD /* noduleShader.vert in Sources */,
 				502DD88018202B44009096FD /* noduleShader.frag in Sources */,
+				50EAB55E1824049600BD3C98 /* surfaceShader.frag in Sources */,
+				50EAB55F1824049600BD3C98 /* surfaceShader.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

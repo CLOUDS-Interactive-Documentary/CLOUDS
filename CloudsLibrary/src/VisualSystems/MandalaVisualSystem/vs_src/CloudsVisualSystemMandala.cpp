@@ -6,12 +6,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include <stdlib.h>     /* atoi */
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
-//These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemMandala::selfSetupGui()
 {
 	vector<string> blendTypes;
@@ -84,6 +78,7 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	surfaceGui->setColorFill( ofColor(30,30,40, 255) );
 	
 	surfaceGui->addSpacer();
+	surfaceGui->addToggle("bDrawSurface", &bDrawSurface );
 	surfaceGui->addToggle("smoothSurface", &bSmoothSurface );
 	
 	surfaceGui->addSpacer();
@@ -129,7 +124,7 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 	
 	else if(kind == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 	{
-		cout << e.getToggle()->getParent()->getName() << endl;
+//		cout << e.getToggle()->getParent()->getName() << endl;
 		
 		if(name == "square")	setupNodules( square, numW, numH );
 		else if(name == "triangle")	setupNodules( triangle, numW, numH );
@@ -161,7 +156,6 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-//Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemMandala::selfSetupSystemGui(){
 	
 }
@@ -169,7 +163,7 @@ void CloudsVisualSystemMandala::selfSetupSystemGui(){
 void CloudsVisualSystemMandala::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
-//use render gui for display settings, like changing colors
+
 void CloudsVisualSystemMandala::selfSetupRenderGui(){
 
 }
@@ -178,17 +172,16 @@ void CloudsVisualSystemMandala::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
 void CloudsVisualSystemMandala::selfSetup()
 {
 	//set defaults
+	controlSplineOffset = .25;
 	controlSplinesLineWidth = 5;
 	noduleLineWidth = 4;
 	bDrawFill = true;
 	bDrawEdges = false;
 	bDrawPoints = false;
+	bDrawSurface = false;
 	bDrawSurfaceWirframe = false;
 	bDrawSurfaceSplines = false;
 	
@@ -235,13 +228,17 @@ void CloudsVisualSystemMandala::selfSetup()
 	loadShaders();
 	
 	//load some simple geometry for our surface animations
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/square.obj", square );
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/circle.obj", circle );
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/triangle.obj", triangle );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/square.obj", square, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/circle.obj", circle, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/triangle.obj", triangle, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", box, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/dodecahedron.obj", dodecahedron, false );
 	
 	meshes.push_back( &square );
 	meshes.push_back( &circle );
 	meshes.push_back( &triangle );
+	meshes.push_back( &box );
+	meshes.push_back( &dodecahedron );
 	
 	//create some control vertices
 	profileVertices.resize(15);
@@ -297,6 +294,45 @@ void CloudsVisualSystemMandala::selfSetup()
 	
 	//shapes content
 	setupNodules( triangle, numW, numH );
+	
+	
+	posTicker.begin(tickDebug, ofVec3f(-1,-1,-1), ofVec3f(1,1,1), 3);
+	
+//	surfaceBoxUV.set(0., .5);
+//	uvTicker.begin( surfaceBoxUV, ofVec2f(.025,0.5), .25 );
+//	uvTicker.setContinue( true );
+	
+	step = .1;
+	float stepJ = .05;
+	for (int i=0; i<10; i++)
+	{
+		for (int j=0; j<20; j++)
+		{
+			MandalaSurfaceShape* shape = addSurfaceShape( &surface, &box );
+			shape->setScale( 30, 60, 60 );
+			
+			MandalaTicker<ofVec2f> uv;
+			uv.setDelay( step );
+//			uv.begin( shape->uv, ofVec2f( step* i, stepJ*j), ofVec2f( step*(i+1), stepJ*j ), 1 );
+			uv.begin( shape->uv, ofVec2f( stepJ*j, step* i), ofVec2f( stepJ*j, step*(i+1)), 1 );
+			uv.setContinue( true );
+			addTicker( uv );
+			
+			MandalaTicker<float> offset;
+			uv.setDelay( step*i);
+			offset.begin(shape->offset, 0, 100, .5, step * i + stepJ*j);
+			offset.setReverse( true );
+			addTicker( offset );
+			
+		}
+	}
+}
+
+MandalaSurfaceShape* CloudsVisualSystemMandala::addSurfaceShape( ofxSimpleSurface* s, ofVboMesh* m )
+{
+	MandalaSurfaceShape* shape = new MandalaSurfaceShape(s, m);
+	surfaceShapes.push_back( shape );
+	return shape;
 }
 
 void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH )
@@ -320,31 +356,89 @@ void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH )
 	}
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemMandala::selfPresetLoaded(string presetPath){
 	
 }
 
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemMandala::selfBegin()
 {
 }
 
-//do things like ofRotate/ofTranslate here
-//any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemMandala::selfSceneTransformation(){
 	
 }
 
-//normal update call
+void CloudsVisualSystemMandala::updateTickers( float t )
+{
+	//float
+	for (int i=tickersf.size()-1; i>=0; i--)
+	{
+		tickersf[i].update(t);
+		if(tickersf[i].ended())
+		{
+			//romve the dead ones
+			tickersf.erase( tickersf.begin() + i );
+		}
+		else if(tickersf[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	//2f
+	for (int i=tickers2f.size()-1; i>=0; i--)
+	{
+		tickers2f[i].update(t);
+		if(tickers2f[i].ended())
+		{
+			//romve the dead ones
+			tickers2f.erase( tickers2f.begin() + i );
+		}
+		else if(tickers2f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	
+	//3f
+	for (int i=tickers3f.size()-1; i>=0; i--)
+	{
+		tickers3f[i].update(t);
+		if(tickers3f[i].ended())
+		{
+			//romve the dead ones
+			tickers3f.erase( tickers3f.begin() + i );
+		}
+		else if(tickers3f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	
+	//4f
+	for (int i=tickers4f.size()-1; i>=0; i--)
+	{
+		tickers4f[i].update(t);
+		if(tickers4f[i].ended())
+		{
+			//romve the dead ones
+			tickers4f.erase( tickers4f.begin() + i );
+		}
+		else if(tickers4f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+}
+
+
 void CloudsVisualSystemMandala::selfUpdate()
 {
-	//move the control vertices around
 	float t = ofGetElapsedTimef();
+
+	updateTickers( t );
+	
+	//move the control vertices around
+	
 	float sweepScl = sin(t) * .25 + .75;
 	float iStep = 360 / float(numSpans-1);
 	
@@ -361,18 +455,19 @@ void CloudsVisualSystemMandala::selfUpdate()
 	
 	noiseTime += noiseTimeScale / max(1.f,ofGetFrameRate());
 	float nx, ny, nz;
+	ofVec3f offsetV(0,0,controlSplineOffset);
 	for (int i=0; i<numSpans; i++)
 	{
 		sweeper.rotate(-iStep, ofVec3f(0,1,0));
 		
 		for (int j=0; j<profileVertices.size(); j++)
 		{
-			if(profileType == "half circle")	cv[i][j] = profileVertices[j] * sweeper.getGlobalTransformMatrix();
-			else if(profileType == "wave")	cv[i][j] = waveCV[j] * sweeper.getGlobalTransformMatrix();
+			if(profileType == "half circle")	cv[i][j] = (profileVertices[j] + offsetV) * sweeper.getGlobalTransformMatrix();
+			else if(profileType == "wave")	cv[i][j] = (waveCV[j] + offsetV) * sweeper.getGlobalTransformMatrix();
 			else{
 				curveMix = ofMap( curveMixStep*j, .25, .35, 0, 1, true);
 				curveMix *= curveMix;
-				cv[i][j] = (curveMix * waveCV[j] + (1. - curveMix) * profileVertices[j]) * sweeper.getGlobalTransformMatrix();
+				cv[i][j] = ((curveMix * waveCV[j] + (1. - curveMix) + profileVertices[j]) + offsetV) * sweeper.getGlobalTransformMatrix();
 			}
 			
 			if(noiseOffset>.1)
@@ -387,50 +482,59 @@ void CloudsVisualSystemMandala::selfUpdate()
 	}
 	
 	//update the surface geometry
-	surface.update();
+	if(bDrawSurface)	surface.update();
 	
 	//TODO: delete this:
 	ofSetWindowTitle( ofToString(ofGetFrameRate()) );
 	
 }
 
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMandala::selfDraw()
 {
 	float t = ofGetElapsedTimef();
 	
 	//draw shapes to fbo
-	drawShapesToFbo(t);
+	if(bDrawSurface)	drawShapesToFbo(t);
 	
 	
-	//draw the 3D scene
-	glEnable( GL_DEPTH_TEST );
-	ofSetColor(255,255,255);
+	if(bDrawSurface)
+	{
+		//draw the 3D scene
+		glEnable( GL_DEPTH_TEST );
+		ofSetColor(255,255,255);
+		
+		ofEnableBlendMode(surfaceBlendMode);
+		
+		drawSurface( surface );
+	}
 	
-	ofEnableBlendMode(surfaceBlendMode);
+	ofVec3f sPos, sNorm;
+	surface.getMeshPositionAndNormal( sPos, sNorm, surfaceBoxUV.x, surfaceBoxUV.y);
 	
-	drawSurface( surface );
+	surfaceBox.resetTransform();
+	surfaceBox.setPosition( sPos );
+	surfaceBox.setScale(1,1,2);
+	ofQuaternion q;
+	q.makeRotate( surfaceBox.getZAxis(), sNorm );
+	surfaceBox.setOrientation( q );
 	
-//	glEnable( GL_DEPTH_TEST );
-//	ofSetColor(255, 0, 0);
-//	ofVec2f uv(cos(t*.1)*.5+.5, sin(t*.1)*.5+.5);
-//	
-//	uv = uv * .125 + .5;
-//	ofVec3f pOnS = surface.pointOnSurface( uv );
-//	ofVec3f nOnS = surface.getSurfaceNormal( uv );
-//	ofSphere( pOnS, 30);
-//	ofSphere( pOnS + nOnS * 30, 30);
-//	
-//	ofVec3f f_pos, f_norm;
-//	surface.getMeshPositionAndNormal( f_pos, f_norm, uv.x, uv.y);
-//	
-//	ofSetColor(255, 0, 0);
-//	ofSphere( f_pos, 10);
-//	ofSphere( f_pos + f_norm*20, 10);
-//	ofSphere( f_pos + f_norm*40, 10);
-//	ofSphere( f_pos + f_norm*60, 10);
+
+	glEnable(GL_DEPTH_TEST);
+	ofSetColor(255);
+//	surfaceBox.transformGL();
+//	ofBox(0,0,0, 30);
+//	surfaceBox.restoreTransformGL();
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	facingRatio.begin();
+	for (int i=0; i<surfaceShapes.size(); i++)
+	{
+		surfaceShapes[i]->draw();
+	}
+	facingRatio.end();
 	
+	glDisable(GL_CULL_FACE);
 }
 
 void CloudsVisualSystemMandala::drawShapesToFbo( float t)
@@ -497,11 +601,11 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 	if(currentTexture != NULL)
 	{
 		ofSetColor( 255 );
-		facingRatio.begin();
-		facingRatio.setUniformTexture("map", *currentTexture, 0);
-		facingRatio.setUniform2f("mapDim", currentTexture->getWidth(), currentTexture->getHeight() );
-		facingRatio.setUniform1f("polarAlphaExpo", polarAlphaExpo);
-		facingRatio.setUniform1f("polarAlphaExpoScale", polarAlphaExpoScale);
+		surfaceShader.begin();
+		surfaceShader.setUniformTexture("map", *currentTexture, 0);
+		surfaceShader.setUniform2f("mapDim", currentTexture->getWidth(), currentTexture->getHeight() );
+		surfaceShader.setUniform1f("polarAlphaExpo", polarAlphaExpo);
+		surfaceShader.setUniform1f("polarAlphaExpoScale", polarAlphaExpoScale);
 		
 		//	glDisable( GL_DEPTH_TEST );
 		////	glEnable(GL_CULL_FACE);
@@ -524,7 +628,7 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 		
 		
 		
-		facingRatio.end();
+		surfaceShader.end();
 		
 	}
 	
@@ -542,37 +646,38 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 	ofDisableAlphaBlending();
 }
 
-// draw any debug stuff here
 void CloudsVisualSystemMandala::selfDrawDebug(){
 	
 }
-// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
+
 void CloudsVisualSystemMandala::selfDrawBackground(){
 
 	//turn the background refresh off
 	//bClearBackground = false;
 	
 }
-// this is called when your system is no longer drawing.
-// Right after this selfUpdate() and selfDraw() won't be called any more
+
 void CloudsVisualSystemMandala::selfEnd(){
 }
 
-// this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMandala::selfExit()
 {
 	for(int i=0;i<meshes.size();i++)
 	{
 		meshes[i]->clear();
 	}
+	
+	for (int i=0; i<surfaceShapes.size(); i++)
+	{
+		delete surfaceShapes[i];
+	}
+	surfaceShapes.clear();
 }
 
-//events are called when the system is active
-//Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemMandala::selfKeyPressed(ofKeyEventArgs & args)
 {
 	if(args.key == 'L' || args.key == 'l'){
-//		shader.load( getVisualSystemDataPath() + "shaders/facingRatio" );
+//		shader.load( getVisualSystemDataPath() + "shaders/surfaceShader" );
 		loadShaders();
 	}
 	
@@ -604,6 +709,21 @@ void CloudsVisualSystemMandala::selfMouseReleased(ofMouseEventArgs& data){
 void CloudsVisualSystemMandala::loadShaders()
 {
 	normalShader.load( getVisualSystemDataPath() + "shaders/normalShader");
+	surfaceShader.load( getVisualSystemDataPath() + "shaders/surfaceShader");
 	facingRatio.load( getVisualSystemDataPath() + "shaders/facingRatio");
 	noduleShader.load( getVisualSystemDataPath() + "shaders/noduleShader" );
+}
+
+
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<float> ticker ){
+	tickersf.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec2f> ticker ){
+	tickers2f.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec3f> ticker ){
+	tickers3f.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec4f> ticker ){
+	tickers4f.push_back( ticker );
 }

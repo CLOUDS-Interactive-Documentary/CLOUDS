@@ -14,19 +14,77 @@
 #include "ofxSimpleSurface.h"
 #include "ofxObjLoader.h"
 #include "ofxTween.h"
+#include "MandalaTicker.h"
 
-
-class MandalaTicker{
+class MandalaSurfaceShape : public ofNode{
 public:
-	MandalaTicker(){};
-	~MandalaTicker(){};
+	MandalaSurfaceShape( ofxSimpleSurface* _surface = NULL, ofVboMesh* _m=NULL)
+	{
+		setSurface( _surface );
+		setMesh( _m );
+		
+		offset = 0.;
+		
+		scl.set(1,1,1);
+	}
+	~MandalaSurfaceShape(){}
 	
-	float start, span;
+	void setSurface( ofxSimpleSurface* _surface = NULL )
+	{
+		surface = _surface;
+	}
+	void setMesh( ofVboMesh* _m=NULL )
+	{
+		m = _m;
+		
+		color.set( ofRandom(2.), ofRandom(2.), ofRandom(2.) );
+		scl.set(ofRandom(30,300), ofRandom(30,300),ofRandom(30,300));
+	}
+	void updateTransform()
+	{
+		if(surface != NULL)
+		{
+			//get surface info
+//			surface->getMeshPositionAndNormal( pOnS, nOnS, uv.x, uv.y );
+			surface->getSurfacePositionAndNormal( pOnS, nOnS, uv.x, uv.y );
+			
+			//set up our transform
+			resetTransform();
+			
+			//position & rotate to surface
+			setPosition(pOnS + nOnS * offset );
+			lookAt( getPosition() + nOnS * 10. );
+			
+			//TODO: local rotation
+//			q.makeRotate( getUpDir(), nOnS);
+//			setOrientation(q);
+			
+			setScale( getScale() );
+		}
+	}
 	
-	void update();
+	void draw()
+	{
+		ofSetColor( color );
+		updateTransform();
+		
+		transformGL();
+		if(m!=NULL)	m->draw();
+		restoreTransformGL();
+	}
 	
-	bool bLoop;
+	//private:
+	ofxSimpleSurface* surface;
+	ofVboMesh* m;
+	ofVec2f uv;
+	
+	ofQuaternion q;
+	ofVec3f pOnS, nOnS, scl;
+	float offset;
+	
+	ofFloatColor color;
 };
+
 
 class MandalaNodule : public ofNode{
 public:
@@ -283,6 +341,19 @@ protected:
 	void drawShapesToFbo(float t=ofGetElapsedTimef());
 	void setupNodules( ofVboMesh& m, int numW = 11, int numH = 5);
 	
+	template <class T>
+	void addTicker( MandalaTicker<T> ticker ){
+		//we need to specialize this per data type
+		cout << "we don't handle this data type yet" << endl;
+	}
+	void addTicker( MandalaTicker<float> ticker );
+	void addTicker( MandalaTicker<ofVec2f> ticker );
+	void addTicker( MandalaTicker<ofVec3f> ticker );
+	void addTicker( MandalaTicker<ofVec4f> ticker );
+	void updateTickers( float t=ofGetElapsedTimef());
+	
+	MandalaSurfaceShape* addSurfaceShape( ofxSimpleSurface* s, ofVboMesh* m );
+	
 	vector<ofVboMesh*> meshes;
 	
 	ofxUISuperCanvas* customGui;
@@ -297,6 +368,7 @@ protected:
 	
 	ofShader normalShader;
 	ofShader facingRatio;
+	ofShader surfaceShader;
 	float polarAlphaExpo, polarAlphaExpoScale;
 	
 	void loadShaders();
@@ -315,7 +387,7 @@ protected:
 	
 	ofFbo animatedMap;
 	
-	ofVboMesh square, circle, triangle;
+	ofVboMesh square, circle, triangle, dodecahedron, box;
 
 	
 	ofxSimpleSpline* blendCurve0;
@@ -336,6 +408,8 @@ protected:
 	
 	ofBlendMode noduleBlendType, surfaceBlendMode;
 	
+	float controlSplineOffset;
+	
 	float alphaSmoothScale, alphaSmoothExpo;
 	float waveScale;
 		
@@ -355,4 +429,24 @@ protected:
 	
 	string profileType;
 	vector<string> profileTypeNames;
+	
+	ofVec3f tickDebug;
+	MandalaTicker<ofVec3f> posTicker;
+	
+	ofNode surfaceBox;
+	ofVec2f surfaceBoxUV;
+	
+	MandalaTicker<ofVec2f> uvTicker;
+	
+//	vector< vector< MandalaTicker<ofVec2f> > > uvTickers;
+	
+	vector<MandalaSurfaceShape*> surfaceShapes;
+	vector< MandalaTicker<ofVec2f> > uvTickers;
+	
+	vector< MandalaTicker<float> > tickersf;
+	vector< MandalaTicker<ofVec2f> > tickers2f;
+	vector< MandalaTicker<ofVec3f> > tickers3f;
+	vector< MandalaTicker<ofVec4f> > tickers4f;
+	
+	bool bDrawSurface;
 };
