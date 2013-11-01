@@ -81,7 +81,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
     customGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
-    customGui->addSlider("FONT SIZE", 1, 128, &TUOrbital::fontSize);
+    customGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
     customGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
     vector<string> fonts;
     fonts.push_back("HELVETICA");
