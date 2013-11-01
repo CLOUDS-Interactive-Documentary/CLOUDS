@@ -147,6 +147,7 @@ protected:
 	
 	int limit = 500;
     float ang;
+    float speed_ = 10; //a number that increments ang
     
 	vector<Cube> list;
     
@@ -156,6 +157,13 @@ protected:
     float YrandMax;
     float ZrandMin;
     float ZrandMax;
+    
+    float XrotMin;
+    float XrotMax;
+    float YrotMin;
+    float YrotMax;
+    float ZrotMin;
+    float ZrotMax;
     
     bool shouldRegenerate; 
 		
