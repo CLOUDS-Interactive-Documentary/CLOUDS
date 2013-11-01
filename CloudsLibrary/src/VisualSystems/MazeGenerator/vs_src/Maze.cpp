@@ -138,8 +138,7 @@ void Maze::buildModel()
 //		indices[i+4] = i+4;
 //		indices[i+5] = i+5;
 	}
-	
-    
+	ofImage.draw
     geometry.setVertexData( &vertices[0], vertices.size(), GL_STATIC_DRAW);
     geometry.setNormalData( &normals[0], normals.size(), GL_STATIC_DRAW);
 //    geometry.setIndexData( &indices[0], indices.size(), GL_STATIC_DRAW);
