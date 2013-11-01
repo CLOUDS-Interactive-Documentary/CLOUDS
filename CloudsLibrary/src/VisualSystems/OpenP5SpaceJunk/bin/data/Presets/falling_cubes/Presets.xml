@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Presets</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>68.000000000</XPosition>
+    <YPosition>312.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BasicMotion</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BasicPreset</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>falling_cubes</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LightPreset</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>uniform_cubes</Name>
+    <Value>0</Value>
+</Widget>

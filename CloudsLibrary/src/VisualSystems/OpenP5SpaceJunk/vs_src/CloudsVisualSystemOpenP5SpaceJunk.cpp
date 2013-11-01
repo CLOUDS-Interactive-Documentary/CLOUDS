@@ -18,7 +18,22 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    customGui->addButton("REGENERATE", &shouldRegenerate);
 	
+    customGui->addSlider("Rotation Speed", 0, 25, &speed_);
+    customGui->addSlider("X Scale Min", 0, 50, &XrandMin);
+    customGui->addSlider("X Scale Max", 0, 50, &XrandMax);
+    customGui->addSlider("Y Scale Min", 0, 50, &YrandMin);
+    customGui->addSlider("Y Scale Max", 0, 50, &YrandMax);
+    customGui->addSlider("Z Scale Min", 0, 50, &ZrandMin);
+    customGui->addSlider("Z Scale Max", 0, 50, &ZrandMax);
+    customGui->addSlider("X Rotate Min", 0, 90, &XrotMin);
+    customGui->addSlider("X Rotate Max", 0, 90, &XrotMax);
+    customGui->addSlider("Y Rotate Min", 0, 90, &YrotMin);
+    customGui->addSlider("Y Rotate Max", 0, 90, &YrotMax);
+    customGui->addSlider("Z Rotate Min", 0, 90, &ZrotMin);
+    customGui->addSlider("Z Rotate Max", 0, 90, &ZrotMax);
+    
 	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
 	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
 	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
@@ -43,6 +58,9 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
 //	}
+    if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
+		selfBegin();
+	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -73,9 +91,10 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     
     
 	for (int i=0; i<limit; i++) {
-		list.push_back( Cube(ofRandom(4, 20), ofRandom(4, 20), ofRandom(2, 20),
+     //   Cube.ofColor(color1);
+		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
                              ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
-                             ofRandom(0, 0), ofRandom(0, 0), ofRandom(0, 0) ) );
+                             ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
 	}
 	
 
@@ -94,7 +113,15 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5SpaceJunk::selfBegin(){
-	
+    
+    list.clear();
+    
+    for (int i=0; i<limit; i++) {
+        //Cube.ofColor(color1);
+		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+                             ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
+                             ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
+	}
 }
 
 //do things like ofRotate/ofTranslate here
@@ -112,7 +139,7 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
-    /*
+    /* Lighting Advice 
      
     background(0);
     fill(200);
@@ -123,41 +150,23 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     
     // Raise overall light in scene
     ambientLight(70, 70, 10);
-    
-    // Center geometry in display windwow.
-    // you can change 3rd argument ('0')
-    // to move block group closer(+)/further(-)
-    translate(width/2, height/2, -200 + mouseX * 0.65);
-    
-    // Rotate around y and x axes
-    rotateY(radians(ang));
-    rotateX(radians(ang));
-    
-    // Draw cubes
-    for (int i = 0; i < cubes.length; i++){
-        cubes[i].drawCube();
-    }
-    
-    // Used in rotate function calls above
-    ang += 0.2;
-     
-    */
+    */ 
     
     ofPushStyle();
     glEnable(GL_DEPTH_TEST);
     ofBackground(0);
     
-    ofRotateX(ofRadToDeg(ang));
-    ofRotateY(ofRadToDeg(ang));
+    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
+    ofRotateY(ofRadToDeg(ang));     //Y rotation
     mat->begin();
     for (int i = 0;i < limit; i++) {
 		list[i].draw();
 	}
-    mat->end();
+    mat->end(); //enables material
 	
     ofPopStyle();
     
-    ang += 0.002;
+    ang += (speed_ / 10000); //angular rotation speed
     
 }
 

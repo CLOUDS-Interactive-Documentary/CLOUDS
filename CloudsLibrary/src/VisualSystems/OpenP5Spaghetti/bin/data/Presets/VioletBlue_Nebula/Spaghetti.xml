@@ -1,0 +1,127 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Spaghetti</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1150.000000000</XPosition>
+    <YPosition>13.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SMOOTH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GNARLY</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Number of Walkers</Name>
+    <Value>58.546794891</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Particles per Walker</Name>
+    <Value>570.837402344</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>0.763546824</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>0.738916278</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STEP SIZE</Name>
+    <Value>0.788177311</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hue1</Name>
+    <Value>153.251235962</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation1</Name>
+    <Value>188.177337646</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness1</Name>
+    <Value>221.083755493</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hue2</Name>
+    <Value>213.546798706</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation2</Name>
+    <Value>176.354675293</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness2</Name>
+    <Value>163.300491333</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Oscillator Mode</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Oscilator Period (in frames)</Name>
+    <Value>379.310333252</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Rainbow Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Dichromatic Mode</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation</Name>
+    <Value>74.876846313</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness</Name>
+    <Value>172.093597412</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW LINES</Name>
+    <Value>1</Value>
+</Widget>
