@@ -235,7 +235,7 @@ protected:
 	
 	CloudsPathCamera pathCamera;
 	float pathCameraPosition;
-	bool bUseDuration;
+	bool bUseDuration, bDrawCameraPath;
 	
 	bool bRepositionModel;
 	
