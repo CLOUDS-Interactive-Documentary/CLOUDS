@@ -4,7 +4,6 @@
 
 #include "CloudsVisualSystemOpenP5DrawingMachine10.h"
 
-
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
@@ -13,13 +12,11 @@
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
 {
-	customGui = new ofxUISuperCanvas("ORBITAL", gui);
+	customGui = new ofxUISuperCanvas("DRAWING MACHINE 10", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Orbital");
+	customGui->setName("Drawing_Machine_10");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent);
 	guis.push_back(customGui);
@@ -65,8 +62,16 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     bDrawPoints = true;
     bUseLimits = true;
     
-    // Init the system.
-    bunch = new DM10Bunch(5, 5, 20);
+    // Init the mesh.
+    int xg = 10;
+    int yg = 10;
+    int cols = ofGetWidth() / xg;
+    int rows = ofGetHeight() / yg;
+    for (int i = 0; i < cols * rows; i++) {
+        mesh.addVertex(ofVec3f(i % cols * xg, floorf(i / cols) * yg));
+    }
+    
+    // Init the attractors.
     for (int i = 0; i < numAttractors; i++) {
         attractors.push_back(ofVec2f(ofRandomWidth(), ofRandomHeight()));
     }
@@ -96,11 +101,24 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSceneTransformation(){
 void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
 {
     if (!bSleeping) {
-        if (bUseLimits) {
-            bunch->update(attractors, 150);
-        }
-        else {
-            bunch->update(attractors);
+        static float factor = 20;
+        static float maxDist = 150;
+        
+        for (int i = 0; i < mesh.getNumVertices(); i++) {
+            for (int j = 0; j < attractors.size(); j++) {
+                ofVec3f v = mesh.getVertex(i);
+                
+                float dist = attractors[j].distance(v);
+                if (!bUseLimits || dist < maxDist) {
+                    ofVec3f to = v - attractors[j];
+                    float dF = to.length();
+                    to.normalize();
+                    to *= factor / dF;
+                    v += to;
+                
+                    mesh.setVertex(i, v);
+                }
+            }
         }
     }
     
@@ -128,10 +146,10 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
         ofNoFill();
         
         if (bDrawPoints) {
-            bunch->drawPoints();
+            mesh.drawVertices();
         }
         else {
-            bunch->drawLines();
+            mesh.draw();
         }
     }
     canvas.end();
@@ -149,7 +167,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfExit()
 {
-    delete bunch;
+    mesh.clear();
     attractors.clear();
 }
 

@@ -12,8 +12,6 @@
 
 #include "CloudsVisualSystem.h"
 
-#include "DM10Bunch.h"
-
 class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
 {
     public:
@@ -97,10 +95,9 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
     
         ofFbo canvas;
+        ofVboMesh mesh;
     
-        DM10Bunch * bunch;
         vector<ofVec2f> attractors;
-    
         int numAttractors;
     
         bool bSleeping;

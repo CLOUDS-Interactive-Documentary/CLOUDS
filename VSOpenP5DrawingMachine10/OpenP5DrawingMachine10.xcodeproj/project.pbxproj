@@ -50,8 +50,6 @@
 		2AAEF59F180F136F005F33D3 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		2AAEF5A0180F136F005F33D3 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF578180F136F005F33D3 /* del_impl.cpp */; };
 		640A31221823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640A31201823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */; };
-		640A31251823FB4500DDFBA2 /* DM10Pencil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640A31241823FB4500DDFBA2 /* DM10Pencil.cpp */; };
-		640A31281823FC8800DDFBA2 /* DM10Bunch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640A31271823FC8800DDFBA2 /* DM10Bunch.cpp */; };
 		643F134118213B3B003988A3 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643F132918213B3B003988A3 /* libftgl.a */; };
 		643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133218213B3B003988A3 /* ofxFTGLFont.cpp */; };
 		643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133418213B3B003988A3 /* ofxFTGLSimpleLayout.cpp */; };
@@ -276,10 +274,6 @@
 		2AAEF57C180F136F005F33D3 /* triangle_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = triangle_impl.hpp; sourceTree = "<group>"; };
 		640A31201823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5DrawingMachine10.cpp; sourceTree = "<group>"; };
 		640A31211823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5DrawingMachine10.h; sourceTree = "<group>"; };
-		640A31231823FAAD00DDFBA2 /* DM10Pencil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DM10Pencil.h; sourceTree = "<group>"; };
-		640A31241823FB4500DDFBA2 /* DM10Pencil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DM10Pencil.cpp; sourceTree = "<group>"; };
-		640A31261823FC7F00DDFBA2 /* DM10Bunch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DM10Bunch.h; sourceTree = "<group>"; };
-		640A31271823FC8800DDFBA2 /* DM10Bunch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DM10Bunch.cpp; sourceTree = "<group>"; };
 		643F130C18213B3B003988A3 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		643F130D18213B3B003988A3 /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		643F130E18213B3B003988A3 /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -774,10 +768,6 @@
 			children = (
 				640A31211823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.h */,
 				640A31201823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */,
-				640A31261823FC7F00DDFBA2 /* DM10Bunch.h */,
-				640A31271823FC8800DDFBA2 /* DM10Bunch.cpp */,
-				640A31231823FAAD00DDFBA2 /* DM10Pencil.h */,
-				640A31241823FB4500DDFBA2 /* DM10Pencil.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1708,8 +1698,6 @@
 				643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */,
 				643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				640A31221823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
-				640A31251823FB4500DDFBA2 /* DM10Pencil.cpp in Sources */,
-				640A31281823FC8800DDFBA2 /* DM10Bunch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
