@@ -13,7 +13,7 @@ MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
     setPosition(x, y, z);
     lookAt(ofVec3f(x, y, z+10));
     rotate(ParamManager::getInstance().cameraAngle, ofVec3f(1, 0, 0));
-    setFov(100);
+    setFov(80);
     
     vel = ofVec3f(0, 0, 1);
 }

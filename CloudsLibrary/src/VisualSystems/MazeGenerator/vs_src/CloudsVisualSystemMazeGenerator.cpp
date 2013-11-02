@@ -143,7 +143,7 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze(60, 8, 40);
+    maze[0] = new Maze(60, 8, 60);
     maze[0]->generate();
     
     mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
