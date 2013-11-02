@@ -27,11 +27,7 @@ public:
     
     void draw(bool isGenerator);
     
-    size_t getVertexCount();
-    size_t getFaceCount();
-    size_t fillVertexData(ofVec3f *data, int index);
-    size_t fillIndexData(ofIndexType *data, int vertStartIndex, int index);
-    size_t fillNormalData(ofVec3f *data, int index);
+    size_t addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals);
     
     int getX() { return x; }
     int getY() { return y; }

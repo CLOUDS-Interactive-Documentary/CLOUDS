@@ -14,7 +14,7 @@
 #include "MazeCell.h"
 #include "ParamManager.h"
 
-#define NUM_CELLS_X 150
+#define NUM_CELLS_X 151
 #define NUM_CELLS_Y 1000
 
 class Maze
@@ -48,10 +48,12 @@ protected:
     
     ofVec3f pos;
     ofVbo geometry;
-    int indexCount;
+    int vertexCount;
+    int vertexIndexForLines[NUM_CELLS_Y];
     
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
+    std::vector<ofVec3f> blocks;
     int step;
     int currentYLimit;
     MazeCell* currentCell;
