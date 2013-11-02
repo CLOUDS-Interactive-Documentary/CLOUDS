@@ -58,8 +58,14 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
     glEnable(GL_DEPTH_TEST);
     ofBackground(0);
 
-    grid.push_back(Tetra(0, 0, 0, 10));
-
+    //int IDnumber = 0;
+    
+    for (int i = 0; i < num-1; i++){
+        for (int j = 0; j < num-1; j ++){ //rows
+    grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
+          //  grid.back().ID = IDnumber + 1;
+        }
+    }
 
 }
 
@@ -86,6 +92,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemOpenP5SpinningSolids::selfUpdate(){
+    
 
 }
 
@@ -95,30 +102,30 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfDraw(){
     
     ofBackground(0);
     
-    int frameCount = ofGetElapsedTimeMillis()/33.0;
     
     cam.begin();
 
             //ofDrawBox(10);
             //ofDrawAxis(20)
 
+    for (int i = 0; i < grid.size(); i++){
+
             ofPushStyle();
             ofPushMatrix();
-    
-            //ofTranslate(ofGetMouseX()/2, ofGetMouseY()/2, -5);
-            grid[0].drawShape();
-            grid[0].posX = ofGetMouseX();
-            grid[0].posY = ofGetMouseY();
-            cout << "posX = "<< grid[0].posX << endl;
-            cout << "mouseX = "<< ofGetMouseX() << endl;
-            cout << "posY = "<< grid[0].posY << endl;
-            cout << "mouseY = "<< ofGetMouseY() << endl;
+        
+            //noiseRotation
+        
+            grid[i].drawShape();
+          //  cout << "posX = "<< grid[0].posX << endl;
+           // cout << "mouseX = "<< ofGetMouseX() << endl;
+           // cout << "posY = "<< grid[0].posY << endl;
+           // cout << "mouseY = "<< ofGetMouseY() << endl;
     
             //ofScale(1,1,1);
     
             ofPopMatrix();
             ofPopStyle();
-   
+    }
     cam.end();
 
 }
@@ -162,14 +169,21 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfMouseDragged(ofMouseEventArgs& 
 	
 }
 
+float CloudsVisualSystemOpenP5SpinningSolids::noiseWave(float x, float y){
+	float chaossqr   = powf(chaos,2);
+	float oscillator = sin( oscFrequency*ofGetFrameNum() ) ;
+	float sample = (ofNoise(y/chaossqr + ofGetFrameNum()*speed,  x/chaossqr) + (oscillator * .5 + .5)) * .5;
+	return sample;
+}
+
 void CloudsVisualSystemOpenP5SpinningSolids::selfMouseMoved(ofMouseEventArgs& data){
     
     float x = ofMap(data.x, 0, ofGetWidth(), -(ofGetWidth()/2.0), (ofGetWidth()/2.0));
     float y = ofMap(data.y, 0, ofGetHeight(), -(ofGetHeight()/2.0), (ofGetHeight()/2.0));
     
     ofPushStyle();
-    ofSetColor(255,255, 255);
-    ofFill();
+    //ofSetColor(255,255, 255);
+    //ofFill();
     ofRect(x, y, 20, 20);
     ofPopStyle();
 	

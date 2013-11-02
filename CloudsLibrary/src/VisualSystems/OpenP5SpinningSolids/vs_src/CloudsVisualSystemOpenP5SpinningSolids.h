@@ -76,6 +76,8 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
     
+    float noiseWave(float _x, float _y);
+    
     void drawTetra(int _edgeLength); 
 
 	//events are called when the system is active
@@ -90,6 +92,12 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	
 	vector<Tetra> grid;
 
+    int num = 20;
+    int IDnumber;
+    float xoffset = 30;
+    float yoffset = 30;
+
+
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -99,8 +107,13 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 
 protected:
     
+    
     //  Your Stuff
     //
+    
+    float chaos = 2;
+    float oscFrequency = .5;
+    float speed = .1;
     
     //current state of the rotation
 

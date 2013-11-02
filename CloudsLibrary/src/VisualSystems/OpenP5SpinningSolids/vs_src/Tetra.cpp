@@ -13,13 +13,42 @@ Tetra:: Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
     edgeLength = _edgeLength;
     posX = _posX;
     posY = _posY;
-    posZ = _posZ; 
+    posZ = _posZ;
+    ID; 
 }
 
 void Tetra::drawShape(){
+    int frameCount = ofGetFrameNum();
     
     ofTranslate(posX, posY, posZ);
+   
+    noiseRotate(posX, posY);
     
+    float Xthrottle = ofMap(ofGetMouseX(), 0, ofGetWidth(), .005, .7);
+    float Ythrottle = ofMap(ofGetMouseY(), 0, ofGetHeight(), .05, 6.0);
+    
+    //speed = ofMap(ofGetMouseY(), 0, ofGetHeight(), .01, .03);
+    //cout << "speed = "<< cos(rotNoise) << endl;
+    
+    float rotNoise = ofNoise(posX + frameCount*speed, posY + frameCount*speed) * ofMap(ofGetMouseX(), 0, ofGetWidth(), .01, 2);
+    
+    float rotX = frameCount * cos(rotNoise) * Xthrottle;
+   // cout << "noiseX = "<< cos(rotNoise) << endl;
+    float rotY = frameCount * sin(rotNoise) * Xthrottle;
+  //  cout << "noiseY = "<< sin(rotNoise) << endl;
+    float rotZ =(frameCount * Ythrottle);
+    
+   // ofRotateX(ofRadToDeg(rotX+=rotX));
+   // ofRotateY(ofRadToDeg(rotY+=rotY));
+    // ofRotateZ(rotZ);
+    
+    ofRotateX(rotX);
+    ofRotateY(rotY);
+    ofRotateZ(rotZ);
+    
+    
+  
+/* //figure out the distance b/w mouse and object
     float dx = posX-ofGetMouseX();
  //   cout << "posX = "<< posX << endl;
   //  cout << "mouseX = "<< ofGetMouseX() << endl;
@@ -37,19 +66,22 @@ void Tetra::drawShape(){
         rx = (rx*0.9)+(rxp*0.1);
         ry = (ry*0.9)+(ryp*0.1);
     }
+*/
+     mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    //mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+   // mesh.setMode(OF_PRIMITIVE_LINES);
 
-    mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-
+    mesh.addColor(ofColor(200,20,20));
     mesh.addVertex(ofPoint(edgeLength, edgeLength, edgeLength));
-    mesh.addColor(ofFloatColor(255,0,50));
+    mesh.addColor(ofColor(230,20,80));
     mesh.addVertex(ofPoint(-edgeLength, -edgeLength, edgeLength));
-    mesh.addColor(ofFloatColor(200,0,200));
+    mesh.addColor(ofColor(100,20,160));
     mesh.addVertex(ofPoint(-edgeLength, edgeLength, -edgeLength));
-    mesh.addColor(ofFloatColor(0,255,50));
+    mesh.addColor(ofColor(100,20,220));
     mesh.addVertex(ofPoint(edgeLength, -edgeLength, -edgeLength));
-    mesh.addColor(ofFloatColor(0,200,200));
+    mesh.addColor(ofColor(20,5,220));
     mesh.addVertex(ofPoint(edgeLength, edgeLength, edgeLength));
-    mesh.addColor(ofFloatColor(0,50,230));
+    mesh.addColor(ofColor(5,5,230));
     mesh.addVertex(ofPoint(-edgeLength, -edgeLength, edgeLength));
     mesh.addIndex(0);
     mesh.addIndex(1);
@@ -71,7 +103,11 @@ void Tetra::drawShape(){
      vertex(-edgeLength, -edgeLength, edgeLength);
      endShape(CLOSE);
      */
-    
-    
-
 }
+
+void Tetra::noiseRotate(float posX, float posY){
+        
+        float rotNoise = ofNoise(posX + ofGetFrameNum()*speed, posY + ofGetFrameNum()*speed);  //y/chaossqr + ofGetFrameNum()*speed
+        return rotNoise;
+    
+    }

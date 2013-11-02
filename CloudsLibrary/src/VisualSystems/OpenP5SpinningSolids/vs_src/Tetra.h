@@ -13,6 +13,7 @@ class Tetra {
     
 public:
     
+    int ID; 
     float posX;
     float posY;
     float posZ;
@@ -24,10 +25,15 @@ public:
     Tetra(float posX, float posY, float posZ, float edgeLength);
     void drawShape();
     void makeShape();
+    void noiseRotate(float _x, float _y);
     
 protected:
     
     float rx;
     float ry;
+    float speed = .02;
+    float rotNoise; 
+    
+    float period = 120; //period of oscillation
     
 };
