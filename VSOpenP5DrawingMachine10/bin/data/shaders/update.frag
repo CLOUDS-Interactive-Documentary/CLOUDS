@@ -1,9 +1,10 @@
 #version 120
 #extension GL_ARB_texture_rectangle : enable
 
-#define kNumAttractors 200
+#define kMaxAttractors 500
 
-uniform vec2 attractors[kNumAttractors];
+uniform vec2 attractors[kMaxAttractors];
+uniform int numAttractors;
 
 uniform float factor;
 uniform float maxDist;
@@ -18,7 +19,7 @@ void main()
     vec2 pos = texture2DRect(posData, st).xy; 
     
     // Apply all the attractor forces to it.
-    for (int i = 0; i < kNumAttractors; i++) {
+    for (int i = 0; i < numAttractors; i++) {
     	vec2 att = attractors[i];
     	float dist = distance(att, pos);
     	if (dist < maxDist) {

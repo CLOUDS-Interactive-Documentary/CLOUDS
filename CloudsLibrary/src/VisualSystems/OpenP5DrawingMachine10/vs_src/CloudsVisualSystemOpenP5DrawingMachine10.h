@@ -92,7 +92,7 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
 
     protected:
         ofxUISuperCanvas * customGui;
-        ofx1DExtruder * pointHue, * pointSat, * pointBri, * pointAlpha;
+        ofx1DExtruder * fgHue, * fgSat, * fgBri, * fgAlpha;
     
         ofShader updateShader;
         ofShader renderShader;
@@ -101,7 +101,9 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         ofFbo renderFBO;
         
         float timeStep;
-        
+        float speedFactor;
+        float maxDist;
+    
         int width, height;
         int numAttractors;
         int numParticles;

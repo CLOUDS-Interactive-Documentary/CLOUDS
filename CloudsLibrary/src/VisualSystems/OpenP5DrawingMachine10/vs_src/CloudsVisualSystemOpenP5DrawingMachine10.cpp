@@ -17,6 +17,33 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Drawing_Machine_10");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    customGui->addSpacer();
+    customGui->addButton("REDRAW", false);
+    
+    customGui->addSpacer();
+    customGui->addSlider("NUM PARTICLES", 1, 100000, 10000);
+    customGui->addSlider("NUM ATTRACTORS", 1, 500, 200);
+    customGui->addSlider("SPEED FACTOR", 0, 1, &speedFactor);
+    customGui->addSlider("MAX DIST", 0, 1, &maxDist);
+    
+    customGui->addSpacer();
+    fgHue = new ofx1DExtruder(0);
+    fgHue->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgHue);
+    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
+    fgSat = new ofx1DExtruder(0);
+    fgSat->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgSat);
+    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
+    fgBri = new ofx1DExtruder(0);
+    fgBri->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgBri);
+    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
+    fgAlpha = new ofx1DExtruder(0);
+    fgAlpha->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgAlpha);
+    customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent);
 	guis.push_back(customGui);
@@ -26,7 +53,28 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
 {
+    if (e.widget->getName() == "REDRAW") {
+        restart();
+    }
+    else if (e.widget->getName() == "NUM PARTICLES") {
+        numParticles = (int)((ofxUISlider *)e.widget)->getScaledValue();
+    }
+    else if (e.widget->getName() == "NUM ATTRACTORS") {
+        numAttractors = (int)((ofxUISlider *)e.widget)->getScaledValue();
+    }
     
+    else if (e.widget->getName() == "FG HUE") {
+        fgHue->setPosAndHome(fgHue->getPos());
+	}
+    else if (e.widget->getName() == "FG SAT") {
+        fgSat->setPosAndHome(fgSat->getPos());
+	}
+    else if (e.widget->getName() == "FG BRI") {
+        fgBri->setPosAndHome(fgBri->getPos());
+	}
+    else if (e.widget->getName() == "FG ALPHA") {
+        fgAlpha->setPosAndHome(fgAlpha->getPos());
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -61,6 +109,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     // Load defaults.
     numParticles = 10000;
     numAttractors = 200;
+    speedFactor = 0.05f;
+    maxDist = 0.2f;
     
     restart();
 }
@@ -68,7 +118,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::restart()
 {
-	// Make an array of float pixels with position data.
+//    cout << "Restarting with " << numParticles << " particles and " << numAttractors << " attractors" << endl;
+	
+    // Make an array of float pixels with position data.
     textureRes = (int)sqrt((float)numParticles);
     numParticles = textureRes * textureRes;
     float * posData = new float[numParticles * 3];
@@ -100,9 +152,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
     // Load the data in the shader right away.
     updateShader.begin();
     {
+        updateShader.setUniform1i("numAttractors", numAttractors);
         updateShader.setUniform2fv("attractors", attData, numAttractors);
-        updateShader.setUniform1f("factor", 0.05f);
-        updateShader.setUniform1f("maxDist", 0.2f);  // 0-1
     }
     updateShader.end();
     
@@ -162,8 +213,10 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         updateShader.begin();
         {
             updateShader.setUniformTexture("posData", updatePingPong.src->getTextureReference(), 0); // Previus position
-            updateShader.setUniform1f("timestep",(float) timeStep );
-            
+            updateShader.setUniform1f("timestep", timeStep);
+            updateShader.setUniform1f("factor", speedFactor);
+            updateShader.setUniform1f("maxDist", maxDist);
+
             // Draw the source position texture to be updated.
             updatePingPong.src->draw(0, 0);
         }
@@ -175,7 +228,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
     // Convert the position texture to points in space and render.
     renderFBO.begin();
     {
-        ofSetColor(255, 200);
+        ofSetColor(255, fgAlpha->getPos());
         //        ofClear(0, 0, 0, 0);
         renderShader.begin();
         {
@@ -203,8 +256,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
 {
-    ofSetColor(255);
-    renderFBO.draw(0,0);
+    ofSetColor(ofColor::fromHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos()));
+    renderFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 // this is called when your system is no longer drawing.
@@ -239,9 +292,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseMoved(ofMouseEventArgs& 
 	
 }
 
-void CloudsVisualSystemOpenP5DrawingMachine10::selfMousePressed(ofMouseEventArgs& data)
-{
-    restart();
+void CloudsVisualSystemOpenP5DrawingMachine10::selfMousePressed(ofMouseEventArgs& data){
+    
 }
 
 //--------------------------------------------------------------
