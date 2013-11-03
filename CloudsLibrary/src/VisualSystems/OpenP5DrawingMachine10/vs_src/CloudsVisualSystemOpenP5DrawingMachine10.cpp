@@ -180,11 +180,10 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
     timeStep = ofGetElapsedTimeMillis();
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemOpenP5DrawingMachine10::selfPresetLoaded(string presetPath){
-
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5DrawingMachine10::selfPresetLoaded(string presetPath)
+{
+    restart();
 }
 
 // selfBegin is called when the system is ready to be shown
