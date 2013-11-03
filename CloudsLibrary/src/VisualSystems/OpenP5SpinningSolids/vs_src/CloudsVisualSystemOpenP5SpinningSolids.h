@@ -92,7 +92,7 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	
 	vector<Tetra> grid;
 
-    int num = 10;
+    int num = 25;
     int IDnumber;
     float xoffset = 30;
     float yoffset = 30;

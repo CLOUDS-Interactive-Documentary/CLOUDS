@@ -7,6 +7,7 @@
 float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 100;
 bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
 bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
+//bool CloudsVisualSystemOpenP5Spaghetti::drawTriangles = false;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
@@ -28,6 +29,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addButton("REGENERATE", &shouldRegenerate);
     customGui->addToggle("SMOOTH", &smooth);
     customGui->addToggle("GNARLY", &gnarly);
+  //  customGui->addToggle("TRIANGLES", &drawTriangles);
     customGui->addSlider("Number of Walkers", 1, 100, &NWalkers);
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
     customGui->addSlider("STEP SIZE", 0.0, 5.0, &Walker::stepSizex);
@@ -204,9 +206,9 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
              walkers[i].setColor(newColor);
         }
 
-        if (smooth){ gnarly = false;  walkers[i].smoothTrails();}
-        if (gnarly){ smooth = false;  walkers[i].gnarlyTrails(); }
-        
+        if (smooth){ gnarly = false; walkers[i].smoothTrails();}
+        if (gnarly){ smooth = false; walkers[i].gnarlyTrails(); }
+     //   if (drawTriangles){ smooth = false;  walkers[i].doubleTrails(); }
         }
        
     }

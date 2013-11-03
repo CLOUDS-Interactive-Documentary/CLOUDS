@@ -8,27 +8,27 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SMOOTH</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GNARLY</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>80.492614746</Value>
+    <Value>95.123153687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>102.660095215</Value>
+    <Value>29.507389069</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>0.788177311</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,32 +58,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Hue1</Name>
-    <Value>153.251235962</Value>
+    <Value>177.118225098</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation1</Name>
-    <Value>188.177337646</Value>
+    <Value>177.339904785</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness1</Name>
-    <Value>221.083755493</Value>
+    <Value>229.876846313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Hue2</Name>
-    <Value>213.546798706</Value>
+    <Value>86.674873352</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation2</Name>
-    <Value>176.354675293</Value>
+    <Value>199.014785767</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness2</Name>
-    <Value>163.300491333</Value>
+    <Value>233.645309448</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -93,7 +93,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Oscilator Period (in frames)</Name>
-    <Value>379.310333252</Value>
+    <Value>128.078811646</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -108,17 +108,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation</Name>
-    <Value>74.876846313</Value>
+    <Value>200.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness</Name>
-    <Value>172.093597412</Value>
+    <Value>233.645309448</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>DRAW POINTS</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

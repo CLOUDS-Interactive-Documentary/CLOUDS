@@ -18,32 +18,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>80.492614746</Value>
+    <Value>21.970443726</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>102.660095215</Value>
+    <Value>19.753694534</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>0.788177311</Value>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Value>0.418719202</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED</Name>
-    <Value>0.010000000</Value>
+    <Value>0.098522164</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -58,32 +58,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Hue1</Name>
-    <Value>153.251235962</Value>
+    <Value>160.788177490</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation1</Name>
-    <Value>188.177337646</Value>
+    <Value>26.600984573</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness1</Name>
-    <Value>221.083755493</Value>
+    <Value>229.876846313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Hue2</Name>
-    <Value>213.546798706</Value>
+    <Value>195.960586548</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation2</Name>
-    <Value>176.354675293</Value>
+    <Value>11.822660446</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness2</Name>
-    <Value>163.300491333</Value>
+    <Value>233.645309448</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -93,7 +93,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Oscilator Period (in frames)</Name>
-    <Value>379.310333252</Value>
+    <Value>128.078811646</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -103,17 +103,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Dichromatic Mode</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation</Name>
-    <Value>74.876846313</Value>
+    <Value>111.330047607</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness</Name>
-    <Value>172.093597412</Value>
+    <Value>170.837432861</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

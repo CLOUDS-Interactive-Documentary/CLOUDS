@@ -68,7 +68,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>VioletBlue_Nebula</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -79,4 +79,9 @@
     <Kind>2</Kind>
     <Name>j_purpleGreen_worms</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>scribbles</Name>
+    <Value>1</Value>
 </Widget>
