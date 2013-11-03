@@ -26,6 +26,7 @@ public:
     void drawShape();
     void makeShape();
     void noiseRotate(float _x, float _y);
+    float lerp(float _a, float _b, float _f); 
     
 protected:
     
@@ -35,5 +36,9 @@ protected:
     float rotNoise; 
     
     float period = 120; //period of oscillation
+    
+    float previousMouseX = 0;
+    float previousMouseY = 0;
+
     
 };

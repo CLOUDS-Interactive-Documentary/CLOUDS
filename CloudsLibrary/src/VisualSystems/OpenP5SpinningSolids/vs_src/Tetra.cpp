@@ -21,11 +21,16 @@ void Tetra::drawShape(){
     int frameCount = ofGetFrameNum();
     
     ofTranslate(posX, posY, posZ);
-   
     noiseRotate(posX, posY);
+        
+    float currentMouseX = lerp(ofGetMouseX(), previousMouseX, 0.8);
+    float currentMouseY = lerp(ofGetMouseY(), previousMouseY, 0.8);
     
-    float Xthrottle = ofMap(ofGetMouseX(), 0, ofGetWidth(), .005, .7);
-    float Ythrottle = ofMap(ofGetMouseY(), 0, ofGetHeight(), .05, 6.0);
+    float Xthrottle = ofMap(currentMouseX, 0, ofGetWidth(), .005, .7);
+    float Ythrottle = ofMap(currentMouseY, 0, ofGetHeight(), .05, 6.0);
+    
+    previousMouseX = currentMouseX;
+    previousMouseY = currentMouseY;
     
     //speed = ofMap(ofGetMouseY(), 0, ofGetHeight(), .01, .03);
     //cout << "speed = "<< cos(rotNoise) << endl;
@@ -103,6 +108,11 @@ void Tetra::drawShape(){
      vertex(-edgeLength, -edgeLength, edgeLength);
      endShape(CLOSE);
      */
+}
+
+float Tetra::lerp(float a, float b, float f)
+{
+    return a + f * (b - a);
 }
 
 void Tetra::noiseRotate(float posX, float posY){

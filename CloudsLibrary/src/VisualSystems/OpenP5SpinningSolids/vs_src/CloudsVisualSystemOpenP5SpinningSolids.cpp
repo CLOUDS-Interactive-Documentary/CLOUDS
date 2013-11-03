@@ -169,12 +169,6 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfMouseDragged(ofMouseEventArgs& 
 	
 }
 
-float CloudsVisualSystemOpenP5SpinningSolids::noiseWave(float x, float y){
-	float chaossqr   = powf(chaos,2);
-	float oscillator = sin( oscFrequency*ofGetFrameNum() ) ;
-	float sample = (ofNoise(y/chaossqr + ofGetFrameNum()*speed,  x/chaossqr) + (oscillator * .5 + .5)) * .5;
-	return sample;
-}
 
 void CloudsVisualSystemOpenP5SpinningSolids::selfMouseMoved(ofMouseEventArgs& data){
     

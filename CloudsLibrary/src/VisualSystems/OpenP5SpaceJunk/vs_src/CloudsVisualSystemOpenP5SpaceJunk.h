@@ -97,7 +97,7 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfSceneTransformation();
 	
 	//normal update call
-	void selfUpdate();
+	void self   ();
 
 	// selfDraw draws in 3D using the default ofEasyCamera
 	// you can change the camera by returning getCameraRef()

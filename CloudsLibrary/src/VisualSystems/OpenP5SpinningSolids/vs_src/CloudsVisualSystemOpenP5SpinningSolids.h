@@ -92,7 +92,7 @@ class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
 	
 	vector<Tetra> grid;
 
-    int num = 20;
+    int num = 10;
     int IDnumber;
     float xoffset = 30;
     float yoffset = 30;
@@ -110,17 +110,6 @@ protected:
     
     //  Your Stuff
     //
-    
-    float chaos = 2;
-    float oscFrequency = .5;
-    float speed = .1;
-    
-    //current state of the rotation
 
-    
-    
-    //a place to store the mouse position so we can measure incremental change
-
-	
 
 };
