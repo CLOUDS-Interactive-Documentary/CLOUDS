@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "DM10PingPongBuffer.h"
 
 class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
 {
@@ -80,8 +81,9 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         void selfMouseMoved(ofMouseEventArgs& data);
         void selfMousePressed(ofMouseEventArgs& data);
         void selfMouseReleased(ofMouseEventArgs& data);
-        
-
+    
+        void restart();
+    
         // if you use a custom camera to fly through the scene
         // you must implement this method for the transitions to work properly
     //	ofCamera& getCameraRef(){
@@ -90,17 +92,20 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
 
     protected:
         ofxUISuperCanvas * customGui;
-        ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
-        ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
-        ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
+        ofx1DExtruder * pointHue, * pointSat, * pointBri, * pointAlpha;
     
-        ofFbo canvas;
-        ofVboMesh mesh;
+        ofShader updateShader;
+        ofShader renderShader;
     
-        vector<ofVec2f> attractors;
+        DM10PingPongBuffer updatePingPong;
+        ofFbo renderFBO;
+        
+        float timeStep;
+        
+        int width, height;
         int numAttractors;
-    
-        bool bSleeping;
-        bool bDrawPoints;
-        bool bUseLimits;
+        int numParticles;
+        int textureRes;
+        
+        ofVboMesh mesh;
 };

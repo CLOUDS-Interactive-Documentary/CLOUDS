@@ -49,32 +49,84 @@ void CloudsVisualSystemOpenP5DrawingMachine10::guiRenderEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
 {
-    canvas.allocate(ofGetWidth(), ofGetHeight());
-    canvas.begin();
+    // Save the width and height of the window.
+    width = ofGetWindowWidth();
+    height = ofGetWindowHeight();
+    
+    // Load the shaders.
+    string shadersFolder = "shaders";
+    updateShader.load("", shadersFolder + "/update.frag");
+    renderShader.load(shadersFolder + "/render.vert", shadersFolder + "/render.frag");
+    
+    // Load defaults.
+    numParticles = 10000;
+    numAttractors = 200;
+    
+    restart();
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5DrawingMachine10::restart()
+{
+	// Make an array of float pixels with position data.
+    textureRes = (int)sqrt((float)numParticles);
+    numParticles = textureRes * textureRes;
+    float * posData = new float[numParticles * 3];
+    for (int y = 0; y < textureRes; y++) {
+        for (int x = 0; x < textureRes; x++) {
+            int idx = textureRes * y + x;
+            
+            posData[idx * 3 + 0] = ofRandomuf();  // x;
+            posData[idx * 3 + 1] = ofRandomuf();  // y;
+            posData[idx * 3 + 2] = 0.0;
+        }
+    }
+    
+    // Load the data to a texture.
+    updatePingPong.allocate(textureRes, textureRes,GL_RGB32F);
+    updatePingPong.src->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    updatePingPong.dst->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    
+    // Clean up.
+    delete [] posData;
+    
+    // Make an array of float pixels with attractor data.
+    float * attData = new float[numAttractors * 2];
+    for (int i = 0; i < numAttractors; i++) {
+        attData[i * 2 + 0] = ofRandomuf();  // x
+        attData[i * 2 + 1] = ofRandomuf();  // y
+    }
+    
+    // Load the data in the shader right away.
+    updateShader.begin();
+    {
+        updateShader.setUniform2fv("attractors", attData, numAttractors);
+        updateShader.setUniform1f("factor", 0.05f);
+        updateShader.setUniform1f("maxDist", 0.2f);  // 0-1
+    }
+    updateShader.end();
+    
+    // Clean up.
+    delete [] attData;
+    
+    // Allocate the output FBO.
+    renderFBO.allocate(width, height, GL_RGBA32F);
+    renderFBO.begin();
     {
         ofClear(0, 0);
     }
-    canvas.end();
+    renderFBO.end();
     
-    // Set defaults.
-    numAttractors = 200;
-    bSleeping = false;
-    bDrawPoints = true;
-    bUseLimits = true;
-    
-    // Init the mesh.
-    int xg = 10;
-    int yg = 10;
-    int cols = ofGetWidth() / xg;
-    int rows = ofGetHeight() / yg;
-    for (int i = 0; i < cols * rows; i++) {
-        mesh.addVertex(ofVec3f(i % cols * xg, floorf(i / cols) * yg));
+    // Build a mesh of points to use as content for the system.
+    mesh.setMode(OF_PRIMITIVE_POINTS);
+    for(int x = 0; x < textureRes; x++){
+        for(int y = 0; y < textureRes; y++){
+            mesh.addVertex(ofVec3f(x,y));
+            mesh.addTexCoord(ofVec2f(x, y));
+        }
     }
     
-    // Init the attractors.
-    for (int i = 0; i < numAttractors; i++) {
-        attractors.push_back(ofVec2f(ofRandomWidth(), ofRandomHeight()));
-    }
+    timeStep = ofGetElapsedTimeMillis();
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -100,27 +152,41 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
 {
-    if (!bSleeping) {
-        static float factor = 20;
-        static float maxDist = 150;
-        
-        for (int i = 0; i < mesh.getNumVertices(); i++) {
-            ofVec3f v = mesh.getVertex(i);
-            for (int j = 0; j < attractors.size(); j++) {
-                float dist = attractors[j].distance(v);
-                if (!bUseLimits || dist < maxDist) {
-                    ofVec3f to = v - attractors[j];
-                    float dF = to.length();
-                    to.normalize();
-                    to *= factor / dF;
-                    v += to;
-                }
-            }
-            mesh.setVertex(i, v);
-        }
-    }
+    ofEnableAlphaBlending();
+    timeStep = ofGetElapsedTimeMillis() - timeStep;
     
-    cout << ofGetFrameRate() << endl;
+    // Calculate the new position affected by the attractors.
+    updatePingPong.dst->begin();
+    {
+        ofClear(0);
+        updateShader.begin();
+        {
+            updateShader.setUniformTexture("posData", updatePingPong.src->getTextureReference(), 0); // Previus position
+            updateShader.setUniform1f("timestep",(float) timeStep );
+            
+            // Draw the source position texture to be updated.
+            updatePingPong.src->draw(0, 0);
+        }
+        updateShader.end();
+    }
+    updatePingPong.dst->end();
+    updatePingPong.swap();
+    
+    // Convert the position texture to points in space and render.
+    renderFBO.begin();
+    {
+        ofSetColor(255, 200);
+        //        ofClear(0, 0, 0, 0);
+        renderShader.begin();
+        {
+            renderShader.setUniformTexture("posTex", updatePingPong.dst->getTextureReference(), 0);
+            renderShader.setUniform2f("screen", (float)width, (float)height);
+            
+            mesh.draw();
+        }
+        renderShader.end();
+    }
+    renderFBO.end();
 }
 
 //--------------------------------------------------------------
@@ -137,22 +203,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
 {
-    canvas.begin();
-    {
-        //    ofBackground(255);
-        ofSetColor(0, 128);
-        ofNoFill();
-        
-        if (bDrawPoints) {
-            mesh.drawVertices();
-        }
-        else {
-            mesh.draw();
-        }
-    }
-    canvas.end();
-    
-    canvas.draw(0, 0);
+    ofSetColor(255);
+    renderFBO.draw(0,0);
 }
 
 // this is called when your system is no longer drawing.
@@ -165,8 +217,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfExit()
 {
-    mesh.clear();
-    attractors.clear();
+
 }
 
 //events are called when the system is active
@@ -188,8 +239,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseMoved(ofMouseEventArgs& 
 	
 }
 
-void CloudsVisualSystemOpenP5DrawingMachine10::selfMousePressed(ofMouseEventArgs& data){
-	
+void CloudsVisualSystemOpenP5DrawingMachine10::selfMousePressed(ofMouseEventArgs& data)
+{
+    restart();
 }
 
 //--------------------------------------------------------------

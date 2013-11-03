@@ -53,6 +53,7 @@
 		643F134118213B3B003988A3 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643F132918213B3B003988A3 /* libftgl.a */; };
 		643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133218213B3B003988A3 /* ofxFTGLFont.cpp */; };
 		643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133418213B3B003988A3 /* ofxFTGLSimpleLayout.cpp */; };
+		64EBA8281825DABE006A7D8A /* DM10PingPongBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64EBA8271825DABE006A7D8A /* DM10PingPongBuffer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -303,6 +304,8 @@
 		643F133318213B3B003988A3 /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
 		643F133418213B3B003988A3 /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
 		643F133518213B3B003988A3 /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
+		64EBA8261825DA5E006A7D8A /* DM10PingPongBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DM10PingPongBuffer.h; sourceTree = "<group>"; };
+		64EBA8271825DABE006A7D8A /* DM10PingPongBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DM10PingPongBuffer.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -768,6 +771,8 @@
 			children = (
 				640A31211823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.h */,
 				640A31201823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */,
+				64EBA8261825DA5E006A7D8A /* DM10PingPongBuffer.h */,
+				64EBA8271825DABE006A7D8A /* DM10PingPongBuffer.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1698,6 +1703,7 @@
 				643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */,
 				643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				640A31221823F9C600DDFBA2 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
+				64EBA8281825DABE006A7D8A /* DM10PingPongBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
