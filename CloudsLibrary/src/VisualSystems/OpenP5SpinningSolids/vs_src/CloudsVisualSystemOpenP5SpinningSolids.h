@@ -11,67 +11,18 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "Tetra.h"
 
-class Hair {
-  public:
-	float radius;
-	float z;
-	float phi;
-	float largo;
-	float theta;
-	
-	Hair(float radius) : radius(radius){
-		z = ofRandom(-radius, radius);
-		phi = ofRandom(TWO_PI);
-		largo = ofRandom(1.05, 1.1);
-		theta = asin(z/radius);
-	}
-	
-	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha) {
-		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
-		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
-		
-		float thetaff = theta+off;
-		float phff = phi+offb;
-		float x = radius * cos(theta) * cos(phi);
-		float y = radius * cos(theta) * sin(phi);
-		float z = radius * sin(theta);
-		//mouse x & y
-//		float msx= screenX(x, y, z);
-//		float msy= screenY(x, y, z);
-		
-		float xo = radius * cos(thetaff) * cos(phff);
-		float yo = radius * cos(thetaff) * sin(phff);
-		float zo = radius * sin(thetaff);
-		
-		float xb = xo * largo;
-		float yb = yo * largo;
-		float zb = zo * largo;
-      
-
-		mesh.addColor(ofFloatColor::white*solidSphereAlpha);
-		mesh.addVertex( ofVec3f(x,y,z) );
-		mesh.addColor(ofFloatColor::white);
-		mesh.addVertex( ofVec3f(xb,yb,zb) );
-		
-//		beginShape(LINES);
-//		stroke(0);
-//		vertex(x, y, z);
-//		stroke(200, 150);
-//		vertex(xb, yb, zb);
-//		endShape();
-	}
-};
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
+class CloudsVisualSystemOpenP5SpinningSolids : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "OpenP5NoiseSphere";
+		return "OpenP5SpinningSolids";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -124,6 +75,10 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
+    
+    float noiseWave(float _x, float _y);
+    
+    void drawTetra(int _edgeLength); 
 
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -135,7 +90,13 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
+	vector<Tetra> grid;
+
+    int num = 10;
+    int IDnumber;
+    float xoffset = 30;
+    float yoffset = 30;
+
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -146,31 +107,9 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 protected:
     
+    
     //  Your Stuff
     //
-	
-	ofxUISuperCanvas* customGui;
-	
-	ofFloatColor color1HSB;
-	ofFloatColor color2HSB;
-	
-	int count = 10000;
-	vector<Hair> list;
-	float radius;
-	float rx = 0;
-	float ry = 0;
 
-    float noisePosition;
-	float noiseSpeed;
-	float noiseScale;
-	
-    //inner sphere
-    
-    void        loadVbo(ofVboMesh &_vbo, string _file);
-    
-    float       wireSphereScale, solidSphereScale, haloSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
-
-	
 
 };

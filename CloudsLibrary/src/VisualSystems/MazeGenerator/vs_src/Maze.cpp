@@ -31,7 +31,6 @@ Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
     finishedGenerating = false;
     finishedSolving = false;
     step = 0;
-    currentYLimit = 40;
 }
 
 Maze::~Maze()
@@ -48,8 +47,8 @@ Maze::~Maze()
 void Maze::generate()
 {
     // set starting (exit) point
-    int randX = 0;
-    int randY = 0;
+    int randX = (int)ofRandom(NUM_CELLS_X);
+    int randY = (int)ofRandom(NUM_CELLS_Y);
     currentCell = cells[randX][randY];
     currentCell->visit();
     currentCell->mazeExit = true;
@@ -67,101 +66,32 @@ void Maze::generate()
 
 void Maze::buildModel()
 {
-    int verts = 0;
-    int faces = 0;
+    vector<ofVec3f> vertices;
+    vector<ofVec3f> normals;
+    vertexCount = 0;
     
     for (int j=0; j<NUM_CELLS_Y; j++) {
+        vertexIndexForLines[j] = vertexCount;
         for (int i=0; i<NUM_CELLS_X; i++) {
-            verts += cells[i][j]->getVertexCount();
-            faces += cells[i][j]->getFaceCount();
+            vertexCount += cells[i][j]->addGeometry(vertices, normals);
         }
     }
-    
-    ofVec3f* vertexData = new ofVec3f[verts];
-    ofIndexType* indexData = new ofIndexType[faces*3];
-    ofVec3f* normalData = new ofVec3f[faces];
-    
-    int vertsCounter=0;
-    int indexCounter=0;
-    int normalCounter=0;
-    for (int j=0; j<NUM_CELLS_Y; j++) {
-        for (int i=0; i<NUM_CELLS_X; i++) {
-            indexCounter += cells[i][j]->fillIndexData(indexData, vertsCounter, indexCounter);
-            vertsCounter += cells[i][j]->fillVertexData(vertexData, vertsCounter);
-            normalCounter += cells[i][j]->fillNormalData(normalData, normalCounter);
-        }
-    }
-	
-	//LB
-//    geometry.setVertexData(vertexData, vertsCounter, GL_STATIC_DRAW);
-//    geometry.setIndexData(indexData, indexCounter, GL_STATIC_DRAW);
-//    geometry.setNormalData(normalData, normalCounter, GL_STATIC_DRAW);
-//    indexCount = indexCounter;
-	
-	
-	//LB: we want it to be faceted correct?
-	//
-	//	-the issue seems to be that the normals are set per vertex rather then per face
-	//
-	//	-here I'm making new arrays out of the data coming in from the cells. with one vertex & normal per index.
-	//
-	//	-you probably don't need indices if it's not a smooth mesh... I commented them out.
-	//
-	//	-I've disregarded the old normals and am recalculating them here, it'll be a little faster to pass them hard coded from the cells. I did
-	//	it this way so that I wouldn't mess with your code too much
-	//
-	
-	vector<ofVec3f> vertices(indexCounter);
-	vector<ofVec3f> normals(indexCounter);
-//	vector<ofIndexType> indices(indexCounter);
-	for (int i=0; i<indexCounter; i+=6)
-	{
-		vertices[i] = vertexData[ indexData[i] ];
-		vertices[i+1] = vertexData[ indexData[i+1] ];
-		vertices[i+2] = vertexData[ indexData[i+2] ];
-		vertices[i+3] = vertexData[ indexData[i+3] ];
-		vertices[i+4] = vertexData[ indexData[i+4] ];
-		vertices[i+5] = vertexData[ indexData[i+5] ];
-		
-		ofVec3f faceNormal = normalFrom3Points(vertices[i], vertices[i+1], vertices[i+2]);
-		normals[i] = faceNormal;
-		normals[i+1] = faceNormal;
-		normals[i+2] = faceNormal;
-		normals[i+3] = faceNormal;
-		normals[i+4] = faceNormal;
-		normals[i+5] = faceNormal;
-		
-//		indices[i] = i;
-//		indices[i+1] = i+1;
-//		indices[i+2] = i+2;
-//		indices[i+3] = i+3;
-//		indices[i+4] = i+4;
-//		indices[i+5] = i+5;
-	}
-	ofImage.draw
-    geometry.setVertexData( &vertices[0], vertices.size(), GL_STATIC_DRAW);
-    geometry.setNormalData( &normals[0], normals.size(), GL_STATIC_DRAW);
-//    geometry.setIndexData( &indices[0], indices.size(), GL_STATIC_DRAW);
-	
-    indexCount = indexCounter;
-    
-    delete vertexData;
-    delete indexData;
-    delete normalData;
-	
-	//LB
+
+    geometry.setVertexData(&vertices[0], vertices.size(), GL_STATIC_DRAW);
+    geometry.setNormalData(&normals[0], normals.size(), GL_STATIC_DRAW);
+
 	vertices.clear();
 	normals.clear();
-//	indices.clear();
+    
+    // setup boxes locations
+    for (int i=0; i<1000; i++)
+    {
+        blocks.push_back(ofVec3f(ofRandom(0, NUM_CELLS_X*cellSize),0, ofRandom(0, NUM_CELLS_Y*cellSize)));
+    }
 }
 
 void Maze::update(ofCamera *cam)
 {
-//    if (!finishedGenerating) {
-//        for (int i=0; i<4; i++) {
-//            generateStep();
-//        }
-//    }
 }
 
 void Maze::draw(ofCamera *cam)
@@ -169,26 +99,14 @@ void Maze::draw(ofCamera *cam)
     ofPushMatrix();
     ofTranslate(pos);
     
-	//LB
-    //geometry.drawElements(GL_TRIANGLES, indexCount);
-	
-	//LB
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	geometry.draw(GL_TRIANGLES, 0, indexCount);
-	glDisable(GL_CULL_FACE);
-	
+    int camCellY = (int)(cam->getPosition().z / cellSize);
+    camCellY = max(0, camCellY-10);
+    int lastVisibleLine = (int)MIN((int)camCellY + ParamManager::getInstance().showAhead, NUM_CELLS_Y);
     
-#if 0
-    // for tiling
-    int yStart = cam->getPosition().z/cellSize-5;
-    int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead,NUM_CELLS_Y);
-    if (yStart < 0) {
-        yStart = 0;
-    }
-    float length = (float)yLimit - yStart;
-    float middle = (float)yStart + length/2;
-
+    // draw surface
+    float length = (float)lastVisibleLine - camCellY;
+    float middle = (float)camCellY + length/2;
+    
     // draw the ground
     ofFill();
     ofSetColor(ParamManager::getInstance().getGroundColor());
@@ -198,31 +116,30 @@ void Maze::draw(ofCamera *cam)
     ofBox(1);
     ofPopMatrix();
     
-    // draw side walls
-#ifdef SIDE_WALLS
-    ofSetColor(ParamManager::getInstance().getSideWallsColor());
-    ofPushMatrix();
-    ofTranslate(-0.1, 800-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 1600, length*cellSize);
-    ofBox(1);
-    ofPopMatrix();
-    ofPushMatrix();
-    ofTranslate(NUM_CELLS_X*cellSize+0.1, 800-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 1600, length*cellSize);
-    ofBox(1);
-    ofPopMatrix();
-#endif
+    // draw maze geometry
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]);
+	glDisable(GL_CULL_FACE);
     
-    // draw the cells
-    for (int i=0; i<NUM_CELLS_X; i++)
+    // draw random blocks inside the maze
+    for (int i=0; i<blocks.size(); i++)
     {
-        for (int j=yStart; j<yLimit; j++)
-        {
-            cells[i][j]->draw(currentCell == cells[i][j]);
-        }
+        ofPushMatrix();
+        ofTranslate(blocks[i]+ofVec3f(0, 20, 0));
+        ofSetColor(255);
+        ofBox(40);
+        ofPopMatrix();
     }
-#endif
     
+//    for (int j=0; j<NUM_CELLS_Y; j++)
+//    {
+//        for (int i=0; i<NUM_CELLS_X; i++)
+//        {
+//            cells[i][j]->draw(false);
+//        }
+//    }
+	
     ofPopMatrix();
 }
 
@@ -239,8 +156,6 @@ void Maze::generateStep()
     for (int i=0;i<4;i++)
     {
         available_dirs.push_back(i);
-        
-        
     }
     while (!valid) {
         int curx = currentCell->getX();
@@ -274,7 +189,7 @@ void Maze::generateStep()
                 }
                 break;
             case 2:
-                if (cury < min(NUM_CELLS_Y-1,currentYLimit-1) && cells[curx][cury+1]->notVisited()) {
+                if (cury < NUM_CELLS_Y-1 && cells[curx][cury+1]->notVisited()) {
                     currentCell->bottom = false;
                     currentCell = cells[curx][cury+1];
                     currentCell->visit();
@@ -304,15 +219,8 @@ void Maze::generateStep()
                 cellStack.pop();
             }
             else {
-                int prevLimit = currentYLimit;
-                currentYLimit += 60;
-                if (prevLimit > NUM_CELLS_Y) {
-                    finishedGenerating = true;
-                    currentCell = NULL;
-                }
-                else {
-                    currentCell = cells[0][prevLimit+1];
-                }
+                finishedGenerating = true;
+                currentCell = NULL;
             }
             valid = true;
         }
