@@ -105,9 +105,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         static float maxDist = 150;
         
         for (int i = 0; i < mesh.getNumVertices(); i++) {
+            ofVec3f v = mesh.getVertex(i);
             for (int j = 0; j < attractors.size(); j++) {
-                ofVec3f v = mesh.getVertex(i);
-                
                 float dist = attractors[j].distance(v);
                 if (!bUseLimits || dist < maxDist) {
                     ofVec3f to = v - attractors[j];
@@ -115,10 +114,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
                     to.normalize();
                     to *= factor / dF;
                     v += to;
-                
-                    mesh.setVertex(i, v);
                 }
             }
+            mesh.setVertex(i, v);
         }
     }
     
