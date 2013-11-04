@@ -1,0 +1,107 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MAZE BUILDER</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>973.000000000</XPosition>
+    <YPosition>46.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM SPEED</Name>
+    <Value>9.852216721</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM HEIGHT</Name>
+    <Value>566.502441406</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM ANGLE</Name>
+    <Value>53.201969147</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHOW AHEAD</Name>
+    <Value>50.689655304</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LIGHT DIRECTION ANGLE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LX</Name>
+    <Value>49.655170441</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LY</Name>
+    <Value>136.551727295</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LZ</Name>
+    <Value>141.871917725</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GH</Name>
+    <Value>156.204193115</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GS</Name>
+    <Value>69.424240112</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GB</Name>
+    <Value>102.800888062</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WH</Name>
+    <Value>136.178009033</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WS</Name>
+    <Value>113.481834412</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WB</Name>
+    <Value>114.816589355</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>100.130889893</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>109.476600647</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SB</Name>
+    <Value>114.816589355</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NS</Name>
+    <Value>57.408538818</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NB</Name>
+    <Value>255.000000000</Value>
+</Widget>
