@@ -90,12 +90,16 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
     //		return myCustomCamera;
     //	}
         void rebuildFont();
+        void rebuildText();
 
     protected:
         ofxUISuperCanvas * customGui;
         ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
         ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
         ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
+    
+        ofDirectory filesDir;
+        int selectedFilesIdx;
     
         TUOrbital * orbital;
         TUText * text;

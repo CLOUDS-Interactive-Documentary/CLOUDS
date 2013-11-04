@@ -92,6 +92,16 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     //    ddlFonts->setAutoClose(true);
     ddlFonts->setShowCurrentSelected(true);
     //    ddlFonts->activateToggle("DISABLE");
+    
+    customGui->addSpacer();
+    vector<string> fileNames;
+    for (int i = 0; i < filesDir.size(); i++) {
+        fileNames.push_back(filesDir.getName(i));
+    }
+    ofxUIDropDownList *ddlFiles = customGui->addDropDownList("FILES", fileNames);
+    //    ddlFiles->setAutoClose(true);
+    ddlFiles->setShowCurrentSelected(true);
+    //    ddlFiles->activateToggle("DISABLE");
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
 	guis.push_back(customGui);
@@ -162,6 +172,14 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
         rebuildFont();
     }
+    
+    else if (e.widget->getName() == "FILES") {
+        vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
+        if (selectedIndeces.size() > 0) {
+            selectedFilesIdx = selectedIndeces[0];
+            rebuildText();
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -188,47 +206,10 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     currSpin = 0.0f;
     spinSpeed = 0.5f;
     
-    // Load the contents of the text file.
-    ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
-    if (buffer.size()) {
-        text = new TUText(buffer.getText());
-//        text->print();
-    }
-    
-    // Build the node network.
-    orbital = new TUOrbital(30, 1000);
-    orbital->text = text->paragraphs[0].sentences[0].str;
-    orbital->bRenderText = true;
-    
-    for (int i = 0; i < text->paragraphs.size(); i++) {
-        if (text->paragraphs[i].sentences.size() > 1) {
-            // Add a "splitter" node for the paragraph.
-            orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
-            orbital->children.back().bRenderText = false;
-            
-            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
-                orbital->children.back().children.back().bRenderText = false;
-                
-                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back().children.back().children.push_back(TUOrbital(orbital->children.back().children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back().children.back().children.back().bRenderText = true;
-                }
-            }
-        }
-        else {
-            // Skip the paragraph node.
-            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].sentences[j].str));
-                orbital->children.back().bRenderText = false;
-                
-                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back().children.back().bRenderText = true;
-                }
-            }
-        }
-    }
+    filesDir.listDir("textFiles");
+    filesDir.sort();
+    selectedFilesIdx = 0;
+    rebuildText();
     
     rebuildFont();
     
@@ -343,4 +324,50 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
 {
     TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
     TUOrbital::font.setLineLength(TUOrbital::lineLength);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
+{
+    // Load the contents of the text file.
+    ofBuffer buffer = ofBufferFromFile(filesDir.getPath(selectedFilesIdx));
+    if (buffer.size()) {
+        text = new TUText(buffer.getText());
+        //        text->print();
+    }
+    
+    // Build the node network.
+    orbital = new TUOrbital(30, 1000);
+    orbital->text = text->paragraphs[0].sentences[0].str;
+    orbital->bRenderText = true;
+    
+    for (int i = 0; i < text->paragraphs.size(); i++) {
+        if (text->paragraphs[i].sentences.size() > 1) {
+            // Add a "splitter" node for the paragraph.
+            orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
+            orbital->children.back().bRenderText = false;
+            
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                orbital->children.back().children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.back().children.push_back(TUOrbital(orbital->children.back().children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().children.back().bRenderText = true;
+                }
+            }
+        }
+        else {
+            // Skip the paragraph node.
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].sentences[j].str));
+                orbital->children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().bRenderText = true;
+                }
+            }
+        }
+    }
 }
