@@ -135,9 +135,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
     }
     
     // Load the data to a texture.
-    updatePingPong.allocate(textureRes, textureRes,GL_RGB32F);
-    updatePingPong.src->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
-    updatePingPong.dst->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    updateBuffer.allocate(textureRes, textureRes, GL_RGB32F);
+    updateBuffer.src->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    updateBuffer.dst->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
     
     // Clean up.
     delete [] posData;
@@ -161,12 +161,12 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
     delete [] attData;
     
     // Allocate the output FBO.
-    renderFBO.allocate(width, height, GL_RGBA32F);
-    renderFBO.begin();
+    renderBuffer.allocate(width, height, GL_RGBA32F);
+    renderBuffer.begin();
     {
         ofClear(0, 0);
     }
-    renderFBO.end();
+    renderBuffer.end();
     
     // Build a mesh of points to use as content for the system.
     mesh.setMode(OF_PRIMITIVE_POINTS);
@@ -206,39 +206,39 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
     timeStep = ofGetElapsedTimeMillis() - timeStep;
     
     // Calculate the new position affected by the attractors.
-    updatePingPong.dst->begin();
+    updateBuffer.dst->begin();
     {
         ofClear(0);
         updateShader.begin();
         {
-            updateShader.setUniformTexture("posData", updatePingPong.src->getTextureReference(), 0); // Previus position
+            updateShader.setUniformTexture("posData", updateBuffer.src->getTextureReference(), 0); // Previus position
             updateShader.setUniform1f("timestep", timeStep);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
 
             // Draw the source position texture to be updated.
-            updatePingPong.src->draw(0, 0);
+            updateBuffer.src->draw(0, 0);
         }
         updateShader.end();
     }
-    updatePingPong.dst->end();
-    updatePingPong.swap();
+    updateBuffer.dst->end();
+    updateBuffer.swap();
     
     // Convert the position texture to points in space and render.
-    renderFBO.begin();
+    renderBuffer.begin();
     {
+//        ofClear(0, 0);
         ofSetColor(255, fgAlpha->getPos());
-        //        ofClear(0, 0, 0, 0);
         renderShader.begin();
         {
-            renderShader.setUniformTexture("posTex", updatePingPong.dst->getTextureReference(), 0);
+            renderShader.setUniformTexture("posTex", updateBuffer.dst->getTextureReference(), 0);
             renderShader.setUniform2f("screen", (float)width, (float)height);
             
             mesh.draw();
         }
         renderShader.end();
     }
-    renderFBO.end();
+    renderBuffer.end();
 }
 
 //--------------------------------------------------------------
@@ -256,7 +256,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawDebug(){
 void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
 {
     ofSetColor(ofColor::fromHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos()));
-    renderFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
+    renderBuffer.draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 // this is called when your system is no longer drawing.
