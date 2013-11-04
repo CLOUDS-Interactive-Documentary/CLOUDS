@@ -206,16 +206,31 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     orbital->bRenderText = true;
     
     for (int i = 0; i < text->paragraphs.size(); i++) {
-        orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
-        orbital->children.back().bRenderText = false;
-        
-        for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-            orbital->children[i].children.push_back(TUOrbital(orbital->children[i], text->paragraphs[i].sentences[j].str));
-            orbital->children[i].children.back().bRenderText = false;
+        if (text->paragraphs[i].sentences.size() > 1) {
+            // Add a "splitter" node for the paragraph.
+            orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
+            orbital->children.back().bRenderText = false;
             
-            for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                orbital->children[i].children[j].children.push_back(TUOrbital(orbital->children[i].children[j], text->paragraphs[i].sentences[j].words[k]));
-                orbital->children[i].children[j].children.back().bRenderText = true;
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                orbital->children.back().children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.back().children.push_back(TUOrbital(orbital->children.back().children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().children.back().bRenderText = true;
+                }
+            }
+        }
+        else {
+            // Skip the paragraph node.
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].sentences[j].str));
+                orbital->children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().bRenderText = true;
+                }
             }
         }
     }
