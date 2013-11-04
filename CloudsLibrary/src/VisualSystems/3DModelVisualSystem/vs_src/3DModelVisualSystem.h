@@ -157,6 +157,7 @@ protected:
 	ofShader facingRatioShader;
 	ofShader phongShader;
 	ofShader XRayShader;
+	ofShader simpleShader;
 	
 	float gridLineWidth, gridScale, majorGridLineWidth, gridDim, fogFalloffDistance, fogFalloffExpo, fogFalloffScale, gridAlphaScale, gridMajorScale;
 	int numGridVertices, numGridMajorVertices;

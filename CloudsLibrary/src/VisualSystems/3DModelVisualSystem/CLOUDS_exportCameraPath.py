@@ -7,6 +7,19 @@ class CloudsCameraPathExporter:
 	output = "<!-- clouds camera path -->\n"
 	tags = []
 	spacer = ""
+
+	def getEveryNFrames(self):
+		result = cmds.promptDialog(
+		title='Rename Object',
+		message='Enter Name:',
+		button=['OK', 'Cancel'],
+		defaultButton='OK',
+		cancelButton='Cancel',
+		dismissString='Cancel')
+
+		if result == 'OK':
+			text = int(cmds.promptDialog(query=True, text=True))
+
 	def pushTag(self, tag):
 		self.tags.append( tag );
 		self.output += self.spacer + "<" + str(tag) + ">\n"
@@ -87,4 +100,4 @@ class CloudsCameraPathExporter:
 
 
 camPath = CloudsCameraPathExporter()
-camPath.export()
+camPath.export( camPath.getEveryNFrames() )

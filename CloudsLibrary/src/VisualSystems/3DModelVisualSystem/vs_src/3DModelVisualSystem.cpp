@@ -50,6 +50,7 @@ void CloudsVisualSystem3DModel::selfSetupGui()
 	transformGui->setName("transform");
 	
 	transformGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	transformGui->addButton("reset transforms", false);
 	transformGui->addSlider("positionOffset.x", -1000, 1000, &positionOffset.x )->setIncrement(1);
 	transformGui->addSlider("positionOffset.y", -1000, 1000, &positionOffset.y )->setIncrement(1);
 	transformGui->addSlider("positionOffset.z", -1000, 1000, &positionOffset.z )->setIncrement(1);
@@ -178,7 +179,6 @@ void CloudsVisualSystem3DModel::selfSetupGui()
 	cameraPathsGui->addSpacer();
 	cameraPathsGui->addToggle("draw path", &bDrawCameraPath );
 	cameraPathsGui->addSlider("position on path", 0, 1, &pathCameraPosition);
-//	cameraPathsGui->addToggle("bUseDuration", &bUseDuration);
 	cameraPathsGui->addToggle("loop", &pathCamera.getLoop() );
 	cameraPathsGui->addSlider("loop time", 1, 200, &pathCamera.getDuration() );
 	
@@ -202,6 +202,13 @@ void CloudsVisualSystem3DModel::selfGuiEvent(ofxUIEventArgs &e)
 		}else{
 			facetMesh( modelMesh, modelMesh );
 		}
+	}
+	
+	else if( name == "reset transforms")
+	{
+		positionOffset.set(0,0,0);
+		globalRotation.set(0,0,0);
+		globalRotationVelocity.set(0,0,0);
 	}
 	
 	else if(name == "arrowHeight" || name == "arrowRadius" || name == "arrowPointHeight" )
@@ -441,7 +448,7 @@ void CloudsVisualSystem3DModel::selfSetup()
 	bUseDuration = false;
 	bRepositionModel = true;
 	bDoNotScaleModel = false;
-	bDrawCameraPath = true;
+	bDrawCameraPath = false;
 	
 	pathCamera.setNearClip(.1);
 	
@@ -633,6 +640,7 @@ void CloudsVisualSystem3DModel::loadShaders()
 	gridShader.load( getVisualSystemDataPath() + "3DModelShaders/gridShader" );
 	facingRatioShader.load( getVisualSystemDataPath() + "3DModelShaders/facingRatio" );
 	XRayShader.load( getVisualSystemDataPath() + "3DModelShaders/XRayShader" );
+	simpleShader.load(getVisualSystemDataPath() + "3DModelShaders/simple" );
 	
 	
 	shaderNames.clear();
@@ -640,6 +648,7 @@ void CloudsVisualSystem3DModel::loadShaders()
 	addToShaderMap( "gridShader", &gridShader );
 	addToShaderMap( "facingRatio", &facingRatioShader );
 	addToShaderMap( "xRay", &XRayShader );
+	addToShaderMap( "simple", &simpleShader);
 }
 			  
 void CloudsVisualSystem3DModel::addToShaderMap( string name, ofShader* shader )
@@ -1151,7 +1160,9 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 	if(bDrawCameraPath)
 	{
 		glLineWidth(majorGridLineWidth);
+		simpleShader.begin();
 		pathCamera.drawPaths();
+		simpleShader.end();
 	}
 	
 	ofSetColor(modelColor);
@@ -1239,30 +1250,20 @@ void CloudsVisualSystem3DModel::updateModelTransform()
 	
 	ofVec3f scl(1,1,1);
 	
-	if(!bDoNotScaleModel && currentSingleCam != &pathCamera)
+	if(currentSingleCam != &pathCamera)
 	{
-		scl = (bAutoScale? modelScl : ofVec3f(1,1,1)) * modelScale;
-		modelTransform.setScale( scl );
+		if(!bDoNotScaleModel)
+		{
+			scl = (bAutoScale? modelScl : ofVec3f(1,1,1)) * modelScale;
+			modelTransform.setScale( scl );
+		}
+		
+		if(bCenterModel)
+		{
+			modelTransform.setPosition( -boundCenter );
+			modelTransform.move(0, (maxBound.y-minBound.y)*.5 * scl.y, 0);
+		}
 	}
-	
-	if(bCenterModel)
-	{
-		modelTransform.setPosition( -boundCenter );
-		modelTransform.move(0, (maxBound.y-minBound.y)*.5 * scl.y, 0);
-	}
-	
-
-	//update the model transforms
-	//modelRot.makeRotate( 0, 0, 1, 0);//ofGetElapsedTimef()*2
-	//if(modelScl.length() == 0.)	modelScl.y = .00001;
-	
-	//boundCenter = (minBound + maxBound) * .5;
-	
-	//modelTransform.setOrientation( modelRot );
-	
-	//modelTransform.setScale( modelScl * modelScale );
-	//modelTransform.setPosition( -boundCenter * modelScl * modelScale);
-	//modelTransform.move(0,  (maxBound.y - minBound.y) * .5 * modelScl.y * modelScale, 0);
 }
 
 
