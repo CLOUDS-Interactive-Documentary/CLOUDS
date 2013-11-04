@@ -21,6 +21,31 @@ float _C::danceAmp = 0;
 float _C::danceFreq = 0;
 float _C::danceOffset = 0;
 
+
+void _C::selfSetup(){
+    rotation = 0;
+    reset();
+    readFromFile( "brain2" );
+}
+
+void _C::selfSetupGuis(){
+	spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
+	dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
+    nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
+    axonThicknessSlider = gui->addSlider("Axon Thickness",0, 10, 5);
+    alphaSlider = gui->addSlider("Alpha",0, 1, 0.5);
+    swaySlider = gui->addSlider("Sway",0, 10, 5);
+    nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
+    resetButton = gui->addButton("Reset", false, 64,64);
+    rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
+    danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
+    danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
+    danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
+    saveButton = gui->addButton("Save Neurons", false, 32,32);
+    loadButton = gui->addButton("Load Neurons", false, 32,32);
+}
+
+
 void _C::reset(bool createRootNodes){
     
     //free all dynamically allocated memory
@@ -71,10 +96,10 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
     }else if(e.widget == saveButton && ofGetMousePressed()){
-        writeToFile( ofToDataPath(getVisualSystemDataPath()) );
+        writeToFile( "new_brain" );
     }else if(e.widget == loadButton && ofGetMousePressed()){
         cout << ofGetTimestampString() << endl;
-        readFromFile( ofToDataPath(getVisualSystemDataPath()) );
+        readFromFile( "brain1" );
         cout << ofGetTimestampString() << endl;
     }
 }
@@ -88,10 +113,10 @@ string _C::getSystemName(){
 /**
     serializes node network into a flat file
  */
-void _C::writeToFile(string dirname){
+void _C::writeToFile(string filename){
     //open outfile
-    ofLogNotice() << "Saving neurons to neurons.dat";
-    ofstream fout((dirname + "neurons.dat").c_str(), ios::binary);
+    ofLogNotice() << "Saving neurons to " << filename;
+    ofstream fout((ofToDataPath(getVisualSystemDataPath()) + string("sets/") + filename ).c_str(), ios::binary);
     fout << "NeuronNetwork " << 0 // important! increment this version number as needed.
         << endl;
     
@@ -110,12 +135,12 @@ void _C::writeToFile(string dirname){
 /**
  unserializes node network from a flat file and into memory.
  */
-void _C::readFromFile(string dirname){
+void _C::readFromFile(string filename){
     
     reset(false);
     
-    ofLogNotice() << "Loading neurons from neurons.dat";
-    ifstream fin((dirname + "neurons.dat").c_str());
+    ofLogNotice() << "Loading neurons from " << filename;
+    ifstream fin((ofToDataPath(getVisualSystemDataPath()) + string("sets/") + filename).c_str());
     
     while(fin.good()){
         string token;
@@ -173,28 +198,6 @@ void _C::readFromFile(string dirname){
 
 
 
-
-void _C::selfSetup(){
-    rotation = 0;
-    reset();
-}
-
-void _C::selfSetupGuis(){
-	spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
-	dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
-    nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
-    axonThicknessSlider = gui->addSlider("Axon Thickness",0, 10, 5);
-    alphaSlider = gui->addSlider("Alpha",0, 1, 0.5);
-    swaySlider = gui->addSlider("Sway",0, 10, 5);
-    nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
-    resetButton = gui->addButton("Reset", false, 64,64);
-    rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
-    danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
-    danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
-    danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
-    saveButton = gui->addButton("Save Neurons", false, 32,32);
-    loadButton = gui->addButton("Load Neurons", false, 32,32);
-}
 
 void _C::selfPresetLoaded(string presetPath){
 	reset();
@@ -280,7 +283,7 @@ vector<_N*> _N::all;
 vector<_N*> _N::terminals;
 GLuint _N::drawMode = 0;
 int _N::maxDepth = 0;
- 
+
 
 void _N::update(){
 
@@ -365,7 +368,7 @@ void _N::update(){
 			n->g += ( average - n->g ) * 0.01f;
 			n->b += ( average - n->b ) * 0.01f;
 			n->generation = generation + 1;
-            if(maxDepth < n->generation)maxDepth = n->generation;
+            n->updateMaxDepth();
 		}
 		children.push_back( n );
 	}
@@ -375,6 +378,10 @@ void _N::update(){
 	}
 
 	age++;
+}
+
+void _N::updateMaxDepth(){
+ if(maxDepth < generation)maxDepth = generation;
 }
 
 bool _N::isTerminal(){
@@ -463,6 +470,8 @@ _N::TreeNode(ifstream &fin){
         fin >> childIndex;
         children.push_back((_N*)childIndex);
     }
+    
+    updateMaxDepth();
     
 }
 
