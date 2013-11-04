@@ -21,6 +21,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+    customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
     customGui->addSpacer();
     customGui->addSlider("LINE WIDTH", 0.0, 10.0, &TUOrbital::lineWidth);
@@ -205,6 +206,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     // Set defaults.
     currSpin = 0.0f;
     spinSpeed = 0.5f;
+    fogDensity = 0.025f;
     
     filesDir.listDir("textFiles");
     filesDir.sort();
@@ -252,6 +254,25 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
 {
+    glPushAttrib(GL_FOG_BIT);
+    
+    glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_EXP);
+    
+    //	float FogCol[3]={0.8f,0.8f,0.8f}; // Define a nice light grey
+    //	glFogfv(GL_FOG_COLOR, FogCol);     // Set the fog color
+	glFogf(GL_FOG_DENSITY, powf(fogDensity, 2));
+    GLfloat fogColor[4] = { bgColor.r / 255.,bgColor.g / 255.,bgColor.b / 255., 1.0 };
+    glFogfv(GL_FOG_COLOR, fogColor);
+    glEnable(GL_DEPTH_TEST);
+    ofEnableAlphaBlending();
+
+//		GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
+//		glFogfv (GL_FOG_COLOR, fogColor);
+//		glDisable(GL_DEPTH_TEST);
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
     ofPushStyle();
     ofPushMatrix();
     {
@@ -262,6 +283,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
     }
     ofPopMatrix();
     ofPopStyle();
+    
+    glPopAttrib();
 }
 
 // draw any debug stuff here

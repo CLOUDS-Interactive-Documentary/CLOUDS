@@ -105,6 +105,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         TUText * text;
         bool bMouseDragged;
     
+        float fogDensity;
         float currSpin;
         float spinSpeed;
 };
