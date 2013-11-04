@@ -88,10 +88,10 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     fonts.push_back("MATERIA PRO");
     fonts.push_back("MUSEO 300");
     fonts.push_back("NEW MEDIA FETT");
-    ofxUIDropDownList *ddl = customGui->addDropDownList("FONT", fonts);
-    //    ddl->setAutoClose(false);
-    ddl->setShowCurrentSelected(true);
-    //    ddl->activateToggle("DISABLE");
+    ofxUIDropDownList *ddlFonts = customGui->addDropDownList("FONT", fonts);
+    //    ddlFonts->setAutoClose(true);
+    ddlFonts->setShowCurrentSelected(true);
+    //    ddlFonts->activateToggle("DISABLE");
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
 	guis.push_back(customGui);
@@ -144,28 +144,23 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         TUOrbital::font.setLineLength(TUOrbital::lineLength);
     }
     else if (e.widget->getName() == "FONT SIZE" || e.widget->getName() == "FONT DEPTH") {
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "HELVETICA") {
         TUOrbital::fontName = "Helvetica.ttf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "MATERIA PRO") {
         TUOrbital::fontName = "MateriaPro_Light.otf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "MUSEO 300") {
         TUOrbital::fontName = "Museo-300.otf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "NEW MEDIA FETT") {
         TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
 }
 
@@ -235,9 +230,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
         }
     }
     
-    // Load the font.
-    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-    TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    rebuildFont();
     
     bMouseDragged = false;
 }
@@ -343,4 +336,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& da
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data)
 {
     bMouseDragged = false;
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
+{
+    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+    TUOrbital::font.setLineLength(TUOrbital::lineLength);
 }

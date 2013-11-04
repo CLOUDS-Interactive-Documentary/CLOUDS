@@ -89,7 +89,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
     //	ofCamera& getCameraRef(){
     //		return myCustomCamera;
     //	}
-
+        void rebuildFont();
 
     protected:
         ofxUISuperCanvas * customGui;
