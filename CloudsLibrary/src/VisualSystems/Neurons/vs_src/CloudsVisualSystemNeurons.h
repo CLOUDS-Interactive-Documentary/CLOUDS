@@ -14,8 +14,18 @@
 namespace jtn{
 	class TreeNode:public ofPoint{
 	public:
+        
 		ofPoint future;
+        
+        /**
+            construct raw.
+         */
+        
 		TreeNode();
+        
+        /**
+            construct me by reading in a properly cue'd ifstream.
+         */
         TreeNode(ifstream &fin);
 		~TreeNode();
 		TreeNode*parent;
@@ -34,6 +44,7 @@ namespace jtn{
         ofPoint direction;
         static int maxDepth;
         void serialize(ofstream &fout);
+        void updateMaxDepth();
 	};
 };
 
