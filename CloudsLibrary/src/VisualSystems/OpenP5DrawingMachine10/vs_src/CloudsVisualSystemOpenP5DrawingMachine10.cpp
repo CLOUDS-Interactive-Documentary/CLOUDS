@@ -22,8 +22,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
     customGui->addButton("REDRAW", false);
     
     customGui->addSpacer();
-    customGui->addSlider("NUM PARTICLES", 1, 100000, 10000);
-    customGui->addSlider("NUM ATTRACTORS", 1, 500, 200);
+    customGui->addIntSlider("NUM PARTICLES", 1, 100000, &numParticles);
+    customGui->addIntSlider("NUM ATTRACTORS", 1, 500, &numAttractors);
     customGui->addSlider("SPEED FACTOR", 0, 1, &speedFactor);
     customGui->addSlider("MAX DIST", 0, 1, &maxDist);
     
@@ -55,12 +55,6 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "REDRAW") {
         restart();
-    }
-    else if (e.widget->getName() == "NUM PARTICLES") {
-        numParticles = (int)((ofxUISlider *)e.widget)->getScaledValue();
-    }
-    else if (e.widget->getName() == "NUM ATTRACTORS") {
-        numAttractors = (int)((ofxUISlider *)e.widget)->getScaledValue();
     }
     
     else if (e.widget->getName() == "FG HUE") {
