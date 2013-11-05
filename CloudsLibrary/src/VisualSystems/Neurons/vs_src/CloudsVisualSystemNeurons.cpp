@@ -232,7 +232,7 @@ void _C::selfDrawBackground(){
 void _C::selfDraw(){
 	
 	ofPushMatrix();
-	ofRotate(rotation,0,0,1);
+	//ofRotate(rotation,0,0,1);
     
     //some camera sway
     ofTranslate(
@@ -240,7 +240,13 @@ void _C::selfDraw(){
                 ofNoise( ofGetFrameNum() * 0.01 , 2000) * _C::sway,
                 ofNoise( ofGetFrameNum() * 0.01 , 3000) * _C::sway
     );
-	_N::drawMode = GL_LINES;
+    
+    
+    ofCamera *cam = getCurrentCamera();
+    cam->setGlobalPosition( *rootNodes[0] );
+    
+    
+    _N::drawMode = GL_LINES;
 
     
     // for all root nodes:

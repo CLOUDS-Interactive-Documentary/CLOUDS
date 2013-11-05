@@ -8,6 +8,7 @@
 */
 
 #include "CloudsVisualSystem.h"
+#include "CloudsPathCamera.h"
 
 #define _C CloudsVisualSystemNeurons
 
@@ -92,5 +93,7 @@ class _C:public CloudsVisualSystem{
     void reset(bool createRootNodes = true);
     void writeToFile(string dirname);
     void readFromFile(string dirname);
+    
+    CloudsPathCamera cloudsPathCam;
 };
 
