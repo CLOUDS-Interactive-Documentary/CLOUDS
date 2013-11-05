@@ -334,7 +334,7 @@ void CloudsVisualSystemMandala::selfSetup()
 	//setup our surface
 	surface.setControlVertices( cv );
 	surface.setup(3,3);
-	surface.setClosed( true, false );
+	surface.setClosed( false, false );
 	
 	animatedMap.allocate( 2048, 1024);
 //	int fboWidth = ofGetWidth() * 2;
@@ -364,6 +364,7 @@ void CloudsVisualSystemMandala::setupSurfaceRings(int vCount, unsigned int numEx
 	surfaceRingsCV.clear();
 	
 	surfaceRingsCV.resize(13);
+	
 	float uStep = 1. / surfaceRingsCV.size();
 	for (int i=0; i<surfaceRingsCV.size(); i++)
 	{
@@ -371,7 +372,22 @@ void CloudsVisualSystemMandala::setupSurfaceRings(int vCount, unsigned int numEx
 		
 		surfaceRingsCV[i].uv.x = uStep * i;
 		surfaceRingsCV[i].uv.y = .5;
+		
+		MandalaTicker<float> uTick;
+		uTick.begin(surfaceRingsCV[i].uv.x, surfaceRingsCV[i].uv.x, surfaceRingsCV[i].uv.x + .0999, .5);
+		uTick.setDelay(.25);
+		uTick.setContinue();
+		addTicker(uTick);
+		
+		MandalaTicker<float> vTick;
+		vTick.begin(surfaceRingsCV[i].uv.y, surfaceRingsCV[i].uv.y, surfaceRingsCV[i].uv.y + .0999, .5);
+		vTick.setContinue();
+		addTicker(vTick);
+		
 	}
+	
+	vector<ofVec3f> cv(surfaceRingsCV.size());
+	surfaceRing.addControlVertices( cv );
 	
 //	//clear the old ones
 //	for (int i=0; i<surfaceRings.size(); i++)
@@ -788,6 +804,19 @@ void CloudsVisualSystemMandala::selfDraw()
 		surfaceRingsCV[i].update();
 		ofSphere( surfaceRingsCV[i].position, 30);
 	}
+	
+	vector<ofVec3f>& cv = surfaceRing.getControlVertices();
+	for (int i=0; i<cv.size(); i++)
+	{
+		cv[i] = surfaceRingsCV[i].position;
+	}
+	
+	surfaceRing.update();
+	
+	ofSetColor(255, 0, 0,255);
+	surfaceRing.draw();
+	
+	
 	
 	glDisable(GL_CULL_FACE);
 }

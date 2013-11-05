@@ -464,6 +464,7 @@ protected:
 	ofBlendMode ribbonBlendMode;
 	
 	//surfaceRings
+	ofxSimpleSpline surfaceRing;
 	vector<ofxSimpleSpline> surfaceRings;
 	vector<SurfacePoint> surfaceRingsCV;
 	void setupSurfaceRings(int vCount, unsigned int numExtras=0, float extraOffset=.05);
