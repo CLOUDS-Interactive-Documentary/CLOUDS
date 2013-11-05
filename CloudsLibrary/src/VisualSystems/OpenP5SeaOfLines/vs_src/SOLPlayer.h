@@ -18,6 +18,8 @@ class SOLPlayer
         SOLPlayer(float x, float y, float max);
         void update();
     
+        static float width, height;
+    
         ofColor col;
         float x, y;
         float size;

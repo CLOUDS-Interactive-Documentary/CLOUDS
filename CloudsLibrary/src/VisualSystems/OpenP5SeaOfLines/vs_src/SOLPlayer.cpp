@@ -9,6 +9,10 @@
 #include "SOLPlayer.h"
 
 //--------------------------------------------------------------
+float SOLPlayer::width;
+float SOLPlayer::height;
+
+//--------------------------------------------------------------
 SOLPlayer::SOLPlayer(float x, float y, float max)
 {
     this->x = x;
@@ -39,16 +43,16 @@ void SOLPlayer::update()
         x = size / 2;
         sx *= -1;
     }
-    else if (x > ofGetWidth() - size / 2) {
-        x = ofGetWidth() - size / 2;
+    else if (x > width - size / 2) {
+        x = width - size / 2;
         sx *= -1;
     }
     if (y < size / 2) {
         y = size / 2;
         sy *= -1;
     }
-    else if (y > ofGetHeight() - size / 2) {
-        y = ofGetHeight() - size / 2;
+    else if (y > height - size / 2) {
+        y = height - size / 2;
         sy *= -1;
-    }
+    }    
 }

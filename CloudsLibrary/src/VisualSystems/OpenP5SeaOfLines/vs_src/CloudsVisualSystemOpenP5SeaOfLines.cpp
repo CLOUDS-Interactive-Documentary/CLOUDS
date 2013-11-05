@@ -49,7 +49,10 @@ void CloudsVisualSystemOpenP5SeaOfLines::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
 {
-    canvas.allocate(ofGetWidth(), ofGetHeight());
+    SOLPlayer::width = ofGetWidth();
+    SOLPlayer::height = ofGetHeight();
+    
+    canvas.allocate(SOLPlayer::width, SOLPlayer::height);
     canvas.begin();
     {
         ofClear(0, 0);
@@ -58,8 +61,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     
     // Add the players.
     float step = 20;
-    for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
-        for (float j = 0; j < (ofGetHeight() / step - 1); j++) {
+    for (float i = 0; i < (SOLPlayer::width / step - 1); i++) {
+        for (float j = 0; j < (SOLPlayer::height / step - 1); j++) {
             if (ofRandom(3) > 1) {
                 players.push_back(new SOLPlayer(i * step + step * 0.5f, j * step + step * 0.5f, step * 0.8f));
             }
@@ -136,7 +139,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
     }
     canvas.end();
     
-    canvas.draw(0, 0);
+    canvas.draw(0, 0, ofGetWidth(), ofGetHeight());
+    ofDrawBitmapString(ofToString(ofGetFrameRate(), 2) + " FPS", 10, ofGetHeight() - 20);
 }
 
 // this is called when your system is no longer drawing.
