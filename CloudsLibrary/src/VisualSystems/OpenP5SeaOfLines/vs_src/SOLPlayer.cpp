@@ -49,7 +49,7 @@ void SOLPlayer::update()
     }
     else if (y > ofGetHeight() - size / 2) {
         y = ofGetHeight() - size / 2;
-        sy *= -0.75f;
+        sy *= -1;
     }
     
     
