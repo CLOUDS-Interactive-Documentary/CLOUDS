@@ -115,12 +115,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
         ofRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
         ofSetColor(255, 128);
+        glBegin(GL_LINES);
         for (int i = 0; i < players.size(); i++) {
             SOLPlayer * one = players[i];
-            for (int j = 0; j < players.size(); j++) {
+            for (int j = i + 1; j < players.size(); j++) {
                 SOLPlayer * two = players[j];
-                if (one == two) continue;
-                
                 float dist = ofDist(one->x, one->y, two->x, two->y);
                 if (dist < ((one->size + two->size) / 2)) {
                     float ang = atan2f(one->y - two->y, one->x - two->x);
@@ -128,10 +127,12 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
                     one->sy = sinf(ang) * one->speed;
                 }
                 else if (dist < 30) {
-                    ofLine(one->x, one->y, two->x, two->y);
+                    glVertex2f(one->x, one->y);
+                    glVertex2f(two->x, two->y);
                 }
             }
         }
+        glEnd();
     }
     canvas.end();
     
