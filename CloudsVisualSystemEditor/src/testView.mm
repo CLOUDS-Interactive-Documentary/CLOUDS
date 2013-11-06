@@ -52,6 +52,15 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	[self updateCounts];
 
+	//TEST FACTORY
+//	vector<string> systemNames;
+//	systemNames.push_back("ExampleVectorMath");
+//	systemNames.push_back("ExampleBox2D");
+//	vector<CloudsVisualSystem*> systems = CloudsVisualSystemManager::InstantiateSystems(systemNames);
+//	for(int i = 0; i < systems.size(); i++){
+//		cout << "*** SYSTEM TEST " << systems[i]->getSystemName() << endl;
+//	}
+	
 }
 
 - (void)update

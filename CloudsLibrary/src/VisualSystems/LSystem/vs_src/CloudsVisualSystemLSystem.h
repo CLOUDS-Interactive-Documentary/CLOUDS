@@ -13,7 +13,7 @@
 #include "LSystem.h"
 #include "LNode.h"
 
-class CloudsVisualSystemLSystems : public CloudsVisualSystem {
+class CloudsVisualSystemLSystem : public CloudsVisualSystem {
 public:
     
     string getSystemName();
