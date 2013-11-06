@@ -101,7 +101,7 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         //DM10PingPongBuffer renderBuffer;
         ofFbo renderBuffer;
     
-        unsigned long long timeStep;
+        unsigned long long timeStepMs;
         float speedFactor;
         float maxDist;
     

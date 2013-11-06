@@ -173,7 +173,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
         }
     }
     
-    timeStep = ofGetElapsedTimeMillis();
+    timeStepMs = ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------
@@ -199,8 +199,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSceneTransformation(){
 void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
 {
     ofEnableAlphaBlending();
-    timeStep = ofGetElapsedTimeMillis() - timeStep;
     
+    timeStepMs = ofGetElapsedTimeMillis() - timeStepMs;
     // Calculate the new position affected by the attractors.
     updateBuffer.dst->begin();
     {
@@ -208,7 +208,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         updateShader.begin();
         {
             updateShader.setUniformTexture("posData", updateBuffer.src->getTextureReference(), 0); // Previus position
-            updateShader.setUniform1f("timestep", timeStep / 1000.0f);
+            updateShader.setUniform1f("timestep", timeStepMs / 1000.0f);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
 
