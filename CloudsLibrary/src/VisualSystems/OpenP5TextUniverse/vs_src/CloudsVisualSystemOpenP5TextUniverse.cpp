@@ -23,6 +23,12 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
+    vector<string> radioBillboard;
+    radioBillboard.push_back("BILLBOARD SCREEN");
+    radioBillboard.push_back("BILLBOARD NODES");
+    radioBillboard.push_back("BILLBOARD ORIGIN");
+    customGui->addRadio("BILLBOARD", radioBillboard);
+    
     customGui->addSpacer();
     customGui->addSlider("LINE WIDTH", 0.0, 10.0, &TUOrbital::lineWidth);
     lineHue = new ofx1DExtruder(0);
@@ -112,7 +118,17 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "TEXT HUE") {
+    if (e.widget->getName() == "BILLBOARD SCREEN") {
+        TUOrbital::billboardType = 0;
+    }
+    else if (e.widget->getName() == "BILLBOARD NODES") {
+        TUOrbital::billboardType = 1;
+    }
+    else if (e.widget->getName() == "BILLBOARD ORIGIN") {
+        TUOrbital::billboardType = 2;
+    }
+    
+    else if (e.widget->getName() == "TEXT HUE") {
         textHue->setPosAndHome(textHue->getPos());
 	}
     else if (e.widget->getName() == "TEXT SAT") {
@@ -361,28 +377,28 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
     for (int i = 0; i < text->paragraphs.size(); i++) {
         if (text->paragraphs[i].sentences.size() > 1) {
             // Add a "splitter" node for the paragraph.
-            orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
-            orbital->children.back().bRenderText = false;
+            orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].str));
+            orbital->children.back()->bRenderText = false;
             
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
-                orbital->children.back().children.back().bRenderText = false;
+                orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                orbital->children.back()->children.back()->bRenderText = false;
                 
                 for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back().children.back().children.push_back(TUOrbital(orbital->children.back().children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back().children.back().children.back().bRenderText = true;
+                    orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back()->children.back()->children.back()->bRenderText = true;
                 }
             }
         }
         else {
             // Skip the paragraph node.
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].sentences[j].str));
-                orbital->children.back().bRenderText = false;
+                orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
+                orbital->children.back()->bRenderText = false;
                 
                 for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back().children.back().bRenderText = true;
+                    orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back()->children.back()->bRenderText = true;
                 }
             }
         }
