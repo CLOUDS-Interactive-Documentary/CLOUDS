@@ -102,9 +102,10 @@ protected:
     MazeCamera* mazeCam;
     
     ofLight *light;
-    ofVec3f lightAng;
+    ofVec3f lightPos;
     
     bool bLights;
+    int lastMS;
     
     // preset stuff
     ofxUISuperCanvas* customGui;

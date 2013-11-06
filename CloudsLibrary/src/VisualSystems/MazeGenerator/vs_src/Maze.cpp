@@ -42,6 +42,12 @@ Maze::~Maze()
             delete cells[i][j];
         }
     }
+
+    for (int i=0; i<balls.size(); i++)
+    {
+        delete balls[i];
+    }
+    balls.clear();
 }
 
 void Maze::generate()
@@ -62,39 +68,49 @@ void Maze::generate()
     }
     
     buildModel();
+    
+    // create moving balls
+    for (int i=0; i<ParamManager::getInstance().numberOfBalls; i++)
+    {
+        int sx = (int)ofRandom(60, NUM_CELLS_X-60);
+        int sy = (int)ofRandom(20, 500);
+        ofxSimpleSpline* spline = createSimpleSpline(sx, sy, 100);
+        balls.push_back(new MovingBall(spline));
+    }
 }
 
 void Maze::buildModel()
 {
     vector<ofVec3f> vertices;
     vector<ofVec3f> normals;
+    vector<ofVec2f> uvs;
     vertexCount = 0;
     
     for (int j=0; j<NUM_CELLS_Y; j++) {
         vertexIndexForLines[j] = vertexCount;
         for (int i=0; i<NUM_CELLS_X; i++) {
-            vertexCount += cells[i][j]->addGeometry(vertices, normals);
+            vertexCount += cells[i][j]->addGeometry(vertices, normals, uvs);
         }
     }
 
     geometry.setVertexData(&vertices[0], vertices.size(), GL_STATIC_DRAW);
     geometry.setNormalData(&normals[0], normals.size(), GL_STATIC_DRAW);
+    geometry.setTexCoordData(&uvs[0], uvs.size(), GL_STATIC_DRAW);
 
 	vertices.clear();
 	normals.clear();
-    
-    // setup boxes locations
-    for (int i=0; i<1000; i++)
-    {
-        blocks.push_back(ofVec3f(ofRandom(0, NUM_CELLS_X*cellSize),0, ofRandom(0, NUM_CELLS_Y*cellSize)));
-    }
+    uvs.clear();
 }
 
 void Maze::update(ofCamera *cam)
 {
+    for (int i=0; i<balls.size(); i++)
+    {
+        balls[i]->update();
+    }
 }
 
-void Maze::draw(ofCamera *cam)
+void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
 {
     ofPushMatrix();
     ofTranslate(pos);
@@ -117,35 +133,139 @@ void Maze::draw(ofCamera *cam)
     ofPopMatrix();
     
     // draw maze geometry
+    ofSetColor(ParamManager::getInstance().getWallColor());
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]);
+	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]-vertexIndexForLines[camCellY]);
 	glDisable(GL_CULL_FACE);
-    
-    // draw random blocks inside the maze
-    for (int i=0; i<blocks.size(); i++)
+
+    // draw moving balls
+    for (int i=0; i<balls.size(); i++)
     {
-        ofPushMatrix();
-        ofTranslate(blocks[i]+ofVec3f(0, 20, 0));
-        ofSetColor(255);
-        ofBox(40);
-        ofPopMatrix();
+        balls[i]->draw();
     }
     
-//    for (int j=0; j<NUM_CELLS_Y; j++)
+    // draw random blocks inside the maze
+//    for (int i=0; i<blocks.size(); i++)
 //    {
-//        for (int i=0; i<NUM_CELLS_X; i++)
-//        {
-//            cells[i][j]->draw(false);
-//        }
+//        ofPushMatrix();
+//        ofTranslate(blocks[i]+ofVec3f(0, 20, 0));
+//        ofSetColor(255);
+//        ofBox(20);
+//        ofPopMatrix();
 //    }
-	
+    
     ofPopMatrix();
 }
 
 float Maze::getWidth()
 {
     return NUM_CELLS_X*cellSize;
+}
+
+ofxSimpleSpline* Maze::createSimpleSpline(int sx, int sy, int length)
+{
+    bool cellSearched[NUM_CELLS_X][NUM_CELLS_Y] = {false};
+    std::stack<MazeCell*> solveStack;
+
+    MazeCell* cell = cells[sx][sy];
+    solveStack.push(cell);
+    
+    for (int i=0; i<length; i++)
+    {
+        // this is one step
+        
+        // add available direction from the current cell
+        vector<int> dirs;
+        if (!cell->top) dirs.push_back(0);
+        if (!cell->right) dirs.push_back(1);
+        if (!cell->bottom) dirs.push_back(2);
+        if (!cell->left) dirs.push_back(3);
+
+        bool found = false;
+        while(!found)
+        {
+            int x = cell->getX();
+            int y = cell->getY();
+            int dirIdx = (int)ofRandom(dirs.size());
+            int dir = dirs[dirIdx];
+            
+            switch (dir) {
+                case 0:
+                    if (y>0 && !cellSearched[x][y-1]) {
+                        cell = cells[x][y-1];
+                        solveStack.push(cell);
+                        cellSearched[x][y-1] = true;
+                        found=true;
+                    }
+                    else {
+                        dirs.erase(dirs.begin() + dirIdx);
+                    }
+                    break;
+                case 1:
+                    if (x<NUM_CELLS_X-1 && !cellSearched[x+1][y]) {
+                        cell = cells[x+1][y];
+                        solveStack.push(cell);
+                        cellSearched[x+1][y] = true;
+                        found=true;
+                    }
+                    else {
+                        dirs.erase(dirs.begin() + dirIdx);
+                    }
+                    break;
+                case 2:
+                    if (y<NUM_CELLS_Y-1 && !cellSearched[x][y+1]) {
+                        cell = cells[x][y+1];
+                        solveStack.push(cell);
+                        cellSearched[x][y+1] = true;
+                        found=true;
+                    }
+                    else {
+                        dirs.erase(dirs.begin() + dirIdx);
+                    }
+                    break;
+                case 3:
+                    if (x>0 && !cellSearched[x-1][y]) {
+                        cell = cells[x-1][y];
+                        solveStack.push(cell);
+                        cellSearched[x-1][y] = true;
+                        found=true;
+                    }
+                    else {
+                        dirs.erase(dirs.begin() + dirIdx);
+                    }
+                    break;
+            }
+            
+            if (!found && dirs.size()==0) {
+                // we got to an end point, pop from the stack (backtracing)
+                i--;
+                solveStack.pop();
+                cell = solveStack.top();
+                found = true;
+            }
+        }
+    }
+
+    // create the path curve based on solveStack
+    vector<ofVec3f> points;
+
+    while (!solveStack.empty())
+    {
+        cell = solveStack.top();
+        cout<<"cell["<<cell->getX()<<"]["<<cell->getY()<<"]\n";
+        points.push_back(ofVec3f(cell->getX()*cellSize+cellSize/2,
+                                 ParamManager::getInstance().ballRadius,
+                                 cell->getY()*cellSize+cellSize/2));
+        solveStack.pop();
+    }
+
+    ofxSimpleSpline* curve = new ofxSimpleSpline();
+    curve->setSubdivisions(10);
+    curve->addControlVertices(points);
+    curve->update();
+    
+    return curve;
 }
 
 void Maze::generateStep()
@@ -160,7 +280,7 @@ void Maze::generateStep()
     while (!valid) {
         int curx = currentCell->getX();
         int cury = currentCell->getY();
-        int dir_idx = int(ofRandom(available_dirs.size()));
+        int dir_idx = (int)ofRandom(available_dirs.size());
         int dir = available_dirs[dir_idx];
         
         switch(dir) {
