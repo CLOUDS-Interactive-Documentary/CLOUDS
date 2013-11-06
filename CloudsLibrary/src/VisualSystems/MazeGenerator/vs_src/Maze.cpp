@@ -116,7 +116,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     ofTranslate(pos);
     
     int camCellY = (int)(cam->getPosition().z / cellSize);
-    camCellY = max(0, camCellY-10);
+    camCellY = max(0, camCellY-30);
     int lastVisibleLine = (int)MIN((int)camCellY + ParamManager::getInstance().showAhead, NUM_CELLS_Y);
     
     // draw surface
