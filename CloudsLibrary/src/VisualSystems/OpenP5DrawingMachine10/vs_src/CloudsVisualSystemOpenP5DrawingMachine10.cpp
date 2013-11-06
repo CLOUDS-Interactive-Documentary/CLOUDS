@@ -24,7 +24,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
     customGui->addSpacer();
     customGui->addIntSlider("NUM PARTICLES", 1, 100000, &numParticles);
     customGui->addIntSlider("NUM ATTRACTORS", 1, 500, &numAttractors);
-    customGui->addSlider("SPEED FACTOR", 0, 1, &speedFactor);
+    customGui->addSlider("SPEED FACTOR", 0, 500, &speedFactor);
     customGui->addSlider("MAX DIST", 0, 1, &maxDist);
     
     customGui->addSpacer();
@@ -206,7 +206,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         updateShader.begin();
         {
             updateShader.setUniformTexture("posData", updateBuffer.src->getTextureReference(), 0); // Previus position
-            updateShader.setUniform1f("timestep", timeStep);
+            updateShader.setUniform1f("timestep", timeStep / 1000.0f);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
 
