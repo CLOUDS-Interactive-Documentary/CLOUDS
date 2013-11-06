@@ -9,13 +9,14 @@
 #include "Rand.h"
 
 ofTrueTypeFont Rand::Font;
+int Rand:: columns = 20;
+int Rand:: rows = 20;
 
-Rand:: Rand(float _posX, float _posY, float _posZ){
+Rand:: Rand(float _posX, float _posY, float _randomNumber){
     
     posX = _posX;
     posY = _posY;
-    posZ = _posZ;
-    ID;
+    randomNumber = _randomNumber;
     
    
 }
@@ -33,61 +34,43 @@ void Rand::setup(){
 }
 
 
-void Rand::drawNumbers(){
+/*
+void Rand::generateNoisyNumber(){
     int frameCount = ofGetFrameNum();
     
-    ofTranslate(posX, posY, posZ);
-    noiseRotate(posX, posY);
+
+    float noise = ofNoise(posX + frameCount*.01, posY + frameCount*speed) * ofMap(ofGetMouseX(), 0, ofGetWidth(), .01, 2);
     
-    float currentMouseX = lerp(ofGetMouseX(), previousMouseX, 0.8);
-    float currentMouseY = lerp(ofGetMouseY(), previousMouseY, 0.8);
-    
-    float Xthrottle = ofMap(currentMouseX, 0, ofGetWidth(), .005, .7);
-    float Ythrottle = ofMap(currentMouseY, 0, ofGetHeight(), .05, 6.0);
-    
-    previousMouseX = currentMouseX;
-    previousMouseY = currentMouseY;
-    
-    //speed = ofMap(ofGetMouseY(), 0, ofGetHeight(), .01, .03);
-    //cout << "speed = "<< cos(rotNoise) << endl;
-    
-    float rotNoise = ofNoise(posX + frameCount*speed, posY + frameCount*speed) * ofMap(ofGetMouseX(), 0, ofGetWidth(), .01, 2);
-    
-    float rotX = frameCount * cos(rotNoise) * Xthrottle;
-    // cout << "noiseX = "<< cos(rotNoise) << endl;
-    float rotY = frameCount * sin(rotNoise) * Xthrottle;
-    //  cout << "noiseY = "<< sin(rotNoise) << endl;
-    float rotZ =(frameCount * Ythrottle);
-    
-    // ofRotateX(ofRadToDeg(rotX+=rotX));
-    // ofRotateY(ofRadToDeg(rotY+=rotY));
-    // ofRotateZ(rotZ);
-    
-   // ofRotateX(rotX);
-   // ofRotateY(rotY);
-   // ofRotateZ(rotZ);
+    float noiseX = frameCount * cos(rotNoise) * Xthrottle;
+    float noiseY = frameCount * sin(rotNoise) * Xthrottle;
+    float noiseZ =(frameCount * Ythrottle);
     
     ofSetColor(225);
     
+}
+ */
+
+
+
+void Rand::drawNumbers(){
+    
+    //draws an array of random numbers
+   // ofPushMatrix();{
+        
+    ofTranslate(posX, posY);
     std::ostringstream ostr; //output string stream
-   // ostr << rotX*.10; //use the string stream just like cout
-    
-    ostr << int(ofRandom(10000,99999)+.5);
+    ostr << this->randomNumber;
     std::string number = ostr.str();
-    
-	Font.drawString(number, 14.0f, 1.037);
-    
-    /*
-    text.size = 10;
-    text = &rotX;
-    font.drawString(ofToUpper(text), (text.size), 0);
-    */
+    Font.drawString(number, 14.0f, 1.037);
+  //  }
+ //   ofPopMatrix();
 }
 
-float Rand::lerp(float a, float b, float f)
-{
-    return a + f * (b - a);
+void Rand::generateRandomNumber(){
+ 
+    this->randomNumber = int(ofRandom(10000, 99999)+.5);
 }
+
 
 void Rand::noiseRotate(float posX, float posY){
         

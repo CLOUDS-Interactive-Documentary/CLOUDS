@@ -61,15 +61,13 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
     //ofSetFrameRate(30);
     Rand::Font.loadFont(getVisualSystemDataPath() + "Courier.ttf", 14, true, true, true);
 
-    //int IDnumber = 0;
     
-    for (int i = 0; i < num-1; i++){
-        for (int j = 0; j < num-1; j ++){ //rows
-    grid.push_back(Rand(j*xoffset, i*yoffset, 0));
-          //  grid.back().ID = IDnumber + 1;
+    for (int i = 0; i < Rand::rows-1; i++){
+        for (int j = 0; j < Rand::columns-1; j ++){ //rows
+        grid.push_back(Rand(j*xoffset, i*yoffset, int(ofRandom(10000, 99999)+.5)));
+                       
         }
     }
-
 }
 
 
@@ -116,14 +114,25 @@ void CloudsVisualSystemRandomDigits::selfDraw(){
             ofPushStyle();
             ofPushMatrix();
         
+            ofTranslate(-800,-400);
             //noiseRotation
-            sleep(50);
+            sleep(150);
             grid[i].drawNumbers();
-            sleep(50);
-       
+            //sleep(150);
             ofPopMatrix();
             ofPopStyle();
     }
+
+    
+    for (Iter = grid.begin(); Iter != grid.end(); ++Iter )
+    {
+       cout << " randomNumbers =  " << (*Iter).randomNumber;
+       
+    }
+    
+    //int randomIndex = int(ofRandom(grid.size()));
+   // Rand[randomIndex].generateRandomNumber();
+    
     cam.end();
 
 }

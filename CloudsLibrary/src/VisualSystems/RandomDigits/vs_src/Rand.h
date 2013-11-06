@@ -17,15 +17,22 @@ public:
     int ID; 
     float posX;
     float posY;
-    float posZ;
-    ofVec3f axis;
-    float angle;
-    ofMesh mesh;
+    int randomNumber;
     
+    static int columns; //columns of numbers
+    static int rows; //rows of numbers
+    
+    //vector <int> randomNumbers;
+    //vector <int> noisyNumbers;
+ 
     Rand(float posX, float posY, float posZ);
     void setup(); 
     void noiseRotate(float _x, float _y);
+    void generateNoisyNumber();
+    void generateRandomNumber(); 
     void drawNumbers();
+
+    
     float lerp(float _a, float _b, float _f);
     
     // text
