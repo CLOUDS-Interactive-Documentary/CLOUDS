@@ -50,7 +50,6 @@
 		2AAEF59F180F136F005F33D3 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		2AAEF5A0180F136F005F33D3 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF578180F136F005F33D3 /* del_impl.cpp */; };
 		640A315218243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640A315018243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.cpp */; };
-		640A315518243DAC00DDFBA2 /* SOLPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 640A315418243DAC00DDFBA2 /* SOLPlayer.cpp */; };
 		643F134118213B3B003988A3 /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643F132918213B3B003988A3 /* libftgl.a */; };
 		643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133218213B3B003988A3 /* ofxFTGLFont.cpp */; };
 		643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 643F133418213B3B003988A3 /* ofxFTGLSimpleLayout.cpp */; };
@@ -275,8 +274,6 @@
 		2AAEF57C180F136F005F33D3 /* triangle_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = triangle_impl.hpp; sourceTree = "<group>"; };
 		640A315018243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5SeaOfLines.cpp; sourceTree = "<group>"; };
 		640A315118243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5SeaOfLines.h; sourceTree = "<group>"; };
-		640A315318243DA300DDFBA2 /* SOLPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOLPlayer.h; sourceTree = "<group>"; };
-		640A315418243DAC00DDFBA2 /* SOLPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SOLPlayer.cpp; sourceTree = "<group>"; };
 		643F130C18213B3B003988A3 /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		643F130D18213B3B003988A3 /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		643F130E18213B3B003988A3 /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -771,8 +768,6 @@
 			children = (
 				640A315118243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.h */,
 				640A315018243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.cpp */,
-				640A315318243DA300DDFBA2 /* SOLPlayer.h */,
-				640A315418243DAC00DDFBA2 /* SOLPlayer.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1703,7 +1698,6 @@
 				643F134518213B3B003988A3 /* ofxFTGLFont.cpp in Sources */,
 				643F134618213B3B003988A3 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				640A315218243CC900DDFBA2 /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
-				640A315518243DAC00DDFBA2 /* SOLPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

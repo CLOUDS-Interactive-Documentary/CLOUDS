@@ -12,8 +12,17 @@
 
 #include "CloudsVisualSystem.h"
 
-#include "SOLPlayer.h"
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+struct SOLPlayer
+{
+    float x, y;
+    float speed;
+    float sx, sy;
+};
 
+//--------------------------------------------------------------
+//--------------------------------------------------------------
 class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
 {
     public:
@@ -92,9 +101,12 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
 
     protected:
         ofxUISuperCanvas * customGui;
-        ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
+        ofx1DExtruder * bgAlpha;
         ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
-        ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
+    
+        float collideDist, lineDist;
+        float minSpeed, maxSpeed;
+        float gravity;
     
         ofFbo canvas;
         vector<SOLPlayer *> players;
