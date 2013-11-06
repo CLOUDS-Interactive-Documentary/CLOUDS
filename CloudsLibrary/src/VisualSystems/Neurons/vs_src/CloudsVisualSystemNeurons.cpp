@@ -20,8 +20,68 @@ int _C::rootCount = 4;
 float _C::danceAmp = 0;
 float _C::danceFreq = 0;
 float _C::danceOffset = 0;
+bool _C::renderNeurons = true;
 
-void _C::reset(){
+void _C::selfSetup(){
+    rotation = 0;
+    reset();
+    readFromFile( "brain2" );
+    generateFlythrough();
+    
+}
+
+void _C::selfSetupGuis(){
+    spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
+    dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
+    nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
+    axonThicknessSlider = gui->addSlider("Axon Thickness",0, 10, 5);
+    alphaSlider = gui->addSlider("Alpha",0, 1, 0.5);
+    swaySlider = gui->addSlider("Sway",0, 10, 5);
+    nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
+    resetButton = gui->addButton("Reset", false, 64,64);
+    rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
+    danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
+    danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
+    danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
+    saveButton = gui->addButton("Save Neurons", false, 32,32);
+    loadButton = gui->addButton("Load Neurons", false, 32,32);
+
+    gui->addToggle("Show Neurons", &renderNeurons);
+    
+    generateCamPath = gui->addButton( "Generate Flythrough",false, 32,32);
+    generateRandCam = gui->addButton( "Generate Random Cam Bounce",false, 32,32);
+    camDuration = gui->addSlider("Cam Path Duration",0,120,60);
+}
+
+
+
+void _C::selfUpdate(){
+    
+    cloudsPathCam.update();
+    
+    rotation += spinSlider->getScaledValue();
+    
+    _N::terminals.clear();
+    vector<_N*>::iterator it;
+    for(it=rootNodes.begin();it!=rootNodes.end();it++){
+        (*it)->update();
+    }
+    
+    axonThickness = axonThicknessSlider->getScaledValue();
+    dotSize = dotSizeSlider->getScaledValue();
+    alpha = alphaSlider->getScaledValue();
+    sway = swaySlider->getScaledValue();
+    nodeMax = nodeMaxSlider->getScaledValue();
+    rootCount = rootCountSlider->getScaledValue();
+    danceAmp = danceAmpSlider->getScaledValue();
+    danceFreq = danceFreqSlider->getScaledValue();
+    danceOffset = danceOffsetSlider->getScaledValue();
+    
+    
+}
+
+
+void _C::reset(bool createRootNodes){
     
     //free all dynamically allocated memory
     
@@ -38,38 +98,51 @@ void _C::reset(){
     
     // lay down new root nodes in an inward facing spherical formation
     
-    int stepsTheta = sqrt(rootCount);
-    int stepsPhi = sqrt(rootCount);
-    float incTheta = (PI*2)/(float)stepsTheta;
-    float incPhi = (PI)/(float)stepsPhi;
-    for(int j=0;j<stepsPhi+1;j++){
-        for(int i=0;i<stepsTheta;i++){
-            
-            //sphere coordinate math
-            float x = cos(i*incTheta) * sin(j*incPhi);
-            float y = sin(i*incTheta) * sin(j*incPhi);
-            float z = cos(j*incPhi);
-            
-            _N *n = new _N();
-            n->generation = 0;
-            
-            //set the direction to current point scaled out.
-            // only works if pivot == origin
-            
-            n->future.x = n->x = x * 50;
-            n->future.y = n->y = y * 50;
-            n->future.z = n->z = z * 50;
-            n->direction = ofPoint(-x,-y,-z);
-            rootNodes.push_back(n);
+    if(createRootNodes){
+        int stepsTheta = sqrt(rootCount);
+        int stepsPhi = sqrt(rootCount);
+        float incTheta = (PI*2)/(float)stepsTheta;
+        float incPhi = (PI)/(float)stepsPhi;
+        for(int j=0;j<stepsPhi+1;j++){
+            for(int i=0;i<stepsTheta;i++){
+                
+                //sphere coordinate math
+                float x = cos(i*incTheta) * sin(j*incPhi);
+                float y = sin(i*incTheta) * sin(j*incPhi);
+                float z = cos(j*incPhi);
+                
+                _N *n = new _N();
+                n->generation = 0;
+                
+                //set the direction to current point scaled out.
+                // only works if pivot == origin
+                
+                n->future.x = n->x = x * 50;
+                n->future.y = n->y = y * 50;
+                n->future.z = n->z = z * 50;
+                n->direction = ofPoint(-x,-y,-z);
+                rootNodes.push_back(n);
+            }
         }
     }
+    mixCam = CloudsVisualSystem::getCameraRef();
 }
 
 void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
-    }else if(e.widget->getName()=="Freeze Tree To Disk" && ofGetMousePressed()){
-        // TODO: serialize node tree into a flat file.
+    }else if(e.widget == saveButton && ofGetMousePressed()){
+        writeToFile( "new_brain" );
+    }else if(e.widget == loadButton && ofGetMousePressed()){
+        cout << ofGetTimestampString() << endl;
+        readFromFile( "brain1" );
+        cout << ofGetTimestampString() << endl;
+    }else if(e.widget == generateCamPath && ofGetMousePressed() ) {
+        generateFlythrough();
+    }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
+        generateRandCamBounce();
+    }else if(e.widget == camDuration && ofGetMousePressed() ) {
+        cloudsPathCam.setDuration(camDuration->getScaledValue());
     }
 }
 
@@ -77,60 +150,193 @@ string _C::getSystemName(){
   return "Neurons";
 }
 
+void _C::generateRandCamBounce(){
+    //reset cam path.
+    cloudsPathCam.clear();
+
+    float s = 50;
+    ofVec3f firstPos;
+    for(int i=0;i<10.0;i++){
+        // add a random point somewhere
+        ofVec3f p = ofVec3f(
+                            ofRandomf() * s,
+                            ofRandomf() * s,
+                            ofRandomf() * s
+                            );
+        cloudsPathCam.addPositionControlVertex( p );
+        cloudsPathCam.addTargetControlVertex(ofVec3f());
+        if(i==0)firstPos = p;
+    }
+    
+    //one more to make it loop.
+    
+    cloudsPathCam.addPositionControlVertex( firstPos );
+    cloudsPathCam.addTargetControlVertex(ofVec3f());
+    
+    
+    // orient cam path to look inward,
+    // so we always start out seeing something full
+    
+    ofCamera& cam = getCameraRef();
+    cam.lookAt(ofVec3f());
+}
+
+void _C::generateFlythrough(){
+    //reset cam path.
+    cloudsPathCam.clear();
+
+    
+    // find someone in the youngest possible generation of terminal
+    // therefore insuring a long path between a terminal and a root parent.
+    int youngestGen = 0;
+    _N *thisNode = NULL;
+    
+    vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
+    for(;nit!=_N::all.end();nit++){
+        
+        if( (*nit)->isTerminal() ){
+            if((*nit)->generation > youngestGen) {
+                youngestGen = (*nit)->generation;
+                thisNode = (*nit);
+            }
+        }
+        
+    }
+    
+    
+    deque<ofVec3f> pts; //collecting points as i go, so i can add them backwards, later.
+    
+    ofVec3f firstPoint = *thisNode; // make a copy of the first point for lookAt() later.
+    
+    while( thisNode->parent != NULL  ){
+        
+        cloudsPathCam.addPositionControlVertex( *thisNode );
+        cloudsPathCam.addTargetControlVertex(ofVec3f());
+        pts.push_back( *thisNode );
+
+        //traverse up the parent
+        
+        if( thisNode->parent != NULL ){
+            thisNode = thisNode->parent;
+        }else{
+            break;
+        }
+    }
+    
+    // then add the same points in reverse, to scrub back and forth
+    // rather than seeing where the loop wraps around.
+    
+    deque<ofVec3f>::reverse_iterator pit = pts.rbegin();
+    for(;pit!=pts.rend();pit++){
+        cloudsPathCam.addPositionControlVertex( *pit );
+        cloudsPathCam.addTargetControlVertex(ofVec3f());
+    }
+    
+    // orient cam path to look inward,
+    // so we always start out seeing something full
+    ofCamera& cam = getCameraRef();
+    cam.lookAt( -firstPoint );
+}
+
+
+ofCamera& _C::getCameraRef(){
+    ofCamera& ogCam = CloudsVisualSystem::getCameraRef();
+    ogCam.setGlobalPosition(  cloudsPathCam.getGlobalPosition() - camDistance );
+    mixCam.setGlobalOrientation(ogCam.getGlobalOrientation());
+    return ogCam;
+}
 
 /**
     serializes node network into a flat file
  */
-void _C::writeToDisk(string dirname){
-    ofstream outfile((dirname + "/hansolo.carbonite").c_str());
-    outfile << "hi there";
+void _C::writeToFile(string filename){
+    //open outfile
+    ofLogNotice() << "Saving neurons to " << filename;
+    ofstream fout((ofToDataPath(getVisualSystemDataPath()) + string("sets/") + filename ).c_str(), ios::binary);
+    fout << "NeuronNetwork " << 0 // important! increment this version number as needed.
+        << endl;
+    
+    // flatten all neurons to a file
+    vector<_N*>::iterator nit = _N::all.begin();
+    for(;nit!=_N::all.end();nit++){
+        (*nit)->serialize(fout);
+    }
+    
+    fout.close();
+    ofLogNotice() << "Done saving.";
 }
 
-void _C::selfSetup(){
-    rotation = 0;
-    reset();
+
+
+/**
+ unserializes node network from a flat file and into memory.
+ */
+void _C::readFromFile(string filename){
+    
+    reset(false);
+    
+    ofLogNotice() << "Loading neurons from " << filename;
+    ifstream fin((ofToDataPath(getVisualSystemDataPath()) + string("sets/") + filename).c_str());
+    
+    while(fin.good()){
+        string token;
+        fin >> token;
+        if(token=="NeuronNetwork"){ // file header
+            float version;
+            fin >> version;
+            ofLogNotice() << "NeuronNetwork file version " << version;
+        }else if(token=="N"){
+            _N *n = new _N(fin); // node will parse the file by itself.
+        }else if(token==""){
+            fin.close();
+            break;
+        }else{
+            ofLogError() << "Unrecognized token: " << token;
+        }
+    }
+    
+    if(fin.is_open()){
+        fin.close();
+    }
+    
+    // resolve indices to pointers.
+    
+    vector<_N*>::iterator nit = _N::all.begin();
+    for(;nit != _N::all.end();nit++){
+        if( ((int)(*nit)->parent) == -1 ){ // if it was stored in the file as -1
+            (*nit)->parent = NULL; // convert it back to null.
+            rootNodes.push_back(*nit); // collect the parent into the root list.
+        }else{
+            //otherwise a straight element index.
+            (*nit)->parent = _N::all[ (int)((*nit)->parent) ];
+        }
+        
+        // start a fresh list of pointers
+        vector<_N*> pointers;
+        
+        //for all children
+        vector<_N*>::iterator cit = (*nit)->children.begin();
+        for(;cit != (*nit)->children.end(); cit++){
+            
+            //record the current pointer for the given index.
+            pointers.push_back( _N::all[ (int)(*cit) ] );
+        }
+        
+        //swap lists
+        (*nit)->children = pointers;
+        
+        
+    }
+    
+    ofLogNotice() << "Done loading.";
+
 }
 
-void _C::selfSetupGuis(){
-	spinSlider = gui->addSlider("Spin Speed",-6.0, 6.0,1);
-	dotSizeSlider = gui->addSlider("Dot Size",1, 64, 2);
-    nucleusSize = gui->addSlider("Nucleus Size",0, 5, 1);
-    axonThicknessSlider = gui->addSlider("Axon Thickness",0, 10, 5);
-    alphaSlider = gui->addSlider("Alpha",0, 1, 0.5);
-    swaySlider = gui->addSlider("Sway",0, 10, 5);
-    nodeMaxSlider = gui->addSlider("Max Nodes",0, 100000, 10000);
-    resetButton = gui->addButton("Reset", false, 64,64);
-    rootCountSlider = gui->addSlider("Seed Count", 2,64,4);
-    danceAmpSlider = gui->addSlider("Dance Amplitude",0,10,5);
-    danceFreqSlider = gui->addSlider("Dance Frequency",0,0.5,0.1);
-    danceOffsetSlider = gui->addSlider("Dance Offset",0,0.5,0.1);
-    saveButton = gui->addButton("Freeze Tree To Disk", false, 32,32);
-}
+
+
 
 void _C::selfPresetLoaded(string presetPath){
 	reset();
-}
-
-void _C::selfUpdate(){
-	
-    rotation += spinSlider->getScaledValue();
-
-    _N::terminals.clear();
-    vector<_N*>::iterator it;
-    for(it=rootNodes.begin();it!=rootNodes.end();it++){
-        (*it)->update();
-    }
-
-	axonThickness = axonThicknessSlider->getScaledValue();
-	dotSize = dotSizeSlider->getScaledValue();
-    alpha = alphaSlider->getScaledValue();
-    sway = swaySlider->getScaledValue();
-    nodeMax = nodeMaxSlider->getScaledValue();
-    rootCount = rootCountSlider->getScaledValue();
-    danceAmp = danceAmpSlider->getScaledValue();
-    danceFreq = danceFreqSlider->getScaledValue();
-    danceOffset = danceOffsetSlider->getScaledValue();
-    
 }
 
 void _C::selfDrawBackground(){
@@ -139,46 +345,60 @@ void _C::selfDrawBackground(){
 
 void _C::selfDraw(){
 	
-	ofPushMatrix();
-	ofRotate(rotation,0,0,1);
+    ofPushMatrix();
     
+    //cloudsPathCam.draw();
+
+    //ofSetColor(0,0xff,0);
+    //cloudsPathCam.drawPaths(5);
+
+    //ofRotate(rotation,0,0,1);
+
     //some camera sway
     ofTranslate(
                 ofNoise( ofGetFrameNum() * 0.01 , 1000) * _C::sway,
                 ofNoise( ofGetFrameNum() * 0.01 , 2000) * _C::sway,
                 ofNoise( ofGetFrameNum() * 0.01 , 3000) * _C::sway
     );
-	_N::drawMode = GL_LINES;
-
     
-    // for all root nodes:
-    vector<_N*>::iterator it;
-    int tCount=0;
-    for(it=rootNodes.begin();it!=rootNodes.end();it++){
+    /*
+    ofCamera *cam = getCurrentCamera();
+    cam->setGlobalPosition( *rootNodes[0] );
+     */
+    
+    
+    if(renderNeurons){
         
-        glPushMatrix();
-        glTranslatef((*it)->x,(*it)->y,(*it)->z);
-        glColor4f((*it)->r,(*it)->g,(*it)->b,_C::alpha);
-        glutSolidSphere(nucleusSize->getScaledValue(),8,8);
-        glPopMatrix();
-        (*it)->draw();
-        tCount++;
+        _N::drawMode = GL_LINES;
+        
+        // for all root nodes:
+        vector<_N*>::iterator it;
+        int tCount=0;
+        for(it=rootNodes.begin();it!=rootNodes.end();it++){
+            
+            glPushMatrix();
+            glTranslatef((*it)->x,(*it)->y,(*it)->z);
+            glColor4f((*it)->r,(*it)->g,(*it)->b,_C::alpha);
+            glutSolidSphere(nucleusSize->getScaledValue(),8,8);
+            glPopMatrix();
+            (*it)->draw();
+            tCount++;
+        }
+        
+        glPointSize(dotSize);
+        glBegin(GL_POINTS);
+        glColor3f(1,1,1);
+        
+        // for all terminals
+        for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
+            glVertex3f( (*it)->x,
+                                    (*it)->y,
+                                    (*it)->z );
+        }
+        
+        glEnd();
+        
     }
-	
-	glPointSize(dotSize);
-	glBegin(GL_POINTS);
-	glColor3f(1,1,1);
-    
-    // for all terminals
-	for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
-		glVertex3f( (*it)->x,
-								(*it)->y,
-								(*it)->z );
-	}
-	
-	glEnd();
-	
-
 
 	ofPopMatrix();
 	
@@ -191,7 +411,7 @@ vector<_N*> _N::all;
 vector<_N*> _N::terminals;
 GLuint _N::drawMode = 0;
 int _N::maxDepth = 0;
- 
+
 
 void _N::update(){
 
@@ -276,7 +496,7 @@ void _N::update(){
 			n->g += ( average - n->g ) * 0.01f;
 			n->b += ( average - n->b ) * 0.01f;
 			n->generation = generation + 1;
-            if(maxDepth < n->generation)maxDepth = n->generation;
+            n->updateMaxDepth();
 		}
 		children.push_back( n );
 	}
@@ -286,6 +506,10 @@ void _N::update(){
 	}
 
 	age++;
+}
+
+void _N::updateMaxDepth(){
+ if(maxDepth < generation)maxDepth = generation;
 }
 
 bool _N::isTerminal(){
@@ -335,7 +559,82 @@ _N::TreeNode(){
 	age = 0;
 }
 
+_N::TreeNode(ifstream &fin){
+
+    
+    ident = all.size();
+	all.push_back(this);
+
+    
+    int fileIdent;
+    fin >> fileIdent;
+    if(fileIdent != ident){
+        ofLogError() << "Neuron file loader: " << "non-matching identities: " << fileIdent << " != " << ident;
+    }else{
+        //cout << "MATCHING identities: " << fileIdent << " == " << ident << endl;
+    }
+    
+    fin >> x >> y >> z >>
+        future.x >> future.y >> future.z >>
+        r >> g >> b >> a >>
+        rot.x >> rot.y >> rot.z >>
+        generation >> age >>
+        direction.x >> direction.y >> direction.z;
+    
+    
+    // store both parent index and child indices into pointer slots temporarily
+    // and i promise to resolve the indices to pointers in a later global pass.
+    
+    int parentIndex;
+    fin >> parentIndex;
+    parent = (_N*)(parentIndex);
+    
+    int childCount;
+    fin >> childCount;
+    
+    int childIndex;
+    
+    for(int i=0;i<childCount;i++){
+        fin >> childIndex;
+        children.push_back((_N*)childIndex);
+    }
+    
+    updateMaxDepth();
+    
+}
+
 _N::~TreeNode(){
 }
+
+void _N::serialize(ofstream &fout){
+    
+    //dump out all my attributes.
+    
+    fout << "N " << ' ' <<
+        ident << ' ' <<
+        x << ' ' << y << ' ' << z << ' ' <<
+        future.x << ' ' << future.y << ' ' << future.z << ' ' <<
+        r << ' ' << g << ' ' << b << ' ' << a << ' ' <<
+        rot.x << ' ' << rot.y << ' ' << rot.z << ' ' <<
+        generation << ' ' << age << ' ' <<
+        direction.x << ' ' << direction.y << ' ' << direction.z << ' ' ;
+    
+    // convert linkage pointers into file indexes,
+    // assuming nodes are written in same order as they appear in _N::all
+    
+    if(parent==NULL){
+        fout << -1 << ' ';
+    }else{
+        fout << parent->ident << ' ';
+    }
+    
+    fout << children.size() << ' ';
+    
+    for(int i=0;i<children.size();i++){
+        fout << children[i]->ident << ' ';
+    }
+    fout << endl;
+}
+
 
 

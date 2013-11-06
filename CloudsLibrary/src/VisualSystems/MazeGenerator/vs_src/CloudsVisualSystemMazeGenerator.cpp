@@ -143,7 +143,7 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze(60, 4, 40);
+    maze[0] = new Maze(60, 8, 60);
     maze[0]->generate();
     
     mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
@@ -190,20 +190,19 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
-    mazeCam->begin();
-
     if (bLights) {
         light->enable();
     }
     
+    mazeCam->begin();
+
     maze[0]->draw(mazeCam);
-    mazeCam->draw();
+    
+    mazeCam->end();
     
     if (bLights) {
         light->disable();
     }
-    
-    mazeCam->end();
 }
 
 // draw any debug stuff here
@@ -223,6 +222,7 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 {
 	
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMazeGenerator::selfExit()
 {

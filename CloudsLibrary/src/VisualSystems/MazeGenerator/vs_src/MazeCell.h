@@ -27,6 +27,8 @@ public:
     
     void draw(bool isGenerator);
     
+    size_t addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals);
+    
     int getX() { return x; }
     int getY() { return y; }
     void visit() { visited = true; }

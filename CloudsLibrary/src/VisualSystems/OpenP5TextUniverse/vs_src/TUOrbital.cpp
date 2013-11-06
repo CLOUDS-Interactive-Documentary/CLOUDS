@@ -13,6 +13,18 @@ float TUOrbital::focusY;
 float TUOrbital::focusZ;
 
 ofxFTGLSimpleLayout TUOrbital::font;
+string TUOrbital::fontName = "Helvetica.ttf";
+float TUOrbital::lineLength = 150.0f;
+float TUOrbital::fontSize = 14;
+float TUOrbital::fontDepth = 0;
+bool TUOrbital::bAllCaps = false;
+ofColor TUOrbital::textColor(255);
+
+ofColor TUOrbital::lineColor(255);
+float TUOrbital::lineWidth = 1.0f;
+
+ofColor TUOrbital::nodeColor(255);
+float TUOrbital::nodeScalar = 1.0f;
 
 //--------------------------------------------------------------
 TUOrbital::TUOrbital(float size, float radius)
@@ -22,7 +34,7 @@ TUOrbital::TUOrbital(float size, float radius)
     this->size = size;
     this->radius = radius;
     
-    bSelected = bClicked = true;
+    bSelected = bClicked = bRenderText = true;
 }
 
 //--------------------------------------------------------------
@@ -34,7 +46,7 @@ TUOrbital::TUOrbital(TUOrbital& parent, string text)
     this->size = parent.size / 3 * 2;
     this->radius = parent.radius / 2;
     
-    bSelected = bClicked = true;
+    bSelected = bClicked = bRenderText = true;
 }
 
 //--------------------------------------------------------------
@@ -82,31 +94,34 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
     {
         ofTranslate(pos);
         
-        ofSetColor(255);
-        
         for (int i = 0; i < children.size(); i++) {
-            ofLine(ofVec3f::zero(), children[i].pos);
+            if (lineWidth > 0) {
+                ofSetColor(lineColor);
+                ofLine(ofVec3f::zero(), children[i].pos);
+            }
             
             // recursive draw
             children[i].draw(cam, bMouseDragged);
         }
         
-        // orient to camera position
-        ofVec3f rotations = cam.getOrientationEuler();
-        ofRotateX(rotations.x);
-        ofRotateY(rotations.y);
-        ofRotateZ(rotations.z);
+        billboard();
         ofScale(1, -1, 1);
         
-        if (bClicked) {
-            font.drawString(text, size, 0);
+        if (bRenderText && bClicked) {
+            ofSetColor(textColor);
+            if (bAllCaps) {
+                font.drawString(ofToUpper(text), (size * nodeScalar), 0);
+            }
+            else {
+                font.drawString(text, (size * nodeScalar), 0);
+            }
         }
         
-        ofRect(-size / 2.0f, -size / 2.0f, size, size);
+        ofSetColor(nodeColor);
+        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
         
         if (!bMouseDragged) {
             if (isMouseover(cam)) {
-                
                 if (ofGetMousePressed()) {
                     bClicked = true;
                     bSelected = true;
@@ -129,7 +144,30 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         }
     }
     ofPopMatrix();
+}
+
+//--------------------------------------------------------------
+void TUOrbital::billboard()
+{
+	// Get the current modelview matrix.
+	float modelview[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX , modelview);
     
+	// Undo all rotations.
+	// Beware all scaling is lost as well.
+	for (int i = 0; i < 3; i++) {
+		for (int j=0; j < 3; j++) {
+			if (i == j) {
+				modelview[i * 4 + j] = 1.0;
+            }
+			else {
+				modelview[i * 4 + j] = 0.0;
+            }
+		}
+    }
+    
+	// Set the modelview with no rotations.
+	glLoadMatrixf(modelview);
 }
 
 //--------------------------------------------------------------

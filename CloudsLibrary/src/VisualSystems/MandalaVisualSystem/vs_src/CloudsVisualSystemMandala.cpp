@@ -6,12 +6,6 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include <stdlib.h>     /* atoi */
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
-//These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemMandala::selfSetupGui()
 {
 	vector<string> blendTypes;
@@ -84,6 +78,7 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	surfaceGui->setColorFill( ofColor(30,30,40, 255) );
 	
 	surfaceGui->addSpacer();
+	surfaceGui->addToggle("bDrawSurface", &bDrawSurface );
 	surfaceGui->addToggle("smoothSurface", &bSmoothSurface );
 	
 	surfaceGui->addSpacer();
@@ -105,13 +100,34 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	profileTypeNames.push_back("half circle & wave");
 	surfaceGui->addRadio("profileTypes", profileTypeNames );
 	
-	
-	
 	ofAddListener(surfaceGui->newGUIEvent, this, &CloudsVisualSystemMandala::selfGuiEvent);
 	guis.push_back(surfaceGui);
 	guimap[customGui->getName()] = surfaceGui;
 	
+	//animation gui
+	animationGui = new ofxUISuperCanvas("ANIMATION", gui);
+	animationGui->copyCanvasStyle(gui);
+	animationGui->copyCanvasProperties(gui);
+	animationGui->setName("ANIMATION");
+	animationGui->addFPS();
+	animationGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	animationGui->setColorFill( ofColor(30,30,40, 255) );
+	
+	animationGui->addToggle("bDrawFill", &bDrawFill);
+	animationGui->addToggle("bDrawEdges", &bDrawEdges);
+	animationGui->addSlider( "edgeWidth", 0, 10, &bouncingCubesLineWidth);
+	animationGui->addToggle("bDrawPoints", &bDrawPoints);
+	animationGui->addSlider( "pointSize", 0, 10, &bouncingCubesPointSize);
+	animationGui->addToggle("draw bouncing cubes", &bDrawBouncingCubes);
+	animationGui->addToggle("draw ribbon curves", &bDrawRibbons);
+	
+	ofAddListener(animationGui->newGUIEvent, this, &CloudsVisualSystemMandala::selfGuiEvent);
+	guis.push_back(animationGui);
+	guimap[customGui->getName()] = animationGui;
+	
 }
+
+
 
 void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -129,7 +145,7 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 	
 	else if(kind == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 	{
-		cout << e.getToggle()->getParent()->getName() << endl;
+//		cout << e.getToggle()->getParent()->getName() << endl;
 		
 		if(name == "square")	setupNodules( square, numW, numH );
 		else if(name == "triangle")	setupNodules( triangle, numW, numH );
@@ -143,6 +159,16 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 			for (int i=0; i<profileTypeNames.size(); i++) {
 				if(profileTypeNames[i] == name)	profileType = name;
 			}
+		}
+		
+		else if(name == "draw bouncing cubes")
+		{
+			setupBouncingCubes();
+		}
+		
+		else if(name == "draw ribbon curves")
+		{
+			setupRibbons();
 		}
 	}
 	
@@ -161,7 +187,6 @@ void CloudsVisualSystemMandala::selfGuiEvent(ofxUIEventArgs &e)
 	}
 }
 
-//Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemMandala::selfSetupSystemGui(){
 	
 }
@@ -169,7 +194,7 @@ void CloudsVisualSystemMandala::selfSetupSystemGui(){
 void CloudsVisualSystemMandala::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
-//use render gui for display settings, like changing colors
+
 void CloudsVisualSystemMandala::selfSetupRenderGui(){
 
 }
@@ -178,19 +203,24 @@ void CloudsVisualSystemMandala::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
 void CloudsVisualSystemMandala::selfSetup()
 {
 	//set defaults
+	controlSplineOffset = .25;
 	controlSplinesLineWidth = 5;
 	noduleLineWidth = 4;
 	bDrawFill = true;
 	bDrawEdges = false;
 	bDrawPoints = false;
+	bDrawSurface = false;
 	bDrawSurfaceWirframe = false;
 	bDrawSurfaceSplines = false;
+	
+	bBouncingCubesAreSetpup = false;
+	bDrawBouncingCubes = false;
+	
+	bRibbonsSetup = false;
+	bDrawRibbons = false;
 	
 	bMirrorSurface = true;
 	
@@ -228,6 +258,19 @@ void CloudsVisualSystemMandala::selfSetup()
 	
 	profileType = "half circle";
 	
+	ribbonColor1.set(1,1,0,.5);
+	ribbonColor2.set(0,1,1,.5);
+	ribbonWidth = 3.;
+	ribbonPointSize = 3.;
+	ribbonBlendMode = OF_BLENDMODE_ADD;
+	bDrawRibbonPoints = true;
+	bDrawRibbonLines = true;
+	
+	bouncingCubesLineWidth = 3;
+	bouncingCubesPointSize = 3;
+	
+	bSurfaceRingsSetup = false;
+	
 	//load some images for gui and debug
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
 	debugImage.loadImage( getVisualSystemDataPath() + "images/spaceBalls.png" );
@@ -235,13 +278,17 @@ void CloudsVisualSystemMandala::selfSetup()
 	loadShaders();
 	
 	//load some simple geometry for our surface animations
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/square.obj", square );
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/circle.obj", circle );
-	ofxObjLoader::load( getVisualSystemDataPath() + "models/triangle.obj", triangle );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/square.obj", square, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/circle.obj", circle, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/triangle.obj", triangle, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/box.obj", box, false );
+	ofxObjLoader::load( getVisualSystemDataPath() + "models/dodecahedron.obj", dodecahedron, false );
 	
 	meshes.push_back( &square );
 	meshes.push_back( &circle );
 	meshes.push_back( &triangle );
+	meshes.push_back( &box );
+	meshes.push_back( &dodecahedron );
 	
 	//create some control vertices
 	profileVertices.resize(15);
@@ -287,15 +334,216 @@ void CloudsVisualSystemMandala::selfSetup()
 	//setup our surface
 	surface.setControlVertices( cv );
 	surface.setup(3,3);
-	surface.setClosed( true, false );
+	surface.setClosed( false, false );
 	
-	int fboWidth = ofGetWidth() * 2;
-	animatedMap.allocate(fboWidth, fboWidth / 3);
+	animatedMap.allocate( 2048, 1024);
+//	int fboWidth = ofGetWidth() * 2;
+//	animatedMap.allocate(fboWidth, fboWidth / 3);
 		
 	currentTexture = &animatedMap.getTextureReference();
 	
 	//shapes content
 	setupNodules( triangle, numW, numH );
+	
+	
+	posTicker.begin(tickDebug, ofVec3f(-1,-1,-1), ofVec3f(1,1,1), 3);
+	
+//	surfaceBoxUV.set(0., .5);
+//	uvTicker.begin( surfaceBoxUV, ofVec2f(.025,0.5), .25 );
+//	uvTicker.setContinue( true );
+	
+//	setupBouncingCubes();
+	
+	setupSurfaceRings( 3 );
+}
+
+void CloudsVisualSystemMandala::setupSurfaceRings(int vCount, unsigned int numExtras, float extraOffset)
+{
+	bSurfaceRingsSetup = true;
+	
+	surfaceRingsCV.clear();
+	
+	surfaceRingsCV.resize(13);
+	
+	float uStep = 1. / surfaceRingsCV.size();
+	for (int i=0; i<surfaceRingsCV.size(); i++)
+	{
+		surfaceRingsCV[i].setSurface( &surface );
+		
+		surfaceRingsCV[i].uv.x = uStep * i;
+		surfaceRingsCV[i].uv.y = .5;
+		
+		MandalaTicker<float> uTick;
+		uTick.begin(surfaceRingsCV[i].uv.x, surfaceRingsCV[i].uv.x, surfaceRingsCV[i].uv.x + .0999, .5);
+		uTick.setDelay(.25);
+		uTick.setContinue();
+		addTicker(uTick);
+		
+		MandalaTicker<float> vTick;
+		vTick.begin(surfaceRingsCV[i].uv.y, surfaceRingsCV[i].uv.y, surfaceRingsCV[i].uv.y + .0999, .5);
+		vTick.setContinue();
+		addTicker(vTick);
+		
+	}
+	
+	vector<ofVec3f> cv(surfaceRingsCV.size());
+	surfaceRing.addControlVertices( cv );
+	
+//	//clear the old ones
+//	for (int i=0; i<surfaceRings.size(); i++)
+//	{
+//		surfaceRings[i].clear();
+//	}
+//	surfaceRingsPointOnSurfaceNodes.clear();
+//	
+//	//builf our new ones
+//	surfaceRings.resize(vCount * (numExtras+1) );
+//	
+//	int ringSubd = 13;
+//	float kStep = 1. / ringSubd;
+//	
+//	for (int i=0; i<vCount; i++)
+//	{
+//		for(int j=0; j<=numExtras; j++)
+//		{
+//			float vPos = float(i) / vCount;
+//			vPos += extraOffset * j;
+//			vector<ofVec3f> cv(ringSubd);
+//			for (int k=0; k<cv.size(); k++)
+//			{
+//				cv[k].set( kStep * k, vPos);
+//			}
+//			surfaceRings[i*(numExtras+1) + j].addControlVertices( cv );
+//		}
+//	}
+//	
+//	vector<ofVec3f>* cv;
+//	for(int i=0; i<surfaceRings.size(); i++)
+//	{
+//		cv = &surfaceRings[i].getControlVertices();
+//		
+//		for(int j=0; j<cv->size(); j++)
+//		{
+//			PointOnSurfaceNode pOnS;
+//			pOnS.setSurface( &surface );
+//			pOnS.setTarget( (*cv)[j] );
+//			pOnS.uv.set((*cv)[j].x, (*cv)[j].y );
+//			surfaceRingsPointOnSurfaceNodes.push_back(pOnS);
+//		}
+//	}
+}
+
+void CloudsVisualSystemMandala::setupBouncingCubes(int numW, int numH)
+{
+	if(!bBouncingCubesAreSetpup)
+	{
+		bBouncingCubesAreSetpup = true;
+		float step = 1. / numH;
+		float stepJ = 1. / numW;
+		for (int i=0; i<numH; i++)
+		{
+			for (int j=0; j<numW; j++)
+			{
+//				MandalaSurfaceShape* shape = addSurfaceShape( &surface, &box );
+				
+				MandalaSurfaceShape* shape = new MandalaSurfaceShape(&surface, &box);
+				bouncingCubes.push_back(shape);
+				
+				shape->setScale( 100, 100, 150 );
+				
+				MandalaTicker<ofVec2f> uv;
+				uv.setDelay( step );
+				uv.begin( shape->uv, ofVec2f( stepJ*j, step*i + (j%2)*.5*stepJ), ofVec2f( stepJ*j, step*(i+1)+(j%2)*.5*stepJ), 1 );
+				uv.setContinue( true );
+				addTicker( uv );
+			}
+		}
+	}
+}
+
+void CloudsVisualSystemMandala::updateRibbons()
+{
+	if(bRibbonsSetup)
+	{
+		setupRibbons();
+	}
+	
+	for (int i=0; i<ribbonSplines.size(); i++) {
+		ribbonSplines[i].update();
+	}
+	float iStep = 1. / ribbonSplinesUVs.size();
+	vector<ofVec3f>* cv;
+	for(int i=0; i<ribbonSplinesUVs.size(); i++)
+	{
+		float jStep = 1. / ribbonSplinesUVs[i].size();
+		cv = &ribbonSplines[i].getControlVertices();
+		for (int j=0; j<ribbonSplines[i].getControlVertices().size(); j++)
+		{
+			ribbonSplines[i].getControlVertex(j) = ribbonSplinesUVs[i][j].surface->pointOnSurface( ribbonSplinesUVs[i][j].uv );
+//			(*cv)[j] = ribbonSplinesUVs[i][j].surface->pointOnSurface( ribbonSplinesUVs[i][j].uv );
+		}
+	}
+}
+
+MandalaSurfaceShape* CloudsVisualSystemMandala::addSurfaceShape( ofxSimpleSurface* s, ofVboMesh* m )
+{
+	MandalaSurfaceShape* shape = new MandalaSurfaceShape(s, m);
+	surfaceShapes.push_back( shape );
+	return shape;
+}
+
+void CloudsVisualSystemMandala::setupRibbons(int numSplines, int numCV)
+{
+	if(!bRibbonsSetup)
+	{
+		bRibbonsSetup = true;
+		ribbonSplines.resize( numSplines );
+		ribbonSplinesUVs.resize( numSplines );
+		
+		float iStep = 1. / numSplines, jStep = 1. / numCV;
+		for (int i=0; i<ribbonSplines.size(); i++)
+		{
+			ribbonSplines[i].setSubdivisions( 4 );
+			ribbonSplines[i].getControlVertices().resize(numCV);
+			ribbonSplinesUVs[i].resize(numCV);
+			for (int j=0; j<ribbonSplinesUVs[i].size(); j++)
+			{
+				ribbonSplines[i].addControlVertex(ofVec3f());
+				ribbonSplinesUVs[i][j].setSurface( &surface );
+				ribbonSplinesUVs[i][j].uv.set( iStep * i, jStep * j );
+				//ribbonSplinesUVs[i][j].uv.x *= -1;
+				//ribbonSplinesUVs[i][j].uv.x -= floor(ribbonSplinesUVs[i][j].uv.x);
+				if(i%2)
+				{
+					MandalaTicker<float> ribbonU;
+					ribbonU.setDelay( .25 );
+					ribbonU.begin( ribbonSplinesUVs[i][j].uv.x, ribbonSplinesUVs[i][j].uv.x, ribbonSplinesUVs[i][j].uv.x+jStep * j, 1. );
+					ribbonU.setContinue();
+					addTicker( ribbonU );
+
+				}
+				else{
+					
+					MandalaTicker<float> ribbonU;
+					ribbonU.setDelay( .25 );
+					ribbonU.begin( ribbonSplinesUVs[i][j].uv.x, ribbonSplinesUVs[i][j].uv.x, ribbonSplinesUVs[i][j].uv.x-jStep * j, 1. );
+					ribbonU.setContinue();
+					addTicker( ribbonU );
+				}
+			}
+		}
+	}
+}
+
+void CloudsVisualSystemMandala::updateBouncingCubes()
+{
+	float vVal;
+	for (int i=0; i<bouncingCubes.size(); i++)
+	{
+		vVal = bouncingCubes[i]->uv.y - floor(bouncingCubes[i]->uv.y);
+		
+		bouncingCubes[i]->scl = ofVec3f(100,200,100) * (1. - abs(vVal*2.-1.));
+	}
 }
 
 void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH )
@@ -319,31 +567,89 @@ void CloudsVisualSystemMandala::setupNodules( ofVboMesh& m, int numW, int numH )
 	}
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemMandala::selfPresetLoaded(string presetPath){
 	
 }
 
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemMandala::selfBegin()
 {
 }
 
-//do things like ofRotate/ofTranslate here
-//any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemMandala::selfSceneTransformation(){
 	
 }
 
-//normal update call
+void CloudsVisualSystemMandala::updateTickers( float t )
+{
+	//float
+	for (int i=tickersf.size()-1; i>=0; i--)
+	{
+		tickersf[i].update(t);
+		if(tickersf[i].ended())
+		{
+			//romve the dead ones
+			tickersf.erase( tickersf.begin() + i );
+		}
+		else if(tickersf[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	//2f
+	for (int i=tickers2f.size()-1; i>=0; i--)
+	{
+		tickers2f[i].update(t);
+		if(tickers2f[i].ended())
+		{
+			//romve the dead ones
+			tickers2f.erase( tickers2f.begin() + i );
+		}
+		else if(tickers2f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	
+	//3f
+	for (int i=tickers3f.size()-1; i>=0; i--)
+	{
+		tickers3f[i].update(t);
+		if(tickers3f[i].ended())
+		{
+			//romve the dead ones
+			tickers3f.erase( tickers3f.begin() + i );
+		}
+		else if(tickers3f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+	
+	//4f
+	for (int i=tickers4f.size()-1; i>=0; i--)
+	{
+		tickers4f[i].update(t);
+		if(tickers4f[i].ended())
+		{
+			//romve the dead ones
+			tickers4f.erase( tickers4f.begin() + i );
+		}
+		else if(tickers4f[i].endTrigger)
+		{
+			//something on loop/continue start...
+		}
+	}
+}
+
+
 void CloudsVisualSystemMandala::selfUpdate()
 {
-	//move the control vertices around
 	float t = ofGetElapsedTimef();
+
+	updateTickers( t );
+	
+	//move the control vertices around
+	
 	float sweepScl = sin(t) * .25 + .75;
 	float iStep = 360 / float(numSpans-1);
 	
@@ -360,59 +666,159 @@ void CloudsVisualSystemMandala::selfUpdate()
 	
 	noiseTime += noiseTimeScale / max(1.f,ofGetFrameRate());
 	float nx, ny, nz;
+	ofVec3f offsetV(0,0,controlSplineOffset);
 	for (int i=0; i<numSpans; i++)
 	{
 		sweeper.rotate(-iStep, ofVec3f(0,1,0));
 		
 		for (int j=0; j<profileVertices.size(); j++)
 		{
-			if(profileType == "half circle")	cv[i][j] = profileVertices[j] * sweeper.getGlobalTransformMatrix();
-			else if(profileType == "wave")	cv[i][j] = waveCV[j] * sweeper.getGlobalTransformMatrix();
+			if(profileType == "half circle")
+			{
+				cv[i][j] = (profileVertices[j] + offsetV) * sweeper.getGlobalTransformMatrix();	
+			}
+			else if(profileType == "wave")
+			{
+				cv[i][j] = (waveCV[j] + offsetV) * sweeper.getGlobalTransformMatrix();
+			}
 			else{
 				curveMix = ofMap( curveMixStep*j, .25, .35, 0, 1, true);
 				curveMix *= curveMix;
-				cv[i][j] = (curveMix * waveCV[j] + (1. - curveMix) * profileVertices[j]) * sweeper.getGlobalTransformMatrix();
+				cv[i][j] = ((curveMix * waveCV[j] + (1. - curveMix) + profileVertices[j]) + offsetV) * sweeper.getGlobalTransformMatrix();
 			}
 			
 			if(noiseOffset>.1)
 			{
-				nx = (cv[i][j].x + noiseTime) * noiseScale;
-				//ny = cv[i][j].y * noiseScale;
-				nz = cv[i][j].z * noiseScale;
-				
-				cv[i][j].y += ofSignedNoise(nx,nz) * noiseOffset;
+				if(profileType == "half circle")
+				{
+					cv[i][j] += cv[i][j].normalized() * ofSignedNoise(cv[i][j].x,cv[i][j].y + noiseTime,cv[i][j].z) * noiseOffset;
+				}
+				else
+				{
+					nx = (cv[i][j].x + noiseTime) * noiseScale;
+					//ny = cv[i][j].y * noiseScale;
+					nz = cv[i][j].z * noiseScale;
+					
+					cv[i][j].y += ofSignedNoise(nx,nz) * noiseOffset;
+				}
 			}
 		}
 	}
 	
 	//update the surface geometry
-	surface.update();
+	if(bDrawSurface)	surface.update();
+	
+	if(bDrawRibbons)	updateRibbons();
+	
+	if(bDrawBouncingCubes)	updateBouncingCubes();
 	
 	//TODO: delete this:
 	ofSetWindowTitle( ofToString(ofGetFrameRate()) );
 	
 }
 
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMandala::selfDraw()
 {
 	float t = ofGetElapsedTimef();
 	
 	//draw shapes to fbo
-	drawShapesToFbo(t);
+	if(bDrawSurface)	drawShapesToFbo(t);
 	
 	
-	//draw the 3D scene
-	glEnable( GL_DEPTH_TEST );
-	ofSetColor(255,255,255);
-	camera.begin();
+	if(bDrawSurface)
+	{
+		//draw the 3D scene
+		glEnable( GL_DEPTH_TEST );
+		ofSetColor(255,255,255);
+		
+		ofEnableBlendMode(surfaceBlendMode);
+		
+		drawSurface( surface );
+	}
 	
-	ofEnableBlendMode(surfaceBlendMode);
+	ofVec3f sPos, sNorm;
+	surface.getMeshPositionAndNormal( sPos, sNorm, surfaceBoxUV.x, surfaceBoxUV.y);
 	
-	drawSurface( surface );
+	surfaceBox.resetTransform();
+	surfaceBox.setPosition( sPos );
+	surfaceBox.setScale(1,1,2);
+	ofQuaternion q;
+	q.makeRotate( surfaceBox.getZAxis(), sNorm );
+	surfaceBox.setOrientation( q );
 	
-	camera.end();
+
+	glEnable(GL_DEPTH_TEST);
+	ofSetColor(255);
+//	surfaceBox.transformGL();
+//	ofBox(0,0,0, 30);
+//	surfaceBox.restoreTransformGL();
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	facingRatio.begin();
+	for (int i=0; i<surfaceShapes.size(); i++)
+	{
+		surfaceShapes[i]->draw(bDrawFill, bDrawEdges);
+	}
+	
+	if(bDrawBouncingCubes)
+	{
+		glLineWidth( bouncingCubesLineWidth );
+		glPointSize( bouncingCubesPointSize );
+		for (int i=0; i<bouncingCubes.size(); i++)
+		{
+			bouncingCubes[i]->draw(bDrawFill, bDrawEdges, bDrawPoints );
+		}
+	}
+
+	facingRatio.end();
+	
+	
+	if(bDrawRibbons)
+	{
+		glDisable(GL_DEPTH_TEST);
+
+		ofEnableBlendMode( ribbonBlendMode );
+		ofSetColor(255,255,255,100);
+		
+		glLineWidth( ribbonWidth );
+		glPointSize( ribbonPointSize );
+		
+		ribbonShader.begin();
+		ribbonShader.setUniform4f("c1", ribbonColor1.r, ribbonColor1.g, ribbonColor1.b, ribbonColor1.a);
+		ribbonShader.setUniform4f("c2", ribbonColor2.r, ribbonColor2.g, ribbonColor2.b, ribbonColor2.a);
+		
+		for(int i=0;i<ribbonSplines.size();i++)
+		{
+			if(bDrawRibbonPoints)	ribbonSplines[i].draw( GL_POINTS );
+			if(bDrawRibbonLines)	ribbonSplines[i].draw( GL_LINE_STRIP );
+			
+		}
+		ribbonShader.end();
+		
+		ofDisableAlphaBlending();
+	}
+	
+	for (int i=0; i<surfaceRingsCV.size(); i++)
+	{
+		surfaceRingsCV[i].update();
+		ofSphere( surfaceRingsCV[i].position, 30);
+	}
+	
+	vector<ofVec3f>& cv = surfaceRing.getControlVertices();
+	for (int i=0; i<cv.size(); i++)
+	{
+		cv[i] = surfaceRingsCV[i].position;
+	}
+	
+	surfaceRing.update();
+	
+	ofSetColor(255, 0, 0,255);
+	surfaceRing.draw();
+	
+	
+	
+	glDisable(GL_CULL_FACE);
 }
 
 void CloudsVisualSystemMandala::drawShapesToFbo( float t)
@@ -459,6 +865,9 @@ void CloudsVisualSystemMandala::drawShapesToFbo( float t)
 
 void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 {
+	float t = ofGetElapsedTimef();
+	
+	
 	ofPushMatrix();
 	//ofScale(1,.5, 1);
 	
@@ -476,13 +885,11 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 	if(currentTexture != NULL)
 	{
 		ofSetColor( 255 );
-		facingRatio.begin();
-		facingRatio.setUniformTexture("map", *currentTexture, 0);
-		facingRatio.setUniform2f("mapDim", currentTexture->getWidth(), currentTexture->getHeight() );
-//		facingRatio.setUniformTexture("map", animatedMap, 0);
-//		facingRatio.setUniform2f("mapDim", animatedMap.getWidth(), animatedMap.getHeight() );
-		facingRatio.setUniform1f("polarAlphaExpo", polarAlphaExpo);
-		facingRatio.setUniform1f("polarAlphaExpoScale", polarAlphaExpoScale);
+		surfaceShader.begin();
+		surfaceShader.setUniformTexture("map", *currentTexture, 0);
+		surfaceShader.setUniform2f("mapDim", currentTexture->getWidth(), currentTexture->getHeight() );
+		surfaceShader.setUniform1f("polarAlphaExpo", polarAlphaExpo);
+		surfaceShader.setUniform1f("polarAlphaExpoScale", polarAlphaExpoScale);
 		
 		//	glDisable( GL_DEPTH_TEST );
 		////	glEnable(GL_CULL_FACE);
@@ -498,13 +905,14 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 		ofEnableAlphaBlending();
 		glDisable( GL_DEPTH_TEST );
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		
+//		glEnable( GL_DEPTH_TEST );
 		surface.draw();
 		
 		glDisable(GL_CULL_FACE);
 		
 		
-		facingRatio.end();
+		
+		surfaceShader.end();
 		
 	}
 	
@@ -522,37 +930,38 @@ void CloudsVisualSystemMandala::drawSurface(ofxSimpleSurface& surface )
 	ofDisableAlphaBlending();
 }
 
-// draw any debug stuff here
 void CloudsVisualSystemMandala::selfDrawDebug(){
 	
 }
-// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
+
 void CloudsVisualSystemMandala::selfDrawBackground(){
 
 	//turn the background refresh off
 	//bClearBackground = false;
 	
 }
-// this is called when your system is no longer drawing.
-// Right after this selfUpdate() and selfDraw() won't be called any more
+
 void CloudsVisualSystemMandala::selfEnd(){
 }
 
-// this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemMandala::selfExit()
 {
 	for(int i=0;i<meshes.size();i++)
 	{
 		meshes[i]->clear();
 	}
+	
+	for (int i=0; i<surfaceShapes.size(); i++)
+	{
+		delete surfaceShapes[i];
+	}
+	surfaceShapes.clear();
 }
 
-//events are called when the system is active
-//Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemMandala::selfKeyPressed(ofKeyEventArgs & args)
 {
 	if(args.key == 'L' || args.key == 'l'){
-//		shader.load( getVisualSystemDataPath() + "shaders/facingRatio" );
+//		shader.load( getVisualSystemDataPath() + "shaders/surfaceShader" );
 		loadShaders();
 	}
 	
@@ -584,6 +993,22 @@ void CloudsVisualSystemMandala::selfMouseReleased(ofMouseEventArgs& data){
 void CloudsVisualSystemMandala::loadShaders()
 {
 	normalShader.load( getVisualSystemDataPath() + "shaders/normalShader");
+	surfaceShader.load( getVisualSystemDataPath() + "shaders/surfaceShader");
 	facingRatio.load( getVisualSystemDataPath() + "shaders/facingRatio");
 	noduleShader.load( getVisualSystemDataPath() + "shaders/noduleShader" );
+	ribbonShader.load( getVisualSystemDataPath() + "shaders/ribbonShader" );
+}
+
+
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<float> ticker ){
+	tickersf.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec2f> ticker ){
+	tickers2f.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec3f> ticker ){
+	tickers3f.push_back( ticker );
+}
+void CloudsVisualSystemMandala::addTicker( MandalaTicker<ofVec4f> ticker ){
+	tickers4f.push_back( ticker );
 }

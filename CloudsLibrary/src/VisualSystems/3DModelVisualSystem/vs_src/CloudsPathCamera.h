@@ -35,6 +35,8 @@ public:
 	void update();
 	void update( float t );
 	
+	void drawPaths( float lineWidth = 3);
+	
 	void setStartTime( float _startTime );
 	void setDuration(float _duration );
 	

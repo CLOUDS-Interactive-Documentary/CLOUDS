@@ -54,9 +54,6 @@ void CloudsPathCamera::loadPathFromFile( string path )
 	addUpControlVertices( cameraUp );
 	
 	startTime = ofGetElapsedTimef();
-	
-//	setLoop( false );
-//	useUp( true );
 }
 
 void CloudsPathCamera::addPositionControlVertex( ofVec3f v )
@@ -106,7 +103,7 @@ void CloudsPathCamera::setUpControlVertices( vector<ofVec3f>& v )
 	upSpline.addControlVertices( v );
 }
 
-void CloudsPathCamera::update()
+void CloudsPathCamera::	update()
 {
 	float t = ofMap( ofGetElapsedTimef(), startTime, startTime + duration,0 ,1);
 	update( t );
@@ -120,6 +117,18 @@ void CloudsPathCamera::update( float t )
 	setPosition( positionSpline.getPoint( t ) );
 	if(bUseUpSpline)	lookAt( targetSpline.getPoint( t ), upSpline.getPoint( t ) );
 	else	lookAt( targetSpline.getPoint( t ) );
+}
+
+void CloudsPathCamera::drawPaths( float lineWidth)
+{
+	glLineWidth(lineWidth);
+	ofSetColor(255,0,0, 255);
+	positionSpline.update();
+	positionSpline.draw();
+	
+	ofSetColor(0,0,255, 255);
+	targetSpline.update();
+	targetSpline.draw();
 }
 
 void CloudsPathCamera::setStartTime( float _startTime )

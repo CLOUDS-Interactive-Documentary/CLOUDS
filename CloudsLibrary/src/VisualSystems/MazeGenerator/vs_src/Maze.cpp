@@ -8,6 +8,8 @@
 
 #include "Maze.h"
 
+#define SIDE_WALLS
+
 Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
 {
     cellSize = cSize;
@@ -29,7 +31,6 @@ Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
     finishedGenerating = false;
     finishedSolving = false;
     step = 0;
-    currentYLimit = 40;
 }
 
 Maze::~Maze()
@@ -46,8 +47,8 @@ Maze::~Maze()
 void Maze::generate()
 {
     // set starting (exit) point
-    int randX = 0;//(int)ofRandom(NUM_CELLS_X);
-    int randY = 0;//(int)ofRandom(NUM_CELLS_Y);
+    int randX = (int)ofRandom(NUM_CELLS_X);
+    int randY = (int)ofRandom(NUM_CELLS_Y);
     currentCell = cells[randX][randY];
     currentCell->visit();
     currentCell->mazeExit = true;
@@ -56,37 +57,56 @@ void Maze::generate()
     finishedGenerating = false;
     
     // generate the maze
-//    while (!finishedGenerating) {
-//        generateStep();
-//    }
-//    for (int i=0; i<10000; i++)
-//    {
-//        generateStep();
-//    }
+    while (!finishedGenerating) {
+        generateStep();
+    }
+    
+    buildModel();
+}
+
+void Maze::buildModel()
+{
+    vector<ofVec3f> vertices;
+    vector<ofVec3f> normals;
+    vertexCount = 0;
+    
+    for (int j=0; j<NUM_CELLS_Y; j++) {
+        vertexIndexForLines[j] = vertexCount;
+        for (int i=0; i<NUM_CELLS_X; i++) {
+            vertexCount += cells[i][j]->addGeometry(vertices, normals);
+        }
+    }
+
+    geometry.setVertexData(&vertices[0], vertices.size(), GL_STATIC_DRAW);
+    geometry.setNormalData(&normals[0], normals.size(), GL_STATIC_DRAW);
+
+	vertices.clear();
+	normals.clear();
+    
+    // setup boxes locations
+    for (int i=0; i<1000; i++)
+    {
+        blocks.push_back(ofVec3f(ofRandom(0, NUM_CELLS_X*cellSize),0, ofRandom(0, NUM_CELLS_Y*cellSize)));
+    }
 }
 
 void Maze::update(ofCamera *cam)
 {
-    if (!finishedGenerating) {
-        for (int i=0; i<8; i++) {
-            generateStep();
-        }
-    }
 }
 
 void Maze::draw(ofCamera *cam)
 {
     ofPushMatrix();
     ofTranslate(pos);
-    // for tiling
-    int yStart = cam->getPosition().z/cellSize-5;
-    int yLimit = min(yStart+(int)ParamManager::getInstance().showAhead, NUM_CELLS_Y);
-    if (yStart < 0) {
-        yStart = 0;
-    }
-    float length = (float)yLimit - yStart;
-    float middle = (float)yStart + length/2;
-
+    
+    int camCellY = (int)(cam->getPosition().z / cellSize);
+    camCellY = max(0, camCellY-10);
+    int lastVisibleLine = (int)MIN((int)camCellY + ParamManager::getInstance().showAhead, NUM_CELLS_Y);
+    
+    // draw surface
+    float length = (float)lastVisibleLine - camCellY;
+    float middle = (float)camCellY + length/2;
+    
     // draw the ground
     ofFill();
     ofSetColor(ParamManager::getInstance().getGroundColor());
@@ -96,28 +116,30 @@ void Maze::draw(ofCamera *cam)
     ofBox(1);
     ofPopMatrix();
     
-    // draw side walls
-    ofSetColor(ParamManager::getInstance().getSideWallsColor());
-    ofPushMatrix();
-    ofTranslate(0, 200-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 400, length*cellSize);
-    ofBox(1);
-    ofPopMatrix();
-    ofPushMatrix();
-    ofTranslate(NUM_CELLS_X*cellSize+0.1, 200-wallHeight/2, middle*cellSize);
-    ofScale(wallThickness, 400, length*cellSize);
-    ofBox(1);
-    ofPopMatrix();
-
-    // draw the cells
-    for (int i=0; i<NUM_CELLS_X; i++)
+    // draw maze geometry
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]);
+	glDisable(GL_CULL_FACE);
+    
+    // draw random blocks inside the maze
+    for (int i=0; i<blocks.size(); i++)
     {
-        for (int j=yStart; j<yLimit; j++)
-        {
-            cells[i][j]->draw(currentCell == cells[i][j]);
-        }
+        ofPushMatrix();
+        ofTranslate(blocks[i]+ofVec3f(0, 20, 0));
+        ofSetColor(255);
+        ofBox(40);
+        ofPopMatrix();
     }
     
+//    for (int j=0; j<NUM_CELLS_Y; j++)
+//    {
+//        for (int i=0; i<NUM_CELLS_X; i++)
+//        {
+//            cells[i][j]->draw(false);
+//        }
+//    }
+	
     ofPopMatrix();
 }
 
@@ -134,8 +156,6 @@ void Maze::generateStep()
     for (int i=0;i<4;i++)
     {
         available_dirs.push_back(i);
-        
-        
     }
     while (!valid) {
         int curx = currentCell->getX();
@@ -169,7 +189,7 @@ void Maze::generateStep()
                 }
                 break;
             case 2:
-                if (cury < min(NUM_CELLS_Y-1,currentYLimit-1) && cells[curx][cury+1]->notVisited()) {
+                if (cury < NUM_CELLS_Y-1 && cells[curx][cury+1]->notVisited()) {
                     currentCell->bottom = false;
                     currentCell = cells[curx][cury+1];
                     currentCell->visit();
@@ -199,11 +219,8 @@ void Maze::generateStep()
                 cellStack.pop();
             }
             else {
-                int prevLimit = currentYLimit;
-                currentYLimit += 60;
-                currentCell = cells[0][prevLimit+1];
-//                finishedGenerating = true; 
-//                currentCell = NULL;
+                finishedGenerating = true;
+                currentCell = NULL;
             }
             valid = true;
         }

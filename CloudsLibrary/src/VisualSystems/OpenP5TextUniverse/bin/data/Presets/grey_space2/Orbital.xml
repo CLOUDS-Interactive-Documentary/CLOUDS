@@ -1,0 +1,122 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Orbital</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>831.000000000</XPosition>
+    <YPosition>-51.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPIN SPEED</Name>
+    <Value>0.024630541</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE</Name>
+    <Value>139.433502197</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT</Name>
+    <Value>22.610836029</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI</Name>
+    <Value>150.738922119</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>75.369461060</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SCALAR</Name>
+    <Value>0.197044328</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE BRI</Name>
+    <Value>1.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT SAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT BRI</Name>
+    <Value>33.916255951</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT ALPHA</Name>
+    <Value>246.206893921</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ALL CAPS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE LENGTH</Name>
+    <Value>185.221679688</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FONT SIZE</Name>
+    <Value>6.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FONT DEPTH</Name>
+    <Value>0.985221684</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>HELVETICA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>MATERIA PRO</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>MUSEO 300</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>NEW MEDIA FETT</Name>
+    <Value>0</Value>
+</Widget>

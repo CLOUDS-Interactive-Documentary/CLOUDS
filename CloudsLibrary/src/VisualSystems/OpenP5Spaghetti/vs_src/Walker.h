@@ -17,8 +17,14 @@ class Walker {
 	Walker();
 	
 	ofVec3f position;
-    ofFloatColor color;
+    ofVec3f previousPosition;
+    ofVec3f currentPosition;
     
+    ofVec3f position1;
+    ofVec3f previousPosition1;
+    ofVec3f currentPosition1;
+    
+    ofColor color;
 	
     static int i;
     static float j;
@@ -30,8 +36,10 @@ class Walker {
     void init(int nParticles, ofColor color);
     void step();
     void smoothTrails();
+    void doubleTrails(); 
     void gnarlyTrails();
     void draw();
+    void setColor(ofColor color);
     
     //random seed for noise
     float seed;
@@ -46,16 +54,26 @@ class Walker {
     static bool drawPoints;
 	//float pointAlpha;
 	static bool drawLines;
+    //
+  //  static bool drawTriangles;
+    
+    static float saturation;
+    static float brightness;
+    
+    //thickness of double-trails
+    static float thickness;
     
     //the number of vertices in the mesh
     int numVertices;
     
+    ofVboMesh mesh;
     
     
   protected:
     
 //    vector<particle> particles;
-    ofVboMesh mesh;
+    
+    
     
     
   

@@ -14,6 +14,179 @@
 #include "ofxSimpleSurface.h"
 #include "ofxObjLoader.h"
 #include "ofxTween.h"
+#include "MandalaTicker.h"
+
+class SurfacePoint{
+public:
+	
+	SurfacePoint()
+	{
+		surface = NULL;
+		outpos = NULL;
+	};
+	~SurfacePoint(){}
+	
+	void setSurface( ofxSimpleSurface* s )
+	{
+		surface = s;
+	}
+	
+	void setTarget( ofVec3f* v)
+	{
+		outpos = v;
+	}
+	
+	void update()
+	{
+		if(surface!=NULL)
+		{
+//			position = surface->pointOnSurface(uv.x, uv.y);
+			surface->getSurfacePositionAndNormal( position, normal, uv.x, uv.y );
+		}
+		if(outpos != NULL)
+		{
+			*outpos = position;
+		}
+	}
+	
+
+	ofVec3f position, normal;
+	ofVec2f uv;
+	
+	ofVec3f* outpos;
+	ofxSimpleSurface* surface;
+};
+
+//class SurfacePoint{
+//public:
+//	SurfacePoint()
+//	{
+//		surface = NULL;
+//		outPos = NULL;
+//	}
+//	~SurfacePoint();
+//	
+//	void setSurface( ofxSimpleSurface* _surface)
+//	{
+//		surface = _surface;
+//	}
+//	
+//	void setTarget( ofVec3f& v )
+//	{
+//		outPos = &v;
+//	}
+//	
+//	void update()
+//	{
+//		if(surface != NULL)
+//		{
+//			surface->getSurfacePositionAndNormal(position, normal, uv.x, uv.y);
+//		}
+//		
+//		if(outPos != NULL)
+//		{
+//			*outPos = position;
+//		}
+//	}
+//	
+////	inline void operator=(SurfacePoint pOnS){
+////		position = pOnS.position;
+////		normal = pOnS.normal;
+////		uv = pOnS.uv;
+////		surface = pOnS.surface;
+////	}
+//	
+//	ofxSimpleSurface* surface;
+//	ofVec3f position, normal;
+//	ofVec3f* outPos;
+//	ofVec2f uv;
+//};
+
+class MandalaSurfaceShape : public ofNode{
+public:
+	MandalaSurfaceShape( ofxSimpleSurface* _surface = NULL, ofVboMesh* _m=NULL)
+	{
+		setSurface( _surface );
+		setMesh( _m );
+		
+		offset = 0.;
+		
+		scl.set(1,1,1);
+	}
+	~MandalaSurfaceShape(){}
+	
+	void setSurface( ofxSimpleSurface* _surface = NULL )
+	{
+		surface = _surface;
+	}
+	void setMesh( ofVboMesh* _m=NULL )
+	{
+		m = _m;
+		
+		color.set( ofRandom(2.), ofRandom(2.), ofRandom(2.) );
+		scl.set(ofRandom(30,300), ofRandom(30,300),ofRandom(30,300));
+	}
+	
+	void updateSamples()
+	{
+		if(surface != NULL)
+		{
+			surface->getSurfacePositionAndNormal( pOnS, nOnS, uv.x, uv.y );
+		}
+	}
+	
+	void updateTransform()
+	{
+		if(surface != NULL)
+		{
+			//get surface info
+//			surface->getMeshPositionAndNormal( pOnS, nOnS, uv.x, uv.y );
+			surface->getSurfacePositionAndNormal( pOnS, nOnS, uv.x, uv.y );
+			
+			//set up our transform
+			resetTransform();
+			
+			//position & rotate to surface
+			setPosition(pOnS + nOnS * offset );
+			
+//			setScale( getScale() );
+			setScale( scl );
+			
+			
+			//TODO: local rotation
+			lookAt( getPosition() + nOnS * 10. );
+			
+			
+		}
+	}
+	
+	void draw(bool bFill=true, bool bWireframe=false, bool bDrawPoints=false)
+	{
+		ofSetColor( color );
+		updateTransform();
+		
+		transformGL();
+		if(m!=NULL)
+		{
+			if(bFill)	m->draw();
+			if(bWireframe)	m->drawWireframe();
+			if(bDrawPoints)	m->drawVertices();
+		}
+		restoreTransformGL();
+	}
+	
+	//private:
+	ofxSimpleSurface* surface;
+	ofVboMesh* m;
+	ofVec2f uv;
+	
+//	ofQuaternion q;
+	ofVec3f pOnS, nOnS, scl;
+	float offset;
+	
+	ofFloatColor color;
+};
+
 
 class MandalaNodule : public ofNode{
 public:
@@ -162,7 +335,7 @@ public:
 	ofVboMesh* mesh;
 	
 	ofVec3f animationStartTime, animationEndTime;
-	ofVec3f targetPos, targetScl, targetRot;
+//	ofVec3f targetPos, targetScl, targetRot;
 	
 	bool bMoving, bScaling, bRotating;
 	
@@ -253,9 +426,9 @@ public:
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-	ofCamera& getCameraRef(){
-		return camera;
-	}
+//	ofCamera& getCameraRef(){
+//		return camera;
+//	}
 	
 	//
 	//	ofCamera& getCameraRef(){
@@ -270,11 +443,54 @@ protected:
 	void drawShapesToFbo(float t=ofGetElapsedTimef());
 	void setupNodules( ofVboMesh& m, int numW = 11, int numH = 5);
 	
+	//ANIMATIIONS
+	
+	//bouncing cubes
+	void setupBouncingCubes(int numW = 13, int numH = 7);
+	void updateBouncingCubes();
+	bool bBouncingCubesAreSetpup,bDrawBouncingCubes;
+	float bouncingCubesLineWidth, bouncingCubesPointSize;
+	
+	//ribbon curves
+	void setupRibbons(int numSplines=10, int numCV=21);
+	void updateRibbons();
+	bool bRibbonsSetup, bDrawRibbons;
+	vector<ofxSimpleSpline> ribbonSplines;
+	vector< vector<MandalaSurfaceShape> > ribbonSplinesUVs;
+	ofFloatColor ribbonColor1;
+	ofFloatColor ribbonColor2;
+	float ribbonWidth,ribbonPointSize;
+	bool bDrawRibbonPoints, bDrawRibbonLines;
+	ofBlendMode ribbonBlendMode;
+	
+	//surfaceRings
+	ofxSimpleSpline surfaceRing;
+	vector<ofxSimpleSpline> surfaceRings;
+	vector<SurfacePoint> surfaceRingsCV;
+	void setupSurfaceRings(int vCount, unsigned int numExtras=0, float extraOffset=.05);
+	bool bSurfaceRingsSetup;
+	
+	
+	
+	template <class T>
+	void addTicker( MandalaTicker<T> ticker ){
+		//we need to specialize this per data type
+		cout << "we don't handle this data type yet" << endl;
+	}
+	void addTicker( MandalaTicker<float> ticker );
+	void addTicker( MandalaTicker<ofVec2f> ticker );
+	void addTicker( MandalaTicker<ofVec3f> ticker );
+	void addTicker( MandalaTicker<ofVec4f> ticker );
+	void updateTickers( float t=ofGetElapsedTimef());
+	
+	MandalaSurfaceShape* addSurfaceShape( ofxSimpleSurface* s, ofVboMesh* m );
+	
 	vector<ofVboMesh*> meshes;
 	
 	ofxUISuperCanvas* customGui;
 	ofxUISuperCanvas* shapesGui;
 	ofxUISuperCanvas* surfaceGui;
+	ofxUISuperCanvas* animationGui;
 	
 	ofImage colorMap;
 	
@@ -284,11 +500,13 @@ protected:
 	
 	ofShader normalShader;
 	ofShader facingRatio;
+	ofShader surfaceShader;
+	ofShader ribbonShader;
 	float polarAlphaExpo, polarAlphaExpoScale;
 	
 	void loadShaders();
 	
-	ofEasyCam camera;
+//	ofEasyCam camera;
 	
 	
 	ofNode sweeper;
@@ -302,7 +520,7 @@ protected:
 	
 	ofFbo animatedMap;
 	
-	ofVboMesh square, circle, triangle;
+	ofVboMesh square, circle, triangle, dodecahedron, box;
 
 	
 	ofxSimpleSpline* blendCurve0;
@@ -315,6 +533,7 @@ protected:
 	float noduleLineWidth;
 	
 	bool bDrawSurfaceWirframe, bDrawSurfaceSplines;
+	vector<MandalaSurfaceShape*> bouncingCubes;
 	
 	bool bMirrorSurface, bSmoothSurface;
 	
@@ -323,13 +542,15 @@ protected:
 	
 	ofBlendMode noduleBlendType, surfaceBlendMode;
 	
+	float controlSplineOffset;
+	
 	float alphaSmoothScale, alphaSmoothExpo;
 	float waveScale;
 		
 	float noiseTimeScale, noiseScale, noiseOffset, noiseTime;
 	float blinkyness, blinkynessScale, blinkynessTimeScale;
 	
-	ofEasyCam orthoCamera;
+//	ofEasyCam orthoCamera;
 	
 	float noduleRotation;
 	float numW, numH;
@@ -342,4 +563,22 @@ protected:
 	
 	string profileType;
 	vector<string> profileTypeNames;
+	
+	ofVec3f tickDebug;
+	MandalaTicker<ofVec3f> posTicker;
+	
+	ofNode surfaceBox;
+	ofVec2f surfaceBoxUV;
+	
+	MandalaTicker<ofVec2f> uvTicker;
+	
+	vector<MandalaSurfaceShape*> surfaceShapes;
+	vector< MandalaTicker<ofVec2f> > uvTickers;
+	
+	vector< MandalaTicker<float> > tickersf;
+	vector< MandalaTicker<ofVec2f> > tickers2f;
+	vector< MandalaTicker<ofVec3f> > tickers3f;
+	vector< MandalaTicker<ofVec4f> > tickers4f;
+	
+	bool bDrawSurface;
 };

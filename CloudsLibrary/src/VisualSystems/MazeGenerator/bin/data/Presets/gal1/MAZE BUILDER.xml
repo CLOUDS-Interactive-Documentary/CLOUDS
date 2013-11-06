@@ -2,18 +2,48 @@
     <Kind>42</Kind>
     <Name>MAZE BUILDER</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>315.000000000</XPosition>
-    <YPosition>-8.000000000</YPosition>
+    <XPosition>1026.000000000</XPosition>
+    <YPosition>25.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>CAM SPEED</Name>
-    <Value>2.118226528</Value>
+    <Value>4.926108360</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM HEIGHT</Name>
+    <Value>453.201965332</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM ANGLE</Name>
+    <Value>49.655170441</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SHOW AHEAD</Name>
-    <Value>108.620689392</Value>
+    <Value>89.310340881</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LIGHT DIRECTION ANGLE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LX</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LY</Name>
+    <Value>264.236450195</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LZ</Name>
+    <Value>180.886688232</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -23,12 +53,12 @@
 <Widget>
     <Kind>25</Kind>
     <Name>GS</Name>
-    <Value>73.429298401</Value>
+    <Value>73.429481506</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>GB</Name>
-    <Value>150.863830566</Value>
+    <Value>142.853240967</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -48,15 +78,30 @@
 <Widget>
     <Kind>25</Kind>
     <Name>SH</Name>
-    <Value>168.219894409</Value>
+    <Value>144.188476562</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SS</Name>
-    <Value>105.471122742</Value>
+    <Value>69.424003601</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SB</Name>
-    <Value>150.863830566</Value>
+    <Value>106.806121826</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NS</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NB</Name>
+    <Value>255.000000000</Value>
 </Widget>

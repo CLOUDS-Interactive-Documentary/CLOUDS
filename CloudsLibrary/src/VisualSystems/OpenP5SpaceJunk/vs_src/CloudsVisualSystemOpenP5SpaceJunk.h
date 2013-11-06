@@ -97,7 +97,7 @@ class CloudsVisualSystemOpenP5SpaceJunk : public CloudsVisualSystem {
     void selfSceneTransformation();
 	
 	//normal update call
-	void selfUpdate();
+	void self   ();
 
 	// selfDraw draws in 3D using the default ofEasyCamera
 	// you can change the camera by returning getCameraRef()
@@ -146,10 +146,26 @@ protected:
 	ofFloatColor color2HSB;
 	
 	int limit = 500;
-
     float ang;
+    float speed_ = 10; //a number that increments ang
     
 	vector<Cube> list;
+    
+    float XrandMin;
+    float XrandMax;
+    float YrandMin;
+    float YrandMax;
+    float ZrandMin;
+    float ZrandMax;
+    
+    float XrotMin;
+    float XrotMax;
+    float YrotMin;
+    float YrotMax;
+    float ZrotMin;
+    float ZrotMax;
+    
+    bool shouldRegenerate; 
 		
 
 };

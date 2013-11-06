@@ -7,6 +7,21 @@ class CloudsCameraPathExporter:
 	output = "<!-- clouds camera path -->\n"
 	tags = []
 	spacer = ""
+
+	def getEveryNFrames(self):
+		result = cmds.promptDialog(
+		message='how many frames per sample?',
+		button=['OK', 'Cancel'],
+		defaultButton='OK',
+		cancelButton='Cancel',
+		dismissString='Cancel')
+
+		if result == 'OK':
+			text = int(cmds.promptDialog(query=True, text=True))
+			return text
+
+		return 5
+
 	def pushTag(self, tag):
 		self.tags.append( tag );
 		self.output += self.spacer + "<" + str(tag) + ">\n"
@@ -71,7 +86,7 @@ class CloudsCameraPathExporter:
 	def getCameraKeyframes(self, everyNFrames=15):
 
 		currentCamera = self.getCurrentCamera();
-		print "exporting camera info for: " + currentCamera
+		print "exporting camera info for: " + currentCamera + " at " + str(everyNFrames) + " frames per sample"
 
 		# cmds.select( currentCamera, r=True)
 		cameraTransform = cmds.listRelatives( currentCamera, p=True )[0]
@@ -87,4 +102,4 @@ class CloudsCameraPathExporter:
 
 
 camPath = CloudsCameraPathExporter()
-camPath.export()
+camPath.export( camPath.getEveryNFrames() )
