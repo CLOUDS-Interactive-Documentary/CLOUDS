@@ -37,7 +37,7 @@ void DM10PingPongBuffer::clear()
     for (int i = 0; i < 2; i++) {
         FBOs[i].begin();
         {
-            ofClear(0, 255);
+            ofClear(0, 0);
         }
         FBOs[i].end();
     }

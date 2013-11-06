@@ -97,9 +97,10 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         ofShader updateShader;
         ofShader renderShader;
     
-        DM10PingPongBuffer updatePingPong;
-        ofFbo renderFBO;
-        
+        DM10PingPongBuffer updateBuffer;
+        //DM10PingPongBuffer renderBuffer;
+        ofFbo renderBuffer;
+    
         float timeStep;
         float speedFactor;
         float maxDist;

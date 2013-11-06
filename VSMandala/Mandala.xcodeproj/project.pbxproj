@@ -18,6 +18,8 @@
 		5055DFA8181ED75200761DA0 /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFA0181ED75200761DA0 /* CloudsVisualSystemMandala.cpp */; };
 		5055DFAC181EF67500761DA0 /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFAA181EF67500761DA0 /* facingRatio.frag */; };
 		5055DFAD181EF67500761DA0 /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFAB181EF67500761DA0 /* facingRatio.vert */; };
+		50E89B3F182560A300BFD711 /* ribbonShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50E89B3D182560A300BFD711 /* ribbonShader.frag */; };
+		50E89B40182560A300BFD711 /* ribbonShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50E89B3E182560A300BFD711 /* ribbonShader.vert */; };
 		50EAB55E1824049600BD3C98 /* surfaceShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50EAB55C1824049500BD3C98 /* surfaceShader.frag */; };
 		50EAB55F1824049600BD3C98 /* surfaceShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50EAB55D1824049500BD3C98 /* surfaceShader.vert */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -579,6 +581,8 @@
 		5055DFA1181ED75200761DA0 /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
 		5055DFAA181EF67500761DA0 /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5055DFAB181EF67500761DA0 /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; };
+		50E89B3D182560A300BFD711 /* ribbonShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ribbonShader.frag; sourceTree = "<group>"; };
+		50E89B3E182560A300BFD711 /* ribbonShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ribbonShader.vert; sourceTree = "<group>"; };
 		50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
 		50EAB55C1824049500BD3C98 /* surfaceShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = surfaceShader.frag; sourceTree = "<group>"; };
 		50EAB55D1824049500BD3C98 /* surfaceShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = surfaceShader.vert; sourceTree = "<group>"; };
@@ -1729,6 +1733,8 @@
 		5055DF98181ED75200761DA0 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				50E89B3D182560A300BFD711 /* ribbonShader.frag */,
+				50E89B3E182560A300BFD711 /* ribbonShader.vert */,
 				502DD87D18202B39009096FD /* noduleShader.vert */,
 				502DD87F18202B44009096FD /* noduleShader.frag */,
 				5055DFAA181EF67500761DA0 /* facingRatio.frag */,
@@ -2553,6 +2559,8 @@
 				502DD88018202B44009096FD /* noduleShader.frag in Sources */,
 				50EAB55E1824049600BD3C98 /* surfaceShader.frag in Sources */,
 				50EAB55F1824049600BD3C98 /* surfaceShader.vert in Sources */,
+				50E89B3F182560A300BFD711 /* ribbonShader.frag in Sources */,
+				50E89B40182560A300BFD711 /* ribbonShader.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

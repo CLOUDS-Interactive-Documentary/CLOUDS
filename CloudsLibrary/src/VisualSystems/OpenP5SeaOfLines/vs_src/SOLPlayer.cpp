@@ -9,6 +9,10 @@
 #include "SOLPlayer.h"
 
 //--------------------------------------------------------------
+float SOLPlayer::width;
+float SOLPlayer::height;
+
+//--------------------------------------------------------------
 SOLPlayer::SOLPlayer(float x, float y, float max)
 {
     this->x = x;
@@ -39,45 +43,16 @@ void SOLPlayer::update()
         x = size / 2;
         sx *= -1;
     }
-    else if (x > ofGetWidth() - size / 2) {
-        x = ofGetWidth() - size / 2;
+    else if (x > width - size / 2) {
+        x = width - size / 2;
         sx *= -1;
     }
     if (y < size / 2) {
         y = size / 2;
         sy *= -1;
     }
-    else if (y > ofGetHeight() - size / 2) {
-        y = ofGetHeight() - size / 2;
-        sy *= -0.75f;
-    }
-    
-    
-    
-//    //  fill(c);
-//    x+=vx;y+=vy;vy+=0.1;
-//    if(x<taille/2){x=taille/2;vx=-vx;}
-//    if(y<taille/2){y=taille/2;vy=-vy;}
-//    if(x>width-taille/2){x=width-taille/2;vx=-vx;}
-//    if(y>height-taille/2){y=height-taille/2;vy=-vy*0.75;}
-//    for(int a=0;a<personnages.length;a++){
-//        people deux = personnages[a];
-//        if(deux!=this){
-//            float d=dist(deux.x, deux.y, x , y);
-//            if(d<((taille+deux.taille)/2)){
-//                float ang = atan2(y-deux.y, x-deux.x);
-//                vx = cos(ang)*vitesse;vy=sin(ang)*vitesse;
-//            } else {
-//                if(d<30){
-//                    //stroke(255);
-//                    line(x,y,deux.x, deux.y);
-//                    
-//                }
-//                
-//            }
-//            
-//        }
-//    }
-//    //  ellipse(x,y,taille,taille);
-    
+    else if (y > height - size / 2) {
+        y = height - size / 2;
+        sy *= -1;
+    }    
 }

@@ -49,7 +49,10 @@ void CloudsVisualSystemOpenP5SeaOfLines::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
 {
-    canvas.allocate(ofGetWidth(), ofGetHeight());
+    SOLPlayer::width = ofGetWidth();
+    SOLPlayer::height = ofGetHeight();
+    
+    canvas.allocate(SOLPlayer::width, SOLPlayer::height);
     canvas.begin();
     {
         ofClear(0, 0);
@@ -58,8 +61,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     
     // Add the players.
     float step = 20;
-    for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
-        for (float j = 0; j < (ofGetHeight() / step - 1); j++) {
+    for (float i = 0; i < (SOLPlayer::width / step - 1); i++) {
+        for (float j = 0; j < (SOLPlayer::height / step - 1); j++) {
             if (ofRandom(3) > 1) {
                 players.push_back(new SOLPlayer(i * step + step * 0.5f, j * step + step * 0.5f, step * 0.8f));
             }
@@ -115,12 +118,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
         ofRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
         ofSetColor(255, 128);
+        glBegin(GL_LINES);
         for (int i = 0; i < players.size(); i++) {
             SOLPlayer * one = players[i];
-            for (int j = 0; j < players.size(); j++) {
+            for (int j = i + 1; j < players.size(); j++) {
                 SOLPlayer * two = players[j];
-                if (one == two) continue;
-                
                 float dist = ofDist(one->x, one->y, two->x, two->y);
                 if (dist < ((one->size + two->size) / 2)) {
                     float ang = atan2f(one->y - two->y, one->x - two->x);
@@ -128,14 +130,17 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
                     one->sy = sinf(ang) * one->speed;
                 }
                 else if (dist < 30) {
-                    ofLine(one->x, one->y, two->x, two->y);
+                    glVertex2f(one->x, one->y);
+                    glVertex2f(two->x, two->y);
                 }
             }
         }
+        glEnd();
     }
     canvas.end();
     
-    canvas.draw(0, 0);
+    canvas.draw(0, 0, ofGetWidth(), ofGetHeight());
+    ofDrawBitmapString(ofToString(ofGetFrameRate(), 2) + " FPS", 10, ofGetHeight() - 20);
 }
 
 // this is called when your system is no longer drawing.
