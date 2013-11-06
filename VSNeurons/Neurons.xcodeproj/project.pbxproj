@@ -77,6 +77,8 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		81C860DD1829721E0027061E /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C860CD1829721E0027061E /* CloudsPathCamera.cpp */; };
+		81C860F8182974340027061E /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C860F3182974340027061E /* ofxSimpleSpline.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -366,6 +368,10 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		81C860CD1829721E0027061E /* CloudsPathCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsPathCamera.cpp; sourceTree = "<group>"; };
+		81C860CE1829721E0027061E /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPathCamera.h; sourceTree = "<group>"; };
+		81C860F3182974340027061E /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
+		81C860F4182974340027061E /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -974,9 +980,45 @@
 			path = ../../../addons/ofxCameraSaveLoad/src;
 			sourceTree = "<group>";
 		};
+		81C85DE51829721D0027061E /* 3DModelVisualSystem */ = {
+			isa = PBXGroup;
+			children = (
+				81C860C81829721E0027061E /* vs_src */,
+			);
+			path = 3DModelVisualSystem;
+			sourceTree = "<group>";
+		};
+		81C860C81829721E0027061E /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				81C860CD1829721E0027061E /* CloudsPathCamera.cpp */,
+				81C860CE1829721E0027061E /* CloudsPathCamera.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
+		81C860DE182974340027061E /* ofxSimpleSpline */ = {
+			isa = PBXGroup;
+			children = (
+				81C860F2182974340027061E /* src */,
+			);
+			name = ofxSimpleSpline;
+			path = ../../../addons/ofxSimpleSpline;
+			sourceTree = "<group>";
+		};
+		81C860F2182974340027061E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				81C860F3182974340027061E /* ofxSimpleSpline.cpp */,
+				81C860F4182974340027061E /* ofxSimpleSpline.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				81C860DE182974340027061E /* ofxSimpleSpline */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
 				3D5B9605175308CF00F558AC /* ofxMSATimer */,
 				3D5B961C175308CF00F558AC /* ofxRange */,
@@ -1125,6 +1167,7 @@
 		E7DD723617DBC08D00AFB2DD /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				81C85DE51829721D0027061E /* 3DModelVisualSystem */,
 				E7DD7D4417DBC09B00AFB2DD /* Neurons */,
 			);
 			path = VisualSystems;
@@ -1321,6 +1364,8 @@
 				E7DD854717DBC0A500AFB2DD /* CloudsRGBDCamera.cpp in Sources */,
 				E7DD854817DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */,
+				81C860DD1829721E0027061E /* CloudsPathCamera.cpp in Sources */,
+				81C860F8182974340027061E /* ofxSimpleSpline.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

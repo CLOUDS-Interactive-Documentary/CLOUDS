@@ -21,6 +21,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+    customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
     customGui->addSpacer();
     customGui->addSlider("LINE WIDTH", 0.0, 10.0, &TUOrbital::lineWidth);
@@ -88,10 +89,20 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     fonts.push_back("MATERIA PRO");
     fonts.push_back("MUSEO 300");
     fonts.push_back("NEW MEDIA FETT");
-    ofxUIDropDownList *ddl = customGui->addDropDownList("FONT", fonts);
-    //    ddl->setAutoClose(false);
-    ddl->setShowCurrentSelected(true);
-    //    ddl->activateToggle("DISABLE");
+    ofxUIDropDownList *ddlFonts = customGui->addDropDownList("FONT", fonts);
+    //    ddlFonts->setAutoClose(true);
+    ddlFonts->setShowCurrentSelected(true);
+    //    ddlFonts->activateToggle("DISABLE");
+    
+    customGui->addSpacer();
+    vector<string> fileNames;
+    for (int i = 0; i < filesDir.size(); i++) {
+        fileNames.push_back(filesDir.getName(i));
+    }
+    ofxUIDropDownList *ddlFiles = customGui->addDropDownList("FILES", fileNames);
+    //    ddlFiles->setAutoClose(true);
+    ddlFiles->setShowCurrentSelected(true);
+    //    ddlFiles->activateToggle("DISABLE");
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
 	guis.push_back(customGui);
@@ -144,28 +155,31 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         TUOrbital::font.setLineLength(TUOrbital::lineLength);
     }
     else if (e.widget->getName() == "FONT SIZE" || e.widget->getName() == "FONT DEPTH") {
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "HELVETICA") {
         TUOrbital::fontName = "Helvetica.ttf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "MATERIA PRO") {
         TUOrbital::fontName = "MateriaPro_Light.otf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "MUSEO 300") {
         TUOrbital::fontName = "Museo-300.otf";
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
     }
     else if (e.widget->getName() == "NEW MEDIA FETT") {
         TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
-        TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-        TUOrbital::font.setLineLength(TUOrbital::lineLength);
+        rebuildFont();
+    }
+    
+    else if (e.widget->getName() == "FILES") {
+        vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
+        if (selectedIndeces.size() > 0) {
+            selectedFilesIdx = selectedIndeces[0];
+            rebuildText();
+        }
     }
 }
 
@@ -192,37 +206,14 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     // Set defaults.
     currSpin = 0.0f;
     spinSpeed = 0.5f;
+    fogDensity = 0.025f;
     
-    // Load the contents of the text file.
-    ofBuffer buffer = ofBufferFromFile("deconstructive.txt");
-    if (buffer.size()) {
-        text = new TUText(buffer.getText());
-//        text->print();
-    }
+    filesDir.listDir("textFiles");
+    filesDir.sort();
+    selectedFilesIdx = 0;
+    rebuildText();
     
-    // Build the node network.
-    orbital = new TUOrbital(30, 1000);
-    orbital->text = text->paragraphs[0].sentences[0].str;
-    orbital->bRenderText = true;
-    
-    for (int i = 0; i < text->paragraphs.size(); i++) {
-        orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
-        orbital->children.back().bRenderText = false;
-        
-        for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-            orbital->children[i].children.push_back(TUOrbital(orbital->children[i], text->paragraphs[i].sentences[j].str));
-            orbital->children[i].children.back().bRenderText = false;
-            
-            for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                orbital->children[i].children[j].children.push_back(TUOrbital(orbital->children[i].children[j], text->paragraphs[i].sentences[j].words[k]));
-                orbital->children[i].children[j].children.back().bRenderText = true;
-            }
-        }
-    }
-    
-    // Load the font.
-    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
-    TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    rebuildFont();
     
     bMouseDragged = false;
 }
@@ -263,6 +254,25 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
 {
+    glPushAttrib(GL_FOG_BIT);
+    
+    glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_EXP);
+    
+    //	float FogCol[3]={0.8f,0.8f,0.8f}; // Define a nice light grey
+    //	glFogfv(GL_FOG_COLOR, FogCol);     // Set the fog color
+	glFogf(GL_FOG_DENSITY, powf(fogDensity, 2));
+    GLfloat fogColor[4] = { bgColor.r / 255.,bgColor.g / 255.,bgColor.b / 255., 1.0 };
+    glFogfv(GL_FOG_COLOR, fogColor);
+    glEnable(GL_DEPTH_TEST);
+    ofEnableAlphaBlending();
+
+//		GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
+//		glFogfv (GL_FOG_COLOR, fogColor);
+//		glDisable(GL_DEPTH_TEST);
+//		ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
     ofPushStyle();
     ofPushMatrix();
     {
@@ -273,6 +283,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
     }
     ofPopMatrix();
     ofPopStyle();
+    
+    glPopAttrib();
 }
 
 // draw any debug stuff here
@@ -328,4 +340,57 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& da
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data)
 {
     bMouseDragged = false;
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
+{
+    TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
+    TUOrbital::font.setLineLength(TUOrbital::lineLength);
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
+{
+    // Load the contents of the text file.
+    ofBuffer buffer = ofBufferFromFile(filesDir.getPath(selectedFilesIdx));
+    if (buffer.size()) {
+        text = new TUText(buffer.getText());
+        //        text->print();
+    }
+    
+    // Build the node network.
+    orbital = new TUOrbital(30, 1000);
+    orbital->text = text->paragraphs[0].sentences[0].str;
+    orbital->bRenderText = true;
+    
+    for (int i = 0; i < text->paragraphs.size(); i++) {
+        if (text->paragraphs[i].sentences.size() > 1) {
+            // Add a "splitter" node for the paragraph.
+            orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].str));
+            orbital->children.back().bRenderText = false;
+            
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                orbital->children.back().children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.back().children.push_back(TUOrbital(orbital->children.back().children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().children.back().bRenderText = true;
+                }
+            }
+        }
+        else {
+            // Skip the paragraph node.
+            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                orbital->children.push_back(TUOrbital(*orbital, text->paragraphs[i].sentences[j].str));
+                orbital->children.back().bRenderText = false;
+                
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.back().children.push_back(TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back().children.back().bRenderText = true;
+                }
+            }
+        }
+    }
 }
