@@ -54,7 +54,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
 void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "REDRAW") {
-        restart();
+        if (((ofxUIButton *)e.widget)->getValue() == true) {
+            restart();
+        }
     }
     
     else if (e.widget->getName() == "FG HUE") {
