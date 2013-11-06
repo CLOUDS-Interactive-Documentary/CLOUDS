@@ -1,20 +1,20 @@
 //
-//  CloudsVisionSystem.cpp
+//  CloudsVisualSystemVision.cpp
 //
 //  Created by Patricio Gonzalez Vivo on 7/23/13.
 //
 //
 
-#include "CloudsVisionSystem.h"
+#include "CloudsVisualSystemVision.h"
 using namespace ofxCv;
 using namespace cv;
 
-string CloudsVisionSystem::getSystemName()
+string CloudsVisualSystemVision::getSystemName()
 {
-	return "VisionSystem";
+	return "Vision";
 }
 
-void CloudsVisionSystem::selfSetup()
+void CloudsVisualSystemVision::selfSetup()
 {
     currentMode = OpticalFlow;
     curFlow = &farneback;
@@ -32,6 +32,7 @@ void CloudsVisionSystem::selfSetup()
     maxFeatures = 200;
     qualityLevel = 0.01;
     minDistance = 4;
+    colorRange=50;
     flowFirstFrame = true;
     useFarneback = true;
     drawPlayer = true;
@@ -73,21 +74,21 @@ void CloudsVisionSystem::selfSetup()
     
 }
 
-void CloudsVisionSystem::clearAccumulation(){
+void CloudsVisualSystemVision::clearAccumulation(){
     for(int j=0; j<accumulation.height; j++){
         for( int i=0; i<accumulation.width; i++){
             accumulation.setColor(i, j, ofFloatColor(0));
         }
     }
 }
-void CloudsVisionSystem::updateImagesForNewVideo(){
+void CloudsVisualSystemVision::updateImagesForNewVideo(){
     
     imitate(previousHeatMap, *player);
     imitate(diff, *player);
     accumulation.allocate(player->width, player->height, OF_IMAGE_COLOR);
     
 }
-void CloudsVisionSystem::resetFlowField(){
+void CloudsVisualSystemVision::resetFlowField(){
     
     farneback.resetFlow();
     flowMesh.clear();
@@ -104,7 +105,7 @@ void CloudsVisionSystem::resetFlowField(){
     }
     
 }
-void CloudsVisionSystem::populateOpticalFlowRegions(){
+void CloudsVisualSystemVision::populateOpticalFlowRegions(){
     int rectWidth =20;
     int rectHeight = 20;
     for( int j=0; j<player->getHeight(); j +=rectHeight){
@@ -120,7 +121,7 @@ void CloudsVisionSystem::populateOpticalFlowRegions(){
         }
     }
 }
-void CloudsVisionSystem::updateOpticalFlowParameters(){
+void CloudsVisualSystemVision::updateOpticalFlowParameters(){
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels( levels );
     farneback.setWindowSize( winsize) ;
@@ -130,13 +131,12 @@ void CloudsVisionSystem::updateOpticalFlowParameters(){
     farneback.setUseGaussian( useFarneback );
 }
 
-void CloudsVisionSystem::updateOpticalFlow(){
+void CloudsVisualSystemVision::updateOpticalFlow(){
     
     if (frameIsNew) {
         
         int width = player->getWidth()/scale;
         int height = player->getHeight()/scale;
-        //        test.resize(width, height);
         player->getPixelsRef().resizeTo(resizeToPixels);
         farneback.calcOpticalFlow(resizeToPixels);
         
@@ -145,29 +145,28 @@ void CloudsVisionSystem::updateOpticalFlow(){
         for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
             if(window.inside(flowMesh.getVertex(i))){
                 ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
-                
+
                 pos *= flowLineMultiplier;
                 pos.x += flowMesh.getVertex(i).x;
                 pos.y += flowMesh.getVertex(i).y;
                 flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
-                
+
                 float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
                 
-                float scaledHue = ofMap(mag,0, 50, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+                float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
                 ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
                 flowMesh.setColor(i+1,magnitudeColor);
             }
             else{
                 flowMesh.setColor(i,0);
                 flowMesh.setColor(i+1,0);
-                
             }
         }
         flowFirstFrame = false;
     }
 }
 
-void CloudsVisionSystem::updateHeatMap(){
+void CloudsVisualSystemVision::updateHeatMap(){
     
     if(frameIsNew){
         accumulationCount++;
@@ -211,10 +210,9 @@ void CloudsVisionSystem::updateHeatMap(){
         diffMean *= Scalar(20);
         accumulation.reloadTexture();
     }
-    
 }
 
-void CloudsVisionSystem::updateContourTracking(){
+void CloudsVisualSystemVision::updateContourTracking(){
     if(frameIsNew){
         
         background.update(*player, thresholded);
@@ -225,11 +223,11 @@ void CloudsVisionSystem::updateContourTracking(){
     }
 }
 
-void CloudsVisionSystem::getTextures(){
+void CloudsVisualSystemVision::getTextures(){
     vector<MyTracker>& followers = tracker.getFollowers();
 }
 
-void CloudsVisionSystem::updateCVParameters(){
+void CloudsVisualSystemVision::updateCVParameters(){
     //  background subtraction
     background.setDifferenceMode(RunningBackground::ABSDIFF);
     background.setLearningTime(learningTime);
@@ -248,7 +246,7 @@ void CloudsVisionSystem::updateCVParameters(){
 
 //radio field
 
-void CloudsVisionSystem::selfPresetLoaded(string presetPath){
+void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     cout<<"LOADED PRESET: "<<presetPath<<endl;
     
     ofxUIRadio* r =(ofxUIRadio* ) rdrGui->getWidget("VIDEO");
@@ -296,22 +294,22 @@ void CloudsVisionSystem::selfPresetLoaded(string presetPath){
 }
 
 
-void CloudsVisionSystem::selfBegin()
+void CloudsVisualSystemVision::selfBegin()
 {
     
     
 }
 
-void CloudsVisionSystem::selfEnd()
+void CloudsVisualSystemVision::selfEnd()
 {
     
 }
 
-void CloudsVisionSystem::selfExit()
+void CloudsVisualSystemVision::selfExit()
 {
 }
 
-void CloudsVisionSystem::selfSetupSystemGui()
+void CloudsVisualSystemVision::selfSetupSystemGui()
 {
     
     sysGui->addLabel("CONTOUR TRACKING VIS PARAMS");
@@ -350,14 +348,12 @@ void CloudsVisionSystem::selfSetupSystemGui()
     
     sysGui->autoSizeToFitWidgets();
     
-    ofAddListener(sysGui->newGUIEvent, this, &CloudsVisionSystem::selfGuiEvent);
+    ofAddListener(sysGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
 }
 
-void CloudsVisionSystem::selfSetupRenderGui()
+void CloudsVisualSystemVision::selfSetupRenderGui()
 {
-    
-    
     /*
      rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
      ofxUIButton *loadbtn = rdrGui->addButton("OPTICAL FLOW", false);
@@ -388,11 +384,11 @@ void CloudsVisionSystem::selfSetupRenderGui()
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
     rdrGui->autoSizeToFitWidgets();
-    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisionSystem::selfGuiEvent);
+    ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
 }
 
-void CloudsVisionSystem::selfUpdate(){
+void CloudsVisualSystemVision::selfUpdate(){
     player->update();
     frameIsNew = player->isFrameNew();
     
@@ -410,7 +406,7 @@ void CloudsVisionSystem::selfUpdate(){
     }
 }
 
-void CloudsVisionSystem::selfDrawBackground()
+void CloudsVisualSystemVision::selfDrawBackground()
 {
     
     
@@ -472,74 +468,74 @@ void CloudsVisionSystem::selfDrawBackground()
     }
 }
 
-void CloudsVisionSystem::selfDraw()
+void CloudsVisualSystemVision::selfDraw()
 {
     
 }
 
 
-void CloudsVisionSystem::selfSetupGuis()
+void CloudsVisualSystemVision::selfSetupGuis()
 {
     
 }
 
-void CloudsVisionSystem::selfAutoMode()
+void CloudsVisualSystemVision::selfAutoMode()
 {
     
 }
 
-void CloudsVisionSystem::guiSystemEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemVision::guiSystemEvent(ofxUIEventArgs &e)
 {
     
 }
 
-void CloudsVisionSystem::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemVision::selfKeyPressed(ofKeyEventArgs & args){
     
 }
 
-void CloudsVisionSystem::selfDrawDebug()
+void CloudsVisualSystemVision::selfDrawDebug()
 {
     
 }
 
-void CloudsVisionSystem::selfSceneTransformation()
+void CloudsVisualSystemVision::selfSceneTransformation()
 {
     
 }
 
-void CloudsVisionSystem::selfKeyReleased(ofKeyEventArgs & args)
+void CloudsVisualSystemVision::selfKeyReleased(ofKeyEventArgs & args)
 {
     
 }
 
-void CloudsVisionSystem::selfMouseDragged(ofMouseEventArgs& data)
+void CloudsVisualSystemVision::selfMouseDragged(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisionSystem::selfMouseMoved(ofMouseEventArgs& data)
+void CloudsVisualSystemVision::selfMouseMoved(ofMouseEventArgs& data)
 {
     
     mouseX = ofMap(data.x, 0, ofGetWidth(), 0, player->getWidth());
     mouseY = ofMap(data.y, 0, ofGetHeight(), 0, player->getHeight()) ;
 }
 
-void CloudsVisionSystem::selfMousePressed(ofMouseEventArgs& data)
+void CloudsVisualSystemVision::selfMousePressed(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisionSystem::selfMouseReleased(ofMouseEventArgs& data)
+void CloudsVisualSystemVision::selfMouseReleased(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisionSystem::selfSetupGui()
+void CloudsVisualSystemVision::selfSetupGui()
 {
     
 }
 
-void CloudsVisionSystem::setMode(CVMode mode){
+void CloudsVisualSystemVision::setMode(CVMode mode){
     
     switch (mode) {
         case OpticalFlow:
@@ -568,7 +564,7 @@ void CloudsVisionSystem::setMode(CVMode mode){
     }
 }
 
-void CloudsVisionSystem::selfGuiEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
 {
     
     string name = e.widget->getName();
@@ -648,7 +644,7 @@ void CloudsVisionSystem::selfGuiEvent(ofxUIEventArgs &e)
     
 }
 
-void CloudsVisionSystem::loadCurrentMovie(){
+void CloudsVisualSystemVision::loadCurrentMovie(){
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
     if(player->loadMovie(getVisualSystemDataPath() + movieStrings[ movieIndex ])){
         resizeToPixels.allocate(player->getWidth()/scale,player->getHeight()/scale,
@@ -666,7 +662,7 @@ void CloudsVisionSystem::loadCurrentMovie(){
     resetFlowField();
 }
 
-void  CloudsVisionSystem::loadMovieAtIndex(int index){
+void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
     movieIndex = index;
     player = ofPtr<ofVideoPlayer>(new ofVideoPlayer());
     if(player->loadMovie(getVisualSystemDataPath() +movieStrings[ movieIndex ])){
@@ -685,7 +681,7 @@ void  CloudsVisionSystem::loadMovieAtIndex(int index){
     updateImagesForNewVideo();
     resetFlowField();
 }
-void CloudsVisionSystem::guiRenderEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemVision::guiRenderEvent(ofxUIEventArgs &e)
 {
     
 }
