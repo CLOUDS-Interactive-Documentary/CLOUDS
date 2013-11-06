@@ -214,8 +214,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     rebuildText();
     
     rebuildFont();
-    
-    bMouseDragged = false;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -248,7 +246,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
     
     currSpin += spinSpeed;
     
-    orbital->update(0, 0, 0, false);
+    orbital->update(0, 0, 0);
 }
 
 //--------------------------------------------------------------
@@ -279,7 +277,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
         ofRotate(currSpin, 0, 1, 0);
         ofSetLineWidth(TUOrbital::lineWidth);
         
-        orbital->draw(getCameraRef(), bMouseDragged);
+        orbital->draw(getCameraRef());
     }
     ofPopMatrix();
     ofPopStyle();
@@ -322,10 +320,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfKeyReleased(ofKeyEventArgs & args
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& data)
-{
-    bMouseDragged = true;
+void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& data){
+
 }
 
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseMoved(ofMouseEventArgs& data){
@@ -336,10 +332,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& da
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data)
-{
-    bMouseDragged = false;
+void CloudsVisualSystemOpenP5TextUniverse::selfMouseReleased(ofMouseEventArgs& data){
+    
 }
 
 //--------------------------------------------------------------
@@ -356,7 +350,7 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
     ofBuffer buffer = ofBufferFromFile(filesDir.getPath(selectedFilesIdx));
     if (buffer.size()) {
         text = new TUText(buffer.getText());
-        //        text->print();
+//        text->print();
     }
     
     // Build the node network.

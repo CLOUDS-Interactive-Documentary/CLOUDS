@@ -19,12 +19,10 @@ class TUOrbital
         TUOrbital(float size, float radius);
         TUOrbital(TUOrbital& parent, string text);
     
-        void update(float x, float y, float z, bool bSelected);
-        void draw(ofCamera& cam, bool bMouseDragged);
+        void update(float x, float y, float z);
+        void draw(ofCamera& cam);
         void billboard();
-        bool isMouseover(ofCamera& cam);
     
-        static float focusX, focusY, focusZ;
         static ofxFTGLSimpleLayout font;
         static string fontName;
         static float lineLength;
@@ -47,11 +45,7 @@ class TUOrbital
         
         vector<TUOrbital> children;
         
-        bool bSelected;
-        bool bClicked;
         bool bRenderText;
-    
-        int color;
 };
 
 

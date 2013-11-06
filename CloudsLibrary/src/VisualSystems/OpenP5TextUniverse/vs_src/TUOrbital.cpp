@@ -8,10 +8,6 @@
 
 #include "TUOrbital.h"
 
-float TUOrbital::focusX;
-float TUOrbital::focusY;
-float TUOrbital::focusZ;
-
 ofxFTGLSimpleLayout TUOrbital::font;
 string TUOrbital::fontName = "Helvetica.ttf";
 float TUOrbital::lineLength = 150.0f;
@@ -34,7 +30,7 @@ TUOrbital::TUOrbital(float size, float radius)
     this->size = size;
     this->radius = radius;
     
-    bSelected = bClicked = bRenderText = true;
+    bRenderText = true;
 }
 
 //--------------------------------------------------------------
@@ -46,19 +42,15 @@ TUOrbital::TUOrbital(TUOrbital& parent, string text)
     this->size = parent.size / 3 * 2;
     this->radius = parent.radius / 2;
     
-    bSelected = bClicked = bRenderText = true;
+    bRenderText = true;
 }
 
 //--------------------------------------------------------------
-void TUOrbital::update(float x, float y, float z, bool bSelected)
+void TUOrbital::update(float x, float y, float z)
 {
     pos.x = x;
     pos.y = y;
     pos.z = z;
-    
-    if (bSelected) {
-        this->bSelected = true;
-    }
     
     // calculating sphere distribution
     
@@ -83,12 +75,12 @@ void TUOrbital::update(float x, float y, float z, bool bSelected)
         phi = phi + dphi;
         
         // recursive update
-        children[i].update(childX, childY, childZ, bSelected);
+        children[i].update(childX, childY, childZ);
     }
 }
 
 //--------------------------------------------------------------
-void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
+void TUOrbital::draw(ofCamera& cam)
 {
     ofPushMatrix();
     {
@@ -101,13 +93,13 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
             }
             
             // recursive draw
-            children[i].draw(cam, bMouseDragged);
+            children[i].draw(cam);
         }
         
         billboard();
         ofScale(1, -1, 1);
         
-        if (bRenderText && bClicked) {
+        if (bRenderText) {
             ofSetColor(textColor);
             if (bAllCaps) {
                 font.drawString(ofToUpper(text), (size * nodeScalar), 0);
@@ -119,29 +111,6 @@ void TUOrbital::draw(ofCamera& cam, bool bMouseDragged)
         
         ofSetColor(nodeColor);
         ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
-        
-        if (!bMouseDragged) {
-            if (isMouseover(cam)) {
-                if (ofGetMousePressed()) {
-                    bClicked = true;
-                    bSelected = true;
-                    
-                    GLfloat modelview[16];
-                    glGetFloatv(GL_MODELVIEW_MATRIX, modelview);
-                    focusX = modelview[12];
-                    focusY = modelview[13];
-                    focusZ = modelview[14];
-                }
-            }
-            else {
-                //bSelected = false;
-            }
-            
-            if (ofGetKeyPressed(OF_KEY_RETURN)) {
-                bClicked = false;
-                bSelected = false;
-            }
-        }
     }
     ofPopMatrix();
 }
@@ -168,18 +137,4 @@ void TUOrbital::billboard()
     
 	// Set the modelview with no rotations.
 	glLoadMatrixf(modelview);
-}
-
-//--------------------------------------------------------------
-bool TUOrbital::isMouseover(ofCamera& cam)
-{
-    ofVec2f topLeft = cam.worldToScreen(ofVec3f(-size / 2.0f, -size / 2.0f, 0));
-    ofVec2f bottomRight = cam.worldToScreen(ofVec3f(size / 2.0f, size / 2.0f, 0));
-    
-    if (ofGetMouseX() > topLeft.x && ofGetMouseX() < bottomRight.x) {
-        if (ofGetMouseY() > topLeft.y && ofGetMouseY() < bottomRight.y) {
-            return true;
-        }
-    }
-    return false;
 }
