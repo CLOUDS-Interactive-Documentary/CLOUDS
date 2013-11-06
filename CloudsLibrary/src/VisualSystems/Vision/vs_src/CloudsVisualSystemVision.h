@@ -20,7 +20,7 @@ typedef enum{
 
 }CVMode;
 
-class CloudsVisionSystem : public CloudsVisualSystem {
+class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -78,6 +78,8 @@ protected:
     vector<ofRectangle> flowRegions;
     void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
+
+    float colorRange;
     
     ofImage accumulation;
     ofImage diff;

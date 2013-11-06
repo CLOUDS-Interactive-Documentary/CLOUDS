@@ -34,7 +34,7 @@ void MazeCamera::update()
     lookAt(getPosition() + ofVec3f(0, 0, 10));
 #endif
     rotate(ParamManager::getInstance().cameraAngle, ofVec3f(1, 0, 0));
-    move(vel);    
+    move(vel*ofGetLastFrameTime());
 }
 
 void MazeCamera::draw()

@@ -10,9 +10,11 @@
 #define __MazeGenerator__Maze__
 
 #include <ofMain.h>
+#include "ofxSimpleSpline.h"
 #include "MazeCamera.h"
 #include "MazeCell.h"
 #include "ParamManager.h"
+#include "MovingBall.h"
 
 #define NUM_CELLS_X 151
 #define NUM_CELLS_Y 1000
@@ -29,15 +31,17 @@ public:
     void generate();
     
     void update(ofCamera* cam);
-    void draw(ofCamera* cam);
+    void draw(ofCamera* cam, ofVec3f& lightPos);
     
     float getWidth();
+    
+    ofxSimpleSpline* createSimpleSpline(int sx, int sy, int length);
+    
     
     
 protected:
     void generateStep();
     void buildModel();
-	
 	
 	//LB
 	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2)
@@ -51,9 +55,12 @@ protected:
     int vertexCount;
     int vertexIndexForLines[NUM_CELLS_Y];
     
+    ofShader wallShader;
+    ofTexture uvMap;
+    
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
-    std::vector<ofVec3f> blocks;
+    std::vector<MovingBall*> balls;
     int step;
     int currentYLimit;
     MazeCell* currentCell;
@@ -61,6 +68,8 @@ protected:
 
     bool finishedGenerating;
     bool finishedSolving;
+    
+    ofxSimpleSpline path;
 };
 
 #endif /* defined(__MazeGenerator__Maze__) */

@@ -7,9 +7,4 @@ int main(){
 	// set width, height, mode (OF_WINDOW or OF_FULLSCREEN)
 	ofSetupOpenGL(&window, 1224, 768, OF_WINDOW);
 	ofRunApp(new testApp()); // start the app
-    
-//    ofEnableSmoothing();
-//    window.setGlutDisplayString("rgba double samples>=8");
-    ofEnableAlphaBlending();
-
 }

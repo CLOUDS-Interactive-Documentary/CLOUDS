@@ -24,8 +24,13 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
     customGui->addSpacer();
     customGui->addIntSlider("NUM PARTICLES", 1, 100000, &numParticles);
     customGui->addIntSlider("NUM ATTRACTORS", 1, 500, &numAttractors);
-    customGui->addSlider("SPEED FACTOR", 0, 1, &speedFactor);
+    customGui->addSlider("SPEED FACTOR", 0, 500, &speedFactor);
     customGui->addSlider("MAX DIST", 0, 1, &maxDist);
+    
+    customGui->addSpacer();
+    customGui->addSlider("DRAW TIME", 1, 60, &drawLength);
+    customGui->addSlider("FADE TIME", 0, 60, &fadeLength);
+    customGui->addSlider("WAIT TIME", 0, 60, &waitLength);
     
     customGui->addSpacer();
     fgHue = new ofx1DExtruder(0);
@@ -54,7 +59,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetupGui()
 void CloudsVisualSystemOpenP5DrawingMachine10::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "REDRAW") {
-        restart();
+        if (((ofxUIButton *)e.widget)->getValue() == true) {
+            restart();
+        }
     }
     
     else if (e.widget->getName() == "FG HUE") {
@@ -105,6 +112,11 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     numAttractors = 200;
     speedFactor = 0.05f;
     maxDist = 0.2f;
+    
+    drawLength = 5.0f;
+    fadeLength = 1.0f;
+    waitLength = 2.0f;
+    state = DM10STATE_DRAWING;
     
     restart();
 }
@@ -171,7 +183,9 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
         }
     }
     
-    timeStep = ofGetElapsedTimeMillis();
+    timeStepMs = ofGetElapsedTimeMillis();
+    drawStartMs = timeStepMs;
+    state = DM10STATE_DRAWING;
 }
 
 //--------------------------------------------------------------
@@ -197,7 +211,17 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSceneTransformation(){
 void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
 {
     ofEnableAlphaBlending();
-    timeStep = ofGetElapsedTimeMillis() - timeStep;
+    elapsedTimeMs = ofGetElapsedTimeMillis();
+    
+    timeStepMs = elapsedTimeMs - timeStepMs;
+    
+    if (state == DM10STATE_DRAWING) {
+        float drawTime = (elapsedTimeMs - drawStartMs) / 1000.0f;
+        if (drawTime >= drawLength) {
+            state = DM10STATE_FADING;
+            fadeStartMs = elapsedTimeMs;
+        }
+    }
     
     // Calculate the new position affected by the attractors.
     updateBuffer.dst->begin();
@@ -206,7 +230,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         updateShader.begin();
         {
             updateShader.setUniformTexture("posData", updateBuffer.src->getTextureReference(), 0); // Previus position
-            updateShader.setUniform1f("timestep", timeStep);
+            updateShader.setUniform1f("timestep", timeStepMs / 1000.0f);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
 
@@ -249,8 +273,29 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5DrawingMachine10::selfDrawBackground()
 {
-    ofSetColor(ofColor::fromHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos()));
-    renderBuffer.draw(0, 0, ofGetWidth(), ofGetHeight());
+    if (state == DM10STATE_WAITING) {
+        float waitTime = (elapsedTimeMs - waitStartMs) / 1000.0f;
+        if (waitTime >= waitLength) {
+            restart();
+        }
+    }
+    else {
+        float fadeAlpha = 255;
+        if (state == DM10STATE_FADING) {
+            float fadeTime = (elapsedTimeMs - fadeStartMs) / 1000.0f;
+            if (fadeTime < fadeLength) {
+                fadeAlpha = ofMap(fadeTime, 0, fadeLength, 255, 0);
+            }
+            else {
+                fadeAlpha = 0;
+                state = DM10STATE_WAITING;
+                waitStartMs = elapsedTimeMs;
+            }
+        }
+        
+        ofSetColor(ofColor::fromHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fadeAlpha));
+        renderBuffer.draw(0, 0, ofGetWidth(), ofGetHeight());
+    }
 }
 
 // this is called when your system is no longer drawing.
@@ -260,9 +305,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfEnd(){
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5DrawingMachine10::selfExit()
-{
+void CloudsVisualSystemOpenP5DrawingMachine10::selfExit(){
 
 }
 
@@ -275,9 +318,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfKeyReleased(ofKeyEventArgs & 
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseDragged(ofMouseEventArgs& data)
-{
+void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseDragged(ofMouseEventArgs& data){
 
 }
 
@@ -289,8 +330,6 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfMousePressed(ofMouseEventArgs
     
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseReleased(ofMouseEventArgs& data)
-{
+void CloudsVisualSystemOpenP5DrawingMachine10::selfMouseReleased(ofMouseEventArgs& data){
 
 }

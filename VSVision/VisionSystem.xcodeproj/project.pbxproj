@@ -135,7 +135,7 @@
 		184CB77D181EBB2700B14025 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB704181EBB2600B14025 /* ofxCvHaarFinder.cpp */; };
 		184CB77E181EBB2700B14025 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB706181EBB2600B14025 /* ofxCvImage.cpp */; };
 		184CB77F181EBB2700B14025 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB709181EBB2600B14025 /* ofxCvShortImage.cpp */; };
-		184CB84D181EC0E200B14025 /* CloudsVisionSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB843181EC0E200B14025 /* CloudsVisionSystem.cpp */; };
+		184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */; };
 		184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB845181EC0E200B14025 /* FlowField.cpp */; };
 		184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB847181EC0E200B14025 /* MyTracker.cpp */; };
 		184CB850181EC0E200B14025 /* ParkedCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB849181EC0E200B14025 /* ParkedCar.cpp */; };
@@ -525,8 +525,8 @@
 		184CB709181EBB2600B14025 /* ofxCvShortImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvShortImage.cpp; sourceTree = "<group>"; };
 		184CB70A181EBB2600B14025 /* ofxCvShortImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvShortImage.h; sourceTree = "<group>"; };
 		184CB70B181EBB2600B14025 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
-		184CB843181EC0E200B14025 /* CloudsVisionSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisionSystem.cpp; sourceTree = "<group>"; };
-		184CB844181EC0E200B14025 /* CloudsVisionSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisionSystem.h; sourceTree = "<group>"; };
+		184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVision.cpp; sourceTree = "<group>"; };
+		184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVision.h; sourceTree = "<group>"; };
 		184CB845181EC0E200B14025 /* FlowField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlowField.cpp; sourceTree = "<group>"; };
 		184CB846181EC0E200B14025 /* FlowField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowField.h; sourceTree = "<group>"; };
 		184CB847181EC0E200B14025 /* MyTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyTracker.cpp; sourceTree = "<group>"; };
@@ -1543,8 +1543,8 @@
 		184CB842181EC0E200B14025 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				184CB843181EC0E200B14025 /* CloudsVisionSystem.cpp */,
-				184CB844181EC0E200B14025 /* CloudsVisionSystem.h */,
+				184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */,
+				184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */,
 				184CB845181EC0E200B14025 /* FlowField.cpp */,
 				184CB846181EC0E200B14025 /* FlowField.h */,
 				184CB847181EC0E200B14025 /* MyTracker.cpp */,
@@ -2389,7 +2389,7 @@
 				184CB77D181EBB2700B14025 /* ofxCvHaarFinder.cpp in Sources */,
 				184CB77E181EBB2700B14025 /* ofxCvImage.cpp in Sources */,
 				184CB77F181EBB2700B14025 /* ofxCvShortImage.cpp in Sources */,
-				184CB84D181EC0E200B14025 /* CloudsVisionSystem.cpp in Sources */,
+				184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */,
 				184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */,
 				184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */,
 				184CB850181EC0E200B14025 /* ParkedCar.cpp in Sources */,
