@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2A1AA9FD181A1A910029E33F /* CloudsVisualSystemMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AA9FB181A1A910029E33F /* CloudsVisualSystemMazeGenerator.cpp */; };
+		2A450EC41828947200BF557A /* MovingBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A450EC21828947200BF557A /* MovingBall.cpp */; };
+		2A450EE0182AB23900BF557A /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */; };
+		2A77EDBC1824AD1E0009B5A9 /* noise.frag in Sources */ = {isa = PBXBuildFile; fileRef = 2A77EDBB1824AD1E0009B5A9 /* noise.frag */; };
+		2A77EDBF1824C3230009B5A9 /* noise.vert in Sources */ = {isa = PBXBuildFile; fileRef = 2A77EDBE1824C3230009B5A9 /* noise.vert */; };
+		2A77EDC31826D4240009B5A9 /* phongShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 2A77EDC11826D4240009B5A9 /* phongShader.frag */; };
+		2A77EDC41826D4240009B5A9 /* phongShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 2A77EDC21826D4240009B5A9 /* phongShader.vert */; };
 		2A9031BF181AB468005F45A6 /* MazeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9031BD181AB468005F45A6 /* MazeCell.cpp */; };
 		2A9031C2181AC841005F45A6 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9031C0181AC841005F45A6 /* Maze.cpp */; };
 		2A9031C8181AF431005F45A6 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9031C6181AF431005F45A6 /* MazeCamera.cpp */; };
@@ -144,6 +150,14 @@
 /* Begin PBXFileReference section */
 		2A1AA9FB181A1A910029E33F /* CloudsVisualSystemMazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator.cpp; sourceTree = "<group>"; };
 		2A1AA9FC181A1A910029E33F /* CloudsVisualSystemMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator.h; sourceTree = "<group>"; };
+		2A450EC21828947200BF557A /* MovingBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingBall.cpp; sourceTree = "<group>"; };
+		2A450EC31828947200BF557A /* MovingBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingBall.h; sourceTree = "<group>"; };
+		2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
+		2A450EDC182AB23900BF557A /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
+		2A77EDBB1824AD1E0009B5A9 /* noise.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.frag; sourceTree = "<group>"; };
+		2A77EDBE1824C3230009B5A9 /* noise.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.vert; sourceTree = "<group>"; };
+		2A77EDC11826D4240009B5A9 /* phongShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.frag; sourceTree = "<group>"; };
+		2A77EDC21826D4240009B5A9 /* phongShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.vert; sourceTree = "<group>"; };
 		2A9031BD181AB468005F45A6 /* MazeCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeCell.cpp; sourceTree = "<group>"; };
 		2A9031BE181AB468005F45A6 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		2A9031C0181AC841005F45A6 /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = "<group>"; };
@@ -432,6 +446,7 @@
 		2A1AA9B7181A1A910029E33F /* MazeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				2A77EDBA1824AD1E0009B5A9 /* shaders */,
 				2A1AA9FA181A1A910029E33F /* vs_src */,
 			);
 			name = MazeGenerator;
@@ -451,8 +466,40 @@
 				2A9031C7181AF431005F45A6 /* MazeCamera.h */,
 				2A9031CA181B0A7C005F45A6 /* ParamManager.cpp */,
 				2A9031CB181B0A7C005F45A6 /* ParamManager.h */,
+				2A450EC21828947200BF557A /* MovingBall.cpp */,
+				2A450EC31828947200BF557A /* MovingBall.h */,
 			);
 			path = vs_src;
+			sourceTree = "<group>";
+		};
+		2A450EC6182AB23800BF557A /* ofxSimpleSpline */ = {
+			isa = PBXGroup;
+			children = (
+				2A450EDA182AB23900BF557A /* src */,
+			);
+			name = ofxSimpleSpline;
+			path = ../../../addons/ofxSimpleSpline;
+			sourceTree = "<group>";
+		};
+		2A450EDA182AB23900BF557A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				2A450EDB182AB23900BF557A /* ofxSimpleSpline.cpp */,
+				2A450EDC182AB23900BF557A /* ofxSimpleSpline.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		2A77EDBA1824AD1E0009B5A9 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				2A77EDC11826D4240009B5A9 /* phongShader.frag */,
+				2A77EDC21826D4240009B5A9 /* phongShader.vert */,
+				2A77EDBE1824C3230009B5A9 /* noise.vert */,
+				2A77EDBB1824AD1E0009B5A9 /* noise.frag */,
+			);
+			name = shaders;
+			path = bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		2ACC04B91811B0CD00953B09 /* ofxMPMFluid */ = {
@@ -482,6 +529,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				2A450EC6182AB23800BF557A /* ofxSimpleSpline */,
 				2ACC04B91811B0CD00953B09 /* ofxMPMFluid */,
 				E7CF78FD1753FF32006B7D41 /* ofxTextInputField */,
 				E7CF78DD1753FEEB006B7D41 /* ofxMSATimer */,
@@ -1196,6 +1244,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				2A450EC41828947200BF557A /* MovingBall.cpp in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
@@ -1203,6 +1252,7 @@
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
+				2A450EE0182AB23900BF557A /* ofxSimpleSpline.cpp in Sources */,
 				2A9031BF181AB468005F45A6 /* MazeCell.cpp in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
@@ -1211,7 +1261,9 @@
 				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
 				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				2A77EDC31826D4240009B5A9 /* phongShader.frag in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
+				2A77EDBC1824AD1E0009B5A9 /* noise.frag in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				2ACC04DB1811B0CE00953B09 /* ofxMPMParticle.cpp in Sources */,
 				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
@@ -1225,7 +1277,9 @@
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
+				2A77EDBF1824C3230009B5A9 /* noise.vert in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
+				2A77EDC41826D4240009B5A9 /* phongShader.vert in Sources */,
 				2ACC04D81811B0CE00953B09 /* ofxMPMFluid.cpp in Sources */,
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
@@ -1458,7 +1512,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = MazeGeneratorDebug;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1562,7 +1616,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = MazeGenerator;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

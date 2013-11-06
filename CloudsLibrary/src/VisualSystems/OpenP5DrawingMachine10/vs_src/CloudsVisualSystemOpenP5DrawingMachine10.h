@@ -13,6 +13,17 @@
 #include "CloudsVisualSystem.h"
 #include "DM10PingPongBuffer.h"
 
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+enum DM10State
+{
+    DM10STATE_DRAWING,
+    DM10STATE_FADING,
+    DM10STATE_WAITING
+};
+
+//--------------------------------------------------------------
+//--------------------------------------------------------------
 class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
 {
     public:
@@ -101,7 +112,8 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         //DM10PingPongBuffer renderBuffer;
         ofFbo renderBuffer;
     
-        float timeStep;
+        unsigned long long elapsedTimeMs;
+        unsigned long long timeStepMs;
         float speedFactor;
         float maxDist;
     
@@ -111,4 +123,12 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         int textureRes;
         
         ofVboMesh mesh;
+    
+        DM10State state;
+        unsigned long long drawStartMs;
+        float drawLength;
+        unsigned long long fadeStartMs;
+        float fadeLength;
+        unsigned long long waitStartMs;
+        float waitLength;
 };
