@@ -17,14 +17,14 @@ class TUOrbital
 {
     public:
         TUOrbital(float size, float radius);
-        TUOrbital(TUOrbital& parent, string text);
+        TUOrbital(TUOrbital * parent, string& text);
+        ~TUOrbital();
     
-        void update(float x, float y, float z, bool bSelected);
-        void draw(ofCamera& cam, bool bMouseDragged);
-        void billboard();
-        bool isMouseover(ofCamera& cam);
+        void update(float x, float y, float z);
+        void draw(ofCamera& cam);
     
-        static float focusX, focusY, focusZ;
+        static int billboardType;
+    
         static ofxFTGLSimpleLayout font;
         static string fontName;
         static float lineLength;
@@ -40,18 +40,13 @@ class TUOrbital
         static float nodeScalar;
     
         ofVec3f pos;
-    
         float radius, size;
         
         string text;
-        
-        vector<TUOrbital> children;
-        
-        bool bSelected;
-        bool bClicked;
         bool bRenderText;
     
-        int color;
+        TUOrbital * parent;
+        vector<TUOrbital *> children;
 };
 
 
