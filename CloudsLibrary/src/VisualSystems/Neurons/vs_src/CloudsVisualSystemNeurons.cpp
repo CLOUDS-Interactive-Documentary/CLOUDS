@@ -186,24 +186,38 @@ void _C::generateFlythrough(){
     cloudsPathCam.clear();
 
     
-    deque<ofVec3f> pts;
+    // find someone in the youngest possible generation of terminal
+    // therefore insuring a long path between a terminal and a root parent.
+    int youngestGen = 0;
+    _N *thisNode = NULL;
     
-    // choose one of the parent nodes to start from.
+    vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
+    for(;nit!=_N::all.end();nit++){
+        
+        if( (*nit)->isTerminal() ){
+            if((*nit)->generation > youngestGen) {
+                youngestGen = (*nit)->generation;
+                thisNode = (*nit);
+            }
+        }
+        
+    }
     
-    int rcount = rootNodes.size();
-    jtn::TreeNode *thisNode = rootNodes[ floor(ofRandomuf() * rcount) ];
-    ofVec3f firstPoint = *thisNode;
-    while(!thisNode->isTerminal()){
-        //traverse down children.
+    
+    deque<ofVec3f> pts; //collecting points as i go, so i can add them backwards, later.
+    
+    ofVec3f firstPoint = *thisNode; // make a copy of the first point for lookAt() later.
+    
+    while( thisNode->parent != NULL  ){
         
         cloudsPathCam.addPositionControlVertex( *thisNode );
         cloudsPathCam.addTargetControlVertex(ofVec3f());
         pts.push_back( *thisNode );
-       
+
+        //traverse up the parent
         
-        if(!thisNode->isTerminal()){
-            int ccount = thisNode->children.size();
-            thisNode = thisNode->children[ floor(ofRandomuf()*ccount) ];
+        if( thisNode->parent != NULL ){
+            thisNode = thisNode->parent;
         }else{
             break;
         }
