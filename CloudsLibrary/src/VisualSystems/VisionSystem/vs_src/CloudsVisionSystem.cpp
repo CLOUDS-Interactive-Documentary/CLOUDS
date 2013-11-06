@@ -331,8 +331,8 @@ void CloudsVisionSystem::selfSetupSystemGui()
     sysGui->addButton("UPDATE CV PARAMS", false);
     sysGui->addSpacer();
     sysGui->addLabel("OPTICAL FLOW VISUAL PARAMS");
-    sysGui->addSlider("WINDOW WIDTH", 100, 1000, &windowWidth);
-    sysGui->addSlider("WINDOW HEIGHT", 100, 1000, &windowHeight);
+    sysGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
+    sysGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
     sysGui->addSlider("FLOW LINE LENGTH", 0.5, 3, &flowLineMultiplier);
     sysGui->addSlider("FLOW COLOUR MAP RANGE", 10, 200, &flowColorMapRange);
     sysGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
@@ -420,16 +420,17 @@ void CloudsVisionSystem::selfDrawBackground()
     ofSetColor(128,128);
     
     if(drawPlayer){
-        player->draw(0,0);
+        player->draw(0,0,ofGetWidth(),ofGetHeight());
     }
     if(drawThresholded){
         flowMesh.draw();
-        thresholded.draw(0,0, thresholded.width, thresholded.height);
+        thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
     }
     
     if(currentMode == ContourTracking){
+        ofPushMatrix();
+        ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
         contourFinder.draw();
-        
         vector<MyTracker>& followers = tracker.getFollowers();
         for(int i = 0; i < followers.size(); i++) {
             float b = followers[i].getLifeTime();
@@ -437,22 +438,25 @@ void CloudsVisionSystem::selfDrawBackground()
             followers[i].draw(lineWidth);
             
         }
+        ofPopMatrix();
         
     }
     else if(currentMode == OpticalFlow){
         
         ofTexture tex = player->getTextureReference();
+        ofPushMatrix();
         ofPushStyle();
         ofSetColor(200);
+        ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
         tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
         ofSetLineWidth(flowLineWidth);
         flowMesh.draw();
         ofPopStyle();
-        
+        ofPopMatrix();
     }
     else if(currentMode == HeatMap){
         
-        diff.draw(x, y);
+        diff.draw(0, 0,ofGetWidth(),ofGetHeight());
         
         float diffRed = diffMean[0];
         float mapRed = ofMap(diffRed, 0, 512, 0, accumulation.width,true);
@@ -517,8 +521,9 @@ void CloudsVisionSystem::selfMouseDragged(ofMouseEventArgs& data)
 
 void CloudsVisionSystem::selfMouseMoved(ofMouseEventArgs& data)
 {
-    mouseX = data.x ;
-    mouseY = data.y ;
+    
+    mouseX = ofMap(data.x, 0, ofGetWidth(), 0, player->getWidth());
+    mouseY = ofMap(data.y, 0, ofGetHeight(), 0, player->getHeight()) ;
 }
 
 void CloudsVisionSystem::selfMousePressed(ofMouseEventArgs& data)
