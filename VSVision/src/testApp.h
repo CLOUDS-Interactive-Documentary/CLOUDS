@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisionSystem.h"
+#include "CloudsVisualSystemVision.h"
 #include "CloudsRun.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsAct.h"
@@ -23,7 +23,7 @@ class testApp : public ofBaseApp {
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	CloudsVisionSystem visionSystem;
+	CloudsVisualSystemVision visionSystem;
 	CloudsRun run;
 	CloudsFCPParser parser;
 	CloudsStoryEngine storyEngine;

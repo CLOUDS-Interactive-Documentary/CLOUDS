@@ -414,8 +414,6 @@ void CloudsVisionSystem::selfDrawBackground()
 {
     
     
-    float x =ofGetWidth()/2 -player->getWidth()/2;
-    float y =ofGetHeight()/2 -player->getHeight()/2;
     
     ofSetColor(128,128);
     
@@ -466,11 +464,11 @@ void CloudsVisionSystem::selfDrawBackground()
         float mapBlue = ofMap(diffBlue, 0, 512, 0, accumulation.width,true);
         
         ofSetColor(255, 0, 0);
-        ofRect(0,0 + accumulation.height -30 , mapRed, 10);
+        ofRect(0,0, mapRed, 10);
         ofSetColor(0, 255, 0);
-        ofRect(0, 0 + accumulation.height -15 , mapGreen, 10);
+        ofRect(0,0, mapGreen, 10);
         ofSetColor(0, 0, 255);
-        ofRect(0, 0+ accumulation.height  ,  mapBlue, 10);
+        ofRect(0, 0,  mapBlue, 10);
     }
 }
 
