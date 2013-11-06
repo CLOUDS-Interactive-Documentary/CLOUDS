@@ -76,8 +76,9 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
 	
 	char message[1024];
-	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"duration\" : %f } }",
+	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f } }",
 			args.chosenClip.person.c_str(),
+			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration() );
 	server.send( message );
 	cout << " message " << message << endl;

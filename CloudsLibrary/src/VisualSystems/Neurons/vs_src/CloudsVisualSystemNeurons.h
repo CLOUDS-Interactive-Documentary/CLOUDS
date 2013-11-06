@@ -8,6 +8,7 @@
 */
 
 #include "CloudsVisualSystem.h"
+#include "CloudsPathCamera.h"
 
 #define _C CloudsVisualSystemNeurons
 
@@ -72,11 +73,17 @@ class _C:public CloudsVisualSystem{
     ofxUISlider *danceAmpSlider;
     ofxUISlider *danceFreqSlider;
     ofxUISlider *danceOffsetSlider;
-
-    
     ofxUIButton *resetButton;
     ofxUIButton *saveButton;
     ofxUIButton *loadButton;
+    
+    ofxUIButton *generateCamPath;
+    ofxUIButton *generateRandCam;
+    ofxUISlider *camDuration;
+    
+    static bool renderNeurons;
+    
+    
 	float rotation;
 	vector<jtn::TreeNode*> rootNodes;
 	static float dotSize;
@@ -92,5 +99,11 @@ class _C:public CloudsVisualSystem{
     void reset(bool createRootNodes = true);
     void writeToFile(string dirname);
     void readFromFile(string dirname);
+    
+    CloudsPathCamera cloudsPathCam;
+    void generateFlythrough();
+    void generateRandCamBounce();
+    ofCamera& getCameraRef();
+    ofCamera mixCam;
 };
 
