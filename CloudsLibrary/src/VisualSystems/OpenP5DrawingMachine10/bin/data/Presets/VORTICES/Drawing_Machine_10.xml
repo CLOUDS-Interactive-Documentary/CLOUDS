@@ -6,24 +6,39 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>44</Kind>
     <Name>NUM PARTICLES</Name>
-    <Value>5419.665039062</Value>
+    <Value>5329</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
+    <Kind>44</Kind>
     <Name>NUM ATTRACTORS</Name>
-    <Value>20.665023804</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SPEED FACTOR</Name>
-    <Value>0.009852217</Value>
+    <Value>14.778325081</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>MAX DIST</Name>
     <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DRAW TIME</Name>
+    <Value>3.827929735</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE TIME</Name>
+    <Value>1.200000048</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WAIT TIME</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -103,14 +103,14 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     height = ofGetWindowHeight();
     
     // Load the shaders.
-    string shadersFolder = "shaders";
-    updateShader.load("", shadersFolder + "/update.frag");
-    renderShader.load(shadersFolder + "/render.vert", shadersFolder + "/render.frag");
+    string shadersFolder = getVisualSystemDataPath() + "shaders/";
+    updateShader.load("", shadersFolder + "update.frag");
+    renderShader.load(shadersFolder + "render.vert", shadersFolder + "render.frag");
     
     // Load defaults.
     numParticles = 10000;
     numAttractors = 200;
-    speedFactor = 0.05f;
+    speedFactor = 1.0f;
     maxDist = 0.2f;
     
     drawLength = 5.0f;
