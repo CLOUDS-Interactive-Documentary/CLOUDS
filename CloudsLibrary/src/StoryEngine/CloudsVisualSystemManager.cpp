@@ -36,10 +36,10 @@
 
 //CODE STORM
 #include "CloudsVisualSystemOscillations.h"
-#include "ScrapeVisualSystem.h"
-#include "WebHistoryVisualSystem.h"
-#include "PagesVisualSystem.h"
-#include "QuineVisualSystem.h"
+#include "CloudsVisualSystemScrape.h"
+#include "CloudsVisualSystemWebHistory.h"
+#include "CloudsVisualSystemPages.h"
+//#include "QuineVisualSystem.h"
 
 //COMMISSIONS
 #include "CloudsVisualSystemVerletForm.h"
@@ -133,6 +133,7 @@ struct Mapping {
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
+//TODO: Rename	
 //	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
 //	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },

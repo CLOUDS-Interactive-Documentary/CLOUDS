@@ -99,7 +99,7 @@ void CloudsVisualSystemOpenP5Hackpact::selfSetup(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOpenP5Hackpact::selfPresetLoaded(string presetPath){
-
+	beta = 0;
 }
 
 // selfBegin is called when the system is ready to be shown

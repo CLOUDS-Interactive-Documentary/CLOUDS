@@ -1,6 +1,6 @@
 //
 //  ScrapeCamera.h
-//  ScrapeVisualSystem
+//  CloudsVisualSystemScrape
 //
 //  Created by Elie Zananiri on 2013-07-27.
 //

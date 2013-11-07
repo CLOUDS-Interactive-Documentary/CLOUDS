@@ -79,10 +79,9 @@ void CloudsVisualSystemOpenP5Machine::selfSetup(){
     
     depth = 400;
     
-    ofEnableSmoothing();
-    ofSetLineWidth(.1);
-    glEnable(GL_DEPTH_TEST);
-    ofSetSmoothLighting(true);
+//    ofEnableSmoothing();
+    //
+    //ofSetSmoothLighting(true);
     
     
     color1HSB.r = 200;
@@ -124,13 +123,17 @@ void CloudsVisualSystemOpenP5Machine::selfUpdate(){
 void CloudsVisualSystemOpenP5Machine::selfDraw(){
   
     ofPushStyle();
+	ofSetLineWidth(.1);
+	
+	glEnable(GL_DEPTH_TEST);
+	
     mat->begin();
 	ofColor color;
      
     framecount = (ofGetElapsedTimeMillis()/33);
     ofRotateY(framecount* (ofRadToDeg(PI/500)));
     ofTranslate(ofGetWindowWidth()/10, ofGetWindowWidth()/10, depth/2);
-    
+
 
     for(int i=0; i<10; i++) {
 
@@ -152,12 +155,15 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
                     ofPopMatrix();
        
                     ofRotateX(240);
+					
                     ofPushMatrix();
                     ofTranslate(shiftX*400*x, shiftY*300*y, shiftZ*50*z);
                     ofScale(100*boxScaleX, 5*boxScaleY, 5*boxScaleZ);
                     ofBox(1, 1, 1);
                     ofPopMatrix();
-                    ofRotateX(50);
+                    
+					ofRotateX(50);
+					
                     ofPushMatrix();
                     ofTranslate(shiftX*400*x,shiftY*10*y, shiftZ*50*z);
                     ofScale(50*boxScaleX, 5*boxScaleY, 5*boxScaleZ);
@@ -165,6 +171,7 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
                     ofPopMatrix();
                     
                     ofRotateX(160);
+					
                     ofPushMatrix();
                     ofRotateY(framecount* (ofRadToDeg(PI/400)));
                     ofTranslate(shiftX*100*x, shiftY*300*y, shiftZ*300*z);

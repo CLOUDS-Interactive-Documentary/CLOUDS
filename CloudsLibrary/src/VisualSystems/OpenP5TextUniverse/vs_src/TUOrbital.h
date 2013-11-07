@@ -26,6 +26,7 @@ class TUOrbital
         static int billboardType;
     
         static ofxFTGLSimpleLayout font;
+        static ofxFTGLTextAlignment textAlign;
         static string fontName;
         static float lineLength;
         static float fontSize;
