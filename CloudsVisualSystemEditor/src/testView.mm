@@ -18,7 +18,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)setup
 {
-	currentVisualSystem = NULL;
+//	currentVisualSystem = NULL;
 	selectedPreset = NULL;
 	
 	parser.loadFromFiles();
@@ -69,7 +69,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
-			currentVisualSystem = NULL;
+//			currentVisualSystem = NULL;
         }
 		
         currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;

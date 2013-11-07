@@ -2,10 +2,6 @@
 
 #include "ofMain.h"
 #include "CloudsVisualSystemVision.h"
-#include "CloudsRun.h"
-#include "CloudsStoryEngine.h"
-#include "CloudsAct.h"
-#include "CloudsFCPParser.h"
 
 class testApp : public ofBaseApp {
   public:
@@ -24,8 +20,4 @@ class testApp : public ofBaseApp {
 	void gotMessage(ofMessage msg);
 
 	CloudsVisualSystemVision visionSystem;
-	CloudsRun run;
-	CloudsFCPParser parser;
-	CloudsStoryEngine storyEngine;
-	CloudsVisualSystemManager visualSystems;
 };

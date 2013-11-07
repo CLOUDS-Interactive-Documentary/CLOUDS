@@ -145,7 +145,12 @@ struct Mapping {
 	{ "World", &fCreate<CloudsVisualSystemWorld> }
 	//YellowTail { "", &fCreate<CloudsVisualSystemYellowTail> },
 };
-map<string, tConstructor> constructors(mapping,mapping+ARRAY_SIZE(mapping));
+map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
+
+//--------------------------------------------------------------------
+ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+	return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+}
 
 //--------------------------------------------------------------------
 vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<string> systemNames){
@@ -153,7 +158,7 @@ vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystem
 	vector< ofPtr<CloudsVisualSystem> > systems;
 	for(int i = 0; i < systemNames.size(); i++){
 		if(constructors.find(systemNames[i]) != constructors.end()){
-			systems.push_back( ofPtr<CloudsVisualSystem>( constructors[ systemNames[i] ]() ) );
+			systems.push_back( InstantiateSystem(systemNames[i]) );
 		}
 		else{
 			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemNames[i];
@@ -185,13 +190,18 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 #ifndef CLOUDS_NO_VS
 	
 	nameToVisualSystem.clear();
-	for(int i = 0; i < systems.size(); i++){
-		delete systems[i];
-	}
-	systems.clear();
+//	for(int i = 0; i < systems.size(); i++){
+//		delete systems[i];
+//	}
 	
+	systems.clear();
 	presets.clear();
-    
+    vector<string> systemNames;
+	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
+//		systemNames.push_back(it->first);
+		registerVisualSystem( InstantiateSystem(it->first) );
+	}
+
 	/*
 	//JAMES SYSTEMS
 	registerVisualSystem(new CloudsVisualSystemDataCascade() );
@@ -246,7 +256,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
+void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
 #ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	//moved this -- don't set up until the loading screen of the act
@@ -353,7 +363,7 @@ void CloudsVisualSystemManager::loadPresets(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
     enabledPresetsIndex.clear();
-    for(int i =0; i<presets.size(); i++){
+    for(int i = 0; i<presets.size(); i++){
         if(presets[i].enabled){
             enabledPresetsIndex.push_back(i);
         }
@@ -572,7 +582,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	ofDirectory(standaloneExportFolder).create();
 	
 	cout << "COPYING PRESETS!" << endl;
-	set<CloudsVisualSystem*> systemsWithPresets;
+	set< ofPtr<CloudsVisualSystem> > systemsWithPresets;
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
             
@@ -589,9 +599,9 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	}
     
 	cout << "COPYING SUPPORTING FILES" << endl;
-	set<CloudsVisualSystem*>::iterator it;
+	set< ofPtr<CloudsVisualSystem> >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
-		CloudsVisualSystem* sys = *it;
+		ofPtr<CloudsVisualSystem> sys = *it;
 		ofDirectory otherFiles( sys->getVisualSystemDataPath() );
 		otherFiles.listDir();
 		for(int f = 0; f < otherFiles.size(); f++){

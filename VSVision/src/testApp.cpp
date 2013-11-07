@@ -3,10 +3,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
-	ofSetVerticalSync(true);
-	ofEnableAlphaBlending();
-	
+		
     visionSystem.setup();
 	visionSystem.playSystem();
 

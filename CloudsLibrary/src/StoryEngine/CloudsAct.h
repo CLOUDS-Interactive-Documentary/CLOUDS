@@ -71,7 +71,7 @@ class CloudsAct{
 	
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
-	vector<CloudsVisualSystem*> getAllVisualSystems();
+	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
 	
     vector<string>& getAllTopics();
     
