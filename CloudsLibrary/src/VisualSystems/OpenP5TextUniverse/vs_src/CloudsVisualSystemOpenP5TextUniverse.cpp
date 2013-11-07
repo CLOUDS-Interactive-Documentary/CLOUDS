@@ -119,13 +119,19 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "BILLBOARD SCREEN") {
-        TUOrbital::billboardType = 0;
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 0;
+        }
     }
     else if (e.widget->getName() == "BILLBOARD NODES") {
-        TUOrbital::billboardType = 1;
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 1;
+        }
     }
     else if (e.widget->getName() == "BILLBOARD ORIGIN") {
-        TUOrbital::billboardType = 2;
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 2;
+        }
     }
     
     else if (e.widget->getName() == "TEXT HUE") {
@@ -174,20 +180,28 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         rebuildFont();
     }
     else if (e.widget->getName() == "HELVETICA") {
-        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
-        rebuildFont();
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
+            rebuildFont();
+        }
     }
     else if (e.widget->getName() == "MATERIA PRO") {
-        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf";
-        rebuildFont();
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf";
+            rebuildFont();
+        }
     }
     else if (e.widget->getName() == "MUSEO 300") {
-        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
-        rebuildFont();
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
+            rebuildFont();
+        }
     }
     else if (e.widget->getName() == "NEW MEDIA FETT") {
-        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";    
-        rebuildFont();
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";
+            rebuildFont();
+        }
     }
     
     else if (e.widget->getName() == "FILES") {
