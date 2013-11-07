@@ -43,7 +43,7 @@ struct ScrapeBox : ofxMtlBox
 
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-class ScrapeVisualSystem : public CloudsVisualSystem
+class CloudsVisualSystemScrape : public CloudsVisualSystem
 {
 public:
     

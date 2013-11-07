@@ -1,8 +1,8 @@
 //
-//  ScrapeVisualSystem.cpp
+//  CloudsVisualSystemScrape.cpp
 //
 
-#include "ScrapeVisualSystem.h"
+#include "CloudsVisualSystemScrape.h"
 
 #include "CloudsRGBDVideoPlayer.h"
 #ifdef AVF_PLAYER
@@ -25,7 +25,7 @@ static ofxEasingQuad easing;
 
 //--------------------------------------------------------------
 // These methods let us add custom GUI parameters and respond to their events
-void ScrapeVisualSystem::selfSetupGui()
+void CloudsVisualSystemScrape::selfSetupGui()
 {    
 	customGui = new ofxUISuperCanvas("SCRAPE", gui);
 	customGui->copyCanvasStyle(gui);
@@ -63,14 +63,14 @@ void ScrapeVisualSystem::selfSetupGui()
 	customGui->addSlider("FADE OUT DURATION", 50, 3000, &fadeOutDuration);
 	customGui->addSlider("FADE OUT DELAY", 0, 3000, &fadeOutDelay);
     
-	ofAddListener(customGui->newGUIEvent, this, &ScrapeVisualSystem::selfGuiEvent);
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemScrape::selfGuiEvent);
 	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
 //--------------------------------------------------------------
-void ScrapeVisualSystem::selfGuiEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemScrape::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.getName() == "2D" && e.getToggle()->getValue()) {
         mode = MODE_2D;
@@ -87,19 +87,19 @@ void ScrapeVisualSystem::selfGuiEvent(ofxUIEventArgs &e)
 }
 
 //Use system gui for global or logical settings, for exmpl
-void ScrapeVisualSystem::selfSetupSystemGui(){
+void CloudsVisualSystemScrape::selfSetupSystemGui(){
 	
 }
 
-void ScrapeVisualSystem::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemScrape::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 //use render gui for display settings, like changing colors
-void ScrapeVisualSystem::selfSetupRenderGui(){
+void CloudsVisualSystemScrape::selfSetupRenderGui(){
     
 }
 
-void ScrapeVisualSystem::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemScrape::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
@@ -107,7 +107,7 @@ void ScrapeVisualSystem::guiRenderEvent(ofxUIEventArgs &e){
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void ScrapeVisualSystem::selfSetup()
+void CloudsVisualSystemScrape::selfSetup()
 {
     fboSize = ofNextPow2(MAX(ofGetWidth(), ofGetHeight()));
     contentFbo.allocate(fboSize, fboSize);
@@ -116,7 +116,7 @@ void ScrapeVisualSystem::selfSetup()
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void ScrapeVisualSystem::selfPresetLoaded(string presetPath){
+void CloudsVisualSystemScrape::selfPresetLoaded(string presetPath){
 	
 }
 
@@ -124,21 +124,21 @@ void ScrapeVisualSystem::selfPresetLoaded(string presetPath){
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
-void ScrapeVisualSystem::selfBegin()
+void CloudsVisualSystemScrape::selfBegin()
 {
     doGrow();
 }
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
-void ScrapeVisualSystem::selfSceneTransformation()
+void CloudsVisualSystemScrape::selfSceneTransformation()
 {
     
 }
 
 //--------------------------------------------------------------
 // normal update call
-void ScrapeVisualSystem::selfUpdate()
+void CloudsVisualSystemScrape::selfUpdate()
 {    
     if (bComplete) {
         if (bGrowing) {
@@ -215,7 +215,7 @@ void ScrapeVisualSystem::selfUpdate()
 //--------------------------------------------------------------
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void ScrapeVisualSystem::selfDraw()
+void CloudsVisualSystemScrape::selfDraw()
 {
     if (mode == MODE_DOME) {
         // Scale up the texture since we're not working with normalized tex coords.
@@ -272,14 +272,14 @@ void ScrapeVisualSystem::selfDraw()
 }
 
 // draw any debug stuff here
-void ScrapeVisualSystem::selfDrawDebug()
+void CloudsVisualSystemScrape::selfDrawDebug()
 {
     
 }
 
 //--------------------------------------------------------------
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void ScrapeVisualSystem::selfDrawBackground()
+void CloudsVisualSystemScrape::selfDrawBackground()
 {
     if (mode == MODE_2D) {
         contentFbo.draw(0, 0);
@@ -289,7 +289,7 @@ void ScrapeVisualSystem::selfDrawBackground()
 //--------------------------------------------------------------
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void ScrapeVisualSystem::selfEnd()
+void CloudsVisualSystemScrape::selfEnd()
 {
     for (int i = 0; i < boxes.size(); i++) {
         delete boxes[i];
@@ -300,45 +300,45 @@ void ScrapeVisualSystem::selfEnd()
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
-void ScrapeVisualSystem::selfExit()
+void CloudsVisualSystemScrape::selfExit()
 {
 
 }
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void ScrapeVisualSystem::selfKeyPressed(ofKeyEventArgs & args)
+void CloudsVisualSystemScrape::selfKeyPressed(ofKeyEventArgs & args)
 {
     
 }
 
-void ScrapeVisualSystem::selfKeyReleased(ofKeyEventArgs & args)
+void CloudsVisualSystemScrape::selfKeyReleased(ofKeyEventArgs & args)
 {
     
 }
 
-void ScrapeVisualSystem::selfMouseDragged(ofMouseEventArgs& data)
+void CloudsVisualSystemScrape::selfMouseDragged(ofMouseEventArgs& data)
 {
     
 }
 
-void ScrapeVisualSystem::selfMouseMoved(ofMouseEventArgs& data)
+void CloudsVisualSystemScrape::selfMouseMoved(ofMouseEventArgs& data)
 {
 
 }
 
-void ScrapeVisualSystem::selfMousePressed(ofMouseEventArgs& data)
+void CloudsVisualSystemScrape::selfMousePressed(ofMouseEventArgs& data)
 {
     
 }
 
-void ScrapeVisualSystem::selfMouseReleased(ofMouseEventArgs& data)
+void CloudsVisualSystemScrape::selfMouseReleased(ofMouseEventArgs& data)
 {
     
 }
 
 //--------------------------------------------------------------
-void ScrapeVisualSystem::doGrow()
+void CloudsVisualSystemScrape::doGrow()
 {
     // Clear the previous boxes.
     if (boxes.size()) {
@@ -387,7 +387,7 @@ void ScrapeVisualSystem::doGrow()
 }
 
 //--------------------------------------------------------------
-void ScrapeVisualSystem::doShrink()
+void CloudsVisualSystemScrape::doShrink()
 {
     // Shrink all the boxes back to 0 in sync.
     for (int i = 0; i < boxes.size(); i++) {
