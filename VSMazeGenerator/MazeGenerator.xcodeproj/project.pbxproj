@@ -631,13 +631,13 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
-				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
-				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
-				E72FF11D17E688FE0007780D /* CloudsRGBDVideoPlayer.h */,
-				E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */,
-				E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */,
 				E72FF12017E688FE0007780D /* ofxLight.h */,
+				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
+				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
+				E72FF11D17E688FE0007780D /* CloudsRGBDVideoPlayer.h */,
+				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
+				E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */,
+				E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */,
 			);
 			name = VisualSystemsLibrary;
 			path = src/VisualSystemsLibrary;
@@ -1183,8 +1183,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "MazeGenerator" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1415,7 +1413,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -1509,7 +1507,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				PREBINDING = NO;
 				PRODUCT_NAME = MazeGeneratorDebug;
 				SDKROOT = macosx;
@@ -1520,7 +1518,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = NO;
@@ -1613,7 +1611,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				PREBINDING = NO;
 				PRODUCT_NAME = MazeGenerator;
 				SDKROOT = macosx;

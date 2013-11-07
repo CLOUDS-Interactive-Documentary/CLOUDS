@@ -12,17 +12,43 @@
 
 #include "CloudsVisualSystem.h"
 
-#include "Page.h"
+#include "ofxMtlBoxFitting.h"
+#include "ofxTween.h"
 
-class PagesVisualSystem : public CloudsVisualSystem
+#include "ScrapeCamera.h"
+
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+enum ScrapeMode
 {
-  public:
+    MODE_2D,
+    MODE_DOME,
+    MODE_EXPLODE
+};
+
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+struct ScrapeBox : ofxMtlBox
+{
+    float scale;
+    float alpha;
     
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
+    float theta;
+    float phi;
+    float radius;
+    
+    ofTexture tex;
+    ofxTween tween;
+};
+
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+class CloudsVisualSystemScrape : public CloudsVisualSystem
+{
+public:
+    
     string getSystemName(){
-		return "Pages";
+		return "Scrape";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -63,9 +89,6 @@ class PagesVisualSystem : public CloudsVisualSystem
 	// you can change the camera by returning getCameraRef()
     void selfDraw();
 	
-	// use this to draw the point cloud
-	void selfDrawRGBD();
-	
     // draw any debug stuff here
 	void selfDrawDebug();
 
@@ -92,22 +115,41 @@ class PagesVisualSystem : public CloudsVisualSystem
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    void doGrow();
+    void doShrink();
+    
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
-//		return cloudsCamera;
+//		return domeCamera;
 //	}
-
+	
 protected:
     
-    //  Your Stuff
-    //
-    vector<Page *> pages;
-	
+//    ScrapeCamera domeCamera;
+    
+    ofFbo contentFbo;
+    float fboSize;
+
+    ofImage screenGrab;
+    bool bOverlay;
+    
 	ofxUISuperCanvas* customGui;
-    int numPages;
+    ofxUIRadio * modeRadio;
+    
+    ScrapeMode mode;
+    
+	float boxDivWidth;
+    float boxDivHeight;
+    float boxMaxSubDivs;
+    
+	float fadeInDuration;
+	float fadeInDelay;
+    float fadeOutDuration;
+    float fadeOutDelay;
 	
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
+    vector<ScrapeBox *> boxes;
+    
+    bool bGrowing;
+    bool bComplete;
 };

@@ -40,7 +40,7 @@ git clone https://github.com/prisonerjohn/ofxBillboard
 git clone https://github.com/quinkennedy/ofxRegex
 git clone https://github.com/satoruhiga/ofxAnimationPrimitives
 git clone https://github.com/obviousjim/ofxBox2d.git
-git clone https://github.com/underdoeg/ofxOpenSteer.git
+git clone https://github.com/obviousjim/ofxOpenSteer.git
 git clone https://github.com/Larsberg/ofxSimpleSpline
 git clone https://github.com/Larsberg/ofxSimpleSurface
 

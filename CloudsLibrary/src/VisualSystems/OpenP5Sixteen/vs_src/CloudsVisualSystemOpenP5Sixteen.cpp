@@ -49,8 +49,9 @@ void CloudsVisualSystemOpenP5Sixteen::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Sixteen::selfSetup()
 {
-    width = 255;//ofGetWidth();
-    height = 255;//ofGetHeight();
+//    width = ofGetWidth();
+//    height = ofGetHeight();
+    width = height = 255;
     pixels = new unsigned char[width * height * 4];
     tex.allocate(width, height, GL_RGBA);
 }
@@ -94,14 +95,6 @@ void CloudsVisualSystemOpenP5Sixteen::selfUpdate()
         c = 50 + (toHex(getColor(x, y)) >> 8 & width);
         setColor(x, y, ofColor(c, c, c * 2));
     }
-    
-    //    for(x=0;++x<w*h;){
-    //        X=x%w+n();
-    //        Y=x/w+n();
-    //
-    //        c=50+(get(X,Y)>>8&w);
-    //        set(X,Y,color(c,c,c*2));
-    //    }
     
     cout << ofGetFrameRate() << endl;
 }

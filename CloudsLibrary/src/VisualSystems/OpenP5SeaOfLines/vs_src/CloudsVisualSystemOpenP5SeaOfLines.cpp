@@ -252,9 +252,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data)
-{
+void CloudsVisualSystemOpenP5SeaOfLines::selfMouseDragged(ofMouseEventArgs& data){
 
 }
 
@@ -266,8 +264,6 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfMousePressed(ofMouseEventArgs& data
 	
 }
 
-//--------------------------------------------------------------
-void CloudsVisualSystemOpenP5SeaOfLines::selfMouseReleased(ofMouseEventArgs& data)
-{
+void CloudsVisualSystemOpenP5SeaOfLines::selfMouseReleased(ofMouseEventArgs& data){
 
 }

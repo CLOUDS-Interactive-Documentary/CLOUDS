@@ -1,15 +1,15 @@
 //
-//  WebHistoryVisualSystem.cpp
+//  CloudsVisualSystemWebHistory.cpp
 //
 
-#include "WebHistoryVisualSystem.h"
+#include "CloudsVisualSystemWebHistory.h"
 #include "CloudsRGBDVideoPlayer.h"
 
 #include <Poco/URI.h>
 
 //--------------------------------------------------------------
 //These methods let us add custom GUI parameters and respond to their events
-void WebHistoryVisualSystem::selfSetupGui()
+void CloudsVisualSystemWebHistory::selfSetupGui()
 {
 	listGui = new ofxUISuperCanvas("SEARCH TERM LIST", gui);
 	listGui->copyCanvasStyle(gui);
@@ -39,7 +39,7 @@ void WebHistoryVisualSystem::selfSetupGui()
     extruders.push_back(listAlpha);
     listGui->addSlider("LIST ALPHA", 0.0, 255.0, listAlpha->getPosPtr());
     
-    ofAddListener(listGui->newGUIEvent, this, &WebHistoryVisualSystem::selfGuiEvent);
+    ofAddListener(listGui->newGUIEvent, this, &CloudsVisualSystemWebHistory::selfGuiEvent);
 	
 	guis.push_back(listGui);
 	guimap[listGui->getName()] = listGui;
@@ -118,14 +118,14 @@ void WebHistoryVisualSystem::selfSetupGui()
     extruders.push_back(nodeAlpha);
     treeGui->addSlider("NODE ALPHA", 0.0, 255.0, nodeAlpha->getPosPtr());
 
-    ofAddListener(treeGui->newGUIEvent, this, &WebHistoryVisualSystem::selfGuiEvent);
+    ofAddListener(treeGui->newGUIEvent, this, &CloudsVisualSystemWebHistory::selfGuiEvent);
 	
 	guis.push_back(treeGui);
 	guimap[treeGui->getName()] = treeGui;
 }
 
 //--------------------------------------------------------------
-void WebHistoryVisualSystem::selfGuiEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemWebHistory::selfGuiEvent(ofxUIEventArgs &e)
 {
     if (e.widget->getName() == "LIST HUE") {
         listHue->setPosAndHome(listHue->getPos());
@@ -181,19 +181,19 @@ void WebHistoryVisualSystem::selfGuiEvent(ofxUIEventArgs &e)
 }
 
 //Use system gui for global or logical settings, for exmpl
-void WebHistoryVisualSystem::selfSetupSystemGui(){
+void CloudsVisualSystemWebHistory::selfSetupSystemGui(){
 	
 }
 
-void WebHistoryVisualSystem::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemWebHistory::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 //use render gui for display settings, like changing colors
-void WebHistoryVisualSystem::selfSetupRenderGui(){
+void CloudsVisualSystemWebHistory::selfSetupRenderGui(){
 
 }
 
-void WebHistoryVisualSystem::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemWebHistory::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
@@ -201,12 +201,16 @@ void WebHistoryVisualSystem::guiRenderEvent(ofxUIEventArgs &e){
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void WebHistoryVisualSystem::selfSetup()
+void CloudsVisualSystemWebHistory::selfSetup()
 {
     // Load fonts.
     listColor.set(255, 128, 64);  // Pick a non-gray color so that HSB gets set properly.
-    listFont.loadFont(getVisualSystemDataPath() + "Andale Mono.ttf", 12);
-    HistoryNode::font.loadFont(getVisualSystemDataPath() + "Andale Mono.ttf", 12, true, true, true);
+    if (!listFont.loadFont(getVisualSystemDataPath() + "Andale Mono.ttf", 12)) {
+        ofLogError("WebHistory") << "Could not load list font " << getVisualSystemDataPath() << "Andale Mono.ttf";
+    }
+    if (!HistoryNode::font.loadFont(getVisualSystemDataPath() + "Andale Mono.ttf", 12, true, true, true)) {
+        ofLogError("WebHistory") << "Could not load node font " << getVisualSystemDataPath() << "Andale Mono.ttf";
+    }
     
     // Set defaults.
     currSpin = 0.0f;
@@ -215,24 +219,24 @@ void WebHistoryVisualSystem::selfSetup()
     bClearScreen = false;
     
     if (fetchChromeHistory()) {
-        ofLogNotice("VSWebHistory") << "Using live Chrome data" << endl;
+        ofLogNotice("WebHistory") << "Using live Chrome data" << endl;
     }
 //    else if (fetchSafariHistory()) {
-//        ofLogNotice("VSWebHistory") << "Using live Safari data" << endl;
+//        ofLogNotice("WebHistory") << "Using live Safari data" << endl;
 //    }
 //    else if (fetchFirefoxHistory()) {
-//        ofLogNotice("VSWebHistory") << "Using live Firefox data" << endl;
+//        ofLogNotice("WebHistory") << "Using live Firefox data" << endl;
 //    }
     else if (fetchChromeHistory(true)) {
-        ofLogNotice("VSWebHistory") << "Using sample Chrome data" << endl;
+        ofLogNotice("WebHistory") << "Using sample Chrome data" << endl;
     }
     else {
-        ofLogError("VSWebHistory") << "No available web history!" << endl;
+        ofLogError("WebHistory") << "No available web history!" << endl;
     }
 }
 
 //--------------------------------------------------------------
-bool WebHistoryVisualSystem::fetchChromeHistory(bool bUseSample)
+bool CloudsVisualSystemWebHistory::fetchChromeHistory(bool bUseSample)
 {
     string chromeHistoryPath;
     if (bUseSample) {
@@ -243,14 +247,14 @@ bool WebHistoryVisualSystem::fetchChromeHistory(bool bUseSample)
     }
 
     if(!ofFile(chromeHistoryPath).doesFileExist(chromeHistoryPath)){
-        ofLogError("VSWebHistory") << (bUseSample ? "Sample " : "Actual") << " database file does not exist at path " << chromeHistoryPath;
+        ofLogError("WebHistory") << (bUseSample ? "Sample " : "Actual") << " database file does not exist at path " << chromeHistoryPath;
         return false;
 	}
 	
     ofxSQLite sqlite;
     if (!sqlite.setup(chromeHistoryPath)) {
         // No dice :(
-        ofLogError("VSWebHistory") << "Couldn't load " << (bUseSample ? "sample " : "actual") << " database at path " << chromeHistoryPath;
+        ofLogError("WebHistory") << "Couldn't load " << (bUseSample ? "sample " : "actual") << " database at path " << chromeHistoryPath;
         return false;
     }
     	
@@ -317,7 +321,7 @@ bool WebHistoryVisualSystem::fetchChromeHistory(bool bUseSample)
 }
 
 //--------------------------------------------------------------
-bool WebHistoryVisualSystem::fetchSafariHistory()
+bool CloudsVisualSystemWebHistory::fetchSafariHistory()
 {
     string safariHistoryPath = ofFilePath::getUserHomeDir() + "/Library/Safari/History.plist";
     
@@ -331,7 +335,7 @@ bool WebHistoryVisualSystem::fetchSafariHistory()
 }
 
 //--------------------------------------------------------------
-bool WebHistoryVisualSystem::fetchFirefoxHistory()
+bool CloudsVisualSystemWebHistory::fetchFirefoxHistory()
 {
     ofDirectory dir;
     dir.listDir(ofFilePath::getUserHomeDir() + "/Library/Application Support/Firefox/Profiles/");
@@ -394,7 +398,7 @@ bool WebHistoryVisualSystem::fetchFirefoxHistory()
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void WebHistoryVisualSystem::selfPresetLoaded(string presetPath)
+void CloudsVisualSystemWebHistory::selfPresetLoaded(string presetPath)
 {
 	
 }
@@ -403,20 +407,20 @@ void WebHistoryVisualSystem::selfPresetLoaded(string presetPath)
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
-void WebHistoryVisualSystem::selfBegin()
+void CloudsVisualSystemWebHistory::selfBegin()
 {
 
 }
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
-void WebHistoryVisualSystem::selfSceneTransformation(){
+void CloudsVisualSystemWebHistory::selfSceneTransformation(){
 	
 }
 
 //--------------------------------------------------------------
 //normal update call
-void WebHistoryVisualSystem::selfUpdate()
+void CloudsVisualSystemWebHistory::selfUpdate()
 {
     // Update the extruders parameters.
     listColor.setHsb(listHue->getPos(), listSat->getPos(), listBri->getPos(), listAlpha->getPos());
@@ -429,7 +433,7 @@ void WebHistoryVisualSystem::selfUpdate()
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void WebHistoryVisualSystem::selfDraw()
+void CloudsVisualSystemWebHistory::selfDraw()
 {
     ofPushStyle();
     ofPushMatrix();
@@ -446,14 +450,14 @@ void WebHistoryVisualSystem::selfDraw()
 }
 
 // draw any debug stuff here
-void WebHistoryVisualSystem::selfDrawDebug()
+void CloudsVisualSystemWebHistory::selfDrawDebug()
 {
 	
 }
 
 //--------------------------------------------------------------
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void WebHistoryVisualSystem::selfDrawBackground()
+void CloudsVisualSystemWebHistory::selfDrawBackground()
 {
     if (searchTerms.empty()) {
         // Nothing to do here.
@@ -499,41 +503,41 @@ void WebHistoryVisualSystem::selfDrawBackground()
 
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void WebHistoryVisualSystem::selfEnd()
+void CloudsVisualSystemWebHistory::selfEnd()
 {
 		
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void WebHistoryVisualSystem::selfExit()
+void CloudsVisualSystemWebHistory::selfExit()
 {
 
 }
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void WebHistoryVisualSystem::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemWebHistory::selfKeyPressed(ofKeyEventArgs & args){
 	
 }
-void WebHistoryVisualSystem::selfKeyReleased(ofKeyEventArgs & args){
-	
-}
-
-//--------------------------------------------------------------
-void WebHistoryVisualSystem::selfMouseDragged(ofMouseEventArgs& data)
-{
-
-}
-
-void WebHistoryVisualSystem::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemWebHistory::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
 //--------------------------------------------------------------
-void WebHistoryVisualSystem::selfMousePressed(ofMouseEventArgs& data)
+void CloudsVisualSystemWebHistory::selfMouseDragged(ofMouseEventArgs& data)
 {
 
 }
 
-void WebHistoryVisualSystem::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemWebHistory::selfMouseMoved(ofMouseEventArgs& data){
+	
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemWebHistory::selfMousePressed(ofMouseEventArgs& data)
+{
+
+}
+
+void CloudsVisualSystemWebHistory::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
