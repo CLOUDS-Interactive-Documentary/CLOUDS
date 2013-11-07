@@ -174,19 +174,19 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         rebuildFont();
     }
     else if (e.widget->getName() == "HELVETICA") {
-        TUOrbital::fontName = "Helvetica.ttf";
+        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
         rebuildFont();
     }
     else if (e.widget->getName() == "MATERIA PRO") {
-        TUOrbital::fontName = "MateriaPro_Light.otf";
+        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf";
         rebuildFont();
     }
     else if (e.widget->getName() == "MUSEO 300") {
-        TUOrbital::fontName = "Museo-300.otf";
+        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
         rebuildFont();
     }
     else if (e.widget->getName() == "NEW MEDIA FETT") {
-        TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
+        TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";    
         rebuildFont();
     }
     
@@ -224,11 +224,12 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     spinSpeed = 0.5f;
     fogDensity = 0.025f;
     
-    filesDir.listDir("textFiles");
+    filesDir.listDir(getVisualSystemDataPath() + "textFiles");
     filesDir.sort();
     selectedFilesIdx = 0;
     rebuildText();
     
+    TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
     rebuildFont();
 }
 
