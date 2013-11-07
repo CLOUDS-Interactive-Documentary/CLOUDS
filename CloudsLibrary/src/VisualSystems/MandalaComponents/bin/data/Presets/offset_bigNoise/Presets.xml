@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Presets</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>-2</XPosition>
+    <YPosition>363</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>clock</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>clock2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>offset_bigNoise</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>offset_Interior</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>offsetMesh</Name>
+    <Value>0</Value>
+</Widget>
