@@ -21,6 +21,8 @@ float _C::danceAmp = 0;
 float _C::danceFreq = 0;
 float _C::danceOffset = 0;
 bool _C::renderNeurons = true;
+jtn::Box _C::boundingBox;
+bool _C::colorMode = true;
 
 void _C::selfSetup(){
     rotation = 0;
@@ -51,6 +53,8 @@ void _C::selfSetupGuis(){
     generateCamPath = gui->addButton( "Generate Flythrough",false, 32,32);
     generateRandCam = gui->addButton( "Generate Random Cam Bounce",false, 32,32);
     camDuration = gui->addSlider("Cam Path Duration",0,120,60);
+    
+    rdrGui->addToggle("Color Mode", &colorMode);
 }
 
 
@@ -61,11 +65,24 @@ void _C::selfUpdate(){
     
     rotation += spinSlider->getScaledValue();
     
+    ofCamera& cam = getCameraRef();
+    
     _N::terminals.clear();
     vector<_N*>::iterator it;
     for(it=rootNodes.begin();it!=rootNodes.end();it++){
         (*it)->update();
     }
+    
+    
+    // these are separate because children are born in the previous update calls
+    // and we want to catch them all
+    
+    for(it=_N::all.begin();it!=_N::all.end();it++){
+        (*it)->updateScreenSpace(cam);
+    }
+    
+    
+    updateBoundingBox();
     
     axonThickness = axonThicknessSlider->getScaledValue();
     dotSize = dotSizeSlider->getScaledValue();
@@ -80,6 +97,97 @@ void _C::selfUpdate(){
     
 }
 
+
+jtn::PointD jtn::Box::upper(){
+    return _upper;
+}
+
+
+jtn::PointD jtn::Box::lower(){
+    return _lower;
+}
+
+jtn::Box::Box(){
+    
+}
+
+void jtn::Box::stretch(ofVec3f that){
+    
+    if (that.x < _lower.x) _lower.x = that.x;
+    if (that.x > _upper.x) _upper.x = that.x;
+    
+    if (that.y < _lower.y) _lower.y = that.y;
+    if (that.y > _upper.y) _upper.y = that.y;
+    
+    if (that.z < _lower.z) _lower.z = that.z;
+    if (that.z > _upper.z) _upper.z = that.z;
+    
+    
+    
+}
+
+jtn::PointD jtn::Box::getNormalized(jtn::PointD that){
+    PointD delta = _upper - _lower;
+    return (that - _lower) / delta;
+}
+
+void jtn::Box::setOppositeExtremes(){
+    _lower = jtn::PointD(  9999,  9999,  9999);
+    _upper = jtn::PointD( -9999.0f, -9999.0f, -9999.0f);
+}
+
+jtn::PointD::PointD(){
+    x=y=z=0;
+}
+
+jtn::PointD::PointD(double xx,double yy,double zz){
+    x=xx;
+    y=yy;
+    z=zz;
+}
+
+jtn::PointD::PointD(ofVec3f copyable){
+    x=copyable.x;
+    y=copyable.y;
+    z=copyable.z;
+    
+}
+
+jtn::PointD jtn::PointD::operator-(jtn::PointD that){
+    return jtn::PointD(
+                       x-that.x,
+                       y-that.y,
+                       z-that.z
+                       );
+}
+
+
+
+jtn::PointD jtn::PointD::operator/(jtn::PointD that){
+    return jtn::PointD(
+                       x/that.x,
+                       y/that.y,
+                       z/that.z
+                       );
+}
+
+jtn::PointD::operator string(){
+    stringstream ss;
+    ss << x << ',' << y << ',' << z;
+    return ss.str();
+}
+
+void _C::updateBoundingBox(){
+    
+    // reset
+    boundingBox.setOppositeExtremes();
+    
+    // loop through and compare bounds
+    vector<_N*>::iterator it;
+    for(it=_N::all.begin();it!=_N::all.end();it++){
+        boundingBox.stretch( (*it)->screenSpace );
+    }
+}
 
 void _C::reset(bool createRootNodes){
     
@@ -125,7 +233,6 @@ void _C::reset(bool createRootNodes){
             }
         }
     }
-    mixCam = CloudsVisualSystem::getCameraRef();
 }
 
 void _C::selfGuiEvent(ofxUIEventArgs &e){
@@ -241,8 +348,7 @@ void _C::generateFlythrough(){
 
 ofCamera& _C::getCameraRef(){
     ofCamera& ogCam = CloudsVisualSystem::getCameraRef();
-    ogCam.setGlobalPosition(  cloudsPathCam.getGlobalPosition() - camDistance );
-    mixCam.setGlobalOrientation(ogCam.getGlobalOrientation());
+    ogCam.setPosition(  cloudsPathCam.getPosition() - camDistance );
     return ogCam;
 }
 
@@ -346,6 +452,8 @@ void _C::selfDrawBackground(){
 void _C::selfDraw(){
 	
     ofPushMatrix();
+
+    //ofTranslate(0,0,camDistance);
     
     //cloudsPathCam.draw();
 
@@ -361,8 +469,10 @@ void _C::selfDraw(){
                 ofNoise( ofGetFrameNum() * 0.01 , 3000) * _C::sway
     );
     
+    
+    ofCamera &cam = getCameraRef();
     /*
-    ofCamera *cam = getCurrentCamera();
+    
     cam->setGlobalPosition( *rootNodes[0] );
      */
     
@@ -376,11 +486,14 @@ void _C::selfDraw(){
         int tCount=0;
         for(it=rootNodes.begin();it!=rootNodes.end();it++){
             
+            //draw a nookilus right where the node is.
             glPushMatrix();
             glTranslatef((*it)->x,(*it)->y,(*it)->z);
             glColor4f((*it)->r,(*it)->g,(*it)->b,_C::alpha);
             glutSolidSphere(nucleusSize->getScaledValue(),8,8);
             glPopMatrix();
+            
+            //tell the thing to draw a line for itself.
             (*it)->draw();
             tCount++;
         }
@@ -412,6 +525,12 @@ vector<_N*> _N::terminals;
 GLuint _N::drawMode = 0;
 int _N::maxDepth = 0;
 
+void _N::updateScreenSpace(ofCamera &cam){
+    //cache my world space value for use in draw()
+    screenSpace = cam.worldToCamera(  *this );
+    //screenSpace =  cam.worldToScreen( cam.cameraToWorld( *this ) );
+
+}
 
 void _N::update(){
 
@@ -504,7 +623,8 @@ void _N::update(){
 	if( isTerminal() ){
 		terminals.push_back(this);
 	}
-
+    
+    
 	age++;
 }
 
@@ -519,10 +639,17 @@ bool _N::isTerminal(){
 void _N::draw(){
 	
 	vector<_N*>::iterator that;
-	
+	   
+    jtn::PointD worldNormPos = _C::boundingBox.getNormalized( screenSpace );
+    
 	for(that=children.begin(); that!=children.end();that++){
-		glColor4f(r, g, b, _C::alpha);
 		
+        if(_C::colorMode){
+            glColor4f(worldNormPos.x,worldNormPos.y,worldNormPos.z, _C::alpha);
+        }else{
+            glColor4f(r, g, b, _C::alpha);
+        }
+
         
         if(drawMode==GL_LINES){
             glLineWidth( ( 1 - (generation+1) / (float)maxDepth) * _C::axonThickness );
@@ -533,7 +660,16 @@ void _N::draw(){
 			glVertex3f(x,y,z);
 		
 		_N *t = *that;
-		glColor4f(t->r, t->g, t->b, _C::alpha);
+        
+        if(_C::colorMode){
+            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
+            glColor4f(worldNormPos2.x,worldNormPos2.y,worldNormPos2.z, _C::alpha);
+
+        }else{
+            glColor4f(t->r, t->g, t->b, _C::alpha);
+        }
+        
+
 		
 		if( !(drawMode==GL_POINTS && t->isTerminal()) )
 			glVertex3f(t->x,t->y,t->z);
@@ -557,14 +693,13 @@ _N::TreeNode(){
 	a = 1;
 	generation = 0;
 	age = 0;
+    screenSpace = ofVec3f(0,0,0);
 }
 
 _N::TreeNode(ifstream &fin){
 
-    
     ident = all.size();
 	all.push_back(this);
-
     
     int fileIdent;
     fin >> fileIdent;
@@ -601,6 +736,8 @@ _N::TreeNode(ifstream &fin){
     
     updateMaxDepth();
     
+    
+    screenSpace = ofVec3f(0,0,0);
 }
 
 _N::~TreeNode(){

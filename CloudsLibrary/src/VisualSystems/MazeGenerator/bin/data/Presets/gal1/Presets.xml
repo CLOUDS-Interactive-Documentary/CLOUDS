@@ -10,3 +10,8 @@
     <Name>gal1</Name>
     <Value>1</Value>
 </Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>gal2</Name>
+    <Value>1</Value>
+</Widget>

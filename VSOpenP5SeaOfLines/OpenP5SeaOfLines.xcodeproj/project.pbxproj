@@ -970,12 +970,12 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
-				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
+				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11D17E688FE0007780D /* CloudsRGBDVideoPlayer.h */,
-				E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */,
+				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
 				E72FF11F17E688FE0007780D /* CloudsVisualSystem.h */,
+				E72FF11E17E688FE0007780D /* CloudsVisualSystem.cpp */,
 				E72FF12017E688FE0007780D /* ofxLight.h */,
 			);
 			name = VisualSystemsLibrary;

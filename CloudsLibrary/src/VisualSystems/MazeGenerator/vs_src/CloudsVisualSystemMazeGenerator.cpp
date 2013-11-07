@@ -28,20 +28,32 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 
     customGui->addSpacer();
     customGui->addLabel("CAMERA");
-    customGui->addSlider("CAM SPEED", 0, 100, &pm->cameraSpeed);
-    customGui->addSlider("CAM HEIGHT", 0, 1000, &pm->cameraHeight);
+    customGui->addSlider("CAM SPEED", -100, 300, &pm->cameraSpeed);
+    customGui->addSlider("CAM HEIGHT", 0, 5000, &pm->cameraHeight);
     customGui->addSlider("CAM ANGLE", 0, 360, &pm->cameraAngle);
 
     customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
+    
+    customGui->addLabel("MOVING BALLS");
+    customGui->addSlider("NUM BALLS", 0, 150, &pm->numberOfBalls);
+    customGui->addSlider("BALLS RADIUS", 0, 40, &pm->ballRadius);
+    customGui->addSlider("BALLS SPEED", 0, 0.01, &pm->ballMaxSpeed);
+    
+    customGui->addToggle("GROUND CAM", &pm->groundCam);
+    customGui->addSlider("GCAM SPEED", 0, 1, &pm->groundCamSpeed);
+    customGui->addSlider("GCAM LOOKAT", 0, 1, &pm->groundCamLookAt);
+    
+    customGui->addSlider("WALL HEIGHT VARIANCE", 0, 1, &pm->heightRandom);
+    
 
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
 
     customGui->addSpacer();
-    customGui->addToggle("LIGHT DIRECTION ANGLE", &bLights);
-    customGui->addSlider("LX", 0, 360, &lightAng.x);
-    customGui->addSlider("LY", 0, 360, &lightAng.y);
-    customGui->addSlider("LZ", 0, 360, &lightAng.z);
+    customGui->addToggle("LIGHT", &bLights);
+    customGui->addSlider("LX", 0, 10000, &lightPos.x);
+    customGui->addSlider("LY", 0, 1000, &lightPos.y);
+    customGui->addSlider("LZ", 0, 100000, &lightPos.z);
     
     customGui->addSpacer();
     customGui->addLabel("COLORS");
@@ -59,20 +71,13 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
     customGui->addMinimalSlider("WB", 0.0, 255, &(pm->wallColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
-    customGui->addLabel("SIDE WALLS COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("SH", 0.0, 255, &(pm->sideWallsColor.r), length, dim)->setShowValue(true);
+    customGui->addLabel("BALL COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("SH", 0.0, 255, &(pm->ballColor.r), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("SS", 0.0, 255, &(pm->sideWallsColor.g), length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("SB", 0.0, 255, &(pm->sideWallsColor.b), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SS", 0.0, 255, &(pm->ballColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SB", 0.0, 255, &(pm->ballColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
-    customGui->addLabel("GENERATOR COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("NH", 0.0, 255, &(pm->generatorColor.r), length, dim)->setShowValue(true);
-    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("NS", 0.0, 255, &(pm->generatorColor.g), length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("NB", 0.0, 255, &(pm->generatorColor.b), length, dim)->setShowValue(true);
-    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-
 #if 0
     customGui->addLabel("PHYSICS");
     customGui->addSlider("PARTICLES", 0, 50000, &nParticles);
@@ -147,9 +152,15 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     maze[0]->generate();
     
     mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
-    
+
     light = new ofLight();
-    light->setDirectional();
+    light->setPointLight();
+    light->setSpecularColor(ofColor(200));
+    light->setDiffuseColor(ofColor(200));
+    light->setAmbientColor(ofColor(50));
+    
+    camPath = maze[0]->createSimpleSpline(50, 50, 500);
+    mazeCam->setPath(camPath);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -181,8 +192,7 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
     maze[0]->update(mazeCam);
 
     if (bLights) {
-        setLightOri(light, lightAng);
-
+        light->setPosition(lightPos.x, lightPos.y, lightPos.z);
     }
 }
 
@@ -190,13 +200,14 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
+    ofEnableLighting();
     if (bLights) {
         light->enable();
     }
     
     mazeCam->begin();
 
-    maze[0]->draw(mazeCam);
+    maze[0]->draw(mazeCam, lightPos);
     
     mazeCam->end();
     
@@ -229,6 +240,8 @@ void CloudsVisualSystemMazeGenerator::selfExit()
     delete maze[0];
     
     delete mazeCam;
+    
+    delete camPath;
 }
 
 //events are called when the system is active

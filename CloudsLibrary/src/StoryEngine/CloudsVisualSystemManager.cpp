@@ -15,7 +15,7 @@
 
 //CONTRACTOR SYSTEMS
 //pati
-#include "CloudsVisualSystemLSystems.h"
+#include "CloudsVisualSystemLSystem.h"
 #include "CloudsVisualSystemVoro.h"
 #include "CloudsVisualSystemCities.h"
 #include "CloudsVisualSystemWorld.h"
@@ -30,7 +30,9 @@
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 //#include "3DModelVisualSystem.h"
-#include "MandalaVisualSystem.h"
+#include "CloudsVisualSystemMandala.h"
+#include "CloudsVisualSystemMazeGenerator.h"
+#include "CloudsVisualSystemRandomDigits.h"
 
 //CODE STORM
 #include "CloudsVisualSystemOscillations.h"
@@ -42,13 +44,128 @@
 //COMMISSIONS
 #include "CloudsVisualSystemVerletForm.h"
 #include "CloudsVisualSystemNeurons.h"
-//#include "CloudsVisualSystemLaplacianTunnel.h"
+#include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemLIA.h"
+#include "CloudsVisualSystemDrawnLine.h"
+#include "CloudsVisualSystemGameOfLife.h"
 
 //EXAMPLES
 #include "CloudsVisualSystemExampleVectorMath.h"
 #include "CloudsVisualSystemExampleBox2D.h"
+#include "CloudsVisualSystemExampleMPMFluid.h"
+#include "CloudsVisualSystemExampleOpenSteer.h"
+#include "CloudsVisualSystemVision.h"
+
+//OPENP5
+#include "CloudsVisualSystemOpenP53DIntro.h"
+#include "CloudsVisualSystemOpenP5DrawingMachine10.h"
+#include "CloudsVisualSystemOpenP5Hackpact.h"
+#include "CloudsVisualSystemOpenP5Machine.h"
+#include "CloudsVisualSystemOpenP5NoiseSphere.h"
+#include "CloudsVisualSystemOpenP5SeaOfLines.h"
+#include "CloudsVisualSystemOpenP5Sixteen.h"
+#include "CloudsVisualSystemOpenP5SpaceJunk.h"
+#include "CloudsVisualSystemOpenP5Spaghetti.h"
+#include "CloudsVisualSystemOpenP5SpinningSolids.h"
+#include "CloudsVisualSystemOpenP5TextUniverse.h"
+
+// register a mapping of visual system constructors
+// so it's easy to instantiate them in groups when needed
+template< typename T > CloudsVisualSystem* fCreate() {
+    return new T();
+}
+typedef CloudsVisualSystem* (*tConstructor)();
+#define ARRAY_SIZE(a)                             \
+((sizeof(a) / sizeof(*(a))) /                     \
+ static_cast<size_t>(!(sizeof(a) % sizeof(*(a)))))
+
+typedef CloudsVisualSystem* (*tConstructor)();
+struct Mapping {
+	const char *classname;
+	tConstructor constructor;
+	operator map<string,tConstructor>::value_type() const {
+		return map<string,tConstructor>::value_type(classname, constructor);
+	}
+} mapping[] = {
+	
+//	{ "3DModel", &fCreate<CloudsVisualSystem3DModelVisualSystem> },
+	{ "Cities", &fCreate<CloudsVisualSystemCities> },
+//	{ "Colony", &fCreate<CloudsVisualSystemColony> },
+	{ "Connectors", &fCreate<CloudsVisualSystemConnectors> },
+	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
+	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
+	{ "DrawnLine", &fCreate<CloudsVisualSystemDrawnLine> },
+	{ "ExampleBox2D", &fCreate<CloudsVisualSystemExampleBox2D> },
+	{ "ExampleMPMFluid", &fCreate<CloudsVisualSystemExampleMPMFluid> },
+	{ "ExampleOpenSteer", &fCreate<CloudsVisualSystemExampleOpenSteer> },
+	{ "ExampleVectorMath", &fCreate<CloudsVisualSystemExampleVectorMath> },
+	{ "Fireworks", &fCreate<CloudsVisualSystemFireworks> },
+	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
+	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
+	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
+	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
+	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
+	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
+	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
+	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
+	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
+	{ "Metaballs", &fCreate<CloudsVisualSystem> },
+	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
+	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
+	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
+	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
+	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
+	{ "OpenP5Machine", &fCreate<CloudsVisualSystemOpenP5Machine> },
+	{ "OpenP5NoiseSphere", &fCreate<CloudsVisualSystemOpenP5NoiseSphere> },
+	{ "OpenP5SeaOfLines", &fCreate<CloudsVisualSystemOpenP5SeaOfLines> },
+	{ "OpenP5Sixteen", &fCreate<CloudsVisualSystemOpenP5Sixteen> },
+	{ "OpenP5SpaceJunk", &fCreate<CloudsVisualSystemOpenP5SpaceJunk> },
+	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
+	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
+	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
+	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
+	//TODO: Rename
+//	{ "Pages", &fCreate<CloudsVisualSystemPages> },
+	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
+	//TODO: Rename
+//	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
+	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
+	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
+	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
+//	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
+//	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
+	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
+	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
+	//TODO: Rename
+	{ "Vision", &fCreate<CloudsVisualSystemVision> },
+	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
+	//TODO: rename class
+//	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
+	{ "World", &fCreate<CloudsVisualSystemWorld> }
+	//YellowTail { "", &fCreate<CloudsVisualSystemYellowTail> },
+};
+map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
+
+//--------------------------------------------------------------------
+ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
+	return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+}
+
+//--------------------------------------------------------------------
+vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<string> systemNames){
+	
+	vector< ofPtr<CloudsVisualSystem> > systems;
+	for(int i = 0; i < systemNames.size(); i++){
+		if(constructors.find(systemNames[i]) != constructors.end()){
+			systems.push_back( InstantiateSystem(systemNames[i]) );
+		}
+		else{
+			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemNames[i];
+		}
+	}
+	return systems;
+}
 
 #endif
 
@@ -61,24 +178,31 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 	return a.presetName.compare( b.presetName ) < 0;
 }
 
-
+//--------------------------------------------------------------------
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
 	backupTimeInterval = 60*2;
 	lastBackupTime = ofGetElapsedTimef() - backupTimeInterval;
 }
+
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
 #ifndef CLOUDS_NO_VS
 	
 	nameToVisualSystem.clear();
-	for(int i = 0; i < systems.size(); i++){
-		delete systems[i];
-	}
-	systems.clear();
+//	for(int i = 0; i < systems.size(); i++){
+//		delete systems[i];
+//	}
 	
+	systems.clear();
 	presets.clear();
-    
+    vector<string> systemNames;
+	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
+//		systemNames.push_back(it->first);
+		registerVisualSystem( InstantiateSystem(it->first) );
+	}
+
+	/*
 	//JAMES SYSTEMS
 	registerVisualSystem(new CloudsVisualSystemDataCascade() );
 	registerVisualSystem(new CloudsVisualSystemVectorFlow() );
@@ -104,7 +228,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	registerVisualSystem(new CloudsVisualSystemFireworks() );
 	registerVisualSystem(new CloudsVisualSystemMarchingCubes() );
 	//registerVisualSystem(new CloudsVisualSystem3DModel() );
-	registerVisualSystem(new MandalaVisualSystem() );
+	//registerVisualSystem(new MandalaVisualSystem() );
 	
 	//CODE STORM
 	registerVisualSystem(new CloudsVisualSystemOscillations() );
@@ -123,7 +247,8 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 	//EXAMPLES
 	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
 	registerVisualSystem(new CloudsVisualSystemExampleBox2D() );
-    
+    */
+	
     loadPresets();
     
 #endif
@@ -131,7 +256,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::registerVisualSystem(CloudsVisualSystem* system){
+void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
 #ifndef CLOUDS_NO_VS
 	ofLogVerbose() << "Registering system " << system->getSystemName();
 	//moved this -- don't set up until the loading screen of the act
@@ -238,7 +363,7 @@ void CloudsVisualSystemManager::loadPresets(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
     enabledPresetsIndex.clear();
-    for(int i =0; i<presets.size(); i++){
+    for(int i = 0; i<presets.size(); i++){
         if(presets[i].enabled){
             enabledPresetsIndex.push_back(i);
         }
@@ -457,7 +582,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	ofDirectory(standaloneExportFolder).create();
 	
 	cout << "COPYING PRESETS!" << endl;
-	set<CloudsVisualSystem*> systemsWithPresets;
+	set< ofPtr<CloudsVisualSystem> > systemsWithPresets;
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
             
@@ -474,9 +599,9 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	}
     
 	cout << "COPYING SUPPORTING FILES" << endl;
-	set<CloudsVisualSystem*>::iterator it;
+	set< ofPtr<CloudsVisualSystem> >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
-		CloudsVisualSystem* sys = *it;
+		ofPtr<CloudsVisualSystem> sys = *it;
 		ofDirectory otherFiles( sys->getVisualSystemDataPath() );
 		otherFiles.listDir();
 		for(int f = 0; f < otherFiles.size(); f++){

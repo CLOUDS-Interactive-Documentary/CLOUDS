@@ -22,18 +22,26 @@ public:
     
     ofFloatColor groundColor;
     ofFloatColor wallColor;
-    ofFloatColor sideWallsColor;
-    ofFloatColor generatorColor;
+    ofFloatColor ballColor;
     
     ofColor getGroundColor();
     ofColor getWallColor();
-    ofColor getSideWallsColor();
-    ofColor getGeneratorColor();
+    ofColor getBallColor();
     
     float cameraSpeed;
     float cameraAngle;
     float cameraHeight;
     float showAhead;
+    
+    float numberOfBalls;
+    float ballRadius;
+    float ballMaxSpeed;
+    
+    float heightRandom;
+    
+    bool groundCam;
+    float groundCamSpeed;
+    float groundCamLookAt;
     
 private:
     ParamManager();

@@ -10,8 +10,6 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
 #include "MyTracker.h"
-#include "ParkedCar.h"
-#include "Path.h"
 
 typedef enum{
     OpticalFlow =0,
@@ -20,7 +18,7 @@ typedef enum{
 
 }CVMode;
 
-class CloudsVisionSystem : public CloudsVisualSystem {
+class CloudsVisualSystemVision : public CloudsVisualSystem {
 public:
     
     string getSystemName();
@@ -78,6 +76,8 @@ protected:
     vector<ofRectangle> flowRegions;
     void populateOpticalFlowRegions();
     vector<ofVec2f> flowMotion;
+
+    float colorRange;
     
     ofImage accumulation;
     ofImage diff;
@@ -93,7 +93,7 @@ protected:
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    vector<ParkedCar> parked;
+    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;

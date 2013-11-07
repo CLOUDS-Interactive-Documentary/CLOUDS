@@ -14,7 +14,16 @@ ParamManager::ParamManager()
     cameraAngle = 45;
     cameraHeight = 180;
     showAhead = 60;
-
+    
+    numberOfBalls = 30;
+    ballRadius = 15;
+    ballMaxSpeed = 0.001;
+    
+    heightRandom = 0;
+    
+    groundCam = false;
+    groundCamSpeed = 0;
+    groundCamLookAt = 0.5;
 }
 
 ParamManager::~ParamManager()
@@ -32,12 +41,8 @@ ofColor ParamManager::getWallColor()
     return ofColor::fromHsb(wallColor.r, wallColor.g, wallColor.b);
 }
 
-ofColor ParamManager::getSideWallsColor()
+ofColor ParamManager::getBallColor()
 {
-    return ofColor::fromHsb(sideWallsColor.r, sideWallsColor.g, sideWallsColor.b);
+    return ofColor::fromHsb(ballColor.r, ballColor.g, ballColor.b);
 }
 
-ofColor ParamManager::getGeneratorColor()
-{
-    return ofColor::fromHsb(generatorColor.r, generatorColor.g, generatorColor.b);
-}
