@@ -70,13 +70,3 @@
     <Name>Dance Offset</Name>
     <Value>0.054187194</Value>
 </Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Show Neurons</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Cam Path Duration</Name>
-    <Value>72.118225098</Value>
-</Widget>

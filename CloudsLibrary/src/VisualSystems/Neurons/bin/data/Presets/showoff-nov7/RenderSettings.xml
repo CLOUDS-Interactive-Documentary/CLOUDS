@@ -7,6 +7,16 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Color Mode</Name>
+    <Name>Show Neurons</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Depth Coloring</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Show Camera Path</Name>
     <Value>1</Value>
 </Widget>
