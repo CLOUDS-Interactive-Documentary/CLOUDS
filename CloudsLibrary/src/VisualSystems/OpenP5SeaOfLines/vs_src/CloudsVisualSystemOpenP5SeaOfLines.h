@@ -108,6 +108,5 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         float minSpeed, maxSpeed;
         float gravity;
     
-        ofFbo canvas;
         vector<SOLPlayer *> players;
 };

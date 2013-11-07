@@ -100,17 +100,12 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     maxSpeed = 6.0f;
     gravity = 0.1f;
     
-    canvas.allocate(ofGetWidth(), ofGetHeight());
-    canvas.begin();
-    {
-        ofClear(0, 0);
-    }
-    canvas.end();
+    bClearBackground = false;
     
     // Add the players.
     float step = 20;
-    for (float i = 0; i < (canvas.getWidth() / step - 1); i++) {
-        for (float j = 0; j < (canvas.getHeight() / step - 1); j++) {
+    for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
+        for (float j = 0; j < (ofGetHeight() / step - 1); j++) {
             if (ofRandom(3) > 1) {
                 SOLPlayer * player = new SOLPlayer();
                 
@@ -164,16 +159,16 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
             players[i]->x = 0;
             players[i]->sx *= -1;
         }
-        else if (players[i]->x > canvas.getWidth()) {
-            players[i]->x = canvas.getWidth();
+        else if (players[i]->x > ofGetWidth()) {
+            players[i]->x = ofGetWidth();
             players[i]->sx *= -1;
         }
         if (players[i]->y < 0) {
             players[i]->y = 0;
             players[i]->sy *= -1;
         }
-        else if (players[i]->y > canvas.getHeight()) {
-            players[i]->y = canvas.getHeight();
+        else if (players[i]->y > ofGetHeight()) {
+            players[i]->y = ofGetHeight();
             players[i]->sy *= -1;
         }
     }
@@ -193,38 +188,30 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 {
-    canvas.begin();
-    {
-        ofSetColor(bgColor, bgAlpha->getPos());
-        ofRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        
-        ofSetColor(ofColor::fromHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos()));
-        glBegin(GL_LINES);
-        for (int i = 0; i < players.size(); i++) {
-            SOLPlayer * one = players[i];
-            for (int j = i + 1; j < players.size(); j++) {
-                SOLPlayer * two = players[j];
-                float dist = ofDist(one->x, one->y, two->x, two->y);
-                if (dist < collideDist) {
-                    one->speed = ofRandom(minSpeed, maxSpeed);
-                    
-                    float ang = atan2f(one->y - two->y, one->x - two->x);
-                    one->sx = cosf(ang) * one->speed;
-                    one->sy = sinf(ang) * one->speed;
-                }
-                else if (dist < lineDist) {
-                    glVertex2f(one->x, one->y);
-                    glVertex2f(two->x, two->y);
-                }
+    ofSetColor(bgColor, bgAlpha->getPos());
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    
+    ofSetColor(ofColor::fromHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos()));
+    glBegin(GL_LINES);
+    for (int i = 0; i < players.size(); i++) {
+        SOLPlayer * one = players[i];
+        for (int j = i + 1; j < players.size(); j++) {
+            SOLPlayer * two = players[j];
+            float dist = ofDist(one->x, one->y, two->x, two->y);
+            if (dist < collideDist) {
+                one->speed = ofRandom(minSpeed, maxSpeed);
+                
+                float ang = atan2f(one->y - two->y, one->x - two->x);
+                one->sx = cosf(ang) * one->speed;
+                one->sy = sinf(ang) * one->speed;
+            }
+            else if (dist < lineDist) {
+                glVertex2f(one->x, one->y);
+                glVertex2f(two->x, two->y);
             }
         }
-        glEnd();
     }
-    canvas.end();
-    
-    ofSetColor(255);
-    canvas.draw(0, 0, ofGetWidth(), ofGetHeight());
-    ofDrawBitmapString(ofToString(ofGetFrameRate(), 2) + " FPS", 10, ofGetHeight() - 20);
+    glEnd();
 }
 
 // this is called when your system is no longer drawing.
