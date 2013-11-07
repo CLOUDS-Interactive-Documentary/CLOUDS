@@ -102,6 +102,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     
     bClearBackground = false;
     
+    mesh.setMode(OF_PRIMITIVE_LINES);
+    mesh.setUsage(GL_STREAM_DRAW);
+    
     // Add the players.
     float step = 20;
     for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
@@ -147,7 +150,9 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 {
-    // Update player position.
+    mesh.clear();
+
+    // First pass: Update player position.
     for (int i = 0; i < players.size(); i++) {
         players[i]->x += players[i]->sx;
         players[i]->y += players[i]->sy;
@@ -171,6 +176,28 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
             players[i]->y = ofGetHeight();
             players[i]->sy *= -1;
         }
+        
+        mesh.addVertex(ofVec3f(players[i]->x, players[i]->y));
+    }
+    
+    // Second pass: Handle collisions and proximity.
+    for (int i = 0; i < players.size(); i++) {
+        SOLPlayer * one = players[i];
+        for (int j = i + 1; j < players.size(); j++) {
+            SOLPlayer * two = players[j];
+            float dist = ofDist(one->x, one->y, two->x, two->y);
+            if (dist < collideDist) {
+                one->speed = ofRandom(minSpeed, maxSpeed);
+                
+                float ang = atan2f(one->y - two->y, one->x - two->x);
+                one->sx = cosf(ang) * one->speed;
+                one->sy = sinf(ang) * one->speed;
+            }
+            else if (dist < lineDist) {
+                mesh.addIndex(i);
+                mesh.addIndex(j);
+            }
+        }
     }
 }
 
@@ -192,26 +219,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetColor(ofColor::fromHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos()));
-    glBegin(GL_LINES);
-    for (int i = 0; i < players.size(); i++) {
-        SOLPlayer * one = players[i];
-        for (int j = i + 1; j < players.size(); j++) {
-            SOLPlayer * two = players[j];
-            float dist = ofDist(one->x, one->y, two->x, two->y);
-            if (dist < collideDist) {
-                one->speed = ofRandom(minSpeed, maxSpeed);
-                
-                float ang = atan2f(one->y - two->y, one->x - two->x);
-                one->sx = cosf(ang) * one->speed;
-                one->sy = sinf(ang) * one->speed;
-            }
-            else if (dist < lineDist) {
-                glVertex2f(one->x, one->y);
-                glVertex2f(two->x, two->y);
-            }
-        }
-    }
-    glEnd();
+    mesh.draw();
 }
 
 // this is called when your system is no longer drawing.
