@@ -13,6 +13,10 @@
 #define _C CloudsVisualSystemNeurons
 
 namespace jtn{
+    
+#pragma mark
+#pragma mark TreeNode
+    
 	class TreeNode:public ofPoint{
 	public:
         
@@ -32,6 +36,7 @@ namespace jtn{
 		TreeNode*parent;
 		vector<TreeNode*>children;
 		void update();
+        void updateScreenSpace(ofCamera &cam);
 		void draw();
 		static vector<TreeNode*> terminals;
 		int ident;
@@ -46,10 +51,61 @@ namespace jtn{
         static int maxDepth;
         void serialize(ofstream &fout);
         void updateMaxDepth();
+        ofVec3f screenSpace;
 	};
+
+//--------------------------------------------------------
+#pragma mark
+#pragma mark vecD
+
+/**
+    equiv to ofVec3d, where d means double. because i was getting floating point weirdness
+ */
+
+class PointD{
+public:
+    double x,y,z;
+    PointD();
+    PointD(double xx,double yy,double zz);
+    PointD(ofVec3f copyable);
+    PointD operator-(PointD that);
+    PointD operator/(PointD that);
+    operator string();
+};
+
+    
+//--------------------------------------------------------
+#pragma mark
+#pragma mark Box
+    
+    class Box{
+    protected:
+        jtn::PointD _upper;
+        jtn::PointD _lower;
+    public:
+        Box();
+        /**
+            populate upper and lower with most unlikely
+            condendors for looping comparison
+         */
+        void setOppositeExtremes();
+        
+        /**
+            stretch the box out by 1 value
+         */
+        void stretch(ofVec3f that);
+        
+        /**
+            normalize a value scaled relative to this bounding box
+         */
+        jtn::PointD getNormalized(jtn::PointD that);
+        jtn::PointD upper();
+        jtn::PointD lower();
+    };
 };
 
 //--------------------------------------------------------
+#pragma mark
 
 class _C:public CloudsVisualSystem{
  public:
@@ -97,13 +153,53 @@ class _C:public CloudsVisualSystem{
     static float danceOffset;
     void selfGuiEvent(ofxUIEventArgs &e);
     void reset(bool createRootNodes = true);
+    
+    /**
+        write serialized neurons to a presets file.
+        pointers are flattened to global array indices
+        equivalent to i in _N::all[i]
+     */
     void writeToFile(string dirname);
+    
+    /**
+        read in a file from disk
+        and un-flatten array indices
+        back into _N *pointers
+     */
     void readFromFile(string dirname);
     
+    /**
+        animated camera path.
+        thanks @lars
+     */
     CloudsPathCamera cloudsPathCam;
+    /**
+        generate a path along a dendrite chain
+     */
     void generateFlythrough();
+    
+    /**
+        make a series of random positions and
+        add them to the camera path.
+     
+        hopefully more fun than flythrough
+     */
     void generateRandCamBounce();
+    
+    /**
+        overloaded to include path travel
+     */
     ofCamera& getCameraRef();
-    ofCamera mixCam;
+    
+    /**
+        compute lower and upper bounds on all 3 axes
+     */
+    void updateBoundingBox();
+    /**
+        storing bounding box info here
+     */
+    static jtn::Box boundingBox;
+    
+    static bool colorMode;
 };
 
