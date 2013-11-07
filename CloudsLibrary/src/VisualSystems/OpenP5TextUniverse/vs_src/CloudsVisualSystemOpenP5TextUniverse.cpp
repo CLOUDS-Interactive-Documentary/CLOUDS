@@ -396,24 +396,44 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
             orbital->children.back()->bRenderText = false;
             
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
-                orbital->children.back()->children.back()->bRenderText = false;
+                if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                    // Add a "splitter" node for the sentence.
+                    orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                    orbital->children.back()->children.back()->bRenderText = false;
                 
-                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back()->children.back()->children.back()->bRenderText = true;
+                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                        orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                        orbital->children.back()->children.back()->children.back()->bRenderText = true;
+                    }
+                }
+                else {
+                    // Skip the sentence node.
+                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                        orbital->children.back()->children.back()->bRenderText = true;
+                    }
                 }
             }
         }
         else {
             // Skip the paragraph node.
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
-                orbital->children.back()->bRenderText = false;
-                
-                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back()->children.back()->bRenderText = true;
+                if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                    // Add a "splitter" node for the sentence.
+                    orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
+                    orbital->children.back()->bRenderText = false;
+                    
+                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                        orbital->children.back()->children.back()->bRenderText = true;
+                    }
+                }
+                else {
+                    // Skip the sentence node.
+                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                        orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
+                        orbital->children.back()->bRenderText = true;
+                    }
                 }
             }
         }
