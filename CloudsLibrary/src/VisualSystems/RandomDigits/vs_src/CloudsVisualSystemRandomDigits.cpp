@@ -62,8 +62,8 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
     Rand::Font.loadFont(getVisualSystemDataPath() + "Courier.ttf", 14, true, true, true);
     
     
-    for (int i = 0; i < Rand::rows; i++){
-        for (int j = 0; j < Rand::columns; j ++){ //rows
+    for (int i = 0; i < Rand::columns; i++){
+        for (int j = 0; j < Rand::rows; j ++){ //rows
             
             cout << "yoffset = " << yoffset << endl;
             if(j%4==0){
@@ -145,7 +145,7 @@ void CloudsVisualSystemRandomDigits::selfDraw(){
         //          for (int k = 0; k < grid.size(); k++){
         //          grid[k].changeRandomNumber();
         //          }
-        if(! (ofGetElapsedTimeMillis()% 500)){
+        if(!(ofGetElapsedTimeMillis()% 300)){
             
             grid[ofRandom(grid.size())].changeRandomNumber();
             

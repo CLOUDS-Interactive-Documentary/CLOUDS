@@ -9,8 +9,8 @@
 #include "Rand.h"
 
 ofTrueTypeFont Rand::Font;
-int Rand:: columns = 8;
-int Rand:: rows = 8;
+int Rand:: columns = 16;
+int Rand:: rows = 24;
 
 Rand:: Rand(float _posX, float _posY, float _randomNumber){
     
@@ -57,21 +57,27 @@ void Rand::generateNoisyNumber(){
 
 void Rand::drawNumbers(){
         ofxEasingQuad eq;
-    //draws an array of random numbers
-   // ofPushMatrix();{
-
-//    previousTime
+ 
     currentTime = ofGetElapsedTimeMillis() - previousTime;
 //    cout<<currentTime<<","<<previousTime<<endl;
     float newRandomNumber = ofxTween::map(currentTime, 0, 1000.0, previousRandomNumber, nextRandomNumber, true, eq, ofxTween::easeInOut);
     randomNumber = int(newRandomNumber);
-      ofTranslate(posX, posY);
+    ofTranslate(posX, posY);
     std::ostringstream ostr; //output string stream
     ostr << randomNumber;
     std::string number = ostr.str();
+
+    if (abs(newRandomNumber - nextRandomNumber) >= 2){
+        float brightness = ofxTween::map(currentTime, 0, 1000.0, 100, 255, true, eq, ofxTween::easeInOut);
+    ofSetColor(brightness);
+    }
+    if (abs(newRandomNumber - nextRandomNumber) <= 2){
+        float brightness = ofxTween::map(currentTime, 0, 1000.0, 255, 100, true, eq, ofxTween::easeInOut);
+        ofSetColor(brightness);
+    }
+    ofFill();
     Font.drawString(number, 14.0f, 1.037);
-  //  }
- //   ofPopMatrix();
+    
 }
 
 void Rand::generateRandomNumber(){
