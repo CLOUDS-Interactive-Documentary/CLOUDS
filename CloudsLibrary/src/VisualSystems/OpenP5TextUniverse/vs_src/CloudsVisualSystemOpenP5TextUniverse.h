@@ -14,6 +14,8 @@
 #include "TUOrbital.h"
 #include "TUText.h"
 
+//--------------------------------------------------------------
+//--------------------------------------------------------------
 class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
 {
     public:
@@ -89,6 +91,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
     //	ofCamera& getCameraRef(){
     //		return myCustomCamera;
     //	}
+    
         void rebuildFont();
         void rebuildText();
 
@@ -102,6 +105,8 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         int selectedFilesIdx;
     
         TUOrbital * orbital;
+    
+        bool bTextCloudMode;
     
         float fogDensity;
         float currSpin;

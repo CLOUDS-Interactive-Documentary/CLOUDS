@@ -20,6 +20,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
@@ -118,7 +119,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "BILLBOARD SCREEN") {
+    if (e.widget->getName() == "TEXT CLOUD") {
+        rebuildText();
+    }
+    
+    else if (e.widget->getName() == "BILLBOARD SCREEN") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
             TUOrbital::billboardType = 0;
         }
@@ -207,6 +212,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "FILES") {
         vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
         if (selectedIndeces.size() > 0) {
+            for (int i = 0; i < selectedIndeces.size(); i++) {
+            }
             selectedFilesIdx = selectedIndeces[0];
             rebuildText();
         }
@@ -237,6 +244,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     currSpin = 0.0f;
     spinSpeed = 0.5f;
     fogDensity = 0.025f;
+    bTextCloudMode = false;
     
     orbital = NULL;
 
@@ -396,54 +404,72 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
     if (orbital != NULL) {
         delete orbital;
     }
-    orbital = new TUOrbital(30, 1000);
-    orbital->text = text->paragraphs[0].sentences[0].str;
-    orbital->bRenderText = true;
     
-    for (int i = 0; i < text->paragraphs.size(); i++) {
-        if (text->paragraphs[i].sentences.size() > 1) {
-            // Add a "splitter" node for the paragraph.
-            orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].str));
-            orbital->children.back()->bRenderText = false;
-            
+    orbital = new TUOrbital(30, 1000);
+    
+    if (bTextCloudMode) {
+        // Render a single level of words.
+        orbital->bRenderText = false;
+        
+        for (int i = 0; i < text->paragraphs.size(); i++) {
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                if (text->paragraphs[i].sentences[j].words.size() > 1) {
-                    // Add a "splitter" node for the sentence.
-                    orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
-                    orbital->children.back()->children.back()->bRenderText = false;
-                
-                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                        orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                        orbital->children.back()->children.back()->children.back()->bRenderText = true;
-                    }
-                }
-                else {
-                    // Skip the sentence node.
-                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                        orbital->children.back()->children.back()->bRenderText = true;
-                    }
+                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                    orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back()->bRenderText = true;
                 }
             }
         }
-        else {
-            // Skip the paragraph node.
-            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                if (text->paragraphs[i].sentences[j].words.size() > 1) {
-                    // Add a "splitter" node for the sentence.
-                    orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
-                    orbital->children.back()->bRenderText = false;
+    }
+    else {
+        // Render nodes for paragraphs, sentences, and words.
+        orbital->text = text->paragraphs[0].sentences[0].str;
+        orbital->bRenderText = true;
+        
+        for (int i = 0; i < text->paragraphs.size(); i++) {
+            if (text->paragraphs[i].sentences.size() > 1) {
+                // Add a "splitter" node for the paragraph.
+                orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].str));
+                orbital->children.back()->bRenderText = false;
+                
+                for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                    if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                        // Add a "splitter" node for the sentence.
+                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                        orbital->children.back()->children.back()->bRenderText = false;
                     
-                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                        orbital->children.back()->children.back()->bRenderText = true;
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->children.back()->bRenderText = true;
+                        }
+                    }
+                    else {
+                        // Skip the sentence node.
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->bRenderText = true;
+                        }
                     }
                 }
-                else {
-                    // Skip the sentence node.
-                    for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                        orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
-                        orbital->children.back()->bRenderText = true;
+            }
+            else {
+                // Skip the paragraph node.
+                for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                    if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                        // Add a "splitter" node for the sentence.
+                        orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
+                        orbital->children.back()->bRenderText = false;
+                        
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->bRenderText = true;
+                        }
+                    }
+                    else {
+                        // Skip the sentence node.
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->bRenderText = true;
+                        }
                     }
                 }
             }
