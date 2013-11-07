@@ -55,7 +55,6 @@
 		644AAEFE182BE667000CC433 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644AAEFA182BE667000CC433 /* ofxBillboard.cpp */; };
 		644AAFB0182BE69A000CC433 /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644AAFAA182BE69A000CC433 /* CloudsVisualSystemScrape.cpp */; };
 		644AAFB1182BE69A000CC433 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644AAFAC182BE69A000CC433 /* ofxMtlBoxFitting.cpp */; };
-		644AAFB2182BE69A000CC433 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644AAFAE182BE69A000CC433 /* ScrapeCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -310,8 +309,6 @@
 		644AAFAB182BE69A000CC433 /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
 		644AAFAC182BE69A000CC433 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		644AAFAD182BE69A000CC433 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
-		644AAFAE182BE69A000CC433 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
-		644AAFAF182BE69A000CC433 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -890,8 +887,6 @@
 				644AAFAB182BE69A000CC433 /* CloudsVisualSystemScrape.h */,
 				644AAFAC182BE69A000CC433 /* ofxMtlBoxFitting.cpp */,
 				644AAFAD182BE69A000CC433 /* ofxMtlBoxFitting.h */,
-				644AAFAE182BE69A000CC433 /* ScrapeCamera.cpp */,
-				644AAFAF182BE69A000CC433 /* ScrapeCamera.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1732,7 +1727,6 @@
 				644AAEFE182BE667000CC433 /* ofxBillboard.cpp in Sources */,
 				644AAFB0182BE69A000CC433 /* CloudsVisualSystemScrape.cpp in Sources */,
 				644AAFB1182BE69A000CC433 /* ofxMtlBoxFitting.cpp in Sources */,
-				644AAFB2182BE69A000CC433 /* ScrapeCamera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

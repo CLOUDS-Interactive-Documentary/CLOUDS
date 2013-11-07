@@ -295,8 +295,6 @@ void CloudsVisualSystemScrape::selfEnd()
         delete boxes[i];
     }
     boxes.clear();
-    
-//    domeCamera.end();
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
