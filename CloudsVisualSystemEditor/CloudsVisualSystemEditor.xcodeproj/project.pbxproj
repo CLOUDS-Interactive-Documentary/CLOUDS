@@ -245,7 +245,6 @@
 		E7C01129180DD5E700B5CEF1 /* 3DModelVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C010B7180DD5E700B5CEF1 /* 3DModelVisualSystem.cpp */; };
 		E7C0112A180DD5E700B5CEF1 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C010B9180DD5E700B5CEF1 /* CloudsOrthoCamera.cpp */; };
 		E7C8AE5F182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C8A9E8182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */; };
-		E7C8AE60182AC8FE00AAD6E8 /* DM10PingPongBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C8A9EA182AC8F900AAD6E8 /* DM10PingPongBuffer.cpp */; };
 		E7C8AEA8182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AA40182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
 		E7C8AF16182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AAC0182AC8FA00AAD6E8 /* CloudsVisualSystemOpenP5Machine.cpp */; };
 		E7C8AF50182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C8AB06182AC8FA00AAD6E8 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
@@ -972,8 +971,6 @@
 		E7C010BA180DD5E700B5CEF1 /* CloudsOrthoCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsOrthoCamera.h; sourceTree = "<group>"; };
 		E7C8A9E8182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5DrawingMachine10.cpp; sourceTree = "<group>"; };
 		E7C8A9E9182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5DrawingMachine10.h; sourceTree = "<group>"; };
-		E7C8A9EA182AC8F900AAD6E8 /* DM10PingPongBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DM10PingPongBuffer.cpp; sourceTree = "<group>"; };
-		E7C8A9EB182AC8F900AAD6E8 /* DM10PingPongBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DM10PingPongBuffer.h; sourceTree = "<group>"; };
 		E7C8AA40182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Hackpact.cpp; sourceTree = "<group>"; };
 		E7C8AA41182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Hackpact.h; sourceTree = "<group>"; };
 		E7C8AAC0182AC8FA00AAD6E8 /* CloudsVisualSystemOpenP5Machine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Machine.cpp; sourceTree = "<group>"; };
@@ -3194,8 +3191,6 @@
 			children = (
 				E7C8A9E8182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */,
 				E7C8A9E9182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.h */,
-				E7C8A9EA182AC8F900AAD6E8 /* DM10PingPongBuffer.cpp */,
-				E7C8A9EB182AC8F900AAD6E8 /* DM10PingPongBuffer.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4612,7 +4607,6 @@
 				859A45D3181C684700B9F251 /* ofxSimpleSpline.cpp in Sources */,
 				50EAB5651824309D00BD3C98 /* CloudsPathCamera.cpp in Sources */,
 				E7C8AE5F182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
-				E7C8AE60182AC8FE00AAD6E8 /* DM10PingPongBuffer.cpp in Sources */,
 				E7C8AEA8182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				E7C8AF16182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				E7C8AF50182AC8FE00AAD6E8 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,

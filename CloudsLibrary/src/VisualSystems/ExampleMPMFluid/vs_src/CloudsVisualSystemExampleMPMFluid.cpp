@@ -180,18 +180,23 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawDebug()
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 {
+	ofPushStyle();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
 	// These improve the appearance of small lines and/or points.
 	glDisable(GL_LIGHTING);
-	glDisable(GL_DEPTH_TEST);
+//	glDisable(GL_DEPTH_TEST);
 	glEnable (GL_LINE_SMOOTH);
 	glEnable (GL_POINT_SMOOTH); // in case you want it
-	glEnable (GL_MULTISAMPLE);
-	glEnable (GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	glEnable (GL_MULTISAMPLE);
+//	glEnable (GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	ofColor c = ofColor::fromHsb(pColor.r, pColor.g, pColor.b);
     c.a = 200;
 	ofSetColor(c);
+	
 	glLineWidth(lineWidth); // or thicker, if you prefer
 	
 	ofPushMatrix();
@@ -202,7 +207,7 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	// using their velocity for their length.
 	vector<ofVec2f> verts;
     
-	for (int ip=0; ip<fluid.numParticles; ip++) {
+	for (int ip = 0; ip < fluid.numParticles; ip++) {
 		ofxMPMParticle* p = fluid.getParticles()[ip];
 		verts.push_back(ofVec2f(p->x, p->y));
 		verts.push_back(ofVec2f(p->x - p->u, p->y - p->v));
@@ -212,6 +217,9 @@ void CloudsVisualSystemExampleMPMFluid::selfDrawBackground()
 	glDrawArrays(GL_LINES, 0, verts.size());
 	glDisableClientState(GL_VERTEX_ARRAY);
 	ofPopMatrix();
+	
+	glPopAttrib();
+	ofPopStyle();
 }
 
 // this is called when your system is no longer drawing.

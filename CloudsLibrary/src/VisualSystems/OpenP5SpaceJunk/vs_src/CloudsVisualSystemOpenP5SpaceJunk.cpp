@@ -187,7 +187,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
     ofRotateY(ofRadToDeg(ang));     //Y rotation
     mat->begin();
-	ofSetColor(
     for (int i = 0;i < limit; i++) {
 		list[i].draw();
 	}

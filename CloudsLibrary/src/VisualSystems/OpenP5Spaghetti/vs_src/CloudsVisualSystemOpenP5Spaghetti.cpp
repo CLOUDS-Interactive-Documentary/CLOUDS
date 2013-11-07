@@ -87,11 +87,45 @@ void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 
-void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
+void CloudsVisualSystemOpenP5Spaghetti::regenerate(){    
+	
+    color1.setHsb(hue1,saturation1,brightness1);
+    // cout << "regenerated color1 = "<< color1 << endl;
+    color2.setHsb(hue2,saturation2,brightness2);
+    //  cout << "regenerated color2 = "<< color2 << endl;
     
-    selfBegin();
-    
-   }
+    for(int i = 0; i<NWalkers; i++){
+        //clear all meshes
+        walkers[i].mesh.getVertices().clear();
+        walkers[i].mesh.getColors().clear();
+        
+        //set positions to zero
+        walkers[i].position.x = 0;
+        walkers[i].position.y = 0;
+        walkers[i].position.z = 0;
+        
+        // COLOR MODES
+        
+        if(rainbow){ //if rainbow mode is selected, choose a random hue between 0 and 255
+            dichromatic = false; oscillate = false;
+            newColor.setHsb(ofRandom(255),saturation, brightness);
+            walkers[i].setColor(newColor);
+        }
+        else if(dichromatic){ //if rainbow mode is not selected, choose a random color between color1 and color2
+            rainbow = false;
+            randomColor = color1.getLerped(color2, ofRandom(1.0));
+            //newColor.setHsb(randomColor.getHue(),saturation, brightness);
+            newColor = randomColor;
+            //  cout << "new color = " << i << " " << newColor << endl;
+            walkers[i].setColor(newColor);
+        }
+        else if(oscillate){
+            rainbow = false;
+            newColor = color1;
+            walkers[i].setColor(newColor);
+        }
+    }
+}
 
 
 //Use system gui for global or logical settings, for exmpl
@@ -141,52 +175,14 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOpenP5Spaghetti::selfPresetLoaded(string presetPath){
-
+	regenerate();
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5Spaghetti::selfBegin(){
-    
-    color1.setHsb(hue1,saturation1,brightness1);
-    // cout << "regenerated color1 = "<< color1 << endl;
-    color2.setHsb(hue2,saturation2,brightness2);
-    //  cout << "regenerated color2 = "<< color2 << endl;
-    
-    for(int i = 0; i<NWalkers; i++){
-        //clear all meshes
-        walkers[i].mesh.getVertices().clear();
-        walkers[i].mesh.getColors().clear();
-        
-        //set positions to zero
-        walkers[i].position.x = 0;
-        walkers[i].position.y = 0;
-        walkers[i].position.z = 0;
-        
-        // COLOR MODES
-        
-        if(rainbow){ //if rainbow mode is selected, choose a random hue between 0 and 255
-            dichromatic = false; oscillate = false;
-            newColor.setHsb(ofRandom(255),saturation, brightness);
-            walkers[i].setColor(newColor);
-        }
-        else if(dichromatic){ //if rainbow mode is not selected, choose a random color between color1 and color2
-            rainbow = false;
-            randomColor = color1.getLerped(color2, ofRandom(1.0));
-            //newColor.setHsb(randomColor.getHue(),saturation, brightness);
-            newColor = randomColor;
-            //  cout << "new color = " << i << " " << newColor << endl;
-            walkers[i].setColor(newColor);
-        }
-        else if(oscillate){
-            rainbow = false;
-            newColor = color1;
-            walkers[i].setColor(newColor);
-        }
-    }
-
-	
+	regenerate();
 }
 
 //do things like ofRotate/ofTranslate here
