@@ -211,7 +211,30 @@ void CloudsVisualSystemVoro::selfUpdate()
             con.put(i, seedParticles[i]->x, seedParticles[i]->y, seedParticles[i]->z);
         }
         
-        cellMeshes = getCellsFromContainer(con,wallThikness);
+        getCellsFromContainer(con,wallThikness,cellMeshes);
+		
+		if( ofGetKeyPressed('[') ){
+			//export for Bradley
+			ofMesh combinedMesh;
+			cout << "mesh frame " << ofGetFrameNum() << ": mesh count # "  << cellMeshes.size() << endl;
+			for(int i = 0; i < cellMeshes.size(); i++){
+				int startIndex = combinedMesh.getVertices().size();
+				for(int v = 0; v < cellMeshes[i].getVertices().size(); v++){
+					combinedMesh.addVertex( cellMeshes[i].getVertices()[v] );
+				}
+				for(int n = 0; n < cellMeshes[i].getNormals().size(); n++){
+					combinedMesh.addNormal( cellMeshes[i].getNormals()[n] );
+				}
+				for(int in = 0; in < cellMeshes[i].getIndices().size(); in++){
+					combinedMesh.addIndex(startIndex + cellMeshes[i].getIndices()[in] );
+				}
+			}
+			char filename[1024];
+			sprintf( filename, "meshes/getCellsPolylinescell_mesh_%05d.ply", ofGetFrameNum() );
+			combinedMesh.save( filename );
+			
+		}
+
     }
 
     fps++;
@@ -345,6 +368,7 @@ void CloudsVisualSystemVoro::selfDraw()
     glDisable(GL_DEPTH_TEST);
     ofPopMatrix();
     
+	
  //   mat->end();
 }
 
@@ -380,7 +404,6 @@ void CloudsVisualSystemVoro::selfExit()
 
 void CloudsVisualSystemVoro::selfKeyPressed(ofKeyEventArgs & args)
 {
-    
 }
 
 void CloudsVisualSystemVoro::selfKeyReleased(ofKeyEventArgs & args)
