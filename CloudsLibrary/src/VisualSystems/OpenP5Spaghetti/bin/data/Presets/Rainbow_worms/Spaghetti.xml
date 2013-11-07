@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Spaghetti</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1140.000000000</XPosition>
-    <YPosition>-8.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>25.871921539</Value>
+    <Value>77.566497803</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -27,33 +27,38 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>0.960591137</Value>
+    <Name>SPIN SPEED</Name>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Name>STEP SIZE X</Name>
+    <Value>2.487684727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>0.960591137</Value>
+    <Name>STEP SIZE Y</Name>
+    <Value>3.497537136</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
-    <Value>0.098522164</Value>
+    <Name>STEP SIZE Z</Name>
+    <Value>2.906403780</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
-    <Value>0.098522164</Value>
+    <Name>NOISE SPEED X</Name>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
-    <Value>0.098522164</Value>
+    <Name>NOISE SPEED Y</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED Z</Name>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -108,7 +113,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation</Name>
-    <Value>111.330047607</Value>
+    <Value>75.862068176</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

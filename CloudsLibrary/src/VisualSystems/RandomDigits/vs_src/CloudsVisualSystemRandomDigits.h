@@ -14,6 +14,8 @@
 #include "Rand.h"
 
 
+
+
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRandomDigits : public CloudsVisualSystem {
   public:
@@ -91,11 +93,11 @@ class CloudsVisualSystemRandomDigits : public CloudsVisualSystem {
     void selfMouseReleased(ofMouseEventArgs& data);
 	
 	vector<Rand> grid;
+    vector<Rand> :: iterator Iter;
 
     int num = 20;
-    int IDnumber;
-    float xoffset = 100; //30; for Randhedra
-    float yoffset = 100; //30; for Randhedra
+    float xoffset = 150; //30; for Randhedra
+    float yoffset = 50; //30; for Randhedra
 
 
     // if you use a custom camera to fly through the scene

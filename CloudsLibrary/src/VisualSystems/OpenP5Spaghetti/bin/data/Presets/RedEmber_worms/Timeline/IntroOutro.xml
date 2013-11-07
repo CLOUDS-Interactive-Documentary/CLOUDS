@@ -1,0 +1,27 @@
+<keyframes>
+    <key>
+        <flag>h</flag>
+        <time>00:00:00:293</time>
+        <value>0.243243217</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:00:789</time>
+        <value>0.375000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:01:332</time>
+        <value>0.500000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:05:230</time>
+        <value>0.100000024</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:06:315</time>
+        <value>0.675000012</value>
+    </key>
+</keyframes>
