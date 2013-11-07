@@ -97,86 +97,6 @@ void _C::selfUpdate(){
     
 }
 
-
-jtn::PointD jtn::Box::upper(){
-    return _upper;
-}
-
-
-jtn::PointD jtn::Box::lower(){
-    return _lower;
-}
-
-jtn::Box::Box(){
-    
-}
-
-void jtn::Box::stretch(ofVec3f that){
-    
-    if (that.x < _lower.x) _lower.x = that.x;
-    if (that.x > _upper.x) _upper.x = that.x;
-    
-    if (that.y < _lower.y) _lower.y = that.y;
-    if (that.y > _upper.y) _upper.y = that.y;
-    
-    if (that.z < _lower.z) _lower.z = that.z;
-    if (that.z > _upper.z) _upper.z = that.z;
-    
-    
-    
-}
-
-jtn::PointD jtn::Box::getNormalized(jtn::PointD that){
-    PointD delta = _upper - _lower;
-    return (that - _lower) / delta;
-}
-
-void jtn::Box::setOppositeExtremes(){
-    _lower = jtn::PointD(  9999,  9999,  9999);
-    _upper = jtn::PointD( -9999.0f, -9999.0f, -9999.0f);
-}
-
-jtn::PointD::PointD(){
-    x=y=z=0;
-}
-
-jtn::PointD::PointD(double xx,double yy,double zz){
-    x=xx;
-    y=yy;
-    z=zz;
-}
-
-jtn::PointD::PointD(ofVec3f copyable){
-    x=copyable.x;
-    y=copyable.y;
-    z=copyable.z;
-    
-}
-
-jtn::PointD jtn::PointD::operator-(jtn::PointD that){
-    return jtn::PointD(
-                       x-that.x,
-                       y-that.y,
-                       z-that.z
-                       );
-}
-
-
-
-jtn::PointD jtn::PointD::operator/(jtn::PointD that){
-    return jtn::PointD(
-                       x/that.x,
-                       y/that.y,
-                       z/that.z
-                       );
-}
-
-jtn::PointD::operator string(){
-    stringstream ss;
-    ss << x << ',' << y << ',' << z;
-    return ss.str();
-}
-
 void _C::updateBoundingBox(){
     
     // reset
@@ -518,11 +438,12 @@ void _C::selfDraw(){
 }
 
 //############################################################
-
+#pragma mark
 
 vector<_N*> _N::all;
 vector<_N*> _N::terminals;
 GLuint _N::drawMode = 0;
+
 int _N::maxDepth = 0;
 
 void _N::updateScreenSpace(ofCamera &cam){
@@ -773,5 +694,90 @@ void _N::serialize(ofstream &fout){
     fout << endl;
 }
 
+
+#pragma mark
+
+jtn::PointD jtn::Box::upper(){
+    return _upper;
+}
+
+
+jtn::PointD jtn::Box::lower(){
+    return _lower;
+}
+
+jtn::Box::Box(){
+    
+}
+
+void jtn::Box::stretch(ofVec3f that){
+    
+    if (that.x < _lower.x) _lower.x = that.x;
+    if (that.x > _upper.x) _upper.x = that.x;
+    
+    if (that.y < _lower.y) _lower.y = that.y;
+    if (that.y > _upper.y) _upper.y = that.y;
+    
+    if (that.z < _lower.z) _lower.z = that.z;
+    if (that.z > _upper.z) _upper.z = that.z;
+    
+    
+    
+}
+
+
+jtn::PointD jtn::Box::getNormalized(jtn::PointD that){
+    PointD delta = _upper - _lower;
+    return (that - _lower) / delta;
+}
+
+void jtn::Box::setOppositeExtremes(){
+    _lower = jtn::PointD(  9999,  9999,  9999);
+    _upper = jtn::PointD( -9999.0f, -9999.0f, -9999.0f);
+}
+
+
+#pragma mark
+
+jtn::PointD::PointD(){
+    x=y=z=0;
+}
+
+jtn::PointD::PointD(double xx,double yy,double zz){
+    x=xx;
+    y=yy;
+    z=zz;
+}
+
+jtn::PointD::PointD(ofVec3f copyable){
+    x=copyable.x;
+    y=copyable.y;
+    z=copyable.z;
+    
+}
+
+jtn::PointD jtn::PointD::operator-(jtn::PointD that){
+    return jtn::PointD(
+                       x-that.x,
+                       y-that.y,
+                       z-that.z
+                       );
+}
+
+
+
+jtn::PointD jtn::PointD::operator/(jtn::PointD that){
+    return jtn::PointD(
+                       x/that.x,
+                       y/that.y,
+                       z/that.z
+                       );
+}
+
+jtn::PointD::operator string(){
+    stringstream ss;
+    ss << x << ',' << y << ',' << z;
+    return ss.str();
+}
 
 
