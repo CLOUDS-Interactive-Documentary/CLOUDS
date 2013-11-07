@@ -238,6 +238,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     spinSpeed = 0.5f;
     fogDensity = 0.025f;
     
+    orbital = NULL;
+
     filesDir.listDir(getVisualSystemDataPath() + "textFiles");
     filesDir.sort();
     selectedFilesIdx = 0;
@@ -338,8 +340,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfExit()
 {
-	delete text;
-    delete orbital;
+    if (orbital != NULL) {
+        delete orbital;
+    }
 }
 
 //events are called when the system is active
@@ -378,13 +381,21 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
 void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
 {
     // Load the contents of the text file.
+    TUText * text = NULL;
     ofBuffer buffer = ofBufferFromFile(filesDir.getPath(selectedFilesIdx));
     if (buffer.size()) {
         text = new TUText(buffer.getText());
 //        text->print();
     }
+    else {
+        ofLogError("OpenP5TextUniverse") << "Could not open text file " << filesDir.getPath(selectedFilesIdx);
+        return;
+    }
     
     // Build the node network.
+    if (orbital != NULL) {
+        delete orbital;
+    }
     orbital = new TUOrbital(30, 1000);
     orbital->text = text->paragraphs[0].sentences[0].str;
     orbital->bRenderText = true;
@@ -438,4 +449,6 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
             }
         }
     }
+    
+    delete text;
 }

@@ -102,7 +102,6 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         int selectedFilesIdx;
     
         TUOrbital * orbital;
-        TUText * text;
     
         float fogDensity;
         float currSpin;
