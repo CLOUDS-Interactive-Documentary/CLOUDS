@@ -40,9 +40,9 @@ public:
     static float cohesionAngle;
     static float cohesionWeight;
     
-    static Color bodyColor;
-    static Color trailColor;
-    static Color tickColor;
+    static OpenSteer::Color bodyColor;
+    static OpenSteer::Color trailColor;
+    static OpenSteer::Color tickColor;
     
     static float trailVertexCount;
     static float trailDuration;
