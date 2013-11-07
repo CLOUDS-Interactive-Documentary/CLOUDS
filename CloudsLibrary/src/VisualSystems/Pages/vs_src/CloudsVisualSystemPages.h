@@ -14,7 +14,7 @@
 
 #include "Page.h"
 
-class PagesVisualSystem : public CloudsVisualSystem
+class CloudsVisualSystemPages : public CloudsVisualSystem
 {
   public:
     
