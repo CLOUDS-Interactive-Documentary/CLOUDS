@@ -127,6 +127,26 @@
 </Widget>
 <Widget>
     <Kind>17</Kind>
+    <Name>LEFT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>CENTER</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>RIGHT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>JUSTIFY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
     <Name>HELVETICA</Name>
     <Value>0</Value>
 </Widget>
