@@ -516,7 +516,7 @@ void CloudsVisualSystemMandala::drawOffsetMesh()
 	//kind of like instancing here
 	hexMesh.bind();
 	float layerScale = .4;
-	for (int i=0; i<40; i++)
+	for (int i=0; i<20; i++)
 	{
 		noiseSurfaceShader.setUniform1f("faceOffset", faceOffset * i );
 		glDrawArrays(GL_TRIANGLES, 0, hexMeshVertexCount);
