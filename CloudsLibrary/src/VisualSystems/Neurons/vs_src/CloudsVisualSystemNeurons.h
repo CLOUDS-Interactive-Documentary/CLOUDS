@@ -52,6 +52,8 @@ namespace jtn{
         void serialize(ofstream &fout);
         void updateMaxDepth();
         ofVec3f screenSpace;
+        bool isPartOfCamPath;
+        static void clearPathFlags();
 	};
 
 //--------------------------------------------------------
@@ -136,6 +138,7 @@ class _C:public CloudsVisualSystem{
     ofxUIButton *generateCamPath;
     ofxUIButton *generateRandCam;
     ofxUISlider *camDuration;
+    ofxUIButton *tumbleCam;
     
     static bool renderNeurons;
     
@@ -151,7 +154,14 @@ class _C:public CloudsVisualSystem{
     static float danceAmp;
     static float danceFreq;
     static float danceOffset;
+    
+    
+    static bool colorMode;
+    static bool renderCamPath;
+    
     void selfGuiEvent(ofxUIEventArgs &e);
+    void guiCameraEvent(ofxUIEventArgs &e);
+    
     void reset(bool createRootNodes = true);
     
     /**
@@ -200,6 +210,5 @@ class _C:public CloudsVisualSystem{
      */
     static jtn::Box boundingBox;
     
-    static bool colorMode;
 };
 
