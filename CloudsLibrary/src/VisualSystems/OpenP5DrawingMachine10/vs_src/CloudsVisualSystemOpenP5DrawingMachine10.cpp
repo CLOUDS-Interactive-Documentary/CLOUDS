@@ -110,7 +110,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     // Load defaults.
     numParticles = 10000;
     numAttractors = 200;
-    speedFactor = 0.05f;
+    speedFactor = 1.0f;
     maxDist = 0.2f;
     
     drawLength = 5.0f;
