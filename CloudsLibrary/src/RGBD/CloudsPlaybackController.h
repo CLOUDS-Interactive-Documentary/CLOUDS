@@ -190,7 +190,7 @@ class CloudsPlaybackController {
 	float currentVolume;
 	float targetScratchVolume;
 	void setUseScratch(bool useScratch);
-	CloudsVisualSystem* currentVisualSystem;
+	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 //    void setRandomQuestion(CloudsClip& clip);
 	
@@ -205,7 +205,7 @@ class CloudsPlaybackController {
 //    CloudsRun* currentRun;
 	
 	//RGBD STUFF
-	CloudsVisualSystemRGBD rgbdVisualSystem;
+	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
 	CloudsIntroSequence introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
@@ -226,9 +226,9 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+	
 	//if there is a system playing this wil be non-null
-//	CloudsVisualSystem* currentVisualSystem;
-	CloudsVisualSystem* nextSystem;
+	ofPtr<CloudsVisualSystem> nextSystem;
 		
 	//play a visuals sytem, if no parameter is passed one is chosen automatically based on the current discussion topic
 	void showVisualSystem(CloudsVisualSystemPreset& nextVisualSystem, float transitionDuration=3);

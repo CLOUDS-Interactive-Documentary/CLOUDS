@@ -198,8 +198,8 @@ vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
     return dummyDichotomies;
 }
 
-vector<CloudsVisualSystem*> CloudsAct::getAllVisualSystems(){
-	vector<CloudsVisualSystem*> vs;
+vector< ofPtr<CloudsVisualSystem> > CloudsAct::getAllVisualSystems(){
+	vector< ofPtr<CloudsVisualSystem> > vs;
 	for(int i = 0; i < visualSystems.size(); i++){
 		if(!ofContains(vs, visualSystems[i].system)){
 			vs.push_back(visualSystems[i].system);

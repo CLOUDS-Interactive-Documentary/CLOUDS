@@ -51,8 +51,8 @@ public:
 	ofCamera& getCameraRef(){
 		return cloudsCamera;
 	}
+	
   protected:
-
 	ofxAVFVideoPlayer player;
 	ofShader rgbdPixelToPixelShader;
 	Intrinsics videoIntrinsics;

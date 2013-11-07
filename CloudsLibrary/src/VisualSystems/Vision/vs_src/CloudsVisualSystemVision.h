@@ -10,8 +10,6 @@
 #include "CloudsVisualSystem.h"
 #include "ofxCv.h"
 #include "MyTracker.h"
-#include "ParkedCar.h"
-#include "Path.h"
 
 typedef enum{
     OpticalFlow =0,
@@ -95,7 +93,7 @@ protected:
     ofImage thresholded;
     ofxCv::RunningBackground background;
     cv::Rect accumRegion;
-    vector<ParkedCar> parked;
+    //vector<ParkedCar> parked;
 
     //Optical flow types
     ofxCv::FlowFarneback farneback;

@@ -12,7 +12,6 @@
 #include "CloudsGlobal.h"
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
-	system = NULL;
 	enabled = true;
 	indefinite = true;
 	

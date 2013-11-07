@@ -12,12 +12,15 @@
 #include <ofMain.h>
 #include "ParamManager.h"
 #include "Maze.h"
+#include "ofxSimpleSpline.h"
 
 class MazeCamera : public ofCamera
 {
 public:
     
     MazeCamera(float x, float y, float z);
+    
+    void setPath(ofxSimpleSpline *p);
     
     void update();
     void draw();
@@ -29,6 +32,9 @@ private:
     ofVec3f acc;
     float fov;
     ofVec3f mousePos;
+    
+    ofxSimpleSpline* path;
+    float pathT;
     
     void applyLimits(ofVec3f &p);
 };

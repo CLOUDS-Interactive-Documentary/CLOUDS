@@ -6,13 +6,13 @@
 //
 //
 
-#include "CloudsVisualSystemLSystems.h"
+#include "CloudsVisualSystemLSystem.h"
 
-string CloudsVisualSystemLSystems::getSystemName(){
+string CloudsVisualSystemLSystem::getSystemName(){
 	return "LSystem";
 }
 
-void CloudsVisualSystemLSystems::selfSetup(){
+void CloudsVisualSystemLSystem::selfSetup(){
     lsysAngle = 5;
     lsysAxiom = "B";
     lsysRule1 = "B=F[5+B][7-B]-F[4+B][6-B]-[3+B][5+B]-FB";
@@ -28,24 +28,24 @@ void CloudsVisualSystemLSystems::selfSetup(){
     ofLoadImage(postTexture, getVisualSystemDataPath()+"images/3.jpg");
 }
 
-void CloudsVisualSystemLSystems::selfSetupGuis(){
+void CloudsVisualSystemLSystem::selfSetupGuis(){
     
 }
 
-void CloudsVisualSystemLSystems::selfAutoMode(){
+void CloudsVisualSystemLSystem::selfAutoMode(){
     
 }
 
-void CloudsVisualSystemLSystems::selfBegin(){
+void CloudsVisualSystemLSystem::selfBegin(){
     buildLSystem();
     buildGrid();
 }
 
-void CloudsVisualSystemLSystems::selfEnd(){
+void CloudsVisualSystemLSystem::selfEnd(){
     
 }
 
-void CloudsVisualSystemLSystems::selfSetupSystemGui(){
+void CloudsVisualSystemLSystem::selfSetupSystemGui(){
     sysGui->addLabel("Structure");
     ofxUITextInput *uiAxiom = sysGui->addTextInput("Axiom", "B", OFX_UI_FONT_SMALL);
     uiAxiom->setAutoClear(false);
@@ -72,7 +72,7 @@ void CloudsVisualSystemLSystems::selfSetupSystemGui(){
     buildLSystem();
 }
 
-void CloudsVisualSystemLSystems::selfSetupRenderGui(){
+void CloudsVisualSystemLSystem::selfSetupRenderGui(){
     rdrGui->addLabel("Grid");
     rdrGui->addSlider("Grid_Size", 0, 100, &gridSize);
     rdrGui->addSlider("Grid_Resolution", 0, 5, &gridResolution);
@@ -95,7 +95,7 @@ void CloudsVisualSystemLSystems::selfSetupRenderGui(){
     buildGrid();
 }
 
-void CloudsVisualSystemLSystems::buildGrid(){
+void CloudsVisualSystemLSystem::buildGrid(){
     
     ofFloatColor crossColor = ofFloatColor(gridCrossAlpha);
     ofPoint normal = ofPoint(0,0.0,1.0);
@@ -123,7 +123,7 @@ void CloudsVisualSystemLSystems::buildGrid(){
     }
 }
 
-void CloudsVisualSystemLSystems::buildLSystem(){
+void CloudsVisualSystemLSystem::buildLSystem(){
     //  Clear
     //
     lsysLines.clear();
@@ -171,11 +171,11 @@ void CloudsVisualSystemLSystems::buildLSystem(){
 }
 
 
-void CloudsVisualSystemLSystems::lineTo(ofPoint &_pnt){
+void CloudsVisualSystemLSystem::lineTo(ofPoint &_pnt){
     lsysLines[ lsysLines.size()-1 ].addVertex(_pnt);
 }
 
-void CloudsVisualSystemLSystems::addNode(ofPoint &_pnt){
+void CloudsVisualSystemLSystem::addNode(ofPoint &_pnt){
     
     vector<ofPoint> blank;
     
@@ -197,7 +197,7 @@ void CloudsVisualSystemLSystems::addNode(ofPoint &_pnt){
     lsysNodes.push_back( node );
 }
 
-void CloudsVisualSystemLSystems::addBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed){
+void CloudsVisualSystemLSystem::addBranch(ofMesh &_mesh, int _index, float _relativeTime, float _speed){
     
     int totalPoints = lsysLines[_index].size();
     int drawPoints = 0;
@@ -248,7 +248,7 @@ void CloudsVisualSystemLSystems::addBranch(ofMesh &_mesh, int _index, float _rel
     }
 }
 
-int CloudsVisualSystemLSystems::isNode(ofPoint &_pnt){
+int CloudsVisualSystemLSystem::isNode(ofPoint &_pnt){
     for (int i = lsysNodes.size()-1; i >= 0; i--) {
         if ( lsysNodes[i] == _pnt ){
             return i;
@@ -258,7 +258,7 @@ int CloudsVisualSystemLSystems::isNode(ofPoint &_pnt){
     return -1;
 }
 
-void CloudsVisualSystemLSystems::selfUpdate(){
+void CloudsVisualSystemLSystem::selfUpdate(){
 
     time = timeline->getCurrentTime()*lsysGrowingSpeed;
     
@@ -323,11 +323,11 @@ void CloudsVisualSystemLSystems::selfUpdate(){
     }
 }
 
-void CloudsVisualSystemLSystems::selfDrawBackground()
+void CloudsVisualSystemLSystem::selfDrawBackground()
 {
 }
 
-void CloudsVisualSystemLSystems::selfDraw(){
+void CloudsVisualSystemLSystem::selfDraw(){
 //    mat->begin();
     glDisable(GL_DEPTH_TEST);
     
@@ -390,7 +390,7 @@ void CloudsVisualSystemLSystems::selfDraw(){
 }
 
 
-void CloudsVisualSystemLSystems::selfPostDraw(){
+void CloudsVisualSystemLSystem::selfPostDraw(){
 	
     postShader.begin();
     postShader.setUniformTexture("tex1", postTexture, 1);
@@ -402,7 +402,7 @@ void CloudsVisualSystemLSystems::selfPostDraw(){
     postShader.end();
 }
 
-void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemLSystem::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
 	int kind = e.widget->getKind();
     
@@ -423,7 +423,7 @@ void CloudsVisualSystemLSystems::guiSystemEvent(ofxUIEventArgs &e){
     } 
 }
 
-void CloudsVisualSystemLSystems::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemLSystem::guiRenderEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     
     if ( name.find("Grid") == 0){
@@ -432,57 +432,57 @@ void CloudsVisualSystemLSystems::guiRenderEvent(ofxUIEventArgs &e){
 
 }
 
-void CloudsVisualSystemLSystems::selfExit()
+void CloudsVisualSystemLSystem::selfExit()
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfKeyPressed(ofKeyEventArgs & args)
+void CloudsVisualSystemLSystem::selfKeyPressed(ofKeyEventArgs & args)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfKeyReleased(ofKeyEventArgs & args)
+void CloudsVisualSystemLSystem::selfKeyReleased(ofKeyEventArgs & args)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfMouseDragged(ofMouseEventArgs& data)
+void CloudsVisualSystemLSystem::selfMouseDragged(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfMouseMoved(ofMouseEventArgs& data)
+void CloudsVisualSystemLSystem::selfMouseMoved(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfMousePressed(ofMouseEventArgs& data)
+void CloudsVisualSystemLSystem::selfMousePressed(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfMouseReleased(ofMouseEventArgs& data)
+void CloudsVisualSystemLSystem::selfMouseReleased(ofMouseEventArgs& data)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfSetupGui()
+void CloudsVisualSystemLSystem::selfSetupGui()
 {
       
 }
 
-void CloudsVisualSystemLSystems::selfGuiEvent(ofxUIEventArgs &e)
+void CloudsVisualSystemLSystem::selfGuiEvent(ofxUIEventArgs &e)
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfDrawDebug()
+void CloudsVisualSystemLSystem::selfDrawDebug()
 {
     
 }
 
-void CloudsVisualSystemLSystems::selfSceneTransformation()
+void CloudsVisualSystemLSystem::selfSceneTransformation()
 {
     
 }
