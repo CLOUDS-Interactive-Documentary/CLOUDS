@@ -27,10 +27,10 @@ public:
 	};
 	
 	enum tickerEases{
-		OFX_TWEEN_BOUNCE = 0,
+		OFX_TWEEN_LINEAR = 0,
 		OFX_TWEEN_CUBIC = 1,
 		OFX_TWEEN_ELASTIC = 2,
-		OFX_TWEEN_LINEAR = 3,
+		OFX_TWEEN_BOUNCE = 3,
 		OFX_TWEEN_QUART = 4,
 		OFX_TWEEN_BACK = 5,
 		OFX_TWEEN_CIRC = 6,
@@ -146,17 +146,10 @@ public:
 	
 	void setDelay( float d){ delay = d;}
 	
-//	void begin( T& _value, T _targetVal, float _span, float _startTime, float _delay )
-//	{
-//		delay = _delay;
-//		begin(_value, _value, _targetVal, _span, _startTime );
-//	}
-//	
-//	
-//	void begin( T& _value, T _targetVal, float _span, float _startTime=ofGetElapsedTimef() )
-//	{
-//		begin(_value, _value, _targetVal, _span, _startTime );
-//	}
+	void setEaseType( int easeType = OFX_TWEEN_LINEAR )
+	{
+		ease = easeType;
+	}
 	
 	void begin( T& _value, T _startVal, T _targetVal, float _span, float _startTime=ofGetElapsedTimef(), ofxTween::ofxEasingType _easeType = ofxTween::easeInOut )
 	{
