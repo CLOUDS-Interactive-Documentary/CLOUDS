@@ -97,7 +97,10 @@ void CloudsWebSocketConnection::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void CloudsWebSocketConnection::topicChanged(CloudsTopicEventArgs& args){
-	
+	char message[1024];
+	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
+	server.send( message );
+	cout << " message " << message << endl;
 }
 
 void CloudsWebSocketConnection::preRollRequested(CloudsPreRollEventArgs& args){

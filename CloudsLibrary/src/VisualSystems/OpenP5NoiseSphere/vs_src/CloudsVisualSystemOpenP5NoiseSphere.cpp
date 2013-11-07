@@ -30,11 +30,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     customGui->addLabel("Solid Sphere");
     customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
     customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-    //customGui->addSlider("Hair count", 3000.0,7000.0, &count);
+
     
     customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
     customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
-    
+    customGui->addSlider("Fur Length", 0.0, 4., &furLength);
+	
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
 //	customGui->addButton("Custom Button", false);
@@ -126,14 +127,14 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate(){
 void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
     
 	ofPushStyle();
-		
-    glEnable(GL_DEPTH_TEST);
-    
-
-    ofFill();
-    ofSetColor(20,solidSphereAlpha*255.0);
+	
+	glDisable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+	ofDisableAlphaBlending();
+	ofFill();
+    ofSetColor(bgBri);
 	ofSphere(0, 0, solidSphereScale*300 );
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+
 	
 	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
 	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
@@ -146,11 +147,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha);
+		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, furLength);
 	}
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
 
+	
 	ofPopStyle();
 }
 
