@@ -8,7 +8,7 @@
 
 #pragma once 
 #include "ofMain.h"
-//#include "ofxFTGL.h"
+#include "ofxTween.h"
 
 class Rand {
     
@@ -29,12 +29,18 @@ public:
     void setup(); 
     void noiseRotate(float _x, float _y);
     void generateNoisyNumber();
-    void generateRandomNumber(); 
+    void generateRandomNumber();
+    void changeRandomNumber();
+    void counter();
+    void increaseRandomNumber();
     void drawNumbers();
+    void update();
 
-    
-    float lerp(float _a, float _b, float _f);
-    
+    int index =0;
+    float previousRandomNumber;
+    float nextRandomNumber;
+    float currentTime;
+    float previousTime;
     // text
     //FTGL
     //string text;
@@ -58,6 +64,10 @@ protected:
     
     float previousMouseX = 0;
     float previousMouseY = 0;
+    
+    int tweenRandom;
+    
+    int i = 0;
 
     
 };

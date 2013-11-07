@@ -9,16 +9,18 @@
 #include "Rand.h"
 
 ofTrueTypeFont Rand::Font;
-int Rand:: columns = 20;
-int Rand:: rows = 20;
+int Rand:: columns = 8;
+int Rand:: rows = 8;
 
 Rand:: Rand(float _posX, float _posY, float _randomNumber){
     
     posX = _posX;
     posY = _posY;
     randomNumber = _randomNumber;
-    
-   
+    currentTime =0;
+    previousRandomNumber =ofRandom(1000);
+    nextRandomNumber =0;
+    previousTime = 0;
 }
 
 void Rand::setup(){
@@ -30,6 +32,8 @@ void Rand::setup(){
     
    	Font.setLineHeight(14.0f);
 	Font.setLetterSpacing(1.037);
+    
+    //nextRandomNumber = ofRandom(10000, 99999);
 
 }
 
@@ -51,15 +55,19 @@ void Rand::generateNoisyNumber(){
  */
 
 
-
 void Rand::drawNumbers(){
-    
+        ofxEasingQuad eq;
     //draws an array of random numbers
    // ofPushMatrix();{
-        
-    ofTranslate(posX, posY);
+
+//    previousTime
+    currentTime = ofGetElapsedTimeMillis() - previousTime;
+//    cout<<currentTime<<","<<previousTime<<endl;
+    float newRandomNumber = ofxTween::map(currentTime, 0, 1000.0, previousRandomNumber, nextRandomNumber, true, eq, ofxTween::easeInOut);
+    randomNumber = int(newRandomNumber);
+      ofTranslate(posX, posY);
     std::ostringstream ostr; //output string stream
-    ostr << this->randomNumber;
+    ostr << randomNumber;
     std::string number = ostr.str();
     Font.drawString(number, 14.0f, 1.037);
   //  }
@@ -71,6 +79,39 @@ void Rand::generateRandomNumber(){
     this->randomNumber = int(ofRandom(10000, 99999)+.5);
 }
 
+
+void Rand::update(){
+
+}
+
+void Rand::changeRandomNumber(){
+    
+
+    previousTime  = ofGetElapsedTimeMillis();
+    previousRandomNumber = randomNumber;
+    nextRandomNumber = ofRandom(10000, 99999);    
+
+    
+
+
+
+//    randomNumber = int(newRandomNumber);
+
+    
+   // cout << "Button pressed!" << endl;
+   
+}
+
+void Rand::counter(){
+    for (float i = 0; i<1000.0; i+=1.0){
+        return i; 
+    }
+}
+
+void Rand::increaseRandomNumber(){
+    
+    this->randomNumber =  this->randomNumber + int(ofRandom(0, 200))-100;
+}
 
 void Rand::noiseRotate(float posX, float posY){
         
