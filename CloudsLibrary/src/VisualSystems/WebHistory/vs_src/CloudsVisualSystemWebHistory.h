@@ -19,7 +19,7 @@
 
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-class WebHistoryVisualSystem : public CloudsVisualSystem
+class CloudsVisualSystemWebHistory : public CloudsVisualSystem
 {
   public:
     
