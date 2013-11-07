@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5055DB73181B069000761DA0 /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86A181B068F00761DA0 /* facingRatio.frag */; };
-		5055DB74181B069000761DA0 /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86B181B068F00761DA0 /* facingRatio.vert */; };
 		5055DB75181B069000761DA0 /* gridShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86C181B068F00761DA0 /* gridShader.frag */; };
 		5055DB76181B069000761DA0 /* gridShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86D181B068F00761DA0 /* gridShader.vert */; };
 		5055DB77181B069000761DA0 /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D86E181B068F00761DA0 /* normalShader.frag */; };
@@ -16,7 +14,6 @@
 		5055DB79181B069000761DA0 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D870181B068F00761DA0 /* rgbdcombined.frag */; };
 		5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D871181B068F00761DA0 /* rgbdcombined.vert */; };
 		5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5055D872181B068F00761DA0 /* XRayShader.frag */; };
-		5055DB7C181B069000761DA0 /* XRayShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5055D873181B068F00761DA0 /* XRayShader.vert */; };
 		5055DB7F181B069000761DA0 /* 3DModelVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6D181B069000761DA0 /* 3DModelVisualSystem.cpp */; };
 		5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB6F181B069000761DA0 /* CloudsOrthoCamera.cpp */; };
 		5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB71181B069000761DA0 /* CloudsPathCamera.cpp */; };
@@ -3226,8 +3223,6 @@
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
-				5055DB73181B069000761DA0 /* facingRatio.frag in Sources */,
-				5055DB74181B069000761DA0 /* facingRatio.vert in Sources */,
 				5055DB75181B069000761DA0 /* gridShader.frag in Sources */,
 				5055DB76181B069000761DA0 /* gridShader.vert in Sources */,
 				5055DB77181B069000761DA0 /* normalShader.frag in Sources */,
@@ -3235,7 +3230,6 @@
 				5055DB79181B069000761DA0 /* rgbdcombined.frag in Sources */,
 				5055DB7A181B069000761DA0 /* rgbdcombined.vert in Sources */,
 				5055DB7B181B069000761DA0 /* XRayShader.frag in Sources */,
-				5055DB7C181B069000761DA0 /* XRayShader.vert in Sources */,
 				5055DB7F181B069000761DA0 /* 3DModelVisualSystem.cpp in Sources */,
 				5055DB80181B069000761DA0 /* CloudsOrthoCamera.cpp in Sources */,
 				5055DB81181B069000761DA0 /* CloudsPathCamera.cpp in Sources */,
