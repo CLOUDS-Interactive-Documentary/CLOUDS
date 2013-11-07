@@ -34,13 +34,17 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 
     customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
     
+    customGui->addLabel("MOVING BALLS");
     customGui->addSlider("NUM BALLS", 0, 150, &pm->numberOfBalls);
     customGui->addSlider("BALLS RADIUS", 0, 40, &pm->ballRadius);
     customGui->addSlider("BALLS SPEED", 0, 0.01, &pm->ballMaxSpeed);
     
+    customGui->addToggle("GROUND CAM", &pm->groundCam);
+    customGui->addSlider("GCAM SPEED", 0, 1, &pm->groundCamSpeed);
+    customGui->addSlider("GCAM LOOKAT", 0, 1, &pm->groundCamLookAt);
+    
     customGui->addSlider("WALL HEIGHT VARIANCE", 0, 1, &pm->heightRandom);
     
-
 
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
     float dim = customGui->getGlobalSliderHeight();
@@ -148,12 +152,15 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     maze[0]->generate();
     
     mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
-    
+
     light = new ofLight();
     light->setPointLight();
     light->setSpecularColor(ofColor(200));
     light->setDiffuseColor(ofColor(200));
     light->setAmbientColor(ofColor(50));
+    
+    camPath = maze[0]->createSimpleSpline(50, 50, 500);
+    mazeCam->setPath(camPath);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -233,6 +240,8 @@ void CloudsVisualSystemMazeGenerator::selfExit()
     delete maze[0];
     
     delete mazeCam;
+    
+    delete camPath;
 }
 
 //events are called when the system is active

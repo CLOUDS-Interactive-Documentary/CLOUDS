@@ -13,6 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "ParamManager.h"
 #include "Maze.h"
+#include "ofxSimpleSpline.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
@@ -100,6 +101,8 @@ protected:
     
     Maze* maze[3];
     MazeCamera* mazeCam;
+    
+    ofxSimpleSpline *camPath;
     
     ofLight *light;
     ofVec3f lightPos;

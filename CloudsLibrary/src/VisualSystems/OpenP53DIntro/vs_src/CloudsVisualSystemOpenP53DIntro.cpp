@@ -27,11 +27,11 @@ void CloudsVisualSystemOpenP53DIntro::selfSetupGui(){
 //	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
 //	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
     
-    customGui->addLabel("Solid Sphere");
-    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
-    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
-    customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
+//    customGui->addLabel("Solid Sphere");
+//    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
+//    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
+//    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
+//    customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
     
 //	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
 //	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
@@ -74,11 +74,11 @@ void CloudsVisualSystemOpenP53DIntro::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOpenP53DIntro::selfSetup(){
 	
 
-	radius = 75;
-	for (int i=0; i<count; i++) {
-		list.push_back( Hair(radius) );
-	}
-    
+//	radius = 75;
+//	for (int i=0; i<count; i++) {
+//		list.push_back( Hair(radius) );
+//	}
+//    
 	noisePosition = 0;
 	noiseSpeed = 0;
 	noiseScale = 1;
@@ -117,31 +117,7 @@ void CloudsVisualSystemOpenP53DIntro::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP53DIntro::selfDraw(){
-    
-	ofPushStyle();
-	
-    ofFill();
-    ofSetColor(20,solidSphereAlpha*255.0);
-	ofSphere(0, 0, solidSphereScale*300 );
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	
-	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.005);
-	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.005);
-	rx = (rx*0.9)+(rxp*0.1);
-	ry = (ry*0.9)+(ryp*0.1);
-	ofRotateY(rx);
-	ofRotateX(ry);
-	//sphere(radio);
-	
-	ofMesh mesh;
-	noisePosition += noiseSpeed;
-	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha);
-	}
-	mesh.setMode(OF_PRIMITIVE_LINES);
-	mesh.draw();
 
-	ofPopStyle();
 }
 
 // draw any debug stuff here

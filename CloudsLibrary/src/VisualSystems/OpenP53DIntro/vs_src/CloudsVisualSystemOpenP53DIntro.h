@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
+/*
 class Hair {
   public:
 	float radius;
@@ -61,6 +62,7 @@ class Hair {
 //		endShape();
 	}
 };
+ */
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemOpenP53DIntro : public CloudsVisualSystem {
@@ -154,7 +156,7 @@ protected:
 	ofFloatColor color2HSB;
 	
 	int count = 4000;
-	vector<Hair> list;
+//	vector<Hair> list;
 	float radius;
 	float rx = 0;
 	float ry = 0;

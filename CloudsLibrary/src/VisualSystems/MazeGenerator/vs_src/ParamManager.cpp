@@ -20,6 +20,10 @@ ParamManager::ParamManager()
     ballMaxSpeed = 0.001;
     
     heightRandom = 0;
+    
+    groundCam = false;
+    groundCamSpeed = 0;
+    groundCamLookAt = 0.5;
 }
 
 ParamManager::~ParamManager()
