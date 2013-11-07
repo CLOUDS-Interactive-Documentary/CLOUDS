@@ -117,7 +117,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     for (int i = 0; i < filesDir.size(); i++) {
         fileNames.push_back(filesDir.getName(i));
     }
-    ofxUIDropDownList *ddlFiles = customGui->addDropDownList("FILES", fileNames);
+    ddlFiles = customGui->addDropDownList("FILES", fileNames);
     //    ddlFiles->setAutoClose(true);
     ddlFiles->setShowCurrentSelected(true);
     //    ddlFiles->activateToggle("DISABLE");
@@ -246,11 +246,14 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         }
     }
     
-    else if (e.widget->getName() == "FILES") {
-        vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
-        if (selectedIndeces.size() > 0) {
-            selectedFilesIdx = selectedIndeces[0];
-            rebuildText();
+    else {
+        // Let's look through the files dropdown for a match.
+        for (int i = 0; i < ddlFiles->getToggles().size(); i++) {
+            if (e.widget == ddlFiles->getToggles()[i] && ((ofxUIToggle *)e.widget)->getValue()) {
+                selectedFilesIdx = i;
+                rebuildText();
+                break;
+            }
         }
     }
 }
