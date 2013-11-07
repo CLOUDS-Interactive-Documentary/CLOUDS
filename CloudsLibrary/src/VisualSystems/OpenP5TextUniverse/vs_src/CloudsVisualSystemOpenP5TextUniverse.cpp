@@ -91,6 +91,17 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
     customGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
     customGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    
+    vector<string> aligns;
+    aligns.push_back("LEFT");
+    aligns.push_back("CENTER");
+    aligns.push_back("RIGHT");
+    aligns.push_back("JUSTIFY");
+    ofxUIDropDownList *ddlAligns = customGui->addDropDownList("ALIGN", aligns);
+    //    ddlAligns->setAutoClose(true);
+    ddlAligns->setShowCurrentSelected(true);
+    //    ddlAligns->activateToggle("DISABLE");
+    
     vector<string> fonts;
     fonts.push_back("HELVETICA");
     fonts.push_back("MATERIA PRO");
@@ -184,6 +195,32 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "FONT SIZE" || e.widget->getName() == "FONT DEPTH") {
         rebuildFont();
     }
+    
+    else if (e.widget->getName() == "LEFT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_LEFT;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
+    }
+    else if (e.widget->getName() == "CENTER") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_CENTER;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
+    }
+    else if (e.widget->getName() == "RIGHT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_RIGHT;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
+    }
+    else if (e.widget->getName() == "JUSTIFY") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_JUSTIFY;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
+    }
+    
     else if (e.widget->getName() == "HELVETICA") {
         if (((ofxUIToggle *)e.widget)->getValue()) {
             TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
@@ -212,8 +249,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "FILES") {
         vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
         if (selectedIndeces.size() > 0) {
-            for (int i = 0; i < selectedIndeces.size(); i++) {
-            }
             selectedFilesIdx = selectedIndeces[0];
             rebuildText();
         }
@@ -383,6 +418,7 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
 {
     TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
     TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    TUOrbital::font.setAlignment(TUOrbital::textAlign);
 }
 
 //--------------------------------------------------------------

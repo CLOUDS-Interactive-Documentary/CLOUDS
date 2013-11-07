@@ -12,6 +12,7 @@
 int TUOrbital::billboardType = 0;
 
 ofxFTGLSimpleLayout TUOrbital::font;
+ofxFTGLTextAlignment TUOrbital::textAlign = FTGL_ALIGN_LEFT;
 string TUOrbital::fontName = "Helvetica.ttf";
 float TUOrbital::lineLength = 150.0f;
 float TUOrbital::fontSize = 14;
