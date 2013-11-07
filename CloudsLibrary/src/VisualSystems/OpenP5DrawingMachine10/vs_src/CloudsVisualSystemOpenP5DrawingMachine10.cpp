@@ -140,10 +140,24 @@ void CloudsVisualSystemOpenP5DrawingMachine10::restart()
         }
     }
     
-    // Load the data to a texture.
-    updateBuffer.allocate(textureRes, textureRes, GL_RGB32F);
-    updateBuffer.src->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
-    updateBuffer.dst->getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    // Allocate the update FBOs, and upload the data to them.
+    updateSrcFbo.allocate(textureRes, textureRes, GL_RGB32F);
+    updateSrcFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    updateSrcFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    updateSrcFbo.end();
+    updateSrcFbo.getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
+    
+    updateDstFbo.allocate(textureRes, textureRes, GL_RGB32F);
+    updateDstFbo.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+    updateDstFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    updateDstFbo.end();
+    updateDstFbo.getTextureReference().loadData(posData, textureRes, textureRes, GL_RGB);
     
     // Clean up.
     delete [] posData;
@@ -224,23 +238,23 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
     }
     
     // Calculate the new position affected by the attractors.
-    updateBuffer.dst->begin();
+    updateDstFbo.begin();
     {
         ofClear(0);
         updateShader.begin();
         {
-            updateShader.setUniformTexture("posData", updateBuffer.src->getTextureReference(), 0); // Previus position
+            updateShader.setUniformTexture("posData", updateSrcFbo.getTextureReference(), 0); // Previous position
             updateShader.setUniform1f("timestep", timeStepMs / 1000.0f);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
 
             // Draw the source position texture to be updated.
-            updateBuffer.src->draw(0, 0);
+            updateSrcFbo.draw(0, 0);
         }
         updateShader.end();
     }
-    updateBuffer.dst->end();
-    updateBuffer.swap();
+    updateDstFbo.end();
+    swap(updateSrcFbo, updateDstFbo);
     
     // Convert the position texture to points in space and render.
     renderBuffer.begin();
@@ -249,7 +263,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         ofSetColor(255, fgAlpha->getPos());
         renderShader.begin();
         {
-            renderShader.setUniformTexture("posTex", updateBuffer.dst->getTextureReference(), 0);
+            renderShader.setUniformTexture("posTex", updateDstFbo.getTextureReference(), 0);
             renderShader.setUniform2f("screen", (float)width, (float)height);
             
             mesh.draw();
