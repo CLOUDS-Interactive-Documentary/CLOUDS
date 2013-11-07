@@ -115,7 +115,6 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         float speedFactor;
         float maxDist;
     
-        int width, height;
         int numAttractors;
         int numParticles;
         int textureRes;
