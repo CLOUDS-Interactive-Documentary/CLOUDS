@@ -36,7 +36,6 @@
 		E712D36617DD807B006FEE82 /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D34017DD807B006FEE82 /* ParticleConnector.cpp */; };
 		E712D36717DD807B006FEE82 /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D34217DD807B006FEE82 /* ParticleConnectorBin.cpp */; };
 		E712D3F917DD808A006FEE82 /* Page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D3B917DD808A006FEE82 /* Page.cpp */; };
-		E712D3FA17DD808A006FEE82 /* PagesVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */; };
 		E712D43717DD80F8006FEE82 /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D43417DD80F8006FEE82 /* ofxRegex.cpp */; };
 		E71571DA1810D43400410646 /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71570D41810D43300410646 /* b2BroadPhase.cpp */; };
 		E71571DB1810D43400410646 /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E71570D61810D43300410646 /* b2CollideCircle.cpp */; };
@@ -185,7 +184,6 @@
 		E74620A317DB7E9C002FC464 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746209617DB7E9C002FC464 /* ofxBillboard.cpp */; };
 		E74620A917DB7EF8002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */; };
 		E77BAA1A17DA77CD00B8744F /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA9D317DA77CD00B8744F /* HistoryNode.cpp */; };
-		E77BAA1B17DA77CD00B8744F /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BA9D517DA77CD00B8744F /* WebHistoryVisualSystem.cpp */; };
 		E77BAA3617DA781900B8744F /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA2E17DA781900B8744F /* ofxTextWriter.cpp */; };
 		E77BAA5D17DA784200B8744F /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA4317DA784200B8744F /* sqlite3.c */; };
 		E77BAA5E17DA784200B8744F /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA4617DA784200B8744F /* ofxSQLite.cpp */; };
@@ -307,8 +305,10 @@
 		E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3645817C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */; };
 		E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */; };
-		E7D365F217C7D32C004A5ED6 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365A917C7D32C004A5ED6 /* ScrapeVisualSystem.cpp */; };
 		E7D365FB17C7EF50004A5ED6 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */; };
+		E7D60841182BF28D004914EF /* CloudsVisualSystemPages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D6083F182BF28D004914EF /* CloudsVisualSystemPages.cpp */; };
+		E7D60844182BF297004914EF /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D60842182BF297004914EF /* CloudsVisualSystemWebHistory.cpp */; };
+		E7D60847182BF2A1004914EF /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D60845182BF2A1004914EF /* CloudsVisualSystemScrape.cpp */; };
 		E7D9CFB0182AEC5700AD56C1 /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9CF91182AEC5700AD56C1 /* CloudsVisualSystemVision.cpp */; };
 		E7D9CFB1182AEC5700AD56C1 /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9CF93182AEC5700AD56C1 /* FlowField.cpp */; };
 		E7D9CFB2182AEC5700AD56C1 /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9CF95182AEC5700AD56C1 /* MyTracker.cpp */; };
@@ -412,8 +412,6 @@
 		E712D34317DD807B006FEE82 /* ParticleConnectorBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleConnectorBin.h; sourceTree = "<group>"; };
 		E712D3B917DD808A006FEE82 /* Page.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Page.cpp; sourceTree = "<group>"; };
 		E712D3BA17DD808A006FEE82 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
-		E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PagesVisualSystem.cpp; sourceTree = "<group>"; };
-		E712D3BC17DD808A006FEE82 /* PagesVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagesVisualSystem.h; sourceTree = "<group>"; };
 		E712D41E17DD80AE006FEE82 /* QuineVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuineVisualSystem.h; sourceTree = "<group>"; };
 		E712D43417DD80F8006FEE82 /* ofxRegex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRegex.cpp; sourceTree = "<group>"; };
 		E712D43517DD80F8006FEE82 /* ofxRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRegex.h; sourceTree = "<group>"; };
@@ -835,8 +833,6 @@
 		E74620A817DB7EF8002FC464 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
 		E77BA9D317DA77CD00B8744F /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
 		E77BA9D417DA77CD00B8744F /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
-		E77BA9D517DA77CD00B8744F /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
-		E77BA9D617DA77CD00B8744F /* WebHistoryVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHistoryVisualSystem.h; sourceTree = "<group>"; };
 		E77BAA2E17DA781900B8744F /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
 		E77BAA2F17DA781900B8744F /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
 		E77BAA4317DA784200B8744F /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -1147,10 +1143,14 @@
 		E7D3653B17C7D144004A5ED6 /* ofxMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMarchingCubes.h; sourceTree = "<group>"; };
 		E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E7D365A817C7D32C004A5ED6 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
-		E7D365A917C7D32C004A5ED6 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D365AA17C7D32C004A5ED6 /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
 		E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
 		E7D365FA17C7EF50004A5ED6 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
+		E7D6083F182BF28D004914EF /* CloudsVisualSystemPages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPages.cpp; sourceTree = "<group>"; };
+		E7D60840182BF28D004914EF /* CloudsVisualSystemPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPages.h; sourceTree = "<group>"; };
+		E7D60842182BF297004914EF /* CloudsVisualSystemWebHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWebHistory.cpp; sourceTree = "<group>"; };
+		E7D60843182BF297004914EF /* CloudsVisualSystemWebHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWebHistory.h; sourceTree = "<group>"; };
+		E7D60845182BF2A1004914EF /* CloudsVisualSystemScrape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemScrape.cpp; sourceTree = "<group>"; };
+		E7D60846182BF2A1004914EF /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
 		E7D9CF91182AEC5700AD56C1 /* CloudsVisualSystemVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVision.cpp; sourceTree = "<group>"; };
 		E7D9CF92182AEC5700AD56C1 /* CloudsVisualSystemVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVision.h; sourceTree = "<group>"; };
 		E7D9CF93182AEC5700AD56C1 /* FlowField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlowField.cpp; sourceTree = "<group>"; };
@@ -1520,8 +1520,8 @@
 			children = (
 				E712D3B917DD808A006FEE82 /* Page.cpp */,
 				E712D3BA17DD808A006FEE82 /* Page.h */,
-				E712D3BB17DD808A006FEE82 /* PagesVisualSystem.cpp */,
-				E712D3BC17DD808A006FEE82 /* PagesVisualSystem.h */,
+				E7D6083F182BF28D004914EF /* CloudsVisualSystemPages.cpp */,
+				E7D60840182BF28D004914EF /* CloudsVisualSystemPages.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -2619,10 +2619,10 @@
 		E77BA9D217DA77CD00B8744F /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7D60842182BF297004914EF /* CloudsVisualSystemWebHistory.cpp */,
+				E7D60843182BF297004914EF /* CloudsVisualSystemWebHistory.h */,
 				E77BA9D317DA77CD00B8744F /* HistoryNode.cpp */,
 				E77BA9D417DA77CD00B8744F /* HistoryNode.h */,
-				E77BA9D617DA77CD00B8744F /* WebHistoryVisualSystem.h */,
-				E77BA9D517DA77CD00B8744F /* WebHistoryVisualSystem.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3137,8 +3137,8 @@
 		E7C00E2E180DD24700B5CEF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7C00E2F180DD24700B5CEF1 /* CloudsVisualSystemFlocking.cpp */,
 				E7C00E30180DD24700B5CEF1 /* CloudsVisualSystemFlocking.h */,
+				E7C00E2F180DD24700B5CEF1 /* CloudsVisualSystemFlocking.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3211,8 +3211,8 @@
 		E7C8AA3F182AC8F900AAD6E8 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7C8AA40182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp */,
 				E7C8AA41182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.h */,
+				E7C8AA40182AC8F900AAD6E8 /* CloudsVisualSystemOpenP5Hackpact.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3887,12 +3887,12 @@
 		E7D365A517C7D32C004A5ED6 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7D60845182BF2A1004914EF /* CloudsVisualSystemScrape.cpp */,
+				E7D60846182BF2A1004914EF /* CloudsVisualSystemScrape.h */,
 				E7D365FA17C7EF50004A5ED6 /* ScrapeCamera.h */,
 				E7D365F917C7EF50004A5ED6 /* ScrapeCamera.cpp */,
 				E7D365A817C7D32C004A5ED6 /* ofxMtlBoxFitting.h */,
 				E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */,
-				E7D365AA17C7D32C004A5ED6 /* ScrapeVisualSystem.h */,
-				E7D365A917C7D32C004A5ED6 /* ScrapeVisualSystem.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4531,12 +4531,10 @@
 				E7D3651C17C7D0FF004A5ED6 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */,
 				E7D365F117C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp in Sources */,
-				E7D365F217C7D32C004A5ED6 /* ScrapeVisualSystem.cpp in Sources */,
 				E7D365FB17C7EF50004A5ED6 /* ScrapeCamera.cpp in Sources */,
 				E7176E2817D3C02A00C8DC38 /* CloudsRun.cpp in Sources */,
 				E78CCB1F17D58D77005F6D77 /* ofxOceanCamera.cpp in Sources */,
 				E77BAA1A17DA77CD00B8744F /* HistoryNode.cpp in Sources */,
-				E77BAA1B17DA77CD00B8744F /* WebHistoryVisualSystem.cpp in Sources */,
 				E77BAA3617DA781900B8744F /* ofxTextWriter.cpp in Sources */,
 				E77BAA5D17DA784200B8744F /* sqlite3.c in Sources */,
 				E77BAA5E17DA784200B8744F /* ofxSQLite.cpp in Sources */,
@@ -4560,7 +4558,6 @@
 				E712D36617DD807B006FEE82 /* ParticleConnector.cpp in Sources */,
 				E712D36717DD807B006FEE82 /* ParticleConnectorBin.cpp in Sources */,
 				E712D3F917DD808A006FEE82 /* Page.cpp in Sources */,
-				E712D3FA17DD808A006FEE82 /* PagesVisualSystem.cpp in Sources */,
 				E712D43717DD80F8006FEE82 /* ofxRegex.cpp in Sources */,
 				E72FFA2B17E6D93F0007780D /* CloudsVisualSystemCosmic.cpp in Sources */,
 				E7C00DB2180DD1DA00B5CEF1 /* CloudsVisualSystemReplicator.cpp in Sources */,
@@ -4688,6 +4685,9 @@
 				E7D9D4E5182AFC2700AD56C1 /* MazeCell.cpp in Sources */,
 				E7D9D4E6182AFC2700AD56C1 /* MovingBall.cpp in Sources */,
 				E7D9D4E7182AFC2700AD56C1 /* ParamManager.cpp in Sources */,
+				E7D60841182BF28D004914EF /* CloudsVisualSystemPages.cpp in Sources */,
+				E7D60844182BF297004914EF /* CloudsVisualSystemWebHistory.cpp in Sources */,
+				E7D60847182BF2A1004914EF /* CloudsVisualSystemScrape.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
