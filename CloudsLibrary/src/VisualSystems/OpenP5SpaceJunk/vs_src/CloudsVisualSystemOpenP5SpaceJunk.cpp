@@ -21,18 +21,19 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
     customGui->addButton("REGENERATE", &shouldRegenerate);
 	
     customGui->addSlider("Rotation Speed", 0, 25, &speed_);
-    customGui->addSlider("X Scale Min", 0, 50, &XrandMin);
-    customGui->addSlider("X Scale Max", 0, 50, &XrandMax);
-    customGui->addSlider("Y Scale Min", 0, 50, &YrandMin);
-    customGui->addSlider("Y Scale Max", 0, 50, &YrandMax);
-    customGui->addSlider("Z Scale Min", 0, 50, &ZrandMin);
-    customGui->addSlider("Z Scale Max", 0, 50, &ZrandMax);
-    customGui->addSlider("X Rotate Min", 0, 90, &XrotMin);
-    customGui->addSlider("X Rotate Max", 0, 90, &XrotMax);
-    customGui->addSlider("Y Rotate Min", 0, 90, &YrotMin);
-    customGui->addSlider("Y Rotate Max", 0, 90, &YrotMax);
-    customGui->addSlider("Z Rotate Min", 0, 90, &ZrotMin);
-    customGui->addSlider("Z Rotate Max", 0, 90, &ZrotMax);
+	customGui->addRangeSlider("X Scale", 0, 50, &XrandMin, &XrandMax);
+//    customGui->addSlider("X Scale Min", 0, 50, &XrandMin);
+//    customGui->addSlider("X Scale Max", 0, 50, &XrandMax);
+    customGui->addRangeSlider("Y Scale", 0, 50, &YrandMin, &YrandMax);
+//    customGui->addSlider("Y Scale Max", 0, 50, );
+    customGui->addRangeSlider("Z Scale", 0, 50, &ZrandMin, &ZrandMax);
+//    customGui->addSlider("Z Scale Max", 0, 50, );
+    customGui->addRangeSlider("X Rotate", 0, 90, &XrotMin, &XrotMax);
+//    customGui->addSlider("X Rotate Max", 0, 90, );
+    customGui->addRangeSlider("Y Rotate", 0, 90, &YrotMin, &YrotMax);
+//    customGui->addSlider("Y Rotate Max", 0, 90, );
+    customGui->addRangeSlider("Z Rotate", 0, 90, &ZrotMin, &ZrotMax);
+//    customGui->addSlider("Z Rotate Max", 0, 90, );
     
 	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
 	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
@@ -58,8 +59,10 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
 //	}
+	
     if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
-		selfBegin();
+		shouldRegenerate = true;
+//		selfBegin();
 	}
 }
 
@@ -92,9 +95,32 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     
 	for (int i=0; i<limit; i++) {
      //   Cube.ofColor(color1);
-		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
-                             ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
-                             ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
+		if(ofRandomuf() > .8){
+			list.push_back( Cube(ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
+								 ofRandom(YrandMin*1.5, YrandMax*1.5),
+								 ofRandom(ZrandMin*1.5, ZrandMax*1.5),  // 4,20 4,20, 2,20
+								 
+								 ofRandom(-140, 140), //pose
+								 ofRandom(-140, 140),
+								 ofRandom(-140, 140),
+								 
+								 ofRandom(XrotMin*1.5, XrotMax*1.5), //rot
+								 ofRandom(YrotMin*1.5, YrotMax*1.5),
+								 ofRandom(ZrotMin*1.5, ZrotMax*1.5) ) );
+		}
+		else {
+			list.push_back( Cube(ofRandom(XrandMin, XrandMax), //scale
+								 ofRandom(YrandMin, YrandMax),
+								 ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+								 
+								 ofRandom(-140, 140), //pose
+								 ofRandom(-140, 140),
+								 ofRandom(-140, 140),
+								 
+								 ofRandom(XrotMin, XrotMax), //rot
+								 ofRandom(YrotMin, YrotMax),
+								 ofRandom(ZrotMin, ZrotMax) ) );
+		}
 	}
 	
 
@@ -106,22 +132,14 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemOpenP5SpaceJunk::selfPresetLoaded(string presetPath){
-
+	shouldRegenerate = true;
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemOpenP5SpaceJunk::selfBegin(){
-    
-    list.clear();
-    
-    for (int i=0; i<limit; i++) {
-        //Cube.ofColor(color1);
-		list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
-                             ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
-                             ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
-	}
+	shouldRegenerate = true;
 }
 
 //do things like ofRotate/ofTranslate here
@@ -132,7 +150,17 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
-
+	if(shouldRegenerate){
+		shouldRegenerate = false;
+		list.clear();
+		
+		for (int i=0; i<limit; i++) {
+			//Cube.ofColor(color1);
+			list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+								 ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
+								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
+		}		
+	}
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -159,6 +187,7 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
     ofRotateY(ofRadToDeg(ang));     //Y rotation
     mat->begin();
+	ofSetColor(
     for (int i = 0;i < limit; i++) {
 		list[i].draw();
 	}
