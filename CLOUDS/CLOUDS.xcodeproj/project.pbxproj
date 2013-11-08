@@ -167,6 +167,13 @@
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
 		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
 		E7BFAE79180660AD00F38CA7 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BFAE74180660AD00F38CA7 /* Timer.cpp */; };
+		E7D1565F182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */; };
+		E7D15662182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */; };
+		E7D15665182D6AD30036E9BA /* CloudsVisualSystemPages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */; };
+		E7D15673182D6BE90036E9BA /* Gesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15668182D6BE90036E9BA /* Gesture.cpp */; };
+		E7D15674182D6BE90036E9BA /* GestureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */; };
+		E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */; };
+		E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */; };
 		E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */; };
 		E7D26E5317A2E14000652876 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
@@ -230,7 +237,6 @@
 		E7D9F67E182B03CE00AD56C1 /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */; };
 		E7D9F681182B03CE00AD56C1 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E899182B03BF00AD56C1 /* CloudsVisualSystemOcean.cpp */; };
 		E7D9F682182B03CE00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E8D9182B03BF00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */; };
-		E7D9F683182B03CE00AD56C1 /* DM10PingPongBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E8DB182B03BF00AD56C1 /* DM10PingPongBuffer.cpp */; };
 		E7D9F684182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E931182B03C000AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
 		E7D9F685182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9B1182B03C100AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp */; };
 		E7D9F686182B03CE00AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9F7182B03C200AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
@@ -243,10 +249,8 @@
 		E7D9F68D182B03CE00AD56C1 /* Tetra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC44182B03C500AD56C1 /* Tetra.cpp */; };
 		E7D9F68E182B03CE00AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE5182B03C500AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp */; };
 		E7D9F68F182B03CE00AD56C1 /* TUOrbital.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE7182B03C500AD56C1 /* TUOrbital.cpp */; };
-		E7D9F690182B03CE00AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */; };
 		E7D9F695182B03CE00AD56C1 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EE64182B03C600AD56C1 /* CloudsVisualSystemOscillations.cpp */; };
 		E7D9F696182B03CE00AD56C1 /* Page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEC4182B03C700AD56C1 /* Page.cpp */; };
-		E7D9F697182B03CE00AD56C1 /* PagesVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */; };
 		E7D9F698182B03CE00AD56C1 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF7182B03C700AD56C1 /* Brush.cpp */; };
 		E7D9F699182B03CE00AD56C1 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF9182B03C700AD56C1 /* CloudsVisualSystemPaintBrush.cpp */; };
 		E7D9F69A182B03CE00AD56C1 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEFB182B03C700AD56C1 /* Particle.cpp */; };
@@ -256,8 +260,6 @@
 		E7D9F69E182B03CE00AD56C1 /* CloudsVisualSystemReplicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EF7D182B03C800AD56C1 /* CloudsVisualSystemReplicator.cpp */; };
 		E7D9F6A1182B03CE00AD56C1 /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F08A182B03C900AD56C1 /* CloudsVisualSystemRGBDVideo.cpp */; };
 		E7D9F6A2182B03CE00AD56C1 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */; };
-		E7D9F6A3182B03CE00AD56C1 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */; };
-		E7D9F6A4182B03CE00AD56C1 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */; };
 		E7D9F6A5182B03CE00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F145182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp */; };
 		E7D9F6A6182B03CE00AD56C1 /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F1D4182B03CA00AD56C1 /* CloudsVisualSystemVectorFlow.cpp */; };
 		E7D9F6A7182B03CE00AD56C1 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F234182B03CA00AD56C1 /* CloudsVisualSystemVerletForm.cpp */; };
@@ -279,7 +281,6 @@
 		E7D9F6BC182B03CE00AD56C1 /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F360182B03CB00AD56C1 /* VoroParticle.cpp */; };
 		E7D9F6BD182B03CE00AD56C1 /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F362182B03CB00AD56C1 /* vParticle.cpp */; };
 		E7D9F6C0182B03CE00AD56C1 /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */; };
-		E7D9F6C1182B03CE00AD56C1 /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */; };
 		E7D9F6C5182B03CE00AD56C1 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F59F182B03CD00AD56C1 /* CloudsVisualSystemWorld.cpp */; };
 		E7D9F6C6182B03CE00AD56C1 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A1182B03CD00AD56C1 /* wArc.cpp */; };
 		E7D9F6C7182B03CE00AD56C1 /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A3182B03CD00AD56C1 /* wCity.cpp */; };
@@ -774,6 +775,24 @@
 		E7BFAE74180660AD00F38CA7 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		E7BFAE75180660AD00F38CA7 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		E7BFAE76180660AD00F38CA7 /* VectorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
+		E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWebHistory.cpp; sourceTree = "<group>"; };
+		E7D1565E182D6AA30036E9BA /* CloudsVisualSystemWebHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWebHistory.h; sourceTree = "<group>"; };
+		E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemScrape.cpp; sourceTree = "<group>"; };
+		E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
+		E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPages.cpp; sourceTree = "<group>"; };
+		E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPages.h; sourceTree = "<group>"; };
+		E7D15667182D6BE90036E9BA /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		E7D15668182D6BE90036E9BA /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
+		E7D15669182D6BE90036E9BA /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
+		E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
+		E7D1566B182D6BE90036E9BA /* GestureRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRenderer.h; sourceTree = "<group>"; };
+		E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererInPlace.cpp; sourceTree = "<group>"; };
+		E7D1566D182D6BE90036E9BA /* GestureRendererInPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererInPlace.h; sourceTree = "<group>"; };
+		E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererTraveling.cpp; sourceTree = "<group>"; };
+		E7D1566F182D6BE90036E9BA /* GestureRendererTraveling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererTraveling.h; sourceTree = "<group>"; };
+		E7D15670182D6BE90036E9BA /* Vec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec3f.h; sourceTree = "<group>"; };
+		E7D15671182D6BE90036E9BA /* YellowTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowTail.h; sourceTree = "<group>"; };
+		E7D15672182D6BE90036E9BA /* YtPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YtPolygon.h; sourceTree = "<group>"; };
 		E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7D26E4D17A2C52D00652876 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -957,15 +976,10 @@
 		E7D9ECE7182B03C500AD56C1 /* TUOrbital.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TUOrbital.cpp; sourceTree = "<group>"; };
 		E7D9ECE8182B03C500AD56C1 /* TUOrbital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUOrbital.h; sourceTree = "<group>"; };
 		E7D9ECE9182B03C500AD56C1 /* TUText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUText.h; sourceTree = "<group>"; };
-		E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP53DIntro.cpp; sourceTree = "<group>"; };
-		E7D9ED1A182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP53DIntro.h; sourceTree = "<group>"; };
 		E7D9EE64182B03C600AD56C1 /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
 		E7D9EE65182B03C600AD56C1 /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
-		E7D9EEC3182B03C700AD56C1 /* CloudsVisualSystemEmpty.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloudsVisualSystemEmpty.cpp.orig; sourceTree = "<group>"; };
 		E7D9EEC4182B03C700AD56C1 /* Page.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Page.cpp; sourceTree = "<group>"; };
 		E7D9EEC5182B03C700AD56C1 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
-		E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PagesVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9EEC7182B03C700AD56C1 /* PagesVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagesVisualSystem.h; sourceTree = "<group>"; };
 		E7D9EEF7182B03C700AD56C1 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
 		E7D9EEF8182B03C700AD56C1 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
 		E7D9EEF9182B03C700AD56C1 /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
@@ -985,10 +999,6 @@
 		E7D9F08B182B03C900AD56C1 /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
 		E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E7D9F13C182B03C900AD56C1 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
-		E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
-		E7D9F13E182B03C900AD56C1 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
-		E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9F140182B03C900AD56C1 /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
 		E7D9F145182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
 		E7D9F146182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
 		E7D9F1D4182B03CA00AD56C1 /* CloudsVisualSystemVectorFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVectorFlow.cpp; sourceTree = "<group>"; };
@@ -1035,8 +1045,6 @@
 		E7D9F363182B03CB00AD56C1 /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
 		E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
 		E7D9F401182B03CC00AD56C1 /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
-		E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9F403182B03CC00AD56C1 /* WebHistoryVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHistoryVisualSystem.h; sourceTree = "<group>"; };
 		E7D9F59F182B03CD00AD56C1 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		E7D9F5A0182B03CD00AD56C1 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		E7D9F5A1182B03CD00AD56C1 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
@@ -1757,7 +1765,6 @@
 				E7D9EAAF182B03C400AD56C1 /* OpenP5Spaghetti */,
 				E7D9EC15182B03C500AD56C1 /* OpenP5SpinningSolids */,
 				E7D9EC46182B03C500AD56C1 /* OpenP5TextUniverse */,
-				E7D9ECEA182B03C500AD56C1 /* OpenP53DIntro */,
 				E7D9ED1B182B03C600AD56C1 /* Oscillations */,
 				E7D9EE66182B03C600AD56C1 /* Pages */,
 				E7D9EEC8182B03C700AD56C1 /* PaintBrush */,
@@ -2637,6 +2644,25 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7D15666182D6BE90036E9BA /* yt */ = {
+			isa = PBXGroup;
+			children = (
+				E7D15667182D6BE90036E9BA /* Color.h */,
+				E7D15668182D6BE90036E9BA /* Gesture.cpp */,
+				E7D15669182D6BE90036E9BA /* Gesture.h */,
+				E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */,
+				E7D1566B182D6BE90036E9BA /* GestureRenderer.h */,
+				E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */,
+				E7D1566D182D6BE90036E9BA /* GestureRendererInPlace.h */,
+				E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */,
+				E7D1566F182D6BE90036E9BA /* GestureRendererTraveling.h */,
+				E7D15670182D6BE90036E9BA /* Vec3f.h */,
+				E7D15671182D6BE90036E9BA /* YellowTail.h */,
+				E7D15672182D6BE90036E9BA /* YtPolygon.h */,
+			);
+			path = yt;
+			sourceTree = "<group>";
+		};
 		E7D330321751D446006706ED /* ofxGenerative */ = {
 			isa = PBXGroup;
 			children = (
@@ -3374,23 +3400,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7D9ECEA182B03C500AD56C1 /* OpenP53DIntro */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9ED18182B03C600AD56C1 /* vs_src */,
-			);
-			path = OpenP53DIntro;
-			sourceTree = "<group>";
-		};
-		E7D9ED18182B03C600AD56C1 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */,
-				E7D9ED1A182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7D9ED1B182B03C600AD56C1 /* Oscillations */ = {
 			isa = PBXGroup;
 			children = (
@@ -3419,11 +3428,10 @@
 		E7D9EEC2182B03C700AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9EEC3182B03C700AD56C1 /* CloudsVisualSystemEmpty.cpp.orig */,
+				E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */,
+				E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */,
 				E7D9EEC4182B03C700AD56C1 /* Page.cpp */,
 				E7D9EEC5182B03C700AD56C1 /* Page.h */,
-				E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */,
-				E7D9EEC7182B03C700AD56C1 /* PagesVisualSystem.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3531,12 +3539,10 @@
 		E7D9F13A182B03C900AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */,
+				E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */,
 				E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */,
 				E7D9F13C182B03C900AD56C1 /* ofxMtlBoxFitting.h */,
-				E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */,
-				E7D9F13E182B03C900AD56C1 /* ScrapeCamera.h */,
-				E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */,
-				E7D9F140182B03C900AD56C1 /* ScrapeVisualSystem.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3681,8 +3687,8 @@
 			children = (
 				E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */,
 				E7D9F401182B03CC00AD56C1 /* HistoryNode.h */,
-				E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */,
-				E7D9F403182B03CC00AD56C1 /* WebHistoryVisualSystem.h */,
+				E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */,
+				E7D1565E182D6AA30036E9BA /* CloudsVisualSystemWebHistory.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3725,8 +3731,9 @@
 		E7D9F5EB182B03CE00AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9F5EC182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.cpp */,
 				E7D9F5ED182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.h */,
+				E7D9F5EC182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.cpp */,
+				E7D15666182D6BE90036E9BA /* yt */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4726,7 +4733,6 @@
 				E7D9F67E182B03CE00AD56C1 /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E7D9F681182B03CE00AD56C1 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E7D9F682182B03CE00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
-				E7D9F683182B03CE00AD56C1 /* DM10PingPongBuffer.cpp in Sources */,
 				E7D9F684182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				E7D9F685182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				E7D9F686182B03CE00AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
@@ -4739,10 +4745,8 @@
 				E7D9F68D182B03CE00AD56C1 /* Tetra.cpp in Sources */,
 				E7D9F68E182B03CE00AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
 				E7D9F68F182B03CE00AD56C1 /* TUOrbital.cpp in Sources */,
-				E7D9F690182B03CE00AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp in Sources */,
 				E7D9F695182B03CE00AD56C1 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E7D9F696182B03CE00AD56C1 /* Page.cpp in Sources */,
-				E7D9F697182B03CE00AD56C1 /* PagesVisualSystem.cpp in Sources */,
 				E7D9F698182B03CE00AD56C1 /* Brush.cpp in Sources */,
 				E7D9F699182B03CE00AD56C1 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E7D9F69A182B03CE00AD56C1 /* Particle.cpp in Sources */,
@@ -4752,8 +4756,6 @@
 				E7D9F69E182B03CE00AD56C1 /* CloudsVisualSystemReplicator.cpp in Sources */,
 				E7D9F6A1182B03CE00AD56C1 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				E7D9F6A2182B03CE00AD56C1 /* ofxMtlBoxFitting.cpp in Sources */,
-				E7D9F6A3182B03CE00AD56C1 /* ScrapeCamera.cpp in Sources */,
-				E7D9F6A4182B03CE00AD56C1 /* ScrapeVisualSystem.cpp in Sources */,
 				E7D9F6A5182B03CE00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E7D9F6A6182B03CE00AD56C1 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E7D9F6A7182B03CE00AD56C1 /* CloudsVisualSystemVerletForm.cpp in Sources */,
@@ -4775,7 +4777,6 @@
 				E7D9F6BC182B03CE00AD56C1 /* VoroParticle.cpp in Sources */,
 				E7D9F6BD182B03CE00AD56C1 /* vParticle.cpp in Sources */,
 				E7D9F6C0182B03CE00AD56C1 /* HistoryNode.cpp in Sources */,
-				E7D9F6C1182B03CE00AD56C1 /* WebHistoryVisualSystem.cpp in Sources */,
 				E7D9F6C5182B03CE00AD56C1 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E7D9F6C6182B03CE00AD56C1 /* wArc.cpp in Sources */,
 				E7D9F6C7182B03CE00AD56C1 /* wCity.cpp in Sources */,
@@ -4824,6 +4825,13 @@
 				E7D9FB86182B064900AD56C1 /* ofxMPMNode.cpp in Sources */,
 				E7D9FB87182B064900AD56C1 /* ofxMPMObstacle.cpp in Sources */,
 				E7D9FB88182B064900AD56C1 /* ofxMPMParticle.cpp in Sources */,
+				E7D1565F182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp in Sources */,
+				E7D15662182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp in Sources */,
+				E7D15665182D6AD30036E9BA /* CloudsVisualSystemPages.cpp in Sources */,
+				E7D15673182D6BE90036E9BA /* Gesture.cpp in Sources */,
+				E7D15674182D6BE90036E9BA /* GestureRenderer.cpp in Sources */,
+				E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */,
+				E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
