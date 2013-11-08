@@ -88,9 +88,11 @@ protected:
     ofImage flowImage;
     ofImage previousFlowImage;
 
+    bool bContourTracking;
+    bool bOpticalFlow;
+    
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
-    bool bContourTracking;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
     void updateCVParameters();
     ofImage thresholded;

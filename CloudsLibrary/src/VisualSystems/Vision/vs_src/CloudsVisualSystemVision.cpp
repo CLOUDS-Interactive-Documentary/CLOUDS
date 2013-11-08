@@ -37,9 +37,12 @@ void CloudsVisualSystemVision::selfSetup()
     useFarneback = true;
     drawPlayer = true;
     drawThresholded =false;
-    bContourTracking = false;
+
     videoAlpha = 128;
     windowAlpha = 128;
+    
+    bContourTracking = false;
+    bOpticalFlow = false;
     
     flowLineMultiplier = 1;
     flowColorMapRange = 50;
@@ -83,6 +86,9 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
     opticalFlowGui->addSpacer();
+    ofxUIToggle *drawFlowbtn = opticalFlowGui->addToggle("OPTICAL FLOW",bOpticalFlow);
+    opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    opticalFlowGui->addSpacer();
     opticalFlowGui->addLabel("VISUAL PARAMS");
     ofxUIButton *drawflowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
     opticalFlowGui->addSpacer();
@@ -106,7 +112,8 @@ void CloudsVisualSystemVision::selfSetupGui()
     guimap[opticalFlowGui->getName()] = opticalFlowGui;
     
     contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
-    ofxUIButton *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING", &drawFlowWindow);
+    opticalFlowGui->addSpacer();
+    ofxUIToggle *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING",bContourTracking);
     contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     contourTrackingGui->copyCanvasStyle(gui);
     contourTrackingGui->copyCanvasProperties(gui);
@@ -624,10 +631,29 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     }
     else if (name == "OPTICAL FLOW"){
         setMode(OpticalFlow);
+        
+        ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
+        vector<ofxUIToggle* >modes = modeRadio->getToggles();
+        bOpticalFlow = b->getValue();
+        
+        for(int k=0; k<modes.size();k++){
+            if(modes[k]->getName() == "OPTICAL FLOW" ){
+                modes[k]->setValue(bOpticalFlow);
+            }
+        }
     }
     else if( name == "CONTOUR TRACKING" ){
         setMode(ContourTracking);
         
+        ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
+        vector<ofxUIToggle* >modes = modeRadio->getToggles();
+        bContourTracking = b->getValue();
+        for(int k=0; k<modes.size();k++){
+          if(modes[k]->getName() == "CONTOUR TRACKING" ){
+              modes[k]->setValue(bContourTracking);
+          }
+        }
+
     }
     else if (name == "DRAW PLAYER"){
         drawPlayer = b->getValue();
