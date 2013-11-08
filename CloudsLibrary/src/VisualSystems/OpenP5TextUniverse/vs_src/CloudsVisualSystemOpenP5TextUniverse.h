@@ -96,7 +96,7 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         void rebuildText();
 
     protected:
-        ofxUISuperCanvas * customGui, * textGui;
+        ofxUISuperCanvas * customGui, * textGui, * revealGui;
         ofxUIDropDownList *ddlFiles;
         ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
         ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
@@ -106,6 +106,8 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         int selectedFilesIdx;
     
         TUOrbital * orbital;
+    
+        bool bRestart;
     
         bool bTextCloudMode;
     
