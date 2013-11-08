@@ -118,7 +118,7 @@ void TUOrbital::draw(ofCamera& cam)
     
         ofScale(1, -1, 1);
         
-        if (bRenderText) {
+        if (bRenderText && textColor.a > 0) {
             ofSetColor(textColor);
             if (bAllCaps) {
                 font.drawString(ofToUpper(text), (size * nodeScalar), 0);

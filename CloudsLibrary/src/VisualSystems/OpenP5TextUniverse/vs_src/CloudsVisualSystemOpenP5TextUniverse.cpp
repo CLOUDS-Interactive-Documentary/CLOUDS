@@ -68,63 +68,69 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     extruders.push_back(nodeAlpha);
     customGui->addSlider("NODE ALPHA", 0.0, 255.0, nodeAlpha->getPosPtr());
     
-    customGui->addSpacer();
+    ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
+	guis.push_back(customGui);
+	guimap[customGui->getName()] = customGui;
+    
+    textGui = new ofxUISuperCanvas("TEXT", gui);
+	textGui->copyCanvasStyle(gui);
+	textGui->copyCanvasProperties(gui);
+	textGui->setName("Text");
+	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    textGui->addSpacer();
     textHue = new ofx1DExtruder(0);
     textHue->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textHue);
-    customGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
+    textGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
     textSat = new ofx1DExtruder(0);
     textSat->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textSat);
-    customGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
+    textGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
     textBri = new ofx1DExtruder(0);
     textBri->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textBri);
-    customGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
+    textGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
     textAlpha = new ofx1DExtruder(0);
     textAlpha->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textAlpha);
-    customGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
-	
-    customGui->addSpacer();
-    customGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
-    customGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
-    customGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
-    customGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    textGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
     
+    textGui->addSpacer();
+    textGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
+    textGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
+    textGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
+    textGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    
+    textGui->addSpacer();
     vector<string> aligns;
     aligns.push_back("LEFT");
     aligns.push_back("CENTER");
     aligns.push_back("RIGHT");
     aligns.push_back("JUSTIFY");
-    ofxUIDropDownList *ddlAligns = customGui->addDropDownList("ALIGN", aligns);
-    //    ddlAligns->setAutoClose(true);
-    ddlAligns->setShowCurrentSelected(true);
-    //    ddlAligns->activateToggle("DISABLE");
+    textGui->addRadio("ALIGN", aligns);
     
+    textGui->addSpacer();
     vector<string> fonts;
     fonts.push_back("HELVETICA");
     fonts.push_back("MATERIA PRO");
     fonts.push_back("MUSEO 300");
     fonts.push_back("NEW MEDIA FETT");
-    ofxUIDropDownList *ddlFonts = customGui->addDropDownList("FONT", fonts);
-    //    ddlFonts->setAutoClose(true);
-    ddlFonts->setShowCurrentSelected(true);
-    //    ddlFonts->activateToggle("DISABLE");
+    textGui->addRadio("FONT", fonts);
     
-    customGui->addSpacer();
+    textGui->addSpacer();
     vector<string> fileNames;
     for (int i = 0; i < filesDir.size(); i++) {
         fileNames.push_back(filesDir.getName(i));
     }
-    ddlFiles = customGui->addDropDownList("FILES", fileNames);
+    ddlFiles = textGui->addDropDownList("FILES", fileNames);
     //    ddlFiles->setAutoClose(true);
     ddlFiles->setShowCurrentSelected(true);
     //    ddlFiles->activateToggle("DISABLE");
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+    
+    ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
+	guis.push_back(textGui);
+	guimap[customGui->getName()] = textGui;
 }
 
 //--------------------------------------------------------------
