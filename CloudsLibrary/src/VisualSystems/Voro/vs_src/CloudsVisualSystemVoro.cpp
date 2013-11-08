@@ -7,6 +7,7 @@
 //
 
 #include "CloudsVisualSystemVoro.h"
+#include "ofxObjLoader.h"
 
 // comparison routine for sort...
 bool comparisonFunction(  VoroParticle *a, VoroParticle *b ) {
@@ -230,8 +231,9 @@ void CloudsVisualSystemVoro::selfUpdate()
 				}
 			}
 			char filename[1024];
-			sprintf( filename, "meshes/getCellsPolylinescell_mesh_%05d.ply", ofGetFrameNum() );
-			combinedMesh.save( filename );
+			sprintf( filename, "meshes/cell_mesh_%05d.obj", ofGetFrameNum() );
+			//combinedMesh.save( filename );
+			ofxObjLoader::save(filename, combinedMesh);
 			
 		}
 

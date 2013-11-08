@@ -60,17 +60,19 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
     ofBackground(0);
     //ofSetFrameRate(30);
     Rand::Font.loadFont(getVisualSystemDataPath() + "Courier.ttf", 14, true, true, true);
-    
-    
+
     for (int i = 0; i < Rand::columns; i++){
-        for (int j = 0; j < Rand::rows; j ++){ //rows
-            
-            cout << "yoffset = " << yoffset << endl;
-            if(j%4==0){
-                yoffset = 100;
+        for (int j = 0; j < Rand::rows; j ++){
+
+                
+//            cout << "yoffset = " << yoffset << endl;
+            if( (j%5) == 0){
+                blockGap = 50;
+//                cout << "here  = " << j%5 <<" : "<<J<< endl;
+      
             }
             else{
-                yoffset = 50;
+                blockGap = 0;
             }
            
             /*
@@ -81,11 +83,13 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
                 xoffset = 100;
             }
              */
-            grid.push_back(Rand (i*xoffset, j*(yoffset), int(ofRandom(10000, 99999)+.5)));
+            grid.push_back(Rand (i*xoffset, (j*(yoffset)  + blockGap ), int(ofRandom(10000, 99999)+.5)));
             
             
             
         }
+        
+        cout<<"new column: "<< i<<endl;
     }
     
     for (int i = 0; i < grid.size(); i++){
@@ -145,12 +149,15 @@ void CloudsVisualSystemRandomDigits::selfDraw(){
         //          for (int k = 0; k < grid.size(); k++){
         //          grid[k].changeRandomNumber();
         //          }
+
         if(!(ofGetElapsedTimeMillis()% 300)){
-            
-            grid[ofRandom(grid.size())].changeRandomNumber();
+             grid[ofRandom(grid.size())].changeRandomNumber();
+            //grid[i].changeRandomNumber();
             
         }
+
         grid[i].drawNumbers();
+
         //sleep(150);
         ofPopMatrix();
         ofPopStyle();

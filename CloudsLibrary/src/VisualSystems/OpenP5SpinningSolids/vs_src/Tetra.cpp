@@ -28,7 +28,7 @@ Tetra::Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
 	
 	//mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     //mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-	//mesh.setMode(OF_PRIMITIVE_LINES);
+    //mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 	
 	//0
@@ -41,46 +41,46 @@ Tetra::Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
 	ofPoint d = ofPoint(edgeLength, -edgeLength, -edgeLength);
 	
 	//0
-	mesh.addColor(ofColor(0,0,20));
+	mesh.addColor(ofColor(230,20,80));
     mesh.addVertex(a);
 	//1
-	mesh.addColor(ofColor(230,20,80));
+	mesh.addColor(ofColor(100,20,160));
     mesh.addVertex(b);
 	//2
-	mesh.addColor(ofColor(100,20,160));
+	mesh.addColor(ofColor(200,20,20));
 	mesh.addVertex(c);
 	
 
 	//0
-    mesh.addColor(ofColor(200,20,20));
+    mesh.addColor(ofColor(230,20,80));
     mesh.addVertex(a);
 	//1
-	mesh.addColor(ofColor(230,20,80));
+    mesh.addColor(ofColor(220,20,110));
     mesh.addVertex(b);
 	//3
-    mesh.addColor(ofColor(100,20,220));
+    mesh.addColor(ofColor(200,20,80));
 	mesh.addVertex(d);
 
 	
 	//1
-	mesh.addColor(ofColor(230,20,80));
+    mesh.addColor(ofColor(100,20,220));
     mesh.addVertex(b);
 	//2
-	mesh.addColor(ofColor(100,20,160));
+    mesh.addColor(ofColor(150,20,180));
 	mesh.addVertex(c);
 	//3
-    mesh.addColor(ofColor(100,20,220));
+    mesh.addColor(ofColor(100,20,160));
 	mesh.addVertex(d);
 
 	
 	//0
-    mesh.addColor(ofColor(200,20,20));
+    mesh.addColor(ofColor(20,5,220));
     mesh.addVertex(a);
 	//2
-	mesh.addColor(ofColor(100,20,160));
+    mesh.addColor(ofColor(10,5,230));
 	mesh.addVertex(c);
 	//3
-    mesh.addColor(ofColor(100,20,220));
+    mesh.addColor(ofColor(5,5,230));
 	mesh.addVertex(d);
 	
 	//redundant verts
@@ -142,6 +142,10 @@ void Tetra::drawShape(){
    // ofRotateY(ofRadToDeg(rotY+=rotY));
     // ofRotateZ(rotZ);
     
+    //float scaledNoise = ofMap(rotNoise, .01, 2, .7, 1.2);
+    
+   // ofScale(scaledNoise, scaledNoise, scaledNoise);
+    //cout << "noise "<< rotNoise << endl;
     ofRotateX(rotX);
     ofRotateY(rotY);
     ofRotateZ(rotZ);

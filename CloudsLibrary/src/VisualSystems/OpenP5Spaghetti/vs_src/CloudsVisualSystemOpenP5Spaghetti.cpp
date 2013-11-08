@@ -32,6 +32,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addLabel("SIMULATION");
     customGui->addLabel("click to reset");
     customGui->addButton("REGENERATE", &shouldRegenerate);
+    customGui->addIntSlider("Preloads", 0, 50000, &numPreloads);
     customGui->addToggle("SMOOTH", &smooth);
     customGui->addToggle("GNARLY", &gnarly);
   //  customGui->addToggle("TRIANGLES", &drawTriangles);
@@ -166,6 +167,14 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
         walkers.push_back( Walker() );
         walkers[i].init(NWalkers, newColor); //  walkers[i] = *new Walker(); << wrong syntax
 
+    }
+    
+    for (int j = 0; j<numPreloads; j++){
+        
+        selfUpdate();
+        cout << "preloaded " << j << "times" << endl;
+        //selfDraw();
+        
     }
     
 }

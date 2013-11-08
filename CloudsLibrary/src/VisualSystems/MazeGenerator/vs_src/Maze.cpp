@@ -69,11 +69,11 @@ void Maze::generate()
     
     buildModel();
     
-    // create moving balls
+    // create moving balls with paths
     for (int i=0; i<ParamManager::getInstance().numberOfBalls; i++)
     {
         int sx = (int)ofRandom(60, NUM_CELLS_X-60);
-        int sy = (int)ofRandom(20, 500);
+        int sy = (int)ofRandom(10, 500);
         ofxSimpleSpline* spline = createSimpleSpline(sx, sy, 100);
         balls.push_back(new MovingBall(spline));
     }
@@ -144,16 +144,6 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     {
         balls[i]->draw();
     }
-    
-    // draw random blocks inside the maze
-//    for (int i=0; i<blocks.size(); i++)
-//    {
-//        ofPushMatrix();
-//        ofTranslate(blocks[i]+ofVec3f(0, 20, 0));
-//        ofSetColor(255);
-//        ofBox(20);
-//        ofPopMatrix();
-//    }
     
     ofPopMatrix();
 }
