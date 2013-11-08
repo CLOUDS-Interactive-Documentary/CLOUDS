@@ -109,5 +109,6 @@ class CloudsVisualSystemOpenP5SeaOfLines : public CloudsVisualSystem
         float gravity;
     
         ofVboMesh mesh;
+        ofColor lineColor;
         vector<SOLPlayer *> players;
 };

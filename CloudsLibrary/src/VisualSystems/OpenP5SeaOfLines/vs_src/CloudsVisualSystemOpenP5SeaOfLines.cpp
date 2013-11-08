@@ -151,6 +151,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSceneTransformation(){
 void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 {
     mesh.clear();
+    lineColor.setHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos());
 
     // First pass: Update player position.
     for (int i = 0; i < players.size(); i++) {
@@ -218,7 +219,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
     ofSetColor(bgColor, bgAlpha->getPos());
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
-    ofSetColor(ofColor::fromHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos()));
+    ofSetColor(lineColor);
     mesh.draw();
 }
 
