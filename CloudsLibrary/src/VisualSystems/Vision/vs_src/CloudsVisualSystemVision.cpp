@@ -52,7 +52,7 @@ void CloudsVisualSystemVision::selfSetup()
     lineWidth = 2;
     accumulationCount =0;
     skipFrames = 0;
-    
+    contourLifetimeColorRange = 110;
     windowWidth = 500;
     windowHeight = 500;
     
@@ -70,7 +70,7 @@ void CloudsVisualSystemVision::selfSetup()
     frameIsNew = false;
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();
-    screenRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
+
     
 }
 
@@ -241,6 +241,7 @@ void CloudsVisualSystemVision::updateCVParameters(){
     tracker.setPersistence(cvPersistance);
     // an object can move up to 50 pixels per frame
     tracker.setMaximumDistance(cvMaxDistance);
+
     
 }
 
@@ -317,6 +318,7 @@ void CloudsVisualSystemVision::selfSetupSystemGui()
     sysGui->addLabel("BACKGROUND PARAM");
     sysGui->addSlider("LEARNING TIME", 0,100,&learningTime);
     sysGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
+    sysGui->addSlider("LIFETIME COLOUR RANGE", 0,255  ,&contourLifetimeColorRange);
     
     sysGui->addLabel("TRACKER PARAM");
     sysGui->addSlider("PERSISTANCE", 0,100,&cvPersistance);
@@ -408,11 +410,13 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
-    
-    
-    
     ofSetColor(128,128);
+
+
+
     
+    
+
     if(drawPlayer){
         player->draw(0,0,ofGetWidth(),ofGetHeight());
     }
@@ -440,9 +444,12 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofTexture tex = player->getTextureReference();
         ofPushMatrix();
         ofPushStyle();
-        ofSetColor(200);
+//        ofSetColor(200);
+        ofEnableAlphaBlending();
+        ofSetColor(0, 0, 0,5);
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
         ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
-        tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
+//        tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
         ofSetLineWidth(flowLineWidth);
         flowMesh.draw();
         ofPopStyle();
@@ -462,9 +469,14 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofSetColor(255, 0, 0);
         ofRect(0,0, mapRed, 10);
         ofSetColor(0, 255, 0);
-        ofRect(0,0, mapGreen, 10);
+        ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
-        ofRect(0, 0,  mapBlue, 10);
+        ofRect(0, 20,  mapBlue, 10);
+    }
+    if(ofGetKeyPressed()){
+        ofEnableAlphaBlending();
+        ofSetColor(0, 0, 0,5);
+        ofRect(0, 0, ofGetWidth(), ofGetHeight());
     }
 }
 
@@ -654,7 +666,7 @@ void CloudsVisualSystemVision::loadCurrentMovie(){
     else{
         cout<<"Not Playing"<<endl;
     }
-    videoRect = ofRectangle(0,0,player->getWidth(),player->getHeight());
+    
     cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
     updateCVParameters();
     populateOpticalFlowRegions();
@@ -673,7 +685,6 @@ void  CloudsVisualSystemVision::loadMovieAtIndex(int index){
     else{
         cout<<"Not Playing"<<endl;
     }
-    videoRect = ofRectangle(0,0,player->getWidth(),player->getHeight());
     //    videoRect.alignTo(screenRect);
     cout<<"Player dimensions (new) :"<< player->getWidth()<<" , "<<player->getHeight() <<endl;
     updateCVParameters();

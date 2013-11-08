@@ -80,7 +80,7 @@ protected:
     vector<ofVec2f> flowMotion;
 
     float colorRange;
-    
+    float contourLifetimeColorRange;
     ofImage accumulation;
     ofImage diff;
 
@@ -104,20 +104,22 @@ protected:
     void updateOpticalFlow();
     void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
+
     ofVboMesh flowMesh;
-    list<ofImage> accumVector;
+    float windowWidth;
+    float windowHeight;
+    
     bool drawPlayer;
     bool drawThresholded;
     bool drawDiff;
     bool flowFirstFrame;
 
     ofVec2f averageFlow;
-    ofFbo fbo;
     int mouseX;
     int mouseY;
     
-    float windowWidth;
-    float windowHeight;
+
+    
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
     
@@ -138,9 +140,9 @@ protected:
     float maxFeatures;
     float qualityLevel;
     float minDistance;
-    //    OPTFLOW_FARNEBACK_GAUSSIAN
     float flowLineMultiplier;
-    //CONTUR PARAMETERS
+   
+    //CONTOUR PARAMETERS
     float cvPersistance;
     float cvMaxDistance;
     float cvMinAreaRadius;
@@ -153,8 +155,6 @@ protected:
     float learningTime;
     float thresholdValue;
     
-    ofRectangle screenRect;
-    ofRectangle videoRect;
     
     
 };

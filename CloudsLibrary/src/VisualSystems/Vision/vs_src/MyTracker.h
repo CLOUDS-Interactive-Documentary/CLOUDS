@@ -26,7 +26,7 @@ public:
 :startedDying(0) {
 	}
     ofColor color;
-    
+    void setLifetimeColorRange(float newRange);
 	void setup(const cv::Rect& track);
 	void update(const cv::Rect& track);
 	void kill();
@@ -36,6 +36,7 @@ public:
     cv::Rect getBoundingBox();
     ofVec2f getTangentAtPoint(int history);
     
+    float lifetimeColorRange;
     cv::Rect  boundingBox;
 
 };
