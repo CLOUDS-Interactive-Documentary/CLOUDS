@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsFCPParser.h"
 #include "ofxUI.h"
+#include "ofxTween.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -28,8 +29,10 @@ class testApp : public ofBaseApp{
     ofVideoPlayer player;
     ofImage img;
     float threshold;
+    float thresholdLower;
+    float thresholdUpper;
     ofVec2f samplePoint;
-
+    ofxEasingSine easing;
     float hueWeight;
     float satWeight;
     float brightWeight;

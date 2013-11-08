@@ -25,7 +25,9 @@ void testApp::setup(){
     gui = new ofxUISuperCanvas("COLOUR SELECTOR", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addSpacer();
-    gui->addSlider("THRESHOLD", 0.0, 1. 0, &threshold);
+//    gui->addSlider("THRESHOLD", 0.0, 1.0, &threshold);
+    gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &thresholdLower);
+    gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &thresholdUpper);
     gui->addSlider("HUE THRESHOLD", 0.0, 1.0, &hueThreshold);
     gui->addSlider("SATURATION THRESHOLD", 0.0, 1.0, &satThreshold);
     gui->addSlider("BRIGTHNESS THRESHOLD", 0.0, 1.0, &brightThreshold);
@@ -104,6 +106,7 @@ void testApp::mousePressed(int x, int y, int button){
     if( x<player.getWidth() && y< player.getHeight() ){
         samplePoint.set(mouseX, mouseY);
         checkColorDistance();
+        cout<<"color value at point: "<<player.getPixelsRef().getColor(samplePoint.x, samplePoint.y)<<endl;
     }
     
 }
@@ -139,13 +142,18 @@ void testApp::checkColorDistance(){
             ofVec3f weights = ofVec3f(hueWeight,satWeight,brightWeight);
 //            sample.distance(current)
 
-            if( weightedDistance(sample, current, weights) > threshold){
+            float weightedD = weightedDistance(sample, current, weights);
+            
+            
+            if(  weightedD> thresholdLower && weightedD<thresholdUpper){
                 if(ofGetKeyPressed('1')){
                     cout<<"distance : "<<weightedDistance(sample, current, weights)<<endl;
                 }
-
+                float alpha = ofxTween::map(weightedD, thresholdLower, thresholdUpper, 0, 255, false,easing,ofxTween::easeOut);
+//                alpha = map(weightedD,thresholdUpper,)
                 ofFloatColor col;
                 col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
+                col.set(alpha);
                 img.setColor(i, j, col);
 
             }
