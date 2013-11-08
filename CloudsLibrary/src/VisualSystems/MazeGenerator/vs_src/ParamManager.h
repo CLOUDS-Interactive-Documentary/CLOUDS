@@ -20,10 +20,12 @@ public:
 		return instance;
 	}
     
+    ofFloatColor fogColor;
     ofFloatColor groundColor;
     ofFloatColor wallColor;
     ofFloatColor ballColor;
     
+    ofFloatColor getFogColor();
     ofColor getGroundColor();
     ofColor getWallColor();
     ofColor getBallColor();
@@ -42,6 +44,10 @@ public:
     bool groundCam;
     float groundCamSpeed;
     float groundCamLookAt;
+    
+    float fogDensity;
+    float fogStart;
+    float fogEnd;
     
 private:
     ParamManager();

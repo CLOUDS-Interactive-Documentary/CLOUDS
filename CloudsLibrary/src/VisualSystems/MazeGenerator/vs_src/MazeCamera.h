@@ -27,6 +27,8 @@ public:
     
     void setVelocity(ofVec3f vel);
     
+    void mouseMove(ofVec2f p);
+    
 private:
     ofVec3f vel;
     ofVec3f acc;
@@ -35,6 +37,7 @@ private:
     
     ofxSimpleSpline* path;
     float pathT;
+    float xRot, yRot, zRot;
     
     void applyLimits(ofVec3f &p);
 };
