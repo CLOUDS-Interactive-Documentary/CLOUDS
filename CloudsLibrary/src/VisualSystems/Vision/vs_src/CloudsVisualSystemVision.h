@@ -61,6 +61,7 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     void getTextures();
 
+    ofxUISuperCanvas *opticalFlowGui;
 protected:
 
     //video player stuff        
@@ -113,6 +114,8 @@ protected:
     bool drawThresholded;
     bool drawDiff;
     bool flowFirstFrame;
+    float videoAlpha;
+    bool drawFlowWindow;
 
     ofVec2f averageFlow;
     int mouseX;
@@ -141,7 +144,8 @@ protected:
     float qualityLevel;
     float minDistance;
     float flowLineMultiplier;
-   
+    float windowAlpha;
+    
     //CONTOUR PARAMETERS
     float cvPersistance;
     float cvMaxDistance;

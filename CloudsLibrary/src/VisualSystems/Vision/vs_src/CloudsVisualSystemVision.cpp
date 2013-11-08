@@ -37,6 +37,8 @@ void CloudsVisualSystemVision::selfSetup()
     useFarneback = true;
     drawPlayer = true;
     drawThresholded =false;
+    videoAlpha = 128;
+    windowAlpha = 128;
     
     flowLineMultiplier = 1;
     flowColorMapRange = 50;
@@ -70,7 +72,7 @@ void CloudsVisualSystemVision::selfSetup()
     frameIsNew = false;
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();
-
+    
     
 }
 
@@ -145,12 +147,12 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
         for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
             if(window.inside(flowMesh.getVertex(i))){
                 ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
-
+                
                 pos *= flowLineMultiplier;
                 pos.x += flowMesh.getVertex(i).x;
                 pos.y += flowMesh.getVertex(i).y;
                 flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
-
+                
                 float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
                 
                 float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
@@ -241,7 +243,7 @@ void CloudsVisualSystemVision::updateCVParameters(){
     tracker.setPersistence(cvPersistance);
     // an object can move up to 50 pixels per frame
     tracker.setMaximumDistance(cvMaxDistance);
-
+    
     
 }
 
@@ -285,7 +287,7 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
             else if(modes[k]->getName() == "DRAW THRESHOLDED"){
                 drawThresholded = true;
                 drawPlayer = false;
-                drawDiff = false;   
+                drawDiff = false;
             }
             
         }
@@ -380,11 +382,14 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addRadio("MODE", modes);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
+    ofxUIButton *drawflowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
+    rdrGui->addSlider("VIDEO ALPHA", 0, 255, &videoAlpha);
+    rdrGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -410,13 +415,9 @@ void CloudsVisualSystemVision::selfUpdate(){
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
-    ofSetColor(128,128);
-
-
-
     
+    ofSetColor(128,videoAlpha);
     
-
     if(drawPlayer){
         player->draw(0,0,ofGetWidth(),ofGetHeight());
     }
@@ -440,20 +441,31 @@ void CloudsVisualSystemVision::selfDrawBackground()
         
     }
     else if(currentMode == OpticalFlow){
-        
         ofTexture tex = player->getTextureReference();
-        ofPushMatrix();
-        ofPushStyle();
-//        ofSetColor(200);
-        ofEnableAlphaBlending();
-        ofSetColor(0, 0, 0,5);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
-        ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
-//        tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
-        ofSetLineWidth(flowLineWidth);
-        flowMesh.draw();
-        ofPopStyle();
-        ofPopMatrix();
+        if(drawFlowWindow){
+            
+            ofPushMatrix();
+            ofPushStyle();
+            ofSetColor(200);
+            ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
+            tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
+            ofSetLineWidth(flowLineWidth);
+            flowMesh.draw();
+            ofPopStyle();
+            ofPopMatrix();
+        }
+        else{
+            ofPushMatrix();
+            ofPushStyle();
+            ofSetColor(200);
+            ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
+            tex.draw(0,0);
+            ofSetLineWidth(flowLineWidth);
+            flowMesh.draw();
+            ofPopStyle();
+            ofPopMatrix();
+        }
+        
     }
     else if(currentMode == HeatMap){
         
@@ -472,11 +484,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
-    }
-    if(ofGetKeyPressed()){
-        ofEnableAlphaBlending();
-        ofSetColor(0, 0, 0,5);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
     }
 }
 
@@ -621,6 +628,9 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if( name == "CLEAR DIFF"){
         b->setValue(false);
         clearAccumulation();
+    }
+    else if(name == "FLOW WINDOW"){
+        drawFlowWindow = b->getValue();
     }
     /*
      else if(name == "NEXT VIDEO" && b->getValue()){
