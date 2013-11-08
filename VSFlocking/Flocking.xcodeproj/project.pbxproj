@@ -110,8 +110,6 @@
 		E759EDE8181D723600FA1E90 /* posShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EDDB181D723600FA1E90 /* posShader.vert */; };
 		E759EDE9181D723600FA1E90 /* renderShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EDDC181D723600FA1E90 /* renderShader.frag */; };
 		E759EDEA181D723600FA1E90 /* renderShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EDDD181D723600FA1E90 /* renderShader.vert */; };
-		E759EDEB181D723600FA1E90 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EDDE181D723600FA1E90 /* rgbdcombined.frag */; };
-		E759EDEC181D723600FA1E90 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EDDF181D723600FA1E90 /* rgbdcombined.vert */; };
 		E759EDED181D723600FA1E90 /* velShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E759EDE0181D723600FA1E90 /* velShader.frag */; };
 		E759EDEE181D723600FA1E90 /* velShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E759EDE1181D723600FA1E90 /* velShader.vert */; };
 		E759EDEF181D723600FA1E90 /* CloudsVisualSystemFlocking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EDE3181D723600FA1E90 /* CloudsVisualSystemFlocking.cpp */; };
@@ -418,16 +416,14 @@
 		E72FF13617E6A2E70007780D /* CloudsVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystem.cpp; sourceTree = "<group>"; };
 		E72FF13717E6A2E70007780D /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E72FF13817E6A2E70007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
-		E759EDD8181D723600FA1E90 /* accShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.frag; sourceTree = "<group>"; };
-		E759EDD9181D723600FA1E90 /* accShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.vert; sourceTree = "<group>"; };
-		E759EDDA181D723600FA1E90 /* posShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.frag; sourceTree = "<group>"; };
-		E759EDDB181D723600FA1E90 /* posShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.vert; sourceTree = "<group>"; };
-		E759EDDC181D723600FA1E90 /* renderShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.frag; sourceTree = "<group>"; };
-		E759EDDD181D723600FA1E90 /* renderShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.vert; sourceTree = "<group>"; };
-		E759EDDE181D723600FA1E90 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
-		E759EDDF181D723600FA1E90 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
-		E759EDE0181D723600FA1E90 /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
-		E759EDE1181D723600FA1E90 /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
+		E759EDD8181D723600FA1E90 /* accShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = accShader.frag; sourceTree = "<group>"; };
+		E759EDD9181D723600FA1E90 /* accShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = accShader.vert; sourceTree = "<group>"; };
+		E759EDDA181D723600FA1E90 /* posShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = posShader.frag; sourceTree = "<group>"; };
+		E759EDDB181D723600FA1E90 /* posShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = posShader.vert; sourceTree = "<group>"; };
+		E759EDDC181D723600FA1E90 /* renderShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = renderShader.frag; sourceTree = "<group>"; };
+		E759EDDD181D723600FA1E90 /* renderShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = renderShader.vert; sourceTree = "<group>"; };
+		E759EDE0181D723600FA1E90 /* velShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = velShader.frag; sourceTree = "<group>"; };
+		E759EDE1181D723600FA1E90 /* velShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = velShader.vert; sourceTree = "<group>"; };
 		E759EDE3181D723600FA1E90 /* CloudsVisualSystemFlocking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlocking.cpp; sourceTree = "<group>"; };
 		E759EDE4181D723600FA1E90 /* CloudsVisualSystemFlocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlocking.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -1170,8 +1166,6 @@
 				E759EDDB181D723600FA1E90 /* posShader.vert */,
 				E759EDDC181D723600FA1E90 /* renderShader.frag */,
 				E759EDDD181D723600FA1E90 /* renderShader.vert */,
-				E759EDDE181D723600FA1E90 /* rgbdcombined.frag */,
-				E759EDDF181D723600FA1E90 /* rgbdcombined.vert */,
 				E759EDE0181D723600FA1E90 /* velShader.frag */,
 				E759EDE1181D723600FA1E90 /* velShader.vert */,
 			);
@@ -1354,8 +1348,6 @@
 				E759EDE8181D723600FA1E90 /* posShader.vert in Sources */,
 				E759EDE9181D723600FA1E90 /* renderShader.frag in Sources */,
 				E759EDEA181D723600FA1E90 /* renderShader.vert in Sources */,
-				E759EDEB181D723600FA1E90 /* rgbdcombined.frag in Sources */,
-				E759EDEC181D723600FA1E90 /* rgbdcombined.vert in Sources */,
 				E759EDED181D723600FA1E90 /* velShader.frag in Sources */,
 				E759EDEE181D723600FA1E90 /* velShader.vert in Sources */,
 				E759EDEF181D723600FA1E90 /* CloudsVisualSystemFlocking.cpp in Sources */,

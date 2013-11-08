@@ -145,8 +145,6 @@ void Tetra::drawShape(){
     ofRotateX(rotX);
     ofRotateY(rotY);
     ofRotateZ(rotZ);
-    
-    
   
 /* //figure out the distance b/w mouse and object
     float dx = posX-ofGetMouseX();
