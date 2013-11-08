@@ -15,7 +15,7 @@ MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
     rotate(ParamManager::getInstance().cameraAngle, ofVec3f(1, 0, 0));
     setFov(60);
     
-    yRot = xRot = 0;
+    xRot = yRot = zRot = 0;
     
     vel = ofVec3f(0, 0, 1);
 }
@@ -24,6 +24,17 @@ void MazeCamera::setPath(ofxSimpleSpline *p)
 {
     path = p;
     pathT = 0;
+    xRot = yRot = zRot = 0;
+}
+
+void MazeCamera::setFlyOver(float x)
+{
+    setPosition(x, ParamManager::getInstance().cameraHeight, 100);
+    
+    // face mouse centered
+    mouseMove(ofVec2f(ofGetMouseX(), ofGetMouseY()));
+    update();
+    
 }
 
 void MazeCamera::update()
@@ -40,7 +51,7 @@ void MazeCamera::update()
         ofVec3f lookVec = ofVec3f(0, 0, 10);
         lookVec.rotate(xRot, ofVec3f(1, 0, 0));
         lookAt(getPosition() + lookVec);
-        rotate(zRot, ofVec3f(0, 1, 0));//lookVec.normalize());
+        rotate(yRot, ofVec3f(0, 1, 0));
         move(vel*ofGetLastFrameTime());
     }
 }
@@ -63,7 +74,7 @@ void MazeCamera::setVelocity(ofVec3f v)
 void MazeCamera::mouseMove(ofVec2f p)
 {
     if (ParamManager::getInstance().groundCam) {
-        float coeff = (float)-180/ofGetWidth();
+        float coeff = (float)-90/ofGetWidth();
         p.x -= ofGetWidth()/2;
         yRot = p.x*coeff;
         
@@ -74,7 +85,7 @@ void MazeCamera::mouseMove(ofVec2f p)
     else {
         float coeff = (float)-45/ofGetWidth();
         p.x -= ofGetWidth()/2;
-        zRot = coeff*p.x;
+        yRot = coeff*p.x;
         
         coeff = (float)45/ofGetHeight();
         p.y -= ofGetHeight()/2;

@@ -95,7 +95,12 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 
 void CloudsVisualSystemMazeGenerator::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    if (e.getName() == "GROUND CAM") {
+        if (!ParamManager::getInstance().groundCam)
+        {
+            mazeCam->setFlyOver(maze[0]->getWidth()/2);
+        }        
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -142,7 +147,10 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemMazeGenerator::selfPresetLoaded(string presetPath)
 {
-
+    if (!ParamManager::getInstance().groundCam)
+    {
+        mazeCam->setFlyOver(maze[0]->getWidth()/2);
+    }
 }
 
 // selfBegin is called when the system is ready to be shown

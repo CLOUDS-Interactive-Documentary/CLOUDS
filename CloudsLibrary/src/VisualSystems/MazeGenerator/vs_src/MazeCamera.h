@@ -21,6 +21,7 @@ public:
     MazeCamera(float x, float y, float z);
     
     void setPath(ofxSimpleSpline *p);
+    void setFlyOver(float x);
     
     void update();
     void draw();
