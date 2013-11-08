@@ -1,0 +1,12 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Presets</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>578.000000000</XPosition>
+    <YPosition>434.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DefaultGray</Name>
+    <Value>1</Value>
+</Widget>

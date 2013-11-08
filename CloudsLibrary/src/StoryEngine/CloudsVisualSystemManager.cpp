@@ -49,6 +49,7 @@
 #include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemDrawnLine.h"
 #include "CloudsVisualSystemGameOfLife.h"
+#include "CloudsVisualSystemYellowTail.h"
 
 //EXAMPLES
 #include "CloudsVisualSystemExampleVectorMath.h"
@@ -144,7 +145,7 @@ struct Mapping {
 	//TODO: rename class
 //	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
 	{ "World", &fCreate<CloudsVisualSystemWorld> }
-	//YellowTail { "", &fCreate<CloudsVisualSystemYellowTail> },
+	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> },
 };
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
