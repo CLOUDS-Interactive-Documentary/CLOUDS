@@ -73,6 +73,29 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
     
+    revealGui = new ofxUISuperCanvas("REVEAL", gui);
+	revealGui->copyCanvasStyle(gui);
+	revealGui->copyCanvasProperties(gui);
+	revealGui->setName("Reveal");
+	revealGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    revealGui->addSpacer();
+    revealGui->addToggle("RESTART", &bRestart);
+    revealGui->addRangeSlider("FADE TIME", 100, 5000, &TUOrbital::minFadeTime, &TUOrbital::maxFadeTime);
+    revealGui->addRangeSlider("LINE TIME", 100, 5000, &TUOrbital::minLineTime, &TUOrbital::maxLineTime);
+    
+    revealGui->addSpacer();
+    vector<string> modes;
+    modes.push_back("INSTANT");
+    modes.push_back("LEVELS");
+    modes.push_back("ORDERED");
+    modes.push_back("RANDOM");
+    revealGui->addRadio("MODE", modes);
+    
+    ofAddListener(revealGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
+	guis.push_back(revealGui);
+	guimap[customGui->getName()] = revealGui;
+    
     textGui = new ofxUISuperCanvas("TEXT", gui);
 	textGui->copyCanvasStyle(gui);
 	textGui->copyCanvasProperties(gui);
@@ -196,6 +219,31 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
         nodeAlpha->setPosAndHome(nodeAlpha->getPos());
     }
     
+    else if (e.widget->getName() == "INSTANT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::revealMode = REVEAL_INSTANT;
+            bRestart = true;
+        }
+    }
+    else if (e.widget->getName() == "LEVELS") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::revealMode = REVEAL_LEVELS;
+            bRestart = true;
+        }
+    }
+    else if (e.widget->getName() == "ORDERED") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::revealMode = REVEAL_ORDERED;
+            bRestart = true;
+        }
+    }
+    else if (e.widget->getName() == "RANDOM") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::revealMode = REVEAL_RANDOM;
+            bRestart = true;
+        }
+    }
+    
     else if (e.widget->getName() == "LINE LENGTH") {
         TUOrbital::font.setLineLength(TUOrbital::lineLength);
     }
@@ -286,6 +334,8 @@ void CloudsVisualSystemOpenP5TextUniverse::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
 {
     // Set defaults.
+    bRestart = true;
+    
     currSpin = 0.0f;
     spinSpeed = 0.5f;
     mouseSpinX = mouseSpinY = 0.0f;
@@ -327,6 +377,12 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
 {
+    if (bRestart) {
+        orbital->restart(0);
+        
+        bRestart = false;
+    }
+    
     // Update the extruders parameters.
     TUOrbital::textColor.setHsb(textHue->getPos(), textSat->getPos(), textBri->getPos(), textAlpha->getPos());
     TUOrbital::lineColor.setHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos());
@@ -460,6 +516,7 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
         delete orbital;
     }
     
+    TUOrbital::numOrbitals = 0;
     orbital = new TUOrbital(30, 1000);
     
     if (bTextCloudMode) {

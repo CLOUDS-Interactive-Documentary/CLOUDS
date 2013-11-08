@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000000000</XPosition>
-    <YPosition>804.000000000</YPosition>
+    <XPosition>2333.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>INSIDE_THE_CLOUD</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -48,5 +48,5 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OrderedReveal</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
