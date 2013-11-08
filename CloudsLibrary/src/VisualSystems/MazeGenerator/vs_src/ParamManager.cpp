@@ -24,11 +24,20 @@ ParamManager::ParamManager()
     groundCam = false;
     groundCamSpeed = 0;
     groundCamLookAt = 0.5;
+    
+    fogDensity = 0.1;
+    fogStart = 1;
+    fogEnd = 5;
 }
 
 ParamManager::~ParamManager()
 {
     
+}
+
+ofFloatColor ParamManager::getFogColor()
+{
+    return ofColor::fromHsb(fogColor.r, fogColor.g, fogColor.b);
 }
 
 ofColor ParamManager::getGroundColor()
