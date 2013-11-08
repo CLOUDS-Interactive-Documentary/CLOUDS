@@ -122,10 +122,18 @@ void TUOrbital::draw(ofCamera& cam)
             ofSetColor(textColor);
             if (bAllCaps) {
                 font.drawString(ofToUpper(text), (size * nodeScalar), 0);
+            float x;
+            if (font.getAlignment() == FTGL_ALIGN_RIGHT) {
+                x = -1 * (size * nodeScalar + font.getLineLength());
+            }
+            else if (font.getAlignment() == FTGL_ALIGN_CENTER) {
+                x = -0.5 * font.getLineLength();
             }
             else {
-                font.drawString(text, (size * nodeScalar), 0);
+                x = size * nodeScalar;
             }
+            float y = (size * nodeScalar) * 0.5;
+            font.drawString((bAllCaps? ofToUpper(text):text), x, y);
         }
         
         if (nodeColor.a > 0) {
