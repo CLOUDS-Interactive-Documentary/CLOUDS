@@ -58,7 +58,7 @@
 #include "CloudsVisualSystemVision.h"
 
 //OPENP5
-#include "CloudsVisualSystemOpenP53DIntro.h"
+//#include "CloudsVisualSystemOpenP53DIntro.h"
 #include "CloudsVisualSystemOpenP5DrawingMachine10.h"
 #include "CloudsVisualSystemOpenP5Hackpact.h"
 #include "CloudsVisualSystemOpenP5Machine.h"
@@ -113,7 +113,7 @@ struct Mapping {
 	{ "Metaballs", &fCreate<CloudsVisualSystem> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
-	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
+//	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
 	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
 	{ "OpenP5Machine", &fCreate<CloudsVisualSystemOpenP5Machine> },
