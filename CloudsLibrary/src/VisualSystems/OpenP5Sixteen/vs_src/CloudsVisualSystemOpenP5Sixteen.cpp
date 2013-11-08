@@ -49,8 +49,9 @@ void CloudsVisualSystemOpenP5Sixteen::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Sixteen::selfSetup()
 {
-    width = 255;//ofGetWidth();
-    height = 255;//ofGetHeight();
+//    width = ofGetWidth();
+//    height = ofGetHeight();
+    width = height = 255;
     pixels = new unsigned char[width * height * 4];
     tex.allocate(width, height, GL_RGBA);
 }
@@ -95,15 +96,7 @@ void CloudsVisualSystemOpenP5Sixteen::selfUpdate()
         setColor(x, y, ofColor(c, c, c * 2));
     }
     
-    //    for(x=0;++x<w*h;){
-    //        X=x%w+n();
-    //        Y=x/w+n();
-    //
-    //        c=50+(get(X,Y)>>8&w);
-    //        set(X,Y,color(c,c,c*2));
-    //    }
-    
-    cout << ofGetFrameRate() << endl;
+//    cout << ofGetFrameRate() << endl;
 }
 
 //--------------------------------------------------------------
@@ -121,7 +114,12 @@ void CloudsVisualSystemOpenP5Sixteen::selfDrawDebug(){
 void CloudsVisualSystemOpenP5Sixteen::selfDrawBackground()
 {
     tex.loadData(pixels, width, height, GL_RGBA);
-    tex.draw(0, 0);
+    
+	ofRectangle textureRect(0,0,width,height);
+	ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
+	textureRect.alignTo(screenRect, OF_ALIGN_HORZ_CENTER, OF_ALIGN_VERT_CENTER);
+	
+	tex.draw(textureRect);
 }
 
 // this is called when your system is no longer drawing.

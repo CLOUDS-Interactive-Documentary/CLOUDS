@@ -39,6 +39,10 @@ public:
     
     float heightRandom;
     
+    bool groundCam;
+    float groundCamSpeed;
+    float groundCamLookAt;
+    
 private:
     ParamManager();
     ~ParamManager();

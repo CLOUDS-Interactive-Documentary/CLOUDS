@@ -12,6 +12,7 @@
 int TUOrbital::billboardType = 0;
 
 ofxFTGLSimpleLayout TUOrbital::font;
+ofxFTGLTextAlignment TUOrbital::textAlign = FTGL_ALIGN_LEFT;
 string TUOrbital::fontName = "Helvetica.ttf";
 float TUOrbital::lineLength = 150.0f;
 float TUOrbital::fontSize = 14;
@@ -96,7 +97,7 @@ void TUOrbital::draw(ofCamera& cam)
     ofPushMatrix();
     {
         for (int i = 0; i < children.size(); i++) {
-            if (lineWidth > 0) {
+            if (lineWidth > 0 && lineColor.a > 0) {
                 ofSetColor(lineColor);
                 ofLine(pos, children[i]->pos);
             }
@@ -117,7 +118,7 @@ void TUOrbital::draw(ofCamera& cam)
     
         ofScale(1, -1, 1);
         
-        if (bRenderText) {
+        if (bRenderText && textColor.a > 0) {
             ofSetColor(textColor);
             if (bAllCaps) {
                 font.drawString(ofToUpper(text), (size * nodeScalar), 0);
@@ -127,8 +128,10 @@ void TUOrbital::draw(ofCamera& cam)
             }
         }
         
-        ofSetColor(nodeColor);
-        ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
+        if (nodeColor.a > 0) {
+            ofSetColor(nodeColor);
+            ofRect(-(size * nodeScalar) / 2.0f, -(size * nodeScalar) / 2.0f, (size * nodeScalar), (size * nodeScalar));
+        }
         
         ofxBillboardEnd();
     }

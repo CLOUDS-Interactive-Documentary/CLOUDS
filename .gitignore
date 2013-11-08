@@ -76,6 +76,7 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/models/
 
 /CloudsLibrary/src/VisualSystems/3DModelVisualSystem/bin/data/models/
+/CloudsLibrary/src/VisualSystems/3DModelVisualSystem/bin/data/cameraPaths
 
 /CloudsData/SpeakerTemplate.xml
 
@@ -110,3 +111,27 @@ CloudsMovieDirectory_remote.txt
 /VSVision/bin/data/GUI/data/GreenPoint_bike.m4v
 
 /CloudsLibrary/src/VisualSystems/VisionSystem/bin/data/oldVideos/
+
+/CloudsLibrary/src/VisualSystems/OpenP5SpinningSolids/bin/data/Courier.ttf
+
+/CloudsLibrary/src/VisualSystems/OpenP5SpinningSolids/bin/data/frabk.ttf
+
+/CloudsLibrary/src/VisualSystems/OpenP5SpinningSolids/bin/data/verdana14.ttf
+
+/CloudsLibrary/src/VisualSystems/OpenP5SpinningSolids/bin/data/NewMedia.ttf
+
+/VSOpenP5SpinningSolids/bin/data/GUI/Courier.ttf
+
+/VSOpenP5SpinningSolids/bin/data/GUI/PrestigeEliteStd.otf
+
+/VSOpenP5TextUniverse/bin/data/suicide1.txt
+
+/VSModelLoader/bin/data/cameraPathsGui_position on path.xml
+
+/CloudsLibrary/src/VisualSystems/OpenP5TextUniverse/bin/textFiles/
+
+/CloudsLibrary/src/VisualSystems/OpenP5TextUniverse/bin/Helvetica.ttf
+
+/CloudsLibrary/src/VisualSystems/OpenP5TextUniverse/bin/MateriaPro_Light.otf
+
+/CloudsLibrary/src/VisualSystems/OpenP5TextUniverse/bin/data/Presets/Gunslinger/

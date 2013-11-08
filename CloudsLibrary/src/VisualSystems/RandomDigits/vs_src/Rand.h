@@ -8,7 +8,7 @@
 
 #pragma once 
 #include "ofMain.h"
-//#include "ofxFTGL.h"
+#include "ofxTween.h"
 
 class Rand {
     
@@ -17,17 +17,30 @@ public:
     int ID; 
     float posX;
     float posY;
-    float posZ;
-    ofVec3f axis;
-    float angle;
-    ofMesh mesh;
+    int randomNumber;
     
+    static int columns; //columns of numbers
+    static int rows; //rows of numbers
+    
+    //vector <int> randomNumbers;
+    //vector <int> noisyNumbers;
+ 
     Rand(float posX, float posY, float posZ);
     void setup(); 
     void noiseRotate(float _x, float _y);
+    void generateNoisyNumber();
+    void generateRandomNumber();
+    void changeRandomNumber();
+    void counter();
+    void increaseRandomNumber();
     void drawNumbers();
-    float lerp(float _a, float _b, float _f);
-    
+    void update();
+
+    int index =0;
+    float previousRandomNumber;
+    float nextRandomNumber;
+    float currentTime;
+    float previousTime;
     // text
     //FTGL
     //string text;
@@ -51,6 +64,10 @@ protected:
     
     float previousMouseX = 0;
     float previousMouseY = 0;
+    
+    int tweenRandom;
+    
+    int i = 0;
 
     
 };

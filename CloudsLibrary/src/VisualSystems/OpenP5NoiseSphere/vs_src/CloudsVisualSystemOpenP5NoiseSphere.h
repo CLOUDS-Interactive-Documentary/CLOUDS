@@ -27,7 +27,7 @@ class Hair {
 		theta = asin(z/radius);
 	}
 	
-	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha) {
+	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha, float hairScale) {
 		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
 		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
@@ -36,6 +36,7 @@ class Hair {
 		float x = radius * cos(theta) * cos(phi);
 		float y = radius * cos(theta) * sin(phi);
 		float z = radius * sin(theta);
+		
 		//mouse x & y
 //		float msx= screenX(x, y, z);
 //		float msy= screenY(x, y, z);
@@ -44,22 +45,16 @@ class Hair {
 		float yo = radius * cos(thetaff) * sin(phff);
 		float zo = radius * sin(thetaff);
 		
-		float xb = xo * largo;
-		float yb = yo * largo;
-		float zb = zo * largo;
+		float xb = xo * largo * hairScale;
+		float yb = yo * largo * hairScale;
+		float zb = zo * largo * hairScale;
       
 
-		mesh.addColor(ofFloatColor::white*solidSphereAlpha);
+		mesh.addColor(ofFloatColor::black);
 		mesh.addVertex( ofVec3f(x,y,z) );
 		mesh.addColor(ofFloatColor::white);
 		mesh.addVertex( ofVec3f(xb,yb,zb) );
 		
-//		beginShape(LINES);
-//		stroke(0);
-//		vertex(x, y, z);
-//		stroke(200, 150);
-//		vertex(xb, yb, zb);
-//		endShape();
 	}
 };
 
@@ -163,6 +158,7 @@ protected:
     float noisePosition;
 	float noiseSpeed;
 	float noiseScale;
+	float furLength;
 	
     //inner sphere
     

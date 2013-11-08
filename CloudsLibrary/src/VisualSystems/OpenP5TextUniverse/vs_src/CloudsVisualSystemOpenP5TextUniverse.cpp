@@ -20,6 +20,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
@@ -67,65 +68,92 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     extruders.push_back(nodeAlpha);
     customGui->addSlider("NODE ALPHA", 0.0, 255.0, nodeAlpha->getPosPtr());
     
-    customGui->addSpacer();
+    ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
+	guis.push_back(customGui);
+	guimap[customGui->getName()] = customGui;
+    
+    textGui = new ofxUISuperCanvas("TEXT", gui);
+	textGui->copyCanvasStyle(gui);
+	textGui->copyCanvasProperties(gui);
+	textGui->setName("Text");
+	textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    textGui->addSpacer();
     textHue = new ofx1DExtruder(0);
     textHue->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textHue);
-    customGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
+    textGui->addSlider("TEXT HUE", 0.0, 255.0, textHue->getPosPtr());
     textSat = new ofx1DExtruder(0);
     textSat->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textSat);
-    customGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
+    textGui->addSlider("TEXT SAT", 0.0, 255.0, textSat->getPosPtr());
     textBri = new ofx1DExtruder(0);
     textBri->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textBri);
-    customGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
+    textGui->addSlider("TEXT BRI", 0.0, 255.0, textBri->getPosPtr());
     textAlpha = new ofx1DExtruder(0);
     textAlpha->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(textAlpha);
-    customGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
-	
-    customGui->addSpacer();
-    customGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
-    customGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
-    customGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
-    customGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    textGui->addSlider("TEXT ALPHA", 0.0, 255.0, textAlpha->getPosPtr());
+    
+    textGui->addSpacer();
+    textGui->addToggle("ALL CAPS", &TUOrbital::bAllCaps);
+    textGui->addSlider("LINE LENGTH", 50, 500, &TUOrbital::lineLength);
+    textGui->addSlider("FONT SIZE", 6, 128, &TUOrbital::fontSize);
+    textGui->addSlider("FONT DEPTH", 0, 100, &TUOrbital::fontDepth);
+    
+    textGui->addSpacer();
+    vector<string> aligns;
+    aligns.push_back("LEFT");
+    aligns.push_back("CENTER");
+    aligns.push_back("RIGHT");
+    aligns.push_back("JUSTIFY");
+    textGui->addRadio("ALIGN", aligns);
+    
+    textGui->addSpacer();
     vector<string> fonts;
     fonts.push_back("HELVETICA");
     fonts.push_back("MATERIA PRO");
     fonts.push_back("MUSEO 300");
     fonts.push_back("NEW MEDIA FETT");
-    ofxUIDropDownList *ddlFonts = customGui->addDropDownList("FONT", fonts);
-    //    ddlFonts->setAutoClose(true);
-    ddlFonts->setShowCurrentSelected(true);
-    //    ddlFonts->activateToggle("DISABLE");
+    textGui->addRadio("FONT", fonts);
     
-    customGui->addSpacer();
+    textGui->addSpacer();
     vector<string> fileNames;
     for (int i = 0; i < filesDir.size(); i++) {
         fileNames.push_back(filesDir.getName(i));
     }
-    ofxUIDropDownList *ddlFiles = customGui->addDropDownList("FILES", fileNames);
+    ddlFiles = textGui->addDropDownList("FILES", fileNames);
     //    ddlFiles->setAutoClose(true);
     ddlFiles->setShowCurrentSelected(true);
     //    ddlFiles->activateToggle("DISABLE");
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+    
+    ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent);
+	guis.push_back(textGui);
+	guimap[customGui->getName()] = textGui;
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "BILLBOARD SCREEN") {
-        TUOrbital::billboardType = 0;
+    if (e.widget->getName() == "TEXT CLOUD") {
+        rebuildText();
+    }
+    
+    else if (e.widget->getName() == "BILLBOARD SCREEN") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 0;
+        }
     }
     else if (e.widget->getName() == "BILLBOARD NODES") {
-        TUOrbital::billboardType = 1;
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 1;
+        }
     }
     else if (e.widget->getName() == "BILLBOARD ORIGIN") {
-        TUOrbital::billboardType = 2;
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::billboardType = 2;
+        }
     }
     
     else if (e.widget->getName() == "TEXT HUE") {
@@ -173,28 +201,65 @@ void CloudsVisualSystemOpenP5TextUniverse::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "FONT SIZE" || e.widget->getName() == "FONT DEPTH") {
         rebuildFont();
     }
-    else if (e.widget->getName() == "HELVETICA") {
-        TUOrbital::fontName = "Helvetica.ttf";
-        rebuildFont();
+    
+    else if (e.widget->getName() == "LEFT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_LEFT;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
     }
-    else if (e.widget->getName() == "MATERIA PRO") {
-        TUOrbital::fontName = "MateriaPro_Light.otf";
-        rebuildFont();
+    else if (e.widget->getName() == "CENTER") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_CENTER;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
     }
-    else if (e.widget->getName() == "MUSEO 300") {
-        TUOrbital::fontName = "Museo-300.otf";
-        rebuildFont();
+    else if (e.widget->getName() == "RIGHT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_RIGHT;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
     }
-    else if (e.widget->getName() == "NEW MEDIA FETT") {
-        TUOrbital::fontName = "GUI/NewMedia Fett.ttf";    
-        rebuildFont();
+    else if (e.widget->getName() == "JUSTIFY") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::textAlign = FTGL_ALIGN_JUSTIFY;
+            TUOrbital::font.setAlignment(TUOrbital::textAlign);
+        }
     }
     
-    else if (e.widget->getName() == "FILES") {
-        vector<int> selectedIndeces = ((ofxUIDropDownList *)e.widget)->getSelectedIndeces();
-        if (selectedIndeces.size() > 0) {
-            selectedFilesIdx = selectedIndeces[0];
-            rebuildText();
+    else if (e.widget->getName() == "HELVETICA") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
+            rebuildFont();
+        }
+    }
+    else if (e.widget->getName() == "MATERIA PRO") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf";
+            rebuildFont();
+        }
+    }
+    else if (e.widget->getName() == "MUSEO 300") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Museo-300.otf";
+            rebuildFont();
+        }
+    }
+    else if (e.widget->getName() == "NEW MEDIA FETT") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            TUOrbital::fontName = getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf";
+            rebuildFont();
+        }
+    }
+    
+    else {
+        // Let's look through the files dropdown for a match.
+        for (int i = 0; i < ddlFiles->getToggles().size(); i++) {
+            if (e.widget == ddlFiles->getToggles()[i] && ((ofxUIToggle *)e.widget)->getValue()) {
+                selectedFilesIdx = i;
+                rebuildText();
+                break;
+            }
         }
     }
 }
@@ -223,12 +288,16 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     currSpin = 0.0f;
     spinSpeed = 0.5f;
     fogDensity = 0.025f;
+    bTextCloudMode = false;
     
-    filesDir.listDir("textFiles");
+    orbital = NULL;
+
+    filesDir.listDir(getVisualSystemDataPath() + "textFiles");
     filesDir.sort();
     selectedFilesIdx = 0;
     rebuildText();
     
+    TUOrbital::fontName = getVisualSystemDataPath() + "fonts/Helvetica.ttf";
     rebuildFont();
 }
 
@@ -323,8 +392,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfEnd(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfExit()
 {
-	delete text;
-    delete orbital;
+    if (orbital != NULL) {
+        delete orbital;
+    }
 }
 
 //events are called when the system is active
@@ -357,50 +427,99 @@ void CloudsVisualSystemOpenP5TextUniverse::rebuildFont()
 {
     TUOrbital::font.loadFont(TUOrbital::fontName, (int)TUOrbital::fontSize, TUOrbital::fontDepth, true);
     TUOrbital::font.setLineLength(TUOrbital::lineLength);
+    TUOrbital::font.setAlignment(TUOrbital::textAlign);
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::rebuildText()
 {
     // Load the contents of the text file.
+    TUText * text = NULL;
     ofBuffer buffer = ofBufferFromFile(filesDir.getPath(selectedFilesIdx));
     if (buffer.size()) {
         text = new TUText(buffer.getText());
 //        text->print();
     }
+    else {
+        ofLogError("OpenP5TextUniverse") << "Could not open text file " << filesDir.getPath(selectedFilesIdx);
+        return;
+    }
     
     // Build the node network.
-    orbital = new TUOrbital(30, 1000);
-    orbital->text = text->paragraphs[0].sentences[0].str;
-    orbital->bRenderText = true;
+    if (orbital != NULL) {
+        delete orbital;
+    }
     
-    for (int i = 0; i < text->paragraphs.size(); i++) {
-        if (text->paragraphs[i].sentences.size() > 1) {
-            // Add a "splitter" node for the paragraph.
-            orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].str));
-            orbital->children.back()->bRenderText = false;
-            
+    orbital = new TUOrbital(30, 1000);
+    
+    if (bTextCloudMode) {
+        // Render a single level of words.
+        orbital->bRenderText = false;
+        
+        for (int i = 0; i < text->paragraphs.size(); i++) {
             for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
-                orbital->children.back()->children.back()->bRenderText = false;
-                
                 for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back()->children.back()->children.back()->bRenderText = true;
-                }
-            }
-        }
-        else {
-            // Skip the paragraph node.
-            for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
-                orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
-                orbital->children.back()->bRenderText = false;
-                
-                for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
-                    orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
-                    orbital->children.back()->children.back()->bRenderText = true;
+                    orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
+                    orbital->children.back()->bRenderText = true;
                 }
             }
         }
     }
+    else {
+        // Render nodes for paragraphs, sentences, and words.
+        orbital->text = text->paragraphs[0].sentences[0].str;
+        orbital->bRenderText = true;
+        
+        for (int i = 0; i < text->paragraphs.size(); i++) {
+            if (text->paragraphs[i].sentences.size() > 1) {
+                // Add a "splitter" node for the paragraph.
+                orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].str));
+                orbital->children.back()->bRenderText = false;
+                
+                for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                    if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                        // Add a "splitter" node for the sentence.
+                        orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].str));
+                        orbital->children.back()->children.back()->bRenderText = false;
+                    
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.back()->children.push_back(new TUOrbital(orbital->children.back()->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->children.back()->bRenderText = true;
+                        }
+                    }
+                    else {
+                        // Skip the sentence node.
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->bRenderText = true;
+                        }
+                    }
+                }
+            }
+            else {
+                // Skip the paragraph node.
+                for (int j = 0; j < text->paragraphs[i].sentences.size(); j++) {
+                    if (text->paragraphs[i].sentences[j].words.size() > 1) {
+                        // Add a "splitter" node for the sentence.
+                        orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].str));
+                        orbital->children.back()->bRenderText = false;
+                        
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.back()->children.push_back(new TUOrbital(orbital->children.back(), text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->children.back()->bRenderText = true;
+                        }
+                    }
+                    else {
+                        // Skip the sentence node.
+                        for (int k = 0; k < text->paragraphs[i].sentences[j].words.size(); k++) {
+                            orbital->children.push_back(new TUOrbital(orbital, text->paragraphs[i].sentences[j].words[k]));
+                            orbital->children.back()->bRenderText = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    delete text;
 }

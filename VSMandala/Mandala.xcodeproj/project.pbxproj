@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		502DD87E18202B39009096FD /* noduleShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 502DD87D18202B39009096FD /* noduleShader.vert */; };
 		502DD88018202B44009096FD /* noduleShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 502DD87F18202B44009096FD /* noduleShader.frag */; };
+		5043F69318289EF200764574 /* simple.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5043F69118289EF200764574 /* simple.frag */; };
+		5043F69418289EF200764574 /* simple.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5043F69218289EF200764574 /* simple.vert */; };
 		5055DB9E181B06DA00761DA0 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */; };
 		5055DBBC181B06EE00761DA0 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */; };
 		5055DBC4181B076F00761DA0 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5055DBC2181B076F00761DA0 /* glm.c */; };
@@ -150,6 +152,8 @@
 /* Begin PBXFileReference section */
 		502DD87D18202B39009096FD /* noduleShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.vert; sourceTree = "<group>"; };
 		502DD87F18202B44009096FD /* noduleShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		5043F69118289EF200764574 /* simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simple.frag; sourceTree = "<group>"; };
+		5043F69218289EF200764574 /* simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simple.vert; sourceTree = "<group>"; };
 		5055DB99181B06DA00761DA0 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
 		5055DB9A181B06DA00761DA0 /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		5055DBB7181B06EE00761DA0 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
@@ -1733,6 +1737,8 @@
 		5055DF98181ED75200761DA0 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				5043F69118289EF200764574 /* simple.frag */,
+				5043F69218289EF200764574 /* simple.vert */,
 				50E89B3D182560A300BFD711 /* ribbonShader.frag */,
 				50E89B3E182560A300BFD711 /* ribbonShader.vert */,
 				502DD87D18202B39009096FD /* noduleShader.vert */,
@@ -2561,6 +2567,8 @@
 				50EAB55F1824049600BD3C98 /* surfaceShader.vert in Sources */,
 				50E89B3F182560A300BFD711 /* ribbonShader.frag in Sources */,
 				50E89B40182560A300BFD711 /* ribbonShader.vert in Sources */,
+				5043F69318289EF200764574 /* simple.frag in Sources */,
+				5043F69418289EF200764574 /* simple.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

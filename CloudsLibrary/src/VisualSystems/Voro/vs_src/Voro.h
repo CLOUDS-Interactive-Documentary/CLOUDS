@@ -18,7 +18,7 @@
 float           getCellRadius(voro::voronoicell &_con);
 ofPoint         getCellCentroid(voro::voronoicell &_con, ofPoint _pos = ofPoint(0,0,0));
 vector<ofPoint> getCellVerteces(voro::voronoicell &_con, ofPoint _pos = ofPoint(0,0,0));
-ofMesh          getCellMesh(voro::voronoicell &_con, ofPoint _pos = ofPoint(0,0,0));
+void          getCellMesh(voro::voronoicell &_con, ofPoint _pos, ofMesh& mesh);
 
 //  container wrappers
 //
@@ -29,7 +29,7 @@ void            addCellsSeeds(voro::container &_con, vector<ofPoint*> &_pnts, bo
 void            addCellsSeeds(voro::container &_con, ofPoint *_pnts, int _nSize, bool _checkInside = false);
 
 vector<float>   getCellsRadius(voro::container &_con);
-vector<ofMesh>  getCellsFromContainer(voro::container &_con, float _wallsThikness = 0.0);
+void  getCellsFromContainer(voro::container &_con, float _wallsThickness, vector<ofMesh>& meshes);
 vector<ofPoint> getCellsPositions(voro::container &_con);
 vector<ofPoint> getCellsCentroids(voro::container &_con);
 vector< ofPolyline > getCellsPolylines(voro::container &_con);

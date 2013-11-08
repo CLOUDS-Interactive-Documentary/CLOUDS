@@ -9,7 +9,7 @@ class CloudsVisualSystemPreset {
 	CloudsVisualSystemPreset();
 	string presetName;
 	string systemName;
-	CloudsVisualSystem* system;
+	ofPtr<CloudsVisualSystem> system;
 	
 	float introDuration;
 	float outroDuration;

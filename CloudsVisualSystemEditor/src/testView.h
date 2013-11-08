@@ -26,7 +26,7 @@
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
-	CloudsVisualSystem* currentVisualSystem;
+	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset* selectedPreset;
 	vector<CloudsClip> associatedClips;
 	vector<CloudsClip> suppressedClips;
