@@ -8,13 +8,104 @@
 
 #include "Tetra.h"
 
-Tetra:: Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
+Tetra::Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
     
     edgeLength = _edgeLength;
     posX = _posX;
     posY = _posY;
     posZ = _posZ;
-    ID; 
+	
+	
+	speed = .005;
+    rotNoise = 0;
+    
+    period = 120; //period of oscillation
+    
+    previousMouseX = 0;
+    previousMouseY = 0;
+	
+	mesh.clear();
+	
+	//mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    //mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+	//mesh.setMode(OF_PRIMITIVE_LINES);
+	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+	
+	//0
+	ofPoint a = ofPoint(edgeLength, edgeLength, edgeLength);
+	//1
+	ofPoint b = ofPoint(-edgeLength, -edgeLength, edgeLength);
+	//2
+	ofPoint c = ofPoint(-edgeLength, edgeLength, -edgeLength);
+	//3
+	ofPoint d = ofPoint(edgeLength, -edgeLength, -edgeLength);
+	
+	//0
+	mesh.addColor(ofColor(0,0,20));
+    mesh.addVertex(a);
+	//1
+	mesh.addColor(ofColor(230,20,80));
+    mesh.addVertex(b);
+	//2
+	mesh.addColor(ofColor(100,20,160));
+	mesh.addVertex(c);
+	
+
+	//0
+    mesh.addColor(ofColor(200,20,20));
+    mesh.addVertex(a);
+	//1
+	mesh.addColor(ofColor(230,20,80));
+    mesh.addVertex(b);
+	//3
+    mesh.addColor(ofColor(100,20,220));
+	mesh.addVertex(d);
+
+	
+	//1
+	mesh.addColor(ofColor(230,20,80));
+    mesh.addVertex(b);
+	//2
+	mesh.addColor(ofColor(100,20,160));
+	mesh.addVertex(c);
+	//3
+    mesh.addColor(ofColor(100,20,220));
+	mesh.addVertex(d);
+
+	
+	//0
+    mesh.addColor(ofColor(200,20,20));
+    mesh.addVertex(a);
+	//2
+	mesh.addColor(ofColor(100,20,160));
+	mesh.addVertex(c);
+	//3
+    mesh.addColor(ofColor(100,20,220));
+	mesh.addVertex(d);
+	
+	//redundant verts
+//    mesh.addColor(ofColor(20,5,220));
+//    mesh.addVertex(ofPoint(edgeLength, edgeLength, edgeLength));
+//	
+//    mesh.addColor(ofColor(5,5,230));
+//    mesh.addVertex(ofPoint(-edgeLength, -edgeLength, edgeLength));
+	
+//    mesh.addIndex(0);
+//    mesh.addIndex(1);
+//    mesh.addIndex(2);
+	
+//    mesh.addIndex(1);
+//    mesh.addIndex(2);
+//    mesh.addIndex(3);
+//	
+//    mesh.addIndex(0);
+//    mesh.addIndex(2);
+//    mesh.addIndex(1);
+//
+//	mesh.addIndex(0);
+//    mesh.addIndex(2);
+//    mesh.addIndex(3);
+
 }
 
 void Tetra::drawShape(){
@@ -72,29 +163,7 @@ void Tetra::drawShape(){
         ry = (ry*0.9)+(ryp*0.1);
     }
 */
-     mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-    //mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-   // mesh.setMode(OF_PRIMITIVE_LINES);
 
-    mesh.addColor(ofColor(200,20,20));
-    mesh.addVertex(ofPoint(edgeLength, edgeLength, edgeLength));
-    mesh.addColor(ofColor(230,20,80));
-    mesh.addVertex(ofPoint(-edgeLength, -edgeLength, edgeLength));
-    mesh.addColor(ofColor(100,20,160));
-    mesh.addVertex(ofPoint(-edgeLength, edgeLength, -edgeLength));
-    mesh.addColor(ofColor(100,20,220));
-    mesh.addVertex(ofPoint(edgeLength, -edgeLength, -edgeLength));
-    mesh.addColor(ofColor(20,5,220));
-    mesh.addVertex(ofPoint(edgeLength, edgeLength, edgeLength));
-    mesh.addColor(ofColor(5,5,230));
-    mesh.addVertex(ofPoint(-edgeLength, -edgeLength, edgeLength));
-    mesh.addIndex(0);
-    mesh.addIndex(1);
-    mesh.addIndex(2);
-    mesh.addIndex(3);
-    mesh.addIndex(4);
-    mesh.addIndex(5);
-    mesh.addIndex(6);
     
     mesh.draw();
     

@@ -17,7 +17,6 @@ public:
     float posX;
     float posY;
     float posZ;
-    float edgeLength;
     ofVec3f axis;
     float angle;
     ofMesh mesh;
@@ -29,16 +28,18 @@ public:
     float lerp(float _a, float _b, float _f); 
     
 protected:
+	
+    float edgeLength;
     
     float rx;
     float ry;
-    float speed = .02;
+    float speed ;
     float rotNoise; 
     
-    float period = 120; //period of oscillation
+    float period ; //period of oscillation
     
-    float previousMouseX = 0;
-    float previousMouseY = 0;
+    float previousMouseX ;
+    float previousMouseY ;
 
     
 };

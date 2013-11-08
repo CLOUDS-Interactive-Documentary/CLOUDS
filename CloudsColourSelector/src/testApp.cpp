@@ -2,20 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	
 	ofSetVerticalSync(true);
-    /*
-     if(ofDirectory("../../../CloudsData/").exists()){
-     parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-     parser.setup("../../../CloudsData/fcpxml/");
-     parser.parseClusterMap("../../../CloudsData/gephi/CLOUDS_test_5_26_13.SVG");
-     }
-     else{
-     cout << "SETTING UP IN DATA DIRECTORY" << endl;
-     parser.parseLinks("clouds_link_db.xml");
-     parser.setup("xml");
-     }
-     */
-    if(! player.loadMovie("Zach_Fucking_boring.mov")){
+	
+    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);

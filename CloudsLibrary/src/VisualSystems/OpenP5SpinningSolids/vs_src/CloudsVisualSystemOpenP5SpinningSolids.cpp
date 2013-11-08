@@ -64,7 +64,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
     
     for (int i = 0; i < num-1; i++){
         for (int j = 0; j < num-1; j ++){ //rows
-    grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
+			grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
           //  grid.back().ID = IDnumber + 1;
         }
     }
