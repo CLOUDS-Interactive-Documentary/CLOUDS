@@ -19,6 +19,7 @@ void MyTracker::setup(const cv::Rect& track) {
 	cur = toOf(track).getCenter();
 	smooth = cur;
     boundingBox = cv::Rect(track.x,track.y,track.width,track.height);
+    lifetimeColorRange = 110;
 }
 
 void MyTracker::update(const cv::Rect& track) {
@@ -49,10 +50,9 @@ void MyTracker::draw(float lineWidth) {
 		size = ofMap(ofGetElapsedTimef() - startedDying, 0, dyingTime, size, 0, true);
 	}
 	ofNoFill();
-    float scaledHue = ofMap(getLifeTime() ,0, 110, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+    float scaledHue = ofMap(getLifeTime() ,0, lifetimeColorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
     ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
     ofSetColor(magnitudeColor);
-//	ofSetColor(129,192,87);
     ofSetLineWidth((int)lineWidth);
     ofRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
 	all.draw();
@@ -69,6 +69,9 @@ int MyTracker::getLifeTime(){
     return all.getVertices().size();
 }
 
+void MyTracker::setLifetimeColorRange(float newRange){
+    lifetimeColorRange = newRange;
+}
 
 
 ofVec2f MyTracker::getTangentAtPoint(int history){

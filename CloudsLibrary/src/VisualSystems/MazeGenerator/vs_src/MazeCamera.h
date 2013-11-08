@@ -21,11 +21,14 @@ public:
     MazeCamera(float x, float y, float z);
     
     void setPath(ofxSimpleSpline *p);
+    void setFlyOver(float x);
     
     void update();
     void draw();
     
     void setVelocity(ofVec3f vel);
+    
+    void mouseMove(ofVec2f p);
     
 private:
     ofVec3f vel;
@@ -35,6 +38,7 @@ private:
     
     ofxSimpleSpline* path;
     float pathT;
+    float xRot, yRot, zRot;
     
     void applyLimits(ofVec3f &p);
 };

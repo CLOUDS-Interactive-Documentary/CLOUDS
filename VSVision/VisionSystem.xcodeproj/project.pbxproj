@@ -984,12 +984,12 @@
 		184CB842181EC0E200B14025 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */,
 				184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */,
-				184CB845181EC0E200B14025 /* FlowField.cpp */,
+				184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */,
 				184CB846181EC0E200B14025 /* FlowField.h */,
-				184CB847181EC0E200B14025 /* MyTracker.cpp */,
+				184CB845181EC0E200B14025 /* FlowField.cpp */,
 				184CB848181EC0E200B14025 /* MyTracker.h */,
+				184CB847181EC0E200B14025 /* MyTracker.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

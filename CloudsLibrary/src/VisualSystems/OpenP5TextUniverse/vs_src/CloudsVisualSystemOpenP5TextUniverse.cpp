@@ -22,6 +22,7 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+    customGui->addSlider("MOUSE SPEED", 0, 5, &mouseSpeed);
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
     vector<string> radioBillboard;
@@ -287,6 +288,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     // Set defaults.
     currSpin = 0.0f;
     spinSpeed = 0.5f;
+    mouseSpinX = mouseSpinY = 0.0f;
+    mouseSpeed = 1.0f;
     fogDensity = 0.025f;
     bTextCloudMode = false;
     
@@ -331,6 +334,9 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
     
     currSpin += spinSpeed;
     
+    mouseSpinX += mouseDir.x * mouseSpeed;
+    mouseSpinY += mouseDir.y * mouseSpeed;
+    
     orbital->update(0, 0, 0);
 }
 
@@ -360,6 +366,8 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
     ofPushMatrix();
     {
         ofRotate(currSpin, 0, 1, 0);
+        ofRotateX(mouseSpinX);
+        ofRotateY(mouseSpinY);
         ofSetLineWidth(TUOrbital::lineWidth);
         
         orbital->draw(getCameraRef());
@@ -380,7 +388,6 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDrawBackground(){
 
 	//turn the background refresh off
 	//bClearBackground = false;
-	
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
@@ -410,8 +417,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& da
 
 }
 
-void CloudsVisualSystemOpenP5TextUniverse::selfMouseMoved(ofMouseEventArgs& data){
-	
+//--------------------------------------------------------------
+void CloudsVisualSystemOpenP5TextUniverse::selfMouseMoved(ofMouseEventArgs& data)
+{
+    mouseDir.y = ofMap(data.x, 0, ofGetWidth(), -1, 1);
+    mouseDir.x = ofMap(data.y, 0, ofGetHeight(), -1, 1);
 }
 
 void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& data){
