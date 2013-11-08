@@ -37,6 +37,7 @@ void CloudsVisualSystemVision::selfSetup()
     useFarneback = true;
     drawPlayer = true;
     drawThresholded =false;
+    bContourTracking = false;
     videoAlpha = 128;
     windowAlpha = 128;
     
@@ -73,6 +74,67 @@ void CloudsVisualSystemVision::selfSetup()
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();
     
+    
+}
+
+void CloudsVisualSystemVision::selfSetupGui()
+{
+    opticalFlowGui = new ofxUISuperCanvas("OPTICAL FLOW", gui);
+    opticalFlowGui->copyCanvasStyle(gui);
+    opticalFlowGui->copyCanvasProperties(gui);
+    opticalFlowGui->addSpacer();
+    opticalFlowGui->addLabel("VISUAL PARAMS");
+    ofxUIButton *drawflowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
+    opticalFlowGui->addSpacer();
+    opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    opticalFlowGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
+    opticalFlowGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
+    opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 3, &flowLineMultiplier);
+    opticalFlowGui->addSlider("FLOW COLOUR MAP RANGE", 10, 200, &flowColorMapRange);
+    opticalFlowGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
+    opticalFlowGui->addSpacer();
+    opticalFlowGui->addLabel("OPTICAL FLOW PARAMS");
+    opticalFlowGui->addSlider("PYRSCALE", .5, 0.9, &pyrScale);
+    opticalFlowGui->addSlider("LEVELS",  1, 8, &levels);
+    opticalFlowGui->addSlider("WINSIZE",  4, 64, &winsize);
+    opticalFlowGui->addSlider("ITERATIONS",1, 8, &iterations);
+    opticalFlowGui->addSlider("POLYN",5, 7, &polyN);
+    opticalFlowGui->addSlider("POLYSIGMA", 1.1, 1.1, &polySigma);
+    ofAddListener(opticalFlowGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
+	
+    guis.push_back(opticalFlowGui);
+    guimap[opticalFlowGui->getName()] = opticalFlowGui;
+    
+    contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
+    ofxUIButton *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING", &drawFlowWindow);
+    contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    contourTrackingGui->copyCanvasStyle(gui);
+    contourTrackingGui->copyCanvasProperties(gui);
+    contourTrackingGui->addSpacer();
+    contourTrackingGui->addLabel("VISUAL PARAMS");
+    contourTrackingGui->addSpacer();
+    contourTrackingGui->addSlider("BOX LINE WIDTH", 1, 10, &lineWidth);
+    contourTrackingGui->addLabel("BACKGROUND PARAM");
+    contourTrackingGui->addSlider("LEARNING TIME", 0,100,&learningTime);
+    contourTrackingGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
+    contourTrackingGui->addSlider("LIFETIME COLOUR RANGE", 0,255  ,&contourLifetimeColorRange);
+    
+    contourTrackingGui->addLabel("TRACKER PARAM");
+    contourTrackingGui->addSpacer();
+    contourTrackingGui->addSlider("PERSISTANCE", 0,100,&cvPersistance);
+    contourTrackingGui->addSlider("MAXDISTANCE", 0,100  ,&cvMaxDistance);
+    
+    contourTrackingGui->addLabel("CONTOUR FINDER PARAMS");
+    contourTrackingGui->addSpacer();
+    contourTrackingGui->addSlider("MIN AREA RADIUS", 0,50,&cvMinAreaRadius);
+    contourTrackingGui->addSlider("MAX AREA RADIUS",0,255,&cvMaxAreaRadius);
+    contourTrackingGui->addSlider("THRESHOLD VALUE", 0, 255, &cvThresholdValue);
+    contourTrackingGui->addButton("UPDATE CV PARAMS", false);
+    
+    ofAddListener(contourTrackingGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
+	
+    guis.push_back(contourTrackingGui);
+    guimap[opticalFlowGui->getName()] = contourTrackingGui;
     
 }
 
@@ -315,45 +377,6 @@ void CloudsVisualSystemVision::selfExit()
 void CloudsVisualSystemVision::selfSetupSystemGui()
 {
     
-    sysGui->addLabel("CONTOUR TRACKING VIS PARAMS");
-    sysGui->addSlider("BOX LINE WIDTH", 1, 10, &lineWidth);
-    sysGui->addLabel("BACKGROUND PARAM");
-    sysGui->addSlider("LEARNING TIME", 0,100,&learningTime);
-    sysGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
-    sysGui->addSlider("LIFETIME COLOUR RANGE", 0,255  ,&contourLifetimeColorRange);
-    
-    sysGui->addLabel("TRACKER PARAM");
-    sysGui->addSlider("PERSISTANCE", 0,100,&cvPersistance);
-    sysGui->addSlider("MAXDISTANCE", 0,100  ,&cvMaxDistance);
-    
-    sysGui->addLabel("CONTOUR FINDER PARAMS");
-    sysGui->addSlider("MIN AREA RADIUS", 0,50,&cvMinAreaRadius);
-    sysGui->addSlider("MAX AREA RADIUS",0,255,&cvMaxAreaRadius);
-    sysGui->addSlider("THRESHOLD VALUE", 0, 255, &cvThresholdValue);
-    sysGui->addButton("UPDATE CV PARAMS", false);
-    sysGui->addSpacer();
-    sysGui->addLabel("OPTICAL FLOW VISUAL PARAMS");
-    sysGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
-    sysGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
-    sysGui->addSlider("FLOW LINE LENGTH", 0.5, 3, &flowLineMultiplier);
-    sysGui->addSlider("FLOW COLOUR MAP RANGE", 10, 200, &flowColorMapRange);
-    sysGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
-    sysGui->addSpacer();
-    sysGui->addLabel("OPTICAL FLOW PARAMS");
-    sysGui->addSlider("PYRSCALE", .5, 0.9, &pyrScale);
-    sysGui->addSlider("LEVELS",  1, 8, &levels);
-    sysGui->addSlider("WINSIZE",  4, 64, &winsize);
-    sysGui->addSlider("ITERATIONS",1, 8, &iterations);
-    sysGui->addSlider("POLYN",5, 7, &polyN);
-    sysGui->addSlider("POLYSIGMA", 1.1, 1.1, &polySigma);
-    
-    
-    
-    
-    sysGui->autoSizeToFitWidgets();
-    
-    ofAddListener(sysGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
-    
 }
 
 void CloudsVisualSystemVision::selfSetupRenderGui()
@@ -446,7 +469,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200);
+            ofSetColor(200,windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
             ofSetLineWidth(flowLineWidth);
@@ -457,7 +480,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         else{
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200);
+            ofSetColor(200,windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.draw(0,0);
             ofSetLineWidth(flowLineWidth);
@@ -549,11 +572,6 @@ void CloudsVisualSystemVision::selfMouseReleased(ofMouseEventArgs& data)
     
 }
 
-void CloudsVisualSystemVision::selfSetupGui()
-{
-    
-}
-
 void CloudsVisualSystemVision::setMode(CVMode mode){
     
     switch (mode) {
@@ -632,25 +650,8 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "FLOW WINDOW"){
         drawFlowWindow = b->getValue();
     }
-    /*
-     else if(name == "NEXT VIDEO" && b->getValue()){
-     b->setValue(false);
-     thresholded.clear();
-     background.reset();
-     movieIndex = (movieIndex + 1) % movieStrings.size();
-     loadCurrentMovie();
-     }
-     else if(name == "PREVIOUS VIDEO"  && b->getValue()){
-     b->setValue(false);
-     thresholded.clear();
-     background.reset();
-     updateImagesForNewVideo();
-     resetFlowField();
-     
-     movieIndex = (movieIndex-1 + movieStrings.size()) % movieStrings.size();
-     loadCurrentMovie();
-     }
-     */
+
+
     if (kind == OFX_UI_WIDGET_TOGGLE){
         thresholded.clear();
         background.reset();

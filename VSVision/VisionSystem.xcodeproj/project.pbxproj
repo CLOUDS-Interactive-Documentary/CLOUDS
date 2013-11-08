@@ -27,12 +27,9 @@
 		184CB77D181EBB2700B14025 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB704181EBB2600B14025 /* ofxCvHaarFinder.cpp */; };
 		184CB77E181EBB2700B14025 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB706181EBB2600B14025 /* ofxCvImage.cpp */; };
 		184CB77F181EBB2700B14025 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB709181EBB2600B14025 /* ofxCvShortImage.cpp */; };
-
 		184CB84D181EC0E200B14025 /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */; };
 		184CB84E181EC0E200B14025 /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB845181EC0E200B14025 /* FlowField.cpp */; };
 		184CB84F181EC0E200B14025 /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CB847181EC0E200B14025 /* MyTracker.cpp */; };
-
-
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -288,7 +285,6 @@
 		184CB709181EBB2600B14025 /* ofxCvShortImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCvShortImage.cpp; sourceTree = "<group>"; };
 		184CB70A181EBB2600B14025 /* ofxCvShortImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCvShortImage.h; sourceTree = "<group>"; };
 		184CB70B181EBB2600B14025 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
-
 		184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVision.cpp; sourceTree = "<group>"; };
 		184CB844181EC0E200B14025 /* CloudsVisualSystemVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemVision.h; sourceTree = "<group>"; };
 		184CB845181EC0E200B14025 /* FlowField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlowField.cpp; sourceTree = "<group>"; };
@@ -977,16 +973,15 @@
 			sourceTree = "<group>";
 		};
 		184CB790181EC0E200B14025 /* Vision */ = {
-
 			isa = PBXGroup;
 			children = (
-				185925F0182B205900744568 /* vs_src */,
+				184CB842181EC0E200B14025 /* vs_src */,
 			);
 			name = Vision;
 			path = ../CloudsLibrary/src/VisualSystems/Vision;
 			sourceTree = "<group>";
 		};
-		185925F0182B205900744568 /* vs_src */ = {
+		184CB842181EC0E200B14025 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
 				184CB843181EC0E200B14025 /* CloudsVisualSystemVision.cpp */,
@@ -995,7 +990,6 @@
 				184CB846181EC0E200B14025 /* FlowField.h */,
 				184CB847181EC0E200B14025 /* MyTracker.cpp */,
 				184CB848181EC0E200B14025 /* MyTracker.h */,
-
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1328,7 +1322,6 @@
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-
 				184CB790181EC0E200B14025 /* Vision */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
 			);

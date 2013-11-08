@@ -30,7 +30,7 @@
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 //#include "3DModelVisualSystem.h"
-#include "CloudsVisualSystemMandala.h"
+//#include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMazeGenerator.h"
 #include "CloudsVisualSystemRandomDigits.h"
 

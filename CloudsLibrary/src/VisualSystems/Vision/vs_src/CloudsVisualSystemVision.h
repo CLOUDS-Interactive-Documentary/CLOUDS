@@ -60,6 +60,7 @@ public:
     void getTextures();
 
     ofxUISuperCanvas *opticalFlowGui;
+    ofxUISuperCanvas *contourTrackingGui;
 protected:
 
     //video player stuff        
@@ -89,6 +90,7 @@ protected:
 
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
+    bool bContourTracking;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
     void updateCVParameters();
     ofImage thresholded;
