@@ -103,24 +103,15 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfUpdate(){
 void CloudsVisualSystemOpenP5SpinningSolids::selfDraw(){
     
     ofBackground(0);
-    
-    
+	
     cam.begin();
-
-            //ofDrawBox(10);
-            //ofDrawAxis(20)
 
     for (int i = 0; i < grid.size(); i++){
 
-            ofPushStyle();
-            ofPushMatrix();
-        
-            //noiseRotation
-             grid[i].drawShape();
-           
-       
-            ofPopMatrix();
-            ofPopStyle();
+	
+		//noiseRotation
+		 grid[i].drawShape();
+   
     }
     cam.end();
 

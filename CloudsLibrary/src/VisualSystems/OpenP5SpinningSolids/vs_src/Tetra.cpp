@@ -98,17 +98,21 @@ Tetra::Tetra(float _posX, float _posY, float _posZ, float _edgeLength){
 //    mesh.addIndex(2);
 //    mesh.addIndex(3);
 //	
-//    mesh.addIndex(0);
-//    mesh.addIndex(2);
-//    mesh.addIndex(1);
+//	mesh.addIndex(0);
+//	mesh.addIndex(2);
+//	mesh.addIndex(1);
 //
 //	mesh.addIndex(0);
-//    mesh.addIndex(2);
-//    mesh.addIndex(3);
+//	mesh.addIndex(2);
+//	mesh.addIndex(3);
 
 }
 
 void Tetra::drawShape(){
+	
+	ofPushStyle();
+	ofPushMatrix();
+
     int frameCount = ofGetFrameNum();
     
     ofTranslate(posX, posY, posZ);
@@ -177,6 +181,9 @@ void Tetra::drawShape(){
      vertex(-edgeLength, -edgeLength, edgeLength);
      endShape(CLOSE);
      */
+	ofPopMatrix();
+	ofPopStyle();
+	
 }
 
 float Tetra::lerp(float a, float b, float f)
