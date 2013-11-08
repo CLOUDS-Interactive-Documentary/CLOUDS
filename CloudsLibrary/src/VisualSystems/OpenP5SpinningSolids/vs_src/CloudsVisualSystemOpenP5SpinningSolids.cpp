@@ -64,7 +64,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
     
     for (int i = 0; i < num-1; i++){
         for (int j = 0; j < num-1; j ++){ //rows
-    grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
+			grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
           //  grid.back().ID = IDnumber + 1;
         }
     }
@@ -103,24 +103,15 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfUpdate(){
 void CloudsVisualSystemOpenP5SpinningSolids::selfDraw(){
     
     ofBackground(0);
-    
-    
+	
     cam.begin();
-
-            //ofDrawBox(10);
-            //ofDrawAxis(20)
 
     for (int i = 0; i < grid.size(); i++){
 
-            ofPushStyle();
-            ofPushMatrix();
-        
-            //noiseRotation
-             grid[i].drawShape();
-           
-       
-            ofPopMatrix();
-            ofPopStyle();
+	
+		//noiseRotation
+		 grid[i].drawShape();
+   
     }
     cam.end();
 
