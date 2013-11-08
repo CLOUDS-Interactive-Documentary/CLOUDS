@@ -116,6 +116,7 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     ofColor color2;
     ofColor randomColor;
     ofColor newColor;
+    int numPreloads = 1000;
     float saturation = 100;
     float brightness = 200;
     float saturation1;
