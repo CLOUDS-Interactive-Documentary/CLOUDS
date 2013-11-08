@@ -20,14 +20,16 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
     void checkColorDistance();
+    float weightedDistance(ofVec3f pnt1 ,ofVec3f pnt2, ofVec3f weights);
 	void exit();
+    
     
     CloudsFCPParser parser;
     ofVideoPlayer player;
     ofImage img;
     float threshold;
     ofVec2f samplePoint;
-    
+
     float hueWeight;
     float satWeight;
     float brightWeight;
