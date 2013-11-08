@@ -112,4 +112,8 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         float fogDensity;
         float currSpin;
         float spinSpeed;
+    
+        float mouseSpinX, mouseSpinY;
+        ofVec3f mouseDir;
+        float mouseSpeed;
 };
