@@ -90,6 +90,10 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E72C41B4182C9A5F001C8DB9 /* Gesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */; };
+		E72C41B5182C9A5F001C8DB9 /* GestureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */; };
+		E72C41B6182C9A5F001C8DB9 /* GestureRendererInPlace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72C41AD182C9A5F001C8DB9 /* GestureRendererInPlace.cpp */; };
+		E72C41B7182C9A5F001C8DB9 /* GestureRendererTraveling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72C41AF182C9A5F001C8DB9 /* GestureRendererTraveling.cpp */; };
 		E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */; };
@@ -368,6 +372,18 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E72C41A8182C9A5F001C8DB9 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
+		E72C41AA182C9A5F001C8DB9 /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
+		E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
+		E72C41AC182C9A5F001C8DB9 /* GestureRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRenderer.h; sourceTree = "<group>"; };
+		E72C41AD182C9A5F001C8DB9 /* GestureRendererInPlace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererInPlace.cpp; sourceTree = "<group>"; };
+		E72C41AE182C9A5F001C8DB9 /* GestureRendererInPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererInPlace.h; sourceTree = "<group>"; };
+		E72C41AF182C9A5F001C8DB9 /* GestureRendererTraveling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererTraveling.cpp; sourceTree = "<group>"; };
+		E72C41B0182C9A5F001C8DB9 /* GestureRendererTraveling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererTraveling.h; sourceTree = "<group>"; };
+		E72C41B1182C9A5F001C8DB9 /* Vec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec3f.h; sourceTree = "<group>"; };
+		E72C41B2182C9A5F001C8DB9 /* YellowTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowTail.h; sourceTree = "<group>"; };
+		E72C41B3182C9A5F001C8DB9 /* YtPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YtPolygon.h; sourceTree = "<group>"; };
 		E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -1004,6 +1020,25 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E72C41A7182C9A5F001C8DB9 /* yt */ = {
+			isa = PBXGroup;
+			children = (
+				E72C41A8182C9A5F001C8DB9 /* Color.h */,
+				E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */,
+				E72C41AA182C9A5F001C8DB9 /* Gesture.h */,
+				E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */,
+				E72C41AC182C9A5F001C8DB9 /* GestureRenderer.h */,
+				E72C41AD182C9A5F001C8DB9 /* GestureRendererInPlace.cpp */,
+				E72C41AE182C9A5F001C8DB9 /* GestureRendererInPlace.h */,
+				E72C41AF182C9A5F001C8DB9 /* GestureRendererTraveling.cpp */,
+				E72C41B0182C9A5F001C8DB9 /* GestureRendererTraveling.h */,
+				E72C41B1182C9A5F001C8DB9 /* Vec3f.h */,
+				E72C41B2182C9A5F001C8DB9 /* YellowTail.h */,
+				E72C41B3182C9A5F001C8DB9 /* YtPolygon.h */,
+			);
+			path = yt;
+			sourceTree = "<group>";
+		};
 		E72FF17D17E6A7970007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,6 +1066,7 @@
 		E72FF1F017E6B9E20007780D /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E72C41A7182C9A5F001C8DB9 /* yt */,
 				E72FF1F217E6B9E20007780D /* CloudsVisualSystemYellowTail.h */,
 				E72FF1F117E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp */,
 			);
@@ -1315,6 +1351,10 @@
 				E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
 				E72FF1F317E6B9E20007780D /* CloudsVisualSystemYellowTail.cpp in Sources */,
+				E72C41B4182C9A5F001C8DB9 /* Gesture.cpp in Sources */,
+				E72C41B5182C9A5F001C8DB9 /* GestureRenderer.cpp in Sources */,
+				E72C41B6182C9A5F001C8DB9 /* GestureRendererInPlace.cpp in Sources */,
+				E72C41B7182C9A5F001C8DB9 /* GestureRendererTraveling.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
