@@ -95,10 +95,10 @@ class CloudsVisualSystemRandomDigits : public CloudsVisualSystem {
 	vector<Rand> grid;
     vector<Rand> :: iterator Iter;
 
-    int num = 20;
-    float xoffset = 150; //30; for Randhedra
-    float yoffset = 50; //30; for Randhedra
-
+  //  int num = 20;
+    int xoffset = 150; //30; for Randhedra
+    int yoffset = 50; //30; for Randhedra
+    int blockGap =  50;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

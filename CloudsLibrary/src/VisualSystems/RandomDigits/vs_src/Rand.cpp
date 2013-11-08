@@ -9,8 +9,8 @@
 #include "Rand.h"
 
 ofTrueTypeFont Rand::Font;
-int Rand:: columns = 16;
-int Rand:: rows = 24;
+int Rand:: columns = 10;
+int Rand:: rows = 20;
 
 Rand:: Rand(float _posX, float _posY, float _randomNumber){
     
@@ -75,6 +75,7 @@ void Rand::drawNumbers(){
         float brightness = ofxTween::map(currentTime, 0, 1000.0, 255, 100, true, eq, ofxTween::easeInOut);
         ofSetColor(brightness);
     }
+    
     ofFill();
     Font.drawString(number, 14.0f, 1.037);
     

@@ -57,12 +57,32 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Fuzzy_galaxy</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fuzzy_galaxy2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>fuzzy_scribbles</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Galaxy_HotCold</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -127,6 +147,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>scribble</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>scribbles</Name>
     <Value>0</Value>
 </Widget>
@@ -144,19 +169,4 @@
     <Kind>2</Kind>
     <Name>VioletBlue_worms</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Fuzzy_galaxy</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>fuzzy_galaxy2</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Green_Lidar</Name>
-    <Value>1</Value>
 </Widget>
