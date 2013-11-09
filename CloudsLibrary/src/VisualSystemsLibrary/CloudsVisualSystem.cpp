@@ -90,6 +90,24 @@ void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float w
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
+void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
+	ofRectangle imageRect(0,0, width, height);
+	    
+	mesh.addVertex(ofVec3f(0,0));
+	mesh.addTexCoord(ofVec2f(0,0));
+    
+	mesh.addVertex(ofVec3f(0,height));
+	mesh.addTexCoord(ofVec2f(0,height));
+    
+	mesh.addVertex(ofVec3f(width,0));
+	mesh.addTexCoord(ofVec2f(width,0));
+    
+	mesh.addVertex(ofVec3f(width,height));
+	mesh.addTexCoord(ofVec2f(width,height));
+	
+	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+}
+
 
 #ifdef OCULUS_RIFT
 static ofxOculusRift oculusRift;
@@ -364,17 +382,39 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
             getOculusRift().beginBackground();
-            drawBackground();
+            //drawBackground();
             getOculusRift().endBackground();
-            
-			getOculusRift().baseCamera = &getCameraRef();
-			getOculusRift().beginLeftEye();
-			drawScene();
-			getOculusRift().endLeftEye();
-			
-			getOculusRift().beginRightEye();
-			drawScene();
-			getOculusRift().endRightEye();
+
+            bool systemIs2d = true;
+            if(systemIs2d){
+                CloudsVisualSystem::getSharedRenderTarget().begin();
+                if(bClearBackground){
+                    ofClear(0, 0, 0, 1.0);
+                }                
+                selfDrawBackground();
+                CloudsVisualSystem::getSharedRenderTarget().end();
+                
+                getOculusRift().baseCamera = &getCameraRef();
+                getOculusRift().beginLeftEye();
+                draw2dSystemPlane();
+                getOculusRift().endLeftEye();
+                
+                getOculusRift().beginRightEye();
+                draw2dSystemPlane();
+                getOculusRift().endRightEye();
+                //draw our own scene with getSharedRenderTarget on a plane
+            }
+            else{
+                
+                getOculusRift().baseCamera = &getCameraRef();
+                getOculusRift().beginLeftEye();
+                drawScene();
+                getOculusRift().endLeftEye();
+                
+                getOculusRift().beginRightEye();
+                drawScene();
+                getOculusRift().endRightEye();
+            }
 			
 			if(bDrawToScreen){
 				oculusRift.draw();
@@ -423,6 +463,20 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 	}
 	
     ofPopStyle();
+}
+
+void CloudsVisualSystem::draw2dSystemPlane(){
+    // create a plane and map our 2d systems to it
+    ofPushMatrix();
+    ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2, 0);
+    
+    ofMesh mesh;
+    get2dMesh(mesh, ofGetWidth(), ofGetHeight());
+    getSharedRenderTarget().getTextureReference().bind();
+    mesh.draw();
+    getSharedRenderTarget().getTextureReference().unbind();
+    
+    ofPopMatrix();
 }
 
 void CloudsVisualSystem::drawScene(){

@@ -72,6 +72,7 @@ class CloudsVisualSystem {
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
+    static void get2dMesh(ofMesh& mesh, float width, float height);
 #ifdef OCULUS_RIFT
 	static ofxOculusRift& getOculusRift();
 #endif
@@ -188,6 +189,7 @@ class CloudsVisualSystem {
     void drawTexturedQuad();
     void drawNormalizedTexturedQuad();
     void drawBackground();
+    void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
 	
     //Core Param Setup
