@@ -40,6 +40,7 @@ void CloudsVisualSystemVision::selfSetup()
     
     videoAlpha = 128;
     windowAlpha = 128;
+    thresholdAlpha = 128;
     
     bContourTracking = false;
     bOpticalFlow = false;
@@ -367,8 +368,8 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
             }
             else if(modes[k]->getName() == "DRAW THRESHOLDED"){
                 drawThresholded = true;
-                drawPlayer = false;
-                drawDiff = false;
+//                drawPlayer = false;
+//                drawDiff = false;
             }
             
         }
@@ -400,19 +401,6 @@ void CloudsVisualSystemVision::selfSetupSystemGui()
 
 void CloudsVisualSystemVision::selfSetupRenderGui()
 {
-    /*
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-     ofxUIButton *loadbtn = rdrGui->addButton("OPTICAL FLOW", false);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *updatebtn = rdrGui->addToggle("CONTOUR TRACKING", false);
-     ofxUIButton *diffbtn = rdrGui->addToggle("DRAW DIFF", &drawDiff);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *drawthresholdedbtn = rdrGui->addToggle("DRAW THRESHOLDED", &drawThresholded);
-     ofxUIButton *nextVideoButton = rdrGui->addToggle("NEXT VIDEO", false);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *prevVideoButton = rdrGui->addToggle("PREVIOUS VIDEO", false);
-     */
     vector<string> modes;
     modes.push_back("OPTICAL FLOW");
     modes.push_back("CONTOUR TRACKING");
@@ -431,6 +419,9 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
     rdrGui->addSlider("VIDEO ALPHA", 0, 255, &videoAlpha);
+    rdrGui->addSlider("THRESHOLD ALPHA", 0, 255, &thresholdAlpha);
+    rdrGui->addSlider("DIFF ALPHA", 0, 255, &diffAlpha);
+    rdrGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -457,14 +448,20 @@ void CloudsVisualSystemVision::selfUpdate(){
 void CloudsVisualSystemVision::selfDrawBackground()
 {
     
-    ofSetColor(128,videoAlpha);
+
     
     if(drawPlayer){
+        ofPushStyle();
+        ofSetColor(videoAlpha);
         player->draw(0,0,ofGetWidth(),ofGetHeight());
+        ofPopStyle();
     }
     if(drawThresholded){
-        flowMesh.draw();
+        
+        ofPushStyle();
+        ofSetColor(thresholdAlpha);        
         thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
+        ofPopStyle();
     }
     
     if(currentMode == ContourTracking){
@@ -487,7 +484,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
             
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200,windowAlpha);
+            ofSetColor(windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
             ofSetLineWidth(flowLineWidth);
@@ -498,7 +495,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         else{
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200,windowAlpha);
+            ofSetColor(windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.draw(0,0);
             ofSetLineWidth(flowLineWidth);
@@ -509,7 +506,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
         
     }
     else if(currentMode == HeatMap){
-        
+        ofPushStyle();
+        ofSetColor(128,diffAlpha);
         diff.draw(0, 0,ofGetWidth(),ofGetHeight());
         
         float diffRed = diffMean[0];
@@ -525,6 +523,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
+        ofPopStyle();
     }
 }
 
@@ -596,22 +595,22 @@ void CloudsVisualSystemVision::setMode(CVMode mode){
         case OpticalFlow:
             cout<<"setting mode to optical flow"<<endl;
             currentMode = OpticalFlow;
-            drawDiff = false;
-            drawThresholded = false;
+//            drawDiff = false;
+//            drawThresholded = false;
             break;
             
         case ContourTracking:
             currentMode = ContourTracking;
-            drawDiff = false;
-            drawThresholded = false;
-            drawPlayer = true;
+//            drawDiff = false;
+//            drawThresholded = false;
+//            drawPlayer = true;
             break;
             
         case HeatMap:
-            drawDiff = true;
+//            drawDiff = true;
             currentMode = HeatMap;
-            drawThresholded = false;
-            drawPlayer =false;
+//            drawThresholded = false;
+//            drawPlayer =false;
             break;
             
         default:
@@ -668,13 +667,9 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     }
     else if (name == "DRAW PLAYER"){
         drawPlayer = b->getValue();
-        drawThresholded = false;
-        drawDiff = false;
     }
     else if( name == "DRAW THRESHOLDED"){
         drawThresholded = b->getValue();
-        drawPlayer =false;
-        drawDiff = false;
     }
     else if( name == "ABS DIFF HEAT MAP"){
         setMode(HeatMap);

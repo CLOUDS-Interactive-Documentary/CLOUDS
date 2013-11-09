@@ -122,7 +122,10 @@ protected:
     bool drawDiff;
     bool flowFirstFrame;
     float videoAlpha;
+    float thresholdAlpha;
+    float diffAlpha;
     bool drawFlowWindow;
+
 
     ofVec2f averageFlow;
     int mouseX;
