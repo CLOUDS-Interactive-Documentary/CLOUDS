@@ -213,7 +213,6 @@
 		E7CB1799182B458E003A28AE /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF74B182B457C003A28AE /* CloudsVisualSystemLSystem.cpp */; };
 		E7CB179A182B458E003A28AE /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF74D182B457C003A28AE /* LNode.cpp */; };
 		E7CB179B182B458E003A28AE /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF74F182B457C003A28AE /* LSystem.cpp */; };
-		E7CB1892182B458E003A28AE /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF869182B457D003A28AE /* CloudsVisualSystemMandala.cpp */; };
 		E7CB192D182B458E003A28AE /* CloudsVisualSystemMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF922182B457D003A28AE /* CloudsVisualSystemMazeGenerator.cpp */; };
 		E7CB192E182B458E003A28AE /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF924182B457D003A28AE /* Maze.cpp */; };
 		E7CB192F182B458E003A28AE /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF926182B457D003A28AE /* MazeCamera.cpp */; };
@@ -323,6 +322,9 @@
 		E7CB3000182B485C003A28AE /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CB2FF0182B485C003A28AE /* ofxMPMNode.cpp */; };
 		E7CB3001182B485C003A28AE /* ofxMPMObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CB2FF2182B485C003A28AE /* ofxMPMObstacle.cpp */; };
 		E7CB3002182B485C003A28AE /* ofxMPMParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CB2FF4182B485C003A28AE /* ofxMPMParticle.cpp */; };
+		E7D158C8182DE5B20036E9BA /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D157E6182DE5B10036E9BA /* CloudsVisualSystemMandala.cpp */; };
+		E7D158C9182DE5B20036E9BA /* MandalaComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D157E8182DE5B10036E9BA /* MandalaComponent.cpp */; };
+		E7D158CA182DE5B20036E9BA /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D157EB182DE5B10036E9BA /* SurfacePoint.cpp */; };
 		E7D3654917C7D144004A5ED6 /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
@@ -1194,9 +1196,6 @@
 		E7CBF74E182B457C003A28AE /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
 		E7CBF74F182B457C003A28AE /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
 		E7CBF750182B457C003A28AE /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		E7CBF869182B457D003A28AE /* CloudsVisualSystemMandala.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMandala.cpp; sourceTree = "<group>"; };
-		E7CBF86A182B457D003A28AE /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
-		E7CBF86B182B457D003A28AE /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
 		E7CBF922182B457D003A28AE /* CloudsVisualSystemMazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator.cpp; sourceTree = "<group>"; };
 		E7CBF923182B457D003A28AE /* CloudsVisualSystemMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator.h; sourceTree = "<group>"; };
 		E7CBF924182B457D003A28AE /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = "<group>"; };
@@ -1229,6 +1228,13 @@
 		E7CBFFEA182B4582003A28AE /* CloudsVisualSystemOpenP5SeaOfLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5SeaOfLines.h; sourceTree = "<group>"; };
 		E7CBFFED182B4582003A28AE /* CloudsVisualSystemOpenP5Sixteen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP5Sixteen.cpp; sourceTree = "<group>"; };
 		E7CBFFEE182B4582003A28AE /* CloudsVisualSystemOpenP5Sixteen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP5Sixteen.h; sourceTree = "<group>"; };
+		E7D157E6182DE5B10036E9BA /* CloudsVisualSystemMandala.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMandala.cpp; sourceTree = "<group>"; };
+		E7D157E7182DE5B10036E9BA /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
+		E7D157E8182DE5B10036E9BA /* MandalaComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MandalaComponent.cpp; sourceTree = "<group>"; };
+		E7D157E9182DE5B10036E9BA /* MandalaComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaComponent.h; sourceTree = "<group>"; };
+		E7D157EA182DE5B10036E9BA /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
+		E7D157EB182DE5B10036E9BA /* SurfacePoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurfacePoint.cpp; sourceTree = "<group>"; };
+		E7D157EC182DE5B10036E9BA /* SurfacePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfacePoint.h; sourceTree = "<group>"; };
 		E7D3653917C7D144004A5ED6 /* mcTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcTables.h; sourceTree = "<group>"; };
 		E7D3653A17C7D144004A5ED6 /* ofxMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMarchingCubes.cpp; sourceTree = "<group>"; };
 		E7D3653B17C7D144004A5ED6 /* ofxMarchingCubes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMarchingCubes.h; sourceTree = "<group>"; };
@@ -2452,7 +2458,7 @@
 				E7CBF5F8182B457B003A28AE /* LaplacianTunnel */,
 				E7CBF63C182B457B003A28AE /* LIA */,
 				E7CBF6F2182B457C003A28AE /* LSystem */,
-				E7CBF751182B457C003A28AE /* MandalaVisualSystem */,
+				E7D156F0182DE5B00036E9BA /* MandalaComponents */,
 				E7CBF8CF182B457D003A28AE /* MazeGenerator */,
 				E7CBF92E182B457D003A28AE /* Memory */,
 				E7CBFA68182B457E003A28AE /* Metaballs */,
@@ -3892,24 +3898,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7CBF751182B457C003A28AE /* MandalaVisualSystem */ = {
-			isa = PBXGroup;
-			children = (
-				E7CBF868182B457D003A28AE /* vs_src */,
-			);
-			path = MandalaVisualSystem;
-			sourceTree = "<group>";
-		};
-		E7CBF868182B457D003A28AE /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7CBF869182B457D003A28AE /* CloudsVisualSystemMandala.cpp */,
-				E7CBF86A182B457D003A28AE /* CloudsVisualSystemMandala.h */,
-				E7CBF86B182B457D003A28AE /* MandalaTicker.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7CBF8CF182B457D003A28AE /* MazeGenerator */ = {
 			isa = PBXGroup;
 			children = (
@@ -4113,6 +4101,28 @@
 				E7CB0090182B4582003A28AE /* vs_src */,
 			);
 			path = OpenP5SpaceJunk;
+			sourceTree = "<group>";
+		};
+		E7D156F0182DE5B00036E9BA /* MandalaComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E7D157E5182DE5B10036E9BA /* vs_src */,
+			);
+			path = MandalaComponents;
+			sourceTree = "<group>";
+		};
+		E7D157E5182DE5B10036E9BA /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7D157EA182DE5B10036E9BA /* MandalaTicker.h */,
+				E7D157E7182DE5B10036E9BA /* CloudsVisualSystemMandala.h */,
+				E7D157E6182DE5B10036E9BA /* CloudsVisualSystemMandala.cpp */,
+				E7D157E9182DE5B10036E9BA /* MandalaComponent.h */,
+				E7D157E8182DE5B10036E9BA /* MandalaComponent.cpp */,
+				E7D157EC182DE5B10036E9BA /* SurfacePoint.h */,
+				E7D157EB182DE5B10036E9BA /* SurfacePoint.cpp */,
+			);
+			path = vs_src;
 			sourceTree = "<group>";
 		};
 		E7D3652017C7D144004A5ED6 /* ofxMarchingCubes */ = {
@@ -4511,7 +4521,6 @@
 				E7CB1799182B458E003A28AE /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E7CB179A182B458E003A28AE /* LNode.cpp in Sources */,
 				E7CB179B182B458E003A28AE /* LSystem.cpp in Sources */,
-				E7CB1892182B458E003A28AE /* CloudsVisualSystemMandala.cpp in Sources */,
 				E7CB192D182B458E003A28AE /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
 				E7CB192E182B458E003A28AE /* Maze.cpp in Sources */,
 				E7CB192F182B458E003A28AE /* MazeCamera.cpp in Sources */,
@@ -4630,6 +4639,9 @@
 				FDE605D2182DB1CF00C58BF0 /* ofxOceanCamera.cpp in Sources */,
 				FDE605D3182DB1CF00C58BF0 /* ofxOceanRenderer.cpp in Sources */,
 				FDE605D4182DB1CF00C58BF0 /* ofxOceanTile.cpp in Sources */,
+				E7D158C8182DE5B20036E9BA /* CloudsVisualSystemMandala.cpp in Sources */,
+				E7D158C9182DE5B20036E9BA /* MandalaComponent.cpp in Sources */,
+				E7D158CA182DE5B20036E9BA /* SurfacePoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

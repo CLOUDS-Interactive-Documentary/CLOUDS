@@ -30,7 +30,7 @@
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 //#include "3DModelVisualSystem.h"
-//#include "CloudsVisualSystemMandala.h"
+#include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMazeGenerator.h"
 #include "CloudsVisualSystemRandomDigits.h"
 
@@ -108,7 +108,7 @@ struct Mapping {
 	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
-//	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
+	{ "MandalaComponents", &fCreate<CloudsVisualSystemMandala> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 	{ "Metaballs", &fCreate<CloudsVisualSystem> },
@@ -280,16 +280,14 @@ void CloudsVisualSystemManager::loadPresets(){
 //			preset = getPresetWithID(name);
 //		}
 //		else{
-			vector<string> splitName = ofSplitString(name, "_",true,true);
-			preset.systemName = splitName[0];
-			splitName.erase(splitName.begin()); //delete the system name
-			preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
-			preset.loadTimeInfo();
-			presets.push_back(preset);
-			nameToPresets[preset.systemName].push_back(preset);
+		vector<string> splitName = ofSplitString(name, "_",true,true);
+		preset.systemName = splitName[0];
+		splitName.erase(splitName.begin()); //delete the system name
+		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+		preset.loadTimeInfo();
+
 //		}
 
-		
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
 			int numSuppressions = keywordXml.getNumTags("clip");
@@ -305,6 +303,10 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.grade = keywordXml.getValue("grade", "");
 		preset.enabled = keywordXml.getValue("enabled", true );
 		preset.oculusCompatible = keywordXml.getValue("oculus", false );
+		
+		presets.push_back(preset);
+		nameToPresets[preset.systemName].push_back(preset);
+
         keywordXml.popTag(); //system
 	}
 	
