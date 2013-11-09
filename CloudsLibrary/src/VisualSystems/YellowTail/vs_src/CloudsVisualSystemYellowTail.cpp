@@ -111,15 +111,14 @@ void CloudsVisualSystemYellowTail::selfExit(){
 
 void CloudsVisualSystemYellowTail::selfBegin(){
 	
-//    Gesture *introGesture = new Gesture(ofGetWidth(), ofGetHeight());
-//    introGesture->fromXMLFile( getVisualSystemDataPath() + "strokes/y_stroke.xml" );
-//    gestures.push_back(introGesture);
-
-	cout << "added test stroke " << endl;
+    Gesture *introGesture = new Gesture(ofGetWidth(), ofGetHeight());
+    introGesture->fromXMLFile( getVisualSystemDataPath() + "strokes/y_stroke.xml" );
+    gestures.push_back(introGesture);
 }
 
 void CloudsVisualSystemYellowTail::selfEnd(){
 	//CLEAR ALL MEMORY
+	clearGestures();
 }
 
 void CloudsVisualSystemYellowTail::selfKeyPressed(ofKeyEventArgs & args){

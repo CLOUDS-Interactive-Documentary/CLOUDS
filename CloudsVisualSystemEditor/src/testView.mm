@@ -69,16 +69,16 @@ bool clipsort(CloudsClip a, CloudsClip b){
         
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
-//			currentVisualSystem = NULL;
         }
 		
-        currentVisualSystem = visualSystems.getPresets()[presetTable.selectedRow].system;
+        currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+		if(currentVisualSystem != NULL){
+			currentVisualSystem->setup();
+			currentVisualSystem->playSystem();
+			currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
+		}
 		
-		currentVisualSystem->setup();
-        currentVisualSystem->playSystem();
-        currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
-		
-        shouldPlaySelectedRow = false;	
+		shouldPlaySelectedRow = false;	
     }
 	
     //ofShowCursor();
@@ -243,7 +243,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	if(aTableView == presetTable){
 		if([@"system" isEqualToString:aTableColumn.identifier]){
-			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].system->getSystemName().c_str()];
+//			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].system->getSystemName().c_str()];
+			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].systemName.c_str()];
 		}
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:

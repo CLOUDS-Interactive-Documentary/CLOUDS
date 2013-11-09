@@ -139,7 +139,7 @@ class CloudsVisualSystem {
 	virtual void draw(ofEventArgs & args);
 	
 	//application exit, clean up and don't crash
-	virtual void exit(ofEventArgs & args);
+	virtual void exit();
 
 	//INTERACTION EVENTS -- registered only
 	virtual void keyPressed(ofKeyEventArgs & args);

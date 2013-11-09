@@ -48,7 +48,7 @@
 #include "CloudsVisualSystemReplicator.h"
 #include "CloudsVisualSystemLIA.h"
 #include "CloudsVisualSystemDrawnLine.h"
-#include "CloudsVisualSystemGameOfLife.h"
+//#include "CloudsVisualSystemGameOfLife.h"
 #include "CloudsVisualSystemYellowTail.h"
 
 //EXAMPLES
@@ -104,7 +104,7 @@ struct Mapping {
 	{ "Fireworks", &fCreate<CloudsVisualSystemFireworks> },
 	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
 	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
-	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
+//	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
 	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
@@ -144,32 +144,39 @@ struct Mapping {
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
 	//TODO: rename class
 //	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
-	{ "World", &fCreate<CloudsVisualSystemWorld> }
-	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> },
+	{ "World", &fCreate<CloudsVisualSystemWorld> },
+	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }
 };
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 //--------------------------------------------------------------------
 ofPtr<CloudsVisualSystem> CloudsVisualSystemManager::InstantiateSystem(string systemName){
-	return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+	if(constructors.find(systemName) != constructors.end()){
+		return ofPtr<CloudsVisualSystem>( constructors[systemName]() );
+	}
+	return ofPtr<CloudsVisualSystem>();
 }
 
 //--------------------------------------------------------------------
-vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<string> systemNames){
+vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets){
 	
 	vector< ofPtr<CloudsVisualSystem> > systems;
-	for(int i = 0; i < systemNames.size(); i++){
-		if(constructors.find(systemNames[i]) != constructors.end()){
-			systems.push_back( InstantiateSystem(systemNames[i]) );
+	for(int i = 0; i < systemPresets.size(); i++){
+		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
+			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
+			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
+			
+			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
+			systems.push_back( systemPresets[i].system );
 		}
 		else{
-			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemNames[i];
+			ofLogError("CloudsVisualSystemManager::InstantiateSystems") << "Couldn't find system " << systemPresets[i].systemName;
 		}
 	}
 	return systems;
 }
 
-#endif
+#endif //end coupling guard
 
 
 bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
@@ -184,75 +191,25 @@ bool preset_sort(CloudsVisualSystemPreset a, CloudsVisualSystemPreset b){
 CloudsVisualSystemManager::CloudsVisualSystemManager(){
 	backupTimeInterval = 60*2;
 	lastBackupTime = ofGetElapsedTimef() - backupTimeInterval;
+	allSystemsPopulated = false;
 }
 
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
+
 #ifndef CLOUDS_NO_VS
-	
 	nameToVisualSystem.clear();
-//	for(int i = 0; i < systems.size(); i++){
-//		delete systems[i];
-//	}
+	allSystemsPopulated = true;
 	
 	systems.clear();
 	presets.clear();
     vector<string> systemNames;
 	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
-//		systemNames.push_back(it->first);
 		registerVisualSystem( InstantiateSystem(it->first) );
 	}
 
-	/*
-	//JAMES SYSTEMS
-	registerVisualSystem(new CloudsVisualSystemDataCascade() );
-	registerVisualSystem(new CloudsVisualSystemVectorFlow() );
-	registerVisualSystem(new CloudsVisualSystemForkingPaths() );
-	registerVisualSystem(new CloudsVisualSystemOcean() );
-	registerVisualSystem(new CloudsVisualSystemRGBDVideo() );
-	registerVisualSystem(new CloudsVisualSystemConnectors() );
-	
-	//CONTRACTOR SYSTEMS
-	//pati
-	registerVisualSystem(new CloudsVisualSystemLSystems() );
-	registerVisualSystem(new CloudsVisualSystemVoro() );
-	registerVisualSystem(new CloudsVisualSystemCities() );
-	registerVisualSystem(new CloudsVisualSystemWorld() );
-	registerVisualSystem(new CloudsVisualSystemMemory() );
-	registerVisualSystem(new CloudsVisualSystemPaintBrush() );
-	
-	//reza
-	registerVisualSystem(new CloudsVisualSystemCosmic() );
-	registerVisualSystem(new CloudsVisualSystemFlocking() );
-	
-	//lars
-	registerVisualSystem(new CloudsVisualSystemFireworks() );
-	registerVisualSystem(new CloudsVisualSystemMarchingCubes() );
-	//registerVisualSystem(new CloudsVisualSystem3DModel() );
-	//registerVisualSystem(new MandalaVisualSystem() );
-	
-	//CODE STORM
-	registerVisualSystem(new CloudsVisualSystemOscillations() );
-	registerVisualSystem(new ScrapeVisualSystem() );
-	registerVisualSystem(new WebHistoryVisualSystem() );
-	registerVisualSystem(new PagesVisualSystem() );
-	registerVisualSystem(new QuineVisualSystem() );
-	
-	//COMMISSIONS
-	registerVisualSystem(new CloudsVisualSystemVerletForm() );
-	registerVisualSystem(new CloudsVisualSystemNeurons() );
-//	registerVisualSystem(new CloudsVisualSystemLaplacianTunnel() );
-	registerVisualSystem(new CloudsVisualSystemReplicator() );
-	registerVisualSystem(new CloudsVisualSystemLIA() );
-	
-	//EXAMPLES
-	registerVisualSystem(new CloudsVisualSystemExampleVectorMath() );
-	registerVisualSystem(new CloudsVisualSystemExampleBox2D() );
-    */
-	
     loadPresets();
-    
 #endif
     
 }
@@ -260,13 +217,8 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> system){
 #ifndef CLOUDS_NO_VS
-	ofLogVerbose() << "Registering system " << system->getSystemName();
-	//moved this -- don't set up until the loading screen of the act
-	//system->setup();
 	nameToVisualSystem[system->getSystemName()] = system;
-    
 #endif
-	
 	systems.push_back( system );
 }
 
@@ -287,33 +239,34 @@ void CloudsVisualSystemManager::loadPresets(){
 	
 	//This is flagged if we don't want this app to be dependent on visual systems
 	//they presets will then be loaded all from keywords file
-#ifndef CLOUDS_NO_VS
-	for(int i = 0; i < systems.size(); i++){
-		vector<string> systemPresets = systems[i]->getPresets();
-		
-		if(systemPresets.size() == 0){
-			cout << "NO PRESETS for SYSTEM " << systems[i]->getSystemName() << endl;
-			CloudsVisualSystemPreset preset;
-			preset.systemName = systems[i]->getSystemName();
-			preset.presetName = "no-preset";
-			preset.system = systems[i];
-			
-			nameToPresets[preset.systemName].push_back( preset );
-			presets.push_back(preset);
-		}
-		else {
-			for(int p = 0; p < systemPresets.size(); p++){
-				CloudsVisualSystemPreset preset;
-				preset.presetName = systemPresets[p];
-				preset.systemName = systems[i]->getSystemName();
-				preset.system = systems[i];
-				preset.loadTimeInfo();
-				presets.push_back(preset);
-				nameToPresets[preset.systemName].push_back( preset );
-			}
-		}
-	}
-#endif
+//#ifndef CLOUDS_NO_VS
+//
+//	for(int i = 0; i < systems.size(); i++){
+//		vector<string> systemPresets = systems[i]->getPresets();
+//		
+//		if(systemPresets.size() == 0){
+//			cout << "NO PRESETS for SYSTEM " << systems[i]->getSystemName() << endl;
+//			CloudsVisualSystemPreset preset;
+//			preset.systemName = systems[i]->getSystemName();
+//			preset.presetName = "no-preset";
+//			preset.system = systems[i];
+//			
+//			nameToPresets[preset.systemName].push_back( preset );
+//			presets.push_back(preset);
+//		}
+//		else {
+//			for(int p = 0; p < systemPresets.size(); p++){
+//				CloudsVisualSystemPreset preset;
+//				preset.presetName = systemPresets[p];
+//				preset.systemName = systems[i]->getSystemName();
+//				preset.system = systems[i];
+//				preset.loadTimeInfo();
+//				presets.push_back(preset);
+//				nameToPresets[preset.systemName].push_back( preset );
+//			}
+//		}
+//	}
+//#endif
 	
 	int numSystems = keywordXml.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
@@ -321,19 +274,21 @@ void CloudsVisualSystemManager::loadPresets(){
 		keywordXml.pushTag( "system", i );
 		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
 		keywords[ name ] = presetKeywords;
-		
-#ifdef CLOUDS_NO_VS
 		CloudsVisualSystemPreset preset;
-		vector<string> splitName = ofSplitString(name, "_",true,true);
-		preset.systemName = splitName[0];
-		splitName.erase(splitName.begin()); //delete the system name
-		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
-		preset.loadTimeInfo();
-		presets.push_back(preset);
-		nameToPresets[preset.systemName].push_back(preset);
-#else
-		CloudsVisualSystemPreset& preset = getPresetWithID(name);
-#endif
+		//if we have populated everything, get the preset it's already set
+//		if(allSystemsPopulated){
+//			preset = getPresetWithID(name);
+//		}
+//		else{
+			vector<string> splitName = ofSplitString(name, "_",true,true);
+			preset.systemName = splitName[0];
+			splitName.erase(splitName.begin()); //delete the system name
+			preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+			preset.loadTimeInfo();
+			presets.push_back(preset);
+			nameToPresets[preset.systemName].push_back(preset);
+//		}
+
 		
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
@@ -350,9 +305,6 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.grade = keywordXml.getValue("grade", "");
 		preset.enabled = keywordXml.getValue("enabled", true );
 		preset.oculusCompatible = keywordXml.getValue("oculus", false );
-//        if(preset.enabled){
-//            cout<<"The preset : "<<preset.getID()<<" has a definite duration of :"<<preset.duration<<endl;
-//        }
         keywordXml.popTag(); //system
 	}
 	

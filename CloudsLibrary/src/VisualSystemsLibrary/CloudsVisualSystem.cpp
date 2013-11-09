@@ -126,7 +126,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-	
+	exit();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
@@ -171,7 +171,7 @@ void CloudsVisualSystem::setup(){
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
-	ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
+	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
     
 	currentCamera = &cam;
 	
@@ -244,13 +244,12 @@ void CloudsVisualSystem::stopSystem(){
 
 		selfEnd();
 		
-		cloudsCamera.end();
+		cloudsCamera.remove();
 		
 		hideGUIS();
 		saveGUIS();
 		cam.disableMouseInput();
-		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-		{
+		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it){
 			//JG WHITE DEATH
 			it->second->light.destroy();
 		}
@@ -365,6 +364,12 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
 			getOculusRift().baseCamera = &getCameraRef();
+
+			//need a background renderer...
+//			getOculusRift().beginBackground();
+//			drawBackground();
+//			getOculusRift().endBackground();
+			
 			getOculusRift().beginLeftEye();
 			drawScene();
 			getOculusRift().endLeftEye();
@@ -462,12 +467,14 @@ void CloudsVisualSystem::setupRGBDTransforms(){
 
 }
 
-void CloudsVisualSystem::exit(ofEventArgs & args)
+void CloudsVisualSystem::exit()
 {
 //    delete colorPalletes;
 //    delete bgColor;
 //    delete bgColor2;
-    
+	selfExit();
+	cout << "CLEANING UP! " << getSystemName() << endl;
+	
     saveGUIS();
     
     for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
@@ -489,20 +496,21 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
         ofMaterial *m = it->second;
         delete m;
     }
+	
     materials.clear();
     materialGuis.clear();
 	
 	if(cameraTrack != NULL){
+		cameraTrack->disable();
 		delete cameraTrack;
 		cameraTrack = NULL;
 	}
 	if(timeline != NULL){
+		ofRemoveListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
 		delete timeline;
 		timeline = NULL;
 	}
 
-    selfExit();
-    
     deleteGUIS();
 }
 
@@ -1191,7 +1199,6 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
     camGui->addLabel("TRACK");
     camGui->addButton("ADD KEYFRAME", false);
-//    camGui->addToggle("LOCK TO TRACK", &cameraTrack->lockCameraToTrack);
 	vector<string> transitions;
 	transitions.push_back("2D");
 	transitions.push_back("3D FLY THROUGH");
@@ -1485,6 +1492,7 @@ void CloudsVisualSystem::setupPointLight(string name)
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
+	
 }
 
 void CloudsVisualSystem::setupSpotLight(string name)
@@ -1518,7 +1526,7 @@ void CloudsVisualSystem::setupSpotLight(string name)
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
     
-    ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+    ofAddListener(g->newGUIEvent, this, &CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
 }
@@ -1548,9 +1556,9 @@ void CloudsVisualSystem::setupBeamLight(string name)
     setupGenericLightProperties(g, l);
     
     g->autoSizeToFitWidgets();
-    g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
+    g->setPosition(ofGetWidth()*.5 - g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
     
-    ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+    ofAddListener(g->newGUIEvent,this, &CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
 }
@@ -2476,12 +2484,27 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 
 void CloudsVisualSystem::deleteGUIS()
 {
+	
+    ofRemoveListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent); //todo remove
+    ofRemoveListener(sysGui->newGUIEvent,this,&CloudsVisualSystem::guiSystemEvent);
+    ofRemoveListener(bgGui->newGUIEvent, this, &CloudsVisualSystem::guiBackgroundEvent);
+    ofRemoveListener(lgtGui->newGUIEvent,this,&CloudsVisualSystem::guiLightingEvent);
+    ofRemoveListener(camGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
+    ofRemoveListener(presetGui->newGUIEvent,this,&CloudsVisualSystem::guiPresetEvent);
+	for(map<string, ofxUISuperCanvas *>::iterator it = lightGuis.begin(); it != lightGuis.end(); ++it)
+	{
+		ofRemoveListener(it->second->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+	}
+	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
         ofxUICanvas *g = (*it);
         delete g;
     }
+	
     guis.clear();
+	guimap.clear();
+	lightGuis.clear();
 }
 
 void CloudsVisualSystem::showGUIS()
@@ -2686,6 +2709,10 @@ void CloudsVisualSystem::drawBackground()
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
+
+					//will ofGetViewportHeight()  this work for both oculus & normal instead of ofGetWidth()/ofGetHeight()
+					//ofGetViewportHeight();...?
+
 					getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
 					mesh.draw();
 					backgroundShader.end();
