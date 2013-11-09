@@ -17,13 +17,14 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemManager();
 	
 	static ofPtr<CloudsVisualSystem> InstantiateSystem(string systemName);
-	static vector< ofPtr<CloudsVisualSystem> > InstantiateSystems(vector<string> systemNames);
+	static vector< ofPtr<CloudsVisualSystem> > InstantiateSystems(vector<CloudsVisualSystemPreset>& systemPresets);
 	
 	void populateVisualSystems();
     void populateEnabledSystemIndeces();
 	CloudsVisualSystemPreset getRandomVisualSystem();
 	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName);
 	CloudsVisualSystemPreset& getPresetWithID(string presetID);
+	bool systemHasPreset(string systemName, string presetName);
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
@@ -35,6 +36,9 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords);
+	
+	//resets all presets from file
+	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
 	
 	set<string> getAllKeywords();
 	
@@ -67,7 +71,7 @@ class CloudsVisualSystemManager {
 	
 	map<string,vector<string> > keywords;
 
-
+	bool allSystemsPopulated;
 	//this instantiates and registers all the visual systems, called once at setup
 	void registerVisualSystem(ofPtr<CloudsVisualSystem> system);
 	float lastBackupTime;

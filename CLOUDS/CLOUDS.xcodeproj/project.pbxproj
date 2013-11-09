@@ -215,7 +215,6 @@
 		E7D9F63E182B03CE00AD56C1 /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DF4E182B03AC00AD56C1 /* CloudsVisualSystemFireworks.cpp */; };
 		E7D9F649182B03CE00AD56C1 /* CloudsVisualSystemFlocking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFD5182B03AD00AD56C1 /* CloudsVisualSystemFlocking.cpp */; };
 		E7D9F64A182B03CE00AD56C1 /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */; };
-		E7D9F64F182B03CE00AD56C1 /* CloudsVisualSystemGameOfLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */; };
 		E7D9F652182B03CE00AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E056182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7D9F653182B03CE00AD56C1 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */; };
 		E7D9F654182B03CE00AD56C1 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E106182B03B300AD56C1 /* ColorPalette.cpp */; };
@@ -781,7 +780,6 @@
 		E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
 		E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPages.cpp; sourceTree = "<group>"; };
 		E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPages.h; sourceTree = "<group>"; };
-		E7D15667182D6BE90036E9BA /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		E7D15668182D6BE90036E9BA /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
 		E7D15669182D6BE90036E9BA /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
 		E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
@@ -904,8 +902,6 @@
 		E7D9DFD6182B03AD00AD56C1 /* CloudsVisualSystemFlocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlocking.h; sourceTree = "<group>"; };
 		E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E7D9DFF1182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
-		E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemGameOfLife.cpp; sourceTree = "<group>"; };
-		E7D9E013182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemGameOfLife.h; sourceTree = "<group>"; };
 		E7D9E056182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7D9E057182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
@@ -1745,7 +1741,6 @@
 				E7D9DE3E182B03AB00AD56C1 /* Fireworks */,
 				E7D9DF50182B03AC00AD56C1 /* Flocking */,
 				E7D9DFD7182B03AD00AD56C1 /* ForkingPaths */,
-				E7D9DFF2182B03AD00AD56C1 /* GameOfLife */,
 				E7D9E014182B03B000AD56C1 /* LaplacianTunnel */,
 				E7D9E058182B03B200AD56C1 /* LIA */,
 				E7D9E10E182B03B300AD56C1 /* LSystem */,
@@ -2647,7 +2642,6 @@
 		E7D15666182D6BE90036E9BA /* yt */ = {
 			isa = PBXGroup;
 			children = (
-				E7D15667182D6BE90036E9BA /* Color.h */,
 				E7D15668182D6BE90036E9BA /* Gesture.cpp */,
 				E7D15669182D6BE90036E9BA /* Gesture.h */,
 				E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */,
@@ -2781,12 +2775,12 @@
 		E7D9D842182B03A300AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9D843182B03A300AD56C1 /* 3DModelVisualSystem.cpp */,
 				E7D9D844182B03A300AD56C1 /* 3DModelVisualSystem.h */,
-				E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */,
+				E7D9D843182B03A300AD56C1 /* 3DModelVisualSystem.cpp */,
 				E7D9D846182B03A300AD56C1 /* CloudsOrthoCamera.h */,
-				E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */,
+				E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */,
 				E7D9D848182B03A300AD56C1 /* CloudsPathCamera.h */,
+				E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3024,23 +3018,6 @@
 			children = (
 				E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */,
 				E7D9DFF1182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
-		E7D9DFF2182B03AD00AD56C1 /* GameOfLife */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E011182B03B000AD56C1 /* vs_src */,
-			);
-			path = GameOfLife;
-			sourceTree = "<group>";
-		};
-		E7D9E011182B03B000AD56C1 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */,
-				E7D9E013182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4711,7 +4688,6 @@
 				E7D9F63E182B03CE00AD56C1 /* CloudsVisualSystemFireworks.cpp in Sources */,
 				E7D9F649182B03CE00AD56C1 /* CloudsVisualSystemFlocking.cpp in Sources */,
 				E7D9F64A182B03CE00AD56C1 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
-				E7D9F64F182B03CE00AD56C1 /* CloudsVisualSystemGameOfLife.cpp in Sources */,
 				E7D9F652182B03CE00AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E7D9F653182B03CE00AD56C1 /* CloudsVisualSystemLia.cpp in Sources */,
 				E7D9F654182B03CE00AD56C1 /* ColorPalette.cpp in Sources */,

@@ -19,13 +19,12 @@ public:
     float posY;
     int randomNumber;
     
-    static int columns; //columns of numbers
-    static int rows; //rows of numbers
-    
-    //vector <int> randomNumbers;
-    //vector <int> noisyNumbers;
  
-    Rand(float posX, float posY, float posZ);
+    int* minBri;
+    int* maxBri;
+    
+    Rand(float posX, float posY, float posZ,
+         int& minBri, int& maxBri);
     void setup(); 
     void noiseRotate(float _x, float _y);
     void generateNoisyNumber();

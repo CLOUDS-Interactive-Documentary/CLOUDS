@@ -372,7 +372,6 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E72C41A8182C9A5F001C8DB9 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
 		E72C41AA182C9A5F001C8DB9 /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
 		E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
@@ -1023,15 +1022,14 @@
 		E72C41A7182C9A5F001C8DB9 /* yt */ = {
 			isa = PBXGroup;
 			children = (
-				E72C41A8182C9A5F001C8DB9 /* Color.h */,
-				E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */,
 				E72C41AA182C9A5F001C8DB9 /* Gesture.h */,
-				E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */,
+				E72C41A9182C9A5F001C8DB9 /* Gesture.cpp */,
 				E72C41AC182C9A5F001C8DB9 /* GestureRenderer.h */,
-				E72C41AD182C9A5F001C8DB9 /* GestureRendererInPlace.cpp */,
+				E72C41AB182C9A5F001C8DB9 /* GestureRenderer.cpp */,
 				E72C41AE182C9A5F001C8DB9 /* GestureRendererInPlace.h */,
-				E72C41AF182C9A5F001C8DB9 /* GestureRendererTraveling.cpp */,
+				E72C41AD182C9A5F001C8DB9 /* GestureRendererInPlace.cpp */,
 				E72C41B0182C9A5F001C8DB9 /* GestureRendererTraveling.h */,
+				E72C41AF182C9A5F001C8DB9 /* GestureRendererTraveling.cpp */,
 				E72C41B1182C9A5F001C8DB9 /* Vec3f.h */,
 				E72C41B2182C9A5F001C8DB9 /* YellowTail.h */,
 				E72C41B3182C9A5F001C8DB9 /* YtPolygon.h */,

@@ -124,14 +124,6 @@ class CloudsVisualSystem3DModel : public CloudsVisualSystem {
 		return perspCam;
 	}
 
-	//
-//	ofCamera& getCameraRef(){
-//		if(videoLoaded){
-//			return cloudsCamera;
-//		}
-//		return CloudsVisualSystem::getCameraRef();
-//	}
-
 protected:
     
     //  my Stuff
@@ -142,11 +134,6 @@ protected:
 	ofxUISuperCanvas* cameraPathsGui;
 	ofxUISuperCanvas* fogGui;
 	ofxUISuperCanvas* transformGui;
-	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
 	
 	ofImage colorMap;
 	

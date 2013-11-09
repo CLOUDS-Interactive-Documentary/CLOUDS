@@ -941,8 +941,8 @@
 			children = (
 				85797C1A18273432008A8F5E /* CloudsVisualSystemRandomDigits.cpp */,
 				85797C1B18273432008A8F5E /* CloudsVisualSystemRandomDigits.h */,
-				85797C1C18273432008A8F5E /* Rand.cpp */,
 				85797C1D18273432008A8F5E /* Rand.h */,
+				85797C1C18273432008A8F5E /* Rand.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

@@ -148,13 +148,13 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
         if(presetId.size() > 1){
-			CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+			CloudsVisualSystemEventArgs args(visualSystems[ visualSystemIndeces[presetId[1]] ]);
 			if(presetId[0] == "start " ){
-				cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				cout<<"Starting Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID() << endl;
 				ofNotifyEvent(events.visualSystemBegan, args);
 			}
 			else if(presetId[0] == "outro "){
-				cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				cout<<"Ending Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID()<<endl;
 				ofNotifyEvent(events.visualSystemEnded, args);
 			}
 		}
@@ -282,8 +282,6 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
 	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
-    
-    
 }
 
 void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
@@ -331,16 +329,17 @@ void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handl
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
+    visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
-    visualSystemsMap[preset.getID()] = preset;
     
-    //    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
-    ActTimeItem item;
+    //cout<<"added " <<preset.getID()<< " to VS map "<<endl;
+    
+	ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;
     item.type = VS;
     
-    item.key =preset.getID() ;
+    item.key = preset.getID() ;
     item.startTime = vsStartTime;
     item.endTime = vsStartTime + duration;
     item.introEndTime = vsStartTime + preset.introDuration;
@@ -402,29 +401,6 @@ void CloudsAct::addQuestion(CloudsClip clip, string topic, float startTime){
     
 }
 
-//NO LONGER USED
-///////
-//void CloudsAct::removeQuestionAtTime(float startTime, float duration){
-//    float endTime = startTime + duration;
-//    for(int i =0; i<actItems.size(); i++){
-//        if(actItems[i].type == Question){
-//            if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
-//                questionsMap.erase(actItems[i].key);
-//                actItems.erase(actItems.begin() + i);
-//            }
-//        }
-//    }
-//}
-/////////////////////
-//
-//CloudsClip& CloudsAct::getClipForQuestion(string question){
-//    if(questionsMap.find(question) == questionsMap.end()){
-//        ofLogError("CloudsAct::getClipForQuestion") << "Couldn't find Clip Item with Starting Question " << question;
-//        return dummyClip;
-//    }
-//    return questionsMap[question];
-//}
-
 vector<CloudsClip>& CloudsAct::getAllClips(){
     return clips;
 }
@@ -446,7 +422,8 @@ void CloudsAct::clear(){
     clips.clear();
     topicHistory.clear();
     clipMap.clear();
-    visualSystemsMap.clear();
+    visualSystemIndeces.clear();
+	visualSystems.clear();
     topicMap.clear();
     actItems.clear();
     timeline.reset();

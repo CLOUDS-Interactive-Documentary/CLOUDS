@@ -139,8 +139,7 @@ protected:
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
 
-	
-    map<string, CloudsVisualSystemPreset> visualSystemsMap;
+    map<string, int> visualSystemIndeces;
     map<string, ActTimeItem> visualSystemItems;
     map<string, string> topicMap;
 	vector<string> topicHistory;
