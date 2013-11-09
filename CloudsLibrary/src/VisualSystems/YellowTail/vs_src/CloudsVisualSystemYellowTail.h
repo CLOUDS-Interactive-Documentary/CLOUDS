@@ -61,7 +61,7 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfSetupTimelineGui();
     void selfTimelineGuiEvent(ofxUIEventArgs &e);
  
-	GestureStyle     getNewGestureStyle() { return mNewGestureStyle; }
+	GestureStyle getNewGestureStyle() { return mNewGestureStyle; }
 	void    setNewGestureStyle(GestureStyle newGestureStyle) { mNewGestureStyle = newGestureStyle; }
 	int     gestureCount() { return gestures.size(); }
 	void	clearGestures();

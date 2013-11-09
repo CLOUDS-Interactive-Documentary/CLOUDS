@@ -277,7 +277,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystemPreset>& presets = act->getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
-//	vector< ofPtr<CloudsVisualSystem> > systems = act->getAllVisualSystems();
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].system != NULL){
 			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
@@ -287,24 +286,12 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton. correlating system null? " << (systems[i] == NULL ? "YES" : "NO");
 		}
 	}
-//	for(int i = 0; i < presets.size(); i++){
-//		if(presets[i].system == NULL){
-//		}
-//	}
-
+	
 	currentAct = act;
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&introSequence.getSelectedRun());
 	currentAct->play();
 }
-
-////--------------------------------------------------------------------
-//void CloudsPlaybackController::setRandomQuestion(CloudsClip& clip){
-//    if(currentVisualSystem->getSystemName() == "RGBD"){
-//        rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0]);
-//        rgbdVisualSystem.setSelectedQuestion();
-//    }    
-//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
@@ -319,7 +306,7 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
-        cout<<"adding fake question"<<endl;
+        cout << "adding fake question" << endl;
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
 										 fakeQuestions[i].getTopicsWithQuestions()[0],

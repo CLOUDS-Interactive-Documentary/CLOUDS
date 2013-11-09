@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "YtPolygon.h"
 #include "Gesture.h"
-#include "Color.h"
+//#include "Color.h"
 
 typedef unsigned int GLenum;
 
