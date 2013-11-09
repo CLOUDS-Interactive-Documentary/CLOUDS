@@ -13,6 +13,7 @@ void testApp::setup(){
 	rebuildAct = false;
 	
 	parser.loadFromFiles();
+	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	visualSystems.loadPresets();
 	
@@ -62,7 +63,7 @@ void testApp::actEnded(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::clipBegan(CloudsClipEventArgs& args){
-	
+	player.swapAndPlay();
 }
 
 //--------------------------------------------------------------
@@ -85,7 +86,10 @@ void testApp::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
-    
+	
+	player.setup(clip.preRollClip.combinedVideoPath,
+				 clip.preRollClip.combinedCalibrationXMLPath);
+	
 }
 //--------------------------------------------------------------
 void testApp::update(){
@@ -93,6 +97,7 @@ void testApp::update(){
 	//keepin it real
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     sound.update();
+
 }
 
 //--------------------------------------------------------------
@@ -111,6 +116,9 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 void testApp::draw(){
     if(currentAct != NULL){
 		currentAct->drawDebug();
+	}
+	if(player.isPlaying()){
+		player.getPlayer().draw(0,0,player.getPlayer().getWidth()*.25,player.getPlayer().getHeight()*.2'5);
 	}
 }
 
@@ -133,10 +141,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
-    if(key == 'h'){
-        storyEngine.toggleGuis();
-    }
-    else if(key =='f'){
+	if(key =='f'){
         ofToggleFullscreen();
     }
 	if(key == 't'){

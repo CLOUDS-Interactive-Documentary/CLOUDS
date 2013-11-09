@@ -248,6 +248,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 
 	getPlayer().setVolume(audioVolume);
+
 	
 	if(position > duration - .04){
 		getPlayer().stop();

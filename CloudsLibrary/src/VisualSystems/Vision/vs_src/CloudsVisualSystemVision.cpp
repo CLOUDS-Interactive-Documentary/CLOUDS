@@ -72,6 +72,13 @@ void CloudsVisualSystemVision::selfSetup()
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     //	app
     movieIndex = 0;
+    
+    movieStrings.push_back("union_square_crop.mov");
+    movieStrings.push_back("GreenPoint_bike_crop.mov");
+    movieStrings.push_back("indianTrafficCrop.mov");
+    movieStrings.push_back("unionsq_1 - Wi-Fi_crop.mov");
+    movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors_Crop.mov");
+    /*
     movieStrings.push_back("AppleStore1_short.mov");
     movieStrings.push_back("AppleStore2_short.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
@@ -98,6 +105,7 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("Tokyo1.mov");
     movieStrings.push_back("Tokyo2.mov");
     movieStrings.push_back("TokyoEscalator.mov");
+     */
     frameIsNew = false;
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();
@@ -312,28 +320,8 @@ void CloudsVisualSystemVision::updateHeatMap(){
         }
         diff.update();
         copy(*player, previousHeatMap);
-        for(int i =0; i< accumulation.width; i++ ){
-            for(int j =0; j<accumulation.height; j++){
-                
-                if(! (accumulationCount%5) ){
-                    accumulation.setColor(i, j, ofColor::black);
-                    accumulationCount =0;
-                }
-                else{
-                    ofColor c = accumulation.getColor(i, j);
-                    float b = c.getBrightness();
-                    if(b > 50 ){
-                        float scaledHue = ofMap(b ,0, 255, ofFloatColor::blue.getHue(), ofFloatColor::orange.getHue());
-                        ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 200, 200) ;
-                        accumulation.setColor(i, j, magnitudeColor);
-                    }
-                }
-            }
+
         }
-        diffMean = mean(toCv(accumulation));
-        diffMean *= Scalar(20);
-        accumulation.reloadTexture();
-    }
 }
 
 void CloudsVisualSystemVision::updateContourTracking(){
