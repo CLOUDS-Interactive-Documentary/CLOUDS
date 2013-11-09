@@ -9,10 +9,12 @@
 #include "Rand.h"
 
 ofTrueTypeFont Rand::Font;
-int Rand:: columns = 10;
-int Rand:: rows = 20;
+//int Rand:: columns = 15;
+//int Rand:: rows = 25;
 
-Rand:: Rand(float _posX, float _posY, float _randomNumber){
+Rand::Rand(float _posX, float _posY, float _randomNumber,
+            int& minBri, int& maxBri)
+{
     
     posX = _posX;
     posY = _posY;
@@ -21,6 +23,8 @@ Rand:: Rand(float _posX, float _posY, float _randomNumber){
     previousRandomNumber =ofRandom(1000);
     nextRandomNumber =0;
     previousTime = 0;
+    this->minBri = &minBri;
+    this->maxBri = &maxBri;
 }
 
 void Rand::setup(){
@@ -68,11 +72,11 @@ void Rand::drawNumbers(){
     std::string number = ostr.str();
 
     if (abs(newRandomNumber - nextRandomNumber) >= 2){
-        float brightness = ofxTween::map(currentTime, 0, 1000.0, 100, 255, true, eq, ofxTween::easeInOut);
+        float brightness = ofxTween::map(currentTime, 0, 1000.0, *minBri, *maxBri, true, eq, ofxTween::easeInOut);
     ofSetColor(brightness);
     }
     if (abs(newRandomNumber - nextRandomNumber) <= 2){
-        float brightness = ofxTween::map(currentTime, 0, 1000.0, 255, 100, true, eq, ofxTween::easeInOut);
+        float brightness = ofxTween::map(currentTime, 0, 1000.0, *maxBri, *minBri, true, eq, ofxTween::easeInOut);
         ofSetColor(brightness);
     }
     
