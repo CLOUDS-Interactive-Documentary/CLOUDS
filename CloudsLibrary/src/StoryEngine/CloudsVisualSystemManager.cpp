@@ -108,7 +108,7 @@ struct Mapping {
 	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
-	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
+//	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 	{ "Metaballs", &fCreate<CloudsVisualSystem> },
@@ -144,8 +144,8 @@ struct Mapping {
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
 	//TODO: rename class
 //	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
-	{ "World", &fCreate<CloudsVisualSystemWorld> }
-	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> },
+	{ "World", &fCreate<CloudsVisualSystemWorld> },
+	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }
 };
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 

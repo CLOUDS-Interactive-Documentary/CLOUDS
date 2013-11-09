@@ -26,17 +26,17 @@ public:
 :startedDying(0) {
 	}
     ofColor color;
-    void setLifetimeColorRange(float newRange);
+
 	void setup(const cv::Rect& track);
 	void update(const cv::Rect& track);
 	void kill();
-	void draw(float lineWidth);
+	void draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers);
+
     ofPolyline getLifeSpan();
     int getLifeTime();
     cv::Rect getBoundingBox();
     ofVec2f getTangentAtPoint(int history);
     
-    float lifetimeColorRange;
     cv::Rect  boundingBox;
 
 };
