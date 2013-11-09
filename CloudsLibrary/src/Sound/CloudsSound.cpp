@@ -103,34 +103,13 @@ void CloudsSound::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actBegan(CloudsActEventArgs& args){
 	//Happens at the very beginning of a sequence
-}
 
-void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
-	
-}
-
-void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------------
-void CloudsSound::clipBegan(CloudsClipEventArgs& args){
-
-}
-
-//--------------------------------------------------------------------
-void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
-	
-}
-
-//--------------------------------------------------------------------
-void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
     
     int rigged = 0; // set to '1' for rigged orchestration (set below)
     
-	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
+	//cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
     
-    float musicdur = args.duration;
+    float musicdur = args.act->getTimeline().getDurationInSeconds();
     
     int preset = ofRandom(0, presets.size());
     
@@ -154,6 +133,30 @@ void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
     
     startMusic(0, morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
     
+
+
+}
+
+void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+void CloudsSound::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::clipBegan(CloudsClipEventArgs& args){
+
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------------
+void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
 }
 
 //--------------------------------------------------------------------
@@ -164,6 +167,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
+    flush_sched();
 }
 
 //--------------------------------------------------------------------
