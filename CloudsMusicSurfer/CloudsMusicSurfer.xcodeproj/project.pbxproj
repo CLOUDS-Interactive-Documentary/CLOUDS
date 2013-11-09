@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1A8882117AC7D1800FF9C3D /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A8882017AC7D1800FF9C3D /* librtcmix.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		C1B2D93E179CC51100D09D13 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1B2D93C179CC51100D09D13 /* lukeFuncs.cpp */; };
+		C1FF416F182EB5ED00A09CF9 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1FF416D182EB5ED00A09CF9 /* lukeFuncs.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -64,8 +64,8 @@
 /* Begin PBXFileReference section */
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1A8882017AC7D1800FF9C3D /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
-		C1B2D93C179CC51100D09D13 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
-		C1B2D93D179CC51100D09D13 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
+		C1FF416D182EB5ED00A09CF9 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lukeFuncs.cpp; path = ../../CloudsLibrary/src/Sound/RTCMix/src/lukeFuncs.cpp; sourceTree = "<group>"; };
+		C1FF416E182EB5ED00A09CF9 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lukeFuncs.h; path = ../../CloudsLibrary/src/Sound/RTCMix/src/lukeFuncs.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -191,11 +191,11 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C1FF416D182EB5ED00A09CF9 /* lukeFuncs.cpp */,
+				C1FF416E182EB5ED00A09CF9 /* lukeFuncs.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
-				C1B2D93C179CC51100D09D13 /* lukeFuncs.cpp */,
-				C1B2D93D179CC51100D09D13 /* lukeFuncs.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -295,7 +295,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				C1B2D93E179CC51100D09D13 /* lukeFuncs.cpp in Sources */,
+				C1FF416F182EB5ED00A09CF9 /* lukeFuncs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

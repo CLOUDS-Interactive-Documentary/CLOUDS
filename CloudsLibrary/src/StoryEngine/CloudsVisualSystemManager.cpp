@@ -325,7 +325,7 @@ void CloudsVisualSystemManager::loadPresets(){
         keywordXml.popTag(); //system
 	}
 	
-//#ifndef CLOUDS_NO_VS
+#ifndef CLOUDS_NO_VS
 	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
 		CloudsVisualSystemPreset preset;
 		preset.systemName = it->first;
@@ -334,7 +334,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		nameToPresets[preset.systemName].push_back(preset);
 		presets.push_back(preset);
 	}
-//#endif
+#endif
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
     cout << "** LOADED PRESETS " << presets.size() << endl;
