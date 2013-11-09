@@ -16,7 +16,7 @@
 #include "ofMain.h"
 #include "Vec3f.h"
 #include "YtPolygon.h"
-#include "Color.h"
+#include "YellowTailColor.h"
 
 #define INITIAL_THICKNESS 22
 
@@ -78,11 +78,11 @@ public:
 	void setStyle(GestureStyle style) { mStyle = style; }
 	GestureStyle getStyle() { return mStyle; }
 
-	void setFillColor(Color fillColor) { mFillColor = fillColor; }
-	Color getFillColor() { return mFillColor; }
+	void setFillColor(ofColor fillColor) { mFillColor = fillColor; }
+	ofColor getFillColor() { return mFillColor; }
 	
-	void setStrokeColor(Color strokeColor) { mStrokeColor = strokeColor; }
-	Color getStrokeColor() { return mStrokeColor; }
+	void setStrokeColor(ofColor strokeColor) { mStrokeColor = strokeColor; }
+	ofColor getStrokeColor() { return mStrokeColor; }
 	
 	void setDirection(GestureDirection direction) { mDirection = direction; }
 	GestureDirection getDirection() { return mDirection; }
@@ -97,8 +97,8 @@ private:
 	float	dampInv;
 	float	damp1;
 	
-	Color mFillColor;
-	Color mStrokeColor;
+	ofColor mFillColor;
+	ofColor mStrokeColor;
 	GestureStyle		mStyle;
 	GestureDirection    mDirection;
 	

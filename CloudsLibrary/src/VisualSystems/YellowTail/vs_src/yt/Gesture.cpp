@@ -40,8 +40,8 @@ Gesture::Gesture(int maxWidth, int maxHeight)
     
     mStyle  = GestureStyleInPlace;
     mDirection = GestureDirectionBackwards;
-    mFillColor = Color(255, 255, 255, 192);
-    mStrokeColor = Color(255, 255, 255, 220);
+    mFillColor = ofColor(255, 255, 255, 192);
+    mStrokeColor = ofColor(255, 255, 255, 220);
 	
 	hasCross = false;
 }

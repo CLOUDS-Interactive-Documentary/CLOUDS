@@ -11,8 +11,8 @@
 
 
 void GestureRendererTraveling::renderGesture(Gesture *gesture, int maxWidth, int maxHeight) {
-    Color fillColor = gesture->getFillColor();
-    Color strokeColor = gesture->getStrokeColor();
+    ofColor fillColor = gesture->getFillColor();
+    ofColor strokeColor = gesture->getStrokeColor();
     
     glColor4ub(fillColor.r, fillColor.g, fillColor.b, fillColor.a);
     renderFill(gesture, maxWidth, maxHeight);

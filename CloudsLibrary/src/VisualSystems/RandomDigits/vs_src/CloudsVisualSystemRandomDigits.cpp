@@ -14,18 +14,19 @@ void CloudsVisualSystemRandomDigits::selfSetupGui(){
     
     
     ofGetRectMode() == OF_RECTMODE_CENTER;
-    /*
-     customGui = new ofxUISuperCanvas("CUSTOM", gui);
-     customGui->copyCanvasStyle(gui);
-     customGui->copyCanvasProperties(gui);
-     customGui->setName("Custom");
-     customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-     
-     
+    
+    customGui = new ofxUISuperCanvas("CUSTOM", gui);
+    customGui->copyCanvasStyle(gui);
+    customGui->copyCanvasProperties(gui);
+    customGui->setName("Custom");
+    customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    customGui->addIntSlider("Max Brightness", 0, 255, &maxBrightness);
+    customGui->addIntSlider("Min Brightness", 0, 255, &minBrightness);
+    
      ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemRandomDigits::selfGuiEvent);
      guis.push_back(customGui);
      guimap[customGui->getName()] = customGui;
-     */
+ 
 }
 
 void CloudsVisualSystemRandomDigits::selfGuiEvent(ofxUIEventArgs &e){
@@ -60,9 +61,10 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
     ofBackground(0);
     //ofSetFrameRate(30);
     Rand::Font.loadFont(getVisualSystemDataPath() + "Courier.ttf", 14, true, true, true);
-
-    for (int i = 0; i < Rand::columns; i++){
-        for (int j = 0; j < Rand::rows; j ++){
+    int columns = 25;
+    int rows = 15;
+    for (int i = 0; i < columns; i++){
+        for (int j = 0; j < rows; j ++){
 
                 
 //            cout << "yoffset = " << yoffset << endl;
@@ -83,7 +85,8 @@ void CloudsVisualSystemRandomDigits::selfSetup(){
                 xoffset = 100;
             }
              */
-            grid.push_back(Rand (i*xoffset, (j*(yoffset)  + blockGap ), int(ofRandom(10000, 99999)+.5)));
+            grid.push_back( Rand(i*xoffset, (j*(yoffset)  + blockGap ), int(ofRandom(10000, 99999)+.5),
+                                 minBrightness, maxBrightness) );
             
             
             

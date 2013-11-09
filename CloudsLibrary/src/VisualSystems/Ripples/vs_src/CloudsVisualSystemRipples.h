@@ -12,38 +12,19 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxFX.h"
+#include "ofXRipples.h"
+#include "ofxBounce.h"
 
-/*
-class Hair {
-  public:
-	float radius;
-	float z;
-	float phi;
-	float largo;
-	float theta;
-	
-	Hair(float radius) : radius(radius){
-		z = ofRandom(-radius, radius);
-		phi = ofRandom(TWO_PI);
-		largo = ofRandom(1.05, 1.1);
-		theta = asin(z/radius);
-	}
-	
-	void draw() {
-
-	}
-};
- */
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemAutomata : public CloudsVisualSystem {
+class CloudsVisualSystemRipples : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "Automata";
+		return "Ripples";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -99,16 +80,19 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem {
 
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
-    void selfKeyPressed(ofKeyEventArgs & args);
+    void selfKeyPressed(int key);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void selfMouseDragged(ofMouseEventArgs& data);
-    void selfMouseMoved(ofMouseEventArgs& data);
-    void selfMousePressed(ofMouseEventArgs& data);
-    void selfMouseReleased(ofMouseEventArgs& data);
+    void selfMouseDragged(int x, int y, int button);
+    void selfMouseMoved(int x, int y, int button);
+    void selfMousePressed(int x, int y, int button);
+    void selfMouseReleased(int x, int y, int button);
 	
 	
-
+    ofxRipples  rip;
+    ofxBounce   bounce;
+    float damping = .3;
+    
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -121,16 +105,6 @@ protected:
     //  Your Stuff
     //
 	
-	ofxUISuperCanvas* customGui;
-	
-    ofImage      image;
-    ofxFXObject  conway;
-    
-   // ofFbo               canvas;
-	//ofFloatColor color1HSB;
-	//ofFloatColor color2HSB;
-
-
 	
 
 };
