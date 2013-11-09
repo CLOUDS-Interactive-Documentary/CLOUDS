@@ -780,7 +780,6 @@
 		E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
 		E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPages.cpp; sourceTree = "<group>"; };
 		E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPages.h; sourceTree = "<group>"; };
-		E7D15667182D6BE90036E9BA /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		E7D15668182D6BE90036E9BA /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
 		E7D15669182D6BE90036E9BA /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
 		E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
@@ -2643,7 +2642,6 @@
 		E7D15666182D6BE90036E9BA /* yt */ = {
 			isa = PBXGroup;
 			children = (
-				E7D15667182D6BE90036E9BA /* Color.h */,
 				E7D15668182D6BE90036E9BA /* Gesture.cpp */,
 				E7D15669182D6BE90036E9BA /* Gesture.h */,
 				E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */,
