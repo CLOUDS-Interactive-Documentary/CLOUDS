@@ -23,7 +23,7 @@ CloudsAct::~CloudsAct(){
 
 void CloudsAct::play(){
     
-    CloudsActEventArgs args(this, finalDichotomies);
+    CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
 	
 	timeline.play();
@@ -131,6 +131,7 @@ void CloudsAct::populateTime(){
 	}
 	
 	timeline.setCurrentPage(0);
+	
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
@@ -181,12 +182,16 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
-	CloudsActEventArgs args(this,finalDichotomies);
+	CloudsActEventArgs args(this);
     ofNotifyEvent(events.actEnded, args);
 }
 
 float CloudsAct::getActDuration(){
     return duration;
+}
+
+vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(CloudsClip& clip){
+	return getDichotomiesForClip(clip.getLinkName());
 }
 
 vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
@@ -237,6 +242,10 @@ CloudsVisualSystemPreset& CloudsAct::getVisualSystemInAct(int index){
     return visualSystems[index];
 }
 
+float CloudsAct::getClipStartTime(CloudsClip& clip){
+	return getItemForClip(clip).startTime;
+}
+
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
     if(clipMap.find(clip.getLinkName()) == clipMap.end()){
         ofLogError() << "Couldn't find Act Item for cilp " << clip.getLinkName();
@@ -281,7 +290,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     dichotomiesMap[item.key] = currentDichotomiesBalance;
 	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
-    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
+    clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
 }
 
 void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
@@ -301,7 +310,6 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     }
     //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
-    
     item.type = Clip;
     item.key = clip.getLinkName();
     item.startTime = startTime;

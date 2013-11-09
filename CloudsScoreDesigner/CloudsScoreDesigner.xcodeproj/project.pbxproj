@@ -819,13 +819,13 @@
 		E7637D401734DE68008ADC62 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
 				E7F7773917734B0B0096AEF7 /* CloudsVisualSystemPreset.h */,
 				E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */,
 				E7F77733177276190096AEF7 /* CloudsVisualSystemManager.h */,
 				186B68AE17EA34110020C952 /* CloudsVisualSystemManager.cpp */,
 				E7637D421734DE68008ADC62 /* CloudsClip.h */,
 				E7637D411734DE68008ADC62 /* CloudsClip.cpp */,
-				E7637D431734DE68008ADC62 /* CloudsEvents.h */,
 				E7637D451734DE68008ADC62 /* CloudsFCPParser.h */,
 				E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */,
 				E7637D491734DE68008ADC62 /* CloudsLink.h */,
