@@ -338,7 +338,6 @@ void CloudsVisualSystemVision::updateHeatMap(){
 
 void CloudsVisualSystemVision::updateContourTracking(){
     if(frameIsNew){
-        
         background.update(*player, thresholded);
         thresholded.update();
         blur(thresholded, 5);
@@ -470,10 +469,27 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
 void CloudsVisualSystemVision::selfUpdate(){
     player->update();
     frameIsNew = player->isFrameNew();
-    
+    if(frameIsNew && drawThresholded){
+        background.update(*player, thresholded);
+        thresholded.update();
+        blur(thresholded, 5);
+    }
+    if(bContourTracking){
         updateContourTracking();
+    }
+    
+    if(bOpticalFlow){
         updateOpticalFlow();
+    }
+    
+    if (bDrawHeatMap) {
         updateHeatMap();
+    }
+    
+    
+    
+
+
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
