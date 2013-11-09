@@ -24,6 +24,7 @@ class CloudsVisualSystemManager {
 	CloudsVisualSystemPreset getRandomVisualSystem();
 	vector<CloudsVisualSystemPreset>& getPresetsForSystem(string systemName);
 	CloudsVisualSystemPreset& getPresetWithID(string presetID);
+	bool systemHasPreset(string systemName, string presetName);
 	CloudsVisualSystemPreset& getPresetForSystem(string systemName, string presetName);
 	
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
@@ -35,6 +36,9 @@ class CloudsVisualSystemManager {
 	vector<string> keywordsForPreset(string systemName, string presetName);
 	vector<CloudsVisualSystemPreset> getPresetsForKeyword(string keyword);
 	vector<CloudsVisualSystemPreset> getPresetsForKeywords(vector<string>& keywords);
+	
+	//resets all presets from file
+	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
 	
 	set<string> getAllKeywords();
 	

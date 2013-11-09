@@ -23,8 +23,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 	
 	parser.loadFromFiles();
 	
-	visualSystems.populateVisualSystems();
-	
+//	visualSystems.populateVisualSystems();
+	visualSystems.loadPresets();
 	
 	for (NSTableColumn *tableColumn in allKeywordTable.tableColumns) {
         NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:tableColumn.identifier ascending:YES selector:@selector(compare:)];
@@ -132,13 +132,24 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) updatePresets:(id)sender
 {
-	visualSystems.loadPresets();
+//	visualSystems.loadPresets();
 	
-	[clipTable reloadData];
-	[suppressedClipTable reloadData];
-	[presetTable reloadData];
-	[allKeywordTable reloadData];
-	[allClipTable reloadData];	
+	if(presetTable.selectedRow >= 0){
+		visualSystems.getPresets()[presetTable.selectedRow].getID();
+		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+		if(system != NULL){
+			cout << "updating presets for " << system->getSystemName() << endl;
+			visualSystems.updatePresetsForSystem( system );
+		}
+		
+		[clipTable reloadData];
+		[suppressedClipTable reloadData];
+		[presetTable reloadData];
+		[allKeywordTable reloadData];
+		[allClipTable reloadData];
+		
+	}
+	
 }
 
 - (IBAction) updateKeywords:(id)sender

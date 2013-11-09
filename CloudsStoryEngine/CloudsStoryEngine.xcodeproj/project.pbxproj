@@ -2105,7 +2105,7 @@
 					"$(OF_PATH)/addons/ofxLibwebsockets/src",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/openssl/openssl",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/**",
-					"$(OF_PATH)/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
+					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/jsoncpp/**",
 					src,
 				);
@@ -2153,7 +2153,7 @@
 					"$(OF_PATH)/addons/ofxLibwebsockets/src",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/openssl/openssl",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/**",
-					"$(OF_PATH)/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
+					"$(OF_PATH)/addons/ofxLibwebsockets/libs/ofxLibwebsockets/include/ofxLibwebsockets",
 					"$(OF_PATH)/addons/ofxLibwebsockets/libs/jsoncpp/**",
 					src,
 				);
