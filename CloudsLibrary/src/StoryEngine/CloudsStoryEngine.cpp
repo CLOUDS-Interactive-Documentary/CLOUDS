@@ -234,13 +234,15 @@ void CloudsStoryEngine::saveGuiSettings(){
     runGui->saveSettings(getDataPath() +"storyEngineParameters/runGui.xml");
 }
 
-void CloudsStoryEngine::toggleGuis(){
+void CloudsStoryEngine::toggleGuis(bool actOnly){
     actGui->toggleVisible();
-    clipGui->toggleVisible();
-    topicGui->toggleVisible();
-    gui->toggleVisible();
-    vsGui->toggleVisible();
-    runGui->toggleVisible();
+    if(!actOnly){
+        clipGui->toggleVisible();
+        topicGui->toggleVisible();
+        gui->toggleVisible();
+        vsGui->toggleVisible();
+        runGui->toggleVisible();
+    }
 }
 
 #pragma mark INIT ACT

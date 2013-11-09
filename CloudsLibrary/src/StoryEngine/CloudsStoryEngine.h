@@ -32,7 +32,7 @@ class CloudsStoryEngine {
 	
     void initGui();
     void saveGuiSettings();
-    void toggleGuis();
+    void toggleGuis(bool actOnly = false);
 	void positionGuis();
     void updateRunData();
 	

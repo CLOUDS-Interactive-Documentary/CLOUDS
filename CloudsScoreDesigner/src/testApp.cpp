@@ -21,7 +21,7 @@ void testApp::setup(){
 	
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
-	storyEngine.toggleGuis();
+	storyEngine.toggleGuis(true);
     
     sound.setup(storyEngine);
     
