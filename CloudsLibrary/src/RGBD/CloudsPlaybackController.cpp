@@ -568,7 +568,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 	
-		float fadeDuration = 1;//(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
+		float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 
 	}

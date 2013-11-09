@@ -37,6 +37,7 @@ void testApp::setup(){
 void testApp::actCreated(CloudsActEventArgs& args){
 	
 	if(currentAct != NULL){
+		currentAct->getTimeline().stop();
 		currentAct->unregisterEvents(this);
 //		currentAct->unregisterEvents(&websockets);
 		delete currentAct;
@@ -58,7 +59,7 @@ void testApp::actBegan(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::actEnded(CloudsActEventArgs& args){
-	
+	cout << "ACT ENDED" << endl;
 }
 
 //--------------------------------------------------------------
@@ -118,7 +119,9 @@ void testApp::draw(){
 		currentAct->drawDebug();
 	}
 	if(player.isPlaying()){
-		player.getPlayer().draw(0,0,player.getPlayer().getWidth()*.25,player.getPlayer().getHeight()*.2'5);
+		player.getPlayer().draw(0,0,
+								player.getPlayer().getWidth()*.25,
+								player.getPlayer().getHeight()*.25);
 	}
 }
 
