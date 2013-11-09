@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemAutomata.h"
 
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemAutomata::selfSetupGui(){
 
@@ -61,7 +56,46 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemAutomata::selfSetup(){
     
-    image.loadImage(getVisualSystemDataPath() + "mem.gif");
+    if(!image.loadImage(getVisualSystemDataPath() + "mem.gif")){
+        cout << "failed to load " << getVisualSystemDataPath() + "mem.gif" << endl;
+    }
+    
+    conway.allocate(640, 480);
+    conway.setPasses(10);
+    //
+    // Created by kalwalt alias Walter Perdan on 24/12/11
+    // Copyright 2011 http://www.kalwaltart.it/ All rights reserved.
+    conway.setCode( "#version 120\n \
+                   #extension GL_ARB_texture_rectangle : enable\n \
+                   \
+                   uniform sampler2DRect tex0; \
+                   \
+                   vec4 dead = vec4(1.0,1.0,1.0,1.0); \
+                   vec4 alive = vec4(0.0,0.0,0.0,1.0); \
+                   \
+                   void main(void) { \
+                   vec2  st = gl_TexCoord[0].st;\
+                   int sum = 0; \
+                   vec4 y = texture2DRect(tex0, st); \
+                   \
+                   if (texture2DRect(tex0, st + vec2(-1.0, -1.0)) == alive) ++sum; \
+                   if (texture2DRect(tex0, st + vec2(0.0, -1.0)) == alive) ++sum; \
+                   if (texture2DRect(tex0, st + vec2(1.0, -1.0)) == alive) ++sum; \
+                   \
+                   if (texture2DRect(tex0, st + vec2(-1.0, 0.0)) == alive) ++sum; \
+                   if (texture2DRect(tex0, st + vec2(1.0, 0.0)) == alive) ++sum; \
+                   \
+                   if (texture2DRect(tex0, st + vec2(-1.0, 1.0)) == alive) ++sum; \
+                   if (texture2DRect(tex0, st + vec2(0.0, 1.0)) == alive) ++sum; \
+                   if (texture2DRect(tex0, st + vec2(1.0, 1.0)) == alive) ++sum; \
+                   \
+                   if (sum < 2) gl_FragColor = dead; \
+                   else if (sum > 3) gl_FragColor = dead; \
+                   else if (sum == 3) gl_FragColor = alive; \
+                   else gl_FragColor = y; \
+                   }");
+    
+    conway.setTexture(image.getTextureReference());
 	
 
 }
@@ -89,11 +123,24 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemAutomata::selfUpdate(){
 
+
+    conway.begin();
+    ofClear(255, 255);
+    conway.draw();
+    ofSetColor(0,255);
+    ofCircle(ofGetMouseX(), ofGetMouseY(), 5);
+    conway.end();
+    conway.update();
+    
+    ofSetWindowTitle(ofToString(ofGetFrameRate()));
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemAutomata::selfDraw(){
+    
+   
 
 }
 
@@ -104,6 +151,12 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemAutomata::selfDrawBackground(){
+   // glDisable(GL_DEPTH_TEST);
+   // ofSetColor(255);
+    conway.draw();
+    
+    //image.draw(0, 0);
+
 
 	//turn the background refresh off
 	//bClearBackground = false;
