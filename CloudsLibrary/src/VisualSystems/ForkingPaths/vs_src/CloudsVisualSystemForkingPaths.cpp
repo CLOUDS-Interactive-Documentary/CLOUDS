@@ -17,7 +17,7 @@ string CloudsVisualSystemForkingPaths::getSystemName(){
 
 //--------------------------------------------------------------
 void CloudsVisualSystemForkingPaths::selfSetup(){
-	
+	bIs2D = true;
 }
 
 //--------------------------------------------------------------

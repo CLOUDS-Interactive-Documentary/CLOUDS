@@ -29,7 +29,8 @@ void CloudsVisualSystemMemory::selfSetup()
     bSort = true;
     bDeFrag = false;
     bBiDirectionalSort = false;
-    
+    bIs2D = true;
+	
     ofEnableAlphaBlending();
     generate();
 }

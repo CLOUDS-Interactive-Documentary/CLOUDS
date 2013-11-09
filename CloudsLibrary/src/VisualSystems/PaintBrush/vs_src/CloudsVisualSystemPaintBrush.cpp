@@ -15,6 +15,7 @@ string CloudsVisualSystemPaintBrush::getSystemName()
 
 void CloudsVisualSystemPaintBrush::selfSetup()
 {
+	bIs2D = true;
     canvas.allocate(ofGetScreenWidth(), ofGetScreenHeight());
     canvas.begin();
     ofClear(0,0);

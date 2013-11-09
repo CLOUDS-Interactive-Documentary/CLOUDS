@@ -134,6 +134,8 @@ void CloudsVisualSystemExampleBox2D::guiRenderEvent(ofxUIEventArgs &e)
 // geometry should be loaded here
 void CloudsVisualSystemExampleBox2D::selfSetup()
 {
+	bIs2D = true;
+	
     box2d.init();
     box2d.setGravity(0, 7);
     box2d.createBounds();

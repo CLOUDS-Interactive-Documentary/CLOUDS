@@ -88,7 +88,8 @@ void CloudsVisualSystemExampleMPMFluid::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemExampleMPMFluid::selfSetup()
 {
     fluid.setup(50000, 64, 40);
-
+	bIs2D = true;
+	
     nParticles = 20000;
     density = 5;
     stiffness = 0.5;

@@ -18,7 +18,8 @@ void CloudsVisualSystemVision::selfSetup()
 {
     currentMode = OpticalFlow;
     curFlow = &farneback;
-    
+    bIs2D = true;
+	
     scale = 2;
     movieIndex =0;
     pyrScale = 0.5;

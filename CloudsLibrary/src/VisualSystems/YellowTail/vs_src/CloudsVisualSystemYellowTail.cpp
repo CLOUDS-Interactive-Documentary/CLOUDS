@@ -18,6 +18,7 @@ void CloudsVisualSystemYellowTail::selfSetup(){
 	
 	ofBackground(0,0,0);
 	bUpdatingGeometry = true;
+	bIs2D = true;
 	
 	minimumTravelForNewPoint = 3;
 	mNewGestureStyle = GestureStyleTraveling;
