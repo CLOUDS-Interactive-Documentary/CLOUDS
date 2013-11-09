@@ -928,7 +928,7 @@ void CloudsVisualSystem::setupGui()
 vector<string> CloudsVisualSystem::getPresets()
 {
 	vector<string> presets;
-	string presetPath = getVisualSystemDataPath()+"Presets/";
+	string presetPath = getVisualSystemDataPath() + "Presets/";
 	ofDirectory presetsFolder = ofDirectory(presetPath);
 	cout << "PRESET PATH AT " << presetPath << endl;
 	
