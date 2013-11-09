@@ -192,13 +192,17 @@ void CloudsStoryEngine::guiEvent(ofxUIEventArgs &e)
             
             CloudsClip clip = parser->getClipsWithKeyword("#start")[ b->getSelectedIndeces()[0] ];
             
-            cout << "Selected index  is " << b->getSelectedIndeces()[0] << endl;
+            if(clip.getAllQuestionTopicPairs().size() > 0){
+                cout << "Selected index  is " << b->getSelectedIndeces()[0] << endl;                
+                string topic = clip.getAllQuestionTopicPairs().begin()->first;
+                cout << "SELECTED CLIP ** " << clip.getLinkName() << " WITH TOPIC " << topic << endl;
             
-            string topic = clip.getAllQuestionTopicPairs().begin()->first;
-            cout << "SELECTED CLIP ** " << clip.getLinkName() << " WITH TOPIC " << topic << endl;
-            
-            buildAct(runTest, clip, topic);
-            updateRunData();
+                buildAct(runTest, clip, topic);
+                updateRunData();
+            }
+            else{
+                ofLogError("CloudsStoryEngine::guiEvent") << "Selected index  is " << b->getSelectedIndeces()[0] << " has no questions" << endl;
+            }
         }
     }
 }
