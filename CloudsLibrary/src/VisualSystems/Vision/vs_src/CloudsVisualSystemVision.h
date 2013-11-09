@@ -88,6 +88,8 @@ protected:
     ofImage flowImage;
     ofImage previousFlowImage;
 
+    bool bDrawHeatMap;
+    bool bDrawFlowWindow;
     bool bContourTracking;
     bool bOpticalFlow;
     bool bDrawBoxes;
@@ -122,7 +124,10 @@ protected:
     bool drawDiff;
     bool flowFirstFrame;
     float videoAlpha;
-    bool drawFlowWindow;
+    float thresholdAlpha;
+    float diffAlpha;
+
+
 
     ofVec2f averageFlow;
     int mouseX;
