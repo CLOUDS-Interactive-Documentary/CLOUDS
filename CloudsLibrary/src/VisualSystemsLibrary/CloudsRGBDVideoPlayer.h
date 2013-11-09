@@ -34,9 +34,9 @@ public:
 	bool isDone();
 	
 	// UNIMPLEMENTED
-	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
-		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
-	}
+//	ofPtr<ofVideoPlayer> getSharedPlayerPtr(){
+//		return ofPtr<ofVideoPlayer>( new ofVideoPlayer());
+//	}
 	float getFadeIn(){
 		return fadeInValue;
 	};

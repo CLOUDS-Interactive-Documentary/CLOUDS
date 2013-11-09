@@ -6,6 +6,7 @@
 #include "ofxUI.h"
 #include "CloudsAct.h"
 #include "CloudsSound.h"
+#include "CloudsRGBDVideoPlayer.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -30,7 +31,7 @@ class testApp : public ofBaseApp{
 	CloudsAct* currentAct;
 	CloudsRun run;
 	CloudsSound sound;
-    
+	CloudsRGBDVideoPlayer player;
 //	CloudsWebSocketConnection websockets;
 	
 	//clip events
