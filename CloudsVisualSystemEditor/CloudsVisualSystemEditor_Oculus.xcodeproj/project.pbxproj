@@ -204,7 +204,6 @@
 		E7CB15E9182B458E003A28AE /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF532182B457A003A28AE /* CloudsVisualSystemFireworks.cpp */; };
 		E7CB165F182B458E003A28AE /* CloudsVisualSystemFlocking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF5B9182B457A003A28AE /* CloudsVisualSystemFlocking.cpp */; };
 		E7CB1672182B458E003A28AE /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF5D4182B457A003A28AE /* CloudsVisualSystemForkingPaths.cpp */; };
-		E7CB1684182B458E003A28AE /* CloudsVisualSystemGameOfLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF5F6182B457B003A28AE /* CloudsVisualSystemGameOfLife.cpp */; };
 		E7CB16B6182B458E003A28AE /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF63A182B457B003A28AE /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7CB1748182B458E003A28AE /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF6E8182B457C003A28AE /* CloudsVisualSystemLia.cpp */; };
 		E7CB1749182B458E003A28AE /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7CBF6EA182B457C003A28AE /* ColorPalette.cpp */; };
@@ -1177,8 +1176,6 @@
 		E7CBF5BA182B457A003A28AE /* CloudsVisualSystemFlocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlocking.h; sourceTree = "<group>"; };
 		E7CBF5D4182B457A003A28AE /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E7CBF5D5182B457A003A28AE /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
-		E7CBF5F6182B457B003A28AE /* CloudsVisualSystemGameOfLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemGameOfLife.cpp; sourceTree = "<group>"; };
-		E7CBF5F7182B457B003A28AE /* CloudsVisualSystemGameOfLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemGameOfLife.h; sourceTree = "<group>"; };
 		E7CBF63A182B457B003A28AE /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7CBF63B182B457B003A28AE /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7CBF6E8182B457C003A28AE /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
@@ -2452,7 +2449,6 @@
 				E7CBF422182B4579003A28AE /* Fireworks */,
 				E7CBF534182B457A003A28AE /* Flocking */,
 				E7CBF5BB182B457A003A28AE /* ForkingPaths */,
-				E7CBF5D6182B457A003A28AE /* GameOfLife */,
 				E7CBF5F8182B457B003A28AE /* LaplacianTunnel */,
 				E7CBF63C182B457B003A28AE /* LIA */,
 				E7CBF6F2182B457C003A28AE /* LSystem */,
@@ -3833,23 +3829,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7CBF5D6182B457A003A28AE /* GameOfLife */ = {
-			isa = PBXGroup;
-			children = (
-				E7CBF5F5182B457B003A28AE /* vs_src */,
-			);
-			path = GameOfLife;
-			sourceTree = "<group>";
-		};
-		E7CBF5F5182B457B003A28AE /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7CBF5F6182B457B003A28AE /* CloudsVisualSystemGameOfLife.cpp */,
-				E7CBF5F7182B457B003A28AE /* CloudsVisualSystemGameOfLife.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7CBF5F8182B457B003A28AE /* LaplacianTunnel */ = {
 			isa = PBXGroup;
 			children = (
@@ -4523,7 +4502,6 @@
 				E7CB15E9182B458E003A28AE /* CloudsVisualSystemFireworks.cpp in Sources */,
 				E7CB165F182B458E003A28AE /* CloudsVisualSystemFlocking.cpp in Sources */,
 				E7CB1672182B458E003A28AE /* CloudsVisualSystemForkingPaths.cpp in Sources */,
-				E7CB1684182B458E003A28AE /* CloudsVisualSystemGameOfLife.cpp in Sources */,
 				E7CB16B6182B458E003A28AE /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E7CB1748182B458E003A28AE /* CloudsVisualSystemLia.cpp in Sources */,
 				E7CB1749182B458E003A28AE /* ColorPalette.cpp in Sources */,
