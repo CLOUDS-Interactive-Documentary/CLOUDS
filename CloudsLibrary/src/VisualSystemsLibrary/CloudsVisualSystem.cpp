@@ -363,13 +363,11 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 	  //bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
+            getOculusRift().beginBackground();
+            drawBackground();
+            getOculusRift().endBackground();
+            
 			getOculusRift().baseCamera = &getCameraRef();
-
-			//need a background renderer...
-//			getOculusRift().beginBackground();
-//			drawBackground();
-//			getOculusRift().endBackground();
-			
 			getOculusRift().beginLeftEye();
 			drawScene();
 			getOculusRift().endLeftEye();
@@ -2709,11 +2707,8 @@ void CloudsVisualSystem::drawBackground()
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
-
-					//will ofGetViewportHeight()  this work for both oculus & normal instead of ofGetWidth()/ofGetHeight()
-					//ofGetViewportHeight();...?
-
-					getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
 					mesh.draw();
 					backgroundShader.end();
 				}
@@ -2729,7 +2724,8 @@ void CloudsVisualSystem::drawBackground()
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
-					getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
 					mesh.draw();
 					backgroundShader.end();
 				}

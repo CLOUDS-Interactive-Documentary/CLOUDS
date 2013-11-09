@@ -11,18 +11,18 @@
 #define YTCOLOR_H
 
 
-struct Color {
+struct YellowTailColor {
 public:
 	int r, g, b, a;
 	
-	Color() {
+	YellowTailColor() {
 		r = 255;
 		g = 255;
 		b = 255;
 		a = 255;
 	}
 	
-	Color(int _r, int _g, int _b, int _a) {
+	YellowTailColor(int _r, int _g, int _b, int _a) {
 		r = _r;
 		g = _g;
 		b = _b;

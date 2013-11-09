@@ -30,7 +30,7 @@
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
 //#include "3DModelVisualSystem.h"
-#include "CloudsVisualSystemMandala.h"
+//#include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMazeGenerator.h"
 #include "CloudsVisualSystemRandomDigits.h"
 
@@ -108,7 +108,7 @@ struct Mapping {
 	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
-	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
+//	{ "MandalaVisualSystem", &fCreate<CloudsVisualSystemMandala> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
 	{ "Metaballs", &fCreate<CloudsVisualSystem> },

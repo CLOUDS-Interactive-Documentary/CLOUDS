@@ -125,6 +125,8 @@ protected:
 	
     ofImage      image;
     ofxFXObject  conway;
+    
+   // ofFbo               canvas;
 	//ofFloatColor color1HSB;
 	//ofFloatColor color2HSB;
 
