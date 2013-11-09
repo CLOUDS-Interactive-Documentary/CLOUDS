@@ -40,11 +40,14 @@ void CloudsVisualSystemVision::selfSetup()
     
     videoAlpha = 128;
     windowAlpha = 128;
+    thresholdAlpha = 128;
     
     bContourTracking = false;
     bOpticalFlow = false;
     bDrawBoxes = false;
     bDrawLines = false;
+
+    bDrawHeatMap = false;
     
     flowLineMultiplier = 1;
     flowColorMapRange = 50;
@@ -108,14 +111,14 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
     
-    opticalFlowGui->addSpacer();
-    ofxUIToggle *drawFlowbtn = opticalFlowGui->addToggle("OPTICAL FLOW",bOpticalFlow);
-    opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    opticalFlowGui->addSpacer();
+//    ofxUIToggle *drawFlowbtn = opticalFlowGui->addToggle("OPTICAL FLOW",bOpticalFlow);
+//    opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addLabel("VISUAL PARAMS");
     
     opticalFlowGui->addSpacer();
-    ofxUIButton *drawflowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
-    opticalFlowGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
+    ofxUIButton *bDrawFlowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
+    opticalFlowGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
     
     opticalFlowGui->addSpacer();
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
@@ -142,9 +145,9 @@ void CloudsVisualSystemVision::selfSetupGui()
     contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
     contourTrackingGui->copyCanvasStyle(gui);
     contourTrackingGui->copyCanvasProperties(gui);
-    contourTrackingGui->addSpacer();
-    ofxUIToggle *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING",bContourTracking);
-    contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    contourTrackingGui->addSpacer();
+//    ofxUIToggle *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING",bContourTracking);
+//    contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     contourTrackingGui->addSpacer();
     contourTrackingGui->addLabel("VISUAL PARAMS");
     contourTrackingGui->addSpacer();
@@ -246,7 +249,27 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
         window.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
         
         for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
-            if(window.inside(flowMesh.getVertex(i))){
+            if(bDrawFlowWindow){
+                if(window.inside(flowMesh.getVertex(i))){
+                    ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
+                    
+                    pos *= flowLineMultiplier;
+                    pos.x += flowMesh.getVertex(i).x;
+                    pos.y += flowMesh.getVertex(i).y;
+                    flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
+                    
+                    float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
+                    
+                    float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+                    ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
+                    flowMesh.setColor(i+1,magnitudeColor);
+                }
+                else{
+                    flowMesh.setColor(i,0);
+                    flowMesh.setColor(i+1,0);
+                }
+            }
+            else{
                 ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
                 
                 pos *= flowLineMultiplier;
@@ -260,10 +283,8 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
                 ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
                 flowMesh.setColor(i+1,magnitudeColor);
             }
-            else{
-                flowMesh.setColor(i,0);
-                flowMesh.setColor(i+1,0);
-            }
+            
+
         }
         flowFirstFrame = false;
     }
@@ -353,6 +374,31 @@ void CloudsVisualSystemVision::updateCVParameters(){
 void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
     cout<<"LOADED PRESET: "<<presetPath<<endl;
     
+    
+    ofxUIToggle *opticalFlowBtn = (ofxUIToggle*)rdrGui->getWidget("OPTICAL FLOW");
+    bOpticalFlow = opticalFlowBtn->getValue();
+    if(bOpticalFlow){
+        setMode(OpticalFlow);
+        
+    }
+    
+    ofxUIToggle *ContourBtn = (ofxUIToggle*)rdrGui->getWidget("CONTOUR TRACKING");
+    bContourTracking = ContourBtn->getValue();
+    if(bContourTracking){
+        setMode(ContourTracking);   
+    }
+    
+    ofxUIToggle *AbsDiffBtn = (ofxUIToggle*)rdrGui->getWidget("ABS DIFF HEAT MAP");
+    bDrawHeatMap = AbsDiffBtn->getValue();
+    if(bDrawHeatMap){
+        setMode(HeatMap);
+    }
+
+    ofxUIToggle *ThresholBtn = (ofxUIToggle*)rdrGui->getWidget("DRAW THRESHOLDED");
+    drawThresholded = ThresholBtn->getValue();
+
+    
+    
     ofxUIRadio* r =(ofxUIRadio* ) rdrGui->getWidget("VIDEO");
     
     vector<ofxUIToggle* >t = r->getToggles();
@@ -369,30 +415,6 @@ void CloudsVisualSystemVision::selfPresetLoaded(string presetPath){
             cout<<"HERE "<<movieStrings[i] <<endl;
             loadMovieAtIndex(i);
         }
-    }
-    
-    ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
-    vector<ofxUIToggle* >modes = modeRadio->getToggles();
-    
-    for(int k=0; k<modes.size();k++){
-        if(modes[k]->getValue()){
-            if(modes[k]->getName() == "OPTICAL FLOW" ){
-                setMode(OpticalFlow);
-            }
-            else if(modes[k]->getName() == "CONTOUR TRACKING" ){
-                setMode(ContourTracking);
-            }
-            else if(modes[k]->getName() == "ABS DIFF HEAT MAP"){
-                setMode(HeatMap);
-            }
-            else if(modes[k]->getName() == "DRAW THRESHOLDED"){
-                drawThresholded = true;
-                drawPlayer = false;
-                drawDiff = false;
-            }
-            
-        }
-        
     }
     
 }
@@ -420,37 +442,26 @@ void CloudsVisualSystemVision::selfSetupSystemGui()
 
 void CloudsVisualSystemVision::selfSetupRenderGui()
 {
-    /*
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-     ofxUIButton *loadbtn = rdrGui->addButton("OPTICAL FLOW", false);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *updatebtn = rdrGui->addToggle("CONTOUR TRACKING", false);
-     ofxUIButton *diffbtn = rdrGui->addToggle("DRAW DIFF", &drawDiff);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *drawthresholdedbtn = rdrGui->addToggle("DRAW THRESHOLDED", &drawThresholded);
-     ofxUIButton *nextVideoButton = rdrGui->addToggle("NEXT VIDEO", false);
-     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-     ofxUIButton *prevVideoButton = rdrGui->addToggle("PREVIOUS VIDEO", false);
-     */
-    vector<string> modes;
-    modes.push_back("OPTICAL FLOW");
-    modes.push_back("CONTOUR TRACKING");
-    modes.push_back("ABS DIFF HEAT MAP");
-    modes.push_back("DRAW THRESHOLDED");
-    
+
+
     rdrGui->addSpacer();
     rdrGui->addLabel("PLAY MODES");
-    rdrGui->addRadio("MODE", modes);
+    ofxUIToggle *opticalFlowBtn = rdrGui->addToggle("OPTICAL FLOW",bOpticalFlow);
+    ofxUIToggle *ContourBtn = rdrGui->addToggle("CONTOUR TRACKING",bContourTracking);
+    ofxUIToggle *AbsDiffBtn = rdrGui->addToggle("ABS DIFF HEAT MAP",bDrawHeatMap);
+    ofxUIToggle *ThresholBtn = rdrGui->addToggle("DRAW THRESHOLDED",drawThresholded);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
-    ofxUIButton *drawflowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
+    ofxUIButton *bDrawFlowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
-    rdrGui->addSlider("VIDEO ALPHA", 0, 255, &videoAlpha);
+    rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
+    rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
+    rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
+    rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -460,34 +471,31 @@ void CloudsVisualSystemVision::selfUpdate(){
     player->update();
     frameIsNew = player->isFrameNew();
     
-    if(currentMode == ContourTracking){
-        
         updateContourTracking();
-    }
-    else if(currentMode == OpticalFlow){
-        
         updateOpticalFlow();
-    }
-    else if(currentMode == HeatMap){
-        
         updateHeatMap();
-    }
 }
 
 void CloudsVisualSystemVision::selfDrawBackground()
 {
     
-    ofSetColor(128,videoAlpha);
+
     
     if(drawPlayer){
+        ofPushStyle();
+        ofSetColor(videoAlpha);
         player->draw(0,0,ofGetWidth(),ofGetHeight());
+        ofPopStyle();
     }
     if(drawThresholded){
-        flowMesh.draw();
+        
+        ofPushStyle();
+        ofSetColor(thresholdAlpha);        
         thresholded.draw(0,0, ofGetWidth(), ofGetHeight());
+        ofPopStyle();
     }
     
-    if(currentMode == ContourTracking){
+    if(bContourTracking){
         ofPushMatrix();
         ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
         contourFinder.draw();
@@ -495,19 +503,18 @@ void CloudsVisualSystemVision::selfDrawBackground()
         for(int i = 0; i < followers.size(); i++) {
             float b = followers[i].getLifeTime();
             followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers);
-            //            followers[i].draw(lineWidth,bDrawLines,bDrawBoxes);
-            
         }
         ofPopMatrix();
         
     }
-    else if(currentMode == OpticalFlow){
+    
+    if(bOpticalFlow){
         ofTexture tex = player->getTextureReference();
-        if(drawFlowWindow){
+        if(bDrawFlowWindow){
             
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200,windowAlpha);
+            ofSetColor(windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
             ofSetLineWidth(flowLineWidth);
@@ -518,7 +525,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
         else{
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(200,windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.draw(0,0);
             ofSetLineWidth(flowLineWidth);
@@ -528,8 +534,10 @@ void CloudsVisualSystemVision::selfDrawBackground()
         }
         
     }
-    else if(currentMode == HeatMap){
-        
+    
+    if(bDrawHeatMap){
+        ofPushStyle();
+        ofSetColor(128,diffAlpha);
         diff.draw(0, 0,ofGetWidth(),ofGetHeight());
         
         float diffRed = diffMean[0];
@@ -545,6 +553,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
         ofRect(0,10, mapGreen, 10);
         ofSetColor(0, 0, 255);
         ofRect(0, 20,  mapBlue, 10);
+        ofPopStyle();
     }
 }
 
@@ -616,22 +625,14 @@ void CloudsVisualSystemVision::setMode(CVMode mode){
         case OpticalFlow:
             cout<<"setting mode to optical flow"<<endl;
             currentMode = OpticalFlow;
-            drawDiff = false;
-            drawThresholded = false;
             break;
             
         case ContourTracking:
             currentMode = ContourTracking;
-            drawDiff = false;
-            drawThresholded = false;
-            drawPlayer = true;
             break;
             
         case HeatMap:
-            drawDiff = true;
             currentMode = HeatMap;
-            drawThresholded = false;
-            drawPlayer =false;
             break;
             
         default:
@@ -644,9 +645,11 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     
     string name = e.widget->getName();
     int kind = e.widget->getKind();
+
     cout<<kind<<" : "<<name<<endl;
     ofxUIRadio* r = (ofxUIRadio*)e.widget;
     ofxUIButton* b  = (ofxUIButton*) e.widget;
+    ofxUIToggle* t  = (ofxUIToggle*) e.widget;
     
     
     
@@ -662,50 +665,38 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     }
     else if (name == "OPTICAL FLOW"){
         setMode(OpticalFlow);
-        
-        ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
-        vector<ofxUIToggle* >modes = modeRadio->getToggles();
+
+//        ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
+//        vector<ofxUIToggle* >modes = modeRadio->getToggles();
         bOpticalFlow = b->getValue();
         
-        for(int k=0; k<modes.size();k++){
-            if(modes[k]->getName() == "OPTICAL FLOW" ){
-                modes[k]->setValue(bOpticalFlow);
-            }
-        }
+//        for(int k=0; k<modes.size();k++){
+//            if(modes[k]->getName() == "OPTICAL FLOW" ){
+//                
+//                modes[k]->setValue(bOpticalFlow);
+//            }
+//        }
     }
     else if( name == "CONTOUR TRACKING" ){
         setMode(ContourTracking);
-        
-        ofxUIRadio* modeRadio =(ofxUIRadio* ) rdrGui->getWidget("MODE");
-        vector<ofxUIToggle* >modes = modeRadio->getToggles();
-        bContourTracking = b->getValue();
-        for(int k=0; k<modes.size();k++){
-            if(modes[k]->getName() == "CONTOUR TRACKING" ){
-                modes[k]->setValue(bContourTracking);
-            }
-        }
-        
+        bContourTracking = t->getValue();
     }
     else if (name == "DRAW PLAYER"){
         drawPlayer = b->getValue();
-        drawThresholded = false;
-        drawDiff = false;
     }
     else if( name == "DRAW THRESHOLDED"){
-        drawThresholded = b->getValue();
-        drawPlayer =false;
-        drawDiff = false;
+        drawThresholded = b->getValue();    
     }
     else if( name == "ABS DIFF HEAT MAP"){
         setMode(HeatMap);
-        
+        bDrawHeatMap = b->getValue();
     }
     else if( name == "CLEAR DIFF"){
         b->setValue(false);
         clearAccumulation();
     }
     else if(name == "FLOW WINDOW"){
-        drawFlowWindow = b->getValue();
+        bDrawFlowWindow = b->getValue();
     }
     
     else if(name=="DRAW BOXES"){
