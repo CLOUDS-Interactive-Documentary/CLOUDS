@@ -29,7 +29,7 @@
 //lars
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsVisualSystemMarchingCubes.h"
-//#include "3DModelVisualSystem.h"
+#include "3DModelVisualSystem.h"
 #include "CloudsVisualSystemMandala.h"
 #include "CloudsVisualSystemMazeGenerator.h"
 #include "CloudsVisualSystemRandomDigits.h"
@@ -90,7 +90,7 @@ struct Mapping {
 	}
 } mapping[] = {
 	
-//	{ "3DModel", &fCreate<CloudsVisualSystem3DModelVisualSystem> },
+	{ "3DModelVisualSystem", &fCreate<CloudsVisualSystem3DModel> },
 	{ "Cities", &fCreate<CloudsVisualSystemCities> },
 //	{ "Colony", &fCreate<CloudsVisualSystemColony> },
 	{ "Connectors", &fCreate<CloudsVisualSystemConnectors> },
@@ -217,9 +217,7 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	if(system == NULL) return;
 
 	#ifndef CLOUDS_NO_VS
-	//remove existing prests
 	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(system->getSystemName());
-	
 	for(int i = 0; i < currentPresets.size(); i++){
 		currentPresets[i].stillPresent = false;
 	}
@@ -247,7 +245,6 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	for(int i = currentPresets.size()-1;  i >= 0; i--){
 		if(!currentPresets[i].stillPresent){
 			cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
-			currentPresets.erase(currentPresets.begin() + i);
 			for(int p = presets.size()-1; p >= 0; p--){
 				if(presets[p].systemName == system->getSystemName() &&
 				   presets[p].presetName == currentPresets[i].presetName)
@@ -257,12 +254,15 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 					break;
 				}
 			}
+			currentPresets.erase(currentPresets.begin() + i);			
 		}
 	}
-	
+
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
-
+	
+	saveKeywords();
+	
 	#endif
 }
 
@@ -276,7 +276,7 @@ void CloudsVisualSystemManager::registerVisualSystem(ofPtr<CloudsVisualSystem> s
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::loadPresets(){
-	
+	cout << "Loading presets " << endl;
 	presets.clear();
 	nameToPresets.clear();
 	keywords.clear();
