@@ -90,6 +90,11 @@ protected:
 
     bool bContourTracking;
     bool bOpticalFlow;
+    bool bDrawBoxes;
+    bool bDrawLines;
+    bool bLifeTime;
+    bool bNumbers;
+    bool bColor;
     
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;

@@ -37,12 +37,14 @@ void CloudsVisualSystemVision::selfSetup()
     useFarneback = true;
     drawPlayer = true;
     drawThresholded =false;
-
+    
     videoAlpha = 128;
     windowAlpha = 128;
     
     bContourTracking = false;
     bOpticalFlow = false;
+    bDrawBoxes = false;
+    bDrawLines = false;
     
     flowLineMultiplier = 1;
     flowColorMapRange = 50;
@@ -85,19 +87,24 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui = new ofxUISuperCanvas("OPTICAL FLOW", gui);
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
+    
     opticalFlowGui->addSpacer();
     ofxUIToggle *drawFlowbtn = opticalFlowGui->addToggle("OPTICAL FLOW",bOpticalFlow);
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    opticalFlowGui->addSpacer();
     opticalFlowGui->addLabel("VISUAL PARAMS");
+    
+    opticalFlowGui->addSpacer();
     ofxUIButton *drawflowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
+    opticalFlowGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
+    
     opticalFlowGui->addSpacer();
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     opticalFlowGui->addSlider("WINDOW WIDTH", 10, 1000, &windowWidth);
     opticalFlowGui->addSlider("WINDOW HEIGHT", 10, 1000, &windowHeight);
-    opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 3, &flowLineMultiplier);
+    opticalFlowGui->addSlider("FLOW LINE LENGTH", 0.5, 8, &flowLineMultiplier);
     opticalFlowGui->addSlider("FLOW COLOUR MAP RANGE", 10, 200, &flowColorMapRange);
     opticalFlowGui->addSlider("FLOW LINE WIDTH", 1, 10, &flowLineWidth);
+    
     opticalFlowGui->addSpacer();
     opticalFlowGui->addLabel("OPTICAL FLOW PARAMS");
     opticalFlowGui->addSlider("PYRSCALE", .5, 0.9, &pyrScale);
@@ -111,16 +118,21 @@ void CloudsVisualSystemVision::selfSetupGui()
     guis.push_back(opticalFlowGui);
     guimap[opticalFlowGui->getName()] = opticalFlowGui;
     
+    
     contourTrackingGui = new ofxUISuperCanvas("CONTOUR TRACKING",gui);
-    opticalFlowGui->addSpacer();
-    ofxUIToggle *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING",bContourTracking);
-    contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     contourTrackingGui->copyCanvasStyle(gui);
     contourTrackingGui->copyCanvasProperties(gui);
+    contourTrackingGui->addSpacer();
+    ofxUIToggle *drawContourbtn = contourTrackingGui->addToggle("CONTOUR TRACKING",bContourTracking);
+    contourTrackingGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     contourTrackingGui->addSpacer();
     contourTrackingGui->addLabel("VISUAL PARAMS");
     contourTrackingGui->addSpacer();
     contourTrackingGui->addSlider("BOX LINE WIDTH", 1, 10, &lineWidth);
+    ofxUIToggle *drawBoxesbtn = contourTrackingGui->addToggle("DRAW BOXES",bDrawBoxes);
+    ofxUIToggle *drawLinesbtn = contourTrackingGui->addToggle("DRAW LINES",bDrawLines);
+    ofxUIToggle *drawNumberssbtn = contourTrackingGui->addToggle("DRAW NUMBERS",bNumbers);
+    ofxUIToggle *drawLifeColorbtn = contourTrackingGui->addToggle("LIFESPAN COLOR",bLifeTime);
     contourTrackingGui->addLabel("BACKGROUND PARAM");
     contourTrackingGui->addSlider("LEARNING TIME", 0,100,&learningTime);
     contourTrackingGui->addSlider("THRESHOLD VALUE", 0,255  ,&thresholdValue);
@@ -419,7 +431,6 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
     rdrGui->addSlider("VIDEO ALPHA", 0, 255, &videoAlpha);
-    rdrGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -463,8 +474,8 @@ void CloudsVisualSystemVision::selfDrawBackground()
         vector<MyTracker>& followers = tracker.getFollowers();
         for(int i = 0; i < followers.size(); i++) {
             float b = followers[i].getLifeTime();
-            
-            followers[i].draw(lineWidth);
+            followers[i].draw(lineWidth, bLifeTime, contourLifetimeColorRange, bDrawBoxes, bDrawLines, bNumbers);
+            //            followers[i].draw(lineWidth,bDrawLines,bDrawBoxes);
             
         }
         ofPopMatrix();
@@ -649,11 +660,11 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         vector<ofxUIToggle* >modes = modeRadio->getToggles();
         bContourTracking = b->getValue();
         for(int k=0; k<modes.size();k++){
-          if(modes[k]->getName() == "CONTOUR TRACKING" ){
-              modes[k]->setValue(bContourTracking);
-          }
+            if(modes[k]->getName() == "CONTOUR TRACKING" ){
+                modes[k]->setValue(bContourTracking);
+            }
         }
-
+        
     }
     else if (name == "DRAW PLAYER"){
         drawPlayer = b->getValue();
@@ -676,8 +687,18 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "FLOW WINDOW"){
         drawFlowWindow = b->getValue();
     }
-
-
+    
+    else if(name=="DRAW BOXES"){
+        bDrawBoxes = b->getValue();
+    }
+    else if(name == "DRAW NUMBERS"){
+        bNumbers = b->getValue();
+    }
+    else if(name == "LIFESPAN COLOR"){
+        bLifeTime = b->getValue();
+    }
+    
+    
     if (kind == OFX_UI_WIDGET_TOGGLE){
         thresholded.clear();
         background.reset();
