@@ -194,7 +194,6 @@ CloudsVisualSystemManager::CloudsVisualSystemManager(){
 	allSystemsPopulated = false;
 }
 
-
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateVisualSystems(){
 
@@ -274,19 +273,13 @@ void CloudsVisualSystemManager::loadPresets(){
 		keywordXml.pushTag( "system", i );
 		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
 		keywords[ name ] = presetKeywords;
+		
 		CloudsVisualSystemPreset preset;
-		//if we have populated everything, get the preset it's already set
-//		if(allSystemsPopulated){
-//			preset = getPresetWithID(name);
-//		}
-//		else{
 		vector<string> splitName = ofSplitString(name, "_",true,true);
 		preset.systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
 		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
 		preset.loadTimeInfo();
-
-//		}
 
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
@@ -310,6 +303,15 @@ void CloudsVisualSystemManager::loadPresets(){
         keywordXml.popTag(); //system
 	}
 	
+//#ifndef CLOUDS_NO_VS
+	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
+		CloudsVisualSystemPreset preset;
+		preset.systemName = it->first;
+		preset.presetName = "_default";
+		preset.enabled = false;
+		presets.push_back(preset);
+	}
+//#endif
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
     cout << "** LOADED PRESETS " << presets.size() << endl;
