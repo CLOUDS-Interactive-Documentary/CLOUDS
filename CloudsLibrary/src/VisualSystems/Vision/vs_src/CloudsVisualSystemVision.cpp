@@ -95,8 +95,8 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui->addLabel("VISUAL PARAMS");
     
     opticalFlowGui->addSpacer();
-    ofxUIButton *drawflowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
-    opticalFlowGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
+    ofxUIButton *bDrawFlowWindowbtn = opticalFlowGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
+    opticalFlowGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
     
     opticalFlowGui->addSpacer();
     opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
@@ -227,7 +227,27 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
         window.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
         
         for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
-            if(window.inside(flowMesh.getVertex(i))){
+            if(bDrawFlowWindow){
+                if(window.inside(flowMesh.getVertex(i))){
+                    ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
+                    
+                    pos *= flowLineMultiplier;
+                    pos.x += flowMesh.getVertex(i).x;
+                    pos.y += flowMesh.getVertex(i).y;
+                    flowMesh.setVertex(i+1, ofVec3f( pos.x,pos.y,0));
+                    
+                    float mag =flowMesh.getVertex(i).distance(flowMesh.getVertex(i+1));
+                    
+                    float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+                    ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
+                    flowMesh.setColor(i+1,magnitudeColor);
+                }
+                else{
+                    flowMesh.setColor(i,0);
+                    flowMesh.setColor(i+1,0);
+                }
+            }
+            else{
                 ofVec2f pos = farneback.getFlowOffset(flowMesh.getVertex(i).x/scale, flowMesh.getVertex(i).y/scale );
                 
                 pos *= flowLineMultiplier;
@@ -241,10 +261,8 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
                 ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
                 flowMesh.setColor(i+1,magnitudeColor);
             }
-            else{
-                flowMesh.setColor(i,0);
-                flowMesh.setColor(i+1,0);
-            }
+            
+
         }
         flowFirstFrame = false;
     }
@@ -412,16 +430,16 @@ void CloudsVisualSystemVision::selfSetupRenderGui()
     rdrGui->addRadio("MODE", modes);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *drawplayerbtn = rdrGui->addToggle("DRAW PLAYER", &drawPlayer);
-    ofxUIButton *drawflowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &drawFlowWindow);
+    ofxUIButton *bDrawFlowWindowbtn = rdrGui->addToggle("DRAW FLOW WINDOW", &bDrawFlowWindow);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     ofxUIButton *clearthresholdbtn = rdrGui->addToggle("CLEAR DIFF", false);
     rdrGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     rdrGui->addLabel("VIDEOS");
     rdrGui->addRadio("VIDEO", movieStrings);
-    rdrGui->addSlider("VIDEO ALPHA", 0, 255, &videoAlpha);
-    rdrGui->addSlider("THRESHOLD ALPHA", 0, 255, &thresholdAlpha);
-    rdrGui->addSlider("DIFF ALPHA", 0, 255, &diffAlpha);
-    rdrGui->addSlider("FLOW WINDOW ALPHA", 0, 255, &windowAlpha);
+    rdrGui->addSlider("VIDEO TINT", 0, 255, &videoAlpha);
+    rdrGui->addSlider("THRESHOLD TINT", 0, 255, &thresholdAlpha);
+    rdrGui->addSlider("DIFF TINT", 0, 255, &diffAlpha);
+    rdrGui->addSlider("FLOW WINDOW TINT", 0, 255, &windowAlpha);
     rdrGui->autoSizeToFitWidgets();
     ofAddListener(rdrGui->newGUIEvent, this, &CloudsVisualSystemVision::selfGuiEvent);
     
@@ -480,7 +498,7 @@ void CloudsVisualSystemVision::selfDrawBackground()
     }
     else if(currentMode == OpticalFlow){
         ofTexture tex = player->getTextureReference();
-        if(drawFlowWindow){
+        if(bDrawFlowWindow){
             
             ofPushMatrix();
             ofPushStyle();
@@ -495,7 +513,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
         else{
             ofPushMatrix();
             ofPushStyle();
-            ofSetColor(windowAlpha);
             ofScale(ofGetWidth()/player->getWidth(),ofGetHeight()/player->getHeight());
             tex.draw(0,0);
             ofSetLineWidth(flowLineWidth);
@@ -680,7 +697,7 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
         clearAccumulation();
     }
     else if(name == "FLOW WINDOW"){
-        drawFlowWindow = b->getValue();
+        bDrawFlowWindow = b->getValue();
     }
     
     else if(name=="DRAW BOXES"){

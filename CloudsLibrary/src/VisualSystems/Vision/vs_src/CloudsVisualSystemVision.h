@@ -124,7 +124,7 @@ protected:
     float videoAlpha;
     float thresholdAlpha;
     float diffAlpha;
-    bool drawFlowWindow;
+    bool bDrawFlowWindow;
 
 
     ofVec2f averageFlow;
