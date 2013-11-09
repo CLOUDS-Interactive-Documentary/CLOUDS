@@ -210,7 +210,60 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 
     loadPresets();
 #endif
-    
+}
+
+//--------------------------------------------------------------------
+void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem> system){
+	if(system == NULL) return;
+
+	#ifndef CLOUDS_NO_VS
+	//remove existing prests
+	vector<CloudsVisualSystemPreset>& currentPresets = getPresetsForSystem(system->getSystemName());
+	
+	for(int i = 0; i < currentPresets.size(); i++){
+		currentPresets[i].stillPresent = false;
+	}
+
+	//load all actual presets
+	vector<string> systemPresets = system->getPresets();
+	for(int p = 0; p < systemPresets.size(); p++){
+		if( !systemHasPreset( system->getSystemName(), systemPresets[p] ) ){
+			cout << "FOUND NEW PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+			CloudsVisualSystemPreset preset;
+			preset.presetName = systemPresets[ p ];
+			preset.systemName = system->getSystemName();
+			preset.loadTimeInfo();
+			preset.stillPresent = true;
+			presets.push_back(preset);
+			nameToPresets[preset.systemName].push_back( preset );
+		}
+		else{
+			cout << "FOUND EXISTING PRESET " << system->getSystemName() << " " << systemPresets[p]  << endl;
+			CloudsVisualSystemPreset& preset = getPresetForSystem( system->getSystemName(), systemPresets[p] );
+			preset.stillPresent = true;
+		}
+	}
+	
+	for(int i = currentPresets.size()-1;  i >= 0; i--){
+		if(!currentPresets[i].stillPresent){
+			cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
+			currentPresets.erase(currentPresets.begin() + i);
+			for(int p = presets.size()-1; p >= 0; p--){
+				if(presets[p].systemName == system->getSystemName() &&
+				   presets[p].presetName == currentPresets[i].presetName)
+				{
+					cout << "found side-by-side preset " << endl;
+					presets.erase(presets.begin() + p);
+					break;
+				}
+			}
+		}
+	}
+	
+	sort(presets.begin(), presets.end(), preset_sort);
+	populateEnabledSystemIndeces();
+
+	#endif
 }
 
 //--------------------------------------------------------------------
@@ -235,37 +288,6 @@ void CloudsVisualSystemManager::loadPresets(){
 		ofSystemAlertDialog("UNABLE TO LOAD KEYWORD FILE! " + keywordsFile + " Do not proceed");
 		return;
 	}
-	
-	//This is flagged if we don't want this app to be dependent on visual systems
-	//they presets will then be loaded all from keywords file
-//#ifndef CLOUDS_NO_VS
-//
-//	for(int i = 0; i < systems.size(); i++){
-//		vector<string> systemPresets = systems[i]->getPresets();
-//		
-//		if(systemPresets.size() == 0){
-//			cout << "NO PRESETS for SYSTEM " << systems[i]->getSystemName() << endl;
-//			CloudsVisualSystemPreset preset;
-//			preset.systemName = systems[i]->getSystemName();
-//			preset.presetName = "no-preset";
-//			preset.system = systems[i];
-//			
-//			nameToPresets[preset.systemName].push_back( preset );
-//			presets.push_back(preset);
-//		}
-//		else {
-//			for(int p = 0; p < systemPresets.size(); p++){
-//				CloudsVisualSystemPreset preset;
-//				preset.presetName = systemPresets[p];
-//				preset.systemName = systems[i]->getSystemName();
-//				preset.system = systems[i];
-//				preset.loadTimeInfo();
-//				presets.push_back(preset);
-//				nameToPresets[preset.systemName].push_back( preset );
-//			}
-//		}
-//	}
-//#endif
 	
 	int numSystems = keywordXml.getNumTags("system");
 	for(int i = 0; i < numSystems; i++){
@@ -309,6 +331,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.systemName = it->first;
 		preset.presetName = "_default";
 		preset.enabled = false;
+		nameToPresets[preset.systemName].push_back(preset);
 		presets.push_back(preset);
 	}
 //#endif
@@ -376,7 +399,7 @@ void CloudsVisualSystemManager::saveKeywords(){
         for (int i =0; i<clips.size(); i++) {
             keywordXml.addValue("clip",clips[i]);
         }
-        keywordXml.popTag();//suppressions
+        keywordXml.popTag(); // suppressions
 		
 		//COMMENT
 		keywordXml.addValue("comments", preset.comments);
@@ -432,6 +455,17 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem
 		ofLogError() << "Couldn't find presets for system " << systemName << endl;
 	}
 	return nameToPresets[systemName];
+}
+
+//--------------------------------------------------------------------
+bool CloudsVisualSystemManager::systemHasPreset(string systemName, string presetName){
+	vector<CloudsVisualSystemPreset>& presets = getPresetsForSystem(systemName);
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].presetName == presetName){
+			return true;
+		}
+	}
+	return false;
 }
 
 //--------------------------------------------------------------------

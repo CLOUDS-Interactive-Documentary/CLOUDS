@@ -132,7 +132,15 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (IBAction) updatePresets:(id)sender
 {
-	visualSystems.loadPresets();
+//	visualSystems.loadPresets();
+	if(presetTable.selectedRow >= 0){
+		visualSystems.getPresets()[presetTable.selectedRow].getID();
+		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+		if(system != NULL){
+			cout << "updating presets for " << system->getSystemName() << endl;
+			visualSystems.updatePresetsForSystem( system );
+		}
+	}
 	
 	[clipTable reloadData];
 	[suppressedClipTable reloadData];

@@ -27,5 +27,6 @@ class CloudsVisualSystemPreset {
 	vector<string> allKeywords; // only filled out when the preset is scheduled
 	bool randomlySelected;
 	
+	bool stillPresent;
 	float currentScore;
 };

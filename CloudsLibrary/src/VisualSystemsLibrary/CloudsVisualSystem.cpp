@@ -521,9 +521,10 @@ void CloudsVisualSystem::setupRGBDTransforms(){
 
 void CloudsVisualSystem::exit()
 {
-//    delete colorPalletes;
-//    delete bgColor;
-//    delete bgColor2;
+	if( !bIsSetup ){
+		return;
+	}
+	
 	selfExit();
 	cout << "CLEANING UP! " << getSystemName() << endl;
 	
@@ -2435,8 +2436,9 @@ void CloudsVisualSystem::saveGUIS()
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     
     saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
-    
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+    if(timeline != NULL){
+		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+	}
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
