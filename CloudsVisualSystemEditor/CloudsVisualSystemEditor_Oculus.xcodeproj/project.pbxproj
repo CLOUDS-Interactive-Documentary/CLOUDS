@@ -2516,8 +2516,8 @@
 		E7CB0090182B4582003A28AE /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7CB0091182B4582003A28AE /* CloudsVisualSystemOpenP5SpaceJunk.cpp */,
 				E7CB0092182B4582003A28AE /* CloudsVisualSystemOpenP5SpaceJunk.h */,
+				E7CB0091182B4582003A28AE /* CloudsVisualSystemOpenP5SpaceJunk.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
