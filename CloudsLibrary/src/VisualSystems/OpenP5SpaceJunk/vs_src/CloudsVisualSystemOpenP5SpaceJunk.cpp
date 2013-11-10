@@ -62,7 +62,6 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent(ofxUIEventArgs &e){
 	
     if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		shouldRegenerate = true;
-//		selfBegin();
 	}
 }
 
@@ -91,37 +90,10 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
     
     ang = 0;
     
+    shouldRegenerate = true;
+	
     
-    
-	for (int i=0; i<limit; i++) {
-     //   Cube.ofColor(color1);
-		if(ofRandomuf() > .8){
-			list.push_back( Cube(ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
-								 ofRandom(YrandMin*1.5, YrandMax*1.5),
-								 ofRandom(ZrandMin*1.5, ZrandMax*1.5),  // 4,20 4,20, 2,20
-								 
-								 ofRandom(-140, 140), //pose
-								 ofRandom(-140, 140),
-								 ofRandom(-140, 140),
-								 
-								 ofRandom(XrotMin*1.5, XrotMax*1.5), //rot
-								 ofRandom(YrotMin*1.5, YrotMax*1.5),
-								 ofRandom(ZrotMin*1.5, ZrotMax*1.5) ) );
-		}
-		else {
-			list.push_back( Cube(ofRandom(XrandMin, XrandMax), //scale
-								 ofRandom(YrandMin, YrandMax),
-								 ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
-								 
-								 ofRandom(-140, 140), //pose
-								 ofRandom(-140, 140),
-								 ofRandom(-140, 140),
-								 
-								 ofRandom(XrotMin, XrotMax), //rot
-								 ofRandom(YrotMin, YrotMax),
-								 ofRandom(ZrotMin, ZrotMax) ) );
-		}
-	}
+
 	
 
 
@@ -154,12 +126,41 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfUpdate(){
 		shouldRegenerate = false;
 		list.clear();
 		
-		for (int i=0; i<limit; i++) {
-			//Cube.ofColor(color1);
-			list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
-								 ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
-								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
-		}		
+		cout << "REGENERATING" << endl;
+		
+		for (int i = 0; i < limit; i++) {
+
+			if(ofRandomuf() > .8){
+				list.push_back( Cube(ofRandom(XrandMin*1.5, XrandMax*1.5), //scale
+									 ofRandom(YrandMin*1.5, YrandMax*1.5),
+									 ofRandom(ZrandMin*1.5, ZrandMax*1.5),  // 4,20 4,20, 2,20
+									 
+									 ofRandom(-140, 140), //pose
+									 ofRandom(-140, 140),
+									 ofRandom(-140, 140),
+									 
+									 ofRandom(XrotMin*1.5, XrotMax*1.5), //rot
+									 ofRandom(YrotMin*1.5, YrotMax*1.5),
+									 ofRandom(ZrotMin*1.5, ZrotMax*1.5) ) );
+				}
+				else {
+					list.push_back( Cube(ofRandom(XrandMin, XrandMax), //scale
+										 ofRandom(YrandMin, YrandMax),
+										 ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+										 
+										 ofRandom(-140, 140), //pose
+										 ofRandom(-140, 140),
+										 ofRandom(-140, 140),
+										 
+										 ofRandom(XrotMin, XrotMax), //rot
+										 ofRandom(YrotMin, YrotMax),
+										 ofRandom(ZrotMin, ZrotMax) ) );
+
+			}
+//			list.push_back( Cube(ofRandom(XrandMin, XrandMax), ofRandom(YrandMin, YrandMax), ofRandom(ZrandMin, ZrandMax),  // 4,20 4,20, 2,20
+//								 ofRandom(-140, 140), ofRandom(-140, 140), ofRandom(-140, 140),
+//								 ofRandom(XrotMin, XrotMax), ofRandom(YrotMin, YrotMax), ofRandom(ZrotMin, ZrotMax) ) );
+		}
 	}
 }
 
@@ -181,19 +182,23 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     */ 
     
     ofPushStyle();
-    glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_DEPTH_TEST);
     ofBackground(0);
     
-    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
-    ofRotateY(ofRadToDeg(ang));     //Y rotation
-    mat->begin();
-    for (int i = 0;i < limit; i++) {
+	ofPushMatrix();
+	ofEnableAlphaBlending();
+	
+//    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
+//    ofRotateY(ofRadToDeg(ang));     //Y rotation
+//    mat->begin();
+    for (int i = 0;i < list.size(); i++) {
 		list[i].draw();
 	}
-    mat->end(); //enables material
+//    mat->end(); //enables material
 	
     ofPopStyle();
-    
+    ofPopMatrix();
+	
     ang += (speed_ / 10000); //angular rotation speed
     
 }
