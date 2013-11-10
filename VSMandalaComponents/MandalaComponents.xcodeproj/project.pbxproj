@@ -129,20 +129,6 @@
 		E75647A8182F688F00E57F6D /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5055DFA0181ED75200761DA0 /* CloudsVisualSystemMandala.cpp */; };
 		E75647A9182F688F00E57F6D /* MandalaComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5017980B182AB78A0077298A /* MandalaComponent.cpp */; };
 		E75647AA182F688F00E57F6D /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5017980E182AB7D80077298A /* SurfacePoint.cpp */; };
-		E75647AB182F688F00E57F6D /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5017983F182B66150077298A /* facingRatio.frag */; };
-		E75647AC182F688F00E57F6D /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50179840182B66150077298A /* facingRatio.vert */; };
-		E75647AD182F688F00E57F6D /* noduleShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50179841182B66150077298A /* noduleShader.frag */; };
-		E75647AE182F688F00E57F6D /* noduleShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50179842182B66150077298A /* noduleShader.vert */; };
-		E75647AF182F688F00E57F6D /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50179843182B66150077298A /* normalShader.frag */; };
-		E75647B0182F688F00E57F6D /* normalShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50179844182B66150077298A /* normalShader.vert */; };
-		E75647B1182F688F00E57F6D /* ribbonShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50179845182B66150077298A /* ribbonShader.frag */; };
-		E75647B2182F688F00E57F6D /* ribbonShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50179846182B66150077298A /* ribbonShader.vert */; };
-		E75647B3182F688F00E57F6D /* simple.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50179847182B66150077298A /* simple.frag */; };
-		E75647B4182F688F00E57F6D /* simple.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50179848182B66150077298A /* simple.vert */; };
-		E75647B5182F688F00E57F6D /* surfaceShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50179849182B66150077298A /* surfaceShader.frag */; };
-		E75647B6182F688F00E57F6D /* surfaceShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5017984A182B66150077298A /* surfaceShader.vert */; };
-		E75647B7182F688F00E57F6D /* noiseSurface.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5009337E182BE0040098FCB1 /* noiseSurface.frag */; };
-		E75647B8182F688F00E57F6D /* noiseSurface.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5009337F182BE0040098FCB1 /* noiseSurface.vert */; };
 		E75647BA182F688F00E57F6D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E75647BB182F688F00E57F6D /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E75647BC182F688F00E57F6D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -162,7 +148,7 @@
 		E75647CA182F688F00E57F6D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E75647CB182F688F00E57F6D /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CF77E41753FEA0006B7D41 /* libsndfile.a */; };
 		E75647CE182F688F00E57F6D /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E75649F0182F68B200E57F6D /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7564936182F68B200E57F6D /* ofxOculusRift.cpp */; };
+		E7564C10182F6A0200E57F6D /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7564B56182F6A0100E57F6D /* ofxOculusRift.cpp */; };
 		E761F4D81622CA3D00029E43 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
 		E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB61714899C00705E7A /* tinyxml.cpp */; };
 		E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7846FB81714899C00705E7A /* tinyxmlerror.cpp */; };
@@ -389,8 +375,8 @@
 		E72FF12017E688FE0007780D /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
 		E75647D2182F688F00E57F6D /* MandalaComponents copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MandalaComponents copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75647D3182F689000E57F6D /* MandalaComponents copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MandalaComponents copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/VSMandalaComponents/MandalaComponents copy-Info.plist"; sourceTree = "<absolute>"; };
-		E7564936182F68B200E57F6D /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
-		E7564937182F68B200E57F6D /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
+		E7564B56182F6A0100E57F6D /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
+		E7564B57182F6A0100E57F6D /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846F411714887E00705E7A /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		E7846F421714887E00705E7A /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -893,7 +879,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				E75647D4182F68AF00E57F6D /* ofxOculusRift */,
+				E75649F4182F69FF00E57F6D /* ofxOculusRift */,
 				5055DDA6181ED50000761DA0 /* ofxSimpleSurface */,
 				5055DBA2181B06EE00761DA0 /* ofxSimpleSpline */,
 				5055DB82181B06DA00761DA0 /* ofxObjLoader */,
@@ -1011,20 +997,20 @@
 			path = src/VisualSystemsLibrary;
 			sourceTree = "<group>";
 		};
-		E75647D4182F68AF00E57F6D /* ofxOculusRift */ = {
+		E75649F4182F69FF00E57F6D /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
-				E7564935182F68B200E57F6D /* src */,
+				E7564B55182F6A0100E57F6D /* src */,
 			);
 			name = ofxOculusRift;
 			path = ../../../addons/ofxOculusRift;
 			sourceTree = "<group>";
 		};
-		E7564935182F68B200E57F6D /* src */ = {
+		E7564B55182F6A0100E57F6D /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7564936182F68B200E57F6D /* ofxOculusRift.cpp */,
-				E7564937182F68B200E57F6D /* ofxOculusRift.h */,
+				E7564B56182F6A0100E57F6D /* ofxOculusRift.cpp */,
+				E7564B57182F6A0100E57F6D /* ofxOculusRift.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1754,7 +1740,6 @@
 				50179860182B66150077298A /* surfaceShader.vert in Sources */,
 				50093380182BE0040098FCB1 /* noiseSurface.frag in Sources */,
 				50093381182BE0040098FCB1 /* noiseSurface.vert in Sources */,
-				E75649F0182F68B200E57F6D /* ofxOculusRift.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1843,20 +1828,7 @@
 				E75647A8182F688F00E57F6D /* CloudsVisualSystemMandala.cpp in Sources */,
 				E75647A9182F688F00E57F6D /* MandalaComponent.cpp in Sources */,
 				E75647AA182F688F00E57F6D /* SurfacePoint.cpp in Sources */,
-				E75647AB182F688F00E57F6D /* facingRatio.frag in Sources */,
-				E75647AC182F688F00E57F6D /* facingRatio.vert in Sources */,
-				E75647AD182F688F00E57F6D /* noduleShader.frag in Sources */,
-				E75647AE182F688F00E57F6D /* noduleShader.vert in Sources */,
-				E75647AF182F688F00E57F6D /* normalShader.frag in Sources */,
-				E75647B0182F688F00E57F6D /* normalShader.vert in Sources */,
-				E75647B1182F688F00E57F6D /* ribbonShader.frag in Sources */,
-				E75647B2182F688F00E57F6D /* ribbonShader.vert in Sources */,
-				E75647B3182F688F00E57F6D /* simple.frag in Sources */,
-				E75647B4182F688F00E57F6D /* simple.vert in Sources */,
-				E75647B5182F688F00E57F6D /* surfaceShader.frag in Sources */,
-				E75647B6182F688F00E57F6D /* surfaceShader.vert in Sources */,
-				E75647B7182F688F00E57F6D /* noiseSurface.frag in Sources */,
-				E75647B8182F688F00E57F6D /* noiseSurface.vert in Sources */,
+				E7564C10182F6A0200E57F6D /* ofxOculusRift.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2247,12 +2219,20 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -2355,12 +2335,20 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
