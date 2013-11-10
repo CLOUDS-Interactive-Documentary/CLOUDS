@@ -337,6 +337,8 @@ class CloudsVisualSystem {
     map<string, ofxUISuperCanvas *> materialGuis;
 
 	bool bIsSetup;
+	bool bIs2D;
+	
     //LIGHTING
     float *globalAmbientColor;
     bool bSmoothLighting;

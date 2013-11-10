@@ -102,7 +102,8 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfSetup()
     string shadersFolder = getVisualSystemDataPath() + "shaders/";
     updateShader.load("", shadersFolder + "update.frag");
     renderShader.load(shadersFolder + "render.vert", shadersFolder + "render.frag");
-    
+    bIs2D = true;
+	
     // Load defaults.
     numParticles = 10000;
     numAttractors = 200;

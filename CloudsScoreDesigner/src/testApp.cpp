@@ -20,6 +20,7 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
+    storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
@@ -97,6 +98,7 @@ void testApp::update(){
 //	ofShowCursor();
 	//keepin it real
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
+    player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
 
 }

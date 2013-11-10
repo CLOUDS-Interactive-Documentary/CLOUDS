@@ -134,6 +134,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	confirmedDataPath = false;
 	bBarGradient = false;
     bMatchBackgrounds = false;
+	bIs2D = false;
 	//hardcoded for now
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
@@ -307,10 +308,6 @@ string CloudsVisualSystem::getCurrentTopic(){
 	return currentTopic;
 }
 
-//void CloudsVisualSystem::setRenderer(CloudsRGBDVideoPlayer& newRenderer){
-//	sharedRenderer = &newRenderer;
-//}
-
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
 									  string quoteName)
@@ -385,8 +382,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
             //drawBackground();
             getOculusRift().endBackground();
 
-            bool systemIs2d = true;
-            if(systemIs2d){
+            if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
                 if(bClearBackground){
                     ofClear(0, 0, 0, 1.0);

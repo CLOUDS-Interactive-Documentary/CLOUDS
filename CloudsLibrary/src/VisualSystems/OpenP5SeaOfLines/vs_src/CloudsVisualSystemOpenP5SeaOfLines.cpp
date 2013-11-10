@@ -130,7 +130,8 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     minSpeed = 4.0f;
     maxSpeed = 6.0f;
     gravity = 0.1f;
-    
+	
+    bIs2D = true;
     bClearBackground = false;
     
     mesh.setMode(OF_PRIMITIVE_LINES);
