@@ -105,13 +105,13 @@ struct Mapping {
 	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
 	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
 //	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
-	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
+	{ "Lia", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
 	{ "MandalaComponents", &fCreate<CloudsVisualSystemMandala> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
-	{ "Metaballs", &fCreate<CloudsVisualSystem> },
+	{ "Metaballs", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
@@ -126,24 +126,20 @@ struct Mapping {
 	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
 	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
-	//TODO: Rename
-//	{ "Pages", &fCreate<CloudsVisualSystemPages> },
+	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
 	//TODO: Rename
 //	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
-//TODO: Rename	
-//	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
+	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
 //	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
 	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
-	//TODO: Rename
 	{ "Vision", &fCreate<CloudsVisualSystemVision> },
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
-	//TODO: rename class
-//	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
+	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
 	{ "World", &fCreate<CloudsVisualSystemWorld> },
 	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }
 };

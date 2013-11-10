@@ -1,5 +1,5 @@
 #include "CloudsVisualSystemCosmic.h"
-#include "CloudsRGBDVideoPlayer.h"
+//#include "CloudsRGBDVideoPlayer.h"
 
 void CloudsVisualSystemCosmic::setupFloorVbo()
 {
@@ -81,6 +81,9 @@ void CloudsVisualSystemCosmic::selfSetupTimeline()
 
 void CloudsVisualSystemCosmic::selfSetup()
 {
+	
+	vbosAllocated = true;
+	
     colorPalettes = new ofxColorPalettes();
     colorPalettes->loadFromDirectory(getVisualSystemDataPath()+"colors/");
     
@@ -358,34 +361,40 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 
 void CloudsVisualSystemCosmic::selfUpdate()
 {
+	
+	
+	
     time = ofGetElapsedTimef();
     
     if(bUpdateRadius)
     {
-        updateRadiusShader();
+//        updateRadiusShader();
     }
     if(bUpdateAcceleration)
     {
         clearFbo(accFboSrc);
         if(bHomingActive) applyHomeShader();
         if(bElectroActive) applyElectroShader();
-        applyAttractorShader();
-        applySphereShader();
-        updateAcceleration();
+//        applyAttractorShader();
+//        applySphereShader();
+//        updateAcceleration();
     }
     if(bUpdateVelocity)
     {
-        updateVelocity();
-        if(bNoiseActive) applyCurlNoiseShader();
+//        updateVelocity();
+//        if(bNoiseActive) applyCurlNoiseShader();
     }
     if(bUpdatePosition)
     {
-        updatePosition();
+//        updatePosition();
     }
 }
 
 void CloudsVisualSystemCosmic::selfDraw()
 {
+	
+	return;
+	
     drawFloor();
     drawParticles();
 }
@@ -404,12 +413,20 @@ void CloudsVisualSystemCosmic::selfDrawBackground()
 
 void CloudsVisualSystemCosmic::selfEnd()
 {	
-
+	clear();
 }
 
 void CloudsVisualSystemCosmic::selfExit()
 {
-    vboFloor.clear(); 
+
+}
+
+void CloudsVisualSystemCosmic::clear(){
+	if(!vbosAllocated){
+		return;
+	}
+	
+    vboFloor.clear();
 	vbo.clear();
     
     delete[] pos;
@@ -460,6 +477,7 @@ void CloudsVisualSystemCosmic::selfExit()
     attractorPosition.clear();
     
     delete colorPalettes;
+	vbosAllocated = false;
 }
 
 void CloudsVisualSystemCosmic::selfKeyPressed(ofKeyEventArgs & args)
@@ -776,6 +794,8 @@ void CloudsVisualSystemCosmic::updatePosition()
 
 void CloudsVisualSystemCosmic::drawParticles()
 {
+	ofPushStyle();
+	
     glDepthMask(false);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofEnablePointSprites();
@@ -794,10 +814,14 @@ void CloudsVisualSystemCosmic::drawParticles()
     rdrShader.end();
     ofDisablePointSprites();
     glDepthMask(true);
+	
+	ofPopStyle();
 }
 
 void CloudsVisualSystemCosmic::drawFloor()
 {
+	
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
     glDisable(GL_DEPTH_TEST);
     glBlendEquation(GL_FUNC_REVERSE_SUBTRACT);
     
@@ -812,28 +836,29 @@ void CloudsVisualSystemCosmic::drawFloor()
     
     vboFloor.drawElements(GL_TRIANGLES, floorIndexSize);
 
-    floorShader.end();    
+    floorShader.end();
+	glPopAttrib();
 }
 
-void CloudsVisualSystemCosmic::drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight)
-{
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0, 0.0);
-    glVertex3f (x, y, 0.0);
-    
-    glTexCoord2f (texWidth, 0.0);
-    glVertex3f (x+w, y, 0.0);
-    
-    
-    glTexCoord2f (texWidth, texHeight);
-    glVertex3f (x+w, y+h, 0.0);
-    
-    glTexCoord2f (0.0, texHeight);
-    glVertex3f (x, y+h, 0.0);
-    
-    glEnd ();
-}
+//void CloudsVisualSystemCosmic::drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight)
+//{
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0, 0.0);
+//    glVertex3f (x, y, 0.0);
+//    
+//    glTexCoord2f (texWidth, 0.0);
+//    glVertex3f (x+w, y, 0.0);
+//    
+//    
+//    glTexCoord2f (texWidth, texHeight);
+//    glVertex3f (x+w, y+h, 0.0);
+//    
+//    glTexCoord2f (0.0, texHeight);
+//    glVertex3f (x, y+h, 0.0);
+//    
+//    glEnd ();
+//}
 
 void CloudsVisualSystemCosmic::setupFboViewerGui(string name, ofFbo *fbo)
 {

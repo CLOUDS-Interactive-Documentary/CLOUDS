@@ -20,10 +20,6 @@ typedef struct {
 //TODO: rename this to your own visual system
 class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
   public:
-    
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
 		return "LaplacianTunnel";
 	}

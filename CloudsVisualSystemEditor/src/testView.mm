@@ -69,13 +69,15 @@ bool clipsort(CloudsClip a, CloudsClip b){
         
 		if(currentVisualSystem != NULL){
             currentVisualSystem->stopSystem();
+			currentVisualSystem->exit();
         }
 		
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
+		
 		if(currentVisualSystem != NULL){
 			currentVisualSystem->setup();
-			currentVisualSystem->playSystem();
 			currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
+			currentVisualSystem->playSystem();
 		}
 		
 		shouldPlaySelectedRow = false;	
@@ -205,7 +207,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.saveKeywords();
 		
 		[self updateAssociatedClips];
-//        [clipTable reloadData];
+//      [clipTable reloadData];
 //		[suppressedClipTable reloadData];
 		
     }

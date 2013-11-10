@@ -68,8 +68,6 @@ CloudsOrthoCamera::~CloudsOrthoCamera(){
 	disableMouseInput();
 }
 
-
-
 void CloudsOrthoCamera::addSlidersToGui( ofxUISuperCanvas* gui, string label )
 {
 	gui->addLabel( label );
@@ -348,7 +346,7 @@ void CloudsOrthoCamera::disableMouseInput(){
 	if(bMouseInputEnabled){
 		bMouseInputEnabled = false;
 		//ofUnregisterMouseEvents(this);
-		cout << "ENABLING ORTHO CAM MOVEMENT" << endl;		
+		cout << "DISABLING ORTHO CAM MOVEMENT" << endl;		
 		ofRemoveListener(ofEvents().update, this, &CloudsOrthoCamera::update);
 	}
 	setDrag( 0 );
