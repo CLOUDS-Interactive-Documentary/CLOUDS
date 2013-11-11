@@ -11,8 +11,8 @@
 //#endif
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemRipples::selfSetupGui(){
-
+void CloudsVisualSystemRipples::selfSetupGui()
+{
     /*
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
@@ -68,9 +68,7 @@ void CloudsVisualSystemRipples::selfSetup()
     
     float width = ofGetWidth();
     float height = ofGetHeight();
-    
-//    ofSetWindowShape(1224, 768);
-    
+        
     // Load the ripples shader and FBOs.
     ripplesShader.load("", getVisualSystemDataPath() + "shaders/ripples.frag");
     
@@ -129,8 +127,8 @@ void CloudsVisualSystemRipples::selfUpdate()
     ofPushMatrix();
     ripplesSrcFbo.begin();
     {
-        ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
-        ofCircle(ofGetMouseX(), ofGetMouseY(), 10,10);
+        ofSetColor(ofNoise(ofGetFrameNum()) * 255 * 5, 255);
+        ofCircle(ofGetMouseX(), ofGetMouseY(), 10, 10);
     }
     ripplesSrcFbo.end();
     ofPopMatrix();
@@ -175,8 +173,6 @@ void CloudsVisualSystemRipples::selfDrawBackground()
     ofPopStyle();
     
     swap(ripplesSrcFbo, ripplesDstFbo);
-    
-    ofDrawBitmapString("ofxRipples ( damping = " + ofToString(0.995f) + " )", 15,15);
 }
 
 // this is called when your system is no longer drawing.
@@ -192,22 +188,16 @@ void CloudsVisualSystemRipples::selfExit(){
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemRipples::selfKeyPressed(int key)
-{
-//    if (key == OF_KEY_UP) {
-//        rip.damping += 0.01;
-//    }
-//    else if ( key == OF_KEY_DOWN) {
-//        rip.damping -= 0.01;
-//    }
+void CloudsVisualSystemRipples::selfKeyPressed(int key){
+
 }
+
 void CloudsVisualSystemRipples::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemRipples::selfMouseDragged(int x, int y, int button)
-{
-//    rip.damping = ofMap(y, 0, ofGetHeight(), 0.9, 1.0, true);	
+void CloudsVisualSystemRipples::selfMouseDragged(int x, int y, int button){
+
 }
 
 void CloudsVisualSystemRipples::selfMouseMoved(int x, int y, int button){
