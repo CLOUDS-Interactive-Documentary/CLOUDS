@@ -61,20 +61,43 @@ void CloudsVisualSystemRipples::guiRenderEvent(ofxUIEventArgs &e){
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemRipples::selfSetup(){
+void CloudsVisualSystemRipples::selfSetup()
+{
+    bIs2D = true;
+//    bClearBackground = false;
     
-    ofSetFrameRate(60);
-    ofEnableAlphaBlending();
-    ofSetWindowShape(1224, 768);
+    float width = ofGetWidth();
+    float height = ofGetHeight();
     
-    rip.allocate(1224, 768);
-    //bounce.allocate(1224, 768);
+//    ofSetWindowShape(1224, 768);
     
-    //ofImage background;
-    //background.loadImage("fondo.jpg");
+    // Load the ripples shader and FBOs.
+    ripplesShader.load("", getVisualSystemDataPath() + "shaders/ripples.frag");
     
-    //bounce.setTexture(background.getTextureReference(), 1);
+    ripplesSrcFbo.allocate(width, height, GL_RGBA32F);
+    ripplesSrcFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    ripplesSrcFbo.end();
+    
+    ripplesDstFbo.allocate(width, height, GL_RGBA32F);
+    ripplesDstFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    ripplesDstFbo.end();
 
+    // Build a mesh to render a quad.
+    renderMesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+    renderMesh.addVertex(ofVec3f(0, 0));
+    renderMesh.addVertex(ofVec3f(width, 0));
+    renderMesh.addVertex(ofVec3f(width, height));
+    renderMesh.addVertex(ofVec3f(0, height));
+    renderMesh.addTexCoord(ofVec2f(0, 0));
+    renderMesh.addTexCoord(ofVec2f(width, 0));
+    renderMesh.addTexCoord(ofVec2f(width, height));
+    renderMesh.addTexCoord(ofVec2f(0, height));
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -98,21 +121,32 @@ void CloudsVisualSystemRipples::selfSceneTransformation(){
 }
 
 //normal update call
-void CloudsVisualSystemRipples::selfUpdate(){
-    
+void CloudsVisualSystemRipples::selfUpdate()
+{    
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
     
-    rip.begin();
-    ofFill();
-    ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
-    ofCircle(ofGetMouseX(),ofGetMouseY(), 10,10);
-    rip.end();
-    rip.update();
+    ofPushStyle();
+    ofPushMatrix();
+    ripplesSrcFbo.begin();
+    {
+        ofSetColor(ofNoise( ofGetFrameNum() ) * 255 * 5, 255);
+        ofCircle(ofGetMouseX(), ofGetMouseY(), 10,10);
+    }
+    ripplesSrcFbo.end();
+    ofPopMatrix();
+    ofPopStyle();
     
-    //bounce << rip;
-    //bounce.update();
-  
-
+    ripplesDstFbo.begin();
+    ripplesShader.begin();
+    ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 0);
+    ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 1);
+    ripplesShader.setUniform1f("damping", 0.995f);
+    {
+        ofSetColor(255);
+        renderMesh.draw();
+    }
+    ripplesShader.end();
+    ripplesDstFbo.end();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -129,21 +163,22 @@ void CloudsVisualSystemRipples::selfDrawDebug(){
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void CloudsVisualSystemRipples::selfDrawBackground(){
+void CloudsVisualSystemRipples::selfDrawBackground()
+{    
+    ofSetColor(255, 255);
     
-    ofSetColor(0,0,0);
-    ofBackground(0);
-    ofSetColor(255,255);
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    {
+        ripplesDstFbo.draw(0, 0);
+    }
+    ofPopStyle();
     
-    rip.draw(0,0);
-    ofDrawBitmapString("ofxRipples ( damping = " + ofToString(rip.damping) + " )", 15,15);
+    swap(ripplesSrcFbo, ripplesDstFbo);
     
-    
-    //bounce.draw(640,0);
-    //ofDrawBitmapString("ofxBounce", 640+15,15);
-    
-	
+    ofDrawBitmapString("ofxRipples ( damping = " + ofToString(0.995f) + " )", 15,15);
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemRipples::selfEnd(){
@@ -157,23 +192,22 @@ void CloudsVisualSystemRipples::selfExit(){
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemRipples::selfKeyPressed(int key){
-	
-    
-    if (key == OF_KEY_UP){
-        rip.damping += 0.01;
-    } else if ( key == OF_KEY_DOWN){
-        rip.damping -= 0.01;
-    }
+void CloudsVisualSystemRipples::selfKeyPressed(int key)
+{
+//    if (key == OF_KEY_UP) {
+//        rip.damping += 0.01;
+//    }
+//    else if ( key == OF_KEY_DOWN) {
+//        rip.damping -= 0.01;
+//    }
 }
 void CloudsVisualSystemRipples::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemRipples::selfMouseDragged(int x, int y, int button){
-    
-    rip.damping = ofMap(y, 0, ofGetHeight(), 0.9, 1.0, true);
-	
+void CloudsVisualSystemRipples::selfMouseDragged(int x, int y, int button)
+{
+//    rip.damping = ofMap(y, 0, ofGetHeight(), 0.9, 1.0, true);	
 }
 
 void CloudsVisualSystemRipples::selfMouseMoved(int x, int y, int button){
