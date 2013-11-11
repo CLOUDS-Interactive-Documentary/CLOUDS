@@ -1,24 +1,21 @@
 //
-//  ColorManager.h
+//  MazeSettings.h
 //  MazeGenerator
 //
-//  Created by Gal Sasson on 10/25/13.
+//  Created by Gal Sasson on 11/10/13.
 //
 //
 
-#ifndef __MazeGenerator__ColorManager__
-#define __MazeGenerator__ColorManager__
+#ifndef __MazeGenerator__MazeSettings__
+#define __MazeGenerator__MazeSettings__
 
-#include <ofMain.h>
+#include <iostream>
+#include "ofMain.h"
 
-class ParamManager
+class MazeSettings
 {
 public:
-	static ParamManager& getInstance()
-	{
-		static ParamManager instance;
-		return instance;
-	}
+    MazeSettings();
     
     ofFloatColor fogColor;
     ofFloatColor groundColor;
@@ -48,15 +45,6 @@ public:
     float fogDensity;
     float fogStart;
     float fogEnd;
-    
-private:
-    ParamManager();
-    ~ParamManager();
-    
-    ParamManager(ParamManager const&) {cout<<"copy constructor\n";}
-    void operator=(ParamManager const&) {cout<<"assignment operator called\n";}
-    
-    
 };
 
-#endif /* defined(__MazeGenerator__ColorManager__) */
+#endif /* defined(__MazeGenerator__MazeSettings__) */

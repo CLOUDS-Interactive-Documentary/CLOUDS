@@ -10,7 +10,6 @@
 #define __MazeGenerator__MazeCell__
 
 #include <ofMain.h>
-#include "ParamManager.h"
 
 class MazeCell
 {
@@ -24,8 +23,6 @@ public:
     bool visible;
 
     MazeCell(int x, int y, float s, float thickness, float height);
-    
-    void draw(bool isGenerator);
     
     size_t addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs);
     
