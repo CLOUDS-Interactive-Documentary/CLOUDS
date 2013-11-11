@@ -211,11 +211,10 @@ void CloudsVisualSystemCosmic::selfSetup()
     vbo.setColorData(colors, size, GL_STATIC_DRAW);
     vbo.setTexCoordData(texCoords, size, GL_STATIC_DRAW);
     vbo.setIndexData(indices, numIndi, GL_STATIC_DRAW);
-    
     accShader.load(getVisualSystemDataPath()+"shaders/accShader");
     velShader.load(getVisualSystemDataPath()+"shaders/velShader");
     posShader.load(getVisualSystemDataPath()+"shaders/posShader");
-    rdrShader.load(getVisualSystemDataPath()+"shaders/renderShader");    
+    rdrShader.load(getVisualSystemDataPath()+"shaders/renderShader");
     sphereShader.load(getVisualSystemDataPath()+"shaders/sphereShader");
     
     ofDisableArbTex();
@@ -228,6 +227,7 @@ void CloudsVisualSystemCosmic::selfSetup()
     radiusMultiplier = 1.0;
     damping = 0.0;
     
+
     homeShader.load(getVisualSystemDataPath()+"shaders/homeShader");
     bHomingActive = true;
     homeForceLimit = 1.0;
@@ -362,38 +362,36 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 void CloudsVisualSystemCosmic::selfUpdate()
 {
 	
-	
-	
     time = ofGetElapsedTimef();
     
     if(bUpdateRadius)
     {
-//        updateRadiusShader();
+        updateRadiusShader();
     }
     if(bUpdateAcceleration)
     {
         clearFbo(accFboSrc);
-        if(bHomingActive) applyHomeShader();
+		if(bHomingActive) applyHomeShader();
         if(bElectroActive) applyElectroShader();
-//        applyAttractorShader();
-//        applySphereShader();
-//        updateAcceleration();
+        applyAttractorShader();
+        applySphereShader();
+        updateAcceleration();
     }
     if(bUpdateVelocity)
     {
-//        updateVelocity();
-//        if(bNoiseActive) applyCurlNoiseShader();
+        updateVelocity();
+        if(bNoiseActive) applyCurlNoiseShader();
     }
     if(bUpdatePosition)
     {
-//        updatePosition();
+        updatePosition();
     }
 }
 
 void CloudsVisualSystemCosmic::selfDraw()
 {
 	
-	return;
+//	return;
 	
     drawFloor();
     drawParticles();

@@ -1,6 +1,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "CloudsGlobal.h"
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
@@ -60,13 +61,13 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
-	backgroundGradientBar.loadImage("Backgrounds/bar.png");
-	backgroundGradientCircle.loadImage("Backgrounds/circle.png");
+	backgroundGradientBar.loadImage(getDataPath() + "backgrounds/bar.png");
+	backgroundGradientCircle.loadImage(getDataPath() + "backgrounds/circle.png");
 	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
 	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
 	backgroundShader.linkProgram();
 	
-	backgroundShaderLoaded = true;	
+	backgroundShaderLoaded = true;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -191,7 +192,10 @@ void CloudsVisualSystem::setup(){
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
 	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
-    
+	if(!backgroundShaderLoaded){
+		loadBackgroundShader();
+	}
+
 	currentCamera = &cam;
 	
     ofDirectory dir;
@@ -2744,9 +2748,8 @@ void CloudsVisualSystem::drawBackground()
 	
     if(bClearBackground)
 	{
-		if(!backgroundShaderLoaded){
-			loadBackgroundShader();
-		}
+//		if(!backgroundShaderLoaded){
+//		}
 		
 		if(gradientMode != -1){
 //			cout << "drawing grad " << (bBarGradient ? "BAR" : "CIRCE") << endl;
