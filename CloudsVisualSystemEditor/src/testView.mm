@@ -137,7 +137,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //	visualSystems.loadPresets();
 	
 	if(presetTable.selectedRow >= 0){
-		visualSystems.getPresets()[presetTable.selectedRow].getID();
+//		visualSystems.getPresets()[presetTable.selectedRow].getID();
 		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
 		if(system != NULL){
 			cout << "updating presets for " << system->getSystemName() << endl;
@@ -152,6 +152,20 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		
 	}
 	
+}
+
+- (IBAction) deletePreset:(id)sender
+{
+	if(presetTable.selectedRow >= 0){
+		visualSystems.deletePreset( presetTable.selectedRow );
+	}
+	
+	[clipTable reloadData];
+	[suppressedClipTable reloadData];
+	[presetTable reloadData];
+	[allKeywordTable reloadData];
+	[allClipTable reloadData];
+
 }
 
 - (IBAction) updateKeywords:(id)sender

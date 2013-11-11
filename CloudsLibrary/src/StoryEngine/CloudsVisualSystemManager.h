@@ -30,6 +30,7 @@ class CloudsVisualSystemManager {
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
+	
 	bool presetHasKeywords(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(int index);
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
@@ -39,6 +40,7 @@ class CloudsVisualSystemManager {
 	
 	//resets all presets from file
 	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
+	void deletePreset(int i);
 	
 	set<string> getAllKeywords();
 	

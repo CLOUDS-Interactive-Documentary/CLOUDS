@@ -210,6 +210,7 @@ void CloudsVisualSystemManager::populateVisualSystems(){
 
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem> system){
+	
 	if(system == NULL) return;
 
 	#ifndef CLOUDS_NO_VS
@@ -270,6 +271,29 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	savePresets();
 	
 	#endif
+}
+
+
+//--------------------------------------------------------------------
+void CloudsVisualSystemManager::deletePreset(int i){
+//	cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
+	
+
+	if(i >= presets.size()) return;
+
+	CloudsVisualSystemPreset& preset = presets[i];
+	vector<CloudsVisualSystemPreset>& presetMap = getPresetsForSystem( preset.systemName );
+	
+	for(int p = 0; p < presetMap.size(); p++){
+		if(presetMap[p].presetName == preset.presetName){
+			presetMap.erase(presetMap.begin() + p);
+			cout << "Found side by side to delete" << endl;
+			break;
+		}
+	}
+	presets.erase(presets.begin() + i);
+	
+	preset.eraseFiles();
 }
 
 //--------------------------------------------------------------------

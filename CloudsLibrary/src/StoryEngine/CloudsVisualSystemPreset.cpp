@@ -51,3 +51,14 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		}
 	}
 }
+
+void CloudsVisualSystemPreset::eraseFiles(){
+	
+	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName;
+	if(ofFile(path).remove(true)){		
+		ofLogWarning("CloudsVisualSystemPreset::eraseFiles") << "Deleted preset at path " << path << endl;
+	}
+	else{
+		ofLogError("CloudsVisualSystemPreset::eraseFiles") << "Delete failed at path " << path << endl;
+	}
+}
