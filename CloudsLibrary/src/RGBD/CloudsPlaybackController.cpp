@@ -310,7 +310,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
-        cout << "adding fake question" << endl;
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
 										 fakeQuestions[i].getTopicsWithQuestions()[0],
@@ -407,8 +406,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO add questions to cluster map
 		//right now we can just have a canned animation and stop it when we are done
 		if(!clusterMapVisualSystem.getTimeline()->getIsPlaying()){
+			
 //			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
-
 //			CloudsClip& clip = q->clip;
 			
 			showingClusterMap = false;
