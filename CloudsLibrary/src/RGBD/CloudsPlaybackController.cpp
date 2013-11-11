@@ -251,12 +251,13 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
 	introSequence.setStartQuestions(possibleStartQuestions);
-	introSequence.playSystem();
 #ifdef OCULUS_RIFT
 	introSequence.loadPresetGUISFromName("Oculus");
 #else
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 #endif
+	
+	introSequence.playSystem();
 	showingIntro = true;
 }
 
@@ -264,11 +265,14 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
 	if(currentAct != NULL){
-//		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
-//		for(int i = 0; i < currentPresets.size(); i++){
-//			//null them all out
-//			currentPresets[i].system = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*) NULL );
-//		}
+		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
+		for(int i = 0; i < currentPresets.size(); i++){
+			//flag them done!
+			if(currentPresets[i].system != NULL){
+				currentPresets[i].system->exit();
+			}
+			
+		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
@@ -533,8 +537,8 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	clusterMapVisualSystem.setRun(introSequence.getSelectedRun());
 	clusterMapVisualSystem.traverse();
 	
-	clusterMapVisualSystem.playSystem();
 	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+	clusterMapVisualSystem.playSystem();
 	
 	showingClusterMap = true;
 }
@@ -655,8 +659,8 @@ void CloudsPlaybackController::hideVisualSystem()
 		
 		nextSystem->stopSystem();
 //		nextSystem = NULL;
-		rgbdVisualSystem->playSystem();
 		rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+		rgbdVisualSystem->playSystem();
 		showingVisualSystem = false;
 	}
 }
@@ -670,8 +674,8 @@ void CloudsPlaybackController::playNextVisualSystem()
 		
 		nextSystem->setDrawToScreen( false );
 		nextSystem->setCurrentTopic( currentTopic );
-		nextSystem->playSystem();
 		nextSystem->loadPresetGUISFromName( nextPresetName );
+		nextSystem->playSystem();
 		
 		showingVisualSystem = true;
 	}
