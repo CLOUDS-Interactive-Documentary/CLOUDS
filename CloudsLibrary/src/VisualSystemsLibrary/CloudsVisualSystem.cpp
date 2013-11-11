@@ -225,8 +225,9 @@ void CloudsVisualSystem::setup(){
     selfSetupGuis();
     setupTimelineGui();
     
+	loadGUIS();
 	hideGUIS();
-	
+
 	bIsSetup = true;
 	
 }
@@ -242,10 +243,6 @@ void CloudsVisualSystem::playSystem(){
 		
 		isPlaying = true;
 		
-		loadGUIS();
-		hideGUIS();
-//		ofHideCursor();
-
 		cam.enableMouseInput();
 		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
 		{

@@ -18,10 +18,11 @@ CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	defaultedToFamily = false;
 	randomlySelected = false;
 	oculusCompatible = false;
-	
 	duration = 60;
 	introDuration = 0;
 	outroDuration = 0;
+	
+	hasFiles = false;
 }
 
 string CloudsVisualSystemPreset::getID(){
@@ -40,7 +41,7 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 	}
 	else{
 		ofLogError() << "Preset " << systemName << " / " << presetName << " has no time info at path" << path << ". creating default";
-		if(system != NULL){
+//		if(system != NULL){
 			timeInfo.addTag("timeinfo");
 			timeInfo.pushTag("timeinfo");
 			timeInfo.addValue("duration", duration);
@@ -48,8 +49,12 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 			timeInfo.addValue("introDuration", introDuration);
 			timeInfo.addValue("outroDuration", outroDuration);
 			timeInfo.saveFile(path);
-		}
+//		}
 	}
+}
+
+void CloudsVisualSystemPreset::checkHasFiles(){
+	hasFiles = ofFile(CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName).exists();
 }
 
 void CloudsVisualSystemPreset::eraseFiles(){

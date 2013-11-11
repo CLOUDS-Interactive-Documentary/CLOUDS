@@ -17,6 +17,8 @@ class CloudsVisualSystemPreset {
 	bool indefinite;
 	void loadTimeInfo();
 	void eraseFiles();
+	void checkHasFiles();
+	bool hasFiles;
 	
 	string getID();
 	string comments;

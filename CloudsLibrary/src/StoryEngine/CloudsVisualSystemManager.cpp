@@ -351,6 +351,7 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.grade = keywordXml.getValue("grade", "");
 		preset.enabled = keywordXml.getValue("enabled", true );
 		preset.oculusCompatible = keywordXml.getValue("oculus", false );
+		preset.checkHasFiles();
 		
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);

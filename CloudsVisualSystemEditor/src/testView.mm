@@ -71,6 +71,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
             currentVisualSystem->stopSystem();
 			currentVisualSystem->exit();
         }
+		cout << "loading system " << visualSystems.getPresets()[presetTable.selectedRow].systemName << " preset " << visualSystems.getPresets()[presetTable.selectedRow].presetName << endl;
 		
         currentVisualSystem = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
 		
@@ -78,6 +79,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 			currentVisualSystem->setup();
 			currentVisualSystem->loadPresetGUISFromName(visualSystems.getPresets()[presetTable.selectedRow].presetName);
 			currentVisualSystem->playSystem();
+		}
+		else{
+			ofSystemAlertDialog(visualSystems.getPresets()[presetTable.selectedRow].systemName + " is not registered system");
 		}
 		
 		shouldPlaySelectedRow = false;	
@@ -137,7 +141,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //	visualSystems.loadPresets();
 	
 	if(presetTable.selectedRow >= 0){
-//		visualSystems.getPresets()[presetTable.selectedRow].getID();
+
 		ofPtr<CloudsVisualSystem> system = CloudsVisualSystemManager::InstantiateSystem( visualSystems.getPresets()[presetTable.selectedRow].systemName );
 		if(system != NULL){
 			cout << "updating presets for " << system->getSystemName() << endl;
@@ -158,14 +162,13 @@ bool clipsort(CloudsClip a, CloudsClip b){
 {
 	if(presetTable.selectedRow >= 0){
 		visualSystems.deletePreset( presetTable.selectedRow );
+		
+		[clipTable reloadData];
+		[suppressedClipTable reloadData];
+		[presetTable reloadData];
+		[allKeywordTable reloadData];
+		[allClipTable reloadData];
 	}
-	
-	[clipTable reloadData];
-	[suppressedClipTable reloadData];
-	[presetTable reloadData];
-	[allKeywordTable reloadData];
-	[allClipTable reloadData];
-
 }
 
 - (IBAction) updateKeywords:(id)sender
@@ -274,9 +277,10 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		}
 		else if([@"grade" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String:
-					((visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") + 
-					  visualSystems.getPresets()[rowIndex].grade +
-					 (visualSystems.getPresets()[rowIndex].oculusCompatible ? "Oc" : "")).c_str()];
+					(string(visualSystems.getPresets()[rowIndex].hasFiles ? "" : "!!") +
+						   (visualSystems.getPresets()[rowIndex].enabled ? "+" : "-") +
+							visualSystems.getPresets()[rowIndex].grade +
+							(visualSystems.getPresets()[rowIndex].oculusCompatible ? "Oc" : "")).c_str()];
 		}		
 		else if([@"preset" isEqualToString:aTableColumn.identifier]){
 			return [NSString stringWithUTF8String: visualSystems.getPresets()[rowIndex].presetName.c_str()];
