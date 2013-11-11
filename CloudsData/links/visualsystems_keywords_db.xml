@@ -526,7 +526,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="ExampleVectorMath_WhiteLine_">
+<system name="ExampleVectorMath_WhiteLine">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1228,22 +1228,6 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Ocean_BlueOcean">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Ocean_BlueOceanStandin">
-    <keywords>interconnectedness</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Ocean_ChoppyBlueOcean">
@@ -2190,6 +2174,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Replicator_Replicator">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Scrape_BIG_STACKS">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -2462,14 +2454,6 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="World_Big_Brother">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="World_Data_globe">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -2492,14 +2476,6 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="World_Social_Network1">
-    <keywords>social media|network|facebook|twitter</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="World_Social_Network2">
@@ -2543,6 +2519,14 @@
     <oculus>0</oculus>
 </system>
 <system name="World_jm_data1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="YellowTail_YellowTail">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
