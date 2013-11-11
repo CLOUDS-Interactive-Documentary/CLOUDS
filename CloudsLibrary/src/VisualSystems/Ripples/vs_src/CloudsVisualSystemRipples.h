@@ -87,11 +87,10 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     void selfMouseMoved(int x, int y, int button);
     void selfMousePressed(int x, int y, int button);
     void selfMouseReleased(int x, int y, int button);
-	
-	
-    ofxRipples  rip;
-    ofxBounce   bounce;
-    float damping = .3;
+    
+    ofShader ripplesShader;
+    ofFbo ripplesSrcFbo, ripplesDstFbo;
+    ofVboMesh renderMesh;
     
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

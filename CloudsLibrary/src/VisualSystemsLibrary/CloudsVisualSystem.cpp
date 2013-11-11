@@ -504,7 +504,7 @@ void CloudsVisualSystem::drawScene(){
 	
 	lightsEnd();
 	
-	
+	glDisable(GL_DEPTH_TEST);
 }
 
 void CloudsVisualSystem::setupRGBDTransforms(){
