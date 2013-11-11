@@ -203,7 +203,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_voronoi">
@@ -219,7 +219,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_xray">
@@ -646,14 +646,6 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="ForkingPaths_no-preset">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="LSystem_CityTree">
     <keywords>cities</keywords>
     <suppressions></suppressions>
@@ -662,96 +654,8 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="LSystem_City_ZoomOut">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="LSystem_HexTree">
     <keywords>complexity|systems</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystem_LindenTree">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystem_mycelium">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_CityTree">
-    <keywords>cities|connections</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_City_ZoomOut">
-    <keywords>cities|connections</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_HexTree">
-    <keywords>virus|memes|pattern</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_LindenTree">
-    <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_mycelium">
-    <keywords>tree|branching|algorithm|biology|biology and code|nature|growth</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_mycelium_1">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_mycelium_2">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="LSystems_no-preset">
-    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
