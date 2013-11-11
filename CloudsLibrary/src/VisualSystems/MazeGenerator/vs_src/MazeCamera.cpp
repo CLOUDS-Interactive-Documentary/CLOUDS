@@ -8,11 +8,12 @@
 
 #include "MazeCamera.h"
 
-MazeCamera::MazeCamera(float x, float y, float z) : ofCamera()
+MazeCamera::MazeCamera(float x, float y, float z, MazeSettings* set) : ofCamera()
 {
+    settings = set;
     setPosition(x, y, z);
     lookAt(ofVec3f(x, y, z+10));
-    rotate(ParamManager::getInstance().cameraAngle, ofVec3f(1, 0, 0));
+    rotate(settings->cameraAngle, ofVec3f(1, 0, 0));
     setFov(60);
     
     xRot = yRot = zRot = 0;
@@ -29,7 +30,7 @@ void MazeCamera::setPath(ofxSimpleSpline *p)
 
 void MazeCamera::setFlyOver(float x)
 {
-    setPosition(x, ParamManager::getInstance().cameraHeight, 100);
+    setPosition(x, settings->cameraHeight, 100);
     
     // face mouse centered
     mouseMove(ofVec2f(ofGetMouseX(), ofGetMouseY()));
@@ -39,15 +40,18 @@ void MazeCamera::setFlyOver(float x)
 
 void MazeCamera::update()
 {
-    if (ParamManager::getInstance().groundCam) {
+    if (settings->groundCam) {
         setPosition(path->getPoint(pathT));
-        lookAt(path->getPoint(pathT+0.005*ParamManager::getInstance().groundCamLookAt), ofVec3f(0, 1, 0));
-        pathT += 0.0001 * ParamManager::getInstance().groundCamSpeed;
+        lookAt(path->getPoint(pathT+0.005*settings->groundCamLookAt), ofVec3f(0, 1, 0));
+        pathT += 0.01 * settings->groundCamSpeed * ofGetLastFrameTime();
         rotate(yRot, ofVec3f(0, 1, 0));
+        if (pathT >= 1) {
+            pathT = 0;
+        }
     }
     else {
-        setPosition(getPosition().x, ParamManager::getInstance().cameraHeight, getPosition().z);
-        vel = ofVec3f(0, 0, ParamManager::getInstance().cameraSpeed);
+        setPosition(getPosition().x, settings->cameraHeight, getPosition().z);
+        vel = ofVec3f(0, 0, settings->cameraSpeed);
         ofVec3f lookVec = ofVec3f(0, 0, 10);
         lookVec.rotate(xRot, ofVec3f(1, 0, 0));
         lookAt(getPosition() + lookVec);
@@ -73,7 +77,7 @@ void MazeCamera::setVelocity(ofVec3f v)
 
 void MazeCamera::mouseMove(ofVec2f p)
 {
-    if (ParamManager::getInstance().groundCam) {
+    if (settings->groundCam) {
         float coeff = (float)-90/ofGetWidth();
         p.x -= ofGetWidth()/2;
         yRot = p.x*coeff;
@@ -89,7 +93,7 @@ void MazeCamera::mouseMove(ofVec2f p)
         
         coeff = (float)45/ofGetHeight();
         p.y -= ofGetHeight()/2;
-        xRot = ParamManager::getInstance().cameraAngle + coeff*p.y;
+        xRot = settings->cameraAngle + coeff*p.y;
     }
 }
 

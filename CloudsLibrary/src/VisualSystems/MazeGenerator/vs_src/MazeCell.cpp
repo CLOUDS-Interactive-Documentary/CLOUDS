@@ -24,63 +24,8 @@ MazeCell::MazeCell(int _x, int _y, float s, float t, float h)
     visible = true;
 }
 
-void MazeCell::draw(bool isGenerator)
-{
-    if (!visible) {
-        return;
-    }
-    
-    if (isGenerator)
-    {
-        ofFill();
-        ofSetColor(255, 0, 0);
-        ofPushMatrix();
-        ofTranslate(x*size+size/2, 0, y*size+size/2);
-        ofScale(size, size, size);
-        ofBox(1);
-        ofPopMatrix();
-    }
-    
-    ofFill();
-    ofSetColor(ParamManager::getInstance().getWallColor());
-
-    if (top && bottom && right && left) {
-        ofPushMatrix();
-        ofTranslate(x*size+size/2, 0, y*size+size/2);
-        ofScale(size, size, size);
-        ofBox(1);
-        ofPopMatrix();
-        return;
-    }
-    
-    if (top) {
-        ofPushMatrix();
-        ofTranslate(x*size+size/2, 0, y*size);
-        ofScale(wallLength, wallHeight, wallThickness);
-        ofBox(1);
-        ofPopMatrix();
-    }
-    if (right) {
-        ofPushMatrix();
-        ofTranslate((x+1)*size, 0, y*size+size/2);
-        ofRotateY(90);
-        ofScale(wallLength, wallHeight, wallThickness);
-        ofBox(1);
-        ofPopMatrix();
-    }
-    
-    if (bottom) {
-        ofPushMatrix();
-        ofTranslate(x*size+size/2, 0, (y+1)*size);
-        ofScale(wallLength, wallHeight, wallThickness);
-        ofBox(1);
-        ofPopMatrix();
-    }
-}
-
 size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, vector<ofVec2f> &uvs)
 {
-    float variance = 1 - (ofRandomuf() * ParamManager::getInstance().heightRandom);
     ofVec3f wallPoints[] = {
         // north wall bottom
         ofVec3f(-size/2, 0, size/2),
@@ -89,10 +34,10 @@ size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, v
         ofVec3f(size/2, 0, size/2-wallThickness/2),
         
         // north wall top
-        ofVec3f(-size/2, wallHeight * variance, size/2),
-        ofVec3f(size/2, wallHeight * variance, size/2),
-        ofVec3f(-size/2, wallHeight * variance, size/2-wallThickness/2),
-        ofVec3f(size/2, wallHeight * variance, size/2-wallThickness/2),
+        ofVec3f(-size/2, wallHeight, size/2),
+        ofVec3f(size/2, wallHeight, size/2),
+        ofVec3f(-size/2, wallHeight, size/2-wallThickness/2),
+        ofVec3f(size/2, wallHeight, size/2-wallThickness/2),
     };
     
     ofVec3f wallNormals[] = {
@@ -151,28 +96,6 @@ size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, v
             }
         }
     }
-
-//    if (top) {
-//        ofMatrix4x4 rotate = ofMatrix4x4::newRotationMatrix(180, ofVec3f(0, 1, 0));
-//        for (int w=0; w<5; w++) {
-//            for (int i=0; i<6; i++) {
-//                normals.push_back(rotate * wallNormals[w]);
-//                verts.push_back(rotate * wallPoints[wallIndexes[w][i]] * translate);
-//                vertexCount++;
-//            }
-//        }
-//    }
-//
-//    if (right) {
-//        ofMatrix4x4 rotate = ofMatrix4x4::newRotationMatrix(270, ofVec3f(0, 1, 0));
-//        for (int w=0; w<5; w++) {
-//            for (int i=0; i<6; i++) {
-//                normals.push_back(rotate * wallNormals[w]);
-//                verts.push_back(rotate * wallPoints[wallIndexes[w][i]] * translate);
-//                vertexCount++;
-//            }
-//        }
-//    }
 
     return vertexCount;
 }

@@ -1,14 +1,14 @@
 //
-//  ColorManager.cpp
+//  MazeSettings.cpp
 //  MazeGenerator
 //
-//  Created by Gal Sasson on 10/25/13.
+//  Created by Gal Sasson on 11/10/13.
 //
 //
 
-#include "ParamManager.h"
+#include "MazeSettings.h"
 
-ParamManager::ParamManager()
+MazeSettings::MazeSettings()
 {
     cameraSpeed = 1;
     cameraAngle = 45;
@@ -30,28 +30,24 @@ ParamManager::ParamManager()
     fogEnd = 5;
 }
 
-ParamManager::~ParamManager()
-{
-    
-}
-
-ofFloatColor ParamManager::getFogColor()
+ofFloatColor MazeSettings::getFogColor()
 {
     return ofColor::fromHsb(fogColor.r, fogColor.g, fogColor.b);
 }
 
-ofColor ParamManager::getGroundColor()
+ofColor MazeSettings::getGroundColor()
 {
     return ofColor::fromHsb(groundColor.r, groundColor.g, groundColor.b);
 }
 
-ofColor ParamManager::getWallColor()
+ofColor MazeSettings::getWallColor()
 {
     return ofColor::fromHsb(wallColor.r, wallColor.g, wallColor.b);
 }
 
-ofColor ParamManager::getBallColor()
+ofColor MazeSettings::getBallColor()
 {
     return ofColor::fromHsb(ballColor.r, ballColor.g, ballColor.b);
 }
+
 
