@@ -18,9 +18,9 @@ void CloudsVisualSystemSwim::selfSetup()
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
-    post.init(ofGetWidth(), ofGetHeight(), true);
-    post.createPass<FxaaPass>();
-    post.createPass<BloomPass>();
+ //   post.init(ofGetWidth(), ofGetHeight(), true);
+ //   post.createPass<FxaaPass>();
+ //   post.createPass<BloomPass>();
     
     /*
 	videoLoaded = false;
@@ -77,8 +77,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 {
     glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
-    post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
-    post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
+ //   post.process(CloudsVisualSystem::getSharedRenderTarget(), false);
+ //   post.getProcessedTextureReference().draw(0, ofGetHeight(), ofGetWidth(), -ofGetHeight());
     glPopAttrib();
 }
 
