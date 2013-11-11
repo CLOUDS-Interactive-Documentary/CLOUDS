@@ -1158,14 +1158,6 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Memory_no-preset">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="Memory_pixelsThunder">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1270,14 +1262,6 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Metaballs_Gray_Clouds_Cam">
-    <keywords>simulation|videogames</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="Metaballs_GreenGoo">
     <keywords>form|simulation</keywords>
     <suppressions></suppressions>
@@ -1347,7 +1331,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy_blend_2">
@@ -1355,7 +1339,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy_smoothing">
@@ -1363,7 +1347,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fauxMetaballs">
@@ -1382,12 +1366,20 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Metaballs_jg_GrayClouds">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Metaballs_metaball_simple">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_nice_weather">
@@ -1395,7 +1387,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_vertically_stretched">
@@ -1403,7 +1395,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="MetaballsSystem_no-preset">
@@ -1607,6 +1599,134 @@
     <oculus>0</oculus>
 </system>
 <system name="Ocean_no-preset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_Basic">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_FOSSILS">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_SPIRITS">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_TISSUE">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_VORTICES">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_chaos">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_chaos_black">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5DrawingMachine10_choas">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Hackpact_BasicPreset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Hackpact_JM_1_blue">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Hackpact_basic2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Machine_BasicMotion">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Machine_BasicPreset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Machine_JM_Machine1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Machine_JM_Machine2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Machine_JM_clockwork">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
