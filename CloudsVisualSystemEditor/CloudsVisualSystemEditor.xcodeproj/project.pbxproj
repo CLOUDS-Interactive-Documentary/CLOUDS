@@ -333,10 +333,18 @@
 		E7D9D4E4182AFC2700AD56C1 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D4DA182AFC2700AD56C1 /* MazeCamera.cpp */; };
 		E7D9D4E5182AFC2700AD56C1 /* MazeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D4DC182AFC2700AD56C1 /* MazeCell.cpp */; };
 		E7D9D4E6182AFC2700AD56C1 /* MovingBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D4DE182AFC2700AD56C1 /* MovingBall.cpp */; };
-		E7D9D4E7182AFC2700AD56C1 /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D4E0182AFC2700AD56C1 /* ParamManager.cpp */; };
 		E7DD858417DBC2B500AFB2DD /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD858217DBC2B500AFB2DD /* CloudsVisualSystemNeurons.cpp */; };
 		E7E00F161830AE22006704BD /* renderShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F141830AE18006704BD /* renderShader.frag */; };
 		E7E00F171830AE22006704BD /* renderShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F151830AE1C006704BD /* renderShader.vert */; };
+		E7E00F241830B5BF006704BD /* accShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1A1830B5BF006704BD /* accShader.frag */; };
+		E7E00F251830B5BF006704BD /* accShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1B1830B5BF006704BD /* accShader.vert */; };
+		E7E00F261830B5BF006704BD /* posShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1C1830B5BF006704BD /* posShader.frag */; };
+		E7E00F271830B5BF006704BD /* posShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1D1830B5BF006704BD /* posShader.vert */; };
+		E7E00F281830B5BF006704BD /* renderShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1E1830B5BF006704BD /* renderShader.frag */; };
+		E7E00F291830B5BF006704BD /* renderShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F1F1830B5BF006704BD /* renderShader.vert */; };
+		E7E00F2C1830B5BF006704BD /* velShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F221830B5BF006704BD /* velShader.frag */; };
+		E7E00F2D1830B5BF006704BD /* velShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F231830B5BF006704BD /* velShader.vert */; };
+		E7E00F301830B79A006704BD /* MazeSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E00F2E1830B79A006704BD /* MazeSettings.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
@@ -1288,12 +1296,20 @@
 		E7D9D4DD182AFC2700AD56C1 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		E7D9D4DE182AFC2700AD56C1 /* MovingBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingBall.cpp; sourceTree = "<group>"; };
 		E7D9D4DF182AFC2700AD56C1 /* MovingBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingBall.h; sourceTree = "<group>"; };
-		E7D9D4E0182AFC2700AD56C1 /* ParamManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager.cpp; sourceTree = "<group>"; };
-		E7D9D4E1182AFC2700AD56C1 /* ParamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager.h; sourceTree = "<group>"; };
 		E7DD858217DBC2B500AFB2DD /* CloudsVisualSystemNeurons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemNeurons.cpp; sourceTree = "<group>"; };
 		E7DD858317DBC2B500AFB2DD /* CloudsVisualSystemNeurons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemNeurons.h; sourceTree = "<group>"; };
 		E7E00F141830AE18006704BD /* renderShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = renderShader.frag; sourceTree = "<group>"; };
 		E7E00F151830AE1C006704BD /* renderShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.vert; sourceTree = "<group>"; };
+		E7E00F1A1830B5BF006704BD /* accShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.frag; sourceTree = "<group>"; };
+		E7E00F1B1830B5BF006704BD /* accShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = accShader.vert; sourceTree = "<group>"; };
+		E7E00F1C1830B5BF006704BD /* posShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.frag; sourceTree = "<group>"; };
+		E7E00F1D1830B5BF006704BD /* posShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = posShader.vert; sourceTree = "<group>"; };
+		E7E00F1E1830B5BF006704BD /* renderShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.frag; sourceTree = "<group>"; };
+		E7E00F1F1830B5BF006704BD /* renderShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.vert; sourceTree = "<group>"; };
+		E7E00F221830B5BF006704BD /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
+		E7E00F231830B5BF006704BD /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
+		E7E00F2E1830B79A006704BD /* MazeSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeSettings.cpp; sourceTree = "<group>"; };
+		E7E00F2F1830B79A006704BD /* MazeSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeSettings.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
@@ -3139,6 +3155,7 @@
 		E7C00DDA180DD24600B5CEF1 /* Flocking */ = {
 			isa = PBXGroup;
 			children = (
+				E7E00F191830B5BF006704BD /* shaders */,
 				E7C00E2E180DD24700B5CEF1 /* vs_src */,
 			);
 			path = Flocking;
@@ -4285,6 +4302,8 @@
 		E7D9D4D5182AFC2700AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7E00F2E1830B79A006704BD /* MazeSettings.cpp */,
+				E7E00F2F1830B79A006704BD /* MazeSettings.h */,
 				E7D9D4D6182AFC2700AD56C1 /* CloudsVisualSystemMazeGenerator.cpp */,
 				E7D9D4D7182AFC2700AD56C1 /* CloudsVisualSystemMazeGenerator.h */,
 				E7D9D4D8182AFC2700AD56C1 /* Maze.cpp */,
@@ -4295,10 +4314,24 @@
 				E7D9D4DD182AFC2700AD56C1 /* MazeCell.h */,
 				E7D9D4DE182AFC2700AD56C1 /* MovingBall.cpp */,
 				E7D9D4DF182AFC2700AD56C1 /* MovingBall.h */,
-				E7D9D4E0182AFC2700AD56C1 /* ParamManager.cpp */,
-				E7D9D4E1182AFC2700AD56C1 /* ParamManager.h */,
 			);
 			path = vs_src;
+			sourceTree = "<group>";
+		};
+		E7E00F191830B5BF006704BD /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7E00F1A1830B5BF006704BD /* accShader.frag */,
+				E7E00F1B1830B5BF006704BD /* accShader.vert */,
+				E7E00F1C1830B5BF006704BD /* posShader.frag */,
+				E7E00F1D1830B5BF006704BD /* posShader.vert */,
+				E7E00F1E1830B5BF006704BD /* renderShader.frag */,
+				E7E00F1F1830B5BF006704BD /* renderShader.vert */,
+				E7E00F221830B5BF006704BD /* velShader.frag */,
+				E7E00F231830B5BF006704BD /* velShader.vert */,
+			);
+			name = shaders;
+			path = bin/data/shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4692,7 +4725,6 @@
 				E7D9D4E4182AFC2700AD56C1 /* MazeCamera.cpp in Sources */,
 				E7D9D4E5182AFC2700AD56C1 /* MazeCell.cpp in Sources */,
 				E7D9D4E6182AFC2700AD56C1 /* MovingBall.cpp in Sources */,
-				E7D9D4E7182AFC2700AD56C1 /* ParamManager.cpp in Sources */,
 				E7D60841182BF28D004914EF /* CloudsVisualSystemPages.cpp in Sources */,
 				E7D60844182BF297004914EF /* CloudsVisualSystemWebHistory.cpp in Sources */,
 				E7D60847182BF2A1004914EF /* CloudsVisualSystemScrape.cpp in Sources */,
@@ -4706,6 +4738,15 @@
 				E7D15AA5182DE7390036E9BA /* SurfacePoint.cpp in Sources */,
 				E7E00F161830AE22006704BD /* renderShader.frag in Sources */,
 				E7E00F171830AE22006704BD /* renderShader.vert in Sources */,
+				E7E00F241830B5BF006704BD /* accShader.frag in Sources */,
+				E7E00F251830B5BF006704BD /* accShader.vert in Sources */,
+				E7E00F261830B5BF006704BD /* posShader.frag in Sources */,
+				E7E00F271830B5BF006704BD /* posShader.vert in Sources */,
+				E7E00F281830B5BF006704BD /* renderShader.frag in Sources */,
+				E7E00F291830B5BF006704BD /* renderShader.vert in Sources */,
+				E7E00F2C1830B5BF006704BD /* velShader.frag in Sources */,
+				E7E00F2D1830B5BF006704BD /* velShader.vert in Sources */,
+				E7E00F301830B79A006704BD /* MazeSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

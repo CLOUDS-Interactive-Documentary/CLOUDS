@@ -173,8 +173,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //		notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 //		grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 //		enabledBox.state = selectedPreset->enabled;
-		
-		visualSystems.saveKeywords();
+		visualSystems.savePresets();
 		
 		[self updateCounts];
 		
@@ -204,7 +203,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
         visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
         
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
-        visualSystems.saveKeywords();
+        visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
 //      [clipTable reloadData];
@@ -219,7 +218,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 		//TODO: multi selection
         visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), suppressedClips[suppressedClipTable.selectedRow].getLinkName());
         cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
-        visualSystems.saveKeywords();
+        visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
 		

@@ -161,8 +161,8 @@ vector< ofPtr<CloudsVisualSystem> > CloudsVisualSystemManager::InstantiateSystem
 		if(constructors.find(systemPresets[i].systemName) != constructors.end()){
 			cout << "INSTANTIATING SYSTEM " << systemPresets[i].systemName << " WITH PRESET " << systemPresets[i].presetName << endl;
 			systemPresets[i].system = InstantiateSystem( systemPresets[i].systemName );
-			
 			cout << "CloudsVisualSystemManager::InstantiateSystems - SYSTEM NULL? " << (systemPresets[i].system == NULL ? "YES" : "NO") << endl;
+			
 			systems.push_back( systemPresets[i].system );
 		}
 		else{
@@ -254,10 +254,20 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 		}
 	}
 
+	//if we cleaned it out make sure there is a default to get started
+	if(currentPresets.size() == 0){
+		CloudsVisualSystemPreset preset;
+		preset.systemName = system->getSystemName();
+		preset.presetName = "_default";
+		preset.enabled = false;
+		nameToPresets[preset.systemName].push_back(preset);
+		presets.push_back(preset);
+		
+	}
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
 	
-	saveKeywords();
+	savePresets();
 	
 	#endif
 }
@@ -323,12 +333,14 @@ void CloudsVisualSystemManager::loadPresets(){
 	
 #ifndef CLOUDS_NO_VS
 	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
-		CloudsVisualSystemPreset preset;
-		preset.systemName = it->first;
-		preset.presetName = "_default";
-		preset.enabled = false;
-		nameToPresets[preset.systemName].push_back(preset);
-		presets.push_back(preset);
+		if(nameToPresets[it->first].size() == 0){
+			CloudsVisualSystemPreset preset;
+			preset.systemName = it->first;
+			preset.presetName = "_default";
+			preset.enabled = false;
+			nameToPresets[preset.systemName].push_back(preset);
+			presets.push_back(preset);
+		}
 	}
 #endif
 	sort(presets.begin(), presets.end(), preset_sort);
@@ -348,11 +360,10 @@ void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
 }
 
 //--------------------------------------------------------------------
-void CloudsVisualSystemManager::saveKeywords(){
+void CloudsVisualSystemManager::savePresets(){
 	
 	string keywordsFile = getKeywordFilePath();
 	
-	map<string,vector<string> >::iterator it;
 	
 	if( (ofGetElapsedTimef() - lastBackupTime) >= backupTimeInterval ){
 		char backup[1024];
@@ -372,16 +383,24 @@ void CloudsVisualSystemManager::saveKeywords(){
 	
 	ofxXmlSettings keywordXml;
 	int systemIndex = 0;
-	for(it = keywords.begin(); it != keywords.end(); it++){
-		string presetName = it->first;
-		string keywordString = ofJoinString(it->second, "|");
+//	map<string,vector<string> >::iterator it;
+//	for(it = keywords.begin(); it != keywords.end(); it++){
+	for(int i = 0; i < presets.size(); i++){
+		CloudsVisualSystemPreset& preset = presets[i];
+//		string presetName = it->first;
+		string presetName = preset.presetName;
+		ofStringReplace(presetName, " ", "_");
+		string presetIdentifier = preset.systemName + "_" + presetName;
+		string keywordString = ofJoinString(keywords[presetIdentifier], "|");
+		//string keywordString = ofJoinString(it->second, "|");
+		if(presetName == "default" || presetName == "_default"){
+			continue;
+		}
 		
-		CloudsVisualSystemPreset& preset = getPresetWithID(presetName);
-		
-		cout << "saving " << presetName << " -> (" << keywordString << ")" << endl;
+		cout << "saving " << presetIdentifier << " -> (" << keywordString << ")" << endl;
 		
 		keywordXml.addTag("system");
-		keywordXml.addAttribute("system", "name", presetName, systemIndex);
+		keywordXml.addAttribute("system", "name", presetIdentifier, systemIndex);
 		
 		keywordXml.pushTag("system",systemIndex);
 		
@@ -405,7 +424,6 @@ void CloudsVisualSystemManager::saveKeywords(){
 		
 		keywordXml.popTag(); // pop system
 		
-		
 		systemIndex++;
 	}
 	
@@ -425,18 +443,18 @@ CloudsVisualSystemPreset CloudsVisualSystemManager::getRandomVisualSystem(){
 
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword(string keyword){
-	vector<string> keywords;
-	keywords.push_back(keyword);
-    return getPresetsForKeywords(keywords);
+	vector<string> keys;
+	keys.push_back(keyword);
+    return getPresetsForKeywords(keys);
 }
 
 //--------------------------------------------------------------------
-vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keywords){
+vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeywords(vector<string>& keys){
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     
 	for(int i = 0; i < presets.size(); i++){
-		for(int k = 0; k < keywords.size(); k++){
-			if( ofContains(keywordsForPreset(i), keywords[k]) ){
+		for(int k = 0; k < keys.size(); k++){
+			if( ofContains(keywordsForPreset(i), keys[k]) ){
 				presetsWithKeywords.push_back(presets[i]);
 				continue;
 			}

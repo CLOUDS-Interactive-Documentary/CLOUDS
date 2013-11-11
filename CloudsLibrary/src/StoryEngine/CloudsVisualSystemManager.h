@@ -45,7 +45,7 @@ class CloudsVisualSystemManager {
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
 	void loadPresets();
-	void saveKeywords();
+	void savePresets();
     void suppressClip(string presetID, string clipName);
 	vector<string>& getSuppressionsForPreset(string presetID);
     bool isClipSuppressed(string presetID,string clip);
