@@ -61,7 +61,7 @@ void testApp::setup(){
 	//////////////SHOW INTRO
 	
 	//temp sound stuff
-	sound.setMasterAmp(1.0);
+//	sound.setMasterAmp(1.0);
 	useScratch = false;
 	
 }
@@ -76,7 +76,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	sound.drawDebug();
+//	sound.drawDebug();
 }
 
 //--------------------------------------------------------------

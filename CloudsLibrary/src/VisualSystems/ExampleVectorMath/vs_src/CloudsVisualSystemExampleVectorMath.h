@@ -22,9 +22,7 @@ struct DrawPoint {
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleVectorMath : public CloudsVisualSystem {
-  public:
-
-    CloudsVisualSystemExampleVectorMath(){};
+public:
 	
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
