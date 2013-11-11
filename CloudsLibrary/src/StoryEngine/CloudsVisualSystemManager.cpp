@@ -273,12 +273,11 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	#endif
 }
 
-
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::deletePreset(int i){
+	
 //	cout << "ERASING " << system->getSystemName() << " " << currentPresets[i].presetName << endl;
 	
-
 	if(i >= presets.size()) return;
 
 	CloudsVisualSystemPreset& preset = presets[i];
@@ -291,9 +290,13 @@ void CloudsVisualSystemManager::deletePreset(int i){
 			break;
 		}
 	}
+	preset.eraseFiles();
 	presets.erase(presets.begin() + i);
 	
-	preset.eraseFiles();
+	sort(presets.begin(), presets.end(), preset_sort);
+	populateEnabledSystemIndeces();
+
+	savePresets();
 }
 
 //--------------------------------------------------------------------
@@ -407,21 +410,17 @@ void CloudsVisualSystemManager::savePresets(){
 	
 	ofxXmlSettings keywordXml;
 	int systemIndex = 0;
-//	map<string,vector<string> >::iterator it;
-//	for(it = keywords.begin(); it != keywords.end(); it++){
 	for(int i = 0; i < presets.size(); i++){
 		CloudsVisualSystemPreset& preset = presets[i];
-//		string presetName = it->first;
 		string presetName = preset.presetName;
 		ofStringReplace(presetName, " ", "_");
 		string presetIdentifier = preset.systemName + "_" + presetName;
 		string keywordString = ofJoinString(keywords[presetIdentifier], "|");
-		//string keywordString = ofJoinString(it->second, "|");
 		if(presetName == "default" || presetName == "_default"){
 			continue;
 		}
 		
-		cout << "saving " << presetIdentifier << " -> (" << keywordString << ")" << endl;
+		//cout << "saving " << presetIdentifier << " -> (" << keywordString << ")" << endl;
 		
 		keywordXml.addTag("system");
 		keywordXml.addAttribute("system", "name", presetIdentifier, systemIndex);
