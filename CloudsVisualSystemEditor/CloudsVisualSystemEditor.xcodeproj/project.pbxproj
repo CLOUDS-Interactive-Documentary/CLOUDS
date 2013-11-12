@@ -5865,13 +5865,14 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "OCULUS_RIFT=1";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
-					"$(OF_PATH)/addons/ofxOculusRift/libs",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				INFOPLIST_FILE = "CloudsVisualSystemEditor copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -5992,13 +5993,14 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "OCULUS_RIFT=1";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
 					"$(OF_PATH)/addons/ofxCv/libs/**",
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
-					"$(OF_PATH)/addons/ofxOculusRift/libs",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
 				INFOPLIST_FILE = "CloudsVisualSystemEditor copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
