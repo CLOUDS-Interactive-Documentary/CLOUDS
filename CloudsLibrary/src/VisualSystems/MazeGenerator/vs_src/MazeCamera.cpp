@@ -8,7 +8,7 @@
 
 #include "MazeCamera.h"
 
-MazeCamera::MazeCamera(float x, float y, float z, MazeSettings* set) : ofCamera()
+void MazeCamera::setup(float x, float y, float z, MazeSettings* set)
 {
     settings = set;
     setPosition(x, y, z);

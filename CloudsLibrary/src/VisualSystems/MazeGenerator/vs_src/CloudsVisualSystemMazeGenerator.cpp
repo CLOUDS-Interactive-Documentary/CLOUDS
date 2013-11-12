@@ -96,7 +96,7 @@ void CloudsVisualSystemMazeGenerator::selfGuiEvent(ofxUIEventArgs &e)
     if (e.getName() == "GROUND CAM") {
         if (!settings.groundCam)
         {
-            mazeCam->setFlyOver(maze[0]->getWidth()/2);
+            mazeCam.setFlyOver(maze[0]->getWidth()/2);
         }        
     }
 }
@@ -128,7 +128,7 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     maze[0] = new Maze(60, 8, 60, &settings);
     maze[0]->generate();
     
-    mazeCam = new MazeCamera(maze[0]->getWidth()/2, settings.cameraHeight, 100, &settings);
+    mazeCam.setup(maze[0]->getWidth()/2, settings.cameraHeight, 100, &settings);
 
     light = new ofLight();
     light->setPointLight();
@@ -137,7 +137,7 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     light->setAmbientColor(ofColor(50));
     
     camPath = maze[0]->createSimpleSpline(50, 50, 500);
-    mazeCam->setPath(camPath);
+    mazeCam.setPath(camPath);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -147,7 +147,7 @@ void CloudsVisualSystemMazeGenerator::selfPresetLoaded(string presetPath)
 {
     if (!settings.groundCam)
     {
-        mazeCam->setFlyOver(maze[0]->getWidth()/2);
+        mazeCam.setFlyOver(maze[0]->getWidth()/2);
     }
 }
 
@@ -167,9 +167,17 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
-    mazeCam->update();
+
+	
+	//JG seems that these were smashing your system and set to random values in your presets,
+	//and by calling your own camera it overode the bug
+	xRot->setHome(0);
+	yRot->setHome(0);
+	zRot->setHome(0);
+
+    mazeCam.update();
     
-    maze[0]->update(mazeCam);
+    maze[0]->update(&mazeCam);
 
     if (bLights) {
         light->setPosition(lightPos.x, lightPos.y, lightPos.z);
@@ -180,6 +188,8 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
+	
+	glEnable(GL_DEPTH_TEST);
     // draw fog
     ofFloatColor fc = settings.getFogColor();
     GLfloat fogColor[4] = {fc.r, fc.g, fc.b, 1.0};
@@ -194,16 +204,16 @@ void CloudsVisualSystemMazeGenerator::selfDraw()
 	glEnable(GL_FOG);
     
 
-    ofEnableLighting();
+//JG this is already happening
+//    ofEnableLighting();
     if (bLights) {
         light->enable();
     }
-    
-    mazeCam->begin();
 
-    maze[0]->draw(mazeCam, lightPos);
-    
-    mazeCam->end();
+//JG -- OCULUS BUG: don't start and stop your own camera, this is what getCameraRef() is
+//	mazeCam.begin();
+    maze[0]->draw(&mazeCam, lightPos);
+//	mazeCam.end();
     
     if (bLights) {
         light->disable();
@@ -236,9 +246,9 @@ void CloudsVisualSystemMazeGenerator::selfExit()
 {
     delete maze[0];
     
-    delete mazeCam;
-    
+//    delete mazeCam;
     delete camPath;
+	delete light;
 }
 
 //events are called when the system is active
@@ -259,7 +269,9 @@ void CloudsVisualSystemMazeGenerator::selfMouseDragged(ofMouseEventArgs& data)
 
 void CloudsVisualSystemMazeGenerator::selfMouseMoved(ofMouseEventArgs& data)
 {
-    mazeCam->mouseMove(ofVec2f(data.x, data.y));
+	if(!bUseOculusRift){
+		mazeCam.mouseMove(ofVec2f(data.x, data.y));
+	}
 }
 
 void CloudsVisualSystemMazeGenerator::selfMousePressed(ofMouseEventArgs& data){
@@ -270,8 +282,7 @@ void CloudsVisualSystemMazeGenerator::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-void
-CloudsVisualSystemMazeGenerator::setLightOri(ofLight* light, ofVec3f rot)
+void CloudsVisualSystemMazeGenerator::setLightOri(ofLight* light, ofVec3f rot)
 {
     ofVec3f xax(1, 0, 0);
     ofVec3f yax(0, 1, 0);

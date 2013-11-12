@@ -427,9 +427,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackground();
 			
 			getCameraRef().begin();
-			
 			drawScene();
-			
 			getCameraRef().end();
 			
 			ofPushStyle();
@@ -479,7 +477,7 @@ void CloudsVisualSystem::draw2dSystemPlane(){
 void CloudsVisualSystem::drawScene(){
 	
 	
-	//start our 3d scene
+//	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
@@ -487,7 +485,7 @@ void CloudsVisualSystem::drawScene(){
 	selfSceneTransformation();
 	
 	//accumulated position offset
-	ofTranslate( positionOffset );
+//	ofTranslate( positionOffset );
 	
 	glEnable(GL_DEPTH_TEST);
 	

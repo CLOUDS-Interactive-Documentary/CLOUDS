@@ -18,8 +18,7 @@ class MazeCamera : public ofCamera
 {
 public:
     
-    MazeCamera(float x, float y, float z, MazeSettings* set);
-    
+    void setup(float x, float y, float z, MazeSettings* set);
     void setPath(ofxSimpleSpline *p);
     void setFlyOver(float x);
     
