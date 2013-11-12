@@ -5,17 +5,13 @@
 #include "CloudsVisualSystemLaplacianTunnel.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-bool meshsort(NamedVbo a, NamedVbo b){
-	return ofToInt( ofSplitString(a.name,"Tunnel")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel")[1] );
-}
-
-int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
+int loadMesh(ofVbo &vbo, string path) {
     char* buffer;
     long size;
 	
 	//cout << "path is " << path << endl;
 	
-    ifstream data( ofToDataPath(path, true).c_str(), ios::in | ios::binary);
+    ifstream data(ofToDataPath(path,true).c_str(), ios::in | ios::binary);
     data.seekg(0, ios::end);
     size = data.tellg();
     data.seekg(0, ios::beg);
@@ -28,20 +24,6 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
     int numPts = ints[0];
     int numTriangles = ints[1];
     float *pts = (float *) (ints+2);
-	
-	for(int i = 0; i < numPts; i++){
-		ofVec3f p(pts[i*3+0],pts[i*3+1],pts[i*3+2]);
-		center += p;
-		min = ofVec3f(MIN(min.x,p.x),
-					  MIN(min.y,p.y),
-					  MIN(min.z,p.z));
-		max = ofVec3f(MAX(max.x,p.x),
-					  MAX(max.y,p.y),
-					  MAX(max.z,p.z));
-		
-	}
-	center /= numPts;
-	
     unsigned int * indices = ints + 2 + numPts*6;
     //not sure what is enable or disable by default
     vbo.enableIndices();
@@ -56,10 +38,6 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 	return numTriangles*3;
 }
 
-//CloudsVisualSystemLaplacianTunnel::~CloudsVisualSystemLaplacianTunnel(){
-//	clear();
-//}
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 
@@ -67,12 +45,8 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
     customGui->copyCanvasStyle(gui);
     customGui->copyCanvasProperties(gui);
 	
-	customGui->addIntSlider("num replications", 1, 5, &numReplications);
+	customGui->addSlider("num replications", 1, 100, &numReplications);
 	customGui->addSlider("replication offset", 0, 500, &replicationOffset);
-	customGui->addSlider("fog density", 0, .3, &fogDensity);
-	customGui->addSlider("light distance", 20, 600, &lightDistance);
-	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);
-	customGui->addSlider("corkscrew factor", 0, .2, &corkscrewFactor);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemLaplacianTunnel::selfGuiEvent);
 	
@@ -113,19 +87,19 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	
 	ofDirectory objs(getVisualSystemDataPath() + "Meshes/");
 	objs.allowExt("vbo");
+
 	objs.listDir();
+	objs.sort();
 	
 	clear();
 	
 	int numFiles = objs.numFiles();
 	vbos.resize( numFiles );
+	indexCount.resize( numFiles );
 	for(int i = 0; i < numFiles; i++){
-		vbos[i].vbo = new ofVbo();
-		vbos[i].name = objs.getName(i);
-		vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
+		vbos[i] = new ofVbo();
+		indexCount[i] = loadMesh(*vbos[i], objs.getPath( i ) );
 	}
-	
-	sort(vbos.begin(), vbos.end(), meshsort);
 	
 }
 
@@ -140,8 +114,10 @@ void CloudsVisualSystemLaplacianTunnel::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemLaplacianTunnel::selfBegin(){
-	tunnelCam.setPosition(center - ofVec3f(0,300,0));
-	tunnelCam.lookAt(center, ofVec3f(1,0,0));
+	
+	cout << "*** BEGIN!" << endl;
+	
+
 	startTime = ofGetElapsedTimef();
 }
 
@@ -153,9 +129,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
-	tunnelCam.dolly(-cameraSpeed);
-	headlight.setPointLight();
-	headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -163,67 +137,16 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	if(vbos.size() > 0){
 		
-		glPushAttrib(GL_FOG_BIT);
+		int vboIndex = int( (ofGetElapsedTimef() - startTime) * fps)  % vbos.size() ;
 		
-		glEnable(GL_FOG);
-		glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
-		glFogi(GL_FOG_MODE, GL_EXP);
-		
-		//	float FogCol[3]={0.8f,0.8f,0.8f}; // Define a nice light grey
-		//	glFogfv(GL_FOG_COLOR, FogCol);     // Set the fog color
-		glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
-		
-		ofFloatColor bgColor = ofFloatColor::fromHsb(bgHue, bgSat, bgBri);
-		
-		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
-		glFogfv (GL_FOG_COLOR, fogColor);
-		glEnable(GL_DEPTH_TEST);
-		//glDisable(GL_DEPTH_TEST);
-		
-		ofEnableAlphaBlending();
-
-		int vboIndex = int( (ofGetElapsedTimef() - startTime) * fps) % vbos.size() ;
-		
-		headlight.enable();
-		float spread = (max.y - min.y);
-		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
-		
-		mat->begin();
-//		ofSphere(tunnelCam.getPosition(), 20);
-//		numReplications = 1;
-//		ofTranslate(0,translateAmount,0);
-
+		ofPushMatrix();
 		for(int i = 0; i < numReplications; i++){
-			ofPushMatrix();
-			glPointSize(2);
-			float translateAmount = (startY + i*spread);
-			ofTranslate(0,translateAmount,0);
-			ofTranslate(center);
-			ofRotate(translateAmount*corkscrewFactor,0,1,0);
-			ofTranslate(-center);
 			
-//			cout << "translating " << translateAmount << " camera is currently at " << tunnelCam.getPosition().y << endl;
+			ofTranslate(0,replicationOffset,0);
 			
-			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
-			int index = int(ofMap(cameraoffset, 0, -spread*numReplications, 1.0, 0.0, true) * (vbos.size()-1));
-
-//			if(i == 0){
-//				ofSetColor(0);
-//				vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
-//			}
-			ofSetColor(255);
-			//vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
-			//vbos[index].vbo->draw(GL_TRIANGLES, 0, vbos[index].indexCount);
-			vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
-			
-			ofPopMatrix();
+			vbos[vboIndex]->drawElements(GL_TRIANGLES, indexCount[vboIndex]);
 		}
-
-		
-		mat->end();
-		headlight.disable();
-
-		glPopAttrib();
+		ofPopMatrix();
 	}
 	
 }
@@ -242,7 +165,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemLaplacianTunnel::selfEnd(){
-	clear();
+		
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -253,10 +176,11 @@ void CloudsVisualSystemLaplacianTunnel::selfExit(){
 void CloudsVisualSystemLaplacianTunnel::clear(){
 	if(vbos.size() > 0){
 		for(int i = 0; i < vbos.size(); i++){
-			vbos[i].vbo->clear();
-			delete vbos[i].vbo;
+			vbos[i]->clear();
+			delete vbos[i];
 		}
 		vbos.clear();
+		indexCount.clear();
 	}
 }
 
