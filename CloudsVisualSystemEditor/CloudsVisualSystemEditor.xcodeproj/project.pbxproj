@@ -4741,8 +4741,8 @@
 		E7FB2D891830DA6D009EBD0E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7FB2D8A1830DA6D009EBD0E /* ofxOculusRift.cpp */,
 				E7FB2D8B1830DA6D009EBD0E /* ofxOculusRift.h */,
+				E7FB2D8A1830DA6D009EBD0E /* ofxOculusRift.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";

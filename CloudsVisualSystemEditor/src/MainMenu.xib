@@ -1058,7 +1058,7 @@
 							<set class="NSMutableSet" key="NSDragTypes">
 								<string>NSStringPboardType</string>
 							</set>
-							<string key="NSFrame">{{339, 340}, {543, 20}}</string>
+							<string key="NSFrame">{{240, 340}, {642, 20}}</string>
 							<reference key="NSSuperview" ref="542916542"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="657660529"/>
@@ -1528,7 +1528,7 @@
 						<object class="NSComboBox" id="604597986">
 							<reference key="NSNextResponder" ref="542916542"/>
 							<int key="NSvFlags">300</int>
-							<string key="NSFrame">{{265, 338}, {69, 26}}</string>
+							<string key="NSFrame">{{166, 339}, {69, 26}}</string>
 							<reference key="NSSuperview" ref="542916542"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="899681284"/>
@@ -1674,7 +1674,7 @@
 						<object class="NSButton" id="697434907">
 							<reference key="NSNextResponder" ref="542916542"/>
 							<int key="NSvFlags">300</int>
-							<string key="NSFrame">{{193, 341}, {66, 18}}</string>
+							<string key="NSFrame">{{94, 341}, {66, 18}}</string>
 							<reference key="NSSuperview" ref="542916542"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="604597986"/>
@@ -1893,32 +1893,6 @@
 								<reference key="NSControlView" ref="231101921"/>
 								<int key="NSButtonFlags">-2038284288</int>
 								<int key="NSButtonFlags2">129</int>
-								<string key="NSAlternateContents"/>
-								<string key="NSKeyEquivalent"/>
-								<int key="NSPeriodicDelay">200</int>
-								<int key="NSPeriodicInterval">25</int>
-							</object>
-							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-						</object>
-						<object class="NSButton" id="102166545">
-							<reference key="NSNextResponder" ref="542916542"/>
-							<int key="NSvFlags">300</int>
-							<string key="NSFrame">{{101, 341}, {78, 18}}</string>
-							<reference key="NSSuperview" ref="542916542"/>
-							<reference key="NSWindow"/>
-							<string key="NSReuseIdentifierKey">_NS:9</string>
-							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="138260373">
-								<int key="NSCellFlags">-2080374784</int>
-								<int key="NSCellFlags2">268435456</int>
-								<string key="NSContents">Standard</string>
-								<reference key="NSSupport" ref="282685599"/>
-								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="102166545"/>
-								<int key="NSButtonFlags">1211912448</int>
-								<int key="NSButtonFlags2">2</int>
-								<reference key="NSNormalImage" ref="370451317"/>
-								<reference key="NSAlternateImage" ref="773539265"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -2524,7 +2498,6 @@
 							<reference ref="185734878"/>
 							<reference ref="231101921"/>
 							<reference ref="697434907"/>
-							<reference ref="102166545"/>
 							<reference ref="604597986"/>
 						</array>
 						<reference key="parent" ref="268337203"/>
@@ -3145,19 +3118,6 @@
 						<reference key="object" ref="380077699"/>
 						<reference key="parent" ref="231101921"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">755</int>
-						<reference key="object" ref="102166545"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="138260373"/>
-						</array>
-						<reference key="parent" ref="542916542"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">756</int>
-						<reference key="object" ref="138260373"/>
-						<reference key="parent" ref="102166545"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3296,8 +3256,6 @@
 				<string key="751.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="752.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="753.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="755.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="756.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
