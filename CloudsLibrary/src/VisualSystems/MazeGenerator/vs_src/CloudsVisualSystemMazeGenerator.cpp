@@ -245,8 +245,6 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 void CloudsVisualSystemMazeGenerator::selfExit()
 {
     delete maze[0];
-    
-//    delete mazeCam;
     delete camPath;
 	delete light;
 }

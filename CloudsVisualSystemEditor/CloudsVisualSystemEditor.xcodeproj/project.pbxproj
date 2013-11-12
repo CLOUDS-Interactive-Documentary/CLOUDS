@@ -4314,8 +4314,8 @@
 		E7D365A517C7D32C004A5ED6 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D60845182BF2A1004914EF /* CloudsVisualSystemScrape.cpp */,
 				E7D60846182BF2A1004914EF /* CloudsVisualSystemScrape.h */,
+				E7D60845182BF2A1004914EF /* CloudsVisualSystemScrape.cpp */,
 				E7D365A817C7D32C004A5ED6 /* ofxMtlBoxFitting.h */,
 				E7D365A717C7D32C004A5ED6 /* ofxMtlBoxFitting.cpp */,
 			);
