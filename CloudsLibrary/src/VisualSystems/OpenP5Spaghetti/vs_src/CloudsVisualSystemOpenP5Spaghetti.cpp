@@ -169,6 +169,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
 
     }
     
+	//shouldn't PRELOADS should happen in regenerate...?
     for (int j = 0; j<numPreloads; j++){
         
         selfUpdate();
@@ -230,27 +231,30 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_DEPTH_TEST);
-	
+	glEnable(GL_POINT_SMOOTH);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+    glPointSize(1);
+
     ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofPushMatrix();
-    {
-    ofRotate(currSpin, 0, 1, 0);
-    
-    for(int i = 0; i<NWalkers; i++){
-		
-        walkers[i].draw();
-    }
-    
-    ofPopStyle(); 
+
+	ofRotate(currSpin, 0, 1, 0);
+	for(int i = 0; i < NWalkers; i++){
+		walkers[i].draw();
+	}
+	
+	ofPopStyle();
     ofPopMatrix();
-        }
+	glPopAttrib();
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemOpenP5Spaghetti ::selfDrawDebug(){
+void CloudsVisualSystemOpenP5Spaghetti::selfDrawDebug(){
 
 }
 

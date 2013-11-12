@@ -86,17 +86,8 @@ void CloudsVisualSystemOpenP5SpaceJunk::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5SpaceJunk::selfSetup(){
-    
-    
     ang = 0;
-    
     shouldRegenerate = true;
-	
-    
-
-	
-
-
 }
 
 
@@ -182,19 +173,21 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfDraw(){
     */ 
     
     ofPushStyle();
-//    glEnable(GL_DEPTH_TEST);
-    ofBackground(0);
+    glEnable(GL_DEPTH_TEST);
+//	glDisable(GL_DEPTH_TEST);
     
 	ofPushMatrix();
 	ofEnableAlphaBlending();
 	
-//    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
-//    ofRotateY(ofRadToDeg(ang));     //Y rotation
-//    mat->begin();
+    ofRotateX(ofRadToDeg(ang));     //X rotation - converts radians to degrees
+    ofRotateY(ofRadToDeg(ang));     //Y rotation
+	
+    mat->begin();
+	//ofSetColor(128, 0, 0);
     for (int i = 0;i < list.size(); i++) {
 		list[i].draw();
 	}
-//    mat->end(); //enables material
+    mat->end(); //enables material
 	
     ofPopStyle();
     ofPopMatrix();

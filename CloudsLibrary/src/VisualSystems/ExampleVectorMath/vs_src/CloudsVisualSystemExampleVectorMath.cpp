@@ -81,7 +81,7 @@ void CloudsVisualSystemExampleVectorMath::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemExampleVectorMath::selfSetup(){
     
-    cam.setPosition(0, 0, 750);
+    camera.setPosition(0, 0, 750);
     speedOfRotation = 0.5f;
     lineWidth = 1;
     maxDrawPointAge = 10;
@@ -132,7 +132,7 @@ bool IsInvisible (DrawPoint& pt) {
 //normal update call
 void CloudsVisualSystemExampleVectorMath::selfUpdate(){
     drawBackground();
-    cam.setPosition(camPos);
+    camera.setPosition(camPos);
     
 
     // rotate the points
@@ -172,7 +172,7 @@ void CloudsVisualSystemExampleVectorMath::selfUpdate(){
 void CloudsVisualSystemExampleVectorMath::selfDraw(){
 
     
-    cam.begin();
+
     ofPushMatrix();
     ofScale(1, -1, 1);
     ofSetLineWidth(lineWidth);
@@ -207,7 +207,7 @@ void CloudsVisualSystemExampleVectorMath::selfDraw(){
     }
     
     ofPopMatrix();
-    cam.end();
+
 }
 
 // draw any debug stuff here
