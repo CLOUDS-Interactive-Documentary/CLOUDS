@@ -1,0 +1,55 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Ripples</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DAMPING</Name>
+    <Value>0.945000052</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>10.172413826</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DROP HUE</Name>
+    <HighValue>38.940887451</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DROP SAT</Name>
+    <HighValue>48.990146637</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>DROP BRI</Name>
+    <HighValue>111.798049927</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TINT HUE</Name>
+    <Value>18.842365265</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TINT SAT</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TINT BRI</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TINT ALPHA</Name>
+    <Value>255.000000000</Value>
+</Widget>

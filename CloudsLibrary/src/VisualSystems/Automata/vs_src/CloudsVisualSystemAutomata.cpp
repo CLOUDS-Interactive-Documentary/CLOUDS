@@ -60,7 +60,7 @@ void CloudsVisualSystemAutomata::selfSetup(){
         cout << "failed to load " << getVisualSystemDataPath() + "mem.gif" << endl;
     }
     
-    conway.allocate(640, 480);
+    conway.allocate(ofGetWidth(), ofGetHeight());
     conway.setPasses(10);
     //
     // Created by kalwalt alias Walter Perdan on 24/12/11
