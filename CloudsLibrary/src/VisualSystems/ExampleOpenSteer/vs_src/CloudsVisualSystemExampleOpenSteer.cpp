@@ -235,10 +235,11 @@ void CloudsVisualSystemExampleOpenSteer::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleOpenSteer::selfDraw(){
-    //cam.lookAt(avgPosition);
-    cam.begin();
+
+	ofPushStyle();
     currentSimulation->draw();
-	cam.end();
+	ofPopStyle();
+	
 }
 
 // draw any debug stuff here
