@@ -260,7 +260,7 @@ void CloudsVisualSystemMandala::loadHexMesh( string loc )
 			
 			else if( vals[0] == "fv")
 			{
-				//TODO: we can get ride of the face normals. we're just using the centers
+				//TODO: we can get rid of the face normals. we're just using the centers
 				vector<string> fc = ofSplitString( buffer.getNextLine(), " ");
 				vector<string> fn = ofSplitString( buffer.getNextLine(), " ");
 				
