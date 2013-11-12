@@ -202,8 +202,6 @@ void CloudsVisualSystemRipples::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemRipples::selfDraw(){
     
-   
-
 }
 
 // draw any debug stuff here
@@ -229,9 +227,9 @@ void CloudsVisualSystemRipples::selfDrawBackground()
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemRipples::selfEnd(){
-
 	
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemRipples::selfExit(){
 	
