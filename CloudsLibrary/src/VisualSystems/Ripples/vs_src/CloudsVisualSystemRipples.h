@@ -11,10 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-//#include "ofxFX.h"
-//#include "ofxRipples.h"
-//#include "ofxBounce.h"
-
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRipples : public CloudsVisualSystem {
@@ -96,7 +92,7 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     
     void restart();
 
-protected:
+  protected:
     ofxUISuperCanvas * customGui;
     ofx1DExtruder * tintHue, * tintSat, * tintBri, * tintAlpha;
     
