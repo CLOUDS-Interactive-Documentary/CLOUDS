@@ -116,6 +116,7 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     ofColor color2;
     ofColor randomColor;
     ofColor newColor;
+    int numPreloads = 1000;
     float saturation = 100;
     float brightness = 200;
     float saturation1;
@@ -124,6 +125,10 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     float brightness2;
     float hue1 = 50;
     float hue2 = 100;
+    
+    //spin speed
+    float currSpin;
+    float spinSpeed;
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly

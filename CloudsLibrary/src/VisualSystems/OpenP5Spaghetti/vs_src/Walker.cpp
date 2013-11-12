@@ -204,9 +204,7 @@ void Walker::doubleTrails(){
     
 void Walker::draw(){
     
-    glEnable(GL_POINT_SMOOTH);
-    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-    glPointSize(1);
+
   
     if(drawPoints == true){
       

@@ -401,8 +401,6 @@ void CloudsVisualSystem3DModel::selfSetup()
 	
 	
 	//set our defaults
-	videoLoaded = false;
-	
 	bDrawBoundingBox = true;
 	bDrawArrows = true;
 	bDrawCameras = true;
@@ -505,7 +503,6 @@ void CloudsVisualSystem3DModel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystem3DModel::selfUpdate(){
-
 //	cout << "WTF" << endl;
 }
 
@@ -589,18 +586,23 @@ void CloudsVisualSystem3DModel::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystem3DModel::selfEnd()
 {
-	
-	simplePointcloud.clear();
-	
-}
-// this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystem3DModel::selfExit()
-{
-	//???: these should be here and not in selfEnd() right?
 	boundBoxVbo.clear();
 	modelMesh.clear();
 	grid.clear();
 	cameraLines.clear();
+	
+	leftCam.disableMouseInput();
+	planCam.disableMouseInput();
+	frontCam.disableMouseInput();
+	perspCam.disableMouseInput();
+
+	
+}
+
+// this is called when you should clear all the memory and delet anything you made in setup
+void CloudsVisualSystem3DModel::selfExit()
+{
+	
 }
 
 //events are called when the system is active
@@ -1210,14 +1212,17 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
 {
 	
-	if(cam != NULL)
+	//we should look at how to not call our own camera here, as it clobbers the main one.
+	if(cam != NULL && !bUseOculusRift)
 	{
 		cam->begin( viewRect );
 	}
 	
 	drawSceneGeometry(cam);
 		
-	if( cam != NULL)	cam->end();
+	if( cam != NULL && !!bUseOculusRift){
+		cam->end();	
+	}
 }
 
 void CloudsVisualSystem3DModel::drawScenePerspective( ofRectangle viewRect )

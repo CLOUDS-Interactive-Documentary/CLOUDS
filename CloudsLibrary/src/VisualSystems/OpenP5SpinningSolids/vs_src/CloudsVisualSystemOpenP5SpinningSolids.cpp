@@ -12,8 +12,7 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5SpinningSolids::selfSetupGui(){
 
-    
-    ofGetRectMode() == OF_RECTMODE_CORNER;
+
     /*
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
@@ -64,7 +63,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
     
     for (int i = 0; i < num-1; i++){
         for (int j = 0; j < num-1; j ++){ //rows
-    grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
+			grid.push_back(Tetra(j*xoffset, i*yoffset, 0, 10));
           //  grid.back().ID = IDnumber + 1;
         }
     }
@@ -103,24 +102,10 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfUpdate(){
 void CloudsVisualSystemOpenP5SpinningSolids::selfDraw(){
     
     ofBackground(0);
-    
-    
+	
     cam.begin();
-
-            //ofDrawBox(10);
-            //ofDrawAxis(20)
-
     for (int i = 0; i < grid.size(); i++){
-
-            ofPushStyle();
-            ofPushMatrix();
-        
-            //noiseRotation
-             grid[i].drawShape();
-           
-       
-            ofPopMatrix();
-            ofPopStyle();
+		 grid[i].drawShape();
     }
     cam.end();
 
@@ -142,9 +127,9 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemOpenP5SpinningSolids::selfEnd(){
-
 	
 }
+
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemOpenP5SpinningSolids::selfExit(){
 	
@@ -161,10 +146,7 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfKeyReleased(ofKeyEventArgs & ar
 
 void CloudsVisualSystemOpenP5SpinningSolids::selfMouseDragged(ofMouseEventArgs& data){
     
-    
-	
 }
-
 
 void CloudsVisualSystemOpenP5SpinningSolids::selfMouseMoved(ofMouseEventArgs& data){
     

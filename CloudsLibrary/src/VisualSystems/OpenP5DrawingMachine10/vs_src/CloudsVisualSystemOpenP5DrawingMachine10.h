@@ -11,7 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "DM10PingPongBuffer.h"
 
 //--------------------------------------------------------------
 //--------------------------------------------------------------
@@ -108,8 +107,7 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         ofShader updateShader;
         ofShader renderShader;
     
-        DM10PingPongBuffer updateBuffer;
-        //DM10PingPongBuffer renderBuffer;
+        ofFbo updateSrcFbo, updateDstFbo;
         ofFbo renderBuffer;
     
         unsigned long long elapsedTimeMs;
@@ -117,7 +115,6 @@ class CloudsVisualSystemOpenP5DrawingMachine10 : public CloudsVisualSystem
         float speedFactor;
         float maxDist;
     
-        int width, height;
         int numAttractors;
         int numParticles;
         int textureRes;

@@ -23,11 +23,11 @@ float _C::danceOffset = 0;
 bool _C::renderNeurons = true;
 jtn::Box _C::boundingBox;
 bool _C::colorMode = true;
-
+bool _C::renderCamPath = true;
 void _C::selfSetup(){
     rotation = 0;
     reset();
-    readFromFile( "brain2" );
+    readFromFile( "brain1" );
     generateFlythrough();
     
 }
@@ -48,13 +48,17 @@ void _C::selfSetupGuis(){
     saveButton = gui->addButton("Save Neurons", false, 32,32);
     loadButton = gui->addButton("Load Neurons", false, 32,32);
 
-    gui->addToggle("Show Neurons", &renderNeurons);
     
-    generateCamPath = gui->addButton( "Generate Flythrough",false, 32,32);
-    generateRandCam = gui->addButton( "Generate Random Cam Bounce",false, 32,32);
-    camDuration = gui->addSlider("Cam Path Duration",0,120,60);
     
-    rdrGui->addToggle("Color Mode", &colorMode);
+    generateCamPath = camGui->addButton( "Generate Flythrough",false, 32,32);
+    generateRandCam = camGui->addButton( "Generate Random Bounce",false, 32,32);
+    tumbleCam = camGui->addButton( "Quatumble",false, 32,32);
+    camDuration = camGui->addSlider("Cam Path Duration",0,120,60);
+
+    
+    rdrGui->addToggle("Show Neurons", &renderNeurons);
+    rdrGui->addToggle("Depth Coloring", &colorMode);
+    rdrGui->addToggle("Show Camera Path", &renderCamPath);
 }
 
 
@@ -95,86 +99,6 @@ void _C::selfUpdate(){
     danceOffset = danceOffsetSlider->getScaledValue();
     
     
-}
-
-
-jtn::PointD jtn::Box::upper(){
-    return _upper;
-}
-
-
-jtn::PointD jtn::Box::lower(){
-    return _lower;
-}
-
-jtn::Box::Box(){
-    
-}
-
-void jtn::Box::stretch(ofVec3f that){
-    
-    if (that.x < _lower.x) _lower.x = that.x;
-    if (that.x > _upper.x) _upper.x = that.x;
-    
-    if (that.y < _lower.y) _lower.y = that.y;
-    if (that.y > _upper.y) _upper.y = that.y;
-    
-    if (that.z < _lower.z) _lower.z = that.z;
-    if (that.z > _upper.z) _upper.z = that.z;
-    
-    
-    
-}
-
-jtn::PointD jtn::Box::getNormalized(jtn::PointD that){
-    PointD delta = _upper - _lower;
-    return (that - _lower) / delta;
-}
-
-void jtn::Box::setOppositeExtremes(){
-    _lower = jtn::PointD(  9999,  9999,  9999);
-    _upper = jtn::PointD( -9999.0f, -9999.0f, -9999.0f);
-}
-
-jtn::PointD::PointD(){
-    x=y=z=0;
-}
-
-jtn::PointD::PointD(double xx,double yy,double zz){
-    x=xx;
-    y=yy;
-    z=zz;
-}
-
-jtn::PointD::PointD(ofVec3f copyable){
-    x=copyable.x;
-    y=copyable.y;
-    z=copyable.z;
-    
-}
-
-jtn::PointD jtn::PointD::operator-(jtn::PointD that){
-    return jtn::PointD(
-                       x-that.x,
-                       y-that.y,
-                       z-that.z
-                       );
-}
-
-
-
-jtn::PointD jtn::PointD::operator/(jtn::PointD that){
-    return jtn::PointD(
-                       x/that.x,
-                       y/that.y,
-                       z/that.z
-                       );
-}
-
-jtn::PointD::operator string(){
-    stringstream ss;
-    ss << x << ',' << y << ',' << z;
-    return ss.str();
 }
 
 void _C::updateBoundingBox(){
@@ -235,6 +159,21 @@ void _C::reset(bool createRootNodes){
     }
 }
 
+void _C::guiCameraEvent(ofxUIEventArgs &e){
+    CloudsVisualSystem::guiCameraEvent(e);
+    if(e.widget == generateCamPath && ofGetMousePressed() ) {
+        generateFlythrough();
+    }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
+        generateRandCamBounce();
+    }else if(e.widget == camDuration && ofGetMousePressed() ) {
+        cloudsPathCam.setDuration(camDuration->getScaledValue());
+    }else if(e.widget == tumbleCam && ofGetMousePressed() ) {
+        _N::clearPathFlags();
+        cloudsPathCam.clear();
+    }
+}
+
+
 void _C::selfGuiEvent(ofxUIEventArgs &e){
     if( e.widget->getName()=="Reset" && ofGetMousePressed() ){
         reset();
@@ -244,12 +183,6 @@ void _C::selfGuiEvent(ofxUIEventArgs &e){
         cout << ofGetTimestampString() << endl;
         readFromFile( "brain1" );
         cout << ofGetTimestampString() << endl;
-    }else if(e.widget == generateCamPath && ofGetMousePressed() ) {
-        generateFlythrough();
-    }else if(e.widget == generateRandCam && ofGetMousePressed() ) {
-        generateRandCamBounce();
-    }else if(e.widget == camDuration && ofGetMousePressed() ) {
-        cloudsPathCam.setDuration(camDuration->getScaledValue());
     }
 }
 
@@ -261,6 +194,8 @@ void _C::generateRandCamBounce(){
     //reset cam path.
     cloudsPathCam.clear();
 
+    _N::clearPathFlags();
+    
     float s = 50;
     ofVec3f firstPos;
     for(int i=0;i<10.0;i++){
@@ -272,6 +207,7 @@ void _C::generateRandCamBounce(){
                             );
         cloudsPathCam.addPositionControlVertex( p );
         cloudsPathCam.addTargetControlVertex(ofVec3f());
+        
         if(i==0)firstPos = p;
     }
     
@@ -292,16 +228,18 @@ void _C::generateFlythrough(){
     //reset cam path.
     cloudsPathCam.clear();
 
+    _N::clearPathFlags();
     
     // find someone in the youngest possible generation of terminal
     // therefore insuring a long path between a terminal and a root parent.
+    
     int youngestGen = 0;
     _N *thisNode = NULL;
-    
     vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
     for(;nit!=_N::all.end();nit++){
         
         if( (*nit)->isTerminal() ){
+            
             if((*nit)->generation > youngestGen) {
                 youngestGen = (*nit)->generation;
                 thisNode = (*nit);
@@ -315,10 +253,15 @@ void _C::generateFlythrough(){
     
     ofVec3f firstPoint = *thisNode; // make a copy of the first point for lookAt() later.
     
+    float camPosOffset = 1.5;
+    
     while( thisNode->parent != NULL  ){
         
-        cloudsPathCam.addPositionControlVertex( *thisNode );
-        cloudsPathCam.addTargetControlVertex(ofVec3f());
+        thisNode->isPartOfCamPath = true;
+        
+        cloudsPathCam.addPositionControlVertex( *thisNode);
+        //cloudsPathCam.addTargetControlVertex(ofVec3f());
+        //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
         pts.push_back( *thisNode );
 
         //traverse up the parent
@@ -335,8 +278,9 @@ void _C::generateFlythrough(){
     
     deque<ofVec3f>::reverse_iterator pit = pts.rbegin();
     for(;pit!=pts.rend();pit++){
-        cloudsPathCam.addPositionControlVertex( *pit );
-        cloudsPathCam.addTargetControlVertex(ofVec3f());
+        cloudsPathCam.addPositionControlVertex( *pit);
+        //cloudsPathCam.addTargetControlVertex(ofVec3f());
+        //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
     }
     
     // orient cam path to look inward,
@@ -347,9 +291,14 @@ void _C::generateFlythrough(){
 
 
 ofCamera& _C::getCameraRef(){
-    ofCamera& ogCam = CloudsVisualSystem::getCameraRef();
-    ogCam.setPosition(  cloudsPathCam.getPosition() - camDistance );
-    return ogCam;
+    if(cloudsPathCam.getPositionSpline().getControlVertices().size()==0 ){
+        //do the overloaded behavior.
+        return CloudsVisualSystem::getCameraRef();
+    }else{
+        //disabled "look around" during the path tour.
+        //ogCam.setPosition(  cloudsPathCam.getPosition() - camDistance );
+        return cloudsPathCam;
+    }
 }
 
 /**
@@ -515,14 +464,20 @@ void _C::selfDraw(){
 
 	ofPopMatrix();
 	
+    ofSetColor(255);
+    stringstream fps;
+    fps << "FPS: " << ofGetFrameRate();
+    cout << fps.str() << endl;
+    
 }
 
 //############################################################
-
+#pragma mark
 
 vector<_N*> _N::all;
 vector<_N*> _N::terminals;
 GLuint _N::drawMode = 0;
+
 int _N::maxDepth = 0;
 
 void _N::updateScreenSpace(ofCamera &cam){
@@ -644,10 +599,14 @@ void _N::draw(){
     
 	for(that=children.begin(); that!=children.end();that++){
 		
-        if(_C::colorMode){
-            glColor4f(worldNormPos.x,worldNormPos.y,worldNormPos.z, _C::alpha);
+        if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
+            glColor4f(1,0,0, 1);
         }else{
-            glColor4f(r, g, b, _C::alpha);
+            if(_C::colorMode){
+                glColor4f(worldNormPos.x,worldNormPos.y,worldNormPos.z, _C::alpha);
+            }else{
+                glColor4f(r, g, b, _C::alpha);
+            }
         }
 
         
@@ -661,12 +620,17 @@ void _N::draw(){
 		
 		_N *t = *that;
         
-        if(_C::colorMode){
-            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
-            glColor4f(worldNormPos2.x,worldNormPos2.y,worldNormPos2.z, _C::alpha);
-
+        if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
+            glColor4f(1,0,0, 1);
         }else{
-            glColor4f(t->r, t->g, t->b, _C::alpha);
+            
+            if(_C::colorMode){
+                jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
+                glColor4f(worldNormPos2.x,worldNormPos2.y,worldNormPos2.z, _C::alpha);
+
+            }else{
+                glColor4f(t->r, t->g, t->b, _C::alpha);
+            }
         }
         
 
@@ -694,6 +658,7 @@ _N::TreeNode(){
 	generation = 0;
 	age = 0;
     screenSpace = ofVec3f(0,0,0);
+    isPartOfCamPath = false;
 }
 
 _N::TreeNode(ifstream &fin){
@@ -734,6 +699,8 @@ _N::TreeNode(ifstream &fin){
         children.push_back((_N*)childIndex);
     }
     
+    isPartOfCamPath = false;
+    
     updateMaxDepth();
     
     
@@ -773,5 +740,97 @@ void _N::serialize(ofstream &fout){
     fout << endl;
 }
 
+
+void _N::clearPathFlags(){
+    vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
+    for(;nit!=_N::all.end();nit++){
+        (*nit)->isPartOfCamPath = false;
+    }
+}
+
+#pragma mark
+
+jtn::PointD jtn::Box::upper(){
+    return _upper;
+}
+
+
+jtn::PointD jtn::Box::lower(){
+    return _lower;
+}
+
+jtn::Box::Box(){
+    
+}
+
+void jtn::Box::stretch(ofVec3f that){
+    
+    if (that.x < _lower.x) _lower.x = that.x;
+    if (that.x > _upper.x) _upper.x = that.x;
+    
+    if (that.y < _lower.y) _lower.y = that.y;
+    if (that.y > _upper.y) _upper.y = that.y;
+    
+    if (that.z < _lower.z) _lower.z = that.z;
+    if (that.z > _upper.z) _upper.z = that.z;
+    
+    
+    
+}
+
+
+jtn::PointD jtn::Box::getNormalized(jtn::PointD that){
+    PointD delta = _upper - _lower;
+    return (that - _lower) / delta;
+}
+
+void jtn::Box::setOppositeExtremes(){
+    _lower = jtn::PointD(  9999,  9999,  9999);
+    _upper = jtn::PointD( -9999.0f, -9999.0f, -9999.0f);
+}
+
+
+#pragma mark
+
+jtn::PointD::PointD(){
+    x=y=z=0;
+}
+
+jtn::PointD::PointD(double xx,double yy,double zz){
+    x=xx;
+    y=yy;
+    z=zz;
+}
+
+jtn::PointD::PointD(ofVec3f copyable){
+    x=copyable.x;
+    y=copyable.y;
+    z=copyable.z;
+    
+}
+
+jtn::PointD jtn::PointD::operator-(jtn::PointD that){
+    return jtn::PointD(
+                       x-that.x,
+                       y-that.y,
+                       z-that.z
+                       );
+}
+
+
+
+jtn::PointD jtn::PointD::operator/(jtn::PointD that){
+    return jtn::PointD(
+                       x/that.x,
+                       y/that.y,
+                       z/that.z
+                       );
+}
+
+jtn::PointD::operator string(){
+    stringstream ss;
+    ss << x << ',' << y << ',' << z;
+    return ss.str();
+}
 
 

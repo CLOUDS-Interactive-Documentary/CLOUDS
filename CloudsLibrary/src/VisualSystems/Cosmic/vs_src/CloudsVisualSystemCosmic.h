@@ -47,9 +47,9 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
 //		return cloudsCamera;
 //	}
     
-    ofCamera& getCameraRef(){
-		return cam;
-	}
+//    ofCamera& getCameraRef(){
+//		return cam;
+//	}
 
     int ID(int x, int y); 
     void setupFboViewerGui(string name, ofFbo *fbo);
@@ -81,13 +81,16 @@ class CloudsVisualSystemCosmic : public CloudsVisualSystem {
     
     void addGui(ofxUISuperCanvas *g);
     void selfSetupGuis();    
-    void drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight);
+//    void drawTexturedQuad(float x, float y, float w, float h, float texWidth, float texHeight);
     
     void selfSetupTimeline();
     
-protected:    
+protected:
+	void clear();
+	bool vbosAllocated;
     ofxColorPalettes *colorPalettes;
     
+
     float colorIndex;
     int numTris;
     int numIndi;

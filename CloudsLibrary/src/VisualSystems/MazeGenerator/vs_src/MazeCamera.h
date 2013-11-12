@@ -10,7 +10,7 @@
 #define __MazeGenerator__MazeCamera__
 
 #include <ofMain.h>
-#include "ParamManager.h"
+#include "MazeSettings.h"
 #include "Maze.h"
 #include "ofxSimpleSpline.h"
 
@@ -18,16 +18,20 @@ class MazeCamera : public ofCamera
 {
 public:
     
-    MazeCamera(float x, float y, float z);
-    
+    void setup(float x, float y, float z, MazeSettings* set);
     void setPath(ofxSimpleSpline *p);
+    void setFlyOver(float x);
     
     void update();
     void draw();
     
     void setVelocity(ofVec3f vel);
     
+    void mouseMove(ofVec2f p);
+    
 private:
+    MazeSettings* settings;
+    
     ofVec3f vel;
     ofVec3f acc;
     float fov;
@@ -35,6 +39,7 @@ private:
     
     ofxSimpleSpline* path;
     float pathT;
+    float xRot, yRot, zRot;
     
     void applyLimits(ofVec3f &p);
 };

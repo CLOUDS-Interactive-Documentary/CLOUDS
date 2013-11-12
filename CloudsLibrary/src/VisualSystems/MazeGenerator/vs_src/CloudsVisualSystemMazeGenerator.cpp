@@ -18,8 +18,6 @@ CloudsVisualSystemMazeGenerator::CloudsVisualSystemMazeGenerator()
 
 void CloudsVisualSystemMazeGenerator::selfSetupGui()
 {
-    ParamManager* pm = &ParamManager::getInstance();
-
     customGui = new ofxUISuperCanvas("MAZE BUILDER", gui);
     customGui->copyCanvasStyle(gui);
     customGui->copyCanvasProperties(gui);
@@ -27,23 +25,25 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
     customGui->addSpacer();
-    customGui->addLabel("CAMERA");
-    customGui->addSlider("CAM SPEED", -100, 300, &pm->cameraSpeed);
-    customGui->addSlider("CAM HEIGHT", 0, 5000, &pm->cameraHeight);
-    customGui->addSlider("CAM ANGLE", 0, 360, &pm->cameraAngle);
-
-    customGui->addSlider("SHOW AHEAD", 10, 150, &pm->showAhead);
+    customGui->addSlider("CAM SPEED", -100, 300, &settings.cameraSpeed);
+    customGui->addSlider("CAM HEIGHT", 0, 5000, &settings.cameraHeight);
+    customGui->addSlider("CAM ANGLE", 0, 360, &settings.cameraAngle);
+    customGui->addToggle("GROUND CAM", &settings.groundCam);
+    customGui->addSlider("GCAM SPEED", 0, 1, &settings.groundCamSpeed);
+    customGui->addSlider("GCAM LOOKAT", 0, 1, &settings.groundCamLookAt);
     
-    customGui->addLabel("MOVING BALLS");
-    customGui->addSlider("NUM BALLS", 0, 150, &pm->numberOfBalls);
-    customGui->addSlider("BALLS RADIUS", 0, 40, &pm->ballRadius);
-    customGui->addSlider("BALLS SPEED", 0, 0.01, &pm->ballMaxSpeed);
+    customGui->addSpacer();
+    customGui->addSlider("SHOW AHEAD", 10, 150, &settings.showAhead);
+    customGui->addSlider("FOG DENSITY", 0, .1, &settings.fogDensity);
+    customGui->addSlider("FOG START", 0, 10000, &settings.fogStart);
+    customGui->addSlider("FOG END", 0, 10000, &settings.fogEnd);
     
-    customGui->addToggle("GROUND CAM", &pm->groundCam);
-    customGui->addSlider("GCAM SPEED", 0, 1, &pm->groundCamSpeed);
-    customGui->addSlider("GCAM LOOKAT", 0, 1, &pm->groundCamLookAt);
+    customGui->addSpacer();
+    customGui->addSlider("NUM BALLS", 0, 150, &settings.numberOfBalls);
+    customGui->addSlider("BALLS RADIUS", 0, 40, &settings.ballRadius);
+    customGui->addSlider("BALLS SPEED", 0, 0.01, &settings.ballMaxSpeed);
     
-    customGui->addSlider("WALL HEIGHT VARIANCE", 0, 1, &pm->heightRandom);
+    customGui->addSlider("WALL HEIGHT VARIANCE", 0, 1, &settings.heightRandom);
     
 
     float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
@@ -57,63 +57,35 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
     
     customGui->addSpacer();
     customGui->addLabel("COLORS");
-    customGui->addLabel("GROUND COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("GH", 0.0, 255, &(pm->groundColor.r), length, dim)->setShowValue(true);
+
+    customGui->addLabel("FOG COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("FH", 0.0, 255, &(settings.fogColor.r), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("GS", 0.0, 255, &(pm->groundColor.g), length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("GB", 0.0, 255, &(pm->groundColor.b), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("FS", 0.0, 255, &(settings.fogColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("FB", 0.0, 255, &(settings.fogColor.b), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+
+    customGui->addLabel("GROUND COLOR", OFX_UI_FONT_SMALL);
+    customGui->addMinimalSlider("GH", 0.0, 255, &(settings.groundColor.r), length, dim)->setShowValue(true);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    customGui->addMinimalSlider("GS", 0.0, 255, &(settings.groundColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("GB", 0.0, 255, &(settings.groundColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
     customGui->addLabel("WALL COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("WH", 0.0, 255, &(pm->wallColor.r), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("WH", 0.0, 255, &(settings.wallColor.r), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("WS", 0.0, 255, &(pm->wallColor.g), length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("WB", 0.0, 255, &(pm->wallColor.b), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("WS", 0.0, 255, &(settings.wallColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("WB", 0.0, 255, &(settings.wallColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     customGui->addLabel("BALL COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("SH", 0.0, 255, &(pm->ballColor.r), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SH", 0.0, 255, &(settings.ballColor.r), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("SS", 0.0, 255, &(pm->ballColor.g), length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("SB", 0.0, 255, &(pm->ballColor.b), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SS", 0.0, 255, &(settings.ballColor.g), length, dim)->setShowValue(true);
+    customGui->addMinimalSlider("SB", 0.0, 255, &(settings.ballColor.b), length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    
-#if 0
-    customGui->addLabel("PHYSICS");
-    customGui->addSlider("PARTICLES", 0, 50000, &nParticles);
-    customGui->addSlider("DENSITY", 0, 30, &density);
-    customGui->addSlider("STIFFNESS", 0, 2, &stiffness);
-    customGui->addSlider("VISCOSITY", 0, 4, &viscosity);
-    customGui->addSlider("BULK VISCOSITY", 0, 10, &bulkViscosity);
-    customGui->addSlider("ELASTICITY", 0, 4, &elasticity);
-    customGui->addSlider("GRAVITY", 0, 0.2f, &gravity);
-    
-    
-    float length = (customGui->getGlobalCanvasWidth()-customGui->getWidgetSpacing()*5)/3.;
-    float dim = customGui->getGlobalSliderHeight();
-
-    /* Particle color */
-    //customGui->addSpacer();
-    customGui->addSpacer();
-    customGui->addLabel("LOOK");
-    customGui->addLabel("PARTICLE COLOR", OFX_UI_FONT_SMALL);
-    customGui->addMinimalSlider("H", 0.0, 255, &pColor.r, length, dim)->setShowValue(true);
-    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    customGui->addMinimalSlider("S", 0.0, 255, &pColor.g, length, dim)->setShowValue(true);
-    customGui->addMinimalSlider("B", 0.0, 255, &pColor.b, length, dim)->setShowValue(true);
-    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    customGui->addSlider("PARTICLE LINE", 0, 5, &lineWidth);
-
-    customGui->addSpacer();
-    customGui->addLabel("INTERACTIVITY");
-    vector<string> modes;
-    modes.push_back("Mouse as force");
-    modes.push_back("Mouse as obstacle");
-    interModeRadio = customGui->addRadio("INTERACTIVE MODE", modes);
-    customGui->addSlider("OBSTACLE SIZE", 0, 30, &obstacleSize);
-    customGui->addSlider("MOUSE FORCE", 0, 20, &mouseForce);
-#endif
-    
+        
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemMazeGenerator::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -121,7 +93,12 @@ void CloudsVisualSystemMazeGenerator::selfSetupGui()
 
 void CloudsVisualSystemMazeGenerator::selfGuiEvent(ofxUIEventArgs &e)
 {
-
+    if (e.getName() == "GROUND CAM") {
+        if (!settings.groundCam)
+        {
+            mazeCam.setFlyOver(maze[0]->getWidth()/2);
+        }        
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -148,10 +125,10 @@ void CloudsVisualSystemMazeGenerator::guiRenderEvent(ofxUIEventArgs &e)
 void CloudsVisualSystemMazeGenerator::selfSetup()
 {
 //    maze = new Maze(30, 4, 30);
-    maze[0] = new Maze(60, 8, 60);
+    maze[0] = new Maze(60, 8, 60, &settings);
     maze[0]->generate();
     
-    mazeCam = new MazeCamera(maze[0]->getWidth()/2, ParamManager::getInstance().cameraHeight, 100);
+    mazeCam.setup(maze[0]->getWidth()/2, settings.cameraHeight, 100, &settings);
 
     light = new ofLight();
     light->setPointLight();
@@ -160,7 +137,7 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
     light->setAmbientColor(ofColor(50));
     
     camPath = maze[0]->createSimpleSpline(50, 50, 500);
-    mazeCam->setPath(camPath);
+    mazeCam.setPath(camPath);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -168,7 +145,10 @@ void CloudsVisualSystemMazeGenerator::selfSetup()
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemMazeGenerator::selfPresetLoaded(string presetPath)
 {
-
+    if (!settings.groundCam)
+    {
+        mazeCam.setFlyOver(maze[0]->getWidth()/2);
+    }
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -187,9 +167,17 @@ void CloudsVisualSystemMazeGenerator::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemMazeGenerator::selfUpdate()
 {
-    mazeCam->update();
+
+	
+	//JG seems that these were smashing your system and set to random values in your presets,
+	//and by calling your own camera it overode the bug
+	xRot->setHome(0);
+	yRot->setHome(0);
+	zRot->setHome(0);
+
+    mazeCam.update();
     
-    maze[0]->update(mazeCam);
+    maze[0]->update(&mazeCam);
 
     if (bLights) {
         light->setPosition(lightPos.x, lightPos.y, lightPos.z);
@@ -200,20 +188,39 @@ void CloudsVisualSystemMazeGenerator::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemMazeGenerator::selfDraw()
 {
-    ofEnableLighting();
+	
+	glEnable(GL_DEPTH_TEST);
+    // draw fog
+    ofFloatColor fc = settings.getFogColor();
+    GLfloat fogColor[4] = {fc.r, fc.g, fc.b, 1.0};
+    glFogfv (GL_FOG_COLOR, fogColor);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_LINEAR);
+    glHint(GL_FOG_HINT, GL_DONT_CARE);
+	glFogf(GL_FOG_DENSITY, powf(settings.fogDensity, 2));
+    glFogf(GL_FOG_START, settings.fogStart);
+    glFogf(GL_FOG_END, settings.fogEnd);
+    
+	glEnable(GL_FOG);
+    
+
+//JG this is already happening
+//    ofEnableLighting();
     if (bLights) {
         light->enable();
     }
-    
-    mazeCam->begin();
 
-    maze[0]->draw(mazeCam, lightPos);
-    
-    mazeCam->end();
+//JG -- OCULUS BUG: don't start and stop your own camera, this is what getCameraRef() is
+//	mazeCam.begin();
+    maze[0]->draw(&mazeCam, lightPos);
+//	mazeCam.end();
     
     if (bLights) {
         light->disable();
     }
+    
+    // disable fog
+    glDisable(GL_FOG);
 }
 
 // draw any debug stuff here
@@ -238,10 +245,8 @@ void CloudsVisualSystemMazeGenerator::selfEnd()
 void CloudsVisualSystemMazeGenerator::selfExit()
 {
     delete maze[0];
-    
-    delete mazeCam;
-    
     delete camPath;
+	delete light;
 }
 
 //events are called when the system is active
@@ -262,6 +267,9 @@ void CloudsVisualSystemMazeGenerator::selfMouseDragged(ofMouseEventArgs& data)
 
 void CloudsVisualSystemMazeGenerator::selfMouseMoved(ofMouseEventArgs& data)
 {
+	if(!bUseOculusRift){
+		mazeCam.mouseMove(ofVec2f(data.x, data.y));
+	}
 }
 
 void CloudsVisualSystemMazeGenerator::selfMousePressed(ofMouseEventArgs& data){
@@ -272,8 +280,7 @@ void CloudsVisualSystemMazeGenerator::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-void
-CloudsVisualSystemMazeGenerator::setLightOri(ofLight* light, ofVec3f rot)
+void CloudsVisualSystemMazeGenerator::setLightOri(ofLight* light, ofVec3f rot)
 {
     ofVec3f xax(1, 0, 0);
     ofVec3f yax(0, 1, 0);

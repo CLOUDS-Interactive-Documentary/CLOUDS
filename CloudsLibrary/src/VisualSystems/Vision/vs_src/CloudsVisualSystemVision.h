@@ -59,6 +59,8 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     void getTextures();
 
+    ofxUISuperCanvas *opticalFlowGui;
+    ofxUISuperCanvas *contourTrackingGui;
 protected:
 
     //video player stuff        
@@ -78,7 +80,7 @@ protected:
     vector<ofVec2f> flowMotion;
 
     float colorRange;
-    
+    float contourLifetimeColorRange;
     ofImage accumulation;
     ofImage diff;
 
@@ -86,6 +88,16 @@ protected:
     ofImage flowImage;
     ofImage previousFlowImage;
 
+    bool bDrawHeatMap;
+    bool bDrawFlowWindow;
+    bool bContourTracking;
+    bool bOpticalFlow;
+    bool bDrawBoxes;
+    bool bDrawLines;
+    bool bLifeTime;
+    bool bNumbers;
+    bool bColor;
+    
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
 	ofxCv::RectTrackerFollower<MyTracker> tracker;
@@ -102,20 +114,27 @@ protected:
     void updateOpticalFlow();
     void clearAccumulation();
     void drawFlowHeatMap(int x, int y);
+
     ofVboMesh flowMesh;
-    list<ofImage> accumVector;
+    float windowWidth;
+    float windowHeight;
+    
     bool drawPlayer;
     bool drawThresholded;
     bool drawDiff;
     bool flowFirstFrame;
+    float videoAlpha;
+    float thresholdAlpha;
+    float diffAlpha;
+
+
 
     ofVec2f averageFlow;
-    ofFbo fbo;
     int mouseX;
     int mouseY;
     
-    float windowWidth;
-    float windowHeight;
+
+    
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
     
@@ -136,9 +155,10 @@ protected:
     float maxFeatures;
     float qualityLevel;
     float minDistance;
-    //    OPTFLOW_FARNEBACK_GAUSSIAN
     float flowLineMultiplier;
-    //CONTUR PARAMETERS
+    float windowAlpha;
+    
+    //CONTOUR PARAMETERS
     float cvPersistance;
     float cvMaxDistance;
     float cvMinAreaRadius;
@@ -151,8 +171,6 @@ protected:
     float learningTime;
     float thresholdValue;
     
-    ofRectangle screenRect;
-    ofRectangle videoRect;
     
     
 };

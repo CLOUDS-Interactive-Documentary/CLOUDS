@@ -69,6 +69,8 @@ class Walker {
     ofVboMesh mesh;
     
     
+    
+    
   protected:
     
 //    vector<particle> particles;

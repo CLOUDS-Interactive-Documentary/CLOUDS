@@ -34,6 +34,12 @@ struct ActTimeItem{
     float handleLength;
 };
 
+//typedef struct {
+//	vector<CloudsDichotomy> dichotomies;
+//	float timestamp;
+//	CloudsClip clip;
+//} ActDichotomyEntry;
+
 class CloudsAct{
   public:
 	
@@ -72,11 +78,12 @@ class CloudsAct{
     vector<CloudsClip>& getAllClips();
     vector<CloudsVisualSystemPreset>& getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > getAllVisualSystems();
+	vector<CloudsDichotomy>& getDichotomiesForClip(CloudsClip& clip);
+	vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
 	
     vector<string>& getAllTopics();
     
     CloudsClip& getClip(int index);
-//    CloudsClip& getClipForQuestion(string question);
     CloudsClip& getClipAtTime(float time);
 
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
@@ -88,14 +95,15 @@ class CloudsAct{
     void addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration);
     void addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName);
 
-    vector<CloudsDichotomy>& getDichotomiesForClip(string clipName);
+
     
 //    void removeQuestionAtTime(float startTime, float endTime);
     void removeActItem(ActTimeItem item);
     void updateVsEndTime(CloudsVisualSystemPreset preset, float newEndTime);
     ActTimeItem& getItemForClip(CloudsClip& clip);
     ActTimeItem& getItemForVisualSystem(CloudsVisualSystemPreset& preset);
-    
+    float getClipStartTime(CloudsClip& clip);
+	
     void setTopicForClip(string topic, string clipName);
     string getTopicForClip(CloudsClip& clip);
 	
@@ -125,6 +133,8 @@ protected:
     vector<CloudsClip> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
 
+	
+	
     vector<ActTimeItem> actItems;
     map<string,ActTimeItem> actItemsMap;
 
@@ -139,8 +149,7 @@ protected:
     map<string, ActTimeItem> clipItems;
     map<string, string> clipDifficultyMap;
 
-	
-    map<string, CloudsVisualSystemPreset> visualSystemsMap;
+    map<string, int> visualSystemIndeces;
     map<string, ActTimeItem> visualSystemItems;
     map<string, string> topicMap;
 	vector<string> topicHistory;

@@ -38,7 +38,6 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 		bEventRegistered = true;
 	}
 	
-//#ifdef AVF_PLAYER
 	if(!nextPlayer.loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDVideoPlayer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
@@ -249,6 +248,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 
 	getPlayer().setVolume(audioVolume);
+
 	
 	if(position > duration - .04){
 		getPlayer().stop();

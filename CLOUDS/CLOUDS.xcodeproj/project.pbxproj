@@ -167,6 +167,13 @@
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
 		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
 		E7BFAE79180660AD00F38CA7 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BFAE74180660AD00F38CA7 /* Timer.cpp */; };
+		E7D1565F182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */; };
+		E7D15662182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */; };
+		E7D15665182D6AD30036E9BA /* CloudsVisualSystemPages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */; };
+		E7D15673182D6BE90036E9BA /* Gesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15668182D6BE90036E9BA /* Gesture.cpp */; };
+		E7D15674182D6BE90036E9BA /* GestureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */; };
+		E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */; };
+		E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */; };
 		E7D26E4E17A2C52D00652876 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */; };
 		E7D26E5317A2E14000652876 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */; };
 		E7D3306B1751D446006706ED /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
@@ -208,7 +215,6 @@
 		E7D9F63E182B03CE00AD56C1 /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DF4E182B03AC00AD56C1 /* CloudsVisualSystemFireworks.cpp */; };
 		E7D9F649182B03CE00AD56C1 /* CloudsVisualSystemFlocking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFD5182B03AD00AD56C1 /* CloudsVisualSystemFlocking.cpp */; };
 		E7D9F64A182B03CE00AD56C1 /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */; };
-		E7D9F64F182B03CE00AD56C1 /* CloudsVisualSystemGameOfLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */; };
 		E7D9F652182B03CE00AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E056182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
 		E7D9F653182B03CE00AD56C1 /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */; };
 		E7D9F654182B03CE00AD56C1 /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E106182B03B300AD56C1 /* ColorPalette.cpp */; };
@@ -224,13 +230,11 @@
 		E7D9F672182B03CE00AD56C1 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E342182B03B700AD56C1 /* MazeCamera.cpp */; };
 		E7D9F673182B03CE00AD56C1 /* MazeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E344182B03B700AD56C1 /* MazeCell.cpp */; };
 		E7D9F674182B03CE00AD56C1 /* MovingBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E346182B03B700AD56C1 /* MovingBall.cpp */; };
-		E7D9F675182B03CE00AD56C1 /* ParamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E348182B03B700AD56C1 /* ParamManager.cpp */; };
 		E7D9F676182B03CE00AD56C1 /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E482182B03B800AD56C1 /* CloudsVisualSystemMemory.cpp */; };
 		E7D9F67D182B03CE00AD56C1 /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E674182B03BB00AD56C1 /* CloudsVisualSystemMarchingCubes.cpp */; };
 		E7D9F67E182B03CE00AD56C1 /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */; };
 		E7D9F681182B03CE00AD56C1 /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E899182B03BF00AD56C1 /* CloudsVisualSystemOcean.cpp */; };
 		E7D9F682182B03CE00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E8D9182B03BF00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */; };
-		E7D9F683182B03CE00AD56C1 /* DM10PingPongBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E8DB182B03BF00AD56C1 /* DM10PingPongBuffer.cpp */; };
 		E7D9F684182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E931182B03C000AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
 		E7D9F685182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9B1182B03C100AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp */; };
 		E7D9F686182B03CE00AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9F7182B03C200AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
@@ -243,10 +247,8 @@
 		E7D9F68D182B03CE00AD56C1 /* Tetra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC44182B03C500AD56C1 /* Tetra.cpp */; };
 		E7D9F68E182B03CE00AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE5182B03C500AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp */; };
 		E7D9F68F182B03CE00AD56C1 /* TUOrbital.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE7182B03C500AD56C1 /* TUOrbital.cpp */; };
-		E7D9F690182B03CE00AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */; };
 		E7D9F695182B03CE00AD56C1 /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EE64182B03C600AD56C1 /* CloudsVisualSystemOscillations.cpp */; };
 		E7D9F696182B03CE00AD56C1 /* Page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEC4182B03C700AD56C1 /* Page.cpp */; };
-		E7D9F697182B03CE00AD56C1 /* PagesVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */; };
 		E7D9F698182B03CE00AD56C1 /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF7182B03C700AD56C1 /* Brush.cpp */; };
 		E7D9F699182B03CE00AD56C1 /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF9182B03C700AD56C1 /* CloudsVisualSystemPaintBrush.cpp */; };
 		E7D9F69A182B03CE00AD56C1 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEFB182B03C700AD56C1 /* Particle.cpp */; };
@@ -256,8 +258,6 @@
 		E7D9F69E182B03CE00AD56C1 /* CloudsVisualSystemReplicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EF7D182B03C800AD56C1 /* CloudsVisualSystemReplicator.cpp */; };
 		E7D9F6A1182B03CE00AD56C1 /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F08A182B03C900AD56C1 /* CloudsVisualSystemRGBDVideo.cpp */; };
 		E7D9F6A2182B03CE00AD56C1 /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */; };
-		E7D9F6A3182B03CE00AD56C1 /* ScrapeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */; };
-		E7D9F6A4182B03CE00AD56C1 /* ScrapeVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */; };
 		E7D9F6A5182B03CE00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F145182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp */; };
 		E7D9F6A6182B03CE00AD56C1 /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F1D4182B03CA00AD56C1 /* CloudsVisualSystemVectorFlow.cpp */; };
 		E7D9F6A7182B03CE00AD56C1 /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F234182B03CA00AD56C1 /* CloudsVisualSystemVerletForm.cpp */; };
@@ -279,7 +279,6 @@
 		E7D9F6BC182B03CE00AD56C1 /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F360182B03CB00AD56C1 /* VoroParticle.cpp */; };
 		E7D9F6BD182B03CE00AD56C1 /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F362182B03CB00AD56C1 /* vParticle.cpp */; };
 		E7D9F6C0182B03CE00AD56C1 /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */; };
-		E7D9F6C1182B03CE00AD56C1 /* WebHistoryVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */; };
 		E7D9F6C5182B03CE00AD56C1 /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F59F182B03CD00AD56C1 /* CloudsVisualSystemWorld.cpp */; };
 		E7D9F6C6182B03CE00AD56C1 /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A1182B03CD00AD56C1 /* wArc.cpp */; };
 		E7D9F6C7182B03CE00AD56C1 /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A3182B03CD00AD56C1 /* wCity.cpp */; };
@@ -338,6 +337,348 @@
 		E7F7773A17734B0D0096AEF7 /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
 		E7F77740177394CF0096AEF7 /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
 		E7F77743177395920096AEF7 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
+		E7FB24CB1830D470009EBD0E /* MazeSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FB24C91830D470009EBD0E /* MazeSettings.cpp */; };
+		E7FB24D01830D4C0009EBD0E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E7FB24D11830D4C0009EBD0E /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
+		E7FB24D21830D4C0009EBD0E /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E51720FE9400B86D7E /* tinyxml.cpp */; };
+		E7FB24D31830D4C0009EBD0E /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E71720FE9400B86D7E /* tinyxmlerror.cpp */; };
+		E7FB24D41830D4C0009EBD0E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6E81720FE9400B86D7E /* tinyxmlparser.cpp */; };
+		E7FB24D51830D4C0009EBD0E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E745F6EA1720FE9400B86D7E /* ofxXmlSettings.cpp */; };
+		E7FB24D61830D4C0009EBD0E /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D411734DE68008ADC62 /* CloudsClip.cpp */; };
+		E7FB24D71830D4C0009EBD0E /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D441734DE68008ADC62 /* CloudsFCPParser.cpp */; };
+		E7FB24D81830D4C0009EBD0E /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D481734DE68008ADC62 /* CloudsLink.cpp */; };
+		E7FB24D91830D4C0009EBD0E /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D4A1734DE68008ADC62 /* CloudsStoryEngine.cpp */; };
+		E7FB24DA1830D4C0009EBD0E /* CloudsPlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */; };
+		E7FB24DB1830D4C0009EBD0E /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD24173D4EFD006357EF /* kiss_fft.c */; };
+		E7FB24DC1830D4C0009EBD0E /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = E779BD25173D4EFD006357EF /* kiss_fftr.c */; };
+		E7FB24DD1830D4C0009EBD0E /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD28173D4EFD006357EF /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
+		E7FB24DE1830D4C0009EBD0E /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD49173D4EFD006357EF /* ofxHotKeys_impl_linux.cpp */; };
+		E7FB24DF1830D4C0009EBD0E /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E779BD4A173D4EFD006357EF /* ofxHotKeys_impl_mac.mm */; };
+		E7FB24E01830D4C0009EBD0E /* ofxHotKeys_impl_win.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD4B173D4EFD006357EF /* ofxHotKeys_impl_win.cpp */; };
+		E7FB24E11830D4C0009EBD0E /* ofxRemoveCocoaMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = E779BD4D173D4EFD006357EF /* ofxRemoveCocoaMenu.mm */; };
+		E7FB24E21830D4C0009EBD0E /* ofxTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD4E173D4EFD006357EF /* ofxTimeline.cpp */; };
+		E7FB24E31830D4C0009EBD0E /* ofxTLAudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD50173D4EFD006357EF /* ofxTLAudioTrack.cpp */; };
+		E7FB24E41830D4C0009EBD0E /* ofxTLBangs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD52173D4EFD006357EF /* ofxTLBangs.cpp */; };
+		E7FB24E51830D4C0009EBD0E /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD54173D4EFD006357EF /* ofxTLCameraTrack.cpp */; };
+		E7FB24E61830D4C0009EBD0E /* ofxTLColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD56173D4EFD006357EF /* ofxTLColors.cpp */; };
+		E7FB24E71830D4C0009EBD0E /* ofxTLColorTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD58173D4EFD006357EF /* ofxTLColorTrack.cpp */; };
+		E7FB24E81830D4C0009EBD0E /* ofxTLCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD5A173D4EFD006357EF /* ofxTLCurves.cpp */; };
+		E7FB24E91830D4C0009EBD0E /* ofxTLEmptyKeyframes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD5C173D4EFD006357EF /* ofxTLEmptyKeyframes.cpp */; };
+		E7FB24EA1830D4C0009EBD0E /* ofxTLEmptyTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD5E173D4EFD006357EF /* ofxTLEmptyTrack.cpp */; };
+		E7FB24EB1830D4C0009EBD0E /* ofxTLFlags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD61173D4EFD006357EF /* ofxTLFlags.cpp */; };
+		E7FB24EC1830D4C0009EBD0E /* ofxTLImageSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD63173D4EFD006357EF /* ofxTLImageSequence.cpp */; };
+		E7FB24ED1830D4C0009EBD0E /* ofxTLImageSequenceFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD65173D4EFD006357EF /* ofxTLImageSequenceFrame.cpp */; };
+		E7FB24EE1830D4C0009EBD0E /* ofxTLImageTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD67173D4EFD006357EF /* ofxTLImageTrack.cpp */; };
+		E7FB24EF1830D4C0009EBD0E /* ofxTLInOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD69173D4EFD006357EF /* ofxTLInOut.cpp */; };
+		E7FB24F01830D4C0009EBD0E /* ofxTLKeyframes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD6B173D4EFD006357EF /* ofxTLKeyframes.cpp */; };
+		E7FB24F11830D4C0009EBD0E /* ofxTLLFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD6D173D4EFD006357EF /* ofxTLLFO.cpp */; };
+		E7FB24F21830D4C0009EBD0E /* ofxTLPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD6F173D4EFD006357EF /* ofxTLPage.cpp */; };
+		E7FB24F31830D4C0009EBD0E /* ofxTLPageTabs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD71173D4EFD006357EF /* ofxTLPageTabs.cpp */; };
+		E7FB24F41830D4C0009EBD0E /* ofxTLSwitches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD73173D4EFD006357EF /* ofxTLSwitches.cpp */; };
+		E7FB24F51830D4C0009EBD0E /* ofxTLTicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD75173D4EFD006357EF /* ofxTLTicker.cpp */; };
+		E7FB24F61830D4C0009EBD0E /* ofxTLTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD77173D4EFD006357EF /* ofxTLTrack.cpp */; };
+		E7FB24F71830D4C0009EBD0E /* ofxTLTrackHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD79173D4EFD006357EF /* ofxTLTrackHeader.cpp */; };
+		E7FB24F81830D4C0009EBD0E /* ofxTLVideoThumb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD7B173D4EFD006357EF /* ofxTLVideoThumb.cpp */; };
+		E7FB24F91830D4C0009EBD0E /* ofxTLVideoTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD7D173D4EFD006357EF /* ofxTLVideoTrack.cpp */; };
+		E7FB24FA1830D4C0009EBD0E /* ofxTLZoomer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BD7F173D4EFD006357EF /* ofxTLZoomer.cpp */; };
+		E7FB24FB1830D4C0009EBD0E /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BDEA173D5381006357EF /* ofxMSATimer.cpp */; };
+		E7FB24FC1830D4C0009EBD0E /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE0E173D5FCD006357EF /* ofxEasing.cpp */; };
+		E7FB24FD1830D4C0009EBD0E /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE10173D5FCD006357EF /* ofxEasingBack.cpp */; };
+		E7FB24FE1830D4C0009EBD0E /* ofxEasingBounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE12173D5FCD006357EF /* ofxEasingBounce.cpp */; };
+		E7FB24FF1830D4C0009EBD0E /* ofxEasingCirc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE14173D5FCD006357EF /* ofxEasingCirc.cpp */; };
+		E7FB25001830D4C0009EBD0E /* ofxEasingCubic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE16173D5FCD006357EF /* ofxEasingCubic.cpp */; };
+		E7FB25011830D4C0009EBD0E /* ofxEasingElastic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE18173D5FCD006357EF /* ofxEasingElastic.cpp */; };
+		E7FB25021830D4C0009EBD0E /* ofxEasingExpo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE1A173D5FCD006357EF /* ofxEasingExpo.cpp */; };
+		E7FB25031830D4C0009EBD0E /* ofxEasingLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE1C173D5FCD006357EF /* ofxEasingLinear.cpp */; };
+		E7FB25041830D4C0009EBD0E /* ofxEasingQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE1E173D5FCD006357EF /* ofxEasingQuad.cpp */; };
+		E7FB25051830D4C0009EBD0E /* ofxEasingQuart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE20173D5FCD006357EF /* ofxEasingQuart.cpp */; };
+		E7FB25061830D4C0009EBD0E /* ofxEasingQuint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE22173D5FCD006357EF /* ofxEasingQuint.cpp */; };
+		E7FB25071830D4C0009EBD0E /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE24173D5FCD006357EF /* ofxEasingSine.cpp */; };
+		E7FB25081830D4C0009EBD0E /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE26173D5FCD006357EF /* ofxTween.cpp */; };
+		E7FB25091830D4C0009EBD0E /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE52173D6082006357EF /* ofxTimecode.cpp */; };
+		E7FB250A1830D4C0009EBD0E /* ofxTextInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E779BE69173D60A2006357EF /* ofxTextInputField.cpp */; };
+		E7FB250B1830D4C0009EBD0E /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		E7FB250C1830D4C0009EBD0E /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330371751D446006706ED /* ofxBehavior.cpp */; };
+		E7FB250D1830D4C0009EBD0E /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303B1751D446006706ED /* ofxBufferEffectorBehavior.cpp */; };
+		E7FB250E1830D4C0009EBD0E /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3303E1751D446006706ED /* ofxDamperBehavior.cpp */; };
+		E7FB250F1830D4C0009EBD0E /* ofxDistorterBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330401751D446006706ED /* ofxDistorterBehavior.cpp */; };
+		E7FB25101830D4C0009EBD0E /* ofxElectroStaticBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330421751D446006706ED /* ofxElectroStaticBehavior.cpp */; };
+		E7FB25111830D4C0009EBD0E /* ofxField2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330441751D446006706ED /* ofxField2D.cpp */; };
+		E7FB25121830D4C0009EBD0E /* ofxHomingBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3304B1751D446006706ED /* ofxHomingBehavior.cpp */; };
+		E7FB25131830D4C0009EBD0E /* ofxPerlinBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330501751D446006706ED /* ofxPerlinBehavior.cpp */; };
+		E7FB25141830D4C0009EBD0E /* ofxRParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330541751D446006706ED /* ofxRParticle.cpp */; };
+		E7FB25151830D4C0009EBD0E /* ofxRParticleGlowieRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330571751D446006706ED /* ofxRParticleGlowieRenderer.cpp */; };
+		E7FB25161830D4C0009EBD0E /* ofxRParticleRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330591751D446006706ED /* ofxRParticleRenderer.cpp */; };
+		E7FB25171830D4C0009EBD0E /* ofxRParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3305B1751D446006706ED /* ofxRParticleSystem.cpp */; };
+		E7FB25181830D4C0009EBD0E /* ofxSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D3305F1751D446006706ED /* ofxSolver.cpp */; };
+		E7FB25191830D4C0009EBD0E /* ofxSphericalAttractionBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330611751D446006706ED /* ofxSphericalAttractionBehavior.cpp */; };
+		E7FB251A1830D4C0009EBD0E /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330661751D446006706ED /* ofxSwarmBehavior.cpp */; };
+		E7FB251B1830D4C0009EBD0E /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330691751D446006706ED /* ofxVerletSolver.cpp */; };
+		E7FB251C1830D4C0009EBD0E /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330B51751D4C1006706ED /* ofxCameraSaveLoad.cpp */; };
+		E7FB251D1830D4C0009EBD0E /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE8461768ED6100083C4C /* MSAObjCPointer.cpp */; };
+		E7FB251E1830D4C0009EBD0E /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74CE87D1768ED7B00083C4C /* MSACoreGL.cpp */; };
+		E7FB251F1830D4C0009EBD0E /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
+		E7FB25201830D4C0009EBD0E /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
+		E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F77732177276190096AEF7 /* CloudsVisualSystemManager.cpp */; };
+		E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773817734B0B0096AEF7 /* CloudsVisualSystemPreset.cpp */; };
+		E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */; };
+		E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */; };
+		E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
+		E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
+		E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
+		E7FB25281830D4C0009EBD0E /* ofxOceanTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E8B178F44DC00FEABED /* ofxOceanTile.cpp */; };
+		E7FB25291830D4C0009EBD0E /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E94178F459000FEABED /* Controller.cpp */; };
+		E7FB252A1830D4C0009EBD0E /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E96178F459000FEABED /* Force.cpp */; };
+		E7FB252B1830D4C0009EBD0E /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E98178F459000FEABED /* ForceSet.cpp */; };
+		E7FB252C1830D4C0009EBD0E /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E9A178F459000FEABED /* Gravity.cpp */; };
+		E7FB252D1830D4C0009EBD0E /* Points.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E9C178F459000FEABED /* Points.cpp */; };
+		E7FB252E1830D4C0009EBD0E /* State.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E9E178F459000FEABED /* State.cpp */; };
+		E7FB252F1830D4C0009EBD0E /* CloudsAct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402EA6178F45AA00FEABED /* CloudsAct.cpp */; };
+		E7FB25301830D4C0009EBD0E /* ofxAVFVideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E792078C179CB0FE00FAA959 /* ofxAVFVideoPlayer.mm */; };
+		E7FB25311830D4C0009EBD0E /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E792078E179CB0FE00FAA959 /* ofxAVFVideoRenderer.m */; };
+		E7FB25321830D4C0009EBD0E /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E742500E179F981B00B2F0A3 /* CloudsVisualSystem.cpp */; };
+		E7FB25331830D4C0009EBD0E /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
+		E7FB25341830D4C0009EBD0E /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */; };
+		E7FB25351830D4C0009EBD0E /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */; };
+		E7FB25361830D4C0009EBD0E /* CloudsIntroSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E785F84E17B287B8002371FC /* CloudsIntroSequence.cpp */; };
+		E7FB25371830D4C0009EBD0E /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = E785F86917B28800002371FC /* glm.c */; };
+		E7FB25381830D4C0009EBD0E /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E785F86D17B28800002371FC /* ofxObjLoader.cpp */; };
+		E7FB25391830D4C0009EBD0E /* ofxAutoReloadedShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBC6017CDC86000CD99D9 /* ofxAutoReloadedShader.cpp */; };
+		E7FB253A1830D4C0009EBD0E /* ofxMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E75DBCDF17CDC8A700CD99D9 /* ofxMarchingCubes.cpp */; };
+		E7FB253B1830D4C0009EBD0E /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
+		E7FB253C1830D4C0009EBD0E /* ofxOceanCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E78CCB2017D58E63005F6D77 /* ofxOceanCamera.cpp */; };
+		E7FB253D1830D4C0009EBD0E /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */; };
+		E7FB253E1830D4C0009EBD0E /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0517DA9AA5007BEFA5 /* ofxSQLite.cpp */; };
+		E7FB253F1830D4C0009EBD0E /* ofxSQLiteAbstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0717DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp */; };
+		E7FB25401830D4C0009EBD0E /* ofxSQLiteDelete.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0917DA9AA5007BEFA5 /* ofxSQLiteDelete.cpp */; };
+		E7FB25411830D4C0009EBD0E /* ofxSQLiteFieldValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0B17DA9AA5007BEFA5 /* ofxSQLiteFieldValues.cpp */; };
+		E7FB25421830D4C0009EBD0E /* ofxSQLiteInsert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0E17DA9AA5007BEFA5 /* ofxSQLiteInsert.cpp */; };
+		E7FB25431830D4C0009EBD0E /* ofxSQLiteSelect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1017DA9AA5007BEFA5 /* ofxSQLiteSelect.cpp */; };
+		E7FB25441830D4C0009EBD0E /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C1617DA9AA5007BEFA5 /* ofxSQLiteUpdate.cpp */; };
+		E7FB25451830D4C0009EBD0E /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C3317DA9AC1007BEFA5 /* ofxTextWriter.cpp */; };
+		E7FB25461830D4C0009EBD0E /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746194B17DB783B002FC464 /* CloudsSpeaker.cpp */; };
+		E7FB25471830D4C0009EBD0E /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620C017DB8074002FC464 /* ofxBillboard.cpp */; };
+		E7FB25481830D4C0009EBD0E /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
+		E7FB25491830D4C0009EBD0E /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
+		E7FB254A1830D4C0009EBD0E /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E712D52317DD846D006FEE82 /* ofxRegex.cpp */; };
+		E7FB254B1830D4C0009EBD0E /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E712D52717DD8B3E006FEE82 /* question.frag */; };
+		E7FB254C1830D4C0009EBD0E /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E712D52817DD8B3E006FEE82 /* question.vert */; };
+		E7FB254D1830D4C0009EBD0E /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BFAE74180660AD00F38CA7 /* Timer.cpp */; };
+		E7FB254E1830D4C0009EBD0E /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EF618106F1B00410646 /* b2BroadPhase.cpp */; };
+		E7FB254F1830D4C0009EBD0E /* b2CollideCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EF818106F1B00410646 /* b2CollideCircle.cpp */; };
+		E7FB25501830D4C0009EBD0E /* b2CollidePolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EF918106F1B00410646 /* b2CollidePolygon.cpp */; };
+		E7FB25511830D4C0009EBD0E /* b2Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EFA18106F1B00410646 /* b2Collision.cpp */; };
+		E7FB25521830D4C0009EBD0E /* b2Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EFC18106F1B00410646 /* b2Distance.cpp */; };
+		E7FB25531830D4C0009EBD0E /* b2DynamicTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156EFE18106F1B00410646 /* b2DynamicTree.cpp */; };
+		E7FB25541830D4C0009EBD0E /* b2TimeOfImpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0018106F1B00410646 /* b2TimeOfImpact.cpp */; };
+		E7FB25551830D4C0009EBD0E /* b2CircleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0318106F1B00410646 /* b2CircleShape.cpp */; };
+		E7FB25561830D4C0009EBD0E /* b2PolygonShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0518106F1B00410646 /* b2PolygonShape.cpp */; };
+		E7FB25571830D4C0009EBD0E /* b2BlockAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0918106F1B00410646 /* b2BlockAllocator.cpp */; };
+		E7FB25581830D4C0009EBD0E /* b2Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0B18106F1B00410646 /* b2Math.cpp */; };
+		E7FB25591830D4C0009EBD0E /* b2Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0D18106F1B00410646 /* b2Settings.cpp */; };
+		E7FB255A1830D4C0009EBD0E /* b2StackAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F0F18106F1B00410646 /* b2StackAllocator.cpp */; };
+		E7FB255B1830D4C0009EBD0E /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1218106F1B00410646 /* b2Body.cpp */; };
+		E7FB255C1830D4C0009EBD0E /* b2ContactManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1418106F1B00410646 /* b2ContactManager.cpp */; };
+		E7FB255D1830D4C0009EBD0E /* b2Fixture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1618106F1B00410646 /* b2Fixture.cpp */; };
+		E7FB255E1830D4C0009EBD0E /* b2Island.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1818106F1B00410646 /* b2Island.cpp */; };
+		E7FB255F1830D4C0009EBD0E /* b2World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1B18106F1B00410646 /* b2World.cpp */; };
+		E7FB25601830D4C0009EBD0E /* b2WorldCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F1D18106F1B00410646 /* b2WorldCallbacks.cpp */; };
+		E7FB25611830D4C0009EBD0E /* b2CircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2018106F1B00410646 /* b2CircleContact.cpp */; };
+		E7FB25621830D4C0009EBD0E /* b2Contact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2218106F1B00410646 /* b2Contact.cpp */; };
+		E7FB25631830D4C0009EBD0E /* b2ContactSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2418106F1B00410646 /* b2ContactSolver.cpp */; };
+		E7FB25641830D4C0009EBD0E /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2618106F1B00410646 /* b2PolygonAndCircleContact.cpp */; };
+		E7FB25651830D4C0009EBD0E /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2818106F1B00410646 /* b2PolygonContact.cpp */; };
+		E7FB25661830D4C0009EBD0E /* b2TOISolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2A18106F1B00410646 /* b2TOISolver.cpp */; };
+		E7FB25671830D4C0009EBD0E /* b2DistanceJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2D18106F1B00410646 /* b2DistanceJoint.cpp */; };
+		E7FB25681830D4C0009EBD0E /* b2FrictionJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F2F18106F1B00410646 /* b2FrictionJoint.cpp */; };
+		E7FB25691830D4C0009EBD0E /* b2GearJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3118106F1B00410646 /* b2GearJoint.cpp */; };
+		E7FB256A1830D4C0009EBD0E /* b2Joint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3318106F1B00410646 /* b2Joint.cpp */; };
+		E7FB256B1830D4C0009EBD0E /* b2LineJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3518106F1B00410646 /* b2LineJoint.cpp */; };
+		E7FB256C1830D4C0009EBD0E /* b2MouseJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3718106F1B00410646 /* b2MouseJoint.cpp */; };
+		E7FB256D1830D4C0009EBD0E /* b2PrismaticJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3918106F1B00410646 /* b2PrismaticJoint.cpp */; };
+		E7FB256E1830D4C0009EBD0E /* b2PulleyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3B18106F1B00410646 /* b2PulleyJoint.cpp */; };
+		E7FB256F1830D4C0009EBD0E /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3D18106F1B00410646 /* b2RevoluteJoint.cpp */; };
+		E7FB25701830D4C0009EBD0E /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F3F18106F1B00410646 /* b2WeldJoint.cpp */; };
+		E7FB25711830D4C0009EBD0E /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F4318106F1B00410646 /* del_impl.cpp */; };
+		E7FB25721830D4C0009EBD0E /* ofxBox2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F4C18106F1B00410646 /* ofxBox2d.cpp */; };
+		E7FB25731830D4C0009EBD0E /* ofxBox2dBaseShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F4E18106F1B00410646 /* ofxBox2dBaseShape.cpp */; };
+		E7FB25741830D4C0009EBD0E /* ofxBox2dCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5018106F1B00410646 /* ofxBox2dCircle.cpp */; };
+		E7FB25751830D4C0009EBD0E /* ofxBox2dJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5318106F1B00410646 /* ofxBox2dJoint.cpp */; };
+		E7FB25761830D4C0009EBD0E /* ofxBox2dPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5518106F1B00410646 /* ofxBox2dPolygon.cpp */; };
+		E7FB25771830D4C0009EBD0E /* ofxBox2dRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5818106F1B00410646 /* ofxBox2dRect.cpp */; };
+		E7FB25781830D4C0009EBD0E /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E30B18122F3C00CA4196 /* CloudsClusterNode.cpp */; };
+		E7FB25791830D4C0009EBD0E /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E30D18122F3C00CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
+		E7FB257A1830D4C0009EBD0E /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E759EE07181D8FE000FA1E90 /* ofxSimpleSpline.cpp */; };
+		E7FB257B1830D4C0009EBD0E /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */; };
+		E7FB257C1830D4C0009EBD0E /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */; };
+		E7FB257D1830D4C0009EBD0E /* 3DModelVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D843182B03A300AD56C1 /* 3DModelVisualSystem.cpp */; };
+		E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */; };
+		E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */; };
+		E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */; };
+		E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D93E182B03A400AD56C1 /* cCell.cpp */; };
+		E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */; };
+		E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */; };
+		E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A6182B03A400AD56C1 /* ParticleConnection.cpp */; };
+		E7FB25851830D4C0009EBD0E /* ParticleConnectionGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A8182B03A400AD56C1 /* ParticleConnectionGenerator.cpp */; };
+		E7FB25861830D4C0009EBD0E /* ParticleConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9AA182B03A400AD56C1 /* ParticleConnector.cpp */; };
+		E7FB25871830D4C0009EBD0E /* ParticleConnectorBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9AC182B03A500AD56C1 /* ParticleConnectorBin.cpp */; };
+		E7FB25881830D4C0009EBD0E /* CloudsVisualSystemCosmic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DC07182B03A800AD56C1 /* CloudsVisualSystemCosmic.cpp */; };
+		E7FB25891830D4C0009EBD0E /* CloudsVisualSystemDataCascade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DC88182B03A900AD56C1 /* CloudsVisualSystemDataCascade.cpp */; };
+		E7FB258A1830D4C0009EBD0E /* CloudsVisualSystemDrawnLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DC95182B03A900AD56C1 /* CloudsVisualSystemDrawnLine.cpp */; };
+		E7FB258B1830D4C0009EBD0E /* CloudsVisualSystemExampleBox2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DD36182B03AA00AD56C1 /* CloudsVisualSystemExampleBox2D.cpp */; };
+		E7FB258C1830D4C0009EBD0E /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DD8B182B03AA00AD56C1 /* CloudsVisualSystemExampleMPMFluid.cpp */; };
+		E7FB258D1830D4C0009EBD0E /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DDA7182B03AA00AD56C1 /* Boid.cpp */; };
+		E7FB258E1830D4C0009EBD0E /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DDA9182B03AA00AD56C1 /* CloudsVisualSystemExampleOpenSteer.cpp */; };
+		E7FB258F1830D4C0009EBD0E /* CloudsVisualSystemExampleVectorMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DE3C182B03AB00AD56C1 /* CloudsVisualSystemExampleVectorMath.cpp */; };
+		E7FB25901830D4C0009EBD0E /* CloudsVisualSystemFireworks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DF4E182B03AC00AD56C1 /* CloudsVisualSystemFireworks.cpp */; };
+		E7FB25911830D4C0009EBD0E /* CloudsVisualSystemFlocking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFD5182B03AD00AD56C1 /* CloudsVisualSystemFlocking.cpp */; };
+		E7FB25921830D4C0009EBD0E /* CloudsVisualSystemForkingPaths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */; };
+		E7FB25931830D4C0009EBD0E /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E056182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp */; };
+		E7FB25941830D4C0009EBD0E /* CloudsVisualSystemLia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */; };
+		E7FB25951830D4C0009EBD0E /* ColorPalette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E106182B03B300AD56C1 /* ColorPalette.cpp */; };
+		E7FB25961830D4C0009EBD0E /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E108182B03B300AD56C1 /* Globals.cpp */; };
+		E7FB25971830D4C0009EBD0E /* Module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E10A182B03B300AD56C1 /* Module.cpp */; };
+		E7FB25981830D4C0009EBD0E /* RandomMover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E10C182B03B300AD56C1 /* RandomMover.cpp */; };
+		E7FB25991830D4C0009EBD0E /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E167182B03B400AD56C1 /* CloudsVisualSystemLSystem.cpp */; };
+		E7FB259A1830D4C0009EBD0E /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E169182B03B400AD56C1 /* LNode.cpp */; };
+		E7FB259B1830D4C0009EBD0E /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E16B182B03B400AD56C1 /* LSystem.cpp */; };
+		E7FB259C1830D4C0009EBD0E /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E285182B03B600AD56C1 /* CloudsVisualSystemMandala.cpp */; };
+		E7FB259D1830D4C0009EBD0E /* CloudsVisualSystemMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E33E182B03B700AD56C1 /* CloudsVisualSystemMazeGenerator.cpp */; };
+		E7FB259E1830D4C0009EBD0E /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E340182B03B700AD56C1 /* Maze.cpp */; };
+		E7FB259F1830D4C0009EBD0E /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E342182B03B700AD56C1 /* MazeCamera.cpp */; };
+		E7FB25A01830D4C0009EBD0E /* MazeCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E344182B03B700AD56C1 /* MazeCell.cpp */; };
+		E7FB25A11830D4C0009EBD0E /* MovingBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E346182B03B700AD56C1 /* MovingBall.cpp */; };
+		E7FB25A21830D4C0009EBD0E /* CloudsVisualSystemMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E482182B03B800AD56C1 /* CloudsVisualSystemMemory.cpp */; };
+		E7FB25A31830D4C0009EBD0E /* CloudsVisualSystemMarchingCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E674182B03BB00AD56C1 /* CloudsVisualSystemMarchingCubes.cpp */; };
+		E7FB25A41830D4C0009EBD0E /* CloudsVisualSystemNeurons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */; };
+		E7FB25A51830D4C0009EBD0E /* CloudsVisualSystemOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E899182B03BF00AD56C1 /* CloudsVisualSystemOcean.cpp */; };
+		E7FB25A61830D4C0009EBD0E /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E8D9182B03BF00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp */; };
+		E7FB25A71830D4C0009EBD0E /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E931182B03C000AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp */; };
+		E7FB25A81830D4C0009EBD0E /* CloudsVisualSystemOpenP5Machine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9B1182B03C100AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp */; };
+		E7FB25A91830D4C0009EBD0E /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E9F7182B03C200AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp */; };
+		E7FB25AA1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EA05182B03C200AD56C1 /* CloudsVisualSystemOpenP5SeaOfLines.cpp */; };
+		E7FB25AB1830D4C0009EBD0E /* CloudsVisualSystemOpenP5Sixteen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EA09182B03C200AD56C1 /* CloudsVisualSystemOpenP5Sixteen.cpp */; };
+		E7FB25AC1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SpaceJunk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EAAD182B03C400AD56C1 /* CloudsVisualSystemOpenP5SpaceJunk.cpp */; };
+		E7FB25AD1830D4C0009EBD0E /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC11182B03C500AD56C1 /* CloudsVisualSystemOpenP5Spaghetti.cpp */; };
+		E7FB25AE1830D4C0009EBD0E /* Walker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC13182B03C500AD56C1 /* Walker.cpp */; };
+		E7FB25AF1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SpinningSolids.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC42182B03C500AD56C1 /* CloudsVisualSystemOpenP5SpinningSolids.cpp */; };
+		E7FB25B01830D4C0009EBD0E /* Tetra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EC44182B03C500AD56C1 /* Tetra.cpp */; };
+		E7FB25B11830D4C0009EBD0E /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE5182B03C500AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp */; };
+		E7FB25B21830D4C0009EBD0E /* TUOrbital.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9ECE7182B03C500AD56C1 /* TUOrbital.cpp */; };
+		E7FB25B31830D4C0009EBD0E /* CloudsVisualSystemOscillations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EE64182B03C600AD56C1 /* CloudsVisualSystemOscillations.cpp */; };
+		E7FB25B41830D4C0009EBD0E /* Page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEC4182B03C700AD56C1 /* Page.cpp */; };
+		E7FB25B51830D4C0009EBD0E /* Brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF7182B03C700AD56C1 /* Brush.cpp */; };
+		E7FB25B61830D4C0009EBD0E /* CloudsVisualSystemPaintBrush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEF9182B03C700AD56C1 /* CloudsVisualSystemPaintBrush.cpp */; };
+		E7FB25B71830D4C0009EBD0E /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEFB182B03C700AD56C1 /* Particle.cpp */; };
+		E7FB25B81830D4C0009EBD0E /* Spring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EEFD182B03C700AD56C1 /* Spring.cpp */; };
+		E7FB25B91830D4C0009EBD0E /* CloudsVisualSystemRandomDigits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EF60182B03C800AD56C1 /* CloudsVisualSystemRandomDigits.cpp */; };
+		E7FB25BA1830D4C0009EBD0E /* Rand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EF62182B03C800AD56C1 /* Rand.cpp */; };
+		E7FB25BB1830D4C0009EBD0E /* CloudsVisualSystemReplicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9EF7D182B03C800AD56C1 /* CloudsVisualSystemReplicator.cpp */; };
+		E7FB25BC1830D4C0009EBD0E /* CloudsVisualSystemRGBDVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F08A182B03C900AD56C1 /* CloudsVisualSystemRGBDVideo.cpp */; };
+		E7FB25BD1830D4C0009EBD0E /* ofxMtlBoxFitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */; };
+		E7FB25BE1830D4C0009EBD0E /* CloudsVisualSystemThingsInTheDark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F145182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp */; };
+		E7FB25BF1830D4C0009EBD0E /* CloudsVisualSystemVectorFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F1D4182B03CA00AD56C1 /* CloudsVisualSystemVectorFlow.cpp */; };
+		E7FB25C01830D4C0009EBD0E /* CloudsVisualSystemVerletForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F234182B03CA00AD56C1 /* CloudsVisualSystemVerletForm.cpp */; };
+		E7FB25C11830D4C0009EBD0E /* CloudsVisualSystemVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F268182B03CB00AD56C1 /* CloudsVisualSystemVision.cpp */; };
+		E7FB25C21830D4C0009EBD0E /* FlowField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F26A182B03CB00AD56C1 /* FlowField.cpp */; };
+		E7FB25C31830D4C0009EBD0E /* MyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F26C182B03CB00AD56C1 /* MyTracker.cpp */; };
+		E7FB25C41830D4C0009EBD0E /* CloudsVisualSystemVoro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F343182B03CB00AD56C1 /* CloudsVisualSystemVoro.cpp */; };
+		E7FB25C51830D4C0009EBD0E /* c_loops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F346182B03CB00AD56C1 /* c_loops.cpp */; };
+		E7FB25C61830D4C0009EBD0E /* cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F348182B03CB00AD56C1 /* cell.cpp */; };
+		E7FB25C71830D4C0009EBD0E /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F34A182B03CB00AD56C1 /* common.cpp */; };
+		E7FB25C81830D4C0009EBD0E /* container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F34D182B03CB00AD56C1 /* container.cpp */; };
+		E7FB25C91830D4C0009EBD0E /* container_prd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F34F182B03CB00AD56C1 /* container_prd.cpp */; };
+		E7FB25CA1830D4C0009EBD0E /* pre_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F351182B03CB00AD56C1 /* pre_container.cpp */; };
+		E7FB25CB1830D4C0009EBD0E /* unitcell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F354182B03CB00AD56C1 /* unitcell.cpp */; };
+		E7FB25CC1830D4C0009EBD0E /* v_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F356182B03CB00AD56C1 /* v_base.cpp */; };
+		E7FB25CD1830D4C0009EBD0E /* v_compute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F358182B03CB00AD56C1 /* v_compute.cpp */; };
+		E7FB25CE1830D4C0009EBD0E /* wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F35B182B03CB00AD56C1 /* wall.cpp */; };
+		E7FB25CF1830D4C0009EBD0E /* Voro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F35E182B03CB00AD56C1 /* Voro.cpp */; };
+		E7FB25D01830D4C0009EBD0E /* VoroParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F360182B03CB00AD56C1 /* VoroParticle.cpp */; };
+		E7FB25D11830D4C0009EBD0E /* vParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F362182B03CB00AD56C1 /* vParticle.cpp */; };
+		E7FB25D21830D4C0009EBD0E /* HistoryNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */; };
+		E7FB25D31830D4C0009EBD0E /* CloudsVisualSystemWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F59F182B03CD00AD56C1 /* CloudsVisualSystemWorld.cpp */; };
+		E7FB25D41830D4C0009EBD0E /* wArc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A1182B03CD00AD56C1 /* wArc.cpp */; };
+		E7FB25D51830D4C0009EBD0E /* wCity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A3182B03CD00AD56C1 /* wCity.cpp */; };
+		E7FB25D61830D4C0009EBD0E /* wParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A5182B03CD00AD56C1 /* wParticle.cpp */; };
+		E7FB25D71830D4C0009EBD0E /* wSatellite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A7182B03CD00AD56C1 /* wSatellite.cpp */; };
+		E7FB25D81830D4C0009EBD0E /* wStar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5A9182B03CD00AD56C1 /* wStar.cpp */; };
+		E7FB25D91830D4C0009EBD0E /* CloudsVisualSystemYellowTail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F5EC182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.cpp */; };
+		E7FB25DA1830D4C0009EBD0E /* ofxSimpleSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F6E9182B060300AD56C1 /* ofxSimpleSurface.cpp */; };
+		E7FB25DB1830D4C0009EBD0E /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F732182B060C00AD56C1 /* Camera.cpp */; };
+		E7FB25DC1830D4C0009EBD0E /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F733182B060C00AD56C1 /* Clock.cpp */; };
+		E7FB25DD1830D4C0009EBD0E /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F734182B060C00AD56C1 /* Color.cpp */; };
+		E7FB25DE1830D4C0009EBD0E /* Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F735182B060C00AD56C1 /* Draw.cpp */; };
+		E7FB25DF1830D4C0009EBD0E /* lq.c in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F736182B060C00AD56C1 /* lq.c */; };
+		E7FB25E01830D4C0009EBD0E /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F737182B060C00AD56C1 /* Obstacle.cpp */; };
+		E7FB25E11830D4C0009EBD0E /* OldPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F738182B060C00AD56C1 /* OldPathway.cpp */; };
+		E7FB25E21830D4C0009EBD0E /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F739182B060C00AD56C1 /* OpenSteerDemo.cpp */; };
+		E7FB25E31830D4C0009EBD0E /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73A182B060C00AD56C1 /* Path.cpp */; };
+		E7FB25E41830D4C0009EBD0E /* Pathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73B182B060C00AD56C1 /* Pathway.cpp */; };
+		E7FB25E51830D4C0009EBD0E /* PlugIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73C182B060C00AD56C1 /* PlugIn.cpp */; };
+		E7FB25E61830D4C0009EBD0E /* PolylineSegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73D182B060C00AD56C1 /* PolylineSegmentedPath.cpp */; };
+		E7FB25E71830D4C0009EBD0E /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73E182B060C00AD56C1 /* PolylineSegmentedPathwaySegmentRadii.cpp */; };
+		E7FB25E81830D4C0009EBD0E /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F73F182B060C00AD56C1 /* PolylineSegmentedPathwaySingleRadius.cpp */; };
+		E7FB25E91830D4C0009EBD0E /* SegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F740182B060C00AD56C1 /* SegmentedPath.cpp */; };
+		E7FB25EA1830D4C0009EBD0E /* SegmentedPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F741182B060C00AD56C1 /* SegmentedPathway.cpp */; };
+		E7FB25EB1830D4C0009EBD0E /* SimpleVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F742182B060C00AD56C1 /* SimpleVehicle.cpp */; };
+		E7FB25EC1830D4C0009EBD0E /* TerrainRayTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F743182B060C00AD56C1 /* TerrainRayTest.cpp */; };
+		E7FB25ED1830D4C0009EBD0E /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F745182B060C00AD56C1 /* Vec3.cpp */; };
+		E7FB25EE1830D4C0009EBD0E /* Vec3Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F746182B060C00AD56C1 /* Vec3Utilities.cpp */; };
+		E7FB25EF1830D4C0009EBD0E /* ofxOpenSteerPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F74F182B060C00AD56C1 /* ofxOpenSteerPlugin.cpp */; };
+		E7FB25F01830D4C0009EBD0E /* ofxOpenSteerVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F753182B060C00AD56C1 /* ofxOpenSteerVehicle.cpp */; };
+		E7FB25F11830D4C0009EBD0E /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F7D0182B061B00AD56C1 /* ofxFTGLFont.cpp */; };
+		E7FB25F21830D4C0009EBD0E /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9F7D2182B061B00AD56C1 /* ofxFTGLSimpleLayout.cpp */; };
+		E7FB25F31830D4C0009EBD0E /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FA96182B063600AD56C1 /* ETF.cpp */; };
+		E7FB25F41830D4C0009EBD0E /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FA97182B063600AD56C1 /* fdog.cpp */; };
+		E7FB25F51830D4C0009EBD0E /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAA6182B063600AD56C1 /* Calibration.cpp */; };
+		E7FB25F61830D4C0009EBD0E /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAA7182B063600AD56C1 /* ContourFinder.cpp */; };
+		E7FB25F71830D4C0009EBD0E /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAA8182B063600AD56C1 /* Distance.cpp */; };
+		E7FB25F81830D4C0009EBD0E /* Flow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAA9182B063600AD56C1 /* Flow.cpp */; };
+		E7FB25F91830D4C0009EBD0E /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAA182B063600AD56C1 /* Helpers.cpp */; };
+		E7FB25FA1830D4C0009EBD0E /* ObjectFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAB182B063600AD56C1 /* ObjectFinder.cpp */; };
+		E7FB25FB1830D4C0009EBD0E /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAC182B063600AD56C1 /* RunningBackground.cpp */; };
+		E7FB25FC1830D4C0009EBD0E /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAD182B063600AD56C1 /* Tracker.cpp */; };
+		E7FB25FD1830D4C0009EBD0E /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAE182B063600AD56C1 /* Utilities.cpp */; };
+		E7FB25FE1830D4C0009EBD0E /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FAAF182B063600AD56C1 /* Wrappers.cpp */; };
+		E7FB25FF1830D4C0009EBD0E /* ofxMPMFluid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB7B182B064900AD56C1 /* ofxMPMFluid.cpp */; };
+		E7FB26001830D4C0009EBD0E /* ofxMPMNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB7D182B064900AD56C1 /* ofxMPMNode.cpp */; };
+		E7FB26011830D4C0009EBD0E /* ofxMPMObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB7F182B064900AD56C1 /* ofxMPMObstacle.cpp */; };
+		E7FB26021830D4C0009EBD0E /* ofxMPMParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB81182B064900AD56C1 /* ofxMPMParticle.cpp */; };
+		E7FB26031830D4C0009EBD0E /* CloudsVisualSystemWebHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */; };
+		E7FB26041830D4C0009EBD0E /* CloudsVisualSystemScrape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */; };
+		E7FB26051830D4C0009EBD0E /* CloudsVisualSystemPages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */; };
+		E7FB26061830D4C0009EBD0E /* Gesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D15668182D6BE90036E9BA /* Gesture.cpp */; };
+		E7FB26071830D4C0009EBD0E /* GestureRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */; };
+		E7FB26081830D4C0009EBD0E /* GestureRendererInPlace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */; };
+		E7FB26091830D4C0009EBD0E /* GestureRendererTraveling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */; };
+		E7FB260A1830D4C0009EBD0E /* MazeSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FB24C91830D470009EBD0E /* MazeSettings.cpp */; };
+		E7FB260C1830D4C0009EBD0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920798179CB11C00FAA959 /* AVFoundation.framework */; };
+		E7FB260D1830D4C0009EBD0E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920796179CB11700FAA959 /* CoreMedia.framework */; };
+		E7FB260E1830D4C0009EBD0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E741868A1794B5EF00ABFF41 /* QuartzCore.framework */; };
+		E7FB260F1830D4C0009EBD0E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E761F4D71622CA3D00029E43 /* Accelerate.framework */; };
+		E7FB26101830D4C0009EBD0E /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7FB26111830D4C0009EBD0E /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7FB26121830D4C0009EBD0E /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E7FB26131830D4C0009EBD0E /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E7FB26141830D4C0009EBD0E /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E7FB26151830D4C0009EBD0E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E7FB26161830D4C0009EBD0E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9740E8CC7DD009D7055 /* Carbon.framework */; };
+		E7FB26171830D4C0009EBD0E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E7FB26181830D4C0009EBD0E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E7FB26191830D4C0009EBD0E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E7FB261A1830D4C0009EBD0E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E7FB261B1830D4C0009EBD0E /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E7FB261C1830D4C0009EBD0E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E7FB261D1830D4C0009EBD0E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E7FB261E1830D4C0009EBD0E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E7FB261F1830D4C0009EBD0E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7FB26201830D4C0009EBD0E /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E779BD40173D4EFD006357EF /* libsndfile.a */; };
+		E7FB26211830D4C0009EBD0E /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE1C1F17DD13460020BBB0 /* librtcmix.a */; };
+		E7FB26221830D4C0009EBD0E /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9F7C7182B061B00AD56C1 /* libftgl.a */; };
+		E7FB26231830D4C0009EBD0E /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9FBF1182B069800AD56C1 /* opencv.a */; };
+		E7FB26261830D4C0009EBD0E /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7FB28481830D4FF009EBD0E /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FB278E1830D4FE009EBD0E /* ofxOculusRift.cpp */; };
 		E7FC8C1B17DA9AA5007BEFA5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */; };
 		E7FC8C1C17DA9AA5007BEFA5 /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0517DA9AA5007BEFA5 /* ofxSQLite.cpp */; };
 		E7FC8C1D17DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7FC8C0717DA9AA5007BEFA5 /* ofxSQLiteAbstract.cpp */; };
@@ -364,6 +705,13 @@
 			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
 			remoteInfo = openFrameworks;
 		};
+		E7FB24CE1830D4C0009EBD0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -374,6 +722,16 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7FB26251830D4C0009EBD0E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E7FB26261830D4C0009EBD0E /* GLUT.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +758,6 @@
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
-		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
@@ -774,6 +1131,23 @@
 		E7BFAE74180660AD00F38CA7 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		E7BFAE75180660AD00F38CA7 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		E7BFAE76180660AD00F38CA7 /* VectorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
+		E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWebHistory.cpp; sourceTree = "<group>"; };
+		E7D1565E182D6AA30036E9BA /* CloudsVisualSystemWebHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWebHistory.h; sourceTree = "<group>"; };
+		E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemScrape.cpp; sourceTree = "<group>"; };
+		E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemScrape.h; sourceTree = "<group>"; };
+		E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPages.cpp; sourceTree = "<group>"; };
+		E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPages.h; sourceTree = "<group>"; };
+		E7D15668182D6BE90036E9BA /* Gesture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gesture.cpp; sourceTree = "<group>"; };
+		E7D15669182D6BE90036E9BA /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
+		E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRenderer.cpp; sourceTree = "<group>"; };
+		E7D1566B182D6BE90036E9BA /* GestureRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRenderer.h; sourceTree = "<group>"; };
+		E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererInPlace.cpp; sourceTree = "<group>"; };
+		E7D1566D182D6BE90036E9BA /* GestureRendererInPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererInPlace.h; sourceTree = "<group>"; };
+		E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GestureRendererTraveling.cpp; sourceTree = "<group>"; };
+		E7D1566F182D6BE90036E9BA /* GestureRendererTraveling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureRendererTraveling.h; sourceTree = "<group>"; };
+		E7D15670182D6BE90036E9BA /* Vec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec3f.h; sourceTree = "<group>"; };
+		E7D15671182D6BE90036E9BA /* YellowTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowTail.h; sourceTree = "<group>"; };
+		E7D15672182D6BE90036E9BA /* YtPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YtPolygon.h; sourceTree = "<group>"; };
 		E7D26E4C17A2C52D00652876 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E7D26E4D17A2C52D00652876 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E7D26E5117A2E14000652876 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -885,8 +1259,6 @@
 		E7D9DFD6182B03AD00AD56C1 /* CloudsVisualSystemFlocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlocking.h; sourceTree = "<group>"; };
 		E7D9DFF0182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemForkingPaths.cpp; sourceTree = "<group>"; };
 		E7D9DFF1182B03AD00AD56C1 /* CloudsVisualSystemForkingPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemForkingPaths.h; sourceTree = "<group>"; };
-		E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemGameOfLife.cpp; sourceTree = "<group>"; };
-		E7D9E013182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemGameOfLife.h; sourceTree = "<group>"; };
 		E7D9E056182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLaplacianTunnel.cpp; sourceTree = "<group>"; };
 		E7D9E057182B03B200AD56C1 /* CloudsVisualSystemLaplacianTunnel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemLaplacianTunnel.h; sourceTree = "<group>"; };
 		E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemLia.cpp; sourceTree = "<group>"; };
@@ -918,8 +1290,6 @@
 		E7D9E345182B03B700AD56C1 /* MazeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeCell.h; sourceTree = "<group>"; };
 		E7D9E346182B03B700AD56C1 /* MovingBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingBall.cpp; sourceTree = "<group>"; };
 		E7D9E347182B03B700AD56C1 /* MovingBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingBall.h; sourceTree = "<group>"; };
-		E7D9E348182B03B700AD56C1 /* ParamManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParamManager.cpp; sourceTree = "<group>"; };
-		E7D9E349182B03B700AD56C1 /* ParamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParamManager.h; sourceTree = "<group>"; };
 		E7D9E482182B03B800AD56C1 /* CloudsVisualSystemMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMemory.cpp; sourceTree = "<group>"; };
 		E7D9E483182B03B800AD56C1 /* CloudsVisualSystemMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMemory.h; sourceTree = "<group>"; };
 		E7D9E674182B03BB00AD56C1 /* CloudsVisualSystemMarchingCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMarchingCubes.cpp; sourceTree = "<group>"; };
@@ -957,15 +1327,10 @@
 		E7D9ECE7182B03C500AD56C1 /* TUOrbital.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TUOrbital.cpp; sourceTree = "<group>"; };
 		E7D9ECE8182B03C500AD56C1 /* TUOrbital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUOrbital.h; sourceTree = "<group>"; };
 		E7D9ECE9182B03C500AD56C1 /* TUText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUText.h; sourceTree = "<group>"; };
-		E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOpenP53DIntro.cpp; sourceTree = "<group>"; };
-		E7D9ED1A182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOpenP53DIntro.h; sourceTree = "<group>"; };
 		E7D9EE64182B03C600AD56C1 /* CloudsVisualSystemOscillations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOscillations.cpp; sourceTree = "<group>"; };
 		E7D9EE65182B03C600AD56C1 /* CloudsVisualSystemOscillations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOscillations.h; sourceTree = "<group>"; };
-		E7D9EEC3182B03C700AD56C1 /* CloudsVisualSystemEmpty.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CloudsVisualSystemEmpty.cpp.orig; sourceTree = "<group>"; };
 		E7D9EEC4182B03C700AD56C1 /* Page.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Page.cpp; sourceTree = "<group>"; };
 		E7D9EEC5182B03C700AD56C1 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
-		E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PagesVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9EEC7182B03C700AD56C1 /* PagesVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagesVisualSystem.h; sourceTree = "<group>"; };
 		E7D9EEF7182B03C700AD56C1 /* Brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brush.cpp; sourceTree = "<group>"; };
 		E7D9EEF8182B03C700AD56C1 /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brush.h; sourceTree = "<group>"; };
 		E7D9EEF9182B03C700AD56C1 /* CloudsVisualSystemPaintBrush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemPaintBrush.cpp; sourceTree = "<group>"; };
@@ -985,10 +1350,6 @@
 		E7D9F08B182B03C900AD56C1 /* CloudsVisualSystemRGBDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBDVideo.h; sourceTree = "<group>"; };
 		E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMtlBoxFitting.cpp; sourceTree = "<group>"; };
 		E7D9F13C182B03C900AD56C1 /* ofxMtlBoxFitting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMtlBoxFitting.h; sourceTree = "<group>"; };
-		E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeCamera.cpp; sourceTree = "<group>"; };
-		E7D9F13E182B03C900AD56C1 /* ScrapeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeCamera.h; sourceTree = "<group>"; };
-		E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrapeVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9F140182B03C900AD56C1 /* ScrapeVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrapeVisualSystem.h; sourceTree = "<group>"; };
 		E7D9F145182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemThingsInTheDark.cpp; sourceTree = "<group>"; };
 		E7D9F146182B03CA00AD56C1 /* CloudsVisualSystemThingsInTheDark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemThingsInTheDark.h; sourceTree = "<group>"; };
 		E7D9F1D4182B03CA00AD56C1 /* CloudsVisualSystemVectorFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemVectorFlow.cpp; sourceTree = "<group>"; };
@@ -1035,8 +1396,6 @@
 		E7D9F363182B03CB00AD56C1 /* vParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vParticle.h; sourceTree = "<group>"; };
 		E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryNode.cpp; sourceTree = "<group>"; };
 		E7D9F401182B03CC00AD56C1 /* HistoryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryNode.h; sourceTree = "<group>"; };
-		E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebHistoryVisualSystem.cpp; sourceTree = "<group>"; };
-		E7D9F403182B03CC00AD56C1 /* WebHistoryVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHistoryVisualSystem.h; sourceTree = "<group>"; };
 		E7D9F59F182B03CD00AD56C1 /* CloudsVisualSystemWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemWorld.cpp; sourceTree = "<group>"; };
 		E7D9F5A0182B03CD00AD56C1 /* CloudsVisualSystemWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemWorld.h; sourceTree = "<group>"; };
 		E7D9F5A1182B03CD00AD56C1 /* wArc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wArc.cpp; sourceTree = "<group>"; };
@@ -1276,6 +1635,13 @@
 		E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemRGBD.h; sourceTree = "<group>"; };
 		E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E7F77742177395910096AEF7 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
+		E7FB24C91830D470009EBD0E /* MazeSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeSettings.cpp; sourceTree = "<group>"; };
+		E7FB24CA1830D470009EBD0E /* MazeSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeSettings.h; sourceTree = "<group>"; };
+		E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_OCULUSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7FB278E1830D4FE009EBD0E /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
+		E7FB278F1830D4FE009EBD0E /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
+		E7FB284D1830D60E009EBD0E /* CLOUDS_OCULUS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDS_OCULUS.plist; sourceTree = "<group>"; };
+		E7FB284E1830D60E009EBD0E /* CLOUDS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDS.plist; sourceTree = "<group>"; };
 		E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		E7FC8C0317DA9AA5007BEFA5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		E7FC8C0417DA9AA5007BEFA5 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
@@ -1333,6 +1699,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7FB260B1830D4C0009EBD0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FB260C1830D4C0009EBD0E /* AVFoundation.framework in Frameworks */,
+				E7FB260D1830D4C0009EBD0E /* CoreMedia.framework in Frameworks */,
+				E7FB260E1830D4C0009EBD0E /* QuartzCore.framework in Frameworks */,
+				E7FB260F1830D4C0009EBD0E /* Accelerate.framework in Frameworks */,
+				E7FB26101830D4C0009EBD0E /* QTKit.framework in Frameworks */,
+				E7FB26111830D4C0009EBD0E /* GLUT.framework in Frameworks */,
+				E7FB26121830D4C0009EBD0E /* openFrameworksDebug.a in Frameworks */,
+				E7FB26131830D4C0009EBD0E /* AGL.framework in Frameworks */,
+				E7FB26141830D4C0009EBD0E /* ApplicationServices.framework in Frameworks */,
+				E7FB26151830D4C0009EBD0E /* AudioToolbox.framework in Frameworks */,
+				E7FB26161830D4C0009EBD0E /* Carbon.framework in Frameworks */,
+				E7FB26171830D4C0009EBD0E /* CoreAudio.framework in Frameworks */,
+				E7FB26181830D4C0009EBD0E /* CoreFoundation.framework in Frameworks */,
+				E7FB26191830D4C0009EBD0E /* CoreServices.framework in Frameworks */,
+				E7FB261A1830D4C0009EBD0E /* OpenGL.framework in Frameworks */,
+				E7FB261B1830D4C0009EBD0E /* QuickTime.framework in Frameworks */,
+				E7FB261C1830D4C0009EBD0E /* AppKit.framework in Frameworks */,
+				E7FB261D1830D4C0009EBD0E /* Cocoa.framework in Frameworks */,
+				E7FB261E1830D4C0009EBD0E /* IOKit.framework in Frameworks */,
+				E7FB261F1830D4C0009EBD0E /* CoreVideo.framework in Frameworks */,
+				E7FB26201830D4C0009EBD0E /* libsndfile.a in Frameworks */,
+				E7FB26211830D4C0009EBD0E /* librtcmix.a in Frameworks */,
+				E7FB26221830D4C0009EBD0E /* libftgl.a in Frameworks */,
+				E7FB26231830D4C0009EBD0E /* opencv.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1357,6 +1754,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7FB262C1830D4FA009EBD0E /* ofxOculusRift */,
 				E7D9FB65182B064700AD56C1 /* ofxMPMFluid */,
 				E7D9F7EE182B062100AD56C1 /* ofxCv */,
 				E7D9F771182B061800AD56C1 /* ofxFTGL */,
@@ -1447,13 +1845,15 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E7FB284D1830D60E009EBD0E /* CLOUDS_OCULUS.plist */,
+				E7FB284E1830D60E009EBD0E /* CLOUDS.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */,
+				E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1737,7 +2137,6 @@
 				E7D9DE3E182B03AB00AD56C1 /* Fireworks */,
 				E7D9DF50182B03AC00AD56C1 /* Flocking */,
 				E7D9DFD7182B03AD00AD56C1 /* ForkingPaths */,
-				E7D9DFF2182B03AD00AD56C1 /* GameOfLife */,
 				E7D9E014182B03B000AD56C1 /* LaplacianTunnel */,
 				E7D9E058182B03B200AD56C1 /* LIA */,
 				E7D9E10E182B03B300AD56C1 /* LSystem */,
@@ -1757,7 +2156,6 @@
 				E7D9EAAF182B03C400AD56C1 /* OpenP5Spaghetti */,
 				E7D9EC15182B03C500AD56C1 /* OpenP5SpinningSolids */,
 				E7D9EC46182B03C500AD56C1 /* OpenP5TextUniverse */,
-				E7D9ECEA182B03C500AD56C1 /* OpenP53DIntro */,
 				E7D9ED1B182B03C600AD56C1 /* Oscillations */,
 				E7D9EE66182B03C600AD56C1 /* Pages */,
 				E7D9EEC8182B03C700AD56C1 /* PaintBrush */,
@@ -2637,6 +3035,24 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7D15666182D6BE90036E9BA /* yt */ = {
+			isa = PBXGroup;
+			children = (
+				E7D15668182D6BE90036E9BA /* Gesture.cpp */,
+				E7D15669182D6BE90036E9BA /* Gesture.h */,
+				E7D1566A182D6BE90036E9BA /* GestureRenderer.cpp */,
+				E7D1566B182D6BE90036E9BA /* GestureRenderer.h */,
+				E7D1566C182D6BE90036E9BA /* GestureRendererInPlace.cpp */,
+				E7D1566D182D6BE90036E9BA /* GestureRendererInPlace.h */,
+				E7D1566E182D6BE90036E9BA /* GestureRendererTraveling.cpp */,
+				E7D1566F182D6BE90036E9BA /* GestureRendererTraveling.h */,
+				E7D15670182D6BE90036E9BA /* Vec3f.h */,
+				E7D15671182D6BE90036E9BA /* YellowTail.h */,
+				E7D15672182D6BE90036E9BA /* YtPolygon.h */,
+			);
+			path = yt;
+			sourceTree = "<group>";
+		};
 		E7D330321751D446006706ED /* ofxGenerative */ = {
 			isa = PBXGroup;
 			children = (
@@ -2755,12 +3171,12 @@
 		E7D9D842182B03A300AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9D843182B03A300AD56C1 /* 3DModelVisualSystem.cpp */,
 				E7D9D844182B03A300AD56C1 /* 3DModelVisualSystem.h */,
-				E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */,
+				E7D9D843182B03A300AD56C1 /* 3DModelVisualSystem.cpp */,
 				E7D9D846182B03A300AD56C1 /* CloudsOrthoCamera.h */,
-				E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */,
+				E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */,
 				E7D9D848182B03A300AD56C1 /* CloudsPathCamera.h */,
+				E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3002,23 +3418,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7D9DFF2182B03AD00AD56C1 /* GameOfLife */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E011182B03B000AD56C1 /* vs_src */,
-			);
-			path = GameOfLife;
-			sourceTree = "<group>";
-		};
-		E7D9E011182B03B000AD56C1 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E012182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.cpp */,
-				E7D9E013182B03B000AD56C1 /* CloudsVisualSystemGameOfLife.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7D9E014182B03B000AD56C1 /* LaplacianTunnel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3121,8 +3520,8 @@
 				E7D9E345182B03B700AD56C1 /* MazeCell.h */,
 				E7D9E346182B03B700AD56C1 /* MovingBall.cpp */,
 				E7D9E347182B03B700AD56C1 /* MovingBall.h */,
-				E7D9E348182B03B700AD56C1 /* ParamManager.cpp */,
-				E7D9E349182B03B700AD56C1 /* ParamManager.h */,
+				E7FB24C91830D470009EBD0E /* MazeSettings.cpp */,
+				E7FB24CA1830D470009EBD0E /* MazeSettings.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3374,23 +3773,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7D9ECEA182B03C500AD56C1 /* OpenP53DIntro */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9ED18182B03C600AD56C1 /* vs_src */,
-			);
-			path = OpenP53DIntro;
-			sourceTree = "<group>";
-		};
-		E7D9ED18182B03C600AD56C1 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9ED19182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp */,
-				E7D9ED1A182B03C600AD56C1 /* CloudsVisualSystemOpenP53DIntro.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7D9ED1B182B03C600AD56C1 /* Oscillations */ = {
 			isa = PBXGroup;
 			children = (
@@ -3419,11 +3801,10 @@
 		E7D9EEC2182B03C700AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9EEC3182B03C700AD56C1 /* CloudsVisualSystemEmpty.cpp.orig */,
+				E7D15663182D6AD30036E9BA /* CloudsVisualSystemPages.cpp */,
+				E7D15664182D6AD30036E9BA /* CloudsVisualSystemPages.h */,
 				E7D9EEC4182B03C700AD56C1 /* Page.cpp */,
 				E7D9EEC5182B03C700AD56C1 /* Page.h */,
-				E7D9EEC6182B03C700AD56C1 /* PagesVisualSystem.cpp */,
-				E7D9EEC7182B03C700AD56C1 /* PagesVisualSystem.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3531,12 +3912,10 @@
 		E7D9F13A182B03C900AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				E7D15660182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp */,
+				E7D15661182D6AB90036E9BA /* CloudsVisualSystemScrape.h */,
 				E7D9F13B182B03C900AD56C1 /* ofxMtlBoxFitting.cpp */,
 				E7D9F13C182B03C900AD56C1 /* ofxMtlBoxFitting.h */,
-				E7D9F13D182B03C900AD56C1 /* ScrapeCamera.cpp */,
-				E7D9F13E182B03C900AD56C1 /* ScrapeCamera.h */,
-				E7D9F13F182B03C900AD56C1 /* ScrapeVisualSystem.cpp */,
-				E7D9F140182B03C900AD56C1 /* ScrapeVisualSystem.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3681,8 +4060,8 @@
 			children = (
 				E7D9F400182B03CC00AD56C1 /* HistoryNode.cpp */,
 				E7D9F401182B03CC00AD56C1 /* HistoryNode.h */,
-				E7D9F402182B03CC00AD56C1 /* WebHistoryVisualSystem.cpp */,
-				E7D9F403182B03CC00AD56C1 /* WebHistoryVisualSystem.h */,
+				E7D1565D182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp */,
+				E7D1565E182D6AA30036E9BA /* CloudsVisualSystemWebHistory.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3725,8 +4104,9 @@
 		E7D9F5EB182B03CE00AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9F5EC182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.cpp */,
 				E7D9F5ED182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.h */,
+				E7D9F5EC182B03CE00AD56C1 /* CloudsVisualSystemYellowTail.cpp */,
+				E7D15666182D6BE90036E9BA /* yt */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4354,6 +4734,24 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
+		E7FB262C1830D4FA009EBD0E /* ofxOculusRift */ = {
+			isa = PBXGroup;
+			children = (
+				E7FB278D1830D4FE009EBD0E /* src */,
+			);
+			name = ofxOculusRift;
+			path = ../../../addons/ofxOculusRift;
+			sourceTree = "<group>";
+		};
+		E7FB278D1830D4FE009EBD0E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7FB278E1830D4FE009EBD0E /* ofxOculusRift.cpp */,
+				E7FB278F1830D4FE009EBD0E /* ofxOculusRift.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7FC8BF917DA9AA5007BEFA5 /* ofxSQLite */ = {
 			isa = PBXGroup;
 			children = (
@@ -4447,6 +4845,25 @@
 			productReference = E4B69B5B0A3A1756003C02F2 /* CLOUDSDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E7FB24CC1830D4C0009EBD0E /* CLOUDS_OCULUS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDS_OCULUS" */;
+			buildPhases = (
+				E7FB24CF1830D4C0009EBD0E /* Sources */,
+				E7FB260B1830D4C0009EBD0E /* Frameworks */,
+				E7FB26241830D4C0009EBD0E /* ShellScript */,
+				E7FB26251830D4C0009EBD0E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7FB24CD1830D4C0009EBD0E /* PBXTargetDependency */,
+			);
+			name = CLOUDS_OCULUS;
+			productName = myOFApp;
+			productReference = E7FB262A1830D4C0009EBD0E /* CLOUDS_OCULUSDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -4474,6 +4891,7 @@
 			projectRoot = "";
 			targets = (
 				E4B69B5A0A3A1756003C02F2 /* CLOUDS */,
+				E7FB24CC1830D4C0009EBD0E /* CLOUDS_OCULUS */,
 			);
 		};
 /* End PBXProject section */
@@ -4490,6 +4908,19 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
+		};
+		E7FB26241830D4C0009EBD0E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4704,7 +5135,6 @@
 				E7D9F63E182B03CE00AD56C1 /* CloudsVisualSystemFireworks.cpp in Sources */,
 				E7D9F649182B03CE00AD56C1 /* CloudsVisualSystemFlocking.cpp in Sources */,
 				E7D9F64A182B03CE00AD56C1 /* CloudsVisualSystemForkingPaths.cpp in Sources */,
-				E7D9F64F182B03CE00AD56C1 /* CloudsVisualSystemGameOfLife.cpp in Sources */,
 				E7D9F652182B03CE00AD56C1 /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
 				E7D9F653182B03CE00AD56C1 /* CloudsVisualSystemLia.cpp in Sources */,
 				E7D9F654182B03CE00AD56C1 /* ColorPalette.cpp in Sources */,
@@ -4720,13 +5150,11 @@
 				E7D9F672182B03CE00AD56C1 /* MazeCamera.cpp in Sources */,
 				E7D9F673182B03CE00AD56C1 /* MazeCell.cpp in Sources */,
 				E7D9F674182B03CE00AD56C1 /* MovingBall.cpp in Sources */,
-				E7D9F675182B03CE00AD56C1 /* ParamManager.cpp in Sources */,
 				E7D9F676182B03CE00AD56C1 /* CloudsVisualSystemMemory.cpp in Sources */,
 				E7D9F67D182B03CE00AD56C1 /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
 				E7D9F67E182B03CE00AD56C1 /* CloudsVisualSystemNeurons.cpp in Sources */,
 				E7D9F681182B03CE00AD56C1 /* CloudsVisualSystemOcean.cpp in Sources */,
 				E7D9F682182B03CE00AD56C1 /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
-				E7D9F683182B03CE00AD56C1 /* DM10PingPongBuffer.cpp in Sources */,
 				E7D9F684182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
 				E7D9F685182B03CE00AD56C1 /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
 				E7D9F686182B03CE00AD56C1 /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
@@ -4739,10 +5167,8 @@
 				E7D9F68D182B03CE00AD56C1 /* Tetra.cpp in Sources */,
 				E7D9F68E182B03CE00AD56C1 /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
 				E7D9F68F182B03CE00AD56C1 /* TUOrbital.cpp in Sources */,
-				E7D9F690182B03CE00AD56C1 /* CloudsVisualSystemOpenP53DIntro.cpp in Sources */,
 				E7D9F695182B03CE00AD56C1 /* CloudsVisualSystemOscillations.cpp in Sources */,
 				E7D9F696182B03CE00AD56C1 /* Page.cpp in Sources */,
-				E7D9F697182B03CE00AD56C1 /* PagesVisualSystem.cpp in Sources */,
 				E7D9F698182B03CE00AD56C1 /* Brush.cpp in Sources */,
 				E7D9F699182B03CE00AD56C1 /* CloudsVisualSystemPaintBrush.cpp in Sources */,
 				E7D9F69A182B03CE00AD56C1 /* Particle.cpp in Sources */,
@@ -4752,8 +5178,6 @@
 				E7D9F69E182B03CE00AD56C1 /* CloudsVisualSystemReplicator.cpp in Sources */,
 				E7D9F6A1182B03CE00AD56C1 /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
 				E7D9F6A2182B03CE00AD56C1 /* ofxMtlBoxFitting.cpp in Sources */,
-				E7D9F6A3182B03CE00AD56C1 /* ScrapeCamera.cpp in Sources */,
-				E7D9F6A4182B03CE00AD56C1 /* ScrapeVisualSystem.cpp in Sources */,
 				E7D9F6A5182B03CE00AD56C1 /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
 				E7D9F6A6182B03CE00AD56C1 /* CloudsVisualSystemVectorFlow.cpp in Sources */,
 				E7D9F6A7182B03CE00AD56C1 /* CloudsVisualSystemVerletForm.cpp in Sources */,
@@ -4775,7 +5199,6 @@
 				E7D9F6BC182B03CE00AD56C1 /* VoroParticle.cpp in Sources */,
 				E7D9F6BD182B03CE00AD56C1 /* vParticle.cpp in Sources */,
 				E7D9F6C0182B03CE00AD56C1 /* HistoryNode.cpp in Sources */,
-				E7D9F6C1182B03CE00AD56C1 /* WebHistoryVisualSystem.cpp in Sources */,
 				E7D9F6C5182B03CE00AD56C1 /* CloudsVisualSystemWorld.cpp in Sources */,
 				E7D9F6C6182B03CE00AD56C1 /* wArc.cpp in Sources */,
 				E7D9F6C7182B03CE00AD56C1 /* wCity.cpp in Sources */,
@@ -4824,6 +5247,337 @@
 				E7D9FB86182B064900AD56C1 /* ofxMPMNode.cpp in Sources */,
 				E7D9FB87182B064900AD56C1 /* ofxMPMObstacle.cpp in Sources */,
 				E7D9FB88182B064900AD56C1 /* ofxMPMParticle.cpp in Sources */,
+				E7D1565F182D6AA30036E9BA /* CloudsVisualSystemWebHistory.cpp in Sources */,
+				E7D15662182D6AB90036E9BA /* CloudsVisualSystemScrape.cpp in Sources */,
+				E7D15665182D6AD30036E9BA /* CloudsVisualSystemPages.cpp in Sources */,
+				E7D15673182D6BE90036E9BA /* Gesture.cpp in Sources */,
+				E7D15674182D6BE90036E9BA /* GestureRenderer.cpp in Sources */,
+				E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */,
+				E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */,
+				E7FB24CB1830D470009EBD0E /* MazeSettings.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7FB24CF1830D4C0009EBD0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7FB24D01830D4C0009EBD0E /* main.cpp in Sources */,
+				E7FB24D11830D4C0009EBD0E /* testApp.cpp in Sources */,
+				E7FB24D21830D4C0009EBD0E /* tinyxml.cpp in Sources */,
+				E7FB24D31830D4C0009EBD0E /* tinyxmlerror.cpp in Sources */,
+				E7FB24D41830D4C0009EBD0E /* tinyxmlparser.cpp in Sources */,
+				E7FB24D51830D4C0009EBD0E /* ofxXmlSettings.cpp in Sources */,
+				E7FB24D61830D4C0009EBD0E /* CloudsClip.cpp in Sources */,
+				E7FB24D71830D4C0009EBD0E /* CloudsFCPParser.cpp in Sources */,
+				E7FB24D81830D4C0009EBD0E /* CloudsLink.cpp in Sources */,
+				E7FB24D91830D4C0009EBD0E /* CloudsStoryEngine.cpp in Sources */,
+				E7FB24DA1830D4C0009EBD0E /* CloudsPlaybackController.cpp in Sources */,
+				E7FB24DB1830D4C0009EBD0E /* kiss_fft.c in Sources */,
+				E7FB24DC1830D4C0009EBD0E /* kiss_fftr.c in Sources */,
+				E7FB24DD1830D4C0009EBD0E /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
+				E7FB24DE1830D4C0009EBD0E /* ofxHotKeys_impl_linux.cpp in Sources */,
+				E7FB24DF1830D4C0009EBD0E /* ofxHotKeys_impl_mac.mm in Sources */,
+				E7FB24E01830D4C0009EBD0E /* ofxHotKeys_impl_win.cpp in Sources */,
+				E7FB24E11830D4C0009EBD0E /* ofxRemoveCocoaMenu.mm in Sources */,
+				E7FB24E21830D4C0009EBD0E /* ofxTimeline.cpp in Sources */,
+				E7FB24E31830D4C0009EBD0E /* ofxTLAudioTrack.cpp in Sources */,
+				E7FB24E41830D4C0009EBD0E /* ofxTLBangs.cpp in Sources */,
+				E7FB24E51830D4C0009EBD0E /* ofxTLCameraTrack.cpp in Sources */,
+				E7FB24E61830D4C0009EBD0E /* ofxTLColors.cpp in Sources */,
+				E7FB24E71830D4C0009EBD0E /* ofxTLColorTrack.cpp in Sources */,
+				E7FB24E81830D4C0009EBD0E /* ofxTLCurves.cpp in Sources */,
+				E7FB24E91830D4C0009EBD0E /* ofxTLEmptyKeyframes.cpp in Sources */,
+				E7FB24EA1830D4C0009EBD0E /* ofxTLEmptyTrack.cpp in Sources */,
+				E7FB24EB1830D4C0009EBD0E /* ofxTLFlags.cpp in Sources */,
+				E7FB24EC1830D4C0009EBD0E /* ofxTLImageSequence.cpp in Sources */,
+				E7FB24ED1830D4C0009EBD0E /* ofxTLImageSequenceFrame.cpp in Sources */,
+				E7FB24EE1830D4C0009EBD0E /* ofxTLImageTrack.cpp in Sources */,
+				E7FB24EF1830D4C0009EBD0E /* ofxTLInOut.cpp in Sources */,
+				E7FB24F01830D4C0009EBD0E /* ofxTLKeyframes.cpp in Sources */,
+				E7FB24F11830D4C0009EBD0E /* ofxTLLFO.cpp in Sources */,
+				E7FB24F21830D4C0009EBD0E /* ofxTLPage.cpp in Sources */,
+				E7FB24F31830D4C0009EBD0E /* ofxTLPageTabs.cpp in Sources */,
+				E7FB24F41830D4C0009EBD0E /* ofxTLSwitches.cpp in Sources */,
+				E7FB24F51830D4C0009EBD0E /* ofxTLTicker.cpp in Sources */,
+				E7FB24F61830D4C0009EBD0E /* ofxTLTrack.cpp in Sources */,
+				E7FB24F71830D4C0009EBD0E /* ofxTLTrackHeader.cpp in Sources */,
+				E7FB24F81830D4C0009EBD0E /* ofxTLVideoThumb.cpp in Sources */,
+				E7FB24F91830D4C0009EBD0E /* ofxTLVideoTrack.cpp in Sources */,
+				E7FB24FA1830D4C0009EBD0E /* ofxTLZoomer.cpp in Sources */,
+				E7FB24FB1830D4C0009EBD0E /* ofxMSATimer.cpp in Sources */,
+				E7FB24FC1830D4C0009EBD0E /* ofxEasing.cpp in Sources */,
+				E7FB24FD1830D4C0009EBD0E /* ofxEasingBack.cpp in Sources */,
+				E7FB24FE1830D4C0009EBD0E /* ofxEasingBounce.cpp in Sources */,
+				E7FB24FF1830D4C0009EBD0E /* ofxEasingCirc.cpp in Sources */,
+				E7FB25001830D4C0009EBD0E /* ofxEasingCubic.cpp in Sources */,
+				E7FB25011830D4C0009EBD0E /* ofxEasingElastic.cpp in Sources */,
+				E7FB25021830D4C0009EBD0E /* ofxEasingExpo.cpp in Sources */,
+				E7FB25031830D4C0009EBD0E /* ofxEasingLinear.cpp in Sources */,
+				E7FB25041830D4C0009EBD0E /* ofxEasingQuad.cpp in Sources */,
+				E7FB25051830D4C0009EBD0E /* ofxEasingQuart.cpp in Sources */,
+				E7FB25061830D4C0009EBD0E /* ofxEasingQuint.cpp in Sources */,
+				E7FB25071830D4C0009EBD0E /* ofxEasingSine.cpp in Sources */,
+				E7FB25081830D4C0009EBD0E /* ofxTween.cpp in Sources */,
+				E7FB25091830D4C0009EBD0E /* ofxTimecode.cpp in Sources */,
+				E7FB250A1830D4C0009EBD0E /* ofxTextInputField.cpp in Sources */,
+				E7FB250B1830D4C0009EBD0E /* ofxGameCamera.cpp in Sources */,
+				E7FB250C1830D4C0009EBD0E /* ofxBehavior.cpp in Sources */,
+				E7FB250D1830D4C0009EBD0E /* ofxBufferEffectorBehavior.cpp in Sources */,
+				E7FB250E1830D4C0009EBD0E /* ofxDamperBehavior.cpp in Sources */,
+				E7FB250F1830D4C0009EBD0E /* ofxDistorterBehavior.cpp in Sources */,
+				E7FB25101830D4C0009EBD0E /* ofxElectroStaticBehavior.cpp in Sources */,
+				E7FB25111830D4C0009EBD0E /* ofxField2D.cpp in Sources */,
+				E7FB25121830D4C0009EBD0E /* ofxHomingBehavior.cpp in Sources */,
+				E7FB25131830D4C0009EBD0E /* ofxPerlinBehavior.cpp in Sources */,
+				E7FB25141830D4C0009EBD0E /* ofxRParticle.cpp in Sources */,
+				E7FB25151830D4C0009EBD0E /* ofxRParticleGlowieRenderer.cpp in Sources */,
+				E7FB25161830D4C0009EBD0E /* ofxRParticleRenderer.cpp in Sources */,
+				E7FB25171830D4C0009EBD0E /* ofxRParticleSystem.cpp in Sources */,
+				E7FB25181830D4C0009EBD0E /* ofxSolver.cpp in Sources */,
+				E7FB25191830D4C0009EBD0E /* ofxSphericalAttractionBehavior.cpp in Sources */,
+				E7FB251A1830D4C0009EBD0E /* ofxSwarmBehavior.cpp in Sources */,
+				E7FB251B1830D4C0009EBD0E /* ofxVerletSolver.cpp in Sources */,
+				E7FB251C1830D4C0009EBD0E /* ofxCameraSaveLoad.cpp in Sources */,
+				E7FB251D1830D4C0009EBD0E /* MSAObjCPointer.cpp in Sources */,
+				E7FB251E1830D4C0009EBD0E /* MSACoreGL.cpp in Sources */,
+				E7FB251F1830D4C0009EBD0E /* CloudsSound.cpp in Sources */,
+				E7FB25201830D4C0009EBD0E /* lukeFuncs.cpp in Sources */,
+				E7FB25211830D4C0009EBD0E /* CloudsVisualSystemManager.cpp in Sources */,
+				E7FB25221830D4C0009EBD0E /* CloudsVisualSystemPreset.cpp in Sources */,
+				E7FB25231830D4C0009EBD0E /* CloudsVisualSystemRGBD.cpp in Sources */,
+				E7FB25241830D4C0009EBD0E /* CloudsQuestion.cpp in Sources */,
+				E7FB25251830D4C0009EBD0E /* kiss_fftnd.c in Sources */,
+				E7FB25261830D4C0009EBD0E /* ofxOcean.cpp in Sources */,
+				E7FB25271830D4C0009EBD0E /* ofxOceanRenderer.cpp in Sources */,
+				E7FB25281830D4C0009EBD0E /* ofxOceanTile.cpp in Sources */,
+				E7FB25291830D4C0009EBD0E /* Controller.cpp in Sources */,
+				E7FB252A1830D4C0009EBD0E /* Force.cpp in Sources */,
+				E7FB252B1830D4C0009EBD0E /* ForceSet.cpp in Sources */,
+				E7FB252C1830D4C0009EBD0E /* Gravity.cpp in Sources */,
+				E7FB252D1830D4C0009EBD0E /* Points.cpp in Sources */,
+				E7FB252E1830D4C0009EBD0E /* State.cpp in Sources */,
+				E7FB252F1830D4C0009EBD0E /* CloudsAct.cpp in Sources */,
+				E7FB25301830D4C0009EBD0E /* ofxAVFVideoPlayer.mm in Sources */,
+				E7FB25311830D4C0009EBD0E /* ofxAVFVideoRenderer.m in Sources */,
+				E7FB25321830D4C0009EBD0E /* CloudsVisualSystem.cpp in Sources */,
+				E7FB25331830D4C0009EBD0E /* CloudsDichotomy.cpp in Sources */,
+				E7FB25341830D4C0009EBD0E /* CloudsRGBDCamera.cpp in Sources */,
+				E7FB25351830D4C0009EBD0E /* CloudsRGBDVideoPlayer.cpp in Sources */,
+				E7FB25361830D4C0009EBD0E /* CloudsIntroSequence.cpp in Sources */,
+				E7FB25371830D4C0009EBD0E /* glm.c in Sources */,
+				E7FB25381830D4C0009EBD0E /* ofxObjLoader.cpp in Sources */,
+				E7FB25391830D4C0009EBD0E /* ofxAutoReloadedShader.cpp in Sources */,
+				E7FB253A1830D4C0009EBD0E /* ofxMarchingCubes.cpp in Sources */,
+				E7FB253B1830D4C0009EBD0E /* CloudsRun.cpp in Sources */,
+				E7FB253C1830D4C0009EBD0E /* ofxOceanCamera.cpp in Sources */,
+				E7FB253D1830D4C0009EBD0E /* sqlite3.c in Sources */,
+				E7FB253E1830D4C0009EBD0E /* ofxSQLite.cpp in Sources */,
+				E7FB253F1830D4C0009EBD0E /* ofxSQLiteAbstract.cpp in Sources */,
+				E7FB25401830D4C0009EBD0E /* ofxSQLiteDelete.cpp in Sources */,
+				E7FB25411830D4C0009EBD0E /* ofxSQLiteFieldValues.cpp in Sources */,
+				E7FB25421830D4C0009EBD0E /* ofxSQLiteInsert.cpp in Sources */,
+				E7FB25431830D4C0009EBD0E /* ofxSQLiteSelect.cpp in Sources */,
+				E7FB25441830D4C0009EBD0E /* ofxSQLiteUpdate.cpp in Sources */,
+				E7FB25451830D4C0009EBD0E /* ofxTextWriter.cpp in Sources */,
+				E7FB25461830D4C0009EBD0E /* CloudsSpeaker.cpp in Sources */,
+				E7FB25471830D4C0009EBD0E /* ofxBillboard.cpp in Sources */,
+				E7FB25481830D4C0009EBD0E /* Delaunay.cpp in Sources */,
+				E7FB25491830D4C0009EBD0E /* ofxDelaunay.cpp in Sources */,
+				E7FB254A1830D4C0009EBD0E /* ofxRegex.cpp in Sources */,
+				E7FB254B1830D4C0009EBD0E /* question.frag in Sources */,
+				E7FB254C1830D4C0009EBD0E /* question.vert in Sources */,
+				E7FB254D1830D4C0009EBD0E /* Timer.cpp in Sources */,
+				E7FB254E1830D4C0009EBD0E /* b2BroadPhase.cpp in Sources */,
+				E7FB254F1830D4C0009EBD0E /* b2CollideCircle.cpp in Sources */,
+				E7FB25501830D4C0009EBD0E /* b2CollidePolygon.cpp in Sources */,
+				E7FB25511830D4C0009EBD0E /* b2Collision.cpp in Sources */,
+				E7FB25521830D4C0009EBD0E /* b2Distance.cpp in Sources */,
+				E7FB25531830D4C0009EBD0E /* b2DynamicTree.cpp in Sources */,
+				E7FB25541830D4C0009EBD0E /* b2TimeOfImpact.cpp in Sources */,
+				E7FB25551830D4C0009EBD0E /* b2CircleShape.cpp in Sources */,
+				E7FB25561830D4C0009EBD0E /* b2PolygonShape.cpp in Sources */,
+				E7FB25571830D4C0009EBD0E /* b2BlockAllocator.cpp in Sources */,
+				E7FB25581830D4C0009EBD0E /* b2Math.cpp in Sources */,
+				E7FB25591830D4C0009EBD0E /* b2Settings.cpp in Sources */,
+				E7FB255A1830D4C0009EBD0E /* b2StackAllocator.cpp in Sources */,
+				E7FB255B1830D4C0009EBD0E /* b2Body.cpp in Sources */,
+				E7FB255C1830D4C0009EBD0E /* b2ContactManager.cpp in Sources */,
+				E7FB255D1830D4C0009EBD0E /* b2Fixture.cpp in Sources */,
+				E7FB255E1830D4C0009EBD0E /* b2Island.cpp in Sources */,
+				E7FB255F1830D4C0009EBD0E /* b2World.cpp in Sources */,
+				E7FB25601830D4C0009EBD0E /* b2WorldCallbacks.cpp in Sources */,
+				E7FB25611830D4C0009EBD0E /* b2CircleContact.cpp in Sources */,
+				E7FB25621830D4C0009EBD0E /* b2Contact.cpp in Sources */,
+				E7FB25631830D4C0009EBD0E /* b2ContactSolver.cpp in Sources */,
+				E7FB25641830D4C0009EBD0E /* b2PolygonAndCircleContact.cpp in Sources */,
+				E7FB25651830D4C0009EBD0E /* b2PolygonContact.cpp in Sources */,
+				E7FB25661830D4C0009EBD0E /* b2TOISolver.cpp in Sources */,
+				E7FB25671830D4C0009EBD0E /* b2DistanceJoint.cpp in Sources */,
+				E7FB25681830D4C0009EBD0E /* b2FrictionJoint.cpp in Sources */,
+				E7FB25691830D4C0009EBD0E /* b2GearJoint.cpp in Sources */,
+				E7FB256A1830D4C0009EBD0E /* b2Joint.cpp in Sources */,
+				E7FB256B1830D4C0009EBD0E /* b2LineJoint.cpp in Sources */,
+				E7FB256C1830D4C0009EBD0E /* b2MouseJoint.cpp in Sources */,
+				E7FB256D1830D4C0009EBD0E /* b2PrismaticJoint.cpp in Sources */,
+				E7FB256E1830D4C0009EBD0E /* b2PulleyJoint.cpp in Sources */,
+				E7FB256F1830D4C0009EBD0E /* b2RevoluteJoint.cpp in Sources */,
+				E7FB25701830D4C0009EBD0E /* b2WeldJoint.cpp in Sources */,
+				E7FB25711830D4C0009EBD0E /* del_impl.cpp in Sources */,
+				E7FB25721830D4C0009EBD0E /* ofxBox2d.cpp in Sources */,
+				E7FB25731830D4C0009EBD0E /* ofxBox2dBaseShape.cpp in Sources */,
+				E7FB25741830D4C0009EBD0E /* ofxBox2dCircle.cpp in Sources */,
+				E7FB25751830D4C0009EBD0E /* ofxBox2dJoint.cpp in Sources */,
+				E7FB25761830D4C0009EBD0E /* ofxBox2dPolygon.cpp in Sources */,
+				E7FB25771830D4C0009EBD0E /* ofxBox2dRect.cpp in Sources */,
+				E7FB25781830D4C0009EBD0E /* CloudsClusterNode.cpp in Sources */,
+				E7FB25791830D4C0009EBD0E /* CloudsVisualSystemClusterMap.cpp in Sources */,
+				E7FB257A1830D4C0009EBD0E /* ofxSimpleSpline.cpp in Sources */,
+				E7FB257B1830D4C0009EBD0E /* CloudsSoundFuncs.cpp in Sources */,
+				E7FB257C1830D4C0009EBD0E /* CloudsSoundFilesSamplesDatabases.cpp in Sources */,
+				E7FB257D1830D4C0009EBD0E /* 3DModelVisualSystem.cpp in Sources */,
+				E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */,
+				E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */,
+				E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */,
+				E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */,
+				E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */,
+				E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */,
+				E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */,
+				E7FB25851830D4C0009EBD0E /* ParticleConnectionGenerator.cpp in Sources */,
+				E7FB25861830D4C0009EBD0E /* ParticleConnector.cpp in Sources */,
+				E7FB25871830D4C0009EBD0E /* ParticleConnectorBin.cpp in Sources */,
+				E7FB25881830D4C0009EBD0E /* CloudsVisualSystemCosmic.cpp in Sources */,
+				E7FB25891830D4C0009EBD0E /* CloudsVisualSystemDataCascade.cpp in Sources */,
+				E7FB258A1830D4C0009EBD0E /* CloudsVisualSystemDrawnLine.cpp in Sources */,
+				E7FB258B1830D4C0009EBD0E /* CloudsVisualSystemExampleBox2D.cpp in Sources */,
+				E7FB258C1830D4C0009EBD0E /* CloudsVisualSystemExampleMPMFluid.cpp in Sources */,
+				E7FB258D1830D4C0009EBD0E /* Boid.cpp in Sources */,
+				E7FB258E1830D4C0009EBD0E /* CloudsVisualSystemExampleOpenSteer.cpp in Sources */,
+				E7FB258F1830D4C0009EBD0E /* CloudsVisualSystemExampleVectorMath.cpp in Sources */,
+				E7FB25901830D4C0009EBD0E /* CloudsVisualSystemFireworks.cpp in Sources */,
+				E7FB25911830D4C0009EBD0E /* CloudsVisualSystemFlocking.cpp in Sources */,
+				E7FB25921830D4C0009EBD0E /* CloudsVisualSystemForkingPaths.cpp in Sources */,
+				E7FB25931830D4C0009EBD0E /* CloudsVisualSystemLaplacianTunnel.cpp in Sources */,
+				E7FB25941830D4C0009EBD0E /* CloudsVisualSystemLia.cpp in Sources */,
+				E7FB25951830D4C0009EBD0E /* ColorPalette.cpp in Sources */,
+				E7FB25961830D4C0009EBD0E /* Globals.cpp in Sources */,
+				E7FB25971830D4C0009EBD0E /* Module.cpp in Sources */,
+				E7FB25981830D4C0009EBD0E /* RandomMover.cpp in Sources */,
+				E7FB25991830D4C0009EBD0E /* CloudsVisualSystemLSystem.cpp in Sources */,
+				E7FB259A1830D4C0009EBD0E /* LNode.cpp in Sources */,
+				E7FB259B1830D4C0009EBD0E /* LSystem.cpp in Sources */,
+				E7FB259C1830D4C0009EBD0E /* CloudsVisualSystemMandala.cpp in Sources */,
+				E7FB259D1830D4C0009EBD0E /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
+				E7FB259E1830D4C0009EBD0E /* Maze.cpp in Sources */,
+				E7FB259F1830D4C0009EBD0E /* MazeCamera.cpp in Sources */,
+				E7FB25A01830D4C0009EBD0E /* MazeCell.cpp in Sources */,
+				E7FB25A11830D4C0009EBD0E /* MovingBall.cpp in Sources */,
+				E7FB25A21830D4C0009EBD0E /* CloudsVisualSystemMemory.cpp in Sources */,
+				E7FB25A31830D4C0009EBD0E /* CloudsVisualSystemMarchingCubes.cpp in Sources */,
+				E7FB25A41830D4C0009EBD0E /* CloudsVisualSystemNeurons.cpp in Sources */,
+				E7FB25A51830D4C0009EBD0E /* CloudsVisualSystemOcean.cpp in Sources */,
+				E7FB25A61830D4C0009EBD0E /* CloudsVisualSystemOpenP5DrawingMachine10.cpp in Sources */,
+				E7FB25A71830D4C0009EBD0E /* CloudsVisualSystemOpenP5Hackpact.cpp in Sources */,
+				E7FB25A81830D4C0009EBD0E /* CloudsVisualSystemOpenP5Machine.cpp in Sources */,
+				E7FB25A91830D4C0009EBD0E /* CloudsVisualSystemOpenP5NoiseSphere.cpp in Sources */,
+				E7FB25AA1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SeaOfLines.cpp in Sources */,
+				E7FB25AB1830D4C0009EBD0E /* CloudsVisualSystemOpenP5Sixteen.cpp in Sources */,
+				E7FB25AC1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SpaceJunk.cpp in Sources */,
+				E7FB25AD1830D4C0009EBD0E /* CloudsVisualSystemOpenP5Spaghetti.cpp in Sources */,
+				E7FB25AE1830D4C0009EBD0E /* Walker.cpp in Sources */,
+				E7FB25AF1830D4C0009EBD0E /* CloudsVisualSystemOpenP5SpinningSolids.cpp in Sources */,
+				E7FB25B01830D4C0009EBD0E /* Tetra.cpp in Sources */,
+				E7FB25B11830D4C0009EBD0E /* CloudsVisualSystemOpenP5TextUniverse.cpp in Sources */,
+				E7FB25B21830D4C0009EBD0E /* TUOrbital.cpp in Sources */,
+				E7FB25B31830D4C0009EBD0E /* CloudsVisualSystemOscillations.cpp in Sources */,
+				E7FB25B41830D4C0009EBD0E /* Page.cpp in Sources */,
+				E7FB25B51830D4C0009EBD0E /* Brush.cpp in Sources */,
+				E7FB25B61830D4C0009EBD0E /* CloudsVisualSystemPaintBrush.cpp in Sources */,
+				E7FB25B71830D4C0009EBD0E /* Particle.cpp in Sources */,
+				E7FB25B81830D4C0009EBD0E /* Spring.cpp in Sources */,
+				E7FB25B91830D4C0009EBD0E /* CloudsVisualSystemRandomDigits.cpp in Sources */,
+				E7FB25BA1830D4C0009EBD0E /* Rand.cpp in Sources */,
+				E7FB25BB1830D4C0009EBD0E /* CloudsVisualSystemReplicator.cpp in Sources */,
+				E7FB25BC1830D4C0009EBD0E /* CloudsVisualSystemRGBDVideo.cpp in Sources */,
+				E7FB25BD1830D4C0009EBD0E /* ofxMtlBoxFitting.cpp in Sources */,
+				E7FB25BE1830D4C0009EBD0E /* CloudsVisualSystemThingsInTheDark.cpp in Sources */,
+				E7FB25BF1830D4C0009EBD0E /* CloudsVisualSystemVectorFlow.cpp in Sources */,
+				E7FB25C01830D4C0009EBD0E /* CloudsVisualSystemVerletForm.cpp in Sources */,
+				E7FB25C11830D4C0009EBD0E /* CloudsVisualSystemVision.cpp in Sources */,
+				E7FB25C21830D4C0009EBD0E /* FlowField.cpp in Sources */,
+				E7FB25C31830D4C0009EBD0E /* MyTracker.cpp in Sources */,
+				E7FB25C41830D4C0009EBD0E /* CloudsVisualSystemVoro.cpp in Sources */,
+				E7FB25C51830D4C0009EBD0E /* c_loops.cpp in Sources */,
+				E7FB25C61830D4C0009EBD0E /* cell.cpp in Sources */,
+				E7FB25C71830D4C0009EBD0E /* common.cpp in Sources */,
+				E7FB25C81830D4C0009EBD0E /* container.cpp in Sources */,
+				E7FB25C91830D4C0009EBD0E /* container_prd.cpp in Sources */,
+				E7FB25CA1830D4C0009EBD0E /* pre_container.cpp in Sources */,
+				E7FB25CB1830D4C0009EBD0E /* unitcell.cpp in Sources */,
+				E7FB25CC1830D4C0009EBD0E /* v_base.cpp in Sources */,
+				E7FB25CD1830D4C0009EBD0E /* v_compute.cpp in Sources */,
+				E7FB25CE1830D4C0009EBD0E /* wall.cpp in Sources */,
+				E7FB25CF1830D4C0009EBD0E /* Voro.cpp in Sources */,
+				E7FB25D01830D4C0009EBD0E /* VoroParticle.cpp in Sources */,
+				E7FB25D11830D4C0009EBD0E /* vParticle.cpp in Sources */,
+				E7FB25D21830D4C0009EBD0E /* HistoryNode.cpp in Sources */,
+				E7FB25D31830D4C0009EBD0E /* CloudsVisualSystemWorld.cpp in Sources */,
+				E7FB25D41830D4C0009EBD0E /* wArc.cpp in Sources */,
+				E7FB25D51830D4C0009EBD0E /* wCity.cpp in Sources */,
+				E7FB25D61830D4C0009EBD0E /* wParticle.cpp in Sources */,
+				E7FB25D71830D4C0009EBD0E /* wSatellite.cpp in Sources */,
+				E7FB25D81830D4C0009EBD0E /* wStar.cpp in Sources */,
+				E7FB25D91830D4C0009EBD0E /* CloudsVisualSystemYellowTail.cpp in Sources */,
+				E7FB25DA1830D4C0009EBD0E /* ofxSimpleSurface.cpp in Sources */,
+				E7FB25DB1830D4C0009EBD0E /* Camera.cpp in Sources */,
+				E7FB25DC1830D4C0009EBD0E /* Clock.cpp in Sources */,
+				E7FB25DD1830D4C0009EBD0E /* Color.cpp in Sources */,
+				E7FB25DE1830D4C0009EBD0E /* Draw.cpp in Sources */,
+				E7FB25DF1830D4C0009EBD0E /* lq.c in Sources */,
+				E7FB25E01830D4C0009EBD0E /* Obstacle.cpp in Sources */,
+				E7FB25E11830D4C0009EBD0E /* OldPathway.cpp in Sources */,
+				E7FB25E21830D4C0009EBD0E /* OpenSteerDemo.cpp in Sources */,
+				E7FB25E31830D4C0009EBD0E /* Path.cpp in Sources */,
+				E7FB25E41830D4C0009EBD0E /* Pathway.cpp in Sources */,
+				E7FB25E51830D4C0009EBD0E /* PlugIn.cpp in Sources */,
+				E7FB25E61830D4C0009EBD0E /* PolylineSegmentedPath.cpp in Sources */,
+				E7FB25E71830D4C0009EBD0E /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
+				E7FB25E81830D4C0009EBD0E /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
+				E7FB25E91830D4C0009EBD0E /* SegmentedPath.cpp in Sources */,
+				E7FB25EA1830D4C0009EBD0E /* SegmentedPathway.cpp in Sources */,
+				E7FB25EB1830D4C0009EBD0E /* SimpleVehicle.cpp in Sources */,
+				E7FB25EC1830D4C0009EBD0E /* TerrainRayTest.cpp in Sources */,
+				E7FB25ED1830D4C0009EBD0E /* Vec3.cpp in Sources */,
+				E7FB25EE1830D4C0009EBD0E /* Vec3Utilities.cpp in Sources */,
+				E7FB25EF1830D4C0009EBD0E /* ofxOpenSteerPlugin.cpp in Sources */,
+				E7FB25F01830D4C0009EBD0E /* ofxOpenSteerVehicle.cpp in Sources */,
+				E7FB25F11830D4C0009EBD0E /* ofxFTGLFont.cpp in Sources */,
+				E7FB25F21830D4C0009EBD0E /* ofxFTGLSimpleLayout.cpp in Sources */,
+				E7FB25F31830D4C0009EBD0E /* ETF.cpp in Sources */,
+				E7FB25F41830D4C0009EBD0E /* fdog.cpp in Sources */,
+				E7FB25F51830D4C0009EBD0E /* Calibration.cpp in Sources */,
+				E7FB25F61830D4C0009EBD0E /* ContourFinder.cpp in Sources */,
+				E7FB25F71830D4C0009EBD0E /* Distance.cpp in Sources */,
+				E7FB25F81830D4C0009EBD0E /* Flow.cpp in Sources */,
+				E7FB25F91830D4C0009EBD0E /* Helpers.cpp in Sources */,
+				E7FB25FA1830D4C0009EBD0E /* ObjectFinder.cpp in Sources */,
+				E7FB25FB1830D4C0009EBD0E /* RunningBackground.cpp in Sources */,
+				E7FB25FC1830D4C0009EBD0E /* Tracker.cpp in Sources */,
+				E7FB25FD1830D4C0009EBD0E /* Utilities.cpp in Sources */,
+				E7FB25FE1830D4C0009EBD0E /* Wrappers.cpp in Sources */,
+				E7FB25FF1830D4C0009EBD0E /* ofxMPMFluid.cpp in Sources */,
+				E7FB26001830D4C0009EBD0E /* ofxMPMNode.cpp in Sources */,
+				E7FB26011830D4C0009EBD0E /* ofxMPMObstacle.cpp in Sources */,
+				E7FB26021830D4C0009EBD0E /* ofxMPMParticle.cpp in Sources */,
+				E7FB26031830D4C0009EBD0E /* CloudsVisualSystemWebHistory.cpp in Sources */,
+				E7FB26041830D4C0009EBD0E /* CloudsVisualSystemScrape.cpp in Sources */,
+				E7FB26051830D4C0009EBD0E /* CloudsVisualSystemPages.cpp in Sources */,
+				E7FB26061830D4C0009EBD0E /* Gesture.cpp in Sources */,
+				E7FB26071830D4C0009EBD0E /* GestureRenderer.cpp in Sources */,
+				E7FB26081830D4C0009EBD0E /* GestureRendererInPlace.cpp in Sources */,
+				E7FB26091830D4C0009EBD0E /* GestureRendererTraveling.cpp in Sources */,
+				E7FB260A1830D4C0009EBD0E /* MazeSettings.cpp in Sources */,
+				E7FB28481830D4FF009EBD0E /* ofxOculusRift.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4834,6 +5588,11 @@
 			isa = PBXTargetDependency;
 			name = openFrameworks;
 			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+		E7FB24CD1830D4C0009EBD0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E7FB24CE1830D4C0009EBD0E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4929,7 +5688,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
-				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INFOPLIST_FILE = CLOUDS.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5042,7 +5801,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
-				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INFOPLIST_FILE = CLOUDS.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5136,6 +5895,275 @@
 			};
 			name = Release;
 		};
+		E7FB26281830D4C0009EBD0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AVF_PLAYER=1",
+					"OCULUS_RIFT=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
+					"$(OF_PATH)/addons/ofxCv/libs/**",
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
+					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
+				);
+				INFOPLIST_FILE = CLOUDS_OCULUS.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLOUDS_OCULUSDebug;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E7FB26291830D4C0009EBD0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AVF_PLAYER=1",
+					"OCULUS_RIFT=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/addons/ofxOpenCv/libs/**",
+					"$(OF_PATH)/addons/ofxCv/libs/**",
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
+					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
+				);
+				INFOPLIST_FILE = CLOUDS_OCULUS.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/x86_64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLOUDS_OCULUS;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -5153,6 +6181,15 @@
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
 				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDS_OCULUS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7FB26281830D4C0009EBD0E /* Debug */,
+				E7FB26291830D4C0009EBD0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

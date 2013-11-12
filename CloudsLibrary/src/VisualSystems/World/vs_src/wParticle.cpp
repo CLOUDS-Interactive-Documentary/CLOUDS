@@ -253,7 +253,13 @@ void wParticle::draw(){
         ofMesh mesh;
         mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
         for (int i = 0; i < tail.size(); i++){
-            float alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
+			float alpha;
+			if(i == 0){
+				alpha = 0.0;
+			}
+			else{
+				alpha = ofMap(i+1, 1,tail.size(), 0.0, 0.9);
+			}
             
             mesh.addColor(ofFloatColor( 1.0, alpha) );
             mesh.addVertex(tail[i]);

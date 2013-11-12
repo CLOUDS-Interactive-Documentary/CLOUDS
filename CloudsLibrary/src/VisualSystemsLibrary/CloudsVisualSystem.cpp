@@ -1,6 +1,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "CloudsGlobal.h"
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
@@ -60,13 +61,13 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
-	backgroundGradientBar.loadImage("Backgrounds/bar.png");
-	backgroundGradientCircle.loadImage("Backgrounds/circle.png");
+	backgroundGradientBar.loadImage(getDataPath() + "backgrounds/bar.png");
+	backgroundGradientCircle.loadImage(getDataPath() + "backgrounds/circle.png");
 	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
 	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
 	backgroundShader.linkProgram();
 	
-	backgroundShaderLoaded = true;	
+	backgroundShaderLoaded = true;
 }
 
 void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height){
@@ -86,6 +87,24 @@ void CloudsVisualSystem::getBackgroundMesh(ofMesh& mesh, ofImage& image, float w
 
 	mesh.addVertex(ofVec3f(imageRect.getMaxX(),imageRect.getMaxY()));
 	mesh.addTexCoord(ofVec2f(image.getWidth(),image.getHeight()));
+	
+	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+}
+
+void CloudsVisualSystem::get2dMesh(ofMesh& mesh, float width, float height){
+	ofRectangle imageRect(0,0, width, height);
+	    
+	mesh.addVertex(ofVec3f(0,0));
+	mesh.addTexCoord(ofVec2f(0,0));
+    
+	mesh.addVertex(ofVec3f(0,height));
+	mesh.addTexCoord(ofVec2f(0,height));
+    
+	mesh.addVertex(ofVec3f(width,0));
+	mesh.addTexCoord(ofVec2f(width,0));
+    
+	mesh.addVertex(ofVec3f(width,height));
+	mesh.addTexCoord(ofVec2f(width,height));
 	
 	mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
@@ -116,7 +135,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	confirmedDataPath = false;
 	bBarGradient = false;
     bMatchBackgrounds = false;
-	//hardcoded for now
+	bIs2D = false;
+
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -126,7 +146,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-	
+
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
@@ -155,9 +175,9 @@ string CloudsVisualSystem::getVisualSystemDataPath(){
 	return cachedDataPath;
 }
 
-string CloudsVisualSystem::getSystemName(){
-    return "VisualSystemName";
-}
+//string CloudsVisualSystem::getSystemName(){
+//    return "VisualSystemName";
+//}
 
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
@@ -171,8 +191,11 @@ void CloudsVisualSystem::setup(){
 	
 	cout << "SETTING UP SYSTEM " << getSystemName() << endl;
 	
-	ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
-    
+	//ofAddListener(ofEvents().exit, this, &CloudsVisualSystem::exit);
+	if(!backgroundShaderLoaded){
+		loadBackgroundShader();
+	}
+
 	currentCamera = &cam;
 	
     ofDirectory dir;
@@ -202,8 +225,9 @@ void CloudsVisualSystem::setup(){
     selfSetupGuis();
     setupTimelineGui();
     
+	loadGUIS();
 	hideGUIS();
-	
+
 	bIsSetup = true;
 	
 }
@@ -219,10 +243,6 @@ void CloudsVisualSystem::playSystem(){
 		
 		isPlaying = true;
 		
-		loadGUIS();
-		hideGUIS();
-//		ofHideCursor();
-
 		cam.enableMouseInput();
 		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
 		{
@@ -244,13 +264,12 @@ void CloudsVisualSystem::stopSystem(){
 
 		selfEnd();
 		
-		cloudsCamera.end();
+		cloudsCamera.remove();
 		
 		hideGUIS();
 		saveGUIS();
 		cam.disableMouseInput();
-		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it)
-		{
+		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it){
 			//JG WHITE DEATH
 			it->second->light.destroy();
 		}
@@ -289,10 +308,6 @@ void CloudsVisualSystem::setCurrentTopic(string topic){
 string CloudsVisualSystem::getCurrentTopic(){
 	return currentTopic;
 }
-
-//void CloudsVisualSystem::setRenderer(CloudsRGBDVideoPlayer& newRenderer){
-//	sharedRenderer = &newRenderer;
-//}
 
 void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 									  string speakerLastName,
@@ -364,14 +379,39 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 	  //bind our fbo, lights, debug
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
-			getOculusRift().baseCamera = &getCameraRef();
-			getOculusRift().beginLeftEye();
-			drawScene();
-			getOculusRift().endLeftEye();
-			
-			getOculusRift().beginRightEye();
-			drawScene();
-			getOculusRift().endRightEye();
+            getOculusRift().beginBackground();
+            //drawBackground();
+            getOculusRift().endBackground();
+
+            if(bIs2D){
+                CloudsVisualSystem::getSharedRenderTarget().begin();
+                if(bClearBackground){
+                    ofClear(0, 0, 0, 1.0);
+                }                
+                selfDrawBackground();
+                CloudsVisualSystem::getSharedRenderTarget().end();
+                
+                getOculusRift().baseCamera = &getCameraRef();
+                getOculusRift().beginLeftEye();
+                draw2dSystemPlane();
+                getOculusRift().endLeftEye();
+                
+                getOculusRift().beginRightEye();
+                draw2dSystemPlane();
+                getOculusRift().endRightEye();
+                //draw our own scene with getSharedRenderTarget on a plane
+            }
+            else{
+                
+                getOculusRift().baseCamera = &getCameraRef();
+                getOculusRift().beginLeftEye();
+                drawScene();
+                getOculusRift().endLeftEye();
+                
+                getOculusRift().beginRightEye();
+                drawScene();
+                getOculusRift().endRightEye();
+            }
 			
 			if(bDrawToScreen){
 				oculusRift.draw();
@@ -387,9 +427,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackground();
 			
 			getCameraRef().begin();
-			
 			drawScene();
-			
 			getCameraRef().end();
 			
 			ofPushStyle();
@@ -422,12 +460,24 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
     ofPopStyle();
 }
 
+void CloudsVisualSystem::draw2dSystemPlane(){
+    // create a plane and map our 2d systems to it
+    ofPushMatrix();
+    ofTranslate(-ofGetWidth()/2, -ofGetHeight()/2, 0);
+    
+    ofMesh mesh;
+    get2dMesh(mesh, ofGetWidth(), ofGetHeight());
+    getSharedRenderTarget().getTextureReference().bind();
+    mesh.draw();
+    getSharedRenderTarget().getTextureReference().unbind();
+    
+    ofPopMatrix();
+}
+
 void CloudsVisualSystem::drawScene(){
 	
 	
-	//start our 3d scene
-
-	
+//	//start our 3d scene
 	ofRotateX(xRot->getPos());
 	ofRotateY(yRot->getPos());
 	ofRotateZ(zRot->getPos());
@@ -435,7 +485,7 @@ void CloudsVisualSystem::drawScene(){
 	selfSceneTransformation();
 	
 	//accumulated position offset
-	ofTranslate( positionOffset );
+//	ofTranslate( positionOffset );
 	
 	glEnable(GL_DEPTH_TEST);
 	
@@ -452,24 +502,25 @@ void CloudsVisualSystem::drawScene(){
 	
 	lightsEnd();
 	
-	
+	glDisable(GL_DEPTH_TEST);
 }
 
 void CloudsVisualSystem::setupRGBDTransforms(){
 	ofTranslate(0,0,pointcloudOffsetZ);
 	ofScale(pointcloudScale,pointcloudScale,pointcloudScale);
 	ofScale(-1, -1, 1);
-
 }
 
-void CloudsVisualSystem::exit(ofEventArgs & args)
+void CloudsVisualSystem::exit()
 {
-//    delete colorPalletes;
-//    delete bgColor;
-//    delete bgColor2;
-    
+	if( !bIsSetup ){
+		return;
+	}
+	
+	
     saveGUIS();
-    
+	deleteGUIS();
+	
     for(vector<ofx1DExtruder *>::iterator it = extruders.begin(); it != extruders.end(); ++it)
     {
         ofx1DExtruder *e = (*it);
@@ -490,20 +541,19 @@ void CloudsVisualSystem::exit(ofEventArgs & args)
         delete m;
     }
     materials.clear();
-    materialGuis.clear();
 	
 	if(cameraTrack != NULL){
+		cameraTrack->disable();
 		delete cameraTrack;
 		cameraTrack = NULL;
 	}
 	if(timeline != NULL){
+		ofRemoveListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
 		delete timeline;
 		timeline = NULL;
 	}
-
-    selfExit();
-    
-    deleteGUIS();
+	bIsSetup = false;
+ 
 }
 
 void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
@@ -867,7 +917,7 @@ void CloudsVisualSystem::setupGui()
 vector<string> CloudsVisualSystem::getPresets()
 {
 	vector<string> presets;
-	string presetPath = getVisualSystemDataPath()+"Presets/";
+	string presetPath = getVisualSystemDataPath() + "Presets/";
 	ofDirectory presetsFolder = ofDirectory(presetPath);
 	cout << "PRESET PATH AT " << presetPath << endl;
 	
@@ -1191,7 +1241,6 @@ void CloudsVisualSystem::setupCameraGui()
     camGui->addSlider("ROT-Z", 0, 360.0, zRot->getPosPtr())->setIncrement(1.0);
     camGui->addLabel("TRACK");
     camGui->addButton("ADD KEYFRAME", false);
-//    camGui->addToggle("LOCK TO TRACK", &cameraTrack->lockCameraToTrack);
 	vector<string> transitions;
 	transitions.push_back("2D");
 	transitions.push_back("3D FLY THROUGH");
@@ -1485,6 +1534,7 @@ void CloudsVisualSystem::setupPointLight(string name)
     ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
+	
 }
 
 void CloudsVisualSystem::setupSpotLight(string name)
@@ -1518,7 +1568,7 @@ void CloudsVisualSystem::setupSpotLight(string name)
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
     
-    ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+    ofAddListener(g->newGUIEvent, this, &CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
 }
@@ -1548,9 +1598,9 @@ void CloudsVisualSystem::setupBeamLight(string name)
     setupGenericLightProperties(g, l);
     
     g->autoSizeToFitWidgets();
-    g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
+    g->setPosition(ofGetWidth()*.5 - g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
     
-    ofAddListener(g->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+    ofAddListener(g->newGUIEvent,this, &CloudsVisualSystem::guiLightEvent);
     guis.push_back(g);
     guimap[g->getName()] = g;
 }
@@ -1657,6 +1707,7 @@ void CloudsVisualSystem::setupTimeline()
     timeline->setPageName(ofToUpper(getSystemName()));
 	
 	if(cameraTrack != NULL){
+		cameraTrack->disable();
 		delete cameraTrack;
 	}
 	cameraTrack = new ofxTLCameraTrack();
@@ -2375,8 +2426,9 @@ void CloudsVisualSystem::saveGUIS()
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     
     saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
-    
-    timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+    if(timeline != NULL){
+		timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+	}
 }
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
@@ -2393,7 +2445,10 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
         guis[i]->loadSettings(presetPathName);
     }
     cam.reset();
-    ofxLoadCamera(cam, presetPath+"/ofEasyCamSettings");
+	string easyCamPath = presetPath+"/ofEasyCamSettings";
+	if(ofFile(easyCamPath).exists()){
+		ofxLoadCamera(cam, easyCamPath);
+	}
 	
     loadTimelineUIMappings(presetPath+"/UITimelineMappings.xml");
 	timeline->setName( ofFilePath::getBaseName( presetPath ) );
@@ -2476,12 +2531,29 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
 
 void CloudsVisualSystem::deleteGUIS()
 {
+	
+    ofRemoveListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent);
+    ofRemoveListener(sysGui->newGUIEvent,this,&CloudsVisualSystem::guiSystemEvent);
+    ofRemoveListener(bgGui->newGUIEvent, this, &CloudsVisualSystem::guiBackgroundEvent);
+    ofRemoveListener(lgtGui->newGUIEvent,this,&CloudsVisualSystem::guiLightingEvent);
+    ofRemoveListener(camGui->newGUIEvent,this,&CloudsVisualSystem::guiCameraEvent);
+    ofRemoveListener(presetGui->newGUIEvent,this,&CloudsVisualSystem::guiPresetEvent);
+	for(map<string, ofxUISuperCanvas *>::iterator it = lightGuis.begin(); it != lightGuis.end(); ++it)
+	{
+		ofRemoveListener(it->second->newGUIEvent,this,&CloudsVisualSystem::guiLightEvent);
+	}
+	
     for(vector<ofxUISuperCanvas *>::iterator it = guis.begin(); it != guis.end(); ++it)
     {
         ofxUICanvas *g = (*it);
         delete g;
     }
+	
     guis.clear();
+	guimap.clear();
+	lightGuis.clear();
+	materialGuis.clear();
+
 }
 
 void CloudsVisualSystem::showGUIS()
@@ -2616,25 +2688,25 @@ void CloudsVisualSystem::billBoard(ofVec3f globalCamPosition, ofVec3f globelObje
     glRotatef(-theta, axisOfRotation.x, axisOfRotation.y, axisOfRotation.z);
 }
 
-void CloudsVisualSystem::drawTexturedQuad()
-{
-    glBegin (GL_QUADS);
-    
-    glTexCoord2f (0.0, 0.0);
-    glVertex3f (0.0, 0.0, 0.0);
-    
-    glTexCoord2f (ofGetWidth(), 0.0);
-    glVertex3f (ofGetWidth(), 0.0, 0.0);
-    
-    
-    glTexCoord2f (ofGetWidth(), ofGetHeight());
-    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
-    
-    glTexCoord2f (0.0, ofGetHeight());
-    glVertex3f (0.0, ofGetHeight(), 0.0);
-    
-    glEnd ();
-}
+//void CloudsVisualSystem::drawTexturedQuad()
+//{
+//    glBegin (GL_QUADS);
+//    
+//    glTexCoord2f (0.0, 0.0);
+//    glVertex3f (0.0, 0.0, 0.0);
+//    
+//    glTexCoord2f (ofGetWidth(), 0.0);
+//    glVertex3f (ofGetWidth(), 0.0, 0.0);
+//    
+//    
+//    glTexCoord2f (ofGetWidth(), ofGetHeight());
+//    glVertex3f (ofGetWidth(), ofGetHeight(), 0.0);
+//    
+//    glTexCoord2f (0.0, ofGetHeight());
+//    glVertex3f (0.0, ofGetHeight(), 0.0);
+//    
+//    glEnd ();
+//}
 
 void CloudsVisualSystem::drawNormalizedTexturedQuad()
 {
@@ -2671,9 +2743,8 @@ void CloudsVisualSystem::drawBackground()
 	
     if(bClearBackground)
 	{
-		if(!backgroundShaderLoaded){
-			loadBackgroundShader();
-		}
+//		if(!backgroundShaderLoaded){
+//		}
 		
 		if(gradientMode != -1){
 //			cout << "drawing grad " << (bBarGradient ? "BAR" : "CIRCE") << endl;
@@ -2686,7 +2757,8 @@ void CloudsVisualSystem::drawBackground()
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
-					getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
 					mesh.draw();
 					backgroundShader.end();
 				}
@@ -2702,7 +2774,8 @@ void CloudsVisualSystem::drawBackground()
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
-					getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
+                    getBackgroundMesh(mesh, backgroundGradientCircle, ofGetViewportWidth(), ofGetViewportHeight());
+					//getBackgroundMesh(mesh, backgroundGradientCircle, ofGetWidth(), ofGetHeight());
 					mesh.draw();
 					backgroundShader.end();
 				}

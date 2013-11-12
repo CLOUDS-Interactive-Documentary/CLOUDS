@@ -96,7 +96,7 @@ void CloudsVisualSystemOpenP5Sixteen::selfUpdate()
         setColor(x, y, ofColor(c, c, c * 2));
     }
     
-    cout << ofGetFrameRate() << endl;
+//    cout << ofGetFrameRate() << endl;
 }
 
 //--------------------------------------------------------------
@@ -114,7 +114,12 @@ void CloudsVisualSystemOpenP5Sixteen::selfDrawDebug(){
 void CloudsVisualSystemOpenP5Sixteen::selfDrawBackground()
 {
     tex.loadData(pixels, width, height, GL_RGBA);
-    tex.draw(0, 0);
+    
+	ofRectangle textureRect(0,0,width,height);
+	ofRectangle screenRect(0,0, ofGetWidth(), ofGetHeight());
+	textureRect.alignTo(screenRect, OF_ALIGN_HORZ_CENTER, OF_ALIGN_VERT_CENTER);
+	
+	tex.draw(textureRect);
 }
 
 // this is called when your system is no longer drawing.

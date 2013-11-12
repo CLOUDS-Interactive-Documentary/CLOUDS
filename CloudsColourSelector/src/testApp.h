@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsFCPParser.h"
 #include "ofxUI.h"
+#include "ofxTween.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,14 +21,18 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
     void checkColorDistance();
+    float weightedDistance(ofVec3f pnt1 ,ofVec3f pnt2, ofVec3f weights);
 	void exit();
+    
     
     CloudsFCPParser parser;
     ofVideoPlayer player;
     ofImage img;
     float threshold;
+    float thresholdLower;
+    float thresholdUpper;
     ofVec2f samplePoint;
-    
+    ofxEasingSine easing;
     float hueWeight;
     float satWeight;
     float brightWeight;

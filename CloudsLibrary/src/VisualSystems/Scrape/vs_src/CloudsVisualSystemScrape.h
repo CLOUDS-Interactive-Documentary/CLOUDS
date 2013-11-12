@@ -15,8 +15,6 @@
 #include "ofxMtlBoxFitting.h"
 #include "ofxTween.h"
 
-#include "ScrapeCamera.h"
-
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 enum ScrapeMode
@@ -121,12 +119,10 @@ public:
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
-//		return domeCamera;
+//		return myCustomCamera;
 //	}
 	
 protected:
-    
-//    ScrapeCamera domeCamera;
     
     ofFbo contentFbo;
     float fboSize;

@@ -23,62 +23,97 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>780.541870117</Value>
+    <Value>97.783248901</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Name>SPIN SPEED</Name>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Name>STEP SIZE X</Name>
+    <Value>3.226600885</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Name>STEP SIZE Y</Name>
+    <Value>3.128078938</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
+    <Name>STEP SIZE Z</Name>
+    <Value>2.783251047</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED X</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED Y</Name>
+    <Value>0.098522164</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE SPEED Z</Name>
     <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
-    <Value>0.010000000</Value>
+    <Name>Hue1</Name>
+    <Value>141.945800781</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
-    <Value>0.010000000</Value>
+    <Name>Saturation1</Name>
+    <Value>151.724136353</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>Color 1</Name>
-    <XValue>0.671875000</XValue>
-    <YValue>0.218750000</YValue>
-    <RColor>255</RColor>
-    <GColor>83</GColor>
-    <BColor>255</BColor>
-    <AColor>255</AColor>
+    <Kind>4</Kind>
+    <Name>Brightness1</Name>
+    <Value>217.315261841</Value>
 </Widget>
 <Widget>
-    <Kind>28</Kind>
-    <Name>Color 2</Name>
-    <XValue>0.289062500</XValue>
-    <YValue>0.390625000</YValue>
-    <RColor>14</RColor>
-    <GColor>144</GColor>
-    <BColor>234</BColor>
-    <AColor>255</AColor>
+    <Kind>4</Kind>
+    <Name>Hue2</Name>
+    <Value>189.679809570</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation2</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness2</Name>
+    <Value>229.876846313</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Oscillator Mode</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Oscilator Period (in frames)</Name>
+    <Value>133.004913330</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Rainbow Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Dichromatic Mode</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation</Name>
-    <Value>255.000000000</Value>
+    <Value>200.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

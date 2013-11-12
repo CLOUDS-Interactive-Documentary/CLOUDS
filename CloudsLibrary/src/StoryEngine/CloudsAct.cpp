@@ -23,7 +23,7 @@ CloudsAct::~CloudsAct(){
 
 void CloudsAct::play(){
     
-    CloudsActEventArgs args(this, finalDichotomies);
+    CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
 	
 	timeline.play();
@@ -131,6 +131,7 @@ void CloudsAct::populateTime(){
 	}
 	
 	timeline.setCurrentPage(0);
+	
     ofAddListener(timeline.events().bangFired, this, &CloudsAct::timelineEventFired);
 	ofAddListener(timeline.events().playbackEnded, this, &CloudsAct::timelineStopped);
 }
@@ -148,13 +149,13 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
         vector <string> presetId;
         presetId = ofSplitString(bang.flag, ":");
         if(presetId.size() > 1){
-			CloudsVisualSystemEventArgs args(visualSystemsMap[presetId[1]]);
+			CloudsVisualSystemEventArgs args(visualSystems[ visualSystemIndeces[presetId[1]] ]);
 			if(presetId[0] == "start " ){
-				cout<<"Starting Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				cout<<"Starting Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID() << endl;
 				ofNotifyEvent(events.visualSystemBegan, args);
 			}
 			else if(presetId[0] == "outro "){
-				cout<<"Ending Visual System " << visualSystemsMap[presetId[1]].getID()<<endl;
+				cout<<"Ending Visual System " << visualSystems[ visualSystemIndeces[presetId[1]] ].getID()<<endl;
 				ofNotifyEvent(events.visualSystemEnded, args);
 			}
 		}
@@ -181,12 +182,16 @@ void CloudsAct::timelineEventFired(ofxTLBangEventArgs& bang){
 }
 
 void CloudsAct::timelineStopped(ofxTLPlaybackEventArgs& event){
-	CloudsActEventArgs args(this,finalDichotomies);
+	CloudsActEventArgs args(this);
     ofNotifyEvent(events.actEnded, args);
 }
 
 float CloudsAct::getActDuration(){
     return duration;
+}
+
+vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(CloudsClip& clip){
+	return getDichotomiesForClip(clip.getLinkName());
 }
 
 vector<CloudsDichotomy>& CloudsAct::getDichotomiesForClip(string clipName){
@@ -237,6 +242,10 @@ CloudsVisualSystemPreset& CloudsAct::getVisualSystemInAct(int index){
     return visualSystems[index];
 }
 
+float CloudsAct::getClipStartTime(CloudsClip& clip){
+	return getItemForClip(clip).startTime;
+}
+
 ActTimeItem& CloudsAct::getItemForClip(CloudsClip& clip){
     if(clipMap.find(clip.getLinkName()) == clipMap.end()){
         ofLogError() << "Couldn't find Act Item for cilp " << clip.getLinkName();
@@ -281,9 +290,7 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     dichotomiesMap[item.key] = currentDichotomiesBalance;
 	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
-    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
-    
-    
+    clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
 }
 
 void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
@@ -303,7 +310,6 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
     }
     //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
     ActTimeItem item;
-    
     item.type = Clip;
     item.key = clip.getLinkName();
     item.startTime = startTime;
@@ -331,16 +337,17 @@ void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handl
 }
 
 void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
+    visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
-    visualSystemsMap[preset.getID()] = preset;
     
-    //    cout<<"added " <<preset.getID()<< " to VS map "<<endl;
-    ActTimeItem item;
+    //cout<<"added " <<preset.getID()<< " to VS map "<<endl;
+    
+	ActTimeItem item;
     // start the visual system halfway through the clip
     float vsStartTime  = startTime;
     item.type = VS;
     
-    item.key =preset.getID() ;
+    item.key = preset.getID() ;
     item.startTime = vsStartTime;
     item.endTime = vsStartTime + duration;
     item.introEndTime = vsStartTime + preset.introDuration;
@@ -402,29 +409,6 @@ void CloudsAct::addQuestion(CloudsClip clip, string topic, float startTime){
     
 }
 
-//NO LONGER USED
-///////
-//void CloudsAct::removeQuestionAtTime(float startTime, float duration){
-//    float endTime = startTime + duration;
-//    for(int i =0; i<actItems.size(); i++){
-//        if(actItems[i].type == Question){
-//            if(actItems[i].startTime > startTime && actItems[i].startTime < endTime){
-//                questionsMap.erase(actItems[i].key);
-//                actItems.erase(actItems.begin() + i);
-//            }
-//        }
-//    }
-//}
-/////////////////////
-//
-//CloudsClip& CloudsAct::getClipForQuestion(string question){
-//    if(questionsMap.find(question) == questionsMap.end()){
-//        ofLogError("CloudsAct::getClipForQuestion") << "Couldn't find Clip Item with Starting Question " << question;
-//        return dummyClip;
-//    }
-//    return questionsMap[question];
-//}
-
 vector<CloudsClip>& CloudsAct::getAllClips(){
     return clips;
 }
@@ -446,7 +430,8 @@ void CloudsAct::clear(){
     clips.clear();
     topicHistory.clear();
     clipMap.clear();
-    visualSystemsMap.clear();
+    visualSystemIndeces.clear();
+	visualSystems.clear();
     topicMap.clear();
     actItems.clear();
     timeline.reset();

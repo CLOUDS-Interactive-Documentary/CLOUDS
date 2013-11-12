@@ -250,50 +250,52 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
-	
-
 	introSequence.setStartQuestions(possibleStartQuestions);
-	introSequence.playSystem();
 #ifdef OCULUS_RIFT
 	introSequence.loadPresetGUISFromName("Oculus");
 #else
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 #endif
+	
+	introSequence.playSystem();
 	showingIntro = true;
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
-	//TODO: show loading screen while we initialize all the visual systems
-	vector< ofPtr<CloudsVisualSystem> > systems = act->getAllVisualSystems();
-	for(int i = 0; i < systems.size(); i++){
-		if(systems[i] != NULL){
-			cout << "CloudsPlaybackController::playAct -- Setting up:: " << systems[i]->getSystemName() << endl;
-			systems[i]->setup();
-		}
-	}
-	
 	if(currentAct != NULL){
+		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
+		for(int i = 0; i < currentPresets.size(); i++){
+			//flag them done!
+			if(currentPresets[i].system != NULL){
+				currentPresets[i].system->exit();
+			}
+			
+		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
 
+	//TODO: show loading screen while we initialize all the visual systems
+	vector<CloudsVisualSystemPreset>& presets = act->getAllVisualSystemPresets();
+	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
+	for(int i = 0; i < presets.size(); i++){
+		if(presets[i].system != NULL){
+			cout << "CloudsPlaybackController::playAct -- Setting up:: " << presets[i].systemName << endl;
+			presets[i].system->setup();
+		}
+		else{
+			ofLogError("CloudsPlaybackController::playAct") << presets[i].systemName << " NULL right after instantiaton. correlating system null? " << (systems[i] == NULL ? "YES" : "NO");
+		}
+	}
+	
 	currentAct = act;
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&introSequence.getSelectedRun());
-
 	currentAct->play();
 }
-
-////--------------------------------------------------------------------
-//void CloudsPlaybackController::setRandomQuestion(CloudsClip& clip){
-//    if(currentVisualSystem->getSystemName() == "RGBD"){
-//        rgbdVisualSystem.addQuestion(clip, clip.getTopicsWithQuestions()[0], clip.getQuestions()[0]);
-//        rgbdVisualSystem.setSelectedQuestion();
-//    }    
-//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
@@ -308,7 +310,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
-        cout<<"adding fake question"<<endl;
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
 										 fakeQuestions[i].getTopicsWithQuestions()[0],
@@ -319,7 +320,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	if(args.key == '\\'){
 		if(showingIntro){
 			introSequence.autoSelectQuestion();
-            
 		}
 	}
 	
@@ -406,8 +406,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO add questions to cluster map
 		//right now we can just have a canned animation and stop it when we are done
 		if(!clusterMapVisualSystem.getTimeline()->getIsPlaying()){
+			
 //			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
-
 //			CloudsClip& clip = q->clip;
 			
 			showingClusterMap = false;
@@ -523,9 +523,7 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-	//JG FIX HERE
-//	rgbdVisualSystem.playSystem();
-//	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
+	
 }
 
 //--------------------------------------------------------------------
@@ -538,8 +536,8 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	clusterMapVisualSystem.setRun(introSequence.getSelectedRun());
 	clusterMapVisualSystem.traverse();
 	
-	clusterMapVisualSystem.playSystem();
 	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+	clusterMapVisualSystem.playSystem();
 	
 	showingClusterMap = true;
 }
@@ -573,7 +571,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 	
-		float fadeDuration = 1;//(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
+		float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 
 	}
@@ -640,10 +638,13 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	
 	
 	rgbdVisualSystem->clearQuestions();
-	
-	//stotr the preset name for loading later in playNextVisualSystem()
+	//store the preset name for loading later in playNextVisualSystem()
 	nextPresetName = nextVisualSystem.presetName;
 	nextSystem = nextVisualSystem.system;
+//	cout << "CloudsPlaybackController::showVisualSystem SETTING NEXT SYSTEM TO " << nextVisualSystem.presetName << endl;
+	if(nextSystem == NULL){
+		ofLogError("CloudsPlaybackController::showVisualSystem") << "Incoming system is NULL";
+	}
 	currentVisualSystemPreset = nextVisualSystem;
 	
 	//start the rgbd fade out. playNextVisualSystem() will be called once it's faded out
@@ -657,8 +658,8 @@ void CloudsPlaybackController::hideVisualSystem()
 		
 		nextSystem->stopSystem();
 //		nextSystem = NULL;
-		rgbdVisualSystem->playSystem();
 		rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+		rgbdVisualSystem->playSystem();
 		showingVisualSystem = false;
 	}
 }
@@ -667,13 +668,13 @@ void CloudsPlaybackController::hideVisualSystem()
 void CloudsPlaybackController::playNextVisualSystem()
 {
 	if(nextSystem != NULL){
-		
+
 		rgbdVisualSystem->stopSystem();
 		
 		nextSystem->setDrawToScreen( false );
 		nextSystem->setCurrentTopic( currentTopic );
-		nextSystem->playSystem();
 		nextSystem->loadPresetGUISFromName( nextPresetName );
+		nextSystem->playSystem();
 		
 		showingVisualSystem = true;
 	}

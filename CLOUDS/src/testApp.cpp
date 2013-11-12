@@ -18,8 +18,8 @@ void testApp::setup(){
 
 	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
-	visualSystems.populateVisualSystems();
-	//visualSystems.loadPresets();
+	//visualSystems.populateVisualSystems();
+	visualSystems.loadPresets();
 	
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
@@ -52,19 +52,16 @@ void testApp::setup(){
 			startingNodes.erase(startingNodes.begin() + i);
 		}
 		else{
-			cout << "Adding clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
-		}
-		
-		if( i < 5){
-//			player.fakeQuestions.push_back( startingNodes[i] );
+			cout << " Adding Clip " << startingNodes[i].getID() << " with question " << startingNodes[i].getQuestions()[0] << endl;
 		}
 	}
+	
 	cout << "Starting with " << startingNodes.size() << endl;
 	player.showIntro(startingNodes);
 	//////////////SHOW INTRO
 	
 	//temp sound stuff
-	sound.setMasterAmp(1.0);
+//	sound.setMasterAmp(1.0);
 	useScratch = false;
 	
 }
@@ -79,7 +76,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	sound.drawDebug();
+//	sound.drawDebug();
 }
 
 //--------------------------------------------------------------

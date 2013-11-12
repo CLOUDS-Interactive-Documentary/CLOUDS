@@ -15,10 +15,11 @@ const float dyingTime = 1;
 void MyTracker::setup(const cv::Rect& track) {
     
 	color.set(129, 192, 87);
-
+    
 	cur = toOf(track).getCenter();
 	smooth = cur;
     boundingBox = cv::Rect(track.x,track.y,track.width,track.height);
+
 }
 
 void MyTracker::update(const cv::Rect& track) {
@@ -40,7 +41,7 @@ void MyTracker::kill() {
 	}
 }
 
-void MyTracker::draw(float lineWidth) {
+void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers) {
 	ofPushStyle();
 	float size = 16;
 	ofSetColor(255);
@@ -49,18 +50,31 @@ void MyTracker::draw(float lineWidth) {
 		size = ofMap(ofGetElapsedTimef() - startedDying, 0, dyingTime, size, 0, true);
 	}
 	ofNoFill();
-    float scaledHue = ofMap(getLifeTime() ,0, 110, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
-    ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
-    ofSetColor(magnitudeColor);
-//	ofSetColor(129,192,87);
-    ofSetLineWidth((int)lineWidth);
-    ofRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
-	all.draw();
-	ofSetColor(255);
+    if(lifeTime){
+        float scaledHue = ofMap(getLifeTime() ,0, lifetimeColorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
+        ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
+        ofSetColor(magnitudeColor);
+    }
+    else{
+        ofSetColor(ofColor::greenYellow);
+    }
     
-	ofDrawBitmapString(ofToString(label), cur);
-	ofPopStyle();
+    if(drawBoxes){
+        ofSetLineWidth((int)lineWidth);
+        ofRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+    }
+    
+    if(drawLine){
+        all.draw();
+    }
+    if(drawNumbers){
+        ofSetColor(255);
+        ofDrawBitmapString(ofToString(label), cur);
+
+    }
+        ofPopStyle();    
 }
+
 
 ofPolyline MyTracker::getLifeSpan(){
     return all;

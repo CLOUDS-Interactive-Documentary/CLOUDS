@@ -41,7 +41,8 @@ CloudsOrthoCamera::CloudsOrthoCamera(){
 	doTranslationKey = 'm';
 	
 	reset();
-	enableMouseInput();
+	//JG NEVER ENABLE EVENTS WITHOUT SET UP BEING CALLED!!
+	//enableMouseInput();
 	
 	orthoViewScale = 1.;
 	
@@ -66,8 +67,6 @@ CloudsOrthoCamera::CloudsOrthoCamera(){
 CloudsOrthoCamera::~CloudsOrthoCamera(){
 	disableMouseInput();
 }
-
-
 
 void CloudsOrthoCamera::addSlidersToGui( ofxUISuperCanvas* gui, string label )
 {
@@ -338,6 +337,7 @@ void CloudsOrthoCamera::enableMouseInput(){
 	if(!bMouseInputEnabled){
 		bMouseInputEnabled = true;
 		//	ofRegisterMouseEvents(this);
+		cout << "ENABLING ORTHO CAM MOVEMENT" << endl;
 		ofAddListener(ofEvents().update , this, &CloudsOrthoCamera::update);
 	}
 }
@@ -346,6 +346,7 @@ void CloudsOrthoCamera::disableMouseInput(){
 	if(bMouseInputEnabled){
 		bMouseInputEnabled = false;
 		//ofUnregisterMouseEvents(this);
+		cout << "DISABLING ORTHO CAM MOVEMENT" << endl;		
 		ofRemoveListener(ofEvents().update, this, &CloudsOrthoCamera::update);
 	}
 	setDrag( 0 );

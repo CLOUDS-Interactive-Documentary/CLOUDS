@@ -4,7 +4,7 @@
 CloudsSound::CloudsSound(){
 	storyEngine = NULL;
 	eventsRegistered = false;
-	maxSpeakerVolume = 0.5;
+	maxSpeakerVolume = 1;
 }
 
 //--------------------------------------------------------------------
@@ -47,7 +47,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
 		targetAmp = 1.0; // wonder what this is?
 		
-        MASTERAMP = 1.0;
+        MASTERAMP = 0.7;
         MASTERTEMPO = 120;
         mbank = "luke";
         AUTORUN = 0;
@@ -103,6 +103,84 @@ void CloudsSound::actCreated(CloudsActEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actBegan(CloudsActEventArgs& args){
 	//Happens at the very beginning of a sequence
+
+    
+    int rigged = 0; // set to '1' for rigged orchestration (set below)
+    float totalduration = args.act->getTimeline().getDurationInSeconds();
+    startMusicFX(0, totalduration);
+    
+    // STUPID MAPPING TEST
+    for(int i = 0;i<args.act->getAllClips().size();i++)
+    {
+        CloudsClip &theclip = args.act->getAllClips()[i];
+        float starttime = args.act->getClipStartTime(theclip);
+        float clipdur = theclip.getDuration();
+        cout << i << ": " << theclip.getLinkName() << ": " << clipdur << ":" << endl;
+        cout << "   starting at: " << starttime << endl;
+        vector<CloudsDichotomy> foo = args.act->getDichotomiesForClip(theclip);
+        vector<int> dichos;
+        for(int j = 0;j<foo.size();j++)
+        {
+            cout << "   " << foo[j].left << " versus " << foo[j].right << " is " << foo[j].balance << endl;
+            dichos.push_back(foo[j].balance);
+        }
+
+        morch.clear();
+        // #art versus #tech
+        if(dichos[0]>=0) morch.push_back("slowwaves"); else morch.push_back("kissmyarpfast");
+        // #emotional versus #logical
+        if(dichos[1]>=0) morch.push_back("helmholtz"); else morch.push_back("slowmeshbeats");
+        // #breakthrough versus #obstacle
+        mharmony = dichos[2]+5;
+        // #inspiring versus #discouraging
+        mrhythm = dichos[3]+5;
+        // #fun versus #serious
+        MASTERTEMPO = ofMap(dichos[4], -5, 5, 135, 90);
+        // #sincere versus #ironic
+        if(dichos[5]<-2) morch.push_back("kissmyarp");
+        // #mindblowing versus #mundane
+        if(dichos[6]<0) morch.push_back("modalbeats");
+        if(dichos[6]<-2) morch.push_back("vermontbeatz");
+        if(dichos[6]>3) morch.push_back("modalbeats");
+        // #rational versus #surreal
+        if(dichos[7]>2) morch.push_back("slowwaveshi");
+        
+        mbank = "luke";
+        
+        startMusic(starttime, morch, mharmony, mrhythm, clipdur, MASTERTEMPO, mbank);
+    
+    
+    }
+    
+    
+    
+    /*
+    float musicdur = args.act->getTimeline().getDurationInSeconds();
+    int preset = ofRandom(0, presets.size());
+    
+    if(rigged)
+    {
+        morch.clear();
+        morch.push_back("reichomatic");
+        mharmony = 0;
+        mrhythm = 0;
+        MASTERTEMPO = 120;
+        mbank = "luke";
+    }
+    else
+    {
+        morch = presets[preset].instruments;
+        mharmony = presets[preset].harmony;
+        mrhythm = presets[preset].rhythm;
+        MASTERTEMPO = presets[preset].tempo;
+        mbank = presets[preset].bank;
+    }
+    
+    
+    startMusic(0, morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
+    */
+
+
 }
 
 void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){
@@ -125,35 +203,6 @@ void CloudsSound::questionAsked(CloudsQuestionEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsSound::topicChanged(CloudsTopicEventArgs& args){
-    
-    int rigged = 0; // set to '1' for rigged orchestration (set below)
-    
-	cout << "topic changed to " << args.topic << " for " << args.duration << " seconds" << endl;
-    
-    float musicdur = args.duration;
-    
-    int preset = ofRandom(0, presets.size());
-    
-    if(rigged)
-    {
-        morch.clear();
-        morch.push_back("reichomatic");
-        mharmony = 0;
-        mrhythm = 0;
-        MASTERTEMPO = 120;
-        mbank = "luke";
-    }
-    else
-    {
-        morch = presets[preset].instruments;
-        mharmony = presets[preset].harmony;
-        mrhythm = presets[preset].rhythm;
-        MASTERTEMPO = presets[preset].tempo;
-        mbank = presets[preset].bank;
-    }
-    
-    startMusic(0, morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
-    
 }
 
 //--------------------------------------------------------------------
@@ -164,6 +213,7 @@ void CloudsSound::preRollRequested(CloudsPreRollEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsSound::actEnded(CloudsActEventArgs& args){
 	args.act->unregisterEvents(this);
+    flush_sched();
 }
 
 //--------------------------------------------------------------------

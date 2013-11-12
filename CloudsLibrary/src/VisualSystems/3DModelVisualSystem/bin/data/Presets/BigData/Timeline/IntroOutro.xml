@@ -2,21 +2,21 @@
     <key>
         <flag />
         <time>00:00:00:542</time>
-        <value>0.125</value>
+        <value>0.125000000</value>
     </key>
     <key>
         <flag />
         <time>00:00:00:888</time>
-        <value>0.1</value>
+        <value>0.100000001</value>
     </key>
     <key>
         <flag />
         <time>00:00:22:898</time>
-        <value>0.219512</value>
+        <value>0.219512001</value>
     </key>
     <key>
         <flag />
         <time>00:00:27:730</time>
-        <value>0.35</value>
+        <value>0.349999994</value>
     </key>
 </keyframes>

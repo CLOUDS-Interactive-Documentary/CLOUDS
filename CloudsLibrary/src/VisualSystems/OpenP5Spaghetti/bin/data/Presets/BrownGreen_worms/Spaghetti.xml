@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Spaghetti</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>887.000000000</XPosition>
-    <YPosition>-23.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,27 +18,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>7.827586174</Value>
+    <Value>50.743843079</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>58.768470764</Value>
+    <Value>49.014778137</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPIN SPEED</Name>
+    <Value>0.147783250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Value>3.596059084</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Value>3.349753618</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Value>2.906403780</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,22 +53,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED</Name>
-    <Value>0.098522164</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED</Name>
-    <Value>0.098522164</Value>
+    <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Hue1</Name>
-    <Value>72.857147217</Value>
+    <Value>17.586206436</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation1</Name>
-    <Value>177.339904785</Value>
+    <Value>99.507392883</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -73,12 +78,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Hue2</Name>
-    <Value>16.330049515</Value>
+    <Value>35.172412872</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Saturation2</Name>
-    <Value>191.133010864</Value>
+    <Value>97.536941528</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -40,7 +40,7 @@ class CloudsVisualSystem {
   public:
 	   
 	CloudsVisualSystem();
-	~CloudsVisualSystem();
+	virtual ~CloudsVisualSystem();
 	
 	
 	enum RGBDTransitionType
@@ -72,6 +72,7 @@ class CloudsVisualSystem {
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
 	static void getBackgroundMesh(ofMesh& mesh, ofImage& image, float width, float height);
+    static void get2dMesh(ofMesh& mesh, float width, float height);
 #ifdef OCULUS_RIFT
 	static ofxOculusRift& getOculusRift();
 #endif
@@ -122,7 +123,7 @@ class CloudsVisualSystem {
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);
 	//END SUBCLASS METHODS
 	
-	virtual string getSystemName();
+	virtual string getSystemName() = 0;
 	
 	void setupRGBDTransforms();
 
@@ -139,7 +140,7 @@ class CloudsVisualSystem {
 	virtual void draw(ofEventArgs & args);
 	
 	//application exit, clean up and don't crash
-	virtual void exit(ofEventArgs & args);
+	virtual void exit();
 
 	//INTERACTION EVENTS -- registered only
 	virtual void keyPressed(ofKeyEventArgs & args);
@@ -185,9 +186,10 @@ class CloudsVisualSystem {
     void drawAxis(float size, float color);
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
-    void drawTexturedQuad();
+//    void drawTexturedQuad();
     void drawNormalizedTexturedQuad();
     void drawBackground();
+    void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
 	
     //Core Param Setup
@@ -335,6 +337,8 @@ class CloudsVisualSystem {
     map<string, ofxUISuperCanvas *> materialGuis;
 
 	bool bIsSetup;
+	bool bIs2D;
+	
     //LIGHTING
     float *globalAmbientColor;
     bool bSmoothLighting;

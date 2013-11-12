@@ -9,6 +9,14 @@
 
 #include "CloudsSound.h"
 
+void CloudsSound::startMusicFX(float outskip, float musicdur)
+{
+    // REVERB
+    REVERB(outskip, musicdur+7.0); // gimme some reverb
+    // schedule end event at time + ring-down
+    SCHEDULEBANG(outskip+musicdur+7.0);
+}
+
 void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank)
 {
     
@@ -21,24 +29,22 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     int bcount = 0;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
-    flush_sched(); // kill previous music
+    //flush_sched(); // kill previous music
     
     vector<string> ilist = mo; // list of instruments
     
     
     cout << "===============" << endl;
     cout << "MAKING MUSIC!!!" << endl;
-    cout << musicdur << " " << "seconds" << endl;
-    cout << "harmony: " << mh << ", rhythm: " << mr << endl;
-    cout << "orchestration:" << endl;
+    cout << "   start: " << outskip << " " << "seconds" << endl;
+    cout << "   duration: " << musicdur << " " << "seconds" << endl;
+    cout << "   harmony: " << mh << ", rhythm: " << mr << endl;
+    cout << "   orchestration: " << endl;
     for(int i = 0;i<ilist.size();i++)
     {
-        cout << ilist[i] << endl;
+        cout << "       " << ilist[i] << endl;
     }
     cout << "===============" << endl;
-    
-    // REVERB
-    REVERB(outskip, musicdur+7.0); // gimme some reverb
     
     //
     // =========================
@@ -423,10 +429,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     // END ORCHESTRATION BLOCK
     // =======================
     //
-    
-    // schedule end event at time + ring-down
-    SCHEDULEBANG(outskip+musicdur+7.0);
-    
+        
 }
 
 void CloudsSound::stopMusic()

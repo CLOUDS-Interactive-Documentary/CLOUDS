@@ -96,7 +96,8 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         void rebuildText();
 
     protected:
-        ofxUISuperCanvas * customGui;
+        ofxUISuperCanvas * customGui, * textGui, * revealGui;
+        ofxUIDropDownList *ddlFiles;
         ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
         ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
         ofx1DExtruder * nodeHue, * nodeSat, * nodeBri, * nodeAlpha;
@@ -106,9 +107,21 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
     
         TUOrbital * orbital;
     
+        bool bRestart;
+    
         bool bTextCloudMode;
     
         float fogDensity;
         float currSpin;
         float spinSpeed;
+    
+#ifdef OCULUS_RIFT
+        float oculusSpinX, oculusSpinY;
+        ofVec3f oculusDir;
+        float oculusSpeed;
+#else
+        float mouseSpinX, mouseSpinY;
+        ofVec3f mouseDir;
+        float mouseSpeed;
+#endif
 };

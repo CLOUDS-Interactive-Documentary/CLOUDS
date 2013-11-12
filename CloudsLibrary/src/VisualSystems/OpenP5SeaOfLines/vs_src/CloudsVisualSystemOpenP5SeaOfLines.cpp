@@ -22,7 +22,7 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
     bgAlpha = new ofx1DExtruder(0);
     bgAlpha->setPhysics(0.95, 5.0, 25.0);
     extruders.push_back(bgAlpha);
-    customGui->addSlider("BG ALPHA", 0.0, 255.0, bgAlpha->getPosPtr());
+    customGui->addSlider("BG ALPHA", 0.0, 1.0, bgAlpha->getPosPtr());
     
     customGui->addSpacer();
     customGui->addRangeSlider("DISTANCES", 1.0f, 100.0f, &collideDist, &lineDist);
@@ -30,22 +30,40 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetupGui()
     customGui->addSlider("GRAVITY", -1.0f, 1.0f, &gravity);
 
     customGui->addSpacer();
-    lineHue = new ofx1DExtruder(0);
-    lineHue->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineHue);
-    customGui->addSlider("LINE HUE", 0.0, 255.0, lineHue->getPosPtr());
-    lineSat = new ofx1DExtruder(0);
-    lineSat->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineSat);
-    customGui->addSlider("LINE SAT", 0.0, 255.0, lineSat->getPosPtr());
-    lineBri = new ofx1DExtruder(0);
-    lineBri->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineBri);
-    customGui->addSlider("LINE BRI", 0.0, 255.0, lineBri->getPosPtr());
-    lineAlpha = new ofx1DExtruder(0);
-    lineAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(lineAlpha);
-    customGui->addSlider("LINE ALPHA", 0.0, 255.0, lineAlpha->getPosPtr());
+    lineHue1 = new ofx1DExtruder(0);
+    lineHue1->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineHue1);
+    customGui->addSlider("LINE HUE 1", 0.0, 1.0, lineHue1->getPosPtr());
+    lineSat1 = new ofx1DExtruder(0);
+    lineSat1->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineSat1);
+    customGui->addSlider("LINE SAT 1", 0.0, 1.0, lineSat1->getPosPtr());
+    lineBri1 = new ofx1DExtruder(0);
+    lineBri1->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineBri1);
+    customGui->addSlider("LINE BRI 1", 0.0, 1.0, lineBri1->getPosPtr());
+    lineAlpha1 = new ofx1DExtruder(0);
+    lineAlpha1->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineAlpha1);
+    customGui->addSlider("LINE ALPHA 1", 0.0, 1.0, lineAlpha1->getPosPtr());
+    
+    customGui->addSpacer();
+    lineHue2 = new ofx1DExtruder(0);
+    lineHue2->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineHue2);
+    customGui->addSlider("LINE HUE 2", 0.0, 1.0, lineHue2->getPosPtr());
+    lineSat2 = new ofx1DExtruder(0);
+    lineSat2->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineSat2);
+    customGui->addSlider("LINE SAT 2", 0.0, 1.0, lineSat2->getPosPtr());
+    lineBri2 = new ofx1DExtruder(0);
+    lineBri2->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineBri2);
+    customGui->addSlider("LINE BRI 2", 0.0, 1.0, lineBri2->getPosPtr());
+    lineAlpha2 = new ofx1DExtruder(0);
+    lineAlpha2->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(lineAlpha2);
+    customGui->addSlider("LINE ALPHA 2", 0.0, 1.0, lineAlpha2->getPosPtr());
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent);
 	guis.push_back(customGui);
@@ -59,17 +77,30 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfGuiEvent(ofxUIEventArgs &e)
         bgAlpha->setPosAndHome(bgAlpha->getPos());
 	}
     
-    else if (e.widget->getName() == "LINE HUE") {
-        lineHue->setPosAndHome(lineHue->getPos());
+    else if (e.widget->getName() == "LINE HUE 1") {
+        lineHue1->setPosAndHome(lineHue1->getPos());
 	}
-    else if (e.widget->getName() == "LINE SAT") {
-        lineSat->setPosAndHome(lineSat->getPos());
+    else if (e.widget->getName() == "LINE SAT 1") {
+        lineSat1->setPosAndHome(lineSat1->getPos());
 	}
-    else if (e.widget->getName() == "LINE BRI") {
-        lineBri->setPosAndHome(lineBri->getPos());
+    else if (e.widget->getName() == "LINE BRI 1") {
+        lineBri1->setPosAndHome(lineBri1->getPos());
 	}
-    else if (e.widget->getName() == "LINE ALPHA") {
-        lineAlpha->setPosAndHome(lineAlpha->getPos());
+    else if (e.widget->getName() == "LINE ALPHA 1") {
+        lineAlpha1->setPosAndHome(lineAlpha1->getPos());
+    }
+    
+    else if (e.widget->getName() == "LINE HUE 2") {
+        lineHue2->setPosAndHome(lineHue2->getPos());
+	}
+    else if (e.widget->getName() == "LINE SAT 2") {
+        lineSat2->setPosAndHome(lineSat2->getPos());
+	}
+    else if (e.widget->getName() == "LINE BRI 2") {
+        lineBri2->setPosAndHome(lineBri2->getPos());
+	}
+    else if (e.widget->getName() == "LINE ALPHA 2") {
+        lineAlpha2->setPosAndHome(lineAlpha2->getPos());
     }
 }
 
@@ -99,18 +130,17 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSetup()
     minSpeed = 4.0f;
     maxSpeed = 6.0f;
     gravity = 0.1f;
+	
+    bIs2D = true;
+    bClearBackground = false;
     
-    canvas.allocate(ofGetWidth(), ofGetHeight());
-    canvas.begin();
-    {
-        ofClear(0, 0);
-    }
-    canvas.end();
+    mesh.setMode(OF_PRIMITIVE_LINES);
+    mesh.setUsage(GL_STREAM_DRAW);
     
     // Add the players.
     float step = 20;
-    for (float i = 0; i < (canvas.getWidth() / step - 1); i++) {
-        for (float j = 0; j < (canvas.getHeight() / step - 1); j++) {
+    for (float i = 0; i < (ofGetWidth() / step - 1); i++) {
+        for (float j = 0; j < (ofGetHeight() / step - 1); j++) {
             if (ofRandom(3) > 1) {
                 SOLPlayer * player = new SOLPlayer();
                 
@@ -152,7 +182,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
 {
-    // Update player position.
+    mesh.clear();
+    lineColor1.setHsb(lineHue1->getPos(), lineSat1->getPos(), lineBri1->getPos(), lineAlpha1->getPos());
+    lineColor2.setHsb(lineHue2->getPos(), lineSat2->getPos(), lineBri2->getPos(), lineAlpha2->getPos());
+
+    // First pass: Update player position.
     for (int i = 0; i < players.size(); i++) {
         players[i]->x += players[i]->sx;
         players[i]->y += players[i]->sy;
@@ -164,17 +198,40 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfUpdate()
             players[i]->x = 0;
             players[i]->sx *= -1;
         }
-        else if (players[i]->x > canvas.getWidth()) {
-            players[i]->x = canvas.getWidth();
+        else if (players[i]->x > ofGetWidth()) {
+            players[i]->x = ofGetWidth();
             players[i]->sx *= -1;
         }
         if (players[i]->y < 0) {
             players[i]->y = 0;
             players[i]->sy *= -1;
         }
-        else if (players[i]->y > canvas.getHeight()) {
-            players[i]->y = canvas.getHeight();
+        else if (players[i]->y > ofGetHeight()) {
+            players[i]->y = ofGetHeight();
             players[i]->sy *= -1;
+        }
+        
+        mesh.addVertex(ofVec3f(players[i]->x, players[i]->y));
+        mesh.addColor((i%2 == 0)? lineColor1:lineColor2);
+    }
+    
+    // Second pass: Handle collisions and proximity.
+    for (int i = 0; i < players.size(); i++) {
+        SOLPlayer * one = players[i];
+        for (int j = i + 1; j < players.size(); j++) {
+            SOLPlayer * two = players[j];
+            float dist = ofDist(one->x, one->y, two->x, two->y);
+            if (dist < collideDist) {
+                one->speed = ofRandom(minSpeed, maxSpeed);
+                
+                float ang = atan2f(one->y - two->y, one->x - two->x);
+                one->sx = cosf(ang) * one->speed;
+                one->sy = sinf(ang) * one->speed;
+            }
+            else if (dist < lineDist) {
+                mesh.addIndex(i);
+                mesh.addIndex(j);
+            }
         }
     }
 }
@@ -193,38 +250,11 @@ void CloudsVisualSystemOpenP5SeaOfLines::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5SeaOfLines::selfDrawBackground()
 {
-    canvas.begin();
-    {
-        ofSetColor(bgColor, bgAlpha->getPos());
-        ofRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        
-        ofSetColor(ofColor::fromHsb(lineHue->getPos(), lineSat->getPos(), lineBri->getPos(), lineAlpha->getPos()));
-        glBegin(GL_LINES);
-        for (int i = 0; i < players.size(); i++) {
-            SOLPlayer * one = players[i];
-            for (int j = i + 1; j < players.size(); j++) {
-                SOLPlayer * two = players[j];
-                float dist = ofDist(one->x, one->y, two->x, two->y);
-                if (dist < collideDist) {
-                    one->speed = ofRandom(minSpeed, maxSpeed);
-                    
-                    float ang = atan2f(one->y - two->y, one->x - two->x);
-                    one->sx = cosf(ang) * one->speed;
-                    one->sy = sinf(ang) * one->speed;
-                }
-                else if (dist < lineDist) {
-                    glVertex2f(one->x, one->y);
-                    glVertex2f(two->x, two->y);
-                }
-            }
-        }
-        glEnd();
-    }
-    canvas.end();
+    ofSetColor(bgColor, bgAlpha->getPos() * 255);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetColor(255);
-    canvas.draw(0, 0, ofGetWidth(), ofGetHeight());
-    ofDrawBitmapString(ofToString(ofGetFrameRate(), 2) + " FPS", 10, ofGetHeight() - 20);
+    mesh.draw();
 }
 
 // this is called when your system is no longer drawing.
