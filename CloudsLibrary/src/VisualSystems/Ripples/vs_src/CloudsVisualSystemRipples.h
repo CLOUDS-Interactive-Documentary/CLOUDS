@@ -88,22 +88,31 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     void selfMousePressed(int x, int y, int button);
     void selfMouseReleased(int x, int y, int button);
     
-    ofShader ripplesShader;
-    ofFbo ripplesSrcFbo, ripplesDstFbo;
-    ofVboMesh renderMesh;
-    
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
 //		return myCustomCamera;
 //	}
-
+    
+    void restart();
 
 protected:
+    ofxUISuperCanvas * customGui;
+    ofx1DExtruder * tintHue, * tintSat, * tintBri, * tintAlpha;
     
-    //  Your Stuff
-    //
-	
-	
-
+    ofShader ripplesShader;
+    ofFbo ripplesSrcFbo, ripplesDstFbo;
+    ofVboMesh renderMesh;
+    
+    float minDropHue, maxDropHue;
+    float minDropSat, maxDropSat;
+    float minDropBri, maxDropBri;
+    
+    ofColor tintColor;
+    ofColor dropColor;
+    
+	float damping;
+    float radius;
+    
+	bool bRestart;
 };
