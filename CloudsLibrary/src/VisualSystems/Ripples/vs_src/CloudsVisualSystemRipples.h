@@ -11,9 +11,9 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxFX.h"
-#include "ofXRipples.h"
-#include "ofxBounce.h"
+//#include "ofxFX.h"
+//#include "ofxRipples.h"
+//#include "ofxBounce.h"
 
 
 //TODO: rename this to your own visual system
