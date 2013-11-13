@@ -2263,7 +2263,7 @@
     <oculus>0</oculus>
 </system>
 <system name="OpenP5Spaghetti_scribblesOC">
-    <keywords></keywords>
+    <keywords>drawing</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -2311,7 +2311,7 @@
     <oculus>0</oculus>
 </system>
 <system name="OpenP5TextUniverse_Borges_randomOC">
-    <keywords></keywords>
+    <keywords>language</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -2399,7 +2399,7 @@
     <oculus>0</oculus>
 </system>
 <system name="OpenP5TextUniverse_twitterOC">
-    <keywords></keywords>
+    <keywords>twitter</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -2535,7 +2535,7 @@
     <oculus>0</oculus>
 </system>
 <system name="Pages_DriftOC">
-    <keywords></keywords>
+    <keywords>storytelling</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -2671,7 +2671,7 @@
     <oculus>0</oculus>
 </system>
 <system name="Replicator_ReplicatorOC">
-    <keywords></keywords>
+    <keywords>internet|technological progress</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
