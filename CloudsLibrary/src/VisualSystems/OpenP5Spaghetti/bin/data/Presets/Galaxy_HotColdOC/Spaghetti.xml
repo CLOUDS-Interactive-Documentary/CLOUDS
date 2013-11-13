@@ -8,7 +8,7 @@
 <Widget>
     <Kind>44</Kind>
     <Name>Preloads</Name>
-    <Value>48275</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,32 +38,32 @@
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE X</Name>
-    <Value>3.990147591</Value>
+    <Value>2.881773472</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE Y</Name>
-    <Value>1.379310369</Value>
+    <Value>1.724138021</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STEP SIZE Z</Name>
-    <Value>4.113300323</Value>
+    <Value>2.487684727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED X</Name>
-    <Value>13.004926682</Value>
+    <Value>9.064039230</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED Y</Name>
-    <Value>12.906403542</Value>
+    <Value>9.556650162</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NOISE SPEED Z</Name>
-    <Value>13.399014473</Value>
+    <Value>8.866994858</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

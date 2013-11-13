@@ -95,6 +95,8 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
     color2.setHsb(hue2,saturation2,brightness2);
     //  cout << "regenerated color2 = "<< color2 << endl;
     
+    
+    
     for(int i = 0; i<NWalkers; i++){
         //clear all meshes
         walkers[i].mesh.getVertices().clear();
@@ -126,6 +128,15 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
             walkers[i].setColor(newColor);
         }
     }
+    
+    //shouldn't PRELOADS should happen in regenerate...?
+    for (int j = 0; j<numPreloads; j++){
+        
+        selfUpdate();
+        cout << "preloaded " << j << "times" << endl;
+        //selfDraw();
+    }
+    
 }
 
 
@@ -168,14 +179,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
         walkers[i].init(NWalkers, newColor); //  walkers[i] = *new Walker(); << wrong syntax
 
     }
-    
-	//shouldn't PRELOADS should happen in regenerate...?
-    for (int j = 0; j<numPreloads; j++){
-        
-        selfUpdate();
-        //selfDraw();
-        
-    }
+   
     
 }
 
