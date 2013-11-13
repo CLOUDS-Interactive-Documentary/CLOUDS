@@ -390,6 +390,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Connectors_Rotating_BoxOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Connectors_Testing">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1982,6 +1990,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="OpenP5Spaghetti_Blue_hairballOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="OpenP5Spaghetti_BrowGreen_worms">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -2013,6 +2029,14 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="OpenP5Spaghetti_Fuzzy_galaxyOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="OpenP5Spaghetti_Galaxy_HotCold">
     <keywords></keywords>
@@ -2046,6 +2070,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="OpenP5Spaghetti_Green_Lidar2OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="OpenP5Spaghetti_Lightrainbow_scribbles">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -2053,6 +2085,14 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="OpenP5Spaghetti_Lightrainbow_scribblesOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="OpenP5Spaghetti_MilkyWay">
     <keywords></keywords>
@@ -2069,6 +2109,14 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="OpenP5Spaghetti_PurpleYellow_wormsOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="OpenP5Spaghetti_RainbowCloud_1">
     <keywords></keywords>
