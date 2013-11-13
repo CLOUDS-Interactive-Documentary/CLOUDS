@@ -22,6 +22,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DrawYourOwnRainbowOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>JeffA</Name>
     <Value>0</Value>
 </Widget>
@@ -32,12 +37,12 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>WhiteLine_</Name>
+    <Name>WhiteLine</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>WhiteLine</Name>
+    <Name>WhiteLine_</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
