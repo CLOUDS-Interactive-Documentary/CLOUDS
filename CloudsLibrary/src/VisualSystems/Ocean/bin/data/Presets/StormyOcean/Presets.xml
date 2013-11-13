@@ -1,23 +1,18 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
-    <YPosition>213.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>354.000000000</XPosition>
+    <YPosition>14.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>BlueOcean</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>BlueOceanStandin</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>ChoppyBlueOcean</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Dark_Stormy</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -32,7 +27,47 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>g_epicLines_01</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_epicLines_01OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_flatRadical</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_flatRadicalOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_gentleWaves</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_gentleWavesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>g_Ocean_starField</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Glum</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gray_Stormy</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -57,11 +92,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>StormyOcean</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>StretchedBlueOcean</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>StormyOcean</Name>
-    <Value>1</Value>
+    <Name>WireframeNightOcean</Name>
+    <Value>0</Value>
 </Widget>
