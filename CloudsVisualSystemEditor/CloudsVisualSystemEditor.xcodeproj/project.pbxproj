@@ -3239,8 +3239,8 @@
 		E7BBA823179FA180007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */,
 				50FE21D317A1D9980037BFB5 /* CloudsVisualSystemFireworks.h */,
+				50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -4741,8 +4741,8 @@
 		E7FB2D891830DA6D009EBD0E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7FB2D8A1830DA6D009EBD0E /* ofxOculusRift.cpp */,
 				E7FB2D8B1830DA6D009EBD0E /* ofxOculusRift.h */,
+				E7FB2D8A1830DA6D009EBD0E /* ofxOculusRift.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";

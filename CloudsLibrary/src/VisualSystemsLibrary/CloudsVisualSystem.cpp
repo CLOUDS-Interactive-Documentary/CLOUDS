@@ -412,10 +412,6 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 drawScene();
                 getOculusRift().endRightEye();
             }
-			
-			if(bDrawToScreen){
-				oculusRift.draw();
-			}
 			#endif
 		}
 		else {
@@ -441,12 +437,13 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofPopStyle();
 	
 			CloudsVisualSystem::getSharedRenderTarget().end();
-			
-			//draw the fbo to the screen as a full screen quad
-			if(bDrawToScreen){
-				selfPostDraw();
-			}
 		}
+		
+		//draw the fbo to the screen as a full screen quad
+		if(bDrawToScreen){
+			selfPostDraw();
+		}
+		
 	}
     
 	if(timeline != NULL && timeline->getIsShowing())
@@ -2887,12 +2884,18 @@ void CloudsVisualSystem::selfDrawOverlay(){
 }
 
 void CloudsVisualSystem::selfPostDraw(){
-	
-	//draws to viewport
 	glDisable(GL_LIGHTING);
-	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-													 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-													 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	if(bUseOculusRift){
+#ifdef OCULUS_RIFT
+		oculusRift.draw();
+#endif
+	}
+	else{
+		//draws to viewport
+		CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	}
 }
 
 	
