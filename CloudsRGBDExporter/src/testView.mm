@@ -17,19 +17,6 @@
 	minBlobSize = 0;
 	selectColor = false;
 
-//	cout << "PARSING LINKS" << endl;
-//	if(ofDirectory("../../../CloudsData/").exists()){
-//		
-//		cout << "Found link in correct directory" << endl;
-//		parser.setup("../../../CloudsData/fcpxml/");
-//		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-//	}
-//	else{
-//		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-//		parser.setup("xml");
-//		parser.parseLinks("clouds_link_db.xml");
-//	}
-	
 	parser.loadFromFiles();
 
 	exportFolder = ofBufferFromFile("SavedExportFolder.txt").getText();
@@ -61,7 +48,7 @@
 	progressBars[7] = clipProgress8;
 
 	//renderer.setShaderPath("../../../CloudsData/shaders/unproject");
-	renderer.setShaderPath("../../../CloudsData/shaders/unproject");
+	//renderer.setShaderPath("../../../CloudsData/shaders/unproject");
 	
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	

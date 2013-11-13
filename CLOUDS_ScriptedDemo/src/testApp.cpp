@@ -70,15 +70,18 @@ void testApp::setup(){
 	CloudsAct* act = new CloudsAct();
 	CloudsClip& clip = parser.getRandomClip(true, false);
 	
-	act->addClip(clip, "topic", 0);
+	//add some random clips
+	float endTime = act->addClip(clip, "topic", 0);
+	endTime = act->addClip(parser.getRandomClip(true,false), "topic", 0);
+	
+	//play the visual systems for some time
 	act->addVisualSystem( preset0, 4, 5 );
 	act->addVisualSystem( preset2, 14, 5 );
 	act->addVisualSystem( preset0, 24, 5 );
+	
+	//populate and run
 	act->populateTime();
-	
-	player.playAct(act);
-
-	
+	player.playAct(act);	
 }
 
 //--------------------------------------------------------------
