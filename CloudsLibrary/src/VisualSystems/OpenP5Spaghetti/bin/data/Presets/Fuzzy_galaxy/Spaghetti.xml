@@ -6,6 +6,11 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>44</Kind>
+    <Name>Preloads</Name>
+    <Value>3448</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>SMOOTH</Name>
     <Value>0</Value>
