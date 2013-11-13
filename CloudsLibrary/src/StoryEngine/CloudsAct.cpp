@@ -111,9 +111,10 @@ void CloudsAct::populateTime(){
     
 	timeline.addPage("dichotomies", true);
 	dichotomyClips = timeline.addFlags("DichotomyClips");
-	vector<CloudsDichotomy> dichotomies = CloudsDichotomy::getDichotomies();
-    for(int i = 0;  i < dichotomies.size(); i++){
-		string trackName = dichotomies[i].left + " _ " + dichotomies[i].right;
+	vector<CloudsDichotomy> dichotomiesBase = CloudsDichotomy::getDichotomies();
+    for(int d = 0;  d < dichotomiesBase.size(); d++){
+		string trackName = dichotomiesBase[d].left + "_" + dichotomiesBase[d].right;
+		cout << "adding tracks " << trackName << endl;
 		dichotomyTracks[trackName] = timeline.addCurves(trackName, ofRange(-5,5), 0);
 	}
     
@@ -123,10 +124,10 @@ void CloudsAct::populateTime(){
 		float startTime = clipItems[it->first].startTime;
 		dichotomyClips->addFlagAtTime(it->first, startTime*1000);
 		vector<CloudsDichotomy>& clipDichotomy = it->second;		
-		for(int i = 0; i < dichotomies.size(); i++){
-			string trackName = dichotomies[i].left + " _ " + dichotomies[i].right;
-
-			dichotomyTracks[trackName]->addKeyframeAtMillis(clipDichotomy[i].balance, startTime*1000.0);
+		for(int d = 0; d < dichotomiesBase.size(); d++){
+			string trackName = dichotomiesBase[d].left + "_" + dichotomiesBase[d].right;
+			cout << "recalling tracks " << trackName << endl;
+			dichotomyTracks[trackName]->addKeyframeAtMillis(clipDichotomy[d].balance, startTime*1000.0);
 		}
 	}
 	
@@ -261,12 +262,16 @@ ActTimeItem& CloudsAct::getItemForVisualSystem(CloudsVisualSystemPreset& preset)
     return visualSystemItems[preset.getID()];
 }
 
-void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float handleLength,vector<CloudsDichotomy> currentDichotomiesBalance){
+float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime){
+	return addClip(clip, topic, startTime, 0, CloudsDichotomy::getDichotomies());
+}
+
+float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, float handleLength, vector<CloudsDichotomy> currentDichotomiesBalance){
     clips.push_back(clip);
     clipMap[clip.getLinkName()] = clip;
     topicMap[clip.getLinkName()] = topic;
-    string clipDifficulty ;
-    
+
+    string clipDifficulty;
     if (clip.hasSpecialKeyword("easy")) {
         clipDifficulty = "easy";
     }
@@ -276,9 +281,8 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     else{
         clipDifficulty = "medium";
     }
-    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+	
     ActTimeItem item;
-    
     item.type = Clip;
     item.key = clip.getLinkName();
     item.startTime = startTime;
@@ -288,40 +292,42 @@ void CloudsAct::addClip(CloudsClip clip, string topic, float startTime, float ha
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
-	finalDichotomies = currentDichotomiesBalance;
+//	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
+	return duration;
 }
 
-void CloudsAct::addClip(CloudsClip clip, string topic, float startTime){
-    clips.push_back(clip);
-    clipMap[clip.getLinkName()] = clip;
-    topicMap[clip.getLinkName()] = topic;
-    string clipDifficulty ;
-    
-    if (clip.hasSpecialKeyword("easy")) {
-        clipDifficulty = "easy";
-    }
-    else if(clip.hasSpecialKeyword("hard")){
-        clipDifficulty = "hard";
-    }
-    else{
-        clipDifficulty = "medium";
-    }
-    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
-    ActTimeItem item;
-    item.type = Clip;
-    item.key = clip.getLinkName();
-    item.startTime = startTime;
-    //defaulting handle length to 1
-    item.endTime = startTime+clip.getDuration() + 1;
-    duration = MAX(item.endTime, duration);
-    
-    actItems.push_back(item);
-    actItemsMap[item.key] = item;
-    clipItems[clip.getLinkName()] = item;
-    clipDifficultyMap[clip.getLinkName()] =clipDifficulty;
-}
+
+//    clips.push_back(clip);
+//    clipMap[clip.getLinkName()] = clip;
+//    topicMap[clip.getLinkName()] = topic;
+//    string clipDifficulty ;
+//    
+//    if (clip.hasSpecialKeyword("easy")) {
+//        clipDifficulty = "easy";
+//    }
+//    else if(clip.hasSpecialKeyword("hard")){
+//        clipDifficulty = "hard";
+//    }
+//    else{
+//        clipDifficulty = "medium";
+//    }
+//    //    cout<<"added " <<clip.getLinkName()<< " to clip map "<<endl;
+//    ActTimeItem item;
+//    item.type = Clip;
+//    item.key = clip.getLinkName();
+//    item.startTime = startTime;
+//    //defaulting handle length to 1
+//    item.endTime = startTime+clip.getDuration() + 1;
+//    duration = MAX(item.endTime, duration);
+//    
+//    actItems.push_back(item);
+//    actItemsMap[item.key] = item;
+//    clipItems[clip.getLinkName()] = item;
+//    clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
+//	return duration;
+//}
 
 void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handleLength, string topic){
     for(int i =0; i<actItems.size(); i++){
@@ -336,7 +342,7 @@ void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handl
     }
 }
 
-void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime, float duration){
+void CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration){
     visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
     
@@ -344,9 +350,8 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     
 	ActTimeItem item;
     // start the visual system halfway through the clip
-    float vsStartTime  = startTime;
+    float vsStartTime = startTime;
     item.type = VS;
-    
     item.key = preset.getID() ;
     item.startTime = vsStartTime;
     item.endTime = vsStartTime + duration;
@@ -360,7 +365,7 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset preset, float startTime
     visualSystemItems[preset.getID()] = item;
 }
 
-void CloudsAct::addGapForCadence(CloudsVisualSystemPreset preset,float startTime,float duration){
+void CloudsAct::addGapForCadence(CloudsVisualSystemPreset& preset,float startTime,float duration){
     ActTimeItem item;
     item.key = preset.getID();
     item.type = Gap;
@@ -371,17 +376,15 @@ void CloudsAct::addGapForCadence(CloudsVisualSystemPreset preset,float startTime
     
 }
 
-void CloudsAct::updateVsEndTime(CloudsVisualSystemPreset preset, float newEndTime){
+void CloudsAct::updateVsEndTime(CloudsVisualSystemPreset& preset, float newEndTime){
     for(int i =0; i<actItems.size(); i++){
         if(actItems[i].type == VS && actItems[i].key == preset.getID()){
-            
-                actItems[i].outroStartTime += newEndTime;
-                actItems[i].endTime += newEndTime;
-
+			actItems[i].outroStartTime += newEndTime;
+			actItems[i].endTime += newEndTime;
         }
     }
-    
 }
+
 void CloudsAct::addClipPreRollFlag(float preRollFlagTime, float clipHandleLength, string clipName){
     ActTimeItem item;
     item.type = PreRoll;
