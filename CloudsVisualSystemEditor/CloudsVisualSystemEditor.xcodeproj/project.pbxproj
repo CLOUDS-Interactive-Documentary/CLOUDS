@@ -3239,8 +3239,8 @@
 		E7BBA823179FA180007D7EC1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */,
 				50FE21D317A1D9980037BFB5 /* CloudsVisualSystemFireworks.h */,
+				50FE21D217A1D9980037BFB5 /* CloudsVisualSystemFireworks.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

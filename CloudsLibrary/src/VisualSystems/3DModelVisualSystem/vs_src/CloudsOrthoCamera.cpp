@@ -143,8 +143,15 @@ void CloudsOrthoCamera::update(ofEventArgs & args){
 	if(bOrbitMode)
 	{	
 		//convert mouse coords in to somethin we can work with
-		float mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
-		float my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), -1., 1., true );
+		float mx = -1;
+		if(viewport.getLeft() != viewport.getRight()){
+			mx = ofMap( ofGetMouseX(), viewport.getLeft(), viewport.getRight(), -1., 1., true );
+		}
+		float my = -1;
+		if(viewport.getTop() != viewport.getBottom()){
+			my = ofMap( ofGetMouseY(), viewport.getTop(), viewport.getBottom(), -1., 1., true );
+		}
+		
 		float dist = ofVec2f(mx, my).length();
 		
 		//get our rotation values and update the rotation around the target

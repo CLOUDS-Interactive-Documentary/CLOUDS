@@ -173,7 +173,6 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
     for (int j = 0; j<numPreloads; j++){
         
         selfUpdate();
-        cout << "preloaded " << j << "times" << endl;
         //selfDraw();
         
     }

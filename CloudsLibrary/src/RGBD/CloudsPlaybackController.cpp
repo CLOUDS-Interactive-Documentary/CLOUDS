@@ -420,7 +420,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     else {
 		//updating tweens
 		float elapsedTime = ofGetElapsedTimef();
-		for (int i = controllerTweens.size()-1; i>=0; i--) {
+		for (int i = controllerTweens.size() - 1; i >= 0; i--) {
 			controllerTweens[i].update( elapsedTime );
 			
 			if(controllerTweens[i].bEnded){
@@ -451,8 +451,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	else{
 		ofHideCursor();
 	}
-	//TODO: add camera animations to RGBDVisSys
 	
+	//TODO: add camera animations to RGBDVisSys
 	//TODO: offsetTargets for turning away
 	
 }
@@ -473,7 +473,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	ofSetColor( 255, 255, 255, mixVal );
 	
 	if(!showingIntro && !showingClusterMap){
-		if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+		if(currentVisualSystem != NULL){
+			currentVisualSystem->selfPostDraw();
+		}
 	}
 	
     ofPopStyle();
@@ -675,6 +677,7 @@ void CloudsPlaybackController::playNextVisualSystem()
 		nextSystem->setCurrentTopic( currentTopic );
 		nextSystem->loadPresetGUISFromName( nextPresetName );
 		nextSystem->playSystem();
+		currentVisualSystem = nextSystem;
 		
 		showingVisualSystem = true;
 	}
