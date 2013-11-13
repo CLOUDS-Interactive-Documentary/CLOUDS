@@ -11,14 +11,15 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+typedef struct {
+	ofVbo* vbo;
+	string name;
+	int indexCount;
+} NamedVbo;
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
   public:
-    
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
 		return "LaplacianTunnel";
 	}
@@ -86,26 +87,35 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
+	ofCamera& getCameraRef(){
+		return tunnelCam;
+	}
 
 
   protected:
     
     //  Your Stuff
     //
+	ofLight headlight;
+	float corkscrewFactor;
+	float lightDistance;
+	ofVec3f min;
+	ofVec3f max;
+	ofVec3f center;
 	
+	int loadMesh(ofVbo &vbo, string path);
+
+	ofCamera tunnelCam;
 	ofxUISuperCanvas* customGui;
 	int frameCount;
 	float startTime;
 	float fps;
-	
-	float numReplications;
+	float fogDensity;
+	int numReplications;
 	float replicationOffset;
-	
-	vector<int> indexCount;
-	vector<ofVbo*> vbos;
+	float cameraDistance;
+	float cameraSpeed;
+	vector<NamedVbo> vbos;
 	
 	void clear();
 	
