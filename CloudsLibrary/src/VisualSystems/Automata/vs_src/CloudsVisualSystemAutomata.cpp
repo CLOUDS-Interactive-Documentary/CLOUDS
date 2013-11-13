@@ -140,7 +140,13 @@ void CloudsVisualSystemAutomata::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemAutomata::selfDraw(){
     
-   
+    ofDisableLighting();
+    
+    ofPushMatrix();
+    ofScale(1, -1, 1);
+    ofSetColor(255);
+    conway.draw(-conway.getWidth() / 2, -conway.getHeight() / 2);
+    ofPopMatrix();
 
 }
 
@@ -153,7 +159,6 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 void CloudsVisualSystemAutomata::selfDrawBackground(){
    // glDisable(GL_DEPTH_TEST);
    // ofSetColor(255);
-    conway.draw();
     
     //image.draw(0, 0);
 
