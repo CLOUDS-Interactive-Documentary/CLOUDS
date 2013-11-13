@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1909.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>874.000000000</XPosition>
+    <YPosition>239.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -24,6 +24,11 @@
     <Kind>2</Kind>
     <Name>Borges_random</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Borges_randomOC</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -79,9 +84,4 @@
     <Kind>2</Kind>
     <Name>twitterOC</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Borges_randomOC</Name>
-    <Value>1</Value>
 </Widget>
