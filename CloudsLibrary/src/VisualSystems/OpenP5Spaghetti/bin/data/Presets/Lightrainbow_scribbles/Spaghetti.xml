@@ -6,6 +6,11 @@
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
+    <Kind>44</Kind>
+    <Name>Preloads</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>2</Kind>
     <Name>SMOOTH</Name>
     <Value>0</Value>
@@ -32,32 +37,32 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>1.000000000</Value>
+    <Name>STEP SIZE X</Name>
+    <Value>2.487684727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>3.349753618</Value>
+    <Name>STEP SIZE Y</Name>
+    <Value>3.497537136</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>STEP SIZE</Name>
-    <Value>2.339901447</Value>
+    <Name>STEP SIZE Z</Name>
+    <Value>2.906403780</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
+    <Name>NOISE SPEED X</Name>
     <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
+    <Name>NOISE SPEED Y</Name>
     <Value>0.010000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>NOISE SPEED</Name>
+    <Name>NOISE SPEED Z</Name>
     <Value>0.010000000</Value>
 </Widget>
 <Widget>
