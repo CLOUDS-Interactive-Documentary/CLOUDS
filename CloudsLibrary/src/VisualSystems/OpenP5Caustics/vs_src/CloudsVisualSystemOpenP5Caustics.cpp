@@ -180,8 +180,8 @@ void CloudsVisualSystemOpenP5Caustics::selfUpdate()
     for (int i = 0; i < castManager->cR->count; i++) {
         float m = MAX(castManager->cR->bg[i], MAX(castManager->cG->bg[i], castManager->cB->bg[i]));
         sum += m;
-        maxV = (maxV > m)? maxV : m;
-        if (m!=0) count++;
+        maxV = MAX(maxV, m);
+        if (m != 0) count++;
     }
     float avg = sum / count;
 
