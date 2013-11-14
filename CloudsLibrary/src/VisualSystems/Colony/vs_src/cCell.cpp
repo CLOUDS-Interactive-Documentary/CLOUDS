@@ -8,7 +8,7 @@
 
 #include "cCell.h"
 
-colonyCell::colonyCell(){
+oldColonyCell::oldColonyCell(){
     
     this->set( ofRandom(ofGetWidth()),ofGetHeight() );  // same as Location
     acc = ofPoint(0,0);
@@ -49,7 +49,7 @@ colonyCell::colonyCell(){
 	spriteMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
 }
 
-void colonyCell::applyForce(ofPoint _force) {
+void oldColonyCell::applyForce(ofPoint _force) {
     
     // We could add mass here if we want A = F / M
     //
@@ -57,7 +57,7 @@ void colonyCell::applyForce(ofPoint _force) {
 }
 
 // We accumulate a new acceleration each time based on three rules
-void colonyCell::applyFlock( vector<colonyCell*> &_cells ) {
+void oldColonyCell::applyFlock( vector<oldColonyCell*> &_cells ) {
     
     ofPoint sep = separate( _cells );   // Separation
     ofPoint ali = align( _cells );      // Alignment
@@ -77,7 +77,7 @@ void colonyCell::applyFlock( vector<colonyCell*> &_cells ) {
 }
 
 // Method to update location
-void colonyCell::update() {
+void oldColonyCell::update() {
     
     // Update velocity
     //
@@ -93,10 +93,10 @@ void colonyCell::update() {
     acc *= 0;
 }
 
-ofPoint colonyCell::seek(ofPoint _target) {
+ofPoint oldColonyCell::seek(ofPoint _target) {
     ofPoint desired = _target - *this;  // A vector pointing from the location to the target
     
-    // Normalize desired and scale to maximum speed
+    // Normalize desired and scale to  imum speed
     //
     desired.normalize();
     desired *= maxspeed;
@@ -109,7 +109,7 @@ ofPoint colonyCell::seek(ofPoint _target) {
     return steer;
 }
 
-void colonyCell::applyBorders() {
+void oldColonyCell::applyBorders() {
     
     if (x >= ofGetWidth() + 30) {
         float diff = x - ofGetWidth();
@@ -135,7 +135,7 @@ void colonyCell::applyBorders() {
 // Separation
 // Method checks for nearby cells and steers away
 //
-ofPoint colonyCell::separate( vector<colonyCell*> &_cells ) {
+ofPoint oldColonyCell::separate( vector<oldColonyCell*> &_cells ) {
     
     float desiredseparation = 20.0f;
 	float desiredseparation2 = powf(desiredseparation, 2.0f);
@@ -144,6 +144,10 @@ ofPoint colonyCell::separate( vector<colonyCell*> &_cells ) {
     int count = 0;
     
     // For every Cell in the system, check if it's too close
+    
+    
+    // TODO: Here's the first problem.
+    
     for (int i = 0; i < _cells.size() ; i++) {
         
 //        float d = distance( *_cells[i] );
@@ -178,9 +182,9 @@ ofPoint colonyCell::separate( vector<colonyCell*> &_cells ) {
 // Alignment
 // For every nearby Cell in the system, calculate the average velocity
 //
-ofPoint colonyCell::align( vector<colonyCell*> &_cells ) {
+ofPoint oldColonyCell::align( vector<oldColonyCell*> &_cells ) {
     float neighbordist = 50;
-	float neighbordistSqrd = sqrt(neighbordist);
+	float neighbordistSqrd = sqrt(neighbordist); //really?
     ofPoint sum = ofPoint(0,0);
     int count = 0;
     for (int i = 0; i < _cells.size() ; i++) {
@@ -207,7 +211,7 @@ ofPoint colonyCell::align( vector<colonyCell*> &_cells ) {
 // Cohesion
 // For the average location (i.e. center) of all nearby cells, calculate steering vector towards that location
 //
-ofPoint colonyCell::cohesion( vector<colonyCell*> &_cells ) {
+ofPoint oldColonyCell::cohesion( vector<oldColonyCell*> &_cells ) {
     float neighbordist = 50;
     ofPoint sum = ofPoint(0,0);   // Start with empty vector to accumulate all locations
     int count = 0;
@@ -231,7 +235,7 @@ ofPoint colonyCell::cohesion( vector<colonyCell*> &_cells ) {
 
 //  Looks for the brightness of the nearest pixel
 //
-void colonyCell::feedCellWidth( ofPixels &_pixels ){
+void oldColonyCell::feedCellWidth( ofPixels &_pixels ){
     int safeX = ofClamp(x,0,ofGetWidth()-1);
 	int safeY = ofClamp(y,0,ofGetHeight()-1);
 //    if ( x >= 0 && x < ofGetWidth() && y >= 0 && y < ofGetWidth()){
@@ -265,7 +269,7 @@ void colonyCell::feedCellWidth( ofPixels &_pixels ){
     age ++;
 }
 
-void colonyCell::draw() {
+void oldColonyCell::draw() {
    
     ofPushStyle();
     

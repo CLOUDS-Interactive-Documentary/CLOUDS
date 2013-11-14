@@ -15,15 +15,13 @@ string CloudsVisualSystemColony::getSystemName()
 
 void CloudsVisualSystemColony::selfSetup()
 {
+    
+    numInitialCells = 5; //FIXME : Magic number
+    
     noiseShader.load("", getVisualSystemDataPath()+"shaders//liquidNoise.fs");
     foodFbo.allocate(ofGetWidth(), ofGetHeight());
     noiseZoom = 100.0;
-    sprites.resize(5);
-	sprites[0].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
-    sprites[1].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1b.png");
-    sprites[2].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
-    sprites[3].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1b.png");
-    sprites[4].loadImage(getVisualSystemDataPath() + "sprites/Cell_white_1a.png");
+    
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
@@ -32,29 +30,14 @@ void CloudsVisualSystemColony::selfSetupSystemGui()
   //  sysGui->addSlider("NutrientLevel", 0.0, 1000, &nutrientLevel);
 }
 
-void CloudsVisualSystemColony::selfSetupRenderGui()
-{
-
-}
-
-void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e)
-{
-    
-}
-
-void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e)
-{
-
-}
-
-void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){
-
-}
-
+void CloudsVisualSystemColony::selfSetupRenderGui(){}
+void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
+void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
+void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){}
 
 void CloudsVisualSystemColony::selfUpdate()
 {
-	
+	//TODO : Review
 	if(!noise.isAllocated() || noise.getWidth() != ofGetWidth() || noise.getHeight() != ofGetHeight()){
 		noise.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_GRAYSCALE);
 		
@@ -64,63 +47,35 @@ void CloudsVisualSystemColony::selfUpdate()
 
 			}
 		}
-		
 		noise.reloadTexture();
 	}
-	
-    //  Process food texture
-    //
     int width = foodFbo.getWidth();
     int height = foodFbo.getHeight();
-    /*
-    ofSetColor(255);
-    foodFbo.begin();
-    noiseShader.begin();
-    noiseShader.setUniform1f("time", ofGetElapsedTimef());
-    noiseShader.setUniform1f("zoom", noiseZoom);
-    noiseShader.setUniform2f("resolution", (float)width, (float)height);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(0, 0, 0);
-    glTexCoord2f(width, 0); glVertex3f(width, 0, 0);
-    glTexCoord2f(width, height); glVertex3f(width, height, 0);
-    glTexCoord2f(0,height);  glVertex3f(0,height, 0);
-    glEnd();
-    noiseShader.end();
-    foodFbo.end();
+
     
-    ofPixels pixels;
-    foodFbo.getTextureReference().readToPixels(pixels);
-    */
-	
     //  Update cells position and life
     //
+    pMap.put(cells.begin(), cells.end());
     for (int i = 0; i < cells.size(); i++) {
-        
-        cells[i]->applyFlock(cells);
-        cells[i]->applyBorders();
-        cells[i]->update();
-        
-//        cells[i]->feedCellWidth( pixels );
-		cells[i]->feedCellWidth( noise.getPixelsRef() );
-    }
-    
-    for (int i = cells.size()-1; i >= 0; i--){
-        if (cells[i] -> isFertile && cells[i]->shouldReplicate){
-    
-            colonyCell *newCell = new colonyCell();
-            newCell->set(*cells[i]);
-            cells.push_back(newCell);
+        neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
             
-            cells[i]->shouldReplicate = false;
-            cells[i]->hasReplicated = true;
+            cells[i]->doApplyFlock(iter);
+            cells[i]->doApplyBorders();
+            cells[i]->update();
+            
+            //        cells[i]->feedCellWidth( pixels );
+            cells[i]->doFeedCellWidth( noise.getPixelsRef() );
+            
+            if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
+                cellPtr newCell = cells[i]->doGetReplicated();
+                cells.push_back(newCell);
+            }
+            if (cells[i]->isDead()){
+                cells.erase( cells.begin() + i);
+            }
         }
         
-        if (cells[i]->dead == true){
-            delete cells[i];
-            cells.erase( cells.begin() + i);
-        }
-    }
-    
+    pMap.clear();
 }
 
 //void CloudsVisualSystemColony::draw(ofEventArgs & args)
@@ -137,62 +92,27 @@ void CloudsVisualSystemColony::selfUpdate()
 //}
 
 
-void CloudsVisualSystemColony::selfSetupGuis()
-{
-    
-}
-
-void CloudsVisualSystemColony::selfAutoMode()
-{
-    
-}
-
+void CloudsVisualSystemColony::selfSetupGuis(){}
+void CloudsVisualSystemColony::selfAutoMode(){}
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
 	ofSetColor(255,255,255);
-//	noise.draw(0,0);
+    //	noise.draw(0,0);
 	//foodFbo.draw(0, 0);
 	
 	ofEnableAlphaBlending();
-	for(int i = 0; i < sprites.size(); i++){
-		sprites[i].getTextureReference().bind();
-		for (int c = 0; c < cells.size(); c++) {
-			if(cells[c]->spriteIndex == i){
-				cells[c]->draw();
-			}
-		}		
-		sprites[i].getTextureReference().unbind();
-	}
-				
-//	sprite.getTextureReference().bind();
-//	for (int i = 0; i < cells.size(); i++) {
-//		cells[i]->draw();
-//	}
-//	sprite.getTextureReference().unbind();
-    
 }
 
-void CloudsVisualSystemColony::selfDrawDebug()
-{
-    
-}
-
-void CloudsVisualSystemColony::selfSceneTransformation()
-{
-    
-}
-
-void CloudsVisualSystemColony::selfExit()
-{
-    
-}
+void CloudsVisualSystemColony::selfDrawDebug(){}
+void CloudsVisualSystemColony::selfSceneTransformation(){}
+void CloudsVisualSystemColony::selfExit(){}
 
 void CloudsVisualSystemColony::selfBegin()
 {
-    for (int i = 0; i < 5; i++) {
-        colonyCell *newCell = new colonyCell();
-        newCell->set(ofRandomWidth(),ofRandomHeight());
+    for (int i = 0; i < numInitialCells; i++) {
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight() )));
+//        newCell->doSetPosition( ofPoint( ofRandomWidth(), ofRandomHeight() ) );
         cells.push_back(newCell);
     }
 }
@@ -200,42 +120,15 @@ void CloudsVisualSystemColony::selfBegin()
 void CloudsVisualSystemColony::selfEnd()
 {
     for (int i = cells.size()-1; i >= 0; i--){
-        delete cells[i];
         cells.erase(cells.begin()+i);
     }
+    cells.clear();
 }
 
-void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args)
-{
-    
-}
-
-void CloudsVisualSystemColony::mouseDragged(ofMouseEventArgs& data)
-{
-    
-}
-
-void CloudsVisualSystemColony::mouseMoved(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemColony::mousePressed(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemColony::selfSetupGui()
-{
-    
-}
-
-void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e)
-{
-    
-}
+void CloudsVisualSystemColony::selfKeyReleased(ofKeyEventArgs & args){}
+void CloudsVisualSystemColony::mouseDragged(ofMouseEventArgs& data){}
+void CloudsVisualSystemColony::mouseMoved(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::mousePressed(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::mouseReleased(ofMouseEventArgs &args){}
+void CloudsVisualSystemColony::selfSetupGui(){}
+void CloudsVisualSystemColony::selfGuiEvent(ofxUIEventArgs &e){}
