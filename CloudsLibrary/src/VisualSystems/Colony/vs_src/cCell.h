@@ -6,17 +6,18 @@
 //
 //
 
+
 #pragma once
 
 #include "ofMain.h"
 
-class colonyCell : public ofPoint {
+class oldColonyCell : public ofPoint {
 public:
     
-    colonyCell();
+    oldColonyCell();
     
     void    applyForce( ofPoint _force );
-    void    applyFlock( vector<colonyCell*> &_cells );
+    void    applyFlock( vector<oldColonyCell*> &_cells );
     void    applyBorders();
     void    setup();
     void    update();
@@ -48,9 +49,9 @@ public:
 //    ofImage transparency;
     
 private:
-    ofPoint separate ( vector<colonyCell*> &_cells );
-    ofPoint align ( vector<colonyCell*> &_cells );
-    ofPoint cohesion ( vector<colonyCell*> &_cells );
+    ofPoint separate ( vector<oldColonyCell*> &_cells );
+    ofPoint align ( vector<oldColonyCell*> &_cells );
+    ofPoint cohesion ( vector<oldColonyCell*> &_cells );
     
     ofPoint seek( ofPoint _target);
    
