@@ -13,7 +13,7 @@
 #include "ofxSimpleSpline.h"
 #include "MazeCamera.h"
 #include "MazeCell.h"
-#include "ParamManager.h"
+#include "MazeSettings.h"
 #include "MovingBall.h"
 
 #define NUM_CELLS_X 151
@@ -26,7 +26,7 @@ public:
     float wallThickness;
     float wallHeight;
     
-    Maze(float cSize, float wThick, float wHeight, ofVec3f p = ofVec3f());
+    Maze(float cSize, float wThick, float wHeight, MazeSettings* set, ofVec3f p = ofVec3f());
     ~Maze();
     void generate();
     
@@ -58,6 +58,7 @@ protected:
     ofShader wallShader;
     ofTexture uvMap;
     
+    MazeSettings* settings;
     MazeCell* cells[NUM_CELLS_X][NUM_CELLS_Y];
     std::stack<MazeCell*> cellStack;
     std::vector<MovingBall*> balls;

@@ -60,7 +60,7 @@ void CloudsVisualSystemAutomata::selfSetup(){
         cout << "failed to load " << getVisualSystemDataPath() + "mem.gif" << endl;
     }
     
-    conway.allocate(640, 480);
+    conway.allocate(ofGetWidth(), ofGetHeight());
     conway.setPasses(10);
     //
     // Created by kalwalt alias Walter Perdan on 24/12/11
@@ -140,7 +140,13 @@ void CloudsVisualSystemAutomata::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemAutomata::selfDraw(){
     
-   
+    ofDisableLighting();
+    
+    ofPushMatrix();
+    ofScale(1, -1, 1);
+    ofSetColor(255);
+    conway.draw(-conway.getWidth() / 2, -conway.getHeight() / 2);
+    ofPopMatrix();
 
 }
 
@@ -153,7 +159,6 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 void CloudsVisualSystemAutomata::selfDrawBackground(){
    // glDisable(GL_DEPTH_TEST);
    // ofSetColor(255);
-    conway.draw();
     
     //image.draw(0, 0);
 

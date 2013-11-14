@@ -35,7 +35,7 @@ static string relinkFilePath(string filePath){
 	drives.push_back("Seance");
 	drives.push_back("Nebula");
 	drives.push_back("Supernova");
-	drives.push_back("Nebula_helper");
+	drives.push_back("WhiteDwarf");
     
 	if( !ofFile(filePath).exists() ){
 		for(int i = 0; i < drives.size(); i++){

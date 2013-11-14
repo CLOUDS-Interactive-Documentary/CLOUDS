@@ -22,7 +22,11 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetupGui()
     customGui->addSpacer();
     customGui->addToggle("TEXT CLOUD", &bTextCloudMode);
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
+#ifdef OCULUS_RIFT
+    customGui->addSlider("OCULUS SPEED", 0, 5, &oculusSpeed);
+#else
     customGui->addSlider("MOUSE SPEED", 0, 5, &mouseSpeed);
+#endif
     customGui->addSlider("FOG DENSITY", 0.0f, 0.1f, &fogDensity);
     
     vector<string> radioBillboard;
@@ -338,8 +342,13 @@ void CloudsVisualSystemOpenP5TextUniverse::selfSetup()
     
     currSpin = 0.0f;
     spinSpeed = 0.5f;
+#ifdef OCULUS_RIFT
+    oculusSpinX = oculusSpinY = 0.0f;
+    oculusSpeed = 1.0f;
+#else
     mouseSpinX = mouseSpinY = 0.0f;
     mouseSpeed = 1.0f;
+#endif
     fogDensity = 0.025f;
     bTextCloudMode = false;
     
@@ -390,8 +399,15 @@ void CloudsVisualSystemOpenP5TextUniverse::selfUpdate()
     
     currSpin += spinSpeed;
     
+#ifdef OCULUS_RIFT
+    // TODO: Get Oculus orientation and fuck with oculusDir vector.
+    
+    oculusSpinX += oculusDir.x * oculusSpeed;
+    oculusSpinY += oculusDir.y * oculusSpeed;
+#else
     mouseSpinX += mouseDir.x * mouseSpeed;
     mouseSpinY += mouseDir.y * mouseSpeed;
+#endif
     
     orbital->update(0, 0, 0);
 }
@@ -422,8 +438,13 @@ void CloudsVisualSystemOpenP5TextUniverse::selfDraw()
     ofPushMatrix();
     {
         ofRotate(currSpin, 0, 1, 0);
+#ifdef OCULUS_RIFT
+        ofRotateX(oculusSpinX);
+        ofRotateY(oculusSpinY);
+#else
         ofRotateX(mouseSpinX);
         ofRotateY(mouseSpinY);
+#endif
         ofSetLineWidth(TUOrbital::lineWidth);
         
         orbital->draw(getCameraRef());
@@ -476,8 +497,10 @@ void CloudsVisualSystemOpenP5TextUniverse::selfMouseDragged(ofMouseEventArgs& da
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5TextUniverse::selfMouseMoved(ofMouseEventArgs& data)
 {
+#ifndef OCULUS_RIFT
     mouseDir.y = ofMap(data.x, 0, ofGetWidth(), -1, 1);
     mouseDir.x = ofMap(data.y, 0, ofGetHeight(), -1, 1);
+#endif
 }
 
 void CloudsVisualSystemOpenP5TextUniverse::selfMousePressed(ofMouseEventArgs& data){

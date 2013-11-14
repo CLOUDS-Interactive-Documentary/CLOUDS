@@ -12,18 +12,20 @@
 #include <iostream>
 #include "ofMain.h"
 #include "ofxSimpleSpline.h"
-#include "ParamManager.h"
+#include "MazeSettings.h"
 
 class MovingBall
 {
 public:
-    MovingBall(ofxSimpleSpline* s);
+    MovingBall(ofxSimpleSpline* s, MazeSettings *set);
     ~MovingBall();
     
     void update();
     void draw();
     
 private:
+    MazeSettings *settings;
+    
     ofxSimpleSpline* spline;
     float time;
     ofVec3f pos;

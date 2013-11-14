@@ -1,0 +1,77 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EXAMPLE VECTOR MATH</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM Z</Name>
+    <Value>372.413787842</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>X ROTATION</Name>
+    <Value>-0.837438583</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Y ROTATION</Name>
+    <Value>-2.512315750</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z ROTATION</Name>
+    <Value>0.147783279</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ROTATION SPEED</Name>
+    <Value>-0.581280828</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>3.901477814</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE SPEED</Name>
+    <Value>0.165270939</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR SHIFT SPEED</Name>
+    <Value>0.197044328</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SHOW AXIS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>AUTO DRAW</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>AUTO DRAW SPEED</Name>
+    <Value>1.614285827</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>R</Name>
+    <Value>0.498837769</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>G</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>B</Name>
+    <Value>0.595051825</Value>
+</Widget>

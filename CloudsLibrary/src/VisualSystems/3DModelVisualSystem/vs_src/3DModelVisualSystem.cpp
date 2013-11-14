@@ -590,6 +590,13 @@ void CloudsVisualSystem3DModel::selfEnd()
 	modelMesh.clear();
 	grid.clear();
 	cameraLines.clear();
+	
+	leftCam.disableMouseInput();
+	planCam.disableMouseInput();
+	frontCam.disableMouseInput();
+	perspCam.disableMouseInput();
+
+	
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
@@ -1205,14 +1212,17 @@ void CloudsVisualSystem3DModel::drawSceneGeometry( ofCamera* cam)
 void CloudsVisualSystem3DModel::drawScene( CloudsOrthoCamera* cam, ofRectangle viewRect )
 {
 	
-	if(cam != NULL)
+	//we should look at how to not call our own camera here, as it clobbers the main one.
+	if(cam != NULL && !bUseOculusRift)
 	{
 		cam->begin( viewRect );
 	}
 	
 	drawSceneGeometry(cam);
 		
-	if( cam != NULL)	cam->end();
+	if( cam != NULL && !!bUseOculusRift){
+		cam->end();	
+	}
 }
 
 void CloudsVisualSystem3DModel::drawScenePerspective( ofRectangle viewRect )

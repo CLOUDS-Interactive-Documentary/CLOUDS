@@ -95,6 +95,8 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
     color2.setHsb(hue2,saturation2,brightness2);
     //  cout << "regenerated color2 = "<< color2 << endl;
     
+    
+    
     for(int i = 0; i<NWalkers; i++){
         //clear all meshes
         walkers[i].mesh.getVertices().clear();
@@ -126,6 +128,15 @@ void CloudsVisualSystemOpenP5Spaghetti::regenerate(){
             walkers[i].setColor(newColor);
         }
     }
+    
+    //shouldn't PRELOADS should happen in regenerate...?
+    for (int j = 0; j<numPreloads; j++){
+        
+        selfUpdate();
+        cout << "preloaded " << j << "times" << endl;
+        //selfDraw();
+    }
+    
 }
 
 
@@ -168,14 +179,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetup(){
         walkers[i].init(NWalkers, newColor); //  walkers[i] = *new Walker(); << wrong syntax
 
     }
-    
-    for (int j = 0; j<numPreloads; j++){
-        
-        selfUpdate();
-        cout << "preloaded " << j << "times" << endl;
-        //selfDraw();
-        
-    }
+   
     
 }
 
@@ -230,27 +234,30 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5Spaghetti ::selfDraw(){
-	ofEnableBlendMode(OF_BLENDMODE_ADD);
+void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
+
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glDisable(GL_DEPTH_TEST);
-	
+	glEnable(GL_POINT_SMOOTH);
+    glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+    glPointSize(1);
+
     ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofPushMatrix();
-    {
-    ofRotate(currSpin, 0, 1, 0);
-    
-    for(int i = 0; i<NWalkers; i++){
-		
-        walkers[i].draw();
-    }
-    
-    ofPopStyle(); 
+
+	ofRotate(currSpin, 0, 1, 0);
+	for(int i = 0; i < NWalkers; i++){
+		walkers[i].draw();
+	}
+	
+	ofPopStyle();
     ofPopMatrix();
-        }
+	glPopAttrib();
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemOpenP5Spaghetti ::selfDrawDebug(){
+void CloudsVisualSystemOpenP5Spaghetti::selfDrawDebug(){
 
 }
 

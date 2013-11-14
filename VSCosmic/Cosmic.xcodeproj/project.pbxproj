@@ -127,8 +127,6 @@
 		E72FF17117E6A30F0007780D /* radShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15517E6A30F0007780D /* radShader.vert */; };
 		E72FF17217E6A30F0007780D /* renderShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15617E6A30F0007780D /* renderShader.frag */; };
 		E72FF17317E6A30F0007780D /* renderShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15717E6A30F0007780D /* renderShader.vert */; };
-		E72FF17417E6A30F0007780D /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15817E6A30F0007780D /* rgbdcombined.frag */; };
-		E72FF17517E6A30F0007780D /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15917E6A30F0007780D /* rgbdcombined.vert */; };
 		E72FF17617E6A3100007780D /* sphereShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15A17E6A30F0007780D /* sphereShader.frag */; };
 		E72FF17717E6A3100007780D /* sphereShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15B17E6A30F0007780D /* sphereShader.vert */; };
 		E72FF17817E6A3100007780D /* velShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = E72FF15C17E6A30F0007780D /* velShader.frag */; };
@@ -460,13 +458,12 @@
 		E72FF15517E6A30F0007780D /* radShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = radShader.vert; sourceTree = "<group>"; };
 		E72FF15617E6A30F0007780D /* renderShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.frag; sourceTree = "<group>"; };
 		E72FF15717E6A30F0007780D /* renderShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderShader.vert; sourceTree = "<group>"; };
-		E72FF15817E6A30F0007780D /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
-		E72FF15917E6A30F0007780D /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
 		E72FF15A17E6A30F0007780D /* sphereShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.frag; sourceTree = "<group>"; };
 		E72FF15B17E6A30F0007780D /* sphereShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sphereShader.vert; sourceTree = "<group>"; };
 		E72FF15C17E6A30F0007780D /* velShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
 		E72FF15D17E6A30F0007780D /* velShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		E7E00F1318303953006704BD /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsGlobal.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -1167,6 +1164,7 @@
 				E72FF13617E6A2E70007780D /* CloudsVisualSystem.cpp */,
 				E72FF13717E6A2E70007780D /* CloudsVisualSystem.h */,
 				E72FF13817E6A2E70007780D /* ofxLight.h */,
+				E7E00F1318303953006704BD /* CloudsGlobal.h */,
 			);
 			name = VisualSystemsLibrary;
 			path = ../CloudsLibrary/src/VisualSystemsLibrary;
@@ -1207,8 +1205,6 @@
 				E72FF15517E6A30F0007780D /* radShader.vert */,
 				E72FF15617E6A30F0007780D /* renderShader.frag */,
 				E72FF15717E6A30F0007780D /* renderShader.vert */,
-				E72FF15817E6A30F0007780D /* rgbdcombined.frag */,
-				E72FF15917E6A30F0007780D /* rgbdcombined.vert */,
 				E72FF15A17E6A30F0007780D /* sphereShader.frag */,
 				E72FF15B17E6A30F0007780D /* sphereShader.vert */,
 				E72FF15C17E6A30F0007780D /* velShader.frag */,
@@ -1402,8 +1398,6 @@
 				E72FF17117E6A30F0007780D /* radShader.vert in Sources */,
 				E72FF17217E6A30F0007780D /* renderShader.frag in Sources */,
 				E72FF17317E6A30F0007780D /* renderShader.vert in Sources */,
-				E72FF17417E6A30F0007780D /* rgbdcombined.frag in Sources */,
-				E72FF17517E6A30F0007780D /* rgbdcombined.vert in Sources */,
 				E72FF17617E6A3100007780D /* sphereShader.frag in Sources */,
 				E72FF17717E6A3100007780D /* sphereShader.vert in Sources */,
 				E72FF17817E6A3100007780D /* velShader.frag in Sources */,

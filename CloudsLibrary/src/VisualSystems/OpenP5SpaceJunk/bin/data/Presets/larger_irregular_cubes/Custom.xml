@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1056.000000000</XPosition>
-    <YPosition>42.000000000</YPosition>
+    <XPosition>494.000000000</XPosition>
+    <YPosition>16.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -11,64 +11,40 @@
     <Value>2.463054180</Value>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>X Scale Min</Name>
-    <Value>8.128079414</Value>
+    <Kind>6</Kind>
+    <Name>X Scale</Name>
+    <HighValue>13.793103218</HighValue>
+    <LowValue>4.926108360</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>X Scale Max</Name>
-    <Value>10.344827652</Value>
+    <Kind>6</Kind>
+    <Name>Y Scale</Name>
+    <HighValue>13.300492287</HighValue>
+    <LowValue>4.926108360</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Y Scale Min</Name>
-    <Value>5.172413826</Value>
+    <Kind>6</Kind>
+    <Name>Z Scale</Name>
+    <HighValue>12.807882309</HighValue>
+    <LowValue>4.926108360</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Y Scale Max</Name>
-    <Value>18.226600647</Value>
+    <Kind>6</Kind>
+    <Name>X Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Z Scale Min</Name>
-    <Value>4.926108360</Value>
+    <Kind>6</Kind>
+    <Name>Y Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Z Scale Max</Name>
-    <Value>12.807882309</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>X Rotate Min</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>X Rotate Max</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Y Rotate Min</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Y Rotate Max</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Z Rotate Min</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Z Rotate Max</Name>
-    <Value>0.000000000</Value>
+    <Kind>6</Kind>
+    <Name>Z Rotate</Name>
+    <HighValue>0.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -8,8 +8,10 @@
 
 #include "MovingBall.h"
 
-MovingBall::MovingBall(ofxSimpleSpline* s)
+MovingBall::MovingBall(ofxSimpleSpline* s, MazeSettings *set)
 {
+    settings = set;
+    
     spline = s;
     time = 0;
     noiseT = ofRandom(10000);
@@ -33,7 +35,7 @@ void MovingBall::update()
         time = 0;
     }
     
-    time += speed*ofNoise(noiseT)*ParamManager::getInstance().ballMaxSpeed;
+    time += speed*ofNoise(noiseT)*settings->ballMaxSpeed;
     pos = spline->getPoint(time);
     
     noiseT += 0.1;
@@ -41,9 +43,9 @@ void MovingBall::update()
 
 void MovingBall::draw()
 {
-    ofSetColor(ParamManager::getInstance().getBallColor());
+    ofSetColor(settings->getBallColor());
     ofFill();
-    ofSphere(pos, ParamManager::getInstance().ballRadius);
+    ofSphere(pos, settings->ballRadius);
     
     // draw the path
 //    ofSetColor(0, 255, 255);
