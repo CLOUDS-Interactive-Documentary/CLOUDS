@@ -1910,6 +1910,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="OpenP5SpaceJunk_Forced_perspective">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="OpenP5SpaceJunk_LightPreset">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1926,6 +1934,22 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="OpenP5SpaceJunk_falling_cubesOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="OpenP5SpaceJunk_forced_perspectiveOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="OpenP5SpaceJunk_larger_irregular_cubes">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1941,6 +1965,14 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="OpenP5SpaceJunk_uniform_cubesOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="OpenP5SpaceJunk_virtual_architecture">
     <keywords></keywords>
