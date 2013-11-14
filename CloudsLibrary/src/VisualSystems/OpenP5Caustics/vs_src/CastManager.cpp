@@ -18,7 +18,15 @@ CastManager::CastManager(int width, int height)
     cR = new Caster(width, height);
     cG = new Caster(width, height);
     cB = new Caster(width, height);
+
+    cR->n = 1.4;
+    cG->n = 1.42;
+    cB->n = 1.44;
     
+    cR->intensity = 20;
+    cG->intensity = 20;
+    cB->intensity = 22;
+
     bump = 0.5;
     noiseScale = 0.008;
     boxW = 300;
@@ -54,7 +62,7 @@ void CastManager::threadedFunction()
         if (loopCount % fpsGranularity == 0) {
             long delta = ofGetElapsedTimeMillis() - timeStart;
             if (delta != 0) {
-                fps = fpsGranularity*1000.f / delta;
+                fps = fpsGranularity * 1000.0f / delta;
             }
             timeStart = ofGetElapsedTimeMillis();
         }
@@ -90,7 +98,8 @@ void CastManager::threadedFunction()
                 break;
                 
             default:
-                x = 0; y = 0;
+                x = 0;
+                y = 0;
                 ofLogError("CastManager::threadedFunction()") << "Unknown algo: " << algo;
         }
         
@@ -109,7 +118,7 @@ void CastManager::threadedFunction()
         //            + ofNoise(x * noiseScale, y * noiseScale + noiseScale, z * noiseScale) *  1
         //            + ofNoise(x * noiseScale, y * noiseScale + 2 * noiseScale, z * noiseScale) *  0.5) * bump / (noiseScale * 2);
         
-        float m = ofVec3f(dzdx, dzdy, 1).length();
+        float m = sqrtf(dzdx * dzdx + dzdy * dzdy + 1);
         
         // Normal to surface.
         float nX = dzdx / m;

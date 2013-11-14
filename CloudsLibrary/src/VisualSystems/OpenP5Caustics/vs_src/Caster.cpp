@@ -15,7 +15,7 @@ Caster::Caster(int width, int height)
     this->height = height;
     count = width * height;
     
-    bg = new float[width * height];
+    bg = new float[count];
     
     n = 1.3f;
     d = 100;
@@ -42,7 +42,7 @@ void Caster::reset()
 void Caster::cast(float x, float y, float nX, float nY, float nZ, float thetaI)
 {    
     // The angle of the refracted ray relative to the incident ray.
-    float thetaR = asin(n*sin(thetaI));
+    float thetaR = asinf(n * sinf(thetaI));
     
     // Refracted vector.
     float rX = -nX;
@@ -52,9 +52,9 @@ void Caster::cast(float x, float y, float nX, float nY, float nZ, float thetaI)
         rZ = -1;
     }
     else {
-        rZ = -abs(sqrt(rX*rX+rY*rY)/sin(thetaI+PI-thetaR));
+        rZ = -ABS(sqrtf(rX * rX + rY * rY) / sinf(thetaI + PI - thetaR));
     }
-    //float rZ = -sqrt(rX*rX + rY*rY)/sq(sin(thetaI+PI-thetaR));
+    //float rZ = -sqrtf(rX * rX + rY * rY) / sqf(sinf(thetaI + PI - thetaR));
     if (rZ > 0) {
         ofLogError("Caster::cast") << "Refracted Z must be always negative, was " << rZ;
         return;
@@ -80,26 +80,26 @@ void Caster::cast(float x, float y, float nX, float nY, float nZ, float thetaI)
         // Right neighbour.
         index++;
         if(flX < hX && index < count && index >= 0) {
-            bg[index] += intensity * (hX-flX) * abs(flY-hY);
+            bg[index] += intensity * (hX - flX) * ABS(flY-hY);
         }
         
         // Left neighbour.
         index -= 2;
         if(flX > hX && index < count && index >= 0) {
-            bg[index] += intensity * (flX-hX) * abs(flY - hY);
+            bg[index] += intensity * (flX - hX) * ABS(flY - hY);
         }
         
         // Top neighbour.
         index++;
         index -= width;
         if (flY > hY  && index < count && index >= 0) {
-            bg[index] += intensity * (flY-hY) * abs(flX - hX);
+            bg[index] += intensity * (flY - hY) * ABS(flX - hX);
         }
         
         // Bottom neighbour.
         index += 2 * width;
         if (flY < hY  && index < count && index >= 0) {
-            bg[index] += intensity * (hY - flY) * abs(flX - hX);
+            bg[index] += intensity * (hY - flY) * ABS(flX - hX);
         }
     }
 }
