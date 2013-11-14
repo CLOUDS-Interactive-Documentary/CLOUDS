@@ -77,11 +77,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Social_Network2OC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>SpaceJunk</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>SpaceJunkOC</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
