@@ -71,6 +71,7 @@ float snoise(vec2 v) {
  */
 
 uniform sampler2DRect baseTex;
+uniform vec4 fgColor;
 uniform float scalar;
 uniform vec2 attractor;
 uniform vec2 dims;
@@ -84,11 +85,13 @@ void main()
     float i = count * (dims.x * dims.y) + st.y * dims.x + st.x;
     // I don't know what this nonsense below is, but it generates nice results.
     if ((mod(i * scalar * scalar / 39 + dist * snoise(vec2(st.x * scalar, st.y * scalar + scalar * scalar * scalar * i / 39)), 8.0)) <= 1.0) {
-        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+        gl_FragColor = fgColor;
     }
     else {
         vec2 baseSt = vec2(st.x + 1, st.y + 1);
+        // vec2 baseSt = vec2(clamp(st.x + 1, 0, dims.x), clamp(st.y + 1, 0, dims.y));
+        
         vec4 baseColor = texture2DRect(baseTex, baseSt);
-        gl_FragColor = mix(baseColor, vec4(0.0, 0.0, 0.0, 1.0), 0.05);
+        gl_FragColor = mix(baseColor, vec4(0.0, 0.0, 0.0, 0.0), 0.05);
     }
 }

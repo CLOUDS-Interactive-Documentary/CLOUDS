@@ -94,8 +94,11 @@ class CloudsVisualSystemOpenP5Fifteen : public CloudsVisualSystem
     protected:
         ofxUISuperCanvas * customGui;
         ofx1DExtruder * fgHue, * fgSat, * fgBri, * fgAlpha;
+        ofColor fgColor;
     
+        bool bRestart;
         float scalar;
+        float speed;
         int count;
         ofVec2f attractor;
     

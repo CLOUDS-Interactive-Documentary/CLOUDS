@@ -19,7 +19,9 @@ void CloudsVisualSystemOpenP5Fifteen::selfSetupGui()
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    customGui->addToggle("RESTART", &bRestart);
     customGui->addSlider("SCALAR", 0, 1, scalar * 100.0f);
+    customGui->addSlider("SPEED", 0, 10, &speed);
     
     customGui->addSpacer();
     fgHue = new ofx1DExtruder(0);
@@ -91,8 +93,8 @@ void CloudsVisualSystemOpenP5Fifteen::selfSetup()
 	
     // Set defaults.
     scalar = 0.005f;
-
-    restart();
+    speed = 1.0f;
+    bRestart = true;
 }
 
 //--------------------------------------------------------------
@@ -108,7 +110,7 @@ void CloudsVisualSystemOpenP5Fifteen::restart()
     
     // Allocate/Reset the FBOs.
     if (!srcFbo.isAllocated() || srcFbo.getWidth() != width || srcFbo.getHeight() != height) {
-        srcFbo.allocate(width, height, GL_RGB);
+        srcFbo.allocate(width, height, GL_RGBA);
     }
     srcFbo.begin();
     {
@@ -117,7 +119,7 @@ void CloudsVisualSystemOpenP5Fifteen::restart()
     srcFbo.end();
     
     if (!dstFbo.isAllocated() || dstFbo.getWidth() != width || dstFbo.getHeight() != height) {
-        dstFbo.allocate(width, height, GL_RGB);
+        dstFbo.allocate(width, height, GL_RGBA);
     }
     dstFbo.begin();
     {
@@ -164,16 +166,26 @@ void CloudsVisualSystemOpenP5Fifteen::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemOpenP5Fifteen::selfUpdate()
 {
-    if (srcFbo.getWidth() != ofGetWidth() || srcFbo.getHeight() != ofGetHeight()) {
+    fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
+    
+    if (bRestart || srcFbo.getWidth() != ofGetWidth() || srcFbo.getHeight() != ofGetHeight()) {
         restart();
+        bRestart = false;
     }
     
-    attractor.x += (attractor.x > ofGetMouseX())? -1 : 1;
-    attractor.y += (attractor.y > ofGetMouseY())? -1 : 1;
+    // Move towards the mouse.
+    ofVec2f toMouse = ofVec2f(ofGetMouseX(), ofGetMouseY()) - attractor;
+    if (toMouse.length() < speed) {
+        attractor += toMouse;
+    }
+    else {
+        attractor += toMouse.scale(speed);
+    }
     
     dstFbo.begin();
     shader.begin();
     shader.setUniformTexture("baseTex", srcFbo.getTextureReference(), 1);
+    shader.setUniform4f("fgColor", fgColor.r / 255.f, fgColor.g / 255.f, fgColor.b / 255.f, fgColor.a / 255.f);
     shader.setUniform1f("scalar", scalar);
     shader.setUniform2f("attractor", attractor.x, attractor.y);
     shader.setUniform1i("count", count);
@@ -247,3 +259,4 @@ void CloudsVisualSystemOpenP5Fifteen::selfMousePressed(ofMouseEventArgs& data){
 void CloudsVisualSystemOpenP5Fifteen::selfMouseReleased(ofMouseEventArgs& data){
 
 }
+
