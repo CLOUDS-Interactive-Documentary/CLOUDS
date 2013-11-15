@@ -43,4 +43,12 @@ class testApp : public ofBaseApp{
     
     ofxUISuperCanvas *gui;
 	void guiEvent(ofxUIEventArgs &e);
+    ofShader shaderBlurX;
+    ofShader shaderBlurY;
+    ofFbo fboBlurOnePass;
+    ofFbo fboBlurTwoPass;
+    
+    bool blur;
+    float blurAmount;
+    
 };
