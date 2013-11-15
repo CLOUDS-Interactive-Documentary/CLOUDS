@@ -26,14 +26,11 @@ void testApp::setup(){
 //    gui->addSlider("THRESHOLD", 0.0, 1.0, &threshold);
     gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &thresholdLower);
     gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &thresholdUpper);
-    gui->addSlider("HUE THRESHOLD", 0.0, 1.0, &hueThreshold);
-    gui->addSlider("SATURATION THRESHOLD", 0.0, 1.0, &satThreshold);
-    gui->addSlider("BRIGTHNESS THRESHOLD", 0.0, 1.0, &brightThreshold);
     gui->addSlider("HUE WEIGHT", 0.0, 1.0, &hueWeight);
     gui->addSlider("SATURATION WEIGHT", 0.0, 1.0, &satWeight);
     gui->addSlider("BRIGTHNESS WEIGHT", 0.0, 1.0, &brightWeight);
-    gui->addSlider("BLUR AMOUNT", 0.0, 10.0, &blurAmount);
     gui->addSpacer();
+    gui->addSlider("BLUR AMOUNT", 0.0, 10.0, &blurAmount);
     gui->addToggle("BLUR", &blur);
     gui->addSpacer();
     gui->autoSizeToFitWidgets();
@@ -185,7 +182,7 @@ void testApp::checkColorDistance(){
             
             if(  weightedD> thresholdLower && weightedD<thresholdUpper){
 
-                float alpha = ofxTween::map(weightedD, thresholdLower, thresholdUpper, 0, 255, false,easing,ofxTween::easeOut);
+                float alpha = ofxTween::map(weightedD, thresholdLower, thresholdUpper, 0, 255, true,easing,ofxTween::easeOut);
                 ofFloatColor col;
                 col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
                 col.a =alpha;
