@@ -5,12 +5,20 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
+    if(! player.loadMovie("Zach_Fucking_boring.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);
+    fboBlurOnePass.allocate(img.getWidth(), img.getHeight());
+    fboBlurTwoPass.allocate(img.getWidth(), img.getHeight());
     player.play();
     threshold = 0.5;
+    
+    shaderBlurX.load("simpleBlurHorizontal");
+    shaderBlurY.load("simpleBlurVertical");
+    
+    ofEnableAlphaBlending();
+    blur = false;
     
     gui = new ofxUISuperCanvas("COLOUR SELECTOR", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
@@ -18,12 +26,12 @@ void testApp::setup(){
 //    gui->addSlider("THRESHOLD", 0.0, 1.0, &threshold);
     gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &thresholdLower);
     gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &thresholdUpper);
-    gui->addSlider("HUE THRESHOLD", 0.0, 1.0, &hueThreshold);
-    gui->addSlider("SATURATION THRESHOLD", 0.0, 1.0, &satThreshold);
-    gui->addSlider("BRIGTHNESS THRESHOLD", 0.0, 1.0, &brightThreshold);
     gui->addSlider("HUE WEIGHT", 0.0, 1.0, &hueWeight);
     gui->addSlider("SATURATION WEIGHT", 0.0, 1.0, &satWeight);
     gui->addSlider("BRIGTHNESS WEIGHT", 0.0, 1.0, &brightWeight);
+    gui->addSpacer();
+    gui->addSlider("BLUR AMOUNT", 0.0, 10.0, &blurAmount);
+    gui->addToggle("BLUR", &blur);
     gui->addSpacer();
     gui->autoSizeToFitWidgets();
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
@@ -47,7 +55,46 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     player.draw(0, 0,player.getWidth()/2,player.getHeight()/2);
-    img.draw(player.width/2,0, player.getWidth()/2, player.getHeight()/2);
+    
+    if(blur){
+//        float blur = ofMap(mouseX, 0, ofGetWidth(), 0, 10, true);
+        
+        //----------------------------------------------------------
+        fboBlurOnePass.begin();
+        
+        shaderBlurX.begin();
+        shaderBlurX.setUniformTexture("src_tex_unit0", img, 0 );
+        shaderBlurX.setUniform1f("blurAmnt", blurAmount);
+        
+        img.draw(0,0);
+        
+        shaderBlurX.end();
+        
+        fboBlurOnePass.end();
+        
+        //----------------------------------------------------------
+        fboBlurTwoPass.begin();
+        
+        shaderBlurY.begin();
+        shaderBlurY
+        .setUniformTexture("src_tex_unit0", img, 0 );
+        shaderBlurY.setUniform1f("blurAmnt", blurAmount);
+        
+        fboBlurOnePass.draw(0, 0);
+        
+        shaderBlurY.end();
+        
+        fboBlurTwoPass.end();
+        
+        //----------------------------------------------------------
+        ofSetColor(ofColor::white);
+        fboBlurTwoPass.draw(player.width/2,0, player.getWidth()/2, player.getHeight()/2);
+    }
+    else{
+        img.draw(player.width/2,0, player.getWidth()/2, player.getHeight()/2);
+        
+    }
+ 
 }
 
 //--------------------------------------------------------------
@@ -130,20 +177,16 @@ void testApp::checkColorDistance(){
 */
             
             ofVec3f weights = ofVec3f(hueWeight,satWeight,brightWeight);
-//            sample.distance(current)
-
             float weightedD = weightedDistance(sample, current, weights);
             
             
             if(  weightedD> thresholdLower && weightedD<thresholdUpper){
-                if(ofGetKeyPressed('1')){
-                    cout<<"distance : "<<weightedDistance(sample, current, weights)<<endl;
-                }
-                float alpha = ofxTween::map(weightedD, thresholdLower, thresholdUpper, 0, 255, false,easing,ofxTween::easeOut);
-//                alpha = map(weightedD,thresholdUpper,)
+
+                float alpha = ofxTween::map(weightedD, thresholdLower, thresholdUpper, 0, 255, true,easing,ofxTween::easeOut);
                 ofFloatColor col;
                 col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
-                col.set(alpha);
+                col.a =alpha;
+//                col.set(alpha);
                 img.setColor(i, j, col);
 
             }
