@@ -11,10 +11,6 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ofxFX.h"
-#include "ofXRipples.h"
-#include "ofxBounce.h"
-
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemRipples : public CloudsVisualSystem {
@@ -87,24 +83,32 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     void selfMouseMoved(int x, int y, int button);
     void selfMousePressed(int x, int y, int button);
     void selfMouseReleased(int x, int y, int button);
-	
-	
-    ofxRipples  rip;
-    ofxBounce   bounce;
-    float damping = .3;
     
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
 //		return myCustomCamera;
 //	}
-
-
-protected:
     
-    //  Your Stuff
-    //
-	
-	
+    void restart();
 
+  protected:
+    ofxUISuperCanvas * customGui;
+    ofx1DExtruder * tintHue, * tintSat, * tintBri, * tintAlpha;
+    
+    ofShader ripplesShader;
+    ofFbo ripplesSrcFbo, ripplesDstFbo;
+    ofVboMesh renderMesh;
+    
+    float minDropHue, maxDropHue;
+    float minDropSat, maxDropSat;
+    float minDropBri, maxDropBri;
+    
+    ofColor tintColor;
+    ofColor dropColor;
+    
+	float damping;
+    float radius;
+    
+	bool bRestart;
 };

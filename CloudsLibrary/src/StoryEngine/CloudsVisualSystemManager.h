@@ -30,6 +30,7 @@ class CloudsVisualSystemManager {
 	ofPtr<CloudsVisualSystem> visualSystemWithName(string systemName);
 	vector<CloudsVisualSystemPreset>& getPresets();
 	
+	
 	bool presetHasKeywords(CloudsVisualSystemPreset& preset);
 	vector<string> keywordsForPreset(int index);
 	vector<string> keywordsForPreset(CloudsVisualSystemPreset& preset);
@@ -39,13 +40,14 @@ class CloudsVisualSystemManager {
 	
 	//resets all presets from file
 	void updatePresetsForSystem(ofPtr<CloudsVisualSystem> system);
+	void deletePreset(int i);
 	
 	set<string> getAllKeywords();
 	
 	void setKeywordsForPreset(CloudsVisualSystemPreset& preset, vector<string>& keywords );
 	
 	void loadPresets();
-	void saveKeywords();
+	void savePresets();
     void suppressClip(string presetID, string clipName);
 	vector<string>& getSuppressionsForPreset(string presetID);
     bool isClipSuppressed(string presetID,string clip);

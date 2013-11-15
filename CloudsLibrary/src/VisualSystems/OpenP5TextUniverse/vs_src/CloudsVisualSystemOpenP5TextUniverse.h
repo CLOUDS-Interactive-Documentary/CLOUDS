@@ -115,7 +115,13 @@ class CloudsVisualSystemOpenP5TextUniverse : public CloudsVisualSystem
         float currSpin;
         float spinSpeed;
     
+#ifdef OCULUS_RIFT
+        float oculusSpinX, oculusSpinY;
+        ofVec3f oculusDir;
+        float oculusSpeed;
+#else
         float mouseSpinX, mouseSpinY;
         ofVec3f mouseDir;
         float mouseSpeed;
+#endif
 };

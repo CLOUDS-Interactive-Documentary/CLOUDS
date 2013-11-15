@@ -17,19 +17,6 @@
 	minBlobSize = 0;
 	selectColor = false;
 
-//	cout << "PARSING LINKS" << endl;
-//	if(ofDirectory("../../../CloudsData/").exists()){
-//		
-//		cout << "Found link in correct directory" << endl;
-//		parser.setup("../../../CloudsData/fcpxml/");
-//		parser.parseLinks("../../../CloudsData/links/clouds_link_db.xml");
-//	}
-//	else{
-//		cout << "SETTING UP IN DATA DIRECTORY" << endl;
-//		parser.setup("xml");
-//		parser.parseLinks("clouds_link_db.xml");
-//	}
-	
 	parser.loadFromFiles();
 
 	exportFolder = ofBufferFromFile("SavedExportFolder.txt").getText();
@@ -60,8 +47,9 @@
 	progressBars[6] = clipProgress7;
 	progressBars[7] = clipProgress8;
 
-	//renderer.setShaderPath("../../../CloudsData/shaders/unproject");
-	renderer.setShaderPath("../../../CloudsData/shaders/unproject");
+
+	//renderer.setShaderPath( getDataPath() + "shaders/unproject");
+	renderer.setupDefaultShader();
 	
 	gui = new ofxUICanvas(0,0,200,ofGetHeight());
 	
@@ -349,6 +337,16 @@
 {
 
 	if(clipTable.selectedRow >= 0){
+
+		colorReplacementFolder = string([[colorReplacementField stringValue] UTF8String]);
+		exportFolder = [[exportFolderField stringValue] UTF8String];
+		ofBuffer savedExportBuf;
+		savedExportBuf.append( exportFolder );
+		ofBuffer savedColorBuf;
+		savedColorBuf.append( colorReplacementFolder );
+		
+		ofBufferToFile("SavedExportFolder.txt", savedExportBuf);
+		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
 		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);

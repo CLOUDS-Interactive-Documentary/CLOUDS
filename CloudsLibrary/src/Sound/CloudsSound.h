@@ -49,6 +49,7 @@ class CloudsSound {
 
     // Luke's stuff
 	//
+    void startMusicFX(float outskip, float musicdur);
     void startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank);
     void stopMusic();
     void loadRTcmixFiles();

@@ -249,7 +249,7 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 		}
 	}
 	
-	populateKeywordCentroids();
+//	populateKeywordCentroids();
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
 	calculateKeywordFamilies();

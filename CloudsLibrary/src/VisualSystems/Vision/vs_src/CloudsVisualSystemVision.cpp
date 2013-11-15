@@ -18,7 +18,8 @@ void CloudsVisualSystemVision::selfSetup()
 {
     currentMode = OpticalFlow;
     curFlow = &farneback;
-    
+    bIs2D = true;
+	
     scale = 2;
     movieIndex =0;
     pyrScale = 0.5;
@@ -80,7 +81,7 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("indianTrafficCrop.mov");
     movieStrings.push_back("unionsq_1 - Wi-Fi_crop.mov");
     movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors_Crop.mov");
-    /*
+  
     movieStrings.push_back("AppleStore1_short.mov");
     movieStrings.push_back("AppleStore2_short.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
@@ -91,7 +92,7 @@ void CloudsVisualSystemVision::selfSetup()
     
     movieStrings.push_back("dancing1.mov");
     movieStrings.push_back("dancing2.mov");
-   // movieStrings.push_back("dancing3.mov");
+    movieStrings.push_back("dancing3.mov");
    // movieStrings.push_back("dancing4feet.mov");
     
     movieStrings.push_back("Soho2_short.mov");
@@ -100,14 +101,14 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("unionsq1_short.mov");
     movieStrings.push_back("unionsq2_short.mov");
     movieStrings.push_back("unionsq3_short.mov");
-    movieStrings.push_back("Train.mov");
-    movieStrings.push_back("bridge.mov");
+    //movieStrings.push_back("Train.mov");
+    //movieStrings.push_back("bridge.mov");
     
     
     movieStrings.push_back("Tokyo1.mov");
     movieStrings.push_back("Tokyo2.mov");
     movieStrings.push_back("TokyoEscalator.mov");
-     */
+
     frameIsNew = false;
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();

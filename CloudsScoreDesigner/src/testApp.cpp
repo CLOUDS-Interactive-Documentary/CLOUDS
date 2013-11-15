@@ -13,12 +13,14 @@ void testApp::setup(){
 	rebuildAct = false;
 	
 	parser.loadFromFiles();
+	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	visualSystems.loadPresets();
 	
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
+    storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
@@ -36,6 +38,7 @@ void testApp::setup(){
 void testApp::actCreated(CloudsActEventArgs& args){
 	
 	if(currentAct != NULL){
+		currentAct->getTimeline().stop();
 		currentAct->unregisterEvents(this);
 //		currentAct->unregisterEvents(&websockets);
 		delete currentAct;
@@ -57,12 +60,12 @@ void testApp::actBegan(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::actEnded(CloudsActEventArgs& args){
-	
+	cout << "ACT ENDED" << endl;
 }
 
 //--------------------------------------------------------------
 void testApp::clipBegan(CloudsClipEventArgs& args){
-	
+	player.swapAndPlay();
 }
 
 //--------------------------------------------------------------
@@ -85,14 +88,19 @@ void testApp::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
-    
+	
+	player.setup(clip.preRollClip.combinedVideoPath,
+				 clip.preRollClip.combinedCalibrationXMLPath);
+	
 }
 //--------------------------------------------------------------
 void testApp::update(){
 //	ofShowCursor();
 	//keepin it real
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
+    player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
+
 }
 
 //--------------------------------------------------------------
@@ -111,6 +119,11 @@ void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
 void testApp::draw(){
     if(currentAct != NULL){
 		currentAct->drawDebug();
+	}
+	if(player.isPlaying()){
+		player.getPlayer().draw(0,0,
+								player.getPlayer().getWidth()*.25,
+								player.getPlayer().getHeight()*.25);
 	}
 }
 
@@ -133,10 +146,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
-    if(key == 'h'){
-        storyEngine.toggleGuis();
-    }
-    else if(key =='f'){
+	if(key =='f'){
         ofToggleFullscreen();
     }
 	if(key == 't'){

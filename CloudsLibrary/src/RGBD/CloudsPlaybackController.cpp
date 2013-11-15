@@ -251,12 +251,13 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
 	introSequence.setStartQuestions(possibleStartQuestions);
-	introSequence.playSystem();
 #ifdef OCULUS_RIFT
 	introSequence.loadPresetGUISFromName("Oculus");
 #else
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 #endif
+	
+	introSequence.playSystem();
 	showingIntro = true;
 }
 
@@ -264,11 +265,14 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
 	if(currentAct != NULL){
-//		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
-//		for(int i = 0; i < currentPresets.size(); i++){
-//			//null them all out
-//			currentPresets[i].system = ofPtr<CloudsVisualSystem>( (CloudsVisualSystem*) NULL );
-//		}
+		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
+		for(int i = 0; i < currentPresets.size(); i++){
+			//flag them done!
+			if(currentPresets[i].system != NULL){
+				currentPresets[i].system->exit();
+			}
+			
+		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
@@ -306,7 +310,6 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 	
 	if(args.key == 'Q'){
-        cout << "adding fake question" << endl;
 		for(int i = 0; i < fakeQuestions.size(); i++){
 			rgbdVisualSystem->addQuestion(fakeQuestions[i],
 										 fakeQuestions[i].getTopicsWithQuestions()[0],
@@ -403,8 +406,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO add questions to cluster map
 		//right now we can just have a canned animation and stop it when we are done
 		if(!clusterMapVisualSystem.getTimeline()->getIsPlaying()){
+			
 //			CloudsQuestion* q = clusterMapVisualSystem.getSelectedQuestion();
-
 //			CloudsClip& clip = q->clip;
 			
 			showingClusterMap = false;
@@ -417,7 +420,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
     else {
 		//updating tweens
 		float elapsedTime = ofGetElapsedTimef();
-		for (int i = controllerTweens.size()-1; i>=0; i--) {
+		for (int i = controllerTweens.size() - 1; i >= 0; i--) {
 			controllerTweens[i].update( elapsedTime );
 			
 			if(controllerTweens[i].bEnded){
@@ -448,8 +451,8 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	else{
 		ofHideCursor();
 	}
-	//TODO: add camera animations to RGBDVisSys
 	
+	//TODO: add camera animations to RGBDVisSys
 	//TODO: offsetTargets for turning away
 	
 }
@@ -470,7 +473,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	ofSetColor( 255, 255, 255, mixVal );
 	
 	if(!showingIntro && !showingClusterMap){
-		if(currentVisualSystem != NULL)	currentVisualSystem->selfPostDraw();
+		if(currentVisualSystem != NULL){
+			currentVisualSystem->selfPostDraw();
+		}
 	}
 	
     ofPopStyle();
@@ -533,8 +538,8 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	clusterMapVisualSystem.setRun(introSequence.getSelectedRun());
 	clusterMapVisualSystem.traverse();
 	
-	clusterMapVisualSystem.playSystem();
 	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+	clusterMapVisualSystem.playSystem();
 	
 	showingClusterMap = true;
 }
@@ -568,7 +573,7 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 			args.preset.system->getTimeline()->play();
 		}
 	
-		float fadeDuration = 1;//(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
+		float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 		addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 
 	}
@@ -655,8 +660,8 @@ void CloudsPlaybackController::hideVisualSystem()
 		
 		nextSystem->stopSystem();
 //		nextSystem = NULL;
-		rgbdVisualSystem->playSystem();
 		rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+		rgbdVisualSystem->playSystem();
 		showingVisualSystem = false;
 	}
 }
@@ -670,8 +675,9 @@ void CloudsPlaybackController::playNextVisualSystem()
 		
 		nextSystem->setDrawToScreen( false );
 		nextSystem->setCurrentTopic( currentTopic );
-		nextSystem->playSystem();
 		nextSystem->loadPresetGUISFromName( nextPresetName );
+		nextSystem->playSystem();
+		currentVisualSystem = nextSystem;
 		
 		showingVisualSystem = true;
 	}

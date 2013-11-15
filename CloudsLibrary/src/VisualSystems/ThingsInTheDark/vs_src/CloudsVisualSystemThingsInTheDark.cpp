@@ -19,7 +19,7 @@ void CloudsVisualSystemThingsInTheDark::loadMovieForComposition(string videoPath
 
 	if(renderer.setup(videoPath, ofFilePath::removeExt(videoPath)+".xml")){
 		fileNameInput->setTextString(ofFilePath::getFileName(videoPath));
-		timeline->getVideoTrack("Video")->setPlayer(renderer.getSharedPlayerPtr());
+//		timeline->getVideoTrack("Video")->setPlayer(renderer.getSharedPlayerPtr());
 		timeline->setTimecontrolTrack("Video");
 		timeline->setFrameRate(renderer.getPlayer().getTotalNumFrames() / renderer.getPlayer().getDuration());
 		timeline->setDurationInSeconds(renderer.getPlayer().getDuration());

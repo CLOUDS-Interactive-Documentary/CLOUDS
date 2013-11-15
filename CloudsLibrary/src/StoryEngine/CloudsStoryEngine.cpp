@@ -470,7 +470,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
 
         //add clip to act
         clipHandleDuration = getHandleForClip(clip);
-        act->addClip(clip,topic,totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
+        act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
         float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
         act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         localClipHistory.push_back(clip);

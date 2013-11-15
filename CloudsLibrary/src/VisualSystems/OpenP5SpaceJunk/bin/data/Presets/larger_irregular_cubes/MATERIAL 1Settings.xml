@@ -1,25 +1,10 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>90.000000000</XPosition>
-    <YPosition>354.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>170.000000000</YPosition>
 </Canvas>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AR</Name>
-    <Value>0.298429310</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AG</Name>
-    <Value>0.115183167</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>AB</Name>
-    <Value>0.120418683</Value>
-</Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
@@ -34,6 +19,21 @@
     <Kind>25</Kind>
     <Name>AB</Name>
     <Value>0.481675237</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AR</Name>
+    <Value>0.800000012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AG</Name>
+    <Value>0.800000012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AB</Name>
+    <Value>0.800000012</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

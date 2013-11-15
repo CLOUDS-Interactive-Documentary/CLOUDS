@@ -49,6 +49,7 @@ void CloudsVisualSystemVectorFlow::initFlowField(){
 //--------------------------------------------------------------
 void CloudsVisualSystemVectorFlow::selfSetup(){
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	bIs2D = true;
 }
 
 void CloudsVisualSystemVectorFlow::selfSetupGuis(){

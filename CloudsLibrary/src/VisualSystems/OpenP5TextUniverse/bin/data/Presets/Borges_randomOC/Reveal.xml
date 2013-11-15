@@ -1,0 +1,44 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Reveal</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>24.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RESTART</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>FADE TIME</Name>
+    <HighValue>582.758605957</HighValue>
+    <LowValue>534.482666016</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>LINE TIME</Name>
+    <HighValue>196.551727295</HighValue>
+    <LowValue>100.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>INSTANT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LEVELS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ORDERED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RANDOM</Name>
+    <Value>1</Value>
+</Widget>

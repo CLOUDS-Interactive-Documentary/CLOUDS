@@ -56,6 +56,10 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 	return numTriangles*3;
 }
 
+//CloudsVisualSystemLaplacianTunnel::~CloudsVisualSystemLaplacianTunnel(){
+//	clear();
+//}
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 
@@ -238,7 +242,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDrawBackground(){
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemLaplacianTunnel::selfEnd(){
-		
+	clear();
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
