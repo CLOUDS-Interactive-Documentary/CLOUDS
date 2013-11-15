@@ -172,5 +172,8 @@ protected:
     float thresholdValue;
     
     
+    //SHADER
+    ofShader shader;
+    
     
 };

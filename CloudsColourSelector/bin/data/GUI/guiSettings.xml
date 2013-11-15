@@ -2,18 +2,18 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1292.000000000</XPosition>
-    <YPosition>7.000000000</YPosition>
+    <XPosition>1286.000000000</XPosition>
+    <YPosition>-3.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD_LOWER</Name>
-    <Value>0.315270931</Value>
+    <Value>0.275862068</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD_UPPER</Name>
-    <Value>0.630541861</Value>
+    <Value>0.532019675</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SATURATION WEIGHT</Name>
-    <Value>0.142857149</Value>
+    <Value>0.123152710</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
