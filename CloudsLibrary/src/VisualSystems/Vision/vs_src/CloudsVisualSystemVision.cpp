@@ -121,10 +121,7 @@ void CloudsVisualSystemVision::selfSetupGui()
     opticalFlowGui = new ofxUISuperCanvas("OPTICAL FLOW", gui);
     opticalFlowGui->copyCanvasStyle(gui);
     opticalFlowGui->copyCanvasProperties(gui);
-    
-//    opticalFlowGui->addSpacer();
-//    ofxUIToggle *drawFlowbtn = opticalFlowGui->addToggle("OPTICAL FLOW",bOpticalFlow);
-//    opticalFlowGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+ 
     opticalFlowGui->addLabel("VISUAL PARAMS");
     
     opticalFlowGui->addSpacer();
@@ -259,13 +256,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
         farneback.calcOpticalFlow(resizeToPixels);
         
         window.setFromCenter(mouseX, mouseY, windowWidth, windowHeight);
-        if (meshVector.size() > 0) {
-            meshVector[0]= flowMesh;
-        }
-        else{
-            meshVector.push_back(flowMesh);
-            
-        }
+
         for( int i = 0; i < flowMesh.getVertices().size(); i+=2){
             if(bDrawFlowWindow){
                 if(window.inside(flowMesh.getVertex(i))){
@@ -308,11 +299,7 @@ void CloudsVisualSystemVision::updateOpticalFlow(){
                 float scaledHue = ofMap(mag,0, colorRange, ofFloatColor::blue.getHue(), ofFloatColor::red.getHue());
                 ofFloatColor magnitudeColor = ofFloatColor::fromHsb(scaledHue, 128, 128 ) ;
                 flowMesh.setColor(i+1,magnitudeColor);
-                if (meshVector.size() > 0) {
-                    ofFloatColor pc = meshVector[0].getColor(i);
-                    pc.setHue(pc.getHue() - 100);
-                    meshVector[0].setColor(i, pc);
-                }
+
 
             }
         }
@@ -551,9 +538,6 @@ void CloudsVisualSystemVision::selfDrawBackground()
             tex.drawSubsection(mouseX-window.width/2 , mouseY-window.height/2, window.width, window.height, mouseX-window.width/2, mouseY-window.height/2);
             ofSetLineWidth(flowLineWidth);
             flowMesh.draw();
-            if (meshVector.size() > 0) {
-                meshVector[0].draw();
-            }
             ofPopStyle();
             ofPopMatrix();
         }
