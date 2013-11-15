@@ -97,6 +97,7 @@ protected:
     bool bLifeTime;
     bool bNumbers;
     bool bColor;
+    bool bContours;
     
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
@@ -170,7 +171,15 @@ protected:
     float flowLineWidth;
     float learningTime;
     float thresholdValue;
+    //CONTOUR VIS PARAMS
+    float boxHue;
+    float boxSat;
+    float boxBright;
+    ofFloatColor boxColor;
     
+    
+    //SHADER
+    ofShader shader;
     
     
 };
