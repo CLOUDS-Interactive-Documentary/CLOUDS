@@ -14,7 +14,6 @@
 #include "ofMain.h"
 
 
-
 class MyTracker : public ofxCv::RectFollower {
 protected:
 	ofVec3f cur, smooth;

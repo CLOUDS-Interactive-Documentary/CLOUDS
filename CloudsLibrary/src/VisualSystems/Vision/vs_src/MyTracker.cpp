@@ -72,7 +72,7 @@ void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bo
         ofDrawBitmapString(ofToString(label), cur);
 
     }
-        ofPopStyle();    
+    ofPopStyle();    
 }
 
 

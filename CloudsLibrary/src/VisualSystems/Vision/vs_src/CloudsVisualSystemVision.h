@@ -97,6 +97,7 @@ protected:
     bool bLifeTime;
     bool bNumbers;
     bool bColor;
+    bool bContours;
     
     //Contour tracking stuff
     ofxCv::ContourFinder contourFinder;
