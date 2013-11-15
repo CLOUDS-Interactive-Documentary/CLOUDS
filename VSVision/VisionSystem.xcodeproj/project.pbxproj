@@ -295,6 +295,7 @@
 		184CB848181EC0E200B14025 /* MyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracker.h; sourceTree = "<group>"; };
 		18C0706F1835600A00B58246 /* heatMapShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = heatMapShader.frag; sourceTree = "<group>"; };
 		18C070701835600A00B58246 /* heatMapShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = heatMapShader.vert; sourceTree = "<group>"; };
+		18C070CF1835C5E500B58246 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1337,6 +1338,7 @@
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				18C070CF1835C5E500B58246 /* CloudsGlobal.h */,
 				184CB790181EC0E200B14025 /* Vision */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
 			);

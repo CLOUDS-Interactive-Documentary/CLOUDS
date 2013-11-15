@@ -170,6 +170,11 @@ protected:
     float flowLineWidth;
     float learningTime;
     float thresholdValue;
+    //CONTOUR VIS PARAMS
+    float boxHue;
+    float boxSat;
+    float boxBright;
+    ofFloatColor boxColor;
     
     
     //SHADER
