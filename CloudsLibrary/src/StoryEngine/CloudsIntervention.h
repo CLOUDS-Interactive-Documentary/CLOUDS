@@ -8,7 +8,17 @@
 
 #ifndef __CloudsPointcloudViewer__CloudsIntervention__
 #define __CloudsPointcloudViewer__CloudsIntervention__
+#include "ofMain.h"
 
-#include <iostream>
+class CloudsIntervention{
+public:
+    CloudsIntervention(){};
+    CloudsIntervention(string _name) : name(_name){
+    }
+    
+    string name;
+    
+    
+};
 
 #endif /* defined(__CloudsPointcloudViewer__CloudsIntervention__) */
