@@ -360,6 +360,7 @@ void CloudsIntroSequence::selfDraw(){
     ofRectangle viewport;
 #ifdef OCULUS_RIFT
     viewport = getOculusRift().getOculusViewport();
+	viewport.x -= viewport.width/2;
 #else
     viewport = ofGetCurrentViewport();
 #endif
@@ -373,7 +374,7 @@ void CloudsIntroSequence::selfDraw(){
     ofSetColor(0, 255, 0);
     ofCircle(worldCenter, 2);
 	
-	cout << "Camera position " << getCameraRef().getPosition() << " " << worldCursor << endl;
+//	cout << "Camera position " << getCameraRef().getPosition() << " " << worldCursor << endl;
 
 }
 
