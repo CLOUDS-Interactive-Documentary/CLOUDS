@@ -40,7 +40,7 @@ class CloudsVisualSystem {
   public:
 	   
 	CloudsVisualSystem();
-	~CloudsVisualSystem();
+	virtual ~CloudsVisualSystem();
 	
 	
 	enum RGBDTransitionType
@@ -123,7 +123,7 @@ class CloudsVisualSystem {
     virtual void selfTimelineGuiEvent(ofxUIEventArgs &e);
 	//END SUBCLASS METHODS
 	
-	virtual string getSystemName();
+	virtual string getSystemName() = 0;
 	
 	void setupRGBDTransforms();
 
@@ -163,6 +163,8 @@ class CloudsVisualSystem {
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
 					  string quoteName);
+
+	virtual void speakerChanged(){};
 	
 	void speakerEnded();
 	
@@ -186,7 +188,7 @@ class CloudsVisualSystem {
     void drawAxis(float size, float color);
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
-    void drawTexturedQuad();
+//    void drawTexturedQuad();
     void drawNormalizedTexturedQuad();
     void drawBackground();
     void draw2dSystemPlane();

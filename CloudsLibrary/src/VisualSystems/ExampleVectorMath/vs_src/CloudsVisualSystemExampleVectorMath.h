@@ -22,9 +22,7 @@ struct DrawPoint {
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemExampleVectorMath : public CloudsVisualSystem {
-  public:
-
-    CloudsVisualSystemExampleVectorMath(){};
+public:
 	
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
@@ -98,7 +96,7 @@ class CloudsVisualSystemExampleVectorMath : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
-		return cam;
+		return camera;
 	}
 
 protected:
@@ -118,7 +116,7 @@ protected:
     ofFloatColor color;
     float maxDrawPointAge;
     bool bShowAxis;
-    ofCamera cam;
+    ofCamera camera;
     ofVec3f camPos;
     vector<DrawPoint> pts;
     //ofVec3f	pts[MAX_N_PTS];

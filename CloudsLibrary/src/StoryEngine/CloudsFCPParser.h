@@ -14,15 +14,15 @@
 #include "ofRange.h"
 class CloudsFCPParser {
   public:
-    
+
 	CloudsFCPParser();
-	
+
 	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
 	bool printErrors;
-	
+
 #pragma mark Clips
 	bool hasClipWithLinkName(string linkname);
 	bool hasClipWithID(string ID);
@@ -65,7 +65,9 @@ class CloudsFCPParser {
     void refreshAllKeywords();
 	void printSpeakerList();
 	void printDichotomyRatios();
-	
+    
+    void addIntervention(string clipName, string interventionName);
+	bool clipHasIntervention(string clipName);
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -132,6 +134,7 @@ class CloudsFCPParser {
     bool operator()(const string& a, const string& b);
     vector<string>& getContentKeywords();
 	vector<string>& getKeywordFamily(string keyword);
+    
 	
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
@@ -180,6 +183,7 @@ class CloudsFCPParser {
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
+    map<string, string> clipInterventions;
     
 	//KEYWORDS + CLUSTER NETWORK
     vector<pair<string, ofVec3f> > keywordCentroids;
@@ -193,7 +197,7 @@ class CloudsFCPParser {
     int getCentroidMapIndex(string keyword);
 	void calculateKeywordAdjascency();
 	void calculateKeywordFamilies();
-
+    void saveInterventions(string interventionsFile);
 	
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;

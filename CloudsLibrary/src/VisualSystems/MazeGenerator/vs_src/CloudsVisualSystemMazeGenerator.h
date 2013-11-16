@@ -11,9 +11,9 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "ParamManager.h"
-#include "Maze.h"
 #include "ofxSimpleSpline.h"
+#include "Maze.h"
+#include "MazeSettings.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
@@ -92,15 +92,17 @@ class CloudsVisualSystemMazeGenerator : public CloudsVisualSystem {
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-	ofCamera& getCameraRef(){
-		return cam;
+	virtual ofCamera& getCameraRef(){
+		return mazeCam;
 	}
 
 protected:
     void setLightOri(ofLight* light, ofVec3f rot);
     
+    MazeSettings settings;
+    
     Maze* maze[3];
-    MazeCamera* mazeCam;
+    MazeCamera mazeCam;
     
     ofxSimpleSpline *camPath;
     

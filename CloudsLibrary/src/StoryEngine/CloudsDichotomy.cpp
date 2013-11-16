@@ -52,12 +52,12 @@ vector<CloudsDichotomy> CloudsDichotomy::getDichotomies(){
 	
 	d.left = "#mindblowing";
 	d.right = "#mundane";
-	d.balance =0;
+	d.balance = 0;
 	dichotomies.push_back(d);
 	
 	d.left = "#rational";
 	d.right = "#surreal";
-	d.balance =0;
+	d.balance = 0;
 	dichotomies.push_back(d);
 
 	return dichotomies;

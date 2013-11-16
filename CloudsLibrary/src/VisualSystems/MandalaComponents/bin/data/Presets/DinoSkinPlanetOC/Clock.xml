@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Clock</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw clock</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>spread</Name>
+    <Value>0.581034005</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>clockV</Name>
+    <Value>0.500000060</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>numCogs</Name>
+    <Value>12.443300247</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CogScale</Name>
+    <Value>145.103439331</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Octaves</Name>
+    <Value>16.162561417</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OctaveScale</Name>
+    <Value>4.034482956</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MaxSpeed</Name>
+    <Value>0.118990153</Value>
+</Widget>

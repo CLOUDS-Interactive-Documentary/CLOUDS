@@ -607,6 +607,14 @@ void CloudsVisualSystemRGBD::generateScanlines(){
 	refreshScanlineMesh = false;
 }
 
+void CloudsVisualSystemRGBD::speakerChanged(){
+
+	//check speaker vars
+//	this->speakerFirstName = speakerFirstName;
+//	this->speakerLastName = speakerLastName;
+//	this->quoteName = quoteName;
+	
+}
 
 void CloudsVisualSystemRGBD::generateTriangulation(){
 	

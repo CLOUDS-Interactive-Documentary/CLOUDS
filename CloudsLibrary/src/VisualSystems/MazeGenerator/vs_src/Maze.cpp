@@ -10,11 +10,12 @@
 
 #define SIDE_WALLS
 
-Maze::Maze(float cSize, float wThickness, float wHeight, ofVec3f p)
+Maze::Maze(float cSize, float wThickness, float wHeight, MazeSettings* set, ofVec3f p)
 {
     cellSize = cSize;
     wallThickness = wThickness;
     wallHeight = wHeight;
+    settings = set;
     pos = p;
     
     for (int i=0; i<NUM_CELLS_X; i++) {
@@ -70,12 +71,12 @@ void Maze::generate()
     buildModel();
     
     // create moving balls with paths
-    for (int i=0; i<ParamManager::getInstance().numberOfBalls; i++)
+    for (int i=0; i<settings->numberOfBalls; i++)
     {
         int sx = (int)ofRandom(60, NUM_CELLS_X-60);
         int sy = (int)ofRandom(10, 500);
         ofxSimpleSpline* spline = createSimpleSpline(sx, sy, 100);
-        balls.push_back(new MovingBall(spline));
+        balls.push_back(new MovingBall(spline, settings));
     }
 }
 
@@ -117,7 +118,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     
     int camCellY = (int)(cam->getPosition().z / cellSize);
     camCellY = max(0, camCellY-30);
-    int lastVisibleLine = (int)MIN((int)camCellY + ParamManager::getInstance().showAhead, NUM_CELLS_Y);
+    int lastVisibleLine = (int)MIN((int)camCellY + settings->showAhead, NUM_CELLS_Y);
     
     // draw surface
     float length = (float)lastVisibleLine - camCellY;
@@ -125,7 +126,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     
     // draw the ground
     ofFill();
-    ofSetColor(ParamManager::getInstance().getGroundColor());
+    ofSetColor(settings->getGroundColor());
     ofPushMatrix();
     ofTranslate(NUM_CELLS_X*cellSize/2, -wallHeight/2, middle*cellSize);
     ofScale(NUM_CELLS_X*cellSize+120, 1, length*cellSize);
@@ -133,7 +134,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     ofPopMatrix();
     
     // draw maze geometry
-    ofSetColor(ParamManager::getInstance().getWallColor());
+    ofSetColor(settings->getWallColor());
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	geometry.draw(GL_TRIANGLES, vertexIndexForLines[camCellY], vertexIndexForLines[lastVisibleLine]-vertexIndexForLines[camCellY]);
@@ -245,7 +246,7 @@ ofxSimpleSpline* Maze::createSimpleSpline(int sx, int sy, int length)
         cell = solveStack.top();
         cout<<"cell["<<cell->getX()<<"]["<<cell->getY()<<"]\n";
         points.push_back(ofVec3f(cell->getX()*cellSize+cellSize/2,
-                                 ParamManager::getInstance().ballRadius,
+                                 settings->ballRadius,
                                  cell->getY()*cellSize+cellSize/2));
         solveStack.pop();
     }

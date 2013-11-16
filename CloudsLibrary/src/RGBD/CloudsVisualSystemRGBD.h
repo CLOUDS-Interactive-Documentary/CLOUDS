@@ -27,6 +27,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
     
+	void speakerChanged();
 	
 	void addQuestion(CloudsClip& q,string topic, string question);
     void setSelectedQuestion();
@@ -51,7 +52,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-	
+
 	
 	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){

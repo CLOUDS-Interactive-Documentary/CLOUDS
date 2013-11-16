@@ -1,0 +1,92 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Orbital</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>228.000000000</XPosition>
+    <YPosition>51.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>TEXT CLOUD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPIN SPEED</Name>
+    <Value>0.270935953</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>OCULUS SPEED</Name>
+    <Value>1.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.025000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BILLBOARD SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BILLBOARD NODES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BILLBOARD ORIGIN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE</Name>
+    <Value>193.448272705</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT</Name>
+    <Value>1.256157637</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI</Name>
+    <Value>228.620697021</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>253.743850708</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SCALAR</Name>
+    <Value>0.197044328</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE BRI</Name>
+    <Value>238.669952393</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE ALPHA</Name>
+    <Value>219.827575684</Value>
+</Widget>

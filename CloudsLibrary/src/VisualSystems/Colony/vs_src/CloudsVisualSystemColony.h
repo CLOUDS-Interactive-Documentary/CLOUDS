@@ -10,8 +10,9 @@
 
 #include "CloudsVisualSystem.h"
 
-#include "cCell.h"
-        
+//#include "cCell.h"
+#include "gCell.h"
+
 class CloudsVisualSystemColony : public CloudsVisualSystem {
 public:
     
@@ -55,13 +56,16 @@ private:
     
     ofFbo       foodFbo;
     ofShader    noiseShader;
-    
-	vector<ofImage> sprites;
 	ofImage noise;
-	
-    vector< colonyCell* > cells;
-    vector< colonyCell* > newborns;
+    
+    colonyPartitionMap pMap;
+    
+    vector< cellPtr > cells;
+    vector< cellPtr > newborns;
     
     float   noiseZoom;
     int newbornCount;
+    
+    /*  PARAMS */
+    int numInitialCells;
 };

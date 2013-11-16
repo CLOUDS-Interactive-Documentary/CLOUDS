@@ -450,7 +450,6 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	
 
 	
-	
 	int randFWType = ofRandom(0,6);
 	cout << "randFWType: "<< randFWType << endl;
 	switch (randFWType) {
@@ -536,7 +535,7 @@ void CloudsVisualSystemFireworks::selfDrawBackground()
 	glowFbo0.begin();
 	ofClear(0,0,0,255);
 	
-	camera.begin();
+
 	
 //	glDisable( GL_DEPTH_TEST );
 //	ofSetColor(225, 235, 255, 30 );
@@ -572,7 +571,6 @@ void CloudsVisualSystemFireworks::selfDrawBackground()
 //		ofPopMatrix();
 //	}
 	
-	camera.end();
 	
 	glowFbo0.end();
 	

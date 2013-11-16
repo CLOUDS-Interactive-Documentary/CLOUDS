@@ -15,6 +15,7 @@
     IBOutlet ClipSelector* linkerB;
     
     CloudsFCPParser parser;
+
 	ofVideoPlayer preview;
     
     vector<string> selectedKeywordsSource;

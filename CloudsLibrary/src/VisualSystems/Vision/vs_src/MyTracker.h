@@ -14,7 +14,6 @@
 #include "ofMain.h"
 
 
-
 class MyTracker : public ofxCv::RectFollower {
 protected:
 	ofVec3f cur, smooth;
@@ -30,7 +29,7 @@ public:
 	void setup(const cv::Rect& track);
 	void update(const cv::Rect& track);
 	void kill();
-	void draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers);
+	void draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers, ofFloatColor boxColor);
 
     ofPolyline getLifeSpan();
     int getLifeTime();

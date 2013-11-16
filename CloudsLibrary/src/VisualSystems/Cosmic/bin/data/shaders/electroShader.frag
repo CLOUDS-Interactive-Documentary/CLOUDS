@@ -37,7 +37,7 @@ void main()
 				direction = normalize(direction); 
 				float rad = dist; 
 				dist = pow(dist, 2.);
-				force += (charge*rad / max(pow( (dist+.01),1.25), epsilon)) * direction;
+				//force += (charge*rad / max(pow( (dist+.01),1.25), epsilon)) * direction;
 			}
         }
     }
