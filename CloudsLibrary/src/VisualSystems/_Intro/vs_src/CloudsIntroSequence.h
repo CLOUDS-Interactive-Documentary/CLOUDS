@@ -160,5 +160,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
 	ofImage sprite;
 
-
+    ofVec3f cursor;
+    
 };

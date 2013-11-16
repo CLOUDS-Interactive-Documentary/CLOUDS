@@ -354,6 +354,23 @@ void CloudsIntroSequence::selfDraw(){
 	CloudsQuestion::endShader();
 	
 	ofPopStyle();
+    
+    // Draw the cursor.
+//    glDisable(GL_DEPTH_TEST);
+    ofRectangle viewport;
+#ifdef OCULUS_RIFT
+    viewport = getOculusRift().getOculusViewport();
+#else
+    viewport = ofGetCurrentViewport();
+#endif
+    
+    ofVec3f worldCursor = getCameraRef().screenToWorld(cursor, viewport);
+    ofSetColor(255, 0, 0);
+    ofCircle(worldCursor, 2 + cursor.z * 10);
+
+    ofVec3f worldCenter = getCameraRef().screenToWorld(viewport.getCenter(), viewport);
+    ofSetColor(0, 255, 0);
+    ofCircle(worldCenter, 2);
 }
 
 void CloudsIntroSequence::drawCloudsType(){
@@ -406,6 +423,12 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		reloadShaders();
 	}
+    if (args.key == 'a') {
+        cursor.z += 0.1;
+    }
+    if (args.key == 'z') {
+        cursor.z -= 0.1;
+    }
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
@@ -416,8 +439,9 @@ void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
-	
+void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
+{
+    cursor.set(data.x, data.y, cursor.z);
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
