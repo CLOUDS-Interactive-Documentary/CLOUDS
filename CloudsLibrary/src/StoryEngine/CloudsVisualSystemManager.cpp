@@ -352,7 +352,11 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset.enabled = keywordXml.getValue("enabled", true );
 		preset.oculusCompatible = keywordXml.getValue("oculus", false );
 		preset.checkHasFiles();
-		
+		preset.systemIsRegistered = false;
+#ifndef CLOUDS_NO_VS
+		preset.systemIsRegistered = constructors.find(preset.systemName) != constructors.end();
+//		cout << "PRESET IS REGISTERED??? " << (preset.systemIsRegistered ? "YES!" : "NO!");
+#endif
 		presets.push_back(preset);
 		nameToPresets[preset.systemName].push_back(preset);
 
@@ -370,6 +374,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			presets.push_back(preset);
 		}
 	}
+	
 #endif
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();

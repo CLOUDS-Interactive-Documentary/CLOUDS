@@ -317,6 +317,7 @@ void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 	this->speakerLastName = speakerLastName;
 	this->quoteName = quoteName;
 	hasSpeaker = true;
+	speakerChanged();
 	
 }
 
@@ -366,8 +367,6 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 		timeline->setOffset(ofVec2f(4, ofGetHeight() - timeline->getHeight() - 4 ));
 		timeline->setWidth(ofGetWidth() - 8);
 	}
-	
-	
 }
 
 void CloudsVisualSystem::draw(ofEventArgs & args)

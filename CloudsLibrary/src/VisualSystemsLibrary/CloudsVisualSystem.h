@@ -163,6 +163,8 @@ class CloudsVisualSystem {
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
 					  string quoteName);
+
+	virtual void speakerChanged(){};
 	
 	void speakerEnded();
 	

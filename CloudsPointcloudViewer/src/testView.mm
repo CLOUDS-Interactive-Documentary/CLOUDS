@@ -2,7 +2,7 @@
 #include "CloudsGlobal.h"
 @implementation testView
 @synthesize clipTable;
-
+@synthesize interventionTextBox;
 - (void)setup
 {
 
@@ -16,6 +16,7 @@
 	
 	if(ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
 		parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+        cout<<"Clouds Directory is pointing to "<<ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText()<<endl;
 	}
 	else{
 		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
@@ -25,6 +26,7 @@
 	[clipTable setTarget:self];
 	[clipTable setDoubleAction:@selector(loadClipFromTable:)];
 	[clipTable reloadData];
+    [interventionTextBox setTarget:self];   
 	
 //	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
@@ -115,7 +117,7 @@
 
 - (void)keyReleased:(int)key
 {
-	
+
 }
 
 - (void)mouseMoved:(NSPoint)p
@@ -145,6 +147,25 @@
 {
 	return parser.getAllClips().size();
 }
+
+- (std::string)convertString:(NSString *)string
+{
+    std::string cppString([string UTF8String], [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+    return cppString;
+}
+
+-(void)addIntervention:(id)sender{
+
+    const char* interventionName =[interventionTextBox.stringValue UTF8String ];
+    string name = interventionName;
+    if(clipTable.selectedRow >= 0){
+        CloudsClip& clip =parser.getAllClips()[[clipTable selectedRow]];
+        cout<<" Adding intervention : "<<name<<" to clip "<<clip.getLinkName()<<endl;
+    }
+}
+
+
+
 
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex

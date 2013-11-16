@@ -444,7 +444,7 @@ void CloudsFCPParser::saveLinks(string linkFile){
 			if(printErrors) ofSystemAlertDialog("UNABLE TO CREATE LINK BACK UP");
 			return;
 		}
-		
+
 		cout << "BACKUPING UP FILE FROM " << linkFile << " to " << backup << endl;
 	}
 	
@@ -1366,6 +1366,54 @@ void CloudsFCPParser::reciprocateSuppressions(CloudsClip& sourceClip){
             cout<<"Added reciprocal suppression for source: "<<sourceClip.getLinkName()<<" and target: "<<targetClip.getLinkName()<<endl;
         }
     }
+}
+
+
+void CloudsFCPParser:: addIntervention(string clipName, string interventionName){
+    clipInterventions[clipName] = interventionName;
+}
+
+bool CloudsFCPParser::clipHasIntervention(string clipName){
+	return clipInterventions.find(clipName) != clipInterventions.end();
+}
+
+void CloudsFCPParser::saveInterventions(string interventionsFile){
+    int numClips = 0;
+    ofxXmlSettings linksXML;
+    map<string, vector<CloudsLink> >::iterator it;
+	
+	for(int i = 0; i < allClips.size(); i++){
+		string clipName = allClips[i].getLinkName();
+		
+		bool hasIntervention = clipHasIntervention(allClips[i].getLinkName());
+
+        
+        if(hasIntervention){
+			
+			linksXML.addTag("clip");
+			linksXML.pushTag("clip", numClips++);
+			
+			linksXML.addValue("name", clipName);
+            
+
+				vector<CloudsLink>& clipLinks = linkedConnections[clipName];
+                
+				for(int l = 0; l < clipLinks.size(); l++){
+					linksXML.addTag("intervention");
+					linksXML.pushTag("intervention", l);
+					linksXML.addValue("name", clipInterventions[clipName] );;
+					linksXML.popTag(); //link!
+				}
+			
+			
+			linksXML.popTag();
+		}
+	}
+    
+    if(! linksXML.saveFile(interventionsFile) ){
+		if(printErrors) ofSystemAlertDialog("UNABLE TO SAVE LINKS. DO NOT PROCEED");
+	}
+    
 }
 
 
