@@ -53,5 +53,7 @@ class testApp : public ofBaseApp{
     void audioRequested(float * output, int bufferSize, int nChannels);
     
     void guiEvent(ofxUIEventArgs &e);
+    
+    bool withVideo;
 
 };
