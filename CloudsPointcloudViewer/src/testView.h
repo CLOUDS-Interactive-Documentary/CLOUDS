@@ -22,7 +22,6 @@
 
 @property (assign) IBOutlet NSTableView *clipTable;
 @property (assign) IBOutlet NSTextField *interventionTextBox;
-//@property (assign) 
 
 - (void)setup;
 - (void)update;

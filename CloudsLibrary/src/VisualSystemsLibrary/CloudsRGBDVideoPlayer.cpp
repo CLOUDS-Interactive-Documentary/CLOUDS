@@ -31,6 +31,7 @@ CloudsRGBDVideoPlayer::~CloudsRGBDVideoPlayer(){
 }
 
 //---------------------------------------------------------------
+//SURYA TODO: Add new end time
 bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, float offsetTime){
 	
 	if(!bEventRegistered){

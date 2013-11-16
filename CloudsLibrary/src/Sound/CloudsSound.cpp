@@ -37,7 +37,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
-        first_vec=1; // we haven't had audio yet
+        first_vec = 1; // we haven't had audio yet
         
         // load samples
         loadRTcmixSamples();
