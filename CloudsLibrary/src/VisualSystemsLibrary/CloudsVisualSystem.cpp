@@ -773,10 +773,10 @@ void CloudsVisualSystem::mouseMoved(ofMouseEventArgs& data)
 #ifdef OCULUS_RIFT
     // Remap the mouse coords.
     ofRectangle viewport = getOculusRift().getOculusViewport();
-    cout << "MOUSE IN: " << data.x << ", " << data.y << " // VIEWPORT: " << viewport.x << ", " << viewport.y << ", " << viewport.width << ", " << viewport.height;
+//    cout << "MOUSE IN: " << data.x << ", " << data.y << " // VIEWPORT: " << viewport.x << ", " << viewport.y << ", " << viewport.width << ", " << viewport.height;
     data.x = ofMap(data.x, 0, ofGetWidth(), viewport.x, viewport.width);
     data.y = ofMap(data.y, 0, ofGetHeight(), viewport.y, viewport.height);
-    cout << "// MOUSE OUT: " << data.x << ", " << data.y << endl;
+//    cout << "// MOUSE OUT: " << data.x << ", " << data.y << endl;
 #endif
     selfMouseMoved(data);
 }
