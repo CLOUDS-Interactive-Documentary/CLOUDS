@@ -1,7 +1,10 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup()
+{
+    ofSetVerticalSync(true);
+    
 	vs.setup();
 	vs.playSystem();
 }
