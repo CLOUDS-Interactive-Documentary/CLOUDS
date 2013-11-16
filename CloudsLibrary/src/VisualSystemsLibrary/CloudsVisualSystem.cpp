@@ -317,6 +317,7 @@ void CloudsVisualSystem::setupSpeaker(string speakerFirstName,
 	this->speakerLastName = speakerLastName;
 	this->quoteName = quoteName;
 	hasSpeaker = true;
+	speakerChanged();
 	
 }
 
