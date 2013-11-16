@@ -45520,7 +45520,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>attention,staring at screens,#inspiring,#obstacle,#tech,#easy,?coding: What is it like to sketch with code?,#start</additionalKeywords>
+    <additionalKeywords>attention,staring at screens,#start,#easy,#tech,#obstacle,?coding: What is it like to sketch with code?</additionalKeywords>
 </clip>
 <clip>
     <name>Shantell - full circle</name>
@@ -45922,6 +45922,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>#start,?sketching: How do you &quot;sketch&quot; with code?,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Shantell - circularity</name>
@@ -45955,6 +45956,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
+    <additionalKeywords>?sketching: How do you &quot;sketch&quot; with code?</additionalKeywords>
 </clip>
 <clip>
     <name>Shantell - comes around</name>
