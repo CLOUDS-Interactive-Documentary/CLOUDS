@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C070D71836BB2500B58246 /* CloudsIntervention.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C070D51836BB2400B58246 /* CloudsIntervention.cpp */; };
 		608B6AB116A78AB800144EF4 /* ofxCocoaGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */; };
 		6091337D1652C9C900B523AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337A1652C9C900B523AD /* AppDelegate.m */; };
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
@@ -298,6 +299,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18C070D51836BB2400B58246 /* CloudsIntervention.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsIntervention.cpp; sourceTree = "<group>"; };
+		18C070D61836BB2500B58246 /* CloudsIntervention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsIntervention.h; sourceTree = "<group>"; };
 		608B6AAC16A78AAD00144EF4 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		608B6AAF16A78AB800144EF4 /* ofxCocoaGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCocoaGLView.h; sourceTree = "<group>"; };
 		608B6AB016A78AB800144EF4 /* ofxCocoaGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaGLView.mm; sourceTree = "<group>"; };
@@ -856,6 +859,8 @@
 		E731D65817401845006B9650 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				18C070D51836BB2400B58246 /* CloudsIntervention.cpp */,
+				18C070D61836BB2500B58246 /* CloudsIntervention.h */,
 				E74620CA17DB8162002FC464 /* CloudsSpeaker.h */,
 				E74620C917DB8162002FC464 /* CloudsSpeaker.cpp */,
 				E731D65B17401845006B9650 /* CloudsEvents.h */,
@@ -1597,6 +1602,7 @@
 				E730A47D17DBE4D00088335A /* Delaunay.cpp in Sources */,
 				E7E5E2C21812192900CA4196 /* question.frag in Sources */,
 				E7E5E2C31812192900CA4196 /* question.vert in Sources */,
+				18C070D71836BB2500B58246 /* CloudsIntervention.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
