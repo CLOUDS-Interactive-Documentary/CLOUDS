@@ -1,0 +1,112 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>lorenz</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>wavy</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fxaa</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bloom</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawLine</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxLineLength</Name>
+    <Value>2713.940917969</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lineFadeLength</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lineWidth</Name>
+    <Value>1.065517187</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawMesh</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>maxMeshLength</Name>
+    <Value>157.487686157</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>meshRadius</Name>
+    <Value>0.253694594</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>additiveBlending</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawNormals</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawInflections</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawAcc</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>lockCam</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>lockedCamLag</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogStart</Name>
+    <Value>137.931030273</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogEnd</Name>
+    <Value>167.487686157</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>litAmount</Name>
+    <Value>0.305418730</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>1.000000000</Value>
+</Widget>
