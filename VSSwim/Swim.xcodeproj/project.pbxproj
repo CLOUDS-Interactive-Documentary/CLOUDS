@@ -196,6 +196,7 @@
 		282FEC04182FFEBE00519D79 /* fish.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = fish.vert; sourceTree = "<group>"; };
 		282FEC05182FFEBE00519D79 /* jelly.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = jelly.frag; sourceTree = "<group>"; };
 		282FEC06182FFEBE00519D79 /* jelly.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = jelly.vert; sourceTree = "<group>"; };
+		285185DE1837D1B8009D8339 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
 		285C2067182FFFEE0065BCAE /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
 		285C2068182FFFEE0065BCAE /* BloomPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BloomPass.cpp; sourceTree = "<group>"; };
@@ -1479,6 +1480,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				285185DE1837D1B8009D8339 /* CloudsGlobal.h */,
 				282FEBC1182FFE6500519D79 /* Swim */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
