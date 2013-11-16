@@ -102,7 +102,15 @@ void CloudsIntroSequence::selfUpdate(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
-		startQuestions[i].update();
+		if(bUseOculusRift){
+			#ifdef OCULUS_RIFT
+			startQuestions[i].update(getOculusRift().getOculusViewport());
+			#endif
+		}
+		else{
+			startQuestions[i].update();
+		}
+		
 		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;

@@ -112,12 +112,12 @@ void CloudsQuestion::reloadShader(){
 	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");
 }
 
-void CloudsQuestion::update(){
+void CloudsQuestion::update(ofRectangle viewport){
 	
-	ofVec3f screenPoint = cam->worldToScreen(position);
+	ofVec3f screenPoint = cam->worldToScreen(position, viewport);
 	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
 	
-	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0));
+	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0), viewport);
 	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
 }
 
@@ -137,8 +137,8 @@ void CloudsQuestion::draw(){
 		selectPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true, cub, ofxTween::easeOut);
 	}
 	else{
-		expandPercent += (.1 - expandPercent)*.2;
-		selectPercent += ( 0 - selectPercent)*.4;
+		expandPercent += (.1 - expandPercent) * .2;
+		selectPercent += ( 0 - selectPercent) * .4;
 	}
 	
 	//make it blow up and fade out really quickly.
