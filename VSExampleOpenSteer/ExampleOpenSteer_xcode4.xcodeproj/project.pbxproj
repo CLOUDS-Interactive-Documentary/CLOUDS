@@ -537,6 +537,7 @@
 		644DD80117A2072B009950CB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = /System/Library/Frameworks/AVFoundation.framework; sourceTree = "<absolute>"; };
 		644DD80217A2072B009950CB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = /System/Library/Frameworks/CoreMedia.framework; sourceTree = "<absolute>"; };
 		644DD80317A2072B009950CB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		850A2D0918358E65003764BA /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsGlobal.h; sourceTree = "<group>"; };
 		850EEA8818307765004411A3 /* ExampleOpenSteer copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleOpenSteer copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EEA8918307765004411A3 /* ExampleOpenSteer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ExampleOpenSteer copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSExampleOpenSteer/ExampleOpenSteer copy-Info.plist"; sourceTree = "<absolute>"; };
 		850EEB1218307787004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
@@ -1505,6 +1506,7 @@
 		E793AD4A181C41A000FDB0E4 /* ExampleOpenSteer */ = {
 			isa = PBXGroup;
 			children = (
+				850A2D0918358E65003764BA /* CloudsGlobal.h */,
 				E793AD4B181C41A000FDB0E4 /* vs_src */,
 			);
 			name = ExampleOpenSteer;

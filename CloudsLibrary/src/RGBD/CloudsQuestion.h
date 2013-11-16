@@ -42,7 +42,7 @@ class CloudsQuestion {
 	
 	void draw();
 	void drawOverlay();
-	void update();
+	void update(ofRectangle viewport = ofGetCurrentViewport());
 	
 	void enableHover();
 	void disableHover();
