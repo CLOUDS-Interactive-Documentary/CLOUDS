@@ -2382,6 +2382,51 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Metaballs_MarioClouds">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Metaballs_MarioCloudsOC">
+    <keywords>videogames</keywords>
+    <suppressions>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>Casey - Indie Game movement</clip>
+        <clip>Casey - Something new, totally engrossing</clip>
+        <clip>Casey - radically different from a videogame</clip>
+        <clip>Diederick - don&apos;t like that kind of interaction</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Kevin - non-mimetic reality</clip>
+        <clip>Kyle_CH - Avatars</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Ramsey - a piece of my mind</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Regine - virtual</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Metaballs_Purple_Clouds">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -2454,7 +2499,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy_blend_2">
@@ -2462,7 +2507,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fancy_smoothing">
@@ -2470,7 +2515,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_fauxMetaballs">
@@ -2497,12 +2542,55 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Metaballs_jg_GrayCloudsOC">
+    <keywords>videogames|form</keywords>
+    <suppressions>
+        <clip>Aaron - experience design</clip>
+        <clip>Aaron - lego creatures</clip>
+        <clip>Aaron - the best games are great stories</clip>
+        <clip>Casey - Indie Game movement</clip>
+        <clip>Casey - Something new, totally engrossing</clip>
+        <clip>Casey - radically different from a videogame</clip>
+        <clip>Diederick - don&apos;t like that kind of interaction</clip>
+        <clip>Elliot_UK - wiremape_description</clip>
+        <clip>JTNimoy - Cortex</clip>
+        <clip>JTNimoy - evolution</clip>
+        <clip>Karsten - atari emulation</clip>
+        <clip>Karsten - demo scene 1</clip>
+        <clip>Karsten - east german hardware 2</clip>
+        <clip>Kevin - Acknolwedgement of artifice</clip>
+        <clip>Kevin - Area code 2</clip>
+        <clip>Kevin - Big games 1</clip>
+        <clip>Kevin - No consequences 1</clip>
+        <clip>Kevin - area code 1</clip>
+        <clip>Kevin - game designers</clip>
+        <clip>Kevin - immersive games</clip>
+        <clip>Kyle_CH - Avatars</clip>
+        <clip>Kyle_CH - Cory Arcangel</clip>
+        <clip>Kyle_CH - MMORPGs</clip>
+        <clip>Kyle_CH - videogame world</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>Marius - Art world gave up on beauty</clip>
+        <clip>Marius - Continuous process of exploration</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Paola - Moma games</clip>
+        <clip>Paola - Portal</clip>
+        <clip>Ramsey - games for access</clip>
+        <clip>Ramsey - videogame development</clip>
+        <clip>Regine - virtual</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Metaballs_metaball_simple">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_nice_weather">
@@ -2510,7 +2598,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Metaballs_vertically_stretched">
@@ -2518,7 +2606,7 @@
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Neurons_Brain">
