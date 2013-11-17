@@ -190,6 +190,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //		notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 //		grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 //		enabledBox.state = selectedPreset->enabled;
+		
 		visualSystems.savePresets();
 		
 		[self updateCounts];

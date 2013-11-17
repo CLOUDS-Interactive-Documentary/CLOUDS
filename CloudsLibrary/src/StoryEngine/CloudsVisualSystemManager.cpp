@@ -10,7 +10,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemOcean.h"
-#include "CloudsVisualSystemOrbit.h"
+//#include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemConnectors.h"
 
@@ -115,7 +115,7 @@ struct Mapping {
 	{ "Metaballs", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
-    { "Orbit", &fCreate<CloudsVisualSystemOrbit> },
+//  { "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
 	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
@@ -328,15 +328,28 @@ void CloudsVisualSystemManager::loadPresets(){
 	for(int i = 0; i < numSystems; i++){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
-		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-		keywords[ name ] = presetKeywords;
 		
-		CloudsVisualSystemPreset preset;
 		vector<string> splitName = ofSplitString(name, "_",true,true);
-		preset.systemName = splitName[0];
+		string systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
-		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
-		preset.loadTimeInfo();
+		string presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+		CloudsVisualSystemPreset* preset;
+		CloudsVisualSystemPreset newPreset;
+		bool existingPreset = systemHasPreset(systemName, presetName);
+		if(existingPreset){
+			preset = &getPresetForSystem(systemName, presetName);
+		}
+		else {
+			preset = &newPreset;
+			preset->systemName = systemName;
+			preset->presetName = presetName;
+			preset->loadTimeInfo();
+		}
+		
+		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );		
+		if(!existingPreset){
+			keywords[ preset->getID() ] = presetKeywords;
+		}
 
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
@@ -344,24 +357,33 @@ void CloudsVisualSystemManager::loadPresets(){
 			for(int i=0; i<numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
                 //				cout << "found suppression " << suppressedLinkName << endl;
-				suppressedClips[name].push_back(suppressedLinkName);
+				suppressedClips[preset->getID()].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions
 		}
 		
-		preset.comments = keywordXml.getValue("comments","");
-		preset.grade = keywordXml.getValue("grade", "");
-		preset.enabled = keywordXml.getValue("enabled", true );
-		preset.oculusCompatible = keywordXml.getValue("oculus", false );
-		preset.checkHasFiles();
-		preset.systemIsRegistered = false;
+		preset->comments = keywordXml.getValue("comments","");
+		preset->grade = keywordXml.getValue("grade", "");
+		preset->enabled = keywordXml.getValue("enabled", true );
+		preset->oculusCompatible = keywordXml.getValue("oculus", false );
+		preset->checkHasFiles();
+		preset->systemIsRegistered = false;
 #ifndef CLOUDS_NO_VS
-		preset.systemIsRegistered = constructors.find(preset.systemName) != constructors.end();
+		preset->systemIsRegistered = constructors.find(systemName) != constructors.end();
 //		cout << "PRESET IS REGISTERED??? " << (preset.systemIsRegistered ? "YES!" : "NO!");
 #endif
-		presets.push_back(preset);
-		nameToPresets[preset.systemName].push_back(preset);
-
+		if(existingPreset){
+			for(int i = 0; i < presets.size(); i++){
+				//replace the existing preset with the updated one
+				if(presets[i].getID() == preset->getID()){
+					presets[i] = *preset;
+				}
+			}
+		}
+		else{
+			presets.push_back(*preset);
+			nameToPresets[preset->systemName].push_back(*preset);
+		}
         keywordXml.popTag(); //system
 	}
 	
@@ -441,7 +463,7 @@ void CloudsVisualSystemManager::savePresets(){
 		//SUPPRESSIONS
 		keywordXml.addTag("suppressions");
         keywordXml.pushTag("suppressions");
-        vector<string>& clips =  getSuppressionsForPreset(presetName);
+        vector<string>& clips =  getSuppressionsForPreset( preset.getID() );
         for (int i =0; i<clips.size(); i++) {
             keywordXml.addValue("clip",clips[i]);
         }
