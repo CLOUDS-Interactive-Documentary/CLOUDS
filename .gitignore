@@ -132,3 +132,7 @@ CloudsMovieDirectory_remote.txt
 
 
 /CloudsLibrary/src/VisualSystems/LaplacianTunnel/bin/data/Meshes
+
+/CloudsData/clipScore.csv
+/CloudsData/clipScore_sketchingWithCode.csv
+/CloudsData/clipScore_systemsToDrawing.csv
