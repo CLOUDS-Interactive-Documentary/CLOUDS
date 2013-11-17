@@ -4106,10 +4106,10 @@
 		E7C8B32E182ACE7200AAD6E8 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7C8B32F182ACE7200AAD6E8 /* Boid.cpp */,
-				E7C8B330182ACE7200AAD6E8 /* Boid.h */,
-				E7C8B331182ACE7200AAD6E8 /* CloudsVisualSystemExampleOpenSteer.cpp */,
 				E7C8B332182ACE7200AAD6E8 /* CloudsVisualSystemExampleOpenSteer.h */,
+				E7C8B331182ACE7200AAD6E8 /* CloudsVisualSystemExampleOpenSteer.cpp */,
+				E7C8B330182ACE7200AAD6E8 /* Boid.h */,
+				E7C8B32F182ACE7200AAD6E8 /* Boid.cpp */,
 				E7C8B333182ACE7200AAD6E8 /* Flocking.h */,
 				E7C8B334182ACE7200AAD6E8 /* ObstacleAvoidance.h */,
 				E7C8B335182ACE7200AAD6E8 /* PathFollowing.h */,

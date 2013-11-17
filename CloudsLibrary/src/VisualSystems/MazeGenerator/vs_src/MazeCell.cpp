@@ -35,9 +35,9 @@ size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, v
         
         // north wall top
         ofVec3f(-size/2, wallHeight, size/2),
-        ofVec3f(size/2, wallHeight, size/2),
+        ofVec3f( size/2, wallHeight, size/2),
         ofVec3f(-size/2, wallHeight, size/2-wallThickness/2),
-        ofVec3f(size/2, wallHeight, size/2-wallThickness/2),
+        ofVec3f( size/2, wallHeight, size/2-wallThickness/2),
     };
     
     ofVec3f wallNormals[] = {
@@ -50,10 +50,10 @@ size_t MazeCell::addGeometry(vector<ofVec3f> &verts, vector<ofVec3f> &normals, v
     
     short wallIndexes[5][6] = {
         {4, 5, 6, 6, 5, 7},  // top
-        {5, 4, 1, 1, 4, 0},   // north
-        {7, 5, 3, 3, 5, 1},   // east
-        {6, 7, 2, 2, 7, 3},   // south
-        {4, 6, 0, 0, 6, 2}};  // west
+        {5, 4, 1, 1, 4, 0},  // north
+        {7, 5, 3, 3, 5, 1},  // east
+        {6, 7, 2, 2, 7, 3},  // south
+        {4, 6, 0, 0, 6, 2}}; // west
     
     ofVec2f sideUvs[] = {ofVec2f(0, 0), ofVec2f(0.8, 0), ofVec2f(0, 0.8),
         ofVec2f(0, 0.8), ofVec2f(0.8, 0), ofVec2f(0.8, 0.8)};

@@ -512,8 +512,9 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     
 	for(int i = 0; i < presets.size(); i++){
+		vector<string> presetKeywords = keywordsForPreset(i);
 		for(int k = 0; k < keys.size(); k++){
-			if( ofContains(keywordsForPreset(i), keys[k]) ){
+			if( ofContains(presetKeywords, keys[k]) ){
 				presetsWithKeywords.push_back(presets[i]);
 				continue;
 			}

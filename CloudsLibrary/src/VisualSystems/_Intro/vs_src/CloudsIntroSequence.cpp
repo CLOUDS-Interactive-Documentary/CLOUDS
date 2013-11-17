@@ -31,7 +31,7 @@ void CloudsIntroSequence::selfSetup(){
 		font.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", 12);
 	}
 	else{
-		font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+		font.loadFont(getDataPath() + "font/materiapro_light.ttf", 12);
 	}
 	
 	loadedQuestions.push_back("Shiffman_NOC_3");

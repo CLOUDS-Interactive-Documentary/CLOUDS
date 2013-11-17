@@ -17,7 +17,6 @@ void MazeCamera::setup(float x, float y, float z, MazeSettings* set)
     setFov(60);
     
     xRot = yRot = zRot = 0;
-    
     vel = ofVec3f(0, 0, 1);
 }
 
@@ -101,7 +100,8 @@ void MazeCamera::applyLimits(ofVec3f &p)
 {
     if (p.x < 50) {
         p.x = 50;
-    } else if (p.x > 30*60) {
+    }
+	else if (p.x > 30*60) {
         p.x = 30*60;
     }
     
