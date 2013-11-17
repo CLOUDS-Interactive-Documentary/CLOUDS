@@ -165,6 +165,84 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="3DModelVisualSystem_HyperSphere1OC">
+    <keywords>clock|time|future|science fiction</keywords>
+    <suppressions>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - A sappy Singularity</clip>
+        <clip>Bruce - Augmented Ubiquity</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Bruce - Not one idea of the future</clip>
+        <clip>Bruce - cyberpunk dictum long</clip>
+        <clip>Bruce - cyberpunk dictum short</clip>
+        <clip>Bruce - future camera 3</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Bruce - not one cyberpunk idea</clip>
+        <clip>Bruce - past and future</clip>
+        <clip>Bruce - talking about the future as history</clip>
+        <clip>Casey - futurist</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Casey - thinking about time</clip>
+        <clip>Elliot - augmented reality</clip>
+        <clip>Golan - Anxious about the future</clip>
+        <clip>Golan - apocalypse3</clip>
+        <clip>Golan - jolted into the NOW</clip>
+        <clip>Golan - kerrington</clip>
+        <clip>Golan - kessler</clip>
+        <clip>Golan - staring down the barrel</clip>
+        <clip>Jen - deep interaction</clip>
+        <clip>Joel - in the now</clip>
+        <clip>Julian - Ray Bradbury story</clip>
+        <clip>Julian - sci-fi and electronic music</clip>
+        <clip>Karsten - parallel processing</clip>
+        <clip>Kevin - cognition vs computation 1</clip>
+        <clip>Kevin - collaboration with machines</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Kyle_MC - Grab them ASAP</clip>
+        <clip>Kyle_MC - Transparent tech 2</clip>
+        <clip>Kyle_MC - eyetracking everywhere</clip>
+        <clip>Kyle_MC - shaping the direction</clip>
+        <clip>Maeda - Life in four quarters</clip>
+        <clip>Marcus - global conversation</clip>
+        <clip>Marius - Living in a state of newness since age 10</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - We&apos;ve embraced Dystopia</clip>
+        <clip>Marius - cyperpunk history</clip>
+        <clip>Martin - flickr flow</clip>
+        <clip>Nervous_Jesse - Time in the universe</clip>
+        <clip>Paola - Integrating with technology</clip>
+        <clip>Paola - designer of the future</clip>
+        <clip>Paola - teleportation</clip>
+        <clip>Philip - limitations</clip>
+        <clip>Ramsey - Google glass</clip>
+        <clip>Ramsey - a hundred million</clip>
+        <clip>Ramsey - dystopia</clip>
+        <clip>Ramsey - not interested in design fiction</clip>
+        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
+        <clip>Regine - commercial appropriation</clip>
+        <clip>Regine - elitist and their gadgets</clip>
+        <clip>Regine - imagining the future</clip>
+        <clip>Regine - looking forward to problems</clip>
+        <clip>Regine - teleportation</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Shantell - group improvisation</clip>
+        <clip>Sophy - avatar 1</clip>
+        <clip>Sophy - distributed culture</clip>
+        <clip>Sophy - nanobots</clip>
+        <clip>Sophy - techno-fungus</clip>
+        <clip>Theo - crazy researcher</clip>
+        <clip>Zach - Time slows down</clip>
+        <clip>Zach - drawn2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="3DModelVisualSystem_Kelp_Monochrome">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -425,14 +503,6 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_TransMan2">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="3DModelVisualSystem_Transparency_Grenade">
     <keywords>transparency</keywords>
     <suppressions>
@@ -505,14 +575,6 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_pink_elephant">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
 </system>
 <system name="3DModelVisualSystem_voronoi">
     <keywords></keywords>
@@ -1897,7 +1959,7 @@
     <oculus>0</oculus>
 </system>
 <system name="MandalaComponents_JM_pulse1OC">
-    <keywords>form|abstraction|energy|3D|Time|clock</keywords>
+    <keywords>form|abstraction|energy|3D|Time|clock|science fiction</keywords>
     <suppressions>
         <clip>Ramsey - arab abstraction 2</clip>
         <clip>Casey - New modes of expression</clip>
@@ -1909,6 +1971,21 @@
         <clip>Marius - gardening</clip>
         <clip>Ramsey - arab abstraction 1</clip>
         <clip>Elliot_UK - wiremape_description</clip>
+        <clip>Bruce - 2060s (Lashup 5)</clip>
+        <clip>Bruce - Everted Cyberspace</clip>
+        <clip>Bruce - future city 2</clip>
+        <clip>Casey - synthetic biology</clip>
+        <clip>Golan_AMA - abstraction</clip>
+        <clip>Julian - Ray Bradbury story</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_CH - Cloud atlas</clip>
+        <clip>Kyle_CH - Future life storage</clip>
+        <clip>Kyle_CH - Modeling consciousness</clip>
+        <clip>Kyle_CH - abstraction</clip>
+        <clip>Kyle_CH - storytelling</clip>
+        <clip>Nervous_Jesse - theoretical</clip>
+        <clip>Sophy - techno-fungus</clip>
     </suppressions>
     <comments></comments>
     <grade></grade>
@@ -1923,6 +2000,63 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="MandalaComponents_PureForm">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="MandalaComponents_PureFormOC">
+    <keywords>form|abstraction|3D|3d printing|aesthetics</keywords>
+    <suppressions>
+        <clip>Binx - making things</clip>
+        <clip>Bruce - 3D printed buildings</clip>
+        <clip>Bruce - Don&apos;t care about design</clip>
+        <clip>Bruce - Marius</clip>
+        <clip>Bruce - digital status quo</clip>
+        <clip>Bruce - future of the new aesthetic</clip>
+        <clip>Casey - Design by numbers to processing</clip>
+        <clip>Casey - New modes of expression</clip>
+        <clip>Casey - Tron</clip>
+        <clip>Casey - ideas of art history</clip>
+        <clip>Elliot_UK - wiremape_description</clip>
+        <clip>Fernanda - aesthetics as communication</clip>
+        <clip>Fernanda - beautiful evidence 2</clip>
+        <clip>Golan_AMA - first computer art</clip>
+        <clip>Jen - visual communication</clip>
+        <clip>Julia - aesthetic value</clip>
+        <clip>Kevin - Tools of perception</clip>
+        <clip>Kevin - algo culture 1</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kyle_MC - beauty</clip>
+        <clip>Marcus - call to action</clip>
+        <clip>Marius - Art world gave up on beauty</clip>
+        <clip>Marius - Thoroughly enjoying it at the moment</clip>
+        <clip>Marius - culturally biased aesthetic</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Marius - jumping from medium to medium</clip>
+        <clip>Nervous_Jesse - making things</clip>
+        <clip>Nervous_Jesse - theoretical</clip>
+        <clip>Nervous_Jessica - Big 3D printers Long quote</clip>
+        <clip>Nervous_Jessica - Design process</clip>
+        <clip>Nervous_Jessica - Design process 2</clip>
+        <clip>Nervous_Jessica - Growing buildings</clip>
+        <clip>Nervous_Jessica - I create the work that I love</clip>
+        <clip>Nervous_Jessica - Marker 2</clip>
+        <clip>Paola - Paola&apos;s Republic</clip>
+        <clip>Paola - beauty in exile</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Zach - more poetry, less demo</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="MandalaComponents_clock">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1932,6 +2066,14 @@
     <oculus>0</oculus>
 </system>
 <system name="MandalaComponents_clock2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="MandalaComponents_cracked_skin">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
