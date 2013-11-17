@@ -294,6 +294,14 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Cities_BouncyOrangeCities">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Cities_CloseUp">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -326,6 +334,22 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Cities_JG_CameraSwoop">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Lars_debug">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Cities_LightCity">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -350,6 +374,30 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Cities_Sprawl_aerial1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Sprawl_aerial2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_ThinSkyscrapers1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Cities_realistic">
     <keywords>cities</keywords>
     <suppressions></suppressions>
@@ -365,22 +413,6 @@
     <grade>A</grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
-</system>
-<system name="Cities_realistic2OC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="Cities_realisticOC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
 </system>
 <system name="Connectors_Rotating_Box">
     <keywords>interconnectedness|connectivity|form</keywords>
@@ -2846,6 +2878,70 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Vision_GreenPoint_Contour">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_GreenPoint_Flow1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_GreenPoint_flow2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_Soho_Boxes">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_Tokyo1_boxes">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_TokyoCrossing_flow">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_TokyoEscalator_flow1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_unionsq3_diff_contours">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Voro_BluePrint">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -3063,7 +3159,7 @@
     <oculus>0</oculus>
 </system>
 <system name="World_SpaceJunkOC">
-    <keywords></keywords>
+    <keywords>videogames</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -3103,7 +3199,7 @@
     <oculus>0</oculus>
 </system>
 <system name="YellowTail_YellowTail">
-    <keywords></keywords>
+    <keywords>gesture</keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
