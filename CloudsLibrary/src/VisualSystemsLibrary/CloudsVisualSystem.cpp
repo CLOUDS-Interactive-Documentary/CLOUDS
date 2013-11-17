@@ -442,6 +442,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
+//			if(getSystemName() != "_Intro"){
+//				cout << "Post draw should not have happened";
+//			}
 			selfPostDraw();
 		}
 		

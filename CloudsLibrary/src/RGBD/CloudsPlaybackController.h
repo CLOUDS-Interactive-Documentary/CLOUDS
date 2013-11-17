@@ -129,6 +129,10 @@ class CloudsPlaybackController {
 	
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 	
+	//overrides whatever the story engine spits out so that we can force a certain sequence
+	//intended for distributing controlled demos
+	void setMandatoryAct(CloudsAct* act);
+	
 	void playAct(CloudsAct* act);
 	CloudsVisualSystemClusterMap& getClusterMap();
 	CloudsRGBDVideoPlayer& getSharedVideoPlayer();
@@ -202,6 +206,7 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
+	CloudsAct* mandatoryAct;
 //    CloudsRun* currentRun;
 	
 	//RGBD STUFF

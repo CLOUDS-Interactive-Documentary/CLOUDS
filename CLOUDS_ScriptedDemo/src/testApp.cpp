@@ -64,12 +64,11 @@ void testApp::setup(){
 //	sound.setMasterAmp(1.0);
 //	useScratch = false;
 	
-//	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
+	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
 //	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "LSystem", "CityTree");
 //	
 	CloudsAct* act = new CloudsAct();
 	vector<string> clipIds;
-	
 	clipIds.push_back("Shantell - Coding gesturally");
 	clipIds.push_back("Golan - make a mark");
 	clipIds.push_back("Karsten - immediate feedback");
@@ -91,13 +90,17 @@ void testApp::setup(){
 	}
 	
 	//play the visual systems for some time
-//	act->addVisualSystem( preset0,  4, 5 );
+	act->addVisualSystem( preset0,  0, 20 );
 //	act->addVisualSystem( preset2, 14, 5 );
 //	act->addVisualSystem( preset0, 24, 5 );
+	act->populateTime();	
+	player.setMandatoryAct(act);
+	vector<CloudsClip> question;
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	player.showIntro(question);
 	
 	//populate and run
-	act->populateTime();
-	player.playAct(act);	
+//	player.playAct(act);
 }
 
 //--------------------------------------------------------------

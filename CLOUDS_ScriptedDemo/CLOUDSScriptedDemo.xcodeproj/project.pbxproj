@@ -3446,8 +3446,8 @@
 		E7D9E103182B03B300AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */,
 				E7D9E105182B03B300AD56C1 /* CloudsVisualSystemLia.h */,
+				E7D9E104182B03B300AD56C1 /* CloudsVisualSystemLia.cpp */,
 				E7D9E106182B03B300AD56C1 /* ColorPalette.cpp */,
 				E7D9E107182B03B300AD56C1 /* ColorPalette.h */,
 				E7D9E108182B03B300AD56C1 /* Globals.cpp */,
