@@ -14,6 +14,7 @@
 #include "CloudsClip.h"
 #include "CloudsQuestion.h"
 #include "CloudsRun.h"
+#include "ofxFTGL.h"
 
 class CloudsIntroSequence : public CloudsVisualSystem {
   public:
@@ -95,8 +96,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
-	//TODO pick a better font renderer
-	ofTrueTypeFont font;
+	
+	ofxFTGLFont font;
 	
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;

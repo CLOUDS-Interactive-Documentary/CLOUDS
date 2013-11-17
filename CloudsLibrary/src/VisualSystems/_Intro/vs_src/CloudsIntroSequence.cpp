@@ -27,7 +27,12 @@ string CloudsIntroSequence::getSystemName(){
 
 void CloudsIntroSequence::selfSetup(){
 
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+	if(bUseOculusRift){
+		font.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", 12);
+	}
+	else{
+		font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+	}
 	
 	loadedQuestions.push_back("Shiffman_NOC_3");
 	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
@@ -102,21 +107,26 @@ void CloudsIntroSequence::selfUpdate(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
-		if(bUseOculusRift){
-			#ifdef OCULUS_RIFT
-			startQuestions[i].update(getOculusRift().getOculusViewport());
-			#endif
-		}
-		else{
+//		if(bUseOculusRift){
+//			#ifdef OCULUS_RIFT
+//			startQuestions[i].update(getOculusRift().getOculusViewport());
+//			#endif
+//		}
+//		else{
 			startQuestions[i].update();
-		}
+//		}
 		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
 		
 		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
+#ifdef OCULUS_RFIT
+			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].position);
+			cout << "Distance " << distanceToQuestion << endl;
+#else
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
+#endif
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance ){
 					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
@@ -356,11 +366,11 @@ void CloudsIntroSequence::selfDraw(){
     
 #ifdef OCULUS_RIFT
 	
-	ofPushStyle();
-	ofVec3f worldCursor = getOculusRift().mousePosition3D();
-    ofSetColor(255, 0, 0);
-    ofCircle(worldCursor, .5);
-	ofPopStyle();
+//	ofPushStyle();
+//	ofVec3f worldCursor = getOculusRift().mousePosition3D();
+//    ofSetColor(255, 0, 0);
+//    ofCircle(worldCursor, .5);
+//	ofPopStyle();
 	
 #endif
 
@@ -379,6 +389,14 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
+	if(bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay(true);
+		}
+		ofPopStyle();
+		
+	}
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -387,12 +405,13 @@ void CloudsIntroSequence::selfPostDraw(){
 	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
-	
-	ofPushStyle();
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].drawOverlay();
+	if(!bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay();
+		}
+		ofPopStyle();
 	}
-	ofPopStyle();
 	
 }
 

@@ -7,6 +7,7 @@
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxDelaunay.h"
+#include "ofxFTGL.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -95,7 +96,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
 	ofxUISuperCanvas *connectorGui;
 	
-	ofTrueTypeFont displayFont;
+	ofxFTGLFont displayFont;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;

@@ -112,12 +112,12 @@ void CloudsQuestion::reloadShader(){
 	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");
 }
 
-void CloudsQuestion::update(ofRectangle viewport){
+void CloudsQuestion::update(){
 	
-	ofVec3f screenPoint = cam->worldToScreen(position, viewport);
+	ofVec3f screenPoint = cam->worldToScreen(position);
 	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
 	
-	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0), viewport);
+	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0));
 	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
 }
 
@@ -224,7 +224,7 @@ bool CloudsQuestion::isSelected(){
 	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
 }
 
-void CloudsQuestion::drawOverlay(){
+void CloudsQuestion::drawOverlay(bool anchorToScreen){
 	if(hovering){
 		
 		glDisable(GL_DEPTH_TEST);
@@ -232,13 +232,18 @@ void CloudsQuestion::drawOverlay(){
 		float width = font->stringWidth(question);
 		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
 		ofVec2f screenPosition;
-		if( currentScreenPoint.x > ofGetWidth()/2){
-			screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
+		if(anchorToScreen){
+			screenPosition = ofVec2f(20,20);
 		}
 		else{
-			screenPosition = currentScreenPoint;
+			if( currentScreenPoint.x > ofGetWidth()/2){
+				screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
+			}
+			else{
+				screenPosition = currentScreenPoint;
+			}
 		}
-
+		
 		//DRAW BACKBOX
 //		ofPushStyle();
 //		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);

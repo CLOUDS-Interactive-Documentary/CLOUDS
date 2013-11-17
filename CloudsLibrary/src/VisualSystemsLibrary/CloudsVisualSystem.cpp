@@ -379,9 +379,13 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
             getOculusRift().beginBackground();
-            //drawBackground();
+			drawBackgroundGradient();
             getOculusRift().endBackground();
 
+			getOculusRift().beginOverlay(-230, 320,240);
+			selfDrawOverlay();
+			getOculusRift().endOverlay();
+			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
                 if(bClearBackground){
@@ -398,10 +402,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 getOculusRift().beginRightEye();
                 draw2dSystemPlane();
                 getOculusRift().endRightEye();
-                //draw our own scene with getSharedRenderTarget on a plane
             }
             else{
-                
                 getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 drawScene();
@@ -499,6 +501,22 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
+	
+
+#ifdef OCULUS_RIFT
+	ofPushMatrix();
+	ofPushStyle();
+	ofNoFill();
+	ofSetColor(255, 50);
+	oculusRift.multBillboardMatrix();
+	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+	ofSetColor(255, 150);
+	ofSetLineWidth(2);
+	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0-.5), -1, 1, .15, .1, true, ofxEasingQuad()));
+	ofPopStyle();
+	ofPopMatrix();
+#endif
+	
 }
 
 void CloudsVisualSystem::setupRGBDTransforms(){
@@ -2734,28 +2752,33 @@ void CloudsVisualSystem::drawNormalizedTexturedQuad()
 
 void CloudsVisualSystem::drawBackground()
 {
-	ofPushStyle();
 	
+	drawBackgroundGradient();
+	
+	ofPushStyle();
+	ofPushMatrix();
+	ofTranslate(0, ofGetHeight());
+	ofScale(1,-1,1);
+	selfDrawBackground();
+	ofPopMatrix();
+	ofPopStyle();
+}
+
+void CloudsVisualSystem::drawBackgroundGradient(){
+
+	ofPushStyle();
+
 	ofEnableAlphaBlending();
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 
-//	cout << ofGetFrameNum() <<  "Drawing background for system " << getSystemName() << " " << bgColor->r << " " << bgColor->g << " " << bgColor->b << endl;
-//	cout << ofGetFrameNum() <<  "Drawing background for system " << getSystemName() << " " << bgColor.r/255. << " " << bgColor.g/255. << " " << bgColor.b/255. << endl;
-
-	
-    if(bClearBackground)
+	if(bClearBackground)
 	{
-//		if(!backgroundShaderLoaded){
-//		}
 		
 		if(gradientMode != -1){
-//			cout << "drawing grad " << (bBarGradient ? "BAR" : "CIRCE") << endl;
 			if(bBarGradient){
-//				cout << "drawing bar: ";
 				if(backgroundGradientBar.isAllocated()){
-//					cout << "shader" << endl;
 					backgroundShader.begin();
 					backgroundShader.setUniformTexture("image", backgroundGradientBar, 0);
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
@@ -2785,7 +2808,6 @@ void CloudsVisualSystem::drawBackground()
 				}
 				else{
 					ofSetSmoothLighting(true);
-
 					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
 				}
 			}
@@ -2795,17 +2817,6 @@ void CloudsVisualSystem::drawBackground()
 			ofBackground(bgColor);
 		}
 	}
-
-
-	ofPopStyle();
-	
-
-	ofPushStyle();
-	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
-	ofScale(1,-1,1);
-	selfDrawBackground();
-	ofPopMatrix();
 	ofPopStyle();
 }
 

@@ -444,6 +444,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
 	}
 	
+#ifdef OCULUS_RIFT
+	ofHideCursor();
+#else
 	//TODO replace with cool cursor animations
 	if(ofGetElapsedTimef() - cursorMovedTime < 1){
 		ofShowCursor();
@@ -451,10 +454,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	else{
 		ofHideCursor();
 	}
-	
-	//TODO: add camera animations to RGBDVisSys
-	//TODO: offsetTargets for turning away
-	
+#endif
 }
 
 //--------------------------------------------------------------------
