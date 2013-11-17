@@ -514,7 +514,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 //and then start the new topic after that
                 else if(topic != previousTopic && systemRunning ){
                     //putting ofRandom to give it some variation
-                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
+                    float gapTimeForTopicChange = cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
                     
                     cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
                     //updating totalSecondsEnqueued here may not be the best way to do this
@@ -550,8 +550,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         else {
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
             
-            //if the clip is shorter than the 30 seconds dont start the VS during the clip.
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold){
+            if(timeSinceLastVisualSystem > maxVisualSystemGapTime /*&& clip.getDuration() > longClipThreshold*/){
                 
                 visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
                 maxTimeRemainingForVisualSystem = systemMaxRunTime;
