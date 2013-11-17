@@ -14,7 +14,203 @@
 		6091337E1652C9C900B523AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6091337B1652C9C900B523AD /* main.m */; };
 		609133841652CA6600B523AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6091337C1652C9C900B523AD /* MainMenu.xib */; };
 		609133871652CB3E00B523AD /* testView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 609133861652CB3E00B523AD /* testView.mm */; };
+		85865BC51838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B701838195A00F94415 /* BgSettings.xml */; };
+		85865BC61838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B701838195A00F94415 /* BgSettings.xml */; };
+		85865BC71838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B711838195A00F94415 /* CamSettings.xml */; };
+		85865BC81838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B711838195A00F94415 /* CamSettings.xml */; };
+		85865BC91838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B721838195A00F94415 /* Custom.xml */; };
+		85865BCA1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B721838195A00F94415 /* Custom.xml */; };
+		85865BCB1838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B731838195A00F94415 /* LightSettings.xml */; };
+		85865BCC1838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B731838195A00F94415 /* LightSettings.xml */; };
+		85865BCD1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B741838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865BCE1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B741838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865BCF1838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B751838195A00F94415 /* ofEasyCamSettings */; };
+		85865BD01838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B751838195A00F94415 /* ofEasyCamSettings */; };
+		85865BD11838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B761838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865BD21838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B761838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865BD31838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B771838195A00F94415 /* Presets.xml */; };
+		85865BD41838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B771838195A00F94415 /* Presets.xml */; };
+		85865BD51838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B781838195A00F94415 /* RenderSettings.xml */; };
+		85865BD61838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B781838195A00F94415 /* RenderSettings.xml */; };
+		85865BD71838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B791838195A00F94415 /* Settings.xml */; };
+		85865BD81838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B791838195A00F94415 /* Settings.xml */; };
+		85865BD91838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7A1838195A00F94415 /* SystemSettings.xml */; };
+		85865BDA1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7A1838195A00F94415 /* SystemSettings.xml */; };
+		85865BDB1838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7B1838195A00F94415 /* TimeInfo.xml */; };
+		85865BDC1838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7B1838195A00F94415 /* TimeInfo.xml */; };
+		85865BDD1838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7D1838195A00F94415 /* cameraTrack.xml */; };
+		85865BDE1838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7D1838195A00F94415 /* cameraTrack.xml */; };
+		85865BDF1838195A00F94415 /* Electricity_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7E1838195A00F94415 /* Electricity_inout.xml */; };
+		85865BE01838195A00F94415 /* Electricity_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7E1838195A00F94415 /* Electricity_inout.xml */; };
+		85865BE11838195A00F94415 /* Electricity_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7F1838195A00F94415 /* Electricity_zoomer.xml */; };
+		85865BE21838195A00F94415 /* Electricity_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B7F1838195A00F94415 /* Electricity_zoomer.xml */; };
+		85865BE31838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B801838195A00F94415 /* IntroOutro.xml */; };
+		85865BE41838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B801838195A00F94415 /* IntroOutro.xml */; };
+		85865BE51838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B811838195A00F94415 /* UITimelineMappings.xml */; };
+		85865BE61838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B811838195A00F94415 /* UITimelineMappings.xml */; };
+		85865BE71838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B831838195A00F94415 /* BgSettings.xml */; };
+		85865BE81838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B831838195A00F94415 /* BgSettings.xml */; };
+		85865BE91838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B841838195A00F94415 /* CamSettings.xml */; };
+		85865BEA1838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B841838195A00F94415 /* CamSettings.xml */; };
+		85865BEB1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B851838195A00F94415 /* Custom.xml */; };
+		85865BEC1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B851838195A00F94415 /* Custom.xml */; };
+		85865BED1838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B861838195A00F94415 /* LightSettings.xml */; };
+		85865BEE1838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B861838195A00F94415 /* LightSettings.xml */; };
+		85865BEF1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B871838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865BF01838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B871838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865BF11838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B881838195A00F94415 /* ofEasyCamSettings */; };
+		85865BF21838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B881838195A00F94415 /* ofEasyCamSettings */; };
+		85865BF31838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B891838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865BF41838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B891838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865BF51838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8A1838195A00F94415 /* Presets.xml */; };
+		85865BF61838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8A1838195A00F94415 /* Presets.xml */; };
+		85865BF71838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8B1838195A00F94415 /* RenderSettings.xml */; };
+		85865BF81838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8B1838195A00F94415 /* RenderSettings.xml */; };
+		85865BF91838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8C1838195A00F94415 /* Settings.xml */; };
+		85865BFA1838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8C1838195A00F94415 /* Settings.xml */; };
+		85865BFB1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8D1838195A00F94415 /* SystemSettings.xml */; };
+		85865BFC1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8D1838195A00F94415 /* SystemSettings.xml */; };
+		85865BFD1838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8E1838195A00F94415 /* TimeInfo.xml */; };
+		85865BFE1838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B8E1838195A00F94415 /* TimeInfo.xml */; };
+		85865BFF1838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B901838195A00F94415 /* cameraTrack.xml */; };
+		85865C001838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B901838195A00F94415 /* cameraTrack.xml */; };
+		85865C011838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B911838195A00F94415 /* IntroOutro.xml */; };
+		85865C021838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B911838195A00F94415 /* IntroOutro.xml */; };
+		85865C031838195A00F94415 /* Lorenz_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B921838195A00F94415 /* Lorenz_inout.xml */; };
+		85865C041838195A00F94415 /* Lorenz_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B921838195A00F94415 /* Lorenz_inout.xml */; };
+		85865C051838195A00F94415 /* Lorenz_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B931838195A00F94415 /* Lorenz_zoomer.xml */; };
+		85865C061838195A00F94415 /* Lorenz_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B931838195A00F94415 /* Lorenz_zoomer.xml */; };
+		85865C071838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B941838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C081838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B941838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C091838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B961838195A00F94415 /* BgSettings.xml */; };
+		85865C0A1838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B961838195A00F94415 /* BgSettings.xml */; };
+		85865C0B1838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B971838195A00F94415 /* CamSettings.xml */; };
+		85865C0C1838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B971838195A00F94415 /* CamSettings.xml */; };
+		85865C0D1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B981838195A00F94415 /* Custom.xml */; };
+		85865C0E1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B981838195A00F94415 /* Custom.xml */; };
+		85865C0F1838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B991838195A00F94415 /* LightSettings.xml */; };
+		85865C101838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B991838195A00F94415 /* LightSettings.xml */; };
+		85865C111838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9A1838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865C121838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9A1838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865C131838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9B1838195A00F94415 /* ofEasyCamSettings */; };
+		85865C141838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9B1838195A00F94415 /* ofEasyCamSettings */; };
+		85865C151838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9C1838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865C161838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9C1838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865C171838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9D1838195A00F94415 /* Presets.xml */; };
+		85865C181838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9D1838195A00F94415 /* Presets.xml */; };
+		85865C191838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9E1838195A00F94415 /* RenderSettings.xml */; };
+		85865C1A1838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9E1838195A00F94415 /* RenderSettings.xml */; };
+		85865C1B1838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9F1838195A00F94415 /* Settings.xml */; };
+		85865C1C1838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865B9F1838195A00F94415 /* Settings.xml */; };
+		85865C1D1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA01838195A00F94415 /* SystemSettings.xml */; };
+		85865C1E1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA01838195A00F94415 /* SystemSettings.xml */; };
+		85865C1F1838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA11838195A00F94415 /* TimeInfo.xml */; };
+		85865C201838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA11838195A00F94415 /* TimeInfo.xml */; };
+		85865C211838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA31838195A00F94415 /* cameraTrack.xml */; };
+		85865C221838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA31838195A00F94415 /* cameraTrack.xml */; };
+		85865C231838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA41838195A00F94415 /* IntroOutro.xml */; };
+		85865C241838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA41838195A00F94415 /* IntroOutro.xml */; };
+		85865C251838195A00F94415 /* Wavy_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA51838195A00F94415 /* Wavy_inout.xml */; };
+		85865C261838195A00F94415 /* Wavy_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA51838195A00F94415 /* Wavy_inout.xml */; };
+		85865C271838195A00F94415 /* Wavy_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA61838195A00F94415 /* Wavy_zoomer.xml */; };
+		85865C281838195A00F94415 /* Wavy_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA61838195A00F94415 /* Wavy_zoomer.xml */; };
+		85865C291838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA71838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C2A1838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA71838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C2B1838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA91838195A00F94415 /* BgSettings.xml */; };
+		85865C2C1838195A00F94415 /* BgSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BA91838195A00F94415 /* BgSettings.xml */; };
+		85865C2D1838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAA1838195A00F94415 /* CamSettings.xml */; };
+		85865C2E1838195A00F94415 /* CamSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAA1838195A00F94415 /* CamSettings.xml */; };
+		85865C2F1838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAB1838195A00F94415 /* Custom.xml */; };
+		85865C301838195A00F94415 /* Custom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAB1838195A00F94415 /* Custom.xml */; };
+		85865C311838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAC1838195A00F94415 /* LightSettings.xml */; };
+		85865C321838195A00F94415 /* LightSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAC1838195A00F94415 /* LightSettings.xml */; };
+		85865C331838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAD1838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865C341838195A00F94415 /* MATERIAL 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAD1838195A00F94415 /* MATERIAL 1Settings.xml */; };
+		85865C351838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAE1838195A00F94415 /* ofEasyCamSettings */; };
+		85865C361838195A00F94415 /* ofEasyCamSettings in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAE1838195A00F94415 /* ofEasyCamSettings */; };
+		85865C371838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAF1838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865C381838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BAF1838195A00F94415 /* POINT LIGHT 1Settings.xml */; };
+		85865C391838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB01838195A00F94415 /* Presets.xml */; };
+		85865C3A1838195A00F94415 /* Presets.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB01838195A00F94415 /* Presets.xml */; };
+		85865C3B1838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB11838195A00F94415 /* RenderSettings.xml */; };
+		85865C3C1838195A00F94415 /* RenderSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB11838195A00F94415 /* RenderSettings.xml */; };
+		85865C3D1838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB21838195A00F94415 /* Settings.xml */; };
+		85865C3E1838195A00F94415 /* Settings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB21838195A00F94415 /* Settings.xml */; };
+		85865C3F1838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB31838195A00F94415 /* SystemSettings.xml */; };
+		85865C401838195A00F94415 /* SystemSettings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB31838195A00F94415 /* SystemSettings.xml */; };
+		85865C411838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB41838195A00F94415 /* TimeInfo.xml */; };
+		85865C421838195A00F94415 /* TimeInfo.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB41838195A00F94415 /* TimeInfo.xml */; };
+		85865C431838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB61838195A00F94415 /* cameraTrack.xml */; };
+		85865C441838195A00F94415 /* cameraTrack.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB61838195A00F94415 /* cameraTrack.xml */; };
+		85865C451838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB71838195A00F94415 /* IntroOutro.xml */; };
+		85865C461838195A00F94415 /* IntroOutro.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB71838195A00F94415 /* IntroOutro.xml */; };
+		85865C471838195A00F94415 /* Wormy_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB81838195A00F94415 /* Wormy_inout.xml */; };
+		85865C481838195A00F94415 /* Wormy_inout.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB81838195A00F94415 /* Wormy_inout.xml */; };
+		85865C491838195A00F94415 /* Wormy_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB91838195A00F94415 /* Wormy_zoomer.xml */; };
+		85865C4A1838195A00F94415 /* Wormy_zoomer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BB91838195A00F94415 /* Wormy_zoomer.xml */; };
+		85865C4B1838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BBA1838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C4C1838195A00F94415 /* UITimelineMappings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 85865BBA1838195A00F94415 /* UITimelineMappings.xml */; };
+		85865C4D1838195A00F94415 /* orbit.frag in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBC1838195A00F94415 /* orbit.frag */; };
+		85865C4E1838195A00F94415 /* orbit.frag in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBC1838195A00F94415 /* orbit.frag */; };
+		85865C4F1838195A00F94415 /* orbit.vert in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBD1838195A00F94415 /* orbit.vert */; };
+		85865C501838195A00F94415 /* orbit.vert in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBD1838195A00F94415 /* orbit.vert */; };
+		85865C511838195A00F94415 /* CloudsVisualSystemOrbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBF1838195A00F94415 /* CloudsVisualSystemOrbit.cpp */; };
+		85865C521838195A00F94415 /* CloudsVisualSystemOrbit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BBF1838195A00F94415 /* CloudsVisualSystemOrbit.cpp */; };
+		85865C531838195A00F94415 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BC11838195A00F94415 /* Path.cpp */; };
+		85865C541838195A00F94415 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BC11838195A00F94415 /* Path.cpp */; };
+		85865C551838195A00F94415 /* PathPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BC31838195A00F94415 /* PathPoint.cpp */; };
+		85865C561838195A00F94415 /* PathPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85865BC31838195A00F94415 /* PathPoint.cpp */; };
 		859A45D3181C684700B9F251 /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */; };
+		85D98A8318381E4300D7065D /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */; };
+		85D98A8418381E4300D7065D /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */; };
+		85D98AE318381E6800D7065D /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A9C18381E6800D7065D /* BleachBypassPass.cpp */; };
+		85D98AE418381E6800D7065D /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A9C18381E6800D7065D /* BleachBypassPass.cpp */; };
+		85D98AE518381E6800D7065D /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A9E18381E6800D7065D /* BloomPass.cpp */; };
+		85D98AE618381E6800D7065D /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98A9E18381E6800D7065D /* BloomPass.cpp */; };
+		85D98AE718381E6800D7065D /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA018381E6800D7065D /* ContrastPass.cpp */; };
+		85D98AE818381E6800D7065D /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA018381E6800D7065D /* ContrastPass.cpp */; };
+		85D98AE918381E6800D7065D /* ConvolutionPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA218381E6800D7065D /* ConvolutionPass.cpp */; };
+		85D98AEA18381E6800D7065D /* ConvolutionPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA218381E6800D7065D /* ConvolutionPass.cpp */; };
+		85D98AEB18381E6800D7065D /* DofAltPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA418381E6800D7065D /* DofAltPass.cpp */; };
+		85D98AEC18381E6800D7065D /* DofAltPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA418381E6800D7065D /* DofAltPass.cpp */; };
+		85D98AED18381E6800D7065D /* DofPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA618381E6800D7065D /* DofPass.cpp */; };
+		85D98AEE18381E6800D7065D /* DofPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA618381E6800D7065D /* DofPass.cpp */; };
+		85D98AEF18381E6800D7065D /* EdgePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA818381E6800D7065D /* EdgePass.cpp */; };
+		85D98AF018381E6800D7065D /* EdgePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AA818381E6800D7065D /* EdgePass.cpp */; };
+		85D98AF118381E6800D7065D /* FakeSSSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAA18381E6800D7065D /* FakeSSSPass.cpp */; };
+		85D98AF218381E6800D7065D /* FakeSSSPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAA18381E6800D7065D /* FakeSSSPass.cpp */; };
+		85D98AF318381E6800D7065D /* FxaaPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAC18381E6800D7065D /* FxaaPass.cpp */; };
+		85D98AF418381E6800D7065D /* FxaaPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAC18381E6800D7065D /* FxaaPass.cpp */; };
+		85D98AF518381E6800D7065D /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAE18381E6800D7065D /* GodRaysPass.cpp */; };
+		85D98AF618381E6800D7065D /* GodRaysPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AAE18381E6800D7065D /* GodRaysPass.cpp */; };
+		85D98AF718381E6800D7065D /* HorizontalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB018381E6800D7065D /* HorizontalTiltShifPass.cpp */; };
+		85D98AF818381E6800D7065D /* HorizontalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB018381E6800D7065D /* HorizontalTiltShifPass.cpp */; };
+		85D98AF918381E6800D7065D /* KaleidoscopePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB218381E6800D7065D /* KaleidoscopePass.cpp */; };
+		85D98AFA18381E6800D7065D /* KaleidoscopePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB218381E6800D7065D /* KaleidoscopePass.cpp */; };
+		85D98AFB18381E6800D7065D /* LimbDarkeningPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB418381E6800D7065D /* LimbDarkeningPass.cpp */; };
+		85D98AFC18381E6800D7065D /* LimbDarkeningPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB418381E6800D7065D /* LimbDarkeningPass.cpp */; };
+		85D98AFD18381E6800D7065D /* LUTPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB618381E6800D7065D /* LUTPass.cpp */; };
+		85D98AFE18381E6800D7065D /* LUTPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB618381E6800D7065D /* LUTPass.cpp */; };
+		85D98AFF18381E6800D7065D /* NoiseWarpPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB818381E6800D7065D /* NoiseWarpPass.cpp */; };
+		85D98B0018381E6800D7065D /* NoiseWarpPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AB818381E6800D7065D /* NoiseWarpPass.cpp */; };
+		85D98B0118381E6800D7065D /* PixelatePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABB18381E6800D7065D /* PixelatePass.cpp */; };
+		85D98B0218381E6800D7065D /* PixelatePass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABB18381E6800D7065D /* PixelatePass.cpp */; };
+		85D98B0318381E6800D7065D /* PostProcessing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABD18381E6800D7065D /* PostProcessing.cpp */; };
+		85D98B0418381E6800D7065D /* PostProcessing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABD18381E6800D7065D /* PostProcessing.cpp */; };
+		85D98B0518381E6800D7065D /* RenderPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABF18381E6800D7065D /* RenderPass.cpp */; };
+		85D98B0618381E6800D7065D /* RenderPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ABF18381E6800D7065D /* RenderPass.cpp */; };
+		85D98B0718381E6800D7065D /* RGBShiftPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC118381E6800D7065D /* RGBShiftPass.cpp */; };
+		85D98B0818381E6800D7065D /* RGBShiftPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC118381E6800D7065D /* RGBShiftPass.cpp */; };
+		85D98B0918381E6800D7065D /* RimHighlightingPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC318381E6800D7065D /* RimHighlightingPass.cpp */; };
+		85D98B0A18381E6800D7065D /* RimHighlightingPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC318381E6800D7065D /* RimHighlightingPass.cpp */; };
+		85D98B0B18381E6800D7065D /* SSAOPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC518381E6800D7065D /* SSAOPass.cpp */; };
+		85D98B0C18381E6800D7065D /* SSAOPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC518381E6800D7065D /* SSAOPass.cpp */; };
+		85D98B0D18381E6800D7065D /* ToonPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC718381E6800D7065D /* ToonPass.cpp */; };
+		85D98B0E18381E6800D7065D /* ToonPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC718381E6800D7065D /* ToonPass.cpp */; };
+		85D98B0F18381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC918381E6800D7065D /* VerticalTiltShifPass.cpp */; };
+		85D98B1018381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98AC918381E6800D7065D /* VerticalTiltShifPass.cpp */; };
+		85D98B1118381E6800D7065D /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */; };
+		85D98B1218381E6800D7065D /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -753,8 +949,136 @@
 		6091337C1652C9C900B523AD /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		609133851652CB3E00B523AD /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
 		609133861652CB3E00B523AD /* testView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = testView.mm; sourceTree = "<group>"; };
+		85865B701838195A00F94415 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		85865B711838195A00F94415 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		85865B721838195A00F94415 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
+		85865B731838195A00F94415 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		85865B741838195A00F94415 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		85865B751838195A00F94415 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		85865B761838195A00F94415 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		85865B771838195A00F94415 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		85865B781838195A00F94415 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		85865B791838195A00F94415 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		85865B7A1838195A00F94415 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		85865B7B1838195A00F94415 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		85865B7D1838195A00F94415 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		85865B7E1838195A00F94415 /* Electricity_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Electricity_inout.xml; sourceTree = "<group>"; };
+		85865B7F1838195A00F94415 /* Electricity_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Electricity_zoomer.xml; sourceTree = "<group>"; };
+		85865B801838195A00F94415 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		85865B811838195A00F94415 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		85865B831838195A00F94415 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		85865B841838195A00F94415 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		85865B851838195A00F94415 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
+		85865B861838195A00F94415 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		85865B871838195A00F94415 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		85865B881838195A00F94415 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		85865B891838195A00F94415 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		85865B8A1838195A00F94415 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		85865B8B1838195A00F94415 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		85865B8C1838195A00F94415 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		85865B8D1838195A00F94415 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		85865B8E1838195A00F94415 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		85865B901838195A00F94415 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		85865B911838195A00F94415 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		85865B921838195A00F94415 /* Lorenz_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Lorenz_inout.xml; sourceTree = "<group>"; };
+		85865B931838195A00F94415 /* Lorenz_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Lorenz_zoomer.xml; sourceTree = "<group>"; };
+		85865B941838195A00F94415 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		85865B961838195A00F94415 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		85865B971838195A00F94415 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		85865B981838195A00F94415 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
+		85865B991838195A00F94415 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		85865B9A1838195A00F94415 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		85865B9B1838195A00F94415 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		85865B9C1838195A00F94415 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		85865B9D1838195A00F94415 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		85865B9E1838195A00F94415 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		85865B9F1838195A00F94415 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		85865BA01838195A00F94415 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		85865BA11838195A00F94415 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		85865BA31838195A00F94415 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		85865BA41838195A00F94415 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		85865BA51838195A00F94415 /* Wavy_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wavy_inout.xml; sourceTree = "<group>"; };
+		85865BA61838195A00F94415 /* Wavy_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wavy_zoomer.xml; sourceTree = "<group>"; };
+		85865BA71838195A00F94415 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		85865BA91838195A00F94415 /* BgSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BgSettings.xml; sourceTree = "<group>"; };
+		85865BAA1838195A00F94415 /* CamSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CamSettings.xml; sourceTree = "<group>"; };
+		85865BAB1838195A00F94415 /* Custom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Custom.xml; sourceTree = "<group>"; };
+		85865BAC1838195A00F94415 /* LightSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LightSettings.xml; sourceTree = "<group>"; };
+		85865BAD1838195A00F94415 /* MATERIAL 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MATERIAL 1Settings.xml"; sourceTree = "<group>"; };
+		85865BAE1838195A00F94415 /* ofEasyCamSettings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ofEasyCamSettings; sourceTree = "<group>"; };
+		85865BAF1838195A00F94415 /* POINT LIGHT 1Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "POINT LIGHT 1Settings.xml"; sourceTree = "<group>"; };
+		85865BB01838195A00F94415 /* Presets.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Presets.xml; sourceTree = "<group>"; };
+		85865BB11838195A00F94415 /* RenderSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RenderSettings.xml; sourceTree = "<group>"; };
+		85865BB21838195A00F94415 /* Settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Settings.xml; sourceTree = "<group>"; };
+		85865BB31838195A00F94415 /* SystemSettings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SystemSettings.xml; sourceTree = "<group>"; };
+		85865BB41838195A00F94415 /* TimeInfo.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TimeInfo.xml; sourceTree = "<group>"; };
+		85865BB61838195A00F94415 /* cameraTrack.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cameraTrack.xml; sourceTree = "<group>"; };
+		85865BB71838195A00F94415 /* IntroOutro.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IntroOutro.xml; sourceTree = "<group>"; };
+		85865BB81838195A00F94415 /* Wormy_inout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wormy_inout.xml; sourceTree = "<group>"; };
+		85865BB91838195A00F94415 /* Wormy_zoomer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wormy_zoomer.xml; sourceTree = "<group>"; };
+		85865BBA1838195A00F94415 /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
+		85865BBC1838195A00F94415 /* orbit.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = orbit.frag; sourceTree = "<group>"; };
+		85865BBD1838195A00F94415 /* orbit.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = orbit.vert; sourceTree = "<group>"; };
+		85865BBF1838195A00F94415 /* CloudsVisualSystemOrbit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemOrbit.cpp; sourceTree = "<group>"; };
+		85865BC01838195A00F94415 /* CloudsVisualSystemOrbit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemOrbit.h; sourceTree = "<group>"; };
+		85865BC11838195A00F94415 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
+		85865BC21838195A00F94415 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		85865BC31838195A00F94415 /* PathPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PathPoint.cpp; sourceTree = "<group>"; };
+		85865BC41838195A00F94415 /* PathPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathPoint.h; sourceTree = "<group>"; };
 		859A45C7181C684700B9F251 /* ofxSimpleSpline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSpline.cpp; sourceTree = "<group>"; };
 		859A45C8181C684700B9F251 /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
+		85D98A6218381E4300D7065D /* ofxPtf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPtf.h; sourceTree = "<group>"; };
+		85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParallelTransportFrames.cpp; sourceTree = "<group>"; };
+		85D98A6418381E4300D7065D /* ParallelTransportFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallelTransportFrames.h; sourceTree = "<group>"; };
+		85D98A9C18381E6800D7065D /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
+		85D98A9D18381E6800D7065D /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
+		85D98A9E18381E6800D7065D /* BloomPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BloomPass.cpp; sourceTree = "<group>"; };
+		85D98A9F18381E6800D7065D /* BloomPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloomPass.h; sourceTree = "<group>"; };
+		85D98AA018381E6800D7065D /* ContrastPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContrastPass.cpp; sourceTree = "<group>"; };
+		85D98AA118381E6800D7065D /* ContrastPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContrastPass.h; sourceTree = "<group>"; };
+		85D98AA218381E6800D7065D /* ConvolutionPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvolutionPass.cpp; sourceTree = "<group>"; };
+		85D98AA318381E6800D7065D /* ConvolutionPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvolutionPass.h; sourceTree = "<group>"; };
+		85D98AA418381E6800D7065D /* DofAltPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DofAltPass.cpp; sourceTree = "<group>"; };
+		85D98AA518381E6800D7065D /* DofAltPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DofAltPass.h; sourceTree = "<group>"; };
+		85D98AA618381E6800D7065D /* DofPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DofPass.cpp; sourceTree = "<group>"; };
+		85D98AA718381E6800D7065D /* DofPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DofPass.h; sourceTree = "<group>"; };
+		85D98AA818381E6800D7065D /* EdgePass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgePass.cpp; sourceTree = "<group>"; };
+		85D98AA918381E6800D7065D /* EdgePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgePass.h; sourceTree = "<group>"; };
+		85D98AAA18381E6800D7065D /* FakeSSSPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FakeSSSPass.cpp; sourceTree = "<group>"; };
+		85D98AAB18381E6800D7065D /* FakeSSSPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeSSSPass.h; sourceTree = "<group>"; };
+		85D98AAC18381E6800D7065D /* FxaaPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FxaaPass.cpp; sourceTree = "<group>"; };
+		85D98AAD18381E6800D7065D /* FxaaPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FxaaPass.h; sourceTree = "<group>"; };
+		85D98AAE18381E6800D7065D /* GodRaysPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GodRaysPass.cpp; sourceTree = "<group>"; };
+		85D98AAF18381E6800D7065D /* GodRaysPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GodRaysPass.h; sourceTree = "<group>"; };
+		85D98AB018381E6800D7065D /* HorizontalTiltShifPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HorizontalTiltShifPass.cpp; sourceTree = "<group>"; };
+		85D98AB118381E6800D7065D /* HorizontalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTiltShifPass.h; sourceTree = "<group>"; };
+		85D98AB218381E6800D7065D /* KaleidoscopePass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KaleidoscopePass.cpp; sourceTree = "<group>"; };
+		85D98AB318381E6800D7065D /* KaleidoscopePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaleidoscopePass.h; sourceTree = "<group>"; };
+		85D98AB418381E6800D7065D /* LimbDarkeningPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LimbDarkeningPass.cpp; sourceTree = "<group>"; };
+		85D98AB518381E6800D7065D /* LimbDarkeningPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LimbDarkeningPass.h; sourceTree = "<group>"; };
+		85D98AB618381E6800D7065D /* LUTPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LUTPass.cpp; sourceTree = "<group>"; };
+		85D98AB718381E6800D7065D /* LUTPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUTPass.h; sourceTree = "<group>"; };
+		85D98AB818381E6800D7065D /* NoiseWarpPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseWarpPass.cpp; sourceTree = "<group>"; };
+		85D98AB918381E6800D7065D /* NoiseWarpPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoiseWarpPass.h; sourceTree = "<group>"; };
+		85D98ABA18381E6800D7065D /* ofxPostProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPostProcessing.h; sourceTree = "<group>"; };
+		85D98ABB18381E6800D7065D /* PixelatePass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelatePass.cpp; sourceTree = "<group>"; };
+		85D98ABC18381E6800D7065D /* PixelatePass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelatePass.h; sourceTree = "<group>"; };
+		85D98ABD18381E6800D7065D /* PostProcessing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessing.cpp; sourceTree = "<group>"; };
+		85D98ABE18381E6800D7065D /* PostProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostProcessing.h; sourceTree = "<group>"; };
+		85D98ABF18381E6800D7065D /* RenderPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderPass.cpp; sourceTree = "<group>"; };
+		85D98AC018381E6800D7065D /* RenderPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderPass.h; sourceTree = "<group>"; };
+		85D98AC118381E6800D7065D /* RGBShiftPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RGBShiftPass.cpp; sourceTree = "<group>"; };
+		85D98AC218381E6800D7065D /* RGBShiftPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBShiftPass.h; sourceTree = "<group>"; };
+		85D98AC318381E6800D7065D /* RimHighlightingPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RimHighlightingPass.cpp; sourceTree = "<group>"; };
+		85D98AC418381E6800D7065D /* RimHighlightingPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RimHighlightingPass.h; sourceTree = "<group>"; };
+		85D98AC518381E6800D7065D /* SSAOPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSAOPass.cpp; sourceTree = "<group>"; };
+		85D98AC618381E6800D7065D /* SSAOPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAOPass.h; sourceTree = "<group>"; };
+		85D98AC718381E6800D7065D /* ToonPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToonPass.cpp; sourceTree = "<group>"; };
+		85D98AC818381E6800D7065D /* ToonPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToonPass.h; sourceTree = "<group>"; };
+		85D98AC918381E6800D7065D /* VerticalTiltShifPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VerticalTiltShifPass.cpp; sourceTree = "<group>"; };
+		85D98ACA18381E6800D7065D /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
+		85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
+		85D98ACC18381E6800D7065D /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1758,6 +2082,193 @@
 			name = ofxCocoaGLView;
 			sourceTree = "<group>";
 		};
+		85865B6B1838195A00F94415 /* Orbit */ = {
+			isa = PBXGroup;
+			children = (
+				85865B6C1838195A00F94415 /* bin */,
+				85865BBE1838195A00F94415 /* vs_src */,
+			);
+			path = Orbit;
+			sourceTree = "<group>";
+		};
+		85865B6C1838195A00F94415 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				85865B6D1838195A00F94415 /* data */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		85865B6D1838195A00F94415 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				85865B6E1838195A00F94415 /* Presets */,
+				85865BBB1838195A00F94415 /* shaders */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		85865B6E1838195A00F94415 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				85865B6F1838195A00F94415 /* Electricity */,
+				85865B821838195A00F94415 /* Lorenz */,
+				85865B951838195A00F94415 /* Wavy */,
+				85865BA81838195A00F94415 /* Wormy */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
+		85865B6F1838195A00F94415 /* Electricity */ = {
+			isa = PBXGroup;
+			children = (
+				85865B701838195A00F94415 /* BgSettings.xml */,
+				85865B711838195A00F94415 /* CamSettings.xml */,
+				85865B721838195A00F94415 /* Custom.xml */,
+				85865B731838195A00F94415 /* LightSettings.xml */,
+				85865B741838195A00F94415 /* MATERIAL 1Settings.xml */,
+				85865B751838195A00F94415 /* ofEasyCamSettings */,
+				85865B761838195A00F94415 /* POINT LIGHT 1Settings.xml */,
+				85865B771838195A00F94415 /* Presets.xml */,
+				85865B781838195A00F94415 /* RenderSettings.xml */,
+				85865B791838195A00F94415 /* Settings.xml */,
+				85865B7A1838195A00F94415 /* SystemSettings.xml */,
+				85865B7B1838195A00F94415 /* TimeInfo.xml */,
+				85865B7C1838195A00F94415 /* Timeline */,
+				85865B811838195A00F94415 /* UITimelineMappings.xml */,
+			);
+			path = Electricity;
+			sourceTree = "<group>";
+		};
+		85865B7C1838195A00F94415 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				85865B7D1838195A00F94415 /* cameraTrack.xml */,
+				85865B7E1838195A00F94415 /* Electricity_inout.xml */,
+				85865B7F1838195A00F94415 /* Electricity_zoomer.xml */,
+				85865B801838195A00F94415 /* IntroOutro.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		85865B821838195A00F94415 /* Lorenz */ = {
+			isa = PBXGroup;
+			children = (
+				85865B831838195A00F94415 /* BgSettings.xml */,
+				85865B841838195A00F94415 /* CamSettings.xml */,
+				85865B851838195A00F94415 /* Custom.xml */,
+				85865B861838195A00F94415 /* LightSettings.xml */,
+				85865B871838195A00F94415 /* MATERIAL 1Settings.xml */,
+				85865B881838195A00F94415 /* ofEasyCamSettings */,
+				85865B891838195A00F94415 /* POINT LIGHT 1Settings.xml */,
+				85865B8A1838195A00F94415 /* Presets.xml */,
+				85865B8B1838195A00F94415 /* RenderSettings.xml */,
+				85865B8C1838195A00F94415 /* Settings.xml */,
+				85865B8D1838195A00F94415 /* SystemSettings.xml */,
+				85865B8E1838195A00F94415 /* TimeInfo.xml */,
+				85865B8F1838195A00F94415 /* Timeline */,
+				85865B941838195A00F94415 /* UITimelineMappings.xml */,
+			);
+			path = Lorenz;
+			sourceTree = "<group>";
+		};
+		85865B8F1838195A00F94415 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				85865B901838195A00F94415 /* cameraTrack.xml */,
+				85865B911838195A00F94415 /* IntroOutro.xml */,
+				85865B921838195A00F94415 /* Lorenz_inout.xml */,
+				85865B931838195A00F94415 /* Lorenz_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		85865B951838195A00F94415 /* Wavy */ = {
+			isa = PBXGroup;
+			children = (
+				85865B961838195A00F94415 /* BgSettings.xml */,
+				85865B971838195A00F94415 /* CamSettings.xml */,
+				85865B981838195A00F94415 /* Custom.xml */,
+				85865B991838195A00F94415 /* LightSettings.xml */,
+				85865B9A1838195A00F94415 /* MATERIAL 1Settings.xml */,
+				85865B9B1838195A00F94415 /* ofEasyCamSettings */,
+				85865B9C1838195A00F94415 /* POINT LIGHT 1Settings.xml */,
+				85865B9D1838195A00F94415 /* Presets.xml */,
+				85865B9E1838195A00F94415 /* RenderSettings.xml */,
+				85865B9F1838195A00F94415 /* Settings.xml */,
+				85865BA01838195A00F94415 /* SystemSettings.xml */,
+				85865BA11838195A00F94415 /* TimeInfo.xml */,
+				85865BA21838195A00F94415 /* Timeline */,
+				85865BA71838195A00F94415 /* UITimelineMappings.xml */,
+			);
+			path = Wavy;
+			sourceTree = "<group>";
+		};
+		85865BA21838195A00F94415 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				85865BA31838195A00F94415 /* cameraTrack.xml */,
+				85865BA41838195A00F94415 /* IntroOutro.xml */,
+				85865BA51838195A00F94415 /* Wavy_inout.xml */,
+				85865BA61838195A00F94415 /* Wavy_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		85865BA81838195A00F94415 /* Wormy */ = {
+			isa = PBXGroup;
+			children = (
+				85865BA91838195A00F94415 /* BgSettings.xml */,
+				85865BAA1838195A00F94415 /* CamSettings.xml */,
+				85865BAB1838195A00F94415 /* Custom.xml */,
+				85865BAC1838195A00F94415 /* LightSettings.xml */,
+				85865BAD1838195A00F94415 /* MATERIAL 1Settings.xml */,
+				85865BAE1838195A00F94415 /* ofEasyCamSettings */,
+				85865BAF1838195A00F94415 /* POINT LIGHT 1Settings.xml */,
+				85865BB01838195A00F94415 /* Presets.xml */,
+				85865BB11838195A00F94415 /* RenderSettings.xml */,
+				85865BB21838195A00F94415 /* Settings.xml */,
+				85865BB31838195A00F94415 /* SystemSettings.xml */,
+				85865BB41838195A00F94415 /* TimeInfo.xml */,
+				85865BB51838195A00F94415 /* Timeline */,
+				85865BBA1838195A00F94415 /* UITimelineMappings.xml */,
+			);
+			path = Wormy;
+			sourceTree = "<group>";
+		};
+		85865BB51838195A00F94415 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				85865BB61838195A00F94415 /* cameraTrack.xml */,
+				85865BB71838195A00F94415 /* IntroOutro.xml */,
+				85865BB81838195A00F94415 /* Wormy_inout.xml */,
+				85865BB91838195A00F94415 /* Wormy_zoomer.xml */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		85865BBB1838195A00F94415 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				85865BBC1838195A00F94415 /* orbit.frag */,
+				85865BBD1838195A00F94415 /* orbit.vert */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		85865BBE1838195A00F94415 /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				85865BBF1838195A00F94415 /* CloudsVisualSystemOrbit.cpp */,
+				85865BC01838195A00F94415 /* CloudsVisualSystemOrbit.h */,
+				85865BC11838195A00F94415 /* Path.cpp */,
+				85865BC21838195A00F94415 /* Path.h */,
+				85865BC31838195A00F94415 /* PathPoint.cpp */,
+				85865BC41838195A00F94415 /* PathPoint.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		859A45B2181C684700B9F251 /* ofxSimpleSpline */ = {
 			isa = PBXGroup;
 			children = (
@@ -1776,9 +2287,95 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		85D98A4A18381E4300D7065D /* ofxPtf */ = {
+			isa = PBXGroup;
+			children = (
+				85D98A6118381E4300D7065D /* src */,
+			);
+			name = ofxPtf;
+			path = ../../../addons/ofxPtf;
+			sourceTree = "<group>";
+		};
+		85D98A6118381E4300D7065D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				85D98A6218381E4300D7065D /* ofxPtf.h */,
+				85D98A6318381E4300D7065D /* ParallelTransportFrames.cpp */,
+				85D98A6418381E4300D7065D /* ParallelTransportFrames.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		85D98A8818381E6800D7065D /* ofxPostProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				85D98A9B18381E6800D7065D /* src */,
+			);
+			name = ofxPostProcessing;
+			path = ../../../addons/ofxPostProcessing;
+			sourceTree = "<group>";
+		};
+		85D98A9B18381E6800D7065D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				85D98A9C18381E6800D7065D /* BleachBypassPass.cpp */,
+				85D98A9D18381E6800D7065D /* BleachBypassPass.h */,
+				85D98A9E18381E6800D7065D /* BloomPass.cpp */,
+				85D98A9F18381E6800D7065D /* BloomPass.h */,
+				85D98AA018381E6800D7065D /* ContrastPass.cpp */,
+				85D98AA118381E6800D7065D /* ContrastPass.h */,
+				85D98AA218381E6800D7065D /* ConvolutionPass.cpp */,
+				85D98AA318381E6800D7065D /* ConvolutionPass.h */,
+				85D98AA418381E6800D7065D /* DofAltPass.cpp */,
+				85D98AA518381E6800D7065D /* DofAltPass.h */,
+				85D98AA618381E6800D7065D /* DofPass.cpp */,
+				85D98AA718381E6800D7065D /* DofPass.h */,
+				85D98AA818381E6800D7065D /* EdgePass.cpp */,
+				85D98AA918381E6800D7065D /* EdgePass.h */,
+				85D98AAA18381E6800D7065D /* FakeSSSPass.cpp */,
+				85D98AAB18381E6800D7065D /* FakeSSSPass.h */,
+				85D98AAC18381E6800D7065D /* FxaaPass.cpp */,
+				85D98AAD18381E6800D7065D /* FxaaPass.h */,
+				85D98AAE18381E6800D7065D /* GodRaysPass.cpp */,
+				85D98AAF18381E6800D7065D /* GodRaysPass.h */,
+				85D98AB018381E6800D7065D /* HorizontalTiltShifPass.cpp */,
+				85D98AB118381E6800D7065D /* HorizontalTiltShifPass.h */,
+				85D98AB218381E6800D7065D /* KaleidoscopePass.cpp */,
+				85D98AB318381E6800D7065D /* KaleidoscopePass.h */,
+				85D98AB418381E6800D7065D /* LimbDarkeningPass.cpp */,
+				85D98AB518381E6800D7065D /* LimbDarkeningPass.h */,
+				85D98AB618381E6800D7065D /* LUTPass.cpp */,
+				85D98AB718381E6800D7065D /* LUTPass.h */,
+				85D98AB818381E6800D7065D /* NoiseWarpPass.cpp */,
+				85D98AB918381E6800D7065D /* NoiseWarpPass.h */,
+				85D98ABA18381E6800D7065D /* ofxPostProcessing.h */,
+				85D98ABB18381E6800D7065D /* PixelatePass.cpp */,
+				85D98ABC18381E6800D7065D /* PixelatePass.h */,
+				85D98ABD18381E6800D7065D /* PostProcessing.cpp */,
+				85D98ABE18381E6800D7065D /* PostProcessing.h */,
+				85D98ABF18381E6800D7065D /* RenderPass.cpp */,
+				85D98AC018381E6800D7065D /* RenderPass.h */,
+				85D98AC118381E6800D7065D /* RGBShiftPass.cpp */,
+				85D98AC218381E6800D7065D /* RGBShiftPass.h */,
+				85D98AC318381E6800D7065D /* RimHighlightingPass.cpp */,
+				85D98AC418381E6800D7065D /* RimHighlightingPass.h */,
+				85D98AC518381E6800D7065D /* SSAOPass.cpp */,
+				85D98AC618381E6800D7065D /* SSAOPass.h */,
+				85D98AC718381E6800D7065D /* ToonPass.cpp */,
+				85D98AC818381E6800D7065D /* ToonPass.h */,
+				85D98AC918381E6800D7065D /* VerticalTiltShifPass.cpp */,
+				85D98ACA18381E6800D7065D /* VerticalTiltShifPass.h */,
+				85D98ACB18381E6800D7065D /* ZoomBlurPass.cpp */,
+				85D98ACC18381E6800D7065D /* ZoomBlurPass.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				85D98A8818381E6800D7065D /* ofxPostProcessing */,
+				85D98A4A18381E4300D7065D /* ofxPtf */,
 				E7FB2C281830DA68009EBD0E /* ofxOculusRift */,
 				E7D9CFB5182AECF100AD56C1 /* ofxCv */,
 				E7C8B788182AE7CC00AAD6E8 /* ofxSimpleSurface */,
@@ -3123,6 +3720,7 @@
 		E7BBA660179FA17D007D7EC1 /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				85865B6B1838195A00F94415 /* Orbit */,
 				E7D15679182D97750036E9BA /* YellowTail */,
 				E7D9CF73182AEC5700AD56C1 /* Vision */,
 				E7C8B7F1182AE86600AAD6E8 /* RandomDigits */,
@@ -4841,6 +5439,74 @@
 				E73774CD1778DD2900892646 /* easing_terms_of_use.html in Resources */,
 				E730A4A417DC492B0088335A /* README.md in Resources */,
 				E7C8B304182ACB5A00AAD6E8 /* buildFTGL.sh in Resources */,
+				85865BC51838195A00F94415 /* BgSettings.xml in Resources */,
+				85865BC71838195A00F94415 /* CamSettings.xml in Resources */,
+				85865BC91838195A00F94415 /* Custom.xml in Resources */,
+				85865BCB1838195A00F94415 /* LightSettings.xml in Resources */,
+				85865BCD1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865BCF1838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865BD11838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865BD31838195A00F94415 /* Presets.xml in Resources */,
+				85865BD51838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865BD71838195A00F94415 /* Settings.xml in Resources */,
+				85865BD91838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865BDB1838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865BDD1838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865BDF1838195A00F94415 /* Electricity_inout.xml in Resources */,
+				85865BE11838195A00F94415 /* Electricity_zoomer.xml in Resources */,
+				85865BE31838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865BE51838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865BE71838195A00F94415 /* BgSettings.xml in Resources */,
+				85865BE91838195A00F94415 /* CamSettings.xml in Resources */,
+				85865BEB1838195A00F94415 /* Custom.xml in Resources */,
+				85865BED1838195A00F94415 /* LightSettings.xml in Resources */,
+				85865BEF1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865BF11838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865BF31838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865BF51838195A00F94415 /* Presets.xml in Resources */,
+				85865BF71838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865BF91838195A00F94415 /* Settings.xml in Resources */,
+				85865BFB1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865BFD1838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865BFF1838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C011838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C031838195A00F94415 /* Lorenz_inout.xml in Resources */,
+				85865C051838195A00F94415 /* Lorenz_zoomer.xml in Resources */,
+				85865C071838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865C091838195A00F94415 /* BgSettings.xml in Resources */,
+				85865C0B1838195A00F94415 /* CamSettings.xml in Resources */,
+				85865C0D1838195A00F94415 /* Custom.xml in Resources */,
+				85865C0F1838195A00F94415 /* LightSettings.xml in Resources */,
+				85865C111838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865C131838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865C151838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865C171838195A00F94415 /* Presets.xml in Resources */,
+				85865C191838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865C1B1838195A00F94415 /* Settings.xml in Resources */,
+				85865C1D1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865C1F1838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865C211838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C231838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C251838195A00F94415 /* Wavy_inout.xml in Resources */,
+				85865C271838195A00F94415 /* Wavy_zoomer.xml in Resources */,
+				85865C291838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865C2B1838195A00F94415 /* BgSettings.xml in Resources */,
+				85865C2D1838195A00F94415 /* CamSettings.xml in Resources */,
+				85865C2F1838195A00F94415 /* Custom.xml in Resources */,
+				85865C311838195A00F94415 /* LightSettings.xml in Resources */,
+				85865C331838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865C351838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865C371838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865C391838195A00F94415 /* Presets.xml in Resources */,
+				85865C3B1838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865C3D1838195A00F94415 /* Settings.xml in Resources */,
+				85865C3F1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865C411838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865C431838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C451838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C471838195A00F94415 /* Wormy_inout.xml in Resources */,
+				85865C491838195A00F94415 /* Wormy_zoomer.xml in Resources */,
+				85865C4B1838195A00F94415 /* UITimelineMappings.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4852,6 +5518,74 @@
 				E7FB29AA1830D9E2009EBD0E /* easing_terms_of_use.html in Resources */,
 				E7FB29AB1830D9E2009EBD0E /* README.md in Resources */,
 				E7FB29AC1830D9E2009EBD0E /* buildFTGL.sh in Resources */,
+				85865BC61838195A00F94415 /* BgSettings.xml in Resources */,
+				85865BC81838195A00F94415 /* CamSettings.xml in Resources */,
+				85865BCA1838195A00F94415 /* Custom.xml in Resources */,
+				85865BCC1838195A00F94415 /* LightSettings.xml in Resources */,
+				85865BCE1838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865BD01838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865BD21838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865BD41838195A00F94415 /* Presets.xml in Resources */,
+				85865BD61838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865BD81838195A00F94415 /* Settings.xml in Resources */,
+				85865BDA1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865BDC1838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865BDE1838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865BE01838195A00F94415 /* Electricity_inout.xml in Resources */,
+				85865BE21838195A00F94415 /* Electricity_zoomer.xml in Resources */,
+				85865BE41838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865BE61838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865BE81838195A00F94415 /* BgSettings.xml in Resources */,
+				85865BEA1838195A00F94415 /* CamSettings.xml in Resources */,
+				85865BEC1838195A00F94415 /* Custom.xml in Resources */,
+				85865BEE1838195A00F94415 /* LightSettings.xml in Resources */,
+				85865BF01838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865BF21838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865BF41838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865BF61838195A00F94415 /* Presets.xml in Resources */,
+				85865BF81838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865BFA1838195A00F94415 /* Settings.xml in Resources */,
+				85865BFC1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865BFE1838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865C001838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C021838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C041838195A00F94415 /* Lorenz_inout.xml in Resources */,
+				85865C061838195A00F94415 /* Lorenz_zoomer.xml in Resources */,
+				85865C081838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865C0A1838195A00F94415 /* BgSettings.xml in Resources */,
+				85865C0C1838195A00F94415 /* CamSettings.xml in Resources */,
+				85865C0E1838195A00F94415 /* Custom.xml in Resources */,
+				85865C101838195A00F94415 /* LightSettings.xml in Resources */,
+				85865C121838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865C141838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865C161838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865C181838195A00F94415 /* Presets.xml in Resources */,
+				85865C1A1838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865C1C1838195A00F94415 /* Settings.xml in Resources */,
+				85865C1E1838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865C201838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865C221838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C241838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C261838195A00F94415 /* Wavy_inout.xml in Resources */,
+				85865C281838195A00F94415 /* Wavy_zoomer.xml in Resources */,
+				85865C2A1838195A00F94415 /* UITimelineMappings.xml in Resources */,
+				85865C2C1838195A00F94415 /* BgSettings.xml in Resources */,
+				85865C2E1838195A00F94415 /* CamSettings.xml in Resources */,
+				85865C301838195A00F94415 /* Custom.xml in Resources */,
+				85865C321838195A00F94415 /* LightSettings.xml in Resources */,
+				85865C341838195A00F94415 /* MATERIAL 1Settings.xml in Resources */,
+				85865C361838195A00F94415 /* ofEasyCamSettings in Resources */,
+				85865C381838195A00F94415 /* POINT LIGHT 1Settings.xml in Resources */,
+				85865C3A1838195A00F94415 /* Presets.xml in Resources */,
+				85865C3C1838195A00F94415 /* RenderSettings.xml in Resources */,
+				85865C3E1838195A00F94415 /* Settings.xml in Resources */,
+				85865C401838195A00F94415 /* SystemSettings.xml in Resources */,
+				85865C421838195A00F94415 /* TimeInfo.xml in Resources */,
+				85865C441838195A00F94415 /* cameraTrack.xml in Resources */,
+				85865C461838195A00F94415 /* IntroOutro.xml in Resources */,
+				85865C481838195A00F94415 /* Wormy_inout.xml in Resources */,
+				85865C4A1838195A00F94415 /* Wormy_zoomer.xml in Resources */,
+				85865C4C1838195A00F94415 /* UITimelineMappings.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5205,6 +5939,36 @@
 				E7E00F2C1830B5BF006704BD /* velShader.frag in Sources */,
 				E7E00F2D1830B5BF006704BD /* velShader.vert in Sources */,
 				E7E00F301830B79A006704BD /* MazeSettings.cpp in Sources */,
+				85865C4D1838195A00F94415 /* orbit.frag in Sources */,
+				85865C4F1838195A00F94415 /* orbit.vert in Sources */,
+				85865C511838195A00F94415 /* CloudsVisualSystemOrbit.cpp in Sources */,
+				85865C531838195A00F94415 /* Path.cpp in Sources */,
+				85865C551838195A00F94415 /* PathPoint.cpp in Sources */,
+				85D98A8318381E4300D7065D /* ParallelTransportFrames.cpp in Sources */,
+				85D98AE318381E6800D7065D /* BleachBypassPass.cpp in Sources */,
+				85D98AE518381E6800D7065D /* BloomPass.cpp in Sources */,
+				85D98AE718381E6800D7065D /* ContrastPass.cpp in Sources */,
+				85D98AE918381E6800D7065D /* ConvolutionPass.cpp in Sources */,
+				85D98AEB18381E6800D7065D /* DofAltPass.cpp in Sources */,
+				85D98AED18381E6800D7065D /* DofPass.cpp in Sources */,
+				85D98AEF18381E6800D7065D /* EdgePass.cpp in Sources */,
+				85D98AF118381E6800D7065D /* FakeSSSPass.cpp in Sources */,
+				85D98AF318381E6800D7065D /* FxaaPass.cpp in Sources */,
+				85D98AF518381E6800D7065D /* GodRaysPass.cpp in Sources */,
+				85D98AF718381E6800D7065D /* HorizontalTiltShifPass.cpp in Sources */,
+				85D98AF918381E6800D7065D /* KaleidoscopePass.cpp in Sources */,
+				85D98AFB18381E6800D7065D /* LimbDarkeningPass.cpp in Sources */,
+				85D98AFD18381E6800D7065D /* LUTPass.cpp in Sources */,
+				85D98AFF18381E6800D7065D /* NoiseWarpPass.cpp in Sources */,
+				85D98B0118381E6800D7065D /* PixelatePass.cpp in Sources */,
+				85D98B0318381E6800D7065D /* PostProcessing.cpp in Sources */,
+				85D98B0518381E6800D7065D /* RenderPass.cpp in Sources */,
+				85D98B0718381E6800D7065D /* RGBShiftPass.cpp in Sources */,
+				85D98B0918381E6800D7065D /* RimHighlightingPass.cpp in Sources */,
+				85D98B0B18381E6800D7065D /* SSAOPass.cpp in Sources */,
+				85D98B0D18381E6800D7065D /* ToonPass.cpp in Sources */,
+				85D98B0F18381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */,
+				85D98B1118381E6800D7065D /* ZoomBlurPass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5527,6 +6291,36 @@
 				E7FB298C1830D9E2009EBD0E /* velShader.vert in Sources */,
 				E7FB298D1830D9E2009EBD0E /* MazeSettings.cpp in Sources */,
 				E7FB2E9A1830DA6D009EBD0E /* ofxOculusRift.cpp in Sources */,
+				85865C4E1838195A00F94415 /* orbit.frag in Sources */,
+				85865C501838195A00F94415 /* orbit.vert in Sources */,
+				85865C521838195A00F94415 /* CloudsVisualSystemOrbit.cpp in Sources */,
+				85865C541838195A00F94415 /* Path.cpp in Sources */,
+				85865C561838195A00F94415 /* PathPoint.cpp in Sources */,
+				85D98A8418381E4300D7065D /* ParallelTransportFrames.cpp in Sources */,
+				85D98AE418381E6800D7065D /* BleachBypassPass.cpp in Sources */,
+				85D98AE618381E6800D7065D /* BloomPass.cpp in Sources */,
+				85D98AE818381E6800D7065D /* ContrastPass.cpp in Sources */,
+				85D98AEA18381E6800D7065D /* ConvolutionPass.cpp in Sources */,
+				85D98AEC18381E6800D7065D /* DofAltPass.cpp in Sources */,
+				85D98AEE18381E6800D7065D /* DofPass.cpp in Sources */,
+				85D98AF018381E6800D7065D /* EdgePass.cpp in Sources */,
+				85D98AF218381E6800D7065D /* FakeSSSPass.cpp in Sources */,
+				85D98AF418381E6800D7065D /* FxaaPass.cpp in Sources */,
+				85D98AF618381E6800D7065D /* GodRaysPass.cpp in Sources */,
+				85D98AF818381E6800D7065D /* HorizontalTiltShifPass.cpp in Sources */,
+				85D98AFA18381E6800D7065D /* KaleidoscopePass.cpp in Sources */,
+				85D98AFC18381E6800D7065D /* LimbDarkeningPass.cpp in Sources */,
+				85D98AFE18381E6800D7065D /* LUTPass.cpp in Sources */,
+				85D98B0018381E6800D7065D /* NoiseWarpPass.cpp in Sources */,
+				85D98B0218381E6800D7065D /* PixelatePass.cpp in Sources */,
+				85D98B0418381E6800D7065D /* PostProcessing.cpp in Sources */,
+				85D98B0618381E6800D7065D /* RenderPass.cpp in Sources */,
+				85D98B0818381E6800D7065D /* RGBShiftPass.cpp in Sources */,
+				85D98B0A18381E6800D7065D /* RimHighlightingPass.cpp in Sources */,
+				85D98B0C18381E6800D7065D /* SSAOPass.cpp in Sources */,
+				85D98B0E18381E6800D7065D /* ToonPass.cpp in Sources */,
+				85D98B1018381E6800D7065D /* VerticalTiltShifPass.cpp in Sources */,
+				85D98B1218381E6800D7065D /* ZoomBlurPass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
