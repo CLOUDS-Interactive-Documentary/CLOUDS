@@ -10,6 +10,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemOcean.h"
+#include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemConnectors.h"
 
@@ -114,6 +115,7 @@ struct Mapping {
 	{ "Metaballs", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
+    { "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
 	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
