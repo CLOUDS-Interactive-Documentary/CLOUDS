@@ -13,22 +13,22 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SMOOTH</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GNARLY</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Number of Walkers</Name>
-    <Value>11.729063988</Value>
+    <Value>31.724136353</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particles per Walker</Name>
-    <Value>19.753694534</Value>
+    <Value>653.743835449</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
