@@ -4577,6 +4577,48 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="RandomDigits_BasicOC">
+    <keywords>randomness|random|math</keywords>
+    <suppressions>
+        <clip>Casey - 10Print</clip>
+        <clip>Casey - You need noise</clip>
+        <clip>Golan - woah2</clip>
+        <clip>Marius - gardening</clip>
+        <clip>Shantell - Sharing creates luck</clip>
+        <clip>Shantell - luck</clip>
+        <clip>Shiffman - mutation</clip>
+        <clip>Andres - camera distorts reality</clip>
+        <clip>Andres - correct is beautiful</clip>
+        <clip>Binx - Background</clip>
+        <clip>Diederick - programming with feeling</clip>
+        <clip>Golan - formalism</clip>
+        <clip>Greg - makematics1</clip>
+        <clip>Jen - MathMajor 1</clip>
+        <clip>Jen - Math shapes the world</clip>
+        <clip>Jen - Math simulating reality</clip>
+        <clip>Jen - a different mathematics</clip>
+        <clip>Jen - numbers and words</clip>
+        <clip>Kevin - invented as opposed to discovered 1</clip>
+        <clip>Kevin - invented as opposed to discovered 2</clip>
+        <clip>Kevin - math havoc 1</clip>
+        <clip>Kevin - math havoc 2</clip>
+        <clip>Marius - parameter space</clip>
+        <clip>Martin - Math getting better</clip>
+        <clip>Martin - language and infinity</clip>
+        <clip>Martin - words and numbers</clip>
+        <clip>Philip - first time computation</clip>
+        <clip>Ramsey - New Kind of Science</clip>
+        <clip>Ramsey - algorithm comes from arabic</clip>
+        <clip>Ramsey - arab abstraction 1</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Ramsey - computer was a person</clip>
+        <clip>Ramsey - does nature compute? 2</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="RandomDigits_BasicPreset">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -5339,23 +5381,7 @@
 </system>
 <system name="World_Big_Brother">
     <keywords></keywords>
-    <suppressions>
-        <clip>Binx - programming is a superpower</clip>
-        <clip>Binx - Programming is a superpower</clip>
-        <clip>Greg - Gaze tracking</clip>
-        <clip>Julian - Critical engineering</clip>
-        <clip>Julia - million facebook</clip>
-        <clip>Julian - city as operating system</clip>
-        <clip>Kyle_MC - Anonymous</clip>
-        <clip>Kyle_MC - Face Tracking military</clip>
-        <clip>Kyle_MC - Dangerous to conflate</clip>
-        <clip>Kyle_MC - eyetracking everywhere</clip>
-        <clip>Marcus - energy flow_riot</clip>
-        <clip>Ramsey - algorithms run wild</clip>
-        <clip>Ramsey - dating algorithms</clip>
-        <clip>Ramsey - legos 3</clip>
-        <clip>Regine - the lucky ones</clip>
-    </suppressions>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -5472,6 +5498,74 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="World_Social_NetworkOC">
+    <keywords>internet|network|social media</keywords>
+    <suppressions>
+        <clip>Aaron - collaboration</clip>
+        <clip>Aaron - different ways of communicating</clip>
+        <clip>Aaron - networked creativity</clip>
+        <clip>Bruce - Textual technologies</clip>
+        <clip>Bruce - networks vs robots</clip>
+        <clip>Bruce - relating to history through networks</clip>
+        <clip>Elliot_UK - Ideaspace</clip>
+        <clip>Fernanda - Googe plus 2</clip>
+        <clip>Fernanda - Google plus 2</clip>
+        <clip>Fernanda - Viral pattern 1</clip>
+        <clip>Fernanda - What people are thinking</clip>
+        <clip>Fernanda - had to explain that the web was social</clip>
+        <clip>Fernanda - live data</clip>
+        <clip>Fernanda - social network hairballs</clip>
+        <clip>Fernanda - teens give birth to memes</clip>
+        <clip>Fernanda - viral videos</clip>
+        <clip>Greg - the &quot;Like&quot; button cascade</clip>
+        <clip>Javier - Julian Oliver</clip>
+        <clip>Jen - building community</clip>
+        <clip>Jen - twitter friends</clip>
+        <clip>Julia - net friends</clip>
+        <clip>Julia - strength of weak ties</clip>
+        <clip>Karsten - social collider</clip>
+        <clip>Kyle_CH - RMB city</clip>
+        <clip>Kyle_CH - Social media performance</clip>
+        <clip>Kyle_CH - coral reefs</clip>
+        <clip>Kyle_CH - old server farms</clip>
+        <clip>Kyle_MC - Julian Oliver</clip>
+        <clip>Kyle_MC - Keytweeter 2</clip>
+        <clip>Lauren - Social reality circa 2013</clip>
+        <clip>Lauren - Virtual tension 2</clip>
+        <clip>Lauren - breaking down barriers</clip>
+        <clip>Lauren - desire to get together</clip>
+        <clip>Lauren - friendtracking 1</clip>
+        <clip>Lauren - identity and interaction</clip>
+        <clip>Lauren - politics of liking things</clip>
+        <clip>Lauren - sharing and privacy</clip>
+        <clip>Lauren - social media rewards</clip>
+        <clip>Lauren - the way people interact</clip>
+        <clip>Lindsay - meeting IRL</clip>
+        <clip>Lindsay - online identity</clip>
+        <clip>Martin - Are we getting smarter 2</clip>
+        <clip>Martin - Net art</clip>
+        <clip>Martin - short attention span</clip>
+        <clip>Martin - spread ideas</clip>
+        <clip>Martin - what the world is thinking</clip>
+        <clip>Paola - social media quicksand</clip>
+        <clip>Philip - in touch all the time</clip>
+        <clip>Ramsey - biology and the internet</clip>
+        <clip>Ramsey - distributed model</clip>
+        <clip>Ramsey - resilient internet</clip>
+        <clip>Regine - information should be free</clip>
+        <clip>Regine - not everyone wants that</clip>
+        <clip>Regine - twitter, future</clip>
+        <clip>Sophy - Strange cultures</clip>
+        <clip>Sophy - avatar 2</clip>
+        <clip>Sophy - city</clip>
+        <clip>Sophy - tumblr 1</clip>
+        <clip>Bruce - twitter is not your friend</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="World_SpaceJunk">
     <keywords>military technology|power</keywords>
