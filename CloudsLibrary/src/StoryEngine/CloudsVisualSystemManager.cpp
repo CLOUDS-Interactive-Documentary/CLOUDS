@@ -409,10 +409,16 @@ void CloudsVisualSystemManager::loadPresets(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
     enabledPresetsIndex.clear();
-    for(int i = 0; i<presets.size(); i++){
-        if(presets[i].enabled){
+    for(int i = 0; i < presets.size(); i++){
+#ifdef OCULUS_RIFT
+        if(presets[i].enabled && presets[i].oculusCompatible){
             enabledPresetsIndex.push_back(i);
         }
+#else
+        if(presets[i].enabled && !presets[i].oculusCompatible){
+            enabledPresetsIndex.push_back(i);
+        }
+#endif
     }
 }
 
@@ -518,9 +524,9 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem(string systemName){
-	if( nameToPresets.find(systemName) == nameToPresets.end() ){
-		ofLogError() << "Couldn't find presets for system " << systemName << endl;
-	}
+//	if( nameToPresets.find(systemName) == nameToPresets.end() ){
+//		ofLogError() << "Couldn't find presets for system " << systemName << endl;
+//	}
 	return nameToPresets[systemName];
 }
 
