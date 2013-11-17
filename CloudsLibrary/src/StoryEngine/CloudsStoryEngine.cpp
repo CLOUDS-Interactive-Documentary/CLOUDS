@@ -255,7 +255,10 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
+	
     CloudsAct* act = new CloudsAct();
+	act->defaulPrerollDuration = preRollDuration;
+	
     float seconds = actLength;
     int clipsAdded = 0;
     float totalSecondsEnqueued = 0;
@@ -301,9 +304,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     int moreMenThanWomen = 0;
     int timeForNewQuesiton = 0;
-    float preRollFlagTime  = 0;
+//    float preRollFlagTime  = 0;
     float clipHandleDuration = getHandleForClip(clip);
-    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+//    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
     totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
     
@@ -479,8 +482,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         //add clip to act
         clipHandleDuration = getHandleForClip(clip);
         act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
-        act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+//        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
+//        act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         localClipHistory.push_back(clip);
         clipsAdded++;
         

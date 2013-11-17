@@ -86,7 +86,7 @@ void testApp::setup(){
 	float currentTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
-		currentTime = act->addClip(clip, "topic", currentTime+.5);
+		currentTime = act->addClip(clip, "topic", currentTime+2);
 	}
 	
 	//play the visual systems for some time

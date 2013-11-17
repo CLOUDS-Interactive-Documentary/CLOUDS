@@ -12,6 +12,7 @@ CloudsAct::CloudsAct(){
     
 	timelinePopulated = false;
     duration = 0;
+	defaulPrerollDuration = 2.0;
 }
 
 CloudsAct::~CloudsAct(){
@@ -292,9 +293,20 @@ float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, float 
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
-//	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
+	
+	//Preroll the clip
+    ActTimeItem prerollItem;
+    prerollItem.type = PreRoll;
+    prerollItem.key = "%" + clip.getLinkName();
+    prerollItem.startTime = item.startTime - defaulPrerollDuration;
+    prerollItem.endTime = prerollItem.startTime;
+    prerollItem.handleLength = handleLength;
+    
+    actItemsMap[prerollItem.key] = prerollItem;
+    actItems.push_back(prerollItem);
+	
 	return duration;
 }
 
