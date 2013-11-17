@@ -197,6 +197,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>SmoothScribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>VioletBlue_Nebula</Name>
     <Value>0</Value>
 </Widget>
