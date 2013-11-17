@@ -111,7 +111,6 @@ void CloudsIntroSequence::selfUpdate(){
 			startQuestions[i].update();
 		}
 		
-		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
@@ -355,26 +354,15 @@ void CloudsIntroSequence::selfDraw(){
 	
 	ofPopStyle();
     
-    // Draw the cursor.
-    glDisable(GL_DEPTH_TEST);
-    ofRectangle viewport;
 #ifdef OCULUS_RIFT
-    viewport = getOculusRift().getOculusViewport();
-	viewport.x -= viewport.width/2;
-#else
-    viewport = ofGetCurrentViewport();
-#endif
-    
-    ofVec3f worldCursor = getCameraRef().screenToWorld(cursor, viewport);
-//	ofVec3f worldCursor = getCameraRef().screenToWorld(cursor, ofRectangle(ofGetScreenWidth(),ofGetScreenHeight()));
-    ofSetColor(255, 0, 0);
-    ofCircle(worldCursor, 2 + cursor.z * 10);
-
-    ofVec3f worldCenter = getCameraRef().screenToWorld(viewport.getCenter(), viewport);
-    ofSetColor(0, 255, 0);
-    ofCircle(worldCenter, 2);
 	
-//	cout << "Camera position " << getCameraRef().getPosition() << " " << worldCursor << endl;
+	ofPushStyle();
+	ofVec3f worldCursor = getOculusRift().mousePosition3D();
+    ofSetColor(255, 0, 0);
+    ofCircle(worldCursor, .5);
+	ofPopStyle();
+	
+#endif
 
 }
 
