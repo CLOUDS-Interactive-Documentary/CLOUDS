@@ -73,7 +73,6 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	bool isStartQuestionSelected();
 	void autoSelectQuestion();
 	CloudsQuestion* getSelectedQuestion();
-	
 	CloudsRun& getSelectedRun(){
 		return currentRun;
 	};
@@ -85,6 +84,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	
 	ofxUISuperCanvas* questionGui;
 	ofxUISuperCanvas* tunnelGui;
+	ofxUISuperCanvas* typeGui;
 	
 	bool showingQuestions;
 	float questionWrapDistance;
@@ -96,32 +96,39 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
-    void rebuildQuestionFont();
+
+	
+
+	
+	ofxFTGLFont extrudedTitleText; //for the title
+	float titleTypeOpacity;
+	int titleFontSize;
+	int titleFontExtrude;
+	float titleTypeTracking;
+	float titleTypeOffset;
+
 	ofxFTGLSimpleLayout questionFont;
+    void rebuildQuestionFont();
     int questionFontSize;
 	float questionLineLength;
     float questionLineSpacing;
+
 	
+	float currentFontSize;
+	float currentFontExtrusion;
+
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
 	CloudsQuestion* selectedQuestion;
 	CloudsQuestion* caughtQuestion;
 
 	vector<string> loadedQuestions;
-	
-	float fontSize;
-	float fontExtrusion;
-	float fontScale;
-	
-	float currentFontSize;
-	float currentFontExtrusion;
-	
 	float perlinOffset;
 	float wireframeAlpha;
 	
 	void reloadShaders();
 	bool paused;
-	void pauseAtBeginning();
+
 	
 	ofMesh blocksMesh;
 	ofMesh tunnelMeshTight;
@@ -154,7 +161,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
-    
+	
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	

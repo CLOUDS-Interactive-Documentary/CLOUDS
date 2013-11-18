@@ -242,15 +242,14 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	fadeInValue = MIN(position, 1.0);
 	fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);
 	if(position < 1.0){
-		audioVolume = ofMap(position, .8, 1.0, 0., maxVolume, true);
+		audioVolume = ofMap(position, 1.0, 1.1, 0., maxVolume, true);
 	}
 	else if(position > duration - 1.0){
-		audioVolume = ofMap(position, duration - 1.0, duration - .8, maxVolume, 0.0, true);
+		audioVolume = ofMap(position, duration - 1.1, duration - 1.0, maxVolume, 0.0, true);
 	}
 
 	getPlayer().setVolume(audioVolume);
 
-	
 	if(position > duration - .04){
 		getPlayer().stop();
 	}

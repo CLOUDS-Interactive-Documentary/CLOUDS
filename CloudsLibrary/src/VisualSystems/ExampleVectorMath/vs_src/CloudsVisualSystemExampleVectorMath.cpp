@@ -171,6 +171,7 @@ void CloudsVisualSystemExampleVectorMath::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleVectorMath::selfDraw(){
 
+	ofPushStyle();
     
 
     ofPushMatrix();
@@ -204,10 +205,12 @@ void CloudsVisualSystemExampleVectorMath::selfDraw(){
             glVertex3f(zAxisMin.x, zAxisMin.y, zAxisMin.z);
             glVertex3f(zAxisMax.x, zAxisMax.y, zAxisMax.z);
         glEnd();
+		ofSetColor(255);
     }
     
     ofPopMatrix();
 
+	ofPopStyle();
 }
 
 // draw any debug stuff here

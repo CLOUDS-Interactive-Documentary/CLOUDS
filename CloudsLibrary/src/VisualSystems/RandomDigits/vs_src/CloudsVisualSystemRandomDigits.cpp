@@ -58,8 +58,7 @@ void CloudsVisualSystemRandomDigits::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemRandomDigits::selfSetup(){
 	
     glEnable(GL_DEPTH_TEST);
-    ofBackground(0);
-    //ofSetFrameRate(30);
+
     Rand::Font.loadFont(getVisualSystemDataPath() + "Courier.ttf", 14, true, true, true);
     int columns = 25;
     int rows = 15;
@@ -132,7 +131,7 @@ void CloudsVisualSystemRandomDigits::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemRandomDigits::selfDraw(){
     
-    ofBackground(0);
+    //ofBackground(0);
     
     
     cam.begin();

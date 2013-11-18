@@ -5,25 +5,30 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
+    if(! player.loadMovie("Zach_Fucking_boring.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);
     fboBlurOnePass.allocate(img.getWidth(), img.getHeight());
     fboBlurTwoPass.allocate(img.getWidth(), img.getHeight());
+    imgFbo.allocate(img.getWidth(), img.getHeight());
+    fboSkinDetect.allocate(img.getWidth(), img.getHeight());
     player.play();
     threshold = 0.5;
     
+
+    shaderSkinDetection.load("skinDetector");
     shaderBlurX.load("simpleBlurHorizontal");
     shaderBlurY.load("simpleBlurVertical");
     
+
     ofEnableAlphaBlending();
     blur = false;
     
     gui = new ofxUISuperCanvas("COLOUR SELECTOR", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
+    gui->addFPS();
     gui->addSpacer();
-//    gui->addSlider("THRESHOLD", 0.0, 1.0, &threshold);
     gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &thresholdLower);
     gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &thresholdUpper);
     gui->addSlider("HUE WEIGHT", 0.0, 1.0, &hueWeight);
@@ -37,7 +42,16 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 
     gui->loadSettings("GUI/guiSettings.xml");
+    
+    for( int j=0; j < player.getHeight(); j++){
+        for (int i =0 ; i<player.getWidth();i++) {
+            
+            img.setColor(i,j, ofColor::black);
+        }
+    
+    }
 }
+
 
 //--------------------------------------------------------------
 void testApp::guiEvent(ofxUIEventArgs &e)
@@ -49,15 +63,34 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 void testApp::update(){
     
     player.update();
+    if(player.isFrameNew()){
+        img = player.getPixelsRef();
+    }
+
     
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    player.draw(0, 0,player.getWidth()/2,player.getHeight()/2);
+    
+    player.draw(0, 0, player.getWidth()/2, player.getHeight()/2);
+    
+    fboSkinDetect.begin();
+    shaderSkinDetection.begin();
+
+    shaderSkinDetection.setUniformTexture("imgSampler",player, 0);
+    shaderSkinDetection.setUniform3f("samplePointColor", samplePointColor.r, samplePointColor.g,samplePointColor.b);
+    shaderSkinDetection.setUniform3f("weights", hueWeight, satWeight, brightWeight);
+    shaderSkinDetection.setUniform1f("lowerThreshold", thresholdLower);
+    shaderSkinDetection.setUniform1f("upperThreshold", thresholdUpper);
+//    player.draw(0, 0,player.getWidth()/2, player.getHeight()/2);//,player.getWidth()/2,player.getHeight()/2);
+    
+    img.draw(0,0,img.getWidth() ,img.getHeight());
+   
+    shaderSkinDetection.end();
+    fboSkinDetect.end();
     
     if(blur){
-//        float blur = ofMap(mouseX, 0, ofGetWidth(), 0, 10, true);
         
         //----------------------------------------------------------
         fboBlurOnePass.begin();
@@ -66,8 +99,8 @@ void testApp::draw(){
         shaderBlurX.setUniformTexture("src_tex_unit0", img, 0 );
         shaderBlurX.setUniform1f("blurAmnt", blurAmount);
         
-        img.draw(0,0);
-        
+        //img.draw(0,0);
+        fboSkinDetect.draw(0,0);
         shaderBlurX.end();
         
         fboBlurOnePass.end();
@@ -91,8 +124,7 @@ void testApp::draw(){
         fboBlurTwoPass.draw(player.width/2,0, player.getWidth()/2, player.getHeight()/2);
     }
     else{
-        img.draw(player.width/2,0, player.getWidth()/2, player.getHeight()/2);
-        
+        fboSkinDetect.draw(player.getWidth()/2,0,player.getWidth()/2, player.getHeight()/2);
     }
  
 }
@@ -108,8 +140,8 @@ void testApp::keyPressed(int key){
         threshold-= 0.2;
         cout<<"Threshold updated : "<<threshold<<endl;
     }
-    else if (key == ' '){
-        
+    else if (key == 'r'){
+        shaderSkinDetection.load("skinDetector");
     }
     else if(key == 'f'){
         ofToggleFullscreen();
@@ -140,41 +172,29 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     
-    if( x<player.getWidth() && y< player.getHeight() ){
-        samplePoint.set(mouseX, mouseY);
-        checkColorDistance();
+    if( x<player.getWidth()/2 && y< player.getHeight() ){
+        samplePoint.set(x, y);
+        samplePointNorm.x = x/player.getWidth();
+        samplePointNorm.y = y/player.getHeight();
         cout<<"color value at point: "<<player.getPixelsRef().getColor(samplePoint.x, samplePoint.y)<<endl;
+        samplePointColor =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
     }
     
 }
 
 //--------------------------------------------------------------
 void testApp::checkColorDistance(){
+
     ofFloatColor c =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
     ofVec3f sample = ofVec3f(c.getHue() ,c.getSaturation(),c.getBrightness() );
-    ofPixels pixels = player.getPixelsRef();
+    ofPixels& pixels = player.getPixelsRef();
     
-    cout<<"HSB :"<< sample<<endl;
-    for( int j=0; j < player.getHeight(); j++){
-        for (int i =0 ; i<player.getWidth();i++) {
-            
+    for( int j=0; j < player.getHeight(); j+=2){
+        for (int i =0 ; i<player.getWidth();i+=2) {
+
             ofFloatColor currentColour = pixels.getColor(i, j);
             ofVec3f current = ofVec3f(currentColour.getHue() ,currentColour.getSaturation() ,currentColour.getBrightness());
             
-/*
-                    float hue = abs(c.getHue() - currentColour.getHue());
-                    float sat = abs(c.getSaturation() - currentColour.getSaturation());
-                    float bright = abs(c.getBrightness() - currentColour.getBrightness());
-         
-                    if(hue < hueThreshold && sat < satThreshold && bright < brightThreshold){
-                        ofFloatColor col;
-                        col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
-                        img.setColor(i, j, col);
-                    }
-                    else{
-                        img.setColor(i,j,ofFloatColor(0,0,0));
-                    }
-*/
             
             ofVec3f weights = ofVec3f(hueWeight,satWeight,brightWeight);
             float weightedD = weightedDistance(sample, current, weights);
@@ -186,7 +206,6 @@ void testApp::checkColorDistance(){
                 ofFloatColor col;
                 col.setHsb(currentColour.getHue(),currentColour.getSaturation(),currentColour.getBrightness() );
                 col.a =alpha;
-//                col.set(alpha);
                 img.setColor(i, j, col);
 
             }
@@ -197,9 +216,10 @@ void testApp::checkColorDistance(){
         }
     }
     img.update();
+
 }
 
-float testApp::weightedDistance(ofVec3f pnt1 ,ofVec3f pnt2,ofVec3f weights){
+float testApp::weightedDistance(ofVec3f& pnt1 ,ofVec3f& pnt2,ofVec3f& weights){
 	float vx = pnt1.x - pnt2.x;
 	float vy = pnt1.y - pnt2.y;
 	float vz = pnt1.x - pnt2.x;

@@ -251,6 +251,8 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
+	introSequence.playSystem();
+
 	introSequence.setStartQuestions(possibleStartQuestions);
 #ifdef OCULUS_RIFT
 	introSequence.loadPresetGUISFromName("Oculus");
@@ -258,7 +260,6 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 #endif
 	
-	introSequence.playSystem();
 	showingIntro = true;
 }
 
@@ -283,13 +284,13 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
-	
-	if(mandatoryAct != NULL){
-		currentAct = mandatoryAct;
-	}
-	else{
+//	
+//	if(mandatoryAct != NULL){
+//		currentAct = mandatoryAct;
+//	}
+//	else{
 		currentAct = act;
-	}
+//	}
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
@@ -345,18 +346,18 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			//scratchPlayer.setVolume(currentVolume);
 		}
 		else if(args.key == OF_KEY_RIGHT){
-			currentScratch = (currentScratch + 1) % scratchTracks.size();
-			scratchPlayer.stop();
-			scratchPlayer.unloadSound();
-			scratchPlayer.loadSound(scratchTracks[currentScratch]);
-			scratchPlayer.play();
+//			currentScratch = (currentScratch + 1) % scratchTracks.size();
+//			scratchPlayer.stop();
+//			scratchPlayer.unloadSound();
+//			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+//			scratchPlayer.play();
 		}
 		else if (args.key == OF_KEY_LEFT){
-			currentScratch = (scratchTracks.size() + currentScratch - 1) % scratchTracks.size();
-			scratchPlayer.stop();
-			scratchPlayer.unloadSound();
-			scratchPlayer.loadSound(scratchTracks[currentScratch]);
-			scratchPlayer.play();
+//			currentScratch = (scratchTracks.size() + currentScratch - 1) % scratchTracks.size();
+//			scratchPlayer.stop();
+//			scratchPlayer.unloadSound();
+//			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+//			scratchPlayer.play();
 		}
 	}
 }
@@ -402,7 +403,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
 				introSequence.stopSystem();
-				storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+				if(mandatoryAct != NULL){
+					CloudsActEventArgs args(mandatoryAct);
+					ofNotifyEvent(storyEngine->getEvents().actCreated, args);
+				}
+				else{
+					storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+				}
 			}
 			
 			scratchPlayer.stop();

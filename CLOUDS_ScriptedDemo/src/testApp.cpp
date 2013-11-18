@@ -68,41 +68,97 @@ void testApp::setup(){
 	CloudsVisualSystemPreset& vectormath = visualSystems.getPresetForSystem( "ExampleVectorMath", "WhiteLineOC");
 //
     CloudsVisualSystemPreset& yellowTailPreset = visualSystems.getPresetForSystem( "YellowTail", "YellowTailOC");
-    CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
+   // CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
     
+    CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueSmoothScribblesOC");
+    
+    CloudsVisualSystemPreset& flock = visualSystems.getPresetForSystem( "ExampleOpenSteer", "BasicOC");
+    
+    CloudsVisualSystemPreset& blobby = visualSystems.getPresetForSystem( "MandalaComponents", "PureFormOC");
+    
+    CloudsVisualSystemPreset& pulse = visualSystems.getPresetForSystem( "MandalaComponents", "JM_pulse1OC");
+    
+    CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "JM_flyoverOC");
+    
+    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
+    
+    CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
+    
+    CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "NightOceanOC");
+    
+    CloudsVisualSystemPreset& neurons = visualSystems.getPresetForSystem( "Neurons", "MezzyNeuronsOC");
+
     CloudsAct* act = new CloudsAct();
 	vector<string> clipIds;
 	clipIds.push_back("Shantell - Coding gesturally");
-	clipIds.push_back("Golan - make a mark");
+//	clipIds.push_back("Golan - make a mark");
 	clipIds.push_back("Karsten - immediate feedback");
 	clipIds.push_back("Shiffman - sketching with code");
-	clipIds.push_back("Shantell - work with zach");
-	clipIds.push_back("Maeda - last trick");
-	clipIds.push_back("Golan - yellow tail");
+	//clipIds.push_back("Shantell - work with zach");
+	//clipIds.push_back("Maeda - last trick");
+	//clipIds.push_back("Golan - yellow tail");
 	clipIds.push_back("Shantell - drawing with computers");
 	clipIds.push_back("Zach - Time slows down");
-	clipIds.push_back("Lauren - Lifelong project");
+	//clipIds.push_back("Lauren - Lifelong project");
 	clipIds.push_back("Marius - Continuous process of exploration");
 	clipIds.push_back("Casey - tangle");
-	clipIds.push_back("Marius - code can be messy");
+	clipIds.push_back("Golan - woah");
+    clipIds.push_back("Vera - Playing with a system");
+    clipIds.push_back("Shiffman - how far could we get?");
+    clipIds.push_back("Casey - Systems theory");
+    clipIds.push_back("Casey - Developing a microworld");
+    clipIds.push_back("Kyle_CH - coding is 1");
+    clipIds.push_back("Shiffman - reality will only get you so far");
+    clipIds.push_back("Karolina - suspension of disbelief");
+    clipIds.push_back("Lauren - real and virtual 1");
+    clipIds.push_back("JTNimoy - immersion");
+  
+    
 
 	
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
-		
-		if(clipIds[i] == "Golan - yellow tail"){
-			act->addVisualSystem( yellowTailPreset, lastClipEndTime + 5, 80); //start the preset 5 seconds in, play for 80 seconds
-		}
-		
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
+		
+        if(clipIds[i] == "Karsten - immediate feedback"){
+			act->addVisualSystem( vectormath, lastClipEndTime + 5, 30); //start the preset 5 seconds in, play for 80 seconds
+		}
+        
+        if(clipIds[i] == "Zach - Time slows down"){
+			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
+		}
+        
+        if(clipIds[i] == "Golan - woah"){
+			act->addVisualSystem( blobby, lastClipEndTime+1, 7);
+          //  act->addVisualSystem( pulse, lastClipEndTime+6, 5);
+		}
+        
+        if(clipIds[i] == "Vera - Playing with a system"){
+            act->addVisualSystem( maze, lastClipEndTime+1, 15);
+        }
+    
+        
+        if(clipIds[i] == "Shiffman - how far could we get?"){
+          act->addVisualSystem( flock, lastClipEndTime+5, 20);
+        }
+    
+        if(clipIds[i] == "Kyle_CH - coding is 1"){
+            act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
+        }
+        
+        if(clipIds[i] == "Lauren - real and virtual 1"){
+            act->addVisualSystem( neurons, lastClipEndTime+1, 15);
+        }
+        
+        if(clipIds[i] == "JTNimoy - immersion"){
+            act->addVisualSystem( ocean_regular, lastClipEndTime+4, 15);
+        }
+		
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
 	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( LIA,  0, 15 );
-	act->addVisualSystem( vectormath, 25, 40 );
-//    act->addVisualSystem( preset2, 65, 80 );
-	act->addVisualSystem( spaghetti, 100, 120 );
+	act->addVisualSystem( LIA,  0, 20 );
 	act->populateTime();
 	
 	player.setMandatoryAct(act);

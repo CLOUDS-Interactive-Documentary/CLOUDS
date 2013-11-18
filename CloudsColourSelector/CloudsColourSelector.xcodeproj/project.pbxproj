@@ -11,6 +11,8 @@
 		181426FC17627AFE00C2B5FE /* CloudsFCPParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181426F317627AFE00C2B5FE /* CloudsFCPParser.cpp */; };
 		181426FE17627AFE00C2B5FE /* CloudsLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181426F717627AFE00C2B5FE /* CloudsLink.cpp */; };
 		181426FF17627AFE00C2B5FE /* CloudsStoryEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181426F917627AFE00C2B5FE /* CloudsStoryEngine.cpp */; };
+		185DF9F018398AA800BEC706 /* skinDetector.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185DF9EE18398AA800BEC706 /* skinDetector.frag */; };
+		185DF9F118398AA800BEC706 /* skinDetector.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185DF9EF18398AA800BEC706 /* skinDetector.vert */; };
 		18C070CB1835ACEC00B58246 /* simpleBlurHorizontal.frag in Sources */ = {isa = PBXBuildFile; fileRef = 18C070C71835ACEC00B58246 /* simpleBlurHorizontal.frag */; };
 		18C070CC1835ACEC00B58246 /* simpleBlurHorizontal.vert in Sources */ = {isa = PBXBuildFile; fileRef = 18C070C81835ACEC00B58246 /* simpleBlurHorizontal.vert */; };
 		18C070CD1835ACEC00B58246 /* simpleBlurVertical.frag in Sources */ = {isa = PBXBuildFile; fileRef = 18C070C91835ACEC00B58246 /* simpleBlurVertical.frag */; };
@@ -147,6 +149,8 @@
 		181426F817627AFE00C2B5FE /* CloudsLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsLink.h; sourceTree = "<group>"; };
 		181426F917627AFE00C2B5FE /* CloudsStoryEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsStoryEngine.cpp; sourceTree = "<group>"; };
 		181426FA17627AFE00C2B5FE /* CloudsStoryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsStoryEngine.h; sourceTree = "<group>"; };
+		185DF9EE18398AA800BEC706 /* skinDetector.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = skinDetector.frag; path = bin/data/skinDetector.frag; sourceTree = "<group>"; };
+		185DF9EF18398AA800BEC706 /* skinDetector.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = skinDetector.vert; path = bin/data/skinDetector.vert; sourceTree = "<group>"; };
 		18C070C71835ACEC00B58246 /* simpleBlurHorizontal.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simpleBlurHorizontal.frag; path = bin/data/simpleBlurHorizontal.frag; sourceTree = "<group>"; };
 		18C070C81835ACEC00B58246 /* simpleBlurHorizontal.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simpleBlurHorizontal.vert; path = bin/data/simpleBlurHorizontal.vert; sourceTree = "<group>"; };
 		18C070C91835ACEC00B58246 /* simpleBlurVertical.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = simpleBlurVertical.frag; path = bin/data/simpleBlurVertical.frag; sourceTree = "<group>"; };
@@ -972,6 +976,8 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				185DF9EE18398AA800BEC706 /* skinDetector.frag */,
+				185DF9EF18398AA800BEC706 /* skinDetector.vert */,
 				18C070C71835ACEC00B58246 /* simpleBlurHorizontal.frag */,
 				18C070C81835ACEC00B58246 /* simpleBlurHorizontal.vert */,
 				18C070C91835ACEC00B58246 /* simpleBlurVertical.frag */,
@@ -1214,6 +1220,8 @@
 				18C070CC1835ACEC00B58246 /* simpleBlurHorizontal.vert in Sources */,
 				18C070CD1835ACEC00B58246 /* simpleBlurVertical.frag in Sources */,
 				18C070CE1835ACEC00B58246 /* simpleBlurVertical.vert in Sources */,
+				185DF9F018398AA800BEC706 /* skinDetector.frag in Sources */,
+				185DF9F118398AA800BEC706 /* skinDetector.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

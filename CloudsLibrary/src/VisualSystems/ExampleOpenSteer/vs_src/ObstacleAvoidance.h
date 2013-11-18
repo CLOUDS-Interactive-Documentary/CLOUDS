@@ -70,7 +70,7 @@ public:
 	void setup(){
 		ofxOpenSteerPlugin::setup();
 		
-		ofBackground(255, 0, 255);
+//		ofBackground(255, 0, 255);
         
         // Origin and target points
         origin = Vec3(0,20,0);

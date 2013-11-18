@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>425.000061035</XPosition>
+    <XPosition>213.000045776</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -29,11 +29,6 @@
     <Kind>4</Kind>
     <Name>ROT-Z</Name>
     <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>LOCK TO TRACK</Name>
-    <Value>63</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -108,5 +103,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>camera fwd force</Name>
-    <Value>1.083741546</Value>
+    <Value>0.935999990</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>hold camera</Name>
+    <Value>0</Value>
 </Widget>
