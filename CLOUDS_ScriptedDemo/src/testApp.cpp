@@ -64,11 +64,11 @@ void testApp::setup(){
 //	sound.setMasterAmp(1.0);
 //	useScratch = false;
 	
-	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "ExampleVectorMath", "WhiteLineOC");
+	CloudsVisualSystemPreset& LIA = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
+	CloudsVisualSystemPreset& vectormath = visualSystems.getPresetForSystem( "ExampleVectorMath", "WhiteLineOC");
 //
-    CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "YellowTail", "YellowTailOC");
-    CloudsVisualSystemPreset& preset3 = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
+    CloudsVisualSystemPreset& yellowTailPreset = visualSystems.getPresetForSystem( "YellowTail", "YellowTailOC");
+    CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
     
     CloudsAct* act = new CloudsAct();
 	vector<string> clipIds;
@@ -86,18 +86,25 @@ void testApp::setup(){
 	clipIds.push_back("Casey - tangle");
 	clipIds.push_back("Marius - code can be messy");
 
-	float currentTime = 0;
+	
+	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
+		
+		if(clipIds[i] == "Golan - yellow tail"){
+			act->addVisualSystem( yellowTailPreset, lastClipEndTime + 5, 80); //start the preset 5 seconds in, play for 80 seconds
+		}
+		
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
-		currentTime = act->addClip(clip, "topic", currentTime+2);
+		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
 	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( preset0,  0, 15 );
-	act->addVisualSystem( preset1, 25, 40 );
-    act->addVisualSystem( preset2, 65, 80 );
-	act->addVisualSystem( preset3, 100, 120 );
-	act->populateTime();	
+	act->addVisualSystem( LIA,  0, 15 );
+	act->addVisualSystem( vectormath, 25, 40 );
+//    act->addVisualSystem( preset2, 65, 80 );
+	act->addVisualSystem( spaghetti, 100, 120 );
+	act->populateTime();
+	
 	player.setMandatoryAct(act);
 	vector<CloudsClip> question;
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
