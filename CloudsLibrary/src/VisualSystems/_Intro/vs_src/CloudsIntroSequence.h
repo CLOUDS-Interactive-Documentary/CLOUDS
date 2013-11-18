@@ -96,8 +96,11 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
-	
-	ofxFTGLFont font;
+    void rebuildQuestionFont();
+	ofxFTGLSimpleLayout questionFont;
+    int questionFontSize;
+	float questionLineLength;
+    float questionLineSpacing;
 	
 	void positionStartQuestions();
 	vector<CloudsQuestion> startQuestions;
@@ -151,8 +154,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	void generateTunnel();
 	float looseTunnelResolutionX;
 	float looseTunnelResolutionZ;
-	
-	
+    
 	ofFloatColor tint;
 	ofFloatColor questionNodeTint;
 	
