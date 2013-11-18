@@ -284,13 +284,13 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
-	
-	if(mandatoryAct != NULL){
-		currentAct = mandatoryAct;
-	}
-	else{
+//	
+//	if(mandatoryAct != NULL){
+//		currentAct = mandatoryAct;
+//	}
+//	else{
 		currentAct = act;
-	}
+//	}
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
@@ -403,7 +403,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
 				introSequence.stopSystem();
-				storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+				if(mandatoryAct != NULL){
+					CloudsActEventArgs args(mandatoryAct);
+					ofNotifyEvent(storyEngine->getEvents().actCreated, args);
+				}
+				else{
+					storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
+				}
 			}
 			
 			scratchPlayer.stop();
