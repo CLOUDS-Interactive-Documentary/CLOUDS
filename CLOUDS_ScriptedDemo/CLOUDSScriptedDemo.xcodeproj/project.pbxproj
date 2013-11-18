@@ -224,7 +224,6 @@
 		E7D9F659182B03CE00AD56C1 /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E167182B03B400AD56C1 /* CloudsVisualSystemLSystem.cpp */; };
 		E7D9F65A182B03CE00AD56C1 /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E169182B03B400AD56C1 /* LNode.cpp */; };
 		E7D9F65B182B03CE00AD56C1 /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E16B182B03B400AD56C1 /* LSystem.cpp */; };
-		E7D9F666182B03CE00AD56C1 /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E285182B03B600AD56C1 /* CloudsVisualSystemMandala.cpp */; };
 		E7D9F670182B03CE00AD56C1 /* CloudsVisualSystemMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E33E182B03B700AD56C1 /* CloudsVisualSystemMazeGenerator.cpp */; };
 		E7D9F671182B03CE00AD56C1 /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E340182B03B700AD56C1 /* Maze.cpp */; };
 		E7D9F672182B03CE00AD56C1 /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E342182B03B700AD56C1 /* MazeCamera.cpp */; };
@@ -329,6 +328,12 @@
 		E7D9FB87182B064900AD56C1 /* ofxMPMObstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB7F182B064900AD56C1 /* ofxMPMObstacle.cpp */; };
 		E7D9FB88182B064900AD56C1 /* ofxMPMParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9FB81182B064900AD56C1 /* ofxMPMParticle.cpp */; };
 		E7D9FBF2182B069800AD56C1 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D9FBF1182B069800AD56C1 /* opencv.a */; };
+		E7DCB34C1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB3291839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp */; };
+		E7DCB34D1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB3291839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp */; };
+		E7DCB34E1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB32B1839E0CD00A70EAA /* MandalaComponent.cpp */; };
+		E7DCB34F1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB32B1839E0CD00A70EAA /* MandalaComponent.cpp */; };
+		E7DCB3501839E0CD00A70EAA /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB32E1839E0CD00A70EAA /* SurfacePoint.cpp */; };
+		E7DCB3511839E0CD00A70EAA /* SurfacePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCB32E1839E0CD00A70EAA /* SurfacePoint.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7E5E31518122F3C00CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E30B18122F3C00CA4196 /* CloudsClusterNode.cpp */; };
@@ -542,7 +547,6 @@
 		E7FB25991830D4C0009EBD0E /* CloudsVisualSystemLSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E167182B03B400AD56C1 /* CloudsVisualSystemLSystem.cpp */; };
 		E7FB259A1830D4C0009EBD0E /* LNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E169182B03B400AD56C1 /* LNode.cpp */; };
 		E7FB259B1830D4C0009EBD0E /* LSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E16B182B03B400AD56C1 /* LSystem.cpp */; };
-		E7FB259C1830D4C0009EBD0E /* CloudsVisualSystemMandala.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E285182B03B600AD56C1 /* CloudsVisualSystemMandala.cpp */; };
 		E7FB259D1830D4C0009EBD0E /* CloudsVisualSystemMazeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E33E182B03B700AD56C1 /* CloudsVisualSystemMazeGenerator.cpp */; };
 		E7FB259E1830D4C0009EBD0E /* Maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E340182B03B700AD56C1 /* Maze.cpp */; };
 		E7FB259F1830D4C0009EBD0E /* MazeCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E342182B03B700AD56C1 /* MazeCamera.cpp */; };
@@ -1277,9 +1281,6 @@
 		E7D9E16A182B03B400AD56C1 /* LNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNode.h; sourceTree = "<group>"; };
 		E7D9E16B182B03B400AD56C1 /* LSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LSystem.cpp; sourceTree = "<group>"; };
 		E7D9E16C182B03B400AD56C1 /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		E7D9E285182B03B600AD56C1 /* CloudsVisualSystemMandala.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMandala.cpp; sourceTree = "<group>"; };
-		E7D9E286182B03B600AD56C1 /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
-		E7D9E287182B03B600AD56C1 /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
 		E7D9E33E182B03B700AD56C1 /* CloudsVisualSystemMazeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMazeGenerator.cpp; sourceTree = "<group>"; };
 		E7D9E33F182B03B700AD56C1 /* CloudsVisualSystemMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMazeGenerator.h; sourceTree = "<group>"; };
 		E7D9E340182B03B700AD56C1 /* Maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Maze.cpp; sourceTree = "<group>"; };
@@ -1621,6 +1622,13 @@
 		E7D9FBED182B069800AD56C1 /* tracking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tracking.hpp; sourceTree = "<group>"; };
 		E7D9FBEE182B069800AD56C1 /* video.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = video.hpp; sourceTree = "<group>"; };
 		E7D9FBF1182B069800AD56C1 /* opencv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv.a; sourceTree = "<group>"; };
+		E7DCB3291839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemMandala.cpp; sourceTree = "<group>"; };
+		E7DCB32A1839E0CD00A70EAA /* CloudsVisualSystemMandala.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemMandala.h; sourceTree = "<group>"; };
+		E7DCB32B1839E0CD00A70EAA /* MandalaComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MandalaComponent.cpp; sourceTree = "<group>"; };
+		E7DCB32C1839E0CD00A70EAA /* MandalaComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaComponent.h; sourceTree = "<group>"; };
+		E7DCB32D1839E0CD00A70EAA /* MandalaTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandalaTicker.h; sourceTree = "<group>"; };
+		E7DCB32E1839E0CD00A70EAA /* SurfacePoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurfacePoint.cpp; sourceTree = "<group>"; };
+		E7DCB32F1839E0CD00A70EAA /* SurfacePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfacePoint.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7E5E30B18122F3C00CA4196 /* CloudsClusterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterNode.cpp; sourceTree = "<group>"; };
@@ -2123,6 +2131,7 @@
 		E7402DDF178F44A100FEABED /* VisualSystems */ = {
 			isa = PBXGroup;
 			children = (
+				E7DCB12E1839E0CC00A70EAA /* MandalaComponents */,
 				E7D9D4E9182B039E00AD56C1 /* 3DModelVisualSystem */,
 				E7D9D849182B03A300AD56C1 /* Cities */,
 				E7D9D915182B03A400AD56C1 /* Colony */,
@@ -2140,7 +2149,6 @@
 				E7D9E014182B03B000AD56C1 /* LaplacianTunnel */,
 				E7D9E058182B03B200AD56C1 /* LIA */,
 				E7D9E10E182B03B300AD56C1 /* LSystem */,
-				E7D9E16D182B03B400AD56C1 /* MandalaVisualSystem */,
 				E7D9E2EB182B03B700AD56C1 /* MazeGenerator */,
 				E7D9E34A182B03B700AD56C1 /* Memory */,
 				E7D9E484182B03B800AD56C1 /* Metaballs */,
@@ -3481,24 +3489,6 @@
 			path = vs_src;
 			sourceTree = "<group>";
 		};
-		E7D9E16D182B03B400AD56C1 /* MandalaVisualSystem */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E284182B03B600AD56C1 /* vs_src */,
-			);
-			path = MandalaVisualSystem;
-			sourceTree = "<group>";
-		};
-		E7D9E284182B03B600AD56C1 /* vs_src */ = {
-			isa = PBXGroup;
-			children = (
-				E7D9E285182B03B600AD56C1 /* CloudsVisualSystemMandala.cpp */,
-				E7D9E286182B03B600AD56C1 /* CloudsVisualSystemMandala.h */,
-				E7D9E287182B03B600AD56C1 /* MandalaTicker.h */,
-			);
-			path = vs_src;
-			sourceTree = "<group>";
-		};
 		E7D9E2EB182B03B700AD56C1 /* MazeGenerator */ = {
 			isa = PBXGroup;
 			children = (
@@ -4715,6 +4705,28 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
+		E7DCB12E1839E0CC00A70EAA /* MandalaComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E7DCB3281839E0CD00A70EAA /* vs_src */,
+			);
+			path = MandalaComponents;
+			sourceTree = "<group>";
+		};
+		E7DCB3281839E0CD00A70EAA /* vs_src */ = {
+			isa = PBXGroup;
+			children = (
+				E7DCB3291839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp */,
+				E7DCB32A1839E0CD00A70EAA /* CloudsVisualSystemMandala.h */,
+				E7DCB32B1839E0CD00A70EAA /* MandalaComponent.cpp */,
+				E7DCB32C1839E0CD00A70EAA /* MandalaComponent.h */,
+				E7DCB32D1839E0CD00A70EAA /* MandalaTicker.h */,
+				E7DCB32E1839E0CD00A70EAA /* SurfacePoint.cpp */,
+				E7DCB32F1839E0CD00A70EAA /* SurfacePoint.h */,
+			);
+			path = vs_src;
+			sourceTree = "<group>";
+		};
 		E7E5E2C618122F3C00CA4196 /* _ClusterMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -5144,7 +5156,6 @@
 				E7D9F659182B03CE00AD56C1 /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E7D9F65A182B03CE00AD56C1 /* LNode.cpp in Sources */,
 				E7D9F65B182B03CE00AD56C1 /* LSystem.cpp in Sources */,
-				E7D9F666182B03CE00AD56C1 /* CloudsVisualSystemMandala.cpp in Sources */,
 				E7D9F670182B03CE00AD56C1 /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
 				E7D9F671182B03CE00AD56C1 /* Maze.cpp in Sources */,
 				E7D9F672182B03CE00AD56C1 /* MazeCamera.cpp in Sources */,
@@ -5255,6 +5266,9 @@
 				E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */,
 				E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */,
 				E7FB24CB1830D470009EBD0E /* MazeSettings.cpp in Sources */,
+				E7DCB34C1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */,
+				E7DCB34E1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
+				E7DCB3501839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5466,7 +5480,6 @@
 				E7FB25991830D4C0009EBD0E /* CloudsVisualSystemLSystem.cpp in Sources */,
 				E7FB259A1830D4C0009EBD0E /* LNode.cpp in Sources */,
 				E7FB259B1830D4C0009EBD0E /* LSystem.cpp in Sources */,
-				E7FB259C1830D4C0009EBD0E /* CloudsVisualSystemMandala.cpp in Sources */,
 				E7FB259D1830D4C0009EBD0E /* CloudsVisualSystemMazeGenerator.cpp in Sources */,
 				E7FB259E1830D4C0009EBD0E /* Maze.cpp in Sources */,
 				E7FB259F1830D4C0009EBD0E /* MazeCamera.cpp in Sources */,
@@ -5578,6 +5591,9 @@
 				E7FB26091830D4C0009EBD0E /* GestureRendererTraveling.cpp in Sources */,
 				E7FB260A1830D4C0009EBD0E /* MazeSettings.cpp in Sources */,
 				E7FB28481830D4FF009EBD0E /* ofxOculusRift.cpp in Sources */,
+				E7DCB34D1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */,
+				E7DCB34F1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
+				E7DCB3511839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
