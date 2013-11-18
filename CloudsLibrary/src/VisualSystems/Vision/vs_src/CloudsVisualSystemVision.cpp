@@ -723,6 +723,9 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     else if(name == "DRAW NUMBERS"){
         bNumbers = b->getValue();
     }
+    else if(name == "DRAW LINES"){
+        bDrawLines = b->getValue();
+    }
     else if(name == "DRAW CONTOURS"){
         bContours = b->getValue();
     }
