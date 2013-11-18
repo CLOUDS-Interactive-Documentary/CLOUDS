@@ -37,7 +37,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
         // launch initial setup score
         RTcmixParseScoreFile("cmixinit.sco");
-        first_vec=1; // we haven't had audio yet
+        first_vec = 1; // we haven't had audio yet
         
         // load samples
         loadRTcmixSamples();
@@ -106,15 +106,29 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 
     
     int rigged = 0; // set to '1' for rigged orchestration (set below)
+    //float orchstart = 0;
+    //float orchdur = 0;
+    //bool isorch = false;
+    float clipdur = 0;
     float totalduration = args.act->getTimeline().getDurationInSeconds();
     startMusicFX(0, totalduration);
+    int numclips = args.act->getAllClips().size();
     
     // STUPID MAPPING TEST
-    for(int i = 0;i<args.act->getAllClips().size();i++)
+    for(int i = 0;i<numclips;i++)
     {
         CloudsClip &theclip = args.act->getAllClips()[i];
         float starttime = args.act->getClipStartTime(theclip);
-        float clipdur = theclip.getDuration();
+        if(i==numclips-1) // last clip
+        {
+            clipdur = theclip.getDuration();
+        }
+        else
+        {
+            CloudsClip &nextclip = args.act->getAllClips()[i+1];
+            float nextstart = args.act->getClipStartTime(nextclip);
+            clipdur = nextstart-starttime;
+        }
         cout << i << ": " << theclip.getLinkName() << ": " << clipdur << ":" << endl;
         cout << "   starting at: " << starttime << endl;
         vector<CloudsDichotomy> foo = args.act->getDichotomiesForClip(theclip);
@@ -149,10 +163,9 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
         
         startMusic(starttime, morch, mharmony, mrhythm, clipdur, MASTERTEMPO, mbank);
     
-    
     }
     
-    
+
     
     /*
     float musicdur = args.act->getTimeline().getDurationInSeconds();

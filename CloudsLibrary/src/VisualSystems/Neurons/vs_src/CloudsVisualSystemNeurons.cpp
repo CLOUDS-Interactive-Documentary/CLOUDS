@@ -400,6 +400,10 @@ void _C::selfDrawBackground(){
 
 void _C::selfDraw(){
 	
+	//was leaking color states
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	ofPushStyle();
+	
     ofPushMatrix();
 
     //ofTranslate(0,0,camDistance);
@@ -439,6 +443,7 @@ void _C::selfDraw(){
             glPushMatrix();
             glTranslatef((*it)->x,(*it)->y,(*it)->z);
             glColor4f((*it)->r,(*it)->g,(*it)->b,_C::alpha);
+			//TODO: use ofSphere as GLUT will leave with of 0.8
             glutSolidSphere(nucleusSize->getScaledValue(),8,8);
             glPopMatrix();
             
@@ -447,17 +452,21 @@ void _C::selfDraw(){
             tCount++;
         }
         
+		//TODO: remove all immediate modes and replace with ofMesh
         glPointSize(dotSize);
-        glBegin(GL_POINTS);
-        glColor3f(1,1,1);
-        
+        //glBegin(GL_POINTS);		
+//        glColor3f(1,1,1);
+        ofMesh m;
         // for all terminals
         for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
-            glVertex3f( (*it)->x,
-                                    (*it)->y,
-                                    (*it)->z );
-        }
-        
+//            glVertex3f( (*it)->x,
+//                                    (*it)->y,
+//                                    (*it)->z );
+			m.addVertex(ofVec3f( (*it)->x,(*it)->y,(*it)->z) );
+		}
+		
+		ofSetColor(255);
+		m.drawVertices();
         glEnd();
         
     }
@@ -468,6 +477,8 @@ void _C::selfDraw(){
     stringstream fps;
     fps << "FPS: " << ofGetFrameRate();
     cout << fps.str() << endl;
+	ofPopStyle();
+	glPopAttrib();
     
 }
 
@@ -584,7 +595,7 @@ void _N::update(){
 }
 
 void _N::updateMaxDepth(){
- if(maxDepth < generation)maxDepth = generation;
+	if(maxDepth < generation)maxDepth = generation;
 }
 
 bool _N::isTerminal(){
@@ -593,6 +604,8 @@ bool _N::isTerminal(){
 
 void _N::draw(){
 	
+	
+	//TODO: remove immediate mode calls, replace with persistent meshes
 	vector<_N*>::iterator that;
 	   
     jtn::PointD worldNormPos = _C::boundingBox.getNormalized( screenSpace );

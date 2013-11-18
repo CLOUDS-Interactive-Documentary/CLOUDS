@@ -10,6 +10,7 @@
 #include "CloudsVisualSystemVectorFlow.h"
 #include "CloudsVisualSystemForkingPaths.h"
 #include "CloudsVisualSystemOcean.h"
+//#include "CloudsVisualSystemOrbit.h"
 #include "CloudsVisualSystemRGBDVideo.h"
 #include "CloudsVisualSystemConnectors.h"
 
@@ -114,6 +115,7 @@ struct Mapping {
 	{ "Metaballs", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
+//  { "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
 	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
@@ -326,15 +328,28 @@ void CloudsVisualSystemManager::loadPresets(){
 	for(int i = 0; i < numSystems; i++){
 		string name = keywordXml.getAttribute("system", "name", "no-name", i);
 		keywordXml.pushTag( "system", i );
-		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );
-		keywords[ name ] = presetKeywords;
 		
-		CloudsVisualSystemPreset preset;
 		vector<string> splitName = ofSplitString(name, "_",true,true);
-		preset.systemName = splitName[0];
+		string systemName = splitName[0];
 		splitName.erase(splitName.begin()); //delete the system name
-		preset.presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
-		preset.loadTimeInfo();
+		string presetName = ofJoinString(splitName, "_"); //join up with the rest of the characters
+		CloudsVisualSystemPreset* preset;
+		CloudsVisualSystemPreset newPreset;
+		bool existingPreset = systemHasPreset(systemName, presetName);
+		if(existingPreset){
+			preset = &getPresetForSystem(systemName, presetName);
+		}
+		else {
+			preset = &newPreset;
+			preset->systemName = systemName;
+			preset->presetName = presetName;
+			preset->loadTimeInfo();
+		}
+		
+		vector<string> presetKeywords = ofSplitString( keywordXml.getValue("keywords", "") , "|", true, true );		
+		if(!existingPreset){
+			keywords[ preset->getID() ] = presetKeywords;
+		}
 
 		if(keywordXml.tagExists("suppressions")){
 			keywordXml.pushTag("suppressions");
@@ -342,20 +357,33 @@ void CloudsVisualSystemManager::loadPresets(){
 			for(int i=0; i<numSuppressions;i++){
 				string suppressedLinkName = keywordXml.getValue("clip", "", i);
                 //				cout << "found suppression " << suppressedLinkName << endl;
-				suppressedClips[name].push_back(suppressedLinkName);
+				suppressedClips[preset->getID()].push_back(suppressedLinkName);
 			}
 			keywordXml.popTag(); //suppressions
 		}
 		
-		preset.comments = keywordXml.getValue("comments","");
-		preset.grade = keywordXml.getValue("grade", "");
-		preset.enabled = keywordXml.getValue("enabled", true );
-		preset.oculusCompatible = keywordXml.getValue("oculus", false );
-		preset.checkHasFiles();
-		
-		presets.push_back(preset);
-		nameToPresets[preset.systemName].push_back(preset);
-
+		preset->comments = keywordXml.getValue("comments","");
+		preset->grade = keywordXml.getValue("grade", "");
+		preset->enabled = keywordXml.getValue("enabled", true );
+		preset->oculusCompatible = keywordXml.getValue("oculus", false );
+		preset->checkHasFiles();
+		preset->systemIsRegistered = false;
+#ifndef CLOUDS_NO_VS
+		preset->systemIsRegistered = constructors.find(systemName) != constructors.end();
+//		cout << "PRESET IS REGISTERED??? " << (preset.systemIsRegistered ? "YES!" : "NO!");
+#endif
+		if(existingPreset){
+			for(int i = 0; i < presets.size(); i++){
+				//replace the existing preset with the updated one
+				if(presets[i].getID() == preset->getID()){
+					presets[i] = *preset;
+				}
+			}
+		}
+		else{
+			presets.push_back(*preset);
+			nameToPresets[preset->systemName].push_back(*preset);
+		}
         keywordXml.popTag(); //system
 	}
 	
@@ -370,6 +398,7 @@ void CloudsVisualSystemManager::loadPresets(){
 			presets.push_back(preset);
 		}
 	}
+	
 #endif
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
@@ -380,10 +409,16 @@ void CloudsVisualSystemManager::loadPresets(){
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::populateEnabledSystemIndeces(){
     enabledPresetsIndex.clear();
-    for(int i = 0; i<presets.size(); i++){
-        if(presets[i].enabled){
+    for(int i = 0; i < presets.size(); i++){
+#ifdef OCULUS_RIFT
+        if(presets[i].enabled && presets[i].oculusCompatible){
             enabledPresetsIndex.push_back(i);
         }
+#else
+        if(presets[i].enabled && !presets[i].oculusCompatible){
+            enabledPresetsIndex.push_back(i);
+        }
+#endif
     }
 }
 
@@ -434,7 +469,7 @@ void CloudsVisualSystemManager::savePresets(){
 		//SUPPRESSIONS
 		keywordXml.addTag("suppressions");
         keywordXml.pushTag("suppressions");
-        vector<string>& clips =  getSuppressionsForPreset(presetName);
+        vector<string>& clips =  getSuppressionsForPreset( preset.getID() );
         for (int i =0; i<clips.size(); i++) {
             keywordXml.addValue("clip",clips[i]);
         }
@@ -477,8 +512,9 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 	vector<CloudsVisualSystemPreset> presetsWithKeywords;
     
 	for(int i = 0; i < presets.size(); i++){
+		vector<string> presetKeywords = keywordsForPreset(i);
 		for(int k = 0; k < keys.size(); k++){
-			if( ofContains(keywordsForPreset(i), keys[k]) ){
+			if( ofContains(presetKeywords, keys[k]) ){
 				presetsWithKeywords.push_back(presets[i]);
 				continue;
 			}
@@ -489,9 +525,9 @@ vector<CloudsVisualSystemPreset> CloudsVisualSystemManager::getPresetsForKeyword
 
 //--------------------------------------------------------------------
 vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresetsForSystem(string systemName){
-	if( nameToPresets.find(systemName) == nameToPresets.end() ){
-		ofLogError() << "Couldn't find presets for system " << systemName << endl;
-	}
+//	if( nameToPresets.find(systemName) == nameToPresets.end() ){
+//		ofLogError() << "Couldn't find presets for system " << systemName << endl;
+//	}
 	return nameToPresets[systemName];
 }
 

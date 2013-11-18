@@ -110,7 +110,9 @@ class CloudsAct{
 	ofxTimeline& getTimeline(){ return timeline; }
     
     void drawDebug();
-
+	//set via storyengine param
+	float defaulPrerollDuration;
+	
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
     CloudsEvents& getEvents();
     

@@ -109,6 +109,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 //	currentVisualSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
+	mandatoryAct = NULL;
 	showingClusterMap = false;
 	
 	targetScratchVolume = currentVolume = 1.0;
@@ -262,6 +263,11 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 }
 
 //--------------------------------------------------------------------
+void CloudsPlaybackController::setMandatoryAct(CloudsAct* act){
+	mandatoryAct = act;
+}
+
+//--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
 	if(currentAct != NULL){
@@ -277,9 +283,15 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
         currentAct->unregisterEvents(&introSequence.getSelectedRun());
 		delete currentAct;
 	}
-
+	
+	if(mandatoryAct != NULL){
+		currentAct = mandatoryAct;
+	}
+	else{
+		currentAct = act;
+	}
 	//TODO: show loading screen while we initialize all the visual systems
-	vector<CloudsVisualSystemPreset>& presets = act->getAllVisualSystemPresets();
+	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].system != NULL){
@@ -291,7 +303,6 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 		}
 	}
 	
-	currentAct = act;
 	currentAct->registerEvents(this);
     currentAct->registerEvents(&introSequence.getSelectedRun());
 	currentAct->play();
@@ -400,6 +411,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			//TODO: Transition out of the act into the loading screen.
 		}
 	}
+	
 	////////////////////
 	//CLUSTER MAP
 	else if(showingClusterMap){
@@ -444,6 +456,9 @@ void CloudsPlaybackController::update(ofEventArgs & args){
         }
 	}
 	
+#ifdef OCULUS_RIFT
+	ofHideCursor();
+#else
 	//TODO replace with cool cursor animations
 	if(ofGetElapsedTimef() - cursorMovedTime < 1){
 		ofShowCursor();
@@ -451,10 +466,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	else{
 		ofHideCursor();
 	}
-	
-	//TODO: add camera animations to RGBDVisSys
-	//TODO: offsetTargets for turning away
-	
+#endif
 }
 
 //--------------------------------------------------------------------
@@ -663,6 +675,7 @@ void CloudsPlaybackController::hideVisualSystem()
 		rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
 		rgbdVisualSystem->playSystem();
 		showingVisualSystem = false;
+		currentVisualSystem = rgbdVisualSystem;
 	}
 }
 

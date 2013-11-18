@@ -130,7 +130,7 @@ void Maze::draw(ofCamera *cam, ofVec3f &lightPos)
     ofPushMatrix();
     ofTranslate(NUM_CELLS_X*cellSize/2, -wallHeight/2, middle*cellSize);
     ofScale(NUM_CELLS_X*cellSize+120, 1, length*cellSize);
-    ofBox(1);
+    ofBox(2);
     ofPopMatrix();
     
     // draw maze geometry

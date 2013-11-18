@@ -26,8 +26,12 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 void CloudsIntroSequence::selfSetup(){
-
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+    
+    // Set question defaults.
+    questionFontSize = 12;
+    questionLineLength = 300.0f;
+    questionLineSpacing = 1.0f;
+    rebuildQuestionFont();
 	
 	loadedQuestions.push_back("Shiffman_NOC_3");
 	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
@@ -90,6 +94,17 @@ void CloudsIntroSequence::reloadShaders(){
 	CloudsQuestion::reloadShader();
 }
 
+void CloudsIntroSequence::rebuildQuestionFont(){
+    if(bUseOculusRift){
+        questionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", questionFontSize);
+    }
+    else{
+        questionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", questionFontSize);
+    }
+    questionFont.setLineLength(questionLineLength);
+    questionFont.setLineSpacing(questionLineSpacing);
+}
+
 void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
@@ -102,14 +117,26 @@ void CloudsIntroSequence::selfUpdate(){
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
-		startQuestions[i].update();
+//		if(bUseOculusRift){
+//			#ifdef OCULUS_RIFT
+//			startQuestions[i].update(getOculusRift().getOculusViewport());
+//			#endif
+//		}
+//		else{
+			startQuestions[i].update();
+//		}
 		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
 		
 		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
+#ifdef OCULUS_RFIT
+			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].position);
+			cout << "Distance " << distanceToQuestion << endl;
+#else
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
+#endif
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance ){
 					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
@@ -152,7 +179,7 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		CloudsQuestion q;
 		q.cam = &warpCamera;
-		q.font = &font;
+		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
 		q.topic = q.clip.getAllTopicsWithQuestion()[0];
 		q.question = q.clip.getQuestionForTopic(q.topic);
@@ -346,6 +373,17 @@ void CloudsIntroSequence::selfDraw(){
 	CloudsQuestion::endShader();
 	
 	ofPopStyle();
+    
+#ifdef OCULUS_RIFT
+	
+//	ofPushStyle();
+//	ofVec3f worldCursor = getOculusRift().mousePosition3D();
+//    ofSetColor(255, 0, 0);
+//    ofCircle(worldCursor, .5);
+//	ofPopStyle();
+	
+#endif
+
 }
 
 void CloudsIntroSequence::drawCloudsType(){
@@ -361,6 +399,14 @@ void CloudsIntroSequence::drawCloudsType(){
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
+	if(bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay(true);
+		}
+		ofPopStyle();
+		
+	}
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -369,12 +415,13 @@ void CloudsIntroSequence::selfPostDraw(){
 	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
-	
-	ofPushStyle();
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].drawOverlay();
+	if(!bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay();
+		}
+		ofPopStyle();
 	}
-	ofPopStyle();
 	
 }
 
@@ -398,6 +445,12 @@ void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		reloadShaders();
 	}
+    if (args.key == 'a') {
+        cursor.z += 0.1;
+    }
+    if (args.key == 'z') {
+        cursor.z -= 0.1;
+    }
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
@@ -408,8 +461,9 @@ void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
-	
+void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
+{
+    cursor.set(data.x, data.y, cursor.z);
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
@@ -427,6 +481,12 @@ void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
 	else if(e.widget->getName() == "generate tunnel" && ((ofxUIButton*)e.widget)->getValue()){
 		generateTunnel();
 	}
+    
+    else if (e.widget->getName() == "Question Font Size" ||
+             e.widget->getName() == "Question Line Length" ||
+             e.widget->getName() == "Question Line Spacing") {
+        rebuildQuestionFont();
+    }
 }
 
 void CloudsIntroSequence::pauseAtBeginning(){
@@ -498,6 +558,10 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Question Tint H",  0, 1.0, &questionNodeTint.r);
 	questionGui->addSlider("Question Tint S",  0, 1.0, &questionNodeTint.g);
 	questionGui->addSlider("Question Tint B",  0, 1.0, &questionNodeTint.b);
+    
+    questionGui->addIntSlider("Question Font Size", 6, 128, &questionFontSize);
+    questionGui->addSlider("Question Line Length", 1, 600, &questionLineLength);
+    questionGui->addSlider("Question Line Spacing", 0, 2, &questionLineSpacing);
 
 	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
@@ -524,7 +588,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->addSlider("Loose Rez X", 5, 20, &looseTunnelResolutionX);
 	tunnelGui->addSlider("Loose Rez Z", 5, 50, &looseTunnelResolutionZ);
 //	tunnelGui->addSlider("Tight Rez Mult", 1, 5, &tightResMult);
-
+    
 	tunnelGui->addButton("generate tunnel", false);
 	
 	ofAddListener(tunnelGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);

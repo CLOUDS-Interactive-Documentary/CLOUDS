@@ -137,8 +137,8 @@ void CloudsQuestion::draw(){
 		selectPercent = ofxTween::map(ofGetElapsedTimef() - hoveringStartTime, 0, secondsToConsiderSelected, 0, 1.0, true, cub, ofxTween::easeOut);
 	}
 	else{
-		expandPercent += (.1 - expandPercent)*.2;
-		selectPercent += ( 0 - selectPercent)*.4;
+		expandPercent += (.1 - expandPercent) * .2;
+		selectPercent += ( 0 - selectPercent) * .4;
 	}
 	
 	//make it blow up and fade out really quickly.
@@ -224,7 +224,7 @@ bool CloudsQuestion::isSelected(){
 	return hovering && ofGetElapsedTimef() - hoveringStartTime > secondsToConsiderSelected;
 }
 
-void CloudsQuestion::drawOverlay(){
+void CloudsQuestion::drawOverlay(bool anchorToScreen){
 	if(hovering){
 		
 		glDisable(GL_DEPTH_TEST);
@@ -232,13 +232,18 @@ void CloudsQuestion::drawOverlay(){
 		float width = font->stringWidth(question);
 		//ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
 		ofVec2f screenPosition;
-		if( currentScreenPoint.x > ofGetWidth()/2){
-			screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
+		if(anchorToScreen){
+			screenPosition = ofVec2f(20,20);
 		}
 		else{
-			screenPosition = currentScreenPoint;
+			if( currentScreenPoint.x > ofGetWidth()/2){
+				screenPosition = currentScreenPoint - ofVec2f(width + 40, -25);
+			}
+			else{
+				screenPosition = currentScreenPoint;
+			}
 		}
-
+		
 		//DRAW BACKBOX
 //		ofPushStyle();
 //		ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);

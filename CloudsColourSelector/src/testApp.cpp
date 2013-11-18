@@ -5,7 +5,7 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-    if(! player.loadMovie("Zach_Fucking_boring.mov")){
+    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);

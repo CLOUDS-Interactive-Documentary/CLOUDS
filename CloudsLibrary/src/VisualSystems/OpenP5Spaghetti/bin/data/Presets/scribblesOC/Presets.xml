@@ -22,6 +22,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Blue_hairballOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>blue_purple</Name>
     <Value>0</Value>
 </Widget>
@@ -67,6 +72,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Fuzzy_galaxyOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>fuzzy_scribbles</Name>
     <Value>0</Value>
 </Widget>
@@ -77,12 +87,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Galaxy_HotColdOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Green_Lidar</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Green_Lidar2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Green_Lidar2OC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -107,6 +127,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>Lightrainbow_scribblesOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>MilkyWay</Name>
     <Value>0</Value>
 </Widget>
@@ -118,6 +143,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>PurpleYellow_worms</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PurpleYellow_wormsOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -157,6 +187,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>scribblesOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Slender_Green_worms</Name>
     <Value>0</Value>
 </Widget>
@@ -169,9 +204,4 @@
     <Kind>2</Kind>
     <Name>VioletBlue_worms</Name>
     <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>scribblesOC</Name>
-    <Value>1</Value>
 </Widget>

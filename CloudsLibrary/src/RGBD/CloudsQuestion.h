@@ -5,6 +5,7 @@
 #include "ofMain.h"
 #include "CloudsClip.h"
 #include "ofxUI.h"
+#include "ofxFTGL.h"
 
 class CloudsQuestion {
   public:
@@ -16,7 +17,7 @@ class CloudsQuestion {
 	string question;
 	
 	ofCamera* cam;
-	ofTrueTypeFont* font;
+	ofxFTGLSimpleLayout* font;
 	
 	bool falloff;
 	float falloffDistance;
@@ -41,7 +42,7 @@ class CloudsQuestion {
 	float selectPercent;
 	
 	void draw();
-	void drawOverlay();
+	void drawOverlay(bool anchorToScreen = false);
 	void update();
 	
 	void enableHover();
@@ -69,8 +70,6 @@ class CloudsQuestion {
 
 	ofMesh geometry;
 	ofMesh progressRing;
-	
-	ofMesh sphereGeo;
 	
 	ofMesh dottedCircle;
 	ofVec2f currentScreenPoint;

@@ -86,7 +86,7 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("indianTrafficCrop.mov");
     movieStrings.push_back("unionsq_1 - Wi-Fi_crop.mov");
     movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors_Crop.mov");
-  /*
+ 
     movieStrings.push_back("AppleStore1_short.mov");
     movieStrings.push_back("AppleStore2_short.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
@@ -113,7 +113,7 @@ void CloudsVisualSystemVision::selfSetup()
     movieStrings.push_back("Tokyo1.mov");
     movieStrings.push_back("Tokyo2.mov");
     movieStrings.push_back("TokyoEscalator.mov");
-*/
+
     frameIsNew = false;
     window = ofRectangle(0,0,500,500);
     loadCurrentMovie();
@@ -722,6 +722,9 @@ void CloudsVisualSystemVision::selfGuiEvent(ofxUIEventArgs &e)
     }
     else if(name == "DRAW NUMBERS"){
         bNumbers = b->getValue();
+    }
+    else if(name == "DRAW LINES"){
+        bDrawLines = b->getValue();
     }
     else if(name == "DRAW CONTOURS"){
         bContours = b->getValue();

@@ -64,24 +64,54 @@ void testApp::setup(){
 //	sound.setMasterAmp(1.0);
 //	useScratch = false;
 	
-	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "LSystem", "CityTree");
+	CloudsVisualSystemPreset& LIA = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
+	CloudsVisualSystemPreset& vectormath = visualSystems.getPresetForSystem( "ExampleVectorMath", "WhiteLineOC");
+//
+    CloudsVisualSystemPreset& yellowTailPreset = visualSystems.getPresetForSystem( "YellowTail", "YellowTailOC");
+    CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
+    
+    CloudsAct* act = new CloudsAct();
+	vector<string> clipIds;
+	clipIds.push_back("Shantell - Coding gesturally");
+	clipIds.push_back("Golan - make a mark");
+	clipIds.push_back("Karsten - immediate feedback");
+	clipIds.push_back("Shiffman - sketching with code");
+	clipIds.push_back("Shantell - work with zach");
+	clipIds.push_back("Maeda - last trick");
+	clipIds.push_back("Golan - yellow tail");
+	clipIds.push_back("Shantell - drawing with computers");
+	clipIds.push_back("Zach - Time slows down");
+	clipIds.push_back("Lauren - Lifelong project");
+	clipIds.push_back("Marius - Continuous process of exploration");
+	clipIds.push_back("Casey - tangle");
+	clipIds.push_back("Marius - code can be messy");
+
 	
-	CloudsAct* act = new CloudsAct();
-	CloudsClip& clip = parser.getRandomClip(true, false);
-	
-	//add some random clips
-	float endTime = act->addClip(clip, "topic", 0);
-	endTime = act->addClip(parser.getRandomClip(true,false), "topic", 0);
+	float lastClipEndTime = 0;
+	for(int i = 0; i < clipIds.size(); i++){
+		
+		if(clipIds[i] == "Golan - yellow tail"){
+			act->addVisualSystem( yellowTailPreset, lastClipEndTime + 5, 80); //start the preset 5 seconds in, play for 80 seconds
+		}
+		
+		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
+		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
+	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( preset0, 4, 5 );
-	act->addVisualSystem( preset2, 14, 5 );
-	act->addVisualSystem( preset0, 24, 5 );
+	act->addVisualSystem( LIA,  0, 15 );
+	act->addVisualSystem( vectormath, 25, 40 );
+//    act->addVisualSystem( preset2, 65, 80 );
+	act->addVisualSystem( spaghetti, 100, 120 );
+	act->populateTime();
+	
+	player.setMandatoryAct(act);
+	vector<CloudsClip> question;
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	player.showIntro(question);
 	
 	//populate and run
-	act->populateTime();
-	player.playAct(act);	
+//	player.playAct(act);
 }
 
 //--------------------------------------------------------------

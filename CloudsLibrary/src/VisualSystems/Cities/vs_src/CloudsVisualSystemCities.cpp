@@ -12,6 +12,142 @@ string CloudsVisualSystemCities::getSystemName()
 	return "Cities";
 }
 
+void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
+{
+	//create a huge vbo filled with cubes
+	//
+	size = _size;
+    resolution = _resolution;
+    blockSize = size/resolution;
+	
+	//make our base cube who's vertices and indices we'll use to populate our big cubesMesh
+	ofVboMesh m;
+	makeCubeMeshWithTexCoords( m, 1,2,1 );
+	vector<ofVec3f>& cubeVertices = m.getVertices();
+	vector<ofVec3f>& cubeNormals = m.getNormals();
+	vector<ofIndexType>& cubeIndices = m.getIndices();
+	vector<ofVec2f>& cubeUV = m.getTexCoords();
+
+	//make a vbo full of cubes
+	cubeMesh.clear();
+	vector<ofVec3f>& vertices = cubeMesh.getVertices();
+	vector<ofVec2f> facadeUV;
+	ofIndexType firstIndex;
+	ofVec3f offset( -resolution/2, 0, -resolution/2 );
+	ofVec2f tc( 1./float(resolution-1), 1./float(resolution-1));
+	
+	
+	//BASE EDGE MESH
+	vector<ofIndexType> edgeIndices;
+	vector<ofVec3f> edgeVertices;
+	vector<ofVec3f> edgeNormals;
+	vector<ofVec2f> edgeTexCoords;
+	vector<ofVec3f> baseVerts(8);
+	vector<ofVec3f> baseNormals(8);
+	vector<ofIndexType>baseIndices(8 + 8);//verticle edges + top edges
+	
+	//bottom
+	baseVerts[0].set(-.5, 0, -.5);
+	baseVerts[1].set(-.5, 0, .5);
+	baseVerts[2].set( .5, 0, .5);
+	baseVerts[3].set( .5, 0, -.5);
+	
+	baseNormals[0].set(-.5, 0, -.5);
+	baseNormals[1].set(-.5, 0, .5);
+	baseNormals[2].set( .5, 0, .5);
+	baseNormals[3].set( .5, 0, -.5);
+	
+	//top
+	baseVerts[4].set(-.5, 2, -.5);
+	baseVerts[5].set(-.5, 2, .5);
+	baseVerts[6].set( .5, 2, .5);
+	baseVerts[7].set( .5, 2, -.5);
+	
+	baseNormals[4].set(-.5, .5, -.5);
+	baseNormals[5].set(-.5, .5, .5);
+	baseNormals[6].set( .5, .5, .5);
+	baseNormals[7].set( .5, .5, -.5);
+	
+	//verticle edge indices
+	baseIndices[0] = 0;
+	baseIndices[1] = 4;
+	baseIndices[2] = 1;
+	baseIndices[3] = 5;
+	baseIndices[4] = 2;
+	baseIndices[5] = 6;
+	baseIndices[6] = 3;
+	baseIndices[7] = 7;
+	
+	//top edge indices
+	baseIndices[8] = 4;
+	baseIndices[9] = 5;
+	baseIndices[10] = 5;
+	baseIndices[11] = 6;
+	baseIndices[12] = 6;
+	baseIndices[13] = 7;
+	baseIndices[14] = 7;
+	baseIndices[15] = 4;
+	
+	for (int i=0; i<resolution; i++)
+	{
+		for (int j=0; j<resolution; j++)
+		{
+			//store our first cube index
+			firstIndex = vertices.size();
+			
+			//add our vertices
+			for (int k=0; k<cubeVertices.size(); k++)
+			{
+				//add our vertex and normal
+				cubeMesh.addVertex( cubeVertices[k] + offset + ofVec3f(i, 0, j));
+				cubeMesh.addNormal( cubeNormals[k] );
+				
+				ofVec3f temp =cubeVertices[k] + offset + ofVec3f(i, 0, j);
+				
+				//our texCoords are the same for each vertex in the cube
+				cubeMesh.addTexCoord( ofVec2f(i - .5, j - .5) * tc );
+				
+				//use the color to pass texcoordsper face. I know, I know... these should be swapped
+				cubeMesh.addColor( ofFloatColor( cubeUV[k].x, cubeUV[k].y, 0,0 ) );
+			}
+			
+			//add our indices
+			for (int k=0; k<cubeIndices.size(); k++) {
+				cubeMesh.addIndex( cubeIndices[k] + firstIndex );
+			}
+			
+			//edge mesh
+			firstIndex = edgeVertices.size();
+	
+			//add our vertices
+			for (int k=0; k<baseVerts.size(); k++)
+			{
+				//add our vertex and normal
+				edgeVertices.push_back(baseVerts[k] + offset + ofVec3f(i, 0, j));
+				edgeNormals.push_back(baseNormals[k]);
+				edgeTexCoords.push_back( ofVec2f(i - .5, j - .5) * tc );
+			}
+			
+			for (int k=0; k<baseIndices.size(); k++)
+			{
+				edgeIndices.push_back( baseIndices[k] + firstIndex );
+			}
+		}
+	}
+	
+
+	
+	
+	edgeVboVertexCount = edgeVertices.size();
+	edgeVboIndexCount = edgeIndices.size();
+	edgeVbo.setVertexData( &edgeVertices[0], edgeVboVertexCount, GL_STATIC_DRAW );
+	edgeVbo.setNormalData( &edgeNormals[0], edgeVboVertexCount, GL_STATIC_DRAW );
+	edgeVbo.setTexCoordData( &edgeTexCoords[0], edgeTexCoords.size(), GL_STATIC_DRAW );
+	edgeVbo.setIndexData( &edgeIndices[0], edgeIndices.size(), GL_STATIC_DRAW );
+	
+	m.clear();
+}
+
 void CloudsVisualSystemCities::generateCube(float sizeX, float sizeY, float sizeZ)
 {
     ofPushMatrix();
@@ -120,7 +256,15 @@ void CloudsVisualSystemCities::selfSetup()
     diffV=0.04;
     k=0.047;
     f=0.2;
-    
+	overScale = 1;
+	
+	//defaults
+	bEdgeSetup = false;
+    edgeLineWidth = 1.5;
+	
+	//colormap
+	colorMap.loadImage(getVisualSystemDataPath() + "images/citiesProjectionDebug.png");
+	
     //  Noise
     //
     noiseShader.load("", getVisualSystemDataPath()+"shaders/noise.fs");
@@ -133,9 +277,35 @@ void CloudsVisualSystemCities::selfSetup()
     //
     maskShader.load("", getVisualSystemDataPath()+"shaders/cMask.fs");
     
+	//Overlay
+	//
+	bUseOverlay = false;
+	overlayMap = NULL;
+	string overlayPath = getVisualSystemDataPath() + "images/overlayImages/";
+	
+	ofDirectory dir;
+	dir.listDir( overlayPath );
+	for(int i = 0; i < dir.numFiles(); i++){
+		overlayNames.push_back( dir.getName(i) );
+		overlayImageMap[dir.getName(i)];
+	}
+	
+	for (map<string, ofImage>::iterator it=overlayImageMap.begin(); it!=overlayImageMap.end(); it++)
+	{
+		it->second.loadImage( overlayPath + it->first );
+	}
+	
+	
+	facadeTexture.loadImage( getVisualSystemDataPath() + "images/noise_wispy.png");
+	//	facadeTexture.getTextureReference().setTextureWrap( GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T );// this was breaking the shader!?!
+	
+	
     //  Points
     //
     makeGrid(100, 10);
+	
+	//cubes shader
+	cubesShader.load(getVisualSystemDataPath()+"shaders/city");
     
     //  Post
     //
@@ -155,7 +325,8 @@ void CloudsVisualSystemCities::selfEnd()
 
 void CloudsVisualSystemCities::selfSetupSystemGui()
 {
-    
+	sysGui->addSlider("overScale", 1, 20, &overScale);
+	
     sysGui->addLabel("Noise");
     sysGui->addSlider("noise_zoom", 0.0, 100.0, &noiseZoom);
     sysGui->addSlider("noise_speed", 0.0, 5.0, &noiseSpeed);
@@ -174,20 +345,39 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
     sysGui->addLabel("Mask");
     sysGui->addSlider("maskSize", 1.0, 2.0, &maskSize);
     sysGui->addSlider("maskCurve", 0.0, 1.0, &maskCurve);
+	
+	sysGui->addSpacer();
+	sysGui->addToggle("use overlay", &bUseOverlay);
+	sysGui->addSpacer();
+	sysGui->addLabel("over lays");
+	sysGui->addRadio("overlay map", overlayNames);
 }
 
 void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
 {
-    
 }
 
 void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)
 {
-
+	if(e.widget->getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue())
+	{
+		string name = e.getName();
+		for (map<string, ofImage>::iterator it=overlayImageMap.begin(); it!=overlayImageMap.end(); it++)
+		{
+			if(it->first == name)
+			{
+				overlayMap = &it->second;
+				bUseOverlay = true;
+				
+				cout << bUseOverlay << " : " << overlayMap <<  endl;
+			}
+		}
+		
+	}
 }
 
 void CloudsVisualSystemCities::guiRenderEvent(ofxUIEventArgs &e)
-{
+{	
     string name = e.widget->getName();
     if (name == "Size" || name == "Resolution"){
         makeGrid(size, resolution);
@@ -247,6 +437,8 @@ void CloudsVisualSystemCities::makeGrid(float _size, int _resolution)
     glNewList(cube, GL_COMPILE);
     generateCube(cubeSize, cubeSize, cubeSize);
     glEndList();
+	
+	makeBigCubesVbo( _size, resolution );
 }
 
 void CloudsVisualSystemCities::selfUpdate()
@@ -322,47 +514,138 @@ void CloudsVisualSystemCities::selfUpdate()
     maskFbo.end();
     
     ofPopStyle();
+	
+	
+	
+	//update the image projector
+	float t = ofGetElapsedTimef() * .2;
+	ofVec3f projectorPosition( sin(t) * 30., 10, cos(t) * 30. );
+	ofVec3f projectorTarget;
+	
+//	projectorPosition.set(0,100,0);
+//	projectorPosition.y += sin(t)*50 + 50;
+	projector.setPosition(projectorPosition);
+	projector.lookAt( projectorTarget, ofVec3f(0,0,1) );
+	
+	projector.begin();
+	projector.end();
 }
 
 void CloudsVisualSystemCities::selfDraw()
 {
-//    mat->begin();
-    ofPushMatrix();
-    
-    glEnable(GL_DEPTH_TEST);
-    ofTranslate(-size*0.5,-size*0.5);
-    ofFill();
-    
-    ofSetColor(255);
-    ofFloatPixels heightPixels;
-    maskFbo.getTextureReference().readToPixels(heightPixels);
-    
-    int jump = heightPixels.getWidth()/resolution;
-    for(int x = 0; x < resolution; x++){
-        for(int y = 0; y < resolution; y++){
-            
-            float value = heightPixels.getColor(x*jump,y*jump).b;
-            
-            ofPushMatrix();
-            ofTranslate(x*blockSize,y*blockSize, height*value*0.5*blockSize );
-            
-            if ( value > 0.0){
-                ofSetColor(255, MAX(blocksAlpha*255,55+value*200.0) );
-                ofScale((1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
-                        (1.0*(1.0-blocksMinDist))-(value*blocksMinSize),
-                        height*value);
-                
-                //PATRICIO: seeing crashing here when called from CLOUDS thread
-                glCallList(cube);
-                
-            }
-            ofPopMatrix();
-        }
-    }
-    ofPopMatrix();
+	
+ //    ofPushMatrix();
+//
+//    glEnable(GL_DEPTH_TEST);
+//    ofTranslate(-size*0.5,-size*0.5);
+//    ofFill();
+//    
+//    ofSetColor(255);
+//    ofFloatPixels heightPixels;
+//    maskFbo.getTextureReference().readToPixels(heightPixels);
+//    
+//    int jump = heightPixels.getWidth()/resolution;
+//    for(int x = 0; x < resolution; x++){
+//        for(int y = 0; y < resolution; y++){
+//            
+//            float value = heightPixels.getColor(x*jump,y*jump).b;
+//            
+//            ofPushMatrix();
+//            ofTranslate(x*blockSize,y*blockSize, height*value*0.5*blockSize );
+//            
+//            if ( value > 0.0){
+//                ofSetColor(255, MAX(blocksAlpha*255,55+value*200.0) );
+//                ofScale((1.0 - blocksMinDist) - value * blocksMinSize,
+//                        (1.0 - blocksMinDist) - value * blocksMinSize,
+//                        height*value);
+//                
+//                //PATRICIO: seeing crashing here when called from CLOUDS thread
+//                glCallList(cube);
+//                
+//            }
+//            ofPopMatrix();
+//        }
+//    }
+//    ofPopMatrix();
+//
+//    glDisable(GL_DEPTH_TEST);
+	
+	
+	
+	ofPushMatrix();
+	ofRotate(90, 1, 0, 0);
+	ofScale(blockSize,blockSize,-blockSize);
+	ofScale(overScale,overScale,overScale);
+	
+	cubesShader.begin();
+	cubesShader.setUniformTexture("displacment", maskFbo.getTextureReference(), 0);
+	cubesShader.setUniform2f( "displacmentDim", maskFbo.getWidth(), maskFbo.getHeight());
+	cubesShader.setUniformTexture("facadeTexture", facadeTexture.getTextureReference(), 1);
+	cubesShader.setUniform2f( "facadeTextureDim", facadeTexture.getWidth(), facadeTexture.getHeight());
+	
+	if(bUseOverlay && overlayMap != NULL){
+		cubesShader.setUniformTexture("overlayMap", overlayMap->getTextureReference(), 2);
+		cubesShader.setUniform2f("overlayDim", overlayMap->getWidth(), overlayMap->getHeight());
+	}
+	cubesShader.setUniform1i("bUseOverlay", bUseOverlay );
+	
+	cubesShader.setUniform1f("blocksAlpha", blocksAlpha );
+	cubesShader.setUniform1f("minHeight", .05 );
+	cubesShader.setUniform1f("maxHeight", height / blockSize );
+	cubesShader.setUniform1f("blockSize", blockSize );
+	cubesShader.setUniform1f("blockResolution", resolution );
+	cubesShader.setUniform1f("blocksMinDist", blocksMinDist );
+	cubesShader.setUniform1f("blocksMinSize", blocksMinSize );
+	cubesShader.setUniform1f("shininess", 16. );//TODO: add a slider and variable for shininess
+	cubesShader.setUniform1f("drawEdges", 0 );
+	
+	cubesShader.setUniformMatrix4f("modelView", projector.getModelViewMatrix() );
+	cubesShader.setUniformMatrix4f("projection", projector.getProjectionMatrix() );
+	cubesShader.setUniformMatrix4f("invProjection", projector.getModelViewProjectionMatrix() );
+	
+	cubesShader.setUniformTexture("projectedImage", colorMap, 3);
+	cubesShader.setUniform2f("projectedImageDim", colorMap.getWidth(), colorMap.getHeight() );
+	
+	ofEnableAlphaBlending();
+	glClearDepth(1);
+	
+	glDisable( GL_DEPTH_TEST );
+	glEnable( GL_DEPTH_TEST );
+	
+	glEnable( GL_CULL_FACE );
+	glCullFace( GL_FRONT );
+	
+	int alpha = 150;
+	
+	ofSetColor(255,255,255, 255);
+	
+	cubeMesh.draw();
+	
+	
+	ofEnableBlendMode(OF_BLENDMODE_ADD);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	
+	ofSetColor(255,255,255,230);
+	glLineWidth( edgeLineWidth );
+	cubesShader.setUniform1f("lineWidth", edgeLineWidth );
+	cubesShader.setUniform1f("drawEdges", 1. );
 
-    glDisable(GL_DEPTH_TEST);
-//    mat->end();
+	edgeVbo.drawElements(GL_LINES, edgeVboIndexCount );
+	
+	glPointSize( edgeLineWidth );
+	edgeVbo.draw(GL_POINTS, 0, edgeVboVertexCount );
+	
+	cubesShader.end();
+	
+	
+	ofPopMatrix();
+	glDisable(GL_DEPTH_TEST);
+	glDisable( GL_CULL_FACE );
+	
+	ofDisableAlphaBlending();
+	
+	
+	ofSetColor(255);
 }
 
 void CloudsVisualSystemCities::selfPostDraw(){
@@ -374,6 +657,8 @@ void CloudsVisualSystemCities::selfPostDraw(){
     postShader.setUniform1f("grainDist", postGrainDist);
     CloudsVisualSystem::selfPostDraw();
     postShader.end();
+	
+//	overlayMap.draw(0,0,400, 400);
 }
 
 void CloudsVisualSystemCities::billBoard()
@@ -408,12 +693,16 @@ void CloudsVisualSystemCities::selfSceneTransformation()
 
 void CloudsVisualSystemCities::selfExit()
 {
-    
+    cubeMesh.clear();
+	edgeVbo.clear();
 }
 
 void CloudsVisualSystemCities::selfKeyPressed(ofKeyEventArgs & args)
 {
-    
+    if(args.key == 'l' || args.key == 'L')
+	{
+		cubesShader.load(getVisualSystemDataPath()+"shaders/city");
+	}
 }
 
 void CloudsVisualSystemCities::selfKeyReleased(ofKeyEventArgs & args)

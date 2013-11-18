@@ -20,10 +20,11 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = true;
+    storyEngine.combinedClipsOnly = false;
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
+    withVideo = false; // draw video?
     
     sound.setup(storyEngine);
     
@@ -65,7 +66,7 @@ void testApp::actEnded(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------
 void testApp::clipBegan(CloudsClipEventArgs& args){
-	player.swapAndPlay();
+	if(withVideo) player.swapAndPlay();
 }
 
 //--------------------------------------------------------------
@@ -89,7 +90,7 @@ void testApp::questionAsked(CloudsQuestionEventArgs& args){
 
 void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
 	
-	player.setup(clip.preRollClip.combinedVideoPath,
+	if(withVideo) player.setup(clip.preRollClip.combinedVideoPath,
 				 clip.preRollClip.combinedCalibrationXMLPath);
 	
 }
@@ -120,11 +121,13 @@ void testApp::draw(){
     if(currentAct != NULL){
 		currentAct->drawDebug();
 	}
-	if(player.isPlaying()){
-		player.getPlayer().draw(0,0,
-								player.getPlayer().getWidth()*.25,
-								player.getPlayer().getHeight()*.25);
-	}
+    if(withVideo) {
+        if(player.isPlaying()){
+            player.getPlayer().draw(0,0,
+                                    player.getPlayer().getWidth()*.25,
+                                    player.getPlayer().getHeight()*.25);
+        }
+    }
 }
 
 //--------------------------------------------------------------

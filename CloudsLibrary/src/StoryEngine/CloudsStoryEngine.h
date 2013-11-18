@@ -72,7 +72,15 @@ class CloudsStoryEngine {
 	vector<CloudsDichotomy> dichotomies;
     int dichotomyThreshold;
 	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
-    float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic,string& log, bool visualSystemRunning, bool isPresetIndefinite, int moreManThanWomen, int    timesOnCurrentTopic  ); //queue based
+    float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip,
+					   string topic,string& log,
+					   int currentRun,
+					   bool visualSystemRunning,
+					   bool isPresetIndefinite,
+					   int moreManThanWomen,
+					   int timesOnCurrentTopic,
+					   int numTopicHistoryOccurrences); //queue based
+	
     float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
 	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip,vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
 	
@@ -107,7 +115,9 @@ class CloudsStoryEngine {
 	float genderBalanceFactor;
     float goldClipFactor;
     float easyClipScoreFactor;
-	float offTopicFactor;
+	float offTopicFactor;//deprecated
+	int digressionDenialCount;
+	int numTopicHistoryOccurrences;
 	float distantClipSuppressionFactor;
 
 
