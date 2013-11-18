@@ -2,38 +2,38 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1286.000000000</XPosition>
-    <YPosition>-3.000000000</YPosition>
+    <XPosition>1114.000000000</XPosition>
+    <YPosition>5.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD_LOWER</Name>
-    <Value>0.226600990</Value>
+    <Value>0.344827592</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESHOLD_UPPER</Name>
-    <Value>0.556650221</Value>
+    <Value>0.600985229</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE WEIGHT</Name>
-    <Value>0.369458139</Value>
+    <Value>0.600985229</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SATURATION WEIGHT</Name>
-    <Value>0.201970443</Value>
+    <Value>0.078817733</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRIGTHNESS WEIGHT</Name>
-    <Value>0.068965517</Value>
+    <Value>0.315270931</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BLUR AMOUNT</Name>
-    <Value>0.492610812</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

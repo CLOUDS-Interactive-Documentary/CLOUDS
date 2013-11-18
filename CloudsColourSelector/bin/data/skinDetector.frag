@@ -43,12 +43,42 @@ float rgbToGray(vec4 rgbVal){
     float f =  0.21*rgbVal.r + 0.71*rgbVal.g + 0.07*rgbVal.b;
     return f;
 }
+float clamp(float value, float min, float max) {
+    return value < min ? min : value > max ? max : value;
+}
+
+float easeOut(float t,float b , float c, float d) {
+	return c*((t=t/d-1.)*t*t + 1.) + b;
+}
+float mapEase(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax, bool clamp ){
+    
+//    float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
+	if(clamp){
+		value = clamp(value, inputMin, inputMax);
+	}
+    
+    //
+	float t = value - inputMin;
+	float c = outputMax - outputMin;
+	float d = inputMax - inputMin;
+	float b = outputMin;
+	float res= easeOut(t,b,c,d);
+    
+	return res;
+}
 
 float map(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax ){
+     float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
     
-    float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
-	return outVal;
+    return outVal;
 }
+
+
+
+
+//float clamp(float value, float min, float max) {
+//	return value < min ? min : value > max ? max : value;
+//}
 
 //vec3 hsv2rgb(vec3 c)
 //{
@@ -71,7 +101,9 @@ void main (void)
 //    vec4 colorSample = texture2DRect(imgSampler, samplePoint.st);
     float dist  = weightedDistance(hslSample.rgb,hslCurrent.rgb, weights);
     if(dist > lowerThreshold && dist<upperThreshold){
-        gl_FragColor = test;
+        
+        float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
+        gl_FragColor = vec4(test.rgb,alpha);
     }
     else{
         gl_FragColor = vec4(0.,0.,0.,1.0);

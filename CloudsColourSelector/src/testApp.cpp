@@ -5,7 +5,7 @@ void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
+    if(! player.loadMovie("Zach_Fucking_boring.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);
@@ -64,11 +64,6 @@ void testApp::update(){
     
     player.update();
     if(player.isFrameNew()){
-//        checkColorDistance();
-//        imgFbo.begin();
-//        ofClear(0);
-//        img.draw(0,0);
-//        imgFbo.end();
         img = player.getPixelsRef();
     }
 
