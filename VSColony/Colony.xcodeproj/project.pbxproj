@@ -74,7 +74,6 @@
 		4695E3EE1752A089003001E2 /* ofxEasingSine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D11752A088003001E2 /* ofxEasingSine.cpp */; };
 		4695E3EF1752A089003001E2 /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E3D31752A088003001E2 /* ofxTween.cpp */; };
 		852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */ = {isa = PBXBuildFile; fileRef = 852D0205181DF3CC00436018 /* liquidNoise.fs */; };
-		852D022B181DF3CC00436018 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0226181DF3CC00436018 /* cCell.cpp */; };
 		852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -93,6 +92,7 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7295F1A183ABD4100C5207F /* gCell.cpp */; };
 		E72FF18717E6A7970007780D /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */; };
 		E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */; };
 		E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72FF18317E6A7970007780D /* CloudsVisualSystem.cpp */; };
@@ -383,8 +383,6 @@
 		852D0222181DF3CC00436018 /* Cell_6o_sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_6o_sm.png; sourceTree = "<group>"; };
 		852D0223181DF3CC00436018 /* Cell_white_1a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_white_1a.png; sourceTree = "<group>"; };
 		852D0224181DF3CC00436018 /* Cell_white_1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cell_white_1b.png; sourceTree = "<group>"; };
-		852D0226181DF3CC00436018 /* cCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCell.cpp; sourceTree = "<group>"; };
-		852D0227181DF3CC00436018 /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
 		852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		852D0229181DF3CC00436018 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -408,6 +406,9 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7295F19183ABD1100C5207F /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
+		E7295F1A183ABD4100C5207F /* gCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gCell.cpp; sourceTree = "<group>"; };
+		E7295F1B183ABD4100C5207F /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
 		E72FF17F17E6A7970007780D /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E72FF18017E6A7970007780D /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E72FF18117E6A7970007780D /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -1024,8 +1025,8 @@
 		852D0225181DF3CC00436018 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				852D0226181DF3CC00436018 /* cCell.cpp */,
-				852D0227181DF3CC00436018 /* cCell.h */,
+				E7295F1A183ABD4100C5207F /* gCell.cpp */,
+				E7295F1B183ABD4100C5207F /* gCell.h */,
 				852D0228181DF3CC00436018 /* CloudsVisualSystemColony.cpp */,
 				852D0229181DF3CC00436018 /* CloudsVisualSystemColony.h */,
 			);
@@ -1118,6 +1119,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7295F19183ABD1100C5207F /* CloudsGlobal.h */,
 				852D01FD181DF3CC00436018 /* Colony */,
 				E72FF17D17E6A7970007780D /* VisualSystemsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
@@ -1429,8 +1431,8 @@
 				E72FF18817E6A7970007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
 				852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */,
-				852D022B181DF3CC00436018 /* cCell.cpp in Sources */,
 				852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */,
+				E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
