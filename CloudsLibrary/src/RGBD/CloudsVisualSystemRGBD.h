@@ -96,7 +96,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
 	ofxUISuperCanvas *connectorGui;
 	
-	ofxFTGLFont displayFont;
+	ofxFTGLSimpleLayout displayFont;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;
