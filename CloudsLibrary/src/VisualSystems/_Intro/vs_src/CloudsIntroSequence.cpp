@@ -29,7 +29,7 @@ void CloudsIntroSequence::selfSetup(){
     
     // Set question defaults.
     questionFontSize = 12;
-    questionLineLength = 320.0f;
+    questionLineLength = 300.0f;
     questionLineSpacing = 1.0f;
     rebuildQuestionFont();
 	
