@@ -7,6 +7,7 @@
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
 #include "ofxDelaunay.h"
+#include "ofxFTGL.h"
 
 class CloudsVisualSystemRGBD : public CloudsVisualSystem {
   public:
@@ -27,6 +28,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfBegin();
 	void selfEnd();
     
+	void speakerChanged();
 	
 	void addQuestion(CloudsClip& q,string topic, string question);
     void setSelectedQuestion();
@@ -51,7 +53,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-	
+
 	
 	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){
@@ -94,7 +96,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *questionGui;
 	ofxUISuperCanvas *connectorGui;
 	
-	ofTrueTypeFont displayFont;
+	ofxFTGLSimpleLayout displayFont;
 	ofMesh horizontalScanLines;
 	ofMesh verticalScanLines;
 	ofMesh pointGrid;

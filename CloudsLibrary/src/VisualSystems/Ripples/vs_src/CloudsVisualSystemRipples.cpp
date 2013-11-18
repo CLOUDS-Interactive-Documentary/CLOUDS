@@ -104,7 +104,7 @@ void CloudsVisualSystemRipples::selfSetup()
     minDropBri = 255;
     maxDropBri = 255;
     
-    // Load the ripples shader and FBOs.
+    // Load the ripples shader.
     ripplesShader.load("", getVisualSystemDataPath() + "shaders/ripples.frag");
     
     bRestart = true;
@@ -179,7 +179,12 @@ void CloudsVisualSystemRipples::selfUpdate()
     ripplesSrcFbo.begin();
     {
         ofSetColor(dropColor);
-        ofCircle(ofGetMouseX(), ofGetMouseY(), radius, radius);
+#ifdef OCULUS_RIFT
+        // I don't know why everything is flipped, but it is.
+        ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
+#else
+        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+#endif
     }
     ripplesSrcFbo.end();
     ofPopMatrix();

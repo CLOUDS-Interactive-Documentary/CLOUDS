@@ -56,8 +56,6 @@ void CloudsVisualSystemOpenP5SpinningSolids::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemOpenP5SpinningSolids::selfSetup(){
 	
     glEnable(GL_DEPTH_TEST);
-    ofBackground(0);
-    //ofSetFrameRate(30);
 
     //int IDnumber = 0;
     
@@ -101,13 +99,11 @@ void CloudsVisualSystemOpenP5SpinningSolids::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5SpinningSolids::selfDraw(){
     
-    ofBackground(0);
-	
-    cam.begin();
+
+
     for (int i = 0; i < grid.size(); i++){
 		 grid[i].drawShape();
     }
-    cam.end();
 
 }
 

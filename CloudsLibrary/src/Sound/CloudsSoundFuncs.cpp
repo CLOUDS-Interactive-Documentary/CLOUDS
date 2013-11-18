@@ -59,7 +59,8 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
         {
             if(rhythms[mr].beats[bcount]>0.) {
                 
-                float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*rhythms[mr].beats[bcount];
+                //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*rhythms[mr].beats[bcount];
+                float t_amp = rhythms[mr].beats[bcount];
                 float pick = (int)ofRandom(0, pitches[mh].notes.size());
                 float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
                 
@@ -115,7 +116,8 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     {
         for(i = 0;i<musicdur;i+=tempo)
         {
-            float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            float t_amp = 0.38;
             int nx = ofRandom(2,12);
             int ny = ofRandom(2,12);
             MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
@@ -128,7 +130,8 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     {
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
-            float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
+            float t_amp = 0.38;
             int nx = ofRandom(2,12);
             int ny = ofRandom(2,12);
             MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));

@@ -12,6 +12,7 @@ CloudsAct::CloudsAct(){
     
 	timelinePopulated = false;
     duration = 0;
+	defaulPrerollDuration = 2.0;
 }
 
 CloudsAct::~CloudsAct(){
@@ -292,9 +293,20 @@ float CloudsAct::addClip(CloudsClip& clip, string topic, float startTime, float 
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     dichotomiesMap[item.key] = currentDichotomiesBalance;
-//	finalDichotomies = currentDichotomiesBalance;
     clipItems[clip.getLinkName()] = item;
     clipDifficultyMap[clip.getLinkName()] = clipDifficulty;
+	
+	//Preroll the clip
+    ActTimeItem prerollItem;
+    prerollItem.type = PreRoll;
+    prerollItem.key = "%" + clip.getLinkName();
+    prerollItem.startTime = item.startTime - defaulPrerollDuration;
+    prerollItem.endTime = prerollItem.startTime;
+    prerollItem.handleLength = handleLength;
+    
+    actItemsMap[prerollItem.key] = prerollItem;
+    actItems.push_back(prerollItem);
+	
 	return duration;
 }
 
@@ -342,7 +354,7 @@ void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handl
     }
 }
 
-void CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration){
+float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration){
     visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
     
@@ -363,6 +375,8 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTim
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     visualSystemItems[preset.getID()] = item;
+
+	return duration;
 }
 
 void CloudsAct::addGapForCadence(CloudsVisualSystemPreset& preset,float startTime,float duration){

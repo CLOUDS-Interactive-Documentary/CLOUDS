@@ -41,7 +41,7 @@ void MyTracker::kill() {
 	}
 }
 
-void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers) {
+void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bool drawBoxes, bool drawLine, bool drawNumbers, ofFloatColor boxColor) {
 	ofPushStyle();
 	float size = 16;
 	ofSetColor(255);
@@ -56,7 +56,7 @@ void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bo
         ofSetColor(magnitudeColor);
     }
     else{
-        ofSetColor(ofColor::greenYellow);
+        ofSetColor(boxColor);
     }
     
     if(drawBoxes){
@@ -72,7 +72,7 @@ void MyTracker::draw(float lineWidth, bool lifeTime, float lifetimeColorRange,bo
         ofDrawBitmapString(ofToString(label), cur);
 
     }
-        ofPopStyle();    
+    ofPopStyle();    
 }
 
 

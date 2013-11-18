@@ -157,7 +157,7 @@ public:
 	void setup(){
 		ofxOpenSteerPlugin::setup();
 		
-		ofBackground(255, 127, 0);
+//		ofBackground(255, 127, 0);
         
         // Create a proximity databases
         pdPredators = createProximityDatabase();

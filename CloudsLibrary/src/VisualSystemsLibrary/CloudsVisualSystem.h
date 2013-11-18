@@ -163,6 +163,8 @@ class CloudsVisualSystem {
 	void setupSpeaker(string speakerFirstName,
 					  string speakerLastName,
 					  string quoteName);
+
+	virtual void speakerChanged(){};
 	
 	void speakerEnded();
 	
@@ -189,6 +191,7 @@ class CloudsVisualSystem {
 //    void drawTexturedQuad();
     void drawNormalizedTexturedQuad();
     void drawBackground();
+	void drawBackgroundGradient();
     void draw2dSystemPlane();
     void ofLayerGradient(const ofColor& start, const ofColor& end);
 	

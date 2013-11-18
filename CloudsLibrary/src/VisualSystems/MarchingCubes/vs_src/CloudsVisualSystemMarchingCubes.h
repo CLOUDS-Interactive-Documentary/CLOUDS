@@ -14,14 +14,12 @@
 #include "ofxMarchingCubes.h"
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemMarchingCubes : public CloudsVisualSystem {
+class CloudsVisualSystemMarchingCubes : public CloudsVisualSystem
+{
 public:
-    
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
-    string getSystemName(){
-		return "MarchingCubesVisualSystem";
+    string getSystemName()
+    {
+		return "MarchingCubes";
 	}
 	
 	//These methods let us add custom GUI parameters and respond to their events
@@ -98,23 +96,21 @@ public:
 //		return camera;
 //	}
 	
-	//
-	//	ofCamera& getCameraRef(){
-	//		return cloudsCamera;
-	//	}
-	
 	
 protected:
+    ofxUISuperCanvas * customGui;
+    ofx1DExtruder * fgHue, * fgSat, * fgBri, * fgAlpha;
     
-    ofEasyCam camera;
-	
 	ofxMarchingCubes mc;
-	
 	ofShader normalShader;
-	bool wireframe, drawGrid;
-	
-	int differentSurfaces;
-	
-	
+    
+    bool bPaused;
+    float startTime, pauseTime, elapsedTime;
 
+	bool bRenderNormals;
+    bool bWireframe;
+    bool bDrawGrid;
+	int differentSurfaces;
+    
+    ofColor fgColor;
 };

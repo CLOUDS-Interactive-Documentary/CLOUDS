@@ -15,6 +15,9 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	showingQuestions = false;
 	useDebugCamera = false;
 	paused = false;
+	currentFontSize = -1;
+	currentFontExtrusion = -1;
+
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -26,12 +29,17 @@ string CloudsIntroSequence::getSystemName(){
 }
 
 void CloudsIntroSequence::selfSetup(){
-
-	font.loadFont(getDataPath() + "font/materiapro_light.ttf", 18);
+    
+    // Set question defaults.
+    questionFontSize = 12;
+    questionLineLength = 300.0f;
+    questionLineSpacing = 1.0f;
+    rebuildQuestionFont();
 	
-	loadedQuestions.push_back("Shiffman_NOC_3");
-	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
-	loadedQuestions.push_back("Ramsey_computation_is_interpretation_of_rules");
+	
+//	loadedQuestions.push_back("Shiffman_NOC_3");
+//	loadedQuestions.push_back("Lauren_how_we_communicate,_shorter");
+//	loadedQuestions.push_back("Ramsey_computation_is_interpretation_of_rules");
 	
 	perlinOffset = 0;
 	
@@ -41,8 +49,8 @@ void CloudsIntroSequence::selfSetup(){
 	
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
-	
 //	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
+	
 	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
 
 	thinTypeMesh.load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thin_02.ply");
@@ -73,13 +81,8 @@ void CloudsIntroSequence::selfPresetLoaded(string presetPath){
 
 	
 	generateTunnel();
-	
-	cout << "Tunnel min is " << tunnelMin << " tunnel max is " << tunnelMax << endl;
-	
-
 	warpCamera.setPosition(0, 0, 0);
 	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
-	
 	positionStartQuestions();
 }
 
@@ -90,26 +93,54 @@ void CloudsIntroSequence::reloadShaders(){
 	CloudsQuestion::reloadShader();
 }
 
+void CloudsIntroSequence::rebuildQuestionFont(){
+    if(bUseOculusRift){
+        questionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", questionFontSize);
+    }
+    else{
+        questionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", questionFontSize);
+    }
+    questionFont.setLineLength(questionLineLength);
+    questionFont.setLineSpacing(questionLineSpacing);
+}
+
 void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	
+
+	
 	if(!paused){
 		warpCamera.dolly(-cameraForwardSpeed);
 	}
-	
+	else{
+		warpCamera.setPosition(0, 0, 0);
+		warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
+	}
 	ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
-		startQuestions[i].update();
+//		if(bUseOculusRift){
+//			#ifdef OCULUS_RIFT
+//			startQuestions[i].update(getOculusRift().getOculusViewport());
+//			#endif
+//		}
+//		else{
+			startQuestions[i].update();
+//		}
 		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
 		}
 		
 		if(startQuestions[i].position.z - warpCamera.getPosition().z < questionTugMinDepth){
+#ifdef OCULUS_RFIT
+			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].position);
+//			cout << "Distance " << distanceToQuestion << endl;
+#else
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
+#endif
 			if(caughtQuestion == NULL){
 				if( distanceToQuestion < questionTugMaxDistance ){
 					startQuestions[i].position.z += ofMap(distanceToQuestion, questionTugMaxDistance, questionTugMinDistance, 0, cameraForwardSpeed);
@@ -133,12 +164,12 @@ void CloudsIntroSequence::selfUpdate(){
 		}
 	}
 	
-	if(currentFontSize != fontSize ||
-	   currentFontExtrusion != fontExtrusion)
+	if(currentFontSize != titleFontSize ||
+	   currentFontExtrusion != titleFontExtrude)
 	{
-		currentFontSize = fontSize;
-		currentFontExtrusion = fontExtrusion;
-//		cloudsTypeMesh.init(getDataPath() + "/font/materiapro_light.ttf", currentFontSize, currentFontExtrusion, "CLOUDS");
+		currentFontSize = titleFontExtrude;
+		currentFontExtrusion = titleFontExtrude;
+		extrudedTitleText.loadFont(getDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
 
 }
@@ -152,7 +183,7 @@ void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQue
 		
 		CloudsQuestion q;
 		q.cam = &warpCamera;
-		q.font = &font;
+		q.font = &questionFont;
 		q.clip = possibleStartQuestions[i];
 		q.topic = q.clip.getAllTopicsWithQuestion()[0];
 		q.question = q.clip.getQuestionForTopic(q.topic);
@@ -346,21 +377,45 @@ void CloudsIntroSequence::selfDraw(){
 	CloudsQuestion::endShader();
 	
 	ofPopStyle();
+    
+
 }
 
 void CloudsIntroSequence::drawCloudsType(){
 	ofPushMatrix();
 	
-	ofRotate(180, 0, 1, 0);
-	ofScale(fontScale, fontScale, fontScale);
+	//ofRotate(180, 0, 1, 0);
+//	ofRotate(180, 1, 0, 0);
+	ofRotate(180, 0, 0, 1);
 	
-	ofTranslate(0, 0, -tunnelMax.z);
-	thinTypeMesh.draw();
+	//ofScale(fontScale, fontScale, fontScale);
 	
+//	ofTranslate(0, 0, -tunnelMax.z);
+	ofPushStyle();
+	ofEnableAlphaBlending();
+	ofSetColor(255, titleTypeOpacity*255);
+	ofTranslate(0, 0, titleTypeOffset );
+	extrudedTitleText.setTracking( titleTypeTracking );
+	float width  = extrudedTitleText.stringWidth("CLOUDS");
+	float height = extrudedTitleText.stringHeight("CLOUDS");
+	
+	
+	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
+	
+
+	ofPopStyle();
 	ofPopMatrix();
 }
 
 void CloudsIntroSequence::selfDrawOverlay(){
+	if(bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay(true);
+		}
+		ofPopStyle();
+		
+	}
 }
 
 void CloudsIntroSequence::selfPostDraw(){
@@ -369,12 +424,13 @@ void CloudsIntroSequence::selfPostDraw(){
 	chroma.setUniform1f("max_distort", maxChromaDistort);
 	CloudsVisualSystem::selfPostDraw();
 	chroma.end();
-	
-	ofPushStyle();
-	for(int i = 0; i < startQuestions.size(); i++){
-		startQuestions[i].drawOverlay();
+	if(!bUseOculusRift){
+		ofPushStyle();
+		for(int i = 0; i < startQuestions.size(); i++){
+			startQuestions[i].drawOverlay();
+		}
+		ofPopStyle();
 	}
-	ofPopStyle();
 	
 }
 
@@ -393,11 +449,17 @@ void CloudsIntroSequence::selfEnd(){
 void CloudsIntroSequence::selfKeyPressed(ofKeyEventArgs & args){
 
 	if(args.key == 'q'){
-		pauseAtBeginning();
+
 	}
 	if(args.key == 'R'){
 		reloadShaders();
 	}
+    if (args.key == 'a') {
+        cursor.z += 0.1;
+    }
+    if (args.key == 'z') {
+        cursor.z -= 0.1;
+    }
 }
 
 void CloudsIntroSequence::selfKeyReleased(ofKeyEventArgs & args){
@@ -408,8 +470,9 @@ void CloudsIntroSequence::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data){
-	
+void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
+{
+    cursor.set(data.x, data.y, cursor.z);
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
@@ -427,13 +490,19 @@ void CloudsIntroSequence::selfGuiEvent(ofxUIEventArgs &e){
 	else if(e.widget->getName() == "generate tunnel" && ((ofxUIButton*)e.widget)->getValue()){
 		generateTunnel();
 	}
+    
+    else if (e.widget->getName() == "Question Font Size" ||
+             e.widget->getName() == "Question Line Length" ||
+             e.widget->getName() == "Question Line Spacing") {
+        rebuildQuestionFont();
+    }
 }
 
-void CloudsIntroSequence::pauseAtBeginning(){
-	warpCamera.setPosition(0, 0, 0);
-	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
-	paused = !paused;
-}
+//void CloudsIntroSequence::pauseAtBeginning(){
+//	warpCamera.setPosition(0, 0, 0);
+//	warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
+//	paused = !paused;
+//}
 
 void CloudsIntroSequence::selfSetupSystemGui(){
 	sysGui->addButton("reset debug camera", false);
@@ -443,7 +512,9 @@ void CloudsIntroSequence::selfSetupSystemGui(){
 void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addToggle("use debug camera", &useDebugCamera);
 	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
-	camGui->addSlider("camera fwd force", 0, 10, &cameraForwardSpeed);
+	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
+	camGui->addToggle("hold camera", &paused);
+
 }
 
 void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
@@ -474,7 +545,6 @@ void CloudsIntroSequence::selfSetupRenderGui(){
 	
 //	rdrGui->addSlider("Font Size", 1, 10, &fontSize);
 //	rdrGui->addSlider("Font Extrusion", 0, 10, &fontExtrusion);
-	rdrGui->addSlider("Font Scale", .1, 10, &fontScale);
 	
 	rdrGui->addSlider("Wireframe Alpha", 0, 1.0, &wireframeAlpha);
 }
@@ -498,6 +568,10 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Question Tint H",  0, 1.0, &questionNodeTint.r);
 	questionGui->addSlider("Question Tint S",  0, 1.0, &questionNodeTint.g);
 	questionGui->addSlider("Question Tint B",  0, 1.0, &questionNodeTint.b);
+    
+    questionGui->addIntSlider("Question Font Size", 6, 128, &questionFontSize);
+    questionGui->addSlider("Question Line Length", 1, 600, &questionLineLength);
+    questionGui->addSlider("Question Line Spacing", 0, 2, &questionLineSpacing);
 
 	questionGui->addButton("arrange questions", false);
 	//	questionGui->addToggle("Custom Toggle", &customToggle);
@@ -513,8 +587,8 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->setName("Tunnel");
 	tunnelGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	tunnelGui->addSlider("Tunnel Width",  10, 40, &tunnelMax.x);
-	tunnelGui->addSlider("Tunnel Height", 10, 25, &tunnelMax.y);
+	tunnelGui->addSlider("Tunnel Width",  10, 50, &tunnelMax.x);
+	tunnelGui->addSlider("Tunnel Height", 10, 50, &tunnelMax.y);
 	tunnelGui->addSlider("Tunnel Depth",  100, 1000, &tunnelMax.z);
 
 	tunnelGui->addSlider("Tunnel Tint H",  0, 1.0, &tint.r);
@@ -524,13 +598,34 @@ void CloudsIntroSequence::selfSetupGuis(){
 	tunnelGui->addSlider("Loose Rez X", 5, 20, &looseTunnelResolutionX);
 	tunnelGui->addSlider("Loose Rez Z", 5, 50, &looseTunnelResolutionZ);
 //	tunnelGui->addSlider("Tight Rez Mult", 1, 5, &tightResMult);
-
+    
 	tunnelGui->addButton("generate tunnel", false);
 	
 	ofAddListener(tunnelGui->newGUIEvent, this, &CloudsIntroSequence::selfGuiEvent);
 	
 	guis.push_back(tunnelGui);
 	guimap[tunnelGui->getName()] = tunnelGui;
+
+	typeGui = new ofxUISuperCanvas("TYPE", gui);
+	typeGui->copyCanvasStyle(gui);
+	typeGui->copyCanvasProperties(gui);
+	typeGui->setName("Type");
+	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	typeGui->addIntSlider("Title Size", 2, 15, &titleFontSize);
+	typeGui->addIntSlider("Title Extrude", 1, 5, &titleFontExtrude);
+	typeGui->addSlider("Title Tracking", 0, 50, &titleTypeTracking);
+	typeGui->addSlider("Title Offset", 0, 2000, &titleTypeOffset);
+	typeGui->addSlider("Title Opacity", .2, 1., &titleTypeOpacity);
+	
+	guis.push_back(typeGui);
+	guimap[tunnelGui->getName()] = typeGui;
+
+//	int titleFontSize;
+//	int titleFontExtrude;
+//	float titleTypeTracking;
+//	float titleTypeOffset;
+//	typeGui->add("Font Size", 5, 15, &titleFontSize);
 	
 }
 

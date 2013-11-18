@@ -1,0 +1,92 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>241.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW LINES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW NUMBERS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LIFESPAN COLOR</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW BOXES</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW CONTOURS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX H</Name>
+    <Value>0.665024638</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX S</Name>
+    <Value>0.837438405</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX B</Name>
+    <Value>0.866995096</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX LINE WIDTH</Name>
+    <Value>4.059113503</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEARNING TIME</Name>
+    <Value>15.000000954</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>33.916255951</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIFETIME COLOUR RANGE</Name>
+    <Value>110.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PERSISTANCE</Name>
+    <Value>3.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXDISTANCE</Name>
+    <Value>80.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN AREA RADIUS</Name>
+    <Value>3.940886736</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX AREA RADIUS</Name>
+    <Value>45.221672058</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>25.000000000</Value>
+</Widget>

@@ -22,7 +22,7 @@ public:
     
     void setup(){
         ofxOpenSteerPlugin::setup();        
-        ofBackground(255, 255, 0);
+//        ofBackground(255, 255, 0);
         
         // Create a proximity database with default settings
         pd = createProximityDatabase();

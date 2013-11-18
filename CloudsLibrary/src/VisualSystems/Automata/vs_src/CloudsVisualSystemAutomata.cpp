@@ -4,34 +4,67 @@
 
 #include "CloudsVisualSystemAutomata.h"
 
-
-//These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemAutomata::selfSetupGui(){
-
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfSetupGui()
+{
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-	
+    
+    customGui->addSpacer();
+    customGui->addToggle("RESTART", &bRestart);
+    customGui->addToggle("2D", &bIs2D);
+    customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
+    
+    customGui->addSpacer();
+    fgHue = new ofx1DExtruder(0);
+    fgHue->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgHue);
+    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
+    fgSat = new ofx1DExtruder(0);
+    fgSat->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgSat);
+    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
+    fgBri = new ofx1DExtruder(0);
+    fgBri->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgBri);
+    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
+    fgAlpha = new ofx1DExtruder(0);
+    fgAlpha->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(fgAlpha);
+    customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
+    
+    customGui->addSpacer();
+    bgAlpha = new ofx1DExtruder(0);
+    bgAlpha->setPhysics(0.95, 5.0, 25.0);
+    extruders.push_back(bgAlpha);
+    customGui->addSlider("BG ALPHA", 0.0, 255.0, bgAlpha->getPosPtr());
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemAutomata::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
-void CloudsVisualSystemAutomata::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfGuiEvent(ofxUIEventArgs &e)
+{
+    if (e.widget->getName() == "FG HUE") {
+        fgHue->setPosAndHome(fgHue->getPos());
+	}
+    else if (e.widget->getName() == "FG SAT") {
+        fgSat->setPosAndHome(fgSat->getPos());
+	}
+    else if (e.widget->getName() == "FG BRI") {
+        fgBri->setPosAndHome(fgBri->getPos());
+	}
+    else if (e.widget->getName() == "FG ALPHA") {
+        fgAlpha->setPosAndHome(fgAlpha->getPos());
+    }
+    else if (e.widget->getName() == "BG ALPHA") {
+        bgAlpha->setPosAndHome(bgAlpha->getPos());
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -51,60 +84,62 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
-void CloudsVisualSystemAutomata::selfSetup(){
-    
-    if(!image.loadImage(getVisualSystemDataPath() + "mem.gif")){
-        cout << "failed to load " << getVisualSystemDataPath() + "mem.gif" << endl;
-    }
-    
-    conway.allocate(ofGetWidth(), ofGetHeight());
-    conway.setPasses(10);
-    //
-    // Created by kalwalt alias Walter Perdan on 24/12/11
-    // Copyright 2011 http://www.kalwaltart.it/ All rights reserved.
-    conway.setCode( "#version 120\n \
-                   #extension GL_ARB_texture_rectangle : enable\n \
-                   \
-                   uniform sampler2DRect tex0; \
-                   \
-                   vec4 dead = vec4(1.0,1.0,1.0,1.0); \
-                   vec4 alive = vec4(0.0,0.0,0.0,1.0); \
-                   \
-                   void main(void) { \
-                   vec2  st = gl_TexCoord[0].st;\
-                   int sum = 0; \
-                   vec4 y = texture2DRect(tex0, st); \
-                   \
-                   if (texture2DRect(tex0, st + vec2(-1.0, -1.0)) == alive) ++sum; \
-                   if (texture2DRect(tex0, st + vec2(0.0, -1.0)) == alive) ++sum; \
-                   if (texture2DRect(tex0, st + vec2(1.0, -1.0)) == alive) ++sum; \
-                   \
-                   if (texture2DRect(tex0, st + vec2(-1.0, 0.0)) == alive) ++sum; \
-                   if (texture2DRect(tex0, st + vec2(1.0, 0.0)) == alive) ++sum; \
-                   \
-                   if (texture2DRect(tex0, st + vec2(-1.0, 1.0)) == alive) ++sum; \
-                   if (texture2DRect(tex0, st + vec2(0.0, 1.0)) == alive) ++sum; \
-                   if (texture2DRect(tex0, st + vec2(1.0, 1.0)) == alive) ++sum; \
-                   \
-                   if (sum < 2) gl_FragColor = dead; \
-                   else if (sum > 3) gl_FragColor = dead; \
-                   else if (sum == 3) gl_FragColor = alive; \
-                   else gl_FragColor = y; \
-                   }");
-    
-    conway.setTexture(image.getTextureReference());
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfSetup()
+{
+    // Load the shaders.
+    shader.load("", getVisualSystemDataPath() + "shaders/conway.frag");
+    bIs2D = true;
 	
-
+    // Set defaults.
+    radius = 5.0f;
+    bRestart = true;
 }
 
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemAutomata::selfPresetLoaded(string presetPath){
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::restart()
+{
+    float width = ofGetWidth();
+    float height = ofGetHeight();
+    
+    ofFbo::Settings fboSettings = ofFbo::Settings::Settings();
+    fboSettings.width = width;
+    fboSettings.height = height;
+    fboSettings.internalformat = GL_RGBA;
+    fboSettings.minFilter = GL_NEAREST;
+    fboSettings.maxFilter = GL_NEAREST;
+    
+    texFbo.allocate(fboSettings);
+    texFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    texFbo.end();
 
+    outFbo.allocate(fboSettings);
+    outFbo.begin();
+    {
+        ofClear(0, 0);
+    }
+    outFbo.end();
+    
+    // Build a mesh to render a quad.
+    mesh.clear();
+    mesh.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+    mesh.addVertex(ofVec3f(0, 0));
+    mesh.addVertex(ofVec3f(width, 0));
+    mesh.addVertex(ofVec3f(width, height));
+    mesh.addVertex(ofVec3f(0, height));
+    mesh.addTexCoord(ofVec2f(0, 0));
+    mesh.addTexCoord(ofVec2f(width, 0));
+    mesh.addTexCoord(ofVec2f(width, height));
+    mesh.addTexCoord(ofVec2f(0, height));
+}
+
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfPresetLoaded(string presetPath)
+{
+    bRestart = true;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -120,34 +155,67 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 	
 }
 
-//normal update call
-void CloudsVisualSystemAutomata::selfUpdate(){
-
-
-    conway.begin();
-    ofClear(255, 255);
-    conway.draw();
-    ofSetColor(0,255);
-    ofCircle(ofGetMouseX(), ofGetMouseY(), 5);
-    conway.end();
-    conway.update();
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfUpdate()
+{
+    fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
+    bgColor.a = bgAlpha->getPos();
     
-    ofSetWindowTitle(ofToString(ofGetFrameRate()));
+    if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
+        restart();
+        bRestart = false;
+    }
+    
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    texFbo.begin();
+    {
+//        ofClear(255, 255);
 
+        ofSetColor(255);
+        outFbo.draw(0, 0);
+        
+        ofSetColor(fgColor);
+        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+    }
+    texFbo.end();
+    ofPopStyle();
+    
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    outFbo.begin();
+    shader.begin();
+    shader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
+    shader.setUniform4f("liveColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
+    shader.setUniform4f("deadColor", bgColor.r / 255.0f, bgColor.g / 255.0f, bgColor.b / 255.0f, bgColor.a / 255.0f);
+    {
+//        ofClear(0, 255);
+
+        ofSetColor(255);
+        mesh.draw();
+    }
+    shader.end();
+    outFbo.end();
+    ofPopStyle();
 }
 
-// selfDraw draws in 3D using the default ofEasyCamera
-// you can change the camera by returning getCameraRef()
-void CloudsVisualSystemAutomata::selfDraw(){
-    
-    ofDisableLighting();
-    
-    ofPushMatrix();
-    ofScale(1, -1, 1);
-    ofSetColor(255);
-    conway.draw(-conway.getWidth() / 2, -conway.getHeight() / 2);
-    ofPopMatrix();
-
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfDraw()
+{
+    if (!bIs2D) {
+        ofPushMatrix();
+        ofScale(1, -1, 1);
+        ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2);
+        ofPushStyle();
+        ofEnableAlphaBlending();
+        ofDisableLighting();
+        {
+            ofSetColor(255, 255);
+            outFbo.draw(0, 0);
+        }
+        ofPopStyle();
+        ofPopMatrix();
+    }
 }
 
 // draw any debug stuff here
@@ -155,18 +223,20 @@ void CloudsVisualSystemAutomata::selfDrawDebug(){
 
 }
 
-// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void CloudsVisualSystemAutomata::selfDrawBackground(){
-   // glDisable(GL_DEPTH_TEST);
-   // ofSetColor(255);
-    
-    //image.draw(0, 0);
-
-
-	//turn the background refresh off
-	//bClearBackground = false;
-	
+//--------------------------------------------------------------
+void CloudsVisualSystemAutomata::selfDrawBackground()
+{
+    if (bIs2D) {
+        ofPushStyle();
+        ofEnableAlphaBlending();
+        {
+            ofSetColor(255, 255);
+            outFbo.draw(0, 0);
+        }
+        ofPopStyle();
+    }
 }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemAutomata::selfEnd(){
