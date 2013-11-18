@@ -80,6 +80,8 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "JM_flyoverOC");
     
+    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
+    
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     
     CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "NightOceanOC");
@@ -122,7 +124,7 @@ void testApp::setup(){
 		}
         
         if(clipIds[i] == "Zach - Time slows down"){
-			act->addVisualSystem( spaghetti, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
+			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
 		}
         
         
