@@ -65,9 +65,12 @@ void testApp::setup(){
 //	useScratch = false;
 	
 	CloudsVisualSystemPreset& preset0 = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
-//	CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "LSystem", "CityTree");
-//	
-	CloudsAct* act = new CloudsAct();
+	CloudsVisualSystemPreset& preset1 = visualSystems.getPresetForSystem( "ExampleVectorMath", "WhiteLineOC");
+//
+    CloudsVisualSystemPreset& preset2 = visualSystems.getPresetForSystem( "YellowTail", "YellowTailOC");
+    CloudsVisualSystemPreset& preset3 = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueScribblesOC");
+    
+    CloudsAct* act = new CloudsAct();
 	vector<string> clipIds;
 	clipIds.push_back("Shantell - Coding gesturally");
 	clipIds.push_back("Golan - make a mark");
@@ -90,9 +93,10 @@ void testApp::setup(){
 	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( preset0,  0, 20 );
-//	act->addVisualSystem( preset2, 14, 5 );
-//	act->addVisualSystem( preset0, 24, 5 );
+	act->addVisualSystem( preset0,  0, 15 );
+	act->addVisualSystem( preset1, 25, 40 );
+    act->addVisualSystem( preset2, 65, 80 );
+	act->addVisualSystem( preset3, 100, 120 );
 	act->populateTime();	
 	player.setMandatoryAct(act);
 	vector<CloudsClip> question;
