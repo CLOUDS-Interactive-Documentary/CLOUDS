@@ -251,6 +251,8 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
+	introSequence.playSystem();
+
 	introSequence.setStartQuestions(possibleStartQuestions);
 #ifdef OCULUS_RIFT
 	introSequence.loadPresetGUISFromName("Oculus");
@@ -258,7 +260,6 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 	introSequence.loadPresetGUISFromName("TunnelWarp");
 #endif
 	
-	introSequence.playSystem();
 	showingIntro = true;
 }
 
@@ -345,18 +346,18 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 			//scratchPlayer.setVolume(currentVolume);
 		}
 		else if(args.key == OF_KEY_RIGHT){
-			currentScratch = (currentScratch + 1) % scratchTracks.size();
-			scratchPlayer.stop();
-			scratchPlayer.unloadSound();
-			scratchPlayer.loadSound(scratchTracks[currentScratch]);
-			scratchPlayer.play();
+//			currentScratch = (currentScratch + 1) % scratchTracks.size();
+//			scratchPlayer.stop();
+//			scratchPlayer.unloadSound();
+//			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+//			scratchPlayer.play();
 		}
 		else if (args.key == OF_KEY_LEFT){
-			currentScratch = (scratchTracks.size() + currentScratch - 1) % scratchTracks.size();
-			scratchPlayer.stop();
-			scratchPlayer.unloadSound();
-			scratchPlayer.loadSound(scratchTracks[currentScratch]);
-			scratchPlayer.play();
+//			currentScratch = (scratchTracks.size() + currentScratch - 1) % scratchTracks.size();
+//			scratchPlayer.stop();
+//			scratchPlayer.unloadSound();
+//			scratchPlayer.loadSound(scratchTracks[currentScratch]);
+//			scratchPlayer.play();
 		}
 	}
 }

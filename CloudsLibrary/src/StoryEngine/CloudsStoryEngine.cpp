@@ -315,7 +315,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     ///
     visualSystemStartTime = 0;
-    cout << "visual system start time is " << visualSystemStartTime << endl;
     maxTimeRemainingForVisualSystem = systemMaxRunTime;
     
     string log;

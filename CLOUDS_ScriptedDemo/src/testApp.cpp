@@ -90,11 +90,11 @@ void testApp::setup(){
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
 		
+		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		if(clipIds[i] == "Golan - yellow tail"){
-			act->addVisualSystem( yellowTailPreset, lastClipEndTime + 5, 80); //start the preset 5 seconds in, play for 80 seconds
+			act->addVisualSystem( yellowTailPreset, lastClipEndTime + 5, clip.getDuration() + 5); //start the preset 5 seconds in, play for 80 seconds
 		}
 		
-		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
 	}
 	

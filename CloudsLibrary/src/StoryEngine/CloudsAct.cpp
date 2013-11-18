@@ -354,7 +354,7 @@ void CloudsAct::updateClipStartTime(CloudsClip clip, float startTime,float handl
     }
 }
 
-void CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration){
+float CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration){
     visualSystemIndeces[preset.getID()] = visualSystems.size();
     visualSystems.push_back(preset);
     
@@ -375,6 +375,8 @@ void CloudsAct::addVisualSystem(CloudsVisualSystemPreset& preset, float startTim
     actItems.push_back(item);
     actItemsMap[item.key] = item;
     visualSystemItems[preset.getID()] = item;
+
+	return duration;
 }
 
 void CloudsAct::addGapForCadence(CloudsVisualSystemPreset& preset,float startTime,float duration){
