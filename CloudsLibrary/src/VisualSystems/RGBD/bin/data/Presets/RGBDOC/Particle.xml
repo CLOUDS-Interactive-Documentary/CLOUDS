@@ -1,7 +1,7 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Particle</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>349.000000000</XPosition>
     <YPosition>91.000000000</YPosition>
 </Canvas>

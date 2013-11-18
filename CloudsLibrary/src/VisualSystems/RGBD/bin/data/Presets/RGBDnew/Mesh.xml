@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>662.000061035</XPosition>
+    <YPosition>-3.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -28,12 +28,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>MESH ALPHA</Name>
-    <Value>0.550000012</Value>
+    <Value>0.463053882</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SKIN MULTIPLIER</Name>
-    <Value>0.133004919</Value>
+    <Value>0.290640086</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MAX</Name>
-    <Value>0.266009837</Value>
+    <Value>0.251230627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MIN</Name>
-    <Value>0.177339911</Value>
+    <Value>0.088669047</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>NUM RANDOM POINTS</Name>
-    <Value>86206.898437500</Value>
+    <Value>51723.988281250</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

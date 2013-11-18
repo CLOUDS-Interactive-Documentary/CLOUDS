@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Mesh</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>851.000000000</XPosition>
+    <YPosition>-8.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -48,37 +48,37 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MAX</Name>
-    <Value>0.266009837</Value>
+    <Value>0.236453205</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SIZE MIN</Name>
-    <Value>0.177339911</Value>
+    <Value>0.133004919</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID ALPHA</Name>
-    <Value>0.428571433</Value>
+    <Value>0.354679793</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID VERT SPACE</Name>
-    <Value>6.320197105</Value>
+    <Value>5.522167206</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>P GRID HORI SPACE</Name>
-    <Value>3.527093649</Value>
+    <Value>4.724138260</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>NUM RANDOM POINTS</Name>
-    <Value>86206.898437500</Value>
+    <Value>22167.486328125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RANDOM ALPHA</Name>
-    <Value>0.000000000</Value>
+    <Value>0.054187194</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,12 +88,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>VERT LINE SPACE</Name>
-    <Value>4.012315273</Value>
+    <Value>3.672413826</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>VERT LINE ALPHA</Name>
-    <Value>0.475000024</Value>
+    <Value>0.463054180</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -103,12 +103,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HORIZ LINE SPACE</Name>
-    <Value>4.522167683</Value>
+    <Value>3.445812702</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HORIZ LINE ALPHA</Name>
-    <Value>0.449999988</Value>
+    <Value>0.487684727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
