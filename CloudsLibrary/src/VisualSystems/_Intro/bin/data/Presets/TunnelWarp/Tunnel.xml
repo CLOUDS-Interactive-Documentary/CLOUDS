@@ -2,46 +2,31 @@
     <Kind>42</Kind>
     <Name>Tunnel</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1061.000000000</XPosition>
+    <XPosition>637.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
-    <Kind>4</Kind>
-    <Name>Tunnel Width</Name>
-    <Value>33.940879822</Value>
+    <Kind>44</Kind>
+    <Name>Title Size</Name>
+    <Value>4</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Title Extrude</Name>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Tunnel Height</Name>
-    <Value>15.985217094</Value>
+    <Name>Title Tracking</Name>
+    <Value>11.822645187</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Tunnel Depth</Name>
-    <Value>357.142578125</Value>
+    <Name>Title Offset</Name>
+    <Value>169.950805664</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>Tunnel Tint H</Name>
-    <Value>0.541871607</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Tunnel Tint S</Name>
-    <Value>0.330048949</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Tunnel Tint B</Name>
-    <Value>0.714285433</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Loose Rez X</Name>
-    <Value>12.758615494</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Loose Rez Z</Name>
-    <Value>50.000000000</Value>
+    <Name>Title Opacity</Name>
+    <Value>0.795073867</Value>
 </Widget>
