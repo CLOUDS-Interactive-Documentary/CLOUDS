@@ -22,7 +22,7 @@ void testApp::setup(){
     shaderBlurY.load("simpleBlurVertical");
     
 
-    ofEnableAlphaBlending();
+//    ofEnableAlphaBlending();
     blur = false;
     
     gui = new ofxUISuperCanvas("COLOUR SELECTOR", OFX_UI_FONT_MEDIUM);
