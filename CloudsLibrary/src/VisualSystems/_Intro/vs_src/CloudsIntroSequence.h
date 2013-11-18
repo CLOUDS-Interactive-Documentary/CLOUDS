@@ -96,15 +96,23 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
+
 	
-	ofxFTGLFont font; //for the overlay
+
+	
 	ofxFTGLFont extrudedTitleText; //for the title
-	
 	float titleTypeOpacity;
 	int titleFontSize;
 	int titleFontExtrude;
 	float titleTypeTracking;
 	float titleTypeOffset;
+
+	ofxFTGLSimpleLayout questionFont;
+    void rebuildQuestionFont();
+    int questionFontSize;
+	float questionLineLength;
+    float questionLineSpacing;
+
 	
 	float currentFontSize;
 	float currentFontExtrusion;

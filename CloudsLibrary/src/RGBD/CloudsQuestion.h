@@ -17,7 +17,7 @@ class CloudsQuestion {
 	string question;
 	
 	ofCamera* cam;
-	ofxFTGLFont* font;
+	ofxFTGLSimpleLayout* font;
 	
 	bool falloff;
 	float falloffDistance;
