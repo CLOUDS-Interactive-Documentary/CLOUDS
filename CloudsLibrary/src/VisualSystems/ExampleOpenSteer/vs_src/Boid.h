@@ -48,6 +48,9 @@ public:
     static float trailDuration;
 
     static float nBoids; //ugh -- has to be a float bcz of ofxUISlider
+    
+    deque<ofVec3f> history;
+    ofVboMesh trailMesh;
 
     Boid(){
         pt = NULL;
@@ -59,7 +62,7 @@ public:
     };
     
     void reset(){
-		// reset the vehicle
+        // reset the vehicle
 		ofxOpenSteerVehicle::reset ();
 		
 		// steering force is clipped to this magnitude
@@ -83,17 +86,61 @@ public:
 		if(pt) pt->updateForNewPosition (position());
 
 		setTrailParameters(Boid::trailDuration, Boid::trailVertexCount);
+        
+        history.clear();
 	};
     
-    void update(){
-        ofxOpenSteerVehicle::update();
+    void update(float curTime, float elapsedTime){
+        ofxOpenSteerVehicle::update(curTime, elapsedTime);
         if(pt) pt->updateForNewPosition (position());
+        
+        history.push_back(getPosition());
+        while (history.size() > trailVertexCount) {
+            history.pop_front();
+        }
+        
+        trailMesh.clear();
+        trailMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+        
+        if (history.size() > 0) {
+            float trailRadius = 10;
+            const ofVec3f back = history.back();
+            float total = (float)(history.size());
+            for (int i = history.size() - 1; i > 0; i--) {
+                float pct = i / total;
+                const ofVec3f& curr = history[i];
+                const ofVec3f& last = history[i-1];
+                
+                ofVec3f perp0 = curr - last;
+                ofVec3f perp1 = perp0.getCrossed(ofVec3f(0, 0, 1));
+                ofVec3f perp2 = perp0.getCrossed(perp1);
+                perp1 = perp0.getCrossed(perp2).getNormalized();
+                float offWidth = (trailRadius * pct * 0.07f);
+                float opacityScale = 0.95f * pct;
+                if (pct > 0.8f) {
+                    float temp = (1.0f - pct) / 0.2f;
+                    float tempScale = sqrt(temp);
+                    offWidth *= tempScale;
+                    opacityScale *= tempScale;
+                }
+                
+                ofVec3f off = perp1 * offWidth;
+                ofColor color(trailColor.r() * 255, trailColor.g() * 255, trailColor.b() * 255, opacityScale * 255);
+                
+                trailMesh.addVertex(curr - off);
+                trailMesh.addColor(color);
+                trailMesh.addVertex(curr + off);
+                trailMesh.addColor(color);
+            }
+        }
     };
 	
     void draw(){
         drawBasic3dSphericalVehicle (*this, bodyColor);
         if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail(trailColor, tickColor);
+        if(bDrawTrail) {
+            trailMesh.draw();
+        }
     }
 
 
