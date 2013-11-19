@@ -38,6 +38,8 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     alignmentDist = 50.0;
 }
 
+//==========================================================================================
+
 void colonyCell::update()
 {
     //forces
@@ -54,21 +56,27 @@ void colonyCell::update()
     age++;
 }
 
+//==========================================================================================
+
 void colonyCell::draw()
 {
     ofPushStyle();
 
-    ofSetColor(255, 255, 255, 60);
+    ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
 //    ofSphere(position.x, position.y, 500.*(cos(position.x/500.0) + sin(position.y/500.0)), MIN(maxSize, cellSize));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
     ofPopStyle();
 }
+
+//==========================================================================================
 
 void colonyCell::doApplyForce(const ofPoint& _force)
 {
     //TODO: Add mass
     acceleration += _force;
 }
+
+//==========================================================================================
 
 void colonyCell::doScanAndFlock(neighbor_iterator& n_iter){
     
@@ -95,7 +103,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& n_iter){
     ofVec3f steer = (   separate.normalized()   * 12
                      +  cohere.normalized()     * 6.5
                      +  align.normalized()      * 1.15
-                     ) * maxSpeed;  //TODO: Why - velocity? //- velocity;
+                     ) * maxSpeed;  //TODO: Why - velocity? - velocity;
     steer.limit(maxSpeed);
     
     doApplyForce(steer);
@@ -104,15 +112,21 @@ void colonyCell::doScanAndFlock(neighbor_iterator& n_iter){
     replicationChances = exp(-f*f/200);
 }
 
+//==========================================================================================
+
 void colonyCell::doFeedCellWidth(ofPixels &_pixels){
     int safeX = ofClamp(position.x,0,ofGetWidth()-1);
 	int safeY = ofClamp(position.y,0,ofGetHeight()-1);
     lastFeedValue = _pixels.getColor(safeX, safeY).getBrightness();
 }
 
+//==========================================================================================
+
 void colonyCell::doFeedCellNoise(){
     lastFeedValue = ofNoise(position.x, position.y, position.z)*255;
 }
+
+//==========================================================================================
 
 void colonyCell::doWrapXY(){
     if (position.x > ofGetWidth() - 1) {position.x -= (ofGetWidth() - 1);}
@@ -121,6 +135,7 @@ void colonyCell::doWrapXY(){
     if (position.y < 1) { position.y += (ofGetHeight() - 1); }
 }
 
+//==========================================================================================
 
 void colonyCell::doApplyBorders(float padding)
 {
@@ -142,6 +157,8 @@ void colonyCell::doApplyBorders(float padding)
             velocity *= ofPoint(1,-1,1);
         }}
 }
+
+//==========================================================================================
 
 cellPtr colonyCell::doGetReplicated()
 {

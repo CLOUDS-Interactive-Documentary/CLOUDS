@@ -81,6 +81,9 @@ private:
 
 
 
+
+
+
 /**
  * Concatenation iterator for iterating a bunch of vectors in series.
  */
@@ -102,7 +105,7 @@ public:
         position = 0;
     }
     void increment() {
-        if (++position >= v[meta]->size()){ //not optimized
+        if (++position >= v[meta]->size()){ //Can be optimied with caching of v[meta]
             if (++meta < v.size()){
                 position = 0;
             }}}
