@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIV 10
+#define MAP_SUBDIV 15
 
 #pragma once
 
@@ -29,8 +29,8 @@ public:
     ~coord2i(){}
     coord2i(int x_, int y_): x(x_), y(y_){};
     coord2i(ofPoint const& p):
-        x(int(floor(p.x * MAP_SUBDIV / ofGetWidth() ))),
-        y(int(floor(p.y * MAP_SUBDIV / ofGetHeight()))) {} //FIXME: GetWidth and GetHeight are called millions of time a second. cache.
+        x(int(ofClamp(p.x * MAP_SUBDIV / ofGetWidth() , 0, MAP_SUBDIV - 0.1))),
+        y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {} //FIXME: GetWidth and GetHeight are called millions of time a second. cache.
     bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
     bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
     bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
@@ -43,7 +43,7 @@ class colonyCell {
     ofPoint position;
     ofVec2f acceleration, velocity;
     float cellSize, age, nutrientLevel, maxSize, maxSpeed, maxForce, lifespan, fertilityAge,
-            deathThreshold, separationDist, alignmentDist, lastFeedValue;
+            deathThreshold, separationDist, alignmentDist, lastFeedValue, replicationChances;
     bool fertile, dead, hasReplicated;
     
 public:
@@ -52,7 +52,7 @@ public:
     void update();
     void draw();
     void doApplyForce(const ofPoint& _force );
-    void doApplyFlock(neighbor_iterator& iter);
+    void doScanAndFlock(neighbor_iterator& iter);
     void doApplyBorders();
     
     void doFeedCellWidth( ofPixels &_pixels);
@@ -80,59 +80,45 @@ private:
  * Concatenation iterator for iterating a bunch of vectors in series.
  */
 
-class neighbor_iterator : public vector<cellPtr>::const_iterator{
+class neighbor_iterator : private vector<cellPtr>::const_iterator{
     
     typedef const vector <cellPtr>* vecPtr;
     vector<vecPtr> v;
-    int position, meta, subVecSize, metaVecSize;
-    vecPtr currentVecPtr;
+    int position, meta;
     
 public:
     
-    neighbor_iterator(){}
-    
-    neighbor_iterator(const neighbor_iterator& other) : v(other.v){
-        initialize();
-    }
-    
-    ~neighbor_iterator(){
-        //FIXME: Change this
-        v.clear(); //TODO: Check if this is enough;
-    }
+    neighbor_iterator(){ initialize(); }
+    neighbor_iterator(const neighbor_iterator& other) : v(other.v){ initialize(); }
+    ~neighbor_iterator(){ v.clear(); }
     
     void add(const std::vector<cellPtr>& _v){
-        if (!_v.empty()){
-            v.push_back( &_v ); //Add as POINTER
-            metaVecSize = v.size();
-        }
+        if (!_v.empty()){ v.push_back( &_v ); /* Add as POINTER */}
     }
     
     void initialize(){
         meta = 0;
         position = 0;
-        currentVecPtr = v[meta];
-        subVecSize = currentVecPtr->size();
     }
     
     void increment() {
-        if (++position >= subVecSize){
-            if (++meta < metaVecSize){
+        if (++position >= v[meta]->size()){ //not optimized
+            if (++meta < v.size()){
                 position = 0;
-                currentVecPtr = v[meta];
-                subVecSize = currentVecPtr->size();
             }
         }
     }
     
-    neighbor_iterator& operator=(const neighbor_iterator& other){ //TODO: Check if necessary
+    neighbor_iterator& operator=(const neighbor_iterator& other)
+    {
         v = vector<vecPtr>(other.v);
         initialize();
     }
-    bool hasNext(){ return ((meta < metaVecSize) || (position < subVecSize)); } //FIXME: This does not check for 0 - sized subarrays. Need to check elsewhere.
-    reference operator*() const { return (*currentVecPtr)[position]; }
-    pointer operator->()  const { return &((*currentVecPtr)[position]); }
+    bool hasNext(){ return ((meta < v.size())); }
+    reference operator*() const { return (*(v[meta]))[position]; }
+    pointer operator->()  const { return &((*(v[meta]))[position]); }
     friend bool operator==(const neighbor_iterator& a, const neighbor_iterator& b){
-        return ((a.v == b.v) && (a.position == b.position) && (a.meta == b.meta)); //TODO: Can we really find a counterexample that requires meta?
+        return ((a.v == b.v) && (a.position == b.position) && (a.meta == b.meta));
     }
     friend bool operator!=(const neighbor_iterator& a, const neighbor_iterator& b) { return !(a==b); }
 };
@@ -180,11 +166,14 @@ public:
         partitions.at(coord).push_back(cp); //FIXME: Has roundoff errors
     }
     
-    void put(vector<cellPtr>::iterator from, const vector<cellPtr>::iterator& to ){
-        while(from!=to){
-            put(*from);
-            from++;
+    void put(const vector<cellPtr>& vec){
+        for (int i = 0 ; i < vec.size() ; i++){
+            put(vec[i]);
         }
+//        while(from!=to){
+//            put(*from);
+//            from++;
+//        }
     }
     
     neighbor_iterator getNeighbours(const coord2i& c)

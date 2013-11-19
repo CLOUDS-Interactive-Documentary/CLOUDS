@@ -16,7 +16,7 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    numInitialCells = 15; //FIXME : Magic number
+    numInitialCells = 9500; //FIXME : Magic number
     
     noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     foodFbo.allocate(ofGetWidth(), ofGetHeight());
@@ -59,11 +59,11 @@ void CloudsVisualSystemColony::selfUpdate()
     
     //  Update cells position and life
     //
-    pMap.put(cells.begin(), cells.end());
+    pMap.put(cells);
     for (int i = 0; i < cells.size(); i++) {
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
         iter.initialize();
-            cells[i]->doApplyFlock(iter);
+            cells[i]->doScanAndFlock(iter);
             cells[i]->doApplyBorders();
             cells[i]->doFeedCellWidth( noise.getPixelsRef() );
             cells[i]->update();
@@ -89,7 +89,14 @@ void CloudsVisualSystemColony::selfDrawBackground()
     for (int i = 0 ; i < cells.size(); i++){
         cells[i]->draw();
     }
-    
+}
+
+void CloudsVisualSystemColony::selfDraw(){
+//    ofEnableSmoothing();
+//    ofEnableAlphaBlending();
+//    for (int i = 0 ; i < cells.size(); i++){
+//        cells[i]->draw();
+//    }
 
 }
 

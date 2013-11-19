@@ -24,6 +24,7 @@ public:
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
+    void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
     
