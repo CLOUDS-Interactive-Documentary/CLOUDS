@@ -199,21 +199,6 @@ void CloudsPlaybackController::setup(){
 		
 		//setup scratch tracks
 		
-		ofDirectory dir(getDataPath() + "scratch/");
-		dir.allowExt("aif");
-		dir.allowExt("aiff");
-		dir.allowExt("wav");		
-		dir.allowExt("mp3");
-		dir.sort();
-		dir.listDir();
-		for(int i = 0; i < dir.numFiles(); i++){
-			scratchTracks.push_back(dir.getPath(i));
-		}
-		if(scratchTracks.size() > 0){
-			currentScratch = 0;
-			scratchPlayer.loadSound(scratchTracks[0]);
-			scratchPlayer.play();
-		}
 	}
 	
 	CloudsPlaybackControllerTween t;
@@ -228,6 +213,24 @@ void CloudsPlaybackController::setup(){
 	fadeInVisualSystem = "fadeInVisualSystem";
 }
 
+void CloudsPlaybackController::startScratchTracks(){
+	ofDirectory dir(getDataPath() + "scratch/");
+	dir.allowExt("aif");
+	dir.allowExt("aiff");
+	dir.allowExt("wav");
+	dir.allowExt("mp3");
+	dir.sort();
+	dir.listDir();
+	for(int i = 0; i < dir.numFiles(); i++){
+		scratchTracks.push_back(dir.getPath(i));
+	}
+	if(scratchTracks.size() > 0){
+		currentScratch = 0;
+		scratchPlayer.loadSound(scratchTracks[0]);
+		scratchPlayer.play();
+	}
+
+}
 CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
 	return clusterMapVisualSystem;
 }
@@ -306,9 +309,9 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		CloudsQuestion::reloadShader();
 	}
 	
-	if(args.key == 'P'){
-		currentAct->getTimeline().togglePlay();
-	}
+//	if(args.key == 'P'){
+//		currentAct->getTimeline().togglePlay();
+//	}
 	
 	if(args.key == 'Q'){
 		for(int i = 0; i < fakeQuestions.size(); i++){
@@ -443,22 +446,6 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	}
 
 	
-#ifdef OCULUS_RIFT
-	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
-#else
-	//TODO replace with cool cursor animations
-	if(ofGetElapsedTimef() - cursorMovedTime < 1){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
-#endif
 }
 
 //--------------------------------------------------------------------
@@ -476,7 +463,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	if(fadingIntro){
-		scratchPlayer.setVolume(crossfadeValue);
+//		scratchPlayer.setVolume(crossfadeValue);
 	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
 		currentVisualSystem->selfPostDraw();

@@ -175,6 +175,7 @@ void testApp::setup(){
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
 	
+	player.startScratchTracks();
 	player.showIntro(question);
 	
 }
@@ -184,7 +185,6 @@ void testApp::update(){
 	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
 	
 	sound.update();
-	ofShowCursor();
 }
 
 //--------------------------------------------------------------

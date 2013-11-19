@@ -297,11 +297,20 @@ void CloudsIntroSequence::selfDrawDebug(){
 
 void CloudsIntroSequence::timelineBangEvent(ofxTLBangEventArgs& args){
 	//testing for now
+	
 	CloudsVisualSystem::timelineBangEvent(args);
-//	if(args.flag == "TriggerQ"){
-//		//selectedQuestion = &startQuestions[0];
-//		showingQuestions = true;
-//	}
+	if(args.flag == "LOOP_END"){
+		ofxTLFlags* flags = (ofxTLFlags*)timeline->getTrack("Intro-Outro");
+		ofxTLFlag* flag = flags->getFlagWithKey("LOOP_START");
+		if(flag != NULL){
+			timeline->stop();
+			timeline->setCurrentTimeMillis(flag->time);
+			timeline->play();
+		}
+		
+		//selectedQuestion = &startQuestions[0];
+		showingQuestions = true;
+	}
 }
 
 void CloudsIntroSequence::selfDraw(){

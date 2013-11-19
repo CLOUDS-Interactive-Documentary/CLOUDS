@@ -136,7 +136,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-
+	bDrawCursor = true;
+	
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -372,6 +373,24 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
+	
+#ifdef OCULUS_RIFT
+	if(bShowTimeline){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
+#else
+	//TODO replace with cool cursor animations
+	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
+#endif
+	
     if(bRenderSystem)
     {
 	  
@@ -507,17 +526,19 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	ofPushMatrix();
-	ofPushStyle();
-	oculusRift.multBillboardMatrix();
-//	ofNoFill();
-//	ofSetColor(255, 50);
-//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-	ofSetColor(240,240,255, 175);
-	ofSetLineWidth(2);
-	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-	ofPopStyle();
-	ofPopMatrix();
+	if(bDrawCursor){
+		ofPushMatrix();
+		ofPushStyle();
+		oculusRift.multBillboardMatrix();
+	//	ofNoFill();
+	//	ofSetColor(255, 50);
+	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+		ofSetColor(240,240,255, 175);
+		ofSetLineWidth(2);
+		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
+		ofPopStyle();
+		ofPopMatrix();
+	}
 #endif
 	
 }

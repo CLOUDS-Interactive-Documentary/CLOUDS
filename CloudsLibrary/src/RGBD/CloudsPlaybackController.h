@@ -127,6 +127,7 @@ class CloudsPlaybackController {
 	void setStoryEngine(CloudsStoryEngine& storyEngine);
     void setRun(CloudsRun& run);
 	
+	void startScratchTracks();
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
 	
 	//overrides whatever the story engine spits out so that we can force a certain sequence

@@ -88,6 +88,10 @@ void CloudsVisualSystemExampleVectorMath::selfSetup(){
     fadeSpeed = 10;
     autoDrawSpeed = 2;
     bAutoDraw = false;
+	
+	//jg temp to remove mismatched cursor
+	bDrawCursor = false;
+	
     colorShiftSpeed = 0.5;
     color = ofFloatColor::white;
     autoDraw.x = ofRandomf();
