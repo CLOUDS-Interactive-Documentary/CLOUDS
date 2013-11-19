@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIVISIONS 8
+#define MAP_SUBDIV 10
 
 #pragma once
 
@@ -28,16 +28,14 @@ public:
     int x, y;
     ~coord2i(){}
     coord2i(int x_, int y_): x(x_), y(y_){};
-    coord2i(ofPoint const& p){
-        x = (int) floor(p.x * MAP_SUBDIVISIONS / ofGetWidth());
-        y = (int) floor(p.y * MAP_SUBDIVISIONS / ofGetHeight());
-    }
+    coord2i(ofPoint const& p):
+        x(int(floor(p.x * MAP_SUBDIV / ofGetWidth() ))),
+        y(int(floor(p.y * MAP_SUBDIV / ofGetHeight()))) {} //FIXME: GetWidth and GetHeight are called millions of time a second. cache.
     bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
     bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
     bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
-    int ordered() const{ return y * MAP_SUBDIVISIONS + x;}
+    int ordered() const { return y * MAP_SUBDIV + x;}
 };
-
 
 
 
@@ -53,16 +51,18 @@ public:
     colonyCell(const ofPoint initialPosition = ofPoint(-1,-1));
     void update();
     void draw();
-    void doApplyForce( ofPoint _force ); //TODO: switch to modern C++ with list of force functions
-    void doApplyFlock(neighbor_iterator iter);
+    void doApplyForce(const ofPoint& _force );
+    void doApplyFlock(neighbor_iterator& iter);
     void doApplyBorders();
     
-    void doFeedCellWidth( ofPixels &_pixels); //TODO: What is this?
+    void doFeedCellWidth( ofPixels &_pixels);
     
     bool isFertile(); //TODO: consider "how fertile" and probablistics
     bool isDead();
     bool isReadyToReplicate();
-    const ofPoint& getPosition() const;
+    const ofPoint getPosition() const;
+    const ofPoint getVelocity() const;
+    float getSize();
     void doSetPosition(const ofPoint& p);
     
     /* returns a new one in a ptr, resets the replacaiton status
@@ -77,64 +77,66 @@ private:
 
 
 /**
- * Concatenation iterator for iterating a bunch of vectors in series. Doesn't keep track of the vectors
+ * Concatenation iterator for iterating a bunch of vectors in series.
  */
 
-class neighbor_iterator : public virtual std::vector<cellPtr>::iterator {
+class neighbor_iterator : public vector<cellPtr>::const_iterator{
     
-    typedef vector<cellPtr>::iterator cell_iterator;
-    typedef std::pair<cell_iterator,cell_iterator> value_type;
-    
-    vector<value_type> v;
-    cell_iterator position;
-    vector<value_type>::iterator meta;
-    bool initialized;
+    typedef const vector <cellPtr>* vecPtr;
+    vector<vecPtr> v;
+    int position, meta, subVecSize, metaVecSize;
+    vecPtr currentVecPtr;
     
 public:
     
-    neighbor_iterator(){
-        initialized = false;
+    neighbor_iterator(){}
+    
+    neighbor_iterator(const neighbor_iterator& other) : v(other.v){
+        initialize();
     }
     
-    neighbor_iterator(std::vector<cellPtr>& _v){
-        initialized = false;
-        if (!_v.empty()){ add(_v); }
-    }
-    
-    ~neighbor_iterator()
-    {
+    ~neighbor_iterator(){
+        //FIXME: Change this
         v.clear(); //TODO: Check if this is enough;
     }
-    void add(std::vector<cellPtr>& _v){
-        if (!initialized && !_v.empty()){
-            v.push_back(value_type(_v.begin(), _v.end()));
+    
+    void add(const std::vector<cellPtr>& _v){
+        if (!_v.empty()){
+            v.push_back( &_v ); //Add as POINTER
+            metaVecSize = v.size();
         }
-    }
-    void initialize() {
-        if (!v.empty()){
-            meta = v.begin();
-            position = meta->first; //TODO: Needs to return a const
-        }
-        initialized = true;
     }
     
-    neighbor_iterator& operator++(int) {
-        if (++position == meta -> second){
-            if (++meta != v.end()){
-                position = meta -> first;
+    void initialize(){
+        meta = 0;
+        position = 0;
+        currentVecPtr = v[meta];
+        subVecSize = currentVecPtr->size();
+    }
+    
+    void increment() {
+        if (++position >= subVecSize){
+            if (++meta < metaVecSize){
+                position = 0;
+                currentVecPtr = v[meta];
+                subVecSize = currentVecPtr->size();
             }
         }
-        return *this;
     }
-    bool hasNext(){ return ( (!v.empty()) && ((meta != v.end()) || (position != meta->second))); }
-    reference operator*() const { return *position; }
-    pointer operator->()  const { return &(*position); }
-    friend bool operator==(const neighbor_iterator& a, const neighbor_iterator& b)
-    {
+    
+    neighbor_iterator& operator=(const neighbor_iterator& other){ //TODO: Check if necessary
+        v = vector<vecPtr>(other.v);
+        initialize();
+    }
+    bool hasNext(){ return ((meta < metaVecSize) || (position < subVecSize)); } //FIXME: This does not check for 0 - sized subarrays. Need to check elsewhere.
+    reference operator*() const { return (*currentVecPtr)[position]; }
+    pointer operator->()  const { return &((*currentVecPtr)[position]); }
+    friend bool operator==(const neighbor_iterator& a, const neighbor_iterator& b){
         return ((a.v == b.v) && (a.position == b.position) && (a.meta == b.meta)); //TODO: Can we really find a counterexample that requires meta?
     }
     friend bool operator!=(const neighbor_iterator& a, const neighbor_iterator& b) { return !(a==b); }
 };
+
 
 
 /**
@@ -144,15 +146,15 @@ public:
 class colonyPartitionMap {
     typedef std::map<coord2i, vector<cellPtr> >::value_type value_type;
     typedef std::map<coord2i, vector<cellPtr> >::iterator iter_type;
-    map<coord2i, vector<cellPtr> > partitions;
+    map<coord2i, vector<cellPtr> > partitions; //TODO: Change to array. Is simpler and enumerable
     map<coord2i, neighbor_iterator> neighbors;
     
 public:
     
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
-        for (int i = 0 ; i < MAP_SUBDIVISIONS ; ++i){
-            for (int j = 0; j < MAP_SUBDIVISIONS; ++j) {
+        for (int i = 0 ; i < MAP_SUBDIV ; ++i){
+            for (int j = 0; j < MAP_SUBDIV; ++j) {
                 vector<cellPtr> v;
                 coord2i c = coord2i(i, j);
                 partitions.insert(value_type(c, v));
@@ -173,19 +175,19 @@ public:
         neighbors.clear();
     }
     
-    void put(cellPtr cp){
+    void put(const cellPtr& cp){
         coord2i coord = coord2i(cp -> getPosition());
-        partitions.at(coord).push_back(cp);
+        partitions.at(coord).push_back(cp); //FIXME: Has roundoff errors
     }
     
-    void put(vector<cellPtr>::iterator from, vector<cellPtr>::iterator to ){
+    void put(vector<cellPtr>::iterator from, const vector<cellPtr>::iterator& to ){
         while(from!=to){
             put(*from);
             from++;
         }
     }
     
-    neighbor_iterator getNeighbours(coord2i c)
+    neighbor_iterator getNeighbours(const coord2i& c)
     {
         std::map<coord2i, neighbor_iterator>::iterator k = neighbors.find(c);
         if (k != neighbors.end()){
@@ -193,9 +195,9 @@ public:
             return k->second;
         } else {
             neighbor_iterator iter = neighbor_iterator(); //FIXME: Might throw error
-            for (int i = MAX(c.x - 1,0) ; i <= MIN(c.x +1, MAP_SUBDIVISIONS - 1); i++){
-                for (int j = MAX(c.y - 1,0) ; j <= MIN(c.y +1, MAP_SUBDIVISIONS - 1); j++){
-                        iter.add(partitions.at(c));
+            for (int i = MAX((c.x - 1),0) ; i <= MIN((c.x +1), (MAP_SUBDIV - 1)); i++){
+                for (int j = MAX((c.y - 1),0) ; j <= MIN((c.y +1), (MAP_SUBDIV - 1)); j++){
+                    iter.add(partitions.at(coord2i(i,j))); //This *should* be 'at' because all vectors have been initialized
                     }}
             iter.initialize();
             neighbors.insert(std::pair<coord2i, neighbor_iterator>(c, iter));
