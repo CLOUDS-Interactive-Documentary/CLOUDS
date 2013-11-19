@@ -147,7 +147,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-
+    exit();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
