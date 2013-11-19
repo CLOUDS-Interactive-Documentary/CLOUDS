@@ -628,7 +628,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	typeGui->addSlider("Title Opacity", .0, 1., &titleTypeOpacity);
 	
 	guis.push_back(typeGui);
-	guimap[tunnelGui->getName()] = typeGui;
+	guimap[typeGui->getName()] = typeGui;
 
 //	int titleFontSize;
 //	int titleFontExtrude;
