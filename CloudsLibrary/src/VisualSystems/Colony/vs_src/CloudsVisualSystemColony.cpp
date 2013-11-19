@@ -16,7 +16,7 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    numInitialCells = 5; //FIXME : Magic number
+    numInitialCells = 15; //FIXME : Magic number
     
     noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
     foodFbo.allocate(ofGetWidth(), ofGetHeight());

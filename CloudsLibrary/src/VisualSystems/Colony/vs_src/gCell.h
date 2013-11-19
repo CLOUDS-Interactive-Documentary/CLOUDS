@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIV 20
+#define MAP_SUBDIV 10
 
 #pragma once
 
@@ -30,7 +30,7 @@ public:
     coord2i(int x_, int y_): x(x_), y(y_){};
     coord2i(ofPoint const& p):
         x(int(floor(p.x * MAP_SUBDIV / ofGetWidth() ))),
-        y(int(floor(p.y * MAP_SUBDIV / ofGetHeight()))) {}
+        y(int(floor(p.y * MAP_SUBDIV / ofGetHeight()))) {} //FIXME: GetWidth and GetHeight are called millions of time a second. cache.
     bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
     bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
     bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}

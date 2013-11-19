@@ -20,18 +20,18 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     //TODO Replace magic numbers
     acceleration = ofVec2f(0,0);
     velocity = ofVec2f(ofRandom(-1,1), ofRandom(-1,1));
-    cellSize = 1;
+    cellSize = 4;
     age = 0;
     nutrientLevel = 50;
-    deathThreshold = .001;
-    maxSpeed = .8; //TODO: Tweak
+    deathThreshold = .002;
+    maxSpeed = .4; //TODO: Tweak
     maxForce = .4; //TODO: Tweak
     maxSize = ofRandom(15, 25);
     lifespan = ofRandom(90, 300); //TODO: Tweak
-    fertile = ofRandomuf() > .5;
+    fertile = ofRandomuf() > .75;
     dead = false;
     hasReplicated = false;
-    fertilityAge = lifespan/2.;
+    fertilityAge = ofRandom(lifespan* 11./12., lifespan);
     
     //Private stuff
     separationDist = 20.0;
@@ -47,7 +47,7 @@ void colonyCell::update()
     
     //housekeeping
     acceleration *= 0;
-    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/25000.0); }
+    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/5000.0); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
     if (age > lifespan || hasReplicated){ cellSize -= .03;}
     if (cellSize <= deathThreshold){ dead = true; }
@@ -91,9 +91,9 @@ void colonyCell::doApplyFlock(neighbor_iterator& n_iter){
     cohere /= count;
     align /=  count;
     //TODO: Remove magic numbers
-    ofVec3f steer = (   separate.normalized()   * 50
-                     +  cohere.normalized()     * 0.07
-                     +  align.normalized()      * 0.033
+    ofVec3f steer = (   separate.normalized()   * 60
+                     +  cohere.normalized()     * 0.2
+                     +  align.normalized()      * 0.1
                      ) * maxSpeed;  //TODO: Why - velocity? //- velocity;
     steer.limit(maxSpeed);
     
