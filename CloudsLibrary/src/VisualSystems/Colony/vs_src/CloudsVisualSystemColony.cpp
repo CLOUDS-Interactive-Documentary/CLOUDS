@@ -16,30 +16,17 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     
-    numInitialCells = 9500; //FIXME : Magic number
+    numInitialCells = 200; //FIXME : Magic number
     
     noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
-    foodFbo.allocate(ofGetWidth(), ofGetHeight());
-    noiseZoom = 100.0;
     
-    
-    //TODO : Review
-	if(!noise.isAllocated() || noise.getWidth() != ofGetWidth() || noise.getHeight() != ofGetHeight()){
-		noise.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_GRAYSCALE);
-		
-		for(int x = 0; x < noise.getWidth(); x++){
-			for(int y = 0; y < noise.getHeight(); y++){
-				noise.setColor(x,y,ofColor(ofNoise(x/200.,y/200.0) * 255, 255) );
-			}
-		}
-		noise.reloadTexture();
-	}
 }
 
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-    sysGui->addSlider("noiseZoom", 0.0, 1000, &noiseZoom);
-  //  sysGui->addSlider("NutrientLevel", 0.0, 1000, &nutrientLevel);
+//    sysGui->addSlider("Separate",0.0,200, &flockSeparate);
+//    sysGui->addSlider("Cohere",0.0,200, &flockCohere);
+//    sysGui->addSlider("Align",0.0,200, &flockAlign);
 }
 
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
@@ -52,11 +39,6 @@ void CloudsVisualSystemColony::selfUpdate()
     cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
     
-    int width = foodFbo.getWidth();
-    int height = foodFbo.getHeight();
-    
-
-    
     //  Update cells position and life
     //
     pMap.put(cells);
@@ -64,9 +46,10 @@ void CloudsVisualSystemColony::selfUpdate()
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
         iter.initialize();
             cells[i]->doScanAndFlock(iter);
-            cells[i]->doApplyBorders();
-            cells[i]->doFeedCellWidth( noise.getPixelsRef() );
+        cells[i]->doFeedCellNoise();
             cells[i]->update();
+            cells[i]->doApplyBorders(20);
+//        cells[i]->doWrapXY();
         
             if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
                 cellPtr newCell = cells[i]->doGetReplicated();
@@ -83,7 +66,6 @@ void CloudsVisualSystemColony::selfAutoMode(){}
 
 void CloudsVisualSystemColony::selfDrawBackground()
 {
-//    foodFbo.draw(0, 0);
     ofEnableSmoothing();
     ofEnableAlphaBlending();
     for (int i = 0 ; i < cells.size(); i++){
