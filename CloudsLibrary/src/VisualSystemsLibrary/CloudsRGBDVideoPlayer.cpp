@@ -238,6 +238,7 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	float duration = getPlayer().getDuration();
 #endif
 	
+	float handleLength = 1.1;
 	//cout << "position is " << position << " " << duration << " duration " << endl;
 	fadeInValue = MIN(position, 1.0);
 	fadeOutValue = ofMap(position, duration - 1.0, duration, 1.0, 0.0, true);

@@ -124,6 +124,7 @@ void CloudsVisualSystemOpenP5Fifteen::restart()
     if (!srcFbo.isAllocated() || srcFbo.getWidth() != width || srcFbo.getHeight() != height) {
         srcFbo.allocate(width, height);
     }
+	
     srcFbo.begin();
     {
         ofClear(0, 0);

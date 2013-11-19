@@ -26,12 +26,13 @@ void testApp::setup(){
 	storyEngine.printDecisions = false;
 	storyEngine.combinedClipsOnly = true;
 	storyEngine.setup();
+	sound.setup(storyEngine);
 	
 	player.setup();
 	player.setStoryEngine(storyEngine);
     player.setRun(run);
 	player.getClusterMap().buildEntireCluster(parser);
-	sound.setup(storyEngine);
+	
 
 	////////SEED WITH RANDOM CLIP
 //	srand( ofGetSeconds()*1000 );
@@ -113,41 +114,38 @@ void testApp::setup(){
     clipIds.push_back("Lauren - real and virtual 1");
     clipIds.push_back("JTNimoy - immersion");
   
-    
-
-	
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		
         if(clipIds[i] == "Karsten - immediate feedback"){
-			act->addVisualSystem( vectormath, lastClipEndTime + 5, 30); //start the preset 5 seconds in, play for 80 seconds
+//			act->addVisualSystem( vectormath, lastClipEndTime + 5, 30); //start the preset 5 seconds in, play for 80 seconds
 		}
         
         if(clipIds[i] == "Zach - Time slows down"){
-			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
+//			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
 		}
         
         if(clipIds[i] == "Golan - woah"){
-			act->addVisualSystem( blobby, lastClipEndTime+1, 7);
+//			act->addVisualSystem( blobby, lastClipEndTime+1, 7);
           //  act->addVisualSystem( pulse, lastClipEndTime+6, 5);
 		}
         
         if(clipIds[i] == "Vera - Playing with a system"){
-            act->addVisualSystem( maze, lastClipEndTime+1, 15);
+//            act->addVisualSystem( maze, lastClipEndTime+1, 15);
         }
     
         
         if(clipIds[i] == "Shiffman - how far could we get?"){
-          act->addVisualSystem( flock, lastClipEndTime+5, 20);
+//          act->addVisualSystem( flock, lastClipEndTime+5, 20);
         }
     
         if(clipIds[i] == "Kyle_CH - coding is 1"){
-            act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
+//            act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
-            act->addVisualSystem( neurons, lastClipEndTime+1, 15);
+//            act->addVisualSystem( neurons, lastClipEndTime+1, 15);
         }
         
         if(clipIds[i] == "JTNimoy - immersion"){
@@ -158,16 +156,22 @@ void testApp::setup(){
 	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( LIA,  0, 20 );
-	act->populateTime();
+	act->addVisualSystem( ocean_gmuk,  0, 20 );
+
+	storyEngine.setCustomAct(act);
 	
-	player.setMandatoryAct(act);
 	vector<CloudsClip> question;
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	
 	player.showIntro(question);
 	
-	//populate and run
-//	player.playAct(act);
 }
 
 //--------------------------------------------------------------

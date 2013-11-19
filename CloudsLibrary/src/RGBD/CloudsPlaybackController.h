@@ -131,7 +131,7 @@ class CloudsPlaybackController {
 	
 	//overrides whatever the story engine spits out so that we can force a certain sequence
 	//intended for distributing controlled demos
-	void setMandatoryAct(CloudsAct* act);
+//	void setMandatoryAct(CloudsAct* act);
 	
 	void playAct(CloudsAct* act);
 	CloudsVisualSystemClusterMap& getClusterMap();
@@ -206,12 +206,13 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-	CloudsAct* mandatoryAct;
+//	CloudsAct* mandatoryAct;
 //    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
-	CloudsIntroSequence introSequence;
+	//CloudsIntroSequence introSequence;
+	ofPtr<CloudsIntroSequence> introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	float cursorMovedTime;
@@ -231,6 +232,8 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+	
+	void clearAct();
 	
 	//if there is a system playing this wil be non-null
 	ofPtr<CloudsVisualSystem> nextSystem;
