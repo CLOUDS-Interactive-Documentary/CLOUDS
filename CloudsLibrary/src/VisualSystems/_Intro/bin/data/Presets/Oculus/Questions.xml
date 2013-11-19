@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>369.000000000</XPosition>
-    <YPosition>177.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>218.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Size</Name>
-    <Value>1.886699438</Value>
+    <Value>1.945812821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -49,4 +49,19 @@
     <Kind>4</Kind>
     <Name>Question Tint B</Name>
     <Value>0.522167206</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Question Font Size</Name>
+    <Value>12</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Line Length</Name>
+    <Value>300.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Question Line Spacing</Name>
+    <Value>1.000000000</Value>
 </Widget>

@@ -509,13 +509,13 @@ void CloudsVisualSystem::drawScene(){
 #ifdef OCULUS_RIFT
 	ofPushMatrix();
 	ofPushStyle();
-	ofNoFill();
-	ofSetColor(255, 50);
 	oculusRift.multBillboardMatrix();
-	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-	ofSetColor(255, 150);
+//	ofNoFill();
+//	ofSetColor(255, 50);
+//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+	ofSetColor(240,240,255, 175);
 	ofSetLineWidth(2);
-	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0-.5), -1, 1, .15, .1, true, ofxEasingQuad()));
+	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*2.0-.5), -1, 1, .15, .1, true, ofxEasingQuad()));
 	ofPopStyle();
 	ofPopMatrix();
 #endif
@@ -2914,8 +2914,8 @@ void CloudsVisualSystem::selfPostDraw(){
 	else{
 		//draws to viewport
 		CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+														   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
 	}
 }
 

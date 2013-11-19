@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Tunnel</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>589.000000000</XPosition>
-    <YPosition>155.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>241.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Width</Name>
-    <Value>29.802955627</Value>
+    <Value>42.315269470</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tunnel Height</Name>
-    <Value>15.985217094</Value>
+    <Value>19.655172348</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -38,10 +38,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Loose Rez X</Name>
-    <Value>12.758615494</Value>
+    <Value>15.788172722</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Loose Rez Z</Name>
-    <Value>50.000000000</Value>
+    <Value>40.246303558</Value>
 </Widget>
