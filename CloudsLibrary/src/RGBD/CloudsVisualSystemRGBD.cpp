@@ -12,6 +12,7 @@ string CloudsVisualSystemRGBD::getSystemName(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	currentFlowPosition = 0;
+	visualSystemFadeValue = 1.0;
 	
 	drawMesh = false;
 	
@@ -727,7 +728,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 //		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
 		rgbdShader.setUniform1f("fadeValue", 1.0);
 //		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
-		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut();
+		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue;
 		ofxEasingCubic cub;
 		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
 		rgbdShader.setUniform1f("eyeMultiplier", 0.0);
@@ -852,9 +853,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glPopAttrib();
 		ofPopMatrix();
 		ofPopStyle();
-		
 	}
-
 		
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
@@ -928,7 +927,8 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
-
+	
+	cloudsCamera.jumpToPosition();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

@@ -32,6 +32,8 @@ class CloudsRGBDCamera : public ofCamera {
 	void setTransitionStartNode( ofNode* _startNode );
 	void setTransitionTargetNode( ofNode* _targetNode );
 	void setTransitionPercent( float t );
+
+	void jumpToPosition();
 	
 	//up vector drift
 	ofVec3f startPos;

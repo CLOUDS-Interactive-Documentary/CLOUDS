@@ -19,6 +19,7 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 		}
 		if(e.message == "updated"){
 			crossfadeValue = e.value;
+			rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 		}
 		if(e.message == "ended")
 		{
@@ -49,6 +50,7 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 		}
 		if(e.message == "updated"){
 			crossfadeValue = e.value;
+			rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 		}
 		if(e.message == "ended")
 		{
@@ -279,6 +281,7 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 #endif
 	showingVisualSystem = true;
 	showingIntro = true;
+
 }
 
 //--------------------------------------------------------------------
@@ -496,8 +499,6 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	if(fadingIntro){
-		cout << "fading scratch to " << crossfadeValue << endl;
-		//scratchPlayer.setVolume(crossfadeValue);
 		scratchVolumeAttenuate = crossfadeValue;
 	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
@@ -698,6 +699,9 @@ void CloudsPlaybackController::hideVisualSystem()
 			CloudsClip& clip = q->clip;
 
 			introSequence->stopSystem();
+			rgbdVisualSystem->visualSystemFadeValue = 0.0;
+			rgbdVisualSystem->selfUpdate();
+			
 			storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
 			
 			fadingIntro = false;
