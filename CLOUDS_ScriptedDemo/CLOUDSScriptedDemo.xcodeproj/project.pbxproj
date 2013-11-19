@@ -3217,10 +3217,10 @@
 		E7D9D93D182B03A400AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7295FAF183B24A400C5207F /* gCell.cpp */,
 				E7295FB0183B24A400C5207F /* gCell.h */,
-				E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */,
+				E7295FAF183B24A400C5207F /* gCell.cpp */,
 				E7D9D941182B03A400AD56C1 /* CloudsVisualSystemColony.h */,
+				E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3561,8 +3561,8 @@
 		E7D9E6E7182B03BC00AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */,
 				E7D9E6E9182B03BC00AD56C1 /* CloudsVisualSystemNeurons.h */,
+				E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
