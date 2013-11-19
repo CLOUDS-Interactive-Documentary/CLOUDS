@@ -114,9 +114,6 @@ void testApp::setup(){
     clipIds.push_back("Lauren - real and virtual 1");
     clipIds.push_back("JTNimoy - immersion");
   
-    
-
-	
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
@@ -152,7 +149,7 @@ void testApp::setup(){
         }
         
         if(clipIds[i] == "JTNimoy - immersion"){
-//            act->addVisualSystem( ocean_regular, lastClipEndTime+4, 15);
+            act->addVisualSystem( ocean_regular, lastClipEndTime+4, 15);
         }
 		
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
@@ -175,8 +172,6 @@ void testApp::setup(){
 	
 	player.showIntro(question);
 	
-	//populate and run
-//	player.playAct(act);
 }
 
 //--------------------------------------------------------------

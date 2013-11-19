@@ -211,7 +211,8 @@ class CloudsPlaybackController {
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
-	CloudsIntroSequence introSequence;
+	//CloudsIntroSequence introSequence;
+	ofPtr<CloudsIntroSequence> introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	float cursorMovedTime;
@@ -231,6 +232,8 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+	
+	void clearAct();
 	
 	//if there is a system playing this wil be non-null
 	ofPtr<CloudsVisualSystem> nextSystem;

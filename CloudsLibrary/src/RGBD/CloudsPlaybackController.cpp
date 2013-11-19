@@ -85,9 +85,6 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 			//hide the visual system
 			hideVisualSystem();
 			
-			//fade in the RGBD
-			float duration = 1;
-			addControllerTween( fadeInRGBD, ofGetElapsedTimef(), duration, 0, 1, NULL );
 			
 		}
 	}
@@ -106,9 +103,7 @@ void CloudsPlaybackController::addControllerTween( string name, float startTime,
 CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
-	//now shared ptrs
-//	currentVisualSystem = NULL;
-//	nextSystem = NULL;
+
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
@@ -120,6 +115,23 @@ CloudsPlaybackController::CloudsPlaybackController(){
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
+void CloudsPlaybackController::clearAct(){
+	
+	if(currentAct != NULL){
+		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
+		for(int i = 0; i < currentPresets.size(); i++){
+			//flag them done!
+			if(currentPresets[i].system != NULL){
+				currentPresets[i].system->exit();
+			}
+			
+		}
+		currentAct->unregisterEvents(this);
+        currentAct->unregisterEvents(&introSequence->getSelectedRun());
+		delete currentAct;
+	}
+}
+
 //--------------------------------------------------------------------
 void CloudsPlaybackController::exit(ofEventArgs & args){
 	if(eventsRegistered){
@@ -129,15 +141,10 @@ void CloudsPlaybackController::exit(ofEventArgs & args){
 		ofUnregisterKeyEvents(this);
 		
 		ofRemoveListener(ofEvents().exit, this, &CloudsPlaybackController::exit);
-		
 	}
 	
-	if(currentAct != NULL){
-		currentAct->unregisterEvents(this);
-        currentAct->unregisterEvents(&introSequence.getSelectedRun());
-		delete currentAct;
-	}
-	
+	clearAct();
+
 	if(storyEngine != NULL){
 		ofRemoveListener(storyEngine->getEvents().actCreated, this, &CloudsPlaybackController::actCreated);
 	}
@@ -165,13 +172,16 @@ void CloudsPlaybackController::setup(){
 		ofRegisterKeyEvents(this);
 		ofRegisterMouseEvents(this);
 		rgbdVisualSystem = ofPtr<CloudsVisualSystemRGBD>( new CloudsVisualSystemRGBD() );
+		introSequence =ofPtr<CloudsIntroSequence>( new CloudsIntroSequence() );
+		
 		rgbdVisualSystem->setup();
 		rgbdVisualSystem->setDrawToScreen( false );
-		currentVisualSystem = rgbdVisualSystem;
 		
-		introSequence.setup();
-		//introSequence.setDrawToScreen(false);
+		introSequence->setup();
+		introSequence->setDrawToScreen(false);
+		currentVisualSystem = introSequence;
 		
+
 		clusterMapVisualSystem.setup();
 		//clusterMapVisualSystem.setDrawToScreen( false );
 		
@@ -243,52 +253,32 @@ void CloudsPlaybackController::setStoryEngine(CloudsStoryEngine& storyEngine){
     this->storyEngine = &storyEngine;
 }
 
+//we currently use introSequence.run() as a hack
 void CloudsPlaybackController::setRun(CloudsRun &run){
 //    this->currentRun = &run;
 }
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
 
-	introSequence.playSystem();
+	introSequence->playSystem();
 
-	introSequence.setStartQuestions(possibleStartQuestions);
+	introSequence->setStartQuestions(possibleStartQuestions);
 #ifdef OCULUS_RIFT
-	introSequence.loadPresetGUISFromName("Oculus");
+	introSequence->loadPresetGUISFromName("Oculus");
 #else
-	introSequence.loadPresetGUISFromName("TunnelWarp");
+	introSequence->loadPresetGUISFromName("TunnelWarp");
 #endif
-	
+	showingVisualSystem = true;
 	showingIntro = true;
 }
-
-////--------------------------------------------------------------------
-//void CloudsPlaybackController::setMandatoryAct(CloudsAct* act){
-//	mandatoryAct = act;
-//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
-	if(currentAct != NULL){
-		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
-		for(int i = 0; i < currentPresets.size(); i++){
-			//flag them done!
-			if(currentPresets[i].system != NULL){
-				currentPresets[i].system->exit();
-			}
-			
-		}
-		currentAct->unregisterEvents(this);
-        currentAct->unregisterEvents(&introSequence.getSelectedRun());
-		delete currentAct;
-	}
-//	
-//	if(mandatoryAct != NULL){
-//		currentAct = mandatoryAct;
-//	}
-//	else{
-		currentAct = act;
-//	}
+	clearAct();
+	
+	currentAct = act;
+
 	//TODO: show loading screen while we initialize all the visual systems
 	vector<CloudsVisualSystemPreset>& presets = currentAct->getAllVisualSystemPresets();
 	vector< ofPtr<CloudsVisualSystem> > systems = CloudsVisualSystemManager::InstantiateSystems(presets);
@@ -303,7 +293,7 @@ void CloudsPlaybackController::playAct(CloudsAct* act){
 	}
 	
 	currentAct->registerEvents(this);
-    currentAct->registerEvents(&introSequence.getSelectedRun());
+    currentAct->registerEvents(&introSequence->getSelectedRun());
 	currentAct->play();
 }
 
@@ -328,8 +318,8 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 	}
 
 	if(args.key == '\\'){
-		if(showingIntro){
-			introSequence.autoSelectQuestion();
+		if(currentVisualSystem == introSequence){
+			introSequence->autoSelectQuestion();
 		}
 	}
 	
@@ -390,30 +380,19 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 	////////////////////
 	//INTRO
 	if(showingIntro){
-		if(introSequence.isStartQuestionSelected()){
+		if(introSequence->isStartQuestionSelected()){
 			
-			CloudsQuestion* q = introSequence.getSelectedQuestion();
+			CloudsQuestion* q = introSequence->getSelectedQuestion();
 			CloudsClip& clip = q->clip;
-			
-			//ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
 			
 			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
-				introSequence.stopSystem();
-//				if(mandatoryAct != NULL){
-//					CloudsActEventArgs args(mandatoryAct);
-//					ofNotifyEvent(storyEngine->getEvents().actCreated, args);
-//				}
-//				else{
-					storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
-//				}
+				
+				float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
+				addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 			}
-			
-			scratchPlayer.stop();
-            scratchPlayer.unloadSound();
 
-			//TODO: Transition out of the act into the loading screen.
 		}
 	}
 	
@@ -429,37 +408,39 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			
 			showingClusterMap = false;
 			clusterMapVisualSystem.stopSystem();
-			storyEngine->buildAct(introSequence.getSelectedRun(), currentClip, currentTopic);
+			storyEngine->buildAct(introSequence->getSelectedRun(), currentClip, currentTopic);
 		}
 	}
+	
 	////////////////////
-	// RGBD INTERVIEW
-    else {
-		//updating tweens
-		float elapsedTime = ofGetElapsedTimef();
-		for (int i = controllerTweens.size() - 1; i >= 0; i--) {
-			controllerTweens[i].update( elapsedTime );
-			
-			if(controllerTweens[i].bEnded){
-				controllerTweens.erase(controllerTweens.begin() + i );
-			}
+	// RGBD SYSTEM
+	
+	//updating tweens
+	float elapsedTime = ofGetElapsedTimef();
+	for (int i = controllerTweens.size() - 1; i >= 0; i--) {
+		controllerTweens[i].update( elapsedTime );
+		
+		if(controllerTweens[i].bEnded){
+			controllerTweens.erase(controllerTweens.begin() + i );
 		}
-        
-        if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
-            CloudsQuestion* q = rgbdVisualSystem->getSelectedQuestion();
-            CloudsClip clip = q->clip;
-			string topic = q->topic;
-			
-			rgbdVisualSystem->clearQuestions();
-			
-            //cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
-			
-			rgbdVisualSystem->stopSystem();
-			introSequence.getSelectedRun().questionTopicHistory.insert(topic);
-			
-			storyEngine->buildAct(introSequence.getSelectedRun(), clip, topic);
-        }
 	}
+	
+	if(rgbdVisualSystem->isQuestionSelectedAndClipDone()){
+		CloudsQuestion* q = rgbdVisualSystem->getSelectedQuestion();
+		CloudsClip clip = q->clip;
+		string topic = q->topic;
+		
+		rgbdVisualSystem->clearQuestions();
+		
+		//cout << " *** SELECTED QUESTION Clip : "<<clip.name<<" Staring point for new act. Question: "<< q->question << " topic " << q->topic << endl;
+		
+		rgbdVisualSystem->stopSystem();
+		introSequence->getSelectedRun().questionTopicHistory.insert(topic);
+		storyEngine->buildAct(introSequence->getSelectedRun(), clip, topic);
+		
+		//TODO: transition to question selection
+	}
+
 	
 #ifdef OCULUS_RIFT
 	ofHideCursor();
@@ -489,16 +470,13 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	
-	if(!showingIntro && !showingClusterMap){
-		if(currentVisualSystem != NULL){
-			currentVisualSystem->selfPostDraw();
-		}
+	if(!showingClusterMap && currentVisualSystem != NULL){
+		currentVisualSystem->selfPostDraw();
 	}
 	
     ofPopStyle();
     glEnable( GL_DEPTH_TEST );
 	
-
 	if(currentAct != NULL){
 		if(ofGetKeyPressed('-')){
 			currentAct->getTimeline().enableEvents();
@@ -542,7 +520,6 @@ void CloudsPlaybackController::actCreated(CloudsActEventArgs& args){
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::actBegan(CloudsActEventArgs& args){
-	
 }
 
 //--------------------------------------------------------------------
@@ -552,7 +529,7 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
 	rgbdVisualSystem->stopSystem();
 	
-	clusterMapVisualSystem.setRun(introSequence.getSelectedRun());
+	clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
 	clusterMapVisualSystem.traverse();
 	
 	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
@@ -603,7 +580,8 @@ void CloudsPlaybackController::visualSystemEnded(CloudsVisualSystemEventArgs& ar
 void CloudsPlaybackController::questionAsked(CloudsQuestionEventArgs& args){
 	if(!showingVisualSystem){
 		//don't ask a topic that we've already seen
-		if(introSequence.getSelectedRun().questionTopicHistory.find(args.topic) == introSequence.getSelectedRun().questionTopicHistory.end()){
+		CloudsRun& run = introSequence->getSelectedRun();
+		if(run.questionTopicHistory.find(args.topic) == run.questionTopicHistory.end()){
 			rgbdVisualSystem->addQuestion(args.questionClip, args.topic, args.question);
 		}
 	}
@@ -655,7 +633,6 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 		hideVisualSystem();
 	}
 	
-	
 	rgbdVisualSystem->clearQuestions();
 	//store the preset name for loading later in playNextVisualSystem()
 	nextPresetName = nextVisualSystem.presetName;
@@ -666,8 +643,20 @@ void CloudsPlaybackController::showVisualSystem(CloudsVisualSystemPreset& nextVi
 	}
 	currentVisualSystemPreset = nextVisualSystem;
 	
-	//start the rgbd fade out. playNextVisualSystem() will be called once it's faded out
-	addControllerTween(fadeOutRGBD, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
+	//most of the time we will be looking at the RGBDVisualSystem
+	if(currentVisualSystem == rgbdVisualSystem){
+		//start the rgbd fade out. playNextVisualSystem() will be called once it's faded out
+		addControllerTween(fadeOutRGBD, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
+	}
+	//in the case of the intro we won't be, so just fade this system directly in
+	else{
+		playNextVisualSystem();
+
+		//fade in nextVisual system
+		float fadeInDuration = 1;
+		//fade in the next system
+		addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
+	}
 }
 
 //--------------------------------------------------------------------
@@ -675,12 +664,29 @@ void CloudsPlaybackController::hideVisualSystem()
 {
 	if(showingVisualSystem){
 		
-		nextSystem->stopSystem();
-//		nextSystem = NULL;
-		rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
-		rgbdVisualSystem->playSystem();
+		if(currentVisualSystem == introSequence){
+			CloudsQuestion* q = introSequence->getSelectedQuestion();
+			CloudsClip& clip = q->clip;
+
+			introSequence->stopSystem();
+			storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
+		
+			scratchPlayer.stop();
+			scratchPlayer.unloadSound();
+		}
+		else{
+			currentVisualSystem->stopSystem();
+			rgbdVisualSystem->playSystem();
+			rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+			currentVisualSystem = rgbdVisualSystem;
+			
+			//fade in the RGBD
+			float duration = 1;
+			addControllerTween( fadeInRGBD, ofGetElapsedTimef(), duration, 0, 1, NULL );
+		}
+		
 		showingVisualSystem = false;
-		currentVisualSystem = rgbdVisualSystem;
+		
 	}
 }
 
