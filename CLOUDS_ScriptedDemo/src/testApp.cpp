@@ -159,11 +159,15 @@ void testApp::setup(){
 	
 	//play the visual systems for some time
 	act->addVisualSystem( LIA,  0, 20 );
-	act->populateTime();
+//	act->populateTime();
 	
-	player.setMandatoryAct(act);
+	//player.setMandatoryAct(act);
+	//load the decoy act
+	storyEngine.setCustomAct(act);
+	
 	vector<CloudsClip> question;
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
+	
 	player.showIntro(question);
 	
 	//populate and run

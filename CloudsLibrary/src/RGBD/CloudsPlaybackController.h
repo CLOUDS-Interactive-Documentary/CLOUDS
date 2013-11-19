@@ -131,7 +131,7 @@ class CloudsPlaybackController {
 	
 	//overrides whatever the story engine spits out so that we can force a certain sequence
 	//intended for distributing controlled demos
-	void setMandatoryAct(CloudsAct* act);
+//	void setMandatoryAct(CloudsAct* act);
 	
 	void playAct(CloudsAct* act);
 	CloudsVisualSystemClusterMap& getClusterMap();
@@ -206,7 +206,7 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-	CloudsAct* mandatoryAct;
+//	CloudsAct* mandatoryAct;
 //    CloudsRun* currentRun;
 	
 	//RGBD STUFF

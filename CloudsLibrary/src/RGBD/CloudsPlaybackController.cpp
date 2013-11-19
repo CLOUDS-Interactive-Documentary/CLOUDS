@@ -106,16 +106,14 @@ void CloudsPlaybackController::addControllerTween( string name, float startTime,
 CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
+	//now shared ptrs
 //	currentVisualSystem = NULL;
+//	nextSystem = NULL;
 	showingVisualSystem = false;
 	currentAct = NULL;
-	mandatoryAct = NULL;
 	showingClusterMap = false;
 	
 	targetScratchVolume = currentVolume = 1.0;
-	
-	//JG cut out transition hack
-//	nextSystem = NULL;
 }
 
 //--------------------------------------------------------------------
@@ -263,10 +261,10 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 	showingIntro = true;
 }
 
-//--------------------------------------------------------------------
-void CloudsPlaybackController::setMandatoryAct(CloudsAct* act){
-	mandatoryAct = act;
-}
+////--------------------------------------------------------------------
+//void CloudsPlaybackController::setMandatoryAct(CloudsAct* act){
+//	mandatoryAct = act;
+//}
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
@@ -403,13 +401,13 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
 				introSequence.stopSystem();
-				if(mandatoryAct != NULL){
-					CloudsActEventArgs args(mandatoryAct);
-					ofNotifyEvent(storyEngine->getEvents().actCreated, args);
-				}
-				else{
+//				if(mandatoryAct != NULL){
+//					CloudsActEventArgs args(mandatoryAct);
+//					ofNotifyEvent(storyEngine->getEvents().actCreated, args);
+//				}
+//				else{
 					storyEngine->buildAct(introSequence.getSelectedRun(), clip, q->topic );
-				}
+//				}
 			}
 			
 			scratchPlayer.stop();

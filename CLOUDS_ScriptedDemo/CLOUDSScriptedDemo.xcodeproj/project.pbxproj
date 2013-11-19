@@ -74,6 +74,8 @@
 		E7156FA418106F1B00410646 /* ofxBox2dPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5518106F1B00410646 /* ofxBox2dPolygon.cpp */; };
 		E7156FA518106F1B00410646 /* ofxBox2dRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7156F5818106F1B00410646 /* ofxBox2dRect.cpp */; };
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
+		E7295FB1183B24A400C5207F /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7295FAF183B24A400C5207F /* gCell.cpp */; };
+		E7295FB2183B24A400C5207F /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7295FAF183B24A400C5207F /* gCell.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
@@ -197,7 +199,6 @@
 		E7D9F5FD182B03CE00AD56C1 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */; };
 		E7D9F5FE182B03CE00AD56C1 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */; };
 		E7D9F605182B03CE00AD56C1 /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */; };
-		E7D9F607182B03CE00AD56C1 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D93E182B03A400AD56C1 /* cCell.cpp */; };
 		E7D9F608182B03CE00AD56C1 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */; };
 		E7D9F609182B03CE00AD56C1 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */; };
 		E7D9F60A182B03CE00AD56C1 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A6182B03A400AD56C1 /* ParticleConnection.cpp */; };
@@ -520,7 +521,6 @@
 		E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */; };
 		E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */; };
 		E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */; };
-		E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D93E182B03A400AD56C1 /* cCell.cpp */; };
 		E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */; };
 		E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */; };
 		E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A6182B03A400AD56C1 /* ParticleConnection.cpp */; };
@@ -870,6 +870,8 @@
 		E7156F5B18106F1B00410646 /* ofxBox2dUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBox2dUtils.h; sourceTree = "<group>"; };
 		E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
 		E7176E2A17D3C07500C8DC38 /* CloudsRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRun.h; sourceTree = "<group>"; };
+		E7295FAF183B24A400C5207F /* gCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gCell.cpp; sourceTree = "<group>"; };
+		E7295FB0183B24A400C5207F /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
 		E730A4BE17DCC5520088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
 		E730A4BF17DCC5520088335A /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
 		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -1223,8 +1225,6 @@
 		E7D9D848182B03A300AD56C1 /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPathCamera.h; sourceTree = "<group>"; };
 		E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
 		E7D9D914182B03A400AD56C1 /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
-		E7D9D93E182B03A400AD56C1 /* cCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCell.cpp; sourceTree = "<group>"; };
-		E7D9D93F182B03A400AD56C1 /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
 		E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		E7D9D941182B03A400AD56C1 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
@@ -3217,8 +3217,8 @@
 		E7D9D93D182B03A400AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9D93E182B03A400AD56C1 /* cCell.cpp */,
-				E7D9D93F182B03A400AD56C1 /* cCell.h */,
+				E7295FAF183B24A400C5207F /* gCell.cpp */,
+				E7295FB0183B24A400C5207F /* gCell.h */,
 				E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */,
 				E7D9D941182B03A400AD56C1 /* CloudsVisualSystemColony.h */,
 			);
@@ -5129,7 +5129,6 @@
 				E7D9F5FD182B03CE00AD56C1 /* CloudsOrthoCamera.cpp in Sources */,
 				E7D9F5FE182B03CE00AD56C1 /* CloudsPathCamera.cpp in Sources */,
 				E7D9F605182B03CE00AD56C1 /* CloudsVisualSystemCities.cpp in Sources */,
-				E7D9F607182B03CE00AD56C1 /* cCell.cpp in Sources */,
 				E7D9F608182B03CE00AD56C1 /* CloudsVisualSystemColony.cpp in Sources */,
 				E7D9F609182B03CE00AD56C1 /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7D9F60A182B03CE00AD56C1 /* ParticleConnection.cpp in Sources */,
@@ -5269,6 +5268,7 @@
 				E7DCB34C1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */,
 				E7DCB34E1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
 				E7DCB3501839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
+				E7295FB1183B24A400C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5453,7 +5453,6 @@
 				E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */,
 				E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */,
 				E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */,
-				E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */,
 				E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */,
 				E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */,
@@ -5594,6 +5593,7 @@
 				E7DCB34D1839E0CD00A70EAA /* CloudsVisualSystemMandala.cpp in Sources */,
 				E7DCB34F1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
 				E7DCB3511839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
+				E7295FB2183B24A400C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
