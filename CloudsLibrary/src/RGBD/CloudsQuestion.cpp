@@ -38,7 +38,11 @@ CloudsQuestion::CloudsQuestion(){
 	
 	expandPercent = .1;
 	selectPercent = 0;
+#ifdef OCULUS_RIFT
 	enlarge = .2;
+#else
+	enlarge = 0;
+#endif
 	
 }
 
