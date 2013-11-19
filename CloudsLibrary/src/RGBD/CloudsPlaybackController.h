@@ -232,7 +232,7 @@ class CloudsPlaybackController {
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
-	
+	bool fadingIntro;
 	void clearAct();
 	
 	//if there is a system playing this wil be non-null

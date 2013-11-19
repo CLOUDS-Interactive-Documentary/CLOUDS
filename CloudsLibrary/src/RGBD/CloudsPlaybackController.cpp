@@ -103,7 +103,8 @@ void CloudsPlaybackController::addControllerTween( string name, float startTime,
 CloudsPlaybackController::CloudsPlaybackController(){
 	storyEngine = NULL;
 	eventsRegistered = false;
-
+	fadingIntro = false;
+	
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
@@ -388,7 +389,7 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 			map<string,string> questionsAndTopics = clip.getAllQuestionTopicPairs();
 			if(questionsAndTopics.size() > 0){
 				showingIntro = false;				
-				
+				fadingIntro = true;
 				float fadeDuration = 1; //(args.preset.outroDuration != 0)? args.preset.outroDuration : 1;
 				addControllerTween( fadeOutVisualSystem, ofGetElapsedTimef(), fadeDuration, 1, 0, NULL );
 			}
@@ -443,7 +444,12 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 
 	
 #ifdef OCULUS_RIFT
-	ofHideCursor();
+	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
 #else
 	//TODO replace with cool cursor animations
 	if(ofGetElapsedTimef() - cursorMovedTime < 1){
@@ -469,7 +475,9 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	float mixVal = ofClamp( crossfadeValue * 255, 0, 255);
 	
 	ofSetColor( 255, 255, 255, mixVal );
-	
+	if(fadingIntro){
+		scratchPlayer.setVolume(crossfadeValue);
+	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
 		currentVisualSystem->selfPostDraw();
 	}
@@ -546,8 +554,7 @@ void CloudsPlaybackController::clipBegan(CloudsClipEventArgs& args){
 //--------------------------------------------------------------------
 void CloudsPlaybackController::visualSystemBegan(CloudsVisualSystemEventArgs& args)
 {
-	if(!showingVisualSystem)
-	{
+	if(!showingVisualSystem){
 		showVisualSystem( args.preset, fadeDuration );
 	}
 	else{
@@ -670,14 +677,19 @@ void CloudsPlaybackController::hideVisualSystem()
 
 			introSequence->stopSystem();
 			storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
-		
+			
+			fadingIntro = false;
 			scratchPlayer.stop();
 			scratchPlayer.unloadSound();
 		}
 		else{
 			currentVisualSystem->stopSystem();
 			rgbdVisualSystem->playSystem();
+#ifdef OCULUS_RIFT
+			rgbdVisualSystem->loadPresetGUISFromName("RGBD_Oculus");
+#else
 			rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
+#endif
 			currentVisualSystem = rgbdVisualSystem;
 			
 			//fade in the RGBD

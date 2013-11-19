@@ -7,16 +7,21 @@
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>Oculus</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>OculusTunnel</Name>
+    <Name>RGBDMain</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>TunnelWarp</Name>
+    <Name>RGBDnew</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBDOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RGBD_Oculus</Name>
     <Value>1</Value>
 </Widget>
