@@ -24,17 +24,17 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     age = 0;
     nutrientLevel = 50;
     deathThreshold = .002;
-    maxSpeed = 0.8; //TODO: Tweak
-    maxForce = 0.8; //TODO: Tweak
+    maxSpeed = 1.4; //TODO: Tweak
+    maxForce = 1.4; //TODO: Tweak
     maxSize = ofRandom(5, 15);
-    lifespan = ofRandom(60, 120); //TODO: Tweak
-    fertile = ofRandomuf() > .3;
+    lifespan = ofRandom(40, 280); //TODO: Tweak
+    fertile = ofRandomuf() > .5;
     dead = false;
     hasReplicated = false;
-    fertilityAge = ofRandom(lifespan* 11./12., lifespan);
+    fertilityAge = ofRandom(lifespan* 9./13., lifespan);
     
     //Private stuff
-    separationDist = 20;
+    separationDist = 25.0;
     alignmentDist = 50.0;
 }
 
@@ -47,7 +47,7 @@ void colonyCell::update()
     
     //housekeeping
     acceleration *= 0;
-    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/5000.0); }
+    if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/2500.0); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
     if (age > lifespan || hasReplicated){ cellSize -= .03;}
     if (cellSize <= deathThreshold){ dead = true; }
@@ -58,7 +58,7 @@ void colonyCell::draw()
 {
     ofPushStyle();
 
-    ofSetColor(255, 255, 255, 80);
+    ofSetColor(255, 255, 255, 60);
 //    ofSphere(position.x, position.y, 500.*(cos(position.x/500.0) + sin(position.y/500.0)), MIN(maxSize, cellSize));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
     ofPopStyle();
@@ -80,7 +80,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& n_iter){
         ofPoint diff = position - ((**n_iter).getPosition());
         float dd = diff.lengthSquared();
         if ((dd > 0) && (dd < ss)) {
-            separate += diff/dd;
+            separate += diff/dd; //TODO: make the transition softer
         }
         if ((dd > 0) && (dd < aa)){
             align  += n_iter->get()->getVelocity();
@@ -92,16 +92,16 @@ void colonyCell::doScanAndFlock(neighbor_iterator& n_iter){
     cohere /= count;
     align /=  count;
     //TODO: Remove magic numbers
-    ofVec3f steer = (   separate.normalized()   * 75
-                     +  cohere.normalized()     * 5
-                     +  align.normalized()      * 5
+    ofVec3f steer = (   separate.normalized()   * 12
+                     +  cohere.normalized()     * 6.5
+                     +  align.normalized()      * 1.15
                      ) * maxSpeed;  //TODO: Why - velocity? //- velocity;
     steer.limit(maxSpeed);
     
     doApplyForce(steer);
     // Gaussian for birth
-    float f = count - 1; //FIXME: magic number
-    replicationChances = exp(-f*f);
+    float f = count - 30; //FIXME: magic number
+    replicationChances = exp(-f*f/200);
 }
 
 void colonyCell::doFeedCellWidth(ofPixels &_pixels){
@@ -110,54 +110,55 @@ void colonyCell::doFeedCellWidth(ofPixels &_pixels){
     lastFeedValue = _pixels.getColor(safeX, safeY).getBrightness();
 }
 
-
-void colonyCell::doApplyBorders()
-{
-    //FIXME: Oh oh FIXME, FIXME if you think that
-    //       you've leared any math before
-    
-    //TODO: Remove magic numbers
-    
-    if (position.x >= ofGetWidth() - 30) {
-        float diff = position.x - ofGetWidth();
-        velocity.x += diff;
-    }
-    
-    if (position.x <= 30) {
-        float diff = position.x - 0;
-        velocity.x -= diff;
-    }
-    
-    if (position.y >= ofGetHeight() - 30) {
-        float diff = position.y - ofGetHeight();
-        velocity.y += diff;
-    }
-    
-    if (position.y <=  30) {
-        float diff = position.y - 0;
-        velocity.y -= diff;
-    }
-
+void colonyCell::doFeedCellNoise(){
+    lastFeedValue = ofNoise(position.x, position.y, position.z)*255;
 }
-const ofPoint colonyCell::getVelocity() const { return velocity; }
-const ofPoint colonyCell::getPosition() const { return position; }
-float colonyCell::getSize(){ return cellSize; }
 
+void colonyCell::doWrapXY(){
+    if (position.x > ofGetWidth() - 1) {position.x -= (ofGetWidth() - 1);}
+    if (position.x < 1) {position.x += (ofGetWidth() - 1);}
+    if (position.y > ofGetHeight() - 1) { position.y -= (ofGetHeight() - 1);}
+    if (position.y < 1) { position.y += (ofGetHeight() - 1); }
+}
+
+
+void colonyCell::doApplyBorders(float padding)
+{
+    if (position.x >= ofGetWidth() - padding) {
+        if ((position + velocity).x > position.x){
+            velocity *= ofPoint(-1,1,1);
+        }}
+    if (position.x <= padding) {
+        if ((position + velocity).x < position.x){
+            velocity *= ofPoint(-1,1,1);
+        }}
+    if (position.y >= ofGetHeight() - padding) {
+        if ((position + velocity).y > position.y){
+            velocity *= ofPoint(1,-1,1);
+        }}
+    if (position.y <=  padding) {
+        float diff = position.y - 0;
+        if ((position + velocity).y < position.y){
+            velocity *= ofPoint(1,-1,1);
+        }}
+}
 
 cellPtr colonyCell::doGetReplicated()
 {
     hasReplicated = true;
-    cellSize *= 0.2; //TODO: Check if this really need to shrink to 0.5
+    cellSize *= 0.5; //TODO: Remove magic number
     return cellPtr(new colonyCell(getPosition()));
 }
 
+const ofPoint colonyCell::getVelocity() const { return velocity; }
+const ofPoint colonyCell::getPosition() const { return position; }
 
-
+float colonyCell::getSize(){ return cellSize; }
 bool colonyCell::isInsideBoard(ofPoint p){ return (ofInRange(p.x, 0, ofGetWidth()) && ofInRange(p.y, 0, ofGetHeight())); }
 bool colonyCell::isFertile(){ return fertile; }
 bool colonyCell::isReadyToReplicate()
 {
-    return (lastFeedValue > nutrientLevel) && (age > fertilityAge) && (ofRandom(1.0) < replicationChances);
+    return (lastFeedValue > nutrientLevel) && (age > fertilityAge) && (ofRandom(0.1) < replicationChances);
 }
 bool colonyCell::isDead(){ return dead; }
 void colonyCell::doSetPosition(const ofPoint& p){ position = p; }

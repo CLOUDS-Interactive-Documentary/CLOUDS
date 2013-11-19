@@ -55,9 +55,8 @@ public:
     
 private:
     
-    ofFbo       foodFbo;
+    ofVbo   vbo;
     ofShader    noiseShader;
-	ofImage noise;
     
     colonyPartitionMap pMap;
     

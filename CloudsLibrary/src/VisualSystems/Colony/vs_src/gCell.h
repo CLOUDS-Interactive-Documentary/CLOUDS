@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIV 15
+#define MAP_SUBDIV 10
 
 #pragma once
 
@@ -29,13 +29,16 @@ public:
     ~coord2i(){}
     coord2i(int x_, int y_): x(x_), y(y_){};
     coord2i(ofPoint const& p):
+        //FIXME: GetWidth and GetHeight are called millions of time a second. cache;
         x(int(ofClamp(p.x * MAP_SUBDIV / ofGetWidth() , 0, MAP_SUBDIV - 0.1))),
-        y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {} //FIXME: GetWidth and GetHeight are called millions of time a second. cache.
+        y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {}
     bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
     bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
     bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
     int ordered() const { return y * MAP_SUBDIV + x;}
 };
+
+
 
 
 
@@ -53,9 +56,11 @@ public:
     void draw();
     void doApplyForce(const ofPoint& _force );
     void doScanAndFlock(neighbor_iterator& iter);
-    void doApplyBorders();
+    void doApplyBorders(float padding);
+    void doWrapXY();
     
     void doFeedCellWidth( ofPixels &_pixels);
+    void doFeedCellNoise();
     
     bool isFertile(); //TODO: consider "how fertile" and probablistics
     bool isDead();
@@ -81,47 +86,42 @@ private:
  */
 
 class neighbor_iterator : private vector<cellPtr>::const_iterator{
-    
     typedef const vector <cellPtr>* vecPtr;
     vector<vecPtr> v;
     int position, meta;
     
 public:
-    
     neighbor_iterator(){ initialize(); }
     neighbor_iterator(const neighbor_iterator& other) : v(other.v){ initialize(); }
     ~neighbor_iterator(){ v.clear(); }
-    
     void add(const std::vector<cellPtr>& _v){
         if (!_v.empty()){ v.push_back( &_v ); /* Add as POINTER */}
     }
-    
     void initialize(){
         meta = 0;
         position = 0;
     }
-    
     void increment() {
         if (++position >= v[meta]->size()){ //not optimized
             if (++meta < v.size()){
                 position = 0;
-            }
-        }
-    }
-    
-    neighbor_iterator& operator=(const neighbor_iterator& other)
-    {
+            }}}
+    neighbor_iterator& operator=(const neighbor_iterator& other){
         v = vector<vecPtr>(other.v);
         initialize();
     }
     bool hasNext(){ return ((meta < v.size())); }
     reference operator*() const { return (*(v[meta]))[position]; }
     pointer operator->()  const { return &((*(v[meta]))[position]); }
+    friend bool operator!=(const neighbor_iterator& a, const neighbor_iterator& b) { return !(a==b); }
     friend bool operator==(const neighbor_iterator& a, const neighbor_iterator& b){
         return ((a.v == b.v) && (a.position == b.position) && (a.meta == b.meta));
     }
-    friend bool operator!=(const neighbor_iterator& a, const neighbor_iterator& b) { return !(a==b); }
 };
+
+
+
+
 
 
 
@@ -136,7 +136,6 @@ class colonyPartitionMap {
     map<coord2i, neighbor_iterator> neighbors;
     
 public:
-    
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
         for (int i = 0 ; i < MAP_SUBDIV ; ++i){
@@ -144,38 +143,23 @@ public:
                 vector<cellPtr> v;
                 coord2i c = coord2i(i, j);
                 partitions.insert(value_type(c, v));
-            }
-        }
-    }
-
+            }}}
     ~colonyPartitionMap(){
         clear();
         partitions.clear();
         neighbors.clear();
     }
-    
     void clear(){
         for (iter_type iter = partitions.begin(); iter != partitions.end(); ++iter) {
             iter->second.clear();
         }
         neighbors.clear();
     }
-    
-    void put(const cellPtr& cp){
-        coord2i coord = coord2i(cp -> getPosition());
-        partitions.at(coord).push_back(cp); //FIXME: Has roundoff errors
-    }
-    
+    void put(const cellPtr& cp){ partitions.at(cp -> getPosition()).push_back(cp); }
     void put(const vector<cellPtr>& vec){
         for (int i = 0 ; i < vec.size() ; i++){
             put(vec[i]);
-        }
-//        while(from!=to){
-//            put(*from);
-//            from++;
-//        }
-    }
-    
+        }}
     neighbor_iterator getNeighbours(const coord2i& c)
     {
         std::map<coord2i, neighbor_iterator>::iterator k = neighbors.find(c);
@@ -183,19 +167,18 @@ public:
             k->second.initialize();
             return k->second;
         } else {
-            neighbor_iterator iter = neighbor_iterator(); //FIXME: Might throw error
+            neighbor_iterator iter = neighbor_iterator();
             for (int i = MAX((c.x - 1),0) ; i <= MIN((c.x +1), (MAP_SUBDIV - 1)); i++){
                 for (int j = MAX((c.y - 1),0) ; j <= MIN((c.y +1), (MAP_SUBDIV - 1)); j++){
-                    iter.add(partitions.at(coord2i(i,j))); //This *should* be 'at' because all vectors have been initialized
+                    //This *should* be 'at' because all vectors have been initialized
+                    iter.add(partitions.at(coord2i(i,j)));
                     }}
             iter.initialize();
             neighbors.insert(std::pair<coord2i, neighbor_iterator>(c, iter));
             return iter;
-        }
-    }
+        }}
     
 private:
-
     colonyPartitionMap(colonyPartitionMap const& c);//unimplemented; singleton
     void operator=(colonyPartitionMap const& c);    //unimplemented; singleton
 };
