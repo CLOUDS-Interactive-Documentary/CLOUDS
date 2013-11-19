@@ -32,11 +32,12 @@ public:
         if(pt) pt->updateForNewPosition (position());
     };
     
-    void draw(){
-        drawBasic3dSphericalVehicle (*this, color);
-        if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail();
-    }
+    // Use parent method.
+//    void draw(){
+//        drawBasic3dSphericalVehicle (*this, color);
+//        if(bDrawAnnotations) annotationVelocityAcceleration();
+//        if(bDrawTrail) drawTrail();
+//    }
     
     Vec3 getSteeringForce(const float elapsedTime){
         
@@ -83,11 +84,12 @@ public:
         predators = NULL;
     };
     
-    void draw(){
-        drawBasic3dSphericalVehicle (*this, color);
-        if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail();
-    }
+    // Use parent method.
+//    void draw(){
+//        drawBasic3dSphericalVehicle (*this, color);
+//        if(bDrawAnnotations) annotationVelocityAcceleration();
+//        if(bDrawTrail) drawTrail();
+//    }
     
     void reset(){
         // reset the vehicle
