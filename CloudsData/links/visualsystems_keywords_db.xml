@@ -2105,6 +2105,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="MazeGenerator_FlyOver_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="MazeGenerator_JM_flyover">
     <keywords></keywords>
     <suppressions></suppressions>

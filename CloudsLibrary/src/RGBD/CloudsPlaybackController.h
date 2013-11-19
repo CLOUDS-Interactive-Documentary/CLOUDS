@@ -129,7 +129,7 @@ class CloudsPlaybackController {
 	
 	void startScratchTracks();
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
-	
+
 	//overrides whatever the story engine spits out so that we can force a certain sequence
 	//intended for distributing controlled demos
 //	void setMandatoryAct(CloudsAct* act);
@@ -193,6 +193,7 @@ class CloudsPlaybackController {
 	ofSoundPlayer scratchPlayer;
 	int currentScratch;
 	float currentVolume;
+	float scratchVolumeAttenuate;
 	float targetScratchVolume;
 	void setUseScratch(bool useScratch);
 	ofPtr<CloudsVisualSystem> currentVisualSystem;
@@ -217,6 +218,7 @@ class CloudsPlaybackController {
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	float cursorMovedTime;
+	bool showingCursor;
 	
 	string combinedMoviesFolder;
 	string currentTopic;

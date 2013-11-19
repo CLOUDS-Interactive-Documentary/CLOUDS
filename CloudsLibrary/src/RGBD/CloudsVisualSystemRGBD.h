@@ -54,6 +54,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	float visualSystemFadeValue;
 	
 	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){

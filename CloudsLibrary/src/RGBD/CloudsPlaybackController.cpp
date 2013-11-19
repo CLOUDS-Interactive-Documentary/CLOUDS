@@ -13,11 +13,13 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 		{
 			
 			ofLog(OF_LOG_VERBOSE) << "RGBD fading out: " << ofGetElapsedTimef();
-			rgbdVisualSystem->transitionOut( currentVisualSystem->getTransitionType(), e.span );
+//JG TEMP HACKING OUT TRANSITIONS
+//			rgbdVisualSystem->transitionOut( currentVisualSystem->getTransitionType(), e.span );
 			rgbdVisualSystem->selfUpdate();
 		}
 		if(e.message == "updated"){
 			crossfadeValue = e.value;
+			rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 		}
 		if(e.message == "ended")
 		{
@@ -41,12 +43,14 @@ void CloudsPlaybackController::CloudsPlaybackControllerEventHandler( CloudsPlayb
 			ofLog(OF_LOG_VERBOSE) << "RGBD FADING IN: " << ofGetElapsedTimef() ;
 			
 			// play & transition in the RGBD so that we see as we fade in
-			rgbdVisualSystem->transitionIn( currentVisualSystem->getTransitionType(), e.span );
+//JG TEMP HACKING OUT TRANSITIONS
+//			rgbdVisualSystem->transitionIn( currentVisualSystem->getTransitionType(), e.span );
 			rgbdVisualSystem->playSystem();
 			rgbdVisualSystem->selfUpdate();
 		}
 		if(e.message == "updated"){
 			crossfadeValue = e.value;
+			rgbdVisualSystem->visualSystemFadeValue = crossfadeValue;
 		}
 		if(e.message == "ended")
 		{
@@ -108,7 +112,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
-	
+	showingCursor = false;
 	targetScratchVolume = currentVolume = 1.0;
 }
 
@@ -201,6 +205,8 @@ void CloudsPlaybackController::setup(){
 		
 	}
 	
+	ofHideCursor();
+	
 	CloudsPlaybackControllerTween t;
 	t.setup("testTween", ofGetElapsedTimef(), 5, 0, 100);
 	controllerTweens.push_back( t );
@@ -263,7 +269,8 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 }
 
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
-
+	scratchVolumeAttenuate = 1.0;
+	
 	introSequence->playSystem();
 
 	introSequence->setStartQuestions(possibleStartQuestions);
@@ -274,6 +281,7 @@ void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuesti
 #endif
 	showingVisualSystem = true;
 	showingIntro = true;
+
 }
 
 //--------------------------------------------------------------------
@@ -321,6 +329,16 @@ void CloudsPlaybackController::keyPressed(ofKeyEventArgs & args){
 		}
 	}
 
+	if(args.key == 'C'){
+		if(showingCursor){
+			ofHideCursor();
+		}
+		else{
+			ofShowCursor();
+		}
+		showingCursor = !showingCursor;
+	}
+	
 	if(args.key == '\\'){
 		if(currentVisualSystem == introSequence){
 			introSequence->autoSelectQuestion();
@@ -379,7 +397,7 @@ void CloudsPlaybackController::mouseReleased(ofMouseEventArgs & args){
 void CloudsPlaybackController::update(ofEventArgs & args){
 		
 	currentVolume += (targetScratchVolume - currentVolume) * .05;
-	scratchPlayer.setVolume( currentVolume );
+	scratchPlayer.setVolume( currentVolume * scratchVolumeAttenuate );
 	
 	////////////////////
 	//INTRO
@@ -445,25 +463,25 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO: transition to question selection
 	}
 
-#ifdef OCULUS_RIFT
-	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
-		//		cout << "showing cursor for system " << getSystemName() << endl;
-		ofShowCursor();
-	}
-	else{
-		//		cout << "hiding cursor for system " << getSystemName() << endl;
-		ofHideCursor();
-	}
-#else
-	//TODO replace with cool cursor animations
-	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
-#endif
-	
+//#ifdef OCULUS_RIFT
+//	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
+//		//		cout << "showing cursor for system " << getSystemName() << endl;
+//		ofShowCursor();
+//	}
+//	else{
+//		//		cout << "hiding cursor for system " << getSystemName() << endl;
+//		ofHideCursor();
+//	}
+//#else
+//	//TODO replace with cool cursor animations
+//	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
+//		ofShowCursor();
+//	}
+//	else{
+//		ofHideCursor();
+//	}
+//#endif
+//	
 }
 
 //--------------------------------------------------------------------
@@ -481,7 +499,7 @@ void CloudsPlaybackController::draw(ofEventArgs & args){
 	
 	ofSetColor( 255, 255, 255, mixVal );
 	if(fadingIntro){
-//		scratchPlayer.setVolume(crossfadeValue);
+		scratchVolumeAttenuate = crossfadeValue;
 	}
 	if(!showingClusterMap && currentVisualSystem != NULL){
 		currentVisualSystem->selfPostDraw();
@@ -681,6 +699,9 @@ void CloudsPlaybackController::hideVisualSystem()
 			CloudsClip& clip = q->clip;
 
 			introSequence->stopSystem();
+			rgbdVisualSystem->visualSystemFadeValue = 0.0;
+			rgbdVisualSystem->selfUpdate();
+			
 			storyEngine->buildAct(introSequence->getSelectedRun(), clip, q->topic );
 			
 			fadingIntro = false;
@@ -689,12 +710,12 @@ void CloudsPlaybackController::hideVisualSystem()
 		}
 		else{
 			currentVisualSystem->stopSystem();
-			rgbdVisualSystem->playSystem();
 #ifdef OCULUS_RIFT
 			rgbdVisualSystem->loadPresetGUISFromName("RGBD_Oculus");
 #else
 			rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
 #endif
+			rgbdVisualSystem->playSystem();
 			currentVisualSystem = rgbdVisualSystem;
 			
 			//fade in the RGBD
