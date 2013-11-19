@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		178C735618355CE3005EB27F /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 178C735418355CE3005EB27F /* gCell.cpp */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -139,9 +138,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		17638F4F183941530057E85B /* CloudsGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
-		178C735418355CE3005EB27F /* gCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gCell.cpp; sourceTree = "<group>"; };
-		178C735518355CE3005EB27F /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -1301,8 +1297,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Colony" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1361,7 +1355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				178C735618355CE3005EB27F /* gCell.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
@@ -1615,7 +1608,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = ColonyDebug;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1713,7 +1706,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = Colony;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
