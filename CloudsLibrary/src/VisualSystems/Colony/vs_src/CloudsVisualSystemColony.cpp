@@ -14,7 +14,7 @@ string CloudsVisualSystemColony::getSystemName()
 }
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 100; //FIXME : Magic number
+    numInitialCells = 50; //FIXME : Magic number
     //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
 }
 void CloudsVisualSystemColony::selfSetupSystemGui()
