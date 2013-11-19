@@ -78,6 +78,8 @@
 		E7295FB2183B24A400C5207F /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7295FAF183B24A400C5207F /* gCell.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
+		E738FF6D183BE8C10018AB96 /* question.frag in Sources */ = {isa = PBXBuildFile; fileRef = E738FF6B183BE8C10018AB96 /* question.frag */; };
+		E738FF6E183BE8C10018AB96 /* question.vert in Sources */ = {isa = PBXBuildFile; fileRef = E738FF6C183BE8C10018AB96 /* question.vert */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -877,6 +879,8 @@
 		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E730A4C217DCC5520088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E730A4C317DCC5520088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E738FF6B183BE8C10018AB96 /* question.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.frag; path = ../CloudsData/shaders/question.frag; sourceTree = "<group>"; };
+		E738FF6C183BE8C10018AB96 /* question.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = question.vert; path = ../CloudsData/shaders/question.vert; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -2272,6 +2276,8 @@
 		E745F6C61720FE0E00B86D7E /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E738FF6B183BE8C10018AB96 /* question.frag */,
+				E738FF6C183BE8C10018AB96 /* question.vert */,
 				E745F6CA1720FE0E00B86D7E /* src */,
 			);
 			name = CloudsLibrary;
@@ -5269,6 +5275,8 @@
 				E7DCB34E1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
 				E7DCB3501839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
 				E7295FB1183B24A400C5207F /* gCell.cpp in Sources */,
+				E738FF6D183BE8C10018AB96 /* question.frag in Sources */,
+				E738FF6E183BE8C10018AB96 /* question.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

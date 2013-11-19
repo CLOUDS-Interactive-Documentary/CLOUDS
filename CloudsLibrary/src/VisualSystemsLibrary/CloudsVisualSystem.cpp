@@ -374,22 +374,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
 	
-#ifdef OCULUS_RIFT
-	if(bShowTimeline){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
-#else
-	//TODO replace with cool cursor animations
-	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
-		ofShowCursor();
-	}
-	else{
-		ofHideCursor();
-	}
-#endif
+
 	
     if(bRenderSystem)
     {
@@ -401,9 +386,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackgroundGradient();
             getOculusRift().endBackground();
 
-			getOculusRift().beginOverlay(-230, 320,240);
-			selfDrawOverlay();
-			getOculusRift().endOverlay();
+//			getOculusRift().beginOverlay(-230, 320,240);
+//			selfDrawOverlay();
+//			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();

@@ -18,6 +18,7 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	currentFontSize = -1;
 	currentFontExtrusion = -1;
 	startedOnclick = false;
+	caughtQuestion = NULL;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -119,18 +120,10 @@ void CloudsIntroSequence::selfUpdate(){
 		warpCamera.setPosition(0, 0, 0);
 		warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
 	}
-	ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
-//		if(bUseOculusRift){
-//			#ifdef OCULUS_RIFT
-//			startQuestions[i].update(getOculusRift().getOculusViewport());
-//			#endif
-//		}
-//		else{
-			startQuestions[i].update();
-//		}
+		startQuestions[i].update();
 		
 		if(startQuestions[i].position.z < warpCamera.getPosition().z){
 			startQuestions[i].position.z += questionWrapDistance;
@@ -141,6 +134,7 @@ void CloudsIntroSequence::selfUpdate(){
 			float distanceToQuestion = getOculusRift().distanceFromMouse(startQuestions[i].position);
 //			cout << "Distance " << distanceToQuestion << endl;
 #else
+			ofVec2f mouseNode(ofGetMouseX(),ofGetMouseY());			
 			float distanceToQuestion = startQuestions[i].currentScreenPoint.distance(mouseNode);
 #endif
 			if(caughtQuestion == NULL){
@@ -578,7 +572,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	questionGui->addSlider("Inner Radius", 2, 20, &questionTunnelInnerRadius);
 	questionGui->addSlider("Tug Min Distance", 10, 300, &questionTugMinDistance);
 	questionGui->addSlider("Tug Max Distance", 10, 300, &questionTugMaxDistance);
-	questionGui->addSlider("Tug Min Depth", 100, 1000, &questionTugMinDepth);
+	questionGui->addSlider("Tug Min Depth", 30, 1000, &questionTugMinDepth);
 
 	questionGui->addSlider("Question Tint H",  0, 1.0, &questionNodeTint.r);
 	questionGui->addSlider("Question Tint S",  0, 1.0, &questionNodeTint.g);

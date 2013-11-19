@@ -445,6 +445,24 @@ void CloudsPlaybackController::update(ofEventArgs & args){
 		//TODO: transition to question selection
 	}
 
+#ifdef OCULUS_RIFT
+	if(currentVisualSystem != NULL && currentVisualSystem->getTimeline()->getIsShowing()){
+		//		cout << "showing cursor for system " << getSystemName() << endl;
+		ofShowCursor();
+	}
+	else{
+		//		cout << "hiding cursor for system " << getSystemName() << endl;
+		ofHideCursor();
+	}
+#else
+	//TODO replace with cool cursor animations
+	if(ofGetElapsedTimef() - cursorMovedTime < 1 || bDrawCursor){
+		ofShowCursor();
+	}
+	else{
+		ofHideCursor();
+	}
+#endif
 	
 }
 

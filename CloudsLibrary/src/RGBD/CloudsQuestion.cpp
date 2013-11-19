@@ -38,7 +38,8 @@ CloudsQuestion::CloudsQuestion(){
 	
 	expandPercent = .1;
 	selectPercent = 0;
-
+	enlarge = .2;
+	
 }
 
 //TODO: universal Nodes
@@ -150,7 +151,7 @@ void CloudsQuestion::draw(){
 	
 //	cout << "expand percent " << expandPercent << " radius " << radius << endl;
 	
-	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent);
+	CloudsQuestion::shader.setUniform1f("expandPercent", expandPercent+enlarge);
 	CloudsQuestion::shader.setUniform1f("maxExpand", radius);	
 	CloudsQuestion::shader.setUniform1f("selectPercent", selectPercent);
 	CloudsQuestion::shader.setUniform1f("destroyedAttenuate", isDestroyed ? 1.0 - expandPercent : 1.0);
