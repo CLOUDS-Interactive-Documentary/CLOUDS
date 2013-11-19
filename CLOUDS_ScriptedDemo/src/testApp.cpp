@@ -79,7 +79,7 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& pulse = visualSystems.getPresetForSystem( "MandalaComponents", "JM_pulse1OC");
     
-    CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "JM_flyoverOC");
+    CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "FlyOver_OC");
     
     CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
     
@@ -116,6 +116,9 @@ void testApp::setup(){
   
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
+		
+		//set this to some number to push the current clip start time into the future to save space for some pure visuals
+		float delayClip = 0;
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		
         if(clipIds[i] == "Karsten - immediate feedback"){
@@ -124,6 +127,7 @@ void testApp::setup(){
         
         if(clipIds[i] == "Zach - Time slows down"){
 			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
+			delayClip = 20;
 		}
         
         if(clipIds[i] == "Golan - woah"){
@@ -133,6 +137,7 @@ void testApp::setup(){
         
         if(clipIds[i] == "Vera - Playing with a system"){
             act->addVisualSystem( maze, lastClipEndTime+1, 15);
+			delayClip = 20;
         }
     
         
@@ -148,11 +153,11 @@ void testApp::setup(){
             act->addVisualSystem( neurons, lastClipEndTime+1, 15);
         }
         
-        if(clipIds[i] == "JTNimoy - immersion"){
+        if(clipIds[i] == "JTNimoy - immersion2"){
             act->addVisualSystem( ocean_regular, lastClipEndTime+4, 15);
         }
 		
-		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+2);
+		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+delayClip+2);
 	}
 	
 	//play the visual systems for some time
