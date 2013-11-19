@@ -119,6 +119,7 @@ void testApp::setup(){
 		
 		//set this to some number to push the current clip start time into the future to save space for some pure visuals
 		float delayClip = 0;
+		
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		
         if(clipIds[i] == "Karsten - immediate feedback"){
@@ -126,7 +127,7 @@ void testApp::setup(){
 		}
         
         if(clipIds[i] == "Zach - Time slows down"){
-			act->addVisualSystem( connectors, lastClipEndTime + 10, 30); //start the preset 5 seconds in, play for 80 seconds
+			act->addVisualSystem( connectors, lastClipEndTime, 30); //start the preset 5 seconds in, play for 80 seconds
 			delayClip = 20;
 		}
         
@@ -161,7 +162,7 @@ void testApp::setup(){
 	}
 	
 	//play the visual systems for some time
-	act->addVisualSystem( ocean_gmuk,  0, 20 );
+	act->addVisualSystem( ocean_gmuk,  0, 4 );
 
 	storyEngine.setCustomAct(act);
 	

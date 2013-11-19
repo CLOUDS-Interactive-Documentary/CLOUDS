@@ -912,9 +912,15 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
+	ofPushStyle();
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->drawOverlay();
 	}
+
+	//test overlay
+	ofSetColor(0,0,0,0);
+	ofRect(20, 20, 300,300);
+	ofPopStyle();
 }
 
 void CloudsVisualSystemRGBD::selfExit(){

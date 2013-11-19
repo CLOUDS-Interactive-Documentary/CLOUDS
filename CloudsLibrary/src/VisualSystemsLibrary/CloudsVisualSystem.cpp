@@ -386,9 +386,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			drawBackgroundGradient();
             getOculusRift().endBackground();
 
-//			getOculusRift().beginOverlay(-230, 320,240);
-//			selfDrawOverlay();
-//			getOculusRift().endOverlay();
+			getOculusRift().beginOverlay(-230, 320,240);
+			selfDrawOverlay();
+			getOculusRift().endOverlay();
 			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
