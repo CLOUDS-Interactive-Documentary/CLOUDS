@@ -12,58 +12,48 @@ string CloudsVisualSystemColony::getSystemName()
 {
 	return "Colony";
 }
-
 void CloudsVisualSystemColony::selfSetup()
 {
-    
-    numInitialCells = 200; //FIXME : Magic number
-    
-    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
-    
+    numInitialCells = 50; //FIXME : Magic number
+    //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
 }
-
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-//    sysGui->addSlider("Separate",0.0,200, &flockSeparate);
-//    sysGui->addSlider("Cohere",0.0,200, &flockCohere);
-//    sysGui->addSlider("Align",0.0,200, &flockAlign);
+    //    sysGui->addSlider("Separate",0.0,200, &flockSeparate);
+    //    sysGui->addSlider("Cohere",0.0,200, &flockCohere);
+    //    sysGui->addSlider("Align",0.0,200, &flockAlign);
 }
-
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::guiRenderEvent(ofxUIEventArgs &e){}
 void CloudsVisualSystemColony::selfKeyPressed(ofKeyEventArgs & args){}
-
 void CloudsVisualSystemColony::selfUpdate()
 {
     cout << "cells.size(): " << cells.size() << " FPS: " << ofGetFrameRate() << endl;
     pMap.clear();
     
-    //  Update cells position and life
-    //
     pMap.put(cells);
     for (int i = 0; i < cells.size(); i++) {
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
         iter.initialize();
-            cells[i]->doScanAndFlock(iter);
+        cells[i]->doScanAndFlock(iter);
         cells[i]->doFeedCellNoise();
-            cells[i]->update();
-            cells[i]->doApplyBorders(20);
-//        cells[i]->doWrapXY();
+        cells[i]->update();
+        cells[i]->doApplyBorders(20);
+        //        cells[i]->doWrapXY();
         
-            if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
-                cellPtr newCell = cells[i]->doGetReplicated();
-                cells.push_back(newCell);
-            }
-            if (cells[i]->isDead()){
-                cells.erase(cells.begin() + i);
-            }
+        if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
+            cellPtr newCell = cells[i]->doGetReplicated();
+            cells.push_back(newCell);
         }
+        if (cells[i]->isDead()){
+            cells.erase(cells.begin() + i);
+        }
+    }
 }
 
 void CloudsVisualSystemColony::selfSetupGuis(){}
 void CloudsVisualSystemColony::selfAutoMode(){}
-
 void CloudsVisualSystemColony::selfDrawBackground()
 {
     ofEnableSmoothing();
@@ -72,22 +62,18 @@ void CloudsVisualSystemColony::selfDrawBackground()
         cells[i]->draw();
     }
 }
-
 void CloudsVisualSystemColony::selfDraw(){
-//    ofEnableSmoothing();
-//    ofEnableAlphaBlending();
-//    for (int i = 0 ; i < cells.size(); i++){
-//        cells[i]->draw();
-//    }
-
+    //    ofEnableSmoothing();
+    //    ofEnableAlphaBlending();
+    //    for (int i = 0 ; i < cells.size(); i++){
+    //        cells[i]->draw();
+    //    }
+    
 }
-
 
 void CloudsVisualSystemColony::selfDrawDebug(){}
 void CloudsVisualSystemColony::selfSceneTransformation(){}
 void CloudsVisualSystemColony::selfExit(){}
-
-
 void CloudsVisualSystemColony::selfBegin()
 {
     for (int i = 0; i < numInitialCells; i++) {

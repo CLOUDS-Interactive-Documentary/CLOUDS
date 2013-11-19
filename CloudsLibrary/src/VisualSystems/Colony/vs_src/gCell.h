@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIV 10
+#define MAP_SUBDIV 20
 
 #pragma once
 
@@ -75,9 +75,14 @@ public:
     cellPtr doGetReplicated();
     
 private:
+    float getSeparationDist();
+    float getAlignmentDist();
     ofPoint getSteerToTarget(ofPoint _target);
     bool isInsideBoard(ofPoint p);
 };
+
+
+
 
 
 
@@ -102,7 +107,7 @@ public:
         position = 0;
     }
     void increment() {
-        if (++position >= v[meta]->size()){ //not optimized
+        if (++position >= v[meta]->size()){ //Can be optimied with caching of v[meta]
             if (++meta < v.size()){
                 position = 0;
             }}}
@@ -122,60 +127,53 @@ public:
 
 
 
-
-
-
 /**
  * Data structure for keeping track of the map
  */
 
 class colonyPartitionMap {
-    typedef std::map<coord2i, vector<cellPtr> >::value_type value_type;
-    typedef std::map<coord2i, vector<cellPtr> >::iterator iter_type;
-    map<coord2i, vector<cellPtr> > partitions; //TODO: Change to array. Is simpler and enumerable
-    map<coord2i, neighbor_iterator> neighbors;
+private:
+    vector<cellPtr>* partitions[MAP_SUBDIV * MAP_SUBDIV];
+    neighbor_iterator* neighbors[MAP_SUBDIV * MAP_SUBDIV];
     
 public:
     colonyPartitionMap(){
         //Populating this in advance. Cost is very little for any reasonably sized partition.
         for (int i = 0 ; i < MAP_SUBDIV ; ++i){
             for (int j = 0; j < MAP_SUBDIV; ++j) {
-                vector<cellPtr> v;
                 coord2i c = coord2i(i, j);
-                partitions.insert(value_type(c, v));
+                partitions[c.ordered()] = new vector<cellPtr>();
             }}}
     ~colonyPartitionMap(){
         clear();
-        partitions.clear();
-        neighbors.clear();
+        for ( int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++ ){
+            delete partitions[i];
+            partitions[i] = NULL;
+        }
     }
     void clear(){
-        for (iter_type iter = partitions.begin(); iter != partitions.end(); ++iter) {
-            iter->second.clear();
+        for (int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++) {
+            partitions[i]->clear();
+            delete neighbors[i];
+            neighbors[i] = NULL; //TODO: UGH C++
         }
-        neighbors.clear();
     }
-    void put(const cellPtr& cp){ partitions.at(cp -> getPosition()).push_back(cp); }
-    void put(const vector<cellPtr>& vec){
-        for (int i = 0 ; i < vec.size() ; i++){
-            put(vec[i]);
-        }}
+    void put(const cellPtr& cp){partitions[coord2i(cp->getPosition()).ordered()]->push_back(cp);}
+    void put(const vector<cellPtr>& vec){ for (int i = 0 ; i < vec.size() ; i++){ put(vec[i]); }}
     neighbor_iterator getNeighbours(const coord2i& c)
     {
-        std::map<coord2i, neighbor_iterator>::iterator k = neighbors.find(c);
-        if (k != neighbors.end()){
-            k->second.initialize();
-            return k->second;
+        neighbor_iterator* k = neighbors[c.ordered()];
+        if (k != NULL){
+            return *k; //Returns a copy!
         } else {
-            neighbor_iterator iter = neighbor_iterator();
+            neighbor_iterator* iter = new neighbor_iterator();
             for (int i = MAX((c.x - 1),0) ; i <= MIN((c.x +1), (MAP_SUBDIV - 1)); i++){
                 for (int j = MAX((c.y - 1),0) ; j <= MIN((c.y +1), (MAP_SUBDIV - 1)); j++){
-                    //This *should* be 'at' because all vectors have been initialized
-                    iter.add(partitions.at(coord2i(i,j)));
+                    iter->add(*partitions[coord2i(i,j).ordered()]);
                     }}
-            iter.initialize();
-            neighbors.insert(std::pair<coord2i, neighbor_iterator>(c, iter));
-            return iter;
+            iter->initialize();
+            neighbors[c.ordered()] = iter;
+            return *iter; //return a copy
         }}
     
 private:
