@@ -17,7 +17,7 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	paused = false;
 	currentFontSize = -1;
 	currentFontExtrusion = -1;
-
+	startedOnclick = false;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -108,7 +108,9 @@ void CloudsIntroSequence::selfUpdate(){
 	
 	camera.applyRotation = camera.applyTranslation = useDebugCamera && !cursorIsOverGUI();
 	
-
+	if(!startedOnclick && timeline->getIsPlaying()){
+		timeline->stop();
+	}
 	
 	if(!paused){
 		warpCamera.dolly(-cameraForwardSpeed);
@@ -439,7 +441,8 @@ void CloudsIntroSequence::selfExit(){
 }
 
 void CloudsIntroSequence::selfBegin(){
-	
+	timeline->stop();
+	startedOnclick = false;
 }
 
 void CloudsIntroSequence::selfEnd(){
@@ -476,7 +479,10 @@ void CloudsIntroSequence::selfMouseMoved(ofMouseEventArgs& data)
 }
 
 void CloudsIntroSequence::selfMousePressed(ofMouseEventArgs& data){
-	
+	if(!startedOnclick){
+		startedOnclick  = true;
+		timeline->play();
+	}
 }
 
 void CloudsIntroSequence::selfMouseReleased(ofMouseEventArgs& data){

@@ -96,7 +96,7 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	float questionSize;
 	float questionTunnelInnerRadius;
 	
-
+	bool startedOnclick;
 	
 
 	

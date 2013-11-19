@@ -112,7 +112,7 @@ void testApp::setup(){
     clipIds.push_back("Shiffman - reality will only get you so far");
     clipIds.push_back("Karolina - suspension of disbelief");
     clipIds.push_back("Lauren - real and virtual 1");
-    clipIds.push_back("JTNimoy - immersion");
+    clipIds.push_back("JTNimoy - immersion2");
   
 	float lastClipEndTime = 0;
 	for(int i = 0; i < clipIds.size(); i++){
