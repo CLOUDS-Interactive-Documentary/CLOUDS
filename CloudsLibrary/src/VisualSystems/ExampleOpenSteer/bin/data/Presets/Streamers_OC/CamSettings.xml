@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>CamSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>145.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>DIST</Name>
-    <Value>200.000000000</Value>
+    <Value>74.999984741</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ROT-Y</Name>
-    <Value>0.000000000</Value>
+    <Value>329.274017334</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -89,9 +89,4 @@
     <Kind>17</Kind>
     <Name>DISABLE</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Cam Path Duration</Name>
-    <Value>60.000000000</Value>
 </Widget>

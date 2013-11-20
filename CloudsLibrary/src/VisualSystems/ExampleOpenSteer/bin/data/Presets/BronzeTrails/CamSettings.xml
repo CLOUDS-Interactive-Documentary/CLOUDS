@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>CamSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
+    <XPosition>507.000061035</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -89,9 +89,4 @@
     <Kind>17</Kind>
     <Name>DISABLE</Name>
     <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Cam Path Duration</Name>
-    <Value>60.000000000</Value>
 </Widget>
