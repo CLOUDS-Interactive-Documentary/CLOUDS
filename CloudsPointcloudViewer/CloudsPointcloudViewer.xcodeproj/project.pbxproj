@@ -721,7 +721,6 @@
 				E7DCAE431839C20100A70EAA /* ofxFTGL */,
 				E7A3F29118321B3F00EADD94 /* ofxOculusRift */,
 				E75DB6C717CDC0A100CD99D9 /* ofxGameCamera */,
-				E731D64C17401845006B9650 /* CloudsLibrary */,
 				E739963017872FCE00EA5F4D /* ofxAVFVideoPlayer */,
 				E73994D41786200500EA5F4D /* ofxGenerative */,
 				E73994B117861FA900EA5F4D /* ofxTextInputField */,
@@ -808,10 +807,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5E2C01812192900CA4196 /* question.frag */,
-				E7E5E2C11812192900CA4196 /* question.vert */,
-				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
-				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
+				E7380339183C968A0018AB96 /* shaders */,
+				E731D64C17401845006B9650 /* CloudsLibrary */,
 				609133851652CB3E00B523AD /* testView.h */,
 				609133861652CB3E00B523AD /* testView.mm */,
 				609133791652C9C900B523AD /* AppDelegate.h */,
@@ -873,7 +870,7 @@
 				E731D64D17401845006B9650 /* src */,
 			);
 			name = CloudsLibrary;
-			path = ../CloudsLibrary;
+			path = ../../CloudsLibrary;
 			sourceTree = "<group>";
 		};
 		E731D64D17401845006B9650 /* src */ = {
@@ -998,6 +995,17 @@
 				E731D82B174018BC006B9650 /* ofxMSATimer.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E7380339183C968A0018AB96 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5E2C01812192900CA4196 /* question.frag */,
+				E7E5E2C11812192900CA4196 /* question.vert */,
+				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
+				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
+			);
+			name = shaders;
 			sourceTree = "<group>";
 		};
 		E73991BB1786185500EA5F4D /* ofxCameraSaveLoad */ = {
