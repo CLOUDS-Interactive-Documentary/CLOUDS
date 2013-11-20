@@ -156,7 +156,7 @@ class _C:public CloudsVisualSystem{
     static float danceOffset;
     
     
-    static bool colorMode;
+    static float colorMix;
     static bool renderCamPath;
     
     void selfGuiEvent(ofxUIEventArgs &e);

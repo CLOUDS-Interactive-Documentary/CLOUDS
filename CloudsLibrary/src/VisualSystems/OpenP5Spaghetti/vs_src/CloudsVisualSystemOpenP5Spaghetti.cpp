@@ -68,7 +68,7 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addSlider("Brightness", 0.0, 255.0, &brightness);
 	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
     customGui->addToggle("DRAW LINES", &Walker::drawLines);
-    
+    customGui->addSlider("LINE WIDTH", 0.1, 10, &Walker::lineWidth);
 
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
 	guis.push_back(customGui);
@@ -247,9 +247,11 @@ void CloudsVisualSystemOpenP5Spaghetti::selfDraw(){
     ofPushMatrix();
 
 	ofRotate(currSpin, 0, 1, 0);
-	for(int i = 0; i < NWalkers; i++){
+    ofSetLineWidth(Walker::lineWidth);
+    for(int i = 0; i < NWalkers; i++){
 		walkers[i].draw();
 	}
+    ofSetLineWidth(1.0f);
 	
 	ofPopStyle();
     ofPopMatrix();

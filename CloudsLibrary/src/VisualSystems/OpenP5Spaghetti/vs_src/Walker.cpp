@@ -19,6 +19,7 @@ float Walker::noiseSpeedz = .01f;
 bool Walker:: drawPoints = true;
 bool Walker:: drawLines = false;
 //bool Walker:: drawTriangles = false;
+float Walker::lineWidth = 1.0f;
 
 float Walker::saturation = .3;
 float Walker::brightness = .9;
@@ -214,7 +215,6 @@ void Walker::draw(){
     }
     else if(drawLines == true){
         mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-       
         mesh.drawVertices();
     }
   /*

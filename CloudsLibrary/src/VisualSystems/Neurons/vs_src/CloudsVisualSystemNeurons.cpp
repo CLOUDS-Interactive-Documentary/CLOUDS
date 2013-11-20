@@ -22,7 +22,7 @@ float _C::danceFreq = 0;
 float _C::danceOffset = 0;
 bool _C::renderNeurons = true;
 jtn::Box _C::boundingBox;
-bool _C::colorMode = true;
+float _C::colorMix = 0.0;
 bool _C::renderCamPath = true;
 void _C::selfSetup(){
     rotation = 0;
@@ -57,7 +57,7 @@ void _C::selfSetupGuis(){
 
     
     rdrGui->addToggle("Show Neurons", &renderNeurons);
-    rdrGui->addToggle("Depth Coloring", &colorMode);
+    rdrGui->addSlider("Depth Coloring", 0.0, 1.0, &_C::colorMix);
     rdrGui->addToggle("Show Camera Path", &renderCamPath);
 }
 
@@ -615,11 +615,10 @@ void _N::draw(){
         if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
             glColor4f(1,0,0, 1);
         }else{
-            if(_C::colorMode){
-                glColor4f(worldNormPos.x,worldNormPos.y,worldNormPos.z, _C::alpha);
-            }else{
-                glColor4f(r, g, b, _C::alpha);
-            }
+            glColor4f(ofLerp(worldNormPos.x, r, _C::colorMix),
+                      ofLerp(worldNormPos.y, g, _C::colorMix),
+                      ofLerp(worldNormPos.z, b, _C::colorMix),
+                      _C::alpha);
         }
 
         
@@ -636,14 +635,11 @@ void _N::draw(){
         if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
             glColor4f(1,0,0, 1);
         }else{
-            
-            if(_C::colorMode){
-                jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
-                glColor4f(worldNormPos2.x,worldNormPos2.y,worldNormPos2.z, _C::alpha);
-
-            }else{
-                glColor4f(t->r, t->g, t->b, _C::alpha);
-            }
+            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
+            glColor4f(ofLerp(worldNormPos2.x, t->r, _C::colorMix),
+                      ofLerp(worldNormPos2.y, t->g, _C::colorMix),
+                      ofLerp(worldNormPos2.z, t->b, _C::colorMix),
+                      _C::alpha);
         }
         
 
