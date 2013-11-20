@@ -33,7 +33,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generateScanlines();
 	generateTriangulation();
 	
-	particulateController.setParticleCount(1e5);
+	particulateController.setParticleCount(20000);
 	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
 	

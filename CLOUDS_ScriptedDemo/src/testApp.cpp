@@ -79,10 +79,12 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& pulse = visualSystems.getPresetForSystem( "MandalaComponents", "JM_pulse1OC");
     
+#ifdef OCULUS_RIFT
     CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "FlyOver2_OC");
-    
+#else
+	CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "JM_flyover");
+#endif
     CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
-    
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     
     CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "NightOceanOC");

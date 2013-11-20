@@ -181,9 +181,9 @@ void main(void){
 	
 	
 	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
-					(1.0 - max( 0.0, pow( samplePos.y / 480., 2.0) + bottomAttenuate ));
+					(1.0 - max( 0.0, pow( samplePos.y / 480., 3.0) + bottomAttenuate ));
 	
-	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),2.);
+	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),4.);
 
 	//positionValid = 1.0;
 	
