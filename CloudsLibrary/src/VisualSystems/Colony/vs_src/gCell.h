@@ -23,24 +23,6 @@ typedef ofPtr<colonyCell> cellPtr;
 
 /* Classes */
 
-class coord2i {
-public:
-    int x, y;
-    ~coord2i(){}
-    coord2i(int x_, int y_): x(x_), y(y_){};
-    coord2i(ofPoint const& p):
-        //FIXME: GetWidth and GetHeight are called millions of time a second. cache;
-        x(int(ofClamp(p.x * MAP_SUBDIV / ofGetWidth() , 0, MAP_SUBDIV - 0.1))),
-        y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {}
-    bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
-    bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
-    bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
-    int ordered() const { return y * MAP_SUBDIV + x;}
-};
-
-
-
-
 
 class colonyCell {
     ofPoint position;
@@ -83,6 +65,20 @@ private:
 
 
 
+class coord2i {
+public:
+    int x, y;
+    ~coord2i(){}
+    coord2i(int x_, int y_): x(x_), y(y_){};
+    coord2i(ofPoint const& p):
+    //FIXME: GetWidth and GetHeight are called millions of time a second. cache;
+    x(int(ofClamp(p.x * MAP_SUBDIV / ofGetWidth() , 0, MAP_SUBDIV - 0.1))),
+    y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {}
+    bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
+    bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
+    bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
+    int ordered() const { return y * MAP_SUBDIV + x;}
+};
 
 
 

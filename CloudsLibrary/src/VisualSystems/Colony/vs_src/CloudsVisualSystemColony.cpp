@@ -35,11 +35,10 @@ void CloudsVisualSystemColony::selfUpdate()
     pMap.put(cells);
     for (int i = 0; i < cells.size(); i++) {
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
-        iter.initialize();
         cells[i]->doScanAndFlock(iter);
         cells[i]->doFeedCellNoise();
         cells[i]->update();
-        cells[i]->doApplyBorders(20);
+//        cells[i]->doApplyBorders(10);
         //        cells[i]->doWrapXY();
         
         if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
