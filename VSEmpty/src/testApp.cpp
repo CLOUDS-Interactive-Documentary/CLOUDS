@@ -4,8 +4,8 @@
 void testApp::setup(){
 	ofSetVerticalSync(true);
   
-	PaintBrush.setup();
-	PaintBrush.playSystem();
+	empty.setup();
+	empty.playSystem();
 }
 
 
