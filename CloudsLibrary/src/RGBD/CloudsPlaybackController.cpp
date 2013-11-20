@@ -235,8 +235,18 @@ void CloudsPlaybackController::startScratchTracks(){
 		scratchPlayer.loadSound(scratchTracks[0]);
 		scratchPlayer.play();
 	}
-
 }
+
+void CloudsPlaybackController::playScratchTrack(string track){
+	for(int i = 0; i < scratchTracks.size(); i++){
+		if(ofFilePath::getFileName(scratchTracks[i]) == track){
+			scratchPlayer.loadSound(scratchTracks[i]);
+			scratchPlayer.play();
+			break;
+		}
+	}
+}
+
 CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
 	return clusterMapVisualSystem;
 }
@@ -245,9 +255,11 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 	return rgbdVisualSystem->getRGBDVideoPlayer();
 }
 
+
 void CloudsPlaybackController::setUseScratch(bool useScratch){
 	if(useScratch){
-		targetScratchVolume = 1.0;
+		targetScratchVolume = .9;
+		scratchVolumeAttenuate = 1.0;
 	}
 	else{
 		targetScratchVolume = 0.0;

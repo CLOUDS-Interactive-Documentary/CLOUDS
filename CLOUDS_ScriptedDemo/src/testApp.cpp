@@ -62,7 +62,6 @@ void testApp::setup(){
 	//////////////SHOW INTRO
 	
 	//temp sound stuff
-//	sound.setMasterAmp(1.0);
 //	useScratch = false;
 	
 	CloudsVisualSystemPreset& LIA = visualSystems.getPresetForSystem( "Lia", "LIA_01" );
@@ -91,7 +90,9 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& neurons = visualSystems.getPresetForSystem( "Neurons", "MezzyNeuronsOC");
 
+	
     CloudsAct* act = new CloudsAct();
+	
 	vector<string> clipIds;
 	clipIds.push_back("Shantell - Coding gesturally");
 //	clipIds.push_back("Golan - make a mark");
@@ -115,8 +116,16 @@ void testApp::setup(){
     //clipIds.push_back("Karolina - suspension of disbelief");
     clipIds.push_back("Lauren - real and virtual 1");
     clipIds.push_back("JTNimoy - immersion2");
-  
-	float lastClipEndTime = 0;
+
+
+	//play the visual systems for some time
+	act->addVisualSystem( ocean_gmuk,  0, 12 );
+	CloudsClip decoyClip;
+	decoyClip.startFrame = 0;
+	decoyClip.endFrame   = 9 * 24.;
+	
+	float lastClipEndTime = act->addClip(decoyClip, "painting", 0);
+	float trackSwitchTime;
 	for(int i = 0; i < clipIds.size(); i++){
 		
 		//set this to some number to push the current clip start time into the future to save space for some pure visuals
@@ -125,8 +134,7 @@ void testApp::setup(){
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		
         if(clipIds[i] == "Shantell - Coding gesturally"){
-        
-            delayClip = 5;
+//            delayClip = 11;
         }
         if(clipIds[i] == "Karsten - immediate feedback"){
 			act->addVisualSystem( vectormath, lastClipEndTime + 7, 30); //start the preset 5 seconds in, play for 80 seconds
@@ -161,6 +169,7 @@ void testApp::setup(){
         if(clipIds[i] == "Kyle_CH - coding is 1"){
             act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
             delayClip = 5;
+			trackSwitchTime = lastClipEndTime;
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
@@ -175,8 +184,18 @@ void testApp::setup(){
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+delayClip+2);
 	}
 	
-	//play the visual systems for some time
-	act->addVisualSystem( ocean_gmuk,  0, 4 );
+	
+	
+	act->populateTime();
+
+	//now add scratch track
+	soundTrack = act->getTimeline().addFlags("sound");
+	soundTrack->addFlagAtTime("Diederick_Intro_1-2.aif", 0);
+	
+	soundTrack->addFlagAtTime("end-generative",trackSwitchTime*1000);
+	soundTrack->addFlagAtTime("clouds11_125.wav",(trackSwitchTime+3)*1000);
+	ofAddListener(act->getTimeline().events().bangFired, this, &testApp::timelineEventFired);
+
 
 	storyEngine.setCustomAct(act);
 	
@@ -192,7 +211,30 @@ void testApp::setup(){
 	
 	player.startScratchTracks();
 	player.showIntro(question);
+//	sound.setMasterAmp(.9);
+	sound.maxSpeakerVolume = 1.0;
 	
+}
+
+//--------------------------------------------------------------
+void testApp::timelineEventFired(ofxTLBangEventArgs& bang){
+	if(bang.track == soundTrack){
+		
+		if(bang.flag == "end-generative"){
+//			player.setUseScratch( false );
+			sound.setMasterAmp(0.0);
+		}
+		else{
+			player.playScratchTrack( bang.flag );
+			player.setUseScratch( true );
+//			if(bang.flag != "Diederick_Intro_1-2.aif"){
+//				sound.setMasterAmp(0.0);
+//			}
+			
+		}
+		
+	}
+
 }
 
 //--------------------------------------------------------------
@@ -209,17 +251,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == 'p'){
-		useScratch = !useScratch;
-		if(useScratch){
-			player.setUseScratch( true );
-			sound.setMasterAmp(0.0);
-		}
-		else{
-			player.setUseScratch( false );
-			sound.setMasterAmp(1.0);
-		}
-	}
+//	if(key == 'p'){
     
 //    if( key == 'T'){
 //        CloudsClip& clip = parser.getRandomClip(true,true);

@@ -85,7 +85,7 @@ void CloudsSound::setMasterAmp(float amp){
 
 //--------------------------------------------------------------------
 void CloudsSound::update(){
-	//MASTERAMP += (targetAmp - MASTERAMP) * .05;
+	MASTERAMP += (targetAmp - MASTERAMP) * .05;
 }
 
 //--------------------------------------------------------------------
@@ -95,7 +95,6 @@ void CloudsSound::drawDebug(){
 
 //--------------------------------------------------------------------
 void CloudsSound::actCreated(CloudsActEventArgs& args){
-	
 	currentAct = args.act;
 	currentAct->registerEvents(this);
 }

@@ -262,9 +262,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
 	
 	if(customAct != NULL){
-		
-		customAct->populateTime();
-		customAct->defaulPrerollDuration = preRollDuration;
 		CloudsActEventArgs args(customAct);
 		ofNotifyEvent(events.actCreated, args);
 		customAct = NULL;

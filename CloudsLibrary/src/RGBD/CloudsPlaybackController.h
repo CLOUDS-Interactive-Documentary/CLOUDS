@@ -189,8 +189,10 @@ class CloudsPlaybackController {
 	
 	string nextPresetName;
 	
+	void playScratchTrack(string track);
 	vector<string> scratchTracks;
 	ofSoundPlayer scratchPlayer;
+	
 	int currentScratch;
 	float currentVolume;
 	float scratchVolumeAttenuate;
