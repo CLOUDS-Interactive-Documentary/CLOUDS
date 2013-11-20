@@ -1322,7 +1322,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
 </system>
 <system name="ExampleVectorMath_AutoDraw_BlackonWhite">
     <keywords>drawing</keywords>
