@@ -6,7 +6,6 @@
 
 float CloudsVisualSystemOpenP5Spaghetti::NWalkers = 100;
 bool CloudsVisualSystemOpenP5Spaghetti::smooth = true;
-bool CloudsVisualSystemOpenP5Spaghetti::gnarly= false;
 //bool CloudsVisualSystemOpenP5Spaghetti::drawTriangles = false;
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -33,8 +32,10 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addLabel("click to reset");
     customGui->addButton("REGENERATE", &shouldRegenerate);
     customGui->addIntSlider("Preloads", 0, 50000, &numPreloads);
-    customGui->addToggle("SMOOTH", &smooth);
-    customGui->addToggle("GNARLY", &gnarly);
+    vector<string> modes;
+    modes.push_back("SMOOTH");
+    modes.push_back("GNARLY");
+    customGui->addRadio("MODE", modes, OFX_UI_ORIENTATION_HORIZONTAL);
   //  customGui->addToggle("TRIANGLES", &drawTriangles);
     customGui->addSlider("Number of Walkers", 1, 100, &NWalkers);
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
@@ -66,8 +67,11 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addToggle("Dichromatic Mode", &dichromatic);
     customGui->addSlider("Saturation", 0.0, 200.0, &saturation);
     customGui->addSlider("Brightness", 0.0, 255.0, &brightness);
-	customGui->addToggle("DRAW POINTS", &Walker::drawPoints);
-    customGui->addToggle("DRAW LINES", &Walker::drawLines);
+    vector<string> drawModes;
+    drawModes.push_back("DRAW POINTS");
+    drawModes.push_back("DRAW LINES");
+    customGui->addRadio("DRAW MODES", drawModes);
+    customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     customGui->addSlider("LINE WIDTH", 0.1, 10, &Walker::lineWidth);
 
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent);
@@ -85,6 +89,20 @@ void CloudsVisualSystemOpenP5Spaghetti::selfGuiEvent(ofxUIEventArgs &e){
     if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
 		regenerate();
 	}
+    
+    else if (e.widget->getName() == "SMOOTH" && ((ofxUIToggle *)e.widget)->getValue()) {
+        smooth = true;
+    }
+    else if (e.widget->getName() == "GNARLY" && ((ofxUIToggle *)e.widget)->getValue()) {
+        smooth = false;
+    }
+    
+    else if (e.widget->getName() == "DRAW POINTS" && ((ofxUIToggle *)e.widget)->getValue()) {
+        Walker::drawPoints = true;
+    }
+    else if (e.widget->getName() == "DRAW LINES" && ((ofxUIToggle *)e.widget)->getValue()) {
+        Walker::drawPoints = false;
+    }
 }
 
 
@@ -224,8 +242,12 @@ void CloudsVisualSystemOpenP5Spaghetti ::selfUpdate(){
              walkers[i].setColor(newColor);
         }
 
-        if (smooth){ gnarly = false; walkers[i].smoothTrails();}
-        if (gnarly){ smooth = false; walkers[i].gnarlyTrails(); }
+        if (smooth){
+            walkers[i].smoothTrails();
+        }
+        else {
+            walkers[i].gnarlyTrails();
+        }
      //   if (drawTriangles){ smooth = false;  walkers[i].doubleTrails(); }
         }
        

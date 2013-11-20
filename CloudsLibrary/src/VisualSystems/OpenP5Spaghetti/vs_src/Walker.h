@@ -53,9 +53,8 @@ class Walker {
     
     static bool drawPoints;
 	//float pointAlpha;
-	static bool drawLines;
-    //
-  //  static bool drawTriangles;
+//	static bool drawLines;
+//  static bool drawTriangles;
     static float lineWidth;
     
     static float saturation;
