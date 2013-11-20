@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
+		6435747F183D770800295E35 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435747C183D708500295E35 /* CloudsCaption.cpp */; };
+		64357480183D770900295E35 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6435747C183D708500295E35 /* CloudsCaption.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C1DE1C2017DD13460020BBB0 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE1C1F17DD13460020BBB0 /* librtcmix.a */; };
 		C1E2A439181DC22A00F0586B /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */; };
@@ -746,6 +748,8 @@
 /* Begin PBXFileReference section */
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
+		6435747B183D707B00295E35 /* CloudsCaption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
+		6435747C183D708500295E35 /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C1DE1C1F17DD13460020BBB0 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFuncs.cpp; sourceTree = "<group>"; };
@@ -2503,6 +2507,8 @@
 			isa = PBXGroup;
 			children = (
 				E7402E93178F459000FEABED /* GPUParticles */,
+				6435747B183D707B00295E35 /* CloudsCaption.h */,
+				6435747C183D708500295E35 /* CloudsCaption.cpp */,
 				E7637D601734DE8A008ADC62 /* CloudsPlaybackController.h */,
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
@@ -5277,6 +5283,7 @@
 				E7295FB1183B24A400C5207F /* gCell.cpp in Sources */,
 				E738FF6D183BE8C10018AB96 /* question.frag in Sources */,
 				E738FF6E183BE8C10018AB96 /* question.vert in Sources */,
+				6435747F183D770800295E35 /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5602,6 +5609,7 @@
 				E7DCB34F1839E0CD00A70EAA /* MandalaComponent.cpp in Sources */,
 				E7DCB3511839E0CD00A70EAA /* SurfacePoint.cpp in Sources */,
 				E7295FB2183B24A400C5207F /* gCell.cpp in Sources */,
+				64357480183D770900295E35 /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

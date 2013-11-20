@@ -62,6 +62,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.setup();
 	
+    captionFontSize = 12;
+    rebuildCaptionFont();
 
 
 //	enum RGBDTransitionType
@@ -72,6 +74,15 @@ void CloudsVisualSystemRGBD::selfSetup(){
 //	RGBD = 3
 //  };
 
+}
+
+void CloudsVisualSystemRGBD::rebuildCaptionFont(){
+    if(bUseOculusRift){
+        captionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+    }
+    else{
+        captionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", captionFontSize);
+    }
 }
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
@@ -612,7 +623,23 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 //	this->speakerFirstName = speakerFirstName;
 //	this->speakerLastName = speakerLastName;
 //	this->quoteName = quoteName;
-	
+    
+	// Add an appearance for this speaker.
+    string key = speakerFirstName + " " + speakerLastName;
+    if (appearances.find(key) == appearances.end()) {
+        appearances[quoteName] = 1;
+    }
+    else {
+        ++appearances[quoteName];
+    }
+    
+    if (true || appearances[quoteName] == 2) {
+        ofLogNotice("CloudsVisualSystemRGBD::speakerChanged") << "Display name '" << key << "' in overlay" << endl;
+        
+        cloudsCaption.font = &captionFont;
+        cloudsCaption.caption = quoteName;
+        cloudsCaption.setup();
+    }
 }
 
 void CloudsVisualSystemRGBD::generateTriangulation(){
@@ -914,6 +941,8 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->drawOverlay();
 	}
+    
+    cloudsCaption.drawOverlay();
 
 	//test overlay
 	ofSetColor(0,0,0,0);

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 //#include "ParticleConnectionGenerator.h"
+#include "CloudsCaption.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -36,6 +37,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void clearQuestions();
     bool isQuestionSelectedAndClipDone();
     CloudsQuestion* getSelectedQuestion();
+    
+    ofxFTGLFont captionFont;
+    void rebuildCaptionFont();
+    int captionFontSize;
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -114,6 +119,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsQuestion* caughtQuestion;
     CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
+    
+    CloudsCaption cloudsCaption;
 
 	ofVec2f scanlineSimplify;
 	
@@ -195,5 +202,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	float transitionVal;
 	
+    //caption
+    map<string, int> appearances;
 	
 };
