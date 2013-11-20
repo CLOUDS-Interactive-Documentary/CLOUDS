@@ -1,5 +1,7 @@
 #import "testView.h"
 #include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
+
 @implementation testView
 @synthesize clipTable;
 @synthesize interventionTextBox;
@@ -44,6 +46,10 @@
 - (void)update
 {
 //	renderer.update();
+	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
+		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
+		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
+	}
 }
 
 - (void)draw
@@ -55,7 +61,7 @@
 {
 
 	if(clipTable.selectedRow >= 0){
-
+		
 		[self loadClip: parser.getAllClips()[ clipTable.selectedRow ] ];
 		
 	}
@@ -65,10 +71,12 @@
 {
 	if(clip.hasCombinedVideo && rgbdVisualSystem.getRGBDVideoPlayer().setup( clip.combinedVideoPath, clip.combinedCalibrationXMLPath) ){
 		
-//		renderer.getPlayer().play();
 		rgbdVisualSystem.getRGBDVideoPlayer().swapAndPlay();
-		rgbdVisualSystem.setupSpeaker(clip.person, "", clip.name);
+		rgbdVisualSystem.setupSpeaker( CloudsSpeaker::speakers[clip.person].firstName,
+									   CloudsSpeaker::speakers[clip.person].lastName,
+									   clip.name );
 		currentClip = clip;
+		
 	}
 	else{
 		ofLogError() << "CloudsPlaybackController::playClip -- folder " << clip.combinedVideoPath << " is not valid";

@@ -4,8 +4,8 @@
 void testApp::setup(){
 	ofSetVerticalSync(true);
   
-	empty.setup();
-	empty.playSystem();
+	fireworks.setup();
+	fireworks.playSystem();
 }
 
 

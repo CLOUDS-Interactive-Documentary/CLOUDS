@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsVisualSystemEmpty.h"
+#include "CloudsVisualSystemFireworks.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -20,5 +20,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystemEmpty empty;
+	CloudsVisualSystemFireworks fireworks;
 };
