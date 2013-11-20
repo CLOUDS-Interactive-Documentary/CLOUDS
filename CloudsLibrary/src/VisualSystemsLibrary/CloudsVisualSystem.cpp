@@ -436,6 +436,20 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofTranslate(0, ofGetHeight());
 			ofScale(1,-1,1);
 			
+			if(bDrawCursor){
+				ofPushMatrix();
+				ofPushStyle();
+				//	ofNoFill();
+				//	ofSetColor(255, 50);
+				//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+				ofSetColor(240,240,255, 175);
+				ofSetLineWidth(2);
+				ofCircle(ofGetMouseX(), ofGetMouseY(),
+						 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+				ofPopStyle();
+				ofPopMatrix();
+			}
+			
 			selfDrawOverlay();
 			
 			ofPopMatrix();

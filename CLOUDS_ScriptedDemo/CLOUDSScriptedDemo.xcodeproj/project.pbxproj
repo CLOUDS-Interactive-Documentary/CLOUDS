@@ -3375,8 +3375,8 @@
 		E7D9DE3B182B03AB00AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9DE3C182B03AB00AD56C1 /* CloudsVisualSystemExampleVectorMath.cpp */,
 				E7D9DE3D182B03AB00AD56C1 /* CloudsVisualSystemExampleVectorMath.h */,
+				E7D9DE3C182B03AB00AD56C1 /* CloudsVisualSystemExampleVectorMath.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

@@ -98,10 +98,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *connectorGui;
 	
 	ofxFTGLSimpleLayout displayFont;
-	ofMesh horizontalScanLines;
-	ofMesh verticalScanLines;
-	ofMesh pointGrid;
-	ofMesh randomPoints;
+	
+	ofVboMesh horizontalScanLines;
+	ofVboMesh verticalScanLines;
+	ofVboMesh pointGrid;
+	ofVboMesh randomPoints;
 	
 //	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;

@@ -20,6 +20,7 @@ uniform float fadeValue;
 
 uniform float headAttenuateMix;
 varying float headPositionAttenuation;
+varying float edgeAttenuate;
 varying float forceFade;
 
 const float epsilon = 1e-6;
@@ -75,7 +76,7 @@ void main(){
 	gl_FragColor = gl_Color * col * 
 					attenuate *
 					mix( mix(calculateLight(),1.0,isSkin()), 1.0, pow(lum,2.0) ) *
-					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix);
+					mix(1.0-headPositionAttenuation,headPositionAttenuation, headAttenuateMix) * edgeAttenuate;
 	
 	//apply light to just skin
 //	gl_FragColor = gl_Color * col * attenuate * max( calculateLight(), isSkin() );

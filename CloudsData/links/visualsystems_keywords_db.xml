@@ -592,7 +592,71 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Cities_Archiving">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving3">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving4">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving5">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving6">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving7">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Cities_BouncyOrangeCities">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_CLOUDS">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -672,22 +736,6 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Cities_SmookyCity">
-    <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Cities_SmookyGrayScott">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="Cities_Sprawl_aerial1">
     <keywords>cities</keywords>
     <suppressions></suppressions>
@@ -706,14 +754,6 @@
 </system>
 <system name="Cities_ThinSkyscrapers1">
     <keywords>cities|science fiction</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Cities_no-preset">
-    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -1282,7 +1322,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>0</oculus>
+    <oculus>1</oculus>
 </system>
 <system name="ExampleVectorMath_AutoDraw_BlackonWhite">
     <keywords>drawing</keywords>
@@ -5048,6 +5088,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="VectorFlow_FastWaves">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="VectorFlow_JonathanFlow">
     <keywords>flow|pattern</keywords>
     <suppressions>
@@ -5058,6 +5106,22 @@
         <clip>Martin - data revleation</clip>
         <clip>Ramsey - arab abstraction 2</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="VectorFlow_SwiftWaves_Field">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="VectorFlow_SwiftWaves_additive">
+    <keywords></keywords>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
