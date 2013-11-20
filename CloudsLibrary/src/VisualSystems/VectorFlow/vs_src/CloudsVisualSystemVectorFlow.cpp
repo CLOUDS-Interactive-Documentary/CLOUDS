@@ -59,7 +59,7 @@ void CloudsVisualSystemVectorFlow::selfSetupGuis(){
 
 void CloudsVisualSystemVectorFlow::selfUpdate(){
 	   
-	if(regenerateFlow){
+	if(regenerateFlow || width != ofGetWidth() || height != ofGetHeight()){
 		regenerateFlow = false;
 		initFlowField();
 	}
