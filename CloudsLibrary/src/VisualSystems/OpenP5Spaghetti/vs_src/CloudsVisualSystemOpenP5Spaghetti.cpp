@@ -14,11 +14,6 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     // Set defaults.
     currSpin = 0.0f;
     spinSpeed = 0.5f;
-    float dim = 16;
-	float xInit = OFX_UI_GLOBAL_WIDGET_SPACING;
-    float length = 255-xInit;
-    currSpin = 0.0f;
-    spinSpeed = 0.5f;
 
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
@@ -27,9 +22,8 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
    
-    customGui->addSpacer(length-xInit, 2);
+    customGui->addSpacer();
     customGui->addLabel("SIMULATION");
-    customGui->addLabel("click to reset");
     customGui->addButton("REGENERATE", &shouldRegenerate);
     customGui->addIntSlider("Preloads", 0, 50000, &numPreloads);
     vector<string> modes;
@@ -41,32 +35,32 @@ void CloudsVisualSystemOpenP5Spaghetti::selfSetupGui(){
     customGui->addSlider("Particles per Walker", 10, 1000, &Walker::nParticles);
     
     customGui->addSlider("SPIN SPEED", 0, 5, &spinSpeed);
-    customGui->addSlider("STEP SIZE X", 0.0, 5.0, &Walker::stepSizex);
-    customGui->addSlider("STEP SIZE Y", 0.0, 5.0, &Walker::stepSizey);
-    customGui->addSlider("STEP SIZE Z", 0.0, 5.0, &Walker::stepSizez);
+    customGui->addMinimalSlider("STEP SIZE X", 0.0, 5.0, &Walker::stepSizex);
+    customGui->addMinimalSlider("STEP SIZE Y", 0.0, 5.0, &Walker::stepSizey);
+    customGui->addMinimalSlider("STEP SIZE Z", 0.0, 5.0, &Walker::stepSizez);
     
-	customGui->addSlider("NOISE SPEED X", 0.0, 20.0, &Walker::noiseSpeedx);
-    customGui->addSlider("NOISE SPEED Y", 0.0, 20.0, &Walker::noiseSpeedy);
-    customGui->addSlider("NOISE SPEED Z", 0.0, 20.0, &Walker::noiseSpeedz);
+	customGui->addMinimalSlider("NOISE SPEED X", 0.0, 20.0, &Walker::noiseSpeedx);
+    customGui->addMinimalSlider("NOISE SPEED Y", 0.0, 20.0, &Walker::noiseSpeedy);
+    customGui->addMinimalSlider("NOISE SPEED Z", 0.0, 20.0, &Walker::noiseSpeedz);
     
     customGui->addLabel("COLOR MODES");
-    customGui->addSpacer(length-xInit, 2);
+    customGui->addSpacer();
    // customGui->addImageSampler("Color 1", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
    //customGui->addImageSampler("Color 2", &colorMap, colorMap.getWidth()/2., colorMap.getHeight()/2. );
     
-    customGui->addSlider("Hue1", 0.0, 255.0, &hue1);
-    customGui->addSlider("Saturation1", 0.0, 200.0, &saturation1);
-    customGui->addSlider("Brightness1", 0.0, 255.0, &brightness1);
-    customGui->addSlider("Hue2", 0.0, 255.0, &hue2);
-    customGui->addSlider("Saturation2", 0.0, 200.0, &saturation2);
-    customGui->addSlider("Brightness2", 0.0, 255.0, &brightness2);
+    customGui->addMinimalSlider("Hue1", 0.0, 255.0, &hue1);
+    customGui->addMinimalSlider("Saturation1", 0.0, 200.0, &saturation1);
+    customGui->addMinimalSlider("Brightness1", 0.0, 255.0, &brightness1);
+    customGui->addMinimalSlider("Hue2", 0.0, 255.0, &hue2);
+    customGui->addMinimalSlider("Saturation2", 0.0, 200.0, &saturation2);
+    customGui->addMinimalSlider("Brightness2", 0.0, 255.0, &brightness2);
     
     customGui->addToggle("Oscillator Mode", &oscillate);
-     customGui->addSlider("Oscilator Period (in frames)", 0.0, 1000.0, &period);
     customGui->addToggle("Rainbow Mode", &rainbow);
     customGui->addToggle("Dichromatic Mode", &dichromatic);
-    customGui->addSlider("Saturation", 0.0, 200.0, &saturation);
-    customGui->addSlider("Brightness", 0.0, 255.0, &brightness);
+    customGui->addSlider("Oscilator Period (in frames)", 0.0, 1000.0, &period);
+    customGui->addMinimalSlider("Saturation", 0.0, 200.0, &saturation);
+    customGui->addMinimalSlider("Brightness", 0.0, 255.0, &brightness);
     vector<string> drawModes;
     drawModes.push_back("DRAW POINTS");
     drawModes.push_back("DRAW LINES");
