@@ -109,6 +109,8 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
 	fadingIntro = false;
 	
+	revertToIntroAfter1Act = false;
+	
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
@@ -120,7 +122,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
-void CloudsPlaybackController::clearAct(){
+void CloudsPlaybackController::clearAct(bool destroyAct){
 	
 	if(currentAct != NULL){
 		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
@@ -133,7 +135,9 @@ void CloudsPlaybackController::clearAct(){
 		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence->getSelectedRun());
-		delete currentAct;
+		if(destroyAct){
+			delete currentAct;
+		}
 	}
 }
 
@@ -280,26 +284,34 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 //    this->currentRun = &run;
 }
 
+
+
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
+	introSequence->setStartQuestions(possibleStartQuestions);
+	showIntro();
+}
+
+//private internal one
+void CloudsPlaybackController::showIntro(){
 	scratchVolumeAttenuate = 1.0;
 	
-	introSequence->playSystem();
-
-	introSequence->setStartQuestions(possibleStartQuestions);
 #ifdef OCULUS_RIFT
 	introSequence->loadPresetGUISFromName("Oculus");
 #else
 	introSequence->loadPresetGUISFromName("TunnelWarp");
 #endif
+	introSequence->playSystem();
+	
 	showingVisualSystem = true;
 	showingIntro = true;
-
+	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
-	clearAct();
+	bool destroyAct = currentAct != act;
+	clearAct(destroyAct);
 	
 	currentAct = act;
 
@@ -570,15 +582,22 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
 	cout << "ACT ENDED TRIGGERED" << endl;
 
-	rgbdVisualSystem->stopSystem();
-	
-	clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
-	clusterMapVisualSystem.traverse();
-	
-	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
-	clusterMapVisualSystem.playSystem();
-	
-	showingClusterMap = true;
+	//TEMPORARY FOR DEMO
+	if(revertToIntroAfter1Act){
+		playScratchTrack("00 Parallel Stripes.aif");
+		showIntro();
+	}
+	else{
+		rgbdVisualSystem->stopSystem();
+		
+		clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
+		clusterMapVisualSystem.traverse();
+		
+		clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+		clusterMapVisualSystem.playSystem();
+		
+		showingClusterMap = true;
+	}
 }
 
 //--------------------------------------------------------------------
@@ -661,7 +680,9 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);
 	}
-	rgbdVisualSystem->setupSpeaker(clip.person, "", clip.name);
+	
+	rgbdVisualSystem->setupSpeaker( clip.getSpeakerFirstName(),clip.getSpeakerLastName(), clip.name);
+	
 	prerolledClipID = "";
 	currentClip = clip;
 	

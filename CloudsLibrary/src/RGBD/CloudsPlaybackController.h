@@ -202,6 +202,8 @@ class CloudsPlaybackController {
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 //    void setRandomQuestion(CloudsClip& clip);
 	
+	bool revertToIntroAfter1Act;//demo hack
+	
 	vector<CloudsClip> fakeQuestions;
   protected:
 
@@ -234,11 +236,12 @@ class CloudsPlaybackController {
 
 	//VISUAL SYSTEMS
 	//
+	void showIntro();
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
 	bool fadingIntro;
-	void clearAct();
+	void clearAct(bool destroy = true);
 	
 	//if there is a system playing this wil be non-null
 	ofPtr<CloudsVisualSystem> nextSystem;
