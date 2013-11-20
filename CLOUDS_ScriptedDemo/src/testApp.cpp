@@ -194,6 +194,7 @@ void testApp::setup(){
 	
 	soundTrack->addFlagAtTime("end-generative",trackSwitchTime*1000);
 	soundTrack->addFlagAtTime("clouds11_125.wav",(trackSwitchTime+3)*1000);
+	soundTrack->addFlagAtTime("end-scratch", act->getTimeline().getDurationInMilliseconds() - 2000);
 	ofAddListener(act->getTimeline().events().bangFired, this, &testApp::timelineEventFired);
 
 
@@ -208,7 +209,8 @@ void testApp::setup(){
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
 	question.push_back( parser.getClipWithLinkName(clipIds[0]) );
-	
+
+	player.revertToIntroAfter1Act = true;
 	player.startScratchTracks();
 	player.showIntro(question);
 //	sound.setMasterAmp(.9);
@@ -223,6 +225,9 @@ void testApp::timelineEventFired(ofxTLBangEventArgs& bang){
 		if(bang.flag == "end-generative"){
 //			player.setUseScratch( false );
 			sound.setMasterAmp(0.0);
+		}
+		else if(bang.flag == "end-scratch"){
+			player.setUseScratch(false);
 		}
 		else{
 			player.playScratchTrack( bang.flag );

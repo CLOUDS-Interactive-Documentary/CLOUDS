@@ -203,6 +203,7 @@ class CloudsPlaybackController {
 //    void setRandomQuestion(CloudsClip& clip);
 	
 	bool revertToIntroAfter1Act;//demo hack
+	bool actFinished;
 	
 	vector<CloudsClip> fakeQuestions;
   protected:
@@ -212,8 +213,6 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-//	CloudsAct* mandatoryAct;
-//    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
