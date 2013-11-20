@@ -91,6 +91,7 @@ protected:
 	
 	ofVec2f sincPosition;
 	float sincRadius;
+    float sincStrength;
 	void getSincSourceAngle(int x, int y, float& angle, float& weight);
 	
 
