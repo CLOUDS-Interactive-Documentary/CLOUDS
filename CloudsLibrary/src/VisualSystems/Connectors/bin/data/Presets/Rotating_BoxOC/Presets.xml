@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000000000</XPosition>
+    <XPosition>1485.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,6 +13,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Rotating_BoxOC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Rotating_BoxShorter_OC</Name>
     <Value>1</Value>
 </Widget>
 <Widget>

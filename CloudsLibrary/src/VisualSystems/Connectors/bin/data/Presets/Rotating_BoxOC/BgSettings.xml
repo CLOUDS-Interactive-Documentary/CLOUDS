@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>BgSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>213.000000000</XPosition>
+    <XPosition>425.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -18,17 +18,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>178.374389648</Value>
+    <Value>167.068969727</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>66.576354980</Value>
+    <Value>70.344825745</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI</Name>
-    <Value>56.527091980</Value>
+    <Value>43.965518951</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

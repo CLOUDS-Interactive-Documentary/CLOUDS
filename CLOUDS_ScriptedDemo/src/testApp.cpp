@@ -81,7 +81,7 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "FlyOver2_OC");
     
-    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxShorter_OC");
+    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
     
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     

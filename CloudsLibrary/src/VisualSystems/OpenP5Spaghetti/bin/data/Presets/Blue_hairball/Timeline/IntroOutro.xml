@@ -1,6 +1,16 @@
 <keyframes>
     <key>
         <flag />
+        <time>00:00:00:394</time>
+        <value>1.000000000</value>
+    </key>
+    <key>
+        <flag />
+        <time>00:00:00:444</time>
+        <value>1.000000000</value>
+    </key>
+    <key>
+        <flag />
         <time>00:00:00:789</time>
         <value>0.375000000</value>
     </key>

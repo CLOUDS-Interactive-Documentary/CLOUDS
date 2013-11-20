@@ -2,9 +2,19 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000061035</XPosition>
-    <YPosition>445.000000000</YPosition>
+    <XPosition>849.000000000</XPosition>
+    <YPosition>213.000000000</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Electromagetique</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Electromagnetique</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>JonathanFlow</Name>
@@ -17,11 +27,11 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>WhiteWind</Name>
-    <Value>0</Value>
+    <Name>WavyFlock</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>WavyFlock</Name>
-    <Value>1</Value>
+    <Name>WhiteWind</Name>
+    <Value>0</Value>
 </Widget>

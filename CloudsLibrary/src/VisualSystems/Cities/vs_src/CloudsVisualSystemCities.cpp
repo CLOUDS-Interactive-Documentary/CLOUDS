@@ -263,7 +263,7 @@ void CloudsVisualSystemCities::selfSetup()
     edgeLineWidth = 1.5;
 	
 	//colormap
-	colorMap.loadImage(getVisualSystemDataPath() + "images/citiesProjectionDebug.png");
+	colorMap.loadImage(getVisualSystemDataPath() + "images/citiesProjectionDebug3.png");
 	
     //  Noise
     //
