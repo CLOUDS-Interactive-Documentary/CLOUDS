@@ -224,8 +224,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("Hover Color S", 0, 1., &questionHoverHSB.g);
 	questionGui->addSlider("Hover Color B", 0, 1., &questionHoverHSB.b);
 
-
-	
 	CloudsQuestion::addQuestionVariables( questionGui );
 	
 	guis.push_back(questionGui);
@@ -234,7 +232,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 	connectorGui->copyCanvasStyle(gui);
 	connectorGui->copyCanvasProperties(gui);
-	connectorGui->setName("Custom");
+	connectorGui->setName("connectors");
 	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 //	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
@@ -619,7 +617,6 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 
 void CloudsVisualSystemRGBD::generateTriangulation(){
 	
-	delaunay.reset();
 
 	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
 	   triangulationXStep == lastTriangulationXStep ||
@@ -627,7 +624,9 @@ void CloudsVisualSystemRGBD::generateTriangulation(){
 	{
 		return;
 	}
-	
+
+	delaunay.reset();
+
 	for(float y = 0; y < 480; y += triangulationYStep){
 		for(float x = 0; x < 640; x += triangulationXStep){
 			if(ofRandomuf() < percentChanceOfPoint){

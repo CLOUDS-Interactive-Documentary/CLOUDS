@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Particle</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>349.000000000</XPosition>
-    <YPosition>91.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>264.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>

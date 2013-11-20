@@ -35,8 +35,11 @@
 //	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
 
 	rgbdVisualSystem.playSystem();
+#ifdef OCULUS_RIFT
+	rgbdVisualSystem.loadPresetGUISFromName("RGBDOC");
+#else
 	rgbdVisualSystem.loadPresetGUISFromName("RGBDMain");
-	
+#endif
 	srand(ofGetSeconds());
 	
 	[self loadClip: parser.getRandomClip(true, false)];

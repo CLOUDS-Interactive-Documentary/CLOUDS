@@ -711,7 +711,7 @@ void CloudsPlaybackController::hideVisualSystem()
 		else{
 			currentVisualSystem->stopSystem();
 #ifdef OCULUS_RIFT
-			rgbdVisualSystem->loadPresetGUISFromName("RGBD_Oculus");
+			rgbdVisualSystem->loadPresetGUISFromName("RGBDOC");
 #else
 			rgbdVisualSystem->loadPresetGUISFromName("RGBDMain");
 #endif

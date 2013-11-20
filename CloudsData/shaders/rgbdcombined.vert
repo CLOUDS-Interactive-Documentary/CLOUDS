@@ -50,6 +50,9 @@ uniform vec3 headPosition;
 uniform vec4 faceFeatureRect;
 uniform vec4 deltaChangeRect;
 
+//uniform float sideAttenuate;
+//uniform float bottomAttenuate;
+
 varying float positionValid;
 varying vec4 faceFeatureSample;
 varying vec4 deltaChangeSample;
@@ -63,7 +66,10 @@ varying vec3 diffuseLightDirection;
 varying float diffuseAttenuate;
 
 varying float headPositionAttenuation;
+varying float edgeAttenuate;
 varying float forceFade;
+
+
 
 const float epsilon = 1e-6;
 
@@ -115,28 +121,36 @@ float map(float value, float inputMin, float inputMax, float outputMin, float ou
 	return clamp( (value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin, outputMin, outputMax);
 }
 
+
 void main(void){
 	
+	float bottomAttenuate = 0.;
+	float sideAttenuate   = 0.;
 	// Here we get the position, and account for the vertex position flowing
 	vec2 vertexPos = gl_Vertex.xy;
-	vertexPos = mix(vertexPos, gl_Normal.xy, triangleContract * isMeshed); // don't blend if we aren't discarding
-					
+
+
+	
 	vec2 samplePos = vec2(vertexPos.x, + mod(vertexPos.y + flowPosition, depthRect.w));
+	samplePos = mix(samplePos, gl_Normal.xy, (triangleContract * isMeshed) ); // don't blend if we aren't discarding
+	//edgeAttenuate = 1.0;
+	
     vec2 depthPos = samplePos + depthRect.xy;
     float depth = depthValueFromSample( depthPos );
+	
+	//edgeAttenuate = 1.0;
 	
 	// Reconstruct the 3D point position
     vec4 pos = vec4((samplePos.x - depthPP.x) * depth / depthFOV.x,
                     (samplePos.y - depthPP.y) * depth / depthFOV.y,
-                    depth,
-                    1.0);
+                    depth, 1.0);
     
 	//HEAD POSITION
 	headPositionAttenuation = map(distance(pos.xyz,headPosition), 400, 50, 0.0, 1.0);
 	
 	//extract the normal and pass it along to the fragment shader
 	
-	vec2 normalPos = mix(samplePos.xy, gl_Normal.xy,isMeshed) + normalRect.xy;
+	vec2 normalPos = mix(samplePos.xy, gl_Normal.xy, isMeshed) + normalRect.xy;
 //    normal = texture2DRect(texture, floor(normalPos) + vec2(.5,.5)).xyz * 2.0 - 1.0;
 	vec4 normalColor = texture2DRect(rgbdTexture, floor(normalPos) + vec2(.5,.5));
 
@@ -164,7 +178,13 @@ void main(void){
 	else {
 		positionValid = (depth < farClip && depth > nearClip) ? 1.0 : 0.0;
 	}
-    
+	
+	
+	edgeAttenuate = (1.0 - max( 0.0, pow( abs(320. - samplePos.x) / 320., 1.5) - sideAttenuate) ) *
+					(1.0 - max( 0.0, pow( samplePos.y / 480., 2.0) + bottomAttenuate ));
+	
+	edgeAttenuate += (1. - edgeAttenuate) * pow(map(pos.z,maxDepth,minDepth,0.0,1.0),2.);
+
 	//positionValid = 1.0;
 	
     // http://opencv.willowgarage.com/documentation/camera_calibration_and_3d_reconstruction.html
@@ -182,7 +202,7 @@ void main(void){
         vec2 uv = (colorFOV * xypp + colorPP) * colorScale;
 
         //gl_TexCoord[0].xy = ((uv-textureSize/2.0) * scale) + textureSize/2.0; 
-		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw);
+		gl_TexCoord[0].xy = clamp(uv,vec2(0.0,0.0), colorRect.zw*colorScale);
 	}
 	
 	//DIFFUSE LIGHT
