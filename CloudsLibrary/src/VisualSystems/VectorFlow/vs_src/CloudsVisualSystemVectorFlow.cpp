@@ -11,6 +11,7 @@ CloudsVisualSystemVectorFlow::CloudsVisualSystemVectorFlow(){
 	speed = 0;
 	sincPosition = ofVec2f(.5,.5);
 	sincRadius = 0;
+    sincStrength = 1;
 }
 
 //--------------------------------------------------------------
@@ -211,7 +212,7 @@ void CloudsVisualSystemVectorFlow::getSincSourceAngle(int x, int y, float& angle
 	if(sincRadius > 0 && distSq < sincRadSq){
 //		angle = ofMap( atan2(y,x) - atan2(mousePos.y,mousePos.x), -PI/2.0, PI/2.0, 0, 1.0 ) ;
 		angle = ofMap( atan2(sincToPos.y,sincToPos.x), -TWO_PI, TWO_PI, -1.0, 1.0 ) ;
-		weight = ofMap(distSq, 0, sincRadSq, 1.0, 0.0, true);
+		weight = ofMap(distSq, 0, sincRadSq, sincStrength, 0.0, true);
 //		weight = 1.;
 	}
 //		return
@@ -337,6 +338,7 @@ void CloudsVisualSystemVectorFlow::selfSetupRenderGui(){
 	rdrGui->addSlider("chaos", 5, 100, &chaos);
 	rdrGui->addSlider("speed", 0, .1, &speed);
 	rdrGui->addSlider("sincRadius", 0, 1.0, &sincRadius);
+    rdrGui->addSlider("sincStrength", 0, 10.0, &sincStrength);
 	rdrGui->addSlider("fieldAmplitude", .0, 10.0, &fieldAmplitude);
 
 	rdrGui->addSlider("oscFreq", 0, .1, &oscFrequency);
