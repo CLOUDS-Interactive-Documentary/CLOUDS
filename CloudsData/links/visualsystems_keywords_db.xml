@@ -811,6 +811,14 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
+<system name="Connectors_Rotating_BoxShorter_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Connectors_Testing">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1259,6 +1267,22 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
+</system>
+<system name="ExampleOpenSteer_BronzeTrails">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="ExampleOpenSteer_Streamers_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
 </system>
 <system name="ExampleVectorMath_AutoDraw_BlackonWhite">
     <keywords>drawing</keywords>
@@ -2008,6 +2032,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="MandalaComponents_PureFormEvolving_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="MandalaComponents_PureFormOC">
     <keywords>form|abstraction|3D|3d printing|aesthetics</keywords>
     <suppressions>
@@ -2104,6 +2136,14 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="MazeGenerator_FlyOver2_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="MazeGenerator_FlyOver_OC">
     <keywords></keywords>

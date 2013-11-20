@@ -73,15 +73,15 @@ void testApp::setup(){
     
     CloudsVisualSystemPreset& spaghetti = visualSystems.getPresetForSystem( "OpenP5Spaghetti", "BlueSmoothScribblesOC");
     
-    CloudsVisualSystemPreset& flock = visualSystems.getPresetForSystem( "ExampleOpenSteer", "BasicOC");
+    CloudsVisualSystemPreset& flock = visualSystems.getPresetForSystem( "ExampleOpenSteer", "Streamers_OC");
     
-    CloudsVisualSystemPreset& blobby = visualSystems.getPresetForSystem( "MandalaComponents", "PureFormOC");
+    CloudsVisualSystemPreset& blobby = visualSystems.getPresetForSystem( "MandalaComponents", "PureFormEvolving_OC");
     
     CloudsVisualSystemPreset& pulse = visualSystems.getPresetForSystem( "MandalaComponents", "JM_pulse1OC");
     
-    CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "FlyOver_OC");
+    CloudsVisualSystemPreset& maze = visualSystems.getPresetForSystem( "MazeGenerator", "FlyOver2_OC");
     
-    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
+    CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxShorter_OC");
     
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     
@@ -110,7 +110,7 @@ void testApp::setup(){
     clipIds.push_back("Casey - Developing a microworld");
     clipIds.push_back("Kyle_CH - coding is 1");
     clipIds.push_back("Shiffman - reality will only get you so far");
-    clipIds.push_back("Karolina - suspension of disbelief");
+    //clipIds.push_back("Karolina - suspension of disbelief");
     clipIds.push_back("Lauren - real and virtual 1");
     clipIds.push_back("JTNimoy - immersion2");
   
@@ -122,40 +122,52 @@ void testApp::setup(){
 		
 		CloudsClip& clip = parser.getClipWithLinkName(clipIds[i]);
 		
+        if(clipIds[i] == "Shantell - Coding gesturally"){
+        
+            delayClip = 5;
+        }
         if(clipIds[i] == "Karsten - immediate feedback"){
-			act->addVisualSystem( vectormath, lastClipEndTime + 5, 30); //start the preset 5 seconds in, play for 80 seconds
+			act->addVisualSystem( vectormath, lastClipEndTime + 7, 30); //start the preset 5 seconds in, play for 80 seconds
 		}
         
-        if(clipIds[i] == "Zach - Time slows down"){
-			act->addVisualSystem( connectors, lastClipEndTime, 30); //start the preset 5 seconds in, play for 80 seconds
-			delayClip = 20;
+         if(clipIds[i] == "Shiffman - sketching with code"){
+              delayClip = 5;
+         }
+        
+        if(clipIds[i] == "Marius - Continuous process of exploration"){
+			act->addVisualSystem( connectors, lastClipEndTime + 10, 35);
+            
 		}
         
         if(clipIds[i] == "Golan - woah"){
-			act->addVisualSystem( blobby, lastClipEndTime+1, 7);
+			act->addVisualSystem( blobby, lastClipEndTime, 15);
           //  act->addVisualSystem( pulse, lastClipEndTime+6, 5);
+            delayClip = 5;
 		}
         
         if(clipIds[i] == "Vera - Playing with a system"){
             act->addVisualSystem( maze, lastClipEndTime+1, 15);
-			delayClip = 20;
+			delayClip = 10;
         }
     
         
         if(clipIds[i] == "Shiffman - how far could we get?"){
-          act->addVisualSystem( flock, lastClipEndTime+5, 20);
+          act->addVisualSystem( flock, lastClipEndTime+5, 55);
+            
         }
     
         if(clipIds[i] == "Kyle_CH - coding is 1"){
             act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
+            delayClip = 5;
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
-            act->addVisualSystem( neurons, lastClipEndTime+1, 15);
+            act->addVisualSystem( neurons, lastClipEndTime+1, 25);
+            delayClip = 15;
         }
         
         if(clipIds[i] == "JTNimoy - immersion2"){
-            act->addVisualSystem( ocean_regular, lastClipEndTime+4, 15);
+            act->addVisualSystem( ocean_regular, lastClipEndTime+6, 40);
         }
 		
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+delayClip+2);
