@@ -148,8 +148,8 @@ void testApp::setup(){
 		}
         
         if(clipIds[i] == "Vera - Playing with a system"){
-            act->addVisualSystem( maze, lastClipEndTime+1, 15);
-			delayClip = 10;
+            act->addVisualSystem( maze, lastClipEndTime+1, 20);
+			delayClip = 15;
         }
     
         
@@ -159,17 +159,18 @@ void testApp::setup(){
         }
     
         if(clipIds[i] == "Kyle_CH - coding is 1"){
-            act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 15);
-            delayClip = 5;
+            act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 20);
+            delayClip = 10;
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
-            act->addVisualSystem( neurons, lastClipEndTime+1, 25);
+            act->addVisualSystem( neurons, lastClipEndTime+1, 30 );
             delayClip = 15;
         }
         
         if(clipIds[i] == "JTNimoy - immersion2"){
             act->addVisualSystem( ocean_regular, lastClipEndTime+6, 40);
+            delayClip = 10;
         }
 		
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+delayClip+2);
