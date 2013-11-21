@@ -99,6 +99,7 @@ void CloudsCaption::drawOverlay(){
     if (!isEnabled || !isPlaying) return;
     
     glDisable(GL_DEPTH_TEST);
+    ofPushStyle();
     
     float width = font->stringWidth(caption);
     //ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
