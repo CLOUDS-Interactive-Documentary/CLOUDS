@@ -232,10 +232,6 @@ void testApp::timelineEventFired(ofxTLBangEventArgs& bang){
 		else{
 			player.playScratchTrack( bang.flag );
 			player.setUseScratch( true );
-//			if(bang.flag != "Diederick_Intro_1-2.aif"){
-//				sound.setMasterAmp(0.0);
-//			}
-			
 		}
 		
 	}
