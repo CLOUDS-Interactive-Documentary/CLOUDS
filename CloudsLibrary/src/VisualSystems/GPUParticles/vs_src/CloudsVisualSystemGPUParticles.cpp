@@ -13,7 +13,12 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
+    customGui->addButton("REGENERATE", &shouldRegenerate);
+    
+	customGui->addIntSlider("Particle Count", 1, 2000, &numParticles);
+    customGui->addSlider("Particle Size", 1.0, 200.0, &particleSize);
+    customGui->addSlider("Time Step", 0.0001, .05, &timeStep);
+
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemGPUParticles::selfGuiEvent);
 	guis.push_back(customGui);
@@ -23,7 +28,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     
     particleSize = 30.0f;
     timeStep = 0.005f;
-    numParticles = 1000;
+    numParticles = 50;
     
     // Width and Heigth of the windows
     width = ofGetWindowWidth();
@@ -96,6 +101,54 @@ void CloudsVisualSystemGPUParticles::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+    
+    if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
+		regenerate();
+	}
+    
+}
+
+void CloudsVisualSystemGPUParticles::regenerate(){
+    
+    ofClear(0);
+    textureRes = (int)sqrt((float)numParticles);
+    numParticles = textureRes * textureRes;
+    
+    float * pos = new float[numParticles*3];
+    for (int x = 0; x < textureRes; x++){
+        for (int y = 0; y < textureRes; y++){
+            int i = textureRes * y + x;
+            
+            pos[i*3 + 0] = ofRandom(1.0); //x*offset;
+            pos[i*3 + 1] = ofRandom(1.0); //y*offset;
+            pos[i*3 + 2] = 0.0;
+        }
+    }
+    
+    posPingPong.allocate(textureRes, textureRes,GL_RGB32F);
+    posPingPong.src->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
+    posPingPong.dst->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
+    delete [] pos;    // Delete the array
+    
+    
+    // 2. Making arrays of float pixels with velocity information and the load it to a texture
+    float * vel = new float[numParticles*3];
+    for (int i = 0; i < numParticles; i++){
+        vel[i*3 + 0] = ofRandom(-1.0,1.0);
+        vel[i*3 + 1] = ofRandom(-1.0,1.0);
+        vel[i*3 + 2] = 1.0;
+    }
+    // Load this information in to the FBO«s texture
+    velPingPong.allocate(textureRes, textureRes,GL_RGB32F);
+    velPingPong.src->getTextureReference().loadData(vel, textureRes, textureRes, GL_RGB);
+    velPingPong.dst->getTextureReference().loadData(vel, textureRes, textureRes, GL_RGB);
+    delete [] vel; // Delete the array
+    
+    // Allocate the final
+    renderFBO.allocate(width, height, GL_RGB32F);
+    renderFBO.begin();
+    ofClear(0, 0, 0, 255);
+    renderFBO.end();
 }
 
 //Use system gui for global or logical settings, for exmpl
