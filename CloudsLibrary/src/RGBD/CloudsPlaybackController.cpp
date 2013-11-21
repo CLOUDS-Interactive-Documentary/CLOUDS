@@ -110,6 +110,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	fadingIntro = false;
 	
 	revertToIntroAfter1Act = false;
+	actFinished = false;
 	
 	showingVisualSystem = false;
 	currentAct = NULL;
@@ -584,8 +585,7 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 
 	//TEMPORARY FOR DEMO
 	if(revertToIntroAfter1Act){
-		playScratchTrack("00 Parallel Stripes.aif");
-		showIntro();
+		actFinished = true;
 	}
 	else{
 		rgbdVisualSystem->stopSystem();
@@ -727,7 +727,18 @@ void CloudsPlaybackController::hideVisualSystem()
 {
 	if(showingVisualSystem){
 		
-		if(currentVisualSystem == introSequence){
+		//HACK for demo!!!
+		if(revertToIntroAfter1Act && actFinished){
+			actFinished = false;
+			playScratchTrack("00 Parallel Stripes.aif");
+			rgbdVisualSystem->stopSystem();
+			currentVisualSystem = introSequence;
+			showIntro();
+			float fadeInDuration = 1;
+			//fade in the next system
+			addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
+		}
+		else if(currentVisualSystem == introSequence){
 			CloudsQuestion* q = introSequence->getSelectedQuestion();
 			CloudsClip& clip = q->clip;
 

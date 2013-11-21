@@ -446,6 +446,7 @@ void CloudsIntroSequence::selfExit(){
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
 	startedOnclick = false;
+	selectedQuestion = NULL;
 }
 
 void CloudsIntroSequence::selfEnd(){
