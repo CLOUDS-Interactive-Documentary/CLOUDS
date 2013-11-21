@@ -109,6 +109,9 @@ CloudsPlaybackController::CloudsPlaybackController(){
 	eventsRegistered = false;
 	fadingIntro = false;
 	
+	revertToIntroAfter1Act = false;
+	actFinished = false;
+	
 	showingVisualSystem = false;
 	currentAct = NULL;
 	showingClusterMap = false;
@@ -120,7 +123,7 @@ CloudsPlaybackController::CloudsPlaybackController(){
 CloudsPlaybackController::~CloudsPlaybackController(){
 }
 
-void CloudsPlaybackController::clearAct(){
+void CloudsPlaybackController::clearAct(bool destroyAct){
 	
 	if(currentAct != NULL){
 		vector<CloudsVisualSystemPreset>& currentPresets = currentAct->getAllVisualSystemPresets();
@@ -133,7 +136,9 @@ void CloudsPlaybackController::clearAct(){
 		}
 		currentAct->unregisterEvents(this);
         currentAct->unregisterEvents(&introSequence->getSelectedRun());
-		delete currentAct;
+		if(destroyAct){
+			delete currentAct;
+		}
 	}
 }
 
@@ -235,8 +240,18 @@ void CloudsPlaybackController::startScratchTracks(){
 		scratchPlayer.loadSound(scratchTracks[0]);
 		scratchPlayer.play();
 	}
-
 }
+
+void CloudsPlaybackController::playScratchTrack(string track){
+	for(int i = 0; i < scratchTracks.size(); i++){
+		if(ofFilePath::getFileName(scratchTracks[i]) == track){
+			scratchPlayer.loadSound(scratchTracks[i]);
+			scratchPlayer.play();
+			break;
+		}
+	}
+}
+
 CloudsVisualSystemClusterMap& CloudsPlaybackController::getClusterMap(){
 	return clusterMapVisualSystem;
 }
@@ -245,9 +260,11 @@ CloudsRGBDVideoPlayer& CloudsPlaybackController::getSharedVideoPlayer(){
 	return rgbdVisualSystem->getRGBDVideoPlayer();
 }
 
+
 void CloudsPlaybackController::setUseScratch(bool useScratch){
 	if(useScratch){
-		targetScratchVolume = 1.0;
+		targetScratchVolume = .9;
+		scratchVolumeAttenuate = 1.0;
 	}
 	else{
 		targetScratchVolume = 0.0;
@@ -268,26 +285,34 @@ void CloudsPlaybackController::setRun(CloudsRun &run){
 //    this->currentRun = &run;
 }
 
+
+
 void CloudsPlaybackController::showIntro(vector<CloudsClip>& possibleStartQuestions){
+	introSequence->setStartQuestions(possibleStartQuestions);
+	showIntro();
+}
+
+//private internal one
+void CloudsPlaybackController::showIntro(){
 	scratchVolumeAttenuate = 1.0;
 	
-	introSequence->playSystem();
-
-	introSequence->setStartQuestions(possibleStartQuestions);
 #ifdef OCULUS_RIFT
 	introSequence->loadPresetGUISFromName("Oculus");
 #else
 	introSequence->loadPresetGUISFromName("TunnelWarp");
 #endif
+	introSequence->playSystem();
+	
 	showingVisualSystem = true;
 	showingIntro = true;
-
+	
 }
 
 //--------------------------------------------------------------------
 void CloudsPlaybackController::playAct(CloudsAct* act){
 
-	clearAct();
+	bool destroyAct = currentAct != act;
+	clearAct(destroyAct);
 	
 	currentAct = act;
 
@@ -558,15 +583,21 @@ void CloudsPlaybackController::actEnded(CloudsActEventArgs& args){
 	
 	cout << "ACT ENDED TRIGGERED" << endl;
 
-	rgbdVisualSystem->stopSystem();
-	
-	clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
-	clusterMapVisualSystem.traverse();
-	
-	clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
-	clusterMapVisualSystem.playSystem();
-	
-	showingClusterMap = true;
+	//TEMPORARY FOR DEMO
+	if(revertToIntroAfter1Act){
+		actFinished = true;
+	}
+	else{
+		rgbdVisualSystem->stopSystem();
+		
+		clusterMapVisualSystem.setRun(introSequence->getSelectedRun());
+		clusterMapVisualSystem.traverse();
+		
+		clusterMapVisualSystem.loadPresetGUISFromName("DefaultCluster");
+		clusterMapVisualSystem.playSystem();
+		
+		showingClusterMap = true;
+	}
 }
 
 //--------------------------------------------------------------------
@@ -649,7 +680,9 @@ void CloudsPlaybackController::playClip(CloudsClip& clip){
 	if(clip.getID() != prerolledClipID){
 		prerollClip(clip,1);
 	}
-	rgbdVisualSystem->setupSpeaker(clip.person, "", clip.name);
+	
+	rgbdVisualSystem->setupSpeaker( clip.getSpeakerFirstName(),clip.getSpeakerLastName(), clip.name);
+	
 	prerolledClipID = "";
 	currentClip = clip;
 	
@@ -694,7 +727,18 @@ void CloudsPlaybackController::hideVisualSystem()
 {
 	if(showingVisualSystem){
 		
-		if(currentVisualSystem == introSequence){
+		//HACK for demo!!!
+		if(revertToIntroAfter1Act && actFinished){
+			actFinished = false;
+			playScratchTrack("00 Parallel Stripes.aif");
+			rgbdVisualSystem->stopSystem();
+			currentVisualSystem = introSequence;
+			showIntro();
+			float fadeInDuration = 1;
+			//fade in the next system
+			addControllerTween( fadeInVisualSystem, ofGetElapsedTimef(), fadeInDuration, 0, 1, NULL );
+		}
+		else if(currentVisualSystem == introSequence){
 			CloudsQuestion* q = introSequence->getSelectedQuestion();
 			CloudsClip& clip = q->clip;
 

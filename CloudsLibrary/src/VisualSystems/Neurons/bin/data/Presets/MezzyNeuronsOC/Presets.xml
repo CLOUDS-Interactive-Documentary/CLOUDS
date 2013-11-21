@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>849.000000000</XPosition>
+    <XPosition>1485.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -33,11 +33,16 @@
 <Widget>
     <Kind>2</Kind>
     <Name>MezzyNeuronsOC</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>showoff-nov7</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>VeryNervousSystem</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -47,6 +52,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>VeryNervousSystem</Name>
-    <Value>0</Value>
+    <Name>MezzyNueronsOC</Name>
+    <Value>1</Value>
 </Widget>

@@ -3,6 +3,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+//--------------------------------------------------------------
+map<string, int> CloudsVisualSystemRGBD::appearances;
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
@@ -62,6 +64,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.setup();
 	
+    captionFontSize = 12;
+    rebuildCaptionFont();
 
 
 //	enum RGBDTransitionType
@@ -72,6 +76,15 @@ void CloudsVisualSystemRGBD::selfSetup(){
 //	RGBD = 3
 //  };
 
+}
+
+void CloudsVisualSystemRGBD::rebuildCaptionFont(){
+    if(bUseOculusRift){
+        captionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+    }
+    else{
+        captionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", captionFontSize);
+    }
 }
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
@@ -283,6 +296,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
+    
+    cloudsCaption.update();
 	
 	if(currentCamera == &transitionCam){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
@@ -612,7 +627,28 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 //	this->speakerFirstName = speakerFirstName;
 //	this->speakerLastName = speakerLastName;
 //	this->quoteName = quoteName;
-	
+    
+	// Add an appearance for this speaker.
+    string key = speakerFirstName + " " + speakerLastName;
+    
+    if (appearances.find(key) == appearances.end()) {
+        appearances[key] = 1;
+    }
+    else {
+        appearances[key]++;
+    }
+    
+    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
+    
+    if (appearances[key] == 2) {
+        cloudsCaption.font = &captionFont;
+        cloudsCaption.caption = key;
+        cloudsCaption.isEnabled = true;
+        cloudsCaption.begin();
+    }
+    else {
+        cloudsCaption.isEnabled = false;
+    }
 }
 
 void CloudsVisualSystemRGBD::generateTriangulation(){
@@ -914,6 +950,8 @@ void CloudsVisualSystemRGBD::selfDrawOverlay() {
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->drawOverlay();
 	}
+    
+    cloudsCaption.drawOverlay();
 
 	//test overlay
 	ofSetColor(0,0,0,0);
@@ -928,6 +966,8 @@ void CloudsVisualSystemRGBD::selfExit(){
 void CloudsVisualSystemRGBD::selfBegin(){
 	
 	cloudsCamera.jumpToPosition();
+    
+    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

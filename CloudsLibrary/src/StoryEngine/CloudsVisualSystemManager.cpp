@@ -678,7 +678,6 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 			}
 		}
 	}
-    
 }
 #endif
 

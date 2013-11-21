@@ -31,6 +31,8 @@ class testApp : public ofBaseApp{
 	
 	bool useScratch;
 	
+	ofxTLFlags* soundTrack;
 	
+	void timelineEventFired(ofxTLBangEventArgs& bang);
 	void audioRequested(float * output, int bufferSize, int nChannels);
 };

@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>OFX_UI_WIDGET_CANVAS</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1697.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>435.000000000</XPosition>
+    <YPosition>588.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SPEED</Name>
-    <Value>-0.088669352</Value>
+    <Value>-0.039408866</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

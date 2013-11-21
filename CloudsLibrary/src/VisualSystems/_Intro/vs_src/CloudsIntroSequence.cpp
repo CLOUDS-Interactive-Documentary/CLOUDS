@@ -446,6 +446,10 @@ void CloudsIntroSequence::selfExit(){
 void CloudsIntroSequence::selfBegin(){
 	timeline->stop();
 	startedOnclick = false;
+	selectedQuestion = NULL;
+	for(int i = 0; i < startQuestions.size(); i++){
+		startQuestions[i].stopHovering();
+	}
 }
 
 void CloudsIntroSequence::selfEnd(){

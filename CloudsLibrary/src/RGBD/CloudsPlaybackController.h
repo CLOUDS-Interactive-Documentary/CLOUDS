@@ -189,8 +189,10 @@ class CloudsPlaybackController {
 	
 	string nextPresetName;
 	
+	void playScratchTrack(string track);
 	vector<string> scratchTracks;
 	ofSoundPlayer scratchPlayer;
+	
 	int currentScratch;
 	float currentVolume;
 	float scratchVolumeAttenuate;
@@ -200,6 +202,9 @@ class CloudsPlaybackController {
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 //    void setRandomQuestion(CloudsClip& clip);
 	
+	bool revertToIntroAfter1Act;//demo hack
+	bool actFinished;
+	
 	vector<CloudsClip> fakeQuestions;
   protected:
 
@@ -208,8 +213,6 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-//	CloudsAct* mandatoryAct;
-//    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
@@ -232,11 +235,12 @@ class CloudsPlaybackController {
 
 	//VISUAL SYSTEMS
 	//
+	void showIntro();
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
 	bool fadingIntro;
-	void clearAct();
+	void clearAct(bool destroy = true);
 	
 	//if there is a system playing this wil be non-null
 	ofPtr<CloudsVisualSystem> nextSystem;
