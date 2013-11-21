@@ -649,11 +649,11 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	ofDirectory(standaloneExportFolder).create();
 	
 	cout << "COPYING PRESETS!" << endl;
-	set< ofPtr<CloudsVisualSystem> > systemsWithPresets;
+	set< string > systemsWithPresets;
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
             
-			string presetSourceDirectory = presets[i].system->getVisualSystemDataPath() + "Presets/" + presets[i].presetName;
+			string presetSourceDirectory = CloudsVisualSystem::getVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
 			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
             
 			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
@@ -661,20 +661,21 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 			ofDirectory(presetTargetDirectory).create(true);
 			ofDirectory(presetSourceDirectory).copyTo(presetTargetDirectory, true);
 			
-			systemsWithPresets.insert(presets[i].system);
+			systemsWithPresets.insert(presets[i].systemName);
 		}
 	}
     
 	cout << "COPYING SUPPORTING FILES" << endl;
-	set< ofPtr<CloudsVisualSystem> >::iterator it;
+	set< string >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
-		ofPtr<CloudsVisualSystem> sys = *it;
-		ofDirectory otherFiles( sys->getVisualSystemDataPath() );
+//		ofPtr<CloudsVisualSystem> sys = *it;
+		string systemName = CloudsVisualSystem::getVisualSystemDataPath(*it);
+		ofDirectory otherFiles( systemName );
 		otherFiles.listDir();
 		for(int f = 0; f < otherFiles.size(); f++){
 			if(otherFiles.getName(f) != "Presets"){
 				cout << "copying file " << otherFiles.getName(f);
-				otherFiles.getFile(f).copyTo(standaloneExportFolder + "VisualSystems/" + sys->getSystemName());
+				otherFiles.getFile(f).copyTo( standaloneExportFolder + "VisualSystems/" + *it );
 			}
 		}
 	}
