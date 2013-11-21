@@ -22,7 +22,6 @@ CloudsCaption::CloudsCaption(){
 }
 
 void CloudsCaption::begin(){
-    cout << "BEGIN BEGIN BEGIN " << isEnabled << endl;
     if (isEnabled) {
         isPlaying = true;
         caption = ofToUpper(caption);
@@ -100,6 +99,7 @@ void CloudsCaption::drawOverlay(){
     
     glDisable(GL_DEPTH_TEST);
     ofPushStyle();
+    ofEnableAlphaBlending();
     
     float width = font->stringWidth(caption);
     //ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
@@ -117,8 +117,8 @@ void CloudsCaption::drawOverlay(){
     //		ofRect(screenPosition.x, screenPosition.y-25, width+40, 50);
     //		ofPopStyle();
     
-    float secondsToWriteCaption = caption.size() / charsPerSecond;
-    int charactersToType = ofMap(ofGetElapsedTimef() - birthTime, 0, secondsToWriteCaption, 0, caption.size(), true);
+    float millisToWriteCaption = (caption.size() / charsPerSecond) * 1000;
+    int charactersToType = ofMap(ofGetElapsedTimeMillis() - birthTime, 0, millisToWriteCaption, 0, caption.size(), true);
     string substring = caption.substr(0, charactersToType);
     //		if(font != NULL){
     //			ofPushStyle();
@@ -128,17 +128,8 @@ void CloudsCaption::drawOverlay(){
     //			ofSetColor(255);
     //			ofEnableBlendMode(OF_BLENDMODE_ADD);
     float alpha = ofMap(ofGetElapsedTimeMillis(), deathTime - deathDuration, deathTime, 255, 0, true);
-    cout << alpha << endl;
-//    ofSetColor(255, alpha);
-    ofSetColor(255);
+    ofSetColor(255, alpha);
     font->drawString(substring, screenPosition.x+10, screenPosition.y);
-    font->drawString(substring, screenPosition.x+10, screenPosition.y);
-    //			ofPopStyle();
-    //		}
-    //		else{
-    //			ofDrawBitmapString(substring, screenPosition);
-    //		}
-    
     
     ofPopStyle();
     glEnable(GL_DEPTH_TEST);

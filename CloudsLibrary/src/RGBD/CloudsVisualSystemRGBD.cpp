@@ -640,10 +640,11 @@ void CloudsVisualSystemRGBD::speakerChanged(){
     
     cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
     
-    if (true || appearances[key] == 2) {
+    if (appearances[key] == 2) {
         cloudsCaption.font = &captionFont;
         cloudsCaption.caption = key;
         cloudsCaption.isEnabled = true;
+        cloudsCaption.begin();
     }
     else {
         cloudsCaption.isEnabled = false;
@@ -966,7 +967,6 @@ void CloudsVisualSystemRGBD::selfBegin(){
 	
 	cloudsCamera.jumpToPosition();
     
-    cout << "SELF BEGIN" << endl;
     cloudsCaption.begin();
 }
 
