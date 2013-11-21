@@ -167,12 +167,9 @@ void testApp::setup(){
         }
     
         if(clipIds[i] == "Kyle_CH - coding is 1"){
-            
             act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 20);
             delayClip = 10;
-
 			trackSwitchTime = lastClipEndTime;
-
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
