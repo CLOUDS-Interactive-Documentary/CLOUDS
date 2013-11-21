@@ -3034,6 +3034,14 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
+<system name="Ocean_DuskOcean_JG">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Ocean_Exoplanet_dusk_walk">
     <keywords>videogames</keywords>
     <suppressions>
@@ -3263,7 +3271,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Points">
     <keywords>big data</keywords>
