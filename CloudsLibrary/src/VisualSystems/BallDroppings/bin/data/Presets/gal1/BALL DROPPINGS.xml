@@ -1,0 +1,42 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>BALL DROPPINGS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>989.000000000</XPosition>
+    <YPosition>26.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DROP DELAY</Name>
+    <Value>657.142822266</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FRICTION</Name>
+    <Value>0.991157651</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRAVITY</Name>
+    <Value>0.070600986</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FREQUENCY RANGE</Name>
+    <Value>29507.388671875</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BALL BRIGHTNESS</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EMITTER BRIGHTNESS</Name>
+    <Value>0.167487681</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINES BRIGHTNESS</Name>
+    <Value>0.330049247</Value>
+</Widget>

@@ -237,15 +237,12 @@ void _C::generateFlythrough(){
     _N *thisNode = NULL;
     vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
     for(;nit!=_N::all.end();nit++){
-        
         if( (*nit)->isTerminal() ){
-            
             if((*nit)->generation > youngestGen) {
                 youngestGen = (*nit)->generation;
                 thisNode = (*nit);
             }
         }
-        
     }
     
     
@@ -255,10 +252,10 @@ void _C::generateFlythrough(){
     
     float camPosOffset = 1.5;
     
-    while( thisNode->parent != NULL  ){
-        
+	//this node is null??
+    while(thisNode != NULL && thisNode->parent != NULL  ){
+
         thisNode->isPartOfCamPath = true;
-        
         cloudsPathCam.addPositionControlVertex( *thisNode);
         //cloudsPathCam.addTargetControlVertex(ofVec3f());
         //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
@@ -268,7 +265,8 @@ void _C::generateFlythrough(){
         
         if( thisNode->parent != NULL ){
             thisNode = thisNode->parent;
-        }else{
+        }
+		else{
             break;
         }
     }
@@ -277,18 +275,17 @@ void _C::generateFlythrough(){
     // rather than seeing where the loop wraps around.
     
     deque<ofVec3f>::reverse_iterator pit = pts.rbegin();
-    for(;pit!=pts.rend();pit++){
+    for(; pit != pts.rend(); pit++){
         cloudsPathCam.addPositionControlVertex( *pit);
         //cloudsPathCam.addTargetControlVertex(ofVec3f());
         //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
     }
-    
+
     // orient cam path to look inward,
-    // so we always start out seeing something full
+    // so we always start out seeing something nefull
     ofCamera& cam = getCameraRef();
     cam.lookAt( -firstPoint );
 }
-
 
 ofCamera& _C::getCameraRef(){
     if(cloudsPathCam.getPositionSpline().getControlVertices().size()==0 ){

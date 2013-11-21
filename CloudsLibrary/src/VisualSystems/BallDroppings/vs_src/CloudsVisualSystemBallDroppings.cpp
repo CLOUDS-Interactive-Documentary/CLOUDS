@@ -12,8 +12,6 @@
 
 //These methods let us add custom GUI parameters and respond to their events
 //statics
-float CloudsVisualSystemBallDroppings::friction;
-float CloudsVisualSystemBallDroppings::frequencyRange;
 
 CloudsVisualSystemBallDroppings::CloudsVisualSystemBallDroppings()
 {
@@ -23,12 +21,20 @@ void CloudsVisualSystemBallDroppings::selfSetupGui()
 {
     ParamManager* pm = &ParamManager::getInstance();
 
-    customGui = new ofxUISuperCanvas("MAZE BUILDER", gui);
+    customGui = new ofxUISuperCanvas("BALL DROPPINGS", gui);
     customGui->copyCanvasStyle(gui);
     customGui->copyCanvasProperties(gui);
-	customGui->setName("MAZE BUILDER");
+	customGui->setName("BALL DROPPINGS");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
+    customGui->addSpacer();
+    customGui->addSlider("DROP DELAY", 50, 1500, &ball_drop_rate);
+    customGui->addSlider("FRICTION", 0.8f, 0.999f, &friction);
+    customGui->addSlider("GRAVITY", 0.001f, 0.2f, &gravity);
+    customGui->addSlider("FREQUENCY RANGE", 10000, 50000, &frequencyRange);
+    customGui->addSlider("BALL BRIGHTNESS", 0, 1, &ballcolor);
+    customGui->addSlider("EMITTER BRIGHTNESS", 0, 1, &emitterColor);
+    customGui->addSlider("LINES BRIGHTNESS", 0, 1, &linesColor);
     /*
 
     customGui->addSpacer();
@@ -136,7 +142,7 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	fullScreenMode=true;
 	oldMillis=0;
 	clickCount=0;
-	ball_drop_rate = 3000;
+	ball_drop_rate = 800;
 	emptyBalls=0;
 	closestLine=0;
 	closestLineVertex=0;
@@ -153,6 +159,8 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	paused = false;
 	gravity = 0.01f;
 	ballcolor=1;
+    linesColor=1;
+    emitterColor=0.3;
 	oldMouse.copyFrom(-1,-1,-1);
     
 	undoables = new LinkedList();
@@ -163,7 +171,6 @@ void CloudsVisualSystemBallDroppings::selfSetup()
 	//load a new ball.
 	Ball *b = new Ball(hole, balls->size(), getVisualSystemDataPath() + "sine.wav");
 	balls->push((long)b);
-	ball_drop_rate = 3000;
 	
 	font.loadFont("Verdana.ttf",8);
 	displayAlpha = 0;
@@ -215,10 +222,10 @@ void CloudsVisualSystemBallDroppings::selfDrawDebug()
 void CloudsVisualSystemBallDroppings::selfDrawBackground()
 {
     
-	ofBackground(!ballcolor*255,!ballcolor*255,!ballcolor*255);
+	ofBackground(!ballcolor*255);
     
 	//draw balldropper
-	ofSetColor(51,51,51);
+	ofSetColor(emitterColor*255);
 	ofCircle( holeLag.x,holeLag.y ,4);
     
     
@@ -228,7 +235,7 @@ void CloudsVisualSystemBallDroppings::selfDrawBackground()
 	}
     
 	//draw the regular lines
-	ofSetColor(ballcolor*255,ballcolor*255,ballcolor*255);
+	ofSetColor(linesColor*255);
 	for(int i=0;i<lines->size();i++){
 		EditLine *thisLine = (EditLine*)(lines->get(i));
 		ofLine(thisLine->x1, thisLine->y1, thisLine->x2,thisLine->y2 );
@@ -268,6 +275,7 @@ void CloudsVisualSystemBallDroppings::selfDrawBackground()
 	ofFill();
     
 	//draw all the balls
+    ofSetColor(ballcolor*255);
 	for(int i=0;i<balls->size();i++){
 		if(balls->get(i)!=0){
 			Ball *b = (Ball*)(balls->get(i));
@@ -492,12 +500,12 @@ void CloudsVisualSystemBallDroppings::step(){
 					if(thisLine->checkBallCollide(b)){
 						//then also reset my memory to give me 1 frame's worth of amnesia.
 						b->amnesia();
-						b->bounce( thisLine->x1,thisLine->y1, thisLine->x2,thisLine->y2);
+						b->bounce( thisLine->x1,thisLine->y1, thisLine->x2,thisLine->y2, frequencyRange);
 						break;//skip the rest of the lines
 					}
 				}
                 
-				b->stepPhysics();
+				b->stepPhysics(friction);
 			}
 		}
 	}

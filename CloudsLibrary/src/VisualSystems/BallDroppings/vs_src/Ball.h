@@ -35,10 +35,10 @@ class Ball: public V3{
     Ball(V3 v,float oldX_,float oldY_,float forceX_,float forceY_,float jitter, std::string soundfile);
     Ball(std::string soundfile);
 		~Ball();
-		void stepPhysics();
+		void stepPhysics(float friction);
 		void applyForce(float x,float y);
     void initMem(std::string soundfile);
-		void bounce(float x1,float y1,float x2,float y2);
+		void bounce(float x1,float y1,float x2,float y2, float freqRange);
 		void amnesia();
 };
 

@@ -86,7 +86,7 @@ void testApp::setup(){
     CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     
-    CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "NightOceanOC");
+    CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "DuskOcean_JG");
     
     CloudsVisualSystemPreset& neurons = visualSystems.getPresetForSystem( "Neurons", "MezzyNeuronsOC");
 
@@ -167,12 +167,9 @@ void testApp::setup(){
         }
     
         if(clipIds[i] == "Kyle_CH - coding is 1"){
-            
             act->addVisualSystem( ocean_gmuk, lastClipEndTime+1, 20);
             delayClip = 10;
-
 			trackSwitchTime = lastClipEndTime;
-
         }
         
         if(clipIds[i] == "Lauren - real and virtual 1"){
@@ -181,7 +178,7 @@ void testApp::setup(){
         }
         
         if(clipIds[i] == "JTNimoy - immersion2"){
-            act->addVisualSystem( ocean_regular, lastClipEndTime+6, 30);
+            act->addVisualSystem( ocean_regular, lastClipEndTime+6, 60);
 
         }
 		

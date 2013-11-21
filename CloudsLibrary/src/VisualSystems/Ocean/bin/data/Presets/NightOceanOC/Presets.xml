@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>1273.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,6 +23,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>DunesAtNightOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DuskOcean_JG</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -102,11 +107,6 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>NightOceanOC</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
     <Name>Points</Name>
     <Value>0</Value>
 </Widget>
@@ -129,4 +129,9 @@
     <Kind>2</Kind>
     <Name>WireframeNightOcean</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NightOceanOC</Name>
+    <Value>1</Value>
 </Widget>
