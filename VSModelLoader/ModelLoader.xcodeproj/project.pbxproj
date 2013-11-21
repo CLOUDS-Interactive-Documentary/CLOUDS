@@ -995,6 +995,7 @@
 		850EE813183072BC004411A3 /* ModelLoader copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ModelLoader copy-Info.plist"; path = "/Users/jonathanminard/Documents/Development/openFrameworks/apps/CLOUDS/VSModelLoader/ModelLoader copy-Info.plist"; sourceTree = "<absolute>"; };
 		850EE89C18307364004411A3 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		850EE89D18307364004411A3 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
+		85B5E30E183AB4E600E6BF8E /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../../CloudsLibrary/src/CloudsGlobal.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -2696,6 +2697,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				85B5E30E183AB4E600E6BF8E /* CloudsGlobal.h */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,

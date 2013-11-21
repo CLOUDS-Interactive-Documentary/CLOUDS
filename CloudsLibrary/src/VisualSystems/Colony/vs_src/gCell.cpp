@@ -18,8 +18,8 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     
     /* Default Params */
     //TODO Replace magic numbers
-    acceleration = ofVec2f(ofRandom(-5,5), ofRandom(-5,5)); //ofVec2f(0,0);
-    velocity = ofVec2f(ofRandom(-5,5), ofRandom(-5,5));
+    acceleration = ofVec2f(ofRandom(-4,4), ofRandom(-4,4)); //ofVec2f(0,0);
+    velocity = ofVec2f(ofRandom(-3,3), ofRandom(-3,3));
     cellSize = 1;
     age = 0;
     nutrientLevel = 50;
