@@ -203,6 +203,6 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	float transitionVal;
 	
     //caption
-    map<string, int> appearances;
+    static map<string, int> appearances;
 	
 };

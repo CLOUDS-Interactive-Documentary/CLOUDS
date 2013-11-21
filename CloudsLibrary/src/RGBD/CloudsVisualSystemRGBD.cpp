@@ -3,6 +3,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+//--------------------------------------------------------------
+map<string, int> CloudsVisualSystemRGBD::appearances;
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
@@ -294,6 +296,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
+    
+    cloudsCaption.update();
 	
 	if(currentCamera == &transitionCam){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
@@ -626,19 +630,23 @@ void CloudsVisualSystemRGBD::speakerChanged(){
     
 	// Add an appearance for this speaker.
     string key = speakerFirstName + " " + speakerLastName;
+    
     if (appearances.find(key) == appearances.end()) {
-        appearances[quoteName] = 1;
+        appearances[key] = 1;
     }
     else {
-        ++appearances[quoteName];
+        appearances[key]++;
     }
     
-    if (true || appearances[quoteName] == 2) {
-        ofLogNotice("CloudsVisualSystemRGBD::speakerChanged") << "Display name '" << key << "' in overlay" << endl;
-        
+    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
+    
+    if (true || appearances[key] == 2) {
         cloudsCaption.font = &captionFont;
-        cloudsCaption.caption = quoteName;
-        cloudsCaption.setup();
+        cloudsCaption.caption = key;
+        cloudsCaption.isEnabled = true;
+    }
+    else {
+        cloudsCaption.isEnabled = false;
     }
 }
 
@@ -957,6 +965,9 @@ void CloudsVisualSystemRGBD::selfExit(){
 void CloudsVisualSystemRGBD::selfBegin(){
 	
 	cloudsCamera.jumpToPosition();
+    
+    cout << "SELF BEGIN" << endl;
+    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

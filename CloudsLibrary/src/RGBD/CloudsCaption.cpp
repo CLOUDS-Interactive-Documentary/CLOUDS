@@ -1,12 +1,14 @@
 #include "CloudsCaption.h"
 #include "CloudsGlobal.h"
-#include "ofxTween.h"
 
 CloudsCaption::CloudsCaption(){
 	
-	isSetup = false;
+    isEnabled = false;
+	isPlaying = false;
 	charsPerSecond = 45;
-	
+    lifeDuration = 3000;
+	deathDuration = 300;
+    
 	font = NULL;
 	
 	expandPercent = .1;
@@ -19,21 +21,18 @@ CloudsCaption::CloudsCaption(){
 	
 }
 
-void CloudsCaption::setup(){
-	if(!isSetup){
-		isSetup = true;
-		caption = ofToUpper(caption);
-        birthTime = ofGetElapsedTimef();
-	}
+void CloudsCaption::begin(){
+    cout << "BEGIN BEGIN BEGIN " << isEnabled << endl;
+    if (isEnabled) {
+        isPlaying = true;
+        caption = ofToUpper(caption);
+        birthTime = ofGetElapsedTimeMillis();
+        deathTime = birthTime + lifeDuration + deathDuration;
+    }
 }
 
 void CloudsCaption::update(){
-//	
-//	ofVec3f screenPoint = cam->worldToScreen(position);
-//	currentScreenPoint = ofVec2f(screenPoint.x,screenPoint.y);
-//	
-//	ofVec3f screenPointTop = cam->worldToScreen(position + ofVec3f(0,radius+(radius*expandPercent),0));
-//	screenRadius = abs( screenPointTop.y - currentScreenPoint.y );
+
 }
 
 void CloudsCaption::draw(){
@@ -97,13 +96,18 @@ void CloudsCaption::draw(){
 }
 
 void CloudsCaption::drawOverlay(){
-    if (!isSetup) return;
+    if (!isEnabled || !isPlaying) return;
     
     glDisable(GL_DEPTH_TEST);
     
     float width = font->stringWidth(caption);
     //ofVec2f screenPosition(ofGetWidth()/2 - width/2, ofGetHeight() * .66);
-    ofVec2f screenPosition = ofVec2f(20,20);
+#ifdef OCULUS_RIFT
+    // TODO: Use vars for screen position
+    ofVec2f screenPosition = ofVec2f(20, 200);
+#else
+    ofVec2f screenPosition = ofVec2f(20, ofGetHeight() - 40);
+#endif
     
     //DRAW BACKBOX
     //		ofPushStyle();
@@ -122,6 +126,10 @@ void CloudsCaption::drawOverlay(){
     //			font->drawString(substring, screenPosition.x+12, screenPosition.y+2);
     //			ofSetColor(255);
     //			ofEnableBlendMode(OF_BLENDMODE_ADD);
+    float alpha = ofMap(ofGetElapsedTimeMillis(), deathTime - deathDuration, deathTime, 255, 0, true);
+    cout << alpha << endl;
+//    ofSetColor(255, alpha);
+    ofSetColor(255);
     font->drawString(substring, screenPosition.x+10, screenPosition.y);
     font->drawString(substring, screenPosition.x+10, screenPosition.y);
     //			ofPopStyle();
