@@ -181,7 +181,7 @@ void testApp::setup(){
         }
         
         if(clipIds[i] == "JTNimoy - immersion2"){
-            act->addVisualSystem( ocean_regular, lastClipEndTime+6, 30);
+            act->addVisualSystem( ocean_regular, lastClipEndTime+6, 60);
 
         }
 		
