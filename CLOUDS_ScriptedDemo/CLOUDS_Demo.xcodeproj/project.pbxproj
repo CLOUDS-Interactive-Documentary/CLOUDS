@@ -764,7 +764,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* CLOUDSScriptedDemoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDSScriptedDemoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* CLOUDS_DemoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_DemoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -1653,11 +1653,11 @@
 		E7F77742177395910096AEF7 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsQuestion.h; sourceTree = "<group>"; };
 		E7FB24C91830D470009EBD0E /* MazeSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MazeSettings.cpp; sourceTree = "<group>"; };
 		E7FB24CA1830D470009EBD0E /* MazeSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeSettings.h; sourceTree = "<group>"; };
-		E7FB262A1830D4C0009EBD0E /* CLOUDSScriptedDemo_OCULUSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDSScriptedDemo_OCULUSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7FB262A1830D4C0009EBD0E /* CLOUDS_Demo_OCULUSDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOUDS_Demo_OCULUSDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FB278E1830D4FE009EBD0E /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7FB278F1830D4FE009EBD0E /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
-		E7FB284D1830D60E009EBD0E /* CLOUDSScriptedDemo_OCULUS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDSScriptedDemo_OCULUS.plist; sourceTree = "<group>"; };
-		E7FB284E1830D60E009EBD0E /* CLOUDSScriptedDemo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDSScriptedDemo.plist; sourceTree = "<group>"; };
+		E7FB284D1830D60E009EBD0E /* CLOUDS_Demo_OCULUS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDS_Demo_OCULUS.plist; sourceTree = "<group>"; };
+		E7FB284E1830D60E009EBD0E /* CLOUDS_Demo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CLOUDS_Demo.plist; sourceTree = "<group>"; };
 		E7FC8C0217DA9AA5007BEFA5 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		E7FC8C0317DA9AA5007BEFA5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		E7FC8C0417DA9AA5007BEFA5 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
@@ -1861,15 +1861,15 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				E7FB284D1830D60E009EBD0E /* CLOUDSScriptedDemo_OCULUS.plist */,
-				E7FB284E1830D60E009EBD0E /* CLOUDSScriptedDemo.plist */,
+				E7FB284D1830D60E009EBD0E /* CLOUDS_Demo_OCULUS.plist */,
+				E7FB284E1830D60E009EBD0E /* CLOUDS_Demo.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* CLOUDSScriptedDemoDebug.app */,
-				E7FB262A1830D4C0009EBD0E /* CLOUDSScriptedDemo_OCULUSDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* CLOUDS_DemoDebug.app */,
+				E7FB262A1830D4C0009EBD0E /* CLOUDS_Demo_OCULUSDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4850,9 +4850,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* CLOUDSScriptedDemo */ = {
+		E4B69B5A0A3A1756003C02F2 /* CLOUDS_Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CLOUDSScriptedDemo" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CLOUDS_Demo" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -4864,14 +4864,14 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = CLOUDSScriptedDemo;
+			name = CLOUDS_Demo;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* CLOUDSScriptedDemoDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* CLOUDS_DemoDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E7FB24CC1830D4C0009EBD0E /* CLOUDSScriptedDemo_OCULUS */ = {
+		E7FB24CC1830D4C0009EBD0E /* CLOUDS_Demo_OCULUS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDSScriptedDemo_OCULUS" */;
+			buildConfigurationList = E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDS_Demo_OCULUS" */;
 			buildPhases = (
 				E7FB24CF1830D4C0009EBD0E /* Sources */,
 				E7FB260B1830D4C0009EBD0E /* Frameworks */,
@@ -4883,9 +4883,9 @@
 			dependencies = (
 				E7FB24CD1830D4C0009EBD0E /* PBXTargetDependency */,
 			);
-			name = CLOUDSScriptedDemo_OCULUS;
+			name = CLOUDS_Demo_OCULUS;
 			productName = myOFApp;
-			productReference = E7FB262A1830D4C0009EBD0E /* CLOUDSScriptedDemo_OCULUSDebug.app */;
+			productReference = E7FB262A1830D4C0009EBD0E /* CLOUDS_Demo_OCULUSDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -4893,7 +4893,7 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDSScriptedDemo" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS_Demo" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -4914,8 +4914,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* CLOUDSScriptedDemo */,
-				E7FB24CC1830D4C0009EBD0E /* CLOUDSScriptedDemo_OCULUS */,
+				E4B69B5A0A3A1756003C02F2 /* CLOUDS_Demo */,
+				E7FB24CC1830D4C0009EBD0E /* CLOUDS_Demo_OCULUS */,
 			);
 		};
 /* End PBXProject section */
@@ -5720,7 +5720,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
-				INFOPLIST_FILE = CLOUDSScriptedDemo.plist;
+				INFOPLIST_FILE = CLOUDS_Demo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5813,7 +5813,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				PREBINDING = NO;
-				PRODUCT_NAME = CLOUDSScriptedDemoDebug;
+				PRODUCT_NAME = CLOUDS_DemoDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5833,7 +5833,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
-				INFOPLIST_FILE = CLOUDSScriptedDemo.plist;
+				INFOPLIST_FILE = CLOUDS_Demo.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5922,7 +5922,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
 				PREBINDING = NO;
-				PRODUCT_NAME = CLOUDSScriptedDemo;
+				PRODUCT_NAME = CLOUDS_Demo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -5954,7 +5954,7 @@
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = CLOUDSScriptedDemo_OCULUS.plist;
+				INFOPLIST_FILE = CLOUDS_Demo_OCULUS.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6059,7 +6059,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CLOUDSScriptedDemo_OCULUSDebug;
+				PRODUCT_NAME = CLOUDS_Demo_OCULUSDebug;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6090,7 +6090,7 @@
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = CLOUDSScriptedDemo_OCULUS.plist;
+				INFOPLIST_FILE = CLOUDS_Demo_OCULUS.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6191,7 +6191,7 @@
 					"$(OF_PATH)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release/libovr.a",
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CLOUDSScriptedDemo_OCULUS;
+				PRODUCT_NAME = CLOUDS_Demo_OCULUS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -6199,7 +6199,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDSScriptedDemo" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "CLOUDS_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -6208,7 +6208,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CLOUDSScriptedDemo" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "CLOUDS_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
@@ -6217,7 +6217,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDSScriptedDemo_OCULUS" */ = {
+		E7FB26271830D4C0009EBD0E /* Build configuration list for PBXNativeTarget "CLOUDS_Demo_OCULUS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7FB26281830D4C0009EBD0E /* Debug */,
