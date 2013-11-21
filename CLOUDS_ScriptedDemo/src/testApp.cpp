@@ -257,7 +257,6 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 //	if(key == 'p'){
-    
 //    if( key == 'T'){
 //        CloudsClip& clip = parser.getRandomClip(true,true);
 //        player.setRandomQuestion(clip);
