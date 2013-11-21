@@ -640,7 +640,7 @@ void CloudsVisualSystemRGBD::speakerChanged(){
     
     cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
     
-    if (appearances[key] == 2) {
+    if (appearances[key] == 1) {
         cloudsCaption.font = &captionFont;
         cloudsCaption.caption = key;
         cloudsCaption.isEnabled = true;
