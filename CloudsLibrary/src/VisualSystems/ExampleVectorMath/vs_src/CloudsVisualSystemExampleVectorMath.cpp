@@ -88,6 +88,10 @@ void CloudsVisualSystemExampleVectorMath::selfSetup(){
     fadeSpeed = 10;
     autoDrawSpeed = 2;
     bAutoDraw = false;
+	
+	//jg temp to remove mismatched cursor
+	bDrawCursor = false;
+	
     colorShiftSpeed = 0.5;
     color = ofFloatColor::white;
     autoDraw.x = ofRandomf();
@@ -171,6 +175,7 @@ void CloudsVisualSystemExampleVectorMath::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemExampleVectorMath::selfDraw(){
 
+	ofPushStyle();
     
 
     ofPushMatrix();
@@ -204,10 +209,12 @@ void CloudsVisualSystemExampleVectorMath::selfDraw(){
             glVertex3f(zAxisMin.x, zAxisMin.y, zAxisMin.z);
             glVertex3f(zAxisMax.x, zAxisMax.y, zAxisMax.z);
         glEnd();
+		ofSetColor(255);
     }
     
     ofPopMatrix();
 
+	ofPopStyle();
 }
 
 // draw any debug stuff here

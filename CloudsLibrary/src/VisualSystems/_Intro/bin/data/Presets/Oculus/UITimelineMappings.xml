@@ -1,6 +1,72 @@
 <Map>
     <Bangs></Bangs>
-    <Switches></Switches>
-    <SliderCurves></SliderCurves>
+    <Switches>
+        <Mapping>
+            <Widget>
+                <WidgetName>hold camera</WidgetName>
+                <WidgetID>52</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>Wireframe Alpha</WidgetName>
+                <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Perlin Amplitude</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>camera fwd force</WidgetName>
+                <WidgetID>50</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Question Tint B</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>Questions</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max Point Size</WidgetName>
+                <WidgetID>3</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Min Distance</WidgetName>
+                <WidgetID>5</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Max Distance</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
     <NumberDialerCurves></NumberDialerCurves>
 </Map>

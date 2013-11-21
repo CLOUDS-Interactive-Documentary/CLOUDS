@@ -38,7 +38,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>sincRadius</Name>
-    <Value>0.620689631</Value>
+    <Value>0.625615776</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sincStrength</Name>
+    <Value>0.492610812</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

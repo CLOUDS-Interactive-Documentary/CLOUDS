@@ -262,9 +262,6 @@ void CloudsVisualSystemCities::selfSetup()
 	bEdgeSetup = false;
     edgeLineWidth = 1.5;
 	
-	//colormap
-	colorMap.loadImage(getVisualSystemDataPath() + "images/citiesProjectionDebug.png");
-	
     //  Noise
     //
     noiseShader.load("", getVisualSystemDataPath()+"shaders/noise.fs");
@@ -294,7 +291,22 @@ void CloudsVisualSystemCities::selfSetup()
 	{
 		it->second.loadImage( overlayPath + it->first );
 	}
-	
+    
+    // ColorMaps
+    string colorMapPath = getVisualSystemDataPath() + "images/colorMaps/";
+    dir.listDir(colorMapPath);
+    dir.sort();
+    for(int i = 0; i < dir.numFiles(); i++){
+		colorMapNames.push_back( dir.getName(i) );
+		colorMapImageMap[dir.getName(i)];
+	}
+    colorMap = NULL;
+    for (map<string, ofImage>::iterator it=colorMapImageMap.begin(); it!=colorMapImageMap.end(); it++) {
+		it->second.loadImage(colorMapPath + it->first);
+        if (colorMap == NULL) {
+            colorMap = &it->second;
+        }
+	}
 	
 	facadeTexture.loadImage( getVisualSystemDataPath() + "images/noise_wispy.png");
 	//	facadeTexture.getTextureReference().setTextureWrap( GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_T );// this was breaking the shader!?!
@@ -349,8 +361,12 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	sysGui->addSpacer();
 	sysGui->addToggle("use overlay", &bUseOverlay);
 	sysGui->addSpacer();
-	sysGui->addLabel("over lays");
+	sysGui->addLabel("overlays");
 	sysGui->addRadio("overlay map", overlayNames);
+    
+    sysGui->addSpacer();
+    sysGui->addLabel("color maps");
+	sysGui->addRadio("color map", colorMapNames);
 }
 
 void CloudsVisualSystemCities::selfGuiEvent(ofxUIEventArgs &e)
@@ -373,6 +389,13 @@ void CloudsVisualSystemCities::guiSystemEvent(ofxUIEventArgs &e)
 			}
 		}
 		
+        for (map<string, ofImage>::iterator it=colorMapImageMap.begin(); it!=colorMapImageMap.end(); it++)
+		{
+			if(it->first == name)
+			{
+				colorMap = &it->second;
+			}
+		}
 	}
 }
 
@@ -603,8 +626,8 @@ void CloudsVisualSystemCities::selfDraw()
 	cubesShader.setUniformMatrix4f("projection", projector.getProjectionMatrix() );
 	cubesShader.setUniformMatrix4f("invProjection", projector.getModelViewProjectionMatrix() );
 	
-	cubesShader.setUniformTexture("projectedImage", colorMap, 3);
-	cubesShader.setUniform2f("projectedImageDim", colorMap.getWidth(), colorMap.getHeight() );
+	cubesShader.setUniformTexture("projectedImage", colorMap->getTextureReference(), 3);
+	cubesShader.setUniform2f("projectedImageDim", colorMap->getWidth(), colorMap->getHeight() );
 	
 	ofEnableAlphaBlending();
 	glClearDepth(1);

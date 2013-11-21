@@ -592,7 +592,71 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Cities_Archiving">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving3">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving4">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving5">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving6">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_Archiving7">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Cities_BouncyOrangeCities">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Cities_CLOUDS">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -672,22 +736,6 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Cities_SmookyCity">
-    <keywords>chance|inexactitude|chaos|emergence|random|randomness</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Cities_SmookyGrayScott">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="Cities_Sprawl_aerial1">
     <keywords>cities</keywords>
     <suppressions></suppressions>
@@ -706,14 +754,6 @@
 </system>
 <system name="Cities_ThinSkyscrapers1">
     <keywords>cities|science fiction</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Cities_no-preset">
-    <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
@@ -806,6 +846,14 @@
         <clip>Philip - in touch all the time</clip>
         <clip>Ramsey - elegant system</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="Connectors_Rotating_BoxShorter_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -1255,6 +1303,22 @@
         <clip>Theo - relating to nature</clip>
         <clip>Andres - modeling the human being</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="ExampleOpenSteer_BronzeTrails">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="ExampleOpenSteer_Streamers_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -2008,6 +2072,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="MandalaComponents_PureFormEvolving_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="MandalaComponents_PureFormOC">
     <keywords>form|abstraction|3D|3d printing|aesthetics</keywords>
     <suppressions>
@@ -2104,6 +2176,30 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
+</system>
+<system name="MazeGenerator_FlyOver2_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="MazeGenerator_FlyOver_OC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="MazeGenerator_Gal_flyoverOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
 </system>
 <system name="MazeGenerator_JM_flyover">
     <keywords></keywords>
@@ -2938,6 +3034,14 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
+<system name="Ocean_DuskOcean_JG">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
 <system name="Ocean_Exoplanet_dusk_walk">
     <keywords>videogames</keywords>
     <suppressions>
@@ -3167,7 +3271,7 @@
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
-    <oculus>1</oculus>
+    <oculus>0</oculus>
 </system>
 <system name="Ocean_Points">
     <keywords>big data</keywords>
@@ -3797,6 +3901,14 @@
     <oculus>0</oculus>
 </system>
 <system name="OpenP5Spaghetti_BlueScribblesOC">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>1</oculus>
+</system>
+<system name="OpenP5Spaghetti_BlueSmoothScribblesOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -4992,6 +5104,14 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="VectorFlow_FastWaves">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="VectorFlow_JonathanFlow">
     <keywords>flow|pattern</keywords>
     <suppressions>
@@ -5002,6 +5122,22 @@
         <clip>Martin - data revleation</clip>
         <clip>Ramsey - arab abstraction 2</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="VectorFlow_SwiftWaves_Field">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="VectorFlow_SwiftWaves_additive">
+    <keywords></keywords>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>

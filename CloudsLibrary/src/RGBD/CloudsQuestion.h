@@ -41,6 +41,9 @@ class CloudsQuestion {
 	float expandPercent;
 	float selectPercent;
 	
+	//hack for now to make oculus q bigger
+	float enlarge;
+	
 	void draw();
 	void drawOverlay(bool anchorToScreen = false);
 	void update();

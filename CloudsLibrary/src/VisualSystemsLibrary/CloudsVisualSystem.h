@@ -358,7 +358,7 @@ class CloudsVisualSystem {
     float debugGridSize;
 	bool bClearBackground;
 	bool bDrawToScreen;
-	
+	bool bDrawCursor; //temp fix to hide cursor on some systems where it feels wrong
 	bool bUseOculusRift;
     //CAM
     float camDistance;

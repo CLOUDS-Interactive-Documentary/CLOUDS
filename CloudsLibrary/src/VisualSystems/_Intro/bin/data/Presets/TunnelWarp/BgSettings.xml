@@ -11,6 +11,11 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>BAR GRAD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
     <Value>163.300491333</Value>
@@ -18,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>174.605911255</Value>
+    <Value>207.266006470</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,15 +33,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE2</Name>
-    <Value>145.714294434</Value>
+    <Value>157.019699097</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT2</Name>
-    <Value>64.064041138</Value>
+    <Value>185.911331177</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BRI2</Name>
-    <Value>26.379310608</Value>
+    <Value>23.866994858</Value>
 </Widget>

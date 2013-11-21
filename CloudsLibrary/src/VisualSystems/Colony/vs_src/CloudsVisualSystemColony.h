@@ -24,6 +24,7 @@ public:
     void selfAutoMode();
     void selfUpdate();
     void selfDrawBackground();
+    void selfDraw();
     void selfDrawDebug();
     void selfSceneTransformation();
     
@@ -54,9 +55,8 @@ public:
     
 private:
     
-    ofFbo       foodFbo;
+    ofVbo   vbo;
     ofShader    noiseShader;
-	ofImage noise;
     
     colonyPartitionMap pMap;
     

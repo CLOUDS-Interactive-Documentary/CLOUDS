@@ -32,11 +32,12 @@ public:
         if(pt) pt->updateForNewPosition (position());
     };
     
-    void draw(){
-        drawBasic3dSphericalVehicle (*this, color);
-        if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail();
-    }
+    // Use parent method.
+//    void draw(){
+//        drawBasic3dSphericalVehicle (*this, color);
+//        if(bDrawAnnotations) annotationVelocityAcceleration();
+//        if(bDrawTrail) drawTrail();
+//    }
     
     Vec3 getSteeringForce(const float elapsedTime){
         
@@ -83,11 +84,12 @@ public:
         predators = NULL;
     };
     
-    void draw(){
-        drawBasic3dSphericalVehicle (*this, color);
-        if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail();
-    }
+    // Use parent method.
+//    void draw(){
+//        drawBasic3dSphericalVehicle (*this, color);
+//        if(bDrawAnnotations) annotationVelocityAcceleration();
+//        if(bDrawTrail) drawTrail();
+//    }
     
     void reset(){
         // reset the vehicle
@@ -157,7 +159,7 @@ public:
 	void setup(){
 		ofxOpenSteerPlugin::setup();
 		
-		ofBackground(255, 127, 0);
+//		ofBackground(255, 127, 0);
         
         // Create a proximity databases
         pdPredators = createProximityDatabase();

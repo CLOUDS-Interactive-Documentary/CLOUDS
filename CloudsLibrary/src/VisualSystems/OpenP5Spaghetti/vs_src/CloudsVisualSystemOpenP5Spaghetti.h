@@ -104,7 +104,6 @@ class CloudsVisualSystemOpenP5Spaghetti: public CloudsVisualSystem {
     
     static float NWalkers;
     static bool smooth;
-    static bool gnarly;
 //    static bool drawTriangles;
     bool shouldRegenerate;
     bool rainbow;

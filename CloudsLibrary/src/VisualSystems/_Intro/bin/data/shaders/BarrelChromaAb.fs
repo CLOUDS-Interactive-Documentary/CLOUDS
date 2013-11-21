@@ -51,5 +51,5 @@ void main(){
 		sumcol += w * texture2DRect( tex0, (offset+barrelDistortion(uv, max_distort*t))*resolution.xy ).rgb;
 	}
 	
-	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0);
+	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0) * gl_Color;
 }

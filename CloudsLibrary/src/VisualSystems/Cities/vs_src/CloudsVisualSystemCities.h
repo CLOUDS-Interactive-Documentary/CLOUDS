@@ -255,7 +255,10 @@ protected:
     float       postGrainDist;
 	
 	//LB
-	ofImage colorMap;
+	ofImage* colorMap;
+    vector<string> colorMapNames;
+	map<string, ofImage> colorMapImageMap;
+    
 	ofVboMesh cubeMesh;
 	ofShader cubesShader;
 	ofImage* overlayMap;

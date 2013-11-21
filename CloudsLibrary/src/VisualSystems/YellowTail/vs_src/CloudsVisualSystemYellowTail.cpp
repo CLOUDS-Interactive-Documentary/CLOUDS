@@ -16,7 +16,7 @@ void CloudsVisualSystemYellowTail::selfSetup(){
 	softMaxGestures = MIN(ceil(16.0 * deviceScale), MAX_GESTURES);
 	softMaxTouches  = MIN(ceil(11.0 * deviceScale), MAX_TOUCHES);
 	
-	ofBackground(0,0,0);
+//	ofBackground(0,0,0);
 	bUpdatingGeometry = true;
 	bIs2D = true;
 	

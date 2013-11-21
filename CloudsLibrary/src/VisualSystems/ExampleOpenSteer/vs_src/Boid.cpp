@@ -8,7 +8,8 @@
 
 #include "Boid.h"
 
-bool Boid::bDrawTrail = true;
+BoidTrailType Boid::trailType = BOID_TRAIL_SOLID_LINE;
+float Boid::trailRibbonSize = 10;
 bool Boid::bDrawAnnotations = true;
 
 Color Boid::bodyColor;

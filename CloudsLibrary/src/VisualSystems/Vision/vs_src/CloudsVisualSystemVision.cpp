@@ -83,8 +83,8 @@ void CloudsVisualSystemVision::selfSetup()
     
     movieStrings.push_back("union_square_crop.mov");
     movieStrings.push_back("GreenPoint_bike_crop.mov");
-    movieStrings.push_back("indianTrafficCrop.mov");
-    movieStrings.push_back("unionsq_1 - Wi-Fi_crop.mov");
+   // movieStrings.push_back("indianTrafficCrop.mov");
+   // movieStrings.push_back("unionsq_1 - Wi-Fi_crop.mov");
     movieStrings.push_back("Swarm_EindhovenTest_Watec_two-visitors_Crop.mov");
  
     movieStrings.push_back("AppleStore1_short.mov");

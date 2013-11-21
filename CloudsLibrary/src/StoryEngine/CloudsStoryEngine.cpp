@@ -16,7 +16,8 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
     visualSystems = NULL;
-    
+    customAct = NULL;
+	
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
@@ -249,12 +250,23 @@ void CloudsStoryEngine::toggleGuis(bool actOnly){
     }
 }
 
+void CloudsStoryEngine::setCustomAct(CloudsAct* act){
+	customAct = act;
+}
+
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
+	
+	if(customAct != NULL){
+		CloudsActEventArgs args(customAct);
+		ofNotifyEvent(events.actCreated, args);
+		customAct = NULL;
+		return;
+	}
 	
     CloudsAct* act = new CloudsAct();
 	act->defaulPrerollDuration = preRollDuration;
@@ -315,7 +327,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     ///
     visualSystemStartTime = 0;
-    cout << "visual system start time is " << visualSystemStartTime << endl;
     maxTimeRemainingForVisualSystem = systemMaxRunTime;
     
     string log;

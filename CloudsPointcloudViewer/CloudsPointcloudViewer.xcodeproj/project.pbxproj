@@ -28,6 +28,8 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E72258DC183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
+		E72258DD183D8B6A00625763 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72258DA183D8B6A00625763 /* CloudsCaption.cpp */; };
 		E730A47517DBE3FC0088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */; };
 		E730A47D17DBE4D00088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A47B17DBE4D00088335A /* Delaunay.cpp */; };
 		E731D67117401845006B9650 /* CloudsClip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E731D65917401845006B9650 /* CloudsClip.cpp */; };
@@ -244,20 +246,10 @@
 		E7A3F28A18321B0600EADD94 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E739963F17872FCF00EA5F4D /* readme.md */; };
 		E7A3F28B18321B0600EADD94 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E75DB6C117CDC02A00CD99D9 /* README.md */; };
 		E7A3F50318321B4300EADD94 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3F3F318321B4200EADD94 /* ofxOculusRift.cpp */; };
-		E7DCAEFB1839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEA51839C20200A70EAA /* libftgl.a */; };
-		E7DCAEFC1839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEA51839C20200A70EAA /* libftgl.a */; };
-		E7DCAEFD1839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEA71839C20200A70EAA /* libftgl.a */; };
-		E7DCAEFE1839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEA71839C20200A70EAA /* libftgl.a */; };
 		E7DCAEFF1839C20300A70EAA /* buildFTGL.sh in Resources */ = {isa = PBXBuildFile; fileRef = E7DCAEA91839C20200A70EAA /* buildFTGL.sh */; };
 		E7DCAF001839C20300A70EAA /* buildFTGL.sh in Resources */ = {isa = PBXBuildFile; fileRef = E7DCAEA91839C20200A70EAA /* buildFTGL.sh */; };
 		E7DCAF011839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAA1839C20200A70EAA /* libftgl.a */; };
 		E7DCAF021839C20300A70EAA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAA1839C20200A70EAA /* libftgl.a */; };
-		E7DCAF031839C20300A70EAA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAC1839C20200A70EAA /* ftgl_static.lib */; };
-		E7DCAF041839C20300A70EAA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAC1839C20200A70EAA /* ftgl_static.lib */; };
-		E7DCAF051839C20300A70EAA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAE1839C20200A70EAA /* ftgl_static.lib */; };
-		E7DCAF061839C20300A70EAA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAE1839C20200A70EAA /* ftgl_static.lib */; };
-		E7DCAF071839C20300A70EAA /* ftgl_static_D.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAF1839C20200A70EAA /* ftgl_static_D.lib */; };
-		E7DCAF081839C20300A70EAA /* ftgl_static_D.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DCAEAF1839C20200A70EAA /* ftgl_static_D.lib */; };
 		E7DCAF091839C20300A70EAA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7DCAEB01839C20200A70EAA /* README.md */; };
 		E7DCAF0A1839C20300A70EAA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7DCAEB01839C20200A70EAA /* README.md */; };
 		E7DCAF0B1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DCAEB31839C20300A70EAA /* ofxFTGLFont.cpp */; };
@@ -347,6 +339,8 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E72258DA183D8B6A00625763 /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
+		E72258DB183D8B6A00625763 /* CloudsCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
 		E730A46917DBE3FC0088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E730A46A17DBE3FC0088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		E730A47B17DBE4D00088335A /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
@@ -630,13 +624,8 @@
 		E7DCAEA01839C20200A70EAA /* FTPolyGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPolyGlyph.h; sourceTree = "<group>"; };
 		E7DCAEA11839C20200A70EAA /* FTSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSimpleLayout.h; sourceTree = "<group>"; };
 		E7DCAEA21839C20200A70EAA /* FTTextureGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextureGlyph.h; sourceTree = "<group>"; };
-		E7DCAEA51839C20200A70EAA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		E7DCAEA71839C20200A70EAA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
 		E7DCAEA91839C20200A70EAA /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
 		E7DCAEAA1839C20200A70EAA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		E7DCAEAC1839C20200A70EAA /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		E7DCAEAE1839C20200A70EAA /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		E7DCAEAF1839C20200A70EAA /* ftgl_static_D.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static_D.lib; sourceTree = "<group>"; };
 		E7DCAEB01839C20200A70EAA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7DCAEB21839C20300A70EAA /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGL.h; sourceTree = "<group>"; };
 		E7DCAEB31839C20300A70EAA /* ofxFTGLFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLFont.cpp; sourceTree = "<group>"; };
@@ -676,12 +665,7 @@
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E7A1E0C81760E80E00A51263 /* libz.dylib in Frameworks */,
-				E7DCAEFB1839C20300A70EAA /* libftgl.a in Frameworks */,
-				E7DCAEFD1839C20300A70EAA /* libftgl.a in Frameworks */,
 				E7DCAF011839C20300A70EAA /* libftgl.a in Frameworks */,
-				E7DCAF031839C20300A70EAA /* ftgl_static.lib in Frameworks */,
-				E7DCAF051839C20300A70EAA /* ftgl_static.lib in Frameworks */,
-				E7DCAF071839C20300A70EAA /* ftgl_static_D.lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,12 +694,7 @@
 				E7A3F28118321B0600EADD94 /* IOKit.framework in Frameworks */,
 				E7A3F28218321B0600EADD94 /* CoreVideo.framework in Frameworks */,
 				E7A3F28318321B0600EADD94 /* libz.dylib in Frameworks */,
-				E7DCAEFC1839C20300A70EAA /* libftgl.a in Frameworks */,
-				E7DCAEFE1839C20300A70EAA /* libftgl.a in Frameworks */,
 				E7DCAF021839C20300A70EAA /* libftgl.a in Frameworks */,
-				E7DCAF041839C20300A70EAA /* ftgl_static.lib in Frameworks */,
-				E7DCAF061839C20300A70EAA /* ftgl_static.lib in Frameworks */,
-				E7DCAF081839C20300A70EAA /* ftgl_static_D.lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,7 +725,6 @@
 				E7DCAE431839C20100A70EAA /* ofxFTGL */,
 				E7A3F29118321B3F00EADD94 /* ofxOculusRift */,
 				E75DB6C717CDC0A100CD99D9 /* ofxGameCamera */,
-				E731D64C17401845006B9650 /* CloudsLibrary */,
 				E739963017872FCE00EA5F4D /* ofxAVFVideoPlayer */,
 				E73994D41786200500EA5F4D /* ofxGenerative */,
 				E73994B117861FA900EA5F4D /* ofxTextInputField */,
@@ -833,10 +811,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5E2C01812192900CA4196 /* question.frag */,
-				E7E5E2C11812192900CA4196 /* question.vert */,
-				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
-				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
+				E7380339183C968A0018AB96 /* shaders */,
+				E731D64C17401845006B9650 /* CloudsLibrary */,
 				609133851652CB3E00B523AD /* testView.h */,
 				609133861652CB3E00B523AD /* testView.mm */,
 				609133791652C9C900B523AD /* AppDelegate.h */,
@@ -898,7 +874,7 @@
 				E731D64D17401845006B9650 /* src */,
 			);
 			name = CloudsLibrary;
-			path = ../CloudsLibrary;
+			path = ../../CloudsLibrary;
 			sourceTree = "<group>";
 		};
 		E731D64D17401845006B9650 /* src */ = {
@@ -915,6 +891,8 @@
 		E731D65117401845006B9650 /* RGBD */ = {
 			isa = PBXGroup;
 			children = (
+				E72258DA183D8B6A00625763 /* CloudsCaption.cpp */,
+				E72258DB183D8B6A00625763 /* CloudsCaption.h */,
 				E73995D217863E6000EA5F4D /* GPUParticles */,
 				E73991171786155A00EA5F4D /* CloudsVisualSystemRGBD.h */,
 				E73991161786155A00EA5F4D /* CloudsVisualSystemRGBD.cpp */,
@@ -1023,6 +1001,17 @@
 				E731D82B174018BC006B9650 /* ofxMSATimer.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E7380339183C968A0018AB96 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7E5E2C01812192900CA4196 /* question.frag */,
+				E7E5E2C11812192900CA4196 /* question.vert */,
+				E73995CD1786240100EA5F4D /* rgbdcombined.frag */,
+				E73995CE1786240100EA5F4D /* rgbdcombined.vert */,
+			);
+			name = shaders;
 			sourceTree = "<group>";
 		};
 		E73991BB1786185500EA5F4D /* ofxCameraSaveLoad */ = {
@@ -1500,29 +1489,9 @@
 		E7DCAEA31839C20200A70EAA /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				E7DCAEA41839C20200A70EAA /* linux */,
-				E7DCAEA61839C20200A70EAA /* linux64 */,
 				E7DCAEA81839C20200A70EAA /* osx */,
-				E7DCAEAB1839C20200A70EAA /* vs2010 */,
-				E7DCAEAD1839C20200A70EAA /* vs2012 */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		E7DCAEA41839C20200A70EAA /* linux */ = {
-			isa = PBXGroup;
-			children = (
-				E7DCAEA51839C20200A70EAA /* libftgl.a */,
-			);
-			path = linux;
-			sourceTree = "<group>";
-		};
-		E7DCAEA61839C20200A70EAA /* linux64 */ = {
-			isa = PBXGroup;
-			children = (
-				E7DCAEA71839C20200A70EAA /* libftgl.a */,
-			);
-			path = linux64;
 			sourceTree = "<group>";
 		};
 		E7DCAEA81839C20200A70EAA /* osx */ = {
@@ -1532,23 +1501,6 @@
 				E7DCAEAA1839C20200A70EAA /* libftgl.a */,
 			);
 			path = osx;
-			sourceTree = "<group>";
-		};
-		E7DCAEAB1839C20200A70EAA /* vs2010 */ = {
-			isa = PBXGroup;
-			children = (
-				E7DCAEAC1839C20200A70EAA /* ftgl_static.lib */,
-			);
-			path = vs2010;
-			sourceTree = "<group>";
-		};
-		E7DCAEAD1839C20200A70EAA /* vs2012 */ = {
-			isa = PBXGroup;
-			children = (
-				E7DCAEAE1839C20200A70EAA /* ftgl_static.lib */,
-				E7DCAEAF1839C20200A70EAA /* ftgl_static_D.lib */,
-			);
-			path = vs2012;
 			sourceTree = "<group>";
 		};
 		E7DCAEB11839C20300A70EAA /* src */ = {
@@ -1808,6 +1760,7 @@
 				18C070D71836BB2500B58246 /* CloudsIntervention.cpp in Sources */,
 				E7DCAF0B1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0D1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,
+				E72258DC183D8B6A00625763 /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1912,6 +1865,7 @@
 				E7A3F50318321B4300EADD94 /* ofxOculusRift.cpp in Sources */,
 				E7DCAF0C1839C20300A70EAA /* ofxFTGLFont.cpp in Sources */,
 				E7DCAF0E1839C20300A70EAA /* ofxFTGLSimpleLayout.cpp in Sources */,
+				E72258DD183D8B6A00625763 /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2102,7 +2056,9 @@
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv2.4/libs/opencv/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsPointcloudViewerDebug;
 				WRAPPER_EXTENSION = app;
@@ -2214,11 +2170,8 @@
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv2.4/libs/opencv/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CloudsPointcloudViewer;
 				WRAPPER_EXTENSION = app;
@@ -2247,6 +2200,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
 				INFOPLIST_FILE = "CloudsPointcloudViewer copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2339,14 +2293,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv2.4/libs/opencv/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
@@ -2386,6 +2338,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
+					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 				);
 				INFOPLIST_FILE = "CloudsPointcloudViewer copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2478,14 +2431,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv2.4/libs/opencv/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";

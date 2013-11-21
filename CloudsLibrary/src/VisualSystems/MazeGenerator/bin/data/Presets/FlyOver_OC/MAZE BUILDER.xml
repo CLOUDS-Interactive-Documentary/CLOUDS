@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>MAZE BUILDER</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>855.000000000</XPosition>
+    <YPosition>-8.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -48,12 +48,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FOG START</Name>
-    <Value>246.305404663</Value>
+    <Value>98.522163391</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FOG END</Name>
-    <Value>886.699462891</Value>
+    <Value>394.088653564</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -98,17 +98,17 @@
 <Widget>
     <Kind>25</Kind>
     <Name>FH</Name>
-    <Value>168.219894409</Value>
+    <Value>236.308898926</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>FS</Name>
-    <Value>161.544662476</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>FB</Name>
-    <Value>0.000000000</Value>
+    <Value>10.680464745</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>

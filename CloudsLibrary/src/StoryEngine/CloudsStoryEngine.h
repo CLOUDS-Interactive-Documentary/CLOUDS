@@ -27,6 +27,9 @@ class CloudsStoryEngine {
 	
 	void setup();
 	
+	//will send this act instead of generating one when buildAct is called
+	void setCustomAct(CloudsAct* customAct);
+	
 	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed);
 	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed, string topic);
 	
@@ -67,6 +70,7 @@ class CloudsStoryEngine {
 
 	CloudsEvents events;
 	bool isSetup;
+	CloudsAct* customAct;
 	
     vector<string> runTopicCount;
 	vector<CloudsDichotomy> dichotomies;

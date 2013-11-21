@@ -29,7 +29,6 @@ Rand::Rand(float _posX, float _posY, float _randomNumber,
 
 void Rand::setup(){
     
-    ofBackground(54, 54, 54, 255);
 	
 	//old OF default is 96 - but this results in fonts looking larger than in other programs.
 	ofTrueTypeFont::setGlobalDpi(72);
