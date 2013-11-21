@@ -154,7 +154,7 @@ void testApp::setup(){
     
         
         if(clipIds[i] == "Shiffman - how far could we get?"){
-          act->addVisualSystem( flock, lastClipEndTime+5, 55);
+          act->addVisualSystem( flock, lastClipEndTime+5, 65);
             
         }
     
@@ -170,7 +170,7 @@ void testApp::setup(){
         
         if(clipIds[i] == "JTNimoy - immersion2"){
             act->addVisualSystem( ocean_regular, lastClipEndTime+6, 40);
-            delayClip = 10;
+            delayClip = 5;
         }
 		
 		lastClipEndTime = act->addClip(clip, "topic", lastClipEndTime+delayClip+2);
