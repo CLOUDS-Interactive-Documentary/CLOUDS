@@ -6,19 +6,14 @@ CloudsCaption::CloudsCaption(){
     isEnabled = false;
 	isPlaying = false;
 	charsPerSecond = 45;
-    lifeDuration = 3000;
+    lifeDuration = 10000;
 	deathDuration = 300;
     
 	font = NULL;
 	
 	expandPercent = .1;
 	selectPercent = 0;
-#ifdef OCULUS_RIFT
-	enlarge = .2;
-#else
-	enlarge = 0;
-#endif
-	
+
 }
 
 void CloudsCaption::begin(){
@@ -107,7 +102,7 @@ void CloudsCaption::drawOverlay(){
     // TODO: Use vars for screen position
     ofVec2f screenPosition = ofVec2f(20, 200);
 #else
-    ofVec2f screenPosition = ofVec2f(20, ofGetHeight() - 40);
+    ofVec2f screenPosition = ofVec2f(80, ofGetHeight() - 80);
 #endif
     
     //DRAW BACKBOX
