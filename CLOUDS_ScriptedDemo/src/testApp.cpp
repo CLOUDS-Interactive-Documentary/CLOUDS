@@ -86,7 +86,7 @@ void testApp::setup(){
     CloudsVisualSystemPreset& connectors = visualSystems.getPresetForSystem( "Connectors", "Rotating_BoxOC");
     CloudsVisualSystemPreset& ocean_gmuk = visualSystems.getPresetForSystem( "Ocean", "g_gentleWavesOC");
     
-    CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "NightOceanOC");
+    CloudsVisualSystemPreset& ocean_regular = visualSystems.getPresetForSystem( "Ocean", "DuskOcean_JG");
     
     CloudsVisualSystemPreset& neurons = visualSystems.getPresetForSystem( "Neurons", "MezzyNeuronsOC");
 
