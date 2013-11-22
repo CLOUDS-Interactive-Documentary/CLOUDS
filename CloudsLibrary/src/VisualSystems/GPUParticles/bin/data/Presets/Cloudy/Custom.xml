@@ -2,23 +2,23 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>261.000000000</XPosition>
-    <YPosition>146.000000000</YPosition>
+    <XPosition>504.000000000</XPosition>
+    <YPosition>260.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
     <Name>Particle Count</Name>
-    <Value>64</Value>
+    <Value>49</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Particle Size</Name>
-    <Value>188.059112549</Value>
+    <Value>236.665008545</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>Hue1</Name>
-    <Value>163.300491333</Value>
+    <Value>160.788177490</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
