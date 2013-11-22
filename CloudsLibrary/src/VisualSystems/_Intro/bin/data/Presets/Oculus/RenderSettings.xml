@@ -8,7 +8,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>0.294000000</Value>
+    <Value>0.293999821</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>33.835258484</Value>
+    <Value>130.167938232</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.000000000</Value>
+    <Value>0.452200383</Value>
 </Widget>

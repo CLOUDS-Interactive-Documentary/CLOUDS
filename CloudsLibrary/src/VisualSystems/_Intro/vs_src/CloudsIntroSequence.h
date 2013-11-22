@@ -151,6 +151,9 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofxGameCamera camera;
 	ofCamera warpCamera;
 	
+	float camWobbleRange;
+	float camWobbleSpeed;
+
 	ofShader tunnelShader;
 	ofShader questionShader;
 	ofShader chroma;

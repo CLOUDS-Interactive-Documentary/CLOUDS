@@ -116,14 +116,17 @@ void CloudsIntroSequence::selfUpdate(){
 	if(!startedOnclick && timeline->getIsPlaying()){
 		timeline->stop();
 	}
-	
+	ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
+							 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 	if(!paused){
 		warpCamera.dolly(-cameraForwardSpeed);
+		warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
 	}
 	else{
-		warpCamera.setPosition(0, 0, 0);
-		warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
+		warpCamera.setPosition(wobble.x, wobble.y, 0);
 	}
+	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
+	
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
@@ -187,8 +190,8 @@ void CloudsIntroSequence::selfUpdate(){
 	else{
 		hoverTitleOpacity = titleTypeOpacity;
 	}
-
-	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.1;
+	
+	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
 	//currentTitleOpacity = hoverTitleOpacity;
 }
 
@@ -347,7 +350,14 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
-	tunnelShader.setUniform1f("maxDistance", distanceRange.max);
+
+	if(bUseOculusRift){
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 100.);
+	}
+	else{
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 200.);
+	}
+	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
 	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
@@ -562,6 +572,10 @@ void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addToggle("use debug camera", &useDebugCamera);
 	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
+	camGui->addSlider("camera wobble range", 0, 10, &camWobbleRange);
+	camGui->addSlider("camera wobble speed", 0, 1., &camWobbleSpeed);
+
+
 	camGui->addToggle("hold camera", &paused);
 
 }
@@ -664,7 +678,7 @@ void CloudsIntroSequence::selfSetupGuis(){
 	typeGui->addIntSlider("Title Size", 2, 15, &titleFontSize);
 	typeGui->addIntSlider("Title Extrude", 1, 5, &titleFontExtrude);
 	typeGui->addSlider("Title Tracking", 0, 50, &titleTypeTracking);
-	typeGui->addSlider("Title Offset", 0, 2000, &titleTypeOffset);
+	typeGui->addSlider("Title Offset", 0, 100, &titleTypeOffset);
 	typeGui->addSlider("Title Opacity", .0, 1., &titleTypeOpacity);
 
 	typeGui->addRangeSlider("Title Glow Range", 0., 1.0, &titleMinGlow, &titleMaxGlow);

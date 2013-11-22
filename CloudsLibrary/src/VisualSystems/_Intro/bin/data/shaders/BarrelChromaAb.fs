@@ -53,7 +53,7 @@ void main(){
 	
 	//This helps us clamp the edges from gross artifacs
 
-	float pixelAttenuate = 10.0; //how many pixels to cut in
+	float pixelAttenuate = 20.0; //how many pixels to cut in
 	float inversPA = 1.0 / pixelAttenuate;
 	float powfall = .1; // an easier to feather off the harshness
 	//calculate one attenuation value from all sides
