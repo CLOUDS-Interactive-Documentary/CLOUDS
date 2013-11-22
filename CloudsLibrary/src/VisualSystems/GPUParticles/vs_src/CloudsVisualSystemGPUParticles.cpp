@@ -85,7 +85,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     delete [] vel; // Delete the array
     
     // Loading and setings of the variables of the textures of the particles
-    sparkImg.loadImage(getVisualSystemDataPath() + "glow2.png");
+    sparkImg.loadImage(getVisualSystemDataPath() + "glow.png");
     imgWidth = sparkImg.getWidth();
     imgHeight = sparkImg.getHeight();
     
