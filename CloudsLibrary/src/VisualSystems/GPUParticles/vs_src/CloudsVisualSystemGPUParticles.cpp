@@ -16,9 +16,12 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     customGui->addButton("REGENERATE", &shouldRegenerate);
     
 	customGui->addIntSlider("Particle Count", 1, 2000, &numParticles);
-    customGui->addSlider("Particle Size", 1.0, 200.0, &particleSize);
-    customGui->addSlider("Time Step", 0.0001, .05, &timeStep);
-
+    customGui->addSlider("Particle Size", 1.0, 300.0, &particleSize);
+    //customGui->addSlider("Time Step", 0.0001, .05, &timeStep);
+    
+    customGui->addMinimalSlider("Hue1", 0.0, 255.0, &hue1);
+    customGui->addMinimalSlider("Saturation1", 0.0, 200.0, &saturation1);
+    customGui->addMinimalSlider("Brightness1", 0.0, 255.0, &brightness1);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemGPUParticles::selfGuiEvent);
 	guis.push_back(customGui);
@@ -82,7 +85,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     delete [] vel; // Delete the array
     
     // Loading and setings of the variables of the textures of the particles
-    sparkImg.loadImage(getVisualSystemDataPath() + "spark.png");
+    sparkImg.loadImage(getVisualSystemDataPath() + "glow2.png");
     imgWidth = sparkImg.getWidth();
     imgHeight = sparkImg.getHeight();
     
@@ -114,6 +117,10 @@ void CloudsVisualSystemGPUParticles::regenerate(){
     textureRes = (int)sqrt((float)numParticles);
     numParticles = textureRes * textureRes;
     
+    // Seting the textures where the information ( position and velocity ) will be
+    textureRes = (int)sqrt((float)numParticles);
+    numParticles = textureRes * textureRes;
+    
     float * pos = new float[numParticles*3];
     for (int x = 0; x < textureRes; x++){
         for (int y = 0; y < textureRes; y++){
@@ -125,6 +132,7 @@ void CloudsVisualSystemGPUParticles::regenerate(){
         }
     }
     
+  
     posPingPong.allocate(textureRes, textureRes,GL_RGB32F);
     posPingPong.src->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
     posPingPong.dst->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
@@ -149,6 +157,8 @@ void CloudsVisualSystemGPUParticles::regenerate(){
     renderFBO.begin();
     ofClear(0, 0, 0, 255);
     renderFBO.end();
+     
+     
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -261,7 +271,7 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     updateRender.setUniform1f("imgHeight", (float)sparkImg.getHeight());
     
     ofPushStyle();
-    ofEnableBlendMode( OF_BLENDMODE_ADD );
+    ofEnableBlendMode( OF_BLENDMODE_ADD);
     ofSetColor(255);
     
     glBegin( GL_POINTS );
@@ -300,7 +310,8 @@ void CloudsVisualSystemGPUParticles::selfDrawBackground(){
     ofEnableAlphaBlending();
     
     ofBackground(0);
-    ofSetColor(100,255,255);
+    newColor.setHsb(hue1,saturation1, brightness1);
+    ofSetColor(newColor); //(100,255,255);
     renderFBO.draw(0,0);
     
     //ofSetColor(255);

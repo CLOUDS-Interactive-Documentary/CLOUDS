@@ -146,6 +146,10 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
     int     numParticles;
     int     textureRes;
     
+    ofColor newColor;
+    float hue1;
+    float saturation1;
+    float brightness1;
     bool shouldRegenerate;
     
 protected:
