@@ -1,0 +1,37 @@
+<rules maxDepth="500" primitive="triangles">
+    <ruleSet name="start">
+        <rule weight="100">
+            <cube size="200" colour="20"/>
+            <transform transforms="rx 45 ry 0" next="tubes"/>
+            <transform transforms="rx 45 ry 90" next="tubes"/>
+            <transform transforms="rx 45 ry 180" next="tubes"/>
+            <transform transforms="rx 45 ry 270" next="tubes"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="tubes">
+        <rule weight="100">
+            <tube radius="6" repeat="45" colour="255" transforms="ty 5 rx 1 sa 0.99" next="cubes"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="cubes">
+        <rule weight="50">
+            <cube size="100" colour="20"/>
+            <transform transforms="rx 45 ry 0" next="tubes"/>
+            <transform transforms="rx 45 ry 90" next="tubes"/>
+            
+        </rule>
+        <rule weight="50">
+            <cube size="100" colour="20"/>
+            <transform transforms="rx 45 ry 180" next="tubes"/>
+            <transform transforms="rx 45 ry 270" next="tubes"/>
+        </rule>
+        <rule weight="80">
+            <cube radius="200" colour="20"/>
+            <tube radius="6" repeat="90" colour="255" transforms="ty 10 rz 1 sa 0.99" next="cubes"/>
+        </rule>
+        <rule weight="100">
+            <tube radius="6" repeat="45" colour="255" transforms="ty 5 rx 1 sa 0.99" next="cubes"/>
+        </rule>
+    </ruleSet>
+</rules>
+ 
