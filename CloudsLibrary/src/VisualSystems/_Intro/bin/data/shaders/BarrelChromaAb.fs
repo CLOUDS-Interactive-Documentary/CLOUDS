@@ -51,5 +51,16 @@ void main(){
 		sumcol += w * texture2DRect( tex0, (offset+barrelDistortion(uv, max_distort*t))*resolution.xy ).rgb;
 	}
 	
-	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0) * gl_Color;
+	//This helps us clamp the edges from gross artifacs
+
+	float pixelAttenuate = 10.0; //how many pixels to cut in
+	float inversPA = 1.0 / pixelAttenuate;
+	float powfall = .1; // an easier to feather off the harshness
+	//calculate one attenuation value from all sides
+	float edgeAttenuate = pow(clamp(inversPA * (gl_FragCoord.x - pixelAttenuate), 0.0, 1.0), powfall) *
+						  pow(clamp(inversPA * (gl_FragCoord.y - pixelAttenuate), 0.0, 1.0), powfall) *
+						  pow(clamp(inversPA * (resolution.x - gl_FragCoord.x - pixelAttenuate), 0., 1.0), powfall) *
+						  pow(clamp(inversPA * (resolution.y - gl_FragCoord.y - pixelAttenuate), 0., 1.0), powfall);
+
+	gl_FragColor = vec4(sumcol.rgb / sumw, 1.0) * gl_Color * edgeAttenuate;
 }
