@@ -101,12 +101,25 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 
 	
 	ofxFTGLFont extrudedTitleText; //for the title
+	float currentTitleOpacity;
 	float titleTypeOpacity;
 	int titleFontSize;
 	int titleFontExtrude;
 	float titleTypeTracking;
 	float titleTypeOffset;
+	
+	float titleNoiseDensity;
+	float titleMaxGlow;
+	float titleMinGlow;
+	float titleNoiseSpeed;
+	float titleNoisePosition;
 
+	float titleRectWidth;
+	float titleRectHeight;
+	ofRectangle titleRect;
+	bool hoveringTitle;
+	
+	
 	ofxFTGLSimpleLayout questionFont;
     void rebuildQuestionFont();
     int questionFontSize;
@@ -141,6 +154,8 @@ class CloudsIntroSequence : public CloudsVisualSystem {
 	ofShader tunnelShader;
 	ofShader questionShader;
 	ofShader chroma;
+	ofShader typeShader;
+	
 	
 	ofRange pointSize;	
 	ofRange distanceRange;

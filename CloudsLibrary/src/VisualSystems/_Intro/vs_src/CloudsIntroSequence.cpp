@@ -19,6 +19,10 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	currentFontExtrusion = -1;
 	startedOnclick = false;
 	caughtQuestion = NULL;
+	titleNoisePosition = 0;
+	titleNoiseSpeed = 0;
+	hoveringTitle = false;
+	currentTitleOpacity = 0;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -89,6 +93,8 @@ void CloudsIntroSequence::reloadShaders(){
 	tunnelShader.load(getVisualSystemDataPath() + "shaders/IntroTunnel");
 	questionShader.load(getVisualSystemDataPath() + "shaders/Question");
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
+	typeShader.load(getVisualSystemDataPath() + "shaders/IntroType");
+	
 	CloudsQuestion::reloadShader();
 }
 
@@ -165,7 +171,25 @@ void CloudsIntroSequence::selfUpdate(){
 		currentFontExtrusion = titleFontExtrude;
 		extrudedTitleText.loadFont(getDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
+	
+	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
+	titleRect.alignTo( ofPoint(ofGetWidth()/2,ofGetHeight()/2) );
+	hoveringTitle = titleRect.inside(ofGetMouseX(), ofGetMouseY());
+	
+//	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
+//	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
+	
+	titleNoisePosition += titleNoiseSpeed;
+	float hoverTitleOpacity;
+	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
+		hoverTitleOpacity = .9;
+	}
+	else{
+		hoverTitleOpacity = titleTypeOpacity;
+	}
 
+	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.1;
+	//currentTitleOpacity = hoverTitleOpacity;
 }
 
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
@@ -279,7 +303,7 @@ CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-
+	
 }
 
 void CloudsIntroSequence::selfDrawDebug(){
@@ -395,15 +419,24 @@ void CloudsIntroSequence::drawCloudsType(){
 //	ofTranslate(0, 0, -tunnelMax.z);
 	ofPushStyle();
 	ofEnableAlphaBlending();
-	ofSetColor(255, titleTypeOpacity*255);
+	
+//	cout << currentTitleOpacity << endl;
+	
+	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
 	extrudedTitleText.setTracking( titleTypeTracking );
 	float width  = extrudedTitleText.stringWidth("CLOUDS");
 	float height = extrudedTitleText.stringHeight("CLOUDS");
 	
+	typeShader.begin();
+	typeShader.setUniform1f("noisePosition",titleNoisePosition);
+	typeShader.setUniform1f("noiseDensity",titleNoiseDensity);
+	typeShader.setUniform1f("glowMin", titleMinGlow);
+	typeShader.setUniform1f("glowMax", titleMaxGlow);
+
 	
 	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
-	
+	typeShader.end();
 
 	ofPopStyle();
 	ofPopMatrix();
@@ -434,6 +467,12 @@ void CloudsIntroSequence::selfPostDraw(){
 		ofPopStyle();
 	}
 	
+//	if(ofGetKeyPressed('1')){
+//		ofPushStyle();
+//		ofNoFill();
+//		ofRect(titleRect);
+//		ofPopStyle();
+//	}
 }
 
 void CloudsIntroSequence::selfExit(){
@@ -627,7 +666,13 @@ void CloudsIntroSequence::selfSetupGuis(){
 	typeGui->addSlider("Title Tracking", 0, 50, &titleTypeTracking);
 	typeGui->addSlider("Title Offset", 0, 2000, &titleTypeOffset);
 	typeGui->addSlider("Title Opacity", .0, 1., &titleTypeOpacity);
-	
+
+	typeGui->addRangeSlider("Title Glow Range", 0., 1.0, &titleMinGlow, &titleMaxGlow);
+	typeGui->addSlider("Title Noise Speed", 0, .1, &titleNoiseSpeed);
+	typeGui->addSlider("Title Noise Dense", .001, 1., &titleNoiseDensity);
+	typeGui->addSlider("Title Hover X", 0, 1.0, &titleRectWidth);
+	typeGui->addSlider("Title Hover Y", 0, 1.0, &titleRectHeight);
+
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
 

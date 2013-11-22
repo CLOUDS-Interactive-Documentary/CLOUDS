@@ -1,19 +1,19 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Type</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>264.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>550.000000000</XPosition>
+    <YPosition>155.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
     <Name>Title Size</Name>
-    <Value>3</Value>
+    <Value>4</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>Title Extrude</Name>
-    <Value>1</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,5 +28,31 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Title Opacity</Name>
-    <Value>0.709359586</Value>
+    <Value>0.078817733</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Title Glow Range</Name>
+    <HighValue>0.733990133</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Title Noise Speed</Name>
+    <Value>0.013300492</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Title Noise Dense</Name>
+    <Value>0.000507438</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Title Hover X</Name>
+    <Value>0.418719202</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Title Hover Y</Name>
+    <Value>0.103448279</Value>
 </Widget>
