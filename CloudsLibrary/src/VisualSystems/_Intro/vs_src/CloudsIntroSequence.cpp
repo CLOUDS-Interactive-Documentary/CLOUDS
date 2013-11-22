@@ -352,7 +352,7 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
 
 	if(bUseOculusRift){
-		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 100.);
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
 	}
 	else{
 		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 200.);
