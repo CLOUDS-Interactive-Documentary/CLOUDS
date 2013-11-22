@@ -2,11 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    ofSetVerticalSync(true);
     ofSetFrameRate(60);
-	
-    vs.setup();
-	vs.playSystem();
+	rulez.setup();
+	rulez.playSystem();
 }
 
 //--------------------------------------------------------------
