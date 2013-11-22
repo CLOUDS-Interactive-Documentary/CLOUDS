@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
-    <IsMinified>0</IsMinified>
+    <IsMinified>1</IsMinified>
     <XPosition>1.000000000</XPosition>
-    <YPosition>158.000000000</YPosition>
+    <YPosition>49.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Max Point Size</Name>
-    <Value>1.007995605</Value>
+    <Value>0.686000049</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -18,7 +18,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Max Distance</Name>
-    <Value>337.500000000</Value>
+    <Value>64.516128540</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,7 +28,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Perlin Amplitude</Name>
-    <Value>4.250000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,5 +43,5 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Wireframe Alpha</Name>
-    <Value>0.699999988</Value>
+    <Value>0.000000000</Value>
 </Widget>
