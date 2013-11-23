@@ -115,6 +115,7 @@ protected:
     void resetLines(); ///< clear only the lines
     void showPanel();//sets the info display panel to visible
     float oldMillis; ///< remembering what time it was
+    bool mouseDrag;
     long clickCount; ///< number of times the user has pressed the mouse button
     
     
