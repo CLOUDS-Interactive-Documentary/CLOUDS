@@ -1,0 +1,30 @@
+<rules maxDepth="500" primitive="triangles">
+    <ruleSet name="start">
+        <rule weight="100">
+            <ico colour="255 235 38" radius="20" transforms="tx 200 ty -400 sa 0.2 " next="branch1"/>
+            <ico colour="255 235 38" radius="20" transforms="tx 200 ty -400 ry 120 sa 0.2" next="branch1"/>
+            <ico colour="255 235 38" radius="20" transforms="tx 200 ty -400 ry 240 sa 0.2" next="branch1"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="branch1">
+        <rule weight="100">
+            <tube colour="255 136 133" radius="10" repeat="90" transforms="ry 1 tx 10" next="branch2"/>
+        </rule>
+        <rule weight="100">
+            <tube colour="255 136 133" radius="10" repeat="90" transforms="rz 1 tx 10" next="branch2"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="branch2">
+        <rule weight="5">
+            <ico colour="255 235 38" radius="100" transforms="sa 0.9" next="branch1"/>
+        </rule>
+        <rule weight="5">
+            <ico colour="255 160 38" radius="100" transforms="sa 0.9" next="branch1"/>
+        </rule>
+        <rule weight="100">
+            <tube colour="255 136 133" radius="10" repeat="90" transforms="ry 1 tx -10 sa 0.995" next="branch2"/>
+            <tube colour="255 136 133" radius="10" repeat="90" transforms="ry 1 tx 10 sa 0.995" next="branch2"/>
+            
+        </rule>
+    </ruleSet>
+</rules>

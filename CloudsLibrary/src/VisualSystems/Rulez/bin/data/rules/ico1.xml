@@ -1,0 +1,16 @@
+<rules startRule="test" maxDepth="6" primitive="triangles" meshColour="255">
+    <ruleSet name="test">
+        <rule weight="100">
+            <ico radius="100" transforms="tx 200 sa 0.995" next="test2"/>
+            <ico radius="100" transforms="tx 200 ry 120 sa 0.995" next="test2"/>
+            <ico radius="100" transforms="tx 200 ry 240 sa 0.995" next="test2"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="test2">
+        <rule weight="100">
+            <ico radius="100" transforms="tx 200 ty 200 sa 0.5" next="test2"/>
+            <ico radius="100" transforms="tx 200 ty 200 ry 120 sa 0.5" next="test2"/>
+            <ico radius="100" transforms="tx 200 ty 200 ry 240 sa 0.5" next="test2"/>
+        </rule>
+    </ruleSet>
+</rules>
