@@ -7,3 +7,9 @@
 //
 
 #include "Tweeter.h"
+
+Tweeter::Tweeter(){
+    name = " ";
+    handle = " ";
+}
+
