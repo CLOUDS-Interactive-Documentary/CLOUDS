@@ -44,7 +44,13 @@ class CloudsRGBDCombinedExporter {
 	float minBlobSize;
 	ofxCv::ContourFinder contours;
 	ofVec3f facePosition;
-	
+    
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
+    float skinThresholdLower;
+    float skinThresholdUpper;
+    
 	string log;
 	
   protected:
@@ -79,6 +85,7 @@ class CloudsRGBDCombinedExporter {
 	bool inFace;
 	bool foundFirstFace;
 	int lastFaceFrameFound;
+  
 };
 
 #endif
