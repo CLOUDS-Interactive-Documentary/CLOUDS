@@ -5,11 +5,6 @@
 #include "CloudsVisualSystemHistogram.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemHistogram::selfSetupGui(){
     
@@ -162,10 +157,10 @@ void CloudsVisualSystemHistogram::selfUpdate(){
         ofBeginShape();
         
         if(p%50 != 0){
-        color1.setHsb(k,180 + ofRandom(25),225 + ofRandom(25));
+			color1.setHsb(k,180 + ofRandom(25),225 + ofRandom(25));
         }
         else if(p%50 == 0){
-        color1.setHsb(0,0,0,0);
+			color1.setHsb(0,0,0,0);
         }
         histo.addColor(color1);
         histo.addVertex(a);
@@ -182,7 +177,7 @@ void CloudsVisualSystemHistogram::selfUpdate(){
         //cout <<  "index : " << j << "  current number: " << k << endl;
     
         
-}
+	}
     
    
     

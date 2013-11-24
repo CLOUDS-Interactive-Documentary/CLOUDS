@@ -184,9 +184,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
-	   outputImage.getHeight() != videoRectangle.getHeight() + 480 + 360)
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
 	{
-		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
 	}
 
 	//COPY video pixels into buffer
@@ -233,19 +233,26 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	normalsBox.width = p.getWidth();
 	normalsBox.height = p.getHeight();
 	
+	if(!blankPaster.isAllocated() ||
+	   normalsBox.width != blankPaster.getWidth() ||
+	   normalsBox.height != blankPaster.getHeight())
+	{
+		blankPaster.allocate(normalsBox.width,normalsBox.height, OF_IMAGE_COLOR);
+	}
+	
 	//  Clean this area
 	//
 	//TODO: paste in blank pixels?
-	for(int y = 0; y < normalsBox.height; y++){
-		for(int x = 0; x < normalsBox.width; x++){
-			outputImage.setColor(x + normalsBox.x,
-								 y + normalsBox.y,
-								 ofColor(0) );
-		}
-	}
+//	for(int y = 0; y < normalsBox.height; y++){
+//		for(int x = 0; x < normalsBox.width; x++){
+//			outputImage.setColor(x + normalsBox.x,
+//								 y + normalsBox.y,
+//								 ofColor(0) );
+//		}
+//	}
 	
-	
-		
+	blankPaster.pasteInto(outputImage, normalsBox.x, normalsBox.y);
+
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
 	
@@ -263,9 +270,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		recoveryFaceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
 	}
 
-	contours.setMinArea(minBlobSize);
-	contours.setThreshold(contourThreshold);
-	contours.setTargetColor(targetColor);
+//	contours.setMinArea(minBlobSize);
+//	contours.setThreshold(contourThreshold);
+//	contours.setTargetColor(targetColor);
 	
 //	cout << "Finding contour on image size " << videoPixels.getWidth() << " " << videoPixels.getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
 	
@@ -290,6 +297,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	}
 	
+	/*
 	//////////////////
 	//face extract
 	//////////////////
@@ -378,7 +386,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofPixels resized = faceFrame;
 	resized.resize(faceTargetRectangle.getWidth(), faceTargetRectangle.getHeight(), OF_INTERPOLATE_BICUBIC);
 	resized.pasteInto(outputImage, faceTargetRectangle.x, faceTargetRectangle.y);
+	*/
 	
+	/*
 	//////////
 	// DIFFERENCE MATTE
 	/////////
@@ -404,6 +414,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	}
 	
 	lastVideoFrame = thisFrameGray;
+	 */
 	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);

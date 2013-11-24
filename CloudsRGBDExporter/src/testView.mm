@@ -13,8 +13,8 @@
 	ofBackground(22);
 	minSequenceDepth = 100;
 	maxSequenceDepth = 200;
-	contourThreshold = 100;
-	minBlobSize = 0;
+//	contourThreshold = 100;
+//	minBlobSize = 0;
 	selectColor = false;
 
 	parser.loadFromFiles();
@@ -170,7 +170,7 @@
 		[totalProgress setDoubleValue: currentClipIndex];	
 	}
 	
-	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
+//	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
 	
 	if(resetCamera){
 		cam.setPosition(0, 0, 0);
@@ -389,6 +389,7 @@
 		if(player.setup(clip.getSceneFolder())){
 			if(!player.alternativeVideoIsConfirmed()){
 				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
+				return;
 			}
 			showHistogram = false;
 			calculatedHistogram = false;
@@ -417,6 +418,7 @@
             */
             
             //SM ADDED
+			targetColor = loadedClip.skinTargetColor;
             skinHueWeight = loadedClip.skinHueWeight;
             skinBrightWeight = loadedClip.skinBrightWeight;
             skinSatWeight = loadedClip.skinSatWeight;
@@ -494,7 +496,7 @@
 {
 	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
 		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-		contours.setTargetColor(targetColor);
+//		contours.setTargetColor(targetColor);
 	}	
 }
 
@@ -502,7 +504,7 @@
 {
 	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
 		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-		contours.setTargetColor(targetColor);
+//		contours.setTargetColor(targetColor);
 	}
 	
 	else if(selectFace && player.isLoaded() &&
