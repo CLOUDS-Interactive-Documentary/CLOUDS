@@ -28,10 +28,10 @@ void CloudsVisualSystemTwitter::loadJSONData(){
         
         for(int i = 0; i< files.size(); i++){
             string filePath =getVisualSystemDataPath()+"tweets/" +files[i].getFileName();
-            cout<<filePath<<endl;
+//            cout<<filePath<<endl;
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
-                cout << result.getRawString() << endl;
+//                cout << result.getRawString() << endl;
                 
                 if(result.isMember("errors")) {
                     ofDrawBitmapString(result.getRawString(), 10, 14);
@@ -45,18 +45,20 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                     }
                 }
                 else if(result.isMember("Tweets")){
-                    cout<<"Tweets is a valid member"<<endl;
+                    
                     Tweeter cur;
+                    vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
 
                     cur.name = result["name"].asString();
-                    
+                    cout<<cur.name<<" has "<<tweets.size()<<" tweets"<<endl;
                     for(int i =0; i<tweets.size(); i ++){
                         
                         Tweet t;
 
                         t.tweet = tweets[i]["Tweet"].asString();
 
+                        cout<<t.tweet<<endl;
                         if(tweets[i]["Hashtag"].isValidIndex(0)){
                             ofxJSONElement hashTags = tweets[i]["Hashtag"];
                             
@@ -76,9 +78,21 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                             
                             
                         }
+                        
+                        if(tweets[i].isMember("Date")){
+                            ofxJSONElement date = tweets[i]["Date"];
+                            t.tweetDate.day = date[0].asFloat();
+                            t.tweetDate.month =date[1].asFloat();
+                            t.tweetDate.year =date[2].asFloat();
+                            
+                            cout<<t.tweetDate.day<< " - "<<t.tweetDate.month <<" - "<<t.tweetDate.year<<endl;
+
+                        }
+                        
+                        userTweets.push_back(t);
 
                     }
-                 
+                        cur.tweets= userTweets;
                         tweeters.push_back(cur);
                 }
                 
@@ -191,7 +205,14 @@ void CloudsVisualSystemTwitter::selfExit()
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	for(int i=0; i<tweeters.size(); i++){
-        cout<<tweeters[i].name<<endl;
+        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
+        
+        for(int j=0; j<tweeters[i].tweets.size(); j++){
+            
+            cout<<tweeters[i].tweets[j].tweet<<" , "<<tweeters[i].tweets[j].hashtags.size()<<" , "<<tweeters[i].tweets[j].mentionedUsers.size()<<endl;
+        }
+        
+        
     }
 }
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){

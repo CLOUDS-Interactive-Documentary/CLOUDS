@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1859B2F7184183F3005200CF /* skinDetector.frag in Sources */ = {isa = PBXBuildFile; fileRef = 1859B2F5184183F3005200CF /* skinDetector.frag */; };
+		1859B2F8184183F3005200CF /* skinDetector.vert in Sources */ = {isa = PBXBuildFile; fileRef = 1859B2F6184183F3005200CF /* skinDetector.vert */; };
 		18F25677183FEB50001C78A3 /* libopencv_androidcamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F255FE183FEB4F001C78A3 /* libopencv_androidcamera.a */; };
 		18F25678183FEB50001C78A3 /* libopencv_calib3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F255FF183FEB4F001C78A3 /* libopencv_calib3d.a */; };
 		18F25679183FEB50001C78A3 /* libopencv_contrib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F25600183FEB4F001C78A3 /* libopencv_contrib.a */; };
@@ -231,6 +233,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1859B2F5184183F3005200CF /* skinDetector.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = skinDetector.frag; path = bin/data/skinDetector.frag; sourceTree = SOURCE_ROOT; };
+		1859B2F6184183F3005200CF /* skinDetector.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = skinDetector.vert; path = bin/data/skinDetector.vert; sourceTree = SOURCE_ROOT; };
 		18F2559B183FEB4F001C78A3 /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		18F2559C183FEB4F001C78A3 /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cv.hpp; sourceTree = "<group>"; };
 		18F2559D183FEB4F001C78A3 /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
@@ -1424,6 +1428,8 @@
 		E731D64C17401845006B9650 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1859B2F5184183F3005200CF /* skinDetector.frag */,
+				1859B2F6184183F3005200CF /* skinDetector.vert */,
 				E731D64D17401845006B9650 /* src */,
 			);
 			name = CloudsLibrary;
@@ -1918,6 +1924,8 @@
 				E72348C91833663A004ABDCC /* CloudsClip.cpp in Sources */,
 				E7234A94183366C1004ABDCC /* CloudsSpeaker.cpp in Sources */,
 				E7234A97183366D4004ABDCC /* CloudsLink.cpp in Sources */,
+				1859B2F7184183F3005200CF /* skinDetector.frag in Sources */,
+				1859B2F8184183F3005200CF /* skinDetector.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

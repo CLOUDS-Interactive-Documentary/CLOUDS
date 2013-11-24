@@ -43,6 +43,7 @@
 	bool pause;
 	bool resetCamera;
 	
+    
 	ofFbo framebuffer;
 	vector<CloudsClip> selectedClips;
 
@@ -67,6 +68,13 @@
 	bool calculatedHistogram;
 	ofPolyline histogram;
 	
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
+    float skinThresholdLower;
+    float skinThresholdUpper;
+    ofShader shaderSkinDetection;
+    
 	ofxCv::ContourFinder contours;
 	float contourThreshold;
 	float minBlobSize;

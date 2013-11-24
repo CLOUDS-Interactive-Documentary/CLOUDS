@@ -94,6 +94,7 @@ void testApp::draw(){
         shaderBlurX.setUniformTexture("src_tex_unit0", img, 0 );
         shaderBlurX.setUniform1f("blurAmnt", blurAmount);
         
+        
         //img.draw(0,0);
         fboSkinDetect.draw(0,0);
         shaderBlurX.end();
