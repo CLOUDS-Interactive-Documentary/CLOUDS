@@ -100,9 +100,17 @@ float weightedDistance(vec3 pnt1 ,vec3 pnt2,vec3 weights){
 }
 void main (void)
 {
+	
+
+    vec4 samp1 = texture2DRect(imgSampler, gl_TexCoord[0].st + vec2(0,1.));
+    vec4 samp2 = texture2DRect(imgSampler, gl_TexCoord[0].st + vec2(0,-1.));
+    vec4 samp3 = texture2DRect(imgSampler, gl_TexCoord[0].st + vec2(1.,0));
+    vec4 samp4 = texture2DRect(imgSampler, gl_TexCoord[0].st + vec2(-1.,0));
     vec4 test = texture2DRect(imgSampler, gl_TexCoord[0].st);
+    vec4 avg = (samp1 +samp2 +samp3 samp4 + test)/5.;
+
     vec3 hslSample = rgb2hsl(samplePointColor.rgb);
-    vec3 hslCurrent = rgb2hsl(test.rgb);
+    vec3 hslCurrent = rgb2hsl(avg.rgb);
 
     float dist  = weightedDistance(hslSample.rgb,hslCurrent.rgb, weights);
     if(dist > lowerThreshold && dist<upperThreshold){
