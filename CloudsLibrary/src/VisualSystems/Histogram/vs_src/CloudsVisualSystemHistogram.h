@@ -3,7 +3,7 @@
 //
 // VISUAL SYSTEMS
 //
-// Welcome to the EMPTY CloudsVisualSystem
+// Welcome to the Histogram CloudsVisualSystem
 //
 //
 //
@@ -12,55 +12,15 @@
 
 #include "CloudsVisualSystem.h"
 
-struct pingPongBuffer {
-public:
-    void allocate( int _width, int _height, int _internalformat = GL_RGBA, float _dissipation = 1.0f){
-        // Allocate
-        for(int i = 0; i < 2; i++){
-            FBOs[i].allocate(_width,_height, _internalformat );
-            FBOs[i].getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-        }
-        
-        // Clean
-        clear();
-        
-        // Set everything to 0
-        flag = 0;
-        swap();
-        flag = 0;
-    }
-    
-    void swap(){
-        src = &(FBOs[(flag)%2]);
-        dst = &(FBOs[++(flag)%2]);
-    }
-    
-    void clear(){
-        for(int i = 0; i < 2; i++){
-            FBOs[i].begin();
-            ofClear(0,255);
-            FBOs[i].end();
-        }
-    }
-    
-    ofFbo& operator[]( int n ){ return FBOs[n];}
-    
-    ofFbo   *src;       // Source       ->  Ping
-    ofFbo   *dst;       // Destination  ->  Pong
-private:
-    ofFbo   FBOs[2];    // Real addresses of ping/pong FBO«s
-    int     flag;       // Integer for making a quick swap
-};
-
 //TODO: rename this to your own visual system
-class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
+class CloudsVisualSystemHistogram : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "GPUParticles";
+		return "HistogramSystem";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -113,9 +73,6 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
-    
-    //regenerate
-    void regenerate(); 
 
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -127,39 +84,48 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-    ofShader    updatePos;
-    ofShader    updateVel;
-    ofShader    updateRender;
-    
-    pingPongBuffer posPingPong;
-    pingPongBuffer velPingPong;
-    
-    ofFbo   renderFBO;
-    
-    ofImage sparkImg;
-    
-    float   timeStep;
-    float   particleSize;
-    
-    int     width, height;
-    int     imgWidth, imgHeight;
-    int     numParticles;
-    int     textureRes;
-    
-    ofColor newColor;
-    float hue1;
-    float saturation1;
-    float brightness1;
-    bool shouldRegenerate;
-    
+
+    // if you use a custom camera to fly through the scene
+	// you must implement this method for the transitions to work properly
+//	ofCamera& getCameraRef(){
+//		return myCustomCamera;
+//	}
+
+	//
+
+
 protected:
     
     //  Your Stuff
     //
 	
 	ofxUISuperCanvas* customGui;
-	bool customToggle;
-	float customFloat1;
-	float customFloat2;
 	
+    vector <float> randomData;
+    int numRandomData;
+    
+    int seed;
+    int stepSize = 2;
+    int noiseValue = 100;
+    
+    int n = 0;
+    
+    bool filled = false;
+    bool drawn = false;
+    
+	vector <ofMesh> histograms;
+    ofMesh histo;
+    
+    ofColor color1;
+    
+    float xpos = 10;
+    float ypos = 10;
+    float rectHeight;
+    float rectWidth = 25;
+    float xoffset = 0;
+    float zoffset = -100;
+   
+    int rows = 4;
+    
+    
 };
