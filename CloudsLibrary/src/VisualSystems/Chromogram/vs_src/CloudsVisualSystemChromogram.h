@@ -119,6 +119,7 @@ protected:
     int numRandomColors;
     ofColor color1;
     ofColor color2;
+    ofColor color3; 
     int sporadicColorChanger = 0 ;
     int sporadicSaturationChanger = 0 ;
     int sporadicBrightnessChanger = 0;
@@ -126,12 +127,44 @@ protected:
     
     float xpos = 10;
     float ypos = 10;
-    float rectHeight = 25;
-    float rectWidth = 15;
+    
     float yoffset = 0;
-    float zoffset = -100;
-   
-    int rows = 4;
+    
+    
+    ////////// Slider Paramters
+    
+    float rectHeight;
+    float rectWidth;
+    
+    float HueMin;
+    float HueMax;
+    float hRangeMin;
+    float hRangeMax;
+    
+    float SatMin;
+    float SatMax;
+    float sRangeMin;
+    float sRangeMax;
+    
+    float BrightMin;
+    float BrightMax;
+    float bRangeMin;
+    float bRangeMax;
+    
+    float HueNoiseStep;
+    float SatNoiseStep;
+    float BrightNoiseStep;
+    
+    float hNoiseSpeed;
+    float sNoiseSpeed;
+    float bNoiseSpeed;
+
+    
+    float HueStochasticity;
+    float SatStochasticity;
+    float BrightnessStochasticity;
+    
+    
     
     
 };

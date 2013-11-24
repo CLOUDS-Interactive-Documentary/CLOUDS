@@ -22,6 +22,35 @@ void CloudsVisualSystemChromogram::selfSetupGui(){
 	//customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
     //customGui->addButton("Custom Button", false);
     
+    //customGui->addSlider("Overall Speed", .1, 1, &overallNoiseSpeed);
+    customGui->addSlider("Cell Width", 1, 75, &rectWidth);
+    customGui->addSlider("Cell Height", 1, 75, &rectHeight);
+    
+    customGui->addSpacer();
+    customGui->addSpacer("Ranges");
+    customGui->addRangeSlider("Hue - Input range", -500, 500, &hRangeMin, &hRangeMax);
+    customGui->addRangeSlider("Hue - Output range", 0, 255, &HueMin, &HueMax);
+    
+    customGui->addRangeSlider("Sat - Input range", -500, 500, &sRangeMin, &sRangeMax);
+    customGui->addRangeSlider("Sat - Output range", 0, 255, &SatMin, &SatMax);
+    
+    customGui->addRangeSlider("Bright - Input range", -500, 500, &bRangeMin, &bRangeMax);
+    customGui->addRangeSlider("Bright - Output range", 0, 255, &BrightMin, &BrightMax);
+    
+    customGui->addSpacer();
+    customGui->addSpacer("Speed/Randomness");
+    customGui->addSlider("H NoiseSpeed", .1, 1, &hNoiseSpeed);
+    customGui->addSlider("H Noise Step", 1, 10, &HueNoiseStep);
+    customGui->addSlider("H Stochasticity", 1, 10000, &HueStochasticity);
+   
+    customGui->addSlider("S NoiseSpeed", .1, 1, &sNoiseSpeed);
+    customGui->addSlider("S Noise Step", 1, 10, &SatNoiseStep);
+    customGui->addSlider("Saturation Stochasticity", 1, 10000, &SatStochasticity);
+    
+    customGui->addSlider("B NoiseSpeed", .1, 1, &bNoiseSpeed);
+    customGui->addSlider("B Noise Step", 1, 10, &BrightNoiseStep);
+    customGui->addSlider("Brightness Stochasticity", 1, 10000, &BrightnessStochasticity);
+    
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemChromogram::selfGuiEvent);
 	guis.push_back(customGui);
@@ -57,8 +86,11 @@ void CloudsVisualSystemChromogram::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemChromogram::selfSetup(){
 	
     seed =  int(ofRandom(20));
-    numRandomColors = 2400;
+    numRandomColors = 4000;
     ofSetFrameRate(40);
+    
+    
+
     
     //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
@@ -91,31 +123,31 @@ void CloudsVisualSystemChromogram::selfUpdate(){
     ////////////////////////////////////////////////////////////////////////
     // FILL THE VECTOR WITH RANDOM NUMBERS FOR STARTERS
     
-    float t = ofGetFrameNum() / 30.0;
+    float t = ofGetFrameNum();
     
     
     if (filled == false){
         for (int i = 0; i < numRandomColors; i++){
             n = n+1;
            
-            if (int(ofRandom(500)) == 3){
-                sporadicColorChanger = (ofRandom(100)-50);
-                cout <<  "SPORADICALLY CHANGED BY " << sporadicColorChanger << endl;
+            if (int(ofRandom(10000/HueStochasticity)) == 1){
+                sporadicColorChanger = (ofRandom(50) -25);
+                //cout <<  "SPORADICALLY CHANGED BY " << sporadicColorChanger << endl;
             }
             else{
                 sporadicColorChanger = 0;
             }
             
-            if (int(ofRandom(50)) == 3){
-                sporadicSaturationChanger = (ofRandom(50)-25);
+            if (int(ofRandom(10000/SatStochasticity)) == 1){
+                sporadicSaturationChanger = (ofRandom(50) -25);
                 //cout <<  "SPORADICALLY CHANGED BY " << sporadicSaturationChanger << endl;
             }
             else{
                 sporadicSaturationChanger = 0;
             }
             
-            if (int(ofRandom(10)) == 3){
-                sporadicSaturationChanger = (ofRandom(100)-50);
+            if (int(ofRandom(10000/BrightnessStochasticity)) == 1){
+                sporadicBrightnessChanger = (ofRandom(50) -25);
                 //cout <<  "SPORADICALLY CHANGED BY " << sporadicSaturationChanger << endl;
             }
             else{
@@ -123,16 +155,18 @@ void CloudsVisualSystemChromogram::selfUpdate(){
             }
             
             
-            noiseHue += (ofNoise( n * .1, t) * 10 - 5) + sporadicColorChanger; //generate noise hue
-            noiseSaturation += (ofNoise(t, n * .01) * 10 - 5) + sporadicSaturationChanger; // generation saturation
-            noiseBrightness = noiseSaturation/2 + ofRandom(-100, 100) + sporadicBrightnessChanger;
+            noiseHue += (ofNoise( t * hNoiseSpeed, n * .01, seed) * HueNoiseStep*2 - HueNoiseStep) + sporadicColorChanger; //generate noise hue
+            noiseSaturation += (ofNoise(t * sNoiseSpeed, n * .01, seed) * SatNoiseStep*2 - SatNoiseStep) + sporadicSaturationChanger; // generation saturation
+            noiseBrightness = (ofNoise(t * bNoiseSpeed, n * .01, seed) * BrightNoiseStep*2 - BrightNoiseStep) + sporadicBrightnessChanger;
             //noiseBrightness = ofRandom(200, 255);
-            float newHue = ofMap(noiseHue,-300, 200, 20, 250, true);
-            float newSaturation = ofMap(noiseSaturation,-300, 200, 180, 220, true);
-            float newBrightness = ofMap(noiseBrightness,-300, 200, 150, 255, true);
+            float newHue = ofMap(noiseHue,-hRangeMin, hRangeMax, HueMin, HueMax, true);
+            float newSaturation = ofMap(noiseSaturation,-sRangeMin, sRangeMax, SatMin, SatMax, true);
+            float newBrightness = ofMap(noiseBrightness,-bRangeMin, bRangeMax, BrightMin, BrightMax, true);
             //cout <<  "raw hues " << noiseHue << "  mapped hue: " << newHue << endl;
             //cout <<  "raw brightness " << noiseBrightness << "  mapped brightness: " << newBrightness << endl;
+            
             color1.setHsb(newHue, newSaturation, newBrightness);
+        
             randomColors.push_back(color1); // noise value
             
             //  cout << "time: " <<  t << "size of vector: " << randomColors.size() << "  noise value " << noiseValue << endl;
@@ -148,15 +182,15 @@ void CloudsVisualSystemChromogram::selfUpdate(){
     
     // Generate a new noise value
     n = n+1;
-    if (int(ofRandom(500)) == 3){
-         sporadicColorChanger = (ofRandom(100)-50);
+    if (int(ofRandom(10000/HueStochasticity)) == 1){
+         sporadicColorChanger = (ofRandom(50)-25);
         //cout <<  "SPORADICALLY CHANGED BY " << sporadicColorChanger << endl;
     }
     else{
          sporadicColorChanger = 0;
     }
     
-    if (int(ofRandom(50)) == 3){
+    if (int(ofRandom(10000/SatStochasticity)) == 3){
         sporadicSaturationChanger = (ofRandom(50)-25);
         //cout <<  "SPORADICALLY CHANGED BY " << sporadicSaturationChanger << endl;
     }
@@ -164,8 +198,8 @@ void CloudsVisualSystemChromogram::selfUpdate(){
         sporadicSaturationChanger = 0;
     }
     
-    if (int(ofRandom(10)) == 3){
-        sporadicSaturationChanger = (ofRandom(100)-50);
+    if (int(ofRandom(10000/BrightnessStochasticity)) == 3){
+        sporadicSaturationChanger = (ofRandom(50)-25);
         //cout <<  "SPORADICALLY CHANGED BY " << sporadicSaturationChanger << endl;
     }
     else{
@@ -173,17 +207,21 @@ void CloudsVisualSystemChromogram::selfUpdate(){
     }
     
     
-    noiseHue += (ofNoise( n * .1, t) * 10 - 5) + sporadicColorChanger; //generate noise hue
-    noiseSaturation += (ofNoise(t, n * .01) * 10 - 5) + sporadicSaturationChanger; // generation saturation
-    noiseBrightness = noiseSaturation/2 + ofRandom(-100, 100) + sporadicBrightnessChanger;
+    noiseHue += (ofNoise( t * hNoiseSpeed, n * .01, seed) * HueNoiseStep*2 - HueNoiseStep) + sporadicColorChanger; //generate noise hue
+    noiseSaturation += (ofNoise(t * sNoiseSpeed, n * .01, seed) * SatNoiseStep*2 - SatNoiseStep) + sporadicSaturationChanger; // generation saturation
+    noiseBrightness = (ofNoise(t * bNoiseSpeed, n * .01, seed) * BrightNoiseStep*2 - BrightNoiseStep) + sporadicBrightnessChanger; //noiseSaturation/2 + ofRandom(-100, 100) +
     //noiseBrightness = ofRandom(200, 255);
-    float newHue = ofMap(noiseHue,-300, 200, 20, 250, true);
-    float newSaturation = ofMap(noiseSaturation,-300, 200, 180, 240, true);
-    float newBrightness = ofMap(noiseBrightness,-300, 200, 150, 255, true);
-    //cout <<  "raw hues " << noiseHue << "  mapped hue: " << newHue << endl;
-    cout <<  "raw brightness " << noiseBrightness << "  mapped brightness: " << newBrightness << endl;
+    float newHue = ofMap(noiseHue, -hRangeMin, hRangeMax, HueMin, HueMax, true);
+    float newSaturation = ofMap(noiseSaturation,-sRangeMin, sRangeMin, SatMin, SatMax, true);
+    float newBrightness = ofMap(noiseBrightness,-bRangeMin, bRangeMin, BrightMin, BrightMax, true);
+    cout <<  "raw hues " << noiseHue << "  mapped hue: " << newHue << endl;
+    cout <<  "raw sat " << noiseSaturation << "  mapped sat: " << newSaturation << endl;
+    cout <<  "raw bright " << noiseBrightness << "  mapped brightness: " << newBrightness << endl;
+
+   // cout <<  "raw brightness " << noiseBrightness << "  mapped brightness: " << newBrightness << endl;
+        
     color1.setHsb(newHue, newSaturation, newBrightness);
-    
+
     randomColors.erase(randomColors.begin());
     randomColors.push_back(color1); // noise value
     
@@ -201,7 +239,7 @@ void CloudsVisualSystemChromogram::selfUpdate(){
         
         r++;
         
-        if(r%75 == 0){
+        if(r%100 == 0){
             p++;
             r = 0;
         }
@@ -210,18 +248,21 @@ void CloudsVisualSystemChromogram::selfUpdate(){
         //float k = ofMap(j,0,randomColors.size(),255,80);
       
         //bottom left
-        ofPoint a = ofPoint((r * rectWidth), (p * rectHeight));
+        ofPoint a = ofPoint((r * rectWidth), (p * rectHeight) +5);
         //topleft
-        ofPoint b = ofPoint((r * rectWidth), (p * rectHeight) + rectHeight);
+        ofPoint b = ofPoint((r * rectWidth), (p * rectHeight) + 5 + rectHeight);
         //bottom right
-        ofPoint c = ofPoint((r * rectWidth) + rectWidth, (p * rectHeight));
+        ofPoint c = ofPoint((r * rectWidth) + rectWidth, (p * rectHeight) + 5 );
         //top right
-        ofPoint d = ofPoint((r * rectWidth) + rectWidth, (p * rectHeight) + rectHeight);
+        ofPoint d = ofPoint((r * rectWidth) + rectWidth, (p * rectHeight) + 5 + rectHeight);
         
         ofBeginShape();
         
         color2 = randomColors[j];
+        color3.setHsb(0,0,0,0); 
         
+        chromogram.addColor(color3);
+        chromogram.addVertex(a);
         chromogram.addColor(color2);
         chromogram.addVertex(a);
         chromogram.addColor(color2);
@@ -229,6 +270,8 @@ void CloudsVisualSystemChromogram::selfUpdate(){
         chromogram.addColor(color2);
         chromogram.addVertex(c);
         chromogram.addColor(color2);
+        chromogram.addVertex(d);
+        chromogram.addColor(color3);
         chromogram.addVertex(d);
         
         ofEndShape();
