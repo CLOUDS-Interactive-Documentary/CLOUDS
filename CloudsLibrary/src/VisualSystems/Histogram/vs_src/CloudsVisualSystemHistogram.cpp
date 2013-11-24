@@ -56,6 +56,8 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemHistogram::selfSetup(){
 	
+    
+    
     seed =  int(ofRandom(20));
     numRandomData = 3200;
     ofSetFrameRate(60);
