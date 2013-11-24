@@ -28,7 +28,8 @@ void CloudsRGBDCombinedExporter::prepare(){
 	lastVideoFrame.clear();
 	
 	tracker.setup();
-	
+
+//	
 	contours.setMinArea(minBlobSize);
 	contours.setThreshold(contourThreshold);
 	contours.setTargetColor(targetColor);
@@ -124,7 +125,21 @@ void CloudsRGBDCombinedExporter::writeMetaFile(string outputDirectory, ofxRGBDCP
 	
 	calibration.popTag();//adjustment
 	
-	calibration.addTag("face");
+    
+    ///SM ADDED
+    calibration.addTag("skin");
+    calibration.pushTag("skin");
+    calibration.addValue("targetR",targetColor.r);
+    calibration.addValue("targetG",targetColor.g);
+    calibration.addValue("targetB",targetColor.b);
+    calibration.addValue("hueWeight", skinHueWeight);
+    calibration.addValue("satWeight",skinSatWeight);
+    calibration.addValue("brightWeight", skinBrightWeight);
+    calibration.addValue("lowerThreshold", skinThresholdLower);
+    calibration.addValue("upperThreshold",skinThresholdUpper);
+    calibration.popTag();
+    
+    calibration.addTag("face");
 	calibration.pushTag("face");
 	calibration.addValue("x", facePosition.x);
 	calibration.addValue("y", facePosition.y);

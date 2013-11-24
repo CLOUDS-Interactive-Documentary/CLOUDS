@@ -97,12 +97,28 @@ class CloudsClip {
 	ofVec3f adjustTranslate;
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
+    
 	ofVec2f faceCoord;
 	
 	//contour parameters
 	ofColor contourTargetColor;
 	float contourTargetThreshold;
 	float contourMinBlobSize;
+    
+    
+    //SURYA TODO: Replace contour parameters colour parameters
+    //Skin Parameters
+    ofColor skinTargetColor;
+    float skinLowerThreshold;
+    float skinUpperThreshold;
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
+    
+
+    
+    
+
 	
 	bool adjustmentLoaded;
     

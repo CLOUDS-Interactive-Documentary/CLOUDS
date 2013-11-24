@@ -65,16 +65,27 @@
 	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
-	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
-	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
+//
 	gui->addToggle("select color", &selectColor);
 	gui->addToggle("select face", &selectFace);
+    //SM ADDED
+    gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &skinThresholdLower);
+    gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &skinThresholdUpper);
+    gui->addSlider("HUE WEIGHT", 0.0, 1.0, &skinHueWeight);
+    gui->addSlider("SATURATION WEIGHT", 0.0, 1.0, &skinSatWeight);
+    gui->addSlider("BRIGTHNESS WEIGHT", 0.0, 1.0, &skinBrightWeight);
+    gui->addSpacer();
+
+//
+//	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
+//	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
+
 	
 	gui->addToggle("pause", &pause);
 	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
-	
+    gui->autoSizeToFitWidgets();	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
 
 	cam.setup();
@@ -82,7 +93,9 @@
 	cam.loadCameraPosition();
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
-	
+    
+    shaderSkinDetection.load("skinDetector");
+    
     filler.setKernelSize(3);
     filler.setIterations(3);
 
@@ -186,15 +199,26 @@
 		}
 		
 //		cout << "Finding contour on image size " << player.getVideoPlayer()->getWidth() << " " << player.getVideoPlayer()->getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
-		contours.setMinArea(minBlobSize);
-		contours.setThreshold(contourThreshold);
-		contours.setTargetColor(targetColor);
-		contours.findContours(*player.getVideoPlayer());
+//		contours.setMinArea(minBlobSize);
+//		contours.setThreshold(contourThreshold);
+//		contours.setTargetColor(targetColor);
+//		contours.findContours(*player.getVideoPlayer());
+        
+        //SM REMOVED
+        /*
 		loadedClip.contourMinBlobSize = minBlobSize;
 		loadedClip.contourTargetColor = targetColor;
 		loadedClip.contourTargetThreshold = contourThreshold;
-		loadedClip.faceCoord = facePosition;
-		
+		*/
+        loadedClip.faceCoord = facePosition;
+        
+        //SM ADDED
+        loadedClip.skinBrightWeight = skinBrightWeight;
+        loadedClip.skinHueWeight = skinHueWeight;
+        loadedClip.skinSatWeight = skinSatWeight;
+        loadedClip.skinLowerThreshold = skinThresholdLower;
+        loadedClip.skinUpperThreshold = skinThresholdUpper;
+		loadedClip.skinTargetColor = targetColor;
 	}
 
 	if(player.isLoaded() &&
@@ -226,10 +250,21 @@
 
 	if(selectColor){
 		if(player.isLoaded()){
+            
+            //SM ADDED
 			ofPushMatrix();
 			ofTranslate(200,0);
-			player.getVideoPlayer()->draw(0,0);
-			contours.draw();
+            shaderSkinDetection.begin();
+            
+            shaderSkinDetection.setUniformTexture("imgSampler",*player.getVideoPlayer(), 0);
+            shaderSkinDetection.setUniform3f("samplePointColor", targetColor.r, targetColor.g,targetColor.b);
+            shaderSkinDetection.setUniform3f("weights", skinHueWeight, skinSatWeight, skinBrightWeight);
+            shaderSkinDetection.setUniform1f("lowerThreshold", skinThresholdLower);
+            shaderSkinDetection.setUniform1f("upperThreshold", skinThresholdUpper);
+            player.getVideoPlayer()->draw(0,0);
+            
+            shaderSkinDetection.end();
+        
 			ofPopMatrix();
 		}
 	}
@@ -371,12 +406,22 @@
 			scale = loadedClip.adjustScale;
 			minDepth = loadedClip.minDepth;
 			maxDepth = loadedClip.maxDepth;
-
+            
+            //SM REMOVED
+            /*
 			minBlobSize = loadedClip.contourMinBlobSize;
 			targetColor = loadedClip.contourTargetColor;
 			contourThreshold = loadedClip.contourTargetThreshold;
 			contours.setTargetColor(targetColor);
 			facePosition = loadedClip.faceCoord;
+            */
+            
+            //SM ADDED
+            skinHueWeight = loadedClip.skinHueWeight;
+            skinBrightWeight = loadedClip.skinBrightWeight;
+            skinSatWeight = loadedClip.skinSatWeight;
+            skinThresholdUpper = loadedClip.skinUpperThreshold;
+            skinThresholdLower = loadedClip.skinLowerThreshold;
 			
 			player.play();
 		}
@@ -424,6 +469,7 @@
 	if(key == 'S'){
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
+        shaderSkinDetection.load("skinDetector");
 	}
 	
 	if(key == 'H'){

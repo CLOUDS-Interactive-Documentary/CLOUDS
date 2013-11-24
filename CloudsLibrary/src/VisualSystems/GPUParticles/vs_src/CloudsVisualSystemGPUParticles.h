@@ -113,6 +113,9 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
 
 	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
+    
+    //regenerate
+    void regenerate(); 
 
 	//events are called when the system is active
 	//Feel free to make things interactive for you, and for the user!
@@ -142,6 +145,12 @@ class CloudsVisualSystemGPUParticles : public CloudsVisualSystem {
     int     imgWidth, imgHeight;
     int     numParticles;
     int     textureRes;
+    
+    ofColor newColor;
+    float hue1;
+    float saturation1;
+    float brightness1;
+    bool shouldRegenerate;
     
 protected:
     

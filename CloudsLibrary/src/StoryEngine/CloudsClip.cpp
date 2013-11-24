@@ -416,18 +416,34 @@ void CloudsClip::saveAdjustmentToXML(){
     
 	alignmentSettings.addTag("extraction");
 	alignmentSettings.pushTag("extraction");
+    /*
 	alignmentSettings.addValue("colorr", contourTargetColor.r);
 	alignmentSettings.addValue("colorg", contourTargetColor.g);
 	alignmentSettings.addValue("colorb", contourTargetColor.b);
+     
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
+    */
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
-	
+
 	
 	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
+
+    ///SM ADDED
+    alignmentSettings.addTag("skin");
+    alignmentSettings.pushTag("skin");
+    alignmentSettings.addValue("targetR",skinTargetColor.r);
+    alignmentSettings.addValue("targetG",skinTargetColor.g);
+    alignmentSettings.addValue("targetB",skinTargetColor.b);
+    alignmentSettings.addValue("hueWeight", skinHueWeight);
+    alignmentSettings.addValue("satWeight",skinSatWeight);
+    alignmentSettings.addValue("brightWeight", skinBrightWeight);
+    alignmentSettings.addValue("lowerThreshold", skinLowerThreshold);
+    alignmentSettings.addValue("upperThreshold",skinUpperThreshold);
+    alignmentSettings.popTag();//skin
     
 	alignmentSettings.popTag(); //adjustment
 	

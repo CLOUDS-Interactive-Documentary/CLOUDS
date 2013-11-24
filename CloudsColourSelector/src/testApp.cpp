@@ -15,16 +15,13 @@ void testApp::setup(){
     fboSkinDetect.allocate(img.getWidth(), img.getHeight());
     player.play();
     threshold = 0.5;
-    
 
     shaderSkinDetection.load("skinDetector");
     shaderBlurX.load("simpleBlurHorizontal");
     shaderBlurY.load("simpleBlurVertical");
-    
 
-    ofEnableAlphaBlending();
     blur = false;
-    
+
     gui = new ofxUISuperCanvas("COLOUR SELECTOR", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addFPS();
@@ -66,8 +63,6 @@ void testApp::update(){
     if(player.isFrameNew()){
         img = player.getPixelsRef();
     }
-
-    
 }
 
 //--------------------------------------------------------------
@@ -98,6 +93,7 @@ void testApp::draw(){
         shaderBlurX.begin();
         shaderBlurX.setUniformTexture("src_tex_unit0", img, 0 );
         shaderBlurX.setUniform1f("blurAmnt", blurAmount);
+        
         
         //img.draw(0,0);
         fboSkinDetect.draw(0,0);
