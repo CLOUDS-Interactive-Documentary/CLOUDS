@@ -176,7 +176,7 @@
 		cam.setPosition(0, 0, 0);
 		cam.setOrientation(ofQuaternion());
 		cam.rotate(180, ofVec3f(0,1,0));
-		cam.setAnglesFromOrientation();	
+//		cam.setAnglesFromOrientation();
 	}
 
 	player.update();

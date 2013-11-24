@@ -238,6 +238,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	   normalsBox.height != blankPaster.getHeight())
 	{
 		blankPaster.allocate(normalsBox.width,normalsBox.height, OF_IMAGE_COLOR);
+		blankPaster.set(0);	
 	}
 	
 	//  Clean this area
@@ -263,12 +264,12 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
 	
-	// Copy in face info
-	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
-	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
-		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
-		recoveryFaceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
-	}
+//	// Copy in face info
+//	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
+//	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
+//		faceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+//		recoveryFaceFrame.allocate(videoPixels.getWidth(), videoPixels.getHeight(), OF_IMAGE_COLOR);
+//	}
 
 //	contours.setMinArea(minBlobSize);
 //	contours.setThreshold(contourThreshold);
@@ -276,6 +277,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	
 //	cout << "Finding contour on image size " << videoPixels.getWidth() << " " << videoPixels.getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
 	
+	/*
 	contours.findContours(videoPixels);
 	if(contours.size() > 0){
 		cv::Mat dstMat = ofxCv::toCv(faceFrame);
@@ -296,6 +298,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		log += "NO CONTOURS FOUND FRAME: " + ofToString(frameNum) + "\n";
 
 	}
+	*/
 	
 	/*
 	//////////////////

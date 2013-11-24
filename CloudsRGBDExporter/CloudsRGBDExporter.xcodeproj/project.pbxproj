@@ -1071,8 +1071,8 @@
 		E731D8021740189F006B9650 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E731D8031740189F006B9650 /* ofxGameCamera.cpp */,
 				E731D8041740189F006B9650 /* ofxGameCamera.h */,
+				E731D8031740189F006B9650 /* ofxGameCamera.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
