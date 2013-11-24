@@ -46,9 +46,14 @@ float rgbToGray(vec4 rgbVal){
 float clamp(float value, float min, float max) {
     return value < min ? min : value > max ? max : value;
 }
-
+//these are cubic easings
 float easeOut(float t,float b , float c, float d) {
 	return c*((t=t/d-1.)*t*t + 1.) + b;
+}
+
+float easeInOut(float t,float b , float c, float d)  {
+	if ((t/=d/2.) < 1.) return c/2.*t*t*t + b;
+	return c/2.*((t-=2.)*t*t + 2.) + b;
 }
 float mapEase(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax, bool clamp ){
     
@@ -62,7 +67,7 @@ float mapEase(float value, float inputMin, float  inputMax, float  outputMin,flo
 	float c = outputMax - outputMin;
 	float d = inputMax - inputMin;
 	float b = outputMin;
-	float res= easeOut(t,b,c,d);
+	float res= easeInOut(t,b,c,d);
     
 	return res;
 }
@@ -102,8 +107,9 @@ void main (void)
     float dist  = weightedDistance(hslSample.rgb,hslCurrent.rgb, weights);
     if(dist > lowerThreshold && dist<upperThreshold){
         
-        float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
-        gl_FragColor = vec4(test.rgb,alpha);
+//        float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
+//        gl_FragColor = vec4(test.rgb,alpha);
+        gl_FragColor = vec4(test.rgba);
     }
     else{
         gl_FragColor = vec4(0.,0.,0.,1.0);
