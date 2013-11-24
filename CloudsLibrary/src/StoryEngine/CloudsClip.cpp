@@ -366,24 +366,17 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
+	contourTargetColor = ofColor(adjustmentSettings.getValue("adjustment:extraction:colorr", 255),
+								 adjustmentSettings.getValue("adjustment:extraction:colorg", 255),
+								 adjustmentSettings.getValue("adjustment:extraction:colorb", 255));
+	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
 	
+	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
 	
-	skinTargetColor = ofColor(adjustmentSettings.getValue("adjustment:skin:targetR", 255),
-							  adjustmentSettings.getValue("adjustment:skin:targetG", 0),
-							  adjustmentSettings.getValue("adjustment:skin:targetB", 0));
-
-	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
-    skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
-    skinHueWeight = adjustmentSettings.getValue("adjustment:skin:hueWeight", 0.5);
-    skinSatWeight = adjustmentSettings.getValue("adjustment:skin:satWeight", 0.5);
-    skinBrightWeight = adjustmentSettings.getValue("adjustment:skin:brightWeight", .5);
-
-//	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
-//	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
+	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
+						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
 	
-	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
-						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
-	
+    
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -431,12 +424,11 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
     */
-	
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
 
 	
-//	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
 

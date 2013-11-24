@@ -13,8 +13,8 @@
 	ofBackground(22);
 	minSequenceDepth = 100;
 	maxSequenceDepth = 200;
-//	contourThreshold = 100;
-//	minBlobSize = 0;
+	contourThreshold = 100;
+	minBlobSize = 0;
 	selectColor = false;
 
 	parser.loadFromFiles();
@@ -94,7 +94,7 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
     
-		shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
+    shaderSkinDetection.load("skinDetector");
     
     filler.setKernelSize(3);
     filler.setIterations(3);
@@ -170,11 +170,13 @@
 		[totalProgress setDoubleValue: currentClipIndex];	
 	}
 	
-//	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
+	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
 	
 	if(resetCamera){
-		cam.reset();
-//		cam.setAnglesFromOrientation();
+		cam.setPosition(0, 0, 0);
+		cam.setOrientation(ofQuaternion());
+		cam.rotate(180, ofVec3f(0,1,0));
+		cam.setAnglesFromOrientation();	
 	}
 
 	player.update();
@@ -387,7 +389,6 @@
 		if(player.setup(clip.getSceneFolder())){
 			if(!player.alternativeVideoIsConfirmed()){
 				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
-				return;
 			}
 			showHistogram = false;
 			calculatedHistogram = false;
@@ -416,7 +417,6 @@
             */
             
             //SM ADDED
-			targetColor = loadedClip.skinTargetColor;
             skinHueWeight = loadedClip.skinHueWeight;
             skinBrightWeight = loadedClip.skinBrightWeight;
             skinSatWeight = loadedClip.skinSatWeight;
@@ -469,7 +469,7 @@
 	if(key == 'S'){
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
-        shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
+        shaderSkinDetection.load("skinDetector");
 	}
 	
 	if(key == 'H'){
@@ -494,7 +494,7 @@
 {
 	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
 		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-//		contours.setTargetColor(targetColor);
+		contours.setTargetColor(targetColor);
 	}	
 }
 
@@ -502,7 +502,7 @@
 {
 	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
 		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-//		contours.setTargetColor(targetColor);
+		contours.setTargetColor(targetColor);
 	}
 	
 	else if(selectFace && player.isLoaded() &&

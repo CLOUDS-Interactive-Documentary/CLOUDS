@@ -67,7 +67,6 @@ class CloudsRGBDCombinedExporter {
 	float maxDepth;
 	ofRectangle videoRectangle;
 	ofPixels    outputImage;
-	ofPixels blankPaster;
 	
 	//face things
 	ofPolyline lastRightEye;

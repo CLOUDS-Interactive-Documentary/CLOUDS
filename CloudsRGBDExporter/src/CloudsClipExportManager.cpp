@@ -89,17 +89,17 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	//SM REMOVED
     /*
 	exporter.minBlobSize = currentClip.contourMinBlobSize;
+	exporter.targetColor = currentClip.contourTargetColor;
 	exporter.contourThreshold = currentClip.contourTargetThreshold;
 	*/
     exporter.facePosition = renderer.getWorldPoint(currentClip.faceCoord, rgbdPlayer.getDepthSequence()->getPixels());
     
     //SM ADDED  skin stuff
-	exporter.targetColor = currentClip.skinTargetColor;
+    exporter.skinBrightWeight = currentClip.skinBrightWeight;
     exporter.skinHueWeight = currentClip.skinHueWeight;
     exporter.skinSatWeight = currentClip.skinSatWeight;
-    exporter.skinBrightWeight = currentClip.skinBrightWeight;
-    exporter.skinThresholdLower = currentClip.skinLowerThreshold;
-    exporter.skinThresholdUpper = currentClip.skinUpperThreshold;
+    exporter.skinThresholdLower = currentClip.skinUpperThreshold;
+    exporter.skinThresholdUpper = currentClip.skinLowerThreshold;
 	
 	exporter.prepare();
 	

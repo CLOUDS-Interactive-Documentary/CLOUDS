@@ -1,9 +1,6 @@
-
-uniform float noisePosition;
+uniform float noiseAmplitude;
 uniform float noiseDensity;
-uniform float glowMin;
-uniform float glowMax;
-
+uniform float noisePosition;
 
 float map(float value, float inputMin, float inputMax, float outputMin, float outputMax) {;
 	return ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -123,24 +120,25 @@ float snoise(vec4 v)
 	m0 = m0 * m0;
 	m1 = m1 * m1;
 	return 49.0 * (dot(m0*m0, vec3( dot( p0, x0 ), dot( p1, x1 ), dot( p2, x2 )))
-				+  dot(m1*m1, vec2( dot( p3, x3 ), dot( p4, x4 ) ) ) ) ;
+				 + dot(m1*m1, vec2( dot( p3, x3 ), dot( p4, x4 ) ) ) ) ;
 	
 }
 
 const float epsilon = 1e-6;
+
 void main(void)
 {
 	// passes the  texture coordinates along to the fragment shader
 	//gl_TexCoord[0] = gl_MultiTexCoord0;
 	
-	gl_Position = ftransform();
+	vec3 noiseDistort = vec3(snoise(vec4(gl_Vertex.xyz / max(noiseDensity,epsilon), noisePosition)),
+							 snoise(vec4(gl_Vertex.yzx / max(noiseDensity,epsilon), noisePosition)),
+							 0);
+							 //snoise(vec4(gl_Vertex.zxy / noiseDensity, noisePosition)));
 	
-	//vec4 noisPos = vec4( gl_Vertex.xyz * max(noiseDensity,epsilon), noisePosition);
-	vec4 noisPos = vec4(noisePosition, gl_Vertex.xy*.5,0.);
-	float noiseSigned = snoise( noisPos);
-	float noiseGlow = pow(map(noiseSigned, -1.0, 1.0, glowMin, glowMax),2.0);
+	vec4 pos = vec4(gl_Vertex.xyz + noiseDistort * noiseAmplitude, 1.0);
+	gl_Position = gl_ModelViewProjectionMatrix * pos;
 	
+	gl_PointSize = 1.0;
 	gl_FrontColor = gl_Color;
-	gl_FrontColor.a += noiseGlow;
-
 }

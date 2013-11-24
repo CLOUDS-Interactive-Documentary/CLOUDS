@@ -117,13 +117,14 @@ protected:
     ofMesh histo;
     
     ofColor color1;
+    ofColor color2;
     
     float xpos = 10;
     float ypos = 10;
     float rectHeight;
-    float rectWidth = 25;
+    float rectWidth = 40;
     float xoffset = 0;
-    float zoffset = -100;
+    float zoffset = -150;
    
     int rows = 4;
     
