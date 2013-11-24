@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1715D0FB183D4515001EB045 /* balls.gs in Sources */ = {isa = PBXBuildFile; fileRef = 1715D0FA183D4515001EB045 /* balls.gs */; };
 		4695E2AF17512E45003001E2 /* ofxBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27B17512E45003001E2 /* ofxBehavior.cpp */; };
 		4695E2B017512E45003001E2 /* ofxBufferEffectorBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E27F17512E45003001E2 /* ofxBufferEffectorBehavior.cpp */; };
 		4695E2B117512E45003001E2 /* ofxDamperBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E28217512E45003001E2 /* ofxDamperBehavior.cpp */; };
@@ -138,6 +139,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1715D0FA183D4515001EB045 /* balls.gs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = balls.gs; sourceTree = "<group>"; };
 		4695E24B17512ACD003001E2 /* ofxUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		4695E24C17512ACD003001E2 /* ofxUI2DGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
 		4695E24D17512ACD003001E2 /* ofxUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUI2DPad.h; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 			isa = PBXGroup;
 			children = (
 				852D0205181DF3CC00436018 /* liquidNoise.fs */,
+				1715D0FA183D4515001EB045 /* balls.gs */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -1434,6 +1437,7 @@
 				E72FF18917E6A7970007780D /* CloudsVisualSystem.cpp in Sources */,
 				852D022A181DF3CC00436018 /* liquidNoise.fs in Sources */,
 				852D022C181DF3CC00436018 /* CloudsVisualSystemColony.cpp in Sources */,
+				1715D0FB183D4515001EB045 /* balls.gs in Sources */,
 				E7295F1C183ABD4100C5207F /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

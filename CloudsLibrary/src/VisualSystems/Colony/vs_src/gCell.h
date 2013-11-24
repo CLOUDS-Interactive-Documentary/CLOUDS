@@ -6,7 +6,7 @@
 //
 //
 
-#define MAP_SUBDIV 20
+#define MAP_SUBDIV 10
 
 #pragma once
 
@@ -14,6 +14,7 @@
 
 /* Forward declarations */
 class colonyCell;
+class cellParams;
 class colonyPartitionMap;
 class coord2i;
 class neighbor_iterator;
@@ -25,24 +26,36 @@ typedef ofPtr<colonyCell> cellPtr;
 
 
 class colonyCell {
-    ofPoint position;
-    ofVec2f acceleration, velocity;
-    float cellSize, age, nutrientLevel, maxSize, maxSpeed, maxForce, lifespan, fertilityAge,
-            deathThreshold, separationDist, alignmentDist, lastFeedValue, replicationChances;
-    bool fertile, dead, hasReplicated;
+private:
     
+    //STATE
+    ofPoint position, velocity, acceleration, forces, inertia;
+    bool fertile, dead, hasReplicated;
+    float nutrientLevel, cellSize, age, lastFeedValue, replicationChances;
+
+    //INT. PARAMS
+    float   maxSize, maxSpeed, maxForce, lifespan, fertilityAge, deathThreshold,
+            separationDist, alignmentDist, dynamicFrictionCoeff, amtTurbulence,
+            amtAlign, amtCohere, amtSeparate;
 public:
     
     colonyCell(const ofPoint initialPosition = ofPoint(-1,-1));
     void update();
     void draw();
-    void doApplyForce(const ofPoint& _force );
+    
+    void doResetForces();
+    void doAddForce(const ofPoint& _force);
+    ofPoint getUpdatedAcceleration();
+    ofPoint getInertia();
+    ofPoint getInertialVelocity();
+    void doSetInertia();
+    
     void doScanAndFlock(neighbor_iterator& iter);
     void doApplyBorders(float padding);
     void doWrapXY();
     
-    void doFeedCellWidth( ofPixels &_pixels);
     void doFeedCellNoise();
+    void doAddTurbulence();
     
     bool isFertile(); //TODO: consider "how fertile" and probablistics
     bool isDead();
@@ -63,21 +76,25 @@ private:
     bool isInsideBoard(ofPoint p);
 };
 
+class cellParams{
 
+}
 
 class coord2i {
+    //TODO: Get rid of this class and use direct addressing via ordered().
+    //      It's redundant.
 public:
     int x, y;
     ~coord2i(){}
     coord2i(int x_, int y_): x(x_), y(y_){};
     coord2i(ofPoint const& p):
     //FIXME: GetWidth and GetHeight are called millions of time a second. cache;
-    x(int(ofClamp(p.x * MAP_SUBDIV / ofGetWidth() , 0, MAP_SUBDIV - 0.1))),
-    y(int(ofClamp(p.y * MAP_SUBDIV / ofGetHeight(), 0, MAP_SUBDIV - 0.1))) {}
-    bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered());      }
-    bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered());      }
-    bool operator== (const coord2i& rhs) const {return (this->x == rhs.x &&  this->y == rhs.y);}
-    int ordered() const { return y * MAP_SUBDIV + x;}
+    x(int(ofClamp((p.x * MAP_SUBDIV) / ofGetWidth() , 0, MAP_SUBDIV - 0.01))),
+    y(int(ofClamp((p.y * MAP_SUBDIV) / ofGetHeight(), 0, MAP_SUBDIV - 0.01))) {}
+    bool operator<  (const coord2i& rhs) const {return (this->ordered() < rhs.ordered()); }
+    bool operator>  (const coord2i& rhs) const {return (this->ordered() > rhs.ordered()); }
+    bool operator== (const coord2i& rhs) const {return (this->ordered() == rhs.ordered());}
+    int ordered() const { return y * MAP_SUBDIV + x; }
 };
 
 
@@ -103,7 +120,7 @@ public:
         position = 0;
     }
     void increment() {
-        if (++position >= v[meta]->size()){ //Can be optimied with caching of v[meta]
+        if (++position >= v[meta]->size()){ //Can be optimized with caching of v[meta]
             if (++meta < v.size()){
                 position = 0;
             }}}
@@ -144,14 +161,14 @@ public:
         clear();
         for ( int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++ ){
             delete partitions[i];
-            partitions[i] = NULL;
+            partitions[i] = NULL; //UGH C++
         }
     }
     void clear(){
         for (int i = 0 ; i < MAP_SUBDIV * MAP_SUBDIV ; i++) {
             partitions[i]->clear();
             delete neighbors[i];
-            neighbors[i] = NULL; //TODO: UGH C++
+            neighbors[i] = NULL; //YOU ARE A BAD MAN, BJARNE
         }
     }
     void put(const cellPtr& cp){partitions[coord2i(cp->getPosition()).ordered()]->push_back(cp);}

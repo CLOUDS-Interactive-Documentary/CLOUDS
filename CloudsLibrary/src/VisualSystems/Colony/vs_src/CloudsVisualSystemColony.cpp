@@ -14,8 +14,8 @@ string CloudsVisualSystemColony::getSystemName()
 }
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 50; //FIXME : Magic number
-    //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
+    numInitialCells = 100; //FIXME : Magic number
+                          //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
 }
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
@@ -35,10 +35,16 @@ void CloudsVisualSystemColony::selfUpdate()
     pMap.put(cells);
     for (int i = 0; i < cells.size(); i++) {
         neighbor_iterator iter = pMap.getNeighbours(coord2i(cells[i]->getPosition()));
+        
+        cells[i]->doResetForces(); //TODO: Decide where all the operations should be. This isn't a good place.
         cells[i]->doScanAndFlock(iter);
+        cells[i]->doAddTurbulence();
         cells[i]->doFeedCellNoise();
+    }
+    for (int i = 0; i < cells.size(); i++) { //FIXME: See if it's nesessary to add two iterations
         cells[i]->update();
-//        cells[i]->doApplyBorders(10);
+        
+        //        cells[i]->doApplyBorders(10);
         //        cells[i]->doWrapXY();
         
         if (cells[i] -> isFertile() && cells[i]->isReadyToReplicate()){
@@ -79,6 +85,7 @@ void CloudsVisualSystemColony::selfBegin()
         cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight() )));
         cells.push_back(newCell);
     }
+    
 }
 
 void CloudsVisualSystemColony::selfEnd()
