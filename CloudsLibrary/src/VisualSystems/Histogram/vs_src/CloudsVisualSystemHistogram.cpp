@@ -58,6 +58,7 @@ void CloudsVisualSystemHistogram::selfSetup(){
 	
     seed =  int(ofRandom(20));
     numRandomData = 800;
+    ofSetFrameRate(40);
     
     //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
@@ -161,7 +162,7 @@ void CloudsVisualSystemHistogram::selfUpdate(){
         ofBeginShape();
         
         if(p%50 != 0){
-        color1.setHsb(k,180,255,180);
+        color1.setHsb(k,180 + ofRandom(25),225 + ofRandom(25));
         }
         else if(p%50 == 0){
         color1.setHsb(0,0,0,0);
