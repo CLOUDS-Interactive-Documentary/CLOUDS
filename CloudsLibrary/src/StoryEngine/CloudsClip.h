@@ -101,10 +101,10 @@ class CloudsClip {
 	ofVec2f faceCoord;
 	
 	//contour parameters
-	ofColor contourTargetColor;
-	float contourTargetThreshold;
-	float contourMinBlobSize;
-    
+	//JG removed so we can see where these are still being accessed
+//	ofColor contourTargetColor;
+//	float contourTargetThreshold;
+//	float contourMinBlobSize;
     
     //SURYA TODO: Replace contour parameters colour parameters
     //Skin Parameters
@@ -114,11 +114,6 @@ class CloudsClip {
     float skinHueWeight;
     float skinSatWeight;
     float skinBrightWeight;
-    
-
-    
-    
-
 	
 	bool adjustmentLoaded;
     

@@ -19,6 +19,10 @@ CloudsIntroSequence::CloudsIntroSequence(){
 	currentFontExtrusion = -1;
 	startedOnclick = false;
 	caughtQuestion = NULL;
+	titleNoisePosition = 0;
+	titleNoiseSpeed = 0;
+	hoveringTitle = false;
+	currentTitleOpacity = 0;
 }
 
 CloudsIntroSequence::~CloudsIntroSequence(){
@@ -89,6 +93,8 @@ void CloudsIntroSequence::reloadShaders(){
 	tunnelShader.load(getVisualSystemDataPath() + "shaders/IntroTunnel");
 	questionShader.load(getVisualSystemDataPath() + "shaders/Question");
 	chroma.load("",getVisualSystemDataPath() + "shaders/BarrelChromaAb.fs");
+	typeShader.load(getVisualSystemDataPath() + "shaders/IntroType");
+	
 	CloudsQuestion::reloadShader();
 }
 
@@ -110,14 +116,17 @@ void CloudsIntroSequence::selfUpdate(){
 	if(!startedOnclick && timeline->getIsPlaying()){
 		timeline->stop();
 	}
-	
+	ofVec2f wobble = ofVec2f(ofSignedNoise(100 + ofGetElapsedTimef()*camWobbleSpeed),
+							 ofSignedNoise(200 + ofGetElapsedTimef()*camWobbleSpeed)) * camWobbleRange;
 	if(!paused){
 		warpCamera.dolly(-cameraForwardSpeed);
+		warpCamera.setPosition(wobble.x, wobble.y, warpCamera.getPosition().z);
 	}
 	else{
-		warpCamera.setPosition(0, 0, 0);
-		warpCamera.lookAt(ofVec3f(0,0,tunnelMax.z));
+		warpCamera.setPosition(wobble.x, wobble.y, 0);
 	}
+	warpCamera.lookAt( ofVec3f(0, 0, warpCamera.getPosition().z + 50) );
+	
 	for(int i = 0; i < startQuestions.size(); i++){
 		
 		startQuestions[i].radius = questionSize;
@@ -165,7 +174,25 @@ void CloudsIntroSequence::selfUpdate(){
 		currentFontExtrusion = titleFontExtrude;
 		extrudedTitleText.loadFont(getDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
-
+	
+	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());
+	titleRect.alignTo( ofPoint(ofGetWidth()/2,ofGetHeight()/2) );
+	hoveringTitle = titleRect.inside(ofGetMouseX(), ofGetMouseY());
+	
+//	cout << "title rect is " << titleRect.getTopLeft() << " " << titleRect.getBottomLeft() << endl;
+//	cout << "hovering? " << (hoveringTitle ? "YES" : "NO" ) << endl;
+	
+	titleNoisePosition += titleNoiseSpeed;
+	float hoverTitleOpacity;
+	if(hoveringTitle || (startedOnclick && timeline->getIsPlaying()) ){
+		hoverTitleOpacity = .9;
+	}
+	else{
+		hoverTitleOpacity = titleTypeOpacity;
+	}
+	
+	currentTitleOpacity += (hoverTitleOpacity-currentTitleOpacity)*.05;
+	//currentTitleOpacity = hoverTitleOpacity;
 }
 
 void CloudsIntroSequence::setStartQuestions(vector<CloudsClip>& possibleStartQuestions){
@@ -279,7 +306,7 @@ CloudsQuestion* CloudsIntroSequence::getSelectedQuestion(){
 }
 
 void CloudsIntroSequence::selfDrawBackground(){
-
+	
 }
 
 void CloudsIntroSequence::selfDrawDebug(){
@@ -323,7 +350,14 @@ void CloudsIntroSequence::selfDraw(){
 	tunnelShader.setUniform1f("minPointSize", pointSize.min);
 	tunnelShader.setUniform1f("maxPointSize", pointSize.max);
 	tunnelShader.setUniform1f("minDistance", distanceRange.min);
-	tunnelShader.setUniform1f("maxDistance", distanceRange.max);
+
+	if(bUseOculusRift){
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 120.);
+	}
+	else{
+		tunnelShader.setUniform1f("maxDistance", distanceRange.max + currentTitleOpacity * 200.);
+	}
+	
 	tunnelShader.setUniform1f("cameraZ", warpCamera.getPosition().z);
 	tunnelShader.setUniform1f("tunnelDepth", tunnelMax.z);
 	tunnelShader.setUniform1f("noiseAmplitude", perlinAmplitude);
@@ -395,15 +429,24 @@ void CloudsIntroSequence::drawCloudsType(){
 //	ofTranslate(0, 0, -tunnelMax.z);
 	ofPushStyle();
 	ofEnableAlphaBlending();
-	ofSetColor(255, titleTypeOpacity*255);
+	
+//	cout << currentTitleOpacity << endl;
+	
+	ofSetColor(255, currentTitleOpacity*255);
 	ofTranslate(0, 0, titleTypeOffset );
 	extrudedTitleText.setTracking( titleTypeTracking );
 	float width  = extrudedTitleText.stringWidth("CLOUDS");
 	float height = extrudedTitleText.stringHeight("CLOUDS");
 	
+	typeShader.begin();
+	typeShader.setUniform1f("noisePosition",titleNoisePosition);
+	typeShader.setUniform1f("noiseDensity",titleNoiseDensity);
+	typeShader.setUniform1f("glowMin", titleMinGlow);
+	typeShader.setUniform1f("glowMax", titleMaxGlow);
+
 	
 	extrudedTitleText.drawString("CLOUDS", -width/2, height/2);
-	
+	typeShader.end();
 
 	ofPopStyle();
 	ofPopMatrix();
@@ -434,6 +477,12 @@ void CloudsIntroSequence::selfPostDraw(){
 		ofPopStyle();
 	}
 	
+//	if(ofGetKeyPressed('1')){
+//		ofPushStyle();
+//		ofNoFill();
+//		ofRect(titleRect);
+//		ofPopStyle();
+//	}
 }
 
 void CloudsIntroSequence::selfExit(){
@@ -523,6 +572,10 @@ void CloudsIntroSequence::selfSetupCameraGui(){
 	camGui->addToggle("use debug camera", &useDebugCamera);
 	camGui->addSlider("debug camera speed", 1, 20, &camera.speed);
 	camGui->addSlider("camera fwd force", 0, 2, &cameraForwardSpeed);
+	camGui->addSlider("camera wobble range", 0, 10, &camWobbleRange);
+	camGui->addSlider("camera wobble speed", 0, 1., &camWobbleSpeed);
+
+
 	camGui->addToggle("hold camera", &paused);
 
 }
@@ -536,7 +589,7 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 		camera.setPosition(0, 0, 0);
 		camera.setOrientation(ofQuaternion());
 		camera.rotate(180, ofVec3f(0,1,0));
-		camera.setAnglesFromOrientation();
+//		camera.setAnglesFromOrientation();
 	}
 }
 
@@ -625,9 +678,15 @@ void CloudsIntroSequence::selfSetupGuis(){
 	typeGui->addIntSlider("Title Size", 2, 15, &titleFontSize);
 	typeGui->addIntSlider("Title Extrude", 1, 5, &titleFontExtrude);
 	typeGui->addSlider("Title Tracking", 0, 50, &titleTypeTracking);
-	typeGui->addSlider("Title Offset", 0, 2000, &titleTypeOffset);
+	typeGui->addSlider("Title Offset", 0, 100, &titleTypeOffset);
 	typeGui->addSlider("Title Opacity", .0, 1., &titleTypeOpacity);
-	
+
+	typeGui->addRangeSlider("Title Glow Range", 0., 1.0, &titleMinGlow, &titleMaxGlow);
+	typeGui->addSlider("Title Noise Speed", 0, .1, &titleNoiseSpeed);
+	typeGui->addSlider("Title Noise Dense", .001, 1., &titleNoiseDensity);
+	typeGui->addSlider("Title Hover X", 0, 1.0, &titleRectWidth);
+	typeGui->addSlider("Title Hover Y", 0, 1.0, &titleRectHeight);
+
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
 

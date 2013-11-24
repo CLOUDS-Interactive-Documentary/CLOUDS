@@ -3,7 +3,7 @@
 //
 // VISUAL SYSTEMS
 //
-// Welcome to the Histogram CloudsVisualSystem
+// Welcome to the Chromogram CloudsVisualSystem
 //
 //
 //
@@ -12,15 +12,15 @@
 
 #include "CloudsVisualSystem.h"
 
-
-class CloudsVisualSystemHistogram : public CloudsVisualSystem {
+//TODO: rename this to your own visual system
+class CloudsVisualSystemChromogram : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "Histogram";
+		return "Chromogram";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -101,28 +101,34 @@ protected:
 	
 	ofxUISuperCanvas* customGui;
 	
-    vector <float> randomData;
-    int numRandomData;
+
     
     int seed;
     int stepSize = 2;
-    int noiseValue = 100;
+    int noiseHue;
+    int noiseSaturation;
+    int noiseBrightness;
     
     int n = 0;
     
     bool filled = false;
     bool drawn = false;
     
-	vector <ofMesh> histograms;
-    ofMesh histo;
-    
+	vector <ofColor> randomColors;
+    ofMesh chromogram;
+    int numRandomColors;
     ofColor color1;
+    ofColor color2;
+    int sporadicColorChanger = 0 ;
+    int sporadicSaturationChanger = 0 ;
+    int sporadicBrightnessChanger = 0;
+    
     
     float xpos = 10;
     float ypos = 10;
-    float rectHeight;
-    float rectWidth = 25;
-    float xoffset = 0;
+    float rectHeight = 25;
+    float rectWidth = 15;
+    float yoffset = 0;
     float zoffset = -100;
    
     int rows = 4;

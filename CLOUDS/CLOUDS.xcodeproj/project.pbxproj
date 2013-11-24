@@ -165,6 +165,7 @@
 		E7920792179CB0FE00FAA959 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E792078E179CB0FE00FAA959 /* ofxAVFVideoRenderer.m */; };
 		E7920797179CB11700FAA959 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920796179CB11700FAA959 /* CoreMedia.framework */; };
 		E7920799179CB11C00FAA959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920798179CB11C00FAA959 /* AVFoundation.framework */; };
+		E7A28DE8184200810093FD60 /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A28DE6184200810093FD60 /* CloudsCaption.cpp */; };
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
 		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
@@ -1117,6 +1118,8 @@
 		E7920798179CB11C00FAA959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E79956CD17C27CBB00EF9330 /* Question.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Question.frag; sourceTree = "<group>"; };
 		E79956CE17C27CBC00EF9330 /* Question.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Question.vert; sourceTree = "<group>"; };
+		E7A28DE6184200810093FD60 /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
+		E7A28DE7184200810093FD60 /* CloudsCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
 		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
 		E7BAFBD2176A43780097AC71 /* CloudsSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSound.h; sourceTree = "<group>"; };
 		E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
@@ -2492,6 +2495,8 @@
 				E7637D5F1734DE8A008ADC62 /* CloudsPlaybackController.cpp */,
 				E7F7773F177394CD0096AEF7 /* CloudsVisualSystemRGBD.h */,
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
+				E7A28DE6184200810093FD60 /* CloudsCaption.cpp */,
+				E7A28DE7184200810093FD60 /* CloudsCaption.h */,
 				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
 				E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */,
 			);
@@ -5256,6 +5261,7 @@
 				E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */,
 				E7FB24CB1830D470009EBD0E /* MazeSettings.cpp in Sources */,
 				E7380340183CC2010018AB96 /* gCell.cpp in Sources */,
+				E7A28DE8184200810093FD60 /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

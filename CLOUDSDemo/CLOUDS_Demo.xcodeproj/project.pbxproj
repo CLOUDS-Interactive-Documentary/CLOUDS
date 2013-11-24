@@ -1121,6 +1121,8 @@
 		E785F86E17B28800002371FC /* ofxObjLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
 		E78CCB2017D58E63005F6D77 /* ofxOceanCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOceanCamera.cpp; sourceTree = "<group>"; };
 		E78CCB2117D58E63005F6D77 /* ofxOceanCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOceanCamera.h; sourceTree = "<group>"; };
+		E78E1E66183EE92E007E0CE4 /* IntroType.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroType.frag; sourceTree = "<group>"; };
+		E78E1E67183EE92E007E0CE4 /* IntroType.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = IntroType.vert; sourceTree = "<group>"; };
 		E792078B179CB0FE00FAA959 /* ofxAVFVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoPlayer.h; sourceTree = "<group>"; };
 		E792078C179CB0FE00FAA959 /* ofxAVFVideoPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxAVFVideoPlayer.mm; sourceTree = "<group>"; };
 		E792078D179CB0FE00FAA959 /* ofxAVFVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAVFVideoRenderer.h; sourceTree = "<group>"; };
@@ -2896,6 +2898,8 @@
 				E785F84A17B287B8002371FC /* BarrelChromaAb.fs */,
 				E79956CD17C27CBB00EF9330 /* Question.frag */,
 				E79956CE17C27CBC00EF9330 /* Question.vert */,
+				E78E1E66183EE92E007E0CE4 /* IntroType.frag */,
+				E78E1E67183EE92E007E0CE4 /* IntroType.vert */,
 				E785F84B17B287B8002371FC /* IntroTunnel.frag */,
 				E785F84C17B287B8002371FC /* IntroTunnel.vert */,
 			);
