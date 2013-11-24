@@ -1,0 +1,98 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Width</Name>
+    <Value>29.798030853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Height</Name>
+    <Value>41.827587128</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue - Input range</Name>
+    <HighValue>56.650207520</HighValue>
+    <LowValue>27.093566895</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue - Output range</Name>
+    <HighValue>234.901473999</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Input range</Name>
+    <HighValue>66.502441406</HighValue>
+    <LowValue>2.463043213</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Output range</Name>
+    <HighValue>138.177337646</HighValue>
+    <LowValue>30.147783279</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Input range</Name>
+    <HighValue>41.871887207</HighValue>
+    <LowValue>-2.463043213</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Output range</Name>
+    <HighValue>243.694595337</HighValue>
+    <LowValue>26.379310608</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H NoiseSpeed</Name>
+    <Value>0.893596053</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H Noise Step</Name>
+    <Value>3.083743811</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H Stochasticity</Name>
+    <Value>5222.152832031</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>S NoiseSpeed</Name>
+    <Value>0.308374375</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>S Noise Step</Name>
+    <Value>2.862069130</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>B NoiseSpeed</Name>
+    <Value>0.530049264</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>B Noise Step</Name>
+    <Value>2.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness Stochasticity</Name>
+    <Value>1.000000000</Value>
+</Widget>

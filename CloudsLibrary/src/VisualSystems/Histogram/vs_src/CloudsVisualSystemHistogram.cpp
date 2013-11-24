@@ -195,8 +195,8 @@ void CloudsVisualSystemHistogram::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemHistogram::selfDraw(){
 	
-    glDisable(GL_DEPTH_TEST);
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //glDisable(GL_DEPTH_TEST);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     ofPushMatrix();
     ofPushStyle();
