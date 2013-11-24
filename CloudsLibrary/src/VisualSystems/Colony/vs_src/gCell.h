@@ -34,12 +34,14 @@ private:
     float nutrientLevel, cellSize, age, lastFeedValue, replicationChances;
 
     //INT. PARAMS
-    float   maxSize, maxSpeed, maxForce, lifespan, fertilityAge, deathThreshold,
-            separationDist, alignmentDist, dynamicFrictionCoeff, amtTurbulence,
-            amtAlign, amtCohere, amtSeparate;
+    float   maxSize, maxSpeed, maxForce, lifespan, fertilityAge, separationDist, alignmentDist;
+            /*deathThreshold, dynamicFrictionCoeff, amtTurbulence,
+            amtAlign, amtCohere, amtSeparate; */
+    const cellParams& _params;
+    
 public:
     
-    colonyCell(const ofPoint initialPosition = ofPoint(-1,-1));
+    colonyCell(const ofPoint initialPosition, const cellParams& params);
     void update();
     void draw();
     
@@ -77,8 +79,19 @@ private:
 };
 
 class cellParams{
-
-}
+public:
+    float deathThreshold, dynamicFrictionCoeff, amtTurbulence,
+    amtAlign, amtCohere, amtSeparate;
+    
+    cellParams(){
+        dynamicFrictionCoeff = 0.1;
+        deathThreshold = .002;
+        amtTurbulence = .5;
+        amtAlign = 2;
+        amtSeparate = 200;
+        amtCohere = .5;
+    }
+};
 
 class coord2i {
     //TODO: Get rid of this class and use direct addressing via ordered().

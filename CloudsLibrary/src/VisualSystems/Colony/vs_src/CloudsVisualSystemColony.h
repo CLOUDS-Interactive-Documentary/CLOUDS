@@ -67,5 +67,6 @@ private:
     int newbornCount;
     
     /*  PARAMS */
+    cellParams params;
     int numInitialCells;
 };

@@ -82,7 +82,7 @@ void CloudsVisualSystemColony::selfExit(){}
 void CloudsVisualSystemColony::selfBegin()
 {
     for (int i = 0; i < numInitialCells; i++) {
-        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight() )));
+        cellPtr newCell = cellPtr(new colonyCell(ofPoint( ofRandomWidth(), ofRandomHeight()), params));
         cells.push_back(newCell);
     }
     

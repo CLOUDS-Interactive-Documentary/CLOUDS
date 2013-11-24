@@ -8,7 +8,7 @@
 
 #include "gCell.h"
 
-colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default parameter
+colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params): _params(params)
 {
     if (!isInsideBoard(initialPosition)){
         position = ofPoint(ofRandom(ofGetWidth()),ofGetHeight());
@@ -23,7 +23,6 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     cellSize = 1;
     age = 0;
     nutrientLevel = 50;
-    deathThreshold = .002;
     maxSpeed = ofRandom(1.5);
     maxForce = .4;
     maxSize = ofRandom(5, 20);
@@ -32,11 +31,7 @@ colonyCell::colonyCell(const ofPoint initialPosition) //As illegal default param
     dead = false;
     hasReplicated = false;
     fertilityAge = ofRandom(lifespan* 6./13., lifespan);
-    dynamicFrictionCoeff = 0.1;
-    amtTurbulence = .5;
-    amtAlign = 2;
-    amtSeparate = 200;
-    amtCohere = .5;
+    
     
 }
 
@@ -62,7 +57,7 @@ void colonyCell::update()
     
     // Age
     if (age > lifespan || hasReplicated){ cellSize -= .06;}
-    if (cellSize <= deathThreshold){ dead = true; }
+    if (cellSize <= _params.deathThreshold){ dead = true; }
     age++;
 }
 
@@ -104,7 +99,7 @@ ofPoint colonyCell::getInertia(){return inertia;}
 ofPoint colonyCell::getInertialVelocity(){
     // v = p/m
     ofPoint v = inertia / cellSize;
-    v *= (1 - dynamicFrictionCoeff); //FIXME: YOUR MATH IS DEFINITELY WRONG AND THIS SHOUDLN'T BE HERE
+    v *= (1 - _params.dynamicFrictionCoeff); //FIXME: YOUR MATH IS DEFINITELY WRONG AND THIS SHOUDLN'T BE HERE
     return v;
 }
 
@@ -135,9 +130,9 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     cohere /= neighborCount;
     align /=  neighborCount;
 
-    ofVec3f steer = (   separate.normalized()   * amtSeparate
-                     +  cohere.normalized()     * amtCohere
-                     +  align.normalized()      * amtAlign
+    ofVec3f steer = (   separate.normalized()   * _params.amtSeparate
+                     +  cohere.normalized()     * _params.amtCohere
+                     +  align.normalized()      * _params.amtAlign
                      );
     
     doAddForce(steer);
@@ -158,7 +153,7 @@ void colonyCell::doAddTurbulence(){
     //oF works in degrees?!
     float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef()/1000) * 360; //FIXME: Magic number
     float rho = 0; //TODO: Change
-    doAddForce(ofPoint(1,0,0).getRotated(0, 0, theta) * amplitude * amtTurbulence);
+    doAddForce(ofPoint(1,0,0).getRotated(0, 0, theta) * amplitude * _params.amtTurbulence);
 }
 
 //==========================================================================================
@@ -202,7 +197,7 @@ cellPtr colonyCell::doGetReplicated()
 {
     hasReplicated = true;
     cellSize *= 0.6; //TODO: Remove magic number
-    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1))));
+    return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)), _params));
 }
 
 const ofPoint colonyCell::getVelocity() const { return velocity; }
