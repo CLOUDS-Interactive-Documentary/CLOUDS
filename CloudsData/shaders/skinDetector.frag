@@ -4,7 +4,7 @@ uniform vec3 weights;
 uniform float lowerThreshold;
 uniform float upperThreshold;
 varying vec2 texture_coordinate;
-varying vec2 screenPosition;
+
 
 vec3 rgb2hsl( vec3 _input ){
 	float h = 0.0;
@@ -43,9 +43,12 @@ float rgbToGray(vec4 rgbVal){
     float f =  0.21*rgbVal.r + 0.71*rgbVal.g + 0.07*rgbVal.b;
     return f;
 }
-float clamp(float value, float min, float max) {
-    return value < min ? min : value > max ? max : value;
-}
+
+//clamp is builtin to glsl
+//float clamp(float value, float min, float max) {
+//    return value < min ? min : value > max ? max : value;
+//}
+
 //these are cubic easings
 float easeOut(float t,float b , float c, float d) {
 	return c*((t=t/d-1.)*t*t + 1.) + b;
@@ -55,6 +58,7 @@ float easeInOut(float t,float b , float c, float d)  {
 	if ((t/=d/2.) < 1.) return c/2.*t*t*t + b;
 	return c/2.*((t-=2.)*t*t + 2.) + b;
 }
+
 float mapEase(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax, bool clamp ){
     
 //    float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
@@ -67,54 +71,36 @@ float mapEase(float value, float inputMin, float  inputMax, float  outputMin,flo
 	float c = outputMax - outputMin;
 	float d = inputMax - inputMin;
 	float b = outputMin;
-	float res= easeInOut(t,b,c,d);
+	float res = easeInOut(t,b,c,d);
     
 	return res;
 }
 
 float map(float value, float inputMin, float  inputMax, float  outputMin,float  outputMax ){
-     float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
-    
+	float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
     return outVal;
 }
 
 
-
-
-//float clamp(float value, float min, float max) {
-//	return value < min ? min : value > max ? max : value;
-//}
-
-//vec3 hsv2rgb(vec3 c)
-//{
-//    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-//    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
-//    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
-//}
 float weightedDistance(vec3 pnt1 ,vec3 pnt2,vec3 weights){
-	float vx = pnt1.x - pnt2.x;
-	float vy = pnt1.y - pnt2.y;
-	float vz = pnt1.x - pnt2.x;
-    
-	return sqrt(weights.x*(vx*vx) +weights.y*(vy*vy) + weights.z*(vz*vz) ) ;
+	vec3 v = pnt1 - pnt2;
+	return sqrt(weights.x*(v.x*v.x) + weights.y*(v.y*v.y) + weights.z*(v.z*v.z) ) ;
 }
+
 void main (void)
 {
     vec4 test = texture2DRect(imgSampler, gl_TexCoord[0].st);
     vec3 hslSample = rgb2hsl(samplePointColor.rgb);
     vec3 hslCurrent = rgb2hsl(test.rgb);
-//    vec4 colorSample = texture2DRect(imgSampler, samplePoint.st);
-    float dist  = weightedDistance(hslSample.rgb,hslCurrent.rgb, weights);
-    if(dist > lowerThreshold && dist<upperThreshold){
-        
-//        float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
-//        gl_FragColor = vec4(test.rgb,alpha);
-        gl_FragColor = vec4(test.rgba);
-    }
-    else{
-        gl_FragColor = vec4(0.,0.,0.,1.0);
-    }
-	
 
+    float dist = weightedDistance(hslSample.rgb,hslCurrent.rgb, normalize(weights));
+    //if(dist >= lowerThreshold && dist <= upperThreshold){
+	float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
+	gl_FragColor = vec4(test.rgb,alpha)*alpha;
+	
+    //}
+    //else{
+	//	gl_FragColor = vec4(0.,0.,0.,1.0);
+    //}
 }
 

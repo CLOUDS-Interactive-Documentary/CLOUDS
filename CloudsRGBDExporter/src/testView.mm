@@ -94,7 +94,7 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
     
-    shaderSkinDetection.load("skinDetector");
+		shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
     
     filler.setKernelSize(3);
     filler.setIterations(3);
@@ -173,9 +173,7 @@
 //	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
 	
 	if(resetCamera){
-		cam.setPosition(0, 0, 0);
-		cam.setOrientation(ofQuaternion());
-		cam.rotate(180, ofVec3f(0,1,0));
+		cam.reset();
 //		cam.setAnglesFromOrientation();
 	}
 
@@ -471,7 +469,7 @@
 	if(key == 'S'){
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
-        shaderSkinDetection.load("skinDetector");
+        shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
 	}
 	
 	if(key == 'H'){

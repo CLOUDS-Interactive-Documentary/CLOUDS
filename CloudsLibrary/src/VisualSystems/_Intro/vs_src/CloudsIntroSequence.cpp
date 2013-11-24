@@ -589,7 +589,7 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 		camera.setPosition(0, 0, 0);
 		camera.setOrientation(ofQuaternion());
 		camera.rotate(180, ofVec3f(0,1,0));
-		camera.setAnglesFromOrientation();
+//		camera.setAnglesFromOrientation();
 	}
 }
 

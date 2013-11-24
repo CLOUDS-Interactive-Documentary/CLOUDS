@@ -1,11 +1,12 @@
 #include "testApp.h"
+#include "CloudsGlobal.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	
 	ofSetVerticalSync(true);
 	
-    if(! player.loadMovie("Zach_Fucking_boring.mov")){
+    if(! player.loadMovie("Aaron_autonomous_storytellers.mov")){
         cout<<"Movie not loaded"<<endl;
     }
     img.allocate(player.getWidth(), player.getHeight(), OF_IMAGE_COLOR_ALPHA);
@@ -16,7 +17,7 @@ void testApp::setup(){
     player.play();
     threshold = 0.5;
 
-    shaderSkinDetection.load("skinDetector");
+    shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
     shaderBlurX.load("simpleBlurHorizontal");
     shaderBlurY.load("simpleBlurVertical");
 
@@ -39,14 +40,14 @@ void testApp::setup(){
     ofAddListener(gui->newGUIEvent,this,&testApp::guiEvent);
 
     gui->loadSettings("GUI/guiSettings.xml");
-    
-    for( int j=0; j < player.getHeight(); j++){
-        for (int i =0 ; i<player.getWidth();i++) {
-            
-            img.setColor(i,j, ofColor::black);
-        }
-    
-    }
+//    
+//    for( int j=0; j < player.getHeight(); j++){
+//        for (int i =0 ; i<player.getWidth();i++) {
+//            
+//            img.setColor(i,j, ofColor::black);
+//        }
+//    
+//    }
 }
 
 
@@ -78,7 +79,7 @@ void testApp::draw(){
     shaderSkinDetection.setUniform3f("weights", hueWeight, satWeight, brightWeight);
     shaderSkinDetection.setUniform1f("lowerThreshold", thresholdLower);
     shaderSkinDetection.setUniform1f("upperThreshold", thresholdUpper);
-//    player.draw(0, 0,player.getWidth()/2, player.getHeight()/2);//,player.getWidth()/2,player.getHeight()/2);
+    player.draw(0, 0,player.getWidth()/2, player.getHeight()/2);//,player.getWidth()/2,player.getHeight()/2);
     
     img.draw(0,0,img.getWidth() ,img.getHeight());
    
@@ -105,8 +106,7 @@ void testApp::draw(){
         fboBlurTwoPass.begin();
         
         shaderBlurY.begin();
-        shaderBlurY
-        .setUniformTexture("src_tex_unit0", img, 0 );
+        shaderBlurY.setUniformTexture("src_tex_unit0", img, 0 );
         shaderBlurY.setUniform1f("blurAmnt", blurAmount);
         
         fboBlurOnePass.draw(0, 0);
@@ -137,7 +137,7 @@ void testApp::keyPressed(int key){
         cout<<"Threshold updated : "<<threshold<<endl;
     }
     else if (key == 'r'){
-        shaderSkinDetection.load("skinDetector");
+		shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
     }
     else if(key == 'f'){
         ofToggleFullscreen();
