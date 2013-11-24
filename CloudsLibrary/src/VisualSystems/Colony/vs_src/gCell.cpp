@@ -17,17 +17,16 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     }
     
     /* Default Params */
-    //TODO Replace magic numbers
     acceleration = ofVec2f(0,0);
     velocity = ofVec2f(ofRandom(-5,5), ofRandom(-5,5));
     cellSize = 1;
     age = 0;
-    nutrientLevel = 50;
+    nutrientLevel = 50; //Magic number
     maxSpeed = ofRandom(1.5);
     maxForce = .4;
-    maxSize = ofRandom(5, 20);
-    lifespan = ofRandom(80, 600);
-    fertile = ofRandomuf() > .8;
+    maxSize = ofRandom(5, 12);
+    lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
+    fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
     hasReplicated = false;
     fertilityAge = ofRandom(lifespan* 6./13., lifespan);
@@ -43,17 +42,15 @@ void colonyCell::update()
     acceleration = getUpdatedAcceleration();
     acceleration.limit(maxForce);
     
-    velocity = acceleration + getInertialVelocity();
-    //    velocity += acceleration;
-    //    velocity += getInertialVelocity();
+    velocity += acceleration;
     velocity.limit(maxSpeed);
-    doSetInertia();
     
     position += velocity;
     
     // Feed
     if (lastFeedValue > nutrientLevel && cellSize <= maxSize){ cellSize += (lastFeedValue/2500); }
     if (lastFeedValue < nutrientLevel){ cellSize -= .01; }
+    cellSize = ofClamp(cellSize, 0, maxSize);
     
     // Age
     if (age > lifespan || hasReplicated){ cellSize -= .06;}
@@ -69,6 +66,11 @@ void colonyCell::draw()
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
+    if (cellSize > 10){
+//        ofNoFill();
+        ofSetColor(255, 255, 255, ofMap(cellSize, 10, maxSize, 0, 70));
+        ofCircle(position, cellSize + 10);
+    }
     ofPopStyle();
 }
 
@@ -84,23 +86,9 @@ void colonyCell::doResetForces(){
 }
 
 ofPoint colonyCell::getUpdatedAcceleration(){
-    //    a = f/m ; remove previous iteration
-    return forces/expf(logf(1 + cellSize)) - velocity;
-}
-
-void colonyCell::doSetInertia(){
-    //    p = mv
-    inertia = velocity * cellSize;
-}
-
-ofPoint colonyCell::getInertia(){return inertia;}
-
-// Returns the speed increment from the inertia, minus friction
-ofPoint colonyCell::getInertialVelocity(){
-    // v = p/m
-    ofPoint v = inertia / cellSize;
-    v *= (1 - _params.dynamicFrictionCoeff); //FIXME: YOUR MATH IS DEFINITELY WRONG AND THIS SHOUDLN'T BE HERE
-    return v;
+    //    a = f/m
+//    return forces/expf(logf(1 + cellSize));
+    return forces/(TWO_PI * cellSize * cellSize);
 }
 
 //==========================================================================================
@@ -118,7 +106,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
         float dd = diff.lengthSquared();
         if (dd > 0){
             if (dd < ss) { //Distance within separation range?
-                separate += diff.normalized() * logf(1 + dd); //TODO: make the transition softer
+                separate += diff.normalized() * logf(1 + dd) * logf(3 + (**iter).getSize()); //TODO: make the transition softer
             }
             if (dd < aa){ //Distance within flocking range?
                 align  += (**iter).getVelocity() * (**iter).getSize();
@@ -129,7 +117,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     }
     cohere /= neighborCount;
     align /=  neighborCount;
-
+    
     ofVec3f steer = (   separate.normalized()   * _params.amtSeparate
                      +  cohere.normalized()     * _params.amtCohere
                      +  align.normalized()      * _params.amtAlign
@@ -149,11 +137,11 @@ void colonyCell::doFeedCellNoise(){
 }
 
 void colonyCell::doAddTurbulence(){
-    float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef()/1000); //FIXME: Magic number
-    //oF works in degrees?!
-    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef()/1000) * 360; //FIXME: Magic number
+    float changeRate = 0.001 * _params.spdTurbulence;
+    float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef() * changeRate);
+    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * TWO_PI; //FIXME: Magic number
     float rho = 0; //TODO: Change
-    doAddForce(ofPoint(1,0,0).getRotated(0, 0, theta) * amplitude * _params.amtTurbulence);
+    doAddForce(ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence);
 }
 
 //==========================================================================================
@@ -188,8 +176,8 @@ void colonyCell::doApplyBorders(float padding)
 }
 //==========================================================================================
 
-float colonyCell::getSeparationDist(){ return cellSize * 2;}
-float colonyCell::getAlignmentDist(){ return 10*logf(1 + 800 / cellSize); }
+float colonyCell::getSeparationDist(){ return cellSize * 3; }
+float colonyCell::getAlignmentDist(){ return  5 * logf(1 + 800 / cellSize); }
 
 //==========================================================================================
 

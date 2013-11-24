@@ -15,13 +15,21 @@ string CloudsVisualSystemColony::getSystemName()
 void CloudsVisualSystemColony::selfSetup()
 {
     numInitialCells = 100; //FIXME : Magic number
-                          //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
+                           //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
 }
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
-    //    sysGui->addSlider("Separate",0.0,200, &flockSeparate);
-    //    sysGui->addSlider("Cohere",0.0,200, &flockCohere);
-    //    sysGui->addSlider("Align",0.0,200, &flockAlign);
+//    sysGui->addSlider("Initial Colony Size", 1, 500, &numInitialCells);
+    sysGui->addSlider("Separate",0.0,200, &params.amtSeparate);
+    sysGui->addSlider("Cohere",0.0,200, &params.amtCohere);
+    sysGui->addSlider("Align",0.0,200, &params.amtAlign);
+    sysGui->addSlider("Friction",0.0,1.0, &params.dynamicFrictionCoeff);
+    sysGui->addSlider("Turbulence Amount",0.0,100.0, &params.amtTurbulence);
+    sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);
+    sysGui->addSlider("Fertility Rate", 0.0, 1.0, &params.fertilityRate);
+    sysGui->addRangeSlider("Lifespan Range", 5, 5000, &params.lifespanMin, &params.lifespanMax);
+    
+    
 }
 void CloudsVisualSystemColony::selfSetupRenderGui(){}
 void CloudsVisualSystemColony::guiSystemEvent(ofxUIEventArgs &e){}
@@ -40,8 +48,7 @@ void CloudsVisualSystemColony::selfUpdate()
         cells[i]->doScanAndFlock(iter);
         cells[i]->doAddTurbulence();
         cells[i]->doFeedCellNoise();
-    }
-    for (int i = 0; i < cells.size(); i++) { //FIXME: See if it's nesessary to add two iterations
+        
         cells[i]->update();
         
         //        cells[i]->doApplyBorders(10);

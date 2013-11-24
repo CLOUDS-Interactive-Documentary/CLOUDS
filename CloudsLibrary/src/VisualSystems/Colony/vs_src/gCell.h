@@ -29,14 +29,12 @@ class colonyCell {
 private:
     
     //STATE
-    ofPoint position, velocity, acceleration, forces, inertia;
+    ofPoint position, velocity, acceleration, forces;
     bool fertile, dead, hasReplicated;
     float nutrientLevel, cellSize, age, lastFeedValue, replicationChances;
 
     //INT. PARAMS
     float   maxSize, maxSpeed, maxForce, lifespan, fertilityAge, separationDist, alignmentDist;
-            /*deathThreshold, dynamicFrictionCoeff, amtTurbulence,
-            amtAlign, amtCohere, amtSeparate; */
     const cellParams& _params;
     
 public:
@@ -47,9 +45,6 @@ public:
     
     void doResetForces();
     void doAddForce(const ofPoint& _force);
-    ofPoint getUpdatedAcceleration();
-    ofPoint getInertia();
-    ofPoint getInertialVelocity();
     void doSetInertia();
     
     void doScanAndFlock(neighbor_iterator& iter);
@@ -59,7 +54,7 @@ public:
     void doFeedCellNoise();
     void doAddTurbulence();
     
-    bool isFertile(); //TODO: consider "how fertile" and probablistics
+    bool isFertile(); 
     bool isDead();
     bool isReadyToReplicate();
     const ofPoint getPosition() const;
@@ -80,8 +75,8 @@ private:
 
 class cellParams{
 public:
-    float deathThreshold, dynamicFrictionCoeff, amtTurbulence,
-    amtAlign, amtCohere, amtSeparate;
+    float deathThreshold, dynamicFrictionCoeff, amtTurbulence, spdTurbulence,
+    amtAlign, amtCohere, amtSeparate, lifespanMin, lifespanMax, fertilityRate;
     
     cellParams(){
         dynamicFrictionCoeff = 0.1;
@@ -90,6 +85,10 @@ public:
         amtAlign = 2;
         amtSeparate = 200;
         amtCohere = .5;
+        lifespanMin = 30;
+        lifespanMax = 200;
+        spdTurbulence = 10;
+        fertilityRate = .8;
     }
 };
 
