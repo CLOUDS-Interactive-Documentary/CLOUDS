@@ -12,7 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
-//TODO: rename this to your own visual system
+
 class CloudsVisualSystemHistogram : public CloudsVisualSystem {
   public:
     
@@ -20,7 +20,7 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "HistogramSystem";
+		return "Histogram";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
