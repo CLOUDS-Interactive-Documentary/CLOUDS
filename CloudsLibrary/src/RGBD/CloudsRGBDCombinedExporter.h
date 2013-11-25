@@ -17,7 +17,7 @@
 #include "ofxRGBDRenderer.h"
 #include "ofxRGBDCPURenderer.h"
 #include "ofxCv.h"
-#include "ofxFaceTracker.h"
+//#include "ofxFaceTracker.h"
 
 class CloudsRGBDCombinedExporter {
   public:
@@ -35,16 +35,16 @@ class CloudsRGBDCombinedExporter {
 	void render(string outputPath, string clipName);
 	void renderFrame(string outputPath, string clipName, ofxRGBDCPURenderer* renderer, ofPixelsRef videoPixels, int frameNum);
 
-	ofxFaceTracker tracker;
+//	ofxFaceTracker tracker;
 	
 	ofIntRange inoutPoint;
     
-	ofColor targetColor;
 	float contourThreshold;
 	float minBlobSize;
-	ofxCv::ContourFinder contours;
+	//ofxCv::ContourFinder contours;
 	ofVec3f facePosition;
     
+	ofFloatColor targetColor;
     float skinHueWeight;
     float skinSatWeight;
     float skinBrightWeight;
@@ -68,11 +68,7 @@ class CloudsRGBDCombinedExporter {
 	ofRectangle videoRectangle;
 	ofPixels    outputImage;
 	
-	//face things
-	ofPolyline lastRightEye;
-    ofPolyline lastLeftEye;
-    ofPolyline lastFace;
-	ofPolyline lastMouth;
+	ofPixels blankPaster;
 	
 	ofPixels lastVideoFrame;
 	ofPixels frameDifference;

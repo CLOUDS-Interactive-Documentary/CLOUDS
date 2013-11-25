@@ -93,8 +93,8 @@
 	cam.loadCameraPosition();
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
-    
-    shaderSkinDetection.load("skinDetector");
+
+	shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
     
     filler.setKernelSize(3);
     filler.setIterations(3);
@@ -173,10 +173,7 @@
 	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
 	
 	if(resetCamera){
-		cam.setPosition(0, 0, 0);
-		cam.setOrientation(ofQuaternion());
-		cam.rotate(180, ofVec3f(0,1,0));
-		cam.setAnglesFromOrientation();	
+		cam.reset();
 	}
 
 	player.update();
@@ -469,7 +466,7 @@
 	if(key == 'S'){
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
-        shaderSkinDetection.load("skinDetector");
+        shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
 	}
 	
 	if(key == 'H'){
@@ -594,6 +591,14 @@
 		CloudsClip& clip = parser.getAllClips()[rowIndex];
 		clip.loadAdjustmentFromXML();
 		return [NSString stringWithUTF8String: ("[" + ofToString(clip.minDepth, 1) + " - " + ofToString(clip.maxDepth, 1) + "]" ).c_str() ];
+	}
+	else if([@"skin" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		clip.loadAdjustmentFromXML();
+		return [NSString stringWithFormat:@"%.01f,%.01f,%.01f",
+					clip.skinTargetColor.r,
+					clip.skinTargetColor.g,
+					clip.skinTargetColor.b];
 	}
 	else if([@"pairings" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
