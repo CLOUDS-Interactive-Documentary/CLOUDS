@@ -46,6 +46,7 @@ public:
     void doResetForces();
     void doAddForce(const ofPoint& _force);
     void doSetInertia();
+    ofPoint getUpdatedAcceleration();
     
     void doScanAndFlock(neighbor_iterator& iter);
     void doApplyBorders(float padding);
@@ -83,7 +84,7 @@ public:
         deathThreshold = .002;
         amtTurbulence = .5;
         amtAlign = 2;
-        amtSeparate = 200;
+        amtSeparate = 80;
         amtCohere = .5;
         lifespanMin = 30;
         lifespanMax = 200;

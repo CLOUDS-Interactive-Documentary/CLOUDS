@@ -14,15 +14,15 @@ string CloudsVisualSystemColony::getSystemName()
 }
 void CloudsVisualSystemColony::selfSetup()
 {
-    numInitialCells = 100; //FIXME : Magic number
+    numInitialCells = 20; //FIXME : Magic number
                            //    noiseShader.load("", getVisualSystemDataPath()+"shaders/liquidNoise.fs");
 }
 void CloudsVisualSystemColony::selfSetupSystemGui()
 {
 //    sysGui->addSlider("Initial Colony Size", 1, 500, &numInitialCells);
-    sysGui->addSlider("Separate",0.0,200, &params.amtSeparate);
-    sysGui->addSlider("Cohere",0.0,200, &params.amtCohere);
-    sysGui->addSlider("Align",0.0,200, &params.amtAlign);
+    sysGui->addSlider("Separate",0.0,100, &params.amtSeparate);
+    sysGui->addSlider("Cohere",0.0,100, &params.amtCohere);
+    sysGui->addSlider("Align",0.0,100, &params.amtAlign);
     sysGui->addSlider("Friction",0.0,1.0, &params.dynamicFrictionCoeff);
     sysGui->addSlider("Turbulence Amount",0.0,100.0, &params.amtTurbulence);
     sysGui->addSlider("Turbulence Speed",0.0,100.0, &params.spdTurbulence);

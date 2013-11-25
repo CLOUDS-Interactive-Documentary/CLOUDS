@@ -87,7 +87,6 @@ void colonyCell::doResetForces(){
 
 ofPoint colonyCell::getUpdatedAcceleration(){
     //    a = f/m
-//    return forces/expf(logf(1 + cellSize));
     return forces/(TWO_PI * cellSize * cellSize);
 }
 
@@ -139,9 +138,11 @@ void colonyCell::doFeedCellNoise(){
 void colonyCell::doAddTurbulence(){
     float changeRate = 0.001 * _params.spdTurbulence;
     float amplitude = ofNoise(-position.x/10,-position.y/10,-position.z/10, ofGetElapsedTimef() * changeRate);
-    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * TWO_PI; //FIXME: Magic number
+    float theta = ofNoise(position.x/100,position.y/100,position.z/100, ofGetElapsedTimef() * changeRate) * 2 * TWO_PI; //FIXME: Magic number
     float rho = 0; //TODO: Change
-    doAddForce(ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence);
+    ofPoint force = ofPoint(1,0,0).getRotatedRad(theta, ofPoint(0,0,1)) * amplitude * _params.amtTurbulence;
+    doAddForce(force);
+//    cout << "Theta : " << theta << " Amplitude : "<<amplitude<< " Force : " << ofToString(force) <<endl;
 }
 
 //==========================================================================================
@@ -176,7 +177,7 @@ void colonyCell::doApplyBorders(float padding)
 }
 //==========================================================================================
 
-float colonyCell::getSeparationDist(){ return cellSize * 3; }
+float colonyCell::getSeparationDist(){ return cellSize * 4; }
 float colonyCell::getAlignmentDist(){ return  5 * logf(1 + 800 / cellSize); }
 
 //==========================================================================================
@@ -184,7 +185,8 @@ float colonyCell::getAlignmentDist(){ return  5 * logf(1 + 800 / cellSize); }
 cellPtr colonyCell::doGetReplicated()
 {
     hasReplicated = true;
-    cellSize *= 0.6; //TODO: Remove magic number
+    cellSize = logf(1 + cellSize);
+//    cellSize *= 0.6; //TODO: Remove magic number
     return cellPtr(new colonyCell(getPosition() + ofPoint(ofRandom(-1,1),ofRandom(-1,1)), _params));
 }
 
