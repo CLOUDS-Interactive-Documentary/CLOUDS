@@ -94,7 +94,7 @@
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
     
-		shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
+	shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
     
     filler.setKernelSize(3);
     filler.setIterations(3);
