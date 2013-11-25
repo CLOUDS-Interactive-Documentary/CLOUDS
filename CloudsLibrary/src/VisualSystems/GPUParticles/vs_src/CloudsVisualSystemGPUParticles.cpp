@@ -17,7 +17,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     
 	customGui->addIntSlider("Particle Count", 1, 2000, &numParticles);
     customGui->addSlider("Particle Size", 1.0, 300.0, &particleSize);
-    //customGui->addSlider("Time Step", 0.0001, .05, &timeStep);
+    customGui->addSlider("Time Step", 0.0001, .05, &timeStep);
     
     customGui->addMinimalSlider("Hue1", 0.0, 255.0, &hue1);
     customGui->addMinimalSlider("Saturation1", 0.0, 200.0, &saturation1);
@@ -85,7 +85,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
     delete [] vel; // Delete the array
     
     // Loading and setings of the variables of the textures of the particles
-    sparkImg.loadImage(getVisualSystemDataPath() + "glow.png");
+    sparkImg.loadImage(getVisualSystemDataPath() + "glow2.png");
     imgWidth = sparkImg.getWidth();
     imgHeight = sparkImg.getHeight();
     

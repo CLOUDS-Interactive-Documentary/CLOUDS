@@ -246,47 +246,37 @@ void _C::generateFlythrough(){
     }
     
     
-    vector<ofVec3f> pts; //collecting points as i go, so i can add them backwards, later.
+    deque<ofVec3f> pts; //collecting points as i go, so i can add them backwards, later.
     
     ofVec3f firstPoint = *thisNode; // make a copy of the first point for lookAt() later.
     
     float camPosOffset = 1.5;
+    
+	//this node is null??
+    while(thisNode != NULL && thisNode->parent != NULL  ){
 
-    while(thisNode != NULL){
-		thisNode->isPartOfCamPath = true;
+        thisNode->isPartOfCamPath = true;
         cloudsPathCam.addPositionControlVertex( *thisNode);
-		pts.push_back( ofVec3f( thisNode->x,
-								thisNode->y,
-								thisNode->z) );
-		thisNode = thisNode->parent;
-	}
-	
-//    while(thisNode != NULL && thisNode->parent != NULL  ){
-//
-//        thisNode->isPartOfCamPath = true;
-//        cloudsPathCam.addPositionControlVertex( *thisNode);
-//        //cloudsPathCam.addTargetControlVertex(ofVec3f());
-//        //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
-//        pts.push_back( *thisNode );
-//
-//        //traverse up the parent
-//        
-//        if( thisNode->parent != NULL ){
-//            thisNode = thisNode->parent;
-//        }
-//		else{
-//            break;
-//        }
-//    }
+        //cloudsPathCam.addTargetControlVertex(ofVec3f());
+        //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
+        pts.push_back( *thisNode );
+
+        //traverse up the parent
+        
+        if( thisNode->parent != NULL ){
+            thisNode = thisNode->parent;
+        }
+		else{
+            break;
+        }
+    }
     
     // then add the same points in reverse, to scrub back and forth
     // rather than seeing where the loop wraps around.
     
-//    vector<ofVec3f>::reverse_iterator pit = pts.rbegin();
-	
-    //for(; pit != pts.rend(); pit++){
-	for(int i = pts.size()-1; i >= 0; i--){
-        cloudsPathCam.addPositionControlVertex( pts[i] );
+    deque<ofVec3f>::reverse_iterator pit = pts.rbegin();
+    for(; pit != pts.rend(); pit++){
+        cloudsPathCam.addPositionControlVertex( *pit);
         //cloudsPathCam.addTargetControlVertex(ofVec3f());
         //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
     }

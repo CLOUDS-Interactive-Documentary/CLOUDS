@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Type</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1273.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>1061.000000000</XPosition>
+    <YPosition>318.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>44</Kind>
@@ -18,41 +18,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Title Tracking</Name>
-    <Value>4.926108360</Value>
+    <Value>4.679802895</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Title Offset</Name>
-    <Value>77.339897156</Value>
+    <Value>68.965515137</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Title Opacity</Name>
-    <Value>0.108374387</Value>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>Title Glow Range</Name>
-    <HighValue>0.714285731</HighValue>
-    <LowValue>0.000000000</LowValue>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Title Noise Speed</Name>
-    <Value>0.007389163</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Title Noise Dense</Name>
-    <Value>0.001000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Title Hover X</Name>
-    <Value>0.418719202</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Title Hover Y</Name>
-    <Value>0.103448279</Value>
+    <Value>0.507388949</Value>
 </Widget>

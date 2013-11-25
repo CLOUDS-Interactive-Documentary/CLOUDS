@@ -75,9 +75,9 @@
     float skinThresholdUpper;
     ofShader shaderSkinDetection;
     
-//	ofxCv::ContourFinder contours;
-//	float contourThreshold;
-//	float minBlobSize;
+	ofxCv::ContourFinder contours;
+	float contourThreshold;
+	float minBlobSize;
 	bool selectColor;
 	bool selectFace;
 	ofFloatColor targetColor;

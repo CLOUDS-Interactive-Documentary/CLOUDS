@@ -1,0 +1,80 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>772.000000000</XPosition>
+    <YPosition>27.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Width</Name>
+    <Value>54.221675873</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Cell Height</Name>
+    <Value>75.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue range</Name>
+    <HighValue>174.605911255</HighValue>
+    <LowValue>133.152709961</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H NoiseSpeed</Name>
+    <Value>0.729556680</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H Noise Step</Name>
+    <Value>5.566502571</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>H Stochasticity</Name>
+    <Value>8029.753906250</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Saturation range</Name>
+    <HighValue>145.714294434</HighValue>
+    <LowValue>17.586206436</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>S NoiseSpeed</Name>
+    <Value>0.556650400</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>S Noise Step</Name>
+    <Value>4.280788422</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>9458.182617188</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Brightness range</Name>
+    <HighValue>255.000000000</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>B NoiseSpeed</Name>
+    <Value>0.893596053</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>B Noise Step</Name>
+    <Value>6.453201771</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness Stochasticity</Name>
+    <Value>8374.546875000</Value>
+</Widget>

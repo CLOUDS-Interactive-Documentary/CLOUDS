@@ -382,6 +382,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
 						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
 	
+    
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -429,12 +430,11 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
     */
-	
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
 
 	
-//	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
 

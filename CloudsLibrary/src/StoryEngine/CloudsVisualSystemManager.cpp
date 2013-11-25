@@ -665,11 +665,6 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 		}
 	}
     
-	
-	systemsWithPresets.insert("_Intro");
-	systemsWithPresets.insert("RGBD");
-	systemsWithPresets.insert("_ClusterMap");
-	
 	cout << "COPYING SUPPORTING FILES" << endl;
 	set< string >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
