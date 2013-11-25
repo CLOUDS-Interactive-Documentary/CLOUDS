@@ -27,12 +27,12 @@ void CloudsRGBDCombinedExporter::prepare(){
 	
 	lastVideoFrame.clear();
 	
-	tracker.setup();
-
-//	
-	contours.setMinArea(minBlobSize);
-	contours.setThreshold(contourThreshold);
-	contours.setTargetColor(targetColor);
+//	tracker.setup();
+//
+////	
+//	contours.setMinArea(minBlobSize);
+//	contours.setThreshold(contourThreshold);
+//	contours.setTargetColor(targetColor);
 }
 
 void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
@@ -240,23 +240,10 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 		blankPaster.allocate(normalsBox.width,normalsBox.height, OF_IMAGE_COLOR);
 		blankPaster.set(0);	
 	}
-	
-	//  Clean this area
-	//
-	//TODO: paste in blank pixels?
-//	for(int y = 0; y < normalsBox.height; y++){
-//		for(int x = 0; x < normalsBox.width; x++){
-//			outputImage.setColor(x + normalsBox.x,
-//								 y + normalsBox.y,
-//								 ofColor(0) );
-//		}
-//	}
-	
 	blankPaster.pasteInto(outputImage, normalsBox.x, normalsBox.y);
 
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
-	
 	for(int i = 0; i < rgbdRenderer->validVertIndices.size(); i++){
 		ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
 		pair<int,int> pixelCoord = rgbdRenderer->getPixelLocationForIndex( rgbdRenderer->validVertIndices[i]  );
@@ -425,6 +412,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofSaveImage(outputImage, filename);
 }
 
+/*
 void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta){
     if(a.getVertices().size() != b.getVertices().size()){
         ofLogError("Polylines did not match in size");
@@ -485,6 +473,7 @@ void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixels& pix, ofRectangle targ
 //	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(0,0,255));
 
 }
+*/
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){
 	if(z > maxDepth || z < minDepth){

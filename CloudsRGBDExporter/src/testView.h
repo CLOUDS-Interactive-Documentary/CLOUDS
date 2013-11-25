@@ -80,7 +80,7 @@
 //	float minBlobSize;
 	bool selectColor;
 	bool selectFace;
-	ofColor targetColor;
+	ofFloatColor targetColor;
 	ofVec2f facePosition;
 	ofxDepthImageCompressor compressor;
 	ofxDepthHoleFiller filler;

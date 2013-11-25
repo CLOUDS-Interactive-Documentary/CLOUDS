@@ -108,7 +108,7 @@ class CloudsClip {
     
     //SURYA TODO: Replace contour parameters colour parameters
     //Skin Parameters
-    ofColor skinTargetColor;
+    ofFloatColor skinTargetColor;
     float skinLowerThreshold;
     float skinUpperThreshold;
     float skinHueWeight;
