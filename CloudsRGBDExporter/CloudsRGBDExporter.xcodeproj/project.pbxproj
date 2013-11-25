@@ -946,14 +946,14 @@
 		E731D65817401845006B9650 /* StoryEngine */ = {
 			isa = PBXGroup;
 			children = (
+				E723440E18336525004ABDCC /* CloudsFCPParser.h */,
+				E723440D18336525004ABDCC /* CloudsFCPParser.cpp */,
 				E7234A96183366D4004ABDCC /* CloudsLink.h */,
 				E7234A95183366D4004ABDCC /* CloudsLink.cpp */,
 				E7234A93183366C1004ABDCC /* CloudsSpeaker.h */,
 				E7234A92183366C1004ABDCC /* CloudsSpeaker.cpp */,
-				E72348C71833663A004ABDCC /* CloudsClip.cpp */,
 				E72348C81833663A004ABDCC /* CloudsClip.h */,
-				E723440D18336525004ABDCC /* CloudsFCPParser.cpp */,
-				E723440E18336525004ABDCC /* CloudsFCPParser.h */,
+				E72348C71833663A004ABDCC /* CloudsClip.cpp */,
 			);
 			path = StoryEngine;
 			sourceTree = "<group>";

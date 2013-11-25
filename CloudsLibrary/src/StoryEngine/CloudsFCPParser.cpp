@@ -790,9 +790,9 @@ void CloudsFCPParser::parseClipItem(ofxXmlSettings& fcpXML, string currentName){
 			}
 			else{
 				markerLinkNames.insert( cm.getLinkName() );
-				cm.color.r = fcpXML.getValue("color:red", 0);
-				cm.color.g = fcpXML.getValue("color:green", 0);
-				cm.color.b = fcpXML.getValue("color:blue", 0);
+//				cm.color.r = fcpXML.getValue("color:red", 0);
+//				cm.color.g = fcpXML.getValue("color:green", 0);
+//				cm.color.b = fcpXML.getValue("color:blue", 0);
 				string keywordString = ofToLower( fcpXML.getValue("comment", "") );
 				ofStringReplace(keywordString, "\n", ",");
                 vector<string> fcpKeywords = ofSplitString(keywordString, ",",true,true);

@@ -592,6 +592,14 @@
 		clip.loadAdjustmentFromXML();
 		return [NSString stringWithUTF8String: ("[" + ofToString(clip.minDepth, 1) + " - " + ofToString(clip.maxDepth, 1) + "]" ).c_str() ];
 	}
+	else if([@"skin" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		clip.loadAdjustmentFromXML();
+		return [NSString stringWithFormat:@"%.01f,%.01f,%.01f",
+					clip.skinTargetColor.r,
+					clip.skinTargetColor.g,
+					clip.skinTargetColor.b];
+	}
 	else if([@"pairings" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";
 	}

@@ -18,13 +18,11 @@ CloudsRGBDCombinedExporter::~CloudsRGBDCombinedExporter(){
 }
 
 void CloudsRGBDCombinedExporter::prepare(){
-	foundFirstFace = false;
-	lastFaceFrameFound = 0;
-	inFace = false;
+//	foundFirstFace = false;
+//	lastFaceFrameFound = 0;
+//	inFace = false;
 	
-	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
-
-	
+//	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
 	lastVideoFrame.clear();
 	
 //	tracker.setup();
@@ -184,9 +182,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
-	   outputImage.getHeight() != videoRectangle.getHeight() + 480 + 360)
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
 	{
-		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
 	}
 
 	//COPY video pixels into buffer

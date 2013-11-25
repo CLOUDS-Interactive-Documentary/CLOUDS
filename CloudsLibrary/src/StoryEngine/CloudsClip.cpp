@@ -366,9 +366,9 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
-	skinTargetColor = ofColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
-							  adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
-							  adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
+	skinTargetColor = ofFloatColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
 
 	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
     skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
@@ -434,7 +434,7 @@ void CloudsClip::saveAdjustmentToXML(){
 	alignmentSettings.addValue("facev", faceCoord.y);
 
 	
-	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	//cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
 
