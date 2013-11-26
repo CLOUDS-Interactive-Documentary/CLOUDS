@@ -43,11 +43,11 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 		ofLogError() << "CloudsRGBDVideoPlayer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
-#ifdef AVF_PLAYER
-	nextPlayer.setPositionInSeconds( offsetTime );
-#else
+//#ifdef AVF_PLAYER
+//	nextPlayer.setPositionInSeconds( offsetTime );
+//#else
 	nextPlayer.setPosition( offsetTime / nextPlayer.getDuration() );
-#endif
+//#endif
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 	clipPrerolled = true;
@@ -230,13 +230,13 @@ void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	}
 	
 	float audioVolume = maxVolume;
-#ifdef AVF_PLAYER
-	float position = getPlayer().getPositionInSeconds();
-	float duration = getPlayer().getDuration();
-#else
+//#ifdef AVF_PLAYER
+//	float position = getPlayer().getPositionInSeconds();
+//	float duration = getPlayer().getDuration();
+//#else
 	float position = getPlayer().getPosition()*getPlayer().getDuration();
 	float duration = getPlayer().getDuration();
-#endif
+//#endif
 	
 	float handleLength = 1.1;
 	//cout << "position is " << position << " " << duration << " duration " << endl;
