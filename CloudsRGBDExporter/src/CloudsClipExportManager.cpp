@@ -49,7 +49,6 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	holeFiller.setKernelSize(3);
     holeFiller.setIterations(3);
     
-    
 	done = false;
 	currentFrame = clip.startFrame - 24; //24 frame handle
 	
@@ -73,7 +72,8 @@ void CloudsClipExportManager::exportClip(CloudsClip clip){
 	renderer.setRGBTexture(*rgbdPlayer.getVideoPlayer());
 	
 	medianPixels.allocate(rgbdPlayer.getDepthPixels().getWidth(),
-						  rgbdPlayer.getDepthPixels().getHeight(), OF_IMAGE_GRAYSCALE);
+						  rgbdPlayer.getDepthPixels().getHeight(),
+						  OF_IMAGE_GRAYSCALE);
 	renderer.setDepthImage(medianPixels);
 
 	currentClip.loadAdjustmentFromXML(true);
