@@ -29,6 +29,7 @@ public:
     ProximityToken* pt;
     static BoidTrailType trailType;
     static float trailRibbonSize;
+    static float trailColorMix;
     static bool bDrawAnnotations;
     
     static float fMaxSpeed;
@@ -51,6 +52,7 @@ public:
     
     static OpenSteer::Color bodyColor;
     static OpenSteer::Color trailColor;
+    static OpenSteer::Color trailColor2;
     static OpenSteer::Color tickColor;
     
     static float trailVertexCount;
@@ -110,9 +112,12 @@ public:
         
         trailMesh.clear();
         if (history.size() > 0) {
+            ofFloatColor color1(trailColor.r(), trailColor.g(), trailColor.b());
+            ofFloatColor color2(trailColor2.r(), trailColor2.g(), trailColor2.b());
+
             if (trailType == BOID_TRAIL_RIBBONS) {
                 trailMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-                
+         
                 const ofVec3f back = history.back();
                 float total = (float)(history.size());
                 for (int i = history.size() - 1; i > 0; i--) {
@@ -134,7 +139,11 @@ public:
                     }
                     
                     ofVec3f off = perp1 * offWidth;
-                    ofColor color(trailColor.r() * 255, trailColor.g() * 255, trailColor.b() * 255, opacityScale * 255);
+                    ofFloatColor color = color1;
+                    float mixPct = ofMap(pct, 1, 0, 0, trailColorMix * 2);
+                    ofClamp(mixPct, 0, 1);
+                    color.lerp(color2, mixPct);
+                    color.a = opacityScale;
                     
                     trailMesh.addVertex(curr - off);
                     trailMesh.addColor(color);
@@ -156,8 +165,14 @@ public:
                         opacityScale *= tempScale;
                     }
                     
+                    ofFloatColor color = color1;
+                    float mixPct = ofMap(pct, 1, 0, 0, trailColorMix * 2);
+                    ofClamp(mixPct, 0, 1);
+                    color.lerp(color2, mixPct);
+                    color.a = opacityScale;
+                    
                     trailMesh.addVertex(curr);
-                    trailMesh.addColor(ofColor(trailColor.r() * 255, trailColor.g() * 255, trailColor.b() * 255, opacityScale * 255));
+                    trailMesh.addColor(color);
                 }
             }
         }
