@@ -3,8 +3,7 @@ uniform vec3 samplePointColor;
 uniform vec3 weights;
 uniform float lowerThreshold;
 uniform float upperThreshold;
-varying vec2 texture_coordinate;
-varying vec2 screenPosition;
+uniform int redGreenDebug;
 
 vec3 rgb2hsl( vec3 _input ){
 	float h = 0.0;
@@ -94,24 +93,15 @@ void main (void)
 		hslCurrent.r += 1.0;
 	}
 	
+	
     float dist = weightedDistance(hslSample.rgb,hslCurrent.rgb, normalize(weights));
 	//float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
 	float alpha = clamp(map(dist,lowerThreshold,upperThreshold,1.0,0.0),0.,1.);
-	gl_FragColor = vec4(test.rgb,1.0)*alpha;
-//	gl_FragColor.rgb = vec3(abs(hslCurrent.b - hslSample.b));
-//	gl_FragColor.rgb = vec3(hslSample.b);
-	//gl_FragColor.rgb = vec3(rgbToGray(test));
-//	gl_FragColor.a = 1.;
-	//gl_FragColor = vec4(vec3(hslCurrent.b), 1.0);
-//    float dist  = weightedDistance(hslSample.rgb,hslCurrent.rgb, weights);
-//    if(dist > lowerThreshold && dist<upperThreshold){
-//        float alpha = mapEase(dist,lowerThreshold,upperThreshold,0.,1.0,true);
-//        gl_FragColor = vec4(test.rgb,alpha);
-////        gl_FragColor = vec4(test.rgba);
-//    }
-//    else{
-//        gl_FragColor = vec4(0.,0.,0.,1.0);
-//    }
-//
+	if(redGreenDebug == 1){
+		gl_FragColor = mix(vec4(alpha,1.0-alpha,0.0, 1.0), test, .5);
+	}
+	else{
+		gl_FragColor = vec4(test.rgb,1.0)*alpha;
+	}
 }
 
