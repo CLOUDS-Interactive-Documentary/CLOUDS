@@ -61,12 +61,19 @@ protected:
     
     float   lineWidth;
     
+    float   particlesThreshold;
+    float   particlesTurbulence;
+    float   particlesAlpha;
+
     float   colorHue;
     float   colorLerp;
     float   colorRandom;
     
-    float   particlesThreshold;
-    float   particlesTurbulence;
-    float   particlesAlpha;
+    bool                    bUseColorMap;
+    ofPixels *              colorMap;
+    vector<string>          colorMapNames;
+	map<string, ofPixels *> colorMapPixelsMap;
+    int                     mapX, mapY;
+    bool                    bMapForward;
 
 };

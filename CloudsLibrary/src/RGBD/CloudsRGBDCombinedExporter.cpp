@@ -18,21 +18,19 @@ CloudsRGBDCombinedExporter::~CloudsRGBDCombinedExporter(){
 }
 
 void CloudsRGBDCombinedExporter::prepare(){
-	foundFirstFace = false;
-	lastFaceFrameFound = 0;
-	inFace = false;
+//	foundFirstFace = false;
+//	lastFaceFrameFound = 0;
+//	inFace = false;
 	
-	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
-
-	
+//	cout << "setting min blob size to " << minBlobSize << " thresh " << contourThreshold << " and color " << targetColor << endl;
 	lastVideoFrame.clear();
 	
-	tracker.setup();
-
-//	
-	contours.setMinArea(minBlobSize);
-	contours.setThreshold(contourThreshold);
-	contours.setTargetColor(targetColor);
+//	tracker.setup();
+//
+////	
+//	contours.setMinArea(minBlobSize);
+//	contours.setThreshold(contourThreshold);
+//	contours.setTargetColor(targetColor);
 }
 
 void CloudsRGBDCombinedExporter::setRenderer(ofxRGBDCPURenderer* renderer){
@@ -184,9 +182,9 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 
 	if(!outputImage.isAllocated() ||
 	   outputImage.getWidth() != videoRectangle.getWidth() ||
-	   outputImage.getHeight() != videoRectangle.getHeight() + 480 + 360)
+	   outputImage.getHeight() != videoRectangle.getHeight() + 480)
 	{
-		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480 + 360, OF_IMAGE_COLOR);
+		outputImage.allocate(videoRectangle.getWidth(), videoRectangle.getHeight() + 480, OF_IMAGE_COLOR);
 	}
 
 	//COPY video pixels into buffer
@@ -233,22 +231,18 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	normalsBox.width = p.getWidth();
 	normalsBox.height = p.getHeight();
 	
-	//  Clean this area
-	//
-	//TODO: paste in blank pixels?
-	for(int y = 0; y < normalsBox.height; y++){
-		for(int x = 0; x < normalsBox.width; x++){
-			outputImage.setColor(x + normalsBox.x,
-								 y + normalsBox.y,
-								 ofColor(0) );
-		}
+	if(!blankPaster.isAllocated() ||
+	   normalsBox.width != blankPaster.getWidth() ||
+	   normalsBox.height != blankPaster.getHeight())
+	{
+		blankPaster.allocate(normalsBox.width,normalsBox.height, OF_IMAGE_COLOR);
+		blankPaster.set(0);	
 	}
-	
-	
-		
+	blankPaster.pasteInto(outputImage, normalsBox.x, normalsBox.y);
+
+
 	//  Use the new mesh and the valid verteces ( from the original ) to make an image
 	//
-	
 	for(int i = 0; i < rgbdRenderer->validVertIndices.size(); i++){
 		ofVec3f norm = ( mesh.getNormals()[ i ] + ofVec3f(1.0, 1.0, 1.0) ) / 2.0;
 		pair<int,int> pixelCoord = rgbdRenderer->getPixelLocationForIndex( rgbdRenderer->validVertIndices[i]  );
@@ -256,6 +250,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 							 videoRectangle.getHeight() + pixelCoord.second, ofColor(norm.x*255,norm.y*255,norm.z*255) );
 	}
 	
+	/*
 	// Copy in face info
 	ofRectangle faceTargetRectangle(0,normalsBox.getMaxY(),640,360);
 	if(!faceFrame.isAllocated() || videoPixels.getWidth() != faceFrame.getWidth() || videoPixels.getHeight() != faceFrame.getHeight()){
@@ -404,6 +399,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	}
 	
 	lastVideoFrame = thisFrameGray;
+	*/
 	
 	char filename[1024];
 	sprintf(filename, "%s/%s_%05d.png", outputPath.c_str(), clipName.c_str(), frameNum);
@@ -411,6 +407,7 @@ void CloudsRGBDCombinedExporter::renderFrame(string outputPath, string clipName,
 	ofSaveImage(outputImage, filename);
 }
 
+/*
 void CloudsRGBDCombinedExporter::interpolatePolyLine(ofPolyline& a, ofPolyline& b, ofPolyline& out, float delta){
     if(a.getVertices().size() != b.getVertices().size()){
         ofLogError("Polylines did not match in size");
@@ -471,6 +468,7 @@ void CloudsRGBDCombinedExporter::addFaceToPixels(ofPixels& pix, ofRectangle targ
 //	cv::fillPoly(dstMat, ppt, npt, 1, cv::Scalar(0,0,255));
 
 }
+*/
 
 ofColor CloudsRGBDCombinedExporter::getColorForZDepth(unsigned short z, float minDepth, float maxDepth){
 	if(z > maxDepth || z < minDepth){

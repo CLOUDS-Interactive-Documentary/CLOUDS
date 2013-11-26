@@ -20,6 +20,27 @@ void CloudsVisualSystemPaintBrush::selfSetup()
     canvas.begin();
     ofClear(0,0);
     canvas.end();
+    
+    bUseColorMap = false;
+    
+    // ColorMaps
+    string colorMapPath = getVisualSystemDataPath() + "colorMaps/";
+    ofDirectory dir;
+    dir.listDir(colorMapPath);
+    dir.sort();
+    string tempName;
+    ofImage tempImage;
+    for (int i = 0; i < dir.numFiles(); i++) {
+        tempName = dir.getName(i);
+        tempImage.loadImage(dir.getPath(i));
+		colorMapNames.push_back(tempName);
+        colorMapPixelsMap[tempName] = new ofPixels(tempImage.getPixelsRef());
+        if (colorMap == NULL) {
+            colorMap = colorMapPixelsMap[tempName];
+        }
+	}
+    mapX = mapY = 0;
+    bMapForward = true;
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
@@ -33,13 +54,17 @@ void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
     sysGui->addSlider("repulsion_rad", 0, 20, &brushRepRad);
     sysGui->addSlider("repulsion_pct", 0.0, 1.0, &brushRepPct);
     
+    sysGui->addSlider("particles_threshold", 5.0, 100.0, &particlesThreshold);
+    sysGui->addSlider("particles_turbulence", 0.0, 0.5, &particlesTurbulence);
+    sysGui->addSlider("particles_alpha", 0.0, 1.0, &particlesAlpha);
+    
     sysGui->addSlider("color_hue", 0.0, 1.0, &colorHue);
     sysGui->addSlider("color_lerp",0.0, 1.0, &colorLerp);
     sysGui->addSlider("color_random", 0.0, 0.02, &colorRandom);
     
-    sysGui->addSlider("particles_threshold", 5.0, 100.0, &particlesThreshold);
-    sysGui->addSlider("particles_turbulence", 0.0, 0.5, &particlesTurbulence);
-    sysGui->addSlider("particles_alpha", 0.0, 1.0, &particlesAlpha);
+    sysGui->addToggle("use color map", &bUseColorMap);
+    sysGui->addLabel("color maps");
+	sysGui->addRadio("color map", colorMapNames);
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupRenderGui()
@@ -49,7 +74,14 @@ void CloudsVisualSystemPaintBrush::selfSetupRenderGui()
 
 void CloudsVisualSystemPaintBrush::guiSystemEvent(ofxUIEventArgs &e)
 {
-    
+    if (e.widget->getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue()) {
+		string name = e.getName();
+        for (map<string, ofPixels *>::iterator it = colorMapPixelsMap.begin(); it != colorMapPixelsMap.end(); it++) {
+			if (it->first == name) {
+				colorMap = it->second;
+			}
+		}
+	}
 }
 
 void CloudsVisualSystemPaintBrush::selfKeyPressed(ofKeyEventArgs & args){
@@ -65,10 +97,51 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     
     brush.update();
     
-    if (brush.getVel().length() < particlesThreshold){
+    if (brush.getVel().length() < particlesThreshold) {
         ofFloatColor color;
-        color.set(1, 0, 0);
-        color.setHue( colorHue );
+        
+        if (bUseColorMap) {
+            color = colorMap->getColor(mapX, mapY);
+            if (bMapForward) {
+                ++mapX;
+                if (mapX >= colorMap->getWidth()) {
+                    ++mapY;
+                    if (mapY >= colorMap->getHeight()) {
+                        // back to start
+                        mapX = 0;
+                        mapY = 0;
+                        bMapForward = true;
+                    }
+                    else {
+                        // next line, going backwards
+                        mapX = colorMap->getWidth() - 1;
+                        bMapForward = false;
+                    }
+                }
+            }
+            else {
+                --mapX;
+                if (mapX < 0) {
+                    ++mapY;
+                    if (mapY >= colorMap->getHeight()) {
+                        // back to start
+                        mapX = 0;
+                        mapY = 0;
+                        bMapForward = true;
+                    }
+                    else {
+                        // next line, going forward
+                        mapX = 0;
+                        bMapForward = true;
+                    }
+                }
+            }
+        }
+        else {
+            color.set(1, 0, 0);
+            color.setHue(colorHue);
+        }
+        
         brush.setColor(color, colorLerp, colorRandom);
     }
     
@@ -141,7 +214,10 @@ void CloudsVisualSystemPaintBrush::selfSceneTransformation()
 
 void CloudsVisualSystemPaintBrush::selfExit()
 {
-    
+    for (map<string, ofPixels *>::iterator it = colorMapPixelsMap.begin(); it != colorMapPixelsMap.end(); it++) {
+        delete it->second;
+	}
+    colorMapPixelsMap.clear();
 }
 
 void CloudsVisualSystemPaintBrush::selfBegin()
