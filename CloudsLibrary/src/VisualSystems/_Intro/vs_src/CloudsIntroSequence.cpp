@@ -533,10 +533,11 @@ void CloudsIntroSequence::guiSystemEvent(ofxUIEventArgs &e){
 		reloadShaders();
 	}
 	else if(e.widget->getName() == "reset debug camera" && ((ofxUIButton*)e.widget)->getValue()){
-		camera.setPosition(0, 0, 0);
-		camera.setOrientation(ofQuaternion());
-		camera.rotate(180, ofVec3f(0,1,0));
-		camera.setAnglesFromOrientation();
+		camera.reset();
+//		camera.setPosition(0, 0, 0);
+//		camera.setOrientation(ofQuaternion());
+//		camera.rotate(180, ofVec3f(0,1,0));
+//		camera.setAnglesFromOrientation();
 	}
 }
 
