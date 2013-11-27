@@ -2,6 +2,12 @@
 //  CloudsVisualSystemFireworks.cpp
 //
 
+
+//TODO: fix camera:
+// all swelf dra in self draw
+// selfpost
+//
+
 #include "CloudsVisualSystemFireworks.h"
 #include "CloudsRGBDVideoPlayer.h"
 

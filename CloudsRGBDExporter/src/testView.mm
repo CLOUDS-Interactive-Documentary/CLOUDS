@@ -33,7 +33,7 @@
 	[clipTable reloadData];
 	
     cout << "Relinked Export Folder "<< exportFolder << endl;
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( exportFolder );
 	}
@@ -377,8 +377,8 @@
 
 	if(clipTable.selectedRow >= 0){
 
-		colorReplacementFolder = string([[colorReplacementField stringValue] UTF8String]);
-		exportFolder = [[exportFolderField stringValue] UTF8String];
+		colorReplacementFolder = ofFilePath::addTrailingSlash( string([[colorReplacementField stringValue] UTF8String]) );
+		exportFolder = ofFilePath::addTrailingSlash( [[exportFolderField stringValue] UTF8String] );
 		ofBuffer savedExportBuf;
 		savedExportBuf.append( exportFolder );
 		ofBuffer savedColorBuf;
@@ -388,12 +388,12 @@
 		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
-		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);
+		player.setAlternativeVideoFolder( string([[colorReplacementField stringValue] UTF8String]), true);
 		
 		if(player.setup(clip.getSceneFolder())){
 			
 			if(!player.alternativeVideoIsConfirmed()){
-				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
+				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() + " Could not find clip " + ofFilePath::getFileName(player.getScene().videoPath) );
 				return;
 			}
 			
@@ -612,9 +612,17 @@
 		}
 		return [NSString stringWithUTF8String: ("[" + ofToString(clip.minDepth, 1) + " - " + ofToString(clip.maxDepth, 1) + "]" ).c_str() ];
 	}
+	else if([@"texture" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		clip.loadAdjustmentFromXML();		
+		if(clip.adjustRotate.x == 0 && clip.adjustRotate.y == 0){
+			return @"N/S";
+		}
+		return [NSString stringWithFormat: @"x:%.02f y:%.02f", clip.adjustRotate.x, clip.adjustRotate.y ];
+	}
 	else if([@"skin" isEqualToString:aTableColumn.identifier]){
 		CloudsClip& clip = parser.getAllClips()[rowIndex];
-		clip.loadAdjustmentFromXML();
+		//clip.loadAdjustmentFromXML();
 		if( clip.skinTargetColor == ofFloatColor(1.0,0.0,0.0) ){
 			return @"N/S";
 		}
@@ -625,7 +633,7 @@
 	}
 	else if([@"head" isEqualToString:aTableColumn.identifier]){
 		CloudsClip& clip = parser.getAllClips()[rowIndex];
-		clip.loadAdjustmentFromXML();
+		//clip.loadAdjustmentFromXML();
 		if( clip.faceCoord == ofVec2f(320.,110.) ){
 			return @"N/S";
 		}

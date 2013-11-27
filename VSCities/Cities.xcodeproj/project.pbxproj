@@ -49,6 +49,14 @@
 		2AAEF59E180F136F005F33D3 /* b2RevoluteJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF572180F136F005F33D3 /* b2RevoluteJoint.cpp */; };
 		2AAEF59F180F136F005F33D3 /* b2WeldJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF574180F136F005F33D3 /* b2WeldJoint.cpp */; };
 		2AAEF5A0180F136F005F33D3 /* del_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AAEF578180F136F005F33D3 /* del_impl.cpp */; };
+		50473D811846623900B07434 /* city.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50473D791846623900B07434 /* city.frag */; };
+		50473D821846623900B07434 /* city.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7A1846623900B07434 /* city.vert */; };
+		50473D831846623900B07434 /* cMask.fs in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7B1846623900B07434 /* cMask.fs */; };
+		50473D841846623900B07434 /* extrude.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7C1846623900B07434 /* extrude.frag */; };
+		50473D851846623900B07434 /* extrude.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7D1846623900B07434 /* extrude.vert */; };
+		50473D861846623900B07434 /* grayscott.fs in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7E1846623900B07434 /* grayscott.fs */; };
+		50473D871846623900B07434 /* noise.fs in Sources */ = {isa = PBXBuildFile; fileRef = 50473D7F1846623900B07434 /* noise.fs */; };
+		50473D881846623900B07434 /* postprocess.fs in Sources */ = {isa = PBXBuildFile; fileRef = 50473D801846623900B07434 /* postprocess.fs */; };
 		6421636A183C602700D0D95C /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6421635F183C602700D0D95C /* CloudsVisualSystemCities.cpp */; };
 		64216385183C606B00D0D95C /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 6421637D183C606B00D0D95C /* glm.c */; };
 		64216386183C606B00D0D95C /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64216381183C606B00D0D95C /* ofxObjLoader.cpp */; };
@@ -271,6 +279,14 @@
 		2AAEF57A180F136F005F33D3 /* dpoint.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dpoint.hpp; sourceTree = "<group>"; };
 		2AAEF57B180F136F005F33D3 /* triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangle.h; sourceTree = "<group>"; };
 		2AAEF57C180F136F005F33D3 /* triangle_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = triangle_impl.hpp; sourceTree = "<group>"; };
+		50473D791846623900B07434 /* city.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = city.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50473D7A1846623900B07434 /* city.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = city.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50473D7B1846623900B07434 /* cMask.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cMask.fs; sourceTree = "<group>"; };
+		50473D7C1846623900B07434 /* extrude.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = extrude.frag; sourceTree = "<group>"; };
+		50473D7D1846623900B07434 /* extrude.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = extrude.vert; sourceTree = "<group>"; };
+		50473D7E1846623900B07434 /* grayscott.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = grayscott.fs; sourceTree = "<group>"; };
+		50473D7F1846623900B07434 /* noise.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noise.fs; sourceTree = "<group>"; };
+		50473D801846623900B07434 /* postprocess.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = postprocess.fs; sourceTree = "<group>"; };
 		6421635F183C602700D0D95C /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
 		64216360183C602700D0D95C /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
 		6421637D183C606B00D0D95C /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
@@ -729,6 +745,22 @@
 			path = triangle;
 			sourceTree = "<group>";
 		};
+		50473D781846623900B07434 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				50473D791846623900B07434 /* city.frag */,
+				50473D7A1846623900B07434 /* city.vert */,
+				50473D7B1846623900B07434 /* cMask.fs */,
+				50473D7C1846623900B07434 /* extrude.frag */,
+				50473D7D1846623900B07434 /* extrude.vert */,
+				50473D7E1846623900B07434 /* grayscott.fs */,
+				50473D7F1846623900B07434 /* noise.fs */,
+				50473D801846623900B07434 /* postprocess.fs */,
+			);
+			name = shaders;
+			path = ../../../CloudsLibrary/src/VisualSystems/Cities/bin/data/shaders;
+			sourceTree = "<group>";
+		};
 		6421622C183C602700D0D95C /* Cities */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +920,7 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				50473D781846623900B07434 /* shaders */,
 			);
 			name = data;
 			path = bin/data;
@@ -1618,6 +1651,14 @@
 				6421636A183C602700D0D95C /* CloudsVisualSystemCities.cpp in Sources */,
 				64216385183C606B00D0D95C /* glm.c in Sources */,
 				64216386183C606B00D0D95C /* ofxObjLoader.cpp in Sources */,
+				50473D811846623900B07434 /* city.frag in Sources */,
+				50473D821846623900B07434 /* city.vert in Sources */,
+				50473D831846623900B07434 /* cMask.fs in Sources */,
+				50473D841846623900B07434 /* extrude.frag in Sources */,
+				50473D851846623900B07434 /* extrude.vert in Sources */,
+				50473D861846623900B07434 /* grayscott.fs in Sources */,
+				50473D871846623900B07434 /* noise.fs in Sources */,
+				50473D881846623900B07434 /* postprocess.fs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
