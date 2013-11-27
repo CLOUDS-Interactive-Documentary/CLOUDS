@@ -33,7 +33,7 @@
 	[clipTable reloadData];
 	
     cout << "Relinked Export Folder "<< exportFolder << endl;
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( exportFolder );
 	}
