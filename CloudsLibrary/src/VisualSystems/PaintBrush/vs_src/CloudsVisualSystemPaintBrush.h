@@ -48,7 +48,7 @@ public:
     void guiRenderEvent(ofxUIEventArgs &e);
     
 protected:
-    ofFbo               canvas;
+    ofFbo               canvasSrc, canvasDst;
     Brush               brush;
     vector<Particle>    particles;
     
@@ -75,5 +75,7 @@ protected:
 	map<string, ofPixels *> colorMapPixelsMap;
     int                     mapX, mapY;
     bool                    bMapForward;
+    
+    float       fadeAmount;
 
 };
