@@ -143,6 +143,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 	noisePosition = 0;
 	noiseSpeed = 0;
 	noiseScale = 1;
+    
+    levelY = -radius;
 	
     wireSphereScale = 0.9333;
     solidSphereScale = 0.8666;
@@ -226,6 +228,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         float peakLerpRatio = 0.5f;
         combinedPeak = combinedPeak * (1.0f - peakLerpRatio) + newCombinedPeak * peakLerpRatio;
     }
+    
+//    cout << videoPlayer.getAmplitude() << endl;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -255,12 +259,14 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, combinedFurLength);
+		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, furLength, ABS(videoPlayer.getAmplitude()), levelY);
 	}
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
 
-	
+	levelY++;
+    if (levelY > radius) levelY = -radius;
+    
 	ofPopStyle();
 }
 
