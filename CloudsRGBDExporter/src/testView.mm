@@ -521,6 +521,7 @@
         targetColor = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
                                                                        (p.y-videoRect.y)*yScale);
         
+
         /*
 		ofFloatColor c = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
 																	    (p.y-videoRect.y)*yScale);
