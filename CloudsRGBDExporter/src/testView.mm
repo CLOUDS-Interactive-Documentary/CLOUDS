@@ -518,8 +518,34 @@
 		float xScale = player.getVideoPlayer()->getWidth()  / videoRect.width;
 		float yScale = player.getVideoPlayer()->getHeight() / videoRect.height;
 		
-		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x)*xScale,
+        targetColor = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
+                                                                       (p.y-videoRect.y)*yScale);
+        
+        /*
+		ofFloatColor c = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
 																	    (p.y-videoRect.y)*yScale);
+        
+        ofFloatColor c1 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                         (p.y-videoRect.y)*yScale);
+        ofFloatColor c2 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x  )*xScale,
+                                                                          (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c3 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x  )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        ofFloatColor c4 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1  )*xScale,
+                                                                           (p.y-videoRect.y )*yScale);
+        
+        ofFloatColor c5 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                          (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c6 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1 )*xScale,
+                                                                           (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c7 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        ofFloatColor c8 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1  )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        
+        targetColor = ( c + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 ) / 9;
+        */
+
 	}
 	else if(selectFace && player.isLoaded() && ofRectangle(0,0,640,480).inside(p.x-200,p.y) ){
 		facePosition = ofVec2f(p.x-200, p.y);
