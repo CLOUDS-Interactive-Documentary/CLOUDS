@@ -11,6 +11,12 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+
+#ifdef AVF_PLAYER
+#include "ofxAVFVideoPlayer.h"
+#endif
+// TODO: Deal with case when AVF_PLAYER is not #defined
+
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
 
@@ -191,4 +197,6 @@ protected:
     float freq[2][BUFFER_SIZE/2];
     fft	fft[2];
     FFTOctaveAnalyzer fftAnalyzer[2];
+    
+    ofxAVFVideoPlayer videoPlayer;
 };
