@@ -5,7 +5,7 @@
 #include "CloudsVisualSystemOpenP5NoiseSphere.h"
 
 
-//#include "CloudsRGBDVideoPlayer.h"
+#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
 //#endif
@@ -36,22 +36,50 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
     customGui->addSlider("Fur Length", 0.0, 4., &furLength);
 	
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	
-	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+    
+    selfSetupAudioGui();
 }
 
 void CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent(ofxUIEventArgs &e){
 //	if(e.widget->getName() == "Custom Button"){
 //		cout << "Button pressed!" << endl;
 //	}
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
+{
+    audioGui = new ofxUISuperCanvas("AUDIO", gui);
+	audioGui->copyCanvasStyle(gui);
+	audioGui->copyCanvasProperties(gui);
+	audioGui->setName("Audio");
+	audioGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    audioGui->addIntSlider("PEAK HOLD TIME", 0, 30, &fftAnalyzer[0].peakHoldTime);
+    audioGui->addSlider("PEAK DECAY RATE", 0, 1, &fftAnalyzer[0].peakDecayRate);
+    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
+        audioGui->addSlider("S" + ofToString(i), 0.0f, 30.0f, fftAnalyzer[0].peaks[i], 17.0f, 160.0f);
+        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    }
+    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
+        audioGui->addToggle("T" + ofToString(i), &peakToggles[i], 17.0f, 17.0f)->setLabelVisible(false);
+        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    }
+    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+    audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
+    audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
+	
+	ofAddListener(audioGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent);
+	guis.push_back(audioGui);
+	guimap[audioGui->getName()] = audioGui;
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent(ofxUIEventArgs &e)
+{
+    
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -74,9 +102,38 @@ void CloudsVisualSystemOpenP5NoiseSphere::guiRenderEvent(ofxUIEventArgs &e){
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemOpenP5NoiseSphere::selfSetup(){
-	
+void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
+{
+    leftBuffer  = NULL;
+    rightBuffer = NULL;
+    peakToggles = NULL;
+    bAudioBuffered = false;
+    
+//    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
+    string filePath = "TestVideo/Fernanda_social_network_hairballs";
+//    string filePath = "TestVideo/Jer_TestVideo";
+    if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
+		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
+								   getVisualSystemDataPath() + filePath + ".xml" );
+		
+		getRGBDVideoPlayer().swapAndPlay();
+	}
+    
+    // set up fft analyzer
+    for (int i = 0; i < 2; i++) {
+        fftAnalyzer[i].setup(44100, BUFFER_SIZE/2, 1);
+        fftAnalyzer[i].peakHoldTime = 15;         // hold longer
+        fftAnalyzer[i].peakDecayRate = 0.95f;     // decay slower
+        fftAnalyzer[i].linearEQIntercept = 0.9f;  // reduced gain at lowest frequency
+        fftAnalyzer[i].linearEQSlope = 0.01f;     // increasing gain at higher frequencies
+    }
+    
+    peakToggles = new bool[fftAnalyzer[0].nAverages];
+    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
+        peakToggles[i] = false;
+    }
 
+    // set up hairball
 	radius = 75;
 	for (int i=0; i<count; i++) {
 		list.push_back( Hair(radius) );
@@ -118,14 +175,61 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSceneTransformation(){
 }
 
 //normal update call
-void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate(){
+void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
+{
+    if (getRGBDVideoPlayer().getPlayer().isAudioLoaded()) {
+        if (bAudioBuffered == false) {
+            float * interleavedBuffer = getRGBDVideoPlayer().getPlayer().getAllAmplitudes();
+            numAmplitudesPerChannel = getRGBDVideoPlayer().getPlayer().getNumAmplitudes() / 2;
+            leftBuffer  = new float[numAmplitudesPerChannel];
+            rightBuffer = new float[numAmplitudesPerChannel];
+            
+            for (int i = 0; i < numAmplitudesPerChannel; i++) {
+                leftBuffer[i]  = interleavedBuffer[i * 2 + 0];
+                rightBuffer[i] = interleavedBuffer[i * 2 + 1];
+            }
+            
+            bAudioBuffered = true;
+        }
+        
+        // calculate fft
+        float avgPower = 0.0f;
+        
+        int idx = (int)(getRGBDVideoPlayer().getPlayer().getPosition() * (numAmplitudesPerChannel - 1));
+        fft[0].powerSpectrum(idx, BUFFER_SIZE/2, leftBuffer,  BUFFER_SIZE, &magnitude[0][0], &phase[0][0], &power[0][0], &avgPower);
+        fft[1].powerSpectrum(idx, BUFFER_SIZE/2, rightBuffer, BUFFER_SIZE, &magnitude[1][0], &phase[1][0], &power[1][0], &avgPower);
+        for (int i = 0; i < BUFFER_SIZE/2; i++) {
+            freq[0][i] = magnitude[0][i];
+            freq[1][i] = magnitude[1][i];
+        }
+        
+        fftAnalyzer[0].calculate(freq[0]);
+        fftAnalyzer[1].calculate(freq[1]);
+        
+        // update gui sliders
+        int combinedCount = 0;
+        float newCombinedPeak = 0.0f;
+        for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
+            float monoPeak = ((fftAnalyzer[0].peaks[i] + fftAnalyzer[1].peaks[i]) / 2.0f);
+            ((ofxUISlider *)audioGui->getWidget("S" + ofToString(i)))->setValue(monoPeak);
+//            cout << i << " " << fftAnalyzer[0].peaks[i] << " " << fftAnalyzer[1].peaks[i] << " " << scaledAvgPeak << endl;
+            
+            if (peakToggles[i]) {
+                newCombinedPeak += monoPeak;
+                ++combinedCount;
+            }
+        }
 
+        newCombinedPeak /= combinedCount;
+        float peakLerpRatio = 0.5f;
+        combinedPeak = combinedPeak * (1.0f - peakLerpRatio) + newCombinedPeak * peakLerpRatio;
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
-    
+void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
+{    
 	ofPushStyle();
 	
 	glDisable(GL_LIGHTING);
@@ -144,10 +248,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw(){
 	ofRotateX(ry);
 	//sphere(radio);
 	
+    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
+    
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, furLength);
+		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, combinedFurLength);
 	}
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
@@ -175,8 +281,14 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfEnd(){
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemOpenP5NoiseSphere::selfExit(){
-	
+void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
+{
+    if (leftBuffer  != NULL) delete [] leftBuffer;
+    if (rightBuffer != NULL) delete [] rightBuffer;
+    if (peakToggles != NULL) delete [] peakToggles;
+    
+    leftBuffer = rightBuffer = NULL;
+    peakToggles = NULL;
 }
 
 //events are called when the system is active
