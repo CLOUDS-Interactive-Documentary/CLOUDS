@@ -7,6 +7,11 @@
 
 #include "CloudsRGBDVideoPlayer.h"
 
+float * Hair::levelScaleLookUp = NULL;
+
+float Hair::minNoiseScale = 0.5f;
+float Hair::maxNoiseScale = 1.0f;
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 
@@ -30,7 +35,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 
     
     customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
-    customGui->addSlider("Noise Scale", 0.0, 4.0, &noiseScale);
+    customGui->addRangeSlider("Noise Scale", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
     customGui->addSlider("Fur Length", 0.0, 4., &furLength);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
@@ -68,7 +73,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
     audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
-	
+
+    audioGui->addSpacer();
+	audioGui->addSlider("SCROLL SPEED", 0.0f, 0.1f, &scrollSpeed);
+    
+    audioGui->addSpacer();
+	audioGui->addSlider("LEVEL OFFSET", 0, 1, &levelOffset);
+    audioGui->addSlider("LEVEL SCALE", 0, 10, &levelScale);
+    audioGui->addSlider("LEVEL DECAY RATE", 0, 1, &levelDecayRate);
+    audioGui->addToggle("INVERT LEVEL", &bInvertLevel);
+    
 	ofAddListener(audioGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent);
 	guis.push_back(audioGui);
 	guimap[audioGui->getName()] = audioGui;
@@ -136,6 +150,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 
     // set up hairball
 	radius = 75;
+    
+    Hair::levelScaleLookUp = new float[(int)radius * 2 + 1];
+    for (int i = 0; i < radius * 2 + 1; i++) {
+        Hair::levelScaleLookUp[i] = 0;
+    }
+    
 	for (int i=0; i<count; i++) {
 		list.push_back( Hair(radius) );
 	}
@@ -144,7 +164,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 	noiseSpeed = 0;
 	noiseScale = 1;
     
-    levelY = -radius;
+    scrollY = -radius;
+    scrollSpeed = 0.1f;
+    
+    levelOffset = 1;
+    levelScale = 2;
+    levelDecayRate = 0.99f;
+    bInvertLevel = false;
 	
     wireSphereScale = 0.9333;
     solidSphereScale = 0.8666;
@@ -227,6 +253,26 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         newCombinedPeak /= combinedCount;
         float peakLerpRatio = 0.5f;
         combinedPeak = combinedPeak * (1.0f - peakLerpRatio) + newCombinedPeak * peakLerpRatio;
+        
+        //    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
+        
+        // calculate hairball level scales based on amplitude and scrolling y-value
+        float currLevel = ABS(videoPlayer.getAmplitude());
+        for (int i = 0; i < radius * 2; i++) {
+            float currY = i - radius;  // Range: [-radius, radius]
+            float newLevelScale;
+            if (bInvertLevel) {
+                newLevelScale = ofMap(ABS(currY - scrollY), 0, radius, 1, levelOffset + currLevel * levelScale);
+            }
+            else {
+                newLevelScale = ofMap(ABS(currY - scrollY), 0, radius, levelOffset + currLevel * levelScale, 1);
+            }
+            Hair::levelScaleLookUp[i] = MAX(Hair::levelScaleLookUp[i] * (0.9f + levelDecayRate * 0.1f), newLevelScale);
+        }
+        
+        // scroll up and down
+        scrollAng += scrollSpeed;
+        scrollY = sin(scrollAng) * radius;
     }
     
 //    cout << videoPlayer.getAmplitude() << endl;
@@ -254,18 +300,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	ofRotateX(ry);
 	//sphere(radio);
 	
-    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
-    
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, noiseScale, solidSphereAlpha, furLength, ABS(videoPlayer.getAmplitude()), levelY);
+		list[i].draw(mesh, noisePosition, furLength, scrollY);
 	}
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
-
-	levelY++;
-    if (levelY > radius) levelY = -radius;
     
 	ofPopStyle();
 }
@@ -294,6 +335,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
     if (leftBuffer  != NULL) delete [] leftBuffer;
     if (rightBuffer != NULL) delete [] rightBuffer;
     if (peakToggles != NULL) delete [] peakToggles;
+    
+    delete [] Hair::levelScaleLookUp;
     
     leftBuffer = rightBuffer = NULL;
     peakToggles = NULL;
