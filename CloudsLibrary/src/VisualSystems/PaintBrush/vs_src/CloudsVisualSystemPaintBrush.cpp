@@ -155,7 +155,9 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         brush.setColor(color, colorLerp, colorRandom);
     }
     
-    brush.addParticles(particles, particlesThreshold, particlesAlpha);
+    if (ofGetMousePressed()) {
+        brush.addParticles(particles, particlesThreshold, particlesAlpha);
+    }
     
     canvasDst.begin();
     
