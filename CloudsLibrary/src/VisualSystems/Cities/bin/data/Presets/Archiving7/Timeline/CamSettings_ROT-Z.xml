@@ -3,18 +3,18 @@
         <easefunc>0</easefunc>
         <easetype>0</easetype>
         <time>00:00:00:003</time>
-        <value>0.000000000</value>
+        <value>0</value>
     </key>
     <key>
         <easefunc>0</easefunc>
         <easetype>0</easetype>
         <time>00:00:16:075</time>
-        <value>0.250000000</value>
+        <value>0.25</value>
     </key>
     <key>
         <easefunc>0</easefunc>
         <easetype>0</easetype>
         <time>00:01:00:000</time>
-        <value>1.000000000</value>
+        <value>1</value>
     </key>
 </keyframes>

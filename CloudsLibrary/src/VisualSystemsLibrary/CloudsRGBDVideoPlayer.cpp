@@ -23,6 +23,15 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	
 	bEventRegistered = false;
 	clipPrerolled = false;
+	
+#ifdef AVF_PLAYER
+	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+#else
+	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
+#endif
+
 }
 
 //---------------------------------------------------------------
@@ -39,15 +48,15 @@ bool CloudsRGBDVideoPlayer::setup(string videoPath, string calibrationXMLPath, f
 		bEventRegistered = true;
 	}
 	
-	if(!nextPlayer.loadMovie(videoPath)){
+	if(!nextPlayer->loadMovie(videoPath)){
 		ofLogError() << "CloudsRGBDVideoPlayer::setup -- Movie path " << videoPath << " failed to load";
 		return false;
 	}
-#ifdef AVF_PLAYER
-	nextPlayer.setPositionInSeconds( offsetTime );
-#else
-	nextPlayer.setPosition( offsetTime / nextPlayer.getDuration() );
-#endif
+//#ifdef AVF_PLAYER
+//	nextPlayer.setPositionInSeconds( offsetTime );
+//#else
+	nextPlayer->setPosition( offsetTime / nextPlayer->getDuration() );
+//#endif
 	nextCalibrationXML = calibrationXMLPath;
 	cout << "prerolled clip " << videoPath << " to time " << offsetTime << endl;
 	clipPrerolled = true;
@@ -157,8 +166,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 		colorScale.y = float(colorHeight - (depthRect.height) ) / float(colorRect.height);
 	}
 
-	currentPlayer.stop();
-	nextPlayer.play();
+	currentPlayer->stop();
+	nextPlayer->play();
 	swap(currentPlayer,nextPlayer);
 	clipPrerolled = false;
 	
@@ -218,25 +227,25 @@ ofxAVFVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 #else
 ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 #endif
-	return currentPlayer;
+	return *currentPlayer;
 }
 
 //--------------------------------------------------------------- ACTIONS
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
-	currentPlayer.update();
+	currentPlayer->update();
 	if(clipPrerolled){
-		nextPlayer.update();
+		nextPlayer->update();
 	}
 	
 	float audioVolume = maxVolume;
-#ifdef AVF_PLAYER
-	float position = getPlayer().getPositionInSeconds();
-	float duration = getPlayer().getDuration();
-#else
+//#ifdef AVF_PLAYER
+//	float position = getPlayer().getPositionInSeconds();
+//	float duration = getPlayer().getDuration();
+//#else
 	float position = getPlayer().getPosition()*getPlayer().getDuration();
 	float duration = getPlayer().getDuration();
-#endif
+//#endif
 	
 	float handleLength = 1.1;
 	//cout << "position is " << position << " " << duration << " duration " << endl;

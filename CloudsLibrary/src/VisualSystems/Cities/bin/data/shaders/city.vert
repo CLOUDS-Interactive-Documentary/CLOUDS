@@ -24,7 +24,9 @@ uniform float maxHeight = 10.;
 uniform float minHeight = .1;
 
 uniform float drawEdges;
+uniform float edgeOffset = 0.;
 uniform float lineWidth = 10.;
+uniform float inverseSize = .01;
 
 varying vec4 col;
 varying vec3 norm;
@@ -39,8 +41,6 @@ varying vec2 facadeUV;
 varying vec4 position;
 
 uniform mat4 invProjection;
-uniform mat4 projection;
-uniform mat4 modelView;
 
 varying vec2 projImgUV;
 
@@ -68,6 +68,7 @@ void main()
 	
 	//emulating particio's scaling algorithm in the x & z axis
 	vPos = gl_Vertex.xyz;
+
 	vec2 cubeCenter = uv * vec2(blockResolution) - vec2(blockResolution)*.5;
 	vec2 localPos = vPos.xz - cubeCenter;
 
@@ -77,27 +78,24 @@ void main()
 	//reposition our vertex in the x & z planes
 	vPos.xz = localPos + cubeCenter;//back to world space
 	
+
 	//extrude our building vertically
-	float vScl = 2.;
 	if(vPos.y > .1){
-		vPos.y += disp * maxHeight;// - .9 * vScl;
+		vPos.y += disp * maxHeight;
 	}
 	else{
 		vPos.y = 0.;
 	}
-	
-	
-	
-//	ecPosition = modelView * vec4(vPos, 1.);
+
 	ecPosition = gl_ModelViewMatrix * vec4(vPos, 1.);
 	
 	if(int(drawEdges) == 1)
 	{
 		ecPosition.xyz += norm * lineWidth * .5;
+		ecPosition.xyz += normalize(norm) * edgeOffset;
 	}
 	
 	ePos = normalize(ecPosition.xyz/ecPosition.w);
-//	position = projection * ecPosition;
 	position = gl_ProjectionMatrix * ecPosition;
 	gl_Position = position;
 	

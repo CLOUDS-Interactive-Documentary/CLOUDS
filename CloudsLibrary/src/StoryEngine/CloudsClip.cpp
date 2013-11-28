@@ -348,7 +348,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
-		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
+//		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
 	}
 	
 	adjustTranslate.x = adjustmentSettings.getValue("adjustment:translate:x", 0.);
@@ -369,7 +369,9 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	skinTargetColor = ofFloatColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
 								   adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
 								   adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
-
+	
+//	cout << "loaded skin target color " << skinTargetColor << endl;
+	
 	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
     skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
     skinHueWeight = adjustmentSettings.getValue("adjustment:skin:hueWeight", 0.5);
@@ -382,7 +384,8 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
 						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
 	
-    
+//    cout << "loaded face coord color " << faceCoord << endl;
+	
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;

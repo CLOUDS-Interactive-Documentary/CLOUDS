@@ -84,7 +84,8 @@
 	ofVec2f facePosition;
 	ofxDepthImageCompressor compressor;
 	ofxDepthHoleFiller filler;
-    
+	ofRectangle videoRect;
+
 	//0 - 1 clip position
 	float clipPosition;
 	
@@ -115,6 +116,8 @@
 - (IBAction)loadClipForAlignment:(id)sender;
 - (IBAction)exportSelection:(id)sender;
 - (IBAction)cancelExport:(id)sender;
+
+- (void) runSelectionsAtPoint:(ofVec2f)p;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

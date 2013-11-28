@@ -12,6 +12,16 @@
 
 #include "CloudsVisualSystem.h"
 
+#ifdef AVF_PLAYER
+#include "ofxAVFVideoPlayer.h"
+#endif
+// TODO: Deal with case when AVF_PLAYER is not #defined
+
+#include "fft.h"
+#include "fftOctaveAnalyzer.h"
+
+#define BUFFER_SIZE 512
+
 class Hair {
   public:
 	float radius;
@@ -80,6 +90,9 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 	//use render gui for display settings, like changing colors
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+    
+    void selfSetupAudioGui();
+    void guiAudioEvent(ofxUIEventArgs &e);
 
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -145,6 +158,8 @@ protected:
     //
 	
 	ofxUISuperCanvas* customGui;
+
+    ofxUISuperCanvas* audioGui;
 	
 	ofFloatColor color1HSB;
 	ofFloatColor color2HSB;
@@ -167,6 +182,21 @@ protected:
     float       wireSphereScale, solidSphereScale, haloSphereScale;
     float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
 
-	
-
+	float * leftBuffer;
+    float * rightBuffer;
+    int numAmplitudesPerChannel;
+    bool bAudioBuffered;
+    
+    bool * peakToggles;
+    float combinedPeak;
+    float furPeakScalar;
+    
+    float magnitude[2][BUFFER_SIZE];
+    float phase[2][BUFFER_SIZE];
+    float power[2][BUFFER_SIZE];
+    float freq[2][BUFFER_SIZE/2];
+    fft	fft[2];
+    FFTOctaveAnalyzer fftAnalyzer[2];
+    
+    ofxAVFVideoPlayer videoPlayer;
 };

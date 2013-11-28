@@ -10,10 +10,12 @@
 
 BoidTrailType Boid::trailType = BOID_TRAIL_SOLID_LINE;
 float Boid::trailRibbonSize = 10;
+float Boid::trailColorMix = 0.5f;
 bool Boid::bDrawAnnotations = true;
 
 Color Boid::bodyColor;
 Color Boid::trailColor;
+Color Boid::trailColor2;
 Color Boid::tickColor;
 
 float Boid::fMaxSpeed = 9;
