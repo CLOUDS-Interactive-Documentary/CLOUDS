@@ -110,7 +110,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     bAudioBuffered = false;
     
 //    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
-    string filePath = "TestVideo/Fernanda_social_network_hairballs";
+    string filePath = "TestVideo/TerraformRedNoise";
 //    string filePath = "TestVideo/Jer_TestVideo";
     if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
 		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
