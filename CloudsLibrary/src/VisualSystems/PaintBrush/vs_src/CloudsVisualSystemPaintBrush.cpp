@@ -70,7 +70,7 @@ void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
     sysGui->addSlider("color_lerp",0.0, 1.0, &colorLerp);
     sysGui->addSlider("color_random", 0.0, 0.02, &colorRandom);
     
-    sysGui->addSlider("fade_amount", 0.0f, 1.0f, &fadeAmount);
+    sysGui->addSlider("fade_amount", 0.0f, 0.5f, &fadeAmount);
     
     sysGui->addToggle("use color map", &bUseColorMap);
     sysGui->addLabel("color maps");
