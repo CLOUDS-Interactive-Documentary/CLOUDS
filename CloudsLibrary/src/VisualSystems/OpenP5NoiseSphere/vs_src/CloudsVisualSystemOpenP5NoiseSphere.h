@@ -29,6 +29,11 @@ class Hair {
 	float phi;
 	float largo;
 	float theta;
+    
+    static float * levelScaleLookUp;
+    
+    static float minNoiseScale;
+    static float maxNoiseScale;
 	
 	Hair(float radius) : radius(radius){
 		z = ofRandom(-radius, radius);
@@ -37,29 +42,33 @@ class Hair {
 		theta = asin(z/radius);
 	}
 	
-	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha, float hairScale, float level, float levelY) {
+	void draw(ofMesh& mesh, float noisePosition, float hairScale, float scrollY) {
+		float x = radius * cos(theta) * cos(phi);
+		float y = radius * cos(theta) * sin(phi);
+		float z = radius * sin(theta);
+        
+        float noiseScale = ofMap(ABS(y - scrollY), 0, radius, maxNoiseScale, minNoiseScale);
+		
 		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
 		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
 		float thetaff = theta+off;
 		float phff = phi+offb;
-		float x = radius * cos(theta) * cos(phi);
-		float y = radius * cos(theta) * sin(phi);
-		float z = radius * sin(theta);
 		
-		//mouse x & y
+        //mouse x & y
 //		float msx= screenX(x, y, z);
 //		float msy= screenY(x, y, z);
         
-        float levelScale = ofMap(ABS(y - levelY), 0, radius, 1 + level * 2, 1);
+        // add a scalar based on distance from levelScale
+        int i = roundf(y + radius);  // Range: [0, radius * 2]
 		
 		float xo = radius * cos(thetaff) * cos(phff);
 		float yo = radius * cos(thetaff) * sin(phff);
 		float zo = radius * sin(thetaff);
 		
-		float xb = xo * largo * hairScale * levelScale;
-		float yb = yo * largo * hairScale * levelScale;
-		float zb = zo * largo * hairScale * levelScale;
+		float xb = xo * largo * hairScale * levelScaleLookUp[i];
+		float yb = yo * largo * hairScale * levelScaleLookUp[i];
+		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
 
 		mesh.addColor(ofFloatColor::black);
@@ -201,5 +210,13 @@ protected:
     FFTOctaveAnalyzer fftAnalyzer[2];
     
     ofxAVFVideoPlayer videoPlayer;
-    float levelY;
+    
+    float scrollY;
+    float scrollSpeed;
+    float scrollAng;
+    
+    float levelOffset;
+    float levelScale;
+    float levelDecayRate;
+    bool bInvertLevel;
 };
