@@ -37,7 +37,7 @@ class Hair {
 		theta = asin(z/radius);
 	}
 	
-	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha, float hairScale) {
+	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha, float hairScale, float level, float levelY) {
 		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
 		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
@@ -50,14 +50,16 @@ class Hair {
 		//mouse x & y
 //		float msx= screenX(x, y, z);
 //		float msy= screenY(x, y, z);
+        
+        float levelScale = ofMap(ABS(y - levelY), 0, radius, 1 + level * 2, 1);
 		
 		float xo = radius * cos(thetaff) * cos(phff);
 		float yo = radius * cos(thetaff) * sin(phff);
 		float zo = radius * sin(thetaff);
 		
-		float xb = xo * largo * hairScale;
-		float yb = yo * largo * hairScale;
-		float zb = zo * largo * hairScale;
+		float xb = xo * largo * hairScale * levelScale;
+		float yb = yo * largo * hairScale * levelScale;
+		float zb = zo * largo * hairScale * levelScale;
       
 
 		mesh.addColor(ofFloatColor::black);
@@ -199,4 +201,5 @@ protected:
     FFTOctaveAnalyzer fftAnalyzer[2];
     
     ofxAVFVideoPlayer videoPlayer;
+    float levelY;
 };
