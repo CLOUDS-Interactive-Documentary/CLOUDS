@@ -23,11 +23,8 @@ varying vec2 uv;
 varying vec3 vertex;
 varying vec4 position;
 
-//uniform vec3 ambientColor = vec3(.1);
-//uniform vec3 diffuseColor = vec3(.9);
-//uniform vec3 specularColor = vec3(1.);
 uniform float shininess = 32.;
-uniform float edgeAlphaScl = 1.5;
+uniform float radiusAlphaScl = 1.5;
 uniform float facadeTextureAmount = .125;
 
 varying vec2 projImgUV;
@@ -40,13 +37,13 @@ float toGreyScale( vec3 c ){
 
 void main(void)
 {
-	float edgeAlpha = min(1., 1.5 - pow( edgeAlphaScl * length(abs(uv*2.-1.)), 2.) );
-	if(edgeAlpha < .001)	discard;
+	float radiusAlpha = min(1., 1.5 - pow( radiusAlphaScl * length(abs(uv*2.-1.)), 2.) );
+	if(radiusAlpha < .001)	discard;
 	
 	if(int(drawEdges) == 1)
 	{	
 		gl_FragColor = texture2DRect( projectedImage, projImgUV * projectedImageDim );
-		gl_FragColor *= vec4( col.xyz, col.w * edgeAlpha) * gl_Color;
+		gl_FragColor *= vec4( col.xyz, col.w * radiusAlpha) * gl_Color;
 	}
 	else
 	{
@@ -67,10 +64,9 @@ void main(void)
 		specular = gl_LightSource[0].specular.xyz * specVal;
 		
 		//super fake AO
-
 		diffuse *= pow(min(1., 1.1 * vertex.y ), superFakeAOExpo ) * superFakeAOAmount + (1. - superFakeAOAmount);
 		
-		gl_FragColor = vec4( (diffuse + ambient + specular)*col.xyz, col.w * edgeAlpha);// * gl_Color;
+		gl_FragColor = vec4( (diffuse + ambient + specular)*col.xyz, col.w * radiusAlpha);// * gl_Color;
 	}
 }
 

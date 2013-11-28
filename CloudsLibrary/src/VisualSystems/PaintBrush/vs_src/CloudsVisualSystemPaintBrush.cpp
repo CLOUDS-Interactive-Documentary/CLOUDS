@@ -16,10 +16,16 @@ string CloudsVisualSystemPaintBrush::getSystemName()
 void CloudsVisualSystemPaintBrush::selfSetup()
 {
 	bIs2D = true;
-    canvas.allocate(ofGetScreenWidth(), ofGetScreenHeight());
-    canvas.begin();
+        
+    canvasSrc.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasSrc.begin();
     ofClear(0,0);
-    canvas.end();
+    canvasSrc.end();
+
+    canvasDst.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasDst.begin();
+    ofClear(0,0);
+    canvasDst.end();
     
     bUseColorMap = false;
     
@@ -41,6 +47,8 @@ void CloudsVisualSystemPaintBrush::selfSetup()
 	}
     mapX = mapY = 0;
     bMapForward = true;
+    
+    fadeAmount = 1.0f;
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
@@ -61,6 +69,8 @@ void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
     sysGui->addSlider("color_hue", 0.0, 1.0, &colorHue);
     sysGui->addSlider("color_lerp",0.0, 1.0, &colorLerp);
     sysGui->addSlider("color_random", 0.0, 0.02, &colorRandom);
+    
+    sysGui->addSlider("fade_amount", 0.0f, 1.0f, &fadeAmount);
     
     sysGui->addToggle("use color map", &bUseColorMap);
     sysGui->addLabel("color maps");
@@ -147,7 +157,10 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     
     brush.addParticles(particles, particlesThreshold, particlesAlpha);
     
-    canvas.begin();
+    canvasDst.begin();
+    
+    ofSetColor(255, (1.0f - fadeAmount) * 255);
+    canvasSrc.draw(0, 0);
     
     for(int i = particles.size()-1; i >= 0 ; i--){
         
@@ -163,9 +176,11 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         
     }
     
-    brush.draw();
+    if (ofGetMousePressed()) {
+        brush.draw();
+    }
     
-    canvas.end();
+    canvasDst.end();
     
     while(particles.size()>500){
         particles.erase(particles.begin());
@@ -181,7 +196,8 @@ void CloudsVisualSystemPaintBrush::selfDrawBackground()
     glDisable(GL_DEPTH_TEST);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    canvas.draw(0, 0);
+    canvasDst.draw(0, 0);
+    swap(canvasSrc, canvasDst);
     
     if (bDebug){
         ofSetColor(255);
@@ -234,10 +250,15 @@ void CloudsVisualSystemPaintBrush::selfKeyReleased(ofKeyEventArgs & args)
 {
     if (args.key == ' '){
         brush.clear();
-        canvas.begin();
-        ofClear(0,0);
-        canvas.end();
         particles.clear();
+        
+        canvasSrc.begin();
+        ofClear(0,0);
+        canvasSrc.end();
+        
+        canvasDst.begin();
+        ofClear(0,0);
+        canvasDst.end();
     }
 }
 
