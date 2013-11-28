@@ -6,9 +6,6 @@
 
 
 #include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
@@ -110,14 +107,18 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     bAudioBuffered = false;
     
 //    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
-    string filePath = "TestVideo/Fernanda_social_network_hairballs";
+//    string filePath = "TestVideo/Fernanda_social_network_hairballs";
 //    string filePath = "TestVideo/Jer_TestVideo";
-    if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
-								   getVisualSystemDataPath() + filePath + ".xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-	}
+//    if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
+//		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
+//								   getVisualSystemDataPath() + filePath + ".xml" );
+//		
+//		getRGBDVideoPlayer().swapAndPlay();
+//	}
+
+    videoPlayer.loadMovie(getVisualSystemDataPath() + "TestVideo/Casey_Software_is_what_i_love_the_most.mov");
+    videoPlayer.play();
+    videoPlayer.setLoopState(OF_LOOP_NORMAL);
     
     // set up fft analyzer
     for (int i = 0; i < 2; i++) {
@@ -177,10 +178,11 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 {
-    if (getRGBDVideoPlayer().getPlayer().isAudioLoaded()) {
+    videoPlayer.update();
+    if (videoPlayer.isAudioLoaded()) {
         if (bAudioBuffered == false) {
-            float * interleavedBuffer = getRGBDVideoPlayer().getPlayer().getAllAmplitudes();
-            numAmplitudesPerChannel = getRGBDVideoPlayer().getPlayer().getNumAmplitudes() / 2;
+            float * interleavedBuffer = videoPlayer.getAllAmplitudes();
+            numAmplitudesPerChannel = videoPlayer.getNumAmplitudes() / 2;
             leftBuffer  = new float[numAmplitudesPerChannel];
             rightBuffer = new float[numAmplitudesPerChannel];
             
@@ -195,7 +197,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         // calculate fft
         float avgPower = 0.0f;
         
-        int idx = (int)(getRGBDVideoPlayer().getPlayer().getPosition() * (numAmplitudesPerChannel - 1));
+        int idx = (int)(videoPlayer.getPosition() * (numAmplitudesPerChannel - 1));
         fft[0].powerSpectrum(idx, BUFFER_SIZE/2, leftBuffer,  BUFFER_SIZE, &magnitude[0][0], &phase[0][0], &power[0][0], &avgPower);
         fft[1].powerSpectrum(idx, BUFFER_SIZE/2, rightBuffer, BUFFER_SIZE, &magnitude[1][0], &phase[1][0], &power[1][0], &avgPower);
         for (int i = 0; i < BUFFER_SIZE/2; i++) {
