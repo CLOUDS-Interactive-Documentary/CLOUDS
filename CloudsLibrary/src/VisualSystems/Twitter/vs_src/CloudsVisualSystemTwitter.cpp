@@ -13,6 +13,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 {
 	listGui = new ofxUISuperCanvas("SEARCH TERM LIST", gui);
     loadJSONData();
+    createPajekNetwork();
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
@@ -28,81 +29,154 @@ void CloudsVisualSystemTwitter::loadJSONData(){
         
         for(int i = 0; i< files.size(); i++){
             string filePath =getVisualSystemDataPath()+"tweets/" +files[i].getFileName();
-//            cout<<filePath<<endl;
+
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
-//                cout << result.getRawString() << endl;
                 
                 if(result.isMember("errors")) {
                     ofDrawBitmapString(result.getRawString(), 10, 14);
                 }
-                else if(result.isArray()) {
-                    int n = 0;
-                    ofxJSONElement trends = result[n]["trends"];
-                    for(int i = 0; i < trends.size(); i++) {
-                        std::string message = trends[i]["query"].asString();
-                        ofDrawBitmapString(message, 10, 40*i+40);
-                    }
-                }
                 else if(result.isMember("Tweets")){
-                    
+
                     Tweeter cur;
                     vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
 
-                    cur.name = result["name"].asString();
+                     vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
+                    cur.name = "@" + names[0];
+                    cur.ID = i;
                     cout<<cur.name<<" has "<<tweets.size()<<" tweets"<<endl;
-                    for(int i =0; i<tweets.size(); i ++){
-                        
+                    
+                    for(int j =0; j<tweets.size(); j ++){
                         Tweet t;
-
-                        t.tweet = tweets[i]["Tweet"].asString();
-
-                        cout<<t.tweet<<endl;
-                        if(tweets[i]["Hashtag"].isValidIndex(0)){
-                            ofxJSONElement hashTags = tweets[i]["Hashtag"];
+                        t.tweet = tweets[j]["Tweet"].asString();
+                        
+                        if(tweets[j]["Hashtag"].isValidIndex(0)){
+                            ofxJSONElement hashTags = tweets[j]["Hashtag"];
                             
-                            for(int j=0; j<hashTags.size(); j++){
-                                t.hashtags.push_back(hashTags[j].asString());
+                            for(int k=0; k<hashTags.size(); k++){
+                                t.hashtags.push_back(hashTags[k ].asString());
                             }
-                            
-                            
                         }
                         
-                        if(tweets[i]["Users"].isValidIndex(0)){
-                            ofxJSONElement users = tweets[i]["Users"];
+                        if(tweets[j]["Users"].isValidIndex(0)){
+                            ofxJSONElement users = tweets[j]["Users"];
                             
                             for(int k=0; k<users.size(); k++){
-                                t.mentionedUsers.push_back(users[k].asString());
-                            }
-                            
-                            
-                        }
-                        
-                        if(tweets[i].isMember("Date")){
-                            ofxJSONElement date = tweets[i]["Date"];
-                            t.tweetDate.day = date[0].asFloat();
-                            t.tweetDate.month =date[1].asFloat();
-                            t.tweetDate.year =date[2].asFloat();
-                            
-                            cout<<t.tweetDate.day<< " - "<<t.tweetDate.month <<" - "<<t.tweetDate.year<<endl;
+                                
+                                if( !ofContains(cur.userLinks, users[k].asString())){
+                                    
+                                    cur.userLinks.push_back(users[k].asString());
 
+                                }
+                                
+                            }
+                        }
+                        if(tweets[j].isMember("Date")){
+                            ofxJSONElement date = tweets[j]["Date"];
+                            t.tweetDate.day = date["Day"].asInt()   ;
+                            t.tweetDate.month =date["Month"].asInt();
+                            t.tweetDate.year =date["Year"].asInt();
                         }
                         
                         userTweets.push_back(t);
+                        
+                        
 
                     }
-                        cur.tweets= userTweets;
-                        tweeters.push_back(cur);
+                    cur.tweets= userTweets;
+                    cout<<cur.name<<endl;
+                    tweeters.push_back(cur);
+                } else {
+                    cout  << "Failed to parse JSON" << endl;
                 }
-                
-                
-            } else {
-                cout  << "Failed to parse JSON" << endl;
             }
+            
         }
+    }
+    addUsersFromMentions();
+}
+
+
+void CloudsVisualSystemTwitter::addUsersFromMentions(){
+    
+    vector<string> names;
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        names.push_back(tweeters[i].name);
+    }
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        for(int j=0; j<tweeters[i].userLinks.size(); j++){
+            
+            if(! ofContains(names, tweeters[i].userLinks[j])){
+                //Tweeter t = Tweeter(tweeters[i].userLinks[j], tweeters.size());
+                //cout<<"adding "<<t.name<<"  to the list "<<endl;
+                //tweeters.push_back(t);
+                numberOfMentions[tweeters[i].userLinks[j]] ++;
+                
+            }
+        
+        }
+       
+    }
+    
+    map<string,int>::iterator it;
+    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+        cout<<it->first <<" :  "<<it->second<<endl;
+        
+        if(it->second > 2){
+            Tweeter t = Tweeter(it->first, tweeters.size());
+            cout<<"adding "<<t.name<<"  to the list as theuy have been mentioned more than twice "<<endl;
+            tweeters.push_back(t);
+        }
+    }
+//    cout<<numberOfMentions
+    
+}
+
+
+void CloudsVisualSystemTwitter::createPajekNetwork(){
+    stringstream ss;
+    cout<<"Creating paejk file"<<endl;
+    ss<<"*Vertices "<<tweeters.size()<<endl;
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        ss<<tweeters[i].ID<<"  \""<<tweeters[i].name<<"\""<<endl;
+
         
     }
+    
+    ss<<"*EdgesList "<<tweeters.size()<<endl;
+    for(int j =0; j<tweeters.size(); j++){
+        
+        string edges;
+        if(tweeters[j].userLinks.size() > 0){
+            for(int k=0; k< tweeters[j].userLinks.size(); k++){
+
+                if(getUserIdByName(tweeters[j].userLinks[k]) != -1){
+                    cout<<"found  link between : "<<tweeters[j].userLinks[k]<<","<<tweeters[j].name<<endl;
+                    edges += ofToString(getUserIdByName(tweeters[j].userLinks[k])) +  " ";
+                }
+            }
+            
+            ss<<tweeters[j].ID<<" "<<edges<<endl;
+        }
+
+    }
+    ofBuffer b = ofBuffer(ss);
+    ofBufferToFile(getVisualSystemDataPath() + "/twitter.net",b);
+}
+
+int CloudsVisualSystemTwitter:: getUserIdByName(string name){
+    
+    for (int i=0; i<tweeters.size(); i++) {
+        if(tweeters[i].name == name){
+            return tweeters[i].ID;
+        }
+    }
+    
+    return -1;
 }
 
 //--------------------------------------------------------------
@@ -205,12 +279,7 @@ void CloudsVisualSystemTwitter::selfExit()
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	for(int i=0; i<tweeters.size(); i++){
-        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
         
-        for(int j=0; j<tweeters[i].tweets.size(); j++){
-            
-            cout<<tweeters[i].tweets[j].tweet<<" , "<<tweeters[i].tweets[j].hashtags.size()<<" , "<<tweeters[i].tweets[j].mentionedUsers.size()<<endl;
-        }
         
         
     }
