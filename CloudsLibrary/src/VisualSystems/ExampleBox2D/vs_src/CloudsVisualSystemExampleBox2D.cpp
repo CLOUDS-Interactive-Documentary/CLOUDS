@@ -64,7 +64,10 @@ void CloudsVisualSystemExampleBox2D::selfSetupGui(){
     customGui->addMinimalSlider("B3", 0.0, 255, &rectHSB.b, length, dim)->setShowValue(true);
     customGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
-    
+    customGui->addSpacer("SOUNDS");
+    customGui->addSlider("MAX FREQ", 0, 300, &noteMax);
+    customGui->addSlider("MIN FREQ", 0, 300, &noteMin);
+
     ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemExampleBox2D::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -109,6 +112,18 @@ void CloudsVisualSystemExampleBox2D::selfGuiEvent(ofxUIEventArgs &e)
             rects.clear();
         }
     }
+    else if (e.widget->getName() == "MAX FREQ") {
+        for (int i=0; i<WAVE_GEN_NUM; i++)
+        {
+            noteControl[i].max(noteMax);
+        }
+    }
+    else if (e.widget->getName() == "MIN FREQ") {
+        for (int i=0; i<WAVE_GEN_NUM; i++)
+        {
+            noteControl[i].min(noteMin);
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -140,6 +155,9 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     box2d.setGravity(0, 7);
     box2d.createBounds();
     box2d.setFPS(60);
+	ofAddListener(box2d.contactStartEvents,
+                  this,
+                  &CloudsVisualSystemExampleBox2D::contactStart);
     
     prevScreenSize = ofVec2f(ofGetWidth(), ofGetHeight());
     
@@ -164,9 +182,38 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     rectSizeDev = 10;
     rectSizeMean = 20;
     
+    triggerIndex = 0;
+    
     circleHSB = ofFloatColor(100, 100, 100);
     circleLineHSB = ofFloatColor(100, 100, 100);
     rectHSB = ofFloatColor(100, 100, 100);
+    
+    noteMin = 0;
+    noteMax = 50;
+    
+    // setup sound synth
+    
+    vector<float> scale;
+    scale.push_back(0);
+    scale.push_back(4);
+    scale.push_back(7);
+    scale.push_back(11);
+    
+    for (int i=0; i<WAVE_GEN_NUM; i++)
+    {
+        noteControl[i] = ControlRandom().min(noteMin).max(noteMax).trigger(collisionTrigger[i]);
+        ControlSnapToScale scaleSnapper = ControlSnapToScale().setScale(scale);
+        scaleSnapper.input(20 + noteControl[i]);
+
+        Generator collisionGen = SineWave().freq(ControlMidiToFreq().input(scaleSnapper)) * 0.05 * ADSR(0.01, 0.1, 0, 0).trigger(collisionTrigger[i]);
+        
+        output = output + collisionGen;
+    }
+    
+    synth.setOutputGen(output);
+    
+    dummyApp = new DummyApp(&synth);
+    ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -267,10 +314,11 @@ void CloudsVisualSystemExampleBox2D::selfDrawBackground()
     // draw circles
     for (int i=0; i<circles.size(); i++)
     {
-        ofSetColor(cColor);
         ofPushMatrix();
         ofTranslate(circles[i].getPosition());
         ofRotate(circles[i].getRotation());
+        ofSetLineWidth(2);
+        ofSetColor(cColor);
         ofEllipse(0, 0, circles[i].getRadius()*2, circles[i].getRadius()*2);
         ofSetColor(clColor);
         ofLine(0, 0, circles[i].getRadius(), 0);
@@ -392,7 +440,6 @@ void CloudsVisualSystemExampleBox2D::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemExampleBox2D::selfMousePressed(ofMouseEventArgs& data){
-	
 }
 
 void CloudsVisualSystemExampleBox2D::selfMouseReleased(ofMouseEventArgs& data){
@@ -540,6 +587,25 @@ void CloudsVisualSystemExampleBox2D::reinitBounds()
     box2d.createBounds();
 }
 
+
+void CloudsVisualSystemExampleBox2D::contactStart(ofxBox2dContactArgs &e)
+{
+    b2Vec2 aVel = e.a->GetBody()->GetLinearVelocity();
+    b2Vec2 bVel = e.b->GetBody()->GetLinearVelocity();
+    
+    if (abs(aVel.x - bVel.x) < 4 ||
+        abs(aVel.y - bVel.y) < 4) {
+        return;
+    }
+    
+    if (aVel.Length() > 5 ||
+        bVel.Length() > 5)
+    {
+        collisionTrigger[triggerIndex++].trigger();
+        triggerIndex %= WAVE_GEN_NUM;
+    }
+}
+
 float CloudsVisualSystemExampleBox2D::getGaussian() {
     
     float x1 = ofRandomuf();
@@ -547,4 +613,14 @@ float CloudsVisualSystemExampleBox2D::getGaussian() {
     float x2 = ofRandomuf();
     
     return (sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2)) / 2;
+}
+
+DummyApp::DummyApp(ofxTonicSynth *s)
+{
+    synth = s;
+}
+
+void DummyApp::audioRequested(float *output, int bufferSize, int nChannels)
+{
+    synth->fillBufferOfFloats(output, bufferSize, nChannels);
 }
