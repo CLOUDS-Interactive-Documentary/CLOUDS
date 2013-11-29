@@ -17,7 +17,7 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
     SCHEDULEBANG(outskip+musicdur+7.0);
 }
 
-void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm, string samplebank)
+void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm)
 {
     
     float t, beatoffset;
@@ -32,13 +32,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //flush_sched(); // kill previous music
     
     
-    cout << "===============" << endl;
-    cout << "MAKING MUSIC!!!" << endl;
-    cout << "   start: " << outskip << " " << "seconds" << endl;
-    cout << "   duration: " << musicdur << " " << "seconds" << endl;
-    cout << "   harmony: " << mh << ", rhythm: " << mr << endl;
-    cout << "   orchestration: " << mo << endl;
-    cout << "===============" << endl;
+    cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
     
     //
     // =========================
@@ -389,7 +383,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==samplebank)
+            if(looperSamples[i].bank==arg_a)
             {
                 cout << "Sample: " << looperSamples[i].handle << endl;
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
@@ -411,7 +405,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==samplebank)
+            if(looperSamples[i].bank==arg_a)
             {
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {
