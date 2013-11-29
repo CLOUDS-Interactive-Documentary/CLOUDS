@@ -10,6 +10,7 @@
 #define testRTcmix3_lukeFuncs_h
 
 #include "ofMain.h"
+#include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
 #define DEBUG false
@@ -43,11 +44,16 @@ struct lukePitchArray {
 };
 
 struct lukePreset {
+    string name;
     vector<string> instruments;
+    vector<string> arg_a;
+    vector<string> arg_b;
     int harmony;
     int rhythm;
     float tempo;
     string bank;
+    vector<int> dichomin;
+    vector<int> dichomax;
 };
 
 struct lukeSample {
@@ -67,6 +73,7 @@ int scale(int p, int o);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
 void loadpresets(string f, vector<lukePreset>& p);
+void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions
 void RTcmixParseScoreFile(string f);
