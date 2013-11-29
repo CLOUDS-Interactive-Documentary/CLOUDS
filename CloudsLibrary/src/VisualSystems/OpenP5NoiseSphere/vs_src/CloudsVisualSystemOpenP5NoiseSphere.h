@@ -48,7 +48,7 @@ class Hair {
 		float z = radius * sin(theta);
         
         float noiseScale = ofMap(ABS(y - scrollY), 0, radius, maxNoiseScale, minNoiseScale);
-		
+        
 		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
 		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
@@ -219,4 +219,8 @@ protected:
     float levelScale;
     float levelDecayRate;
     bool bInvertLevel;
+    
+    bool bLevelToNoise;
+    float levelToNoiseScale;
+    float levelToNoiseRatio;
 };

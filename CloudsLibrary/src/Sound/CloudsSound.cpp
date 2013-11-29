@@ -47,9 +47,8 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
 		targetAmp = .7; // wonder what this is?
 		
-        MASTERAMP = 0.7;
+        MASTERAMP = 1;
         MASTERTEMPO = 120;
-        mbank = "luke";
         AUTORUN = 0;
         DOCLEAR = true;
         RTCMIX_PRINT = false;
@@ -105,14 +104,21 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 
     
     int rigged = 0; // set to '1' for rigged orchestration (set below)
-    //float orchstart = 0;
-    //float orchdur = 0;
-    //bool isorch = false;
     float clipdur = 0;
     float totalduration = args.act->getTimeline().getDurationInSeconds();
+    int mharmony, mrhythm;
+    
+    // launch music FX chain
     startMusicFX(0, totalduration);
+    
+    // iterate through clips
     int numclips = args.act->getAllClips().size();
     
+    cout << "===============" << endl;
+    cout << "MAKING MUSIC!!!" << endl;
+    cout << "===============" << endl;
+    
+
     // STUPID MAPPING TEST
     for(int i = 0;i<numclips;i++)
     {
@@ -137,62 +143,76 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             cout << "   " << foo[j].left << " versus " << foo[j].right << " is " << foo[j].balance << endl;
             dichos.push_back(foo[j].balance);
         }
-
-        morch.clear();
-        // #art versus #tech
-        if(dichos[0]>=0) morch.push_back("slowwaves"); else morch.push_back("kissmyarpfast");
-        // #emotional versus #logical
-        if(dichos[1]>=0) morch.push_back("helmholtz"); else morch.push_back("slowmeshbeats");
+        
+        
+        
         // #breakthrough versus #obstacle
         mharmony = dichos[2]+5;
         // #inspiring versus #discouraging
         mrhythm = dichos[3]+5;
         // #fun versus #serious
         MASTERTEMPO = ofMap(dichos[4], -5, 5, 135, 90);
-        // #sincere versus #ironic
-        if(dichos[5]<-2) morch.push_back("kissmyarp");
-        // #mindblowing versus #mundane
-        if(dichos[6]<0) morch.push_back("modalbeats");
-        if(dichos[6]<-2) morch.push_back("vermontbeatz");
-        if(dichos[6]>3) morch.push_back("modalbeats");
-        // #rational versus #surreal
-        if(dichos[7]>2) morch.push_back("slowwaveshi");
-        
-        mbank = "luke";
-        
-        startMusic(starttime, morch, mharmony, mrhythm, clipdur, MASTERTEMPO, mbank);
-    
-    }
-    
 
-    
-    /*
-    float musicdur = args.act->getTimeline().getDurationInSeconds();
-    int preset = ofRandom(0, presets.size());
+        // #art versus #tech
+        if(dichos[0]>=0) {
+            startMusic(starttime, "slowwaves", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        else
+        {
+            startMusic(starttime, "filternoise", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        // #emotional versus #logical
+        if(dichos[1]>=0)
+        {
+            startMusic(starttime, "helmholtz", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        else
+        {
+            startMusic(starttime, "slowmeshbeats", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+         
+        // #sincere versus #ironic
+        if(dichos[5]<-2)
+        {
+            startMusic(starttime, "lowwavepulse", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        else
+        {
+            
+        }
+        // #mindblowing versus #mundane
+        if(dichos[6]<0)
+        {
+            startMusic(starttime, "modalbeats", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        else if(dichos[6]<-2)
+        {
+            startMusic(starttime, "vermontbeatz", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        else if(dichos[6]>3)
+        {
+            startMusic(starttime, "waveguidebeatz", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        // #rational versus #surreal
+        if(dichos[7]>2)
+        {
+            startMusic(starttime, "slowwaveshi", "bucket", "NULL", mharmony, mrhythm, clipdur, MASTERTEMPO);
+        }
+        
+   
+    }
     
     if(rigged)
     {
-        morch.clear();
-        morch.push_back("reichomatic");
-        mharmony = 0;
-        mrhythm = 0;
-        MASTERTEMPO = 120;
-        mbank = "luke";
-    }
-    else
-    {
-        morch = presets[preset].instruments;
-        mharmony = presets[preset].harmony;
-        mrhythm = presets[preset].rhythm;
-        MASTERTEMPO = presets[preset].tempo;
-        mbank = presets[preset].bank;
+        flush_sched();
+        startMusic(0, "reichomatic", "NULL", "NULL", 0, 0, totalduration, MASTERTEMPO);
     }
     
+    cout << "====================" << endl;
+    cout << "DONE MAKING MUSIC!!!" << endl;
+    cout << "====================" << endl;
+
     
-    startMusic(0, morch, mharmony, mrhythm, musicdur, MASTERTEMPO, mbank);
-    */
-
-
 }
 
 void CloudsSound::visualSystemBegan(CloudsVisualSystemEventArgs& args){

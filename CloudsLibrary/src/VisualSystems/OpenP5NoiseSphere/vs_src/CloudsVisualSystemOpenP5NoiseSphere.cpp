@@ -73,6 +73,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
     audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
+    audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
 
     audioGui->addSpacer();
 	audioGui->addSlider("SCROLL SPEED", 0.0f, 0.1f, &scrollSpeed);
@@ -82,6 +83,11 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->addSlider("LEVEL SCALE", 0, 10, &levelScale);
     audioGui->addSlider("LEVEL DECAY RATE", 0, 1, &levelDecayRate);
     audioGui->addToggle("INVERT LEVEL", &bInvertLevel);
+    
+    audioGui->addSpacer();
+    audioGui->addToggle("LEVEL TO NOISE", &bLevelToNoise);
+    audioGui->addSlider("LEVEL TO NOISE SCALE", 0, 100, &levelToNoiseScale);
+    audioGui->addSlider("LEVEL TO NOISE RATIO", 0, 1, &levelToNoiseRatio);
     
 	ofAddListener(audioGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent);
 	guis.push_back(audioGui);
@@ -171,6 +177,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     levelScale = 2;
     levelDecayRate = 0.99f;
     bInvertLevel = false;
+    
+    bLevelToNoise = false;
+    levelToNoiseScale = 50;
+    levelToNoiseRatio = 0.5f;
 	
     wireSphereScale = 0.9333;
     solidSphereScale = 0.8666;
@@ -258,6 +268,13 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         
         // calculate hairball level scales based on amplitude and scrolling y-value
         float currLevel = ABS(videoPlayer.getAmplitude());
+        ((ofxUISlider *)audioGui->getWidget("LEVEL"))->setValue(currLevel);
+        
+        if (bLevelToNoise) {
+            float newScale = ofLerp(Hair::maxNoiseScale, currLevel * levelToNoiseScale, levelToNoiseRatio);
+            Hair::maxNoiseScale = Hair::minNoiseScale = newScale;
+        }
+        
         for (int i = 0; i < radius * 2; i++) {
             float currY = i - radius;  // Range: [-radius, radius]
             float newLevelScale;
