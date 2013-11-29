@@ -47,7 +47,7 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         
 		targetAmp = 1.0; // wonder what this is?
 		
-        MASTERAMP = 0.7;
+        MASTERAMP = 1;
         MASTERTEMPO = 120;
         mbank = "luke";
         AUTORUN = 0;
@@ -141,7 +141,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 
         morch.clear();
         // #art versus #tech
-        if(dichos[0]>=0) morch.push_back("slowwaves"); else morch.push_back("kissmyarpfast");
+        if(dichos[0]>=0) morch.push_back("slowwaves"); else morch.push_back("filternoise");
         // #emotional versus #logical
         if(dichos[1]>=0) morch.push_back("helmholtz"); else morch.push_back("slowmeshbeats");
         // #breakthrough versus #obstacle
@@ -151,11 +151,11 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
         // #fun versus #serious
         MASTERTEMPO = ofMap(dichos[4], -5, 5, 135, 90);
         // #sincere versus #ironic
-        if(dichos[5]<-2) morch.push_back("kissmyarp");
+        if(dichos[5]<-2) morch.push_back("lowwavepulse");
         // #mindblowing versus #mundane
         if(dichos[6]<0) morch.push_back("modalbeats");
         if(dichos[6]<-2) morch.push_back("vermontbeatz");
-        if(dichos[6]>3) morch.push_back("modalbeats");
+        if(dichos[6]>3) morch.push_back("waveguidebeats");
         // #rational versus #surreal
         if(dichos[7]>2) morch.push_back("slowwaveshi");
         
