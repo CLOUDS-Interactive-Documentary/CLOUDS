@@ -76,7 +76,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
 
     audioGui->addSpacer();
-	audioGui->addSlider("SCROLL SPEED", 0.0f, 0.1f, &scrollSpeed);
+	audioGui->addSlider("SCROLL SPEED", 0.0f, 2.5f, &scrollSpeed);
     
     audioGui->addSpacer();
 	audioGui->addSlider("LEVEL OFFSET", 0, 1, &levelOffset);
@@ -136,7 +136,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 //		getRGBDVideoPlayer().swapAndPlay();
 //	}
 
-    videoPlayer.loadMovie(getVisualSystemDataPath() + "TestVideo/Casey_Software_is_what_i_love_the_most.mov");
+    videoPlayer.loadMovie(getVisualSystemDataPath() + "TestVideo/RedNoise.mov");
     videoPlayer.play();
     videoPlayer.setLoopState(OF_LOOP_NORMAL);
     
