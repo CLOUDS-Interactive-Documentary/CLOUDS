@@ -18,7 +18,7 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	ofColor color;
+//	ofColor color;
 	
     string startingQuestion;
 	
@@ -98,11 +98,17 @@ class CloudsClip {
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
 	ofVec2f faceCoord;
+	    
+    
+    //SURYA TODO: Replace contour parameters colour parameters
+    //Skin Parameters
+    ofFloatColor skinTargetColor;
 	
-	//contour parameters
-	ofColor contourTargetColor;
-	float contourTargetThreshold;
-	float contourMinBlobSize;
+    float skinLowerThreshold;
+    float skinUpperThreshold;
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
 	
 	bool adjustmentLoaded;
     

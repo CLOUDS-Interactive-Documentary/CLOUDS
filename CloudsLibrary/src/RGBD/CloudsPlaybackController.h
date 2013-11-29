@@ -127,7 +127,12 @@ class CloudsPlaybackController {
 	void setStoryEngine(CloudsStoryEngine& storyEngine);
     void setRun(CloudsRun& run);
 	
+	void startScratchTracks();
 	void showIntro(vector<CloudsClip>& possibleStartQuestions);
+
+	//overrides whatever the story engine spits out so that we can force a certain sequence
+	//intended for distributing controlled demos
+//	void setMandatoryAct(CloudsAct* act);
 	
 	void playAct(CloudsAct* act);
 	CloudsVisualSystemClusterMap& getClusterMap();
@@ -184,15 +189,21 @@ class CloudsPlaybackController {
 	
 	string nextPresetName;
 	
+	void playScratchTrack(string track);
 	vector<string> scratchTracks;
 	ofSoundPlayer scratchPlayer;
+	
 	int currentScratch;
 	float currentVolume;
+	float scratchVolumeAttenuate;
 	float targetScratchVolume;
 	void setUseScratch(bool useScratch);
 	ofPtr<CloudsVisualSystem> currentVisualSystem;
 	CloudsVisualSystemPreset currentVisualSystemPreset;
 //    void setRandomQuestion(CloudsClip& clip);
+	
+	bool revertToIntroAfter1Act;//demo hack
+	bool actFinished;
 	
 	vector<CloudsClip> fakeQuestions;
   protected:
@@ -202,14 +213,15 @@ class CloudsPlaybackController {
 	CloudsStoryEngine* storyEngine;
 	CloudsClip currentClip;
 	CloudsAct* currentAct;
-//    CloudsRun* currentRun;
 	
 	//RGBD STUFF
 	ofPtr<CloudsVisualSystemRGBD> rgbdVisualSystem;
-	CloudsIntroSequence introSequence;
+	//CloudsIntroSequence introSequence;
+	ofPtr<CloudsIntroSequence> introSequence;
 	CloudsVisualSystemClusterMap clusterMapVisualSystem;
 	
 	float cursorMovedTime;
+	bool showingCursor;
 	
 	string combinedMoviesFolder;
 	string currentTopic;
@@ -223,9 +235,12 @@ class CloudsPlaybackController {
 
 	//VISUAL SYSTEMS
 	//
+	void showIntro();
 	bool showingIntro;
 	bool showingVisualSystem;
 	bool showingClusterMap;
+	bool fadingIntro;
+	void clearAct(bool destroy = true);
 	
 	//if there is a system playing this wil be non-null
 	ofPtr<CloudsVisualSystem> nextSystem;

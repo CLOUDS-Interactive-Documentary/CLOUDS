@@ -1,0 +1,157 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>383.000000000</XPosition>
+    <YPosition>202.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>N BOIDS</Name>
+    <Value>151.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRAIL VERTEX COUNT</Name>
+    <Value>162.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRAIL DURATION</Name>
+    <Value>6.630541801</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INITIAL POSITION RADIUS</Name>
+    <Value>26.354679108</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FLOCK</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PATH</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OBSTACLE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>PURSUIT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>NO TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DASHED LINE TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>SOLID LINE TRAIL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RIBBON TRAIL</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RIBBON SIZE</Name>
+    <Value>3.433497429</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW ANNOTATIONS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>0.147783250</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX FORCE</Name>
+    <Value>27.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX SPEED</Name>
+    <Value>19.310344696</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXIMUM RADIUS</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BODY_R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BODY_G</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BODY_B</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_G</Name>
+    <Value>0.099476121</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TRAIL_B</Name>
+    <Value>0.717277288</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TICK_R</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TICK_G</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TICK_B</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COHESION WEIGHT</Name>
+    <Value>15.123152733</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SEPARATION WEIGHT</Name>
+    <Value>11.280788422</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ALIGNMENT WEIGHT</Name>
+    <Value>12.906404495</Value>
+</Widget>

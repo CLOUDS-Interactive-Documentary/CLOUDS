@@ -71,7 +71,7 @@ void testApp::update(){
 	player.getSharedVideoPlayer().maxVolume = sound.maxSpeakerVolume;
 	
 	sound.update();
-	ofShowCursor();
+	//ofShowCursor();
 }
 
 //--------------------------------------------------------------

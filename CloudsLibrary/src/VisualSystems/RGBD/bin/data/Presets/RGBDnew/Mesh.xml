@@ -1,0 +1,132 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>662.000061035</XPosition>
+    <YPosition>-3.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW CLOUD</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CLOUD SCALE</Name>
+    <Value>0.261822671</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CLOUD OFFSET</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW MESH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MESH ALPHA</Name>
+    <Value>0.463053882</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SKIN MULTIPLIER</Name>
+    <Value>0.290640086</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EYE MULTIPLIER</Name>
+    <Value>0.325123161</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW POINTS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SIZE MAX</Name>
+    <Value>0.251230627</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SIZE MIN</Name>
+    <Value>0.088669047</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>P GRID ALPHA</Name>
+    <Value>0.428571433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>P GRID VERT SPACE</Name>
+    <Value>6.320197105</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>P GRID HORI SPACE</Name>
+    <Value>3.527093649</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NUM RANDOM POINTS</Name>
+    <Value>51723.988281250</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RANDOM ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW LINES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VERT LINE SPACE</Name>
+    <Value>4.012315273</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VERT LINE ALPHA</Name>
+    <Value>0.475000024</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>VERT LINE THICKNESS</Name>
+    <Value>1.004926085</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HORIZ LINE SPACE</Name>
+    <Value>4.522167683</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HORIZ LINE ALPHA</Name>
+    <Value>0.449999988</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HORIZ LINE THICKNESS</Name>
+    <Value>0.295566499</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CLOUD FLOW</Name>
+    <Value>0.418719292</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIGHT_OFFSET_Y</Name>
+    <Value>1.477836609</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIGHT_OFFSET_Z</Name>
+    <Value>14.285715103</Value>
+</Widget>

@@ -3,6 +3,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
 
+//--------------------------------------------------------------
+map<string, int> CloudsVisualSystemRGBD::appearances;
 
 //--------------------------------------------------------------
 string CloudsVisualSystemRGBD::getSystemName(){
@@ -12,6 +14,7 @@ string CloudsVisualSystemRGBD::getSystemName(){
 //--------------------------------------------------------------
 void CloudsVisualSystemRGBD::selfSetup(){
 	currentFlowPosition = 0;
+	visualSystemFadeValue = 1.0;
 	
 	drawMesh = false;
 	
@@ -32,7 +35,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generateScanlines();
 	generateTriangulation();
 	
-	particulateController.setParticleCount(1e5);
+	particulateController.setParticleCount(20000);
 	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
 	
@@ -61,6 +64,8 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	transitionCam.setup();
 	
+    captionFontSize = 12;
+    rebuildCaptionFont();
 
 
 //	enum RGBDTransitionType
@@ -71,6 +76,15 @@ void CloudsVisualSystemRGBD::selfSetup(){
 //	RGBD = 3
 //  };
 
+}
+
+void CloudsVisualSystemRGBD::rebuildCaptionFont(){
+    if(bUseOculusRift){
+        captionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+    }
+    else{
+        captionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", captionFontSize);
+    }
 }
 
 void CloudsVisualSystemRGBD::setTransitionNodes( RGBDTransitionType transitionType ){
@@ -223,8 +237,6 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	questionGui->addSlider("Hover Color S", 0, 1., &questionHoverHSB.g);
 	questionGui->addSlider("Hover Color B", 0, 1., &questionHoverHSB.b);
 
-
-	
 	CloudsQuestion::addQuestionVariables( questionGui );
 	
 	guis.push_back(questionGui);
@@ -233,7 +245,7 @@ void CloudsVisualSystemRGBD::selfSetupGuis(){
 	connectorGui = new ofxUISuperCanvas("CONNECTORS", gui);
 	connectorGui->copyCanvasStyle(gui);
 	connectorGui->copyCanvasProperties(gui);
-	connectorGui->setName("Custom");
+	connectorGui->setName("connectors");
 	connectorGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 //	connectorGui->addSlider("Num Particles", 50, 64*64, &generator.numParticles);
@@ -284,6 +296,8 @@ void CloudsVisualSystemRGBD::selfUpdate(){
 	
 	updateQuestions();
 	updateTransition();
+    
+    cloudsCaption.update();
 	
 	if(currentCamera == &transitionCam){
 		transitionCamTargetNode->setPosition( transitionCam.getPosition() );
@@ -613,12 +627,32 @@ void CloudsVisualSystemRGBD::speakerChanged(){
 //	this->speakerFirstName = speakerFirstName;
 //	this->speakerLastName = speakerLastName;
 //	this->quoteName = quoteName;
-	
+    
+	// Add an appearance for this speaker.
+    string key = speakerFirstName + " " + speakerLastName;
+    
+    if (appearances.find(key) == appearances.end()) {
+        appearances[key] = 1;
+    }
+    else {
+        appearances[key]++;
+    }
+    
+    cout << "CloudsVisualSystemRGBD::speakerChanged " << speakerFirstName << " " << speakerLastName << ": " << quoteName << " (" << appearances[key] << ")" << endl;
+    
+    if (appearances[key] == 1) {
+        cloudsCaption.font = &captionFont;
+        cloudsCaption.caption = key;
+        cloudsCaption.isEnabled = true;
+        cloudsCaption.begin();
+    }
+    else {
+        cloudsCaption.isEnabled = false;
+    }
 }
 
 void CloudsVisualSystemRGBD::generateTriangulation(){
 	
-	delaunay.reset();
 
 	if(percentChanceOfPoint == lastPercentChanceOfPoint ||
 	   triangulationXStep == lastTriangulationXStep ||
@@ -626,7 +660,9 @@ void CloudsVisualSystemRGBD::generateTriangulation(){
 	{
 		return;
 	}
-	
+
+	delaunay.reset();
+
 	for(float y = 0; y < 480; y += triangulationYStep){
 		for(float x = 0; x < 640; x += triangulationXStep){
 			if(ofRandomuf() < percentChanceOfPoint){
@@ -727,7 +763,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 //		cout << "base multiplier " << getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() << endl;
 		rgbdShader.setUniform1f("fadeValue", 1.0);
 //		rgbdShader.setUniform1f("fadeValue", getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() );
-		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut();
+		float transitionValue = 1.0 - getRGBDVideoPlayer().getFadeIn() * getRGBDVideoPlayer().getFadeOut() * visualSystemFadeValue;
 		ofxEasingCubic cub;
 		rgbdShader.setUniform1f("triangleContract", ofxTween::map(transitionValue, 0, 1.0, 0, 1.0, true, cub, ofxTween::easeOut));
 		rgbdShader.setUniform1f("eyeMultiplier", 0.0);
@@ -852,9 +888,7 @@ void CloudsVisualSystemRGBD::selfDraw(){
 		glPopAttrib();
 		ofPopMatrix();
 		ofPopStyle();
-		
 	}
-
 		
 	if(drawParticulate){
 		glEnable(GL_DEPTH_TEST);
@@ -912,9 +946,17 @@ void CloudsVisualSystemRGBD::drawQuestions(){
 }
 
 void CloudsVisualSystemRGBD::selfDrawOverlay() {
+	ofPushStyle();
 	for(int i = 0; i < questions.size(); i++){
 		questions[i]->drawOverlay();
 	}
+    
+    cloudsCaption.drawOverlay();
+
+	//test overlay
+	ofSetColor(0,0,0,0);
+	ofRect(20, 20, 300,300);
+	ofPopStyle();
 }
 
 void CloudsVisualSystemRGBD::selfExit(){
@@ -922,7 +964,10 @@ void CloudsVisualSystemRGBD::selfExit(){
 }
 
 void CloudsVisualSystemRGBD::selfBegin(){
-
+	
+	cloudsCamera.jumpToPosition();
+    
+    cloudsCaption.begin();
 }
 
 void CloudsVisualSystemRGBD::selfEnd(){

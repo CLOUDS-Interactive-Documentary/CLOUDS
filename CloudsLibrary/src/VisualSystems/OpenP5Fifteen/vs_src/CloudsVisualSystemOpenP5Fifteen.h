@@ -99,10 +99,13 @@ class CloudsVisualSystemOpenP5Fifteen : public CloudsVisualSystem
         bool bRestart;
         float scalar;
         float speed;
+        float granularity;
+        float maxHeight;
         int count;
         ofVec2f attractor;
     
         ofShader shader;
         ofFbo srcFbo, dstFbo;
         ofVboMesh mesh;
+        ofShader displaceShader;
 };

@@ -52,13 +52,13 @@ void Ball::setPos(float _x,float _y){
   y = _y;
 }
 //----------------------------------------------------
-void Ball::stepPhysics(){
+void Ball::stepPhysics(float friction){
   //apply the forces
   oldPos.copyFrom(x,y,0);
   x+= force.x;
   y+= force.y;
   
-  force *= 0.998;//friction;
+  force *= friction;
   
   if(jitter>0)jitter-=0.1;  
 }
@@ -67,7 +67,7 @@ void Ball::applyForce(float applyX,float applyY){
   force += V3(applyX,applyY,0);
 }
 //----------------------------------------------------
-void Ball::bounce(float x1,float y1,float x2,float y2){
+void Ball::bounce(float x1,float y1,float x2,float y2, float freqRange){
 
 	//Thank you to Theo Watson for helping me out here.
 	//V
@@ -101,10 +101,10 @@ void Ball::bounce(float x1,float y1,float x2,float y2){
   if (bounceTimeDelta<tooMuchBouncingThreshold){ //softeners for the balls
     force.copyFrom(0,0);//make it still
   } else { 
-      unsigned long freq = force.getLength() * 100000;//frequencyRange;
+      unsigned long freq = force.getLength() * freqRange;
 	sound.setSpeed(freq/44100.0);
 	sound.play();
-    jitter = force.getLength();
+    jitter = force.getLength()/2;
   }
   
 }

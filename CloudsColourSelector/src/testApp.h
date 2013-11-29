@@ -21,7 +21,7 @@ class testApp : public ofBaseApp{
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
     void checkColorDistance();
-    float weightedDistance(ofVec3f pnt1 ,ofVec3f pnt2, ofVec3f weights);
+    float weightedDistance(ofVec3f& pnt1 ,ofVec3f& pnt2,ofVec3f& weights);
 	void exit();
     
     
@@ -32,6 +32,8 @@ class testApp : public ofBaseApp{
     float thresholdLower;
     float thresholdUpper;
     ofVec2f samplePoint;
+    ofVec2f samplePointNorm;
+    ofFloatColor samplePointColor;
     ofxEasingSine easing;
     float hueWeight;
     float satWeight;
@@ -43,12 +45,16 @@ class testApp : public ofBaseApp{
     
     ofxUISuperCanvas *gui;
 	void guiEvent(ofxUIEventArgs &e);
+    ofShader shaderSkinDetection;
     ofShader shaderBlurX;
     ofShader shaderBlurY;
+    ofFbo fboSkinDetect;
     ofFbo fboBlurOnePass;
     ofFbo fboBlurTwoPass;
     
     bool blur;
     float blurAmount;
+    
+    ofFbo imgFbo;
     
 };

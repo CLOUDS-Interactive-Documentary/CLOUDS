@@ -16,10 +16,39 @@ string CloudsVisualSystemPaintBrush::getSystemName()
 void CloudsVisualSystemPaintBrush::selfSetup()
 {
 	bIs2D = true;
-    canvas.allocate(ofGetScreenWidth(), ofGetScreenHeight());
-    canvas.begin();
+        
+    canvasSrc.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasSrc.begin();
     ofClear(0,0);
-    canvas.end();
+    canvasSrc.end();
+
+    canvasDst.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasDst.begin();
+    ofClear(0,0);
+    canvasDst.end();
+    
+    bUseColorMap = false;
+    
+    // ColorMaps
+    string colorMapPath = getVisualSystemDataPath() + "colorMaps/";
+    ofDirectory dir;
+    dir.listDir(colorMapPath);
+    dir.sort();
+    string tempName;
+    ofImage tempImage;
+    for (int i = 0; i < dir.numFiles(); i++) {
+        tempName = dir.getName(i);
+        tempImage.loadImage(dir.getPath(i));
+		colorMapNames.push_back(tempName);
+        colorMapPixelsMap[tempName] = new ofPixels(tempImage.getPixelsRef());
+        if (colorMap == NULL) {
+            colorMap = colorMapPixelsMap[tempName];
+        }
+	}
+    mapX = mapY = 0;
+    bMapForward = true;
+    
+    fadeAmount = 1.0f;
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
@@ -33,13 +62,19 @@ void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
     sysGui->addSlider("repulsion_rad", 0, 20, &brushRepRad);
     sysGui->addSlider("repulsion_pct", 0.0, 1.0, &brushRepPct);
     
+    sysGui->addSlider("particles_threshold", 5.0, 100.0, &particlesThreshold);
+    sysGui->addSlider("particles_turbulence", 0.0, 0.5, &particlesTurbulence);
+    sysGui->addSlider("particles_alpha", 0.0, 1.0, &particlesAlpha);
+    
     sysGui->addSlider("color_hue", 0.0, 1.0, &colorHue);
     sysGui->addSlider("color_lerp",0.0, 1.0, &colorLerp);
     sysGui->addSlider("color_random", 0.0, 0.02, &colorRandom);
     
-    sysGui->addSlider("particles_threshold", 5.0, 100.0, &particlesThreshold);
-    sysGui->addSlider("particles_turbulence", 0.0, 0.5, &particlesTurbulence);
-    sysGui->addSlider("particles_alpha", 0.0, 1.0, &particlesAlpha);
+    sysGui->addSlider("fade_amount", 0.0f, 0.5f, &fadeAmount);
+    
+    sysGui->addToggle("use color map", &bUseColorMap);
+    sysGui->addLabel("color maps");
+	sysGui->addRadio("color map", colorMapNames);
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupRenderGui()
@@ -49,7 +84,14 @@ void CloudsVisualSystemPaintBrush::selfSetupRenderGui()
 
 void CloudsVisualSystemPaintBrush::guiSystemEvent(ofxUIEventArgs &e)
 {
-    
+    if (e.widget->getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue()) {
+		string name = e.getName();
+        for (map<string, ofPixels *>::iterator it = colorMapPixelsMap.begin(); it != colorMapPixelsMap.end(); it++) {
+			if (it->first == name) {
+				colorMap = it->second;
+			}
+		}
+	}
 }
 
 void CloudsVisualSystemPaintBrush::selfKeyPressed(ofKeyEventArgs & args){
@@ -65,16 +107,62 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     
     brush.update();
     
-    if (brush.getVel().length() < particlesThreshold){
+    if (brush.getVel().length() < particlesThreshold) {
         ofFloatColor color;
-        color.set(1, 0, 0);
-        color.setHue( colorHue );
+        
+        if (bUseColorMap) {
+            color = colorMap->getColor(mapX, mapY);
+            if (bMapForward) {
+                ++mapX;
+                if (mapX >= colorMap->getWidth()) {
+                    ++mapY;
+                    if (mapY >= colorMap->getHeight()) {
+                        // back to start
+                        mapX = 0;
+                        mapY = 0;
+                        bMapForward = true;
+                    }
+                    else {
+                        // next line, going backwards
+                        mapX = colorMap->getWidth() - 1;
+                        bMapForward = false;
+                    }
+                }
+            }
+            else {
+                --mapX;
+                if (mapX < 0) {
+                    ++mapY;
+                    if (mapY >= colorMap->getHeight()) {
+                        // back to start
+                        mapX = 0;
+                        mapY = 0;
+                        bMapForward = true;
+                    }
+                    else {
+                        // next line, going forward
+                        mapX = 0;
+                        bMapForward = true;
+                    }
+                }
+            }
+        }
+        else {
+            color.set(1, 0, 0);
+            color.setHue(colorHue);
+        }
+        
         brush.setColor(color, colorLerp, colorRandom);
     }
     
-    brush.addParticles(particles, particlesThreshold, particlesAlpha);
+    if (ofGetMousePressed()) {
+        brush.addParticles(particles, particlesThreshold, particlesAlpha);
+    }
     
-    canvas.begin();
+    canvasDst.begin();
+    
+    ofSetColor(255, (1.0f - fadeAmount) * 255);
+    canvasSrc.draw(0, 0);
     
     for(int i = particles.size()-1; i >= 0 ; i--){
         
@@ -90,9 +178,11 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         
     }
     
-    brush.draw();
+    if (ofGetMousePressed()) {
+        brush.draw();
+    }
     
-    canvas.end();
+    canvasDst.end();
     
     while(particles.size()>500){
         particles.erase(particles.begin());
@@ -108,7 +198,8 @@ void CloudsVisualSystemPaintBrush::selfDrawBackground()
     glDisable(GL_DEPTH_TEST);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    canvas.draw(0, 0);
+    canvasDst.draw(0, 0);
+    swap(canvasSrc, canvasDst);
     
     if (bDebug){
         ofSetColor(255);
@@ -141,7 +232,10 @@ void CloudsVisualSystemPaintBrush::selfSceneTransformation()
 
 void CloudsVisualSystemPaintBrush::selfExit()
 {
-    
+    for (map<string, ofPixels *>::iterator it = colorMapPixelsMap.begin(); it != colorMapPixelsMap.end(); it++) {
+        delete it->second;
+	}
+    colorMapPixelsMap.clear();
 }
 
 void CloudsVisualSystemPaintBrush::selfBegin()
@@ -158,10 +252,15 @@ void CloudsVisualSystemPaintBrush::selfKeyReleased(ofKeyEventArgs & args)
 {
     if (args.key == ' '){
         brush.clear();
-        canvas.begin();
-        ofClear(0,0);
-        canvas.end();
         particles.clear();
+        
+        canvasSrc.begin();
+        ofClear(0,0);
+        canvasSrc.end();
+        
+        canvasDst.begin();
+        ofClear(0,0);
+        canvasDst.end();
     }
 }
 

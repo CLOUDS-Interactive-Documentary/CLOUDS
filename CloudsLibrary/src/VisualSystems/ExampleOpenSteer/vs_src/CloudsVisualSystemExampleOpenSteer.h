@@ -105,7 +105,7 @@ protected:
 	void setSimulation( int simulationIndex );
     
     ofFloatColor bodyColor;
-    ofFloatColor trailColor;
+    ofFloatColor trailColor, trailColor2;
     ofFloatColor tickColor;
 	ofxUISuperCanvas* customGui;
 

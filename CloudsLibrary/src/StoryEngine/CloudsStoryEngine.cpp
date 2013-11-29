@@ -16,7 +16,8 @@ bool logsort(pair<float,string> a, pair<float,string> b ){
 CloudsStoryEngine::CloudsStoryEngine(){
     parser = NULL;
     visualSystems = NULL;
-    
+    customAct = NULL;
+	
     isSetup = false;
     printDecisions = true;
     combinedClipsOnly = false;
@@ -249,13 +250,27 @@ void CloudsStoryEngine::toggleGuis(bool actOnly){
     }
 }
 
+void CloudsStoryEngine::setCustomAct(CloudsAct* act){
+	customAct = act;
+}
+
 #pragma mark INIT ACT
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed){
     return buildAct(run, seed, seed.getKeywords()[ ofRandom(seed.getKeywords().size()) ]);
 }
 
 CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string topic){
+	
+	if(customAct != NULL){
+		CloudsActEventArgs args(customAct);
+		ofNotifyEvent(events.actCreated, args);
+		customAct = NULL;
+		return;
+	}
+	
     CloudsAct* act = new CloudsAct();
+	act->defaulPrerollDuration = preRollDuration;
+	
     float seconds = actLength;
     int clipsAdded = 0;
     float totalSecondsEnqueued = 0;
@@ -301,9 +316,9 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     int moreMenThanWomen = 0;
     int timeForNewQuesiton = 0;
-    float preRollFlagTime  = 0;
+//    float preRollFlagTime  = 0;
     float clipHandleDuration = getHandleForClip(clip);
-    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+//    act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
     totalSecondsEnqueued = preRollDuration;
     act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
     
@@ -312,7 +327,6 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     ///
     visualSystemStartTime = 0;
-    cout << "visual system start time is " << visualSystemStartTime << endl;
     maxTimeRemainingForVisualSystem = systemMaxRunTime;
     
     string log;
@@ -479,8 +493,8 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         //add clip to act
         clipHandleDuration = getHandleForClip(clip);
         act->addClip(clip, topic, totalSecondsEnqueued, clipHandleDuration, getCurrentDichotomyBalance());
-        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
-        act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
+//        float preRollFlagTime  = totalSecondsEnqueued - preRollDuration;
+//        act->addClipPreRollFlag(preRollFlagTime, clipHandleDuration, clip.getLinkName());
         localClipHistory.push_back(clip);
         clipsAdded++;
         
@@ -514,7 +528,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
                 //and then start the new topic after that
                 else if(topic != previousTopic && systemRunning ){
                     //putting ofRandom to give it some variation
-                    float gapTimeForTopicChange =cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
+                    float gapTimeForTopicChange = cadenceForTopicChangeMultiplier * ofRandom(0.6, 1);
                     
                     cout<<"Adding gap to respect topic change: "<< clip.getLinkName()<<endl;
                     //updating totalSecondsEnqueued here may not be the best way to do this
@@ -550,8 +564,7 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
         else {
             float timeSinceLastVisualSystem = clipEndTime - lastVisualSystemEnded;
             
-            //if the clip is shorter than the 30 seconds dont start the VS during the clip.
-            if(timeSinceLastVisualSystem > maxVisualSystemGapTime && clip.getDuration() > longClipThreshold){
+            if(timeSinceLastVisualSystem > maxVisualSystemGapTime /*&& clip.getDuration() > longClipThreshold*/){
                 
                 visualSystemStartTime = clipStartTime + clip.getDuration() * longClipFadeInPercent;
                 maxTimeRemainingForVisualSystem = systemMaxRunTime;

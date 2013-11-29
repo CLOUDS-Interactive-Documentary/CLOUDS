@@ -33,7 +33,7 @@
 	[clipTable reloadData];
 	
     cout << "Relinked Export Folder "<< exportFolder << endl;
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 4; i++){
 		exportManagers.push_back(new CloudsClipExportManager());
 		exportManagers[i]->setExportDirectory( exportFolder );
 	}
@@ -65,16 +65,27 @@
 	gui->addSlider("y texture rotate", -5, 5, &rotate.y);
 	gui->addSlider("x texture scale", .8, 1.2, &scale.x);
 	gui->addSlider("y texture scale", .8, 1.2, &scale.y);
-	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
-	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
+//
 	gui->addToggle("select color", &selectColor);
 	gui->addToggle("select face", &selectFace);
+    //SM ADDED
+    gui->addSlider("THRESHOLD_LOWER", 0.0, 1.0, &skinThresholdLower);
+    gui->addSlider("THRESHOLD_UPPER", 0.0, 1.0, &skinThresholdUpper);
+    gui->addSlider("HUE WEIGHT", 0.0, 1.0, &skinHueWeight);
+    gui->addSlider("SATURATION WEIGHT", 0.0, 1.0, &skinSatWeight);
+    gui->addSlider("BRIGTHNESS WEIGHT", 0.0, 1.0, &skinBrightWeight);
+    gui->addSpacer();
+
+//
+//	gui->addSlider("contour threshold", 0, 200, &contourThreshold);
+//	gui->addSlider("min blob size", 10*10, 300*300, &minBlobSize);
+
 	
 	gui->addToggle("pause", &pause);
 	
 	gui->addToggle("Show Histogram", &showHistogram);
 	gui->addToggle("Show Log Histogram", &useLog);
-	
+    gui->autoSizeToFitWidgets();	
 	[clipTable setDoubleAction:@selector(loadClipForAlignment:)];
 
 	cam.setup();
@@ -82,7 +93,9 @@
 	cam.loadCameraPosition();
 	
 	framebuffer.allocate(ofGetWidth(), ofGetHeight(), GL_RGB, 4);
-	
+
+	shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
+    
     filler.setKernelSize(3);
     filler.setIterations(3);
 
@@ -160,10 +173,7 @@
 	cam.applyTranslation = cam.applyRotation = camRect.inside(mouseX,mouseY);
 	
 	if(resetCamera){
-		cam.setPosition(0, 0, 0);
-		cam.setOrientation(ofQuaternion());
-		cam.rotate(180, ofVec3f(0,1,0));
-		cam.setAnglesFromOrientation();	
+		cam.reset();
 	}
 
 	player.update();
@@ -186,15 +196,26 @@
 		}
 		
 //		cout << "Finding contour on image size " << player.getVideoPlayer()->getWidth() << " " << player.getVideoPlayer()->getHeight() << " target color " << targetColor <<  " thresh " << contourThreshold << " blob size " << minBlobSize << endl;
-		contours.setMinArea(minBlobSize);
-		contours.setThreshold(contourThreshold);
-		contours.setTargetColor(targetColor);
-		contours.findContours(*player.getVideoPlayer());
+//		contours.setMinArea(minBlobSize);
+//		contours.setThreshold(contourThreshold);
+//		contours.setTargetColor(targetColor);
+//		contours.findContours(*player.getVideoPlayer());
+        
+        //SM REMOVED
+        /*
 		loadedClip.contourMinBlobSize = minBlobSize;
 		loadedClip.contourTargetColor = targetColor;
 		loadedClip.contourTargetThreshold = contourThreshold;
-		loadedClip.faceCoord = facePosition;
-		
+		*/
+        loadedClip.faceCoord = facePosition;
+        
+        //SM ADDED
+        loadedClip.skinBrightWeight = skinBrightWeight;
+        loadedClip.skinHueWeight = skinHueWeight;
+        loadedClip.skinSatWeight = skinSatWeight;
+        loadedClip.skinLowerThreshold = skinThresholdLower;
+        loadedClip.skinUpperThreshold = skinThresholdUpper;
+		loadedClip.skinTargetColor = targetColor;
 	}
 
 	if(player.isLoaded() &&
@@ -226,10 +247,28 @@
 
 	if(selectColor){
 		if(player.isLoaded()){
+            
+            //SM ADDED
 			ofPushMatrix();
-			ofTranslate(200,0);
-			player.getVideoPlayer()->draw(0,0);
-			contours.draw();
+//			ofTranslate(200,0);
+            shaderSkinDetection.begin();
+            
+            shaderSkinDetection.setUniformTexture("imgSampler",*player.getVideoPlayer(), 0);
+            shaderSkinDetection.setUniform3f("samplePointColor", targetColor.r, targetColor.g,targetColor.b);
+            shaderSkinDetection.setUniform3f("weights", skinHueWeight, skinSatWeight, skinBrightWeight);
+            shaderSkinDetection.setUniform1f("lowerThreshold", skinThresholdLower);
+            shaderSkinDetection.setUniform1f("upperThreshold", skinThresholdUpper);
+            shaderSkinDetection.setUniform1i("redGreenDebug", 1);
+            
+			videoRect = ofRectangle(0,0,1920,1080);
+			ofRectangle screenRect(200,0,ofGetWidth()-200,ofGetHeight());
+			
+			videoRect.scaleTo(screenRect);
+
+			player.getVideoPlayer()->draw(videoRect);
+            
+            shaderSkinDetection.end();
+        
 			ofPopMatrix();
 		}
 	}
@@ -338,8 +377,8 @@
 
 	if(clipTable.selectedRow >= 0){
 
-		colorReplacementFolder = string([[colorReplacementField stringValue] UTF8String]);
-		exportFolder = [[exportFolderField stringValue] UTF8String];
+		colorReplacementFolder = ofFilePath::addTrailingSlash( string([[colorReplacementField stringValue] UTF8String]) );
+		exportFolder = ofFilePath::addTrailingSlash( [[exportFolderField stringValue] UTF8String] );
 		ofBuffer savedExportBuf;
 		savedExportBuf.append( exportFolder );
 		ofBuffer savedColorBuf;
@@ -349,12 +388,15 @@
 		ofBufferToFile("ColorReplacementFolder.txt", savedColorBuf);
 
 		CloudsClip& clip = parser.getAllClips()[ clipTable.selectedRow ];
-		player.setAlternativeVideoFolder(string([[colorReplacementField stringValue] UTF8String]), true);
+		player.setAlternativeVideoFolder( string([[colorReplacementField stringValue] UTF8String]), true);
 		
 		if(player.setup(clip.getSceneFolder())){
+			
 			if(!player.alternativeVideoIsConfirmed()){
-				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() );
+				ofSystemAlertDialog("Error confirming alternative clip " + clip.getSceneFolder() + " Could not find clip " + ofFilePath::getFileName(player.getScene().videoPath) );
+				return;
 			}
+			
 			showHistogram = false;
 			calculatedHistogram = false;
 			histogram.clear();
@@ -365,18 +407,28 @@
 			player.getVideoPlayer()->setFrame( clip.startFrame );
 		
 			loadedClip = clip;
-			loadedClip.loadAdjustmentFromXML(true);
+			loadedClip.loadAdjustmentFromXML( true );
 			translate = loadedClip.adjustTranslate;
 			rotate = loadedClip.adjustRotate;
 			scale = loadedClip.adjustScale;
 			minDepth = loadedClip.minDepth;
 			maxDepth = loadedClip.maxDepth;
-
+            
+            //SM REMOVED
+            /*
 			minBlobSize = loadedClip.contourMinBlobSize;
-			targetColor = loadedClip.contourTargetColor;
 			contourThreshold = loadedClip.contourTargetThreshold;
 			contours.setTargetColor(targetColor);
+            */
+            
+            //SM ADDED
+			targetColor = loadedClip.skinTargetColor;
 			facePosition = loadedClip.faceCoord;
+            skinHueWeight = loadedClip.skinHueWeight;
+            skinBrightWeight = loadedClip.skinBrightWeight;
+            skinSatWeight = loadedClip.skinSatWeight;
+            skinThresholdUpper = loadedClip.skinUpperThreshold;
+            skinThresholdLower = loadedClip.skinLowerThreshold;
 			
 			player.play();
 		}
@@ -424,6 +476,7 @@
 	if(key == 'S'){
 		cout << "SHADER RELOAD" << endl;
 		renderer.reloadShader();
+        shaderSkinDetection.load(getDataPath() + "shaders/skinDetector");
 	}
 	
 	if(key == 'H'){
@@ -446,24 +499,58 @@
 
 - (void)mouseDragged:(NSPoint)p button:(int)button
 {
-	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
-		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-		contours.setTargetColor(targetColor);
-	}	
+//	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
+//		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
+//		contours.setTargetColor(targetColor);
+//	}
+	[self runSelectionsAtPoint:ofVec2f(p.x,p.y) ];
 }
 
 - (void)mousePressed:(NSPoint)p button:(int)button
 {
-	if(selectColor && player.isLoaded() && ofRectangle(200,0,player.getVideoPlayer()->getWidth(),player.getVideoPlayer()->getHeight()).inside(p.x, p.y)){
-		targetColor = player.getVideoPlayer()->getPixelsRef().getColor( p.x-200, p.y );
-		contours.setTargetColor(targetColor);
+	[self runSelectionsAtPoint:ofVec2f(p.x,p.y) ];
+}
+
+- (void) runSelectionsAtPoint:(ofVec2f) p
+{
+	if(selectColor && player.isLoaded() && videoRect.inside(p.x, p.y)){
+		
+		float xScale = player.getVideoPlayer()->getWidth()  / videoRect.width;
+		float yScale = player.getVideoPlayer()->getHeight() / videoRect.height;
+		
+        targetColor = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
+                                                                       (p.y-videoRect.y)*yScale);
+        
+
+        /*
+		ofFloatColor c = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x )*xScale,
+																	    (p.y-videoRect.y)*yScale);
+        
+        ofFloatColor c1 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                         (p.y-videoRect.y)*yScale);
+        ofFloatColor c2 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x  )*xScale,
+                                                                          (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c3 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x  )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        ofFloatColor c4 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1  )*xScale,
+                                                                           (p.y-videoRect.y )*yScale);
+        
+        ofFloatColor c5 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                          (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c6 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1 )*xScale,
+                                                                           (p.y-videoRect.y +1)*yScale);
+        ofFloatColor c7 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x +1 )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        ofFloatColor c8 = player.getVideoPlayer()->getPixelsRef().getColor( (p.x-videoRect.x -1  )*xScale,
+                                                                           (p.y-videoRect.y -1)*yScale);
+        
+        targetColor = ( c + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 ) / 9;
+        */
+
 	}
-	
-	else if(selectFace && player.isLoaded() &&
-	   ofRectangle(200,0,player.getDepthSequence()->getPixels().getWidth(),
-					     player.getDepthSequence()->getPixels().getHeight()).inside(p.x, p.y)){
-		   facePosition = ofVec2f(p.x-200, p.y);
-		   cout << "setting face position to " << selectFace << endl;
+	else if(selectFace && player.isLoaded() && ofRectangle(0,0,640,480).inside(p.x-200,p.y) ){
+		facePosition = ofVec2f(p.x-200, p.y);
+		cout << "setting face position to " << selectFace << endl;
 	}
 }
 
@@ -547,7 +634,40 @@
 	else if([@"depth" isEqualToString:aTableColumn.identifier]){
 		CloudsClip& clip = parser.getAllClips()[rowIndex];
 		clip.loadAdjustmentFromXML();
+		if(clip.minDepth == 300 && clip.maxDepth == 1200){
+			return @"N/S";
+		}
 		return [NSString stringWithUTF8String: ("[" + ofToString(clip.minDepth, 1) + " - " + ofToString(clip.maxDepth, 1) + "]" ).c_str() ];
+	}
+	else if([@"texture" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		clip.loadAdjustmentFromXML();		
+		if(clip.adjustRotate.x == 0 && clip.adjustRotate.y == 0){
+			return @"N/S";
+		}
+		return [NSString stringWithFormat: @"x:%.02f y:%.02f", clip.adjustRotate.x, clip.adjustRotate.y ];
+	}
+	else if([@"skin" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		//clip.loadAdjustmentFromXML();
+		if( clip.skinTargetColor == ofFloatColor(1.0,0.0,0.0) ){
+			return @"N/S";
+		}
+		return [NSString stringWithFormat:@"%.01f,%.01f,%.01f",
+					clip.skinTargetColor.r,
+					clip.skinTargetColor.g,
+					clip.skinTargetColor.b];
+	}
+	else if([@"head" isEqualToString:aTableColumn.identifier]){
+		CloudsClip& clip = parser.getAllClips()[rowIndex];
+		//clip.loadAdjustmentFromXML();
+		if( clip.faceCoord == ofVec2f(320.,110.) ){
+			return @"N/S";
+		}
+
+		return [NSString stringWithFormat:@"%.01f,%.01f",
+				clip.faceCoord.x,
+				clip.faceCoord.y];
 	}
 	else if([@"pairings" isEqualToString:aTableColumn.identifier]){
 		return ofFile::doesFileExist(parser.getAllClips()[rowIndex].getSceneFolder() + "pairings.xml") ? @"YES" : @"NO";

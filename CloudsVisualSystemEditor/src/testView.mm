@@ -190,6 +190,7 @@ bool clipsort(CloudsClip a, CloudsClip b){
 //		notesText.stringValue = [NSString stringWithUTF8String: selectedPreset->comments.c_str() ];
 //		grade.stringValue = [NSString stringWithUTF8String: selectedPreset->grade.c_str() ];
 //		enabledBox.state = selectedPreset->enabled;
+		
 		visualSystems.savePresets();
 		
 		[self updateCounts];
@@ -216,13 +217,22 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (IBAction)suppressClip:(id)sender{
     if(clipTable.selectedRow >= 0){
         
-		//TODO: multi selection
-        visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[clipTable.selectedRow].getLinkName());
-        
+		NSUInteger idx = [clipTable.selectedRowIndexes firstIndex];
+		while (idx != NSNotFound) {
+			
+			visualSystems.suppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), associatedClips[idx].getLinkName());
+			
+			// get the next index in the set
+			idx = [clipTable.selectedRowIndexes indexGreaterThanIndex:idx];
+		}
+		
+		
         cout<<"Clip: "<<associatedClips[clipTable.selectedRow].getLinkName()<<" suppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
         visualSystems.savePresets();
 		
 		[self updateAssociatedClips];
+        [clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
+		
 //      [clipTable reloadData];
 //		[suppressedClipTable reloadData];
 		
@@ -232,11 +242,18 @@ bool clipsort(CloudsClip a, CloudsClip b){
 - (IBAction) unsuppressClip:(id)sender{
     if(suppressedClipTable.selectedRow >= 0){
 		
-		//TODO: multi selection
-        visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), suppressedClips[suppressedClipTable.selectedRow].getLinkName());
+		NSUInteger idx = [suppressedClipTable.selectedRowIndexes firstIndex];
+		while (idx != NSNotFound) {
+			visualSystems.unsuppressClip(visualSystems.getPresets()[presetTable.selectedRow].getID(), suppressedClips[idx].getLinkName());
+			
+			// get the next index in the set
+			idx = [suppressedClipTable.selectedRowIndexes indexGreaterThanIndex:idx];
+		}
+		
         cout<<"Clip: "<<suppressedClips[suppressedClipTable.selectedRow].getLinkName()<<" unsuppressed for Visual System: "<<visualSystems.getPresets()[presetTable.selectedRow].getID()<<endl;
         visualSystems.savePresets();
 		
+		[clipTable selectRowIndexes:[NSIndexSet indexSet] byExtendingSelection:NO];
 		[self updateAssociatedClips];
 		
     }

@@ -5,13 +5,6 @@
 #include "CloudsVisualSystemMazeGenerator.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
-
-//These methods let us add custom GUI parameters and respond to their events
-
 CloudsVisualSystemMazeGenerator::CloudsVisualSystemMazeGenerator()
 {
 }
@@ -204,16 +197,11 @@ void CloudsVisualSystemMazeGenerator::selfDraw()
 	glEnable(GL_FOG);
     
 
-//JG this is already happening
-//    ofEnableLighting();
     if (bLights) {
         light->enable();
     }
 
-//JG -- OCULUS BUG: don't start and stop your own camera, this is what getCameraRef() is
-//	mazeCam.begin();
     maze[0]->draw(&mazeCam, lightPos);
-//	mazeCam.end();
     
     if (bLights) {
         light->disable();

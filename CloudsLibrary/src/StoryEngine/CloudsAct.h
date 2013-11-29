@@ -89,7 +89,7 @@ class CloudsAct{
     CloudsVisualSystemPreset& getVisualSystemInAct(int index);
     float addClip(CloudsClip& clip, string topic, float startTime);
     float addClip(CloudsClip& clip, string topic, float startTime, float handleLength, vector<CloudsDichotomy> currentDichotomiesBalance);
-    void addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration);
+    float addVisualSystem(CloudsVisualSystemPreset& preset, float startTime, float duration);
     void addGapForCadence(CloudsVisualSystemPreset& preset,float startTime, float duration);
     void updateClipStartTime(CloudsClip clip, float startTime, float handleLength,string topic);
     void addQuestion(CloudsClip clip, string topic, float startTime);
@@ -110,11 +110,13 @@ class CloudsAct{
 	ofxTimeline& getTimeline(){ return timeline; }
     
     void drawDebug();
-
+	//set via storyengine param
+	float defaulPrerollDuration;
+	
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
     CloudsEvents& getEvents();
     
-protected:
+  protected:
 
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;

@@ -14,12 +14,22 @@
 using namespace OpenSteer;
 using namespace ofxOpenSteer;
 
+enum BoidTrailType
+{
+    BOID_TRAIL_NONE = 0,
+    BOID_TRAIL_DASHED_LINE,
+    BOID_TRAIL_SOLID_LINE,
+    BOID_TRAIL_RIBBONS
+};
+
 class Boid: public ofxOpenSteerVehicle {
 	
 public:
     
     ProximityToken* pt;
-    static bool bDrawTrail;
+    static BoidTrailType trailType;
+    static float trailRibbonSize;
+    static float trailColorMix;
     static bool bDrawAnnotations;
     
     static float fMaxSpeed;
@@ -42,12 +52,16 @@ public:
     
     static OpenSteer::Color bodyColor;
     static OpenSteer::Color trailColor;
+    static OpenSteer::Color trailColor2;
     static OpenSteer::Color tickColor;
     
     static float trailVertexCount;
     static float trailDuration;
 
     static float nBoids; //ugh -- has to be a float bcz of ofxUISlider
+    
+    deque<ofVec3f> history;
+    ofVboMesh trailMesh;
 
     Boid(){
         pt = NULL;
@@ -59,7 +73,7 @@ public:
     };
     
     void reset(){
-		// reset the vehicle
+        // reset the vehicle
 		ofxOpenSteerVehicle::reset ();
 		
 		// steering force is clipped to this magnitude
@@ -83,17 +97,96 @@ public:
 		if(pt) pt->updateForNewPosition (position());
 
 		setTrailParameters(Boid::trailDuration, Boid::trailVertexCount);
+        
+        history.clear();
 	};
     
-    void update(){
-        ofxOpenSteerVehicle::update();
+    void update(float curTime, float elapsedTime){
+        ofxOpenSteerVehicle::update(curTime, elapsedTime);
         if(pt) pt->updateForNewPosition (position());
+        
+        history.push_back(getPosition());
+        while (history.size() > trailVertexCount) {
+            history.pop_front();
+        }
+        
+        trailMesh.clear();
+        if (history.size() > 0) {
+            ofFloatColor color1(trailColor.r(), trailColor.g(), trailColor.b());
+            ofFloatColor color2(trailColor2.r(), trailColor2.g(), trailColor2.b());
+
+            if (trailType == BOID_TRAIL_RIBBONS) {
+                trailMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+         
+                const ofVec3f back = history.back();
+                float total = (float)(history.size());
+                for (int i = history.size() - 1; i > 0; i--) {
+                    float pct = i / total;
+                    const ofVec3f& curr = history[i];
+                    const ofVec3f& last = history[i-1];
+                    
+                    ofVec3f perp0 = curr - last;
+                    ofVec3f perp1 = perp0.getCrossed(ofVec3f(0, 0, 1));
+                    ofVec3f perp2 = perp0.getCrossed(perp1);
+                    perp1 = perp0.getCrossed(perp2).getNormalized();
+                    float offWidth = (trailRibbonSize * pct * 0.07f);
+                    float opacityScale = 0.95f * pct;
+                    if (pct > 0.8f) {
+                        float temp = (1.0f - pct) / 0.2f;
+                        float tempScale = sqrt(temp);
+                        offWidth *= tempScale;
+                        opacityScale *= tempScale;
+                    }
+                    
+                    ofVec3f off = perp1 * offWidth;
+                    ofFloatColor color = color1;
+                    float mixPct = ofMap(pct, 1, 0, 0, trailColorMix * 2);
+                    ofClamp(mixPct, 0, 1);
+                    color.lerp(color2, mixPct);
+                    color.a = opacityScale;
+                    
+                    trailMesh.addVertex(curr - off);
+                    trailMesh.addColor(color);
+                    trailMesh.addVertex(curr + off);
+                    trailMesh.addColor(color);
+                }
+            }
+            else if (trailType == BOID_TRAIL_SOLID_LINE) {
+                trailMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
+                
+                float total = (float)(history.size());
+                for (int i = history.size() - 1; i > 0; i--) {
+                    float pct = i / total;
+                    const ofVec3f& curr = history[i];
+                    float opacityScale = 0.95f * pct;
+                    if (pct > 0.8f) {
+                        float temp = (1.0f - pct) / 0.2f;
+                        float tempScale = sqrt(temp);
+                        opacityScale *= tempScale;
+                    }
+                    
+                    ofFloatColor color = color1;
+                    float mixPct = ofMap(pct, 1, 0, 0, trailColorMix * 2);
+                    ofClamp(mixPct, 0, 1);
+                    color.lerp(color2, mixPct);
+                    color.a = opacityScale;
+                    
+                    trailMesh.addVertex(curr);
+                    trailMesh.addColor(color);
+                }
+            }
+        }
     };
 	
     void draw(){
         drawBasic3dSphericalVehicle (*this, bodyColor);
-        if(bDrawAnnotations) annotationVelocityAcceleration();
-        if(bDrawTrail) drawTrail(trailColor, tickColor);
+        if (bDrawAnnotations) annotationVelocityAcceleration();
+        if (trailType == BOID_TRAIL_DASHED_LINE) {
+            drawTrail(trailColor, tickColor);
+        }
+        else if (trailType == BOID_TRAIL_SOLID_LINE || trailType == BOID_TRAIL_RIBBONS) {
+            trailMesh.draw();
+        }
     }
 
 

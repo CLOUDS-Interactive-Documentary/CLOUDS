@@ -136,7 +136,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-
+	bDrawCursor = true;
+	
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -146,7 +147,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-
+    saveGUIS();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
@@ -372,6 +373,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
+	
+
+	
     if(bRenderSystem)
     {
 	  
@@ -379,9 +383,13 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
         if(bUseOculusRift){
 			#ifdef OCULUS_RIFT
             getOculusRift().beginBackground();
-            //drawBackground();
+			drawBackgroundGradient();
             getOculusRift().endBackground();
 
+			getOculusRift().beginOverlay(-230, 320,240);
+			selfDrawOverlay();
+			getOculusRift().endOverlay();
+			
             if(bIs2D){
                 CloudsVisualSystem::getSharedRenderTarget().begin();
                 if(bClearBackground){
@@ -398,10 +406,8 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
                 getOculusRift().beginRightEye();
                 draw2dSystemPlane();
                 getOculusRift().endRightEye();
-                //draw our own scene with getSharedRenderTarget on a plane
             }
             else{
-                
                 getOculusRift().baseCamera = &getCameraRef();
                 getOculusRift().beginLeftEye();
                 drawScene();
@@ -430,6 +436,20 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofTranslate(0, ofGetHeight());
 			ofScale(1,-1,1);
 			
+			if(bDrawCursor){
+				ofPushMatrix();
+				ofPushStyle();
+				//	ofNoFill();
+				//	ofSetColor(255, 50);
+				//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+				ofSetColor(240,240,255, 175);
+				ofSetLineWidth(2);
+				ofCircle(ofGetMouseX(), ofGetMouseY(),
+						 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+				ofPopStyle();
+				ofPopMatrix();
+			}
+			
 			selfDrawOverlay();
 			
 			ofPopMatrix();
@@ -440,6 +460,9 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 		
 		//draw the fbo to the screen as a full screen quad
 		if(bDrawToScreen){
+//			if(getSystemName() != "_Intro"){
+//				cout << "Post draw should not have happened";
+//			}
 			selfPostDraw();
 		}
 		
@@ -499,6 +522,24 @@ void CloudsVisualSystem::drawScene(){
 	lightsEnd();
 	
 	glDisable(GL_DEPTH_TEST);
+	
+
+#ifdef OCULUS_RIFT
+	if(bDrawCursor){
+		ofPushMatrix();
+		ofPushStyle();
+		oculusRift.multBillboardMatrix();
+	//	ofNoFill();
+	//	ofSetColor(255, 50);
+	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+		ofSetColor(240,240,255, 175);
+		ofSetLineWidth(2);
+		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
+		ofPopStyle();
+		ofPopMatrix();
+	}
+#endif
+	
 }
 
 void CloudsVisualSystem::setupRGBDTransforms(){
@@ -770,6 +811,14 @@ void CloudsVisualSystem::mouseDragged(ofMouseEventArgs& data)
 
 void CloudsVisualSystem::mouseMoved(ofMouseEventArgs& data)
 {
+#ifdef OCULUS_RIFT
+    // Remap the mouse coords.
+    ofRectangle viewport = getOculusRift().getOculusViewport();
+//    cout << "MOUSE IN: " << data.x << ", " << data.y << " // VIEWPORT: " << viewport.x << ", " << viewport.y << ", " << viewport.width << ", " << viewport.height;
+    data.x = ofMap(data.x, 0, ofGetWidth(), viewport.x, viewport.width);
+    data.y = ofMap(data.y, 0, ofGetHeight(), viewport.y, viewport.height);
+//    cout << "// MOUSE OUT: " << data.x << ", " << data.y << endl;
+#endif
     selfMouseMoved(data);
 }
 
@@ -2726,28 +2775,33 @@ void CloudsVisualSystem::drawNormalizedTexturedQuad()
 
 void CloudsVisualSystem::drawBackground()
 {
-	ofPushStyle();
 	
+	drawBackgroundGradient();
+	
+	ofPushStyle();
+	ofPushMatrix();
+	ofTranslate(0, ofGetHeight());
+	ofScale(1,-1,1);
+	selfDrawBackground();
+	ofPopMatrix();
+	ofPopStyle();
+}
+
+void CloudsVisualSystem::drawBackgroundGradient(){
+
+	ofPushStyle();
+
 	ofEnableAlphaBlending();
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 	ofSetGlobalAmbientColor(ofColor(0,0,0));
 
-//	cout << ofGetFrameNum() <<  "Drawing background for system " << getSystemName() << " " << bgColor->r << " " << bgColor->g << " " << bgColor->b << endl;
-//	cout << ofGetFrameNum() <<  "Drawing background for system " << getSystemName() << " " << bgColor.r/255. << " " << bgColor.g/255. << " " << bgColor.b/255. << endl;
-
-	
-    if(bClearBackground)
+	if(bClearBackground)
 	{
-//		if(!backgroundShaderLoaded){
-//		}
 		
 		if(gradientMode != -1){
-//			cout << "drawing grad " << (bBarGradient ? "BAR" : "CIRCE") << endl;
 			if(bBarGradient){
-//				cout << "drawing bar: ";
 				if(backgroundGradientBar.isAllocated()){
-//					cout << "shader" << endl;
 					backgroundShader.begin();
 					backgroundShader.setUniformTexture("image", backgroundGradientBar, 0);
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
@@ -2777,7 +2831,6 @@ void CloudsVisualSystem::drawBackground()
 				}
 				else{
 					ofSetSmoothLighting(true);
-
 					ofBackgroundGradient(bgColor, bgColor2, OF_GRADIENT_CIRCULAR);
 				}
 			}
@@ -2787,17 +2840,6 @@ void CloudsVisualSystem::drawBackground()
 			ofBackground(bgColor);
 		}
 	}
-
-
-	ofPopStyle();
-	
-
-	ofPushStyle();
-	ofPushMatrix();
-	ofTranslate(0, ofGetHeight());
-	ofScale(1,-1,1);
-	selfDrawBackground();
-	ofPopMatrix();
 	ofPopStyle();
 }
 
@@ -2892,8 +2934,8 @@ void CloudsVisualSystem::selfPostDraw(){
 	else{
 		//draws to viewport
 		CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-														 CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-														 -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+														   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+														  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
 	}
 }
 

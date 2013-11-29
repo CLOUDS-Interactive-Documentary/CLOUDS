@@ -115,13 +115,18 @@ protected:
     void resetLines(); ///< clear only the lines
     void showPanel();//sets the info display panel to visible
     float oldMillis; ///< remembering what time it was
+    bool mouseDrag;
     long clickCount; ///< number of times the user has pressed the mouse button
-    long ball_drop_rate; ///< how fast or slow to release balls
+    
+    
+    float ball_drop_rate; ///< how fast or slow to release balls
     bool paused; ///< freezing the app like pausing the game
     float gravity; ///< strength of gravity pulling towards bottom of screen
     float ballcolor; ///< a gray tone for the color of the ball (0 is black, 1 is white)
-    static float friction; ///< friction multiplier to keep the physics realistic
-    static float frequencyRange; ///< pitch range for ball song
+    float linesColor;
+    float emitterColor;
+    float friction; ///< friction multiplier to keep the physics realistic
+    float frequencyRange; ///< pitch range for ball song
     bool fullScreenMode; ///< whether or not the app is fullscreen
     
     LinkedList *balls; ///< the list of balls

@@ -76,6 +76,8 @@
 		E7176E2B17D3C07500C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2917D3C07500C8DC38 /* CloudsRun.cpp */; };
 		E730A4C617DCC5520088335A /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4BE17DCC5520088335A /* Delaunay.cpp */; };
 		E730A4C717DCC5520088335A /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E730A4C217DCC5520088335A /* ofxDelaunay.cpp */; };
+		E7380340183CC2010018AB96 /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E738033E183CC2010018AB96 /* gCell.cpp */; };
+		E7380341183CC2010018AB96 /* gCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E738033E183CC2010018AB96 /* gCell.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -163,6 +165,7 @@
 		E7920792179CB0FE00FAA959 /* ofxAVFVideoRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E792078E179CB0FE00FAA959 /* ofxAVFVideoRenderer.m */; };
 		E7920797179CB11700FAA959 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920796179CB11700FAA959 /* CoreMedia.framework */; };
 		E7920799179CB11C00FAA959 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7920798179CB11C00FAA959 /* AVFoundation.framework */; };
+		E795821118433E330093FA2D /* CloudsCaption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E795820F18433E330093FA2D /* CloudsCaption.cpp */; };
 		E7BAFBD3176A43780097AC71 /* CloudsSound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */; };
 		E7BAFBED176A4BE20097AC71 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */; };
 		E7BBB4E717A02BB5007D7EC1 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4E517A02BB5007D7EC1 /* CloudsDichotomy.cpp */; };
@@ -197,7 +200,6 @@
 		E7D9F5FD182B03CE00AD56C1 /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */; };
 		E7D9F5FE182B03CE00AD56C1 /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */; };
 		E7D9F605182B03CE00AD56C1 /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */; };
-		E7D9F607182B03CE00AD56C1 /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D93E182B03A400AD56C1 /* cCell.cpp */; };
 		E7D9F608182B03CE00AD56C1 /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */; };
 		E7D9F609182B03CE00AD56C1 /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */; };
 		E7D9F60A182B03CE00AD56C1 /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A6182B03A400AD56C1 /* ParticleConnection.cpp */; };
@@ -515,7 +517,6 @@
 		E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D845182B03A300AD56C1 /* CloudsOrthoCamera.cpp */; };
 		E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D847182B03A300AD56C1 /* CloudsPathCamera.cpp */; };
 		E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */; };
-		E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D93E182B03A400AD56C1 /* cCell.cpp */; };
 		E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */; };
 		E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */; };
 		E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D9D9A6182B03A400AD56C1 /* ParticleConnection.cpp */; };
@@ -871,6 +872,8 @@
 		E730A4C017DCC5520088335A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E730A4C217DCC5520088335A /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
 		E730A4C317DCC5520088335A /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		E738033E183CC2010018AB96 /* gCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gCell.cpp; sourceTree = "<group>"; };
+		E738033F183CC2010018AB96 /* gCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gCell.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -1113,6 +1116,8 @@
 		E792078E179CB0FE00FAA959 /* ofxAVFVideoRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ofxAVFVideoRenderer.m; sourceTree = "<group>"; };
 		E7920796179CB11700FAA959 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E7920798179CB11C00FAA959 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E795820F18433E330093FA2D /* CloudsCaption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsCaption.cpp; sourceTree = "<group>"; };
+		E795821018433E330093FA2D /* CloudsCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsCaption.h; sourceTree = "<group>"; };
 		E79956CD17C27CBB00EF9330 /* Question.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Question.frag; sourceTree = "<group>"; };
 		E79956CE17C27CBC00EF9330 /* Question.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = Question.vert; sourceTree = "<group>"; };
 		E7BAFBD1176A43780097AC71 /* CloudsSound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSound.cpp; sourceTree = "<group>"; };
@@ -1219,8 +1224,6 @@
 		E7D9D848182B03A300AD56C1 /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsPathCamera.h; sourceTree = "<group>"; };
 		E7D9D913182B03A400AD56C1 /* CloudsVisualSystemCities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCities.cpp; sourceTree = "<group>"; };
 		E7D9D914182B03A400AD56C1 /* CloudsVisualSystemCities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCities.h; sourceTree = "<group>"; };
-		E7D9D93E182B03A400AD56C1 /* cCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCell.cpp; sourceTree = "<group>"; };
-		E7D9D93F182B03A400AD56C1 /* cCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCell.h; sourceTree = "<group>"; };
 		E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemColony.cpp; sourceTree = "<group>"; };
 		E7D9D941182B03A400AD56C1 /* CloudsVisualSystemColony.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemColony.h; sourceTree = "<group>"; };
 		E7D9D9A4182B03A400AD56C1 /* CloudsVisualSystemConnectors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemConnectors.cpp; sourceTree = "<group>"; };
@@ -2155,7 +2158,6 @@
 				E7D9EA0B182B03C200AD56C1 /* OpenP5SpaceJunk */,
 				E7D9EAAF182B03C400AD56C1 /* OpenP5Spaghetti */,
 				E7D9EC15182B03C500AD56C1 /* OpenP5SpinningSolids */,
-				E7D9EC46182B03C500AD56C1 /* OpenP5TextUniverse */,
 				E7D9ED1B182B03C600AD56C1 /* Oscillations */,
 				E7D9EE66182B03C600AD56C1 /* Pages */,
 				E7D9EEC8182B03C700AD56C1 /* PaintBrush */,
@@ -2495,6 +2497,8 @@
 				E7F7773E177394CA0096AEF7 /* CloudsVisualSystemRGBD.cpp */,
 				E7F77742177395910096AEF7 /* CloudsQuestion.h */,
 				E7F777411773958F0096AEF7 /* CloudsQuestion.cpp */,
+				E795821018433E330093FA2D /* CloudsCaption.h */,
+				E795820F18433E330093FA2D /* CloudsCaption.cpp */,
 			);
 			path = RGBD;
 			sourceTree = "<group>";
@@ -3209,8 +3213,8 @@
 		E7D9D93D182B03A400AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9D93E182B03A400AD56C1 /* cCell.cpp */,
-				E7D9D93F182B03A400AD56C1 /* cCell.h */,
+				E738033E183CC2010018AB96 /* gCell.cpp */,
+				E738033F183CC2010018AB96 /* gCell.h */,
 				E7D9D940182B03A400AD56C1 /* CloudsVisualSystemColony.cpp */,
 				E7D9D941182B03A400AD56C1 /* CloudsVisualSystemColony.h */,
 			);
@@ -3571,8 +3575,8 @@
 		E7D9E6E7182B03BC00AD56C1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */,
 				E7D9E6E9182B03BC00AD56C1 /* CloudsVisualSystemNeurons.h */,
+				E7D9E6E8182B03BC00AD56C1 /* CloudsVisualSystemNeurons.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3758,7 +3762,8 @@
 			children = (
 				E7D9ECE4182B03C500AD56C1 /* vs_src */,
 			);
-			path = OpenP5TextUniverse;
+			name = OpenP5TextUniverse;
+			path = ../OpenP5TextUniverse;
 			sourceTree = "<group>";
 		};
 		E7D9ECE4182B03C500AD56C1 /* vs_src */ = {
@@ -3776,6 +3781,7 @@
 		E7D9ED1B182B03C600AD56C1 /* Oscillations */ = {
 			isa = PBXGroup;
 			children = (
+				E7D9EC46182B03C500AD56C1 /* OpenP5TextUniverse */,
 				E7D9EE63182B03C600AD56C1 /* vs_src */,
 			);
 			path = Oscillations;
@@ -5117,7 +5123,6 @@
 				E7D9F5FD182B03CE00AD56C1 /* CloudsOrthoCamera.cpp in Sources */,
 				E7D9F5FE182B03CE00AD56C1 /* CloudsPathCamera.cpp in Sources */,
 				E7D9F605182B03CE00AD56C1 /* CloudsVisualSystemCities.cpp in Sources */,
-				E7D9F607182B03CE00AD56C1 /* cCell.cpp in Sources */,
 				E7D9F608182B03CE00AD56C1 /* CloudsVisualSystemColony.cpp in Sources */,
 				E7D9F609182B03CE00AD56C1 /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7D9F60A182B03CE00AD56C1 /* ParticleConnection.cpp in Sources */,
@@ -5255,6 +5260,8 @@
 				E7D15675182D6BE90036E9BA /* GestureRendererInPlace.cpp in Sources */,
 				E7D15676182D6BE90036E9BA /* GestureRendererTraveling.cpp in Sources */,
 				E7FB24CB1830D470009EBD0E /* MazeSettings.cpp in Sources */,
+				E7380340183CC2010018AB96 /* gCell.cpp in Sources */,
+				E795821118433E330093FA2D /* CloudsCaption.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5439,7 +5446,6 @@
 				E7FB257E1830D4C0009EBD0E /* CloudsOrthoCamera.cpp in Sources */,
 				E7FB257F1830D4C0009EBD0E /* CloudsPathCamera.cpp in Sources */,
 				E7FB25801830D4C0009EBD0E /* CloudsVisualSystemCities.cpp in Sources */,
-				E7FB25811830D4C0009EBD0E /* cCell.cpp in Sources */,
 				E7FB25821830D4C0009EBD0E /* CloudsVisualSystemColony.cpp in Sources */,
 				E7FB25831830D4C0009EBD0E /* CloudsVisualSystemConnectors.cpp in Sources */,
 				E7FB25841830D4C0009EBD0E /* ParticleConnection.cpp in Sources */,
@@ -5578,6 +5584,7 @@
 				E7FB26091830D4C0009EBD0E /* GestureRendererTraveling.cpp in Sources */,
 				E7FB260A1830D4C0009EBD0E /* MazeSettings.cpp in Sources */,
 				E7FB28481830D4FF009EBD0E /* ofxOculusRift.cpp in Sources */,
+				E7380341183CC2010018AB96 /* gCell.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5609,7 +5616,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
@@ -5624,7 +5631,7 @@
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -5646,7 +5653,7 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = "AVF_PLAYER=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
@@ -5662,7 +5669,7 @@
 					"$(OF_PATH)/addons/ofxFTGL/libs/FTGL/include",
 					"$(OF_PATH)/addons/ofxOpenSteer/libs/opensteer/include",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -5774,12 +5781,22 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDSDebug;
 				WRAPPER_EXTENSION = app;
@@ -5883,12 +5900,22 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = CLOUDS;
 				WRAPPER_EXTENSION = app;
