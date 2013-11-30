@@ -31,9 +31,13 @@ public:
     Tweeter(string _name, int _id);
     string name;
     int ID;
+    ofVec3f position;
+    
+    
     
     vector<Tweet> tweets;
     vector<string> userLinks;
+    vector<int> linksById;
 
 };
 
