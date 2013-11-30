@@ -37,6 +37,7 @@ public:
     
     vector<Tweet> tweets;
     vector<string> userLinks;
+    vector<int> linksById;
 
 };
 

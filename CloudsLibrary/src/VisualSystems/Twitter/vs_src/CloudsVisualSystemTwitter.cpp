@@ -15,7 +15,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     loadJSONData();
 //    createPajekNetwork();
     //  mesh.
-    parseClusterNetwork(getVisualSystemDataPath() +"cloudsTwitterNetwork.net");
+    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
 
 }
 
@@ -100,6 +100,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
 void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	ofBuffer pajekFile = ofBufferFromFile(fileName);
 	bool findingNodes = false;
+    bool findingEdges = false;;
 	while(!pajekFile.isLastLine()){
 		string line = pajekFile.getNextLine();
 		
@@ -113,39 +114,66 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             
 		}
 		if (line.find("*Edgeslist") != string::npos ) {
-			break;
+			findingNodes = false;
+            findingEdges = true;
+            continue;
 		}
 		
 		if(findingNodes){
 			vector<string> components = ofSplitString(line, " ");
-			//string linkName = ofSplitString(line, "\"")[1];
-			
-//            0 "@AaronKoblin" 0.257963 0.632594 -0.0756239
+
             int id = ofToInt(components[0]);
             
             Tweeter& tweeter = getTweeterByID(tweeters, id);
             
-            cout<<tweeter.name<<" : "<<components[1]<<endl;
+//            cout<<tweeter.name<<" : "<<components[1]<<endl;
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
 
 			tweeter.position = ofVec3f(ofToFloat(components[2]),
 										   ofToFloat(components[3]),
 										   ofToFloat(components[4]));
-            
-            mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-            mesh.setupIndicesAuto();
-            mesh.addVertex(tweeter.position);
-
-            max  =ofVec3f(MAX(tweeter.position.x,max.x),
-                          MAX(tweeter.position.y,max.y),
-                          MAX(tweeter.position.z,max.z));
-            
 		}
+        
+        if(findingEdges){
+			vector<string> components = ofSplitString(line, " ");
+            int id = ofToInt(components[0]);
+            //428 4 8 9 11 15 17 18
+
+            Tweeter& tweeter = getTweeterByID(tweeters, id);
+            cout<<tweeter.name<<"  has "<<" "<<tweeter.ID<<"  "<<(components.size()-2)<<" links."<<endl;
+            for(int i =1; i< components.size()-1; i++){
+                if(tweeter.ID != ofToInt(components[i]) ){
+                    tweeter.linksById.push_back(ofToInt(components[i]));
+                }
+                else{
+                    cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
+                }
+                cout<<i<<" : "<<components[i]<<endl;
+            }
+        }
+        
 	}
-	
 }
 
+void CloudsVisualSystemTwitter::loadMesh(){
+    ofVec3f centroid;
+    
+    for(int i=0; tweeters.size(); i++){
+        mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+        mesh.setupIndicesAuto();
+        mesh.addVertex(tweeters[i].position);
+        
+        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
+                      MAX(tweeters[i].position.y,max.y),
+                      MAX(tweeters[i].position.z,max.z));
+        
+        centroid += tweeters[i].position;
+    }
+    
+    centroid /= tweeters.size();
+
+}
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
     
     vector<string> names;
@@ -302,9 +330,13 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-//    cam.begin();
     ofScale(10, 10);
     mesh.drawWireframe();
+//    cam.begin();
+    ofEnablePointSprites();
+
+    mesh.drawVertices();
+    ofDisablePointSprites();
 //    cam.end();
 }
 

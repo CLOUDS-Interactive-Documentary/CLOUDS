@@ -103,6 +103,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     vector<pair<string,string> > links;
     map<string,int> numberOfMentions;
     void parseClusterNetwork(string fileName);
+    void loadMesh();
     Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
 	
     // if you use a custom camera to fly through the scene
@@ -125,5 +126,6 @@ protected:
     ofVboMesh mesh;
     ofVec3f min,max;
     ofEasyCam cam;
+
 	
 };
