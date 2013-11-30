@@ -55,8 +55,9 @@ public:
     
 private:
     
-    ofVbo   vbo;
+    ofVboMesh   vbo;
     ofShader    noiseShader;
+    ofShader balls;
     
     colonyPartitionMap pMap;
     
@@ -67,5 +68,6 @@ private:
     int newbornCount;
     
     /*  PARAMS */
+    cellParams params;
     int numInitialCells;
 };
