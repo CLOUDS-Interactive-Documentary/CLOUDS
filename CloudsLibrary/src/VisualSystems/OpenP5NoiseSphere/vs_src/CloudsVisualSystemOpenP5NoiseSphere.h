@@ -167,12 +167,7 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 
 protected:
-    
-    //  Your Stuff
-    //
-	
-	ofxUISuperCanvas* customGui;
-
+    ofxUISuperCanvas* customGui;
     ofxUISuperCanvas* audioGui;
 	
     int count = 10000;
@@ -184,22 +179,23 @@ protected:
     float noisePosition;
 	float noiseSpeed;
 	float noiseScale;
-	float furLength;
+    
+	float hairLength;
+    float minHairLineWidth;
+    float maxHairLineWidth;
 	
-    //inner sphere
-    
-    void        loadVbo(ofVboMesh &_vbo, string _file);
-    
-    float       wireSphereScale, solidSphereScale, haloSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+    float sphereSize;
 
 	float * leftBuffer;
     float * rightBuffer;
     int numAmplitudesPerChannel;
     bool bAudioBuffered;
     
+    ofFloatColor sphereColor;
     ofFloatColor minBaseColor, maxBaseColor;
     ofFloatColor minTipColor, maxTipColor;
+    
+    float currLevel;
     
     bool * peakToggles;
     float combinedPeak;
