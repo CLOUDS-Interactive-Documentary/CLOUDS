@@ -43,6 +43,7 @@
 	bool pause;
 	bool resetCamera;
 	
+    
 	ofFbo framebuffer;
 	vector<CloudsClip> selectedClips;
 
@@ -67,16 +68,24 @@
 	bool calculatedHistogram;
 	ofPolyline histogram;
 	
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
+    float skinThresholdLower;
+    float skinThresholdUpper;
+    ofShader shaderSkinDetection;
+    
 	ofxCv::ContourFinder contours;
 	float contourThreshold;
 	float minBlobSize;
 	bool selectColor;
 	bool selectFace;
-	ofColor targetColor;
+	ofFloatColor targetColor;
 	ofVec2f facePosition;
 	ofxDepthImageCompressor compressor;
 	ofxDepthHoleFiller filler;
-    
+	ofRectangle videoRect;
+
 	//0 - 1 clip position
 	float clipPosition;
 	
@@ -107,6 +116,8 @@
 - (IBAction)loadClipForAlignment:(id)sender;
 - (IBAction)exportSelection:(id)sender;
 - (IBAction)cancelExport:(id)sender;
+
+- (void) runSelectionsAtPoint:(ofVec2f)p;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

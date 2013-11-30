@@ -348,7 +348,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
-		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
+//		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
 	}
 	
 	adjustTranslate.x = adjustmentSettings.getValue("adjustment:translate:x", 0.);
@@ -366,17 +366,26 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
-	contourTargetColor = ofColor(adjustmentSettings.getValue("adjustment:extraction:colorr", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorg", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorb", 255));
-	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+	skinTargetColor = ofFloatColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
 	
-	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
+//	cout << "loaded skin target color " << skinTargetColor << endl;
 	
-	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
-						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
+	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
+    skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
+    skinHueWeight = adjustmentSettings.getValue("adjustment:skin:hueWeight", 0.5);
+    skinSatWeight = adjustmentSettings.getValue("adjustment:skin:satWeight", 0.5);
+    skinBrightWeight = adjustmentSettings.getValue("adjustment:skin:brightWeight", 0.5);
+
+//	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+//	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
 	
-    
+	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
+						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
+	
+//    cout << "loaded face coord color " << faceCoord << endl;
+	
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -416,18 +425,34 @@ void CloudsClip::saveAdjustmentToXML(){
     
 	alignmentSettings.addTag("extraction");
 	alignmentSettings.pushTag("extraction");
+    /*
 	alignmentSettings.addValue("colorr", contourTargetColor.r);
 	alignmentSettings.addValue("colorg", contourTargetColor.g);
 	alignmentSettings.addValue("colorb", contourTargetColor.b);
+     
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
+    */
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
+
 	
-	
-	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	//cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
+
+    ///SM ADDED
+    alignmentSettings.addTag("skin");
+    alignmentSettings.pushTag("skin");
+    alignmentSettings.addValue("targetR",skinTargetColor.r);
+    alignmentSettings.addValue("targetG",skinTargetColor.g);
+    alignmentSettings.addValue("targetB",skinTargetColor.b);
+    alignmentSettings.addValue("hueWeight", skinHueWeight);
+    alignmentSettings.addValue("satWeight",skinSatWeight);
+    alignmentSettings.addValue("brightWeight", skinBrightWeight);
+    alignmentSettings.addValue("lowerThreshold", skinLowerThreshold);
+    alignmentSettings.addValue("upperThreshold",skinUpperThreshold);
+    alignmentSettings.popTag();//skin
     
 	alignmentSettings.popTag(); //adjustment
 	

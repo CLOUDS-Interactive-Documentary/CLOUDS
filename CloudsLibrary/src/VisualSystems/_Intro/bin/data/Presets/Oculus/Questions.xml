@@ -1,14 +1,14 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Questions</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>218.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>286.000000000</XPosition>
+    <YPosition>22.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Size</Name>
-    <Value>1.945812821</Value>
+    <Value>3.522167444</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,17 +23,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Tug Min Distance</Name>
-    <Value>32.857143402</Value>
+    <Value>58.571426392</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tug Max Distance</Name>
-    <Value>165.714202881</Value>
+    <Value>127.142860413</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Tug Min Depth</Name>
-    <Value>126.600982666</Value>
+    <Value>58.669952393</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

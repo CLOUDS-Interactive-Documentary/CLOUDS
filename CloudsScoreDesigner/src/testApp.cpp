@@ -20,7 +20,7 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = false;
+    storyEngine.combinedClipsOnly = false; // true if using a clips drive
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);

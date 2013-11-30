@@ -136,7 +136,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 	bBarGradient = false;
     bMatchBackgrounds = false;
 	bIs2D = false;
-
+	bDrawCursor = true;
+	
 #ifdef OCULUS_RIFT
 	bUseOculusRift = true;
 #else
@@ -146,7 +147,7 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-
+    saveGUIS();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
@@ -372,6 +373,9 @@ void CloudsVisualSystem::update(ofEventArgs & args)
 void CloudsVisualSystem::draw(ofEventArgs & args)
 {
     ofPushStyle();
+	
+
+	
     if(bRenderSystem)
     {
 	  
@@ -431,6 +435,20 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 			ofPushMatrix();
 			ofTranslate(0, ofGetHeight());
 			ofScale(1,-1,1);
+			
+			if(bDrawCursor){
+				ofPushMatrix();
+				ofPushStyle();
+				//	ofNoFill();
+				//	ofSetColor(255, 50);
+				//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+				ofSetColor(240,240,255, 175);
+				ofSetLineWidth(2);
+				ofCircle(ofGetMouseX(), ofGetMouseY(),
+						 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+				ofPopStyle();
+				ofPopMatrix();
+			}
 			
 			selfDrawOverlay();
 			
@@ -507,17 +525,19 @@ void CloudsVisualSystem::drawScene(){
 	
 
 #ifdef OCULUS_RIFT
-	ofPushMatrix();
-	ofPushStyle();
-	oculusRift.multBillboardMatrix();
-//	ofNoFill();
-//	ofSetColor(255, 50);
-//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-	ofSetColor(240,240,255, 175);
-	ofSetLineWidth(2);
-	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
-	ofPopStyle();
-	ofPopMatrix();
+	if(bDrawCursor){
+		ofPushMatrix();
+		ofPushStyle();
+		oculusRift.multBillboardMatrix();
+	//	ofNoFill();
+	//	ofSetColor(255, 50);
+	//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+		ofSetColor(240,240,255, 175);
+		ofSetLineWidth(2);
+		ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, .15, .1, true, ofxEasingQuad()));
+		ofPopStyle();
+		ofPopMatrix();
+	}
 #endif
 	
 }

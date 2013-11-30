@@ -22,7 +22,7 @@ float _C::danceFreq = 0;
 float _C::danceOffset = 0;
 bool _C::renderNeurons = true;
 jtn::Box _C::boundingBox;
-bool _C::colorMode = true;
+float _C::colorMix = 0.0;
 bool _C::renderCamPath = true;
 void _C::selfSetup(){
     rotation = 0;
@@ -57,7 +57,7 @@ void _C::selfSetupGuis(){
 
     
     rdrGui->addToggle("Show Neurons", &renderNeurons);
-    rdrGui->addToggle("Depth Coloring", &colorMode);
+    rdrGui->addSlider("Depth Coloring", 0.0, 1.0, &_C::colorMix);
     rdrGui->addToggle("Show Camera Path", &renderCamPath);
 }
 
@@ -237,15 +237,12 @@ void _C::generateFlythrough(){
     _N *thisNode = NULL;
     vector<jtn::TreeNode*>::iterator nit = _N::all.begin();
     for(;nit!=_N::all.end();nit++){
-        
         if( (*nit)->isTerminal() ){
-            
             if((*nit)->generation > youngestGen) {
                 youngestGen = (*nit)->generation;
                 thisNode = (*nit);
             }
         }
-        
     }
     
     
@@ -255,10 +252,10 @@ void _C::generateFlythrough(){
     
     float camPosOffset = 1.5;
     
-    while( thisNode->parent != NULL  ){
-        
+	//this node is null??
+    while(thisNode != NULL && thisNode->parent != NULL  ){
+
         thisNode->isPartOfCamPath = true;
-        
         cloudsPathCam.addPositionControlVertex( *thisNode);
         //cloudsPathCam.addTargetControlVertex(ofVec3f());
         //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
@@ -268,7 +265,8 @@ void _C::generateFlythrough(){
         
         if( thisNode->parent != NULL ){
             thisNode = thisNode->parent;
-        }else{
+        }
+		else{
             break;
         }
     }
@@ -277,18 +275,17 @@ void _C::generateFlythrough(){
     // rather than seeing where the loop wraps around.
     
     deque<ofVec3f>::reverse_iterator pit = pts.rbegin();
-    for(;pit!=pts.rend();pit++){
+    for(; pit != pts.rend(); pit++){
         cloudsPathCam.addPositionControlVertex( *pit);
         //cloudsPathCam.addTargetControlVertex(ofVec3f());
         //cloudsPathCam.addUpControlVertex(ofVec3f(1,0,0));
     }
-    
+
     // orient cam path to look inward,
-    // so we always start out seeing something full
+    // so we always start out seeing something nefull
     ofCamera& cam = getCameraRef();
     cam.lookAt( -firstPoint );
 }
-
 
 ofCamera& _C::getCameraRef(){
     if(cloudsPathCam.getPositionSpline().getControlVertices().size()==0 ){
@@ -433,19 +430,20 @@ void _C::selfDraw(){
     if(renderNeurons){
         
         _N::drawMode = GL_LINES;
-        
+        ofMesh m;
         // for all root nodes:
         vector<_N*>::iterator it;
         int tCount=0;
         for(it=rootNodes.begin();it!=rootNodes.end();it++){
             
             //draw a nookilus right where the node is.
-            glPushMatrix();
-            glTranslatef((*it)->x,(*it)->y,(*it)->z);
-            glColor4f((*it)->r,(*it)->g,(*it)->b,_C::alpha);
+            ofPushMatrix();
+            ofTranslate((*it)->x,(*it)->y,(*it)->z);
+            ofSetColor( ofFloatColor( (*it)->r,(*it)->g,(*it)->b,_C::alpha) );
+			
 			//TODO: use ofSphere as GLUT will leave with of 0.8
             glutSolidSphere(nucleusSize->getScaledValue(),8,8);
-            glPopMatrix();
+            ofPopMatrix();
             
             //tell the thing to draw a line for itself.
             (*it)->draw();
@@ -456,7 +454,6 @@ void _C::selfDraw(){
         glPointSize(dotSize);
         //glBegin(GL_POINTS);		
 //        glColor3f(1,1,1);
-        ofMesh m;
         // for all terminals
         for(it=_N::terminals.begin();it!=_N::terminals.end();it++){
 //            glVertex3f( (*it)->x,
@@ -474,9 +471,10 @@ void _C::selfDraw(){
 	ofPopMatrix();
 	
     ofSetColor(255);
-    stringstream fps;
-    fps << "FPS: " << ofGetFrameRate();
-    cout << fps.str() << endl;
+//    stringstream fps;
+//    fps << "FPS: " << ofGetFrameRate();
+//    cout << fps.str() << endl;
+	
 	ofPopStyle();
 	glPopAttrib();
     
@@ -613,18 +611,17 @@ void _N::draw(){
 	for(that=children.begin(); that!=children.end();that++){
 		
         if(isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
-            glColor4f(1,0,0, 1);
+			ofSetColor(255,0,0,255);
         }else{
-            if(_C::colorMode){
-                glColor4f(worldNormPos.x,worldNormPos.y,worldNormPos.z, _C::alpha);
-            }else{
-                glColor4f(r, g, b, _C::alpha);
-            }
+            ofSetColor(ofFloatColor(ofLerp(worldNormPos.x, r, _C::colorMix),
+									ofLerp(worldNormPos.y, g, _C::colorMix),
+									ofLerp(worldNormPos.z, b, _C::colorMix),
+									_C::alpha));
         }
 
         
         if(drawMode==GL_LINES){
-            glLineWidth( ( 1 - (generation+1) / (float)maxDepth) * _C::axonThickness );
+            ofSetLineWidth( ( 1 - (generation+1) / (float)maxDepth) * _C::axonThickness );
             glBegin(GL_LINES);
         }
         
@@ -634,21 +631,18 @@ void _N::draw(){
 		_N *t = *that;
         
         if(t->isPartOfCamPath && _C::renderCamPath && ofGetFrameNum() % 8 > 4){
-            glColor4f(1,0,0, 1);
+            ofSetColor(255,0,0,255);
         }else{
-            
-            if(_C::colorMode){
-                jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
-                glColor4f(worldNormPos2.x,worldNormPos2.y,worldNormPos2.z, _C::alpha);
-
-            }else{
-                glColor4f(t->r, t->g, t->b, _C::alpha);
-            }
+            jtn::PointD worldNormPos2 = _C::boundingBox.getNormalized( t->screenSpace );
+            ofSetColor(ofFloatColor(ofLerp(worldNormPos2.x, t->r, _C::colorMix),
+									ofLerp(worldNormPos2.y, t->g, _C::colorMix),
+									ofLerp(worldNormPos2.z, t->b, _C::colorMix),
+									_C::alpha));
         }
         
 
 		
-		if( !(drawMode==GL_POINTS && t->isTerminal()) )
+		if( !(drawMode == GL_POINTS && t->isTerminal()) )
 			glVertex3f(t->x,t->y,t->z);
         
         if(drawMode==GL_LINES){

@@ -116,7 +116,7 @@ class CloudsAct{
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
     CloudsEvents& getEvents();
     
-protected:
+  protected:
 
     ofxTimeline timeline;
     ofxTLFlags* visualSystemsTrack;

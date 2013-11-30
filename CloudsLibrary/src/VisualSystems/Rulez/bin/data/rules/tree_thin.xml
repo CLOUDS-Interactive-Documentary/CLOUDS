@@ -1,0 +1,31 @@
+<rules maxDepth="300" primitive="triangles">
+    <ruleSet name="start">
+        <rule weight="100">
+            <transform transforms="ty -200" next="test"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="test">
+        <rule weight="100">
+            <cube size="2" transforms="ty 4 rx 1 sa 0.995" next="test"/>
+        </rule>
+        <rule weight="100">
+            <cube size="2" transforms="ty 4 rx 1 ry 1 sa 0.995" next="test"/>
+        </rule>
+        <rule weight="100">
+            <cube size="2" transforms="ty 4 rx 1 rz -2 sa 0.995" next="test"/>
+        </rule>
+        <rule weight="6">
+            <transform transforms="rx 15" next="test"/>
+            <transform transforms="ry 180" next="test"/>
+        </rule>
+        <rule weight="20">
+            <cube colour="255 214 228" transforms="tx 2 ry 60 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 120 sa 10"/>
+            <cube colour="255 214 228" transforms="tx 2 ry 180 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 240 sa 10"/>
+            <cube colour="255 214 228" transforms="tx 2 ry 300 sa 10"/>
+            <cube size="0.3" colour="255 184 254" transforms="tx 2 ry 360 sa 10"/>
+            <cube next="test">
+        </rule>
+    </ruleSet>
+</rules>

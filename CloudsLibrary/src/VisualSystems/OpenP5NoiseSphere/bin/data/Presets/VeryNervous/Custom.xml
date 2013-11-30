@@ -1,0 +1,33 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Solid_Sphere_Scale</Name>
+    <Value>0.250000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Solid_Sphere_Alpha</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Noise Speed</Name>
+    <Value>5.665024757</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Noise Scale</Name>
+    <HighValue>0.137931034</HighValue>
+    <LowValue>0.000000000</LowValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Fur Length</Name>
+    <Value>0.985221684</Value>
+</Widget>

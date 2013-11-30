@@ -50,7 +50,7 @@ class CloudsSound {
     // Luke's stuff
 	//
     void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm);
     void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
@@ -65,9 +65,6 @@ class CloudsSound {
     int returnColor(string c);
     int first_vec;
     float allownote;
-    int mharmony, mrhythm;
-    vector<string> morch;
-    string mbank;
 
     float MASTERAMP;
     float MASTERTEMPO;

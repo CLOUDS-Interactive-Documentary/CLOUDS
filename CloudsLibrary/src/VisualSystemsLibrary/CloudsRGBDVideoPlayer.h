@@ -74,11 +74,11 @@ public:
     void update(ofEventArgs& args);
 	
 #ifdef AVF_PLAYER
-	ofxAVFVideoPlayer currentPlayer;
-	ofxAVFVideoPlayer nextPlayer;
+	ofPtr<ofxAVFVideoPlayer> currentPlayer;
+	ofPtr<ofxAVFVideoPlayer> nextPlayer;
 #else
-	ofVideoPlayer currentPlayer;
-	ofVideoPlayer nextPlayer;
+	ofPtr<ofVideoPlayer> currentPlayer;
+	ofPtr<ofVideoPlayer> nextPlayer;
 #endif
 	
     //  RGB

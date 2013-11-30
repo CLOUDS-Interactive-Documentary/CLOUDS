@@ -69,6 +69,12 @@ void CloudsRGBDCamera::update(ofEventArgs& args){
 	}
 }
 
+
+void CloudsRGBDCamera::jumpToPosition(){
+	mouseBasedNode.setPosition(currentPosition);
+	mouseBasedNode.lookAt(currentLookTarget);	
+}
+
 void CloudsRGBDCamera::setPositionFromMouse(){
 	
 	float percentOnCurve = ofMap(ofGetMouseX(), ofGetWidth()*.2, ofGetWidth()*.8, 0, 1, true);

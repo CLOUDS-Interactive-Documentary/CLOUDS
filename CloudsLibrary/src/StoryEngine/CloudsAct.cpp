@@ -27,6 +27,7 @@ void CloudsAct::play(){
     CloudsActEventArgs args(this);
     ofNotifyEvent(events.actBegan, args);
 	
+	timeline.setCurrentTimeMillis(0);
 	timeline.play();
 }
 
@@ -39,9 +40,9 @@ void CloudsAct::populateTime(){
     timeline.setup();
 	timeline.setMinimalHeaders(true);
 	timeline.disableEvents();
-	
     timeline.clear();
-    
+	
+	timeline.setLoopType(OF_LOOP_NONE);
     timeline.setDurationInSeconds(duration);
 	timeline.setPageName("story");
     topicsTrack = timeline.addFlags("Topics");

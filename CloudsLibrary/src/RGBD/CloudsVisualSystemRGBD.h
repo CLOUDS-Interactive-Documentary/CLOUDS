@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "CloudsVisualSystem.h"
 //#include "ParticleConnectionGenerator.h"
+#include "CloudsCaption.h"
 #include "CloudsQuestion.h"
 #include "GPUParticles/Controller.h"
 #include "ofxGameCamera.h"
@@ -36,6 +37,10 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void clearQuestions();
     bool isQuestionSelectedAndClipDone();
     CloudsQuestion* getSelectedQuestion();
+    
+    ofxFTGLFont captionFont;
+    void rebuildCaptionFont();
+    int captionFontSize;
 	
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
@@ -54,6 +59,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+	float visualSystemFadeValue;
 	
 	//???: LB- I changed this so that we could use the "transitionCam" to position our in and out nodes
 	ofCamera& getCameraRef(){
@@ -97,10 +103,11 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	ofxUISuperCanvas *connectorGui;
 	
 	ofxFTGLSimpleLayout displayFont;
-	ofMesh horizontalScanLines;
-	ofMesh verticalScanLines;
-	ofMesh pointGrid;
-	ofMesh randomPoints;
+	
+	ofVboMesh horizontalScanLines;
+	ofVboMesh verticalScanLines;
+	ofVboMesh pointGrid;
+	ofVboMesh randomPoints;
 	
 //	ParticleConnectionGenerator generator;
 	GPUParticles::Controller particulateController;
@@ -112,6 +119,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	CloudsQuestion* caughtQuestion;
     CloudsQuestion* selectedQuestion;
 	ofVec4f pointColor;
+    
+    CloudsCaption cloudsCaption;
 
 	ofVec2f scanlineSimplify;
 	
@@ -193,5 +202,7 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	
 	float transitionVal;
 	
+    //caption
+    static map<string, int> appearances;
 	
 };

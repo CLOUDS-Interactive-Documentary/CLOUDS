@@ -22,7 +22,22 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>DunesAtNightOC</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DuskOcean_JG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>Exoplanet_dusk_walk</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Exoplanet_dusk_walkOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -63,6 +78,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Glum</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GlumOC</Name>
     <Value>0</Value>
 </Widget>
 <Widget>

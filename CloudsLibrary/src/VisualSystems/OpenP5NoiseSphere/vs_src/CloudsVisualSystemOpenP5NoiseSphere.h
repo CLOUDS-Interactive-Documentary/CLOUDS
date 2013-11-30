@@ -12,6 +12,16 @@
 
 #include "CloudsVisualSystem.h"
 
+#ifdef AVF_PLAYER
+#include "ofxAVFVideoPlayer.h"
+#endif
+// TODO: Deal with case when AVF_PLAYER is not #defined
+
+#include "fft.h"
+#include "fftOctaveAnalyzer.h"
+
+#define BUFFER_SIZE 512
+
 class Hair {
   public:
 	float radius;
@@ -19,6 +29,11 @@ class Hair {
 	float phi;
 	float largo;
 	float theta;
+    
+    static float * levelScaleLookUp;
+    
+    static float minNoiseScale;
+    static float maxNoiseScale;
 	
 	Hair(float radius) : radius(radius){
 		z = ofRandom(-radius, radius);
@@ -27,27 +42,33 @@ class Hair {
 		theta = asin(z/radius);
 	}
 	
-	void draw(ofMesh& mesh, float noisePosition, float noiseScale, float solidSphereAlpha, float hairScale) {
+	void draw(ofMesh& mesh, float noisePosition, float hairScale, float scrollY) {
+		float x = radius * cos(theta) * cos(phi);
+		float y = radius * cos(theta) * sin(phi);
+		float z = radius * sin(theta);
+        
+        float noiseScale = ofMap(ABS(y - scrollY), 0, radius, maxNoiseScale, minNoiseScale);
+        
 		float off = (ofNoise(noisePosition * 0.0005, sin(phi)) - 0.5) * 0.3 * noiseScale;
 		float offb = (ofNoise(noisePosition * 0.0007, sin(z) * 0.01)-0.5) * 0.3 * noiseScale;
 		
 		float thetaff = theta+off;
 		float phff = phi+offb;
-		float x = radius * cos(theta) * cos(phi);
-		float y = radius * cos(theta) * sin(phi);
-		float z = radius * sin(theta);
 		
-		//mouse x & y
+        //mouse x & y
 //		float msx= screenX(x, y, z);
 //		float msy= screenY(x, y, z);
+        
+        // add a scalar based on distance from levelScale
+        int i = roundf(y + radius);  // Range: [0, radius * 2]
 		
 		float xo = radius * cos(thetaff) * cos(phff);
 		float yo = radius * cos(thetaff) * sin(phff);
 		float zo = radius * sin(thetaff);
 		
-		float xb = xo * largo * hairScale;
-		float yb = yo * largo * hairScale;
-		float zb = zo * largo * hairScale;
+		float xb = xo * largo * hairScale * levelScaleLookUp[i];
+		float yb = yo * largo * hairScale * levelScaleLookUp[i];
+		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
 
 		mesh.addColor(ofFloatColor::black);
@@ -80,6 +101,9 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 	//use render gui for display settings, like changing colors
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
+    
+    void selfSetupAudioGui();
+    void guiAudioEvent(ofxUIEventArgs &e);
 
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
@@ -145,6 +169,8 @@ protected:
     //
 	
 	ofxUISuperCanvas* customGui;
+
+    ofxUISuperCanvas* audioGui;
 	
 	ofFloatColor color1HSB;
 	ofFloatColor color2HSB;
@@ -167,6 +193,34 @@ protected:
     float       wireSphereScale, solidSphereScale, haloSphereScale;
     float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
 
-	
-
+	float * leftBuffer;
+    float * rightBuffer;
+    int numAmplitudesPerChannel;
+    bool bAudioBuffered;
+    
+    bool * peakToggles;
+    float combinedPeak;
+    float furPeakScalar;
+    
+    float magnitude[2][BUFFER_SIZE];
+    float phase[2][BUFFER_SIZE];
+    float power[2][BUFFER_SIZE];
+    float freq[2][BUFFER_SIZE/2];
+    fft	fft[2];
+    FFTOctaveAnalyzer fftAnalyzer[2];
+    
+    ofxAVFVideoPlayer videoPlayer;
+    
+    float scrollY;
+    float scrollSpeed;
+    float scrollAng;
+    
+    float levelOffset;
+    float levelScale;
+    float levelDecayRate;
+    bool bInvertLevel;
+    
+    bool bLevelToNoise;
+    float levelToNoiseScale;
+    float levelToNoiseRatio;
 };

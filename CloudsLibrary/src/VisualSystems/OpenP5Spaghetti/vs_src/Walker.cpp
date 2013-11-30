@@ -16,9 +16,10 @@ float Walker::noiseSpeedx = .01f;
 float Walker::noiseSpeedy = .01f;
 float Walker::noiseSpeedz = .01f;
 
-bool Walker:: drawPoints = true;
-bool Walker:: drawLines = false;
-//bool Walker:: drawTriangles = false;
+bool Walker::drawPoints = true;
+//bool Walker::drawLines = false;
+//bool Walker::drawTriangles = false;
+float Walker::lineWidth = 1.0f;
 
 float Walker::saturation = .3;
 float Walker::brightness = .9;
@@ -30,7 +31,7 @@ float Walker:: nParticles = 40;
 Walker::Walker(){
     
     drawPoints = true;
-    drawLines = false;
+//    drawLines = false;
 //    drawTriangles = false;
 	
 }
@@ -212,9 +213,9 @@ void Walker::draw(){
        
         mesh.drawVertices();
     }
-    else if(drawLines == true){
+//    else if(drawLines == true){
+    else {
         mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
-       
         mesh.drawVertices();
     }
   /*
