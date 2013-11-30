@@ -12,6 +12,9 @@ float * Hair::levelScaleLookUp = NULL;
 float Hair::minNoiseScale = 0.5f;
 float Hair::maxNoiseScale = 1.0f;
 
+ofFloatColor Hair::baseColor = ofFloatColor::black;
+ofFloatColor Hair::tipColor  = ofFloatColor::white;
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 
@@ -21,22 +24,30 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+    customGui->addSlider("SPHERE SCALE", 0.0, 75, &sphereSize);
+    customGui->addSlider("NOISE SPEED", 0.0, 10.0, &noiseSpeed);
+    customGui->addRangeSlider("NOISE SCALE", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
     
-    customGui->addLabel("Solid Sphere");
-    customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
-    customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-
+    customGui->addSpacer();
+    customGui->addSlider("SPHERE HUE", 0.0f, 1.0f, &sphereColor.r);
+    customGui->addSlider("SPHERE SAT", 0.0f, 1.0f, &sphereColor.g);
+    customGui->addSlider("SPHERE BRI", 0.0f, 1.0f, &sphereColor.b);
+    customGui->addSlider("SPHERE ALPHA", 0.0f, 1.0f, &sphereColor.a);
     
-    customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
-    customGui->addRangeSlider("Noise Scale", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
-    customGui->addSlider("Fur Length", 0.0, 4., &furLength);
+    customGui->addSpacer();
+    customGui->addSlider("HAIR LENGTH", 0.0, 4., &hairLength);
+    customGui->addRangeSlider("HAIR LINE WIDTH", 0.1f, 10.0f, &minHairLineWidth, &maxHairLineWidth);
+    
+    customGui->addSpacer();
+    customGui->addRangeSlider("BASE HUE", 0.0f, 1.0f, &minBaseColor.r, &maxBaseColor.r);
+    customGui->addRangeSlider("BASE SAT", 0.0f, 1.0f, &minBaseColor.g, &maxBaseColor.g);
+    customGui->addRangeSlider("BASE BRI", 0.0f, 1.0f, &minBaseColor.b, &maxBaseColor.b);
+    customGui->addRangeSlider("BASE ALPHA", 0.0f, 1.0f, &minBaseColor.a, &maxBaseColor.a);
+    customGui->addSpacer();
+    customGui->addRangeSlider("TIP HUE", 0.0f, 1.0f, &minTipColor.r, &maxTipColor.r);
+    customGui->addRangeSlider("TIP SAT", 0.0f, 1.0f, &minTipColor.g, &maxTipColor.g);
+    customGui->addRangeSlider("TIP BRI", 0.0f, 1.0f, &minTipColor.b, &maxTipColor.b);
+    customGui->addRangeSlider("TIP ALPHA", 0.0f, 1.0f, &minTipColor.a, &maxTipColor.a);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
 	guis.push_back(customGui);
@@ -45,10 +56,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     selfSetupAudioGui();
 }
 
-void CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent(ofxUIEventArgs &e){
-//	if(e.widget->getName() == "Custom Button"){
-//		cout << "Button pressed!" << endl;
-//	}
+void CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent(ofxUIEventArgs &e)
+{
+
 }
 
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
@@ -126,6 +136,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     peakToggles = NULL;
     bAudioBuffered = false;
     
+    sphereSize = 75.0f;
+    hairLength = 1.0f;
+    minHairLineWidth = maxHairLineWidth = 0.1f;
+    
+    currLevel = 0;
+    
+    sphereColor = ofFloatColor::gray;
+    minBaseColor = maxBaseColor = ofFloatColor::black;
+    minTipColor  = maxTipColor  = ofFloatColor::white;
+    
 //    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
 //    string filePath = "TestVideo/Fernanda_social_network_hairballs";
 //    string filePath = "TestVideo/Jer_TestVideo";
@@ -181,15 +201,6 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     bLevelToNoise = false;
     levelToNoiseScale = 50;
     levelToNoiseRatio = 0.5f;
-	
-    wireSphereScale = 0.9333;
-    solidSphereScale = 0.8666;
-    wireSphereAlpha = 0.0784;
-    solidSphereAlpha = 1.0;
-    
-    ofEnableSmoothing();
-    ofSetLineWidth(.1);
-
 }
 
 
@@ -267,7 +278,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         //    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
         
         // calculate hairball level scales based on amplitude and scrolling y-value
-        float currLevel = ABS(videoPlayer.getAmplitude());
+        currLevel = ABS(videoPlayer.getAmplitude());
         ((ofxUISlider *)audioGui->getWidget("LEVEL"))->setValue(currLevel);
         
         if (bLevelToNoise) {
@@ -287,6 +298,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
             Hair::levelScaleLookUp[i] = MAX(Hair::levelScaleLookUp[i] * (0.9f + levelDecayRate * 0.1f), newLevelScale);
         }
         
+        // adjust hair color
+        ofFloatColor hsbConvertColor = minBaseColor.getLerped(maxBaseColor, currLevel);
+        Hair::baseColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b, hsbConvertColor.a);
+        hsbConvertColor = minTipColor.getLerped(maxTipColor, currLevel);
+        Hair::tipColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b, hsbConvertColor.a);
+        
         // scroll up and down
         scrollAng += scrollSpeed;
         scrollY = sin(scrollAng) * radius;
@@ -299,33 +316,36 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 {    
+    ofPushMatrix();
 	ofPushStyle();
-	
-	glDisable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);
-	ofDisableAlphaBlending();
-	ofFill();
-    ofSetColor(bgBri);
-	ofSphere(0, 0, solidSphereScale*300 );
+//	glDisable(GL_LIGHTING);
+//	glEnable(GL_DEPTH_TEST);
+	ofEnableAlphaBlending();
 
-	
-	float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
+    float rxp = ((ofGetMouseX()-(ofGetWidth()/2))*0.3);
 	float ryp = ((ofGetMouseY()-(ofGetHeight()/2))*0.3);
 	rx = (rx*0.9)+(rxp*0.1);
 	ry = (ry*0.9)+(ryp*0.1);
 	ofRotateY(rx);
 	ofRotateX(ry);
-	//sphere(radio);
+    
+	ofFill();
+    ofFloatColor hsbSphereColor;
+    hsbSphereColor.setHsb(sphereColor.r, sphereColor.g, sphereColor.b, sphereColor.a);
+    ofSetColor(hsbSphereColor);
+	ofSphere(0, 0, sphereSize);
 	
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
 	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, furLength, scrollY);
-	}
+		list[i].draw(mesh, noisePosition, hairLength, scrollY);
+	}    
+    ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
 	mesh.setMode(OF_PRIMITIVE_LINES);
 	mesh.draw();
     
 	ofPopStyle();
+    ofPopMatrix();
 }
 
 // draw any debug stuff here

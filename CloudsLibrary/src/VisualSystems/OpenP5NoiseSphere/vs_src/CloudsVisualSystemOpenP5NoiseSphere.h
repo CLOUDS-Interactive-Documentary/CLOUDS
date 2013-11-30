@@ -34,6 +34,9 @@ class Hair {
     
     static float minNoiseScale;
     static float maxNoiseScale;
+    
+    static ofFloatColor baseColor;
+    static ofFloatColor tipColor;
 	
 	Hair(float radius) : radius(radius){
 		z = ofRandom(-radius, radius);
@@ -71,10 +74,10 @@ class Hair {
 		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
 
-		mesh.addColor(ofFloatColor::black);
-		mesh.addVertex( ofVec3f(x,y,z) );
-		mesh.addColor(ofFloatColor::white);
-		mesh.addVertex( ofVec3f(xb,yb,zb) );
+		mesh.addColor(baseColor);
+		mesh.addVertex(ofVec3f(x,y,z));
+		mesh.addColor(tipColor);
+		mesh.addVertex(ofVec3f(xb,yb,zb));
 		
 	}
 };
@@ -164,18 +167,10 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
 
 
 protected:
-    
-    //  Your Stuff
-    //
-	
-	ofxUISuperCanvas* customGui;
-
+    ofxUISuperCanvas* customGui;
     ofxUISuperCanvas* audioGui;
 	
-	ofFloatColor color1HSB;
-	ofFloatColor color2HSB;
-	
-	int count = 10000;
+    int count = 10000;
 	vector<Hair> list;
 	float radius;
 	float rx = 0;
@@ -184,19 +179,23 @@ protected:
     float noisePosition;
 	float noiseSpeed;
 	float noiseScale;
-	float furLength;
+    
+	float hairLength;
+    float minHairLineWidth;
+    float maxHairLineWidth;
 	
-    //inner sphere
-    
-    void        loadVbo(ofVboMesh &_vbo, string _file);
-    
-    float       wireSphereScale, solidSphereScale, haloSphereScale;
-    float       wireSphereAlpha, solidSphereAlpha, haloSphereAlpha;
+    float sphereSize;
 
 	float * leftBuffer;
     float * rightBuffer;
     int numAmplitudesPerChannel;
     bool bAudioBuffered;
+    
+    ofFloatColor sphereColor;
+    ofFloatColor minBaseColor, maxBaseColor;
+    ofFloatColor minTipColor, maxTipColor;
+    
+    float currLevel;
     
     bool * peakToggles;
     float combinedPeak;
