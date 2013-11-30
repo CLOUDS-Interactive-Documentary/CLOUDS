@@ -22,16 +22,16 @@ colonyCell::colonyCell(const ofPoint initialPosition, const cellParams& params):
     cellSize = 1;
     age = 0;
     nutrientLevel = 50; //Magic number
-    maxSpeed = ofRandom(1.5);
-    maxForce = .4;
-    maxSize = ofRandom(5, 12);
+    maxSpeed = ofRandom(3.5);
+    maxForce = .8;
+    maxSize = ofRandom(5, 22);
     lifespan = ofRandom(_params.lifespanMin, _params.lifespanMax);
     fertile = ofRandomuf() > _params.fertilityRate;
     dead = false;
     hasReplicated = false;
     fertilityAge = ofRandom(lifespan* 6./13., lifespan);
     
-    
+    anchor = ofPoint(ofGetWidth(), ofGetHeight())*2; //Init value off screen and >0
 }
 
 //==========================================================================================
@@ -41,7 +41,6 @@ void colonyCell::update()
     // Dynamics
     acceleration = getUpdatedAcceleration();
     acceleration.limit(maxForce);
-    
     velocity += acceleration;
     velocity.limit(maxSpeed);
     
@@ -66,6 +65,7 @@ void colonyCell::draw()
     
     ofSetColor(255, 255, 255, ofMap(MIN(maxSize, cellSize), 0, maxSize, 60, 180));
     ofCircle(position.x, position.y, MIN(maxSize, cellSize)); //TODO: This is where you do art
+    //    ofLine(position, anchor); //TODO Remove anchor
     if (cellSize > 10){
 //        ofNoFill();
         ofSetColor(255, 255, 255, ofMap(cellSize, 10, maxSize, 0, 70));
@@ -100,6 +100,7 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
     float ss = s * s;
     float aa = a * a;
     float neighborCount = 0;
+    float anchorSize = 0;
     while (iter.hasNext()) {
         ofPoint diff = position - ((**iter).getPosition()); //direction from other to this
         float dd = diff.lengthSquared();
@@ -111,6 +112,11 @@ void colonyCell::doScanAndFlock(neighbor_iterator& iter){
                 align  += (**iter).getVelocity() * (**iter).getSize();
                 cohere -=  diff * (**iter).getSize(); //MINUS the diff.
             }}
+        if ( (**iter).getSize() > anchorSize && dd < 1000 ){
+            anchor = (**iter).getPosition();
+            anchorSize = dd;
+            anchorSize = (**iter).getSize();
+        }
         ++neighborCount;
         iter.increment();
     }

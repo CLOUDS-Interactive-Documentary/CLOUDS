@@ -37,6 +37,8 @@ private:
     float   maxSize, maxSpeed, maxForce, lifespan, fertilityAge, separationDist, alignmentDist;
     const cellParams& _params;
     
+    ofPoint anchor;
+    
 public:
     
     colonyCell(const ofPoint initialPosition, const cellParams& params);
