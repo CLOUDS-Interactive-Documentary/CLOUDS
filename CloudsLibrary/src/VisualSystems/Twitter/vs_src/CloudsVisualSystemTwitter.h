@@ -102,6 +102,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 
     vector<pair<string,string> > links;
     map<string,int> numberOfMentions;
+    void parseClusterNetwork(string fileName);
+    Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -119,6 +121,9 @@ protected:
 	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
     
     vector<Tweeter> tweeters;
-
+    
+    ofVboMesh mesh;
+    ofVec3f min,max;
+    ofEasyCam cam;
 	
 };
