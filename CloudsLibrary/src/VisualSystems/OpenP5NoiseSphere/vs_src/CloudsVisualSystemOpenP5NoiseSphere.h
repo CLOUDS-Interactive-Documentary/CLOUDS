@@ -34,6 +34,9 @@ class Hair {
     
     static float minNoiseScale;
     static float maxNoiseScale;
+    
+    static ofFloatColor baseColor;
+    static ofFloatColor tipColor;
 	
 	Hair(float radius) : radius(radius){
 		z = ofRandom(-radius, radius);
@@ -71,10 +74,10 @@ class Hair {
 		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
 
-		mesh.addColor(ofFloatColor::black);
-		mesh.addVertex( ofVec3f(x,y,z) );
-		mesh.addColor(ofFloatColor::white);
-		mesh.addVertex( ofVec3f(xb,yb,zb) );
+		mesh.addColor(baseColor);
+		mesh.addVertex(ofVec3f(x,y,z));
+		mesh.addColor(tipColor);
+		mesh.addVertex(ofVec3f(xb,yb,zb));
 		
 	}
 };
@@ -172,10 +175,7 @@ protected:
 
     ofxUISuperCanvas* audioGui;
 	
-	ofFloatColor color1HSB;
-	ofFloatColor color2HSB;
-	
-	int count = 10000;
+    int count = 10000;
 	vector<Hair> list;
 	float radius;
 	float rx = 0;
@@ -197,6 +197,9 @@ protected:
     float * rightBuffer;
     int numAmplitudesPerChannel;
     bool bAudioBuffered;
+    
+    ofFloatColor minBaseColor, maxBaseColor;
+    ofFloatColor minTipColor, maxTipColor;
     
     bool * peakToggles;
     float combinedPeak;

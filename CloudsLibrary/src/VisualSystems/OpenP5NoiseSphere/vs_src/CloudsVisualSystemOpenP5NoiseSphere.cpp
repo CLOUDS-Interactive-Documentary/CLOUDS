@@ -12,6 +12,9 @@ float * Hair::levelScaleLookUp = NULL;
 float Hair::minNoiseScale = 0.5f;
 float Hair::maxNoiseScale = 1.0f;
 
+ofFloatColor Hair::baseColor = ofFloatColor::black;
+ofFloatColor Hair::tipColor  = ofFloatColor::white;
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 
@@ -21,22 +24,22 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
-//
-//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
-    
     customGui->addLabel("Solid Sphere");
     customGui->addSlider("Solid_Sphere_Scale", 0.0, .25, &solidSphereScale);
     customGui->addSlider("Solid_Sphere_Alpha", 0.0, 1.0, &solidSphereAlpha);
-
     
     customGui->addSlider("Noise Speed", 0.0, 10.0, &noiseSpeed);
     customGui->addRangeSlider("Noise Scale", 0.0, 4.0, &Hair::minNoiseScale, &Hair::maxNoiseScale);
     customGui->addSlider("Fur Length", 0.0, 4., &furLength);
+
+    customGui->addSpacer();
+    customGui->addRangeSlider("BASE HUE", 0.0f, 1.0f, &minBaseColor.r, &maxBaseColor.r);
+    customGui->addRangeSlider("BASE SAT", 0.0f, 1.0f, &minBaseColor.g, &maxBaseColor.g);
+    customGui->addRangeSlider("BASE BRI", 0.0f, 1.0f, &minBaseColor.b, &maxBaseColor.b);
+    customGui->addSpacer();
+    customGui->addRangeSlider("TIP HUE", 0.0f, 1.0f, &minTipColor.r, &maxTipColor.r);
+    customGui->addRangeSlider("TIP SAT", 0.0f, 1.0f, &minTipColor.g, &maxTipColor.g);
+    customGui->addRangeSlider("TIP BRI", 0.0f, 1.0f, &minTipColor.b, &maxTipColor.b);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5NoiseSphere::selfGuiEvent);
 	guis.push_back(customGui);
@@ -125,6 +128,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     rightBuffer = NULL;
     peakToggles = NULL;
     bAudioBuffered = false;
+    
+    minBaseColor = maxBaseColor = ofFloatColor::black;
+    minTipColor  = maxTipColor  = ofFloatColor::white;
     
 //    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
 //    string filePath = "TestVideo/Fernanda_social_network_hairballs";
@@ -286,6 +292,12 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
             }
             Hair::levelScaleLookUp[i] = MAX(Hair::levelScaleLookUp[i] * (0.9f + levelDecayRate * 0.1f), newLevelScale);
         }
+        
+        // adjust hair color
+        ofFloatColor hsbConvertColor = minBaseColor.getLerped(maxBaseColor, currLevel);
+        Hair::baseColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b);
+        hsbConvertColor = minTipColor.getLerped(maxTipColor, currLevel);
+        Hair::tipColor.setHsb(hsbConvertColor.r, hsbConvertColor.g, hsbConvertColor.b);
         
         // scroll up and down
         scrollAng += scrollSpeed;
