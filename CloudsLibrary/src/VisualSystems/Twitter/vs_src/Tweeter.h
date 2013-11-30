@@ -28,11 +28,13 @@ struct Tweet{
 class Tweeter{
 public:
     Tweeter();
+    Tweeter(string _name, int _id);
     string name;
-    string handle;
+    int ID;
     
     vector<Tweet> tweets;
-    
+    vector<string> userLinks;
+
 };
 
 #endif /* defined(__Twitter__Tweeter__) */

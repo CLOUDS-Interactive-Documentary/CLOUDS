@@ -10,6 +10,14 @@
 
 Tweeter::Tweeter(){
     name = " ";
-    handle = " ";
+
+    
+ 
 }
+
+Tweeter::Tweeter(string _name, int _id){
+    name = _name;
+    ID = _id;
+}
+
 

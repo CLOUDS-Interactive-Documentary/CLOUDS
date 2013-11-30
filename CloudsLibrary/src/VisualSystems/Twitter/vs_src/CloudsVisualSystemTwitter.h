@@ -94,8 +94,14 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void selfMouseReleased(ofMouseEventArgs& data);
     
     void loadJSONData();
+    void addUsersFromMentions();
+    void createPajekNetwork();
+    int getUserIdByName(string name);
     
     ofxJSONElement result;
+
+    vector<pair<string,string> > links;
+    map<string,int> numberOfMentions;
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
