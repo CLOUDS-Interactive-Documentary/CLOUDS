@@ -16,6 +16,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 //    createPajekNetwork();
     //  mesh.
     parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+    loadMesh();
 
 }
 
@@ -123,16 +124,15 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 			vector<string> components = ofSplitString(line, " ");
 
             int id = ofToInt(components[0]);
-            
+
             Tweeter& tweeter = getTweeterByID(tweeters, id);
-            
-//            cout<<tweeter.name<<" : "<<components[1]<<endl;
+
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
 
 			tweeter.position = ofVec3f(ofToFloat(components[2]),
 										   ofToFloat(components[3]),
-										   ofToFloat(components[4]));
+										   ofToFloat(components[4])*10);
 		}
         
         if(findingEdges){
@@ -157,21 +157,38 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
-    ofVec3f centroid;
+//    ofVec3f centroid;
+//    
+//    for(int i=0; tweeters.size(); i++){
+//        mesh.setMode(OF_PRIMITIVE_POINTS);
+//        mesh.setupIndicesAuto();
+//        mesh.addVertex(tweeters[i].position);
+//        
+//        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
+//                      MAX(tweeters[i].position.y,max.y),
+//                      MAX(tweeters[i].position.z,max.z));
+//        
+//        centroid += tweeters[i].position;
+//    }
     
-    for(int i=0; tweeters.size(); i++){
-        mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
-        mesh.setupIndicesAuto();
-        mesh.addVertex(tweeters[i].position);
+//    centroid /= tweeters.size();
+    
+    for(int j=0; j<tweeters.size(); j++){
         
-        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
-                      MAX(tweeters[i].position.y,max.y),
-                      MAX(tweeters[i].position.z,max.z));
-        
-        centroid += tweeters[i].position;
+        for (int k=0; k<tweeters[j].linksById.size(); k++) {
+            tweeters[j].linksById[k];
+
+            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
+                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
+                
+                linksMesh.addVertex(tweeters[j].position);
+            
+                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+                linksMesh.addVertex(t.position);
+            }
+        }
+        linksMesh.setMode(OF_PRIMITIVE_LINES);
     }
-    
-    centroid /= tweeters.size();
 
 }
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
@@ -247,7 +264,6 @@ int CloudsVisualSystemTwitter:: getUserIdByName(string name){
             return tweeters[i].ID;
         }
     }
-    
     return -1;
 }
 
@@ -262,6 +278,7 @@ Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, in
         }
     }
 }
+
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
@@ -331,11 +348,11 @@ void CloudsVisualSystemTwitter::selfUpdate()
 void CloudsVisualSystemTwitter::selfDraw()
 {
     ofScale(10, 10);
-    mesh.drawWireframe();
+    linksMesh.drawWireframe();
 //    cam.begin();
     ofEnablePointSprites();
 
-    mesh.drawVertices();
+    linksMesh.drawVertices();
     ofDisablePointSprites();
 //    cam.end();
 }

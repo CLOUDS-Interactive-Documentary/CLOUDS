@@ -100,7 +100,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     ofxJSONElement result;
 
-    vector<pair<string,string> > links;
+    set<pair<int,int> > links;
     map<string,int> numberOfMentions;
     void parseClusterNetwork(string fileName);
     void loadMesh();
@@ -124,6 +124,7 @@ protected:
     vector<Tweeter> tweeters;
     
     ofVboMesh mesh;
+    ofVboMesh linksMesh;
     ofVec3f min,max;
     ofEasyCam cam;
 
