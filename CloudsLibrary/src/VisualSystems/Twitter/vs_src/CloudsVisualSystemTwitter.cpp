@@ -182,9 +182,15 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
                 
                 linksMesh.addVertex(tweeters[j].position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
             
                 Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
                 linksMesh.addVertex(t.position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
+                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+            }
+            else{
+                cout<<"Link already exists between "<tweeters[j].get
             }
         }
         linksMesh.setMode(OF_PRIMITIVE_LINES);
