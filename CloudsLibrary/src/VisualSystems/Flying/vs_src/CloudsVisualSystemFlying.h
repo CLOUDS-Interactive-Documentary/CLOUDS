@@ -11,19 +11,26 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "Creatures.h"
-#include "Bubbles.h"
+#include "ofxRules.h"
 #include "ofxPostProcessing.h"
 
-//TODO: rename this to your own visual system
-class CloudsVisualSystemSwim : public CloudsVisualSystem {
+struct Plant
+{
+    unsigned meshIdx;
+    ofVec3f pos;
+};
+
+class CloudsVisualSystemFlying : public CloudsVisualSystem
+{
   public:
+    static const unsigned NUM_RULES_FILES = 2;
+    static const string RULES_FILES[NUM_RULES_FILES];
+    static const float CAM_X_ROT;
     
-	//TODO: Change this to the name of your visual system
-	//This determines your data path so name it at first!
-	//ie getVisualSystemDataPath() uses this
-    string getSystemName(){
-		return "Swim";
+    CloudsVisualSystemFlying();
+    
+	string getSystemName(){
+		return "Flying";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -63,6 +70,7 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 	// selfDraw draws in 3D using the default ofEasyCamera
 	// you can change the camera by returning getCameraRef()
     void selfDraw();
+    
     void selfPostDraw();
 		
     // draw any debug stuff here
@@ -104,12 +112,33 @@ class CloudsVisualSystemSwim : public CloudsVisualSystem {
 	}
 
 protected:
-    
     //  Your Stuff
     //
-    itg::Creatures creatures;
-    itg::Bubbles bubbles;
+    void generate();
+    
     ofxPostProcessing post;
+    
+    bool cameraControl;
+    float fogStart, fogEnd;
+    
+    // plants
+    ofShader plantsShader;
+    unsigned numPlantMeshes;
+    vector<ofxRules> plantMeshes;
+    list<Plant> plants;
+    float growDist;
+    bool drawPlantPosns;
+    
+    // floor
+    ofVboMesh floor;
+    float floorW, floorD, floorHalfW, floorHalfD;
+    unsigned xResolution, zResolution;
+    ofImage floorTex;
+    ofShader floorShader;
+    ofVec3f hsv0, hsv1;
+    float noiseFreq, noiseAmp;
+    float xStep, zStep;
+    ofVec3f floorLookAt;
     
 	ofxUISuperCanvas* customGui;
 	bool customToggle;

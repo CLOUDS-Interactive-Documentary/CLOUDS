@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  SphereAction.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,21 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "TransformAction.h"
 
 namespace itg
 {
-    class Creatures
+    class SphereAction : public TransformAction
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<SphereAction> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
         
-        void generate();
-        
+        void setSize(float size);
+    
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
     };
 }

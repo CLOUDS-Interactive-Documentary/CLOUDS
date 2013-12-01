@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Rule.cpp
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -29,42 +29,27 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#pragma once
-
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "Rule.h"
 
 namespace itg
 {
-    class Creatures
+    Rule::Rule(const float weight) : weight(weight)
     {
-    public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
-        
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
-        
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
-        
-    private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
-    };
+    }
+    
+    vector<Branch::Ptr> Rule::step(Branch::Ptr branch, ofMesh& mesh)
+    {
+        vector<Branch::Ptr> branches;
+        for (unsigned i = 0; i < actions.size(); ++i)
+        {
+            Branch::Ptr newBranch = Branch::Ptr();
+            for (unsigned j = 0; j < actions[i]->getRepeat(); ++j)
+            {
+                if (newBranch) newBranch = actions[i]->step(newBranch, mesh);
+                else newBranch = actions[i]->step(branch, mesh);
+            }
+            if (newBranch) branches.push_back(newBranch);
+        }
+        return branches;
+    }
 }

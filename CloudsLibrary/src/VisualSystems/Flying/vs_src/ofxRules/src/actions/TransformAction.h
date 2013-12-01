@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Rule.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,40 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include "Action.h"
 
 namespace itg
 {
-    class Creatures
+    // change this to transform action
+    class TransformAction : public Action
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<TransformAction> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        TransformAction(const string& nextRuleName = "", const ofMatrix4x4& transform = ofMatrix4x4());
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        virtual Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
         
-        void generate();
+        // transformations should be added to rule in correct order
+        void translate(const ofVec3f& translation);
+        void translate(float x, float y, float z);
+        
+        void rotate(const ofQuaternion& rotation);
+        void rotate(const ofVec3f& euler);
+        void rotate(float x, float y, float z);
+        
+        void scale(const ofVec3f& scale);
+        void scale(float scale);
+        
+        ofMatrix4x4 getTransform() const { return transform; }
+        void setTransform(const ofMatrix4x4& transform) { this->transform = transform; }
+        
+        void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
+        //void save(ofxXmlSettings& xml, const string& tagName);
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
+        void parseTransforms(const string& transforms);
+        ofMatrix4x4 transform;
     };
 }

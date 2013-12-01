@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Branch.cpp
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -29,42 +29,14 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#pragma once
-
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "Branch.h"
 
 namespace itg
 {
-    class Creatures
+    Branch::Branch(const string& nextRuleName, unsigned depth, const ofMatrix4x4& transform,
+                   const ofMatrix4x4& prevTransform, const string& actionName) :
+        nextRuleName(nextRuleName), transform(transform), prevTransform(prevTransform),
+        depth(depth), actionName(actionName)
     {
-    public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
-        
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
-        
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
-        
-    private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
-    };
+    }
 }

@@ -1,5 +1,5 @@
 /*
- *  CreatureController.h
+ *  RuleSet.cpp
  *
  *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
@@ -14,7 +14,7 @@
  *    documentation and/or other materials provided with the distribution. 
  *  * Neither the name of Neil Mendoza nor the names of its contributors may be used 
  *    to endorse or promote products derived from this software without 
- *    specific prior written permission. 
+ *    /Volumes/MacData/Projects/openFrameworks/addons/ofxGenerator/example-file-live/bin/data/test.xmlspecific prior written permission. 
  *  
  *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
  *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
@@ -29,42 +29,49 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#pragma once
-
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "RuleSet.h"
 
 namespace itg
 {
-    class Creatures
+    RuleSet::RuleSet(const string& name) : name(name), totalWeight(0)
     {
-    public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
+    }
+    
+    void RuleSet::addRule(Rule::Ptr rule, bool calcNormalised)
+    {
+        rules.push_back(rule);
+        totalWeight += rule->getWeight();
+        if (calcNormalised) calcWeights();
+    }
+    
+    unsigned RuleSet::randomIdx() const
+    {
+        vector<float>::const_iterator it = lower_bound(weights.begin(), weights.end(), ofRandomuf());
+        return it - weights.begin();
+    }
+    
+    Rule::Ptr RuleSet::randomRule() const
+    {
+        return rules[randomIdx()];
+    }
 
-        void onGui(ofxUIEventArgs& args);
-        
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
-        
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
-        
-    private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
-    };
+    Rule::Ptr RuleSet::front() const
+    {
+        return rules.front();
+    }
+    
+    Rule::Ptr RuleSet::back() const
+    {
+        return rules.back();
+    }
+    
+    void RuleSet::calcWeights()
+    {
+        weights.clear();
+        for (int i = 0; i < rules.size(); ++i)
+        {
+            if (i == 0) weights.push_back(rules[i]->getWeight() / totalWeight);
+            else weights.push_back(weights[i - 1] + rules[i]->getWeight() / totalWeight);
+        }
+    }
 }

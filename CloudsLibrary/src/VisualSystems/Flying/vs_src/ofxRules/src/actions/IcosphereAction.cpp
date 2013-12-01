@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  IcosphereAction.cpp
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -29,42 +29,40 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#pragma once
-
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "IcosphereAction.h"
 
 namespace itg
 {
-    class Creatures
+    void IcosphereAction::setParameters(float radius, unsigned iterations)
     {
-    public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
-        
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
-        
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
-        
-    private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
-    };
+        icoMesh = Action::icosphere(radius, iterations);
+    }
+    
+    Branch::Ptr IcosphereAction::step(Branch::Ptr branch, ofMesh& mesh)
+    {
+        Branch::Ptr newBranch = TransformAction::step(branch, mesh);
+        ofMatrix4x4 normalMatrix = inverseTranspose(newBranch->getTransform());
+        for (unsigned i = 0; i < icoMesh.getNumIndices(); ++i)
+        {
+            mesh.addIndex(icoMesh.getIndex(i) + mesh.getNumVertices());
+        }
+        for (unsigned i = 0; i < icoMesh.getNumVertices(); ++i)
+        {
+            mesh.addVertex(icoMesh.getVertex(i) * newBranch->getTransform());
+            mesh.addNormal(icoMesh.getNormal(i) * normalMatrix);
+            mesh.addTexCoord(ofVec2f(0.f, branch->getDepth()));
+            mesh.addColor(colour);
+        }
+        //newBranch->setVertexIndex(mesh.getNumVertices());
+        return newBranch;
+    }
+    
+    void IcosphereAction::load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx)
+    {
+        TransformAction::load(xml, tagName, tagIdx);
+        float radius = xml.getAttribute(tagName, "radius", 0.1, tagIdx);
+        unsigned iterations = xml.getAttribute(tagName, "iterations", 2, tagIdx);
+        setParameters(radius, iterations);
+        colour = Action::parseColour(xml.getAttribute(tagName, "colour", "", tagIdx));
+    }
 }

@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Branch.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,41 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include <tr1/memory>
 
 namespace itg
 {
-    class Creatures
+    using namespace tr1;
+    
+    class Branch
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<Branch> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        Branch(const string& ruleName, unsigned depth = 0, const ofMatrix4x4& transform = ofMatrix4x4(),
+               const ofMatrix4x4& prevTransform = ofMatrix4x4(), const string& actionName = "");
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        string getNextRuleName() const { return nextRuleName; }
         
-        void generate();
+        ofMatrix4x4 getTransform() const { return transform; }
+        
+        ofMatrix4x4 getPrevTransform() const { return prevTransform; }
+        
+        string getActionName() const { return actionName; }
+        
+        unsigned getDepth() const { return depth; }
+        
+        void setVertexIndex(unsigned vertexIndex) { this->vertexIndex = vertexIndex; }
+        unsigned getVertexIndex() const { return vertexIndex; }
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
+        string actionName;
+        unsigned depth;
+        unsigned vertexIndex;
+        string nextRuleName;
+        ofMatrix4x4 transform;
+        ofMatrix4x4 prevTransform;
+        map<string, float> params;
     };
 }

@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Action.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,52 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include <tr1/memory>
+#include "ofxXmlSettings.h"
+#include "Branch.h"
 
 namespace itg
 {
-    class Creatures
+    using namespace tr1;
+    
+    class Action
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<Action> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        Action(const string& nextRuleName = "");
+        virtual ~Action() {}
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        virtual Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh) = 0;
         
-        void generate();
+        void setNextRuleName(const string& nextRuleName) { this->nextRuleName = nextRuleName; }
+        string getNextRuleName() const { return nextRuleName; }
+        
+        void setRuleName(const string& ruleName) { this->ruleName = ruleName; }
+        string getRuleName() const { return ruleName; }
+        
+        void setRepeat(unsigned repeat) { this->repeat = repeat; }
+        unsigned getRepeat() const { return repeat; }
+        
+        virtual void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
+        virtual void save(ofxXmlSettings& xml);
+        
+        string getName() const { return name; }
+        void setName(const string& name) { this->name = name; }
+        
+        static ofFloatColor parseColour(const string& colourString);
+        
+    protected:
+        // get the normal matrix
+        static ofMatrix4x4 inverseTranspose(const ofMatrix4x4& transform);
+        // these functions are part of ofMesh in 0.8
+        static ofMesh icosahedron(float radius);
+        static ofMesh icosphere(float radius, int iterations);
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
+        string name;
+        string ruleName;
+        string nextRuleName;
+        unsigned repeat;
     };
 }

@@ -1,5 +1,5 @@
 /*
- *  CreatureController.h
+ *  RuleSet.h
  *
  *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
@@ -31,40 +31,35 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include "Rule.h"
+#include <tr1/memory>
 
 namespace itg
 {
-    class Creatures
+    using namespace tr1;
+    
+    class RuleSet
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<RuleSet> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        RuleSet(const string& name);
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
+        void addRule(Rule::Ptr rule, bool calcNormalised = true);
+        void calcWeights();
+        unsigned randomIdx() const;
+        Rule::Ptr randomRule() const;
+        Rule::Ptr front() const;
+        Rule::Ptr back() const;
+        unsigned size() const { return rules.size(); }
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
+        string name;
+        vector<Rule::Ptr> rules;
         
-        ofxNearestNeighbour3D nn;
+        // cumulative normalised weights
+        vector<float> weights;
+        float totalWeight;
     };
 }

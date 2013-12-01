@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  IcosphereAction.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,25 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include "Branch.h"
+#include "TransformAction.h"
 
 namespace itg
 {
-    class Creatures
+    class IcosphereAction : public TransformAction
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<IcosphereAction> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
+    
+        void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
+        void setParameters(float radius, unsigned iterations);
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
+        ofMesh icoMesh;
+        ofFloatColor colour;
     };
 }

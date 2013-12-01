@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  Rule.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,43 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include <tr1/memory>
+#include "Action.h"
+#include "Branch.h"
 
 namespace itg
 {
-    class Creatures
+    using namespace tr1;
+    
+    class Rule
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
+        typedef shared_ptr<Rule> Ptr;
+        
+        vector<Branch::Ptr> step(Branch::Ptr branch, ofMesh& mesh);
+        
+        Rule(const float weight);
+        
+        float getWeight() const { return weight; }
+        
+        template<class T>
+        typename T::Ptr addAction(const string& nextRuleName = "")
+        {
+            typename T::Ptr action = typename T::Ptr(new T());
+            if (!nextRuleName.empty()) action->setNextRuleName(nextRuleName);
+            actions.push_back(action);
+            return action;
+        }
+        
+        void addAction(Action::Ptr action) { actions.push_back(action); }
+        
+        unsigned size() const { return actions.size(); }
 
-        void onGui(ofxUIEventArgs& args);
-        
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
-        
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
-        
-        void generate();
+        Action::Ptr operator[](unsigned i) const { return actions[i]; }
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
-        
-        ofxNearestNeighbour3D nn;
+        float weight;
+        vector<Action::Ptr> actions;
     };
 }

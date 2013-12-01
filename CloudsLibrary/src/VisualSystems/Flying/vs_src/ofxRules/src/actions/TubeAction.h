@@ -1,7 +1,7 @@
 /*
- *  CreatureController.h
+ *  TubeAction.h
  *
- *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
+ *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
  *  
  *  Redistribution and use in source and binary forms, with or without 
@@ -31,40 +31,35 @@
  */
 #pragma once
 
-#include "Creature.h"
-#include "ModelCreature.h"
-#include "ofxNearestNeighbour.h"
+#include "ofMain.h"
+#include "Branch.h"
+#include "TransformAction.h"
 
 namespace itg
 {
-    class Creatures
+    class TubeAction : public TransformAction
     {
     public:
-        void init(const string& dataPath);
-        void update();
-        void draw();
-
-        void onGui(ofxUIEventArgs& args);
+        typedef shared_ptr<TubeAction> Ptr;
         
-        // GUI
-        float zoneRadius;
-        float alignmentLower;
-        float alignmentUpper;
-        float repelStrength, attractStrength, alignStrength;
-        float maxDistFromCentre;
+        static const ofVec3f NORMALS[];
+        static const ofIndexType INDICES[];
         
-        // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
+    
+        void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
         
-        void generate();
+        void setRadius(float radius);
+        
+        void setResolution(unsigned resolution) { this->resolution = resolution; }
         
     private:
-        vector<Creature::Ptr> creatures;
-        vector<vector<Creature::Ptr> > creaturesByType;
+        // vertices per slice
+        unsigned resolution;
         
-        ofxNearestNeighbour3D nn;
+        vector<ofVec3f> vertices;
+        vector<ofVec3f> normals;
+        vector<ofVec2f> texCoords;
+        ofFloatColor colour;
     };
 }
