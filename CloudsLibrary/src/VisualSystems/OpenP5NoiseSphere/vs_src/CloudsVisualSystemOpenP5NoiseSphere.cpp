@@ -69,21 +69,16 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
 	audioGui->setName("Audio");
 	audioGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
-    audioGui->addIntSlider("PEAK HOLD TIME", 0, 30, &fftAnalyzer[0].peakHoldTime);
-    audioGui->addSlider("PEAK DECAY RATE", 0, 1, &fftAnalyzer[0].peakDecayRate);
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        audioGui->addSlider("S" + ofToString(i), 0.0f, 30.0f, fftAnalyzer[0].peaks[i], 17.0f, 160.0f);
-        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+    audioGui->addSpacer();
+    vector<string> soundNames;
+    for (int i = 0; i < soundsDir.size(); i++) {
+        soundNames.push_back(soundsDir.getName(i));
     }
-    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        audioGui->addToggle("T" + ofToString(i), &peakToggles[i], 17.0f, 17.0f)->setLabelVisible(false);
-        audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    }
-    audioGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
-    audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
+    audioGui->addRadio("SOUNDS", soundNames);
+    
+    audioGui->addSpacer();
     audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
+    audioGui->addSlider("LEVEL ADJUST", 0.1f, 10.0f, &levelAdjust);
 
     audioGui->addSpacer();
 	audioGui->addSlider("SCROLL SPEED", 0.0f, 2.5f, &scrollSpeed);
@@ -106,7 +101,15 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
 
 void CloudsVisualSystemOpenP5NoiseSphere::guiAudioEvent(ofxUIEventArgs &e)
 {
-    
+    // Let's look through the files dropdown for a match.
+    string name = e.widget->getName();
+    for (int i = 0; i < soundsDir.numFiles(); i++) {
+        if (name == soundsDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+            selectedSoundsIdx = i;
+            reloadSound();
+            break;
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -133,7 +136,6 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
 {
     leftBuffer  = NULL;
     rightBuffer = NULL;
-    peakToggles = NULL;
     bAudioBuffered = false;
     
     sphereSize = 75.0f;
@@ -141,39 +143,17 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     minHairLineWidth = maxHairLineWidth = 0.1f;
     
     currLevel = 0;
+    levelAdjust = 1.0f;
     
     sphereColor = ofFloatColor::gray;
     minBaseColor = maxBaseColor = ofFloatColor::black;
     minTipColor  = maxTipColor  = ofFloatColor::white;
     
-//    string filePath = "TestVideo/Casey_Software_is_what_i_love_the_most";
-//    string filePath = "TestVideo/Fernanda_social_network_hairballs";
-//    string filePath = "TestVideo/Jer_TestVideo";
-//    if (ofFile::doesFileExist(getVisualSystemDataPath() + filePath + ".mov")){
-//		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + filePath + ".mov",
-//								   getVisualSystemDataPath() + filePath + ".xml" );
-//		
-//		getRGBDVideoPlayer().swapAndPlay();
-//	}
-
-    videoPlayer.loadMovie(getVisualSystemDataPath() + "TestVideo/RedNoise.mov");
-    videoPlayer.play();
-    videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    soundsDir.listDir(getVisualSystemDataPath() + "sounds");
+    soundsDir.sort();
+    selectedSoundsIdx = 0;
+    reloadSound();
     
-    // set up fft analyzer
-    for (int i = 0; i < 2; i++) {
-        fftAnalyzer[i].setup(44100, BUFFER_SIZE/2, 1);
-        fftAnalyzer[i].peakHoldTime = 15;         // hold longer
-        fftAnalyzer[i].peakDecayRate = 0.95f;     // decay slower
-        fftAnalyzer[i].linearEQIntercept = 0.9f;  // reduced gain at lowest frequency
-        fftAnalyzer[i].linearEQSlope = 0.01f;     // increasing gain at higher frequencies
-    }
-    
-    peakToggles = new bool[fftAnalyzer[0].nAverages];
-    for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-        peakToggles[i] = false;
-    }
-
     // set up hairball
 	radius = 75;
     
@@ -227,58 +207,34 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
 {
-    videoPlayer.update();
-    if (videoPlayer.isAudioLoaded()) {
-        if (bAudioBuffered == false) {
-            float * interleavedBuffer = videoPlayer.getAllAmplitudes();
-            numAmplitudesPerChannel = videoPlayer.getNumAmplitudes() / 2;
-            leftBuffer  = new float[numAmplitudesPerChannel];
-            rightBuffer = new float[numAmplitudesPerChannel];
-            
-            for (int i = 0; i < numAmplitudesPerChannel; i++) {
-                leftBuffer[i]  = interleavedBuffer[i * 2 + 0];
-                rightBuffer[i] = interleavedBuffer[i * 2 + 1];
+    if (bModeVideo) {
+        videoPlayer.update();
+        if (videoPlayer.isAudioLoaded()) {
+            if (bAudioBuffered == false) {
+                float * interleavedBuffer = videoPlayer.getAllAmplitudes();
+                numAmplitudesPerChannel = videoPlayer.getNumAmplitudes() / 2;
+                leftBuffer  = new float[numAmplitudesPerChannel];
+                rightBuffer = new float[numAmplitudesPerChannel];
+                
+                for (int i = 0; i < numAmplitudesPerChannel; i++) {
+                    leftBuffer[i]  = interleavedBuffer[i * 2 + 0];
+                    rightBuffer[i] = interleavedBuffer[i * 2 + 1];
+                }
+                
+                bAudioBuffered = true;
             }
             
-            bAudioBuffered = true;
+            currLevel = ABS(videoPlayer.getAmplitude()) * levelAdjust;
         }
-        
-        // calculate fft
-        float avgPower = 0.0f;
-        
-        int idx = (int)(videoPlayer.getPosition() * (numAmplitudesPerChannel - 1));
-        fft[0].powerSpectrum(idx, BUFFER_SIZE/2, leftBuffer,  BUFFER_SIZE, &magnitude[0][0], &phase[0][0], &power[0][0], &avgPower);
-        fft[1].powerSpectrum(idx, BUFFER_SIZE/2, rightBuffer, BUFFER_SIZE, &magnitude[1][0], &phase[1][0], &power[1][0], &avgPower);
-        for (int i = 0; i < BUFFER_SIZE/2; i++) {
-            freq[0][i] = magnitude[0][i];
-            freq[1][i] = magnitude[1][i];
-        }
-        
-        fftAnalyzer[0].calculate(freq[0]);
-        fftAnalyzer[1].calculate(freq[1]);
-        
-        // update gui sliders
-        int combinedCount = 0;
-        float newCombinedPeak = 0.0f;
-        for (int i = 0; i < fftAnalyzer[0].nAverages; i++) {
-            float monoPeak = ((fftAnalyzer[0].peaks[i] + fftAnalyzer[1].peaks[i]) / 2.0f);
-            ((ofxUISlider *)audioGui->getWidget("S" + ofToString(i)))->setValue(monoPeak);
-//            cout << i << " " << fftAnalyzer[0].peaks[i] << " " << fftAnalyzer[1].peaks[i] << " " << scaledAvgPeak << endl;
-            
-            if (peakToggles[i]) {
-                newCombinedPeak += monoPeak;
-                ++combinedCount;
-            }
-        }
+    }
+    else {
+        ofSoundUpdate();
+        bAudioBuffered = true;
 
-        newCombinedPeak /= combinedCount;
-        float peakLerpRatio = 0.5f;
-        combinedPeak = combinedPeak * (1.0f - peakLerpRatio) + newCombinedPeak * peakLerpRatio;
-        
-        //    float combinedFurLength = furLength * (1.0f - furPeakScalar) + combinedPeak * furPeakScalar;
-        
-        // calculate hairball level scales based on amplitude and scrolling y-value
-        currLevel = ABS(videoPlayer.getAmplitude());
+        currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
+    }
+    
+    if (bAudioBuffered) {
         ((ofxUISlider *)audioGui->getWidget("LEVEL"))->setValue(currLevel);
         
         if (bLevelToNoise) {
@@ -308,8 +264,6 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfUpdate()
         scrollAng += scrollSpeed;
         scrollY = sin(scrollAng) * radius;
     }
-    
-//    cout << videoPlayer.getAmplitude() << endl;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -355,7 +309,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDrawDebug(){
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemOpenP5NoiseSphere::selfDrawBackground(){
-
+    
 	//turn the background refresh off
 	//bClearBackground = false;
 	
@@ -371,12 +325,9 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfExit()
 {
     if (leftBuffer  != NULL) delete [] leftBuffer;
     if (rightBuffer != NULL) delete [] rightBuffer;
-    if (peakToggles != NULL) delete [] peakToggles;
-    
-    delete [] Hair::levelScaleLookUp;
-    
     leftBuffer = rightBuffer = NULL;
-    peakToggles = NULL;
+    
+    delete [] Hair::levelScaleLookUp;    
 }
 
 //events are called when the system is active
@@ -402,4 +353,29 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfMousePressed(ofMouseEventArgs& dat
 
 void CloudsVisualSystemOpenP5NoiseSphere::selfMouseReleased(ofMouseEventArgs& data){
 	
+}
+
+void CloudsVisualSystemOpenP5NoiseSphere::reloadSound()
+{
+    // close whatever sound was previously open
+    soundPlayer.stop();
+    soundPlayer.unloadSound();
+    videoPlayer.stop();
+    videoPlayer.close();
+    
+    ofFile file = soundsDir.getFile(selectedSoundsIdx);
+    if (file.getExtension() == "mp4" || file.getExtension() == "mov") {
+        bModeVideo = true;
+        
+        videoPlayer.loadMovie(file.getAbsolutePath());
+        videoPlayer.play();
+        videoPlayer.setLoopState(OF_LOOP_NORMAL);
+    }
+    else {
+        bModeVideo = false;
+        
+        soundPlayer.loadSound(file.getAbsolutePath());
+        soundPlayer.play();
+        soundPlayer.setLoop(true);
+    }
 }
