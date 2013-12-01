@@ -157,17 +157,20 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             }
             if(pscore==8) valid_presets.push_back(j);
         }
+		
+		if(valid_presets.size() > 0){
+			int thepreset = valid_presets[ofRandom(valid_presets.size())];
+		
+			mharmony = presets[thepreset].harmony;
+			mrhythm = presets[thepreset].rhythm;
+			//mtempo = presets[thepreset].tempo;
+			mtempo = 120;
+			for(int j = 0;j<presets[thepreset].instruments.size();j++)
+			{
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+			}
+		}
 
-        int thepreset = valid_presets[ofRandom(valid_presets.size())];
-        
-        mharmony = presets[thepreset].harmony;
-        mrhythm = presets[thepreset].rhythm;
-        //mtempo = presets[thepreset].tempo;
-        mtempo = 120;
-        for(int j = 0;j<presets[thepreset].instruments.size();j++)
-        {
-            startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
-        }
    
     }
     
