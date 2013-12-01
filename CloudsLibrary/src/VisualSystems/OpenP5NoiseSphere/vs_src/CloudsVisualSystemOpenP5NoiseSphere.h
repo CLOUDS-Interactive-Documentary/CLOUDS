@@ -196,16 +196,6 @@ protected:
     float currLevel;
     float levelAdjust;
     
-    bool * peakToggles;
-    float combinedPeak;
-    float furPeakScalar;
-    
-    float magnitude[2][BUFFER_SIZE];
-    float phase[2][BUFFER_SIZE];
-    float power[2][BUFFER_SIZE];
-    float freq[2][BUFFER_SIZE/2];
-    fft	fft[2];
-    FFTOctaveAnalyzer fftAnalyzer[2];
     ofDirectory soundsDir;
     int selectedSoundsIdx;
     bool bModeVideo;
