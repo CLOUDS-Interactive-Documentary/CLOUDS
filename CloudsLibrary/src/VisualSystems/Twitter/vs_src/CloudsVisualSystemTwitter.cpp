@@ -13,7 +13,11 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 {
 	listGui = new ofxUISuperCanvas("SEARCH TERM LIST", gui);
     loadJSONData();
-    createPajekNetwork();
+//    createPajekNetwork();
+    //  mesh.
+    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+    loadMesh();
+
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
@@ -69,7 +73,6 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                                     cur.userLinks.push_back(users[k].asString());
 
                                 }
-                                
                             }
                         }
                         if(tweets[j].isMember("Date")){
@@ -80,12 +83,10 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                         }
                         
                         userTweets.push_back(t);
-                        
-                        
 
                     }
                     cur.tweets= userTweets;
-                    cout<<cur.name<<endl;
+//                   / cout<<cur.name<<endl;
                     tweeters.push_back(cur);
                 } else {
                     cout  << "Failed to parse JSON" << endl;
@@ -97,7 +98,105 @@ void CloudsVisualSystemTwitter::loadJSONData(){
     addUsersFromMentions();
 }
 
+void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
+	ofBuffer pajekFile = ofBufferFromFile(fileName);
+	bool findingNodes = false;
+    bool findingEdges = false;;
+	while(!pajekFile.isLastLine()){
+		string line = pajekFile.getNextLine();
+		
+		if(line == "" || line.at(0) == '%'){
+			continue;
+		}
+		
+		if (line.find("*Vertices") != string::npos ) {
+			findingNodes = true;
+			continue;
+            
+		}
+		if (line.find("*Edgeslist") != string::npos ) {
+			findingNodes = false;
+            findingEdges = true;
+            continue;
+		}
+		
+		if(findingNodes){
+			vector<string> components = ofSplitString(line, " ");
 
+            int id = ofToInt(components[0]);
+
+            Tweeter& tweeter = getTweeterByID(tweeters, id);
+
+			int numcomp = components.size();
+            max = ofVec3f(0,0,0);
+
+			tweeter.position = ofVec3f(ofToFloat(components[2]),
+										   ofToFloat(components[3]),
+										   ofToFloat(components[4])*10);
+		}
+        
+        if(findingEdges){
+			vector<string> components = ofSplitString(line, " ");
+            int id = ofToInt(components[0]);
+            //428 4 8 9 11 15 17 18
+
+            Tweeter& tweeter = getTweeterByID(tweeters, id);
+            cout<<tweeter.name<<"  has "<<" "<<tweeter.ID<<"  "<<(components.size()-2)<<" links."<<endl;
+            for(int i =1; i< components.size()-1; i++){
+                if(tweeter.ID != ofToInt(components[i]) ){
+                    tweeter.linksById.push_back(ofToInt(components[i]));
+                }
+                else{
+                    cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
+                }
+                cout<<i<<" : "<<components[i]<<endl;
+            }
+        }
+        
+	}
+}
+
+void CloudsVisualSystemTwitter::loadMesh(){
+//    ofVec3f centroid;
+//    
+//    for(int i=0; tweeters.size(); i++){
+//        mesh.setMode(OF_PRIMITIVE_POINTS);
+//        mesh.setupIndicesAuto();
+//        mesh.addVertex(tweeters[i].position);
+//        
+//        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
+//                      MAX(tweeters[i].position.y,max.y),
+//                      MAX(tweeters[i].position.z,max.z));
+//        
+//        centroid += tweeters[i].position;
+//    }
+    
+//    centroid /= tweeters.size();
+    
+    for(int j=0; j<tweeters.size(); j++){
+        
+        for (int k=0; k<tweeters[j].linksById.size(); k++) {
+            tweeters[j].linksById[k];
+
+            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
+                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
+                
+                linksMesh.addVertex(tweeters[j].position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
+            
+                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+                linksMesh.addVertex(t.position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
+                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+            }
+            else{
+                cout<<"Link already exists between "<<tweeters[j].ID<<" and "<<tweeters[j].linksById[k]<<endl;
+            }
+        }
+        linksMesh.setMode(OF_PRIMITIVE_LINES);
+    }
+
+}
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
     
     vector<string> names;
@@ -110,9 +209,6 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
         for(int j=0; j<tweeters[i].userLinks.size(); j++){
             
             if(! ofContains(names, tweeters[i].userLinks[j])){
-                //Tweeter t = Tweeter(tweeters[i].userLinks[j], tweeters.size());
-                //cout<<"adding "<<t.name<<"  to the list "<<endl;
-                //tweeters.push_back(t);
                 numberOfMentions[tweeters[i].userLinks[j]] ++;
                 
             }
@@ -123,15 +219,14 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
     
     map<string,int>::iterator it;
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
-        cout<<it->first <<" :  "<<it->second<<endl;
+//        cout<<it->first <<" :  "<<it->second<<endl;
         
-        if(it->second > 2){
+        if(it->second > 3){
             Tweeter t = Tweeter(it->first, tweeters.size());
-            cout<<"adding "<<t.name<<"  to the list as theuy have been mentioned more than twice "<<endl;
+//            cout<<"adding "<<t.name<<"  to the list as they have been mentioned more than twice "<<endl;
             tweeters.push_back(t);
         }
     }
-//    cout<<numberOfMentions
     
 }
 
@@ -155,7 +250,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
             for(int k=0; k< tweeters[j].userLinks.size(); k++){
 
                 if(getUserIdByName(tweeters[j].userLinks[k]) != -1){
-                    cout<<"found  link between : "<<tweeters[j].userLinks[k]<<","<<tweeters[j].name<<endl;
+//                    cout<<"found  link between : "<<tweeters[j].userLinks[k]<<","<<tweeters[j].name<<endl;
                     edges += ofToString(getUserIdByName(tweeters[j].userLinks[k])) +  " ";
                 }
             }
@@ -175,8 +270,19 @@ int CloudsVisualSystemTwitter:: getUserIdByName(string name){
             return tweeters[i].ID;
         }
     }
-    
     return -1;
+}
+
+Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, int _id ){
+    
+    for(int i=0; i< tweeters.size(); i++){
+        
+        if(tweeters[i].ID == _id){
+            
+            return tweeters[i];
+            
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -247,7 +353,14 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    
+    ofScale(10, 10);
+    linksMesh.drawWireframe();
+//    cam.begin();
+    ofEnablePointSprites();
+
+    linksMesh.drawVertices();
+    ofDisablePointSprites();
+//    cam.end();
 }
 
 // draw any debug stuff here
