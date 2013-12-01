@@ -485,11 +485,6 @@
 			<arg_a>bucket</arg_a>
 			<arg_b>NULL</arg_b>
 		</orchestration>
-		<orchestration>
-			<name>slowwaveshi</name>
-			<arg_a>bucket</arg_a>
-			<arg_b>NULL</arg_b>
-		</orchestration>
 		<harmony>1</harmony>	
 		<rhythm>1</rhythm>	
 		<tempo>120</tempo>
