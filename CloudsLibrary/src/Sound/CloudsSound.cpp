@@ -158,6 +158,11 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             if(pscore==8) valid_presets.push_back(j);
         }
 		
+        if(valid_presets.size()==0)
+        {
+            valid_presets.push_back(0);
+        }
+        
 		if(valid_presets.size() > 0){
 			int thepreset = valid_presets[ofRandom(valid_presets.size())];
 		
