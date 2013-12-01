@@ -17,9 +17,49 @@
 </Widget>
 <Widget>
     <Kind>6</Kind>
-    <Name>Hue range</Name>
-    <HighValue>169.581283569</HighValue>
-    <LowValue>151.995071411</LowValue>
+    <Name>Hue - Input range</Name>
+    <HighValue>11.330047607</HighValue>
+    <LowValue>-1.477828979</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Hue - Output range</Name>
+    <HighValue>224.852218628</HighValue>
+    <LowValue>189.679809570</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Input range</Name>
+    <HighValue>19.211814880</HighValue>
+    <LowValue>2.463043213</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Sat - Output range</Name>
+    <HighValue>223.596069336</HighValue>
+    <LowValue>95.467979431</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Input range</Name>
+    <HighValue>10.344825745</HighValue>
+    <LowValue>-2.463043213</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>Bright - Output range</Name>
+    <HighValue>243.694595337</HighValue>
+    <LowValue>103.004928589</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Oscilllation Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Oscillation period</Name>
+    <Value>3792</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -28,40 +68,8 @@
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>H Noise Step</Name>
-    <Value>1.044335008</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>H Stochasticity</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>Saturation range</Name>
-    <HighValue>65.320198059</HighValue>
-    <LowValue>3.768472910</LowValue>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
     <Name>S NoiseSpeed</Name>
     <Value>0.556650400</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>S Noise Step</Name>
-    <Value>4.280788422</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Saturation Stochasticity</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>6</Kind>
-    <Name>Brightness range</Name>
-    <HighValue>226.108367920</HighValue>
-    <LowValue>8.793103218</LowValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -69,9 +77,19 @@
     <Value>0.933497548</Value>
 </Widget>
 <Widget>
+    <Kind>2</Kind>
+    <Name>Stochasticity Mode</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>4</Kind>
-    <Name>B Noise Step</Name>
-    <Value>4.103448391</Value>
+    <Name>H Stochasticity</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

@@ -2,59 +2,59 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>299.000000000</XPosition>
-    <YPosition>-17.000000000</YPosition>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Width</Name>
-    <Value>22.507389069</Value>
+    <Value>24.330049515</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Height</Name>
-    <Value>19.591133118</Value>
+    <Value>45.472908020</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Hue - Input range</Name>
-    <HighValue>0.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>22.167495728</HighValue>
+    <LowValue>-2.463058472</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Hue - Output range</Name>
-    <HighValue>0.000000000</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>255.000000000</HighValue>
+    <LowValue>1.256157637</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Sat - Input range</Name>
-    <HighValue>32.019653320</HighValue>
-    <LowValue>-22.167480469</LowValue>
+    <HighValue>24.137924194</HighValue>
+    <LowValue>2.463043213</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Sat - Output range</Name>
     <HighValue>255.000000000</HighValue>
-    <LowValue>114.310348511</LowValue>
+    <LowValue>173.349746704</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Bright - Input range</Name>
-    <HighValue>61.576354980</HighValue>
-    <LowValue>-41.871948242</LowValue>
+    <HighValue>10.344825745</HighValue>
+    <LowValue>-2.463043213</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Bright - Output range</Name>
-    <HighValue>255.000000000</HighValue>
-    <LowValue>128.128097534</LowValue>
+    <HighValue>253.743850708</HighValue>
+    <LowValue>133.152709961</LowValue>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>Oscilllation Mode</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
@@ -64,45 +64,35 @@
 <Widget>
     <Kind>4</Kind>
     <Name>H NoiseSpeed</Name>
-    <Value>0.100000001</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>H Noise Step</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>H Stochasticity</Name>
-    <Value>1.000000000</Value>
+    <Value>0.348275870</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>S NoiseSpeed</Name>
-    <Value>0.233004928</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>S Noise Step</Name>
-    <Value>2.418719292</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Saturation Stochasticity</Name>
-    <Value>10000.000000000</Value>
+    <Value>0.405911326</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>B NoiseSpeed</Name>
-    <Value>0.201970443</Value>
+    <Value>0.547783256</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Stochasticity Mode</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>B Noise Step</Name>
-    <Value>2.019704342</Value>
+    <Name>H Stochasticity</Name>
+    <Value>3202.650146484</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>5517.689453125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness Stochasticity</Name>
-    <Value>10000.000000000</Value>
+    <Value>6453.556640625</Value>
 </Widget>
