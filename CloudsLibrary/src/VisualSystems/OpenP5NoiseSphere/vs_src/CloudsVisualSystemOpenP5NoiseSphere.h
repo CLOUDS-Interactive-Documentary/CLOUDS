@@ -194,6 +194,7 @@ protected:
     ofFloatColor minTipColor, maxTipColor;
     
     float currLevel;
+    float levelAdjust;
     
     bool * peakToggles;
     float combinedPeak;

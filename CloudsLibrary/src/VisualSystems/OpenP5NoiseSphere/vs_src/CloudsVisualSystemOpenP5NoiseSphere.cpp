@@ -88,7 +88,10 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupAudioGui()
     audioGui->addSlider("COMBINED PEAK", 0.0f, 30.0f, &combinedPeak);
     audioGui->addSlider("FUR PEAK SCALAR", 0.0f, 1.0f, &furPeakScalar);
     audioGui->addRadio("SOUNDS", soundNames);
+    
+    audioGui->addSpacer();
     audioGui->addSlider("LEVEL", 0.0f, 1.0f, 0.0f);
+    audioGui->addSlider("LEVEL ADJUST", 0.1f, 10.0f, &levelAdjust);
 
     audioGui->addSpacer();
 	audioGui->addSlider("SCROLL SPEED", 0.0f, 2.5f, &scrollSpeed);
@@ -154,6 +157,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     minHairLineWidth = maxHairLineWidth = 0.1f;
     
     currLevel = 0;
+    levelAdjust = 1.0f;
     
     sphereColor = ofFloatColor::gray;
     minBaseColor = maxBaseColor = ofFloatColor::black;
