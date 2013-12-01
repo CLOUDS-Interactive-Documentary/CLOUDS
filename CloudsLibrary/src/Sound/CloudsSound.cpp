@@ -160,7 +160,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
 		
         if(valid_presets.size()==0)
         {
-            valid_presets.push_back(0);
+            valid_presets.push_back(12);
         }
         
 		if(valid_presets.size() > 0){

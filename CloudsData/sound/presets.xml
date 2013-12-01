@@ -473,4 +473,46 @@
 			<value>5</value>
 		</dichomax>
 	</preset>
+	<preset>
+		<name>NO DICHO DEFAULT</name>
+		<orchestration>
+			<name>slowwaves</name>
+			<arg_a>bucket</arg_a>
+			<arg_b>NULL</arg_b>
+		</orchestration>
+		<orchestration>
+			<name>helmholtz</name>
+			<arg_a>bucket</arg_a>
+			<arg_b>NULL</arg_b>
+		</orchestration>
+		<orchestration>
+			<name>slowwaveshi</name>
+			<arg_a>bucket</arg_a>
+			<arg_b>NULL</arg_b>
+		</orchestration>
+		<harmony>1</harmony>	
+		<rhythm>1</rhythm>	
+		<tempo>120</tempo>
+		<bank>luke</bank>
+		<dichomin>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+			<value>-5</value>
+		</dichomin>
+		<dichomax>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+			<value>5</value>
+		</dichomax>
+	</preset>
 </presets>
