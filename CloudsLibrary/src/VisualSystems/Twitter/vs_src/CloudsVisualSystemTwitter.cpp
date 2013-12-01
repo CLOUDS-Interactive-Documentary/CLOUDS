@@ -13,6 +13,11 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 {
 	listGui = new ofxUISuperCanvas("SEARCH TERM LIST", gui);
     loadJSONData();
+//    createPajekNetwork();
+    //  mesh.
+    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+    loadMesh();
+
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
@@ -28,80 +33,255 @@ void CloudsVisualSystemTwitter::loadJSONData(){
         
         for(int i = 0; i< files.size(); i++){
             string filePath =getVisualSystemDataPath()+"tweets/" +files[i].getFileName();
-//            cout<<filePath<<endl;
+
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
-//                cout << result.getRawString() << endl;
                 
                 if(result.isMember("errors")) {
                     ofDrawBitmapString(result.getRawString(), 10, 14);
                 }
-                else if(result.isArray()) {
-                    int n = 0;
-                    ofxJSONElement trends = result[n]["trends"];
-                    for(int i = 0; i < trends.size(); i++) {
-                        std::string message = trends[i]["query"].asString();
-                        ofDrawBitmapString(message, 10, 40*i+40);
-                    }
-                }
                 else if(result.isMember("Tweets")){
-                    
+
                     Tweeter cur;
                     vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
 
-                    cur.name = result["name"].asString();
+                     vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
+                    cur.name = "@" + names[0];
+                    cur.ID = i;
                     cout<<cur.name<<" has "<<tweets.size()<<" tweets"<<endl;
-                    for(int i =0; i<tweets.size(); i ++){
-                        
+                    
+                    for(int j =0; j<tweets.size(); j ++){
                         Tweet t;
-
-                        t.tweet = tweets[i]["Tweet"].asString();
-
-                        cout<<t.tweet<<endl;
-                        if(tweets[i]["Hashtag"].isValidIndex(0)){
-                            ofxJSONElement hashTags = tweets[i]["Hashtag"];
+                        t.tweet = tweets[j]["Tweet"].asString();
+                        
+                        if(tweets[j]["Hashtag"].isValidIndex(0)){
+                            ofxJSONElement hashTags = tweets[j]["Hashtag"];
                             
-                            for(int j=0; j<hashTags.size(); j++){
-                                t.hashtags.push_back(hashTags[j].asString());
+                            for(int k=0; k<hashTags.size(); k++){
+                                t.hashtags.push_back(hashTags[k ].asString());
                             }
-                            
-                            
                         }
                         
-                        if(tweets[i]["Users"].isValidIndex(0)){
-                            ofxJSONElement users = tweets[i]["Users"];
+                        if(tweets[j]["Users"].isValidIndex(0)){
+                            ofxJSONElement users = tweets[j]["Users"];
                             
                             for(int k=0; k<users.size(); k++){
-                                t.mentionedUsers.push_back(users[k].asString());
-                            }
-                            
-                            
-                        }
-                        
-                        if(tweets[i].isMember("Date")){
-                            ofxJSONElement date = tweets[i]["Date"];
-                            t.tweetDate.day = date[0].asFloat();
-                            t.tweetDate.month =date[1].asFloat();
-                            t.tweetDate.year =date[2].asFloat();
-                            
-                            cout<<t.tweetDate.day<< " - "<<t.tweetDate.month <<" - "<<t.tweetDate.year<<endl;
+                                
+                                if( !ofContains(cur.userLinks, users[k].asString())){
+                                    
+                                    cur.userLinks.push_back(users[k].asString());
 
+                                }
+                            }
+                        }
+                        if(tweets[j].isMember("Date")){
+                            ofxJSONElement date = tweets[j]["Date"];
+                            t.tweetDate.day = date["Day"].asInt()   ;
+                            t.tweetDate.month =date["Month"].asInt();
+                            t.tweetDate.year =date["Year"].asInt();
                         }
                         
                         userTweets.push_back(t);
 
                     }
-                        cur.tweets= userTweets;
-                        tweeters.push_back(cur);
+                    cur.tweets= userTweets;
+//                   / cout<<cur.name<<endl;
+                    tweeters.push_back(cur);
+                } else {
+                    cout  << "Failed to parse JSON" << endl;
                 }
-                
-                
-            } else {
-                cout  << "Failed to parse JSON" << endl;
+            }
+            
+        }
+    }
+    addUsersFromMentions();
+}
+
+void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
+	ofBuffer pajekFile = ofBufferFromFile(fileName);
+	bool findingNodes = false;
+    bool findingEdges = false;;
+	while(!pajekFile.isLastLine()){
+		string line = pajekFile.getNextLine();
+		
+		if(line == "" || line.at(0) == '%'){
+			continue;
+		}
+		
+		if (line.find("*Vertices") != string::npos ) {
+			findingNodes = true;
+			continue;
+            
+		}
+		if (line.find("*Edgeslist") != string::npos ) {
+			findingNodes = false;
+            findingEdges = true;
+            continue;
+		}
+		
+		if(findingNodes){
+			vector<string> components = ofSplitString(line, " ");
+
+            int id = ofToInt(components[0]);
+
+            Tweeter& tweeter = getTweeterByID(tweeters, id);
+
+			int numcomp = components.size();
+            max = ofVec3f(0,0,0);
+
+			tweeter.position = ofVec3f(ofToFloat(components[2]),
+										   ofToFloat(components[3]),
+										   ofToFloat(components[4])*10);
+		}
+        
+        if(findingEdges){
+			vector<string> components = ofSplitString(line, " ");
+            int id = ofToInt(components[0]);
+            //428 4 8 9 11 15 17 18
+
+            Tweeter& tweeter = getTweeterByID(tweeters, id);
+            cout<<tweeter.name<<"  has "<<" "<<tweeter.ID<<"  "<<(components.size()-2)<<" links."<<endl;
+            for(int i =1; i< components.size()-1; i++){
+                if(tweeter.ID != ofToInt(components[i]) ){
+                    tweeter.linksById.push_back(ofToInt(components[i]));
+                }
+                else{
+                    cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
+                }
+                cout<<i<<" : "<<components[i]<<endl;
             }
         }
         
+	}
+}
+
+void CloudsVisualSystemTwitter::loadMesh(){
+//    ofVec3f centroid;
+//    
+//    for(int i=0; tweeters.size(); i++){
+//        mesh.setMode(OF_PRIMITIVE_POINTS);
+//        mesh.setupIndicesAuto();
+//        mesh.addVertex(tweeters[i].position);
+//        
+//        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
+//                      MAX(tweeters[i].position.y,max.y),
+//                      MAX(tweeters[i].position.z,max.z));
+//        
+//        centroid += tweeters[i].position;
+//    }
+    
+//    centroid /= tweeters.size();
+    
+    for(int j=0; j<tweeters.size(); j++){
+        
+        for (int k=0; k<tweeters[j].linksById.size(); k++) {
+            tweeters[j].linksById[k];
+
+            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
+                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
+                
+                linksMesh.addVertex(tweeters[j].position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
+            
+                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+                linksMesh.addVertex(t.position);
+                linksMesh.addNormal(ofVec3f(0,0,0));
+                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+            }
+            else{
+                cout<<"Link already exists between "<<tweeters[j].ID<<" and "<<tweeters[j].linksById[k]<<endl;
+            }
+        }
+        linksMesh.setMode(OF_PRIMITIVE_LINES);
+    }
+
+}
+void CloudsVisualSystemTwitter::addUsersFromMentions(){
+    
+    vector<string> names;
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        names.push_back(tweeters[i].name);
+    }
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        for(int j=0; j<tweeters[i].userLinks.size(); j++){
+            
+            if(! ofContains(names, tweeters[i].userLinks[j])){
+                numberOfMentions[tweeters[i].userLinks[j]] ++;
+                
+            }
+        
+        }
+       
+    }
+    
+    map<string,int>::iterator it;
+    for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
+//        cout<<it->first <<" :  "<<it->second<<endl;
+        
+        if(it->second > 3){
+            Tweeter t = Tweeter(it->first, tweeters.size());
+//            cout<<"adding "<<t.name<<"  to the list as they have been mentioned more than twice "<<endl;
+            tweeters.push_back(t);
+        }
+    }
+    
+}
+
+
+void CloudsVisualSystemTwitter::createPajekNetwork(){
+    stringstream ss;
+    cout<<"Creating paejk file"<<endl;
+    ss<<"*Vertices "<<tweeters.size()<<endl;
+    
+    for (int i= 0; i < tweeters.size(); i++) {
+        ss<<tweeters[i].ID<<"  \""<<tweeters[i].name<<"\""<<endl;
+
+        
+    }
+    
+    ss<<"*EdgesList "<<tweeters.size()<<endl;
+    for(int j =0; j<tweeters.size(); j++){
+        
+        string edges;
+        if(tweeters[j].userLinks.size() > 0){
+            for(int k=0; k< tweeters[j].userLinks.size(); k++){
+
+                if(getUserIdByName(tweeters[j].userLinks[k]) != -1){
+//                    cout<<"found  link between : "<<tweeters[j].userLinks[k]<<","<<tweeters[j].name<<endl;
+                    edges += ofToString(getUserIdByName(tweeters[j].userLinks[k])) +  " ";
+                }
+            }
+            
+            ss<<tweeters[j].ID<<" "<<edges<<endl;
+        }
+
+    }
+    ofBuffer b = ofBuffer(ss);
+    ofBufferToFile(getVisualSystemDataPath() + "/twitter.net",b);
+}
+
+int CloudsVisualSystemTwitter:: getUserIdByName(string name){
+    
+    for (int i=0; i<tweeters.size(); i++) {
+        if(tweeters[i].name == name){
+            return tweeters[i].ID;
+        }
+    }
+    return -1;
+}
+
+Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, int _id ){
+    
+    for(int i=0; i< tweeters.size(); i++){
+        
+        if(tweeters[i].ID == _id){
+            
+            return tweeters[i];
+            
+        }
     }
 }
 
@@ -173,7 +353,14 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    
+    ofScale(10, 10);
+    linksMesh.drawWireframe();
+//    cam.begin();
+    ofEnablePointSprites();
+
+    linksMesh.drawVertices();
+    ofDisablePointSprites();
+//    cam.end();
 }
 
 // draw any debug stuff here
@@ -205,12 +392,7 @@ void CloudsVisualSystemTwitter::selfExit()
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 	for(int i=0; i<tweeters.size(); i++){
-        cout<<tweeters[i].name<<" : "<<tweeters[i].tweets.size()<<endl;
         
-        for(int j=0; j<tweeters[i].tweets.size(); j++){
-            
-            cout<<tweeters[i].tweets[j].tweet<<" , "<<tweeters[i].tweets[j].hashtags.size()<<" , "<<tweeters[i].tweets[j].mentionedUsers.size()<<endl;
-        }
         
         
     }

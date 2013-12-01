@@ -45,23 +45,8 @@ void CloudsSound::loadRTcmixFiles()
         cout << endl;
     }
     
-    loadpresets("presets.txt", presets);
-    cout << "PRESETS:" << endl;
-    for(int i = 0;i<presets.size();i++)
-    {
-        for(int j = 0;j<presets[i].instruments.size();j++)
-        {
-            cout << presets[i].instruments[j] << " ";
-        }
-        cout << presets[i].harmony << " ";
-        cout << presets[i].rhythm << " ";
-        cout << presets[i].tempo << " ";
-        cout << endl;
-    }
-    
-    cout << "====" << endl;
-    cout << "DONE" << endl;
-    cout << "====" << endl;
+    //loadpresets("presets.txt", presets);
+    loadpresets_xml("presets.xml", presets);
     
 }
 
