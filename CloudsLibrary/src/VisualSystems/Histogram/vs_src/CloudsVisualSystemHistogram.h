@@ -12,6 +12,18 @@
 
 #include "CloudsVisualSystem.h"
 
+enum HistogramMode
+{
+    HISTOGRAM_MODE_BARS,
+    HISTOGRAM_MODE_LINES,
+    HISTOGRAM_MODE_POINTS
+};
+
+enum HistogramSource
+{
+    HISTOGRAM_SOURCE_RANDOM,
+    HISTOGRAM_SOURCE_AUDIO
+};
 
 class CloudsVisualSystemHistogram : public CloudsVisualSystem {
   public:
@@ -91,23 +103,20 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
-	//
+	void addRandomPoint();
 
 
 protected:
-    
-    //  Your Stuff
-    //
+    ofxUISuperCanvas* customGui;
 	
-	ofxUISuperCanvas* customGui;
-	
-    vector <float> randomData;
-    int numRandomData;
+    vector <float> dataPoints;
+    int maxNumDataPoints;
     
     int seed;
     int stepSize = 2;
     int noiseValue = 100;
     
+    float t;
     int n = 0;
     
     bool filled = false;
@@ -116,8 +125,8 @@ protected:
 	vector <ofMesh> histograms;
     ofMesh histo;
     
-    ofColor color1;
-    ofColor color2;
+    ofColor colorFg;
+    ofColor colorClear;
     
     float xpos = 10;
     float ypos = 10;
@@ -126,7 +135,8 @@ protected:
     float xoffset = 0;
     float zoffset = -150;
    
-    int rows = 4;
+    int maxCols;
     
-    
+    HistogramMode mode;
+    HistogramSource source;
 };
