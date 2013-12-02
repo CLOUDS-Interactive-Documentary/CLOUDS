@@ -124,6 +124,7 @@ protected:
     // plants
     ofShader plantsShader;
     unsigned numPlantMeshes;
+    float numNearbyPlants;
     vector<ofxRules> plantMeshes;
     list<Plant> plants;
     float growDist;

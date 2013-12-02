@@ -17,7 +17,7 @@ const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml"
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(20), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
-    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false)
+    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200)
 {
 }
 
@@ -148,7 +148,7 @@ void CloudsVisualSystemFlying::selfUpdate()
         if ((it->pos - floorLookAt).lengthSquared() > maxPlantDistSq) it = plants.erase(it);
     }
     
-    while (plants.size() < 50)
+    while (plants.size() < numNearbyPlants)
     {
         ofVec3f pos(0.f, 0.f, ofRandom(growDist, maxPlantDist));
         pos.rotate(ofRandom(0, 360), ofVec3f(0, 1, 0));
@@ -248,6 +248,7 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
 {
     rdrGui->addToggle("regenerate", false);
     rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
+    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
     rdrGui->addToggle("cameraControl", &cameraControl);
