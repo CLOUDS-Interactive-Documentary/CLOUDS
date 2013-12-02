@@ -13,24 +13,49 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemHistogram::selfSetupGui(){
     
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
+	customGui = new ofxUISuperCanvas("HISTOGRAM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
+	customGui->setName("Histogram");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	//customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-    //customGui->addButton("Custom Button", false);
     
+    customGui->addSpacer();
+    
+    vector<string> modes;
+    modes.push_back("BARS");
+    modes.push_back("LINES");
+    modes.push_back("POINTS");
+    customGui->addLabel("MODE");
+    customGui->addRadio("MODES", modes);
+    
+    vector<string> sources;
+    sources.push_back("RANDOM");
+    sources.push_back("AUDIO");
+    customGui->addLabel("SOURCE");
+    customGui->addRadio("SOURCES", sources);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
-void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
+void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
+{
+	if (e.widget->getName() == "BARS" && ((ofxUIToggle *)e.widget)->getValue()) {
+        mode = HISTOGRAM_MODE_BARS;
+	}
+    else if (e.widget->getName() == "LINES" && ((ofxUIToggle *)e.widget)->getValue()) {
+        mode = HISTOGRAM_MODE_LINES;
+	}
+    else if (e.widget->getName() == "POINTS" && ((ofxUIToggle *)e.widget)->getValue()) {
+        mode = HISTOGRAM_MODE_POINTS;
+	}
+    
+    else if (e.widget->getName() == "RANDOM" && ((ofxUIToggle *)e.widget)->getValue()) {
+        source = HISTOGRAM_SOURCE_RANDOM;
+	}
+    else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
+        source = HISTOGRAM_SOURCE_AUDIO;
 	}
 }
 
@@ -54,16 +79,17 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemHistogram::selfSetup(){
-	
+void CloudsVisualSystemHistogram::selfSetup()
+{
+    seed = int(ofRandom(20));
+    maxNumDataPoints = 3200;
     
+    colorClear.set(0, 0, 0, 0);
     
-    seed =  int(ofRandom(20));
-    numRandomData = 3200;
-    ofSetFrameRate(60);
+    mode = HISTOGRAM_MODE_BARS;
+    source = HISTOGRAM_SOURCE_RANDOM;
     
-    //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
+    maxCols = 100;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -93,102 +119,98 @@ void CloudsVisualSystemHistogram::selfUpdate(){
     ////////////////////////////////////////////////////////////////////////
     // FILL THE VECTOR WITH RANDOM NUMBERS FOR STARTERS
     
-    float t = ofGetFrameNum() / 50.0;
+    t = ofGetFrameNum() / 50.0;
     
-    
-    if (filled == false){
-        for (int i = 0; i < numRandomData; i++){
-            n = n+1;
-            //randomData.push_back(ofRandom(1,100)); // random float between 1 and 100
-            noiseValue += ofNoise( n * .01, t) * 10 - 5; //generate noise value
-            noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
-            float newValue = ofMap(noiseValue,-500, 2000, 10, 400, true);
-            randomData.push_back(newValue); // noise value
-            //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
-            //  cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
-        }
-        
-        if (randomData.size() >= numRandomData){
-            filled = true;
-        }
+    while (dataPoints.size() < maxNumDataPoints) {
+        addRandomPoint();
     }
     
     ////////////////////////////////////////////////////////////////////////
     // DELETE THE FIRST ITEM IN VECTOR, MOVE EVERY VALUE UP ONE, ADD A NUMBER TO THE END
     
     // Generate a new noise value
-    n = n+1;
-    noiseValue += ofNoise( n * .01, t) * 10 - 5; // generate noise value
-    noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
-    float newValue = ofMap(noiseValue, -500, 2000, 10, 400, true);
+    addRandomPoint();
     
-    randomData.erase(randomData.begin());
-    randomData.push_back(newValue); // noise value
+    while (dataPoints.size() > maxNumDataPoints) {
+        dataPoints.erase(dataPoints.begin());
+    }
     
     ////////////////////////////////////////////////////////////////////////
     // ADD VERTICES TO THE MESH
     
-    
-    histo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     histo.clear();
-    
-    int p = 0;
-    int r = 0;
-    
-    for (int j = randomData.size()-1; j > 0 ; j--){
-                
-        if(p%100 == 0){
-            r++;
-            p = 0;
-            xoffset = 0;
-            cout << "bang: " <<  xoffset << endl;
-            
-        }
-        
-        p++;
-        xoffset = p * rectWidth;
-        
-        float k = ofMap(j,0,randomData.size(),255,80);
-//      cout<<randomD
-        rectHeight = randomData[j];
-      
-        //bottom left
-        ofPoint a = ofPoint(xpos + xoffset, ypos, r*zoffset);
-        //topleft
-        ofPoint b = ofPoint(xpos + xoffset, ypos + rectHeight, r*zoffset);
-        //bottom right
-        ofPoint c = ofPoint(xpos + rectWidth + xoffset, ypos, r*zoffset);
-        //top right
-        ofPoint d = ofPoint(xpos + rectWidth + xoffset, ypos + rectHeight, r*zoffset);
-        
-        ofBeginShape();
-        
-        color1.setHsb(k,180 + ofRandom(25),225 + ofRandom(25), 225);
-        color2.setHsb(0,0,0,0);
-       
-        histo.addColor(color2);
-        histo.addVertex(a);
-        histo.addColor(color1);
-        histo.addVertex(a);
-        histo.addColor(color1);
-        histo.addVertex(b);
-        histo.addColor(color1);
-        histo.addVertex(c);
-        histo.addColor(color1);
-        histo.addVertex(d);
-        histo.addColor(color2);
-        histo.addVertex(d);
-        
-        ofEndShape();
-        
-        // cout << "xoffset: " <<  xoffset << endl;
-        //cout <<  "index : " << j << "  current number: " << k << endl;
-    
-        
+    if (mode == HISTOGRAM_MODE_BARS) {
+        histo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    }
+    else if (mode == HISTOGRAM_MODE_LINES) {
+        histo.setMode(OF_PRIMITIVE_LINE_STRIP);
+    }
+    else {
+        histo.setMode(OF_PRIMITIVE_POINTS);
     }
     
-
+    int col = 0;
+    int row = 0;
     
+    for (int j = dataPoints.size()-1; j > 0 ; j--) {
+                
+        if (col % maxCols == 0) {
+            // next row
+            row++;
+            col = 0;
+            xoffset = 0;
+        }
+        
+        col++;
+        xoffset = col * rectWidth;
+        
+        float k = ofMap(j, 0, dataPoints.size(), 255, 80);
+        rectHeight = dataPoints[j];
+      
+        colorFg.setHsb(k, 180 + ofRandom(25), 225 + ofRandom(25), 225);
+       
+        if (mode == HISTOGRAM_MODE_BARS) {
+            // bottom left
+            ofPoint a = ofPoint(xpos + xoffset, ypos, row * zoffset);
+            // top left
+            ofPoint b = ofPoint(xpos + xoffset, ypos + rectHeight, row * zoffset);
+            // bottom right
+            ofPoint c = ofPoint(xpos + rectWidth + xoffset, ypos, row * zoffset);
+            // top right
+            ofPoint d = ofPoint(xpos + rectWidth + xoffset, ypos + rectHeight, row * zoffset);
+            
+            histo.addColor(colorClear);
+            histo.addVertex(a);
+            
+            histo.addColor(colorFg);
+            histo.addVertex(a);
+            histo.addColor(colorFg);
+            histo.addVertex(b);
+            histo.addColor(colorFg);
+            histo.addVertex(c);
+            histo.addColor(colorFg);
+            histo.addVertex(d);
+            
+            histo.addColor(colorClear);
+            histo.addVertex(d);
+        }
+        else {
+            ofPoint a = ofPoint(xpos + xoffset, ypos + rectHeight, row * zoffset);
+            
+            if (col == 1) {
+                histo.addColor(colorClear);
+                histo.addVertex(a);
+            }
+            
+            histo.addColor(colorFg);
+            histo.addVertex(a);
+            
+            if (col == maxCols) {
+                histo.addColor(colorClear);
+                histo.addVertex(a);
+            }
+        }
+    }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -255,4 +277,16 @@ void CloudsVisualSystemHistogram::selfMousePressed(ofMouseEventArgs& data){
 
 void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 	
+}
+
+void CloudsVisualSystemHistogram::addRandomPoint()
+{
+    n = n+1;
+    //randomData.push_back(ofRandom(1,100)); // random float between 1 and 100
+    noiseValue += ofNoise( n * .01, t) * 10 - 5; //generate noise value
+    noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
+    float newValue = ofMap(noiseValue, -500, 2000, 10, 400, true);
+    dataPoints.push_back(newValue); // noise value
+    //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
+    //  cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
 }

@@ -3,9 +3,10 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
-  
-	Histogram.setup();
-	Histogram.playSystem();
+    ofSetFrameRate(60);
+
+	vs.setup();
+	vs.playSystem();
 }
 
 
