@@ -20,7 +20,6 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
-    
     vector<string> modes;
     modes.push_back("BARS");
     modes.push_back("LINES");
@@ -28,11 +27,22 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     customGui->addLabel("MODE");
     customGui->addRadio("MODES", modes);
     
+    customGui->addSpacer();
     vector<string> sources;
     sources.push_back("RANDOM");
     sources.push_back("AUDIO");
     customGui->addLabel("SOURCE");
     customGui->addRadio("SOURCES", sources);
+    
+    customGui->addSpacer();
+    customGui->addLabel("SOUND");
+    vector<string> soundNames;
+    for (int i = 0; i < soundsDir.size(); i++) {
+        soundNames.push_back(soundsDir.getName(i));
+    }
+    customGui->addRadio("SOUNDS", soundNames);
+    
+    customGui->addSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
@@ -57,6 +67,18 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_AUDIO;
 	}
+    
+    else {
+        // Let's look through the files dropdown for a match.
+        string name = e.widget->getName();
+        for (int i = 0; i < soundsDir.numFiles(); i++) {
+            if (name == soundsDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+                selectedSoundsIdx = i;
+                reloadSound();
+                break;
+            }
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -90,6 +112,12 @@ void CloudsVisualSystemHistogram::selfSetup()
     source = HISTOGRAM_SOURCE_RANDOM;
     
     maxCols = 100;
+    
+    soundsDir.listDir(getVisualSystemDataPath() + "sounds");
+    soundsDir.sort();
+    selectedSoundsIdx = 0;
+    
+    levelAdjust = 1.0f;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -113,23 +141,24 @@ void CloudsVisualSystemHistogram::selfSceneTransformation(){
 }
 
 //normal update call
-void CloudsVisualSystemHistogram::selfUpdate(){
-    
-    
+void CloudsVisualSystemHistogram::selfUpdate()
+{
     ////////////////////////////////////////////////////////////////////////
-    // FILL THE VECTOR WITH RANDOM NUMBERS FOR STARTERS
-    
+    // FILL THE VECTOR WITH DATA
+
     t = ofGetFrameNum() / 50.0;
     
-    while (dataPoints.size() < maxNumDataPoints) {
+    if (source == HISTOGRAM_SOURCE_RANDOM) {
+        while (dataPoints.size() < maxNumDataPoints) {
+            addRandomPoint();
+        }
+    
+        // Generate a new noise value
         addRandomPoint();
     }
-    
-    ////////////////////////////////////////////////////////////////////////
-    // DELETE THE FIRST ITEM IN VECTOR, MOVE EVERY VALUE UP ONE, ADD A NUMBER TO THE END
-    
-    // Generate a new noise value
-    addRandomPoint();
+    else {
+        addSoundPoint();
+    }
     
     while (dataPoints.size() > maxNumDataPoints) {
         dataPoints.erase(dataPoints.begin());
@@ -138,15 +167,15 @@ void CloudsVisualSystemHistogram::selfUpdate(){
     ////////////////////////////////////////////////////////////////////////
     // ADD VERTICES TO THE MESH
     
-    histo.clear();
+    histoMesh.clear();
     if (mode == HISTOGRAM_MODE_BARS) {
-        histo.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+        histoMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     }
     else if (mode == HISTOGRAM_MODE_LINES) {
-        histo.setMode(OF_PRIMITIVE_LINE_STRIP);
+        histoMesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     }
     else {
-        histo.setMode(OF_PRIMITIVE_POINTS);
+        histoMesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
     int col = 0;
@@ -179,35 +208,35 @@ void CloudsVisualSystemHistogram::selfUpdate(){
             // top right
             ofPoint d = ofPoint(xpos + rectWidth + xoffset, ypos + rectHeight, row * zoffset);
             
-            histo.addColor(colorClear);
-            histo.addVertex(a);
+            histoMesh.addColor(colorClear);
+            histoMesh.addVertex(a);
             
-            histo.addColor(colorFg);
-            histo.addVertex(a);
-            histo.addColor(colorFg);
-            histo.addVertex(b);
-            histo.addColor(colorFg);
-            histo.addVertex(c);
-            histo.addColor(colorFg);
-            histo.addVertex(d);
+            histoMesh.addColor(colorFg);
+            histoMesh.addVertex(a);
+            histoMesh.addColor(colorFg);
+            histoMesh.addVertex(b);
+            histoMesh.addColor(colorFg);
+            histoMesh.addVertex(c);
+            histoMesh.addColor(colorFg);
+            histoMesh.addVertex(d);
             
-            histo.addColor(colorClear);
-            histo.addVertex(d);
+            histoMesh.addColor(colorClear);
+            histoMesh.addVertex(d);
         }
         else {
             ofPoint a = ofPoint(xpos + xoffset, ypos + rectHeight, row * zoffset);
             
             if (col == 1) {
-                histo.addColor(colorClear);
-                histo.addVertex(a);
+                histoMesh.addColor(colorClear);
+                histoMesh.addVertex(a);
             }
             
-            histo.addColor(colorFg);
-            histo.addVertex(a);
+            histoMesh.addColor(colorFg);
+            histoMesh.addVertex(a);
             
             if (col == maxCols) {
-                histo.addColor(colorClear);
-                histo.addVertex(a);
+                histoMesh.addColor(colorClear);
+                histoMesh.addVertex(a);
             }
         }
     }
@@ -224,7 +253,7 @@ void CloudsVisualSystemHistogram::selfDraw(){
     ofPushStyle();
     
     ofTranslate(-150,0);
-    histo.draw();
+    histoMesh.draw();
 	ofPopStyle();	
     ofPopMatrix();
 
@@ -279,6 +308,18 @@ void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
+void CloudsVisualSystemHistogram::reloadSound()
+{
+    // close whatever sound was previously open
+    soundPlayer.stop();
+    soundPlayer.unloadSound();
+    
+    ofFile file = soundsDir.getFile(selectedSoundsIdx);
+    soundPlayer.loadSound(file.getAbsolutePath());
+    soundPlayer.play();
+    soundPlayer.setLoop(true);
+}
+
 void CloudsVisualSystemHistogram::addRandomPoint()
 {
     n = n+1;
@@ -289,4 +330,13 @@ void CloudsVisualSystemHistogram::addRandomPoint()
     dataPoints.push_back(newValue); // noise value
     //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
     //  cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
+}
+
+void CloudsVisualSystemHistogram::addSoundPoint()
+{
+    ofSoundUpdate();
+    float currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
+    float newValue = ofMap(currLevel, 0, 1, 10, 400, true);
+    cout << "currLevel=" << currLevel << " // newValue=" << newValue << endl;
+    dataPoints.push_back(newValue);
 }
