@@ -149,7 +149,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     minBaseColor = maxBaseColor = ofFloatColor::black;
     minTipColor  = maxTipColor  = ofFloatColor::white;
     
-    soundsDir.listDir(getVisualSystemDataPath() + "sounds");
+    soundsDir.listDir(getVisualSystemDataPath() + "sounds" );
     soundsDir.sort();
     selectedSoundsIdx = 0;
     reloadSound();
