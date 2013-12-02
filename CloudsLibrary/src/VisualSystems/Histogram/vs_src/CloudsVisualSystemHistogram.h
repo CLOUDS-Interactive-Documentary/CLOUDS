@@ -103,8 +103,10 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
+    void reloadSound();
+    
 	void addRandomPoint();
-
+    void addSoundPoint();
 
 protected:
     ofxUISuperCanvas* customGui;
@@ -119,11 +121,12 @@ protected:
     float t;
     int n = 0;
     
-    bool filled = false;
-    bool drawn = false;
+    ofDirectory soundsDir;
+    int selectedSoundsIdx;
+    ofSoundPlayer soundPlayer;
+    float levelAdjust;
     
-	vector <ofMesh> histograms;
-    ofMesh histo;
+    ofMesh histoMesh;
     
     ofColor colorFg;
     ofColor colorClear;
