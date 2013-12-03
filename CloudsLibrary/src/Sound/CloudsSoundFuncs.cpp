@@ -17,7 +17,7 @@ void CloudsSound::startMusicFX(float outskip, float musicdur)
     SCHEDULEBANG(outskip+musicdur+7.0);
 }
 
-void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, float musicdur, float bpm, string samplebank)
+void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm)
 {
     
     float t, beatoffset;
@@ -31,20 +31,8 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
 	
     //flush_sched(); // kill previous music
     
-    vector<string> ilist = mo; // list of instruments
     
-    
-    cout << "===============" << endl;
-    cout << "MAKING MUSIC!!!" << endl;
-    cout << "   start: " << outskip << " " << "seconds" << endl;
-    cout << "   duration: " << musicdur << " " << "seconds" << endl;
-    cout << "   harmony: " << mh << ", rhythm: " << mr << endl;
-    cout << "   orchestration: " << endl;
-    for(int i = 0;i<ilist.size();i++)
-    {
-        cout << "       " << ilist[i] << endl;
-    }
-    cout << "===============" << endl;
+    cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
     
     //
     // =========================
@@ -53,7 +41,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     //
     
     // MODALBEATS
-    if (find(ilist.begin(), ilist.end(), "modalbeats") != ilist.end())
+    if (mo=="modalbeats")
     {
         for(i = 0;i<musicdur;i+=tempo)
         {
@@ -72,7 +60,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // WAVEGUIDEBEATS
-    if (find(ilist.begin(), ilist.end(), "waveguidebeats") != ilist.end())
+    if (mo=="waveguidebeats")
     {
         int preset = 3;
         for(i = 0;i<musicdur;i+=tempo)
@@ -91,7 +79,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // LOWWAVEPULSE
-    if (find(ilist.begin(), ilist.end(), "lowwavepulse") != ilist.end())
+    if (mo=="lowwavepulse")
     {
         for(i = 0;i<musicdur;i+=tempo)
         {
@@ -112,7 +100,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // MESHBEATS
-    if (find(ilist.begin(), ilist.end(), "meshbeats") != ilist.end())
+    if (mo=="meshbeats")
     {
         for(i = 0;i<musicdur;i+=tempo)
         {
@@ -126,7 +114,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // SLOWMESHBEATS
-    if (find(ilist.begin(), ilist.end(), "slowmeshbeats") != ilist.end())
+    if (mo=="slowmeshbeats")
     {
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
@@ -140,7 +128,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // SLOWWAVES
-    if (find(ilist.begin(), ilist.end(), "slowwaves") != ilist.end())
+    if (mo=="slowwaves")
     {
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
         {
@@ -153,7 +141,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // SLOWWAVESHI
-    if (find(ilist.begin(), ilist.end(), "slowwaveshi") != ilist.end())
+    if (mo=="slowwaveshi")
     {
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
         {
@@ -172,7 +160,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // WAVESHIPATTERNED
-    if (find(ilist.begin(), ilist.end(), "waveshipatterned") != ilist.end())
+    if (mo=="waveshipatterned")
     {
         int pick = 0;
         for(i = 0;i<musicdur;i+=tempo*2.)
@@ -195,7 +183,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     
     
     // KISS MY ARP
-    if (find(ilist.begin(), ilist.end(), "kissmyarp") != ilist.end())
+    if (mo=="kissmyarp")
     {
         int pick = 0;
         for(i = 0;i<musicdur;i+=tempo*2)
@@ -214,7 +202,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // KISS MY ARP SYNCH
-    if (find(ilist.begin(), ilist.end(), "kissmyarpsynch") != ilist.end())
+    if (mo=="kissmyarpsynch")
     {
         int pick = 0;
         for(i = 0;i<musicdur;i+=tempo*2)
@@ -236,7 +224,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // KISS MY ARP FAST
-    if (find(ilist.begin(), ilist.end(), "kissmyarpfast") != ilist.end())
+    if (mo=="kissmyarpfast")
     {
         int pick = 0;
         for(i = 0;i<musicdur;i+=tempo)
@@ -255,7 +243,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // HELMHOLTZ
-    if (find(ilist.begin(), ilist.end(), "helmholtz") != ilist.end())
+    if (mo=="helmholtz")
     {
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
         {
@@ -268,7 +256,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // FILTERNOISE
-    if (find(ilist.begin(), ilist.end(), "filternoise") != ilist.end())
+    if (mo=="filternoise")
     {
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
         {
@@ -280,7 +268,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // STRUMSINE
-    if (find(ilist.begin(), ilist.end(), "strumsine") != ilist.end())
+    if (mo=="strumsine")
     {
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
         {
@@ -300,7 +288,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // WAVEGUIDE
-    if (find(ilist.begin(), ilist.end(), "waveguide") != ilist.end())
+    if (mo=="waveguide")
     {
         int preset = 3;
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(6, 24)))
@@ -313,7 +301,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // PHATBEATZ
-    if (find(ilist.begin(), ilist.end(), "phatbeatz") != ilist.end())
+    if (mo=="phatbeatz")
     {
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
@@ -332,7 +320,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // VERMONTBEATZ
-    if (find(ilist.begin(), ilist.end(), "vermontbeatz") != ilist.end())
+    if (mo=="vermontbeatz")
     {
         int pick;
         for(i = 0;i<musicdur;i+=tempo*2.)
@@ -354,7 +342,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // TESTLOOP1
-    if (find(ilist.begin(), ilist.end(), "testloop1") != ilist.end())
+    if (mo=="testloop1")
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
@@ -363,7 +351,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // TESTLOOP2
-    if (find(ilist.begin(), ilist.end(), "testloop2") != ilist.end())
+    if (mo=="testloop2")
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
@@ -372,7 +360,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // TESTLOOP3
-    if (find(ilist.begin(), ilist.end(), "testloop3") != ilist.end())
+    if (mo=="testloop3")
     {
         for(i = 0;i<musicdur;i+=tempo*64.)
         {
@@ -381,7 +369,7 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // BASSLOOP1
-    if (find(ilist.begin(), ilist.end(), "bassloop1") != ilist.end())
+    if (mo=="bassloop1")
     {
         for(i = 0;i<musicdur;i+=tempo*64)
         {
@@ -390,12 +378,12 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // REICHOMATIC
-    if (find(ilist.begin(), ilist.end(), "reichomatic") != ilist.end())
+    if (mo=="reichomatic")
     {
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==samplebank)
+            if(looperSamples[i].bank==arg_a)
             {
                 cout << "Sample: " << looperSamples[i].handle << endl;
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
@@ -412,12 +400,12 @@ void CloudsSound::startMusic(float outskip, vector<string> mo, int mh, int mr, f
     }
     
     // GLASSOMATIC
-    if (find(ilist.begin(), ilist.end(), "glassomatic") != ilist.end())
+    if (mo=="glassomatic")
     {
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==samplebank)
+            if(looperSamples[i].bank==arg_a)
             {
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {

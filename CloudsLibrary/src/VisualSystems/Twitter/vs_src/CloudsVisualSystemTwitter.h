@@ -94,8 +94,17 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void selfMouseReleased(ofMouseEventArgs& data);
     
     void loadJSONData();
+    void addUsersFromMentions();
+    void createPajekNetwork();
+    int getUserIdByName(string name);
     
     ofxJSONElement result;
+
+    set<pair<int,int> > links;
+    map<string,int> numberOfMentions;
+    void parseClusterNetwork(string fileName);
+    void loadMesh();
+    Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
 	
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -113,6 +122,11 @@ protected:
 	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
     
     vector<Tweeter> tweeters;
+    
+    ofVboMesh mesh;
+    ofVboMesh linksMesh;
+    ofVec3f min,max;
+    ofEasyCam cam;
 
 	
 };

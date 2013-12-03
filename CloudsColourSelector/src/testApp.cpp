@@ -137,6 +137,7 @@ void testApp::keyPressed(int key){
         cout<<"Threshold updated : "<<threshold<<endl;
     }
     else if (key == 'r'){
+        cout<<"reloading shader"<<endl;
         shaderSkinDetection.load("skinDetector");
     }
     else if(key == 'f'){
@@ -173,7 +174,19 @@ void testApp::mousePressed(int x, int y, int button){
         samplePointNorm.x = x/player.getWidth();
         samplePointNorm.y = y/player.getHeight();
         cout<<"color value at point: "<<player.getPixelsRef().getColor(samplePoint.x, samplePoint.y)<<endl;
-        samplePointColor =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
+        ofFloatColor c =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
+        ofFloatColor c1 =player.getPixelsRef().getColor(samplePoint.x +1,samplePoint.y);
+        ofFloatColor c2 =player.getPixelsRef().getColor(samplePoint.x ,samplePoint.y+1);
+        ofFloatColor c3 =player.getPixelsRef().getColor(samplePoint.x ,samplePoint.y-1);
+        ofFloatColor c4 =player.getPixelsRef().getColor(samplePoint.x-1 ,samplePoint.y);
+
+        ofFloatColor c5  =player.getPixelsRef().getColor(samplePoint.x +1,samplePoint.y +1);
+        ofFloatColor c6 =player.getPixelsRef().getColor(samplePoint.x -1 ,samplePoint.y+1);
+        ofFloatColor c7 =player.getPixelsRef().getColor(samplePoint.x+1 ,samplePoint.y-1);
+        ofFloatColor c8 =player.getPixelsRef().getColor(samplePoint.x-1 ,samplePoint.y-1);
+        
+        samplePointColor = (c +c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8)/9;
+        //   samplePointColor =player.getPixelsRef().getColor(samplePoint.x,samplePoint.y);
     }
     
 }

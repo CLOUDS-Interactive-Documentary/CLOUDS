@@ -261,7 +261,85 @@ void loadpitches(string f, vector<lukePitchArray>& p)
     }
 }
 
-// load preset file
+// load presets (NEW)
+void loadpresets_xml(string f, vector<lukePreset>& p)
+{
+    ofxXmlSettings thestuff;
+
+    cout << "=============" << endl;
+    cout << "SCORE PRESETS:" << endl;
+    cout << "=============" << endl;
+
+    
+    if(thestuff.loadFile(getDataPath()+"sound/"+f))
+    {
+        thestuff.pushTag("presets");
+        p.clear(); // reset the preset stack
+        int numpresets = thestuff.getNumTags("preset");
+        for(int i =0;i<numpresets;i++)
+        {
+            thestuff.pushTag("preset", i);
+            lukePreset foo; // make a new preset
+            foo.name = thestuff.getValue("name", "foo");
+            cout << "PRESET XML " << i << ": " << foo.name << endl;
+            int numorchs = thestuff.getNumTags("orchestration");
+            for(int j =0;j<numorchs;j++)
+            {
+                thestuff.pushTag("orchestration", j);
+                foo.instruments.push_back(thestuff.getValue("name", "foo"));
+                foo.arg_a.push_back(thestuff.getValue("arg_a", "foo"));
+                foo.arg_b.push_back(thestuff.getValue("arg_b", "foo"));
+                cout << "   orchestration: " << foo.instruments[foo.instruments.size()-1] << endl;
+                cout << "      arg_a: " << foo.arg_a[foo.arg_a.size()-1] << endl;
+                cout << "      arg_b: " << foo.arg_b[foo.arg_b.size()-1] << endl;
+                thestuff.popTag();
+            }
+            foo.harmony = thestuff.getValue("harmony", 0);
+            cout << "   harmony: " << foo.harmony << endl;
+            foo.rhythm = thestuff.getValue("rhythm", 0);
+            cout << "   rhythm: " << foo.rhythm << endl;
+            foo.tempo = thestuff.getValue("tempo", 0);
+            cout << "   tempo: " << foo.tempo << endl;
+            foo.bank = thestuff.getValue("bank", "foo");
+            cout << "   bank: " << foo.bank << endl;
+            for(int j =0;j<8;j++)
+            {
+                thestuff.pushTag("dichomin");
+                foo.dichomin.push_back(thestuff.getValue("value", 0));
+                thestuff.popTag();
+            }
+            for(int j =0;j<8;j++)
+            {
+                thestuff.pushTag("dichomax");
+                foo.dichomax.push_back(thestuff.getValue("value", 0));
+                thestuff.popTag();
+            }
+            
+            cout << "   dichotomies:" << endl;
+            cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;
+            cout << "      emotional vs. logical: " << foo.dichomin[1] << " to " << foo.dichomax[1] << endl;
+            cout << "      breakthrough vs. obstacle: " << foo.dichomin[2] << " to " << foo.dichomax[2] << endl;
+            cout << "      inspiring vs. discouraging: " << foo.dichomin[3] << " to " << foo.dichomax[3] << endl;
+            cout << "      fun vs. serious: " << foo.dichomin[4] << " to " << foo.dichomax[4] << endl;
+            cout << "      sincere vs. ironic: " << foo.dichomin[5] << " to " << foo.dichomax[5] << endl;
+            cout << "      mindblowing vs. mundane: " << foo.dichomin[6] << " to " << foo.dichomax[6] << endl;
+            cout << "      rational vs. surreal: " << foo.dichomin[7] << " to " << foo.dichomax[7] << endl;
+            
+            thestuff.popTag();
+            p.push_back(foo);
+        }
+        thestuff.popTag();
+    }
+    
+    cout << "====" << endl;
+    cout << "DONE" << endl;
+    cout << "====" << endl;
+
+    
+
+}
+
+// load preset file - TEXT MODE, DEPRECATED
 void loadpresets(string f, vector<lukePreset>& p)
 {
     string sline;
@@ -289,7 +367,9 @@ void loadpresets(string f, vector<lukePreset>& p)
     }
 }
 
-
+// ====================
+// MISC MUSIC FUNCTIONS
+// ====================
 
 
 // frequency-to-midi

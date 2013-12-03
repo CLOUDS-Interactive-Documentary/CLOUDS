@@ -110,8 +110,7 @@ protected:
     itg::Creatures creatures;
     itg::Bubbles bubbles;
     ofxPostProcessing post;
-    //ofxPostProcessing postEdge;
-	
+    
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;

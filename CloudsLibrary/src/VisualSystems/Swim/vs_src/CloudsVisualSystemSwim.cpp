@@ -85,6 +85,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {
+    rdrGui->addToggle("regenerate", false);
+    
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -102,6 +104,20 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
     rdrGui->addSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
 }
+
+void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
+{
+	if (e.widget->getName() == "regenerate")
+    {
+        ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+        if (toggle->getValue())
+        {
+            creatures.generate();
+            toggle->setValue(false);
+        }
+    }
+}
+
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemSwim::selfSetupGui(){
@@ -136,12 +152,6 @@ void CloudsVisualSystemSwim::selfSetupSystemGui(){
 void CloudsVisualSystemSwim::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
-
-
-void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e){
-	
-}
-
 
 
 // selfPresetLoaded is called whenever a new preset is triggered
