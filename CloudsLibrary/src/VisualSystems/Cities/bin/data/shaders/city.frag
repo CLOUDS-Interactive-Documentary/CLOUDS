@@ -12,7 +12,9 @@ uniform float maxHeight;
 uniform float drawEdges = 0.;
 uniform float superFakeAOAmount = .4;
 uniform float superFakeAOExpo = 1.;
+uniform float sampleColorWeight = .5;
 
+uniform vec4 overallColor = vec4(1.);
 varying vec4 col;
 varying vec3 norm;
 varying vec4 lPos;
@@ -27,6 +29,9 @@ uniform float shininess = 32.;
 uniform float radiusAlphaScl = 1.5;
 uniform float facadeTextureAmount = .125;
 
+uniform float bUseEdgeMap = 0.;
+
+
 varying vec2 projImgUV;
 
 uniform mat4 invProjection;
@@ -35,15 +40,19 @@ float toGreyScale( vec3 c ){
 	return c.x * .3 + c.y*.59 + c.z * .11;
 }
 
+float maplinear(float x, float a1, float a2, float b1, float b2 ) {
+	return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
+}
+
 void main(void)
 {
-	float radiusAlpha = min(1., 1.5 - pow( radiusAlphaScl * length(abs(uv*2.-1.)), 2.) );
+	float radiusAlpha = max(0., 1. - radiusAlphaScl * length(uv*2.-1.) );
 	if(radiusAlpha < .001)	discard;
 	
 	if(int(drawEdges) == 1)
 	{	
-		gl_FragColor = texture2DRect( projectedImage, projImgUV * projectedImageDim );
-		gl_FragColor *= vec4( col.xyz, col.w * radiusAlpha) * gl_Color;
+		gl_FragColor = int(bUseEdgeMap) == 1 ? texture2DRect( projectedImage, projImgUV * projectedImageDim ) : vec4(1.);
+		gl_FragColor *= vec4( vec3(1.), col.w * radiusAlpha) * gl_Color;
 	}
 	else
 	{
@@ -63,10 +72,14 @@ void main(void)
 		float specVal = pow(nDotVP, shininess);
 		specular = gl_LightSource[0].specular.xyz * specVal;
 		
-		//super fake AO
-		diffuse *= pow(min(1., 1.1 * vertex.y ), superFakeAOExpo ) * superFakeAOAmount + (1. - superFakeAOAmount);
+		//super fake AO TODO: rename height gradient?
+		float normalizedBuildingHeight = max( 0., (vertex.y - 1.) );
+		normalizedBuildingHeight = min(1., max(0., maplinear(normalizedBuildingHeight, .0, 1., .4, 1.3 )));
+		float superFakeAO = mix( 1., pow(normalizedBuildingHeight, superFakeAOExpo), superFakeAOAmount );
 		
-		gl_FragColor = vec4( (diffuse + ambient + specular)*col.xyz, col.w * radiusAlpha);// * gl_Color;
+		vec3 sampleColor = mix( col.xyz, vec3(1.), sampleColorWeight);
+		
+		gl_FragColor = vec4( diffuse * superFakeAO * sampleColor, col.w * radiusAlpha) * overallColor;
 	}
 }
 

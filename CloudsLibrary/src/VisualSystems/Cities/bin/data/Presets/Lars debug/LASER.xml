@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>LASER</Name>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>24</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw points</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw edges</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw mesh</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>sampleColorWeight</Name>
+    <Value>0.384236</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>superFakeAOAmount</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>superFakeAOExpo</Name>
+    <Value>0.990148</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>shininess</Name>
+    <Value>31.1724</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>radiusAlphaScl</Name>
+    <Value>1.67488</Value>
+</Widget>

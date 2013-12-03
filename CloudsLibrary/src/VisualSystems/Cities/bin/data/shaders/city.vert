@@ -52,6 +52,10 @@ vec4 getDisplacment( vec2 _uv ){
 	return texture2DRect( displacment, _uv * displacmentDim ) * texture2DRect( overlayMap, _uv * overlayDim );
 }
 
+float maplinear(float x, float a1, float a2, float b1, float b2 ) {
+	return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
+}
+
 void main()
 {
 	lPos = vec4( gl_LightSource[0].position.xyz, 1.);

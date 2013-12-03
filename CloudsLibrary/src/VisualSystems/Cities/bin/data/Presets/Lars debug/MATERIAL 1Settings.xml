@@ -2,71 +2,71 @@
     <Kind>42</Kind>
     <Name>MATERIAL 1Settings</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>147.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>239</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AG</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AB</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AR</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AG</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>AB</Name>
-    <Value>0.800000012</Value>
+    <Value>0.8</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>ER</Name>
-    <Value>0.109947644</Value>
+    <Value>0.109948</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>EG</Name>
-    <Value>0.083769314</Value>
+    <Value>0.0837693</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>EB</Name>
-    <Value>0.136125490</Value>
+    <Value>0.136125</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SR</Name>
-    <Value>0.094240837</Value>
+    <Value>0.0942408</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SG</Name>
-    <Value>0.083769314</Value>
+    <Value>0.0837693</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SB</Name>
-    <Value>0.073298268</Value>
+    <Value>0.0732983</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>SHINY</Name>
-    <Value>0.000000000</Value>
+    <Value>0</Value>
 </Widget>

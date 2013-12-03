@@ -1,0 +1,73 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EDGES</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>271</XPosition>
+    <YPosition>48</YPosition>
+</Canvas>
+<Widget>
+    <Kind>28</Kind>
+    <Name>edgeColor</Name>
+    <XValue>1</XValue>
+    <YValue>0</YValue>
+    <RColor>255</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>edgeAlpha</Name>
+    <Value>0.315271</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_DISABLED</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ADD</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_ALPHA</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_MULTIPLY</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OF_BLENDMODE_SUBTRACT</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>11</Kind>
+    <Name>edge projector XZ</Name>
+    <XValue>42</XValue>
+    <YValue>6</YValue>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>edge projector Z</Name>
+    <Value>-24.3842</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>edgeLineWidth</Name>
+    <Value>1.82266</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>edge offset</Name>
+    <Value>0</Value>
+</Widget>
