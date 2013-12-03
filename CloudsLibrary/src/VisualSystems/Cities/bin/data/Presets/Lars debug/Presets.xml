@@ -1,13 +1,58 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>Presets</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>195.000000000</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>672</XPosition>
+    <YPosition>-2</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
+    <Name>Archiving</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving5</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving6</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Archiving7</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>BouncyOrangeCities</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>CloseUp</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLOUDS</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -23,6 +68,11 @@
 <Widget>
     <Kind>2</Kind>
     <Name>GrayscottSmooke</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>JG_CameraSwoop</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
@@ -53,5 +103,20 @@
 <Widget>
     <Kind>2</Kind>
     <Name>SmokyCity</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sprawl_aerial1</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Sprawl_aerial2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ThinSkyscrapers1</Name>
     <Value>0</Value>
 </Widget>

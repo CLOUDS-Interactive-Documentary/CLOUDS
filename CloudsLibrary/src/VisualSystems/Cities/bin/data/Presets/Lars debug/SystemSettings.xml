@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>24.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>116</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,27 +13,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>overScale</Name>
-    <Value>5.960591316</Value>
+    <Value>5.96059</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>18.226600647</Value>
+    <Value>18.2266</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.738916278</Value>
+    <Value>0.738916</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.059605908</Value>
+    <Value>0.0596059</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Loops</Name>
-    <Value>14.832511902</Value>
+    <Value>14.8325</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maskSize</Name>
-    <Value>1.413793087</Value>
+    <Value>1.41379</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maskCurve</Name>
-    <Value>0.576354682</Value>
+    <Value>0.576355</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -88,5 +88,55 @@
 <Widget>
     <Kind>2</Kind>
     <Name>soho_lines.jpg</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug10.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug2.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug3.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug4.png</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug5.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug6.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug7.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug8.png</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>citiesProjectionDebug9.png</Name>
     <Value>0</Value>
 </Widget>

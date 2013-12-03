@@ -8,91 +8,91 @@
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Width</Name>
-    <Value>29.798030853</Value>
+    <Value>24.330049515</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Cell Height</Name>
-    <Value>41.827587128</Value>
+    <Value>45.472908020</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Hue - Input range</Name>
-    <HighValue>56.650207520</HighValue>
-    <LowValue>27.093566895</LowValue>
+    <HighValue>22.167495728</HighValue>
+    <LowValue>-2.463058472</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Hue - Output range</Name>
-    <HighValue>234.901473999</HighValue>
-    <LowValue>0.000000000</LowValue>
+    <HighValue>255.000000000</HighValue>
+    <LowValue>1.256157637</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Sat - Input range</Name>
-    <HighValue>66.502441406</HighValue>
+    <HighValue>24.137924194</HighValue>
     <LowValue>2.463043213</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Sat - Output range</Name>
-    <HighValue>84.162559509</HighValue>
-    <LowValue>17.586206436</LowValue>
+    <HighValue>188.423645020</HighValue>
+    <LowValue>87.931037903</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Bright - Input range</Name>
-    <HighValue>41.871887207</HighValue>
+    <HighValue>10.344825745</HighValue>
     <LowValue>-2.463043213</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>Bright - Output range</Name>
-    <HighValue>243.694595337</HighValue>
-    <LowValue>26.379310608</LowValue>
+    <HighValue>253.743850708</HighValue>
+    <LowValue>108.029556274</LowValue>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Oscilllation Mode</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Oscillation period</Name>
+    <Value>3792</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>H NoiseSpeed</Name>
-    <Value>0.676354706</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>H Noise Step</Name>
-    <Value>3.083743811</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>H Stochasticity</Name>
-    <Value>5222.152832031</Value>
+    <Value>0.348275870</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>S NoiseSpeed</Name>
-    <Value>0.308374375</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>S Noise Step</Name>
-    <Value>2.862069130</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>Saturation Stochasticity</Name>
-    <Value>1.000000000</Value>
+    <Value>0.405911326</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>B NoiseSpeed</Name>
-    <Value>0.530049264</Value>
+    <Value>0.547783256</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Stochasticity Mode</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
-    <Name>B Noise Step</Name>
-    <Value>2.418719292</Value>
+    <Name>H Stochasticity</Name>
+    <Value>3202.650146484</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation Stochasticity</Name>
+    <Value>5517.689453125</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Brightness Stochasticity</Name>
-    <Value>1.000000000</Value>
+    <Value>6453.556640625</Value>
 </Widget>

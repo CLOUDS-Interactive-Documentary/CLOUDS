@@ -84,6 +84,9 @@ class CloudsVisualSystemChromogram : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
+    // generate random colors
+    
+    void generateRandomColors(); 
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -104,7 +107,7 @@ protected:
 
     
     int seed;
-    int stepSize = 2;
+    int stepSize;
     int noiseHue;
     int noiseSaturation;
     int noiseBrightness;
@@ -119,7 +122,8 @@ protected:
     int numRandomColors;
     ofColor color1;
     ofColor color2;
-    ofColor color3; 
+    ofColor color3;
+    float newHue;
     int sporadicColorChanger = 0 ;
     int sporadicSaturationChanger = 0 ;
     int sporadicBrightnessChanger = 0;
@@ -127,8 +131,9 @@ protected:
     
     float xpos = 10;
     float ypos = 10;
-    
     float yoffset = 0;
+    
+    float t; //time
     
     
     ////////// Slider Paramters
@@ -164,7 +169,10 @@ protected:
     float SatStochasticity;
     float BrightnessStochasticity;
     
-    
+    //
+    bool oscillateColor = false;
+    bool stochasticity = false; 
+    int oscillationPeriod = 1000;
     
     
 };

@@ -82,10 +82,10 @@ namespace itg
         ofEnableArbTex();
         JellyCreature::shader.load(dataPath + "shaders/jelly");
         
-        genCreatures();
+        generate();
     }
     
-    void Creatures::genCreatures()
+    void Creatures::generate()
     {
         creatures.clear();
         

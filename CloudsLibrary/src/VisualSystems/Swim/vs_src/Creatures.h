@@ -59,9 +59,9 @@ namespace itg
         float numGreyFish;
         float numYellowFish;
         
-    private:
-        void genCreatures();
+        void generate();
         
+    private:
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
         

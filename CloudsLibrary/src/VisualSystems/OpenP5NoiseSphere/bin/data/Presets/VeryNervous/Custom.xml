@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>Custom</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>1.000000000</YPosition>
+    <XPosition>230.000000000</XPosition>
+    <YPosition>13.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>4</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>6</Kind>
     <Name>Noise Scale</Name>
-    <HighValue>0.137931034</HighValue>
+    <HighValue>0.315270931</HighValue>
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>

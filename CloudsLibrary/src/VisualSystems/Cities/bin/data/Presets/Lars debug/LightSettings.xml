@@ -2,8 +2,8 @@
     <Kind>42</Kind>
     <Name>LightSettings</Name>
     <IsMinified>1</IsMinified>
-    <XPosition>1.000000000</XPosition>
-    <YPosition>97.000000000</YPosition>
+    <XPosition>1</XPosition>
+    <YPosition>189</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -18,15 +18,15 @@
 <Widget>
     <Kind>25</Kind>
     <Name>R</Name>
-    <Value>1.000000000</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>G</Name>
-    <Value>0.994764030</Value>
+    <Value>0.994764</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>B</Name>
-    <Value>1.000000000</Value>
+    <Value>1</Value>
 </Widget>
