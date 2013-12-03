@@ -101,8 +101,13 @@ protected:
     //  Your Stuff
     //
     
-    static float nParticles;
+    static int nParticles;
     vector <Particle> particles;
+    
+    GLfloat * data;
+    ofImage tex;
+    ofVbo vbo;
+    ofShader shader;
     
     ofxUISuperCanvas* customGui;
     

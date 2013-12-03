@@ -32,7 +32,7 @@ public:
     ofVec3f upperbounds;
     ofVec3f lowerbounds; 
     
-protected:
+//protected:
     
     int mass;
     int brightness;
