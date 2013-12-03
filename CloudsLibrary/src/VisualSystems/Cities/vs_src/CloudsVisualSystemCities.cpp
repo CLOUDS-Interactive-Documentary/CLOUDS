@@ -207,7 +207,7 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	passOneGui->addToggle("pass one", &bPassOne);
 	passOneGui->addToggle("bPassOneDepthTest", &bPassOneDepthTest);
 	passOneGui->addImageSampler("passOneColor", &colorPalette, 100, 100);
-	passOneGui->addMinimalSlider("passOneAlpha", 0, 1, passOneAlpha);
+	passOneGui->addMinimalSlider("passOneAlpha", 0, 1, &passOneAlpha);
 	passOneGui->addMinimalSlider("sampleColorWeight", 0, 1, &passOneSampleColorWeight );
 	passOneGui->addRadio("passOneBlend", blendNames );
 	
@@ -547,6 +547,8 @@ void CloudsVisualSystemCities::selfDraw()
 			
 			cubeMesh.draw();
 		}
+		
+//		ofClearAlpha();
 		if(bPassTwo)
 		{
 			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
