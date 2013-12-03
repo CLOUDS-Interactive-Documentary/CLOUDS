@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>LASER</Name>
-    <IsMinified>1</IsMinified>
-    <XPosition>1</XPosition>
-    <YPosition>24</YPosition>
+    <IsMinified>0</IsMinified>
+    <XPosition>251</XPosition>
+    <YPosition>28</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -23,7 +23,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>sampleColorWeight</Name>
-    <Value>0.384236</Value>
+    <Value>0.46798</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

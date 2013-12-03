@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PASS_ONE</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>566</XPosition>
-    <YPosition>44</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>47</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,22 +13,27 @@
 <Widget>
     <Kind>2</Kind>
     <Name>bPassOneDepthTest</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>passOneColor</Name>
-    <XValue>0.49</XValue>
-    <YValue>0.5</YValue>
-    <RColor>0</RColor>
-    <GColor>12</GColor>
-    <BColor>15</BColor>
+    <XValue>0.13</XValue>
+    <YValue>0.62</YValue>
+    <RColor>165</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>passOneAlpha</Name>
-    <Value>0.128079</Value>
+    <Value>0.241379</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>sampleColorWeight</Name>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

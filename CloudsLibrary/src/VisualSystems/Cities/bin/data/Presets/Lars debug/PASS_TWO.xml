@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>PASS_TWO</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>790</XPosition>
-    <YPosition>54</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>70</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,21 +13,26 @@
 <Widget>
     <Kind>2</Kind>
     <Name>bPassTwoDepthTest</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>passTwoColor</Name>
-    <XValue>0.21</XValue>
-    <YValue>0.26</YValue>
-    <RColor>123</RColor>
-    <GColor>165</GColor>
-    <BColor>194</BColor>
+    <XValue>0.12</XValue>
+    <YValue>0.72</YValue>
+    <RColor>219</RColor>
+    <GColor>255</GColor>
+    <BColor>255</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>passTwoAlpha</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>sampleColorWeight</Name>
     <Value>1</Value>
 </Widget>
 <Widget>
@@ -43,7 +48,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_ALPHA</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,7 +58,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_SCREEN</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

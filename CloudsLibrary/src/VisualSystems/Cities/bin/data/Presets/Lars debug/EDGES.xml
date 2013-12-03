@@ -1,10 +1,15 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>EDGES</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>271</XPosition>
-    <YPosition>48</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1</XPosition>
+    <YPosition>93</YPosition>
 </Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bUseEdgeMapProjection</Name>
+    <Value>0</Value>
+</Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>edgeColor</Name>
@@ -18,7 +23,7 @@
 <Widget>
     <Kind>25</Kind>
     <Name>edgeAlpha</Name>
-    <Value>0.315271</Value>
+    <Value>0.330049</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -28,7 +33,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_ADD</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -38,7 +43,7 @@
 <Widget>
     <Kind>2</Kind>
     <Name>OF_BLENDMODE_MULTIPLY</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -53,18 +58,18 @@
 <Widget>
     <Kind>11</Kind>
     <Name>edge projector XZ</Name>
-    <XValue>42</XValue>
-    <YValue>6</YValue>
+    <XValue>-3</XValue>
+    <YValue>-50</YValue>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>edge projector Z</Name>
-    <Value>-24.3842</Value>
+    <Value>-3.20197</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>edgeLineWidth</Name>
-    <Value>1.82266</Value>
+    <Value>2.56158</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
