@@ -11,7 +11,7 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
-float CloudsVisualSystemXstatic::nParticles = 2000;
+float CloudsVisualSystemXstatic::nParticles = 1000;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemXstatic::selfSetupGui(){
@@ -21,7 +21,9 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
+    
+    customGui->addIntSlider("Max Brightness", 0, 255, &maxBrightness);
+    customGui->addIntSlider("Min Brightness", 0, 255, &minBrightness);
     
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemXstatic::selfGuiEvent);
 	guis.push_back(customGui);
@@ -62,7 +64,7 @@ void CloudsVisualSystemXstatic::selfSetup(){
         
        // particles.push_back( Particle(ofRandom(1,2), ofRandom(1,2), ofRandom(1,2))); // ricocheting particles
         
-        particles.push_back( Particle(0, ofRandom(.40,.80), 0)); // rising particles
+        particles.push_back( Particle(0, ofRandom(.40,.80), 0, minBrightness, maxBrightness)); // rising particles
     }
   	
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
@@ -101,15 +103,12 @@ void CloudsVisualSystemXstatic::selfDraw(){
 	
     glDisable(GL_DEPTH_TEST);
     
-    
-    
 
     for(int i = 0; i < nParticles; i++){
-    particles[i].update();
-    particles[i].display();
-    //particles[i].checkEdges();
-    particles[i].verticalWraparound();
-    //ofxBillboardBeginSphericalObvious(ofVec3f::zero(), particles[i].location);
+        particles[i].display();
+        //particles[i].checkEdges();
+        particles[i].verticalWraparound();
+        //ofxBillboardBeginSphericalObvious(ofVec3f::zero(), particles[i].location);
     
     }
 

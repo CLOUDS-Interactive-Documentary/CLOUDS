@@ -95,12 +95,15 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 		return CloudsVisualSystem::getCameraRef();
 	}
 
+    int maxBrightness;
+    int minBrightness;
 
 protected:
     
     //  Your Stuff
     //
     
+
     static float nParticles;
     vector <Particle> particles;
     
