@@ -171,7 +171,6 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	
 	laserGui->addSpacer();
 	
-	laserGui->addSlider("sampleColorWeight", 0.,1., &sampleColorWeight );
 	laserGui->addSlider("superFakeAOAmount", 0.,1., &superFakeAOAmount );
 	laserGui->addSlider("superFakeAOExpo",.6, 5., &superFakeAOExpo);
 	laserGui->addSlider("shininess",2.f, 128.f, &shininess );

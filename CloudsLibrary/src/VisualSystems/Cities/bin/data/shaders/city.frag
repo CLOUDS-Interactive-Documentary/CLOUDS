@@ -54,13 +54,14 @@ void main(void)
 		gl_FragColor = int(bUseEdgeMap) == 1 ? texture2DRect( projectedImage, projImgUV * projectedImageDim ) : vec4(1.);
 		gl_FragColor *= vec4( vec3(1.), col.w * radiusAlpha) * gl_Color;
 	}
+	
 	else
 	{
 		
 		vec3 n = normalize( norm );
 		vec3 diffuse, ambient, specular;
 		
-		vec3 VP = normalize( lPos.xyz - ecPosition.xyz );//no attenuation (yet...) so we don't need distance
+		vec3 VP = normalize( lPos.xyz - ecPosition.xyz );//no attenuation yet... so we don't need distance
 		vec3 halfVector = normalize(VP + ePos);
 		float nDotVP = max(0.0, dot(n, VP));
 		float nDotHV = max(0.0, dot(n, halfVector));
