@@ -89,7 +89,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
-    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, ModelCreature::texAmount);
+    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
 }
 
 //These methods let us add custom GUI parameters and respond to their events

@@ -38,6 +38,7 @@ namespace itg
     vector<float> ModelCreature::bends;
     map<unsigned, ofImage> ModelCreature::textures;
     ofShader ModelCreature::fishShader;
+    float ModelCreature::texAmount = 1.f;
     
     ModelCreature::ModelCreature(const ModelParams& params) : Creature()
     {
@@ -48,15 +49,6 @@ namespace itg
         
         frequency = ofRandom(2, 5);
     }
-    
-    /*
-    ModelCreature::ModelCreature(unsigned modelIdx, const ofFloatColor& colour) :
-        modelIdx(modelIdx), colour(colour), Creature()
-    {
-        type = MODEL;
-        
-        frequency = ofRandom(2, 5);
-    }*/
     
     void ModelCreature::integrate()
     {
@@ -79,7 +71,7 @@ namespace itg
         if (textures.find(modelIdx) != textures.end())
         {
             fishShader.setUniformTexture("tex", textures[modelIdx], 0);
-            fishShader.setUniform1f("texAmt", 1.f);
+            fishShader.setUniform1f("texAmt", texAmount);
         }
         else fishShader.setUniform1f("texAmt", 0.f);
         fishModels[modelIdx].drawFaces();

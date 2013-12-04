@@ -57,11 +57,9 @@ namespace itg
     public:
         typedef shared_ptr<ModelCreature> Ptr;
         
+        static float texAmount;
+        
         ModelCreature(const ModelParams& params);
-        
-        //ModelCreature(unsigned modelIdx, const ofFloatColor& colour);
-        
-        void setSize(float size) { this->size = size; }
         
         void integrate();
         
