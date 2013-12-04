@@ -11,7 +11,10 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
-float CloudsVisualSystemXstatic::nParticles = 1000;
+
+static const int kStrideData = 8;
+
+int CloudsVisualSystemXstatic::nParticles = 2000;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemXstatic::selfSetupGui(){
@@ -66,6 +69,12 @@ void CloudsVisualSystemXstatic::selfSetup(){
         
         particles.push_back( Particle(0, ofRandom(.40,.80), 0, minBrightness, maxBrightness)); // rising particles
     }
+    
+    data = new GLfloat[nParticles * kStrideData];
+    ofDisableArbTex();
+    tex.loadImage(getVisualSystemDataPath() + "spark.png");
+    shader.load(getVisualSystemDataPath() + "shaders/particles");
+    ofEnableArbTex();
   	
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
@@ -92,17 +101,37 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 }
 
 //normal update call
-void CloudsVisualSystemXstatic::selfUpdate(){
-
-  
+void CloudsVisualSystemXstatic::selfUpdate()
+{
+    for (int i = 0; i < nParticles; i++) {
+        particles[i].update();
+        particles[i].display();
+        //particles[i].checkEdges();
+        particles[i].verticalWraparound();
+        
+        data[i * kStrideData + 0] = particles[i].location.x;
+        data[i * kStrideData + 1] = particles[i].location.y;
+        data[i * kStrideData + 2] = particles[i].location.z;
+        data[i * kStrideData + 3] = particles[i].mass;
+        data[i * kStrideData + 4] = particles[i].brightness / 255.0f;
+        data[i * kStrideData + 5] = particles[i].brightness / 255.0f;
+        data[i * kStrideData + 6] = particles[i].brightness / 255.0f;
+        data[i * kStrideData + 7] = 1.0f;
+    }
+    
+    vbo.setVertexData(&data[0], 4, nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
+    vbo.setColorData(&data[4], nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemXstatic::selfDraw(){
-	
+void CloudsVisualSystemXstatic::selfDraw()
+{
     glDisable(GL_DEPTH_TEST);
+ 
+    ofSetColor(255);
     
+
 
     for(int i = 0; i < nParticles; i++){
         particles[i].display();
@@ -110,14 +139,21 @@ void CloudsVisualSystemXstatic::selfDraw(){
         particles[i].verticalWraparound();
         //ofxBillboardBeginSphericalObvious(ofVec3f::zero(), particles[i].location);
     
-    }
 
+    shader.begin();
+    ofEnablePointSprites();
+    tex.getTextureReference().bind();
+    {
+        vbo.draw(GL_POINTS, 0, nParticles);
+
+    }
+    tex.getTextureReference().unbind();
+    ofDisablePointSprites();
+    shader.end();
     
     ofNoFill();
-	ofSetColor(255);
-	ofBox(0,0,0, 300);
-
-	
+    ofSetColor(255);
+	ofBox(0, 0, 0, 300);
 }
 
 // draw any debug stuff here
@@ -126,7 +162,6 @@ void CloudsVisualSystemXstatic::selfDrawDebug(){
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemXstatic::selfDrawBackground(){
-
 	//turn the background refresh off
 	//bClearBackground = false;
 	
@@ -135,12 +170,12 @@ void CloudsVisualSystemXstatic::selfDrawBackground(){
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemXstatic::selfEnd(){
 	
-
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemXstatic::selfExit(){
-	
+void CloudsVisualSystemXstatic::selfExit()
+{
+    delete [] data;
 }
 
 //events are called when the system is active

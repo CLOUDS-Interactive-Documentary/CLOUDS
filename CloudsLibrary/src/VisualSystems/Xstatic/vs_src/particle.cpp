@@ -88,8 +88,8 @@ void Particle::display(){
     brightness = newBrightness;
     cout << "triggered =  " << triggered <<  "  time = " << currentTime <<  "  brightness = " << brightness << endl;
     
-    ofSetColor(brightness,brightness,brightness);
-    ofCircle(location.x, location.y, location.z, mass*1);
+//    ofSetColor(brightness,brightness,brightness);
+//    ofCircle(location.x, location.y, location.z, mass*1);
     
     
 }

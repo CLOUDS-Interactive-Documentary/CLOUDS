@@ -104,6 +104,8 @@ protected:
 	ofImage* colorMap;
     vector<string> colorMapNames;
 	map<string, ofImage> colorMapImageMap;
+	
+	ofImage colorPalette;
     
 	ofVboMesh cubeMesh;
 	ofShader cubesShader;
@@ -129,10 +131,29 @@ protected:
 	ofVec3f projectorPosition;
 	float projectorHeight;
 	
-	float edgeOffset;
 	
 	float superFakeAOAmount;
 	float superFakeAOExpo;
 	float shininess;
 	float radiusAlphaScl;
+	float sampleColorWeight;
+	
+	
+	ofxUISuperCanvas* passOneGui;
+	ofxUISuperCanvas* passTwoGui;
+	bool bPassOne;
+	bool bPassTwo;
+	bool bPassOneDepthTest;
+	bool bPassTwoDepthTest;
+	ofFloatColor passOneColor, passTwoColor;
+	float passOneAlpha, passTwoAlpha, passOneSampleColorWeight, passTwoSampleColorWeight;
+	ofBlendMode passOneBlendMode;
+	ofBlendMode passTwoBlendMode;
+	map<string, ofBlendMode> blendModes;
+	
+	ofxUISuperCanvas* edgeGui;
+	ofColor edgeColor;
+	float edgeOffset, edgeAlpha;
+	ofBlendMode edgeBlendMode;
+	bool bUseEdgeMapProjection;
 };
