@@ -47,11 +47,15 @@ namespace itg
     {
         type = JELLY;
         
-        bodyColour = ofFloatColor::fromHsb(params.bellHsb.x, params.bellHsb.y, params.bellHsb.z);
+        bodyColour = ofFloatColor::fromHsb(params.bodyHsb.x, params.bodyHsb.y, params.bodyHsb.z);
         tentacleColour = ofFloatColor::fromHsb(params.tentacleHsb.x, params.tentacleHsb.y, params.tentacleHsb.z);
+        
+        bodyAlpha = params.bodyAlpha;
         
         m1 = ofRandom(params.m1Min, params.m1Max);
         m2 = ofRandom(params.m2Min, params.m2Max);
+        
+        pulseAmt = ofRandom(params.pulseAmtMin, params.pulseAmtMax);
         
         segment = ofRandom(params.segmentMin, params.segmentMax);
         
@@ -82,37 +86,6 @@ namespace itg
         
         genMeshes();
     }
-    
-    /*
-    JellyCreature::JellyCreature(const ofFloatColor& bodyColour, const ofFloatColor& tentacleColour, float m1, float m2, float segment, float w, float d) :
-        bodyColour(bodyColour), tentacleColour(tentacleColour), m1(m1), m2(m2), segment(segment), Creature()
-    {
-        type = JELLY;
-        
-        n11 = .5;
-        n21 = 1.7;
-        n31 = 1.7;
-        a1 = 1;
-        b1 = 1;
-        
-        n12 = .5;
-        n22 = 1.7;
-        n32 = 1.7;
-        a2 = 1;
-        b2 = 1;
-        
-        drawInner = true;
-        
-        size = ofVec3f(w, w, d);
-        
-        deformAmount = 0.5 * w;
-        
-        frequency = ofRandom(0.3, 1.0);
-        
-        texRepeatS = 4;
-        
-        genMeshes();
-    }*/
     
     void JellyCreature::genMeshes()
     {
@@ -214,7 +187,7 @@ namespace itg
         
         shader.setUniform1f("texAmount", 0.f);
         shader.setUniform1f("lightingAmount", 1.f);
-        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, 80 / 255.f);
+        shader.setUniform4f("colour", bodyColour.r, bodyColour.g, bodyColour.b, bodyAlpha + pulseAmt * sin(ofGetElapsedTimef() * frequency));
         if (drawInner) innerMesh.draw();
         
         shader.setUniform1f("texAmount", 0.f);

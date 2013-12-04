@@ -108,7 +108,7 @@ protected:
     //  Your Stuff
     //
     ofxUISuperCanvas* createCustomGui(const string& name);
-    void addSliders(ofxUISuperCanvas* gui, JellyParams& params, const string& suffix);
+    void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     
     itg::Creatures creatures;
     itg::Bubbles bubbles;

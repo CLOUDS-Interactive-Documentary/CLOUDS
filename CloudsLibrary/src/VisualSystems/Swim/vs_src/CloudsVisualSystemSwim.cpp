@@ -84,34 +84,41 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
 void CloudsVisualSystemSwim::selfSetupGui()
 {
 	jellyOneGui = createCustomGui("Jellyus Oneus");
-    addSliders(jellyOneGui, creatures.jellyOneParams, " 1");
+    addSliders(jellyOneGui, creatures.jellyOneParams);
     
     jellyTwoGui = createCustomGui("Jellyus Twous");
-    addSliders(jellyTwoGui, creatures.jellyTwoParams, " 2");
+    addSliders(jellyTwoGui, creatures.jellyTwoParams);
 }
 
-void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params, const string& suffix)
+void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
 {
     gui->addSpacer();
     
-    gui->addMinimalSlider("bell h" + suffix, 0.f, 1.f, &params.bellHsb.x);
-    gui->addMinimalSlider("bell s" + suffix, 0.f, 1.f, &params.bellHsb.y);
-    gui->addMinimalSlider("bell b" + suffix, 0.f, 1.f, &params.bellHsb.z);
+    gui->addLabel("Colour");
+    gui->addMinimalSlider("body h", 0.f, 1.f, &params.bodyHsb.x);
+    gui->addMinimalSlider("body s", 0.f, 1.f, &params.bodyHsb.y);
+    gui->addMinimalSlider("body b", 0.f, 1.f, &params.bodyHsb.z);
     
-    gui->addMinimalSlider("tentacles h" + suffix, 0.f, 1.f, &params.tentacleHsb.x);
-    gui->addMinimalSlider("tentacles s" + suffix, 0.f, 1.f, &params.tentacleHsb.y);
-    gui->addMinimalSlider("tentacles b" + suffix, 0.f, 1.f, &params.tentacleHsb.z);
+    gui->addMinimalSlider("body alpha", 0.f, 1.f, &params.bodyAlpha);
     
-    gui->addMinimalSlider("width average" + suffix, 10, 200, &params.widthAverage);
-    gui->addMinimalSlider("width std dev" + suffix, 0, 200, &params.widthStdDeviation);
+    gui->addMinimalSlider("tentacles h", 0.f, 1.f, &params.tentacleHsb.x);
+    gui->addMinimalSlider("tentacles s", 0.f, 1.f, &params.tentacleHsb.y);
+    gui->addMinimalSlider("tentacles b", 0.f, 1.f, &params.tentacleHsb.z);
     
-    gui->addMinimalSlider("length average" + suffix, 10, 200, &params.lengthAverage);
-    gui->addMinimalSlider("length std dev" + suffix, 0, 200, &params.lengthStdDeviation);
+    gui->addRangeSlider("pulse amt (range)", 0.f, 0.4f, &params.pulseAmtMin, &params.pulseAmtMax);
     
-    gui->addRangeSlider("spherical segment" + suffix, HALF_PI, TWO_PI, &params.segmentMin, &params.segmentMax);
+    gui->addLabel("Size");
+    gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
+    gui->addMinimalSlider("width std dev", 0, 200, &params.widthStdDeviation);
+    
+    gui->addMinimalSlider("length average", 10, 200, &params.lengthAverage);
+    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);
+    
+    gui->addLabel("Shape");
+    gui->addRangeSlider("spherical segment (range)", .5f * HALF_PI, PI, &params.segmentMin, &params.segmentMax);
 
-    gui->addRangeSlider("superformula m1" + suffix, 2, 20, &params.m1Min, &params.m1Max);
-    gui->addRangeSlider("superformula m2" + suffix, 2, 20, &params.m2Min, &params.m2Max);
+    gui->addRangeSlider("superformula m1 (range)", 2, 20, &params.m1Min, &params.m1Max);
+    gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
@@ -119,7 +126,7 @@ ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
     ofxUISuperCanvas* newGui = new ofxUISuperCanvas(name, gui);
 	newGui->copyCanvasStyle(gui);
 	newGui->copyCanvasProperties(gui);
-	newGui->setName("Jellyus Oneus");
+	newGui->setName(name);
 	newGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     guis.push_back(newGui);
