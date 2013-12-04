@@ -55,6 +55,8 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
 	
+    void regenerate();
+    
 	//normal update call
 	void selfUpdate();
 
@@ -84,7 +86,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
+
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -97,15 +99,17 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 
     int maxBrightness;
     int minBrightness;
+    float mass;
+    float topspeed;
+    
 
 protected:
     
     //  Your Stuff
     //
     
-
+    
     static int nParticles;
-
     vector <Particle> particles;
     
     GLfloat * data;
@@ -114,8 +118,25 @@ protected:
     ofShader shader;
     
     ofxUISuperCanvas* customGui;
-    
     bool videoLoaded;
+    bool shouldRegenerate;
+    bool shouldReset;
+    
+    bool PROJECTILEMODE;
+    bool FALLINGMODE;
+    bool RISINGMODE;
+    bool FROZENMODE;
+    //
+    bool WRAPAROUNDMODE;
+    bool BOUNCEMODE;
+
+    // Forces
+    float speed; //noiseSpeed
+    float windX;
+    float windZ;
+    float gravityY;
+    float gravityX;
+    float gravityZ;
 	
 
 };

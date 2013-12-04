@@ -20,11 +20,12 @@ public:
     
     int* minBri;
     int* maxBri;
+    float* mass;
     
-    Particle(float vx, float vy, float vz, int& minBri, int& maxBri);
+    Particle(float& mass, float vx, float vy, float vz, int& minBri, int& maxBri);
     
     void applyForce(ofVec3f _force);
-    void update();
+    void update(float _topspeed);
     void display();
     void checkEdges();
     void verticalWraparound();
@@ -38,10 +39,11 @@ public:
     ofVec3f upperbounds;
     ofVec3f lowerbounds; 
     
-//protected:
-    
-    int mass;
+    float uniqueVal;
     int brightness;
+    
+protected:
+    
     float newBrightness;
     
     bool triggered;
