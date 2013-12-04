@@ -36,6 +36,7 @@ namespace itg
     vector<ofxAssimpModelLoader> ModelCreature::fishModels;
     vector<ofVec3f> ModelCreature::deformAxes;
     vector<float> ModelCreature::bends;
+    map<unsigned, ofImage> ModelCreature::textures;
     ofShader ModelCreature::fishShader;
     
     ModelCreature::ModelCreature(unsigned modelIdx, const ofFloatColor& colour) :
@@ -63,6 +64,12 @@ namespace itg
         fishShader.setUniform3fv("deformAxis", deformAxes[modelIdx].getPtr());
         fishShader.setUniform1f("bend", bends[modelIdx]);
         fishShader.setUniform3f("colour", colour.r, colour.g, colour.b);
+        if (textures.find(modelIdx) != textures.end())
+        {
+            fishShader.setUniformTexture("tex", textures[modelIdx], 0);
+            fishShader.setUniform1f("texAmt", 1.f);
+        }
+        else fishShader.setUniform1f("texAmt", 0.f);
         fishModels[modelIdx].drawFaces();
         fishShader.end();
     }

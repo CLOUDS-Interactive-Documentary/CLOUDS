@@ -55,6 +55,9 @@ namespace itg
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setRotation(1, 90, 0, 1, 0);
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
+        ofDisableArbTex();
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.jpg");
+        ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(0, 0, 1);
         ModelCreature::bends.push_back(1.f);

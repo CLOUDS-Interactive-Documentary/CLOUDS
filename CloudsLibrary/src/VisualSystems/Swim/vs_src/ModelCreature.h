@@ -64,6 +64,7 @@ namespace itg
         static ofShader fishShader;
         static vector<ofVec3f> deformAxes;
         static vector<float> bends;
+        static map<unsigned, ofImage> textures;
         
         float frequency;
         float size;
