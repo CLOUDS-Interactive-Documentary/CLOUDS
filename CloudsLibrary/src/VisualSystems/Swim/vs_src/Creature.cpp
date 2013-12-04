@@ -65,4 +65,18 @@ namespace itg
     {
         normalisedVelocity = velocity.normalized();
     }
+    
+    float Creature::randomGauss(float mean, float stdDev)
+    {
+        float x, y, r2;
+        do
+        {
+            //Generate a point in a unit circle that is not zero.
+            x = ofRandomf();
+            y = ofRandomf();
+            r2 = x * x + y * y;
+        }
+        while (r2 > 1.0 || r2 == 0);
+        return mean + x * stdDev * sqrt(-2.f * log(r2) / r2);
+    }
 }

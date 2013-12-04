@@ -107,12 +107,17 @@ protected:
     
     //  Your Stuff
     //
+    ofxUISuperCanvas* createCustomGui(const string& name);
+    void addSliders(ofxUISuperCanvas* gui, JellyParams& params, const string& suffix);
+    
     itg::Creatures creatures;
     itg::Bubbles bubbles;
     ofxPostProcessing post;
     
-	ofxUISuperCanvas* customGui;
-	bool customToggle;
+	ofxUISuperCanvas* jellyOneGui;
+    ofxUISuperCanvas* jellyTwoGui;
+	
+    bool customToggle;
 	float customFloat1;
 	float customFloat2;
 	

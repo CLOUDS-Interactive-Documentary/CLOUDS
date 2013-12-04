@@ -21,29 +21,15 @@ void CloudsVisualSystemSwim::selfSetup()
     post.init(ofGetWidth(), ofGetHeight(), true);
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
-    
-    /*
-	videoLoaded = false;
-	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-		
-		for(int i = 0; i < 640; i += 2){
-			for(int j = 0; j < 480; j+=2){
-				simplePointcloud.addVertex(ofVec3f(i,j,0));
-			}
-		}
-		
-		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		videoLoaded = true;
-	}
-	
-	
-    //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	*/
+}
+
+// selfBegin is called when the system is ready to be shown
+// this is a good time to prepare for transitions
+// but try to keep it light weight as to not cause stuttering
+void CloudsVisualSystemSwim::selfBegin()
+{
+    // adding this here as custom gui data is loaded after setup
+	creatures.generate();
 }
 
 //normal update call
@@ -60,17 +46,6 @@ void CloudsVisualSystemSwim::selfDraw()
 {
     creatures.draw();
     bubbles.draw();
-    /*
-	if(videoLoaded){
-		ofPushMatrix();
-		setupRGBDTransforms();
-		pointcloudShader.begin();
-		getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
-		simplePointcloud.drawVertices();
-		pointcloudShader.end();
-		ofPopMatrix();
-	}
-	*/
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
@@ -105,6 +80,54 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
 }
 
+//These methods let us add custom GUI parameters and respond to their events
+void CloudsVisualSystemSwim::selfSetupGui()
+{
+	jellyOneGui = createCustomGui("Jellyus Oneus");
+    addSliders(jellyOneGui, creatures.jellyOneParams, " 1");
+    
+    jellyTwoGui = createCustomGui("Jellyus Twous");
+    addSliders(jellyTwoGui, creatures.jellyTwoParams, " 2");
+}
+
+void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params, const string& suffix)
+{
+    gui->addSpacer();
+    
+    gui->addMinimalSlider("bell h" + suffix, 0.f, 1.f, &params.bellHsb.x);
+    gui->addMinimalSlider("bell s" + suffix, 0.f, 1.f, &params.bellHsb.y);
+    gui->addMinimalSlider("bell b" + suffix, 0.f, 1.f, &params.bellHsb.z);
+    
+    gui->addMinimalSlider("tentacles h" + suffix, 0.f, 1.f, &params.tentacleHsb.x);
+    gui->addMinimalSlider("tentacles s" + suffix, 0.f, 1.f, &params.tentacleHsb.y);
+    gui->addMinimalSlider("tentacles b" + suffix, 0.f, 1.f, &params.tentacleHsb.z);
+    
+    gui->addMinimalSlider("width average" + suffix, 10, 200, &params.widthAverage);
+    gui->addMinimalSlider("width std dev" + suffix, 0, 200, &params.widthStdDeviation);
+    
+    gui->addMinimalSlider("length average" + suffix, 10, 200, &params.lengthAverage);
+    gui->addMinimalSlider("length std dev" + suffix, 0, 200, &params.lengthStdDeviation);
+    
+    gui->addRangeSlider("spherical segment" + suffix, HALF_PI, TWO_PI, &params.segmentMin, &params.segmentMax);
+
+    gui->addRangeSlider("superformula m1" + suffix, 2, 20, &params.m1Min, &params.m1Max);
+    gui->addRangeSlider("superformula m2" + suffix, 2, 20, &params.m2Min, &params.m2Max);
+}
+
+ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
+{
+    ofxUISuperCanvas* newGui = new ofxUISuperCanvas(name, gui);
+	newGui->copyCanvasStyle(gui);
+	newGui->copyCanvasProperties(gui);
+	newGui->setName("Jellyus Oneus");
+	newGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    guis.push_back(newGui);
+	guimap[newGui->getName()] = newGui;
+    
+    return newGui;
+}
+
 void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
 {
 	if (e.widget->getName() == "regenerate")
@@ -116,26 +139,6 @@ void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
-}
-
-
-//These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemSwim::selfSetupGui(){
-
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
 }
 
 void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
@@ -158,13 +161,6 @@ void CloudsVisualSystemSwim::guiSystemEvent(ofxUIEventArgs &e){
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath) {
-	
-}
-
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
-void CloudsVisualSystemSwim::selfBegin(){
 	
 }
 

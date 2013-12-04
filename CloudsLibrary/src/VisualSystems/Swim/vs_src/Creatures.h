@@ -34,6 +34,8 @@
 #include "Creature.h"
 #include "ModelCreature.h"
 #include "ofxNearestNeighbour.h"
+#include "ModelCreature.h"
+#include "JellyCreature.h"
 
 namespace itg
 {
@@ -54,10 +56,9 @@ namespace itg
         float maxDistFromCentre;
         
         // float to make work with ofxUI
-        float numJellyOne;
-        float numJellyTwo;
-        float numGreyFish;
-        float numYellowFish;
+        float numJellyOne, numJellyTwo;
+        JellyParams jellyOneParams, jellyTwoParams;
+        float numGreyFish, numYellowFish;
         
         void generate();
         

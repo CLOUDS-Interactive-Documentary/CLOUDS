@@ -35,6 +35,20 @@
 
 namespace itg
 {
+    struct JellyParams
+    {
+        ofFloatColor tentacleRgb() { return ofFloatColor::fromHsb(tentacleHsb.x, tentacleHsb.y, tentacleHsb.z); }
+        ofFloatColor bellRgb() { return ofFloatColor::fromHsb(bellHsb.x, bellHsb.y, bellHsb.z); }
+        
+        ofVec3f tentacleHsb, bellHsb;
+        
+        float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
+        
+        float segmentMin, segmentMax;
+        
+        float m1Min, m1Max, m2Min, m2Max;
+    };
+    
     class JellyCreature : public Creature
     {
         friend class Creatures;
@@ -42,7 +56,8 @@ namespace itg
     public:
         typedef shared_ptr<JellyCreature> Ptr;
         
-        JellyCreature(const ofFloatColor& bodyColour, const ofFloatColor& tentacleColour, float m1, float m2, float segment, float w, float d);
+        JellyCreature(const JellyParams& params);
+        //JellyCreature(const ofFloatColor& bodyColour, const ofFloatColor& tentacleColour, float m1, float m2, float segment, float w, float d);
         
         virtual void update();
         

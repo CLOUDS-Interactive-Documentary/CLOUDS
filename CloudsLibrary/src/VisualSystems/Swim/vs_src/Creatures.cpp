@@ -30,8 +30,6 @@
  *
  */
 #include "Creatures.h"
-#include "ModelCreature.h"
-#include "JellyCreature.h"
 
 //#define _DEBUG
 
@@ -82,7 +80,7 @@ namespace itg
         ofEnableArbTex();
         JellyCreature::shader.load(dataPath + "shaders/jelly");
         
-        generate();
+        //generate();
     }
     
     void Creatures::generate()
@@ -116,9 +114,7 @@ namespace itg
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numJellyOne); ++i)
         {
-            creatures.push_back(JellyCreature::Ptr(new JellyCreature(
-                ofFloatColor(24 / 255.f, 202 / 255.f, 230 / 255.f), ofFloatColor(230 / 255.f, 255 / 255.f, 255 / 255.f), 12, 2 * (4 + rand() % 3),
-                ofRandom(HALF_PI, HALF_PI + 0.2), ofRandom(60, 90), ofRandom(80, 110))));
+            creatures.push_back(JellyCreature::Ptr(new JellyCreature(jellyOneParams)));
             creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
             creaturesByType.back().push_back(creatures.back());
         }
@@ -126,9 +122,7 @@ namespace itg
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numJellyTwo); ++i)
         {
-            creatures.push_back(JellyCreature::Ptr(new JellyCreature(
-                ofFloatColor(255 / 255.f, 230 / 255.f, 77 / 255.f), ofFloatColor(223 / 255.f, 116 / 255.f, 12 / 255.f), 8, 2 * (1 + rand() % 2),
-                ofRandom(HALF_PI, HALF_PI - 0.2), ofRandom(20, 40), ofRandom(40, 60))));
+            creatures.push_back(JellyCreature::Ptr(new JellyCreature(jellyTwoParams)));
             creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
             creaturesByType.back().push_back(creatures.back());
         }
