@@ -39,17 +39,29 @@ namespace itg
     map<unsigned, ofImage> ModelCreature::textures;
     ofShader ModelCreature::fishShader;
     
+    ModelCreature::ModelCreature(const ModelParams& params) : Creature()
+    {
+        type = MODEL;
+        modelIdx = params.modelIdx;
+        colour = params.colour;
+        size = randomGauss(params.sizeAverage, params.sizeStdDeviation);
+        
+        frequency = ofRandom(2, 5);
+    }
+    
+    /*
     ModelCreature::ModelCreature(unsigned modelIdx, const ofFloatColor& colour) :
         modelIdx(modelIdx), colour(colour), Creature()
     {
         type = MODEL;
         
         frequency = ofRandom(2, 5);
-    }
+    }*/
     
     void ModelCreature::integrate()
     {
         velocity += accumulated;
+        // slow down y velocity to stop fish swimming upwards and downwards
         velocity.y *= 0.1f;
     }
     

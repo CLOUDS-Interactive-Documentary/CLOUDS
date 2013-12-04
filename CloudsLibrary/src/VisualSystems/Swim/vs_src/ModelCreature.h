@@ -43,6 +43,13 @@ namespace itg
 {
     using namespace tr1;
     
+    struct ModelParams
+    {
+        unsigned modelIdx;
+        float sizeAverage, sizeStdDeviation;
+        ofFloatColor colour;
+    };
+    
     class ModelCreature : public Creature
     {
         friend class Creatures;
@@ -50,7 +57,9 @@ namespace itg
     public:
         typedef shared_ptr<ModelCreature> Ptr;
         
-        ModelCreature(unsigned modelIdx, const ofFloatColor& colour);
+        ModelCreature(const ModelParams& params);
+        
+        //ModelCreature(unsigned modelIdx, const ofFloatColor& colour);
         
         void setSize(float size) { this->size = size; }
         

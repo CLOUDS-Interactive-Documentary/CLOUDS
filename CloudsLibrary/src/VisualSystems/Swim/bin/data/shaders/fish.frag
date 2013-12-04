@@ -44,7 +44,6 @@ void main()
     col.g += clamp(sin(frequency * 0.25 * time + HALF_PI + gl_TexCoord[0].s / 512.0), 0.0, 0.3);
     col.b += clamp(sin(frequency * 0.5 * time + PI + gl_TexCoord[0].s / 512.0), 0.0, 0.3);*/
     
-    vec3 finalCol = (1.0 - texAmt) * colour + texAmt * texture2D(tex, gl_TexCoord[0].st).rgb;
-    
-    gl_FragColor = vec4(finalCol * (diffuse/* + specular*/), 1.0);
+    gl_FragColor = vec4(texAmt * texture2D(tex, gl_TexCoord[0].st).rgb + 0.5 * colour * (diffuse/* + specular*/), 1.0);
+
 }

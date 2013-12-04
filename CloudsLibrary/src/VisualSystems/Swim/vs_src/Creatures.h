@@ -58,6 +58,7 @@ namespace itg
         // float to make work with ofxUI
         float numJellyOne, numJellyTwo;
         JellyParams jellyOneParams, jellyTwoParams;
+        ModelParams fishOneParams, fishTwoParams;
         float numGreyFish, numYellowFish;
         
         void generate();

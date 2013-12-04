@@ -49,19 +49,25 @@ namespace itg
         alignStrength = 0.2;
         maxDistFromCentre = 2000.f;
         
-        // load model creature stuff
+        // fish one
         ModelCreature::fishModels.push_back(ofxAssimpModelLoader());
         ModelCreature::fishModels.back().loadModel(dataPath + "models/plotva.3ds");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setRotation(1, 90, 0, 1, 0);
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
         ofDisableArbTex();
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.jpg");
         ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(0, 0, 1);
         ModelCreature::bends.push_back(1.f);
+        fishOneParams.modelIdx = 0;
+        fishOneParams.colour = ofFloatColor(0.7, 0.7, 0.7);
+        fishOneParams.sizeAverage = 1.25;
+        fishOneParams.sizeStdDeviation = 0.5;
         
+        // fish two
         ModelCreature::fishModels.push_back(ofxAssimpModelLoader());
         ModelCreature::fishModels.back().loadModel(dataPath + "models/TropicalFish05.obj");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
@@ -69,6 +75,10 @@ namespace itg
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(1, 0, 0);
         ModelCreature::bends.push_back(1.f);
+        fishTwoParams.sizeAverage = 1.25;
+        fishTwoParams.sizeStdDeviation = 0.5;
+        fishTwoParams.modelIdx = 1;
+        fishTwoParams.colour = ofFloatColor(0.7, 0.7, 0.0);
         
         ModelCreature::fishShader.load(dataPath + "shaders/fish");
         
@@ -92,21 +102,21 @@ namespace itg
         
         const float startArea = 1200.f;
         
+        // fish one
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numGreyFish); ++i)
         {
-            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(0, ofFloatColor(0.7, 0.7, 0.7)));
-            modelCreature->setSize(ofRandom(0.5, 1.5));
+            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(fishOneParams));
             creatures.push_back(modelCreature);
             creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
             creaturesByType.back().push_back(creatures.back());
         }
         
+        // fish two
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numYellowFish); ++i)
         {
-            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(1, ofFloatColor(ofRandom(0.6, 0.7), ofRandom(0.6, 0.7), 0.0)));
-            modelCreature->setSize(ofRandom(0.5, 1.5));
+            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(fishTwoParams));
             creatures.push_back(modelCreature);
             creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
             creaturesByType.back().push_back(creatures.back());
@@ -114,6 +124,7 @@ namespace itg
         
         // NB add jellies last as they are drawn with glDepthMask(GL_FALSE) to make additive blending
         // work so depth isn't stored
+        // jelly one
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numJellyOne); ++i)
         {
@@ -122,6 +133,7 @@ namespace itg
             creaturesByType.back().push_back(creatures.back());
         }
         
+        // jelly two
         creaturesByType.push_back(vector<Creature::Ptr>());
         for (int i = 0; i < round(numJellyTwo); ++i)
         {

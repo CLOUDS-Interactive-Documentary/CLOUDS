@@ -64,20 +64,32 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
-    rdrGui->addSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
-    rdrGui->addSlider("alignmentLower", 0.f, 1.f, &creatures.alignmentLower);
-    rdrGui->addSlider("alignmentUpper", 0.f, 1.f, &creatures.alignmentUpper);
-    rdrGui->addSlider("repelStrength", 0.f, 1.f, &creatures.repelStrength);
-    rdrGui->addSlider("alignStrength", 0.f, 1.f, &creatures.alignStrength);
-    rdrGui->addSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
-    rdrGui->addSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
+    rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
+    rdrGui->addMinimalSlider("alignmentLower", 0.f, 1.f, &creatures.alignmentLower);
+    rdrGui->addMinimalSlider("alignmentUpper", 0.f, 1.f, &creatures.alignmentUpper);
+    rdrGui->addMinimalSlider("repelStrength", 0.f, 1.f, &creatures.repelStrength);
+    rdrGui->addMinimalSlider("alignStrength", 0.f, 1.f, &creatures.alignStrength);
+    rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
+    rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
-    rdrGui->addLabel("Creatures");
+    rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
-    rdrGui->addSlider("numJellyOne", 20, 300, &creatures.numJellyOne);
-    rdrGui->addSlider("numJellyTwo", 20, 300, &creatures.numJellyTwo);
-    rdrGui->addSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
-    rdrGui->addSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
+    rdrGui->addMinimalSlider("numJellyOne", 20, 300, &creatures.numJellyOne);
+    rdrGui->addMinimalSlider("numJellyTwo", 20, 300, &creatures.numJellyTwo);
+    
+    rdrGui->addLabel("Fish One");
+    rdrGui->addSpacer();
+    rdrGui->addMinimalSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
+    rdrGui->addMinimalSlider("greySizeAverage", .1f, 3.f, &creatures.fishOneParams.sizeAverage);
+    rdrGui->addMinimalSlider("greySizeStdDeviation", 0.f, 1.f, &creatures.fishOneParams.sizeStdDeviation);
+    
+    rdrGui->addLabel("Fish Two");
+    rdrGui->addSpacer();
+    rdrGui->addMinimalSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
+    rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
+    rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
+    
+    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, ModelCreature::texAmount);
 }
 
 //These methods let us add custom GUI parameters and respond to their events
