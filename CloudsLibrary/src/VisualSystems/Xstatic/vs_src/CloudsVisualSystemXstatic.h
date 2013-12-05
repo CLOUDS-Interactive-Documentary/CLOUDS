@@ -112,6 +112,8 @@ protected:
     static int nParticles;
     vector <Particle> particles;
     
+    ofMesh gravityLine;
+    
     GLfloat * data;
     ofImage tex;
     ofVbo vbo;
@@ -137,6 +139,15 @@ protected:
     float gravityY;
     float gravityX;
     float gravityZ;
+    
+    //oscillate forces
+    
+    float oscX; //cosine
+    float oscZ;
+    float oscY; //sine
+    float amplitude = 100;
+    float period = 105; //120
+    float frameCount;
 	
 
 };

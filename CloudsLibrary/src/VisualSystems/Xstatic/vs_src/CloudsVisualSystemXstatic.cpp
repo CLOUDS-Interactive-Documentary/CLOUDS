@@ -14,7 +14,7 @@
 
 static const int kStrideData = 8;
 
-int CloudsVisualSystemXstatic::nParticles = 200;
+int CloudsVisualSystemXstatic::nParticles = 2000;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemXstatic::selfSetupGui(){
@@ -243,6 +243,7 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemXstatic::selfUpdate()
 {
+    float frameCount = ofGetElapsedTimeMillis()/33.0;
     
     if(shouldReset==1){
     
@@ -270,7 +271,27 @@ void CloudsVisualSystemXstatic::selfUpdate()
         // CALCULATE GRAVITY
        
          ofVec3f gravity;
-         gravity.set(gravityX/10.0, gravityY/10.0, gravityZ/10.0);
+        
+        
+         //oscillate gravity
+        
+        float oscX = amplitude * cos(TWO_PI * frameCount / period);
+        float oscZ = amplitude * sin(TWO_PI * frameCount / period);
+               
+        
+        gravityX = (ofMap(oscX, -100.0, 100.0, -3.0, 3.0));
+        gravityZ = (ofMap(oscZ, -100.0, 100.0, -3.0, 3.0));
+        
+        gravity.set(gravityX/10.0, gravityY/10.0, gravityZ/10.0);
+        
+        gravityLine.clear();
+        gravityLine.setMode(OF_PRIMITIVE_LINES);
+        gravityLine.addColor(ofFloatColor(255,255,255));
+        gravityLine.addVertex(ofPoint(0,0,0));
+        gravityLine.addColor(ofFloatColor(255,255,255));
+        gravityLine.addVertex(ofPoint(gravityX*10,gravityY*10,gravityZ*10));
+     
+        
         
         particles[i].applyForce(gravity);
          
@@ -305,6 +326,7 @@ void CloudsVisualSystemXstatic::selfDraw()
     ofSetColor(255);
     
 
+    gravityLine.draw();
 
     for(int i = 0; i < nParticles; i++){
         
