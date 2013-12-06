@@ -467,7 +467,9 @@ void CloudsVisualSystemCities::selfUpdate()
 	
 	
 	//update the image projector
+	float t = ofGetElapsedTimef();
 	ofVec3f projectorTarget(0,0,0);
+	projectorPosition.set( sin(t) * 20., projectorPosition.y, cos(t) * 20.);
 	projector.setPosition(projectorPosition);
 	projector.lookAt( projectorTarget, ofVec3f(0,0,1) );
 	
