@@ -250,7 +250,7 @@ void CloudsVisualSystemCities::selfSetupSystemGui()
 	edgeGui->add2DPad("edge projector XZ", ofxUIVec3f(-50, 50, 50), ofxUIVec3f(50, -50, -50), &projectorPosition, 100, 100);
 	edgeGui->addSlider("edge projector Z", -50, 50, &projectorHeight );
 	edgeGui->addSlider("edgeLineWidth", 0, 10, &edgeLineWidth );
-	edgeGui->addSlider("edge offset", 0, 10, &edgeOffset );
+	edgeGui->addSlider("edge offset", -10, 10, &edgeOffset );
 	
 	ofAddListener(edgeGui->newGUIEvent, this, &CloudsVisualSystemCities::selfGuiEvent);
 	guis.push_back(edgeGui);
@@ -534,20 +534,10 @@ void CloudsVisualSystemCities::selfDraw()
 		{
 			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passOneBlendMode );
+			glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
 			
 			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
 			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
-			
-			cubeMesh.draw();
-		}
-
-		if(bPassTwo)
-		{
-			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
-			ofEnableBlendMode( passTwoBlendMode );
-			
-			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
-			cubesShader.setUniform4f("overallColor", passTwoColor.r, passTwoColor.g, passTwoColor.b, passTwoAlpha);
 			
 			cubeMesh.draw();
 		}
@@ -576,6 +566,21 @@ void CloudsVisualSystemCities::selfDraw()
 		edgeVbo.draw(GL_POINTS, 0, edgeVboVertexCount );
 	}
 	
+	if(bDrawMesh)
+	{
+		if(bPassTwo)
+		{
+			glClear( GL_DEPTH_BITS );
+			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			ofEnableBlendMode( passTwoBlendMode );
+			
+			cubesShader.setUniform1f("drawEdges", 0 );
+			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
+			cubesShader.setUniform4f("overallColor", passTwoColor.r, passTwoColor.g, passTwoColor.b, passTwoAlpha);
+			
+			cubeMesh.draw();
+		}
+	}
 	cubesShader.end();
 	
 	
