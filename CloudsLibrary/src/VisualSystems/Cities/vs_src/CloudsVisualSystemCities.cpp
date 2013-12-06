@@ -521,10 +521,7 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	
 	ofEnableAlphaBlending();
-	glClearDepth(1);
-	
 	glDisable( GL_DEPTH_TEST );
-	glEnable( GL_DEPTH_TEST );
 	
 	glEnable( GL_CULL_FACE );
 	glCullFace( GL_FRONT );
@@ -532,14 +529,20 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	if(bDrawMesh)
 	{
+		bool bAlphaBlending = true;
 		if(bPassOne)
 		{
 			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passOneBlendMode );
-			if(passOneBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
 			
 			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
 			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
+			cubesShader.setUniform1f("bAlphaBlending", bAlphaBlending );
 			
 			cubeMesh.draw();
 		}
@@ -547,12 +550,17 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	if(bDrawMesh)
 	{
+		bool bAlphaBlending = true;
 		if(bPassTwo)
 		{
 			glClear( GL_DEPTH_BITS );
 			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passTwoBlendMode );
-			if(passTwoBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
 			
 			cubesShader.setUniform1f("drawEdges", 0 );
 			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
@@ -718,7 +726,7 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	vector<ofVec2f> edgeTexCoords;
 	vector<ofVec3f> baseVerts(8);
 	vector<ofVec3f> baseNormals(8);
-	vector<ofIndexType>baseIndices(8 + 8);//verticle edges + top edges
+	vector<ofIndexType>baseIndices(8 + 8 + 8);//verticle edges + top edges
 	
 	//bottom
 	baseVerts[0].set(-.5, 0, -.5);
@@ -761,6 +769,17 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	baseIndices[13] = 7;
 	baseIndices[14] = 7;
 	baseIndices[15] = 4;
+	
+	
+	//bottom edge indices
+	baseIndices[16] = 0;
+	baseIndices[17] = 1;
+	baseIndices[18] = 1;
+	baseIndices[19] = 2;
+	baseIndices[20] = 2;
+	baseIndices[21] = 3;
+	baseIndices[22] = 3;
+	baseIndices[23] = 4;
 	
 	for (int i=0; i<resolution; i++)
 	{

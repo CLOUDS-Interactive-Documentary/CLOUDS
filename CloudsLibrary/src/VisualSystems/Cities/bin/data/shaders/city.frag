@@ -29,6 +29,8 @@ uniform float shininess = 4.;
 uniform float radiusAlphaScl = 1.5;
 uniform float facadeTextureAmount = .125;
 
+uniform float bAlphaBlending = 1.;
+
 uniform float bUseEdgeMap = 0.;
 
 
@@ -85,7 +87,14 @@ void main(void)
 		
 		vec3 sampleColor = mix( col.xyz, vec3(1.), sampleColorWeight);
 		
-		gl_FragColor = vec4( diffuse * superFakeAO * sampleColor + specular, col.w * radiusAlpha * sampleColor.x ) * overallColor;
+		if(int(bAlphaBlending) == 1)
+		{
+			gl_FragColor = vec4( diffuse * superFakeAO * sampleColor + specular, col.w * radiusAlpha * sampleColor.x ) * overallColor;
+		}
+		else
+		{
+			gl_FragColor = vec4( diffuse * superFakeAO * sampleColor + specular, col.w * sampleColor.x ) * overallColor * radiusAlpha;
+		}
 	}
 }
 
