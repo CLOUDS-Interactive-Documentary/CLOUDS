@@ -25,9 +25,11 @@ varying vec2 uv;
 varying vec3 vertex;
 varying vec4 position;
 
-uniform float shininess = 32.;
+uniform float shininess = 4.;
 uniform float radiusAlphaScl = 1.5;
 uniform float facadeTextureAmount = .125;
+
+uniform float bAlphaBlending = 1.;
 
 uniform float bUseEdgeMap = 0.;
 
@@ -50,7 +52,8 @@ void main(void)
 	if(radiusAlpha < .001)	discard;
 	
 	if(int(drawEdges) == 1)
-	{	
+	{
+		
 		gl_FragColor = int(bUseEdgeMap) == 1 ? texture2DRect( projectedImage, projImgUV * projectedImageDim ) : vec4(1.);
 		gl_FragColor *= vec4( vec3(1.), col.w * radiusAlpha) * gl_Color;
 	}
@@ -68,9 +71,13 @@ void main(void)
 		float fr = max(0.,dot( -normalize(ePos), normalize( norm ) ) );
 		
 		//lighting
-		ambient = gl_LightSource[0].ambient.xyz;
-		diffuse = gl_LightSource[0].diffuse.xyz * fr;//nDotVP; // temp solution for avoiding poorly positioned lights
-		float specVal = pow(nDotVP, shininess);
+//		ambient = gl_LightSource[0].ambient.xyz;
+//		diffuse = gl_LightSource[0].diffuse.xyz * fr;//nDotVP; // temp solution for avoiding poorly positioned lights
+//		float specVal = pow( fr, shininess);// pow(nDotVP, shininess);
+//		specular = gl_LightSource[0].specular.xyz * specVal;
+		
+		diffuse = vec3( pow(fr*1.5, 2.) );
+		float specVal = pow( fr, shininess);// pow(nDotVP, shininess);
 		specular = gl_LightSource[0].specular.xyz * specVal;
 		
 		//super fake AO TODO: rename height gradient?
@@ -80,7 +87,14 @@ void main(void)
 		
 		vec3 sampleColor = mix( col.xyz, vec3(1.), sampleColorWeight);
 		
-		gl_FragColor = vec4( diffuse * superFakeAO * sampleColor, col.w * radiusAlpha) * overallColor;
+		if(int(bAlphaBlending) == 1)
+		{
+			gl_FragColor = vec4( diffuse * superFakeAO * sampleColor + specular, col.w * radiusAlpha * sampleColor.x ) * overallColor;
+		}
+		else
+		{
+			gl_FragColor = vec4( diffuse * superFakeAO * sampleColor + specular, col.w * sampleColor.x ) * overallColor * radiusAlpha;
+		}
 	}
 }
 
