@@ -718,7 +718,7 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	vector<ofVec2f> edgeTexCoords;
 	vector<ofVec3f> baseVerts(8);
 	vector<ofVec3f> baseNormals(8);
-	vector<ofIndexType>baseIndices(8 + 8);//verticle edges + top edges
+	vector<ofIndexType>baseIndices(8 + 8 + 8);//verticle edges + top edges
 	
 	//bottom
 	baseVerts[0].set(-.5, 0, -.5);
@@ -761,6 +761,17 @@ void CloudsVisualSystemCities::makeBigCubesVbo( int _size, int _resolution )
 	baseIndices[13] = 7;
 	baseIndices[14] = 7;
 	baseIndices[15] = 4;
+	
+	
+	//bottom edge indices
+	baseIndices[16] = 0;
+	baseIndices[17] = 1;
+	baseIndices[18] = 1;
+	baseIndices[19] = 2;
+	baseIndices[20] = 2;
+	baseIndices[21] = 3;
+	baseIndices[22] = 3;
+	baseIndices[23] = 4;
 	
 	for (int i=0; i<resolution; i++)
 	{
