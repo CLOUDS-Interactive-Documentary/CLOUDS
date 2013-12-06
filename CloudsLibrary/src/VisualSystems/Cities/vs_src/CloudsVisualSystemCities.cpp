@@ -521,10 +521,7 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	
 	ofEnableAlphaBlending();
-	glClearDepth(1);
-	
 	glDisable( GL_DEPTH_TEST );
-	glEnable( GL_DEPTH_TEST );
 	
 	glEnable( GL_CULL_FACE );
 	glCullFace( GL_FRONT );
@@ -532,14 +529,20 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	if(bDrawMesh)
 	{
+		bool bAlphaBlending = true;
 		if(bPassOne)
 		{
 			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passOneBlendMode );
-			if(passOneBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
 			
 			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
 			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
+			cubesShader.setUniform1f("bAlphaBlending", bAlphaBlending );
 			
 			cubeMesh.draw();
 		}
@@ -547,12 +550,17 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	if(bDrawMesh)
 	{
+		bool bAlphaBlending = true;
 		if(bPassTwo)
 		{
 			glClear( GL_DEPTH_BITS );
 			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passTwoBlendMode );
-			if(passTwoBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )
+			{
+				bAlphaBlending = false;
+				ofDisableAlphaBlending();
+			}
 			
 			cubesShader.setUniform1f("drawEdges", 0 );
 			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
