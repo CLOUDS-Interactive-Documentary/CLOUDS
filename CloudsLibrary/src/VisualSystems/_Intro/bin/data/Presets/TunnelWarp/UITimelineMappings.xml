@@ -4,7 +4,7 @@
         <Mapping>
             <Widget>
                 <WidgetName>hold camera</WidgetName>
-                <WidgetID>52</WidgetID>
+                <WidgetID>56</WidgetID>
                 <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
@@ -13,17 +13,25 @@
     <SliderCurves>
         <Mapping>
             <Widget>
-                <WidgetName>Question Tint B</WidgetName>
-                <WidgetID>18</WidgetID>
-                <WidgetCanvasParent>Questions</WidgetCanvasParent>
+                <WidgetName>Perlin Amplitude</WidgetName>
+                <WidgetID>11</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>camera fwd force</WidgetName>
-                <WidgetID>50</WidgetID>
-                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+                <WidgetName>Wireframe Alpha</WidgetName>
+                <WidgetID>17</WidgetID>
+                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>Question Tint B</WidgetName>
+                <WidgetID>18</WidgetID>
+                <WidgetCanvasParent>Questions</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
@@ -45,17 +53,9 @@
         </Mapping>
         <Mapping>
             <Widget>
-                <WidgetName>Wireframe Alpha</WidgetName>
-                <WidgetID>17</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
-            </Widget>
-            <Track></Track>
-        </Mapping>
-        <Mapping>
-            <Widget>
-                <WidgetName>Perlin Amplitude</WidgetName>
-                <WidgetID>11</WidgetID>
-                <WidgetCanvasParent>RenderSettings</WidgetCanvasParent>
+                <WidgetName>camera fwd force</WidgetName>
+                <WidgetID>50</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
             </Widget>
             <Track></Track>
         </Mapping>
