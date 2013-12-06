@@ -12,10 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
-#ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
-#endif
-// TODO: Deal with case when AVF_PLAYER is not #defined
 
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
