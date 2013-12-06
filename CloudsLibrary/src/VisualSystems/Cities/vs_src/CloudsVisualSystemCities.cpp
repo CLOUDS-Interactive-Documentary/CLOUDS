@@ -534,7 +534,6 @@ void CloudsVisualSystemCities::selfDraw()
 		{
 			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passOneBlendMode );
-			glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
 			
 			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
 			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
@@ -542,6 +541,23 @@ void CloudsVisualSystemCities::selfDraw()
 			cubeMesh.draw();
 		}
 	}
+	
+	if(bDrawMesh)
+	{
+		if(bPassTwo)
+		{
+			glClear( GL_DEPTH_BITS );
+			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
+			ofEnableBlendMode( passTwoBlendMode );
+			
+			cubesShader.setUniform1f("drawEdges", 0 );
+			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
+			cubesShader.setUniform4f("overallColor", passTwoColor.r, passTwoColor.g, passTwoColor.b, passTwoAlpha);
+			
+			cubeMesh.draw();
+		}
+	}
+	
 	
 	//draw edges
 	glEnable(GL_DEPTH_TEST);
@@ -566,21 +582,6 @@ void CloudsVisualSystemCities::selfDraw()
 		edgeVbo.draw(GL_POINTS, 0, edgeVboVertexCount );
 	}
 	
-	if(bDrawMesh)
-	{
-		if(bPassTwo)
-		{
-			glClear( GL_DEPTH_BITS );
-			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
-			ofEnableBlendMode( passTwoBlendMode );
-			
-			cubesShader.setUniform1f("drawEdges", 0 );
-			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
-			cubesShader.setUniform4f("overallColor", passTwoColor.r, passTwoColor.g, passTwoColor.b, passTwoAlpha);
-			
-			cubeMesh.draw();
-		}
-	}
 	cubesShader.end();
 	
 	
