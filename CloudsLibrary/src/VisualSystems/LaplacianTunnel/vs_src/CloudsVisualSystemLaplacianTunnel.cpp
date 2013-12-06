@@ -43,22 +43,19 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 	center /= numPts;
 	
     unsigned int * indices = ints + 2 + numPts*6;
+	
     //not sure what is enable or disable by default
     vbo.enableIndices();
     vbo.enableNormals();
     vbo.disableColors();
     vbo.disableTexCoords();
-    vbo.setVertexData(pts,3,numPts,GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setNormalData(pts+numPts*3,numPts,GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setIndexData(indices,numTriangles*3,GL_STATIC_DRAW);
+    vbo.setVertexData(pts,3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
+    vbo.setNormalData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
+    vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
 	return numTriangles*3;
 }
-
-//CloudsVisualSystemLaplacianTunnel::~CloudsVisualSystemLaplacianTunnel(){
-//	clear();
-//}
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
@@ -68,7 +65,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
     customGui->copyCanvasProperties(gui);
 	
 	customGui->addIntSlider("num replications", 1, 5, &numReplications);
-	customGui->addSlider("replication offset", 0, 500, &replicationOffset);
 	customGui->addSlider("fog density", 0, .3, &fogDensity);
 	customGui->addSlider("light distance", 20, 600, &lightDistance);
 	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);

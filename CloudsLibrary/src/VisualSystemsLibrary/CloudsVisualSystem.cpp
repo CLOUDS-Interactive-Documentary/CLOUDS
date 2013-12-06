@@ -147,7 +147,8 @@ CloudsVisualSystem::CloudsVisualSystem(){
 }
 
 CloudsVisualSystem::~CloudsVisualSystem(){
-    saveGUIS();
+	//can't save guis because the virtual subclass members return the wrong data
+//    saveGUIS();
 }
 
 ofFbo& CloudsVisualSystem::getSharedRenderTarget(){

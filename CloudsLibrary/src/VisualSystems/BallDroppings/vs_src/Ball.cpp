@@ -4,7 +4,7 @@
 
 #include "Ball.h"
 #include <math.h>
-#include "testApp.h"
+//#include "testApp.h"
 
 
 //----------------------------------------------------
@@ -94,7 +94,7 @@ void Ball::bounce(float x1,float y1,float x2,float y2, float freqRange){
   for(int i=15;i>0;i--){//shift the queue
     lastBounceTimes[i] = lastBounceTimes[i-1];
   }
-    lastBounceTimes[0] = ofGetElapsedTimeMillis();//(glutGet(GLUT_ELAPSED_TIME));//then add the new value
+	lastBounceTimes[0] = ofGetElapsedTimeMillis(); //(glutGet(GLUT_ELAPSED_TIME));//then add the new value
   
   //now check for unusual behavior
   bounceTimeDelta = lastBounceTimes[0] - lastBounceTimes[15];

@@ -1156,8 +1156,8 @@
 		E7FC4CEC185262F20017A3F2 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7FC4CED185262F20017A3F2 /* CloudsVisualSystemLaplacianTunnel.cpp */,
 				E7FC4CEE185262F20017A3F2 /* CloudsVisualSystemLaplacianTunnel.h */,
+				E7FC4CED185262F20017A3F2 /* CloudsVisualSystemLaplacianTunnel.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
