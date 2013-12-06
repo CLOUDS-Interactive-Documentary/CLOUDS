@@ -534,6 +534,7 @@ void CloudsVisualSystemCities::selfDraw()
 		{
 			bPassOneDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passOneBlendMode );
+			if(passOneBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
 			
 			cubesShader.setUniform1f("sampleColorWeight", passOneSampleColorWeight);
 			cubesShader.setUniform4f("overallColor", passOneColor.r, passOneColor.g, passOneColor.b, passOneAlpha);
@@ -549,6 +550,7 @@ void CloudsVisualSystemCities::selfDraw()
 			glClear( GL_DEPTH_BITS );
 			bPassTwoDepthTest ? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
 			ofEnableBlendMode( passTwoBlendMode );
+			if(passTwoBlendMode == OF_BLENDMODE_DISABLED )	ofDisableAlphaBlending();
 			
 			cubesShader.setUniform1f("drawEdges", 0 );
 			cubesShader.setUniform1f("sampleColorWeight", passTwoSampleColorWeight);
