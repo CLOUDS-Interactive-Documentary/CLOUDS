@@ -9,11 +9,11 @@ uniform vec3 lightPos;
 uniform float time;
 uniform float frequency;
 uniform vec3 colour;
+uniform sampler2D tex;
+uniform float texAmt;
 
 //varying vec3 nEye;
 varying vec3 vEye;
-
-uniform sampler2DRect tex;
 
 void main()
 {
@@ -43,5 +43,7 @@ void main()
     col.r += clamp(sin(frequency * -0.25 * time + gl_TexCoord[0].s / 512.0), 0.0, 0.3);
     col.g += clamp(sin(frequency * 0.25 * time + HALF_PI + gl_TexCoord[0].s / 512.0), 0.0, 0.3);
     col.b += clamp(sin(frequency * 0.5 * time + PI + gl_TexCoord[0].s / 512.0), 0.0, 0.3);*/
-    gl_FragColor = vec4(colour * (diffuse/* + specular*/), 1.0);
+    
+    gl_FragColor = vec4(texAmt * texture2D(tex, gl_TexCoord[0].st).rgb + 0.5 * colour * (diffuse/* + specular*/), 1.0);
+
 }

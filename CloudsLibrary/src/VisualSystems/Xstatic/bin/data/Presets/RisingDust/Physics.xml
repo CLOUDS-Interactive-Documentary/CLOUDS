@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Physics</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>967.000000000</XPosition>
+    <YPosition>172.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Mass</Name>
+    <Value>0.344827592</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wind strength x</Name>
+    <Value>0.197044328</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wind strength z</Name>
+    <Value>0.295566499</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Max Brightness</Name>
+    <Value>255</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Min Brightness</Name>
+    <Value>71</Value>
+</Widget>

@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>252.000000000</XPosition>
+    <YPosition>36.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Max Brightness</Name>
+    <Value>195</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>Min Brightness</Name>
+    <Value>52</Value>
+</Widget>

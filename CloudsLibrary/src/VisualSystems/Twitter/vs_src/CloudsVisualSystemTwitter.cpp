@@ -130,10 +130,14 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
 
+            cout << "twitter.name   " <<  tweeter.name << endl;
+            
 			tweeter.position = ofVec3f(ofToFloat(components[2]),
 										   ofToFloat(components[3]),
 										   ofToFloat(components[4])*10);
 		}
+        
+        
         
         if(findingEdges){
 			vector<string> components = ofSplitString(line, " ");

@@ -21,7 +21,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "XstaticSystem";
+		return "Xstatic";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -55,6 +55,8 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
 	
+    void regenerate();
+    
 	//normal update call
 	void selfUpdate();
 
@@ -84,7 +86,7 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
+
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -95,18 +97,57 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 		return CloudsVisualSystem::getCameraRef();
 	}
 
+    int maxBrightness;
+    int minBrightness;
+    float mass;
+    float topspeed;
+    
 
 protected:
     
     //  Your Stuff
     //
     
-    static float nParticles;
+    
+    static int nParticles;
     vector <Particle> particles;
     
-    ofxUISuperCanvas* customGui;
+    ofMesh gravityLine;
     
+    GLfloat * data;
+    ofImage tex;
+    ofVbo vbo;
+    ofShader shader;
+    
+    ofxUISuperCanvas* customGui;
     bool videoLoaded;
+    bool shouldRegenerate;
+    bool shouldReset;
+    
+    bool PROJECTILEMODE;
+    bool FALLINGMODE;
+    bool RISINGMODE;
+    bool FROZENMODE;
+    //
+    bool WRAPAROUNDMODE;
+    bool BOUNCEMODE;
+
+    // Forces
+    float speed; //noiseSpeed
+    float windX;
+    float windZ;
+    float gravityY;
+    float gravityX;
+    float gravityZ;
+    
+    //oscillate forces
+    
+    float oscX; //cosine
+    float oscZ;
+    float oscY; //sine
+    float amplitude = 100;
+    float period = 105; //120
+    float frameCount;
 	
 
 };
