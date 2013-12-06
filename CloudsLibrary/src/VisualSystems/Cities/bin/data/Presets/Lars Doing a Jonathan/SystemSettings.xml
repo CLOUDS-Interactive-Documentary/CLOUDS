@@ -1,9 +1,9 @@
 <Canvas>
     <Kind>42</Kind>
     <Name>SystemSettings</Name>
-    <IsMinified>0</IsMinified>
-    <XPosition>851</XPosition>
-    <YPosition>1</YPosition>
+    <IsMinified>1</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>116.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
@@ -13,27 +13,27 @@
 <Widget>
     <Kind>4</Kind>
     <Name>overScale</Name>
-    <Value>1.93596</Value>
+    <Value>1.935960054</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_zoom</Name>
-    <Value>0.492611</Value>
+    <Value>0.492610961</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>noise_speed</Name>
-    <Value>0.270936</Value>
+    <Value>0.270936012</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Feed</Name>
-    <Value>0.00689655</Value>
+    <Value>0.006896549</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>Loops</Name>
-    <Value>1</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -43,12 +43,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>maskSize</Name>
-    <Value>1</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>maskCurve</Name>
-    <Value>1</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
