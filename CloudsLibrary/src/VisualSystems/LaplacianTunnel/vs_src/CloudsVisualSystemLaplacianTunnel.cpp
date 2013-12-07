@@ -107,7 +107,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	frameCount = 0;
 	fps = 15;
 	
-	ofDirectory objs(getVisualSystemDataPath() + "Meshes/");
+	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
 	objs.listDir();
 	
