@@ -1,4 +1,4 @@
-<system name="3DModelVisualSystem_BigBlueCube">
+<system name="3DModelLoader_BigBlueCube">
     <keywords>big data</keywords>
     <suppressions>
         <clip>Binx - geodata</clip>
@@ -22,7 +22,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_BigData">
+<system name="3DModelLoader_BigData">
     <keywords>Archiving|archiving|data ownership|facebook|the cloud</keywords>
     <suppressions>
         <clip>Jen - twitter friends</clip>
@@ -56,7 +56,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_BigDataOC">
+<system name="3DModelLoader_BigDataOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -64,7 +64,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_CheeseDoodles">
+<system name="3DModelLoader_CheeseDoodles">
     <keywords>weird|objects</keywords>
     <suppressions>
         <clip>Golan - kerrington</clip>
@@ -87,7 +87,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Clock2">
+<system name="3DModelLoader_Clock2">
     <keywords>clock|camera|artificial intelligence</keywords>
     <suppressions>
         <clip>Andres - seeing molecules</clip>
@@ -133,7 +133,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Clock2Oc">
+<system name="3DModelLoader_Clock2Oc">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -141,7 +141,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_FallingChairs">
+<system name="3DModelLoader_FallingChairs">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -149,7 +149,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_FallingCubes">
+<system name="3DModelLoader_FallingCubes">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -157,7 +157,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_HyperSphere1">
+<system name="3DModelLoader_HyperSphere1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -165,7 +165,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_HyperSphere1OC">
+<system name="3DModelLoader_HyperSphere1OC">
     <keywords>clock|time|future|science fiction</keywords>
     <suppressions>
         <clip>Bruce - 2060s (Lashup 5)</clip>
@@ -243,7 +243,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_Monochrome">
+<system name="3DModelLoader_Kelp_Monochrome">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -251,7 +251,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_Normals">
+<system name="3DModelLoader_Kelp_Normals">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -259,7 +259,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_Xray">
+<system name="3DModelLoader_Kelp_Xray">
     <keywords>biology</keywords>
     <suppressions>
         <clip>Casey - Massive parallel systems</clip>
@@ -277,7 +277,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_XrayOC">
+<system name="3DModelLoader_Kelp_XrayOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -285,7 +285,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_LovelyTangle">
+<system name="3DModelLoader_LovelyTangle">
     <keywords>jewelry|design</keywords>
     <suppressions>
         <clip>Bruce - Don&apos;t care about design</clip>
@@ -313,7 +313,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nest_1">
+<system name="3DModelLoader_Nest_1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -321,7 +321,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nest_CoolTransparent">
+<system name="3DModelLoader_Nest_CoolTransparent">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -329,7 +329,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nested_Sphere">
+<system name="3DModelLoader_Nested_Sphere">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -337,7 +337,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_PinkElephant">
+<system name="3DModelLoader_PinkElephant">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -345,7 +345,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Sphere_Clock">
+<system name="3DModelLoader_Sphere_Clock">
     <keywords>clock</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -353,7 +353,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_StackOfChairs">
+<system name="3DModelLoader_StackOfChairs">
     <keywords>weird</keywords>
     <suppressions>
         <clip>Bruce - Gardening 2</clip>
@@ -377,7 +377,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Succulent">
+<system name="3DModelLoader_Succulent">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -385,7 +385,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Succulent_BlueXray">
+<system name="3DModelLoader_Succulent_BlueXray">
     <keywords>form</keywords>
     <suppressions>
         <clip>Elliot_UK - wiremape_description</clip>
@@ -395,7 +395,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Tangle_Transparent">
+<system name="3DModelLoader_Tangle_Transparent">
     <keywords>form</keywords>
     <suppressions>
         <clip>Elliot_UK - wiremape_description</clip>
@@ -407,7 +407,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman1">
+<system name="3DModelLoader_TransHuman1">
     <keywords>science fiction</keywords>
     <suppressions>
         <clip>Bruce - future city 2</clip>
@@ -447,7 +447,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman1OC">
+<system name="3DModelLoader_TransHuman1OC">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -455,7 +455,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman_female">
+<system name="3DModelLoader_TransHuman_female">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
     <suppressions>
         <clip>Bruce - military</clip>
@@ -495,7 +495,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman_femaleOC">
+<system name="3DModelLoader_TransHuman_femaleOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -503,7 +503,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_Transparency_Grenade">
+<system name="3DModelLoader_Transparency_Grenade">
     <keywords>transparency</keywords>
     <suppressions>
         <clip>Javier - Julian Oliver</clip>
@@ -523,7 +523,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Virus1">
+<system name="3DModelLoader_Virus1">
     <keywords>virus</keywords>
     <suppressions>
         <clip>Lindsay - meme as weapon</clip>
@@ -533,7 +533,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Vortex">
+<system name="3DModelLoader_Vortex">
     <keywords>3d printing</keywords>
     <suppressions>
         <clip>Nervous_Jessica - Growing buildings</clip>
@@ -544,7 +544,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Vroi">
+<system name="3DModelLoader_Vroi">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -552,7 +552,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_elipsoid1">
+<system name="3DModelLoader_elipsoid1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -560,7 +560,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_pathDebug">
+<system name="3DModelLoader_pathDebug">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -568,7 +568,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_pathDebugOC">
+<system name="3DModelLoader_pathDebugOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -576,7 +576,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="3DModelVisualSystem_voronoi">
+<system name="3DModelLoader_voronoi">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -584,7 +584,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_voronoi_knight_rider">
+<system name="3DModelLoader_voronoi_knight_rider">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1792,7 +1792,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="LaplacianTunnel_DefaultGray">
+<system name="LIA_JM_OnWhite">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1800,23 +1800,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="LaplacianTunnel_LightCenter">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_JM_OnWhite">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_JM_White">
+<system name="LIA_JM_White">
     <keywords>generative art|painting</keywords>
     <suppressions>
         <clip>Bruce - Gardening 1</clip>
@@ -1843,7 +1827,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_01">
+<system name="LIA_LIA_01">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1851,7 +1835,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_02">
+<system name="LIA_LIA_02">
     <keywords>journey</keywords>
     <suppressions></suppressions>
     <comments>Too dark</comments>
@@ -1859,7 +1843,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_03">
+<system name="LIA_LIA_03">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1867,7 +1851,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_04">
+<system name="LIA_LIA_04">
     <keywords>generative art|abstraction</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1875,7 +1859,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_05">
+<system name="LIA_LIA_05">
     <keywords>abstraction</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1883,7 +1867,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_06">
+<system name="LIA_LIA_06">
     <keywords>painting|abstraction</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1891,7 +1875,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_07">
+<system name="LIA_LIA_07">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1899,7 +1883,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_08">
+<system name="LIA_LIA_08">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1907,7 +1891,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_09">
+<system name="LIA_LIA_09">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1915,7 +1899,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_LIA_10">
+<system name="LIA_LIA_10">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1923,7 +1907,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_DinoSkinPlanet">
+<system name="Mandala_DinoSkinPlanet">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1931,7 +1915,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_DinoSkinPlanetOC">
+<system name="Mandala_DinoSkinPlanetOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1939,7 +1923,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_HeartMachine">
+<system name="Mandala_HeartMachine">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1947,7 +1931,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor">
+<system name="Mandala_JM_AlienFusionReactor">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1955,7 +1939,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor2">
+<system name="Mandala_JM_AlienFusionReactor2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1963,7 +1947,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor2OC">
+<system name="Mandala_JM_AlienFusionReactor2OC">
     <keywords>clock|abstraction|system|logic|machine|machine aesthetics</keywords>
     <suppressions>
         <clip>Casey - ideas of art history</clip>
@@ -1998,7 +1982,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_JM_fastPulse">
+<system name="Mandala_JM_fastPulse">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2006,7 +1990,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_jitter1">
+<system name="Mandala_JM_jitter1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2014,7 +1998,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_pulse1">
+<system name="Mandala_JM_pulse1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2022,7 +2006,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_pulse1OC">
+<system name="Mandala_JM_pulse1OC">
     <keywords>form|abstraction|energy|3D|Time|clock|science fiction</keywords>
     <suppressions>
         <clip>Ramsey - arab abstraction 2</clip>
@@ -2056,7 +2040,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_LavaBeat">
+<system name="Mandala_LavaBeat">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2064,7 +2048,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_PureForm">
+<system name="Mandala_PureForm">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2072,7 +2056,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_PureFormEvolving_OC">
+<system name="Mandala_PureFormEvolving_OC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2080,7 +2064,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_PureFormOC">
+<system name="Mandala_PureFormOC">
     <keywords>form|abstraction|3D|3d printing|aesthetics</keywords>
     <suppressions>
         <clip>Binx - making things</clip>
@@ -2129,7 +2113,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_clock">
+<system name="Mandala_clock">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2137,7 +2121,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_clock2">
+<system name="Mandala_clock2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2145,7 +2129,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_cracked_skin">
+<system name="Mandala_cracked_skin">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2153,7 +2137,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offsetMesh">
+<system name="Mandala_offsetMesh">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2161,7 +2145,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offset_Interior">
+<system name="Mandala_offset_Interior">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2169,7 +2153,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offset_bigNoise">
+<system name="Mandala_offset_bigNoise">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
