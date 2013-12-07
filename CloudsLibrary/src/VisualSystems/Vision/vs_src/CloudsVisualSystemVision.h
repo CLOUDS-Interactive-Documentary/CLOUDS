@@ -57,10 +57,11 @@ public:
     void updateContourTracking();
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
-    void getTextures();
+//    void getTextures(); JG didn't see where this was used
 
     ofxUISuperCanvas *opticalFlowGui;
     ofxUISuperCanvas *contourTrackingGui;
+	
 protected:
 
     //video player stuff        
@@ -128,14 +129,10 @@ protected:
     float thresholdAlpha;
     float diffAlpha;
 
-
-
     ofVec2f averageFlow;
     int mouseX;
     int mouseY;
-    
 
-    
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
     
