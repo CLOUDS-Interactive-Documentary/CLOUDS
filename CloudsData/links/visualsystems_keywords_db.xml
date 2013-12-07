@@ -1010,22 +1010,6 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="DataCascade_RGBDTunnel">
-    <keywords>computation</keywords>
-    <suppressions>
-        <clip>Karsten - virus</clip>
-        <clip>Jen - a different mathematics</clip>
-        <clip>Aaron - Mini-Artificial Intelligences</clip>
-        <clip>Ramsey - social computer</clip>
-        <clip>Ramsey - does nature compute? 1</clip>
-        <clip>Ramsey - does nature compute? 2</clip>
-        <clip>Ramsey - computation is interpretation of rules</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="ExampleBox2D_GS1">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1720,6 +1704,30 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Flying_Test">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="GPUParticles_Cloudy">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="GPUParticles_Many">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="LIA_JM_OnWhite">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -1904,6 +1912,14 @@
         <clip>Sophy - the Cloud</clip>
         <clip>Vera - Energy Flow2</clip>
     </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LaplacianTunnel_LaplacianTunnel">
+    <keywords></keywords>
+    <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -3580,6 +3596,30 @@
     <oculus>0</oculus>
 </system>
 <system name="OpenP5DrawingMachine10_choas">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Fifteen_RAYS">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Fifteen_SILVER">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Fifteen_TERRAIN">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
