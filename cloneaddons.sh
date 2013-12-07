@@ -44,6 +44,7 @@ git clone https://github.com/obviousjim/ofxOpenSteer.git
 git clone https://github.com/Larsberg/ofxSimpleSpline
 git clone https://github.com/Larsberg/ofxSimpleSurface
 git clone https://github.com/labatrockwell/ofxLibwebsockets
+git clone https://github.com/jefftimesten/ofxJSON.git
 
 ${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
 ${PREFIX}obviousjim/ofxAVFVideoPlayer
