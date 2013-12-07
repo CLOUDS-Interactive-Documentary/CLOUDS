@@ -134,8 +134,8 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfUpdate()
 {
-    fgColor1.setHsb(fgParams1[0] * 255, fgParams1[1] * 255, fgParams1[2] * 255);
-    fgColor2.setHsb(fgParams2[0] * 255, fgParams2[1] * 255, fgParams2[2] * 255);
+    fgColor1.setHsb(fgParams1[0], fgParams1[1], fgParams1[2]);
+    fgColor2.setHsb(fgParams2[0], fgParams2[1], fgParams2[2]);
     
     if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
         restart();
@@ -206,8 +206,8 @@ void CloudsVisualSystemAutomata::render()
     blenderShader.begin();
     blenderShader.setUniformTexture("tex", outFbo.getTextureReference(), 1);
     blenderShader.setUniform2f("dims", outFbo.getWidth(), outFbo.getHeight());
-    blenderShader.setUniform4f("frontColor1", fgColor1.r / 255.f, fgColor1.g / 255.f, fgColor1.b / 255.f, fgColor1.a / 255.f);
-    blenderShader.setUniform4f("frontColor2", fgColor2.r / 255.f, fgColor2.g / 255.f, fgColor2.b / 255.f, fgColor2.a / 255.f);
+    blenderShader.setUniform4f("frontColor1", fgColor1.r, fgColor1.g, fgColor1.b, fgColor1.a);
+    blenderShader.setUniform4f("frontColor2", fgColor2.r, fgColor2.g, fgColor2.b, fgColor2.a);
     {
         ofSetColor(255);
         mesh.draw();

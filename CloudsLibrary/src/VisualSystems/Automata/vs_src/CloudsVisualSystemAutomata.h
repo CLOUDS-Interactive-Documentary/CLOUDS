@@ -100,7 +100,7 @@ protected:
 
     float fgParams1[3], fgParams2[3];
     float fade;
-    ofColor fgColor1, fgColor2;
+    ofFloatColor fgColor1, fgColor2;
 	
     ofShader conwayShader;
     ofShader blenderShader;
