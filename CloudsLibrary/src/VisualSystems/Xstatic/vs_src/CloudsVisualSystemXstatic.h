@@ -11,7 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-#include "particle.h"
+#include "XParticle.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemXstatic : public CloudsVisualSystem {
@@ -110,7 +110,7 @@ protected:
     
     
     static int nParticles;
-    vector <Particle> particles;
+    vector <XParticle> particles;
     
     ofMesh gravityLine;
     

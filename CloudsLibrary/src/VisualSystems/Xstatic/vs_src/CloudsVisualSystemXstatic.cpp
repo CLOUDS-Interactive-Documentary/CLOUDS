@@ -131,25 +131,25 @@ void CloudsVisualSystemXstatic::regenerate(){
         
         
         if (PROJECTILEMODE == 1){
-        particles.push_back( Particle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
+        particles.push_back( XParticle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
             WRAPAROUNDMODE = false;
             BOUNCEMODE = true;
         }
         
         if (FALLINGMODE == 1){
-         particles.push_back(Particle(mass, 0, ofRandom(-.5,-.3), 0, minBrightness, maxBrightness)); // falling particles
+         particles.push_back( XParticle(mass, 0, ofRandom(-.5,-.3), 0, minBrightness, maxBrightness)); // falling particles
             WRAPAROUNDMODE = true;
             BOUNCEMODE = false;
          }
         
         if (RISINGMODE == 1){
-         particles.push_back( Particle(mass, 0, ofRandom(.4,.6), 0, minBrightness, maxBrightness)); // rising particles
+         particles.push_back( XParticle(mass, 0, ofRandom(.4,.6), 0, minBrightness, maxBrightness)); // rising particles
             gravityY = -0.0;
             WRAPAROUNDMODE = true;
             BOUNCEMODE = false;
         }
         if (FROZENMODE == 1){
-        particles.push_back( Particle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
+        particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
         }
     }
     
@@ -181,26 +181,26 @@ void CloudsVisualSystemXstatic::selfSetup(){
        // particles.push_back(Particle(mass, 0, 0, 0, minBrightness, maxBrightness)); // falling particles
         
         if (PROJECTILEMODE == 1){
-            particles.push_back( Particle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
+            particles.push_back( XParticle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
             WRAPAROUNDMODE = false;
             BOUNCEMODE = true;
         }
         
         if (FALLINGMODE == 1){
             gravityY = -0.1;
-            particles.push_back(Particle(mass, 0, 0, 0, minBrightness, maxBrightness)); // falling particles
+            particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // falling particles
             WRAPAROUNDMODE = true;
             BOUNCEMODE = false;
         }
         
         if (RISINGMODE == 1){
-            particles.push_back( Particle(mass, 0, ofRandom(.5,.6), 0, minBrightness, maxBrightness)); // rising particles
+            particles.push_back( XParticle(mass, 0, ofRandom(.5,.6), 0, minBrightness, maxBrightness)); // rising particles
             gravityY = 0.1;
             WRAPAROUNDMODE = true;
             BOUNCEMODE = false;
         }
         if (FROZENMODE == 1){
-            particles.push_back( Particle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
+            particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
             gravityY = 0.0;
             gravityX = 0.0;
             gravityZ = 0.0;

@@ -6,9 +6,9 @@
 //
 //
 
-#include "particle.h"
+#include "XParticle.h"
 
-Particle::Particle(float& mass, float velocityX, float velocityY, float velocityZ, int& minBri, int& maxBri){
+XParticle::XParticle(float& mass, float velocityX, float velocityY, float velocityZ, int& minBri, int& maxBri){
     
     
     location.set(ofRandom(-150,150),ofRandom(-150,150),ofRandom(-150,150));
@@ -36,7 +36,7 @@ Particle::Particle(float& mass, float velocityX, float velocityY, float velocity
 }
 
 
-void Particle::applyForce(ofVec3f force){
+void XParticle::applyForce(ofVec3f force){
     
     //ofVec3f f = force / *mass; << the right way of calculating Newton's 2nd takes mass into consideration in calculating force
     ofVec3f f = force / 1.5; //let's pretend all the masses are the same
@@ -44,7 +44,7 @@ void Particle::applyForce(ofVec3f force){
     
 }
 
-void Particle::update(float _topspeed){
+void XParticle::update(float _topspeed){
     
     float topspeed = _topspeed;
     currentTime = ofGetElapsedTimeMillis() - previousTime; 
@@ -61,7 +61,7 @@ void Particle::update(float _topspeed){
     
 }
 
-void Particle::display(){
+void XParticle::display(){
     
     
     //ofxEasingQuad eq;
@@ -103,7 +103,7 @@ void Particle::display(){
     
 }
 
-void Particle::checkEdges(){
+void XParticle::checkEdges(){
     
     if(location.x > upperbounds.x){
         location.x = upperbounds.x;
@@ -133,7 +133,7 @@ void Particle::checkEdges(){
     }
 }
     
-void Particle::verticalWraparound(){
+void XParticle::verticalWraparound(){
         
         if(location.x > upperbounds.x){
             location.x = lowerbounds.x;
@@ -156,7 +156,7 @@ void Particle::verticalWraparound(){
         }
 }
     
-void Particle::lottery(){
+void XParticle::lottery(){
     
     newRandomNumber = int(ofRandom(1000));
     

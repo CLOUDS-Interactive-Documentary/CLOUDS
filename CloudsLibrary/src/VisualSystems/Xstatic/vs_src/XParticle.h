@@ -11,10 +11,9 @@
 
 #include <iostream>
 #include "ofMain.h"
-//#include "ofxTween.h"
 #include <set>
 
-class Particle {
+class XParticle {
  
 public:
     
@@ -22,7 +21,7 @@ public:
     int* maxBri;
     float* mass;
     
-    Particle(float& mass, float vx, float vy, float vz, int& minBri, int& maxBri);
+    XParticle(float& mass, float vx, float vy, float vz, int& minBri, int& maxBri);
     
     void applyForce(ofVec3f _force);
     void update(float _topspeed);

@@ -31,7 +31,14 @@ string CloudsVisualSystemPreset::getID(){
 
 void CloudsVisualSystemPreset::loadTimeInfo(){
 	ofxXmlSettings timeInfo;
-	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName + "/TimeInfo.xml";
+	string directory = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName;
+
+	if(!ofDirectory(directory).exists()){
+		ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";
+		return;
+	}
+	
+	string path = directory + "/TimeInfo.xml";
 	if(timeInfo.loadFile(path) ){
 		timeInfo.pushTag("timeinfo");
 		indefinite = timeInfo.getValue("indefinite", true);
@@ -40,16 +47,14 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		outroDuration = timeInfo.getValue("outroDuration", 0);
 	}
 	else{
-		ofLogError() << "Preset " << systemName << " / " << presetName << " has no time info at path" << path << ". creating default";
-//		if(system != NULL){
-			timeInfo.addTag("timeinfo");
-			timeInfo.pushTag("timeinfo");
-			timeInfo.addValue("duration", duration);
-			timeInfo.addValue("indefinite", indefinite);
-			timeInfo.addValue("introDuration", introDuration);
-			timeInfo.addValue("outroDuration", outroDuration);
-			timeInfo.saveFile(path);
-//		}
+		ofLogError() << "Preset " << systemName << " / " << presetName << " has no time info at path " << path << ". creating default";
+		timeInfo.addTag("timeinfo");
+		timeInfo.pushTag("timeinfo");
+		timeInfo.addValue("duration", duration);
+		timeInfo.addValue("indefinite", indefinite);
+		timeInfo.addValue("introDuration", introDuration);
+		timeInfo.addValue("outroDuration", outroDuration);
+		timeInfo.saveFile(path);
 	}
 }
 
