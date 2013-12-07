@@ -78,7 +78,8 @@ void CloudsVisualSystemAutomata::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemAutomata::selfSetup()
 {
     // Load the shaders.
-    shader.load("", getVisualSystemDataPath() + "shaders/conway.frag");
+    conwayShader.load("", getVisualSystemDataPath() + "shaders/conway.frag");
+    blenderShader.load("", getVisualSystemDataPath() + "shaders/blender.frag");
     bIs2D = true;
 	
     // Set defaults.
@@ -149,8 +150,7 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 void CloudsVisualSystemAutomata::selfUpdate()
 {
     fgColor.setHsb(fgParams[0] * 255, fgParams[1] * 255, fgParams[2] * 255);
-    bgColor.a = fade * 255;
-        
+    
     if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
         restart();
         bRestart = false;
@@ -172,16 +172,16 @@ void CloudsVisualSystemAutomata::selfUpdate()
         texFbo.end();
 
         outFbo.begin();
-        shader.begin();
-        shader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
-        shader.setUniform1f("fade", fade);
+        conwayShader.begin();
+        conwayShader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
+        conwayShader.setUniform1f("fade", fade);
         {
 //            ofClear(0, 255);
 
             ofSetColor(255);
             mesh.draw();
         }
-        shader.end();
+        conwayShader.end();
         outFbo.end();
     }
     ofPopStyle();
@@ -197,10 +197,14 @@ void CloudsVisualSystemAutomata::selfDraw()
         ofPushStyle();
         ofEnableAlphaBlending();
         ofDisableLighting();
+        blenderShader.begin();
+        blenderShader.setUniformTexture("tex", outFbo.getTextureReference(), 1);
+        blenderShader.setUniform4f("frontColor", fgColor.r / 255.f, fgColor.g / 255.f, fgColor.b / 255.f, fgColor.a / 255.f);
         {
-            ofSetColor(fgColor);
-            outFbo.draw(0, 0);
+            ofSetColor(255);
+            mesh.draw();
         }
+        blenderShader.end();
         ofPopStyle();
         ofPopMatrix();
     }
@@ -217,10 +221,14 @@ void CloudsVisualSystemAutomata::selfDrawBackground()
     if (bIs2D) {
         ofPushStyle();
         ofEnableAlphaBlending();
+        blenderShader.begin();
+        blenderShader.setUniformTexture("tex", outFbo.getTextureReference(), 1);
+        blenderShader.setUniform4f("frontColor", fgColor.r / 255.f, fgColor.g / 255.f, fgColor.b / 255.f, fgColor.a / 255.f);
         {
-            ofSetColor(fgColor);
-            outFbo.draw(0, 0);
+            ofSetColor(255);
+            mesh.draw();
         }
+        blenderShader.end();
         ofPopStyle();
     }
 }

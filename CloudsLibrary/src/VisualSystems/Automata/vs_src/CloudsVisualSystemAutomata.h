@@ -102,7 +102,8 @@ protected:
     float fade;
     ofColor fgColor;
 	
-    ofShader shader;
+    ofShader conwayShader;
+    ofShader blenderShader;
     ofFbo texFbo, outFbo;
     ofVboMesh mesh;
     
