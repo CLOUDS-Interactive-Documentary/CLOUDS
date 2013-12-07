@@ -9,7 +9,14 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxFTGLSimpleLayout.h"
+#include "ofxFTGL.h"
+
+#define MATCH_TYPES 5
+
+typedef struct {
+	string baseLine;
+	string colored[MATCH_TYPES];
+} SyntaxLine;
 
 class CodePanel {
   public:
@@ -28,6 +35,13 @@ class CodePanel {
 	float scanSpeed;
 	
 	ofRectangle drawRect;
-	vector<string> lines;
+//	vector<string> lines;
+	vector<SyntaxLine> syntaxLines;
 	string code;
+	
+protected:
+	
+	void myReplace(string& str, const string& oldStr, const string& newStr);
+	int indexOf(string s, string f, int startIndex);
+	
 };

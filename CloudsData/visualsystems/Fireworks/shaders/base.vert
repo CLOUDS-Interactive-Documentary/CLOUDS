@@ -15,6 +15,8 @@ uniform float size = 10.;
 uniform vec3 gravity = vec3( 0., -98., 0. );
 uniform vec3 cameraPosition;
 
+uniform float speed = 10.;
+
 varying vec3 ecPosition3;
 varying vec3 eye;
 varying vec4 color;
@@ -31,18 +33,44 @@ float PI = 3.14159265359;
 float HALF_PI = 1.57079632679;
 
 
+	
+float CubicIn( float k ) {
+	return k * k * k;
+}
+	
+float CubicOut( float k ) {
+	return --k * k * k + 1;
+}
+
+
+	
+float QuarticIn(float k) {
+	return k * k * k * k;
+}
+	
+float QuarticOut(float k) {
+	return 1 - ( --k * k * k * k );
+}
+	
+float QuinticIn ( float k ) {
+	return k * k * k * k * k;
+}
+	
+float QuinticOut (float k ) {
+	return --k * k * k * k * k + 1;
+}
+
 void main(){
 	
 	//life and death
 	float birthTime = gl_Color.r;
-	float lifeSpan = gl_Color.g;
+	float lifeSpan = gl_Color.g / speed;
 
-	float ageSec = (time - birthTime);
-	age = min( 1., ageSec / lifeSpan );
+	age = min( 1., (time - birthTime) / lifeSpan );
 	
 	//velocity
 	vec3 vel = gl_Normal.xyz;
-	float ma = sin( age * age * HALF_PI );
+	float ma = QuarticOut( age );
 	vec3 posOffset = vel * ma;
 	posOffset += gravity * ma;
 	

@@ -20,19 +20,19 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = false; // true if using a clips drive
+    storyEngine.combinedClipsOnly = true; // true if using a clips drive
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
-    withVideo = false; // draw video?
+    withVideo = true; // draw video?
     
     sound.setup(storyEngine);
     
 	parser.printDichotomyRatios();
 	
-	//websockets.setup();
-	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	
+	receiver.setup( 12345 );
 }
 
 //--------------------------------------------------------------
@@ -101,6 +101,18 @@ void testApp::update(){
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
+	
+	while(receiver.hasWaitingMessages()){
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+		if(m.getAddress() == "/startMusic"){
+			//sound.startMusic();
+			cout << "STARTING MUSIC" << endl;
+		}
+		else if(m.getAddress() == "/stopMusic"){
+			//sound.stopMusic();
+		}
+	}
 
 }
 
