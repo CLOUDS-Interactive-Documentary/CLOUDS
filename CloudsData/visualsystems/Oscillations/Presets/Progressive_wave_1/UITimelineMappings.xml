@@ -1,0 +1,23 @@
+<Map>
+    <Bangs></Bangs>
+    <Switches></Switches>
+    <SliderCurves>
+        <Mapping>
+            <Widget>
+                <WidgetName>FOV</WidgetName>
+                <WidgetID>7</WidgetID>
+                <WidgetCanvasParent>CamSettings</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+        <Mapping>
+            <Widget>
+                <WidgetName>CurveProgress</WidgetName>
+                <WidgetID>4</WidgetID>
+                <WidgetCanvasParent>Custom</WidgetCanvasParent>
+            </Widget>
+            <Track></Track>
+        </Mapping>
+    </SliderCurves>
+    <NumberDialerCurves></NumberDialerCurves>
+</Map>

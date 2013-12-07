@@ -7,75 +7,129 @@ void testApp::setup(){
 	ofSetFrameRate(60);
 	ofBackground(0);
 	ofToggleFullscreen();
-
+    ofEnableSmoothing();
+	
+	currentAct = NULL;
+	rebuildAct = false;
+	
 	parser.loadFromFiles();
 	
-//	parser.setup(CloudsVisualSystem::getDataPath() + "fcpxml/");
-//  parser.parseLinks(CloudsVisualSystem::getDataPath() + "links/clouds_link_db.xml");
-//  parser.parseClusterMap(CloudsVisualSystem::getDataPath() + "gephi/CLOUDS_test_5_26_13.SVG");
-    
-	if(!ofFile::doesFileExist(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt")){
-		ofSystemAlertDialog("Could not find movie file path. Create a file called CloudsMovieDirectory.txt that contains one line, the path to your movies folder");
-	}
-	parser.setCombinedVideoDirectory(ofBufferFromFile(CloudsVisualSystem::getDataPath() + "CloudsMovieDirectory.txt").getText());
-	
-	//visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();
 	
-	storyEngine.setup();
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-	storyEngine.maxTimesOnTopic = 4;
-//	storyEngine.combinedClipsOnly = true;
-	storyEngine.printDecisions = true;
+	storyEngine.setup();
+	storyEngine.printDecisions = false;
+	storyEngine.toggleGuis();
 	
-	player.simplePlaybackMode = true;
-	player.setup(storyEngine);
-//	sound.setup(storyEngine);
+	parser.printDichotomyRatios();
 	
-	float randomClip = ofRandom(parser.getAllClips().size() );
-	CloudsClip& clip = parser.getRandomClip(false,false);
+	websockets.setup();
 	
-	ofLogNotice() << clip.getLinkName() << " Started with question " << clip.getStartingQuestion() << endl;
-	
-	storyEngine.seedWithClip( clip );
+	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
 }
 
 //--------------------------------------------------------------
+void testApp::actCreated(CloudsActEventArgs& args){
+	
+	if(currentAct != NULL){
+		currentAct->unregisterEvents(this);
+		currentAct->unregisterEvents(&websockets);
+		delete currentAct;
+	}
+
+	
+	currentAct = args.act;
+	currentAct->registerEvents(this);
+	currentAct->registerEvents(&websockets);
+	
+	currentAct->play();
+    currentAct->getTimeline().enableEvents();
+}
+
+//--------------------------------------------------------------
+void testApp::actBegan(CloudsActEventArgs& args){
+//	cout << "act began" << endl;
+}
+
+//--------------------------------------------------------------
+void testApp::actEnded(CloudsActEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::clipBegan(CloudsClipEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemBegan(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::visualSystemEnded(CloudsVisualSystemEventArgs& args){
+	
+}
+
+//--------------------------------------------------------------
+void testApp::topicChanged(CloudsTopicEventArgs& newTopic){
+	
+}
+
+void testApp::questionAsked(CloudsQuestionEventArgs& args){
+    
+}
+
+void testApp::preRollRequested(CloudsPreRollEventArgs& clip){
+    
+}
+//--------------------------------------------------------------
 void testApp::update(){
-//	sound.update();
-	ofShowCursor();
+//	ofShowCursor();
+	//keepin it real
+	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    if(currentAct != NULL){
+		currentAct->drawDebug();
+	}
+}
 
-//	cout << "APP DRAW" << endl;
-	
-//	sound.drawDebug();
-	
-	//storyEngine.drawStoryEngineDebug();
-	
+//--------------------------------------------------------------
+void testApp::exit(){
+    storyEngine.saveGuiSettings();
+}
+
+//--------------------------------------------------------------
+void testApp::guiEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+    ofxUIButton* b = (ofxUIButton*) e.widget;
+    if(name == "BUILD ACT" &&  b->getValue() ){
+        rebuildAct = true;
+    }
 
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	if(key == '1'){
-		storyEngine.seedWithClip( parser.getClipWithLinkName("Paola - the tribe") );		
+    
+    if(key == 'h'){
+        storyEngine.toggleGuis();
+    }
+    else if(key =='f'){
+        ofToggleFullscreen();
+    }
+	if(key == 't'){
+		storyEngine.positionGuis();
 	}
-}
-
-//--------------------------------------------------------------
-void testApp::audioRequested(float * output, int bufferSize, int nChannels) {
-	
-	ofAudioEventArgs args;
-	args.buffer = output;
-	args.bufferSize = bufferSize;
-	args.nChannels = nChannels;
-	
-	ofNotifyEvent(ofEvents().audioRequested, args, this);
+	if(key == 'S'){
+		storyEngine.saveGuiSettings();
+	}
 }
 
 //--------------------------------------------------------------

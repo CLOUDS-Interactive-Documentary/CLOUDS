@@ -1,0 +1,72 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Settings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>UPDATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Spin Speed</Name>
+    <Value>0.325122833</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dot Size</Name>
+    <Value>1.620689631</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Nucleus Size</Name>
+    <Value>0.221674874</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Axon Thickness</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Sway</Name>
+    <Value>1.921182275</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Nodes</Name>
+    <Value>71921.179687500</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Seed Count</Name>
+    <Value>8.719211578</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dance Amplitude</Name>
+    <Value>1.083743811</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dance Frequency</Name>
+    <Value>0.088669948</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Dance Offset</Name>
+    <Value>0.007389163</Value>
+</Widget>

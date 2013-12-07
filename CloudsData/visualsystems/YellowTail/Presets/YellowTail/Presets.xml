@@ -1,0 +1,12 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Presets</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>289.000000000</XPosition>
+    <YPosition>97.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>YellowTail</Name>
+    <Value>1</Value>
+</Widget>

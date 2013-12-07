@@ -1,0 +1,17 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>VideoSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>637.000061035</XPosition>
+    <YPosition>165.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>12</Kind>
+    <Name>VideoPath</Name>
+    <Value>ITP_1.mp4</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Point Offset</Name>
+    <Value>-1064.040039062</Value>
+</Widget>

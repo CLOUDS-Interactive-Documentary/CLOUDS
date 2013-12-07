@@ -23,7 +23,7 @@
     IBOutlet NSTextField* revokedKeywords;
     IBOutlet NSTextField* sharedKeywords;
     
-    IBOutlet NSTextField* startQuestion;
+//    IBOutlet NSTextField* startQuestion;
     IBOutlet NSButton* showOnlyQuestions;
     
     vector<CloudsClip> selectedClips;
@@ -64,6 +64,7 @@
 - (CloudsLink&) selectedLink;
 - (CloudsLink&) selectedSuppression;
 - (CloudsClip&) selectedMeta;
+- (void) selectClip:(CloudsClip&) clip;
 
 - (IBAction) playDoubleClickedRow:(id)sender;
 - (IBAction) setQuestionText:(id)sender;
@@ -79,7 +80,7 @@
 - (IBAction) showQuestionsChanged:(id)sender;
 
 - (BOOL) tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 
 - (BOOL) hasKeyword:(NSString*) keyword;

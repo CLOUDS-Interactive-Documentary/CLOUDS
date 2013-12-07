@@ -1,0 +1,117 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>scl1</Name>
+    <Value>0.068965517</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>scl2</Name>
+    <Value>0.206896558</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Wireframe</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Smoothing</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>depth test</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>threshold</Name>
+    <Value>0.635468006</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>speed</Name>
+    <Value>-10.935960770</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c1</Name>
+    <XValue>0.515625000</XValue>
+    <YValue>0.476562500</YValue>
+    <RColor>25</RColor>
+    <GColor>0</GColor>
+    <BColor>28</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>alpha1</Name>
+    <Value>0.911330044</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>c2</Name>
+    <XValue>0.468750000</XValue>
+    <YValue>0.484375000</YValue>
+    <RColor>2</RColor>
+    <GColor>22</GColor>
+    <BColor>38</BColor>
+    <AColor>255</AColor>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>alpha2</Name>
+    <Value>0.216748774</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>mixScale</Name>
+    <Value>1.054187179</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>depthAlphaScl</Name>
+    <Value>1.569458127</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>depthAlphaExpo</Name>
+    <Value>9.305418968</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>alpha</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>add</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>sub</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>mult</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>screen</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>disable</Name>
+    <Value>0</Value>
+</Widget>

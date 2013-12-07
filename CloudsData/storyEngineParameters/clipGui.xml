@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>0.000000000</XPosition>
+    <YPosition>0.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX TIMES ON TOPIC</Name>
+    <Value>6.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOPICS IN COMMON CURRENT MULTIPLIER</Name>
+    <Value>21.428571701</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOPICS IN COMMON PREVIOUS MULTIPLIER</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>DO NOT DIGRESS COUNT</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAME PERSON SUPPRESSION FACTOR</Name>
+    <Value>8.817733765</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINK FACTOR</Name>
+    <Value>20.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DICHOTOMY WEIGHT</Name>
+    <Value>16.748767853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GENDER BALANCE</Name>
+    <Value>5.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>DISTANT CLIP SUPRRESSION</Name>
+    <Value>60.591133118</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GOLD CLIP FACTOR</Name>
+    <Value>20.640394211</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>EASY CLIP FACTOR</Name>
+    <Value>39.261085510</Value>
+</Widget>

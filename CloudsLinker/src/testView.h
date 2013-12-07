@@ -5,7 +5,7 @@
 #include "ofMain.h"
 #include "ofxCocoaGLView.h"
 #include "CloudsFCPParser.h"
-#include "CloudsD3Exporter.h"
+#include "CloudsExporter.h"
 #include "ClipSelector.h"
 
 //@class ViewerApp;
@@ -15,8 +15,8 @@
     IBOutlet ClipSelector* linkerB;
     
     CloudsFCPParser parser;
+
 	ofVideoPlayer preview;
-	CloudsD3Exporter exporter;
     
     vector<string> selectedKeywordsSource;
     vector<string> selectedKeywordsTarget;
@@ -45,8 +45,7 @@
 
 - (void) updateViews;
 
-- (IBAction) setXMLFolder:(id)sender;
-- (IBAction) refreshXML:(id)sender;
+
 - (IBAction) saveLinks:(id)sender;
 
 - (IBAction) togglePlay:(id)sender;
@@ -59,6 +58,8 @@
 
 - (void) linkClip:(CloudsClip) source toClip:(CloudsClip) target;
 - (void) suppressLink:(CloudsClip)source toClip:(CloudsClip) target;
+
+- (void) selectClip:(CloudsClip)clip inAlternateTable:(id)sender;
 
 - (void)keyPressed:(int)key;
 - (void)keyReleased:(int)key;

@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SEARCH_TERM_LIST</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TYPE SPEED</Name>
+    <Value>38.551723480</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLEAR SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST HUE</Name>
+    <Value>109.285713196</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST SAT</Name>
+    <Value>138.177337646</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST BRI</Name>
+    <Value>111.798027039</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST ALPHA</Name>
+    <Value>178.374389648</Value>
+</Widget>

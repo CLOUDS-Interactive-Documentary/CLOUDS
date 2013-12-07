@@ -1,0 +1,142 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Audio</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>215.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>PEAK HOLD TIME</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PEAK DECAY RATE</Name>
+    <Value>0.246305421</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S0</Name>
+    <Value>5.905745983</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S1</Name>
+    <Value>10.476096153</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S2</Name>
+    <Value>14.801481247</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S3</Name>
+    <Value>21.856674194</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S4</Name>
+    <Value>19.742994308</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S5</Name>
+    <Value>12.078061104</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S6</Name>
+    <Value>5.816588879</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S7</Name>
+    <Value>5.096790791</Value>
+</Widget>
+<Widget>
+    <Kind>5</Kind>
+    <Name>S8</Name>
+    <Value>30.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T0</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T1</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T3</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T4</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T5</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T6</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T7</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>T8</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COMBINED PEAK</Name>
+    <Value>7.541008472</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FUR PEAK SCALAR</Name>
+    <Value>0.108374387</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SCROLL SPEED</Name>
+    <Value>0.026108375</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL OFFSET</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL SCALE</Name>
+    <Value>1.970443249</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL DECAY RATE</Name>
+    <Value>0.970000029</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>INVERT LEVEL</Name>
+    <Value>1</Value>
+</Widget>

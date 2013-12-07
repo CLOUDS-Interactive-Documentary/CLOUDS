@@ -2,16 +2,21 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsEvents.h"
+#include "ofxUI.h"
 
+#include "CloudsEvents.h"
+#include "CloudsGlobal.h"
 #include "CloudsFCPParser.h"
 #include "CloudsVisualSystemManager.h"
+#include "CloudsRun.h"
+#include "CloudsDichotomy.h"
 
 /**
  * The Clouds story engine generates sequences of clips
  * based on the keyword connectivity and rules.
  * It has state history for each story sequence
  */
+class CloudsAct;
 class CloudsStoryEngine {
   public:
 	CloudsStoryEngine();
@@ -21,91 +26,108 @@ class CloudsStoryEngine {
 	CloudsVisualSystemManager* visualSystems;
 	
 	void setup();
-
-	void seedWithClip(CloudsClip& seed);
-	void seedWithClip(CloudsClip& seed, string topic);
-	bool playNextClip(); //you can use this to skip if it's waiting
-	bool clipEnded(); //call this when the clip is done!
 	
-	void update(ofEventArgs& args);
+	//will send this act instead of generating one when buildAct is called
+	void setCustomAct(CloudsAct* customAct);
 	
-	CloudsClip& getCurrentClip();
-	vector<CloudsClip>& getClipHistory();
-	string getCurrentTopic();
-	float getTotalSecondsWatched();
-
-	bool historyContainsClip(CloudsClip& m);
-	//after this many times the topic becomes available again
-	int topicTimeoutPeriod;
-	int getTimesOnTopic();
+	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed);
+	CloudsAct* buildAct(CloudsRun run, CloudsClip& seed, string topic);
 	
-	//after this many clips the topic opens up again
-	int maxTimesOnTopic;
+    void initGui();
+    void saveGuiSettings();
+    void toggleGuis(bool actOnly = false);
+	void positionGuis();
+    void updateRunData();
+	
+    //after this many clips the topic opens up again
+	float maxTimesOnTopic;
 	bool printDecisions;
 	bool printCriticalDecisions;
 	bool atDeadEnd();
-	
+
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
-	bool isWaiting();
-	
 	CloudsEvents& getEvents();
 	
-	//TODO: make dynamic, will be improved
-	float fixedClipDelay;
+    void updateDichotomies(CloudsClip& clip);
+	void clearDichotomiesBalance();
+
+    vector<CloudsDichotomy> getCurrentDichotomyBalance();
+    
+    //this is a test
+    CloudsRun runTest;
+
+ protected:
 	
-	void drawStoryEngineDebug();
-	void drawActDebug();
-	
-  protected:
-	
+	ofxUISuperCanvas *actGui;
+    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
+    ofxUISuperCanvas *vsGui;
+	ofxUISuperCanvas *topicGui;
+	ofxUISuperCanvas *runGui;
+    void guiEvent(ofxUIEventArgs &e);
+
 	CloudsEvents events;
 	bool isSetup;
+	CloudsAct* customAct;
 	
-	bool hasclip;
-	CloudsClip currentClip;
-	int totalFramesWatched;
+    vector<string> runTopicCount;
+	vector<CloudsDichotomy> dichotomies;
+    int dichotomyThreshold;
+	string selectTopic(CloudsAct* act, CloudsClip& clip, vector<string>& topicHistory, string topic, string& log);
+    float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip,
+					   string topic,string& log,
+					   int currentRun,
+					   bool visualSystemRunning,
+					   bool isPresetIndefinite,
+					   int moreManThanWomen,
+					   int timesOnCurrentTopic,
+					   int numTopicHistoryOccurrences); //queue based
 	
-	float totalPoints;
-	int nextClipTopScore;
-	vector<CloudsClip> validNextClips;
-	vector<CloudsClip> allNextClips;
-	
-	void buildQueue(CloudsClip seed, float seconds);
-	string selectTopic(CloudsClip& clip, vector<string>& topicHistory, string topic);
-	
-	
-	bool populateNextClips();
-	void checkVisualSystems();
-	
-	float getNextClipDelay();
-	bool waitingForNextClip;
-	float nextClipTime;
-	
-	bool watchingVisualSystem;
-	float visualSystemEndTime;
-	CloudsVisualSystemPreset currentVisualSystem;
-	
-	vector<CloudsClip> clipHistory;
-	vector<CloudsClip> clipQueue;
-	
-	vector<string> topicHistory;
-	map<string, int> peopleVisited;
-	
-	string currentTopic;
-	int timesOnTopic; //how many times have we heard about this specific topic
-	bool freeTopic; //means the topic is up for grabs on the next traverse
-	
-	float scoreForClip(CloudsClip& clip);
-	float scoreForClip(vector<CloudsClip>& history, CloudsClip& clip, string topic); //queue based
-	float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic);
-	
-	
-	void loadClip(CloudsClip& clip);
-	void chooseNewTopic(CloudsClip& clip);
+    float scoreForTopic(vector<string>& topicHistory, vector<CloudsClip>& history, string currentTopic, string newTopic, string& log);
+	float scoreForVisualSystem(CloudsVisualSystemPreset& preset, CloudsClip& clip,vector<string>& presetHistory, string currentTopic, vector<string>& seconardyTopics, string& log);
 	
 	bool historyContainsClip(CloudsClip& m, vector<CloudsClip>& history);
-	int occurrencesOfPerson(string person, int stepsBack);
 	int occurrencesOfPerson(string person, int stepsBack, vector<CloudsClip>& history);
+    CloudsVisualSystemPreset getVisualSystemPreset(string keyword, CloudsClip& currentClip, vector<string>& presetHistory, string& log);
+
+	
+    //Act Builder Parameters
+    float actLength;
+    float maxTimeWithoutQuestion;
+    float gapLengthMultiplier;
+    float minClipDurationForStartingOffset;
+    float preRollDuration;
+	
+    //VS Story Engine Parameters
+	float visualSystemPrimaryTopicBoost;
+	float visualSystemSecondaryTopicBoost;
+    float systemMaxRunTime;
+    float maxVisualSystemGapTime;
+    float longClipThreshold;
+    float longClipFadeInPercent;
+	float getHandleForClip(CloudsClip& clip);
+    float cadenceForTopicChangeMultiplier;
+    
+    //Story engine decision making parameters
+    float topicsInCommonMultiplier;
+    float topicsinCommonWithPreviousMultiplier;
+    float samePersonOccurrenceSuppressionFactor;
+    float dichotomyWeight;
+    float linkFactor;
+	float genderBalanceFactor;
+    float goldClipFactor;
+    float easyClipScoreFactor;
+	float offTopicFactor;//deprecated
+	int digressionDenialCount;
+	int numTopicHistoryOccurrences;
+	float distantClipSuppressionFactor;
+
+
+	//Topic selection parameters
+	float topicRelevancyMultiplier;
+	float lastClipSharesTopicBoost;
+	float twoClipsAgoSharesTopicBoost;
+	
 };

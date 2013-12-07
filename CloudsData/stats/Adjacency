@@ -1,0 +1,7322 @@
+keyword 3d
+	realworld 0.478701
+	hallucination 0.507414
+	electronic music 0.57058
+	paola antonelli 0.585601
+	data collection 0.591034
+	sensor 0.602068
+	ubiquitous computing 0.611002
+	object recognition 0.619678
+	rhetoric 0.65236
+	street art 0.68788
+keyword 3d printing
+	why 0.00350028
+	frustration 0.0135207
+	legos 0.0150277
+	gui 0.0166928
+	keyboard 0.0166928
+	inversion 0.0166928
+	mouse 0.0166928
+	think different 0.0166928
+	fluency 0.0170037
+	collaboration with machines 0.0211223
+keyword DNA
+	art and science 0.0498842
+	song: fourtet peace for earth 0.0528617
+	universe 0.0730622
+	messiness 0.0763112
+	order 0.0763112
+	parameters 0.0767781
+	synthetic biology 0.0907817
+	tron 0.11425
+	nature of code 0.116981
+	nature 0.120681
+keyword abstraction
+	why? 0.00233805
+	real and virtual 0.0148421
+	authorship 0.0157454
+	useful 0.0197069
+	boring 0.0219091
+	public 0.0261092
+	research 0.0275416
+	arabic 0.0293728
+	machine aesthetics 0.0300905
+	food 0.0310682
+keyword accessibility
+	github 0.0178848
+	creative coding 0.0221147
+	hacker 0.026149
+	addiction 0.0373546
+	creative control 0.0383895
+	collaboration 0.0436439
+	knowledge 0.0457445
+	image 0.046959
+	noninteractivity 0.046959
+	crowdsourcing 0.0472102
+keyword acu
+	eyeo 0.02737
+	prank 0.0358306
+	flash 0.0420718
+	advertising 0.0436516
+	hackathon 0.0444744
+	brogrammers 0.0501552
+	snarky 0.0504058
+	money 0.0512399
+	forums 0.0517026
+	doing with others 0.0653628
+keyword addiction
+	image 0.026485
+	noninteractivity 0.026485
+	art and tech 0.03589
+	everyday 0.036429
+	accessibility 0.0373546
+	tools 0.040462
+	business 0.0420315
+	crowdsourcing 0.0496425
+	tree 0.0499481
+	insight 0.0501172
+keyword advertising
+	eyeo 0.0175941
+	acu 0.0436516
+	forums 0.0457581
+	money 0.0601266
+	prank 0.0633837
+	thanks 0.0664569
+	kill the master 0.0721968
+	brogrammers 0.0780857
+	guru 0.0786603
+	flash 0.079004
+keyword aesthetic experience
+	digital meets physical 0.00473384
+	time 0.00977446
+	physicality 0.0100119
+	code 0.0209801
+	virtuosity 0.0239236
+	fluency 0.0255916
+	choices 0.0261451
+	frustration 0.0291406
+	useless 0.0321224
+	beauty 0.0349519
+keyword aesthetics
+	food 0.00534672
+	poetry 0.0094067
+	feeling 0.00958442
+	boring 0.0119123
+	videogames 0.0132575
+	subversion 0.0163367
+	images 0.0167453
+	pleasure 0.0167453
+	language 0.0189139
+	malevich 0.0199156
+keyword aesthetics and computation
+	media lab 0.00188823
+	life 0.0178326
+	synergy 0.0222817
+	passion 0.0241726
+	working with others 0.0288421
+	teaching 0.0358162
+	john maeda 0.0435728
+	commercial art 0.0528129
+	hackathon 0.0584054
+	interdisciplinary 0.0643083
+keyword afterlife
+	transience 0.0158971
+	apocalypse 0.0228868
+	lifetracking 0.0242248
+	death 0.0274138
+	memory 0.0427298
+	quantified self 0.047097
+	old history 0.0488084
+	awkward 0.0611239
+	archiving 0.0635203
+	personal data 0.0656096
+keyword algorithm
+	uncanny 0.0119026
+	evolution 0.0191788
+	representation 0.0195595
+	science 0.0208957
+	computation 0.0221797
+	efficiency 0.0340248
+	motion 0.0374766
+	geometry 0.0383839
+	particles 0.0383839
+	things breaking 0.0390665
+keyword algorithms
+	truth 0.006126
+	gesture recognition 0.0108763
+	bots 0.0147708
+	kinect 0.0174532
+	reading 0.0230098
+	new aesthetic 0.0270892
+	subjectivity 0.0293275
+	cities 0.0318068
+	datatelling 0.0333345
+	man vs machine 0.0361143
+keyword alone together
+	internet 0.00787947
+	humanity 0.00835747
+	man versus machine 0.00905415
+	the cloud 0.0128696
+	network 0.0156362
+	critical engineering 0.0210985
+	mobile 0.0223857
+	ignorance 0.0225059
+	google 0.0225946
+	transparency 0.0249003
+keyword ambiguity
+	installation 0.0111552
+	architecture 0.0194862
+	3d printing 0.0242924
+	why 0.0248444
+	frustration 0.0265915
+	sculpture 0.0270103
+	fluency 0.029046
+	collaboration with machines 0.0293663
+	light 0.030316
+	code 0.0315023
+keyword animation
+	influence 0.135143
+	memes 0.173155
+	frontier 0.178693
+	paul rand 0.179395
+	bravado 0.179395
+	apporopriation 0.180395
+	mentorship 0.191068
+	fate 0.199525
+	ars electronica 0.200489
+	passing the baton 0.202982
+keyword anonymous
+	creative exploration 0.0287056
+	corporate 0.0318358
+	cultural value 0.0361453
+	dialogue 0.0409856
+	digital divide 0.0411509
+	net.art 0.041969
+	coding for humanity 0.0464716
+	collective intelligence 0.0480893
+	innovation 0.057252
+	wikipedia 0.0611519
+keyword anthropology
+	paul burke 0.00539795
+	generations 0.00563694
+	mentors 0.012805
+	heroes 0.0284439
+	robert hodgin 0.0335271
+	guru 0.0358416
+	mentorship 0.043401
+	ars electronica 0.0437997
+	give everything away 0.0448247
+	passing the baton 0.0470573
+keyword antihuman
+	digital 0
+	visual thinking 0.00225036
+	limitations 0.0112843
+	perception 0.0134966
+	glitch 0.0153338
+	chaos 0.0165215
+	understanding 0.0186879
+	motivation 0.0295587
+	uture 0.0305878
+	things breaking 0.0349828
+keyword apocalypse
+	lifetracking 0.00526898
+	afterlife 0.0228868
+	memory 0.0248464
+	quantified self 0.0256373
+	transience 0.0363276
+	personal data 0.0440968
+	travel 0.044796
+	death 0.0469876
+	survival 0.0621863
+	philsophy 0.0646139
+keyword apple
+	human life 0.0140143
+	documentation 0.0140143
+	existence 0.0149945
+	philsophy 0.02482
+	survival 0.0255368
+	maps 0.0291873
+	gps 0.0398448
+	privacy 0.0410407
+	location 0.0425096
+	personal data 0.0442134
+keyword apporopriation
+	frontier 0.0106965
+	memes 0.0194121
+	originality 0.0334537
+	influence 0.0458509
+	ars electronica 0.060312
+	shifts 0.0608512
+	veterans 0.0608512
+	paul rand 0.0630861
+	bravado 0.0630861
+	homogeneity 0.0657921
+keyword apps
+	dreams 0.0104226
+	users 0.0163373
+	information 0.0171611
+	control 0.0203065
+	science fiction 0.0208132
+	writing 0.0208237
+	intelligence 0.0248051
+	singularity 0.0280965
+	subjectivity 0.0283782
+	consciousness 0.0291952
+keyword arabic
+	research 0.00687424
+	public 0.0077125
+	cognition 0.0152002
+	real and virtual 0.0175743
+	fantasy 0.0199154
+	mind 0.0201571
+	machine aesthetics 0.0202508
+	operating systems 0.0219861
+	storytelling 0.023024
+	useful 0.0265625
+keyword architecture
+	choices 0.0149053
+	code 0.018335
+	ambiguity 0.0194862
+	fluency 0.0237283
+	frustration 0.0237529
+	design 0.0274087
+	why 0.0293743
+	installation 0.0299354
+	3d printing 0.0311704
+	beauty 0.0322113
+keyword archiving
+	death 0.0381404
+	assistive technology 0.048078
+	eyebeam 0.048157
+	relationships 0.0493676
+	identity 0.0504084
+	organizations 0.0506148
+	design fiction 0.0520489
+	preservation 0.0554261
+	afterlife 0.0635203
+	transience 0.06827
+keyword ars electronica
+	give everything away 0.0230877
+	paul rand 0.0233111
+	bravado 0.0233111
+	generations 0.0390949
+	paul burke 0.0425978
+	anthropology 0.0437997
+	mentors 0.0449941
+	mentorship 0.0529331
+	apporopriation 0.060312
+	originality 0.0635465
+keyword art
+	completion 0.00949805
+	infinite game 0.00949805
+	tradition 0.0140756
+	zen 0.0158066
+	useless 0.0160402
+	spiritual 0.0163002
+	failure 0.0165853
+	interactivity 0.0199327
+	visual cortex 0.0279841
+	energy 0.0294289
+keyword art and code
+	performance 0.0143716
+	beginnings 0.0205397
+	branching 0.0351324
+	demo 0.0359157
+	creative coders 0.0426679
+	knowledge 0.0480196
+	struggle 0.0480372
+	learning 0.0482196
+	creative control 0.0554497
+	fun 0.0580173
+keyword art and experience
+	art vs engineering 0.00605196
+	slow 0.0169453
+	gesture 0.0172105
+	mastery 0.0200287
+	synesthesia 0.0221209
+	journey 0.0231955
+	mutlisensory 0.02369
+	sketching 0.025932
+	feedback 0.0293466
+	the digital divide 0.0313818
+keyword art and science
+	song: fourtet peace for earth 0.00620041
+	universe 0.0233271
+	synthetic biology 0.0409209
+	DNA 0.0498842
+	messiness 0.0563001
+	order 0.0563001
+	parameters 0.0635455
+	nature 0.0707972
+	nature of code 0.0727931
+	cellular automata 0.0866662
+keyword art and security
+	open paths 0.0169129
+	policy 0.0209308
+	gadgets 0.0242456
+	facebook 0.0251485
+	gadget 0.0278033
+	teleportation 0.0340822
+	love 0.0383354
+	self 0.0389356
+	nano 0.0394899
+	security 0.0460744
+keyword art and tech
+	everyday 0.00476472
+	tools 0.0104012
+	crowdsourcing 0.0222346
+	addiction 0.03589
+	demo scene 0.0425474
+	funny 0.0429046
+	responsibility 0.0438078
+	tree 0.0440078
+	hacker 0.0471472
+	evaluation 0.0502026
+keyword art history
+	the future 0.00506638
+	project examples 0.0120841
+	empathy 0.0191331
+	creative misuse 0.0193008
+	virus 0.0223428
+	focus 0.0235462
+	distraction 0.0250476
+	criticality 0.0256803
+	openness 0.025892
+	social engagment 0.0263636
+keyword art vs engineering
+	art and experience 0.00605196
+	slow 0.0119602
+	synesthesia 0.0161103
+	mastery 0.0173053
+	journey 0.017827
+	gesture 0.0209264
+	mutlisensory 0.0215266
+	feedback 0.0234199
+	drawing 0.0281021
+	tangibility 0.0306488
+keyword art world
+	popular culture 0.00790974
+	zach lieberman 0.0182156
+	responsibility 0.0197592
+	fat 0.022118
+	hacker 0.0343057
+	crowdsourcing 0.0410175
+	education 0.0414818
+	collaboration 0.0421812
+	demo scene 0.0447005
+	github 0.0453498
+keyword artificial intelligence
+	philosophy 0.00738598
+	error 0.00909297
+	hope 0.0142739
+	coevolution 0.0169554
+	tragedy 0.0177415
+	virtual reality 0.0186336
+	cinema 0.0204226
+	understanding 0.0281121
+	networks 0.0340338
+	perception 0.0349218
+keyword artificial life
+	physics 0.00901816
+	nature of code 0.0180307
+	multiverse 0.0198694
+	rules 0.0243869
+	emergence 0.0250015
+	cosmogeny 0.0265744
+	cellular automata 0.0273052
+	simulation 0.0303442
+	biology 0.0334017
+	creation 0.0388769
+keyword artificiality
+	recursion 0.00707668
+	meta 0.00707668
+	bugs 0.0155391
+	debugging 0.0162872
+	realness 0.0180073
+	questions 0.0198813
+	reality 0.0230271
+	future of cinema 0.02337
+	dysfunction 0.0292778
+	rendering 0.0311228
+keyword assistive technology
+	relationships 0.00729074
+	twitter 0.0353911
+	design fiction 0.0377523
+	identity 0.0412047
+	social media 0.0423298
+	archiving 0.048078
+	hack 0.0483434
+	organizations 0.0535291
+	self 0.0544293
+	gadget 0.0568674
+keyword atmosphere
+	gestalt 0.0160276
+	perspective 0.029897
+	flow 0.052809
+	zoom 0.0582
+	pattern 0.0625748
+	invisibility 0.0738045
+	phenomena 0.0812512
+	microscope 0.0836234
+	complexity 0.0855417
+	scale 0.0900261
+keyword attention
+	program or be programmed 0.00412116
+	literacy 0.00610497
+	mirror 0.00702616
+	progress 0.0128224
+	serious 0.0151426
+	audience 0.0158488
+	fluxus 0.0254999
+	distraction 0.0258443
+	focus 0.0275713
+	sadness 0.0279411
+keyword audience
+	progress 0.00736964
+	literacy 0.0105843
+	focus 0.0134982
+	distraction 0.0136671
+	program or be programmed 0.013905
+	attention 0.0158488
+	virus 0.0176092
+	mirror 0.0221547
+	project examples 0.0251077
+	serious 0.0286578
+keyword audiovisualization
+	liveness 0.00512949
+	children 0.0128106
+	instrument 0.0154125
+	multimedia 0.0170343
+	gratitude 0.0316952
+	being 0.0316952
+	play 0.0332379
+	techno 0.0346667
+	subliminal 0.0346667
+	struggle 0.0399232
+keyword augmented reality
+	limits of the computer 0.00456825
+	engineering 0.0147329
+	invention 0.0226287
+	critique 0.0227303
+	operating systems 0.0244708
+	fantasy 0.0250123
+	weird 0.0292578
+	challenges 0.0335919
+	sentiment analysis 0.0341323
+	interconnectedness 0.0352532
+keyword authorship
+	why? 0.0134103
+	real and virtual 0.0147006
+	abstraction 0.0157454
+	machine aesthetics 0.0219701
+	public 0.0255293
+	virtual 0.0265243
+	research 0.0270064
+	arabic 0.0320305
+	useful 0.0339787
+	c++ 0.0354679
+keyword avatar
+	julian oliver 0.00607238
+	future 0.0126186
+	network security 0.0140009
+	video art 0.0150118
+	teleportation 0.0223302
+	futurism 0.0245767
+	gadgets 0.0260914
+	trendspotting 0.0263399
+	solutions 0.0298972
+	nano 0.0310577
+keyword awkward
+	old history 0.0186207
+	transience 0.0454425
+	afterlife 0.0611239
+	death 0.0677931
+	apocalypse 0.0778714
+	lifetracking 0.0816993
+	preservation 0.0823816
+	digital art 0.086286
+	archiving 0.101349
+	memory 0.101975
+keyword balance
+	laughter 0.0164868
+	humanism 0.0170451
+	what does post-digital mean? 0.0220721
+	gift 0.0254318
+	expression 0.0265246
+	design and art 0.0266795
+	beautiful exhuberance 0.0376334
+	culture 0.0394478
+	collective intelligence 0.039475
+	fluxus 0.0409314
+keyword beautiful exhuberance
+	expression 0.0111447
+	gift 0.0148275
+	tree 0.0192735
+	laughter 0.0219074
+	meaning 0.0226702
+	evaluation 0.026684
+	funny 0.0267664
+	why are you attracted to abstraction?
+abstraction 0.0276233
+	insight 0.0282001
+	what does post-digital mean? 0.0332636
+keyword beauty
+	images 0.00639552
+	pleasure 0.00639552
+	design 0.0103269
+	videogames 0.0118344
+	subversion 0.0133247
+	poetry 0.0133515
+	food 0.0209592
+	choices 0.0210941
+	aesthetics 0.0226053
+	c++ 0.0280333
+keyword beginnings
+	branching 0.0152012
+	art and code 0.0205397
+	performance 0.021254
+	learning 0.0280694
+	fun 0.0396074
+	creativity 0.0449424
+	struggle 0.0453593
+	demo 0.0454849
+	creative coders 0.0509186
+	instrument 0.0515798
+keyword behavior
+	carl sims 0.0140908
+	interesting 0.0169815
+	birth 0.0169815
+	mysticism 0.020208
+	math 0.0209687
+	book 0.0217999
+	motion 0.0256906
+	games 0.0266444
+	geometry 0.0275371
+	particles 0.0275371
+keyword being
+	gratitude 0
+	project example 0.0164491
+	illusion 0.0164491
+	how did you get into working with code? 0.0212998
+	graphic design 0.0212998
+	children 0.0247088
+	what comes after digital? 0.0312737
+	audiovisualization 0.0316952
+	liveness 0.0341049
+	making things 0.0372457
+keyword big data
+	ubiquity 0.0310257
+	data mining 0.0325498
+	sex and tech 0.0412661
+	data 0.0424451
+	statistics 0.0480286
+	face tracking 0.0501411
+	sensors 0.0514484
+	stock market 0.0555975
+	military technology 0.0566504
+	cameras 0.0569465
+keyword biology
+	dna 0.00845464
+	physics 0.0248332
+	multiverse 0.0252093
+	nature 0.0324502
+	artificial life 0.0334017
+	biology and code 0.0338754
+	nature of code 0.0361602
+	creation 0.0386027
+	infinity 0.0388759
+	rules 0.0390012
+keyword biology and code
+	dna 0.0272449
+	nature 0.0283277
+	biology 0.0338754
+	visual effects 0.0387991
+	scale 0.042438
+	metaphor 0.0452901
+	genetics 0.0529466
+	physics 0.0571498
+	synthetic biology 0.0578566
+	multiverse 0.05858
+keyword birth
+	interesting 0
+	book 0.0120493
+	games 0.0169804
+	behavior 0.0169815
+	carl sims 0.0259618
+	elegance 0.0282238
+	motion 0.0286823
+	systems 0.0301647
+	geometry 0.0323194
+	particles 0.0323194
+keyword book
+	interesting 0.0120493
+	birth 0.0120493
+	motion 0.0197735
+	computation 0.0216663
+	behavior 0.0217999
+	carl sims 0.0237378
+	geometry 0.0238977
+	particles 0.0238977
+	representation 0.0257729
+	elegance 0.0279777
+keyword boring
+	food 0.0104379
+	aesthetics 0.0119123
+	feeling 0.0140663
+	poetry 0.0183825
+	language 0.0217533
+	abstraction 0.0219091
+	useful 0.022779
+	why? 0.0239605
+	videogames 0.0243592
+	images 0.0248195
+keyword bots
+	algorithms 0.0147708
+	cities 0.0179053
+	truth 0.0204069
+	man vs machine 0.021447
+	subjectivity 0.0232385
+	new aesthetic 0.0236434
+	gesture recognition 0.0239149
+	consciousness 0.0271732
+	information 0.0297629
+	internet of things 0.0298395
+keyword branching
+	beginnings 0.0152012
+	learning 0.0181541
+	fun 0.032972
+	art and code 0.0351324
+	performance 0.0359812
+	techno 0.0365886
+	subliminal 0.0365886
+	instrument 0.0375769
+	creativity 0.0388119
+	struggle 0.0436512
+keyword bravado
+	paul rand 0
+	ars electronica 0.0233111
+	mentorship 0.0413379
+	give everything away 0.0463925
+	mentors 0.0485497
+	paul burke 0.0498819
+	generations 0.0504473
+	anthropology 0.0533153
+	passing the baton 0.060257
+	apporopriation 0.0630861
+keyword brogrammers
+	flash 0.0191671
+	doing with others 0.020074
+	snarky 0.0201904
+	ego 0.0300409
+	generosity 0.0374342
+	the gift 0.0374342
+	esoteric 0.0452717
+	counterculture 0.0452717
+	guru 0.045979
+	robert hodgin 0.0461255
+keyword bugs
+	debugging 0.00827386
+	artificiality 0.0155391
+	reality 0.016236
+	questions 0.0168279
+	recursion 0.0196043
+	meta 0.0196043
+	realness 0.0212902
+	god mode 0.029989
+	rendering 0.0334135
+	evolution 0.0346363
+keyword business
+	noninteractivity 0.0223881
+	image 0.0223881
+	music 0.0397146
+	addiction 0.0420315
+	insight 0.0424004
+	why are you attracted to abstraction?
+abstraction 0.0483051
+	kids 0.0484345
+	growth 0.0485058
+	post-digital 0.0493262
+	meaning 0.0497296
+keyword c++
+	operating system 0
+	design 0.0188889
+	images 0.0246742
+	pleasure 0.0246742
+	food 0.0249929
+	poetry 0.0259426
+	boring 0.0274285
+	beauty 0.0280333
+	aesthetics 0.0303272
+	abstraction 0.0319185
+keyword camera
+	nytimes 0.0128436
+	legibility 0.0435577
+	street art 0.0437543
+	cameras 0.0447607
+	statistics 0.0449731
+	machine vision 0.0462322
+	face tracking 0.0570727
+	politics 0.0579763
+	stock market 0.0587681
+	data visualization 0.0647936
+keyword cameras
+	face tracking 0.012924
+	street art 0.0419371
+	camera 0.0447607
+	statistics 0.0515239
+	machine vision 0.0548277
+	nytimes 0.0558802
+	big data 0.0569465
+	stock market 0.0699103
+	ubiquity 0.0778433
+	politics 0.0791401
+keyword career
+	processing 0.0151742
+	software 0.0195226
+	commercialism 0.0203768
+	toolkit 0.0211599
+	nerd 0.0344338
+	hybridity 0.0440511
+	design by numbers 0.0447277
+	teaching 0.0524418
+	international 0.0601585
+	open frameworks 0.0612132
+keyword carl sims
+	behavior 0.0140908
+	motion 0.0154889
+	geometry 0.0155966
+	particles 0.0155966
+	book 0.0237378
+	math 0.0246617
+	stress 0.0258969
+	challenge 0.0258969
+	birth 0.0259618
+	interesting 0.0259618
+keyword cellular automata
+	emergence 0.0131635
+	cosmogeny 0.0147358
+	syntax 0.0175578
+	what do you find beautiful about code? 0.0175578
+	ocd 0.0175578
+	tron 0.027243
+	artificial life 0.0273052
+	nature of code 0.0286778
+	physics 0.0349661
+	equilibrium 0.0426984
+keyword challenge
+	stress 0
+	story 0.0156605
+	presentation 0.0226582
+	carl sims 0.0258969
+	geometry 0.027183
+	particles 0.027183
+	chrome 0.0291218
+	motion 0.0308738
+	virtual 0.0345371
+	math 0.0352376
+keyword challenges
+	sentiment analysis 0.00747754
+	clouds 0.00987333
+	storytelling 0.0169495
+	inexactitude 0.0170585
+	operating systems 0.0176155
+	social dynamics 0.0204183
+	mind 0.0213109
+	change 0.0327376
+	cognition 0.0331248
+	fantasy 0.0332912
+keyword chance
+	god 0.018144
+	probability 0.021328
+	flocking 0.0246881
+	random 0.0284274
+	number 0.0284274
+	gardening 0.0300372
+	organic 0.0307496
+	code is messy 0.0370107
+	possibility 0.0424612
+	foraging 0.0477571
+keyword change
+	symbiosis 0.00632619
+	social dynamics 0.0124084
+	text 0.0125309
+	imaginary 0.0132815
+	immersion 0.0180082
+	narrative 0.0216224
+	clouds 0.0229346
+	interfaces 0.0232903
+	sentiment analysis 0.0285679
+	inexactitude 0.0316803
+keyword chaos
+	limitations 0.0052953
+	visual thinking 0.0142722
+	motivation 0.0160815
+	antihuman 0.0165215
+	digital 0.0165215
+	uture 0.0165655
+	things breaking 0.0191326
+	perception 0.019539
+	god mode 0.0242351
+	efficiency 0.0251715
+keyword children
+	audiovisualization 0.0128106
+	liveness 0.0177304
+	multimedia 0.0189413
+	gratitude 0.0247088
+	being 0.0247088
+	instrument 0.0276959
+	success 0.03401
+	illusion 0.0377908
+	project example 0.0377908
+	golan levin 0.0402711
+keyword choices
+	code 0.0111728
+	architecture 0.0149053
+	design 0.0210802
+	beauty 0.0210941
+	fluency 0.022415
+	frustration 0.0245845
+	aesthetic experience 0.0261451
+	images 0.0268506
+	pleasure 0.0268506
+	physicality 0.0274031
+keyword choosing
+	generative process 0
+	working iteratively generatively in a process that can go on forever? 0
+	code is messy 0.0290233
+	randomness 0.0290955
+	random 0.0308953
+	number 0.0308953
+	noise 0.0389938
+	equilibrium 0.0437556
+	gardening 0.0541796
+	possibility 0.0546145
+keyword chrome
+	presentation 0.00712302
+	thinking 0.00936975
+	imagination 0.0202961
+	challenge 0.0291218
+	stress 0.0291218
+	virtual 0.0326054
+	discovery 0.035936
+	authorship 0.0380122
+	story 0.039121
+	computer 0.0413644
+keyword cinema
+	virtual reality 0.00629709
+	philosophy 0.0180172
+	coevolution 0.0200587
+	artificial intelligence 0.0204226
+	future of cinema 0.0212221
+	narrative 0.025188
+	immersion 0.0258885
+	error 0.0294789
+	imaginary 0.0303963
+	meta 0.0339076
+keyword cities
+	man vs machine 0.00702208
+	internet of things 0.0173026
+	things 0.0173026
+	bots 0.0179053
+	consciousness 0.0189745
+	networks 0.0191848
+	new aesthetic 0.0234096
+	control 0.0289453
+	information 0.0304035
+	algorithms 0.0318068
+keyword clock
+	epiphany 0.00480672
+	iteration 0.00981238
+	design process 0.0114477
+	form 0.0233216
+	wonder 0.0245419
+	light 0.029961
+	influences 0.0303552
+	intuition 0.0310107
+	minecraft 0.0374726
+	computer 0.0389048
+keyword clouds
+	sentiment analysis 0.00696811
+	challenges 0.00987333
+	social dynamics 0.0105621
+	inexactitude 0.0176777
+	storytelling 0.022759
+	change 0.0229346
+	mind 0.0272179
+	operating systems 0.0274821
+	symbiosis 0.0288638
+	narrative 0.0289062
+keyword code
+	choices 0.0111728
+	fluency 0.0117289
+	frustration 0.0144969
+	architecture 0.018335
+	physicality 0.0185211
+	aesthetic experience 0.0209801
+	why 0.0243872
+	digital meets physical 0.0257097
+	3d printing 0.0276319
+	time 0.0286987
+keyword code is messy
+	random 0.0124943
+	number 0.0124943
+	choosing 0.0290233
+	working iteratively generatively in a process that can go on forever? 0.0290233
+	generative process 0.0290233
+	organic 0.0319811
+	god 0.0342537
+	equilibrium 0.0360787
+	chance 0.0370107
+	what do you find beautiful about code? 0.0436838
+keyword coding
+	sketching 0.0108827
+	thinking through code 0.0177774
+	gesture 0.0220962
+	struggle with technology 0.0228393
+	improvization 0.031853
+	programming 0.0354756
+	art and experience 0.0357523
+	thinking with code 0.0362854
+	painting 0.0373613
+	tangibility 0.0390606
+keyword coding for humanity
+	corporate 0.0148126
+	creative exploration 0.0178007
+	collective intelligence 0.0183418
+	cultural value 0.0197094
+	culture 0.025137
+	empathy 0.0316913
+	the future 0.0349435
+	hackers 0.0380663
+	art history 0.0399565
+	project examples 0.0423607
+keyword coevolution
+	philosophy 0.00959099
+	artificial intelligence 0.0169554
+	networks 0.0180201
+	tragedy 0.0188935
+	cinema 0.0200587
+	error 0.0231044
+	virtual reality 0.0233668
+	hope 0.0234891
+	immersion 0.0248435
+	imaginary 0.0291204
+keyword cognition
+	mind 0.0122276
+	research 0.0127689
+	public 0.0140459
+	arabic 0.0152002
+	machine aesthetics 0.0163177
+	storytelling 0.0167011
+	inexactitude 0.0247202
+	real and virtual 0.0254497
+	dysfunction 0.0257462
+	operating systems 0.0284397
+keyword collaboration
+	gender 0.00573235
+	education 0.0269597
+	github 0.0270018
+	humor 0.0292473
+	hacker 0.0316046
+	economics 0.035765
+	creative coding 0.0369151
+	art world 0.0421812
+	accessibility 0.0436439
+	popular culture 0.0438543
+keyword collaboration with machines
+	exploration 0.0174417
+	3d printing 0.0211223
+	why 0.0246123
+	gui 0.0258523
+	mouse 0.0258523
+	think different 0.0258523
+	inversion 0.0258523
+	keyboard 0.0258523
+	installation 0.0276914
+	legos 0.0289636
+keyword collective intelligence
+	cultural value 0.0119844
+	culture 0.0158864
+	coding for humanity 0.0183418
+	corporate 0.0207121
+	creative exploration 0.0234795
+	fluxus 0.0352173
+	empathy 0.0352819
+	balance 0.039475
+	humanism 0.0410286
+	virus 0.0449177
+keyword commercial art
+	money 0.0377442
+	synergy 0.0386401
+	prank 0.0443554
+	media lab 0.0509381
+	passion 0.0517483
+	aesthetics and computation 0.0528129
+	hackathon 0.0621446
+	life 0.0630513
+	concept 0.0671482
+	maker 0.0671482
+keyword commercialism
+	career 0.0203768
+	nerd 0.0264192
+	toolkit 0.0314208
+	processing 0.0342355
+	software 0.0398609
+	open frameworks 0.0496665
+	open source 0.05499
+	international 0.0565949
+	teaching 0.0567467
+	esoteric 0.061472
+keyword communication
+	infrastructure 0.00205596
+	consumer 0.0060873
+	globalization 0.00610103
+	live 0.00744669
+	society 0.0132749
+	intelligence 0.0155589
+	iphone 0.0159333
+	noosphere 0.0192797
+	dreams 0.0286998
+	users 0.0328236
+keyword community
+	visual culture 0.0320022
+	popular culture 0.040913
+	art world 0.0485322
+	zach lieberman 0.049013
+	toolkits 0.0491777
+	fat 0.0506043
+	sharing 0.0519809
+	economics 0.0534949
+	ideas 0.0539563
+	education 0.0542714
+keyword completion
+	infinite game 0
+	art 0.00949805
+	failure 0.0181717
+	spiritual 0.0215081
+	tradition 0.0224513
+	zen 0.0242932
+	useless 0.0254211
+	interactivity 0.0270367
+	energy 0.032448
+	growth 0.0327783
+keyword complexity
+	vision 0.00974898
+	curiosity 0.0282559
+	invisibility 0.0451985
+	simplicity 0.0531568
+	glitch 0.054732
+	pattern 0.0614217
+	visual thinking 0.0645966
+	antihuman 0.0646517
+	digital 0.0646517
+	visualization 0.0656815
+keyword computation
+	representation 0.0103423
+	science 0.0173768
+	evolution 0.0212565
+	book 0.0216663
+	algorithm 0.0221797
+	motion 0.0232622
+	particles 0.0263055
+	geometry 0.0263055
+	uncanny 0.0281678
+	birth 0.0334478
+keyword computational power
+	technological progress 0.00469025
+	openness 0.00757919
+	creative misuse 0.0136994
+	social engagment 0.0139789
+	criticality 0.0187834
+	information overload 0.0196892
+	open software 0.0204207
+	project examples 0.0318075
+	focus 0.0324298
+	art history 0.0328707
+keyword computer
+	sculpture 0.0196931
+	light 0.0211159
+	discovery 0.0229294
+	imagination 0.0238553
+	thinking 0.03233
+	form 0.0323955
+	iteration 0.03372
+	installation 0.0382583
+	clock 0.0389048
+	chrome 0.0413644
+keyword concept
+	maker 0
+	thinkerer 0
+	passion 0.0622531
+	commercial art 0.0671482
+	media lab 0.0828575
+	aesthetics and computation 0.0841536
+	synergy 0.0882791
+	john maeda 0.09362
+	working with others 0.0992118
+	money 0.10092
+keyword confusion
+	simplicity 0.0137687
+	prediction 0.0190668
+	debug screen 0.0199995
+	revelation 0.0230603
+	visualization 0.0284124
+	curiosity 0.0467546
+	glitch 0.0509973
+	vision 0.0572449
+	data visualization 0.0601746
+	reading 0.0618851
+keyword connections
+	teams 0.0247527
+	partnership 0.0247527
+	interdisciplinary 0.0506535
+	john maeda 0.0546611
+	mortality 0.0645721
+	success 0.0671942
+	working with others 0.0755011
+	golan levin 0.0755406
+	passion 0.0853085
+	struggle 0.0882768
+keyword connectivity
+	performance art 0.0071371
+	the present 0.00763411
+	telepathy 0.0131911
+	social 0.0190974
+	transparency 0.0195239
+	people 0.0210673
+	man versus machine 0.0236602
+	internet 0.0260576
+	technoptimism 0.0271744
+	present shock 0.0290273
+keyword consciousness
+	internet of things 0.00681245
+	things 0.00681245
+	control 0.00999722
+	man vs machine 0.0123825
+	information 0.0152148
+	cities 0.0189745
+	interfaces 0.0247635
+	subjectivity 0.0269191
+	bots 0.0271732
+	apps 0.0291952
+keyword constraints
+	work 0.0727584
+	tweaking 0.112716
+	playfulness 0.127094
+	what comes after digital? 0.13529
+	touch 0.135987
+	thinking by doing 0.139369
+	sound 0.144924
+	graphic design 0.145244
+	how did you get into working with code? 0.145244
+	project example 0.150716
+keyword consumer
+	infrastructure 0.0043203
+	communication 0.0060873
+	society 0.00736652
+	live 0.00811828
+	iphone 0.0103838
+	globalization 0.011876
+	intelligence 0.0206442
+	noosphere 0.0232463
+	mobile 0.0310208
+	r&d 0.032313
+keyword control
+	consciousness 0.00999722
+	information 0.0115958
+	internet of things 0.0146171
+	things 0.0146171
+	apps 0.0203065
+	man vs machine 0.0223669
+	interfaces 0.0235302
+	dreams 0.0259661
+	subjectivity 0.0275382
+	cities 0.0289453
+keyword conviction
+	sadness 0.00723519
+	self reflection 0.00723519
+	digital natives 0.00723519
+	interconnectedness 0.0154888
+	embodiment 0.0160543
+	serious 0.017614
+	experience design 0.0203912
+	digital culture 0.0231307
+	mirror 0.023801
+	own the tool 0.0241862
+keyword corporate
+	creative exploration 0.00325017
+	cultural value 0.0126744
+	coding for humanity 0.0148126
+	collective intelligence 0.0207121
+	anonymous 0.0318358
+	culture 0.0342447
+	empathy 0.0459943
+	hackers 0.0468343
+	the future 0.0495662
+	dialogue 0.0514996
+keyword cosmogeny
+	emergence 0.00206876
+	cellular automata 0.0147358
+	syntax 0.022229
+	what do you find beautiful about code? 0.022229
+	ocd 0.022229
+	artificial life 0.0265744
+	organic 0.0302376
+	rules 0.0347659
+	physics 0.0355687
+	tron 0.0358897
+keyword counterculture
+	esoteric 0
+	tribe 0.0138538
+	generosity 0.0342111
+	the gift 0.0342111
+	snarky 0.0371368
+	open frameworks 0.0372566
+	sharing 0.0398213
+	ego 0.040962
+	brogrammers 0.0452717
+	flash 0.0454575
+keyword creation
+	simulation 0.0135415
+	infinity 0.0144919
+	rules 0.0177875
+	multiverse 0.0203929
+	physics 0.0382931
+	biology 0.0386027
+	artificial life 0.0388769
+	elegance 0.0391067
+	logic 0.0408276
+	dna 0.0412855
+keyword creative coders
+	demo 0.00696111
+	knowledge 0.0090569
+	creative control 0.0147005
+	performance 0.0308845
+	creative coding 0.037616
+	art and code 0.0426679
+	beginnings 0.0509186
+	accessibility 0.052461
+	music 0.0541518
+	image 0.0587747
+keyword creative coding
+	accessibility 0.0221147
+	creative control 0.023092
+	github 0.024411
+	knowledge 0.0291021
+	collaboration 0.0369151
+	creative coders 0.037616
+	hacker 0.0380019
+	gender 0.0389525
+	demo 0.0420865
+	addiction 0.0568436
+keyword creative control
+	knowledge 0.00745664
+	creative coders 0.0147005
+	demo 0.0201001
+	creative coding 0.023092
+	accessibility 0.0383895
+	performance 0.0449091
+	github 0.0468595
+	image 0.0539373
+	noninteractivity 0.0539373
+	art and code 0.0554497
+keyword creative exploration
+	corporate 0.00325017
+	cultural value 0.014319
+	coding for humanity 0.0178007
+	collective intelligence 0.0234795
+	anonymous 0.0287056
+	culture 0.0373807
+	hackers 0.0479633
+	empathy 0.0491656
+	dialogue 0.0503472
+	the future 0.0523153
+keyword creative misuse
+	openness 0.00767372
+	social engagment 0.0105437
+	criticality 0.0133285
+	computational power 0.0136994
+	technological progress 0.0176268
+	open software 0.0190561
+	art history 0.0193008
+	information overload 0.0204453
+	project examples 0.020646
+	the future 0.024367
+keyword creativity
+	fun 0.00585294
+	learning 0.0212179
+	journey 0.0373841
+	mutlisensory 0.0386502
+	branching 0.0388119
+	kids 0.0392843
+	tangibility 0.0399186
+	the digital divide 0.0399186
+	slow 0.0427546
+	subliminal 0.0446349
+keyword critical engineering
+	the cloud 0.00859562
+	google 0.00943024
+	transparency 0.0129537
+	technoptimism 0.0147326
+	internet 0.0154846
+	ignorance 0.0161463
+	network 0.0175519
+	alone together 0.0210985
+	man versus machine 0.0216052
+	mobile 0.0222661
+keyword criticality
+	social engagment 0.00480581
+	open software 0.0067528
+	information overload 0.00930868
+	creative misuse 0.0133285
+	openness 0.0178764
+	computational power 0.0187834
+	technological progress 0.0198812
+	art history 0.0256803
+	the future 0.0301773
+	project examples 0.0317525
+keyword critique
+	interconnectedness 0.0129109
+	engineering 0.0147587
+	limits of the computer 0.0188514
+	invention 0.021254
+	augmented reality 0.0227303
+	experience design 0.025511
+	conviction 0.0273178
+	weird 0.028086
+	serious 0.0285783
+	technology 0.0289175
+keyword crowdsourcing
+	everyday 0.0179282
+	responsibility 0.0215746
+	art and tech 0.0222346
+	demo scene 0.0292498
+	tools 0.0305715
+	hacker 0.0324034
+	zach lieberman 0.0389481
+	fat 0.0389615
+	art world 0.0410175
+	tech-demo 0.0410969
+keyword cultural value
+	collective intelligence 0.0119844
+	corporate 0.0126744
+	creative exploration 0.014319
+	coding for humanity 0.0197094
+	culture 0.0278078
+	anonymous 0.0361453
+	dialogue 0.043792
+	balance 0.0449182
+	empathy 0.0452805
+	fluxus 0.0471762
+keyword culture
+	collective intelligence 0.0158864
+	fluxus 0.0199654
+	empathy 0.0230951
+	coding for humanity 0.025137
+	cultural value 0.0278078
+	virus 0.0305816
+	distraction 0.0332727
+	humanism 0.0341824
+	corporate 0.0342447
+	project examples 0.0358975
+keyword curation
+	homogeneity 0.0278532
+	shifts 0.0459049
+	veterans 0.0459049
+	ideas 0.059475
+	youtube 0.0618015
+	originality 0.0658947
+	visual culture 0.0684915
+	techpositive 0.0760476
+	new media 0.0792459
+	frontier 0.0909384
+keyword curiosity
+	vision 0.0199219
+	glitch 0.0279246
+	complexity 0.0282559
+	simplicity 0.0349769
+	visualization 0.0382706
+	digital 0.040581
+	antihuman 0.040581
+	visual thinking 0.0411913
+	limitations 0.0455552
+	confusion 0.0467546
+keyword cyberpunk
+	internet culture 0.0105449
+	datatelling 0.0159726
+	journalism 0.0259326
+	singularity 0.0337087
+	kinect 0.0349793
+	fantasy technology 0.0356091
+	gesture recognition 0.0360071
+	subjectivity 0.0397895
+	sex 0.0403856
+	truth 0.0410852
+keyword cyborg
+	power 0.00207745
+	fantasy technology 0.0101959
+	writing 0.0131501
+	singularity 0.01699
+	science fiction 0.0185597
+	users 0.0243897
+	trendspotting 0.0268283
+	solutions 0.0293261
+	futurism 0.0306346
+	journalism 0.0312469
+keyword darpa
+	drones 0
+	public/private 0.0158416
+	trace of your life 0.0266981
+	data ownership 0.0335755
+	gps 0.036921
+	military technology 0.0396733
+	location 0.0550555
+	surveillance 0.0624208
+	privacy 0.0665975
+	maps 0.0689689
+keyword data
+	ubiquity 0.0118572
+	sex and tech 0.0217449
+	sex 0.0244163
+	data mining 0.0292372
+	stock market 0.0355981
+	internet culture 0.0378847
+	big data 0.0424451
+	statistics 0.0445155
+	sensors 0.0452
+	microsoft 0.0474508
+keyword data collection
+	sensor 0.0208584
+	ubiquitous computing 0.0285489
+	object recognition 0.0343694
+	rhetoric 0.0746561
+	street art 0.0973703
+	machine vision 0.0976987
+	cameras 0.12301
+	face tracking 0.124902
+	hallucination 0.134411
+	camera 0.141116
+keyword data mining
+	sex and tech 0.0121986
+	ubiquity 0.0209571
+	sensors 0.021091
+	data 0.0292372
+	sex 0.0311057
+	big data 0.0325498
+	security 0.0340246
+	love 0.0407551
+	surveillance 0.0412919
+	wearables 0.0527445
+keyword data ownership
+	gps 0.0105921
+	location 0.022264
+	privacy 0.0335444
+	drones 0.0335755
+	darpa 0.0335755
+	maps 0.0354775
+	public/private 0.0464949
+	apple 0.0478094
+	trace of your life 0.0549847
+	documentation 0.0587837
+keyword data visualization
+	library 0.0082598
+	politics 0.0241974
+	microsoft 0.0246445
+	stock market 0.0406504
+	statistics 0.0510909
+	kinect 0.0521986
+	prediction 0.0556611
+	legibility 0.0565142
+	reading 0.058316
+	gesture recognition 0.0595454
+keyword datatelling
+	cyberpunk 0.0159726
+	subjectivity 0.0239678
+	singularity 0.0250326
+	gesture recognition 0.0261396
+	internet culture 0.0263298
+	kinect 0.0285431
+	truth 0.0304005
+	fantasy technology 0.0330881
+	algorithms 0.0333345
+	journalism 0.0338246
+keyword death
+	afterlife 0.0274138
+	transience 0.0301469
+	archiving 0.0381404
+	lifetracking 0.0459461
+	apocalypse 0.0469876
+	old history 0.0503894
+	memory 0.0582364
+	preservation 0.0598135
+	quantified self 0.0662198
+	awkward 0.0677931
+keyword debug screen
+	revelation 0.00367888
+	confusion 0.0199995
+	simplicity 0.02062
+	prediction 0.0385307
+	visualization 0.0472104
+	curiosity 0.0536937
+	vision 0.0573679
+	legibility 0.0589959
+	microscope 0.0642361
+	data visualization 0.0646311
+keyword debugging
+	bugs 0.00827386
+	artificiality 0.0162872
+	meta 0.0171757
+	recursion 0.0171757
+	god mode 0.0218817
+	reality 0.0244673
+	questions 0.0246046
+	realness 0.0278379
+	uture 0.029996
+	motivation 0.0301206
+keyword demo
+	creative coders 0.00696111
+	knowledge 0.0130627
+	creative control 0.0201001
+	performance 0.0248096
+	art and code 0.0359157
+	creative coding 0.0420865
+	beginnings 0.0454849
+	music 0.0579168
+	accessibility 0.0584381
+	branching 0.0592805
+keyword demo scene
+	tech-demo 0.0131471
+	style 0.0137077
+	fat 0.0276132
+	crowdsourcing 0.0292498
+	responsibility 0.0298954
+	zach lieberman 0.0305505
+	everyday 0.0405742
+	art and tech 0.0425474
+	art world 0.0447005
+	tools 0.0448214
+keyword design
+	beauty 0.0103269
+	images 0.0106324
+	pleasure 0.0106324
+	poetry 0.0167945
+	c++ 0.0188889
+	operating system 0.0188889
+	videogames 0.019426
+	choices 0.0210802
+	food 0.0219636
+	subversion 0.0222874
+keyword design and art
+	what does post-digital mean? 0.00463807
+	self expression 0.0178116
+	laughter 0.0202747
+	humanism 0.0262606
+	balance 0.0266795
+	expression 0.0269907
+	gift 0.0328942
+	digital culture 0.0336719
+	beautiful exhuberance 0.0346934
+	own the tool 0.0382107
+keyword design by numbers
+	hybridity 0.00461415
+	software 0.0279184
+	processing 0.0301556
+	mortality 0.0443567
+	career 0.0447277
+	toolkit 0.0527327
+	teaching 0.0561782
+	interdisciplinary 0.0604906
+	commercialism 0.0643846
+	art and code 0.0649122
+keyword design fiction
+	identity 0.00502567
+	organizations 0.0192481
+	hack 0.0205713
+	real world 0.0291996
+	relationships 0.0311348
+	toys 0.0360781
+	assistive technology 0.0377523
+	people 0.0388751
+	present shock 0.0434989
+	social media 0.0504703
+keyword design process
+	epiphany 0.0105736
+	clock 0.0114477
+	iteration 0.0209339
+	influences 0.0242052
+	intuition 0.0255311
+	form 0.0263655
+	wonder 0.0274921
+	minecraft 0.0298771
+	surprise 0.0305094
+	product 0.0357988
+keyword devices
+	hacking 0.00832968
+	technoptimism 0.0167646
+	social media 0.0218762
+	transparency 0.0257646
+	critical engineering 0.0306892
+	future 0.033818
+	people 0.0359369
+	google 0.0371097
+	connectivity 0.0371964
+	the cloud 0.0388632
+keyword dialogue
+	digital divide 0.0077454
+	net.art 0.0122623
+	evaluation 0.0301024
+	funny 0.0359836
+	anonymous 0.0409856
+	gift 0.0432553
+	cultural value 0.043792
+	tree 0.0489193
+	balance 0.0500596
+	creative exploration 0.0503472
+keyword dichotomy
+	taste 0.00939543
+	experience 0.0148537
+	infinite conversation 0.0153426
+	staring at screens 0.0164128
+	seamlessness 0.0176965
+	malevich 0.0235767
+	own the tool 0.0266405
+	projection 0.0279043
+	language 0.0295944
+	experience design 0.0313261
+keyword digital
+	antihuman 0
+	visual thinking 0.00225036
+	limitations 0.0112843
+	perception 0.0134966
+	glitch 0.0153338
+	chaos 0.0165215
+	understanding 0.0186879
+	motivation 0.0295587
+	uture 0.0305878
+	things breaking 0.0349828
+keyword digital art
+	preservation 0.0249252
+	problem of newness 0.0255238
+	obsolescence 0.0497319
+	eyewriter 0.059944
+	prosthetic 0.0685108
+	old history 0.074199
+	eyebeam 0.0758967
+	old media 0.0762909
+	archiving 0.0803259
+	death 0.0814385
+keyword digital culture
+	embodiment 0.00804265
+	own the tool 0.010083
+	sadness 0.0176357
+	digital natives 0.0176357
+	self reflection 0.0176357
+	seamlessness 0.0192669
+	staring at screens 0.0213564
+	experience 0.0223154
+	conviction 0.0231307
+	design and art 0.0336719
+keyword digital divide
+	net.art 0.00451716
+	dialogue 0.0077454
+	evaluation 0.0335532
+	funny 0.0381098
+	anonymous 0.0411509
+	gift 0.049172
+	cultural value 0.0496681
+	tree 0.0514299
+	tools 0.0525377
+	media 0.0532586
+keyword digital meets physical
+	aesthetic experience 0.00473384
+	time 0.00707105
+	physicality 0.0130772
+	virtuosity 0.0240293
+	code 0.0257097
+	useless 0.0274749
+	fluency 0.0299707
+	zen 0.030375
+	choices 0.0304365
+	tradition 0.0321049
+keyword digital natives
+	self reflection 0
+	sadness 0
+	conviction 0.00723519
+	embodiment 0.0121622
+	digital culture 0.0176357
+	serious 0.0178041
+	own the tool 0.0213571
+	mirror 0.0215617
+	interconnectedness 0.0215863
+	experience design 0.0264734
+keyword discovery
+	sculpture 0.0117109
+	imagination 0.0165222
+	computer 0.0229294
+	thinking 0.0273226
+	light 0.0308021
+	c++ 0.0343161
+	operating system 0.0343161
+	architecture 0.035065
+	ambiguity 0.0352164
+	installation 0.0352179
+keyword distraction
+	virus 0.00396412
+	focus 0.00419147
+	project examples 0.0129913
+	progress 0.0130235
+	audience 0.0136671
+	empathy 0.0157977
+	literacy 0.0224971
+	fluxus 0.0247746
+	art history 0.0250476
+	program or be programmed 0.0255755
+keyword diy
+	technology 0.00809697
+	emotion 0.00908164
+	opacity 0.00944297
+	english 0.0112564
+	weird 0.0139276
+	utopia 0.0159492
+	r&d 0.0191296
+	problem solving 0.0216309
+	twitter videogames 0.0228128
+	critique 0.0370133
+keyword dna
+	biology 0.00845464
+	biology and code 0.0272449
+	multiverse 0.031427
+	nature 0.0326929
+	physics 0.0332424
+	infinity 0.0384828
+	creation 0.0412855
+	artificial life 0.0416968
+	visual effects 0.0419151
+	nature of code 0.044306
+keyword documentation
+	human life 0
+	existence 0.00707684
+	philsophy 0.0112804
+	survival 0.011527
+	apple 0.0140143
+	maps 0.0321349
+	personal data 0.0321501
+	self 0.0411631
+	privacy 0.0440671
+	quantified self 0.0480565
+keyword does coding enable you to take risks because there's no physical consequence?
+	parameter space 0.0499233
+	generative 0.057309
+	motivational 0.0638445
+	noise 0.0820339
+	generative art 0.0874013
+	randomness 0.0893951
+	skill 0.0906513
+	possibility 0.091549
+	jewelry 0.0928019
+	foraging 0.0934289
+keyword doing with others
+	ego 0.0170459
+	brogrammers 0.020074
+	generosity 0.0279364
+	the gift 0.0279364
+	robert hodgin 0.0289465
+	heroes 0.0296165
+	guru 0.029665
+	snarky 0.0387659
+	flash 0.0391705
+	thanks 0.0442082
+keyword drawing
+	feedback 0.00537749
+	synesthesia 0.0126836
+	journey 0.0217437
+	mastery 0.0224186
+	play 0.0243646
+	slow 0.0246487
+	techno 0.0267626
+	subliminal 0.0267626
+	mind and hand 0.0274955
+	art vs engineering 0.0281021
+keyword dreams
+	apps 0.0104226
+	users 0.0128202
+	intelligence 0.0145245
+	science fiction 0.0191441
+	writing 0.0224707
+	globalization 0.0226154
+	control 0.0259661
+	information 0.0264528
+	communication 0.0286998
+	infrastructure 0.0307529
+keyword drones
+	darpa 0
+	public/private 0.0158416
+	trace of your life 0.0266981
+	data ownership 0.0335755
+	gps 0.036921
+	military technology 0.0396733
+	location 0.0550555
+	surveillance 0.0624208
+	privacy 0.0665975
+	maps 0.0689689
+keyword dysfunction
+	future of cinema 0.0195296
+	cognition 0.0257462
+	realness 0.0259989
+	rendering 0.0280852
+	artificiality 0.0292778
+	mind 0.0294419
+	machine aesthetics 0.0307676
+	inexactitude 0.0313614
+	meta 0.0318826
+	recursion 0.0318826
+keyword dystopia
+	wearables 0.00803243
+	nano 0.0123791
+	solutions 0.0204416
+	teleportation 0.0235293
+	futurism 0.0251283
+	journalism 0.0268855
+	love 0.0304402
+	gadgets 0.0309247
+	julian oliver 0.0369072
+	sex 0.0381478
+keyword economics
+	humor 0.00731613
+	education 0.00992459
+	international 0.0135715
+	open source 0.0220859
+	toolkits 0.0305377
+	gender 0.032823
+	collaboration 0.035765
+	open frameworks 0.037182
+	nerd 0.041992
+	popular culture 0.044993
+keyword education
+	humor 0.00737629
+	economics 0.00992459
+	international 0.0234016
+	gender 0.0249401
+	collaboration 0.0269597
+	open source 0.0319909
+	popular culture 0.0380718
+	toolkits 0.0397142
+	art world 0.0414818
+	open frameworks 0.0470932
+keyword efficiency
+	things breaking 0.012505
+	uture 0.019687
+	motivation 0.0210987
+	chaos 0.0251715
+	god mode 0.0268385
+	uncanny 0.0301878
+	limitations 0.0304667
+	algorithm 0.0340248
+	visual thinking 0.039379
+	debugging 0.0411851
+keyword ego
+	the gift 0.0111742
+	generosity 0.0111742
+	doing with others 0.0170459
+	brogrammers 0.0300409
+	heroes 0.0369519
+	robert hodgin 0.0388079
+	guru 0.0405578
+	counterculture 0.040962
+	esoteric 0.040962
+	snarky 0.0429023
+keyword electronic music
+	3d 0.57058
+	texting 0.61678
+	hallucination 0.619979
+	trace of your life 0.698181
+	travel 0.703755
+	privacy 0.706507
+	public/private 0.706908
+	location 0.707192
+	data ownership 0.714932
+	drones 0.716624
+keyword elegance
+	book 0.0279777
+	birth 0.0282238
+	interesting 0.0282238
+	infinity 0.0310703
+	systems 0.0314343
+	games 0.0314648
+	logic 0.0321656
+	computation 0.0342179
+	creation 0.0391067
+	world building 0.0411687
+keyword embodiment
+	digital culture 0.00804265
+	own the tool 0.00929068
+	self reflection 0.0121622
+	digital natives 0.0121622
+	sadness 0.0121622
+	conviction 0.0160543
+	seamlessness 0.0161488
+	staring at screens 0.017329
+	experience 0.0208589
+	experience design 0.0273076
+keyword emergence
+	cosmogeny 0.00206876
+	cellular automata 0.0131635
+	syntax 0.0223208
+	what do you find beautiful about code? 0.0223208
+	ocd 0.0223208
+	artificial life 0.0250015
+	organic 0.0322715
+	physics 0.0339581
+	nature of code 0.0342063
+	rules 0.0345906
+keyword emotion
+	technology 0.00597708
+	diy 0.00908164
+	weird 0.0153324
+	problem solving 0.017041
+	opacity 0.0175618
+	english 0.019398
+	utopia 0.0217028
+	r&d 0.0244023
+	twitter videogames 0.0294996
+	critique 0.0305366
+keyword empathy
+	virus 0.0118648
+	project examples 0.0129562
+	distraction 0.0157977
+	the future 0.0170823
+	focus 0.0179314
+	art history 0.0191331
+	culture 0.0230951
+	fluxus 0.0257385
+	progress 0.0266445
+	audience 0.0292735
+keyword energy
+	growth 0.00573833
+	visual cortex 0.00751067
+	spiritual 0.0136945
+	failure 0.0142968
+	post-digital 0.0154869
+	interactivity 0.0157482
+	tradition 0.0216008
+	zen 0.0217925
+	useless 0.0279329
+	art 0.0294289
+keyword engineering
+	invention 0.009435
+	limits of the computer 0.0102839
+	augmented reality 0.0147329
+	critique 0.0147587
+	experience design 0.0222306
+	projection 0.0241158
+	interconnectedness 0.0243153
+	fantasy 0.030364
+	conviction 0.0343314
+	weird 0.0357149
+keyword english
+	utopia 0.00786147
+	r&d 0.0109016
+	diy 0.0112564
+	opacity 0.0122981
+	technology 0.0193353
+	emotion 0.019398
+	weird 0.0232559
+	twitter videogames 0.0245445
+	problem solving 0.0254475
+	live 0.0303969
+keyword epiphany
+	clock 0.00480672
+	design process 0.0105736
+	iteration 0.0111113
+	wonder 0.0202842
+	form 0.0278756
+	influences 0.032692
+	minecraft 0.0332139
+	intuition 0.0336037
+	light 0.0347611
+	surprise 0.0406342
+keyword equilibrium
+	tron 0.0205343
+	ocd 0.0252438
+	syntax 0.0252438
+	what do you find beautiful about code? 0.0252438
+	code is messy 0.0360787
+	cellular automata 0.0426984
+	choosing 0.0437556
+	generative process 0.0437556
+	working iteratively generatively in a process that can go on forever? 0.0437556
+	cosmogeny 0.045486
+keyword error
+	hope 0.00713575
+	artificial intelligence 0.00909297
+	philosophy 0.0146608
+	tragedy 0.0147496
+	understanding 0.0228269
+	coevolution 0.0231044
+	virtual reality 0.0271938
+	cinema 0.0294789
+	perception 0.0301946
+	networks 0.0378868
+keyword esoteric
+	counterculture 0
+	tribe 0.0138538
+	generosity 0.0342111
+	the gift 0.0342111
+	snarky 0.0371368
+	open frameworks 0.0372566
+	sharing 0.0398213
+	ego 0.040962
+	brogrammers 0.0452717
+	flash 0.0454575
+keyword evaluation
+	funny 0.00819402
+	tree 0.019155
+	gift 0.0211714
+	beautiful exhuberance 0.026684
+	expression 0.0277753
+	dialogue 0.0301024
+	digital divide 0.0335532
+	laughter 0.0344589
+	net.art 0.0361394
+	tools 0.0399983
+keyword everyday
+	art and tech 0.00476472
+	tools 0.0149357
+	crowdsourcing 0.0179282
+	addiction 0.036429
+	responsibility 0.039434
+	demo scene 0.0405742
+	hacker 0.042557
+	accessibility 0.0475768
+	funny 0.0476374
+	tree 0.0486987
+keyword evolution
+	science 0.00513393
+	representation 0.0111879
+	algorithm 0.0191788
+	computation 0.0212565
+	particles 0.0213409
+	geometry 0.0213409
+	motion 0.0219056
+	uncanny 0.0309454
+	reality 0.0339419
+	bugs 0.0346363
+keyword existence
+	documentation 0.00707684
+	human life 0.00707684
+	philsophy 0.0115346
+	survival 0.0139501
+	apple 0.0149945
+	self 0.0343172
+	personal data 0.037315
+	maps 0.0383734
+	open paths 0.0423598
+	facebook 0.0480407
+keyword experience
+	seamlessness 0.0057758
+	staring at screens 0.00731103
+	own the tool 0.0124447
+	dichotomy 0.0148537
+	taste 0.018047
+	embodiment 0.0208589
+	digital culture 0.0223154
+	infinite conversation 0.0285678
+	experience design 0.0303986
+	self reflection 0.0319824
+keyword experience design
+	projection 0.0115037
+	invention 0.0157128
+	conviction 0.0203912
+	engineering 0.0222306
+	interconnectedness 0.0226945
+	staring at screens 0.0232106
+	critique 0.025511
+	seamlessness 0.0255963
+	sadness 0.0264734
+	digital natives 0.0264734
+keyword exploration
+	mouse 0.01562
+	think different 0.01562
+	gui 0.01562
+	inversion 0.01562
+	keyboard 0.01562
+	collaboration with machines 0.0174417
+	legos 0.0210463
+	programming 0.0211742
+	3d printing 0.0239638
+	why 0.0267318
+keyword expression
+	gift 0.00787657
+	laughter 0.0108875
+	beautiful exhuberance 0.0111447
+	what does post-digital mean? 0.0244981
+	balance 0.0265246
+	design and art 0.0269907
+	tree 0.0277387
+	evaluation 0.0277753
+	funny 0.0309581
+	meaning 0.0313984
+keyword eyebeam
+	organizations 0.0342844
+	information as weapon 0.0360075
+	obsolescence 0.044897
+	toys 0.0459493
+	identity 0.046894
+	archiving 0.048157
+	design fiction 0.0517763
+	nostalgia 0.0550623
+	old media 0.0570505
+	preservation 0.0582802
+keyword eyeo
+	advertising 0.0175941
+	acu 0.02737
+	forums 0.0379416
+	prank 0.0539051
+	money 0.0577781
+	thanks 0.0607986
+	flash 0.0614964
+	brogrammers 0.0617186
+	guru 0.0695429
+	snarky 0.0696906
+keyword eyewriter
+	prosthetic 0.0123545
+	problem of newness 0.0555616
+	digital art 0.059944
+	obsolescence 0.0673999
+	old media 0.0751719
+	preservation 0.0820915
+	novelty 0.0962969
+	eyebeam 0.111475
+	information as weapon 0.126229
+	old history 0.129569
+keyword face tracking
+	cameras 0.012924
+	big data 0.0501411
+	street art 0.0524464
+	statistics 0.056228
+	camera 0.0570727
+	machine vision 0.0659268
+	nytimes 0.0685471
+	stock market 0.0739501
+	ubiquity 0.0749428
+	military technology 0.0779679
+keyword facebook
+	gadget 0.00322816
+	self 0.0171138
+	open paths 0.0180115
+	art and security 0.0251485
+	twitter 0.0309209
+	gadgets 0.0389793
+	policy 0.0434343
+	social media 0.0476788
+	existence 0.0480407
+	teleportation 0.0491702
+keyword failure
+	spiritual 0.00755573
+	energy 0.0142968
+	interactivity 0.014713
+	growth 0.0150249
+	tradition 0.0155244
+	visual cortex 0.0162278
+	art 0.0165853
+	zen 0.0168878
+	completion 0.0181717
+	infinite game 0.0181717
+keyword fantasy
+	operating systems 0.01568
+	arabic 0.0199154
+	useful 0.0215441
+	augmented reality 0.0250123
+	research 0.0265314
+	limits of the computer 0.0267146
+	public 0.0269559
+	engineering 0.030364
+	invention 0.0306506
+	mind 0.0316809
+keyword fantasy technology
+	cyborg 0.0101959
+	power 0.0122449
+	singularity 0.0140229
+	journalism 0.0216961
+	writing 0.0217089
+	science fiction 0.027966
+	solutions 0.0284994
+	futurism 0.0316773
+	trendspotting 0.0330048
+	datatelling 0.0330881
+keyword fat
+	zach lieberman 0.00394639
+	responsibility 0.0214984
+	art world 0.022118
+	popular culture 0.02434
+	demo scene 0.0276132
+	style 0.0360368
+	tech-demo 0.0366761
+	crowdsourcing 0.0389615
+	hacker 0.0489788
+	community 0.0506043
+keyword fate
+	passing the baton 0.0710841
+	kill the master 0.080611
+	mentorship 0.0840554
+	thanks 0.104774
+	mentors 0.105384
+	paul burke 0.112847
+	anthropology 0.117299
+	forums 0.118069
+	guru 0.118351
+	robert hodgin 0.1196
+keyword feedback
+	drawing 0.00537749
+	synesthesia 0.00752174
+	journey 0.016541
+	slow 0.0192736
+	mastery 0.0206942
+	art vs engineering 0.0234199
+	art and experience 0.0293466
+	play 0.0293525
+	subliminal 0.0302713
+	techno 0.0302713
+keyword feeling
+	language 0.00942455
+	aesthetics 0.00958442
+	malevich 0.013016
+	boring 0.0140663
+	food 0.0141874
+	poetry 0.0187133
+	videogames 0.0206143
+	infinite conversation 0.0222042
+	subversion 0.0223617
+	pleasure 0.0259594
+keyword flash
+	snarky 0.00840485
+	brogrammers 0.0191671
+	doing with others 0.0391705
+	acu 0.0420718
+	esoteric 0.0454575
+	counterculture 0.0454575
+	ego 0.0464473
+	the gift 0.0511219
+	generosity 0.0511219
+	hackathon 0.0525546
+keyword flocking
+	chance 0.0246881
+	probability 0.0278412
+	god 0.0344942
+	world building 0.0394185
+	gardening 0.0411366
+	organic 0.0475823
+	logic 0.048422
+	wonder 0.0488961
+	systems 0.0493696
+	foraging 0.0493816
+keyword flow
+	perspective 0.0487295
+	atmosphere 0.052809
+	gestalt 0.0627483
+	pattern 0.0655745
+	microscope 0.0693161
+	signals 0.0730203
+	zoom 0.091489
+	complexity 0.117692
+	invisibility 0.121353
+	vision 0.121659
+keyword fluency
+	frustration 0.00358966
+	code 0.0117289
+	why 0.013541
+	3d printing 0.0170037
+	physicality 0.0183231
+	legos 0.0220916
+	choices 0.022415
+	architecture 0.0237283
+	aesthetic experience 0.0255916
+	keyboard 0.0270557
+keyword fluxus
+	culture 0.0199654
+	progress 0.0214256
+	virus 0.0244947
+	distraction 0.0247746
+	attention 0.0254999
+	empathy 0.0257385
+	humanism 0.0277518
+	literacy 0.0280486
+	audience 0.0286611
+	program or be programmed 0.0287535
+keyword focus
+	distraction 0.00419147
+	virus 0.00660029
+	project examples 0.0116181
+	audience 0.0134982
+	progress 0.015031
+	empathy 0.0179314
+	literacy 0.0234512
+	art history 0.0235462
+	creative misuse 0.02546
+	the future 0.025516
+keyword food
+	aesthetics 0.00534672
+	poetry 0.00794461
+	boring 0.0104379
+	feeling 0.0141874
+	videogames 0.0142678
+	images 0.0146264
+	pleasure 0.0146264
+	subversion 0.0181425
+	beauty 0.0209592
+	design 0.0219636
+keyword foraging
+	possibility 0.017511
+	gardening 0.0213291
+	motivational 0.0377774
+	noise 0.0405455
+	serendipity 0.0443693
+	minecraft 0.0455475
+	randomness 0.0476552
+	chance 0.0477571
+	flocking 0.0493816
+	random 0.0563038
+keyword form
+	light 0.012733
+	intuition 0.020163
+	influences 0.0212768
+	installation 0.0230377
+	clock 0.0233216
+	design process 0.0263655
+	epiphany 0.0278756
+	iteration 0.0279562
+	sculpture 0.031935
+	computer 0.0323955
+keyword formalism
+	rgbd 0.015008
+	improvization 0.0183219
+	programming 0.0250767
+	exploration 0.0299708
+	objects 0.0321506
+	infinite in all directions 0.0331216
+	magic 0.0343858
+	collaboration with machines 0.040099
+	thinking through code 0.0415336
+	inversion 0.0436341
+keyword forums
+	thanks 0.0230894
+	guru 0.0329024
+	robert hodgin 0.035683
+	eyeo 0.0379416
+	kill the master 0.0399893
+	heroes 0.0414331
+	doing with others 0.0445408
+	advertising 0.0457581
+	brogrammers 0.047769
+	acu 0.0517026
+keyword frontier
+	memes 0.00939241
+	apporopriation 0.0106965
+	originality 0.0369248
+	influence 0.0465675
+	shifts 0.0630883
+	veterans 0.0630883
+	homogeneity 0.0636846
+	youtube 0.0680798
+	ars electronica 0.0710084
+	bravado 0.0731241
+keyword frustration
+	fluency 0.00358966
+	why 0.0101033
+	3d printing 0.0135207
+	code 0.0144969
+	legos 0.020261
+	physicality 0.0215705
+	architecture 0.0237529
+	choices 0.0245845
+	keyboard 0.024831
+	inversion 0.024831
+keyword fun
+	creativity 0.00585294
+	learning 0.0154009
+	branching 0.032972
+	journey 0.039461
+	beginnings 0.0396074
+	techno 0.0409424
+	subliminal 0.0409424
+	mutlisensory 0.0426398
+	kids 0.0443262
+	tangibility 0.0448557
+keyword funny
+	evaluation 0.00819402
+	tree 0.0133656
+	gift 0.0257734
+	beautiful exhuberance 0.0267664
+	expression 0.0309581
+	tools 0.0329409
+	dialogue 0.0359836
+	digital divide 0.0381098
+	laughter 0.0393361
+	net.art 0.0399443
+keyword future
+	video art 0.0078851
+	network security 0.0116925
+	avatar 0.0126186
+	julian oliver 0.0149629
+	trendspotting 0.0219435
+	futurism 0.0283518
+	google 0.0318664
+	hacking 0.0324162
+	teleportation 0.0337904
+	devices 0.033818
+keyword future of cinema
+	dysfunction 0.0195296
+	virtual reality 0.0205563
+	meta 0.0211932
+	recursion 0.0211932
+	cinema 0.0212221
+	artificiality 0.02337
+	narrative 0.02955
+	realness 0.0325625
+	immersion 0.037806
+	inexactitude 0.0378205
+keyword futurism
+	solutions 0.0059554
+	trendspotting 0.0165473
+	network security 0.0169785
+	julian oliver 0.0185592
+	nano 0.0200898
+	teleportation 0.0219018
+	video art 0.021995
+	avatar 0.0245767
+	dystopia 0.0251283
+	future 0.0283518
+keyword gadget
+	facebook 0.00322816
+	self 0.0170464
+	open paths 0.021227
+	twitter 0.0277224
+	art and security 0.0278033
+	gadgets 0.0400001
+	social media 0.0447639
+	policy 0.0464986
+	existence 0.0494142
+	teleportation 0.0499992
+keyword gadgets
+	teleportation 0.0104674
+	nano 0.0194203
+	art and security 0.0242456
+	julian oliver 0.0249018
+	avatar 0.0260914
+	dystopia 0.0309247
+	futurism 0.0321709
+	solutions 0.0334864
+	wearables 0.0345428
+	network security 0.0353563
+keyword games
+	systems 0.0152066
+	interesting 0.0169804
+	birth 0.0169804
+	logic 0.0180754
+	world building 0.0226916
+	behavior 0.0266444
+	book 0.0286349
+	elegance 0.0314648
+	mysticism 0.0341075
+	carl sims 0.0395894
+keyword gardening
+	possibility 0.0125959
+	foraging 0.0213291
+	chance 0.0300372
+	noise 0.0326717
+	random 0.0350787
+	number 0.0350787
+	randomness 0.0356842
+	flocking 0.0411366
+	god 0.0472521
+	code is messy 0.0475729
+keyword gender
+	collaboration 0.00573235
+	education 0.0249401
+	humor 0.0258684
+	github 0.0320115
+	economics 0.032823
+	hacker 0.0373063
+	creative coding 0.0389525
+	international 0.043837
+	art world 0.0463041
+	popular culture 0.0472245
+keyword generations
+	anthropology 0.00563694
+	paul burke 0.0087557
+	mentors 0.0162587
+	heroes 0.0323917
+	robert hodgin 0.0377573
+	ars electronica 0.0390949
+	give everything away 0.039189
+	guru 0.0402313
+	mentorship 0.0452874
+	paul rand 0.0504473
+keyword generative
+	parameter space 0.0103409
+	noise 0.0424739
+	randomness 0.0443831
+	does coding enable you to take risks because there's no physical consequence? 0.057309
+	choosing 0.0607622
+	working iteratively generatively in a process that can go on forever? 0.0607622
+	generative process 0.0607622
+	possibility 0.0642185
+	motivational 0.0717053
+	gardening 0.0745787
+keyword generative art
+	skill 0.0257077
+	jewelry 0.0362368
+	luck 0.0432256
+	infinite in all directions 0.0496625
+	songs: fourtet locked 0.0510828
+	how does the work feed into itself? 0.0562449
+	iterative 0.0562449
+	process 0.0589267
+	product 0.0662868
+	heuristics 0.0677356
+keyword generative process
+	working iteratively generatively in a process that can go on forever? 0
+	choosing 0
+	code is messy 0.0290233
+	randomness 0.0290955
+	random 0.0308953
+	number 0.0308953
+	noise 0.0389938
+	equilibrium 0.0437556
+	gardening 0.0541796
+	possibility 0.0546145
+keyword generosity
+	the gift 0
+	ego 0.0111742
+	doing with others 0.0279364
+	counterculture 0.0342111
+	esoteric 0.0342111
+	brogrammers 0.0374342
+	tribe 0.0401793
+	snarky 0.0459609
+	heroes 0.0465324
+	sharing 0.0482093
+keyword genetics
+	metaphor 0.00815859
+	visual effects 0.0151848
+	infinity 0.0438358
+	uncanny 0.04645
+	elegance 0.0495934
+	dna 0.050398
+	scale 0.0505927
+	biology and code 0.0529466
+	computation 0.0555491
+	algorithm 0.0562639
+keyword geometry
+	particles 0
+	motion 0.00420856
+	carl sims 0.0155966
+	science 0.0177268
+	representation 0.0199434
+	evolution 0.0213409
+	book 0.0238977
+	computation 0.0263055
+	challenge 0.027183
+	stress 0.027183
+keyword gestalt
+	atmosphere 0.0160276
+	perspective 0.0458396
+	pattern 0.0544857
+	invisibility 0.0596045
+	flow 0.0627483
+	zoom 0.0690991
+	complexity 0.0696737
+	vision 0.0771576
+	microscope 0.0785052
+	scale 0.0799872
+keyword gesture
+	sketching 0.0159566
+	art and experience 0.0172105
+	mutlisensory 0.0206984
+	art vs engineering 0.0209264
+	the digital divide 0.0220945
+	tangibility 0.0220945
+	coding 0.0220962
+	slow 0.0245857
+	journey 0.0304038
+	synesthesia 0.0351169
+keyword gesture recognition
+	truth 0.00523708
+	kinect 0.00783398
+	algorithms 0.0108763
+	bots 0.0239149
+	datatelling 0.0261396
+	reading 0.0293871
+	subjectivity 0.0304744
+	cyberpunk 0.0360071
+	new aesthetic 0.0375958
+	cities 0.0417052
+keyword gift
+	expression 0.00787657
+	laughter 0.0135669
+	beautiful exhuberance 0.0148275
+	evaluation 0.0211714
+	balance 0.0254318
+	funny 0.0257734
+	tree 0.0259319
+	what does post-digital mean? 0.0296833
+	design and art 0.0328942
+	meaning 0.0371871
+keyword github
+	hacker 0.0136778
+	accessibility 0.0178848
+	creative coding 0.024411
+	collaboration 0.0270018
+	gender 0.0320115
+	responsibility 0.0425327
+	crowdsourcing 0.0444651
+	art world 0.0453498
+	creative control 0.0468595
+	popular culture 0.0510467
+keyword give everything away
+	ars electronica 0.0230877
+	generations 0.039189
+	anthropology 0.0448247
+	bravado 0.0463925
+	paul rand 0.0463925
+	paul burke 0.0464127
+	mentors 0.051944
+	originality 0.0576297
+	the gift 0.0659237
+	generosity 0.0659237
+keyword glitch
+	antihuman 0.0153338
+	digital 0.0153338
+	visual thinking 0.0169194
+	limitations 0.0247994
+	visualization 0.0268682
+	perception 0.0275671
+	curiosity 0.0279246
+	chaos 0.0292813
+	understanding 0.0304156
+	motivation 0.0441635
+keyword globalization
+	communication 0.00610103
+	infrastructure 0.0081569
+	intelligence 0.00971488
+	consumer 0.011876
+	live 0.0124384
+	society 0.0185473
+	noosphere 0.0193839
+	iphone 0.0206857
+	dreams 0.0226154
+	users 0.0271301
+keyword god
+	probability 0.0113726
+	organic 0.0134735
+	chance 0.018144
+	number 0.0318193
+	random 0.0318193
+	code is messy 0.0342537
+	flocking 0.0344942
+	cosmogeny 0.0434757
+	emergence 0.0454785
+	gardening 0.0472521
+keyword god mode
+	motivation 0.00875843
+	uture 0.00916539
+	things breaking 0.0145465
+	debugging 0.0218817
+	chaos 0.0242351
+	limitations 0.0268115
+	efficiency 0.0268385
+	perception 0.027742
+	recursion 0.0299205
+	meta 0.0299205
+keyword golan levin
+	success 0.0268555
+	children 0.0402711
+	project example 0.0441529
+	illusion 0.0441529
+	being 0.0463516
+	gratitude 0.0463516
+	multimedia 0.0473224
+	audiovisualization 0.052556
+	how did you get into working with code? 0.0529678
+	graphic design 0.0529678
+keyword google
+	ignorance 0.00732569
+	critical engineering 0.00943024
+	the cloud 0.0108184
+	network 0.0119737
+	mobile 0.0142346
+	internet 0.0200088
+	transparency 0.0223781
+	alone together 0.0225946
+	technoptimism 0.0228218
+	man versus machine 0.0264968
+keyword gps
+	data ownership 0.0105921
+	location 0.0262054
+	maps 0.0341737
+	privacy 0.0359251
+	drones 0.036921
+	darpa 0.036921
+	apple 0.0398448
+	public/private 0.0516152
+	human life 0.0520312
+	documentation 0.0520312
+keyword graphic design
+	how did you get into working with code? 0
+	illusion 0.00913001
+	project example 0.00913001
+	what comes after digital? 0.00998616
+	playfulness 0.0182357
+	gratitude 0.0212998
+	being 0.0212998
+	thinking by doing 0.0321611
+	tweaking 0.0334311
+	line 0.0393027
+keyword gratitude
+	being 0
+	illusion 0.0164491
+	project example 0.0164491
+	graphic design 0.0212998
+	how did you get into working with code? 0.0212998
+	children 0.0247088
+	what comes after digital? 0.0312737
+	audiovisualization 0.0316952
+	liveness 0.0341049
+	making things 0.0372457
+keyword growth
+	energy 0.00573833
+	visual cortex 0.0132434
+	post-digital 0.0139963
+	failure 0.0150249
+	spiritual 0.0170956
+	interactivity 0.0206836
+	tradition 0.025785
+	zen 0.0262664
+	art 0.0314075
+	useless 0.0323875
+keyword gui
+	keyboard 0
+	think different 0
+	mouse 0
+	inversion 0
+	legos 0.00570426
+	exploration 0.01562
+	3d printing 0.0166928
+	why 0.0176025
+	frustration 0.024831
+	collaboration with machines 0.0258523
+keyword guru
+	robert hodgin 0.00289007
+	heroes 0.00859762
+	thanks 0.0182306
+	doing with others 0.029665
+	forums 0.0329024
+	anthropology 0.0358416
+	paul burke 0.038562
+	kill the master 0.039993
+	generations 0.0402313
+	ego 0.0405578
+keyword hack
+	real world 0.0136966
+	people 0.0184186
+	design fiction 0.0205713
+	identity 0.0235559
+	present shock 0.0280999
+	organizations 0.0334543
+	toys 0.0363009
+	telepathy 0.0363668
+	participation 0.039429
+	connectivity 0.0394631
+keyword hackathon
+	prank 0.032127
+	synergy 0.0399448
+	acu 0.0444744
+	life 0.0488117
+	flash 0.0525546
+	teaching 0.0559937
+	snarky 0.056881
+	money 0.05704
+	media lab 0.0579274
+	aesthetics and computation 0.0584054
+keyword hacker
+	github 0.0136778
+	accessibility 0.026149
+	responsibility 0.0289303
+	collaboration 0.0316046
+	crowdsourcing 0.0324034
+	art world 0.0343057
+	gender 0.0373063
+	creative coding 0.0380019
+	popular culture 0.0409999
+	everyday 0.042557
+keyword hackers
+	the future 0.0317292
+	art history 0.0345043
+	coding for humanity 0.0380663
+	museums 0.0431409
+	empathy 0.0453285
+	criticality 0.0454146
+	project examples 0.0456772
+	corporate 0.0468343
+	creative exploration 0.0479633
+	creative misuse 0.0486963
+keyword hacking
+	devices 0.00832968
+	social media 0.0161262
+	technoptimism 0.0243542
+	future 0.0324162
+	transparency 0.0338104
+	twitter 0.0338503
+	avatar 0.0348732
+	critical engineering 0.037311
+	video art 0.0402989
+	julian oliver 0.0408471
+keyword hallucination
+	data collection 0.134411
+	sensor 0.154828
+	ubiquitous computing 0.162959
+	object recognition 0.168204
+	trace of your life 0.186917
+	public/private 0.197377
+	face tracking 0.204426
+	military technology 0.205156
+	street art 0.208395
+	rhetoric 0.208416
+keyword heroes
+	robert hodgin 0.00575469
+	guru 0.00859762
+	thanks 0.0257709
+	anthropology 0.0284439
+	doing with others 0.0296165
+	paul burke 0.0318118
+	generations 0.0323917
+	mentors 0.0351456
+	ego 0.0369519
+	forums 0.0414331
+keyword heuristics
+	songs: fourtet locked 0.0229174
+	how does the work feed into itself? 0.0250465
+	iterative 0.0250465
+	methodology 0.0329727
+	touch 0.0341299
+	system 0.0345708
+	luck 0.0444938
+	sound 0.0508458
+	skill 0.0549791
+	mastery 0.0560691
+keyword history
+	museums 0.0345062
+	nostalgia 0.0469726
+	hackers 0.0551954
+	information as weapon 0.0555954
+	anonymous 0.0636383
+	virality 0.0639779
+	creative exploration 0.0657232
+	corporate 0.067563
+	what was it like working with early computers? 0.0700462
+	old media 0.0702245
+keyword homogeneity
+	shifts 0.0258769
+	veterans 0.0258769
+	curation 0.0278532
+	originality 0.0388042
+	youtube 0.052829
+	frontier 0.0636846
+	apporopriation 0.0657921
+	memes 0.0679376
+	ideas 0.080763
+	visual culture 0.0835084
+keyword hope
+	error 0.00713575
+	tragedy 0.0092449
+	artificial intelligence 0.0142739
+	philosophy 0.0172227
+	coevolution 0.0234891
+	understanding 0.0271609
+	new aesthetic 0.0320063
+	virtual reality 0.0329065
+	cinema 0.0342504
+	perception 0.0346094
+keyword how did you get into working with code?
+	graphic design 0
+	illusion 0.00913001
+	project example 0.00913001
+	what comes after digital? 0.00998616
+	playfulness 0.0182357
+	gratitude 0.0212998
+	being 0.0212998
+	thinking by doing 0.0321611
+	tweaking 0.0334311
+	line 0.0393027
+keyword how does the work feed into itself?
+	iterative 0
+	songs: fourtet locked 0.00721507
+	heuristics 0.0250465
+	rgbd 0.0470981
+	luck 0.0516506
+	methodology 0.0529133
+	skill 0.0537085
+	improvization 0.0540884
+	sketching 0.0546264
+	generative art 0.0562449
+keyword human life
+	documentation 0
+	existence 0.00707684
+	philsophy 0.0112804
+	survival 0.011527
+	apple 0.0140143
+	maps 0.0321349
+	personal data 0.0321501
+	self 0.0411631
+	privacy 0.0440671
+	quantified self 0.0480565
+keyword humanism
+	balance 0.0170451
+	what does post-digital mean? 0.023121
+	design and art 0.0262606
+	fluxus 0.0277518
+	laughter 0.0289358
+	culture 0.0341824
+	digital culture 0.0347149
+	expression 0.0398199
+	gift 0.0409097
+	collective intelligence 0.0410286
+keyword humanity
+	alone together 0.00835747
+	man versus machine 0.0109823
+	internet 0.0142415
+	the cloud 0.0211096
+	network 0.0230615
+	information overload 0.0286003
+	critical engineering 0.029056
+	mobile 0.0292468
+	the present 0.0296891
+	technological progress 0.0301911
+keyword humor
+	economics 0.00731613
+	education 0.00737629
+	international 0.0185051
+	gender 0.0258684
+	open source 0.0278569
+	collaboration 0.0292473
+	toolkits 0.0374192
+	open frameworks 0.0427161
+	nerd 0.0434329
+	popular culture 0.0454354
+keyword hybridity
+	design by numbers 0.00461415
+	software 0.0261091
+	processing 0.0301256
+	career 0.0440511
+	mortality 0.0483938
+	toolkit 0.0502539
+	teaching 0.0597875
+	art and code 0.062583
+	commercialism 0.0640963
+	interdisciplinary 0.0648151
+keyword ideas
+	visual culture 0.0224816
+	techpositive 0.0463843
+	new media 0.0476341
+	community 0.0539563
+	fat 0.0564
+	zach lieberman 0.0587216
+	curation 0.059475
+	style 0.0616563
+	tech-demo 0.0633757
+	media 0.064278
+keyword identity
+	design fiction 0.00502567
+	organizations 0.014269
+	hack 0.0235559
+	real world 0.0301354
+	toys 0.0328499
+	relationships 0.0349136
+	assistive technology 0.0412047
+	people 0.0413869
+	present shock 0.0437423
+	eyebeam 0.046894
+keyword ignorance
+	mobile 0.00710094
+	google 0.00732569
+	network 0.00780774
+	the cloud 0.01399
+	critical engineering 0.0161463
+	internet 0.022485
+	alone together 0.0225059
+	man versus machine 0.0285963
+	transparency 0.0288107
+	technoptimism 0.030105
+keyword illusion
+	project example 0
+	graphic design 0.00913001
+	how did you get into working with code? 0.00913001
+	gratitude 0.0164491
+	being 0.0164491
+	what comes after digital? 0.0173148
+	playfulness 0.0241527
+	children 0.0377908
+	tweaking 0.0380263
+	thinking by doing 0.04092
+keyword image
+	noninteractivity 0
+	business 0.0223881
+	addiction 0.026485
+	music 0.0420606
+	accessibility 0.046959
+	insight 0.0532705
+	creative control 0.0539373
+	kids 0.056735
+	creative coding 0.0584443
+	creative coders 0.0587747
+keyword images
+	pleasure 0
+	beauty 0.00639552
+	poetry 0.00733903
+	videogames 0.008866
+	design 0.0106324
+	subversion 0.0121783
+	food 0.0146264
+	aesthetics 0.0167453
+	operating system 0.0246742
+	c++ 0.0246742
+keyword imaginary
+	immersion 0.00472784
+	symbiosis 0.00956915
+	narrative 0.0129836
+	change 0.0132815
+	text 0.0153992
+	social dynamics 0.0220181
+	networks 0.027472
+	coevolution 0.0291204
+	interfaces 0.0303548
+	cinema 0.0303963
+keyword imagination
+	thinking 0.0111255
+	discovery 0.0165222
+	chrome 0.0202961
+	computer 0.0238553
+	presentation 0.0243806
+	sculpture 0.0258218
+	operating system 0.038868
+	c++ 0.038868
+	light 0.0407655
+	math 0.0447519
+keyword immersion
+	imaginary 0.00472784
+	narrative 0.0122598
+	symbiosis 0.0139282
+	change 0.0180082
+	text 0.0186497
+	coevolution 0.0248435
+	networks 0.0254518
+	cinema 0.0258885
+	social dynamics 0.0262744
+	virtual reality 0.0321834
+keyword improvement
+	sensation 0.0122887
+	painting 0.0146844
+	post-digital 0.0301966
+	kids 0.0311658
+	uncertainty 0.0315754
+	the digital divide 0.0356267
+	tangibility 0.0356267
+	struggle with technology 0.0377769
+	growth 0.044192
+	energy 0.045007
+keyword improvization
+	rgbd 0.0104265
+	programming 0.0179013
+	formalism 0.0183219
+	thinking through code 0.0258116
+	coding 0.031853
+	exploration 0.0350285
+	sketching 0.0366176
+	thinking with code 0.0401614
+	struggle with technology 0.0414982
+	keyboard 0.0435534
+keyword in a sense are you running through an evolutionary process?
+	manufacturing 0.589223
+	work 0.590305
+	constraints 0.591885
+	tweaking 0.695828
+	playfulness 0.711272
+	what comes after digital? 0.719824
+	does coding enable you to take risks because there's no physical consequence? 0.723561
+	touch 0.727277
+	how did you get into working with code? 0.729101
+	graphic design 0.729101
+keyword inexactitude
+	storytelling 0.010647
+	mind 0.0136434
+	challenges 0.0170585
+	clouds 0.0176777
+	sentiment analysis 0.0219332
+	social dynamics 0.0228504
+	narrative 0.023442
+	cognition 0.0247202
+	operating systems 0.0276367
+	dysfunction 0.0313614
+keyword infinite conversation
+	malevich 0.0107854
+	language 0.0144044
+	dichotomy 0.0153426
+	projection 0.0210433
+	taste 0.0220543
+	feeling 0.0222042
+	staring at screens 0.0268985
+	experience 0.0285678
+	seamlessness 0.0292396
+	experience design 0.0296829
+keyword infinite game
+	completion 0
+	art 0.00949805
+	failure 0.0181717
+	spiritual 0.0215081
+	tradition 0.0224513
+	zen 0.0242932
+	useless 0.0254211
+	interactivity 0.0270367
+	energy 0.032448
+	growth 0.0327783
+keyword infinite in all directions
+	process 0.0202654
+	magic 0.02223
+	product 0.0244899
+	objects 0.0259339
+	jewelry 0.0293031
+	surprise 0.0313477
+	formalism 0.0331216
+	rgbd 0.0418058
+	influences 0.0458713
+	intuition 0.0470289
+keyword infinity
+	creation 0.0144919
+	simulation 0.0279955
+	multiverse 0.0298236
+	elegance 0.0310703
+	rules 0.0317076
+	dna 0.0384828
+	biology 0.0388759
+	genetics 0.0438358
+	logic 0.0443423
+	metaphor 0.0455069
+keyword influence
+	memes 0.044334
+	apporopriation 0.0458509
+	frontier 0.0465675
+	paul rand 0.0647904
+	bravado 0.0647904
+	ars electronica 0.0774108
+	originality 0.0791328
+	give everything away 0.0944956
+	mentorship 0.0997333
+	shifts 0.106626
+keyword influences
+	intuition 0.00213087
+	form 0.0212768
+	objects 0.0225281
+	magic 0.024083
+	design process 0.0242052
+	surprise 0.0290692
+	product 0.0294742
+	clock 0.0303552
+	collaboration with machines 0.0320159
+	epiphany 0.032692
+keyword information
+	control 0.0115958
+	consciousness 0.0152148
+	subjectivity 0.0164729
+	apps 0.0171611
+	things 0.0219447
+	internet of things 0.0219447
+	man vs machine 0.0254514
+	dreams 0.0264528
+	bots 0.0297629
+	cities 0.0304035
+keyword information as weapon
+	nostalgia 0.0206838
+	toys 0.0301785
+	museums 0.030995
+	eyebeam 0.0360075
+	organizations 0.0417742
+	old media 0.0549069
+	identity 0.0552346
+	participation 0.0554498
+	history 0.0555954
+	present shock 0.0577129
+keyword information overload
+	open software 0.00310137
+	criticality 0.00930868
+	social engagment 0.00991381
+	technological progress 0.0185158
+	computational power 0.0196892
+	creative misuse 0.0204453
+	openness 0.0222115
+	humanity 0.0286003
+	the present 0.032174
+	man versus machine 0.0323763
+keyword infrastructure
+	communication 0.00205596
+	consumer 0.0043203
+	live 0.00624671
+	globalization 0.0081569
+	society 0.0116663
+	iphone 0.0145425
+	intelligence 0.0175631
+	noosphere 0.0196973
+	dreams 0.0307529
+	mobile 0.0337903
+keyword innovation
+	wikipedia 0.00503899
+	virality 0.0223592
+	new media 0.0341365
+	techpositive 0.0360827
+	newness 0.0374363
+	media 0.0387911
+	what was it like working with early computers? 0.0421131
+	anonymous 0.057252
+	net.art 0.071163
+	style 0.0715673
+keyword insight
+	meaning 0.00763841
+	why are you attracted to abstraction?
+abstraction 0.00952211
+	beautiful exhuberance 0.0282001
+	tree 0.0327318
+	expression 0.0379094
+	business 0.0424004
+	self expression 0.0429058
+	gift 0.0430131
+	funny 0.045888
+	infinite game 0.0470187
+keyword installation
+	ambiguity 0.0111552
+	light 0.0208007
+	form 0.0230377
+	sculpture 0.0245445
+	collaboration with machines 0.0276914
+	architecture 0.0299354
+	3d printing 0.0307908
+	intuition 0.0323666
+	why 0.0323781
+	influences 0.0344193
+keyword instrument
+	liveness 0.0102925
+	audiovisualization 0.0154125
+	subliminal 0.0196481
+	techno 0.0196481
+	play 0.0217368
+	children 0.0276959
+	multimedia 0.0287797
+	branching 0.0375769
+	being 0.0399314
+	gratitude 0.0399314
+keyword intelligence
+	globalization 0.00971488
+	dreams 0.0145245
+	communication 0.0155589
+	users 0.0174246
+	infrastructure 0.0175631
+	consumer 0.0206442
+	live 0.0221351
+	science fiction 0.0227099
+	apps 0.0248051
+	noosphere 0.0258023
+keyword interactivity
+	zen 0.00652838
+	tradition 0.00710201
+	spiritual 0.00719977
+	visual cortex 0.0102178
+	useless 0.0124515
+	failure 0.014713
+	energy 0.0157482
+	art 0.0199327
+	growth 0.0206836
+	completion 0.0270367
+keyword interconnectedness
+	critique 0.0129109
+	conviction 0.0154888
+	serious 0.0169306
+	digital natives 0.0215863
+	sadness 0.0215863
+	self reflection 0.0215863
+	experience design 0.0226945
+	engineering 0.0243153
+	mirror 0.0253975
+	invention 0.0268162
+keyword interdisciplinary
+	mortality 0.0181534
+	john maeda 0.026022
+	teams 0.0295802
+	partnership 0.0295802
+	working with others 0.0359744
+	connections 0.0506535
+	teaching 0.0594492
+	design by numbers 0.0604906
+	aesthetics and computation 0.0643083
+	hybridity 0.0648151
+keyword interesting
+	birth 0
+	book 0.0120493
+	games 0.0169804
+	behavior 0.0169815
+	carl sims 0.0259618
+	elegance 0.0282238
+	motion 0.0286823
+	systems 0.0301647
+	particles 0.0323194
+	geometry 0.0323194
+keyword interfaces
+	text 0.0150603
+	things 0.0208723
+	internet of things 0.0208723
+	symbiosis 0.0216284
+	change 0.0232903
+	control 0.0235302
+	consciousness 0.0247635
+	imaginary 0.0303548
+	man vs machine 0.0303992
+	social dynamics 0.0330183
+keyword international
+	open source 0.00960371
+	economics 0.0135715
+	humor 0.0185051
+	toolkits 0.0211446
+	education 0.0234016
+	open frameworks 0.0242162
+	nerd 0.0302867
+	toolkit 0.042675
+	gender 0.043837
+	collaboration 0.0476296
+keyword internet
+	man versus machine 0.00649891
+	alone together 0.00787947
+	the cloud 0.00919435
+	humanity 0.0142415
+	critical engineering 0.0154846
+	transparency 0.0170665
+	network 0.0176458
+	google 0.0200088
+	ignorance 0.022485
+	mobile 0.0247402
+keyword internet culture
+	cyberpunk 0.0105449
+	datatelling 0.0263298
+	journalism 0.0277876
+	sex 0.0316505
+	data 0.0378847
+	kinect 0.0402152
+	fantasy technology 0.0426759
+	gesture recognition 0.0429435
+	singularity 0.0431052
+	microsoft 0.0471966
+keyword internet of things
+	things 0
+	consciousness 0.00681245
+	man vs machine 0.0103234
+	control 0.0146171
+	cities 0.0173026
+	interfaces 0.0208723
+	information 0.0219447
+	networks 0.0243037
+	text 0.0258273
+	bots 0.0298395
+keyword intuition
+	influences 0.00213087
+	form 0.020163
+	objects 0.0230496
+	magic 0.0250317
+	design process 0.0255311
+	collaboration with machines 0.0302732
+	clock 0.0310107
+	surprise 0.0311258
+	product 0.0313453
+	installation 0.0323666
+keyword invention
+	engineering 0.009435
+	projection 0.0148435
+	experience design 0.0157128
+	limits of the computer 0.0186819
+	critique 0.021254
+	augmented reality 0.0226287
+	interconnectedness 0.0268162
+	fantasy 0.0306506
+	conviction 0.032551
+	infinite conversation 0.0352959
+keyword inversion
+	keyboard 0
+	gui 0
+	think different 0
+	mouse 0
+	legos 0.00570426
+	exploration 0.01562
+	3d printing 0.0166928
+	why 0.0176025
+	frustration 0.024831
+	collaboration with machines 0.0258523
+keyword invisibility
+	scale 0.0357446
+	complexity 0.0451985
+	vision 0.0546527
+	gestalt 0.0596045
+	visual effects 0.0616138
+	metaphor 0.0638221
+	genetics 0.0673673
+	curiosity 0.0690084
+	atmosphere 0.0738045
+	biology and code 0.0778821
+keyword iphone
+	society 0.00350079
+	consumer 0.0103838
+	infrastructure 0.0145425
+	communication 0.0159333
+	live 0.0178468
+	globalization 0.0206857
+	mobile 0.0232134
+	network 0.0256945
+	intelligence 0.0274963
+	ignorance 0.030215
+keyword iteration
+	clock 0.00981238
+	epiphany 0.0111113
+	design process 0.0209339
+	wonder 0.0226862
+	form 0.0279562
+	light 0.0305821
+	computer 0.03372
+	influences 0.0393105
+	intuition 0.0397126
+	minecraft 0.0430072
+keyword iterative
+	how does the work feed into itself? 0
+	songs: fourtet locked 0.00721507
+	heuristics 0.0250465
+	rgbd 0.0470981
+	luck 0.0516506
+	methodology 0.0529133
+	skill 0.0537085
+	improvization 0.0540884
+	sketching 0.0546264
+	generative art 0.0562449
+keyword jewelry
+	process 0.0263122
+	infinite in all directions 0.0293031
+	product 0.0336308
+	surprise 0.0362256
+	generative art 0.0362368
+	serendipity 0.040373
+	magic 0.0448329
+	objects 0.0499879
+	motivational 0.0504687
+	minecraft 0.0531738
+keyword john maeda
+	working with others 0.0213168
+	interdisciplinary 0.026022
+	teams 0.0300804
+	partnership 0.0300804
+	passion 0.0407498
+	mortality 0.0418099
+	aesthetics and computation 0.0435728
+	media lab 0.0449164
+	life 0.0502209
+	teaching 0.0528927
+keyword journalism
+	fantasy technology 0.0216961
+	cyberpunk 0.0259326
+	dystopia 0.0268855
+	internet culture 0.0277876
+	wearables 0.0287482
+	solutions 0.02959
+	singularity 0.0307443
+	cyborg 0.0312469
+	power 0.0333118
+	datatelling 0.0338246
+keyword journey
+	slow 0.00643367
+	synesthesia 0.0115944
+	mutlisensory 0.0153588
+	feedback 0.016541
+	art vs engineering 0.017827
+	drawing 0.0217437
+	art and experience 0.0231955
+	tangibility 0.0257117
+	the digital divide 0.0257117
+	mastery 0.0276103
+keyword julian oliver
+	avatar 0.00607238
+	network security 0.0109803
+	video art 0.0140072
+	future 0.0149629
+	futurism 0.0185592
+	teleportation 0.0188842
+	trendspotting 0.0224099
+	solutions 0.0238261
+	gadgets 0.0249018
+	nano 0.0262137
+keyword keyboard
+	gui 0
+	think different 0
+	mouse 0
+	inversion 0
+	legos 0.00570426
+	exploration 0.01562
+	3d printing 0.0166928
+	why 0.0176025
+	frustration 0.024831
+	collaboration with machines 0.0258523
+keyword kids
+	music 0.0174785
+	sensation 0.0304514
+	improvement 0.0311658
+	creativity 0.0392843
+	painting 0.0431841
+	tangibility 0.0438917
+	the digital divide 0.0438917
+	fun 0.0443262
+	post-digital 0.047177
+	business 0.0484345
+keyword kill the master
+	thanks 0.0242829
+	forums 0.0399893
+	guru 0.039993
+	passing the baton 0.0413438
+	robert hodgin 0.0419381
+	heroes 0.045179
+	mentors 0.0505713
+	paul burke 0.0546834
+	anthropology 0.0561604
+	mentorship 0.0583094
+keyword kinect
+	gesture recognition 0.00783398
+	truth 0.0113344
+	algorithms 0.0174532
+	datatelling 0.0285431
+	reading 0.0307043
+	bots 0.031459
+	cyberpunk 0.0349793
+	subjectivity 0.03742
+	internet culture 0.0402152
+	new aesthetic 0.0425256
+keyword knowledge
+	creative control 0.00745664
+	creative coders 0.0090569
+	demo 0.0130627
+	creative coding 0.0291021
+	performance 0.0377858
+	accessibility 0.0457445
+	art and code 0.0480196
+	github 0.0533449
+	beginnings 0.0585475
+	noninteractivity 0.0591933
+keyword language
+	malevich 0.0093186
+	feeling 0.00942455
+	infinite conversation 0.0144044
+	aesthetics 0.0189139
+	boring 0.0217533
+	food 0.0236088
+	projection 0.0260484
+	useful 0.0272702
+	poetry 0.0277111
+	videogames 0.0283451
+keyword laughter
+	expression 0.0108875
+	gift 0.0135669
+	balance 0.0164868
+	what does post-digital mean? 0.0165319
+	design and art 0.0202747
+	beautiful exhuberance 0.0219074
+	humanism 0.0289358
+	self expression 0.0336474
+	evaluation 0.0344589
+	tree 0.0381434
+keyword leadership
+	social engineering 0
+	realworld 0.350574
+	paola antonelli 0.470896
+	overview 0.548712
+	flow 0.587757
+	perspective 0.595399
+	zoom 0.601375
+	rhetoric 0.614048
+	space 0.614687
+	signals 0.616793
+keyword learning
+	fun 0.0154009
+	branching 0.0181541
+	creativity 0.0212179
+	beginnings 0.0280694
+	techno 0.0323391
+	subliminal 0.0323391
+	instrument 0.0425083
+	performance 0.0438877
+	play 0.0453983
+	journey 0.0464408
+keyword legibility
+	nytimes 0.033532
+	camera 0.0435577
+	revelation 0.0555775
+	data visualization 0.0565142
+	debug screen 0.0589959
+	library 0.064728
+	politics 0.066782
+	machine vision 0.0712752
+	confusion 0.0717438
+	statistics 0.0728705
+keyword legos
+	think different 0.00570426
+	inversion 0.00570426
+	gui 0.00570426
+	mouse 0.00570426
+	keyboard 0.00570426
+	why 0.0147954
+	3d printing 0.0150277
+	frustration 0.020261
+	exploration 0.0210463
+	fluency 0.0220916
+keyword library
+	data visualization 0.0082598
+	microsoft 0.0190523
+	politics 0.0226105
+	stock market 0.0385001
+	kinect 0.0443209
+	statistics 0.0515302
+	gesture recognition 0.0517986
+	reading 0.0531125
+	truth 0.0532139
+	prediction 0.0565909
+keyword life
+	aesthetics and computation 0.0178326
+	media lab 0.0189575
+	teaching 0.0197161
+	synergy 0.0252298
+	working with others 0.0300853
+	passion 0.0417936
+	hackathon 0.0488117
+	john maeda 0.0502209
+	commercial art 0.0630513
+	interdisciplinary 0.0649932
+keyword lifetracking
+	apocalypse 0.00526898
+	memory 0.0203773
+	quantified self 0.0229135
+	afterlife 0.0242248
+	transience 0.0388754
+	personal data 0.0414681
+	travel 0.0454371
+	death 0.0459461
+	survival 0.0582071
+	philsophy 0.0604572
+keyword light
+	form 0.012733
+	sculpture 0.0198031
+	installation 0.0208007
+	computer 0.0211159
+	clock 0.029961
+	ambiguity 0.030316
+	iteration 0.0305821
+	discovery 0.0308021
+	intuition 0.0324449
+	influences 0.0337558
+keyword limitations
+	chaos 0.0052953
+	visual thinking 0.00904454
+	digital 0.0112843
+	antihuman 0.0112843
+	perception 0.015565
+	motivation 0.019483
+	uture 0.0202697
+	understanding 0.022922
+	things breaking 0.0238898
+	glitch 0.0247994
+keyword limits of the computer
+	augmented reality 0.00456825
+	engineering 0.0102839
+	invention 0.0186819
+	critique 0.0188514
+	fantasy 0.0267146
+	operating systems 0.0282953
+	weird 0.0298213
+	interconnectedness 0.0310763
+	experience design 0.032514
+	projection 0.0334815
+keyword line
+	mind and hand 0.0167555
+	making things 0.0185616
+	sound 0.019292
+	thinking by doing 0.0228506
+	methodology 0.0256795
+	system 0.0271043
+	how did you get into working with code? 0.0393027
+	graphic design 0.0393027
+	play 0.0409247
+	being 0.0410268
+keyword literacy
+	program or be programmed 0.00332149
+	attention 0.00610497
+	progress 0.0102112
+	audience 0.0105843
+	mirror 0.0116252
+	serious 0.0182416
+	distraction 0.0224971
+	focus 0.0234512
+	virus 0.0261171
+	fluxus 0.0280486
+keyword live
+	infrastructure 0.00624671
+	communication 0.00744669
+	consumer 0.00811828
+	globalization 0.0124384
+	society 0.0144356
+	noosphere 0.0157203
+	iphone 0.0178468
+	intelligence 0.0221351
+	r&d 0.0298244
+	english 0.0303969
+keyword liveness
+	audiovisualization 0.00512949
+	instrument 0.0102925
+	children 0.0177304
+	multimedia 0.0202299
+	play 0.0291705
+	techno 0.0296811
+	subliminal 0.0296811
+	gratitude 0.0341049
+	being 0.0341049
+	struggle 0.0407011
+keyword location
+	privacy 0.0115632
+	maps 0.0180571
+	data ownership 0.022264
+	gps 0.0262054
+	apple 0.0425096
+	documentation 0.0488677
+	human life 0.0488677
+	existence 0.0544184
+	drones 0.0550555
+	darpa 0.0550555
+keyword logic
+	systems 0.00286979
+	world building 0.00900351
+	games 0.0180754
+	elegance 0.0321656
+	interesting 0.0328208
+	birth 0.0328208
+	creation 0.0408276
+	book 0.0427111
+	simulation 0.0433792
+	infinity 0.0443423
+keyword love
+	security 0.0192911
+	sensors 0.0222824
+	wearables 0.0238254
+	policy 0.0261618
+	dystopia 0.0304402
+	nano 0.0342736
+	sex 0.0362999
+	surveillance 0.0371408
+	sex and tech 0.0371845
+	art and security 0.0383354
+keyword luck
+	skill 0.0184799
+	generative art 0.0432256
+	songs: fourtet locked 0.0444715
+	heuristics 0.0444938
+	how does the work feed into itself? 0.0516506
+	iterative 0.0516506
+	touch 0.0574368
+	system 0.0705901
+	methodology 0.0722868
+	jewelry 0.0793542
+keyword machine aesthetics
+	public 0.0129071
+	research 0.0134024
+	real and virtual 0.0159183
+	cognition 0.0163177
+	arabic 0.0202508
+	authorship 0.0219701
+	virtual 0.0241509
+	why? 0.0284046
+	mind 0.028505
+	abstraction 0.0300905
+keyword machine vision
+	street art 0.013936
+	nytimes 0.043992
+	camera 0.0462322
+	cameras 0.0548277
+	rhetoric 0.0563112
+	face tracking 0.0659268
+	object recognition 0.0712343
+	legibility 0.0712752
+	ubiquitous computing 0.0800245
+	statistics 0.0867841
+keyword magic
+	objects 0.00535742
+	product 0.0174308
+	process 0.0211108
+	infinite in all directions 0.02223
+	surprise 0.0229531
+	influences 0.024083
+	intuition 0.0250317
+	formalism 0.0343858
+	collaboration with machines 0.0366287
+	design process 0.0416669
+keyword maker
+	concept 0
+	thinkerer 0
+	passion 0.0622531
+	commercial art 0.0671482
+	media lab 0.0828575
+	aesthetics and computation 0.0841536
+	synergy 0.0882791
+	john maeda 0.09362
+	working with others 0.0992118
+	money 0.10092
+keyword making things
+	mind and hand 0.00803739
+	line 0.0185616
+	play 0.0224633
+	drawing 0.0292909
+	feedback 0.0342655
+	subliminal 0.0352325
+	techno 0.0352325
+	mastery 0.0372314
+	being 0.0372457
+	gratitude 0.0372457
+keyword malevich
+	language 0.0093186
+	infinite conversation 0.0107854
+	feeling 0.013016
+	aesthetics 0.0199156
+	dichotomy 0.0235767
+	subversion 0.0242918
+	videogames 0.0248585
+	food 0.0252485
+	poetry 0.0266643
+	boring 0.0270821
+keyword man versus machine
+	internet 0.00649891
+	alone together 0.00905415
+	humanity 0.0109823
+	the cloud 0.0156784
+	transparency 0.0202381
+	the present 0.0213453
+	critical engineering 0.0216052
+	network 0.0229936
+	connectivity 0.0236602
+	performance art 0.024082
+keyword man vs machine
+	cities 0.00702208
+	internet of things 0.0103234
+	things 0.0103234
+	consciousness 0.0123825
+	networks 0.0202271
+	bots 0.021447
+	control 0.0223669
+	information 0.0254514
+	interfaces 0.0303992
+	new aesthetic 0.0304313
+keyword manufacturing
+	thinkerer 0.263177
+	concept 0.263177
+	maker 0.263177
+	work and life 0.28918
+	work 0.30225
+	connections 0.314183
+	passion 0.320641
+	teams 0.325148
+	partnership 0.325148
+	commercial art 0.326458
+keyword maps
+	privacy 0.0121148
+	location 0.0180571
+	apple 0.0291873
+	human life 0.0321349
+	documentation 0.0321349
+	gps 0.0341737
+	data ownership 0.0354775
+	existence 0.0383734
+	survival 0.0387426
+	personal data 0.0405868
+keyword mastery
+	art vs engineering 0.0173053
+	synesthesia 0.0177488
+	art and experience 0.0200287
+	feedback 0.0206942
+	drawing 0.0224186
+	slow 0.0247125
+	journey 0.0276103
+	mind and hand 0.0307364
+	gesture 0.0372109
+	making things 0.0372314
+keyword math
+	mysticism 0.0103995
+	behavior 0.0209687
+	carl sims 0.0246617
+	challenge 0.0352376
+	stress 0.0352376
+	presentation 0.0366009
+	interesting 0.0373744
+	birth 0.0373744
+	geometry 0.0399662
+	particles 0.0399662
+keyword meaning
+	why are you attracted to abstraction?
+abstraction 0.00597217
+	insight 0.00763841
+	beautiful exhuberance 0.0226702
+	expression 0.0313984
+	tree 0.0314777
+	self expression 0.0360173
+	gift 0.0371871
+	laughter 0.0399738
+	design and art 0.0428401
+	what does post-digital mean? 0.0439003
+keyword media
+	style 0.0329445
+	tech-demo 0.0334565
+	new media 0.03449
+	wikipedia 0.0367029
+	techpositive 0.0377934
+	innovation 0.0387911
+	demo scene 0.0465885
+	net.art 0.0489593
+	digital divide 0.0532586
+	dialogue 0.0607291
+keyword media lab
+	aesthetics and computation 0.00188823
+	life 0.0189575
+	synergy 0.0210419
+	passion 0.023514
+	working with others 0.030619
+	teaching 0.0373332
+	john maeda 0.0449164
+	commercial art 0.0509381
+	hackathon 0.0579274
+	interdisciplinary 0.0659751
+keyword memes
+	frontier 0.00939241
+	apporopriation 0.0194121
+	influence 0.044334
+	originality 0.0450857
+	youtube 0.0648438
+	homogeneity 0.0679376
+	veterans 0.0702266
+	shifts 0.0702266
+	ars electronica 0.0792771
+	bravado 0.0796473
+keyword memory
+	quantified self 0.0109877
+	lifetracking 0.0203773
+	apocalypse 0.0248464
+	personal data 0.0252051
+	survival 0.0380571
+	philsophy 0.0401443
+	travel 0.0410489
+	afterlife 0.0427298
+	human life 0.0492702
+	documentation 0.0492702
+keyword mentors
+	paul burke 0.00765595
+	anthropology 0.012805
+	generations 0.0162587
+	mentorship 0.0310096
+	passing the baton 0.0346276
+	heroes 0.0351456
+	robert hodgin 0.039064
+	guru 0.0407263
+	ars electronica 0.0449941
+	thanks 0.0475814
+keyword mentorship
+	passing the baton 0.0192818
+	mentors 0.0310096
+	paul burke 0.0380041
+	bravado 0.0413379
+	paul rand 0.0413379
+	anthropology 0.043401
+	generations 0.0452874
+	ars electronica 0.0529331
+	kill the master 0.0583094
+	heroes 0.0636506
+keyword messiness
+	order 0
+	parameters 0.0105899
+	tron 0.0379408
+	ocd 0.0493818
+	what do you find beautiful about code? 0.0493818
+	syntax 0.0493818
+	cellular automata 0.0512957
+	equilibrium 0.053761
+	art and science 0.0563001
+	universe 0.0572601
+keyword meta
+	recursion 0
+	artificiality 0.00707668
+	debugging 0.0171757
+	bugs 0.0196043
+	future of cinema 0.0211932
+	realness 0.024946
+	questions 0.0268794
+	virtual reality 0.029242
+	reality 0.0297663
+	god mode 0.0299205
+keyword metaphor
+	visual effects 0.00702699
+	genetics 0.00815859
+	scale 0.0436939
+	biology and code 0.0452901
+	dna 0.045472
+	infinity 0.0455069
+	biology 0.0530499
+	uncanny 0.0540666
+	elegance 0.0556501
+	creation 0.0590109
+keyword methodology
+	system 0.00687386
+	sound 0.0202803
+	touch 0.0254019
+	line 0.0256795
+	thinking by doing 0.0310565
+	heuristics 0.0329727
+	mind and hand 0.0339523
+	making things 0.0402025
+	mastery 0.0430735
+	iterative 0.0529133
+keyword microscope
+	pattern 0.0266423
+	signals 0.0416169
+	revelation 0.0621006
+	debug screen 0.0642361
+	flow 0.0693161
+	legibility 0.0744435
+	simplicity 0.0776105
+	gestalt 0.0785052
+	vision 0.0813258
+	complexity 0.0830451
+keyword microsoft
+	politics 0.0123485
+	library 0.0190523
+	stock market 0.0226616
+	data visualization 0.0246445
+	statistics 0.0393931
+	kinect 0.0434786
+	internet culture 0.0471966
+	data 0.0474508
+	gesture recognition 0.0512732
+	cyberpunk 0.0521466
+keyword military technology
+	public/private 0.0391393
+	darpa 0.0396733
+	drones 0.0396733
+	trace of your life 0.0449001
+	surveillance 0.0563674
+	big data 0.0566504
+	data mining 0.0675433
+	gps 0.0693241
+	data ownership 0.0700791
+	sensors 0.0706182
+keyword mind
+	storytelling 0.00449357
+	cognition 0.0122276
+	inexactitude 0.0136434
+	arabic 0.0201571
+	challenges 0.0213109
+	operating systems 0.0214085
+	research 0.0217205
+	public 0.0232378
+	clouds 0.0272179
+	sentiment analysis 0.0285002
+keyword mind and hand
+	making things 0.00803739
+	line 0.0167555
+	drawing 0.0274955
+	play 0.0277246
+	mastery 0.0307364
+	feedback 0.0317977
+	methodology 0.0339523
+	sound 0.0352335
+	synesthesia 0.0366215
+	system 0.0381442
+keyword minecraft
+	serendipity 0.0147616
+	wonder 0.0290494
+	design process 0.0298771
+	surprise 0.0309253
+	epiphany 0.0332139
+	clock 0.0374726
+	product 0.0378603
+	process 0.0405565
+	iteration 0.0430072
+	foraging 0.0455475
+keyword mirror
+	attention 0.00702616
+	program or be programmed 0.00836785
+	serious 0.00846868
+	literacy 0.0116252
+	progress 0.0198372
+	self reflection 0.0215617
+	sadness 0.0215617
+	digital natives 0.0215617
+	audience 0.0221547
+	conviction 0.023801
+keyword mobile
+	ignorance 0.00710094
+	network 0.00710984
+	google 0.0142346
+	the cloud 0.0178592
+	critical engineering 0.0222661
+	alone together 0.0223857
+	iphone 0.0232134
+	internet 0.0247402
+	society 0.0264507
+	humanity 0.0292468
+keyword money
+	prank 0.0253474
+	commercial art 0.0377442
+	acu 0.0512399
+	hackathon 0.05704
+	eyeo 0.0577781
+	synergy 0.059699
+	advertising 0.0601266
+	media lab 0.0788942
+	aesthetics and computation 0.0805344
+	life 0.0839288
+keyword mortality
+	interdisciplinary 0.0181534
+	john maeda 0.0418099
+	design by numbers 0.0443567
+	working with others 0.0444921
+	partnership 0.0465068
+	teams 0.0465068
+	hybridity 0.0483938
+	teaching 0.0587161
+	struggle 0.0645484
+	connections 0.0645721
+keyword motion
+	particles 0.00420856
+	geometry 0.00420856
+	carl sims 0.0154889
+	science 0.0175954
+	representation 0.0182725
+	book 0.0197735
+	evolution 0.0219056
+	computation 0.0232622
+	behavior 0.0256906
+	birth 0.0286823
+keyword motivation
+	uture 0.00152944
+	god mode 0.00875843
+	things breaking 0.00890329
+	chaos 0.0160815
+	limitations 0.019483
+	efficiency 0.0210987
+	perception 0.024677
+	visual thinking 0.0275593
+	digital 0.0295587
+	antihuman 0.0295587
+keyword motivational
+	foraging 0.0377774
+	serendipity 0.0406261
+	possibility 0.0465243
+	jewelry 0.0504687
+	minecraft 0.0524862
+	noise 0.0562753
+	gardening 0.0566136
+	does coding enable you to take risks because there's no physical consequence? 0.0638445
+	process 0.0639651
+	surprise 0.0646687
+keyword mouse
+	think different 0
+	keyboard 0
+	gui 0
+	inversion 0
+	legos 0.00570426
+	exploration 0.01562
+	3d printing 0.0166928
+	why 0.0176025
+	frustration 0.024831
+	collaboration with machines 0.0258523
+keyword multimedia
+	audiovisualization 0.0170343
+	children 0.0189413
+	liveness 0.0202299
+	struggle 0.0259182
+	instrument 0.0287797
+	success 0.0290049
+	being 0.0435617
+	gratitude 0.0435617
+	golan levin 0.0473224
+	techno 0.048184
+keyword multiverse
+	rules 0.0138371
+	simulation 0.0174056
+	physics 0.0179148
+	artificial life 0.0198694
+	creation 0.0203929
+	biology 0.0252093
+	infinity 0.0298236
+	dna 0.031427
+	nature of code 0.0346867
+	emergence 0.0395955
+keyword museums
+	nostalgia 0.0139308
+	information as weapon 0.030995
+	history 0.0345062
+	toys 0.0414217
+	hackers 0.0431409
+	participation 0.0472569
+	present shock 0.0553254
+	real world 0.0631246
+	organizations 0.0635684
+	social 0.0636282
+keyword music
+	kids 0.0174785
+	business 0.0397146
+	noninteractivity 0.0420606
+	image 0.0420606
+	creativity 0.0451033
+	improvement 0.0472895
+	sensation 0.0478824
+	fun 0.0486811
+	creative coders 0.0541518
+	post-digital 0.0562866
+keyword mutlisensory
+	tangibility 0.010635
+	the digital divide 0.010635
+	slow 0.0134654
+	journey 0.0153588
+	gesture 0.0206984
+	art vs engineering 0.0215266
+	art and experience 0.02369
+	synesthesia 0.025568
+	feedback 0.0316735
+	sensation 0.0340325
+keyword mysticism
+	math 0.0103995
+	behavior 0.020208
+	carl sims 0.0293081
+	interesting 0.0338296
+	birth 0.0338296
+	games 0.0341075
+	book 0.0416034
+	motion 0.0440989
+	stress 0.0447802
+	challenge 0.0447802
+keyword nano
+	teleportation 0.0111555
+	dystopia 0.0123791
+	solutions 0.0181608
+	wearables 0.0183874
+	gadgets 0.0194203
+	futurism 0.0200898
+	julian oliver 0.0262137
+	avatar 0.0310577
+	network security 0.0322927
+	love 0.0342736
+keyword narrative
+	immersion 0.0122598
+	imaginary 0.0129836
+	symbiosis 0.0210262
+	change 0.0216224
+	inexactitude 0.023442
+	social dynamics 0.023738
+	cinema 0.025188
+	text 0.0280351
+	clouds 0.0289062
+	future of cinema 0.02955
+keyword nature
+	biology and code 0.0283277
+	synthetic biology 0.0299463
+	biology 0.0324502
+	dna 0.0326929
+	nature of code 0.0435451
+	physics 0.0449885
+	universe 0.0477602
+	artificial life 0.0533774
+	multiverse 0.0549806
+	visual effects 0.0646874
+keyword nature of code
+	physics 0.0168815
+	artificial life 0.0180307
+	cellular automata 0.0286778
+	emergence 0.0342063
+	multiverse 0.0346867
+	biology 0.0361602
+	cosmogeny 0.0362374
+	rules 0.0421501
+	nature 0.0435451
+	dna 0.044306
+keyword nerd
+	toolkit 0.0257821
+	commercialism 0.0264192
+	open frameworks 0.0268711
+	open source 0.0288386
+	international 0.0302867
+	career 0.0344338
+	toolkits 0.0383363
+	economics 0.041992
+	humor 0.0434329
+	software 0.0483544
+keyword net.art
+	digital divide 0.00451716
+	dialogue 0.0122623
+	evaluation 0.0361394
+	funny 0.0399443
+	anonymous 0.041969
+	media 0.0489593
+	tools 0.0513408
+	gift 0.0528088
+	tech-demo 0.0528318
+	tree 0.0533095
+keyword network
+	mobile 0.00710984
+	ignorance 0.00780774
+	the cloud 0.0114305
+	google 0.0119737
+	alone together 0.0156362
+	critical engineering 0.0175519
+	internet 0.0176458
+	man versus machine 0.0229936
+	humanity 0.0230615
+	iphone 0.0256945
+keyword network security
+	video art 0.00516363
+	julian oliver 0.0109803
+	future 0.0116925
+	trendspotting 0.0124201
+	avatar 0.0140009
+	futurism 0.0169785
+	solutions 0.0229242
+	teleportation 0.0278379
+	nano 0.0322927
+	gadgets 0.0353563
+keyword networks
+	coevolution 0.0180201
+	cities 0.0191848
+	man vs machine 0.0202271
+	things 0.0243037
+	internet of things 0.0243037
+	immersion 0.0254518
+	text 0.0257645
+	philosophy 0.0270586
+	tragedy 0.0270705
+	imaginary 0.027472
+keyword new aesthetic
+	reading 0.0202229
+	cities 0.0234096
+	bots 0.0236434
+	tragedy 0.0246218
+	algorithms 0.0270892
+	man vs machine 0.0304313
+	networks 0.0308911
+	hope 0.0320063
+	truth 0.0323876
+	coevolution 0.0367917
+keyword new media
+	techpositive 0.00336888
+	wikipedia 0.0291306
+	innovation 0.0341365
+	media 0.03449
+	newness 0.0472892
+	ideas 0.0476341
+	virality 0.0515638
+	style 0.0574945
+	tech-demo 0.0587915
+	what was it like working with early computers? 0.0629793
+keyword newness
+	what was it like working with early computers? 0.0200144
+	virality 0.0279652
+	wikipedia 0.0365896
+	innovation 0.0374363
+	techpositive 0.0463187
+	new media 0.0472892
+	novelty 0.0493195
+	media 0.071304
+	history 0.0876037
+	ideas 0.0885058
+keyword noise
+	randomness 0.00990445
+	possibility 0.0243751
+	gardening 0.0326717
+	generative process 0.0389938
+	choosing 0.0389938
+	working iteratively generatively in a process that can go on forever? 0.0389938
+	foraging 0.0405455
+	generative 0.0424739
+	number 0.0425956
+	random 0.0425956
+keyword noninteractivity
+	image 0
+	business 0.0223881
+	addiction 0.026485
+	music 0.0420606
+	accessibility 0.046959
+	insight 0.0532705
+	creative control 0.0539373
+	kids 0.056735
+	creative coding 0.0584443
+	creative coders 0.0587747
+keyword noosphere
+	live 0.0157203
+	communication 0.0192797
+	globalization 0.0193839
+	infrastructure 0.0196973
+	consumer 0.0232463
+	intelligence 0.0258023
+	society 0.0301018
+	dreams 0.0311097
+	twitter videogames 0.033025
+	english 0.0331443
+keyword nostalgia
+	museums 0.0139308
+	information as weapon 0.0206838
+	toys 0.0280975
+	participation 0.0408903
+	present shock 0.0466751
+	history 0.0469726
+	organizations 0.0496446
+	hackers 0.0517787
+	real world 0.0520678
+	eyebeam 0.0550623
+keyword novelty
+	what was it like working with early computers? 0.0364417
+	newness 0.0493195
+	virality 0.0578556
+	old media 0.0669862
+	innovation 0.0785474
+	wikipedia 0.0800497
+	history 0.0809361
+	obsolescence 0.0924306
+	techpositive 0.0956338
+	eyewriter 0.0962969
+keyword number
+	random 0
+	code is messy 0.0124943
+	chance 0.0284274
+	generative process 0.0308953
+	working iteratively generatively in a process that can go on forever? 0.0308953
+	choosing 0.0308953
+	god 0.0318193
+	organic 0.0346209
+	gardening 0.0350787
+	randomness 0.0364164
+keyword nytimes
+	camera 0.0128436
+	legibility 0.033532
+	machine vision 0.043992
+	street art 0.0455001
+	statistics 0.0558586
+	cameras 0.0558802
+	politics 0.0642712
+	data visualization 0.0665177
+	stock market 0.0677624
+	face tracking 0.0685471
+keyword object recognition
+	ubiquitous computing 0.00881868
+	sensor 0.0176404
+	data collection 0.0343694
+	rhetoric 0.040339
+	machine vision 0.0712343
+	street art 0.0748451
+	cameras 0.108961
+	face tracking 0.114236
+	nytimes 0.11503
+	camera 0.117103
+keyword objects
+	magic 0.00535742
+	product 0.0224277
+	influences 0.0225281
+	intuition 0.0230496
+	infinite in all directions 0.0259339
+	process 0.0264544
+	surprise 0.0274321
+	collaboration with machines 0.0313244
+	formalism 0.0321506
+	exploration 0.0372309
+keyword obsolescence
+	problem of newness 0.0246434
+	old media 0.028445
+	eyebeam 0.044897
+	preservation 0.0484492
+	digital art 0.0497319
+	information as weapon 0.061098
+	eyewriter 0.0673999
+	organizations 0.0789062
+	archiving 0.0789555
+	prosthetic 0.0797192
+keyword ocd
+	what do you find beautiful about code? 0
+	syntax 0
+	tron 0.0142462
+	cellular automata 0.0175578
+	cosmogeny 0.022229
+	emergence 0.0223208
+	equilibrium 0.0252438
+	organic 0.0408042
+	code is messy 0.0436838
+	artificial life 0.044074
+keyword old history
+	awkward 0.0186207
+	transience 0.0330651
+	afterlife 0.0488084
+	death 0.0503894
+	preservation 0.066489
+	apocalypse 0.0687938
+	lifetracking 0.0717643
+	digital art 0.074199
+	archiving 0.0828242
+	memory 0.0913433
+keyword old media
+	obsolescence 0.028445
+	problem of newness 0.0507919
+	information as weapon 0.0549069
+	eyebeam 0.0570505
+	novelty 0.0669862
+	history 0.0702245
+	nostalgia 0.0708792
+	museums 0.0727635
+	eyewriter 0.0751719
+	digital art 0.0762909
+keyword opacity
+	diy 0.00944297
+	english 0.0122981
+	weird 0.0126833
+	technology 0.0137216
+	twitter videogames 0.0137588
+	emotion 0.0175618
+	utopia 0.0198342
+	r&d 0.0230368
+	problem solving 0.0309427
+	noosphere 0.0351028
+keyword open frameworks
+	toolkits 0.014654
+	open source 0.0151041
+	international 0.0242162
+	nerd 0.0268711
+	tribe 0.0287909
+	economics 0.037182
+	counterculture 0.0372566
+	esoteric 0.0372566
+	humor 0.0427161
+	sharing 0.043076
+keyword open paths
+	art and security 0.0169129
+	facebook 0.0180115
+	gadget 0.021227
+	self 0.0250827
+	policy 0.0280572
+	gadgets 0.0397924
+	existence 0.0423598
+	apple 0.0453069
+	twitter 0.0489265
+	human life 0.0490622
+keyword open software
+	information overload 0.00310137
+	criticality 0.0067528
+	social engagment 0.00864633
+	creative misuse 0.0190561
+	technological progress 0.0199309
+	computational power 0.0204207
+	openness 0.0218663
+	humanity 0.0316646
+	art history 0.0323776
+	social 0.0328052
+keyword open source
+	international 0.00960371
+	toolkits 0.0128123
+	open frameworks 0.0151041
+	economics 0.0220859
+	humor 0.0278569
+	nerd 0.0288386
+	education 0.0319909
+	tribe 0.0424779
+	toolkit 0.0466721
+	sharing 0.0502031
+keyword openness
+	computational power 0.00757919
+	creative misuse 0.00767372
+	technological progress 0.0122069
+	social engagment 0.0135634
+	criticality 0.0178764
+	open software 0.0218663
+	information overload 0.0222115
+	project examples 0.0242306
+	focus 0.0255629
+	art history 0.025892
+keyword operating system
+	c++ 0
+	design 0.0188889
+	pleasure 0.0246742
+	images 0.0246742
+	food 0.0249929
+	poetry 0.0259426
+	boring 0.0274285
+	beauty 0.0280333
+	aesthetics 0.0303272
+	abstraction 0.0319185
+keyword operating systems
+	fantasy 0.01568
+	challenges 0.0176155
+	storytelling 0.0196348
+	mind 0.0214085
+	arabic 0.0219861
+	sentiment analysis 0.0233344
+	augmented reality 0.0244708
+	clouds 0.0274821
+	inexactitude 0.0276367
+	limits of the computer 0.0282953
+keyword order
+	messiness 0
+	parameters 0.0105899
+	tron 0.0379408
+	ocd 0.0493818
+	what do you find beautiful about code? 0.0493818
+	syntax 0.0493818
+	cellular automata 0.0512957
+	equilibrium 0.053761
+	art and science 0.0563001
+	universe 0.0572601
+keyword organic
+	god 0.0134735
+	probability 0.0212939
+	cosmogeny 0.0302376
+	chance 0.0307496
+	code is messy 0.0319811
+	emergence 0.0322715
+	random 0.0346209
+	number 0.0346209
+	syntax 0.0408042
+	what do you find beautiful about code? 0.0408042
+keyword organizations
+	identity 0.014269
+	design fiction 0.0192481
+	toys 0.0247206
+	hack 0.0334543
+	eyebeam 0.0342844
+	real world 0.0347492
+	information as weapon 0.0417742
+	present shock 0.0452944
+	relationships 0.0478628
+	people 0.0489529
+keyword originality
+	shifts 0.027518
+	veterans 0.027518
+	apporopriation 0.0334537
+	frontier 0.0369248
+	homogeneity 0.0388042
+	memes 0.0450857
+	give everything away 0.0576297
+	ars electronica 0.0635465
+	curation 0.0658947
+	youtube 0.0720804
+keyword overview
+	zoom 0.0603306
+	space 0.0708924
+	perspective 0.0839711
+	phenomena 0.10407
+	atmosphere 0.110473
+	flow 0.121831
+	gestalt 0.124479
+	scale 0.156164
+	song: fourtet peace for earth 0.158098
+	synthetic biology 0.16199
+keyword own the tool
+	seamlessness 0.00925889
+	embodiment 0.00929068
+	digital culture 0.010083
+	staring at screens 0.0115806
+	experience 0.0124447
+	self reflection 0.0213571
+	sadness 0.0213571
+	digital natives 0.0213571
+	conviction 0.0241862
+	dichotomy 0.0266405
+keyword painting
+	sensation 0.0141496
+	improvement 0.0146844
+	uncertainty 0.0235353
+	struggle with technology 0.0240356
+	the digital divide 0.0299761
+	tangibility 0.0299761
+	coding 0.0373613
+	gesture 0.0378035
+	thinking with code 0.0388829
+	thinking through code 0.0389399
+keyword paola antonelli
+	rhetoric 0.145441
+	ubiquitous computing 0.147826
+	sensor 0.148001
+	object recognition 0.15206
+	data collection 0.163125
+	realworld 0.168199
+	signals 0.183379
+	machine vision 0.201588
+	flow 0.203426
+	street art 0.212118
+keyword parameter space
+	generative 0.0103409
+	does coding enable you to take risks because there's no physical consequence? 0.0499233
+	noise 0.0517164
+	randomness 0.054366
+	choosing 0.0709686
+	generative process 0.0709686
+	working iteratively generatively in a process that can go on forever? 0.0709686
+	possibility 0.0722643
+	motivational 0.0739823
+	gardening 0.0831863
+keyword parameters
+	order 0.0105899
+	messiness 0.0105899
+	tron 0.0397801
+	equilibrium 0.0521332
+	syntax 0.0528583
+	ocd 0.0528583
+	what do you find beautiful about code? 0.0528583
+	cellular automata 0.0578082
+	art and science 0.0635455
+	universe 0.0668721
+keyword participation
+	present shock 0.0115607
+	social 0.0178647
+	telepathy 0.020951
+	real world 0.0258716
+	performance art 0.0297286
+	people 0.0307286
+	toys 0.0316127
+	the present 0.032134
+	connectivity 0.0341206
+	hack 0.039429
+keyword particles
+	geometry 0
+	motion 0.00420856
+	carl sims 0.0155966
+	science 0.0177268
+	representation 0.0199434
+	evolution 0.0213409
+	book 0.0238977
+	computation 0.0263055
+	stress 0.027183
+	challenge 0.027183
+keyword partnership
+	teams 0
+	connections 0.0247527
+	interdisciplinary 0.0295802
+	john maeda 0.0300804
+	mortality 0.0465068
+	working with others 0.0507541
+	passion 0.0644246
+	aesthetics and computation 0.0729066
+	media lab 0.074077
+	success 0.0784221
+keyword passing the baton
+	mentorship 0.0192818
+	mentors 0.0346276
+	kill the master 0.0413438
+	paul burke 0.0422385
+	anthropology 0.0470573
+	generations 0.0508825
+	thanks 0.0551592
+	heroes 0.0587516
+	robert hodgin 0.0597458
+	guru 0.059815
+keyword passion
+	media lab 0.023514
+	aesthetics and computation 0.0241726
+	working with others 0.0383129
+	synergy 0.0391003
+	john maeda 0.0407498
+	life 0.0417936
+	commercial art 0.0517483
+	teaching 0.0580177
+	concept 0.0622531
+	thinkerer 0.0622531
+keyword pattern
+	microscope 0.0266423
+	gestalt 0.0544857
+	complexity 0.0614217
+	vision 0.0620264
+	atmosphere 0.0625748
+	revelation 0.0649193
+	flow 0.0655745
+	debug screen 0.0656599
+	signals 0.0658603
+	simplicity 0.0721943
+keyword paul burke
+	anthropology 0.00539795
+	mentors 0.00765595
+	generations 0.0087557
+	heroes 0.0318118
+	robert hodgin 0.0364862
+	mentorship 0.0380041
+	guru 0.038562
+	passing the baton 0.0422385
+	ars electronica 0.0425978
+	give everything away 0.0464127
+keyword paul rand
+	bravado 0
+	ars electronica 0.0233111
+	mentorship 0.0413379
+	give everything away 0.0463925
+	mentors 0.0485497
+	paul burke 0.0498819
+	generations 0.0504473
+	anthropology 0.0533153
+	passing the baton 0.060257
+	apporopriation 0.0630861
+keyword people
+	real world 0.0155919
+	hack 0.0184186
+	telepathy 0.0195825
+	present shock 0.0199886
+	connectivity 0.0210673
+	performance art 0.0244089
+	the present 0.0267144
+	social 0.0270011
+	participation 0.0307286
+	transparency 0.0334067
+keyword perception
+	understanding 0.00745604
+	visual thinking 0.0133796
+	digital 0.0134966
+	antihuman 0.0134966
+	limitations 0.015565
+	chaos 0.019539
+	motivation 0.024677
+	uture 0.0261027
+	glitch 0.0275671
+	god mode 0.027742
+keyword performance
+	art and code 0.0143716
+	beginnings 0.021254
+	demo 0.0248096
+	creative coders 0.0308845
+	branching 0.0359812
+	knowledge 0.0377858
+	learning 0.0438877
+	creative control 0.0449091
+	fun 0.0502742
+	creativity 0.0542405
+keyword performance art
+	the present 0.00279727
+	connectivity 0.0071371
+	telepathy 0.00952916
+	social 0.0130074
+	man versus machine 0.024082
+	people 0.0244089
+	transparency 0.0253875
+	present shock 0.0269392
+	internet 0.0280439
+	participation 0.0297286
+keyword personal data
+	quantified self 0.0185655
+	survival 0.0242371
+	memory 0.0252051
+	travel 0.0279159
+	philsophy 0.0280242
+	documentation 0.0321501
+	human life 0.0321501
+	existence 0.037315
+	maps 0.0405868
+	lifetracking 0.0414681
+keyword perspective
+	atmosphere 0.029897
+	zoom 0.0428596
+	gestalt 0.0458396
+	flow 0.0487295
+	overview 0.0839711
+	phenomena 0.0852736
+	pattern 0.0861259
+	invisibility 0.100436
+	microscope 0.102368
+	space 0.102656
+keyword phenomena
+	zoom 0.0543829
+	space 0.0554217
+	scale 0.0566652
+	biology and code 0.0615745
+	nature 0.0689055
+	invisibility 0.0786574
+	synthetic biology 0.0810974
+	atmosphere 0.0812512
+	gestalt 0.0815263
+	perspective 0.0852736
+keyword philosophy
+	artificial intelligence 0.00738598
+	coevolution 0.00959099
+	error 0.0146608
+	tragedy 0.0166247
+	hope 0.0172227
+	cinema 0.0180172
+	virtual reality 0.0186425
+	networks 0.0270586
+	immersion 0.0321878
+	understanding 0.0354389
+keyword philsophy
+	survival 0.0040064
+	human life 0.0112804
+	documentation 0.0112804
+	existence 0.0115346
+	apple 0.02482
+	personal data 0.0280242
+	self 0.036942
+	memory 0.0401443
+	quantified self 0.0408383
+	maps 0.0411238
+keyword physicality
+	aesthetic experience 0.0100119
+	digital meets physical 0.0130772
+	virtuosity 0.0167484
+	fluency 0.0183231
+	code 0.0185211
+	time 0.01958
+	frustration 0.0215705
+	choices 0.0274031
+	why 0.0298066
+	legos 0.0304271
+keyword physics
+	artificial life 0.00901816
+	nature of code 0.0168815
+	multiverse 0.0179148
+	biology 0.0248332
+	rules 0.0272789
+	simulation 0.0327253
+	dna 0.0332424
+	emergence 0.0339581
+	cellular automata 0.0349661
+	cosmogeny 0.0355687
+keyword play
+	techno 0.0131404
+	subliminal 0.0131404
+	instrument 0.0217368
+	making things 0.0224633
+	drawing 0.0243646
+	mind and hand 0.0277246
+	liveness 0.0291705
+	feedback 0.0293525
+	audiovisualization 0.0332379
+	synesthesia 0.0368725
+keyword playfulness
+	what comes after digital? 0.00855362
+	tweaking 0.0154534
+	graphic design 0.0182357
+	how did you get into working with code? 0.0182357
+	illusion 0.0241527
+	project example 0.0241527
+	thinking by doing 0.0336176
+	gratitude 0.0392808
+	being 0.0392808
+	sound 0.0444144
+keyword pleasure
+	images 0
+	beauty 0.00639552
+	poetry 0.00733903
+	videogames 0.008866
+	design 0.0106324
+	subversion 0.0121783
+	food 0.0146264
+	aesthetics 0.0167453
+	operating system 0.0246742
+	c++ 0.0246742
+keyword poetry
+	videogames 0.00728117
+	images 0.00733903
+	pleasure 0.00733903
+	food 0.00794461
+	aesthetics 0.0094067
+	subversion 0.0115163
+	beauty 0.0133515
+	design 0.0167945
+	boring 0.0183825
+	feeling 0.0187133
+keyword policy
+	art and security 0.0209308
+	love 0.0261618
+	security 0.0265992
+	open paths 0.0280572
+	surveillance 0.0339832
+	gadgets 0.0381407
+	sensors 0.0388834
+	facebook 0.0434343
+	wearables 0.0448457
+	teleportation 0.0451339
+keyword politics
+	microsoft 0.0123485
+	stock market 0.0164531
+	library 0.0226105
+	data visualization 0.0241974
+	statistics 0.0293669
+	data 0.0492216
+	ubiquity 0.0555141
+	kinect 0.0556639
+	internet culture 0.056988
+	camera 0.0579763
+keyword popular culture
+	art world 0.00790974
+	zach lieberman 0.020481
+	fat 0.02434
+	responsibility 0.02726
+	education 0.0380718
+	community 0.040913
+	hacker 0.0409999
+	collaboration 0.0438543
+	economics 0.044993
+	humor 0.0454354
+keyword possibility
+	gardening 0.0125959
+	foraging 0.017511
+	noise 0.0243751
+	randomness 0.0304265
+	random 0.0424199
+	number 0.0424199
+	chance 0.0424612
+	motivational 0.0465243
+	flocking 0.0528009
+	code is messy 0.0545698
+keyword post-digital
+	growth 0.0139963
+	energy 0.0154869
+	visual cortex 0.0202246
+	failure 0.0287923
+	spiritual 0.0291788
+	improvement 0.0301966
+	interactivity 0.0302588
+	zen 0.0366679
+	tradition 0.0367276
+	uncertainty 0.0384654
+keyword power
+	cyborg 0.00207745
+	writing 0.0114666
+	fantasy technology 0.0122449
+	science fiction 0.0165931
+	singularity 0.0179367
+	users 0.0225275
+	trendspotting 0.0262386
+	solutions 0.0302665
+	futurism 0.0312022
+	apps 0.0313669
+keyword prank
+	money 0.0253474
+	hackathon 0.032127
+	acu 0.0358306
+	commercial art 0.0443554
+	synergy 0.0466536
+	eyeo 0.0539051
+	advertising 0.0633837
+	life 0.0673328
+	flash 0.0676482
+	media lab 0.0676553
+keyword prediction
+	confusion 0.0190668
+	visualization 0.0201121
+	simplicity 0.0294014
+	debug screen 0.0385307
+	revelation 0.0411806
+	reading 0.0432533
+	glitch 0.0469607
+	curiosity 0.0534312
+	data visualization 0.0556611
+	new aesthetic 0.0563565
+keyword present shock
+	participation 0.0115607
+	real world 0.0148501
+	telepathy 0.0174433
+	social 0.0191874
+	people 0.0199886
+	performance art 0.0269392
+	hack 0.0280999
+	connectivity 0.0290273
+	the present 0.029704
+	toys 0.029704
+keyword presentation
+	chrome 0.00712302
+	thinking 0.0134403
+	challenge 0.0226582
+	stress 0.0226582
+	imagination 0.0243806
+	virtual 0.0333124
+	story 0.0341891
+	math 0.0366009
+	discovery 0.0407469
+	carl sims 0.0419355
+keyword preservation
+	digital art 0.0249252
+	problem of newness 0.032391
+	obsolescence 0.0484492
+	archiving 0.0554261
+	eyebeam 0.0582802
+	death 0.0598135
+	old history 0.066489
+	transience 0.0767273
+	old media 0.0768672
+	eyewriter 0.0820915
+keyword privacy
+	location 0.0115632
+	maps 0.0121148
+	data ownership 0.0335444
+	gps 0.0359251
+	apple 0.0410407
+	human life 0.0440671
+	documentation 0.0440671
+	personal data 0.0474072
+	travel 0.0493409
+	survival 0.0498366
+keyword probability
+	god 0.0113726
+	organic 0.0212939
+	chance 0.021328
+	flocking 0.0278412
+	world building 0.0380096
+	random 0.0421977
+	number 0.0421977
+	logic 0.045113
+	code is messy 0.045569
+	simulation 0.0465794
+keyword problem of newness
+	obsolescence 0.0246434
+	digital art 0.0255238
+	preservation 0.032391
+	old media 0.0507919
+	eyewriter 0.0555616
+	eyebeam 0.0594235
+	prosthetic 0.0669587
+	archiving 0.0789471
+	information as weapon 0.0833532
+	death 0.0914307
+keyword problem solving
+	emotion 0.017041
+	diy 0.0216309
+	utopia 0.0217993
+	r&d 0.0224372
+	technology 0.0229348
+	english 0.0254475
+	audience 0.0290324
+	literacy 0.0304662
+	opacity 0.0309427
+	program or be programmed 0.031562
+keyword process
+	product 0.00746566
+	surprise 0.012334
+	infinite in all directions 0.0202654
+	magic 0.0211108
+	jewelry 0.0263122
+	objects 0.0264544
+	serendipity 0.0341481
+	influences 0.0367113
+	intuition 0.0385205
+	minecraft 0.0405565
+keyword processing
+	software 0.011666
+	career 0.0151742
+	hybridity 0.0301256
+	design by numbers 0.0301556
+	toolkit 0.0305341
+	commercialism 0.0342355
+	teaching 0.0459511
+	nerd 0.0490705
+	life 0.0653226
+	mortality 0.0664561
+keyword product
+	surprise 0.00706948
+	process 0.00746566
+	magic 0.0174308
+	objects 0.0224277
+	infinite in all directions 0.0244899
+	influences 0.0294742
+	intuition 0.0313453
+	jewelry 0.0336308
+	serendipity 0.0342362
+	design process 0.0357988
+keyword program or be programmed
+	literacy 0.00332149
+	attention 0.00412116
+	mirror 0.00836785
+	progress 0.0129335
+	audience 0.013905
+	serious 0.0149997
+	distraction 0.0255755
+	focus 0.0266934
+	fluxus 0.0287535
+	virus 0.0291058
+keyword programming
+	improvization 0.0179013
+	thinking through code 0.0205166
+	exploration 0.0211742
+	formalism 0.0250767
+	thinking with code 0.0255328
+	gui 0.0260654
+	mouse 0.0260654
+	inversion 0.0260654
+	think different 0.0260654
+	keyboard 0.0260654
+keyword progress
+	audience 0.00736964
+	literacy 0.0102112
+	attention 0.0128224
+	program or be programmed 0.0129335
+	distraction 0.0130235
+	focus 0.015031
+	virus 0.0163028
+	mirror 0.0198372
+	fluxus 0.0214256
+	project examples 0.0259614
+keyword project example
+	illusion 0
+	how did you get into working with code? 0.00913001
+	graphic design 0.00913001
+	being 0.0164491
+	gratitude 0.0164491
+	what comes after digital? 0.0173148
+	playfulness 0.0241527
+	children 0.0377908
+	tweaking 0.0380263
+	thinking by doing 0.04092
+keyword project examples
+	virus 0.0106373
+	focus 0.0116181
+	art history 0.0120841
+	empathy 0.0129562
+	distraction 0.0129913
+	the future 0.0139557
+	creative misuse 0.020646
+	openness 0.0242306
+	audience 0.0251077
+	progress 0.0259614
+keyword projection
+	experience design 0.0115037
+	invention 0.0148435
+	infinite conversation 0.0210433
+	engineering 0.0241158
+	language 0.0260484
+	staring at screens 0.0264353
+	dichotomy 0.0279043
+	seamlessness 0.02926
+	malevich 0.0294708
+	conviction 0.0317286
+keyword prosthetic
+	eyewriter 0.0123545
+	problem of newness 0.0669587
+	digital art 0.0685108
+	obsolescence 0.0797192
+	old media 0.0870363
+	preservation 0.0917913
+	novelty 0.102797
+	eyebeam 0.123648
+	old history 0.134886
+	information as weapon 0.13853
+keyword public
+	research 0.00152508
+	arabic 0.0077125
+	real and virtual 0.0121027
+	machine aesthetics 0.0129071
+	cognition 0.0140459
+	mind 0.0232378
+	why? 0.0253105
+	authorship 0.0255293
+	abstraction 0.0261092
+	fantasy 0.0269559
+keyword public/private
+	trace of your life 0.0110777
+	drones 0.0158416
+	darpa 0.0158416
+	military technology 0.0391393
+	data ownership 0.0464949
+	gps 0.0516152
+	location 0.0662916
+	surveillance 0.07509
+	privacy 0.0777856
+	maps 0.0817925
+keyword quantified self
+	memory 0.0109877
+	personal data 0.0185655
+	lifetracking 0.0229135
+	apocalypse 0.0256373
+	travel 0.0300613
+	survival 0.0378844
+	philsophy 0.0408383
+	afterlife 0.047097
+	human life 0.0480565
+	documentation 0.0480565
+keyword questions
+	reality 0.00497382
+	realness 0.00787185
+	bugs 0.0168279
+	rendering 0.0168881
+	artificiality 0.0198813
+	story 0.0235689
+	debugging 0.0246046
+	meta 0.0268794
+	recursion 0.0268794
+	dysfunction 0.0338262
+keyword r&d
+	utopia 0.003274
+	english 0.0109016
+	diy 0.0191296
+	problem solving 0.0224372
+	opacity 0.0230368
+	emotion 0.0244023
+	technology 0.0266988
+	live 0.0298244
+	society 0.0308916
+	consumer 0.032313
+keyword random
+	number 0
+	code is messy 0.0124943
+	chance 0.0284274
+	working iteratively generatively in a process that can go on forever? 0.0308953
+	generative process 0.0308953
+	choosing 0.0308953
+	god 0.0318193
+	organic 0.0346209
+	gardening 0.0350787
+	randomness 0.0364164
+keyword randomness
+	noise 0.00990445
+	choosing 0.0290955
+	generative process 0.0290955
+	working iteratively generatively in a process that can go on forever? 0.0290955
+	possibility 0.0304265
+	gardening 0.0356842
+	random 0.0364164
+	number 0.0364164
+	code is messy 0.0440256
+	generative 0.0443831
+keyword reading
+	new aesthetic 0.0202229
+	algorithms 0.0230098
+	truth 0.0248202
+	gesture recognition 0.0293871
+	kinect 0.0307043
+	bots 0.0308237
+	cities 0.0401327
+	tragedy 0.04084
+	prediction 0.0432533
+	hope 0.0455238
+keyword real and virtual
+	public 0.0121027
+	research 0.0136231
+	why? 0.0136255
+	authorship 0.0147006
+	abstraction 0.0148421
+	machine aesthetics 0.0159183
+	arabic 0.0175743
+	useful 0.0245195
+	cognition 0.0254497
+	fantasy 0.0319275
+keyword real world
+	hack 0.0136966
+	present shock 0.0148501
+	people 0.0155919
+	participation 0.0258716
+	telepathy 0.0270032
+	toys 0.027793
+	design fiction 0.0291996
+	identity 0.0301354
+	social 0.0317827
+	connectivity 0.0342038
+keyword reality
+	questions 0.00497382
+	realness 0.0128102
+	bugs 0.016236
+	rendering 0.0198933
+	story 0.0208638
+	artificiality 0.0230271
+	debugging 0.0244673
+	recursion 0.0297663
+	meta 0.0297663
+	evolution 0.0339419
+keyword realness
+	questions 0.00787185
+	reality 0.0128102
+	rendering 0.0133504
+	artificiality 0.0180073
+	bugs 0.0212902
+	meta 0.024946
+	recursion 0.024946
+	dysfunction 0.0259989
+	debugging 0.0278379
+	story 0.0282818
+keyword realworld
+	paola antonelli 0.168199
+	sensor 0.290168
+	ubiquitous computing 0.293805
+	data collection 0.297516
+	object recognition 0.300646
+	rhetoric 0.306252
+	hallucination 0.346747
+	social engineering 0.350574
+	leadership 0.350574
+	signals 0.350928
+keyword recursion
+	meta 0
+	artificiality 0.00707668
+	debugging 0.0171757
+	bugs 0.0196043
+	future of cinema 0.0211932
+	realness 0.024946
+	questions 0.0268794
+	virtual reality 0.029242
+	reality 0.0297663
+	god mode 0.0299205
+keyword relationships
+	assistive technology 0.00729074
+	design fiction 0.0311348
+	identity 0.0349136
+	twitter 0.0353937
+	social media 0.0386723
+	hack 0.0410554
+	organizations 0.0478628
+	archiving 0.0493676
+	hacking 0.0540068
+	real world 0.0543013
+keyword rendering
+	realness 0.0133504
+	questions 0.0168881
+	virtual 0.0182956
+	reality 0.0198933
+	story 0.0235379
+	dysfunction 0.0280852
+	artificiality 0.0311228
+	machine aesthetics 0.0322942
+	bugs 0.0334135
+	challenge 0.0362152
+keyword representation
+	science 0.00703554
+	computation 0.0103423
+	evolution 0.0111879
+	motion 0.0182725
+	algorithm 0.0195595
+	particles 0.0199434
+	geometry 0.0199434
+	book 0.0257729
+	uncanny 0.0292548
+	carl sims 0.0336033
+keyword research
+	public 0.00152508
+	arabic 0.00687424
+	cognition 0.0127689
+	machine aesthetics 0.0134024
+	real and virtual 0.0136231
+	mind 0.0217205
+	storytelling 0.025465
+	fantasy 0.0265314
+	why? 0.0267815
+	authorship 0.0270064
+keyword responsibility
+	art world 0.0197592
+	zach lieberman 0.0199273
+	fat 0.0214984
+	crowdsourcing 0.0215746
+	popular culture 0.02726
+	hacker 0.0289303
+	demo scene 0.0298954
+	everyday 0.039434
+	github 0.0425327
+	tech-demo 0.0428439
+keyword revelation
+	debug screen 0.00367888
+	confusion 0.0230603
+	simplicity 0.0242944
+	prediction 0.0411806
+	visualization 0.0506572
+	legibility 0.0555775
+	curiosity 0.0571036
+	vision 0.0601072
+	microscope 0.0621006
+	data visualization 0.0637901
+keyword rgbd
+	improvization 0.0104265
+	formalism 0.015008
+	programming 0.02694
+	thinking through code 0.0359889
+	coding 0.0395118
+	exploration 0.0403824
+	infinite in all directions 0.0418058
+	sketching 0.0420648
+	objects 0.0466623
+	how does the work feed into itself? 0.0470981
+keyword rhetoric
+	object recognition 0.040339
+	ubiquitous computing 0.0467793
+	sensor 0.05589
+	machine vision 0.0563112
+	street art 0.066761
+	data collection 0.0746561
+	nytimes 0.0939559
+	signals 0.09761
+	camera 0.1001
+	cameras 0.108172
+keyword robert hodgin
+	guru 0.00289007
+	heroes 0.00575469
+	thanks 0.0208628
+	doing with others 0.0289465
+	anthropology 0.0335271
+	forums 0.035683
+	paul burke 0.0364862
+	generations 0.0377573
+	ego 0.0388079
+	mentors 0.039064
+keyword rules
+	simulation 0.00601037
+	multiverse 0.0138371
+	creation 0.0177875
+	artificial life 0.0243869
+	physics 0.0272789
+	infinity 0.0317076
+	emergence 0.0345906
+	cosmogeny 0.0347659
+	biology 0.0390012
+	nature of code 0.0421501
+keyword sadness
+	self reflection 0
+	digital natives 0
+	conviction 0.00723519
+	embodiment 0.0121622
+	digital culture 0.0176357
+	serious 0.0178041
+	own the tool 0.0213571
+	mirror 0.0215617
+	interconnectedness 0.0215863
+	experience design 0.0264734
+keyword scale
+	invisibility 0.0357446
+	visual effects 0.0382475
+	biology and code 0.042438
+	metaphor 0.0436939
+	genetics 0.0505927
+	phenomena 0.0566652
+	dna 0.0640825
+	nature 0.0692095
+	biology 0.0723033
+	gestalt 0.0799872
+keyword science
+	evolution 0.00513393
+	representation 0.00703554
+	computation 0.0173768
+	motion 0.0175954
+	geometry 0.0177268
+	particles 0.0177268
+	algorithm 0.0208957
+	book 0.0302034
+	uncanny 0.0320848
+	carl sims 0.0329218
+keyword science fiction
+	users 0.00645463
+	writing 0.00683693
+	power 0.0165931
+	cyborg 0.0185597
+	dreams 0.0191441
+	apps 0.0208132
+	intelligence 0.0227099
+	singularity 0.0264997
+	fantasy technology 0.027966
+	globalization 0.0322271
+keyword sculpture
+	discovery 0.0117109
+	computer 0.0196931
+	light 0.0198031
+	installation 0.0245445
+	imagination 0.0258218
+	ambiguity 0.0270103
+	form 0.031935
+	architecture 0.0330413
+	thinking 0.0369431
+	operating system 0.0434417
+keyword seamlessness
+	staring at screens 0.00286131
+	experience 0.0057758
+	own the tool 0.00925889
+	embodiment 0.0161488
+	dichotomy 0.0176965
+	digital culture 0.0192669
+	taste 0.022851
+	experience design 0.0255963
+	self reflection 0.0266098
+	sadness 0.0266098
+keyword security
+	sensors 0.0134007
+	surveillance 0.0182041
+	love 0.0192911
+	policy 0.0265992
+	data mining 0.0340246
+	sex and tech 0.0366741
+	wearables 0.0426328
+	sex 0.0448683
+	art and security 0.0460744
+	dystopia 0.0496282
+keyword self
+	gadget 0.0170464
+	facebook 0.0171138
+	open paths 0.0250827
+	existence 0.0343172
+	twitter 0.0355351
+	philsophy 0.036942
+	art and security 0.0389356
+	survival 0.0409181
+	human life 0.0411631
+	documentation 0.0411631
+keyword self expression
+	design and art 0.0178116
+	what does post-digital mean? 0.0221325
+	laughter 0.0336474
+	why are you attracted to abstraction?
+abstraction 0.0338266
+	expression 0.0354995
+	meaning 0.0360173
+	infinite game 0.0381397
+	completion 0.0381397
+	own the tool 0.0381644
+	experience 0.0382317
+keyword self reflection
+	sadness 0
+	digital natives 0
+	conviction 0.00723519
+	embodiment 0.0121622
+	digital culture 0.0176357
+	serious 0.0178041
+	own the tool 0.0213571
+	mirror 0.0215617
+	interconnectedness 0.0215863
+	experience design 0.0264734
+keyword sensation
+	improvement 0.0122887
+	painting 0.0141496
+	tangibility 0.0234628
+	the digital divide 0.0234628
+	kids 0.0304514
+	mutlisensory 0.0340325
+	uncertainty 0.0371277
+	struggle with technology 0.0373891
+	gesture 0.0393062
+	post-digital 0.0424612
+keyword sensor
+	ubiquitous computing 0.0093031
+	object recognition 0.0176404
+	data collection 0.0208584
+	rhetoric 0.05589
+	machine vision 0.0881421
+	street art 0.0906701
+	cameras 0.122154
+	face tracking 0.126161
+	nytimes 0.132087
+	camera 0.133611
+keyword sensors
+	security 0.0134007
+	data mining 0.021091
+	love 0.0222824
+	sex and tech 0.0234553
+	surveillance 0.0263246
+	sex 0.0342396
+	policy 0.0388834
+	ubiquity 0.040297
+	wearables 0.0410882
+	data 0.0452
+keyword sentiment analysis
+	clouds 0.00696811
+	challenges 0.00747754
+	social dynamics 0.0162886
+	inexactitude 0.0219332
+	operating systems 0.0233344
+	storytelling 0.0240536
+	mind 0.0285002
+	change 0.0285679
+	twitter videogames 0.03143
+	augmented reality 0.0341323
+keyword serendipity
+	minecraft 0.0147616
+	surprise 0.0285699
+	process 0.0341481
+	product 0.0342362
+	jewelry 0.040373
+	design process 0.040532
+	motivational 0.0406261
+	wonder 0.0438001
+	foraging 0.0443693
+	epiphany 0.0461373
+keyword serious
+	mirror 0.00846868
+	program or be programmed 0.0149997
+	attention 0.0151426
+	interconnectedness 0.0169306
+	conviction 0.017614
+	digital natives 0.0178041
+	sadness 0.0178041
+	self reflection 0.0178041
+	literacy 0.0182416
+	progress 0.0276417
+keyword sex
+	sex and tech 0.0190058
+	data 0.0244163
+	ubiquity 0.0300793
+	data mining 0.0311057
+	internet culture 0.0316505
+	wearables 0.0316889
+	sensors 0.0342396
+	journalism 0.0350728
+	love 0.0362999
+	dystopia 0.0381478
+keyword sex and tech
+	data mining 0.0121986
+	ubiquity 0.0185821
+	sex 0.0190058
+	data 0.0217449
+	sensors 0.0234553
+	security 0.0366741
+	love 0.0371845
+	big data 0.0412661
+	wearables 0.0439248
+	internet culture 0.0481382
+keyword sharing
+	tribe 0.0278209
+	toolkits 0.0375912
+	esoteric 0.0398213
+	counterculture 0.0398213
+	open frameworks 0.043076
+	the gift 0.0482093
+	generosity 0.0482093
+	open source 0.0502031
+	community 0.0519809
+	international 0.0586856
+keyword shifts
+	veterans 0
+	homogeneity 0.0258769
+	originality 0.027518
+	curation 0.0459049
+	apporopriation 0.0608512
+	frontier 0.0630883
+	give everything away 0.0667939
+	memes 0.0702266
+	youtube 0.0759779
+	visual culture 0.0778127
+keyword signals
+	microscope 0.0416169
+	pattern 0.0658603
+	flow 0.0730203
+	legibility 0.0789863
+	revelation 0.0934053
+	debug screen 0.0964368
+	nytimes 0.0971075
+	rhetoric 0.09761
+	machine vision 0.102858
+	atmosphere 0.108993
+keyword simplicity
+	confusion 0.0137687
+	debug screen 0.02062
+	revelation 0.0242944
+	prediction 0.0294014
+	visualization 0.0296576
+	curiosity 0.0349769
+	vision 0.0436378
+	glitch 0.0455425
+	complexity 0.0531568
+	digital 0.0607733
+keyword simulation
+	rules 0.00601037
+	creation 0.0135415
+	multiverse 0.0174056
+	infinity 0.0279955
+	artificial life 0.0303442
+	physics 0.0327253
+	cosmogeny 0.0394886
+	emergence 0.0395135
+	biology 0.0417376
+	logic 0.0433792
+keyword singularity
+	fantasy technology 0.0140229
+	cyborg 0.01699
+	power 0.0179367
+	writing 0.0197738
+	subjectivity 0.0249859
+	datatelling 0.0250326
+	science fiction 0.0264997
+	apps 0.0280965
+	users 0.0294372
+	journalism 0.0307443
+keyword sketching
+	coding 0.0108827
+	gesture 0.0159566
+	art and experience 0.025932
+	thinking through code 0.02831
+	art vs engineering 0.0315971
+	struggle with technology 0.0330364
+	improvization 0.0366176
+	mutlisensory 0.0366548
+	tangibility 0.0369446
+	the digital divide 0.0369446
+keyword skill
+	luck 0.0184799
+	generative art 0.0257077
+	songs: fourtet locked 0.0467682
+	how does the work feed into itself? 0.0537085
+	iterative 0.0537085
+	heuristics 0.0549791
+	jewelry 0.0619056
+	infinite in all directions 0.0728102
+	touch 0.0742211
+	rgbd 0.0839284
+keyword slow
+	journey 0.00643367
+	art vs engineering 0.0119602
+	synesthesia 0.0124291
+	mutlisensory 0.0134654
+	art and experience 0.0169453
+	feedback 0.0192736
+	tangibility 0.0240494
+	the digital divide 0.0240494
+	gesture 0.0245857
+	drawing 0.0246487
+keyword snarky
+	flash 0.00840485
+	brogrammers 0.0201904
+	counterculture 0.0371368
+	esoteric 0.0371368
+	doing with others 0.0387659
+	ego 0.0429023
+	generosity 0.0459609
+	the gift 0.0459609
+	acu 0.0504058
+	tribe 0.0509439
+keyword social
+	telepathy 0.0079445
+	performance art 0.0130074
+	the present 0.0149452
+	participation 0.0178647
+	connectivity 0.0190974
+	present shock 0.0191874
+	people 0.0270011
+	real world 0.0317827
+	open software 0.0328052
+	information overload 0.0328756
+keyword social dynamics
+	clouds 0.0105621
+	change 0.0124084
+	sentiment analysis 0.0162886
+	symbiosis 0.018479
+	challenges 0.0204183
+	imaginary 0.0220181
+	inexactitude 0.0228504
+	narrative 0.023738
+	text 0.0248219
+	immersion 0.0262744
+keyword social engagment
+	criticality 0.00480581
+	open software 0.00864633
+	information overload 0.00991381
+	creative misuse 0.0105437
+	openness 0.0135634
+	computational power 0.0139789
+	technological progress 0.0152817
+	art history 0.0263636
+	project examples 0.0305952
+	the future 0.0311869
+keyword social engineering
+	leadership 0
+	realworld 0.350574
+	paola antonelli 0.470896
+	overview 0.548712
+	flow 0.587757
+	perspective 0.595399
+	zoom 0.601375
+	rhetoric 0.614048
+	space 0.614687
+	signals 0.616793
+keyword social media
+	hacking 0.0161262
+	twitter 0.0203324
+	devices 0.0218762
+	technoptimism 0.0385447
+	relationships 0.0386723
+	hack 0.0415675
+	assistive technology 0.0423298
+	people 0.0440966
+	gadget 0.0447639
+	avatar 0.045627
+keyword society
+	iphone 0.00350079
+	consumer 0.00736652
+	infrastructure 0.0116663
+	communication 0.0132749
+	live 0.0144356
+	globalization 0.0185473
+	intelligence 0.0262157
+	mobile 0.0264507
+	network 0.0291631
+	noosphere 0.0301018
+keyword software
+	processing 0.011666
+	career 0.0195226
+	toolkit 0.0252672
+	hybridity 0.0261091
+	design by numbers 0.0279184
+	commercialism 0.0398609
+	nerd 0.0483544
+	teaching 0.0570853
+	international 0.0678192
+	humor 0.0686248
+keyword solutions
+	futurism 0.0059554
+	nano 0.0181608
+	dystopia 0.0204416
+	trendspotting 0.0210486
+	network security 0.0229242
+	teleportation 0.0230211
+	julian oliver 0.0238261
+	video art 0.0279111
+	wearables 0.0284066
+	fantasy technology 0.0284994
+keyword song: fourtet peace for earth
+	art and science 0.00620041
+	universe 0.0222332
+	synthetic biology 0.0389184
+	DNA 0.0528617
+	order 0.061875
+	messiness 0.061875
+	nature 0.0683893
+	parameters 0.0694077
+	nature of code 0.0741309
+	space 0.0888422
+keyword songs: fourtet locked
+	how does the work feed into itself? 0.00721507
+	iterative 0.00721507
+	heuristics 0.0229174
+	luck 0.0444715
+	skill 0.0467682
+	generative art 0.0510828
+	rgbd 0.0517926
+	methodology 0.0537469
+	system 0.0565641
+	touch 0.0567436
+keyword sound
+	thinking by doing 0.0107982
+	system 0.0163458
+	line 0.019292
+	methodology 0.0202803
+	touch 0.0278445
+	mind and hand 0.0352335
+	making things 0.0378515
+	what comes after digital? 0.0405437
+	graphic design 0.0416224
+	how did you get into working with code? 0.0416224
+keyword space
+	phenomena 0.0554217
+	zoom 0.0597968
+	overview 0.0708924
+	song: fourtet peace for earth 0.0888422
+	synthetic biology 0.091521
+	universe 0.092936
+	art and science 0.0950109
+	nature 0.0976254
+	perspective 0.102656
+	biology and code 0.104829
+keyword spiritual
+	interactivity 0.00719977
+	failure 0.00755573
+	tradition 0.00904177
+	zen 0.00999781
+	visual cortex 0.0118064
+	energy 0.0136945
+	useless 0.0158001
+	art 0.0163002
+	growth 0.0170956
+	infinite game 0.0215081
+keyword staring at screens
+	seamlessness 0.00286131
+	experience 0.00731103
+	own the tool 0.0115806
+	dichotomy 0.0164128
+	embodiment 0.017329
+	digital culture 0.0213564
+	taste 0.0226134
+	experience design 0.0232106
+	projection 0.0264353
+	conviction 0.0265855
+keyword statistics
+	stock market 0.0184566
+	politics 0.0293669
+	microsoft 0.0393931
+	ubiquity 0.044094
+	data 0.0445155
+	camera 0.0449731
+	big data 0.0480286
+	data visualization 0.0510909
+	cameras 0.0515239
+	library 0.0515302
+keyword stock market
+	politics 0.0164531
+	statistics 0.0184566
+	microsoft 0.0226616
+	data 0.0355981
+	library 0.0385001
+	ubiquity 0.0400999
+	data visualization 0.0406504
+	internet culture 0.0534286
+	big data 0.0555975
+	sex and tech 0.0567066
+keyword story
+	stress 0.0156605
+	challenge 0.0156605
+	reality 0.0208638
+	rendering 0.0235379
+	questions 0.0235689
+	realness 0.0282818
+	particles 0.0292487
+	geometry 0.0292487
+	virtual 0.0293313
+	motion 0.0334565
+keyword storytelling
+	mind 0.00449357
+	inexactitude 0.010647
+	cognition 0.0167011
+	challenges 0.0169495
+	operating systems 0.0196348
+	clouds 0.022759
+	arabic 0.023024
+	sentiment analysis 0.0240536
+	research 0.025465
+	public 0.0269901
+keyword street art
+	machine vision 0.013936
+	cameras 0.0419371
+	camera 0.0437543
+	nytimes 0.0455001
+	face tracking 0.0524464
+	rhetoric 0.066761
+	object recognition 0.0748451
+	legibility 0.0765796
+	statistics 0.0792795
+	ubiquitous computing 0.0833777
+keyword stress
+	challenge 0
+	story 0.0156605
+	presentation 0.0226582
+	carl sims 0.0258969
+	particles 0.027183
+	geometry 0.027183
+	chrome 0.0291218
+	motion 0.0308738
+	virtual 0.0345371
+	math 0.0352376
+keyword struggle
+	multimedia 0.0259182
+	audiovisualization 0.0399232
+	success 0.0406337
+	liveness 0.0407011
+	branching 0.0436512
+	instrument 0.0447406
+	children 0.0448444
+	beginnings 0.0453593
+	art and code 0.0480372
+	performance 0.0601008
+keyword struggle with technology
+	thinking through code 0.0156936
+	uncertainty 0.0180785
+	thinking with code 0.0184809
+	coding 0.0228393
+	painting 0.0240356
+	sketching 0.0330364
+	programming 0.0339089
+	gesture 0.0373162
+	sensation 0.0373891
+	improvement 0.0377769
+keyword style
+	tech-demo 0.00172611
+	demo scene 0.0137077
+	media 0.0329445
+	fat 0.0360368
+	zach lieberman 0.039653
+	crowdsourcing 0.0421537
+	responsibility 0.0430918
+	everyday 0.0509035
+	tools 0.0518453
+	art and tech 0.0519479
+keyword subjectivity
+	information 0.0164729
+	bots 0.0232385
+	datatelling 0.0239678
+	singularity 0.0249859
+	consciousness 0.0269191
+	control 0.0275382
+	apps 0.0283782
+	algorithms 0.0293275
+	gesture recognition 0.0304744
+	truth 0.0310892
+keyword subliminal
+	techno 0
+	play 0.0131404
+	instrument 0.0196481
+	drawing 0.0267626
+	liveness 0.0296811
+	feedback 0.0302713
+	learning 0.0323391
+	audiovisualization 0.0346667
+	making things 0.0352325
+	branching 0.0365886
+keyword subversion
+	videogames 0.00425089
+	poetry 0.0115163
+	pleasure 0.0121783
+	images 0.0121783
+	beauty 0.0133247
+	aesthetics 0.0163367
+	food 0.0181425
+	design 0.0222874
+	feeling 0.0223617
+	malevich 0.0242918
+keyword success
+	golan levin 0.0268555
+	multimedia 0.0290049
+	children 0.03401
+	struggle 0.0406337
+	audiovisualization 0.0418779
+	liveness 0.046564
+	being 0.0531299
+	gratitude 0.0531299
+	instrument 0.0564237
+	illusion 0.0589011
+keyword surprise
+	product 0.00706948
+	process 0.012334
+	magic 0.0229531
+	objects 0.0274321
+	serendipity 0.0285699
+	influences 0.0290692
+	design process 0.0305094
+	minecraft 0.0309253
+	intuition 0.0311258
+	infinite in all directions 0.0313477
+keyword surveillance
+	security 0.0182041
+	sensors 0.0263246
+	policy 0.0339832
+	love 0.0371408
+	data mining 0.0412919
+	sex and tech 0.0482989
+	art and security 0.0548901
+	military technology 0.0563674
+	open paths 0.058263
+	gps 0.0589433
+keyword survival
+	philsophy 0.0040064
+	human life 0.011527
+	documentation 0.011527
+	existence 0.0139501
+	personal data 0.0242371
+	apple 0.0255368
+	quantified self 0.0378844
+	memory 0.0380571
+	maps 0.0387426
+	self 0.0409181
+keyword symbiosis
+	change 0.00632619
+	text 0.00783499
+	imaginary 0.00956915
+	immersion 0.0139282
+	social dynamics 0.018479
+	narrative 0.0210262
+	interfaces 0.0216284
+	clouds 0.0288638
+	networks 0.0294185
+	things 0.0334967
+keyword synergy
+	media lab 0.0210419
+	aesthetics and computation 0.0222817
+	life 0.0252298
+	commercial art 0.0386401
+	passion 0.0391003
+	hackathon 0.0399448
+	teaching 0.0439457
+	prank 0.0466536
+	working with others 0.0497651
+	money 0.059699
+keyword synesthesia
+	feedback 0.00752174
+	journey 0.0115944
+	slow 0.0124291
+	drawing 0.0126836
+	art vs engineering 0.0161103
+	mastery 0.0177488
+	art and experience 0.0221209
+	mutlisensory 0.025568
+	gesture 0.0351169
+	the digital divide 0.0362012
+keyword syntax
+	ocd 0
+	what do you find beautiful about code? 0
+	tron 0.0142462
+	cellular automata 0.0175578
+	cosmogeny 0.022229
+	emergence 0.0223208
+	equilibrium 0.0252438
+	organic 0.0408042
+	code is messy 0.0436838
+	artificial life 0.044074
+keyword synthetic biology
+	universe 0.0178188
+	nature 0.0299463
+	song: fourtet peace for earth 0.0389184
+	art and science 0.0409209
+	nature of code 0.0445222
+	physics 0.0556695
+	biology 0.0556998
+	biology and code 0.0578566
+	dna 0.0591051
+	artificial life 0.06117
+keyword system
+	methodology 0.00687386
+	sound 0.0163458
+	touch 0.0195639
+	thinking by doing 0.0269695
+	line 0.0271043
+	heuristics 0.0345708
+	mind and hand 0.0381442
+	making things 0.043582
+	mastery 0.0498229
+	how does the work feed into itself? 0.0565268
+keyword systems
+	logic 0.00286979
+	world building 0.0102534
+	games 0.0152066
+	birth 0.0301647
+	interesting 0.0301647
+	elegance 0.0314343
+	book 0.0403013
+	behavior 0.0418412
+	creation 0.0429463
+	infinity 0.0457264
+keyword tangibility
+	the digital divide 0
+	mutlisensory 0.010635
+	gesture 0.0220945
+	sensation 0.0234628
+	slow 0.0240494
+	journey 0.0257117
+	painting 0.0299761
+	art vs engineering 0.0306488
+	art and experience 0.0313818
+	improvement 0.0356267
+keyword taste
+	dichotomy 0.00939543
+	experience 0.018047
+	infinite conversation 0.0220543
+	staring at screens 0.0226134
+	seamlessness 0.022851
+	malevich 0.0273082
+	own the tool 0.0304513
+	language 0.0350925
+	projection 0.0372398
+	embodiment 0.0388106
+keyword teaching
+	life 0.0197161
+	working with others 0.0318555
+	aesthetics and computation 0.0358162
+	media lab 0.0373332
+	synergy 0.0439457
+	processing 0.0459511
+	career 0.0524418
+	john maeda 0.0528927
+	hackathon 0.0559937
+	design by numbers 0.0561782
+keyword teams
+	partnership 0
+	connections 0.0247527
+	interdisciplinary 0.0295802
+	john maeda 0.0300804
+	mortality 0.0465068
+	working with others 0.0507541
+	passion 0.0644246
+	aesthetics and computation 0.0729066
+	media lab 0.074077
+	success 0.0784221
+keyword tech-demo
+	style 0.00172611
+	demo scene 0.0131471
+	media 0.0334565
+	fat 0.0366761
+	zach lieberman 0.0402221
+	crowdsourcing 0.0410969
+	responsibility 0.0428439
+	everyday 0.0494459
+	tools 0.0501815
+	art and tech 0.0504115
+keyword techno
+	subliminal 0
+	play 0.0131404
+	instrument 0.0196481
+	drawing 0.0267626
+	liveness 0.0296811
+	feedback 0.0302713
+	learning 0.0323391
+	audiovisualization 0.0346667
+	making things 0.0352325
+	branching 0.0365886
+keyword technological progress
+	computational power 0.00469025
+	openness 0.0122069
+	social engagment 0.0152817
+	creative misuse 0.0176268
+	information overload 0.0185158
+	criticality 0.0198812
+	open software 0.0199309
+	humanity 0.0301911
+	problem solving 0.0352786
+	project examples 0.0364268
+keyword technology
+	emotion 0.00597708
+	diy 0.00809697
+	weird 0.00936586
+	opacity 0.0137216
+	english 0.0193353
+	problem solving 0.0229348
+	utopia 0.0236446
+	twitter videogames 0.0242027
+	r&d 0.0266988
+	critique 0.0289175
+keyword technoptimism
+	transparency 0.0100611
+	critical engineering 0.0147326
+	devices 0.0167646
+	the cloud 0.0223674
+	google 0.0228218
+	hacking 0.0243542
+	internet 0.0255097
+	connectivity 0.0271744
+	man versus machine 0.0297281
+	ignorance 0.030105
+keyword techpositive
+	new media 0.00336888
+	wikipedia 0.0310459
+	innovation 0.0360827
+	media 0.0377934
+	newness 0.0463187
+	ideas 0.0463843
+	virality 0.052469
+	style 0.0600193
+	tech-demo 0.0613577
+	what was it like working with early computers? 0.0627382
+keyword telepathy
+	social 0.0079445
+	performance art 0.00952916
+	the present 0.0122707
+	connectivity 0.0131911
+	present shock 0.0174433
+	people 0.0195825
+	participation 0.020951
+	real world 0.0270032
+	transparency 0.0326936
+	man versus machine 0.0336078
+keyword teleportation
+	gadgets 0.0104674
+	nano 0.0111555
+	julian oliver 0.0188842
+	futurism 0.0219018
+	avatar 0.0223302
+	solutions 0.0230211
+	dystopia 0.0235293
+	network security 0.0278379
+	wearables 0.028996
+	video art 0.0321479
+keyword text
+	symbiosis 0.00783499
+	change 0.0125309
+	interfaces 0.0150603
+	imaginary 0.0153992
+	immersion 0.0186497
+	social dynamics 0.0248219
+	networks 0.0257645
+	internet of things 0.0258273
+	things 0.0258273
+	narrative 0.0280351
+keyword texting
+	awkward 0.142286
+	old history 0.160903
+	transience 0.180428
+	afterlife 0.19292
+	apocalypse 0.198777
+	lifetracking 0.203973
+	death 0.208154
+	travel 0.208262
+	digital art 0.211643
+	quantified self 0.217932
+keyword thanks
+	guru 0.0182306
+	robert hodgin 0.0208628
+	forums 0.0230894
+	kill the master 0.0242829
+	heroes 0.0257709
+	doing with others 0.0442082
+	anthropology 0.0473167
+	mentors 0.0475814
+	paul burke 0.0482539
+	generations 0.0525924
+keyword the cloud
+	critical engineering 0.00859562
+	internet 0.00919435
+	google 0.0108184
+	network 0.0114305
+	alone together 0.0128696
+	ignorance 0.01399
+	man versus machine 0.0156784
+	transparency 0.0171643
+	mobile 0.0178592
+	humanity 0.0211096
+keyword the digital divide
+	tangibility 0
+	mutlisensory 0.010635
+	gesture 0.0220945
+	sensation 0.0234628
+	slow 0.0240494
+	journey 0.0257117
+	painting 0.0299761
+	art vs engineering 0.0306488
+	art and experience 0.0313818
+	improvement 0.0356267
+keyword the future
+	art history 0.00506638
+	project examples 0.0139557
+	empathy 0.0170823
+	virus 0.0229995
+	creative misuse 0.024367
+	focus 0.025516
+	distraction 0.0262422
+	criticality 0.0301773
+	openness 0.0308855
+	social engagment 0.0311869
+keyword the gift
+	generosity 0
+	ego 0.0111742
+	doing with others 0.0279364
+	esoteric 0.0342111
+	counterculture 0.0342111
+	brogrammers 0.0374342
+	tribe 0.0401793
+	snarky 0.0459609
+	heroes 0.0465324
+	sharing 0.0482093
+keyword the present
+	performance art 0.00279727
+	connectivity 0.00763411
+	telepathy 0.0122707
+	social 0.0149452
+	man versus machine 0.0213453
+	transparency 0.0240863
+	internet 0.0254844
+	people 0.0267144
+	humanity 0.0296891
+	present shock 0.029704
+keyword things
+	internet of things 0
+	consciousness 0.00681245
+	man vs machine 0.0103234
+	control 0.0146171
+	cities 0.0173026
+	interfaces 0.0208723
+	information 0.0219447
+	networks 0.0243037
+	text 0.0258273
+	bots 0.0298395
+keyword things breaking
+	uture 0.00740318
+	motivation 0.00890329
+	efficiency 0.012505
+	god mode 0.0145465
+	chaos 0.0191326
+	limitations 0.0238898
+	debugging 0.0320155
+	perception 0.032565
+	visual thinking 0.0328007
+	antihuman 0.0349828
+keyword think different
+	mouse 0
+	keyboard 0
+	inversion 0
+	gui 0
+	legos 0.00570426
+	exploration 0.01562
+	3d printing 0.0166928
+	why 0.0176025
+	frustration 0.024831
+	collaboration with machines 0.0258523
+keyword thinkerer
+	concept 0
+	maker 0
+	passion 0.0622531
+	commercial art 0.0671482
+	media lab 0.0828575
+	aesthetics and computation 0.0841536
+	synergy 0.0882791
+	john maeda 0.09362
+	working with others 0.0992118
+	money 0.10092
+keyword thinking
+	chrome 0.00936975
+	imagination 0.0111255
+	presentation 0.0134403
+	discovery 0.0273226
+	computer 0.03233
+	challenge 0.0358809
+	stress 0.0358809
+	sculpture 0.0369431
+	math 0.0408353
+	virtual 0.0416221
+keyword thinking by doing
+	sound 0.0107982
+	line 0.0228506
+	system 0.0269695
+	what comes after digital? 0.0300204
+	methodology 0.0310565
+	how did you get into working with code? 0.0321611
+	graphic design 0.0321611
+	playfulness 0.0336176
+	touch 0.0349416
+	mind and hand 0.0395865
+keyword thinking through code
+	struggle with technology 0.0156936
+	coding 0.0177774
+	thinking with code 0.0201101
+	programming 0.0205166
+	improvization 0.0258116
+	sketching 0.02831
+	uncertainty 0.031456
+	rgbd 0.0359889
+	think different 0.0387153
+	inversion 0.0387153
+keyword thinking with code
+	struggle with technology 0.0184809
+	uncertainty 0.0198172
+	thinking through code 0.0201101
+	programming 0.0255328
+	gui 0.026394
+	inversion 0.026394
+	mouse 0.026394
+	think different 0.026394
+	keyboard 0.026394
+	legos 0.0268463
+keyword time
+	digital meets physical 0.00707105
+	aesthetic experience 0.00977446
+	physicality 0.01958
+	useless 0.0244652
+	zen 0.028575
+	code 0.0286987
+	tradition 0.0301082
+	choices 0.0309081
+	virtuosity 0.030954
+	interactivity 0.0319046
+keyword toolkit
+	career 0.0211599
+	software 0.0252672
+	nerd 0.0257821
+	processing 0.0305341
+	commercialism 0.0314208
+	international 0.042675
+	humor 0.0457185
+	open source 0.0466721
+	economics 0.0484076
+	hybridity 0.0502539
+keyword toolkits
+	open source 0.0128123
+	open frameworks 0.014654
+	international 0.0211446
+	economics 0.0305377
+	tribe 0.0341298
+	humor 0.0374192
+	sharing 0.0375912
+	nerd 0.0383363
+	education 0.0397142
+	counterculture 0.0459079
+keyword tools
+	art and tech 0.0104012
+	everyday 0.0149357
+	crowdsourcing 0.0305715
+	funny 0.0329409
+	tree 0.0356382
+	evaluation 0.0399983
+	addiction 0.040462
+	demo scene 0.0448214
+	tech-demo 0.0501815
+	net.art 0.0513408
+keyword touch
+	system 0.0195639
+	methodology 0.0254019
+	sound 0.0278445
+	heuristics 0.0341299
+	thinking by doing 0.0349416
+	line 0.044686
+	songs: fourtet locked 0.0567436
+	luck 0.0574368
+	mind and hand 0.0574537
+	how does the work feed into itself? 0.0591323
+keyword toys
+	organizations 0.0247206
+	real world 0.027793
+	nostalgia 0.0280975
+	present shock 0.029704
+	information as weapon 0.0301785
+	participation 0.0316127
+	identity 0.0328499
+	design fiction 0.0360781
+	hack 0.0363009
+	museums 0.0414217
+keyword trace of your life
+	public/private 0.0110777
+	drones 0.0266981
+	darpa 0.0266981
+	military technology 0.0449001
+	data ownership 0.0549847
+	gps 0.0611759
+	location 0.0732527
+	privacy 0.0845235
+	surveillance 0.0856856
+	maps 0.0896505
+keyword tradition
+	zen 0.00185998
+	useless 0.00675874
+	interactivity 0.00710201
+	spiritual 0.00904177
+	art 0.0140756
+	failure 0.0155244
+	visual cortex 0.01711
+	energy 0.0216008
+	completion 0.0224513
+	infinite game 0.0224513
+keyword tragedy
+	hope 0.0092449
+	error 0.0147496
+	philosophy 0.0166247
+	artificial intelligence 0.0177415
+	coevolution 0.0188935
+	new aesthetic 0.0246218
+	networks 0.0270705
+	cinema 0.0346162
+	virtual reality 0.0349555
+	cities 0.0355316
+keyword transience
+	afterlife 0.0158971
+	death 0.0301469
+	old history 0.0330651
+	apocalypse 0.0363276
+	lifetracking 0.0388754
+	awkward 0.0454425
+	memory 0.0582792
+	quantified self 0.0616893
+	archiving 0.06827
+	preservation 0.0767273
+keyword transparency
+	technoptimism 0.0100611
+	critical engineering 0.0129537
+	internet 0.0170665
+	the cloud 0.0171643
+	connectivity 0.0195239
+	man versus machine 0.0202381
+	google 0.0223781
+	the present 0.0240863
+	alone together 0.0249003
+	performance art 0.0253875
+keyword travel
+	personal data 0.0279159
+	quantified self 0.0300613
+	memory 0.0410489
+	apocalypse 0.044796
+	lifetracking 0.0454371
+	maps 0.0493316
+	privacy 0.0493409
+	survival 0.0512236
+	philsophy 0.0551853
+	human life 0.0566401
+keyword tree
+	funny 0.0133656
+	evaluation 0.019155
+	beautiful exhuberance 0.0192735
+	gift 0.0259319
+	expression 0.0277387
+	meaning 0.0314777
+	insight 0.0327318
+	tools 0.0356382
+	why are you attracted to abstraction?
+abstraction 0.0374496
+	laughter 0.0381434
+keyword trendspotting
+	network security 0.0124201
+	video art 0.014094
+	futurism 0.0165473
+	solutions 0.0210486
+	future 0.0219435
+	julian oliver 0.0224099
+	power 0.0262386
+	avatar 0.0263399
+	cyborg 0.0268283
+	science fiction 0.0323847
+keyword tribe
+	esoteric 0.0138538
+	counterculture 0.0138538
+	sharing 0.0278209
+	open frameworks 0.0287909
+	toolkits 0.0341298
+	the gift 0.0401793
+	generosity 0.0401793
+	open source 0.0424779
+	ego 0.0492084
+	nerd 0.0502802
+keyword tron
+	ocd 0.0142462
+	syntax 0.0142462
+	what do you find beautiful about code? 0.0142462
+	equilibrium 0.0205343
+	cellular automata 0.027243
+	emergence 0.0356489
+	cosmogeny 0.0358897
+	order 0.0379408
+	messiness 0.0379408
+	parameters 0.0397801
+keyword truth
+	gesture recognition 0.00523708
+	algorithms 0.006126
+	kinect 0.0113344
+	bots 0.0204069
+	reading 0.0248202
+	datatelling 0.0304005
+	subjectivity 0.0310892
+	new aesthetic 0.0323876
+	cities 0.037806
+	cyberpunk 0.0410852
+keyword tweaking
+	playfulness 0.0154534
+	what comes after digital? 0.0239995
+	how did you get into working with code? 0.0334311
+	graphic design 0.0334311
+	illusion 0.0380263
+	project example 0.0380263
+	thinking by doing 0.0442749
+	being 0.0539731
+	gratitude 0.0539731
+	sound 0.0547517
+keyword twitter
+	social media 0.0203324
+	gadget 0.0277224
+	facebook 0.0309209
+	hacking 0.0338503
+	assistive technology 0.0353911
+	relationships 0.0353937
+	self 0.0355351
+	devices 0.0411731
+	open paths 0.0489265
+	avatar 0.051854
+keyword twitter videogames
+	opacity 0.0137588
+	weird 0.0173917
+	diy 0.0228128
+	technology 0.0242027
+	english 0.0245445
+	emotion 0.0294996
+	sentiment analysis 0.03143
+	utopia 0.0324059
+	noosphere 0.033025
+	r&d 0.0353868
+keyword ubiquitous computing
+	object recognition 0.00881868
+	sensor 0.0093031
+	data collection 0.0285489
+	rhetoric 0.0467793
+	machine vision 0.0800245
+	street art 0.0833777
+	cameras 0.11661
+	face tracking 0.121391
+	nytimes 0.123842
+	camera 0.125831
+keyword ubiquity
+	data 0.0118572
+	sex and tech 0.0185821
+	data mining 0.0209571
+	sex 0.0300793
+	big data 0.0310257
+	stock market 0.0400999
+	sensors 0.040297
+	statistics 0.044094
+	internet culture 0.049348
+	security 0.0536854
+keyword uncanny
+	algorithm 0.0119026
+	computation 0.0281678
+	representation 0.0292548
+	efficiency 0.0301878
+	evolution 0.0309454
+	science 0.0320848
+	things breaking 0.0386949
+	uture 0.0456346
+	genetics 0.04645
+	motivation 0.047155
+keyword uncertainty
+	struggle with technology 0.0180785
+	thinking with code 0.0198172
+	painting 0.0235353
+	virtuosity 0.0296225
+	thinking through code 0.031456
+	improvement 0.0315754
+	sensation 0.0371277
+	post-digital 0.0384654
+	coding 0.0408163
+	visual cortex 0.0425318
+keyword understanding
+	perception 0.00745604
+	digital 0.0186879
+	antihuman 0.0186879
+	visual thinking 0.0192682
+	error 0.0228269
+	limitations 0.022922
+	chaos 0.0269951
+	hope 0.0271609
+	artificial intelligence 0.0281121
+	glitch 0.0304156
+keyword universe
+	synthetic biology 0.0178188
+	song: fourtet peace for earth 0.0222332
+	art and science 0.0233271
+	nature 0.0477602
+	nature of code 0.0532958
+	order 0.0572601
+	messiness 0.0572601
+	parameters 0.0668721
+	physics 0.0673934
+	artificial life 0.0711828
+keyword useful
+	abstraction 0.0197069
+	fantasy 0.0215441
+	why? 0.0216415
+	boring 0.022779
+	real and virtual 0.0245195
+	arabic 0.0265625
+	language 0.0272702
+	feeling 0.0274759
+	public 0.0287707
+	research 0.0295086
+keyword useless
+	zen 0.00614634
+	tradition 0.00675874
+	interactivity 0.0124515
+	spiritual 0.0158001
+	art 0.0160402
+	failure 0.0220519
+	visual cortex 0.0226247
+	time 0.0244652
+	completion 0.0254211
+	infinite game 0.0254211
+keyword users
+	science fiction 0.00645463
+	writing 0.0115082
+	dreams 0.0128202
+	apps 0.0163373
+	intelligence 0.0174246
+	power 0.0225275
+	cyborg 0.0243897
+	globalization 0.0271301
+	singularity 0.0294372
+	communication 0.0328236
+keyword utopia
+	r&d 0.003274
+	english 0.00786147
+	diy 0.0159492
+	opacity 0.0198342
+	emotion 0.0217028
+	problem solving 0.0217993
+	technology 0.0236446
+	weird 0.0295034
+	live 0.0306116
+	twitter videogames 0.0324059
+keyword uture
+	motivation 0.00152944
+	things breaking 0.00740318
+	god mode 0.00916539
+	chaos 0.0165655
+	efficiency 0.019687
+	limitations 0.0202697
+	perception 0.0261027
+	visual thinking 0.0285491
+	debugging 0.029996
+	digital 0.0305878
+keyword veterans
+	shifts 0
+	homogeneity 0.0258769
+	originality 0.027518
+	curation 0.0459049
+	apporopriation 0.0608512
+	frontier 0.0630883
+	give everything away 0.0667939
+	memes 0.0702266
+	youtube 0.0759779
+	visual culture 0.0778127
+keyword video art
+	network security 0.00516363
+	future 0.0078851
+	julian oliver 0.0140072
+	trendspotting 0.014094
+	avatar 0.0150118
+	futurism 0.021995
+	solutions 0.0279111
+	teleportation 0.0321479
+	google 0.0335483
+	ignorance 0.0353338
+keyword videogames
+	subversion 0.00425089
+	poetry 0.00728117
+	pleasure 0.008866
+	images 0.008866
+	beauty 0.0118344
+	aesthetics 0.0132575
+	food 0.0142678
+	design 0.019426
+	feeling 0.0206143
+	boring 0.0243592
+keyword virality
+	innovation 0.0223592
+	what was it like working with early computers? 0.0223626
+	wikipedia 0.0255555
+	newness 0.0279652
+	new media 0.0515638
+	techpositive 0.052469
+	novelty 0.0578556
+	media 0.0610557
+	anonymous 0.0637155
+	history 0.0639779
+keyword virtual
+	rendering 0.0182956
+	machine aesthetics 0.0241509
+	authorship 0.0265243
+	story 0.0293313
+	realness 0.0316244
+	chrome 0.0326054
+	presentation 0.0333124
+	real and virtual 0.0335381
+	questions 0.0344905
+	stress 0.0345371
+keyword virtual reality
+	cinema 0.00629709
+	artificial intelligence 0.0186336
+	philosophy 0.0186425
+	future of cinema 0.0205563
+	coevolution 0.0233668
+	error 0.0271938
+	recursion 0.029242
+	meta 0.029242
+	narrative 0.0309696
+	immersion 0.0321834
+keyword virtuosity
+	physicality 0.0167484
+	aesthetic experience 0.0239236
+	digital meets physical 0.0240293
+	legos 0.0271074
+	fluency 0.0284816
+	thinking with code 0.0284848
+	uncertainty 0.0296225
+	frustration 0.0303636
+	time 0.030954
+	inversion 0.0318526
+keyword virus
+	distraction 0.00396412
+	focus 0.00660029
+	project examples 0.0106373
+	empathy 0.0118648
+	progress 0.0163028
+	audience 0.0176092
+	art history 0.0223428
+	the future 0.0229995
+	fluxus 0.0244947
+	literacy 0.0261171
+keyword vision
+	complexity 0.00974898
+	curiosity 0.0199219
+	simplicity 0.0436378
+	glitch 0.0475077
+	invisibility 0.0546527
+	visualization 0.0563221
+	confusion 0.0572449
+	debug screen 0.0573679
+	antihuman 0.0588482
+	digital 0.0588482
+keyword visual cortex
+	energy 0.00751067
+	interactivity 0.0102178
+	spiritual 0.0118064
+	growth 0.0132434
+	failure 0.0162278
+	zen 0.0167399
+	tradition 0.01711
+	post-digital 0.0202246
+	useless 0.0226247
+	art 0.0279841
+keyword visual culture
+	ideas 0.0224816
+	community 0.0320022
+	fat 0.0507663
+	zach lieberman 0.0516623
+	popular culture 0.0562603
+	art world 0.0615422
+	techpositive 0.0683471
+	curation 0.0684915
+	style 0.0689398
+	new media 0.0692937
+keyword visual effects
+	metaphor 0.00702699
+	genetics 0.0151848
+	scale 0.0382475
+	biology and code 0.0387991
+	dna 0.0419151
+	infinity 0.0478928
+	biology 0.0499163
+	creation 0.0606181
+	uncanny 0.0607806
+	elegance 0.0611762
+keyword visual thinking
+	antihuman 0.00225036
+	digital 0.00225036
+	limitations 0.00904454
+	perception 0.0133796
+	chaos 0.0142722
+	glitch 0.0169194
+	understanding 0.0192682
+	motivation 0.0275593
+	uture 0.0285491
+	things breaking 0.0328007
+keyword visualization
+	prediction 0.0201121
+	glitch 0.0268682
+	confusion 0.0284124
+	simplicity 0.0296576
+	curiosity 0.0382706
+	antihuman 0.0390894
+	digital 0.0390894
+	visual thinking 0.0412308
+	understanding 0.0452716
+	perception 0.0466428
+keyword wearables
+	dystopia 0.00803243
+	nano 0.0183874
+	love 0.0238254
+	solutions 0.0284066
+	journalism 0.0287482
+	teleportation 0.028996
+	sex 0.0316889
+	futurism 0.0331605
+	gadgets 0.0345428
+	sensors 0.0410882
+keyword weird
+	technology 0.00936586
+	opacity 0.0126833
+	diy 0.0139276
+	emotion 0.0153324
+	twitter videogames 0.0173917
+	english 0.0232559
+	critique 0.028086
+	augmented reality 0.0292578
+	utopia 0.0295034
+	limits of the computer 0.0298213
+keyword what comes after digital?
+	playfulness 0.00855362
+	graphic design 0.00998616
+	how did you get into working with code? 0.00998616
+	illusion 0.0173148
+	project example 0.0173148
+	tweaking 0.0239995
+	thinking by doing 0.0300204
+	being 0.0312737
+	gratitude 0.0312737
+	sound 0.0405437
+keyword what do you find beautiful about code?
+	ocd 0
+	syntax 0
+	tron 0.0142462
+	cellular automata 0.0175578
+	cosmogeny 0.022229
+	emergence 0.0223208
+	equilibrium 0.0252438
+	organic 0.0408042
+	code is messy 0.0436838
+	artificial life 0.044074
+keyword what does post-digital mean?
+	design and art 0.00463807
+	laughter 0.0165319
+	balance 0.0220721
+	self expression 0.0221325
+	humanism 0.023121
+	expression 0.0244981
+	gift 0.0296833
+	beautiful exhuberance 0.0332636
+	digital culture 0.0357461
+	own the tool 0.0411992
+keyword what was it like working with early computers?
+	newness 0.0200144
+	virality 0.0223626
+	novelty 0.0364417
+	innovation 0.0421131
+	wikipedia 0.0436787
+	techpositive 0.0627382
+	new media 0.0629793
+	history 0.0700462
+	media 0.0803812
+	anonymous 0.084643
+keyword why
+	3d printing 0.00350028
+	frustration 0.0101033
+	fluency 0.013541
+	legos 0.0147954
+	inversion 0.0176025
+	keyboard 0.0176025
+	mouse 0.0176025
+	think different 0.0176025
+	gui 0.0176025
+	code 0.0243872
+keyword why are you attracted to abstraction?
+abstraction
+	meaning 0.00597217
+	insight 0.00952211
+	beautiful exhuberance 0.0276233
+	self expression 0.0338266
+	expression 0.0353234
+	tree 0.0374496
+	completion 0.0395322
+	infinite game 0.0395322
+	gift 0.0416942
+	laughter 0.0429492
+keyword why?
+	abstraction 0.00233805
+	authorship 0.0134103
+	real and virtual 0.0136255
+	useful 0.0216415
+	boring 0.0239605
+	public 0.0253105
+	research 0.0267815
+	machine aesthetics 0.0284046
+	arabic 0.0291432
+	operating system 0.0320916
+keyword wikipedia
+	innovation 0.00503899
+	virality 0.0255555
+	new media 0.0291306
+	techpositive 0.0310459
+	newness 0.0365896
+	media 0.0367029
+	what was it like working with early computers? 0.0436787
+	anonymous 0.0611519
+	style 0.0690655
+	tech-demo 0.0697759
+keyword wonder
+	epiphany 0.0202842
+	iteration 0.0226862
+	clock 0.0245419
+	design process 0.0274921
+	minecraft 0.0290494
+	serendipity 0.0438001
+	form 0.0478273
+	flocking 0.0488961
+	surprise 0.0508172
+	influences 0.0516438
+keyword work
+	constraints 0.0727584
+	tweaking 0.111292
+	playfulness 0.126281
+	what comes after digital? 0.134517
+	graphic design 0.142714
+	how did you get into working with code? 0.142714
+	project example 0.143976
+	illusion 0.143976
+	golan levin 0.145493
+	thinking by doing 0.152889
+keyword work and life
+	money 0.0948134
+	commercial art 0.101041
+	maker 0.108317
+	thinkerer 0.108317
+	concept 0.108317
+	advertising 0.120073
+	prank 0.120096
+	eyeo 0.13099
+	synergy 0.139442
+	acu 0.13971
+keyword working iteratively generatively in a process that can go on forever?
+	generative process 0
+	choosing 0
+	code is messy 0.0290233
+	randomness 0.0290955
+	number 0.0308953
+	random 0.0308953
+	noise 0.0389938
+	equilibrium 0.0437556
+	gardening 0.0541796
+	possibility 0.0546145
+keyword working with others
+	john maeda 0.0213168
+	aesthetics and computation 0.0288421
+	life 0.0300853
+	media lab 0.030619
+	teaching 0.0318555
+	interdisciplinary 0.0359744
+	passion 0.0383129
+	mortality 0.0444921
+	synergy 0.0497651
+	partnership 0.0507541
+keyword world building
+	logic 0.00900351
+	systems 0.0102534
+	games 0.0226916
+	probability 0.0380096
+	interesting 0.0391304
+	birth 0.0391304
+	flocking 0.0394185
+	elegance 0.0411687
+	simulation 0.0454741
+	creation 0.0454888
+keyword writing
+	science fiction 0.00683693
+	power 0.0114666
+	users 0.0115082
+	cyborg 0.0131501
+	singularity 0.0197738
+	apps 0.0208237
+	fantasy technology 0.0217089
+	dreams 0.0224707
+	intelligence 0.0288328
+	trendspotting 0.0326992
+keyword youtube
+	homogeneity 0.052829
+	curation 0.0618015
+	memes 0.0648438
+	frontier 0.0680798
+	originality 0.0720804
+	shifts 0.0759779
+	veterans 0.0759779
+	apporopriation 0.0769718
+	influence 0.106834
+	newness 0.120748
+keyword zach lieberman
+	fat 0.00394639
+	art world 0.0182156
+	responsibility 0.0199273
+	popular culture 0.020481
+	demo scene 0.0305505
+	crowdsourcing 0.0389481
+	style 0.039653
+	tech-demo 0.0402221
+	hacker 0.0463033
+	community 0.049013
+keyword zen
+	tradition 0.00185998
+	useless 0.00614634
+	interactivity 0.00652838
+	spiritual 0.00999781
+	art 0.0158066
+	visual cortex 0.0167399
+	failure 0.0168878
+	energy 0.0217925
+	completion 0.0242932
+	infinite game 0.0242932
+keyword zoom
+	perspective 0.0428596
+	phenomena 0.0543829
+	atmosphere 0.0582
+	space 0.0597968
+	overview 0.0603306
+	gestalt 0.0690991
+	flow 0.091489
+	scale 0.0985117
+	invisibility 0.103561
+	biology and code 0.115194

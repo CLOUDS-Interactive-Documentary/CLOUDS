@@ -1,0 +1,107 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>EXAMPLE BOX 2D</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GAVITY CONTROL MODE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CIRCLES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RECTANGLES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TRIGGER FORCE</Name>
+    <Value>5.615763187</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX OBJECTS</Name>
+    <Value>190.443344116</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE MIN SIZE</Name>
+    <Value>13.201970100</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE MAX SIZE</Name>
+    <Value>22.733989716</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MIN WIDTH</Name>
+    <Value>17.857143402</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MAX WIDTH</Name>
+    <Value>20.073890686</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MIN HEIGHT</Name>
+    <Value>18.078817368</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT MAX HEIGHT</Name>
+    <Value>14.753694534</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>FILL</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>STATIC PLATFORMS</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RANDOM PLATFORMS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CR</Name>
+    <Value>0.753926694</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CG</Name>
+    <Value>0.837696254</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>CB</Name>
+    <Value>0.811518133</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RR</Name>
+    <Value>0.675392628</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RG</Name>
+    <Value>0.884816647</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>RB</Name>
+    <Value>0.952879429</Value>
+</Widget>

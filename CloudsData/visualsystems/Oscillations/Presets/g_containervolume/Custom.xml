@@ -1,0 +1,52 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Precision</Name>
+    <Value>23.921182632</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CurveProgress</Name>
+    <Value>0.428571433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Height</Name>
+    <Value>2019.704467773</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Width</Name>
+    <Value>1034.482788086</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Depth</Name>
+    <Value>1921.182250977</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Z Position</Name>
+    <Value>1000.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Speed</Name>
+    <Value>0.019704433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Line Width</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Black on white</Name>
+    <Value>1</Value>
+</Widget>

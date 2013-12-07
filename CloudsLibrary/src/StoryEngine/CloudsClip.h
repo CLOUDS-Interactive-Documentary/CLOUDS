@@ -3,70 +3,83 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
-#include "ClusterData.h"
 
 class CloudsClip {
   public:
 	CloudsClip();
 	
-	static string relinkFilePath(string filePath);
-    
 	string name;
     string person;
     string clip;
+
+	string getSpeakerLastName();
+	string getSpeakerFirstName();
+	string getSpeakerGender();
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-	ofColor color;
-    //clip marker color
+//	ofColor color;
+	
     string startingQuestion;
 	
-    //svg data
-    ClusterData cluster;
-	map<string, ofColor> clusterColors;
-    
+	ofVec3f networkPosition;
+	
     float currentScore;
     int startFrame;
     int endFrame;
-
-//    vector<string> keywords;
-    vector<string>& getOriginalKeywords();
-    //used to save out links
-    vector<string>& getAdditionalKeywords();
-    vector<string>& getRevokedKeywords();
-    
-    //use everywhere for real keywoords
-	vector<string>& getKeywords();
-    
-    //get special # keywords
-    vector<string>& getSpecialKeywords();
-    
+	
     //called from the FCPParser
     void setOriginalKeywords(vector<string>& keywords);
     //called from the CloudsLinker UI
-    void setDesiredKeywords(vector<string>& desiredKeywords
-                            );
-    
+    void setDesiredKeywords(vector<string>& desiredKeywords);
     //called during ParseLinks
     void addKeyword(string keyword);
     void revokeKeyword(string keyword);
     bool hasAdditionalKeywords();
     bool hasRevokedKeywords();
+    bool hasSpecialKeyword(string keyword);
+    bool hasKeyword(string keyword);
     
+    vector<string>& getOriginalKeywords();
+    //used to save out links
+    vector<string>& getAdditionalKeywords();
+    vector<string>& getRevokedKeywords();
+    vector<string>& getAllTopicsWithQuestion();
+
+    //use everywhere for real keywoords
+	vector<string>& getKeywords();
+    //get special # keywords
+    vector<string>& getSpecialKeywords();
+    
+    //questions with topics
+    bool hasStartingQuestion();
+    void addQuestionTopicPair(string topic, string question);
+	bool hasQuestion();
+    map<string,string>& getAllQuestionTopicPairs();
+    string getQuestionForTopic(string topic);
+	vector<string> getTopicsWithQuestions();
+    vector<string> getQuestions();
+	
+    //overlapping clips
+    vector<string> getOverlappingClips();
+    bool hasOverlappingClips();
+    
+
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
-    string getStartingQuestion();
+//    string getStartingQuestion();
 	string getSceneFolder();
-	void setStartingQuestion(string question);
-    bool hasStartingQuestion();
 	
 	string getID();
 	string getCombinedPNGExportFolder();
 	string getCombinedMovieFile();
 	string getCombinedCalibrationXML();
     string getFFMpegLine(string alternativeVideoPath, string exportFolder);
-	
+    
+    void addOverlappingClipName(string clipName);
+	void removeOverlappingClipName(string clipName);
+
 	bool hasCombinedVideo;
 	string combinedVideoPath;
 	string combinedCalibrationXMLPath;
@@ -85,11 +98,17 @@ class CloudsClip {
 	ofVec3f adjustRotate;
 	ofVec3f adjustScale;
 	ofVec2f faceCoord;
+	    
+    
+    //SURYA TODO: Replace contour parameters colour parameters
+    //Skin Parameters
+    ofFloatColor skinTargetColor;
 	
-	//contour parameters
-	ofColor contourTargetColor;
-	float contourTargetThreshold;
-	float contourMinBlobSize;
+    float skinLowerThreshold;
+    float skinUpperThreshold;
+    float skinHueWeight;
+    float skinSatWeight;
+    float skinBrightWeight;
 	
 	bool adjustmentLoaded;
     
@@ -98,6 +117,9 @@ class CloudsClip {
     vector<string> additionalKeywords;  //added manually
     vector<string> revokedKeywords;     //manually removed
     vector<string> specialKeywords;        //special Keywords start with #
+    vector<string> topicWithQuestions;
+    map<string,string> questionTopicMap; //question-topic pairs
+    vector<string> overlappingClips;
     bool keywordsDirty;
     void collateKeywords();
     vector<string> keywords; //collated

@@ -1,0 +1,14 @@
+slowwaves modalbeats 1 1 120 luke
+slowwaves 5 10 60 luke
+meshbeats modalbeats helmholtz 6 2 75 luke
+lowwavepulse modalbeats helmholtz meshbeats 15 8 60 luke
+meshbeats modalbeats helmholtz 11 9 60 luke
+slowwaves modalbeats 6 1 60 luke
+slowwave helmholtz meshbeats modalbeats 10 4 60 luke
+waveguide slowmeshbeats slowwaveshi 5 8 120 luke
+slowwave helmholtz meshbeats modalbeats 1 15 120 luke
+slowwaves modalbeats 7 9 75 luke
+helmholtz 6 7 75 luke
+slowwaves 3 10 120 luke
+glassomatic kissmyarpfast 11 1 120 luke
+reichomatic testloop3 1 1 165 jonathan

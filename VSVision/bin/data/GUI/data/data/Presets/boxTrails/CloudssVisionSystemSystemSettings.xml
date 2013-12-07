@@ -1,0 +1,107 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>SystemSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>213.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DEBUG</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PERSISTANCE</Name>
+    <Value>4.334975243</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXDISTANCE</Name>
+    <Value>0.541871905</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN AREA RADIUS</Name>
+    <Value>16.748767853</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX AREA RADIUS</Name>
+    <Value>69.458129883</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>THRESHOLD VALUE</Name>
+    <Value>3.940886736</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>PYRSCALE</Name>
+    <Value>0.472906411</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVELS</Name>
+    <Value>5.103448391</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINSIZE</Name>
+    <Value>32.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ITERATIONS</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POLYN</Name>
+    <Value>7.709359646</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>POLYSIGMA</Name>
+    <Value>1.379802942</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>OPTFLOW_FARNEBACK_GAUSSIAN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WINSIZE</Name>
+    <Value>32.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXLEVEL</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAXFEATURES</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>QUALITYLEVEL</Name>
+    <Value>0.010000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MINDISTANCE</Name>
+    <Value>4.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CONTOUR TRACKING</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DRAW PLAYER</Name>
+    <Value>1</Value>
+</Widget>

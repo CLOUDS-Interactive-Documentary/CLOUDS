@@ -1,0 +1,122 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>URL_TREE</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>259.000000000</XPosition>
+    <YPosition>49.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL DEPTH</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPIN SPEED</Name>
+    <Value>0.036945812</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE STEP</Name>
+    <Value>0.005418719</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE AMOUNT</Name>
+    <Value>2.995073795</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN Z</Name>
+    <Value>-576.354614258</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX Z</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT ALIGN X</Name>
+    <Value>-0.004926085</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT ALIGN Y</Name>
+    <Value>0.004926085</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT HUE</Name>
+    <Value>150.738662720</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT SAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT BRI</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TEXT ALPHA</Name>
+    <Value>126.862533569</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE WIDTH</Name>
+    <Value>3.026108027</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE RADIUS</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SAT</Name>
+    <Value>255.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE BRI</Name>
+    <Value>205.168258667</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE ALPHA</Name>
+    <Value>255.000000000</Value>
+</Widget>

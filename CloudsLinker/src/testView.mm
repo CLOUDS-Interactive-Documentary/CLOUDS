@@ -1,5 +1,6 @@
 #import "testView.h"
 #include "CloudsClip.h"
+#include "CloudsGlobal.h"
 
 @implementation testView
 
@@ -17,7 +18,8 @@
 	
 	movieSuccessfullyLoaded = false;
     
-    [self refreshXML:self];
+	parser.printErrors = true;
+	parser.loadFromFiles();
     clipEndFrame = 0;
     clipLoaded = NO;
 	
@@ -33,8 +35,14 @@
 	[linkerA setup];
     [linkerB setup];
     
-//	exporter.saveGephiCSV(parser);
-    
+	
+	vector<CloudsClip> projectExamples = parser.getClipsWithKeyword("#example");
+	for(int i = 0; i < projectExamples.size(); i++){
+		cout << projectExamples[i].getSpeakerFirstName() << " " << projectExamples[i].getSpeakerLastName() << ": " << projectExamples[i].name << endl;
+	}
+	
+	//exporter.saveGephiCSV(parser);
+	CloudsExporter::savePajekNetwork(parser);
 }
 
 
@@ -100,6 +108,16 @@
 - (void) exit
 {
 	NSLog(@"exit!!");
+}
+
+- (void)selectClip:(CloudsClip)clip inAlternateTable:(id)sender
+{
+	if(sender == linkerA){
+		[linkerB selectClip:clip];
+	}
+	else{
+		[linkerA selectClip:clip];
+	}
 }
 
 - (void)keyPressed:(int)key
@@ -219,7 +237,7 @@
 		
 	preview.stop();
 	
-	string clipFilePath = CloudsClip::relinkFilePath( clip.sourceVideoFilePath );
+	string clipFilePath = relinkFilePath( clip.sourceVideoFilePath );
 	movieSuccessfullyLoaded = preview.loadMovie(clipFilePath) ;
 	if(!movieSuccessfullyLoaded){
 		ofLogError() << "Clip " << clipFilePath << " failed to load.";
@@ -261,18 +279,6 @@
 - (void)windowResized:(NSSize)size
 {
 
-}
-
-- (IBAction) setXMLFolder:(id)sender
-{
-    
-}
-
-- (IBAction) refreshXML:(id)sender
-{
-
-	parser.loadFromFiles();
-	    
 }
 
 @end

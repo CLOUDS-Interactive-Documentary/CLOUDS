@@ -1,0 +1,86 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Jellyus Twous</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>233.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>25</Kind>
+    <Name>body h</Name>
+    <Value>0.645320177</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>body s</Name>
+    <Value>0.857142866</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>body b</Name>
+    <Value>0.645320177</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>body alpha</Name>
+    <Value>0.182266012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>tentacles h</Name>
+    <Value>0.645320177</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>tentacles s</Name>
+    <Value>0.748768449</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>tentacles b</Name>
+    <Value>0.857142866</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>pulse amt (range)</Name>
+    <HighValue>0.356650263</HighValue>
+    <LowValue>0.149753690</LowValue>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>width average</Name>
+    <Value>21.231527328</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>width std dev</Name>
+    <Value>13.793103218</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>length average</Name>
+    <Value>19.359605789</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>length std dev</Name>
+    <Value>9.852216721</Value>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>spherical segment (range)</Name>
+    <HighValue>1.876441479</HighValue>
+    <LowValue>1.226458907</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>superformula m1 (range)</Name>
+    <HighValue>12.197046280</HighValue>
+    <LowValue>7.054187775</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>superformula m2 (range)</Name>
+    <HighValue>7.054186821</HighValue>
+    <LowValue>4.305418968</LowValue>
+</Widget>

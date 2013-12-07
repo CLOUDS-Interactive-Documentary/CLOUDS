@@ -1,0 +1,157 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>MAZE BUILDER</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM SPEED</Name>
+    <Value>2.463058472</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM HEIGHT</Name>
+    <Value>305.418731689</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CAM ANGLE</Name>
+    <Value>83.349754333</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GROUND CAM</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GCAM SPEED</Name>
+    <Value>0.162561581</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GCAM LOOKAT</Name>
+    <Value>0.330049247</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHOW AHEAD</Name>
+    <Value>87.241378784</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG DENSITY</Name>
+    <Value>0.026600985</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG START</Name>
+    <Value>935.960571289</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FOG END</Name>
+    <Value>3399.014892578</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NUM BALLS</Name>
+    <Value>118.226593018</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BALLS RADIUS</Name>
+    <Value>17.339900970</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BALLS SPEED</Name>
+    <Value>0.000197044</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WALL HEIGHT VARIANCE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>LIGHT</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LX</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LY</Name>
+    <Value>264.236450195</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LZ</Name>
+    <Value>180.886688232</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FH</Name>
+    <Value>168.219894409</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FS</Name>
+    <Value>161.544662476</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>FB</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GH</Name>
+    <Value>164.214660645</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GS</Name>
+    <Value>73.429481506</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>GB</Name>
+    <Value>142.853240967</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WH</Name>
+    <Value>164.214660645</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WS</Name>
+    <Value>77.434532166</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>WB</Name>
+    <Value>102.801002502</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>144.188476562</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>69.424003601</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SB</Name>
+    <Value>106.806121826</Value>
+</Widget>

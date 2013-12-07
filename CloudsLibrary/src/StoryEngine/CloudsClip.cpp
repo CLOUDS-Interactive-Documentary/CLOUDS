@@ -7,7 +7,12 @@
 //
 
 #include "CloudsClip.h"
+#include "CloudsGlobal.h"
+#include "CloudsSpeaker.h"
+
 #define FRAME_PADDING 24
+
+
 
 CloudsClip::CloudsClip(){
 	currentScore = 0;
@@ -18,31 +23,62 @@ CloudsClip::CloudsClip(){
 	minDepth = 400;
 	maxDepth = 1200;
     keywordsDirty = true;
-    
+	networkPosition = ofVec3f(-1,-1,-1);
 }
 
 string CloudsClip::getLinkName(){
 	return person + " - " + name;
 }
 
+string CloudsClip::getSpeakerFirstName(){
+	return CloudsSpeaker::speakers[person].firstName;
+}
+
+string CloudsClip::getSpeakerLastName(){
+	return CloudsSpeaker::speakers[person].lastName;
+}
+
+string CloudsClip::getSpeakerGender(){
+	return CloudsSpeaker::speakers[person].gender;
+}
+
 float CloudsClip::getDuration(){
 	return (endFrame - startFrame) / 23.976; //TODO: HigaSan was recorded @ 30.0, need to compensate
 }
 
-string CloudsClip::getStartingQuestion(){
-    if(startingQuestion.empty()){
-        return "-";
-    }
-    else{
-		return startingQuestion;
-    }
+//string CloudsClip::getStartingQuestion(){
+//    if(startingQuestion.empty()){
+//        return "-";
+//    }
+//    else{
+//		return startingQuestion;
+//    }
+//}
+
+void CloudsClip::addOverlappingClipName( string clipName){
+    overlappingClips.push_back(clipName);
 }
 
-void CloudsClip::setStartingQuestion(string question){
-    startingQuestion = question;
+void CloudsClip::removeOverlappingClipName(string clipName) {
+    if(ofContains(overlappingClips, clipName)){
+        overlappingClips.erase(overlappingClips.begin()+ofFind(overlappingClips, clipName));
+        
+        cout<<"removing clip "<<clipName <<" from overlapping vector of clip "<< getLinkName()<<endl;
+     }
 }
+
+bool CloudsClip::hasOverlappingClips(){
+    return !overlappingClips.empty();
+}
+
+vector<string> CloudsClip::getOverlappingClips(){
+    return overlappingClips;
+}
+//void CloudsClip::setStartingQuestion(string question){
+//    startingQuestion = question;
+//}
 bool CloudsClip::hasStartingQuestion(){
-    return !startingQuestion.empty();
+	return hasQuestion() && hasSpecialKeyword("#start");
 }
 bool CloudsClip::hasAdditionalKeywords(){
     return !additionalKeywords.empty();
@@ -119,9 +155,11 @@ string CloudsClip::getAdjustmentXML(){
 vector<string>& CloudsClip::getOriginalKeywords(){
     return originalKeywords;
 }
+
 vector<string>& CloudsClip::getAdditionalKeywords(){
     return additionalKeywords;
 }
+
 vector<string>& CloudsClip::getRevokedKeywords(){
     return revokedKeywords;
 }
@@ -132,11 +170,33 @@ vector<string>& CloudsClip::getKeywords(){
     }
     return keywords;
 }
+
 vector<string>& CloudsClip::getSpecialKeywords(){
     if(keywordsDirty){
         collateKeywords();
     }
     return specialKeywords;
+}
+
+bool CloudsClip::hasQuestion(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+	return questionTopicMap.size() > 0;
+}
+
+map<string,string>& CloudsClip::getAllQuestionTopicPairs(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return questionTopicMap;
+}
+
+vector<string>& CloudsClip::getAllTopicsWithQuestion(){
+    if(keywordsDirty){
+        collateKeywords();
+    }
+    return topicWithQuestions;
 }
 
 void CloudsClip::collateKeywords(){
@@ -148,28 +208,41 @@ void CloudsClip::collateKeywords(){
     for (int k = 0; k<revokedKeywords.size(); k++) {
         if(ofContains(keywords, revokedKeywords[k])){
             keywords.erase(keywords.begin()+ofFind(keywords, revokedKeywords[k]));
-            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
+//            cout<<"Removing keywords for clip "<<name<< " : "<< revokedKeywords[k]<<endl;
         }
     }
     
     //go through and add additional
-    for (int l =0; l<additionalKeywords.size(); l++) {
-        //Returns 0 if they compare equal
-        if (! ofContains(keywords, additionalKeywords[l]) ){
+    for (int l = 0; l < additionalKeywords.size(); l++) {
+        
+        if (!ofContains(keywords, additionalKeywords[l]) ){
             keywords.push_back(additionalKeywords[l]);
-            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
+//            cout<<"Adding addition keywords for clip "<<name<< " : "<< additionalKeywords[l]<<endl;
         }
     }
     
     //remove special keywords from keywords -> specialKeywords
     for (int l = keywords.size() - 1 ; l>=0; l--) {
-        if(keywords[l].compare(0, 1, "#") == 0&&! ofContains(specialKeywords, keywords[l])){
-            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
+        
+        if(keywords[l].compare(0, 1, "#") == 0 &&! ofContains(specialKeywords, keywords[l])){
+//            cout<<"Special keywords for clip "<<name<< " : "<<keywords[l]<<". Erasing from keywords list"<<endl;
             specialKeywords.push_back(keywords[l]);
             keywords.erase(keywords.begin()+l);
 
         }
+        else if(keywords[l][0] == '?' && !ofContains(specialKeywords, keywords[l])){
+            
+//           cout<<keywords[l] << " is a question in the new format. removing from keywords list and adding to questions"<< endl;
+            
+            //format of question topic pair is ?topic:question
+            specialKeywords.push_back(keywords[l]);
+            vector<string>questionTopicPair = ofSplitString(keywords[l], ":");
+            ofStringReplace(questionTopicPair[0], "?", "");
+            addQuestionTopicPair(questionTopicPair[0], questionTopicPair[1]);
+            keywords.erase(keywords.begin() + l);
+        }
     }
+    
     keywordsDirty = false;
 }
 
@@ -187,7 +260,7 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
         
         //Check to see if its a special keyword
         if(! ofContains(originalKeywords, desiredKeywords[i])&& !ofContains(additionalKeywords, desiredKeywords[i]) ){
-            cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
+//            cout<<"adding addtional keyword : "<< desiredKeywords[i]<<" to clip "<<name<<endl;
             addKeyword(desiredKeywords[i]);
         }
     }
@@ -195,7 +268,7 @@ void CloudsClip::setDesiredKeywords(vector<string>& desiredKeywords){
     //find all the keywords missing from the original list (rvoked)
     for(int i=0; i < originalKeywords.size() ; i++){
         if(! ofContains(desiredKeywords, originalKeywords[i])&&! ofContains(revokedKeywords, originalKeywords[i])){
-            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
+//            cout<<"revoking keyword : "<< originalKeywords[i]<<" from clip "<<name<<endl;
             revokeKeyword(originalKeywords[i]);
         }
     }
@@ -212,6 +285,18 @@ void CloudsClip::addKeyword(string keyword){
     }
 }
 
+bool CloudsClip::hasKeyword(string keyword){
+	return ofContains(getKeywords(), keyword);
+}
+
+
+bool CloudsClip::hasSpecialKeyword(string keyword){
+	if (keyword.at(0) != '#') {
+		keyword = "#"+keyword;
+	}
+	return ofContains(specialKeywords,keyword);
+}
+
 void CloudsClip::revokeKeyword(string keyword){
     if(!ofContains(revokedKeywords, keyword) &&
        ofContains(originalKeywords, keyword))
@@ -219,6 +304,40 @@ void CloudsClip::revokeKeyword(string keyword){
         revokedKeywords.push_back(keyword);
         keywordsDirty = true;
     }
+}
+
+void CloudsClip::addQuestionTopicPair(string topic, string question){
+    
+//    cout<<"adding question : " << question << " for topic "<< topic << " in clip " << getLinkName()<<endl;
+
+    questionTopicMap[topic] = question;
+    topicWithQuestions.push_back(topic);
+}
+
+string CloudsClip::getQuestionForTopic(string topic){
+    if(questionTopicMap.find(topic) != questionTopicMap.end()){
+        return questionTopicMap[topic];
+    }
+    ofLogError("CloudsClip::getQuestionForTopic")<<"No question found for topic "<<topic<<" in clip: "<<getLinkName()<<endl;
+    return "";
+}
+
+vector<string> CloudsClip::getQuestions(){
+    vector<string> questions;
+    map<string,string>::iterator it;
+    for( it = questionTopicMap.begin(); it != questionTopicMap.end(); it++){
+        questions.push_back(it->second);
+    }
+    return questions;
+}
+
+vector<string> CloudsClip::getTopicsWithQuestions(){
+	vector<string> topics;
+	map<string,string>::iterator it;
+    for( it = questionTopicMap.begin(); it != questionTopicMap.end(); it++){
+        topics.push_back(it->first);
+    }
+	return topics;
 }
 
 void CloudsClip::loadAdjustmentFromXML(bool forceReload){
@@ -229,7 +348,7 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	
 	ofxXmlSettings adjustmentSettings;
 	if(!adjustmentSettings.loadFile(getAdjustmentXML())){
-		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
+//		ofLogError() << "Couldn't load adjustment XML" << getAdjustmentXML() << endl;
 	}
 	
 	adjustTranslate.x = adjustmentSettings.getValue("adjustment:translate:x", 0.);
@@ -247,17 +366,26 @@ void CloudsClip::loadAdjustmentFromXML(bool forceReload){
 	minDepth = adjustmentSettings.getValue("adjustment:depth:min", 300);
 	maxDepth = adjustmentSettings.getValue("adjustment:depth:max", 1200);
 	
-	contourTargetColor = ofColor(adjustmentSettings.getValue("adjustment:extraction:colorr", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorg", 255),
-								 adjustmentSettings.getValue("adjustment:extraction:colorb", 255));
-	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+	skinTargetColor = ofFloatColor(adjustmentSettings.getValue("adjustment:skin:targetR", 1.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetG", 0.0),
+								   adjustmentSettings.getValue("adjustment:skin:targetB", 0.0));
 	
-	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
+//	cout << "loaded skin target color " << skinTargetColor << endl;
 	
-	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320),
-						adjustmentSettings.getValue("adjustment:extraction:facev", 110));
+	skinLowerThreshold = adjustmentSettings.getValue("adjustment:skin:lowerThreshold", 0.);
+    skinUpperThreshold = adjustmentSettings.getValue("adjustment:skin:upperThreshold", 1.);
+    skinHueWeight = adjustmentSettings.getValue("adjustment:skin:hueWeight", 0.5);
+    skinSatWeight = adjustmentSettings.getValue("adjustment:skin:satWeight", 0.5);
+    skinBrightWeight = adjustmentSettings.getValue("adjustment:skin:brightWeight", 0.5);
+
+//	contourTargetThreshold = adjustmentSettings.getValue("adjustment:extraction:threshold", 100);
+//	contourMinBlobSize = adjustmentSettings.getValue("adjustment:extraction:blobsize", 100);
 	
-    
+	faceCoord = ofVec2f(adjustmentSettings.getValue("adjustment:extraction:faceu", 320.),
+						adjustmentSettings.getValue("adjustment:extraction:facev", 110.));
+	
+//    cout << "loaded face coord color " << faceCoord << endl;
+	
 	//cout << "FOR CLIP " << getID() << " LOADED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	adjustmentLoaded = true;
@@ -297,18 +425,34 @@ void CloudsClip::saveAdjustmentToXML(){
     
 	alignmentSettings.addTag("extraction");
 	alignmentSettings.pushTag("extraction");
+    /*
 	alignmentSettings.addValue("colorr", contourTargetColor.r);
 	alignmentSettings.addValue("colorg", contourTargetColor.g);
 	alignmentSettings.addValue("colorb", contourTargetColor.b);
+     
 	alignmentSettings.addValue("threshold", contourTargetThreshold);
 	alignmentSettings.addValue("blobsize", contourMinBlobSize);
+    */
 	alignmentSettings.addValue("faceu", faceCoord.x);
 	alignmentSettings.addValue("facev", faceCoord.y);
+
 	
-	
-	cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
+	//cout << "FOR CLIP " << getID() << " SAVED " << contourTargetColor << " target thresh " << contourTargetThreshold << " blob size " << contourMinBlobSize << endl;
 	
 	alignmentSettings.popTag(); //extraction
+
+    ///SM ADDED
+    alignmentSettings.addTag("skin");
+    alignmentSettings.pushTag("skin");
+    alignmentSettings.addValue("targetR",skinTargetColor.r);
+    alignmentSettings.addValue("targetG",skinTargetColor.g);
+    alignmentSettings.addValue("targetB",skinTargetColor.b);
+    alignmentSettings.addValue("hueWeight", skinHueWeight);
+    alignmentSettings.addValue("satWeight",skinSatWeight);
+    alignmentSettings.addValue("brightWeight", skinBrightWeight);
+    alignmentSettings.addValue("lowerThreshold", skinLowerThreshold);
+    alignmentSettings.addValue("upperThreshold",skinUpperThreshold);
+    alignmentSettings.popTag();//skin
     
 	alignmentSettings.popTag(); //adjustment
 	
@@ -319,28 +463,3 @@ string CloudsClip::getSceneFolder(){
 	return ofFilePath::getEnclosingDirectory(ofFilePath::getEnclosingDirectory(relinkFilePath(sourceVideoFilePath)));
 }
 
-//--------------------------------------------------------------------
-string CloudsClip::relinkFilePath(string filePath){
-	
-	vector<string> drives;
-	
-	drives.push_back("Seance");
-	drives.push_back("Nebula");
-	drives.push_back("Supernova");
-	drives.push_back("Nebula_helper");
-    
-	if( !ofFile(filePath).exists() ){
-		for(int i = 0; i < drives.size(); i++){
-			if(ofFile::doesFileExist("/Volumes/"+ drives[i]+"/")){
-				for(int j = 0; j < drives.size(); j++){
-					if(j != i){
-						ofStringReplace(filePath, drives[j], drives[i]);
-					}
-				}
-				break;
-			}
-		}
-	}
-	
-	return filePath;
-}

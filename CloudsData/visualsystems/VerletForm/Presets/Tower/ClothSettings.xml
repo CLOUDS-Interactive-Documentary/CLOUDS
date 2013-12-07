@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>ClothSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>946.000000000</XPosition>
+    <YPosition>233.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLOR INDEX</Name>
+    <Value>595.551696777</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CLOTH WIDTH</Name>
+    <Value>526.945800781</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>CLOTH HEIGHT</Name>
+    <Value>522.068969727</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>GRID SIZE</Name>
+    <Value>53.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPRING STRENGTH</Name>
+    <Value>0.498039424</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPRING EXTEND</Name>
+    <Value>3.970443249</Value>
+</Widget>

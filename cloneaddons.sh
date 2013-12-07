@@ -17,32 +17,67 @@ fi
 
 #private, must be read
 git clone git@github.com:rezaali/ofxExtras
+
 git clone https://github.com/rezaali/ofxUI
 cd ofxUI
-git checkout develop
+git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
-
-git clone git@github.com:rezaali/ofxColorPalettes
-git clone git@github.com:obviousjim/ofxOcean
 
 git clone https://github.com/satoruhiga/ofxCocoaGLView
 git clone https://github.com/satoruhiga/ofxPCL
 git clone https://github.com/memo/ofxMSAObjCPointer
-git clone https://github.com/memo/ofxMSACore
+git clone https://github.com/obviousjim/ofxMSACore #temp obviousjim for windows
 git clone https://github.com/roymacdonald/ofxCameraSaveLoad
 git clone https://github.com/memo/ofxMSAPhysics
 git clone https://github.com/memo/ofxMSAObjCPointer
+git clone https://github.com/Larsberg/ofxMarchingCubes
+git clone https://github.com/andreasmuller/ofxAutoReloadedShader
+git clone https://github.com/obviousjim/ofxDelaunay
+git clone https://github.com/prisonerjohn/ofxSQLite
+git clone https://github.com/prisonerjohn/ofxTextWriter
+git clone https://github.com/prisonerjohn/ofxBillboard
+git clone https://github.com/quinkennedy/ofxRegex
+git clone https://github.com/satoruhiga/ofxAnimationPrimitives
+git clone https://github.com/obviousjim/ofxBox2d.git
+git clone https://github.com/obviousjim/ofxOpenSteer.git
+git clone https://github.com/Larsberg/ofxSimpleSpline
+git clone https://github.com/Larsberg/ofxSimpleSurface
+git clone https://github.com/labatrockwell/ofxLibwebsockets
+git clone https://github.com/jefftimesten/ofxJSON.git
+git clone https://github.com/TonicAudio/ofxTonic
+git clone https://github.com/neilmendoza/ofxPtf
+git clone https://github.com/neilmendoza/ofxNearestNeighbour
+git clone https://github.com/neilmendoza/ofxPostProcessing
 
-${PREFIX}rezaali/ofxGenerative
+cd ofxPostProcessing
+git checkout -b develop --track origin/develop
+git pull origin develop
+cd ..
 
+
+${PREFIX}obviousjim/ofxGenerative #temp obviousjim for windows fix
+${PREFIX}obviousjim/ofxAVFVideoPlayer
+${PREFIX}obviousjim/ofxOculusRift
+${PREFIX}rezaali/ofxColorPalettes
+${PREFIX}obviousjim/ofxOcean
 ${PREFIX}Flightphase/ofxGameCamera
 ${PREFIX}Flightphase/ofxRange
 ${PREFIX}Flightphase/ofxTween
 ${PREFIX}Flightphase/ofxMSAInteractiveObject
+${PREFIX}Flightphase/ofxFTGL
+${PREFIX}obviousjim/ofxMPMFluid
+
 ${PREFIX}Flightphase/ofxTextInputField
+cd ofxTextInputField
+git checkout -b develop --track origin/develop
+git pull origin develop
+cd ..
+
 ${PREFIX}obviousjim/ofxRGBDepth
 cd ofxRGBDepth
-git checkout develop
+git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
 ${PREFIX}obviousjim/ofxCv
@@ -54,7 +89,8 @@ ${PREFIX}YCAMInterlab/ofxTimecode
 ${PREFIX}YCAMInterlab/ofxTimeline
 
 cd ofxTimeline
-git checkout develop
+git checkout -b develop --track origin/develop
+git pull origin develop
 cd ..
 
 ${PREFIX}obviousjim/ofxObjLoader		

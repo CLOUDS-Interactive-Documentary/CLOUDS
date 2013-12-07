@@ -3,14 +3,16 @@
 #include "ofMain.h"
 #include "CloudsStoryEngine.h"
 #include "CloudsFCPParser.h"
-#include "CloudsPlaybackController.h"
-#include "CloudsSound.h"
+#include "ofxUI.h"
+#include "CloudsAct.h"
+#include "CloudsWebSocketConnection.h"
 
 class testApp : public ofBaseApp{
   public:
 	void setup();
 	void update();
 	void draw();
+    void exit();
 	
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -24,10 +26,28 @@ class testApp : public ofBaseApp{
 	
 	CloudsFCPParser parser;
 	CloudsVisualSystemManager visualSystems;
-	CloudsPlaybackController player;
 	CloudsStoryEngine storyEngine;
-//	CloudsSound sound;
+	CloudsAct* currentAct;
+	CloudsRun run;
 	
+	CloudsWebSocketConnection websockets;
 	
-	void audioRequested(float * output, int bufferSize, int nChannels);
+	//clip events
+	void actCreated(CloudsActEventArgs& args);
+	void actBegan(CloudsActEventArgs& args);
+	void actEnded(CloudsActEventArgs& args);
+	void clipBegan(CloudsClipEventArgs& args);
+	void visualSystemBegan(CloudsVisualSystemEventArgs& args);
+	void visualSystemEnded(CloudsVisualSystemEventArgs& args);
+    void questionAsked(CloudsQuestionEventArgs& args);
+	void topicChanged(CloudsTopicEventArgs& newTopic);
+    void preRollRequested(CloudsPreRollEventArgs& clip);
+		
+	bool rebuildAct;
+    ofxUISuperCanvas *gui;
+    ofxUISuperCanvas *clipGui;
+    bool displayGui;
+
+    void guiEvent(ofxUIEventArgs &e);
+
 };

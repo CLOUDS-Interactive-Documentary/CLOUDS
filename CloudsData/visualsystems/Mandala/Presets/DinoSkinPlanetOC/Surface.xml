@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Surface</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>44.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>draw surface</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>smooth surface</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseScale</Name>
+    <Value>0.006497540</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseOffset</Name>
+    <Value>32.512298584</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseTimeScale</Name>
+    <Value>0.867561579</Value>
+</Widget>

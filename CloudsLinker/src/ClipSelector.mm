@@ -70,14 +70,17 @@
     else if(sender == linkTable && linkTable.selectedRow >= 0){
 		CloudsLink&  link = [self selectedLink];
         clip = parser->getClipWithLinkName(link.targetName);
+		[testViewParent selectClip:clip inAlternateTable:self];
 	}
     else if(sender == suppressedTable && suppressedTable.selectedRow >= 0){
         CloudsLink& link = [self selectedSuppression];
         cout << "getting supressed " << link.targetName << endl;
         clip = parser->getClipWithLinkName(link.targetName);
+		[testViewParent selectClip:clip inAlternateTable:self];
 	}
     else if(sender == metaTable && metaTable.selectedRow >= 0){
         clip = [self selectedMeta];
+		[testViewParent selectClip:clip inAlternateTable:self];
 	}
 	else{
 		//bail!
@@ -126,15 +129,15 @@
 			return [NSNumber numberWithInt: parser->getLinksForClip( m.getLinkName() ).size()];
 		}
         else if([@"Suppressions" isEqualToString:aTableColumn.identifier]){
-            return [NSNumber numberWithInt:parser->getSuppressionsForClip(m.getLinkName()).size()];
+           return [NSNumber numberWithInt:parser->getSuppressionsForClip(m.getLinkName()).size()];
         }
-        else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
-            string s = m.getStartingQuestion();
-            return [NSString stringWithUTF8String:s.c_str()];
-        }
+//        else if([@"Starting Question" isEqualToString:aTableColumn.identifier]){
+//            string s = m.getStartingQuestion();
+//            return [NSString stringWithUTF8String:s.c_str()];
+//        }
         else if([@"Meta Links" isEqualToString:aTableColumn.identifier]){
-            return [NSNumber numberWithInt:parser->getNumMetaDataConnections(m)];
-
+			return @"";
+//            return [NSNumber numberWithInt:parser->getNumMetaDataConnections(m)];
         }
 		else {
 			//CloudsClip& m = [self selectedClip];
@@ -142,7 +145,6 @@
 			return [NSString stringWithUTF8String:linkString.c_str()];
 		}
     }
-    
     else if(aTableView == linkTable){
         string clipTableSourceEntry = currentClipLinks[rowIndex].targetName;
         if(currentClipLinks[rowIndex].startFrame != -1 && currentClipLinks[rowIndex].endFrame != -1){
@@ -203,8 +205,8 @@
 		[linkTable deselectAll:self];
 		[suppressedTable deselectAll:self];
 		
-		[self performSelectorOnMainThread:@selector(updateSelectedClip) withObject:nil waitUntilDone:NO];
-		//[self updateSelectedClip];
+		//[self performSelectorOnMainThread:@selector(updateSelectedClip) withObject:nil waitUntilDone:NO];
+		[self updateSelectedClip];
     }
     else if(aNotification.object == linkTable){
 		
@@ -280,6 +282,18 @@
     }
 }
 
+- (void) selectClip:(CloudsClip&) clip
+{
+	string clipID = clip.getID();
+	for(int i = 0; i < parser->getAllClips().size(); i++){
+		if(parser->getAllClips()[i].getID() == clipID){
+			[clipTable selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
+				   byExtendingSelection:NO];
+			[clipTable scrollRowToVisible:i];
+			break;
+		}
+	}
+}
 
 - (NSArray *)tokenField:(NSTokenField *)tokenField
 completionsForSubstring:(NSString *)substring
@@ -350,20 +364,20 @@ completionsForSubstring:(NSString *)substring
 }
 
 - (void) setQuestionText:(id)sender{
-    //button pressed
-//    CloudsClip m = [self selectedClip];
-	
-	//needs to be the Clip referenced by the main database to have the question stored
-    //get the txt from textfield, get currently select clip, and set it
-    CloudsClip& n = [self selectedClip];
-    string q = [startQuestion.stringValue UTF8String];
-    
-    n.setStartingQuestion(q);
-    
-	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
-	
-	[testViewParent updateViews];
-    [self saveLinks:self];
+//    //button pressed
+////    CloudsClip m = [self selectedClip];
+//	
+//	//needs to be the Clip referenced by the main database to have the question stored
+//    //get the txt from textfield, get currently select clip, and set it
+//    CloudsClip& n = [self selectedClip];
+//    string q = [startQuestion.stringValue UTF8String];
+//    
+//    n.setStartingQuestion(q);
+//    
+//	cout<<"Set the question for clip"<<n.getLinkName()<<"::"<<n.getStartingQuestion()<<endl;
+//	
+//	[testViewParent updateViews];
+//    [self saveLinks:self];
 }
 
 - (IBAction) linkFromMetaTable:(id)sender
@@ -529,7 +543,7 @@ completionsForSubstring:(NSString *)substring
 		string keywords = ofJoinString(m.getKeywords(), ",") +","+ofJoinString(m.getSpecialKeywords(),",");
 		currentKeywords.stringValue = [NSString stringWithUTF8String:keywords.c_str()];
 		
-		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
+//		startQuestion.stringValue = [NSString stringWithUTF8String:m.getStartingQuestion().c_str()];
 		revokedList = ofJoinString(m.getRevokedKeywords(), ",");
 		revokedKeywords.stringValue = [NSString stringWithUTF8String:revokedList.c_str()];
 		
@@ -543,7 +557,7 @@ completionsForSubstring:(NSString *)substring
 		
 		currentKeywords.stringValue = @"";
 		revokedKeywords.stringValue = @"";
-		startQuestion.stringValue = @"";
+//		startQuestion.stringValue = @"";
 		sharedKeywords.stringValue = @"";
 		
 		currentClipLinks.clear();

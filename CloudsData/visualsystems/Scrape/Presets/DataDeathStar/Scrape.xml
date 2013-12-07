@@ -1,0 +1,62 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Scrape</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2D</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DOME</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>EXPLODE</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX DIV WIDTH</Name>
+    <Value>23.610836029</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX DIV HEIGHT</Name>
+    <Value>12.305418015</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BOX MAX SUBDIVISIONS</Name>
+    <Value>10.970443726</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>DO OVERLAY</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE IN DURATION</Name>
+    <Value>1561.330078125</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE IN DELAY</Name>
+    <Value>2482.758789062</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE OUT DURATION</Name>
+    <Value>2796.551757812</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE OUT DELAY</Name>
+    <Value>2822.659912109</Value>
+</Widget>

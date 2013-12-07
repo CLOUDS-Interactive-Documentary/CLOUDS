@@ -1,0 +1,112 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>WEB_HISTORY</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TYPE SPEED</Name>
+    <Value>10.900002480</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLEAR SCREEN</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE HUE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE SAT</Name>
+    <Value>0.172413796</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE BRI</Name>
+    <Value>0.857142866</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LINE ALPHA</Name>
+    <Value>0.384236455</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SPIN SPEED</Name>
+    <Value>0.394088656</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LEVEL DEPTH</Name>
+    <Value>100.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE STEP</Name>
+    <Value>0.005418719</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NOISE AMOUNT</Name>
+    <Value>2.995073795</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN Z</Name>
+    <Value>-1290.640380859</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MAX Z</Name>
+    <Value>206.896560669</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>MIN ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST HUE</Name>
+    <Value>0.408867002</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST SAT</Name>
+    <Value>0.428571433</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST BRI</Name>
+    <Value>0.283251226</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>LIST ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE HUE</Name>
+    <Value>0.527093589</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE SAT</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE BRI</Name>
+    <Value>0.551724136</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>NODE ALPHA</Name>
+    <Value>0.561576366</Value>
+</Widget>

@@ -4,18 +4,30 @@
 #include "ofMain.h"
 #include "CloudsClip.h"
 #include "CloudsVisualSystemPreset.h"
+#include "CloudsDichotomy.h"
 
-class CloudsStoryEventArgs : public ofEventArgs {
+
+class CloudsAct;
+class CloudsActEventArgs : public ofEventArgs {
   public:
-	CloudsStoryEventArgs(CloudsClip& chosenClip, vector<CloudsClip>& clipOptions, string currentTopic)
-		: chosenClip(chosenClip), clipOptions(clipOptions), currentTopic(currentTopic)
+	CloudsActEventArgs(CloudsAct* act)
+		: act(act)
+	{ }
+//	vector<CloudsDichotomy>& finalDichotomyBalance;
+//	vector<ActDichotomyEntry>& actDichotomies;
+	CloudsAct* act;
+};
+
+class CloudsClipEventArgs : public ofEventArgs {
+  public:
+	CloudsClipEventArgs(CloudsClip& chosenClip, string currentTopic, vector<CloudsDichotomy>& currentDichotomiesBalance)
+		: chosenClip(chosenClip), currentTopic(currentTopic),currentDichotomiesBalance(currentDichotomiesBalance)
 	{
 		timeUntilNextClip = 0;
-
 	}
 	
 	CloudsClip& chosenClip;
-	vector<CloudsClip>& clipOptions;
+	vector<CloudsDichotomy>& currentDichotomiesBalance;
 	string currentTopic;
 	float timeUntilNextClip;
 };
@@ -24,27 +36,63 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
   public:
 	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
 		: preset(preset)
-	{
-		duration = 0;
-	}
+	{}
 
 	CloudsVisualSystemPreset& preset;
+};
+
+class CloudsQuestionEventArgs : public ofEventArgs{
+   public:
+    CloudsQuestionEventArgs(CloudsClip& questionClip, string question, string topic)
+		: questionClip(questionClip), question(question), topic(topic)
+    {}
 	
+    CloudsClip& questionClip;
+	string question;
+	string topic;
+};
+
+class CloudsPreRollEventArgs : public ofEventArgs{
+public:
+    CloudsPreRollEventArgs(CloudsClip& preRollClip, float clipStartTimeOffset)
+		: preRollClip(preRollClip)
+    {
+        clipStartTimeOffset = 0;
+    }
+    
+    CloudsClip& preRollClip;
+    float handleLength;
+};
+
+class CloudsTopicEventArgs : public ofEventArgs{
+public:
+	CloudsTopicEventArgs(string topic, float duration)
+		: topic(topic), duration(duration)
+	{}
+	
+	string topic;
 	float duration;
 };
 
 class CloudsEvents {
   public:
-	ofEvent<CloudsStoryEventArgs> storyBegan;
-	ofEvent<CloudsStoryEventArgs> storyEnded;
+	 //sent by story engine
+    ofEvent<CloudsActEventArgs> actCreated;
 	
-	ofEvent<CloudsStoryEventArgs> clipBegan;
-	ofEvent<CloudsStoryEventArgs> clipEnded;
+	//sent by act
+    ofEvent<CloudsActEventArgs> actBegan;
+    ofEvent<CloudsActEventArgs> actEnded;
+	ofEvent<CloudsClipEventArgs> clipBegan;
 
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemBegan;
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
-	ofEvent<CloudsStoryEventArgs> topicChanged;
+	ofEvent<CloudsPreRollEventArgs> preRollRequested;
+	
+    
+    ofEvent<CloudsQuestionEventArgs> questionAsked;
+
+	ofEvent<CloudsTopicEventArgs> topicChanged;
 	
 };
 

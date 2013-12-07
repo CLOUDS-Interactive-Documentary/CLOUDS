@@ -11,18 +11,18 @@
 #include "CloudsClip.h"
 #include "CloudsLink.h"
 #include <set>
-
+#include "ofRange.h"
 class CloudsFCPParser {
   public:
-    
+
 	CloudsFCPParser();
-	
+
 	void loadFromFiles();
     void setup(string directory);
     void refreshXML();
 	void setCombinedVideoDirectory(string directory);
-    vector<string> getClustersForPerson(string personName);
-	
+	bool printErrors;
+
 #pragma mark Clips
 	bool hasClipWithLinkName(string linkname);
 	bool hasClipWithID(string ID);
@@ -32,10 +32,17 @@ class CloudsFCPParser {
 	CloudsClip& getClipWithID( string ID, bool& clipFound );
 
 #pragma mark Links
-	//MANAGE
     void parseLinks(string linkFile);
-    void parseClusterMap(string mapFile);
+//    void parseClusterMap(string mapFile);
+	void parseClusterNetwork(string fileName);
 	
+	void getOverlappingClipIDs();
+    void autolinkSequentialClips();
+    
+    map<string,string> cloudsClipToFileID;
+    map<string, vector<CloudsClip> > fileIDtoCloudsClips;
+    map<string, vector<string> > overlappingClipsMap;
+    
 	vector<CloudsLink>& getLinksForClip(CloudsClip& clip);
     vector<CloudsLink>& getLinksForClip(string clipName);
 	vector<CloudsLink>& getSuppressionsForClip(CloudsClip& clip);
@@ -56,7 +63,11 @@ class CloudsFCPParser {
 	void unsuppressConnection(string linkName, string targetName);
 	void unsuppressConnection(CloudsLink& link);
     void refreshAllKeywords();
-	
+	void printSpeakerList();
+	void printDichotomyRatios();
+    
+    void addIntervention(string clipName, string interventionName);
+	bool clipHasIntervention(string clipName);
 	//QUERIES
 	//true if A has any out going links at all
 	bool clipHasLink(CloudsClip& clip);
@@ -78,6 +89,7 @@ class CloudsFCPParser {
     bool clipHasRevokedKeywords(CloudsClip& clip);
     bool clipHasAdditionalKeywords(CloudsClip& clip);
     
+	//old way
     //are there any starting Questions?
     bool clipHasStartingQuestions(CloudsClip& clip);
     bool clipHasStartingQuestions(string clipName);
@@ -88,26 +100,29 @@ class CloudsFCPParser {
 	
 	float percentOfClipsLinked();
 	float getAllClipDuration();
-
 	
 	//create a list that maps all of the tags back to closest key theme
-	void populateKeyThemes();
-	void populateKeyThemes(set<string>& keyThemes);
-
-	string getKeyThemeForTag(string tag);
+//	void populateKeyThemes();
+//	void populateKeyThemes(set<string>& keyThemes);
+//	string getKeyThemeForTag(string tag);
 	
 #pragma mark Keywords
     void sortKeywordsByOccurrence(bool byOccurrence);
     vector<string>& getAllKeywords();
     vector<CloudsClip>& getAllClips();
-	CloudsClip& getRandomClip(bool mustHaveCombinedVideoFile = false,
-							  bool mustHaveQuestion = false);
-	
+	CloudsClip& getRandomClip(bool hasCombinedVideo = false,
+							  bool hasQuestion = false,
+							  bool hasStartQuestion = false);
 	int getNumberOfClipsWithKeyword(string filterWord);
 	vector<CloudsClip> getClipsWithKeyword(string filterWord);
+	vector<CloudsClip> getClipsWithKeyword(string filterWord, vector<CloudsClip>& searchClips);
     vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter);
+	vector<CloudsClip> getClipsWithKeyword(const vector<string>& filter, vector<CloudsClip>& searchClips);
+    vector<CloudsClip> getClipsWithQuestionsForTopic(string topic);
+	
     set<string> getRelatedKeywords(string filterWord);
 	int getNumberOfSharedKeywords(CloudsClip& a, CloudsClip& b);
+	
 	vector<string> getSharedKeywords(CloudsClip& a, CloudsClip& b);
 	int getNumberOfSharedClips(string keywordA, string keywordB);
 	
@@ -117,12 +132,19 @@ class CloudsFCPParser {
 	
     int occurrencesOfKeyword(string keyword);
     bool operator()(const string& a, const string& b);
-
+    vector<string>& getContentKeywords();
+	vector<string>& getKeywordFamily(string keyword);
+    
+	
 #pragma mark key themes
 	string closestKeyThemeToTag(string searchTag);
 	
 	set<string> clusterMapColors;
-	
+    vector<string> getAdjacentKeywords( string currentKeyword, int numOfDesiredKeywords);
+    float getCohesionIndexForKeyword(string keyword);
+    float getDistanceFromAdjacentKeywords(string keyword1, string keyword2);
+    
+    void saveClusterMap(map<string, ofVec2f> centroidMap);
   protected:
     
     void reciprocateSuppressions(CloudsClip& clip );
@@ -134,31 +156,49 @@ class CloudsFCPParser {
 	
     void addXMLFile(string xmlFile);
     void parseClipItem(ofxXmlSettings& finalCutXml, string xmlName);
-	
+   
     map<string, string> fileIdToPath;
     map<string, string> fileIdToName;
-	set<string> markerLinkNames;
 
+    set<string> markerLinkNames;
+	set<string> speakerFcpIds;
+    
     vector<CloudsClip> allClips;
     map<string, int> clipIDToIndex;
     map<string, int> clipLinkNameToIndex;
+    map<string, vector<int> > questionTopicstoClipIndex;
     
     map<string, int> allKeywords;
-    //potential problem
+    map<string, int> contentKeywords;
+    
     vector<string> keywordVector;
+    vector<string> contentKeywordVector;
+	
+	vector<int> questionIndeces;
+	vector<int> startQuestionIndeces;
 	vector<int> hasCombinedVideoIndeces;
-	vector<string> questionIds;
 	vector<int> hasCombinedVideoAndQuestionIndeces;
+	vector<int> hasCombinedAndIsStartingClipIndeces;
 	
     map<string, vector<CloudsLink> > linkedConnections;
 	map<string, vector<CloudsLink> > suppressedConnections;
 	map<string, vector<string> > sourceSupression;
+    map<string, string> clipInterventions;
     
-    //not used at the moment
-	set<string> keyThemes;
-	map<string,string> tagToKeyTheme;
+	//KEYWORDS + CLUSTER NETWORK
+    vector<pair<string, ofVec3f> > keywordCentroids;
+	map<string, vector<string> > keywordAdjacency;
+	map<string, vector<string> > keywordFamilies;
+    map<string, int> keywordCentroidIndex;
+    map<string, float> keywordCohesionMap;
+    void populateKeywordCentroids();
+    void calculateCohesionMedianForKeywords();
+    ofVec2f getKeywordCentroid(string keyword);
+    int getCentroidMapIndex(string keyword);
+	void calculateKeywordAdjascency();
+	void calculateKeywordFamilies();
+    void saveInterventions(string interventionsFile);
 	
-    
     CloudsClip dummyClip; // for failed reference returns
 	float lastBackupTime;
 	float backupTimeInterval;

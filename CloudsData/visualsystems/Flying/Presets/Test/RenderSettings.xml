@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>249.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>regenerate</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>growDist</Name>
+    <Value>538.916259766</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogStart</Name>
+    <Value>1540.886718750</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogEnd</Name>
+    <Value>1848.275878906</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>cameraControl</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>drawPlantPosns</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseFreq</Name>
+    <Value>0.001620690</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>noiseAmp</Name>
+    <Value>82.019706726</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>fxaa</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bloom</Name>
+    <Value>0</Value>
+</Widget>
