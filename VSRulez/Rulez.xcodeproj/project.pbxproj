@@ -140,6 +140,8 @@
 		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F37E081852F6A40087F91C /* rulez.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F37E061852F6A40087F91C /* rulez.frag */; };
+		E7F37E091852F6A40087F91C /* rulez.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F37E071852F6A40087F91C /* rulez.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,12 +260,6 @@
 		28B4EE26183E723B0091E0F3 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 		28B4EE27183E723B0091E0F3 /* RuleSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RuleSet.cpp; sourceTree = "<group>"; };
 		28B4EE28183E723B0091E0F3 /* RuleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleSet.h; sourceTree = "<group>"; };
-		28B4EE41183E8AAA0091E0F3 /* city.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = city.xml; sourceTree = "<group>"; };
-		28B4EE43183E8AAA0091E0F3 /* curly2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = curly2.xml; sourceTree = "<group>"; };
-		28B4EE44183E8AAA0091E0F3 /* ico1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ico1.xml; sourceTree = "<group>"; };
-		28B4EE45183E8AAA0091E0F3 /* space_city.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = space_city.xml; sourceTree = "<group>"; };
-		28B4EE46183E8AAA0091E0F3 /* tree_seuss.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_seuss.xml; sourceTree = "<group>"; };
-		28B4EE47183E8AAA0091E0F3 /* tree_thin.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_thin.xml; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -502,6 +498,14 @@
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F37DFF1852F69E0087F91C /* city.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = city.xml; sourceTree = "<group>"; };
+		E7F37E001852F69E0087F91C /* curly2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = curly2.xml; sourceTree = "<group>"; };
+		E7F37E011852F69E0087F91C /* ico1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ico1.xml; sourceTree = "<group>"; };
+		E7F37E021852F69E0087F91C /* space_city.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = space_city.xml; sourceTree = "<group>"; };
+		E7F37E031852F69E0087F91C /* tree_seuss.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tree_seuss.xml; sourceTree = "<group>"; };
+		E7F37E041852F69E0087F91C /* tree_thin.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tree_thin.xml; sourceTree = "<group>"; };
+		E7F37E061852F6A40087F91C /* rulez.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rulez.frag; sourceTree = "<group>"; };
+		E7F37E071852F6A40087F91C /* rulez.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rulez.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,20 +693,6 @@
 			path = actions;
 			sourceTree = "<group>";
 		};
-		28B4EE40183E8AAA0091E0F3 /* rules */ = {
-			isa = PBXGroup;
-			children = (
-				28B4EE41183E8AAA0091E0F3 /* city.xml */,
-				28B4EE43183E8AAA0091E0F3 /* curly2.xml */,
-				28B4EE44183E8AAA0091E0F3 /* ico1.xml */,
-				28B4EE45183E8AAA0091E0F3 /* space_city.xml */,
-				28B4EE46183E8AAA0091E0F3 /* tree_seuss.xml */,
-				28B4EE47183E8AAA0091E0F3 /* tree_thin.xml */,
-			);
-			name = rules;
-			path = ../../../CloudsLibrary/src/VisualSystems/Rulez/bin/data/rules;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,7 +813,8 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				28B4EE40183E8AAA0091E0F3 /* rules */,
+				E7F37E051852F6A40087F91C /* shaders */,
+				E7F37DFE1852F69E0087F91C /* rules */,
 			);
 			name = data;
 			path = bin/data;
@@ -1335,6 +1326,30 @@
 			path = ../../CloudsLibrary;
 			sourceTree = "<group>";
 		};
+		E7F37DFE1852F69E0087F91C /* rules */ = {
+			isa = PBXGroup;
+			children = (
+				E7F37DFF1852F69E0087F91C /* city.xml */,
+				E7F37E001852F69E0087F91C /* curly2.xml */,
+				E7F37E011852F69E0087F91C /* ico1.xml */,
+				E7F37E021852F69E0087F91C /* space_city.xml */,
+				E7F37E031852F69E0087F91C /* tree_seuss.xml */,
+				E7F37E041852F69E0087F91C /* tree_thin.xml */,
+			);
+			name = rules;
+			path = ../../../CloudsData/visualsystems/Rulez/rules;
+			sourceTree = "<group>";
+		};
+		E7F37E051852F6A40087F91C /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7F37E061852F6A40087F91C /* rulez.frag */,
+				E7F37E071852F6A40087F91C /* rulez.vert */,
+			);
+			name = shaders;
+			path = ../../../CloudsData/visualsystems/Rulez/rules/shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1362,8 +1377,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Rulez" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1535,6 +1548,8 @@
 				285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */,
 				285185D61837B8F8009D8339 /* ParallelTransportFrames.cpp in Sources */,
 				28B4EE33183E723B0091E0F3 /* TubeAction.cpp in Sources */,
+				E7F37E081852F6A40087F91C /* rulez.frag in Sources */,
+				E7F37E091852F6A40087F91C /* rulez.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

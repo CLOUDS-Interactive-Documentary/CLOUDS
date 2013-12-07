@@ -71,6 +71,7 @@ void CloudsVisualSystemRGBDVideo::selfUpdate(){
 	
 	if(movieLoaded){
 		player.update();
+		cout << "time? " << player.getCurrentTime() << endl;
 	}
 }
 
@@ -95,7 +96,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		
 		setupRGBDTransforms();
 		
-		ofTranslate(translatedHeadPosition);
+		//ofTranslate(translatedHeadPosition);
 		
 		rgbdPixelToPixelShader.begin();
 		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 0);
@@ -133,7 +134,7 @@ bool CloudsVisualSystemRGBDVideo::playMovie(string filePath){
 		return false;
 	}
 	
-	filePath = getDataPath() + "rgbdmovies/" + filePath;
+	filePath = getVisualSystemDataPath(true) + "videos/" + filePath;
 	
 	if(! ofFile(filePath).exists() ) {
 		ofLogError("CloudsVisualSystemRGBDVideo::playMovie") << "File does not exist" << endl;

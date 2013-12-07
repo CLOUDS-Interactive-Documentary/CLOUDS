@@ -139,6 +139,10 @@
 		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F37DF71852DF0F0087F91C /* floor.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F37DF31852DF0F0087F91C /* floor.frag */; };
+		E7F37DF81852DF0F0087F91C /* floor.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F37DF41852DF0F0087F91C /* floor.vert */; };
+		E7F37DF91852DF0F0087F91C /* plants.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7F37DF51852DF0F0087F91C /* plants.frag */; };
+		E7F37DFA1852DF0F0087F91C /* plants.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7F37DF61852DF0F0087F91C /* plants.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,12 +226,6 @@
 		285C2094182FFFEE0065BCAE /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
 		285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
 		285C2096182FFFEE0065BCAE /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
-		28B033AA184BD343009B9099 /* flower.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = flower.xml; sourceTree = "<group>"; };
-		28B033AB184BD343009B9099 /* tree_flying.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_flying.xml; sourceTree = "<group>"; };
-		28B033AD184BD343009B9099 /* floor.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = floor.frag; sourceTree = "<group>"; };
-		28B033AE184BD343009B9099 /* floor.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = floor.vert; sourceTree = "<group>"; };
-		28B033AF184BD343009B9099 /* plants.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = plants.frag; sourceTree = "<group>"; };
-		28B033B0184BD343009B9099 /* plants.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = plants.vert; sourceTree = "<group>"; };
 		28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlying.cpp; sourceTree = "<group>"; };
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
 		28B033D7184BD444009B9099 /* Branch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Branch.cpp; path = ofxRules/src/Branch.cpp; sourceTree = "<group>"; };
@@ -259,12 +257,6 @@
 		28B033F6184BD452009B9099 /* TransformAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransformAction.h; path = ofxRules/src/actions/TransformAction.h; sourceTree = "<group>"; };
 		28B033F7184BD452009B9099 /* TubeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TubeAction.cpp; path = ofxRules/src/actions/TubeAction.cpp; sourceTree = "<group>"; };
 		28B033F8184BD452009B9099 /* TubeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TubeAction.h; path = ofxRules/src/actions/TubeAction.h; sourceTree = "<group>"; };
-		28B4EE41183E8AAA0091E0F3 /* city.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = city.xml; sourceTree = "<group>"; };
-		28B4EE43183E8AAA0091E0F3 /* curly2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = curly2.xml; sourceTree = "<group>"; };
-		28B4EE44183E8AAA0091E0F3 /* ico1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ico1.xml; sourceTree = "<group>"; };
-		28B4EE45183E8AAA0091E0F3 /* space_city.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = space_city.xml; sourceTree = "<group>"; };
-		28B4EE46183E8AAA0091E0F3 /* tree_seuss.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_seuss.xml; sourceTree = "<group>"; };
-		28B4EE47183E8AAA0091E0F3 /* tree_thin.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_thin.xml; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -503,6 +495,12 @@
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F37DF01852DEFB0087F91C /* flower.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = flower.xml; sourceTree = "<group>"; };
+		E7F37DF11852DEFB0087F91C /* tree_flying.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tree_flying.xml; sourceTree = "<group>"; };
+		E7F37DF31852DF0F0087F91C /* floor.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floor.frag; sourceTree = "<group>"; };
+		E7F37DF41852DF0F0087F91C /* floor.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floor.vert; sourceTree = "<group>"; };
+		E7F37DF51852DF0F0087F91C /* plants.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = plants.frag; sourceTree = "<group>"; };
+		E7F37DF61852DF0F0087F91C /* plants.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = plants.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,8 +600,8 @@
 		28B0339F184BD2CB009B9099 /* Flying */ = {
 			isa = PBXGroup;
 			children = (
-				28B033A9184BD343009B9099 /* rules */,
-				28B033AC184BD343009B9099 /* shaders */,
+				E7F37DF21852DF0F0087F91C /* shaders */,
+				E7F37DEF1852DEFB0087F91C /* rules */,
 				28B033A5184BD2CB009B9099 /* vs_src */,
 			);
 			name = Flying;
@@ -618,28 +616,6 @@
 				28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */,
 			);
 			path = vs_src;
-			sourceTree = "<group>";
-		};
-		28B033A9184BD343009B9099 /* rules */ = {
-			isa = PBXGroup;
-			children = (
-				28B033AA184BD343009B9099 /* flower.xml */,
-				28B033AB184BD343009B9099 /* tree_flying.xml */,
-			);
-			name = rules;
-			path = bin/data/rules;
-			sourceTree = "<group>";
-		};
-		28B033AC184BD343009B9099 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				28B033AD184BD343009B9099 /* floor.frag */,
-				28B033AE184BD343009B9099 /* floor.vert */,
-				28B033AF184BD343009B9099 /* plants.frag */,
-				28B033B0184BD343009B9099 /* plants.vert */,
-			);
-			name = shaders;
-			path = bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		28B033D5184BD432009B9099 /* ofxRules */ = {
@@ -692,20 +668,6 @@
 				28B033F8184BD452009B9099 /* TubeAction.h */,
 			);
 			name = actions;
-			sourceTree = "<group>";
-		};
-		28B4EE40183E8AAA0091E0F3 /* rules */ = {
-			isa = PBXGroup;
-			children = (
-				28B4EE41183E8AAA0091E0F3 /* city.xml */,
-				28B4EE43183E8AAA0091E0F3 /* curly2.xml */,
-				28B4EE44183E8AAA0091E0F3 /* ico1.xml */,
-				28B4EE45183E8AAA0091E0F3 /* space_city.xml */,
-				28B4EE46183E8AAA0091E0F3 /* tree_seuss.xml */,
-				28B4EE47183E8AAA0091E0F3 /* tree_thin.xml */,
-			);
-			name = rules;
-			path = ../../../CloudsLibrary/src/VisualSystems/Rulez/bin/data/rules;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -827,7 +789,6 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
-				28B4EE40183E8AAA0091E0F3 /* rules */,
 			);
 			name = data;
 			path = bin/data;
@@ -1339,6 +1300,28 @@
 			path = ../../CloudsLibrary;
 			sourceTree = "<group>";
 		};
+		E7F37DEF1852DEFB0087F91C /* rules */ = {
+			isa = PBXGroup;
+			children = (
+				E7F37DF01852DEFB0087F91C /* flower.xml */,
+				E7F37DF11852DEFB0087F91C /* tree_flying.xml */,
+			);
+			name = rules;
+			path = ../../../../CloudsData/visualsystems/Flying/rules;
+			sourceTree = "<group>";
+		};
+		E7F37DF21852DF0F0087F91C /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7F37DF31852DF0F0087F91C /* floor.frag */,
+				E7F37DF41852DF0F0087F91C /* floor.vert */,
+				E7F37DF51852DF0F0087F91C /* plants.frag */,
+				E7F37DF61852DF0F0087F91C /* plants.vert */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/Flying/shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1366,8 +1349,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Flying" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1538,6 +1519,10 @@
 				285C20AF182FFFEE0065BCAE /* VerticalTiltShifPass.cpp in Sources */,
 				28B03401184BD452009B9099 /* TransformAction.cpp in Sources */,
 				285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */,
+				E7F37DF71852DF0F0087F91C /* floor.frag in Sources */,
+				E7F37DF81852DF0F0087F91C /* floor.vert in Sources */,
+				E7F37DF91852DF0F0087F91C /* plants.frag in Sources */,
+				E7F37DFA1852DF0F0087F91C /* plants.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

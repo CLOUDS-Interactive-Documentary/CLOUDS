@@ -65,7 +65,7 @@ void CloudsVisualSystemGPUParticles::selfSetupGui(){
         }
     }
     // Load this information in to the FBO«s texture
-    posPingPong.allocate(textureRes, textureRes,GL_RGB32F);
+    posPingPong.allocate(textureRes, textureRes, GL_RGB32F);
     posPingPong.src->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
     posPingPong.dst->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
     delete [] pos;    // Delete the array
@@ -309,7 +309,6 @@ void CloudsVisualSystemGPUParticles::selfDrawBackground(){
     ofPushStyle();
     ofEnableAlphaBlending();
     
-    ofBackground(0);
     newColor.setHsb(hue1,saturation1, brightness1);
     ofSetColor(newColor); //(100,255,255);
     renderFBO.draw(0,0);

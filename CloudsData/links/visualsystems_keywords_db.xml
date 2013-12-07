@@ -3750,9 +3750,9 @@
 <system name="OpenP5SeaOfLines_FireWeb">
     <keywords></keywords>
     <suppressions></suppressions>
-    <comments></comments>
+    <comments>Way too slow</comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
 <system name="OpenP5SpaceJunk_BasicMotion">

@@ -885,9 +885,18 @@ void CloudsVisualSystem3DModelLoader::loadModel( string fileName, bool bSmoothMe
 {
 //	perspCam.reset();
 	cout << "*** LOADING MODEL " << fileName << endl;
-	ofxObjLoader::load( getVisualSystemDataPath(true) + fileName, modelMesh, true );
+	string filePath = getVisualSystemDataPath(true) + fileName;
+	if(!ofFile(filePath).exists()){
+		ofLogError("CloudsVisualSystem3DModelLoader::loadModel") << filePath << " Doesn't exist";
+	}
+	else{
+		cout << "Found path " << filePath << " to exist" << endl;
+	}
+	ofxObjLoader::load(filePath, modelMesh, true );
+	cout << "*** FULL PATH " << filePath << " FOUND " << modelMesh.getNumVertices() << " verts " <<  endl;
+
 	calcBoundingBox();
-	
+
 	float mScl = maxDim / max( maxBound.x - minBound.x, max(maxBound.y-minBound.y, maxBound.z - minBound.z ));
 	modelScl.set( mScl, mScl, mScl );
 	

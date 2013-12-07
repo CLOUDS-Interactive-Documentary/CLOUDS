@@ -559,14 +559,28 @@ void CloudsVisualSystemCosmic::drawAttractorDebug()
 
 void CloudsVisualSystemCosmic::updateRadiusShader()
 {
+	ofMesh m;
+	m.addVertex(ofVec3f(0,0,0));
+	m.addVertex(ofVec3f(radiFbo.getWidth(),0,0));
+	m.addVertex(ofVec3f(0,radiFbo.getHeight(),0));
+	m.addVertex(ofVec3f(radiFbo.getWidth(),radiFbo.getHeight(),0));
+	
+	m.addTexCoord(ofVec2f(0,0));
+	m.addTexCoord(ofVec2f(radiFbo.getWidth(),0));
+	m.addTexCoord(ofVec2f(0,radiFbo.getHeight()));
+	m.addTexCoord(ofVec2f(radiFbo.getWidth(),radiFbo.getHeight()));
+	
+	m.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
     radiFbo.begin();
     ofClear(0, 255);
     radShader.begin();
     
     radShader.setUniform1f("time", time);
     radShader.setUniform1f("size", debugGridSize);
-    radiFbo.draw(0, 0);
-    
+//    radiFbo.draw(0, 0);
+    m.draw();
+	
     radShader.end();
     radiFbo.end();
 }
