@@ -14,7 +14,7 @@
 #include "ofxMarchingCubes.h"
 
 //TODO: rename this to your own visual system
-class CloudsVisualSystemMarchingCubes : public CloudsVisualSystem {
+class CloudsVisualSystemMetaballs : public CloudsVisualSystem {
   public:
     
 	//TODO: Change this to the name of your visual system

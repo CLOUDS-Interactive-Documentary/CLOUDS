@@ -1,18 +1,14 @@
 //
-//  CloudsVisualSystemMarchingCubes.cpp
+//  CloudsVisualSystemMetaballs.cpp
 //
 
-#include "CloudsVisualSystemMarchingCubes.h"
+#include "CloudsVisualSystemMetaballs.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include <stdlib.h>     /* atoi */
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemMarchingCubes::selfSetupGui(){
+void CloudsVisualSystemMetaballs::selfSetupGui(){
 	
 	customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
@@ -46,7 +42,7 @@ void CloudsVisualSystemMarchingCubes::selfSetupGui(){
 	modes.push_back("disable");
 	customGui->addRadio("blending", modes); 
 	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemMarchingCubes::selfGuiEvent);
+	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemMetaballs::selfGuiEvent);
 	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -74,13 +70,13 @@ void CloudsVisualSystemMarchingCubes::selfSetupGui(){
 	meshGui->addToggle("tiling", &tiling);
 	
 	
-	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemMarchingCubes::selfGuiEvent);
+	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemMetaballs::selfGuiEvent);
 	
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
 }
 
-void CloudsVisualSystemMarchingCubes::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemMetaballs::selfGuiEvent(ofxUIEventArgs &e){
 	string name = e.widget->getName();
 	
 	if(e.widget->getName() == "Custom Button"){
@@ -167,26 +163,26 @@ void CloudsVisualSystemMarchingCubes::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 //Use system gui for global or logical settings, for exmpl
-void CloudsVisualSystemMarchingCubes::selfSetupSystemGui(){
+void CloudsVisualSystemMetaballs::selfSetupSystemGui(){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::guiSystemEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemMetaballs::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
 //use render gui for display settings, like changing colors
-void CloudsVisualSystemMarchingCubes::selfSetupRenderGui(){
+void CloudsVisualSystemMetaballs::selfSetupRenderGui(){
 
 }
 
-void CloudsVisualSystemMarchingCubes::guiRenderEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemMetaballs::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemMarchingCubes::selfSetup(){
+void CloudsVisualSystemMetaballs::selfSetup(){
 	
 	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
 	
@@ -223,14 +219,14 @@ void CloudsVisualSystemMarchingCubes::selfSetup(){
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemMarchingCubes::selfPresetLoaded(string presetPath){
+void CloudsVisualSystemMetaballs::selfPresetLoaded(string presetPath){
 	
 }
 
 // selfBegin is called when the system is ready to be shown
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
-void CloudsVisualSystemMarchingCubes::selfBegin(){
+void CloudsVisualSystemMetaballs::selfBegin(){
 	
 	balls.resize( 10 );
 	ballRadius.resize(balls.size());
@@ -246,7 +242,7 @@ void CloudsVisualSystemMarchingCubes::selfBegin(){
 //	updateMesh();
 }
 
-void CloudsVisualSystemMarchingCubes::cacheNoiseVals(){
+void CloudsVisualSystemMetaballs::cacheNoiseVals(){
 	
 	//create our noise samples
 	float scl1 = 10;//.1;
@@ -272,7 +268,7 @@ void CloudsVisualSystemMarchingCubes::cacheNoiseVals(){
 	noiseValsCached = true;
 }
 
-void CloudsVisualSystemMarchingCubes::addBallToMC(ofVec3f pos, float rad){
+void CloudsVisualSystemMetaballs::addBallToMC(ofVec3f pos, float rad){
 	//center of the metaballs == half it's scale
 	ofVec3f hlfScl = mc.scale/2;
 	ofVec3f p0 = hlfScl + pos;
@@ -308,7 +304,7 @@ void CloudsVisualSystemMarchingCubes::addBallToMC(ofVec3f pos, float rad){
 	}
 }
 
-void CloudsVisualSystemMarchingCubes::updateMeshNoise(){
+void CloudsVisualSystemMetaballs::updateMeshNoise(){
 	
 	if(!noiseValsCached)	cacheNoiseVals();
 	
@@ -353,7 +349,7 @@ void CloudsVisualSystemMarchingCubes::updateMeshNoise(){
 	}
 }
 
-void CloudsVisualSystemMarchingCubes::updateMeshFauxBalls(){
+void CloudsVisualSystemMetaballs::updateMeshFauxBalls(){
 	//clear the isoVals
 	mc.wipeIsoValues();
 	
@@ -401,7 +397,7 @@ void CloudsVisualSystemMarchingCubes::updateMeshFauxBalls(){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::updateMesh()
+void CloudsVisualSystemMetaballs::updateMesh()
 {
 	switch (mcType) {
 		case 0:
@@ -423,12 +419,12 @@ void CloudsVisualSystemMarchingCubes::updateMesh()
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
-void CloudsVisualSystemMarchingCubes::selfSceneTransformation(){
+void CloudsVisualSystemMetaballs::selfSceneTransformation(){
 	
 }
 
 //normal update call
-void CloudsVisualSystemMarchingCubes::selfUpdate(){
+void CloudsVisualSystemMetaballs::selfUpdate(){
 	
 	float t = ofGetElapsedTimef() * 5.;
 	
@@ -443,7 +439,7 @@ void CloudsVisualSystemMarchingCubes::selfUpdate(){
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemMarchingCubes::selfDraw()
+void CloudsVisualSystemMetaballs::selfDraw()
 {
 	
 	if(!depthTest)	glDisable( GL_DEPTH_TEST );
@@ -512,11 +508,11 @@ void CloudsVisualSystemMarchingCubes::selfDraw()
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemMarchingCubes::selfDrawDebug(){
+void CloudsVisualSystemMetaballs::selfDrawDebug(){
 	
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
-void CloudsVisualSystemMarchingCubes::selfDrawBackground(){
+void CloudsVisualSystemMetaballs::selfDrawBackground(){
 
 	//turn the background refresh off
 	//bClearBackground = false;
@@ -524,11 +520,11 @@ void CloudsVisualSystemMarchingCubes::selfDrawBackground(){
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
-void CloudsVisualSystemMarchingCubes::selfEnd(){
+void CloudsVisualSystemMetaballs::selfEnd(){
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemMarchingCubes::selfExit(){
+void CloudsVisualSystemMetaballs::selfExit(){
 	mc.clear();
 	
 	//delete some other mc data
@@ -557,27 +553,27 @@ void CloudsVisualSystemMarchingCubes::selfExit(){
 
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
-void CloudsVisualSystemMarchingCubes::selfKeyPressed(ofKeyEventArgs & args){
+void CloudsVisualSystemMetaballs::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		shader.load( getVisualSystemDataPath() + "shaders/facingRatio" );
 	}
 }
-void CloudsVisualSystemMarchingCubes::selfKeyReleased(ofKeyEventArgs & args){
+void CloudsVisualSystemMetaballs::selfKeyReleased(ofKeyEventArgs & args){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::selfMouseDragged(ofMouseEventArgs& data){
+void CloudsVisualSystemMetaballs::selfMouseDragged(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::selfMouseMoved(ofMouseEventArgs& data){
+void CloudsVisualSystemMetaballs::selfMouseMoved(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::selfMousePressed(ofMouseEventArgs& data){
+void CloudsVisualSystemMetaballs::selfMousePressed(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemMarchingCubes::selfMouseReleased(ofMouseEventArgs& data){
+void CloudsVisualSystemMetaballs::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
