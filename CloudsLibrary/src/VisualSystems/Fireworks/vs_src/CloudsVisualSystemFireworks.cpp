@@ -25,19 +25,20 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("minLifeSpan", .1, 10, &minLifeSpan);
-	customGui->addSlider("maxLifeSpan", 1, 10, &maxLifeSpan);
+	//customGui->addSlider("minLifeSpan", .1, 10, &minLifeSpan);
+	//customGui->addSlider("maxLifeSpan", 1, 10, &maxLifeSpan);
+	customGui->addSlider("particle speed", .01, 3, &speed);
 	
-	customGui->addSlider("minExplosionTime", .1, 2, &minExplosionTime);
-	customGui->addSlider("maxExplosionTime", .5, 5, &maxExplosionTime);
+	//customGui->addSlider("minExplosionTime", .1, 2, &minExplosionTime);
+	//customGui->addSlider("maxExplosionTime", .5, 5, &maxExplosionTime);
+	customGui->addSlider("explosionFrequency", .1, 1, &explosionFrequencey);
 	
 	customGui->addSlider("minParticleVelocity", 0, 100, &minVel);
 	customGui->addSlider("maxParticleVelocity", 0, 200, &maxVel );
 	customGui->addSlider("maxFireworkVelocity", 1, 300, &maxFWVel );
 	
-	customGui->addSlider("particle gravity", -100, 100, &(particleGravity.y) );
-	
-	customGui->addSlider("firework gravity", -1, 1, &(fireworkGravity.y) );
+//	customGui->addSlider("particle gravity", -100, 100, &(particleGravity.y) );
+//	customGui->addSlider("firework gravity", -1, 1, &(fireworkGravity.y) );
 	
 	customGui->addSlider("camSpeed", -.1, 5, &camSpeed );
 		
@@ -97,6 +98,13 @@ void CloudsVisualSystemFireworks::selfSetup()
 {
 	//defaults
 	bAnimateCamera = true;
+	minLifeSpan = .5;
+	maxLifeSpan = 1.5;
+	minExplosionTime = .75;
+	maxExplosionTime = 1.25;
+	speed = .25;
+	explosionFrequencey = .1;
+
 	
 	//setupParticles
 	FIREWORKS_NUM_PARTICLES = 200000;
@@ -129,7 +137,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	//particle behavior
 	fireworkGravity.set(0, -6 / 120., 0 );
-	particleGravity.set( 0, 40, 0);
+	gravity.set( 0, 40, 0);
 	minVel = 4;
 	maxVel = 60;
 	maxFWVel = 2.4;
@@ -138,7 +146,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	shader.load(getVisualSystemDataPath() + "shaders/base.vert", getVisualSystemDataPath() + "shaders/base.frag");
 	
 	shader.begin();
-	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
+	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	shader.end();
 	startColor.set( .9, .95, 1.95, 1 );
 	endColor.set( .6, 1.3, .2, 1 );
@@ -207,7 +215,7 @@ void CloudsVisualSystemFireworks::selfBegin()
 {	
 	//shader
 	shader.begin();
-	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
+	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	shader.end();
 	
 	//particle rendering
@@ -228,6 +236,8 @@ void CloudsVisualSystemFireworks::selfBegin()
 void CloudsVisualSystemFireworks::selfUpdate()
 {
 	float t = ofGetElapsedTimef();
+	
+	//emitters
 	for (int i=emitters.size()-1; i>=0; i--) {
 		emitters[i].update( t );
 		
@@ -288,8 +298,8 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	
 	indexCount = 0;
 	for(int i=0; i<FIREWORKS_NUM_PARTICLES; i++){
-		//if the age + lifespan is less then the current time we want to draw
-		if(lifeData[i].r + lifeData[i].g > t){
+		//if the age + lifespan is less then the current time we want to draw it, otherwise it's dead to us.
+		if(lifeData[i].r + lifeData[i].g / speed > t){
 			indices[indexCount] = i;
 			indexCount++;
 			updateIndices = true;
@@ -348,11 +358,13 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniform1f( "time", ofGetElapsedTimef() );
 	shader.setUniform1f( "nearClip", getCameraRef().getNearClip() );
 	shader.setUniform1f( "farClip", getCameraRef().getFarClip() );
+	shader.setUniform1f( "speed", speed);
+	
 	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
 	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
 	shader.setUniform4f("endColor", endColor.x, endColor.y, endColor.z, endColor.w );
 	
-	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
+	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	
 	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
 	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
@@ -443,7 +455,7 @@ void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath){
 
 void CloudsVisualSystemFireworks::explodeFireWorkAtPoint( ofVec3f point, float t )
 {
-	nextFireworkExplosionTime = t + ofRandom( minExplosionTime, maxExplosionTime );
+	nextFireworkExplosionTime = t + ofRandom( minExplosionTime, maxExplosionTime ) * explosionFrequencey;
 	ofVec3f offset = point;
 	explodeFireWork( camTarget + offset );
 }
@@ -451,7 +463,7 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtPoint( ofVec3f point, float t
 void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 {
 	float t = ofGetElapsedTimef();
-	nextFireworkExplosionTime = t + ofRandom( minExplosionTime, maxExplosionTime );
+	nextFireworkExplosionTime = t + ofRandom( minExplosionTime, maxExplosionTime ) * explosionFrequencey;
 	
 	
 	ofVec3f offset( ofRandom(-1, 1), ofRandom(-.75,.75), ofRandom(-1.5, .5));
