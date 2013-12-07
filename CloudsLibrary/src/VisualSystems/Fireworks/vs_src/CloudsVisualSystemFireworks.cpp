@@ -51,6 +51,18 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
+	
+	camGui = new ofxUISuperCanvas("cameraMotion", gui);
+	camGui->copyCanvasStyle(gui);
+	camGui->copyCanvasProperties(gui);
+	camGui->setName("cameraMotion");
+	camGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	
+	camGui->addToggle("bAnimateCamera", &bAnimateCamera);
+	
+	ofAddListener(camGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	guis.push_back(camGui);
+	guimap[camGui->getName()] = camGui;
 }
 
 void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e){
@@ -83,7 +95,8 @@ void CloudsVisualSystemFireworks::guiSystemEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemFireworks::selfSetup()
 {
-	
+	//defaults
+	bAnimateCamera = true;
 	
 	//setupParticles
 	FIREWORKS_NUM_PARTICLES = 200000;
@@ -239,32 +252,35 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	}
 	
 	//camera
-	ofVec3f eul = getCameraRef().getOrientationEuler();
-	float xDamp = ofMap( abs(eul.x), 70, 90, 1, 0, true );
-	
-	float noiseTimeScl = .1;
-	float noiseOffsetScl = 800;
-	float mouseScl = .25;
-	float panScl = -5;
-	
-	float noiseValX = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl + 1. ) * noiseOffsetScl;
-	float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
-	
-	float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), -mouseScl, mouseScl);
-	float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), -mouseScl, mouseScl) * xDamp;
-	if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
-	getCameraRef().pan( pan );
-	
-	float roll = abs(pan) * pan * panScl;
-	getCameraRef().roll( roll );
-	
-	getCameraRef().move(0, abs(roll), 0);
-	
-	ofVec3f vel = getCameraRef().getLookAtDir();
-	getCameraRef().move( vel * camSpeed );
-	
-	float targetDistance = 300;
-	camTarget = vel * targetDistance + getCameraRef().getPosition();
+	if(bAnimateCamera)
+	{
+		ofVec3f eul = getCameraRef().getOrientationEuler();
+		float xDamp = ofMap( abs(eul.x), 70, 90, 1, 0, true );
+		
+		float noiseTimeScl = .1;
+		float noiseOffsetScl = 800;
+		float mouseScl = .25;
+		float panScl = -5;
+		
+		float noiseValX = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl + 1. ) * noiseOffsetScl;
+		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
+		
+		float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), -mouseScl, mouseScl);
+		float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), -mouseScl, mouseScl) * xDamp;
+		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
+		getCameraRef().pan( pan );
+		
+		float roll = abs(pan) * pan * panScl;
+		getCameraRef().roll( roll );
+		
+		getCameraRef().move(0, abs(roll), 0);
+		
+		ofVec3f vel = getCameraRef().getLookAtDir();
+		getCameraRef().move( vel * camSpeed );
+		
+		float targetDistance = 300;
+		camTarget = vel * targetDistance + getCameraRef().getPosition();
+	}
 	
 	
 	//particles
