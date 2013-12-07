@@ -54,17 +54,12 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 }
 
 void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e){
-	if(e.widget->getName() == "Custom Button"){
-		cout << "Button pressed!" << endl;
-	}
 	
-	else if( e.widget->getName() == "birth color map"){
+	if( e.widget->getName() == "birth color map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		ofFloatColor col =  sampler->getColor();
 		startColor.set( col.r, col.g, col.b, 1. );
-		
-		cout << startColor << endl;
 	}
 	else if( e.widget->getName() == "death color map"){
 		
@@ -110,7 +105,9 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	vbo.setColorData( &lifeData[0], FIREWORKS_NUM_PARTICLES, GL_DYNAMIC_DRAW );
 	
-	colorSampleImage.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	//TODO: mention to james that we might need a getCloudsData method
+	string cloudsDataPath = "../../../CloudsData/";
+	colorSampleImage.loadImage( cloudsDataPath + "colors/defaultColorPalette.png" );
 	
 	loadFileToGeometry( getVisualSystemDataPath() +  "animationTargets/dodecahedron.txt", dodecagedronPoints );
 	loadFileToGeometry( getVisualSystemDataPath() +  "animationTargets/octahedron.txt", octahedronPoints );
@@ -455,7 +452,6 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 
 	
 	int randFWType = ofRandom(0,6);
-	cout << "randFWType: "<< randFWType << endl;
 	switch (randFWType) {
 		case 0:
 			explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
@@ -463,9 +459,8 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 			
 		case 1:
 			explodeFireWork( camTarget + offset );
-			//explodeGeometry( tetrahedronPoints, camTarget + offset, camTarget + rocketStart );
-			
 			break;
+			
 		case 2:
 			explodeGeometry( octahedronPoints, camTarget + offset, camTarget + rocketStart );
 			break;
