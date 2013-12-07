@@ -19,28 +19,24 @@ void CloudsVisualSystemAutomata::selfSetupGui()
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
-    fgHue = new ofx1DExtruder(0);
-    fgHue->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgHue);
-    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
-    fgSat = new ofx1DExtruder(0);
-    fgSat->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgSat);
-    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
-    fgBri = new ofx1DExtruder(0);
-    fgBri->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgBri);
-    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
-    fgAlpha = new ofx1DExtruder(0);
-    fgAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(fgAlpha);
-    customGui->addSlider("FG ALPHA", 0.0, 255.0, fgAlpha->getPosPtr());
+    customGui->addSlider("FG HUE", 0.0f, 0.99999f, &fgParams[0]);
+    customGui->addSlider("FG SAT", 0.0f, 1.0f, &fgParams[1]);
+    customGui->addSlider("FG BRI", 0.0f, 1.0f, &fgParams[2]);
+//    fgHue = new ofx1DExtruder(0);
+//    fgHue->setPhysics(0.95, 5.0, 25.0);
+//    extruders.push_back(fgHue);
+//    customGui->addSlider("FG HUE", 0.0, 255.0, fgHue->getPosPtr());
+//    fgSat = new ofx1DExtruder(0);
+//    fgSat->setPhysics(0.95, 5.0, 25.0);
+//    extruders.push_back(fgSat);
+//    customGui->addSlider("FG SAT", 0.0, 255.0, fgSat->getPosPtr());
+//    fgBri = new ofx1DExtruder(0);
+//    fgBri->setPhysics(0.95, 5.0, 25.0);
+//    extruders.push_back(fgBri);
+//    customGui->addSlider("FG BRI", 0.0, 255.0, fgBri->getPosPtr());
     
     customGui->addSpacer();
-    bgAlpha = new ofx1DExtruder(0);
-    bgAlpha->setPhysics(0.95, 5.0, 25.0);
-    extruders.push_back(bgAlpha);
-    customGui->addSlider("BG ALPHA", 0.0, 255.0, bgAlpha->getPosPtr());
+    customGui->addSlider("FADE", 0.0, 1.0, &fade);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemAutomata::selfGuiEvent);
 	guis.push_back(customGui);
@@ -50,21 +46,15 @@ void CloudsVisualSystemAutomata::selfSetupGui()
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "FG HUE") {
-        fgHue->setPosAndHome(fgHue->getPos());
-	}
-    else if (e.widget->getName() == "FG SAT") {
-        fgSat->setPosAndHome(fgSat->getPos());
-	}
-    else if (e.widget->getName() == "FG BRI") {
-        fgBri->setPosAndHome(fgBri->getPos());
-	}
-    else if (e.widget->getName() == "FG ALPHA") {
-        fgAlpha->setPosAndHome(fgAlpha->getPos());
-    }
-    else if (e.widget->getName() == "BG ALPHA") {
-        bgAlpha->setPosAndHome(bgAlpha->getPos());
-    }
+//    if (e.widget->getName() == "FG HUE") {
+//        fgHue->setPosAndHome(fgHue->getPos());
+//	}
+//    else if (e.widget->getName() == "FG SAT") {
+//        fgSat->setPosAndHome(fgSat->getPos());
+//	}
+//    else if (e.widget->getName() == "FG BRI") {
+//        fgBri->setPosAndHome(fgBri->getPos());
+//	}
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -158,9 +148,9 @@ void CloudsVisualSystemAutomata::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystemAutomata::selfUpdate()
 {
-    fgColor.setHsb(fgHue->getPos(), fgSat->getPos(), fgBri->getPos(), fgAlpha->getPos());
-    bgColor.a = bgAlpha->getPos();
-    
+    fgColor.setHsb(fgParams[0] * 255, fgParams[1] * 255, fgParams[2] * 255);
+    bgColor.a = fade * 255;
+        
     if (bRestart || outFbo.getWidth() != ofGetWidth() || outFbo.getHeight() != ofGetHeight()) {
         restart();
         bRestart = false;
@@ -168,34 +158,32 @@ void CloudsVisualSystemAutomata::selfUpdate()
     
     ofPushStyle();
     ofEnableAlphaBlending();
-    texFbo.begin();
     {
-//        ofClear(255, 255);
+        texFbo.begin();
+        {
+//            ofClear(255, 255);
 
-        ofSetColor(255);
-        outFbo.draw(0, 0);
-        
-        ofSetColor(fgColor);
-        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
-    }
-    texFbo.end();
-    ofPopStyle();
-    
-    ofPushStyle();
-    ofEnableAlphaBlending();
-    outFbo.begin();
-    shader.begin();
-    shader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
-    shader.setUniform4f("liveColor", fgColor.r / 255.0f, fgColor.g / 255.0f, fgColor.b / 255.0f, fgColor.a / 255.0f);
-    shader.setUniform4f("deadColor", bgColor.r / 255.0f, bgColor.g / 255.0f, bgColor.b / 255.0f, bgColor.a / 255.0f);
-    {
-//        ofClear(0, 255);
+            ofSetColor(255);
+            outFbo.draw(0, 0);
+            
+            ofSetColor(255);
+            ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+        }
+        texFbo.end();
 
-        ofSetColor(255);
-        mesh.draw();
+        outFbo.begin();
+        shader.begin();
+        shader.setUniformTexture("tex", texFbo.getTextureReference(), 1);
+        shader.setUniform1f("fade", fade);
+        {
+//            ofClear(0, 255);
+
+            ofSetColor(255);
+            mesh.draw();
+        }
+        shader.end();
+        outFbo.end();
     }
-    shader.end();
-    outFbo.end();
     ofPopStyle();
 }
 
@@ -210,7 +198,7 @@ void CloudsVisualSystemAutomata::selfDraw()
         ofEnableAlphaBlending();
         ofDisableLighting();
         {
-            ofSetColor(255, 255);
+            ofSetColor(fgColor);
             outFbo.draw(0, 0);
         }
         ofPopStyle();
@@ -230,7 +218,7 @@ void CloudsVisualSystemAutomata::selfDrawBackground()
         ofPushStyle();
         ofEnableAlphaBlending();
         {
-            ofSetColor(255, 255);
+            ofSetColor(fgColor);
             outFbo.draw(0, 0);
         }
         ofPopStyle();
