@@ -30,9 +30,9 @@ void testApp::setup(){
     
 	parser.printDichotomyRatios();
 	
-	//websockets.setup();
-	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	
+	receiver.setup( 12345 );
 }
 
 //--------------------------------------------------------------
@@ -101,6 +101,18 @@ void testApp::update(){
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
+	
+	while(receiver.hasWaitingMessages()){
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+		if(m.getAddress() == "/startMusic"){
+			//sound.startMusic();
+			cout << "STARTING MUSIC" << endl;
+		}
+		else if(m.getAddress() == "/stopMusic"){
+			//sound.stopMusic();
+		}
+	}
 
 }
 

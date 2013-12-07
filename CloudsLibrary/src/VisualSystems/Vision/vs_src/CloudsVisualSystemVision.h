@@ -132,7 +132,7 @@ protected:
     ofVec2f averageFlow;
     int mouseX;
     int mouseY;
-
+	
     void loadCurrentMovie();
     void loadMovieAtIndex(int movieIndex);
     

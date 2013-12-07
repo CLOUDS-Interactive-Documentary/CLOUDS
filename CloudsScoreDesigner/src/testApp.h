@@ -7,6 +7,7 @@
 #include "CloudsAct.h"
 #include "CloudsSound.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "ofxOscReceiver.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -55,5 +56,6 @@ class testApp : public ofBaseApp{
     void guiEvent(ofxUIEventArgs &e);
     
     bool withVideo;
+	ofxOscReceiver receiver;
 
 };
