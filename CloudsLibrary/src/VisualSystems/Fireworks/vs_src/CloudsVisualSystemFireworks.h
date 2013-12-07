@@ -240,10 +240,10 @@ public:
 	void loadFileToGeometry( string loc, vector<ofVec3f>& points );
 
 	
-	ofCamera& getCameraRef(){
-		//		return cloudsCamera;
-		return camera;
-	}
+//	ofCamera& getCameraRef(){
+//		//		return cloudsCamera;
+//		return camera;
+//	}
 	
 	
 	void updateVbo();
