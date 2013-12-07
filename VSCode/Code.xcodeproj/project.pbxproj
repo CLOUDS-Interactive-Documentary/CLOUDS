@@ -211,6 +211,8 @@
 		E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F37E101853871C0087F91C /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F37E0D1853871C0087F91C /* ofxRegex.cpp */; };
+		E7F37E111853871C0087F91C /* ofxRegex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F37E0D1853871C0087F91C /* ofxRegex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -568,6 +570,8 @@
 		E7DD846A17DBC0A500AFB2DD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F37E0D1853871C0087F91C /* ofxRegex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxRegex.cpp; sourceTree = "<group>"; };
+		E7F37E0E1853871C0087F91C /* ofxRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRegex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1168,6 +1172,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E7F37E0C1853871C0087F91C /* ofxRegex */,
 				E79731E4184C5A1D00372333 /* ofxFTGL */,
 				E738FFE3183C87180018AB96 /* ofxOculusRift */,
 				3D5B9697175308FE00F558AC /* ofxTimecode */,
@@ -1466,6 +1471,16 @@
 			path = VisualSystemsLibrary;
 			sourceTree = "<group>";
 		};
+		E7F37E0C1853871C0087F91C /* ofxRegex */ = {
+			isa = PBXGroup;
+			children = (
+				E7F37E0D1853871C0087F91C /* ofxRegex.cpp */,
+				E7F37E0E1853871C0087F91C /* ofxRegex.h */,
+			);
+			name = ofxRegex;
+			path = ../../../addons/ofxRegex;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1662,6 +1677,7 @@
 				E797326B184C5A1E00372333 /* ofxFTGLFont.cpp in Sources */,
 				E797326C184C5A1E00372333 /* ofxFTGLSimpleLayout.cpp in Sources */,
 				E797327F184C756600372333 /* ofxMtlBoxFitting.cpp in Sources */,
+				E7F37E101853871C0087F91C /* ofxRegex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1747,6 +1763,7 @@
 				E79731DF184C587000372333 /* CloudsVisualSystemCode.cpp in Sources */,
 				E79731E3184C595F00372333 /* CodePanel.cpp in Sources */,
 				E7973280184C772600372333 /* ofxMtlBoxFitting.cpp in Sources */,
+				E7F37E111853871C0087F91C /* ofxRegex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
