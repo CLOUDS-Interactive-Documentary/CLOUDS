@@ -81,23 +81,11 @@ void CodePanel::setup(string codeFile){
 	}
 	
 	offset = ofRandom(lines.size() - 40);
-	//cout << "setup buffer " << initialBuffer.getText();
-	
-//    for(int i = 0; i < NUM_MATCH; i++){
-//		output[i] = "";
-//	}
-	
-	//char buff[s.length()*3];
-//	string replaced = s;
-//	sprintf(buff, s.c_str(), replaced.c_str());
-//	s = buff;
-//	vector<string> lines = ofSplitString(s, "\n");
+
 	ofxRegex r;
 	int startIndex;
 	int matchLen;
 	int lastIndex;
-//	s = "";
-//	sG = "";
 	for(int lI = 0; lI < lines.size(); lI++){
 	
 		SyntaxLine sL;
