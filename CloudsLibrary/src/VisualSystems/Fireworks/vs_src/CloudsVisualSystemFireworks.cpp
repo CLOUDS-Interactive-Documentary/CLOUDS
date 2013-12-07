@@ -159,7 +159,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	ofEnableArbTex();
 	
-	camera.setPosition(0, 0, 0);
+	getCameraRef().setPosition(0, 0, 0);
 	camTarget.set( 0,0,300);
 	
 	glowFbo0.allocate( ofGetWidth(), ofGetHeight(), GL_RGB );
@@ -195,26 +195,10 @@ void CloudsVisualSystemFireworks::loadFileToGeometry( string loc, vector<ofVec3f
 
 void CloudsVisualSystemFireworks::selfBegin()
 {	
-	//particle behavior
-//	fireworkGravity.set(0, -6 / 120., 0 );
-//	particleGravity.set( 0, 40, 0);
-//	minVel = 4;
-//	maxVel = 60;
-//	maxFWVel = 2.4;
-	
 	//shader
 	shader.begin();
 	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
 	shader.end();
-	
-//	startColor.set( .9, .95, 1.95, 1 );
-//	endColor.set( .6, 1.3, .2, 1 );
-//	
-//	minLifeSpan = .1;
-//	maxLifeSpan = 1;
-//	
-//	//camera
-//	camSpeed = 1;
 	
 	//particle rendering
 	bUpdateVbo = true;
@@ -226,7 +210,7 @@ void CloudsVisualSystemFireworks::selfBegin()
 	
 	ofEnableArbTex();
 	
-	camera.setPosition(0, 0, 0);
+	getCameraRef().setPosition(0, 0, 0);
 	camTarget.set( 0,0,300);
 }
 
@@ -257,19 +241,8 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		}
 	}
 	
-//	for (int i=rockets.size()-1; i>=0; i--)
-//	{
-//		rockets[i].update( t );
-//
-//		if(rockets[i].bEnded)
-//		{
-//			rockets.erase( rockets.begin() + i );
-//		}
-//	}
-	
-	
 	//camera
-	ofVec3f eul = camera.getOrientationEuler();
+	ofVec3f eul = getCameraRef().getOrientationEuler();
 	float xDamp = ofMap( abs(eul.x), 70, 90, 1, 0, true );
 	
 	float noiseTimeScl = .1;
@@ -280,21 +253,21 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	float noiseValX = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl + 1. ) * noiseOffsetScl;
 	float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 	
-	float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), mouseScl, -mouseScl);
+	float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), -mouseScl, mouseScl);
 	float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), -mouseScl, mouseScl) * xDamp;
-	if(abs(eul.x) < 90) camera.tilt( tilt );
-	camera.pan( pan );
+	if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
+	getCameraRef().pan( pan );
 	
 	float roll = abs(pan) * pan * panScl;
-	camera.roll( roll );
+	getCameraRef().roll( roll );
 	
-	camera.move(0, abs(roll), 0);
+	getCameraRef().move(0, abs(roll), 0);
 	
-	ofVec3f vel = camera.getLookAtDir();
-	camera.move( vel * camSpeed );
+	ofVec3f vel = getCameraRef().getLookAtDir();
+	getCameraRef().move( vel * camSpeed );
 	
 	float targetDistance = 300;
-	camTarget = vel * targetDistance + camera.getPosition();
+	camTarget = vel * targetDistance + getCameraRef().getPosition();
 	
 	
 	//particles
@@ -348,7 +321,35 @@ void CloudsVisualSystemFireworks::selfUpdate()
 
 void CloudsVisualSystemFireworks::selfDraw()
 {
-	//nothing to see here
+	glEnable(GL_DEPTH_TEST);
+    glEnable(GL_NORMALIZE);
+	//    mat->begin();
+	
+	ofPushStyle();
+	
+	ofEnableAlphaBlending();
+	ofBlendMode( OF_BLENDMODE_ADD );
+	ofEnablePointSprites();
+	
+	shader.begin();
+	shader.setUniform1f( "time", ofGetElapsedTimef() );
+	shader.setUniform1f( "nearClip", getCameraRef().getNearClip() );
+	shader.setUniform1f( "farClip", getCameraRef().getFarClip() );
+	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
+	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
+	shader.setUniform4f("endColor", endColor.x, endColor.y, endColor.z, endColor.w );
+	
+	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
+	
+	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
+	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
+	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 0 );
+	
+	vbo.drawElements( GL_POINTS, numSprites );
+	
+	shader.end();
+	
+	ofDisablePointSprites();
 }
 
 
@@ -402,9 +403,6 @@ void CloudsVisualSystemFireworks::explodeFireWork( ofVec3f origin, ofVec3f vel )
 		FireworkEmitter e;
 		e.setup( t, ofRandom(1.5, 3.), origin, origin + ofVec3f( ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel) ) );
 		emitters.push_back( e );
-//		emitterCount++;
-//		emitters[emitterCount].setup( t, ofRandom(1.5, 3.), origin, origin + ofVec3f( ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel) ) );
-
 	}
 }
 
@@ -449,7 +447,7 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	
 	ofVec3f rocketStart = offset + ofVec3f( ofRandom(-400, 400), 2000, 0);
 	
-	offset = offset * camera.getOrientationQuat();
+	offset = offset * getCameraRef().getOrientationQuat();
 	rocketStart = rocketStart;
 	
 	fireWorkExplosionTime = ofGetElapsedTimef();
@@ -502,22 +500,15 @@ void CloudsVisualSystemFireworks::explodeGeometry( vector<ofVec3f>& vertices, of
 		p = (vertices[i] * rad ) * q;
 		p1 = (vertices[i+1] * rad ) * q;
 		
-//		rPos = rocketStart + ofVec3f(ofRandom(-500,500), ofRandom(-500,500), ofRandom(-500, 500));
-//		rPos = (rPos * camera.getOrientationQuat()) + origin;
-		
-//		FireworkRocket rocket;
 		FireworkEmitter e0, e1;
 		
 		e0.setup( t+rSpan, 2, p + origin, p1 + origin  );
 		
 		e1.setup( t+rSpan, 2, p1 + origin , p + origin );
 		
-//		rocket.setup( t, rSpan, origin, p+ origin, NULL );
-		
 		emitters.push_back( e0 );
 		emitters.push_back( e1 );
 		
-//		rockets.push_back( rocket );
 	}
 }
 
@@ -528,107 +519,89 @@ void CloudsVisualSystemFireworks::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemFireworks::selfDrawBackground()
 {
-	glEnable(GL_DEPTH_TEST);
-    glEnable(GL_NORMALIZE);
-	//    mat->begin();
-	
-	ofPushStyle();
-	
-	ofEnableAlphaBlending();
-	ofBlendMode( OF_BLENDMODE_ADD );
-	ofEnablePointSprites();
-	
-	glowFbo0.begin();
-	ofClear(0,0,0,255);
-	
-
-	
-//	glDisable( GL_DEPTH_TEST );
-//	ofSetColor(225, 235, 255, 30 );
-//	for (int i=0; i<rockets.size(); i++) {
-//		rockets[i].draw();
-//	}
-	
-	shader.begin();
-	shader.setUniform1f( "time", ofGetElapsedTimef() );
-	shader.setUniform1f( "nearClip", camera.getNearClip() );
-	shader.setUniform1f( "farClip", camera.getFarClip() );
-	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
-	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
-	shader.setUniform4f("endColor", endColor.x, endColor.y, endColor.z, endColor.w );
-	
-	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
-	
-	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
-	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
-	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 0 );
-	
-	vbo.drawElements( GL_POINTS, numSprites );
-	
-	shader.end();
-	
-//	ofSetColor(255,0,0);
-//	for (int i=0; i<emitterCount; i++) {
-//		ofPushMatrix();
-//		ofTranslate( emitters[i].pos );
-//		
-//		ofRect(-5, -5, 10, 10);
-//		
-//		ofPopMatrix();
-//	}
-	
-	
-	glowFbo0.end();
-	
-	ofPopStyle();
-	
-	ofSetColor(255);
-	int alpha = 255;
-	
-	glowFbo1.begin();
-	ofClear(0,0,0,alpha);
-	glowFbo0.draw(0, 0, glowFbo1.getWidth(), glowFbo1.getHeight() );
-	glowFbo1.end();
-	
-	glowFbo2.begin();
-	ofClear(0,0,0, alpha);
-	glowFbo1.draw(0, 0, glowFbo2.getWidth(), glowFbo2.getHeight() );
-	glowFbo2.end();
-	
-	glowFbo3.begin();
-	ofClear(0,0,0, alpha);
-	glowFbo2.draw(0, 0, glowFbo3.getWidth(), glowFbo3.getHeight() );
-	glowFbo3.end();
-	
-	glowFbo4.begin();
-	ofClear(0,0,0, alpha);
-	glowFbo3.draw(0, 0, glowFbo4.getWidth(), glowFbo4.getHeight() );
-	glowFbo4.end();
-	
-	glowFbo5.begin();
-	ofClear(0,0,0, alpha);
-	glowFbo4.draw(0, 0, glowFbo5.getWidth(), glowFbo5.getHeight() );
-	glowFbo5.end();
-	
-	glowFbo6.begin();
-	ofClear(0,0,0, alpha);
-	glowFbo5.draw(0, 0, glowFbo6.getWidth(), glowFbo6.getHeight() );
-	glowFbo6.end();
-	
-	glowShader.begin();
-	glowShader.setUniformTexture( "fbo", glowFbo0.getTextureReference(), 0);
-	
-	glowShader.setUniformTexture( "mm1", glowFbo1.getTextureReference(), 1);
-	glowShader.setUniformTexture( "mm2", glowFbo2.getTextureReference(), 2);
-	glowShader.setUniformTexture( "mm3", glowFbo3.getTextureReference(), 4);
-	glowShader.setUniformTexture( "mm4", glowFbo4.getTextureReference(), 5);
-	glowShader.setUniformTexture( "mm5", glowFbo5.getTextureReference(), 6);
-	glowShader.setUniformTexture( "mm6", glowFbo6.getTextureReference(), 7);
-	glowFbo0.draw(0, 0, ofGetWidth(), ofGetHeight() );
-	
-	glowShader.end();
-	
-	ofDisablePointSprites();
+//	glEnable(GL_DEPTH_TEST);
+//    glEnable(GL_NORMALIZE);
+//	//    mat->begin();
+//	
+//	ofPushStyle();
+//	
+//	ofEnableAlphaBlending();
+//	ofBlendMode( OF_BLENDMODE_ADD );
+//	ofEnablePointSprites();
+//	
+//	glowFbo0.begin();
+//	ofClear(0,0,0,255);
+//	
+//	
+//	shader.begin();
+//	shader.setUniform1f( "time", ofGetElapsedTimef() );
+//	shader.setUniform1f( "nearClip", camera.getNearClip() );
+//	shader.setUniform1f( "farClip", camera.getFarClip() );
+//	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
+//	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
+//	shader.setUniform4f("endColor", endColor.x, endColor.y, endColor.z, endColor.w );
+//	
+//	shader.setUniform3f( "gravity", particleGravity.x, particleGravity.y, particleGravity.z );
+//	
+//	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
+//	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
+//	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 0 );
+//	
+//	vbo.drawElements( GL_POINTS, numSprites );
+//	
+//	shader.end();
+//	
+//	glowFbo0.end();
+//	
+//	ofPopStyle();
+//	
+//	ofSetColor(255);
+//	int alpha = 255;
+//	
+//	glowFbo1.begin();
+//	ofClear(0,0,0,alpha);
+//	glowFbo0.draw(0, 0, glowFbo1.getWidth(), glowFbo1.getHeight() );
+//	glowFbo1.end();
+//	
+//	glowFbo2.begin();
+//	ofClear(0,0,0, alpha);
+//	glowFbo1.draw(0, 0, glowFbo2.getWidth(), glowFbo2.getHeight() );
+//	glowFbo2.end();
+//	
+//	glowFbo3.begin();
+//	ofClear(0,0,0, alpha);
+//	glowFbo2.draw(0, 0, glowFbo3.getWidth(), glowFbo3.getHeight() );
+//	glowFbo3.end();
+//	
+//	glowFbo4.begin();
+//	ofClear(0,0,0, alpha);
+//	glowFbo3.draw(0, 0, glowFbo4.getWidth(), glowFbo4.getHeight() );
+//	glowFbo4.end();
+//	
+//	glowFbo5.begin();
+//	ofClear(0,0,0, alpha);
+//	glowFbo4.draw(0, 0, glowFbo5.getWidth(), glowFbo5.getHeight() );
+//	glowFbo5.end();
+//	
+//	glowFbo6.begin();
+//	ofClear(0,0,0, alpha);
+//	glowFbo5.draw(0, 0, glowFbo6.getWidth(), glowFbo6.getHeight() );
+//	glowFbo6.end();
+//	
+//	glowShader.begin();
+//	glowShader.setUniformTexture( "fbo", glowFbo0.getTextureReference(), 0);
+//	
+//	glowShader.setUniformTexture( "mm1", glowFbo1.getTextureReference(), 1);
+//	glowShader.setUniformTexture( "mm2", glowFbo2.getTextureReference(), 2);
+//	glowShader.setUniformTexture( "mm3", glowFbo3.getTextureReference(), 4);
+//	glowShader.setUniformTexture( "mm4", glowFbo4.getTextureReference(), 5);
+//	glowShader.setUniformTexture( "mm5", glowFbo5.getTextureReference(), 6);
+//	glowShader.setUniformTexture( "mm6", glowFbo6.getTextureReference(), 7);
+//	glowFbo0.draw(0, 0, ofGetWidth(), ofGetHeight() );
+//	
+//	glowShader.end();
+//	
+//	ofDisablePointSprites();
 }
 
 // this is called when your system is no longer drawing.
@@ -669,12 +642,6 @@ void CloudsVisualSystemFireworks::selfExit()
     delete [] baseVelocities;
     delete [] lifeData;
     delete [] indices;
-	
-	//???: shuld I be deleting this here? its added to the guis vector
-	//	delete customGui;
-	
-//	delete startColorSampler;
-//	delete endColorSampler;
 }
 
 //events are called when the system is active
