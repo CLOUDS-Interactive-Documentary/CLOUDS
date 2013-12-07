@@ -69,6 +69,8 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/rgbdmovies/*.mp4
 /CloudsData/rgbdmovies/*.mov
 
+/CloudsData/visualsystems_ignored
+
 /CLOUDSStandAlone/
 /CloudsData/CloudsMovieDirectory_nebula.txt
 /CloudsData/standalonePresets/
