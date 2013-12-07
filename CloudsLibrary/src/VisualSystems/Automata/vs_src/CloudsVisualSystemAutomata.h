@@ -93,14 +93,14 @@ class CloudsVisualSystemAutomata : public CloudsVisualSystem
 //	}
 
     void restart();
+    void render();
 
 protected:
     ofxUISuperCanvas * customGui;
-//    ofx1DExtruder * fgHue, * fgSat, * fgBri;
-    float fgParams[3];
-    
+
+    float fgParams1[3], fgParams2[3];
     float fade;
-    ofColor fgColor;
+    ofColor fgColor1, fgColor2;
 	
     ofShader conwayShader;
     ofShader blenderShader;
