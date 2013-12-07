@@ -330,6 +330,9 @@ public:
 	
 protected:
 	
+	
+	ofxUISuperCanvas* camGui;
+	
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
 	float customFloat1;
@@ -354,4 +357,6 @@ protected:
 	ofxUIImageSampler* endColorSampler;
 	
 	vector <ofVec3f> debugSpheres;
+	
+	bool bAnimateCamera;
 };
