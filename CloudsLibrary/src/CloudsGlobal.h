@@ -6,8 +6,7 @@
 //
 //
 
-#ifndef CloudsStoryEngine_CloudsGlobal_h
-#define CloudsStoryEngine_CloudsGlobal_h
+#pragma once
 
 #include "ofMain.h"
 
@@ -53,4 +52,3 @@ static string relinkFilePath(string filePath){
 	return filePath;
 }
 
-#endif

@@ -168,13 +168,15 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
     return renderTarget;
 }
 
-string CloudsVisualSystem::getVisualSystemDataPath(){
+string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 
 	if(!confirmedDataPath){
 		cachedDataPath = CloudsVisualSystem::getVisualSystemDataPath(getSystemName());
+		cachedDataPathIgnore = CloudsVisualSystem::getVisualSystemDataPath(getSystemName(), true);
 		confirmedDataPath = true;
 	}
-	return cachedDataPath;
+	
+	return ignoredFolder ? cachedDataPathIgnore : cachedDataPath;
 }
 
 //string CloudsVisualSystem::getSystemName(){

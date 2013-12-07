@@ -52,15 +52,15 @@ class CloudsVisualSystem {
 	};
 	
 	
-	static string getVisualSystemDataPath(string systemName){
+	static string getVisualSystemDataPath(string systemName, bool ignoredFolder = false){
 		//  building from src project file
 		string datapath;
-		if(ofDirectory("../../../CloudsLibrary/").exists()){
-			datapath = "../../../CloudsLibrary/src/VisualSystems/"+ systemName + "/bin/data/";
+		if(ofDirectory("../../../CloudsData/").exists()){
+			datapath = string("../../../CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
 		}
 		//  stand alone full app
 		else if(ofDirectory("CloudsData/").exists()){
-			datapath =  "CloudsData/VisualSystems/"+ systemName + "/";
+			datapath =  string("CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
 		}
 		else{
 			datapath =  "../../../data/";
@@ -128,7 +128,7 @@ class CloudsVisualSystem {
 	void setupRGBDTransforms();
 
 	//Data Folder Path
-    string getVisualSystemDataPath();
+    string getVisualSystemDataPath(bool ignoredFolder = false);
 	ofxTimeline* getTimeline();
 	
 	//APP CYCLE EVENTS
@@ -406,6 +406,7 @@ class CloudsVisualSystem {
 	bool hasSpeaker;
 	bool confirmedDataPath;
 	string cachedDataPath;
+	string cachedDataPathIgnore;
 	
 	//speaker and quote info, constantly updated
 	string speakerFirstName;
