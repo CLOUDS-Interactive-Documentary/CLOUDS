@@ -8,22 +8,26 @@
 
 #include "XParticle.h"
 
-XParticle::XParticle(float& mass, float velocityX, float velocityY, float velocityZ, int& minBri, int& maxBri){
-    
-    
-    location.set(ofRandom(-150,150),ofRandom(-150,150),ofRandom(-150,150));
+float   XParticle::dt;
+ofVec3f XParticle::upperBounds;
+ofVec3f XParticle::lowerBounds;
+float   XParticle::briDuration;
+float   XParticle::briRange;
+
+XParticle::XParticle(float& mass, float velocityX, float velocityY, float velocityZ, int& minBri, int& maxBri)
+{
+    location.set(ofRandom(lowerBounds.x, upperBounds.x),
+                 ofRandom(lowerBounds.y, upperBounds.y),
+                 ofRandom(lowerBounds.z, upperBounds.z));
     velocity.set(velocityX, velocityY, velocityZ);
     acceleration.set(0, 0, 0);
     lumocity.set(1,1); 
-    
-    upperbounds.set(150,150,150);
-    lowerbounds.set(-150,-150,-150);
     
     // timer
     
     triggered = false;
     //timerSet = true;
-    luckyNumber = int(ofRandom(100));
+    luckyNumber = int(ofRandom(10));
  
     this->minBri = &minBri;
     this->maxBri = &maxBri;
@@ -36,25 +40,24 @@ XParticle::XParticle(float& mass, float velocityX, float velocityY, float veloci
 }
 
 
-void XParticle::applyForce(ofVec3f force){
-    
+void XParticle::applyForce(ofVec3f force)
+{    
     //ofVec3f f = force / *mass; << the right way of calculating Newton's 2nd takes mass into consideration in calculating force
-    ofVec3f f = force / 1.5; //let's pretend all the masses are the same
-    acceleration = acceleration + f;
-    
+//    ofVec3f f = force / 1.5; //let's pretend all the masses are the same
+    acceleration += force;
 }
 
-void XParticle::update(float _topspeed){
-    
-    float topspeed = _topspeed;
+void XParticle::update(float drag)
+{    
     currentTime = ofGetElapsedTimeMillis() - previousTime; 
     
-    velocity = velocity + acceleration;
-    location = location + velocity;
-    acceleration = acceleration * 0;
+    velocity += (acceleration * dt);
+    velocity -= (velocity * dt * (1.0 - drag));
+    location += (velocity * dt);
+    acceleration -= (acceleration * dt);
     
-    velocity.limit(topspeed);
-    
+//    velocity.limit(topspeed);
+//    
     if(triggered == false){
     lottery();
     }
@@ -78,11 +81,11 @@ void XParticle::display(){
     
     if (triggered == true){
         //brightness = brightness + 2.0;  //
-        newBrightness = ofMap(currentTime, 0, 1000.0, *minBri, *maxBri);
+        newBrightness = ofMap(currentTime, 0, briDuration, *minBri, *maxBri);
        // *mass = ofMap(currentTime, 0, 1000.0, .1, 2);
         
-        if(currentTime >= 1000.0){
-            newBrightness = ofMap(currentTime, 1000.0, 2000.0, *maxBri,*minBri);
+        if(currentTime >= briDuration){
+            newBrightness = ofMap(currentTime, briDuration, briDuration * 2, *maxBri,*minBri);
             //*mass = ofMap(currentTime, 1000.0, 2000.0, 2, .1);
             
             if (brightness <= *minBri){
@@ -103,66 +106,71 @@ void XParticle::display(){
     
 }
 
-void XParticle::checkEdges(){
-    
-    if(location.x > upperbounds.x){
-        location.x = upperbounds.x;
+void XParticle::bounceEdges()
+{    
+    if (location.x > upperBounds.x){
+        location.x = upperBounds.x;
         velocity.x *= -1; 
     }
-	if(location.y > upperbounds.y){
-        location.y = upperbounds.y;
+    else if (location.x < lowerBounds.x) {
+        location.x = lowerBounds.x;
+        velocity.x *= -1;
+    }
+    
+	if (location.y > upperBounds.y) {
+        location.y = upperBounds.y;
         velocity.y *= -1; 
         
     } 
-	if(location.z > upperbounds.z){
-        location.z = upperbounds.z;
-        velocity.z *= -1;
-    }
-    if(location.x < lowerbounds.x){
-        location.x = lowerbounds.x;
-        velocity.x *= -1;
-    }
-	if(location.y < lowerbounds.y){
-        location.y = lowerbounds.y;
+    else if (location.y < lowerBounds.y) {
+        location.y = lowerBounds.y;
         velocity.y *= -1;
         
     }
-	if(location.z < lowerbounds.z){
-        location.z = lowerbounds.z;
+
+	if (location.z > upperBounds.z) {
+        location.z = upperBounds.z;
+        velocity.z *= -1;
+    }
+	else if(location.z < lowerBounds.z) {
+        location.z = lowerBounds.z;
         velocity.z *= -1;
     }
 }
     
-void XParticle::verticalWraparound(){
-        
-        if(location.x > upperbounds.x){
-            location.x = lowerbounds.x;
-        }
-        if(location.y > upperbounds.y){
-            location.y = lowerbounds.y;
-            
-        }
-        if(location.z > upperbounds.z){
-            location.z = lowerbounds.z;
-        }
-        if(location.x < lowerbounds.x){
-            location.x = upperbounds.x;
-        }
-        if(location.y < lowerbounds.y){
-            location.y = upperbounds.y;
-        }
-        if(location.z < lowerbounds.z){
-            location.z = upperbounds.z;
-        }
-}
+void XParticle::wrapEdges()
+{
+    if (location.x > upperBounds.x) {
+        location.x -= (upperBounds.x - lowerBounds.x);
+    }
+    else if (location.x < lowerBounds.x) {
+        location.x += (upperBounds.x - lowerBounds.x);
+    }
+
+    if (location.y > upperBounds.y) {
+        location.y -= (upperBounds.y - lowerBounds.y);
+    }
+    else if (location.y < lowerBounds.y) {
+        location.y += (upperBounds.y - lowerBounds.y);
+    }
     
+    if (location.z > upperBounds.z) {
+        location.z -= (upperBounds.z - lowerBounds.z);
+    }
+    else if (location.z < lowerBounds.z) {
+        location.z += (upperBounds.z - lowerBounds.z);
+    }
+}
+
 void XParticle::lottery(){
     
-    newRandomNumber = int(ofRandom(1000));
+    newRandomNumber = int(ofRandom(briRange));
     
     //cout << "newRandomNumber =  " << newRandomNumber << "  luckyNumber = " << luckyNumber << endl;
     
     if(newRandomNumber == luckyNumber){
+    
+//    if (ofRandomuf() < 0.001f) {
         previousTime  = ofGetElapsedTimeMillis();
         brightness = *minBri+1; 
         triggered = true;
