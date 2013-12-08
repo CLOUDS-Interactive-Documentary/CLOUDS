@@ -106,6 +106,7 @@ void testApp::update(){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
 		if(m.getAddress() == "/setupMusic"){
+            sound.stopMusic();
 			oharmony = m.getArgAsInt32(0);
 			orhythm = m.getArgAsInt32(1);
 			otempo = m.getArgAsInt32(2);

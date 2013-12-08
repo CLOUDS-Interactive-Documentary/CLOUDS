@@ -1,2 +1,11 @@
-slowwaves, bucket markov sequencer arpeggiator;
-helmholtz, rhythm lindenmayer;
+slowwaves, bucket melody markov;
+slowwaveshi, bucket melody markov;
+waveshipatterned, bucket melody markov;
+lowwavepulse, bucket melody markov;
+kissmyarp, static bucket melody markov;
+kissmyarpsynch, static bucket melody markov;
+kissmyarpfast, static bucket melody markov;
+waveguide, bucket melody markov;
+helmholtz, bucket melody markov;
+filternoise, bucket melody markov;
+strumsine, bucket melody markov;

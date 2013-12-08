@@ -41,7 +41,8 @@ void REVERB(double outskip, double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
+    //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 150., 8., 0.5, 1.0, -90., -18., -9., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 
@@ -531,4 +532,108 @@ int scale(int p, int o)
     int oct = p/12;
     int pc = p%12;
     return(oct*12 + s[pc]);
+}
+
+//
+// MELODY SOLVERS
+//
+
+melodySolver::melodySolver(string c_type, lukePitchArray& c_p)
+{
+    type = c_type;
+    parray = c_p;
+    pick = 0;
+    if(type=="markov") {
+        pick = (int)ofRandom(0, parray.markov.size());
+        curpitch = parray.mindex[pick];
+    }
+    if(type=="melody" || type=="static") pick = 0;
+}
+
+int melodySolver::tick()
+{
+    int rval;
+    
+    if(type=="bucket") pick = (int)ofRandom(0, parray.notes.size());
+    if(type=="markov") {
+        pick = markov(pick, parray);
+        curpitch = parray.mindex[pick];
+    }
+    else
+    {
+        curpitch = parray.notes[pick];
+    }
+        
+    if(type=="melody") pick = (pick+1)%parray.notes.size();
+    
+    rval = scale(curpitch+parray.basenote, parray.scale);
+    return(rval);
+
+}
+
+// precompute markov chain for pitch array
+void precomputemarkov(lukePitchArray& p)
+{
+    cout << "TEST MARKOV: " << p.notes.size() << endl;
+    
+    // step one - analyze
+    int tabsize = 0;
+    bool pass;
+    for(int i =0;i<128;i++)
+    {
+        p.mindex[i]=0;
+    }
+    int indexed_sequence[p.notes.size()];
+    for(int i=0;i<p.notes.size();i++){
+        pass = false;
+        for(int j=0;j<tabsize;j++)
+        {
+            if(p.mindex[j]==p.notes[i])
+            {
+                pass = true;
+                indexed_sequence[i] = j; // get us out of here, we've seen this note before
+            }
+        }
+        if(!pass) {
+            p.mindex[tabsize]=p.notes[i];
+            indexed_sequence[i]=tabsize;
+            tabsize++;
+        }
+    }
+
+    // step two: build our markov table
+    int current, next;
+    p.markov.resize(tabsize); // make us a probability table
+    for(int i = 0; i< p.notes.size();i++)
+    {
+        current = indexed_sequence[i];
+        next = indexed_sequence[(i+1)%p.notes.size()];
+        
+        p.markov[current].push_back(next);
+    }
+    
+    
+    // DEBUG
+    cout << "markov table:" << endl;
+    for(int i=0;i<p.markov.size();i++)
+    {
+        cout << "  " << i << ": ";
+        for(int j = 0;j<p.markov[i].size();j++)
+        {
+            cout << p.markov[i][j] << " ";
+        }
+        cout << endl;
+     
+    }
+
+    
+    
+}
+
+// return a markov result
+int markov(int current, lukePitchArray& p)
+{
+    int pick = int(ofRandom(p.markov[current].size()));
+    int next = p.markov[current][pick];
+    return(next);
 }
