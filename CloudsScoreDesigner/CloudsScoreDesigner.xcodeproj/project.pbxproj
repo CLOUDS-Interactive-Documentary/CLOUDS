@@ -490,7 +490,6 @@
 		E7A89796182ED88F00363188 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E7A89798182ED89600363188 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E7A8979A182ED8CF00363188 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E7BBB4E0179FA931007D7EC1 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystem.h; path = VisualSystemsLibrary/CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7D330361751D446006706ED /* ofx1DExtruder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofx1DExtruder.h; sourceTree = "<group>"; };
 		E7D330371751D446006706ED /* ofxBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBehavior.cpp; sourceTree = "<group>"; };
 		E7D330381751D446006706ED /* ofxBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBehavior.h; sourceTree = "<group>"; };
@@ -835,7 +834,6 @@
 				186B68AC17EA1E6C0020C952 /* CloudsRGBDVideoPlayer.h */,
 				E7A89755182ED4FB00363188 /* CloudsRGBDVideoPlayer.cpp */,
 				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
-				E7BBB4E0179FA931007D7EC1 /* CloudsVisualSystem.h */,
 				C102654B182EBDA900C7F895 /* Sound */,
 				E7637D401734DE68008ADC62 /* StoryEngine */,
 			);

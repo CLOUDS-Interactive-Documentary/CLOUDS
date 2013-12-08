@@ -62,8 +62,8 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
-	backgroundGradientBar.loadImage(getDataPath() + "backgrounds/bar.png");
-	backgroundGradientCircle.loadImage(getDataPath() + "backgrounds/circle.png");
+	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
+	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
 	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
 	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
 	backgroundShader.linkProgram();
@@ -172,8 +172,8 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 
 	if(!confirmedDataPath){
-		cachedDataPath = CloudsVisualSystem::getVisualSystemDataPath(getSystemName());
-		cachedDataPathIgnore = CloudsVisualSystem::getVisualSystemDataPath(getSystemName(), true);
+		cachedDataPath = GetCloudsVisualSystemDataPath(getSystemName());
+		cachedDataPathIgnore = GetCloudsVisualSystemDataPath(getSystemName(), true);
 		confirmedDataPath = true;
 	}
 	
@@ -861,7 +861,7 @@ void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
 
 void CloudsVisualSystem::setupAppParams()
 {
-//	colorPalletes = new ofxColorPalettes(getDataPath()+"colors/");
+//	colorPalletes = new ofxColorPalettes(GetCloudsDataPath()+"colors/");
     ofSetSphereResolution(30);
     bRenderSystem = true;
     bUpdateSystem = true;

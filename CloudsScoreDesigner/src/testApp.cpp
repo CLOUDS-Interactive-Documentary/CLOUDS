@@ -13,7 +13,7 @@ void testApp::setup(){
 	rebuildAct = false;
 	
 	parser.loadFromFiles();
-	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	visualSystems.loadPresets();
 	

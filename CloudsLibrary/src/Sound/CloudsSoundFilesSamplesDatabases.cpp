@@ -55,7 +55,7 @@ void CloudsSound::loadRTcmixSamples()
     cout << "==============" << endl;
     cout << "LOADING SOUNDS" << endl;
     cout << "==============" << endl;
-    string spath = getDataPath() + "sound/samps/";
+    string spath = GetCloudsDataPath() + "sound/samps/";
     ofDirectory sdir(spath);
     LOADSOUND(sdir.getAbsolutePath() + "/" + "BD.aif", "BD");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "SD.aif", "SD");
