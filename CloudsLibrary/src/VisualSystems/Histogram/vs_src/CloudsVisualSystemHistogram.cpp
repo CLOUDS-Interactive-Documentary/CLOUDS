@@ -43,6 +43,24 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     customGui->addRadio("SOUNDS", soundNames);
     
     customGui->addSlider("LEVEL ADJUST", 0.0f, 10.0f, &levelAdjust);
+    
+    customGui->addSpacer();
+    customGui->addLabel("COLOR");
+    customGui->addRangeSlider("HUE RANGE", 0, 255, &hueMin, &hueMax);
+    customGui->addSlider("SAT BASE", 0, 255, &satBase);
+    customGui->addSlider("SAT RANGE", 0, 255, &satRange);
+    customGui->addSlider("BRI BASE", 0, 255, &briBase);
+    customGui->addSlider("BRI RANGE", 0, 255, &briRange);
+    customGui->addSlider("ALPHA", 0, 255, &alpha);
+    
+    customGui->addSpacer();
+    customGui->addLabel("DIMENSIONS");
+    customGui->addIntSlider("COLS PER ROW", 1, 100, &colsPerRow);
+    customGui->addSlider("ROW SPACER", 1, 200, &rowSpacer);
+    customGui->addSlider("COL SPACER", 0, 50, &colSpacer);
+    customGui->addSlider("COL WIDTH", 0, 100, &colWidth);
+    customGui->addRangeSlider("COL HEIGHT", 0, 500, &colHeightMin, &colHeightMax);
+    customGui->addSlider("LINE WIDTH", 0.1, 10, &lineWidth);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
@@ -106,13 +124,27 @@ void CloudsVisualSystemHistogram::selfSetup()
     seed = int(ofRandom(20));
     maxNumDataPoints = 3200;
     
-    colorClear.set(0, 0, 0, 0);
-    
     mode = HISTOGRAM_MODE_BARS;
     source = HISTOGRAM_SOURCE_RANDOM;
     
-    maxCols = 100;
+    colorClear.set(0, 0, 0, 0);
     
+    hueMax   = 255;
+    hueMin   =  80;
+    satBase  = 180;
+    satRange =  25;
+    briBase  = 225;
+    briRange =  25;
+    alpha    = 225;
+    
+    rowSpacer = 150;
+    colSpacer = 0;
+    colWidth = 40;
+    colHeightMin = 10;
+    colHeightMax = 400;
+    colsPerRow = 100;
+    lineWidth = 1.0f;
+
     soundsDir.listDir(getVisualSystemDataPath() + "sounds");
     soundsDir.sort();
     selectedSoundsIdx = 0;
@@ -182,31 +214,20 @@ void CloudsVisualSystemHistogram::selfUpdate()
     int row = 0;
     
     for (int j = dataPoints.size()-1; j > 0 ; j--) {
-                
-        if (col % maxCols == 0) {
-            // next row
-            row++;
-            col = 0;
-            xoffset = 0;
-        }
+        float offsetX = col * (colWidth + colSpacer);
         
-        col++;
-        xoffset = col * rectWidth;
-        
-        float k = ofMap(j, 0, dataPoints.size(), 255, 80);
-        rectHeight = dataPoints[j];
-      
-        colorFg.setHsb(k, 180 + ofRandom(25), 225 + ofRandom(25), 225);
+        float hue = ofMap(j, 0, dataPoints.size(), hueMax, hueMin);
+        colorFg.setHsb(hue, satBase + ofRandom(satRange), briBase + ofRandom(briRange), alpha);
        
         if (mode == HISTOGRAM_MODE_BARS) {
             // bottom left
-            ofPoint a = ofPoint(xpos + xoffset, ypos, row * zoffset);
+            ofPoint a = ofPoint(offsetX, 0, row * -rowSpacer);
             // top left
-            ofPoint b = ofPoint(xpos + xoffset, ypos + rectHeight, row * zoffset);
+            ofPoint b = ofPoint(offsetX, dataPoints[j], row * -rowSpacer);
             // bottom right
-            ofPoint c = ofPoint(xpos + rectWidth + xoffset, ypos, row * zoffset);
+            ofPoint c = ofPoint(colWidth + offsetX, 0, row * -rowSpacer);
             // top right
-            ofPoint d = ofPoint(xpos + rectWidth + xoffset, ypos + rectHeight, row * zoffset);
+            ofPoint d = ofPoint(colWidth + offsetX, dataPoints[j], row * -rowSpacer);
             
             histoMesh.addColor(colorClear);
             histoMesh.addVertex(a);
@@ -224,9 +245,9 @@ void CloudsVisualSystemHistogram::selfUpdate()
             histoMesh.addVertex(d);
         }
         else {
-            ofPoint a = ofPoint(xpos + xoffset, ypos + rectHeight, row * zoffset);
+            ofPoint a = ofPoint(offsetX, dataPoints[j], row * -rowSpacer);
             
-            if (col == 1) {
+            if (col == 0) {
                 histoMesh.addColor(colorClear);
                 histoMesh.addVertex(a);
             }
@@ -234,30 +255,41 @@ void CloudsVisualSystemHistogram::selfUpdate()
             histoMesh.addColor(colorFg);
             histoMesh.addVertex(a);
             
-            if (col == maxCols) {
+            if (col == colsPerRow - 1) {
                 histoMesh.addColor(colorClear);
                 histoMesh.addVertex(a);
             }
+        }
+        
+        col++;
+        if (col % colsPerRow == 0) {
+            // next row
+            row++;
+            col = 0;
         }
     }
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
-void CloudsVisualSystemHistogram::selfDraw(){
-	
-    //glDisable(GL_DEPTH_TEST);
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
-    
+void CloudsVisualSystemHistogram::selfDraw()
+{
     ofPushMatrix();
     ofPushStyle();
-    
-    ofTranslate(-150,0);
-    histoMesh.draw();
-	ofPopStyle();	
-    ofPopMatrix();
-
-	
+    {
+        ofEnableAlphaBlending();
+        ofTranslate((colsPerRow * (colWidth + colSpacer)) * -0.5, 0);
+ 
+        if (mode == HISTOGRAM_MODE_LINES) {
+            ofSetLineWidth(lineWidth);
+        }
+        else if (mode == HISTOGRAM_MODE_POINTS) {
+            glPointSize(lineWidth);
+        }
+        histoMesh.draw();
+    }
+	ofPopStyle();
+    ofPopMatrix();	
 }
 
 // draw any debug stuff here
@@ -266,10 +298,7 @@ void CloudsVisualSystemHistogram::selfDrawDebug(){
 }
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemHistogram::selfDrawBackground(){
-    
-	//turn the background refresh off
-	//bClearBackground = false;
-	
+
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
@@ -324,9 +353,9 @@ void CloudsVisualSystemHistogram::addRandomPoint()
 {
     n = n+1;
     //randomData.push_back(ofRandom(1,100)); // random float between 1 and 100
-    noiseValue += ofNoise( n * .01, t) * 10 - 5; //generate noise value
+    noiseValue += ofNoise(n * .01, t) * 10 - 5; //generate noise value
     noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
-    float newValue = ofMap(noiseValue, -500, 2000, 10, 400, true);
+    float newValue = ofMap(noiseValue, -500, 2000, colHeightMin, colHeightMax, true);
     dataPoints.push_back(newValue); // noise value
     //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
     //  cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
@@ -336,7 +365,6 @@ void CloudsVisualSystemHistogram::addSoundPoint()
 {
     ofSoundUpdate();
     float currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
-    float newValue = ofMap(currLevel, 0, 1, 10, 400, true);
-    cout << "currLevel=" << currLevel << " // newValue=" << newValue << endl;
+    float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
     dataPoints.push_back(newValue);
 }
