@@ -179,6 +179,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     ripplesSrcFbo.begin();
     {
         ofSetColor(dropColor);
+        ofNoFill();
 #ifdef OCULUS_RIFT
         // I don't know why everything is flipped, but it is.
         ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
