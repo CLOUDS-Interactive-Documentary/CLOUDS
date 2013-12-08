@@ -442,7 +442,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Automata_Basic2">
+<system name="Automata_ANGLED">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -450,7 +450,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Automata_BasicPreset">
+<system name="Automata_MOSS">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>

@@ -1,0 +1,57 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Custom</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RESTART</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>2D</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RADIUS</Name>
+    <Value>1.724138021</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG HUE 1</Name>
+    <Value>0.334971994</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG SAT 1</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG BRI 1</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG HUE 2</Name>
+    <Value>0.320193827</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG SAT 2</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FG BRI 2</Name>
+    <Value>0.477832526</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FADE</Name>
+    <Value>0.500000000</Value>
+</Widget>
