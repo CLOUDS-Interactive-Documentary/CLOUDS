@@ -13,7 +13,7 @@
 #include "ofxXmlSettings.h"
 
 #define MAXAMP 32768.0 // maximum amp for oscillators (-1., 1) = 2^15
-#define DEBUG false
+#define LUKEDEBUG true
 
 // BGG rtcmix stuff
 extern "C" {
@@ -41,6 +41,8 @@ struct lukePitchArray {
     vector<int> notes;
     int basenote;
     int scale;
+    int mindex[128];
+    vector < vector <int> > markov;
 };
 
 struct lukePreset {
@@ -64,12 +66,24 @@ struct lukeSample {
     float numbeats;
 };
 
+class melodySolver {
+    string type;
+    lukePitchArray parray;
+    int pick;
+    int curpitch;
+public:
+    melodySolver(string c_type, lukePitchArray& c_p);
+    int tick();
+};
+
 // luke's music functions
 double mtof(double f, double tuning);
 double mtof(double f);
 double ftom(double f, double tuning);
 string ptos(int p);
 int scale(int p, int o);
+void precomputemarkov(lukePitchArray& p);
+int markov(int current, lukePitchArray& p);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
 void loadpresets(string f, vector<lukePreset>& p);

@@ -3147,8 +3147,8 @@
 		E722D0541852D31900636BF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E722D0551852D31900636BF1 /* CloudsVisualSystemExampleMPMFluid.cpp */,
 				E722D0561852D31900636BF1 /* CloudsVisualSystemExampleMPMFluid.h */,
+				E722D0551852D31900636BF1 /* CloudsVisualSystemExampleMPMFluid.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -3238,9 +3238,9 @@
 		E722D06E1852D31900636BF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E7F37E13185391AC0087F91C /* ofxRules */,
-				E722D06F1852D31900636BF1 /* CloudsVisualSystemFlying.cpp */,
 				E722D0701852D31900636BF1 /* CloudsVisualSystemFlying.h */,
+				E722D06F1852D31900636BF1 /* CloudsVisualSystemFlying.cpp */,
+				E7F37E13185391AC0087F91C /* ofxRules */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";

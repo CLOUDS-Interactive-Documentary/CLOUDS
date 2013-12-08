@@ -74,7 +74,6 @@ class CloudsSound {
     bool DOCLEAR;
     float cleartime;
     float targetAmp;
-    bool RTCMIX_PRINT;
     float tl1, tl2, tl3, bl1;
 	
     vector<lukeRhythm> rhythms;

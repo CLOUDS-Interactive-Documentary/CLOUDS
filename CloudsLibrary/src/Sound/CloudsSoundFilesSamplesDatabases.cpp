@@ -46,7 +46,7 @@ void CloudsSound::loadRTcmixFiles()
     }
     
     //loadpresets("presets.txt", presets);
-    loadpresets_xml("presets.xml", presets);
+    loadpresets_xml("soundpresets.xml", presets);
     
 }
 
