@@ -25,6 +25,10 @@ void CloudsVisualSystemRipples::selfSetupGui()
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
     
     customGui->addSpacer();
+    customGui->addToggle("DROP ON PRESS", &bDropOnPress);
+    customGui->addIntSlider("RATE", 1, 30, &dropRate);
+    
+    customGui->addSpacer();
     customGui->addRangeSlider("DROP HUE", 0, 255, &minDropHue, &maxDropHue);
     customGui->addRangeSlider("DROP SAT", 0, 255, &minDropSat, &maxDropSat);
     customGui->addRangeSlider("DROP BRI", 0, 255, &minDropBri, &maxDropBri);
@@ -94,6 +98,8 @@ void CloudsVisualSystemRipples::selfSetup()
 //    bClearBackground = false;
     
     // Set defaults.
+    bDropOnPress = false;
+    dropRate = 1;
     damping = 0.995f;
     radius = 10.0f;
     
@@ -174,22 +180,24 @@ void CloudsVisualSystemRipples::selfUpdate()
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
-    ofPushStyle();
-    ofPushMatrix();
-    ripplesSrcFbo.begin();
-    {
-        ofSetColor(dropColor);
-        ofNoFill();
+    if ((bDropOnPress && ofGetMousePressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+        ofPushStyle();
+        ofPushMatrix();
+        ripplesSrcFbo.begin();
+        {
+            ofSetColor(dropColor);
+            ofNoFill();
 #ifdef OCULUS_RIFT
-        // I don't know why everything is flipped, but it is.
-        ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
+            // I don't know why everything is flipped, but it is.
+            ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
 #else
-        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+            ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
 #endif
+        }
+        ripplesSrcFbo.end();
+        ofPopMatrix();
+        ofPopStyle();
     }
-    ripplesSrcFbo.end();
-    ofPopMatrix();
-    ofPopStyle();
     
     ripplesDstFbo.begin();
     ripplesShader.begin();
