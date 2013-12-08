@@ -20,5 +20,5 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 		
-	CloudsVisualSystemXstatic Xstatic;
+	CloudsVisualSystemXstatic vs;
 };

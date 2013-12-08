@@ -41,7 +41,8 @@ void REVERB(double outskip, double time)
     parse_score(thebuf, bx);
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
+    //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 150., 8., 0.5, 1.0, -90., -18., -9., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 
@@ -273,48 +274,141 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
     
     if(thestuff.loadFile(getDataPath()+"sound/"+f))
     {
-        thestuff.pushTag("presets");
-        p.clear(); // reset the preset stack
-        int numpresets = thestuff.getNumTags("preset");
-        for(int i =0;i<numpresets;i++)
+        thestuff.pushTag("pattrstorage");
+        int numpresets = thestuff.getNumTags("slot");
+        for(int i = 0;i<numpresets;i++)
         {
-            thestuff.pushTag("preset", i);
-            lukePreset foo; // make a new preset
-            foo.name = thestuff.getValue("name", "foo");
-            cout << "PRESET XML " << i << ": " << foo.name << endl;
-            int numorchs = thestuff.getNumTags("orchestration");
-            for(int j =0;j<numorchs;j++)
+            lukePreset foo;
+            foo.instruments.resize(5);
+            foo.arg_a.resize(5);
+            foo.arg_b.resize(5);
+            foo.dichomin.resize(8);
+            foo.dichomax.resize(8);
+            thestuff.pushTag("slot", i);
+            int numfields = thestuff.getNumTags("pattr");
+            for(int j = 0;j<numfields;j++)
             {
-                thestuff.pushTag("orchestration", j);
-                foo.instruments.push_back(thestuff.getValue("name", "foo"));
-                foo.arg_a.push_back(thestuff.getValue("arg_a", "foo"));
-                foo.arg_b.push_back(thestuff.getValue("arg_b", "foo"));
-                cout << "   orchestration: " << foo.instruments[foo.instruments.size()-1] << endl;
-                cout << "      arg_a: " << foo.arg_a[foo.arg_a.size()-1] << endl;
-                cout << "      arg_b: " << foo.arg_b[foo.arg_b.size()-1] << endl;
-                thestuff.popTag();
-            }
-            foo.harmony = thestuff.getValue("harmony", 0);
-            cout << "   harmony: " << foo.harmony << endl;
-            foo.rhythm = thestuff.getValue("rhythm", 0);
-            cout << "   rhythm: " << foo.rhythm << endl;
-            foo.tempo = thestuff.getValue("tempo", 0);
-            cout << "   tempo: " << foo.tempo << endl;
-            foo.bank = thestuff.getValue("bank", "foo");
-            cout << "   bank: " << foo.bank << endl;
-            for(int j =0;j<8;j++)
-            {
-                thestuff.pushTag("dichomin");
-                foo.dichomin.push_back(thestuff.getValue("value", 0));
-                thestuff.popTag();
-            }
-            for(int j =0;j<8;j++)
-            {
-                thestuff.pushTag("dichomax");
-                foo.dichomax.push_back(thestuff.getValue("value", 0));
-                thestuff.popTag();
+                string pat = thestuff.getAttribute("pattr", "name", "foo", j);
+                if(pat=="pname") {
+                    foo.name = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="harmony") {
+                    foo.harmony = thestuff.getAttribute("pattr", "value", 0, j);
+                }
+                else if(pat=="rhythm") {
+                    foo.rhythm = thestuff.getAttribute("pattr", "value", 0, j);
+                }
+                else if(pat=="tempo") {
+                    foo.tempo = thestuff.getAttribute("pattr", "value", 0, j);
+                }
+                else if(pat=="orch1") {
+                    foo.instruments[0] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="orch2") {
+                    foo.instruments[1] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="orch3") {
+                    foo.instruments[2] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="orch4") {
+                    foo.instruments[3] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="orch5") {
+                    foo.instruments[4] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_a1") {
+                    foo.arg_a[0] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_a2") {
+                    foo.arg_a[1] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_a3") {
+                    foo.arg_a[2] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_a4") {
+                    foo.arg_a[3] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_a5") {
+                    foo.arg_a[4] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_b1") {
+                    foo.arg_b[0] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_b2") {
+                    foo.arg_b[1] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_b3") {
+                    foo.arg_b[2] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_b4") {
+                    foo.arg_b[3] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="arg_b5") {
+                    foo.arg_b[4] = thestuff.getAttribute("pattr", "value", "foo", j);
+                }
+                else if(pat=="d1") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[0] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[0] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d2") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[1] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[1] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d3") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[2] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[2] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d4") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[3] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[3] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d5") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[4] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[4] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d6") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[5] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[5] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d7") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[6] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[6] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
+                else if(pat=="d8") {
+                    string d = thestuff.getAttribute("pattr", "value", "foo", j);
+                    foo.dichomin[7] = ofToInt(ofSplitString(d, " ")[0])-5;
+                    foo.dichomax[7] = ofToInt(ofSplitString(d, " ")[1])-5;
+                }
             }
             
+            thestuff.popTag();
+            // strip blank instruments
+            for(int j =foo.instruments.size()-1;j>=0;j--)
+            {
+                if(foo.instruments[j]=="off")
+                {
+                    foo.instruments.erase(foo.instruments.begin()+j);
+                    foo.arg_a.erase(foo.arg_a.begin()+j);
+                    foo.arg_b.erase(foo.arg_b.begin()+j);
+                }
+            }
+            cout << "PRESET XML " << i << ": " << foo.name << endl;
+            for(int j =0;j<foo.instruments.size();j++)
+            {
+                cout << "   orchestration: " << foo.instruments[j] << endl;
+                cout << "      arg_a: " << foo.arg_a[j] << endl;
+                cout << "      arg_b: " << foo.arg_b[j] << endl;
+            }
+            cout << "   harmony: " << foo.harmony << endl;
+            cout << "   rhythm: " << foo.rhythm << endl;
+            cout << "   tempo: " << foo.tempo << endl;
             cout << "   dichotomies:" << endl;
             cout << "      art vs. tech: " << foo.dichomin[0] << " to " << foo.dichomax[0] << endl;
             cout << "      emotional vs. logical: " << foo.dichomin[1] << " to " << foo.dichomax[1] << endl;
@@ -324,9 +418,8 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
             cout << "      sincere vs. ironic: " << foo.dichomin[5] << " to " << foo.dichomax[5] << endl;
             cout << "      mindblowing vs. mundane: " << foo.dichomin[6] << " to " << foo.dichomax[6] << endl;
             cout << "      rational vs. surreal: " << foo.dichomin[7] << " to " << foo.dichomax[7] << endl;
-            
-            thestuff.popTag();
-            p.push_back(foo);
+
+            p.push_back(foo); // add to preset list
         }
         thestuff.popTag();
     }
@@ -439,4 +532,108 @@ int scale(int p, int o)
     int oct = p/12;
     int pc = p%12;
     return(oct*12 + s[pc]);
+}
+
+//
+// MELODY SOLVERS
+//
+
+melodySolver::melodySolver(string c_type, lukePitchArray& c_p)
+{
+    type = c_type;
+    parray = c_p;
+    pick = 0;
+    if(type=="markov") {
+        pick = (int)ofRandom(0, parray.markov.size());
+        curpitch = parray.mindex[pick];
+    }
+    if(type=="melody" || type=="static") pick = 0;
+}
+
+int melodySolver::tick()
+{
+    int rval;
+    
+    if(type=="bucket") pick = (int)ofRandom(0, parray.notes.size());
+    if(type=="markov") {
+        pick = markov(pick, parray);
+        curpitch = parray.mindex[pick];
+    }
+    else
+    {
+        curpitch = parray.notes[pick];
+    }
+        
+    if(type=="melody") pick = (pick+1)%parray.notes.size();
+    
+    rval = scale(curpitch+parray.basenote, parray.scale);
+    return(rval);
+
+}
+
+// precompute markov chain for pitch array
+void precomputemarkov(lukePitchArray& p)
+{
+    cout << "TEST MARKOV: " << p.notes.size() << endl;
+    
+    // step one - analyze
+    int tabsize = 0;
+    bool pass;
+    for(int i =0;i<128;i++)
+    {
+        p.mindex[i]=0;
+    }
+    int indexed_sequence[p.notes.size()];
+    for(int i=0;i<p.notes.size();i++){
+        pass = false;
+        for(int j=0;j<tabsize;j++)
+        {
+            if(p.mindex[j]==p.notes[i])
+            {
+                pass = true;
+                indexed_sequence[i] = j; // get us out of here, we've seen this note before
+            }
+        }
+        if(!pass) {
+            p.mindex[tabsize]=p.notes[i];
+            indexed_sequence[i]=tabsize;
+            tabsize++;
+        }
+    }
+
+    // step two: build our markov table
+    int current, next;
+    p.markov.resize(tabsize); // make us a probability table
+    for(int i = 0; i< p.notes.size();i++)
+    {
+        current = indexed_sequence[i];
+        next = indexed_sequence[(i+1)%p.notes.size()];
+        
+        p.markov[current].push_back(next);
+    }
+    
+    
+    // DEBUG
+    cout << "markov table:" << endl;
+    for(int i=0;i<p.markov.size();i++)
+    {
+        cout << "  " << i << ": ";
+        for(int j = 0;j<p.markov[i].size();j++)
+        {
+            cout << p.markov[i][j] << " ";
+        }
+        cout << endl;
+     
+    }
+
+    
+    
+}
+
+// return a markov result
+int markov(int current, lukePitchArray& p)
+{
+    int pick = int(ofRandom(p.markov[current].size()));
+    int next = p.markov[current][pick];
+    return(next);
 }

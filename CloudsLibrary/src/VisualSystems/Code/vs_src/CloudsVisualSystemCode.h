@@ -101,12 +101,19 @@ protected:
     
     //  Your Stuff
     //
+	vector<ofRectangle> rectTests;
 	
 	ofxUISuperCanvas* typeGui;
-	float widthDivide;
-	float heightDivide;
 	ofRange speedRange;
-	vector<ofRectangle> rectTests;
-	int maxSize;
+	
+	ofxUISuperCanvas* boxGui;
+	int minsize;
+	float minTextboxSize;
+	float maxwidth;
+	float maxheight;
+	int boxSeed;
+	float outlineAlpha;
+	
+
 
 };

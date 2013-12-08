@@ -35,7 +35,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetupGui(){
     customGui->addSlider("SPHERE ALPHA", 0.0f, 1.0f, &sphereColor.a);
     
     customGui->addSpacer();
-    customGui->addSlider("HAIR LENGTH", 0.0, 4., &hairLength);
+    customGui->addRangeSlider("HAIR LENGTH", 0.0, 5.0, &minHairLength, &maxHairLength);
     customGui->addRangeSlider("HAIR LINE WIDTH", 0.1f, 10.0f, &minHairLineWidth, &maxHairLineWidth);
     
     customGui->addSpacer();
@@ -139,7 +139,7 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfSetup()
     bAudioBuffered = false;
     
     sphereSize = 75.0f;
-    hairLength = 1.0f;
+    minHairLength = maxHairLength = 1.0f;
     minHairLineWidth = maxHairLineWidth = 0.1f;
     
     currLevel = 0;
@@ -291,8 +291,8 @@ void CloudsVisualSystemOpenP5NoiseSphere::selfDraw()
 	
 	ofMesh mesh;
 	noisePosition += noiseSpeed;
-	for (int i = 0;i < count; i++) {
-		list[i].draw(mesh, noisePosition, hairLength, scrollY);
+	for (int i = 0; i < count; i++) {
+		list[i].draw(mesh, noisePosition, minHairLength + ofSignedNoise(list[i].luckyNumber) * (maxHairLength - minHairLength), scrollY);
 	}    
     ofSetLineWidth(ofMap(currLevel, 0, 1, minHairLineWidth, maxHairLineWidth));
 	mesh.setMode(OF_PRIMITIVE_LINES);

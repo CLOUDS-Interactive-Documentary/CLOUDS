@@ -45,13 +45,18 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // load data files
         loadRTcmixFiles();
         
+        // precompute music data
+        for(int i = 0;i<pitches.size();i++)
+        {
+            precomputemarkov(pitches[i]);
+        }
+        
 		targetAmp = .7; // wonder what this is?
 		
         MASTERAMP = 1;
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
-        RTCMIX_PRINT = false;
         
 		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 
@@ -155,7 +160,7 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
                     pscore++;
                 }
             }
-            // if(pscore==8) valid_presets.push_back(j);
+            if(pscore==8) valid_presets.push_back(j);
         }
 		
         if(valid_presets.size()==0)
@@ -294,10 +299,10 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // not using right now
     if (check_bang() == 1) {
         allownote = 1;
-        if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
+        if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 
-    if(RTCMIX_PRINT)
+    if(LUKEDEBUG)
     {
         char *pbuf = get_print();
         char *pbufptr = pbuf;

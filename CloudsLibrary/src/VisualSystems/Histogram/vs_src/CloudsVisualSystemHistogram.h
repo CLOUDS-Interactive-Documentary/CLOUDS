@@ -128,17 +128,20 @@ protected:
     
     ofMesh histoMesh;
     
+    float hueMax, hueMin;
+    float satBase, satRange;
+    float briBase, briRange;
+    float alpha;
+    
     ofColor colorFg;
     ofColor colorClear;
     
-    float xpos = 10;
-    float ypos = 10;
-    float rectHeight;
-    float rectWidth = 40;
-    float xoffset = 0;
-    float zoffset = -150;
-   
-    int maxCols;
+    float rowSpacer;
+    float colSpacer;
+    float colWidth;
+    float colHeightMin, colHeightMax;
+    int colsPerRow;
+    float lineWidth;
     
     HistogramMode mode;
     HistogramSource source;

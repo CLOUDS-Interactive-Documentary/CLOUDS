@@ -39,6 +39,11 @@ class CloudsSound {
 	
 	float maxSpeakerVolume; // set between 0. and 1.0 to modulate speaker volume
 	
+    // Luke's public stuff
+    void startMusicFX(float outskip, float musicdur);
+    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm);
+    void stopMusic();
+
   protected:
 
 	CloudsStoryEngine* storyEngine;
@@ -49,9 +54,6 @@ class CloudsSound {
 
     // Luke's stuff
 	//
-    void startMusicFX(float outskip, float musicdur);
-    void startMusic(float outskip, string mo, string arg_a, string arg_b, int mh, int mr, float musicdur, float bpm);
-    void stopMusic();
     void loadRTcmixFiles();
     void loadRTcmixSamples();
     void registerOrchs();
@@ -72,7 +74,6 @@ class CloudsSound {
     bool DOCLEAR;
     float cleartime;
     float targetAmp;
-    bool RTCMIX_PRINT;
     float tl1, tl2, tl3, bl1;
 	
     vector<lukeRhythm> rhythms;

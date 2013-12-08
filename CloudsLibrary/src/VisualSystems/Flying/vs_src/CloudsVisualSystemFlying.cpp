@@ -5,10 +5,6 @@
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 const float CloudsVisualSystemFlying::CAM_X_ROT = 20;
 const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/flower.xml" };

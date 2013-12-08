@@ -24,10 +24,12 @@ public:
     XParticle(float& mass, float vx, float vy, float vz, int& minBri, int& maxBri);
     
     void applyForce(ofVec3f _force);
-    void update(float _topspeed);
+    void update(float drag);
     void display();
-    void checkEdges();
-    void verticalWraparound();
+    
+    void bounceEdges();
+    void wrapEdges();
+    
     void lottery();
     
     ofVec3f location;
@@ -35,8 +37,12 @@ public:
     ofVec3f acceleration;
     ofVec2f lumocity; 
     
-    ofVec3f upperbounds;
-    ofVec3f lowerbounds; 
+    static float dt;
+    static ofVec3f upperBounds;
+    static ofVec3f lowerBounds;
+    
+    static float briDuration;
+    static float briRange;
     
     float uniqueVal;
     int brightness;

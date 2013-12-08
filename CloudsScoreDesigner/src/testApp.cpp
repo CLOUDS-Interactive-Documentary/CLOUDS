@@ -30,9 +30,9 @@ void testApp::setup(){
     
 	parser.printDichotomyRatios();
 	
-	//websockets.setup();
-	
 	ofAddListener(storyEngine.getEvents().actCreated, this, &testApp::actCreated);
+	
+	receiver.setup( 12345 );
 }
 
 //--------------------------------------------------------------
@@ -101,6 +101,40 @@ void testApp::update(){
 	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
     player.maxVolume = sound.maxSpeakerVolume;
     sound.update();
+	
+	while(receiver.hasWaitingMessages()){
+		ofxOscMessage m;
+		receiver.getNextMessage(&m);
+		if(m.getAddress() == "/setupMusic"){
+            sound.stopMusic();
+			oharmony = m.getArgAsInt32(0);
+			orhythm = m.getArgAsInt32(1);
+			otempo = m.getArgAsInt32(2);
+			odur = m.getArgAsFloat(3);
+            oorch.clear();
+            oarg_a.clear();
+            oarg_b.clear();
+		}
+		if(m.getAddress() == "/addOrch"){
+			oorch.push_back(m.getArgAsString(0));
+			oarg_a.push_back(m.getArgAsString(1));
+			oarg_b.push_back(m.getArgAsString(2));
+		}
+		if(m.getAddress() == "/startMusic"){
+			//sound.startMusic();
+			cout << "STARTING MUSIC" << endl;
+            sound.startMusicFX(0, odur+5);
+            for(int i = 0;i<oorch.size();i++)
+            {
+                cout << "running " << oorch[i] << endl;
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo);
+            }
+		}
+		else if(m.getAddress() == "/stopMusic"){
+            sound.stopMusic();
+            cout << "STOPPING MUSIC" << endl;
+		}
+	}
 
 }
 
