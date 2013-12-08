@@ -69,6 +69,7 @@ int CodePanel::indexOf(string s, string f, int startIndex){
 void CodePanel::setup(string codeFile){
 	
 	maxCharsOnLine = 0;
+	drawAsConsole = false;
 	
 	//TODO: shared font
 	layout.loadFont( getDataPath() + "font/Courier New Bold.ttf", 8);
@@ -180,11 +181,11 @@ void CodePanel::draw(float screenHeight){
 	if(drawAsHist){
 		map<unsigned char, ofPolyline> charPolies;
 		for(int i = drawRect.x; i < drawRect.getMaxX(); i++){
-		int curline = (i + int(offset*10)) % syntaxLines.size();
-		   map<unsigned char,int>::iterator it;
-		   for(it = syntaxLines[curline].charCounts.begin(); it != syntaxLines[curline].charCounts.end(); it++){
-			   charPolies[it->first].addVertex(ofPoint(i,ofMap(it->second, 0, maxCharsOnLine, drawRect.getMaxY(), drawRect.getMinY())));
-		   }
+			int curline = (i + int(offset*30)) % syntaxLines.size();
+			map<unsigned char,int>::iterator it;
+			for(it = syntaxLines[curline].charCounts.begin(); it != syntaxLines[curline].charCounts.end(); it++){
+				charPolies[it->first].addVertex(ofPoint(i,ofMap(it->second, 0, maxCharsOnLine, drawRect.getMaxY(), drawRect.getMinY())));
+			}
 		}
 		
 		int col=0;
@@ -215,7 +216,6 @@ void CodePanel::draw(float screenHeight){
 			line++;
 		}
 	}
-	
 	
 	glDisable(GL_SCISSOR_TEST);
 }

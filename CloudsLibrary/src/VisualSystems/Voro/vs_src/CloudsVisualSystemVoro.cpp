@@ -234,9 +234,7 @@ void CloudsVisualSystemVoro::selfUpdate()
 			sprintf( filename, "meshes/cell_mesh_%05d.obj", ofGetFrameNum() );
 			//combinedMesh.save( filename );
 			ofxObjLoader::save(filename, combinedMesh);
-			
 		}
-
     }
 
     fps++;

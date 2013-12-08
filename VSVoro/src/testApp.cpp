@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+	
+	ofSetVerticalSync(true);
+	
 	voro.setup();
 	voro.playSystem();
 }
@@ -22,6 +25,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	voro.exit();
 }
 
 //--------------------------------------------------------------
