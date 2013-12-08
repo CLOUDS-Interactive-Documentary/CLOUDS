@@ -26,6 +26,7 @@ class Hair {
 	float phi;
 	float largo;
 	float theta;
+    float luckyNumber;
     
     static float * levelScaleLookUp;
     
@@ -40,6 +41,7 @@ class Hair {
 		phi = ofRandom(TWO_PI);
 		largo = ofRandom(1.05, 1.1);
 		theta = asin(z/radius);
+        luckyNumber = ofRandom(TWO_PI);
 	}
 	
 	void draw(ofMesh& mesh, float noisePosition, float hairScale, float scrollY) {
@@ -175,7 +177,8 @@ protected:
 	float noiseSpeed;
 	float noiseScale;
     
-	float hairLength;
+	float minHairLength;
+    float maxHairLength;
     float minHairLineWidth;
     float maxHairLineWidth;
 	
