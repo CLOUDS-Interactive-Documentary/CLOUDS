@@ -56,6 +56,11 @@ class testApp : public ofBaseApp{
     void guiEvent(ofxUIEventArgs &e);
     
     bool withVideo;
+    
+    // osc shit
 	ofxOscReceiver receiver;
+    int oharmony, orhythm, otempo;
+    float odur;
+    vector<string> oorch, oarg_a, oarg_b;
 
 };

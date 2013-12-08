@@ -20,11 +20,11 @@ void testApp::setup(){
 	storyEngine.parser = &parser;
 	storyEngine.visualSystems = &visualSystems;
 	
-    storyEngine.combinedClipsOnly = true; // true if using a clips drive
+    storyEngine.combinedClipsOnly = false; // true if using a clips drive
 	storyEngine.setup();
 	storyEngine.printDecisions = false;
 	storyEngine.toggleGuis(true);
-    withVideo = true; // draw video?
+    withVideo = false; // draw video?
     
     sound.setup(storyEngine);
     
@@ -105,12 +105,33 @@ void testApp::update(){
 	while(receiver.hasWaitingMessages()){
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
+		if(m.getAddress() == "/setupMusic"){
+			oharmony = m.getArgAsInt32(0);
+			orhythm = m.getArgAsInt32(1);
+			otempo = m.getArgAsInt32(2);
+			odur = m.getArgAsFloat(3);
+            oorch.clear();
+            oarg_a.clear();
+            oarg_b.clear();
+		}
+		if(m.getAddress() == "/addOrch"){
+			oorch.push_back(m.getArgAsString(0));
+			oarg_a.push_back(m.getArgAsString(1));
+			oarg_b.push_back(m.getArgAsString(2));
+		}
 		if(m.getAddress() == "/startMusic"){
 			//sound.startMusic();
 			cout << "STARTING MUSIC" << endl;
+            sound.startMusicFX(0, odur+5);
+            for(int i = 0;i<oorch.size();i++)
+            {
+                cout << "running " << oorch[i] << endl;
+                sound.startMusic(0, oorch[i], oarg_a[i], oarg_b[i], oharmony, orhythm, odur, otempo);
+            }
 		}
 		else if(m.getAddress() == "/stopMusic"){
-			//sound.stopMusic();
+            sound.stopMusic();
+            cout << "STOPPING MUSIC" << endl;
 		}
 	}
 
