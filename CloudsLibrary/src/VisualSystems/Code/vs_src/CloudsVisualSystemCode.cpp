@@ -18,20 +18,30 @@ void CloudsVisualSystemCode::selfSetupGui(){
 	typeGui->copyCanvasProperties(gui);
 	typeGui->setName("Type");
 	typeGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	typeGui->addIntSlider("max size", 4, 50, &maxSize);
-	typeGui->addSlider("width divide", 40, 300, &widthDivide);
-	typeGui->addSlider("height divide", 40, 500, &heightDivide);
-	typeGui->addRangeSlider("speed range", .01, .1, &speedRange.min, &speedRange.max);
-	
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
-	
+	typeGui->addRangeSlider("speed range", .01, 1, &speedRange.min, &speedRange.max);
+
 	ofAddListener(typeGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
 	guis.push_back(typeGui);
 	guimap[typeGui->getName()] = typeGui;
+
+	
+	boxGui = new ofxUISuperCanvas("BOXES", gui);
+	boxGui->copyCanvasStyle(gui);
+	boxGui->copyCanvasProperties(gui);
+	
+	boxGui->addSlider("max width", 40, 300, &maxwidth);
+	boxGui->addSlider("max height", 40, 500, &maxheight);
+	
+	//any width/height smaller thin this will become a widget
+	boxGui->addIntSlider("min subdivision size", 4, 200, &minsize);
+	boxGui->addSlider("min code window size", 40, 500, &minTextboxSize);
+	boxGui->addIntSlider("box gen seed", 1, 300, &boxSeed);
+	boxGui->addSlider("outline alpha", 0, 1.0, &outlineAlpha);
+	
+	ofAddListener(boxGui->newGUIEvent, this, &CloudsVisualSystemCode::selfGuiEvent);
+	guis.push_back(boxGui);
+	guimap[boxGui->getName()] = boxGui;
+		
 }
 
 void CloudsVisualSystemCode::selfGuiEvent(ofxUIEventArgs &e){
@@ -41,28 +51,25 @@ void CloudsVisualSystemCode::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void CloudsVisualSystemCode::generatePanels(){
-//	vector<ofRectangle> rects;
-	
 	rectTests.clear();
 	
 	ofxMtlBoxFitting boxFitting;
-	boxFitting.setup(ofGetWidth(), ofGetHeight(),
-					 widthDivide, heightDivide, maxSize);
+	boxFitting.setup(getSharedRenderTarget().getWidth(),
+					 getSharedRenderTarget().getHeight(), maxwidth, maxheight, minsize);
 
-	boxFitting.generate(ofGetSystemTime());
+	boxFitting.generate(boxSeed);
 	
 	for(int i = 0; i < boxFitting.boxes.size(); i++) {
 		ofRectangle r = ofRectangle(boxFitting.boxes[i].x,
 									boxFitting.boxes[i].y,
 									boxFitting.boxes[i].w,
 									boxFitting.boxes[i].h);
-		if(r.getArea() > 3000){
-			r.x += 1;
-			r.y += 1;
-			r.width  -= 2;
-			r.height -= 2;
-			rectTests.push_back(r);
-		}
+		r.x += 1;
+		r.y += 1;
+		r.width  -= 2;
+		r.height -= 2;
+		
+		rectTests.push_back(r);
 	}
 	
 	sort(rectTests.begin(),rectTests.end(), rectsort);
@@ -73,7 +80,9 @@ void CloudsVisualSystemCode::generatePanels(){
 		CodePanel p;
 		p.setup( getVisualSystemDataPath() + "code_test.txt" );
 		p.drawRect = rectTests[i];
-		p.scanSpeed = ofRandom(speedRange.min,speedRange.max);
+		p.drawAsHist = MIN(p.drawRect.height,p.drawRect.width) < minTextboxSize;
+		p.outlineAlpha = &outlineAlpha;
+		p.scanSpeed = powf(ofRandom(speedRange.min,speedRange.max),2);
 		panels.push_back(p);		
 	}
 
@@ -145,17 +154,18 @@ void CloudsVisualSystemCode::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCode::selfDrawBackground(){
 
-	ofPushStyle();
-	ofNoFill();
-	for(int i = 0; i < rectTests.size(); i++){
-		ofSetColor( ofColor::fromHsb(ofRandom(255), 255,255) );
-		ofRect(rectTests[i]);
-	}
-	ofPopStyle();
+//	ofPushStyle();
+//	ofNoFill();
+//	for(int i = 0; i < rectTests.size(); i++){
+////		ofSetColor( ofColor::fromHsb(ofRandom(255), 255,255) );
+//		ofRect(rectTests[i]);
+//	}
+//	ofPopStyle();
 
 	for(int i = 0; i < panels.size(); i++){
-		panels[i].draw();
+		panels[i].draw( getSharedRenderTarget().getHeight() );
 	}
+	
 //	testPanel.draw();
 	//turn the background refresh off
 	//bClearBackground = false;

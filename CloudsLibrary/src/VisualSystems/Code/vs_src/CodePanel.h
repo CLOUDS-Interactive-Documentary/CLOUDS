@@ -16,6 +16,8 @@
 typedef struct {
 	string baseLine;
 	string colored[MATCH_TYPES];
+	map<unsigned char,int> charCounts;
+	
 } SyntaxLine;
 
 class CodePanel {
@@ -24,12 +26,10 @@ class CodePanel {
 	void setup(string codeFile);
 	
 	void update();
-	void draw();
-	
+	void draw(float screenHeight);
 	//ofxFTGLSimpleLayout layout;
 	ofxFTGLFont layout;
 	ofBuffer initialBuffer;
-	ofBuffer leftToType;
 	
 	float offset;
 	float scanSpeed;
@@ -39,8 +39,15 @@ class CodePanel {
 	vector<SyntaxLine> syntaxLines;
 	string code;
 	
+	float animationStartTime;
+	float animationEndTime;
+
+	float* outlineAlpha;
+	int maxCharsOnLine;
+	bool drawAsHist;
 protected:
 	
+	ofColor randomBoxColor;
 	void myReplace(string& str, const string& oldStr, const string& newStr);
 	int indexOf(string s, string f, int startIndex);
 	
