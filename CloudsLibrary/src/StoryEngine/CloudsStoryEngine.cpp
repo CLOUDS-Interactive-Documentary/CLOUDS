@@ -1147,6 +1147,6 @@ int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<
     return occurrences;
 }
 
-CloudsEvents& CloudsStoryEngine::getEvents(){
+CloudsStoryEvents& CloudsStoryEngine::getEvents(){
     return events;
 }

@@ -48,7 +48,7 @@ class CloudsStoryEngine {
 	//for use in the main clouds repository
 	bool combinedClipsOnly;
 	
-	CloudsEvents& getEvents();
+	CloudsStoryEvents& getEvents();
 	
     void updateDichotomies(CloudsClip& clip);
 	void clearDichotomiesBalance();
@@ -68,7 +68,7 @@ class CloudsStoryEngine {
 	ofxUISuperCanvas *runGui;
     void guiEvent(ofxUIEventArgs &e);
 
-	CloudsEvents events;
+	CloudsStoryEvents events;
 	bool isSetup;
 	CloudsAct* customAct;
 	
