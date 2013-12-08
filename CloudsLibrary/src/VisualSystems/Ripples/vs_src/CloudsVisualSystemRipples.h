@@ -107,6 +107,9 @@ class CloudsVisualSystemRipples : public CloudsVisualSystem {
     ofColor tintColor;
     ofColor dropColor;
     
+    bool bDropOnPress;
+    int dropRate;
+    
 	float damping;
     float radius;
     
