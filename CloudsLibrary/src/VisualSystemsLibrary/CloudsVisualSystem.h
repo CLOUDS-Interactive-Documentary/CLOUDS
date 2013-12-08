@@ -6,6 +6,7 @@
 #include "ofxUI.h"
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
+#include "CloudsInputEvents.h"
 
 //tenuous
 #include "ofxLight.h"
@@ -105,6 +106,7 @@ class CloudsVisualSystem {
     virtual void selfMousePressed(ofMouseEventArgs& data);
     virtual void selfMouseReleased(ofMouseEventArgs& data);
     
+
     virtual void selfSetupGui();
     virtual void selfGuiEvent(ofxUIEventArgs &e);
 	
@@ -133,23 +135,29 @@ class CloudsVisualSystem {
 	
 	//APP CYCLE EVENTS
 	//pre allocate any assets that will cause freezes
-	virtual void setup();
+	void setup();
 	
 	//these events are registered only when running the simulation
-	virtual void update(ofEventArgs & args);
-	virtual void draw(ofEventArgs & args);
+	void update(ofEventArgs & args);
+	void draw(ofEventArgs & args);
 	
 	//application exit, clean up and don't crash
-	virtual void exit();
+	void exit();
 
 	//INTERACTION EVENTS -- registered only
-	virtual void keyPressed(ofKeyEventArgs & args);
-	virtual void keyReleased(ofKeyEventArgs & args);
+	void keyPressed(ofKeyEventArgs & args);
+	void keyReleased(ofKeyEventArgs & args);
 	
-	virtual void mouseDragged(ofMouseEventArgs & args);
-	virtual void mouseMoved(ofMouseEventArgs & args);
-	virtual void mousePressed(ofMouseEventArgs & args);
-	virtual void mouseReleased(ofMouseEventArgs & args);
+	void mouseDragged(ofMouseEventArgs & args);
+	void mouseMoved(ofMouseEventArgs & args);
+	void mousePressed(ofMouseEventArgs & args);
+	void mouseReleased(ofMouseEventArgs & args);
+
+	//CLOUDS INTERACTION EVENTS
+	void interactionMoved(CloudsInteractionEventArgs& args);
+	void interactionStarted(CloudsInteractionEventArgs& args);
+	void interactionDragged(CloudsInteractionEventArgs& args);
+	void interactionEnded(CloudsInteractionEventArgs& args);
 
 	//these two methods are called by the controller class,
 	//they register events and result in a calls to begin/end on the subclass
@@ -165,10 +173,7 @@ class CloudsVisualSystem {
 					  string quoteName);
 
 	virtual void speakerChanged(){};
-	
 	void speakerEnded();
-	
-
 	
 	//how much time left to show this visual system?
 	//once seconds is set to zero the end() event will be called by the controller
@@ -188,7 +193,7 @@ class CloudsVisualSystem {
     void drawAxis(float size, float color);
     void drawGrid(float x, float y, float w, float h, float color);
     void billBoard(ofVec3f globalCamPosition, ofVec3f globelObjectPosition);
-//    void drawTexturedQuad();
+
     void drawNormalizedTexturedQuad();
     void drawBackground();
 	void drawBackgroundGradient();

@@ -2,6 +2,7 @@
 #include "CloudsVisualSystem.h"
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsGlobal.h"
+#include "CloudsInput.h"
 
 #ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
@@ -241,6 +242,7 @@ void CloudsVisualSystem::playSystem(){
 	if(!isPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
 		ofRegisterMouseEvents(this);
+		//CloudsRegisterInputEvents(this);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
@@ -274,10 +276,10 @@ void CloudsVisualSystem::stopSystem(){
 		saveGUIS();
 		cam.disableMouseInput();
 		for(map<string, ofxLight *>::iterator it = lights.begin(); it != lights.end(); ++it){
-			//JG WHITE DEATH
 			it->second->light.destroy();
 		}
 		
+		//CloudsUnregisterInputEvents(this);
 		ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
@@ -807,6 +809,8 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
     }
 }
 
+
+//TODO: CONVERT TO NEW INPUT SYSTEM
 void CloudsVisualSystem::mouseDragged(ofMouseEventArgs& data)
 {
     selfMouseDragged(data);
