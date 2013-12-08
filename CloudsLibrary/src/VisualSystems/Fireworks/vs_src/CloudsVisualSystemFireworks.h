@@ -359,4 +359,7 @@ protected:
 	vector <ofVec3f> debugSpheres;
 	
 	bool bAnimateCamera;
+	
+	float speed, explosionFrequencey;
+	ofVec3f gravity;
 };

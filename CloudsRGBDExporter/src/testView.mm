@@ -98,7 +98,27 @@
     
     filler.setKernelSize(3);
     filler.setIterations(3);
-
+    set<string> sourceVideoFiles;
+    for(int i = 0; i < parser.getAllClips().size(); i++){
+        if(sourceVideoFiles.find( parser.getAllClips()[i].sourceVideoFilePath ) ==  sourceVideoFiles.end() ){
+            cout << parser.getAllClips()[i].person << " " << parser.getAllClips()[i].sourceVideoFilePath << endl;
+            sourceVideoFiles.insert( parser.getAllClips()[i].sourceVideoFilePath );
+        }
+    }
+    
+    map<string,string> filetopeople;
+    for(int i = 0; i < parser.getAllClips().size(); i++){
+        filetopeople[ ofFilePath::getBaseName(parser.getAllClips()[i].sourceVideoFilePath) ] = parser.getAllClips()[i].person;
+    }
+    
+    ofDirectory("peoplelabels").create();
+    
+    map<string,string>::iterator it;
+    for(it = filetopeople.begin(); it != filetopeople.end(); it++){
+        ofBuffer b;
+        b.append("nothing");
+        ofBufferToFile("peoplelabels/" + it->first + "_" + it->second + ".txt", b);
+    }
 	cout << "Finished setup " << ofxTimecode::timecodeForSeconds(parser.getAllClipDuration()) << " seconds" << endl;
 }
 
