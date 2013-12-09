@@ -132,38 +132,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 // refresh the update frame
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
             }
-            
-//            // create a left hand if it doesn't exist yet
-//            
-//            
-//            // update the right hand joint
-//            bodies[idx]->rightHandJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
-//            bodies[idx]->rightHandJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
-//            bodies[idx]->rightHandJoint.inputPosition.set(m.getArgAsFloat(i++), 
-//                                                          m.getArgAsFloat(i++), 
-//                                                          m.getArgAsFloat(i++));
-//            mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, bodies[idx]->rightHandJoint);
-//
-//            newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-//            bodies[idx]->rightHandJoint.poll[newHandState]++;
-//            if (bodies[idx]->rightHandJoint.poll[newHandState] >= kPollThreshold) {
-//                // boom! new state achieved
-//                processHandEvent(idx, 3, bodies[idx]->rightHandJoint, newHandState);
-//                bodies[idx]->rightHandJoint.handState = newHandState;
-//                
-//                for (int i = 0; i < k4w::HandState_Count; i++) {
-//                    if (i != newHandState) {
-//                        bodies[idx]->rightHandJoint.poll[i] = 0;
-//                    }
-//                }
-//            }
-//            else {
-//                // carry on with the same state
-//                processHandEvent(idx, 3, bodies[idx]->rightHandJoint, bodies[idx]->rightHandJoint.handState);
-//            }
-//            
-//            // refresh the update frame
-//            bodies[idx]->lastUpdateFrame = lastOscFrame;
 		}
 		else {
             bRecognized = false;
