@@ -51,9 +51,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 		if (m.getAddress() == "/playerData") {
             int i = 0;
 			int idx = m.getArgAsInt32(i++);
-            
-//            cout << "RECEIVED idx " << idx << " on frame " << lastOscFrame << endl;
-            
+                        
             // create a body if it doesn't exist yet
             if (bodies.find(idx) == bodies.end()) {
                 bodies[idx] = new k4w::Body();
@@ -180,7 +178,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     vector<int> toRemove;
     for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
         if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
-//            cout << "REMOVING idx " << it->first << " frame " << it->second->lastUpdateFrame << " vs " << lastOscFrame << endl;
             toRemove.push_back(it->first);
         }
     }
@@ -210,18 +207,15 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Lasso) {
             // matching state: continue
             interactionDragged(handJoint.mappedPosition, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "DRAG " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
         }
         else if (handJoint.actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
             interactionEnded(handJoint.mappedPosition, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
             interactionStarted(handJoint.mappedPosition, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "PRESS " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
             handJoint.actionState = k4w::ActionState_Lasso;
         }
     }  
@@ -229,18 +223,15 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Closed) {
             // matching state: continue
             interactionDragged(handJoint.mappedPosition, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "DRAG " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
         }
         else if (handJoint.actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
             interactionEnded(handJoint.mappedPosition, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
             interactionStarted(handJoint.mappedPosition, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "PRESS " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
             handJoint.actionState = k4w::ActionState_Closed;
         }
     }
@@ -248,12 +239,10 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Idle) {
             // matching state: continue
             interactionMoved(handJoint.mappedPosition, jointIdx + k4w::ActionState_Idle, bodyIdx);
-//            cout << "MOVE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Idle) << endl;
         }
         else {
             // state mismatch: end previous
             interactionEnded(handJoint.mappedPosition, jointIdx + handJoint.actionState, bodyIdx);
-//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + handJoint.actionState) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
     }
