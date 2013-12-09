@@ -54,7 +54,7 @@ void CloudsIntroSequence::selfSetup(){
 	
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_supertight.obj", tunnelMeshTight);
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/ParticleCube_loose.obj", tunnelMeshLoose);
-//	ofxObjLoader::load(getDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
+//	ofxObjLoader::load(GetCloudsDataPath() + "intro/OBJ/CLOUDS_type_thin_02.obj",thinTypeMesh);
 	
 //	ofxObjLoader::load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thick.obj",thickTypeMesh);
 //	thinTypeMesh.load(getVisualSystemDataPath() + "OBJ/CLOUDS_type_thin_02.ply");
@@ -100,10 +100,10 @@ void CloudsIntroSequence::reloadShaders(){
 
 void CloudsIntroSequence::rebuildQuestionFont(){
     if(bUseOculusRift){
-        questionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", questionFontSize);
+        questionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", questionFontSize);
     }
     else{
-        questionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", questionFontSize);
+        questionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", questionFontSize);
     }
     questionFont.setLineLength(questionLineLength);
     questionFont.setLineSpacing(questionLineSpacing);
@@ -172,7 +172,7 @@ void CloudsIntroSequence::selfUpdate(){
 	{
 		currentFontSize = titleFontExtrude;
 		currentFontExtrusion = titleFontExtrude;
-		extrudedTitleText.loadFont(getDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
+		extrudedTitleText.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", titleFontSize, currentFontExtrusion);
 	}
 	
 	titleRect = ofRectangle(0,0,titleRectWidth*ofGetWidth(),titleRectHeight*ofGetHeight());

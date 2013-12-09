@@ -180,7 +180,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
-    if ((bDropOnPress && ofGetMousePressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+    if ((bDropOnPress && GetCloudsInputPressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
         ofPushStyle();
         ofPushMatrix();
         ripplesSrcFbo.begin();

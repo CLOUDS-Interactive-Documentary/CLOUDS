@@ -155,10 +155,12 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         brush.setColor(color, colorLerp, colorRandom);
     }
     
-    if (ofGetMousePressed()) {
+    if (GetCloudsInputPressed()) {
         brush.addParticles(particles, particlesThreshold, particlesAlpha);
     }
     
+	//cout << "Mouse pressed?" << GetCloudsInputPressed() << endl;
+	
     canvasDst.begin();
     
     ofSetColor(255, (1.0f - fadeAmount) * 255);
@@ -178,7 +180,7 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         
     }
     
-    if (ofGetMousePressed()) {
+    if (GetCloudsInputPressed()) {
         brush.draw();
     }
     

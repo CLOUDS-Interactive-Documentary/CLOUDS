@@ -152,16 +152,16 @@ void CloudsStoryEngine::initGui(){
     vsGui->autoSizeToFitWidgets();
     
     string filePath;
-    filePath = getDataPath() +"storyEngineParameters/gui.xml";
+    filePath = GetCloudsDataPath() +"storyEngineParameters/gui.xml";
     if(ofFile::doesFileExist(filePath))gui->loadSettings(filePath);
     
-    filePath = getDataPath() +"storyEngineParameters/clipGui.xml";
+    filePath = GetCloudsDataPath() +"storyEngineParameters/clipGui.xml";
     if(ofFile::doesFileExist(filePath))clipGui->loadSettings(filePath);
     
-    filePath = getDataPath() +"storyEngineParameters/vsGui.xml";
+    filePath = GetCloudsDataPath() +"storyEngineParameters/vsGui.xml";
     if(ofFile::doesFileExist(filePath))vsGui->loadSettings(filePath);
     
-    filePath = getDataPath() +"storyEngineParameters/topicGui.xml";
+    filePath = GetCloudsDataPath() +"storyEngineParameters/topicGui.xml";
     if(ofFile::doesFileExist(filePath))topicGui->loadSettings(filePath);
     
     ofAddListener(actGui->newGUIEvent, this, &CloudsStoryEngine::guiEvent);
@@ -232,11 +232,11 @@ void CloudsStoryEngine::updateRunData(){
     //    runGui->
 }
 void CloudsStoryEngine::saveGuiSettings(){
-    gui->saveSettings(getDataPath() +"storyEngineParameters/gui.xml");
-    clipGui->saveSettings(getDataPath() +"storyEngineParameters/clipGui.xml");
-    vsGui->saveSettings(getDataPath() +"storyEngineParameters/vsGui.xml");
-    topicGui->saveSettings(getDataPath() +"storyEngineParameters/topicGui.xml");
-    runGui->saveSettings(getDataPath() +"storyEngineParameters/runGui.xml");
+    gui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/gui.xml");
+    clipGui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/clipGui.xml");
+    vsGui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/vsGui.xml");
+    topicGui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/topicGui.xml");
+    runGui->saveSettings(GetCloudsDataPath() +"storyEngineParameters/runGui.xml");
 }
 
 void CloudsStoryEngine::toggleGuis(bool actOnly){
@@ -631,15 +631,15 @@ CloudsAct* CloudsStoryEngine::buildAct(CloudsRun run, CloudsClip& seed, string t
     
     ofBuffer scoreBuffer;
     scoreBuffer.set(clipScoreStream);
-    ofBufferToFile(getDataPath() + "logs/clipScore.csv", scoreBuffer);
+    ofBufferToFile(GetCloudsDataPath() + "logs/clipScore.csv", scoreBuffer);
     
     ofBuffer topicBuffer;
     topicBuffer.set(topicScoreStream);
-    ofBufferToFile(getDataPath() + "logs/topicScores.csv", topicBuffer);
+    ofBufferToFile(GetCloudsDataPath() + "logs/topicScores.csv", topicBuffer);
     
     ofBuffer visualSystemBuffer;
     visualSystemBuffer.set(vsScoreStream);
-    ofBufferToFile(getDataPath() + "logs/visualSystemScores.csv", visualSystemBuffer);
+    ofBufferToFile(GetCloudsDataPath() + "logs/visualSystemScores.csv", visualSystemBuffer);
     
     run.actCount++;
     
@@ -1147,6 +1147,6 @@ int CloudsStoryEngine::occurrencesOfPerson(string person, int stepsBack, vector<
     return occurrences;
 }
 
-CloudsEvents& CloudsStoryEngine::getEvents(){
+CloudsStoryEvents& CloudsStoryEngine::getEvents(){
     return events;
 }

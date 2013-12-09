@@ -17,7 +17,7 @@ void RTcmixParseScoreFile(string f)
 {
     string thescore = "";
     
-    ofFile sco (getDataPath()+"sound/"+f);
+    ofFile sco (GetCloudsDataPath()+"sound/"+f);
     if(!sco.exists())
     {
         ofLogError("no score file!");
@@ -216,7 +216,7 @@ void MBANDEDWG(double outskip, double dur, double amp, double freq, double strik
 void loadrhythms(string f, vector<lukeRhythm>& r)
 {
     string sline;
-    ofFile rfile (getDataPath()+"sound/"+f);
+    ofFile rfile (GetCloudsDataPath()+"sound/"+f);
     if(!rfile.exists())
     {
         ofLogError("no data file!");
@@ -240,7 +240,7 @@ void loadrhythms(string f, vector<lukeRhythm>& r)
 void loadpitches(string f, vector<lukePitchArray>& p)
 {
     string sline;
-    ofFile pfile (getDataPath()+"sound/"+f);
+    ofFile pfile (GetCloudsDataPath()+"sound/"+f);
     if(!pfile.exists())
     {
         ofLogError("no data file!");
@@ -272,7 +272,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
     cout << "=============" << endl;
 
     
-    if(thestuff.loadFile(getDataPath()+"sound/"+f))
+    if(thestuff.loadFile(GetCloudsDataPath()+"sound/"+f))
     {
         thestuff.pushTag("pattrstorage");
         int numpresets = thestuff.getNumTags("slot");
@@ -436,7 +436,7 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
 void loadpresets(string f, vector<lukePreset>& p)
 {
     string sline;
-    ofFile pfile (getDataPath()+"sound/"+f);
+    ofFile pfile (GetCloudsDataPath()+"sound/"+f);
     if(!pfile.exists())
     {
         ofLogError("no data file!");
