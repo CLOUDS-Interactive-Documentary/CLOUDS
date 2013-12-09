@@ -91,7 +91,12 @@ class CloudsVisualSystem {
     virtual void selfMouseMoved(ofMouseEventArgs& data);
     virtual void selfMousePressed(ofMouseEventArgs& data);
     virtual void selfMouseReleased(ofMouseEventArgs& data);
-    
+	
+	virtual void selfInteractionMoved(CloudsInteractionEventArgs& args);
+	virtual void selfInteractionStarted(CloudsInteractionEventArgs& args);
+	virtual void selfInteractionDragged(CloudsInteractionEventArgs& args);
+	virtual void selfInteractionEnded(CloudsInteractionEventArgs& args);
+
 
     virtual void selfSetupGui();
     virtual void selfGuiEvent(ofxUIEventArgs &e);

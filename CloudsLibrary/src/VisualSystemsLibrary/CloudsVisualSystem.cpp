@@ -814,6 +814,7 @@ void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseMoved(fakeArgs);
+	selfInteractionMoved(args);
 }
 
 void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
@@ -822,6 +823,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mousePressed(fakeArgs);
+	selfInteractionStarted(args);
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
@@ -830,6 +832,7 @@ void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseDragged(fakeArgs);
+	selfInteractionDragged(args);
 }
 
 void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
@@ -838,6 +841,7 @@ void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseReleased(fakeArgs);
+	selfInteractionEnded(args);
 }
 
 void CloudsVisualSystem::mouseDragged(ofMouseEventArgs& data)
@@ -866,6 +870,13 @@ void CloudsVisualSystem::mousePressed(ofMouseEventArgs & args)
     selfMousePressed(args);
 }
 
+void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
+{
+    cam.enableMouseInput();
+    selfMouseReleased(args);
+}
+
+
 bool CloudsVisualSystem::cursorIsOverGUI(){
 	if( timeline->getIsShowing() && timeline->getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
 		return true;
@@ -880,12 +891,6 @@ bool CloudsVisualSystem::cursorIsOverGUI(){
 		}
 	}
 	return false;
-}
-
-void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
-{
-    cam.enableMouseInput();
-    selfMouseReleased(args);
 }
 
 void CloudsVisualSystem::setupAppParams()
@@ -3020,6 +3025,23 @@ void CloudsVisualSystem::selfMouseReleased(ofMouseEventArgs& data)
 {
     
 }
+
+void CloudsVisualSystem::selfInteractionMoved(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionStarted(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionDragged(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
+	
+}
+
 
 void CloudsVisualSystem::selfSetupGui()
 {
