@@ -60,24 +60,16 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     {
         if(arg_a=="sequencer")
         {
-            string sline;
-            ofFile seqfile (GetCloudsDataPath()+"sound/seqs/" + arg_b);
-            if(!seqfile.exists())
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            for(int i = 0;i<n.size();i++)
             {
-                ofLogError("can't find sequence!");
-            }
-            ofBuffer seqbuf(seqfile);
-            while(!seqbuf.isLastLine())
-            {
-                sline = seqbuf.getNextLine();
-                vector<string> temp = ofSplitString(sline, " ");
-                float starttime = ofToFloat(temp[0])/1000.;
-                int pitch = scale(ofToInt(temp[1]), pitches[mh].scale);
-                float velo = (ofToFloat(temp[2])/128.)*0.1;
-                float dur = ofToFloat(temp[3])/1000.;
-                cout << starttime << ": " << pitch << " " << velo << " " << dur << endl;
-                WAVETABLE(outskip+starttime, dur, velo, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
-                WAVETABLE(outskip+starttime, dur, velo, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                if(n[i].starttime < musicdur)
+                {
+                    int pitch = scale(n[i].pitch, pitches[mh].scale);
+                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                }
             }
             
         }
@@ -179,22 +171,40 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // KISS MY ARP
     if (mo=="kissmyarp")
     {
-        melodySolver m(arg_a, pitches[mh]);
-        int curpitch;
-        float freq;
-
-        for(i = 0;i<musicdur;i+=tempo*2)
+        if(arg_a=="sequencer")
         {
-            int oct = ofRandom(0., 1.)*12;
-            curpitch = m.tick();
-            int pitch = curpitch % 12;
-            pitch+=pitches[mh].basenote;
-            pitch+=oct;
-            pitch = scale(pitch, pitches[mh].scale);
-            // cout << "doing pitch: " << ptos(pitch) << endl;
-            freq = mtof(pitch);
-            WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-            WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            vector<lukeNote> n;
+            cloudsSequencer(arg_b, n);
+            for(int i = 0;i<n.size();i++)
+            {
+                if(n[i].starttime < musicdur)
+                {
+                    int pitch = scale(n[i].pitch, pitches[mh].scale);
+                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                    WAVETABLE(outskip+n[i].starttime, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                }
+            }
+            
+        }
+        else
+        {
+            melodySolver m(arg_a, pitches[mh]);
+            int curpitch;
+            float freq;
+
+            for(i = 0;i<musicdur;i+=tempo*2)
+            {
+                int oct = ofRandom(0., 1.)*12;
+                curpitch = m.tick();
+                int pitch = curpitch % 12;
+                pitch+=pitches[mh].basenote;
+                pitch+=oct;
+                pitch = scale(pitch, pitches[mh].scale);
+                // cout << "doing pitch: " << ptos(pitch) << endl;
+                freq = mtof(pitch);
+                WAVETABLE(outskip+i, tempo*1.5, 0.05, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                WAVETABLE(outskip+i+tempo*6, tempo*1.5, 0.025, freq, ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+            }
         }
     }
     
