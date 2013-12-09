@@ -446,7 +446,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 				//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
 				ofSetColor(240,240,255, 175);
 				ofSetLineWidth(2);
-				ofCircle(ofGetMouseX(), ofGetMouseY(),
+				ofCircle(GetCloudsInputX(), GetCloudsInputY(),
 						 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
 				ofPopStyle();
 				ofPopMatrix();
@@ -822,7 +822,6 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mousePressed(fakeArgs);
-	cout << "FAKE MOUSE PRESS" << endl;
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){

@@ -104,8 +104,6 @@ void CloudsVisualSystemConnectors::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemConnectors::selfUpdate(){
-	
-//	generator.setMinDistance(ofGetMouseX()/10.);
 	generator.update();
 
 }
@@ -124,16 +122,6 @@ void CloudsVisualSystemConnectors::selfDraw(){
 	ofNoFill();
 	ofSetColor(20);
 	ofBox(0,0,0, generator.boundarySize*2);
-	
-//	if(videoLoaded){
-//		ofPushMatrix();
-//		setupRGBDTransforms();
-//		pointcloudShader.begin();
-//		getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
-//		simplePointcloud.drawVertices();
-//		pointcloudShader.end();
-//		ofPopMatrix();
-//	}
 	
 }
 
