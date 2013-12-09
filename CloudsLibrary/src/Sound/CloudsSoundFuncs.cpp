@@ -61,7 +61,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         if(arg_a=="sequencer")
         {
             string sline;
-            ofFile seqfile (getDataPath()+"sound/seqs/" + arg_b);
+            ofFile seqfile (GetCloudsDataPath()+"sound/seqs/" + arg_b);
             if(!seqfile.exists())
             {
                 ofLogError("can't find sequence!");
