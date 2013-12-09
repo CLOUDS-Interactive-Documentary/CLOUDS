@@ -11,8 +11,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "CloudsInput.h"
 
-class CloudsInput;
+//class CloudsInput;
 
 class CloudsInteractionEventArgs : public ofEventArgs {
 public:
@@ -32,12 +33,18 @@ public:
 	ofEvent<CloudsInteractionEventArgs> interactionEnded;
 };
 
-static ofPtr<CloudsInput> cloudsInput;
-static void CloudsSetInput(ofPtr<CloudsInput> input);
-static ofPtr<CloudsInput> CloudsGetInput();
+template<class ListenerClass>
+void CloudsRegisterInputEvents(ListenerClass * listener){
+	ofAddListener(GetCloudsInput()->getEvents().interactionMoved, listener, &ListenerClass::interactionMoved);
+	ofAddListener(GetCloudsInput()->getEvents().interactionStarted, listener, &ListenerClass::interactionStarted);
+	ofAddListener(GetCloudsInput()->getEvents().interactionDragged, listener, &ListenerClass::interactionDragged);
+	ofAddListener(GetCloudsInput()->getEvents().interactionEnded, listener, &ListenerClass::interactionEnded);
+}
 
 template<class ListenerClass>
-static void CloudsRegisterInputEvents(ListenerClass * listener);
-
-template<class ListenerClass>
-static void CloudsUnregisterInputEvents(ListenerClass * listener);
+void CloudsUnregisterInputEvents(ListenerClass * listener){
+	ofRemoveListener(GetCloudsInput()->getEvents().interactionMoved, listener, &ListenerClass::interactionMoved);
+	ofRemoveListener(GetCloudsInput()->getEvents().interactionStarted, listener, &ListenerClass::interactionStarted);
+	ofRemoveListener(GetCloudsInput()->getEvents().interactionDragged, listener, &ListenerClass::interactionDragged);
+	ofRemoveListener(GetCloudsInput()->getEvents().interactionEnded, listener, &ListenerClass::interactionEnded);
+}

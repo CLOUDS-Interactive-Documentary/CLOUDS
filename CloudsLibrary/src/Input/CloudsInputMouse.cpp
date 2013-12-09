@@ -7,6 +7,7 @@
 //
 
 #include "CloudsInputMouse.h"
+#include "CloudsInputEvents.h"
 
 void CloudsInputMouse::enable(){
 	if(!enabled){
@@ -24,20 +25,20 @@ void CloudsInputMouse::disable(){
 
 void CloudsInputMouse::mouseMoved(ofMouseEventArgs& data){
 	CloudsInteractionEventArgs args(ofVec3f(data.x,data.y,0), data.button);
-	ofNotifyEvent(events.interactionMoved, args, this);
+	ofNotifyEvent(getEvents().interactionMoved, args, this);
 }
 
 void CloudsInputMouse::mousePressed(ofMouseEventArgs& data){
 	CloudsInteractionEventArgs args(ofVec3f(data.x,data.y,0), data.button);
-	ofNotifyEvent(events.interactionStarted, args, this);
+	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
 void CloudsInputMouse::mouseDragged(ofMouseEventArgs& data){
 	CloudsInteractionEventArgs args(ofVec3f(data.x,data.y,0), data.button);
-	ofNotifyEvent(events.interactionDragged, args, this);
+	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
 void CloudsInputMouse::mouseReleased(ofMouseEventArgs& data){
 	CloudsInteractionEventArgs args(ofVec3f(data.x,data.y,0), data.button);
-	ofNotifyEvent(events.interactionEnded, args, this);
+	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }
