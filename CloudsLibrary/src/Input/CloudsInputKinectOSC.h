@@ -82,8 +82,6 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
-        ActionState actionState;
-        int poll[HandState_Count];
     };
     
     class Body 
@@ -99,31 +97,36 @@ namespace k4w
             
             spineBaseJoint.type = JointType_SpineBase;
             spineBaseJoint.trackingState = TrackingState_NotTracked;
-            
-            leftHandJoint.type = JointType_HandLeft;
-            leftHandJoint.trackingState = TrackingState_NotTracked;
-            leftHandJoint.handState = HandState_NotTracked;
-            leftHandJoint.actionState = ActionState_Idle;
-            for (int i = 0; i < HandState_Count; i++) 
-                leftHandJoint.poll[i] = 0;
-            
-            rightHandJoint.type = JointType_HandLeft;
-            rightHandJoint.trackingState = TrackingState_NotTracked;
-            rightHandJoint.handState = HandState_NotTracked;
-            rightHandJoint.actionState = ActionState_Idle;
-            for (int i = 0; i < HandState_Count; i++) 
-                rightHandJoint.poll[i] = 0;
         }
         
         int idx;
-        
         int lastUpdateFrame;
-        
         Joint headJoint;
         Joint spineNeckJoint;
         Joint spineBaseJoint;
-        HandJoint leftHandJoint;
-        HandJoint rightHandJoint;
+    };
+    
+    class Hand
+    {
+    public:
+        Hand(){
+            // set default joint attributes
+            handJoint.type = JointType_HandLeft;
+            handJoint.trackingState = TrackingState_NotTracked;
+            handJoint.handState = HandState_NotTracked;
+            
+            actionState = ActionState_Idle;
+            for (int i = 0; i < HandState_Count; i++){
+                poll[i] = 0;
+            }
+        }
+        
+        int idx;
+        int bodyIdx;
+        int lastUpdateFrame;
+        int poll[HandState_Count];
+        ActionState actionState;
+        HandJoint handJoint;
     };
 };
 
@@ -136,10 +139,11 @@ public:
     void update(ofEventArgs& args);
 	
     void mapCoords(ofVec3f& origin, float length, k4w::Joint& joint);
-	void processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState);
+	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
     
     map<int, k4w::Body *> bodies;
+    map<int, k4w::Hand *> hands;
 };
