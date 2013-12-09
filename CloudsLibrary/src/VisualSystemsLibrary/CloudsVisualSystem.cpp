@@ -822,7 +822,6 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mousePressed(fakeArgs);
-	cout << "FAKE MOUSE PRESS" << endl;
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){

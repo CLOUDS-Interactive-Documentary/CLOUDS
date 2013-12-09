@@ -61,6 +61,13 @@ namespace k4w
         JointType_Count
     };
     
+    enum ActionState
+    {
+        ActionState_Idle   = 0,
+        ActionState_Lasso  = 1,
+        ActionState_Closed = 2
+    };
+    
     struct Joint 
     {
         JointType type;
@@ -71,7 +78,7 @@ namespace k4w
     struct HandJoint : public Joint
     {
         HandState handState;
-        bool bPressed;
+        ActionState actionState;
     };
     
     class Body 
@@ -85,12 +92,12 @@ namespace k4w
             leftHandJoint.type = JointType_HandLeft;
             leftHandJoint.trackingState = TrackingState_NotTracked;
             leftHandJoint.handState = HandState_NotTracked;
-            leftHandJoint.bPressed = false;
+            leftHandJoint.actionState = ActionState_Idle;
             
             rightHandJoint.type = JointType_HandLeft;
             rightHandJoint.trackingState = TrackingState_NotTracked;
             rightHandJoint.handState = HandState_NotTracked;
-            rightHandJoint.bPressed = false;
+            rightHandJoint.actionState = ActionState_Idle;
         }
         
         int idx;
@@ -112,7 +119,7 @@ public:
     
     void update(ofEventArgs& args);
 	
-	void processHandEvent(int bodyIdx, k4w::HandJoint& handJoint, k4w::HandState newState);
+	void processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
