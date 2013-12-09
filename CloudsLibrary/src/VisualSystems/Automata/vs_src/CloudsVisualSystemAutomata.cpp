@@ -153,7 +153,7 @@ void CloudsVisualSystemAutomata::selfUpdate()
             outFbo.draw(0, 0);
             
             ofSetColor(255);
-            ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
         }
         texFbo.end();
 

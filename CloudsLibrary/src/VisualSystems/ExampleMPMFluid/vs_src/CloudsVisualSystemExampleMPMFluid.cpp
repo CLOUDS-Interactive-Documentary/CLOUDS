@@ -162,7 +162,7 @@ void CloudsVisualSystemExampleMPMFluid::selfUpdate()
         obstacle->radius2 = obstacleSize * obstacleSize;
     }
     
-    fluid.update();
+    fluid.update(GetCloudsInputX(),GetCloudsInputY());
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
