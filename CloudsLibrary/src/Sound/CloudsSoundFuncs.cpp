@@ -58,17 +58,43 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWWAVES
     if (mo=="slowwaves")
     {
-        melodySolver m(arg_a, pitches[mh]);
-        int curpitch;
-        float freq;
-        
-         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+        if(arg_a=="sequencer")
         {
-            curpitch = m.tick();
-            freq = mtof(curpitch);
+            string sline;
+            ofFile seqfile (getDataPath()+"sound/seqs/" + arg_b);
+            if(!seqfile.exists())
+            {
+                ofLogError("can't find sequence!");
+            }
+            ofBuffer seqbuf(seqfile);
+            while(!seqbuf.isLastLine())
+            {
+                sline = seqbuf.getNextLine();
+                vector<string> temp = ofSplitString(sline, " ");
+                int starttime = ofToFloat(temp[0])/1000.;
+                int pitch = ofToInt(temp[1]);
+                float velo = (ofToFloat(temp[2])/128.)*0.1;
+                float dur = ofToFloat(temp[3])/1000.;
+                cout << starttime << ": " << pitch << " " << velo << " " << dur << endl;
+                WAVETABLE(outskip+starttime, dur, velo, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                WAVETABLE(outskip+starttime, dur, velo, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+            }
             
-            WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
-            WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+        }
+        else
+        {
+            melodySolver m(arg_a, pitches[mh]);
+            int curpitch;
+            float freq;
+            
+            for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(4, 16)))
+            {
+                curpitch = m.tick();
+                freq = mtof(curpitch);
+                
+                WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                WAVETABLE(outskip+i, ofRandom(3., 10.), 0.025, freq*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+            }
         }
         
     }

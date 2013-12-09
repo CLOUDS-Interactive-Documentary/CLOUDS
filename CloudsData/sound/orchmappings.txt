@@ -1,4 +1,4 @@
-slowwaves, bucket melody markov;
+slowwaves, bucket melody markov sequencer;
 slowwaveshi, bucket melody markov;
 waveshipatterned, bucket melody markov;
 lowwavepulse, bucket melody markov;
