@@ -27,7 +27,9 @@ namespace k4w
         HandState_NotTracked = 1,
         HandState_Open       = 2,
         HandState_Closed     = 3,
-        HandState_Lasso      = 4
+        HandState_Lasso      = 4,
+        
+        HandState_Count
     };
     
     enum JointType 
@@ -79,6 +81,7 @@ namespace k4w
     {
         HandState handState;
         ActionState actionState;
+        int poll[HandState_Count];
     };
     
     class Body 
@@ -93,11 +96,15 @@ namespace k4w
             leftHandJoint.trackingState = TrackingState_NotTracked;
             leftHandJoint.handState = HandState_NotTracked;
             leftHandJoint.actionState = ActionState_Idle;
+            for (int i = 0; i < HandState_Count; i++) 
+                leftHandJoint.poll[i] = 0;
             
             rightHandJoint.type = JointType_HandLeft;
             rightHandJoint.trackingState = TrackingState_NotTracked;
             rightHandJoint.handState = HandState_NotTracked;
             rightHandJoint.actionState = ActionState_Idle;
+            for (int i = 0; i < HandState_Count; i++) 
+                rightHandJoint.poll[i] = 0;
         }
         
         int idx;
