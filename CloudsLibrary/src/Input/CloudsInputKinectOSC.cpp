@@ -14,9 +14,19 @@ int kNumFramesForRemoval = 60;
 int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
+CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY, float activeThresholdZ)
+: bSoloMode(bSoloMode)
+, activeThresholdY(activeThresholdY)
+, activeThresholdZ(activeThresholdZ)
+, soloHandIdx(-1)
+{
+
+}
+
+//--------------------------------------------------------------
 void CloudsInputKinectOSC::enable()
 {
-	if(!enabled){
+	if (!enabled) {
         receiver.setup(kListenPort);
         ofAddListener(ofEvents().update, this, &CloudsInputKinectOSC::update);
 		enabled = true;
@@ -26,7 +36,7 @@ void CloudsInputKinectOSC::enable()
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::disable()
 {
-	if(enabled){
+	if (enabled) {
 //        receiver.shutdown();
         ofRemoveListener(ofEvents().update, this, &CloudsInputKinectOSC::update);
 		enabled = false;
@@ -89,8 +99,9 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, bodies[idx]->headJoint);
             mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, bodies[idx]->spineBaseJoint);
             
-            // refresh the update frame
+            // refresh the update frame and age
             bodies[idx]->lastUpdateFrame = lastOscFrame;
+            bodies[idx]->age++;
             
             // process the hand data
             for (int j = 0; j < 2; j++) {
@@ -103,7 +114,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                     hands[handIdx]->bodyIdx = idx;
                 }
                 
-                // update the left hand joint
+                // update the hand joint
                 hands[handIdx]->handJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.trackingState = (k4w::TrackingState)m.getArgAsInt32(i++);
                 hands[handIdx]->handJoint.inputPosition.set(m.getArgAsFloat(i++), 
@@ -111,26 +122,45 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                                                             m.getArgAsFloat(i++));
                 mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, hands[handIdx]->handJoint);
                 
-                newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-                hands[handIdx]->poll[newHandState]++;
-                if (hands[handIdx]->poll[newHandState] >= kPollThreshold) {
-                    // boom! new state achieved
-                    processHandEvent(handIdx, hands[handIdx], newHandState);
-                    hands[handIdx]->handJoint.handState = newHandState;
-                    
-                    for (int k = 0; k < k4w::HandState_Count; k++) {
-                        if (k != newHandState) {
-                            hands[handIdx]->poll[k] = 0;
+                // set the active state based on the local position
+                cout << hands[handIdx]->handJoint.localPosition.z << endl;
+                hands[handIdx]->bActive = (hands[handIdx]->handJoint.localPosition.y > activeThresholdY) && (hands[handIdx]->handJoint.localPosition.z < activeThresholdZ);
+                
+                // process the event if the hand is active AND either
+                // we are NOT in solo mode OR if we are, this hand is the designated cursor
+                if (!bSoloMode || soloHandIdx == handIdx) {
+                    if (hands[handIdx]->bActive) {
+                        newHandState = (k4w::HandState)m.getArgAsInt32(i);
+                        hands[handIdx]->poll[newHandState]++;
+                        if (hands[handIdx]->poll[newHandState] >= kPollThreshold) {
+                            // boom! new state achieved
+                            processHandEvent(handIdx, hands[handIdx], newHandState);
+                            hands[handIdx]->handJoint.handState = newHandState;
+                            
+                            for (int k = 0; k < k4w::HandState_Count; k++) {
+                                if (k != newHandState) {
+                                    hands[handIdx]->poll[k] = 0;
+                                }
+                            }
+                        }
+                        else {
+                            // carry on with the same state
+                            processHandEvent(handIdx, hands[handIdx], hands[handIdx]->handJoint.handState);
                         }
                     }
+                    else {
+                        // make sure the hand is not mid-action when getting the boot
+                        processHandEvent(handIdx, hands[handIdx], k4w::HandState_NotTracked);
+                        
+                        // unlink it 
+                        soloHandIdx = -1;
+                    }
                 }
-                else {
-                    // carry on with the same state
-                    processHandEvent(handIdx, hands[handIdx], hands[handIdx]->handJoint.handState);
-                }
+                i++;
                 
-                // refresh the update frame
+                // refresh the update frame and age
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
+                hands[handIdx]->age++;
             }
 		}
 		else {
@@ -181,12 +211,41 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     toRemove.clear();
     for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
         if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
+            // make sure the hand is not mid-action when getting removed
+            processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
+            
+            // if the hand was the designated cursor, unlink it 
+            if (it->first == soloHandIdx) {
+                soloHandIdx = -1;
+            }
+            
             toRemove.push_back(it->first);
         }
     }
     for (int i = 0; i < toRemove.size(); i++) {
         delete hands[toRemove[i]];
         hands.erase(toRemove[i]);
+    }
+    
+    // look for a new designated cursor if necessary
+    if (bSoloMode && soloHandIdx == -1) {
+        int newSoloHandIdx = -1;
+        int newSoloHandAge =  0;
+        float newSoloHandY = -1;
+        for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
+            // select this hand if it is active AND either:
+            //  1. there is no candidate yet
+            //  2. it is older than the current candidate
+            //  3. it is as old the current candidate but higher up
+            if (it->second->bActive && ((newSoloHandIdx == -1) || 
+                                        (newSoloHandAge < it->second->age) || 
+                                        (newSoloHandAge == it->second->age && newSoloHandY < it->second->handJoint.inputPosition.y))) {
+                newSoloHandIdx = it->first;
+                newSoloHandAge = it->second->age;
+                newSoloHandY   = it->second->handJoint.inputPosition.y;
+            }
+        }
+        soloHandIdx = newSoloHandIdx;
     }
 }
 

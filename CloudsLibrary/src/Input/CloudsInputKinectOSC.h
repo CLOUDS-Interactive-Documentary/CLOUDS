@@ -97,9 +97,12 @@ namespace k4w
             
             spineBaseJoint.type = JointType_SpineBase;
             spineBaseJoint.trackingState = TrackingState_NotTracked;
+            
+            age = 0;
         }
         
         int idx;
+        int age;
         int lastUpdateFrame;
         Joint headJoint;
         Joint spineNeckJoint;
@@ -115,6 +118,7 @@ namespace k4w
             handJoint.trackingState = TrackingState_NotTracked;
             handJoint.handState = HandState_NotTracked;
             
+            age = 0;
             actionState = ActionState_Idle;
             for (int i = 0; i < HandState_Count; i++){
                 poll[i] = 0;
@@ -123,7 +127,9 @@ namespace k4w
         
         int idx;
         int bodyIdx;
+        int age;
         int lastUpdateFrame;
+        bool bActive;
         int poll[HandState_Count];
         ActionState actionState;
         HandJoint handJoint;
@@ -133,6 +139,8 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
+    CloudsInputKinectOSC(bool bSoloMode = false, float activeThresholdY = -FLT_MAX, float activeThresholdZ = FLT_MAX);
+    
 	virtual void enable();
 	virtual void disable();
     
@@ -143,6 +151,12 @@ public:
     
     ofxOscReceiver receiver;
     int lastOscFrame;
+    
+    bool bSoloMode;
+    int soloHandIdx;
+    
+    float activeThresholdY;
+    float activeThresholdZ;
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
