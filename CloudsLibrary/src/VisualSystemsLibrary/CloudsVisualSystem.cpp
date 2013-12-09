@@ -446,7 +446,7 @@ void CloudsVisualSystem::draw(ofEventArgs & args)
 				//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
 				ofSetColor(240,240,255, 175);
 				ofSetLineWidth(2);
-				ofCircle(ofGetMouseX(), ofGetMouseY(),
+				ofCircle(GetCloudsInputX(), GetCloudsInputY(),
 						 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
 				ofPopStyle();
 				ofPopMatrix();
@@ -814,6 +814,7 @@ void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseMoved(fakeArgs);
+	selfInteractionMoved(args);
 }
 
 void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
@@ -822,7 +823,7 @@ void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mousePressed(fakeArgs);
-	cout << "FAKE MOUSE PRESS" << endl;
+	selfInteractionStarted(args);
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
@@ -831,6 +832,7 @@ void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseDragged(fakeArgs);
+	selfInteractionDragged(args);
 }
 
 void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
@@ -839,6 +841,7 @@ void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
 	fakeArgs.y = args.position.y;
 	fakeArgs.button = args.actionType;
 	mouseReleased(fakeArgs);
+	selfInteractionEnded(args);
 }
 
 void CloudsVisualSystem::mouseDragged(ofMouseEventArgs& data)
@@ -867,6 +870,13 @@ void CloudsVisualSystem::mousePressed(ofMouseEventArgs & args)
     selfMousePressed(args);
 }
 
+void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
+{
+    cam.enableMouseInput();
+    selfMouseReleased(args);
+}
+
+
 bool CloudsVisualSystem::cursorIsOverGUI(){
 	if( timeline->getIsShowing() && timeline->getDrawRect().inside(ofGetMouseX(),ofGetMouseY())){
 		return true;
@@ -881,12 +891,6 @@ bool CloudsVisualSystem::cursorIsOverGUI(){
 		}
 	}
 	return false;
-}
-
-void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
-{
-    cam.enableMouseInput();
-    selfMouseReleased(args);
 }
 
 void CloudsVisualSystem::setupAppParams()
@@ -3021,6 +3025,23 @@ void CloudsVisualSystem::selfMouseReleased(ofMouseEventArgs& data)
 {
     
 }
+
+void CloudsVisualSystem::selfInteractionMoved(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionStarted(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionDragged(CloudsInteractionEventArgs& args){
+	
+}
+
+void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
+	
+}
+
 
 void CloudsVisualSystem::selfSetupGui()
 {

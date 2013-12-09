@@ -27,7 +27,9 @@ namespace k4w
         HandState_NotTracked = 1,
         HandState_Open       = 2,
         HandState_Closed     = 3,
-        HandState_Lasso      = 4
+        HandState_Lasso      = 4,
+        
+        HandState_Count
     };
     
     enum JointType 
@@ -61,16 +63,27 @@ namespace k4w
         JointType_Count
     };
     
+    enum ActionState
+    {
+        ActionState_Idle   = 0,
+        ActionState_Lasso  = 1,
+        ActionState_Closed = 2
+    };
+    
     struct Joint 
     {
         JointType type;
         TrackingState trackingState;
-        ofVec3f position;
+        ofVec3f inputPosition;
+        ofVec3f localPosition;
+        ofVec3f mappedPosition;
     };
     
     struct HandJoint : public Joint
     {
         HandState handState;
+        ActionState actionState;
+        int poll[HandState_Count];
     };
     
     class Body 
@@ -81,13 +94,25 @@ namespace k4w
             headJoint.type = JointType_Head;
             headJoint.trackingState = TrackingState_NotTracked;
             
+            spineNeckJoint.type = JointType_SpineShoulder;
+            spineNeckJoint.trackingState = TrackingState_NotTracked;
+            
+            spineBaseJoint.type = JointType_SpineBase;
+            spineBaseJoint.trackingState = TrackingState_NotTracked;
+            
             leftHandJoint.type = JointType_HandLeft;
             leftHandJoint.trackingState = TrackingState_NotTracked;
             leftHandJoint.handState = HandState_NotTracked;
+            leftHandJoint.actionState = ActionState_Idle;
+            for (int i = 0; i < HandState_Count; i++) 
+                leftHandJoint.poll[i] = 0;
             
             rightHandJoint.type = JointType_HandLeft;
             rightHandJoint.trackingState = TrackingState_NotTracked;
             rightHandJoint.handState = HandState_NotTracked;
+            rightHandJoint.actionState = ActionState_Idle;
+            for (int i = 0; i < HandState_Count; i++) 
+                rightHandJoint.poll[i] = 0;
         }
         
         int idx;
@@ -95,6 +120,8 @@ namespace k4w
         int lastUpdateFrame;
         
         Joint headJoint;
+        Joint spineNeckJoint;
+        Joint spineBaseJoint;
         HandJoint leftHandJoint;
         HandJoint rightHandJoint;
     };
@@ -103,13 +130,13 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
-	
 	virtual void enable();
 	virtual void disable();
     
     void update(ofEventArgs& args);
 	
-	void processHandEvent(k4w::HandState prevState, k4w::HandState currState, int bodyIdx, ofVec3f& position);
+    void mapCoords(ofVec3f& origin, float length, k4w::Joint& joint);
+	void processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState);
     
     ofxOscReceiver receiver;
     int lastOscFrame;

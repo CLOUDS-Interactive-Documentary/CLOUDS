@@ -155,10 +155,12 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         brush.setColor(color, colorLerp, colorRandom);
     }
     
-    if (ofGetMousePressed()) {
+    if (GetCloudsInputPressed()) {
         brush.addParticles(particles, particlesThreshold, particlesAlpha);
     }
     
+	//cout << "Mouse pressed?" << GetCloudsInputPressed() << endl;
+	
     canvasDst.begin();
     
     ofSetColor(255, (1.0f - fadeAmount) * 255);
@@ -178,7 +180,7 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         
     }
     
-    if (ofGetMousePressed()) {
+    if (GetCloudsInputPressed()) {
         brush.draw();
     }
     
@@ -264,25 +266,12 @@ void CloudsVisualSystemPaintBrush::selfKeyReleased(ofKeyEventArgs & args)
     }
 }
 
-void CloudsVisualSystemPaintBrush::mouseDragged(ofMouseEventArgs& data)
-{
-    brush.set(data.x,data.y);
-    
-    //  If is slow take color?
-    //
-//    brush.pickColorFrom( canvas.getTextureReference(), 0.5, 0.25 );
+void CloudsVisualSystemPaintBrush::selfInteractionMoved(CloudsInteractionEventArgs& args){
+	
 }
 
-void CloudsVisualSystemPaintBrush::mouseMoved(ofMouseEventArgs &args)
-{
-    
-}
-
-void CloudsVisualSystemPaintBrush::mousePressed(ofMouseEventArgs &args)
-{
-    ofPoint mouse(args.x,args.y);
-    
-    brush.init(brushNumber);
+void CloudsVisualSystemPaintBrush::selfInteractionStarted(CloudsInteractionEventArgs& args){
+	brush.init(brushNumber);
     brush.setBrushWidth(brushWidth);
     brush.setLineWidth(lineWidth);
     
@@ -292,12 +281,15 @@ void CloudsVisualSystemPaintBrush::mousePressed(ofMouseEventArgs &args)
     brush.repRad = brushRepRad;
     
     brush.begin();
-    brush.set(mouse);
+    brush.set(args.position.x,args.position.y);
 }
 
-void CloudsVisualSystemPaintBrush::mouseReleased(ofMouseEventArgs &args)
-{
-    brush.set(args.x, args.y);
+void CloudsVisualSystemPaintBrush::selfInteractionDragged(CloudsInteractionEventArgs& args){
+	brush.set(args.position.x,args.position.y);
+}
+
+void CloudsVisualSystemPaintBrush::selfInteractionEnded(CloudsInteractionEventArgs& args){
+	brush.set(args.position.x, args.position.y);
     brush.end();
 }
 

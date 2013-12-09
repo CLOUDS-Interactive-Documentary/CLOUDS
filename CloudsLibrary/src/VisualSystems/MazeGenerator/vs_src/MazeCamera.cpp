@@ -7,6 +7,7 @@
 //
 
 #include "MazeCamera.h"
+#include "CloudsInput.h"
 
 void MazeCamera::setup(float x, float y, float z, MazeSettings* set)
 {
@@ -32,7 +33,7 @@ void MazeCamera::setFlyOver(float x)
     setPosition(x, settings->cameraHeight, 100);
     
     // face mouse centered
-    mouseMove(ofVec2f(ofGetMouseX(), ofGetMouseY()));
+    mouseMove(ofVec2f(GetCloudsInputX(), GetCloudsInputY()));
     update();
     
 }

@@ -349,7 +349,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	
 		questions[i]->update();
 		
-        if(selectedQuestion == NULL && questions[i]->isSelected() && ofGetMousePressed()){
+        if(selectedQuestion == NULL && questions[i]->isSelected() && GetCloudsInputPressed()){
             selectedQuestion = questions[i];
 			selectedQuestion->lockHover = true;
 			break;

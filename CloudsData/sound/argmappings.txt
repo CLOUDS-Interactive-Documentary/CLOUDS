@@ -1,2 +1,2 @@
-sequencer, sfile;
+sequencer, seqfile;
 lindenmayer, a b c d e f g;

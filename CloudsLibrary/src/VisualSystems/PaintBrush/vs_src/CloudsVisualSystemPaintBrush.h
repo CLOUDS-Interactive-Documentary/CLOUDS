@@ -33,10 +33,10 @@ public:
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
-    void mouseDragged(ofMouseEventArgs & args);
-    void mouseMoved(ofMouseEventArgs & args);
-    void mousePressed(ofMouseEventArgs & args);
-    void mouseReleased(ofMouseEventArgs & args);
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    void selfInteractionStarted(CloudsInteractionEventArgs& args);
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
+    void selfInteractionEnded(CloudsInteractionEventArgs& args);
     
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);

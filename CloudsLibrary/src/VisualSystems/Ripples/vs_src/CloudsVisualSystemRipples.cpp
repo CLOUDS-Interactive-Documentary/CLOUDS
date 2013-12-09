@@ -4,7 +4,6 @@
 
 #include "CloudsVisualSystemRipples.h"
 
-
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
@@ -180,7 +179,7 @@ void CloudsVisualSystemRipples::selfUpdate()
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
-    if ((bDropOnPress && ofGetMousePressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+    if ((bDropOnPress && GetCloudsInputPressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
         ofPushStyle();
         ofPushMatrix();
         ripplesSrcFbo.begin();
@@ -189,9 +188,9 @@ void CloudsVisualSystemRipples::selfUpdate()
             ofNoFill();
 #ifdef OCULUS_RIFT
             // I don't know why everything is flipped, but it is.
-            ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
+            ofCircle(ofGetHeight() - GetCloudsInputY(), ofGetWidth() - GetCloudsInputX(), radius);
 #else
-            ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
 #endif
         }
         ripplesSrcFbo.end();
