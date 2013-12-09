@@ -139,13 +139,13 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
-    CloudsInputKinectOSC(bool bSoloMode = false, float activeThresholdY = -FLT_MAX, float activeThresholdZ = FLT_MAX);
+    CloudsInputKinectOSC(bool bSoloMode = false, float activeThresholdY = 1.0f);
     
 	virtual void enable();
 	virtual void disable();
     
     void update(ofEventArgs& args);
-	
+    
     void mapCoords(ofVec3f& origin, float length, k4w::Joint& joint);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
     
@@ -156,7 +156,6 @@ public:
     int soloHandIdx;
     
     float activeThresholdY;
-    float activeThresholdZ;
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;

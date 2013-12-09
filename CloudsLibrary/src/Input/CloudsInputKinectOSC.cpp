@@ -14,10 +14,9 @@ int kNumFramesForRemoval = 60;
 int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
-CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY, float activeThresholdZ)
+CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY)
 : bSoloMode(bSoloMode)
 , activeThresholdY(activeThresholdY)
-, activeThresholdZ(activeThresholdZ)
 , soloHandIdx(-1)
 {
 
@@ -104,6 +103,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             bodies[idx]->age++;
             
             // process the hand data
+            float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
             for (int j = 0; j < 2; j++) {
                 int handIdx = idx * 2 + j;
                 
@@ -123,8 +123,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, hands[handIdx]->handJoint);
                 
                 // set the active state based on the local position
-                cout << hands[handIdx]->handJoint.localPosition.z << endl;
-                hands[handIdx]->bActive = (hands[handIdx]->handJoint.localPosition.y > activeThresholdY) && (hands[handIdx]->handJoint.localPosition.z < activeThresholdZ);
+                hands[handIdx]->bActive = (hands[handIdx]->handJoint.localPosition.y > activeThresholdPosY);
                 
                 // process the event if the hand is active AND either
                 // we are NOT in solo mode OR if we are, this hand is the designated cursor
