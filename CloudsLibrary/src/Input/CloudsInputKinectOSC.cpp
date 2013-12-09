@@ -139,7 +139,7 @@ void CloudsInputKinectOSC::processHandEvent(k4w::HandState prevState, k4w::HandS
     ofVec3f position2D(ofMap(position.x, -1.0, 1.0, 0, ofGetWidth()),
                        ofMap(position.y, -1.0, 1.0, 0, ofGetHeight()),
                        ofMap(position.z, -1.0, 1.0, 0, ofGetWidth()));
-    
+
 	if (prevState == k4w::HandState_Open && currState == k4w::HandState_Lasso) {
         CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
         ofNotifyEvent(getEvents().interactionStarted, args, this);
