@@ -23,7 +23,7 @@ void main()
 	else {
 		if(m > limit) {
 			a = (a/m)*limit;
-		}	
+		}
 
 		gl_FragColor = vec4(acc+a, 1.0);
 	}

@@ -2844,7 +2844,7 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 			if(bBarGradient){
 				if(backgroundGradientBar.isAllocated()){
 					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientBar, 0);
+					backgroundShader.setUniformTexture("image", backgroundGradientBar, 1);
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;
@@ -2861,7 +2861,7 @@ void CloudsVisualSystem::drawBackgroundGradient(){
 			else{
 				if(backgroundGradientCircle.isAllocated()){
 					backgroundShader.begin();
-					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 0);
+					backgroundShader.setUniformTexture("image", backgroundGradientCircle, 1);
 					backgroundShader.setUniform3f("colorOne", bgColor.r/255., bgColor.g/255., bgColor.b/255.);
 					backgroundShader.setUniform3f("colorTwo", bgColor2.r/255., bgColor2.g/255., bgColor2.b/255.);
 					ofMesh mesh;

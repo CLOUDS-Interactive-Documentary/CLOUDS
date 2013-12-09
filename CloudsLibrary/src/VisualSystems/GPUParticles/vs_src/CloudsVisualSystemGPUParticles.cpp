@@ -215,8 +215,8 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     velPingPong.dst->begin();
     ofClear(0);
     updateVel.begin();
-    updateVel.setUniformTexture("backbuffer", velPingPong.src->getTextureReference(), 0);   // passing the previus velocity information
-    updateVel.setUniformTexture("posData", posPingPong.src->getTextureReference(), 1);  // passing the position information
+    updateVel.setUniformTexture("backbuffer", velPingPong.src->getTextureReference(), 1);   // passing the previus velocity information
+    updateVel.setUniformTexture("posData", posPingPong.src->getTextureReference(), 2);  // passing the position information
     updateVel.setUniform1i("resolution", (int)textureRes);
     updateVel.setUniform2f("screen", (float)width, (float)height);
     updateVel.setUniform1f("timestep", (float)timeStep);
@@ -237,8 +237,8 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     posPingPong.dst->begin();
     ofClear(0);
     updatePos.begin();
-    updatePos.setUniformTexture("prevPosData", posPingPong.src->getTextureReference(), 0); // Previus position
-    updatePos.setUniformTexture("velData", velPingPong.src->getTextureReference(), 1);  // Velocity
+    updatePos.setUniformTexture("prevPosData", posPingPong.src->getTextureReference(), 1); // Previus position
+    updatePos.setUniformTexture("velData", velPingPong.src->getTextureReference(), 2);  // Velocity
     updatePos.setUniform1f("timestep",(float) timeStep );
     
     // draw the source position texture to be updated
@@ -262,8 +262,8 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     renderFBO.begin();
     ofClear(0,0,0,0);
     updateRender.begin();
-    updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 0);
-    updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference() , 1);
+    updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 1);
+    updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference(), 2);
     updateRender.setUniform1i("resolution", (float)textureRes);
     updateRender.setUniform2f("screen", (float)width, (float)height);
     updateRender.setUniform1f("size", (float)particleSize);

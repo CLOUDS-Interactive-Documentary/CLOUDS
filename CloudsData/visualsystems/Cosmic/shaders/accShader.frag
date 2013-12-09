@@ -22,7 +22,8 @@ void main()
 	if(m > accLimit)
 	{
 		acc = (acc/m)*accLimit;
-	}	
-
+		//acc = normalize(acc)*accLimit;
+	}
+	
   	gl_FragColor = vec4(acc, 1.0); 
 }
