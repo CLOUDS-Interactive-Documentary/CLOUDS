@@ -9,8 +9,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "CloudsInputEvents.h"
 
+class CloudsInputEvents;
 class CloudsInput
 {
   public:
@@ -24,6 +24,9 @@ class CloudsInput
   protected:
 
 	bool enabled;
-	CloudsInputEvents events;
+	CloudsInputEvents* events;
 	
 };
+
+void SetCloudsInput(ofPtr<CloudsInput> input);
+ofPtr<CloudsInput> GetCloudsInput();

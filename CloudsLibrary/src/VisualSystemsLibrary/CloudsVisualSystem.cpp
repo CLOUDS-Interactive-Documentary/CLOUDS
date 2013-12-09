@@ -62,8 +62,8 @@ CloudsRGBDVideoPlayer& CloudsVisualSystem::getRGBDVideoPlayer(){
 }
 
 void CloudsVisualSystem::loadBackgroundShader(){
-	backgroundGradientBar.loadImage(getDataPath() + "backgrounds/bar.png");
-	backgroundGradientCircle.loadImage(getDataPath() + "backgrounds/circle.png");
+	backgroundGradientBar.loadImage(GetCloudsDataPath() + "backgrounds/bar.png");
+	backgroundGradientCircle.loadImage(GetCloudsDataPath() + "backgrounds/circle.png");
 	backgroundShader.setupShaderFromSource(GL_VERTEX_SHADER, BackgroundVert);
 	backgroundShader.setupShaderFromSource(GL_FRAGMENT_SHADER, BackgroundFrag);
 	backgroundShader.linkProgram();
@@ -172,17 +172,13 @@ ofFbo& CloudsVisualSystem::getSharedRenderTarget(){
 string CloudsVisualSystem::getVisualSystemDataPath(bool ignoredFolder){
 
 	if(!confirmedDataPath){
-		cachedDataPath = CloudsVisualSystem::getVisualSystemDataPath(getSystemName());
-		cachedDataPathIgnore = CloudsVisualSystem::getVisualSystemDataPath(getSystemName(), true);
+		cachedDataPath = GetCloudsVisualSystemDataPath(getSystemName());
+		cachedDataPathIgnore = GetCloudsVisualSystemDataPath(getSystemName(), true);
 		confirmedDataPath = true;
 	}
 	
 	return ignoredFolder ? cachedDataPathIgnore : cachedDataPath;
 }
-
-//string CloudsVisualSystem::getSystemName(){
-//    return "VisualSystemName";
-//}
 
 ofxTimeline* CloudsVisualSystem::getTimeline(){
 	return timeline;
@@ -241,8 +237,9 @@ void CloudsVisualSystem::playSystem(){
 
 	if(!isPlaying){
 		cout << "**** PLAYING " << getSystemName() << endl;
-		ofRegisterMouseEvents(this);
-		//CloudsRegisterInputEvents(this);
+		//ofRegisterMouseEvents(this);
+		CloudsRegisterInputEvents(this);
+//		ofAddListener(GetCloudsInput()->getEvents().interactionMoved, this, &CloudsVisualSystem::interactionMoved);
 		ofRegisterKeyEvents(this);
 		ofAddListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofAddListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
@@ -279,8 +276,8 @@ void CloudsVisualSystem::stopSystem(){
 			it->second->light.destroy();
 		}
 		
-		//CloudsUnregisterInputEvents(this);
-		ofUnregisterMouseEvents(this);
+		CloudsUnregisterInputEvents(this);
+		//ofUnregisterMouseEvents(this);
 		ofUnregisterKeyEvents(this);
 		ofRemoveListener(ofEvents().update, this, &CloudsVisualSystem::update);
 		ofRemoveListener(ofEvents().draw, this, &CloudsVisualSystem::draw);
@@ -810,7 +807,40 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
 }
 
 
-//TODO: CONVERT TO NEW INPUT SYSTEM
+//TODO REMOVE FAKES!!
+void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
+	ofMouseEventArgs fakeArgs;
+	fakeArgs.x = args.position.x;
+	fakeArgs.y = args.position.y;
+	fakeArgs.button = args.actionType;
+	mouseMoved(fakeArgs);
+}
+
+void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
+	ofMouseEventArgs fakeArgs;
+	fakeArgs.x = args.position.x;
+	fakeArgs.y = args.position.y;
+	fakeArgs.button = args.actionType;
+	mousePressed(fakeArgs);
+	cout << "FAKE MOUSE PRESS" << endl;
+}
+
+void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
+	ofMouseEventArgs fakeArgs;
+	fakeArgs.x = args.position.x;
+	fakeArgs.y = args.position.y;
+	fakeArgs.button = args.actionType;
+	mouseDragged(fakeArgs);
+}
+
+void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
+	ofMouseEventArgs fakeArgs;
+	fakeArgs.x = args.position.x;
+	fakeArgs.y = args.position.y;
+	fakeArgs.button = args.actionType;
+	mouseReleased(fakeArgs);
+}
+
 void CloudsVisualSystem::mouseDragged(ofMouseEventArgs& data)
 {
     selfMouseDragged(data);
@@ -861,7 +891,7 @@ void CloudsVisualSystem::mouseReleased(ofMouseEventArgs & args)
 
 void CloudsVisualSystem::setupAppParams()
 {
-//	colorPalletes = new ofxColorPalettes(getDataPath()+"colors/");
+//	colorPalletes = new ofxColorPalettes(GetCloudsDataPath()+"colors/");
     ofSetSphereResolution(30);
     bRenderSystem = true;
     bUpdateSystem = true;

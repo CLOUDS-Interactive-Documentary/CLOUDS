@@ -72,7 +72,7 @@ void CodePanel::setup(string codeFile){
 	drawAsConsole = false;
 	
 	//TODO: shared font
-	layout.loadFont( getDataPath() + "font/Courier New Bold.ttf", 8);
+	layout.loadFont( GetCloudsDataPath() + "font/Courier New Bold.ttf", 8);
 	
 	vector<string> lines;
 	initialBuffer = ofBufferFromFile(codeFile);

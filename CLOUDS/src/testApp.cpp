@@ -10,13 +10,13 @@ void testApp::setup(){
 	ofToggleFullscreen();
     parser.loadFromFiles();
 	
-	if(!ofFile::doesFileExist(getDataPath() + "CloudsMovieDirectory.txt")){
+	if(!ofFile::doesFileExist(GetCloudsDataPath() + "CloudsMovieDirectory.txt")){
 		ofSystemAlertDialog("Could not find movie file path. \
 							Create a file called CloudsMovieDirectory.txt \
 							that contains one line, the path to your movies folder");
 	}
 
-	parser.setCombinedVideoDirectory(ofBufferFromFile(getDataPath() + "CloudsMovieDirectory.txt").getText());
+	parser.setCombinedVideoDirectory(ofBufferFromFile(GetCloudsDataPath() + "CloudsMovieDirectory.txt").getText());
 	
 	//visualSystems.populateVisualSystems();
 	visualSystems.loadPresets();

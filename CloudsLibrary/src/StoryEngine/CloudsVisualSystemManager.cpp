@@ -604,7 +604,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
-	return getDataPath() + "/links/visualsystems_keywords_db.xml";
+	return GetCloudsDataPath() + "/links/visualsystems_keywords_db.xml";
 }
 
 //--------------------------------------------------------------------
@@ -660,10 +660,9 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
     }
 }
 
-#ifndef CLOUDS_NO_VS
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::exportStandalonePresets(){
-	string standaloneExportFolder = getDataPath() + "standalonePresets/";
+	string standaloneExportFolder = GetCloudsDataPath() + "standalonePresets/";
 	ofDirectory(standaloneExportFolder).create();
 	
 	cout << "COPYING PRESETS!" << endl;
@@ -671,7 +670,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
             
-			string presetSourceDirectory = CloudsVisualSystem::getVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
+			string presetSourceDirectory = GetCloudsVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
 			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
             
 			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
@@ -687,7 +686,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	set< string >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
 //		ofPtr<CloudsVisualSystem> sys = *it;
-		string systemName = CloudsVisualSystem::getVisualSystemDataPath(*it);
+		string systemName = GetCloudsVisualSystemDataPath(*it);
 		ofDirectory otherFiles( systemName );
 		otherFiles.listDir();
 		for(int f = 0; f < otherFiles.size(); f++){
@@ -698,7 +697,6 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 		}
 	}
 }
-#endif
 
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){

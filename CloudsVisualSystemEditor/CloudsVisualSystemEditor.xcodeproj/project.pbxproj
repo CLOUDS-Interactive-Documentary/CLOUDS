@@ -643,6 +643,12 @@
 		E793471B1852A4E700335668 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = E79346B81852A4E700335668 /* sconscript */; };
 		E793471E1852A4E700335668 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79346BC1852A4E700335668 /* ofxJSONElement.cpp */; };
 		E793471F1852A4E700335668 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79346BC1852A4E700335668 /* ofxJSONElement.cpp */; };
+		E79E6F4F1855302B00406535 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F491855302B00406535 /* CloudsInput.cpp */; };
+		E79E6F501855302B00406535 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F491855302B00406535 /* CloudsInput.cpp */; };
+		E79E6F511855302B00406535 /* CloudsInputEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F4B1855302B00406535 /* CloudsInputEvents.cpp */; };
+		E79E6F521855302B00406535 /* CloudsInputEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F4B1855302B00406535 /* CloudsInputEvents.cpp */; };
+		E79E6F531855302B00406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F4D1855302B00406535 /* CloudsInputMouse.cpp */; };
+		E79E6F541855302B00406535 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79E6F4D1855302B00406535 /* CloudsInputMouse.cpp */; };
 		E7BBB4BE179FA288007D7EC1 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4AF179FA288007D7EC1 /* Controller.cpp */; };
 		E7BBB4BF179FA288007D7EC1 /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B1179FA288007D7EC1 /* Force.cpp */; };
 		E7BBB4C0179FA288007D7EC1 /* ForceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7BBB4B3179FA288007D7EC1 /* ForceSet.cpp */; };
@@ -1957,6 +1963,12 @@
 		E79346B81852A4E700335668 /* sconscript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sconscript; sourceTree = "<group>"; };
 		E79346BC1852A4E700335668 /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		E79346BD1852A4E700335668 /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		E79E6F491855302B00406535 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E79E6F4A1855302B00406535 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E79E6F4B1855302B00406535 /* CloudsInputEvents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputEvents.cpp; sourceTree = "<group>"; };
+		E79E6F4C1855302B00406535 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E79E6F4D1855302B00406535 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E79E6F4E1855302B00406535 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E7BBB4AF179FA288007D7EC1 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		E7BBB4B0179FA288007D7EC1 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		E7BBB4B1179FA288007D7EC1 /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
@@ -4298,6 +4310,7 @@
 		E737691C1778DC4500892646 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E79E6F481855302B00406535 /* Input */,
 				E722CE0F1852D31600636BF1 /* VisualSystems */,
 				E73769201778DC4500892646 /* RGBD */,
 				E737693A1778DC4500892646 /* StoryEngine */,
@@ -5239,6 +5252,19 @@
 				E79346BD1852A4E700335668 /* ofxJSONElement.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E79E6F481855302B00406535 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E79E6F491855302B00406535 /* CloudsInput.cpp */,
+				E79E6F4A1855302B00406535 /* CloudsInput.h */,
+				E79E6F4B1855302B00406535 /* CloudsInputEvents.cpp */,
+				E79E6F4C1855302B00406535 /* CloudsInputEvents.h */,
+				E79E6F4D1855302B00406535 /* CloudsInputMouse.cpp */,
+				E79E6F4E1855302B00406535 /* CloudsInputMouse.h */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		E7BBB4AE179FA288007D7EC1 /* GPUParticles */ = {
@@ -6817,6 +6843,9 @@
 				E7F37E4C185391AC0087F91C /* Rule.cpp in Sources */,
 				E7F37E4E185391AC0087F91C /* Rules.cpp in Sources */,
 				E7F37E50185391AC0087F91C /* RuleSet.cpp in Sources */,
+				E79E6F4F1855302B00406535 /* CloudsInput.cpp in Sources */,
+				E79E6F511855302B00406535 /* CloudsInputEvents.cpp in Sources */,
+				E79E6F531855302B00406535 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7269,6 +7298,9 @@
 				E7F37E4D185391AC0087F91C /* Rule.cpp in Sources */,
 				E7F37E4F185391AC0087F91C /* Rules.cpp in Sources */,
 				E7F37E51185391AC0087F91C /* RuleSet.cpp in Sources */,
+				E79E6F501855302B00406535 /* CloudsInput.cpp in Sources */,
+				E79E6F521855302B00406535 /* CloudsInputEvents.cpp in Sources */,
+				E79E6F541855302B00406535 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

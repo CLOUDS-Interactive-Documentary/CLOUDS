@@ -6,6 +6,7 @@
 #include "ofxUI.h"
 #include "ofxTLCameraTrack.h"
 #include "CloudsRGBDCamera.h"
+
 #include "CloudsInputEvents.h"
 
 //tenuous
@@ -53,22 +54,7 @@ class CloudsVisualSystem {
 	};
 	
 	
-	static string getVisualSystemDataPath(string systemName, bool ignoredFolder = false){
-		//  building from src project file
-		string datapath;
-		if(ofDirectory("../../../CloudsData/").exists()){
-			datapath = string("../../../CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
-		}
-		//  stand alone full app
-		else if(ofDirectory("CloudsData/").exists()){
-			datapath =  string("CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
-		}
-		else{
-			datapath =  "../../../data/";
-		}
-		return datapath;
-	}
-	
+
 	static ofFbo& getStaticRenderTarget(); //default
 	static void loadBackgroundShader();
 	static CloudsRGBDVideoPlayer& getRGBDVideoPlayer();
