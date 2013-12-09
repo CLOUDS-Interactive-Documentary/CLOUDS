@@ -74,7 +74,9 @@ namespace k4w
     {
         JointType type;
         TrackingState trackingState;
-        ofVec3f position;
+        ofVec3f inputPosition;
+        ofVec3f localPosition;
+        ofVec3f mappedPosition;
     };
     
     struct HandJoint : public Joint
@@ -91,6 +93,12 @@ namespace k4w
             // set default joint attributes
             headJoint.type = JointType_Head;
             headJoint.trackingState = TrackingState_NotTracked;
+            
+            spineNeckJoint.type = JointType_SpineShoulder;
+            spineNeckJoint.trackingState = TrackingState_NotTracked;
+            
+            spineBaseJoint.type = JointType_SpineBase;
+            spineBaseJoint.trackingState = TrackingState_NotTracked;
             
             leftHandJoint.type = JointType_HandLeft;
             leftHandJoint.trackingState = TrackingState_NotTracked;
@@ -112,6 +120,8 @@ namespace k4w
         int lastUpdateFrame;
         
         Joint headJoint;
+        Joint spineNeckJoint;
+        Joint spineBaseJoint;
         HandJoint leftHandJoint;
         HandJoint rightHandJoint;
     };
@@ -120,12 +130,12 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
-	
 	virtual void enable();
 	virtual void disable();
     
     void update(ofEventArgs& args);
 	
+    void mapCoords(ofVec3f& origin, float length, k4w::Joint& joint);
 	void processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState);
     
     ofxOscReceiver receiver;
