@@ -207,12 +207,14 @@ void CloudsVisualSystemYellowTail::selfMouseReleased(ofMouseEventArgs& data){
 //    }
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemYellowTail::selfInteractionMoved(CloudsInteractionEventArgs& args){
     
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEventArgs& args){
-    int touchId = args.playerId * 6 + args.actionType;
+    int touchId = args.playerId;
 	
 	/*
 	 if (neverTouchedBefore) {
@@ -238,8 +240,9 @@ void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEvent
     gestureForTouch[touchId] = newGesture;
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemYellowTail::selfInteractionDragged(CloudsInteractionEventArgs& args){
-    int touchId = args.playerId * 6 + args.actionType;
+    int touchId = args.playerId;
 	
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
     assert(G != gestureForTouch.end());
@@ -256,8 +259,9 @@ void CloudsVisualSystemYellowTail::selfInteractionDragged(CloudsInteractionEvent
     }
 }
 
+//--------------------------------------------------------------
 void CloudsVisualSystemYellowTail::selfInteractionEnded(CloudsInteractionEventArgs& args){
-    int touchId = args.playerId * 6 + args.actionType;
+    int touchId = args.playerId;
 	
     map<int,Gesture *>::iterator G = gestureForTouch.find(touchId);
     
