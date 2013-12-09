@@ -4,7 +4,6 @@
 
 #include "CloudsVisualSystemRipples.h"
 
-
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
@@ -189,9 +188,9 @@ void CloudsVisualSystemRipples::selfUpdate()
             ofNoFill();
 #ifdef OCULUS_RIFT
             // I don't know why everything is flipped, but it is.
-            ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
+            ofCircle(ofGetHeight() - GetCloudsInputY(), ofGetWidth() - GetCloudsInputX(), radius);
 #else
-            ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
 #endif
         }
         ripplesSrcFbo.end();

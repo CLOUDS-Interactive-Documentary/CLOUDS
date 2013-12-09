@@ -171,18 +171,18 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Lasso) {
             // matching state: continue
             interactionDragged(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
+//            cout << "DRAG " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
         }
         else if (handJoint.actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
             interactionEnded(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
             interactionStarted(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+//            cout << "PRESS " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
             handJoint.actionState = k4w::ActionState_Lasso;
         }
     }  
@@ -190,18 +190,18 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Closed) {
             // matching state: continue
             interactionDragged(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
+//            cout << "DRAG " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
         }
         else if (handJoint.actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
             interactionEnded(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
-//            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Lasso) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
             interactionStarted(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
-//            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+//            cout << "PRESS " << bodyIdx << " " << (jointIdx + k4w::ActionState_Closed) << endl;
             handJoint.actionState = k4w::ActionState_Closed;
         }
     }
@@ -209,11 +209,12 @@ void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::Hand
         if (handJoint.actionState == k4w::ActionState_Idle) {
             // matching state: continue
             interactionMoved(position2D, jointIdx + k4w::ActionState_Idle, bodyIdx);
-//            cout << "MOVE " << args.playerId << " " << args.actionType << endl;            ofNotifyEvent(getEvents().interactionMoved, args, this);
+//            cout << "MOVE " << bodyIdx << " " << (jointIdx + k4w::ActionState_Idle) << endl;
         }
         else {
             // state mismatch: end previous
             interactionEnded(position2D, jointIdx + handJoint.actionState, bodyIdx);
+//            cout << "RELEASE " << bodyIdx << " " << (jointIdx + handJoint.actionState) << endl;
             handJoint.actionState = k4w::ActionState_Idle;
         }
     }
