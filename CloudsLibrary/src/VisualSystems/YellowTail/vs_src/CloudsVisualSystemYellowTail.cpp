@@ -1,6 +1,8 @@
 
 #include "CloudsVisualSystemYellowTail.h"
 
+#include "CloudsInputKinectOSC.h"
+
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
 }
@@ -24,6 +26,8 @@ void CloudsVisualSystemYellowTail::selfSetup(){
 	mNewGestureStyle = GestureStyleTraveling;
     neverTouchedBefore = true;
 	clearGestures();
+    
+    SetCloudsInput( ofPtr<CloudsInput>( new CloudsInputKinectOSC() ));
 	
 }
 

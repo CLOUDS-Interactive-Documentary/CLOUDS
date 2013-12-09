@@ -7,6 +7,7 @@
 //
 
 #include "CloudsInputKinectOSC.h"
+#include "CloudsInputEvents.h"
 
 int kListenPort          = 12345;
 int kNumFramesForRemoval = 60;
@@ -132,6 +133,8 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
 }
 
 void CloudsInputKinectOSC::processHandEvent(k4w::HandState prevState, k4w::HandState currState, int bodyIdx, ofVec3f& position){
+    cout << "PREV STATE: " << prevState << " // CURR STATE: " << currState << endl; 
+    
     // temp mapping
     ofVec3f position2D(ofMap(position.x, -1.0, 1.0, 0, ofGetWidth()),
                        ofMap(position.y, -1.0, 1.0, 0, ofGetHeight()),
@@ -139,33 +142,33 @@ void CloudsInputKinectOSC::processHandEvent(k4w::HandState prevState, k4w::HandS
     
 	if (prevState == k4w::HandState_Open && currState == k4w::HandState_Lasso) {
         CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
-        ofNotifyEvent(events.interactionStarted, args, this);
+        ofNotifyEvent(getEvents().interactionStarted, args, this);
     }    
     else if (prevState == k4w::HandState_Open && currState == k4w::HandState_Closed) {
         CloudsInteractionEventArgs args(position2D, 2, bodyIdx);
-        ofNotifyEvent(events.interactionStarted, args, this);
+        ofNotifyEvent(getEvents().interactionStarted, args, this);
     }
     
     else if (prevState == k4w::HandState_Lasso && currState == k4w::HandState_Open) {
         CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
-        ofNotifyEvent(events.interactionEnded, args, this);
+        ofNotifyEvent(getEvents().interactionEnded, args, this);
     }
     else if (prevState == k4w::HandState_Closed && currState == k4w::HandState_Open) {
         CloudsInteractionEventArgs args(position2D, 2, bodyIdx);
-        ofNotifyEvent(events.interactionEnded, args, this);
+        ofNotifyEvent(getEvents().interactionEnded, args, this);
     }
     
     else if (currState == k4w::HandState_Lasso) {
         CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
-        ofNotifyEvent(events.interactionDragged, args, this);
+        ofNotifyEvent(getEvents().interactionDragged, args, this);
     }    
     else if (currState == k4w::HandState_Closed) {
         CloudsInteractionEventArgs args(position2D, 2, bodyIdx);
-        ofNotifyEvent(events.interactionDragged, args, this);
+        ofNotifyEvent(getEvents().interactionDragged, args, this);
     }
     else if (currState == k4w::HandState_Open) {
         CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
-        ofNotifyEvent(events.interactionMoved, args, this);
+        ofNotifyEvent(getEvents().interactionMoved, args, this);
     }
 }
 
