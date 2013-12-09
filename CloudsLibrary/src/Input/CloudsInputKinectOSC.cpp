@@ -70,7 +70,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
                                                     m.getArgAsFloat(i++), 
                                                     m.getArgAsFloat(i++));
             newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-            processHandEvent(idx, bodies[idx]->leftHandJoint, newHandState);
+            processHandEvent(idx, 0, bodies[idx]->leftHandJoint, newHandState);
             bodies[idx]->leftHandJoint.handState = newHandState;
             
             // update the right hand joint
@@ -80,7 +80,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
                                                      m.getArgAsFloat(i++), 
                                                      m.getArgAsFloat(i++));
             newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-            processHandEvent(idx, bodies[idx]->rightHandJoint, newHandState);
+            processHandEvent(idx, 3, bodies[idx]->rightHandJoint, newHandState);
             bodies[idx]->rightHandJoint.handState = newHandState;
             
             // refresh the update frame
@@ -132,58 +132,70 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
     }
 }
 
-void CloudsInputKinectOSC::processHandEvent(int bodyIdx, k4w::HandJoint& handJoint, k4w::HandState newState){
-    cout << "PREV STATE: " << handJoint.handState << " // NEW STATE: " << newState << endl; 
-    
+void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState){    
     // temp mapping
     ofVec3f position2D(ofMap(handJoint.position.x, -1.0,  1.0, 0, ofGetWidth()),
                        ofMap(handJoint.position.y,  1.0, -1.0, 0, ofGetHeight()),
                        ofMap(handJoint.position.z, -1.0,  1.0, 0, ofGetWidth()));
     
 	if (newState == k4w::HandState_Lasso) {
-        CloudsInteractionEventArgs args(position2D, 0, bodyIdx);
-        if (handJoint.bPressed) {
-            cout << "DRAGGING" << endl;
+        if (handJoint.actionState == k4w::ActionState_Lasso) {
+            // matching state: continue
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
             ofNotifyEvent(getEvents().interactionDragged, args, this);
         }
-        else {
-            cout << "PRESSED" << endl;
-            ofNotifyEvent(getEvents().interactionStarted, args, this);
-        }
-        handJoint.bPressed = true;
-    }    
-    else if (newState == k4w::HandState_Closed) {
-        CloudsInteractionEventArgs args(position2D, 2, bodyIdx);
-        if (handJoint.bPressed) {
-            cout << "DRAGGING" << endl;
-            ofNotifyEvent(getEvents().interactionDragged, args, this);
-        }
-        else {
-            cout << "PRESSED" << endl;
-            ofNotifyEvent(getEvents().interactionStarted, args, this);
-        }
-        handJoint.bPressed = true;
-    }
-    
-    else if (newState <= k4w::HandState_Open) {
-        int buttonID = -1;
-        if (handJoint.bPressed) {
-            if (handJoint.handState == k4w::HandState_Lasso) {
-                buttonID = 0;
-            }
-            else if (handJoint.handState == k4w::HandState_Closed) {
-                buttonID = 2;
-            }
-            cout << "RELEASED" << endl;
-            CloudsInteractionEventArgs args(position2D, buttonID, bodyIdx);
+        else if (handJoint.actionState == k4w::ActionState_Closed) {
+            // state mismatch: end previous
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
             ofNotifyEvent(getEvents().interactionEnded, args, this);
+            handJoint.actionState = k4w::ActionState_Idle;
         }
         else {
-            cout << "MOVED" << endl;
-            CloudsInteractionEventArgs args(position2D, buttonID, bodyIdx);
+            // idle state: start
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+            ofNotifyEvent(getEvents().interactionStarted, args, this);
+            handJoint.actionState = k4w::ActionState_Lasso;
+        }
+    }  
+    else if (newState == k4w::HandState_Closed) {
+        if (handJoint.actionState == k4w::ActionState_Closed) {
+            // matching state: continue
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
+            ofNotifyEvent(getEvents().interactionDragged, args, this);
+        }
+        else if (handJoint.actionState == k4w::ActionState_Lasso) {
+            // state mismatch: end previous
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+            ofNotifyEvent(getEvents().interactionEnded, args, this);
+            handJoint.actionState = k4w::ActionState_Idle;
+        }
+        else {
+            // idle state: start
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+            ofNotifyEvent(getEvents().interactionStarted, args, this);
+            handJoint.actionState = k4w::ActionState_Closed;
+        }
+    }
+    else if (newState <= k4w::HandState_Open) {
+        if (handJoint.actionState == k4w::ActionState_Idle) {
+            // matching state: continue
+            CloudsInteractionEventArgs args(position2D, jointIdx + k4w::ActionState_Idle, bodyIdx);
+            cout << "MOVE " << args.playerId << " " << args.actionType << endl;
             ofNotifyEvent(getEvents().interactionMoved, args, this);
         }
-        handJoint.bPressed = false;
+        else {
+            // state mismatch: end previous
+            CloudsInteractionEventArgs args(position2D, jointIdx + handJoint.actionState, bodyIdx);
+            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+            ofNotifyEvent(getEvents().interactionEnded, args, this);
+            handJoint.actionState = k4w::ActionState_Idle;
+        }
     }
 }
 
