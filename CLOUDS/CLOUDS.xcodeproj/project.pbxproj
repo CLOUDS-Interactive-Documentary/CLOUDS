@@ -94,12 +94,12 @@
 		E734A04B18556E92002E615C /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A02E18556E92002E615C /* ofxOscBundle.cpp */; };
 		E734A04C18556E92002E615C /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03018556E92002E615C /* ofxOscMessage.cpp */; };
 		E734A04D18556E92002E615C /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03018556E92002E615C /* ofxOscMessage.cpp */; };
-		E734A04E18556E92002E615C /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03218556E92002E615C /* ofxOscParameterSync.cpp */; };
-		E734A04F18556E92002E615C /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03218556E92002E615C /* ofxOscParameterSync.cpp */; };
 		E734A05018556E92002E615C /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03418556E92002E615C /* ofxOscReceiver.cpp */; };
 		E734A05118556E92002E615C /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03418556E92002E615C /* ofxOscReceiver.cpp */; };
 		E734A05218556E92002E615C /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03618556E92002E615C /* ofxOscSender.cpp */; };
 		E734A05318556E92002E615C /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A03618556E92002E615C /* ofxOscSender.cpp */; };
+		E734A0561855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A0541855750F002E615C /* CloudsInputKinectOSC.cpp */; };
+		E734A0571855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E734A0541855750F002E615C /* CloudsInputKinectOSC.cpp */; };
 		E7402E8D178F44DC00FEABED /* kiss_fftnd.c in Sources */ = {isa = PBXBuildFile; fileRef = E7402E80178F44DC00FEABED /* kiss_fftnd.c */; };
 		E7402E8E178F44DC00FEABED /* ofxOcean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E83178F44DC00FEABED /* ofxOcean.cpp */; };
 		E7402E90178F44DC00FEABED /* ofxOceanRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7402E87178F44DC00FEABED /* ofxOceanRenderer.cpp */; };
@@ -1229,12 +1229,12 @@
 		E734A02F18556E92002E615C /* ofxOscBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscBundle.h; sourceTree = "<group>"; };
 		E734A03018556E92002E615C /* ofxOscMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscMessage.cpp; sourceTree = "<group>"; };
 		E734A03118556E92002E615C /* ofxOscMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscMessage.h; sourceTree = "<group>"; };
-		E734A03218556E92002E615C /* ofxOscParameterSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscParameterSync.cpp; sourceTree = "<group>"; };
-		E734A03318556E92002E615C /* ofxOscParameterSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscParameterSync.h; sourceTree = "<group>"; };
 		E734A03418556E92002E615C /* ofxOscReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscReceiver.cpp; sourceTree = "<group>"; };
 		E734A03518556E92002E615C /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		E734A03618556E92002E615C /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		E734A03718556E92002E615C /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		E734A0541855750F002E615C /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
+		E734A0551855750F002E615C /* CloudsInputKinectOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputKinectOSC.h; sourceTree = "<group>"; };
 		E7402DDE178F43C700FEABED /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsGlobal.h; sourceTree = "<group>"; };
 		E7402E80178F44DC00FEABED /* kiss_fftnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fftnd.c; sourceTree = "<group>"; };
 		E7402E81178F44DC00FEABED /* kiss_fftnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftnd.h; sourceTree = "<group>"; };
@@ -2954,8 +2954,6 @@
 				E734A02F18556E92002E615C /* ofxOscBundle.h */,
 				E734A03018556E92002E615C /* ofxOscMessage.cpp */,
 				E734A03118556E92002E615C /* ofxOscMessage.h */,
-				E734A03218556E92002E615C /* ofxOscParameterSync.cpp */,
-				E734A03318556E92002E615C /* ofxOscParameterSync.h */,
 				E734A03418556E92002E615C /* ofxOscReceiver.cpp */,
 				E734A03518556E92002E615C /* ofxOscReceiver.h */,
 				E734A03618556E92002E615C /* ofxOscSender.cpp */,
@@ -5742,6 +5740,8 @@
 			children = (
 				E79E6F3C18551DE300406535 /* CloudsInput.h */,
 				E79E6F3B18551DE300406535 /* CloudsInput.cpp */,
+				E734A0551855750F002E615C /* CloudsInputKinectOSC.h */,
+				E734A0541855750F002E615C /* CloudsInputKinectOSC.cpp */,
 				E79E6F4018551DF000406535 /* CloudsInputMouse.h */,
 				E79E6F3F18551DF000406535 /* CloudsInputMouse.cpp */,
 				E79E6F44185525F500406535 /* CloudsInputEvents.h */,
@@ -7225,9 +7225,9 @@
 				E734A04818556E92002E615C /* OscTypes.cpp in Sources */,
 				E734A04A18556E92002E615C /* ofxOscBundle.cpp in Sources */,
 				E734A04C18556E92002E615C /* ofxOscMessage.cpp in Sources */,
-				E734A04E18556E92002E615C /* ofxOscParameterSync.cpp in Sources */,
 				E734A05018556E92002E615C /* ofxOscReceiver.cpp in Sources */,
 				E734A05218556E92002E615C /* ofxOscSender.cpp in Sources */,
+				E734A0561855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7706,9 +7706,9 @@
 				E734A04918556E92002E615C /* OscTypes.cpp in Sources */,
 				E734A04B18556E92002E615C /* ofxOscBundle.cpp in Sources */,
 				E734A04D18556E92002E615C /* ofxOscMessage.cpp in Sources */,
-				E734A04F18556E92002E615C /* ofxOscParameterSync.cpp in Sources */,
 				E734A05118556E92002E615C /* ofxOscReceiver.cpp in Sources */,
 				E734A05318556E92002E615C /* ofxOscSender.cpp in Sources */,
+				E734A0571855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

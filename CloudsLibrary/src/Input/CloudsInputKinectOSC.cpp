@@ -11,6 +11,7 @@
 
 int kListenPort          = 12345;
 int kNumFramesForRemoval = 60;
+int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::enable(){
@@ -48,7 +49,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
             int i = 0;
 			int idx = m.getArgAsInt32(i++);
             
-            cout << "RECEIVED idx " << idx << " on frame " << lastOscFrame << endl;
+//            cout << "RECEIVED idx " << idx << " on frame " << lastOscFrame << endl;
             
             // create a body if it doesn't exist yet
             if (bodies.find(idx) == bodies.end()) {
@@ -70,8 +71,22 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
                                                     m.getArgAsFloat(i++), 
                                                     m.getArgAsFloat(i++));
             newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-            processHandEvent(bodies[idx]->leftHandJoint.handState, newHandState, idx, bodies[idx]->leftHandJoint.position);
-            bodies[idx]->leftHandJoint.handState = newHandState;
+            bodies[idx]->leftHandJoint.poll[newHandState]++;
+            if (bodies[idx]->leftHandJoint.poll[newHandState] >= kPollThreshold) {
+                // boom! new state achieved
+                processHandEvent(idx, 0, bodies[idx]->leftHandJoint, newHandState);
+                bodies[idx]->leftHandJoint.handState = newHandState;
+                
+                for (int i = 0; i < k4w::HandState_Count; i++) {
+                    if (i != newHandState) {
+                        bodies[idx]->leftHandJoint.poll[i] = 0;
+                    }
+                }
+            }
+            else {
+                // carry on with the same state
+                processHandEvent(idx, 0, bodies[idx]->leftHandJoint, bodies[idx]->leftHandJoint.handState);
+            }
             
             // update the right hand joint
             bodies[idx]->rightHandJoint.type = (k4w::JointType)m.getArgAsInt32(i++);
@@ -80,8 +95,22 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
                                                      m.getArgAsFloat(i++), 
                                                      m.getArgAsFloat(i++));
             newHandState = (k4w::HandState)m.getArgAsInt32(i++);
-            processHandEvent(bodies[idx]->rightHandJoint.handState, newHandState, idx, bodies[idx]->rightHandJoint.position);
-            bodies[idx]->rightHandJoint.handState = newHandState;
+            bodies[idx]->rightHandJoint.poll[newHandState]++;
+            if (bodies[idx]->rightHandJoint.poll[newHandState] >= kPollThreshold) {
+                // boom! new state achieved
+                processHandEvent(idx, 3, bodies[idx]->rightHandJoint, newHandState);
+                bodies[idx]->rightHandJoint.handState = newHandState;
+                
+                for (int i = 0; i < k4w::HandState_Count; i++) {
+                    if (i != newHandState) {
+                        bodies[idx]->rightHandJoint.poll[i] = 0;
+                    }
+                }
+            }
+            else {
+                // carry on with the same state
+                processHandEvent(idx, 3, bodies[idx]->rightHandJoint, bodies[idx]->rightHandJoint.handState);
+            }
             
             // refresh the update frame
             bodies[idx]->lastUpdateFrame = lastOscFrame;
@@ -122,7 +151,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
     vector<int> toRemove;
     for (map<int, k4w::Body *>::iterator it = bodies.begin(); it != bodies.end(); ++it) {
         if (ABS(it->second->lastUpdateFrame - lastOscFrame) > kNumFramesForRemoval) {
-            cout << "REMOVING idx " << it->first << " frame " << it->second->lastUpdateFrame << " vs " << lastOscFrame << endl;
+//            cout << "REMOVING idx " << it->first << " frame " << it->second->lastUpdateFrame << " vs " << lastOscFrame << endl;
             toRemove.push_back(it->first);
         }
     }
@@ -132,36 +161,61 @@ void CloudsInputKinectOSC::update(ofEventArgs& args){
     }
 }
 
-void CloudsInputKinectOSC::processHandEvent(k4w::HandState prevState, k4w::HandState currState, int bodyIdx, ofVec3f& position){
-    cout << "PREV STATE: " << prevState << " // CURR STATE: " << currState << endl; 
-    
-    // temp mapping
-    ofVec3f position2D(ofMap(position.x, -1.0, 1.0, 0, ofGetWidth()),
-                       ofMap(position.y, -1.0, 1.0, 0, ofGetHeight()),
-                       ofMap(position.z, -1.0, 1.0, 0, ofGetWidth()));
+void CloudsInputKinectOSC::processHandEvent(int bodyIdx, int jointIdx, k4w::HandJoint& handJoint, k4w::HandState newState){    
 
-	if (prevState == k4w::HandState_Open && currState == k4w::HandState_Lasso) {
-        interactionStarted(position2D, 0, bodyIdx);
-    }    
-    else if (prevState == k4w::HandState_Open && currState == k4w::HandState_Closed) {
-        interactionStarted(position2D, 2, bodyIdx);
-    }
-	
-    else if (prevState == k4w::HandState_Lasso && currState == k4w::HandState_Open) {
-        interactionEnded(position2D, 0, bodyIdx);
-    }
-    else if (prevState == k4w::HandState_Closed && currState == k4w::HandState_Open) {
-        interactionEnded(position2D, 2, bodyIdx);
-    }
+    ofVec3f position2D(ofMap(handJoint.position.x, -1.0,  1.0, 0, ofGetWidth()),
+                       ofMap(handJoint.position.y,  1.0, -1.0, 0, ofGetHeight()),
+                       ofMap(handJoint.position.z, -1.0,  1.0, 0, ofGetWidth()));
     
-    else if (currState == k4w::HandState_Lasso) {
-        interactionDragged(position2D, 0, bodyIdx);
-    }    
-    else if (currState == k4w::HandState_Closed) {
-        interactionDragged(position2D, 2, bodyIdx);
+	if (newState == k4w::HandState_Lasso) {
+        if (handJoint.actionState == k4w::ActionState_Lasso) {
+            // matching state: continue
+            interactionDragged(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+//            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
+        }
+        else if (handJoint.actionState == k4w::ActionState_Closed) {
+            // state mismatch: end previous
+            interactionEnded(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+//            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+            handJoint.actionState = k4w::ActionState_Idle;
+        }
+        else {
+            // idle state: start
+            interactionStarted(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+//            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+            handJoint.actionState = k4w::ActionState_Lasso;
+        }
+    }  
+    else if (newState == k4w::HandState_Closed) {
+        if (handJoint.actionState == k4w::ActionState_Closed) {
+            // matching state: continue
+            interactionDragged(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+//            cout << "DRAG " << args.playerId << " " << args.actionType << endl;
+        }
+        else if (handJoint.actionState == k4w::ActionState_Lasso) {
+            // state mismatch: end previous
+            interactionEnded(position2D, jointIdx + k4w::ActionState_Lasso, bodyIdx);
+//            cout << "RELEASE " << args.playerId << " " << args.actionType << endl;
+            handJoint.actionState = k4w::ActionState_Idle;
+        }
+        else {
+            // idle state: start
+            interactionStarted(position2D, jointIdx + k4w::ActionState_Closed, bodyIdx);
+//            cout << "PRESS " << args.playerId << " " << args.actionType << endl;
+            handJoint.actionState = k4w::ActionState_Closed;
+        }
     }
-    else if (currState == k4w::HandState_Open) {
-        interactionMoved(position2D, 0, bodyIdx);
+    else if (newState <= k4w::HandState_Open) {
+        if (handJoint.actionState == k4w::ActionState_Idle) {
+            // matching state: continue
+            interactionMoved(position2D, jointIdx + k4w::ActionState_Idle, bodyIdx);
+//            cout << "MOVE " << args.playerId << " " << args.actionType << endl;            ofNotifyEvent(getEvents().interactionMoved, args, this);
+        }
+        else {
+            // state mismatch: end previous
+            interactionEnded(position2D, jointIdx + handJoint.actionState, bodyIdx);
+            handJoint.actionState = k4w::ActionState_Idle;
+        }
     }
 }
 
