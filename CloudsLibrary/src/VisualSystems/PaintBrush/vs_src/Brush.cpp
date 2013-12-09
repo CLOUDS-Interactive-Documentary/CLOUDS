@@ -235,7 +235,7 @@ void Brush::draw(){
         if (tail.size() < 5){
             ofPushStyle();
             ofSetColor(Bs[i]->color);
-            glLineWidth( lineWidth+5  -ofMap(Bs[i]->tail.size(),0,5,lineWidth,lineWidth+5) );
+            glLineWidth( lineWidth+5 - ofMap(Bs[i]->tail.size(),0,5,lineWidth,lineWidth+5) );
             Bs[i]->trail.draw();
             ofPopStyle();
         }

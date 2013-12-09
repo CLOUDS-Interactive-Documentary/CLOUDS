@@ -21,7 +21,7 @@ void main()
 	float m = length(acc); 
 	if(m > accLimit)
 	{
-		acc = normalize(acc)*accLimit; 
+		acc = (acc/m)*accLimit;
 	}	
 
   	gl_FragColor = vec4(acc, 1.0); 

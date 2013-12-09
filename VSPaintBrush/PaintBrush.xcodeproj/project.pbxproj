@@ -993,10 +993,10 @@
 		85C616E118266DE600196C15 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				85C616E218266DE600196C15 /* Brush.cpp */,
-				85C616E318266DE600196C15 /* Brush.h */,
-				85C616E418266DE600196C15 /* CloudsVisualSystemPaintBrush.cpp */,
 				85C616E518266DE600196C15 /* CloudsVisualSystemPaintBrush.h */,
+				85C616E418266DE600196C15 /* CloudsVisualSystemPaintBrush.cpp */,
+				85C616E318266DE600196C15 /* Brush.h */,
+				85C616E218266DE600196C15 /* Brush.cpp */,
 				85C616E618266DE600196C15 /* Particle.cpp */,
 				85C616E718266DE600196C15 /* Particle.h */,
 				85C616E818266DE600196C15 /* Spring.cpp */,

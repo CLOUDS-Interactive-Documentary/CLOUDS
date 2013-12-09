@@ -359,6 +359,13 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 	
 }
 
+//TRIAL ONE -- NOTHING BUT UPDATES and RADIUS
+//TRIAL TWO -- HOMING ACTIVE
+//TRIAL TWO -- Then activated attractor, took off homing
+//TRIAL THREE -- put electro on
+//TRIAL FOUR -- turned on electro and homing
+//TRIAL FIVE -- sphere shader only
+//EVERYTHING
 void CloudsVisualSystemCosmic::selfUpdate()
 {
 	
@@ -368,6 +375,7 @@ void CloudsVisualSystemCosmic::selfUpdate()
     {
         updateRadiusShader();
     }
+	
     if(bUpdateAcceleration)
     {
         clearFbo(accFboSrc);
