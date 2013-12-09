@@ -71,8 +71,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             {
                 sline = seqbuf.getNextLine();
                 vector<string> temp = ofSplitString(sline, " ");
-                int starttime = ofToFloat(temp[0])/1000.;
-                int pitch = ofToInt(temp[1]);
+                float starttime = ofToFloat(temp[0])/1000.;
+                int pitch = scale(ofToInt(temp[1]), pitches[mh].scale);
                 float velo = (ofToFloat(temp[2])/128.)*0.1;
                 float dur = ofToFloat(temp[3])/1000.;
                 cout << starttime << ": " << pitch << " " << velo << " " << dur << endl;
