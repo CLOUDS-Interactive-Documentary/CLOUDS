@@ -104,9 +104,8 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
-	cout << "Key pressed " << key << endl;
 	if(key == 'K'){
-		SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC() ));
+//		SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC() ));
 	}
 }
 
