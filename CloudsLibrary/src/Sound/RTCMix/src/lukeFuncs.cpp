@@ -42,7 +42,8 @@ void REVERB(double outskip, double time)
     bx = snprintf(thebuf, 256, "MIX(%f, 0.0, %f, 1., 0, 1)", outskip, time);
     parse_score(thebuf, bx);
     //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 8., 0.5, 0.1, -90., -9., -9., 3.0)", outskip, time);
-    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 150., 8., 0.5, 1.0, -90., -18., -9., 3.0)", outskip, time);
+    //bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 150., 8., 0.5, 1.0, -90., -18., -9., 3.0)", outskip, time);
+    bx = snprintf(thebuf, 256, "GVERB(%f, 0.0, %f, 1.0, 50., 4., 0.9, 0.2, -90., -24., -18., 3.0)", outskip, time);
     parse_score(thebuf, bx);
 }
 

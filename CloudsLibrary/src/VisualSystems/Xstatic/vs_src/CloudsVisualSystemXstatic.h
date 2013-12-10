@@ -98,10 +98,6 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
     void regenerate();
     void explode();
 
-    int maxBrightness;
-    int minBrightness;
-    float mass;    
-
 protected:
     int nParticles;
     vector<XParticle> particles;
@@ -122,6 +118,7 @@ protected:
     bool bShouldRise;
     
     bool bBounceOffWalls;
+    bool bDrawBox;
 
     float windSpeed;
     float explodeSpeed;
@@ -132,4 +129,7 @@ protected:
     float pullSpeed;
     float drag;
     
+    ofFloatColor color1;
+    ofFloatColor color2;
+    float colorWeight;
 };
