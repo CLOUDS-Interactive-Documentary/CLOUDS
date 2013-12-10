@@ -212,6 +212,7 @@ void CloudsVisualSystemGPUParticles::selfSceneTransformation(){
 void CloudsVisualSystemGPUParticles::selfUpdate(){
 	// CHANGE STUFF
     
+	
     velPingPong.dst->begin();
     ofClear(0);
     updateVel.begin();
@@ -228,7 +229,8 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     velPingPong.dst->end();
     
     velPingPong.swap();
-    
+	
+
     
     // Positions PingPong
     //
@@ -249,7 +251,7 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     
     posPingPong.swap();
     
-    
+
     // Rendering
     //
     // 1.   Sending this vertex to the Vertex Shader.
@@ -261,33 +263,46 @@ void CloudsVisualSystemGPUParticles::selfUpdate(){
     //
     renderFBO.begin();
     ofClear(0,0,0,0);
-    updateRender.begin();
-    updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 1);
-    updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference(), 2);
-    updateRender.setUniform1i("resolution", (float)textureRes);
-    updateRender.setUniform2f("screen", (float)width, (float)height);
-    updateRender.setUniform1f("size", (float)particleSize);
-    updateRender.setUniform1f("imgWidth", (float)sparkImg.getWidth());
-    updateRender.setUniform1f("imgHeight", (float)sparkImg.getHeight());
+	updateRender.begin();
+	updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 1);
+	updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference(), 2);
+	updateRender.setUniform1f("resolution", textureRes);
+	updateRender.setUniform2f("screen", width, height);
+	updateRender.setUniform1f("size", particleSize);
+	updateRender.setUniform1f("imgWidth", sparkImg.getWidth());
+	updateRender.setUniform1f("imgHeight", sparkImg.getHeight());
     
     ofPushStyle();
     ofEnableBlendMode( OF_BLENDMODE_ADD);
     ofSetColor(255);
     
-    glBegin( GL_POINTS );
+//    glBegin( GL_POINTS );
+//    for(int x = 0; x < textureRes; x++){
+//        for(int y = 0; y < textureRes; y++){
+//            glVertex2d(x,y);
+//            glTexCoord2i(x, y);
+//        }
+//    }
+//    glEnd();
+	
+	mesh.clear();
     for(int x = 0; x < textureRes; x++){
         for(int y = 0; y < textureRes; y++){
-            glVertex2d(x,y);
-            glTexCoord2i(x, y);
+			mesh.addVertex( ofVec3f(x,y,0) );
+			mesh.addTexCoord( ofVec2f(x,y) );
         }
     }
-    
-    ofDisableBlendMode();
-    glEnd();
+	mesh.setMode(OF_PRIMITIVE_POINTS);
+	mesh.draw();
+	//mesh.drawVertices();
+	
+
+	ofDisableAlphaBlending();
+    ofPopStyle();
     
     updateRender.end();
     renderFBO.end();
-    ofPopStyle();
+
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
