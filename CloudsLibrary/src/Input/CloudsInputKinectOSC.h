@@ -160,3 +160,5 @@ public:
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
 };
+
+void SetCloudsInputKinect();
