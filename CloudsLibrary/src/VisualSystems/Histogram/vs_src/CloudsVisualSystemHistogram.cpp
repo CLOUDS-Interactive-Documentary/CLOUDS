@@ -150,7 +150,7 @@ void CloudsVisualSystemHistogram::selfSetup()
     colsPerRow = 100;
     lineWidth = 1.0f;
 
-    soundsDir.listDir(getVisualSystemDataPath() + "sounds");
+    soundsDir.listDir(getVisualSystemDataPath(true) + "sounds");
     soundsDir.sort();
     selectedSoundsIdx = 0;
     
