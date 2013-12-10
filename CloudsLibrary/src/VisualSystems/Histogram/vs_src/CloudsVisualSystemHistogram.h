@@ -159,4 +159,6 @@ protected:
     bool useEnvelope;
     vector<float> envelope;
     vector<float> dampened;
+    
+    float fogDensity;
 };
