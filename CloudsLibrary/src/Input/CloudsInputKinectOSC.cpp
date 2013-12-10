@@ -262,9 +262,10 @@ void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float length, k4w::Joint& 
     joint.localPosition -= origin;
     
     // map the local position to the 2D viewport coord system
-    joint.mappedPosition.set(ofMap(joint.localPosition.x, -length,  length, 0, ofGetWidth()),
-                             ofMap(joint.localPosition.y,  length, -length, 0, ofGetHeight()),
-                             ofMap(joint.localPosition.z, -length,  length, 0, ofGetWidth()));
+    float inMaxY = -(length - (2 * (1.0f - activeThresholdY) * length));
+    joint.mappedPosition.set(ofMap(joint.localPosition.x, -length, length, 0, ofGetWidth()),
+                             ofMap(joint.localPosition.y,  length, inMaxY, 0, ofGetHeight()),
+                             ofMap(joint.localPosition.z, -length, length, 0, ofGetWidth()));
 }
 
 //--------------------------------------------------------------
