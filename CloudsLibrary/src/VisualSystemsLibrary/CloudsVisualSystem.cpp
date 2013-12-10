@@ -796,38 +796,46 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
 
 //TODO REMOVE FAKES!!
 void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseMoved(fakeArgs);
+    if(args.primary){
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseMoved(fakeArgs);
+    }
 	selfInteractionMoved(args);
 }
 
 void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mousePressed(fakeArgs);
+    if(args.primary){
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mousePressed(fakeArgs);
+    }
 	selfInteractionStarted(args);
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseDragged(fakeArgs);
+    if(args.primary){    
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseDragged(fakeArgs);
+    }
 	selfInteractionDragged(args);
 }
 
 void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseReleased(fakeArgs);
+    if(args.primary){ 
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseReleased(fakeArgs);
+    }
 	selfInteractionEnded(args);
 }
 

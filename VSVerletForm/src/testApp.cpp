@@ -1,8 +1,12 @@
 #include "testApp.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+    
+    SetCloudsInputKinect();
+    
 	verlet.setup();
 	verlet.playSystem();
 }
@@ -24,6 +28,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+    verlet.exit();
 }
 
 //--------------------------------------------------------------
