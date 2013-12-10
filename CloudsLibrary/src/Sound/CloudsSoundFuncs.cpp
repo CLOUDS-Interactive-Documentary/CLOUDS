@@ -35,6 +35,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // some timing shit...
     t = ofGetElapsedTimef();
     float tempo = (15./bpm);
+    float seqrate = 120./bpm;
     int bcount = 0;
     beatoffset = tempo-fmod(t,tempo); // use for accurate ahead-of-time quantization for rhythmic triggering
 	
@@ -67,8 +68,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 if(n[i].starttime < musicdur)
                 {
                     int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
-                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch)*0.99, ofRandom(0.,1.), "wf_slowwaves", "amp_triangle");
                 }
             }
             
@@ -180,8 +181,8 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 if(n[i].starttime < musicdur)
                 {
                     int pitch = scale(n[i].pitch, pitches[mh].scale);
-                    WAVETABLE(outskip+n[i].starttime, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
-                    WAVETABLE(outskip+n[i].starttime, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur, n[i].velo*0.1, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
+                    WAVETABLE(outskip+n[i].starttime*seqrate, n[i].dur*3., n[i].velo*0.05, mtof(pitch), ofRandom(0.,1.), "wf_waveshi", "amp_sharphold");
                 }
             }
             
@@ -331,7 +332,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // OTHERS
     
     //
-    // UNPITCHED RHYTHM
+    // PITCHED RHYTHM
     //
     
     
@@ -372,7 +373,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         
     }
-    
+
+    //
+    // UNPITCHED RHYTHM
+    //
     
     // MESHBEATS
     if (mo=="meshbeats")
