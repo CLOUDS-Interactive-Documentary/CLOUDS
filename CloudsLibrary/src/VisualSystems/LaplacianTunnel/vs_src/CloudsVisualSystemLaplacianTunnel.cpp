@@ -69,6 +69,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 	customGui->addSlider("light distance", 20, 600, &lightDistance);
 	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);
 	customGui->addSlider("corkscrew factor", 0, .2, &corkscrewFactor);
+	customGui->addToggle("draw points", &bDrawPoints);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemLaplacianTunnel::selfGuiEvent);
 	
@@ -207,10 +208,16 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 //				ofSetColor(0);
 //				vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
 //			}
+			
 			ofSetColor(255);
 			//vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
 			//vbos[index].vbo->draw(GL_TRIANGLES, 0, vbos[index].indexCount);
-			vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
+			if(bDrawPoints){
+				vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
+			}
+			else{
+				vbos[index].vbo->drawElements(GL_TRIANGLES, vbos[index].indexCount);
+			}
 			
 			ofPopMatrix();
 		}

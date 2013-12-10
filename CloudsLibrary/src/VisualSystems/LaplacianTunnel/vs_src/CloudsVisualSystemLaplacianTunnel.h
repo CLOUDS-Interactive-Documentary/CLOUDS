@@ -91,7 +91,6 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 		return tunnelCam;
 	}
 
-
   protected:
     
     //  Your Stuff
@@ -116,6 +115,8 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	float cameraDistance;
 	float cameraSpeed;
 	vector<NamedVbo> vbos;
+	
+	bool bDrawPoints;
 	
 	void clear();
 	

@@ -614,9 +614,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case '5':
             toggleGuiAndPosition(lgtGui);
             break;
-        case '0':
-            toggleGuiAndPosition(camGui);
-            break;
+//        case '0':
+//            toggleGuiAndPosition(camGui);
+//            break;
             
         case 'u':
         {
@@ -743,6 +743,12 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'L':
 			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
 			break;
+			
+#ifdef OCULUS_RIFT
+		case '0':
+			oculusRift.reset();
+			break;
+#endif
         default:
             selfKeyPressed(args);
             break;
@@ -2962,34 +2968,25 @@ void CloudsVisualSystem::selfDrawOverlay(){
 
 void CloudsVisualSystem::selfPostDraw(){
 	glDisable(GL_LIGHTING);
-	if(bUseOculusRift){
 #ifdef OCULUS_RIFT
-		oculusRift.draw();
+	oculusRift.draw();
+#else
+	//draws to viewport
+	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+													   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+													  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	if(bDrawCursor){
+		ofPushMatrix();
+		ofPushStyle();
+		ofSetColor(240,240,255, 175);
+		ofSetLineWidth(2);
+		ofCircle(GetCloudsInputX(), GetCloudsInputY(),
+				 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+		ofPopStyle();
+		ofPopMatrix();
+	}
 #endif
-	}
-	else{
-		//draws to viewport
-		CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-														   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-														  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-		
-		if(bDrawCursor){
-			ofPushMatrix();
-			ofPushStyle();
-			//	ofNoFill();
-			//	ofSetColor(255, 50);
-			//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-			ofSetColor(240,240,255, 175);
-			ofSetLineWidth(2);
-			ofCircle(GetCloudsInputX(), GetCloudsInputY(),
-					 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
-			ofPopStyle();
-			ofPopMatrix();
-		}
-		
-	}
-	
-	
+
 }
 
 	
