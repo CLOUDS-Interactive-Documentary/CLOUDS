@@ -5,7 +5,7 @@
 void testApp::setup(){
 	ofSetVerticalSync(true);
     
-    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(false)));
+//    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(false)));
   
 	PaintBrush.setup();
 	PaintBrush.playSystem();

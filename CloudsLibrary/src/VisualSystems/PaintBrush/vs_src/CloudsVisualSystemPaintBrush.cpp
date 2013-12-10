@@ -17,12 +17,14 @@ void CloudsVisualSystemPaintBrush::selfSetup()
 {
 	bIs2D = true;
         
-    canvasSrc.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasSrc.allocate(getSharedRenderTarget().getWidth(),
+					   getSharedRenderTarget().getHeight(), GL_RGBA32F_ARB);
     canvasSrc.begin();
     ofClear(0,0);
     canvasSrc.end();
 
-    canvasDst.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA32F_ARB);
+    canvasDst.allocate(getSharedRenderTarget().getWidth(),
+					   getSharedRenderTarget().getHeight(), GL_RGBA32F_ARB);
     canvasDst.begin();
     ofClear(0,0);
     canvasDst.end();
@@ -49,6 +51,9 @@ void CloudsVisualSystemPaintBrush::selfSetup()
     bMapForward = true;
     
     fadeAmount = 1.0f;
+	
+	
+//	bClearBackground = false;
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupSystemGui()
@@ -100,10 +105,6 @@ void CloudsVisualSystemPaintBrush::selfKeyPressed(ofKeyEventArgs & args){
 
 void CloudsVisualSystemPaintBrush::selfUpdate()
 {
-    ofPushStyle();
-    ofSetColor(255);
-    glDisable(GL_DEPTH_TEST);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
         Brush * brush = it->second;
@@ -162,13 +163,35 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         }
     }
     
+	drawPaint();
+	
 	//cout << "Mouse pressed?" << GetCloudsInputPressed() << endl;
 	
+	//	ofPopStyle()
+}
+
+void CloudsVisualSystemPaintBrush::drawPaint(){
+	
     canvasDst.begin();
-    
-    ofSetColor(255, (1.0f - fadeAmount) * 255);
-    canvasSrc.draw(0, 0);
-    
+	ofClear(0,0);
+	ofPushStyle();
+    glDisable(GL_DEPTH_TEST);
+
+	ofEnableAlphaBlending();
+//	ofSetColor(255, 255);
+	ofSetColor(255, .999999999*255);
+	canvasSrc.draw(0, 0);
+	
+	ofSetColor(255, 255);
+	ofCircle(ofGetMouseX(), ofGetMouseY(), 20);
+	
+//	ofSetColor(255, 255, 255, fadeAmount*255);
+//	ofEnableBlendMode(OF_BLENDMODE_SUBTRACT);
+//	ofRect(0,0,canvasDst.getWidth(),canvasDst.getHeight());
+	
+	ofDisableAlphaBlending();
+	ofEnableAlphaBlending();
+	ofSetColor(255);
     for(int i = particles.size()-1; i >= 0 ; i--){
         
         particles[i].addNoise(ofGetElapsedTimef(), particlesTurbulence);
@@ -180,9 +203,8 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
             particles[i].draw();
             particles[i].trail.draw();
         }
-        
     }
-    
+
     vector<int> toRemove;
     for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
         Brush * brush = it->second;
@@ -194,15 +216,15 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
             toRemove.push_back(it->first);
         }
     }
-    
+	ofPopStyle();
+
     canvasDst.end();
-    
+	swap(canvasSrc, canvasDst);
+
     while(particles.size() > 500) {
         particles.erase(particles.begin());
     }
-    
-    ofPopStyle();
-    
+	
     // get rid of any idle brushes
     for (int i = 0; i < toRemove.size(); i++) {
         delete brushes[toRemove[i]];
@@ -215,11 +237,12 @@ void CloudsVisualSystemPaintBrush::selfDrawBackground()
     ofPushStyle();
     ofSetColor(255);
     glDisable(GL_DEPTH_TEST);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
-    canvasDst.draw(0, 0);
-    swap(canvasSrc, canvasDst);
-    
+    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableAlphaBlending();
+    canvasSrc.draw(0, 0);
+
+//    drawPaint();
+	
     if (bDebug){
         ofSetColor(255);
         for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
