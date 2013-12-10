@@ -65,6 +65,9 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     customGui->addSlider("COL WIDTH", 0, 100, &colWidth);
     customGui->addRangeSlider("COL HEIGHT", 0, 500, &colHeightMin, &colHeightMax);
     customGui->addSlider("LINE WIDTH", 0.1, 10, &lineWidth);
+    
+    customGui->addSpacer();
+    customGui->addSlider("FOG DENSITY", 0.0f, 0.3f, &fogDensity);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
@@ -158,6 +161,8 @@ void CloudsVisualSystemHistogram::selfSetup()
     
     lastFFTPosition = -1;
     dampening = 0.1f;
+    
+    fogDensity = 0.3;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -284,6 +289,20 @@ void CloudsVisualSystemHistogram::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemHistogram::selfDraw()
 {
+	glPushAttrib(GL_FOG_BIT);
+
+    glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_EXP);
+    
+//    GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
+    GLfloat fogColor[4] = { bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
+    glFogfv(GL_FOG_COLOR, fogColor);
+//    glDisable(GL_DEPTH_TEST);
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+	glFogf(GL_FOG_DENSITY, powf(fogDensity, 4));
+    
     ofPushMatrix();
     ofPushStyle();
     {
@@ -299,7 +318,9 @@ void CloudsVisualSystemHistogram::selfDraw()
         histoMesh.draw();
     }
 	ofPopStyle();
-    ofPopMatrix();	
+    ofPopMatrix();
+    
+    glPopAttrib();
 }
 
 // draw any debug stuff here

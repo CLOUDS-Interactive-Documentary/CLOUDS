@@ -67,9 +67,6 @@ void CloudsSound::loadRTcmixSamples()
     LOADSOUND(sdir.getAbsolutePath() + "/" + "VD2.aif", "VD2");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "VD3.aif", "VD3");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "VD4.aif", "VD4");
-    tl1 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop1.aif", "testloop1");
-    tl2 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop2.aif", "testloop2");
-    tl3 = LOADSOUND(sdir.getAbsolutePath() + "/" + "testloop3.aif", "testloop3");
     
     //some path, may be absolute or relative to bin/data
     spath = spath+"loops/";
