@@ -11,9 +11,8 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
-
-
-
+#include "Circle.h"
+#include "CirclePacker.h"
 
 
 //TODO: rename this to your own visual system
@@ -98,9 +97,12 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
 	//
 
   
+    CirclePacker pack; 
 
 protected:
     
+
+
     //  Your Stuff
     //
     

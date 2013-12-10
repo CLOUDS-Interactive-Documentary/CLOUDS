@@ -68,6 +68,9 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+		8505E47F18567FB8007FD42D /* CirclePacker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E47D18567FB8007FD42D /* CirclePacker.cpp */; };
+		8505E48218567FCC007FD42D /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E48018567FCC007FD42D /* Circle.cpp */; };
+		8505E48318567FCC007FD42D /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8505E48018567FCC007FD42D /* Circle.cpp */; };
 		858502FB185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 858502F9185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp */; };
 		858502FC185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 858502F9185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp */; };
 		85850304185642DA0088352E /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 858502FF185642DA0088352E /* CloudsInput.cpp */; };
@@ -445,6 +448,10 @@
 		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		8505E47D18567FB8007FD42D /* CirclePacker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CirclePacker.cpp; sourceTree = "<group>"; };
+		8505E47E18567FB8007FD42D /* CirclePacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CirclePacker.h; sourceTree = "<group>"; };
+		8505E48018567FCC007FD42D /* Circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
+		8505E48118567FCC007FD42D /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
 		858502F9185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemCirclePacking.cpp; sourceTree = "<group>"; };
 		858502FA185636CF0088352E /* CloudsVisualSystemCirclePacking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemCirclePacking.h; sourceTree = "<group>"; };
 		858502FF185642DA0088352E /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = ../../CloudsLibrary/src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
@@ -920,6 +927,10 @@
 			children = (
 				858502FA185636CF0088352E /* CloudsVisualSystemCirclePacking.h */,
 				858502F9185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp */,
+				8505E47E18567FB8007FD42D /* CirclePacker.h */,
+				8505E47D18567FB8007FD42D /* CirclePacker.cpp */,
+				8505E48118567FCC007FD42D /* Circle.h */,
+				8505E48018567FCC007FD42D /* Circle.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1303,6 +1314,8 @@
 				858502FB185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp in Sources */,
 				85850304185642DA0088352E /* CloudsInput.cpp in Sources */,
 				85850306185642DA0088352E /* CloudsInputMouse.cpp in Sources */,
+				8505E47F18567FB8007FD42D /* CirclePacker.cpp in Sources */,
+				8505E48218567FCC007FD42D /* Circle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,6 +1397,7 @@
 				858502FC185636CF0088352E /* CloudsVisualSystemCirclePacking.cpp in Sources */,
 				85850305185642DA0088352E /* CloudsInput.cpp in Sources */,
 				85850307185642DA0088352E /* CloudsInputMouse.cpp in Sources */,
+				8505E48318567FCC007FD42D /* Circle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
