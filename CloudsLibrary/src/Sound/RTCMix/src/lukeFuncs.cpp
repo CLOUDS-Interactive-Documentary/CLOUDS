@@ -598,6 +598,128 @@ cloudsSequencer::cloudsSequencer(string f, vector<lukeNote>& n)
     }
 }
 
+//
+// RHYTHM SOLVER
+//
+
+rhythmSolver::rhythmSolver(string c_type, string c_arg_b, lukeRhythm& c_r)
+{
+    type = c_type;
+    arg_b = c_arg_b;
+    rarray = c_r;
+    if(c_type=="lsys") {
+        lsys = new lindenSequencer(arg_b);
+    }
+    else lsys = new lindenSequencer();
+    ptr = 0;
+}
+
+bool rhythmSolver::tick()
+{
+    bool rval;
+    if(type=="lsys") rval = lsys->tick();
+    else if(type=="pattern") rval = (ofRandom(rarray.beats[ptr]))>0.5;
+    else if(type=="straight") rval = true;
+    
+    ptr = (ptr+1) % rarray.beats.size();
+    
+    return(rval);
+}
+
+//
+// LINDENMAYER
+//
+
+lindenSequencer::lindenSequencer(string f)
+{
+    string sline;
+    thestring = " ";
+    ptr = 0;
+    match = '*';
+    
+    string axiom;
+    int generations;
+    vector< vector<string> > rules;
+    
+    // load
+    ofFile seqfile (GetCloudsDataPath()+"sound/lsys/" + f);
+    if(!seqfile.exists())
+    {
+        ofLogError("can't find sequence!");
+    }
+    ofBuffer seqbuf(seqfile);
+    // setup line
+    sline = seqbuf.getNextLine();
+    vector<string> sups = ofSplitString(sline, " ");
+    axiom = sups[0];
+    match = sups[1][0];
+    generations = ofToInt(sups[2]);
+    // rules
+    while(!seqbuf.isLastLine())
+    {
+        sline = seqbuf.getNextLine();
+        vector<string> temp = ofSplitString(sline, " ");
+        rules.push_back(temp);
+    }
+    
+    if(LUKEDEBUG) {
+        cout << "lsys axiom: " << axiom << ", matching on: " << match << " for " << generations << " generations." << endl;
+        for(int i = 0;i<rules.size();i++)
+        {
+            cout << "lsys: " << rules[i][0] + ": " << rules[i][1] << endl;
+        }
+    }
+    
+    // solve
+    string instring, outstring;
+    int i, j, k;
+    int ismatching = 0;
+    
+    instring = axiom;
+    for (int i=0;i<generations;i++) // 1 - loop through the generations
+    {
+        outstring = "";
+        for (int j=0;j<instring.length();j++) // 2 - loop through the input string
+        {
+            ismatching = 0;
+            for (int k=0;k<rules.size();k++) // 3 - loop through the rules
+            {
+                if (instring[j]==rules[k][0][0]) ismatching++;
+                if (ismatching>0) {
+                    outstring=outstring+rules[k][1];
+                    k = rules.size();
+                }
+            }
+            if (ismatching==0)
+            {
+                outstring=outstring+instring[j];
+            }
+        }
+        instring = outstring; // we know we're doing this at the end
+        if(LUKEDEBUG) cout << i << ": " << outstring << endl;
+    }
+
+    thestring = outstring;
+}
+
+lindenSequencer::lindenSequencer()
+{
+    // blank
+    thestring = " ";
+    ptr = 0;
+}
+
+int lindenSequencer::tick()
+{
+    bool rval = false;
+    if(thestring[ptr]==match) rval = true;
+    ptr = (ptr+1) % thestring.length();
+    return(rval);
+}
+
+//
+// MARKOV SHIT
+//
 
 // precompute markov chain for pitch array
 void precomputemarkov(lukePitchArray& p)

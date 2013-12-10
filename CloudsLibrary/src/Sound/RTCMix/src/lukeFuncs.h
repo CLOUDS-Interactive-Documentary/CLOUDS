@@ -73,6 +73,16 @@ struct lukeNote {
     float dur;
 };
 
+class lindenSequencer {
+    int ptr;
+    char match;
+public:
+    string thestring;
+    lindenSequencer(string f);
+    lindenSequencer(); // blank
+    int tick();
+};
+
 class melodySolver {
     string type;
     lukePitchArray parray;
@@ -81,6 +91,17 @@ class melodySolver {
 public:
     melodySolver(string c_type, lukePitchArray& c_p);
     int tick();
+};
+
+class rhythmSolver {
+    string type;
+    string arg_b;
+    lukeRhythm rarray;
+    lindenSequencer* lsys;
+    int ptr;
+public:
+    rhythmSolver(string c_type, string c_arg_b, lukeRhythm& c_r);
+    bool tick();
 };
 
 class cloudsSequencer {
