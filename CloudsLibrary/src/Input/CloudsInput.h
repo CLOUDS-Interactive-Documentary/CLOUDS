@@ -19,10 +19,10 @@ class CloudsInput
 	virtual void enable() = 0;
 	virtual void disable() = 0;
 	
-	void interactionMoved(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionStarted(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionDragged(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionEnded(ofVec3f pos, int actionType = 0, int playerId = 0);
+	void interactionMoved(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionStarted(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionDragged(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionEnded(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
 
 	bool isDragging();
 	float getPositionX();

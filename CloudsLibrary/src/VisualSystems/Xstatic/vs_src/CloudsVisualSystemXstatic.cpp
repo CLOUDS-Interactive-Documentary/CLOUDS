@@ -26,20 +26,26 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    customGui->addToggle("DRAW BOX", &bDrawBox);
     customGui->addToggle("REGENERATE", &bShouldRegenerate);
     customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
-    
-    customGui->addSpacer();
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
 
     customGui->addSpacer();
-    customGui->addToggle("EXPLODE", &bShouldExplode);
-    customGui->addSlider("EXPLODE SPEED", 0, 100, &explodeSpeed);
+    customGui->addToggle("FREEZE", &bShouldFreeze);
+    customGui->addToggle("RISE", &bShouldRise);
+    customGui->addToggle("FALL", &bShouldFall);
+    customGui->addMinimalSlider("RISE/FALL SPEED", 0, 200, &riseFallSpeed);
     
     customGui->addSpacer();
-    customGui->addSlider("GRAVITY X", -1, 1, &gravity.x);
-    customGui->addSlider("GRAVITY Y", -1, 1, &gravity.y);
-    customGui->addSlider("GRAVITY Z", -1, 1, &gravity.z);
+    customGui->addToggle("EXPLODE", &bShouldExplode);
+    customGui->addMinimalSlider("EXPLODE SPEED", 0, 200, &explodeSpeed);
+    
+    customGui->addSpacer();
+    customGui->addLabel("GRAVITY");
+    customGui->addMinimalSlider("GRAVITY X", -1, 1, &gravity.x);
+    customGui->addMinimalSlider("GRAVITY Y", -1, 1, &gravity.y);
+    customGui->addMinimalSlider("GRAVITY Z", -1, 1, &gravity.z);
     
     customGui->addSpacer();
     customGui->addSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
@@ -52,14 +58,29 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addSpacer();
     customGui->addSlider("DRAG", 0, 1, &drag);
     
-    customGui->addSlider("MASS", 0, 10, &mass);
-    
-    customGui->addIntSlider("MAX BRI", 0, 255, &maxBrightness);
-    customGui->addIntSlider("MIN BRI", 0, 255, &minBrightness);
+    customGui->addSpacer();
+    customGui->addRangeSlider("SIZE", 0, 20, &XParticle::minSize, &XParticle::maxSize);
+    customGui->addSlider("HEIGHT TO SIZE", 0, 1, &XParticle::heightToSize);
+    customGui->addSlider("VEL TO SIZE", 0, 1, &XParticle::velToSize);
     
     customGui->addSpacer();
-    customGui->addSlider("BRI DURATION", 1, 1000, &XParticle::briDuration);
-    customGui->addSlider("BRI RANGE", 10, 1000, &XParticle::briRange);
+    customGui->addRangeSlider("BRIGHTNESS", 0, 1, &XParticle::minBri, &XParticle::maxBri);
+    
+    customGui->addSpacer();
+    customGui->addSlider("OSC SPEED", 0, 1, &XParticle::oscSpeed);
+    customGui->addToggle("OSCILLATE SIZE", &XParticle::bOscillateSize);
+    customGui->addToggle("OSCILLATE BRI", &XParticle::bOscillateBri);
+    customGui->addSlider("TRIGGER DURATION", 1, 1000, &XParticle::triggerDuration);
+    customGui->addSlider("TRIGGER RANGE", 10, 1000, &XParticle::triggerRange);
+    
+    customGui->addSpacer();
+    customGui->addMinimalSlider("HUE 1", 0, 1, &color1.r);
+    customGui->addMinimalSlider("SAT 1", 0, 1, &color1.g);
+    customGui->addMinimalSlider("BRI 1", 0, 1, &color1.b);
+    customGui->addMinimalSlider("HUE 2", 0, 1, &color2.r);
+    customGui->addMinimalSlider("SAT 2", 0, 1, &color2.g);
+    customGui->addMinimalSlider("BRI 2", 0, 1, &color2.b);
+    customGui->addSlider("WEIGHT", 1, 4, &colorWeight);
     
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemXstatic::selfGuiEvent);
 	guis.push_back(customGui);
@@ -93,23 +114,42 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemXstatic::selfSetup()
 {	
+    bDrawBox = false;
+    
     gravity.set(0);
     drag = 0.0;
     
     XParticle::upperBounds.set(kBoxSize *  0.5, kBoxSize *  0.5, kBoxSize *  0.5);
     XParticle::lowerBounds.set(kBoxSize * -0.5, kBoxSize * -0.5, kBoxSize * -0.5);
-        
+    XParticle::diagonalSquared = sqrtf(2 * kBoxSize * kBoxSize) + (kBoxSize * kBoxSize);
+    XParticle::minSize = XParticle::maxSize = 1.0f;
+    XParticle::oscSpeed = 0.1f;
+    XParticle::heightToSize = 0.0f;
+    XParticle::velToSize = 0.0f;
+    XParticle::minBri = XParticle::maxBri = 1.0f;
+    XParticle::bOscillateBri = XParticle::bOscillateSize = false;
+    
+    color1.setHsb(1.0f, 1.0f, 1.0f);
+    color2.setHsb(1.0f, 0.0f, 1.0f);
+    colorWeight = 1.0f;
+    
     explodeSpeed = 1.0;
     bShouldExplode = true;
+
+    riseFallSpeed = 1.0;
+    bShouldFreeze = false;
+    bShouldFall = false;
+    bShouldRise = false;
     
     bBounceOffWalls = true;
     
     nParticles = 500;
     data = new GLfloat[kMaxParticles * kStrideData];
     regenerate();
+    bShouldRegenerate = true;
     
     ofDisableArbTex();
-    tex.loadImage(getVisualSystemDataPath() + "spark3.png");
+    tex.loadImage(getVisualSystemDataPath() + "spark.png");
     shader.load(getVisualSystemDataPath() + "shaders/particles");
     ofEnableArbTex();
 }
@@ -118,7 +158,7 @@ void CloudsVisualSystemXstatic::regenerate()
 {
     particles.clear();
     for (int i = 0; i < kMaxParticles; i++) {
-        particles.push_back(XParticle(mass, 0, 0, 0, minBrightness, maxBrightness));
+        particles.push_back(XParticle());
     }
 }
 
@@ -151,17 +191,40 @@ void CloudsVisualSystemXstatic::selfUpdate()
     }
     
     XParticle::dt = ofGetLastFrameTime();
-        
-    gravityLine.clear();
-    gravityLine.setMode(OF_PRIMITIVE_LINES);
-    gravityLine.addVertex(ofVec3f::zero());
-    gravityLine.addVertex(gravity * 10);
+    
+    if (bShouldFreeze) {
+        rotateSpeed = 0;
+        pullSpeed = 0;
+        windSpeed = 0;
+        gravity = ofVec3f::zero();
+    }
+    
+    if (bShouldRise || bShouldFall) {
+        drag = 1;
+        rotateSpeed = 0;
+        pullSpeed = 0;
+        windSpeed = 0;
+        gravity = ofVec3f::zero();
+    }
     
     for (int i = 0; i < nParticles; i++) {
         if (bShouldExplode) {
             ofVec3f explodeForce(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
             explodeForce.scale(explodeSpeed);
             particles[i].applyForce(explodeForce);
+        }
+        
+        if (bShouldFreeze) {
+            particles[i].velocity = ofVec3f::zero();
+            particles[i].acceleration = ofVec3f::zero();
+        }
+        else if (bShouldRise) {
+            particles[i].velocity.set(0, riseFallSpeed, 0);
+            particles[i].acceleration = ofVec3f::zero();
+        }
+        else if (bShouldFall) {
+            particles[i].velocity.set(0, -riseFallSpeed, 0);
+            particles[i].acceleration = ofVec3f::zero();
         }
         
         ofVec3f rotateForce = particles[i].location.getRotated(rotateAngle, ofVec3f(0, 1, 0));//(particles[i].location.x, 0, particles[i].location.z);
@@ -174,7 +237,7 @@ void CloudsVisualSystemXstatic::selfUpdate()
         particles[i].applyForce(pullForce);
         
         ofVec3f windForce(ofSignedNoise(particles[i].location.x),
-                          ofSignedNoise(particles[i].location.y , particles[i].uniqueVal + particles[i].location.y),
+                          0,//ofSignedNoise(particles[i].location.y , particles[i].uniqueVal + particles[i].location.y),
                           ofSignedNoise(particles[i].location.z , 0, ofGetElapsedTimef()));
         windForce.scale(windSpeed);
         particles[i].applyForce(windForce);
@@ -190,34 +253,52 @@ void CloudsVisualSystemXstatic::selfUpdate()
             particles[i].wrapEdges();
         }
         
-        particles[i].display();
-        
+        ofFloatColor pColor;
+        pColor.setHsb(ofMap(powf(particles[i].colorPicker, colorWeight), 0, 1, color1.r, color2.r),
+                      ofMap(powf(particles[i].colorPicker, colorWeight), 0, 1, color1.g, color2.g),
+                      ofMap(powf(particles[i].colorPicker, colorWeight), 0, 1, color1.b, color2.b));
+                
         data[i * kStrideData + 0] = particles[i].location.x;
         data[i * kStrideData + 1] = particles[i].location.y;
         data[i * kStrideData + 2] = particles[i].location.z;
-        data[i * kStrideData + 3] = *particles[i].mass;
-        data[i * kStrideData + 4] = particles[i].brightness / 255.0f;
-        data[i * kStrideData + 5] = particles[i].brightness / 255.0f;
-        data[i * kStrideData + 6] = particles[i].brightness / 255.0f;
-        data[i * kStrideData + 7] = 1.0f;
+        data[i * kStrideData + 3] = particles[i].mappedSize();
+        data[i * kStrideData + 4] = pColor.r;
+        data[i * kStrideData + 5] = pColor.g;
+        data[i * kStrideData + 6] = pColor.b;
+        data[i * kStrideData + 7] = particles[i].brightness;
     }
     
     vbo.setVertexData(&data[0], 4, nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
     vbo.setColorData(&data[4], nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
+    
+    gravityLine.clear();
+    gravityLine.setMode(OF_PRIMITIVE_LINES);
+    gravityLine.addVertex(ofVec3f::zero());
+    gravityLine.addVertex(gravity * 10);
 
-    bShouldExplode = false;    
+    bShouldExplode = false;
+    bShouldFreeze = false;
+    bShouldRise = false;
+    bShouldFall = false;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemXstatic::selfDraw()
 {
-    glDisable(GL_DEPTH_TEST);
     ofSetColor(255);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
+    if (bDrawBox) {
+        ofNoFill();
+        ofBox(0, 0, 0, kBoxSize);
+    }
+
+    glDisable(GL_DEPTH_TEST);
     
     shader.begin();
     ofEnablePointSprites();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     tex.getTextureReference().bind();
     {
         vbo.draw(GL_POINTS, 0, nParticles);
@@ -225,17 +306,13 @@ void CloudsVisualSystemXstatic::selfDraw()
     tex.getTextureReference().unbind();
     ofDisablePointSprites();
     shader.end();
-    
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    gravityLine.draw();
-    
-    ofNoFill();
-	ofBox(0, 0, 0, kBoxSize);
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemXstatic::selfDrawDebug(){
-	
+void CloudsVisualSystemXstatic::selfDrawDebug()
+{
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    gravityLine.draw();
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
