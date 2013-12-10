@@ -12,9 +12,9 @@
 //#endif
 
 
-static const float kBoxSize      = 300;
-static const int   kMaxParticles = 2000;
-static const int   kStrideData   = 8;
+static const int kStrideData = 8;
+
+int CloudsVisualSystemXstatic::nParticles = 2000;
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemXstatic::selfSetupGui(){
@@ -26,49 +26,75 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
-    customGui->addToggle("REGENERATE", &bShouldRegenerate);
-    customGui->addIntSlider("NUM PARTICLES", 0, 2000, &nParticles);
-    
+    customGui->setName("Initial Conditions");
+    customGui->addButton("Projectile", &PROJECTILEMODE);
+    customGui->addButton("Falling", &FALLINGMODE);
+    customGui->addButton("Rising", &RISINGMODE);
+    customGui->addButton("Frozen", &FROZENMODE);
     customGui->addSpacer();
-    customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
-
+    customGui->addButton("REGENERATE", &shouldRegenerate);
+    customGui->setName("General");
     customGui->addSpacer();
-    customGui->addToggle("EXPLODE", &bShouldExplode);
-    customGui->addSlider("EXPLODE SPEED", 0, 100, &explodeSpeed);
-    
+    customGui->addButton("Wraparound", &WRAPAROUNDMODE);
+    customGui->addButton("Reflect off Walls", &BOUNCEMODE);
+    customGui->addIntSlider("Number of Particles", 0, 2000, &nParticles);
     customGui->addSpacer();
-    customGui->addSlider("GRAVITY X", -1, 1, &gravity.x);
-    customGui->addSlider("GRAVITY Y", -1, 1, &gravity.y);
-    customGui->addSlider("GRAVITY Z", -1, 1, &gravity.z);
+    customGui->setName("Physics");
+    customGui->addSlider("Mass", 0, 10, &mass);
     
-    customGui->addSpacer();
-    customGui->addSlider("ROTATE ANGLE", 45, 135, &rotateAngle);
-    customGui->addSlider("ROTATE SPEED", 0, 10, &rotateSpeed);
-    customGui->addSlider("PULL SPEED", 0, 10, &pullSpeed);
+    customGui->addButton("RESET FORCES TO 0", &shouldReset);
+    customGui->addSlider("Gravity y", -6, 6, &gravityY); //up down
+    customGui->addSlider("Gravity x", -6, 6, &gravityX); //don't normally need this;
+    customGui->addSlider("Gravity z", -6, 6, &gravityZ);
+    customGui->addSlider("Topspeed", 0, 10, &topspeed);
     
-    customGui->addSpacer();
-    customGui->addSlider("WIND SPEED", 0, 10, &windSpeed);
-    
-    customGui->addSpacer();
-    customGui->addSlider("DRAG", 0, 1, &drag);
-    
-    customGui->addSlider("MASS", 0, 10, &mass);
-    
-    customGui->addIntSlider("MAX BRI", 0, 255, &maxBrightness);
-    customGui->addIntSlider("MIN BRI", 0, 255, &minBrightness);
-    
-    customGui->addSpacer();
-    customGui->addSlider("BRI DURATION", 1, 1000, &XParticle::briDuration);
-    customGui->addSlider("BRI RANGE", 10, 1000, &XParticle::briRange);
+    customGui->addSlider("Wind strength x", 0, 10.0, &windX);
+    customGui->addSlider("Wind strength z", 0, 10.0, &windZ);
+    customGui->addIntSlider("Max Brightness", 0, 255, &maxBrightness);
+    customGui->addIntSlider("Min Brightness", 0, 255, &minBrightness);
     
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemXstatic::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 }
 
-void CloudsVisualSystemXstatic::selfGuiEvent(ofxUIEventArgs &e)
-{
-
+void CloudsVisualSystemXstatic::selfGuiEvent(ofxUIEventArgs &e){
+	if(e.widget->getName() == "Custom Button"){
+		cout << "Button pressed!" << endl;
+	}
+    
+    if(e.widget->getName() == "REGENERATE" && ((ofxUIButton*)e.widget)->getValue() ){
+		regenerate();
+	}
+    
+    if(e.widget->getName() == "Projectile" && ((ofxUIButton*)e.widget)->getValue() ){
+		FALLINGMODE = false;
+        FROZENMODE = false;
+        RISINGMODE = false;
+        regenerate();
+	}
+    
+    if(e.widget->getName() == "Falling" && ((ofxUIButton*)e.widget)->getValue() ){
+		FROZENMODE = false;
+        PROJECTILEMODE = false;
+        RISINGMODE = false;
+        regenerate();
+	}
+    if(e.widget->getName() == "Rising" && ((ofxUIButton*)e.widget)->getValue() ){
+		FROZENMODE = false;
+        PROJECTILEMODE = false;
+        FALLINGMODE = false;
+        regenerate();
+	}
+    
+    if(e.widget->getName() == "Frozen" && ((ofxUIButton*)e.widget)->getValue() ){
+		FALLINGMODE = false;
+        PROJECTILEMODE = false;
+        RISINGMODE = false;
+        regenerate();
+	}
+    
+   
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -88,38 +114,110 @@ void CloudsVisualSystemXstatic::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+void CloudsVisualSystemXstatic::regenerate(){
+    
+    data = new GLfloat[nParticles * kStrideData];
+    
+    particles.clear();
+    
+    gravityX = 0.0;
+    gravityY = 0.0;
+    gravityZ = 0.0;
+    windX = 0.0;
+    windZ = 0.0;
+    topspeed = 2.0;
+    
+    for(int i = 0; i<nParticles; i++){
+        
+        
+        if (PROJECTILEMODE == 1){
+        particles.push_back( XParticle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
+            WRAPAROUNDMODE = false;
+            BOUNCEMODE = true;
+        }
+        
+        if (FALLINGMODE == 1){
+         particles.push_back( XParticle(mass, 0, ofRandom(-.5,-.3), 0, minBrightness, maxBrightness)); // falling particles
+            WRAPAROUNDMODE = true;
+            BOUNCEMODE = false;
+         }
+        
+        if (RISINGMODE == 1){
+         particles.push_back( XParticle(mass, 0, ofRandom(.4,.6), 0, minBrightness, maxBrightness)); // rising particles
+            gravityY = -0.0;
+            WRAPAROUNDMODE = true;
+            BOUNCEMODE = false;
+        }
+        if (FROZENMODE == 1){
+        particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
+        }
+    }
+    
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
-void CloudsVisualSystemXstatic::selfSetup()
-{	
-    gravity.set(0);
-    drag = 0.0;
+void CloudsVisualSystemXstatic::selfSetup(){
+	
+    gravityX = 0.0;
+    gravityY = 0.0;
+    gravityZ = 0.0;
+    windX = 0.0;
+    windZ = 0.0;
+    topspeed = 2.0;
     
-    XParticle::upperBounds.set(kBoxSize *  0.5, kBoxSize *  0.5, kBoxSize *  0.5);
-    XParticle::lowerBounds.set(kBoxSize * -0.5, kBoxSize * -0.5, kBoxSize * -0.5);
+    PROJECTILEMODE = true;
+    FALLINGMODE = false;
+    RISINGMODE = false;
+    FROZENMODE = false;
+    BOUNCEMODE = true; 
+    WRAPAROUNDMODE = false;
+    //terminal velocity
+    //speed = .005; // noise speed
+    
+    for(int i = 0; i<nParticles; i++){
+
+       // particles.push_back(Particle(mass, 0, 0, 0, minBrightness, maxBrightness)); // falling particles
         
-    explodeSpeed = 1.0;
-    bShouldExplode = true;
+        if (PROJECTILEMODE == 1){
+            particles.push_back( XParticle(mass, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, ofRandom(0,2) * 4 - 2, minBrightness, maxBrightness)); // ricocheting particles
+            WRAPAROUNDMODE = false;
+            BOUNCEMODE = true;
+        }
+        
+        if (FALLINGMODE == 1){
+            gravityY = -0.1;
+            particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // falling particles
+            WRAPAROUNDMODE = true;
+            BOUNCEMODE = false;
+        }
+        
+        if (RISINGMODE == 1){
+            particles.push_back( XParticle(mass, 0, ofRandom(.5,.6), 0, minBrightness, maxBrightness)); // rising particles
+            gravityY = 0.1;
+            WRAPAROUNDMODE = true;
+            BOUNCEMODE = false;
+        }
+        if (FROZENMODE == 1){
+            particles.push_back( XParticle(mass, 0, 0, 0, minBrightness, maxBrightness)); // standstill
+            gravityY = 0.0;
+            gravityX = 0.0;
+            gravityZ = 0.0;
+        }
+
+    }
     
-    bBounceOffWalls = true;
-    
-    nParticles = 500;
-    data = new GLfloat[kMaxParticles * kStrideData];
-    regenerate();
-    
+    data = new GLfloat[nParticles * kStrideData];
     ofDisableArbTex();
-    tex.loadImage(getVisualSystemDataPath() + "spark3.png");
+    tex.loadImage(getVisualSystemDataPath() + "spark.png");
     shader.load(getVisualSystemDataPath() + "shaders/particles");
     ofEnableArbTex();
-}
-
-void CloudsVisualSystemXstatic::regenerate()
-{
-    particles.clear();
-    for (int i = 0; i < kMaxParticles; i++) {
-        particles.push_back(XParticle(mass, 0, 0, 0, minBrightness, maxBrightness));
-    }
+    
+    
+  	
+//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
+	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -145,53 +243,66 @@ void CloudsVisualSystemXstatic::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemXstatic::selfUpdate()
 {
-    if (bShouldRegenerate) {
-        regenerate();
-        bShouldRegenerate = false;
+    float frameCount = ofGetElapsedTimeMillis()/33.0;
+    
+    if(shouldReset==1){
+    
+        gravityX = 0.0;
+        gravityY = 0.0;
+        gravityZ = 0.0;
+        windX = 0.0;
+        windZ = 0.0;
     }
     
-    XParticle::dt = ofGetLastFrameTime();
-        
-    gravityLine.clear();
-    gravityLine.setMode(OF_PRIMITIVE_LINES);
-    gravityLine.addVertex(ofVec3f::zero());
-    gravityLine.addVertex(gravity * 10);
-    
     for (int i = 0; i < nParticles; i++) {
-        if (bShouldExplode) {
-            ofVec3f explodeForce(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
-            explodeForce.scale(explodeSpeed);
-            particles[i].applyForce(explodeForce);
-        }
         
-        ofVec3f rotateForce = particles[i].location.getRotated(rotateAngle, ofVec3f(0, 1, 0));//(particles[i].location.x, 0, particles[i].location.z);
-        rotateForce -= particles[i].location;
-        rotateForce.scale(rotateSpeed);
-        particles[i].applyForce(rotateForce);
+        // CALCULATE WIND
+        ofVec3f wind;
+        float fakeWindX = ofSignedNoise(particles[i].location.x * .005, particles[i].location.z * .005, ofGetElapsedTimef() * 0.6); //speed = .005
         
-        ofVec3f pullForce(-particles[i].location.x, 0, -particles[i].location.z);
-        pullForce.scale(pullSpeed);
-        particles[i].applyForce(pullForce);
+        wind.set(fakeWindX * 0.0004 + ofSignedNoise(particles[i].uniqueVal, particles[i].location.y * 0.006) * (windX/10000.0),
+                0,
+                 ofSignedNoise(particles[i].uniqueVal, particles[i].location.x * 0.006) * (windZ/10000.0));
         
-        ofVec3f windForce(ofSignedNoise(particles[i].location.x),
-                          ofSignedNoise(particles[i].location.y , particles[i].uniqueVal + particles[i].location.y),
-                          ofSignedNoise(particles[i].location.z , 0, ofGetElapsedTimef()));
-        windForce.scale(windSpeed);
-        particles[i].applyForce(windForce);
-
+        cout << "fakeWindX = " << fakeWindX << endl;
+        
+        particles[i].applyForce(wind);
+        
+        // CALCULATE GRAVITY
+       
+         ofVec3f gravity;
+        
+        
+         //oscillate gravity
+        
+        float oscX = amplitude * cos(TWO_PI * frameCount / period);
+        float oscZ = amplitude * sin(TWO_PI * frameCount / period);
+               
+        
+        gravityX = (ofMap(oscX, -100.0, 100.0, -3.0, 3.0));
+        gravityZ = (ofMap(oscZ, -100.0, 100.0, -3.0, 3.0));
+        
+        gravity.set(gravityX/10.0, gravityY/10.0, gravityZ/10.0);
+        
+        gravityLine.clear();
+        gravityLine.setMode(OF_PRIMITIVE_LINES);
+        gravityLine.addColor(ofFloatColor(255,255,255));
+        gravityLine.addVertex(ofPoint(0,0,0));
+        gravityLine.addColor(ofFloatColor(255,255,255));
+        gravityLine.addVertex(ofPoint(gravityX*10,gravityY*10,gravityZ*10));
+     
+        
+        
         particles[i].applyForce(gravity);
-        
-        particles[i].update(drag);
-        
-        if (bBounceOffWalls) {
-            particles[i].bounceEdges();
+         
+
+        particles[i].update(topspeed);
+        if(BOUNCEMODE==true){
+            particles[i].checkEdges();
         }
-        else {
-            particles[i].wrapEdges();
+        if(WRAPAROUNDMODE==true){
+            particles[i].verticalWraparound();
         }
-        
-        particles[i].display();
-        
         data[i * kStrideData + 0] = particles[i].location.x;
         data[i * kStrideData + 1] = particles[i].location.y;
         data[i * kStrideData + 2] = particles[i].location.z;
@@ -204,8 +315,6 @@ void CloudsVisualSystemXstatic::selfUpdate()
     
     vbo.setVertexData(&data[0], 4, nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
     vbo.setColorData(&data[4], nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
-
-    bShouldExplode = false;    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -213,47 +322,53 @@ void CloudsVisualSystemXstatic::selfUpdate()
 void CloudsVisualSystemXstatic::selfDraw()
 {
     glDisable(GL_DEPTH_TEST);
+ 
     ofSetColor(255);
     
+
+    gravityLine.draw();
+
+    for(int i = 0; i < nParticles; i++){
+        
+    particles[i].display();
+      
     shader.begin();
     ofEnablePointSprites();
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
     tex.getTextureReference().bind();
     {
         vbo.draw(GL_POINTS, 0, nParticles);
+
     }
     tex.getTextureReference().unbind();
     ofDisablePointSprites();
     shader.end();
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    gravityLine.draw();
-    
     ofNoFill();
-	ofBox(0, 0, 0, kBoxSize);
+    ofSetColor(255);
+	ofBox(0, 0, 0, 300);
+    }   
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemXstatic::selfDrawDebug(){
 	
 }
-
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemXstatic::selfDrawBackground(){
-
+	//turn the background refresh off
+	//bClearBackground = false;
+	
 }
-
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemXstatic::selfEnd(){
-		
+	
+	
 }
-
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemXstatic::selfExit()
 {
     delete [] data;
-    data = NULL;
 }
 
 //events are called when the system is active
