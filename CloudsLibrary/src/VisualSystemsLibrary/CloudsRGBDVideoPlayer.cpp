@@ -183,7 +183,7 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 		return;
 	}
 	
-    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 0);
+    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);

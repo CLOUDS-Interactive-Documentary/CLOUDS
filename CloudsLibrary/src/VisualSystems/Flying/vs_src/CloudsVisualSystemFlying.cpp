@@ -219,7 +219,7 @@ void CloudsVisualSystemFlying::selfDraw()
     floorShader.setUniform1f("fogStart", fogStart);
     floorShader.setUniform1f("fogEnd", fogEnd);
     floorShader.setUniform3f("offset", cam.getPosition().x - fmod(cam.getPosition().x, xStep), 0.f, cam.getPosition().z - fmod(cam.getPosition().z, zStep));
-    floorShader.setUniformTexture("tex", floorTex, 0);
+    floorShader.setUniformTexture("tex", floorTex, 1);
     floorShader.setUniform2f("resolution", xResolution, zResolution);
     floorShader.setUniform3fv("floorLookAt", floorLookAt.getPtr());
     floorShader.setUniform1f("growDist", growDist);

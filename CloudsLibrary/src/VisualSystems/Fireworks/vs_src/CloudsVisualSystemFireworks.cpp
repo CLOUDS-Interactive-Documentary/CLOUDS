@@ -366,9 +366,9 @@ void CloudsVisualSystemFireworks::selfDraw()
 	
 	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	
-	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
-	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
-	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 0 );
+	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 3 );
+	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 2 );
+	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 1 );
 	
 	vbo.drawElements( GL_POINTS, numSprites );
 	

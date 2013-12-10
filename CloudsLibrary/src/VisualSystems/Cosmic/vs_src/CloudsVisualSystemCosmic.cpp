@@ -359,6 +359,16 @@ void CloudsVisualSystemCosmic::selfSceneTransformation()
 	
 }
 
+//TRIAL ONE -- NOTHING BUT UPDATES and RADIUS
+
+
+
+//TRIAL TWO -- HOMING ACTIVE
+//TRIAL TWO -- Then activated attractor, took off homing
+//TRIAL THREE -- put electro on
+//TRIAL FOUR -- turned on electro and homing
+//TRIAL FIVE -- sphere shader only
+//EVERYTHING
 void CloudsVisualSystemCosmic::selfUpdate()
 {
 	
@@ -368,14 +378,15 @@ void CloudsVisualSystemCosmic::selfUpdate()
     {
         updateRadiusShader();
     }
+	
     if(bUpdateAcceleration)
     {
-        clearFbo(accFboSrc);
+		clearFbo(accFboSrc);
 		if(bHomingActive) applyHomeShader();
-        if(bElectroActive) applyElectroShader();
-        applyAttractorShader();
-        applySphereShader();
-        updateAcceleration();
+		if(bElectroActive) applyElectroShader();
+		applyAttractorShader();
+		applySphereShader();
+		updateAcceleration();
     }
     if(bUpdateVelocity)
     {
@@ -394,7 +405,7 @@ void CloudsVisualSystemCosmic::selfDraw()
 //	return;
 	
     drawFloor();
-    drawParticles();
+	drawParticles();
 }
 
 void CloudsVisualSystemCosmic::selfDrawDebug()
@@ -591,17 +602,21 @@ void CloudsVisualSystemCosmic::applyElectroShader()
     ofClear(0, 255);
     electroShader.begin();
     
+//	cout << "electro texture id " << posFboSrc.getTextureReference().getTextureData().textureID << endl;
+//	cout << "electro texture id " << radiFbo.getTextureReference().getTextureData().textureID << endl;
+//	cout << "electro texture id " << accFboSrc.getTextureReference().getTextureData().textureID << endl;
+	
     electroShader.setUniformTexture("posData",
                                     posFboSrc.getTextureReference(),
-                                    posFboSrc.getTextureReference().getTextureData().textureID);
+                                    1);
     
     electroShader.setUniformTexture("radiData",
                                     radiFbo.getTextureReference(),
-                                    radiFbo.getTextureReference().getTextureData().textureID);
+                                    2);
     
     electroShader.setUniformTexture("accData",
                                     accFboSrc.getTextureReference(),
-                                    accFboSrc.getTextureReference().getTextureData().textureID);
+                                    3);
     
     electroShader.setUniform1f("resolution", debugGridSize);
     electroShader.setUniform1f("limit", electroForceLimit);
@@ -621,15 +636,15 @@ void CloudsVisualSystemCosmic::applyHomeShader()
     
     homeShader.setUniformTexture("posData",
                                  posFboSrc.getTextureReference(),
-                                 posFboSrc.getTextureReference().getTextureData().textureID);
+                                 1);
     
     homeShader.setUniformTexture("homeData",
                                  homeFbo.getTextureReference(),
-                                 homeFbo.getTextureReference().getTextureData().textureID);
+                                 2);
     
     homeShader.setUniformTexture("accData",
                                  accFboSrc.getTextureReference(),
-                                 accFboSrc.getTextureReference().getTextureData().textureID);
+                                 3);
     
     
     homeShader.setUniform1f("limit", homeForceLimit);
@@ -658,11 +673,11 @@ void CloudsVisualSystemCosmic::applySphereShader()
             
             sphereShader.setUniformTexture("posData",
                                            posFboSrc.getTextureReference(),
-                                           posFboSrc.getTextureReference().getTextureData().textureID);
+                                           1);
             
             sphereShader.setUniformTexture("accData",
                                            accFboSrc.getTextureReference(),
-                                           accFboSrc.getTextureReference().getTextureData().textureID);
+                                           2);
             
             sphereShader.setUniform3f("position", (*pit)->x, (*pit)->y, (*pit)->z);
             sphereShader.setUniform1f("radius", *(*rit));
@@ -700,11 +715,11 @@ void CloudsVisualSystemCosmic::applyAttractorShader()
             
             attractorShader.setUniformTexture("posData",
                                               posFboSrc.getTextureReference(),
-                                              posFboSrc.getTextureReference().getTextureData().textureID);
+                                              1);
             
             attractorShader.setUniformTexture("accData",
                                               accFboSrc.getTextureReference(),
-                                              accFboSrc.getTextureReference().getTextureData().textureID);
+                                              2);
             
             attractorShader.setUniform3f("position", (*pit)->x, (*pit)->y, (*pit)->z);
             attractorShader.setUniform1f("power", *(*pwit));
@@ -734,11 +749,11 @@ void CloudsVisualSystemCosmic::updateAcceleration()
     
     accShader.setUniformTexture("accData",
                                 accFboSrc.getTextureReference(),
-                                accFboSrc.getTextureReference().getTextureData().textureID);
+                                1);
     
     accShader.setUniformTexture("velData",
                                 velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                2);
     
     accShader.setUniform1f("time", time);
     accShader.setUniform1f("timestep", timeStep);
@@ -762,11 +777,11 @@ void CloudsVisualSystemCosmic::updateVelocity()
     
     velShader.setUniformTexture("velData",
                                 velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                1);
     
     velShader.setUniformTexture("accData",
                                 accFboSrc.getTextureReference(),
-                                accFboSrc.getTextureReference().getTextureData().textureID);
+                                2);
     
     velShader.setUniform1f("timestep", timeStep);
     velShader.setUniform1f("velLimit", velLimit);
@@ -787,11 +802,11 @@ void CloudsVisualSystemCosmic::updatePosition()
     
     posShader.setUniformTexture("posData",
                                 posFboSrc.getTextureReference(),
-                                posFboSrc.getTextureReference().getTextureData().textureID);
+                                1);
     
     posShader.setUniformTexture("velData",
                                 velFboSrc.getTextureReference(),
-                                velFboSrc.getTextureReference().getTextureData().textureID);
+                                2);
     
 
     posShader.setUniform1f("size", debugGridSize);
@@ -813,11 +828,12 @@ void CloudsVisualSystemCosmic::drawParticles()
     ofEnablePointSprites();
     
     rdrShader.begin();
-    rdrShader.setUniformTexture("glow", glow, glow.getTextureData().textureID);
-    rdrShader.setUniformTexture("radiData", radiFbo.getTextureReference(), radiFbo.getTextureReference().getTextureData().textureID);
-    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), posFboSrc.getTextureReference().getTextureData().textureID);
+    rdrShader.setUniformTexture("glow", glow, 1);
+    rdrShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 2);
+    rdrShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 3);
     rdrShader.setUniform1f("radiusMultiplier", radiusMultiplier);
     rdrShader.setUniform1f("spriteSize", spriteSize);
+
     
     glow.bind();
     vbo.draw(GL_POINTS, 0, size);
@@ -839,8 +855,8 @@ void CloudsVisualSystemCosmic::drawFloor()
     
     floorShader.begin();
     
-    floorShader.setUniformTexture("radiData", radiFbo.getTextureReference(), radiFbo.getTextureReference().getTextureData().textureID);
-    floorShader.setUniformTexture("posData", posFboSrc.getTextureReference(), posFboSrc.getTextureReference().getTextureData().textureID);
+    floorShader.setUniformTexture("radiData", radiFbo.getTextureReference(), 1);
+    floorShader.setUniformTexture("posData", posFboSrc.getTextureReference(), 2);
     floorShader.setUniform1f("radiusMultiplier", radiusMultiplier);
     floorShader.setUniform1f("size", debugGridSize);
     floorShader.setUniform1f("shadowScale", shadowScale);
@@ -1056,11 +1072,11 @@ void CloudsVisualSystemCosmic::applyCurlNoiseShader()
     
     noiseShader.setUniformTexture("posData",
                                  posFboSrc.getTextureReference(),
-                                 posFboSrc.getTextureReference().getTextureData().textureID);
+                                 1);
         
     noiseShader.setUniformTexture("velData",
                                   velFboSrc.getTextureReference(),
-                                  velFboSrc.getTextureReference().getTextureData().textureID);
+                                  2);
     
     noiseShader.setUniform1f("noiseScale", noiseScale); 
     noiseShader.setUniform1f("time", time);

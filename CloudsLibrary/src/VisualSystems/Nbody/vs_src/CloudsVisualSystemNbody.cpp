@@ -161,8 +161,8 @@ void CloudsVisualSystemNbody::selfUpdate(){
 	velocityFront.begin();
 	updateVelocities.begin();
 	updateVelocities.setUniform1f("dT", dT);
-	updateVelocities.setUniformTexture("velocity", velocityBack.getTextureReference(), 0);
-	updateVelocities.setUniformTexture("force", force.getTextureReference(), 1);
+	updateVelocities.setUniformTexture("velocity", velocityBack.getTextureReference(), 1);
+	updateVelocities.setUniformTexture("force", force.getTextureReference(), 2);
 	//particleHeads.draw();
 	drawMesh.draw();
 	updateVelocities.end();
@@ -171,8 +171,8 @@ void CloudsVisualSystemNbody::selfUpdate(){
 	positionFront.begin();
 	updatePosition.begin();
 	updatePosition.setUniform1f("dT", dT);
-	updatePosition.setUniformTexture("velocity", velocityBack.getTextureReference(), 0);
-	updatePosition.setUniformTexture("position", positionBack.getTextureReference(), 1);
+	updatePosition.setUniformTexture("velocity", velocityBack.getTextureReference(), 1);
+	updatePosition.setUniformTexture("position", positionBack.getTextureReference(), 2);
 	drawMeshTrails.draw();
 	updatePosition.end();
 	positionFront.end();
@@ -187,7 +187,7 @@ void CloudsVisualSystemNbody::selfUpdate(){
 void CloudsVisualSystemNbody::selfDraw(){
 	
 	renderParticles.begin();
-	renderParticles.setUniformTexture("position", positionBack.getTextureReference(), 0);
+	renderParticles.setUniformTexture("position", positionBack.getTextureReference(), 1);
 	particles.draw();
 	renderParticles.end();
 	

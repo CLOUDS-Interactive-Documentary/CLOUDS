@@ -1,19 +1,20 @@
 #include "testApp.h"
+#include "CloudsInputKinectOSC.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetVerticalSync(true);
+    
+//    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(false)));
   
 	PaintBrush.setup();
 	PaintBrush.playSystem();
 }
 
-
 //--------------------------------------------------------------
 void testApp::update(){
 
 }
-
 
 //--------------------------------------------------------------
 void testApp::draw(){

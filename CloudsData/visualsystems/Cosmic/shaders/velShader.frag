@@ -9,18 +9,21 @@ uniform float damping;
 
 varying vec2 texcoord;	
 
+const float epsilon = 1e-6;
+
 void main()
 {        
     vec3 vel =  texture2DRect( velData,  texcoord ).xyz;
     vec3 acc =  texture2DRect( accData,  texcoord ).xyz;
     vel += acc * timestep; 
-    
-    if(length(vel) > velLimit)
-    {
-    	vel = normalize(vel)*velLimit; 
-    }
+    float m = length(vel);
+	if(m > epsilon){
+		if(m > velLimit) {
+			vel = (vel/m)*velLimit;
+		}
 
-    vel *= damping; 
-
+		vel *= damping; 
+	}
+	
    	gl_FragColor = vec4(vel, 1.0);   	
 }
