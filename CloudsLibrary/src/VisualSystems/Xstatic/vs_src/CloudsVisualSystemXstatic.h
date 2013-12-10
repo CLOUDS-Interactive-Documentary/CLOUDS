@@ -55,6 +55,8 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 	//any type of transformation that doesn't have to do with the camera
     void selfSceneTransformation();
 	
+    void regenerate();
+    
 	//normal update call
 	void selfUpdate();
 
@@ -94,17 +96,21 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
 		}
 		return CloudsVisualSystem::getCameraRef();
 	}
-    
-    void regenerate();
-    void explode();
 
     int maxBrightness;
     int minBrightness;
-    float mass;    
+    float mass;
+    float topspeed;
+    
 
 protected:
-    int nParticles;
-    vector<XParticle> particles;
+    
+    //  Your Stuff
+    //
+    
+    
+    static int nParticles;
+    vector <XParticle> particles;
     
     ofMesh gravityLine;
     
@@ -115,18 +121,24 @@ protected:
     
     ofxUISuperCanvas* customGui;
     bool videoLoaded;
-    bool bShouldRegenerate;
-    bool bShouldExplode;
+    bool shouldRegenerate;
+    bool shouldReset;
     
-    bool bBounceOffWalls;
+    bool PROJECTILEMODE;
+    bool FALLINGMODE;
+    bool RISINGMODE;
+    bool FROZENMODE;
+    //
+    bool WRAPAROUNDMODE;
+    bool BOUNCEMODE;
 
-    float windSpeed;
-    float explodeSpeed;
-    ofVec3f gravity;
-    float rotateAngle;
-    float rotateSpeed;
-    float pullSpeed;
-    float drag;
+    // Forces
+    float speed; //noiseSpeed
+    float windX;
+    float windZ;
+    float gravityY;
+    float gravityX;
+    float gravityZ;
     
     //oscillate forces
     
