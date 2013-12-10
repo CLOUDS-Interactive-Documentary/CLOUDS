@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D2EA00A174C16EC002D9E02 /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		C18089211857CBE3004C33A1 /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C180891F1857CBE3004C33A1 /* lukeMusicFuncs.cpp */; };
+		C18089221857CBE3004C33A1 /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C18089201857CBE3004C33A1 /* lukeFileFuncs.cpp */; };
 		C1DE1C2017DD13460020BBB0 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DE1C1F17DD13460020BBB0 /* librtcmix.a */; };
 		C1E2A439181DC22A00F0586B /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */; };
 		C1E2A43C181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */; };
@@ -1072,6 +1074,8 @@
 		3D2EA006174C16EC002D9E02 /* ofxGameCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGameCamera.cpp; sourceTree = "<group>"; };
 		3D2EA007174C16EC002D9E02 /* ofxGameCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGameCamera.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		C180891F1857CBE3004C33A1 /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
+		C18089201857CBE3004C33A1 /* lukeFileFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFileFuncs.cpp; sourceTree = "<group>"; };
 		C1DE1C1F17DD13460020BBB0 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		C1E2A438181DC22A00F0586B /* CloudsSoundFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFuncs.cpp; sourceTree = "<group>"; };
 		C1E2A43A181DC49800F0586B /* CloudsSoundFilesSamplesDatabases.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSoundFilesSamplesDatabases.cpp; sourceTree = "<group>"; };
@@ -5806,6 +5810,8 @@
 			isa = PBXGroup;
 			children = (
 				E7BAFBEB176A4BE20097AC71 /* lukeFuncs.h */,
+				C180891F1857CBE3004C33A1 /* lukeMusicFuncs.cpp */,
+				C18089201857CBE3004C33A1 /* lukeFileFuncs.cpp */,
 				E7BAFBEA176A4BE20097AC71 /* lukeFuncs.cpp */,
 			);
 			path = src;
@@ -7228,6 +7234,8 @@
 				E734A05018556E92002E615C /* ofxOscReceiver.cpp in Sources */,
 				E734A05218556E92002E615C /* ofxOscSender.cpp in Sources */,
 				E734A0561855750F002E615C /* CloudsInputKinectOSC.cpp in Sources */,
+				C18089211857CBE3004C33A1 /* lukeMusicFuncs.cpp in Sources */,
+				C18089221857CBE3004C33A1 /* lukeFileFuncs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
