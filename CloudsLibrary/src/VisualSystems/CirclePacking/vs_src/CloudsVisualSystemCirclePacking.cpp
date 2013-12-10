@@ -2,6 +2,8 @@
 //  CloudsVisualSystemCirclePacking.cpp
 //
 
+
+
 #include "CloudsVisualSystemCirclePacking.h"
 
 //#include "CloudsRGBDVideoPlayer.h"
@@ -11,186 +13,8 @@
 
 //float CloudsVisualSystemCirclePacking::NCircles = 50;
 
-
-class Circle {
-public:
-    
-    Circle();
-    void init(float _x, float _y, float _r, string _label);
-    void draw();
-    
-    float distance(float _x1, float _y1, float _x2, float _y2);
-    float getOffset(float _x, float _y);
-    Boolean contains(float _x, float _y);
-    Boolean intersect(Circle _circle);
-    
-    
-    float x;
-    float y;
-    float r;
-    string label;
-    
-};
-Circle::Circle(){
-    
-}
-
-void Circle::init(float _x, float _y, float _r, string _label)
-{
-    this->x = _x; //this->x
-    this->y = _y;
-    this->r = _r;
-    this->label = _label;
-}
-
-float Circle::distance(float _x1, float _y1, float _x2, float _y2)
-{
-    return sqrt((_x1-_x2)*(_x1-_x2)+(_y1-_y2)*(_y1-_y2));
-}
-
-float Circle::getOffset(float _x, float _y)
-{
-    return ofDist(this->x, this->y, _x, _y); // ofDist
-}
-
-Boolean Circle::contains(float _x, float _y)
-{
-    return ofDist(this->x, this->y, _x, _y) <= this->r;
-}
-
-Boolean Circle::intersect(Circle _circle)
-{
-    float d = ofDist(this->x, this->y, _circle.x, _circle.y);
-    return d <= (this->r + _circle.r);
-}
-
-void Circle::draw()
-{
-    ofCircle(x, y, r*2, r*2);
-}
-
-
-//circle packing
-
-class CirclePacker {
-    
-public:
-    CirclePacker();
-    void init(float _width, float _height);
-    float fast_distance(float _x1, float _y1, float _x2, float _y2);
-    void pack();
-    void update();
-    void draw();
-    
-    float width, height, padding, xcenter, ycenter;
-    vector <Circle> circles; // vector
-    
-protected:
-    
-    float damping, iterations;
-    
-};
-
-CirclePacker::CirclePacker()
-{
-    
-}
-
-void CirclePacker::init(float _width, float _height)
-{
-    width = _width;
-    height = _height;
-    xcenter = width/2;
-    ycenter = height/2;
-    padding = 20;
-    damping = 0.01;
-    iterations = 1;
-}
-
-float CirclePacker::fast_distance(float _x1, float _y1, float _x2, float _y2)
-{
-    return (_x1 - _x2) * (_x1 - _x2) + (_y1 - _y2) * (_y1 - _y2);
-}
-
-void CirclePacker::pack()
-{
-    
-    for (int i = 0; i < circles.size(); i++)
-    {
-        Circle& c1 = circles[i];
-        
-        for (int j = i+1; j < circles.size(); j++)
-        {
-            Circle& c2 = circles[j];   // Circle& c2 = circles[j]
-            
-            float d = fast_distance(c1.x, c1.y, c2.x, c2.y);
-            float r = c1.r + c2.r + padding;
-            
-            if (d < (r*r))
-            {
-                float dx = c2.x - c1.x;
-                float dy = c2.y - c1.y;
-                float droot = sqrt(d);
-                
-                // proviamo a dare un peso rispetto al centro
-                float cd1 = fast_distance(c1.x, c1.y, xcenter, ycenter);
-                float cd2 = fast_distance(c1.x, c1.y, xcenter, ycenter);
-                
-                float total = dx + dy;
-                
-                float vx = (dx/droot) * (r-droot);
-                float vy = (dy/droot) * (r-droot);
-                
-                c1.x -= vx * cd1/(cd1+cd2);
-                c1.y -= vy * cd1/(cd1+cd2);
-                c2.x += vx * cd2/(cd1+cd2);
-                c2.y += vy * cd2/(cd1+cd2);
-            }
-        }
-    }
-    
-    // contraction...
-    //
-    /*
-     for (int i = 0; i < circles.size(); i++)
-     {
-     Circle c = (Circle) circles.get(i);
-     float vx = (c.x - xcenter) * damping;
-     float vy = (c.y - ycenter) * damping;
-     c.x -= vx;
-     c.y -= vy;
-     }
-     //
-     */
-}
-
-void CirclePacker::update() {
-    for (int w=0; w<iterations; w++)
-    {
-        this->pack();
-    }
-}
-/**
- * Draw all the circles
- */
-
-void CirclePacker::draw()
-{
-    for (int i = 0; i < circles.size(); i++)
-    {
-        Circle& c = circles[i];
-        if (c.r < 1)
-        {
-            cout << "I would erase this one if I knew how" << endl;   // circles.erase(circles.begin() + i);
-        }
-        else
-        {
-            c.draw();
-        }
-    }
-}
-
 //These methods let us add custom GUI parameters and respond to their events
+
 void CloudsVisualSystemCirclePacking::selfSetupGui(){
 
 	/*
@@ -211,18 +35,18 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
      
      */
     
-    pack.init(400,400);
     
+    //pack(400,400);
+    
+    CirclePacker pack(400.0, 400.0);
     
     for(int i = 0; i<50; i++){
       
-        newCircle.init(ofRandom(300), ofRandom(300), ofRandom(100), "blank");
+        Circle newCircle(ofRandom(300.0), ofRandom(300.0), ofRandom(100.0), "blank");
+      //  newCircle
         pack.circles.push_back(newCircle);
         
-        
     }
-    
-    
 }
 
 void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
@@ -282,7 +106,7 @@ void CloudsVisualSystemCirclePacking::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemCirclePacking::selfUpdate(){
     
-    pack.update();
+   pack.update();
 
 }
 
@@ -290,8 +114,7 @@ void CloudsVisualSystemCirclePacking::selfUpdate(){
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemCirclePacking::selfDraw(){
 	
-    ofSetColor(255,255,255);
-    pack.draw(); 
+   
 
 	
 }
@@ -303,6 +126,12 @@ void CloudsVisualSystemCirclePacking::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 
+    //for (int i = 0; i<pack.circles.size(); i++){
+       // cout << "circle radius : " << pack.circles[i].r << endl;
+   // }
+    
+    cout << "circle vector size : " << pack.circles.size() << endl;
+    pack.draw();
 	//turn the background refresh off
 	//bClearBackground = false;
 	
