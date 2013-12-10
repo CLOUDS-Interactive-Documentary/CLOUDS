@@ -33,6 +33,12 @@ void CloudsVisualSystemXstatic::selfSetupGui(){
     customGui->addToggle("BOUNCE OFF WALLS", &bBounceOffWalls);
 
     customGui->addSpacer();
+    customGui->addToggle("FREEZE", &bShouldFreeze);
+    customGui->addToggle("RISE", &bShouldRise);
+    customGui->addToggle("FALL", &bShouldFall);
+    customGui->addSlider("RISE/FALL SPEED", 0, 100, &riseFallSpeed);
+    
+    customGui->addSpacer();
     customGui->addToggle("EXPLODE", &bShouldExplode);
     customGui->addSlider("EXPLODE SPEED", 0, 100, &explodeSpeed);
     
@@ -101,6 +107,11 @@ void CloudsVisualSystemXstatic::selfSetup()
         
     explodeSpeed = 1.0;
     bShouldExplode = true;
+
+    riseFallSpeed = 1.0;
+    bShouldFreeze = false;
+    bShouldFall = false;
+    bShouldRise = false;
     
     bBounceOffWalls = true;
     
@@ -151,17 +162,40 @@ void CloudsVisualSystemXstatic::selfUpdate()
     }
     
     XParticle::dt = ofGetLastFrameTime();
-        
-    gravityLine.clear();
-    gravityLine.setMode(OF_PRIMITIVE_LINES);
-    gravityLine.addVertex(ofVec3f::zero());
-    gravityLine.addVertex(gravity * 10);
+    
+    if (bShouldFreeze) {
+        rotateSpeed = 0;
+        pullSpeed = 0;
+        windSpeed = 0;
+        gravity = ofVec3f::zero();
+    }
+    
+    if (bShouldRise || bShouldFall) {
+        drag = 1;
+        rotateSpeed = 0;
+        pullSpeed = 0;
+        windSpeed = 0;
+        gravity = ofVec3f::zero();
+    }
     
     for (int i = 0; i < nParticles; i++) {
         if (bShouldExplode) {
             ofVec3f explodeForce(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
             explodeForce.scale(explodeSpeed);
             particles[i].applyForce(explodeForce);
+        }
+        
+        if (bShouldFreeze) {
+            particles[i].velocity = ofVec3f::zero();
+            particles[i].acceleration = ofVec3f::zero();
+        }
+        else if (bShouldRise) {
+            particles[i].velocity.set(0, -riseFallSpeed, 0);
+            particles[i].acceleration = ofVec3f::zero();
+        }
+        else if (bShouldFall) {
+            particles[i].velocity.set(0, riseFallSpeed, 0);
+            particles[i].acceleration = ofVec3f::zero();
         }
         
         ofVec3f rotateForce = particles[i].location.getRotated(rotateAngle, ofVec3f(0, 1, 0));//(particles[i].location.x, 0, particles[i].location.z);
@@ -204,16 +238,29 @@ void CloudsVisualSystemXstatic::selfUpdate()
     
     vbo.setVertexData(&data[0], 4, nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
     vbo.setColorData(&data[4], nParticles, GL_STREAM_DRAW, kStrideData * sizeof(GLfloat));
+    
+    gravityLine.clear();
+    gravityLine.setMode(OF_PRIMITIVE_LINES);
+    gravityLine.addVertex(ofVec3f::zero());
+    gravityLine.addVertex(gravity * 10);
 
-    bShouldExplode = false;    
+    bShouldExplode = false;
+    bShouldFreeze = false;
+    bShouldRise = false;
+    bShouldFall = false;
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemXstatic::selfDraw()
 {
-    glDisable(GL_DEPTH_TEST);
     ofSetColor(255);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    
+    ofNoFill();
+	ofBox(0, 0, 0, kBoxSize);
+
+    glDisable(GL_DEPTH_TEST);
     
     shader.begin();
     ofEnablePointSprites();
@@ -225,17 +272,13 @@ void CloudsVisualSystemXstatic::selfDraw()
     tex.getTextureReference().unbind();
     ofDisablePointSprites();
     shader.end();
-    
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    gravityLine.draw();
-    
-    ofNoFill();
-	ofBox(0, 0, 0, kBoxSize);
 }
 
 // draw any debug stuff here
-void CloudsVisualSystemXstatic::selfDrawDebug(){
-	
+void CloudsVisualSystemXstatic::selfDrawDebug()
+{
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    gravityLine.draw();
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
