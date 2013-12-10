@@ -48,8 +48,11 @@ void CloudsSound::loadRTcmixSamples()
     cout << "==============" << endl;
     cout << "LOADING SOUNDS" << endl;
     cout << "==============" << endl;
+    
     string spath = GetCloudsDataPath() + "sound/samps/";
     ofDirectory sdir(spath);
+    
+    // load individual base hits
     LOADSOUND(sdir.getAbsolutePath() + "/" + "BD.aif", "BD");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "SD.aif", "SD");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "CH.aif", "CH");
@@ -61,7 +64,7 @@ void CloudsSound::loadRTcmixSamples()
     LOADSOUND(sdir.getAbsolutePath() + "/" + "VD3.aif", "VD3");
     LOADSOUND(sdir.getAbsolutePath() + "/" + "VD4.aif", "VD4");
     
-    //some path, may be absolute or relative to bin/data
+    //load loops
     spath = spath+"loops/";
     ofDirectory ldir(spath);
     //only show sound files
