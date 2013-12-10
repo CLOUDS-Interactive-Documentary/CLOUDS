@@ -49,7 +49,7 @@ public:
     
 protected:
     ofFbo               canvasSrc, canvasDst;
-    Brush               brush;
+    map<int, Brush *>   brushes;
     vector<Particle>    particles;
     
     float   brushWidth;
