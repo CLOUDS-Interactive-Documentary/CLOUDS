@@ -297,7 +297,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         float freq;
         for(i = 0;i<musicdur;i+=tempo*floor(ofRandom(8, 32)))
         {
-            m.tick();
+            curpitch = m.tick();
             float freq = mtof(curpitch)*2.;
             FNOISE3(outskip+i, ofRandom(1., 3.), 0.25, 1.0, ofRandom(0.,1.), freq, freq*2.0, freq*3.0, 90., "amp_triangle");
         }
@@ -329,6 +329,10 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     }
     
     // OTHERS
+    
+    //
+    // UNPITCHED RHYTHM
+    //
     
     
     // MODALBEATS

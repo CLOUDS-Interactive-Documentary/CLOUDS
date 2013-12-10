@@ -105,58 +105,61 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
     glDisable(GL_DEPTH_TEST);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    brush.update();
-    
-    if (brush.getVel().length() < particlesThreshold) {
-        ofFloatColor color;
+    for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
+        Brush * brush = it->second;
+        brush->update();
         
-        if (bUseColorMap) {
-            color = colorMap->getColor(mapX, mapY);
-            if (bMapForward) {
-                ++mapX;
-                if (mapX >= colorMap->getWidth()) {
-                    ++mapY;
-                    if (mapY >= colorMap->getHeight()) {
-                        // back to start
-                        mapX = 0;
-                        mapY = 0;
-                        bMapForward = true;
+        if (brush->getVel().length() < particlesThreshold) {
+            ofFloatColor color;
+            
+            if (bUseColorMap) {
+                color = colorMap->getColor(mapX, mapY);
+                if (bMapForward) {
+                    ++mapX;
+                    if (mapX >= colorMap->getWidth()) {
+                        ++mapY;
+                        if (mapY >= colorMap->getHeight()) {
+                            // back to start
+                            mapX = 0;
+                            mapY = 0;
+                            bMapForward = true;
+                        }
+                        else {
+                            // next line, going backwards
+                            mapX = colorMap->getWidth() - 1;
+                            bMapForward = false;
+                        }
                     }
-                    else {
-                        // next line, going backwards
-                        mapX = colorMap->getWidth() - 1;
-                        bMapForward = false;
+                }
+                else {
+                    --mapX;
+                    if (mapX < 0) {
+                        ++mapY;
+                        if (mapY >= colorMap->getHeight()) {
+                            // back to start
+                            mapX = 0;
+                            mapY = 0;
+                            bMapForward = true;
+                        }
+                        else {
+                            // next line, going forward
+                            mapX = 0;
+                            bMapForward = true;
+                        }
                     }
                 }
             }
             else {
-                --mapX;
-                if (mapX < 0) {
-                    ++mapY;
-                    if (mapY >= colorMap->getHeight()) {
-                        // back to start
-                        mapX = 0;
-                        mapY = 0;
-                        bMapForward = true;
-                    }
-                    else {
-                        // next line, going forward
-                        mapX = 0;
-                        bMapForward = true;
-                    }
-                }
+                color.set(1, 0, 0);
+                color.setHue(colorHue);
             }
-        }
-        else {
-            color.set(1, 0, 0);
-            color.setHue(colorHue);
+
+            brush->setColor(color, colorLerp, colorRandom);
         }
         
-        brush.setColor(color, colorLerp, colorRandom);
-    }
-    
-    if (GetCloudsInputPressed()) {
-        brush.addParticles(particles, particlesThreshold, particlesAlpha);
+        if (brush->bDown) {
+            brush->addParticles(particles, particlesThreshold, particlesAlpha);
+        }
     }
     
 	//cout << "Mouse pressed?" << GetCloudsInputPressed() << endl;
@@ -180,17 +183,31 @@ void CloudsVisualSystemPaintBrush::selfUpdate()
         
     }
     
-    if (GetCloudsInputPressed()) {
-        brush.draw();
+    vector<int> toRemove;
+    for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
+        Brush * brush = it->second;
+        
+        if (brush->bDown) {
+            brush->draw();
+        }
+        else {
+            toRemove.push_back(it->first);
+        }
     }
     
     canvasDst.end();
     
-    while(particles.size()>500){
+    while(particles.size() > 500) {
         particles.erase(particles.begin());
     }
     
     ofPopStyle();
+    
+    // get rid of any idle brushes
+    for (int i = 0; i < toRemove.size(); i++) {
+        delete brushes[toRemove[i]];
+        brushes.erase(toRemove[i]);
+    }
 }
 
 void CloudsVisualSystemPaintBrush::selfDrawBackground()
@@ -205,7 +222,9 @@ void CloudsVisualSystemPaintBrush::selfDrawBackground()
     
     if (bDebug){
         ofSetColor(255);
-        brush.drawDebug();
+        for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
+            it->second->drawDebug();
+        }
     }
     
     ofPopStyle();
@@ -234,6 +253,11 @@ void CloudsVisualSystemPaintBrush::selfSceneTransformation()
 
 void CloudsVisualSystemPaintBrush::selfExit()
 {
+    for (map<int, Brush *>::iterator it = brushes.begin(); it != brushes.end(); it++) {
+        delete it->second;
+	}
+    brushes.clear();
+    
     for (map<string, ofPixels *>::iterator it = colorMapPixelsMap.begin(); it != colorMapPixelsMap.end(); it++) {
         delete it->second;
 	}
@@ -253,7 +277,7 @@ void CloudsVisualSystemPaintBrush::selfEnd()
 void CloudsVisualSystemPaintBrush::selfKeyReleased(ofKeyEventArgs & args)
 {
     if (args.key == ' '){
-        brush.clear();
+//        brush.clear();
         particles.clear();
         
         canvasSrc.begin();
@@ -270,27 +294,51 @@ void CloudsVisualSystemPaintBrush::selfInteractionMoved(CloudsInteractionEventAr
 	
 }
 
-void CloudsVisualSystemPaintBrush::selfInteractionStarted(CloudsInteractionEventArgs& args){
-	brush.init(brushNumber);
-    brush.setBrushWidth(brushWidth);
-    brush.setLineWidth(lineWidth);
+void CloudsVisualSystemPaintBrush::selfInteractionStarted(CloudsInteractionEventArgs& args)
+{
+    Brush * newBrush;
+    if (brushes.find(args.playerId) == brushes.end()) {
+        // build a new Brush
+        newBrush = new Brush();
+        brushes[args.playerId] = newBrush;
+    }
+    else {
+        ofLogError("PaintBrush::selfInteractionStarted") << "Brush " << args.playerId << " already exists!";
+        newBrush = brushes[args.playerId];
+    }
     
-    brush.damp = brushDamp;
-    brush.k = brushK;
-    brush.repPct = brushRepPct;
-    brush.repRad = brushRepRad;
+	newBrush->init(brushNumber);
+    newBrush->setBrushWidth(brushWidth);
+    newBrush->setLineWidth(lineWidth);
     
-    brush.begin();
-    brush.set(args.position.x,args.position.y);
+    newBrush->damp = brushDamp;
+    newBrush->k = brushK;
+    newBrush->repPct = brushRepPct;
+    newBrush->repRad = brushRepRad;
+    
+    newBrush->begin();
+    newBrush->set(args.position.x,args.position.y);
 }
 
-void CloudsVisualSystemPaintBrush::selfInteractionDragged(CloudsInteractionEventArgs& args){
-	brush.set(args.position.x,args.position.y);
+void CloudsVisualSystemPaintBrush::selfInteractionDragged(CloudsInteractionEventArgs& args)
+{
+    if (brushes.find(args.playerId) == brushes.end()) {
+        ofLogError("PaintBrush::selfInteractionDragged") << "Brush " << args.playerId << " does not exist!";
+        return;
+    }
+    
+	brushes[args.playerId]->set(args.position.x,args.position.y);
 }
 
-void CloudsVisualSystemPaintBrush::selfInteractionEnded(CloudsInteractionEventArgs& args){
-	brush.set(args.position.x, args.position.y);
-    brush.end();
+void CloudsVisualSystemPaintBrush::selfInteractionEnded(CloudsInteractionEventArgs& args)
+{
+    if (brushes.find(args.playerId) == brushes.end()) {
+        ofLogError("PaintBrush::selfInteractionEnded") << "Brush " << args.playerId << " does not exist!";
+        return;
+    }
+	
+    brushes[args.playerId]->set(args.position.x, args.position.y);
+    brushes[args.playerId]->end();
 }
 
 void CloudsVisualSystemPaintBrush::selfSetupGui()
