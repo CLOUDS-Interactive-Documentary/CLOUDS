@@ -316,6 +316,8 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
     }
 }
 
-void SetCloudsInputKinect(){
-    SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC(0.75f) ));
+//--------------------------------------------------------------
+void SetCloudsInputKinect(float activeThresholdY)
+{
+    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY)));
 }

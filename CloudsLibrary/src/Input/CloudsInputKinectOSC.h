@@ -159,4 +159,4 @@ public:
     map<int, k4w::Hand *> hands;
 };
 
-void SetCloudsInputKinect();
+void SetCloudsInputKinect(float activeThresholdY = 1.0f);
