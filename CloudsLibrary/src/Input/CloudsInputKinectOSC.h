@@ -118,7 +118,7 @@ namespace k4w
             handJoint.trackingState = TrackingState_NotTracked;
             handJoint.handState = HandState_NotTracked;
             
-            age = 0;
+            activeFrames = 0;
             actionState = ActionState_Idle;
             for (int i = 0; i < HandState_Count; i++){
                 poll[i] = 0;
@@ -127,9 +127,8 @@ namespace k4w
         
         int idx;
         int bodyIdx;
-        int age;
         int lastUpdateFrame;
-        bool bActive;
+        int activeFrames;
         int poll[HandState_Count];
         ActionState actionState;
         HandJoint handJoint;
