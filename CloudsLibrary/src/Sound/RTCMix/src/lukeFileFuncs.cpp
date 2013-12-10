@@ -232,31 +232,3 @@ void loadpresets_xml(string f, vector<lukePreset>& p)
     
 }
 
-// load preset file - TEXT MODE, DEPRECATED
-void loadpresets(string f, vector<lukePreset>& p)
-{
-    string sline;
-    ofFile pfile (GetCloudsDataPath()+"sound/"+f);
-    if(!pfile.exists())
-    {
-        ofLogError("no data file!");
-    }
-    ofBuffer pbuf(pfile);
-    p.clear();
-    while(!pbuf.isLastLine())
-    {
-        sline=pbuf.getNextLine();
-        lukePreset foo;
-        vector<string> temp = ofSplitString(sline, " ");
-        for(int i = 0;i<temp.size()-4;i++)
-        {
-            foo.instruments.push_back(temp[i]);
-        }
-        foo.harmony = ofToInt(temp[temp.size()-4])-1;
-        foo.rhythm = ofToInt(temp[temp.size()-3])-1;
-        foo.tempo = ofToFloat(temp[temp.size()-2]);
-        foo.bank = temp[temp.size()-1];
-        p.push_back(foo);
-    }
-}
-
