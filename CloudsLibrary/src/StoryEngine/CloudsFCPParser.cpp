@@ -28,11 +28,11 @@ CloudsFCPParser::CloudsFCPParser(){
 }
 
 void CloudsFCPParser::loadFromFiles(){
-    setup(getDataPath() + "fcpxml");
-    parseLinks(getDataPath() + "links/clouds_link_db.xml");
-//    parseClusterMap(getDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
-	//parseClusterMap(getDataPath() + "gephi/CLOUDSClusterMap.svg");
-	parseClusterNetwork(getDataPath() + "pajek/CloudsNetwork.net");
+    setup(GetCloudsDataPath() + "fcpxml");
+    parseLinks(GetCloudsDataPath() + "links/clouds_link_db.xml");
+//    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
+	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
+	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -349,7 +349,7 @@ void CloudsFCPParser::calculateKeywordFamilies(){
 //			keywordFamilyBuffer.append("	" + overlapScore[i].first + " " + ofToString(overlapScore[i].second) + "\n" );
 		}
 	}
-//	ofBufferToFile(getDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
+//	ofBufferToFile(GetCloudsDataPath() + "stats/keyword_families.txt", keywordFamilyBuffer);
 }
 
 vector<string>& CloudsFCPParser::getKeywordFamily(string keyword){
@@ -919,7 +919,7 @@ void CloudsFCPParser::printDichotomyRatios(){
 		}
 	}
 	
-	ofBufferToFile(getDataPath() + "DichotomyRatios.txt", dichotomyScores);
+	ofBufferToFile(GetCloudsDataPath() + "DichotomyRatios.txt", dichotomyScores);
 }
 
 void CloudsFCPParser::refreshAllKeywords(){

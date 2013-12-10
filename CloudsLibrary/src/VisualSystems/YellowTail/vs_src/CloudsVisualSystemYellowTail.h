@@ -48,6 +48,11 @@ class CloudsVisualSystemYellowTail : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
+    void selfInteractionMoved(CloudsInteractionEventArgs& args);
+    void selfInteractionStarted(CloudsInteractionEventArgs& args);
+    void selfInteractionDragged(CloudsInteractionEventArgs& args);
+    void selfInteractionEnded(CloudsInteractionEventArgs& args);
+    
     void selfSetupGui();
     void selfGuiEvent(ofxUIEventArgs &e);
 	

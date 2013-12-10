@@ -11,7 +11,7 @@ string CloudsVisualSystemThingsInTheDark::getSystemName(){
 }
 
 void CloudsVisualSystemThingsInTheDark::selfSetup(){
-	//renderer.setShaderPath(getDataPath() + "shaders/rgbdcombined");
+	//renderer.setShaderPath(GetCloudsDataPath() + "shaders/rgbdcombined");
 	generateScanlines();
 }
 

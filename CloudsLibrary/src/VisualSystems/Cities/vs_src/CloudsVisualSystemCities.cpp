@@ -487,13 +487,13 @@ void CloudsVisualSystemCities::selfDraw()
 	ofSetColor( 255,255,255, 255) ;
 	
 	cubesShader.begin();
-	cubesShader.setUniformTexture("displacment", maskFbo.getTextureReference(), 0);
+	cubesShader.setUniformTexture("displacment", maskFbo.getTextureReference(), 1);
 	cubesShader.setUniform2f( "displacmentDim", maskFbo.getWidth(), maskFbo.getHeight());
-	cubesShader.setUniformTexture("facadeTexture", facadeTexture.getTextureReference(), 1);
+	cubesShader.setUniformTexture("facadeTexture", facadeTexture.getTextureReference(), 2);
 	cubesShader.setUniform2f( "facadeTextureDim", facadeTexture.getWidth(), facadeTexture.getHeight());
 	
 	if(bUseOverlay && overlayMap != NULL){
-		cubesShader.setUniformTexture("overlayMap", overlayMap->getTextureReference(), 2);
+		cubesShader.setUniformTexture("overlayMap", overlayMap->getTextureReference(), 3);
 		cubesShader.setUniform2f("overlayDim", overlayMap->getWidth(), overlayMap->getHeight());
 	}
 	cubesShader.setUniform1i("bUseOverlay", bUseOverlay );
@@ -516,7 +516,7 @@ void CloudsVisualSystemCities::selfDraw()
 	
 	cubesShader.setUniformMatrix4f("invProjection", projector.getModelViewProjectionMatrix() );
 	
-	cubesShader.setUniformTexture("projectedImage", colorMap->getTextureReference(), 3);
+	cubesShader.setUniformTexture("projectedImage", colorMap->getTextureReference(), 4);
 	cubesShader.setUniform2f("projectedImageDim", colorMap->getWidth(), colorMap->getHeight() );
 	
 	

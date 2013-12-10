@@ -464,7 +464,6 @@
 		E779BE53173D6082006357EF /* ofxTimecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTimecode.h; sourceTree = "<group>"; };
 		E779BE69173D60A2006357EF /* ofxTextInputField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextInputField.cpp; sourceTree = "<group>"; };
 		E779BE6A173D60A2006357EF /* ofxTextInputField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextInputField.h; sourceTree = "<group>"; };
-		E7BBB4E0179FA931007D7EC1 /* CloudsVisualSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystem.h; path = VisualSystemsLibrary/CloudsVisualSystem.h; sourceTree = "<group>"; };
 		E7C01200180E1C6100B5CEF1 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		E7C01201180E1C6100B5CEF1 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		E7C01202180E1C6100B5CEF1 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
@@ -818,7 +817,6 @@
 			children = (
 				186B68AC17EA1E6C0020C952 /* CloudsRGBDVideoPlayer.h */,
 				1877A9F9178F417A006DAA37 /* CloudsGlobal.h */,
-				E7BBB4E0179FA931007D7EC1 /* CloudsVisualSystem.h */,
 				E7637D401734DE68008ADC62 /* StoryEngine */,
 			);
 			path = src;

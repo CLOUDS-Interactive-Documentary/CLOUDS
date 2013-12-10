@@ -44,7 +44,10 @@ class CodePanel {
 
 	float* outlineAlpha;
 	int maxCharsOnLine;
+	
 	bool drawAsHist;
+	bool drawAsConsole;
+	
 protected:
 	
 	ofColor randomBoxColor;

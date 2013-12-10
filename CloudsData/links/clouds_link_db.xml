@@ -1712,7 +1712,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fixed,#bug,#logical,#mindblowing,?dna: How do computer systems imitate biological systems?</additionalKeywords>
+    <additionalKeywords>?dna: How do computer systems imitate biological systems?,#mindblowing,#logical,#fixed</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - DNA computing 2</name>
@@ -1843,7 +1843,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>noise,#fixed,#tech,#obstacle,#logical,#bug</additionalKeywords>
+    <additionalKeywords>noise,#logical,#obstacle,#tech,#fixed</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - soft systems 1</name>
@@ -1882,7 +1882,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#bug,#fixed</additionalKeywords>
 </clip>
 <clip>
     <name>Andres - soft systems 2</name>
@@ -5143,7 +5142,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <revokedKeywords>visual culture</revokedKeywords>
     <additionalKeywords>creativity,hybridity,music,?creativity: What&apos;s the key to being creative?,#art,#easy</additionalKeywords>
 </clip>
 <clip>
@@ -5673,7 +5671,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fixed,#bug,#tech,#breakthrough,?community: When did the community&apos;s creative strength become apparent?</additionalKeywords>
+    <additionalKeywords>?community: When did the community&apos;s creative strength become apparent?,#breakthrough,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - group teaching</name>
@@ -5702,7 +5700,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#bug,#inspiring,#fixed</additionalKeywords>
+    <additionalKeywords>#fixed,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - People would pop up</name>
@@ -5716,7 +5714,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#fixed,#inspiring,#breakthrough,#bug</additionalKeywords>
+    <additionalKeywords>#breakthrough,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Style diffuses</name>
@@ -5972,7 +5970,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>mind and hand,trees</revokedKeywords>
-    <additionalKeywords>improvization,feedback,gesture,digital meets physical,?improvization: How do you make creative decisions?,#bug,#gold,#inspiring,#art,#fixed</additionalKeywords>
+    <additionalKeywords>improvization,feedback,gesture,digital meets physical,#art,#inspiring,#gold,?improvization: How do you make creative decisions?</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Ideally it goes beyond my imagination</name>
@@ -6224,7 +6222,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>print,beginning,beginnings</revokedKeywords>
-    <additionalKeywords>scale,legibility,#bug</additionalKeywords>
+    <additionalKeywords>scale,legibility</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - old media</name>
@@ -6269,7 +6267,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>old media new media</revokedKeywords>
-    <additionalKeywords>new media,old media,?old meda:What&apos;s the history of creative coding?,#fixed,#bug</additionalKeywords>
+    <additionalKeywords>new media,old media,?old meda:What&apos;s the history of creative coding?</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - learning from precursors</name>
@@ -6391,7 +6389,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>beginnngs</revokedKeywords>
-    <additionalKeywords>beginnings,#easy,#tech,#breakthrough,#fixed,#bug,?programming: What motivated you to learn programming?</additionalKeywords>
+    <additionalKeywords>beginnings,#easy,#tech,#breakthrough,?programming: What motivated you to learn programming?</additionalKeywords>
 </clip>
 <clip>
     <name>Casey - Computer as collaborator</name>
@@ -12675,7 +12673,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>tribe,tools,#bug,#gold,#fun,#inspiring</additionalKeywords>
+    <additionalKeywords>tribe,tools,#inspiring,#fun,#gold,#bug</additionalKeywords>
 </clip>
 <clip>
     <name>Javier - Data ownership</name>
@@ -12896,7 +12894,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>systems,chaos,#inspiring,#fixed,#bug</additionalKeywords>
+    <additionalKeywords>systems,chaos,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - Lidar 1</name>
@@ -13340,7 +13338,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>?big data: What is powerful about Big Data?,#hard,#mindblowing,#fixed,#bug</additionalKeywords>
+    <additionalKeywords>#mindblowing,#hard,?big data: What is powerful about Big Data?</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data crystal ball 2</name>
@@ -13463,7 +13461,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#logical,#hard,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>#hard,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - personal archive 1</name>
@@ -14137,7 +14135,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>data vizualization</revokedKeywords>
-    <additionalKeywords>data visualization,#hard,#serious,#obstacle,#fixed,#bug</additionalKeywords>
+    <additionalKeywords>data visualization,#obstacle,#serious,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Jen - data viz noire</name>
@@ -15978,7 +15976,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>emergence</revokedKeywords>
-    <additionalKeywords>#logical,#mindblowing,#inspiring,#easy,#fixed,#bug</additionalKeywords>
+    <additionalKeywords>#easy,#inspiring,#mindblowing,#logical</additionalKeywords>
 </clip>
 <clip>
     <name>Jer - people don&apos;t read these things</name>
@@ -17918,7 +17916,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>memory,#hard,#discouraging,#emotional,#bug</additionalKeywords>
+    <additionalKeywords>memory,#emotional,#discouraging,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>JTNimoy - open source mensch</name>
@@ -19348,7 +19346,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>economics,#emotional,#bug</additionalKeywords>
+    <additionalKeywords>economics,#emotional</additionalKeywords>
 </clip>
 <clip>
     <name>Julia - human in tech</name>
@@ -20589,7 +20587,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#gold,#ironic,#bug</additionalKeywords>
+    <additionalKeywords>#ironic,#gold</additionalKeywords>
 </clip>
 <clip>
     <name>Julian - lulzSec</name>
@@ -26233,7 +26231,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#easy,#fun,#mindblowing,#bug</additionalKeywords>
+    <additionalKeywords>#mindblowing,#fun,#easy</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - alter language 1</name>
@@ -26508,7 +26506,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>artificial intelligence,#bug</additionalKeywords>
+    <additionalKeywords>artificial intelligence</additionalKeywords>
 </clip>
 <clip>
     <name>Kyle_CH - Future life storage</name>
@@ -34090,7 +34088,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#surreal,#bug,#hard,#tech,#mindblowing</additionalKeywords>
+    <additionalKeywords>#mindblowing,#tech,#hard,#surreal</additionalKeywords>
 </clip>
 <clip>
     <name>Marcus - Epic Games predictions</name>
@@ -36015,7 +36013,7 @@
         <endFrame>-1</endFrame>
     </suppress>
     <revokedKeywords>speculation</revokedKeywords>
-    <additionalKeywords>network,#mindblowing,#bug,#sincere,#fixed</additionalKeywords>
+    <additionalKeywords>network,#sincere,#mindblowing</additionalKeywords>
 </clip>
 <clip>
     <name>Marius - color 3D printing</name>
@@ -37961,7 +37959,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>#bug,#fun,#ironic,#fixed</additionalKeywords>
+    <additionalKeywords>#ironic,#fun</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jesse - breaking the system</name>
@@ -39047,7 +39045,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>3d printing,#breakthrough,#bug,#mindblowing,#mundane,#fixed</additionalKeywords>
+    <additionalKeywords>3d printing,#mundane,#mindblowing,#breakthrough</additionalKeywords>
 </clip>
 <clip>
     <name>Nervous_Jessica - knowing it&apos;s beautiful</name>
@@ -44587,7 +44585,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#bug,#inspiring,#art,#fixed</additionalKeywords>
+    <additionalKeywords>#art,#inspiring</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - more concerned with socially engaged work</name>
@@ -45052,7 +45050,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>data ownership,military technology,#hard,#tech,#rational,#serious,#discouraging,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>data ownership,military technology,#discouraging,#serious,#rational,#tech,#hard</additionalKeywords>
 </clip>
 <clip>
     <name>Regine - dark future</name>
@@ -48271,7 +48269,6 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </link>
-    <additionalKeywords>#bug,#fixed</additionalKeywords>
 </clip>
 <clip>
     <name>Theo - struggle with technology</name>
@@ -50277,7 +50274,7 @@
         <startFrame>-1</startFrame>
         <endFrame>-1</endFrame>
     </suppress>
-    <additionalKeywords>generative art,#tech,#breakthrough,#bug,#fixed</additionalKeywords>
+    <additionalKeywords>generative art,#breakthrough,#tech</additionalKeywords>
 </clip>
 <clip>
     <name>Zach - venn diagrams of interest</name>
