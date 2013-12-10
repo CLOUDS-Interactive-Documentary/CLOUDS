@@ -2,10 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-//	ofSetVerticalSync(true);
-	//ofSetFrameRate(24);
-	
-    ofSetFullscreen(true); 
+    ofSetFullscreen(true);
 	visualSystem.setup();
 	visualSystem.playSystem();
 }
@@ -29,6 +26,8 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+	visualSystem.exit();
+	
 }
 
 //--------------------------------------------------------------

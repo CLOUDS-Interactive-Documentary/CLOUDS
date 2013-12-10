@@ -114,7 +114,7 @@ class CloudsAct{
 	float defaulPrerollDuration;
 	
     bool timeToPlayVisualSystem(); // decide when to play VS based in clips
-    CloudsEvents& getEvents();
+    CloudsStoryEvents& getEvents();
     
   protected:
 
@@ -131,11 +131,9 @@ class CloudsAct{
 	
 	bool timelinePopulated;
     string currentTopic;
-    CloudsEvents events;
+    CloudsStoryEvents events;
     vector<CloudsClip> clips;
     vector<CloudsVisualSystemPreset> visualSystems;
-
-	
 	
     vector<ActTimeItem> actItems;
     map<string,ActTimeItem> actItemsMap;

@@ -244,7 +244,7 @@ void CloudsVisualSystemOscillations::selfPostDraw(){
 
     crtShader.begin();
 //    crtShader.setUniform1i("screen", GL_TEXTURE0);
-    crtShader.setUniformTexture("screen", getSharedRenderTarget(), 0 );
+    crtShader.setUniformTexture("screen", getSharedRenderTarget(), 1 );
     crtShader.setUniform2f("resolution",
 						   float(getSharedRenderTarget().getWidth()),
 						   float(getSharedRenderTarget().getHeight()));

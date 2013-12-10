@@ -7,9 +7,13 @@
 //
 
 #include "CloudsVisualSystemPreset.h"
-#include "CloudsVisualSystem.h"
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
+
+#ifndef CLOUDS_NO_VS
+//#include "CloudsVisualSystem.h"
+#endif
+
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){
 	enabled = true;
@@ -30,8 +34,10 @@ string CloudsVisualSystemPreset::getID(){
 }
 
 void CloudsVisualSystemPreset::loadTimeInfo(){
+	
+
 	ofxXmlSettings timeInfo;
-	string directory = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName;
+	string directory = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName;
 
 	if(!ofDirectory(directory).exists()){
 		ofLogError() << "Preset " << systemName << " / " << presetName << " has no directory";
@@ -56,19 +62,22 @@ void CloudsVisualSystemPreset::loadTimeInfo(){
 		timeInfo.addValue("outroDuration", outroDuration);
 		timeInfo.saveFile(path);
 	}
+
 }
 
 void CloudsVisualSystemPreset::checkHasFiles(){
-	hasFiles = ofFile(CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName).exists();
+
+	hasFiles = ofFile(GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName).exists();
 }
 
 void CloudsVisualSystemPreset::eraseFiles(){
-	
-	string path = CloudsVisualSystem::getVisualSystemDataPath(systemName) + "Presets/" + presetName;
+
+	string path = GetCloudsVisualSystemDataPath(systemName) + "Presets/" + presetName;
 	if(ofFile(path).remove(true)){		
 		ofLogWarning("CloudsVisualSystemPreset::eraseFiles") << "Deleted preset at path " << path << endl;
 	}
 	else{
 		ofLogError("CloudsVisualSystemPreset::eraseFiles") << "Delete failed at path " << path << endl;
 	}
+
 }

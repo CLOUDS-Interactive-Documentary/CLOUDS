@@ -753,7 +753,8 @@
 				50179849182B66150077298A /* surfaceShader.frag */,
 				5017984A182B66150077298A /* surfaceShader.vert */,
 			);
-			path = shaders;
+			name = shaders;
+			path = ../../../../../../CloudsData/visualsystems/Mandala/shaders;
 			sourceTree = "<group>";
 		};
 		5017984B182B66150077298A /* snapshots */ = {
@@ -873,7 +874,8 @@
 				5017980F182AB7D80077298A /* SurfacePoint.h */,
 				50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */,
 			);
-			path = vs_src;
+			name = vs_src;
+			path = ../Mandala/vs_src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {

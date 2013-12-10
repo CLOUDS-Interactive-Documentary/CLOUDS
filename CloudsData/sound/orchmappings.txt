@@ -1,8 +1,8 @@
-slowwaves, bucket melody markov;
+slowwaves, bucket melody markov sequencer;
 slowwaveshi, bucket melody markov;
 waveshipatterned, bucket melody markov;
 lowwavepulse, bucket melody markov;
-kissmyarp, static bucket melody markov;
+kissmyarp, static bucket melody markov sequencer;
 kissmyarpsynch, static bucket melody markov;
 kissmyarpfast, static bucket melody markov;
 waveguide, bucket melody markov;

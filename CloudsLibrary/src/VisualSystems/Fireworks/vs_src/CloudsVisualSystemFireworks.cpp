@@ -259,9 +259,14 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		float noiseValX = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl + 1. ) * noiseOffsetScl;
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
+<<<<<<< HEAD
 		//pan and tilt with mouse
 		float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
 		float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+=======
+		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), -mouseScl, mouseScl);
+		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), -mouseScl, mouseScl) * xDamp;
+>>>>>>> 072455e644e4ed9234537f5d7ad727c7807654f3
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );
 		
@@ -362,9 +367,9 @@ void CloudsVisualSystemFireworks::selfDraw()
 	
 	shader.setUniform3f( "gravity", gravity.x, gravity.y, gravity.z );
 	
-	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 2 );
-	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 1 );
-	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 0 );
+	shader.setUniformTexture("triangleMap", triangleImage.getTextureReference(), 3 );
+	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 2 );
+	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 1 );
 	
 	vbo.drawElements( GL_POINTS, indexCount );
 	

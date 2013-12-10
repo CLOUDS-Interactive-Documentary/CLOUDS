@@ -66,6 +66,13 @@ struct lukeSample {
     float numbeats;
 };
 
+struct lukeNote {
+    float starttime;
+    int pitch;
+    float velo;
+    float dur;
+};
+
 class melodySolver {
     string type;
     lukePitchArray parray;
@@ -74,6 +81,11 @@ class melodySolver {
 public:
     melodySolver(string c_type, lukePitchArray& c_p);
     int tick();
+};
+
+class cloudsSequencer {
+public:
+    cloudsSequencer(string f, vector<lukeNote>& n);
 };
 
 // luke's music functions

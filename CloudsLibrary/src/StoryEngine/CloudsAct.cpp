@@ -457,6 +457,6 @@ void CloudsAct::clear(){
     duration = 0;
 }
 
-CloudsEvents& CloudsAct::getEvents(){
+CloudsStoryEvents& CloudsAct::getEvents(){
 	return events;
 }

@@ -225,7 +225,7 @@ void CloudsPlaybackController::setup(){
 }
 
 void CloudsPlaybackController::startScratchTracks(){
-	ofDirectory dir(getDataPath() + "scratch/");
+	ofDirectory dir(GetCloudsDataPath() + "scratch/");
 	dir.allowExt("aif");
 	dir.allowExt("aiff");
 	dir.allowExt("wav");

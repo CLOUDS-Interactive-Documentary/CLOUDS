@@ -1760,7 +1760,8 @@
 				5055DFA1181ED75200761DA0 /* CloudsVisualSystemMandala.h */,
 				50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */,
 			);
-			path = vs_src;
+			name = vs_src;
+			path = ../Mandala/vs_src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
