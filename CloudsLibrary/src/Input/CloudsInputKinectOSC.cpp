@@ -275,45 +275,48 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
     if (newState == k4w::HandState_Lasso) {
         if (hand->actionState == k4w::ActionState_Lasso) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, k4w::ActionState_Lasso, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, k4w::ActionState_Closed, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, k4w::ActionState_Lasso, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Lasso;
         }
     }  
     else if (newState == k4w::HandState_Closed) {
         if (hand->actionState == k4w::ActionState_Closed) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, k4w::ActionState_Closed, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, k4w::ActionState_Lasso, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, k4w::ActionState_Closed, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
     else if (newState <= k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
-            interactionMoved(hand->handJoint.mappedPosition, k4w::ActionState_Idle, handIdx);
+            interactionMoved(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Idle, handIdx);
         }
         else {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, hand->actionState, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, hand->actionState, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
     }
 }
 
+void SetCloudsInputKinect(){
+    SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC(false, 0.75f) ));
+}
