@@ -16,7 +16,8 @@
 class Brush : public ofPoint {
 public:
     Brush();
-
+    ~Brush();
+    
     void    begin();
     void    end();
     
