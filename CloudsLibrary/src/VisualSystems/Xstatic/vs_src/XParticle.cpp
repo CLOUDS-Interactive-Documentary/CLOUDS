@@ -11,32 +11,36 @@
 float   XParticle::dt;
 ofVec3f XParticle::upperBounds;
 ofVec3f XParticle::lowerBounds;
-float   XParticle::briDuration;
-float   XParticle::briRange;
+float   XParticle::diagonalSquared;
+float   XParticle::minSize;
+float   XParticle::maxSize;
+float   XParticle::heightToSize;
+float   XParticle::velToSize;
+float   XParticle::minBri;
+float   XParticle::maxBri;
+float   XParticle::oscSpeed;
+float   XParticle::triggerDuration;
+float   XParticle::triggerRange;
+bool    XParticle::bOscillateSize;
+bool    XParticle::bOscillateBri;
 
-XParticle::XParticle(float& mass, float velocityX, float velocityY, float velocityZ, int& minBri, int& maxBri)
+XParticle::XParticle()
 {
     location.set(ofRandom(lowerBounds.x, upperBounds.x),
                  ofRandom(lowerBounds.y, upperBounds.y),
                  ofRandom(lowerBounds.z, upperBounds.z));
-    velocity.set(velocityX, velocityY, velocityZ);
+    velocity.set(0, 0, 0);
     acceleration.set(0, 0, 0);
     lumocity.set(1,1); 
     
-    // timer
-    
-    triggered = false;
-    //timerSet = true;
+    bTriggered = false;
     luckyNumber = int(ofRandom(10));
  
-    this->minBri = &minBri;
-    this->maxBri = &maxBri;
-    this->mass = &mass;
     brightness = minBri;
-    newBrightness = minBri;
     
-    float uniqueVal = ofRandom(-10000, 10000);
+    oscPos = ofRandom(100);
     
+    colorPicker = ofRandomuf();
 }
 
 
@@ -49,61 +53,62 @@ void XParticle::applyForce(ofVec3f force)
 
 void XParticle::update(float drag)
 {    
-    currentTime = ofGetElapsedTimeMillis() - previousTime; 
+    currentTime = ofGetElapsedTimeMillis() - previousTime;
     
     velocity += (acceleration * dt);
-    velocity -= (velocity * dt * (1.0 - drag));
+    velocity -= (velocity * dt * drag);
     location += (velocity * dt);
     acceleration -= (acceleration * dt);
     
-//    velocity.limit(topspeed);
-//    
-    if(triggered == false){
-    lottery();
+    bool bShouldDropTrigger = false;
+    
+    if (bOscillateSize) {
+        size = minSize + (sinf(oscPos) + 1) * (maxSize - minSize);
     }
-    
-}
-
-void XParticle::display(){
-    
-    
-    //ofxEasingQuad eq;
-   
-    /*
-    if(triggered == true){
-        brightness = brightness + lumocity.x;
-    }
-    if (brightness >= 240){
-        brightness = 50;
-        triggered = false;
-    }
-     */
-    
-    if (triggered == true){
-        //brightness = brightness + 2.0;  //
-        newBrightness = ofMap(currentTime, 0, briDuration, *minBri, *maxBri);
-       // *mass = ofMap(currentTime, 0, 1000.0, .1, 2);
-        
-        if(currentTime >= briDuration){
-            newBrightness = ofMap(currentTime, briDuration, briDuration * 2, *maxBri,*minBri);
-            //*mass = ofMap(currentTime, 1000.0, 2000.0, 2, .1);
-            
-            if (brightness <= *minBri){
-                triggered = false;
-                newBrightness = *minBri+1;
-               // *mass = .1;
+    else if (bTriggered) {
+        float newSize;
+        if (currentTime >= triggerDuration) {
+            newSize = ofMap(currentTime, triggerDuration, triggerDuration * 2, maxSize, minSize);
+            if (size <= minSize) {
+                newSize = minSize;
+                bShouldDropTrigger = true;
             }
         }
-        //float brightness = ofxTween::map(currentTime, 0, 1000.0, *minBri, *maxBri, true, eq, ofxTween::easeInOut);
+        else {
+            newSize = ofMap(currentTime, 0, triggerDuration, minSize, maxSize);
+        }
+        size = newSize;
     }
     
-    brightness = newBrightness;
-   // cout << "triggered =  " << triggered <<  "  time = " << currentTime <<  "  brightness = " << brightness << endl;
+    if (bOscillateBri) {
+        brightness = ofMap(sinf(oscPos), -1, 1, minBri, maxBri);
+    }
+    else if (bTriggered) {
+        float newBri;
+        if (currentTime >= triggerDuration) {
+            newBri = ofMap(currentTime, triggerDuration, triggerDuration * 2, maxBri, minBri);
+            if (brightness <= minBri) {
+                newBri = minBri;
+                bShouldDropTrigger = true;
+            }
+        }
+        else {
+            newBri = ofMap(currentTime, 0, triggerDuration, minBri, maxBri);
+        }
+        brightness = newBri;
+    }
     
-//    ofSetColor(brightness,brightness,brightness);
-//    ofCircle(location.x, location.y, location.z, mass*1);
+    if (bOscillateSize || bOscillateBri) {
+        oscPos += oscSpeed;
+    }
     
+    if (bShouldDropTrigger) {
+        bTriggered = false;
+    }
     
+    if (!bTriggered && (!bOscillateSize || !bOscillateBri)) {
+        lottery();
+    }
 }
 
 void XParticle::bounceEdges()
@@ -162,19 +167,23 @@ void XParticle::wrapEdges()
     }
 }
 
-void XParticle::lottery(){
-    
-    newRandomNumber = int(ofRandom(briRange));
-    
-    //cout << "newRandomNumber =  " << newRandomNumber << "  luckyNumber = " << luckyNumber << endl;
-    
-    if(newRandomNumber == luckyNumber){
-    
-//    if (ofRandomuf() < 0.001f) {
+void XParticle::lottery()
+{    
+    newRandomNumber = int(ofRandom(triggerRange));
+    if (newRandomNumber == luckyNumber) {
         previousTime  = ofGetElapsedTimeMillis();
-        brightness = *minBri+1; 
-        triggered = true;
+        if (!bOscillateSize) {
+            size = minSize;
+        }
+        if (!bOscillateBri) {
+            brightness = minBri;
+        }
+        bTriggered = true;
     }
-    
-    
+}
+
+float XParticle::mappedSize()
+{
+    float sz = (size * (1.0f - heightToSize) + size * ofMap(location.y, lowerBounds.y, upperBounds.y, 0, 1) * heightToSize);
+    return (sz * (1.0f - velToSize) + sz * ofMap(velocity.lengthSquared(), 0, diagonalSquared, 0, 1) * velToSize);
 }
