@@ -17,7 +17,7 @@ int kPollThreshold       = 5;
 CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY)
 : bSoloMode(bSoloMode)
 , activeThresholdY(activeThresholdY)
-, soloHandIdx(-1)
+, designatedIdx(-1)
 {
 
 }
@@ -127,7 +127,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 
                 // process the event if the hand is active AND either
                 // we are NOT in solo mode OR if we are, this hand is the designated cursor
-                if (!bSoloMode || soloHandIdx == handIdx) {
+                if (!bSoloMode || designatedIdx == handIdx) {
                     if (hands[handIdx]->bActive) {
                         newHandState = (k4w::HandState)m.getArgAsInt32(i);
                         hands[handIdx]->poll[newHandState]++;
@@ -152,7 +152,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                         processHandEvent(handIdx, hands[handIdx], k4w::HandState_NotTracked);
                         
                         // unlink it 
-                        soloHandIdx = -1;
+                        designatedIdx = -1;
                     }
                 }
                 i++;
@@ -190,7 +190,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
 				}
                 msg_string += " ";
 			}
-            ofLog() << msg_string;
+            ofLogError("CloudsInputKinectOSC") << "Unrecognized message: " << msg_string;
 		}
 	}
     
@@ -214,8 +214,8 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
             
             // if the hand was the designated cursor, unlink it 
-            if (it->first == soloHandIdx) {
-                soloHandIdx = -1;
+            if (it->first == designatedIdx) {
+                designatedIdx = -1;
             }
             
             toRemove.push_back(it->first);
@@ -227,24 +227,32 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     }
     
     // look for a new designated cursor if necessary
-    if (bSoloMode && soloHandIdx == -1) {
-        int newSoloHandIdx = -1;
-        int newSoloHandAge =  0;
-        float newSoloHandY = -1;
+    if (designatedIdx == -1) {
+        int candidateIdx = -1;
+        int candidateAge =  0;
+        float candidateY = -1;
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             // select this hand if it is active AND either:
             //  1. there is no candidate yet
             //  2. it is older than the current candidate
             //  3. it is as old the current candidate but higher up
-            if (it->second->bActive && ((newSoloHandIdx == -1) || 
-                                        (newSoloHandAge < it->second->age) || 
-                                        (newSoloHandAge == it->second->age && newSoloHandY < it->second->handJoint.inputPosition.y))) {
-                newSoloHandIdx = it->first;
-                newSoloHandAge = it->second->age;
-                newSoloHandY   = it->second->handJoint.inputPosition.y;
+            if (it->second->bActive && ((candidateIdx == -1) || 
+                                        (candidateAge < it->second->age) || 
+                                        (candidateAge == it->second->age && candidateY < it->second->handJoint.inputPosition.y))) {
+                candidateIdx = it->first;
+                candidateAge = it->second->age;
+                candidateY   = it->second->handJoint.inputPosition.y;
             }
         }
-        soloHandIdx = newSoloHandIdx;
+        designatedIdx = candidateIdx;
+    }
+    
+    // set the current position to the designated hand
+    if (designatedIdx == -1) {
+        currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
+    }
+    else {
+        currentPosition.set(hands[designatedIdx]->handJoint.mappedPosition);
     }
 }
 

@@ -153,7 +153,7 @@ public:
     int lastOscFrame;
     
     bool bSoloMode;
-    int soloHandIdx;
+    int designatedIdx;
     
     float activeThresholdY;
     
