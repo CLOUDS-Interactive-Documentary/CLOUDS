@@ -2182,6 +2182,11 @@
 		E7D795D8185670FB007B0A72 /* sphereShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = sphereShader.vert; sourceTree = "<group>"; };
 		E7D795D9185670FB007B0A72 /* velShader.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = velShader.frag; sourceTree = "<group>"; };
 		E7D795DA185670FB007B0A72 /* velShader.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = velShader.vert; sourceTree = "<group>"; };
+		E7D795DF1856B019007B0A72 /* posUpdate.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = posUpdate.frag; sourceTree = "<group>"; };
+		E7D795E01856B019007B0A72 /* render.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = render.frag; sourceTree = "<group>"; };
+		E7D795E11856B019007B0A72 /* render.geom */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = render.geom; sourceTree = "<group>"; };
+		E7D795E21856B019007B0A72 /* render.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = render.vert; sourceTree = "<group>"; };
+		E7D795E31856B019007B0A72 /* velUpdate.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; path = velUpdate.frag; sourceTree = "<group>"; };
 		E7D9D258182AECFD00AD56C1 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
 		E7D9D259182AECFD00AD56C1 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
 		E7D9D25A182AECFD00AD56C1 /* imatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imatrix.h; sourceTree = "<group>"; };
@@ -3374,6 +3379,7 @@
 		E722D0971852D31900636BF1 /* GPUParticles */ = {
 			isa = PBXGroup;
 			children = (
+				E7D795DE1856B019007B0A72 /* shaders */,
 				E722D0981852D31900636BF1 /* vs_src */,
 			);
 			path = GPUParticles;
@@ -3382,8 +3388,8 @@
 		E722D0981852D31900636BF1 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				E722D0991852D31900636BF1 /* CloudsVisualSystemGPUParticles.cpp */,
 				E722D09A1852D31900636BF1 /* CloudsVisualSystemGPUParticles.h */,
+				E722D0991852D31900636BF1 /* CloudsVisualSystemGPUParticles.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -5811,6 +5817,19 @@
 			);
 			name = shaders;
 			path = ../../../../CloudsData/visualsystems/Cosmic/shaders;
+			sourceTree = "<group>";
+		};
+		E7D795DE1856B019007B0A72 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E7D795DF1856B019007B0A72 /* posUpdate.frag */,
+				E7D795E01856B019007B0A72 /* render.frag */,
+				E7D795E11856B019007B0A72 /* render.geom */,
+				E7D795E21856B019007B0A72 /* render.vert */,
+				E7D795E31856B019007B0A72 /* velUpdate.frag */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/GPUParticles/shaders;
 			sourceTree = "<group>";
 		};
 		E7D9CFB5182AECF100AD56C1 /* ofxCv */ = {
