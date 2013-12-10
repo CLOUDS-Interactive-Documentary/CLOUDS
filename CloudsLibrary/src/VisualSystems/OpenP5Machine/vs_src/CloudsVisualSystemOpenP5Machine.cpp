@@ -33,14 +33,6 @@ void CloudsVisualSystemOpenP5Machine::selfSetupGui(){
 	customGui->addSlider("Shift Y", 0.0, 5.0, &shiftY);
 	customGui->addSlider("Shift Z", 0.0, 5.0, &shiftZ);
 
-    
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	
-	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5Machine::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -73,16 +65,8 @@ void CloudsVisualSystemOpenP5Machine::guiRenderEvent(ofxUIEventArgs &e){
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemOpenP5Machine::selfSetup(){
-	
 
-	
-    
     depth = 400;
-    
-//    ofEnableSmoothing();
-    //
-    //ofSetSmoothLighting(true);
-    
     
     color1HSB.r = 200;
     color2HSB.g = 130;
@@ -145,7 +129,6 @@ void CloudsVisualSystemOpenP5Machine::selfDraw(){
             for (int x = -2; x < 2; x++) {
                 for (int z = -1; z < 2; z++) {
                     
-                
                     ofPushMatrix();
                     ofTranslate(shiftX*400*x, shiftY*300*y, shiftZ*300*z);
                     color.setHsb(color1HSB.r,color1HSB.g,color1HSB.b);
