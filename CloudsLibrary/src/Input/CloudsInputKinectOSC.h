@@ -139,7 +139,7 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
-    CloudsInputKinectOSC(bool bSoloMode = false, float activeThresholdY = 1.0f);
+    CloudsInputKinectOSC(float activeThresholdY = 1.0f);
     
 	virtual void enable();
 	virtual void disable();
@@ -152,8 +152,7 @@ public:
     ofxOscReceiver receiver;
     int lastOscFrame;
     
-    bool bSoloMode;
-    int designatedIdx;
+    int primaryIdx;
     
     float activeThresholdY;
     

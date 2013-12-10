@@ -14,10 +14,9 @@ int kNumFramesForRemoval = 60;
 int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
-CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY)
-: bSoloMode(bSoloMode)
-, activeThresholdY(activeThresholdY)
-, designatedIdx(-1)
+CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY)
+: activeThresholdY(activeThresholdY)
+, primaryIdx(-1)
 {
 
 }
@@ -127,7 +126,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 
                 // process the event if the hand is active AND either
                 // we are NOT in solo mode OR if we are, this hand is the designated cursor
-                if (!bSoloMode || designatedIdx == handIdx) {
+                if (primaryIdx == handIdx) {
                     if (hands[handIdx]->bActive) {
                         newHandState = (k4w::HandState)m.getArgAsInt32(i);
                         hands[handIdx]->poll[newHandState]++;
@@ -152,7 +151,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                         processHandEvent(handIdx, hands[handIdx], k4w::HandState_NotTracked);
                         
                         // unlink it 
-                        designatedIdx = -1;
+                        primaryIdx = -1;
                     }
                 }
                 i++;
@@ -214,8 +213,8 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
             
             // if the hand was the designated cursor, unlink it 
-            if (it->first == designatedIdx) {
-                designatedIdx = -1;
+            if (it->first == primaryIdx) {
+                primaryIdx = -1;
             }
             
             toRemove.push_back(it->first);
@@ -227,7 +226,7 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     }
     
     // look for a new designated cursor if necessary
-    if (designatedIdx == -1) {
+    if (primaryIdx == -1) {
         int candidateIdx = -1;
         int candidateAge =  0;
         float candidateY = -1;
@@ -244,15 +243,15 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 candidateY   = it->second->handJoint.inputPosition.y;
             }
         }
-        designatedIdx = candidateIdx;
+        primaryIdx = candidateIdx;
     }
     
     // set the current position to the designated hand
-    if (designatedIdx == -1) {
+    if (primaryIdx == -1) {
         currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
     }
     else {
-        currentPosition.set(hands[designatedIdx]->handJoint.mappedPosition);
+        currentPosition.set(hands[primaryIdx]->handJoint.mappedPosition);
     }
 }
 
@@ -275,48 +274,48 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
     if (newState == k4w::HandState_Lasso) {
         if (hand->actionState == k4w::ActionState_Lasso) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Lasso;
         }
     }  
     else if (newState == k4w::HandState_Closed) {
         if (hand->actionState == k4w::ActionState_Closed) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
     else if (newState <= k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
-            interactionMoved(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Idle, handIdx);
+            interactionMoved(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Idle, handIdx);
         }
         else {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, hand->actionState, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, hand->actionState, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
     }
 }
 
 void SetCloudsInputKinect(){
-    SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC(false, 0.75f) ));
+    SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC(0.75f) ));
 }
