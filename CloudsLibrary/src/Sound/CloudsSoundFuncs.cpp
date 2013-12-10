@@ -478,41 +478,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // UNUSED
     //
         
-    // TESTLOOP1
-    if (mo=="testloop1")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl1, tempo*64., 0.25, "testloop1");
-        }
-    }
-    
-    // TESTLOOP2
-    if (mo=="testloop2")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl2, tempo*64., 0.25, "testloop2");
-        }
-    }
-    
-    // TESTLOOP3
-    if (mo=="testloop3")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl3, tempo*64., 0.25, "testloop3");
-        }
-    }
-    
-    // BASSLOOP1
-    if (mo=="bassloop1")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64)
-        {
-            SOUNDLOOP(outskip+i, bl1, tempo*64., 0.25, "bassloop1");
-        }
-    }
     
     // REICHOMATIC
     if (mo=="reichomatic")
@@ -542,7 +507,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==arg_a)
+            if(looperSamples[i].bank==arg_b)
             {
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {
@@ -551,7 +516,24 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             }
         }
     }
-    
+
+    // AVIBEATS
+    if (mo=="avibeats")
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==arg_a)
+            {
+                cout << "playing: " << looperSamples[i].handle << endl;
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    SOUNDLOOP(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle);
+                }
+            }
+        }
+    }
+
     //
     // =======================
     // END ORCHESTRATION BLOCK
