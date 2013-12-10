@@ -571,6 +571,34 @@ int melodySolver::tick()
 
 }
 
+//
+// SEQUENCER
+//
+
+cloudsSequencer::cloudsSequencer(string f, vector<lukeNote>& n)
+{
+    string sline;
+    ofFile seqfile (GetCloudsDataPath()+"sound/seqs/" + f);
+    if(!seqfile.exists())
+    {
+        ofLogError("can't find sequence!");
+    }
+    ofBuffer seqbuf(seqfile);
+    while(!seqbuf.isLastLine())
+    {
+        sline = seqbuf.getNextLine();
+        vector<string> temp = ofSplitString(sline, " ");
+        lukeNote foo;
+        foo.starttime = ofToFloat(temp[0])/1000.;
+        foo.pitch = ofToInt(temp[1]);
+        foo.velo = (ofToFloat(temp[2])/128.);
+        foo.dur = ofToFloat(temp[3])/1000.;
+        //cout << foo.starttime << ": " << foo.pitch << " " << foo.velo << " " << foo.dur << endl;
+        n.push_back(foo);
+    }
+}
+
+
 // precompute markov chain for pitch array
 void precomputemarkov(lukePitchArray& p)
 {
