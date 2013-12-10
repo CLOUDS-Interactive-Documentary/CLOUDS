@@ -13,7 +13,7 @@ void main()
 	vec4 pos = texture2DRect( posData, texcoord.st);	
 	vec4 radi = texture2DRect( radiData, texcoord.st); 
 	
-	gl_PointSize = radi.x*radiusMultiplier; 
+	gl_PointSize = radi.x*radiusMultiplier;
 	gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;	
 	gl_FrontColor = gl_Color;     	
 }

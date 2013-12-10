@@ -102,7 +102,7 @@ float snoise(vec3 v)
                                 dot(p2,x2), dot(p3,x3) ) );
 }
 
-
+const float epsilon = 1e-6;
 void main()
 {    
 	vec3 pos =  texture2DRect( posData,  texcoord ).xyz;
@@ -116,11 +116,15 @@ void main()
 
 	vec3 v = vec3(DY-DZ, DZ-DX, DX-DY); 
 
-	float m = length(v); 
-	if(m > limit)
-	{
-		v = normalize(v)*limit; 
-	}	
+	float m = length(v);
+	if(m < epsilon){
+		gl_FragColor = vec4(vel, 1.0);
+	}
+	else{
+		if(m > limit){
+			v = (v/m)*limit;
+		}	
 
-  	gl_FragColor = vec4(vel+v, 1.0); 
+		gl_FragColor = vec4(vel+v, 1.0);
+	}
 }

@@ -99,7 +99,7 @@ void CloudsVisualSystemRGBDVideo::selfDraw(){
 		//ofTranslate(translatedHeadPosition);
 		
 		rgbdPixelToPixelShader.begin();
-		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 0);
+		rgbdPixelToPixelShader.setUniformTexture("texture", player.getTextureReference(), 1);
 		rgbdPixelToPixelShader.setUniform2f("depthPP", videoIntrinsics.depthPP.x,videoIntrinsics.depthPP.y );
 		rgbdPixelToPixelShader.setUniform2f("depthFOV", videoIntrinsics.depthFOV.x,videoIntrinsics.depthFOV.y );
 		rgbdPixelToPixelShader.setUniform1f("minDepth", videoIntrinsics.depthRange.min);

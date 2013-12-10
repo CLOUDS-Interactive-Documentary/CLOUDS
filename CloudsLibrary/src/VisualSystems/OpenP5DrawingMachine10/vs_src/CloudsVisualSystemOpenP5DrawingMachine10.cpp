@@ -244,7 +244,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         ofClear(0);
         updateShader.begin();
         {
-            updateShader.setUniformTexture("posData", updateSrcFbo.getTextureReference(), 0); // Previous position
+            updateShader.setUniformTexture("posData", updateSrcFbo.getTextureReference(), 1); // Previous position
             updateShader.setUniform1f("timestep", timeStepMs / 1000.0f);
             updateShader.setUniform1f("factor", speedFactor);
             updateShader.setUniform1f("maxDist", maxDist);
@@ -264,7 +264,7 @@ void CloudsVisualSystemOpenP5DrawingMachine10::selfUpdate()
         ofSetColor(255, fgAlpha->getPos());
         renderShader.begin();
         {
-            renderShader.setUniformTexture("posTex", updateDstFbo.getTextureReference(), 0);
+            renderShader.setUniformTexture("posTex", updateDstFbo.getTextureReference(), 1);
             renderShader.setUniform2f("screen", (float)renderBuffer.getWidth(), (float)renderBuffer.getHeight());
             
             mesh.draw();

@@ -7,8 +7,8 @@ uniform sampler2DRect accData;
 
 uniform float limit; 
 
-varying vec2 texcoord;	
-
+varying vec2 texcoord;
+const float epsilon = 1e-6;
 void main()
 {    
 	vec3 pos =  texture2DRect( posData,  texcoord ).xyz;
@@ -16,11 +16,15 @@ void main()
  	vec3 acc =  texture2DRect( accData,  texcoord ).xyz;
        	     
 	vec3 a = home - pos; 	
-	float m = length(a); 
-	if(m > limit)
-	{
-		a = normalize(a)*limit; 
-	}	
+	float m = length(a);
+	if(m < epsilon){
+		gl_FragColor = vec4(acc, 1.0);		
+	}
+	else {
+		if(m > limit) {
+			a = (a/m)*limit;
+		}
 
-  	gl_FragColor = vec4(acc+a, 1.0); 
+		gl_FragColor = vec4(acc+a, 1.0);
+	}
 }

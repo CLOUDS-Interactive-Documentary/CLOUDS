@@ -52,6 +52,8 @@ protected:
     map<int, Brush *>   brushes;
     vector<Particle>    particles;
     
+	void drawPaint();
+	
     float   brushWidth;
     float   brushNumber;
     float   brushDamp;

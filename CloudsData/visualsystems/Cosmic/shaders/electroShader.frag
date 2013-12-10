@@ -37,17 +37,21 @@ void main()
 				direction = normalize(direction); 
 				float rad = dist; 
 				dist = pow(dist, 2.);
-				//force += (charge*rad / max(pow( (dist+.01),1.25), epsilon)) * direction;
+				force += (charge*rad / max(pow( (dist+.01),1.25), epsilon)) * direction;
 			}
         }
     }
     
 	
 	float m = length(force);
-	if(m > limit)
-	{
-		force = normalize(force)*limit; 
+	if(m < epsilon){
+	  	gl_FragColor = vec4(acc, 1.0);
 	}
-    
-  	gl_FragColor = vec4(acc-force, 1.0); 
+	else{
+		if(m > limit){
+			force = (force/m)*limit;
+		}
+		
+		gl_FragColor = vec4(acc-force, 1.0);
+	}
 }

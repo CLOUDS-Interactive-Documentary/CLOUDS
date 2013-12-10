@@ -200,8 +200,8 @@ void CloudsVisualSystemRipples::selfUpdate()
     
     ripplesDstFbo.begin();
     ripplesShader.begin();
-    ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 0);
-    ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 1);
+    ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
+    ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 2);
     ripplesShader.setUniform1f("damping", damping / 10.0f + 0.9f);  // 0.9 - 1.0 range
     {
         ofSetColor(tintColor);
