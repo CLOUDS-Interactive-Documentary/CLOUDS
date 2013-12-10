@@ -20,6 +20,10 @@ Brush::Brush(){
     repRad = 5.0;
 }
 
+Brush::~Brush(){
+    clear();
+}
+
 void Brush::setBrushWidth(float _width){
     brushWidth = _width;
     
