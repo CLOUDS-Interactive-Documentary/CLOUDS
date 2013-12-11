@@ -39,10 +39,12 @@ bool Tweeter::hasTweetOnDate(Date d){
         if(tweets[i].tweetDate.day == d.day &&
            tweets[i].tweetDate.month == d.month &&
            tweets[i].tweetDate.year== d.year){
+//      cout<<name <<" has tweets on date "<< d.day<< " , "<<d.month<<" , "<<d.year<<endl;      
             return true;
         }
     }
     
+//    cout<<name <<" has no tweets on date "<< d.day<< " , "<<d.month<<" , "<<d.year<<endl;
     return false;
 }
 

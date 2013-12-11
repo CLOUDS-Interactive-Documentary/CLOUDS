@@ -24,6 +24,9 @@ void CloudsVisualSystemTwitter::selfSetup()
     sprite.loadImage(getVisualSystemDataPath()+"/dot.png");
     meshExpansion = 100;
     pointSize =10;
+    std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
+    currentDateIndex = 0;
+    updateMesh(currentDateIndex);
 //    drawTwitterTimeline();
 }
 
@@ -188,32 +191,60 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	}
 }
 
-void CloudsVisualSystemTwitter::updateMesh(){
-//    vector<<#typename _Tp#>>
+void CloudsVisualSystemTwitter::updateMesh(int index){
+//    vector<\>
+    for(int i= 0; i<linksMesh.getColors().size(); i++){
+        linksMesh.setColor(i, ofFloatColor(1.,0.,0.,0.));
+    }
+    vector<Tweeter> current = getTweetersForDate(index);
+    if(current.size() > 0 ){
+        for (int i = 0; i<current.size(); i++) {
+            for(int k=0; k<current[i].linksById.size(); k++){
+                ofVec3f v1 = linksMesh.getVertex(current[i].vertexindex);
+                linksMesh.setColor(current[i].vertexindex, ofFloatColor(1.,0.,0.,1.));
+
+                Tweeter& t  = getTweeterByID(tweeters,current[i].linksById[k]);
+                ofVec3f v2 = linksMesh.getVertex(t.vertexindex);
+                linksMesh.setColor(current[i].vertexindex, ofFloatColor(1.,0.,0.,1.));
+            }
+            
+        }
+    }
+    else{
+
+    }
+    
+    
+
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
-    
+    int  currentIndex =0;
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
-            tweeters[j].linksById[k];
+            
             
             if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
                 links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
                 
                 linksMesh.addVertex(tweeters[j].position);
                 linksMesh.addNormal(ofVec3f(0,0,0));
-                
+                linksMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+                tweeters[j].vertexindex = currentIndex;
+                currentIndex++;
                 Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
                 linksMesh.addVertex(t.position);
                 linksMesh.addNormal(ofVec3f(0,0,0));
+                linksMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
+                t.vertexindex = currentIndex;
+                currentIndex++;
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
             }
             else{
             }
         }
-        linksMesh.setMode(OF_PRIMITIVE_LINES);
+        linksMesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
 }
@@ -293,6 +324,8 @@ vector<Tweeter> CloudsVisualSystemTwitter::getTweetersForDate(int index){
                    tOnDate.push_back(tweeters[k]);
                }
     }
+    
+    return tOnDate;
 }
 
 void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
@@ -384,28 +417,32 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
+    currentDateIndex = ofGetFrameNum()%dateIndex.size();
+    updateMesh(currentDateIndex);
     glDisable(GL_DEPTH_TEST);
-    /*
-     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+    
+//     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+        ofSetBackgroundColor(0,0,0);
      ofScale(10, 10);
-     clusterShader.begin();
-     clusterShader.setUniformTexture("tex", sprite, 0);
-     clusterShader.setUniform1f("expansion", meshExpansion);
-     clusterShader.setUniform1f("minSize", pointSize);
-     clusterShader.setUniform3f("attractor", 0, 0, 0);
-     clusterShader.setUniform1f("radius", 300.);
-     
-     ofEnablePointSprites();
-     ofDisableArbTex();
-     
-     
-     linksMesh.drawVertices();
+//     clusterShader.begin();
+//     clusterShader.setUniformTexture("tex", sprite, 0);
+//     clusterShader.setUniform1f("expansion", meshExpansion);
+//     clusterShader.setUniform1f("minSize", pointSize);
+//     clusterShader.setUniform3f("attractor", 0, 0, 0);
+//     clusterShader.setUniform1f("radius", 300.);
+//     
+//     ofEnablePointSprites();
+//     ofDisableArbTex();
+    
+    glPointSize(3);
+
+    linksMesh.drawVertices();
      //	clusterShader.end();
-     ofDisablePointSprites();
-     //	ofEnableArbTex();
-     clusterShader.end();
+//     ofDisablePointSprites();
+//     //	ofEnableArbTex();
+//     clusterShader.end();
      //    linksMesh.drawWireframe();
-     */
+    
     
 }
 
@@ -421,7 +458,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     ofSetColor(ofColor::whiteSmoke);
     //    ofDrawBitmapString(ss.str(), 0,0);
-    listFont.drawString(ss.str(), 0, 0);
+//    listFont.drawString(ss.str(), 0, 0);
     //    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }
 
@@ -449,6 +486,30 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     }
     if(args.key == 'j'){
         cout<<ss.str()<<endl;
+    }
+    if(args.key == OF_KEY_LEFT){
+        if(currentDateIndex > dateIndex.size()){
+            
+        }
+        else{
+            currentDateIndex++;
+        }
+        
+        cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
+        updateMesh(currentDateIndex);
+    }
+    if(args.key == OF_KEY_RIGHT){
+        if(currentDateIndex <0){
+            
+        }
+        else{
+            currentDateIndex--;
+        }
+        
+        cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
+        
+        updateMesh(currentDateIndex);
+        
     }
 }
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){

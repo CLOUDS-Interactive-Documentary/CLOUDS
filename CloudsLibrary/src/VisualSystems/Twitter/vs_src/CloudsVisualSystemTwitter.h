@@ -89,7 +89,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void addUsersFromMentions();
     void createPajekNetwork();
     int getUserIdByName(string name);
-    void updateMesh();
+    void updateMesh(int index);
     
     void drawTweetsForDate(int index);
     vector<Tweeter> getTweetersForDate(int index);
@@ -107,7 +107,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string,int>dateIndexMap;
     
     string getDateAsString(Date d);
-    
+    int currentDateIndex;
     
 protected:
     ofTrueTypeFont listFont;

@@ -32,6 +32,7 @@ public:
     string name;
     int ID;
     ofVec3f position;
+    int vertexindex;
     
     vector<Tweet> getTweetsByDate(Date d);
     bool hasTweetOnDate(Date d);
