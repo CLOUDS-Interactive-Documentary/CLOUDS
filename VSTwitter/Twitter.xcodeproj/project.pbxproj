@@ -13,8 +13,8 @@
 		185CE9D1184AB8D300F43977 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C9184AB8D300F43977 /* cluster.vert */; };
 		185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CA184AB8D300F43977 /* gaussianblur.frag */; };
 		185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CB184AB8D300F43977 /* gaussianblur.vert */; };
-		185CE9D4184AB8D300F43977 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CC184AB8D300F43977 /* rgbdcombined.frag */; };
-		185CE9D5184AB8D300F43977 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CD184AB8D300F43977 /* rgbdcombined.vert */; };
+		187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353411858C8B200AC5DEA /* CloudsInput.cpp */; };
+		1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */; };
 		188B661118412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */; };
 		188B668818412F0C00E02CC7 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B666F18412F0C00E02CC7 /* json_reader.cpp */; };
 		188B668918412F0C00E02CC7 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B667118412F0C00E02CC7 /* json_value.cpp */; };
@@ -348,8 +348,11 @@
 		185CE9C9184AB8D300F43977 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
 		185CE9CA184AB8D300F43977 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
 		185CE9CB184AB8D300F43977 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
-		185CE9CC184AB8D300F43977 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
-		185CE9CD184AB8D300F43977 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
+		187353411858C8B200AC5DEA /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		187353421858C8B200AC5DEA /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		187353431858C8B200AC5DEA /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		187353471858C8B200AC5DEA /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTwitter.cpp; sourceTree = "<group>"; };
 		188B661018412BBF00E02CC7 /* CloudsVisualSystemTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTwitter.h; sourceTree = "<group>"; };
 		188B666318412F0C00E02CC7 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
@@ -786,11 +789,22 @@
 				185CE9C9184AB8D300F43977 /* cluster.vert */,
 				185CE9CA184AB8D300F43977 /* gaussianblur.frag */,
 				185CE9CB184AB8D300F43977 /* gaussianblur.vert */,
-				185CE9CC184AB8D300F43977 /* rgbdcombined.frag */,
-				185CE9CD184AB8D300F43977 /* rgbdcombined.vert */,
 			);
 			name = shaders;
 			path = ../../../CloudsLibrary/src/VisualSystems/Twitter/bin/data/shaders;
+			sourceTree = "<group>";
+		};
+		187353401858C8B200AC5DEA /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				187353411858C8B200AC5DEA /* CloudsInput.cpp */,
+				187353421858C8B200AC5DEA /* CloudsInput.h */,
+				187353431858C8B200AC5DEA /* CloudsInputEvents.h */,
+				187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */,
+				187353471858C8B200AC5DEA /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../../CloudsLibrary/src/Input;
 			sourceTree = "<group>";
 		};
 		188B660E18412BBF00E02CC7 /* vs_src */ = {
@@ -1234,6 +1248,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				187353401858C8B200AC5DEA /* Input */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -2095,8 +2110,8 @@
 				185CE9D1184AB8D300F43977 /* cluster.vert in Sources */,
 				185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */,
 				185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */,
-				185CE9D4184AB8D300F43977 /* rgbdcombined.frag in Sources */,
-				185CE9D5184AB8D300F43977 /* rgbdcombined.vert in Sources */,
+				187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */,
+				1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

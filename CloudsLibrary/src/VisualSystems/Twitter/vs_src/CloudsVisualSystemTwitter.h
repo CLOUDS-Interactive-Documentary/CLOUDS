@@ -105,7 +105,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void parseClusterNetwork(string fileName);
     void loadMesh();
     Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
-	
+    void CompareDates(Date d1,Date d2);
+    vector<Date> dateIndex;
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -133,5 +134,9 @@ protected:
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;
+    
+    
+    
+    
 	
 };

@@ -32,7 +32,7 @@ public:
     string name;
     int ID;
     ofVec3f position;
-    
+
     
     
     vector<Tweet> tweets;
