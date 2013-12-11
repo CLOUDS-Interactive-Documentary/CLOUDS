@@ -121,8 +121,8 @@ protected:
     vector<Tweeter> tweeters;
     stringstream ss;
     
-    ofVboMesh mesh;
-    ofVboMesh linksMesh;
+    ofVboMesh nodeMesh;
+    ofVboMesh edgeMesh;
     ofVec3f min,max;
     ofEasyCam cam;
     

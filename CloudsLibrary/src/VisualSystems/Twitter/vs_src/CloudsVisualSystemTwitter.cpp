@@ -27,7 +27,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = 0;
     updateMesh(currentDateIndex);
-//    drawTwitterTimeline();
+    //    drawTwitterTimeline();
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -192,29 +192,33 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 }
 
 void CloudsVisualSystemTwitter::updateMesh(int index){
-//    vector<\>
-    for(int i= 0; i<linksMesh.getColors().size(); i++){
-        linksMesh.setColor(i, ofFloatColor(1.,0.,0.,0.));
+    
+    for(int i= 0; i<nodeMesh.getColors().size(); i++){
+        nodeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
     }
+    
+    for(int i= 0; i<edgeMesh.getColors().size(); i++){
+        edgeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
+    }
+    
     vector<Tweeter> current = getTweetersForDate(index);
     if(current.size() > 0 ){
+        
         for (int i = 0; i<current.size(); i++) {
             for(int k=0; k<current[i].linksById.size(); k++){
-                ofVec3f v1 = linksMesh.getVertex(current[i].vertexindex);
-                linksMesh.setColor(current[i].vertexindex, ofFloatColor(1.,0.,0.,1.));
-
-                Tweeter& t  = getTweeterByID(tweeters,current[i].linksById[k]);
-                ofVec3f v2 = linksMesh.getVertex(t.vertexindex);
-                linksMesh.setColor(current[i].vertexindex, ofFloatColor(1.,0.,0.,1.));
-            }
             
+                edgeMesh.setColor(current[i].edgeVertexIndex, ofFloatColor(1.,0.,0.,1.));
+                
+                Tweeter& t  = getTweeterByID(tweeters,current[i].linksById[k]);
+
+                edgeMesh.setColor(t.edgeVertexIndex, ofFloatColor(1.,0.,0.,1.));
+            }
+        }
+    
+        for (int i=0; i<current.size(); i++) {
+            nodeMesh.setColor(current[i].nodeVertexIndex, ofFloatColor(1.0,1.0,1.0,1.));
         }
     }
-    else{
-
-    }
-    
-    
 
 }
 
@@ -224,28 +228,70 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             
-            
             if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
                 links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
                 
-                linksMesh.addVertex(tweeters[j].position);
-                linksMesh.addNormal(ofVec3f(0,0,0));
-                linksMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
-                tweeters[j].vertexindex = currentIndex;
+                nodeMesh.addVertex(tweeters[j].position);
+                nodeMesh.addNormal(ofVec3f(0,0,0));
+                nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+                tweeters[j].nodeVertexIndex = currentIndex;
+                
+                edgeMesh.addVertex(tweeters[j].position);
+                edgeMesh.addNormal(ofVec3f(0,0,0));
+                edgeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+                tweeters[j].edgeVertexIndex = currentIndex;
+                
                 currentIndex++;
                 Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-                linksMesh.addVertex(t.position);
-                linksMesh.addNormal(ofVec3f(0,0,0));
-                linksMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
-                t.vertexindex = currentIndex;
+                
+                nodeMesh.addVertex(t.position);
+                nodeMesh.addNormal(ofVec3f(0,0,0));
+                nodeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
+                t.nodeVertexIndex = currentIndex;
+                
+                edgeMesh.addVertex(t.position);
+                edgeMesh.addNormal(ofVec3f(0,0,0));
+                edgeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
+                t.edgeVertexIndex = currentIndex;
+                
                 currentIndex++;
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
             }
             else{
             }
         }
-        linksMesh.setMode(OF_PRIMITIVE_POINTS);
+        edgeMesh.setMode(OF_PRIMITIVE_LINES);
+        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
     }
+//    currentIndex = 0;
+//    for(int j=0; j<tweeters.size(); j++){
+//        
+//        for (int k=0; k<tweeters[j].linksById.size(); k++) {
+//            
+//            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
+//                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
+//                
+//                nodeMesh.addVertex(tweeters[j].position);
+//                nodeMesh.addNormal(ofVec3f(0,0,0));
+//                nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+//                
+//                tweeters[j].nodeVertexIndex = currentIndex;
+//                currentIndex++;
+//                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+//                
+//                nodeMesh.addVertex(t.position);
+//                nodeMesh.addNormal(ofVec3f(0,0,0));
+//                nodeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
+//                
+//                t.nodeVertexIndex = currentIndex;
+//                currentIndex++;
+//                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+//            }
+//            else{
+//            }
+//        }
+//        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+//    }
     
 }
 
@@ -318,28 +364,28 @@ int CloudsVisualSystemTwitter:: getUserIdByName(string name){
 
 vector<Tweeter> CloudsVisualSystemTwitter::getTweetersForDate(int index){
     vector<Tweeter> tOnDate;
-
+    
     for(int k=0; k<tweeters.size(); k++){
-               if(tweeters[k].hasTweetOnDate(dateIndex[index])){
-                   tOnDate.push_back(tweeters[k]);
-               }
+        if(tweeters[k].hasTweetOnDate(dateIndex[index])){
+            tOnDate.push_back(tweeters[k]);
+        }
     }
     
     return tOnDate;
 }
 
 void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
-
-        for(int k=0; k<tweeters.size(); k++){
-            vector<Tweet> tweets =  tweeters[k].getTweetsByDate(dateIndex[index]);
+    
+    for(int k=0; k<tweeters.size(); k++){
+        vector<Tweet> tweets =  tweeters[k].getTweetsByDate(dateIndex[index]);
+        
+        if(tweets.size() > 0 ){
             
-            if(tweets.size() > 0 ){
-                
-                for(int j = 0; j<tweets.size(); j++){
-                    ss<<tweets[j].tweet<<" "<<getDateAsString(dateIndex[index])<<endl;
-                }
+            for(int j = 0; j<tweets.size(); j++){
+                ss<<tweets[j].tweet<<" "<<getDateAsString(dateIndex[index])<<endl;
             }
         }
+    }
     
 }
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
@@ -410,6 +456,8 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
+    currentDateIndex = ofGetFrameNum()%dateIndex.size();
+    updateMesh(currentDateIndex);
     
 }
 
@@ -417,31 +465,17 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    currentDateIndex = ofGetFrameNum()%dateIndex.size();
-    updateMesh(currentDateIndex);
-    glDisable(GL_DEPTH_TEST);
     
-//     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-        ofSetBackgroundColor(0,0,0);
-     ofScale(10, 10);
-//     clusterShader.begin();
-//     clusterShader.setUniformTexture("tex", sprite, 0);
-//     clusterShader.setUniform1f("expansion", meshExpansion);
-//     clusterShader.setUniform1f("minSize", pointSize);
-//     clusterShader.setUniform3f("attractor", 0, 0, 0);
-//     clusterShader.setUniform1f("radius", 300.);
-//     
-//     ofEnablePointSprites();
-//     ofDisableArbTex();
+    glDisable(GL_DEPTH_TEST);
+    //     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+    ofSetBackgroundColor(0,0,0);
+    ofScale(10, 10);
     
     glPointSize(3);
-
-    linksMesh.drawVertices();
-     //	clusterShader.end();
-//     ofDisablePointSprites();
-//     //	ofEnableArbTex();
-//     clusterShader.end();
-     //    linksMesh.drawWireframe();
+    
+//    nodeMesh.drawVertices();
+    edgeMesh.draw();
+    
     
     
 }
@@ -458,7 +492,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     ofSetColor(ofColor::whiteSmoke);
     //    ofDrawBitmapString(ss.str(), 0,0);
-//    listFont.drawString(ss.str(), 0, 0);
+    //    listFont.drawString(ss.str(), 0, 0);
     //    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }
 
