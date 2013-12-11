@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		280862381858A90900C51C32 /* Branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808622F1858A90900C51C32 /* Branch.cpp */; };
+		280862391858A90900C51C32 /* Rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862321858A90900C51C32 /* Rule.cpp */; };
+		2808623A1858A90900C51C32 /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862341858A90900C51C32 /* Rules.cpp */; };
+		2808623B1858A90900C51C32 /* RuleSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862361858A90900C51C32 /* RuleSet.cpp */; };
+		280862511858A91600C51C32 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808623D1858A91600C51C32 /* Action.cpp */; };
+		280862521858A91600C51C32 /* CubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808623F1858A91600C51C32 /* CubeAction.cpp */; };
+		280862531858A91600C51C32 /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862411858A91600C51C32 /* IcosphereAction.cpp */; };
+		280862541858A91600C51C32 /* LineAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862431858A91600C51C32 /* LineAction.cpp */; };
+		280862551858A91600C51C32 /* PlaneAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862451858A91600C51C32 /* PlaneAction.cpp */; };
+		280862561858A91600C51C32 /* PointAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862471858A91600C51C32 /* PointAction.cpp */; };
+		280862571858A91600C51C32 /* SphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862491858A91600C51C32 /* SphereAction.cpp */; };
+		280862581858A91600C51C32 /* StopAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808624B1858A91600C51C32 /* StopAction.cpp */; };
+		280862591858A91600C51C32 /* TransformAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808624D1858A91600C51C32 /* TransformAction.cpp */; };
+		2808625A1858A91600C51C32 /* TubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808624F1858A91600C51C32 /* TubeAction.cpp */; };
 		285817FA185883EF004C6EFD /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285817F3185883EF004C6EFD /* CloudsInput.cpp */; };
 		285817FB185883EF004C6EFD /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285817F6185883EF004C6EFD /* CloudsInputKinectOSC.cpp */; };
 		285817FC185883EF004C6EFD /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285817F8185883EF004C6EFD /* CloudsInputMouse.cpp */; };
@@ -46,20 +60,6 @@
 		285C20AF182FFFEE0065BCAE /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2093182FFFEE0065BCAE /* VerticalTiltShifPass.cpp */; };
 		285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */; };
 		28B033D4184BD40F009B9099 /* CloudsVisualSystemFlying.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */; };
-		28B033E0184BD444009B9099 /* Branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033D7184BD444009B9099 /* Branch.cpp */; };
-		28B033E1184BD444009B9099 /* Rule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033DA184BD444009B9099 /* Rule.cpp */; };
-		28B033E2184BD444009B9099 /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033DC184BD444009B9099 /* Rules.cpp */; };
-		28B033E3184BD444009B9099 /* RuleSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033DE184BD444009B9099 /* RuleSet.cpp */; };
-		28B033F9184BD452009B9099 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033E5184BD452009B9099 /* Action.cpp */; };
-		28B033FA184BD452009B9099 /* CubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033E7184BD452009B9099 /* CubeAction.cpp */; };
-		28B033FB184BD452009B9099 /* IcosphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033E9184BD452009B9099 /* IcosphereAction.cpp */; };
-		28B033FC184BD452009B9099 /* LineAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033EB184BD452009B9099 /* LineAction.cpp */; };
-		28B033FD184BD452009B9099 /* PlaneAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033ED184BD452009B9099 /* PlaneAction.cpp */; };
-		28B033FE184BD452009B9099 /* PointAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033EF184BD452009B9099 /* PointAction.cpp */; };
-		28B033FF184BD452009B9099 /* SphereAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033F1184BD452009B9099 /* SphereAction.cpp */; };
-		28B03400184BD452009B9099 /* StopAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033F3184BD452009B9099 /* StopAction.cpp */; };
-		28B03401184BD452009B9099 /* TransformAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033F5184BD452009B9099 /* TransformAction.cpp */; };
-		28B03402184BD452009B9099 /* TubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033F7184BD452009B9099 /* TubeAction.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -190,6 +190,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2808622F1858A90900C51C32 /* Branch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Branch.cpp; path = ../../Rulez/vs_src/ofxRules/src/Branch.cpp; sourceTree = "<group>"; };
+		280862301858A90900C51C32 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Branch.h; path = ../../Rulez/vs_src/ofxRules/src/Branch.h; sourceTree = "<group>"; };
+		280862311858A90900C51C32 /* ofxRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxRules.h; path = ../../Rulez/vs_src/ofxRules/src/ofxRules.h; sourceTree = "<group>"; };
+		280862321858A90900C51C32 /* Rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rule.cpp; path = ../../Rulez/vs_src/ofxRules/src/Rule.cpp; sourceTree = "<group>"; };
+		280862331858A90900C51C32 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = ../../Rulez/vs_src/ofxRules/src/Rule.h; sourceTree = "<group>"; };
+		280862341858A90900C51C32 /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rules.cpp; path = ../../Rulez/vs_src/ofxRules/src/Rules.cpp; sourceTree = "<group>"; };
+		280862351858A90900C51C32 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rules.h; path = ../../Rulez/vs_src/ofxRules/src/Rules.h; sourceTree = "<group>"; };
+		280862361858A90900C51C32 /* RuleSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RuleSet.cpp; path = ../../Rulez/vs_src/ofxRules/src/RuleSet.cpp; sourceTree = "<group>"; };
+		280862371858A90900C51C32 /* RuleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RuleSet.h; path = ../../Rulez/vs_src/ofxRules/src/RuleSet.h; sourceTree = "<group>"; };
+		2808623D1858A91600C51C32 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/Action.cpp; sourceTree = "<group>"; };
+		2808623E1858A91600C51C32 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = ../../Rulez/vs_src/ofxRules/src/actions/Action.h; sourceTree = "<group>"; };
+		2808623F1858A91600C51C32 /* CubeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/CubeAction.cpp; sourceTree = "<group>"; };
+		280862401858A91600C51C32 /* CubeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/CubeAction.h; sourceTree = "<group>"; };
+		280862411858A91600C51C32 /* IcosphereAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IcosphereAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/IcosphereAction.cpp; sourceTree = "<group>"; };
+		280862421858A91600C51C32 /* IcosphereAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IcosphereAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/IcosphereAction.h; sourceTree = "<group>"; };
+		280862431858A91600C51C32 /* LineAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LineAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/LineAction.cpp; sourceTree = "<group>"; };
+		280862441858A91600C51C32 /* LineAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/LineAction.h; sourceTree = "<group>"; };
+		280862451858A91600C51C32 /* PlaneAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlaneAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/PlaneAction.cpp; sourceTree = "<group>"; };
+		280862461858A91600C51C32 /* PlaneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaneAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/PlaneAction.h; sourceTree = "<group>"; };
+		280862471858A91600C51C32 /* PointAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/PointAction.cpp; sourceTree = "<group>"; };
+		280862481858A91600C51C32 /* PointAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/PointAction.h; sourceTree = "<group>"; };
+		280862491858A91600C51C32 /* SphereAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SphereAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/SphereAction.cpp; sourceTree = "<group>"; };
+		2808624A1858A91600C51C32 /* SphereAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SphereAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/SphereAction.h; sourceTree = "<group>"; };
+		2808624B1858A91600C51C32 /* StopAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StopAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/StopAction.cpp; sourceTree = "<group>"; };
+		2808624C1858A91600C51C32 /* StopAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/StopAction.h; sourceTree = "<group>"; };
+		2808624D1858A91600C51C32 /* TransformAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransformAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/TransformAction.cpp; sourceTree = "<group>"; };
+		2808624E1858A91600C51C32 /* TransformAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransformAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/TransformAction.h; sourceTree = "<group>"; };
+		2808624F1858A91600C51C32 /* TubeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TubeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/TubeAction.cpp; sourceTree = "<group>"; };
+		280862501858A91600C51C32 /* TubeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TubeAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/TubeAction.h; sourceTree = "<group>"; };
 		285185DB1837D0AE009D8339 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		285817F3185883EF004C6EFD /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
 		285817F4185883EF004C6EFD /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
@@ -279,35 +308,6 @@
 		285C2096182FFFEE0065BCAE /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
 		28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlying.cpp; sourceTree = "<group>"; };
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
-		28B033D7184BD444009B9099 /* Branch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Branch.cpp; path = ofxRules/src/Branch.cpp; sourceTree = "<group>"; };
-		28B033D8184BD444009B9099 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Branch.h; path = ofxRules/src/Branch.h; sourceTree = "<group>"; };
-		28B033D9184BD444009B9099 /* ofxRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxRules.h; path = ofxRules/src/ofxRules.h; sourceTree = "<group>"; };
-		28B033DA184BD444009B9099 /* Rule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rule.cpp; path = ofxRules/src/Rule.cpp; sourceTree = "<group>"; };
-		28B033DB184BD444009B9099 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = ofxRules/src/Rule.h; sourceTree = "<group>"; };
-		28B033DC184BD444009B9099 /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rules.cpp; path = ofxRules/src/Rules.cpp; sourceTree = "<group>"; };
-		28B033DD184BD444009B9099 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rules.h; path = ofxRules/src/Rules.h; sourceTree = "<group>"; };
-		28B033DE184BD444009B9099 /* RuleSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RuleSet.cpp; path = ofxRules/src/RuleSet.cpp; sourceTree = "<group>"; };
-		28B033DF184BD444009B9099 /* RuleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RuleSet.h; path = ofxRules/src/RuleSet.h; sourceTree = "<group>"; };
-		28B033E5184BD452009B9099 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = ofxRules/src/actions/Action.cpp; sourceTree = "<group>"; };
-		28B033E6184BD452009B9099 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = ofxRules/src/actions/Action.h; sourceTree = "<group>"; };
-		28B033E7184BD452009B9099 /* CubeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeAction.cpp; path = ofxRules/src/actions/CubeAction.cpp; sourceTree = "<group>"; };
-		28B033E8184BD452009B9099 /* CubeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAction.h; path = ofxRules/src/actions/CubeAction.h; sourceTree = "<group>"; };
-		28B033E9184BD452009B9099 /* IcosphereAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IcosphereAction.cpp; path = ofxRules/src/actions/IcosphereAction.cpp; sourceTree = "<group>"; };
-		28B033EA184BD452009B9099 /* IcosphereAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IcosphereAction.h; path = ofxRules/src/actions/IcosphereAction.h; sourceTree = "<group>"; };
-		28B033EB184BD452009B9099 /* LineAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LineAction.cpp; path = ofxRules/src/actions/LineAction.cpp; sourceTree = "<group>"; };
-		28B033EC184BD452009B9099 /* LineAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineAction.h; path = ofxRules/src/actions/LineAction.h; sourceTree = "<group>"; };
-		28B033ED184BD452009B9099 /* PlaneAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlaneAction.cpp; path = ofxRules/src/actions/PlaneAction.cpp; sourceTree = "<group>"; };
-		28B033EE184BD452009B9099 /* PlaneAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaneAction.h; path = ofxRules/src/actions/PlaneAction.h; sourceTree = "<group>"; };
-		28B033EF184BD452009B9099 /* PointAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointAction.cpp; path = ofxRules/src/actions/PointAction.cpp; sourceTree = "<group>"; };
-		28B033F0184BD452009B9099 /* PointAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointAction.h; path = ofxRules/src/actions/PointAction.h; sourceTree = "<group>"; };
-		28B033F1184BD452009B9099 /* SphereAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SphereAction.cpp; path = ofxRules/src/actions/SphereAction.cpp; sourceTree = "<group>"; };
-		28B033F2184BD452009B9099 /* SphereAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SphereAction.h; path = ofxRules/src/actions/SphereAction.h; sourceTree = "<group>"; };
-		28B033F3184BD452009B9099 /* StopAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StopAction.cpp; path = ofxRules/src/actions/StopAction.cpp; sourceTree = "<group>"; };
-		28B033F4184BD452009B9099 /* StopAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopAction.h; path = ofxRules/src/actions/StopAction.h; sourceTree = "<group>"; };
-		28B033F5184BD452009B9099 /* TransformAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransformAction.cpp; path = ofxRules/src/actions/TransformAction.cpp; sourceTree = "<group>"; };
-		28B033F6184BD452009B9099 /* TransformAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransformAction.h; path = ofxRules/src/actions/TransformAction.h; sourceTree = "<group>"; };
-		28B033F7184BD452009B9099 /* TubeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TubeAction.cpp; path = ofxRules/src/actions/TubeAction.cpp; sourceTree = "<group>"; };
-		28B033F8184BD452009B9099 /* TubeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TubeAction.h; path = ofxRules/src/actions/TubeAction.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -583,6 +583,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2808623C1858A90C00C51C32 /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				2808623D1858A91600C51C32 /* Action.cpp */,
+				2808623E1858A91600C51C32 /* Action.h */,
+				2808623F1858A91600C51C32 /* CubeAction.cpp */,
+				280862401858A91600C51C32 /* CubeAction.h */,
+				280862411858A91600C51C32 /* IcosphereAction.cpp */,
+				280862421858A91600C51C32 /* IcosphereAction.h */,
+				280862431858A91600C51C32 /* LineAction.cpp */,
+				280862441858A91600C51C32 /* LineAction.h */,
+				280862451858A91600C51C32 /* PlaneAction.cpp */,
+				280862461858A91600C51C32 /* PlaneAction.h */,
+				280862471858A91600C51C32 /* PointAction.cpp */,
+				280862481858A91600C51C32 /* PointAction.h */,
+				280862491858A91600C51C32 /* SphereAction.cpp */,
+				2808624A1858A91600C51C32 /* SphereAction.h */,
+				2808624B1858A91600C51C32 /* StopAction.cpp */,
+				2808624C1858A91600C51C32 /* StopAction.h */,
+				2808624D1858A91600C51C32 /* TransformAction.cpp */,
+				2808624E1858A91600C51C32 /* TransformAction.h */,
+				2808624F1858A91600C51C32 /* TubeAction.cpp */,
+				280862501858A91600C51C32 /* TubeAction.h */,
+			);
+			name = actions;
+			sourceTree = "<group>";
+		};
 		285817F2185883E5004C6EFD /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,45 +816,18 @@
 		28B033D6184BD438009B9099 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				28B033E4184BD448009B9099 /* actions */,
-				28B033D7184BD444009B9099 /* Branch.cpp */,
-				28B033D8184BD444009B9099 /* Branch.h */,
-				28B033D9184BD444009B9099 /* ofxRules.h */,
-				28B033DA184BD444009B9099 /* Rule.cpp */,
-				28B033DB184BD444009B9099 /* Rule.h */,
-				28B033DC184BD444009B9099 /* Rules.cpp */,
-				28B033DD184BD444009B9099 /* Rules.h */,
-				28B033DE184BD444009B9099 /* RuleSet.cpp */,
-				28B033DF184BD444009B9099 /* RuleSet.h */,
+				2808623C1858A90C00C51C32 /* actions */,
+				2808622F1858A90900C51C32 /* Branch.cpp */,
+				280862301858A90900C51C32 /* Branch.h */,
+				280862311858A90900C51C32 /* ofxRules.h */,
+				280862321858A90900C51C32 /* Rule.cpp */,
+				280862331858A90900C51C32 /* Rule.h */,
+				280862341858A90900C51C32 /* Rules.cpp */,
+				280862351858A90900C51C32 /* Rules.h */,
+				280862361858A90900C51C32 /* RuleSet.cpp */,
+				280862371858A90900C51C32 /* RuleSet.h */,
 			);
 			name = src;
-			sourceTree = "<group>";
-		};
-		28B033E4184BD448009B9099 /* actions */ = {
-			isa = PBXGroup;
-			children = (
-				28B033E5184BD452009B9099 /* Action.cpp */,
-				28B033E6184BD452009B9099 /* Action.h */,
-				28B033E7184BD452009B9099 /* CubeAction.cpp */,
-				28B033E8184BD452009B9099 /* CubeAction.h */,
-				28B033E9184BD452009B9099 /* IcosphereAction.cpp */,
-				28B033EA184BD452009B9099 /* IcosphereAction.h */,
-				28B033EB184BD452009B9099 /* LineAction.cpp */,
-				28B033EC184BD452009B9099 /* LineAction.h */,
-				28B033ED184BD452009B9099 /* PlaneAction.cpp */,
-				28B033EE184BD452009B9099 /* PlaneAction.h */,
-				28B033EF184BD452009B9099 /* PointAction.cpp */,
-				28B033F0184BD452009B9099 /* PointAction.h */,
-				28B033F1184BD452009B9099 /* SphereAction.cpp */,
-				28B033F2184BD452009B9099 /* SphereAction.h */,
-				28B033F3184BD452009B9099 /* StopAction.cpp */,
-				28B033F4184BD452009B9099 /* StopAction.h */,
-				28B033F5184BD452009B9099 /* TransformAction.cpp */,
-				28B033F6184BD452009B9099 /* TransformAction.h */,
-				28B033F7184BD452009B9099 /* TubeAction.cpp */,
-				28B033F8184BD452009B9099 /* TubeAction.h */,
-			);
-			name = actions;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -1575,16 +1575,17 @@
 				E7846FBD1714899C00705E7A /* tinyxml.cpp in Sources */,
 				E7846FBE1714899C00705E7A /* tinyxmlerror.cpp in Sources */,
 				E7846FBF1714899C00705E7A /* tinyxmlparser.cpp in Sources */,
+				280862511858A91600C51C32 /* Action.cpp in Sources */,
 				E7846FC01714899C00705E7A /* ofxXmlSettings.cpp in Sources */,
 				E7D32FA01751C626006706ED /* ofxBehavior.cpp in Sources */,
-				28B033E2184BD444009B9099 /* Rules.cpp in Sources */,
 				E7D32FA11751C626006706ED /* ofxBufferEffectorBehavior.cpp in Sources */,
 				E7D32FA21751C626006706ED /* ofxDamperBehavior.cpp in Sources */,
-				28B033FD184BD452009B9099 /* PlaneAction.cpp in Sources */,
+				280862551858A91600C51C32 /* PlaneAction.cpp in Sources */,
 				E7D32FA31751C626006706ED /* ofxDistorterBehavior.cpp in Sources */,
 				E7D32FA41751C626006706ED /* ofxElectroStaticBehavior.cpp in Sources */,
-				28B03400184BD452009B9099 /* StopAction.cpp in Sources */,
+				280862531858A91600C51C32 /* IcosphereAction.cpp in Sources */,
 				E7D32FA51751C626006706ED /* ofxField2D.cpp in Sources */,
+				280862541858A91600C51C32 /* LineAction.cpp in Sources */,
 				E7D32FA61751C626006706ED /* ofxHomingBehavior.cpp in Sources */,
 				E7D32FA71751C626006706ED /* ofxPerlinBehavior.cpp in Sources */,
 				E7D32FA81751C626006706ED /* ofxRParticle.cpp in Sources */,
@@ -1595,31 +1596,28 @@
 				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
 				E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */,
+				280862591858A91600C51C32 /* TransformAction.cpp in Sources */,
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
 				2858182B1858841A004C6EFD /* NetworkingUtils.cpp in Sources */,
-				28B033F9184BD452009B9099 /* Action.cpp in Sources */,
-				28B03402184BD452009B9099 /* TubeAction.cpp in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
 				2858182F1858841A004C6EFD /* OscReceivedElements.cpp in Sources */,
-				28B033E0184BD444009B9099 /* Branch.cpp in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
+				2808623B1858A90900C51C32 /* RuleSet.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
-				28B033FA184BD452009B9099 /* CubeAction.cpp in Sources */,
 				E7CF78491753FEA1006B7D41 /* ofxTLAudioTrack.cpp in Sources */,
-				28B033FB184BD452009B9099 /* IcosphereAction.cpp in Sources */,
 				2858182E1858841A004C6EFD /* OscPrintReceivedElements.cpp in Sources */,
 				E7CF784A1753FEA1006B7D41 /* ofxTLBangs.cpp in Sources */,
 				E7CF784B1753FEA1006B7D41 /* ofxTLCameraTrack.cpp in Sources */,
+				2808623A1858A90900C51C32 /* Rules.cpp in Sources */,
 				E7CF784C1753FEA1006B7D41 /* ofxTLColors.cpp in Sources */,
 				E7CF784D1753FEA1006B7D41 /* ofxTLColorTrack.cpp in Sources */,
 				E7CF784E1753FEA1006B7D41 /* ofxTLCurves.cpp in Sources */,
 				E7CF784F1753FEA1006B7D41 /* ofxTLEmptyKeyframes.cpp in Sources */,
-				28B033FC184BD452009B9099 /* LineAction.cpp in Sources */,
 				E7CF78501753FEA1006B7D41 /* ofxTLEmptyTrack.cpp in Sources */,
 				E7CF78511753FEA1006B7D41 /* ofxTLFlags.cpp in Sources */,
 				E7CF78521753FEA1006B7D41 /* ofxTLImageSequence.cpp in Sources */,
@@ -1631,21 +1629,24 @@
 				E7CF78581753FEA1006B7D41 /* ofxTLPage.cpp in Sources */,
 				E7CF78591753FEA1006B7D41 /* ofxTLPageTabs.cpp in Sources */,
 				E7CF785A1753FEA1006B7D41 /* ofxTLSwitches.cpp in Sources */,
+				280862391858A90900C51C32 /* Rule.cpp in Sources */,
 				28B033D4184BD40F009B9099 /* CloudsVisualSystemFlying.cpp in Sources */,
+				280862381858A90900C51C32 /* Branch.cpp in Sources */,
 				E7CF785B1753FEA1006B7D41 /* ofxTLTicker.cpp in Sources */,
 				E7CF785C1753FEA1006B7D41 /* ofxTLTrack.cpp in Sources */,
 				E7CF785D1753FEA1006B7D41 /* ofxTLTrackHeader.cpp in Sources */,
+				2808625A1858A91600C51C32 /* TubeAction.cpp in Sources */,
 				E7CF785E1753FEA1006B7D41 /* ofxTLVideoThumb.cpp in Sources */,
 				E7CF785F1753FEA1006B7D41 /* ofxTLVideoTrack.cpp in Sources */,
 				E7CF78601753FEA1006B7D41 /* ofxTLZoomer.cpp in Sources */,
 				E7CF78891753FEC0006B7D41 /* ofxTimecode.cpp in Sources */,
 				E7CF78C61753FECA006B7D41 /* ofxEasing.cpp in Sources */,
 				2858182C1858841A004C6EFD /* UdpSocket.cpp in Sources */,
+				280862571858A91600C51C32 /* SphereAction.cpp in Sources */,
 				2858182D1858841A004C6EFD /* OscOutboundPacketStream.cpp in Sources */,
 				E7CF78C71753FECA006B7D41 /* ofxEasingBack.cpp in Sources */,
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,
-				28B033FF184BD452009B9099 /* SphereAction.cpp in Sources */,
 				E7CF78CA1753FECA006B7D41 /* ofxEasingCubic.cpp in Sources */,
 				285817FC185883EF004C6EFD /* CloudsInputMouse.cpp in Sources */,
 				2858182A1858841A004C6EFD /* IpEndpointName.cpp in Sources */,
@@ -1659,7 +1660,7 @@
 				E7CF78D21753FECA006B7D41 /* ofxTween.cpp in Sources */,
 				E7CF78F91753FEEC006B7D41 /* ofxMSATimer.cpp in Sources */,
 				E7CF79101753FF32006B7D41 /* ofxTextInputField.cpp in Sources */,
-				28B033E3184BD444009B9099 /* RuleSet.cpp in Sources */,
+				280862561858A91600C51C32 /* PointAction.cpp in Sources */,
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				285817FA185883EF004C6EFD /* CloudsInput.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
@@ -1683,19 +1684,18 @@
 				285C20A7182FFFEE0065BCAE /* NoiseWarpPass.cpp in Sources */,
 				285C20A8182FFFEE0065BCAE /* PixelatePass.cpp in Sources */,
 				285817FB185883EF004C6EFD /* CloudsInputKinectOSC.cpp in Sources */,
+				280862581858A91600C51C32 /* StopAction.cpp in Sources */,
 				285C20A9182FFFEE0065BCAE /* PostProcessing.cpp in Sources */,
 				285C20AA182FFFEE0065BCAE /* RenderPass.cpp in Sources */,
+				280862521858A91600C51C32 /* CubeAction.cpp in Sources */,
 				285C20AB182FFFEE0065BCAE /* RGBShiftPass.cpp in Sources */,
-				28B033E1184BD444009B9099 /* Rule.cpp in Sources */,
 				285C20AC182FFFEE0065BCAE /* RimHighlightingPass.cpp in Sources */,
 				285C20AD182FFFEE0065BCAE /* SSAOPass.cpp in Sources */,
 				285818301858841A004C6EFD /* OscTypes.cpp in Sources */,
 				285C20AE182FFFEE0065BCAE /* ToonPass.cpp in Sources */,
-				28B033FE184BD452009B9099 /* PointAction.cpp in Sources */,
 				285818261858841A004C6EFD /* ofxOscBundle.cpp in Sources */,
 				285C20AF182FFFEE0065BCAE /* VerticalTiltShifPass.cpp in Sources */,
 				285818271858841A004C6EFD /* ofxOscMessage.cpp in Sources */,
-				28B03401184BD452009B9099 /* TransformAction.cpp in Sources */,
 				285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */,
 				E7F37DF71852DF0F0087F91C /* floor.frag in Sources */,
 				E7F37DF81852DF0F0087F91C /* floor.vert in Sources */,
