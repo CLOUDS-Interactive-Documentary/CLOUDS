@@ -138,7 +138,7 @@ namespace k4w
 class CloudsInputKinectOSC : public CloudsInput
 {
 public:
-    CloudsInputKinectOSC(float activeThresholdY = 1.0f);
+    CloudsInputKinectOSC(float activeThresholdY, float activeThresholdZ);
     
 	virtual void enable();
 	virtual void disable();
@@ -150,13 +150,12 @@ public:
     
     ofxOscReceiver receiver;
     int lastOscFrame;
-    
     int primaryIdx;
-    
     float activeThresholdY;
+    float activeThresholdZ;
     
     map<int, k4w::Body *> bodies;
     map<int, k4w::Hand *> hands;
 };
 
-void SetCloudsInputKinect(float activeThresholdY = 1.0f);
+void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);

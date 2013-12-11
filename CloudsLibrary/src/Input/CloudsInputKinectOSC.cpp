@@ -14,8 +14,9 @@ int kNumFramesForRemoval = 60;
 int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
-CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY)
+CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeThresholdZ)
 : activeThresholdY(activeThresholdY)
+, activeThresholdZ(activeThresholdZ)
 , primaryIdx(-1)
 {
 
@@ -44,19 +45,23 @@ void CloudsInputKinectOSC::disable()
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::update(ofEventArgs& args)
 {
-	// check for waiting messages
+    // check for waiting messages
     while (receiver.hasWaitingMessages()) {
-        lastOscFrame = ofGetFrameNum();
-        
 		// get the next message
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
         bool bRecognized = true;
         
-        k4w::HandState newHandState;
-        
 		if (m.getAddress() == "/playerData") {
+            // set up all the working vars
+            k4w::HandState newHandState;
+            lastOscFrame = ofGetFrameNum();
+
+            float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
+            bool bDoProximity = (activeThresholdZ != 1);
+            float activeThresholdPosZ = ofMap(activeThresholdZ, 0, 1, 0, -1);
+
             int i = 0;
 			int idx = m.getArgAsInt32(i++);
                         
@@ -102,7 +107,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             bodies[idx]->age++;
             
             // process the hand data
-            float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
             for (int j = 0; j < 2; j++) {
                 int handIdx = idx * 2 + j;
                 
@@ -131,7 +135,19 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 }
                 
                 // process the event
-                newHandState = (k4w::HandState)m.getArgAsInt32(i++);
+                if (bDoProximity) {
+                    // ignore the incoming state and use proximity
+                    if (hands[handIdx]->handJoint.localPosition.z < activeThresholdPosZ) {
+                        newHandState = k4w::HandState_Lasso;
+                    }
+                    else {
+                        newHandState = k4w::HandState_Open;
+                    }
+                    i++;  // bump the message index
+                }
+                else {
+                    newHandState = (k4w::HandState)m.getArgAsInt32(i++);
+                }
                 hands[handIdx]->poll[newHandState]++;
                 if (hands[handIdx]->poll[newHandState] >= kPollThreshold) {
                     // boom! new state achieved
@@ -322,7 +338,7 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
 }
 
 //--------------------------------------------------------------
-void SetCloudsInputKinect(float activeThresholdY)
+void SetCloudsInputKinect(float activeThresholdY, float activeThresholdZ)
 {
-    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY)));
+    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY, activeThresholdZ)));
 }
