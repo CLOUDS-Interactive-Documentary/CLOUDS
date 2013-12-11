@@ -52,7 +52,7 @@ void main(){
 	rotUV =	clamp( rotUV, vec2(0.), vec2(1.) );
 	
 	//depth
-	float depthVal = 1.;//1. - pow( linearizeDepth( gl_FragCoord.z ), 2.);
+	float depthVal = 1. - pow( linearizeDepth( gl_FragCoord.z ), 2.);
 	
 	//texture sampling
 	int textureIndex = int(floor(tIndex));
@@ -71,6 +71,5 @@ void main(){
 	}
 	
 	//color
-	gl_FragColor = color;// * depthVal * (attenuation * .5 + .5);
-	
+	gl_FragColor = color * depthVal;// * (attenuation * .5 + .5);
 }

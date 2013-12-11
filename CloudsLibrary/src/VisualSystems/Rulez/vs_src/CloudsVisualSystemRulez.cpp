@@ -138,9 +138,16 @@ void CloudsVisualSystemRulez::selfSetupRenderGui()
 
 void CloudsVisualSystemRulez::saveMesh()
 {
-    ofFileDialogResult result = ofSystemSaveDialog("mesh", "Export mesh to obj file");
-    ofxObjLoader saver;
-    saver.save(result.getPath(), structure->getMeshRef());
+    ofFileDialogResult result = ofSystemSaveDialog("mesh", "Export mesh to ply file");
+    if (structure)
+    {
+        ostringstream oss;
+        oss << result.getPath();
+        if (result.getPath().find(".ply") == string::npos) oss << ".ply";
+        structure->getMeshRef().save(oss.str());
+    }
+    //ofxObjLoader saver;
+    //saver.save(result.getPath(), structure->getMeshRef());
 }
 
 void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
