@@ -215,6 +215,11 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     for (int i = 0; i < toRemove.size(); i++) {
         delete hands[toRemove[i]];
         hands.erase(toRemove[i]);
+        
+        if (inputPoints.find(toRemove[i]) != inputPoints.end()) {
+            // also remove the matching input point
+            inputPoints.erase(toRemove[i]);
+        }
     }
     
     // unlink the primary cursor if it's been inactive for too long

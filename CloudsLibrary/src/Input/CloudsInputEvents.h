@@ -17,6 +17,8 @@
 
 class CloudsInteractionEventArgs : public ofEventArgs {
 public:
+    CloudsInteractionEventArgs()
+    	: position(ofVec3f()), primary(false), actionType(-1), playerId(-1){}
 	CloudsInteractionEventArgs(ofVec3f position, bool primary = false, int actionType = 0, int playerId = 0)
 		: position(position), primary(primary), actionType(actionType), playerId(playerId){}
 	
