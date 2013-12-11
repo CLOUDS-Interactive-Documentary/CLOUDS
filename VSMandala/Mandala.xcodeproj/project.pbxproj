@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5007CE911856D83600FFBB17 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5007CE8E1856D83600FFBB17 /* CloudsInput.cpp */; };
 		502DD87E18202B39009096FD /* noduleShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 502DD87D18202B39009096FD /* noduleShader.vert */; };
 		502DD88018202B44009096FD /* noduleShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 502DD87F18202B44009096FD /* noduleShader.frag */; };
 		5043F69318289EF200764574 /* simple.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5043F69118289EF200764574 /* simple.frag */; };
@@ -150,6 +151,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5007CE8E1856D83600FFBB17 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
+		5007CE8F1856D83600FFBB17 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
+		5007CE901856D83600FFBB17 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
 		502DD87D18202B39009096FD /* noduleShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.vert; sourceTree = "<group>"; };
 		502DD87F18202B44009096FD /* noduleShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noduleShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5043F69118289EF200764574 /* simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simple.frag; sourceTree = "<group>"; };
@@ -2388,6 +2392,9 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				5007CE8E1856D83600FFBB17 /* CloudsInput.cpp */,
+				5007CE8F1856D83600FFBB17 /* CloudsInput.h */,
+				5007CE901856D83600FFBB17 /* CloudsInputEvents.h */,
 				5055DDC7181ED75100761DA0 /* MandalaVisualSystem */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -2570,6 +2577,7 @@
 				50E89B40182560A300BFD711 /* ribbonShader.vert in Sources */,
 				5043F69318289EF200764574 /* simple.frag in Sources */,
 				5043F69418289EF200764574 /* simple.vert in Sources */,
+				5007CE911856D83600FFBB17 /* CloudsInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
