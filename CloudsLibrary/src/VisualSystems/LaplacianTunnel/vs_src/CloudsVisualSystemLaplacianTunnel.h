@@ -104,15 +104,12 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	ofVec3f min;
 	ofVec3f max;
 	ofVec3f center;
-	
 	int loadMesh(ofVbo &vbo, string path);
 	
 	
 	ofCamera tunnelCam;
 	ofxUISuperCanvas* customGui;
 	int frameCount;
-	float startTime;
-	float fps;
 	float fogDensity;
 	int numReplications;
 	float replicationOffset;

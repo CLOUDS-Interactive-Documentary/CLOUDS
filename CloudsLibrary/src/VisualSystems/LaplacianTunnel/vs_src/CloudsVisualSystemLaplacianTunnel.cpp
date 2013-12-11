@@ -133,6 +133,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	
 	sort(vbos.begin(), vbos.end(), meshsort);
 	
+	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -146,9 +147,8 @@ void CloudsVisualSystemLaplacianTunnel::selfPresetLoaded(string presetPath){
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemLaplacianTunnel::selfBegin(){
-	tunnelCam.setPosition(center - ofVec3f(0,300,0));
+	tunnelCam.setPosition(center + ofVec3f(0,(max.y - min.y)*.5,0));
 	tunnelCam.lookAt(center, ofVec3f(1,0,0));
-	startTime = ofGetElapsedTimef();
 }
 
 //do things like ofRotate/ofTranslate here
@@ -159,14 +159,13 @@ void CloudsVisualSystemLaplacianTunnel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
-	//tunnelCam.dolly(-cameraSpeed);
+
 	tunnelCam.setPosition( ofVec3f(tunnelCam.getPosition().x,
 								   tunnelCam.getPosition().y + cameraSpeed,
 								   tunnelCam.getPosition().z) );
 	
 	externalCam.setTarget(tunnelCam.getPosition());
 
-//	cout  << "cam y pos " << tunnelCam.getPosition() << endl;
 	
 	ofVec2f targetLookAngle;
 	targetLookAngle.x = ofMap(GetCloudsInputX(), 0, ofGetWidth(), -maxLookAngle,maxLookAngle);
@@ -208,14 +207,13 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		
 		ofEnableAlphaBlending();
 
-		int vboIndex = int( (ofGetElapsedTimef() - startTime) * fps) % vbos.size() ;
-		
 		headlight.enable();
 		float spread = (max.y - min.y);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
 		mat->begin();
-
+		ofSetColor(255);
+		
 		for(int i = 0; i < numReplications; i++){
 			ofPushMatrix();
 			glPointSize(2);
@@ -235,11 +233,9 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 				}
 			}
 			else{
-				index = int(ofMap(cameraoffset, 0, -spread*numReplications, 1.0, 0.0, true) * (vbos.size()-1));
+				index = int( ofMap(cameraoffset, 0, -spread*numReplications, vbos.size()-1, 0.0, true) );
 			}
 			
-			
-			ofSetColor(255);
 			if(bDrawPoints){
 				vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
 			}
