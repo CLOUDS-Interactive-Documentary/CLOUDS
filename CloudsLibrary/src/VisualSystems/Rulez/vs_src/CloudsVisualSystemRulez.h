@@ -109,6 +109,7 @@ protected:
     //  Your Stuff
     //
     void generate();
+    void saveMesh();
     
     ofxRules* structure;
     ofxPostProcessing post;

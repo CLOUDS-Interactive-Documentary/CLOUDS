@@ -21,6 +21,8 @@
 		2808622A1858A6DF00C51C32 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808621C1858A6DF00C51C32 /* OscPrintReceivedElements.cpp */; };
 		2808622B1858A6DF00C51C32 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2808621E1858A6DF00C51C32 /* OscReceivedElements.cpp */; };
 		2808622C1858A6DF00C51C32 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862201858A6DF00C51C32 /* OscTypes.cpp */; };
+		280862661858AE2800C51C32 /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 280862601858AE2800C51C32 /* ofxObjLoader.cpp */; };
+		280862671858AE2800C51C32 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 280862641858AE2800C51C32 /* glm.c */; };
 		285185D61837B8F8009D8339 /* ParallelTransportFrames.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285185D11837B8F8009D8339 /* ParallelTransportFrames.cpp */; };
 		285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */; };
 		285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2068182FFFEE0065BCAE /* BloomPass.cpp */; };
@@ -226,6 +228,10 @@
 		2808621F1858A6DF00C51C32 /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		280862201858A6DF00C51C32 /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		280862211858A6DF00C51C32 /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		280862601858AE2800C51C32 /* ofxObjLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxObjLoader.cpp; sourceTree = "<group>"; };
+		280862611858AE2800C51C32 /* ofxObjLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxObjLoader.h; sourceTree = "<group>"; };
+		280862641858AE2800C51C32 /* glm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
+		280862651858AE2800C51C32 /* glm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glm.h; sourceTree = "<group>"; };
 		285185D01837B8F8009D8339 /* ofxPtf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPtf.h; sourceTree = "<group>"; };
 		285185D11837B8F8009D8339 /* ParallelTransportFrames.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParallelTransportFrames.cpp; sourceTree = "<group>"; };
 		285185D21837B8F8009D8339 /* ParallelTransportFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallelTransportFrames.h; sourceTree = "<group>"; };
@@ -697,6 +703,43 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		2808625E1858AE2800C51C32 /* ofxObjLoader */ = {
+			isa = PBXGroup;
+			children = (
+				2808625F1858AE2800C51C32 /* src */,
+				280862621858AE2800C51C32 /* libs */,
+			);
+			name = ofxObjLoader;
+			sourceTree = "<group>";
+		};
+		2808625F1858AE2800C51C32 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				280862601858AE2800C51C32 /* ofxObjLoader.cpp */,
+				280862611858AE2800C51C32 /* ofxObjLoader.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxObjLoader/src;
+			sourceTree = "<group>";
+		};
+		280862621858AE2800C51C32 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				280862631858AE2800C51C32 /* glm */,
+			);
+			name = libs;
+			path = ../../../addons/ofxObjLoader/libs;
+			sourceTree = "<group>";
+		};
+		280862631858AE2800C51C32 /* glm */ = {
+			isa = PBXGroup;
+			children = (
+				280862641858AE2800C51C32 /* glm.c */,
+				280862651858AE2800C51C32 /* glm.h */,
+			);
+			path = glm;
+			sourceTree = "<group>";
+		};
 		285185B81837B8F8009D8339 /* ofxPtf */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +899,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				2808625E1858AE2800C51C32 /* ofxObjLoader */,
 				280861F91858A6DF00C51C32 /* ofxOsc */,
 				285185B81837B8F8009D8339 /* ofxPtf */,
 				285C2052182FFFED0065BCAE /* ofxPostProcessing */,
@@ -1625,6 +1669,7 @@
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				28B4EE32183E723B0091E0F3 /* TransformAction.cpp in Sources */,
 				E7D32FAC1751C626006706ED /* ofxSolver.cpp in Sources */,
+				280862661858AE2800C51C32 /* ofxObjLoader.cpp in Sources */,
 				2808622C1858A6DF00C51C32 /* OscTypes.cpp in Sources */,
 				E7D32FAD1751C626006706ED /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */,
@@ -1663,6 +1708,7 @@
 				E7CF78541753FEA1006B7D41 /* ofxTLImageTrack.cpp in Sources */,
 				E7CF78551753FEA1006B7D41 /* ofxTLInOut.cpp in Sources */,
 				E7CF78561753FEA1006B7D41 /* ofxTLKeyframes.cpp in Sources */,
+				280862671858AE2800C51C32 /* glm.c in Sources */,
 				E7CF78571753FEA1006B7D41 /* ofxTLLFO.cpp in Sources */,
 				E7CF78581753FEA1006B7D41 /* ofxTLPage.cpp in Sources */,
 				E7CF78591753FEA1006B7D41 /* ofxTLPageTabs.cpp in Sources */,

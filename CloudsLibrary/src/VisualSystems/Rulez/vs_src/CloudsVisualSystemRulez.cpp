@@ -4,7 +4,7 @@
 
 #include "CloudsVisualSystemRulez.h"
 #include "CloudsRGBDVideoPlayer.h"
-
+#include "ofxObjLoader.h"
 
 CloudsVisualSystemRulez::CloudsVisualSystemRulez() :
     structure(NULL), maxBranches(4)
@@ -121,6 +121,7 @@ void CloudsVisualSystemRulez::selfPostDraw()
 void CloudsVisualSystemRulez::selfSetupRenderGui()
 {
     rdrGui->addToggle("regenerate", false);
+    rdrGui->addToggle("save mesh", false);
     rdrGui->addLabel("Rule sets");
     vector<string> names;
     for (auto it = structures.begin(); it != structures.end(); ++it)
@@ -133,6 +134,13 @@ void CloudsVisualSystemRulez::selfSetupRenderGui()
     {
         rdrGui->addToggle(post[i]->getName(), &post[i]->getEnabledRef());
     }
+}
+
+void CloudsVisualSystemRulez::saveMesh()
+{
+    ofFileDialogResult result = ofSystemSaveDialog("mesh", "Export mesh to obj file");
+    ofxObjLoader saver;
+    saver.save(result.getPath(), structure->getMeshRef());
 }
 
 void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
@@ -155,6 +163,15 @@ void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
         if (toggle->getValue())
         {
             generate();
+            toggle->setValue(false);
+        }
+    }
+    else if (e.widget->getName() == "save mesh")
+    {
+        ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+        if (toggle->getValue())
+        {
+            saveMesh();
             toggle->setValue(false);
         }
     }
