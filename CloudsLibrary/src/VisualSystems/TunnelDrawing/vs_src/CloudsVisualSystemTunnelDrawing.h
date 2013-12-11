@@ -20,7 +20,7 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
 	//This determines your data path so name it at first!
 	//ie getVisualSystemDataPath() uses this
     string getSystemName(){
-		return "TunnelDrawingSystem";
+		return "TunnelDrawing";
 	}
 
 	//These methods let us add custom GUI parameters and respond to their events
@@ -84,14 +84,11 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
+	ofCamera& getCameraRef(){
+		return camera;
+	}
     
     //this holds all of our points
     vector<ofVec3f> points;
@@ -102,15 +99,15 @@ class CloudsVisualSystemTunnelDrawing : public CloudsVisualSystem {
 	ofCamera camera;
 	
 	//if usecamera is true, we'll turn on the camera view
-    bool usecamera;
 
 	
 protected:
     
     //  Your Stuff
     //
-	
+		
 	ofxUISuperCanvas* customGui;
-	bool customToggle;
+	float screenSpaceProjectDistance;
+	float fallOffSpeed;
 
 };
