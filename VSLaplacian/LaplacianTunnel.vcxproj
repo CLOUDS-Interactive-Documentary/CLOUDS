@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <ProjectGuid>{771AC300-3729-426E-8D0E-12C971F748A3}</ProjectGuid>
     <RootNamespace>VerletForm</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -57,7 +57,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -80,7 +80,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat />
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -114,7 +114,7 @@
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
-    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
@@ -221,7 +221,7 @@
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\ofxLight.h" />
-    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\CloudsVisualSystemVerletForm.h" />
+    <ClInclude Include="..\CloudsLibrary\src\VisualSystems\LaplacianTunnel\vs_src\CloudsVisualSystemLaplacianTunnel.h" />
     <ClInclude Include="src\testApp.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
