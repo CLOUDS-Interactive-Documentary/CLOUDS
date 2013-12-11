@@ -98,6 +98,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void createPajekNetwork();
     int getUserIdByName(string name);
     
+    void drawTwitterTimeline();
+    
+    
     ofxJSONElement result;
 
     set<pair<int,int> > links;
@@ -107,6 +110,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
     void CompareDates(Date d1,Date d2);
     vector<Date> dateIndex;
+    string getDateAsString(Date d);
+    
+    
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 //	ofCamera& getCameraRef(){
@@ -123,6 +129,7 @@ protected:
 	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
     
     vector<Tweeter> tweeters;
+    stringstream ss;
     
     ofVboMesh mesh;
     ofVboMesh linksMesh;

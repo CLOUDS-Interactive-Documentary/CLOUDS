@@ -32,9 +32,9 @@ public:
     string name;
     int ID;
     ofVec3f position;
+    
+    vector<Tweet> getTweetsByDate(Date d);
 
-    
-    
     vector<Tweet> tweets;
     vector<string> userLinks;
     vector<int> linksById;

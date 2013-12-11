@@ -27,6 +27,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     sprite.loadImage(getVisualSystemDataPath()+"/dot.png");
     meshExpansion = 100;
     pointSize =10;
+    drawTwitterTimeline();
 }
 
 //--------------------------------------------------------------
@@ -200,20 +201,6 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
-//    ofVec3f centroid;
-//    
-//    for(int i=0; tweeters.size(); i++){
-//        mesh.setMode(OF_PRIMITIVE_POINTS);
-//        mesh.setupIndicesAuto();
-//        mesh.addVertex(tweeters[i].position);
-//        
-//        max  =ofVec3f(MAX(tweeters[i].position.x,max.x),
-//                      MAX(tweeters[i].position.y,max.y),
-//                      MAX(tweeters[i].position.z,max.z));
-//        
-//        centroid += tweeters[i].position;
-//    }
-//    centroid /= tweeters.size();
     
     for(int j=0; j<tweeters.size(); j++){
         
@@ -306,6 +293,35 @@ int CloudsVisualSystemTwitter:: getUserIdByName(string name){
     return -1;
 }
 
+void CloudsVisualSystemTwitter::drawTwitterTimeline(){
+
+    for(int i =0; i< dateIndex.size(); i++){
+        for(int k=0; k<tweeters.size(); k++){
+            vector<Tweet> tweets =  tweeters[k].getTweetsByDate(dateIndex[i]);
+            
+            if(tweets.size() > 0 ){
+                
+                for(int j = 0; j<tweets.size(); j++){
+                    ss<<tweets[j].tweet<<" "<<getDateAsString(dateIndex[i])<<endl;
+                }
+            }
+            
+        }
+    }
+    
+}
+string CloudsVisualSystemTwitter::getDateAsString(Date d){
+    string dateString;
+    
+    dateString += ofToString(d.day) + " , ";
+    dateString += ofToString(d.month) + " , ";
+    dateString += ofToString(d.year);
+    
+    return dateString;
+    
+}
+
+
 Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, int _id ){
     
     for(int i=0; i< tweeters.size(); i++){
@@ -372,7 +388,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
 void CloudsVisualSystemTwitter::selfDraw()
 {
     glDisable(GL_DEPTH_TEST);
-    
+    /*
 	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
     ofScale(10, 10);
     clusterShader.begin();
@@ -392,21 +408,24 @@ void CloudsVisualSystemTwitter::selfDraw()
 //	ofEnableArbTex();
 	clusterShader.end();
 //    linksMesh.drawWireframe();
-
+*/
 
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-	
+
 }
 
 //--------------------------------------------------------------
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-    
+    ofSetColor(ofColor::whiteSmoke);
+//    ofDrawBitmapString(ss.str(), 0,0);
+    listFont.drawString(ss.str(), 0, 0);
+//    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }
 
 // this is called when your system is no longer drawing.
@@ -430,6 +449,9 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         for(int i =0; i<dateIndex.size(); i++){
             cout<<dateIndex[i].day<<" : "<<dateIndex[i].month<<" : "<<dateIndex[i].year<<endl;
         }
+    }
+    if(args.key == 'j'){
+        cout<<ss.str()<<endl;
     }
 }
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){
