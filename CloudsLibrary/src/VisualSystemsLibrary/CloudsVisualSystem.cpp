@@ -1785,7 +1785,7 @@ void CloudsVisualSystem::setupTimeline()
 	timeline->setWorkingFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	
 	timeline->setup();
-	timeline->setShowInoutControl(false);
+	timeline->setShowInoutControl(true);
     timeline->setMinimalHeaders(true);
 	timeline->setFrameBased(false);
 	timeline->setSpacebarTogglePlay(false);
@@ -2569,12 +2569,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
-	if(cameraTrack->lockCameraToTrack){
-		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
-	}
-	else {
+//	if(cameraTrack->lockCameraToTrack){
+//		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
+//	}
+//	else {
 		timeline->setCurrentTimeMillis(0);
-	}
+//	}
 	timeline->play();
 	bEnableTimeline = true;
 }
@@ -2596,10 +2596,15 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
 	
+//	cout << "before save range " << timeline->getInOutRange() << endl;
+	
     saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/"+presetName+"/UITimelineMappings.xml");
 	timeline->setName(presetName);
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/"+presetName+"/Timeline/");
-
+	
+	
+//	cout << "after save range " << timeline->getInOutRange() << endl;
+	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 
