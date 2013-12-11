@@ -22,6 +22,8 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemFlying::onWindowResized);
+    
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
@@ -272,6 +274,11 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
+}
+
+void CloudsVisualSystemFlying::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)
