@@ -121,6 +121,9 @@ protected:
     bool cameraControl;
     float fogStart, fogEnd;
     
+    // cam
+    float zSpeed, yRot;
+    
     // plants
     ofShader plantsShader;
     unsigned numPlantMeshes;

@@ -13,7 +13,7 @@ const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml"
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
-    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200)
+    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200), zSpeed(0), yRot(0)
 {
 }
 
@@ -130,8 +130,10 @@ void CloudsVisualSystemFlying::selfUpdate()
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     if (cameraControl)
     {
-        getCameraRef().move(0, 0, -ofMap(GetCloudsInputY(), 0, ofGetHeight(), 600.f, -600.f) * ofGetLastFrameTime());
-        getCameraRef().setOrientation(ofVec3f(-CAM_X_ROT, ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20), 0.f));
+        zSpeed += 0.08f * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
+        yRot += 0.08f * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
+        getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
+        getCameraRef().setOrientation(ofVec3f(-CAM_X_ROT, yRot, 0.f));
     }
     float distToFloor = getCameraRef().getPosition().y / cos(DEG_TO_RAD * (90 + getCameraRef().getRoll()));
     floorLookAt = getCameraRef().getPosition() + getCameraRef().getLookAtDir().normalized() * distToFloor;
