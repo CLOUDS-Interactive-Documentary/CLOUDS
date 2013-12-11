@@ -11,7 +11,20 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofOpenALSoundPlayer_TimelineAdditions.h"
 
+enum HistogramMode
+{
+    HISTOGRAM_MODE_BARS,
+    HISTOGRAM_MODE_LINES,
+    HISTOGRAM_MODE_POINTS
+};
+
+enum HistogramSource
+{
+    HISTOGRAM_SOURCE_RANDOM,
+    HISTOGRAM_SOURCE_AUDIO
+};
 
 class CloudsVisualSystemHistogram : public CloudsVisualSystem {
   public:
@@ -91,42 +104,61 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
-	//
-
-
-protected:
+    void reloadSound();
     
-    //  Your Stuff
-    //
+	void addRandomPoint();
+    void addSoundPoint();
+    
+protected:
+    ofxUISuperCanvas* customGui;
 	
-	ofxUISuperCanvas* customGui;
-	
-    vector <float> randomData;
-    int numRandomData;
+    vector<float> dataPoints;
+    int maxNumDataPoints;
     
     int seed;
     int stepSize = 2;
     int noiseValue = 100;
     
+    float t;
     int n = 0;
     
-    bool filled = false;
-    bool drawn = false;
+    ofDirectory soundsDir;
+    int selectedSoundsIdx;
+    ofOpenALSoundPlayer_TimelineAdditions soundPlayer;
+    float levelAdjust;
     
-	vector <ofMesh> histograms;
-    ofMesh histo;
+    ofMesh histoMesh;
     
-    ofColor color1;
-    ofColor color2;
+    float hueMax, hueMin;
+    float satBase, satRange;
+    float briBase, briRange;
+    float alpha;
     
-    float xpos = 10;
-    float ypos = 10;
-    float rectHeight;
-    float rectWidth = 40;
-    float xoffset = 0;
-    float zoffset = -150;
-   
-    int rows = 4;
+    ofColor colorFg;
+    ofColor colorClear;
     
+    float rowSpacer;
+    float colSpacer;
+    float colWidth;
+    float colHeightMin, colHeightMax;
+    int numRows;
+    int colsPerRow;
+    float lineWidth;
     
+    HistogramMode mode;
+    HistogramSource source;
+
+    bool bSeparateFeeds;
+    
+    vector<float>& getFFT();
+    void generateEnvelope(int size);
+
+    float lastFFTPosition;
+    float dampening;
+    int averageSize;
+    bool useEnvelope;
+    vector<float> envelope;
+    vector<float> dampened;
+    
+    float fogDensity;
 };

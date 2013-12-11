@@ -20,7 +20,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 	questionLifeSpan = 3;
 
-	rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
+	rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	CloudsQuestion::reloadShader();
 
 	lastPercentChanceOfPoint = 0;
@@ -36,7 +36,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	generateTriangulation();
 	
 	particulateController.setParticleCount(20000);
-	particulateController.setShaderDirectory(getDataPath() + "shaders/GPUParticles/");
+	particulateController.setShaderDirectory(GetCloudsDataPath() + "shaders/GPUParticles/");
 	particulateController.setup();
 	
 	cloudsCamera.setup();
@@ -45,7 +45,7 @@ void CloudsVisualSystemRGBD::selfSetup(){
 	
 //	generator.setup();
 	
-	displayFont.loadFont(getDataPath() + "font/materiapro_light.ttf", 14);
+	displayFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", 14);
 	
 	//TODO: do this elsewhere
 	transitioning = transitioningIn = transitioningOut = false;
@@ -80,10 +80,10 @@ void CloudsVisualSystemRGBD::selfSetup(){
 
 void CloudsVisualSystemRGBD::rebuildCaptionFont(){
     if(bUseOculusRift){
-        captionFont.loadFont(getDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
+        captionFont.loadFont(GetCloudsDataPath() + "font/MateriaPro_Regular.ttf", captionFontSize);
     }
     else{
-        captionFont.loadFont(getDataPath() + "font/materiapro_light.ttf", captionFontSize);
+        captionFont.loadFont(GetCloudsDataPath() + "font/materiapro_light.ttf", captionFontSize);
     }
 }
 
@@ -349,7 +349,7 @@ void CloudsVisualSystemRGBD::updateQuestions(){
 	
 		questions[i]->update();
 		
-        if(selectedQuestion == NULL && questions[i]->isSelected() && ofGetMousePressed()){
+        if(selectedQuestion == NULL && questions[i]->isSelected() && GetCloudsInputPressed()){
             selectedQuestion = questions[i];
 			selectedQuestion->lockHover = true;
 			break;
@@ -986,7 +986,7 @@ void CloudsVisualSystemRGBD::selfKeyPressed(ofKeyEventArgs & args){
 	if(args.key == 'R'){
 		particulateController.reloadShaders();
 		CloudsQuestion::reloadShader();
-		rgbdShader.load( getDataPath() + "shaders/rgbdcombined" );
+		rgbdShader.load( GetCloudsDataPath() + "shaders/rgbdcombined" );
 	}
 	
 	if(args.key == 'v' && currentCamera != &transitionCam ){

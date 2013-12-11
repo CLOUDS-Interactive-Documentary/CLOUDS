@@ -88,9 +88,11 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
 	ofCamera& getCameraRef(){
+		if(bUseExternalCamera){
+			return externalCam;
+		}
 		return tunnelCam;
 	}
-
 
   protected:
     
@@ -102,20 +104,30 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	ofVec3f min;
 	ofVec3f max;
 	ofVec3f center;
-	
 	int loadMesh(ofVbo &vbo, string path);
-
+	
+	
 	ofCamera tunnelCam;
 	ofxUISuperCanvas* customGui;
 	int frameCount;
-	float startTime;
-	float fps;
 	float fogDensity;
 	int numReplications;
 	float replicationOffset;
 	float cameraDistance;
 	float cameraSpeed;
 	vector<NamedVbo> vbos;
+	
+	bool bUseExternalCamera;
+	bool bDrawPoints;
+	bool bPalindrome;
+	float growthFPS; //only works in palindrome
+	float maxLookAngle;
+	ofVec2f currentLookAngle;
+	float currentGrowthIndex;
+	float lastFrameTime;
+	
+	ofEasyCam externalCam;
+
 	
 	void clear();
 	

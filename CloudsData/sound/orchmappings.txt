@@ -1,0 +1,18 @@
+slowwaves, bucket melody markov sequencer;
+slowwaveshi, bucket melody markov;
+waveshipatterned, bucket melody markov;
+lowwavepulse, bucket melody markov;
+kissmyarp, static bucket melody markov sequencer;
+kissmyarpsynch, static bucket melody markov;
+kissmyarpfast, static bucket melody markov;
+waveguide, bucket melody markov;
+helmholtz, bucket melody markov;
+filternoise, bucket melody markov;
+strumsine, bucket melody markov;
+modalbeats, bucket melody markov;
+waveguidebeats, bucket melody markov;
+meshbeats, straight pattern lsys;
+slowmeshbeats, straight pattern lsys;
+vermontbeatz, straight pattern lsys;
+slowvermontbeatz, straight pattern lsys;
+avibeats, avi1 avi2a avi2b avi2c avi3a avi3b;

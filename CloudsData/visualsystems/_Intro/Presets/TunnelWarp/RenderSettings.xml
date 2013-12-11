@@ -1,0 +1,47 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>RenderSettings</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>158.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Point Size</Name>
+    <Value>0.686000049</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Min Distance</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Max Distance</Name>
+    <Value>30.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Chroma Max Distort</Name>
+    <Value>0.098522164</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Amplitude</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Density</Name>
+    <Value>3.694581270</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Perlin Speed</Name>
+    <Value>0.009359606</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Wireframe Alpha</Name>
+    <Value>0.000000000</Value>
+</Widget>

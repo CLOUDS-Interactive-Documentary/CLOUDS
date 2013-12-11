@@ -1,5 +1,6 @@
 #import "testView.h"
 #include "CloudsVisualSystem.h"
+#include "CloudsInputKinectOSC.h"
 
 struct sortObject {
 	CloudsFCPParser* parser;
@@ -103,7 +104,9 @@ bool clipsort(CloudsClip a, CloudsClip b){
 
 - (void)keyPressed:(int)key
 {
-	
+	if(key == 'K'){
+//		SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC() ));
+	}
 }
 
 - (void)keyReleased:(int)key

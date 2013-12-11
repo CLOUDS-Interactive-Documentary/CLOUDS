@@ -21,29 +21,15 @@ void CloudsVisualSystemSwim::selfSetup()
     post.init(ofGetWidth(), ofGetHeight(), true);
     post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
-    
-    /*
-	videoLoaded = false;
-	
-	if(ofFile::doesFileExist(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov")){
-		getRGBDVideoPlayer().setup(getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.mov",
-								   getVisualSystemDataPath() + "TestVideo/Jer_TestVideo.xml" );
-		
-		getRGBDVideoPlayer().swapAndPlay();
-		
-		for(int i = 0; i < 640; i += 2){
-			for(int j = 0; j < 480; j+=2){
-				simplePointcloud.addVertex(ofVec3f(i,j,0));
-			}
-		}
-		
-		pointcloudShader.load(getVisualSystemDataPath() + "shaders/rgbdcombined");
-		videoLoaded = true;
-	}
-	
-	
-    //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	*/
+}
+
+// selfBegin is called when the system is ready to be shown
+// this is a good time to prepare for transitions
+// but try to keep it light weight as to not cause stuttering
+void CloudsVisualSystemSwim::selfBegin()
+{
+    // adding this here as custom gui data is loaded after setup
+	creatures.generate();
 }
 
 //normal update call
@@ -60,17 +46,6 @@ void CloudsVisualSystemSwim::selfDraw()
 {
     creatures.draw();
     bubbles.draw();
-    /*
-	if(videoLoaded){
-		ofPushMatrix();
-		setupRGBDTransforms();
-		pointcloudShader.begin();
-		getRGBDVideoPlayer().setupProjectionUniforms(pointcloudShader);
-		simplePointcloud.drawVertices();
-		pointcloudShader.end();
-		ofPopMatrix();
-	}
-	*/
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
@@ -85,41 +60,104 @@ void CloudsVisualSystemSwim::selfPostDraw()
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {
+    rdrGui->addToggle("regenerate", false);
+    
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
-    rdrGui->addSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
-    rdrGui->addSlider("alignmentLower", 0.f, 1.f, &creatures.alignmentLower);
-    rdrGui->addSlider("alignmentUpper", 0.f, 1.f, &creatures.alignmentUpper);
-    rdrGui->addSlider("repelStrength", 0.f, 1.f, &creatures.repelStrength);
-    rdrGui->addSlider("alignStrength", 0.f, 1.f, &creatures.alignStrength);
-    rdrGui->addSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
-    rdrGui->addSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
+    rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
+    rdrGui->addMinimalSlider("alignmentLower", 0.f, 1.f, &creatures.alignmentLower);
+    rdrGui->addMinimalSlider("alignmentUpper", 0.f, 1.f, &creatures.alignmentUpper);
+    rdrGui->addMinimalSlider("repelStrength", 0.f, 1.f, &creatures.repelStrength);
+    rdrGui->addMinimalSlider("alignStrength", 0.f, 1.f, &creatures.alignStrength);
+    rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
+    rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
-    rdrGui->addLabel("Creatures");
+    rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
-    rdrGui->addSlider("numJellyOne", 20, 300, &creatures.numJellyOne);
-    rdrGui->addSlider("numJellyTwo", 20, 300, &creatures.numJellyTwo);
-    rdrGui->addSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
-    rdrGui->addSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
+    rdrGui->addMinimalSlider("numJellyOne", 20, 300, &creatures.numJellyOne);
+    rdrGui->addMinimalSlider("numJellyTwo", 20, 300, &creatures.numJellyTwo);
+    
+    rdrGui->addLabel("Fish One");
+    rdrGui->addSpacer();
+    rdrGui->addMinimalSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
+    rdrGui->addMinimalSlider("greySizeAverage", .1f, 3.f, &creatures.fishOneParams.sizeAverage);
+    rdrGui->addMinimalSlider("greySizeStdDeviation", 0.f, 1.f, &creatures.fishOneParams.sizeStdDeviation);
+    
+    rdrGui->addLabel("Fish Two");
+    rdrGui->addSpacer();
+    rdrGui->addMinimalSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
+    rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
+    rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
+    
+    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
 }
 
 //These methods let us add custom GUI parameters and respond to their events
-void CloudsVisualSystemSwim::selfSetupGui(){
+void CloudsVisualSystemSwim::selfSetupGui()
+{
+	jellyOneGui = createCustomGui("Jellyus Oneus");
+    addSliders(jellyOneGui, creatures.jellyOneParams);
+    
+    jellyTwoGui = createCustomGui("Jellyus Twous");
+    addSliders(jellyTwoGui, creatures.jellyTwoParams);
+}
 
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
-	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemSwim::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
+void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& params)
+{
+    gui->addSpacer();
+    
+    gui->addLabel("Colour");
+    gui->addMinimalSlider("body h", 0.f, 1.f, &params.bodyHsb.x);
+    gui->addMinimalSlider("body s", 0.f, 1.f, &params.bodyHsb.y);
+    gui->addMinimalSlider("body b", 0.f, 1.f, &params.bodyHsb.z);
+    
+    gui->addMinimalSlider("body alpha", 0.f, 1.f, &params.bodyAlpha);
+    
+    gui->addMinimalSlider("tentacles h", 0.f, 1.f, &params.tentacleHsb.x);
+    gui->addMinimalSlider("tentacles s", 0.f, 1.f, &params.tentacleHsb.y);
+    gui->addMinimalSlider("tentacles b", 0.f, 1.f, &params.tentacleHsb.z);
+    
+    gui->addRangeSlider("pulse amt (range)", 0.f, 0.4f, &params.pulseAmtMin, &params.pulseAmtMax);
+    
+    gui->addLabel("Size");
+    gui->addMinimalSlider("width average", 10, 200, &params.widthAverage);
+    gui->addMinimalSlider("width std dev", 0, 200, &params.widthStdDeviation);
+    
+    gui->addMinimalSlider("length average", 10, 200, &params.lengthAverage);
+    gui->addMinimalSlider("length std dev", 0, 200, &params.lengthStdDeviation);
+    
+    gui->addLabel("Shape");
+    gui->addRangeSlider("spherical segment (range)", .5f * HALF_PI, PI, &params.segmentMin, &params.segmentMax);
+
+    gui->addRangeSlider("superformula m1 (range)", 2, 20, &params.m1Min, &params.m1Max);
+    gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
+}
+
+ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
+{
+    ofxUISuperCanvas* newGui = new ofxUISuperCanvas(name, gui);
+	newGui->copyCanvasStyle(gui);
+	newGui->copyCanvasProperties(gui);
+	newGui->setName(name);
+	newGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    guis.push_back(newGui);
+	guimap[newGui->getName()] = newGui;
+    
+    return newGui;
+}
+
+void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
+{
+	if (e.widget->getName() == "regenerate")
+    {
+        ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
+        if (toggle->getValue())
+        {
+            creatures.generate();
+            toggle->setValue(false);
+        }
+    }
 }
 
 void CloudsVisualSystemSwim::selfGuiEvent(ofxUIEventArgs &e){
@@ -138,23 +176,10 @@ void CloudsVisualSystemSwim::guiSystemEvent(ofxUIEventArgs &e){
 }
 
 
-void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e){
-	
-}
-
-
-
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath) {
-	
-}
-
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
-void CloudsVisualSystemSwim::selfBegin(){
 	
 }
 

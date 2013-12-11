@@ -1,4 +1,4 @@
-<system name="3DModelVisualSystem_BigBlueCube">
+<system name="3DModelLoader_BigBlueCube">
     <keywords>big data</keywords>
     <suppressions>
         <clip>Binx - geodata</clip>
@@ -22,7 +22,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_BigData">
+<system name="3DModelLoader_BigData">
     <keywords>Archiving|archiving|data ownership|facebook|the cloud</keywords>
     <suppressions>
         <clip>Jen - twitter friends</clip>
@@ -56,15 +56,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_BigDataOC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_CheeseDoodles">
+<system name="3DModelLoader_CheeseDoodles">
     <keywords>weird|objects</keywords>
     <suppressions>
         <clip>Golan - kerrington</clip>
@@ -87,7 +79,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Clock2">
+<system name="3DModelLoader_Clock2">
     <keywords>clock|camera|artificial intelligence</keywords>
     <suppressions>
         <clip>Andres - seeing molecules</clip>
@@ -133,15 +125,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Clock2Oc">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="3DModelVisualSystem_FallingChairs">
+<system name="3DModelLoader_FallingChairs">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -149,7 +133,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_FallingCubes">
+<system name="3DModelLoader_FallingCubes">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -157,93 +141,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_HyperSphere1">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="3DModelVisualSystem_HyperSphere1OC">
-    <keywords>clock|time|future|science fiction</keywords>
-    <suppressions>
-        <clip>Bruce - 2060s (Lashup 5)</clip>
-        <clip>Bruce - A sappy Singularity</clip>
-        <clip>Bruce - Augmented Ubiquity</clip>
-        <clip>Bruce - Everted Cyberspace</clip>
-        <clip>Bruce - Not one idea of the future</clip>
-        <clip>Bruce - cyberpunk dictum long</clip>
-        <clip>Bruce - cyberpunk dictum short</clip>
-        <clip>Bruce - future camera 3</clip>
-        <clip>Bruce - future city 2</clip>
-        <clip>Bruce - not one cyberpunk idea</clip>
-        <clip>Bruce - past and future</clip>
-        <clip>Bruce - talking about the future as history</clip>
-        <clip>Casey - futurist</clip>
-        <clip>Casey - synthetic biology</clip>
-        <clip>Casey - thinking about time</clip>
-        <clip>Elliot - augmented reality</clip>
-        <clip>Golan - Anxious about the future</clip>
-        <clip>Golan - apocalypse3</clip>
-        <clip>Golan - jolted into the NOW</clip>
-        <clip>Golan - kerrington</clip>
-        <clip>Golan - kessler</clip>
-        <clip>Golan - staring down the barrel</clip>
-        <clip>Jen - deep interaction</clip>
-        <clip>Joel - in the now</clip>
-        <clip>Julian - Ray Bradbury story</clip>
-        <clip>Julian - sci-fi and electronic music</clip>
-        <clip>Karsten - parallel processing</clip>
-        <clip>Kevin - cognition vs computation 1</clip>
-        <clip>Kevin - collaboration with machines</clip>
-        <clip>Kyle_CH - Cloud atlas</clip>
-        <clip>Kyle_CH - Future life storage</clip>
-        <clip>Kyle_CH - Modeling consciousness</clip>
-        <clip>Kyle_CH - old server farms</clip>
-        <clip>Kyle_CH - storytelling</clip>
-        <clip>Kyle_MC - Grab them ASAP</clip>
-        <clip>Kyle_MC - Transparent tech 2</clip>
-        <clip>Kyle_MC - eyetracking everywhere</clip>
-        <clip>Kyle_MC - shaping the direction</clip>
-        <clip>Maeda - Life in four quarters</clip>
-        <clip>Marcus - global conversation</clip>
-        <clip>Marius - Living in a state of newness since age 10</clip>
-        <clip>Marius - Thoroughly enjoying it at the moment</clip>
-        <clip>Marius - We&apos;ve embraced Dystopia</clip>
-        <clip>Marius - cyperpunk history</clip>
-        <clip>Martin - flickr flow</clip>
-        <clip>Nervous_Jesse - Time in the universe</clip>
-        <clip>Paola - Integrating with technology</clip>
-        <clip>Paola - designer of the future</clip>
-        <clip>Paola - teleportation</clip>
-        <clip>Philip - limitations</clip>
-        <clip>Ramsey - Google glass</clip>
-        <clip>Ramsey - a hundred million</clip>
-        <clip>Ramsey - dystopia</clip>
-        <clip>Ramsey - not interested in design fiction</clip>
-        <clip>Ramsey - thinking previously unthinkable thoughts</clip>
-        <clip>Regine - commercial appropriation</clip>
-        <clip>Regine - elitist and their gadgets</clip>
-        <clip>Regine - imagining the future</clip>
-        <clip>Regine - looking forward to problems</clip>
-        <clip>Regine - teleportation</clip>
-        <clip>Regine - twitter, future</clip>
-        <clip>Shantell - group improvisation</clip>
-        <clip>Sophy - avatar 1</clip>
-        <clip>Sophy - distributed culture</clip>
-        <clip>Sophy - nanobots</clip>
-        <clip>Sophy - techno-fungus</clip>
-        <clip>Theo - crazy researcher</clip>
-        <clip>Zach - Time slows down</clip>
-        <clip>Zach - drawn2</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_Kelp_Monochrome">
+<system name="3DModelLoader_Kelp_Monochrome">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -251,7 +149,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_Normals">
+<system name="3DModelLoader_Kelp_Normals">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -259,7 +157,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_Xray">
+<system name="3DModelLoader_Kelp_Xray">
     <keywords>biology</keywords>
     <suppressions>
         <clip>Casey - Massive parallel systems</clip>
@@ -277,15 +175,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Kelp_XrayOC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_LovelyTangle">
+<system name="3DModelLoader_LovelyTangle">
     <keywords>jewelry|design</keywords>
     <suppressions>
         <clip>Bruce - Don&apos;t care about design</clip>
@@ -313,7 +203,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nest_1">
+<system name="3DModelLoader_Nest_1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -321,7 +211,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nest_CoolTransparent">
+<system name="3DModelLoader_Nest_CoolTransparent">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -329,7 +219,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Nested_Sphere">
+<system name="3DModelLoader_Nested_Sphere">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -337,7 +227,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_PinkElephant">
+<system name="3DModelLoader_PinkElephant">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -345,7 +235,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Sphere_Clock">
+<system name="3DModelLoader_Sphere_Clock">
     <keywords>clock</keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -353,7 +243,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_StackOfChairs">
+<system name="3DModelLoader_StackOfChairs">
     <keywords>weird</keywords>
     <suppressions>
         <clip>Bruce - Gardening 2</clip>
@@ -377,7 +267,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Succulent">
+<system name="3DModelLoader_Succulent">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -385,7 +275,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Succulent_BlueXray">
+<system name="3DModelLoader_Succulent_BlueXray">
     <keywords>form</keywords>
     <suppressions>
         <clip>Elliot_UK - wiremape_description</clip>
@@ -395,7 +285,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Tangle_Transparent">
+<system name="3DModelLoader_Tangle_Transparent">
     <keywords>form</keywords>
     <suppressions>
         <clip>Elliot_UK - wiremape_description</clip>
@@ -407,7 +297,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman1">
+<system name="3DModelLoader_TransHuman1">
     <keywords>science fiction</keywords>
     <suppressions>
         <clip>Bruce - future city 2</clip>
@@ -447,15 +337,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman1OC">
-    <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade>C</grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_TransHuman_female">
+<system name="3DModelLoader_TransHuman_female">
     <keywords>dystopia|cyberpunk|artificial intelligence|cyborg</keywords>
     <suppressions>
         <clip>Bruce - military</clip>
@@ -495,15 +377,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_TransHuman_femaleOC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_Transparency_Grenade">
+<system name="3DModelLoader_Transparency_Grenade">
     <keywords>transparency</keywords>
     <suppressions>
         <clip>Javier - Julian Oliver</clip>
@@ -523,7 +397,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Virus1">
+<system name="3DModelLoader_Virus1">
     <keywords>virus</keywords>
     <suppressions>
         <clip>Lindsay - meme as weapon</clip>
@@ -533,7 +407,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Vortex">
+<system name="3DModelLoader_Vortex">
     <keywords>3d printing</keywords>
     <suppressions>
         <clip>Nervous_Jessica - Growing buildings</clip>
@@ -544,7 +418,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_Vroi">
+<system name="3DModelLoader_Vroi">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -552,7 +426,7 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_elipsoid1">
+<system name="3DModelLoader_pathDebug">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -560,23 +434,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_pathDebug">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="3DModelVisualSystem_pathDebugOC">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>1</oculus>
-</system>
-<system name="3DModelVisualSystem_voronoi">
+<system name="3DModelLoader_voronoi">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -584,12 +442,148 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
-<system name="3DModelVisualSystem_voronoi_knight_rider">
+<system name="Automata_ANGLED">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
     <grade></grade>
-    <enabled>0</enabled>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Automata_MOSS">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="BallDroppings_gal1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_AllColors1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_AllColorsLowSaturation">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_AllColorsMediumSaturation">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_Autumn">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_Basic1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_BlackAndWhite">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_BluePurple">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_BlueTapestry">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_GrayTapestry">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_HeatMap">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_Light">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_Light2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_LightPurple">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_Rainbow1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Chromogram_RainbowTest">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="Cities_Archiving">
@@ -704,14 +698,6 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Cities_Lars_debug">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
 <system name="Cities_LightCity">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -790,6 +776,14 @@
     </suppressions>
     <comments></comments>
     <grade>A</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Code_Teletype">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
@@ -1003,22 +997,6 @@
 <system name="DataCascade_RGBDCascade">
     <keywords></keywords>
     <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="DataCascade_RGBDTunnel">
-    <keywords>computation</keywords>
-    <suppressions>
-        <clip>Karsten - virus</clip>
-        <clip>Jen - a different mathematics</clip>
-        <clip>Aaron - Mini-Artificial Intelligences</clip>
-        <clip>Ramsey - social computer</clip>
-        <clip>Ramsey - does nature compute? 1</clip>
-        <clip>Ramsey - does nature compute? 2</clip>
-        <clip>Ramsey - computation is interpretation of rules</clip>
-    </suppressions>
     <comments></comments>
     <grade></grade>
     <enabled>1</enabled>
@@ -1718,6 +1696,145 @@
     <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Flying_Test">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="GPUParticles_Cloudy">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="GPUParticles_Many">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_JM_OnWhite">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_JM_White">
+    <keywords>generative art|painting</keywords>
+    <suppressions>
+        <clip>Bruce - Gardening 1</clip>
+        <clip>Bruce - Gardening 2</clip>
+        <clip>Bruce - Parametric vs Generative</clip>
+        <clip>Bruce - Simulation Replication Recursion</clip>
+        <clip>Golan - make a mark</clip>
+        <clip>Jer - Generative Art</clip>
+        <clip>Kevin - algo culture 4</clip>
+        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
+        <clip>Kyle_CH - erase distinctions</clip>
+        <clip>Marius - constraining randomness</clip>
+        <clip>Nervous_Jesse - Marker 2</clip>
+        <clip>Nervous_Jesse - organic process</clip>
+        <clip>Ramsey - arab abstraction 2</clip>
+        <clip>Ramsey - it&apos;s not painting 1</clip>
+        <clip>Shiffman - sketching with code</clip>
+        <clip>Theo - favorite projects</clip>
+        <clip>Theo - generative and pre-rendered</clip>
+        <clip>Zach - action script shorter</clip>
+    </suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_01">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_02">
+    <keywords>journey</keywords>
+    <suppressions></suppressions>
+    <comments>Too dark</comments>
+    <grade>B</grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_03">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_04">
+    <keywords>generative art|abstraction</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_05">
+    <keywords>abstraction</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_06">
+    <keywords>painting|abstraction</keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_07">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_08">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_09">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="LIA_LIA_10">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="LSystem_CityTree">
     <keywords>cities</keywords>
     <suppressions>
@@ -1792,7 +1909,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="LaplacianTunnel_DefaultGray">
+<system name="LaplacianTunnel_LaplacianTunnel">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1800,7 +1917,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="LaplacianTunnel_LightCenter">
+<system name="Mandala_DinoSkinPlanet">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1808,130 +1925,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="Lia_JM_OnWhite">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_JM_White">
-    <keywords>generative art|painting</keywords>
-    <suppressions>
-        <clip>Bruce - Gardening 1</clip>
-        <clip>Bruce - Gardening 2</clip>
-        <clip>Bruce - Parametric vs Generative</clip>
-        <clip>Bruce - Simulation Replication Recursion</clip>
-        <clip>Golan - make a mark</clip>
-        <clip>Jer - Generative Art</clip>
-        <clip>Kevin - algo culture 4</clip>
-        <clip>Kyle_CH - don&apos;t underestimate traditional art</clip>
-        <clip>Kyle_CH - erase distinctions</clip>
-        <clip>Marius - constraining randomness</clip>
-        <clip>Nervous_Jesse - Marker 2</clip>
-        <clip>Nervous_Jesse - organic process</clip>
-        <clip>Ramsey - arab abstraction 2</clip>
-        <clip>Ramsey - it&apos;s not painting 1</clip>
-        <clip>Shiffman - sketching with code</clip>
-        <clip>Theo - favorite projects</clip>
-        <clip>Theo - generative and pre-rendered</clip>
-        <clip>Zach - action script shorter</clip>
-    </suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_01">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_02">
-    <keywords>journey</keywords>
-    <suppressions></suppressions>
-    <comments>Too dark</comments>
-    <grade>B</grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_03">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_04">
-    <keywords>generative art|abstraction</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_05">
-    <keywords>abstraction</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_06">
-    <keywords>painting|abstraction</keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_07">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_08">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_09">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Lia_LIA_10">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>0</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="MandalaComponents_DinoSkinPlanet">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="MandalaComponents_DinoSkinPlanetOC">
+<system name="Mandala_DinoSkinPlanetOC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1939,7 +1933,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_HeartMachine">
+<system name="Mandala_HeartMachine">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1947,7 +1941,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor">
+<system name="Mandala_JM_AlienFusionReactor">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1955,7 +1949,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor2">
+<system name="Mandala_JM_AlienFusionReactor2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -1963,7 +1957,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_AlienFusionReactor2OC">
+<system name="Mandala_JM_AlienFusionReactor2OC">
     <keywords>clock|abstraction|system|logic|machine|machine aesthetics</keywords>
     <suppressions>
         <clip>Casey - ideas of art history</clip>
@@ -1998,7 +1992,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_JM_fastPulse">
+<system name="Mandala_JM_fastPulse">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2006,7 +2000,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_jitter1">
+<system name="Mandala_JM_jitter1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2014,7 +2008,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_pulse1">
+<system name="Mandala_JM_pulse1">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2022,7 +2016,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_JM_pulse1OC">
+<system name="Mandala_JM_pulse1OC">
     <keywords>form|abstraction|energy|3D|Time|clock|science fiction</keywords>
     <suppressions>
         <clip>Ramsey - arab abstraction 2</clip>
@@ -2056,7 +2050,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_LavaBeat">
+<system name="Mandala_LavaBeat">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2064,7 +2058,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_PureForm">
+<system name="Mandala_PureForm">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2072,7 +2066,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_PureFormEvolving_OC">
+<system name="Mandala_PureFormEvolving_OC">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2080,7 +2074,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_PureFormOC">
+<system name="Mandala_PureFormOC">
     <keywords>form|abstraction|3D|3d printing|aesthetics</keywords>
     <suppressions>
         <clip>Binx - making things</clip>
@@ -2129,7 +2123,7 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
-<system name="MandalaComponents_clock">
+<system name="Mandala_clock">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2137,7 +2131,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_clock2">
+<system name="Mandala_clock2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2145,7 +2139,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_cracked_skin">
+<system name="Mandala_offsetMesh">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2153,7 +2147,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offsetMesh">
+<system name="Mandala_offset_Interior">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2161,7 +2155,7 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offset_Interior">
+<system name="Mandala_offset_bigNoise">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2169,7 +2163,31 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
-<system name="MandalaComponents_offset_bigNoise">
+<system name="MarchingCubes_AbstractNightclub">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="MarchingCubes_MarchingTumors">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="MarchingCubes_SineWire1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="MarchingCubes_SineWire2">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -2822,30 +2840,6 @@
     <grade></grade>
     <enabled>1</enabled>
     <oculus>1</oculus>
-</system>
-<system name="Metaballs_metaball_simple">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Metaballs_nice_weather">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
-</system>
-<system name="Metaballs_vertically_stretched">
-    <keywords></keywords>
-    <suppressions></suppressions>
-    <comments></comments>
-    <grade></grade>
-    <enabled>1</enabled>
-    <oculus>0</oculus>
 </system>
 <system name="Neurons_Brain">
     <keywords>network|artificial intelligence</keywords>
@@ -3601,6 +3595,30 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="OpenP5Fifteen_RAYS">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Fifteen_SILVER">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="OpenP5Fifteen_TERRAIN">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="OpenP5Hackpact_BasicPreset">
     <keywords></keywords>
     <suppressions></suppressions>
@@ -3724,9 +3742,9 @@
 <system name="OpenP5SeaOfLines_FireWeb">
     <keywords></keywords>
     <suppressions></suppressions>
-    <comments></comments>
+    <comments>Way too slow</comments>
     <grade></grade>
-    <enabled>1</enabled>
+    <enabled>0</enabled>
     <oculus>0</oculus>
 </system>
 <system name="OpenP5SpaceJunk_BasicMotion">
@@ -4413,6 +4431,38 @@
     <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
+<system name="Orbit_Electricity">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Orbit_Lorenz">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Orbit_Wavy">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Orbit_Wormy">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Oscillations_Agam">
     <keywords>old media</keywords>
     <suppressions></suppressions>
@@ -4993,6 +5043,86 @@
     <enabled>1</enabled>
     <oculus>1</oculus>
 </system>
+<system name="Ripples_BadTrip">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Ripples_BasicPreset">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Ripples_Dusk">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Ripples_FilmNoir">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Ripples_TyeDye">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Rulez_City">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Rulez_Curly">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Rulez_Ico">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Rulez_Tree">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Rulez_X-Ray_Plant">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
 <system name="Scrape_BIG_STACKS">
     <keywords></keywords>
     <suppressions>
@@ -5073,6 +5203,30 @@
     <comments></comments>
     <grade></grade>
     <enabled>0</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Swim_CombJellies">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Swim_Deepsea">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Swim_whatevz">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
     <oculus>0</oculus>
 </system>
 <system name="VectorFlow_Electromagetique">
@@ -5314,6 +5468,14 @@
     <oculus>0</oculus>
 </system>
 <system name="Vision_GreenPoint_flow2">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Vision_JG_AppleStoreTest">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>
@@ -6060,6 +6222,30 @@
     <oculus>0</oculus>
 </system>
 <system name="World_jm_data1">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_RisingDust">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_basic">
+    <keywords></keywords>
+    <suppressions></suppressions>
+    <comments></comments>
+    <grade></grade>
+    <enabled>1</enabled>
+    <oculus>0</oculus>
+</system>
+<system name="Xstatic_basic_debug">
     <keywords></keywords>
     <suppressions></suppressions>
     <comments></comments>

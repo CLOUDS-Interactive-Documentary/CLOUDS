@@ -212,6 +212,7 @@ void CloudsVisualSystemExampleBox2D::selfSetup()
     
     synth.setOutputGen(output);
     
+	//JG this is a problem, memo
     dummyApp = new DummyApp(&synth);
     ofSoundStreamSetup(2, 0, dummyApp, 44100, 512, 4);
 }
@@ -274,10 +275,10 @@ void CloudsVisualSystemExampleBox2D::selfUpdate(){
     // handle random platform
     if (bRandomPlatforms) {
         randomPlatformCounter--;
-        if (randomPlatformCounter==0) {
+        if (randomPlatformCounter == 0) {
             addRandomPlatform();
         }
-        if (randomPlatformCounter<-400) {
+        if (randomPlatformCounter < -400) {
             removeRandomPlatform();
             randomPlatformCounter = 150;
         }
@@ -615,6 +616,7 @@ float CloudsVisualSystemExampleBox2D::getGaussian() {
     return (sqrt (-2.0 * log(x1)) * cos(2.0 * PI * x2)) / 2;
 }
 
+//need a smarter way of dealing with tonic
 DummyApp::DummyApp(ofxTonicSynth *s)
 {
     synth = s;

@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    ofSetVerticalSync(true);
+    ofSetFrameRate(60);
 	swim.setup();
 	swim.playSystem();
 }

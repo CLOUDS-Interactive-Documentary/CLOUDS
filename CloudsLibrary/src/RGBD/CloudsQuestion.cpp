@@ -113,8 +113,7 @@ void CloudsQuestion::endShader(){
 }
 
 void CloudsQuestion::reloadShader(){
-	cout << "RELOADING QUESTION SHADER" << endl;
-	CloudsQuestion::shader.load(getDataPath() + "/shaders/question");
+	CloudsQuestion::shader.load(GetCloudsDataPath() + "/shaders/question");
 }
 
 void CloudsQuestion::update(){

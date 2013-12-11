@@ -90,8 +90,10 @@ namespace itg
 		// make the creature magic if someone is interacting with it
 		void setMagic(bool magic) { this->magic = magic; }
 		bool getMagic() { return magic; }
+        
+        static float randomGauss(float mean, float stdDev);
 
-    protected:    
+    protected:
         // forces
         ofVec3f accumulated;
         CreatureType type;

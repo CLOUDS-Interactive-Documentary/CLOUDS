@@ -4,7 +4,6 @@
 
 #include "CloudsVisualSystemRipples.h"
 
-
 //#include "CloudsRGBDVideoPlayer.h"
 //#ifdef AVF_PLAYER
 //#include "ofxAVFVideoPlayer.h"
@@ -23,6 +22,10 @@ void CloudsVisualSystemRipples::selfSetupGui()
     customGui->addButton("RESTART", &bRestart);
     customGui->addSlider("DAMPING", 0, 1, &damping);
     customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
+    
+    customGui->addSpacer();
+    customGui->addToggle("DROP ON PRESS", &bDropOnPress);
+    customGui->addIntSlider("RATE", 1, 30, &dropRate);
     
     customGui->addSpacer();
     customGui->addRangeSlider("DROP HUE", 0, 255, &minDropHue, &maxDropHue);
@@ -94,6 +97,8 @@ void CloudsVisualSystemRipples::selfSetup()
 //    bClearBackground = false;
     
     // Set defaults.
+    bDropOnPress = false;
+    dropRate = 1;
     damping = 0.995f;
     radius = 10.0f;
     
@@ -174,26 +179,29 @@ void CloudsVisualSystemRipples::selfUpdate()
     tintColor.setHsb(tintHue->getPos(), tintSat->getPos(), tintBri->getPos(), tintAlpha->getPos());
     dropColor.setHsb(ofRandom(minDropHue, maxDropHue), ofRandom(minDropSat, maxDropSat), ofRandom(minDropBri, maxDropBri));
     
-    ofPushStyle();
-    ofPushMatrix();
-    ripplesSrcFbo.begin();
-    {
-        ofSetColor(dropColor);
+    if ((bDropOnPress && GetCloudsInputPressed()) || (!bDropOnPress && ofGetFrameNum() % dropRate == 0)) {
+        ofPushStyle();
+        ofPushMatrix();
+        ripplesSrcFbo.begin();
+        {
+            ofSetColor(dropColor);
+            ofNoFill();
 #ifdef OCULUS_RIFT
-        // I don't know why everything is flipped, but it is.
-        ofCircle(ofGetHeight() - ofGetMouseY(), ofGetWidth() - ofGetMouseX(), radius);
+            // I don't know why everything is flipped, but it is.
+            ofCircle(ofGetHeight() - GetCloudsInputY(), ofGetWidth() - GetCloudsInputX(), radius);
 #else
-        ofCircle(ofGetMouseX(), ofGetMouseY(), radius);
+            ofCircle(GetCloudsInputX(), GetCloudsInputY(), radius);
 #endif
+        }
+        ripplesSrcFbo.end();
+        ofPopMatrix();
+        ofPopStyle();
     }
-    ripplesSrcFbo.end();
-    ofPopMatrix();
-    ofPopStyle();
     
     ripplesDstFbo.begin();
     ripplesShader.begin();
-    ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 0);
-    ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 1);
+    ripplesShader.setUniformTexture("backbuffer", ripplesDstFbo.getTextureReference(), 1);
+    ripplesShader.setUniformTexture("tex0", ripplesSrcFbo.getTextureReference(), 2);
     ripplesShader.setUniform1f("damping", damping / 10.0f + 0.9f);  // 0.9 - 1.0 range
     {
         ofSetColor(tintColor);

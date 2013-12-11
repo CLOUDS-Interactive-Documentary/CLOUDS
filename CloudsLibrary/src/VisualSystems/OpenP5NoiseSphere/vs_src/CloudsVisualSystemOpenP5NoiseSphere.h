@@ -12,10 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 
-#ifdef AVF_PLAYER
 #include "ofxAVFVideoPlayer.h"
-#endif
-// TODO: Deal with case when AVF_PLAYER is not #defined
 
 #include "fft.h"
 #include "fftOctaveAnalyzer.h"
@@ -29,6 +26,7 @@ class Hair {
 	float phi;
 	float largo;
 	float theta;
+    float luckyNumber;
     
     static float * levelScaleLookUp;
     
@@ -43,6 +41,7 @@ class Hair {
 		phi = ofRandom(TWO_PI);
 		largo = ofRandom(1.05, 1.1);
 		theta = asin(z/radius);
+        luckyNumber = ofRandom(TWO_PI);
 	}
 	
 	void draw(ofMesh& mesh, float noisePosition, float hairScale, float scrollY) {
@@ -73,12 +72,10 @@ class Hair {
 		float yb = yo * largo * hairScale * levelScaleLookUp[i];
 		float zb = zo * largo * hairScale * levelScaleLookUp[i];
       
-
 		mesh.addColor(baseColor);
 		mesh.addVertex(ofVec3f(x,y,z));
 		mesh.addColor(tipColor);
 		mesh.addVertex(ofVec3f(xb,yb,zb));
-		
 	}
 };
 
@@ -157,7 +154,7 @@ class CloudsVisualSystemOpenP5NoiseSphere : public CloudsVisualSystem {
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
 	
-	
+	void reloadSound();
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -180,7 +177,8 @@ protected:
 	float noiseSpeed;
 	float noiseScale;
     
-	float hairLength;
+	float minHairLength;
+    float maxHairLength;
     float minHairLineWidth;
     float maxHairLineWidth;
 	
@@ -196,19 +194,14 @@ protected:
     ofFloatColor minTipColor, maxTipColor;
     
     float currLevel;
+    float levelAdjust;
     
-    bool * peakToggles;
-    float combinedPeak;
-    float furPeakScalar;
-    
-    float magnitude[2][BUFFER_SIZE];
-    float phase[2][BUFFER_SIZE];
-    float power[2][BUFFER_SIZE];
-    float freq[2][BUFFER_SIZE/2];
-    fft	fft[2];
-    FFTOctaveAnalyzer fftAnalyzer[2];
+    ofDirectory soundsDir;
+    int selectedSoundsIdx;
+    bool bModeVideo;
     
     ofxAVFVideoPlayer videoPlayer;
+    ofSoundPlayer soundPlayer;
     
     float scrollY;
     float scrollSpeed;

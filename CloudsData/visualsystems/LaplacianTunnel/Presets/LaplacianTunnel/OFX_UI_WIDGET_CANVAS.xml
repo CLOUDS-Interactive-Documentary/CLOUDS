@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>OFX_UI_WIDGET_CANVAS</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>486.000000000</XPosition>
+    <YPosition>318.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>44</Kind>
+    <Name>num replications</Name>
+    <Value>4</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>replication offset</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fog density</Name>
+    <Value>0.072413795</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>light distance</Name>
+    <Value>200.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>cam speed</Name>
+    <Value>0.788177311</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>corkscrew factor</Name>
+    <Value>0.073891632</Value>
+</Widget>

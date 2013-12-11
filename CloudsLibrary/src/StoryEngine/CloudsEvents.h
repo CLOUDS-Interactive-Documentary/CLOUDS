@@ -11,10 +11,8 @@ class CloudsAct;
 class CloudsActEventArgs : public ofEventArgs {
   public:
 	CloudsActEventArgs(CloudsAct* act)
-		: act(act)
-	{ }
-//	vector<CloudsDichotomy>& finalDichotomyBalance;
-//	vector<ActDichotomyEntry>& actDichotomies;
+		: act(act){}
+	
 	CloudsAct* act;
 };
 
@@ -35,8 +33,7 @@ class CloudsClipEventArgs : public ofEventArgs {
 class CloudsVisualSystemEventArgs : public ofEventArgs {
   public:
 	CloudsVisualSystemEventArgs(CloudsVisualSystemPreset& preset)
-		: preset(preset)
-	{}
+		: preset(preset){}
 
 	CloudsVisualSystemPreset& preset;
 };
@@ -44,8 +41,7 @@ class CloudsVisualSystemEventArgs : public ofEventArgs {
 class CloudsQuestionEventArgs : public ofEventArgs{
    public:
     CloudsQuestionEventArgs(CloudsClip& questionClip, string question, string topic)
-		: questionClip(questionClip), question(question), topic(topic)
-    {}
+		: questionClip(questionClip), question(question), topic(topic){}
 	
     CloudsClip& questionClip;
 	string question;
@@ -67,14 +63,13 @@ public:
 class CloudsTopicEventArgs : public ofEventArgs{
 public:
 	CloudsTopicEventArgs(string topic, float duration)
-		: topic(topic), duration(duration)
-	{}
+		: topic(topic), duration(duration){}
 	
 	string topic;
 	float duration;
 };
 
-class CloudsEvents {
+class CloudsStoryEvents {
   public:
 	 //sent by story engine
     ofEvent<CloudsActEventArgs> actCreated;
@@ -88,11 +83,9 @@ class CloudsEvents {
 	ofEvent<CloudsVisualSystemEventArgs> visualSystemEnded;
 
 	ofEvent<CloudsPreRollEventArgs> preRollRequested;
-	
-    
     ofEvent<CloudsQuestionEventArgs> questionAsked;
-
 	ofEvent<CloudsTopicEventArgs> topicChanged;
-	
+
 };
+
 

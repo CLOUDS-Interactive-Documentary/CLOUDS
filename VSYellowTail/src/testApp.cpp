@@ -1,8 +1,14 @@
 #include "testApp.h"
 
+#include "CloudsInputKinectOSC.h"
+
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup()
+{
 	ofSetVerticalSync(true);
+    
+    SetCloudsInputKinect();
+    
 	yellowTail.setup();
 	yellowTail.playSystem();
 }
@@ -23,7 +29,9 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::exit(){
+void testApp::exit()
+{
+    yellowTail.exit();
 }
 
 //--------------------------------------------------------------

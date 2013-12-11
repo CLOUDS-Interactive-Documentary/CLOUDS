@@ -5,64 +5,43 @@
 
 #ifndef CLOUDS_NO_VS
 
-//JAMES SYSTEMS
-#include "CloudsVisualSystemDataCascade.h"
-#include "CloudsVisualSystemVectorFlow.h"
-#include "CloudsVisualSystemForkingPaths.h"
-#include "CloudsVisualSystemOcean.h"
-//#include "CloudsVisualSystemOrbit.h"
-#include "CloudsVisualSystemRGBDVideo.h"
-#include "CloudsVisualSystemConnectors.h"
-
-//CONTRACTOR SYSTEMS
-//pati
-#include "CloudsVisualSystemLSystem.h"
-#include "CloudsVisualSystemVoro.h"
+#include "CloudsVisualSystem3DModelLoader.h"
+#include "CloudsVisualSystemAutomata.h"
+#include "CloudsVisualSystemBallDroppings.h"
+#include "CloudsVisualSystemChromogram.h"
 #include "CloudsVisualSystemCities.h"
-#include "CloudsVisualSystemWorld.h"
-#include "CloudsVisualSystemMemory.h"
-#include "CloudsVisualSystemPaintBrush.h"
-
-//reza
+#include "CloudsVisualSystemCode.h"
+#include "CloudsVisualSystemColony.h"
+#include "CloudsVisualSystemConnectors.h"
 #include "CloudsVisualSystemCosmic.h"
-#include "CloudsVisualSystemFlocking.h"
-
-//lars
-#include "CloudsVisualSystemFireworks.h"
-#include "CloudsVisualSystemMarchingCubes.h"
-#include "3DModelVisualSystem.h"
-//#include "CloudsVisualSystemMandala.h"
-#include "CloudsVisualSystemMandala.h"
-#include "CloudsVisualSystemMazeGenerator.h"
-#include "CloudsVisualSystemRandomDigits.h"
-
-//CODE STORM
-#include "CloudsVisualSystemOscillations.h"
-#include "CloudsVisualSystemScrape.h"
-#include "CloudsVisualSystemWebHistory.h"
-#include "CloudsVisualSystemPages.h"
-//#include "QuineVisualSystem.h"
-
-//COMMISSIONS
-#include "CloudsVisualSystemVerletForm.h"
-#include "CloudsVisualSystemNeurons.h"
-#include "CloudsVisualSystemLaplacianTunnel.h"
-#include "CloudsVisualSystemReplicator.h"
-#include "CloudsVisualSystemLIA.h"
+#include "CloudsVisualSystemDataCascade.h"
 #include "CloudsVisualSystemDrawnLine.h"
-//#include "CloudsVisualSystemGameOfLife.h"
-#include "CloudsVisualSystemYellowTail.h"
-
-//EXAMPLES
-#include "CloudsVisualSystemExampleVectorMath.h"
 #include "CloudsVisualSystemExampleBox2D.h"
 #include "CloudsVisualSystemExampleMPMFluid.h"
 #include "CloudsVisualSystemExampleOpenSteer.h"
-#include "CloudsVisualSystemVision.h"
-
-//OPENP5
+#include "CloudsVisualSystemExampleVectorMath.h"
+#include "CloudsVisualSystemFireworks.h"
+#include "CloudsVisualSystemFlocking.h"
+#include "CloudsVisualSystemFlying.h"
+#include "CloudsVisualSystemForkingPaths.h"
+#include "CloudsVisualSystemGPUParticles.h"
+//#include "CloudsVisualSystemGameOfLife.h"
+#include "CloudsVisualSystemHistogram.h"
+#include "CloudsVisualSystemLIA.h"
+#include "CloudsVisualSystemLSystem.h"
+#include "CloudsVisualSystemLaplacianTunnel.h"
+#include "CloudsVisualSystemMandala.h"
+#include "CloudsVisualSystemMarchingCubes.h"
+#include "CloudsVisualSystemMazeGenerator.h"
+#include "CloudsVisualSystemMemory.h"
+#include "CloudsVisualSystemMetaballs.h"
+#include "CloudsVisualSystemNbody.h"
+#include "CloudsVisualSystemNeurons.h"
+#include "CloudsVisualSystemOcean.h"
 //#include "CloudsVisualSystemOpenP53DIntro.h"
+#include "CloudsVisualSystemOpenP5Caustics.h"
 #include "CloudsVisualSystemOpenP5DrawingMachine10.h"
+#include "CloudsVisualSystemOpenP5Fifteen.h"
 #include "CloudsVisualSystemOpenP5Hackpact.h"
 #include "CloudsVisualSystemOpenP5Machine.h"
 #include "CloudsVisualSystemOpenP5NoiseSphere.h"
@@ -72,6 +51,28 @@
 #include "CloudsVisualSystemOpenP5Spaghetti.h"
 #include "CloudsVisualSystemOpenP5SpinningSolids.h"
 #include "CloudsVisualSystemOpenP5TextUniverse.h"
+#include "CloudsVisualSystemOrbit.h"
+#include "CloudsVisualSystemOscillations.h"
+#include "CloudsVisualSystemPages.h"
+#include "CloudsVisualSystemPaintBrush.h"
+//#include "CloudsVisualSystemQuineVisualSystem.h"
+#include "CloudsVisualSystemRGBDVideo.h"
+#include "CloudsVisualSystemRandomDigits.h"
+#include "CloudsVisualSystemReplicator.h"
+#include "CloudsVisualSystemRipples.h"
+#include "CloudsVisualSystemRulez.h"
+#include "CloudsVisualSystemScrape.h"
+#include "CloudsVisualSystemSwim.h"
+//#include "CloudsVisualSystemThingsInTheDark.h"
+#include "CloudsVisualSystemTwitter.h"
+#include "CloudsVisualSystemVectorFlow.h"
+#include "CloudsVisualSystemVerletForm.h"
+#include "CloudsVisualSystemVision.h"
+#include "CloudsVisualSystemVoro.h"
+#include "CloudsVisualSystemWebHistory.h"
+#include "CloudsVisualSystemWorld.h"
+#include "CloudsVisualSystemXstatic.h"
+#include "CloudsVisualSystemYellowTail.h"
 
 // register a mapping of visual system constructors
 // so it's easy to instantiate them in groups when needed
@@ -91,10 +92,14 @@ struct Mapping {
 		return map<string,tConstructor>::value_type(classname, constructor);
 	}
 } mapping[] = {
-	
-	{ "3DModelVisualSystem", &fCreate<CloudsVisualSystem3DModel> },
+
+	{ "3DModelLoader", &fCreate<CloudsVisualSystem3DModelLoader> },
+	{ "Automata", &fCreate<CloudsVisualSystemAutomata> },
+	{ "BallDroppings", &fCreate<CloudsVisualSystemBallDroppings> },
+	{ "Chromogram", &fCreate<CloudsVisualSystemChromogram> },
 	{ "Cities", &fCreate<CloudsVisualSystemCities> },
-//	{ "Colony", &fCreate<CloudsVisualSystemColony> },
+	{ "Code", &fCreate<CloudsVisualSystemCode> },
+	{ "Colony", &fCreate<CloudsVisualSystemColony> },
 	{ "Connectors", &fCreate<CloudsVisualSystemConnectors> },
 	{ "Cosmic", &fCreate<CloudsVisualSystemCosmic> },
 	{ "DataCascade", &fCreate<CloudsVisualSystemDataCascade> },
@@ -105,20 +110,26 @@ struct Mapping {
 	{ "ExampleVectorMath", &fCreate<CloudsVisualSystemExampleVectorMath> },
 	{ "Fireworks", &fCreate<CloudsVisualSystemFireworks> },
 	{ "Flocking", &fCreate<CloudsVisualSystemFlocking> },
+	{ "Flying", &fCreate<CloudsVisualSystemFlying> },
 	{ "ForkingPaths", &fCreate<CloudsVisualSystemForkingPaths> },
+	{ "GPUParticles", &fCreate<CloudsVisualSystemGPUParticles> },
 //	{ "GameOfLife", &fCreate<CloudsVisualSystemGameOfLife> },
-	{ "Lia", &fCreate<CloudsVisualSystemLIA> },
+	{ "Histogram", &fCreate<CloudsVisualSystemHistogram> },
+	{ "LIA", &fCreate<CloudsVisualSystemLIA> },
 	{ "LSystem", &fCreate<CloudsVisualSystemLSystem> },
 	{ "LaplacianTunnel", &fCreate<CloudsVisualSystemLaplacianTunnel> },
-	{ "MandalaComponents", &fCreate<CloudsVisualSystemMandala> },
+	{ "Mandala", &fCreate<CloudsVisualSystemMandala> },
+	{ "MarchingCubes", &fCreate<CloudsVisualSystemMarchingCubes> },
 	{ "MazeGenerator", &fCreate<CloudsVisualSystemMazeGenerator> },
 	{ "Memory", &fCreate<CloudsVisualSystemMemory> },
-	{ "Metaballs", &fCreate<CloudsVisualSystemMarchingCubes> },
+	{ "Metaballs", &fCreate<CloudsVisualSystemMetaballs> },
+	{ "Nbody", &fCreate<CloudsVisualSystemNbody> },
 	{ "Neurons", &fCreate<CloudsVisualSystemNeurons> },
 	{ "Ocean", &fCreate<CloudsVisualSystemOcean> },
-//  { "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 //	{ "OpenP53DIntro", &fCreate<CloudsVisualSystemOpenP53DIntro> },
+	{ "OpenP5Caustics", &fCreate<CloudsVisualSystemOpenP5Caustics> },
 	{ "OpenP5DrawingMachine10", &fCreate<CloudsVisualSystemOpenP5DrawingMachine10> },
+	{ "OpenP5Fifteen", &fCreate<CloudsVisualSystemOpenP5Fifteen> },
 	{ "OpenP5Hackpact", &fCreate<CloudsVisualSystemOpenP5Hackpact> },
 	{ "OpenP5Machine", &fCreate<CloudsVisualSystemOpenP5Machine> },
 	{ "OpenP5NoiseSphere", &fCreate<CloudsVisualSystemOpenP5NoiseSphere> },
@@ -128,24 +139,31 @@ struct Mapping {
 	{ "OpenP5Spaghetti", &fCreate<CloudsVisualSystemOpenP5Spaghetti> },
 	{ "OpenP5SpinningSolids", &fCreate<CloudsVisualSystemOpenP5SpinningSolids> },
 	{ "OpenP5TextUniverse", &fCreate<CloudsVisualSystemOpenP5TextUniverse> },
+	{ "Orbit", &fCreate<CloudsVisualSystemOrbit> },
 	{ "Oscillations", &fCreate<CloudsVisualSystemOscillations> },
 	{ "Pages", &fCreate<CloudsVisualSystemPages> },
 	{ "PaintBrush", &fCreate<CloudsVisualSystemPaintBrush> },
-	//TODO: Rename
 //	{ "QuineVisualSystem", &fCreate<CloudsVisualSystemQuineVisualSystem> },
+//	{ "RGBD", &fCreate<CloudsVisualSystemRGBD> },
 	{ "RGBDVideo", &fCreate<CloudsVisualSystemRGBDVideo> },
 	{ "RandomDigits", &fCreate<CloudsVisualSystemRandomDigits> },
 	{ "Replicator", &fCreate<CloudsVisualSystemReplicator> },
+	{ "Ripples", &fCreate<CloudsVisualSystemRipples> },
+	{ "Rulez", &fCreate<CloudsVisualSystemRulez> },
 	{ "Scrape", &fCreate<CloudsVisualSystemScrape> },
+	{ "Swim", &fCreate<CloudsVisualSystemSwim> },
 //	{ "ThingsInTheDark", &fCreate<CloudsVisualSystemThingsInTheDark> },
+	{ "Twitter", &fCreate<CloudsVisualSystemTwitter> },
 	{ "VectorFlow", &fCreate<CloudsVisualSystemVectorFlow> },
 	{ "VerletForm", &fCreate<CloudsVisualSystemVerletForm> },
 	{ "Vision", &fCreate<CloudsVisualSystemVision> },
 	{ "Voro", &fCreate<CloudsVisualSystemVoro> },
 	{ "WebHistory", &fCreate<CloudsVisualSystemWebHistory> },
 	{ "World", &fCreate<CloudsVisualSystemWorld> },
+	{ "Xstatic", &fCreate<CloudsVisualSystemXstatic> },
 	{ "YellowTail", &fCreate<CloudsVisualSystemYellowTail> }
 };
+
 map<string, tConstructor> constructors(mapping,mapping + ARRAY_SIZE(mapping));
 
 //--------------------------------------------------------------------
@@ -586,7 +604,7 @@ vector<CloudsVisualSystemPreset>& CloudsVisualSystemManager::getPresets(){
 
 //--------------------------------------------------------------------
 string CloudsVisualSystemManager::getKeywordFilePath(){
-	return getDataPath() + "/links/visualsystems_keywords_db.xml";
+	return GetCloudsDataPath() + "/links/visualsystems_keywords_db.xml";
 }
 
 //--------------------------------------------------------------------
@@ -642,10 +660,9 @@ void CloudsVisualSystemManager::unsuppressClip(string presetID, int presetIndex)
     }
 }
 
-#ifndef CLOUDS_NO_VS
 //--------------------------------------------------------------------
 void CloudsVisualSystemManager::exportStandalonePresets(){
-	string standaloneExportFolder = getDataPath() + "standalonePresets/";
+	string standaloneExportFolder = GetCloudsDataPath() + "standalonePresets/";
 	ofDirectory(standaloneExportFolder).create();
 	
 	cout << "COPYING PRESETS!" << endl;
@@ -653,7 +670,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	for(int i = 0; i < presets.size(); i++){
 		if(presets[i].enabled){
             
-			string presetSourceDirectory = CloudsVisualSystem::getVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
+			string presetSourceDirectory = GetCloudsVisualSystemDataPath( presets[i].systemName ) + "Presets/" + presets[i].presetName;
 			string presetTargetDirectory = standaloneExportFolder + "VisualSystems/" + presets[i].systemName + "/Presets/";
             
 			cout << "COPYING " << presetSourceDirectory << " to " << presetTargetDirectory << endl;
@@ -669,7 +686,7 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 	set< string >::iterator it;
 	for(it = systemsWithPresets.begin(); it != systemsWithPresets.end(); it++){
 //		ofPtr<CloudsVisualSystem> sys = *it;
-		string systemName = CloudsVisualSystem::getVisualSystemDataPath(*it);
+		string systemName = GetCloudsVisualSystemDataPath(*it);
 		ofDirectory otherFiles( systemName );
 		otherFiles.listDir();
 		for(int f = 0; f < otherFiles.size(); f++){
@@ -680,7 +697,6 @@ void CloudsVisualSystemManager::exportStandalonePresets(){
 		}
 	}
 }
-#endif
 
 //--------------------------------------------------------------------
 bool CloudsVisualSystemManager::isClipSuppressed(string presetID,string clip){

@@ -25,8 +25,8 @@ CloudsRGBDVideoPlayer::CloudsRGBDVideoPlayer(){
 	clipPrerolled = false;
 	
 #ifdef AVF_PLAYER
-	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 	nextPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
+	currentPlayer = ofPtr<ofxAVFVideoPlayer>( new ofxAVFVideoPlayer() );
 #else
 	currentPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
 	nextPlayer = ofPtr<ofVideoPlayer>( new ofVideoPlayer() );
@@ -167,8 +167,8 @@ void CloudsRGBDVideoPlayer::swapAndPlay(){
 	}
 
 	currentPlayer->stop();
-	nextPlayer->play();
 	swap(currentPlayer,nextPlayer);
+	currentPlayer->play();
 	clipPrerolled = false;
 	
 //	cout << "swapped and played clip " << endl;
@@ -183,7 +183,7 @@ void CloudsRGBDVideoPlayer::setupProjectionUniforms(ofShader& shader){
 		return;
 	}
 	
-    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 0);
+    shader.setUniformTexture("rgbdTexture", getPlayer().getTextureReference(), 1);
     shader.setUniform2f("textureSize",  getPlayer().getWidth(), getPlayer().getHeight());
     
     shader.setUniform4f("colorRect", colorRect.x, colorRect.y, colorRect.width, colorRect.height);
@@ -234,7 +234,8 @@ ofVideoPlayer& CloudsRGBDVideoPlayer::getPlayer(){
 void CloudsRGBDVideoPlayer::update(ofEventArgs& args){
 	
 	currentPlayer->update();
-	if(clipPrerolled){
+	if(clipPrerolled)
+	{
 		nextPlayer->update();
 	}
 	

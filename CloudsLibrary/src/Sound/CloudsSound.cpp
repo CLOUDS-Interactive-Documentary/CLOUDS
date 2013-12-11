@@ -45,13 +45,18 @@ void CloudsSound::setup(CloudsStoryEngine& storyEngine){
         // load data files
         loadRTcmixFiles();
         
+        // precompute music data
+        for(int i = 0;i<pitches.size();i++)
+        {
+            precomputemarkov(pitches[i]);
+        }
+        
 		targetAmp = .7; // wonder what this is?
 		
         MASTERAMP = 1;
         MASTERTEMPO = 120;
         AUTORUN = 0;
         DOCLEAR = true;
-        RTCMIX_PRINT = false;
         
 		ofAddListener(ofEvents().audioRequested, this, &CloudsSound::audioRequested);
 
@@ -157,17 +162,25 @@ void CloudsSound::actBegan(CloudsActEventArgs& args){
             }
             if(pscore==8) valid_presets.push_back(j);
         }
-
-        int thepreset = valid_presets[ofRandom(valid_presets.size())];
-        
-        mharmony = presets[thepreset].harmony;
-        mrhythm = presets[thepreset].rhythm;
-        //mtempo = presets[thepreset].tempo;
-        mtempo = 120;
-        for(int j = 0;j<presets[thepreset].instruments.size();j++)
+		
+        if(valid_presets.size()==0)
         {
-            startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+            valid_presets.push_back(12);
         }
+        
+		if(valid_presets.size() > 0){
+			int thepreset = valid_presets[ofRandom(valid_presets.size())];
+		
+			mharmony = presets[thepreset].harmony;
+			mrhythm = presets[thepreset].rhythm;
+			//mtempo = presets[thepreset].tempo;
+			mtempo = 120;
+			for(int j = 0;j<presets[thepreset].instruments.size();j++)
+			{
+				startMusic(starttime, presets[thepreset].instruments[j], presets[thepreset].arg_a[j], presets[thepreset].arg_b[j], mharmony, mrhythm, clipdur, mtempo);
+			}
+		}
+
    
     }
     
@@ -286,10 +299,10 @@ void CloudsSound::audioRequested(ofAudioEventArgs& args){
     // not using right now
     if (check_bang() == 1) {
         allownote = 1;
-        if(DEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
+        if(LUKEDEBUG) cout << "BANG: " << ofGetElapsedTimef() << endl;
     }
 
-    if(RTCMIX_PRINT)
+    if(LUKEDEBUG)
     {
         char *pbuf = get_print();
         char *pbufptr = pbuf;
