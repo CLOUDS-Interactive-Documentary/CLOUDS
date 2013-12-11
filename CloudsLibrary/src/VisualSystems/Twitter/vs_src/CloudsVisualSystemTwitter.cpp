@@ -14,10 +14,7 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
         return lhs.month < rhs.month;
     return lhs.day < rhs.day;
 }
-//--------------------------------------------------------------
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
+
 void CloudsVisualSystemTwitter::selfSetup()
 {
     loadJSONData();
@@ -27,20 +24,14 @@ void CloudsVisualSystemTwitter::selfSetup()
     sprite.loadImage(getVisualSystemDataPath()+"/dot.png");
     meshExpansion = 100;
     pointSize =10;
-    drawTwitterTimeline();
+//    drawTwitterTimeline();
 }
 
-//--------------------------------------------------------------
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystemTwitter::selfBegin()
 {
     
 }
 
-//--------------------------------------------------------------
-//These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemTwitter::selfSetupGui()
 {
 	clusterGui = new ofxUISuperCanvas("CLUSTER PARAMS", gui);
@@ -67,7 +58,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
         
         for(int i = 0; i< files.size(); i++){
             string filePath =getVisualSystemDataPath()+"tweets/" +files[i].getFileName();
-
+            
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
                 
@@ -75,12 +66,12 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                     ofDrawBitmapString(result.getRawString(), 10, 14);
                 }
                 else if(result.isMember("Tweets")){
-
+                    
                     Tweeter cur;
                     vector<Tweet> userTweets;
                     ofxJSONElement tweets = result["Tweets"];
-
-                     vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
+                    
+                    vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
                     cur.name = "@" + names[0];
                     cur.ID = i;
                     
@@ -104,7 +95,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                                 if( !ofContains(cur.userLinks, users[k].asString())){
                                     
                                     cur.userLinks.push_back(users[k].asString());
-
+                                    
                                 }
                             }
                         }
@@ -114,22 +105,19 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                             t.tweetDate.day = date["Day"].asInt()   ;
                             t.tweetDate.month =date["Month"].asInt();
                             t.tweetDate.year =date["Year"].asInt();
-
+                            
                             
                             for(int i=0; i<dateIndex.size(); i++){
-                            
+                                
                                 if(dateIndex[i].year == t.tweetDate.year && dateIndex[i].month == t.tweetDate.month && dateIndex[i].day == t.tweetDate.day){
                                     alreadyExists = true;
                                     break;
                                 }
                             }
                             if(! alreadyExists){
-                                dateIndex.push_back(t.tweetDate);    
+                                dateIndex.push_back(t.tweetDate);
+                                dateIndexMap[getDateAsString(t.tweetDate)] = dateIndex.size()-1;
                             }
-                            
-                            
-                            
-                            
                         }
                         userTweets.push_back(t);
                     }
@@ -138,7 +126,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                 } else {
                     cout  << "Failed to parse JSON" << endl;
                 }
-        }
+            }
         }
     }
     addUsersFromMentions();
@@ -168,24 +156,24 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 		
 		if(findingNodes){
 			vector<string> components = ofSplitString(line, " ");
-
+            
             int id = ofToInt(components[0]);
-
+            
             Tweeter& tweeter = getTweeterByID(tweeters, id);
             
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
             
 			tweeter.position = ofVec3f(ofToFloat(components[2]),
-										   ofToFloat(components[3]),
-										   ofToFloat(components[4])*10);
+                                       ofToFloat(components[3]),
+                                       ofToFloat(components[4])*10);
 		}
         
         if(findingEdges){
 			vector<string> components = ofSplitString(line, " ");
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
-
+            
             Tweeter& tweeter = getTweeterByID(tweeters, id);
             for(int i =1; i< components.size()-1; i++){
                 if(tweeter.ID != ofToInt(components[i]) ){
@@ -200,32 +188,36 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	}
 }
 
+void CloudsVisualSystemTwitter::updateMesh(){
+//    vector<<#typename _Tp#>>
+}
+
 void CloudsVisualSystemTwitter::loadMesh(){
     
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             tweeters[j].linksById[k];
-
+            
             if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
                 links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
                 
                 linksMesh.addVertex(tweeters[j].position);
                 linksMesh.addNormal(ofVec3f(0,0,0));
-            
+                
                 Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
                 linksMesh.addVertex(t.position);
                 linksMesh.addNormal(ofVec3f(0,0,0));
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
             }
             else{
-//                cout<<"Link already exists between "<<tweeters[j].ID<<" and "<<tweeters[j].linksById[k]<<endl;
             }
         }
         linksMesh.setMode(OF_PRIMITIVE_LINES);
     }
-
+    
 }
+
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
     
     vector<string> names;
@@ -238,7 +230,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
         for(int j=0; j<tweeters[i].userLinks.size(); j++){
             
             if(! ofContains(names, tweeters[i].userLinks[j])){
-                numberOfMentions[tweeters[i].userLinks[j]] ++;   
+                numberOfMentions[tweeters[i].userLinks[j]] ++;
             }
         }
     }
@@ -261,7 +253,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
     
     for (int i= 0; i < tweeters.size(); i++) {
         ss<<tweeters[i].ID<<"  \""<<tweeters[i].name<<"\""<<endl;
-
+        
         
     }
     
@@ -271,7 +263,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
         string edges;
         if(tweeters[j].userLinks.size() > 0){
             for(int k=0; k< tweeters[j].userLinks.size(); k++){
-
+                
                 if(getUserIdByName(tweeters[j].userLinks[k]) != -1){
                     edges += ofToString(getUserIdByName(tweeters[j].userLinks[k])) +  " ";
                 }
@@ -293,21 +285,28 @@ int CloudsVisualSystemTwitter:: getUserIdByName(string name){
     return -1;
 }
 
-void CloudsVisualSystemTwitter::drawTwitterTimeline(){
+vector<Tweeter> CloudsVisualSystemTwitter::getTweetersForDate(int index){
+    vector<Tweeter> tOnDate;
 
-    for(int i =0; i< dateIndex.size(); i++){
+    for(int k=0; k<tweeters.size(); k++){
+               if(tweeters[k].hasTweetOnDate(dateIndex[index])){
+                   tOnDate.push_back(tweeters[k]);
+               }
+    }
+}
+
+void CloudsVisualSystemTwitter::drawTweetsForDate(int index){
+
         for(int k=0; k<tweeters.size(); k++){
-            vector<Tweet> tweets =  tweeters[k].getTweetsByDate(dateIndex[i]);
+            vector<Tweet> tweets =  tweeters[k].getTweetsByDate(dateIndex[index]);
             
             if(tweets.size() > 0 ){
                 
                 for(int j = 0; j<tweets.size(); j++){
-                    ss<<tweets[j].tweet<<" "<<getDateAsString(dateIndex[i])<<endl;
+                    ss<<tweets[j].tweet<<" "<<getDateAsString(dateIndex[index])<<endl;
                 }
             }
-            
         }
-    }
     
 }
 string CloudsVisualSystemTwitter::getDateAsString(Date d){
@@ -316,23 +315,21 @@ string CloudsVisualSystemTwitter::getDateAsString(Date d){
     dateString += ofToString(d.day) + " , ";
     dateString += ofToString(d.month) + " , ";
     dateString += ofToString(d.year);
-    
     return dateString;
-    
 }
 
 
 Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, int _id ){
     
     for(int i=0; i< tweeters.size(); i++){
-        if(tweeters[i].ID == _id){            
+        if(tweeters[i].ID == _id){
             return tweeters[i];
         }
     }
 }
 
 void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
-
+    
 }
 
 //--------------------------------------------------------------
@@ -389,33 +386,33 @@ void CloudsVisualSystemTwitter::selfDraw()
 {
     glDisable(GL_DEPTH_TEST);
     /*
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-    ofScale(10, 10);
-    clusterShader.begin();
-	clusterShader.setUniformTexture("tex", sprite, 0);
-	clusterShader.setUniform1f("expansion", meshExpansion);
-	clusterShader.setUniform1f("minSize", pointSize);
-	clusterShader.setUniform3f("attractor", 0, 0, 0);
-	clusterShader.setUniform1f("radius", 300.);
-	
-	ofEnablePointSprites();
-	ofDisableArbTex();
-	
-
-    linksMesh.drawVertices();
-//	clusterShader.end();
-	ofDisablePointSprites();
-//	ofEnableArbTex();
-	clusterShader.end();
-//    linksMesh.drawWireframe();
-*/
-
+     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+     ofScale(10, 10);
+     clusterShader.begin();
+     clusterShader.setUniformTexture("tex", sprite, 0);
+     clusterShader.setUniform1f("expansion", meshExpansion);
+     clusterShader.setUniform1f("minSize", pointSize);
+     clusterShader.setUniform3f("attractor", 0, 0, 0);
+     clusterShader.setUniform1f("radius", 300.);
+     
+     ofEnablePointSprites();
+     ofDisableArbTex();
+     
+     
+     linksMesh.drawVertices();
+     //	clusterShader.end();
+     ofDisablePointSprites();
+     //	ofEnableArbTex();
+     clusterShader.end();
+     //    linksMesh.drawWireframe();
+     */
+    
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-
+    
 }
 
 //--------------------------------------------------------------
@@ -423,9 +420,9 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     ofSetColor(ofColor::whiteSmoke);
-//    ofDrawBitmapString(ss.str(), 0,0);
+    //    ofDrawBitmapString(ss.str(), 0,0);
     listFont.drawString(ss.str(), 0, 0);
-//    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
+    //    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }
 
 // this is called when your system is no longer drawing.
@@ -445,7 +442,7 @@ void CloudsVisualSystemTwitter::selfExit()
 void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key =='k'){
         std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
-
+        
         for(int i =0; i<dateIndex.size(); i++){
             cout<<dateIndex[i].day<<" : "<<dateIndex[i].month<<" : "<<dateIndex[i].year<<endl;
         }

@@ -13,7 +13,7 @@
 #include "CloudsVisualSystem.h"
 #include "ofxJSONElement.h"
 #include "Tweeter.h"
-
+#include "ofxFTGL.h"
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 class CloudsVisualSystemTwitter : public CloudsVisualSystem
@@ -75,16 +75,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 	
 	// or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 	void selfDrawBackground();
-
-	// this is called when your system is no longer drawing.
-	// Right after this selfUpdate() and selfDraw() won't be called any more
 	void selfEnd();
-
-	// this is called when you should clear all the memory and delet anything you made in setup
     void selfExit();
-
-	//events are called when the system is active
-	//Feel free to make things interactive for you, and for the user!
     void selfKeyPressed(ofKeyEventArgs & args);
     void selfKeyReleased(ofKeyEventArgs & args);
     
@@ -97,9 +89,10 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void addUsersFromMentions();
     void createPajekNetwork();
     int getUserIdByName(string name);
+    void updateMesh();
     
-    void drawTwitterTimeline();
-    
+    void drawTweetsForDate(int index);
+    vector<Tweeter> getTweetersForDate(int index);
     
     ofxJSONElement result;
 
@@ -109,15 +102,12 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void loadMesh();
     Tweeter& getTweeterByID(vector<Tweeter>& tweeters, int _id );
     void CompareDates(Date d1,Date d2);
+
     vector<Date> dateIndex;
+    map<string,int>dateIndexMap;
+    
     string getDateAsString(Date d);
     
-    
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
     
 protected:
     ofTrueTypeFont listFont;

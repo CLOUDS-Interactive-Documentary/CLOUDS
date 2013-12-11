@@ -34,7 +34,7 @@ public:
     ofVec3f position;
     
     vector<Tweet> getTweetsByDate(Date d);
-
+    bool hasTweetOnDate(Date d);
     vector<Tweet> tweets;
     vector<string> userLinks;
     vector<int> linksById;

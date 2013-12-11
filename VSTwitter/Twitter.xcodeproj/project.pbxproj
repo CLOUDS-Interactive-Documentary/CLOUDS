@@ -15,24 +15,7 @@
 		185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CB184AB8D300F43977 /* gaussianblur.vert */; };
 		187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353411858C8B200AC5DEA /* CloudsInput.cpp */; };
 		1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */; };
-		187353BD1858F72A00AC5DEA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 187353561858F72800AC5DEA /* Makefile */; };
-		187353BE1858F72A00AC5DEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873535A1858F72800AC5DEA /* main.cpp */; };
-		187353BF1858F72A00AC5DEA /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873535B1858F72800AC5DEA /* testApp.cpp */; };
-		187353C01858F72A00AC5DEA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 187353681858F72900AC5DEA /* Makefile */; };
-		187353C11858F72A00AC5DEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873536C1858F72900AC5DEA /* main.cpp */; };
-		187353C21858F72A00AC5DEA /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873536D1858F72900AC5DEA /* testApp.cpp */; };
-		187353C31858F72A00AC5DEA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 187353781858F72900AC5DEA /* Makefile */; };
-		187353C41858F72A00AC5DEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873537C1858F72900AC5DEA /* main.cpp */; };
-		187353C51858F72A00AC5DEA /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873537D1858F72900AC5DEA /* testApp.cpp */; };
-		187353C61858F72A00AC5DEA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 187353881858F72900AC5DEA /* Makefile */; };
-		187353C71858F72A00AC5DEA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873538C1858F72900AC5DEA /* main.cpp */; };
-		187353C81858F72A00AC5DEA /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1873538D1858F72900AC5DEA /* testApp.cpp */; };
-		187353C91858F72A00AC5DEA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353AB1858F72900AC5DEA /* libftgl.a */; };
-		187353CA1858F72A00AC5DEA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353AD1858F72900AC5DEA /* libftgl.a */; };
 		187353CB1858F72A00AC5DEA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B01858F72900AC5DEA /* libftgl.a */; };
-		187353CC1858F72A00AC5DEA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B21858F72900AC5DEA /* ftgl_static.lib */; };
-		187353CD1858F72A00AC5DEA /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B41858F72900AC5DEA /* ftgl_static.lib */; };
-		187353CE1858F72A00AC5DEA /* ftgl_static_D.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B51858F72900AC5DEA /* ftgl_static_D.lib */; };
 		187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */; };
 		187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353BB1858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp */; };
 		188B661118412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */; };
@@ -315,34 +298,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		187353D21858F72A00AC5DEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 187353641858F72900AC5DEA /* example-ftw.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
-			remoteInfo = "example-ftw";
-		};
-		187353D51858F72A00AC5DEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 187353521858F72800AC5DEA /* exmple-ftglExtrude.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
-			remoteInfo = "exmple-ftglExtrude";
-		};
-		187353D81858F72A00AC5DEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 187353741858F72900AC5DEA /* FTGLHeightsExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
-			remoteInfo = FTGLHeightsExample;
-		};
-		187353DB1858F72A00AC5DEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 187353841858F72900AC5DEA /* FTGLSimpleLayoutExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
-			remoteInfo = FTGLSimpleLayoutExample;
-		};
 		850EE0571830627B004411A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
@@ -402,44 +357,6 @@
 		187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		187353471858C8B200AC5DEA /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		1873534C1858F72800AC5DEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		187353501858F72800AC5DEA /* mplus-1c-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-regular.ttf"; sourceTree = "<group>"; };
-		187353511858F72800AC5DEA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
-		187353521858F72800AC5DEA /* exmple-ftglExtrude.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "exmple-ftglExtrude.xcodeproj"; sourceTree = "<group>"; };
-		187353561858F72800AC5DEA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		187353571858F72800AC5DEA /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
-		187353581858F72800AC5DEA /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		1873535A1858F72800AC5DEA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1873535B1858F72800AC5DEA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		1873535C1858F72800AC5DEA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		1873535E1858F72800AC5DEA /* addons.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addons.make; sourceTree = "<group>"; };
-		187353611858F72800AC5DEA /* M+ Fonts License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "M+ Fonts License.txt"; sourceTree = "<group>"; };
-		187353621858F72800AC5DEA /* mplus-1c-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-regular.ttf"; sourceTree = "<group>"; };
-		187353631858F72900AC5DEA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
-		187353641858F72900AC5DEA /* example-ftw.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "example-ftw.xcodeproj"; sourceTree = "<group>"; };
-		187353681858F72900AC5DEA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		187353691858F72900AC5DEA /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
-		1873536A1858F72900AC5DEA /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		1873536C1858F72900AC5DEA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1873536D1858F72900AC5DEA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		1873536E1858F72900AC5DEA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		187353721858F72900AC5DEA /* mplus-1c-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-regular.ttf"; sourceTree = "<group>"; };
-		187353731858F72900AC5DEA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
-		187353741858F72900AC5DEA /* FTGLHeightsExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = FTGLHeightsExample.xcodeproj; sourceTree = "<group>"; };
-		187353781858F72900AC5DEA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		187353791858F72900AC5DEA /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
-		1873537A1858F72900AC5DEA /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		1873537C1858F72900AC5DEA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1873537D1858F72900AC5DEA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		1873537E1858F72900AC5DEA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
-		187353821858F72900AC5DEA /* mplus-1c-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-regular.ttf"; sourceTree = "<group>"; };
-		187353831858F72900AC5DEA /* config.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
-		187353841858F72900AC5DEA /* FTGLSimpleLayoutExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = FTGLSimpleLayoutExample.xcodeproj; sourceTree = "<group>"; };
-		187353881858F72900AC5DEA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		187353891858F72900AC5DEA /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
-		1873538A1858F72900AC5DEA /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		1873538C1858F72900AC5DEA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1873538D1858F72900AC5DEA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
-		1873538E1858F72900AC5DEA /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		187353931858F72900AC5DEA /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		187353941858F72900AC5DEA /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		187353951858F72900AC5DEA /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -462,13 +379,8 @@
 		187353A61858F72900AC5DEA /* FTPolyGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPolyGlyph.h; sourceTree = "<group>"; };
 		187353A71858F72900AC5DEA /* FTSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSimpleLayout.h; sourceTree = "<group>"; };
 		187353A81858F72900AC5DEA /* FTTextureGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextureGlyph.h; sourceTree = "<group>"; };
-		187353AB1858F72900AC5DEA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		187353AD1858F72900AC5DEA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
 		187353AF1858F72900AC5DEA /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
 		187353B01858F72900AC5DEA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		187353B21858F72900AC5DEA /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		187353B41858F72900AC5DEA /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		187353B51858F72900AC5DEA /* ftgl_static_D.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static_D.lib; sourceTree = "<group>"; };
 		187353B61858F72900AC5DEA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		187353B81858F72A00AC5DEA /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGL.h; sourceTree = "<group>"; };
 		187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLFont.cpp; sourceTree = "<group>"; };
@@ -896,12 +808,7 @@
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E7CF78421753FEA0006B7D41 /* libsndfile.a in Frameworks */,
-				187353C91858F72A00AC5DEA /* libftgl.a in Frameworks */,
-				187353CA1858F72A00AC5DEA /* libftgl.a in Frameworks */,
 				187353CB1858F72A00AC5DEA /* libftgl.a in Frameworks */,
-				187353CC1858F72A00AC5DEA /* ftgl_static.lib in Frameworks */,
-				187353CD1858F72A00AC5DEA /* ftgl_static.lib in Frameworks */,
-				187353CE1858F72A00AC5DEA /* ftgl_static_D.lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,210 +846,12 @@
 			isa = PBXGroup;
 			children = (
 				1873534C1858F72800AC5DEA /* .gitignore */,
-				1873534D1858F72800AC5DEA /* example-Extrude */,
-				1873535D1858F72800AC5DEA /* example-ftw */,
-				1873536F1858F72900AC5DEA /* example-Heights */,
-				1873537F1858F72900AC5DEA /* example-SimpleLayout */,
 				1873538F1858F72900AC5DEA /* libs */,
 				187353B61858F72900AC5DEA /* README.md */,
 				187353B71858F72A00AC5DEA /* src */,
 			);
 			name = ofxFTGL;
 			path = ../../../addons/ofxFTGL;
-			sourceTree = "<group>";
-		};
-		1873534D1858F72800AC5DEA /* example-Extrude */ = {
-			isa = PBXGroup;
-			children = (
-				1873534E1858F72800AC5DEA /* bin */,
-				187353511858F72800AC5DEA /* config.make */,
-				187353521858F72800AC5DEA /* exmple-ftglExtrude.xcodeproj */,
-				187353561858F72800AC5DEA /* Makefile */,
-				187353571858F72800AC5DEA /* openFrameworks-Info.plist */,
-				187353581858F72800AC5DEA /* Project.xcconfig */,
-				187353591858F72800AC5DEA /* src */,
-			);
-			path = "example-Extrude";
-			sourceTree = "<group>";
-		};
-		1873534E1858F72800AC5DEA /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				1873534F1858F72800AC5DEA /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		1873534F1858F72800AC5DEA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				187353501858F72800AC5DEA /* mplus-1c-regular.ttf */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		187353531858F72800AC5DEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				187353D61858F72A00AC5DEA /* exmple-ftglExtrudeDebug.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		187353591858F72800AC5DEA /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1873535A1858F72800AC5DEA /* main.cpp */,
-				1873535B1858F72800AC5DEA /* testApp.cpp */,
-				1873535C1858F72800AC5DEA /* testApp.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		1873535D1858F72800AC5DEA /* example-ftw */ = {
-			isa = PBXGroup;
-			children = (
-				1873535E1858F72800AC5DEA /* addons.make */,
-				1873535F1858F72800AC5DEA /* bin */,
-				187353631858F72900AC5DEA /* config.make */,
-				187353641858F72900AC5DEA /* example-ftw.xcodeproj */,
-				187353681858F72900AC5DEA /* Makefile */,
-				187353691858F72900AC5DEA /* openFrameworks-Info.plist */,
-				1873536A1858F72900AC5DEA /* Project.xcconfig */,
-				1873536B1858F72900AC5DEA /* src */,
-			);
-			path = "example-ftw";
-			sourceTree = "<group>";
-		};
-		1873535F1858F72800AC5DEA /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				187353601858F72800AC5DEA /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		187353601858F72800AC5DEA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				187353611858F72800AC5DEA /* M+ Fonts License.txt */,
-				187353621858F72800AC5DEA /* mplus-1c-regular.ttf */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		187353651858F72900AC5DEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				187353D31858F72A00AC5DEA /* example-ftwDebug.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1873536B1858F72900AC5DEA /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1873536C1858F72900AC5DEA /* main.cpp */,
-				1873536D1858F72900AC5DEA /* testApp.cpp */,
-				1873536E1858F72900AC5DEA /* testApp.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		1873536F1858F72900AC5DEA /* example-Heights */ = {
-			isa = PBXGroup;
-			children = (
-				187353701858F72900AC5DEA /* bin */,
-				187353731858F72900AC5DEA /* config.make */,
-				187353741858F72900AC5DEA /* FTGLHeightsExample.xcodeproj */,
-				187353781858F72900AC5DEA /* Makefile */,
-				187353791858F72900AC5DEA /* openFrameworks-Info.plist */,
-				1873537A1858F72900AC5DEA /* Project.xcconfig */,
-				1873537B1858F72900AC5DEA /* src */,
-			);
-			path = "example-Heights";
-			sourceTree = "<group>";
-		};
-		187353701858F72900AC5DEA /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				187353711858F72900AC5DEA /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		187353711858F72900AC5DEA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				187353721858F72900AC5DEA /* mplus-1c-regular.ttf */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		187353751858F72900AC5DEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				187353D91858F72A00AC5DEA /* FTGLSimpleLayoutExampleDebug.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1873537B1858F72900AC5DEA /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1873537C1858F72900AC5DEA /* main.cpp */,
-				1873537D1858F72900AC5DEA /* testApp.cpp */,
-				1873537E1858F72900AC5DEA /* testApp.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		1873537F1858F72900AC5DEA /* example-SimpleLayout */ = {
-			isa = PBXGroup;
-			children = (
-				187353801858F72900AC5DEA /* bin */,
-				187353831858F72900AC5DEA /* config.make */,
-				187353841858F72900AC5DEA /* FTGLSimpleLayoutExample.xcodeproj */,
-				187353881858F72900AC5DEA /* Makefile */,
-				187353891858F72900AC5DEA /* openFrameworks-Info.plist */,
-				1873538A1858F72900AC5DEA /* Project.xcconfig */,
-				1873538B1858F72900AC5DEA /* src */,
-			);
-			path = "example-SimpleLayout";
-			sourceTree = "<group>";
-		};
-		187353801858F72900AC5DEA /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				187353811858F72900AC5DEA /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		187353811858F72900AC5DEA /* data */ = {
-			isa = PBXGroup;
-			children = (
-				187353821858F72900AC5DEA /* mplus-1c-regular.ttf */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		187353851858F72900AC5DEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				187353DC1858F72A00AC5DEA /* FTGLSimpleLayoutExampleDebug.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1873538B1858F72900AC5DEA /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1873538C1858F72900AC5DEA /* main.cpp */,
-				1873538D1858F72900AC5DEA /* testApp.cpp */,
-				1873538E1858F72900AC5DEA /* testApp.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		1873538F1858F72900AC5DEA /* libs */ = {
@@ -1202,29 +911,9 @@
 		187353A91858F72900AC5DEA /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				187353AA1858F72900AC5DEA /* linux */,
-				187353AC1858F72900AC5DEA /* linux64 */,
 				187353AE1858F72900AC5DEA /* osx */,
-				187353B11858F72900AC5DEA /* vs2010 */,
-				187353B31858F72900AC5DEA /* vs2012 */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		187353AA1858F72900AC5DEA /* linux */ = {
-			isa = PBXGroup;
-			children = (
-				187353AB1858F72900AC5DEA /* libftgl.a */,
-			);
-			path = linux;
-			sourceTree = "<group>";
-		};
-		187353AC1858F72900AC5DEA /* linux64 */ = {
-			isa = PBXGroup;
-			children = (
-				187353AD1858F72900AC5DEA /* libftgl.a */,
-			);
-			path = linux64;
 			sourceTree = "<group>";
 		};
 		187353AE1858F72900AC5DEA /* osx */ = {
@@ -1234,23 +923,6 @@
 				187353B01858F72900AC5DEA /* libftgl.a */,
 			);
 			path = osx;
-			sourceTree = "<group>";
-		};
-		187353B11858F72900AC5DEA /* vs2010 */ = {
-			isa = PBXGroup;
-			children = (
-				187353B21858F72900AC5DEA /* ftgl_static.lib */,
-			);
-			path = vs2010;
-			sourceTree = "<group>";
-		};
-		187353B31858F72900AC5DEA /* vs2012 */ = {
-			isa = PBXGroup;
-			children = (
-				187353B41858F72900AC5DEA /* ftgl_static.lib */,
-				187353B51858F72900AC5DEA /* ftgl_static_D.lib */,
-			);
-			path = vs2012;
 			sourceTree = "<group>";
 		};
 		187353B71858F72A00AC5DEA /* src */ = {
@@ -2261,22 +1933,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 187353651858F72900AC5DEA /* Products */;
-					ProjectRef = 187353641858F72900AC5DEA /* example-ftw.xcodeproj */;
-				},
-				{
-					ProductGroup = 187353531858F72800AC5DEA /* Products */;
-					ProjectRef = 187353521858F72800AC5DEA /* exmple-ftglExtrude.xcodeproj */;
-				},
-				{
-					ProductGroup = 187353751858F72900AC5DEA /* Products */;
-					ProjectRef = 187353741858F72900AC5DEA /* FTGLHeightsExample.xcodeproj */;
-				},
-				{
-					ProductGroup = 187353851858F72900AC5DEA /* Products */;
-					ProjectRef = 187353841858F72900AC5DEA /* FTGLSimpleLayoutExample.xcodeproj */;
-				},
-				{
 					ProductGroup = E4328144138ABC890047C5CB /* Products */;
 					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
 				},
@@ -2290,35 +1946,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		187353D31858F72A00AC5DEA /* example-ftwDebug.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "example-ftwDebug.app";
-			remoteRef = 187353D21858F72A00AC5DEA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		187353D61858F72A00AC5DEA /* exmple-ftglExtrudeDebug.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "exmple-ftglExtrudeDebug.app";
-			remoteRef = 187353D51858F72A00AC5DEA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		187353D91858F72A00AC5DEA /* FTGLSimpleLayoutExampleDebug.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			name = FTGLSimpleLayoutExampleDebug.app;
-			path = FTGLHeightsExampleDebug.app;
-			remoteRef = 187353D81858F72A00AC5DEA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		187353DC1858F72A00AC5DEA /* FTGLSimpleLayoutExampleDebug.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = FTGLSimpleLayoutExampleDebug.app;
-			remoteRef = 187353DB1858F72A00AC5DEA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2616,18 +2243,6 @@
 				185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */,
 				187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */,
 				1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */,
-				187353BD1858F72A00AC5DEA /* Makefile in Sources */,
-				187353BE1858F72A00AC5DEA /* main.cpp in Sources */,
-				187353BF1858F72A00AC5DEA /* testApp.cpp in Sources */,
-				187353C01858F72A00AC5DEA /* Makefile in Sources */,
-				187353C11858F72A00AC5DEA /* main.cpp in Sources */,
-				187353C21858F72A00AC5DEA /* testApp.cpp in Sources */,
-				187353C31858F72A00AC5DEA /* Makefile in Sources */,
-				187353C41858F72A00AC5DEA /* main.cpp in Sources */,
-				187353C51858F72A00AC5DEA /* testApp.cpp in Sources */,
-				187353C61858F72A00AC5DEA /* Makefile in Sources */,
-				187353C71858F72A00AC5DEA /* main.cpp in Sources */,
-				187353C81858F72A00AC5DEA /* testApp.cpp in Sources */,
 				187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */,
 				187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */,
 			);
@@ -2966,6 +2581,7 @@
 					../../../addons/ofxJSON/src,
 					../../../addons/ofxJSON/libs/jsoncpp/src,
 					"../../../addons/ofxJSON/libs/jsoncpp/include/**",
+					../../../addons/ofxFTGL/libs/FTGL/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -3083,6 +2699,7 @@
 					../../../addons/ofxJSON/src,
 					../../../addons/ofxJSON/libs/jsoncpp/src,
 					"../../../addons/ofxJSON/libs/jsoncpp/include/**",
+					../../../addons/ofxFTGL/libs/FTGL/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
