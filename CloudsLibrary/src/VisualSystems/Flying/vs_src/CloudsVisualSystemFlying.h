@@ -25,7 +25,7 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
   public:
     static const unsigned NUM_RULES_FILES = 2;
     static const string RULES_FILES[NUM_RULES_FILES];
-    static const float CAM_X_ROT;
+    static const float CAM_DAMPING;
     
     CloudsVisualSystemFlying();
     
@@ -122,7 +122,7 @@ protected:
     float fogStart, fogEnd;
     
     // cam
-    float zSpeed, yRot;
+    float xRot, yRot, zSpeed;
     
     // plants
     ofShader plantsShader;
