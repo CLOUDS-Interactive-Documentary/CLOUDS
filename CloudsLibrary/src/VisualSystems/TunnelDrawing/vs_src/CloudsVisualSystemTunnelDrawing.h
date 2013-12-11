@@ -109,5 +109,6 @@ protected:
 	ofxUISuperCanvas* customGui;
 	float screenSpaceProjectDistance;
 	float fallOffSpeed;
-
+	float camFOV;
+	float debugSphereRad;
 };

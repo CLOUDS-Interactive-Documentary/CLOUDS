@@ -16,6 +16,8 @@ void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
 	customGui->addSlider("projection dist", -100, 100, &screenSpaceProjectDistance);
 	customGui->addSlider("cam speed", -4, 0, &fallOffSpeed);
 
+	customGui->addSlider("debug sphere rad", .1, 5, &debugSphereRad);
+	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemTunnelDrawing::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -85,21 +87,17 @@ void CloudsVisualSystemTunnelDrawing::selfUpdate(){
 		sumOfAllPoints += points[i];
 	}
 	center = sumOfAllPoints / points.size();
-
 	
 //	camera.setPosition( ofVec3f(getSharedRenderTarget().getWidth()/2,
 //								getSharedRenderTarget().getHeight()/2, 0));
-	
 	//camera.lookAt(center);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTunnelDrawing::selfDraw(){
-	
-//	if(usecamera){
-//        camera.begin();
-//    }
+
+
 	ofSetColor(0);
 	//do the same thing from the first example...
     ofMesh mesh;
@@ -122,7 +120,7 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 		ofVec3f unitDirection = direction.normalized();
         
 		//find both directions to the left and to the right
-		ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0,0,1));
+		ofVec3f toTheLeft  = unitDirection.getRotated(-90, ofVec3f(0,0,1));
 		ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0,0,1));
         
 		//use the map function to determine the distance.
@@ -141,16 +139,17 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 	}
     
 	//end the shape
-	mesh.draw();
+	//mesh.draw();
     
-	
-    
-	//if we're using the camera, take it away
-//    if(usecamera){
-//    	camera.end();
-//    }
-    
-	
+	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
+													   GetCloudsInputY(),
+													   screenSpaceProjectDistance) );
+
+	ofPushStyle();
+	ofNoFill();
+	ofSetColor(255,0,0);
+	ofSphere(mousePoint, debugSphereRad);
+	ofPopStyle();
 }
 
 // draw any debug stuff here

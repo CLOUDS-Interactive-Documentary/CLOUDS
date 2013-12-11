@@ -72,6 +72,9 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 	customGui->addToggle("draw points", &bDrawPoints);
 	customGui->addToggle("external debug cam", &bUseExternalCamera);
 	customGui->addSlider("max look angle", 0, 90, &maxLookAngle);
+	customGui->addToggle("palindrome", &bPalindrome);
+	customGui->addSlider("growh fps", 0, 30, &growthFPS);
+	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemLaplacianTunnel::selfGuiEvent);
 	
@@ -109,6 +112,10 @@ void CloudsVisualSystemLaplacianTunnel::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	frameCount = 0;
 	bUseExternalCamera = false;
+	bPalindrome = false;
+	lastFrameTime = 0;
+	growthFPS = 0;
+	currentGrowthIndex = 0;
 	
 	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
 	objs.allowExt("vbo");
@@ -175,6 +182,9 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 	
 	headlight.setPointLight();
 	headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
+	
+	currentGrowthIndex += (ofGetElapsedTimef() - lastFrameTime) * growthFPS;
+	lastFrameTime = ofGetElapsedTimef();
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -214,9 +224,20 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofTranslate(center);
 			ofRotate(translateAmount*corkscrewFactor,0,1,0);
 			ofTranslate(-center);
-						
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
-			int index = int(ofMap(cameraoffset, 0, -spread*numReplications, 1.0, 0.0, true) * (vbos.size()-1));
+			
+			int index;
+			if(bPalindrome){
+				index = fmod(currentGrowthIndex, vbos.size()*2);
+				//palindrome wrap
+				if(index >= vbos.size()){
+					index = vbos.size()*2 - index - 1;
+				}
+			}
+			else{
+				index = int(ofMap(cameraoffset, 0, -spread*numReplications, 1.0, 0.0, true) * (vbos.size()-1));
+			}
+			
 			
 			ofSetColor(255);
 			if(bDrawPoints){

@@ -122,10 +122,15 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	
 	bool bUseExternalCamera;
 	bool bDrawPoints;
+	bool bPalindrome;
+	float growthFPS; //only works in palindrome
 	float maxLookAngle;
 	ofVec2f currentLookAngle;
+	float currentGrowthIndex;
+	float lastFrameTime;
 	
 	ofEasyCam externalCam;
+
 	
 	void clear();
 	
