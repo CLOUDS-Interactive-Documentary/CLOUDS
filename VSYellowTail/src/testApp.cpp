@@ -7,8 +7,8 @@ void testApp::setup()
 {
 	ofSetVerticalSync(true);
     
-    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC()));
-
+    SetCloudsInputKinect();
+    
 	yellowTail.setup();
 	yellowTail.playSystem();
 }

@@ -140,10 +140,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D5B91B01751CF3E00F558AC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		3D5B91B11751CF3E00F558AC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalette.h; sourceTree = "<group>"; };
-		3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPalettes.h; sourceTree = "<group>"; };
 		3D5B9553175308AD00F558AC /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
 		3D5B9554175308AD00F558AC /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
 		3D5B9556175308AD00F558AC /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
@@ -364,8 +360,6 @@
 		4695E2AC17512E45003001E2 /* ofxTrailParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTrailParticle.h; sourceTree = "<group>"; };
 		4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVerletSolver.cpp; sourceTree = "<group>"; };
 		4695E2AE17512E45003001E2 /* ofxVerletSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVerletSolver.h; sourceTree = "<group>"; };
-		4695E2C217512F28003001E2 /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
-		4695E2C317512F9B003001E2 /* ofxExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxExtras.h; sourceTree = "<group>"; };
 		4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		4695E2C917513D99003001E2 /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -449,26 +443,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B91B01751CF3E00F558AC /* .gitignore */,
-				3D5B91B11751CF3E00F558AC /* README.md */,
-				3D5B91B21751CF3E00F558AC /* src */,
-			);
-			name = ofxColorPalettes;
-			path = ../../../addons/ofxColorPalettes;
-			sourceTree = "<group>";
-		};
-		3D5B91B21751CF3E00F558AC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3D5B91B31751CF3E00F558AC /* ofxColorPalette.h */,
-				3D5B91B41751CF3E00F558AC /* ofxColorPalettes.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		3D5B9444175308AC00F558AC /* ofxTimeline */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,16 +935,6 @@
 			path = ../../../addons/ofxGenerative/src;
 			sourceTree = "<group>";
 		};
-		4695E2C117512F28003001E2 /* ofxExtras */ = {
-			isa = PBXGroup;
-			children = (
-				4695E2C317512F9B003001E2 /* ofxExtras.h */,
-				4695E2C217512F28003001E2 /* ofxLight.h */,
-			);
-			name = ofxExtras;
-			path = ../../../addons/ofxExtras/src;
-			sourceTree = "<group>";
-		};
 		4695E2C717513D99003001E2 /* ofxCameraSaveLoad */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,9 +954,7 @@
 				3D5B9620175308CF00F558AC /* ofxTextInputField */,
 				3D5B963D175308CF00F558AC /* ofxTween */,
 				3D5B9444175308AC00F558AC /* ofxTimeline */,
-				3D5B91AF1751CF3E00F558AC /* ofxColorPalettes */,
 				4695E2C717513D99003001E2 /* ofxCameraSaveLoad */,
-				4695E2C117512F28003001E2 /* ofxExtras */,
 				4695E27917512E45003001E2 /* ofxGenerative */,
 				E7846FB41714899C00705E7A /* ofxXmlSettings */,
 				4695E24A17512ACD003001E2 /* ofxUI */,

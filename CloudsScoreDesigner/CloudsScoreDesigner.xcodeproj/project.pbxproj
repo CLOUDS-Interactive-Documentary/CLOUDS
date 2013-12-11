@@ -750,10 +750,10 @@
 		C1026555182EBDA900C7F895 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C1026557182EBDA900C7F895 /* lukeFuncs.h */,
 				C1026556182EBDA900C7F895 /* lukeFuncs.cpp */,
 				C18089181857CA91004C33A1 /* lukeFileFuncs.cpp */,
 				C180891B1857CB3E004C33A1 /* lukeMusicFuncs.cpp */,
-				C1026557182EBDA900C7F895 /* lukeFuncs.h */,
 			);
 			path = src;
 			sourceTree = "<group>";

@@ -2975,13 +2975,25 @@ void CloudsVisualSystem::selfPostDraw(){
 	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
 													   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
 													  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	
 	if(bDrawCursor){
 		ofPushMatrix();
 		ofPushStyle();
-		ofSetColor(240,240,255, 175);
 		ofSetLineWidth(2);
-		ofCircle(GetCloudsInputX(), GetCloudsInputY(),
-				 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+		map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+		for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
+			//	ofNoFill();
+			//	ofSetColor(255, 50);
+			//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
+			if (it->second.primary) {
+				ofSetColor(240,240,100, 175);
+			}
+			else {
+				ofSetColor(240,240,255, 175);
+			}
+			ofCircle(it->second.position.x, it->second.position.y,
+					 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+		}
 		ofPopStyle();
 		ofPopMatrix();
 	}

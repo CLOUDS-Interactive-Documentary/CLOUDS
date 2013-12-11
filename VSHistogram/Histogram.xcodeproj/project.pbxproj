@@ -520,7 +520,7 @@
 		E7380142183C871A0018AB96 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		E7380143183C871A0018AB96 /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		E738FFE1183C86F50018AB96 /* HistogramOculus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HistogramOculus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E738FFE2183C86F60018AB96 /* Empty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Empty copy-Info.plist"; path = "/Users/focus/Documents/Xcode/oF/of_gitRelease_obviousjim/openFrameworks/apps/CLOUDS/VSEmpty/Empty copy-Info.plist"; sourceTree = "<absolute>"; };
+		E74D50101857C9FE001CE1F7 /* Histogram copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Histogram copy-Info.plist"; sourceTree = "<group>"; };
 		E761F4D71622CA3D00029E43 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E7846FB61714899C00705E7A /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		E7846FB71714899C00705E7A /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
@@ -1263,6 +1263,7 @@
 			isa = PBXGroup;
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E74D50101857C9FE001CE1F7 /* Histogram copy-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
@@ -1270,7 +1271,6 @@
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* HistogramDebug.app */,
 				E738FFE1183C86F50018AB96 /* HistogramOculus.app */,
-				E738FFE2183C86F60018AB96 /* Empty copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1984,7 +1984,7 @@
 					src,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "Empty copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Histogram copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2112,7 +2112,7 @@
 					src,
 					"$(OF_PATH)/addons/ofxOculusRift/libs/**",
 				);
-				INFOPLIST_FILE = "Empty copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Histogram copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

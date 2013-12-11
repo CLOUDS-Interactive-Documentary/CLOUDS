@@ -43,7 +43,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
-    
     cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
     
     //
@@ -143,7 +142,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
     }
 
-    
     // LOWWAVEPULSE
     if (mo=="lowwavepulse")
     {
@@ -304,7 +302,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
      }
 
-
     // STRUMSINE
     if (mo=="strumsine")
     {
@@ -334,7 +331,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     //
     // PITCHED RHYTHM
     //
-    
     
     // MODALBEATS
     if (mo=="modalbeats")
@@ -415,7 +411,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
         
     }
-        
 
     // VERMONTBEATZ
     if (mo=="vermontbeatz")
@@ -475,9 +470,29 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     }
     
     //
+    // BEATS (SAMPLERS)
+    //
+    
+    // AVIBEATS
+    if (mo=="avibeats")
+    {
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
+        {
+            if(looperSamples[i].bank==arg_a)
+            {
+                cout << "playing: " << looperSamples[i].handle << endl;
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    SOUNDLOOP(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle);
+                }
+            }
+        }
+    }
+
+    //
     // UNUSED
     //
-        
     
     // REICHOMATIC
     if (mo=="reichomatic")
@@ -512,23 +527,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {
                     SOUNDLOOPMONO(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle, (float)i/looperSamples.size()-1);
-                }
-            }
-        }
-    }
-
-    // AVIBEATS
-    if (mo=="avibeats")
-    {
-        cout << "Sample number: " << looperSamples.size() << endl;
-        for(i = 0;i<looperSamples.size();i++)
-        {
-            if(looperSamples[i].bank==arg_a)
-            {
-                cout << "playing: " << looperSamples[i].handle << endl;
-                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
-                {
-                    SOUNDLOOP(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle);
                 }
             }
         }

@@ -14,10 +14,10 @@ int kNumFramesForRemoval = 60;
 int kPollThreshold       = 5;
 
 //--------------------------------------------------------------
-CloudsInputKinectOSC::CloudsInputKinectOSC(bool bSoloMode, float activeThresholdY)
-: bSoloMode(bSoloMode)
-, activeThresholdY(activeThresholdY)
-, designatedIdx(-1)
+CloudsInputKinectOSC::CloudsInputKinectOSC(float activeThresholdY, float activeThresholdZ)
+: activeThresholdY(activeThresholdY)
+, activeThresholdZ(activeThresholdZ)
+, primaryIdx(-1)
 {
 
 }
@@ -45,19 +45,23 @@ void CloudsInputKinectOSC::disable()
 //--------------------------------------------------------------
 void CloudsInputKinectOSC::update(ofEventArgs& args)
 {
-	// check for waiting messages
+    // check for waiting messages
     while (receiver.hasWaitingMessages()) {
-        lastOscFrame = ofGetFrameNum();
-        
 		// get the next message
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
         bool bRecognized = true;
         
-        k4w::HandState newHandState;
-        
 		if (m.getAddress() == "/playerData") {
+            // set up all the working vars
+            k4w::HandState newHandState;
+            lastOscFrame = ofGetFrameNum();
+
+            float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
+            bool bDoProximity = (activeThresholdZ != 1);
+            float activeThresholdPosZ = ofMap(activeThresholdZ, 0, 1, 0, -1);
+
             int i = 0;
 			int idx = m.getArgAsInt32(i++);
                         
@@ -103,7 +107,6 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             bodies[idx]->age++;
             
             // process the hand data
-            float activeThresholdPosY = ofMap(activeThresholdY, 0, 1, 1, -1);
             for (int j = 0; j < 2; j++) {
                 int handIdx = idx * 2 + j;
                 
@@ -123,43 +126,47 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
                 mapCoords(bodies[idx]->spineNeckJoint.inputPosition, mappingLength, hands[handIdx]->handJoint);
                 
                 // set the active state based on the local position
-                hands[handIdx]->bActive = (hands[handIdx]->handJoint.localPosition.y > activeThresholdPosY);
+                if ((hands[handIdx]->handJoint.localPosition.y > activeThresholdPosY) && 
+                    (hands[handIdx]->handJoint.localPosition.y > bodies[idx]->spineBaseJoint.localPosition.y)) {
+                    hands[handIdx]->activeFrames++;
+                }
+                else {
+                    hands[handIdx]->activeFrames = MAX(0, MIN(kPollThreshold, hands[handIdx]->activeFrames - 1));
+                }
                 
-                // process the event if the hand is active AND either
-                // we are NOT in solo mode OR if we are, this hand is the designated cursor
-                if (!bSoloMode || designatedIdx == handIdx) {
-                    if (hands[handIdx]->bActive) {
-                        newHandState = (k4w::HandState)m.getArgAsInt32(i);
-                        hands[handIdx]->poll[newHandState]++;
-                        if (hands[handIdx]->poll[newHandState] >= kPollThreshold) {
-                            // boom! new state achieved
-                            processHandEvent(handIdx, hands[handIdx], newHandState);
-                            hands[handIdx]->handJoint.handState = newHandState;
-                            
-                            for (int k = 0; k < k4w::HandState_Count; k++) {
-                                if (k != newHandState) {
-                                    hands[handIdx]->poll[k] = 0;
-                                }
-                            }
-                        }
-                        else {
-                            // carry on with the same state
-                            processHandEvent(handIdx, hands[handIdx], hands[handIdx]->handJoint.handState);
-                        }
+                // process the event
+                if (bDoProximity) {
+                    // ignore the incoming state and use proximity
+                    if (hands[handIdx]->handJoint.localPosition.z < activeThresholdPosZ) {
+                        newHandState = k4w::HandState_Lasso;
                     }
                     else {
-                        // make sure the hand is not mid-action when getting the boot
-                        processHandEvent(handIdx, hands[handIdx], k4w::HandState_NotTracked);
+                        newHandState = k4w::HandState_Open;
+                    }
+                    i++;  // bump the message index
+                }
+                else {
+                    newHandState = (k4w::HandState)m.getArgAsInt32(i++);
+                }
+                hands[handIdx]->poll[newHandState]++;
+                if (hands[handIdx]->poll[newHandState] >= kPollThreshold) {
+                    // boom! new state achieved
+                    processHandEvent(handIdx, hands[handIdx], newHandState);
+                    hands[handIdx]->handJoint.handState = newHandState;
                         
-                        // unlink it 
-                        designatedIdx = -1;
+                    for (int k = 0; k < k4w::HandState_Count; k++) {
+                        if (k != newHandState) {
+                            hands[handIdx]->poll[k] = 0;
+                        }
                     }
                 }
-                i++;
+                else {
+                    // carry on with the same state
+                    processHandEvent(handIdx, hands[handIdx], hands[handIdx]->handJoint.handState);
+                }
                 
-                // refresh the update frame and age
+                // refresh the update frame
                 hands[handIdx]->lastUpdateFrame = lastOscFrame;
-                hands[handIdx]->age++;
             }
 		}
 		else {
@@ -213,9 +220,9 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
             // make sure the hand is not mid-action when getting removed
             processHandEvent(it->first, hands[it->first], k4w::HandState_Unknown);
             
-            // if the hand was the designated cursor, unlink it 
-            if (it->first == designatedIdx) {
-                designatedIdx = -1;
+            // if the hand was the primary cursor, unlink it 
+            if (it->first == primaryIdx) {
+                primaryIdx = -1;
             }
             
             toRemove.push_back(it->first);
@@ -224,35 +231,47 @@ void CloudsInputKinectOSC::update(ofEventArgs& args)
     for (int i = 0; i < toRemove.size(); i++) {
         delete hands[toRemove[i]];
         hands.erase(toRemove[i]);
+        
+        if (inputPoints.find(toRemove[i]) != inputPoints.end()) {
+            // also remove the matching input point
+            inputPoints.erase(toRemove[i]);
+        }
+    }
+    
+    // unlink the primary cursor if it's been inactive for too long
+    if (primaryIdx > -1 && hands[primaryIdx]->activeFrames <= 0) {
+        primaryIdx = -1;
     }
     
     // look for a new designated cursor if necessary
-    if (designatedIdx == -1) {
+    if (primaryIdx == -1) {
         int candidateIdx = -1;
-        int candidateAge =  0;
+        int candidateActiveFrames = 0;
         float candidateY = -1;
         for (map<int, k4w::Hand *>::iterator it = hands.begin(); it != hands.end(); ++it) {
             // select this hand if it is active AND either:
             //  1. there is no candidate yet
             //  2. it is older than the current candidate
             //  3. it is as old the current candidate but higher up
-            if (it->second->bActive && ((candidateIdx == -1) || 
-                                        (candidateAge < it->second->age) || 
-                                        (candidateAge == it->second->age && candidateY < it->second->handJoint.inputPosition.y))) {
+            if (it->second->activeFrames >= kPollThreshold && 
+                    ((candidateIdx == -1) || 
+                     (candidateActiveFrames < it->second->activeFrames) || 
+                     (candidateActiveFrames == it->second->activeFrames && 
+                         candidateY < it->second->handJoint.inputPosition.y))) {
                 candidateIdx = it->first;
-                candidateAge = it->second->age;
-                candidateY   = it->second->handJoint.inputPosition.y;
+                candidateActiveFrames = it->second->activeFrames;
+                candidateY = it->second->handJoint.inputPosition.y;
             }
         }
-        designatedIdx = candidateIdx;
+        primaryIdx = candidateIdx;
     }
     
     // set the current position to the designated hand
-    if (designatedIdx == -1) {
+    if (primaryIdx == -1) {
         currentPosition.set(ofGetWidth() * 0.5, ofGetHeight() * 0.5);
     }
     else {
-        currentPosition.set(hands[designatedIdx]->handJoint.mappedPosition);
+        currentPosition.set(hands[primaryIdx]->handJoint.mappedPosition);
     }
 }
 
@@ -264,9 +283,10 @@ void CloudsInputKinectOSC::mapCoords(ofVec3f& origin, float length, k4w::Joint& 
     joint.localPosition -= origin;
     
     // map the local position to the 2D viewport coord system
-    joint.mappedPosition.set(ofMap(joint.localPosition.x, -length,  length, 0, ofGetWidth()),
-                             ofMap(joint.localPosition.y,  length, -length, 0, ofGetHeight()),
-                             ofMap(joint.localPosition.z, -length,  length, 0, ofGetWidth()));
+    float inMaxY = -(length - (2 * (1.0f - activeThresholdY) * length));
+    joint.mappedPosition.set(ofMap(joint.localPosition.x, -length, length, 0, ofGetWidth()),
+                             ofMap(joint.localPosition.y,  length, inMaxY, 0, ofGetHeight()),
+                             ofMap(joint.localPosition.z, -length, length, 0, ofGetWidth()));
 }
 
 //--------------------------------------------------------------
@@ -275,48 +295,50 @@ void CloudsInputKinectOSC::processHandEvent(int handIdx, k4w::Hand * hand, k4w::
     if (newState == k4w::HandState_Lasso) {
         if (hand->actionState == k4w::ActionState_Lasso) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Closed) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Lasso;
         }
     }  
     else if (newState == k4w::HandState_Closed) {
         if (hand->actionState == k4w::ActionState_Closed) {
             // matching state: continue
-            interactionDragged(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionDragged(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
         }
         else if (hand->actionState == k4w::ActionState_Lasso) {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Lasso, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Lasso, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
         else {
             // idle state: start
-            interactionStarted(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Closed, handIdx);
+            interactionStarted(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Closed, handIdx);
             hand->actionState = k4w::ActionState_Closed;
         }
     }
     else if (newState <= k4w::HandState_Open) {
         if (hand->actionState == k4w::ActionState_Idle) {
             // matching state: continue
-            interactionMoved(hand->handJoint.mappedPosition, handIdx == designatedIdx, k4w::ActionState_Idle, handIdx);
+            interactionMoved(hand->handJoint.mappedPosition, handIdx == primaryIdx, k4w::ActionState_Idle, handIdx);
         }
         else {
             // state mismatch: end previous
-            interactionEnded(hand->handJoint.mappedPosition, handIdx == designatedIdx, hand->actionState, handIdx);
+            interactionEnded(hand->handJoint.mappedPosition, handIdx == primaryIdx, hand->actionState, handIdx);
             hand->actionState = k4w::ActionState_Idle;
         }
     }
 }
 
-void SetCloudsInputKinect(){
-    SetCloudsInput(ofPtr<CloudsInput>( new CloudsInputKinectOSC(false, 0.75f) ));
+//--------------------------------------------------------------
+void SetCloudsInputKinect(float activeThresholdY, float activeThresholdZ)
+{
+    SetCloudsInput(ofPtr<CloudsInput>(new CloudsInputKinectOSC(activeThresholdY, activeThresholdZ)));
 }
