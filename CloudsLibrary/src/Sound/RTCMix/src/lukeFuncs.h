@@ -119,7 +119,6 @@ void precomputemarkov(lukePitchArray& p);
 int markov(int current, lukePitchArray& p);
 void loadrhythms(string f, vector<lukeRhythm>& r);
 void loadpitches(string f, vector<lukePitchArray>& p);
-void loadpresets(string f, vector<lukePreset>& p);
 void loadpresets_xml(string f, vector<lukePreset>& p);
 
 // luke's audio functions

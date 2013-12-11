@@ -200,7 +200,7 @@ void CloudsVisualSystemXstatic::selfUpdate()
     }
     
     if (bShouldRise || bShouldFall) {
-        drag = 1;
+        drag = 0;
         rotateSpeed = 0;
         pullSpeed = 0;
         windSpeed = 0;

@@ -74,12 +74,10 @@ class CloudsSound {
     bool DOCLEAR;
     float cleartime;
     float targetAmp;
-    float tl1, tl2, tl3, bl1;
 	
     vector<lukeRhythm> rhythms;
     vector<lukePitchArray> pitches;
     vector<lukePreset> presets;
-    vector<string> orchestra;
 
     vector<lukeSample> looperSamples;
 

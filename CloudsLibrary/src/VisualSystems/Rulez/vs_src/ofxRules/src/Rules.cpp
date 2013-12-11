@@ -44,7 +44,7 @@ namespace itg
     const string Rules::DEFAULT_START_RULE = "start";
     
     Rules::Rules() :
-        maxDepth(numeric_limits<unsigned>::max())
+        maxDepth(numeric_limits<unsigned>::max()), numSteps(0)
     {
         registerAction<LineAction>("line");
         registerAction<PointAction>("point");
@@ -72,6 +72,7 @@ namespace itg
     
     unsigned Rules::step(ofMesh& mesh)
     {
+        numSteps++;
         list<Branch::Ptr> newBranches;
         unsigned activeRuleSets = 0;
         
@@ -136,6 +137,9 @@ namespace itg
     {
         ruleSets.clear();
         
+        ofLogNotice() << "=================================================";
+        ofLogNotice() << "Parsing " << fileName;
+
         ofxXmlSettings xml;
         xml.loadFile(fileName);
         
@@ -173,7 +177,7 @@ namespace itg
         {
             string name = xml.getAttribute("ruleSet", "name", "", i);
             xml.pushTag("ruleSet", i);
-            
+            ofLogNotice() << "Ruleset: " << name << ", num rules: " << xml.getNumTags("rule");
             for (unsigned j = 0; j < xml.getNumTags("rule"); ++j)
             {
                 Rule::Ptr rule = addRule(name, xml.getAttribute("rule", "weight", 0.f, j));
