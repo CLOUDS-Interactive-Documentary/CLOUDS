@@ -123,6 +123,7 @@ protected:
     
     // cam
     float xRot, yRot, zSpeed;
+    float camAvoidDist;
     
     // plants
     ofShader plantsShader;

@@ -12,7 +12,8 @@ const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
-    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200), zSpeed(0), yRot(0), xRot(20)
+    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
+    zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
 {
 }
 
@@ -193,6 +194,13 @@ void CloudsVisualSystemFlying::selfDraw()
     for (auto it = plants.begin(); it != plants.end(); ++it)
     {
         float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getNumSteps(), 0.f, true);
+        
+        const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
+        float distToCamSq = (it->pos - cam.getPosition()).lengthSquared();
+        if (distToCamSq < camAvoidDistSq)
+        {
+            growth *= sqrt(distToCamSq) / camAvoidDist;
+        }
         if (growth > 0.f)
         {
             plantsShader.setUniform1f("growth", growth);
@@ -251,6 +259,7 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
     rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
