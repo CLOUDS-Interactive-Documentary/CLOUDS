@@ -4,7 +4,7 @@
 
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsRGBDVideoPlayer.h"
-
+#include "CloudsInput.h"
 
 const float CloudsVisualSystemFlying::CAM_X_ROT = 20;
 const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/flower.xml" };
@@ -130,8 +130,8 @@ void CloudsVisualSystemFlying::selfUpdate()
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     if (cameraControl)
     {
-        getCameraRef().move(0, 0, -ofMap(ofGetMouseY(), 0, ofGetHeight(), 600.f, -600.f) * ofGetLastFrameTime());
-        getCameraRef().setOrientation(ofVec3f(-CAM_X_ROT, ofMap(ofGetMouseX(), 0.f, ofGetWidth(), 20, -20), 0.f));
+        getCameraRef().move(0, 0, -ofMap(GetCloudsInputY(), 0, ofGetHeight(), 600.f, -600.f) * ofGetLastFrameTime());
+        getCameraRef().setOrientation(ofVec3f(-CAM_X_ROT, ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20), 0.f));
     }
     float distToFloor = getCameraRef().getPosition().y / cos(DEG_TO_RAD * (90 + getCameraRef().getRoll()));
     floorLookAt = getCameraRef().getPosition() + getCameraRef().getLookAtDir().normalized() * distToFloor;
