@@ -614,9 +614,9 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
         case '5':
             toggleGuiAndPosition(lgtGui);
             break;
-        case '0':
-            toggleGuiAndPosition(camGui);
-            break;
+//        case '0':
+//            toggleGuiAndPosition(camGui);
+//            break;
             
         case 'u':
         {
@@ -743,6 +743,12 @@ void CloudsVisualSystem::keyPressed(ofKeyEventArgs & args)
 		case 'L':
 			cameraTrack->lockCameraToTrack = !cameraTrack->lockCameraToTrack;
 			break;
+			
+#ifdef OCULUS_RIFT
+		case '0':
+			oculusRift.reset();
+			break;
+#endif
         default:
             selfKeyPressed(args);
             break;
@@ -796,38 +802,46 @@ void CloudsVisualSystem::keyReleased(ofKeyEventArgs & args)
 
 //TODO REMOVE FAKES!!
 void CloudsVisualSystem::interactionMoved(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseMoved(fakeArgs);
+    if(args.primary){
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseMoved(fakeArgs);
+    }
 	selfInteractionMoved(args);
 }
 
 void CloudsVisualSystem::interactionStarted(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mousePressed(fakeArgs);
+    if(args.primary){
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mousePressed(fakeArgs);
+    }
 	selfInteractionStarted(args);
 }
 
 void CloudsVisualSystem::interactionDragged(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseDragged(fakeArgs);
+    if(args.primary){    
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseDragged(fakeArgs);
+    }
 	selfInteractionDragged(args);
 }
 
 void CloudsVisualSystem::interactionEnded(CloudsInteractionEventArgs& args){
-	ofMouseEventArgs fakeArgs;
-	fakeArgs.x = args.position.x;
-	fakeArgs.y = args.position.y;
-	fakeArgs.button = args.actionType;
-	mouseReleased(fakeArgs);
+    if(args.primary){ 
+        ofMouseEventArgs fakeArgs;
+        fakeArgs.x = args.position.x;
+        fakeArgs.y = args.position.y;
+        fakeArgs.button = args.actionType;
+        mouseReleased(fakeArgs);
+    }
 	selfInteractionEnded(args);
 }
 
@@ -2954,34 +2968,37 @@ void CloudsVisualSystem::selfDrawOverlay(){
 
 void CloudsVisualSystem::selfPostDraw(){
 	glDisable(GL_LIGHTING);
-	if(bUseOculusRift){
 #ifdef OCULUS_RIFT
-		oculusRift.draw();
-#endif
-	}
-	else{
-		//draws to viewport
-		CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
-														   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
-														  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
-		
-		if(bDrawCursor){
-			ofPushMatrix();
-			ofPushStyle();
+	oculusRift.draw();
+#else
+	//draws to viewport
+	CloudsVisualSystem::getSharedRenderTarget().draw(0,CloudsVisualSystem::getSharedRenderTarget().getHeight(),
+													   CloudsVisualSystem::getSharedRenderTarget().getWidth(),
+													  -CloudsVisualSystem::getSharedRenderTarget().getHeight());
+	
+	if(bDrawCursor){
+		ofPushMatrix();
+		ofPushStyle();
+		ofSetLineWidth(2);
+		map<int, CloudsInteractionEventArgs>& inputPoints = GetCloudsInputPoints();
+		for (map<int, CloudsInteractionEventArgs>::iterator it = inputPoints.begin(); it != inputPoints.end(); ++it) {
 			//	ofNoFill();
 			//	ofSetColor(255, 50);
 			//	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-			ofSetColor(240,240,255, 175);
-			ofSetLineWidth(2);
-			ofCircle(GetCloudsInputX(), GetCloudsInputY(),
+			if (it->second.primary) {
+				ofSetColor(240,240,100, 175);
+			}
+			else {
+				ofSetColor(240,240,255, 175);
+			}
+			ofCircle(it->second.position.x, it->second.position.y,
 					 ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
-			ofPopStyle();
-			ofPopMatrix();
 		}
-		
+		ofPopStyle();
+		ofPopMatrix();
 	}
-	
-	
+#endif
+
 }
 
 	

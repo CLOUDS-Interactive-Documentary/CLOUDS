@@ -11,6 +11,7 @@
 #include "ofMain.h"
 
 class CloudsInputEvents;
+class CloudsInteractionEventArgs;
 class CloudsInput
 {
   public:
@@ -19,23 +20,26 @@ class CloudsInput
 	virtual void enable() = 0;
 	virtual void disable() = 0;
 	
-	void interactionMoved(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionStarted(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionDragged(ofVec3f pos, int actionType = 0, int playerId = 0);
-	void interactionEnded(ofVec3f pos, int actionType = 0, int playerId = 0);
+	void interactionMoved(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionStarted(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionDragged(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
+	void interactionEnded(ofVec3f pos, bool primary = false, int actionType = 0, int playerId = 0);
 
 	bool isDragging();
 	float getPositionX();
 	float getPositionY();
 	float getPositionZ();
 	ofVec3f getPosition();
+    
+    map<int, CloudsInteractionEventArgs>& getInputPoints();
 	
 	CloudsInputEvents& getEvents();
 	
   protected:
 
-	ofVec3f currentPosition;
-	bool dragging;
+    ofVec3f currentPosition;
+    bool dragging;
+    map<int, CloudsInteractionEventArgs> inputPoints;
 
 	bool enabled;
 	CloudsInputEvents* events;
@@ -51,3 +55,5 @@ float GetCloudsInputX();
 float GetCloudsInputY();
 float GetCloudsInputZ();
 ofVec3f GetCloudsInputPosition();
+map<int, CloudsInteractionEventArgs>& GetCloudsInputPoints();
+

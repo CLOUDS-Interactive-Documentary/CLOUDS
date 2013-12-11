@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofOpenALSoundPlayer_TimelineAdditions.h"
 
 enum HistogramMode
 {
@@ -107,11 +108,11 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
     
 	void addRandomPoint();
     void addSoundPoint();
-
+    
 protected:
     ofxUISuperCanvas* customGui;
 	
-    vector <float> dataPoints;
+    vector<float> dataPoints;
     int maxNumDataPoints;
     
     int seed;
@@ -123,7 +124,7 @@ protected:
     
     ofDirectory soundsDir;
     int selectedSoundsIdx;
-    ofSoundPlayer soundPlayer;
+    ofOpenALSoundPlayer_TimelineAdditions soundPlayer;
     float levelAdjust;
     
     ofMesh histoMesh;
@@ -140,9 +141,24 @@ protected:
     float colSpacer;
     float colWidth;
     float colHeightMin, colHeightMax;
+    int numRows;
     int colsPerRow;
     float lineWidth;
     
     HistogramMode mode;
     HistogramSource source;
+
+    bool bSeparateFeeds;
+    
+    vector<float>& getFFT();
+    void generateEnvelope(int size);
+
+    float lastFFTPosition;
+    float dampening;
+    int averageSize;
+    bool useEnvelope;
+    vector<float> envelope;
+    vector<float> dampened;
+    
+    float fogDensity;
 };

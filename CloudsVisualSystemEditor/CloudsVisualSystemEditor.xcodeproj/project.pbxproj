@@ -515,6 +515,12 @@
 		E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7399680178743F200EA5F4D /* QuartzCore.framework */; };
 		E74620A317DB7E9C002FC464 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E746209617DB7E9C002FC464 /* ofxBillboard.cpp */; };
 		E74620A917DB7EF8002FC464 /* CloudsSpeaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */; };
+		E74D4FEC1857B64C001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74D4FCB1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
+		E74D4FED1857B64C001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74D4FCB1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */; };
+		E74D50051857B920001CE1F7 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E74D50001857B920001CE1F7 /* libsndfile.a */; };
+		E74D50061857B920001CE1F7 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E74D50001857B920001CE1F7 /* libsndfile.a */; };
+		E74D500C1857BA5A001CE1F7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74D500B1857BA5A001CE1F7 /* OpenAL.framework */; };
+		E74D500D1857BA74001CE1F7 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74D500B1857BA5A001CE1F7 /* OpenAL.framework */; };
 		E77BAA3617DA781900B8744F /* ofxTextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA2E17DA781900B8744F /* ofxTextWriter.cpp */; };
 		E77BAA5D17DA784200B8744F /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA4317DA784200B8744F /* sqlite3.c */; };
 		E77BAA5E17DA784200B8744F /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E77BAA4617DA784200B8744F /* ofxSQLite.cpp */; };
@@ -1840,6 +1846,12 @@
 		E746209717DB7E9C002FC464 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
 		E74620A717DB7EF8002FC464 /* CloudsSpeaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsSpeaker.cpp; sourceTree = "<group>"; };
 		E74620A817DB7EF8002FC464 /* CloudsSpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsSpeaker.h; sourceTree = "<group>"; };
+		E74D4FCB1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofOpenALSoundPlayer_TimelineAdditions.cpp; sourceTree = "<group>"; };
+		E74D4FCC1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofOpenALSoundPlayer_TimelineAdditions.h; sourceTree = "<group>"; };
+		E74D4FFC1857B920001CE1F7 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
+		E74D4FFD1857B920001CE1F7 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
+		E74D50001857B920001CE1F7 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
+		E74D500B1857BA5A001CE1F7 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenAL.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		E77BAA2E17DA781900B8744F /* ofxTextWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTextWriter.cpp; sourceTree = "<group>"; };
 		E77BAA2F17DA781900B8744F /* ofxTextWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTextWriter.h; sourceTree = "<group>"; };
 		E77BAA4317DA784200B8744F /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -2397,6 +2409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74D500C1857BA5A001CE1F7 /* OpenAL.framework in Frameworks */,
 				E7399681178743F200EA5F4D /* QuartzCore.framework in Frameworks */,
 				E739967F178743E900EA5F4D /* CoreMedia.framework in Frameworks */,
 				E739967D178743D800EA5F4D /* AVFoundation.framework in Frameworks */,
@@ -2426,6 +2439,7 @@
 				E7FC550F185293B80017A3F2 /* libassimp.a in Frameworks */,
 				E7FC5511185293B80017A3F2 /* assimp.a in Frameworks */,
 				E7FC5513185293B80017A3F2 /* assimp.lib in Frameworks */,
+				E74D50051857B920001CE1F7 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2433,6 +2447,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74D500D1857BA74001CE1F7 /* OpenAL.framework in Frameworks */,
 				E7FB298F1830D9E2009EBD0E /* QuartzCore.framework in Frameworks */,
 				E7FB29901830D9E2009EBD0E /* CoreMedia.framework in Frameworks */,
 				E7FB29911830D9E2009EBD0E /* AVFoundation.framework in Frameworks */,
@@ -2462,6 +2477,7 @@
 				E7FC5510185293B80017A3F2 /* libassimp.a in Frameworks */,
 				E7FC5512185293B80017A3F2 /* assimp.a in Frameworks */,
 				E7FC5514185293B80017A3F2 /* assimp.lib in Frameworks */,
+				E74D50061857B920001CE1F7 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,6 +2656,7 @@
 		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E74D500B1857BA5A001CE1F7 /* OpenAL.framework */,
 				E7399680178743F200EA5F4D /* QuartzCore.framework */,
 				E739967E178743E900EA5F4D /* CoreMedia.framework */,
 				E739967C178743D800EA5F4D /* AVFoundation.framework */,
@@ -4561,6 +4578,7 @@
 		E7376D981778DCFF00892646 /* ofxTimeline */ = {
 			isa = PBXGroup;
 			children = (
+				E74D4FC01857B64B001CE1F7 /* libs */,
 				E7376ED91778DD0E00892646 /* src */,
 			);
 			name = ofxTimeline;
@@ -5071,6 +5089,66 @@
 				E746209717DB7E9C002FC464 /* ofxBillboard.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		E74D4FC01857B64B001CE1F7 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FFA1857B920001CE1F7 /* sndfile */,
+				E74D4FC91857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E74D4FC91857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FCA1857B64B001CE1F7 /* src */,
+			);
+			path = ofOpenALSoundPlayer_TimelineAdditions;
+			sourceTree = "<group>";
+		};
+		E74D4FCA1857B64B001CE1F7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FCC1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.h */,
+				E74D4FCB1857B64B001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E74D4FFA1857B920001CE1F7 /* sndfile */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FFB1857B920001CE1F7 /* include */,
+				E74D4FFE1857B920001CE1F7 /* lib */,
+			);
+			path = sndfile;
+			sourceTree = "<group>";
+		};
+		E74D4FFB1857B920001CE1F7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FFC1857B920001CE1F7 /* sndfile.h */,
+				E74D4FFD1857B920001CE1F7 /* sndfile.hh */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E74D4FFE1857B920001CE1F7 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E74D4FFF1857B920001CE1F7 /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E74D4FFF1857B920001CE1F7 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				E74D50001857B920001CE1F7 /* libsndfile.a */,
+			);
+			path = osx;
 			sourceTree = "<group>";
 		};
 		E77BAA1F17DA781800B8744F /* ofxTextWriter */ = {
@@ -7110,6 +7188,7 @@
 				E79E6FBF1855529600406535 /* ofxOscMessage.cpp in Sources */,
 				E79E6FC31855529600406535 /* ofxOscReceiver.cpp in Sources */,
 				E79E6FC51855529600406535 /* ofxOscSender.cpp in Sources */,
+				E74D4FEC1857B64C001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7578,6 +7657,7 @@
 				E79E6FC01855529600406535 /* ofxOscMessage.cpp in Sources */,
 				E79E6FC41855529600406535 /* ofxOscReceiver.cpp in Sources */,
 				E79E6FC61855529600406535 /* ofxOscSender.cpp in Sources */,
+				E74D4FED1857B64C001CE1F7 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7785,6 +7865,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -7793,7 +7878,12 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
@@ -7914,6 +8004,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -7922,7 +8017,12 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
@@ -8058,6 +8158,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -8066,7 +8171,12 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
@@ -8205,6 +8315,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/ios\"";
@@ -8213,7 +8328,12 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../addons/ofxAssimpModelLoader/libs/assimp/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/LibOVR_With_Samples.build/Debug/ovr.build/Objects-normal/i386\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";

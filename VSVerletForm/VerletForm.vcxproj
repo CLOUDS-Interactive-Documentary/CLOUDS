@@ -57,7 +57,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -80,7 +80,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat />
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxCameraSaveLoad\libs;..\..\..\addons\ofxCameraSaveLoad\src;..\..\..\addons\ofxGameCamera\libs;..\..\..\addons\ofxGameCamera\src;..\..\..\addons\ofxGenerative\libs;..\..\..\addons\ofxGenerative\src;..\..\..\addons\ofxMSACore\libs;..\..\..\addons\ofxMSACore\src;..\..\..\addons\ofxMSAInteractiveObject\libs;..\..\..\addons\ofxMSAInteractiveObject\src;..\..\..\addons\ofxMSAObjCPointer\libs;..\..\..\addons\ofxMSAObjCPointer\src;..\..\..\addons\ofxMSAPhysics\libs;..\..\..\addons\ofxMSAPhysics\src;..\..\..\addons\ofxMSATimer\libs;..\..\..\addons\ofxMSATimer\src;..\..\..\addons\ofxRange\libs;..\..\..\addons\ofxRange\src;..\..\..\addons\ofxTextInputField\libs;..\..\..\addons\ofxTextInputField\src;..\..\..\addons\ofxTimecode\libs;..\..\..\addons\ofxTimecode\src;..\..\..\addons\ofxTimeline\src;..\..\..\addons\ofxTween\libs;..\..\..\addons\ofxTween\src;..\..\..\addons\ofxTween\src\Easings;..\..\..\addons\ofxUI\libs;..\..\..\addons\ofxUI\src;..\CloudsLibrary\src\VisualSystemsLibrary\;..\CloudsLibrary\src\VisualSystems\VerletForm\vs_src\;..\CloudsLibrary\src\Input\;..\CloudsLibrary\src\;..\..\..\addons\ofxOsc\src\;..\..\..\addons\ofxOsc\libs\;..\..\..\addons\ofxOsc\libs\oscpack\;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -98,6 +98,19 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtilsWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocketWin.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInput.cpp" />
+    <ClCompile Include="..\CloudsLibrary\src\Input\CloudsInputMouse.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.cpp" />
     <ClCompile Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.cpp" />
@@ -181,6 +194,29 @@
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxBoidSystem.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticle.h" />
     <ClInclude Include="..\..\..\addons\ofxGenerative\src\ofxSmartParticleSystem.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\CloudsLibrary\src\CloudsGlobal.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInput.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputEvents.h" />
+    <ClInclude Include="..\CloudsLibrary\src\Input\CloudsInputMouse.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDCamera.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsRGBDVideoPlayer.h" />
     <ClInclude Include="..\CloudsLibrary\src\VisualSystemsLibrary\CloudsVisualSystem.h" />

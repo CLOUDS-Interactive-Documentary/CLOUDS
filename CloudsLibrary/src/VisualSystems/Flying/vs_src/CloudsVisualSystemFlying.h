@@ -25,7 +25,7 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
   public:
     static const unsigned NUM_RULES_FILES = 2;
     static const string RULES_FILES[NUM_RULES_FILES];
-    static const float CAM_X_ROT;
+    static const float CAM_DAMPING;
     
     CloudsVisualSystemFlying();
     
@@ -95,7 +95,6 @@ class CloudsVisualSystemFlying : public CloudsVisualSystem
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
 
     // if you use a custom camera to fly through the scene
 	// you must implement this method for the transitions to work properly
@@ -115,11 +114,16 @@ protected:
     //  Your Stuff
     //
     void generate();
+    void onWindowResized(ofResizeEventArgs& args);
     
     ofxPostProcessing post;
     
     bool cameraControl;
     float fogStart, fogEnd;
+    
+    // cam
+    float xRot, yRot, zSpeed;
+    float camAvoidDist;
     
     // plants
     ofShader plantsShader;

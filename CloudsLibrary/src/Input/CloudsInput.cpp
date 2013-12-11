@@ -22,41 +22,57 @@ CloudsInputEvents& CloudsInput::getEvents(){
 	return *events;
 }
 
-void CloudsInput::interactionMoved(ofVec3f pos, int actionType, int playerId){
+map<int, CloudsInteractionEventArgs>& CloudsInput::getInputPoints(){
+    return inputPoints;
+}
+
+void CloudsInput::interactionMoved(ofVec3f pos, bool primary, int actionType, int playerId){
 //	if(dragging)
 //		ofLogError("CloudsInput::interactionMoved") << "Dragging logic inconsistent. called Moved when Dragging";
 	
-	currentPosition = pos;
-	CloudsInteractionEventArgs args(pos, actionType, playerId);
+    if (primary) {
+        currentPosition = pos;
+    }
+	CloudsInteractionEventArgs args(pos, primary, actionType, playerId);
+    inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionMoved, args, this);	
 }
 
-void CloudsInput::interactionStarted(ofVec3f pos, int actionType, int playerId){
+void CloudsInput::interactionStarted(ofVec3f pos, bool primary, int actionType, int playerId){
 //	if(dragging)
 //		ofLogError("CloudsInput::interactionStarted") << "Dragging logic inconsistent. calld Start when Dragging";
 	
-	currentPosition = pos;
-	dragging = true;
-	CloudsInteractionEventArgs args(pos, actionType, playerId);
+    if (primary) {
+        currentPosition = pos;
+        dragging = true;
+    }
+	CloudsInteractionEventArgs args(pos, primary, actionType, playerId);
+    inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionStarted, args, this);
 }
 
-void CloudsInput::interactionDragged(ofVec3f pos, int actionType, int playerId){
+void CloudsInput::interactionDragged(ofVec3f pos, bool primary, int actionType, int playerId){
 //	if(!dragging)
 //		ofLogError("CloudsInput::interactionDragged") << "Dragging logic inconsistent. calld Drag before start";
 	
-	currentPosition = pos;	
-	CloudsInteractionEventArgs args(pos, actionType, playerId);
+    if (primary) {
+        currentPosition = pos;	
+    }
+	CloudsInteractionEventArgs args(pos, primary, actionType, playerId);
+    inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionDragged, args, this);
 }
 
-void CloudsInput::interactionEnded(ofVec3f pos, int actionType, int playerId){
+void CloudsInput::interactionEnded(ofVec3f pos, bool primary, int actionType, int playerId){
 //	if(!dragging)
 //		ofLogError("CloudsInput::interactionEnded") << "Dragging logic inconsistent. calld End while not Dragging";
 	
-	dragging = false;
-	currentPosition = pos;
-	CloudsInteractionEventArgs args(pos, actionType, playerId);
+    if (primary) {
+        dragging = false;
+        currentPosition = pos;
+    }
+	CloudsInteractionEventArgs args(pos, primary, actionType, playerId);
+    inputPoints[playerId] = args;
 	ofNotifyEvent(getEvents().interactionEnded, args, this);
 }
 
@@ -111,4 +127,7 @@ float GetCloudsInputZ(){
 }
 ofVec3f GetCloudsInputPosition(){
 	return GetCloudsInput()->getPosition();
+}
+map<int, CloudsInteractionEventArgs>& GetCloudsInputPoints(){
+    return GetCloudsInput()->getInputPoints();
 }

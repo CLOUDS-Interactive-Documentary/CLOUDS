@@ -44,7 +44,6 @@ class CloudsVisualSystem {
 	CloudsVisualSystem();
 	virtual ~CloudsVisualSystem();
 	
-	
 	enum RGBDTransitionType
 	{
 	  TWO_DIMENSIONAL = 0,

@@ -4,16 +4,16 @@
 
 #include "CloudsVisualSystemFlying.h"
 #include "CloudsRGBDVideoPlayer.h"
+#include "CloudsInput.h"
 
-
-const float CloudsVisualSystemFlying::CAM_X_ROT = 20;
 const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/flower.xml" };
-
+const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     numPlantMeshes(100), floorW(2000), floorD(2000), floorHalfW(.5f * floorW), floorHalfD(.5f * floorD),
     noiseAmp(20.f), noiseFreq(5.f), xResolution(100), zResolution(100), xStep(floorW / (float)xResolution), zStep(floorD / (float)zResolution),
-    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200)
+    cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
+    zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
 {
 }
 
@@ -22,6 +22,8 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemFlying::onWindowResized);
+    
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
@@ -130,8 +132,11 @@ void CloudsVisualSystemFlying::selfUpdate()
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     if (cameraControl)
     {
-        getCameraRef().move(0, 0, -ofMap(ofGetMouseY(), 0, ofGetHeight(), 600.f, -600.f) * ofGetLastFrameTime());
-        getCameraRef().setOrientation(ofVec3f(-CAM_X_ROT, ofMap(ofGetMouseX(), 0.f, ofGetWidth(), 20, -20), 0.f));
+        xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
+        yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
+        zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
+        getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
+        getCameraRef().setOrientation(ofVec3f(-xRot, yRot, 0.f));
     }
     float distToFloor = getCameraRef().getPosition().y / cos(DEG_TO_RAD * (90 + getCameraRef().getRoll()));
     floorLookAt = getCameraRef().getPosition() + getCameraRef().getLookAtDir().normalized() * distToFloor;
@@ -189,6 +194,13 @@ void CloudsVisualSystemFlying::selfDraw()
     for (auto it = plants.begin(); it != plants.end(); ++it)
     {
         float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getNumSteps(), 0.f, true);
+        
+        const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
+        float distToCamSq = (it->pos - cam.getPosition()).lengthSquared();
+        if (distToCamSq < camAvoidDistSq)
+        {
+            growth *= sqrt(distToCamSq) / camAvoidDist;
+        }
         if (growth > 0.f)
         {
             plantsShader.setUniform1f("growth", growth);
@@ -247,6 +259,7 @@ void CloudsVisualSystemFlying::selfSetupRenderGui()
     rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
     rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
@@ -270,6 +283,11 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
+}
+
+void CloudsVisualSystemFlying::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)

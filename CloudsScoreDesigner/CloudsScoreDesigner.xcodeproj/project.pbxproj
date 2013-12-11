@@ -16,6 +16,8 @@
 		C102655A182EBDA900C7F895 /* CloudsSoundFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C102654F182EBDA900C7F895 /* CloudsSoundFuncs.cpp */; };
 		C102655B182EBDA900C7F895 /* librtcmix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1026554182EBDA900C7F895 /* librtcmix.a */; };
 		C102655C182EBDA900C7F895 /* lukeFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1026556182EBDA900C7F895 /* lukeFuncs.cpp */; };
+		C180891A1857CA91004C33A1 /* lukeFileFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C18089181857CA91004C33A1 /* lukeFileFuncs.cpp */; };
+		C180891D1857CB3E004C33A1 /* lukeMusicFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C180891B1857CB3E004C33A1 /* lukeMusicFuncs.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -190,6 +192,8 @@
 		C1026554182EBDA900C7F895 /* librtcmix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtcmix.a; sourceTree = "<group>"; };
 		C1026556182EBDA900C7F895 /* lukeFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFuncs.cpp; sourceTree = "<group>"; };
 		C1026557182EBDA900C7F895 /* lukeFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lukeFuncs.h; sourceTree = "<group>"; };
+		C18089181857CA91004C33A1 /* lukeFileFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeFileFuncs.cpp; sourceTree = "<group>"; };
+		C180891B1857CB3E004C33A1 /* lukeMusicFuncs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lukeMusicFuncs.cpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -746,8 +750,10 @@
 		C1026555182EBDA900C7F895 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C1026556182EBDA900C7F895 /* lukeFuncs.cpp */,
 				C1026557182EBDA900C7F895 /* lukeFuncs.h */,
+				C1026556182EBDA900C7F895 /* lukeFuncs.cpp */,
+				C18089181857CA91004C33A1 /* lukeFileFuncs.cpp */,
+				C180891B1857CB3E004C33A1 /* lukeMusicFuncs.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1982,6 +1988,8 @@
 				E7F37E8D1853C1080087F91C /* ofxOscMessage.cpp in Sources */,
 				E7F37E8F1853C1080087F91C /* ofxOscReceiver.cpp in Sources */,
 				E7F37E901853C1080087F91C /* ofxOscSender.cpp in Sources */,
+				C180891A1857CA91004C33A1 /* lukeFileFuncs.cpp in Sources */,
+				C180891D1857CB3E004C33A1 /* lukeMusicFuncs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

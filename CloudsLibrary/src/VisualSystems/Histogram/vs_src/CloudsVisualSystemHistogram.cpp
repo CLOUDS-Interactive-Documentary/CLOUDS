@@ -28,6 +28,9 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     customGui->addRadio("MODES", modes);
     
     customGui->addSpacer();
+    customGui->addToggle("SEPARATE FEEDS", &bSeparateFeeds);
+    
+    customGui->addSpacer();
     vector<string> sources;
     sources.push_back("RANDOM");
     sources.push_back("AUDIO");
@@ -55,12 +58,16 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
     
     customGui->addSpacer();
     customGui->addLabel("DIMENSIONS");
+    customGui->addIntSlider("NUM ROWS", 1, 32, &numRows);
     customGui->addIntSlider("COLS PER ROW", 1, 100, &colsPerRow);
     customGui->addSlider("ROW SPACER", 1, 200, &rowSpacer);
     customGui->addSlider("COL SPACER", 0, 50, &colSpacer);
     customGui->addSlider("COL WIDTH", 0, 100, &colWidth);
     customGui->addRangeSlider("COL HEIGHT", 0, 500, &colHeightMin, &colHeightMax);
     customGui->addSlider("LINE WIDTH", 0.1, 10, &lineWidth);
+    
+    customGui->addSpacer();
+    customGui->addSlider("FOG DENSITY", 0.0f, 0.3f, &fogDensity);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemHistogram::selfGuiEvent);
 	guis.push_back(customGui);
@@ -122,10 +129,10 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemHistogram::selfSetup()
 {
     seed = int(ofRandom(20));
-    maxNumDataPoints = 3200;
     
     mode = HISTOGRAM_MODE_BARS;
     source = HISTOGRAM_SOURCE_RANDOM;
+    bSeparateFeeds = false;
     
     colorClear.set(0, 0, 0, 0);
     
@@ -142,14 +149,20 @@ void CloudsVisualSystemHistogram::selfSetup()
     colWidth = 40;
     colHeightMin = 10;
     colHeightMax = 400;
+    numRows = 32;
     colsPerRow = 100;
     lineWidth = 1.0f;
 
-    soundsDir.listDir(getVisualSystemDataPath() + "sounds");
+    soundsDir.listDir(getVisualSystemDataPath(true) + "sounds");
     soundsDir.sort();
     selectedSoundsIdx = 0;
     
     levelAdjust = 1.0f;
+    
+    lastFFTPosition = -1;
+    dampening = 0.1f;
+    
+    fogDensity = 0.3;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -179,13 +192,13 @@ void CloudsVisualSystemHistogram::selfUpdate()
     // FILL THE VECTOR WITH DATA
 
     t = ofGetFrameNum() / 50.0;
+    maxNumDataPoints = numRows * colsPerRow;
+        
+    while (dataPoints.size() < maxNumDataPoints) {
+        dataPoints.push_back(0);
+    }
     
     if (source == HISTOGRAM_SOURCE_RANDOM) {
-        while (dataPoints.size() < maxNumDataPoints) {
-            addRandomPoint();
-        }
-    
-        // Generate a new noise value
         addRandomPoint();
     }
     else {
@@ -213,8 +226,10 @@ void CloudsVisualSystemHistogram::selfUpdate()
     int col = 0;
     int row = 0;
     
-    for (int j = dataPoints.size()-1; j > 0 ; j--) {
+//    for (int j = dataPoints.size() - 1; j >= 0 ; j--) {
+    for (int j = 0; j < dataPoints.size(); j++) {
         float offsetX = col * (colWidth + colSpacer);
+        float val = dataPoints[j];
         
         float hue = ofMap(j, 0, dataPoints.size(), hueMax, hueMin);
         colorFg.setHsb(hue, satBase + ofRandom(satRange), briBase + ofRandom(briRange), alpha);
@@ -223,11 +238,11 @@ void CloudsVisualSystemHistogram::selfUpdate()
             // bottom left
             ofPoint a = ofPoint(offsetX, 0, row * -rowSpacer);
             // top left
-            ofPoint b = ofPoint(offsetX, dataPoints[j], row * -rowSpacer);
+            ofPoint b = ofPoint(offsetX, val, row * -rowSpacer);
             // bottom right
             ofPoint c = ofPoint(colWidth + offsetX, 0, row * -rowSpacer);
             // top right
-            ofPoint d = ofPoint(colWidth + offsetX, dataPoints[j], row * -rowSpacer);
+            ofPoint d = ofPoint(colWidth + offsetX, val, row * -rowSpacer);
             
             histoMesh.addColor(colorClear);
             histoMesh.addVertex(a);
@@ -245,7 +260,7 @@ void CloudsVisualSystemHistogram::selfUpdate()
             histoMesh.addVertex(d);
         }
         else {
-            ofPoint a = ofPoint(offsetX, dataPoints[j], row * -rowSpacer);
+            ofPoint a = ofPoint(offsetX, val, row * -rowSpacer);
             
             if (col == 0) {
                 histoMesh.addColor(colorClear);
@@ -274,6 +289,20 @@ void CloudsVisualSystemHistogram::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemHistogram::selfDraw()
 {
+	glPushAttrib(GL_FOG_BIT);
+
+    glEnable(GL_FOG);
+	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+	glFogi(GL_FOG_MODE, GL_EXP);
+    
+//    GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
+    GLfloat fogColor[4] = { bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
+    glFogfv(GL_FOG_COLOR, fogColor);
+//    glDisable(GL_DEPTH_TEST);
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+	glFogf(GL_FOG_DENSITY, powf(fogDensity, 4));
+    
     ofPushMatrix();
     ofPushStyle();
     {
@@ -289,7 +318,9 @@ void CloudsVisualSystemHistogram::selfDraw()
         histoMesh.draw();
     }
 	ofPopStyle();
-    ofPopMatrix();	
+    ofPopMatrix();
+    
+    glPopAttrib();
 }
 
 // draw any debug stuff here
@@ -344,9 +375,11 @@ void CloudsVisualSystemHistogram::reloadSound()
     soundPlayer.unloadSound();
     
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
-    soundPlayer.loadSound(file.getAbsolutePath());
-    soundPlayer.play();
-    soundPlayer.setLoop(true);
+    if (soundPlayer.loadSound(file.getAbsolutePath())) {
+        soundPlayer.play();
+        soundPlayer.setLoop(true);
+        soundPlayer.getSpectrum(1024); //defaultSpectrumBandwidth
+    }
 }
 
 void CloudsVisualSystemHistogram::addRandomPoint()
@@ -355,16 +388,98 @@ void CloudsVisualSystemHistogram::addRandomPoint()
     //randomData.push_back(ofRandom(1,100)); // random float between 1 and 100
     noiseValue += ofNoise(n * .01, t) * 10 - 5; //generate noise value
     noiseValue = noiseValue + ofRandom(-70.0, 70.0); // add randomness
-    float newValue = ofMap(noiseValue, -500, 2000, colHeightMin, colHeightMax, true);
+    float newValue = ofMap(noiseValue, -500, 2000, colHeightMin, colHeightMax);
     dataPoints.push_back(newValue); // noise value
     //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  current number: " << randomData.at(i) << endl;
-    //  cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
+    //cout << "time: " <<  t << "size of vector: " << randomData.size() << "  noise value " << noiseValue << endl;
 }
 
 void CloudsVisualSystemHistogram::addSoundPoint()
 {
     ofSoundUpdate();
-    float currLevel = ofSoundGetSpectrum(1)[0] * levelAdjust;
-    float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax, true);
-    dataPoints.push_back(newValue);
+    if (bSeparateFeeds) {
+        if (soundPlayer.getBandsPerOctave() != numRows) {
+            soundPlayer.setLogAverages(88, numRows);
+        }
+        vector<float> allLevels = getFFT();
+        for (int i = 0; i < numRows; i++) {
+            float currLevel = allLevels[i] * levelAdjust;
+            float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+            
+            // move everything back one position
+            int last  = MIN(dataPoints.size() - 1, (i + 1) * colsPerRow - 1);
+            int first = MIN(last, i * colsPerRow + 1);
+            for (int j = first; j <= last; j++) {
+                dataPoints[j - 1] = dataPoints[j];
+            }
+            
+            // add the new value at the end
+            dataPoints[last] = newValue;
+        }
+    }
+    else {
+        if (soundPlayer.getBandsPerOctave() != 1) {
+            soundPlayer.setLogAverages(88, 1);
+        }
+        float currLevel = getFFT()[0] * levelAdjust;
+        float newValue = ofMap(currLevel, 0, 1, colHeightMin, colHeightMax);
+        dataPoints.push_back(newValue);
+    }
+}
+
+//envelope and dampening approach from Marius Watz
+//http://workshop.evolutionzone.com/2012/08/30/workshops-sept-89-sound-responsive-visuals-3d-printing-and-parametric-modeling/
+vector<float>& CloudsVisualSystemHistogram::getFFT()
+{
+	float fftPosition = soundPlayer.getPosition();
+	if (soundPlayer.isLoaded() && lastFFTPosition != fftPosition){
+        
+        vector<float>& fftAverages = soundPlayer.getAverages();
+        averageSize = fftAverages.size();
+        if(envelope.size() != averageSize){
+            generateEnvelope(averageSize);
+        }
+        
+        if(dampened.size() != averageSize){
+            dampened.clear();
+            dampened.resize(averageSize);
+        }
+        
+//        if(getUseFFTEnvelope()){
+            for(int i = 0; i < fftAverages.size(); i++){
+                fftAverages[i] *= envelope[i];
+            }
+//        }
+    
+        float max = 0;
+        for(int i = 0; i < fftAverages.size(); i++){
+            max = MAX(max, fftAverages[i]);
+        }
+        if(max != 0){
+            for(int i = 0; i < fftAverages.size(); i++){
+                fftAverages[i] = ofMap(fftAverages[i],0, max, 0, 1.0);
+            }
+        }
+        
+        for(int i = 0; i < averageSize; i++) {
+            dampened[i] = (fftAverages[i] * dampening) + dampened[i]*(1-dampening);
+        }
+        
+        //normalizer hack
+        lastFFTPosition = fftPosition;
+	}
+    
+	return dampened;
+}
+
+void CloudsVisualSystemHistogram::generateEnvelope(int size)
+{
+    envelope.clear();
+    for (int i = 0; i < size; i++) {
+        envelope.push_back(ofBezierPoint(ofPoint(0.05f,0),
+                                         ofPoint(0.1f, 0),
+                                         ofPoint(0.2f, 0),
+                                         ofPoint(1.0f, 0),
+                                         ofMap(i, 0, size - 1, 0, 1)).x);
+    }
 }

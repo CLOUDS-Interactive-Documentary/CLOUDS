@@ -43,7 +43,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     
     outskip = outskip + beatoffset; // fix beat offset to get things in time
     
-    
     cout << "   start: " << outskip << " " << "s, dur: " << musicdur << " " << "s, orch: " << mo << ", harmony: " << mh << ", rhythm: " << mr << endl;
     
     //
@@ -143,7 +142,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
     }
 
-    
     // LOWWAVEPULSE
     if (mo=="lowwavepulse")
     {
@@ -304,7 +302,6 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
      }
 
-
     // STRUMSINE
     if (mo=="strumsine")
     {
@@ -335,20 +332,21 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // PITCHED RHYTHM
     //
     
-    
     // MODALBEATS
     if (mo=="modalbeats")
     {
+        melodySolver m(arg_a, pitches[mh]);
+        int curpitch;
+        float freq;
+        float amp;
         for(i = 0;i<musicdur;i+=tempo)
         {
-            if(rhythms[mr].beats[bcount]>0.) {
+            amp = ofRandom(rhythms[mr].beats[bcount]);
+            if(amp>0.5) {
+                curpitch = m.tick();
+                freq = mtof(curpitch);
                 
-                //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*rhythms[mr].beats[bcount];
-                float t_amp = rhythms[mr].beats[bcount];
-                float pick = (int)ofRandom(0, pitches[mh].notes.size());
-                float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
-                
-                MMODALBAR(outskip+i, 1., t_amp*0.2, t_freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
+                MMODALBAR(outskip+i, 1., amp*0.2, freq, ofRandom(0.1,0.9), ofRandom(0.,1.), int(ofRandom(8))    );
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -358,16 +356,18 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // WAVEGUIDEBEATS
     if (mo=="waveguidebeats")
     {
+        melodySolver m(arg_a, pitches[mh]);
+        int curpitch;
+        float freq;
+        float amp;
         int preset = 3;
         for(i = 0;i<musicdur;i+=tempo)
         {
-            if(rhythms[mr].beats[bcount]>0.) {
-                
-                float t_amp = rhythms[mr].beats[bcount];
-                float pick = (int)ofRandom(0, pitches[mh].notes.size());
-                float t_freq = mtof(scale(pitches[mh].notes[pick]+pitches[mh].basenote, pitches[mh].scale));
-                
-                MBANDEDWG(outskip+i, ofRandom(0.05, 0.5), t_amp*ofRandom(0.05, 0.15), t_freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
+            amp = ofRandom(rhythms[mr].beats[bcount]);
+            if(amp>0.5) {
+                curpitch = m.tick();
+                freq = mtof(curpitch);
+                MBANDEDWG(outskip+i, ofRandom(0.05, 0.5), amp*0.15, freq, ofRandom(0.,1.), ofRandom(0.,1.)>0.5, ofRandom(0.7, 1.0), preset, ofRandom(0.8, 1.), 0.99, 0., ofRandom(0.,1.), "vel_strike");
             }
             bcount = (bcount+1)%rhythms[mr].beats.size();
         }
@@ -381,13 +381,16 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // MESHBEATS
     if (mo=="meshbeats")
     {
-        for(i = 0;i<musicdur;i+=tempo)
+        rhythmSolver r(arg_a, arg_b, rhythms[mr]);
+        for(i=0;i<musicdur;i+=tempo)
         {
-            //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
-            float t_amp = 0.38;
-            int nx = ofRandom(2,12);
-            int ny = ofRandom(2,12);
-            MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            if(r.tick())
+            {
+                float t_amp = 0.38;
+                int nx = ofRandom(2,12);
+                int ny = ofRandom(2,12);
+                MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            }
         }
         
     }
@@ -395,18 +398,58 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
     // SLOWMESHBEATS
     if (mo=="slowmeshbeats")
     {
+        rhythmSolver r(arg_a, arg_b, rhythms[mr]);
         for(i = 0;i<musicdur;i+=tempo*2.)
         {
-            //float t_amp = (1.0-fabs((i/musicdur)-0.5)*2.)*0.38;
-            float t_amp = 0.38;
-            int nx = ofRandom(2,12);
-            int ny = ofRandom(2,12);
-            MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            if(r.tick())
+            {
+                float t_amp = 0.38;
+                int nx = ofRandom(2,12);
+                int ny = ofRandom(2,12);
+                MMESH2D(outskip+i, 1., t_amp*0.5, nx, ny, ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.), ofRandom(0.,1.));
+            }
         }
         
     }
-        
-        
+
+    // VERMONTBEATZ
+    if (mo=="vermontbeatz")
+    {
+        rhythmSolver r(arg_a, arg_b, rhythms[mr]);
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo)
+        {
+            if(r.tick())
+            {
+
+                pick = ofRandom(0,5);
+                if(pick==1) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
+                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
+                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
+                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+            }
+        }
+    }
+
+    // SLOWVERMONTBEATZ
+    if (mo=="slowvermontbeatz")
+    {
+        rhythmSolver r(arg_a, arg_b, rhythms[mr]);
+        int pick;
+        for(i = 0;i<musicdur;i+=tempo*2.)
+        {
+            if(r.tick())
+            {
+                
+                pick = ofRandom(0,5);
+                if(pick==1) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
+                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
+                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
+                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+            }
+        }
+    }
+
     // PHATBEATZ
     if (mo=="phatbeatz")
     {
@@ -426,63 +469,30 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         }
     }
     
-    // VERMONTBEATZ
-    if (mo=="vermontbeatz")
+    //
+    // BEATS (SAMPLERS)
+    //
+    
+    // AVIBEATS
+    if (mo=="avibeats")
     {
-        int pick;
-        for(i = 0;i<musicdur;i+=tempo*2.)
+        cout << "Sample number: " << looperSamples.size() << endl;
+        for(i = 0;i<looperSamples.size();i++)
         {
-            if(rhythms[mr].beats[bcount]>0.) { // this is a note!
-                float t_amp = rhythms[mr].beats[bcount]*ofRandom(0.1, 0.2);
-                STEREO(outskip+i, 0., 0.5, t_amp, 0.5, "BD2");
-            }
-            else
+            if(looperSamples[i].bank==arg_a)
             {
-                pick = ofRandom(0,5);
-                if(pick==1) STEREO(outskip+i, 0., 0.5, ofRandom(0.05, 0.2), 0.5, "VD1");
-                else if(pick==2) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD2");
-                else if(pick==3) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD3");
-                else if(pick==4) STEREO(outskip+i, 0., 0.2, ofRandom(0.05, 0.2), 0.5, "VD4");
+                cout << "playing: " << looperSamples[i].handle << endl;
+                for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
+                {
+                    SOUNDLOOP(outskip+j, looperSamples[i].length, tempo*looperSamples[i].numbeats*4, 0.25, looperSamples[i].handle);
+                }
             }
-            bcount = (bcount+1)%rhythms[mr].beats.size();
         }
     }
-    
-    // TESTLOOP1
-    if (mo=="testloop1")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl1, tempo*64., 0.25, "testloop1");
-        }
-    }
-    
-    // TESTLOOP2
-    if (mo=="testloop2")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl2, tempo*64., 0.25, "testloop2");
-        }
-    }
-    
-    // TESTLOOP3
-    if (mo=="testloop3")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64.)
-        {
-            SOUNDLOOP(outskip+i, tl3, tempo*64., 0.25, "testloop3");
-        }
-    }
-    
-    // BASSLOOP1
-    if (mo=="bassloop1")
-    {
-        for(i = 0;i<musicdur;i+=tempo*64)
-        {
-            SOUNDLOOP(outskip+i, bl1, tempo*64., 0.25, "bassloop1");
-        }
-    }
+
+    //
+    // UNUSED
+    //
     
     // REICHOMATIC
     if (mo=="reichomatic")
@@ -512,7 +522,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
         cout << "Sample number: " << looperSamples.size() << endl;
         for(i = 0;i<looperSamples.size();i++)
         {
-            if(looperSamples[i].bank==arg_a)
+            if(looperSamples[i].bank==arg_b)
             {
                 for(j = 0;j<musicdur;j+=tempo*looperSamples[i].numbeats*4)
                 {
@@ -521,7 +531,7 @@ void CloudsSound::startMusic(float outskip, string mo, string arg_a, string arg_
             }
         }
     }
-    
+
     //
     // =======================
     // END ORCHESTRATION BLOCK

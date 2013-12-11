@@ -98,10 +98,6 @@ class CloudsVisualSystemXstatic : public CloudsVisualSystem {
     void regenerate();
     void explode();
 
-    int maxBrightness;
-    int minBrightness;
-    float mass;    
-
 protected:
     int nParticles;
     vector<XParticle> particles;
@@ -117,25 +113,23 @@ protected:
     bool videoLoaded;
     bool bShouldRegenerate;
     bool bShouldExplode;
+    bool bShouldFreeze;
+    bool bShouldFall;
+    bool bShouldRise;
     
     bool bBounceOffWalls;
+    bool bDrawBox;
 
     float windSpeed;
     float explodeSpeed;
+    float riseFallSpeed;
     ofVec3f gravity;
     float rotateAngle;
     float rotateSpeed;
     float pullSpeed;
     float drag;
     
-    //oscillate forces
-    
-    float oscX; //cosine
-    float oscZ;
-    float oscY; //sine
-    float amplitude = 100;
-    float period = 105; //120
-    float frameCount;
-	
-
+    ofFloatColor color1;
+    ofFloatColor color2;
+    float colorWeight;
 };
