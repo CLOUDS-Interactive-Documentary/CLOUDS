@@ -6,17 +6,47 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 #include <Poco/URI.h>
+//--------------------------------------------------------------
+// selfSetup is called when the visual system is first instantiated
+// This will be called during a "loading" screen, so any big images or
+// geometry should be loaded here
+void CloudsVisualSystemTwitter::selfSetup()
+{
+    loadJSONData();
+    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+    loadMesh();
+    clusterShader.load(getVisualSystemDataPath()+"/shaders/cluster");
+    sprite.loadImage(getVisualSystemDataPath()+"/dot.png");
+    meshExpansion = 100;
+    pointSize =10;
+}
+
+//--------------------------------------------------------------
+// selfBegin is called when the system is ready to be shown
+// this is a good time to prepare for transitions
+// but try to keep it light weight as to not cause stuttering
+void CloudsVisualSystemTwitter::selfBegin()
+{
+    
+}
 
 //--------------------------------------------------------------
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemTwitter::selfSetupGui()
 {
-	listGui = new ofxUISuperCanvas("SEARCH TERM LIST", gui);
-    loadJSONData();
-//    createPajekNetwork();
-    //  mesh.
-    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
-    loadMesh();
+	clusterGui = new ofxUISuperCanvas("CLUSTER PARAMS", gui);
+    clusterGui->copyCanvasStyle(gui);
+	clusterGui->copyCanvasProperties(gui);
+	clusterGui->setName("Custom");
+	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    clusterGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
+	clusterGui->addSlider("point size", 1, 50, &pointSize);
+	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
+	guis.push_back(clusterGui);
+	guimap[clusterGui->getName()] = clusterGui;
+    
+    
+    
 
 }
 
@@ -49,7 +79,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                      vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
                     cur.name = "@" + names[0];
                     cur.ID = i;
-                    cout<<cur.name<<" has "<<tweets.size()<<" tweets"<<endl;
+//                      <<cur.name<<" has "<<tweets.size()<<" tweets"<<endl;
                     
                     for(int j =0; j<tweets.size(); j ++){
                         Tweet t;
@@ -126,7 +156,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
 
             Tweeter& tweeter = getTweeterByID(tweeters, id);
-
+            
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
 
@@ -141,7 +171,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             //428 4 8 9 11 15 17 18
 
             Tweeter& tweeter = getTweeterByID(tweeters, id);
-            cout<<tweeter.name<<"  has "<<" "<<tweeter.ID<<"  "<<(components.size()-2)<<" links."<<endl;
+//            cout<<tweeter.name<<"  has "<<" "<<tweeter.ID<<"  "<<(components.size()-2)<<" links."<<endl;
             for(int i =1; i< components.size()-1; i++){
                 if(tweeter.ID != ofToInt(components[i]) ){
                     tweeter.linksById.push_back(ofToInt(components[i]));
@@ -149,7 +179,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
                 else{
                     cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
                 }
-                cout<<i<<" : "<<components[i]<<endl;
+//                cout<<i<<" : "<<components[i]<<endl;
             }
         }
         
@@ -190,7 +220,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
             }
             else{
-                cout<<"Link already exists between "<<tweeters[j].ID<<" and "<<tweeters[j].linksById[k]<<endl;
+//                cout<<"Link already exists between "<<tweeters[j].ID<<" and "<<tweeters[j].linksById[k]<<endl;
             }
         }
         linksMesh.setMode(OF_PRIMITIVE_LINES);
@@ -214,7 +244,6 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
             }
         
         }
-       
     }
     
     map<string,int>::iterator it;
@@ -250,11 +279,9 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
             for(int k=0; k< tweeters[j].userLinks.size(); k++){
 
                 if(getUserIdByName(tweeters[j].userLinks[k]) != -1){
-//                    cout<<"found  link between : "<<tweeters[j].userLinks[k]<<","<<tweeters[j].name<<endl;
                     edges += ofToString(getUserIdByName(tweeters[j].userLinks[k])) +  " ";
                 }
             }
-            
             ss<<tweeters[j].ID<<" "<<edges<<endl;
         }
 
@@ -277,10 +304,8 @@ Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, in
     
     for(int i=0; i< tweeters.size(); i++){
         
-        if(tweeters[i].ID == _id){
-            
+        if(tweeters[i].ID == _id){            
             return tweeters[i];
-            
         }
     }
 }
@@ -308,15 +333,6 @@ void CloudsVisualSystemTwitter::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
-//--------------------------------------------------------------
-// selfSetup is called when the visual system is first instantiated
-// This will be called during a "loading" screen, so any big images or
-// geometry should be loaded here
-void CloudsVisualSystemTwitter::selfSetup()
-{
-    
-}
-
 
 //--------------------------------------------------------------
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -327,14 +343,7 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 	
 }
 
-//--------------------------------------------------------------
-// selfBegin is called when the system is ready to be shown
-// this is a good time to prepare for transitions
-// but try to keep it light weight as to not cause stuttering
-void CloudsVisualSystemTwitter::selfBegin()
-{
-    
-}
+
 
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
@@ -353,14 +362,29 @@ void CloudsVisualSystemTwitter::selfUpdate()
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
+    glDisable(GL_DEPTH_TEST);
+    
+	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
     ofScale(10, 10);
-    linksMesh.drawWireframe();
-//    cam.begin();
-    ofEnablePointSprites();
+    clusterShader.begin();
+	clusterShader.setUniformTexture("tex", sprite, 0);
+	clusterShader.setUniform1f("expansion", meshExpansion);
+	clusterShader.setUniform1f("minSize", pointSize);
+	clusterShader.setUniform3f("attractor", 0, 0, 0);
+	clusterShader.setUniform1f("radius", 300.);
+	
+	ofEnablePointSprites();
+	ofDisableArbTex();
+	
 
     linksMesh.drawVertices();
-    ofDisablePointSprites();
-//    cam.end();
+//	clusterShader.end();
+	ofDisablePointSprites();
+//	ofEnableArbTex();
+	clusterShader.end();
+//    linksMesh.drawWireframe();
+
+
 }
 
 // draw any debug stuff here

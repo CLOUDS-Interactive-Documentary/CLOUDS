@@ -127,6 +127,11 @@ protected:
     ofVboMesh linksMesh;
     ofVec3f min,max;
     ofEasyCam cam;
-
+    
+    ofImage sprite;
+    ofShader clusterShader;
+    float meshExpansion;
+    float pointSize;
+    ofxUISuperCanvas* clusterGui;
 	
 };
