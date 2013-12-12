@@ -28,6 +28,7 @@
 #include "ofMath.h"
 #include "ofColor.h"
 #include "ofLight.h"
+#include "ofMaterial.h"
 
 class ofxLight
 {
@@ -38,9 +39,11 @@ public:
 //        light.setup();
         lightPos.set(0.0f,0.0f,0.0f);
         lightOrientation.set(0.0f,0.0f,0.0f);
-        lightAmbient = ofFloatColor(.5f,.5f,.5f,1.f);
-        lightDiffuse = ofFloatColor(.5f,.5f,.5f,1.f);
-        lightSpecular = ofFloatColor(.5f,.5f,.5f,1.f);
+//		ofFloatColor(.5f,.5f,.5f,1.f);
+        lightAmbientHSV  = ofFloatColor(1.0f, .0f, .5f, 1.f);
+        lightDiffuseHSV  = ofFloatColor(1.0f, .0f, .5f, 1.f);
+        lightSpecularHSV = ofFloatColor(1.0f, .0f, .5f, 1.f);
+		
         lightSpotCutOff = 45.0f;
         lightExponent = 0.0f;
 		
@@ -79,6 +82,10 @@ public:
                     break;
             }
 
+			ofFloatColor lightAmbient  = ofFloatColor::fromHsb(lightAmbientHSV.r, lightAmbientHSV.g, lightAmbientHSV.b);
+			ofFloatColor lightDiffuse  = ofFloatColor::fromHsb(lightDiffuseHSV.r, lightDiffuseHSV.g, lightDiffuseHSV.b);
+			ofFloatColor lightSpecular = ofFloatColor::fromHsb(lightSpecularHSV.r, lightSpecularHSV.g, lightSpecularHSV.b);
+			
             light.setAmbientColor(lightAmbient);
             light.setDiffuseColor(lightDiffuse);
             light.setSpecularColor(lightSpecular);
@@ -103,9 +110,49 @@ public:
     ofLight light;
     ofVec3f lightPos;
     ofVec3f lightOrientation;
-    ofFloatColor lightAmbient;
-    ofFloatColor lightDiffuse;
-    ofFloatColor lightSpecular;    
+    ofFloatColor lightAmbientHSV;
+    ofFloatColor lightDiffuseHSV;
+    ofFloatColor lightSpecularHSV;
+};
+
+
+class ofxMaterial
+{
+  public:
+	
+//    ofxMaterial(){}
+//    ~ofxMaterial(){}
+    
+    void begin()
+    {
+		ofFloatColor matAmbient  = ofFloatColor::fromHsb(matAmbientHSV.r,  matAmbientHSV.g,  matAmbientHSV.b);
+		ofFloatColor matDiffuse  = ofFloatColor::fromHsb(matDiffuseHSV.r,  matDiffuseHSV.g,  matDiffuseHSV.b);
+		ofFloatColor matEmissive = ofFloatColor::fromHsb(matEmissiveHSV.r, matEmissiveHSV.g, matEmissiveHSV.b);
+		ofFloatColor matSpecular = ofFloatColor::fromHsb(matSpecularHSV.r, matSpecularHSV.g, matSpecularHSV.b);
+		
+		mat.setAmbientColor(matAmbient);
+		mat.setDiffuseColor(matDiffuse);
+		mat.setSpecularColor(matSpecular);
+		mat.setEmissiveColor(matEmissive);
+		mat.setShininess(matShininess);
+		
+		mat.begin();
+    }
+    
+    void end(){
+        mat.end();
+    }
+    
+//    bool bEnabled;
+    
+    ofMaterial mat;
+	
+	float matShininess;
+	ofFloatColor matDiffuseHSV;
+	ofFloatColor matSpecularHSV;
+	ofFloatColor matEmissiveHSV;
+	ofFloatColor matAmbientHSV;
+	
 };
 
 #endif

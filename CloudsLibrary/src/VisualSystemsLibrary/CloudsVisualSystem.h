@@ -218,7 +218,7 @@ class CloudsVisualSystem {
 	void setupPresetGui();
 	void guiPresetEvent(ofxUIEventArgs &e);
 	
-    void setupMaterial(string name, ofMaterial *m);
+    void setupMaterial(string name, ofxMaterial *m);
     void guiMaterialEvent(ofxUIEventArgs &e);
 	
     void setupPointLight(string name);
@@ -330,15 +330,16 @@ class CloudsVisualSystem {
     vector<ofx1DExtruder *> extruders;
 	
     //MATERIAL
-    ofMaterial *mat;
-    map<string, ofMaterial *> materials;
+    ofxMaterial *mat;
+    map<string, ofxMaterial *> materials;
     map<string, ofxUISuperCanvas *> materialGuis;
 
 	bool bIsSetup;
 	bool bIs2D;
 	
     //LIGHTING
-    float *globalAmbientColor;
+//float *globalAmbientColor;
+	ofFloatColor globalAmbientColorHSV;
     bool bSmoothLighting;
     bool bEnableLights;
 	
