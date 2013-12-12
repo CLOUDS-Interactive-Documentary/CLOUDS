@@ -51,7 +51,8 @@ namespace itg
             GEOMETRIC,
             WOBBLY,
             MODEL,
-            JELLY
+            JELLY,
+            POINT
         };
         
         typedef shared_ptr<Creature> Ptr;
@@ -92,6 +93,8 @@ namespace itg
 		bool getMagic() { return magic; }
         
         static float randomGauss(float mean, float stdDev);
+        
+        virtual ofFloatColor getColour() const = 0;
 
     protected:
         // forces

@@ -10,7 +10,7 @@ uniform float maxPointSize = 25.;
 uniform float minPointSize = 0;
 uniform float time = 0.;
 uniform float frameRate = .016;
-uniform float size = 10.;
+uniform float particleSize = 10.;
 
 uniform vec3 gravity = vec3( 0., -98., 0. );
 uniform vec3 cameraPosition;
@@ -72,7 +72,7 @@ void main(){
 	vec3 vel = gl_Normal.xyz;
 	float ma = QuarticOut( age );
 	vec3 posOffset = vel * ma;
-	posOffset += gravity * ma;
+//	posOffset += gravity * ma;
 	
 	//position
 	vec4 pos = gl_Vertex + vec4(posOffset, 0.);
@@ -84,11 +84,11 @@ void main(){
 	//point size
 //	float attenuation = 1. - pow( max( 0.,min( 1., (length( ecPosition ) + 300.)/ 10000.)), 2.);//1000. / distance(pos.xyz, cameraPosition);
 	attenuation =  100. / length( ecPosition );
-	pointSize = max( minPointSize, min( maxPointSize, size * attenuation * (1. - age) ) );
+	pointSize = max( minPointSize, min( maxPointSize, particleSize * attenuation * (1. - age) ) );
 	gl_PointSize = pointSize;
 	
 	//color
-	color = mix( startColor, endColor, age );
+	color = mix( startColor, endColor, min(1., max(0., ma * 2. - 1. )) );// age );
 	
 	//rotation
 	float angle = rotationRate * (birthTime + pos.x + pos.y + pos.z);
@@ -99,9 +99,4 @@ void main(){
 	
 	//texture index
 	tIndex = mod( birthTime*1., 3.);
-	
-//	if( mod( birthTime*100., 1 ) == 1. ){
-//		gl_PointSize += 10. * (age + age);
-//	}
-	
 }

@@ -15,6 +15,8 @@
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
+    
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -59,7 +61,7 @@ void CloudsVisualSystemSwim::selfPostDraw()
 
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemSwim::selfSetupRenderGui()
-{
+{    
     rdrGui->addToggle("regenerate", false);
     
     rdrGui->addLabel("Flocking");
@@ -72,20 +74,29 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
     rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
+    rdrGui->addLabel("Points");
+    rdrGui->addSpacer();
+    rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
+    rdrGui->addSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
+    rdrGui->addIntSlider("numPointTwo", 0, 1000, &creatures.numPointTwo);
+    rdrGui->addSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
+    rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
+    rdrGui->addSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+    
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
-    rdrGui->addMinimalSlider("numJellyOne", 20, 300, &creatures.numJellyOne);
-    rdrGui->addMinimalSlider("numJellyTwo", 20, 300, &creatures.numJellyTwo);
+    rdrGui->addIntSlider("numJellyOne", 0, 300, &creatures.numJellyOne);
+    rdrGui->addIntSlider("numJellyTwo", 0, 300, &creatures.numJellyTwo);
     
     rdrGui->addLabel("Fish One");
     rdrGui->addSpacer();
-    rdrGui->addMinimalSlider("numGreyFish", 20, 300, &creatures.numGreyFish);
+    rdrGui->addIntSlider("numGreyFish", 0, 300, &creatures.numGreyFish);
     rdrGui->addMinimalSlider("greySizeAverage", .1f, 3.f, &creatures.fishOneParams.sizeAverage);
     rdrGui->addMinimalSlider("greySizeStdDeviation", 0.f, 1.f, &creatures.fishOneParams.sizeStdDeviation);
     
     rdrGui->addLabel("Fish Two");
     rdrGui->addSpacer();
-    rdrGui->addMinimalSlider("numYellowFish", 20, 300, &creatures.numYellowFish);
+    rdrGui->addIntSlider("numYellowFish", 0, 300, &creatures.numYellowFish);
     rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
@@ -131,6 +142,11 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
 
     gui->addRangeSlider("superformula m1 (range)", 2, 20, &params.m1Min, &params.m1Max);
     gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
+}
+
+void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)

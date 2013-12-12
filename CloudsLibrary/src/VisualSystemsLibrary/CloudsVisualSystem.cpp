@@ -561,9 +561,9 @@ void CloudsVisualSystem::exit()
     }
     lights.clear();
     
-    for(map<string, ofMaterial *>::iterator it = materials.begin(); it != materials.end(); ++it)
+    for(map<string, ofxMaterial *>::iterator it = materials.begin(); it != materials.end(); ++it)
     {
-        ofMaterial *m = it->second;
+        ofxMaterial *m = it->second;
         delete m;
     }
     materials.clear();
@@ -573,6 +573,7 @@ void CloudsVisualSystem::exit()
 		delete cameraTrack;
 		cameraTrack = NULL;
 	}
+	
 	if(timeline != NULL){
 		ofRemoveListener(timeline->events().bangFired, this, &CloudsVisualSystem::timelineBangEvent);
 		delete timeline;
@@ -935,16 +936,22 @@ void CloudsVisualSystem::setupLightingParams()
     //LIGHTING
     bSmoothLighting = true;
     bEnableLights = true;
-    globalAmbientColor = new float[4];
-    globalAmbientColor[0] = 0.5;
-    globalAmbientColor[1] = 0.5;
-    globalAmbientColor[2] = 0.5;
-    globalAmbientColor[3] = 1.0;
+	globalAmbientColorHSV.r = 1.0; //hue
+	globalAmbientColorHSV.g = 0.0; //sat
+	globalAmbientColorHSV.b = 0.5; //bri
+	globalAmbientColorHSV.a = 1.0;
+	
+//    globalAmbientColor = new float[4];
+//    globalAmbientColor[0] = 0.5;
+//    globalAmbientColor[1] = 0.5;
+//    globalAmbientColor[2] = 0.5;
+//    globalAmbientColor[3] = 1.0;
 }
 
 void CloudsVisualSystem::setupMaterialParams()
 {
-    mat = new ofMaterial();
+//    mat = new ofMaterial();
+	mat = new ofxMaterial();
 }
 
 void CloudsVisualSystem::setupTimeLineParams()
@@ -1277,10 +1284,10 @@ void CloudsVisualSystem::setupLightingGui()
     float length = (lgtGui->getGlobalCanvasWidth()-lgtGui->getWidgetSpacing()*5)/3.;
     float dim = lgtGui->getGlobalSliderHeight();
     lgtGui->addLabel("GLOBAL AMBIENT COLOR", OFX_UI_FONT_SMALL);
-    lgtGui->addMinimalSlider("R", 0.0, 1.0, &globalAmbientColor[0], length, dim)->setShowValue(false);
+    lgtGui->addMinimalSlider("H", 0.0, 1.0, &globalAmbientColorHSV.r, length, dim)->setShowValue(false);
     lgtGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    lgtGui->addMinimalSlider("G", 0.0, 1.0, &globalAmbientColor[1], length, dim)->setShowValue(false);
-    lgtGui->addMinimalSlider("B", 0.0, 1.0, &globalAmbientColor[2], length, dim)->setShowValue(false);
+    lgtGui->addMinimalSlider("S", 0.0, 1.0, &globalAmbientColorHSV.g, length, dim)->setShowValue(false);
+    lgtGui->addMinimalSlider("V", 0.0, 1.0, &globalAmbientColorHSV.b, length, dim)->setShowValue(false);
     lgtGui->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     lgtGui->autoSizeToFitWidgets();
     ofAddListener(lgtGui->newGUIEvent,this,&CloudsVisualSystem::guiLightingEvent);
@@ -1291,18 +1298,30 @@ void CloudsVisualSystem::setupLightingGui()
 void CloudsVisualSystem::guiLightingEvent(ofxUIEventArgs &e)
 {
     string name = e.widget->getName();
-    if(name == "R")
+    if(name == "H" ||
+	   name == "S" ||
+	   name == "V")
     {
+		ofFloatColor globalAmbientColorRGB = ofFloatColor::fromHsb(globalAmbientColorHSV.r,
+																   globalAmbientColorHSV.g,
+																   globalAmbientColorHSV.b);
+		float globalAmbientColor[4] = {
+			globalAmbientColorRGB.r,
+			globalAmbientColorRGB.g,
+			globalAmbientColorRGB.b,
+			globalAmbientColorRGB.a
+		};
+		
         glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
     }
-    else if(name == "G")
-    {
-        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-    }
-    else if(name == "B")
-    {
-        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-    }
+//    else if(name == "G")
+//    {
+//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
+//    }
+//    else if(name == "B")
+//    {
+//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
+//    }
 }
 
 
@@ -1529,7 +1548,7 @@ void CloudsVisualSystem::guiPresetEvent(ofxUIEventArgs &e)
     }
 }
 
-void CloudsVisualSystem::setupMaterial(string name, ofMaterial *m)
+void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
 {
     materials[name] = m;
     ofxUISuperCanvas* g = new ofxUISuperCanvas(name, gui);
@@ -1542,40 +1561,41 @@ void CloudsVisualSystem::setupMaterial(string name, ofMaterial *m)
     
     float length = (g->getGlobalCanvasWidth()-g->getWidgetSpacing()*5)/3.;
     float dim = g->getGlobalSliderHeight();
-    
-    g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AR", 0.0, 1.0, &m->getAmbientColor().r, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AG", 0.0, 1.0, &m->getAmbientColor().g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AB", 0.0, 1.0, &m->getAmbientColor().b, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    g->addSpacer();
-    
-    g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AR", 0.0, 1.0, &m->getDiffuseColor().r, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AG", 0.0, 1.0, &m->getDiffuseColor().g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AB", 0.0, 1.0, &m->getDiffuseColor().b, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    g->addSpacer();
-    
+
+   // NO EFFECT
+//    g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
+//    g->addMinimalSlider("AH", 0.0, 1.0, &m->matAmbientHSV.r, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+//    g->addMinimalSlider("AS", 0.0, 1.0, &m->matAmbientHSV.g, length, dim)->setShowValue(false);
+//    g->addMinimalSlider("AV", 0.0, 1.0, &m->matAmbientHSV.b, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    g->addSpacer();
+//    
+//    g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
+//    g->addMinimalSlider("DH", 0.0, 1.0, &m->matDiffuseHSV.r, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+//    g->addMinimalSlider("DS", 0.0, 1.0, &m->matDiffuseHSV.g, length, dim)->setShowValue(false);
+//    g->addMinimalSlider("DV", 0.0, 1.0, &m->matDiffuseHSV.b, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    g->addSpacer();
+//    
     g->addLabel("EMISSIVE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("ER", 0.0, 1.0, &m->getEmissiveColor().r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("EH", 0.0, 1.0, &m->matEmissiveHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("EG", 0.0, 1.0, &m->getEmissiveColor().g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("EB", 0.0, 1.0, &m->getEmissiveColor().b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("ES", 0.0, 1.0, &m->matEmissiveHSV.g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("EV", 0.0, 1.0, &m->matEmissiveHSV.b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
     g->addLabel("SPECULAR", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("SR", 0.0, 1.0, &(m->getSpecularColor().r), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SH", 0.0, 1.0, &m->matSpecularHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("SG", 0.0, 1.0, &(m->getSpecularColor().g), length, dim)->setShowValue(false);
-    g->addMinimalSlider("SB", 0.0, 1.0, &(m->getSpecularColor().b), length, dim)->setShowValue(false);
+    g->addMinimalSlider("SS", 0.0, 1.0, &m->matSpecularHSV.g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SV", 0.0, 1.0, &m->matSpecularHSV.b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
     
-    g->addMinimalSlider("SHINY", 0.0, 128.0, (m->getShininess()))->setShowValue(false);
+    g->addMinimalSlider("SHINY", 0.0, 128.0, m->matShininess)->setShowValue(false);
     
     g->autoSizeToFitWidgets();
     g->setPosition(ofGetWidth()*.5-g->getRect()->getHalfWidth(), ofGetHeight()*.5 - g->getRect()->getHalfHeight());
@@ -1745,26 +1765,26 @@ void CloudsVisualSystem::setupGenericLightProperties(ofxUISuperCanvas *g, ofxLig
     }
     
     g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AR", 0.0, 1.0, &l->lightAmbient.r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AH", 0.0, 1.0, &l->lightAmbientHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AG", 0.0, 1.0, &l->lightAmbient.g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AB", 0.0, 1.0, &l->lightAmbient.b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AS", 0.0, 1.0, &l->lightAmbientHSV.g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("AV", 0.0, 1.0, &l->lightAmbientHSV.b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     g->addSpacer();
     g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("DR", 0.0, 1.0, &l->lightDiffuse.r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("DH", 0.0, 1.0, &l->lightDiffuseHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("DG", 0.0, 1.0, &l->lightDiffuse.g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("DB", 0.0, 1.0, &l->lightDiffuse.b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("DS", 0.0, 1.0, &l->lightDiffuseHSV.g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("DV", 0.0, 1.0, &l->lightDiffuseHSV.b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     g->addSpacer();
     g->addLabel("SPECULAR", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("SR", 0.0, 1.0, &l->lightSpecular.r, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SH", 0.0, 1.0, &l->lightSpecularHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("SG", 0.0, 1.0, &l->lightSpecular.g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("SB", 0.0, 1.0, &l->lightSpecular.b, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SS", 0.0, 1.0, &l->lightSpecularHSV.g, length, dim)->setShowValue(false);
+    g->addMinimalSlider("SV", 0.0, 1.0, &l->lightSpecularHSV.b, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     g->addSpacer();
 }
@@ -1785,7 +1805,7 @@ void CloudsVisualSystem::setupTimeline()
 	timeline->setWorkingFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 	
 	timeline->setup();
-	timeline->setShowInoutControl(false);
+	timeline->setShowInoutControl(true);
     timeline->setMinimalHeaders(true);
 	timeline->setFrameBased(false);
 	timeline->setSpacebarTogglePlay(false);
@@ -2569,12 +2589,12 @@ void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 	
 	//auto play this preset
 	cameraTrack->lockCameraToTrack = cameraTrack->getKeyframes().size() > 0;
-	if(cameraTrack->lockCameraToTrack){
-		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
-	}
-	else {
+//	if(cameraTrack->lockCameraToTrack){
+//		timeline->setCurrentTimeMillis(cameraTrack->getKeyframes()[0]->time);
+//	}
+//	else {
 		timeline->setCurrentTimeMillis(0);
-	}
+//	}
 	timeline->play();
 	bEnableTimeline = true;
 }
@@ -2596,10 +2616,15 @@ void CloudsVisualSystem::savePresetGUIS(string presetName)
     }
     ofxSaveCamera(cam, getVisualSystemDataPath()+"Presets/"+presetName+"/ofEasyCamSettings");
 	
+//	cout << "before save range " << timeline->getInOutRange() << endl;
+	
     saveTimelineUIMappings(getVisualSystemDataPath()+"Presets/"+presetName+"/UITimelineMappings.xml");
 	timeline->setName(presetName);
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/"+presetName+"/Timeline/");
-
+	
+	
+//	cout << "after save range " << timeline->getInOutRange() << endl;
+	
 	timeline->setName("Working");
     timeline->saveTracksToFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
 

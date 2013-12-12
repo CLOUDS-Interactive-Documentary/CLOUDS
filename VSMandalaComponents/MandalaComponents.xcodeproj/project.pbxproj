@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5007CE8C1856D7CE00FFBB17 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5007CE881856D7CE00FFBB17 /* CloudsInput.cpp */; };
+		5007CE8D1856D7CE00FFBB17 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5007CE8A1856D7CE00FFBB17 /* CloudsInputMouse.cpp */; };
 		50093380182BE0040098FCB1 /* noiseSurface.frag in Sources */ = {isa = PBXBuildFile; fileRef = 5009337E182BE0040098FCB1 /* noiseSurface.frag */; };
 		50093381182BE0040098FCB1 /* noiseSurface.vert in Sources */ = {isa = PBXBuildFile; fileRef = 5009337F182BE0040098FCB1 /* noiseSurface.vert */; };
 		5017980D182AB78A0077298A /* MandalaComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5017980B182AB78A0077298A /* MandalaComponent.cpp */; };
@@ -272,6 +274,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5007CE861856D79A00FFBB17 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = ../Input/CloudsInputEvents.h; sourceTree = "<group>"; };
+		5007CE871856D7B100FFBB17 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsGlobal.h; sourceTree = "<group>"; };
+		5007CE881856D7CE00FFBB17 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = ../Input/CloudsInput.cpp; sourceTree = "<group>"; };
+		5007CE891856D7CE00FFBB17 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = ../Input/CloudsInput.h; sourceTree = "<group>"; };
+		5007CE8A1856D7CE00FFBB17 /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputMouse.cpp; path = ../Input/CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		5007CE8B1856D7CE00FFBB17 /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputMouse.h; path = ../Input/CloudsInputMouse.h; sourceTree = "<group>"; };
+		5007CE921856D84900FFBB17 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		5009337E182BE0040098FCB1 /* noiseSurface.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseSurface.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5009337F182BE0040098FCB1 /* noiseSurface.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = noiseSurface.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5017980B182AB78A0077298A /* MandalaComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MandalaComponent.cpp; sourceTree = "<group>"; };
@@ -753,7 +762,8 @@
 				50179849182B66150077298A /* surfaceShader.frag */,
 				5017984A182B66150077298A /* surfaceShader.vert */,
 			);
-			path = shaders;
+			name = shaders;
+			path = ../../../../../../CloudsData/visualsystems/Mandala/shaders;
 			sourceTree = "<group>";
 		};
 		5017984B182B66150077298A /* snapshots */ = {
@@ -873,7 +883,8 @@
 				5017980F182AB7D80077298A /* SurfacePoint.h */,
 				50EAB55A1822C82C00BD3C98 /* MandalaTicker.h */,
 			);
-			path = vs_src;
+			name = vs_src;
+			path = ../Mandala/vs_src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -985,6 +996,12 @@
 		E72FF11817E688FE0007780D /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				5007CE881856D7CE00FFBB17 /* CloudsInput.cpp */,
+				5007CE891856D7CE00FFBB17 /* CloudsInput.h */,
+				5007CE8A1856D7CE00FFBB17 /* CloudsInputMouse.cpp */,
+				5007CE8B1856D7CE00FFBB17 /* CloudsInputMouse.h */,
+				5007CE871856D7B100FFBB17 /* CloudsGlobal.h */,
+				5007CE861856D79A00FFBB17 /* CloudsInputEvents.h */,
 				E72FF11A17E688FE0007780D /* CloudsRGBDCamera.cpp */,
 				E72FF11B17E688FE0007780D /* CloudsRGBDCamera.h */,
 				E72FF11C17E688FE0007780D /* CloudsRGBDVideoPlayer.cpp */,
@@ -1521,6 +1538,7 @@
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				5007CE921856D84900FFBB17 /* CloudsGlobal.h */,
 				5055DDC7181ED75100761DA0 /* MandalaComponents */,
 				E72FF11817E688FE0007780D /* VisualSystemsLibrary */,
 			);
@@ -1740,6 +1758,8 @@
 				50179860182B66150077298A /* surfaceShader.vert in Sources */,
 				50093380182BE0040098FCB1 /* noiseSurface.frag in Sources */,
 				50093381182BE0040098FCB1 /* noiseSurface.vert in Sources */,
+				5007CE8C1856D7CE00FFBB17 /* CloudsInput.cpp in Sources */,
+				5007CE8D1856D7CE00FFBB17 /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

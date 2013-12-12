@@ -15,6 +15,8 @@
 // geometry should be loaded here
 void CloudsVisualSystemOrbit::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemOrbit::onWindowResized);
+    
     drawNormals = false;
     drawInflections = false;
     drawAcc = false;
@@ -230,6 +232,10 @@ void CloudsVisualSystemOrbit::guiRenderEvent(ofxUIEventArgs &e)
     }
 }
 
+void CloudsVisualSystemOrbit::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
+}
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemOrbit::selfSetupGui(){

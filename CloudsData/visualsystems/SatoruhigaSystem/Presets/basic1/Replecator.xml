@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Replecator</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ROWS</Name>
+    <Value>7.497537136</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>COLS</Name>
+    <Value>9.270936012</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>WIDTH</Name>
+    <Value>1871.985229492</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HEIGHT</Name>
+    <Value>1842.443359375</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ITERATION_SCALE</Name>
+    <Value>0.494581252</Value>
+</Widget>

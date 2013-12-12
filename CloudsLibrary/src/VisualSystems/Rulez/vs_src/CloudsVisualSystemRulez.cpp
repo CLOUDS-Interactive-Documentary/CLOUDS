@@ -16,6 +16,8 @@ CloudsVisualSystemRulez::CloudsVisualSystemRulez() :
 // geometry should be loaded here
 void CloudsVisualSystemRulez::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemRulez::onWindowResized);
+    
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
     dir.sort();
@@ -138,9 +140,16 @@ void CloudsVisualSystemRulez::selfSetupRenderGui()
 
 void CloudsVisualSystemRulez::saveMesh()
 {
-    ofFileDialogResult result = ofSystemSaveDialog("mesh", "Export mesh to obj file");
-    ofxObjLoader saver;
-    saver.save(result.getPath(), structure->getMeshRef());
+    ofFileDialogResult result = ofSystemSaveDialog("mesh", "Export mesh to ply file");
+    if (structure)
+    {
+        ostringstream oss;
+        oss << result.getPath();
+        if (result.getPath().find(".ply") == string::npos) oss << ".ply";
+        structure->getMeshRef().save(oss.str());
+    }
+    //ofxObjLoader saver;
+    //saver.save(result.getPath(), structure->getMeshRef());
 }
 
 void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
@@ -175,6 +184,11 @@ void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
+}
+
+void CloudsVisualSystemRulez::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemRulez::selfGuiEvent(ofxUIEventArgs &e)
