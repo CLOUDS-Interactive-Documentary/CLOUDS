@@ -159,7 +159,7 @@ namespace itg
         }
     }
     
-    void Creatures::update()
+    void Creatures::update(const ofVec3f& attractionPoint)
     {
         const float zoneRadiusSq = zoneRadius * zoneRadius;
         
@@ -241,7 +241,7 @@ namespace itg
         for (int i = 0; i < creatures.size(); ++i)
         {
             // keep them in the centre
-            ofVec3f dirToCenter = creatures[i]->getPosition();
+            ofVec3f dirToCenter = creatures[i]->getPosition() - attractionPoint;
             float distToCenter = dirToCenter.length();
             //static const float maxDistance = 3000.f;
             

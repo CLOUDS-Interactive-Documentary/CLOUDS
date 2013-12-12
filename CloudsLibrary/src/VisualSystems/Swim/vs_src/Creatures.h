@@ -44,7 +44,7 @@ namespace itg
     {
     public:
         void init(const string& dataPath);
-        void update();
+        void update(const ofVec3f& attractionPoint);
         void draw();
 
         void onGui(ofxUIEventArgs& args);
