@@ -25,9 +25,10 @@ void CloudsVisualSystemTwitter::selfSetup()
     meshExpansion = 100;
     pointSize =10;
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
-    currentDateIndex = 0;
+//    currentDateIndex =50;
+    currentDateIndex = dateIndex.size() -1;
     updateMesh(currentDateIndex);
-    //    drawTwitterTimeline();
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -50,7 +51,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
-    // Now parse the JSON
+
     ofFile f = ofFile();
     
     ofDirectory dir(getVisualSystemDataPath()+"tweets/");
@@ -96,9 +97,8 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                             for(int k=0; k<users.size(); k++){
                                 
                                 if( !ofContains(cur.userLinks, users[k].asString())){
-                                    
+                                    t.mentionedUsers.push_back(users[k].asString());
                                     cur.userLinks.push_back(users[k].asString());
-                                    
                                 }
                             }
                         }
@@ -108,7 +108,6 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                             t.tweetDate.day = date["Day"].asInt()   ;
                             t.tweetDate.month =date["Month"].asInt();
                             t.tweetDate.year =date["Year"].asInt();
-                            
                             
                             for(int i=0; i<dateIndex.size(); i++){
                                 
@@ -198,28 +197,60 @@ void CloudsVisualSystemTwitter::updateMesh(int index){
     }
     
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
-        edgeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
+        ofFloatColor c = edgeMesh.getColor(i);
+        if(c.b == 0){
+                edgeMesh.setColor(i, c.a*0.001);
+        }
+        
     }
     
     vector<Tweeter> current = getTweetersForDate(index);
     if(current.size() > 0 ){
         
         for (int i = 0; i<current.size(); i++) {
-            for(int k=0; k<current[i].linksById.size(); k++){
             
-                edgeMesh.setColor(current[i].edgeVertexIndex, ofFloatColor(1.,0.,0.,1.));
+            
+            vector<Tweet> tweetsOnDate = current[i].getTweetsByDate(dateIndex[index]);
+            
+            for(int k=0; k<tweetsOnDate.size();k ++){
                 
-                Tweeter& t  = getTweeterByID(tweeters,current[i].linksById[k]);
-
-                edgeMesh.setColor(t.edgeVertexIndex, ofFloatColor(1.,0.,0.,1.));
+                
+                
+                for(int l=0; l<tweetsOnDate[k].mentionedUsers.size(); l++){
+                    int user = getUserIdByName(tweetsOnDate[k].mentionedUsers[l]);
+                    if(user != -1){
+                        
+                        
+                        Tweeter& t  = getTweeterByID(tweeters,user);
+                        
+                        
+                        if(lineIndexPairs.find(make_pair(current[i].name, t.name)) != lineIndexPairs.end()){
+                            
+                            pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
+                            edgeMesh.setColor(currentIndeces.first, ofFloatColor(1.,0.,0.,1.));
+                            edgeMesh.setColor(currentIndeces.second, ofFloatColor(1.0,0.,0.,1.));
+                        }
+                        else if(lineIndexPairs.find(make_pair(t.name,current[i].name)) != lineIndexPairs.end()){
+                            
+                            pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
+                            edgeMesh.setColor(currentIndeces.first, ofFloatColor(1.,0.,0.,1.));
+                            edgeMesh.setColor(currentIndeces.second, ofFloatColor(1.0,0.,0.,1.));
+                        }
+                        else{
+                            cout<<"link between "<<current[i].name<<" and "<<t.name<<" not found in map"<<endl;
+                        }
+                        
+                    }
+                    
+                }
             }
         }
-    
+        
         for (int i=0; i<current.size(); i++) {
             nodeMesh.setColor(current[i].nodeVertexIndex, ofFloatColor(1.0,1.0,1.0,1.));
         }
     }
-
+    
 }
 
 void CloudsVisualSystemTwitter::loadMesh(){
@@ -228,71 +259,42 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             
-            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
-                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
-                
-                nodeMesh.addVertex(tweeters[j].position);
-                nodeMesh.addNormal(ofVec3f(0,0,0));
-                nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
-                tweeters[j].nodeVertexIndex = currentIndex;
-                
+    
                 edgeMesh.addVertex(tweeters[j].position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+                edgeMesh.addColor(ofFloatColor(0.0,0.0,1.0,0.1));
                 tweeters[j].edgeVertexIndex = currentIndex;
                 
                 currentIndex++;
                 Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
                 
-                nodeMesh.addVertex(t.position);
-                nodeMesh.addNormal(ofVec3f(0,0,0));
-                nodeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
-                t.nodeVertexIndex = currentIndex;
-                
                 edgeMesh.addVertex(t.position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
+                edgeMesh.addColor( ofFloatColor(0.0,0.0,1.0,0.1));
                 t.edgeVertexIndex = currentIndex;
-                
-                currentIndex++;
+            
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-            }
-            else{
-            }
+                lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
+            currentIndex++;
+
         }
         edgeMesh.setMode(OF_PRIMITIVE_LINES);
-        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+
     }
-//    currentIndex = 0;
-//    for(int j=0; j<tweeters.size(); j++){
-//        
-//        for (int k=0; k<tweeters[j].linksById.size(); k++) {
-//            
-//            if (links.find(make_pair(tweeters[j].ID, tweeters[j].linksById[k])) == links.end() &&
-//                links.find(make_pair( tweeters[j].linksById[k],tweeters[j].ID)) == links.end() ) {
-//                
-//                nodeMesh.addVertex(tweeters[j].position);
-//                nodeMesh.addNormal(ofVec3f(0,0,0));
-//                nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
-//                
-//                tweeters[j].nodeVertexIndex = currentIndex;
-//                currentIndex++;
-//                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-//                
-//                nodeMesh.addVertex(t.position);
-//                nodeMesh.addNormal(ofVec3f(0,0,0));
-//                nodeMesh.addColor( ofFloatColor(0.0,0.0,0.0,1.0));
-//                
-//                t.nodeVertexIndex = currentIndex;
-//                currentIndex++;
-//                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-//            }
-//            else{
-//            }
-//        }
-//        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
-//    }
-    
+    currentIndex = 0;
+    for(int j=0; j<tweeters.size(); j++){
+        
+        nodeMesh.addVertex(tweeters[j].position);
+        nodeMesh.addNormal(ofVec3f(0,0,0));
+        nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
+        tweeters[j].nodeVertexIndex = currentIndex;
+        
+        
+        currentIndex++;
+        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+        
+        
+    }
 }
 
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
@@ -330,8 +332,6 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
     
     for (int i= 0; i < tweeters.size(); i++) {
         ss<<tweeters[i].ID<<"  \""<<tweeters[i].name<<"\""<<endl;
-        
-        
     }
     
     ss<<"*EdgesList "<<tweeters.size()<<endl;
@@ -456,8 +456,12 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
-    currentDateIndex = ofGetFrameNum()%dateIndex.size();
-    updateMesh(currentDateIndex);
+    if(  ofGetFrameNum() %2 <4){
+        currentDateIndex %= dateIndex.size();
+        currentDateIndex++;
+        updateMesh(currentDateIndex);
+    }
+
     
 }
 
@@ -473,7 +477,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     
     glPointSize(3);
     
-//    nodeMesh.drawVertices();
+    nodeMesh.draw();
     edgeMesh.draw();
     
     
@@ -491,7 +495,11 @@ void CloudsVisualSystemTwitter::selfDrawDebug()
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     ofSetColor(ofColor::whiteSmoke);
-    //    ofDrawBitmapString(ss.str(), 0,0);
+    string cur = getDateAsString( dateIndex[currentDateIndex]);
+    ofPushMatrix();
+    ofDrawBitmapString(cur , 0,0);
+    ofRotateY(90);
+    ofPopMatrix();
     //    listFont.drawString(ss.str(), 0, 0);
     //    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
+		181259FC185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
 		185CE9CE184AB8D300F43977 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C6184AB8D300F43977 /* attenuatelines.frag */; };
 		185CE9CF184AB8D300F43977 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C7184AB8D300F43977 /* attenuatelines.vert */; };
 		185CE9D0184AB8D300F43977 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C8184AB8D300F43977 /* cluster.frag */; };
@@ -345,6 +347,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		181259F5185A371D006EFC47 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
+		181259F6185A371D006EFC47 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
 		185CE9C6184AB8D300F43977 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
 		185CE9C7184AB8D300F43977 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
 		185CE9C8184AB8D300F43977 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
@@ -356,7 +360,6 @@
 		187353431858C8B200AC5DEA /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
 		187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		187353471858C8B200AC5DEA /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
-		1873534C1858F72800AC5DEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		187353931858F72900AC5DEA /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
 		187353941858F72900AC5DEA /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
 		187353951858F72900AC5DEA /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
@@ -381,7 +384,6 @@
 		187353A81858F72900AC5DEA /* FTTextureGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextureGlyph.h; sourceTree = "<group>"; };
 		187353AF1858F72900AC5DEA /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
 		187353B01858F72900AC5DEA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		187353B61858F72900AC5DEA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		187353B81858F72A00AC5DEA /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGL.h; sourceTree = "<group>"; };
 		187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLFont.cpp; sourceTree = "<group>"; };
 		187353BA1858F72A00AC5DEA /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
@@ -815,6 +817,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181259DF185A371C006EFC47 /* ofxBillboard */ = {
+			isa = PBXGroup;
+			children = (
+				181259F4185A371D006EFC47 /* src */,
+			);
+			name = ofxBillboard;
+			path = ../../../addons/ofxBillboard;
+			sourceTree = "<group>";
+		};
+		181259F4185A371D006EFC47 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				181259F5185A371D006EFC47 /* ofxBillboard.cpp */,
+				181259F6185A371D006EFC47 /* ofxBillboard.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		185CE9C5184AB8D300F43977 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,9 +865,7 @@
 		1873534B1858F72800AC5DEA /* ofxFTGL */ = {
 			isa = PBXGroup;
 			children = (
-				1873534C1858F72800AC5DEA /* .gitignore */,
 				1873538F1858F72900AC5DEA /* libs */,
-				187353B61858F72900AC5DEA /* README.md */,
 				187353B71858F72A00AC5DEA /* src */,
 			);
 			name = ofxFTGL;
@@ -1293,6 +1311,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				181259DF185A371C006EFC47 /* ofxBillboard */,
 				1873534B1858F72800AC5DEA /* ofxFTGL */,
 				188B661218412F0B00E02CC7 /* ofxJSON */,
 				850EE0EA183062CD004411A3 /* ofxOculusRift */,
@@ -2106,6 +2125,7 @@
 				850EE0CB1830627B004411A3 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				850EE0CC1830627B004411A3 /* CloudsVisualSystem.cpp in Sources */,
 				850EE1A6183062CD004411A3 /* ofxOculusRift.cpp in Sources */,
+				181259FC185A371D006EFC47 /* ofxBillboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2245,6 +2265,7 @@
 				1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */,
 				187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */,
 				187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */,
+				181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
