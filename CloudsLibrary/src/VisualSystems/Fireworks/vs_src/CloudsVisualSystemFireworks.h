@@ -122,18 +122,12 @@ public:
 			vel = lastPos - pos;
 		}
 		
-		if(!bStarted && t >= startTime)
-		{
-			bStarted = true;
-		}
-		
-		else if( t>= endTime)
-		{
-			bEnded = true;
-		}
+
+		bStarted = t >= startTime;
+		bEnded = endTime < t;
 	}
 	
-	void 	  operator=( const FireworkEmitter e)
+	void operator=( const FireworkEmitter e)
 	{
 		startTime = e.startTime;
 		endTime = e.endTime;
@@ -360,6 +354,9 @@ protected:
 	
 	bool bAnimateCamera;
 	
-	float speed, explosionFrequencey;
+	float speed, explosionFrequencey, particleLifespan, particleSpread, spawnDistance,particleSize;
+	int emissonRate;
 	ofVec3f gravity;
+	
+	float cameraMotionScl;
 };

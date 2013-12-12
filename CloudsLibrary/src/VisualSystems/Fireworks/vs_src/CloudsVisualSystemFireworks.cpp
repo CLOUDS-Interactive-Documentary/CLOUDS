@@ -28,19 +28,25 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	//customGui->addSlider("minLifeSpan", .1, 10, &minLifeSpan);
 	//customGui->addSlider("maxLifeSpan", 1, 10, &maxLifeSpan);
 	customGui->addSlider("particle speed", .01, 3, &speed);
+	customGui->addSlider("particleSize", 1, 20, &particleSize);
 	
 	//customGui->addSlider("minExplosionTime", .1, 2, &minExplosionTime);
 	//customGui->addSlider("maxExplosionTime", .5, 5, &maxExplosionTime);
-	customGui->addSlider("explosionFrequency", .1, 1, &explosionFrequencey);
+	customGui->addSlider("particleSpread", 0, 60., &particleSpread);
 	
-	customGui->addSlider("minParticleVelocity", 0, 100, &minVel);
-	customGui->addSlider("maxParticleVelocity", 0, 200, &maxVel );
+	customGui->addSlider("explosionFrequency", .1, 1, &explosionFrequencey);
+	customGui->addIntSlider("emissonRate", 1, 5, &emissonRate);
+	customGui->addSlider("spawnDistance", 10, 400, &spawnDistance);
+	
+//	customGui->addSlider("minParticleVelocity", 0, 100, &minVel);
+//	customGui->addSlider("maxParticleVelocity", 0, 200, &maxVel );
+	
 	customGui->addSlider("maxFireworkVelocity", 1, 300, &maxFWVel );
 	
-//	customGui->addSlider("particle gravity", -100, 100, &(particleGravity.y) );
-//	customGui->addSlider("firework gravity", -1, 1, &(fireworkGravity.y) );
+	customGui->addSlider("gravity", -10, 10, &(gravity.y) );
 	
 	customGui->addSlider("camSpeed", -.1, 5, &camSpeed );
+	customGui->addSlider("cameraMotionScale", 0, 1, &cameraMotionScl );
 		
 	customGui->addToggle("Custom Toggle", &customToggle);
 	
@@ -100,21 +106,36 @@ void CloudsVisualSystemFireworks::selfSetup()
 	bAnimateCamera = true;
 	minLifeSpan = .5;
 	maxLifeSpan = 1.5;
+	
 	minExplosionTime = .75;
 	maxExplosionTime = 1.25;
+	
 	speed = .25;
 	explosionFrequencey = .1;
+	emissonRate = 2;
+	particleSpread = 10;
+	particleSize = 10;
+	spawnDistance = 250;
+	
+	camSpeed = .7;
+	cameraMotionScl = .25;
+	
+	gravity.set( 0, 0, 0);
+	
+	minVel = .75;
+	maxVel = 1.25;
+	
+	maxFWVel = 2.4;
+	
 
 	
 	//setupParticles
-	FIREWORKS_NUM_PARTICLES = 200000;
+	FIREWORKS_NUM_PARTICLES = 100000;
 	
 	positions = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
 	velocities = new ofVec3f[ FIREWORKS_NUM_PARTICLES ];
 	lifeData = new ofFloatColor[ FIREWORKS_NUM_PARTICLES ];
 	indices = new ofIndexType[ FIREWORKS_NUM_PARTICLES ];
-	
-	minVel = 0; maxVel = 200;
 	
 	float lifespan;
 	float t = ofGetElapsedTimef();
@@ -135,13 +156,6 @@ void CloudsVisualSystemFireworks::selfSetup()
 	loadFileToGeometry( getVisualSystemDataPath() +  "animationTargets/tetrahedron.txt", tetrahedronPoints );
 	loadFileToGeometry( getVisualSystemDataPath() + "animationTargets/icosahedron.txt", icosahedronPoints );
 	
-	//particle behavior
-	fireworkGravity.set(0, -6 / 120., 0 );
-	gravity.set( 0, 40, 0);
-	minVel = 4;
-	maxVel = 60;
-	maxFWVel = 2.4;
-	
 	//shader
 	shader.load(getVisualSystemDataPath() + "shaders/base.vert", getVisualSystemDataPath() + "shaders/base.frag");
 	
@@ -152,13 +166,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	endColor.set( .6, 1.3, .2, 1 );
 	
 	spriteImage.loadImage(getVisualSystemDataPath() + "images/sphereNormal.png");
-	
-	minLifeSpan = 2;
-	maxLifeSpan = 4;
-	
-	//camera
-	camSpeed = 2;
-	
+		
 	//particle rendering
 	bUpdateVbo = true;
 	indexCount = 0;
@@ -178,7 +186,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	ofEnableArbTex();
 	
 	getCameraRef().setPosition(0, 0, 0);
-	camTarget.set( 0,0,300);
+	camTarget.set( 0,0,spawnDistance);
 	
 	glowFbo0.allocate( ofGetWidth(), ofGetHeight(), GL_RGB );
 	glowFbo1.allocate( glowFbo0.getWidth()/2, glowFbo0.getHeight()/2, GL_RGB );;
@@ -229,37 +237,13 @@ void CloudsVisualSystemFireworks::selfBegin()
 	ofEnableArbTex();
 	
 	getCameraRef().setPosition(0, 0, 0);
-	camTarget.set( 0,0,300);
+	camTarget.set( 0,0,spawnDistance);
 }
 
 
 void CloudsVisualSystemFireworks::selfUpdate()
 {
 	float t = ofGetElapsedTimef();
-	
-	//emitters
-	for (int i=emitters.size()-1; i>=0; i--) {
-		emitters[i].update( t );
-		
-		if( emitters[i].bStarted )
-		{
-			
-			emitters[i].pos += fireworkGravity * emitters[i].span * emitters[i].age * 10;
-
-			ofVec3f p0 = emitters[i].pos;
-			ofVec3f nScl = p0 * .01;
-			float nx = ofSignedNoise(nScl.x + emitters[i].age, nScl.y, nScl.z);
-			float ny = ofSignedNoise(nScl.x, nScl.y + emitters[i].age, nScl.z);
-			float nz = ofSignedNoise(nScl.x, nScl.y, nScl.z + emitters[i].age);
-			p0 += ofVec3f( nx, ny, nz ) * 10. * emitters[i].age;
-
-			trailPoint( p0, emitters[i].vel, 4 );
-		}
-		if(emitters[i].bEnded)
-		{
-			emitters.erase( emitters.begin() + i );
-		}
-	}
 	
 	//camera
 	if(bAnimateCamera)
@@ -269,36 +253,71 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		
 		float noiseTimeScl = .1;
 		float noiseOffsetScl = 800;
-		float mouseScl = .25;
+		
 		float panScl = -5;
 		
 		float noiseValX = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl + 1. ) * noiseOffsetScl;
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
+<<<<<<< HEAD
+		//pan and tilt with mouse
+		float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
+		float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+=======
 		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), -mouseScl, mouseScl);
 		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), -mouseScl, mouseScl) * xDamp;
+>>>>>>> 072455e644e4ed9234537f5d7ad727c7807654f3
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );
 		
+		//roll it when we move left to right
 		float roll = abs(pan) * pan * panScl;
-		getCameraRef().roll( roll );
-		
+		getCameraRef().roll( -roll );
 		getCameraRef().move(0, abs(roll), 0);
 		
+		//move it
 		ofVec3f vel = getCameraRef().getLookAtDir();
 		getCameraRef().move( vel * camSpeed );
 		
+		//use this to determine where to explode fireworks
 		float targetDistance = 300;
 		camTarget = vel * targetDistance + getCameraRef().getPosition();
 	}
 	
+	
+	//emitters
+	ofVec3f p0, nScl;
+	float nx, ny, nz;
+	for (int i=emitters.size()-1; i>=0; i--)
+	{
+		emitters[i].update( t );
+		
+		if( emitters[i].bStarted )
+		{
+			emitters[i].pos += gravity * emitters[i].span * emitters[i].age * 10;
+			
+			p0 = emitters[i].pos;
+			nScl = p0 * .01;
+			nx = ofSignedNoise(nScl.x + emitters[i].age, nScl.y, nScl.z);
+			ny = ofSignedNoise(nScl.x, nScl.y + emitters[i].age, nScl.z);
+			nz = ofSignedNoise(nScl.x, nScl.y, nScl.z + emitters[i].age);
+			p0 += ofVec3f( nx, ny, nz ) * 10. * emitters[i].age;
+			
+			trailPoint( p0, emitters[i].vel, emissonRate );
+		}
+		
+		if(emitters[i].bEnded)
+		{
+			emitters.erase( emitters.begin() + i );
+		}
+	}
 	
 	//particles
 	bool updateIndices = false;
 	
 	indexCount = 0;
 	for(int i=0; i<FIREWORKS_NUM_PARTICLES; i++){
-		//if the age + lifespan is less then the current time we want to draw it, otherwise it's dead to us.
+		//if the age + lifespan is less then the current time we want to draw it. otherwise, it's dead to us.
 		if(lifeData[i].r + lifeData[i].g / speed > t){
 			indices[indexCount] = i;
 			indexCount++;
@@ -308,25 +327,6 @@ void CloudsVisualSystemFireworks::selfUpdate()
 	
 	if(updateIndices){
 		vbo.updateIndexData( indices, indexCount );
-	}
-	
-	
-	//fireworks...
-	for (int i = spawnTime.size()-1; i>=0; i--) {
-		//if it's alive apply gravity
-		if(spawnTime[i] + 2 > t ){
-			spawnPos[i] += spawnVel[i];
-			spawnVel[i] += fireworkGravity;
-			spawnVel[i] *= .99;
-			
-			trailPoint( spawnPos[i], spawnVel[i].normalized() );
-		}
-		else
-		{
-			spawnPos.erase( spawnPos.begin()+i );
-			spawnVel.erase( spawnVel.begin()+i );
-			spawnTime.erase( spawnTime.begin()+i );
-		}
 	}
 	
 	if(	bUpdateVbo )
@@ -359,6 +359,7 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniform1f( "nearClip", getCameraRef().getNearClip() );
 	shader.setUniform1f( "farClip", getCameraRef().getFarClip() );
 	shader.setUniform1f( "speed", speed);
+	shader.setUniform1f( "particleSize", particleSize);
 	
 	shader.setUniform3f("cameraPosition", camPos.x, camPos.y, camPos.z );
 	shader.setUniform4f("startColor", startColor.x, startColor.y, startColor.z, startColor.w );
@@ -370,22 +371,29 @@ void CloudsVisualSystemFireworks::selfDraw()
 	shader.setUniformTexture("squareMap", squareImage.getTextureReference(), 2 );
 	shader.setUniformTexture("circleMap", circleImage.getTextureReference(), 1 );
 	
-	vbo.drawElements( GL_POINTS, numSprites );
+	vbo.drawElements( GL_POINTS, indexCount );
 	
 	shader.end();
 	
 	ofDisablePointSprites();
+
+	
+//	ofSetColor(255, 0, 0);
+//	for (int i=0; i<emitters.size(); i++) {
+//		ofBox(emitters[i].pos, 3);
+//	}
+//	
+//	ofSetColor(255);
 }
 
 
 void CloudsVisualSystemFireworks::updateVbo()
 {
-	int total = FIREWORKS_NUM_PARTICLES;
-	vbo.updateVertexData( &positions[0], total );
-	vbo.updateNormalData( &velocities[0], total );
-	vbo.updateColorData( &lifeData[0], total );
+	vbo.updateVertexData( &positions[0], FIREWORKS_NUM_PARTICLES );
+	vbo.updateNormalData( &velocities[0], FIREWORKS_NUM_PARTICLES );
+	vbo.updateColorData( &lifeData[0], FIREWORKS_NUM_PARTICLES );
 	
-	vbo.updateIndexData( &indices[0], numSprites );
+	vbo.updateIndexData( &indices[0], FIREWORKS_NUM_PARTICLES );
 	
 	bUpdateVbo = false;
 }
@@ -398,23 +406,18 @@ void CloudsVisualSystemFireworks::trailPoint( ofVec3f point, ofVec3f vel, int co
 }
 
 void CloudsVisualSystemFireworks::emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan, float t )
-{
-	
-	int i = nextIndex;
-	nextIndex ++;
-	if( nextIndex > FIREWORKS_NUM_PARTICLES ) nextIndex = 0;
-	
-	//TODO: pass in quat rather then dir
+{	
 	ofQuaternion rotQuat;
 	rotQuat.makeRotate( ofVec3f(0,1,0), dir);
 	
-	positions[i] = point;
-	velocities[i] = ofVec3f(ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel )) * rotQuat;
-	lifeData[i].set( t, lifespan, 0, 0 );
+	positions[nextIndex] = point;
+	velocities[nextIndex] = (ofVec3f(ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel )) * particleSpread) * rotQuat;
+	lifeData[nextIndex].set( t, lifespan, 0, 0 );
 	
 	bUpdateVbo = true;
 	
-	numSprites = min( numSprites+1, FIREWORKS_NUM_PARTICLES );
+	nextIndex ++;
+	if( nextIndex >= FIREWORKS_NUM_PARTICLES ) nextIndex = 0;
 }
 
 void CloudsVisualSystemFireworks::explodeFireWork( ofVec3f origin, ofVec3f vel )
@@ -422,7 +425,7 @@ void CloudsVisualSystemFireworks::explodeFireWork( ofVec3f origin, ofVec3f vel )
 	fireWorkExplosionTime = ofGetElapsedTimef();
 	
 	
-	int numEmittersPerExplosion = 50;
+	int numEmittersPerExplosion = 30;
 	float t = ofGetElapsedTimef();
 	for(int i=0; i<numEmittersPerExplosion; i++){
 		FireworkEmitter e;
@@ -468,7 +471,7 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 	
 	ofVec3f offset( ofRandom(-1, 1), ofRandom(-.75,.75), ofRandom(-1.5, .5));
 	offset.normalize();
-	offset *= 200;
+	offset *= spawnDistance;
 	
 	ofVec3f rocketStart = offset + ofVec3f( ofRandom(-400, 400), 2000, 0);
 	
@@ -502,7 +505,8 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 			break;
 			
 		default:
-			explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
+			//explodeGeometry( dodecagedronPoints, camTarget + offset, camTarget + rocketStart );
+			explodeFireWork( camTarget + offset );
 			break;
 	}
 }
@@ -510,28 +514,26 @@ void CloudsVisualSystemFireworks::explodeFireWorkAtRandom()
 void CloudsVisualSystemFireworks::explodeGeometry( vector<ofVec3f>& vertices, ofVec3f offset, ofVec3f rocketStart )
 {
 	ofVec3f origin = offset;
-	float rad = 10 + ofRandom(-5, 5);
+	float rad = 10 + ofRandom(-3,3);
 	
 	ofQuaternion q;
 	q.makeRotate(33, ofRandom(-10,10), ofRandom(-10,10), ofRandom(-10,10));
 	ofVec3f p, p1, rPos;
 	
 	float t = ofGetElapsedTimef();
-	float rSpan = 0;//.5;
 	for(int i=0; i<vertices.size(); i+=2){
 		
-		p = (vertices[i] * rad ) * q;
-		p1 = (vertices[i+1] * rad ) * q;
+		p = (vertices[i] * rad ) * q + origin;
+		p1 = (vertices[i+1] * rad ) * q + origin;
 		
 		FireworkEmitter e0, e1;
 		
-		e0.setup( t+rSpan, 2, p + origin, p1 + origin  );
+		e0.setup( t, ofRandom(1., 2.), p, p1 );
 		
-		e1.setup( t+rSpan, 2, p1 + origin , p + origin );
+		e1.setup( t, ofRandom(1., 2.), p1, p );
 		
 		emitters.push_back( e0 );
 		emitters.push_back( e1 );
-		
 	}
 }
 
