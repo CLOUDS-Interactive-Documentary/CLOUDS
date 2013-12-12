@@ -19,6 +19,8 @@ void CloudsVisualSystemTwitter::selfSetup()
 {
     loadJSONData();
     parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+    baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
+    tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     loadMesh();
     clusterShader.load(getVisualSystemDataPath()+"/shaders/cluster");
     sprite.loadImage(getVisualSystemDataPath()+"/dot.png");
@@ -27,9 +29,11 @@ void CloudsVisualSystemTwitter::selfSetup()
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
 //    currentDateIndex =50;
     currentDateIndex = dateIndex.size() -1;
-    updateMesh(currentDateIndex);
+    updateMeshFromTweets(currentDateIndex);
     refreshRate = 1000;
-    edgeDecayRate = 0.1;
+    edgeDecayRate = 0.01;
+    ofEnableAlphaBlending();
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -190,21 +194,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
         
 	}
 }
-
-void CloudsVisualSystemTwitter::updateMesh(int index){
-    
-    for(int i= 0; i<nodeMesh.getColors().size(); i++){
-        nodeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
-    }
-    
-    for(int i= 0; i<edgeMesh.getColors().size(); i++){
-        ofFloatColor c = edgeMesh.getColor(i);
-        if(c.b == 0){
-                edgeMesh.setColor(i, c.a*edgeDecayRate);
-        }
-        
-    }
-    
+void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
     vector<Tweeter> current = getTweetersForDate(index);
     if(current.size() > 0 ){
         
@@ -228,14 +218,14 @@ void CloudsVisualSystemTwitter::updateMesh(int index){
                         if(lineIndexPairs.find(make_pair(current[i].name, t.name)) != lineIndexPairs.end()){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
-                            edgeMesh.setColor(currentIndeces.first, ofFloatColor(1.,0.,0.,1.));
-                            edgeMesh.setColor(currentIndeces.second, ofFloatColor(1.0,0.,0.,1.));
+                            edgeMesh.setColor(currentIndeces.first, tweetColor);
+                            edgeMesh.setColor(currentIndeces.second, tweetColor);
                         }
                         else if(lineIndexPairs.find(make_pair(t.name,current[i].name)) != lineIndexPairs.end()){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
-                            edgeMesh.setColor(currentIndeces.first, ofFloatColor(1.,0.,0.,1.));
-                            edgeMesh.setColor(currentIndeces.second, ofFloatColor(1.0,0.,0.,1.));
+                            edgeMesh.setColor(currentIndeces.first, tweetColor);
+                            edgeMesh.setColor(currentIndeces.second, tweetColor);
                         }
                         else{
                             cout<<"link between "<<current[i].name<<" and "<<t.name<<" not found in map"<<endl;
@@ -253,6 +243,24 @@ void CloudsVisualSystemTwitter::updateMesh(int index){
     }
     
 }
+void CloudsVisualSystemTwitter::updateMesh(){
+    
+    for(int i= 0; i<nodeMesh.getColors().size(); i++){
+        nodeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
+    }
+    
+    for(int i= 0; i<edgeMesh.getColors().size(); i++){
+        ofFloatColor c = edgeMesh.getColor(i);
+        
+        if(c.r  > 0.){
+            ofFloatColor cur =  (c - baseColor)*edgeDecayRate ;
+            c +=cur;
+            edgeMesh.setColor(i,cur);
+        }
+        
+    }
+    
+}
 
 void CloudsVisualSystemTwitter::loadMesh(){
     int  currentIndex =0;
@@ -263,7 +271,8 @@ void CloudsVisualSystemTwitter::loadMesh(){
     
                 edgeMesh.addVertex(tweeters[j].position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(ofFloatColor(0.0,0.0,1.0,0.1));
+                //edgeMesh.addColor(baseColor);
+                edgeMesh.addColor(baseColor);
                 tweeters[j].edgeVertexIndex = currentIndex;
                 
                 currentIndex++;
@@ -271,7 +280,8 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 
                 edgeMesh.addVertex(t.position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor( ofFloatColor(0.0,0.0,1.0,0.1));
+                edgeMesh.addColor(baseColor);
+            //edgeMesh.addColor(baseColor);
                 t.edgeVertexIndex = currentIndex;
             
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
@@ -461,11 +471,11 @@ void CloudsVisualSystemTwitter::selfUpdate()
 //        currentDateIndex %= dateIndex.size();
         currentDateIndex--;
         if (currentDateIndex <= 0) {
-            currentDateIndex = 0;
+            currentDateIndex = dateIndex.size() - 1;
         }
-        updateMesh(currentDateIndex);
+        updateMeshFromTweets(currentDateIndex);
     }
-
+   updateMesh();
     
 }
 
@@ -475,7 +485,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 {
     
     glDisable(GL_DEPTH_TEST);
-    //     ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetBackgroundColor(0,0,0);
     ofScale(10, 10);
     
@@ -536,7 +546,7 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         }
         
         cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
-        updateMesh(currentDateIndex);
+        updateMeshFromTweets(currentDateIndex);
     }
     if(args.key == OF_KEY_RIGHT){
         if(currentDateIndex <0){
@@ -548,7 +558,7 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         
         cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
         
-        updateMesh(currentDateIndex);
+        updateMeshFromTweets(currentDateIndex);
         
     }
 }

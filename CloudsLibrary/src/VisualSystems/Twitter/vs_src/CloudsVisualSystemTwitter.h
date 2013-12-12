@@ -71,7 +71,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     //draw stuff
     void loadMesh();
-    void updateMesh(int index);
+    void updateMesh();
+    void updateMeshFromTweets(int index);
     void drawObject(const ofVec3f& pos);
 
     //helpers 
@@ -101,13 +102,15 @@ protected:
     
     int refreshRate;
     float edgeDecayRate;
-    
+
     ofImage sprite;
     ofShader clusterShader;
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;
 
+    ofFloatColor baseColor;
+    ofFloatColor tweetColor;
     
     
     
