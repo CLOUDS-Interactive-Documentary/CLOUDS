@@ -118,6 +118,8 @@ protected:
     
     //  Your Stuff
     //
+    void onWindowResized(ofResizeEventArgs& args);
+    
     deque<itg::Path> paths;
     ofxPostProcessing post;
     ofShader shader;
