@@ -72,6 +72,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //draw stuff
     void loadMesh();
     void updateMesh();
+    void reloadMeshColor();
     void updateMeshFromTweets(int index);
     void drawObject(const ofVec3f& pos);
 
@@ -88,10 +89,10 @@ protected:
     ofTrueTypeFont listFont;
     ofColor listColor;
 	
-	ofxUISuperCanvas * listGui, * treeGui;
-    ofx1DExtruder * listHue, * listSat, * listBri, * listAlpha;
-    ofx1DExtruder * textHue, * textSat, * textBri, * textAlpha;
-	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
+//	ofxUISuperCanvas * listGui, * treeGui;
+
+//    ofx1DExtruder * baseHue, * baseSat, * baseBri, * baseAlpha;
+//	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
     
     vector<Tweeter> tweeters;
     stringstream ss;
@@ -109,8 +110,11 @@ protected:
     float pointSize;
     ofxUISuperCanvas* clusterGui;
 
+    float baseHue,baseSat,baseBri,baseAlpha;
+    float tweetHue, tweetSat, tweetBri, tweetAlpha;
     ofFloatColor baseColor;
     ofFloatColor tweetColor;
+    
     
     
     
