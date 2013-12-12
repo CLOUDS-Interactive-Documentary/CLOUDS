@@ -1,5 +1,5 @@
 /*
- *  JellyCreature.h
+ *  PointCreature.h
  *
  *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
@@ -35,60 +35,23 @@
 
 namespace itg
 {
-    struct JellyParams
-    {
-        ofVec3f tentacleHsb, bodyHsb;
-        float bodyAlpha;
-        float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
-        float segmentMin, segmentMax;
-        float m1Min, m1Max, m2Min, m2Max;
-        float pulseAmtMin, pulseAmtMax;
-    };
+    using namespace tr1;
     
-    class JellyCreature : public Creature
+    class PointCreature : public Creature
     {
         friend class Creatures;
         
     public:
-        typedef shared_ptr<JellyCreature> Ptr;
+        typedef shared_ptr<PointCreature> Ptr;
         
-        JellyCreature(const JellyParams& params);
+        PointCreature(float hue);
         
-        virtual void update();
+        ofFloatColor getColour() const { return colour; }
         
-        // draw function called after node transform has been done
-        virtual void customDraw();
-        
-        void setShaderUniforms();
-        
-        ofFloatColor getColour() const { return bodyColour; }
-        
-        //void setFrequency(const float frequency) { this->frequency = frequency; }
+        void customDraw();
         
     private:
-        static ofImage tex;
-        static ofShader shader;
-        
-        void genMeshes();
-        ofVec3f superVertex(float phi, float theta);
-        
-        ofVboMesh outerMesh;
-        ofVboMesh innerMesh;
-        ofVboMesh lineMesh;
-       
-        int texRepeatS;
-        
-        ofVec3f size;
-        float segment;
-        // superformula stuff
-        float m1, m2;
-        float n11, n21, n31, a1, b1;
-        float n12, n22, n32, a2, b2;
-        float bodyAlpha;
-        ofFloatColor bodyColour;
-        ofFloatColor tentacleColour;
-        float deformAmount;
-        float pulseAmt;
-        bool drawInner;
+        float frequency;
+        ofFloatColor colour;
     };
 }

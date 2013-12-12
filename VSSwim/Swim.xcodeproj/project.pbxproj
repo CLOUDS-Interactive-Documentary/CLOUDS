@@ -33,6 +33,7 @@
 		284AE6281859D42200780DBB /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61A1859D42200780DBB /* OscPrintReceivedElements.cpp */; };
 		284AE6291859D42200780DBB /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61C1859D42200780DBB /* OscReceivedElements.cpp */; };
 		284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61E1859D42200780DBB /* OscTypes.cpp */; };
+		284AE6701859DA6600780DBB /* PointCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE66E1859DA6600780DBB /* PointCreature.cpp */; };
 		285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */; };
 		285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2068182FFFEE0065BCAE /* BloomPass.cpp */; };
 		285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C206A182FFFEE0065BCAE /* ContrastPass.cpp */; };
@@ -247,6 +248,8 @@
 		284AE61D1859D42200780DBB /* OscReceivedElements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		284AE61E1859D42200780DBB /* OscTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		284AE61F1859D42200780DBB /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		284AE66E1859DA6600780DBB /* PointCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointCreature.cpp; sourceTree = "<group>"; };
+		284AE66F1859DA6600780DBB /* PointCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCreature.h; sourceTree = "<group>"; };
 		285185DE1837D1B8009D8339 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
 		285C2067182FFFEE0065BCAE /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
@@ -653,6 +656,8 @@
 				282FEBE2182FFE6600519D79 /* JellyCreature.h */,
 				282FEBE3182FFE6600519D79 /* ModelCreature.cpp */,
 				282FEBE4182FFE6600519D79 /* ModelCreature.h */,
+				284AE66E1859DA6600780DBB /* PointCreature.cpp */,
+				284AE66F1859DA6600780DBB /* PointCreature.h */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1765,6 +1770,7 @@
 				E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */,
 				E7CF783C1753FEA0006B7D41 /* kiss_fft.c in Sources */,
 				284AE5F31859D3EB00780DBB /* CloudsInput.cpp in Sources */,
+				284AE6701859DA6600780DBB /* PointCreature.cpp in Sources */,
 				E7CF783D1753FEA0006B7D41 /* kiss_fftr.c in Sources */,
 				E7CF783E1753FEA0006B7D41 /* ofOpenALSoundPlayer_TimelineAdditions.cpp in Sources */,
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,

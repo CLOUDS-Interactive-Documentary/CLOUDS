@@ -65,6 +65,8 @@ namespace itg
         
         void customDraw();
         
+        ofFloatColor getColour() const { return colour; }
+        
     private:
         static vector<ofxAssimpModelLoader> fishModels;
         //static vector<ofImage> fishTextures;

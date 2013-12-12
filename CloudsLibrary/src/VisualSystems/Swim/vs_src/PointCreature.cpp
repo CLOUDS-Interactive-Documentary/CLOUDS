@@ -1,5 +1,5 @@
 /*
- *  JellyCreature.h
+ *  PointCreature.cpp
  *
  *  Copyright (c) 2012, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
@@ -29,66 +29,18 @@
  *  POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-#pragma once
-
-#include "Creature.h"
+#include "PointCreature.h"
 
 namespace itg
 {
-    struct JellyParams
+    PointCreature::PointCreature(float hue) : Creature()
     {
-        ofVec3f tentacleHsb, bodyHsb;
-        float bodyAlpha;
-        float widthAverage, widthStdDeviation, lengthAverage, lengthStdDeviation;
-        float segmentMin, segmentMax;
-        float m1Min, m1Max, m2Min, m2Max;
-        float pulseAmtMin, pulseAmtMax;
-    };
+        type = POINT;
+        frequency = ofRandom(2, 5);
+        colour = ofFloatColor::fromHsb(hue, 1.f, 1.f);
+    }
     
-    class JellyCreature : public Creature
+    void PointCreature::customDraw()
     {
-        friend class Creatures;
-        
-    public:
-        typedef shared_ptr<JellyCreature> Ptr;
-        
-        JellyCreature(const JellyParams& params);
-        
-        virtual void update();
-        
-        // draw function called after node transform has been done
-        virtual void customDraw();
-        
-        void setShaderUniforms();
-        
-        ofFloatColor getColour() const { return bodyColour; }
-        
-        //void setFrequency(const float frequency) { this->frequency = frequency; }
-        
-    private:
-        static ofImage tex;
-        static ofShader shader;
-        
-        void genMeshes();
-        ofVec3f superVertex(float phi, float theta);
-        
-        ofVboMesh outerMesh;
-        ofVboMesh innerMesh;
-        ofVboMesh lineMesh;
-       
-        int texRepeatS;
-        
-        ofVec3f size;
-        float segment;
-        // superformula stuff
-        float m1, m2;
-        float n11, n21, n31, a1, b1;
-        float n12, n22, n32, a2, b2;
-        float bodyAlpha;
-        ofFloatColor bodyColour;
-        ofFloatColor tentacleColour;
-        float deformAmount;
-        float pulseAmt;
-        bool drawInner;
-    };
+    }
 }
