@@ -126,6 +126,9 @@ void CubeCraft::selfUpdate()
 
 void CubeCraft::selfDraw()
 {
+	
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	
 	glEnable( GL_DEPTH_TEST );
 	
 	glEnable(GL_CULL_FACE);
@@ -157,7 +160,7 @@ void CubeCraft::selfDraw()
 	cubeShader.end();
 	
 	ofPopMatrix();
-	
+	glPopAttrib();
 }
 
 
