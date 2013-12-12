@@ -31,7 +31,7 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 	
 	for(int i = 0; i < numPts; i++){
 		ofVec3f p(pts[i*3+0],pts[i*3+1],pts[i*3+2]);
-		center += p;
+		//center += p;
 		min = ofVec3f(MIN(min.x,p.x),
 					  MIN(min.y,p.y),
 					  MIN(min.z,p.z));
@@ -40,7 +40,7 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 					  MAX(max.z,p.z));
 		
 	}
-	center /= numPts;
+	//center /= numPts;
 	
     unsigned int * indices = ints + 2 + numPts*6;
 	
@@ -55,6 +55,43 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
 	return numTriangles*3;
+}
+
+int CloudsVisualSystemLaplacianTunnel::loadMeshPLY(ofVbo &vbo, string path) {
+    char* buffer;
+    long size;
+	
+	//cout << "path is " << path << endl;
+	
+    ofMesh mesh;
+	mesh.load(path);
+	vbo.enableIndices();
+    //vbo.enableNormals();
+    vbo.enableColors();
+    vbo.disableNormals();
+	vbo.disableTexCoords();
+	vbo.setMesh(mesh,GL_STATIC_DRAW);
+	int numPts = mesh.getNumVertices();
+	
+	for(int i = 0; i < numPts; i++){
+		ofVec3f p = mesh.getVertex(i);
+		//center += p;
+		min = ofVec3f(MIN(min.x,p.x),
+					  MIN(min.y,p.y),
+					  MIN(min.z,p.z));
+		max = ofVec3f(MAX(max.x,p.x),
+					  MAX(max.y,p.y),
+					  MAX(max.z,p.z));
+		
+	}
+	//center /= numPts;
+	
+	
+    //not sure what is enable or disable by default
+    
+	
+	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
+	return mesh.getNumIndices();
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -118,17 +155,22 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	currentGrowthIndex = 0;
 	
 	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
-	objs.allowExt("vbo");
+	//objs.allowExt("vbo");
+	objs.allowExt("ply");
 	objs.listDir();
 	
 	clear();
 	
+	min.set(999999);
+	max.set(-99999);
+	center.set(-14.000,5.900,-13.950);
 	int numFiles = objs.numFiles();
 	vbos.resize( numFiles );
 	for(int i = 0; i < numFiles; i++){
 		vbos[i].vbo = new ofVbo();
 		vbos[i].name = objs.getName(i);
-		vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
+		//vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
+		vbos[i].indexCount = loadMeshPLY(*vbos[i].vbo, objs.getPath( i ) );
 	}
 	
 	sort(vbos.begin(), vbos.end(), meshsort);
@@ -192,7 +234,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	if(vbos.size() > 0){
 		
 		glPushAttrib(GL_FOG_BIT);
-		
+		ofDisableLighting();
 		glEnable(GL_FOG);
 		glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
 		glFogi(GL_FOG_MODE, GL_EXP);
@@ -205,9 +247,9 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		glFogfv (GL_FOG_COLOR, fogColor);
 		glEnable(GL_DEPTH_TEST);
 		
-		ofEnableAlphaBlending();
+		//ofEnableAlphaBlending();
 
-		headlight.enable();
+		//headlight.enable();
 		float spread = (max.y - min.y);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
@@ -220,7 +262,8 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			float translateAmount = (startY + i*spread);
 			ofTranslate(0,translateAmount,0);
 			ofTranslate(center);
-			ofRotate(translateAmount*corkscrewFactor,0,1,0);
+			//ofRotate(translateAmount*corkscrewFactor,0,1,0);
+			ofRotate(-(i+int(tunnelCam.getPosition().y/spread))*90,0,1,0);
 			ofTranslate(-center);
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
 			
@@ -247,7 +290,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		}
 
 		mat->end();
-		headlight.disable();
+		//headlight.disable();
 
 		glPopAttrib();
 	}

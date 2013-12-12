@@ -105,6 +105,7 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	ofVec3f max;
 	ofVec3f center;
 	int loadMesh(ofVbo &vbo, string path);
+	int loadMeshPLY(ofVbo &vbo, string path);
 	
 	
 	ofCamera tunnelCam;
