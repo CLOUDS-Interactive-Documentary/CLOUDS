@@ -1561,23 +1561,24 @@ void CloudsVisualSystem::setupMaterial(string name, ofxMaterial *m)
     
     float length = (g->getGlobalCanvasWidth()-g->getWidgetSpacing()*5)/3.;
     float dim = g->getGlobalSliderHeight();
-    
-    g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("AH", 0.0, 1.0, &m->matAmbientHSV.r, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("AS", 0.0, 1.0, &m->matAmbientHSV.g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("AV", 0.0, 1.0, &m->matAmbientHSV.b, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    g->addSpacer();
-    
-    g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
-    g->addMinimalSlider("DH", 0.0, 1.0, &m->matDiffuseHSV.r, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    g->addMinimalSlider("DS", 0.0, 1.0, &m->matDiffuseHSV.g, length, dim)->setShowValue(false);
-    g->addMinimalSlider("DV", 0.0, 1.0, &m->matDiffuseHSV.b, length, dim)->setShowValue(false);
-    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
-    g->addSpacer();
-    
+
+   // NO EFFECT
+//    g->addLabel("AMBIENT", OFX_UI_FONT_SMALL);
+//    g->addMinimalSlider("AH", 0.0, 1.0, &m->matAmbientHSV.r, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+//    g->addMinimalSlider("AS", 0.0, 1.0, &m->matAmbientHSV.g, length, dim)->setShowValue(false);
+//    g->addMinimalSlider("AV", 0.0, 1.0, &m->matAmbientHSV.b, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    g->addSpacer();
+//    
+//    g->addLabel("DIFFUSE", OFX_UI_FONT_SMALL);
+//    g->addMinimalSlider("DH", 0.0, 1.0, &m->matDiffuseHSV.r, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
+//    g->addMinimalSlider("DS", 0.0, 1.0, &m->matDiffuseHSV.g, length, dim)->setShowValue(false);
+//    g->addMinimalSlider("DV", 0.0, 1.0, &m->matDiffuseHSV.b, length, dim)->setShowValue(false);
+//    g->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
+//    g->addSpacer();
+//    
     g->addLabel("EMISSIVE", OFX_UI_FONT_SMALL);
     g->addMinimalSlider("EH", 0.0, 1.0, &m->matEmissiveHSV.r, length, dim)->setShowValue(false);
     g->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);

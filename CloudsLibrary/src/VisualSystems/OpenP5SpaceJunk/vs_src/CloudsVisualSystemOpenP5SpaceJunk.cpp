@@ -22,32 +22,21 @@ void CloudsVisualSystemOpenP5SpaceJunk::selfSetupGui(){
 	
     customGui->addSlider("Rotation Speed", 0, 25, &speed_);
 	customGui->addRangeSlider("X Scale", 0, 50, &XrandMin, &XrandMax);
-//    customGui->addSlider("X Scale Min", 0, 50, &XrandMin);
-//    customGui->addSlider("X Scale Max", 0, 50, &XrandMax);
     customGui->addRangeSlider("Y Scale", 0, 50, &YrandMin, &YrandMax);
-//    customGui->addSlider("Y Scale Max", 0, 50, );
     customGui->addRangeSlider("Z Scale", 0, 50, &ZrandMin, &ZrandMax);
-//    customGui->addSlider("Z Scale Max", 0, 50, );
     customGui->addRangeSlider("X Rotate", 0, 90, &XrotMin, &XrotMax);
-//    customGui->addSlider("X Rotate Max", 0, 90, );
     customGui->addRangeSlider("Y Rotate", 0, 90, &YrotMin, &YrotMax);
-//    customGui->addSlider("Y Rotate Max", 0, 90, );
     customGui->addRangeSlider("Z Rotate", 0, 90, &ZrotMin, &ZrotMax);
-//    customGui->addSlider("Z Rotate Max", 0, 90, );
-    
-	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
-	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
-	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
 
-	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
-	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
-	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
+//TODO: custom colors?
+//	customGui->addSlider("Color 1 Hue", 0, 255, &color1HSB.r);
+//	customGui->addSlider("Color 1 Sat", 0, 255, &color1HSB.g);
+//	customGui->addSlider("Color 1 Bri", 0, 255, &color1HSB.b);
+//
+//	customGui->addSlider("Color 2 Hue", 0, 255, &color2HSB.r);
+//	customGui->addSlider("Color 2 Sat", 0, 255, &color2HSB.g);
+//	customGui->addSlider("Color 2 Bri", 0, 255, &color2HSB.b);
 
-    
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
 	
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemOpenP5SpaceJunk::selfGuiEvent);
