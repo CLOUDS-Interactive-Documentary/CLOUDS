@@ -15,6 +15,8 @@
 // geometry should be loaded here
 void CloudsVisualSystemSwim::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
+    
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -131,6 +133,11 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
 
     gui->addRangeSlider("superformula m1 (range)", 2, 20, &params.m1Min, &params.m1Max);
     gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
+}
+
+void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 ofxUISuperCanvas* CloudsVisualSystemSwim::createCustomGui(const string& name)
