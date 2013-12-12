@@ -28,7 +28,8 @@ void CloudsVisualSystemTwitter::selfSetup()
 //    currentDateIndex =50;
     currentDateIndex = dateIndex.size() -1;
     updateMesh(currentDateIndex);
-
+    refreshRate = 1000;
+    edgeDecayRate = 0.1;
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -38,13 +39,13 @@ void CloudsVisualSystemTwitter::selfBegin()
 
 void CloudsVisualSystemTwitter::selfSetupGui()
 {
-	clusterGui = new ofxUISuperCanvas("CLUSTER PARAMS", gui);
+	clusterGui = new ofxUISuperCanvas("TWITTER PARAMS", gui);
     clusterGui->copyCanvasStyle(gui);
 	clusterGui->copyCanvasProperties(gui);
-	clusterGui->setName("Custom");
+//	clusterGui->setName("custom");
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    clusterGui->addSlider("mesh expansion", 100, 10000, &meshExpansion);
-	clusterGui->addSlider("point size", 1, 50, &pointSize);
+    clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
+    clusterGui->addSlider("EDGE DECAY", 0.001, 1., &edgeDecayRate);
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
@@ -199,7 +200,7 @@ void CloudsVisualSystemTwitter::updateMesh(int index){
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
         ofFloatColor c = edgeMesh.getColor(i);
         if(c.b == 0){
-                edgeMesh.setColor(i, c.a*0.001);
+                edgeMesh.setColor(i, c.a*edgeDecayRate);
         }
         
     }
@@ -456,9 +457,12 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
-    if(  ofGetFrameNum() %2 <4){
-        currentDateIndex %= dateIndex.size();
-        currentDateIndex++;
+    if(  ofGetFrameNum() %refreshRate <1){
+//        currentDateIndex %= dateIndex.size();
+        currentDateIndex--;
+        if (currentDateIndex <= 0) {
+            currentDateIndex = 0;
+        }
         updateMesh(currentDateIndex);
     }
 
@@ -480,14 +484,13 @@ void CloudsVisualSystemTwitter::selfDraw()
     nodeMesh.draw();
     edgeMesh.draw();
     
-    
-    
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-    
+
+
 }
 
 //--------------------------------------------------------------
@@ -496,12 +499,7 @@ void CloudsVisualSystemTwitter::selfDrawBackground()
 {
     ofSetColor(ofColor::whiteSmoke);
     string cur = getDateAsString( dateIndex[currentDateIndex]);
-    ofPushMatrix();
     ofDrawBitmapString(cur , 0,0);
-    ofRotateY(90);
-    ofPopMatrix();
-    //    listFont.drawString(ss.str(), 0, 0);
-    //    ofDrawBitmapString("TEST", ofGetWidth()/2,ofGetHeight()/2);
 }
 
 // this is called when your system is no longer drawing.
@@ -513,7 +511,7 @@ void CloudsVisualSystemTwitter::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemTwitter::selfExit()
 {
-    
+        
 }
 
 //events are called when the system is active
@@ -554,6 +552,35 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         
     }
 }
+void CloudsVisualSystemTwitter::drawObject(const ofVec3f& pos)
+{
+//    if (mode == BILLBOARD_CYLINDRICAL) {
+    
+        ofxBillboardBeginCylindrical(getCameraPosition(), pos);
+//    }
+//    else if (mode == BILLBOARD_CYLINDRICAL_CHEAT) {
+//        ofxBillboardBeginCylindricalCheat(pos);
+//    }
+//    else if (mode == BILLBOARD_SPHERICAL) {
+//        ofxBillboardBeginSpherical(cam.getGlobalPosition(), pos);
+//    }
+//    else if (mode == BILLBOARD_SPHERICAL_CHEAT) {
+//        ofxBillboardBeginSphericalCheat(pos);
+//    }
+//    else if (mode == BILLBOARD_SPHERICAL_OBVIOUS) {
+//        ofxBillboardBeginSphericalObvious(cam.getGlobalPosition(), pos);
+//    }
+//    else {  // mode == BILLBOARD_NONE
+//        ofPushMatrix();
+//        ofTranslate(pos);
+//    }
+    
+    ofSetColor(ofColor::whiteSmoke);
+    string cur = getDateAsString( dateIndex[currentDateIndex]);
+    ofDrawBitmapString(cur , 0,0);
+    ofxBillboardEnd();
+}
+
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){
 	
 }

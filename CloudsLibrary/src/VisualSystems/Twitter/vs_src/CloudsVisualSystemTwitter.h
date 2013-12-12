@@ -69,9 +69,10 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     
     ofxJSONElement result;
     
-    //mesh stuff
+    //draw stuff
     void loadMesh();
     void updateMesh(int index);
+    void drawObject(const ofVec3f& pos);
 
     //helpers 
     vector<Date> dateIndex;
@@ -97,15 +98,16 @@ protected:
     ofVboMesh nodeMesh;
     ofVboMesh edgeMesh;
     ofVec3f min,max;
-    ofEasyCam cam;
+    
+    int refreshRate;
+    float edgeDecayRate;
     
     ofImage sprite;
     ofShader clusterShader;
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;
-    
-    BillboardMode mode;
+
     
     
     
