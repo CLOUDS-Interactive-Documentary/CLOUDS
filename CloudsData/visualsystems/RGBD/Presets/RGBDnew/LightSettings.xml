@@ -30,3 +30,18 @@
     <Name>B</Name>
     <Value>0.600000024</Value>
 </Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>H</Name>
+    <Value>0.666666687</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>S</Name>
+    <Value>0.166666701</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>V</Name>
+    <Value>0.600000024</Value>
+</Widget>
