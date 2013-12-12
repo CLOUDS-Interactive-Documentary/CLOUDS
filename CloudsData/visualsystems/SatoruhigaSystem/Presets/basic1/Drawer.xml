@@ -1,0 +1,27 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Drawer</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>216.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT_W</Name>
+    <Value>35.448276520</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>RECT_H</Name>
+    <Value>40.369457245</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ROT_X</Name>
+    <Value>-0.024630547</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>ROT_Y</Name>
+    <Value>-0.152709365</Value>
+</Widget>
