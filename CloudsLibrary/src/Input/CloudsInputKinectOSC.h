@@ -14,6 +14,7 @@
 
 namespace k4w 
 {
+    // comes from K4W SDK
     enum TrackingState 
     {
         TrackingState_NotTracked = 0,
@@ -21,6 +22,8 @@ namespace k4w
         TrackingState_Tracked    = 2
     };
     
+    // comes from K4W SDK
+    // re-appropriated in special cases e.g. proximity mode or out of range hands
     enum HandState 
     {
         HandState_Unknown    = 0,
@@ -32,6 +35,7 @@ namespace k4w
         HandState_Count
     };
     
+    // comes from K4W SDK
     enum JointType 
     {
         JointType_SpineBase     = 0,
@@ -63,6 +67,7 @@ namespace k4w
         JointType_Count
     };
     
+    // defined by us
     enum ActionState
     {
         ActionState_Idle   = 0,
@@ -74,9 +79,9 @@ namespace k4w
     {
         JointType type;
         TrackingState trackingState;
-        ofVec3f inputPosition;
-        ofVec3f localPosition;
-        ofVec3f mappedPosition;
+        ofVec3f inputPosition;   // input position from K4W SDK
+        ofVec3f localPosition;   // position translated by origin
+        ofVec3f screenPosition;  // position mapped to 2D viewport
     };
     
     struct HandJoint : public Joint
@@ -92,11 +97,23 @@ namespace k4w
             headJoint.type = JointType_Head;
             headJoint.trackingState = TrackingState_NotTracked;
             
-            spineNeckJoint.type = JointType_SpineShoulder;
-            spineNeckJoint.trackingState = TrackingState_NotTracked;
+            neckJoint.type = JointType_Neck;
+            neckJoint.trackingState = TrackingState_NotTracked;
+            
+            spineShoulderJoint.type = JointType_SpineShoulder;
+            spineShoulderJoint.trackingState = TrackingState_NotTracked;
+            
+            spineMidJoint.type = JointType_SpineMid;
+            spineMidJoint.trackingState = TrackingState_NotTracked;
             
             spineBaseJoint.type = JointType_SpineBase;
             spineBaseJoint.trackingState = TrackingState_NotTracked;
+            
+            shoulderLeftJoint.type = JointType_ShoulderLeft;
+            shoulderLeftJoint.trackingState = TrackingState_NotTracked;
+            
+            shoulderRightJoint.type = JointType_ShoulderRight;
+            shoulderRightJoint.trackingState = TrackingState_NotTracked;
             
             age = 0;
         }
@@ -105,8 +122,12 @@ namespace k4w
         int age;
         int lastUpdateFrame;
         Joint headJoint;
-        Joint spineNeckJoint;
+        Joint neckJoint;
+        Joint spineShoulderJoint;
+        Joint spineMidJoint;
         Joint spineBaseJoint;
+        Joint shoulderLeftJoint;
+        Joint shoulderRightJoint;
     };
     
     class Hand
@@ -132,6 +153,7 @@ namespace k4w
         int poll[HandState_Count];
         ActionState actionState;
         HandJoint handJoint;
+        ofRectangle trackingBounds;
     };
 };
 
@@ -145,8 +167,10 @@ public:
     
     void update(ofEventArgs& args);
     
-    void mapCoords(ofVec3f& origin, float length, k4w::Joint& joint);
+    void mapCoords(ofVec3f& origin, float width, float height, k4w::Joint& joint);
 	void processHandEvent(int handIdx, k4w::Hand * hand, k4w::HandState newState);
+    
+    void debug(float x, float y, float width, float height);
     
     ofxOscReceiver receiver;
     int lastOscFrame;
@@ -159,3 +183,4 @@ public:
 };
 
 void SetCloudsInputKinect(float activeThresholdY = 0.8f, float activeThresholdZ = 0.4f);
+ 3

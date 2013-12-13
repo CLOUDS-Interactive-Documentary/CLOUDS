@@ -2982,14 +2982,17 @@ void CloudsVisualSystem::selfPostDraw(){
                 //	ofNoFill();
                 //	ofSetColor(255, 50);
                 //	ofCircle(0, 0, ofxTween::map(sin(ofGetElapsedTimef()*3.0), -1, 1, .3, .4, true, ofxEasingQuad()));
-                if (it->second.primary) {
+                if(it->second.actionType == 0){
+                    ofSetColor(ofColor::steelBlue, 175);
+                }
+                else if (it->second.primary) {
                     ofSetColor(240,240,100, 175);
                 }
                 else {
                     ofSetColor(240,240,255, 175);
                 }
-                ofCircle(it->second.position.x, it->second.position.y,
-                         ofxTween::map(sin(ofGetElapsedTimef()*.5), -1, 1, 3, 5, true, ofxEasingQuad()));
+                ofCircle(it->second.position.x, it->second.position.y, ofMap(it->second.position.z, 2, -2, 5, 30, true) );
+                cout << " z pos " << it->second.position.z << endl;
             }
 			ofPopStyle();
 			ofPopMatrix();
