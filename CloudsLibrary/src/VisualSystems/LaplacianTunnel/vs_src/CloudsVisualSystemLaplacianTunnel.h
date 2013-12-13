@@ -11,8 +11,10 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofVboByteColor.h"
+
 typedef struct {
-	ofVbo* vbo;
+	ofVboByteColor* vbo;
 	string name;
 	int indexCount;
 } NamedVbo;
@@ -104,8 +106,8 @@ class CloudsVisualSystemLaplacianTunnel : public CloudsVisualSystem {
 	ofVec3f min;
 	ofVec3f max;
 	ofVec3f center;
-	int loadMesh(ofVbo &vbo, string path);
-	int loadMeshPLY(ofVbo &vbo, string path);
+	int loadMesh(ofVboByteColor &vbo, string path);
+	int loadMeshPLY(ofVboByteColor &vbo, string path);
 	
 	
 	ofCamera tunnelCam;

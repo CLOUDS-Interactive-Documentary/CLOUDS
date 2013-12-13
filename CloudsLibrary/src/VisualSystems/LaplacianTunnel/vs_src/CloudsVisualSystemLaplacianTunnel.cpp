@@ -6,10 +6,10 @@
 #include "CloudsRGBDVideoPlayer.h"
 
 bool meshsort(NamedVbo a, NamedVbo b){
-	return ofToInt( ofSplitString(a.name,"Tunnel")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel")[1] );
+	return ofToInt( ofSplitString(a.name,"Tunnel_")[1] ) < ofToInt( ofSplitString(b.name,"Tunnel_")[1] );
 }
 
-int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
+int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVboByteColor &vbo, string path) {
     char* buffer;
     long size;
 	
@@ -28,36 +28,39 @@ int CloudsVisualSystemLaplacianTunnel::loadMesh(ofVbo &vbo, string path) {
     int numPts = ints[0];
     int numTriangles = ints[1];
     float *pts = (float *) (ints+2);
-	
 	for(int i = 0; i < numPts; i++){
 		ofVec3f p(pts[i*3+0],pts[i*3+1],pts[i*3+2]);
 		//center += p;
-		min = ofVec3f(MIN(min.x,p.x),
-					  MIN(min.y,p.y),
-					  MIN(min.z,p.z));
-		max = ofVec3f(MAX(max.x,p.x),
-					  MAX(max.y,p.y),
-					  MAX(max.z,p.z));
-		
+		if(!isnan(p[0])) {
+			min = ofVec3f(MIN(min.x,p.x),
+						  MIN(min.y,p.y),
+						  MIN(min.z,p.z));
+			max = ofVec3f(MAX(max.x,p.x),
+						  MAX(max.y,p.y),
+						  MAX(max.z,p.z));
+		}
 	}
 	//center /= numPts;
 	
-    unsigned int * indices = ints + 2 + numPts*6;
+    unsigned int * indices = ints + 2 + numPts*3+numPts;
 	
     //not sure what is enable or disable by default
     vbo.enableIndices();
-    vbo.enableNormals();
-    vbo.disableColors();
-    vbo.disableTexCoords();
+	vbo.enableColors();
+    //vbo.enableNormals();
+    //vbo.disableColors();
+    vbo.disableNormals();
+	vbo.disableTexCoords();
     vbo.setVertexData(pts,3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setNormalData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
-    vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
+    //vbo.setNormalData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(float)*3);
+	vbo.setColorData(pts+numPts*3,numPts, GL_STATIC_DRAW,sizeof(unsigned char)*4);
+	vbo.setIndexData(indices,numTriangles*3, GL_STATIC_DRAW);
 	
 	//cout << "File " << path << " has " << numTriangles << " triangles " << endl;
 	return numTriangles*3;
 }
 
-int CloudsVisualSystemLaplacianTunnel::loadMeshPLY(ofVbo &vbo, string path) {
+int CloudsVisualSystemLaplacianTunnel::loadMeshPLY(ofVboByteColor &vbo, string path) {
     char* buffer;
     long size;
 	
@@ -154,27 +157,28 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	growthFPS = 0;
 	currentGrowthIndex = 0;
 	
-	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/");
-	//objs.allowExt("vbo");
-	objs.allowExt("ply");
+	ofDirectory objs(getVisualSystemDataPath(true) + "Meshes/colored");
+	objs.allowExt("vbo");
+	//objs.allowExt("ply");
 	objs.listDir();
 	
 	clear();
 	
 	min.set(999999);
 	max.set(-99999);
-	center.set(-14.000,5.900,-13.950);
+	center.set(14.000,5.900,-13.950);
+	//center.set(14.000,5.900,13.950);
 	int numFiles = objs.numFiles();
 	vbos.resize( numFiles );
 	for(int i = 0; i < numFiles; i++){
-		vbos[i].vbo = new ofVbo();
+		vbos[i].vbo = new ofVboByteColor();
 		vbos[i].name = objs.getName(i);
-		//vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
-		vbos[i].indexCount = loadMeshPLY(*vbos[i].vbo, objs.getPath( i ) );
+		vbos[i].indexCount = loadMesh(*vbos[i].vbo, objs.getPath( i ) );
+		//vbos[i].indexCount = loadMeshPLY(*vbos[i].vbo, objs.getPath( i ) );
 	}
 	
 	sort(vbos.begin(), vbos.end(), meshsort);
-	
+	cout << max << "  " << min << endl;
 	
 }
 
@@ -247,7 +251,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 		glFogfv (GL_FOG_COLOR, fogColor);
 		glEnable(GL_DEPTH_TEST);
 		
-		//ofEnableAlphaBlending();
+		ofEnableAlphaBlending();
 
 		//headlight.enable();
 		float spread = (max.y - min.y);
@@ -263,7 +267,7 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofTranslate(0,translateAmount,0);
 			ofTranslate(center);
 			//ofRotate(translateAmount*corkscrewFactor,0,1,0);
-			ofRotate(-(i+int(tunnelCam.getPosition().y/spread))*90,0,1,0);
+			ofRotate((i+int(tunnelCam.getPosition().y/spread))*90,0,1,0);
 			ofTranslate(-center);
 			float cameraoffset = tunnelCam.getPosition().y - translateAmount - spread;
 			
