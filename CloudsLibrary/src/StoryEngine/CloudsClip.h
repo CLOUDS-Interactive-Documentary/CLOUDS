@@ -20,7 +20,7 @@ class CloudsClip {
     string sourceVideoFilePath;
 //	ofColor color;
 	
-    string startingQuestion;
+	string exampleId;
 	
 	ofVec3f networkPosition;
 	
