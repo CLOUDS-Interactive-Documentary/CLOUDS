@@ -68,6 +68,8 @@ namespace itg
         fishShader.setUniform3fv("deformAxis", deformAxes[modelIdx].getPtr());
         fishShader.setUniform1f("bend", bends[modelIdx]);
         fishShader.setUniform3f("colour", colour.r, colour.g, colour.b);
+        fishShader.setUniform1f("fogStart", fogStart);
+        fishShader.setUniform1f("fogEnd", fogEnd);
         if (textures.find(modelIdx) != textures.end())
         {
             fishShader.setUniformTexture("tex", textures[modelIdx], 0);

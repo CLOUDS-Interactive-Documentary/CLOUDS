@@ -11,9 +11,12 @@ uniform vec3 lightPos;
 uniform float size;
 uniform vec3 deformAxis;
 uniform float bend;
+uniform float fogStart;
+uniform float fogEnd;
 
 //varying vec3 nEye;
 varying vec3 vEye;
+varying float fogAmount;
 
 void main()
 {
@@ -25,6 +28,8 @@ void main()
     vertex += deformAmt * deformAxis;
     vec4 vertexEye = gl_ModelViewMatrix * vec4(vertex.xyz, 1.0);
     vEye = vertexEye.xyz;
+    
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     
     //vec4 xEps = deform(gl_Vertex + vec4(EPSILON, 0.0, 0.0, 0.0));
     //vec4 yEps = deform(gl_Vertex + vec4(0.0, EPSILON, 0.0, 0.0));

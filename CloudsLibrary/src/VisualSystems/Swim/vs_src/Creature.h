@@ -57,6 +57,8 @@ namespace itg
         
         typedef shared_ptr<Creature> Ptr;
         
+        static float fogStart, fogEnd;
+        
 		Creature();
         ~Creature() {}
         

@@ -33,6 +33,9 @@
 
 namespace itg
 {
+    float Creature::fogStart = 1000.f;
+    float Creature::fogEnd = 1200.f;
+    
 	Creature::Creature() : magic(false)
 	{
 	}

@@ -20,6 +20,10 @@ void CloudsVisualSystemHistogram::selfSetupGui(){
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     
     customGui->addSpacer();
+    customGui->addToggle("ALPHA BLENDING", &bDoAlphaBlending);
+    customGui->addToggle("DEPTH TESTING", &bDoDepthTesting);
+    
+    customGui->addSpacer();
     vector<string> modes;
     modes.push_back("BARS");
     modes.push_back("LINES");
@@ -88,6 +92,8 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     
     else if (e.widget->getName() == "RANDOM" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_RANDOM;
+        
+        stopSound();
 	}
     else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_AUDIO;
@@ -129,6 +135,9 @@ void CloudsVisualSystemHistogram::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemHistogram::selfSetup()
 {
     seed = int(ofRandom(20));
+    
+    bDoAlphaBlending = true;
+    bDoDepthTesting  = false;
     
     mode = HISTOGRAM_MODE_BARS;
     source = HISTOGRAM_SOURCE_RANDOM;
@@ -303,8 +312,8 @@ void CloudsVisualSystemHistogram::selfDraw()
     ofPushMatrix();
     ofPushStyle();
     {
-        ofEnableAlphaBlending();
-        glDisable(GL_DEPTH_TEST);
+        bDoAlphaBlending? ofEnableAlphaBlending() : ofDisableAlphaBlending();
+        bDoDepthTesting? glEnable(GL_DEPTH_TEST) : glDisable(GL_DEPTH_TEST);
         ofTranslate((colsPerRow * (colWidth + colSpacer)) * -0.5, 0);
  
         if (mode == HISTOGRAM_MODE_LINES) {
@@ -366,11 +375,16 @@ void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemHistogram::reloadSound()
+void CloudsVisualSystemHistogram::stopSound()
 {
     // close whatever sound was previously open
     soundPlayer.stop();
     soundPlayer.unloadSound();
+}
+
+void CloudsVisualSystemHistogram::reloadSound()
+{
+    stopSound();
     
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
     if (soundPlayer.loadSound(file.getAbsolutePath())) {
