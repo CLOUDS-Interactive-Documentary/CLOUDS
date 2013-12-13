@@ -18,7 +18,9 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 void CloudsVisualSystemTwitter::selfSetup()
 {
     loadJSONData();
-    parseClusterNetwork(getVisualSystemDataPath() +"/twitter.net");
+//    createPajekNetwork();
+//    while (1);
+    parseClusterNetwork(getVisualSystemDataPath() +"/twitterOneCircular.net");
     baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
     tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     loadMesh();
@@ -232,7 +234,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
                             }
                         else{
-                            cout<<"link between "<<current[i].name<<" and "<<t.name<<" not found in map"<<endl;
+//                            cout<<"link between "<<current[i].name<<" and "<<t.name<<" not found in map"<<endl;
                         }
                         
                     }
@@ -338,10 +340,10 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
     map<string,int>::iterator it;
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
         
-        if(it->second > 3){
+//       x if(it->second > 1){
             Tweeter t = Tweeter(it->first, tweeters.size());
             tweeters.push_back(t);
-        }
+//        }
     }
 }
 
