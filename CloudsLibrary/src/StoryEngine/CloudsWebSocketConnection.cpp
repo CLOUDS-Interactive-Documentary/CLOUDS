@@ -90,13 +90,9 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	}
 	
 	char message[1024];
+    //{"clip" : { "name" : "%s", "id" : "%s", "duration" : %f,"topic" : "%s" "example" : "%s" } }"
 	sprintf(message,
-			"{ \"clip\" : { \"name\" : \"%s\", \
-			\"id\" : \"%s\", \
-			\"duration\" : %f, \
-			\"topic\" : \"%s\" \
-			\"example\" : \%s\" \
-		} }",
+			"{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f,\"topic\" : \"%s\", \"example\" : \"%s\" } }",
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration(),

@@ -4,8 +4,10 @@ var debug = false;
 Controller = {	
 	dragging: false,
 	modes: {PROJECT_EXAMPLE:0, GRAPH:1},	
-	onDataLoaded: function(peopleData, graphData, projectData){	
+	onDataLoaded: function(peopleData, graphData, projectData){			
 		GraphView.init();	
+		ProjectExampleView.init();
+		
 		this.mode = Controller.modes.GRAPH,
 		//load data into Model			
 		$(peopleData).find('person').each(Controller.addPerson);		
@@ -109,11 +111,25 @@ Controller = {
 		
 	},
 	onStoryChanged: function(message){
-		if(message.clip){
-			Controller.setCurrentClip(message.clip.id);
-			Controller.setCurrentTopic(message.clip.topic);
-			Controller.setCurrentProjectExample(message.clip.project_example_title);
-		}
+
+		if(message.clip){		
+			//console.log(message.clip.example);	
+			if(message.clip.example){
+				//play example right away
+				Controller.setCurrentProjectExample(message.clip.example);
+				//just update model, don't update view:
+				Model.setClip(message.clip.id); 
+				Model.setTopic(message.clip.topic);
+				Controller.setMode(Controller.modes.PROJECT_EXAMPLE);
+
+			}
+			else{
+				Controller.setMode(Controller.modes.GRAPH);
+				Controller.setCurrentClip(message.clip.id);
+				Controller.setCurrentTopic(message.clip.topic);
+
+			}
+		}	
 		
 	},
 	onMouseDown: function(){
@@ -156,10 +172,10 @@ Controller = {
 	setMode: function(mode){
 		Controller.mode = mode;
 		if(Controller.mode == Controller.modes.PROJECT_EXAMPLE){
-			$('#project_info').fadeIn();
-			$('#video').fadeIn();
 			$('#clip_info').fadeOut();
 			$('#graph').fadeOut();
+			$('#project_info').fadeIn();
+			$('#video').fadeIn();
 		}
 		else{
 			$('#project_info').fadeOut();
@@ -222,7 +238,11 @@ Controller = {
 		var pos = Math.floor(Math.random() * projects.length);
 		this.setCurrentProjectExample(projects[pos]);
 	},
+	test: function(){
+		console.log("loaded!");
+	},
 	init : function(){
+		//loader.loadXML("../../links/clouds_links_db.xml"		
 		$.when( loader.loadXML("xml/people.xml"), loader.loadXML("xml/2013_7_25_Clouds_conversation.svg") ,loader.loadXML("xml/projects.xml")).done(Controller.onDataLoaded);
 			
 	},

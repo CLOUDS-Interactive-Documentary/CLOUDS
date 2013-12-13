@@ -1,6 +1,6 @@
 
 JSON message: 
-message { "projectExample" : { "title" : "Drawn1"}
+message { “clip” : { “p : "Drawn1"}
 
 XML format: 
 <clouds>
