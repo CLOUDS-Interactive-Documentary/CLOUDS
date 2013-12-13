@@ -76,10 +76,11 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
 	
 	char message[1024];
-	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f } }",
+	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f, \"topic\" : \"%s\" } }",
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
-			args.chosenClip.getDuration() );
+			args.chosenClip.getDuration(),
+			currentTopic.c_str());
 	server.send( message );
 	cout << " message " << message << endl;
 }
@@ -97,10 +98,13 @@ void CloudsWebSocketConnection::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void CloudsWebSocketConnection::topicChanged(CloudsTopicEventArgs& args){
-	char message[1024];
-	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
-	server.send( message );
-	cout << " message " << message << endl;
+//	char message[1024];
+//	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
+//	server.send( message );
+//	cout << " message " << message << endl;
+	
+	currentTopic = args.topic;
+	
 }
 
 void CloudsWebSocketConnection::preRollRequested(CloudsPreRollEventArgs& args){
