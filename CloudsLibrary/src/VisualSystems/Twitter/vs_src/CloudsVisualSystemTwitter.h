@@ -66,6 +66,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     string getDateAsString(Date d);
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
+    void loadGraphFromPath(string filePath);
     
     ofxJSONElement result;
     

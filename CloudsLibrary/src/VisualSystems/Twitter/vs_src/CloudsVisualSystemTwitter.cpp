@@ -31,9 +31,9 @@ void CloudsVisualSystemTwitter::selfSetup()
     
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
-
+    
     updateMeshFromTweets(currentDateIndex);
-
+    
     ofEnableAlphaBlending();
 }
 
@@ -47,7 +47,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	clusterGui = new ofxUISuperCanvas("TWITTER PARAMS", gui);
     clusterGui->copyCanvasStyle(gui);
 	clusterGui->copyCanvasProperties(gui);
-//	clusterGui->setName("custom");
+    clusterGui->addButton("LOAD GRAPH", false);
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
     clusterGui->addSlider("EDGE DECAY", 0.1, 1., &edgeDecayRate);
@@ -67,7 +67,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
-
+    
     ofFile f = ofFile();
     
     ofDirectory dir(getVisualSystemDataPath()+"tweets/");
@@ -230,7 +230,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
-                            }
+                        }
                         else{
                         }
                         
@@ -280,29 +280,29 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             
-    
-                edgeMesh.addVertex(tweeters[j].position);
-                edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(baseColor);
-                tweeters[j].edgeVertexIndex = currentIndex;
-                
-                currentIndex++;
-                Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-                
-                edgeMesh.addVertex(t.position);
-                edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(baseColor);
-                t.edgeVertexIndex = currentIndex;
             
-                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-                lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
+            edgeMesh.addVertex(tweeters[j].position);
+            edgeMesh.addNormal(ofVec3f(0,0,0));
+            edgeMesh.addColor(baseColor);
+            tweeters[j].edgeVertexIndex = currentIndex;
+            
             currentIndex++;
-
+            Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
+            
+            edgeMesh.addVertex(t.position);
+            edgeMesh.addNormal(ofVec3f(0,0,0));
+            edgeMesh.addColor(baseColor);
+            t.edgeVertexIndex = currentIndex;
+            
+            links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+            lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
+            currentIndex++;
+            
         }
         
         edgeMesh.setMode(OF_PRIMITIVE_LINES);
         cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
-
+        
     }
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
@@ -439,12 +439,42 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
     
-
-    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
-    baseColor.a = baseAlpha;
-    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
-    tweetColor.a =tweetAlpha;
-//    reloadMeshColor();
+    if(e.getName() == "LOAD GRAPH"){
+        cout<<"Im in load images"<<endl;
+        ofxUIToggle* t  = (ofxUIToggle*) e.widget;
+        if (t->getValue()) {
+            ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, "graphs/");
+            
+            if(result.bSuccess && result.fileName.length())
+            {
+                loadGraphFromPath(result.filePath);
+            }
+            
+            t->setValue(false);
+            
+        }
+    }
+    else{
+        
+        baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
+        baseColor.a = baseAlpha;
+        tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
+        tweetColor.a =tweetAlpha;
+    }
+    
+    
+}
+void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
+    cout<<filePath<<endl;
+    
+    if(ofFile::doesFileExist(filePath)){
+        parseClusterNetwork(filePath);
+        loadMesh();
+    }
+    else{
+        cout<<filePath<<" does not exist "<<endl;
+    }
+    
 }
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemTwitter::selfSetupSystemGui(){
@@ -486,7 +516,7 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
-
+    
     if(  ofGetFrameNum() %refreshRate <1){
         currentDateIndex--;
         if (currentDateIndex <= 0) {
@@ -494,7 +524,7 @@ void CloudsVisualSystemTwitter::selfUpdate()
         }
         updateMeshFromTweets(currentDateIndex);
     }
-   updateMesh();
+    updateMesh();
     
 }
 
@@ -504,7 +534,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 {
     
     glDisable(GL_DEPTH_TEST);
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetBackgroundColor(0,0,0);
     ofScale(10, 10);
     
@@ -518,8 +548,8 @@ void CloudsVisualSystemTwitter::selfDraw()
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-
-
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -540,7 +570,7 @@ void CloudsVisualSystemTwitter::selfEnd()
 // this is called when you should clear all the memory and delet anything you made in setup
 void CloudsVisualSystemTwitter::selfExit()
 {
-        
+    
 }
 
 //events are called when the system is active
@@ -556,30 +586,30 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     if(args.key == 'j'){
         cout<<baseColor.getHue()<<" , "<<baseColor.getSaturation()<<" , "<<baseColor.getBrightness()<<endl;
     }
-
+    
 }
 void CloudsVisualSystemTwitter::drawObject(const ofVec3f& pos)
 {
-//    if (mode == BILLBOARD_CYLINDRICAL) {
+    //    if (mode == BILLBOARD_CYLINDRICAL) {
     
-        ofxBillboardBeginCylindrical(getCameraPosition(), pos);
-//    }
-//    else if (mode == BILLBOARD_CYLINDRICAL_CHEAT) {
-//        ofxBillboardBeginCylindricalCheat(pos);
-//    }
-//    else if (mode == BILLBOARD_SPHERICAL) {
-//        ofxBillboardBeginSpherical(cam.getGlobalPosition(), pos);
-//    }
-//    else if (mode == BILLBOARD_SPHERICAL_CHEAT) {
-//        ofxBillboardBeginSphericalCheat(pos);
-//    }
-//    else if (mode == BILLBOARD_SPHERICAL_OBVIOUS) {
-//        ofxBillboardBeginSphericalObvious(cam.getGlobalPosition(), pos);
-//    }
-//    else {  // mode == BILLBOARD_NONE
-//        ofPushMatrix();
-//        ofTranslate(pos);
-//    }
+    ofxBillboardBeginCylindrical(getCameraPosition(), pos);
+    //    }
+    //    else if (mode == BILLBOARD_CYLINDRICAL_CHEAT) {
+    //        ofxBillboardBeginCylindricalCheat(pos);
+    //    }
+    //    else if (mode == BILLBOARD_SPHERICAL) {
+    //        ofxBillboardBeginSpherical(cam.getGlobalPosition(), pos);
+    //    }
+    //    else if (mode == BILLBOARD_SPHERICAL_CHEAT) {
+    //        ofxBillboardBeginSphericalCheat(pos);
+    //    }
+    //    else if (mode == BILLBOARD_SPHERICAL_OBVIOUS) {
+    //        ofxBillboardBeginSphericalObvious(cam.getGlobalPosition(), pos);
+    //    }
+    //    else {  // mode == BILLBOARD_NONE
+    //        ofPushMatrix();
+    //        ofTranslate(pos);
+    //    }
     
     ofSetColor(ofColor::whiteSmoke);
     string cur = getDateAsString( dateIndex[currentDateIndex]);
