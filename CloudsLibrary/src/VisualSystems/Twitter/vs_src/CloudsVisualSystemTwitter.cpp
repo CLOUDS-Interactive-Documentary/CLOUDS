@@ -269,7 +269,13 @@ void CloudsVisualSystemTwitter::updateMesh(){
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
         ofFloatColor c = edgeMesh.getColor(i);
         if(c != baseColor){
-            c =  (c - baseColor)*edgeDecayRate ;
+            float h = (c.getHue() - baseColor.getHue())*edgeDecayRate;
+            float s = (c.getSaturation() - baseColor.getSaturation())*edgeDecayRate;
+            float b = (c.getBrightness() - baseColor.getBrightness())*edgeDecayRate;
+            float a = (c.a - baseColor.a)*edgeDecayRate;
+            c.setHsb(c.getHue()-h,c.getSaturation()-s,c.getBrightness()-b);
+            c.a -= a;
+
             edgeMesh.setColor(i,c);
         }
         else{
@@ -568,7 +574,7 @@ void CloudsVisualSystemTwitter::selfDraw()
     ofSetBackgroundColor(0,0,0);
     ofScale(10, 10);
     
-    glPointSize(3);
+    glPointSize(10);
     
     nodeMesh.draw();
     edgeMesh.draw();
