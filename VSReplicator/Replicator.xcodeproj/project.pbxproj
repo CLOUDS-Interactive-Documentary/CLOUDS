@@ -196,6 +196,10 @@
 		E7D32FAE1751C626006706ED /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F9B1751C626006706ED /* ofxSwarmBehavior.cpp */; };
 		E7D32FAF1751C626006706ED /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D32F9E1751C626006706ED /* ofxVerletSolver.cpp */; };
 		E7D3302D1751C69E006706ED /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */; };
+		E7DC9DAB185B8EDA004AF6BC /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DC9DA4185B8EDA004AF6BC /* CloudsInput.cpp */; };
+		E7DC9DAC185B8EDA004AF6BC /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DC9DA4185B8EDA004AF6BC /* CloudsInput.cpp */; };
+		E7DC9DAF185B8EDA004AF6BC /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DC9DA9185B8EDA004AF6BC /* CloudsInputMouse.cpp */; };
+		E7DC9DB0185B8EDA004AF6BC /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7DC9DA9185B8EDA004AF6BC /* CloudsInputMouse.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 /* End PBXBuildFile section */
@@ -500,6 +504,11 @@
 		E7D330151751C689006706ED /* ofxLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLight.h; sourceTree = "<group>"; };
 		E7D330291751C69E006706ED /* ofxCameraSaveLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraSaveLoad.cpp; sourceTree = "<group>"; };
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
+		E7DC9DA4185B8EDA004AF6BC /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		E7DC9DA5185B8EDA004AF6BC /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		E7DC9DA6185B8EDA004AF6BC /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		E7DC9DA9185B8EDA004AF6BC /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		E7DC9DAA185B8EDA004AF6BC /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -700,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
+				E7DC9DA3185B8EDA004AF6BC /* Input */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -1234,6 +1244,19 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		E7DC9DA3185B8EDA004AF6BC /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				E7DC9DA4185B8EDA004AF6BC /* CloudsInput.cpp */,
+				E7DC9DA5185B8EDA004AF6BC /* CloudsInput.h */,
+				E7DC9DA6185B8EDA004AF6BC /* CloudsInputEvents.h */,
+				E7DC9DA9185B8EDA004AF6BC /* CloudsInputMouse.cpp */,
+				E7DC9DAA185B8EDA004AF6BC /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../../CloudsLibrary/src/Input;
+			sourceTree = "<group>";
+		};
 		E7E95E5C1733624100294C72 /* CloudsLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,6 +1461,8 @@
 				85E1C76118304940003FE0EE /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				85E1C76218304940003FE0EE /* CloudsVisualSystem.cpp in Sources */,
 				85E1C8FA18304B6D003FE0EE /* ofxOculusRift.cpp in Sources */,
+				E7DC9DAC185B8EDA004AF6BC /* CloudsInput.cpp in Sources */,
+				E7DC9DB0185B8EDA004AF6BC /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,6 +1546,8 @@
 				E72FF12217E688FE0007780D /* CloudsRGBDCamera.cpp in Sources */,
 				E72FF12317E688FE0007780D /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				E72FF12417E688FE0007780D /* CloudsVisualSystem.cpp in Sources */,
+				E7DC9DAB185B8EDA004AF6BC /* CloudsInput.cpp in Sources */,
+				E7DC9DAF185B8EDA004AF6BC /* CloudsInputMouse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
