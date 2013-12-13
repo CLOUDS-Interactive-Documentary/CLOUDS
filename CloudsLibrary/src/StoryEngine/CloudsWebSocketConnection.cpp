@@ -7,6 +7,7 @@
 //
 
 #include "CloudsWebSocketConnection.h"
+#include "CloudsGlobal.h"
 CloudsWebSocketConnection::CloudsWebSocketConnection(){
 	
 }
@@ -17,6 +18,14 @@ void CloudsWebSocketConnection::setup(){
     options.port = 9093;
     options.protocol = "of-protocol";
     options.bBinaryProtocol = true;
+    
+    options.documentRoot = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/web");
+    cout << options.documentRoot << endl;
+    options.sslCertPath = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/ssl/libwebsockets-test-server.pem");
+    options.sslKeyPath = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/ssl/libwebsockets-test-server.key.pem");
+
+    
+    
     
     bool connected = server.setup( options );
     if(connected){
