@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>446.000000000</XPosition>
+    <XPosition>445.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -88,40 +88,40 @@
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyOne</Name>
-    <Value>69</Value>
+    <Value>42</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numJellyTwo</Name>
-    <Value>50</Value>
+    <Value>42</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numGreyFish</Name>
-    <Value>0</Value>
+    <Value>146</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>greySizeAverage</Name>
-    <Value>0.599999964</Value>
+    <Value>0.585714281</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>greySizeStdDeviation</Name>
-    <Value>0.073891625</Value>
+    <Value>0.201970443</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
     <Name>numYellowFish</Name>
-    <Value>0</Value>
+    <Value>127</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>yellowSizeAverage</Name>
-    <Value>0.514285743</Value>
+    <Value>0.400000006</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>yellowSizeStdDeviation</Name>
-    <Value>0.093596056</Value>
+    <Value>0.137931034</Value>
 </Widget>

@@ -53,8 +53,8 @@ namespace itg
         mesh.clear();
         for (unsigned i = 0; i < numParticles; ++i)
         {
-            mesh.addVertex(ofVec3f(ofRandom(-Creature::fogEnd, Creature::fogEnd),
-                                   ofRandom(-Creature::fogEnd, Creature::fogEnd),
+            mesh.addVertex(ofVec3f(ofRandom(-800.f, 800.f),
+                                   ofRandom(-800.f, 800.f),
                                    ofRandom(-Creature::fogEnd, 0)));
             
             mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(0.2f, 0.8f)));
@@ -83,7 +83,7 @@ namespace itg
                     data.y = .5f;
                     break;
             }
-            data.z = ofRandom(10.f, 200.f);
+            data.z = ofRandom(0.1f, 100.f);
             mesh.addNormal(data);
         }
     }

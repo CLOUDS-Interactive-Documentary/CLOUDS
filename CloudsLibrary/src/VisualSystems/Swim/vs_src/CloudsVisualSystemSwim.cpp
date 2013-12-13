@@ -23,7 +23,7 @@ void CloudsVisualSystemSwim::selfSetup()
 {
     ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
     
-    snow.init(getVisualSystemDataPath(), 65536);
+    snow.init(getVisualSystemDataPath(), 100000);
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -80,8 +80,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addMinimalSlider("fogStart", 0.f, 10000.f, &Creature::fogStart);
-    rdrGui->addMinimalSlider("fogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
+    rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -118,7 +118,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("yellowSizeAverage", .1f, 3.f, &creatures.fishTwoParams.sizeAverage);
     rdrGui->addMinimalSlider("yellowSizeStdDeviation", 0.f, 1.f, &creatures.fishTwoParams.sizeStdDeviation);
     
-    rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
+    //rdrGui->addMinimalSlider("fishTexAmt", 0.f, 1.f, &ModelCreature::texAmount);
 }
 
 //These methods let us add custom GUI parameters and respond to their events
@@ -161,6 +161,16 @@ void CloudsVisualSystemSwim::addSliders(ofxUISuperCanvas* gui, JellyParams& para
     gui->addRangeSlider("superformula m1 (range)", 2, 20, &params.m1Min, &params.m1Max);
     gui->addRangeSlider("superformula m2 (range)", 2, 20, &params.m2Min, &params.m2Max);
 }
+
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
+{
+    creatures.generate();
+    snow.generate();
+}
+
 
 void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
 {
@@ -207,14 +217,6 @@ void CloudsVisualSystemSwim::selfSetupSystemGui(){
 }
 
 void CloudsVisualSystemSwim::guiSystemEvent(ofxUIEventArgs &e){
-	
-}
-
-
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath) {
 	
 }
 

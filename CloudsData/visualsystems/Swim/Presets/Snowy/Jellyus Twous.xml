@@ -2,23 +2,23 @@
     <Kind>42</Kind>
     <Name>Jellyus Twous</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>237.000000000</XPosition>
+    <XPosition>233.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>25</Kind>
     <Name>body h</Name>
-    <Value>0.645320177</Value>
+    <Value>0.113300495</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body s</Name>
-    <Value>0.857142866</Value>
+    <Value>0.911330044</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>body b</Name>
-    <Value>0.645320177</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -28,43 +28,43 @@
 <Widget>
     <Kind>25</Kind>
     <Name>tentacles h</Name>
-    <Value>0.645320177</Value>
+    <Value>0.064039409</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>tentacles s</Name>
-    <Value>0.748768449</Value>
+    <Value>0.886699498</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>tentacles b</Name>
-    <Value>0.857142866</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>pulse amt (range)</Name>
-    <HighValue>0.356650263</HighValue>
-    <LowValue>0.149753690</LowValue>
+    <HighValue>0.344827741</HighValue>
+    <LowValue>0.210837439</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>width average</Name>
-    <Value>21.231527328</Value>
+    <Value>24.975368500</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>width std dev</Name>
-    <Value>13.793103218</Value>
+    <Value>22.660099030</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>length average</Name>
-    <Value>19.359605789</Value>
+    <Value>61.477832794</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>length std dev</Name>
-    <Value>9.852216721</Value>
+    <Value>57.142860413</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
@@ -75,8 +75,8 @@
 <Widget>
     <Kind>6</Kind>
     <Name>superformula m1 (range)</Name>
-    <HighValue>12.197046280</HighValue>
-    <LowValue>7.054187775</LowValue>
+    <HighValue>12.906404495</HighValue>
+    <LowValue>7.763546944</LowValue>
 </Widget>
 <Widget>
     <Kind>6</Kind>

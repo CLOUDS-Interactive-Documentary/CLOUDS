@@ -2,7 +2,7 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>872.999938965</XPosition>
+    <XPosition>869.000000000</XPosition>
     <YPosition>355.000000000</YPosition>
 </Canvas>
 <Widget>
@@ -13,15 +13,15 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Deepsea</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Snowy</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>whatevz</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Snowy</Name>
+    <Value>1</Value>
 </Widget>
