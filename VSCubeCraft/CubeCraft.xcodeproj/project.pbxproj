@@ -514,6 +514,7 @@
 		50618E701853A93C00DD8FD8 /* post.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.vert; sourceTree = "<group>"; };
 		50618E711853A93C00DD8FD8 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
 		50618E721853A93C00DD8FD8 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
+		50CB0D821858EE410072050F /* CubeCraftDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = CubeCraftDebug.app; sourceTree = "<group>"; };
 		50CB0D851858EE410072050F /* defaultColorPalette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultColorPalette.png; sourceTree = "<group>"; };
 		50CB0D861858EE410072050F /* defaultColors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = defaultColors.xml; sourceTree = "<group>"; };
 		50CB0D871858EE410072050F /* NewMedia Fett.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewMedia Fett.ttf"; sourceTree = "<group>"; };
@@ -1265,6 +1266,7 @@
 		50CB0D811858EE410072050F /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				50CB0D821858EE410072050F /* CubeCraftDebug.app */,
 				50CB0D831858EE410072050F /* data */,
 			);
 			path = bin;
