@@ -96,7 +96,6 @@ namespace itg
         glEnable(GL_POINT_SPRITE);
         ofEnableAlphaBlending();
         shader.begin();
-        shader.setUniform1f("fogStart", Creature::fogStart);
         shader.setUniform1f("fogEnd", Creature::fogEnd);
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);

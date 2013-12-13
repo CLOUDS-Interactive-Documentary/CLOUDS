@@ -16,10 +16,6 @@ uniform float fogEnd;
 varying vec3 nEye;
 varying vec3 vEye;
 varying float fogAmount;
-//varying float superOffset;
-
-//varying vec3 lEye;
-
 
 vec4 deform(vec4 v)
 {
@@ -33,9 +29,11 @@ void main()
     gl_TexCoord[0] = gl_MultiTexCoord0;
     
     vec4 vertex = deform(gl_Vertex);
-    //superOffset = 0.0;//length(vertex) - size;
+    
     vec4 vertexEye = gl_ModelViewMatrix * vertex;
+    
     vEye = vertexEye.xyz;
+    
     nEye = gl_NormalMatrix * gl_Normal;
     
     fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
