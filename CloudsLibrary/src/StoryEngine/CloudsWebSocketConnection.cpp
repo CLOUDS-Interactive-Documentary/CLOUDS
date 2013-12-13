@@ -107,7 +107,6 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 			args.currentTopic.c_str(),
 			"Drawn1",
 			"How do you sketch with code?");
-	
 //			example.c_str(),
 //			lastQuestionAsked.c_str());
 	server.send( message );

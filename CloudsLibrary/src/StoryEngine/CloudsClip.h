@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
+#include "CloudsProjectExample.h"
 
 class CloudsClip {
   public:
@@ -18,9 +19,10 @@ class CloudsClip {
 	
 	string fcpFileId;
     string sourceVideoFilePath;
-//	ofColor color;
-	
-	string exampleId;
+
+	//project example stuff
+	bool hasProjectExample;
+	CloudsProjectExample example;
 	
 	ofVec3f networkPosition;
 	
@@ -68,7 +70,6 @@ class CloudsClip {
 	float getDuration();
     string getLinkName();
 	string getMetaInfo();
-//    string getStartingQuestion();
 	string getSceneFolder();
 	
 	string getID();
