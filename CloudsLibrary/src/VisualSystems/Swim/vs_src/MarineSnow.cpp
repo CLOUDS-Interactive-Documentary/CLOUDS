@@ -30,24 +30,80 @@
  *
  */
 #include "MarineSnow.h"
+#include "Creature.h"
 
 namespace itg
 {
-    void MarineSnow::init(unsigned numParticles)
+    void MarineSnow::init(const string& dataPath, unsigned numParticles)
     {
+        this->numParticles = numParticles;
+        mesh.setMode(OF_PRIMITIVE_POINTS);
+        shader.load(dataPath + "shaders/snow");
+        ofDisableArbTex();
+        tex.setCompression(OF_COMPRESS_ARB);
+        tex.loadImage(dataPath + "images/snow.png");
+        tex.bind();
+        glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+        tex.unbind();
+        ofEnableArbTex();
+    }
+    
+    void MarineSnow::generate()
+    {
+        mesh.clear();
         for (unsigned i = 0; i < numParticles; ++i)
         {
+            mesh.addVertex(ofVec3f(ofRandom(-Creature::fogEnd, Creature::fogEnd),
+                                   ofRandom(-Creature::fogEnd, Creature::fogEnd),
+                                   ofRandom(-Creature::fogEnd, 0)));
             
+            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(0.2f, 0.8f)));
+            
+            // stick texture offset and size into normal
+            ofVec3f data;
+            switch (rand() % 4)
+            {
+                case 0:
+                    data.x = 0.f;
+                    data.y = 0.f;
+                    break;
+                
+                case 1:
+                    data.x = .5f;
+                    data.y = 0.f;
+                    break;
+                    
+                case 2:
+                    data.x = 0.f;
+                    data.y = .5f;
+                    break;
+                
+                case 3:
+                    data.x = .5f;
+                    data.y = .5f;
+                    break;
+            }
+            data.z = ofRandom(10.f, 200.f);
+            mesh.addNormal(data);
         }
     }
     
-    void MarineSnow::update(const ofVec3f& camPosition, float camZSpeed)
+    void MarineSnow::draw(const ofCamera& cam)
     {
-        
-    }
-    
-    void MarineSnow::draw()
-    {
+        ofPushStyle();
+        glPushAttrib(GL_ENABLE_BIT);
+        glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
+        glEnable(GL_POINT_SPRITE);
+        ofEnableAlphaBlending();
+        shader.begin();
+        shader.setUniform1f("fogStart", Creature::fogStart);
+        shader.setUniform1f("fogEnd", Creature::fogEnd);
+        shader.setUniform1f("nearClip", cam.getNearClip());
+        shader.setUniform1f("camZ", cam.getPosition().z);
+        shader.setUniformTexture("tex", tex, 1);
         mesh.draw();
+        shader.end();
+        glPopAttrib();
+        ofPopStyle();
     }
 }

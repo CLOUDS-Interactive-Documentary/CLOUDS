@@ -23,7 +23,7 @@ void CloudsVisualSystemSwim::selfSetup()
 {
     ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
     
-    snow.init(5000);
+    snow.init(getVisualSystemDataPath(), 30000);
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -39,6 +39,7 @@ void CloudsVisualSystemSwim::selfBegin()
 {
     // adding this here as custom gui data is loaded after setup
 	creatures.generate();
+    snow.generate();
 }
 
 //normal update call
@@ -49,11 +50,11 @@ void CloudsVisualSystemSwim::selfUpdate()
     // cam
     yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
     zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
-    //getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
+    getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
     getCameraRef().setOrientation(ofVec3f(0, yRot, 0.f));
+    getCameraRef().setFarClip(Creature::fogEnd);
 
-    snow.update(getCameraRef().getPosition(), zSpeed);
-    bubbles.update();
+    //bubbles.update();
     creatures.update(getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
 }
 
@@ -62,8 +63,8 @@ void CloudsVisualSystemSwim::selfUpdate()
 void CloudsVisualSystemSwim::selfDraw()
 {
     creatures.draw();
-    bubbles.draw();
-    snow.draw();
+    //bubbles.draw();
+    snow.draw(getCameraRef());
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
@@ -187,6 +188,7 @@ void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
         ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
         if (toggle->getValue())
         {
+            snow.generate();
             creatures.generate();
             toggle->setValue(false);
         }

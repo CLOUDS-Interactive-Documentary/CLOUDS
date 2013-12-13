@@ -29,7 +29,7 @@ void main()
     vec4 vertexEye = gl_ModelViewMatrix * vec4(vertex.xyz, 1.0);
     vEye = vertexEye.xyz;
     
-    fogAmount = clamp((length(vEye) - fogStart) / fogEnd, 0.0, 1.0);
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     
     //vec4 xEps = deform(gl_Vertex + vec4(EPSILON, 0.0, 0.0, 0.0));
     //vec4 yEps = deform(gl_Vertex + vec4(0.0, EPSILON, 0.0, 0.0));

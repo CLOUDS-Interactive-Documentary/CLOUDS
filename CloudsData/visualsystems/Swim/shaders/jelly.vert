@@ -38,7 +38,7 @@ void main()
     vEye = vertexEye.xyz;
     nEye = gl_NormalMatrix * gl_Normal;
     
-    fogAmount = clamp((length(vEye) - fogStart) / fogEnd, 0.0, 1.0);
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     
     gl_Position = gl_ProjectionMatrix * vertexEye;
 }

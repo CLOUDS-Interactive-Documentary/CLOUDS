@@ -29,6 +29,8 @@
 		284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61E1859D42200780DBB /* OscTypes.cpp */; };
 		284AE6701859DA6600780DBB /* PointCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE66E1859DA6600780DBB /* PointCreature.cpp */; };
 		284AE6771859FC4E00780DBB /* MarineSnow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6751859FC4E00780DBB /* MarineSnow.cpp */; };
+		284AE681185A06B200780DBB /* snow.frag in Sources */ = {isa = PBXBuildFile; fileRef = 284AE67F185A06B200780DBB /* snow.frag */; };
+		284AE682185A06B200780DBB /* snow.vert in Sources */ = {isa = PBXBuildFile; fileRef = 284AE680185A06B200780DBB /* snow.vert */; };
 		285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */; };
 		285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2068182FFFEE0065BCAE /* BloomPass.cpp */; };
 		285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C206A182FFFEE0065BCAE /* ContrastPass.cpp */; };
@@ -247,6 +249,8 @@
 		284AE67C1859FFE500780DBB /* fish.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = fish.vert; sourceTree = "<group>"; };
 		284AE67D1859FFE500780DBB /* jelly.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = jelly.frag; sourceTree = "<group>"; };
 		284AE67E1859FFE500780DBB /* jelly.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = jelly.vert; sourceTree = "<group>"; };
+		284AE67F185A06B200780DBB /* snow.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = snow.frag; sourceTree = "<group>"; };
+		284AE680185A06B200780DBB /* snow.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = snow.vert; sourceTree = "<group>"; };
 		285185DE1837D1B8009D8339 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
 		285C2067182FFFEE0065BCAE /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
@@ -773,6 +777,8 @@
 		284AE6781859FFE500780DBB /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				284AE67F185A06B200780DBB /* snow.frag */,
+				284AE680185A06B200780DBB /* snow.vert */,
 				284AE6791859FFE500780DBB /* bubble.frag */,
 				284AE67A1859FFE500780DBB /* bubble.vert */,
 				284AE67B1859FFE500780DBB /* fish.frag */,
@@ -1837,6 +1843,7 @@
 				285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */,
 				284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */,
 				284AE6201859D42200780DBB /* ofxOscBundle.cpp in Sources */,
+				284AE681185A06B200780DBB /* snow.frag in Sources */,
 				285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */,
 				285C209C182FFFEE0065BCAE /* ConvolutionPass.cpp in Sources */,
 				285C209D182FFFEE0065BCAE /* DofAltPass.cpp in Sources */,
@@ -1850,6 +1857,7 @@
 				285C20A4182FFFEE0065BCAE /* KaleidoscopePass.cpp in Sources */,
 				285C20A5182FFFEE0065BCAE /* LimbDarkeningPass.cpp in Sources */,
 				285C20A6182FFFEE0065BCAE /* LUTPass.cpp in Sources */,
+				284AE682185A06B200780DBB /* snow.vert in Sources */,
 				285C20A7182FFFEE0065BCAE /* NoiseWarpPass.cpp in Sources */,
 				285C20A8182FFFEE0065BCAE /* PixelatePass.cpp in Sources */,
 				285C20A9182FFFEE0065BCAE /* PostProcessing.cpp in Sources */,

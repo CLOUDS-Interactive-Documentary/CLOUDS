@@ -38,11 +38,14 @@ namespace itg
     class MarineSnow
     {
     public:
-        void init(unsigned numParticles);
-        void update(const ofVec3f& camPosition, float camZSpeed);
-        void draw();
+        void init(const string& dataPath, unsigned numParticles);
+        void draw(const ofCamera& cam);
+        void generate();
         
     private:
+        unsigned numParticles;
+        ofImage tex;
         ofVboMesh mesh;
+        ofShader shader;
     };
 }
