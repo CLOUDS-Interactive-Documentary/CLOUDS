@@ -17,14 +17,32 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
-    baseModifier =ofFloatColor(0.0,0.0,1.0,0.1);
-    tweetModifier =ofFloatColor(1.0,0.0,0.0,1.0);
+    tweetModifier.r = 1.0;
+    tweetModifier.g = 0.65;
+    tweetModifier.b = 0.54;
+    tweetAlpha = 1.0;
+    
+    baseModifier.r = 0.62;
+    baseModifier.g = 0.46;
+    baseModifier.b = 0.90;
+    baseAlpha = 0.01;
     baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
     tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     refreshRate = 1000;
     edgeDecayRate = 0.8;
     meshExpansion = 100;
     pointSize =10;
+    
+    tweetModifier.r = 1.0;
+    tweetModifier.g = 0.65;
+    tweetModifier.b = 0.54;
+    tweetAlpha = 1.0;
+    
+    baseModifier.r = 0.62;
+    baseModifier.g = 0.46;
+    baseModifier.b = 0.90;
+    baseAlpha = 0.01;
+    
     xScale = 1;
     yScale = 1;
     zScale = 10;
@@ -46,7 +64,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addButton("LOAD GRAPH", false);
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
-    clusterGui->addSlider("EDGE DECAY", 0.1, 1., &edgeDecayRate);
+    clusterGui->addSlider("EDGE DECAY", 0.01, 0.9   , &edgeDecayRate);
     clusterGui->addSpacer();
     clusterGui->addSlider("TWEET HUE", 0.0, 1.0,&tweetModifier.r);
     clusterGui->addSlider("TWEET SAT", 0.0, 1.0, &tweetModifier.g);
@@ -242,6 +260,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
+                            edgeMesh.setColor(currentIndeces.second, tweetColor);
                         }
                         else{
                         }
@@ -266,17 +285,31 @@ void CloudsVisualSystemTwitter::updateMesh(){
         nodeMesh.setColor(i, c);
     }
     
+
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
         ofFloatColor c = edgeMesh.getColor(i);
         if(c != baseColor){
-            float h = (c.getHue() - baseColor.getHue())*edgeDecayRate;
-            float s = (c.getSaturation() - baseColor.getSaturation())*edgeDecayRate;
-            float b = (c.getBrightness() - baseColor.getBrightness())*edgeDecayRate;
-            float a = (c.a - baseColor.a)*edgeDecayRate;
-            c.setHsb(c.getHue()-h,c.getSaturation()-s,c.getBrightness()-b);
-            c.a -= a;
+            
+            float h = ofLerp(c.getHue(), baseColor.getHue(), edgeDecayRate);
+            float s = ofLerp(c.getSaturation(), baseColor.getSaturation(), edgeDecayRate);
+            float b = ofLerp(c.getBrightness() , baseColor.getBrightness(),edgeDecayRate);
+            float a =ofLerp(c.a , baseColor.a,edgeDecayRate);
+//            float h =  abs((c.getHue() - baseColor.getHue())*edgeDecayRate);
+//            float s =  abs((c.getSaturation() - baseColor.getSaturation())*edgeDecayRate);
+//            float b =  abs((c.getBrightness() - baseColor.getBrightness())*edgeDecayRate);
+//            float a = abs((c.a - baseColor.a)*edgeDecayRate);
+            c.setHsb(h, s, b);
+//            c.setHsb(c.getHue()-h,c.getSaturation()-s,c.getBrightness()-b);
+            c.a = a;
 
+//            c = (c-baseColor)*edgeDecayRate;
+            if(c == ofFloatColor::black){
+                edgeMesh.setColor(i, baseColor);
+            }
+            else{
             edgeMesh.setColor(i,c);
+            }
+            
         }
         else{
             edgeMesh.setColor(i, baseColor);
