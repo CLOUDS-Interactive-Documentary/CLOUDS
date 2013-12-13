@@ -46,13 +46,15 @@ void CloudsVisualSystemTwitter::selfSetup()
     xScale = 1;
     yScale = 1;
     zScale = 10;
-    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMenCircular.net");
+    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
-    ofEnableAlphaBlending();
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
+    ofEnableAlphaBlending();
+    ofEnableSmoothing();
     
 }
 
@@ -307,7 +309,7 @@ void CloudsVisualSystemTwitter::updateMesh(){
                 edgeMesh.setColor(i, baseColor);
             }
             else{
-            edgeMesh.setColor(i,c);
+                edgeMesh.setColor(i,c);
             }
             
         }
@@ -503,7 +505,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
             {
                 loadGraphFromPath(result.filePath);
             }
-            
+
         }
     }
     else if (e.getName() == "RELOAD MESH")
@@ -578,7 +580,12 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 //do things like ofRotate/ofTranslate here
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
-	
+
+	ofVec3f f = getCameraPosition();
+    
+//    f.z *= ofGetFrameNum()%360;
+
+//    set
 }
 
 //--------------------------------------------------------------
