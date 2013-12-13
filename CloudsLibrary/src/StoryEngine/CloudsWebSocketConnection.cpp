@@ -93,13 +93,23 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	char message[1024];
     //{"clip" : { "name" : "%s", "id" : "%s", "duration" : %f,"topic" : "%s" "example" : "%s" } }"
 	sprintf(message,
-			"{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f,\"topic\" : \"%s\", \"example\" : \"%s\" } }",
+			"{ \"clip\" : \
+				{ \"name\" : \"%s\", \
+				\"id\" : \"%s\", \
+				\"duration\" : %f, \
+				\"topic\" : \"%s\", \
+				\"example\" : \"%s\" \
+				\"question\" : \"%s\" \
+			} }",
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration(),
 			args.currentTopic.c_str(),
-			"Drawn1" );			
-//			example.c_str() );
+			"Drawn1",
+			"How do you sketch with code?");
+	
+//			example.c_str(),
+//			lastQuestionAsked.c_str());
 	server.send( message );
 	
 	cout << " message " << message << endl;
@@ -114,7 +124,7 @@ void CloudsWebSocketConnection::visualSystemEnded(CloudsVisualSystemEventArgs& a
 }
 
 void CloudsWebSocketConnection::questionAsked(CloudsQuestionEventArgs& args){
-	
+	lastQuestionAsked = args.question;
 }
 
 void CloudsWebSocketConnection::topicChanged(CloudsTopicEventArgs& args){
