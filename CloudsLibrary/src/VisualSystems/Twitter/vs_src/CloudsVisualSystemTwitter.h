@@ -113,7 +113,11 @@ protected:
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
     ofFloatColor baseColor;
+    ofFloatColor baseModifier;
     ofFloatColor tweetColor;
+    ofFloatColor tweetModifier;
+    
+    
     
     
     

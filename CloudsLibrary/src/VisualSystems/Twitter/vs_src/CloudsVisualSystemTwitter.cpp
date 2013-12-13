@@ -49,16 +49,16 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 //	clusterGui->setName("custom");
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
-    clusterGui->addSlider("EDGE DECAY", 0.001, 1., &edgeDecayRate);
+    clusterGui->addSlider("EDGE DECAY", 0.1, 1., &edgeDecayRate);
     clusterGui->addSpacer();
-    clusterGui->addSlider("TWEET HUE", 0.0, 1.0,&tweetHue);
-    clusterGui->addSlider("TWEET SAT", 0.0, 1.0, &tweetSat);
-    clusterGui->addSlider("TWEET BRI", 0.0, 1.0, &tweetBri);
+    clusterGui->addSlider("TWEET HUE", 0.0, 1.0,&tweetModifier.r);
+    clusterGui->addSlider("TWEET SAT", 0.0, 1.0, &tweetModifier.g);
+    clusterGui->addSlider("TWEET BRI", 0.0, 1.0, &tweetModifier.b);
     clusterGui->addSlider("TWEET ALPHA", 0.0, 1.0, &tweetAlpha);
     clusterGui->addSpacer();
-    clusterGui->addSlider("BASE HUE", 0.0, 1.0, &baseHue);
-    clusterGui->addSlider("BASE SAT", 0.0, 1.0, &baseSat);
-    clusterGui->addSlider("BASE BRI", 0.0, 1.0, &baseBri);
+    clusterGui->addSlider("BASE HUE", 0.0, 1.0, &baseModifier.r);
+    clusterGui->addSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
+    clusterGui->addSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
     clusterGui->addSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
@@ -230,8 +230,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(current[i].name, t.name)];
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
-                            edgeMesh.setColor(currentIndeces.second, tweetColor);
-                        }
+                            }
                         else{
                             cout<<"link between "<<current[i].name<<" and "<<t.name<<" not found in map"<<endl;
                         }
@@ -243,7 +242,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         }
         
         for (int i=0; i<current.size(); i++) {
-            nodeMesh.setColor(current[i].nodeVertexIndex, ofFloatColor(1.0,1.0,1.0,1.));
+            nodeMesh.setColor(current[i].nodeVertexIndex, ofFloatColor(0,1.0,0,1.));
         }
     }
     
@@ -251,21 +250,22 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
 void CloudsVisualSystemTwitter::updateMesh(){
     
     for(int i= 0; i<nodeMesh.getColors().size(); i++){
-        nodeMesh.setColor(i, ofFloatColor(0.,0.,0.,0.));
+        ofFloatColor c = nodeMesh.getColor(i);
+        c = (c-ofFloatColor::black)*edgeDecayRate;
+        nodeMesh.setColor(i, c);
     }
     
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
         ofFloatColor c = edgeMesh.getColor(i);
-        
-        if(c.r  > 0.){
-            ofFloatColor cur =  (c - baseColor)*edgeDecayRate ;
-            c +=cur;
-            edgeMesh.setColor(i,cur);
+        if(c != baseColor){
+            c =  (c - baseColor)*edgeDecayRate ;
+            edgeMesh.setColor(i,c);
         }
-//        else{
-//            edgeMesh.setColor(i, baseColor);
-//        }
-        
+        else{
+            edgeMesh.setColor(i, baseColor);
+        }
+
+
     }
     
 }
@@ -283,7 +283,6 @@ void CloudsVisualSystemTwitter::loadMesh(){
     
                 edgeMesh.addVertex(tweeters[j].position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
-                //edgeMesh.addColor(baseColor);
                 edgeMesh.addColor(baseColor);
                 tweeters[j].edgeVertexIndex = currentIndex;
                 
@@ -293,7 +292,6 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 edgeMesh.addVertex(t.position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
                 edgeMesh.addColor(baseColor);
-            //edgeMesh.addColor(baseColor);
                 t.edgeVertexIndex = currentIndex;
             
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
@@ -437,35 +435,45 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 //--------------------------------------------------------------
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
-    if (e.widget->getName() == "TWEET HUE") {
-        tweetColor.setHue(tweetHue);
-	}
-    else if (e.widget->getName() == "TWEET SAT") {
-        tweetColor.setSaturation(tweetSat);
-	}
-    else if (e.widget->getName() == "TWEET BRI") {
-        tweetColor.setBrightness(tweetBri);
-	}
-    else if (e.widget->getName() == "TWEET ALPHA") {
-        tweetColor.a = tweetAlpha;
-    }
-    if (e.widget->getName() == "BASE HUE") {
-        baseColor.setHue(baseHue);
-        reloadMeshColor();
-	}
-    else if (e.widget->getName() == "BASE SAT") {
-        baseColor.setSaturation(baseSat);
-        reloadMeshColor();
-	}
-    else if (e.widget->getName() == "BASE BRI") {
-        baseColor.setBrightness(baseBri);
-        reloadMeshColor();
-	}
-    else if (e.widget->getName() == "BASE ALPHA") {
-        baseColor.a = baseAlpha;
-        reloadMeshColor();
-    }
-   
+    
+//    if (e.widget->getName() == "TWEET HUE") {
+//        tweetColor.setHue(tweetHue);
+//                        reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "TWEET SAT") {
+//        tweetColor.setSaturation(tweetSat);
+//                        reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "TWEET BRI") {
+//        tweetColor.setBrightness(tweetBri);
+//                reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "TWEET ALPHA") {
+//        tweetColor.a = tweetAlpha;
+//    }
+//    if (e.widget->getName() == "BASE HUE") {
+//        baseColor.setHue(baseHue);
+//        reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "BASE SAT") {
+//        baseColor.setSaturation(baseSat);
+//        reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "BASE BRI") {
+//        baseColor.setBrightness(baseBri);
+//        reloadMeshColor();
+//	}
+//    else if (e.widget->getName() == "BASE ALPHA") {
+//        baseColor.a = baseAlpha;
+//
+//    }
+//    
+//        reloadMeshColor();
+    baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
+    baseColor.a = baseAlpha;
+    tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
+    tweetColor.a =tweetAlpha;
+    reloadMeshColor();
 }
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystemTwitter::selfSetupSystemGui(){
@@ -507,6 +515,7 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
+
     if(  ofGetFrameNum() %refreshRate <1){
         currentDateIndex--;
         if (currentDateIndex <= 0) {
@@ -574,32 +583,9 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         }
     }
     if(args.key == 'j'){
-        cout<<ss.str()<<endl;
+        cout<<baseColor.getHue()<<" , "<<baseColor.getSaturation()<<" , "<<baseColor.getBrightness()<<endl;
     }
-    if(args.key == OF_KEY_LEFT){
-        if(currentDateIndex > dateIndex.size()){
-            
-        }
-        else{
-            currentDateIndex++;
-        }
-        
-        cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
-        updateMeshFromTweets(currentDateIndex);
-    }
-    if(args.key == OF_KEY_RIGHT){
-        if(currentDateIndex <0){
-            
-        }
-        else{
-            currentDateIndex--;
-        }
-        
-        cout<<getDateAsString(dateIndex[currentDateIndex])<<endl;
-        
-        updateMeshFromTweets(currentDateIndex);
-        
-    }
+
 }
 void CloudsVisualSystemTwitter::drawObject(const ofVec3f& pos)
 {
