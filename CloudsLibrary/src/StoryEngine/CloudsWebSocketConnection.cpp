@@ -83,14 +83,28 @@ void CloudsWebSocketConnection::actEnded(CloudsActEventArgs& args){
 
 void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
+	string example = "";
+	
+	if( args.chosenClip.hasSpecialKeyword("#example") ){
+		example = args.chosenClip.exampleId;
+	}
 	
 	char message[1024];
-	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f, \"topic\" : \"%s\" } }",
+	sprintf(message,
+			"{ \"clip\" : { \"name\" : \"%s\", \
+			\"id\" : \"%s\", \
+			\"duration\" : %f, \
+			\"topic\" : \"%s\" \
+			\"example\" : \%s\" \
+		} }",
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration(),
-			args.currentTopic.c_str());
+			args.currentTopic.c_str(),
+			"Drawn1" );			
+//			example.c_str() );
 	server.send( message );
+	
 	cout << " message " << message << endl;
 }
 
