@@ -85,8 +85,9 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
 	string example = "";
 	
-	if( args.chosenClip.hasSpecialKeyword("#example") ){
-		example = args.chosenClip.exampleId;
+//	if( args.chosenClip.hasSpecialKeyword("#example") ){
+	if( args.chosenClip.hasProjectExample ){
+		example = args.chosenClip.example.title;
 	}
 	
 	char message[1024];
