@@ -159,7 +159,7 @@ namespace itg
         }
     }
     
-    void Creatures::update(const ofVec3f& attractionPoint)
+    void Creatures::update()
     {
         const float zoneRadiusSq = zoneRadius * zoneRadius;
         
@@ -237,10 +237,13 @@ namespace itg
                 }
             }
         }
-
+        // attract to a point a little in front of the camera
+        //ofVec3f attractionPoint(0, 0, -1000.f + 2.f * Creature::fogEnd * floor(cam.getPosition().z / (2.f * Creature::fogEnd)));
+        
+        ofVec3f attractionPoint(0.f, 0.f, 0.f);
+        
         for (int i = 0; i < creatures.size(); ++i)
         {
-            // keep them in the centre
             ofVec3f dirToCenter = creatures[i]->getPosition() - attractionPoint;
             float distToCenter = dirToCenter.length();
             //static const float maxDistance = 3000.f;
@@ -263,6 +266,13 @@ namespace itg
             ofVec3f toMove = creatures[i]->getVelocity() * ofGetLastFrameTime();
 #ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
+            
+            /*
+            if (abs(creatures[i]->getPosition().z - cam.getPosition().z) > Creature::fogEnd)
+            {
+                //cout << cam.getPosition().z << " " << creatures[i]->getPosition().z << " " << cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd) << endl;
+                creatures[i]->setPosition(creatures[i]->getPosition().x, creatures[i]->getPosition().y, cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd));
+            }*/
 #endif
             /*ofQuaternion quat;
             quat.makeRotate(ofVec3f(0, 0, 1), creatures[i]->getNormalisedVelocity());
@@ -285,7 +295,7 @@ namespace itg
         }
     }
     
-    void Creatures::draw()
+    void Creatures::draw(const ofCamera& cam)
     {
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_DEPTH_TEST);
@@ -294,7 +304,7 @@ namespace itg
             for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
             {
                 if (creaturesByType[i][j]->getType() == Creature::POINT) break;
-                creaturesByType[i][j]->draw();
+                creaturesByType[i][j]->draw(cam);
             }
         }
         pointCreatureMesh.draw();

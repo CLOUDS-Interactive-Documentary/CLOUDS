@@ -23,7 +23,7 @@ void CloudsVisualSystemSwim::selfSetup()
 {
     ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
     
-    snow.init(getVisualSystemDataPath(), 30000);
+    snow.init(getVisualSystemDataPath(), 65536);
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -55,14 +55,14 @@ void CloudsVisualSystemSwim::selfUpdate()
     getCameraRef().setFarClip(Creature::fogEnd);
 
     //bubbles.update();
-    creatures.update(getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
+    creatures.update();//getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSwim::selfDraw()
 {
-    creatures.draw();
+    creatures.draw(getCameraRef());
     //bubbles.draw();
     snow.draw(getCameraRef());
 }
@@ -80,8 +80,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addMinimalSlider("fogStart", 0.f, 1600.f, &Creature::fogStart);
-    rdrGui->addMinimalSlider("fogEnd", 0.f, 1600.f, &Creature::fogEnd);
+    rdrGui->addMinimalSlider("fogStart", 0.f, 10000.f, &Creature::fogStart);
+    rdrGui->addMinimalSlider("fogEnd", 0.f, 10000.f, &Creature::fogEnd);
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
