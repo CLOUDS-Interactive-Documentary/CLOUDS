@@ -69,6 +69,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void drawTweetsForDate(int index);
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
+    void clearData();
     
     ofxJSONElement result;
     
@@ -85,7 +86,6 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     set<pair<int,int> > links;
     map<pair<string, string>, pair<int, int> >lineIndexPairs;
     map<string,int> numberOfMentions;
-
     int currentDateIndex;
     
 

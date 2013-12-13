@@ -17,15 +17,16 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
-    
+    baseModifier =ofFloatColor(0.0,0.0,1.0,0.1);
+    tweetModifier =ofFloatColor(1.0,0.0,0.0,1.0);
     baseColor  = ofFloatColor(0.0,0.0,1.0,0.1);
     tweetColor = ofFloatColor(1.0,0.0,0.0,1.0);
     refreshRate = 1000;
     edgeDecayRate = 0.8;
     meshExpansion = 100;
     pointSize =10;
-    loadJSONData();
-    initSystem(getVisualSystemDataPath() +"graphs/twitterOneCircular.net");
+
+    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMenCircular.net");
     
     ofEnableAlphaBlending();
 }
@@ -143,8 +144,17 @@ void CloudsVisualSystemTwitter::loadJSONData(){
     addUsersFromMentions();
 }
 
+void CloudsVisualSystemTwitter::clearData(){
+    dateIndex.clear();
+    dateIndexMap.clear();
+    links.clear();
+    lineIndexPairs.clear();
+    numberOfMentions.clear();
+
+}
 void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
-	ofBuffer pajekFile = ofBufferFromFile(fileName);
+
+    ofBuffer pajekFile = ofBufferFromFile(fileName);
 	bool findingNodes = false;
     bool findingEdges = false;;
 	while(!pajekFile.isLastLine()){
@@ -194,6 +204,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
                     cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
                 }
             }
+//            cout<<tweeter.name<<" , "<<tweeter.linksById.size()<<endl;
         }
         
 	}
@@ -263,14 +274,14 @@ void CloudsVisualSystemTwitter::reloadMeshColor(){
     for(int i=0; i<edgeMesh.getVertices().size();i++){
         edgeMesh.setColor(i, baseColor);
     }
-}
+}	
 
 void CloudsVisualSystemTwitter::loadMesh(){
-    int  currentIndex =0;
+
     edgeMesh.clear();
     nodeMesh.clear();
-    edgeMesh.setMode(OF_PRIMITIVE_LINES);
-    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
+    int  currentIndex =0;
+    
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
@@ -299,7 +310,7 @@ void CloudsVisualSystemTwitter::loadMesh(){
 
         
     }
-
+    edgeMesh.setMode(OF_PRIMITIVE_LINES);
     cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
@@ -311,6 +322,8 @@ void CloudsVisualSystemTwitter::loadMesh(){
         currentIndex++;
     }
     cout<<"No of vertices in node "<<  nodeMesh.getVertices().size()<<endl;
+
+    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
@@ -446,25 +459,30 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
             
         }
     }
-    else{
-        
+
+
         baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
         baseColor.a = baseAlpha;
         tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
         tweetColor.a =tweetAlpha;
-    }
+        reloadMeshColor();
+
     
     
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
+    clearData();
+    
+    loadJSONData();
     parseClusterNetwork(filePath);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
     currentDateIndex = dateIndex.size() -1;
-    
     updateMeshFromTweets(currentDateIndex);
+    reloadMeshColor();
 }
+
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
     cout<<filePath<<endl;
     
