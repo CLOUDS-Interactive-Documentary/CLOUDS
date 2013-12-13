@@ -1,9 +1,9 @@
 ProjectExampleView = {	
 
 	init:function() {
-	// 	$('#video video').bind('ended', function(){
- 	//	$(this).parent().fadeOut()
-	// })
+	 	$('#video').bind('ended', function(){
+ 		Controller.setMode(Controller.modes.GRAPH);
+	 	})
 	},
 	update: function(){
 		var project = Model.projectExample;
@@ -13,8 +13,7 @@ ProjectExampleView = {
 		$('#video').attr("source", project.video_file_name);
 		$('#video').attr("src", project.videoFileName);
 		$('#video').load();
-
-		console.log($('#video').attr("src"));
+		
 	},
 	
 }
