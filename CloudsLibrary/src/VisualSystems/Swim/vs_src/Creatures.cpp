@@ -57,13 +57,13 @@ namespace itg
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
         ofDisableArbTex();
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
-        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.jpg");
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.png");
         ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(0, 0, 1);
         ModelCreature::bends.push_back(1.f);
         fishOneParams.modelIdx = 0;
-        fishOneParams.colour = ofFloatColor(0.7, 0.7, 0.7);
+        fishOneParams.colour = ofFloatColor(1.0, 1.0, 1.0);
         fishOneParams.sizeAverage = 1.25;
         fishOneParams.sizeStdDeviation = 0.5;
         
@@ -72,13 +72,17 @@ namespace itg
         ModelCreature::fishModels.back().loadModel(dataPath + "models/TropicalFish05.obj");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setScale(0.1, 0.1, 0.1);
+        ofDisableArbTex();
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/TropicalFish05.png");
+        ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(1, 0, 0);
         ModelCreature::bends.push_back(1.f);
         fishTwoParams.sizeAverage = 1.25;
         fishTwoParams.sizeStdDeviation = 0.5;
         fishTwoParams.modelIdx = 1;
-        fishTwoParams.colour = ofFloatColor(0.7, 0.7, 0.0);
+        fishTwoParams.colour = ofFloatColor(1.0, 1.0, 0.0);
         
         ModelCreature::fishShader.load(dataPath + "shaders/fish");
         

@@ -38,7 +38,7 @@ namespace itg
     vector<float> ModelCreature::bends;
     map<unsigned, ofImage> ModelCreature::textures;
     ofShader ModelCreature::fishShader;
-    float ModelCreature::texAmount = 1.f;
+    //float ModelCreature::texAmount = 1.f;
     
     ModelCreature::ModelCreature(const ModelParams& params) : Creature()
     {
@@ -72,8 +72,10 @@ namespace itg
         fishShader.setUniform1f("fogEnd", fogEnd);
         if (textures.find(modelIdx) != textures.end())
         {
+            ofTexture tex = fishModels[modelIdx].getTextureForMesh(0);
             fishShader.setUniformTexture("tex", textures[modelIdx], 0);
-            fishShader.setUniform1f("texAmt", texAmount);
+            //fishShader.setUniformTexture("tex", tex, 1);
+            //fishShader.setUniform1f("texAmt", texAmount);
         }
         else fishShader.setUniform1f("texAmt", 0.f);
         fishModels[modelIdx].drawFaces();
