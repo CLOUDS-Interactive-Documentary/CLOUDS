@@ -1,0 +1,32 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>FOG</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>237</XPosition>
+    <YPosition>60</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>bUseFog</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogDist</Name>
+    <Value>42.7586</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>fogExpo</Name>
+    <Value>1.72315</Value>
+</Widget>
+<Widget>
+    <Kind>28</Kind>
+    <Name>fogColor</Name>
+    <XValue>0.47</XValue>
+    <YValue>0.45</YValue>
+    <RColor>4</RColor>
+    <GColor>0</GColor>
+    <BColor>62</BColor>
+    <AColor>255</AColor>
+</Widget>

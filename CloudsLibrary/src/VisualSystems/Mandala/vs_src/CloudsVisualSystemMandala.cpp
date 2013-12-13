@@ -220,7 +220,8 @@ void CloudsVisualSystemMandala::selfSetup()
 	colorMixScale = 6;
 	
 	//load some images for gui and debug
-	colorMap.loadImage( getVisualSystemDataPath() + "GUI/defaultColorPalette.png" );
+	string cloudsDataPath = "../../../CloudsData/";
+	colorMap.loadImage( cloudsDataPath + "colors/defaultColorPalette.png" );
 	
 	//load shaders
 	loadShaders();
