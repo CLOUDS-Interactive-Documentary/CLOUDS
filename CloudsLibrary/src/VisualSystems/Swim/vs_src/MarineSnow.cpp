@@ -83,7 +83,7 @@ namespace itg
                     data.y = .5f;
                     break;
             }
-            data.z = ofRandom(10.f, 200.f);
+            data.z = ofRandom(0.1f, 100.f);
             mesh.addNormal(data);
         }
     }

@@ -23,7 +23,7 @@ void CloudsVisualSystemSwim::selfSetup()
 {
     ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
     
-    snow.init(getVisualSystemDataPath(), 65536);
+    snow.init(getVisualSystemDataPath(), 100000);
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -80,8 +80,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addMinimalSlider("fogStart", 0.f, 10000.f, &Creature::fogStart);
-    rdrGui->addMinimalSlider("fogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
+    rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
