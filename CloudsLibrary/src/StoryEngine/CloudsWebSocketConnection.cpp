@@ -89,7 +89,7 @@ void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
 			args.chosenClip.getDuration(),
-			currentTopic.c_str());
+			args.currentTopic.c_str());
 	server.send( message );
 	cout << " message " << message << endl;
 }
@@ -111,8 +111,8 @@ void CloudsWebSocketConnection::topicChanged(CloudsTopicEventArgs& args){
 //	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
 //	server.send( message );
 //	cout << " message " << message << endl;
-	
-	currentTopic = args.topic;
+	 
+//	currentTopic = args.topic;
 	
 }
 

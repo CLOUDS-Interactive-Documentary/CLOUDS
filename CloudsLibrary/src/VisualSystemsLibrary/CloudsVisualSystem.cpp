@@ -3021,7 +3021,7 @@ void CloudsVisualSystem::selfPostDraw(){
                 ofSetColor(240,240,255, 175);
             }
             ofCircle(it->second.position.x, it->second.position.y, ofMap(it->second.position.z, 2, -2, 5, 30, true) );
-            cout << " z pos " << it->second.position.z << endl;
+//            cout << " z pos " << it->second.position.z << endl;
         }
         ofPopStyle();
         ofPopMatrix();
