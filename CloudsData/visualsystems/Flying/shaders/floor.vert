@@ -137,6 +137,6 @@ void main()
     gl_FrontColor = gl_Color;
     // gl_Normal is actually average position for face
     depth = noise(gl_Normal.xy + offset.xz) * 0.5 + 1;
-    fogAmount = clamp((length(vEye) - fogStart) / fogEnd, 0.0, 1.0);
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     gl_Position = gl_ModelViewProjectionMatrix * deformed;
 }

@@ -1119,8 +1119,8 @@
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
 				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
 				E7DD846617DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.h */,
-				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
 				E7DD846817DBC0A500AFB2DD /* CloudsVisualSystem.h */,
+				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
 				E7DD846917DBC0A500AFB2DD /* ofxLight.h */,
 				E7DD846A17DBC0A500AFB2DD /* README.md */,
 			);

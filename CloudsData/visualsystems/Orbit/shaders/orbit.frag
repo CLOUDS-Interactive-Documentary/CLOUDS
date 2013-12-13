@@ -28,7 +28,5 @@ void main()
      
     float specular = 1e-2 * pow(nDotH, 64);
     
-    
-    
     gl_FragColor = (1.0 - fogAmount) * gl_Color * (1.0 - litAmount + litAmount * (diffuse + specular)) + fogAmount * vec4(fogColour, 1.0);
 }

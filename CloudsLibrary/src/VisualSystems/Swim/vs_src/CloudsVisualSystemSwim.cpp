@@ -10,6 +10,12 @@
 //#include "ofxAVFVideoPlayer.h"
 //#endif
 
+const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
+
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : yRot(0), zSpeed(0)
+{
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
@@ -17,6 +23,7 @@ void CloudsVisualSystemSwim::selfSetup()
 {
     ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemSwim::onWindowResized);
     
+    snow.init(getVisualSystemDataPath(), 30000);
     bubbles.init(getVisualSystemDataPath());
     creatures.init(getVisualSystemDataPath());
     
@@ -32,14 +39,23 @@ void CloudsVisualSystemSwim::selfBegin()
 {
     // adding this here as custom gui data is loaded after setup
 	creatures.generate();
+    snow.generate();
 }
 
 //normal update call
 void CloudsVisualSystemSwim::selfUpdate()
 {
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-    bubbles.update();
-    creatures.update();
+    
+    // cam
+    yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
+    zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
+    getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
+    getCameraRef().setOrientation(ofVec3f(0, yRot, 0.f));
+    getCameraRef().setFarClip(Creature::fogEnd);
+
+    //bubbles.update();
+    creatures.update(getCameraRef().getPosition() + 1000.f * getCameraRef().getLookAtDir().normalized());
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -47,7 +63,8 @@ void CloudsVisualSystemSwim::selfUpdate()
 void CloudsVisualSystemSwim::selfDraw()
 {
     creatures.draw();
-    bubbles.draw();
+    //bubbles.draw();
+    snow.draw(getCameraRef());
 }
 
 void CloudsVisualSystemSwim::selfPostDraw()
@@ -63,7 +80,8 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    
+    rdrGui->addMinimalSlider("fogStart", 0.f, 1600.f, &Creature::fogStart);
+    rdrGui->addMinimalSlider("fogEnd", 0.f, 1600.f, &Creature::fogEnd);
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -77,11 +95,11 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addLabel("Points");
     rdrGui->addSpacer();
     rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
-    rdrGui->addSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
+    rdrGui->addMinimalSlider("huePointOne", 0.f, 1.f, &creatures.huePointOne);
     rdrGui->addIntSlider("numPointTwo", 0, 1000, &creatures.numPointTwo);
-    rdrGui->addSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
+    rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
     rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
-    rdrGui->addSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+    rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
     
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
@@ -170,6 +188,7 @@ void CloudsVisualSystemSwim::guiRenderEvent(ofxUIEventArgs &e)
         ofxUIToggle* toggle = static_cast<ofxUIToggle*>(e.widget);
         if (toggle->getValue())
         {
+            snow.generate();
             creatures.generate();
             toggle->setValue(false);
         }
