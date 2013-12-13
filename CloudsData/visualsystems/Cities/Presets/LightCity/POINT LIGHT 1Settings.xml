@@ -70,3 +70,48 @@
     <Name>SB</Name>
     <Value>0.000000000</Value>
 </Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AH</Name>
+    <Value>0.133334294</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AS</Name>
+    <Value>0.641028821</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AV</Name>
+    <Value>0.204188481</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DH</Name>
+    <Value>0.249999881</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DS</Name>
+    <Value>0.046517216</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DV</Name>
+    <Value>0.225131527</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SV</Name>
+    <Value>0.000000000</Value>
+</Widget>

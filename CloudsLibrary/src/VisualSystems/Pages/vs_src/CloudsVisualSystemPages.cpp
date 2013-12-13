@@ -165,7 +165,7 @@ void CloudsVisualSystemPages::selfDraw()
 void CloudsVisualSystemPages::selfDrawDebug()
 {
     for (auto& it : lights) {
-        ofSetColor((it.second)->lightAmbient);
+        ofSetColor((it.second)->lightAmbientHSV);
         ofSphere((it.second)->lightPos, 10);
         ofLine((it.second)->lightPos, (it.second)->lightPos + ((it.second)->lightOrientation * 20));
     }

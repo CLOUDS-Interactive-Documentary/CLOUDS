@@ -78,13 +78,18 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	
 	offsetMeshGui->addToggle("draw offsetMesh", &bDrawOffsetMesh);
 	
-	modelNames.clear();;
+	modelNames.clear();
 	modelNames.push_back("diaSphere.txt");
+	modelNames.push_back("geometric_hi.txt");
+	modelNames.push_back("geometric_mid.txt");
+	modelNames.push_back("geometric_too.txt");
+	modelNames.push_back("geometric.txt");
 	modelNames.push_back("hexSphere_mid.txt");
 	modelNames.push_back("hexSphere.txt");
+	modelNames.push_back("organicDense.txt");
 	modelNames.push_back("organicSphere.txt");
-	
-	offsetMeshGui->addDropDownList("models", modelNames);
+	modelNames.push_back("orgo.txt");
+	modelNames.push_back("organic_heavy.txt");
 	
 	offsetMeshGui->addSpacer();
 	offsetMeshGui->addImageSampler("c0", &colorMap, colorMap.getWidth()/2, colorMap.getHeight()/2);
@@ -99,6 +104,8 @@ void CloudsVisualSystemMandala::selfSetupGui()
 	offsetMeshGui->addSlider("noiseExpo", .51, 10., &noiseExpo)->setIncrement(.01);
 	offsetMeshGui->addSlider("noiseExpoScale", .8, 1.2, &noiseExpoScale)->setIncrement(.01);
 	offsetMeshGui->addSlider("meshNoiseScale", .0001, .1, &meshNoiseScale)->setIncrement(.0001);
+	
+	offsetMeshGui->addDropDownList("models", modelNames);
 	
 	
 	ofAddListener(offsetMeshGui->newGUIEvent, this, &CloudsVisualSystemMandala::selfGuiEvent);

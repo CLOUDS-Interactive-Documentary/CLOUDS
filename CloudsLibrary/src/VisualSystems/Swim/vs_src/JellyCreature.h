@@ -61,6 +61,8 @@ namespace itg
         
         void setShaderUniforms();
         
+        ofFloatColor getColour() const { return bodyColour; }
+        
         //void setFrequency(const float frequency) { this->frequency = frequency; }
         
     private:

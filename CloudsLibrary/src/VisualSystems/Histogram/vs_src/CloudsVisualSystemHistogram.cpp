@@ -295,11 +295,8 @@ void CloudsVisualSystemHistogram::selfDraw()
 	glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
 	glFogi(GL_FOG_MODE, GL_EXP);
     
-//    GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
-    GLfloat fogColor[4] = { bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
+    GLfloat fogColor[4] = { bgColor.r/255., bgColor.g/255., bgColor.b/255., 1.0 };
     glFogfv(GL_FOG_COLOR, fogColor);
-//    glDisable(GL_DEPTH_TEST);
-//    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
 	glFogf(GL_FOG_DENSITY, powf(fogDensity, 4));
     
@@ -307,6 +304,7 @@ void CloudsVisualSystemHistogram::selfDraw()
     ofPushStyle();
     {
         ofEnableAlphaBlending();
+        glDisable(GL_DEPTH_TEST);
         ofTranslate((colsPerRow * (colWidth + colSpacer)) * -0.5, 0);
  
         if (mode == HISTOGRAM_MODE_LINES) {

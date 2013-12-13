@@ -67,6 +67,8 @@ namespace itg
         unsigned getMaxDepth() const { return maxDepth; }
         void setMaxDepth(unsigned maxDepth) { this->maxDepth = maxDepth; }
         
+        unsigned getNumSteps() const { return numSteps; }
+        
         void setStartRule(const string& startRule) { this->startRule = startRule; }
         
         void load(const string& fileName);
@@ -101,6 +103,7 @@ namespace itg
         unsigned maxDepth;
         map<string, ActionCreator> creators;
         ofVboMesh mesh;
+        unsigned numSteps;
         
         bool enableVertexColours;
         ofFloatColor meshColour;

@@ -3,12 +3,7 @@
 //
 
 #include "CloudsVisualSystemTunnelDrawing.h"
-#include "CloudsRGBDVideoPlayer.h"
 
-//#include "CloudsRGBDVideoPlayer.h"
-//#ifdef AVF_PLAYER
-//#include "ofxAVFVideoPlayer.h"
-//#endif
 
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
@@ -18,7 +13,10 @@ void CloudsVisualSystemTunnelDrawing::selfSetupGui(){
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	customGui->addSlider("projection dist", -100, 100, &screenSpaceProjectDistance);
+	customGui->addSlider("cam speed", -4, 0, &fallOffSpeed);
 
+	customGui->addSlider("debug sphere rad", .1, 5, &debugSphereRad);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemTunnelDrawing::selfGuiEvent);
 	guis.push_back(customGui);
@@ -53,14 +51,9 @@ void CloudsVisualSystemTunnelDrawing::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemTunnelDrawing::selfSetup(){
 	
-    ofSetFrameRate(60);
-    ofSetVerticalSync(true);
-    ofBackground(255);
     
 	//initialize the variable so it's off at the beginning
-    usecamera = true;
-	
-	
+//    usecamer = true;
 //	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
@@ -88,25 +81,23 @@ void CloudsVisualSystemTunnelDrawing::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTunnelDrawing::selfUpdate(){
     
-    if(!usecamera){
-        ofVec3f sumOfAllPoints(0,0,0);
-        for(int i = 0; i < points.size(); i++){
-            points[i].z -= 4;
-            sumOfAllPoints += points[i];
-        }
-        center = sumOfAllPoints / points.size();
-    }
+	ofVec3f sumOfAllPoints(0,0,0);
+	for(int i = 0; i < points.size(); i++){
+		points[i].z -= fallOffSpeed;
+		sumOfAllPoints += points[i];
+	}
+	center = sumOfAllPoints / points.size();
+	
+//	camera.setPosition( ofVec3f(getSharedRenderTarget().getWidth()/2,
+//								getSharedRenderTarget().getHeight()/2, 0));
+	//camera.lookAt(center);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTunnelDrawing::selfDraw(){
-	
-    
-	if(usecamera){
-        camera.begin();
-    }
-    
+
+
 	ofSetColor(0);
 	//do the same thing from the first example...
     ofMesh mesh;
@@ -116,8 +107,6 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 		//find this point and the next point
 		ofVec3f thisPoint = points[i-1];
 		ofVec3f nextPoint = points[i];
-        
-        cout << "point location" << thisPoint << endl;
         
 		//get the direction from one to the next.
 		//the ribbon should fan out from this direction
@@ -131,7 +120,7 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 		ofVec3f unitDirection = direction.normalized();
         
 		//find both directions to the left and to the right
-		ofVec3f toTheLeft = unitDirection.getRotated(-90, ofVec3f(0,0,1));
+		ofVec3f toTheLeft  = unitDirection.getRotated(-90, ofVec3f(0,0,1));
 		ofVec3f toTheRight = unitDirection.getRotated(90, ofVec3f(0,0,1));
         
 		//use the map function to determine the distance.
@@ -150,15 +139,17 @@ void CloudsVisualSystemTunnelDrawing::selfDraw(){
 	}
     
 	//end the shape
-	mesh.draw();
+	//mesh.draw();
     
-    
-	//if we're using the camera, take it away
-    if(usecamera){
-    	camera.end();
-    }
-    
-	
+	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
+													   GetCloudsInputY(),
+													   screenSpaceProjectDistance) );
+
+	ofPushStyle();
+	ofNoFill();
+	ofSetColor(255,0,0);
+	ofSphere(mousePoint, debugSphereRad);
+	ofPopStyle();
 }
 
 // draw any debug stuff here
@@ -199,27 +190,30 @@ void CloudsVisualSystemTunnelDrawing::selfMouseDragged(ofMouseEventArgs& data){
 void CloudsVisualSystemTunnelDrawing::selfMouseMoved(ofMouseEventArgs& data){
     
     
-    if(usecamera){
-        float rotateAmount = ofMap(data.x, 0, data.y, 0, 360);
-        ofVec3f furthestPoint;
-        if (points.size() > 0) {
-            furthestPoint = points[0];
-        }
-        else
-        {
-            furthestPoint = ofVec3f(data.x, data.y, 0);
-        }
-        
-        ofVec3f directionToFurthestPoint = (furthestPoint - center);
-        ofVec3f directionToFurthestPointRotated = directionToFurthestPoint.rotated(rotateAmount, ofVec3f(0,1,0));
-        camera.setPosition(center + directionToFurthestPointRotated);
-        camera.lookAt(center);
-    }
+//    if(usecamera){
+//        float rotateAmount = ofMap(data.x, 0, data.y, 0, 360);
+//        ofVec3f furthestPoint;
+//        if (points.size() > 0) {
+//            furthestPoint = points[0];
+//        }
+//        else
+//        {
+//            furthestPoint = ofVec3f(data.x, data.y, 0);
+//        }
+//        
+//        ofVec3f directionToFurthestPoint = (furthestPoint - center);
+//        ofVec3f directionToFurthestPointRotated = directionToFurthestPoint.rotated(rotateAmount, ofVec3f(0,1,0));
+//        camera.setPosition(center + directionToFurthestPointRotated);
+//        camera.lookAt(center);
+//    }
 	//otherwise add points like before
-    else{
-        ofVec3f mousePoint(data.x,data.y,0);
-        points.push_back(mousePoint);
-    }
+//    else{
+	
+	ofVec3f mousePoint = camera.screenToWorld( ofVec3f(GetCloudsInputX(),
+													   GetCloudsInputY(),
+													   screenSpaceProjectDistance) );
+	points.push_back(mousePoint);
+//    }
     	
 }
 
