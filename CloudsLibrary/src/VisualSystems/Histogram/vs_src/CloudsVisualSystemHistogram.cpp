@@ -92,6 +92,8 @@ void CloudsVisualSystemHistogram::selfGuiEvent(ofxUIEventArgs &e)
     
     else if (e.widget->getName() == "RANDOM" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_RANDOM;
+        
+        stopSound();
 	}
     else if (e.widget->getName() == "AUDIO" && ((ofxUIToggle *)e.widget)->getValue()) {
         source = HISTOGRAM_SOURCE_AUDIO;
@@ -373,11 +375,16 @@ void CloudsVisualSystemHistogram::selfMouseReleased(ofMouseEventArgs& data){
 	
 }
 
-void CloudsVisualSystemHistogram::reloadSound()
+void CloudsVisualSystemHistogram::stopSound()
 {
     // close whatever sound was previously open
     soundPlayer.stop();
     soundPlayer.unloadSound();
+}
+
+void CloudsVisualSystemHistogram::reloadSound()
+{
+    stopSound();
     
     ofFile file = soundsDir.getFile(selectedSoundsIdx);
     if (soundPlayer.loadSound(file.getAbsolutePath())) {

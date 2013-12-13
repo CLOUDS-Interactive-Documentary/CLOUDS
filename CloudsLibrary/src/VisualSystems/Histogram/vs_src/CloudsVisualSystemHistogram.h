@@ -104,6 +104,7 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
+    void stopSound();
     void reloadSound();
     
 	void addRandomPoint();
