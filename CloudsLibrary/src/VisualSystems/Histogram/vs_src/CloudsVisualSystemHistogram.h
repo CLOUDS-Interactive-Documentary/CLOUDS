@@ -111,6 +111,9 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
     
 protected:
     ofxUISuperCanvas* customGui;
+    
+    bool bDoAlphaBlending;
+    bool bDoDepthTesting;
 	
     vector<float> dataPoints;
     int maxNumDataPoints;
