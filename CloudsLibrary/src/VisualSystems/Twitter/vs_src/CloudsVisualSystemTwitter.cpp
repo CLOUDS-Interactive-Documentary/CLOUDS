@@ -262,7 +262,7 @@ void CloudsVisualSystemTwitter::updateMesh(){
     
     for(int i= 0; i<nodeMesh.getColors().size(); i++){
         ofFloatColor c = nodeMesh.getColor(i);
-        c = (c-ofFloatColor::black)*edgeDecayRate;
+        c = (c-ofFloatColor::purple)*edgeDecayRate;
         nodeMesh.setColor(i, c);
     }
     
@@ -293,32 +293,34 @@ void CloudsVisualSystemTwitter::loadMesh(){
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
-            
-            
-            edgeMesh.addVertex(tweeters[j].position);
-            edgeMesh.addNormal(ofVec3f(0,0,0));
-            edgeMesh.addColor(baseColor);
-            tweeters[j].edgeVertexIndex = currentIndex;
-            
-            currentIndex++;
             Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-            
-            edgeMesh.addVertex(t.position);
-            edgeMesh.addNormal(ofVec3f(0,0,0));
-            edgeMesh.addColor(baseColor);
-            t.edgeVertexIndex = currentIndex;
-            
-            links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-            lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
-            currentIndex++;
+          if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
+             lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
+              edgeMesh.addVertex(tweeters[j].position);
+              edgeMesh.addNormal(ofVec3f(0,0,0));
+              edgeMesh.addColor(baseColor);
+              tweeters[j].edgeVertexIndex = currentIndex;
+              
+              currentIndex++;
+              
+              
+              edgeMesh.addVertex(t.position);
+              edgeMesh.addNormal(ofVec3f(0,0,0));
+              edgeMesh.addColor(baseColor);
+              t.edgeVertexIndex = currentIndex;
+              
+              links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+              lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
+              currentIndex++;
+          }
+          else{
+              cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
+          }
             
         }
-        
-       
-
-        
     }
     edgeMesh.setMode(OF_PRIMITIVE_LINES);
+    
     cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
