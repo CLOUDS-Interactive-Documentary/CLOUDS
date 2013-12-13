@@ -25,7 +25,9 @@ void CloudsVisualSystemTwitter::selfSetup()
     edgeDecayRate = 0.8;
     meshExpansion = 100;
     pointSize =10;
-
+    xScale = 1;
+    yScale = 1;
+    zScale = 10;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMenCircular.net");
     
     ofEnableAlphaBlending();
@@ -55,6 +57,12 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
     clusterGui->addSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
     clusterGui->addSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
+    clusterGui->addSpacer();
+    clusterGui->addSlider("X POS", 1, 100, &xScale);
+    clusterGui->addSlider("Y POS", 1, 100, &yScale);
+    clusterGui->addSlider("Z POS", 1, 100, &zScale);
+    clusterGui->addButton("RELOAD MESH", false);
+    
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
@@ -185,9 +193,9 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 			int numcomp = components.size();
             max = ofVec3f(0,0,0);
             
-			tweeter.position = ofVec3f(ofToFloat(components[2]),
-                                       ofToFloat(components[3]),
-                                       ofToFloat(components[4])*10);
+			tweeter.position = ofVec3f(ofToFloat(components[2])*xScale,
+                                       ofToFloat(components[3])*yScale,
+                                       ofToFloat(components[4])*zScale	);
 		}
         
         if(findingEdges){
@@ -455,11 +463,13 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
                 loadGraphFromPath(result.filePath);
             }
             
-            t->setValue(false);
-            
         }
     }
-
+    else if (e.getName() == "RELOAD MESH")
+    {
+        initSystem(currentMeshFilePath);
+        
+    }
 
         baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
         baseColor.a = baseAlpha;
@@ -472,8 +482,8 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
+    currentMeshFilePath = filePath;
     clearData();
-    
     loadJSONData();
     parseClusterNetwork(filePath);
     loadMesh();
