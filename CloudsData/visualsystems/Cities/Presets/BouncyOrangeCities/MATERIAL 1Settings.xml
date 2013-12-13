@@ -70,3 +70,63 @@
     <Name>SHINY</Name>
     <Value>0.000000000</Value>
 </Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AH</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AS</Name>
+    <Value>0.528797030</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>AV</Name>
+    <Value>0.800000012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DH</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DS</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>DV</Name>
+    <Value>0.800000012</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EV</Name>
+    <Value>0.947916329</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>ES</Name>
+    <Value>0.666666627</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EV</Name>
+    <Value>0.251307935</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SH</Name>
+    <Value>0.083331436</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SS</Name>
+    <Value>0.222223923</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>SV</Name>
+    <Value>0.094240837</Value>
+</Widget>

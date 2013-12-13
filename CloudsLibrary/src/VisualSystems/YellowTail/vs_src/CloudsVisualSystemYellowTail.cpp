@@ -1,5 +1,6 @@
 
 #include "CloudsVisualSystemYellowTail.h"
+#include "CloudsInputKinectOSC.h"
 
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
@@ -92,6 +93,8 @@ void CloudsVisualSystemYellowTail::selfDrawBackground(){
     }
 	
 	ofPopStyle();
+    
+//    ((CloudsInputKinectOSC *)GetCloudsInput().get())->debug(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void CloudsVisualSystemYellowTail::selfDrawDebug(){
@@ -223,11 +226,11 @@ void CloudsVisualSystemYellowTail::selfInteractionStarted(CloudsInteractionEvent
 	 }
 	 */
 	
-    if (touchId%2 == 0){
+//    if (touchId%2 == 0){
         mNewGestureStyle = GestureStyleTraveling;
-    } else {
-        mNewGestureStyle = GestureStyleInPlace;
-    } 
+//    } else {
+//        mNewGestureStyle = GestureStyleInPlace;
+//    } 
     
 	Gesture *newGesture = new Gesture(ofGetWidth(), ofGetHeight());
 	newGesture->clear();
