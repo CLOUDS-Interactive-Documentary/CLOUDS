@@ -52,6 +52,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
     
+    void initSystem(string filePath);
+    
     //i/o stuff
     void loadJSONData();
     void addUsersFromMentions();
@@ -85,6 +87,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     map<string,int> numberOfMentions;
 
     int currentDateIndex;
+    
+
     
 protected:
     ofTrueTypeFont listFont;

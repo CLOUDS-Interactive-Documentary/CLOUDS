@@ -24,15 +24,8 @@ void CloudsVisualSystemTwitter::selfSetup()
     edgeDecayRate = 0.8;
     meshExpansion = 100;
     pointSize =10;
-    
     loadJSONData();
-    parseClusterNetwork(getVisualSystemDataPath() +"/twitterOneCircular.net");
-    loadMesh();
-    
-    std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
-    currentDateIndex = dateIndex.size() -1;
-    
-    updateMeshFromTweets(currentDateIndex);
+    initSystem(getVisualSystemDataPath() +"graphs/twitterOneCircular.net");
     
     ofEnableAlphaBlending();
 }
@@ -276,6 +269,8 @@ void CloudsVisualSystemTwitter::loadMesh(){
     int  currentIndex =0;
     edgeMesh.clear();
     nodeMesh.clear();
+    edgeMesh.setMode(OF_PRIMITIVE_LINES);
+    nodeMesh.setMode(OF_PRIMITIVE_POINTS);
     for(int j=0; j<tweeters.size(); j++){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
@@ -300,10 +295,12 @@ void CloudsVisualSystemTwitter::loadMesh(){
             
         }
         
-        edgeMesh.setMode(OF_PRIMITIVE_LINES);
-        cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
+       
+
         
     }
+
+    cout<<"No of vertices in edges "<< edgeMesh.getVertices().size()<<endl;
     currentIndex = 0;
     for(int j=0; j<tweeters.size(); j++){
         
@@ -311,14 +308,9 @@ void CloudsVisualSystemTwitter::loadMesh(){
         nodeMesh.addNormal(ofVec3f(0,0,0));
         nodeMesh.addColor(ofFloatColor(0.0,0.0,0.0,1.0));
         tweeters[j].nodeVertexIndex = currentIndex;
-        
-        
         currentIndex++;
-        nodeMesh.setMode(OF_PRIMITIVE_POINTS);
-        cout<<"No of vertices in edges "<<  edgeMesh.getVertices().size()<<endl;
-        
-        
     }
+    cout<<"No of vertices in node "<<  nodeMesh.getVertices().size()<<endl;
 }
 
 void CloudsVisualSystemTwitter::addUsersFromMentions(){
@@ -441,9 +433,9 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     
     if(e.getName() == "LOAD GRAPH"){
         cout<<"Im in load images"<<endl;
-        ofxUIToggle* t  = (ofxUIToggle*) e.widget;
+        ofxUIButton* t  = (ofxUIButton*) e.widget;
         if (t->getValue()) {
-            ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, "graphs/");
+            ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
             
             if(result.bSuccess && result.fileName.length())
             {
@@ -464,12 +456,20 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     
     
 }
+
+void CloudsVisualSystemTwitter::initSystem(string filePath){
+    parseClusterNetwork(filePath);
+    loadMesh();
+    std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
+    currentDateIndex = dateIndex.size() -1;
+    
+    updateMeshFromTweets(currentDateIndex);
+}
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
     cout<<filePath<<endl;
     
     if(ofFile::doesFileExist(filePath)){
-        parseClusterNetwork(filePath);
-        loadMesh();
+        initSystem(filePath);
     }
     else{
         cout<<filePath<<" does not exist "<<endl;
