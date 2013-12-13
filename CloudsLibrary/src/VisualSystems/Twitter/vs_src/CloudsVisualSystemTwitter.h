@@ -88,11 +88,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 protected:
     ofTrueTypeFont listFont;
     ofColor listColor;
-	
-//	ofxUISuperCanvas * listGui, * treeGui;
-
-//    ofx1DExtruder * baseHue, * baseSat, * baseBri, * baseAlpha;
-//	ofx1DExtruder * lineHue, * lineSat, * lineBri, * lineAlpha;
+        
     
     vector<Tweeter> tweeters;
     stringstream ss;
