@@ -7,6 +7,7 @@
 //
 
 #include "CloudsWebSocketConnection.h"
+#include "CloudsGlobal.h"
 CloudsWebSocketConnection::CloudsWebSocketConnection(){
 	
 }
@@ -17,6 +18,14 @@ void CloudsWebSocketConnection::setup(){
     options.port = 9093;
     options.protocol = "of-protocol";
     options.bBinaryProtocol = true;
+    
+    options.documentRoot = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/web");
+    cout << options.documentRoot << endl;
+    options.sslCertPath = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/ssl/libwebsockets-test-server.pem");
+    options.sslKeyPath = ofToDataPath(GetCloudsDataPath() + "secondaryDisplay/ssl/libwebsockets-test-server.key.pem");
+
+    
+    
     
     bool connected = server.setup( options );
     if(connected){
@@ -74,13 +83,28 @@ void CloudsWebSocketConnection::actEnded(CloudsActEventArgs& args){
 
 void CloudsWebSocketConnection::clipBegan(CloudsClipEventArgs& args){
 	ofLogNotice("CloudsWebSocketConnection::clipBegan");
+	string example = "";
+	
+	if( args.chosenClip.hasSpecialKeyword("#example") ){
+		example = args.chosenClip.exampleId;
+	}
 	
 	char message[1024];
-	sprintf(message, "{ \"clip\" : { \"name\" : \"%s\", \"id\" : \"%s\", \"duration\" : %f } }",
+	sprintf(message,
+			"{ \"clip\" : { \"name\" : \"%s\", \
+			\"id\" : \"%s\", \
+			\"duration\" : %f, \
+			\"topic\" : \"%s\" \
+			\"example\" : \%s\" \
+		} }",
 			args.chosenClip.person.c_str(),
 			args.chosenClip.getLinkName().c_str(),
-			args.chosenClip.getDuration() );
+			args.chosenClip.getDuration(),
+			args.currentTopic.c_str(),
+			"Drawn1" );			
+//			example.c_str() );
 	server.send( message );
+	
 	cout << " message " << message << endl;
 }
 
@@ -97,10 +121,13 @@ void CloudsWebSocketConnection::questionAsked(CloudsQuestionEventArgs& args){
 }
 
 void CloudsWebSocketConnection::topicChanged(CloudsTopicEventArgs& args){
-	char message[1024];
-	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
-	server.send( message );
-	cout << " message " << message << endl;
+//	char message[1024];
+//	sprintf(message, "{ \"topic\" : \"%s\" }", args.topic.c_str() );
+//	server.send( message );
+//	cout << " message " << message << endl;
+	 
+//	currentTopic = args.topic;
+	
 }
 
 void CloudsWebSocketConnection::preRollRequested(CloudsPreRollEventArgs& args){
