@@ -34,6 +34,10 @@
 
 namespace itg
 {
+    MarineSnow::MarineSnow() : alphaMin(.2f), alphaMax(.8f)
+    {
+    }
+    
     void MarineSnow::init(const string& dataPath, unsigned numParticles)
     {
         this->numParticles = numParticles;
@@ -57,7 +61,7 @@ namespace itg
                                    ofRandom(-800.f, 800.f),
                                    ofRandom(-Creature::fogEnd, 0)));
             
-            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(0.2f, 0.8f)));
+            mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(alphaMin, alphaMax)));
             
             // stick texture offset and size into normal
             mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(0.1f, 100.f)));

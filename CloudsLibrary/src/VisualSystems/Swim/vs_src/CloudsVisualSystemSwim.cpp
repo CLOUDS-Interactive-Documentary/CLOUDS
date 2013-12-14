@@ -82,6 +82,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addToggle("regenerate", false);
     rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
     rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    rdrGui->addRangeSlider("snowAlpha (range)", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);
@@ -92,6 +93,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("attractStrength", 0.f, 1.f, &creatures.attractStrength);
     rdrGui->addMinimalSlider("maxDistFromCentre", 500.f, 4000.f, &creatures.maxDistFromCentre);
     
+    /*
     rdrGui->addLabel("Points");
     rdrGui->addSpacer();
     rdrGui->addIntSlider("numPointOne", 0, 1000, &creatures.numPointOne);
@@ -100,6 +102,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addMinimalSlider("huePointTwo", 0.f, 1.f, &creatures.huePointTwo);
     rdrGui->addIntSlider("numPointThree", 0, 1000, &creatures.numPointThree);
     rdrGui->addMinimalSlider("huePointThree", 0.f, 1.f, &creatures.huePointThree);
+     */
     
     rdrGui->addLabel("Jellies (see other menus)");
     rdrGui->addSpacer();
@@ -170,7 +173,6 @@ void CloudsVisualSystemSwim::selfPresetLoaded(string presetPath)
     creatures.generate();
     snow.generate();
 }
-
 
 void CloudsVisualSystemSwim::onWindowResized(ofResizeEventArgs& args)
 {
