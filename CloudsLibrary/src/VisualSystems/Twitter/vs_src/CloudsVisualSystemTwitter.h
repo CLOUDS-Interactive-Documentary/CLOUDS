@@ -113,14 +113,22 @@ protected:
 
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
+    
     ofFloatColor baseColor;
     ofFloatColor baseModifier;
+    
     ofFloatColor tweetColor;
     ofFloatColor tweetModifier;
+    
     ofFloatColor nodeColor;
     ofFloatColor nodeModifier;
+    
     ofFloatColor nodeActiveColor;
     ofFloatColor nodeActiveModifier;
+    
+    ofFloatColor nodeMidpointColor;
+    ofFloatColor nodeMidpointModifier;
+    
     string currentMeshFilePath;
     float xScale,yScale, zScale;
     
