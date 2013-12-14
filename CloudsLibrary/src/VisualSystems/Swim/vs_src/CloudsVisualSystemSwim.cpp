@@ -28,7 +28,7 @@ void CloudsVisualSystemSwim::selfSetup()
     creatures.init(getVisualSystemDataPath());
     
     post.init(ofGetWidth(), ofGetHeight(), true);
-    post.createPass<FxaaPass>();
+    //post.createPass<FxaaPass>();
     post.createPass<BloomPass>();
 }
 
@@ -80,10 +80,19 @@ void CloudsVisualSystemSwim::selfPostDraw()
 void CloudsVisualSystemSwim::selfSetupRenderGui()
 {    
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
-    rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    //rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
+    //rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    
     rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
+    rdrGui->addRangeSlider("creatureFogStartEnd (range)", 0.f, 10000.f, &Creature::fogStart, &Creature::fogEnd);
+    
+    rdrGui->addRangeSlider("snowFogStartEnd (range)", 0.f, 10000.f, &snow.getFogStartRef(), &snow.getFogEndRef());
+    rdrGui->addRangeSlider("snowInnerStartEnd (range)", 0.f, 2000.f, &snow.getInnerFogStartRef(), &snow.getInnerFogEndRef());
     rdrGui->addRangeSlider("snowAlpha (range)", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
+    rdrGui->addRangeSlider("snowSize (range)", 0.f, 1000.f, &snow.getSizeMinRef(), &snow.getSizeMaxRef());
+    
+    //rdrGui->addMinimalSlider("snowInnerFogStart", 0, 2000.f, &snow.getInnerFogStartRef());
+    //rdrGui->addMinimalSlider("snowInnerFogEnd", 0, 2000.f, &snow.getInnerFogEndRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
     rdrGui->addMinimalSlider("zoneRadius", 50.f, 2000.f, &creatures.zoneRadius);

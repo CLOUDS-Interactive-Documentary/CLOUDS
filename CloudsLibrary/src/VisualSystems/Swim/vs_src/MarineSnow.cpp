@@ -34,7 +34,8 @@
 
 namespace itg
 {
-    MarineSnow::MarineSnow() : alphaMin(.2f), alphaMax(.8f)
+    MarineSnow::MarineSnow() :
+        alphaMin(.2f), alphaMax(.8f), innerFogStart(100.f), innerFogEnd(400.f), sizeMin(0.1f), sizeMax(400.f)
     {
     }
     
@@ -57,14 +58,14 @@ namespace itg
         mesh.clear();
         for (unsigned i = 0; i < numParticles; ++i)
         {
-            mesh.addVertex(ofVec3f(ofRandom(-800.f, 800.f),
-                                   ofRandom(-800.f, 800.f),
-                                   ofRandom(-Creature::fogEnd, 0)));
+            mesh.addVertex(ofVec3f(ofRandom(-1500.f, 1500.f),
+                                   ofRandom(-1500.f, 1500.f),
+                                   ofRandom(-fogEnd, 0)));
             
             mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(alphaMin, alphaMax)));
             
             // stick texture offset and size into normal
-            mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(0.1f, 100.f)));
+            mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(sizeMin, sizeMax)));
         }
     }
     
@@ -76,7 +77,10 @@ namespace itg
         glEnable(GL_POINT_SPRITE);
         ofEnableAlphaBlending();
         shader.begin();
-        shader.setUniform1f("fogEnd", Creature::fogEnd);
+        shader.setUniform1f("innerFogStart", innerFogStart);
+        shader.setUniform1f("innerFogEnd", innerFogEnd);
+        shader.setUniform1f("fogStart", fogStart);
+        shader.setUniform1f("fogEnd", fogEnd);
         shader.setUniform1f("nearClip", cam.getNearClip());
         shader.setUniform1f("camZ", cam.getPosition().z);
         shader.setUniformTexture("tex", tex, 1);
