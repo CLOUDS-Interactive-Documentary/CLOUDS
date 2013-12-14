@@ -117,6 +117,10 @@ protected:
     ofFloatColor baseModifier;
     ofFloatColor tweetColor;
     ofFloatColor tweetModifier;
+    ofFloatColor nodeColor;
+    ofFloatColor nodeModifier;
+    ofFloatColor nodeActiveColor;
+    ofFloatColor nodeActiveModifier;
     string currentMeshFilePath;
     float xScale,yScale, zScale;
     
