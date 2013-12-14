@@ -1136,42 +1136,18 @@
 		851BCCC718598F63005AF0A0 /* Satoruhiga */ = {
 			isa = PBXGroup;
 			children = (
-				851BCCC818598F63005AF0A0 /* bin */,
 				851BCCCB18598F63005AF0A0 /* vs_src */,
 			);
 			name = Satoruhiga;
 			path = ../../CloudsLibrary/src/VisualSystems/Satoruhiga;
 			sourceTree = "<group>";
 		};
-		851BCCC818598F63005AF0A0 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				851BCCC918598F63005AF0A0 /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		851BCCC918598F63005AF0A0 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				851BCCCA18598F63005AF0A0 /* Presets */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		851BCCCA18598F63005AF0A0 /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presets;
-			sourceTree = "<group>";
-		};
 		851BCCCB18598F63005AF0A0 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
 				851BCCD018599065005AF0A0 /* Replecator.h */,
-				851BCCCC18598F63005AF0A0 /* CloudsVisualSystemSatoruhiga.cpp */,
 				851BCCCD18598F63005AF0A0 /* CloudsVisualSystemSatoruhiga.h */,
+				851BCCCC18598F63005AF0A0 /* CloudsVisualSystemSatoruhiga.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1362,12 +1338,12 @@
 		E7DD846117DBC0A500AFB2DD /* VisualSystemsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846417DBC0A500AFB2DD /* CloudsRGBDCamera.h */,
-				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
+				E7DD846317DBC0A500AFB2DD /* CloudsRGBDCamera.cpp */,
 				E7DD846617DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.h */,
-				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
+				E7DD846517DBC0A500AFB2DD /* CloudsRGBDVideoPlayer.cpp */,
 				E7DD846817DBC0A500AFB2DD /* CloudsVisualSystem.h */,
+				E7DD846717DBC0A500AFB2DD /* CloudsVisualSystem.cpp */,
 				E7DD846917DBC0A500AFB2DD /* ofxLight.h */,
 				E7DD846A17DBC0A500AFB2DD /* README.md */,
 			);
