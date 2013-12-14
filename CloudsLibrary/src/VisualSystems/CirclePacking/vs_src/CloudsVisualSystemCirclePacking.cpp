@@ -37,16 +37,7 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
     
     
     //pack(400,400);
-    
-    CirclePacker pack(400.0, 400.0);
-    
-    for(int i = 0; i<50; i++){
-      
-        Circle newCircle(ofRandom(300.0), ofRandom(300.0), ofRandom(100.0), "blank");
-      //  newCircle
-        pack.circles.push_back(newCircle);
-        
-    }
+
 }
 
 void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
@@ -78,8 +69,23 @@ void CloudsVisualSystemCirclePacking::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemCirclePacking::selfSetup(){
 	
 	
+	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());	
+    for(int i = 0; i<150; i++){
+		if(ofRandomuf() > .9){
+			pack.circles.push_back( Circle(ofRandom(ofGetWidth()), 
+										   ofRandom(ofGetHeight()), 
+										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+												 30, 60.), "blank") );		
+		}
+		else{
+			pack.circles.push_back( Circle(ofRandom(ofGetWidth()), 
+										   ofRandom(ofGetHeight()), 
+										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+												5, 10), "blank") );		
+		}
+    }	
+	pack.pack();
 	
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
 	
 }
 
@@ -126,12 +132,15 @@ void CloudsVisualSystemCirclePacking::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 
-    //for (int i = 0; i<pack.circles.size(); i++){
-       // cout << "circle radius : " << pack.circles[i].r << endl;
-   // }
+	for (int i = 0; i<pack.circles.size(); i++){
+		cout << "circle radius : " << pack.circles[i].r << endl;
+	}
     
-    cout << "circle vector size : " << pack.circles.size() << endl;
+	ofPushStyle();
+	ofNoFill();
     pack.draw();
+	ofPopStyle();
+	
 	//turn the background refresh off
 	//bClearBackground = false;
 	
