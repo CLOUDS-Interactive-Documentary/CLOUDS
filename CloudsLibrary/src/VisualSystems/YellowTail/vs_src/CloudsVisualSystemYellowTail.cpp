@@ -1,6 +1,6 @@
 
 #include "CloudsVisualSystemYellowTail.h"
-#include "CloudsInputKinectOSC.h"
+
 
 CloudsVisualSystemYellowTail::CloudsVisualSystemYellowTail(){
 
