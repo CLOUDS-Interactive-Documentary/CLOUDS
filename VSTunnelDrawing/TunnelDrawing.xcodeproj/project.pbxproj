@@ -1144,8 +1144,8 @@
 		85469A68185787A40073C330 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				85469A69185787A40073C330 /* CloudsVisualSystemTunnelDrawing.cpp */,
 				85469A6A185787A40073C330 /* CloudsVisualSystemTunnelDrawing.h */,
+				85469A69185787A40073C330 /* CloudsVisualSystemTunnelDrawing.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1270,8 +1270,8 @@
 		E7380141183C871A0018AB96 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7380142183C871A0018AB96 /* ofxOculusRift.cpp */,
 				E7380143183C871A0018AB96 /* ofxOculusRift.h */,
+				E7380142183C871A0018AB96 /* ofxOculusRift.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";

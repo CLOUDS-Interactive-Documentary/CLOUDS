@@ -12,6 +12,8 @@
 #include "CloudsLink.h"
 #include <set>
 #include "ofRange.h"
+#include "CloudsProjectExample.h"
+
 class CloudsFCPParser {
   public:
 
@@ -33,8 +35,9 @@ class CloudsFCPParser {
 
 #pragma mark Links
     void parseLinks(string linkFile);
-//    void parseClusterMap(string mapFile);
+//    void parseClusterMap(string mapFile); //SVG
 	void parseClusterNetwork(string fileName);
+	void parseProjectExamples(string filename);
 	
 	void getOverlappingClipIDs();
     void autolinkSequentialClips();
@@ -185,6 +188,10 @@ class CloudsFCPParser {
 	map<string, vector<string> > sourceSupression;
     map<string, string> clipInterventions;
     
+	//PROJECT EXAMPLES
+	vector<CloudsProjectExample> projectExamples;
+	map<string,int> clipIdToProjectExample;
+	
 	//KEYWORDS + CLUSTER NETWORK
     vector<pair<string, ofVec3f> > keywordCentroids;
 	map<string, vector<string> > keywordAdjacency;

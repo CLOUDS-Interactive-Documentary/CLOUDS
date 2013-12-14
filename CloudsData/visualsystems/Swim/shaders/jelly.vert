@@ -9,14 +9,13 @@ const float EPSILON = 1e-4;
 uniform float deformAmount;
 uniform float time;
 uniform float frequency;
+uniform float fogStart;
+uniform float fogEnd;
 
 // eye space normal and light direction
 varying vec3 nEye;
 varying vec3 vEye;
-//varying float superOffset;
-
-//varying vec3 lEye;
-
+varying float fogAmount;
 
 vec4 deform(vec4 v)
 {
@@ -30,10 +29,14 @@ void main()
     gl_TexCoord[0] = gl_MultiTexCoord0;
     
     vec4 vertex = deform(gl_Vertex);
-    //superOffset = 0.0;//length(vertex) - size;
+    
     vec4 vertexEye = gl_ModelViewMatrix * vertex;
+    
     vEye = vertexEye.xyz;
+    
     nEye = gl_NormalMatrix * gl_Normal;
+    
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     
     gl_Position = gl_ProjectionMatrix * vertexEye;
 }

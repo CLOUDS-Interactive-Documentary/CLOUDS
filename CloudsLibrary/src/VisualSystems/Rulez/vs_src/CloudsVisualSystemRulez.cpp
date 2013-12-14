@@ -16,6 +16,8 @@ CloudsVisualSystemRulez::CloudsVisualSystemRulez() :
 // geometry should be loaded here
 void CloudsVisualSystemRulez::selfSetup()
 {
+    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemRulez::onWindowResized);
+    
     ofDirectory dir;
     dir.listDir(getVisualSystemDataPath() + "rules");
     dir.sort();
@@ -182,6 +184,11 @@ void CloudsVisualSystemRulez::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
+}
+
+void CloudsVisualSystemRulez::onWindowResized(ofResizeEventArgs& args)
+{
+    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemRulez::selfGuiEvent(ofxUIEventArgs &e)

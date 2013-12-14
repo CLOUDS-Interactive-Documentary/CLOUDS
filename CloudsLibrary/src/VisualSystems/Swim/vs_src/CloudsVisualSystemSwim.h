@@ -13,11 +13,15 @@
 #include "CloudsVisualSystem.h"
 #include "Creatures.h"
 #include "Bubbles.h"
+#include "MarineSnow.h"
 #include "ofxPostProcessing.h"
 
 //TODO: rename this to your own visual system
 class CloudsVisualSystemSwim : public CloudsVisualSystem {
   public:
+    static const float CAM_DAMPING;
+    
+    CloudsVisualSystemSwim();
     
 	//TODO: Change this to the name of your visual system
 	//This determines your data path so name it at first!
@@ -107,11 +111,16 @@ protected:
     
     //  Your Stuff
     //
+    void onWindowResized(ofResizeEventArgs& args);
     ofxUISuperCanvas* createCustomGui(const string& name);
     void addSliders(ofxUISuperCanvas* gui, JellyParams& params);
     
+    // cam
+    float camYRot, camSpeed, maxCamSpeed;
+    
     itg::Creatures creatures;
     itg::Bubbles bubbles;
+    itg::MarineSnow snow;
     ofxPostProcessing post;
     
 	ofxUISuperCanvas* jellyOneGui;

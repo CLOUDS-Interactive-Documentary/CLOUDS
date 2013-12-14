@@ -57,13 +57,13 @@ namespace itg
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
         ofDisableArbTex();
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
-        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.jpg");
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.png");
         ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(0, 0, 1);
         ModelCreature::bends.push_back(1.f);
         fishOneParams.modelIdx = 0;
-        fishOneParams.colour = ofFloatColor(0.7, 0.7, 0.7);
+        fishOneParams.colour = ofFloatColor(1.0, 1.0, 1.0);
         fishOneParams.sizeAverage = 1.25;
         fishOneParams.sizeStdDeviation = 0.5;
         
@@ -72,13 +72,17 @@ namespace itg
         ModelCreature::fishModels.back().loadModel(dataPath + "models/TropicalFish05.obj");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setScale(0.1, 0.1, 0.1);
+        ofDisableArbTex();
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/TropicalFish05.png");
+        ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(1, 0, 0);
         ModelCreature::bends.push_back(1.f);
         fishTwoParams.sizeAverage = 1.25;
         fishTwoParams.sizeStdDeviation = 0.5;
         fishTwoParams.modelIdx = 1;
-        fishTwoParams.colour = ofFloatColor(0.7, 0.7, 0.0);
+        fishTwoParams.colour = ofFloatColor(1.0, 1.0, 0.0);
         
         ModelCreature::fishShader.load(dataPath + "shaders/fish");
         
@@ -94,58 +98,70 @@ namespace itg
         JellyCreature::shader.load(dataPath + "shaders/jelly");
         
         //generate();
+        pointCreatureMesh.setUsage(GL_DYNAMIC_DRAW);
+        pointCreatureMesh.setMode(OF_PRIMITIVE_POINTS);
     }
     
     void Creatures::generate()
     {
         creatures.clear();
+        creaturesByType.clear();
         
         const float startArea = 1200.f;
         
-        // fish one
-        creaturesByType.push_back(vector<Creature::Ptr>());
-        for (int i = 0; i < round(numGreyFish); ++i)
-        {
-            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(fishOneParams));
-            creatures.push_back(modelCreature);
-            creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
-            creaturesByType.back().push_back(creatures.back());
-        }
+        addModelFish(numGreyFish, fishOneParams);
+        addModelFish(numYellowFish, fishTwoParams);
         
-        // fish two
-        creaturesByType.push_back(vector<Creature::Ptr>());
-        for (int i = 0; i < round(numYellowFish); ++i)
-        {
-            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(fishTwoParams));
-            creatures.push_back(modelCreature);
-            creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
-            creaturesByType.back().push_back(creatures.back());
-        }
+        /*
+        addPointFish(numPointOne, huePointOne);
+        addPointFish(numPointTwo, huePointTwo);
+        addPointFish(numPointThree, huePointThree);
+        */
         
         // NB add jellies last as they are drawn with glDepthMask(GL_FALSE) to make additive blending
         // work so depth isn't stored
-        // jelly one
-        creaturesByType.push_back(vector<Creature::Ptr>());
-        for (int i = 0; i < round(numJellyOne); ++i)
-        {
-            creatures.push_back(JellyCreature::Ptr(new JellyCreature(jellyOneParams)));
-            creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
-            creaturesByType.back().push_back(creatures.back());
-        }
-        
-        // jelly two
-        creaturesByType.push_back(vector<Creature::Ptr>());
-        for (int i = 0; i < round(numJellyTwo); ++i)
-        {
-            creatures.push_back(JellyCreature::Ptr(new JellyCreature(jellyTwoParams)));
-            creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
-            creaturesByType.back().push_back(creatures.back());
-        }
+        addJellyFish(numJellyOne, jellyOneParams);
+        addJellyFish(numJellyTwo, jellyTwoParams);
         
         for (unsigned i = 0; i < creatures.size(); ++i)
         {
             creatures[i]->setPosition(ofRandom(-startArea, startArea), ofRandom(-startArea, startArea), ofRandom(-startArea, 0));
             creatures[i]->setOrientation(ofVec3f(ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f), ofRandom(-180.f, 180.f)));
+        }
+    }
+    
+    void Creatures::addPointFish(unsigned number, float hue)
+    {
+        creaturesByType.push_back(vector<Creature::Ptr>());
+        for (int i = 0; i < number; ++i)
+        {
+            PointCreature::Ptr pointCreature = PointCreature::Ptr(new PointCreature(hue));
+            creatures.push_back(pointCreature);
+            creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
+            creaturesByType.back().push_back(creatures.back());
+        }
+    }
+    
+    void Creatures::addModelFish(unsigned number, const ModelParams& params)
+    {
+        creaturesByType.push_back(vector<Creature::Ptr>());
+        for (int i = 0; i < number; ++i)
+        {
+            ModelCreature::Ptr modelCreature = ModelCreature::Ptr(new ModelCreature(params));
+            creatures.push_back(modelCreature);
+            creatures.back()->setVelocity(ofRandom(-100, 100), ofRandom(-100, 100), ofRandom(-100, 100));
+            creaturesByType.back().push_back(creatures.back());
+        }
+    }
+    
+    void Creatures::addJellyFish(unsigned number, const JellyParams& params)
+    {
+        creaturesByType.push_back(vector<Creature::Ptr>());
+        for (int i = 0; i < number; ++i)
+        {
+            creatures.push_back(JellyCreature::Ptr(new JellyCreature(params)));
+            creatures.back()->setVelocity(ofRandom(-50, 50), ofRandom(-50, 50), ofRandom(-50, 50));
+            creaturesByType.back().push_back(creatures.back());
         }
     }
     
@@ -155,68 +171,71 @@ namespace itg
         
         for (unsigned k = 0; k < creaturesByType.size(); ++k)
         {
-            vector<ofVec3f> posns;
-            for (int i = 0; i < creaturesByType[k].size(); ++i)
+            if (!creaturesByType[k].empty())
             {
-                creaturesByType[k][i]->zeroAccumulated();
-                creaturesByType[k][i]->setMagic(false);
-                // make nn search so that it has an interface that can be implemented
-                posns.push_back(creaturesByType[k][i]->getPosition());
-            }
-            nn.buildIndex(posns);
-            
-            // zero accumulated forces and then add forces
-            // from fish fish interaction
-            for (int i = 0; i < creaturesByType[k].size(); ++i)
-            {
-                const int numClosest = 8;
-                vector<float> dists2;
-                vector<NNIndex> indices;
-                nn.findNClosestPoints(creaturesByType[k][i]->getPosition(), numClosest, indices, dists2);
-                
-                for (int j = 0; j < indices.size(); ++j)
+                vector<ofVec3f> posns;
+                for (int i = 0; i < creaturesByType[k].size(); ++i)
                 {
-                    if (indices[j] != i)
+                    creaturesByType[k][i]->zeroAccumulated();
+                    creaturesByType[k][i]->setMagic(false);
+                    // make nn search so that it has an interface that can be implemented
+                    posns.push_back(creaturesByType[k][i]->getPosition());
+                }
+                nn.buildIndex(posns);
+                
+                // zero accumulated forces and then add forces
+                // from fish fish interaction
+                for (int i = 0; i < creaturesByType[k].size(); ++i)
+                {
+                    const int numClosest = 8;
+                    vector<float> dists2;
+                    vector<NNIndex> indices;
+                    nn.findNClosestPoints(creaturesByType[k][i]->getPosition(), numClosest, indices, dists2);
+                    
+                    for (int j = 0; j < indices.size(); ++j)
                     {
-                        Creature::Ptr creature = creaturesByType[k][indices[j]];
-                        //if (creature->getType() == creaturesByType[k][i]->getType())
+                        if (indices[j] != i)
                         {
-                            // towards creature i
-                            ofVec3f dir = creaturesByType[k][i]->getPosition() - creature->getPosition();
-                            
-                            if( dists2[j] < zoneRadiusSq )
+                            Creature::Ptr creature = creaturesByType[k][indices[j]];
+                            //if (creature->getType() == creaturesByType[k][i]->getType())
                             {
-                                // Neighbor is in the zone
-                                float percent = dists2[j]/zoneRadiusSq;
+                                // towards creature i
+                                ofVec3f dir = creaturesByType[k][i]->getPosition() - creature->getPosition();
                                 
-                                if( percent < alignmentLower )
+                                if( dists2[j] < zoneRadiusSq )
                                 {
-                                    // Separation
-                                    float F = ( alignmentLower/percent - 1.0f ) * repelStrength;//repelStrength;
-                                    dir = dir.normalized() * F;
-                                    creaturesByType[k][i]->accumulate(dir);
-                                }
-                                else if( percent < alignmentUpper )
-                                {	
-                                    // Alignment
-                                    float threshDelta		= alignmentUpper - alignmentLower;
-                                    float adjustedPercent	= ( percent - alignmentLower )/threshDelta;
-                                    float F					= ( 1.0 - ( cos( adjustedPercent * TWO_PI ) * -0.5f + 0.5f ) ) * alignStrength;// * alignStrength;
-                                    ofVec3f force = creature->getNormalisedVelocity() * F;
-                                    creaturesByType[k][i]->accumulate(force);
+                                    // Neighbor is in the zone
+                                    float percent = dists2[j]/zoneRadiusSq;
                                     
-                                }
-                                else
-                                {								
-                                    // Cohesion
-                                    float threshDelta		= 1.0f - alignmentUpper;
-                                    float adjustedPercent	= ( percent - alignmentUpper )/threshDelta;
-                                    float F					= ( 1.0 - ( cos( adjustedPercent * TWO_PI ) * -0.5f + 0.5f ) ) * attractStrength;// * attractStrength;
-                                    
-                                    dir.normalize();
-                                    dir *= F;
-                                    ofVec3f force = -dir;
-                                    creaturesByType[k][i]->accumulate(force);
+                                    if( percent < alignmentLower )
+                                    {
+                                        // Separation
+                                        float F = ( alignmentLower/percent - 1.0f ) * repelStrength;//repelStrength;
+                                        dir = dir.normalized() * F;
+                                        creaturesByType[k][i]->accumulate(dir);
+                                    }
+                                    else if( percent < alignmentUpper )
+                                    {	
+                                        // Alignment
+                                        float threshDelta		= alignmentUpper - alignmentLower;
+                                        float adjustedPercent	= ( percent - alignmentLower )/threshDelta;
+                                        float F					= ( 1.0 - ( cos( adjustedPercent * TWO_PI ) * -0.5f + 0.5f ) ) * alignStrength;// * alignStrength;
+                                        ofVec3f force = creature->getNormalisedVelocity() * F;
+                                        creaturesByType[k][i]->accumulate(force);
+                                        
+                                    }
+                                    else
+                                    {								
+                                        // Cohesion
+                                        float threshDelta		= 1.0f - alignmentUpper;
+                                        float adjustedPercent	= ( percent - alignmentUpper )/threshDelta;
+                                        float F					= ( 1.0 - ( cos( adjustedPercent * TWO_PI ) * -0.5f + 0.5f ) ) * attractStrength;// * attractStrength;
+                                        
+                                        dir.normalize();
+                                        dir *= F;
+                                        ofVec3f force = -dir;
+                                        creaturesByType[k][i]->accumulate(force);
+                                    }
                                 }
                             }
                         }
@@ -224,12 +243,14 @@ namespace itg
                 }
             }
         }
+        // attract to a point a little in front of the camera
+        //ofVec3f attractionPoint(0, 0, -1000.f + 2.f * Creature::fogEnd * floor(cam.getPosition().z / (2.f * Creature::fogEnd)));
         
-
+        ofVec3f attractionPoint(0.f, 0.f, 0.f);
+        
         for (int i = 0; i < creatures.size(); ++i)
         {
-            // keep them in the centre
-            ofVec3f dirToCenter = creatures[i]->getPosition();
+            ofVec3f dirToCenter = creatures[i]->getPosition() - attractionPoint;
             float distToCenter = dirToCenter.length();
             //static const float maxDistance = 3000.f;
             
@@ -251,6 +272,13 @@ namespace itg
             ofVec3f toMove = creatures[i]->getVelocity() * ofGetLastFrameTime();
 #ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
+            
+            /*
+            if (abs(creatures[i]->getPosition().z - cam.getPosition().z) > Creature::fogEnd)
+            {
+                //cout << cam.getPosition().z << " " << creatures[i]->getPosition().z << " " << cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd) << endl;
+                creatures[i]->setPosition(creatures[i]->getPosition().x, creatures[i]->getPosition().y, cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd));
+            }*/
 #endif
             /*ofQuaternion quat;
             quat.makeRotate(ofVec3f(0, 0, 1), creatures[i]->getNormalisedVelocity());
@@ -259,18 +287,38 @@ namespace itg
             creatures[i]->slerp(creatures[i]->getPosition() - creatures[i]->getNormalisedVelocity(), ofVec3f(0, 1, 0));
 
 			creatures[i]->update();
-            
+        }
+        
+        pointCreatureMesh.clear();
+        for (unsigned i = 0; i < creaturesByType.size(); ++i)
+        {
+            for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
+            {
+                if (creaturesByType[i][j]->getType() != Creature::POINT) break;
+                pointCreatureMesh.addVertex(creaturesByType[i][j]->getPosition());
+                pointCreatureMesh.addColor(creaturesByType[i][j]->getColour());
+            }
         }
     }
     
-    void Creatures::draw()
+    void Creatures::draw(const ofCamera& cam)
     {
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_DEPTH_TEST);
+        for (unsigned i = 0; i < creaturesByType.size(); ++i)
+        {
+            for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
+            {
+                if (creaturesByType[i][j]->getType() == Creature::POINT) break;
+                creaturesByType[i][j]->draw(cam);
+            }
+        }
+        pointCreatureMesh.draw();
+        /*
         for (int i = 0; i < creatures.size(); ++i)
         {
             creatures[i]->draw();
-        }
+        }*/
         glPopAttrib();
     }
 }

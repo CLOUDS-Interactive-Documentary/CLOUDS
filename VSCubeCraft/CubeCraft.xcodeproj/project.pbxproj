@@ -77,8 +77,17 @@
 		4695E2BD17512E45003001E2 /* ofxSwarmBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AA17512E45003001E2 /* ofxSwarmBehavior.cpp */; };
 		4695E2BE17512E45003001E2 /* ofxVerletSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2AD17512E45003001E2 /* ofxVerletSolver.cpp */; };
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
+<<<<<<< HEAD
 		50CB0DBD1858EE410072050F /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50CB0DAE1858EE410072050F /* normalShader.frag */; };
 		50CB0DBE1858EE410072050F /* normalShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50CB0DAF1858EE410072050F /* normalShader.vert */; };
+=======
+		50618E731853A93C00DD8FD8 /* base.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6D1853A93C00DD8FD8 /* base.frag */; };
+		50618E741853A93C00DD8FD8 /* base.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6E1853A93C00DD8FD8 /* base.vert */; };
+		50618E751853A93C00DD8FD8 /* post.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E6F1853A93C00DD8FD8 /* post.frag */; };
+		50618E761853A93C00DD8FD8 /* post.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E701853A93C00DD8FD8 /* post.vert */; };
+		50618E771853A93C00DD8FD8 /* rgbdcombined.frag in Sources */ = {isa = PBXBuildFile; fileRef = 50618E711853A93C00DD8FD8 /* rgbdcombined.frag */; };
+		50618E781853A93C00DD8FD8 /* rgbdcombined.vert in Sources */ = {isa = PBXBuildFile; fileRef = 50618E721853A93C00DD8FD8 /* rgbdcombined.vert */; };
+>>>>>>> 9e8377236b50420dd592c946f1f1cd91ec332be0
 		50CB0DC21858EE410072050F /* CubeCraft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CB0DBB1858EE410072050F /* CubeCraft.cpp */; };
 		50CB0DDE1858EED20072050F /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 50CB0DD61858EED20072050F /* glm.c */; };
 		50CB0DDF1858EED20072050F /* ofxObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50CB0DDA1858EED20072050F /* ofxObjLoader.cpp */; };
@@ -504,6 +513,7 @@
 		50618D931853A93C00DD8FD8 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		50618D941853A93C00DD8FD8 /* triangle-sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle-sprite.png"; sourceTree = "<group>"; };
 		50618D951853A93C00DD8FD8 /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		50CB0D821858EE410072050F /* CubeCraftDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = CubeCraftDebug.app; sourceTree = "<group>"; };
 		50CB0D851858EE410072050F /* defaultColorPalette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultColorPalette.png; sourceTree = "<group>"; };
 		50CB0D861858EE410072050F /* defaultColors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = defaultColors.xml; sourceTree = "<group>"; };
@@ -542,6 +552,14 @@
 		50CB0DAC1858EE410072050F /* UITimelineMappings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UITimelineMappings.xml; sourceTree = "<group>"; };
 		50CB0DAE1858EE410072050F /* normalShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = normalShader.frag; sourceTree = "<group>"; };
 		50CB0DAF1858EE410072050F /* normalShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = normalShader.vert; sourceTree = "<group>"; };
+=======
+		50618E6D1853A93C00DD8FD8 /* base.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = base.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50618E6E1853A93C00DD8FD8 /* base.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = base.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		50618E6F1853A93C00DD8FD8 /* post.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.frag; sourceTree = "<group>"; };
+		50618E701853A93C00DD8FD8 /* post.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post.vert; sourceTree = "<group>"; };
+		50618E711853A93C00DD8FD8 /* rgbdcombined.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.frag; sourceTree = "<group>"; };
+		50618E721853A93C00DD8FD8 /* rgbdcombined.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = rgbdcombined.vert; sourceTree = "<group>"; };
+>>>>>>> 9e8377236b50420dd592c946f1f1cd91ec332be0
 		50CB0DBB1858EE410072050F /* CubeCraft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeCraft.cpp; sourceTree = "<group>"; };
 		50CB0DBC1858EE410072050F /* CubeCraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeCraft.h; sourceTree = "<group>"; };
 		50CB0DD61858EED20072050F /* glm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glm.c; sourceTree = "<group>"; };
@@ -1245,127 +1263,17 @@
 		50CB0D801858EE410072050F /* CubeCraft */ = {
 			isa = PBXGroup;
 			children = (
-				50CB0D811858EE410072050F /* bin */,
 				50CB0DBA1858EE410072050F /* vs_src */,
 			);
 			name = CubeCraft;
 			path = ../../CloudsLibrary/src/VisualSystems/CubeCraft;
 			sourceTree = "<group>";
 		};
-		50CB0D811858EE410072050F /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D821858EE410072050F /* CubeCraftDebug.app */,
-				50CB0D831858EE410072050F /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		50CB0D831858EE410072050F /* data */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D841858EE410072050F /* GUI */,
-				50CB0D881858EE410072050F /* images */,
-				50CB0D931858EE410072050F /* models */,
-				50CB0D981858EE410072050F /* Presets */,
-				50CB0DAD1858EE410072050F /* shaders */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		50CB0D841858EE410072050F /* GUI */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D851858EE410072050F /* defaultColorPalette.png */,
-				50CB0D861858EE410072050F /* defaultColors.xml */,
-				50CB0D871858EE410072050F /* NewMedia Fett.ttf */,
-			);
-			path = GUI;
-			sourceTree = "<group>";
-		};
-		50CB0D881858EE410072050F /* images */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D891858EE410072050F /* circle-sprite.png */,
-				50CB0D8A1858EE410072050F /* cursor.png */,
-				50CB0D8B1858EE410072050F /* hex-sprite.png */,
-				50CB0D8C1858EE410072050F /* sphereNormal.png */,
-				50CB0D8D1858EE410072050F /* sprite.png */,
-				50CB0D8E1858EE410072050F /* square-sprite.png */,
-				50CB0D8F1858EE410072050F /* square.png */,
-				50CB0D901858EE410072050F /* star.png */,
-				50CB0D911858EE410072050F /* triangle-sprite.png */,
-				50CB0D921858EE410072050F /* triangle.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		50CB0D931858EE410072050F /* models */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D941858EE410072050F /* box.mtl */,
-				50CB0D951858EE410072050F /* box.obj */,
-				50CB0D961858EE410072050F /* cube.mtl */,
-				50CB0D971858EE410072050F /* cube.obj */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		50CB0D981858EE410072050F /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D991858EE410072050F /* Working */,
-			);
-			path = Presets;
-			sourceTree = "<group>";
-		};
-		50CB0D991858EE410072050F /* Working */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0D9A1858EE410072050F /* BgSettings.xml */,
-				50CB0D9B1858EE410072050F /* CamSettings.xml */,
-				50CB0D9C1858EE410072050F /* LightSettings.xml */,
-				50CB0D9D1858EE410072050F /* MATERIAL 1Settings.xml */,
-				50CB0D9E1858EE410072050F /* ofEasyCamSettings */,
-				50CB0D9F1858EE410072050F /* POINT LIGHT 1Settings.xml */,
-				50CB0DA01858EE410072050F /* Presets.xml */,
-				50CB0DA11858EE410072050F /* RenderSettings.xml */,
-				50CB0DA21858EE410072050F /* Settings.xml */,
-				50CB0DA31858EE410072050F /* SystemSettings.xml */,
-				50CB0DA41858EE410072050F /* Timeline */,
-				50CB0DAB1858EE410072050F /* TimelineSettings.xml */,
-				50CB0DAC1858EE410072050F /* UITimelineMappings.xml */,
-			);
-			path = Working;
-			sourceTree = "<group>";
-		};
-		50CB0DA41858EE410072050F /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0DA51858EE410072050F /* cameraTrack.xml */,
-				50CB0DA61858EE410072050F /* IntroOutro.xml */,
-				50CB0DA71858EE410072050F /* Working_FIREWORKS_trackPositions.xml */,
-				50CB0DA81858EE410072050F /* Working_inout.xml */,
-				50CB0DA91858EE410072050F /* Working_Page_One_trackPositions.xml */,
-				50CB0DAA1858EE410072050F /* Working_zoomer.xml */,
-			);
-			path = Timeline;
-			sourceTree = "<group>";
-		};
-		50CB0DAD1858EE410072050F /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				50CB0DAE1858EE410072050F /* normalShader.frag */,
-				50CB0DAF1858EE410072050F /* normalShader.vert */,
-			);
-			path = shaders;
-			sourceTree = "<group>";
-		};
 		50CB0DBA1858EE410072050F /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
-				50CB0DBB1858EE410072050F /* CubeCraft.cpp */,
 				50CB0DBC1858EE410072050F /* CubeCraft.h */,
+				50CB0DBB1858EE410072050F /* CubeCraft.cpp */,
 			);
 			path = vs_src;
 			sourceTree = "<group>";
@@ -1798,8 +1706,6 @@
 				E7DD854917DBC0A500AFB2DD /* CloudsVisualSystem.cpp in Sources */,
 				E79E700B1855640B00406535 /* CloudsInput.cpp in Sources */,
 				E79E700F1855640B00406535 /* CloudsInputMouse.cpp in Sources */,
-				50CB0DBD1858EE410072050F /* normalShader.frag in Sources */,
-				50CB0DBE1858EE410072050F /* normalShader.vert in Sources */,
 				50CB0DC21858EE410072050F /* CubeCraft.cpp in Sources */,
 				50CB0DDE1858EED20072050F /* glm.c in Sources */,
 				50CB0DDF1858EED20072050F /* ofxObjLoader.cpp in Sources */,

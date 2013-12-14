@@ -57,13 +57,13 @@ namespace itg
     public:
         typedef shared_ptr<ModelCreature> Ptr;
         
-        static float texAmount;
-        
         ModelCreature(const ModelParams& params);
         
         void integrate();
         
         void customDraw();
+        
+        ofFloatColor getColour() const { return colour; }
         
     private:
         static vector<ofxAssimpModelLoader> fishModels;

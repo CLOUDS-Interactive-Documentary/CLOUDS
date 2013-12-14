@@ -1,0 +1,423 @@
+<clouds>
+	<person id="Aaron">
+			<first>Aaron</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Andres">
+			<first>Andres</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Binx">
+			<first>Binx</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Casey">
+			<first>Casey</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Chris">
+			<first>Chris</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Diederick">
+			<first></first>
+			<last>Diedrick</last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Elliot">
+			<first>Elliot</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Elliot_UK">
+			<first>Elliot</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Fernanda">
+			<first>Fernanda</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Golan">
+			<first>Golan</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Golan_AMA">
+			<first>Golan</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Greg">
+			<first>Greg</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="JTNimoy">
+			<first>JTNimoy</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Javier">
+			<first>Javier</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Jen">
+			<first>Jen</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Jer">
+			<first>Jer</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Joel">
+			<first>Joel</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Julia">
+			<first>Julia</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Julian">
+			<first>Julian</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Karolina">
+			<first>Karolina</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Karsten">
+			<first>Karsten</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Kevin">
+			<first>Kevin</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Kyle_CH">
+			<first>Kyle_CH</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Kyle_MC">
+			<first>Kyle_MC</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Lauren">
+			<first>Lauren</first>
+			<last>McCarthy</last>
+			<title></title>
+			<twitter>@lau</twitter>
+			<location>Brooklyn, NY</location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+	</person>
+	<person id="Lindsay">
+			<first>Lindsay</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Maeda">
+			<first>John</first>
+			<last>Maeda</last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Marcus">
+			<first>Marcus</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Marius">
+			<first>Marius</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Martin">
+			<first>Martin</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Nervous_Jesse">
+			<first>Jesse</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Nervous_Jessica">
+			<first>Jessica</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Paola">
+			<first>Paola</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Philip">
+			<first>Philip</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Ramsey">
+			<first>Ramsey</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Regine">
+			<first>Regine</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Shantell">
+			<first>Shantell</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Shiffman">
+			<first>Shiffman</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Sophy">
+			<first>Sophy</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Theo">
+			<first>Theo</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Vera">
+			<first>Vera</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+	<person id="Zach">
+			<first>Zach</first>
+			<last></last>
+			<title></title>
+			<twitter></twitter>
+			<location></location>
+			<byline1></byline1>
+			<byline2></byline2>
+			<resume> ... </resume>
+		</person>
+
+</clouds>

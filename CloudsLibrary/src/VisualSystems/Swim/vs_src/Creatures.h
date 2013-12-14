@@ -36,6 +36,7 @@
 #include "ofxNearestNeighbour.h"
 #include "ModelCreature.h"
 #include "JellyCreature.h"
+#include "PointCreature.h"
 
 namespace itg
 {
@@ -44,7 +45,7 @@ namespace itg
     public:
         void init(const string& dataPath);
         void update();
-        void draw();
+        void draw(const ofCamera& cam);
 
         void onGui(ofxUIEventArgs& args);
         
@@ -55,18 +56,28 @@ namespace itg
         float repelStrength, attractStrength, alignStrength;
         float maxDistFromCentre;
         
-        // float to make work with ofxUI
-        float numJellyOne, numJellyTwo;
+        // jelly gui
+        int numJellyOne, numJellyTwo;
         JellyParams jellyOneParams, jellyTwoParams;
+        
+        // fish gui
+        int numGreyFish, numYellowFish;
         ModelParams fishOneParams, fishTwoParams;
-        float numGreyFish, numYellowFish;
+        
+        // point gui
+        int numPointOne, numPointTwo, numPointThree;
+        float huePointOne, huePointTwo, huePointThree;
         
         void generate();
         
     private:
+        void addPointFish(unsigned number, float hue);
+        void addModelFish(unsigned number, const ModelParams& params);
+        void addJellyFish(unsigned number, const JellyParams& params);
+        
         vector<Creature::Ptr> creatures;
         vector<vector<Creature::Ptr> > creaturesByType;
-        
         ofxNearestNeighbour3D nn;
+        ofVboMesh pointCreatureMesh;
     };
 }
