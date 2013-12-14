@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
+		181259FC185A371D006EFC47 /* ofxBillboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181259F5185A371D006EFC47 /* ofxBillboard.cpp */; };
+		185CE9CE184AB8D300F43977 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C6184AB8D300F43977 /* attenuatelines.frag */; };
+		185CE9CF184AB8D300F43977 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C7184AB8D300F43977 /* attenuatelines.vert */; };
+		185CE9D0184AB8D300F43977 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C8184AB8D300F43977 /* cluster.frag */; };
+		185CE9D1184AB8D300F43977 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9C9184AB8D300F43977 /* cluster.vert */; };
+		185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CA184AB8D300F43977 /* gaussianblur.frag */; };
+		185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = 185CE9CB184AB8D300F43977 /* gaussianblur.vert */; };
+		187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353411858C8B200AC5DEA /* CloudsInput.cpp */; };
+		1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */; };
+		187353CB1858F72A00AC5DEA /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 187353B01858F72900AC5DEA /* libftgl.a */; };
+		187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */; };
+		187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187353BB1858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp */; };
 		188B661118412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */; };
 		188B668818412F0C00E02CC7 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B666F18412F0C00E02CC7 /* json_reader.cpp */; };
 		188B668918412F0C00E02CC7 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B667118412F0C00E02CC7 /* json_value.cpp */; };
@@ -334,6 +347,48 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		181259F5185A371D006EFC47 /* ofxBillboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBillboard.cpp; sourceTree = "<group>"; };
+		181259F6185A371D006EFC47 /* ofxBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBillboard.h; sourceTree = "<group>"; };
+		185CE9C6184AB8D300F43977 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
+		185CE9C7184AB8D300F43977 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
+		185CE9C8184AB8D300F43977 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
+		185CE9C9184AB8D300F43977 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
+		185CE9CA184AB8D300F43977 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
+		185CE9CB184AB8D300F43977 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
+		187353411858C8B200AC5DEA /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
+		187353421858C8B200AC5DEA /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
+		187353431858C8B200AC5DEA /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
+		187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInputMouse.cpp; sourceTree = "<group>"; };
+		187353471858C8B200AC5DEA /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputMouse.h; sourceTree = "<group>"; };
+		187353931858F72900AC5DEA /* FTBBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBBox.h; sourceTree = "<group>"; };
+		187353941858F72900AC5DEA /* FTBitmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBitmapGlyph.h; sourceTree = "<group>"; };
+		187353951858F72900AC5DEA /* FTBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuffer.h; sourceTree = "<group>"; };
+		187353961858F72900AC5DEA /* FTBufferFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBufferFont.h; sourceTree = "<group>"; };
+		187353971858F72900AC5DEA /* FTBufferGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBufferGlyph.h; sourceTree = "<group>"; };
+		187353981858F72900AC5DEA /* FTExtrdGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTExtrdGlyph.h; sourceTree = "<group>"; };
+		187353991858F72900AC5DEA /* FTFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTFont.h; sourceTree = "<group>"; };
+		1873539A1858F72900AC5DEA /* ftgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ftgl.h; sourceTree = "<group>"; };
+		1873539B1858F72900AC5DEA /* FTGLBitmapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLBitmapFont.h; sourceTree = "<group>"; };
+		1873539C1858F72900AC5DEA /* FTGLExtrdFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLExtrdFont.h; sourceTree = "<group>"; };
+		1873539D1858F72900AC5DEA /* FTGLOutlineFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLOutlineFont.h; sourceTree = "<group>"; };
+		1873539E1858F72900AC5DEA /* FTGLPixmapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLPixmapFont.h; sourceTree = "<group>"; };
+		1873539F1858F72900AC5DEA /* FTGLPolygonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLPolygonFont.h; sourceTree = "<group>"; };
+		187353A01858F72900AC5DEA /* FTGLTextureFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGLTextureFont.h; sourceTree = "<group>"; };
+		187353A11858F72900AC5DEA /* FTGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTGlyph.h; sourceTree = "<group>"; };
+		187353A21858F72900AC5DEA /* FTLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLayout.h; sourceTree = "<group>"; };
+		187353A31858F72900AC5DEA /* FTOutlineGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTOutlineGlyph.h; sourceTree = "<group>"; };
+		187353A41858F72900AC5DEA /* FTPixmapGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPixmapGlyph.h; sourceTree = "<group>"; };
+		187353A51858F72900AC5DEA /* FTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPoint.h; sourceTree = "<group>"; };
+		187353A61858F72900AC5DEA /* FTPolyGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPolyGlyph.h; sourceTree = "<group>"; };
+		187353A71858F72900AC5DEA /* FTSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSimpleLayout.h; sourceTree = "<group>"; };
+		187353A81858F72900AC5DEA /* FTTextureGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextureGlyph.h; sourceTree = "<group>"; };
+		187353AF1858F72900AC5DEA /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
+		187353B01858F72900AC5DEA /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
+		187353B81858F72A00AC5DEA /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGL.h; sourceTree = "<group>"; };
+		187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLFont.cpp; sourceTree = "<group>"; };
+		187353BA1858F72A00AC5DEA /* ofxFTGLFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLFont.h; sourceTree = "<group>"; };
+		187353BB1858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLSimpleLayout.cpp; sourceTree = "<group>"; };
+		187353BC1858F72A00AC5DEA /* ofxFTGLSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGLSimpleLayout.h; sourceTree = "<group>"; };
 		188B660F18412BBF00E02CC7 /* CloudsVisualSystemTwitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemTwitter.cpp; sourceTree = "<group>"; };
 		188B661018412BBF00E02CC7 /* CloudsVisualSystemTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemTwitter.h; sourceTree = "<group>"; };
 		188B666318412F0C00E02CC7 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
@@ -755,12 +810,151 @@
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				E7CF78421753FEA0006B7D41 /* libsndfile.a in Frameworks */,
+				187353CB1858F72A00AC5DEA /* libftgl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181259DF185A371C006EFC47 /* ofxBillboard */ = {
+			isa = PBXGroup;
+			children = (
+				181259F4185A371D006EFC47 /* src */,
+			);
+			name = ofxBillboard;
+			path = ../../../addons/ofxBillboard;
+			sourceTree = "<group>";
+		};
+		181259F4185A371D006EFC47 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				181259F5185A371D006EFC47 /* ofxBillboard.cpp */,
+				181259F6185A371D006EFC47 /* ofxBillboard.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		185CE9C5184AB8D300F43977 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				185CE9C6184AB8D300F43977 /* attenuatelines.frag */,
+				185CE9C7184AB8D300F43977 /* attenuatelines.vert */,
+				185CE9C8184AB8D300F43977 /* cluster.frag */,
+				185CE9C9184AB8D300F43977 /* cluster.vert */,
+				185CE9CA184AB8D300F43977 /* gaussianblur.frag */,
+				185CE9CB184AB8D300F43977 /* gaussianblur.vert */,
+			);
+			name = shaders;
+			path = ../../../CloudsLibrary/src/VisualSystems/Twitter/bin/data/shaders;
+			sourceTree = "<group>";
+		};
+		187353401858C8B200AC5DEA /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				187353411858C8B200AC5DEA /* CloudsInput.cpp */,
+				187353421858C8B200AC5DEA /* CloudsInput.h */,
+				187353431858C8B200AC5DEA /* CloudsInputEvents.h */,
+				187353461858C8B200AC5DEA /* CloudsInputMouse.cpp */,
+				187353471858C8B200AC5DEA /* CloudsInputMouse.h */,
+			);
+			name = Input;
+			path = ../../CloudsLibrary/src/Input;
+			sourceTree = "<group>";
+		};
+		1873534B1858F72800AC5DEA /* ofxFTGL */ = {
+			isa = PBXGroup;
+			children = (
+				1873538F1858F72900AC5DEA /* libs */,
+				187353B71858F72A00AC5DEA /* src */,
+			);
+			name = ofxFTGL;
+			path = ../../../addons/ofxFTGL;
+			sourceTree = "<group>";
+		};
+		1873538F1858F72900AC5DEA /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				187353901858F72900AC5DEA /* FTGL */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		187353901858F72900AC5DEA /* FTGL */ = {
+			isa = PBXGroup;
+			children = (
+				187353911858F72900AC5DEA /* include */,
+				187353A91858F72900AC5DEA /* lib */,
+			);
+			path = FTGL;
+			sourceTree = "<group>";
+		};
+		187353911858F72900AC5DEA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				187353921858F72900AC5DEA /* FTGL */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		187353921858F72900AC5DEA /* FTGL */ = {
+			isa = PBXGroup;
+			children = (
+				187353931858F72900AC5DEA /* FTBBox.h */,
+				187353941858F72900AC5DEA /* FTBitmapGlyph.h */,
+				187353951858F72900AC5DEA /* FTBuffer.h */,
+				187353961858F72900AC5DEA /* FTBufferFont.h */,
+				187353971858F72900AC5DEA /* FTBufferGlyph.h */,
+				187353981858F72900AC5DEA /* FTExtrdGlyph.h */,
+				187353991858F72900AC5DEA /* FTFont.h */,
+				1873539A1858F72900AC5DEA /* ftgl.h */,
+				1873539B1858F72900AC5DEA /* FTGLBitmapFont.h */,
+				1873539C1858F72900AC5DEA /* FTGLExtrdFont.h */,
+				1873539D1858F72900AC5DEA /* FTGLOutlineFont.h */,
+				1873539E1858F72900AC5DEA /* FTGLPixmapFont.h */,
+				1873539F1858F72900AC5DEA /* FTGLPolygonFont.h */,
+				187353A01858F72900AC5DEA /* FTGLTextureFont.h */,
+				187353A11858F72900AC5DEA /* FTGlyph.h */,
+				187353A21858F72900AC5DEA /* FTLayout.h */,
+				187353A31858F72900AC5DEA /* FTOutlineGlyph.h */,
+				187353A41858F72900AC5DEA /* FTPixmapGlyph.h */,
+				187353A51858F72900AC5DEA /* FTPoint.h */,
+				187353A61858F72900AC5DEA /* FTPolyGlyph.h */,
+				187353A71858F72900AC5DEA /* FTSimpleLayout.h */,
+				187353A81858F72900AC5DEA /* FTTextureGlyph.h */,
+			);
+			path = FTGL;
+			sourceTree = "<group>";
+		};
+		187353A91858F72900AC5DEA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				187353AE1858F72900AC5DEA /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		187353AE1858F72900AC5DEA /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				187353AF1858F72900AC5DEA /* buildFTGL.sh */,
+				187353B01858F72900AC5DEA /* libftgl.a */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		187353B71858F72A00AC5DEA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				187353B81858F72A00AC5DEA /* ofxFTGL.h */,
+				187353B91858F72A00AC5DEA /* ofxFTGLFont.cpp */,
+				187353BA1858F72A00AC5DEA /* ofxFTGLFont.h */,
+				187353BB1858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp */,
+				187353BC1858F72A00AC5DEA /* ofxFTGLSimpleLayout.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		188B660E18412BBF00E02CC7 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1117,6 +1311,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				181259DF185A371C006EFC47 /* ofxBillboard */,
+				1873534B1858F72800AC5DEA /* ofxFTGL */,
 				188B661218412F0B00E02CC7 /* ofxJSON */,
 				850EE0EA183062CD004411A3 /* ofxOculusRift */,
 				85E209B6181F3B0D00EAFC4D /* ofxUI */,
@@ -1202,6 +1398,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				187353401858C8B200AC5DEA /* Input */,
 				E7E95E5C1733624100294C72 /* CloudsLibrary */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
@@ -1222,6 +1419,7 @@
 		E7846DA31713A48B00705E7A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				185CE9C5184AB8D300F43977 /* shaders */,
 			);
 			name = data;
 			path = bin/data;
@@ -1927,6 +2125,7 @@
 				850EE0CB1830627B004411A3 /* CloudsRGBDVideoPlayer.cpp in Sources */,
 				850EE0CC1830627B004411A3 /* CloudsVisualSystem.cpp in Sources */,
 				850EE1A6183062CD004411A3 /* ofxOculusRift.cpp in Sources */,
+				181259FC185A371D006EFC47 /* ofxBillboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2056,6 +2255,17 @@
 				188B668A18412F0C00E02CC7 /* json_writer.cpp in Sources */,
 				188B668B18412F0C00E02CC7 /* ofxJSONElement.cpp in Sources */,
 				188B669F184144E700E02CC7 /* Tweeter.cpp in Sources */,
+				185CE9CE184AB8D300F43977 /* attenuatelines.frag in Sources */,
+				185CE9CF184AB8D300F43977 /* attenuatelines.vert in Sources */,
+				185CE9D0184AB8D300F43977 /* cluster.frag in Sources */,
+				185CE9D1184AB8D300F43977 /* cluster.vert in Sources */,
+				185CE9D2184AB8D300F43977 /* gaussianblur.frag in Sources */,
+				185CE9D3184AB8D300F43977 /* gaussianblur.vert in Sources */,
+				187353481858C8B200AC5DEA /* CloudsInput.cpp in Sources */,
+				1873534A1858C8B200AC5DEA /* CloudsInputMouse.cpp in Sources */,
+				187353CF1858F72A00AC5DEA /* ofxFTGLFont.cpp in Sources */,
+				187353D01858F72A00AC5DEA /* ofxFTGLSimpleLayout.cpp in Sources */,
+				181259FB185A371D006EFC47 /* ofxBillboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2392,6 +2602,7 @@
 					../../../addons/ofxJSON/src,
 					../../../addons/ofxJSON/libs/jsoncpp/src,
 					"../../../addons/ofxJSON/libs/jsoncpp/include/**",
+					../../../addons/ofxFTGL/libs/FTGL/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2463,12 +2674,22 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = TwitterDebug;
@@ -2499,6 +2720,7 @@
 					../../../addons/ofxJSON/src,
 					../../../addons/ofxJSON/libs/jsoncpp/src,
 					"../../../addons/ofxJSON/libs/jsoncpp/include/**",
+					../../../addons/ofxFTGL/libs/FTGL/include,
 				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -2570,12 +2792,22 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MT\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010/EFX-Util_MTDLL\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/openal/libs/vs2010\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxTimeline/libs/sndfile/lib/vs2010\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = Twitter;
