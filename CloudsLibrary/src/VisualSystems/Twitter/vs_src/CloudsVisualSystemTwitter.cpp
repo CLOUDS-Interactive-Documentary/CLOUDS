@@ -61,6 +61,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     xScale = 1;
     yScale = 1;
     zScale = 10;
+    rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
 
@@ -106,6 +107,8 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addSlider("Y POS", 1, 100, &yScale);
     clusterGui->addSlider("Z POS", 1, 100, &zScale);
     clusterGui->addButton("RELOAD MESH", false);
+    clusterGui->addSpacer();
+    clusterGui->addToggle("ROTATE", &rotateModel);
     
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
@@ -289,9 +292,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                         }
                         else{
                         }
-                        
                     }
-                    
                 }
             }
         }
@@ -322,7 +323,6 @@ void CloudsVisualSystemTwitter::updateMesh(){
 
     }
     
-
     for(int i= 0; i<edgeMesh.getColors().size(); i++){
         ofFloatColor c = edgeMesh.getColor(i);
         if(c != baseColor){
@@ -331,11 +331,7 @@ void CloudsVisualSystemTwitter::updateMesh(){
             float s = ofLerp(c.getSaturation(), baseColor.getSaturation(), edgeDecayRate);
             float b = ofLerp(c.getBrightness() , baseColor.getBrightness(),edgeDecayRate);
             float a =ofLerp(c.a , baseColor.a,edgeDecayRate);
-//            float h =  abs((c.getHue() - baseColor.getHue())*edgeDecayRate);
-//            float s =  abs((c.getSaturation() - baseColor.getSaturation())*edgeDecayRate);
-//            float b =  abs((c.getBrightness() - baseColor.getBrightness())*edgeDecayRate);
-//            float a = abs((c.a - baseColor.a)*edgeDecayRate);
-//            c.setHsb(c.getHue()-h,c.getSaturation()-s,c.getBrightness()-b);
+
             c.setHsb(h, s, b);
             c.a = a;
             
@@ -544,7 +540,6 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
         initSystem(currentMeshFilePath);
         
     }
-
         baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
         baseColor.a = baseAlpha;
         tweetColor.setHsb(tweetModifier.r, tweetModifier.g, tweetModifier.b);
@@ -611,8 +606,10 @@ void CloudsVisualSystemTwitter::selfPresetLoaded(string presetPath)
 //any type of transformation that doesn't have to do with the camera
 void CloudsVisualSystemTwitter::selfSceneTransformation(){
 
-//	ofVec3f f = getCameraPosition();
-//    ofRotateZ(ofGetFrameNum()%360);
+    if(rotateModel){
+        ofRotateZ(ofGetFrameNum()%360);    
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -693,27 +690,8 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 }
 void CloudsVisualSystemTwitter::drawObject(const ofVec3f& pos)
 {
-    //    if (mode == BILLBOARD_CYLINDRICAL) {
     
     ofxBillboardBeginCylindrical(getCameraPosition(), pos);
-    //    }
-    //    else if (mode == BILLBOARD_CYLINDRICAL_CHEAT) {
-    //        ofxBillboardBeginCylindricalCheat(pos);
-    //    }
-    //    else if (mode == BILLBOARD_SPHERICAL) {
-    //        ofxBillboardBeginSpherical(cam.getGlobalPosition(), pos);
-    //    }
-    //    else if (mode == BILLBOARD_SPHERICAL_CHEAT) {
-    //        ofxBillboardBeginSphericalCheat(pos);
-    //    }
-    //    else if (mode == BILLBOARD_SPHERICAL_OBVIOUS) {
-    //        ofxBillboardBeginSphericalObvious(cam.getGlobalPosition(), pos);
-    //    }
-    //    else {  // mode == BILLBOARD_NONE
-    //        ofPushMatrix();
-    //        ofTranslate(pos);
-    //    }
-    
     ofSetColor(ofColor::whiteSmoke);
     string cur = getDateAsString( dateIndex[currentDateIndex]);
     ofDrawBitmapString(cur , 0,0);

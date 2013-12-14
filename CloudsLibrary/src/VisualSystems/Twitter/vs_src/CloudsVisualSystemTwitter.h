@@ -124,6 +124,7 @@ protected:
     string currentMeshFilePath;
     float xScale,yScale, zScale;
     
+    bool rotateModel;
     
     
     
