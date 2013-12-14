@@ -60,31 +60,7 @@ namespace itg
             mesh.addColor(ofFloatColor::fromHsb(ofRandom(0.1f, 0.3f), ofRandom(0.f, 0.8f), 1.f, ofRandom(0.2f, 0.8f)));
             
             // stick texture offset and size into normal
-            ofVec3f data;
-            switch (rand() % 4)
-            {
-                case 0:
-                    data.x = 0.f;
-                    data.y = 0.f;
-                    break;
-                
-                case 1:
-                    data.x = .5f;
-                    data.y = 0.f;
-                    break;
-                    
-                case 2:
-                    data.x = 0.f;
-                    data.y = .5f;
-                    break;
-                
-                case 3:
-                    data.x = .5f;
-                    data.y = .5f;
-                    break;
-            }
-            data.z = ofRandom(0.1f, 100.f);
-            mesh.addNormal(data);
+            mesh.addNormal(ofVec3f((rand() % 2) * .5f, (rand() % 2) * .5f, ofRandom(0.1f, 100.f)));
         }
     }
     
