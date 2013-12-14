@@ -1,5 +1,5 @@
 /*
- *  Action.h
+ *  ConeAction.h
  *
  *  Copyright (c) 2013, Neil Mendoza, http://www.neilmendoza.com
  *  All rights reserved. 
@@ -31,53 +31,25 @@
  */
 #pragma once
 
-#include <tr1/memory>
-#include "ofxXmlSettings.h"
+#include "ofMain.h"
 #include "Branch.h"
+#include "TransformAction.h"
 
 namespace itg
 {
-    using namespace tr1;
-    
-    class Action
+    class ConeAction : public TransformAction
     {
     public:
-        typedef shared_ptr<Action> Ptr;
+        typedef shared_ptr<ConeAction> Ptr;
         
-        Action(const string& nextRuleName = "");
-        virtual ~Action() {}
+        Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh);
+    
+        void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
         
-        virtual Branch::Ptr step(Branch::Ptr branch, ofMesh& mesh) = 0;
-        
-        void setNextRuleName(const string& nextRuleName) { this->nextRuleName = nextRuleName; }
-        string getNextRuleName() const { return nextRuleName; }
-        
-        void setRuleName(const string& ruleName) { this->ruleName = ruleName; }
-        string getRuleName() const { return ruleName; }
-        
-        void setRepeat(unsigned repeat) { this->repeat = repeat; }
-        unsigned getRepeat() const { return repeat; }
-        
-        virtual void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
-        virtual void save(ofxXmlSettings& xml);
-        
-        string getName() const { return name; }
-        void setName(const string& name) { this->name = name; }
-        
-        static ofFloatColor parseColour(const string& colourString);
-        
-    protected:
-        // get the normal matrix
-        static ofMatrix4x4 inverseTranspose(const ofMatrix4x4& transform);
-        // these functions are part of ofMesh in 0.8
-        static ofMesh icosahedron(float radius);
-        static ofMesh icosphere(float radius, int iterations);
-        static ofMesh cone(float radius, float height, int radiusSegments=12, int heightSegments=6, int capSegments=2, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLES);
+        void setParameters(float radius, float height, unsigned radiusSegments);
         
     private:
-        string name;
-        string ruleName;
-        string nextRuleName;
-        unsigned repeat;
+        ofMesh coneMesh;
+        ofFloatColor colour;
     };
 }
