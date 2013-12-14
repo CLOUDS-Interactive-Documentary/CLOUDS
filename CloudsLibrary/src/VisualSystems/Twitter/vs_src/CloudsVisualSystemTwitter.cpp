@@ -242,7 +242,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             
 			tweeter.position = ofVec3f(ofToFloat(components[2])*xScale,
                                        ofToFloat(components[3])*yScale,
-                                       ofToFloat(components[4])*zScale	);
+                                       ofToFloat(components[4])*zScale);
 		}
         
         if(findingEdges){

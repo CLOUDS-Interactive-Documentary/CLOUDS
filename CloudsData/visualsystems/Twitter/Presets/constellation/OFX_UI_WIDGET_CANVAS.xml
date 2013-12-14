@@ -8,12 +8,12 @@
 <Widget>
     <Kind>44</Kind>
     <Name>REFRESH RATE</Name>
-    <Value>15</Value>
+    <Value>40</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>EDGE DECAY</Name>
-    <Value>0.023152709</Value>
+    <Value>0.123990141</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -23,12 +23,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>TWEET SAT</Name>
-    <Value>0.649999976</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>TWEET BRI</Name>
-    <Value>0.540000021</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -43,17 +43,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BASE SAT</Name>
-    <Value>0.460000008</Value>
+    <Value>0.472906411</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BASE BRI</Name>
-    <Value>0.899999976</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BASE ALPHA</Name>
-    <Value>0.004926108</Value>
+    <Value>0.024630541</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -73,7 +73,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>NODE ALPHA</Name>
-    <Value>0.586206913</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -109,4 +109,9 @@
     <Kind>4</Kind>
     <Name>Z POS</Name>
     <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATE</Name>
+    <Value>1</Value>
 </Widget>
