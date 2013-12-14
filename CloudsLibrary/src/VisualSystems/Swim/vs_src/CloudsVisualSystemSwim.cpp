@@ -12,7 +12,7 @@
 
 const float CloudsVisualSystemSwim::CAM_DAMPING = .08f;
 
-CloudsVisualSystemSwim::CloudsVisualSystemSwim() : yRot(0), zSpeed(0)
+CloudsVisualSystemSwim::CloudsVisualSystemSwim() : camYRot(0), camSpeed(0), maxCamSpeed(600.f)
 {
 }
 
@@ -48,10 +48,10 @@ void CloudsVisualSystemSwim::selfUpdate()
     ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
     
     // cam
-    yRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20) - yRot);
-    zSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -600.f, 600.f) - zSpeed);
-    getCameraRef().move(0, 0, zSpeed * ofGetLastFrameTime());
-    getCameraRef().setOrientation(ofVec3f(0, yRot, 0.f));
+    camYRot += CAM_DAMPING * (ofMap(GetCloudsInputX(), 0.f, ofGetWidth(), 20, -20, true) - camYRot);
+    camSpeed += CAM_DAMPING * (ofMap(GetCloudsInputY(), 0, ofGetHeight(), -maxCamSpeed, 0.f, true) - camSpeed);
+    getCameraRef().move(0, 0, camSpeed * ofGetLastFrameTime());
+    getCameraRef().setOrientation(ofVec3f(0, camYRot, 0.f));
     getCameraRef().setFarClip(Creature::fogEnd);
 
     //bubbles.update();
@@ -82,6 +82,7 @@ void CloudsVisualSystemSwim::selfSetupRenderGui()
     rdrGui->addToggle("regenerate", false);
     rdrGui->addMinimalSlider("creatureFogStart", 0.f, 10000.f, &Creature::fogStart);
     rdrGui->addMinimalSlider("creatureFogEnd", 0.f, 10000.f, &Creature::fogEnd);
+    rdrGui->addMinimalSlider("maxCamSpeed", 0.f, 1500.f, &maxCamSpeed);
     rdrGui->addRangeSlider("snowAlpha (range)", 0.f, 1.f, &snow.getAlphaMinRef(), &snow.getAlphaMaxRef());
     rdrGui->addLabel("Flocking");
     rdrGui->addSpacer();
