@@ -1,0 +1,13 @@
+<clouds>
+	<project title="Drawn1">
+			<creator_name>Zach Lieberman</creator_name>
+			<description>In the installation drawn, figures drawn with pen and ink take on a life of their own and interact with their creators. They seem to arise from the sheet of drawing paper and start to move in with the hand motions of the person who drew them.</description>
+			<video_file_name>videos/sample.mp4</video_file_name>
+	</project>
+	<project title="Drawn2">
+			<creator_name>Kyle McDonald</creator_name>
+			<description>Just a test. Delete this one.</description>
+			<video_file_name>http://media.w3.org/2010/05/sintel/trailer.mp4</video_file_name>
+	</project>
+
+</clouds>

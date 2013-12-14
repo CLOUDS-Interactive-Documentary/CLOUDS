@@ -1,0 +1,110 @@
+
+body{
+	font-family:'Conv_MateriaPro_Light',Sans-Serif;
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:lighter;
+	background-color:#000000;
+	
+}
+/*
+#graph{
+	width:1920px;
+	height:1080px;
+}*/
+
+#graph{
+	width:1280px;
+	height:720px;
+}
+
+.person_info{
+	width:765px;
+	position:fixed;
+	top:198px;
+	right:283px;
+}
+
+.current_artist_block{
+	background-color:#000000;
+	margin-bottom:33px;
+	padding-bottom:15px;
+}
+
+#artist_name, 
+#topic{
+	position:relative;
+	padding-left:19px;
+	padding-top:5px;
+	font-size:96px;
+	font-weight:lighter;
+}
+
+#byline{
+	position:relative;
+	padding-left:19px;
+	padding-top:1px;
+	font-size:35px;
+	font-weight:lighter;
+}
+
+#description{
+	padding-left:19px;
+	padding-top:10px;
+	font-size:26px;
+	line-height:32px;
+}
+
+#video{
+	z-index:1;
+}
+
+#info {
+  position: absolute; 
+  z-index: 2147483647;
+  top: 600px; 
+  background-color: #000;
+  width:1920px;
+  float:left;
+  
+}
+
+#projectex_info{
+	padding-left:20px;
+	width:400px;
+	float:left;
+	overflow:hidden;
+}
+
+#projectex_title{
+	float:left;
+	font-size:60px;
+	line-height:60px;
+	z-index: 2147483647;
+	color:#FFF;
+	
+}
+
+#projectex_artist{
+	background-color: #FFFFFF;
+/*	padding: 4px;*/
+	float:left;
+	font-size:36px;
+	color:#000;
+}
+
+#projectex_desc{
+	padding-left:0px;
+	font-size:24px;
+	line-height:24px;
+	/*position: relative; */
+	float:left;
+	color:#FFF;
+}
+
+#projectex_content{
+}
+
+
+
+

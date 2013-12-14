@@ -36,7 +36,7 @@ namespace itg
     float Creature::fogStart = 1000.f;
     float Creature::fogEnd = 1200.f;
     
-	Creature::Creature() : magic(false)
+    Creature::Creature() : magic(false)
 	{
 	}
 
@@ -69,6 +69,22 @@ namespace itg
         normalisedVelocity = velocity.normalized();
     }
     
+    void Creature::draw(const ofCamera& cam)
+    {
+        ofPushMatrix();
+        if (cam.getPosition().z - getPosition().z > Creature::fogEnd)
+        {
+            ofTranslate(0, 0, Creature::fogEnd * floor(abs(cam.getPosition().z - getPosition().z) / Creature::fogEnd));
+        }
+        else if (getPosition().z > cam.getPosition().z)
+        {
+            ofTranslate(0, 0, -Creature::fogEnd * ceil((getPosition().z - cam.getPosition().z) / Creature::fogEnd));
+        }
+        ofMultMatrix(getGlobalTransformMatrix());
+        customDraw();
+        ofPopMatrix();
+    }
+        
     float Creature::randomGauss(float mean, float stdDev)
     {
         float x, y, r2;
