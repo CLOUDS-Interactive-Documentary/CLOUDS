@@ -19,6 +19,7 @@
 #include "SurfacePoint.h"
 
 
+
 class SPMesh :  public ofNode{
 public:
 	SPMesh(){
@@ -66,6 +67,99 @@ public:
 	ofVec3f offset;
 	
 	vector< MandalaTicker<float> > tickers;
+};
+
+class SPMeshTail{
+public:
+	SPMeshTail()
+	{
+		m = NULL;
+		smoothing = .8;
+	};
+	~SPMeshTail()
+	{
+		line.clear();
+		points.clear();
+	};
+	
+	void setup( SPMesh* _m, ofVec3f _localOffset=ofVec3f(0,0,0))
+	{
+		if(_m)
+		{
+			m = _m;
+			localOffset = _localOffset;
+			
+			points.resize(100);
+			uv.resize(points.size());
+			worldPos = getRootPosoition();
+			float step = 1./float(points.size()-1);
+			for(int i=0; i<points.size(); i++)
+			{
+				points[i] = worldPos;
+				uv[i].set(step * i);
+			}
+			
+			line.setVertexData( &points[0], points.size(), GL_DYNAMIC_DRAW );
+			line.setTexCoordData( &uv[0], uv.size(), GL_DYNAMIC_DRAW );
+		}
+	}
+	
+	void update()
+	{
+		if(m)
+		{
+			worldPos = getRootPosoition();
+			
+			points[0] = worldPos;
+			float msmoothing = 1. - smoothing;
+			for(int i=points.size()-1; i>0; i--)
+			{
+				points[i] = points[i-1] * smoothing + points[i] * msmoothing;
+			}
+			
+			line.updateVertexData( &points[0], points.size() );
+		}
+	}
+	
+	void draw()
+	{
+		worldPos = getRootPosoition();
+//		ofSphere(worldPos, 100);
+		ofSetColor(255, 255, 255);
+		
+		line.draw(GL_LINE_STRIP, 0, points.size());
+//		glDrawArrays(GL_LINE_STRIP, 0, points.size() );
+		
+//		glLineWidth( 5 );
+//		glBegin(GL_LINE_STRIP);
+//		for (int i=0; i<points.size(); i++)
+//		{
+//			glVertex3f(points[i].x, points[i].y, points[i].z);
+//		}
+//		glEnd();
+	}
+	
+	ofVec3f getRootPosoition()
+	{
+		if(m == NULL){
+			cout << "no mesh" << endl;
+			return ofVec3f(0,0,0);
+		}
+		
+		return localOffset * m->getGlobalTransformMatrix();
+	}
+	
+	SPMesh* m;
+	ofVec3f localOffset;
+	ofVec3f worldPos;
+	
+	float smoothing;
+	
+	ofVbo line;
+	
+	
+	vector<ofVec3f> points;
+	vector<ofVec2f> uv;
 };
 
 class CloudsVisualSystemMandala : public CloudsVisualSystem {
@@ -218,6 +312,7 @@ protected:
 	map<string, ofVboMesh*> meshOptions;//names of the different meshes availlable to the components
 	
 	vector<SPMesh> surfaceMeshes;
+	vector<SPMeshTail> tails;
 	
 	bool bDrawBoxClock;
 	vector <MandalaComponent*> boxClockComponents;
@@ -255,7 +350,7 @@ protected:
 	map<string, bool> whatsDrawn;
 	
 	
-	bool bDrawSurface, bSmoothSurface;
+	bool bDrawSurface, bSmoothSurface, bDrawTails;
 	
 	
 	float lastTime, currentTime;

@@ -72,6 +72,7 @@ namespace itg
         // these functions are part of ofMesh in 0.8
         static ofMesh icosahedron(float radius);
         static ofMesh icosphere(float radius, int iterations);
+        static ofMesh cone(float radius, float height, int radiusSegments=12, int heightSegments=6, int capSegments=2, ofPrimitiveMode mode=OF_PRIMITIVE_TRIANGLES);
         
     private:
         string name;

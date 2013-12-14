@@ -260,8 +260,13 @@ void CloudsVisualSystemFireworks::selfUpdate()
 		float noiseValY = ofSignedNoise( ofGetElapsedTimef() * noiseTimeScl ) * noiseOffsetScl;
 		
 		//pan and tilt with mouse
+<<<<<<< HEAD
+		float pan = ofMap(ofGetMouseX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
+		float tilt = ofMap(ofGetMouseY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+=======
 		float pan = ofMap(GetCloudsInputX() + noiseValX, 0, ofGetWidth(), cameraMotionScl, -cameraMotionScl);
 		float tilt = ofMap(GetCloudsInputY() + noiseValY, 0, ofGetHeight(), cameraMotionScl, -cameraMotionScl) * xDamp;
+>>>>>>> 9e8377236b50420dd592c946f1f1cd91ec332be0
 
 		if(abs(eul.x) < 90) getCameraRef().tilt( tilt );
 		getCameraRef().pan( pan );

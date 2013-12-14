@@ -6,6 +6,7 @@ uniform float dimY;
 uniform float dimZ;
 
 uniform int scaleCube;
+uniform float cubeScale;
 uniform float noiseScale;
 
 varying vec3 vertex;
@@ -83,6 +84,11 @@ float mapLinear( float x, float a1, float a2, float b1, float b2 ) {
 	return b1 + ( x - a1 ) * ( b2 - b1 ) / ( a2 - a1 );
 }
 
+float lengthSqr(vec3 x)
+{
+	return dot(x,x);
+}
+
 void main()
 {	
 	vertex = gl_Vertex.xyz;
@@ -101,12 +107,12 @@ void main()
 //	nScl += verticalScale;
 //	nScl += pow(verticalScale*1.1, 12.);
 	
-	camDelta = distance( cameraPos, boxCenter );
+	camDelta = lengthSqr(cameraPos - boxCenter);//distance( cameraPos, boxCenter );
 	
 	vec4 v = gl_Vertex;
 	if(scaleCube == 1)
 	{
-		v *= vec4(vec3( max(0., nScl )), 1.);
+		v *= vec4(vec3( min(1., max(0., nScl * cubeScale))), 1.);
 	}
 	
 	vec4 ecPosition = gl_ModelViewMatrix * (v + gl_Color );
