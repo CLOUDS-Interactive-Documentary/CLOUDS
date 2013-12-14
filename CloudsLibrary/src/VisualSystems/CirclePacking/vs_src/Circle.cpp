@@ -44,7 +44,5 @@ Boolean Circle::intersect(Circle _circle)
 
 void Circle::draw()
 {
-    ofFill();
-    ofSetColor(255,255,255);
-    ofCircle(x, y, r*2, r*2);
+    ofCircle(x, y, r);
 }
