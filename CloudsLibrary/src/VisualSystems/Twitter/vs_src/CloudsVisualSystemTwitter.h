@@ -85,6 +85,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void reloadMeshColor();
     void updateMeshFromTweets(int index);
     void drawText(const ofVec3f& pos);
+    bool bRenderMesh;
 
     //helpers 
     vector<Date> dateIndex;
