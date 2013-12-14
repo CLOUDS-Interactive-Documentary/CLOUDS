@@ -57,13 +57,13 @@ namespace itg
         ModelCreature::fishModels.back().setScale(0.3, 0.3, 0.3);
         ofDisableArbTex();
         ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
-        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.jpg");
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/plotva.png");
         ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(0, 0, 1);
         ModelCreature::bends.push_back(1.f);
         fishOneParams.modelIdx = 0;
-        fishOneParams.colour = ofFloatColor(0.7, 0.7, 0.7);
+        fishOneParams.colour = ofFloatColor(1.0, 1.0, 1.0);
         fishOneParams.sizeAverage = 1.25;
         fishOneParams.sizeStdDeviation = 0.5;
         
@@ -72,13 +72,17 @@ namespace itg
         ModelCreature::fishModels.back().loadModel(dataPath + "models/TropicalFish05.obj");
         ModelCreature::fishModels.back().setRotation(0, 180, 0, 0, 1);
         ModelCreature::fishModels.back().setScale(0.1, 0.1, 0.1);
+        ofDisableArbTex();
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].setCompression(OF_COMPRESS_ARB);
+        ModelCreature::textures[ModelCreature::fishModels.size() - 1].loadImage(dataPath + "models/TropicalFish05.png");
+        ofEnableArbTex();
         ModelCreature::deformAxes.push_back(ofVec3f());
         ModelCreature::deformAxes.back().set(1, 0, 0);
         ModelCreature::bends.push_back(1.f);
         fishTwoParams.sizeAverage = 1.25;
         fishTwoParams.sizeStdDeviation = 0.5;
         fishTwoParams.modelIdx = 1;
-        fishTwoParams.colour = ofFloatColor(0.7, 0.7, 0.0);
+        fishTwoParams.colour = ofFloatColor(1.0, 1.0, 0.0);
         
         ModelCreature::fishShader.load(dataPath + "shaders/fish");
         
@@ -237,11 +241,14 @@ namespace itg
                 }
             }
         }
-
+        // attract to a point a little in front of the camera
+        //ofVec3f attractionPoint(0, 0, -1000.f + 2.f * Creature::fogEnd * floor(cam.getPosition().z / (2.f * Creature::fogEnd)));
+        
+        ofVec3f attractionPoint(0.f, 0.f, 0.f);
+        
         for (int i = 0; i < creatures.size(); ++i)
         {
-            // keep them in the centre
-            ofVec3f dirToCenter = creatures[i]->getPosition();
+            ofVec3f dirToCenter = creatures[i]->getPosition() - attractionPoint;
             float distToCenter = dirToCenter.length();
             //static const float maxDistance = 3000.f;
             
@@ -263,6 +270,13 @@ namespace itg
             ofVec3f toMove = creatures[i]->getVelocity() * ofGetLastFrameTime();
 #ifndef _DEBUG
             creatures[i]->move(toMove + sin(ofGetElapsedTimef() * creatures[i]->getFrequency()) * toMove * 0.4);
+            
+            /*
+            if (abs(creatures[i]->getPosition().z - cam.getPosition().z) > Creature::fogEnd)
+            {
+                //cout << cam.getPosition().z << " " << creatures[i]->getPosition().z << " " << cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd) << endl;
+                creatures[i]->setPosition(creatures[i]->getPosition().x, creatures[i]->getPosition().y, cam.getPosition().z - fmod(creatures[i]->getPosition().z, Creature::fogEnd));
+            }*/
 #endif
             /*ofQuaternion quat;
             quat.makeRotate(ofVec3f(0, 0, 1), creatures[i]->getNormalisedVelocity());
@@ -285,7 +299,7 @@ namespace itg
         }
     }
     
-    void Creatures::draw()
+    void Creatures::draw(const ofCamera& cam)
     {
         glPushAttrib(GL_ENABLE_BIT);
         glEnable(GL_DEPTH_TEST);
@@ -294,7 +308,7 @@ namespace itg
             for (unsigned j = 0; j < creaturesByType[i].size(); ++j)
             {
                 if (creaturesByType[i][j]->getType() == Creature::POINT) break;
-                creaturesByType[i][j]->draw();
+                creaturesByType[i][j]->draw(cam);
             }
         }
         pointCreatureMesh.draw();

@@ -57,10 +57,13 @@ namespace itg
         
         typedef shared_ptr<Creature> Ptr;
         
+        static float fogStart, fogEnd;
+        
 		Creature();
         ~Creature() {}
         
 		virtual void update() {};
+        void draw(const ofCamera& cam);
         virtual void customDraw() = 0;
         
         void setVelocity(float x, float y, float z) { velocity.set(x, y, z); }
@@ -102,10 +105,9 @@ namespace itg
         CreatureType type;
         float frequency;
         ofVec3f velocity;
-		
+        
     private:
         bool magic;
-        //float fear;
         ofVec3f normalisedVelocity;
     };
 }

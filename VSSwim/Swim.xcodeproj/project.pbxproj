@@ -13,12 +13,6 @@
 		282FEBF8182FFE6600519D79 /* Creatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBDF182FFE6600519D79 /* Creatures.cpp */; };
 		282FEBF9182FFE6600519D79 /* JellyCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBE1182FFE6600519D79 /* JellyCreature.cpp */; };
 		282FEBFA182FFE6600519D79 /* ModelCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBE3182FFE6600519D79 /* ModelCreature.cpp */; };
-		282FEC07182FFEBE00519D79 /* bubble.frag in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC01182FFEBE00519D79 /* bubble.frag */; };
-		282FEC08182FFEBE00519D79 /* bubble.vert in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC02182FFEBE00519D79 /* bubble.vert */; };
-		282FEC09182FFEBE00519D79 /* fish.frag in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC03182FFEBE00519D79 /* fish.frag */; };
-		282FEC0A182FFEBE00519D79 /* fish.vert in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC04182FFEBE00519D79 /* fish.vert */; };
-		282FEC0B182FFEBE00519D79 /* jelly.frag in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC05182FFEBE00519D79 /* jelly.frag */; };
-		282FEC0C182FFEBE00519D79 /* jelly.vert in Sources */ = {isa = PBXBuildFile; fileRef = 282FEC06182FFEBE00519D79 /* jelly.vert */; };
 		284AE5F31859D3EB00780DBB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5EC1859D3EB00780DBB /* CloudsInput.cpp */; };
 		284AE5F41859D3EB00780DBB /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5EF1859D3EB00780DBB /* CloudsInputKinectOSC.cpp */; };
 		284AE5F51859D3EB00780DBB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5F11859D3EB00780DBB /* CloudsInputMouse.cpp */; };
@@ -34,6 +28,9 @@
 		284AE6291859D42200780DBB /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61C1859D42200780DBB /* OscReceivedElements.cpp */; };
 		284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE61E1859D42200780DBB /* OscTypes.cpp */; };
 		284AE6701859DA6600780DBB /* PointCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE66E1859DA6600780DBB /* PointCreature.cpp */; };
+		284AE6771859FC4E00780DBB /* MarineSnow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE6751859FC4E00780DBB /* MarineSnow.cpp */; };
+		284AE681185A06B200780DBB /* snow.frag in Sources */ = {isa = PBXBuildFile; fileRef = 284AE67F185A06B200780DBB /* snow.frag */; };
+		284AE682185A06B200780DBB /* snow.vert in Sources */ = {isa = PBXBuildFile; fileRef = 284AE680185A06B200780DBB /* snow.vert */; };
 		285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */; };
 		285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2068182FFFEE0065BCAE /* BloomPass.cpp */; };
 		285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C206A182FFFEE0065BCAE /* ContrastPass.cpp */; };
@@ -205,12 +202,6 @@
 		282FEBE2182FFE6600519D79 /* JellyCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JellyCreature.h; sourceTree = "<group>"; };
 		282FEBE3182FFE6600519D79 /* ModelCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelCreature.cpp; sourceTree = "<group>"; };
 		282FEBE4182FFE6600519D79 /* ModelCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCreature.h; sourceTree = "<group>"; };
-		282FEC01182FFEBE00519D79 /* bubble.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = bubble.frag; sourceTree = "<group>"; };
-		282FEC02182FFEBE00519D79 /* bubble.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = bubble.vert; sourceTree = "<group>"; };
-		282FEC03182FFEBE00519D79 /* fish.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = fish.frag; sourceTree = "<group>"; };
-		282FEC04182FFEBE00519D79 /* fish.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = fish.vert; sourceTree = "<group>"; };
-		282FEC05182FFEBE00519D79 /* jelly.frag */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = jelly.frag; sourceTree = "<group>"; };
-		282FEC06182FFEBE00519D79 /* jelly.vert */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = jelly.vert; sourceTree = "<group>"; };
 		284AE5EC1859D3EB00780DBB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
 		284AE5ED1859D3EB00780DBB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
 		284AE5EE1859D3EB00780DBB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -250,6 +241,16 @@
 		284AE61F1859D42200780DBB /* OscTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
 		284AE66E1859DA6600780DBB /* PointCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointCreature.cpp; sourceTree = "<group>"; };
 		284AE66F1859DA6600780DBB /* PointCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCreature.h; sourceTree = "<group>"; };
+		284AE6751859FC4E00780DBB /* MarineSnow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarineSnow.cpp; sourceTree = "<group>"; };
+		284AE6761859FC4E00780DBB /* MarineSnow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarineSnow.h; sourceTree = "<group>"; };
+		284AE6791859FFE500780DBB /* bubble.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = bubble.frag; sourceTree = "<group>"; };
+		284AE67A1859FFE500780DBB /* bubble.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = bubble.vert; sourceTree = "<group>"; };
+		284AE67B1859FFE500780DBB /* fish.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = fish.frag; sourceTree = "<group>"; };
+		284AE67C1859FFE500780DBB /* fish.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = fish.vert; sourceTree = "<group>"; };
+		284AE67D1859FFE500780DBB /* jelly.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = jelly.frag; sourceTree = "<group>"; };
+		284AE67E1859FFE500780DBB /* jelly.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = jelly.vert; sourceTree = "<group>"; };
+		284AE67F185A06B200780DBB /* snow.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = snow.frag; sourceTree = "<group>"; };
+		284AE680185A06B200780DBB /* snow.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = snow.vert; sourceTree = "<group>"; };
 		285185DE1837D1B8009D8339 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = src/CloudsGlobal.h; sourceTree = "<group>"; };
 		285C2066182FFFEE0065BCAE /* BleachBypassPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BleachBypassPass.cpp; sourceTree = "<group>"; };
 		285C2067182FFFEE0065BCAE /* BleachBypassPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleachBypassPass.h; sourceTree = "<group>"; };
@@ -633,7 +634,6 @@
 		282FEBC1182FFE6500519D79 /* Swim */ = {
 			isa = PBXGroup;
 			children = (
-				282FEC00182FFEBE00519D79 /* shaders */,
 				282FEBD8182FFE6500519D79 /* vs_src */,
 			);
 			name = Swim;
@@ -643,6 +643,7 @@
 		282FEBD8182FFE6500519D79 /* vs_src */ = {
 			isa = PBXGroup;
 			children = (
+				284AE6781859FFE500780DBB /* shaders */,
 				285C212C183002390065BCAE /* utils */,
 				282FEBD9182FFE6500519D79 /* Bubbles.cpp */,
 				282FEBDA182FFE6500519D79 /* Bubbles.h */,
@@ -658,22 +659,10 @@
 				282FEBE4182FFE6600519D79 /* ModelCreature.h */,
 				284AE66E1859DA6600780DBB /* PointCreature.cpp */,
 				284AE66F1859DA6600780DBB /* PointCreature.h */,
+				284AE6751859FC4E00780DBB /* MarineSnow.cpp */,
+				284AE6761859FC4E00780DBB /* MarineSnow.h */,
 			);
 			path = vs_src;
-			sourceTree = "<group>";
-		};
-		282FEC00182FFEBE00519D79 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				282FEC01182FFEBE00519D79 /* bubble.frag */,
-				282FEC02182FFEBE00519D79 /* bubble.vert */,
-				282FEC03182FFEBE00519D79 /* fish.frag */,
-				282FEC04182FFEBE00519D79 /* fish.vert */,
-				282FEC05182FFEBE00519D79 /* jelly.frag */,
-				282FEC06182FFEBE00519D79 /* jelly.vert */,
-			);
-			name = shaders;
-			path = bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		284AE5EB1859D3E100780DBB /* Input */ = {
@@ -783,6 +772,22 @@
 				284AE61F1859D42200780DBB /* OscTypes.h */,
 			);
 			path = osc;
+			sourceTree = "<group>";
+		};
+		284AE6781859FFE500780DBB /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				284AE67F185A06B200780DBB /* snow.frag */,
+				284AE680185A06B200780DBB /* snow.vert */,
+				284AE6791859FFE500780DBB /* bubble.frag */,
+				284AE67A1859FFE500780DBB /* bubble.vert */,
+				284AE67B1859FFE500780DBB /* fish.frag */,
+				284AE67C1859FFE500780DBB /* fish.vert */,
+				284AE67D1859FFE500780DBB /* jelly.frag */,
+				284AE67E1859FFE500780DBB /* jelly.vert */,
+			);
+			name = shaders;
+			path = ../../../../../CloudsData/visualsystems/Swim/shaders;
 			sourceTree = "<group>";
 		};
 		285C2052182FFFED0065BCAE /* ofxPostProcessing */ = {
@@ -1807,6 +1812,7 @@
 				E7CF78601753FEA1006B7D41 /* ofxTLZoomer.cpp in Sources */,
 				E7CF78891753FEC0006B7D41 /* ofxTimecode.cpp in Sources */,
 				E7CF78C61753FECA006B7D41 /* ofxEasing.cpp in Sources */,
+				284AE6771859FC4E00780DBB /* MarineSnow.cpp in Sources */,
 				E7CF78C71753FECA006B7D41 /* ofxEasingBack.cpp in Sources */,
 				E7CF78C81753FECA006B7D41 /* ofxEasingBounce.cpp in Sources */,
 				E7CF78C91753FECA006B7D41 /* ofxEasingCirc.cpp in Sources */,
@@ -1832,17 +1838,12 @@
 				282FEBF8182FFE6600519D79 /* Creatures.cpp in Sources */,
 				282FEBF9182FFE6600519D79 /* JellyCreature.cpp in Sources */,
 				282FEBFA182FFE6600519D79 /* ModelCreature.cpp in Sources */,
-				282FEC07182FFEBE00519D79 /* bubble.frag in Sources */,
-				282FEC08182FFEBE00519D79 /* bubble.vert in Sources */,
 				284AE6221859D42200780DBB /* ofxOscReceiver.cpp in Sources */,
-				282FEC09182FFEBE00519D79 /* fish.frag in Sources */,
-				282FEC0A182FFEBE00519D79 /* fish.vert in Sources */,
-				282FEC0B182FFEBE00519D79 /* jelly.frag in Sources */,
-				282FEC0C182FFEBE00519D79 /* jelly.vert in Sources */,
 				285C2099182FFFEE0065BCAE /* BleachBypassPass.cpp in Sources */,
 				285C209A182FFFEE0065BCAE /* BloomPass.cpp in Sources */,
 				284AE62A1859D42200780DBB /* OscTypes.cpp in Sources */,
 				284AE6201859D42200780DBB /* ofxOscBundle.cpp in Sources */,
+				284AE681185A06B200780DBB /* snow.frag in Sources */,
 				285C209B182FFFEE0065BCAE /* ContrastPass.cpp in Sources */,
 				285C209C182FFFEE0065BCAE /* ConvolutionPass.cpp in Sources */,
 				285C209D182FFFEE0065BCAE /* DofAltPass.cpp in Sources */,
@@ -1856,6 +1857,7 @@
 				285C20A4182FFFEE0065BCAE /* KaleidoscopePass.cpp in Sources */,
 				285C20A5182FFFEE0065BCAE /* LimbDarkeningPass.cpp in Sources */,
 				285C20A6182FFFEE0065BCAE /* LUTPass.cpp in Sources */,
+				284AE682185A06B200780DBB /* snow.vert in Sources */,
 				285C20A7182FFFEE0065BCAE /* NoiseWarpPass.cpp in Sources */,
 				285C20A8182FFFEE0065BCAE /* PixelatePass.cpp in Sources */,
 				285C20A9182FFFEE0065BCAE /* PostProcessing.cpp in Sources */,

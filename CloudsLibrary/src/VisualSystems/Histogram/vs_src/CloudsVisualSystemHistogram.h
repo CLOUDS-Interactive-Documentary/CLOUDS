@@ -104,6 +104,7 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
 //		return myCustomCamera;
 //	}
 
+    void stopSound();
     void reloadSound();
     
 	void addRandomPoint();
@@ -111,6 +112,9 @@ class CloudsVisualSystemHistogram : public CloudsVisualSystem {
     
 protected:
     ofxUISuperCanvas* customGui;
+    
+    bool bDoAlphaBlending;
+    bool bDoDepthTesting;
 	
     vector<float> dataPoints;
     int maxNumDataPoints;

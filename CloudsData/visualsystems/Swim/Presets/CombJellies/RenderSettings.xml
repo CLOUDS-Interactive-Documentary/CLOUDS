@@ -2,13 +2,23 @@
     <Kind>42</Kind>
     <Name>RenderSettings</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>445.000000000</XPosition>
+    <XPosition>446.000000000</XPosition>
     <YPosition>1.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
     <Name>regenerate</Name>
     <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>creatureFogStart</Name>
+    <Value>4285.714355469</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>creatureFogEnd</Name>
+    <Value>5123.152832031</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -46,19 +56,49 @@
     <Value>1500.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>44</Kind>
+    <Name>numPointOne</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
     <Kind>25</Kind>
+    <Name>huePointOne</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numPointTwo</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>huePointTwo</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>numPointThree</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>huePointThree</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
     <Name>numJellyOne</Name>
-    <Value>69.655166626</Value>
+    <Value>69</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>numJellyTwo</Name>
-    <Value>50.344825745</Value>
+    <Value>50</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>numGreyFish</Name>
-    <Value>20.000000000</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -71,9 +111,9 @@
     <Value>0.073891625</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
+    <Kind>44</Kind>
     <Name>numYellowFish</Name>
-    <Value>20.000000000</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -84,9 +124,4 @@
     <Kind>25</Kind>
     <Name>yellowSizeStdDeviation</Name>
     <Value>0.093596056</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>fishTexAmt</Name>
-    <Value>0.000000000</Value>
 </Widget>

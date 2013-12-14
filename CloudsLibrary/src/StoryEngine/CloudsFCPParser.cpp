@@ -19,7 +19,6 @@ bool distanceSortLargeToSmall(pair<string,float> a, pair<string,float> b ){
     return a.second > b.second;
 }
 
-
 CloudsFCPParser::CloudsFCPParser(){
 	printErrors = false;
     sortedByOccurrence = false;
@@ -33,6 +32,7 @@ void CloudsFCPParser::loadFromFiles(){
 //    parseClusterMap(GetCloudsDataPath() + "gephi/2013_7_25_Clouds_conversation.SVG");
 	//parseClusterMap(GetCloudsDataPath() + "gephi/CLOUDSClusterMap.svg");
 	parseClusterNetwork(GetCloudsDataPath() + "pajek/CloudsNetwork.net");
+	parseProjectExamples(GetCloudsDataPath() + "secondaryDisplay/web/xml/projects.xml");
 }
 
 void CloudsFCPParser::setup(string directory){
@@ -253,6 +253,46 @@ void CloudsFCPParser::parseClusterNetwork(string fileName){
 //	calculateCohesionMedianForKeywords();
 //	calculateKeywordAdjascency();
 	calculateKeywordFamilies();
+}
+
+void CloudsFCPParser::parseProjectExamples(string filename){
+	ofxXmlSettings projectExamples;
+	if(!projectExamples.loadFile(filename)){
+		ofLogError("CloudsFCPParser::parseProjectExamples") << "Project examples failed to parse at path" << filename;
+		return;
+	}
+	
+//	vector<CloudsProjectExample> projectExamples;
+//	map<string,int> clipIdToProjectExample;
+		
+	projectExamples.pushTag("clouds");
+	int numProjectExamples = projectExamples.getNumTags("project");
+	for(int i = 0; i < numProjectExamples; i++){
+		
+		string projectTitle = projectExamples.getAttribute("project", "title", "", i);
+		if(projectTitle == ""){
+			ofLogError("CloudsFCPParser::parseProjectExamples") << "Project " << i << " does not have a title";
+			continue;
+		}
+		
+		projectExamples.pushTag("project",i);
+
+		CloudsProjectExample example;
+		example.title = projectTitle;
+		example.creatorName = projectExamples.getValue("creator_name", "");
+		example.description = projectExamples.getValue("description", "");
+		example.description = projectExamples.getValue("description", "");
+		projectExamples.pushTag("videos");
+		projectExamples.popTag();
+		
+		int numVideos = projectExamples.getNumTags("file_name");
+		for(int f = 0; f < numVideos; f++){
+			example.exampleVideos.push_back(projectExamples.getValue("file_name","",f));
+		}
+		projectExamples.popTag();//project
+		
+	}
+	projectExamples.popTag();
 }
 
 void CloudsFCPParser::populateKeywordCentroids(){

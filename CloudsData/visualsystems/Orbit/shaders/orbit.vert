@@ -15,7 +15,7 @@ varying vec3 nEye;
 void main()
 {
     vEye = (gl_ModelViewMatrix * gl_Vertex).xyz;
-    fogAmount = clamp((length(vEye) - fogStart) / fogEnd, 0.0, 1.0);
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     nEye = gl_NormalMatrix * gl_Normal;
     
     gl_FrontColor = gl_Color;

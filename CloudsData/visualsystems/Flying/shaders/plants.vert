@@ -136,6 +136,6 @@ void main()
     
     gl_TexCoord[0] = gl_MultiTexCoord0;
     gl_FrontColor = gl_Color;
-    fogAmount = clamp((length(vEye) - fogStart) / fogEnd, 0.0, 1.0);
+    fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
     gl_Position = gl_ModelViewProjectionMatrix * deformed;
 }
