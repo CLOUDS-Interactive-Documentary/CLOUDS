@@ -6,9 +6,34 @@
 //
 //
 
-#ifndef __CloudsPointcloudViewer__CloudsHUDController__
-#define __CloudsPointcloudViewer__CloudsHUDController__
+#pragma once
 
-#include <iostream>
+#include "ofMain.h"
+#include "ofxSvg.h"
+#include "ofxUI.h"
 
-#endif /* defined(__CloudsPointcloudViewer__CloudsHUDController__) */
+typedef struct {
+	ofxSVG svg;
+	float startTime;
+	float duration;
+} SVGLayer;
+
+class CloudsHUDController {
+public:
+	
+	CloudsHUDController();
+	
+	void setup();
+	void draw();
+
+	ofImage testImage;
+	SVGLayer testLayer;
+	
+	
+	void saveGuiSettings();
+	void toggleGuis();
+	ofxUISuperCanvas *hudGui;
+
+};
+
+
