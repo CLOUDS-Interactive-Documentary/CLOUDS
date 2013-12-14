@@ -42,8 +42,6 @@ void CubeCraft::selfSetupGui()
 	customGui->addSlider("noiseDirectionZ", -1, 1, &noiseDirection.z);
 	
 	
-	
-	
 	ofAddListener(customGui->newGUIEvent, this, &CubeCraft::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
