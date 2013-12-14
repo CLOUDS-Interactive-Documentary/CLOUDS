@@ -9,7 +9,10 @@ uniform float fogStart;
 uniform float fogEnd;
 uniform float nearClip;
 uniform float camZ;
+uniform float innerFogStart;
+uniform float innerFogEnd;
 
+varying float innerFogAmount;
 varying float fogAmount;
 varying vec2 texOffset;
 
@@ -19,6 +22,7 @@ void main()
     vWorld.z = camZ - mod(camZ - vWorld.z, fogEnd);
     vec3 vEye = (gl_ModelViewMatrix * vec4(vWorld, 1.0)).xyz;
     fogAmount = clamp((length(vEye) - fogStart) / (fogEnd - fogStart), 0.0, 1.0);
+    innerFogAmount = 1.0 - clamp((length(vEye) - innerFogStart) / (innerFogEnd - innerFogStart), 0.0, 1.0);
     texOffset = gl_Normal.xy;
     gl_FrontColor = gl_Color;
     gl_PointSize = nearClip * gl_Normal.z / -vEye.z;

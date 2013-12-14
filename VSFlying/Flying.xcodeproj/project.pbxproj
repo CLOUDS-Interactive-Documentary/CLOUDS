@@ -60,6 +60,7 @@
 		285C20AF182FFFEE0065BCAE /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2093182FFFEE0065BCAE /* VerticalTiltShifPass.cpp */; };
 		285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */; };
 		28B033D4184BD40F009B9099 /* CloudsVisualSystemFlying.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */; };
+		28F4F01D185CCDD6008D80A2 /* ConeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -308,6 +309,8 @@
 		285C2096182FFFEE0065BCAE /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
 		28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlying.cpp; sourceTree = "<group>"; };
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
+		28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.cpp; sourceTree = "<group>"; };
+		28F4F01C185CCDD6008D80A2 /* ConeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConeAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -588,6 +591,8 @@
 			children = (
 				2808623D1858A91600C51C32 /* Action.cpp */,
 				2808623E1858A91600C51C32 /* Action.h */,
+				28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */,
+				28F4F01C185CCDD6008D80A2 /* ConeAction.h */,
 				2808623F1858A91600C51C32 /* CubeAction.cpp */,
 				280862401858A91600C51C32 /* CubeAction.h */,
 				280862411858A91600C51C32 /* IcosphereAction.cpp */,
@@ -1676,6 +1681,7 @@
 				285C20A1182FFFEE0065BCAE /* FxaaPass.cpp in Sources */,
 				285C20A2182FFFEE0065BCAE /* GodRaysPass.cpp in Sources */,
 				285C20A3182FFFEE0065BCAE /* HorizontalTiltShifPass.cpp in Sources */,
+				28F4F01D185CCDD6008D80A2 /* ConeAction.cpp in Sources */,
 				285C20A4182FFFEE0065BCAE /* KaleidoscopePass.cpp in Sources */,
 				285818291858841A004C6EFD /* ofxOscSender.cpp in Sources */,
 				285818281858841A004C6EFD /* ofxOscReceiver.cpp in Sources */,

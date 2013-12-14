@@ -38,11 +38,30 @@ namespace itg
     class MarineSnow
     {
     public:
+        MarineSnow();
+        
         void init(const string& dataPath, unsigned numParticles);
         void draw(const ofCamera& cam);
         void generate();
         
+        // gui
+        float& getAlphaMinRef() { return alphaMin; }
+        float& getAlphaMaxRef() { return alphaMax; }
+        
+        float& getInnerFogStartRef() { return innerFogStart; }
+        float& getInnerFogEndRef() { return innerFogEnd; }
+        
+        float& getFogStartRef() { return fogStart; }
+        float& getFogEndRef() { return fogEnd; }
+        
+        float& getSizeMinRef() { return sizeMin; }
+        float& getSizeMaxRef() { return sizeMax; }
+        
     private:
+        float fogStart, fogEnd;
+        float innerFogStart, innerFogEnd;
+        float sizeMin, sizeMax;
+        float alphaMin, alphaMax;
         unsigned numParticles;
         ofImage tex;
         ofVboMesh mesh;
