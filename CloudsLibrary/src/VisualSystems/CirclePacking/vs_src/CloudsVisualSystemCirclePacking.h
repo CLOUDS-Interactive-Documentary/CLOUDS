@@ -86,27 +86,22 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-	
-
-    // if you use a custom camera to fly through the scene
-	// you must implement this method for the transitions to work properly
-//	ofCamera& getCameraRef(){
-//		return myCustomCamera;
-//	}
-
-	//
-
   
     CirclePacker pack; 
 
-protected:
-    
-
-
+  protected:
     //  Your Stuff
     //
     
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
-   
+	
+	ofFloatColor primaryColor;
+	ofFloatColor secondaryColor;
+	bool filled;
+	int numCircles;
+	float heroPercent;
+	ofRange smallSizeRange;
+	ofRange largeSizeRange;
+	
 };

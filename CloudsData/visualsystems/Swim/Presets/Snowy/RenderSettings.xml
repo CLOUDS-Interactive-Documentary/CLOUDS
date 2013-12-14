@@ -12,13 +12,38 @@
 </Widget>
 <Widget>
     <Kind>25</Kind>
-    <Name>creatureFogStart</Name>
-    <Value>4285.714355469</Value>
+    <Name>maxCamSpeed</Name>
+    <Value>600.000000000</Value>
 </Widget>
 <Widget>
-    <Kind>25</Kind>
-    <Name>creatureFogEnd</Name>
-    <Value>5123.152832031</Value>
+    <Kind>6</Kind>
+    <Name>creatureFogStartEnd (range)</Name>
+    <HighValue>6502.463867188</HighValue>
+    <LowValue>3955.664062500</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowFogStartEnd (range)</Name>
+    <HighValue>7586.207031250</HighValue>
+    <LowValue>1921.182617188</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowInnerStartEnd (range)</Name>
+    <HighValue>715.270751953</HighValue>
+    <LowValue>415.270935059</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowAlpha (range)</Name>
+    <HighValue>0.671921253</HighValue>
+    <LowValue>0.071921185</LowValue>
+</Widget>
+<Widget>
+    <Kind>6</Kind>
+    <Name>snowSize (range)</Name>
+    <HighValue>270.935943604</HighValue>
+    <LowValue>0.100000001</LowValue>
 </Widget>
 <Widget>
     <Kind>25</Kind>
@@ -54,36 +79,6 @@
     <Kind>25</Kind>
     <Name>maxDistFromCentre</Name>
     <Value>1500.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointOne</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointOne</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointTwo</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointTwo</Name>
-    <Value>0.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>44</Kind>
-    <Name>numPointThree</Name>
-    <Value>0</Value>
-</Widget>
-<Widget>
-    <Kind>25</Kind>
-    <Name>huePointThree</Name>
-    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>44</Kind>
