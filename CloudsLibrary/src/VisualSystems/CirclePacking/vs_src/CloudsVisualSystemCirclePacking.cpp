@@ -17,27 +17,31 @@
 
 void CloudsVisualSystemCirclePacking::selfSetupGui(){
 
-	/*
+	
     customGui = new ofxUISuperCanvas("CUSTOM", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+	customGui->addToggle("filled", &filled);
+	customGui->addIntSlider("num circles", 20, 300, &numCircles);
+	customGui->addSlider("hero percent", 0, 1.0, &heroPercent);
+	customGui->addRangeSlider("small size",5, 100, &smallSizeRange.min, &smallSizeRange.max);
+	customGui->addRangeSlider("large size",5, 100, &largeSizeRange.min, &largeSizeRange.max);
 	
-	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-	customGui->addButton("Custom Button", false);
-	customGui->addToggle("Custom Toggle", &customToggle);
+	customGui->addSlider("primary color H", 0., 1.0, &primaryColor.r);
+	customGui->addSlider("primary color S", 0., 1.0, &primaryColor.g);
+	customGui->addSlider("primary color V", 0., 1.0, &primaryColor.b);
+
+	customGui->addSlider("secondary color H", 0., 1.0, &secondaryColor.r);
+	customGui->addSlider("secondary color S", 0., 1.0, &secondaryColor.g);
+	customGui->addSlider("secondary color V", 0., 1.0, &secondaryColor.b);
 	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemCirclePacking::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
-     
-     */
-    
-    
-    //pack(400,400);
-
+	
 }
 
 void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
@@ -70,7 +74,7 @@ void CloudsVisualSystemCirclePacking::selfSetup(){
 	
 	
 	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());	
-    for(int i = 0; i<150; i++){
+    for(int i = 0; i < 150; i++){
 		if(ofRandomuf() > .9){
 			pack.circles.push_back( Circle(ofRandom(ofGetWidth()), 
 										   ofRandom(ofGetHeight()), 
