@@ -38,6 +38,8 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	meshGui->addSpacer();
 	meshGui->addRadio("meshes", meshNames );
 	
+	meshGui->addSpacer();
+	
 	ofAddListener(meshGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(meshGui);
 	guimap[meshGui->getName()] = meshGui;
@@ -94,10 +96,10 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->addSlider("shininess", .6, 64, &shininess);
 	
 	shaderGui->addSpacer();
-	shaderGui->addLabel("c1");
+	shaderGui->addLabel("color1");
 	shaderGui->addImageSampler("c1", &colorSampleImage, 100, 100);
 	shaderGui->addMinimalSlider("c1.alpha", 0, 1, &c1.a);
-	shaderGui->addLabel("c2");
+	shaderGui->addLabel("color2");
 	shaderGui->addImageSampler("c2", &colorSampleImage, 100, 100);
 	shaderGui->addMinimalSlider("c2.alpha", 0, 1, &c2.a);
 	
@@ -105,30 +107,39 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	guis.push_back(shaderGui);
 	guimap[shaderGui->getName()] = shaderGui;
 	
+	//displacement
+	displacementGui = new ofxUISuperCanvas("Displacement", gui);
+	displacementGui->copyCanvasStyle(gui);
+	displacementGui->copyCanvasProperties(gui);
+	displacementGui->setName("Displacement");
+	displacementGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
+	displacementGui->addSpacer();
+	displacementGui->addLabel("Noise");
+	displacementGui->addSpacer();
+	displacementGui->addToggle("useNoiseDisplacement", &bUseNoiseDisplacement);
+	displacementGui->addSpacer();
+	displacementGui->addSlider("displacement", -10, 10, &noiseDisplacement);
+	displacementGui->addSpacer();
+	displacementGui->addSlider("noiseDirectionX", -1, 1, &noiseDir.x);
+	displacementGui->addSlider("noiseDirectionY", -1, 1, &noiseDir.y);
+	displacementGui->addSlider("noiseDirectionZ", -1, 1, &noiseDir.z);
+	displacementGui->addSpacer();
+	displacementGui->addSlider("noiseSpeed", -5, 5, &noiseSpeed);
+	displacementGui->addSlider("noiseScale", 0, 100, &noiseScale);
+	displacementGui->addSpacer();
+
+
+	ofAddListener(displacementGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
+	guis.push_back(displacementGui);
+	guimap[displacementGui->getName()] = displacementGui;
 }
 
-void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e)
+{
 	string name = e.getName();
 	
-	cout << "GUI event" << name << endl;
-	
-	if(name == "c1")
-	{
-		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
-		c1.r = tempColor.r;
-		c1.g = tempColor.g;
-		c1.b = tempColor.b;
-	}
-	
-	else if(name == "c2")
-	{
-		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
-		c2.r = tempColor.r;
-		c2.g = tempColor.g;
-		c2.b = tempColor.b;
-	}
-	
-	else if(e.getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
+	if(e.getKind() == OFX_UI_WIDGET_TOGGLE && e.getToggle()->getValue() )
 	{
 		string parentName = e.getToggle()->getParent()->getName();
 		
@@ -201,6 +212,25 @@ void CloudsVisualSystemWormHole::selfGuiEvent(ofxUIEventArgs &e){
 				bFacetMesh = false;
 			}
 		}
+	}
+	
+	if(name == "c1")
+	{
+		cout << "GUI event" << name << endl;
+		
+		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
+		c1.r = tempColor.r;
+		c1.g = tempColor.g;
+		c1.b = tempColor.b;
+	}
+	
+	else if(name == "c2")
+	{
+		cout << "GUI event" << name << endl;
+		ofFloatColor tempColor = ((ofxUIImageSampler *) e.widget)->getColor();
+		c2.r = tempColor.r;
+		c2.g = tempColor.g;
+		c2.b = tempColor.b;
 	}
 }
 
@@ -344,6 +374,8 @@ void CloudsVisualSystemWormHole::selfUpdate()
 	float timeDelta = t - lastTime;
 	sampleTime += timeDelta * speed;
 	lastTime = t;
+	
+	noiseTime += timeDelta * noiseSpeed;
 }
 
 void CloudsVisualSystemWormHole::selfDraw()
@@ -369,6 +401,11 @@ void CloudsVisualSystemWormHole::selfDraw()
 		currentShader->setUniform1f("shininess", shininess );
 		currentShader->setUniform4f("c1", c1.r, c1.g, c1.b, c1.a );
 		currentShader->setUniform4f("c2", c2.r, c2.g, c2.b, c2.a );
+		
+		currentShader->setUniform1i("useNoiseDisplacement", bUseNoiseDisplacement );
+		currentShader->setUniform3f("noiseOffset", noiseDir.x * noiseTime, noiseDir.y * noiseTime, noiseDir.z * noiseTime);
+		currentShader->setUniform1f("noiseScale", noiseScale );
+		currentShader->setUniform1f("noiseDisplacement", noiseDisplacement );
 	}
 	
 	//draw mesh

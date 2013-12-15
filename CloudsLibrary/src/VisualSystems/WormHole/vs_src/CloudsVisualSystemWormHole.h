@@ -115,6 +115,7 @@ protected:
 	ofxUISuperCanvas* cameraGui;
 	ofxUISuperCanvas* meshGui;
 	ofxUISuperCanvas* shaderGui;
+	ofxUISuperCanvas* displacementGui;
 	ofImage colorSampleImage;
 	
 	ofShader normalShader;
@@ -152,5 +153,8 @@ protected:
 	bool bDepthTest;
 	
 	ofFloatColor c1, c2;
-	
+		
+	bool bUseNoiseDisplacement;
+	float noiseDisplacement, noiseSpeed, noiseTime, noiseScale;
+	ofVec3f noiseOffset, noiseDir;
 };
