@@ -107,10 +107,9 @@ void CloudsVisualSystemCirclePacking::regenerate(){
 // geometry should be loaded here
 void CloudsVisualSystemCirclePacking::selfSetup(){
 	
-    Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
-    
+   // Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
+    Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14);
 
-    
 	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());
     
     if (NASDAQ){

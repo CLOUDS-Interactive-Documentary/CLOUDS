@@ -8,7 +8,7 @@
 
 #include "Circle.h"
 
-ofTrueTypeFont Circle::Font;
+ofxFTGLSimpleLayout Circle::Font;
 
 Circle::Circle()
 {
@@ -22,9 +22,7 @@ Circle::Circle(float _x, float _y, float _r, string _label)
     this->r = _r;
     this->label = _label;
     
-    ofTrueTypeFont::setGlobalDpi(72);
-   	Font.setLineHeight(14.0f);
-	Font.setLetterSpacing(1.037);
+
     
     growth = ofRandom(-.05, .05);
     hue = 120 + ofRandom(60);
@@ -66,11 +64,29 @@ void Circle::draw()
     ofPopStyle();
     
 }
+void Circle::checkFontSize(string s, float x, float y){
+    ofRectangle rect = Font.getStringBoundingBox(s, x, y);
+    
 
+    if (rect.width>r ) {
+        float n = rect.width/r;
+        
+        int size = Font.getSize();
+        if(size >10){
+            cout<<n<<endl;
+//            size--;
+            Font.setSize(20 - (int)n);
+        }
+        else{
+            Font.setSize(20);
+        }
+    }
+}
 void Circle::drawCompanies()
 {
+
     r += (growth + (ofRandom(-.08,.08)));
-    
+
     std::ostringstream ostr; //output string stream
     int num = int(r) * 2;
     ostr << num;
@@ -84,11 +100,21 @@ void Circle::drawCompanies()
     ofCircle(x, y, r);
     ofPopStyle();
     
-    ofPushStyle();
-    ofSetColor(255);
-    Font.drawString(label, x, y);
-    
-    Font.drawString("$"+number+" B", x, y+20);
-    ofPopStyle();
+    if(r > 25){
+        ofPushStyle();
+        ofSetColor(255);
+        checkFontSize(label, x, y);
+        ofRectangle rect = Font.getStringBoundingBox(label, x, y);
+        float _x =  x- rect.width/2;
+        Font.drawString(label, _x, y);
+
+        ofSetColor(0, 255, 0);
+        checkFontSize("$"+number+" B", x, y+20);
+        rect = Font.getStringBoundingBox("$"+number+" B", x, y);
+        _x = x-  rect.width/2;
+        Font.drawString("$"+number+" B", _x, y+20);
+        ofPopStyle();
+    }
+
     
 }

@@ -7,12 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18A36D1E185E55510032FD7C /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D00185E55510032FD7C /* libftgl.a */; };
-		18A36D1F185E55510032FD7C /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D02185E55510032FD7C /* libftgl.a */; };
 		18A36D20185E55510032FD7C /* libftgl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D05185E55510032FD7C /* libftgl.a */; };
-		18A36D21185E55510032FD7C /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D07185E55510032FD7C /* ftgl_static.lib */; };
-		18A36D22185E55520032FD7C /* ftgl_static.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D09185E55510032FD7C /* ftgl_static.lib */; };
-		18A36D23185E55520032FD7C /* ftgl_static_D.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A36D0A185E55510032FD7C /* ftgl_static_D.lib */; };
 		18A36D24185E55520032FD7C /* ofxFTGLFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A36D0E185E55510032FD7C /* ofxFTGLFont.cpp */; };
 		18A36D25185E55520032FD7C /* ofxFTGLSimpleLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18A36D10185E55510032FD7C /* ofxFTGLSimpleLayout.cpp */; };
 		3D5B95D3175308AE00F558AC /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B957C175308AD00F558AC /* ofxHotKeys_impl_linux.cpp */; };
@@ -273,13 +268,8 @@
 		18A36CFB185E55510032FD7C /* FTPolyGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPolyGlyph.h; sourceTree = "<group>"; };
 		18A36CFC185E55510032FD7C /* FTSimpleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSimpleLayout.h; sourceTree = "<group>"; };
 		18A36CFD185E55510032FD7C /* FTTextureGlyph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextureGlyph.h; sourceTree = "<group>"; };
-		18A36D00185E55510032FD7C /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		18A36D02185E55510032FD7C /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
 		18A36D04185E55510032FD7C /* buildFTGL.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = buildFTGL.sh; sourceTree = "<group>"; };
 		18A36D05185E55510032FD7C /* libftgl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libftgl.a; sourceTree = "<group>"; };
-		18A36D07185E55510032FD7C /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		18A36D09185E55510032FD7C /* ftgl_static.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static.lib; sourceTree = "<group>"; };
-		18A36D0A185E55510032FD7C /* ftgl_static_D.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ftgl_static_D.lib; sourceTree = "<group>"; };
 		18A36D0B185E55510032FD7C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		18A36D0D185E55510032FD7C /* ofxFTGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFTGL.h; sourceTree = "<group>"; };
 		18A36D0E185E55510032FD7C /* ofxFTGLFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFTGLFont.cpp; sourceTree = "<group>"; };
@@ -569,12 +559,7 @@
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
-				18A36D1E185E55510032FD7C /* libftgl.a in Frameworks */,
-				18A36D1F185E55510032FD7C /* libftgl.a in Frameworks */,
 				18A36D20185E55510032FD7C /* libftgl.a in Frameworks */,
-				18A36D21185E55510032FD7C /* ftgl_static.lib in Frameworks */,
-				18A36D22185E55520032FD7C /* ftgl_static.lib in Frameworks */,
-				18A36D23185E55520032FD7C /* ftgl_static_D.lib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,29 +658,9 @@
 		18A36CFE185E55510032FD7C /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				18A36CFF185E55510032FD7C /* linux */,
-				18A36D01185E55510032FD7C /* linux64 */,
 				18A36D03185E55510032FD7C /* osx */,
-				18A36D06185E55510032FD7C /* vs2010 */,
-				18A36D08185E55510032FD7C /* vs2012 */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		18A36CFF185E55510032FD7C /* linux */ = {
-			isa = PBXGroup;
-			children = (
-				18A36D00185E55510032FD7C /* libftgl.a */,
-			);
-			path = linux;
-			sourceTree = "<group>";
-		};
-		18A36D01185E55510032FD7C /* linux64 */ = {
-			isa = PBXGroup;
-			children = (
-				18A36D02185E55510032FD7C /* libftgl.a */,
-			);
-			path = linux64;
 			sourceTree = "<group>";
 		};
 		18A36D03185E55510032FD7C /* osx */ = {
@@ -705,23 +670,6 @@
 				18A36D05185E55510032FD7C /* libftgl.a */,
 			);
 			path = osx;
-			sourceTree = "<group>";
-		};
-		18A36D06185E55510032FD7C /* vs2010 */ = {
-			isa = PBXGroup;
-			children = (
-				18A36D07185E55510032FD7C /* ftgl_static.lib */,
-			);
-			path = vs2010;
-			sourceTree = "<group>";
-		};
-		18A36D08185E55510032FD7C /* vs2012 */ = {
-			isa = PBXGroup;
-			children = (
-				18A36D09185E55510032FD7C /* ftgl_static.lib */,
-				18A36D0A185E55510032FD7C /* ftgl_static_D.lib */,
-			);
-			path = vs2012;
 			sourceTree = "<group>";
 		};
 		18A36D0C185E55510032FD7C /* src */ = {
@@ -1682,6 +1630,11 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxFTGL/libs/FTGL/include,
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1759,17 +1712,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/../CloudsLibrary/src/Sound/RTCMix/libs/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/linux64\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/osx\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2010\"";
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../../../addons/ofxFTGL/libs/FTGL/lib/vs2012\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				PRODUCT_NAME = CirclePackingDebug;
@@ -1792,6 +1737,11 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxFTGL/libs/FTGL/include,
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
