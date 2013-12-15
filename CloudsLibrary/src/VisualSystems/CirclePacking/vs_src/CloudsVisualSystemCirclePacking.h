@@ -38,6 +38,10 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     void selfSetupRenderGui();
     void guiRenderEvent(ofxUIEventArgs &e);
 
+    
+    void regenerate();
+    void initializeNasdaq();
+    void initializeBlanks();
 	// selfSetup is called when the visual system is first instantiated
 	// This will be called during a "loading" screen, so any big images or
 	// geometry should be loaded here
@@ -95,6 +99,10 @@ class CloudsVisualSystemCirclePacking: public CloudsVisualSystem {
     
 	ofxUISuperCanvas* customGui;
 	bool customToggle;
+    bool shouldRegenerate;
+    
+    bool NASDAQ;
+    bool BLANKS;
 	
 	ofFloatColor primaryColor;
 	ofFloatColor secondaryColor;

@@ -8,6 +8,8 @@
 
 #include "Circle.h"
 
+ofTrueTypeFont Circle::Font;
+
 Circle::Circle()
 {
     
@@ -19,6 +21,15 @@ Circle::Circle(float _x, float _y, float _r, string _label)
     this->y = _y;
     this->r = _r;
     this->label = _label;
+    
+    ofTrueTypeFont::setGlobalDpi(72);
+   	Font.setLineHeight(14.0f);
+	Font.setLetterSpacing(1.037);
+    
+    growth = ofRandom(-.05, .05);
+    hue = 130 + ofRandom(80);
+    brightness = 150 + ofRandom(100);
+    
 }
 
 float Circle::distance(float _x1, float _y1, float _x2, float _y2)
@@ -44,5 +55,40 @@ Boolean Circle::intersect(Circle _circle)
 
 void Circle::draw()
 {
+    r -= .01;
+   
+    ofPushStyle();
+    //color1.setHsb(0,0, brightness);
+    ofSetColor(255,255,255);
+    ofSetCircleResolution(100);
+   // ofFill();
     ofCircle(x, y, r);
+    ofPopStyle();
+    
+}
+
+void Circle::drawCompanies()
+{
+    r += (growth + (ofRandom(-.045,.045)));
+    
+    std::ostringstream ostr; //output string stream
+    int num = int(r) * 2;
+    ostr << num;
+    std::string number = ostr.str();
+    
+    ofPushStyle();
+    color1.setHsb(hue, 130, brightness);
+    ofSetColor(color1);
+    ofSetCircleResolution(100);
+    ofFill();
+    ofCircle(x, y, r);
+    ofPopStyle();
+    
+    ofPushStyle();
+    ofSetColor(255);
+    Font.drawString(label, x, y);
+    
+    Font.drawString("$"+number+" B", x, y+20);
+    ofPopStyle();
+    
 }
