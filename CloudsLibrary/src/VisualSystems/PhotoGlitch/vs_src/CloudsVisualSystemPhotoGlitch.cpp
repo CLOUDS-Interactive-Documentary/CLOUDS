@@ -14,6 +14,8 @@ static int kVertsPerCell   = 4;
 static int kCoordsPerVert  = 2;
 static int kIndicesPerCell = 6;
 
+static ofxEasingQuad easing;
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 {
@@ -23,9 +25,17 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 	customGui->setName("PhotoGlitch");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
+    customGui->addSpacer();
+    customGui->addIntSlider("NUM COLS", 1, 400, &numDivCols);
+    customGui->addIntSlider("NUM ROWS", 1, 400, &numDivRows);
+    
+    customGui->addSpacer();
 	customGui->addToggle("SHUFFLE", &bShouldShuffle);
     customGui->addToggle("REORDER", &bShouldReorder);
-	
+    customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
+    customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
+    customGui->addIntSlider("TWEEN DELAY", 0, 1000, &tweenDelay);
+    
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemPhotoGlitch::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -33,7 +43,9 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 
 void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
 {
-    
+    if (e.getName() == "NUM COLS" || e.getName() == "NUM ROWS") {
+        bShouldGenerate = true;
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -59,16 +71,26 @@ void CloudsVisualSystemPhotoGlitch::guiRenderEvent(ofxUIEventArgs &e){
 void CloudsVisualSystemPhotoGlitch::selfSetup()
 {
     bIs2D = true;
-//    bClearBackground = false;
     
     bShouldShuffle = false;
     bShouldReorder = false;
+    
+    bDoPerpendicular = false;
+        
+    tweenDuration = 200;
+    tweenDelay = 0;
     
     // Set defaults.
     tex.loadImage(getVisualSystemDataPath() + "sourceImages/dogs.jpg");
     
     numDivCols = 20;
     numDivRows = 20;
+    
+    bShouldGenerate = true;
+}
+
+void CloudsVisualSystemPhotoGlitch::generate()
+{
     numCells = numDivCols * numDivRows;
     
     cells = new PGCell[numCells];
@@ -135,40 +157,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
     vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
     vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
-
     
-//    numIndices = numDivCols * numDivRows * kStrideIndex;
-//    indices = new GLuint[numIndices];
-//    
-//
-//
-//    GLuint tl, tr, bl, br;
-//    for (int j = 0; j < numDivRows; j++) {
-//        for (int i = 0; i < numDivCols; i++) {
-//            int idx = j * numDivCols + i;
-//
-//            tl = j * (numDivCols + 1) + i;
-//            tr = j * (numDivCols + 1) + (i + 1);
-//            bl = (j + 1) * (numDivCols + 1) + i;
-//            br = (j + 1) * (numDivCols + 1) + (i + 1);
-//            
-//            indices[idx * kStrideIndex + 0] = tl;  // top-left
-//            indices[idx * kStrideIndex + 1] = tr;  // top-right
-//            indices[idx * kStrideIndex + 2] = bl;  // bottom-left
-//            
-//            indices[idx * kStrideIndex + 3] = tr;  // top-right
-//            indices[idx * kStrideIndex + 4] = br;  // bottom-right
-//            indices[idx * kStrideIndex + 5] = bl;  // bottom-left
-//            
-//            cells[idx].idx = idx;
-//            cells[idx].row = j;
-//            cells[idx].col = i;
-//            cells[idx].x = cells[idx].origX = cells[idx].destX = verts[idx * kStrideVerts + 0];
-//            cells[idx].y = cells[idx].origY = cells[idx].destY = verts[idx * kStrideVerts + 1];
-//        }
-//    }
-//    
-//    vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
+    bShouldReorder = true;
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -195,6 +185,11 @@ void CloudsVisualSystemPhotoGlitch::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemPhotoGlitch::selfUpdate()
 {    
+    if (bShouldGenerate) {
+        generate();
+        bShouldGenerate = false;
+    }
+    
     if (bShouldShuffle) {
         shuffle();
         bShouldShuffle = false;
@@ -208,8 +203,10 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     for (int i = 0; i < numCells; i++) {
         int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
-        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.5f);
-        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.5f);
+//        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.5f);
+//        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.5f);
+        float tweenX = cells[i].tweenX.update();
+        float tweenY = cells[i].tweenY.update();
         
         // update the vert data
         // top-left
@@ -245,6 +242,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {    
     ofSetColor(255);
+//    tex.draw(0, 0);
     tex.bind();
     {
 //        vbo.draw(GL_TRIANGLES, 0, 24);
@@ -330,6 +328,7 @@ void CloudsVisualSystemPhotoGlitch::shuffle()
         cells[i].col = openCol;
         cells[i].row = openRow;
         
+        tween(i, openSlotIdx);
 //        cout << "setting new pos to " << cells[i].destX << " x " << cells[i].destY << endl;
         
         slots[openSlotIdx] = true;
@@ -342,5 +341,33 @@ void CloudsVisualSystemPhotoGlitch::reorder()
     for (int i = 0; i < numCells; i++) {
         cells[i].col = cells[i].origCol;
         cells[i].row = cells[i].origRow;
+        
+        tween(i);
     }
 }
+
+void CloudsVisualSystemPhotoGlitch::tweenAll()
+{
+    for (int i = 0; i < numCells; i++) {
+        tween(i);
+    }
+}
+
+void CloudsVisualSystemPhotoGlitch::tween(int i, int j)
+{
+    if (j == -1) j = i;
+    
+    int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
+    
+    if (bDoPerpendicular) {
+        cells[i].tweenX.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth,  tweenDuration / 2, tweenDelay * j);
+        cells[i].tweenY.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 1], cells[i].row * screenSliceHeight, tweenDuration / 2, tweenDuration / 2 + tweenDelay * j);
+    }
+    else {
+        cells[i].tweenX.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth,  tweenDuration, tweenDelay * j);
+        cells[i].tweenY.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 1], cells[i].row * screenSliceHeight, tweenDuration, tweenDelay * j);
+    }
+    cells[i].tweenX.start();
+    cells[i].tweenY.start();
+}
+
