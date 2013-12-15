@@ -1,0 +1,162 @@
+<Canvas>
+    <Kind>42</Kind>
+    <Name>Mesh</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>1.000000000</XPosition>
+    <YPosition>1.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>RENDER MESH</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>44</Kind>
+    <Name>REFRESH RATE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>EDGE DECAY</Name>
+    <Value>0.027536945</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TWEET HUE</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TWEET SAT</Name>
+    <Value>0.610837460</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TWEET BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>TWEET ALPHA</Name>
+    <Value>0.206896558</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BASE HUE</Name>
+    <Value>0.665024638</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BASE SAT</Name>
+    <Value>0.571428597</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BASE BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>BASE ALPHA</Name>
+    <Value>0.004926108</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE M HUE</Name>
+    <Value>0.561576366</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE M SAT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE M BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE M ALPHA</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE AM HUE</Name>
+    <Value>0.500000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE AM SAT</Name>
+    <Value>0.649999976</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE AM BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE AM ALPHA</Name>
+    <Value>0.014778325</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE HUE</Name>
+    <Value>0.605911314</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE SAT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODE ALPHA</Name>
+    <Value>0.610837460</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODEA HUE</Name>
+    <Value>0.418719202</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODEA SAT</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODEA BRI</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>NODEA ALPHA</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>X POS</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Y POS</Name>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>25</Kind>
+    <Name>Z POS</Name>
+    <Value>10.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ROTATE</Name>
+    <Value>1</Value>
+</Widget>
