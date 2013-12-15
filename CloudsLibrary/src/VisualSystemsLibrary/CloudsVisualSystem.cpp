@@ -1309,19 +1309,11 @@ void CloudsVisualSystem::guiLightingEvent(ofxUIEventArgs &e)
 			globalAmbientColorRGB.r,
 			globalAmbientColorRGB.g,
 			globalAmbientColorRGB.b,
-			globalAmbientColorRGB.a
+			1.0
 		};
 		
         glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
     }
-//    else if(name == "G")
-//    {
-//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-//    }
-//    else if(name == "B")
-//    {
-//        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbientColor);
-//    }
 }
 
 
@@ -2992,9 +2984,10 @@ void CloudsVisualSystem::selfDrawOverlay(){
 }
 
 void CloudsVisualSystem::selfPostDraw(){
+	
 	glDisable(GL_LIGHTING);
+	
 #ifdef OCULUS_RIFT
-
     oculusRift.draw();
 #else
     //draws to viewport
@@ -3027,8 +3020,7 @@ void CloudsVisualSystem::selfPostDraw(){
         ofPopMatrix();
 
     }
-    ofPopStyle();
-    ofPopMatrix();
+	
 	
 #endif
 

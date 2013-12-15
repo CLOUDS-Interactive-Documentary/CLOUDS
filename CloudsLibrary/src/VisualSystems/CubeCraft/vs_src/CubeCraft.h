@@ -108,8 +108,13 @@ public:
 	
 protected:
 	
-		
+	void resizeVoxelGrid();
+	
 	ofxUISuperCanvas* customGui;
+	
+	ofxUISuperCanvas* cubeGui;
+	ofxUISuperCanvas* fogGui;
+	ofxUISuperCanvas* meshRenderGui;
 	
 	int dimX, dimY, dimZ;
 	int halfDimX, halfDimY, halfDimZ;
@@ -120,6 +125,14 @@ protected:
 	
 	ofShader cubeShader;
 	
+	ofVec3f noiseDirection;
+	float noiseTime, lastTime, noiseSpeed;
 	float noiseThreshold, noiseScale, edgeWidth;
 	bool bFillCubes, bScaleCubes;
+	
+	float edgeSmoothing, cubeScale, specExpo, specScale;
+	ofImage colorMap;
+	ofFloatColor edgeColor, fillColor, fillColor2, fogColor;
+	float fogDist, fogExpo;
+	bool bUseFog;
 };
