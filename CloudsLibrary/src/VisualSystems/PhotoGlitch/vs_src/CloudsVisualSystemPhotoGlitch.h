@@ -19,7 +19,7 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
-    ofColor avgColor;
+    ofFloatColor avgColor;
     ofxTween tweenX, tweenY;
 };
 
@@ -126,11 +126,15 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     int numVerts;
     GLfloat * verts;
     GLfloat * texCoords;
+    GLfloat * colors;
     int numIndices;
     GLuint * indices;
     
     ofImage tex;
     ofVbo vbo;
+    
+    ofDirectory imagesDir;
+    int selectedSrcImageIdx;
     
     int tweenDuration;
     int tweenDelay;
@@ -140,10 +144,14 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     float texSliceWidth;
     float texSliceHeight;
     
+    bool bUseColors;
+    bool bUseTexture;
+    
     bool bShouldShuffle;
     bool bShouldSortHue;
     bool bShouldSortBri;
     bool bShouldReorder;
+    
     bool bDoPerpendicular;
     
     bool bShouldGenerate;
