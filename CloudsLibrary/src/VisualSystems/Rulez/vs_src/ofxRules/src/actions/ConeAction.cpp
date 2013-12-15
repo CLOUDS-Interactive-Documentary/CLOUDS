@@ -59,7 +59,8 @@ namespace itg
         {
             mesh.addVertex(coneMesh.getVertex(i) * newBranch->getTransform());
             mesh.addNormal(coneMesh.getNormal(i) * normalMatrix);
-            mesh.addTexCoord(ofVec2f(0.f, branch->getDepth()));
+            if (i > coneMesh.getNumVertices() - 3) mesh.addTexCoord(ofVec2f(0.f, branch->getDepth() + 1.f));
+            else mesh.addTexCoord(ofVec2f(0.f, branch->getDepth()));
             mesh.addColor(colour);
         }
         //newBranch->setVertexIndex(mesh.getNumVertices());

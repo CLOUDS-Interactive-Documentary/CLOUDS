@@ -6,7 +6,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
 
-const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/tree_flying2.xml", "rules/flower.xml" };
+const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
 //const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
@@ -58,11 +58,11 @@ void CloudsVisualSystemFlying::generate()
     for (unsigned i = 0; i < numPlantMeshes; ++i)
     {
         plantMeshes.push_back(ofxRules());
-        string file = getVisualSystemDataPath() + RULES_FILES[rand() % NUM_RULES_FILES];
-        plantMeshes.back().load(file);
+        ostringstream oss;
+        oss << getVisualSystemDataPath() << "rules/" << RULES_FILES[rand() % NUM_RULES_FILES];
+        plantMeshes.back().load(oss.str());
         plantMeshes.back().start();
         while (plantMeshes.back().step()) ;
-        cout << file << " :::: " << plantMeshes.back().getNumSteps() << endl;
     }
     
     // floor - don't share vertices so can have
@@ -184,8 +184,8 @@ void CloudsVisualSystemFlying::selfDraw()
         ofPopStyle();
     }
     
-    ofMatrix4x4 modelview;
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelview.getPtr());
+    //ofMatrix4x4 modelview;
+    //glGetFloatv(GL_MODELVIEW_MATRIX, modelview.getPtr());
     
     // eye space light pos
     ofVec3f lEye = ofVec3f(1000, 1000, 1000);// * modelview;
@@ -194,7 +194,7 @@ void CloudsVisualSystemFlying::selfDraw()
     
     // PLANTS
     plantsShader.begin();
-    const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
+    const float camAvoidDistSq = camAvoidDist * camAvoidDist;
     for (auto it = plants.begin(); it != plants.end(); ++it)
     {
         float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getCurrentDepth(), 0.f, true);
