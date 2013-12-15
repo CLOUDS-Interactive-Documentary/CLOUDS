@@ -10,9 +10,9 @@
 #include "ofxXmlSettings.h"
 #include "CloudsGlobal.h"
 
-#ifndef CLOUDS_NO_VS
+//#ifndef CLOUDS_NO_VS
 //#include "CloudsVisualSystem.h"
-#endif
+//#endif
 
 
 CloudsVisualSystemPreset::CloudsVisualSystemPreset(){

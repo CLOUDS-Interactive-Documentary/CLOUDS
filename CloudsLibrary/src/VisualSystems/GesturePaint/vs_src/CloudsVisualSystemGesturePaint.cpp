@@ -19,11 +19,6 @@ void CloudsVisualSystemGesturePaint::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-//	customGui->addSlider("Custom Float 1", 1, 1000, &customFloat1);
-//	customGui->addSlider("Custom Float 2", 1, 1000, &customFloat2);
-//	customGui->addButton("Custom Button", false);
-//	customGui->addToggle("Custom Toggle", &customToggle);
-	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemGesturePaint::selfGuiEvent);
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
@@ -68,6 +63,10 @@ void CloudsVisualSystemGesturePaint::reloadShader(){
 	
 //	vblurShader.load(getVisualSystemDataPath() + "shaders/blur");
 	brushImage.loadImage(getVisualSystemDataPath() + "images/brush.png");
+	paperImage.loadImage(getVisualSystemDataPath() + "images/paper.jpg");
+	
+	paperMixShader.load(getVisualSystemDataPath() + "shaders/papermix");
+	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -90,69 +89,132 @@ void CloudsVisualSystemGesturePaint::selfSceneTransformation(){
 	
 }
 
+void CloudsVisualSystemGesturePaint::reallocateFramebuffers(){
+	canvassrc.allocate(getSharedRenderTarget().getWidth(),
+					   getSharedRenderTarget().getHeight(),
+					   GL_RGBA);
+	canvasdst.allocate(canvassrc.getWidth(),
+					   canvassrc.getHeight(),
+					   GL_RGBA);
+	
+	waterdst.allocate(getSharedRenderTarget().getWidth()*.25,
+					  getSharedRenderTarget().getHeight()*.25,
+					  GL_RGBA32F);
+	watersrc.allocate(getSharedRenderTarget().getWidth()*.25,
+					  getSharedRenderTarget().getHeight()*.25,
+					  GL_RGBA32F);
+	
+	
+	waterdst.begin();
+	ofClear(0,0,0,0);
+	waterdst.end();
+	
+	watersrc.begin();
+	ofClear(0,0,0,0);
+	watersrc.end();
+	
+	canvasdst.begin();
+	ofClear(0,0,0,0);
+	canvasdst.end();
+	
+	canvassrc.begin();
+	ofClear(0,0,0,0);
+	canvassrc.end();
+	
+	meshFromFbo(canvasMesh, canvassrc);
+	meshFromFbo(waterMesh, watersrc);
+	
+	paperRect = ofRectangle(0,0,paperImage.getWidth(),paperImage.getHeight());
+	ofRectangle screenRect(0,0,canvassrc.getWidth(),canvassrc.getHeight());
+	paperRect.scaleTo(screenRect, OF_ASPECT_RATIO_KEEP_BY_EXPANDING);
+}
+
+void CloudsVisualSystemGesturePaint::meshFromFbo(ofMesh& m, ofFbo& f){
+	
+	m.clear();
+	
+	m.addVertex(ofVec3f(0,0,0));
+	m.addVertex(ofVec3f(f.getWidth(),0,0));
+	m.addVertex(ofVec3f(0,f.getHeight(),0));
+	m.addVertex(ofVec3f(f.getWidth(),f.getHeight(),0));
+	
+	m.addTexCoord(ofVec2f(0,0));
+	m.addTexCoord(ofVec2f(f.getWidth(),0));
+	m.addTexCoord(ofVec2f(0,f.getHeight()));
+	m.addTexCoord(ofVec2f(f.getWidth(),f.getHeight()));
+	
+	m.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+	
+}
+
 //normal update call
 void CloudsVisualSystemGesturePaint::selfUpdate(){
-	if(!src.isAllocated() ||
-	   src.getWidth() != getSharedRenderTarget().getWidth() ||
-	   src.getHeight() != getSharedRenderTarget().getHeight())
+	if(!canvassrc.isAllocated() ||
+	   canvassrc.getWidth() != getSharedRenderTarget().getWidth() ||
+	   canvassrc.getHeight() != getSharedRenderTarget().getHeight())
 	{
-		src.allocate(getSharedRenderTarget().getWidth(),
-					 getSharedRenderTarget().getHeight(),
-					 GL_RGB32F);
-		dst.allocate(getSharedRenderTarget().getWidth(),
-					 getSharedRenderTarget().getHeight(),
-					 GL_RGB32F);
-		
-		src.begin();
-		ofClear(0,0,0,0);
-		src.end();
-		dst.begin();
-		ofClear(0,0,0,0);
-		dst.end();
-		
-		srcMesh.clear();
-		srcMesh.addVertex(ofVec3f(0,0,0));
-		srcMesh.addVertex(ofVec3f(dst.getWidth(),0,0));
-		srcMesh.addVertex(ofVec3f(0,dst.getHeight(),0));
-		srcMesh.addVertex(ofVec3f(dst.getWidth(),dst.getHeight(),0));
-		
-		srcMesh.addTexCoord(ofVec2f(0,0));
-		srcMesh.addTexCoord(ofVec2f(dst.getWidth(),0));
-		srcMesh.addTexCoord(ofVec2f(0,dst.getHeight()));
-		srcMesh.addTexCoord(ofVec2f(dst.getWidth(),dst.getHeight()));
-		srcMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+		reallocateFramebuffers();
 	}
 	
 	glDisable(GL_DEPTH_TEST);
 	ofSetColor(255, 255);
-	
 	hblurShader.begin();
-	hblurShader.setUniformTexture("s_texture", src.getTextureReference(), 1);
-	hblurShader.setUniform2f("dimensions", dst.getWidth(), dst.getHeight());
-	dst.begin();
-	ofEnableAlphaBlending();
+	hblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
+	hblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
+
+	waterdst.begin();
+	ofDisableAlphaBlending();
+//	ofEnableAlphaBlending();
 	ofClear(0, 0, 0, 0);
-	srcMesh.draw();
-	dst.end();
+	waterMesh.draw();
+	waterdst.end();
 	hblurShader.end();
 	
-	swap(src,dst);
+	swap(watersrc,waterdst);
 	
 	vblurShader.begin();
-	vblurShader.setUniformTexture("s_texture", src.getTextureReference(), 1);
-	vblurShader.setUniform2f("dimensions", dst.getWidth(), dst.getHeight());
-	dst.begin();
-	ofEnableAlphaBlending();
+	vblurShader.setUniformTexture("s_texture", watersrc.getTextureReference(), 1);
+	vblurShader.setUniform2f("dimensions", waterdst.getWidth(), waterdst.getHeight());
+	waterdst.begin();
+//	ofEnableAlphaBlending();
+	ofDisableAlphaBlending();
 	ofClear(0, 0, 0, 0);
-	srcMesh.draw();
+	waterMesh.draw();
+	
+	ofEnableAlphaBlending();
+	for(int i = 0; i < depositPoints.size(); i++){
+		ofSetColor(ofColor::fromHsb(ofGetElapsedTimef()*20, 255, 255));
+		brushImage.draw( depositPoints[i] ); //TODO: draw smaller
+	}
+	waterdst.end();
 	vblurShader.end();
 	
+	swap(watersrc,waterdst);
+
+	canvasdst.begin();
+	ofClear(0, 0, 0, 0);
+	
+//	paperMixShader.begin();
+//	paperMixShader.setUniformTexture("s_texture", canvassrc.getTextureReference(), 1);
+	canvassrc.getTextureReference().bind();
+	canvasMesh.draw();
+	canvassrc.getTextureReference().unbind();
+	
+//	paperMixShader.end();
+	
+	ofPushStyle();
+	
+	ofEnableAlphaBlending();
 	for(int i = 0; i < depositPoints.size(); i++){
-		//TODO: set color
+		ofSetColor(ofColor::fromHsb(fmod(ofGetElapsedTimef()*20, 255.f), 255.0f, 255.0f));
 		brushImage.draw( depositPoints[i] );
 	}
-	dst.end();
+	depositPoints.clear();
+	ofPopStyle();
 	
+	canvasdst.end();
+	
+	swap(canvasdst,canvassrc);
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
@@ -169,16 +231,17 @@ void CloudsVisualSystemGesturePaint::selfDrawBackground(){
 
 	//ofEnableAlphaBlending();
 	glDisable(GL_DEPTH_TEST);
-	ofEnableBlendMode(OF_BLENDMODE_SCREEN);
-	dst.getTextureReference().draw(0,0);
-	swap(src,dst);
+	//ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+	ofEnableAlphaBlending();
+	//paperImage.draw(paperRect);
+//	canvassrc.getTextureReference().draw(0,0);
+	
+	watersrc.getTextureReference().draw(0,0);
 	
 }
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemGesturePaint::selfEnd(){
-	
-	simplePointcloud.clear();
 	
 }
 // this is called when you should clear all the memory and delet anything you made in setup

@@ -24,6 +24,10 @@ void CloudsVisualSystemCirclePacking::selfSetupGui(){
 	customGui->setName("Custom");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 
+    customGui->addToggle("BlankCircles", &BLANKS);
+    customGui->addToggle("Nasdaq", &NASDAQ);
+    customGui->addToggle("Regenerate", &shouldRegenerate);
+    
 	customGui->addToggle("filled", &filled);
 	customGui->addIntSlider("num circles", 20, 300, &numCircles);
 	customGui->addSlider("hero percent", 0, 1.0, &heroPercent);
@@ -48,6 +52,18 @@ void CloudsVisualSystemCirclePacking::selfGuiEvent(ofxUIEventArgs &e){
 	if(e.widget->getName() == "Custom Button"){
 		cout << "Button pressed!" << endl;
 	}
+    
+    else if (e.widget->getName() == "Nasdaq" && ((ofxUIToggle *)e.widget)->getValue()) {
+        NASDAQ = true;
+    }
+    
+    else if (e.widget->getName() == "BlankCircles" && ((ofxUIToggle *)e.widget)->getValue()) {
+        BLANKS = true;
+    }
+
+    else if (e.widget->getName() == "Regenerate" && ((ofxUIToggle *)e.widget)->getValue()) {
+        regenerate();
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -67,31 +83,47 @@ void CloudsVisualSystemCirclePacking::guiRenderEvent(ofxUIEventArgs &e){
 	
 }
 
+void CloudsVisualSystemCirclePacking::regenerate(){
+ 
+    pack.circles.clear();
+    
+    pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());
+    
+    if (NASDAQ){
+        initializeNasdaq();
+    }
+    else if (BLANKS){
+        
+        initializeBlanks();
+    }
+    
+	pack.pack();
+    
+    
+}
+
 // selfSetup is called when the visual system is first instantiated
 // This will be called during a "loading" screen, so any big images or
 // geometry should be loaded here
 void CloudsVisualSystemCirclePacking::selfSetup(){
 	
-	
-	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());	
-    for(int i = 0; i < 150; i++){
-		if(ofRandomuf() > .9){
-			pack.circles.push_back( Circle(ofRandom(ofGetWidth()), 
-										   ofRandom(ofGetHeight()), 
-										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-												 30, 60.), "blank") );		
-		}
-		else{
-			pack.circles.push_back( Circle(ofRandom(ofGetWidth()), 
-										   ofRandom(ofGetHeight()), 
-										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-												5, 10), "blank") );		
-		}
-    }	
+    Circle::Font.loadFont(getVisualSystemDataPath() + "Verdana14.ttf", 14, true, true, true);
+    
+
+    
+	pack = CirclePacker(1.0f*ofGetWidth(),1.0f*ofGetHeight());
+    
+    if (NASDAQ){
+        initializeNasdaq();
+    }
+    else if (BLANKS){
+    
+        initializeBlanks();
+    }
+
 	pack.pack();
-	
-	
-}
+		
+}   
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
@@ -116,6 +148,7 @@ void CloudsVisualSystemCirclePacking::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemCirclePacking::selfUpdate(){
     
+   
    pack.update();
 
 }
@@ -142,13 +175,46 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
     
 	ofPushStyle();
 	ofNoFill();
-    pack.draw();
+    pack.draw(NASDAQ, BLANKS);
 	ofPopStyle();
 	
 	//turn the background refresh off
 	//bClearBackground = false;
 	
 }
+
+void CloudsVisualSystemCirclePacking::initializeBlanks(){
+    
+    for(int i = 0; i < 150; i++){
+		if(ofRandomuf() > .9){
+			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
+										   ofRandom(ofGetHeight()),
+										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+												 30, 60.), "blank") );
+		}
+		else{
+			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
+										   ofRandom(ofGetHeight()),
+										   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+                                                 5, 10), "blank") );
+        }
+    }
+}
+
+void CloudsVisualSystemCirclePacking::initializeNasdaq(){
+    
+    
+    string companies[50] = { "SQR", "ZNGA","ALBB","BIDU", "SMCI", "SSYS", "NCR", "DELL", "FTNT","RAX","VMW", "EQUIX", "XXIA", "CTSH", "OPEN", "SFLY", "SSTK","EPAM", "IPGP", "DDD","YHOO", "TWTR","MSFT","FB","IBM","GOOG","HPQ","AMZN","EBAY","AAPL","CSCO","SNE","NOK","INTC","NVDA","AMD","ADBE","EA","FSQR", "LNKD", "YELP", "TMBL","SNAP", "BNCH", "LPMT","LLBT","LYFT", "GIT", "AOL", "OVR" };
+    float marketCap[50] = { 4.1, 4.11, 149, 59.9, .700, 5.85, 5.37, 24.38, 2.89, 4.88, 36.9, 8.4, .942, 28.3, 1.78, 1.82, 2.62, 1.51, 3.75, 8.32, 40.3, 137, 306, 130, 187.6, 354.4, 51.345, 175.9, 66.736, 498.8, 108.2, 18.169, 27.991, 120.7, 8.539, 2.670, 30.438, 6.869, 1, 25.7, 4.23, 2, 3, 4, 5, 5, 4, 6, 5, 3 };
+	
+    int size = sizeof(marketCap)/sizeof(marketCap[0]);
+    
+    for(int i = 0; i < size; i++){
+        pack.circles.push_back( Circle(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()), (marketCap[i]/2), companies[i]));
+        
+        }
+    }
+
 // this is called when your system is no longer drawing.
 // Right after this selfUpdate() and selfDraw() won't be called any more
 void CloudsVisualSystemCirclePacking::selfEnd(){
@@ -178,6 +244,12 @@ void CloudsVisualSystemCirclePacking::selfMouseMoved(ofMouseEventArgs& data){
 }
 
 void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){
+    
+    pack.circles.push_back( Circle(data.x,
+                                   data.y,
+                                   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
+                                         30, 60.), "blank") );
+
 	
 }
 
