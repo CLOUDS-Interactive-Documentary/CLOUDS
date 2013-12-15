@@ -65,10 +65,10 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     bShouldReorder = false;
     
     // Set defaults.
-    tex.loadImage(getVisualSystemDataPath() + "sourceImages/dogs.jpg");
+    tex.loadImage(getVisualSystemDataPath() + "sourceImages/browser.png");
     
-    numDivCols = 20;
-    numDivRows = 20;
+    numDivCols = 40;
+    numDivRows = 40;
     numCells = numDivCols * numDivRows;
     
     cells = new PGCell[numCells];
@@ -208,8 +208,8 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     for (int i = 0; i < numCells; i++) {
         int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
-        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.5f);
-        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.5f);
+        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.01f);
+        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.01f);
         
         // update the vert data
         // top-left
