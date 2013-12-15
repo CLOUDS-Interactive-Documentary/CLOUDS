@@ -75,9 +75,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLTextAlignment textAlign;
-    int billboardType;
     bool bRenderText;
-
+    float stringWidth;
+    float fontSize;
     
     //draw stuff
     void loadMesh();
@@ -103,7 +103,7 @@ protected:
         
     
     vector<Tweeter> tweeters;
-    vector<Tweeter> activeTweeters;
+//    vector<Tweeter> activeTweeters;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -120,6 +120,7 @@ protected:
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
 
+    vector<Tweeter*> activeTweeters;
     //bool bTextCloudMode;
 
     float baseHue,baseSat,baseBri,baseAlpha;

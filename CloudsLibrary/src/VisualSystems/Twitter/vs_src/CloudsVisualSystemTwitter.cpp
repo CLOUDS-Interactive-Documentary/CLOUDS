@@ -81,13 +81,10 @@ void CloudsVisualSystemTwitter::selfSetup()
     zScale = 10;
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
-    
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     bRenderMesh = true;
     bRenderText = false;
-//    ofCamera& cam = getCameraRef();
-//    cam.setNearClip(0);
-
+    stringWidth = 10;
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
@@ -159,12 +156,9 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
     textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
     textGui->addSpacer();
-    
-    vector<string> radioBillboard;
-    radioBillboard.push_back("BILLBOARD SCREEN");
-    radioBillboard.push_back("BILLBOARD NODES");
-    radioBillboard.push_back("BILLBOARD ORIGIN");
-    textGui->addRadio("BILLBOARD", radioBillboard);
+    textGui->addMinimalSlider("STRING WIDTH", 1, 100, &stringWidth);
+    textGui->addMinimalSlider("SET SIZE", 0.1, 10, &fontSize);
+
     
     
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
@@ -321,10 +315,12 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	}
 }
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
+
     activeTweeters.clear();
+    
     for(int i=0; i<tweeters.size(); i++){
         if(tweeters[i].hasTweetOnDate(dateIndex[index])){
-            activeTweeters.push_back(tweeters[i]);
+            activeTweeters.push_back(&tweeters[i]);
             vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
             
             for(int k=0; k<tweetsOnDate.size();k ++){
@@ -360,6 +356,8 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
             nodeMesh.setColor(tweeters[i].nodeVertexIndex, nodeActiveColor);
         }
     }
+    
+
     
     
     
@@ -616,22 +614,8 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
     
-    if (e.widget->getName() == "BILLBOARD SCREEN") {
-        if (((ofxUIToggle *)e.widget)->getValue()) {
-            billboardType = 0;
-        }
-    }
-    else if (e.widget->getName() == "BILLBOARD NODES") {
-        if (((ofxUIToggle *)e.widget)->getValue()) {
-            billboardType = 1;
-        }
-    }
-    else if (e.widget->getName() == "BILLBOARD ORIGIN") {
-        if (((ofxUIToggle *)e.widget)->getValue()) {
-            billboardType = 2;
-        }
-    }
-    else if(e.getName() == "LOAD GRAPH"){
+
+    if(e.getName() == "LOAD GRAPH"){
         ofxUIButton* t  = (ofxUIButton*) e.widget;
         if (t->getValue()) {
             ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
@@ -656,8 +640,12 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
     nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
     textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
+    
+//    font.setLineLength(stringWidth);
+    font.setLineSpacing(stringWidth);
+    font.setSize(fontSize);
     reloadMeshColor();
-
+    
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
@@ -754,13 +742,13 @@ void CloudsVisualSystemTwitter::selfDraw()
         edgeMesh.draw();
         
     }
-
+    
     if(bRenderText){
         for(int i=0; i<activeTweeters.size(); i++){
-            drawText(activeTweeters[i].name,activeTweeters[i].position);
+            drawText(activeTweeters[i]->name,activeTweeters[i]->position);
         }
     }
-    ofPopMatrix();    
+    ofPopMatrix();
     ofPopStyle();
     
 }
@@ -768,7 +756,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-
+    
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
@@ -808,16 +796,8 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofPushMatrix();
     {
         
-        if (billboardType == 0) {  // SCREEN
-            ofxBillboardBeginSphericalCheat(pos);
-        }
-        else if(billboardType == 1){
-            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
-        }
-        else {
-            // ORIGIN
-            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
-        }
+        
+        ofxBillboardBeginSphericalCheat(pos);
         ofPushStyle();
         ofSetColor(textColor );
         ofScale(0.01,-0.01);
