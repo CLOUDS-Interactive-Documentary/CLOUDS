@@ -55,10 +55,11 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void initSystem(string filePath);
     
     //i/o stuff
-    void loadJSONData();
+    void loadJSONData(string folderName);
     void addUsersFromMentions();
-    void createPajekNetwork();
+    void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
+    void createNewGraph(string outputFileName, string inputDataFolder);
     
 
     //data stuff
@@ -70,14 +71,16 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
+    
 
     //text stuff
     ofxJSONElement result;
     ofxFTGLSimpleLayout font;
     ofxFTGLTextAlignment textAlign;
-    int billboardType;
     bool bRenderText;
-
+    float stringWidth;
+    float fontSize;
+    int minUserMentions;
     
     //draw stuff
     void loadMesh();
@@ -103,7 +106,6 @@ protected:
         
     
     vector<Tweeter> tweeters;
-    vector<Tweeter> activeTweeters;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -120,7 +122,7 @@ protected:
     ofxUISuperCanvas* clusterGui;
     ofxUISuperCanvas* textGui;
 
-    //bool bTextCloudMode;
+    vector<Tweeter*> activeTweeters;
 
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
