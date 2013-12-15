@@ -311,6 +311,7 @@
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
 		28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.cpp; sourceTree = "<group>"; };
 		28F4F01C185CCDD6008D80A2 /* ConeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConeAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.h; sourceTree = "<group>"; };
+		28F4F021185CD2A7008D80A2 /* tree_flying2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree_flying2.xml; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -1472,6 +1473,7 @@
 			children = (
 				E7F37DF01852DEFB0087F91C /* flower.xml */,
 				E7F37DF11852DEFB0087F91C /* tree_flying.xml */,
+				28F4F021185CD2A7008D80A2 /* tree_flying2.xml */,
 			);
 			name = rules;
 			path = ../../../../CloudsData/visualsystems/Flying/rules;

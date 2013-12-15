@@ -6,7 +6,8 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
 
-const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/flower.xml" };
+const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying.xml", "rules/tree_flying2.xml", "rules/flower.xml" };
+//const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
 CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
@@ -57,9 +58,11 @@ void CloudsVisualSystemFlying::generate()
     for (unsigned i = 0; i < numPlantMeshes; ++i)
     {
         plantMeshes.push_back(ofxRules());
-        plantMeshes.back().load(getVisualSystemDataPath() + RULES_FILES[rand() % NUM_RULES_FILES]);
+        string file = getVisualSystemDataPath() + RULES_FILES[rand() % NUM_RULES_FILES];
+        plantMeshes.back().load(file);
         plantMeshes.back().start();
         while (plantMeshes.back().step()) ;
+        cout << file << " :::: " << plantMeshes.back().getNumSteps() << endl;
     }
     
     // floor - don't share vertices so can have
@@ -191,11 +194,10 @@ void CloudsVisualSystemFlying::selfDraw()
     
     // PLANTS
     plantsShader.begin();
+    const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
     for (auto it = plants.begin(); it != plants.end(); ++it)
     {
-        float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getNumSteps(), 0.f, true);
-        
-        const float camAvoidDistSq = camAvoidDistSq * camAvoidDistSq;
+        float growth = ofMap((it->pos - floorLookAt).lengthSquared(), 0.f, growDistSq, 1.4f * plantMeshes[it->meshIdx].getCurrentDepth(), 0.f, true);
         float distToCamSq = (it->pos - cam.getPosition()).lengthSquared();
         if (distToCamSq < camAvoidDistSq)
         {
@@ -204,7 +206,6 @@ void CloudsVisualSystemFlying::selfDraw()
         if (growth > 0.f)
         {
             plantsShader.setUniform1f("growth", growth);
-            plantsShader.setUniform1f("maxDepth", plantMeshes[it->meshIdx].getMaxDepth());
             plantsShader.setUniform3fv("lEye", lEye.getPtr());
             plantsShader.setUniform1f("noiseFreq", noiseFreq);
             plantsShader.setUniform1f("noiseAmp", noiseAmp);

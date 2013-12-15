@@ -48,6 +48,7 @@
 		285C20AE182FFFEE0065BCAE /* ToonPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2091182FFFEE0065BCAE /* ToonPass.cpp */; };
 		285C20AF182FFFEE0065BCAE /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2093182FFFEE0065BCAE /* VerticalTiltShifPass.cpp */; };
 		285C20B0182FFFEE0065BCAE /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */; };
+		28A8A7B4185DE97D009DA217 /* ConeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28A8A7B2185DE97D009DA217 /* ConeAction.cpp */; };
 		28B4EE29183E723B0091E0F3 /* CloudsVisualSystemRulez.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B4EE06183E723B0091E0F3 /* CloudsVisualSystemRulez.cpp */; };
 		28B4EE2A183E723B0091E0F3 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B4EE0C183E723B0091E0F3 /* Action.cpp */; };
 		28B4EE2B183E723B0091E0F3 /* CubeAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28B4EE0E183E723B0091E0F3 /* CubeAction.cpp */; };
@@ -285,6 +286,8 @@
 		285C2094182FFFEE0065BCAE /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
 		285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
 		285C2096182FFFEE0065BCAE /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
+		28A8A7B2185DE97D009DA217 /* ConeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConeAction.cpp; sourceTree = "<group>"; };
+		28A8A7B3185DE97D009DA217 /* ConeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConeAction.h; sourceTree = "<group>"; };
 		28B4EE06183E723B0091E0F3 /* CloudsVisualSystemRulez.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemRulez.cpp; path = src/VisualSystems/Rulez/vs_src/CloudsVisualSystemRulez.cpp; sourceTree = "<group>"; };
 		28B4EE07183E723B0091E0F3 /* CloudsVisualSystemRulez.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemRulez.h; path = src/VisualSystems/Rulez/vs_src/CloudsVisualSystemRulez.h; sourceTree = "<group>"; };
 		28B4EE09183E723B0091E0F3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -874,6 +877,8 @@
 			children = (
 				28B4EE0C183E723B0091E0F3 /* Action.cpp */,
 				28B4EE0D183E723B0091E0F3 /* Action.h */,
+				28A8A7B2185DE97D009DA217 /* ConeAction.cpp */,
+				28A8A7B3185DE97D009DA217 /* ConeAction.h */,
 				28B4EE0E183E723B0091E0F3 /* CubeAction.cpp */,
 				28B4EE0F183E723B0091E0F3 /* CubeAction.h */,
 				28B4EE10183E723B0091E0F3 /* IcosphereAction.cpp */,
@@ -1665,6 +1670,7 @@
 				28B4EE35183E723B0091E0F3 /* Rule.cpp in Sources */,
 				E7D32FA91751C626006706ED /* ofxRParticleGlowieRenderer.cpp in Sources */,
 				E7D32FAA1751C626006706ED /* ofxRParticleRenderer.cpp in Sources */,
+				28A8A7B4185DE97D009DA217 /* ConeAction.cpp in Sources */,
 				280862221858A6DF00C51C32 /* ofxOscBundle.cpp in Sources */,
 				E7D32FAB1751C626006706ED /* ofxRParticleSystem.cpp in Sources */,
 				28B4EE32183E723B0091E0F3 /* TransformAction.cpp in Sources */,

@@ -23,7 +23,8 @@ struct Plant
 class CloudsVisualSystemFlying : public CloudsVisualSystem
 {
   public:
-    static const unsigned NUM_RULES_FILES = 2;
+    static const unsigned NUM_RULES_FILES = 3;
+    //static const unsigned NUM_RULES_FILES = 1;
     static const string RULES_FILES[NUM_RULES_FILES];
     static const float CAM_DAMPING;
     

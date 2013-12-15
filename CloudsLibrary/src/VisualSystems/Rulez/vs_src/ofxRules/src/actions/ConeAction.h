@@ -46,7 +46,7 @@ namespace itg
     
         void load(ofxXmlSettings& xml, const string& tagName, unsigned tagIdx);
         
-        void setParameters(float radius, float height, unsigned radiusSegments);
+        void setParameters(float radius, float height, unsigned resolution);
         
     private:
         ofMesh coneMesh;
