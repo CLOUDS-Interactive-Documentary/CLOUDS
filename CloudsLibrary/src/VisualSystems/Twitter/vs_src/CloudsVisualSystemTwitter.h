@@ -73,8 +73,8 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
 
     //text stuff
     ofxJSONElement result;
-    static ofxFTGLSimpleLayout font;
-    static ofxFTGLTextAlignment textAlign;
+    ofxFTGLSimpleLayout font;
+    ofxFTGLTextAlignment textAlign;
     int billboardType;
     bool bRenderText;
 
@@ -84,7 +84,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void updateMesh();
     void reloadMeshColor();
     void updateMeshFromTweets(int index);
-    void drawText(const ofVec3f& pos);
+    void drawText(ofVec3f pos);
     bool bRenderMesh;
 
     //helpers 

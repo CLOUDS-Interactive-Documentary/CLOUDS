@@ -82,17 +82,18 @@ void CloudsVisualSystemTwitter::selfSetup()
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
+    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf");
     bRenderMesh = true;
     bRenderText = false;
-        ofSetFrameRate(60);
+    ofSetFrameRate(60);
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    //    ofEnableAlphaBlending();
+    
     ofEnableSmoothing();
-
-     
+    
+    
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
@@ -165,7 +166,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     radioBillboard.push_back("BILLBOARD NODES");
     radioBillboard.push_back("BILLBOARD ORIGIN");
     textGui->addRadio("BILLBOARD", radioBillboard);
-
+    
     
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(textGui);
@@ -473,10 +474,10 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
                 lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-2, currentIndex);
                 currentIndex++;
-
+                
             }
             else{
-                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
+                //                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
             }
         }
     }
@@ -631,7 +632,6 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
         }
     }
     else if(e.getName() == "LOAD GRAPH"){
-        cout<<"Im in load images"<<endl;
         ofxUIButton* t  = (ofxUIButton*) e.widget;
         if (t->getValue()) {
             ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
@@ -740,17 +740,26 @@ void CloudsVisualSystemTwitter::selfUpdate()
 void CloudsVisualSystemTwitter::selfDraw()
 {
     ofPushStyle();
+    ofPushMatrix();
     ofEnableBlendMode(OF_BLENDMODE_ADD  );
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
     ofScale(10, 10);
     
-
+    
     if(bRenderMesh){
         glPointSize(1);
         nodeMesh.draw();
         edgeMesh.draw();
+        
     }
+    
+    if(bRenderText){
+        drawText(ofVec3f(10,10,10));
+//        cout<<"Drawing text"<<endl;
+//        ofDrawBitmapString(" HERE ", 0,0,0);
+    }
+    ofPopMatrix();
     ofPopStyle();
     
 }
@@ -758,18 +767,18 @@ void CloudsVisualSystemTwitter::selfDraw()
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-//    ofPushStyle();
-//    ofSetColor(ofColor::white);
-//    string cur = getDateAsString( dateIndex[currentDateIndex]);
-//    ofDrawBitmapString(cur , 0,0);
-//    ofCircle(0, 0, 200);
-//    ofPopStyle();
+    //    ofPushStyle();
+    //    ofSetColor(ofColor::white);
+    //    string cur = getDateAsString( dateIndex[currentDateIndex]);
+    //    ofDrawBitmapString(cur , 0,0);
+    //    ofCircle(0, 0, 200);
+    //    ofPopStyle();
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-
+    
 }
 
 // this is called when your system is no longer drawing.
@@ -799,57 +808,36 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     }
     
 }
-void CloudsVisualSystemTwitter::drawText(const ofVec3f& pos)
-{
+void CloudsVisualSystemTwitter::drawText(ofVec3f pos){
     ofPushMatrix();
     {
-//        for (int i = 0; i < children.size(); i++) {
-//            if (lineWidth > 0 && lineColor.a > 0) {
-//                ofSetColor(lineColor);
-//                ofVec3f toChild = children[i]->pos - pos;
-//                if (revealMode != REVEAL_INSTANT) {
-//                    toChild *= children[i]->lineTween.getTarget(0);
-//                }
-//                ofLine(pos, pos + toChild);
-//            }
-//            // Draw Recursively.
-////            children[i]->draw(cam);
-//        }
+        
+//        getCameraRef().setScale(1,-1,1);
+//        ofVec3f pos =ofVec3f(0,0,0);
         
         if (billboardType == 0) {  // SCREEN
             ofxBillboardBeginSphericalCheat(pos);
         }
-        else {                                          // ORIGIN
-            ofxBillboardBeginSphericalObvious(ofVec3f::zero(), pos);
+        else {
+            // ORIGIN
+            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
         }
+        ofPushStyle();
+//        ofSetColor(textColor);
+        ofSetColor(255, 0, 0);
+ 
+        //ofDrawBitmapString(" HERE ", pos);
         
-        ofScale(1, -1, 1);
-        
-        if (bRenderText && textColor.a > 0) {
-            ofSetColor(textColor);
-            
-            for (int i=0; i<tweeters.size(); i++) {
-                float  x= tweeters[i].position.x;
-                float y = tweeters[i].position.y;
-                font.drawString(tweeters[i].name,x , y);
-            }
-/*
-             float x;
-          if (font.getAlignment() == FTGL_ALIGN_RIGHT) {
-                x = -1 * (size * nodeScalar + font.getLineLength());
-          }
-          else if (font.getAlignment() == FTGL_ALIGN_CENTER) {
-                x = -0.5 * font.getLineLength();
-          }
-          else {
-                x = size * nodeScalar;
-          }
+        //for (int i=0; i<tweeters.size(); i++) {
+        //                float  x= tweeters[i].position.x;
+        //                float y = tweeters[i].position.y;
+//        float x = -0.5 * font.getLineLength();
+        font.drawString("Here",0,0);
 
-            font.drawString(text, x, y);
-      }
-*/      
-        }
+        ofPopStyle();
+
         ofxBillboardEnd();
+//        getCameraRef().setScale(1,1,1);
     }
     ofPopMatrix();
 }
