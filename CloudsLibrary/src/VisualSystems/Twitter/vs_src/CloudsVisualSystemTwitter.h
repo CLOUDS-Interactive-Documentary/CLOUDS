@@ -84,7 +84,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void updateMesh();
     void reloadMeshColor();
     void updateMeshFromTweets(int index);
-    void drawText(ofVec3f pos);
+    void drawText(string text, ofVec3f pos);
     bool bRenderMesh;
 
     //helpers 
@@ -103,6 +103,7 @@ protected:
         
     
     vector<Tweeter> tweeters;
+    vector<Tweeter> activeTweeters;
     stringstream ss;
     
     ofVboMesh nodeMesh;

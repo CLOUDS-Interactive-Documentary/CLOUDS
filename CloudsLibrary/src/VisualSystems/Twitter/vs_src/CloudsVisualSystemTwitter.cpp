@@ -42,7 +42,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     tweetModifier.b = 0.54;
     tweetAlpha = 1.0;
     
-    textColorModifier.r = 1;
+    textColorModifier.r = 0.0;
     textColorModifier.g = 1;
     textColorModifier.b = 1;
     textColorModifier.a = 1;
@@ -82,7 +82,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
-    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf");
+    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf",14);
     bRenderMesh = true;
     bRenderText = false;
     ofSetFrameRate(60);
@@ -155,10 +155,10 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
     textGui->addToggle("RENDER TEXT", &bRenderText);
     textGui->addSpacer();
-    textGui->addMinimalSlider("TEXT HUE", 0.0, 0.1, &textColorModifier.r);
-    textGui->addMinimalSlider("TEXT SAT", 0.0, 0.1, &textColorModifier.g);
-    textGui->addMinimalSlider("TEXT BRI", 0.0, 0.1, &textColorModifier.b);
-    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 0.1, &textColorModifier.a);
+    textGui->addMinimalSlider("TEXT HUE", 0.0, 1, &textColorModifier.r);
+    textGui->addMinimalSlider("TEXT SAT", 0.0, 1, &textColorModifier.g);
+    textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
+    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
     textGui->addSpacer();
     
     vector<string> radioBillboard;
@@ -322,9 +322,10 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	}
 }
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
-    
+    activeTweeters.clear();
     for(int i=0; i<tweeters.size(); i++){
         if(tweeters[i].hasTweetOnDate(dateIndex[index])){
+            activeTweeters.push_back(tweeters[i]);
             vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
             
             for(int k=0; k<tweetsOnDate.size();k ++){
@@ -753,13 +754,13 @@ void CloudsVisualSystemTwitter::selfDraw()
         edgeMesh.draw();
         
     }
-    
-    if(bRenderText){
-        drawText(ofVec3f(10,10,10));
-//        cout<<"Drawing text"<<endl;
-//        ofDrawBitmapString(" HERE ", 0,0,0);
-    }
     ofPopMatrix();
+    if(bRenderText){
+        for(int i=0; i<activeTweeters.size(); i++){
+            drawText(activeTweeters[i].name,activeTweeters[i].position);
+        }
+    }
+    
     ofPopStyle();
     
 }
@@ -804,41 +805,32 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         }
     }
     if(args.key == 'j'){
-        cout<<baseColor.getHue()<<" , "<<baseColor.getSaturation()<<" , "<<baseColor.getBrightness()<<endl;
+        cout<<textColor.getHue()<<" , "<<textColor.getSaturation()<<" , "<<textColor.getBrightness()<<endl;
     }
     
 }
-void CloudsVisualSystemTwitter::drawText(ofVec3f pos){
+void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofPushMatrix();
     {
-        
-//        getCameraRef().setScale(1,-1,1);
-//        ofVec3f pos =ofVec3f(0,0,0);
-        
+//        ofVec3f textPos = pos +1;
         if (billboardType == 0) {  // SCREEN
             ofxBillboardBeginSphericalCheat(pos);
+        }
+        else if(billboardType == 1){
+            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
         }
         else {
             // ORIGIN
             ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
         }
         ofPushStyle();
-//        ofSetColor(textColor);
-        ofSetColor(255, 0, 0);
-        ofScale(1,-1,1);
-//        getCameraRef().setScale(1,-1,-1);
-        //ofDrawBitmapString(" HERE ", pos);
-        
-        //for (int i=0; i<tweeters.size(); i++) {
-        //                float  x= tweeters[i].position.x;
-        //                float y = tweeters[i].position.y;
-//        float x = -0.5 * font.getLineLength();
-        font.drawString("Here",0,0);
-
+        ofSetColor(textColor );
+        ofScale(0.01,-0.01,0.01);
+        ofTranslate(pos.x, pos.y,pos.z);
+        font.drawString(text,0,0);
         ofPopStyle();
-
+        
         ofxBillboardEnd();
-        getCameraRef().setScale(1,1,1);
     }
     ofPopMatrix();
 }
