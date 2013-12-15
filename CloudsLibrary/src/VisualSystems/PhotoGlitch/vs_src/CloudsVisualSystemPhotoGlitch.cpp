@@ -32,6 +32,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
     customGui->addSpacer();
 	customGui->addToggle("SHUFFLE", &bShouldShuffle);
     customGui->addToggle("REORDER", &bShouldReorder);
+    customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
     customGui->addIntSlider("TWEEN DELAY", 0, 1000, &tweenDelay);
     
@@ -73,6 +74,8 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     
     bShouldShuffle = false;
     bShouldReorder = false;
+    
+    bDoPerpendicular = false;
         
     tweenDuration = 200;
     tweenDelay = 0;
@@ -198,14 +201,12 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     
     // tween them cells!
     for (int i = 0; i < numCells; i++) {
-        cells[i].tween.update();
-        
         int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
         
 //        float tweenX = ofLerp(verts[vertIdx + 0], cells[i].col * screenSliceWidth,  0.5f);
 //        float tweenY = ofLerp(verts[vertIdx + 1], cells[i].row * screenSliceHeight, 0.5f);
-        float tweenX = cells[i].tween.getTarget(0);
-        float tweenY = cells[i].tween.getTarget(1);
+        float tweenX = cells[i].tweenX.update();
+        float tweenY = cells[i].tweenY.update();
         
         // update the vert data
         // top-left
@@ -241,6 +242,7 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {    
     ofSetColor(255);
+//    tex.draw(0, 0);
     tex.bind();
     {
 //        vbo.draw(GL_TRIANGLES, 0, 24);
@@ -357,8 +359,15 @@ void CloudsVisualSystemPhotoGlitch::tween(int i, int j)
     
     int vertIdx = cells[i].idx * kVertsPerCell * kCoordsPerVert;
     
-    cells[i].tween.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth, tweenDuration, tweenDelay * j);
-    cells[i].tween.addValue(verts[vertIdx + 1], cells[i].row * screenSliceHeight);
-    cells[i].tween.start();
+    if (bDoPerpendicular) {
+        cells[i].tweenX.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth,  tweenDuration / 2, tweenDelay * j);
+        cells[i].tweenY.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 1], cells[i].row * screenSliceHeight, tweenDuration / 2, tweenDuration / 2 + tweenDelay * j);
+    }
+    else {
+        cells[i].tweenX.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 0], cells[i].col * screenSliceWidth,  tweenDuration, tweenDelay * j);
+        cells[i].tweenY.setParameters(easing, ofxTween::easeOut, verts[vertIdx + 1], cells[i].row * screenSliceHeight, tweenDuration, tweenDelay * j);
+    }
+    cells[i].tweenX.start();
+    cells[i].tweenY.start();
 }
 
