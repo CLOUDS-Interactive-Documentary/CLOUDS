@@ -70,15 +70,22 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
-    
+
+    //text stuff
     ofxJSONElement result;
+    ofxFTGLSimpleLayout font;
+    ofxFTGLTextAlignment textAlign;
+    int billboardType;
+    bool bRenderText;
+
     
     //draw stuff
     void loadMesh();
     void updateMesh();
     void reloadMeshColor();
     void updateMeshFromTweets(int index);
-    void drawObject(const ofVec3f& pos);
+    void drawText(string text, ofVec3f pos);
+    bool bRenderMesh;
 
     //helpers 
     vector<Date> dateIndex;
@@ -96,6 +103,7 @@ protected:
         
     
     vector<Tweeter> tweeters;
+    vector<Tweeter> activeTweeters;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -110,6 +118,9 @@ protected:
     float meshExpansion;
     float pointSize;
     ofxUISuperCanvas* clusterGui;
+    ofxUISuperCanvas* textGui;
+
+    //bool bTextCloudMode;
 
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
@@ -128,6 +139,12 @@ protected:
     
     ofFloatColor nodeMidpointColor;
     ofFloatColor nodeMidpointModifier;
+    
+    ofFloatColor nodeActiveMidpointColor;
+    ofFloatColor nodeActiveMidpointModifier;
+    
+    ofFloatColor textColor;
+    ofFloatColor textColorModifier;
     
     string currentMeshFilePath;
     float xScale,yScale, zScale;
