@@ -27,19 +27,31 @@ void CloudsVisualSystemTwitter::selfSetup()
     nodeActiveModifier.b = 0.54;
     nodeActiveModifier.a = 1.0;
     
-    nodeMidpointModifier.r = 1.0;
-    nodeMidpointModifier.g = 0.65;
-    nodeMidpointModifier.b = 0.54;
+    nodeMidpointModifier.r = 0.0;
+    nodeMidpointModifier.g = 1.;
+    nodeMidpointModifier.b = 1.;
     nodeMidpointModifier.a = 1.0;
+    
+    nodeActiveMidpointModifier.r = 0.5f;
+    nodeActiveMidpointModifier.g = 0.65;
+    nodeActiveMidpointModifier.b = 0.54;
+    nodeActiveMidpointModifier.a = 1.0;
     
     tweetModifier.r = 1.0;
     tweetModifier.g = 0.65;
     tweetModifier.b = 0.54;
     tweetAlpha = 1.0;
     
+    textColorModifier.r = 0.0;
+    textColorModifier.g = 1;
+    textColorModifier.b = 1;
+    textColorModifier.a = 1;
+    
     nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
     nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
     nodeMidpointColor.setHsb(nodeMidpointColor.r, nodeMidpointColor.g, nodeMidpointColor.b,nodeMidpointColor.a);
+    nodeActiveMidpointColor.setHsb(nodeActiveMidpointColor.r, nodeActiveMidpointColor.g, nodeActiveMidpointColor.b,nodeMidpointColor.a);
+    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
     
     baseModifier.r = 0.62;
     baseModifier.g = 0.46;
@@ -70,25 +82,30 @@ void CloudsVisualSystemTwitter::selfSetup()
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
-    
+    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
+    bRenderMesh = true;
+    bRenderText = false;
+//    ofCamera& cam = getCameraRef();
+//    cam.setNearClip(0);
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    //    ofEnableAlphaBlending();
     ofEnableSmoothing();
-    
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
 {
-	clusterGui = new ofxUISuperCanvas("TWITTER PARAMS", gui);
+	clusterGui = new ofxUISuperCanvas("MESH PARAMS", gui);
     clusterGui->copyCanvasStyle(gui);
 	clusterGui->copyCanvasProperties(gui);
+    clusterGui->setName("Mesh");
     clusterGui->addButton("LOAD GRAPH", false);
 	clusterGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    clusterGui->addToggle("RENDER MESH", &bRenderMesh);
     clusterGui->addIntSlider("REFRESH RATE", 1, 100, &refreshRate);
-    clusterGui->addSlider("EDGE DECAY", 0.01, 0.9   , &edgeDecayRate);
+    clusterGui->addMinimalSlider("EDGE DECAY", 0.01, 0.9   , &edgeDecayRate);
     clusterGui->addSpacer();
     clusterGui->addMinimalSlider("TWEET HUE", 0.0, 1.0,&tweetModifier.r);
     clusterGui->addMinimalSlider("TWEET SAT", 0.0, 1.0, &tweetModifier.g);
@@ -99,6 +116,16 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addMinimalSlider("BASE SAT", 0.0, 1.0, &baseModifier.g);
     clusterGui->addMinimalSlider("BASE BRI", 0.0, 1.0, &baseModifier.b);
     clusterGui->addMinimalSlider("BASE ALPHA", 0.0, 1.0, &baseAlpha);
+    clusterGui->addSpacer();
+    clusterGui->addMinimalSlider("NODE M HUE", 0.0, 1.0, &nodeMidpointModifier.r);
+    clusterGui->addMinimalSlider("NODE M SAT", 0.0, 1.0, &nodeMidpointModifier.g);
+    clusterGui->addMinimalSlider("NODE M BRI", 0.0, 1.0, &nodeMidpointModifier.b);
+    clusterGui->addMinimalSlider("NODE M ALPHA", 0.0, 1.0, &nodeMidpointModifier.a);
+    clusterGui->addSpacer();
+    clusterGui->addMinimalSlider("NODE AM HUE", 0.0, 1.0, &nodeActiveMidpointModifier.r);
+    clusterGui->addMinimalSlider("NODE AM SAT", 0.0, 1.0, &nodeActiveMidpointModifier.g);
+    clusterGui->addMinimalSlider("NODE AM BRI", 0.0, 1.0, &nodeActiveMidpointModifier.b);
+    clusterGui->addMinimalSlider("NODE AM ALPHA", 0.0, 1.0, &nodeActiveMidpointModifier.a);
     clusterGui->addSpacer();
     clusterGui->addMinimalSlider("NODE HUE", 0.0, 1.0, &nodeModifier.r);
     clusterGui->addMinimalSlider("NODE SAT", 0.0, 1.0, &nodeModifier.g);
@@ -115,15 +142,34 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     clusterGui->addButton("RELOAD MESH", false);
     clusterGui->addSpacer();
     clusterGui->addToggle("ROTATE", &rotateModel);
-    clusterGui->addSpacer();
-    clusterGui->addMinimalSlider("NODEM HUE", 0.0, 1.0, &nodeMidpointModifier.r);
-    clusterGui->addMinimalSlider("NODEM SAT", 0.0, 1.0, &nodeMidpointModifier.g);
-    clusterGui->addMinimalSlider("NODEM BRI", 0.0, 1.0, &nodeMidpointModifier.b);
-    clusterGui->addMinimalSlider("NODEM ALPHA", 0.0, 1.0, &nodeMidpointModifier.a);
     
 	ofAddListener(clusterGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
 	guis.push_back(clusterGui);
 	guimap[clusterGui->getName()] = clusterGui;
+    
+    textGui = new ofxUISuperCanvas("TEXT PARAMS", gui);
+    textGui->copyCanvasStyle(gui);
+	textGui->copyCanvasProperties(gui);
+    textGui->setName("text");
+    textGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    textGui->addToggle("RENDER TEXT", &bRenderText);
+    textGui->addSpacer();
+    textGui->addMinimalSlider("TEXT HUE", 0.0, 1, &textColorModifier.r);
+    textGui->addMinimalSlider("TEXT SAT", 0.0, 1, &textColorModifier.g);
+    textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
+    textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
+    textGui->addSpacer();
+    
+    vector<string> radioBillboard;
+    radioBillboard.push_back("BILLBOARD SCREEN");
+    radioBillboard.push_back("BILLBOARD NODES");
+    radioBillboard.push_back("BILLBOARD ORIGIN");
+    textGui->addRadio("BILLBOARD", radioBillboard);
+    
+    
+    ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
+	guis.push_back(textGui);
+	guimap[textGui->getName()] = textGui;
 }
 
 void CloudsVisualSystemTwitter::loadJSONData(){
@@ -275,9 +321,10 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	}
 }
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
-
+    activeTweeters.clear();
     for(int i=0; i<tweeters.size(); i++){
         if(tweeters[i].hasTweetOnDate(dateIndex[index])){
+            activeTweeters.push_back(tweeters[i]);
             vector<Tweet> tweetsOnDate = tweeters[i].getTweetsByDate(dateIndex[index]);
             
             for(int k=0; k<tweetsOnDate.size();k ++){
@@ -292,18 +339,18 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
                             edgeMesh.setColor(currentIndeces.second, tweetColor);
-                            int ind = MAX(currentIndeces.first,currentIndeces.second);
+                            int ind = MIN(currentIndeces.first,currentIndeces.second);
                             ind++;
-                            edgeMesh.setColor(ind, nodeMidpointColor);
+                            edgeMesh.setColor(ind, nodeActiveMidpointColor);
                         }
                         else if(lineIndexPairs.find(make_pair(t.name,tweeters[i].name)) != lineIndexPairs.end()){
                             
                             pair<int, int> currentIndeces = lineIndexPairs[make_pair(tweeters[i].name, t.name)];
                             edgeMesh.setColor(currentIndeces.first, tweetColor);
                             edgeMesh.setColor(currentIndeces.second, tweetColor);
-                            int ind = MAX(currentIndeces.first,currentIndeces.second);
+                            int ind = MIN(currentIndeces.first,currentIndeces.second);
                             ind++;
-                            edgeMesh.setColor(ind, nodeMidpointColor);
+                            edgeMesh.setColor(ind, nodeActiveMidpointColor);
                         }
                         else{
                         }
@@ -314,7 +361,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         }
     }
     
-
+    
     
 }
 void CloudsVisualSystemTwitter::updateMesh(){
@@ -340,20 +387,24 @@ void CloudsVisualSystemTwitter::updateMesh(){
         ofFloatColor c = edgeMesh.getColor(i);
         
         if(edgeMesh.getNormal(i).y == 1){
-//            cout<<"here"<<endl;
-            float h = ofLerp(c.getHue(), nodeMidpointColor.getHue(), edgeDecayRate);
-            float s = ofLerp(c.getSaturation(), nodeMidpointColor.getSaturation(), edgeDecayRate);
-            float b = ofLerp(c.getBrightness() , nodeMidpointColor.getBrightness(),edgeDecayRate);
-            float a =ofLerp(c.a , nodeMidpointColor.a,edgeDecayRate);
-            
-            c.setHsb(h, s, b);
-            c.a = a;
-            
-            if(c == ofFloatColor::black){
-                edgeMesh.setColor(i, baseColor);
+            if(c != nodeMidpointColor){
+                float h = ofLerp(c.getHue(), nodeMidpointColor.getHue(), edgeDecayRate);
+                float s = ofLerp(c.getSaturation(), nodeMidpointColor.getSaturation(), edgeDecayRate);
+                float b = ofLerp(c.getBrightness() , nodeMidpointColor.getBrightness(),edgeDecayRate);
+                float a =ofLerp(c.a , nodeMidpointColor.a,edgeDecayRate);
+                
+                c.setHsb(h, s, b);
+                c.a = a;
+                
+                if(c == ofFloatColor::black){
+                    edgeMesh.setColor(i, nodeMidpointColor);
+                }
+                else{
+                    edgeMesh.setColor(i,c);
+                }
             }
             else{
-                edgeMesh.setColor(i,c);
+                edgeMesh.setColor(i,nodeMidpointColor);
             }
         }
         else{
@@ -406,31 +457,28 @@ void CloudsVisualSystemTwitter::loadMesh(){
                 tweeters[j].edgeVertexIndex = currentIndex;
                 currentIndex++;
                 
+                //adding midpoint
+                float x = ofLerp(tweeters[j].position.x, t.position.x, 0.5);
+                float y = ofLerp(tweeters[j].position.y, t.position.y, 0.5);
+                float z = ofLerp(tweeters[j].position.z, t.position.z, 0.5);
+                edgeMesh.addVertex(ofVec3f(x,y,z));
+                edgeMesh.addNormal(ofVec3f(0,1,0));
+                edgeMesh.addColor(nodeMidpointColor);
+                currentIndex++;
+                
                 edgeMesh.addVertex(t.position);
                 edgeMesh.addNormal(ofVec3f(0,0,0));
                 edgeMesh.addColor(baseColor);
                 t.edgeVertexIndex = currentIndex;
                 
                 links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-                lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-1, currentIndex);
-                currentIndex++;
-                
-                //adding midpoint
-                float x = ofLerp(tweeters[j].position.x, t.position.x, 0.5);
-                float y = ofLerp(tweeters[j].position.y, t.position.y, 0.5);
-                float z = ofLerp(tweeters[j].position.z, t.position.z, 0.5);
-                
-                cout<<x<<" , "<<y<<" , "<<z<<endl;
-                edgeMesh.addVertex(ofVec3f(x,y,z));
-                edgeMesh.addNormal(ofVec3f(0,1,0));
-                edgeMesh.addColor(nodeMidpointColor);
+                lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-2, currentIndex);
                 currentIndex++;
                 
             }
             else{
-                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
+                //                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
             }
-            
         }
     }
     edgeMesh.setMode(OF_PRIMITIVE_LINES);
@@ -568,8 +616,22 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
     
-    if(e.getName() == "LOAD GRAPH"){
-        cout<<"Im in load images"<<endl;
+    if (e.widget->getName() == "BILLBOARD SCREEN") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            billboardType = 0;
+        }
+    }
+    else if (e.widget->getName() == "BILLBOARD NODES") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            billboardType = 1;
+        }
+    }
+    else if (e.widget->getName() == "BILLBOARD ORIGIN") {
+        if (((ofxUIToggle *)e.widget)->getValue()) {
+            billboardType = 2;
+        }
+    }
+    else if(e.getName() == "LOAD GRAPH"){
         ofxUIButton* t  = (ofxUIButton*) e.widget;
         if (t->getValue()) {
             ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
@@ -591,8 +653,11 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     tweetColor.a =tweetAlpha;
     nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
     nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
-    nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeMidpointModifier.a);
+    nodeMidpointColor.setHsb(nodeMidpointModifier.r, nodeMidpointModifier.g, nodeMidpointModifier.g,nodeActiveMidpointModifier.a);
+    nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
+    textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
     reloadMeshColor();
+
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
@@ -661,7 +726,6 @@ void CloudsVisualSystemTwitter::selfSceneTransformation(){
 //normal update call
 void CloudsVisualSystemTwitter::selfUpdate()
 {
-    
     if(  ofGetFrameNum() %refreshRate <1){
         currentDateIndex--;
         if (currentDateIndex <= 0) {
@@ -670,40 +734,47 @@ void CloudsVisualSystemTwitter::selfUpdate()
         updateMeshFromTweets(currentDateIndex);
     }
     updateMesh();
-    
 }
 
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemTwitter::selfDraw()
 {
-    
-    glDisable(GL_DEPTH_TEST);
+    ofPushStyle();
+    ofPushMatrix();
     ofEnableBlendMode(OF_BLENDMODE_ADD  );
     ofSetBackgroundColor(0,0,0);
+    glDisable(GL_DEPTH_TEST);
     ofScale(10, 10);
     
-    glPointSize(1);
     
-    nodeMesh.draw();
-    edgeMesh.draw();
+    if(bRenderMesh){
+        glPointSize(1);
+        nodeMesh.draw();
+        edgeMesh.draw();
+        
+    }
+
+    if(bRenderText){
+        for(int i=0; i<activeTweeters.size(); i++){
+            drawText(activeTweeters[i].name,activeTweeters[i].position);
+        }
+    }
+    ofPopMatrix();    
+    ofPopStyle();
     
 }
 
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-    
-    
+
 }
 
-//--------------------------------------------------------------
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemTwitter::selfDrawBackground()
 {
-    ofSetColor(ofColor::whiteSmoke);
-    string cur = getDateAsString( dateIndex[currentDateIndex]);
-    ofDrawBitmapString(cur , 0,0);
+    
 }
 
 // this is called when your system is no longer drawing.
@@ -729,18 +800,34 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
         }
     }
     if(args.key == 'j'){
-        cout<<baseColor.getHue()<<" , "<<baseColor.getSaturation()<<" , "<<baseColor.getBrightness()<<endl;
+        cout<<textColor.getHue()<<" , "<<textColor.getSaturation()<<" , "<<textColor.getBrightness()<<endl;
     }
     
 }
-void CloudsVisualSystemTwitter::drawObject(const ofVec3f& pos)
-{
-    
-    ofxBillboardBeginCylindrical(getCameraPosition(), pos);
-    ofSetColor(ofColor::whiteSmoke);
-    string cur = getDateAsString( dateIndex[currentDateIndex]);
-    ofDrawBitmapString(cur , 0,0);
-    ofxBillboardEnd();
+void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
+    ofPushMatrix();
+    {
+        
+        if (billboardType == 0) {  // SCREEN
+            ofxBillboardBeginSphericalCheat(pos);
+        }
+        else if(billboardType == 1){
+            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
+        }
+        else {
+            // ORIGIN
+            ofxBillboardBeginSphericalObvious(getCameraPosition(), pos);
+        }
+        ofPushStyle();
+        ofSetColor(textColor );
+        ofScale(0.01,-0.01);
+        ofTranslate(pos.x,pos.y,pos.z);
+        font.drawString(ofToUpper(text),0,0);
+        ofPopStyle();
+        
+        ofxBillboardEnd();
+    }
+    ofPopMatrix();
 }
 
 void CloudsVisualSystemTwitter::selfKeyReleased(ofKeyEventArgs & args){

@@ -49,6 +49,7 @@ git clone https://github.com/TonicAudio/ofxTonic
 git clone https://github.com/neilmendoza/ofxPtf
 git clone https://github.com/neilmendoza/ofxNearestNeighbour
 git clone https://github.com/neilmendoza/ofxPostProcessing
+git clone https://github.com/kylemcdonald/ofxCv
 
 cd ofxPostProcessing
 git checkout -b develop --track origin/develop
@@ -80,7 +81,7 @@ git checkout -b develop --track origin/develop
 git pull origin develop
 cd ..
 
-${PREFIX}obviousjim/ofxCv
+
 ${PREFIX}obviousjim/ofxKinect
 ${PREFIX}obviousjim/ofxOpenNI
 ${PREFIX}obviousjim/ofxMSATimer

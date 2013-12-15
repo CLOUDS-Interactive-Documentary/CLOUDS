@@ -30,9 +30,10 @@
 	[clipTable reloadData];
     [interventionTextBox setTarget:self];   
 	
-//	rgbdVisualSystem.setRenderer(renderer);
 	rgbdVisualSystem.setup();
-//	renderer.setShaderPath( renderer.G() + "shaders/rgbdcombined");
+	rgbdVisualSystem.setDrawToScreen(false);
+	hud.setup();
+
 
 	rgbdVisualSystem.playSystem();
 #ifdef OCULUS_RIFT
@@ -42,14 +43,17 @@
 #endif
 	srand(ofGetSeconds());
 	
+	
+	
 	[self loadClip: parser.getRandomClip(true, false)];
 	
 }
 
 - (void)update
 {
-//	renderer.update();
+	
 	if(rgbdVisualSystem.getRGBDVideoPlayer().isDone()){
+		cout << "replaying video!" << endl;
 		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().setPosition(0);
 		rgbdVisualSystem.getRGBDVideoPlayer().getPlayer().play();
 	}
@@ -57,7 +61,9 @@
 
 - (void)draw
 {
-
+	rgbdVisualSystem.selfPostDraw();
+	
+	hud.draw();
 }
 
 - (void) loadClipFromTable:(id)sender

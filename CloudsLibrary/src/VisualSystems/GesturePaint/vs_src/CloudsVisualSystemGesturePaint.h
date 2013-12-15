@@ -106,17 +106,21 @@ protected:
 	
 	ofxUISuperCanvas* customGui;
 
-	ofFbo src,dst;
+	ofFbo watersrc,waterdst;
+	ofFbo canvassrc,canvasdst;
 	
 	void reloadShader();
 	ofShader vblurShader;
 	ofShader hblurShader;
-	ofImage brushImage;
-	ofMesh srcMesh;
-	vector<ofVec2f> depositPoints;
+	ofShader paperMixShader;
 	
-	bool videoLoaded;
-	ofImage someImage;
-	ofShader pointcloudShader;
-	ofVboMesh simplePointcloud;
+	ofImage brushImage;
+	ofImage paperImage;
+	ofMesh canvasMesh;
+	ofMesh waterMesh;
+	ofRectangle paperRect;
+	vector<ofVec2f> depositPoints;
+
+	void reallocateFramebuffers();
+	void meshFromFbo(ofMesh& m, ofFbo& f);
 };

@@ -14,7 +14,6 @@
 		282FEBF9182FFE6600519D79 /* JellyCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBE1182FFE6600519D79 /* JellyCreature.cpp */; };
 		282FEBFA182FFE6600519D79 /* ModelCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 282FEBE3182FFE6600519D79 /* ModelCreature.cpp */; };
 		284AE5F31859D3EB00780DBB /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5EC1859D3EB00780DBB /* CloudsInput.cpp */; };
-		284AE5F41859D3EB00780DBB /* CloudsInputKinectOSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5EF1859D3EB00780DBB /* CloudsInputKinectOSC.cpp */; };
 		284AE5F51859D3EB00780DBB /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5F11859D3EB00780DBB /* CloudsInputMouse.cpp */; };
 		284AE6201859D42200780DBB /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5FB1859D42200780DBB /* ofxOscBundle.cpp */; };
 		284AE6211859D42200780DBB /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 284AE5FD1859D42200780DBB /* ofxOscMessage.cpp */; };
@@ -205,8 +204,6 @@
 		284AE5EC1859D3EB00780DBB /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInput.cpp; path = src/Input/CloudsInput.cpp; sourceTree = "<group>"; };
 		284AE5ED1859D3EB00780DBB /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInput.h; path = src/Input/CloudsInput.h; sourceTree = "<group>"; };
 		284AE5EE1859D3EB00780DBB /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputEvents.h; path = src/Input/CloudsInputEvents.h; sourceTree = "<group>"; };
-		284AE5EF1859D3EB00780DBB /* CloudsInputKinectOSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputKinectOSC.cpp; path = src/Input/CloudsInputKinectOSC.cpp; sourceTree = "<group>"; };
-		284AE5F01859D3EB00780DBB /* CloudsInputKinectOSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputKinectOSC.h; path = src/Input/CloudsInputKinectOSC.h; sourceTree = "<group>"; };
 		284AE5F11859D3EB00780DBB /* CloudsInputMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsInputMouse.cpp; path = src/Input/CloudsInputMouse.cpp; sourceTree = "<group>"; };
 		284AE5F21859D3EB00780DBB /* CloudsInputMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsInputMouse.h; path = src/Input/CloudsInputMouse.h; sourceTree = "<group>"; };
 		284AE5F91859D42200780DBB /* ofxOsc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOsc.h; sourceTree = "<group>"; };
@@ -671,8 +668,6 @@
 				284AE5EC1859D3EB00780DBB /* CloudsInput.cpp */,
 				284AE5ED1859D3EB00780DBB /* CloudsInput.h */,
 				284AE5EE1859D3EB00780DBB /* CloudsInputEvents.h */,
-				284AE5EF1859D3EB00780DBB /* CloudsInputKinectOSC.cpp */,
-				284AE5F01859D3EB00780DBB /* CloudsInputKinectOSC.h */,
 				284AE5F11859D3EB00780DBB /* CloudsInputMouse.cpp */,
 				284AE5F21859D3EB00780DBB /* CloudsInputMouse.h */,
 			);
@@ -1687,8 +1682,6 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "Swim" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -1781,7 +1774,6 @@
 				E7CF78441753FEA1006B7D41 /* ofxHotKeys_impl_linux.cpp in Sources */,
 				E7CF78451753FEA1006B7D41 /* ofxHotKeys_impl_mac.mm in Sources */,
 				E7CF78461753FEA1006B7D41 /* ofxHotKeys_impl_win.cpp in Sources */,
-				284AE5F41859D3EB00780DBB /* CloudsInputKinectOSC.cpp in Sources */,
 				E7CF78471753FEA1006B7D41 /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7CF78481753FEA1006B7D41 /* ofxTimeline.cpp in Sources */,
 				E7CF78491753FEA1006B7D41 /* ofxTLAudioTrack.cpp in Sources */,
