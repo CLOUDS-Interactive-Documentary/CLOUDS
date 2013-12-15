@@ -91,6 +91,7 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
+	hud.update();
 //	ofShowCursor();
 	//keepin it real
 //	storyEngine.maxTimesOnTopic = floor(storyEngine.maxTimesOnTopic);
@@ -98,7 +99,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+
 	hud.draw();
 //    if(currentAct != NULL){
 //		currentAct->drawDebug();
@@ -125,10 +126,15 @@ void testApp::guiEvent(ofxUIEventArgs &e)
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     
+	if(key == ' '){
+		hud.animateOn(CLOUDS_HUD_QUESTION);
+	}
+	
     if(key == 'h'){
 		hud.toggleGuis();
 //        storyEngine.toggleGuis();
     }
+	
     else if(key =='f'){
         ofToggleFullscreen();
     }

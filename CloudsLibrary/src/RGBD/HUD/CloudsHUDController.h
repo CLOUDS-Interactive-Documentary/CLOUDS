@@ -11,12 +11,14 @@
 #include "ofMain.h"
 #include "ofxSvg.h"
 #include "ofxUI.h"
+#include "CloudsHUDLayer.h"
 
-typedef struct {
-	ofxSVG svg;
-	float startTime;
-	float duration;
-} SVGLayer;
+typedef enum {
+	CLOUDS_HUD_FULL = 0,
+	CLOUDS_HUD_QUESTION,
+	CLOUDS_HUD_LOWER_THIRD,
+	CLOUDS_HUD_PROJECT_EXAMPLE
+} CloudsHUDLayerSet;
 
 class CloudsHUDController {
 public:
@@ -24,16 +26,31 @@ public:
 	CloudsHUDController();
 	
 	void setup();
+	void update();
 	void draw();
 
-	ofImage testImage;
-	SVGLayer testLayer;
+	void buildLayerSets();
 	
+	void animateOn(CloudsHUDLayerSet layer = CLOUDS_HUD_FULL);
+	void animateOff();
+	
+	ofImage testImage;
+//	SVGLayer testLayer;
+	
+	
+	//	vector<SVGLayer> layers;
+	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
+	vector<CloudsHUDLayer*> allLayers;
 	
 	void saveGuiSettings();
 	void toggleGuis();
+	
 	ofxUISuperCanvas *hudGui;
 
+  protected:
+	void drawLayer(CloudsHUDLayerSet layer);
+	
 };
+
 
 
