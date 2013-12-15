@@ -79,6 +79,13 @@
 		4695E2CA17513D99003001E2 /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4695E2C817513D99003001E2 /* ofxCameraSaveLoad.cpp */; };
 		504016B4185D490D0039386C /* ofxSimpleSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016AF185D490D0039386C /* ofxSimpleSpline.cpp */; };
 		504016BE185D4BB10039386C /* CloudsVisualSystemWormHole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016BC185D4BB10039386C /* CloudsVisualSystemWormHole.cpp */; };
+		504016C2185D5FB90039386C /* CloudsPathCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504016C0185D5FB90039386C /* CloudsPathCamera.cpp */; };
+		504016C6185D72540039386C /* normalShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 504016C4185D72540039386C /* normalShader.frag */; };
+		504016C7185D72540039386C /* normalShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 504016C5185D72540039386C /* normalShader.vert */; };
+		504016CA185D72960039386C /* facingRatio.frag in Sources */ = {isa = PBXBuildFile; fileRef = 504016C8185D72960039386C /* facingRatio.frag */; };
+		504016CB185D72960039386C /* facingRatio.vert in Sources */ = {isa = PBXBuildFile; fileRef = 504016C9185D72960039386C /* facingRatio.vert */; };
+		504016CE185D81BF0039386C /* XRayShader.frag in Sources */ = {isa = PBXBuildFile; fileRef = 504016CC185D81BF0039386C /* XRayShader.frag */; };
+		504016CF185D81BF0039386C /* XRayShader.vert in Sources */ = {isa = PBXBuildFile; fileRef = 504016CD185D81BF0039386C /* XRayShader.vert */; };
 		5092B702185CF6CC00AEB8F3 /* CloudsInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5092B6FB185CF6CC00AEB8F3 /* CloudsInput.cpp */; };
 		5092B704185CF6CC00AEB8F3 /* CloudsInputMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5092B700185CF6CC00AEB8F3 /* CloudsInputMouse.cpp */; };
 		5092B720185D461400AEB8F3 /* glm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5092B718185D461400AEB8F3 /* glm.c */; };
@@ -490,6 +497,14 @@
 		504016B0185D490D0039386C /* ofxSimpleSpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSpline.h; sourceTree = "<group>"; };
 		504016BC185D4BB10039386C /* CloudsVisualSystemWormHole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsVisualSystemWormHole.cpp; path = vs_src/CloudsVisualSystemWormHole.cpp; sourceTree = "<group>"; };
 		504016BD185D4BB10039386C /* CloudsVisualSystemWormHole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsVisualSystemWormHole.h; path = vs_src/CloudsVisualSystemWormHole.h; sourceTree = "<group>"; };
+		504016C0185D5FB90039386C /* CloudsPathCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsPathCamera.cpp; path = vs_src/CloudsPathCamera.cpp; sourceTree = "<group>"; };
+		504016C1185D5FB90039386C /* CloudsPathCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsPathCamera.h; path = vs_src/CloudsPathCamera.h; sourceTree = "<group>"; };
+		504016C4185D72540039386C /* normalShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = normalShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		504016C5185D72540039386C /* normalShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = normalShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		504016C8185D72960039386C /* facingRatio.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		504016C9185D72960039386C /* facingRatio.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = facingRatio.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		504016CC185D81BF0039386C /* XRayShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XRayShader.frag; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		504016CD185D81BF0039386C /* XRayShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XRayShader.vert; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5092B6FB185CF6CC00AEB8F3 /* CloudsInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsInput.cpp; sourceTree = "<group>"; };
 		5092B6FC185CF6CC00AEB8F3 /* CloudsInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInput.h; sourceTree = "<group>"; };
 		5092B6FD185CF6CC00AEB8F3 /* CloudsInputEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsInputEvents.h; sourceTree = "<group>"; };
@@ -1156,6 +1171,20 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		504016C3185D72540039386C /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				504016CC185D81BF0039386C /* XRayShader.frag */,
+				504016CD185D81BF0039386C /* XRayShader.vert */,
+				504016C4185D72540039386C /* normalShader.frag */,
+				504016C5185D72540039386C /* normalShader.vert */,
+				504016C8185D72960039386C /* facingRatio.frag */,
+				504016C9185D72960039386C /* facingRatio.vert */,
+			);
+			name = shaders;
+			path = ../CloudsData/visualsystems/WormHole/shaders;
+			sourceTree = "<group>";
+		};
 		5092B6FA185CF6CC00AEB8F3 /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -1279,6 +1308,7 @@
 			children = (
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				504016C3185D72540039386C /* shaders */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
@@ -1333,6 +1363,8 @@
 			children = (
 				504016BC185D4BB10039386C /* CloudsVisualSystemWormHole.cpp */,
 				504016BD185D4BB10039386C /* CloudsVisualSystemWormHole.h */,
+				504016C0185D5FB90039386C /* CloudsPathCamera.cpp */,
+				504016C1185D5FB90039386C /* CloudsPathCamera.h */,
 			);
 			name = vs_src;
 			path = ../WormHole;
@@ -1608,6 +1640,13 @@
 				5092B721185D461400AEB8F3 /* ofxObjLoader.cpp in Sources */,
 				504016B4185D490D0039386C /* ofxSimpleSpline.cpp in Sources */,
 				504016BE185D4BB10039386C /* CloudsVisualSystemWormHole.cpp in Sources */,
+				504016C2185D5FB90039386C /* CloudsPathCamera.cpp in Sources */,
+				504016C6185D72540039386C /* normalShader.frag in Sources */,
+				504016C7185D72540039386C /* normalShader.vert in Sources */,
+				504016CA185D72960039386C /* facingRatio.frag in Sources */,
+				504016CB185D72960039386C /* facingRatio.vert in Sources */,
+				504016CE185D81BF0039386C /* XRayShader.frag in Sources */,
+				504016CF185D81BF0039386C /* XRayShader.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

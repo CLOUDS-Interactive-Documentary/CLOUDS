@@ -12,6 +12,7 @@
 
 #include "CloudsVisualSystem.h"
 #include "ofxSimpleSpline.h"
+#include "CloudsPathCamera.h"
 #include "ofxObjLoader.h"
 
 //TODO: rename this to your own visual system
@@ -100,7 +101,14 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 
 protected:
 	
+	void loadShaders();
+	void loadShader( string shaderName );
 	void loadMesh(string name);
+	
+	string vec3ToString( ofVec3f v, int precision );
+	ofVec3f normalFrom3Points(ofVec3f p0, ofVec3f p1, ofVec3f p2);
+	void smoothMesh( ofMesh& facetedMesh, ofMesh& targetMesh, int precision = 3);
+	void facetMesh( ofMesh& smoothedMesh, ofMesh& targetMesh );
 	
 	
 	ofxUISuperCanvas* customGui;
@@ -113,6 +121,7 @@ protected:
 	ofShader facingRatio;
 	
 	map<string, ofShader*> shaderMap;
+	map<string, ofBlendMode> blendModes;
 	
 	ofShader* currentShader;
 	
@@ -120,11 +129,28 @@ protected:
 	ofVboMesh mesh;
 	string modelPath;
 	string currentMeshName;
+	bool bFacetMesh, bSmoothMesh, bMeshHasBeenFaceted, bMeshHasBeenSmoothed;
 	
 	vector<string> meshNames;
 	vector<string> cameraPathNames;
 		
 	float fogDist, fogExpo;
 	ofFloatColor fogColor;
-
+	
+	ofVec3f lightPos;
+	ofFloatColor lightColor;
+	float lightFallOff;
+	
+	string cameraPathPath;
+	bool bUseCameraPath;
+	float cameraPathPosition;
+	CloudsPathCamera pathCamera;
+	
+	float sampleTime, lastTime, speed;
+	float shininess;
+	ofBlendMode currentBlendMode;
+	bool bDepthTest;
+	
+	ofFloatColor c1, c2;
+	
 };
