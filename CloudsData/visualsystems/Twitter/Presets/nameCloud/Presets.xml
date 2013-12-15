@@ -37,11 +37,26 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>textDebug</Name>
+    <Name>nameCloud</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>nameLinks</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>nameCloud</Name>
-    <Value>1</Value>
+    <Name>socialNetwork</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>socialNetworking2</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>textDebug</Name>
+    <Value>0</Value>
 </Widget>

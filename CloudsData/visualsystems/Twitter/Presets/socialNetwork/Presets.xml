@@ -47,11 +47,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>textDebug</Name>
+    <Name>socialNetwork</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>socialNetworking2</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>socialNetwork</Name>
-    <Value>1</Value>
+    <Name>textDebug</Name>
+    <Value>0</Value>
 </Widget>

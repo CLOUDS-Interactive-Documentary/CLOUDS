@@ -17,6 +17,8 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
+    
+
     nodeModifier.r = 1.0;
     nodeModifier.g = 0.65;
     nodeModifier.b = 0.54;
@@ -156,9 +158,9 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addMinimalSlider("TEXT BRI", 0.0, 1, &textColorModifier.b);
     textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
     textGui->addSpacer();
-    textGui->addMinimalSlider("STRING WIDTH", 1, 100, &stringWidth);
+    textGui->addMinimalSlider("STRING WIDTH", 1, 1000, &stringWidth);
     textGui->addMinimalSlider("SET SIZE", 0.1, 10, &fontSize);
-
+    
     
     
     ofAddListener(textGui->newGUIEvent, this, &CloudsVisualSystemTwitter::selfGuiEvent);
@@ -193,6 +195,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                     
                     vector<string> names = ofSplitString(result["name"].asString(), ".")    ;
                     cur.name = "@" + names[0];
+//                    cout<<cur.name<<endl;
                     cur.ID = i;
                     
                     for(int j =0; j<tweets.size(); j ++){
@@ -213,6 +216,7 @@ void CloudsVisualSystemTwitter::loadJSONData(){
                             for(int k=0; k<users.size(); k++){
                                 
                                 if( !ofContains(cur.userLinks, users[k].asString())){
+                                    cout<<cur.name<<" : "<<users[k].asString()<<endl;
                                     t.mentionedUsers.push_back(users[k].asString());
                                     cur.userLinks.push_back(users[k].asString());
                                 }
@@ -266,6 +270,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 	while(!pajekFile.isLastLine()){
 		string line = pajekFile.getNextLine();
 		
+//        cout<<line<<endl;
 		if(line == "" || line.at(0) == '%'){
 			continue;
 		}
@@ -300,22 +305,24 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
 			vector<string> components = ofSplitString(line, " ");
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
-            
             Tweeter& tweeter = getTweeterByID(tweeters, id);
-            for(int i =1; i< components.size()-1; i++){
-                if(tweeter.ID != ofToInt(components[i]) ){
-                    tweeter.linksById.push_back(ofToInt(components[i]));
+//            if(tweeter.ID != -1){
+                for(int i =1; i< components.size()-1; i++){
+                    if(tweeter.ID != ofToInt(components[i]) ){
+                        tweeter.linksById.push_back(ofToInt(components[i]));
+                    }
+                    else{
+                        cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
+                    }
                 }
-                else{
-                    cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
-                }
-            }
+//            }
+
         }
         
 	}
 }
 void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
-
+    
     activeTweeters.clear();
     
     for(int i=0; i<tweeters.size(); i++){
@@ -357,7 +364,7 @@ void CloudsVisualSystemTwitter::updateMeshFromTweets(int index){
         }
     }
     
-
+    
     
     
     
@@ -447,36 +454,40 @@ void CloudsVisualSystemTwitter::loadMesh(){
         
         for (int k=0; k<tweeters[j].linksById.size(); k++) {
             Tweeter& t  = getTweeterByID(tweeters, tweeters[j].linksById[k]);
-            if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
-               lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
-                edgeMesh.addVertex(tweeters[j].position);
-                edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(baseColor);
-                tweeters[j].edgeVertexIndex = currentIndex;
-                currentIndex++;
-                
-                //adding midpoint
-                float x = ofLerp(tweeters[j].position.x, t.position.x, 0.5);
-                float y = ofLerp(tweeters[j].position.y, t.position.y, 0.5);
-                float z = ofLerp(tweeters[j].position.z, t.position.z, 0.5);
-                edgeMesh.addVertex(ofVec3f(x,y,z));
-                edgeMesh.addNormal(ofVec3f(0,1,0));
-                edgeMesh.addColor(nodeMidpointColor);
-                currentIndex++;
-                
-                edgeMesh.addVertex(t.position);
-                edgeMesh.addNormal(ofVec3f(0,0,0));
-                edgeMesh.addColor(baseColor);
-                t.edgeVertexIndex = currentIndex;
-                
-                links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
-                lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-2, currentIndex);
-                currentIndex++;
-                
+//            cout<<tweeters[j].name << " : "<<t.name<<endl;
+            if(t.ID != -1){
+                if(lineIndexPairs.find(make_pair(tweeters[j].name, t.name)) == lineIndexPairs.end() &&
+                   lineIndexPairs.find(make_pair(t.name,tweeters[j].name)) == lineIndexPairs.end() ){
+                    edgeMesh.addVertex(tweeters[j].position);
+                    edgeMesh.addNormal(ofVec3f(0,0,0));
+                    edgeMesh.addColor(baseColor);
+                    tweeters[j].edgeVertexIndex = currentIndex;
+                    currentIndex++;
+                    
+                    //adding midpoint
+                    float x = ofLerp(tweeters[j].position.x, t.position.x, 0.5);
+                    float y = ofLerp(tweeters[j].position.y, t.position.y, 0.5);
+                    float z = ofLerp(tweeters[j].position.z, t.position.z, 0.5);
+                    edgeMesh.addVertex(ofVec3f(x,y,z));
+                    edgeMesh.addNormal(ofVec3f(0,1,0));
+                    edgeMesh.addColor(nodeMidpointColor);
+                    currentIndex++;
+                    
+                    edgeMesh.addVertex(t.position);
+                    edgeMesh.addNormal(ofVec3f(0,0,0));
+                    edgeMesh.addColor(baseColor);
+                    t.edgeVertexIndex = currentIndex;
+                    
+                    links.insert(make_pair(tweeters[j].ID, tweeters[j].linksById[k]));
+                    lineIndexPairs[make_pair(tweeters[j].name, t.name) ] = make_pair(currentIndex-2, currentIndex);
+                    currentIndex++;
+                    
+                }
+                else{
+                    //                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
+                }
             }
-            else{
-                //                cout<<"alread a link between "<< tweeters[j].name << " and "<<t.name<<endl;
-            }
+
         }
     }
     edgeMesh.setMode(OF_PRIMITIVE_LINES);
@@ -604,6 +615,8 @@ Tweeter& CloudsVisualSystemTwitter::getTweeterByID(vector<Tweeter>& tweeters, in
             return tweeters[i];
         }
     }
+    Tweeter t  = Tweeter();
+    return t;
 }
 
 void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
@@ -614,22 +627,20 @@ void CloudsVisualSystemTwitter::CompareDates(Date d1,Date d2){
 void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 {
     
-
+    
     if(e.getName() == "LOAD GRAPH"){
         ofxUIButton* t  = (ofxUIButton*) e.widget;
         if (t->getValue()) {
             ofFileDialogResult result = ofSystemLoadDialog("Load Images From Folder", false, getVisualSystemDataPath() +"graphs/");
-            
             if(result.bSuccess && result.fileName.length())
             {
                 loadGraphFromPath(result.filePath);
-            }
+            }   
         }
     }
     else if (e.getName() == "RELOAD MESH")
     {
         initSystem(currentMeshFilePath);
-        
     }
     baseColor.setHsb(baseModifier.r, baseModifier.g, baseModifier.b);
     baseColor.a = baseAlpha;
@@ -641,14 +652,14 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
     textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
     
-//    font.setLineLength(stringWidth);
-    font.setLineSpacing(stringWidth);
     font.setSize(fontSize);
+    font.setLineLength(stringWidth);
     reloadMeshColor();
     
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
+
     currentMeshFilePath = filePath;
     clearData();
     loadJSONData();
@@ -658,6 +669,13 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     currentDateIndex = dateIndex.size() -1;
     updateMeshFromTweets(currentDateIndex);
     reloadMeshColor();
+    
+}
+
+void CloudsVisualSystemTwitter::createNewGraph(){
+    clearData();
+    loadJSONData();
+    createPajekNetwork();
 }
 
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
@@ -730,7 +748,8 @@ void CloudsVisualSystemTwitter::selfDraw()
 {
     ofPushStyle();
     ofPushMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ADD  );
+
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetBackgroundColor(0,0,0);
     glDisable(GL_DEPTH_TEST);
     ofScale(10, 10);
@@ -793,20 +812,21 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
     
 }
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
+    
     ofPushMatrix();
-    {
-        
-        
-        ofxBillboardBeginSphericalCheat(pos);
-        ofPushStyle();
-        ofSetColor(textColor );
-        ofScale(0.01,-0.01);
-        ofTranslate(pos.x,pos.y,pos.z);
-        font.drawString(ofToUpper(text),0,0);
-        ofPopStyle();
-        
-        ofxBillboardEnd();
-    }
+    
+    ofxBillboardBeginSphericalCheat(pos);
+    
+    ofPushStyle();
+    ofSetColor(textColor);
+
+    ofScale(0.01,-0.01);
+    ofTranslate(pos.x,pos.y,pos.z);
+    font.drawString(ofToUpper(text),0,0);
+    ofPopStyle();
+    
+    ofxBillboardEnd();
+    
     ofPopMatrix();
 }
 

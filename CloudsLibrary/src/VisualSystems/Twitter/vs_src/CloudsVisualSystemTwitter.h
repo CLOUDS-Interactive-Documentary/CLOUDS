@@ -59,6 +59,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void addUsersFromMentions();
     void createPajekNetwork();
     void parseClusterNetwork(string fileName);
+    void createNewGraph();
     
 
     //data stuff
@@ -103,7 +104,6 @@ protected:
         
     
     vector<Tweeter> tweeters;
-//    vector<Tweeter> activeTweeters;
     stringstream ss;
     
     ofVboMesh nodeMesh;
@@ -121,7 +121,6 @@ protected:
     ofxUISuperCanvas* textGui;
 
     vector<Tweeter*> activeTweeters;
-    //bool bTextCloudMode;
 
     float baseHue,baseSat,baseBri,baseAlpha;
     float tweetHue, tweetSat, tweetBri, tweetAlpha;
