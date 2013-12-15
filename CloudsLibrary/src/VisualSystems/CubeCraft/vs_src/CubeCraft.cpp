@@ -268,7 +268,6 @@ void CubeCraft::selfDraw()
 	cubeShader.end();
 	
 	ofPopMatrix();
-<<<<<<< HEAD
 	
 	glDisable(GL_CULL_FACE);
 }
@@ -322,9 +321,8 @@ void CubeCraft::resizeVoxelGrid()
 	vertices.clear();
 	normals.clear();
 	positions.clear();
-=======
+
 	glPopAttrib();
->>>>>>> 9e8377236b50420dd592c946f1f1cd91ec332be0
 }
 
 

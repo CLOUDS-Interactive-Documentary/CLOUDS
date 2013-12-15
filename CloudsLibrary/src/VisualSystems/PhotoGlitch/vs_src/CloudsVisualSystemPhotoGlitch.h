@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "ofxTween.h"
 
 class PGCell
 {
@@ -18,6 +19,7 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
+    ofxTween tweenX, tweenY;
 };
 
 //TODO: rename this to your own visual system
@@ -100,6 +102,10 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     void shuffle();
     void reorder();
+    
+    void generate();
+    void tweenAll();
+    void tween(int i, int j = -1);
 
   protected:
     ofxUISuperCanvas * customGui;
@@ -118,6 +124,9 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     ofImage tex;
     ofVbo vbo;
     
+    int tweenDuration;
+    int tweenDelay;
+    
     float screenSliceWidth;
     float screenSliceHeight;
     float texSliceWidth;
@@ -125,4 +134,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     bool bShouldShuffle;
     bool bShouldReorder;
+    bool bDoPerpendicular;
+    
+    bool bShouldGenerate;
 };
