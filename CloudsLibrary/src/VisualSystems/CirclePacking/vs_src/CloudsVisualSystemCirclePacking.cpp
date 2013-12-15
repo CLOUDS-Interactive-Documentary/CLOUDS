@@ -185,7 +185,7 @@ void CloudsVisualSystemCirclePacking::selfDrawBackground(){
 
 void CloudsVisualSystemCirclePacking::initializeBlanks(){
     
-    for(int i = 0; i < 150; i++){
+    for(int i = 0; i < 200; i++){
 		if(ofRandomuf() > .9){
 			pack.circles.push_back( Circle(ofRandom(ofGetWidth()),
 										   ofRandom(ofGetHeight()),
@@ -247,8 +247,8 @@ void CloudsVisualSystemCirclePacking::selfMousePressed(ofMouseEventArgs& data){
     
     pack.circles.push_back( Circle(data.x,
                                    data.y,
-                                   ofMap(powf(ofRandomuf(), 3.), 0.,1.0,
-                                         30, 60.), "blank") );
+                                   ofMap(powf(ofRandomuf(), 5.), 0. ,1.0,
+                                         10, 80.), "blank") );
 
 	
 }

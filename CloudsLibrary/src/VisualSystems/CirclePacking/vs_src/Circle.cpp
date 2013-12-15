@@ -27,8 +27,8 @@ Circle::Circle(float _x, float _y, float _r, string _label)
 	Font.setLetterSpacing(1.037);
     
     growth = ofRandom(-.05, .05);
-    hue = 130 + ofRandom(80);
-    brightness = 150 + ofRandom(100);
+    hue = 120 + ofRandom(60);
+    brightness = 180 + ofRandom(70);
     
 }
 
@@ -69,7 +69,7 @@ void Circle::draw()
 
 void Circle::drawCompanies()
 {
-    r += (growth + (ofRandom(-.045,.045)));
+    r += (growth + (ofRandom(-.08,.08)));
     
     std::ostringstream ostr; //output string stream
     int num = int(r) * 2;
