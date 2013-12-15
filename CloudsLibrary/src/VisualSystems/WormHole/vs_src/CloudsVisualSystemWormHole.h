@@ -99,9 +99,15 @@ class CloudsVisualSystemWormHole : public CloudsVisualSystem {
 	}
 
 protected:
-
+	
+	void loadMesh(string name);
+	
+	
 	ofxUISuperCanvas* customGui;
-	ofImage someImage;
+	ofxUISuperCanvas* cameraGui;
+	ofxUISuperCanvas* meshGui;
+	ofxUISuperCanvas* shaderGui;
+	ofImage colorSampleImage;
 	
 	ofShader normalShader;
 	ofShader facingRatio;
@@ -110,10 +116,15 @@ protected:
 	
 	ofShader* currentShader;
 	
+	ofNode meshNode;
 	ofVboMesh mesh;
+	string modelPath;
+	string currentMeshName;
 	
 	vector<string> meshNames;
 	vector<string> cameraPathNames;
-	
+		
+	float fogDist, fogExpo;
+	ofFloatColor fogColor;
 
 };
