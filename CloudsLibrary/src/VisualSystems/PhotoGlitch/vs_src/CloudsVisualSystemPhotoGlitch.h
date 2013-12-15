@@ -19,7 +19,7 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
-    ofxTween tween;
+    ofxTween tweenX, tweenY;
 };
 
 //TODO: rename this to your own visual system
@@ -134,6 +134,7 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     
     bool bShouldShuffle;
     bool bShouldReorder;
+    bool bDoPerpendicular;
     
     bool bShouldGenerate;
 };
