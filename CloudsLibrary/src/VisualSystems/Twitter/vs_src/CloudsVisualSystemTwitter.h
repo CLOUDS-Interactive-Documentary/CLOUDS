@@ -57,9 +57,9 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     //i/o stuff
     void loadJSONData(string folderName);
     void addUsersFromMentions();
-    void createPajekNetwork();
+    void createPajekNetwork(string outputFileName);
     void parseClusterNetwork(string fileName);
-    void createNewGraph();
+    void createNewGraph(string outputFileName, string inputDataFolder);
     
 
     //data stuff
@@ -71,6 +71,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void CompareDates(Date d1,Date d2);
     void loadGraphFromPath(string filePath);
     void clearData();
+    
 
     //text stuff
     ofxJSONElement result;
@@ -79,6 +80,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     bool bRenderText;
     float stringWidth;
     float fontSize;
+    int minUserMentions;
     
     //draw stuff
     void loadMesh();

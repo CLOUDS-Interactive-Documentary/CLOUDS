@@ -17,8 +17,15 @@ bool dateSorter(Date const& lhs, Date const& rhs) {
 
 void CloudsVisualSystemTwitter::selfSetup()
 {
-    
+/*  Use this to create new network for graphinsight
 
+    //Minimum num of users to add to tweeter links.
+    minUserMentions = 0;
+
+    createNewGraph("twitterNewData0Men.net","tweets_");
+    cout<<"created new network"<<endl;
+    while(1);
+*/
     nodeModifier.r = 1.0;
     nodeModifier.g = 0.65;
     nodeModifier.b = 0.54;
@@ -527,7 +534,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
     map<string,int>::iterator it;
     for(it = numberOfMentions.begin() ; it != numberOfMentions.end() ; it++){
         //Filter mentioned users by times mentioned
-        if(it->second > 1){
+        if(it->second > minUserMentions){
             Tweeter t = Tweeter(it->first, tweeters.size());
             tweeters.push_back(t);
         }
@@ -535,7 +542,7 @@ void CloudsVisualSystemTwitter::addUsersFromMentions(){
 }
 
 
-void CloudsVisualSystemTwitter::createPajekNetwork(){
+void CloudsVisualSystemTwitter::createPajekNetwork(string outputFileName){
     stringstream ss;
     cout<<"Creating paejk file"<<endl;
     ss<<"*Vertices "<<tweeters.size()<<endl;
@@ -559,7 +566,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
         }
     }
     ofBuffer b = ofBuffer(ss);
-    ofBufferToFile(getVisualSystemDataPath(true) + "/twitter.net",b);
+    ofBufferToFile(getVisualSystemDataPath(true) + "/" +outputFileName,b);
 }
 
 int CloudsVisualSystemTwitter:: getUserIdByName(string name){
@@ -672,10 +679,10 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     
 }
 
-void CloudsVisualSystemTwitter::createNewGraph(){
+void CloudsVisualSystemTwitter::createNewGraph(string outputFileName, string inputDataFolder){
     clearData();
-    loadJSONData("tweets");
-    createPajekNetwork();
+    loadJSONData(inputDataFolder);
+    createPajekNetwork(outputFileName);
 }
 
 void CloudsVisualSystemTwitter::loadGraphFromPath(string filePath){
