@@ -68,7 +68,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui = new ofxUISuperCanvas("SHADERS", gui);
 	shaderGui->copyCanvasStyle(gui);
 	shaderGui->copyCanvasProperties(gui);
-	shaderGui->setName("Shaders");
+	shaderGui->setName("SHADERS");
 	shaderGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
 	vector<string> blendNames;
@@ -89,7 +89,7 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 		shaderNames.push_back(it->first);
 	}
 	
-	shaderGui->addLabel("shaders");
+	shaderGui->addLabel("Shaders");
 	shaderGui->addSpacer();
 	shaderGui->addRadio("shaders", shaderNames);
 	shaderGui->addSpacer();
@@ -98,10 +98,10 @@ void CloudsVisualSystemWormHole::selfSetupGui(){
 	shaderGui->addSpacer();
 	shaderGui->addLabel("color1");
 	shaderGui->addImageSampler("c1", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c1.alpha", 0, 1, &c1.a);
+	shaderGui->addMinimalSlider("c1_alpha", 0, 1, &c1.a);
 	shaderGui->addLabel("color2");
 	shaderGui->addImageSampler("c2", &colorSampleImage, 100, 100);
-	shaderGui->addMinimalSlider("c2.alpha", 0, 1, &c2.a);
+	shaderGui->addMinimalSlider("c2_alpha", 0, 1, &c2.a);
 	
 	ofAddListener(shaderGui->newGUIEvent, this, &CloudsVisualSystemWormHole::selfGuiEvent);
 	guis.push_back(shaderGui);
