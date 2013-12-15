@@ -1,0 +1,44 @@
+<rules maxDepth="200" startRule="scale" primitive="triangles">
+    <ruleSet name="scale">
+        <rule weight="1">
+            <transform transforms="sa 0.4" next="start"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="start">
+        <rule weight="20">
+            <tube radius="20" resolution="4" colour="156 102 31" transforms="tx 2 ty 8 ty 1 sa 0.99" repeat="20" next="middle"/>
+        </rule>
+        <rule weight="20">
+            <tube radius="20" resolution="4" colour="156 102 31" transforms="tx -1 ty 8 ty 2 ry 2 sa 0.99" repeat="20" next="middle"/>
+        </rule>
+        <rule weight="20">
+            <tube radius="20" resolution="4" colour="156 102 31" transforms="tx 1 ty 8 ty -2 sa 0.99" repeat="20" next="middle"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="middle">
+        <rule weight="50">
+            <tube radius="20" resolution="4" colour="156 102 31" transforms="tx 1 ty 8 ry 2 sa 0.99" repeat="20" next="middle"/>
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry 6 sa 0.99" repeat="20" next="middle2"/>
+        </rule>
+        <rule weight="50">
+            <tube radius="20" resolution="4" colour="156 102 31" transforms="tx 1 ty 8 ry -2 sa 0.99" repeat="20" next="middle"/>
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry 6 sa 0.99" repeat="20" next="middle2"/>
+        </rule>
+        <rule weight="20">
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry -6 sa 0.99" repeat="20" next="mirror"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="middle2">
+        <rule weight="100">
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry 6 sa 0.99" repeat="20" next="middle2"/>
+        </rule>
+        <rule weight="100">
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry -6 sa 0.99" repeat="20" next="mirror"/>
+        </rule>
+    </ruleSet>
+    <ruleSet name="mirror">
+        <rule weight="100">
+            <cube size="10" colour="118 238 0" transforms="tx 20 ty 8 ry -6 sa 0.99" repeat="20" next="mirror"/>
+        </rule>
+    </ruleSet>
+</rules>

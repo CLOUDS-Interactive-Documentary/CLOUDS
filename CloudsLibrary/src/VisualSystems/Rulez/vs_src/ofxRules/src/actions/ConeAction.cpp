@@ -33,9 +33,18 @@
 
 namespace itg
 {
-    void ConeAction::setParameters(float radius, float height, unsigned radiusSegments)
+    void ConeAction::setParameters(float radius, float height, unsigned resolution)
     {
-        coneMesh = Action::cone(radius, height, radiusSegments);
+        coneMesh = Action::cone(radius, height, resolution + 1);
+        ofVec3f direction = ((ofVec3f() * getTransform()) - ofVec3f()).normalized();
+        ofMatrix4x4 r;
+        r.makeRotationMatrix(ofVec3f(0, 1, 0), direction);
+        r.rotate(180, 1, 0, 0);
+        for (unsigned i = 0; i < coneMesh.getNumVertices(); ++i)
+        {
+            coneMesh.setVertex(i, coneMesh.getVertex(i) * r);
+            coneMesh.setNormal(i, coneMesh.getNormal(i) * r);
+        }
     }
     
     Branch::Ptr ConeAction::step(Branch::Ptr branch, ofMesh& mesh)
@@ -50,7 +59,8 @@ namespace itg
         {
             mesh.addVertex(coneMesh.getVertex(i) * newBranch->getTransform());
             mesh.addNormal(coneMesh.getNormal(i) * normalMatrix);
-            mesh.addTexCoord(ofVec2f(0.f, branch->getDepth()));
+            if (i > coneMesh.getNumVertices() - 3) mesh.addTexCoord(ofVec2f(0.f, branch->getDepth() + 1.f));
+            else mesh.addTexCoord(ofVec2f(0.f, branch->getDepth()));
             mesh.addColor(colour);
         }
         //newBranch->setVertexIndex(mesh.getNumVertices());
@@ -62,8 +72,8 @@ namespace itg
         TransformAction::load(xml, tagName, tagIdx);
         float radius = xml.getAttribute(tagName, "radius", 1.f, tagIdx);
         float height = xml.getAttribute(tagName, "height", 1.f, tagIdx);
-        unsigned radiusSegments = xml.getAttribute(tagName, "height", 12, tagIdx);
-        setParameters(radius, height, radiusSegments);
+        unsigned resolution = xml.getAttribute(tagName, "resolution", 12, tagIdx);
+        setParameters(radius, height, resolution);
         colour = Action::parseColour(xml.getAttribute(tagName, "colour", "", tagIdx));
     }
 }

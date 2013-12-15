@@ -307,6 +307,10 @@
 		285C2094182FFFEE0065BCAE /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
 		285C2095182FFFEE0065BCAE /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
 		285C2096182FFFEE0065BCAE /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
+		28A8A7BF185E25F4009DA217 /* flower1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = flower1.xml; sourceTree = "<group>"; };
+		28A8A7C0185E25F4009DA217 /* tree1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree1.xml; sourceTree = "<group>"; };
+		28A8A7C1185E25F4009DA217 /* tree2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree2.xml; sourceTree = "<group>"; };
+		28A8A7C2185E25F4009DA217 /* tree3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree3.xml; sourceTree = "<group>"; };
 		28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlying.cpp; sourceTree = "<group>"; };
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
 		28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.cpp; sourceTree = "<group>"; };
@@ -549,8 +553,6 @@
 		E7D3302A1751C69E006706ED /* ofxCameraSaveLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraSaveLoad.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		E7F37DF01852DEFB0087F91C /* flower.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = flower.xml; sourceTree = "<group>"; };
-		E7F37DF11852DEFB0087F91C /* tree_flying.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tree_flying.xml; sourceTree = "<group>"; };
 		E7F37DF31852DF0F0087F91C /* floor.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floor.frag; sourceTree = "<group>"; };
 		E7F37DF41852DF0F0087F91C /* floor.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = floor.vert; sourceTree = "<group>"; };
 		E7F37DF51852DF0F0087F91C /* plants.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = plants.frag; sourceTree = "<group>"; };
@@ -1470,8 +1472,10 @@
 		E7F37DEF1852DEFB0087F91C /* rules */ = {
 			isa = PBXGroup;
 			children = (
-				E7F37DF01852DEFB0087F91C /* flower.xml */,
-				E7F37DF11852DEFB0087F91C /* tree_flying.xml */,
+				28A8A7BF185E25F4009DA217 /* flower1.xml */,
+				28A8A7C0185E25F4009DA217 /* tree1.xml */,
+				28A8A7C1185E25F4009DA217 /* tree2.xml */,
+				28A8A7C2185E25F4009DA217 /* tree3.xml */,
 			);
 			name = rules;
 			path = ../../../../CloudsData/visualsystems/Flying/rules;
