@@ -32,6 +32,12 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E703CCC4185C237600547738 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCBE185C237600547738 /* attenuatelines.frag */; };
+		E703CCC5185C237600547738 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCBF185C237600547738 /* attenuatelines.vert */; };
+		E703CCC6185C237600547738 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC0185C237600547738 /* cluster.frag */; };
+		E703CCC7185C237600547738 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC1185C237600547738 /* cluster.vert */; };
+		E703CCC8185C237600547738 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC2185C237600547738 /* gaussianblur.frag */; };
+		E703CCC9185C237600547738 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E703CCC3185C237600547738 /* gaussianblur.vert */; };
 		E704D01417B3BB3600F77528 /* CloudsRGBDCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */; };
 		E704D01517B3BB3600F77528 /* CloudsRGBDVideoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D00E17B3BB3600F77528 /* CloudsRGBDVideoPlayer.cpp */; };
 		E704D01617B3BB3600F77528 /* CloudsVisualSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E704D01017B3BB3600F77528 /* CloudsVisualSystem.cpp */; };
@@ -57,12 +63,6 @@
 		E70733131656A6DC002E60E5 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E707330D1656A6DC002E60E5 /* tinyxmlerror.cpp */; };
 		E70733141656A6DC002E60E5 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E707330E1656A6DC002E60E5 /* tinyxmlparser.cpp */; };
 		E70733151656A6DC002E60E5 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E70733101656A6DC002E60E5 /* ofxXmlSettings.cpp */; };
-		E70743C517BE31CB0055782E /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E70743BF17BE31CB0055782E /* attenuatelines.frag */; };
-		E70743C617BE31CB0055782E /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E70743C017BE31CB0055782E /* attenuatelines.vert */; };
-		E70743C717BE31CB0055782E /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = E70743C117BE31CB0055782E /* cluster.frag */; };
-		E70743C817BE31CB0055782E /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = E70743C217BE31CB0055782E /* cluster.vert */; };
-		E70743C917BE31CB0055782E /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = E70743C317BE31CB0055782E /* gaussianblur.frag */; };
-		E70743CA17BE31CB0055782E /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E70743C417BE31CB0055782E /* gaussianblur.vert */; };
 		E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */; };
 		E724461216573A0800D70E01 /* ofxHotKeys_impl_linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E724459616573A0400D70E01 /* ofxHotKeys_impl_linux.cpp */; };
 		E724461316573A0800D70E01 /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E724459716573A0400D70E01 /* ofxHotKeys_impl_mac.mm */; };
@@ -123,14 +123,8 @@
 		E7B3C7FB17EF75BA00581ACD /* CloudsVisualSystemPreset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B3C7F817EF75BA00581ACD /* CloudsVisualSystemPreset.cpp */; };
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
-		E7E5E3651812404300CA4196 /* attenuatelines.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E35A1812404300CA4196 /* attenuatelines.frag */; };
-		E7E5E3661812404300CA4196 /* attenuatelines.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E35B1812404300CA4196 /* attenuatelines.vert */; };
-		E7E5E3691812404300CA4196 /* gaussianblur.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E35E1812404300CA4196 /* gaussianblur.frag */; };
-		E7E5E36A1812404300CA4196 /* gaussianblur.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E35F1812404300CA4196 /* gaussianblur.vert */; };
 		E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */; };
 		E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */; };
-		E7E5E36F1812408F00CA4196 /* cluster.frag in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E36D1812408F00CA4196 /* cluster.frag */; };
-		E7E5E3701812408F00CA4196 /* cluster.vert in Sources */ = {isa = PBXBuildFile; fileRef = E7E5E36E1812408F00CA4196 /* cluster.vert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +214,12 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E703CCBE185C237600547738 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
+		E703CCBF185C237600547738 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
+		E703CCC0185C237600547738 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
+		E703CCC1185C237600547738 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
+		E703CCC2185C237600547738 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
+		E703CCC3185C237600547738 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
 		E704D00C17B3BB3600F77528 /* CloudsRGBDCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDCamera.cpp; sourceTree = "<group>"; };
 		E704D00D17B3BB3600F77528 /* CloudsRGBDCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsRGBDCamera.h; sourceTree = "<group>"; };
 		E704D00E17B3BB3600F77528 /* CloudsRGBDVideoPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRGBDVideoPlayer.cpp; sourceTree = "<group>"; };
@@ -337,12 +337,6 @@
 		E707330E1656A6DC002E60E5 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		E70733101656A6DC002E60E5 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		E70733111656A6DC002E60E5 /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
-		E70743BF17BE31CB0055782E /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
-		E70743C017BE31CB0055782E /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
-		E70743C117BE31CB0055782E /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
-		E70743C217BE31CB0055782E /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
-		E70743C317BE31CB0055782E /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
-		E70743C417BE31CB0055782E /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
 		E7176E2D17D3DABA00C8DC38 /* CloudsQuestion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudsQuestion.cpp; path = ../RGBD/CloudsQuestion.cpp; sourceTree = "<group>"; };
 		E7176E2E17D3DABA00C8DC38 /* CloudsQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsQuestion.h; path = ../RGBD/CloudsQuestion.h; sourceTree = "<group>"; };
 		E7176E3617D3DAFB00C8DC38 /* CloudsGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudsGlobal.h; path = ../CloudsGlobal.h; sourceTree = "<group>"; };
@@ -484,16 +478,10 @@
 		E7B3C7F917EF75BA00581ACD /* CloudsVisualSystemPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemPreset.h; sourceTree = "<group>"; };
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		E7E5E35A1812404300CA4196 /* attenuatelines.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.frag; sourceTree = "<group>"; };
-		E7E5E35B1812404300CA4196 /* attenuatelines.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = attenuatelines.vert; sourceTree = "<group>"; };
-		E7E5E35E1812404300CA4196 /* gaussianblur.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.frag; sourceTree = "<group>"; };
-		E7E5E35F1812404300CA4196 /* gaussianblur.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gaussianblur.vert; sourceTree = "<group>"; };
 		E7E5E3611812404300CA4196 /* CloudsClusterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsClusterNode.cpp; sourceTree = "<group>"; };
 		E7E5E3621812404300CA4196 /* CloudsClusterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsClusterNode.h; sourceTree = "<group>"; };
 		E7E5E3631812404300CA4196 /* CloudsVisualSystemClusterMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemClusterMap.cpp; sourceTree = "<group>"; };
 		E7E5E3641812404300CA4196 /* CloudsVisualSystemClusterMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemClusterMap.h; sourceTree = "<group>"; };
-		E7E5E36D1812408F00CA4196 /* cluster.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.frag; sourceTree = "<group>"; };
-		E7E5E36E1812408F00CA4196 /* cluster.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = cluster.vert; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -736,7 +724,6 @@
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */,
-				E70743BE17BE31CB0055782E /* shaders */,
 				E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
@@ -763,6 +750,20 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E703CCBD185C237600547738 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E703CCBE185C237600547738 /* attenuatelines.frag */,
+				E703CCBF185C237600547738 /* attenuatelines.vert */,
+				E703CCC0185C237600547738 /* cluster.frag */,
+				E703CCC1185C237600547738 /* cluster.vert */,
+				E703CCC2185C237600547738 /* gaussianblur.frag */,
+				E703CCC3185C237600547738 /* gaussianblur.vert */,
+			);
+			name = shaders;
+			path = ../../../../CloudsData/visualsystems/_ClusterMap/shaders;
 			sourceTree = "<group>";
 		};
 		E704D00A17B3BB3600F77528 /* VisualSystemsLibrary */ = {
@@ -976,20 +977,6 @@
 				E70733111656A6DC002E60E5 /* ofxXmlSettings.h */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		E70743BE17BE31CB0055782E /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				E70743BF17BE31CB0055782E /* attenuatelines.frag */,
-				E70743C017BE31CB0055782E /* attenuatelines.vert */,
-				E70743C117BE31CB0055782E /* cluster.frag */,
-				E70743C217BE31CB0055782E /* cluster.vert */,
-				E70743C317BE31CB0055782E /* gaussianblur.frag */,
-				E70743C417BE31CB0055782E /* gaussianblur.vert */,
-			);
-			name = shaders;
-			path = ../CloudsLibrary/src/VisualSystems/_ClusterMap/bin/data/shaders;
 			sourceTree = "<group>";
 		};
 		E7176E3717D3DAFE00C8DC38 /* CloudsLibrary */ = {
@@ -1302,40 +1289,11 @@
 		E7E5E31C1812404300CA4196 /* _ClusterMap */ = {
 			isa = PBXGroup;
 			children = (
-				E7E5E31D1812404300CA4196 /* bin */,
+				E703CCBD185C237600547738 /* shaders */,
 				E7E5E3601812404300CA4196 /* vs_src */,
 			);
 			name = _ClusterMap;
 			path = ../CloudsLibrary/src/VisualSystems/_ClusterMap;
-			sourceTree = "<group>";
-		};
-		E7E5E31D1812404300CA4196 /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				E7E5E31E1812404300CA4196 /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		E7E5E31E1812404300CA4196 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				E7E5E3591812404300CA4196 /* shaders */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		E7E5E3591812404300CA4196 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				E7E5E35A1812404300CA4196 /* attenuatelines.frag */,
-				E7E5E35B1812404300CA4196 /* attenuatelines.vert */,
-				E7E5E36D1812408F00CA4196 /* cluster.frag */,
-				E7E5E36E1812408F00CA4196 /* cluster.vert */,
-				E7E5E35E1812404300CA4196 /* gaussianblur.frag */,
-				E7E5E35F1812404300CA4196 /* gaussianblur.vert */,
-			);
-			path = shaders;
 			sourceTree = "<group>";
 		};
 		E7E5E3601812404300CA4196 /* vs_src */ = {
@@ -1504,12 +1462,6 @@
 				E704D37817B3BBA900F77528 /* ofxSphericalAttractionBehavior.cpp in Sources */,
 				E704D37917B3BBA900F77528 /* ofxSwarmBehavior.cpp in Sources */,
 				E704D37A17B3BBA900F77528 /* ofxVerletSolver.cpp in Sources */,
-				E70743C517BE31CB0055782E /* attenuatelines.frag in Sources */,
-				E70743C617BE31CB0055782E /* attenuatelines.vert in Sources */,
-				E70743C717BE31CB0055782E /* cluster.frag in Sources */,
-				E70743C817BE31CB0055782E /* cluster.vert in Sources */,
-				E70743C917BE31CB0055782E /* gaussianblur.frag in Sources */,
-				E70743CA17BE31CB0055782E /* gaussianblur.vert in Sources */,
 				E7176E2F17D3DABA00C8DC38 /* CloudsQuestion.cpp in Sources */,
 				E7B3C77B17EE291600581ACD /* CloudsClip.cpp in Sources */,
 				E7B3C77D17EE291600581ACD /* CloudsDichotomy.cpp in Sources */,
@@ -1523,16 +1475,16 @@
 				E7B3C7F117EE921500581ACD /* CloudsAct.cpp in Sources */,
 				E7B3C7FA17EF75BA00581ACD /* CloudsVisualSystemManager.cpp in Sources */,
 				E7B3C7FB17EF75BA00581ACD /* CloudsVisualSystemPreset.cpp in Sources */,
-				E7E5E3651812404300CA4196 /* attenuatelines.frag in Sources */,
-				E7E5E3661812404300CA4196 /* attenuatelines.vert in Sources */,
-				E7E5E3691812404300CA4196 /* gaussianblur.frag in Sources */,
-				E7E5E36A1812404300CA4196 /* gaussianblur.vert in Sources */,
 				E7E5E36B1812404300CA4196 /* CloudsClusterNode.cpp in Sources */,
 				E7E5E36C1812404300CA4196 /* CloudsVisualSystemClusterMap.cpp in Sources */,
-				E7E5E36F1812408F00CA4196 /* cluster.frag in Sources */,
-				E7E5E3701812408F00CA4196 /* cluster.vert in Sources */,
 				185CE9B5184A5FC800F43977 /* ofxFTGLFont.cpp in Sources */,
 				185CE9B6184A5FC800F43977 /* ofxFTGLSimpleLayout.cpp in Sources */,
+				E703CCC4185C237600547738 /* attenuatelines.frag in Sources */,
+				E703CCC5185C237600547738 /* attenuatelines.vert in Sources */,
+				E703CCC6185C237600547738 /* cluster.frag in Sources */,
+				E703CCC7185C237600547738 /* cluster.vert in Sources */,
+				E703CCC8185C237600547738 /* gaussianblur.frag in Sources */,
+				E703CCC9185C237600547738 /* gaussianblur.vert in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
