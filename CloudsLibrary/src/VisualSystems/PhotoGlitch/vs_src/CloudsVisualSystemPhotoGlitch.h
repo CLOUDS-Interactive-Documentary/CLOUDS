@@ -19,6 +19,7 @@ public:
     int idx;
     int row, origRow;
     int col, origCol;
+    ofColor avgColor;
     ofxTween tweenX, tweenY;
 };
 
@@ -100,21 +101,28 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
 //		return myCustomCamera;
 //	}
     
+    void clear();
+    void generate();
+
     void shuffle();
+    void sortHue();
+    void sortBri();
     void reorder();
     
-    void generate();
     void tweenAll();
     void tween(int i, int j = -1);
-
+    
+    static bool sortIdxForHue(int i, int j);
+    static bool sortIdxForBri(int i, int j);
+    static PGCell * cells;
+    
   protected:
     ofxUISuperCanvas * customGui;
     
     int numDivRows;
     int numDivCols;
     int numCells;
-    PGCell * cells;
-        
+    
     int numVerts;
     GLfloat * verts;
     GLfloat * texCoords;
@@ -133,6 +141,8 @@ class CloudsVisualSystemPhotoGlitch : public CloudsVisualSystem
     float texSliceHeight;
     
     bool bShouldShuffle;
+    bool bShouldSortHue;
+    bool bShouldSortBri;
     bool bShouldReorder;
     bool bDoPerpendicular;
     
