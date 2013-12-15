@@ -6,9 +6,38 @@
 //
 //
 
-#ifndef __CloudsHUDDesigner__CloudsHUDLayer__
-#define __CloudsHUDDesigner__CloudsHUDLayer__
+#pragma once
 
-#include <iostream>
+#include "ofMain.h"
+#include "ofxSvg.h"
+#include "ofxTween.h"
 
-#endif /* defined(__CloudsHUDDesigner__CloudsHUDLayer__) */
+class CloudsHUDLayer
+{
+  public:
+	
+	CloudsHUDLayer(string svgFilePath);
+	
+	ofxSVG svg;
+	
+	void start();
+	void update();
+	void draw();
+	
+	bool animating;
+	float delayTime;
+	float startTime;
+	float duration;
+	
+	float maxUpdateInterval;
+	float lastUpdateTime;
+	
+	ofVec2f startPercent;
+	
+	ofVec2f percentComplete;
+	float xlag;
+	ofRectangle drawRect;
+	ofVec2f startPoint;
+	ofVec2f endPoint;
+	
+};
