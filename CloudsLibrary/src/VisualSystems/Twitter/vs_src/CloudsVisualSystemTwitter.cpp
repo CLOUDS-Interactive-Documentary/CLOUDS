@@ -82,7 +82,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
-    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf",14);
+    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf",8);
     bRenderMesh = true;
     bRenderText = false;
     ofSetFrameRate(60);
@@ -754,13 +754,13 @@ void CloudsVisualSystemTwitter::selfDraw()
         edgeMesh.draw();
         
     }
-    ofPopMatrix();
+
     if(bRenderText){
         for(int i=0; i<activeTweeters.size(); i++){
             drawText(activeTweeters[i].name,activeTweeters[i].position);
         }
     }
-    
+    ofPopMatrix();    
     ofPopStyle();
     
 }
@@ -825,8 +825,8 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
         }
         ofPushStyle();
         ofSetColor(textColor );
-        ofScale(0.01,-0.01,0.01);
-        ofTranslate(pos.x, pos.y,pos.z);
+        ofScale(0.01,-0.01);
+        ofTranslate(pos.x,pos.y,pos.z);
         font.drawString(text,0,0);
         ofPopStyle();
         
