@@ -825,7 +825,8 @@ void CloudsVisualSystemTwitter::drawText(ofVec3f pos){
         ofPushStyle();
 //        ofSetColor(textColor);
         ofSetColor(255, 0, 0);
- 
+        ofScale(1,-1,1);
+//        getCameraRef().setScale(1,-1,-1);
         //ofDrawBitmapString(" HERE ", pos);
         
         //for (int i=0; i<tweeters.size(); i++) {
@@ -837,7 +838,7 @@ void CloudsVisualSystemTwitter::drawText(ofVec3f pos){
         ofPopStyle();
 
         ofxBillboardEnd();
-//        getCameraRef().setScale(1,1,1);
+        getCameraRef().setScale(1,1,1);
     }
     ofPopMatrix();
 }
