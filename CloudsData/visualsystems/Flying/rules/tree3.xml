@@ -2,35 +2,35 @@
     
     <ruleSet name="5">
         <rule weight="20">
-            <transform transforms="sa 2" next="10"/>
+            <transform transforms="sa 1.1" next="10"/>
         </rule>
     </ruleSet>
     
     <ruleSet name="10">
         <rule weight="20">
-            <ico resolution="4" radius="1" colour="205 200 177" transforms="ty 3" repeat="4" next="25"/>
+            <ico resolution="4" radius="1.5" colour="34 200 34" transforms="ty 4" repeat="4" next="25"/>
         </rule>
     </ruleSet>
     
     <ruleSet name="20">
         <rule weight="20">
-            <ico resolution="4" radius="1" height="2" colour="205 200 177" transforms="rz 11.25 tx 4 sa 0.97" repeat="8" next="50"/>
-            <ico resolution="4" radius="1" height="2" colour="205 200 177" transforms="rz -10 tx -4 sa 0.99" repeat="9" next="60"/>
+            <ico resolution="4" radius="1.5" height="2" colour="34 200 34" transforms="rz 11.25 tx 4 sa 0.97" repeat="8" next="50"/>
+            <ico resolution="4" radius="1.5" height="2" colour="34 200 34" transforms="rz -10 tx -4 sa 0.99" repeat="9" next="60"/>
         </rule>
         <rule weight="20">
-            <ico resolution="4" radius="1" height="2" colour="205 200 177" transforms="rz 7.5 tx 4 sa 0.99" repeat="12" next="50"/>
-            <ico resolution="4" radius="1" height="2" colour="205 200 177" transforms="rz -10 tx -4 sa 0.97" repeat="9" next="60"/>
+            <ico resolution="4" radius="1.5" height="2" colour="34 200 34" transforms="rz 7.5 tx 4 sa 0.99" repeat="12" next="50"/>
+            <ico resolution="4" radius="1.5" height="2" colour="34 200 34" transforms="rz -10 tx -4 sa 0.97" repeat="9" next="60"/>
         </rule>
     </ruleSet>
     
     <ruleSet name="25">
         <rule weight="20">
-            <ico resolution="4" radius="1" colour="205 200 177" transforms="rz 10 ty 4 sa 0.96" repeat="9" next="30"/>
-            <ico resolution="4" radius="1" colour="205 200 177" transforms="rz -10 ty 4 sa 0.99" repeat="9" next="40"/>
+            <ico resolution="4" radius="1.5" colour="34 200 34" transforms="rz 10 ty 4 sa 0.96" repeat="9" next="30"/>
+            <ico resolution="4" radius="1.5" colour="34 200 34" transforms="rz -10 ty 4 sa 0.99" repeat="9" next="40"/>
         </rule>
         <rule weight="20">
-            <ico resolution="4" radius="1" colour="205 200 177" transforms="rz 10 ty 4 sa 0.99" repeat="9" next="30"/>
-            <ico resolution="4" radius="1" colour="205 200 177" transforms="rz -10 ty 4 sa 0.96" repeat="9" next="40"/>
+            <ico resolution="4" radius="1.5" colour="34 200 34" transforms="rz 10 ty 4 sa 0.99" repeat="9" next="30"/>
+            <ico resolution="4" radius="1.5" colour="34 200 34" transforms="rz -10 ty 4 sa 0.96" repeat="9" next="40"/>
         </rule>
         <rule weight="10">
             <cone radius="10" height="10" colour="255 127 36" size="20"/>
