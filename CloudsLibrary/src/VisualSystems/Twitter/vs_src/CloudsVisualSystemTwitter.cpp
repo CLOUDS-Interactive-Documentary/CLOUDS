@@ -82,18 +82,17 @@ void CloudsVisualSystemTwitter::selfSetup()
     rotateModel = false;
     initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen.net");
     
-    font.loadFont(getVisualSystemDataPath() + "fonts/MateriaPro_Light.otf",8);
+    font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     bRenderMesh = true;
     bRenderText = false;
-    ofSetFrameRate(60);
+//    ofCamera& cam = getCameraRef();
+//    cam.setNearClip(0);
+
 }
 
 void CloudsVisualSystemTwitter::selfBegin()
 {
-    
     ofEnableSmoothing();
-    
-    
 }
 
 void CloudsVisualSystemTwitter::selfSetupGui()
@@ -658,6 +657,7 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
     nodeActiveMidpointColor.setHsb(nodeActiveMidpointModifier.r, nodeActiveMidpointModifier.g, nodeActiveMidpointModifier.b,nodeMidpointModifier.a);
     textColor.setHsb(textColorModifier.r, textColorModifier.g, textColorModifier.b,textColorModifier.a);
     reloadMeshColor();
+
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
@@ -768,12 +768,7 @@ void CloudsVisualSystemTwitter::selfDraw()
 // draw any debug stuff here
 void CloudsVisualSystemTwitter::selfDrawDebug()
 {
-    //    ofPushStyle();
-    //    ofSetColor(ofColor::white);
-    //    string cur = getDateAsString( dateIndex[currentDateIndex]);
-    //    ofDrawBitmapString(cur , 0,0);
-    //    ofCircle(0, 0, 200);
-    //    ofPopStyle();
+
 }
 
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
@@ -812,7 +807,7 @@ void CloudsVisualSystemTwitter::selfKeyPressed(ofKeyEventArgs & args){
 void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
     ofPushMatrix();
     {
-//        ofVec3f textPos = pos +1;
+        
         if (billboardType == 0) {  // SCREEN
             ofxBillboardBeginSphericalCheat(pos);
         }
@@ -827,7 +822,7 @@ void CloudsVisualSystemTwitter::drawText(string text,ofVec3f pos){
         ofSetColor(textColor );
         ofScale(0.01,-0.01);
         ofTranslate(pos.x,pos.y,pos.z);
-        font.drawString(text,0,0);
+        font.drawString(ofToUpper(text),0,0);
         ofPopStyle();
         
         ofxBillboardEnd();
