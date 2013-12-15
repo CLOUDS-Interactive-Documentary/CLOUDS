@@ -33,6 +33,7 @@
 		E703CD15185D186B00547738 /* svgtiny_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD0E185D186B00547738 /* svgtiny_list.cpp */; };
 		E703CD16185D186B00547738 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD10185D186B00547738 /* ofxSvg.cpp */; };
 		E703CD1A185D187800547738 /* CloudsHUDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD18185D187800547738 /* CloudsHUDController.cpp */; };
+		E703CD1E185D419800547738 /* CloudsHUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */; };
 		E7176E3E17D3FF7300C8DC38 /* CloudsDichotomy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E3A17D3FF7300C8DC38 /* CloudsDichotomy.cpp */; };
 		E7176E3F17D3FF7300C8DC38 /* CloudsRun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7176E3C17D3FF7300C8DC38 /* CloudsRun.cpp */; };
 		E72D3A3A179458B70079254B /* ofxCameraSaveLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72D3A36179458B70079254B /* ofxCameraSaveLoad.cpp */; };
@@ -206,6 +207,8 @@
 		E703CD11185D186B00547738 /* ofxSvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSvg.h; sourceTree = "<group>"; };
 		E703CD18185D187800547738 /* CloudsHUDController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDController.cpp; sourceTree = "<group>"; };
 		E703CD19185D187800547738 /* CloudsHUDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDController.h; sourceTree = "<group>"; };
+		E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsHUDLayer.cpp; sourceTree = "<group>"; };
+		E703CD1D185D419800547738 /* CloudsHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsHUDLayer.h; sourceTree = "<group>"; };
 		E7176E3A17D3FF7300C8DC38 /* CloudsDichotomy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsDichotomy.cpp; sourceTree = "<group>"; };
 		E7176E3B17D3FF7300C8DC38 /* CloudsDichotomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsDichotomy.h; sourceTree = "<group>"; };
 		E7176E3C17D3FF7300C8DC38 /* CloudsRun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsRun.cpp; sourceTree = "<group>"; };
@@ -838,6 +841,8 @@
 		E703CD17185D187800547738 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				E703CD1D185D419800547738 /* CloudsHUDLayer.h */,
+				E703CD1C185D419700547738 /* CloudsHUDLayer.cpp */,
 				E703CD19185D187800547738 /* CloudsHUDController.h */,
 				E703CD18185D187800547738 /* CloudsHUDController.cpp */,
 			);
@@ -2127,6 +2132,7 @@
 				E703CD15185D186B00547738 /* svgtiny_list.cpp in Sources */,
 				E703CD16185D186B00547738 /* ofxSvg.cpp in Sources */,
 				E703CD1A185D187800547738 /* CloudsHUDController.cpp in Sources */,
+				E703CD1E185D419800547738 /* CloudsHUDLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

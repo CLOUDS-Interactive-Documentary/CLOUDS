@@ -57,6 +57,8 @@ struct Drawer
     
     void operator()(Replecator *repl)
     {
+		ofPushStyle();
+		
         if (repl->parent == NULL) return;
         
         if (repl->idx % 2 == 0) ofNoFill();
@@ -72,6 +74,8 @@ struct Drawer
         ofRotateY(hue * t * rot_x);
         ofRotateX(hue * t * rot_y);
         ofRect(0, 0, width, height);
+		
+		ofPopStyle();
     }
 };
 
@@ -179,8 +183,9 @@ void CloudsVisualSystemSatoruhiga::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemSatoruhiga::selfDraw(){
+	mat->begin();
 	repl.draw(drawer);
-
+	mat->end();
 }
 
 // draw any debug stuff here

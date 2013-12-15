@@ -22,6 +22,16 @@
 </Widget>
 <Widget>
     <Kind>2</Kind>
+    <Name>constellationNew</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
     <Name>flashes</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>links</Name>
     <Value>0</Value>
 </Widget>
