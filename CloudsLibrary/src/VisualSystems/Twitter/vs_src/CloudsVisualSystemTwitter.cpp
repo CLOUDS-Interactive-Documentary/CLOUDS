@@ -168,18 +168,18 @@ void CloudsVisualSystemTwitter::selfSetupGui()
 	guimap[textGui->getName()] = textGui;
 }
 
-void CloudsVisualSystemTwitter::loadJSONData(){
+void CloudsVisualSystemTwitter::loadJSONData(string folderName){
     
     ofFile f = ofFile();
     
-    ofDirectory dir(getVisualSystemDataPath()+"tweets/");
+    ofDirectory dir(getVisualSystemDataPath(true)+folderName+"/");
     dir.listDir();
     if(dir.exists()){
         int size = dir.size();
         vector<ofFile>files= dir.getFiles();
         
         for(int i = 0; i< files.size(); i++){
-            string filePath =getVisualSystemDataPath()+"tweets/" +files[i].getFileName();
+            string filePath =getVisualSystemDataPath(true)+folderName+"/"+files[i].getFileName();
             
             bool parsingSuccessful = result.openLocal(filePath);
             if (parsingSuccessful) {
@@ -559,7 +559,7 @@ void CloudsVisualSystemTwitter::createPajekNetwork(){
         }
     }
     ofBuffer b = ofBuffer(ss);
-    ofBufferToFile(getVisualSystemDataPath() + "/twitter.net",b);
+    ofBufferToFile(getVisualSystemDataPath(true) + "/twitter.net",b);
 }
 
 int CloudsVisualSystemTwitter:: getUserIdByName(string name){
@@ -662,7 +662,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 
     currentMeshFilePath = filePath;
     clearData();
-    loadJSONData();
+    loadJSONData("tweets");
     parseClusterNetwork(filePath);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
@@ -674,7 +674,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
 
 void CloudsVisualSystemTwitter::createNewGraph(){
     clearData();
-    loadJSONData();
+    loadJSONData("tweets");
     createPajekNetwork();
 }
 

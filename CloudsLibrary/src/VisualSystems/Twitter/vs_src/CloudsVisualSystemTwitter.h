@@ -55,7 +55,7 @@ class CloudsVisualSystemTwitter : public CloudsVisualSystem
     void initSystem(string filePath);
     
     //i/o stuff
-    void loadJSONData();
+    void loadJSONData(string folderName);
     void addUsersFromMentions();
     void createPajekNetwork();
     void parseClusterNetwork(string fileName);
