@@ -52,9 +52,9 @@ void CloudsVisualSystemTwitter::selfSetup()
     tweetAlpha = 1.0;
     
     textColorModifier.r = 0.0;
-    textColorModifier.g = 1;
-    textColorModifier.b = 1;
-    textColorModifier.a = 1;
+    textColorModifier.g = 1.0;
+    textColorModifier.b = 1.0;
+    textColorModifier.a = 1.0;
     
     nodeColor.setHsb(nodeModifier.r, nodeModifier.g, nodeModifier.b,nodeModifier.a);
     nodeActiveColor.setHsb(nodeActiveModifier.r, nodeActiveModifier.g, nodeActiveModifier.b,nodeActiveModifier.a);
@@ -89,7 +89,8 @@ void CloudsVisualSystemTwitter::selfSetup()
     yScale = 100;
     zScale = 100;
     rotateModel = false;
-    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen_old.net");
+//    initSystem(getVisualSystemDataPath() +"graphs/twitterOneUserMen_old.net");
+        initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
     bRenderMesh = true;
     bRenderText = false;
@@ -166,7 +167,7 @@ void CloudsVisualSystemTwitter::selfSetupGui()
     textGui->addMinimalSlider("TEXT ALPHA", 0.0, 1, &textColorModifier.a);
     textGui->addSpacer();
     textGui->addMinimalSlider("STRING WIDTH", 1, 2000, &stringWidth);
-    textGui->addMinimalSlider("SET SIZE", 0.1, 10, &fontSize);
+    textGui->addMinimalSlider("SET SIZE", 0.1, 100, &fontSize);
     
     
     
@@ -313,7 +314,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
             int id = ofToInt(components[0]);
             //428 4 8 9 11 15 17 18
             Tweeter& tweeter = getTweeterByID(tweeters, id);
-//            if(tweeter.ID != -1){
+            if(tweeter.ID > 0){
                 for(int i =1; i< components.size()-1; i++){
                     if(tweeter.ID != ofToInt(components[i]) ){
                         tweeter.linksById.push_back(ofToInt(components[i]));
@@ -322,7 +323,7 @@ void CloudsVisualSystemTwitter::parseClusterNetwork(string fileName){
                         cout<<"Error! "<<tweeter.name<<"  : "<<tweeter.ID<<" index "<< ofToInt(components[i])<<endl;
                     }
                 }
-//            }
+            }
 
         }
         
@@ -663,10 +664,24 @@ void CloudsVisualSystemTwitter::selfGuiEvent(ofxUIEventArgs &e)
 }
 
 void CloudsVisualSystemTwitter::initSystem(string filePath){
-
+    
+    vector<string> strs =ofSplitString(filePath, "_");
+    
     currentMeshFilePath = filePath;
     clearData();
-    loadJSONData("tweets");
+    if(strs[strs.size()-1] =="old.net"){
+        cout<<"old data, using tweetsOld folder"<<endl;
+            loadJSONData("tweetsOld");
+    }
+    else if (strs[strs.size()-1] =="new.net"){
+        cout<<"new data, using tweetsNew folder"<<endl;
+        loadJSONData("tweetsNew");
+        
+    }
+    else{
+        cout<<"poop : " <<strs[strs.size()-1]<<endl;
+    }
+
     parseClusterNetwork(filePath);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
