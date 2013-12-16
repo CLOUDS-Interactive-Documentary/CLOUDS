@@ -93,7 +93,7 @@ void CloudsVisualSystemTwitter::selfSetup()
     bRenderText = false;
     stringWidth = 10;
     font.loadFont(getVisualSystemDataPath() + "fonts/NewMedia Fett.ttf",5);
-    initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
+
 
 }
 
@@ -101,7 +101,7 @@ void CloudsVisualSystemTwitter::selfBegin()
 {
 
     ofEnableSmoothing();
-
+    initSystem(getVisualSystemDataPath() +"graphs/Spiky2_TwitterOneuser_old.net");
 
 }
 
@@ -696,6 +696,7 @@ void CloudsVisualSystemTwitter::initSystem(string filePath){
     yScale = 100;
     zScale = 100;
     parseClusterNetwork(filePath);
+
     updateLabelWithCurrentMeshName(currentMeshFileName);
     loadMesh();
     std::sort(dateIndex.begin(), dateIndex.end(), &dateSorter);
