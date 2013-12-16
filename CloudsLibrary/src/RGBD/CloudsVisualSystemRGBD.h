@@ -92,6 +92,8 @@ class CloudsVisualSystemRGBD : public CloudsVisualSystem {
 	void printTransitionNodes();
 	void setTransitionNodes( RGBDTransitionType transitionType );
 	
+	void playTestVideo();
+	
 	ofVec3f bottomRight;
   protected:
 	

@@ -54,8 +54,6 @@ void ofxSVG::load(string path){
 
 void ofxSVG::draw(){
 	for(int i = 0; i < (int)paths.size(); i++){
-//		cout << "path at i " << i << " has points " << paths[i].
-//		cout << "path at i " << i << " is closed? " << paths[i].isClosed() << endl;
 		paths[i].draw();
 	}
 }
@@ -88,14 +86,27 @@ void ofxSVG::setupShape(struct svgtiny_shape * shape, ofPath & path){
 
 	if(shape->stroke != svgtiny_TRANSPARENT){
 		path.setStrokeWidth(shape->stroke_width);
+//		cout << "	Stroke color is " << ofColor::fromHex(shape->stroke, shape->opacity*255) << endl;
 		path.setStrokeColor( ofColor::fromHex(shape->stroke, shape->opacity*255) );
 
 	}
 
-	path.setPolyWindingMode(OF_POLY_WINDING_NONZERO);
+	
+//	cout << "	Path length " << shape->path_length << endl;
+	if(shape->path_length == 7){ //line
+		path.setPolyWindingMode(OF_POLY_WINDING_ODD);
+//		path.setPolyWindingMode(OF_POLY_WINDING_NONZERO);
 
+	}
+	else{
+		path.setPolyWindingMode(OF_POLY_WINDING_NONZERO);
+
+	}
+	
+	int numPoints = 0;
 	for(int i = 0; i < (int)shape->path_length;){
 		if(p[i] == svgtiny_PATH_MOVE){
+//			cout << "	start line " << p[i + 1] << " " << p[i + 2] << endl;
 			path.moveTo(p[i + 1], p[i + 2]);
 			i += 3;
 		}
@@ -105,6 +116,7 @@ void ofxSVG::setupShape(struct svgtiny_shape * shape, ofPath & path){
 			i += 1;
 		}
 		else if(p[i] == svgtiny_PATH_LINE){
+//			cout << "	move to " << p[i + 1] << " " << p[i + 2] << endl;
 			path.lineTo(p[i + 1], p[i + 2]);
 			i += 3;
 		}
@@ -112,11 +124,13 @@ void ofxSVG::setupShape(struct svgtiny_shape * shape, ofPath & path){
 			path.bezierTo(p[i + 1], p[i + 2],
 						   p[i + 3], p[i + 4],
 						   p[i + 5], p[i + 6]);
-			i += 7;
+			i += 7;	
 		}
 		else{
 			ofLogError() << "SVG parse error";
 			i += 1;
 		}
 	}
+	
+
 }

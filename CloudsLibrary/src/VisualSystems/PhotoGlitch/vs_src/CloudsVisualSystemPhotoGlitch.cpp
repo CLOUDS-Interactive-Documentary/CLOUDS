@@ -16,6 +16,16 @@ static int kIndicesPerCell = 6;
 
 static ofxEasingQuad easing;
 
+PGCell * CloudsVisualSystemPhotoGlitch::cells;
+
+bool CloudsVisualSystemPhotoGlitch::sortIdxForHue(int i, int j) {
+    return (cells[i].avgColor.getHue() < cells[j].avgColor.getHue());
+}
+
+bool CloudsVisualSystemPhotoGlitch::sortIdxForBri(int i, int j) {
+    return (cells[i].avgColor.getBrightness() < cells[j].avgColor.getBrightness());
+}
+
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 {
@@ -24,13 +34,27 @@ void CloudsVisualSystemPhotoGlitch::selfSetupGui()
 	customGui->copyCanvasProperties(gui);
 	customGui->setName("PhotoGlitch");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    
+    customGui->addSpacer();
+    vector<string> imageNames;
+    for (int i = 0; i < imagesDir.size(); i++) {
+        imageNames.push_back(imagesDir.getName(i));
+    }
+    customGui->addLabel("SOURCE IMAGE");
+    customGui->addRadio("SOURCE IMAGES", imageNames);
 	
     customGui->addSpacer();
     customGui->addIntSlider("NUM COLS", 1, 400, &numDivCols);
     customGui->addIntSlider("NUM ROWS", 1, 400, &numDivRows);
     
     customGui->addSpacer();
+    customGui->addToggle("USE COLORS", &bUseColors);
+    customGui->addToggle("USE TEXTURE", &bUseTexture);
+    
+    customGui->addSpacer();
 	customGui->addToggle("SHUFFLE", &bShouldShuffle);
+    customGui->addToggle("SORT HUE", &bShouldSortHue);
+    customGui->addToggle("SORT BRI", &bShouldSortBri);
     customGui->addToggle("REORDER", &bShouldReorder);
     customGui->addToggle("PERPENDICULAR", &bDoPerpendicular);
     customGui->addIntSlider("TWEEN DURATION", 1, 1000, &tweenDuration);
@@ -46,6 +70,17 @@ void CloudsVisualSystemPhotoGlitch::selfGuiEvent(ofxUIEventArgs &e)
     if (e.getName() == "NUM COLS" || e.getName() == "NUM ROWS") {
         bShouldGenerate = true;
     }
+    else {
+        // Look through the files dropdown for a match.
+        string name = e.widget->getName();
+        for (int i = 0; i < imagesDir.numFiles(); i++) {
+            if (name == imagesDir.getName(i) && ((ofxUIToggle *)e.widget)->getValue()) {
+                selectedSrcImageIdx = i;
+                bShouldGenerate = true;
+                break;
+            }
+        }
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
@@ -56,6 +91,7 @@ void CloudsVisualSystemPhotoGlitch::selfSetupSystemGui(){
 void CloudsVisualSystemPhotoGlitch::guiSystemEvent(ofxUIEventArgs &e){
 	
 }
+
 //use render gui for display settings, like changing colors
 void CloudsVisualSystemPhotoGlitch::selfSetupRenderGui(){
 
@@ -72,7 +108,13 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
 {
     bIs2D = true;
     
+    // Set defaults.
+    bUseColors  = false;
+    bUseTexture = true;
+    
     bShouldShuffle = false;
+    bShouldSortHue = false;
+    bShouldSortBri = false;
     bShouldReorder = false;
     
     bDoPerpendicular = false;
@@ -80,17 +122,53 @@ void CloudsVisualSystemPhotoGlitch::selfSetup()
     tweenDuration = 200;
     tweenDelay = 0;
     
-    // Set defaults.
-    tex.loadImage(getVisualSystemDataPath() + "sourceImages/dogs.jpg");
-    
     numDivCols = 20;
     numDivRows = 20;
+    
+    imagesDir.listDir(getVisualSystemDataPath() + "sourceImages" );
+    imagesDir.sort();
+    selectedSrcImageIdx = 0;
     
     bShouldGenerate = true;
 }
 
+void CloudsVisualSystemPhotoGlitch::clear()
+{
+    if (cells != NULL) {
+        delete [] cells;
+        cells = NULL;
+    }
+    
+    if (verts != NULL) {
+        delete [] verts;
+        verts = NULL;
+    }
+    
+    if (texCoords != NULL) {
+        delete [] texCoords;
+        texCoords = NULL;
+    }
+    
+    if (colors != NULL) {
+        delete [] colors;
+        colors = NULL;
+    }
+    
+    if (indices != NULL) {
+        delete [] indices;
+        indices = NULL;
+    }
+    
+    tex.clear();
+}
+
 void CloudsVisualSystemPhotoGlitch::generate()
 {
+    clear();
+    
+    tex.loadImage(imagesDir.getPath(selectedSrcImageIdx));
+    ofPixels pixels = tex.getPixelsRef();
+    
     numCells = numDivCols * numDivRows;
     
     cells = new PGCell[numCells];
@@ -104,6 +182,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
     numVerts = numCells * kVertsPerCell;
     verts = new GLfloat[numVerts * kCoordsPerVert];
     texCoords = new GLfloat[numVerts * 2];
+    colors = new GLfloat[numVerts * 4];
     
     numIndices = numCells * kIndicesPerCell;
     indices = new GLuint[numIndices];
@@ -146,6 +225,43 @@ void CloudsVisualSystemPhotoGlitch::generate()
             indices[idx * kIndicesPerCell + 3] = idx * kVertsPerCell + 1;  // top-right
             indices[idx * kIndicesPerCell + 4] = idx * kVertsPerCell + 3;  // bottom-right
             indices[idx * kIndicesPerCell + 5] = idx * kVertsPerCell + 2;  // bottom-left
+            
+            // Calculate the average color.
+            int avgR = 0, avgG = 0, avgB = 0, avgA = 0;
+            for (int y = (j + 0) * texSliceHeight; y < (j + 1) * texSliceHeight; y++) {
+                for (int x = (i + 0) * texSliceWidth; x < (i + 1) * texSliceWidth; x++) {
+                    ofColor c = pixels.getColor(x, y);
+                    avgR += c.r;
+                    avgG += c.g;
+                    avgB += c.b;
+                    avgA += c.a;
+                }
+            }
+            cells[idx].avgColor.set((avgR / (texSliceWidth * texSliceHeight)) / 255.0f,
+                                    (avgG / (texSliceWidth * texSliceHeight)) / 255.0f,
+                                    (avgB / (texSliceWidth * texSliceHeight)) / 255.0f,
+                                    (avgA / (texSliceWidth * texSliceHeight)) / 255.0f);
+            
+            // Add colors.
+            colors[idx * kVertsPerCell * 4 +  0] = cells[idx].avgColor.r;
+            colors[idx * kVertsPerCell * 4 +  1] = cells[idx].avgColor.g;
+            colors[idx * kVertsPerCell * 4 +  2] = cells[idx].avgColor.b;
+            colors[idx * kVertsPerCell * 4 +  3] = cells[idx].avgColor.a;
+            
+            colors[idx * kVertsPerCell * 4 +  4] = cells[idx].avgColor.r;
+            colors[idx * kVertsPerCell * 4 +  5] = cells[idx].avgColor.g;
+            colors[idx * kVertsPerCell * 4 +  6] = cells[idx].avgColor.b;
+            colors[idx * kVertsPerCell * 4 +  7] = cells[idx].avgColor.a;
+            
+            colors[idx * kVertsPerCell * 4 +  8] = cells[idx].avgColor.r;
+            colors[idx * kVertsPerCell * 4 +  9] = cells[idx].avgColor.g;
+            colors[idx * kVertsPerCell * 4 + 10] = cells[idx].avgColor.b;
+            colors[idx * kVertsPerCell * 4 + 11] = cells[idx].avgColor.a;
+            
+            colors[idx * kVertsPerCell * 4 + 12] = cells[idx].avgColor.r;
+            colors[idx * kVertsPerCell * 4 + 13] = cells[idx].avgColor.g;
+            colors[idx * kVertsPerCell * 4 + 14] = cells[idx].avgColor.b;
+            colors[idx * kVertsPerCell * 4 + 15] = cells[idx].avgColor.a;
 
             // Save the cell struct.
             cells[idx].idx = idx;
@@ -156,6 +272,7 @@ void CloudsVisualSystemPhotoGlitch::generate()
     
     vbo.setVertexData(verts, kCoordsPerVert, numVerts, GL_STREAM_DRAW, kCoordsPerVert * sizeof(GLfloat));
     vbo.setTexCoordData(texCoords, numVerts, GL_STATIC_DRAW, 2 * sizeof(GLfloat));
+    vbo.setColorData(colors, numVerts, GL_STATIC_DRAW, 4 * sizeof(GLfloat));
     vbo.setIndexData(indices, numIndices, GL_STATIC_DRAW);
     
     bShouldReorder = true;
@@ -193,6 +310,14 @@ void CloudsVisualSystemPhotoGlitch::selfUpdate()
     if (bShouldShuffle) {
         shuffle();
         bShouldShuffle = false;
+    }
+    if (bShouldSortHue) {
+        sortHue();
+        bShouldSortHue = false;
+    }
+    if (bShouldSortBri) {
+        sortBri();
+        bShouldSortBri = false;
     }
     if (bShouldReorder) {
         reorder();
@@ -241,6 +366,12 @@ void CloudsVisualSystemPhotoGlitch::selfDrawDebug(){
 // or you can use selfDrawBackground to do 2D drawings that don't use the 3D camera
 void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 {    
+    if (bUseColors) vbo.enableColors();
+    else vbo.disableColors();
+    
+    if (bUseTexture) vbo.enableTexCoords();
+    else vbo.disableTexCoords();
+    
     ofSetColor(255);
 //    tex.draw(0, 0);
     tex.bind();
@@ -252,6 +383,12 @@ void CloudsVisualSystemPhotoGlitch::selfDrawBackground()
 //        glPopAttrib();
     }
     tex.unbind();
+
+    // Debug avg colors.
+//    for (int i = 0; i < numCells; i++) {
+//        ofSetColor(cells[i].avgColor);
+//        ofRect(cells[i].col * screenSliceWidth, cells[i].row * screenSliceHeight, screenSliceWidth, screenSliceHeight);
+//    }
 }
 
 // this is called when your system is no longer drawing.
@@ -261,8 +398,9 @@ void CloudsVisualSystemPhotoGlitch::selfEnd(){
 }
 
 // this is called when you should clear all the memory and delet anything you made in setup
-void CloudsVisualSystemPhotoGlitch::selfExit(){
-	
+void CloudsVisualSystemPhotoGlitch::selfExit()
+{
+    clear();
 }
 
 //events are called when the system is active
@@ -333,6 +471,48 @@ void CloudsVisualSystemPhotoGlitch::shuffle()
         
         slots[openSlotIdx] = true;
         ++numOccupied;
+    }
+    
+    delete [] slots;
+}
+
+void CloudsVisualSystemPhotoGlitch::sortHue()
+{
+    vector<int> slots;
+    for (int i = 0; i < numCells; i++) {
+        slots.push_back(i);
+    }
+    
+    sort(slots.begin(), slots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForHue);
+    
+    for (int i = 0; i < numCells; i++) {
+        int slotIdx = slots[i];
+        
+        // set the target position using the row and col indices
+        cells[i].col = slotIdx % numDivCols;
+        cells[i].row = slotIdx / numDivCols;
+        
+        tween(i, slotIdx);
+    }
+}
+
+void CloudsVisualSystemPhotoGlitch::sortBri()
+{
+    vector<int> slots;
+    for (int i = 0; i < numCells; i++) {
+        slots.push_back(i);
+    }
+    
+    sort(slots.begin(), slots.end(), CloudsVisualSystemPhotoGlitch::sortIdxForBri);
+    
+    for (int i = 0; i < numCells; i++) {
+        int slotIdx = slots[i];
+        
+        // set the target position using the row and col indices
+        cells[i].col = slotIdx % numDivCols;
+        cells[i].row = slotIdx / numDivCols;
+        
+        tween(i, slotIdx);
     }
 }
 

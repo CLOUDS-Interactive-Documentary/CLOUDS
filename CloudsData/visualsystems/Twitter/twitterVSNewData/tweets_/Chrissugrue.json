@@ -1,0 +1,3861 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @arambartholl: If you are in Paris! Not to miss! @evanroth_ s solo opening \"View in Room\" tonight at @xpogallery !! Party hard mr.5ive!!  ", 
+            "Users": [
+                "@arambartholl", 
+                "@evanroth_", 
+                "@xpogallery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @fctry2: extensive but still incomplete OpenGL in #openframeworks tutorial http://t.co/jUwEokPExC  ", 
+            "Users": [
+                "@fctry2"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ViewInRoom", 
+                "#following", 
+                "#portrait", 
+                "#XPOGallery", 
+                "#tomorrow"
+            ], 
+            "Tweet": "RT @EvanRoth_: .@chrissugrue http://t.co/ZozzyoYrby #ViewInRoom #following #portrait #XPOGallery #tomorrow  ", 
+            "Users": [
+                "@EvanRoth_", 
+                "@chrissugrue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@blprnt I suggest the Georges M\u00e9li\u00e8s exhibition at Caixa Forum http://t.co/A6T6mcsTP6 and Mercado San Miguel for eating/drinking  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @imalorg: Today and tomorrow we have our @Connect_Cities event - digital art in the public space http://t.co/OpepMGPv6T  ", 
+            "Users": [
+                "@imalorg", 
+                "@Connect_Cities"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 9, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Starting a residency today at @imalorg in Brussels!  ", 
+            "Users": [
+                "@imalorg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jimchines: The @adainitiative, which supports women in open technology and culture, is on the final days of their fundraiser. https://t\u2026  ", 
+            "Users": [
+                "@jimchines", 
+                "@adainitiative"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ofxaddons: http://t.co/bMPwkDyUOq make over @ ofDevCon @ycam_jp ! Huge thanks to @chrissugrue @laurmccarthy @kikko_fr for their amazing\u2026  ", 
+            "Users": [
+                "@ofxaddons", 
+                "@ycam_jp", 
+                "@chrissugrue", 
+                "@laurmccarthy", 
+                "@kikko_fr"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: OF 0.8.0 is out! http://t.co/1biiyLR0bw featuring RPi support, ofXml, ofxKinect, shaders on iOS, GLFW, vs2012, ofxGui, \u2026  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 8, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @julapy: otsukare samadesu day1 @ YCAM #openframeworks http://t.co/LUSWWW06qX  ", 
+            "Users": [
+                "@julapy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Delicate Boundaries will be in the @ScienceGallery Illusion show opening this week in Dublin http://t.co/1WSZ9Oc2WM  ", 
+            "Users": [
+                "@ScienceGallery"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Hey, SPAIN. I've got spots left in my 3D printing workshop tomorrow in Bilbao! http://t.co/34teCKCib6  ", 
+            "Users": [
+                "@golan"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @cowlyowl: Little girls are better at designing superheroes than you http://t.co/YAvhV7oxqW  ", 
+            "Users": [
+                "@cowlyowl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @trevorpaglen: My take on why the surveillance state is much scarier than you think it is. http://t.co/24dISntUN1 http://t.co/RW4gxnIfhl  ", 
+            "Users": [
+                "@trevorpaglen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: we're taking a survey, to make openFrameworks a better tool and understand the community better! https://t.co/QyUzqSZy5\u2026  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CreatorsProject: Software Art Inspired By Human Relationships And Amethyst Mines http://t.co/SLKFIc744s  ", 
+            "Users": [
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"It's not some Orwellian abstraction. It's America's history --- and America's recent history...\" http://t.co/Vke0HgJPnO via @BoingBoing  ", 
+            "Users": [
+                "@BoingBoing"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @tchoi8: zach's curatorial project \"Code Poetics\" http://t.co/z3giRrVo3O @zachlieberman @DreamTheEnd  ", 
+            "Users": [
+                "@tchoi8", 
+                "@zachlieberman", 
+                "@DreamTheEnd"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wheresaddie: PRISM opt-out http://t.co/8weRkiLajb via @fffffat  ", 
+            "Users": [
+                "@wheresaddie", 
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ScreenLab"
+            ], 
+            "Tweet": "RT @elliotwoods: #ScreenLab (http://t.co/iS7bS4F8Vb) is in Spain to meet new artists + collaborators.Wednesday (Zaragoza) or Thursday (Madr\u2026  ", 
+            "Users": [
+                "@elliotwoods"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"How real can these pixels feel?\" ...on cgi vs stop-motion http://t.co/Q06AmAPuOH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @EvanRoth_: Boids'n the Hood -> http://t.co/S4ccGc88e4  ", 
+            "Users": [
+                "@EvanRoth_"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chiggi: New article: British culture should be seen as commodity, says Maria Miller http://t.co/QvQtTlzZ8m  ", 
+            "Users": [
+                "@chiggi"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @dangillmor: Slate: Why you should worry when Obama administration tosses out Miranda for Tsarnaev http://t.co/2w0HHSe2wE  ", 
+            "Users": [
+                "@dangillmor"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @moebio: Sophia, author of The Matrix will finally receive her just due from the copyright infringement of her original work http://t ...  ", 
+            "Users": [
+                "@moebio"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I spent several very happy years living in Boston. Sad but hopeful for one of my favorite cities.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Excellent resource on audiovisual history: http://t.co/UpJLauL2za  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "If you needed a reason to go back to school, I think this might be it! School for Poetic Computation: http://t.co/AlQwKwRRyo  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @richove: Fascinating piece The Reading Brain in the Digital Age: The Science of Paper versus Screens: Scientific American http://t.c ...  ", 
+            "Users": [
+                "@richove"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 4, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "OH: \"Duct tape and zip ties are what hold interactive art together.\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @wheresaddie: I have 3 spaces left for my April 3rd workshop @eyebeamnyc making some @fffffat wifitagger /router hacks RSVP: http:// ...  ", 
+            "Users": [
+                "@wheresaddie", 
+                "@eyebeamnyc", 
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#nofoo"
+            ], 
+            "Tweet": "RT @fffffat: FAT GOLD, a retrospective of FAT Lab is opening April 1st, 7pm at @eyebeamnyc. See you there! http://t.co/TyITIEM9RI #nofoo ...  ", 
+            "Users": [
+                "@fffffat", 
+                "@eyebeamnyc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#mediaarts"
+            ], 
+            "Tweet": "RT @arts_numeriques: Base 8 by Chris Sugrue (@chrissugrue) - interactive installation developped a Ljudmila (@LjudmilaLab) | #mediaarts ...  ", 
+            "Users": [
+                "@arts_numeriques", 
+                "@chrissugrue", 
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mariuswatz Perhaps Kobakant. They are now based in Berlin: http://t.co/7wDijTpa7Z  ", 
+            "Users": [
+                "@mariuswatz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @trevorpaglen: Worth a read: 35 arguments against Google Glass http://t.co/0qjjaHgEk7  ", 
+            "Users": [
+                "@trevorpaglen"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @NatGeo: Experts explain why eating carnivores-like lions and bears-is not a good idea: http://t.co/EkjIY7R8rC  ", 
+            "Users": [
+                "@NatGeo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @marcosgcm: C\u00f3mo idear un FoodLab. Importante debate hoy en @medialabprado http://t.co/SHaX7z1Uz0  ", 
+            "Users": [
+                "@marcosgcm", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @vormplus: My article on configuring Mac OS X for Interactive Installations has been translated to spanish \u2014 http://t.co/N9wzXSDchg  ", 
+            "Users": [
+                "@vormplus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@tchoi8 i like it - makes me think of Masahiro Miwa's Reverse Simulation Music https://t.co/MqZBEBiNHu  ", 
+            "Users": [
+                "@tchoi8"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @3lectromode: Release of free ebook version of Hacking the Xbox in honor of Aaron Swartz. http://t.co/z9jlxOEidS  ", 
+            "Users": [
+                "@3lectromode"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CharlesCMann: New book on archaeological evidence for human violence: \"We are not hard-wired for war. We learn it.\" http://t.co/2TGY ...  ", 
+            "Users": [
+                "@CharlesCMann"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariame: Love it. In This Donkey Kong, Pauline Saves Mario http://t.co/WcTUjhUY72  ", 
+            "Users": [
+                "@mariame"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: new tutorial from @chrissugrue covers basics of working with stl vectors in c++ http://t.co/TiAOpXNb53 including a p ...  ", 
+            "Users": [
+                "@openframeworks", 
+                "@chrissugrue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mocost: Mary Cartwright, the mother of chaos theory http://t.co/4ITt80y0pF  ", 
+            "Users": [
+                "@mocost"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Just watched the first installment of \"Tropes vs Women in Video Games\" http://t.co/bBU9rKuOIX Excellent!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "morning discussion topic: how does the field of art & technology relate to social innovation?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @nicolasnova: in case you want to \"delete all your social-networking profiles and completely do away with your Web2.0 alterego\": http ...  ", 
+            "Users": [
+                "@nicolasnova"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Javier de la Cueva: \"Imagine a country where alphabetical order was patented.\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#iotmadrid"
+            ], 
+            "Tweet": "RT @latinapaterson: :Los creadores de @makespacemadrid #iotmadrid , el 15 de marzo presentaci\u00f3n oficial, 15 de septiembre apertura http: ...  ", 
+            "Users": [
+                "@latinapaterson", 
+                "@makespacemadrid"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#MakeSpaceMadrid"
+            ], 
+            "Tweet": "RT @latinapaterson: P\u00e1gina de lanzamiento de #MakeSpaceMadrid Un espacio de invenci\u00f3n para la comunidad. http://t.co/rHwFkExz  ", 
+            "Users": [
+                "@latinapaterson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: My lab, @creativeinquiry at CMU, announces 5 short-term residencies for new-media arts! http://t.co/hI5jWKsI Please apply!  ", 
+            "Users": [
+                "@golan", 
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @artsafarist: Chinese Mafia Art dealer arrested in Spain - money laundering is one of the big drivers of the contemporary art boom h ...  ", 
+            "Users": [
+                "@artsafarist"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @TheGoodDeath: In early 20th century telegraph code, LOL meant \"Loss of Life.\" Your interwebs has been forever changed.  ", 
+            "Users": [
+                "@TheGoodDeath"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#socool"
+            ], 
+            "Tweet": "a spider that draws a bigger spider in its web http://t.co/DQXnkgVN #socool  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#ELASFANTECH"
+            ], 
+            "Tweet": "RT @istoenormal: #ELASFANTECH Hoxe \u00e1s 20:30h desfrutaremos da performance 'Mares e malabares' de Mariana Carranza. Entrada libre! http:/ ...  ", 
+            "Users": [
+                "@istoenormal"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: OF T-Shirt 001 - circle packing. first OF T-shirt. Grab it here:http://t.co/D0JTEcSR ( designed by @NickHardeman ) ...  ", 
+            "Users": [
+                "@openframeworks", 
+                "@NickHardeman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#veryimpressed"
+            ], 
+            "Tweet": "exploring webgl with @mrdoob 's three.js http://t.co/sTtQ1Evx #veryimpressed  ", 
+            "Users": [
+                "@mrdoob"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#processing"
+            ], 
+            "Tweet": "RT @vormplus: Here you go: source code for my #processing book is now available on Github \u2014 http://t.co/Kp9lEHTF \u2014 Have fun coding!  ", 
+            "Users": [
+                "@vormplus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @vozcultura: El centro cultural Normal de A Coru\u00f1a inaugura la exposici\u00f3n \u00abElas fan tech\u00bb http://t.co/ftNpv18R  ", 
+            "Users": [
+                "@vozcultura"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ftrain: This elegant, horrifying visualization shows how US women lost their reproductive rights, one law at a time: http://t.co/vdm ...  ", 
+            "Users": [
+                "@ftrain"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kaepora: This 20 year old\u2019s had his life ruined for reporting a security flaw. If you believe we need reform, spread the word: http: ...  ", 
+            "Users": [
+                "@kaepora"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @blprnt: I've announced 3 new workshops in NYC for February: Intro to Processing, Processing Level-up and Processing & Data Viz: ...  ", 
+            "Users": [
+                "@blprnt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Martechplatform: Lunes 21de Enero inauguracion de la expo Elas Fan Tech,Arte.mujeres y tecnologia en Normal http://t.co/QE4bKi6R  ", 
+            "Users": [
+                "@Martechplatform"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "The Contemporary Cartographies show at the Caixa Forum in Madrid is excellent! http://t.co/fOUctVBf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @REAS: I'm teaching a Drawing with Code workshop in Sewanee, TN this summer, 16-22 June: http://t.co/7lDGhksd  ", 
+            "Users": [
+                "@REAS"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman :) making me nostalgic too (although i think you had many more summers there than i)  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Started my first MOOC this week.... Great so far, but let's see if I finish!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @statpumpkin: A transatlantic flight in one image. Beautiful viz work by @scheidegger and @wcheswick http://t.co/vOcuiWUt  ", 
+            "Users": [
+                "@statpumpkin", 
+                "@scheidegger", 
+                "@wcheswick"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Participo en el expo ELAS FAN TECH en @istoenormal, A Coru\u00f1a http://t.co/gUKk1X5N 21 Enero - 9 Marzo  ", 
+            "Users": [
+                "@istoenormal"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fffffat: A moment of silence for Aaron Swartz http://t.co/0Dru9cEL  ", 
+            "Users": [
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julian0liver: Law of Absurdity RT @thinkjustice Aaron Swartz faced a longer prison term than murderers, slave dealers & bank rob ...  ", 
+            "Users": [
+                "@julian0liver", 
+                "@thinkjustice"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julian0liver: Newstweek appears in Spain's El Pais. Article covers art questioning role of the traditional press http://t.co/q1lgxBT ...  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "scary: RT @furtherfield US cities employ precog algorithm to predict murder (Wired UK) http://t.co/mJ3myhMp  ", 
+            "Users": [
+                "@furtherfield"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zephoria: Commenting on @aaronsw's death/legal hell, @lessig's \"Prosecutor as bully\" describes the insanity of the case http://t.co/ ...  ", 
+            "Users": [
+                "@zephoria", 
+                "@aaronsw", 
+                "@lessig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Lots of interesting online course starting soon: https://t.co/gxjqvORr image processing, algorithms, signal processing, genetics...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @adainitiative: \"The ideology and rhetoric of freedom and openness\" can be used to suppress social justice in free culture http://t.c ...  ", 
+            "Users": [
+                "@adainitiative"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @resonate_io: Media-artist, director/choreographer and composer Klaus Obermaier will be at Resonate 2013! http://t.co/0mrwQtst  ", 
+            "Users": [
+                "@resonate_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "just finished the first few chapters of Pro Git - great resource & definitely worth reading http://t.co/DkrSPmQk (via @memotv )  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jamesbridle: Tom Armitage (@infovore) sketches a canon of \u201chypertext literature / interactive fiction / digital narrative\u201d http://t. ...  ", 
+            "Users": [
+                "@jamesbridle", 
+                "@infovore"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#LGRU", 
+                "#libregraphics"
+            ], 
+            "Tweet": "RT @medialabprado: Reminder CFP 'Tools for a Read-Write World' Six days left to get in your proposals #LGRU #libregraphics @lgworld http ...  ", 
+            "Users": [
+                "@medialabprado", 
+                "@lgworld"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariaarranz: the everyday sexism project http://t.co/DecXI61X  ", 
+            "Users": [
+                "@mariaarranz"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @MotherJones: Gasoline lead may account for 90% of fluctuations in violent crime\u00a0over last 50 years. @kdrum explains why:\u00a0http://t.co ...  ", 
+            "Users": [
+                "@MotherJones", 
+                "@kdrum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @bitcraftlab: Teaching Computers to Hear Emotions: detecting 5 types of emotions with 81% accuracy http://t.co/F9XPlIg3 via @IEEESpectrum  ", 
+            "Users": [
+                "@bitcraftlab", 
+                "@IEEESpectrum"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#3DPrint", 
+                "#kids", 
+                "#Design"
+            ], 
+            "Tweet": "RT @cunicode: Turn children drawings into #3DPrint figurines @crayoncreatures http://t.co/WhnYnl3O #kids #Design  ", 
+            "Users": [
+                "@cunicode", 
+                "@crayoncreatures"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: CLOUDS Bruce Sterling @bruces speaks about the art of code. https://t.co/V5n0TfCz We need your help to finish the film! ...  ", 
+            "Users": [
+                "@obviousjim", 
+                "@bruces"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @CreatorsProject: 3D printing and the future of street art: http://t.co/Lw0fVPzr  ", 
+            "Users": [
+                "@CreatorsProject"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#funcionamientos"
+            ], 
+            "Tweet": "RT @patriciadola: Hacia @intermediae @mataderomadrid Taller #funcionamientos d @medialabprado Trabajando, pensando sb diversidd funciona ...  ", 
+            "Users": [
+                "@patriciadola", 
+                "@intermediae", 
+                "@mataderomadrid", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Nice! Humans + alga = humalga : Towards the Human Spore http://t.co/LfnJC8mC by Robertina \u0160ebjani\u010d + \u0160pela Petri\u010d (via @Martechplatform)  ", 
+            "Users": [
+                "@Martechplatform"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Alma_Orozco: Ganas de que nos remezclemos. Empezamos ma\u00f1ana. Si no eres normal vente: http://t.co/T6sqxYiU cc/ @medialabprado  ", 
+            "Users": [
+                "@Alma_Orozco", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariuswatz: Could be somebody's dream job: Computational Designer at ART+COM @artcom, Berlin http://t.co/COre7xuY via @creativeapps  ", 
+            "Users": [
+                "@mariuswatz", 
+                "@artcom", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @TheOnion: [In Focus] Google Shuts Down Gmail To Show Its Immense Power http://t.co/mhyKzw5s  ", 
+            "Users": [
+                "@TheOnion"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @marcosgcm: Ya est\u00e1 listo! Hoy en @elpais se presenta el proyecto de adaptaci\u00f3n de la Serrer\u00eda para @medialabprado http://t.co/Pj3MuB ...  ", 
+            "Users": [
+                "@marcosgcm", 
+                "@elpais", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Medialab-Prado workshop Open Designs and Social Remix call for collaborators open: http://t.co/5xWNtl9A  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ideoforms @zachlieberman before i had about a year of self-taught perl and actionscript. now mostly c++,objective-c,java, javascript...  ", 
+            "Users": [
+                "@ideoforms", 
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman @jesusgollonet @ideoforms zach's c++/OF courses at parsons changed my career... more irresponsible teaching please ;)  ", 
+            "Users": [
+                "@zachlieberman", 
+                "@jesusgollonet", 
+                "@ideoforms"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 11, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#CyberMonday"
+            ], 
+            "Tweet": "RT @atduskgreg: Making Things See, my book on using the Kinect for interaction, scanning, and robotics, is 50% off for #CyberMonday http ...  ", 
+            "Users": [
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @BoingBoing: Ada Lovelace day coming up: party in London, fundraiser to sustain the project http://t.co/B0Ax46EJ  ", 
+            "Users": [
+                "@BoingBoing"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks to @LjudmilaLab, @medialabprado, SGMK and all the participants for an awesome Interactivos?!  ", 
+            "Users": [
+                "@LjudmilaLab", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Artist and cosmonaut Dragan \u017divadinov has created an incredible center for art and space research http://t.co/BnJIb7xW  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "preparing for Interactivos?\u201912 Ljubljana @LjudmilaLab !! http://t.co/hx7IjPF4  ", 
+            "Users": [
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 9, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ajspadial me parece buen idea!  ", 
+            "Users": [
+                "@ajspadial"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Justin_Lincoln: https://t.co/z5yvTPGU @ Shakerag Workshops. Part of workshop w/ Chris Sugrue . Looking to further develop for exhibi ...  ", 
+            "Users": [
+                "@Justin_Lincoln"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Arduino", 
+                "#OF", 
+                "#etextiles"
+            ], 
+            "Tweet": "RT @carolinavallejo: We still have (very few) places in our new masters program in Barcelona. #Arduino, #OF, #etextiles playground anyon ...  ", 
+            "Users": [
+                "@carolinavallejo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Having an excellent time hacking with my amazing students here at @ShakeragTN !!!  ", 
+            "Users": [
+                "@ShakeragTN"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mkshftmag: FROM THE MAKERY: In Beautiful Failures, designer Bernat Cuni documents the accidental beauty of failed 3D prints. https:/ ...  ", 
+            "Users": [
+                "@mkshftmag"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: nice list of GLSL shaders in Processing by @atduskgreg https://t.co/ZT7vFLA8  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@atduskgreg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "tutoriales de openframeworks en espa\u00f1ol http://t.co/KSxiAsLR gracias a @patriciogv  ", 
+            "Users": [
+                "@patriciogv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#memory"
+            ], 
+            "Tweet": "RT @peterfreudling: interesting!!! #memory RT @iA: Twitterror or: How a strike through option could substantially improve Twitter: http: ...  ", 
+            "Users": [
+                "@peterfreudling", 
+                "@iA"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fi5e: RT @spunout: We have 4 free tickets for 16-25 year olds for a 2 day masterclass with artist Evan Roth this weekend.Interested? ...  ", 
+            "Users": [
+                "@fi5e", 
+                "@spunout"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @monica_bello: Interactivos en Ljudmila-Liubliana. Tecnolog\u00edas obsoletas del futuro, plazo abierto hasta el 30 de junio http://t.co/T ...  ", 
+            "Users": [
+                "@monica_bello"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 12, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @creativeapps: Puppet Parade - Kinect Arm Tracker App by @design_io - source code now available http://t.co/iQeLCBFN  ", 
+            "Users": [
+                "@creativeapps", 
+                "@design_io"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: .@eyebeamnyc need your support on kickstarter to help transform the space http://t.co/k4L2TdwF + chance for a RGB+D port ...  ", 
+            "Users": [
+                "@obviousjim", 
+                "@eyebeamnyc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @zachlieberman: piratepad about women and OS is growing, nice discussion and links getting added: http://t.co/eHVShGNI  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: Hovering wire sculptures as if sketched by hand http://t.co/V6quzXJU via @kcimc @creativeapps  ", 
+            "Users": [
+                "@obviousjim", 
+                "@kcimc", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "etsy hacker school grants for women in technology http://t.co/7MW5dXJa via @zachlieberman  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "skeptical of this social seating concept... choose your seatmate based on ethnicity? sounds like a bad idea to me... http://t.co/467JD944  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'm liking these ghostly depth paintings by Kazuki Takamatsu! http://t.co/j2htClM3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#pixelsandlines"
+            ], 
+            "Tweet": "partsba.se is reverse engineering and sharing parts for products (like your favorite ikea shelf) http://t.co/OSJxi2du #pixelsandlines  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @openframeworks: We are making a video showreel of great openFrameworks projects created in 2011. Submit yours here by June 15th http ...  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "A python version of processing from Brendan Howell http://t.co/SB0TqvU4  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great presentation by Ana Carvalho about some pretty awesome plotter work being done at manufactura independente! http://t.co/9GL6PjLQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Bergen is gorgeous, but it is almost midnight and it is still light outside... crazy!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @pekinhouse: Apple nos roba al \"Tio Pepe\" de Madrid. http://t.co/PYB9pYSo  ", 
+            "Users": [
+                "@pekinhouse"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @medialabprado: Extended deadline for Interactivos?\u201912 Ljubljana. Obsolete Technologies of the Future --> 20June http://t.co/R3kB6rUn  ", 
+            "Users": [
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @medialabprado: Ahora streaming en directo de la conferencia \"La investigaci\u00f3n el\u00e1stica\" de @jldevicente en @CSIC. http://t.co/bqJbLR1b  ", 
+            "Users": [
+                "@medialabprado", 
+                "@jldevicente", 
+                "@CSIC"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Applications still open for Interactivos 12 Ljubljana: http://t.co/tvAdGzyM with myself, @medialabprado, @LjudmilaLab, SGMK Z\u00fcrich and more!  ", 
+            "Users": [
+                "@medialabprado", 
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Looking forward to participating in the Libre Graphics Research Unit in Bergen this week! http://t.co/H8FYIS50  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "wtf @nytimes RT: @BoingBoing NYT: \u201cMEN invented the internet\u201d http://t.co/vHhuF3K2  ", 
+            "Users": [
+                "@nytimes", 
+                "@BoingBoing"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: CLOUDS extended cut https://t.co/CcSwLxCc pw: depth thx to @artandcode @resonate_io @eyebeamnyc @creativeinquiry cc @dee ...  ", 
+            "Users": [
+                "@obviousjim", 
+                "@artandcode", 
+                "@resonate_io", 
+                "@eyebeamnyc", 
+                "@creativeinquiry", 
+                "@dee"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julapy: anyone need a ticket to @eyeofestival festival? sadly i can't make it\u2026 please pass it on if you know anyone.  ", 
+            "Users": [
+                "@julapy", 
+                "@eyeofestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @alphavillefest: @MzTEK Open call for submissions for Alpha-ville 12. Looking for more women in the programme, please RT http://t.co/ ...  ", 
+            "Users": [
+                "@alphavillefest", 
+                "@MzTEK"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Cool location-based jewelry by http://t.co/3ULmKi0w Also, @rachelbinx awesome shirt! http://t.co/kkHNuu6O  ", 
+            "Users": [
+                "@rachelbinx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I am constantly reading \"kinetic sculpture\" as \"kinect sculpture\" and am sometimes disappointed. I suspect that might not be a good thing...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@golan @creativeinquiry that's great news - congratulations!!  ", 
+            "Users": [
+                "@golan", 
+                "@creativeinquiry"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "kinect in space! http://t.co/BAkSbART  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openFrameworks"
+            ], 
+            "Tweet": "RT @openframeworks: #openFrameworks 0071 is out! Loads of new community contributed examples, features and bugfixes. Grab it here: http: ...  ", 
+            "Users": [
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#tt"
+            ], 
+            "Tweet": "RT @creativeapps: Geek Sherpa - DIY Guide to Barcelona http://t.co/KFtzsQCC #tt  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theowatson: holy crap. a free skeletonization library for depth images. http://t.co/VcTdf9YW  ", 
+            "Users": [
+                "@theowatson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Lego"
+            ], 
+            "Tweet": "RT @royrobotiks: I think this #Lego girl power set needs more support: http://t.co/ui31kOB1 <3 the firewoman at the bottom  ", 
+            "Users": [
+                "@royrobotiks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: what happens when a terrorist is eventually caught using an arduino?  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: i have a suspicion that it's our responsibility as artists to imagine alternative uses for everything on this list https://t. ...  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@JoelGethinLewis no, in madrid... enjoy OFFF! it looks great!  ", 
+            "Users": [
+                "@JoelGethinLewis"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "I'll be teaching in a new masters program this fall in Advanced Interaction Design in Barcelona! Applications open! http://t.co/eCgAUVMt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New works and website from Paola Tognazzi: http://t.co/s3iVmcNS + cute shirts! http://t.co/xpgUgrPu  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 5, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Applications open for Interactivos?\u201912 Ljubljana with @LjudmilaLab + @medialabprado! http://t.co/tvAie9HW  ", 
+            "Users": [
+                "@LjudmilaLab", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @LjudmilaLab: NIce!!TODAY!! 7 pm, \u0160KUC Gallery, Guided tour by Ida Hir\u0161enfelder & Robertina \u0160ebjani\u010d with the artists http://t.co/uq ...  ", 
+            "Users": [
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#medialabprado"
+            ], 
+            "Tweet": "una collaboraci\u00f3n grande del gran spaguetti en #medialabprado ! http://t.co/G3W3xLoP  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "is there really no way to properly install xcode now without going through the app store? rather exasperating...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#lj"
+            ], 
+            "Tweet": "RT @LjudmilaLab: REAL TIME SETTINGS FOR NER[D/VE]S - opening of the expo on April 3rd, at 8 pm at \u0160kuc Gallery http://t.co/uqyFi4Zu #lj ...  ", 
+            "Users": [
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#base8", 
+                "#openFrameworks", 
+                "#ljudmila"
+            ], 
+            "Tweet": "RT @LjudmilaLab: Soon in Ljubljana in \u0160KUC gallery \u2192 BASE 8 by @chrissugrue: http://t.co/czt8p9WR #base8 #openFrameworks #ljudmila  ", 
+            "Users": [
+                "@LjudmilaLab", 
+                "@chrissugrue"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jamiew: Awesome interactive installation by @chris_milk with @aarontweets @obviousjim et al I BELIEVE I CAN FLY http://t.co/GbwrEjLP  ", 
+            "Users": [
+                "@jamiew", 
+                "@chris_milk", 
+                "@aarontweets", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fffffat: The Free Universal Construction Kit http://t.co/FLv8E4nq  ", 
+            "Users": [
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "heading to vienna... this train has wifi and plugs... very nice!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hanging out at Interface Culture lab in Linz with @mkalten and Marushka Polakova. Lecture here at 3:30pm  ", 
+            "Users": [
+                "@mkalten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @GeraldineAtger: Exciting Opening of @robotsavatars Exhibition Tomorow, expect talking robots, real life avatars, collaborative virtu ...  ", 
+            "Users": [
+                "@GeraldineAtger", 
+                "@robotsavatars"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Setting up Klaus Obermaier's Le Sacre in St. Poelten, Austria http://t.co/rUcQoCEg  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great participatory theater by Roger Bernat: http://t.co/e1zpCNGH tech by @mcanet and @jaumetet... with @openframeworks ?  ", 
+            "Users": [
+                "@mcanet", 
+                "@jaumetet", 
+                "@openframeworks"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Thanks to @drakko , @cunicode , @medialabprado and all our students for another great workshop at medialab-prado!  ", 
+            "Users": [
+                "@drakko", 
+                "@cunicode", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#masterDIWO"
+            ], 
+            "Tweet": "RT @jararocha: Learning through digital media experiments in technology and pedagogy http://t.co/cyQiYgPa #masterDIWO  ", 
+            "Users": [
+                "@jararocha"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@mkalten agreed! almost makes me wish i were a student instead : ) not moving just yet, but i will certainly be there often!  ", 
+            "Users": [
+                "@mkalten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Also very excited that I will be teaching in the new Masters of Advanced Interaction at IAAC in Barcelona! http://t.co/IDZOIbBZ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 15, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Some spots are still available for my workshop on creative coding and interactivity this summer in beautiful Tennessee! http://t.co/8ZjQxCJn  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@elliotwoods @artur0castro yes, it's a shame that only our code will make it to korea ; ) but perhaps you can let us know how it turns out!  ", 
+            "Users": [
+                "@elliotwoods", 
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Thanks @artur0castro, @drakko, @medialabprado and all our students for a fun weekend hacking with #openframeworks!!!  ", 
+            "Users": [
+                "@artur0castro", 
+                "@drakko", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 2, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @marcosgcm: Taller de Open Frameworks en @medialabprado http://t.co/viXt0GVv  ", 
+            "Users": [
+                "@marcosgcm", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Taller de OpenFrameworks en Medialab-Prado con @artur0castro y @drakko Feb 2-5: http://t.co/KWRlGgug  ", 
+            "Users": [
+                "@artur0castro", 
+                "@drakko"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @chr1sa: THIS is what 3D printing is for! Fairytale Castle and Moonbase printable playsets from @makerbot: http://t.co/DUm71yyX, http ...  ", 
+            "Users": [
+                "@chr1sa", 
+                "@makerbot"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @solaas: \"The division between plants and animals is collapsing completely\" [New Scientist] http://t.co/7Y9t1aFE  ", 
+            "Users": [
+                "@solaas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SOPA", 
+                "#PIPA"
+            ], 
+            "Tweet": "RT @fffffat: BLACKOUT YOUR SITE, TUMBLR, ETC. WITH THE BLACKOUT CENSOR SCRIPT >> http://t.co/smlqZ3Mg #SOPA #PIPA (BY @gleuch)  ", 
+            "Users": [
+                "@fffffat", 
+                "@gleuch"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "great coding advice from @kcimc ! http://t.co/uwNSmi1c  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#stopsopa", 
+                "#sopastrike"
+            ], 
+            "Tweet": "http://t.co/9zz4I1FE going black #stopsopa #sopastrike  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#culture"
+            ], 
+            "Tweet": "RT @tbx: Love it! Prof. Olia Lialina's paper on internet cafes and other ruins of the digital revolution! http://t.co/ynllE36z #culture  ", 
+            "Users": [
+                "@tbx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#PIPA", 
+                "#SOPA"
+            ], 
+            "Tweet": "RT @telecomix: Woha, @Wikipedia will go black against #PIPA #SOPA http://t.co/ajMwst1c  ", 
+            "Users": [
+                "@telecomix", 
+                "@Wikipedia"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#7"
+            ], 
+            "Tweet": "RT @Elektrafestival: Call for submissions _ Bains num\u00e9riques #7 // Deadline: February 15 http://t.co/NtGeT2BS  ", 
+            "Users": [
+                "@Elektrafestival"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Spain"
+            ], 
+            "Tweet": "RT @glynmoody: US Threatened To Blacklist #Spain For Not Passing Site Blocking Law - http://t.co/xXyOknIb spaniards must be so proud of ...  ", 
+            "Users": [
+                "@glynmoody"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @arctic_sunrise: RT @artgillespie: Teach your kids C with a board game! Fun for the whole family. http://t.co/JWDzTa1w grt looking idea  ", 
+            "Users": [
+                "@arctic_sunrise", 
+                "@artgillespie"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @latinapaterson: Dos a\u00f1os m\u00e1s La Tabacalera de Lavapi\u00e9s: http://t.co/75WKJyIC  ", 
+            "Users": [
+                "@latinapaterson"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 12, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Apple", 
+                "#snowleopard"
+            ], 
+            "Tweet": "RT @IforAE: a percentage of #Apple 's revenue on #snowleopard should actually go to the species  ", 
+            "Users": [
+                "@IforAE"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mariuswatz: Architecture of Fear - a conversation with Trevor Paglen (post on @wmmna, I'm a big fan of Paglen's work) http://t.co/Kp ...  ", 
+            "Users": [
+                "@mariuswatz", 
+                "@wmmna"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zzzinc @artur0castro Raul y todo los estudiantes - muchas gracias para un workshop super-bueno!!  ", 
+            "Users": [
+                "@zzzinc", 
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#SOPA"
+            ], 
+            "Tweet": "RT @mariame: RT @alexismadrigal: If you don't know what #SOPA is, check out this from the Center for Democracy & Technology: http://t.c ...  ", 
+            "Users": [
+                "@mariame", 
+                "@alexismadrigal"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "RT @obviousjim: all you wanted to know about #openframeworks addons but were afraid to ask: http://t.co/2lEXtORs  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @sesamestreet: Today is definitely brought to you by the number 11.  ", 
+            "Users": [
+                "@sesamestreet"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#latabacalera"
+            ], 
+            "Tweet": "empieza le presentaci\u00f3n de un a\u00f1o de #latabacalera http://t.co/OZVTWwiU  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julian0liver: Lucid and sane piece from Psychologist Melanie Joy: 'Carnism: Why Eating Animals Is a Social Justice Issue' http://t.c ...  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Playing with @kcimc 's awesome makerbot-kinect apps http://t.co/g5Keaot7 http://t.co/wzJG75aE  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fi5e: Kitty City by @cyriakharris delivers: http://t.co/uFC174Wf  ", 
+            "Users": [
+                "@fi5e", 
+                "@cyriakharris"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @minipetite: About octopus intelligence, emotions, and exceptional personality http://t.co/xTOiTYq8  ", 
+            "Users": [
+                "@minipetite"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @DrWoohoo: If you're killing it by combining Camera(s) + Light(s) + Code and r interested in working on gigs, I'd \u2665 2 c your magic.  ", 
+            "Users": [
+                "@DrWoohoo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#NSFW"
+            ], 
+            "Tweet": "RT @fi5e: Occupy the Internet Exhibition finissage on http://t.co/ch7H3YkU !!!!!!!! #NSFW  ", 
+            "Users": [
+                "@fi5e"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @artur0castro: @chrissugrue @dbsus4 and I will be teaching a 3D creative programming workshop on Nov 18 in Barcelona: http://t.co/4ux ...  ", 
+            "Users": [
+                "@artur0castro", 
+                "@chrissugrue", 
+                "@dbsus4"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 11, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @Tonisancho: Como eliminar tu cuenta de Google+ http://t.co/rslLa6ny v\u00eda @gooplusblog  ", 
+            "Users": [
+                "@Tonisancho", 
+                "@gooplusblog"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Friday night at Medialab-Prado skeleton tracking skeletons... http://t.co/ApRvLmiH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jesusgollonet: oh oh oh. @artur0castro has started a blog! http://t.co/UI4IzuxY  ", 
+            "Users": [
+                "@jesusgollonet", 
+                "@artur0castro"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "Goodbye Pittsburgh and thanks to everyone for a lovely time at #artandcode!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "that's http://t.co/uOZLPeOF ;)  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "Tomorrow I'll be speed presenting a new work, Base 8 (http://t.co/uOZLPeOF) at #artandcode!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@fffffat http://t.co/9zz4I1FE = occupied!  ", 
+            "Users": [
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#artandcode"
+            ], 
+            "Tweet": "@kcimc, @zachlieberman, @golan, @JoelGethinLewis, @horusVacui looking forward to seeing you all soon at #artandcode!  ", 
+            "Users": [
+                "@kcimc", 
+                "@zachlieberman", 
+                "@golan", 
+                "@JoelGethinLewis", 
+                "@horusVacui"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#15M"
+            ], 
+            "Tweet": "RT @acorsin: Guardian article on how Spain's #15M movement is redefining politics, http://t.co/1nT8g1pv  ", 
+            "Users": [
+                "@acorsin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julian0liver Yes, Madrid was packed last night! We could not reach Sol as the streets were full all the way to Cibeles! Muy bien Madrid!  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#OccupyWallStreet", 
+                "#WIRED"
+            ], 
+            "Tweet": "RT @amandamcdc: Eyebeam Resident Amelia Marzec's Signal Strength alternative peer-to-peer network at #OccupyWallStreet on #WIRED photo b ...  ", 
+            "Users": [
+                "@amandamcdc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @evsccc: Artist Residency at CERN - Sounds incredible!! http://ow.ly/6PAUQ  ", 
+            "Users": [
+                "@evsccc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @postgoodism: Once again, the solution to a gnarly C++ problem ends up being \"rewrite it in C\".  ", 
+            "Users": [
+                "@postgoodism"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 10, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @pedrosoler: Viernes 07.10 es Ada Lovelace Day ! http://t.co/xWwfpkwd  ", 
+            "Users": [
+                "@pedrosoler"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @smashingmag: Programming for kids: useful learning resources for teaching programming to kids - http://t.co/3hbSJHY9  ", 
+            "Users": [
+                "@smashingmag"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Does anyone have Spanish translations of these Processing tutorials? \u00bfAlguien tiene traducciones de estas tutoriales? http://t.co/3uRgZ9ww  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 9, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: a list of everything i remember changing between OF 0062 and 007 http://t.co/66oaU7gR in lieu of an official changelog  ", 
+            "Users": [
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 29, 
+                "Month": 8, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Heading to Sao Paulo!!! http://t.co/402UX0p  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Great commentary by @factoryfactory on @kcimc 's brilliant and now controversial project \"People Staring at Computers\" http://t.co/fZMLlZf  ", 
+            "Users": [
+                "@factoryfactory", 
+                "@kcimc"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Apple don\u2019t bring the hammer down on @kcimc too hard: Some context about pranks & Apple by @adafruit http://adafru.it/b16165  ", 
+            "Users": [
+                "@golan", 
+                "@kcimc", 
+                "@adafruit"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @iteeth: Feds visit artist behind People Staring at Computers, confiscate laptop http://bit.ly/o3Nmf6  ", 
+            "Users": [
+                "@iteeth"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Heading to Zagreb today for an artist talk at Upgrade! mama, preradoviceva 18, 19h: http://t.co/VnqHAVA  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Exhibition opening tonight in Kibela Gallery, Maribor, Slovenia! http://t.co/aksLJgd 20h  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 7, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "slovenian keyboard has no { } or [ ] ... how does anyone code here!?  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#visualizar11"
+            ], 
+            "Tweet": "RT @medialabprado: Nina Valkanova is presenting the project Reveal it! http://t.co/nOoX9eI #visualizar11  ", 
+            "Users": [
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @LjudmilaLab: Chris Sugrue: BASE 8:Exhibition, KiBela (KIBLA), Maribor, 4th \u2013 14th July... http://fb.me/OxeXTjoW  ", 
+            "Users": [
+                "@LjudmilaLab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#15M"
+            ], 
+            "Tweet": "RT @pedrosoler: apoya la publicaci\u00f3n de un libro sobre el movimiento #15M http://t.co/Pud4tk7  ", 
+            "Users": [
+                "@pedrosoler"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @johnmaeda: Recipes for Expressive Electronics by Hannah Perner-Wilson. http://t.co/Ga5AKww  ", 
+            "Users": [
+                "@johnmaeda"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @solaas: The Weird and Beautiful World of Fluid Dynamics [Wired] http://ow.ly/1u0634  ", 
+            "Users": [
+                "@solaas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 20, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "micro-origami magic... http://t.co/5NqTNFt  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Kit Webster's projection mapping + optical illusion creates an impressive av sculpture: http://t.co/gZSLcty ... very cool to see live...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @golan: Another terrific presentation by @slavin_fpo http://t.co/k432jXP , this time picking apart augmented reality  ", 
+            "Users": [
+                "@golan", 
+                "@slavin_fpo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 13, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Discovered SMOD, an african hip hop trio from Mali. They put on a really amazing show yesterday! http://t.co/MDmoYwN  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 10, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Last day of LabToLab in Nantes... discovered a lot of great labs I didn't know like Ker Thiossane in Dakar http://bit.ly/msEZAy  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fffffat: RT @fi5e: My new collab w/ Mozilla just launched. Support the open web, join signatures w/ me, @lessig & the world http://m ...  ", 
+            "Users": [
+                "@fffffat", 
+                "@fi5e", 
+                "@lessig"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "In Nantes for LabtoLab http://www.labtolab.org . David Pello presenting about Plataforma Cero at LABoral. http://bit.ly/lhbSql. Looks great!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Ernesto Klar's installation \"Luzes Relaciones\" is stunning work... I am very glad to see it in person... http://klaresque.org/?p=63  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "En route to Saint-Brieuc for Art Rock Festival... Looks like I will be in good company there: http://bit.ly/lIBqZ0  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Finally an airport with free wifi -- way to go LJU!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@zachlieberman slovenian poster:http://bit.ly/kCjzAk \"The more you contribute to the community-the more you'll receive from it! Vote for OF!  ", 
+            "Users": [
+                "@zachlieberman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 6, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @artzilla: RT @fffffat China Web Boycott (Browser Blocker) \u2013 Protest the detainment of Ai Weiwei & other artists in China\u2026 http://fff ...  ", 
+            "Users": [
+                "@artzilla", 
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @hellospaceman: Apparently people are using \"inbox\" as a verb. If somebody asks me to inbox them my details, I will emergency room th ...  ", 
+            "Users": [
+                "@hellospaceman"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jamiew: VHX now open to the public: http://bit.ly/jmSePf  ", 
+            "Users": [
+                "@jamiew"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Checking out Kibla Multimedia Gallery in Maribor, Slovenia. http://www.kibla.org/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@pedrosoler -- Thanks for explaining the story of artist Ahmed Basiony http://bit.ly/lsaDHr ! ...tragic and powerful.  ", 
+            "Users": [
+                "@pedrosoler"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @monica_bello: im\u00e1genes del desalojo de ciudadan/s en la plaza de catalu\u00f1a http://t.co/2m4r43x  ", 
+            "Users": [
+                "@monica_bello"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julian0liver and @arambartholl -- Congrats on Ars!  ", 
+            "Users": [
+                "@julian0liver", 
+                "@arambartholl"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Artist In Residency in Taipei. Application deadline 5-31-11: http://bit.ly/m4F89I  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Artist talk tomorrow at Mestna Galerija in Ljubjlana: http://bit.ly/lXUpuI  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Being an expert in social media is like being an expert at taking the bread out of the refrigerator.\" http://read.bi/mUpdNk via @jldvicente  ", 
+            "Users": [
+                "@jldvicente"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Heading to a tour of the Ljudmila exhibition (http://bit.ly/l77w95) by artist/cofounder Marko Peljhan http://bit.ly/kbptrn tonight!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#eG8"
+            ], 
+            "Tweet": "RT @fffffat: CIVILIZED ? #eG8 - 'an exercise in censorship and control dressed up as a technology summit' http://fffff.at/e\u2026 (cont) http ...  ", 
+            "Users": [
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @telecomix: Eric Schmidt say:\"Technology will move faster than governments, so don't legislate before you understand the consequences ...  ", 
+            "Users": [
+                "@telecomix"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Amazing panorama of protests in madrid! http://bit.ly/mnn6OJ via @mkalten  ", 
+            "Users": [
+                "@mkalten"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#yeswecamp"
+            ], 
+            "Tweet": "RT @langdonw: #yeswecamp In Spanish cities,authorities ban the protests, but the festival of freedom continues http://goo.gl/CxAHe Democ ...  ", 
+            "Users": [
+                "@langdonw"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#GML"
+            ], 
+            "Tweet": "RT @_01010101: RT @golan: \"Markup\", a great new #GML project by @fi5e has just gone live at http://j.mp/mwsWSH  ", 
+            "Users": [
+                "@_01010101", 
+                "@golan", 
+                "@fi5e"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hanging outing out in Slovenia for an air at ljudmila! http://www.ljudmila.org/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 6, 
+                "Month": 5, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Works from my processing workshop at Medialab-Prado: http://bit.ly/mA4ZsO  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @tweetingcops: MaSAT: Madrid Street Advertising Takeover (manual ;) ) http://urbanshit.de/?p=4867  ", 
+            "Users": [
+                "@tweetingcops"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Finished the rites of spring tour with much success... learned that 88,000 lumens definitely makes for a pretty amazing picture  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "saw ryoji ikeda tonight at the barbican...awesome performance!  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "On tour with Klaus Obermaier's Le Sacre du Printemps: http://www.exile.at/sacre/ First show at the Kampnegal, Hamburg.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@damiamian hmm, interesting... I think this is a problem tho: \u201cWe wanted him to somehow make what we teach seem new and shiny ...\u201d  ", 
+            "Users": [
+                "@damiamian"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ninjafx: hm... RT @unnamedentity: China bans Time Travel movies and TV shows. *facepalm* http://j.mp/eCFPHT  ", 
+            "Users": [
+                "@ninjafx", 
+                "@unnamedentity"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @factoryfactory: so even vanity fair is noticing wealth inequality in the US: http://j.mp/epjTCw funny, given the title of the magazi ...  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "illegal rosewood trade leads to eroded landscapes that appear like enormous leaves... or deep wounds http://on.natgeo.com/gd0ALS  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcosgcm gracias! voy a ver tu presentaci\u00f3n!  ", 
+            "Users": [
+                "@marcosgcm"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#labsurlab", 
+                "#seminariolsl"
+            ], 
+            "Tweet": "Streaming en directo de seminarios por @labSurlab: http://bit.ly/gwPoA9 #labsurlab #seminariolsl (via @Telemedellin)  ", 
+            "Users": [
+                "@labSurlab", 
+                "@Telemedellin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@marcosgcm @labSurlab \u00bfD\u00f3nde est\u00e1 el streaming?  ", 
+            "Users": [
+                "@marcosgcm", 
+                "@labSurlab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "awesome! RT: @theowatson wow, #openframeworks in TRON: http://bit.ly/hmdiJi . Bottom right corner :) ( via @vineshgayadin )  ", 
+            "Users": [
+                "@theowatson", 
+                "@vineshgayadin"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Presentaci\u00f3n del libro \"WikiLeaks y Assange\" por Medialab-Prado, 4.11 10.30h http://bit.ly/hY5Fg3  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Hypnotic lunar visualization/calendar by @dmitre http://dmtr.org/lunarcalendar/  ", 
+            "Users": [
+                "@dmitre"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ninjafx: RT @jaymecochrane: One of the most amazing urban photos I've ever seen. Mexico City, by National Geographic: http://t.co/Ya ...  ", 
+            "Users": [
+                "@ninjafx", 
+                "@jaymecochrane"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 4, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Article on Medialabs in Europe! http://bit.ly/fCYZHP... I'm too cheap to buy it :), but here is @HangarBCN's bit : http://bit.ly/grLlG9  ", 
+            "Users": [
+                "@HangarBCN"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @carolinavallejo: My friend Friedrich just started a Kickstarter for Moviesandbox - an open-source 3D animation tool: http://kck.st/f ...  ", 
+            "Users": [
+                "@carolinavallejo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mikeash: Normal person: \"I'm too lazy to figure it out, I'll just look it up.\" Programmer: \"I'm too lazy to look it up, I'll just fi ...  ", 
+            "Users": [
+                "@mikeash"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fi5e: \"How To Be A Successful Artist... be white, male and ambiguous\" ~Hennessy Youngman (aka @therealhennessy) - http://bit.ly/erx2k6  ", 
+            "Users": [
+                "@fi5e", 
+                "@therealhennessy"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#labsurlab"
+            ], 
+            "Tweet": "RT @marcosgcm: Aqu\u00ed pod\u00e9is ver el intenso e interesante programa del #labsurlab: http://labsurlab.co/ @labSurlab  ", 
+            "Users": [
+                "@marcosgcm", 
+                "@labSurlab"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @obviousjim: Karolina Sobecka just updated her site with lots of new work & images http://www.gravitytrap.com/category/artwork . wond ...  ", 
+            "Users": [
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @kcimc: paulslib.c: 170k of pure mathematical goodness in one c file from the infamous @pauldavidbourke http://j.mp/er0a3u  ", 
+            "Users": [
+                "@kcimc", 
+                "@pauldavidbourke"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@factoryfactory agreed. excellent book.  ", 
+            "Users": [
+                "@factoryfactory"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @stefanboublil: why people insist on lining up at the gate so long before boarding when assigned seating has been standard since the ...  ", 
+            "Users": [
+                "@stefanboublil"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Wireframe-mesh creatures from street artist Dal. Beautiful. http://bit.ly/dULhq7 (via @marcdschiller)  ", 
+            "Users": [
+                "@marcdschiller"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 24, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jararocha: A Handbook for Coding Cultures: http://www.dlux.org.au/codingcultures/handbook.html  ", 
+            "Users": [
+                "@jararocha"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Stereoscopic Realtime Dance Performance by 1n0ut: http://vimeo.com/21385114  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Call for artists / social scientists to work with organizations located in the Basque Country & Salamanca: http://bit.ly/g9uscV  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @bambikillers: Kohei Nawa http://goo.gl/fb/BesKL  ", 
+            "Users": [
+                "@bambikillers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "...that last quote from @DavidZax: http://bit.ly/hRwOGx :)  ", 
+            "Users": [
+                "@DavidZax"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "\"Viewing objects from multiple viewpoints at once: it gave our predecessors a robust art movement, cubism. Nowadays, it just gives us 3-D.\"  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#3D"
+            ], 
+            "Tweet": "RT @fastcompany: This Lens Takes Pictures From Nine Angles at Once to Make a #3D Image http://bit.ly/hRwOGx by @DavidZax  ", 
+            "Users": [
+                "@fastcompany", 
+                "@DavidZax"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @cindygallop: Nice. http://programming-motherfucker.com/ via @harper  ", 
+            "Users": [
+                "@cindygallop", 
+                "@harper"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @carolinavallejo: ! Canadian doctors hook a Kinect to medical imagining for direct access to MRI scans in operating room http://j.mp/ ...  ", 
+            "Users": [
+                "@carolinavallejo"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ninjafx: RT @netwurker: _The Dalai Lama, when asked what surprised him most about humanity...said_: http://bit.ly/dTvSm7  ", 
+            "Users": [
+                "@ninjafx", 
+                "@netwurker"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#streetart", 
+                "#Tunisia"
+            ], 
+            "Tweet": "RT @nuart11: JR in Tunisia http://bit.ly/e1aJvg #streetart #Tunisia  ", 
+            "Users": [
+                "@nuart11"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @bambikillers: The Joy of Destruction http://goo.gl/fb/9NNgH  ", 
+            "Users": [
+                "@bambikillers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Processing"
+            ], 
+            "Tweet": "Gorgeous icelike 3d objects generated with #Processing from @realitat_mx http://t.co/vlN6l6I  ", 
+            "Users": [
+                "@realitat_mx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 21, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Eva Moraga talks about art, culture and economics in Spain, Medialab-Prado: Tues 11:30am, english (+live-streaming) http://bit.ly/dJzgji  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "sin wave url hehe http://bit.ly/gRwuDf  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @PCRMLF: @nytimes illustrates a century of meat consumption http://ow.ly/4hdO9  ", 
+            "Users": [
+                "@PCRMLF", 
+                "@nytimes"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 16, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @julian0liver: \"Why is there no looting in Japan?\" http://t.co/n7jj3D8 All said, Japanese aren't really into theft. Rare in .jp regar ...  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#snowboarding"
+            ], 
+            "Tweet": "RT @memotv 400yo tradition of #snowboarding in remote turkish village, demo'd by 70yo http://t.co/VEZqPdQ /  ", 
+            "Users": [
+                "@memotv"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Dinner dilemma solved: http://whatthefuckshouldimakefordinner.com (via @jararocha)  ", 
+            "Users": [
+                "@jararocha"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 9, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fi5e: I'll be presenting on \"Open Source, Viral Media and Art That Isn't Boring\" today at FITC (5:15pm, Amsterdam) http://bit.ly/fi6SZx  ", 
+            "Users": [
+                "@fi5e"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@ninjafx -- wow nice list! also, Mika Satomi http://nerding.at and Hannah Perner-Wilson http://plusea.at !  ", 
+            "Users": [
+                "@ninjafx"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "MUARTECH: Martes 8 de Marzo, 19 - 22h, Espacio Menos Uno, Madrid: http://bit.ly/f8oWVd  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @fffffat: Kathie Lee <3 Clap-Off Bra 4 Eva!!!1 http://fffff.at/as-seen-on-kathie-lee/  ", 
+            "Users": [
+                "@fffffat"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 7, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @bambikillers: \u2018Til Death Do Us Part Ring http://goo.gl/fb/XkpiQ  ", 
+            "Users": [
+                "@bambikillers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Empezamos con el taller de Jugando Con N\u00fameros por Medialab-Prado. Presentaci\u00f3nes a las 18h.  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @jldevicente: Todo se acaba, hoy finaliza el grupo de trabajo Pensando y Haciendo @medialabprado. Streaming en directo: http://bit. ...  ", 
+            "Users": [
+                "@jldevicente", 
+                "@medialabprado"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @ninjafx: RT @burodestruct: Eastern european StarWars posters http://bit.ly/gfN5fz (via @sci_fi_o_rama)  ", 
+            "Users": [
+                "@ninjafx", 
+                "@burodestruct", 
+                "@sci_fi_o_rama"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Intricate sculptural books by Brian Dettmer http://bit.ly/fIlGEM via @bambikillers  ", 
+            "Users": [
+                "@bambikillers"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Even the USAFA teaches with Processing http://bit.ly/eenM6d  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Met the owner of a charming historic cinema in Brugge who likes to code in assembly and c... we disagreed on the subject of oop tho...  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#physics", 
+                "#ode", 
+                "#bullet", 
+                "#physx", 
+                "#newton"
+            ], 
+            "Tweet": "RT @cm4rt: interesting paper comparing different #physics engines like #ode #bullet #physx #newton http://bit.ly/g2U1Cd  ", 
+            "Users": [
+                "@cm4rt"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 1, 
+                "Month": 3, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @solaas: Do not miss this abstracted landscape photos, taken from cameras on kites http://t.co/ETEesil  ", 
+            "Users": [
+                "@solaas"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @amandamcdc: RT @AmritRichmond: ths article says women shld go 2 hackathons 2 meet \"hotties.\" http://bit.ly/eH0yzv <= OUCH!\u2026 (cont ...  ", 
+            "Users": [
+                "@amandamcdc", 
+                "@AmritRichmond"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [
+                "#Kinect"
+            ], 
+            "Tweet": "@creativeapps @KarlDD more 3d prints from 'Be Your Own Souvenir' by blablaLAB http://byos.blablablab.org/ #Kinect  ", 
+            "Users": [
+                "@creativeapps", 
+                "@KarlDD"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 28, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "En route to Brussels to set up for the jeugdfilm festival http://www.jeugdfilmfestival.be/  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Sandrine Pelletier's makes gorgeous skeletons with lace http://bit.ly/hXuJdy and Janne Parviainen with light and snow http://bit.ly/e4UHrH  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 26, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "AVLab session tonight at Medialab-Prado http://bit.ly/eJI4b1  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 2, 
+                "Year": 2011
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@creativeapps thx for the push! your insightful presentation reminded me of this oldie but goodie http://bit.ly/ifOIHV  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }
+    ], 
+    "name": "Chrissugrue.txt"
+}

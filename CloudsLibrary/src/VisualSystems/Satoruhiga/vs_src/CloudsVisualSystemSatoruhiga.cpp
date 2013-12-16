@@ -146,17 +146,13 @@ void CloudsVisualSystemSatoruhiga::guiRenderEvent(ofxUIEventArgs &e){
 // geometry should be loaded here
 void CloudsVisualSystemSatoruhiga::selfSetup(){
 	
-		
-	
-//	someImage.loadImage( getVisualSystemDataPath() + "images/someImage.png";
-	
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
 void CloudsVisualSystemSatoruhiga::selfPresetLoaded(string presetPath){
-	
+	regenerate = true;
 }
 
 // selfBegin is called when the system is ready to be shown
@@ -214,7 +210,9 @@ void CloudsVisualSystemSatoruhiga::selfExit(){
 //events are called when the system is active
 //Feel free to make things interactive for you, and for the user!
 void CloudsVisualSystemSatoruhiga::selfKeyPressed(ofKeyEventArgs & args){
-	
+	if(args.key == 'R'){
+		regenerate = true;
+	}
 }
 void CloudsVisualSystemSatoruhiga::selfKeyReleased(ofKeyEventArgs & args){
 	
