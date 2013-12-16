@@ -107,7 +107,7 @@ void CloudsVisualSystemLaplacianTunnel::selfSetupGui(){
 	customGui->addIntSlider("num replications", 1, 5, &numReplications);
 	customGui->addSlider("fog density", 0, .3, &fogDensity);
 	customGui->addSlider("light distance", 20, 600, &lightDistance);
-	customGui->addSlider("cam speed", 0, 10, &cameraSpeed);
+	customGui->addSlider("cam speed", 0, 2, &cameraSpeed);
 	customGui->addSlider("corkscrew factor", 0, .2, &corkscrewFactor);
 	customGui->addToggle("draw points", &bDrawPoints);
 	customGui->addToggle("external debug cam", &bUseExternalCamera);
@@ -180,6 +180,8 @@ void CloudsVisualSystemLaplacianTunnel::selfSetup(){
 	sort(vbos.begin(), vbos.end(), meshsort);
 	cout << max << "  " << min << endl;
 	
+	shader.load(getVisualSystemDataPath() + "shaders/laplacian.vert",getVisualSystemDataPath() + "shaders/laplacian.frag");
+	tunnelCam.setFov(70);
 }
 
 // selfPresetLoaded is called whenever a new preset is triggered
@@ -205,7 +207,6 @@ void CloudsVisualSystemLaplacianTunnel::selfSceneTransformation(){
 
 //normal update call
 void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
-
 	tunnelCam.setPosition( ofVec3f(tunnelCam.getPosition().x,
 								   tunnelCam.getPosition().y + cameraSpeed,
 								   tunnelCam.getPosition().z) );
@@ -225,8 +226,8 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 	ry.makeRotate(currentLookAngle.y, -1, 0, 0);
 	tunnelCam.setOrientation(base * rx * ry);
 	
-	headlight.setPointLight();
-	headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
+	//headlight.setPointLight();
+	//headlight.setPosition(tunnelCam.getPosition() + ofVec3f(0,lightDistance,0));
 	
 	currentGrowthIndex += (ofGetElapsedTimef() - lastFrameTime) * growthFPS;
 	lastFrameTime = ofGetElapsedTimef();
@@ -235,34 +236,43 @@ void CloudsVisualSystemLaplacianTunnel::selfUpdate(){
 // selfDraw draws in 3D using the default ofEasyCamera
 // you can change the camera by returning getCameraRef()
 void CloudsVisualSystemLaplacianTunnel::selfDraw(){
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glFrontFace(GL_CW);
+	glPointSize(2);
 	if(vbos.size() > 0){
+		shader.begin();
 		
-		glPushAttrib(GL_FOG_BIT);
-		ofDisableLighting();
-		glEnable(GL_FOG);
-		glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
-		glFogi(GL_FOG_MODE, GL_EXP);
+		//glPushAttrib(GL_FOG_BIT);
+		//ofDisableLighting();
+		//glEnable(GL_FOG);
+		//glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
+		//glFogi(GL_FOG_MODE, GL_EXP);
 		
-		glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
+		//glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
 		
 		ofFloatColor bgColor = ofFloatColor::fromHsb(bgHue, bgSat, bgBri);
 		
 		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
-		glFogfv (GL_FOG_COLOR, fogColor);
-		glEnable(GL_DEPTH_TEST);
+		//glFogfv (GL_FOG_COLOR, fogColor);
+		//glEnable(GL_DEPTH_TEST);
 		
-		ofEnableAlphaBlending();
+		//ofEnableAlphaBlending();
 
 		//headlight.enable();
 		float spread = (max.y - min.y);
+		shader.setUniform1f("minFogDist",spread*2);
+		shader.setUniform1f("maxFogDist", spread*4);
+		shader.setUniform3f("fogColor",bgColor.r/255.0f,bgColor.g/255.0f,bgColor.b/255.0f);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
-		mat->begin();
+		//mat->begin();
 		ofSetColor(255);
 		
 		for(int i = 0; i < numReplications; i++){
 			ofPushMatrix();
-			glPointSize(2);
+			
 			float translateAmount = (startY + i*spread);
 			ofTranslate(0,translateAmount,0);
 			ofTranslate(center);
@@ -282,7 +292,6 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			else{
 				index = int( ofMap(cameraoffset, 0, -spread*numReplications, vbos.size()-1, 0.0, true) );
 			}
-			
 			if(bDrawPoints){
 				vbos[index].vbo->draw(GL_POINTS, 0, vbos[index].indexCount);
 			}
@@ -293,12 +302,13 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofPopMatrix();
 		}
 
-		mat->end();
+		//mat->end();
 		//headlight.disable();
-
-		glPopAttrib();
+		shader.end();
+		//glPopAttrib();
 	}
-	
+	glDisable(GL_CULL_FACE);
+
 }
 
 // draw any debug stuff here
