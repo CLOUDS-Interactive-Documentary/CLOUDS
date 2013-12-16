@@ -11,6 +11,7 @@ uniform vec4 fogColor = vec4(0.,0.,0.,1.);
 uniform vec3 cameraPosition;
 
 uniform vec4 fwColors[5];
+uniform vec4 fwDeathColors[5];
 
 uniform float rotationRate = 1.;
 uniform float nearClip;
@@ -123,9 +124,8 @@ void main(){
 	gl_PointSize = pointSize;
 	
 	//color
-	color = mix( startColor, endColor, BounceInOut(ma) );// pow(ma, 3.) );
-	
-//	color *= fwColors[int(gl_Color.a)];
+	int colorIndex = int(gl_Color.a);
+	color = mix( fwColors[colorIndex], fwDeathColors[colorIndex], ma );
 	
 	color = mix( fogColor, color, pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
 	

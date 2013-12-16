@@ -20,13 +20,13 @@
 void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 	//BEHAVIOR
-	customGui = new ofxUISuperCanvas("FireworBehavior", gui);
+	customGui = new ofxUISuperCanvas("FireworkBehavior", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
-	customGui->setName("FireworBehavior");
+	customGui->setName("FireworkBehavior");
 	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	customGui->addSlider("particle speed", .01, 3, &speed);
+	customGui->addSlider("particleSpeed", .01, 3, &speed);
 	
 	customGui->addSlider("particleSpread", 0, 60., &particleSpread);
 	
@@ -74,7 +74,6 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	fireworkGui->setName("FireworkRender");
 	fireworkGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	
-	
 	fireworkGui->addSlider("particleSize", 1, 20, &particleSize);
 	
 	fireworkGui->addSpacer();
@@ -84,13 +83,13 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	fireworkGui->addToggle("points", &bUseDot);
 	fireworkGui->addSpacer();
 	
-	fireworkGui->addLabel("color_birth");
-	fireworkGui->addImageSampler("birth_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
-	fireworkGui->addSlider("birth_saturation", 0, 1, &startColorSaturation );
-	
-	fireworkGui->addLabel("color_death");
-	fireworkGui->addImageSampler("death_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
-	fireworkGui->addSlider("death_saturation", 0, 1, &endColorSaturation );
+//	fireworkGui->addLabel("color_birth");
+//	fireworkGui->addImageSampler("birth_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
+//	fireworkGui->addSlider("birth_saturation", 0, 1, &startColorSaturation );
+//	
+//	fireworkGui->addLabel("color_death");
+//	fireworkGui->addImageSampler("death_color_map", &colorSampleImage, (float)colorSampleImage.getWidth()/2, (float)colorSampleImage.getHeight()/2 );
+//	fireworkGui->addSlider("death_saturation", 0, 1, &endColorSaturation );
 	
 	ofAddListener(fireworkGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	guis.push_back(fireworkGui);
@@ -104,27 +103,51 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	fireworkColorsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
 	fireworkColorsGui->setWidth(110);
 	
-	ofVec2f cPos;
+	//birth colors
 	int i=0;
 	for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
 	{
+		
 		ofxUIRectangle* r = fireworkColorsGui->addImageSampler(it->first + "_color", &colorSampleImage, 100, 100)->getRect();
-		r->setX(10 + i * 110);
+		r->setX(20 + i * 120);
 		r->setY(25);
 		r->setWidth( 100 );
 		
 		r = fireworkColorsGui->addMinimalSlider(it->first + "_saturation", 0, 1., &fwSaturations[it->first] )->getRect();
-		r->setX(10 + i* 110);
+		r->setX(20 + i * 120);
 		r->setY(132);
 		r->setWidth(100);
 		
 		r = fireworkColorsGui->addLabel(it->first)->getRect();
-		r->setX(10 + i * 110);
+		r->setX(20 + i * 120);
 		r->setY(150);
 		r->setWidth( 100 );
 		
 		i++;
 	}
+	
+	//death colors
+	i=0;
+	for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+	{
+		ofxUIRectangle* r = fireworkColorsGui->addImageSampler(it->first + "_color", &colorSampleImage, 100, 100)->getRect();
+		r->setX(20 + i * 120);
+		r->setY( 170 + 25);
+		r->setWidth( 100 );
+		
+		r = fireworkColorsGui->addMinimalSlider(it->first + "_saturation", 0, 1., &fwSaturations[it->first] )->getRect();
+		r->setX(20 + i * 120);
+		r->setY(170 + 132);
+		r->setWidth(100);
+		
+		r = fireworkColorsGui->addLabel(it->first)->getRect();
+		r->setX(20 + i * 120);
+		r->setY(170 + 150);
+		r->setWidth( 100 );
+		
+		i++;
+	}
+	
 	
 	ofAddListener(fireworkColorsGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	guis.push_back(fireworkColorsGui);
@@ -182,7 +205,6 @@ void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
 				it->second = sampler->getColor();
 				it->second.setSaturation( fwSaturations[ it->first ] );
 				
-				e.widget->setColorBack(it->second);
 				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 			}
@@ -190,7 +212,27 @@ void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
 			{
 				it->second.setSaturation( fwSaturations[ it->first ] );
 				
+				fireworkColorsGui->getWidget( it->first )->setColorFill( it->second );
+				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+			}
+		}
+		
+		for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+		{
+			if(name == it->first + "_color")
+			{
+				ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+				it->second = sampler->getColor();
+				it->second.setSaturation( fwSaturations[ it->first ] );
+				
 				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
+				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+			}
+			if(name == it->first + "_saturation")
+			{
+				it->second.setSaturation( fwSaturations[ it->first ] );
+				
+				fireworkColorsGui->getWidget( it->first )->setColorFill( it->second );
 				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
 			}
 		}
@@ -246,10 +288,14 @@ void CloudsVisualSystemFireworks::selfSetup()
 	
 	startColorSaturation = endColorSaturation = fogSaturation = 1;
 	
-	for (int i=0; i<5; i++) {
-		string key = "C" + ofToString(i);
+	for (int i=0; i<3; i++) {
+		string key = "C" + ofToString(i) + "_birth";
 		fwColors[key];
 		fwSaturations[key];
+		
+		key = "C" + ofToString(i) + "_death";
+		fwDeathColors[key];
+		fwDeathSaturations[key];
 	}
 	
 	//setupParticles
@@ -421,7 +467,7 @@ void CloudsVisualSystemFireworks::selfUpdate()
 			nz = ofSignedNoise(nScl.x, nScl.y, nScl.z + emitters[i].age);
 			p0 += ofVec3f( nx, ny, nz ) * 10. * emitters[i].age;
 			
-			trailPoint( p0, emitters[i].vel, emissonRate, emitters[i].textureIndex );
+			trailPoint( p0, emitters[i].vel, emissonRate, emitters[i].textureIndex, emitters[i].colorIndex );
 		}
 		
 		if(emitters[i].bEnded)
@@ -477,9 +523,15 @@ void CloudsVisualSystemFireworks::selfDraw()
 	{
 		fireworkColorArray.push_back( it->second );
 	}
+	vector<ofFloatColor> fireworkDeathColorArray;
+	for (map<string, ofFloatColor>::iterator it=fwDeathColors.begin(); it!=fwDeathColors.end(); it++)
+	{
+		fireworkDeathColorArray.push_back( it->second );
+	}
 	
 	shader.begin();
 	shader.setUniform4fv("fwColors", &fireworkColorArray[0].r, fireworkColorArray.size() );
+	shader.setUniform4fv("fwDeathColors", &fireworkDeathColorArray[0].r, fireworkDeathColorArray.size() );
 	shader.setUniform1f( "time", ofGetElapsedTimef() );
 	shader.setUniform1f( "nearClip", getCameraRef().getNearClip() );
 	shader.setUniform1f( "farClip", getCameraRef().getFarClip() );
@@ -535,21 +587,21 @@ void CloudsVisualSystemFireworks::updateVbo()
 	bUpdateVbo = false;
 }
 
-void CloudsVisualSystemFireworks::trailPoint( ofVec3f point, ofVec3f vel, int count, float texIndex )
+void CloudsVisualSystemFireworks::trailPoint( ofVec3f point, ofVec3f vel, int count, float texIndex, int colorIndex )
 {
 	for(int i=0; i<count; i++){
-		emitFromPoint( point, vel, ofRandom(minLifeSpan, maxLifeSpan), ofGetElapsedTimef(), texIndex );
+		emitFromPoint( point, vel, ofRandom(minLifeSpan, maxLifeSpan), ofGetElapsedTimef(), texIndex, colorIndex );
 	}
 }
 
-void CloudsVisualSystemFireworks::emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan, float t, float texIndex )
+void CloudsVisualSystemFireworks::emitFromPoint( ofVec3f point, ofVec3f dir, float lifespan, float t, float texIndex, int colorIndex )
 {	
 	ofQuaternion rotQuat;
 	rotQuat.makeRotate( ofVec3f(0,1,0), dir);
 	
 	positions[nextIndex] = point;
 	velocities[nextIndex] = (ofVec3f(ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel )) * particleSpread) * rotQuat;
-	lifeData[nextIndex].set( t, lifespan, texIndex, 3 );
+	lifeData[nextIndex].set( t, lifespan, texIndex, colorIndex );
 	
 	bUpdateVbo = true;
 	
@@ -563,13 +615,16 @@ void CloudsVisualSystemFireworks::explodeFireWork( ofVec3f origin, ofVec3f vel )
 	
 	int numEmittersPerExplosion = 30;
 	float t = ofGetElapsedTimef();
+	int colorIndex = min(int(fwColors.size()-1), (int)ofRandom(0, fwColors.size()) );
 	for(int i=0; i<numEmittersPerExplosion; i++){
 		FireworkEmitter e;
 		e.setup(t,
 				ofRandom(1.5, 3.),
 				origin,
 				origin + ofVec3f( ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel), ofRandom(-maxFWVel,maxFWVel) ),
-				getRandomTextureIndex() );
+				getRandomTextureIndex(),
+				colorIndex
+				);
 		emitters.push_back( e );
 	}
 }
@@ -592,8 +647,19 @@ void CloudsVisualSystemFireworks::guiRenderEvent(ofxUIEventArgs &e){
 // selfPresetLoaded is called whenever a new preset is triggered
 // it'll be called right before selfBegin() and you may wish to
 // refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath){
+void CloudsVisualSystemFireworks::selfPresetLoaded(string presetPath)
+{
+	for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+	{			
+		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
+		fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+	}
 	
+	for (map<string, ofFloatColor>::iterator it = fwDeathColors.begin(); it != fwDeathColors.end(); it++)
+	{
+		fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
+		fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+	}
 }
 
 void CloudsVisualSystemFireworks::explodeFireWorkAtPoint( ofVec3f point, float t )
@@ -665,6 +731,9 @@ void CloudsVisualSystemFireworks::explodeGeometry( vector<ofVec3f>& vertices, of
 	ofVec3f p, p1, rPos;
 	
 	float t = ofGetElapsedTimef();
+	
+	int colorIndex = min(int(fwColors.size()-1), (int)ofRandom(0, fwColors.size()) );
+	
 	for(int i=0; i<vertices.size(); i+=2){
 		
 		p = (vertices[i] * rad ) * q + origin;
@@ -674,8 +743,8 @@ void CloudsVisualSystemFireworks::explodeGeometry( vector<ofVec3f>& vertices, of
 		
 		float texIndex = getRandomTextureIndex();
 		
-		e0.setup( t, ofRandom(1., 2.), p, p1, texIndex );
-		e1.setup( t, ofRandom(1., 2.), p1, p, texIndex );
+		e0.setup( t, ofRandom(1., 2.), p, p1, texIndex, colorIndex );
+		e1.setup( t, ofRandom(1., 2.), p1, p, texIndex, colorIndex );
 		
 		emitters.push_back( e0 );
 		emitters.push_back( e1 );
