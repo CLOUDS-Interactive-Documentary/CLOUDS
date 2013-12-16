@@ -244,30 +244,14 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 	if(vbos.size() > 0){
 		shader.begin();
 		
-		//glPushAttrib(GL_FOG_BIT);
-		//ofDisableLighting();
-		//glEnable(GL_FOG);
-		//glFogi(GL_FOG_COORD_SRC, GL_FRAGMENT_DEPTH);
-		//glFogi(GL_FOG_MODE, GL_EXP);
-		
-		//glFogf(GL_FOG_DENSITY, powf(fogDensity,2));
 		
 		ofFloatColor bgColor = ofFloatColor::fromHsb(bgHue, bgSat, bgBri);
-		
-		GLfloat fogColor[4] = {bgColor.r/255.,bgColor.g/255.,bgColor.b/255., 1.0 };
-		//glFogfv (GL_FOG_COLOR, fogColor);
-		//glEnable(GL_DEPTH_TEST);
-		
-		//ofEnableAlphaBlending();
-
-		//headlight.enable();
 		float spread = (max.y - min.y);
 		shader.setUniform1f("minFogDist",spread*2);
 		shader.setUniform1f("maxFogDist", spread*4);
 		shader.setUniform3f("fogColor",bgColor.r/255.0f,bgColor.g/255.0f,bgColor.b/255.0f);
 		float startY = min.y + tunnelCam.getPosition().y - fmod(tunnelCam.getPosition().y, spread);
 		
-		//mat->begin();
 		ofSetColor(255);
 		
 		for(int i = 0; i < numReplications; i++){
@@ -302,8 +286,6 @@ void CloudsVisualSystemLaplacianTunnel::selfDraw(){
 			ofPopMatrix();
 		}
 
-		//mat->end();
-		//headlight.disable();
 		shader.end();
 		//glPopAttrib();
 	}
