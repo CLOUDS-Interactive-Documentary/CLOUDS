@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 
 class FireworkRocket;
 class FireworkRocket{
@@ -343,6 +344,7 @@ protected:
 	ofxUISuperCanvas* fireworkGui;
 	
 	ofxUISuperCanvas* fireworkFogGui;
+	ofxUISuperCanvas* fireworkColorsGui;
 	
 	
 	bool customToggle;
@@ -384,4 +386,7 @@ protected:
 	
 	bool bUseCircle, bUseSquare, bUseTriangle, bUseDot;
 	bool bBurst, bOctahedron, bTetrahedron, bDodecagedron;
+	
+	map<string, ofFloatColor> fwColors;
+	map<string, float> fwSaturations;
 };

@@ -19,6 +19,7 @@
 //These methods let us add custom GUI parameters and respond to their events
 void CloudsVisualSystemFireworks::selfSetupGui(){
 	
+	//BEHAVIOR
 	customGui = new ofxUISuperCanvas("FireworBehavior", gui);
 	customGui->copyCanvasStyle(gui);
 	customGui->copyCanvasProperties(gui);
@@ -43,13 +44,12 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	customGui->addToggle("dodecagedron", &bDodecagedron);
 	customGui->addSpacer();
 	
-	
-	
 	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
 	
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
 	
+	//CAMERA
 	camGui = new ofxUISuperCanvas("cameraMotion", gui);
 	camGui->copyCanvasStyle(gui);
 	camGui->copyCanvasProperties(gui);
@@ -67,7 +67,7 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	guimap[camGui->getName()] = camGui;
 	
 	
-	
+	//RENDERING
 	fireworkGui = new ofxUISuperCanvas("FireworkRender", gui);
 	fireworkGui->copyCanvasStyle(gui);
 	fireworkGui->copyCanvasProperties(gui);
@@ -96,6 +96,42 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	guis.push_back(fireworkGui);
 	guimap[fireworkGui->getName()] = fireworkGui;
 	
+	//COLORS
+	fireworkColorsGui = new ofxUISuperCanvas("FireworkColors", gui);
+	fireworkColorsGui->copyCanvasStyle(gui);
+	fireworkColorsGui->copyCanvasProperties(gui);
+	fireworkColorsGui->setName("FireworkColors");
+	fireworkColorsGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+	fireworkColorsGui->setWidth(110);
+	
+	ofVec2f cPos;
+	int i=0;
+	for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+	{
+		ofxUIRectangle* r = fireworkColorsGui->addImageSampler(it->first + "_color", &colorSampleImage, 100, 100)->getRect();
+		r->setX(10 + i * 110);
+		r->setY(25);
+		r->setWidth( 100 );
+		
+		r = fireworkColorsGui->addMinimalSlider(it->first + "_saturation", 0, 1., &fwSaturations[it->first] )->getRect();
+		r->setX(10 + i* 110);
+		r->setY(132);
+		r->setWidth(100);
+		
+		r = fireworkColorsGui->addLabel(it->first)->getRect();
+		r->setX(10 + i * 110);
+		r->setY(150);
+		r->setWidth( 100 );
+		
+		i++;
+	}
+	
+	ofAddListener(fireworkColorsGui->newGUIEvent, this, &CloudsVisualSystemFireworks::selfGuiEvent);
+	guis.push_back(fireworkColorsGui);
+	guimap[fireworkColorsGui->getName()] = fireworkColorsGui;
+
+	
+	//FOG
 	fireworkFogGui = new ofxUISuperCanvas("FireworkFog", gui);
 	fireworkFogGui->copyCanvasStyle(gui);
 	fireworkFogGui->copyCanvasProperties(gui);
@@ -116,22 +152,48 @@ void CloudsVisualSystemFireworks::selfSetupGui(){
 	
 }
 
-void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e){
+void CloudsVisualSystemFireworks::selfGuiEvent(ofxUIEventArgs &e)
+{
+	string name = e.widget->getName();
 	
-	if( e.widget->getName() == "birth_color_map"){
+	if( name == "birth_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		startColor = sampler->getColor();
 	}
-	else if( e.widget->getName() == "death_color_map"){
+	else if( name == "death_color_map"){
 		
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		endColor = sampler->getColor();
 	}
-	else if( e.widget->getName() == "fogColor")
+	else if( name == "fogColor")
 	{
 		ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
 		fogColor = sampler->getColor();
+	}
+	
+	else
+	{
+		for (map<string, ofFloatColor>::iterator it = fwColors.begin(); it != fwColors.end(); it++)
+		{
+			if(name == it->first + "_color")
+			{
+				ofxUIImageSampler* sampler = (ofxUIImageSampler *) e.widget;
+				it->second = sampler->getColor();
+				it->second.setSaturation( fwSaturations[ it->first ] );
+				
+				e.widget->setColorBack(it->second);
+				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
+				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+			}
+			if(name == it->first + "_saturation")
+			{
+				it->second.setSaturation( fwSaturations[ it->first ] );
+				
+				fireworkColorsGui->getWidget( it->first )->setColorFill(it->second);
+				fireworkColorsGui->getWidget( it->first + "_saturation" )->setColorFill(it->second);
+			}
+		}
 	}
 }
 
@@ -183,7 +245,12 @@ void CloudsVisualSystemFireworks::selfSetup()
 	bBurst = bOctahedron = bTetrahedron = bDodecagedron = true;
 	
 	startColorSaturation = endColorSaturation = fogSaturation = 1;
-
+	
+	for (int i=0; i<5; i++) {
+		string key = "C" + ofToString(i);
+		fwColors[key];
+		fwSaturations[key];
+	}
 	
 	//setupParticles
 	FIREWORKS_NUM_PARTICLES = 200000;
@@ -204,8 +271,7 @@ void CloudsVisualSystemFireworks::selfSetup()
 	vbo.setColorData( &lifeData[0], FIREWORKS_NUM_PARTICLES, GL_DYNAMIC_DRAW );
 	
 	//TODO: mention to james that we might need a getCloudsData method
-	string cloudsDataPath = "../../../CloudsData/";
-	colorSampleImage.loadImage( cloudsDataPath + "colors/defaultColorPalette.png" );
+	colorSampleImage.loadImage( GetCloudsDataPath() + "colors/defaultColorPalette.png" );
 	
 	loadFileToGeometry( getVisualSystemDataPath() +  "animationTargets/dodecahedron.txt", dodecagedronPoints );
 	loadFileToGeometry( getVisualSystemDataPath() +  "animationTargets/octahedron.txt", octahedronPoints );
@@ -406,7 +472,14 @@ void CloudsVisualSystemFireworks::selfDraw()
 	ofBlendMode( OF_BLENDMODE_ADD );
 	ofEnablePointSprites();
 	
+	vector<ofFloatColor> fireworkColorArray;
+	for (map<string, ofFloatColor>::iterator it=fwColors.begin(); it!=fwColors.end(); it++)
+	{
+		fireworkColorArray.push_back( it->second );
+	}
+	
 	shader.begin();
+	shader.setUniform4fv("fwColors", &fireworkColorArray[0].r, fireworkColorArray.size() );
 	shader.setUniform1f( "time", ofGetElapsedTimef() );
 	shader.setUniform1f( "nearClip", getCameraRef().getNearClip() );
 	shader.setUniform1f( "farClip", getCameraRef().getFarClip() );
@@ -476,7 +549,7 @@ void CloudsVisualSystemFireworks::emitFromPoint( ofVec3f point, ofVec3f dir, flo
 	
 	positions[nextIndex] = point;
 	velocities[nextIndex] = (ofVec3f(ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel ),ofRandom( minVel, maxVel )) * particleSpread) * rotQuat;
-	lifeData[nextIndex].set( t, lifespan, texIndex, 0 );
+	lifeData[nextIndex].set( t, lifespan, texIndex, 3 );
 	
 	bUpdateVbo = true;
 	

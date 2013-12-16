@@ -10,6 +10,8 @@ uniform vec4 fogColor = vec4(0.,0.,0.,1.);
 
 uniform vec3 cameraPosition;
 
+uniform vec4 fwColors[5];
+
 uniform float rotationRate = 1.;
 uniform float nearClip;
 uniform float farClip;
@@ -62,6 +64,37 @@ float QuinticOut (float k ) {
 	return --k * k * k * k * k + 1;
 }
 
+float CubicInOut(float k){
+	if ( ( k *= 2 ) < 1 ) return 0.5 * k * k * k;
+	return 0.5 * ( ( k -= 2 ) * k * k + 2 );
+}
+
+
+
+float BounceOut(float k){
+	if (k<(1./2.75)){
+		return 7.5625 * k * k;
+	}
+	else if ( k < ( 2. / 2.75 ) ) {
+		return 7.5625 * ( k -= ( 1.5 / 2.75 ) ) * k + 0.75;
+	}
+	else if ( k < ( 2.5 / 2.75 ) ) {
+		return 7.5625 * ( k -= ( 2.25 / 2.75 ) ) * k + 0.9375;
+	}
+	else {
+		return 7.5625 * ( k -= ( 2.625 / 2.75 ) ) * k + 0.984375;
+	}
+}
+
+
+float BounceIn(float k){
+	return 1. - BounceOut( 1. - k );
+}
+float BounceInOut(float k){
+	if ( k < 0.5 ) return BounceIn( k * 2. ) * 0.5;
+	return BounceOut( k * 2. - 1. ) * 0.5 + 0.5;
+}
+
 void main(){
 	
 	//life and death
@@ -90,7 +123,9 @@ void main(){
 	gl_PointSize = pointSize;
 	
 	//color
-	color = mix( startColor, endColor, pow(ma, 3.) );
+	color = mix( startColor, endColor, BounceInOut(ma) );// pow(ma, 3.) );
+	
+//	color *= fwColors[int(gl_Color.a)];
 	
 	color = mix( fogColor, color, pow( (1. - camDelta / fogDistance), fogExpo) * fogAttenuation );
 	

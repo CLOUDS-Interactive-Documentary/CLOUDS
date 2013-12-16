@@ -11,6 +11,7 @@
 #pragma once
 
 #include "CloudsVisualSystem.h"
+#include "CloudsGlobal.h"
 #include "ofxSimpleSpline.h"
 #include "CloudsPathCamera.h"
 #include "ofxObjLoader.h"
