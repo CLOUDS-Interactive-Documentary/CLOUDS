@@ -1,0 +1,344 @@
+{
+    "Tweets": [
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#sniff2013"
+            ], 
+            "Tweet": "Sniff is in Newcastle for a few months @TynesideDog @thepixelpalace @obviousjim #sniff2013  ", 
+            "Users": [
+                "@TynesideDog", 
+                "@thepixelpalace", 
+                "@obviousjim"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@uah Thank you : ) Thanks for the awesome cloud observation too!  ", 
+            "Users": [
+                "@uah"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 11, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@justsomeguy @missmoun So good, thank you!  ", 
+            "Users": [
+                "@justsomeguy", 
+                "@missmoun"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Math Games, Bugs and Cloud Machines http://t.co/fj4lfQUPF0  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @theodorasutton: My interview for @alphavillefest this week with @ksobecka on her device for drinking water from the clouds... http://t.\u2026  ", 
+            "Users": [
+                "@theodorasutton", 
+                "@alphavillefest", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 18, 
+                "Month": 7, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @alphavillefest: This week we spoke to @ksobecka about Project Sky+, a personal device for thinking like a cloud. http://t.co/x1lo6bC6lZ\u2026  ", 
+            "Users": [
+                "@alphavillefest", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 22, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [
+                "#VIDA12"
+            ], 
+            "Tweet": "RT @VIDAAwards: In Project Sky+ by Karolina Sobecka (awarded in #VIDA12.0) clouds are ingested by humans @ksobecka \u2013 http://t.co/KcdjkfXr4i  ", 
+            "Users": [
+                "@VIDAAwards", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 2, 
+                "Month": 5, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @macfathom: Will There Be Face-Recognition Surveillance at the Statue of Liberty? http://t.co/9LdPS17FbR  ", 
+            "Users": [
+                "@macfathom"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 5, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @justinpickard: 'how expectations of comfort, clothing and the human body have developed alongside technologies of heating and coolin ...  ", 
+            "Users": [
+                "@justinpickard"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 3, 
+                "Month": 3, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mkasprzak: Speculative Realities exhibition press and blog mentions, lots on @ksobecka's CloudMaker! http://t.co/91MdqI1URX  ", 
+            "Users": [
+                "@mkasprzak", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 2, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "New Cinema: How Do You Make An Interactive Narrative? | The Creators Project http://t.co/VNKbRQ27  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @mkasprzak: Speculative Realities eBook featuring @juspar @mdieter @cohenvanbalen @ksobecka Sven L\u00fctticken, Rick Dolphijn, more! http ...  ", 
+            "Users": [
+                "@mkasprzak", 
+                "@juspar", 
+                "@mdieter", 
+                "@cohenvanbalen", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 14, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @TheAtlantic: The extreme weather of Australia's historic summer heat wave. PHOTOS: http://t.co/uThsnSXi via @in_focus  ", 
+            "Users": [
+                "@TheAtlantic", 
+                "@in_focus"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 11, 
+                "Month": 1, 
+                "Year": 2013
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@creativeapps @serial_consign thanks for nice post!  ", 
+            "Users": [
+                "@creativeapps", 
+                "@serial_consign"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 8, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#V2_"
+            ], 
+            "Tweet": "RT @mkasprzak: Opening today! Blowup: Speculative Realities #V2_ http://t.co/LvHTfq1q  ", 
+            "Users": [
+                "@mkasprzak"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 4, 
+                "Month": 12, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://t.co/XI3iYrkq  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 30, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "RT @rhizomedotorg: Artist Profile: Flightphase http://t.co/B3ui8GqH  ", 
+            "Users": [
+                "@rhizomedotorg"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 25, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "@julian0liver hey, that's a great write up, sounds interesting! is the game still around to see?  ", 
+            "Users": [
+                "@julian0liver"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 7, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Rhizome Announces Commissions 2012 Grantees http://t.co/nht4BQZF  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 17, 
+                "Month": 4, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#SFIFF"
+            ], 
+            "Tweet": "RT @SF_FilmSociety: New KinoTek program during #SFIFF: Karolina Sobecka's installation at Superfrog Gallery @New_People. Reception Invit ...  ", 
+            "Users": [
+                "@SF_FilmSociety", 
+                "@New_People"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 31, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "http://t.co/KembfKkz | Fake\u2019ology: \u201cToo good to be true\u201d http://t.co/LJLNLBLQ  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "Born Digital @camraleigh http://t.co/LfNi9tR7\u2026 opening January 28  ", 
+            "Users": [
+                "@camraleigh"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 27, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#Bilbao"
+            ], 
+            "Tweet": "RT @Technarte: Uncanny interaction in public spaces with Karolina Sobecka http://t.co/zWqFnIYg @ksobecka 12th April at Technarte #Bilbao ...  ", 
+            "Users": [
+                "@Technarte", 
+                "@ksobecka"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "'It\u2019s You' and 'Perfect Creatures' are recent installations by @ksobecka | http://t.co/FQTuoVoV http://t.co/e5rFPugY via @creativeapps  ", 
+            "Users": [
+                "@ksobecka", 
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 23, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [
+                "#openframeworks"
+            ], 
+            "Tweet": "Interactive wall installation at UD by Flightphase #openframeworks http://t.co/FQTuoVoV http://t.co/EKKYklhj via @creativeapps  ", 
+            "Users": [
+                "@creativeapps"
+            ]
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "It's You at CAM: http://t.co/l3R5GAtj  ", 
+            "Users": []
+        }, 
+        {
+            "Date": {
+                "Day": 19, 
+                "Month": 1, 
+                "Year": 2012
+            }, 
+            "Hashtag": [], 
+            "Tweet": "creature mirror at CAM: http://t.co/SbT3tjlJ  ", 
+            "Users": []
+        }
+    ], 
+    "name": "ksobecka.txt"
+}

@@ -222,8 +222,6 @@ CloudsMovieDirectory_remote.txt
 
 /VSOpenP5NoiseSphere/bin/data/CamSettings_ROT-Y.xml
 
-/CloudsLibrary/src/VisualSystems/Histogram/vs_src/CloudsVisualSystemHistogram.cpp
-
 /CloudsData/visualsystems/Twitter/graphs/Spiky_TwitterOneUser.net
 /CloudsData/visualsystems/Twitter/graphs/Spiky2_TwitterOneuser.net
 /CloudsData/visualsystems/Twitter/graphs/Simple_TwitterOld.net
@@ -235,3 +233,6 @@ CloudsMovieDirectory_remote.txt
 /CloudsData/visualsystems/Twitter/graphs/Circular_NewData4Men.net
 /CloudsData/visualsystems/Twitter/graphs/BigSphere_TwitterOneUser.net
 /CloudsData/visualsystems/Twitter/graphs/BigSphere1_TwitterOneUser.net
+
+/VSDataCascade/bin/data/TestVideo/
+

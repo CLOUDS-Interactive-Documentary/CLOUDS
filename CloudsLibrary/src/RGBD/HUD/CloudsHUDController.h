@@ -12,6 +12,7 @@
 #include "ofxSvg.h"
 #include "ofxUI.h"
 #include "CloudsHUDLayer.h"
+#include "CloudsHUDHomeButton.h"
 
 typedef enum {
 	CLOUDS_HUD_FULL = 0,
@@ -35,10 +36,7 @@ public:
 	void animateOff();
 	
 	ofImage testImage;
-//	SVGLayer testLayer;
 	
-	
-	//	vector<SVGLayer> layers;
 	map<CloudsHUDLayerSet, vector<CloudsHUDLayer*> > layerSets;
 	vector<CloudsHUDLayer*> allLayers;
 	
@@ -46,7 +44,8 @@ public:
 	void toggleGuis();
 	
 	ofxUISuperCanvas *hudGui;
-
+	CloudsHUDHomeButton home;
+	
   protected:
 	void drawLayer(CloudsHUDLayerSet layer);
 	

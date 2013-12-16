@@ -143,7 +143,7 @@ svgtiny_code svgtiny_parse(struct svgtiny_diagram *diagram,
 	state.stroke_width = 1;
 	state.opacity = 1.0;
 	state.linear_gradient_stop_count = 0;
-
+	
 	/* parse tree */
 	code = svgtiny_parse_svg(svg, state);
 
@@ -170,7 +170,14 @@ svgtiny_code svgtiny_parse_svg(Poco::XML::Element *svg,
 	svgtiny_parse_font_attributes(svg, &state);
     
     view_box = svg->getAttributeNode("viewBox");
-    
+	
+	string display = svg->getAttribute("display");
+	if(display == "none"){
+		return svgtiny_OK;	
+	}
+	
+//	string id = svg->getAttribute("id");
+	
 	if (view_box) {
 		//const char *s = (const char *) view_box->children->content;
         const char *s = (const char *) view_box->getValue().c_str();
@@ -728,7 +735,7 @@ svgtiny_code svgtiny_parse_line(Poco::XML::Element *line,
 
 	//for (attr = line->properties; attr; attr = attr->next) {
     //for( attr = line->FirstAttribute(); attr; attr = attr->Next() ) {
-    
+
     Poco::XML::NamedNodeMap *map = line->attributes();
     for( int i = 0; i < map->length(); i++ ) {
     
@@ -756,10 +763,11 @@ svgtiny_code svgtiny_parse_line(Poco::XML::Element *line,
         }
 	svgtiny_parse_paint_attributes(line, &state);
 	svgtiny_parse_transform_attributes(line, &state);
-
 	p = (float*) malloc(7 * sizeof p[0]);
 	if (!p)
 		return svgtiny_OUT_OF_MEMORY;
+
+//	cout << "parsed line from (" << x1 << " " << y1 << ") to (" << x2 << " " << y2 << ")" << endl;
 
 	p[0] = svgtiny_PATH_MOVE;
 	p[1] = x1;
@@ -1317,6 +1325,10 @@ struct svgtiny_shape *svgtiny_add_shape(struct svgtiny_parse_state *state)
 	state->diagram->shape = shape;
 
 	shape += state->diagram->shape_count;
+
+	//shape->gid = state->gid;
+
+//	cout << "adding shape with id " << shape->gid << endl;
 	shape->path = 0;
 	shape->path_length = 0;
 	shape->text = 0;
