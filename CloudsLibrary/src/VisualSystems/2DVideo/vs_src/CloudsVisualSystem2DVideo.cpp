@@ -7,46 +7,60 @@
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetupGui()
 {
-    /*
-	customGui = new ofxUISuperCanvas("CUSTOM", gui);
-	customGui->copyCanvasStyle(gui);
-	customGui->copyCanvasProperties(gui);
-	customGui->setName("Custom");
-	customGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
-    customGui->addSpacer();
-    customGui->addToggle("RESTART", &bRestart);
-    customGui->addToggle("2D", &bIs2D);
-    customGui->addSlider("RADIUS", 1.0, 50.0, &radius);
-    
-    customGui->addSpacer();
-    customGui->addSlider("FG HUE 1", 0.0f, 0.99999f, &fgParams1[0]);
-    customGui->addSlider("FG SAT 1", 0.0f, 1.0f, &fgParams1[1]);
-    customGui->addSlider("FG BRI 1", 0.0f, 1.0f, &fgParams1[2]);
-    
-    customGui->addSpacer();
-    customGui->addSlider("FG HUE 2", 0.0f, 0.99999f, &fgParams2[0]);
-    customGui->addSlider("FG SAT 2", 0.0f, 1.0f, &fgParams2[1]);
-    customGui->addSlider("FG BRI 2", 0.0f, 1.0f, &fgParams2[2]);
 
-    customGui->addSpacer();
-    customGui->addSlider("FADE", 0.0, 0.5, &fade);  // Fucks up if I go up to 1.0, don't know why, don't care anymore...
+	playerGui = new ofxUISuperCanvas("VideoPlayer", gui);
+	playerGui->copyCanvasStyle(gui);
+	playerGui->copyCanvasProperties(gui);
+	playerGui->setName("VideoPlayer");
+	playerGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+    playerGui->addLabel("VIDEOS");
+    playerGui->addSpacer();
+    playerGui->addRadio("MOVIE FILES",movieStrings);
+
 	
-	ofAddListener(customGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
-	guis.push_back(customGui);
-	guimap[customGui->getName()] = customGui;
-     */
+	ofAddListener(playerGui->newGUIEvent, this, &CloudsVisualSystem2DVideo::selfGuiEvent);
+	guis.push_back(playerGui);
+	guimap[playerGui->getName()] = playerGui;
+    
+
+    
 }
 
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfGuiEvent(ofxUIEventArgs &e)
 {
+    if (e.getKind() == OFX_UI_WIDGET_TOGGLE){
 
+        ofxUIToggle* t = (ofxUIToggle*)e.widget;
+        cout<<t->getName()<<endl;
+        for(int i =0; i<movieStrings.size(); i++){
+            if (movieStrings[i] == t->getName()) {
+				cout << "Loading movie from GUI " << movieStrings[i] << endl;
+                loadMovieAtIndex(i);
+            }
+        }
+    }
+
+}
+
+void CloudsVisualSystem2DVideo::loadMovieAtIndex(int index){
+ 
+    if(player.isPlaying()){
+        player.stop();
+    }
+                cout<<getVisualSystemDataPath(true)<< " : "<<movieStrings[index]<<endl;
+    if(player.loadMovie(getVisualSystemDataPath(true)+movieStrings[index])){
+        player.play();
+        bFileLoaded = false;
+    }
+    else{
+        cout<<"couldn't load the movie"<<endl;
+    }
 }
 
 //Use system gui for global or logical settings, for exmpl
 void CloudsVisualSystem2DVideo::selfSetupSystemGui(){
-	
+
 }
 
 void CloudsVisualSystem2DVideo::guiSystemEvent(ofxUIEventArgs &e){
@@ -64,6 +78,12 @@ void CloudsVisualSystem2DVideo::guiRenderEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfSetup()
 {
+    screenRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
+    videoRect = ofRectangle(0,0, ofGetWidth(), ofGetHeight());
+    movieIndex = 0;
+    movieStrings.push_back("traffic_1.mov");
+    movieStrings.push_back("unionsq_1 - Wi-Fi_Crop.mov");
+    loadMovieAtIndex(movieIndex);
 
 }
 
@@ -83,7 +103,7 @@ void CloudsVisualSystem2DVideo::selfPresetLoaded(string presetPath)
 // this is a good time to prepare for transitions
 // but try to keep it light weight as to not cause stuttering
 void CloudsVisualSystem2DVideo::selfBegin(){
-	
+	player.play();
 }
 
 //do things like ofRotate/ofTranslate here
@@ -95,6 +115,18 @@ void CloudsVisualSystem2DVideo::selfSceneTransformation(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfUpdate()
 {
+    if(! bFileLoaded){
+        if(player.getWidth() >0){
+            videoRect.x = 0;
+            videoRect.y = 0;
+            videoRect.width = player.getWidth();
+            videoRect.height = player.getHeight();
+            cout<<player.getWidth()<<","<<player.getHeight()<<endl;
+            videoRect.scaleTo(screenRect);
+            bFileLoaded = true;
+        }
+    }
+    player.update();
 
 }
 
@@ -112,7 +144,7 @@ void CloudsVisualSystem2DVideo::selfDrawDebug(){
 //--------------------------------------------------------------
 void CloudsVisualSystem2DVideo::selfDrawBackground()
 {
-    
+    player.draw(videoRect.x, videoRect.y, videoRect.width, videoRect.height);
 }
 
 //--------------------------------------------------------------

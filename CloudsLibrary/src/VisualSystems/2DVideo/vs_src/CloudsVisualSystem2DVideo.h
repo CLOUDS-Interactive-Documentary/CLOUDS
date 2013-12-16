@@ -42,13 +42,18 @@ class CloudsVisualSystem2DVideo : public CloudsVisualSystem
     void selfMouseMoved(ofMouseEventArgs& data);
     void selfMousePressed(ofMouseEventArgs& data);
     void selfMouseReleased(ofMouseEventArgs& data);
-
+    void loadMovieAtIndex(int index);
 
     void restart();
     void render();
 
 protected:
-    ofxUISuperCanvas * customGui;
+    ofxUISuperCanvas * playerGui;
 
     ofxAVFVideoPlayer player;
+    vector<string> movieStrings;
+    int movieIndex;
+    ofRectangle screenRect;
+    ofRectangle videoRect;
+    bool bFileLoaded;
 };
