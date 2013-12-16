@@ -13,5 +13,10 @@
 <Widget>
     <Kind>2</Kind>
     <Name>Test</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Weighted</Name>
     <Value>1</Value>
 </Widget>

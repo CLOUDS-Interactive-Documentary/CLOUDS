@@ -104,10 +104,7 @@ void main()
 	
 	float verticalScale = mapLinear( boxCenter.y, -dimY*.5, dimY*.5, 1., 0.);
 	
-//	nScl += verticalScale;
-//	nScl += pow(verticalScale*1.1, 12.);
-	
-	camDelta = lengthSqr(cameraPos - boxCenter);//distance( cameraPos, boxCenter );
+	camDelta = lengthSqr(cameraPos - boxCenter);
 	
 	vec4 v = gl_Vertex;
 	if(scaleCube == 1)

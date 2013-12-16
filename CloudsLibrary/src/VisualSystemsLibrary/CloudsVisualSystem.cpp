@@ -981,6 +981,7 @@ void CloudsVisualSystem::setupGui()
     gui = new ofxUISuperCanvas(ofToUpper(getSystemName()));
     gui->setName("Settings");
     gui->setWidgetFontSize(OFX_UI_FONT_SMALL);
+
     
     ofxUIFPS *fps = gui->addFPS();
     gui->resetPlacer();
@@ -1001,6 +1002,8 @@ void CloudsVisualSystem::setupGui()
     gui->addSpacer();
     selfSetupGui();
     gui->autoSizeToFitWidgets();
+
+    
     ofAddListener(gui->newGUIEvent,this,&CloudsVisualSystem::guiEvent);
     guis.push_back(gui);
     guimap[gui->getName()] = gui;
@@ -1089,12 +1092,27 @@ void CloudsVisualSystem::guiEvent(ofxUIEventArgs &e)
             else{
                 loadGUIS();
             }
+            
         }
     }
 	
     selfGuiEvent(e);
 }
 
+void CloudsVisualSystem::setColors(){
+
+     cb = ofxUIColor(128,180);
+     co = ofxUIColor(255, 255, 255, 100);
+     coh = ofxUIColor(255, 255, 255, 200);
+     cf = ofxUIColor(255, 255, 255, 200);
+     cfh = ofxUIColor(255, 255, 255, 255);
+     cp = ofxUIColor(0, 100);
+     cpo =  ofxUIColor(255, 200);
+    for(int i = 0; i < guis.size(); i++){
+            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
+    }
+
+}
 void CloudsVisualSystem::setupSystemGui()
 {
     sysGui = new ofxUISuperCanvas("SYSTEM", gui);
@@ -1126,7 +1144,6 @@ void CloudsVisualSystem::setupRenderGui()
     rdrGui->setPosition(guis[guis.size()-1]->getRect()->x+guis[guis.size()-1]->getRect()->getWidth()+1, 0);
     rdrGui->setName("RenderSettings");
     rdrGui->setWidgetFontSize(OFX_UI_FONT_SMALL);
-    
     rdrGui->addSpacer();
     selfSetupRenderGui();
     
@@ -2505,15 +2522,19 @@ void CloudsVisualSystem::lightsEnd()
 
 void CloudsVisualSystem::loadGUIS()
 {
+
     for(int i = 0; i < guis.size(); i++)
     {
         guis[i]->loadSettings(getVisualSystemDataPath()+"Presets/Working/"+guis[i]->getName()+".xml");
+        setColors();
+//        guis[i]->setTheme(OFX_UI_THEME_ZOOLANDER);
     }
     cam.reset();
     ofxLoadCamera(cam, getVisualSystemDataPath()+"Presets/Working/"+"ofEasyCamSettings");
     resetTimeline();
     loadTimelineUIMappings(getVisualSystemDataPath()+"Presets/Working/UITimelineMappings.xml");
     timeline->loadTracksFromFolder(getVisualSystemDataPath()+"Presets/Working/Timeline/");
+
 }
 
 void CloudsVisualSystem::saveGUIS()
@@ -2532,16 +2553,28 @@ void CloudsVisualSystem::saveGUIS()
 
 void CloudsVisualSystem::loadPresetGUISFromName(string presetName)
 {
+    
 	loadPresetGUISFromPath(getVisualSystemDataPath()+"Presets/"+ presetName);
 }
 
 void CloudsVisualSystem::loadPresetGUISFromPath(string presetPath)
 {
     resetTimeline();
-	
+    cb = ofxUIColor(128,180);
+    co = ofxUIColor(255, 255, 255, 100);
+    coh = ofxUIColor(255, 255, 255, 200);
+    cf = ofxUIColor(255, 255, 255, 200);
+    cfh = ofxUIColor(255, 255, 255, 255);
+    cp = ofxUIColor(0, 100);
+    cpo =  ofxUIColor(255, 200);
     for(int i = 0; i < guis.size(); i++) {
 		string presetPathName = presetPath+"/"+guis[i]->getName()+".xml";
         guis[i]->loadSettings(presetPathName);
+
+
+            guis[i]->setUIColors(cb,co,coh,cf,cfh,cp, cpo);
+
+
     }
     cam.reset();
 	string easyCamPath = presetPath+"/ofEasyCamSettings";
@@ -3093,7 +3126,7 @@ void CloudsVisualSystem::selfInteractionEnded(CloudsInteractionEventArgs& args){
 
 void CloudsVisualSystem::selfSetupGui()
 {
-	
+
 }
 
 void CloudsVisualSystem::selfGuiEvent(ofxUIEventArgs &e)

@@ -310,9 +310,9 @@
 		28A8A7BF185E25F4009DA217 /* flower1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = flower1.xml; sourceTree = "<group>"; };
 		28A8A7C0185E25F4009DA217 /* tree1.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree1.xml; sourceTree = "<group>"; };
 		28A8A7C1185E25F4009DA217 /* tree2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree2.xml; sourceTree = "<group>"; };
-		28A8A7C2185E25F4009DA217 /* tree3.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tree3.xml; sourceTree = "<group>"; };
 		28B033D2184BD40E009B9099 /* CloudsVisualSystemFlying.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudsVisualSystemFlying.cpp; sourceTree = "<group>"; };
 		28B033D3184BD40F009B9099 /* CloudsVisualSystemFlying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudsVisualSystemFlying.h; sourceTree = "<group>"; };
+		28B7158E185F70C800BBBE45 /* flower2.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = flower2.xml; sourceTree = "<group>"; };
 		28F4F01B185CCDD6008D80A2 /* ConeAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConeAction.cpp; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.cpp; sourceTree = "<group>"; };
 		28F4F01C185CCDD6008D80A2 /* ConeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConeAction.h; path = ../../Rulez/vs_src/ofxRules/src/actions/ConeAction.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -1473,9 +1473,9 @@
 			isa = PBXGroup;
 			children = (
 				28A8A7BF185E25F4009DA217 /* flower1.xml */,
+				28B7158E185F70C800BBBE45 /* flower2.xml */,
 				28A8A7C0185E25F4009DA217 /* tree1.xml */,
 				28A8A7C1185E25F4009DA217 /* tree2.xml */,
-				28A8A7C2185E25F4009DA217 /* tree3.xml */,
 			);
 			name = rules;
 			path = ../../../../CloudsData/visualsystems/Flying/rules;
