@@ -30,8 +30,6 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemFlying::onWindowResized);
-    
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
@@ -139,7 +137,8 @@ void CloudsVisualSystemFlying::selfBegin()
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
     if (cameraControl)
     {
         xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
@@ -296,11 +295,6 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
             toggle->setValue(false);
         }
     }
-}
-
-void CloudsVisualSystemFlying::onWindowResized(ofResizeEventArgs& args)
-{
-    post.init(args.width, args.height, true);
 }
 
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)

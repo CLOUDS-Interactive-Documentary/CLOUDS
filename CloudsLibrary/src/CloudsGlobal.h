@@ -36,9 +36,11 @@ static string GetCloudsVisualSystemDataPath(string systemName, bool ignoredFolde
 	else if(ofDirectory("CloudsData/").exists()){
 		datapath =  string("CloudsData/visualsystems") + (ignoredFolder ? "_ignored" : "") + "/" + systemName + "/";
 	}
+	//  stand alone single app
 	else{
 		datapath =  "../../../data/";
 	}
+	
 	return datapath;
 }
 

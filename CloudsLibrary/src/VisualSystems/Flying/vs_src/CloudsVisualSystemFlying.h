@@ -114,7 +114,6 @@ protected:
     //  Your Stuff
     //
     void generate();
-    void onWindowResized(ofResizeEventArgs& args);
     
     ofxPostProcessing post;
     
