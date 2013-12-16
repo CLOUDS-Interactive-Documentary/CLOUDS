@@ -277,15 +277,23 @@ void CloudsVisualSystemManager::updatePresetsForSystem(ofPtr<CloudsVisualSystem>
 	}
 
 	//if we cleaned it out make sure there is a default to get started
-	if(currentPresets.size() == 0){
-		CloudsVisualSystemPreset preset;
-		preset.systemName = system->getSystemName();
-		preset.presetName = "_default";
-		preset.enabled = false;
-		nameToPresets[preset.systemName].push_back(preset);
-		presets.push_back(preset);
-		
-	}
+//	if(currentPresets.size() == 0){
+	addDefaultPresetForSystem( system->getSystemName() );
+	
+//	CloudsVisualSystemPreset newPreset;
+//	newPreset.systemName = system->getSystemName();
+//	newPreset.presetName = "+New Preset";
+//	newPreset.enabled = false;
+//	nameToPresets[newPreset.systemName].push_back(newPreset);
+//	presets.push_back(newPreset);
+//	
+//	CloudsVisualSystemPreset currentPreset;
+//	currentPreset.systemName = system->getSystemName();
+//	currentPreset.presetName = "+Current State";
+//	currentPreset.enabled = false;
+//	nameToPresets[currentPreset.systemName].push_back(currentPreset);
+//	presets.push_back(currentPreset);
+//	
 	sort(presets.begin(), presets.end(), preset_sort);
 	populateEnabledSystemIndeces();
 	
@@ -389,7 +397,6 @@ void CloudsVisualSystemManager::loadPresets(){
 		preset->systemIsRegistered = false;
 #ifndef CLOUDS_NO_VS
 		preset->systemIsRegistered = constructors.find(systemName) != constructors.end();
-//		cout << "PRESET IS REGISTERED??? " << (preset.systemIsRegistered ? "YES!" : "NO!");
 #endif
 		if(existingPreset){
 			for(int i = 0; i < presets.size(); i++){
@@ -408,14 +415,15 @@ void CloudsVisualSystemManager::loadPresets(){
 	
 #ifndef CLOUDS_NO_VS
 	for(map<string, tConstructor>::iterator it = constructors.begin(); it != constructors.end(); ++it) {
-		if(nameToPresets[it->first].size() == 0){
-			CloudsVisualSystemPreset preset;
-			preset.systemName = it->first;
-			preset.presetName = "_default";
-			preset.enabled = false;
-			nameToPresets[preset.systemName].push_back(preset);
-			presets.push_back(preset);
-		}
+		addDefaultPresetForSystem(it->first);
+//		if(nameToPresets[it->first].size() == 0){
+//			CloudsVisualSystemPreset preset;
+//			preset.systemName = it->first;
+//			preset.presetName = "_default";
+//			preset.enabled = false;
+//			nameToPresets[preset.systemName].push_back(preset);
+//			presets.push_back(preset);
+//		}
 	}
 	
 #endif
@@ -423,6 +431,24 @@ void CloudsVisualSystemManager::loadPresets(){
 	populateEnabledSystemIndeces();
     cout << "** LOADED PRESETS " << presets.size() << endl;
 }
+
+void CloudsVisualSystemManager::addDefaultPresetForSystem(string systemName){
+	
+	CloudsVisualSystemPreset newPreset;
+	newPreset.systemName = systemName;
+	newPreset.presetName = "+New Preset";
+	newPreset.enabled = false;
+	nameToPresets[newPreset.systemName].push_back(newPreset);
+	presets.push_back(newPreset);
+
+	CloudsVisualSystemPreset currentState;
+	currentState.systemName = systemName;
+	currentState.presetName = "+Current State";
+	currentState.enabled = false;
+	nameToPresets[currentState.systemName].push_back(currentState);
+	presets.push_back(currentState);
+}
+
 
 
 //--------------------------------------------------------------------
@@ -471,7 +497,10 @@ void CloudsVisualSystemManager::savePresets(){
 		ofStringReplace(presetName, " ", "_");
 		string presetIdentifier = preset.systemName + "_" + presetName;
 		string keywordString = ofJoinString(keywords[presetIdentifier], "|");
-		if(presetName == "default" || presetName == "_default"){
+		if(presetName == "default"  ||
+		   presetName == "_default" ||
+		   presetName.at(0) == '+')
+		{
 			continue;
 		}
 		
