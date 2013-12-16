@@ -2,26 +2,21 @@
     <Kind>42</Kind>
     <Name>Presets</Name>
     <IsMinified>0</IsMinified>
-    <XPosition>1099.000000000</XPosition>
+    <XPosition>849.000061035</XPosition>
     <YPosition>213.000000000</YPosition>
 </Canvas>
 <Widget>
     <Kind>2</Kind>
-    <Name>CombJellies</Name>
-    <Value>1</Value>
-</Widget>
-<Widget>
-    <Kind>2</Kind>
-    <Name>Deepsea</Name>
+    <Name>lush</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>Snowy</Name>
+    <Name>Test</Name>
     <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
-    <Name>whatevz</Name>
+    <Name>Weighted</Name>
     <Value>1</Value>
 </Widget>

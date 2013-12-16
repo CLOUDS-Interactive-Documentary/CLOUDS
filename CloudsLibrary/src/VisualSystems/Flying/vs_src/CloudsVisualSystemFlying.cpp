@@ -6,7 +6,7 @@
 #include "CloudsRGBDVideoPlayer.h"
 #include "CloudsInput.h"
 
-const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
+//const string CloudsVisualSystemFlying::RULES_FILES[] = { "flower1.xml", "tree1.xml", "tree2.xml", "tree3.xml" };
 //const string CloudsVisualSystemFlying::RULES_FILES[] = { "rules/tree_flying2.xml" };
 const float CloudsVisualSystemFlying::CAM_DAMPING = .08f;
 
@@ -16,6 +16,13 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
     cameraControl(true), fogStart(200.f), fogEnd(500.f), growDist(300.f), drawPlantPosns(false), numNearbyPlants(200),
     zSpeed(0), yRot(0), xRot(20), camAvoidDist(500.f)
 {
+    ofDirectory dir;
+    dir.listDir(getVisualSystemDataPath() + "rules");
+    for (unsigned i = 0; i < dir.size(); ++i)
+    {
+        rulesFiles.push_back(dir.getName(i));
+        rulesWeights.push_back(1.f);
+    }
 }
 
 // selfSetup is called when the visual system is first instantiated
@@ -23,8 +30,6 @@ CloudsVisualSystemFlying::CloudsVisualSystemFlying() :
 // geometry should be loaded here
 void CloudsVisualSystemFlying::selfSetup()
 {
-    ofAddListener(ofEvents().windowResized, this, &CloudsVisualSystemFlying::onWindowResized);
-    
     post.init(ofGetWidth(), ofGetHeight(), true);
     //post.createPass<EdgePass>();
     post.createPass<FxaaPass>();
@@ -54,12 +59,27 @@ void CloudsVisualSystemFlying::generate()
     plants.clear();
     floor.clear();
     
+    float totalWeight = 0.f;
+    for (unsigned i = 0; i < rulesWeights.size(); ++i)
+    {
+        totalWeight += rulesWeights[i];
+    }
+    
+    vector<float> normalisedWeights;
+    for (int i = 0; i < rulesWeights.size(); ++i)
+    {
+        if (i == 0) normalisedWeights.push_back(rulesWeights[i] / totalWeight);
+        else normalisedWeights.push_back(normalisedWeights[i - 1] + rulesWeights[i] / totalWeight);
+    }
+    
     // plants
     for (unsigned i = 0; i < numPlantMeshes; ++i)
     {
-        plantMeshes.push_back(ofxRules());
+        vector<float>::const_iterator it = lower_bound(normalisedWeights.begin(), normalisedWeights.end(), ofRandomuf());
+        unsigned idx = it - normalisedWeights.begin();
         ostringstream oss;
-        oss << getVisualSystemDataPath() << "rules/" << RULES_FILES[rand() % NUM_RULES_FILES];
+        oss << getVisualSystemDataPath() << "rules/" << rulesFiles[idx];
+        plantMeshes.push_back(ofxRules());
         plantMeshes.back().load(oss.str());
         plantMeshes.back().start();
         while (plantMeshes.back().step()) ;
@@ -132,7 +152,8 @@ void CloudsVisualSystemFlying::selfBegin()
 //normal update call
 void CloudsVisualSystemFlying::selfUpdate()
 {
-    ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+    if (post.getWidth() != ofGetWidth() || post.getHeight() != ofGetHeight()) post.init(ofGetWidth(), ofGetHeight(), true);
+    
     if (cameraControl)
     {
         xRot += CAM_DAMPING * (ofMap(abs(GetCloudsInputY() - ofGetHeight() * .5f), 0, ofGetHeight() * 0.5, 30.f, 20.f) - xRot);
@@ -256,12 +277,17 @@ void CloudsVisualSystemFlying::selfPostDraw()
 void CloudsVisualSystemFlying::selfSetupRenderGui()
 {
     rdrGui->addToggle("regenerate", false);
-    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
-    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addSlider("fogStart", 100.f, 4000.f, &fogStart);
     rdrGui->addSlider("fogEnd", 100.f, 4000.f, &fogEnd);
+    rdrGui->addLabel("Plants");
+    rdrGui->addSlider("numNearbyPlants", 20, 500, &numNearbyPlants);
+    for (unsigned i = 0; i < rulesFiles.size(); ++i)
+    {
+        rdrGui->addSlider(rulesFiles[i] + " weighting", 0.f, 1.f, &rulesWeights[i]);
+    }
+    rdrGui->addSlider("growDist", 100.f, 1000.f, &growDist);
     rdrGui->addSlider("camAvoidDist", 0.f, 1000.f, &camAvoidDist);
-    rdrGui->addToggle("cameraControl", &cameraControl);
     rdrGui->addToggle("drawPlantPosns", &drawPlantPosns);
     rdrGui->addLabel("Floor");
     rdrGui->addSlider("noiseFreq", 0.001, 0.01, &noiseFreq);
@@ -286,9 +312,12 @@ void CloudsVisualSystemFlying::guiRenderEvent(ofxUIEventArgs &e)
     }
 }
 
-void CloudsVisualSystemFlying::onWindowResized(ofResizeEventArgs& args)
+// selfPresetLoaded is called whenever a new preset is triggered
+// it'll be called right before selfBegin() and you may wish to
+// refresh anything that a preset may offset, such as stored colors or particles
+void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath)
 {
-    post.init(args.width, args.height, true);
+    generate();
 }
 
 void CloudsVisualSystemFlying::selfGuiEvent(ofxUIEventArgs &e)
@@ -325,13 +354,6 @@ void CloudsVisualSystemFlying::selfSetupGui() {
 	guis.push_back(customGui);
 	guimap[customGui->getName()] = customGui;
     
-}
-
-// selfPresetLoaded is called whenever a new preset is triggered
-// it'll be called right before selfBegin() and you may wish to
-// refresh anything that a preset may offset, such as stored colors or particles
-void CloudsVisualSystemFlying::selfPresetLoaded(string presetPath){
-	
 }
 
 //do things like ofRotate/ofTranslate here

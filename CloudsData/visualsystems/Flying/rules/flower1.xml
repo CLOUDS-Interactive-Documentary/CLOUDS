@@ -1,4 +1,9 @@
-<rules maxDepth="300" primitive="triangles">
+<rules maxDepth="300" startRule="scale" primitive="triangles">
+    <ruleSet name="scale">
+        <rule weight="100">
+            <transform transforms="sa 0.8" next="start"/>
+        </rule>
+    </ruleSet>
     <ruleSet name="start">
         <rule weight="100">
             <ico colour="0 255 0" radius="1.5" transforms="ty 4 rx 1 sa 0.995" next="start"/>
